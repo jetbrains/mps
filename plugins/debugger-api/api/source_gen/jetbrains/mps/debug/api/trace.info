@@ -416,8 +416,8 @@
       <node id="4474271214082914690" at="83,43,84,45" concept="10" />
       <node id="6204890546057488023" at="85,29,86,47" concept="11" />
       <node id="6204890546057488026" at="87,5,88,35" concept="11" />
-      <node id="654837219998587970" at="102,13,103,27" concept="4" />
-      <node id="3818729150937313187" at="105,46,106,29" concept="4" />
+      <node id="654837219998587970" at="101,11,102,25" concept="4" />
+      <node id="3818729150937313187" at="104,44,105,27" concept="4" />
       <node id="4474271214082914426" at="27,0,29,0" concept="9" trace="getThread#()Ljetbrains/mps/debug/api/programState/IThread;" />
       <node id="4474271214082914431" at="29,0,31,0" concept="9" trace="getThreads#()Ljava/util/List;" />
       <node id="4474271214082914437" at="31,0,33,0" concept="9" trace="getStackFrame#()Ljetbrains/mps/debug/api/programState/IStackFrame;" />
@@ -430,18 +430,17 @@
       <node id="4474271214082914622" at="67,33,70,5" concept="8" />
       <node id="4474271214082914648" at="76,48,79,5" concept="8" />
       <node id="4474271214082914694" at="84,45,87,5" concept="8" />
-      <node id="3818729150937313187" at="104,31,107,11" concept="8" />
+      <node id="3818729150937313187" at="103,29,106,9" concept="8" />
       <node id="4474271214082914548" at="46,0,52,0" concept="9" trace="selectThread#(Ljetbrains/mps/debug/api/programState/IThread;)V" />
       <node id="4474271214082914571" at="52,0,58,0" concept="9" trace="selectFrame#(I)V" />
       <node id="4474271214082914614" at="66,0,73,0" concept="9" trace="getStackFramesCount#()I" />
-      <node id="654837219998587823" at="101,25,108,9" concept="19" />
+      <node id="654837219998587823" at="100,69,107,7" concept="19" />
       <node id="4474271214082914593" at="58,0,66,0" concept="9" trace="getStackFrames#()Ljava/util/List;" />
       <node id="4474271214082914685" at="82,0,90,0" concept="9" trace="getWatchables#()Ljava/util/List;" />
       <node id="4474271214082914633" at="73,0,82,0" concept="9" trace="getStackFrame#(I)Ljetbrains/mps/debug/api/programState/IStackFrame;" />
-      <node id="3070226725409672081" at="101,0,110,0" concept="9" trace="run#()V" />
+      <node id="3070226725409668931" at="99,74,108,7" concept="4" />
       <node id="4474271214082914515" at="36,0,46,0" concept="9" trace="findStackFrameIndex#()I" />
-      <node id="3070226725409668931" at="99,74,110,7" concept="4" />
-      <node id="654837219998558871" at="99,0,112,0" concept="9" trace="invokeEvaluation#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P0_E0;)V" />
+      <node id="654837219998558871" at="99,0,110,0" concept="9" trace="invokeEvaluation#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P0_E0;)V" />
       <scope id="4474271214082914421" at="24,59,25,37" />
       <scope id="4474271214082914442" at="33,0,34,0" />
       <scope id="4474271214082914450" at="34,0,35,0">
@@ -458,22 +457,22 @@
       <scope id="4474271214082914626" at="68,25,69,37" />
       <scope id="4474271214082914654" at="77,33,78,18" />
       <scope id="4474271214082914698" at="85,29,86,47" />
-      <scope id="654837219998587824" at="102,13,103,27" />
-      <scope id="3818729150937313187" at="105,46,106,29" />
+      <scope id="654837219998587824" at="101,11,102,25" />
+      <scope id="3818729150937313187" at="104,44,105,27" />
       <scope id="4474271214082914426" at="27,0,29,0" />
       <scope id="4474271214082914431" at="29,0,31,0" />
       <scope id="4474271214082914437" at="31,0,33,0" />
       <scope id="4474271214082914416" at="24,0,27,0">
         <var name="session" id="4474271214082914419" />
       </scope>
-      <scope id="654837219998587828" at="104,31,107,11" />
+      <scope id="654837219998587828" at="103,29,106,9" />
       <scope id="4474271214082914554" at="46,54,50,5">
         <var name="newState" id="4474271214082914556" />
       </scope>
       <scope id="4474271214082914576" at="52,38,56,5">
         <var name="newState" id="4474271214082914578" />
       </scope>
-      <scope id="654837219998587825" at="104,9,108,9">
+      <scope id="654837219998587825" at="103,7,107,7">
         <var name="t" id="654837219998587826" />
       </scope>
       <scope id="4474271214082914597" at="59,45,64,35">
@@ -495,7 +494,7 @@
         <var name="frames" id="4474271214082914644" />
       </scope>
       <scope id="4474271214082914614" at="66,0,73,0" />
-      <scope id="3070226725409672082" at="101,25,108,9" />
+      <scope id="3070226725409672082" at="100,69,107,7" />
       <scope id="4474271214082914518" at="36,39,44,20">
         <var name="thread" id="4474271214082914520" />
       </scope>
@@ -504,14 +503,12 @@
       <scope id="4474271214082914633" at="73,0,82,0">
         <var name="index" id="4474271214082914636" />
       </scope>
-      <scope id="3070226725409672081" at="101,0,110,0" />
+      <scope id="654837219998558875" at="99,74,108,7" />
       <scope id="4474271214082914515" at="36,0,46,0" />
-      <scope id="654837219998558875" at="99,74,110,7" />
-      <scope id="654837219998558871" at="99,0,112,0">
+      <scope id="654837219998558871" at="99,0,110,0">
         <var name="command" id="654837219998586805" />
       </scope>
-      <unit id="3070226725409672081" at="100,66,110,5" name="jetbrains.mps.debug.api.AbstractUiState$1" />
-      <unit id="4474271214082913514" at="19,0,113,0" name="jetbrains.mps.debug.api.AbstractUiState" />
+      <unit id="4474271214082913514" at="19,0,111,0" name="jetbrains.mps.debug.api.AbstractUiState" />
     </file>
   </root>
   <root nodeRef="r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)/4474271214082913515">

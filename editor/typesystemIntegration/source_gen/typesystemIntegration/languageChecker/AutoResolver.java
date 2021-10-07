@@ -92,11 +92,7 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
       NodeReportItem reportItem = new TargetModuleNotImportedReportItem(ref, targetModuleRef, new ModuleImportQuickFix(ref));
       report(nodesToErrors, reportItem);
     }
-    final Consumer<NodeReportItem> consumer = new Consumer<NodeReportItem>() {
-      public void consume(NodeReportItem report) {
-        SetSequence.fromSet(messages).addElement(HighlightUtil.createHighlighterMessage(report, AutoResolver.this, myProject.getRepository()));
-      }
-    };
+    final Consumer<NodeReportItem> consumer = (NodeReportItem report) -> SetSequence.fromSet(messages).addElement(HighlightUtil.createHighlighterMessage(report, AutoResolver.this, myProject.getRepository()));
     for (ICheckingPostprocessor<NodeReportItem> postprocessor : myPostprocessors) {
       postprocessor.postProcess(myProject.getRepository(), new EmptyProgressMonitor(), new CheckingSession<NodeReportItem>() {
         @Override
@@ -143,68 +139,66 @@ public class AutoResolver extends BaseEventProcessingEditorChecker {
     final boolean wasForceAutofix = myForceAutofix;
     myForceAutofix = false;
 
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        myProject.getModelAccess().executeUndoTransparentCommand(new Runnable() {
-          @Override
-          public void run() {
-            if (editorContext.getEditorComponent().isDisposed()) {
-              return;
-            }
-            EditorComponentState state = editorContext.getEditorComponentState();
+    ApplicationManager.getApplication().invokeLater(() -> {
+      myProject.getModelAccess().executeUndoTransparentCommand(new Runnable() {
+        @Override
+        public void run() {
+          if (editorContext.getEditorComponent().isDisposed()) {
+            return;
+          }
+          EditorComponentState state = editorContext.getEditorComponentState();
 
-            ReferenceResolveInEditor refResolve = new ReferenceResolveInEditor(editorContext.getEditorComponent());
+          ReferenceResolveInEditor refResolve = new ReferenceResolveInEditor(editorContext.getEditorComponent());
 
-            // in case this becomes a performance bottleneck, consider reusing the editor's typechecking context
-            boolean doRecheckEditor = false;
-            // Trying to resolve all broken references using scope and then using substitute actions.
-            for (SReference brokenRef : SetSequence.fromSet(badReferences)) {
-              boolean resolvedByScope = ResolverComponent.getInstance().resolveScopesOnly(brokenRef, editorContext.getRepository());
+          // in case this becomes a performance bottleneck, consider reusing the editor's typechecking context
+          boolean doRecheckEditor = false;
+          // Trying to resolve all broken references using scope and then using substitute actions.
+          for (SReference brokenRef : SetSequence.fromSet(badReferences)) {
+            boolean resolvedByScope = ResolverComponent.getInstance().resolveScopesOnly(brokenRef, editorContext.getRepository());
 
-              final jetbrains.mps.openapi.editor.cells.EditorCell cellWithRole;
-              if (resolvedByScope) {
-                doRecheckEditor = true;
-                cellWithRole = editorComponent.findNodeCellWithRole(brokenRef.getSourceNode(), brokenRef.getLink());
-              } else {
-                if (refResolve.substitute(brokenRef)) {
-                  doRecheckEditor = true;
-                }
-                cellWithRole = refResolve.lastSubstitutedCell();
-              }
-              if (cellWithRole != null) {
-                // excluding reference cell which was substituted from the set of error cells
-                SetSequence.fromSet(errorCells).removeElement(cellWithRole);
-              }
-            }
-
-            // Trying to substitute all other error cells by using substitute actions.
-            for (jetbrains.mps.openapi.editor.cells.EditorCell errorCell : SetSequence.fromSet(errorCells)) {
-              if (!(errorCell instanceof EditorCell_Label)) {
-                continue;
-              }
-              EditorCell_Label labelErrorCell = (EditorCell_Label) errorCell;
-              String errorText = labelErrorCell.getText();
-              if ((errorText == null || errorText.length() == 0)) {
-                continue;
-              }
-
-              if (refResolve.substitute(labelErrorCell, errorText)) {
+            final jetbrains.mps.openapi.editor.cells.EditorCell cellWithRole;
+            if (resolvedByScope) {
+              doRecheckEditor = true;
+              cellWithRole = editorComponent.findNodeCellWithRole(brokenRef.getSourceNode(), brokenRef.getLink());
+            } else {
+              if (refResolve.substitute(brokenRef)) {
                 doRecheckEditor = true;
               }
+              cellWithRole = refResolve.lastSubstitutedCell();
             }
-
-            if (doRecheckEditor) {
-              // Something has changed in the editor, restore the previous state to avoid selection jump if possible
-              editorContext.restoreEditorComponentState(state);
-
-              if (wasForceAutofix) {
-                // re-running next checker in force autofix mode
-                myForceAutofix = true;
-              }
+            if (cellWithRole != null) {
+              // excluding reference cell which was substituted from the set of error cells
+              SetSequence.fromSet(errorCells).removeElement(cellWithRole);
             }
           }
-        });
-      }
+
+          // Trying to substitute all other error cells by using substitute actions.
+          for (jetbrains.mps.openapi.editor.cells.EditorCell errorCell : SetSequence.fromSet(errorCells)) {
+            if (!(errorCell instanceof EditorCell_Label)) {
+              continue;
+            }
+            EditorCell_Label labelErrorCell = (EditorCell_Label) errorCell;
+            String errorText = labelErrorCell.getText();
+            if ((errorText == null || errorText.length() == 0)) {
+              continue;
+            }
+
+            if (refResolve.substitute(labelErrorCell, errorText)) {
+              doRecheckEditor = true;
+            }
+          }
+
+          if (doRecheckEditor) {
+            // Something has changed in the editor, restore the previous state to avoid selection jump if possible
+            editorContext.restoreEditorComponentState(state);
+
+            if (wasForceAutofix) {
+              // re-running next checker in force autofix mode
+              myForceAutofix = true;
+            }
+          }
+        }
+      });
     });
   }
   public static class BadReferences extends MultiTuple._2<Set<SReference>, Set<SReference>> {

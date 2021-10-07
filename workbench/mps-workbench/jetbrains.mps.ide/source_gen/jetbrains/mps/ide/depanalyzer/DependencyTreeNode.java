@@ -37,11 +37,7 @@ public class DependencyTreeNode extends MPSTreeNode {
   @Deprecated
   public SModule getModule() {
     final Wrappers._T<SModule> result = new Wrappers._T<SModule>();
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        result.value = myLink.module.resolve(myProject.getRepository());
-      }
-    });
+    myProject.getRepository().getModelAccess().runReadAction(() -> result.value = myLink.module.resolve(myProject.getRepository()));
     return result.value;
   }
   public void setDepLeaf() {

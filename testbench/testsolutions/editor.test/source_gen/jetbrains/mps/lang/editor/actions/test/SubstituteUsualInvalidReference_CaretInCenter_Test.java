@@ -36,33 +36,31 @@ public class SubstituteUsualInvalidReference_CaretInCenter_Test extends BaseTran
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("2389096682426283929", "2389096682426283933");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          // replace node with the other node
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Insert_Action");
-          typeString("usualOtherNode");
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        // replace node with the other node
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Insert_Action");
+        typeString("usualOtherNode");
 
-          // go to the reference
-          invokeAction("jetbrains.mps.ide.editor.actions.Home_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        // go to the reference
+        invokeAction("jetbrains.mps.ide.editor.actions.Home_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
 
-          // put caret in after the usu|
-          invokeAction("jetbrains.mps.ide.editor.actions.Home_Action");
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " TAB"));
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
+        // put caret in after the usu|
+        invokeAction("jetbrains.mps.ide.editor.actions.Home_Action");
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " TAB"));
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
 
-          typeString("Other");
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
-        }
+        typeString("Other");
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
       }, false);
 
     }

@@ -24,7 +24,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.project.ModelImportHelper;
-import jetbrains.mps.util.Callback;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.DefaultSChildSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteInfoFilterDecorator;
@@ -124,28 +123,26 @@ public class AddModelImportByRoot_Action extends BaseAction {
       }
 
     }
-    new ModelImportHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).setShortcut(getShortcutSet()).setInitialText(initialText.value).setContextNode(contextNode).addImportByRoot(((SModel) MapSequence.fromMap(_params).get("model")), new Callback<String>() {
-      public void call(String rootName) {
-        String textToMatch = (rootName != null ? rootName : initialText.value);
-        if (textToMatch.length() == 0) {
-          return;
-        }
-        SubstituteInfo substituteInfo = null;
-        if (errorLabel.value != null) {
-          substituteInfo = errorLabel.value.getSubstituteInfo();
-        } else if (unresolvedReference.value != null && ((EditorContext) MapSequence.fromMap(_params).get("editorContext")) != null) {
-          substituteInfo = new DefaultSChildSubstituteInfo(SNodeOperations.getParent(unresolvedReference.value), unresolvedReference.value, unresolvedReference.value.getContainmentLink(), ((EditorContext) MapSequence.fromMap(_params).get("editorContext")));
-          substituteInfo.setOriginalText(initialText.value);
-        }
-        if (substituteInfo == null) {
-          return;
-        }
-        substituteInfo = NodeSubstituteInfoFilterDecorator.createSubstituteInfoWithPatternMatchingFilter(substituteInfo, ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository());
-        substituteInfo.invalidateActions();
-        List<SubstituteAction> matchingActions = substituteInfo.getMatchingActions(textToMatch, true);
-        if (ListSequence.fromList(matchingActions).count() == 1) {
-          ListSequence.fromList(matchingActions).first().substitute(((EditorContext) MapSequence.fromMap(_params).get("editorContext")), initialText.value);
-        }
+    new ModelImportHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).setShortcut(getShortcutSet()).setInitialText(initialText.value).setContextNode(contextNode).addImportByRoot(((SModel) MapSequence.fromMap(_params).get("model")), (String rootName) -> {
+      String textToMatch = (rootName != null ? rootName : initialText.value);
+      if (textToMatch.length() == 0) {
+        return;
+      }
+      SubstituteInfo substituteInfo = null;
+      if (errorLabel.value != null) {
+        substituteInfo = errorLabel.value.getSubstituteInfo();
+      } else if (unresolvedReference.value != null && ((EditorContext) MapSequence.fromMap(_params).get("editorContext")) != null) {
+        substituteInfo = new DefaultSChildSubstituteInfo(SNodeOperations.getParent(unresolvedReference.value), unresolvedReference.value, unresolvedReference.value.getContainmentLink(), ((EditorContext) MapSequence.fromMap(_params).get("editorContext")));
+        substituteInfo.setOriginalText(initialText.value);
+      }
+      if (substituteInfo == null) {
+        return;
+      }
+      substituteInfo = NodeSubstituteInfoFilterDecorator.createSubstituteInfoWithPatternMatchingFilter(substituteInfo, ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository());
+      substituteInfo.invalidateActions();
+      List<SubstituteAction> matchingActions = substituteInfo.getMatchingActions(textToMatch, true);
+      if (ListSequence.fromList(matchingActions).count() == 1) {
+        ListSequence.fromList(matchingActions).first().substitute(((EditorContext) MapSequence.fromMap(_params).get("editorContext")), initialText.value);
       }
     });
   }

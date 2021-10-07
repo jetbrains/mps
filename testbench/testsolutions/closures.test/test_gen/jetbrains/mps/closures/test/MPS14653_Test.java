@@ -19,10 +19,8 @@ public class MPS14653_Test {
   }
   @Test
   public void test_acceptFunction() throws Exception {
-    _FunctionTypes._void_P0_E1<? extends Exception> fun = new _FunctionTypes._void_P0_E1<MPS14653_helper.SampleException>() {
-      public void invoke() throws MPS14653_helper.SampleException {
-        throw new MPS14653_helper.SampleException();
-      }
+    _FunctionTypes._void_P0_E1<? extends Exception> fun = () -> {
+      throw new MPS14653_helper.SampleException();
     };
     try {
       new MPS14653_helper.Context().acceptFunction(fun);
@@ -33,10 +31,8 @@ public class MPS14653_Test {
   }
   @Test
   public void test_acceptFunction2() throws Exception {
-    _FunctionTypes._void_P0_E1<? extends MPS14653_helper.SampleException> fun = new _FunctionTypes._void_P0_E1<MPS14653_helper.SampleException>() {
-      public void invoke() throws MPS14653_helper.SampleException {
-        throw new MPS14653_helper.SampleException();
-      }
+    _FunctionTypes._void_P0_E1<? extends MPS14653_helper.SampleException> fun = () -> {
+      throw new MPS14653_helper.SampleException();
     };
     try {
       new MPS14653_helper.Context().acceptFunction(fun);

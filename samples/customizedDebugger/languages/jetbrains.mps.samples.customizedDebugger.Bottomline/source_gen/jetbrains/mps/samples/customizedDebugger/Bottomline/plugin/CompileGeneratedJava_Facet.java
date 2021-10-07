@@ -86,11 +86,7 @@ public class CompileGeneratedJava_Facet extends IFacet.Stub {
               final ModuleMaker mm = new ModuleMaker(monitor.getSession().getMessageHandler());
               progressMonitor.start(new IFacet.Name("jetbrains.mps.samples.customizedDebugger.Bottomline.CompileGeneratedJava").getName(), 3);
               // XXX in fact, shall lock repository of a module from TResource, which is not necessarily the same as project's
-              monitor.getSession().getProject().getModelAccess().runReadAction(new Runnable() {
-                public void run() {
-                  mm.prepare(toCompile, false, progressMonitor.subTask(2));
-                }
-              });
+              monitor.getSession().getProject().getModelAccess().runReadAction(() -> mm.prepare(toCompile, false, progressMonitor.subTask(2)));
               MPSCompilationResult cr = mm.make(progressMonitor.subTask(1));
               if (!(cr.isOk())) {
                 if (cr.getErrorsCount() > 0) {

@@ -96,45 +96,27 @@ public class OptimizeModelImports_Action extends BaseAction {
           final int modelsNumber = ((List<SModel>) MapSequence.fromMap(_params).get("models")).size();
           final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
           monitor.start("Optimizing imports of " + modelsNumber + " models", modelsNumber);
-          WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
-            public void run() {
-            }
+          WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> {
           });
           final OptimizeImportsHelper helper = new OptimizeImportsHelper(repo, ((MPSProject) MapSequence.fromMap(_params).get("project")).getComponent(ModelsAutoImportsManager.class));
-          ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-            public void run() {
-              repo.getModelAccess().executeCommand(new Runnable() {
-                public void run() {
-                  String result = helper.optimizeModelsImports(((List<SModel>) MapSequence.fromMap(_params).get("models")), monitor.subTask(modelsNumber));
-                  report.append(result);
-                }
-              });
-            }
-          }, ModalityState.defaultModalityState());
+          ApplicationManager.getApplication().invokeAndWait(() -> repo.getModelAccess().executeCommand(() -> {
+            String result = helper.optimizeModelsImports(((List<SModel>) MapSequence.fromMap(_params).get("models")), monitor.subTask(modelsNumber));
+            report.append(result);
+          }), ModalityState.defaultModalityState());
           if (monitor.isCanceled()) {
             return;
           }
           monitor.step("Saving...");
-          WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
-            public void run() {
-              repo.getModelAccess().executeCommand(new Runnable() {
-                public void run() {
-                  repo.saveAll();
-                }
-              });
-            }
-          });
+          WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> repo.getModelAccess().executeCommand(() -> repo.saveAll()));
           monitor.advance(1);
         } finally {
           monitor.done();
         }
       }
     };
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        ProgressManager.getInstance().run(task);
-        Messages.showMessageDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), (report.length() == 0 ? "Nothing to optimize" : report.toString()), "Optimize Imports", Messages.getInformationIcon());
-      }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      ProgressManager.getInstance().run(task);
+      Messages.showMessageDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), (report.length() == 0 ? "Nothing to optimize" : report.toString()), "Optimize Imports", Messages.getInformationIcon());
     }, ModalityState.defaultModalityState());
   }
 }

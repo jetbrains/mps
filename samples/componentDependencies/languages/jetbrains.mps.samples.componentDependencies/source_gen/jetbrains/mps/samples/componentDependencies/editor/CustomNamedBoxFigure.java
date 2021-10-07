@@ -10,7 +10,6 @@ import jetbrains.jetpad.model.property.Property;
 import jetbrains.jetpad.mapper.MapperFactory;
 import jetbrains.jetpad.mapper.Mapper;
 import jetbrains.jetpad.mapper.Synchronizers;
-import jetbrains.jetpad.model.property.WritableProperty;
 import jetbrains.jetpad.projectional.view.View;
 import jetbrains.jetpad.projectional.diagram.view.DiagramNodeView;
 import jetbrains.jetpad.projectional.diagram.base.GridDirection;
@@ -43,14 +42,12 @@ public class CustomNamedBoxFigure extends NamedBoxFigure {
         @Override
         protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
           super.registerSynchronizers(configuration);
-          configuration.add(Synchronizers.forProperty(figure.parent(), new WritableProperty<View>() {
-            public void set(View parentView) {
-              while (parentView != null) {
-                if (parentView instanceof DiagramNodeView) {
-                  ((DiagramNodeView) parentView).setPortsDirection(GridDirection.DOWN);
-                }
-                parentView = parentView.parent().get();
+          configuration.add(Synchronizers.forProperty(figure.parent(), (View parentView) -> {
+            while (parentView != null) {
+              if (parentView instanceof DiagramNodeView) {
+                ((DiagramNodeView) parentView).setPortsDirection(GridDirection.DOWN);
               }
+              parentView = parentView.parent().get();
             }
           }));
         }

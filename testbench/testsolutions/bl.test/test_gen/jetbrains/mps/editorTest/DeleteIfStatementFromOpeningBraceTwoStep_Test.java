@@ -36,12 +36,10 @@ public class DeleteIfStatementFromOpeningBraceTwoStep_Test extends BaseTransform
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5758795789001408699", "563261338091816831");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode()));
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+        Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode()));
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
       }, true);
     }
   }

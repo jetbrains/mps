@@ -190,23 +190,17 @@ public class LanguageEditorChecker extends BaseEditorChecker implements Disposab
     final boolean wasForceRunQuickFixes = myForceRunQuickFixes;
     myForceRunQuickFixes = false;
     if (ListSequence.fromList(quickFixesToExecute).isNotEmpty()) {
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          editorContext.getRepository().getModelAccess().executeUndoTransparentCommand(new Runnable() {
-            public void run() {
-              for (QuickFixBase fix : quickFixesToExecute) {
-                if (fix.isAlive(editorContext.getRepository())) {
-                  QuickFixRuntimeEditorWrapper.getInstance(fix).execute(editorContext, false);
-                  if (wasForceRunQuickFixes) {
-                    // forcing to execute quickFixes for all errors reported on the modified model
-                    myForceRunQuickFixes = true;
-                  }
-                }
-              }
+      ApplicationManager.getApplication().invokeLater(() -> editorContext.getRepository().getModelAccess().executeUndoTransparentCommand(() -> {
+        for (QuickFixBase fix : quickFixesToExecute) {
+          if (fix.isAlive(editorContext.getRepository())) {
+            QuickFixRuntimeEditorWrapper.getInstance(fix).execute(editorContext, false);
+            if (wasForceRunQuickFixes) {
+              // forcing to execute quickFixes for all errors reported on the modified model
+              myForceRunQuickFixes = true;
             }
-          });
+          }
         }
-      });
+      }));
     }
     return result;
   }

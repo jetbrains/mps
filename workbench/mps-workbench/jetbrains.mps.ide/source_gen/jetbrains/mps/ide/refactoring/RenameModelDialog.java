@@ -27,11 +27,7 @@ public class RenameModelDialog extends RenameDialog {
     myProject = mpsProject;
     myModelDescriptor = sm;
     final Wrappers._T<ModelRoot> modelRoot = new Wrappers._T<ModelRoot>();
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        modelRoot.value = myModelDescriptor.getModelRoot();
-      }
-    });
+    myProject.getRepository().getModelAccess().runReadAction(() -> modelRoot.value = myModelDescriptor.getModelRoot());
     myValidator = new ModelNameValidator(modelRoot.value);
     setTitle(IdeBundle.message("actions.model.rename.title"));
   }
@@ -50,11 +46,7 @@ public class RenameModelDialog extends RenameDialog {
   @Override
   protected void doRefactoringAction() {
     final SModelName newModelName = new SModelName(getCurrentValue());
-    myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        RenameModelDialog.renameModel(myModelDescriptor, newModelName.getValue());
-      }
-    });
+    myProject.getRepository().getModelAccess().executeCommand(() -> RenameModelDialog.renameModel(myModelDescriptor, newModelName.getValue()));
     super.doRefactoringAction();
   }
 

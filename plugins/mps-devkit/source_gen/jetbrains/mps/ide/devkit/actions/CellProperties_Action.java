@@ -14,7 +14,6 @@ import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.devkit.cellExplorer.CellProperties;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.ide.devkit.cellExplorer.CellPropertiesWindow;
 
 @GeneratedClass(node = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/2662234144540708083", model = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)")
@@ -52,11 +51,7 @@ public class CellProperties_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final EditorCell cell = event.getData(MPSEditorDataKeys.EDITOR_CELL);
-    CellProperties props = new ModelAccessHelper(cell.getEditorComponent().getEditorContext().getRepository()).runReadAction(new Computable<CellProperties>() {
-      public CellProperties compute() {
-        return new CellProperties(cell);
-      }
-    });
+    CellProperties props = new ModelAccessHelper(cell.getEditorComponent().getEditorContext().getRepository()).runReadAction(() -> new CellProperties(cell));
     new CellPropertiesWindow(props, event.getData(MPSCommonDataKeys.FRAME)).setVisible(true);
   }
 }

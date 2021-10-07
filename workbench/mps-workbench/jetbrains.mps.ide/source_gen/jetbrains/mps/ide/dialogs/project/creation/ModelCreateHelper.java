@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -23,6 +22,7 @@ import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.persistence.DefaultModelRoot;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.project.ModelsAutoImportsManager;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.smodel.ModelImports;
@@ -56,25 +56,23 @@ public class ModelCreateHelper {
     final boolean distinctSrcRoot4Accessory = false;
 
     // FIXME distinct write with subsequent command. Is it the way we would like to go?
-    return new ModelAccessHelper(myProject.getModelAccess()).runWriteAction(new Computable<SourceRoot>() {
-      public SourceRoot compute() {
-        // XXX this !canCreateModel check is related to a hack in NewModelDialogDefaultSettings, when we 
-        //    allow file-based MR with !canCreateModels() in Language, see MPS-17276
-        // Quite dubious fix, imo, worth refactoring.
-        if (distinctSrcRoot4Accessory || !(selectedModelRoot.canCreateModel(myFqName))) {
-          final String dedicatedSourceRootName = "languageAccessories";
-          for (SourceRoot sr : selectedModelRoot.getSourceRoots(SourceRootKinds.SOURCES)) {
-            if (sr.getPath().endsWith(dedicatedSourceRootName)) {
-              return sr;
-            }
+    return new ModelAccessHelper(myProject.getModelAccess()).runWriteAction(() -> {
+      // XXX this !canCreateModel check is related to a hack in NewModelDialogDefaultSettings, when we 
+      //    allow file-based MR with !canCreateModels() in Language, see MPS-17276
+      // Quite dubious fix, imo, worth refactoring.
+      if (distinctSrcRoot4Accessory || !(selectedModelRoot.canCreateModel(myFqName))) {
+        final String dedicatedSourceRootName = "languageAccessories";
+        for (SourceRoot sr : selectedModelRoot.getSourceRoots(SourceRootKinds.SOURCES)) {
+          if (sr.getPath().endsWith(dedicatedSourceRootName)) {
+            return sr;
           }
-          DefaultSourceRoot rv = new DefaultSourceRoot(dedicatedSourceRootName, selectedModelRoot.getContentDirectory());
-          selectedModelRoot.addSourceRoot(SourceRootKinds.SOURCES, rv);
-          // it's up to model root impl to ensure module is marked changed on source root addition
-          return rv;
-        } else {
-          return null;
         }
+        DefaultSourceRoot rv = new DefaultSourceRoot(dedicatedSourceRootName, selectedModelRoot.getContentDirectory());
+        selectedModelRoot.addSourceRoot(SourceRootKinds.SOURCES, rv);
+        // it's up to model root impl to ensure module is marked changed on source root addition
+        return rv;
+      } else {
+        return null;
       }
     });
   }

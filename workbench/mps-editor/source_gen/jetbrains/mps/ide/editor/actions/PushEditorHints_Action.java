@@ -91,22 +91,18 @@ public class PushEditorHints_Action extends BaseAction {
     if (currentModel == null) {
       hintSettings.value = new ConceptEditorHintSettings(languageRegistry);
     } else {
-      ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Collection<SLanguage> availableLanguages = MenuUtil.getUsedAndDependentLanguages(currentModel);
-          hintSettings.value = new ConceptEditorHintSettings(languageRegistry, availableLanguages);
-        }
+      ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(() -> {
+        Collection<SLanguage> availableLanguages = MenuUtil.getUsedAndDependentLanguages(currentModel);
+        hintSettings.value = new ConceptEditorHintSettings(languageRegistry, availableLanguages);
       });
     }
 
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        String[] initialEditorHints = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getUpdater().getInitialEditorHints();
-        hintSettings.value.updateSettings((initialEditorHints == null ? Collections.<String>emptySet() : SetSequence.fromSetAndArray(new HashSet<String>(), initialEditorHints)));
-        final ConceptEditorHintPreferencesPage page = new ConceptEditorHintPreferencesPage(hintSettings.value);
-        DialogWrapper dialog = new HintsDialog(((Project) MapSequence.fromMap(_params).get("project")), page, hintSettings.value, ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")));
-        dialog.show();
-      }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      String[] initialEditorHints = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getUpdater().getInitialEditorHints();
+      hintSettings.value.updateSettings((initialEditorHints == null ? Collections.<String>emptySet() : SetSequence.fromSetAndArray(new HashSet<String>(), initialEditorHints)));
+      final ConceptEditorHintPreferencesPage page = new ConceptEditorHintPreferencesPage(hintSettings.value);
+      DialogWrapper dialog = new HintsDialog(((Project) MapSequence.fromMap(_params).get("project")), page, hintSettings.value, ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")));
+      dialog.show();
     });
   }
 }

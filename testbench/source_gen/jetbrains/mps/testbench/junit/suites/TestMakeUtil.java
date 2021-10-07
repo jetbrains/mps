@@ -23,11 +23,7 @@ public final class TestMakeUtil {
     // Apparently, derived from WorkerHelper.makeAndReload()
     MPSCompilationResult mpsCompilationResult;
     final ModuleMaker maker = new ModuleMaker();
-    p.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        maker.prepare(p.getProjectModules(), true, new EmptyProgressMonitor());
-      }
-    });
+    p.getRepository().getModelAccess().runReadAction(() -> maker.prepare(p.getProjectModules(), true, new EmptyProgressMonitor()));
     mpsCompilationResult = maker.make(new EmptyProgressMonitor());
     if (mpsCompilationResult.isReloadingNeeded()) {
       myPlatform.findComponent(ClassLoaderManager.class).reload(mpsCompilationResult.getAffectedModules(), new EmptyProgressMonitor());

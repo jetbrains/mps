@@ -42,11 +42,7 @@ public class RunMigration extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final List<SModule>[] modules = new List[1];
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        modules[0] = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myProject)).toListSequence();
-      }
-    });
+    myProject.getRepository().getModelAccess().runReadAction(() -> modules[0] = Sequence.fromIterable(MigrationModuleUtil.getMigrateableModulesFromProject(myProject)).toListSequence());
     ProgressManager.getInstance().run(new Task.Modal(myProject.getProject(), "Run Migration", true) {
       public void run(@NotNull ProgressIndicator progressIndicator) {
         ProgressMonitorAdapter progressMonitor = new ProgressMonitorAdapter(progressIndicator);
@@ -54,16 +50,10 @@ public class RunMigration extends BaseAction {
         progressMonitor.start(myScript.getCaption(), steps);
         for (final SModule module : ListSequence.fromList(modules[0])) {
           progressMonitor.step(module.getModuleName());
-          WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
-            public void run() {
-              RunMigration.this.myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
-                public void run() {
-                  myScript.execute(module);
-                  updateModelVesionsIfPossible(module, myScript.getReference().getLanguage(), myScript.getReference().getFromVersion(), myScript.getReference().getFromVersion() + 1);
-                }
-              });
-            }
-          });
+          WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> RunMigration.this.myProject.getRepository().getModelAccess().executeCommand(() -> {
+            myScript.execute(module);
+            updateModelVesionsIfPossible(module, myScript.getReference().getLanguage(), myScript.getReference().getFromVersion(), myScript.getReference().getFromVersion() + 1);
+          }));
           progressMonitor.advance(1);
           if (progressMonitor.isCanceled()) {
             break;

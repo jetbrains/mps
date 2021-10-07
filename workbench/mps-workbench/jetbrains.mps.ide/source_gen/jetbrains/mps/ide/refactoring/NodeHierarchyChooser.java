@@ -27,18 +27,12 @@ public class NodeHierarchyChooser extends JBScrollPane {
   public NodeHierarchyChooser(MPSProject mpsProject, final SNode node) {
     // XXX no need to extend ScrollPane, shall aggregate instead
     this.myTree = new MyHierarchyTree(mpsProject.getRepository());
-    mpsProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        NodeHierarchyChooser.this.myTree.setHierarchyNode(SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$KA, false, false));
-      }
-    });
+    mpsProject.getModelAccess().runReadAction(() -> NodeHierarchyChooser.this.myTree.setHierarchyNode(SNodeOperations.getNodeAncestor(node, CONCEPTS.AbstractConceptDeclaration$KA, false, false)));
     this.setViewportView(this.myTree);
-    ThreadUtils.runInUIThreadNoWait(new Runnable() {
-      public void run() {
-        NodeHierarchyChooser.this.myTree.rebuildNow();
-        NodeHierarchyChooser.this.myTree.expandAll();
-        NodeHierarchyChooser.this.myTree.setSelectionRow((NodeHierarchyChooser.this.myTree.getRowCount() > 1 ? 1 : 0));
-      }
+    ThreadUtils.runInUIThreadNoWait(() -> {
+      NodeHierarchyChooser.this.myTree.rebuildNow();
+      NodeHierarchyChooser.this.myTree.expandAll();
+      NodeHierarchyChooser.this.myTree.setSelectionRow((NodeHierarchyChooser.this.myTree.getRowCount() > 1 ? 1 : 0));
     });
   }
 

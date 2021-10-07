@@ -269,68 +269,54 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
   }
   @Test
   public void test_constructorInvocation1() throws Exception {
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C0$Gr, null);
-        Assert.assertEquals(TestResults.I1_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
-      }
+    myProject.getModelAccess().runReadAction(() -> {
+      SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C0$Gr, null);
+      Assert.assertEquals(TestResults.I1_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
     });
   }
   @Test
   public void test_constructorInvocation2() throws Exception {
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C1$Yv, null);
-        Assert.assertEquals(TestResults.C1_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
-      }
+    myProject.getModelAccess().runReadAction(() -> {
+      SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C1$Yv, null);
+      Assert.assertEquals(TestResults.C1_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
     });
   }
   @Test
   public void test_constructorInvocation3() throws Exception {
     // test checks that I2 constructor overrides I1 constructor
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C2$Jx, null);
-        Assert.assertEquals(TestResults.I2_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
-      }
+    myProject.getModelAccess().runReadAction(() -> {
+      SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C2$Jx, null);
+      Assert.assertEquals(TestResults.I2_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
     });
   }
   @Test
   public void test_constructorInvocation4() throws Exception {
     // test checks that all super constructors are invoked
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode nodeC5 = SNodeFactoryOperations.createNewNode(CONCEPTS.C5$xl, null);
-        Assert.assertSame(true, SPropertyOperations.getBoolean(nodeC5, PROPS.b$mPYS));
-        Assert.assertEquals(TestResults.C3_DEFAULT_VALUE, SPropertyOperations.getString(nodeC5, PROPS.a$mhAL));
-      }
+    myProject.getModelAccess().runReadAction(() -> {
+      SNode nodeC5 = SNodeFactoryOperations.createNewNode(CONCEPTS.C5$xl, null);
+      Assert.assertSame(true, SPropertyOperations.getBoolean(nodeC5, PROPS.b$mPYS));
+      Assert.assertEquals(TestResults.C3_DEFAULT_VALUE, SPropertyOperations.getString(nodeC5, PROPS.a$mhAL));
     });
   }
   @Test
   public void test_constructorInvocationDiamond() throws Exception {
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C4$iv, null);
-        Assert.assertEquals(TestResults.C3_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
-      }
+    myProject.getModelAccess().runReadAction(() -> {
+      SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C4$iv, null);
+      Assert.assertEquals(TestResults.C3_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
     });
   }
   @Test
   public void test_constructorInvocationSuper1() throws Exception {
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C6$ot, null);
-        Assert.assertEquals("C6", SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
-      }
+    myProject.getModelAccess().runReadAction(() -> {
+      SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C6$ot, null);
+      Assert.assertEquals("C6", SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
     });
   }
   @Test
   public void test_constructorInvocationSuper2() throws Exception {
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C7$TA, null);
-        Assert.assertEquals("c6", SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
-      }
+    myProject.getModelAccess().runReadAction(() -> {
+      SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C7$TA, null);
+      Assert.assertEquals("c6", SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
     });
   }
   @Test
@@ -475,18 +461,16 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
   }
   @Test
   public void test_conceptConstruction() throws Exception {
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SConcept node = CONCEPTS.A$TR;
-        Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(SNodeOperations.asSConcept(node), CONCEPTS.A$TR, SMethodTrimmedId.create("staticMethod", CONCEPTS.A$TR, "5mnatV0hAQH"))));
-        Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(SNodeOperations.asSConcept(CONCEPTS.A$TR), CONCEPTS.A$TR, SMethodTrimmedId.create("staticMethod", CONCEPTS.A$TR, "5mnatV0hAQH"))));
-        SNode aNode;
-        aNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
-        aNode = SNodeOperations.getNode("r:e2b20dd3-debc-4be6-b7ff-17ade77d9a0f(BHL2.structure)", "7688460527007456349");
-        SNode nodeA = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x559729dec0466d3cL, "BHL7.structure.A"));
-        SConcept conceptNodeA = SNodeOperations.getConcept(nodeA);
-        Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(SNodeOperations.asSConcept(conceptNodeA), CONCEPTS.A$TR, SMethodTrimmedId.create("staticMethod", CONCEPTS.A$TR, "5mnatV0hAQH"))));
-      }
+    myProject.getModelAccess().runReadAction(() -> {
+      SConcept node = CONCEPTS.A$TR;
+      Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(SNodeOperations.asSConcept(node), CONCEPTS.A$TR, SMethodTrimmedId.create("staticMethod", CONCEPTS.A$TR, "5mnatV0hAQH"))));
+      Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(SNodeOperations.asSConcept(CONCEPTS.A$TR), CONCEPTS.A$TR, SMethodTrimmedId.create("staticMethod", CONCEPTS.A$TR, "5mnatV0hAQH"))));
+      SNode aNode;
+      aNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+      aNode = SNodeOperations.getNode("r:e2b20dd3-debc-4be6-b7ff-17ade77d9a0f(BHL2.structure)", "7688460527007456349");
+      SNode nodeA = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x559729dec0466d3cL, "BHL7.structure.A"));
+      SConcept conceptNodeA = SNodeOperations.getConcept(nodeA);
+      Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, ((int) (Integer) BHReflection.invoke0(SNodeOperations.asSConcept(conceptNodeA), CONCEPTS.A$TR, SMethodTrimmedId.create("staticMethod", CONCEPTS.A$TR, "5mnatV0hAQH"))));
     });
   }
   @Test

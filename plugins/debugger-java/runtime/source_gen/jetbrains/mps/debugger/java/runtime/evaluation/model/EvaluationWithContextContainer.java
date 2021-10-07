@@ -133,11 +133,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
   }
   private void fillVariables(SNode evaluatorConcept) {
     try {
-      _FunctionTypes._return_P1_E0<? extends SNode, ? super String> createClassifierType = new _FunctionTypes._return_P1_E0<SNode, String>() {
-        public SNode invoke(String name) {
-          return createClassifierType(name);
-        }
-      };
+      _FunctionTypes._return_P1_E0<? extends SNode, ? super String> createClassifierType = (String name) -> createClassifierType(name);
       Map<String, VariableDescription> contextVariables = myEvaluationContext.getVariables(createClassifierType);
 
       Map<String, SNode> declaredVariables = MapSequence.fromMap(new LinkedHashMap<String, SNode>(16, (float) 0.75, false));
@@ -193,11 +189,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
       // createVars used to execute command (runWriteActionInCommand), hence I assume (a) we've got proper thread here
       // (b) there's need to run inside a command. Although it looks undoTransparent (the one that doesn't record any changes)
       // is suited much better here.
-      myDebuggerRepository.getModelAccess().executeCommand(new Runnable() {
-        public void run() {
-          createVars();
-        }
-      });
+      myDebuggerRepository.getModelAccess().executeCommand(() -> createVars());
     }
   }
   @Nullable
@@ -265,15 +257,9 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
         return newEvaluator;
       }
     };
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        myProject.getModelAccess().executeCommand(new Runnable() {
-          public void run() {
-            rv.setUpNode(null);
-          }
-        });
-        onNodeSetUp.invoke(rv);
-      }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      myProject.getModelAccess().executeCommand(() -> rv.setUpNode(null));
+      onNodeSetUp.invoke(rv);
     });
     // FIXME return value is ignored (callback is employed instead), shall change IEvaluationContainer.copy to reflect this
     return rv;

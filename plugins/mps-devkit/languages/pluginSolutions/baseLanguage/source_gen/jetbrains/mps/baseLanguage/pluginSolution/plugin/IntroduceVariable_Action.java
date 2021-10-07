@@ -8,7 +8,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.ModelComputeRunnable;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.editor.runtime.cells.ReadOnlyUtil;
@@ -43,11 +42,7 @@ public class IntroduceVariable_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    SNode nodeToRefactor = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
-      public SNode compute() {
-        return IntroduceVariable_Action.this.getNodeToRefactor(_params);
-      }
-    }).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
+    SNode nodeToRefactor = new ModelComputeRunnable<SNode>(() -> IntroduceVariable_Action.this.getNodeToRefactor(_params)).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
     if (ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("component")), Sequence.<EditorCell>singleton(((EditorComponent) MapSequence.fromMap(_params).get("component")).findNodeCell(nodeToRefactor)))) {
       return false;
     }
@@ -101,11 +96,9 @@ public class IntroduceVariable_Action extends BaseAction {
 
     final IntroduceLocalVariableRefactoring refactoring = new IntroduceLocalVariableRefactoring();
     final Wrappers._T<String> error = new Wrappers._T<String>();
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode nodeToRefactor = IntroduceVariable_Action.this.getNodeToRefactor(_params);
-        error.value = refactoring.init(nodeToRefactor, ((EditorComponent) MapSequence.fromMap(_params).get("component")));
-      }
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(() -> {
+      SNode nodeToRefactor = IntroduceVariable_Action.this.getNodeToRefactor(_params);
+      error.value = refactoring.init(nodeToRefactor, ((EditorComponent) MapSequence.fromMap(_params).get("component")));
     });
     if (error.value == null) {
       final LocalVariableIntroducer introducer = new LocalVariableIntroducer(((Frame) MapSequence.fromMap(_params).get("frame")), refactoring, ((EditorComponent) MapSequence.fromMap(_params).get("component")), ((EditorContext) MapSequence.fromMap(_params).get("editorContext")));

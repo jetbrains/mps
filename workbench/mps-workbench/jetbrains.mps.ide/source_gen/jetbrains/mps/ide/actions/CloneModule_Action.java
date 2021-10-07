@@ -87,18 +87,16 @@ public class CloneModule_Action extends BaseAction {
     String virtualFolder = project.getFolderFor(module);
     final AbstractModuleCreationDialog dialog = new CloneModuleDialog(project, virtualFolder, module);
 
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        dialog.show();
+    ApplicationManager.getApplication().invokeLater(() -> {
+      dialog.show();
 
-        SModule result = dialog.getModule();
-        if (result == null) {
-          return;
-        }
-
-        ProjectPane projectPane = ProjectPane.getInstance(project);
-        projectPane.selectModule(result, false);
+      SModule result = dialog.getModule();
+      if (result == null) {
+        return;
       }
+
+      ProjectPane projectPane = ProjectPane.getInstance(project);
+      projectPane.selectModule(result, false);
     }, ModalityState.current());
   }
   private String getErrorMessage(Map<ModelRoot, String> roots, final AnActionEvent event) {

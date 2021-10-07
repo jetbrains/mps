@@ -34,11 +34,7 @@ public class DeleteLineVerticalSingleCollection_Test extends BaseTransformationT
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6739703022154613746", "6739703022154686536");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.DeleteLine_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.DeleteLine_Action"), false);
     }
   }
 }

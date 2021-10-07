@@ -14,13 +14,13 @@ import com.intellij.ui.components.JBLabel;
 import javax.swing.ButtonGroup;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import org.jetbrains.annotations.NotNull;
 import java.awt.GridBagLayout;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.common.LayoutUtil;
 import com.intellij.ui.components.JBTextField;
+import java.awt.event.ActionListener;
 import javax.swing.Box;
 import java.util.List;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
@@ -75,45 +75,35 @@ public class JUnitConfigurationEditorComponent extends JBPanel {
   }
 
   private void addKindActionListeners(final JBRadioButton projectKind, final JBRadioButton moduleKind, final JBRadioButton modelKind, final JBRadioButton classKind, final JBRadioButton methodKind) {
-    projectKind.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        if (projectKind.isSelected()) {
-          myRunKind = JUnitRunTypes.PROJECT;
-        }
-        updatePanels();
+    projectKind.addActionListener((ActionEvent e) -> {
+      if (projectKind.isSelected()) {
+        myRunKind = JUnitRunTypes.PROJECT;
       }
+      updatePanels();
     });
-    moduleKind.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        if (moduleKind.isSelected()) {
-          myRunKind = JUnitRunTypes.MODULE;
-        }
-        updatePanels();
+    moduleKind.addActionListener((ActionEvent e) -> {
+      if (moduleKind.isSelected()) {
+        myRunKind = JUnitRunTypes.MODULE;
       }
+      updatePanels();
     });
-    modelKind.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        if (modelKind.isSelected()) {
-          myRunKind = JUnitRunTypes.MODEL;
-        }
-        updatePanels();
+    modelKind.addActionListener((ActionEvent e) -> {
+      if (modelKind.isSelected()) {
+        myRunKind = JUnitRunTypes.MODEL;
       }
+      updatePanels();
     });
-    classKind.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        if (classKind.isSelected()) {
-          myRunKind = JUnitRunTypes.NODE;
-        }
-        updatePanels();
+    classKind.addActionListener((ActionEvent e) -> {
+      if (classKind.isSelected()) {
+        myRunKind = JUnitRunTypes.NODE;
       }
+      updatePanels();
     });
-    methodKind.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        if (methodKind.isSelected()) {
-          myRunKind = JUnitRunTypes.METHOD;
-        }
-        updatePanels();
+    methodKind.addActionListener((ActionEvent e) -> {
+      if (methodKind.isSelected()) {
+        myRunKind = JUnitRunTypes.METHOD;
       }
+      updatePanels();
     });
   }
 
@@ -214,24 +204,22 @@ public class JUnitConfigurationEditorComponent extends JBPanel {
     final Wrappers._T<String> model = new Wrappers._T<String>();
     final Wrappers._T<String> module = new Wrappers._T<String>();
     if (myProject != null) {
-      myProject.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          for (ITestNodeWrapper testMethod : methods) {
-            testMethods.add(PointerUtils.pointerToString(testMethod.getNodePointer()));
-          }
+      myProject.getModelAccess().runReadAction(() -> {
+        for (ITestNodeWrapper testMethod : methods) {
+          testMethods.add(PointerUtils.pointerToString(testMethod.getNodePointer()));
+        }
 
-          for (ITestNodeWrapper testCase : classes) {
-            testCases.add(PointerUtils.pointerToString(testCase.getNodePointer()));
-          }
+        for (ITestNodeWrapper testCase : classes) {
+          testCases.add(PointerUtils.pointerToString(testCase.getNodePointer()));
+        }
 
-          SModelReference modelRef = myModelChooser.getReference();
-          if (modelRef != null) {
-            model.value = PersistenceRegistry.getInstance().asString(modelRef);
-          }
-          SModuleReference moduleRef = myModuleChooser.getReference();
-          if (moduleRef != null) {
-            module.value = moduleRef.toString();
-          }
+        SModelReference modelRef = myModelChooser.getReference();
+        if (modelRef != null) {
+          model.value = PersistenceRegistry.getInstance().asString(modelRef);
+        }
+        SModuleReference moduleRef = myModuleChooser.getReference();
+        if (moduleRef != null) {
+          module.value = moduleRef.toString();
         }
       });
 
@@ -279,14 +267,12 @@ public class JUnitConfigurationEditorComponent extends JBPanel {
   private List<ITestNodeWrapper> loadMethodsFromPersistence(final JUnitSettings_Configuration settings) {
     final List<ITestNodeWrapper> methods = ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
     if (myProject != null) {
-      myProject.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          ListSequence.fromList(TestUtils.wrapPointerStrings(myProject, settings.getTestMethods())).visitAll(new IVisitor<ITestNodeWrapper>() {
-            public void visit(ITestNodeWrapper it) {
-              ListSequence.fromList(methods).addElement(it);
-            }
-          });
-        }
+      myProject.getModelAccess().runReadAction(() -> {
+        ListSequence.fromList(TestUtils.wrapPointerStrings(myProject, settings.getTestMethods())).visitAll(new IVisitor<ITestNodeWrapper>() {
+          public void visit(ITestNodeWrapper it) {
+            ListSequence.fromList(methods).addElement(it);
+          }
+        });
       });
     }
     return methods;
@@ -295,14 +281,12 @@ public class JUnitConfigurationEditorComponent extends JBPanel {
   private List<ITestNodeWrapper> loadTestCasesFromPersistence(final JUnitSettings_Configuration settings) {
     final List<ITestNodeWrapper> classes = ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
     if (myProject != null) {
-      myProject.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          ListSequence.fromList(TestUtils.wrapPointerStrings(myProject, settings.getTestCases())).visitAll(new IVisitor<ITestNodeWrapper>() {
-            public void visit(ITestNodeWrapper it) {
-              ListSequence.fromList(classes).addElement(it);
-            }
-          });
-        }
+      myProject.getModelAccess().runReadAction(() -> {
+        ListSequence.fromList(TestUtils.wrapPointerStrings(myProject, settings.getTestCases())).visitAll(new IVisitor<ITestNodeWrapper>() {
+          public void visit(ITestNodeWrapper it) {
+            ListSequence.fromList(classes).addElement(it);
+          }
+        });
       });
     }
     return classes;

@@ -76,52 +76,48 @@ public final class CreateMatchingConstructor_Intention extends AbstractIntention
       if (ListSequence.fromList(visibleSuperConstructors).count() == 0) {
         return;
       }
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          Iterable<SNode> selectedSuperConstructors;
-          if (ListSequence.fromList(visibleSuperConstructors).count() > 1) {
-            SelectSuperConstructorsDialog dialog = new SelectSuperConstructorsDialog(ListSequence.fromList(visibleSuperConstructors).select(new ISelector<SNode, SNodeReference>() {
-              public SNodeReference select(SNode it) {
-                return SNodeOperations.getPointer(it);
-              }
-            }).toGenericArray(SNodeReference.class), ((MPSProject) (editorContext.getOperationContext().getProject())).getProject());
-            dialog.setTitle("Create constructor matching super");
-
-            dialog.show();
-
-            if (!(dialog.isOK())) {
-              return;
+      ApplicationManager.getApplication().invokeLater(() -> {
+        Iterable<SNode> selectedSuperConstructors;
+        if (ListSequence.fromList(visibleSuperConstructors).count() > 1) {
+          SelectSuperConstructorsDialog dialog = new SelectSuperConstructorsDialog(ListSequence.fromList(visibleSuperConstructors).select(new ISelector<SNode, SNodeReference>() {
+            public SNodeReference select(SNode it) {
+              return SNodeOperations.getPointer(it);
             }
-            Iterable<SNodeReference> selection = (Iterable<SNodeReference>) dialog.getSelectedElements();
-            Iterable<SNode> resolved = Sequence.fromIterable(selection).select(new ISelector<SNodeReference, SNode>() {
-              public SNode select(SNodeReference it) {
-                return SNodeOperations.as(it.resolve(editorContext.getRepository()), CONCEPTS.ConstructorDeclaration$yG);
-              }
-            });
-            selectedSuperConstructors = resolved;
-          } else {
-            selectedSuperConstructors = visibleSuperConstructors;
-          }
-          final Iterable<SNode> selectedSuperConstructorsFinal = selectedSuperConstructors;
+          }).toGenericArray(SNodeReference.class), ((MPSProject) (editorContext.getOperationContext().getProject())).getProject());
+          dialog.setTitle("Create constructor matching super");
 
-          editorContext.getRepository().getModelAccess().executeCommand(new Runnable() {
-            public void run() {
-              Sequence.fromIterable(selectedSuperConstructorsFinal).visitAll(new IVisitor<SNode>() {
-                public void visit(SNode superConstructor) {
-                  SNode currentSuperConstructorCopy = SNodeOperations.copyNode(superConstructor);
-                  SLinkOperations.setNewChild(currentSuperConstructorCopy, LINKS.body$5xQk, null);
-                  SNode superCall = SLinkOperations.addNewChild(SLinkOperations.getTarget(currentSuperConstructorCopy, LINKS.body$5xQk), LINKS.statement$53DE, CONCEPTS.SuperConstructorInvocation$wU);
-                  SLinkOperations.setTarget(superCall, LINKS.baseMethodDeclaration$pyYw, superConstructor);
-                  for (SNode param : SLinkOperations.getChildren(currentSuperConstructorCopy, LINKS.parameter$5xBj)) {
-                    SNode arg = SLinkOperations.addNewChild(superCall, LINKS.actualArgument$pzdx, CONCEPTS.VariableReference$TC);
-                    SLinkOperations.setTarget(arg, LINKS.variableDeclaration$N1XG, param);
-                  }
-                  ClassConcept__BehaviorDescriptor.addConstructor_id32Td0Ia9Mgr.invoke(thisClass, currentSuperConstructorCopy);
-                }
-              });
+          dialog.show();
+
+          if (!(dialog.isOK())) {
+            return;
+          }
+          Iterable<SNodeReference> selection = (Iterable<SNodeReference>) dialog.getSelectedElements();
+          Iterable<SNode> resolved = Sequence.fromIterable(selection).select(new ISelector<SNodeReference, SNode>() {
+            public SNode select(SNodeReference it) {
+              return SNodeOperations.as(it.resolve(editorContext.getRepository()), CONCEPTS.ConstructorDeclaration$yG);
             }
           });
+          selectedSuperConstructors = resolved;
+        } else {
+          selectedSuperConstructors = visibleSuperConstructors;
         }
+        final Iterable<SNode> selectedSuperConstructorsFinal = selectedSuperConstructors;
+
+        editorContext.getRepository().getModelAccess().executeCommand(() -> {
+          Sequence.fromIterable(selectedSuperConstructorsFinal).visitAll(new IVisitor<SNode>() {
+            public void visit(SNode superConstructor) {
+              SNode currentSuperConstructorCopy = SNodeOperations.copyNode(superConstructor);
+              SLinkOperations.setNewChild(currentSuperConstructorCopy, LINKS.body$5xQk, null);
+              SNode superCall = SLinkOperations.addNewChild(SLinkOperations.getTarget(currentSuperConstructorCopy, LINKS.body$5xQk), LINKS.statement$53DE, CONCEPTS.SuperConstructorInvocation$wU);
+              SLinkOperations.setTarget(superCall, LINKS.baseMethodDeclaration$pyYw, superConstructor);
+              for (SNode param : SLinkOperations.getChildren(currentSuperConstructorCopy, LINKS.parameter$5xBj)) {
+                SNode arg = SLinkOperations.addNewChild(superCall, LINKS.actualArgument$pzdx, CONCEPTS.VariableReference$TC);
+                SLinkOperations.setTarget(arg, LINKS.variableDeclaration$N1XG, param);
+              }
+              ClassConcept__BehaviorDescriptor.addConstructor_id32Td0Ia9Mgr.invoke(thisClass, currentSuperConstructorCopy);
+            }
+          });
+        });
       });
 
     }

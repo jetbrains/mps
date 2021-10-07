@@ -17,7 +17,6 @@ import javax.swing.JComponent;
 import jetbrains.mps.workbench.dialogs.project.components.parts.renderers.PathRenderer;
 import javax.swing.ListSelectionModel;
 import com.intellij.ui.TreeUIHelper;
-import com.intellij.util.containers.Convertor;
 import java.util.Comparator;
 import com.intellij.openapi.vfs.VirtualFile;
 import java.util.function.Consumer;
@@ -44,7 +43,6 @@ import javax.swing.JPanel;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.function.Predicate;
 import javax.swing.AbstractListModel;
 import org.jetbrains.annotations.Nullable;
 
@@ -82,11 +80,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
     myModulesList.setEmptyText("No modules");
     myModulesList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-    TreeUIHelper.getInstance().installListSpeedSearch(myModulesList, new Convertor<ModulePath, String>() {
-      public String convert(ModulePath modulePath) {
-        return modulePath.getPath();
-      }
-    });
+    TreeUIHelper.getInstance().installListSpeedSearch(myModulesList, (ModulePath modulePath) -> modulePath.getPath());
 
     final Comparator<VirtualFile> vfPathComparator = new Comparator<VirtualFile>() {
       @Override
@@ -126,11 +120,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
 
         final int[] indices = new int[modulePathsToSelect.size()];
         final Wrappers._int counter = new Wrappers._int(0);
-        modulePathsToSelect.forEach(new Consumer<Integer>() {
-          public void accept(Integer index) {
-            indices[counter.value++] = index;
-          }
-        });
+        modulePathsToSelect.forEach((Integer index) -> indices[counter.value++] = index);
         myModulesList.setSelectedIndices(indices);
       }
     };
@@ -228,11 +218,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
 
   @Override
   public boolean isModified() {
-    return !(myProperties.isSame(myProject.getProjectDescriptor())) || myExtraPanels.stream().anyMatch(new Predicate<ProjectPrefsExtraPanel>() {
-      public boolean test(ProjectPrefsExtraPanel extraPanel) {
-        return extraPanel.isModified();
-      }
-    });
+    return !(myProperties.isSame(myProject.getProjectDescriptor())) || myExtraPanels.stream().anyMatch((ProjectPrefsExtraPanel extraPanel) -> extraPanel.isModified());
   }
 
   @Override

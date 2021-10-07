@@ -21,14 +21,12 @@ public class MethodReferences_Test {
   public void test_testReturnContext() throws Exception {
     Assert.assertEquals(returnContext().invoke(3), "3");
 
-    SelectorProvider provider = new SelectorProvider() {
-      public ISelector<Integer, String> get() {
-        return new ISelector<Integer, String>() {
-          public String select(Integer obj) {
-            return String.valueOf(obj);
-          }
-        };
-      }
+    SelectorProvider provider = () -> {
+      return new ISelector<Integer, String>() {
+        public String select(Integer obj) {
+          return String.valueOf(obj);
+        }
+      };
     };
     Assert.assertEquals(provider.get().invoke(4), "4");
 

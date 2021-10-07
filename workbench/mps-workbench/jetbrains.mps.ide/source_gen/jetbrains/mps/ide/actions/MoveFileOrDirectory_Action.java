@@ -84,22 +84,16 @@ public class MoveFileOrDirectory_Action extends BaseAction {
     final String result = dialog.getResult();
 
     ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-    modelAccess.executeCommand(new Runnable() {
-      public void run() {
-        try {
-          if (MoveFileOrDirectory_Action.this.isNotValid(result, _params)) {
-            return;
-          }
-          VirtualFile virtualFile = LocalFileSystem.getInstance().findFileByPath(result);
-          ((VirtualFile) MapSequence.fromMap(_params).get("selectedFile")).move(null, virtualFile);
-          ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).refresh();
-          ApplicationManager.getApplication().invokeLater(new Runnable() {
-            public void run() {
-              ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).getProjectViewPaneById(FileViewProjectPane.ID).select(null, ((VirtualFile) MapSequence.fromMap(_params).get("selectedFile")), true);
-            }
-          });
-        } catch (IOException e) {
+    modelAccess.executeCommand(() -> {
+      try {
+        if (MoveFileOrDirectory_Action.this.isNotValid(result, _params)) {
+          return;
         }
+        VirtualFile virtualFile = LocalFileSystem.getInstance().findFileByPath(result);
+        ((VirtualFile) MapSequence.fromMap(_params).get("selectedFile")).move(null, virtualFile);
+        ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).refresh();
+        ApplicationManager.getApplication().invokeLater(() -> ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).getProjectViewPaneById(FileViewProjectPane.ID).select(null, ((VirtualFile) MapSequence.fromMap(_params).get("selectedFile")), true));
+      } catch (IOException e) {
       }
     });
   }

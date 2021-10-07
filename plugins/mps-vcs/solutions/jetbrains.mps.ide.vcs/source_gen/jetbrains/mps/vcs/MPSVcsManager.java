@@ -93,11 +93,7 @@ public class MPSVcsManager implements ProjectComponent {
     final MergeDriverNotification mergeDriverNotification = MergeDriverNotification.getInstance(myProject);
     mergeDriverNotification.showNotificationIfNeeded();
     myMessageBusConnection = myProject.getMessageBus().connect();
-    VcsListener vcsListener = new VcsListener() {
-      public void directoryMappingChanged() {
-        mergeDriverNotification.showNotificationIfNeeded();
-      }
-    };
+    VcsListener vcsListener = () -> mergeDriverNotification.showNotificationIfNeeded();
     myMessageBusConnection.subscribe(ProjectLevelVcsManager.VCS_CONFIGURATION_CHANGED, vcsListener);
     FileStatusManager.getInstance(myProject).addFileStatusListener(myFileStatusListener);
   }

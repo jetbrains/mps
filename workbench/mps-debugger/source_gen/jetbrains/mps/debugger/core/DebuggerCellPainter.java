@@ -81,11 +81,9 @@ public abstract class DebuggerCellPainter<E> extends AbstractAdditionalPainter<E
   private void setComponentParameters(final EditorComponent editorComponent) {
     final SRepository repository = editorComponent.getEditorContext().getRepository();
     ModelAccess ma = repository.getModelAccess();
-    ma.runReadAction(new Runnable() {
-      public void run() {
-        SNode node = (getSNode() == null ? null : getSNode().resolve(repository));
-        MapSequence.fromMap(myCells).put(editorComponent, (node == null ? null : editorComponent.getBigValidCellForNode(node)));
-      }
+    ma.runReadAction(() -> {
+      SNode node = (getSNode() == null ? null : getSNode().resolve(repository));
+      MapSequence.fromMap(myCells).put(editorComponent, (node == null ? null : editorComponent.getBigValidCellForNode(node)));
     });
   }
   private void resetComponentParameters(EditorComponent editorComponent) {

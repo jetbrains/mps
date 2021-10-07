@@ -7,7 +7,6 @@ import jetbrains.jetpad.geometry.Rectangle;
 import jetbrains.jetpad.model.property.ValueProperty;
 import jetbrains.jetpad.mapper.Mapper;
 import jetbrains.jetpad.mapper.Synchronizers;
-import jetbrains.jetpad.model.property.WritableProperty;
 import jetbrains.jetpad.mapper.MapperFactory;
 import jetbrains.jetpad.projectional.view.GroupView;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.property.DependentProperty;
@@ -29,11 +28,7 @@ public abstract class RectDecoratorView extends AbstractDecoratorView {
       @Override
       protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
         super.registerSynchronizers(configuration);
-        configuration.add(Synchronizers.forProperty(bounds, new WritableProperty<Rectangle>() {
-          public void set(Rectangle newBounds) {
-            myInternalsBounds.set(new Rectangle(newBounds.origin.x, newBounds.origin.y, newBounds.dimension.x - 1, newBounds.dimension.y - 1));
-          }
-        }));
+        configuration.add(Synchronizers.forProperty(bounds, (Rectangle newBounds) -> myInternalsBounds.set(new Rectangle(newBounds.origin.x, newBounds.origin.y, newBounds.dimension.x - 1, newBounds.dimension.y - 1))));
         configuration.add(Synchronizers.forObservableRole(this, selectionDecorator, childSubList(), createSelectionDecoratorMapperFactory()));
         configuration.add(Synchronizers.forObservableRole(this, errorDecorator, childSubList(), createErrorDecoratorMapperFactory()));
       }
@@ -47,22 +42,20 @@ public abstract class RectDecoratorView extends AbstractDecoratorView {
           protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
             super.registerSynchronizers(configuration);
             configuration.add(Synchronizers.forProperty(new DependentProperty<Rectangle>(myInternalsBounds, boundsDelta), getTarget().internalsBounds));
-            configuration.add(Synchronizers.forProperty(getTarget().boundsDelta, new WritableProperty<Rectangle>() {
-              public void set(Rectangle internalsBoundsDelta) {
-                if (internalsBoundsDelta == null) {
-                  return;
-                }
-                Rectangle oldBounds = bounds.get();
-                Rectangle newBounds = new Rectangle(oldBounds.origin.add(internalsBoundsDelta.origin), oldBounds.dimension.add(internalsBoundsDelta.dimension));
-                Vector min = null;
-                Vector max = null;
-                for (Vector nextPoint : newBounds.getBoundPoints()) {
-                  min = (min == null ? nextPoint : min.min(nextPoint));
-                  max = (max == null ? nextPoint : max.max(nextPoint));
-                }
-                newBounds = new Rectangle(min, max.sub(min));
-                boundsDelta.set(new Rectangle(newBounds.origin.sub(oldBounds.origin), newBounds.dimension.sub(oldBounds.dimension)));
+            configuration.add(Synchronizers.forProperty(getTarget().boundsDelta, (Rectangle internalsBoundsDelta) -> {
+              if (internalsBoundsDelta == null) {
+                return;
               }
+              Rectangle oldBounds = bounds.get();
+              Rectangle newBounds = new Rectangle(oldBounds.origin.add(internalsBoundsDelta.origin), oldBounds.dimension.add(internalsBoundsDelta.dimension));
+              Vector min = null;
+              Vector max = null;
+              for (Vector nextPoint : newBounds.getBoundPoints()) {
+                min = (min == null ? nextPoint : min.min(nextPoint));
+                max = (max == null ? nextPoint : max.max(nextPoint));
+              }
+              newBounds = new Rectangle(min, max.sub(min));
+              boundsDelta.set(new Rectangle(newBounds.origin.sub(oldBounds.origin), newBounds.dimension.sub(oldBounds.dimension)));
             }));
             configuration.add(Synchronizers.forProperty(resizable, getTarget().resizable));
             configuration.add(Synchronizers.forProperty(Properties.ifProp(hasError, AbstractExternalFrameView.getHalfWidth(ERROR_FRAME_WIDTH), AbstractExternalFrameView.getHalfWidth(getTarget().selectionLineWidth.get())), getTarget().frameWidth));

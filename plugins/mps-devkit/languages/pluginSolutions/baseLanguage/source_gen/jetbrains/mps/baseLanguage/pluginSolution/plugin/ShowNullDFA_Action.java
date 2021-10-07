@@ -55,11 +55,9 @@ public class ShowNullDFA_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<AnalyzerRunner<Map<SNode, NullableState>>> runner = new Wrappers._T<AnalyzerRunner<Map<SNode, NullableState>>>();
     final Wrappers._T<ControlFlowGraph<InstructionWrapper>> graph = new Wrappers._T<ControlFlowGraph<InstructionWrapper>>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        runner.value = new NullableAnalyzerRunner(event.getData(MPSCommonDataKeys.NODE));
-        graph.value = new ControlFlowGraph<InstructionWrapper>(new ProgramWrapper(runner.value.getProgramCopy()), new GraphCreator());
-      }
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> {
+      runner.value = new NullableAnalyzerRunner(event.getData(MPSCommonDataKeys.NODE));
+      graph.value = new ControlFlowGraph<InstructionWrapper>(new ProgramWrapper(runner.value.getProgramCopy()), new GraphCreator());
     });
     new ShowCFGDialog(graph.value, event.getData(MPSCommonDataKeys.MPS_PROJECT), "Nullable DFA").show();
   }

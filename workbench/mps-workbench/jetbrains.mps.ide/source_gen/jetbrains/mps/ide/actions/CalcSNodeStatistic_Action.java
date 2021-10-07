@@ -65,42 +65,40 @@ public class CalcSNodeStatistic_Action extends BaseAction {
       @Override
       public void run(@NotNull ProgressIndicator indicator) {
         final ProgressMonitorAdapter progress = new ProgressMonitorAdapter(indicator);
-        ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            Iterable<? extends SModule> modules = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModulesWithGenerators();
-            if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("Modules: " + Sequence.fromIterable(modules).count());
-            }
-            Iterable<SModel> models = Sequence.fromIterable(modules).translate(new ITranslator2<SModule, SModel>() {
-              public Iterable<SModel> translate(SModule it) {
-                return it.getModels();
-              }
-            });
-            if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("Models: " + Sequence.fromIterable(models).count());
-            }
-
-            progress.start("Traversing models...", Sequence.fromIterable(models).count());
-            for (SModel m : Sequence.fromIterable(models)) {
-              progress.step(m.getModelName());
-              for (SNode node : Sequence.fromIterable(SNodeUtil.getDescendants(m))) {
-                int propertiesCount = IterableUtil.asCollection(node.getProperties()).size();
-                MapSequence.fromMap(propertiesStatistic).put(propertiesCount, (MapSequence.fromMap(propertiesStatistic).containsKey(propertiesCount) ? MapSequence.fromMap(propertiesStatistic).get(propertiesCount) + 1 : 1));
-
-                int refsCount = IterableUtil.asCollection(node.getReferences()).size();
-                MapSequence.fromMap(refsStatistic).put(refsCount, (MapSequence.fromMap(refsStatistic).containsKey(refsCount) ? MapSequence.fromMap(refsStatistic).get(refsCount) + 1 : 1));
-
-                int childrenCount = IterableUtil.asCollection(node.getChildren()).size();
-                MapSequence.fromMap(childrenStatistic).put(childrenCount, (MapSequence.fromMap(childrenStatistic).containsKey(childrenCount) ? MapSequence.fromMap(childrenStatistic).get(childrenCount) + 1 : 1));
-
-                if (propertiesCount + refsCount + childrenCount == 0) {
-                  zeros.value++;
-                }
-              }
-              progress.advance(1);
-            }
-            progress.done();
+        ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(() -> {
+          Iterable<? extends SModule> modules = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModulesWithGenerators();
+          if (LOG.isEnabledFor(Level.WARN)) {
+            LOG.warn("Modules: " + Sequence.fromIterable(modules).count());
           }
+          Iterable<SModel> models = Sequence.fromIterable(modules).translate(new ITranslator2<SModule, SModel>() {
+            public Iterable<SModel> translate(SModule it) {
+              return it.getModels();
+            }
+          });
+          if (LOG.isEnabledFor(Level.WARN)) {
+            LOG.warn("Models: " + Sequence.fromIterable(models).count());
+          }
+
+          progress.start("Traversing models...", Sequence.fromIterable(models).count());
+          for (SModel m : Sequence.fromIterable(models)) {
+            progress.step(m.getModelName());
+            for (SNode node : Sequence.fromIterable(SNodeUtil.getDescendants(m))) {
+              int propertiesCount = IterableUtil.asCollection(node.getProperties()).size();
+              MapSequence.fromMap(propertiesStatistic).put(propertiesCount, (MapSequence.fromMap(propertiesStatistic).containsKey(propertiesCount) ? MapSequence.fromMap(propertiesStatistic).get(propertiesCount) + 1 : 1));
+
+              int refsCount = IterableUtil.asCollection(node.getReferences()).size();
+              MapSequence.fromMap(refsStatistic).put(refsCount, (MapSequence.fromMap(refsStatistic).containsKey(refsCount) ? MapSequence.fromMap(refsStatistic).get(refsCount) + 1 : 1));
+
+              int childrenCount = IterableUtil.asCollection(node.getChildren()).size();
+              MapSequence.fromMap(childrenStatistic).put(childrenCount, (MapSequence.fromMap(childrenStatistic).containsKey(childrenCount) ? MapSequence.fromMap(childrenStatistic).get(childrenCount) + 1 : 1));
+
+              if (propertiesCount + refsCount + childrenCount == 0) {
+                zeros.value++;
+              }
+            }
+            progress.advance(1);
+          }
+          progress.done();
         });
       }
     });

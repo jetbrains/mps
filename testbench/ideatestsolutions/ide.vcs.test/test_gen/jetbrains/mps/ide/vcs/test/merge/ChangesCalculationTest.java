@@ -9,7 +9,6 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import org.junit.Before;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.persistence.PersistenceUtil;
@@ -86,12 +85,10 @@ public class ChangesCalculationTest extends ChangesTestBase {
   @Before
   public void prepareTestModel() {
     final SRepository repo = ourProject.getRepository();
-    myTestModel = new ModelAccessHelper(repo).runReadAction(new Computable<SModel>() {
-      public SModel compute() {
-        SModel testModel = SPointerOperations.resolveModel(PersistenceFacade.getInstance().createModelReference("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)"), repo);
-        // make an identical clone of original model, and keep it detached from a repository to avoid model access control
-        return PersistenceUtil.detachedCopyThroughPersistence(testModel, ourProject.getComponent(ModelFactoryService.class));
-      }
+    myTestModel = new ModelAccessHelper(repo).runReadAction(() -> {
+      SModel testModel = SPointerOperations.resolveModel(PersistenceFacade.getInstance().createModelReference("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)"), repo);
+      // make an identical clone of original model, and keep it detached from a repository to avoid model access control
+      return PersistenceUtil.detachedCopyThroughPersistence(testModel, ourProject.getComponent(ModelFactoryService.class));
     });
     myReferenceModel = PersistenceUtil.detachedCopyThroughPersistence(myTestModel, ourProject.getComponent(ModelFactoryService.class));
     myRootNode = ListSequence.fromList(SModelOperations.roots(myTestModel, CONCEPTS.ClassConcept$bK)).first();
@@ -101,11 +98,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
   }
 
   private void testRemoveRoot(boolean trackMovedNodes) {
-    testDiffCorrectness(new Runnable() {
-      public void run() {
-        SNodeOperations.deleteNode(myRootNode);
-      }
-    }, trackMovedNodes, new DeleteRootChange(createFakeChangeSet(), myRootNodeId));
+    testDiffCorrectness(() -> SNodeOperations.deleteNode(myRootNode), trackMovedNodes, new DeleteRootChange(createFakeChangeSet(), myRootNodeId));
   }
 
   @Test
@@ -120,13 +113,11 @@ public class ChangesCalculationTest extends ChangesTestBase {
 
   private void testAddRoot(boolean trackMovedNodes) {
     final SNodeId id = new jetbrains.mps.smodel.SNodeId.Regular(1);
-    testDiffCorrectness(new Runnable() {
-      public void run() {
-        SNode newRoot = createClassConcept_7w1430_a0a0a0b0o();
-        ((jetbrains.mps.smodel.SNode) newRoot).setId(id);
-        SModelOperations.addRootNode(myTestModel, newRoot);
-        assert newRoot.getNodeId().equals(id) : "this can't happen in universe's lifetime";
-      }
+    testDiffCorrectness(() -> {
+      SNode newRoot = createClassConcept_7w1430_a0a0a0b0o();
+      ((jetbrains.mps.smodel.SNode) newRoot).setId(id);
+      SModelOperations.addRootNode(myTestModel, newRoot);
+      assert newRoot.getNodeId().equals(id) : "this can't happen in universe's lifetime";
     }, trackMovedNodes, new AddRootChange(createFakeChangeSet(), id));
   }
 
@@ -141,11 +132,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
   }
 
   private void testPropertyChange(boolean trackMovedNodes) {
-    testDiffCorrectness(new Runnable() {
-      public void run() {
-        SPropertyOperations.assign(myRootNode, PROPS.name$MnvL, "RenamedRoot");
-      }
-    }, trackMovedNodes, new SetPropertyChange(createFakeChangeSet(), myRootNodeId, PROPS.name$MnvL, "RenamedRoot"));
+    testDiffCorrectness(() -> SPropertyOperations.assign(myRootNode, PROPS.name$MnvL, "RenamedRoot"), trackMovedNodes, new SetPropertyChange(createFakeChangeSet(), myRootNodeId, PROPS.name$MnvL, "RenamedRoot"));
   }
 
   @Test
@@ -166,11 +153,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
       }
     }).first();
     change = new SetReferenceChange(createFakeChangeSet(), SLinkOperations.getTarget(method1, LINKS.returnType$5xoi).getNodeId(), LINKS.classifier$cxMr, myTestModel.getReference(), myRootNodeId, "Root");
-    testDiffCorrectness(new Runnable() {
-      public void run() {
-        SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(method1, LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, myRootNode);
-      }
-    }, trackMovedNodes, change);
+    testDiffCorrectness(() -> SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(method1, LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, myRootNode), trackMovedNodes, change);
   }
 
   @Test
@@ -197,12 +180,10 @@ public class ChangesCalculationTest extends ChangesTestBase {
       }
     }), CONCEPTS.ReturnStatement$lt);
     final SNode oldNull = SNodeOperations.cast(ListSequence.fromList(SNodeOperations.getChildren(oldReturnStmt)).first(), CONCEPTS.NullLiteral$QQ);
-    testDiffCorrectness(new Runnable() {
-      public void run() {
-        newReturnStmt.insertChildBefore(LINKS.expression$eJ92, newNull, null);
-        SNodeOperations.deleteNode(oldReturnStmt);
-        method1Body.insertChildBefore(LINKS.statement$53DE, newReturnStmt, null);
-      }
+    testDiffCorrectness(() -> {
+      newReturnStmt.insertChildBefore(LINKS.expression$eJ92, newNull, null);
+      SNodeOperations.deleteNode(oldReturnStmt);
+      method1Body.insertChildBefore(LINKS.statement$53DE, newReturnStmt, null);
     }, trackMovedNodes, new NodeIdChange(createFakeChangeSet(), method1Body.getNodeId(), method1Body.getNodeId(), LINKS.statement$53DE, oldReturnStmt.getNodeId(), newReturnStmt.getNodeId()), new NodeIdChange(createFakeChangeSet(), oldReturnStmt.getNodeId(), newReturnStmt.getNodeId(), LINKS.expression$eJ92, oldNull.getNodeId(), newNull.getNodeId()));
   }
 
@@ -229,11 +210,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
   public void addChildTrackMovedNodes() {
     final SNode superClass = _quotation_createNode_7w1430_a0a0ob();
     ChangeSet changeSet = createFakeChangeSet();
-    ourProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SLinkOperations.setTarget(myRootNode, LINKS.superclass$Mp9$, superClass);
-      }
-    });
+    ourProject.getModelAccess().runReadAction(() -> SLinkOperations.setTarget(myRootNode, LINKS.superclass$Mp9$, superClass));
     List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSet(myReferenceModel, myTestModel, false, true).getModelChanges();
     ModelChange[] expectedChanges = {new NodeGroupNotMoveChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), null, myRootNode.getNodeId(), LINKS.superclass$Mp9$, ChangeType.DELETE), new ModifiedNodesGroup(changeSet.getNewModel(), Arrays.asList(new ModifiedNode(superClass.getNodeId(), changeSet.getNewModel(), ChangeType.ADD, true)), null))};
     testDiffCorrectness(realChanges, expectedChanges);
@@ -260,11 +237,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
   }
 
   private void addNodeAttribute(boolean trackMovedNodes) {
-    testDiffCorrectness(new Runnable() {
-      public void run() {
-        new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).setNew(myRootNode);
-      }
-    }, trackMovedNodes, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.smodelAttribute$KJ43, 0, 0, 0, 1));
+    testDiffCorrectness(() -> new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).setNew(myRootNode), trackMovedNodes, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.smodelAttribute$KJ43, 0, 0, 0, 1));
   }
 
   @Test
@@ -278,11 +251,9 @@ public class ChangesCalculationTest extends ChangesTestBase {
   }
 
   private void addChildAttribute(boolean trackMovedNodes) {
-    testDiffCorrectness(new Runnable() {
-      public void run() {
-        ChangesTestUtil.addCommentedMethod(myRootNode, ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).last());
+    testDiffCorrectness(() -> {
+      ChangesTestUtil.addCommentedMethod(myRootNode, ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).last());
 
-      }
     }, trackMovedNodes, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.member$L_2d, 3, 3, 3, 4));
   }
 
@@ -298,21 +269,13 @@ public class ChangesCalculationTest extends ChangesTestBase {
 
   @Test
   public void addChildAttributeAndCheckItIsAboutRole() {
-    List<ModelChange> changes = applyAndDiff(new Runnable() {
-      public void run() {
-        ChangesTestUtil.addCommentedMethod(myRootNode, ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).last());
-      }
-    }, false);
+    List<ModelChange> changes = applyAndDiff(() -> ChangesTestUtil.addCommentedMethod(myRootNode, ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).last()), false);
     Assert.assertTrue(ListSequence.fromList(changes).count() == 1 && ListSequence.fromList(changes).first() instanceof NodeGroupChange && ((NodeGroupChange) ListSequence.fromList(changes).first()).isAbout(LINKS.member$L_2d));
   }
 
   @Test
   public void addChildAttributeAndCheckItIsAboutRoleTrackMovedNodes() {
-    List<ModelChange> changes = applyAndDiff(new Runnable() {
-      public void run() {
-        ChangesTestUtil.addCommentedMethod(myRootNode, ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).last());
-      }
-    }, true);
+    List<ModelChange> changes = applyAndDiff(() -> ChangesTestUtil.addCommentedMethod(myRootNode, ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).last()), true);
     Assert.assertTrue(ListSequence.fromList(changes).count() == 1 && ListSequence.fromList(changes).first() instanceof NodeGroupNotMoveChange && ((NodeGroupNotMoveChange) ListSequence.fromList(changes).first()).isAbout(LINKS.member$L_2d));
   }
 
@@ -323,11 +286,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
         return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
       }
     }).first();
-    testDiffCorrectness(new Runnable() {
-      public void run() {
-        SNodeOperations.deleteNode(method1);
-      }
-    }, false, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.member$L_2d, 0, 1, 0, 0));
+    testDiffCorrectness(() -> SNodeOperations.deleteNode(method1), false, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.member$L_2d, 0, 1, 0, 0));
   }
 
   @Test
@@ -340,11 +299,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
     SNodeId nextNodeId = check_7w1430_a0b0oc(method1.getNextSibling());
     SNodeId parentId = check_7w1430_a0c0oc(method1.getParent());
     ChangeSet changeSet = createFakeChangeSet();
-    ourProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNodeOperations.deleteNode(method1);
-      }
-    });
+    ourProject.getModelAccess().runReadAction(() -> SNodeOperations.deleteNode(method1));
     List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSet(myReferenceModel, myTestModel, false, true).getModelChanges();
     testDiffCorrectness(realChanges, new NodeGroupNotMoveChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(method1.getNodeId(), changeSet.getOldModel(), ChangeType.DELETE, false)), nextNodeId), new ModifiedNodesGroup(changeSet.getNewModel(), nextNodeId, parentId, LINKS.member$L_2d, ChangeType.ADD)));
   }
@@ -355,11 +310,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
         return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "commented");
       }
     }).first();
-    testDiffCorrectness(new Runnable() {
-      public void run() {
-        SNodeOperations.deleteNode(SNodeOperations.cast(SNodeOperations.getParent(commented), CONCEPTS.BaseCommentAttribute$nv));
-      }
-    }, trackMovedNodes, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.member$L_2d, 1, 2, 1, 1));
+    testDiffCorrectness(() -> SNodeOperations.deleteNode(SNodeOperations.cast(SNodeOperations.getParent(commented), CONCEPTS.BaseCommentAttribute$nv)), trackMovedNodes, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.member$L_2d, 1, 2, 1, 1));
   }
 
   @Test
@@ -378,11 +329,9 @@ public class ChangesCalculationTest extends ChangesTestBase {
         return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
       }
     }).first();
-    testDiffCorrectness(new Runnable() {
-      public void run() {
-        SNodeOperations.deleteNode(method1);
-        ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).insertElement(0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember")));
-      }
+    testDiffCorrectness(() -> {
+      SNodeOperations.deleteNode(method1);
+      ListSequence.fromList(SLinkOperations.getChildren(myRootNode, LINKS.member$L_2d)).insertElement(0, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1458378889e6d166L, "jetbrains.mps.baseLanguage.structure.PlaceholderMember")));
     }, trackMovedNodes, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.member$L_2d, 0, 1, 0, 1));
   }
 
@@ -403,11 +352,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
         return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), "method1");
       }
     }).first();
-    testDiffCorrectness(new Runnable() {
-      public void run() {
-        CommentUtil.commentOut(method1);
-      }
-    }, false, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.member$L_2d, 0, 1, 0, 1));
+    testDiffCorrectness(() -> CommentUtil.commentOut(method1), false, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.member$L_2d, 0, 1, 0, 1));
   }
 
   @Test
@@ -420,11 +365,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
     });
 
     final Wrappers._T<SNode> commentNode = new Wrappers._T<SNode>();
-    ourProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        commentNode.value = CommentUtil.commentOut(commentedNode);
-      }
-    });
+    ourProject.getModelAccess().runReadAction(() -> commentNode.value = CommentUtil.commentOut(commentedNode));
     List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSet(myReferenceModel, myTestModel, false, true).getModelChanges();
 
     ChangeSet changeSet = createFakeChangeSet();
@@ -442,11 +383,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
 
   @Test
   public void uncommentChild() {
-    testDiffCorrectness(new Runnable() {
-      public void run() {
-        ChangesTestUtil.uncommentFirstCommentedMethod(myRootNode);
-      }
-    }, false, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.member$L_2d, 1, 2, 1, 2));
+    testDiffCorrectness(() -> ChangesTestUtil.uncommentFirstCommentedMethod(myRootNode), false, new NodeGroupChange(createFakeChangeSet(), myRootNodeId, myRootNodeId, LINKS.member$L_2d, 1, 2, 1, 2));
   }
 
   @Test
@@ -454,11 +391,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
 
     final Wrappers._T<SNode> uncommentedNode = new Wrappers._T<SNode>();
     final SNode commentNodeToDelete = ListSequence.fromList(new IAttributeDescriptor.ChildAttribute(CONCEPTS.BaseCommentAttribute$nv, LINKS.member$L_2d).list(myRootNode)).first();
-    ourProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        uncommentedNode.value = CommentUtil.uncomment(commentNodeToDelete);
-      }
-    });
+    ourProject.getModelAccess().runReadAction(() -> uncommentedNode.value = CommentUtil.uncomment(commentNodeToDelete));
 
     List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSet(myReferenceModel, myTestModel, false, true).getModelChanges();
 

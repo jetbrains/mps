@@ -41,32 +41,30 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
   }
 
   protected void executeInUpdateMode(final Runnable runnable) {
-    myModelAccess.runWriteAction(new Runnable() {
-      public void run() {
-        final List<UpdateModeSupport> modelsInUpdateMode = ListSequence.fromList(new ArrayList<UpdateModeSupport>());
-        try {
-          // here we assume that runnable changes a lot of models, so we enter update mode for all of them
-          Sequence.fromIterable(myModels).visitAll(new IVisitor<SModel>() {
-            public void visit(SModel model) {
-              SModelData modelData = ((SModelBase) model).getModelData();
-              if (modelData instanceof UpdateModeSupport) {
-                ((UpdateModeSupport) modelData).enterUpdateMode();
-                ListSequence.fromList(modelsInUpdateMode).addElement((UpdateModeSupport) modelData);
-              } else {
-                // ignoring the model
-                myMessageHandler.handle(new Message(MessageKind.ERROR, String.format("model %s doesn't support update mode which java import relies on", SModelOperations.getModelName(model))));
-              }
+    myModelAccess.runWriteAction(() -> {
+      final List<UpdateModeSupport> modelsInUpdateMode = ListSequence.fromList(new ArrayList<UpdateModeSupport>());
+      try {
+        // here we assume that runnable changes a lot of models, so we enter update mode for all of them
+        Sequence.fromIterable(myModels).visitAll(new IVisitor<SModel>() {
+          public void visit(SModel model) {
+            SModelData modelData = ((SModelBase) model).getModelData();
+            if (modelData instanceof UpdateModeSupport) {
+              ((UpdateModeSupport) modelData).enterUpdateMode();
+              ListSequence.fromList(modelsInUpdateMode).addElement((UpdateModeSupport) modelData);
+            } else {
+              // ignoring the model
+              myMessageHandler.handle(new Message(MessageKind.ERROR, String.format("model %s doesn't support update mode which java import relies on", SModelOperations.getModelName(model))));
             }
-          });
+          }
+        });
 
-          runnable.run();
-        } finally {
-          ListSequence.fromList(modelsInUpdateMode).visitAll(new IVisitor<UpdateModeSupport>() {
-            public void visit(UpdateModeSupport it) {
-              it.leaveUpdateMode();
-            }
-          });
-        }
+        runnable.run();
+      } finally {
+        ListSequence.fromList(modelsInUpdateMode).visitAll(new IVisitor<UpdateModeSupport>() {
+          public void visit(UpdateModeSupport it) {
+            it.leaveUpdateMode();
+          }
+        });
       }
     });
   }

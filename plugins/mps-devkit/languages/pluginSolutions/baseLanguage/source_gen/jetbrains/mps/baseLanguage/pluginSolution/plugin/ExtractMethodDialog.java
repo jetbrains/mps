@@ -36,7 +36,6 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.EmptyBorder;
 import java.util.Set;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.util.InstanceOfCondition;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -88,11 +87,9 @@ public class ExtractMethodDialog extends RefactoringDialog {
     myParameters = params;
     myRefactoring = refactoring;
     myExtractIntoOuterContainer = this.myParameters.getAnalyzer().shouldChooseOuterContainer();
-    myContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        myAnalyzeErrors = ExtractMethodFactory.getErrors(ExtractMethodDialog.this.myParameters.getNodesToRefactor());
-        init();
-      }
+    myContext.getRepository().getModelAccess().runReadAction(() -> {
+      myAnalyzeErrors = ExtractMethodFactory.getErrors(ExtractMethodDialog.this.myParameters.getNodesToRefactor());
+      init();
     });
     this.update();
   }
@@ -103,12 +100,10 @@ public class ExtractMethodDialog extends RefactoringDialog {
     return "refactoring.extractMethod1";
   }
   private void update() {
-    myContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ExtractMethodDialog.this.myErrors = ExtractMethodDialog.this.getMessagesText();
-        ExtractMethodDialog.this.myMessagesArea.setText(ExtractMethodDialog.this.myErrors);
-        ExtractMethodDialog.this.myPreviewArea.setText(ExtractMethodDialog.this.myParameters.getMethodText());
-      }
+    myContext.getRepository().getModelAccess().runReadAction(() -> {
+      ExtractMethodDialog.this.myErrors = ExtractMethodDialog.this.getMessagesText();
+      ExtractMethodDialog.this.myMessagesArea.setText(ExtractMethodDialog.this.myErrors);
+      ExtractMethodDialog.this.myPreviewArea.setText(ExtractMethodDialog.this.myParameters.getMethodText());
     });
     this.repaint();
   }
@@ -302,28 +297,18 @@ public class ExtractMethodDialog extends RefactoringDialog {
     return new CompoundBorder(new TitledBorder(title), new EmptyBorder(5, 5, 5, 5));
   }
   private void setStaticContainer() {
-    myContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ExtractMethodDialog.this.myRefactoring.setStaticContainer(ExtractMethodDialog.this.myStaticTarget);
-      }
-    });
+    myContext.getRepository().getModelAccess().runReadAction(() -> ExtractMethodDialog.this.myRefactoring.setStaticContainer(ExtractMethodDialog.this.myStaticTarget));
   }
   public void chooseStaticContainer() {
-    Set<SModel> models = new ModelAccessHelper(myContext.getRepository()).runReadAction(new Computable<Set<SModel>>() {
-      public Set<SModel> compute() {
-        myRefactoringModel = SNodeOperations.getModel(ListSequence.fromList(ExtractMethodDialog.this.myParameters.getNodesToRefactor()).first());
-        return collectVisibleModels(myRefactoringModel);
-      }
+    Set<SModel> models = new ModelAccessHelper(myContext.getRepository()).runReadAction(() -> {
+      myRefactoringModel = SNodeOperations.getModel(ListSequence.fromList(ExtractMethodDialog.this.myParameters.getNodesToRefactor()).first());
+      return collectVisibleModels(myRefactoringModel);
     });
 
     final ChooseNodeDialog dialog = new ChooseNodeDialog(myMPSProject, new InstanceOfCondition(new SAbstractConcept[]{CONCEPTS.ClassConcept$bK, CONCEPTS.IStaticContainerForMethods$n8}), models, "Choose class");
     dialog.show();
 
-    myContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        myStaticTarget = (dialog.getResult() != null ? dialog.getResult().resolve(myContext.getRepository()) : null);
-      }
-    });
+    myContext.getRepository().getModelAccess().runReadAction(() -> myStaticTarget = (dialog.getResult() != null ? dialog.getResult().resolve(myContext.getRepository()) : null));
     if (myStaticTarget == null) {
       myRefactoringModel = null;
     }
@@ -432,21 +417,19 @@ public class ExtractMethodDialog extends RefactoringDialog {
         @Override
         public void actionPerformed(ActionEvent p0) {
           chooseStaticContainer();
-          myContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              if (ExtractMethodDialog.this.myStaticTarget != null) {
-                if (SNodeOperations.isInstanceOf(ExtractMethodDialog.this.myStaticTarget, CONCEPTS.ClassConcept$bK)) {
-                  myChooseContainerButton.setIcon(IconResourceBundle_ExtractMethodIcons.getInstance().getResource("CLASS"));
-                } else if (SNodeOperations.isInstanceOf(ExtractMethodDialog.this.myStaticTarget, CONCEPTS.ConceptBehavior$2)) {
-                  myChooseContainerButton.setIcon(IconResourceBundle_ExtractMethodIcons.getInstance().getResource("INTERFACE"));
-                }
-                if (SNodeOperations.isInstanceOf(ExtractMethodDialog.this.myStaticTarget, CONCEPTS.INamedConcept$Kd)) {
-                  myChooseContainerButton.setText(SPropertyOperations.getString((SNodeOperations.cast(ExtractMethodDialog.this.myStaticTarget, CONCEPTS.INamedConcept$Kd)), PROPS.name$MnvL));
-                }
-
+          myContext.getRepository().getModelAccess().runReadAction(() -> {
+            if (ExtractMethodDialog.this.myStaticTarget != null) {
+              if (SNodeOperations.isInstanceOf(ExtractMethodDialog.this.myStaticTarget, CONCEPTS.ClassConcept$bK)) {
+                myChooseContainerButton.setIcon(IconResourceBundle_ExtractMethodIcons.getInstance().getResource("CLASS"));
+              } else if (SNodeOperations.isInstanceOf(ExtractMethodDialog.this.myStaticTarget, CONCEPTS.ConceptBehavior$2)) {
+                myChooseContainerButton.setIcon(IconResourceBundle_ExtractMethodIcons.getInstance().getResource("INTERFACE"));
               }
-              ExtractMethodDialog.this.update();
+              if (SNodeOperations.isInstanceOf(ExtractMethodDialog.this.myStaticTarget, CONCEPTS.INamedConcept$Kd)) {
+                myChooseContainerButton.setText(SPropertyOperations.getString((SNodeOperations.cast(ExtractMethodDialog.this.myStaticTarget, CONCEPTS.INamedConcept$Kd)), PROPS.name$MnvL));
+              }
+
             }
+            ExtractMethodDialog.this.update();
           });
         }
       });

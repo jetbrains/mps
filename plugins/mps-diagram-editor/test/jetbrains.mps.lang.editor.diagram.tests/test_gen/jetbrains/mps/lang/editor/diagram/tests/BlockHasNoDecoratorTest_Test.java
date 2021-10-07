@@ -38,11 +38,7 @@ public class BlockHasNoDecoratorTest_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("83003444452611280", "83003444452611284");
       final Wrappers._T<Mapper> descendantMapper = new Wrappers._T<Mapper>();
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          descendantMapper.value = DecoratorTestRunner.getMapper(getNodeById("83003444452611281"), getEditorComponent());
-        }
-      });
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> descendantMapper.value = DecoratorTestRunner.getMapper(getNodeById("83003444452611281"), getEditorComponent()));
 
       Assert.assertTrue(descendantMapper.value != null);
       Assert.assertTrue(descendantMapper.value.getTarget() != null);

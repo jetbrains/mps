@@ -16,7 +16,6 @@ import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5033107305426766812", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class FindSpecificNodeUsages_Action extends BaseAction {
@@ -67,16 +66,8 @@ public class FindSpecificNodeUsages_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("editing.findUsages");
-    final FindUsagesHelper fuh = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess()).runReadAction(new Computable<FindUsagesHelper>() {
-      public FindUsagesHelper compute() {
-        return new FindUsagesHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).prepareOptions(((EditorCell) MapSequence.fromMap(_params).get("cell")), ((SNode) MapSequence.fromMap(_params).get("node")));
-      }
-    });
+    final FindUsagesHelper fuh = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess()).runReadAction(() -> new FindUsagesHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).prepareOptions(((EditorCell) MapSequence.fromMap(_params).get("cell")), ((SNode) MapSequence.fromMap(_params).get("node"))));
     fuh.showDialog();
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        fuh.invoke();
-      }
-    });
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(() -> fuh.invoke());
   }
 }

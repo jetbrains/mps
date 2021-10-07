@@ -69,16 +69,14 @@ public class ShowDependenciesInViewer_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ModuleDependencyNode treeNode = (ModuleDependencyNode) ((TreeNode) MapSequence.fromMap(_params).get("node"));
-        SModule top = ((DependencyTree) treeNode.getTree()).getModule();
-        SModule to = treeNode.getModule().resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository());
-        if (to == null) {
-          return;
-        }
-        DependenciesUtil.openDependenciesTool(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), top, to, treeNode.isUsedLanguage());
+    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(() -> {
+      ModuleDependencyNode treeNode = (ModuleDependencyNode) ((TreeNode) MapSequence.fromMap(_params).get("node"));
+      SModule top = ((DependencyTree) treeNode.getTree()).getModule();
+      SModule to = treeNode.getModule().resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository());
+      if (to == null) {
+        return;
       }
+      DependenciesUtil.openDependenciesTool(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), top, to, treeNode.isUsedLanguage());
     });
   }
 }

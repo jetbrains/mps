@@ -89,15 +89,13 @@ public class GenerateGettersAndSetters_Action extends BaseAction {
     final Wrappers._T<SNode> classConcept = new Wrappers._T<SNode>();
     SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
     final Wrappers._T<SNodeReference[]> fields = new Wrappers._T<SNodeReference[]>();
-    repo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        classConcept.value = GenerateGettersAndSetters_Action.this.getClassConcept(_params);
-        fields.value = Sequence.fromIterable(GenerateGettersAndSetters_Action.this.getFieldDeclarationsWithoutGetterOrSetter(classConcept.value, _params)).select(new ISelector<SNode, SNodeReference>() {
-          public SNodeReference select(SNode it) {
-            return SNodeOperations.getPointer(it);
-          }
-        }).toGenericArray(SNodeReference.class);
-      }
+    repo.getModelAccess().runReadAction(() -> {
+      classConcept.value = GenerateGettersAndSetters_Action.this.getClassConcept(_params);
+      fields.value = Sequence.fromIterable(GenerateGettersAndSetters_Action.this.getFieldDeclarationsWithoutGetterOrSetter(classConcept.value, _params)).select(new ISelector<SNode, SNodeReference>() {
+        public SNodeReference select(SNode it) {
+          return SNodeOperations.getPointer(it);
+        }
+      }).toGenericArray(SNodeReference.class);
     });
 
     final SelectFieldsDialog selectFieldsDialog = new SelectFieldsDialog(fields.value, false, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
@@ -109,34 +107,32 @@ public class GenerateGettersAndSetters_Action extends BaseAction {
     }
 
     final Wrappers._T<SNode> lastAdded = new Wrappers._T<SNode>(null);
-    repo.getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        SNodeReference[] selectedFields = Sequence.fromIterable(((Iterable<SNodeReference>) selectFieldsDialog.getSelectedElements())).toGenericArray(SNodeReference.class);
-        for (SNodeReference fieldPtr : selectedFields) {
-          final SNode field = SNodeOperations.cast(fieldPtr.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), CONCEPTS.VariableDeclaration$Y0);
-          SNode dotExpr = _quotation_createNode_5trf1k_a0b0b0a21a0();
-          SLinkOperations.setTarget(dotExpr, LINKS.operand$w6IR, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression")));
-          SLinkOperations.setTarget(dotExpr, LINKS.operation$gs9E, _quotation_createNode_5trf1k_a0d0b0a21a0(field));
-          final String getterName = GenerateGettersAndSettersUtil.getFieldGetterName(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
-          if (SNodeOperations.isInstanceOf(field, CONCEPTS.FieldDeclaration$ie)) {
-            ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_5trf1k_a0a0a5a1a0m0a(SLinkOperations.getTarget(field, LINKS.type$a1UY), SNodeOperations.copyNode(dotExpr), getterName));
-          } else {
-            ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_5trf1k_a0a0a0f0b0a21a0(SNodeOperations.copyNode(dotExpr), SLinkOperations.getTarget(field, LINKS.type$a1UY), getterName));
-          }
-
-          final String setterName = GenerateGettersAndSettersUtil.getFieldSetterName(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
-          String parameterName = GenerateGettersAndSettersUtil.getParameterNameForField(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
-
-
-          if (SNodeOperations.isInstanceOf(field, CONCEPTS.FieldDeclaration$ie)) {
-            lastAdded.value = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_5trf1k_a0a0a0l0b0a21a0(dotExpr, SLinkOperations.getTarget(field, LINKS.type$a1UY), parameterName, setterName));
-          } else {
-            lastAdded.value = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_5trf1k_a0a0a0a11a1a0m0a(dotExpr, SLinkOperations.getTarget(field, LINKS.type$a1UY), parameterName, setterName));
-          }
+    repo.getModelAccess().executeCommand(() -> {
+      SNodeReference[] selectedFields = Sequence.fromIterable(((Iterable<SNodeReference>) selectFieldsDialog.getSelectedElements())).toGenericArray(SNodeReference.class);
+      for (SNodeReference fieldPtr : selectedFields) {
+        final SNode field = SNodeOperations.cast(fieldPtr.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), CONCEPTS.VariableDeclaration$Y0);
+        SNode dotExpr = _quotation_createNode_5trf1k_a0b0b0a21a0();
+        SLinkOperations.setTarget(dotExpr, LINKS.operand$w6IR, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d4da00cL, "jetbrains.mps.baseLanguage.structure.ThisExpression")));
+        SLinkOperations.setTarget(dotExpr, LINKS.operation$gs9E, _quotation_createNode_5trf1k_a0d0b0a21a0(field));
+        final String getterName = GenerateGettersAndSettersUtil.getFieldGetterName(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+        if (SNodeOperations.isInstanceOf(field, CONCEPTS.FieldDeclaration$ie)) {
+          ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_5trf1k_a0a0a5a1a0m0a(SLinkOperations.getTarget(field, LINKS.type$a1UY), SNodeOperations.copyNode(dotExpr), getterName));
+        } else {
+          ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_5trf1k_a0a0a0f0b0a21a0(SNodeOperations.copyNode(dotExpr), SLinkOperations.getTarget(field, LINKS.type$a1UY), getterName));
         }
-        if (lastAdded.value != null) {
-          ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).select(lastAdded.value);
+
+        final String setterName = GenerateGettersAndSettersUtil.getFieldSetterName(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+        String parameterName = GenerateGettersAndSettersUtil.getParameterNameForField(field, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+
+
+        if (SNodeOperations.isInstanceOf(field, CONCEPTS.FieldDeclaration$ie)) {
+          lastAdded.value = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_5trf1k_a0a0a0l0b0a21a0(dotExpr, SLinkOperations.getTarget(field, LINKS.type$a1UY), parameterName, setterName));
+        } else {
+          lastAdded.value = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_5trf1k_a0a0a0a11a1a0m0a(dotExpr, SLinkOperations.getTarget(field, LINKS.type$a1UY), parameterName, setterName));
         }
+      }
+      if (lastAdded.value != null) {
+        ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).select(lastAdded.value);
       }
     });
 

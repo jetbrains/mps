@@ -28,11 +28,7 @@ import jetbrains.mps.ide.project.ProjectHelper;
     }).toGenericArray(String.class);
     final int defopt = ListSequence.fromList(optList).indexOf(query.defaultOption());
     final Wrappers._int res = new Wrappers._int(-1);
-    ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      public void run() {
-        res.value = Messages.showDialog(ProjectHelper.toIdeaProject(mpsProject), query.getText(), query.getTitle(), options, defopt, Messages.getQuestionIcon());
-      }
-    });
+    ThreadUtils.runInUIThreadAndWait(() -> res.value = Messages.showDialog(ProjectHelper.toIdeaProject(mpsProject), query.getText(), query.getTitle(), options, defopt, Messages.getQuestionIcon()));
     if (res.value < 0) {
       return query.voidOption();
     }

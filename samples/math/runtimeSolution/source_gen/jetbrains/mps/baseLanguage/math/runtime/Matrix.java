@@ -381,16 +381,8 @@ public class Matrix<T> {
       return cast(o).abs(MathContext.DECIMAL128);
     }
   };
-  public static final _FunctionTypes._return_P2_E0<? extends Integer, ? super Object, ? super Object> zeroFunc = new _FunctionTypes._return_P2_E0<Integer, Object, Object>() {
-    public Integer invoke(Object a, Object b) {
-      return 0;
-    }
-  };
-  public static final _FunctionTypes._return_P2_E0<? extends Integer, ? super Integer, ? super Integer> deltaFunc = new _FunctionTypes._return_P2_E0<Integer, Integer, Integer>() {
-    public Integer invoke(Integer a, Integer b) {
-      return (a.equals(b) ? 1 : 0);
-    }
-  };
+  public static final _FunctionTypes._return_P2_E0<? extends Integer, ? super Object, ? super Object> zeroFunc = (Object a, Object b) -> 0;
+  public static final _FunctionTypes._return_P2_E0<? extends Integer, ? super Integer, ? super Integer> deltaFunc = (Integer a, Integer b) -> (a.equals(b) ? 1 : 0);
   private Object[][] myCarrier = null;
   private int myRows = 0;
   private int myColumns = 0;
@@ -614,11 +606,7 @@ public class Matrix<T> {
     if (i < 0 || i > myRows) {
       throw new IndexOutOfBoundsException();
     }
-    return new Matrix<T>(myColumns, 1, new _FunctionTypes._return_P2_E0<T, Integer, Integer>() {
-      public T invoke(Integer a, Integer b) {
-        return (T) myCarrier[i][a];
-      }
-    }, myOperations);
+    return new Matrix<T>(myColumns, 1, (Integer a, Integer b) -> (T) myCarrier[i][a], myOperations);
   }
   public void setRow(final int i, Matrix vector) {
     if (vector.myColumns != 1 || vector.myRows != myColumns || i < 0 || i >= myRows) {
@@ -640,11 +628,7 @@ public class Matrix<T> {
     if (i < 0 || i > myColumns) {
       throw new IndexOutOfBoundsException();
     }
-    return new Matrix<T>(myRows, 1, new _FunctionTypes._return_P2_E0<T, Integer, Integer>() {
-      public T invoke(Integer a, Integer b) {
-        return (T) myCarrier[b][i];
-      }
-    }, myOperations);
+    return new Matrix<T>(myRows, 1, (Integer a, Integer b) -> (T) myCarrier[b][i], myOperations);
   }
   public int rowsCount() {
     return myRows;
@@ -672,18 +656,10 @@ public class Matrix<T> {
     myCarrier[i][j] = v;
   }
   public Matrix<T> transpose() {
-    return new Matrix<T>(myColumns, myRows, new _FunctionTypes._return_P2_E0<T, Integer, Integer>() {
-      public T invoke(Integer a, Integer b) {
-        return (T) myCarrier[b][a];
-      }
-    }, myOperations);
+    return new Matrix<T>(myColumns, myRows, (Integer a, Integer b) -> (T) myCarrier[b][a], myOperations);
   }
   public Matrix<T> conjugate() {
-    return new Matrix<T>(myColumns, myRows, new _FunctionTypes._return_P2_E0<T, Integer, Integer>() {
-      public T invoke(Integer a, Integer b) {
-        return (T) myOperations.conj(myCarrier[b][a]);
-      }
-    }, myOperations);
+    return new Matrix<T>(myColumns, myRows, (Integer a, Integer b) -> (T) myOperations.conj(myCarrier[b][a]), myOperations);
   }
   public void addRow(int source, int dest, Object scalar) {
     if (source < 0 || dest < 0 || source >= myRows || dest >= myRows) {

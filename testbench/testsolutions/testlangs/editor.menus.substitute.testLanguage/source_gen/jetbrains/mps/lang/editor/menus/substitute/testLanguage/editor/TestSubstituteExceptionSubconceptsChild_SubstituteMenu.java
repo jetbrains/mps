@@ -15,7 +15,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
-import java.util.function.Predicate;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.stream.Collectors;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
@@ -55,11 +54,7 @@ public class TestSubstituteExceptionSubconceptsChild_SubstituteMenu extends Subs
 
   public class SMP_Subconcepts_t8rzxu_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TestSubstituteExceptionSubconceptsChild$u1).stream().filter(new Predicate<SAbstractConcept>() {
-        public boolean test(SAbstractConcept concept) {
-          return filterConcept(_context, concept);
-        }
-      }).collect(Collectors.toList());
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.TestSubstituteExceptionSubconceptsChild$u1).stream().filter((SAbstractConcept concept) -> filterConcept(_context, concept)).collect(Collectors.toList());
     }
     private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
       throw new RuntimeException("Intentional exception - ignore this");

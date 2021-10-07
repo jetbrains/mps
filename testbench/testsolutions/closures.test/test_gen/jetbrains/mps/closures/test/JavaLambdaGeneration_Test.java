@@ -14,14 +14,12 @@ import java.util.function.Consumer;
 public class JavaLambdaGeneration_Test {
   @Test
   public void test_conflictingNames() throws Exception {
-    Function<List<String>, Boolean> f1 = new Function<List<String>, Boolean>() {
-      public Boolean apply(List<String> it) {
-        return it.stream().anyMatch(new Predicate<String>() {
-          public boolean test(String it) {
-            return it.equals("target");
-          }
-        });
-      }
+    Function<List<String>, Boolean> f1 = (List<String> it) -> {
+      return it.stream().anyMatch(new Predicate<String>() {
+        public boolean test(String it) {
+          return it.equals("target");
+        }
+      });
     };
     Assert.assertTrue(f1.apply(ListSequence.fromListAndArray(new ArrayList<String>(), "something", "target")));
 
@@ -34,15 +32,7 @@ public class JavaLambdaGeneration_Test {
   }
   @Test
   public void test_nonConflictingNames() throws Exception {
-    Function<List<String>, Boolean> f1 = new Function<List<String>, Boolean>() {
-      public Boolean apply(List<String> it) {
-        return it.stream().anyMatch(new Predicate<String>() {
-          public boolean test(String q) {
-            return q.equals("target");
-          }
-        });
-      }
-    };
+    Function<List<String>, Boolean> f1 = (List<String> it) -> it.stream().anyMatch((String q) -> q.equals("target"));
     Assert.assertTrue(f1.apply(ListSequence.fromListAndArray(new ArrayList<String>(), "something", "target")));
   }
   public static class ForwardReference {
@@ -52,11 +42,7 @@ public class JavaLambdaGeneration_Test {
       }
     };
     public static String content = "";
-    public static Runnable printerAfter = new Runnable() {
-      public void run() {
-        System.out.println(content);
-      }
-    };
+    public static Runnable printerAfter = () -> System.out.println(content);
 
     public Runnable instancePrinterBefore = new Runnable() {
       public void run() {
@@ -64,11 +50,7 @@ public class JavaLambdaGeneration_Test {
       }
     };
     public String instanceContent = "";
-    public Runnable instancePrinterAfter = new Runnable() {
-      public void run() {
-        System.out.println(instanceContent);
-      }
-    };
+    public Runnable instancePrinterAfter = () -> System.out.println(instanceContent);
 
   }
 }

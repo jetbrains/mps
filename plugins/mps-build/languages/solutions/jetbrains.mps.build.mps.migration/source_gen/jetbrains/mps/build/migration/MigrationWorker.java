@@ -10,18 +10,16 @@ import jetbrains.mps.tool.environment.EnvironmentConfig;
 import jetbrains.mps.tool.common.MigrateTaskProperties;
 import jetbrains.mps.tool.builder.WorkerHelper;
 import jetbrains.mps.smodel.MPSModuleRepository;
-import java.util.function.Supplier;
-import java.util.Collection;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import java.io.File;
 import jetbrains.mps.project.Project;
+import java.util.Collection;
+import org.jetbrains.mps.openapi.module.SModule;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import java.lang.reflect.Method;
 import com.intellij.openapi.application.ModalityState;
@@ -59,11 +57,7 @@ public class MigrationWorker extends WorkerBase {
       // todo the following line is needed until we introduce layered migration
       // FIXME why do I care to make these modules?
       final MPSModuleRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
-      compileReloadHelper.makeAndReload(repo, new Supplier<Collection<SModule>>() {
-        public Collection<SModule> get() {
-          return IterableUtil.asCollection(repo.getModules());
-        }
-      }, myJavaCompilerOptions);
+      compileReloadHelper.makeAndReload(repo, () -> IterableUtil.asCollection(repo.getModules()), myJavaCompilerOptions);
     }
 
     final boolean preCheckFailureHalt = taskProps.isPreCheckFailureHalt();
@@ -79,43 +73,35 @@ public class MigrationWorker extends WorkerBase {
       info("Loaded project " + project);
       myEnvironment.flushAllEvents();
 
-      compileReloadHelper.makeAndReload(project.getRepository(), new Supplier<Collection<SModule>>() {
-        public Collection<SModule> get() {
-          return (Collection<SModule>) project.getProjectModulesWithGenerators();
-        }
-      }, myJavaCompilerOptions);
+      compileReloadHelper.makeAndReload(project.getRepository(), () -> (Collection<SModule>) project.getProjectModulesWithGenerators(), myJavaCompilerOptions);
 
       myEnvironment.flushAllEvents();
 
-      ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-        public void run() {
-          try {
-            // FIXME why another reflection? MigrationTask builds classpath to load MigrationWorker by reflection
-            // and them MigrationWorker once again uses reflection to load another class.
-            Class<?> euClass = new ModelAccessHelper(project.getRepository()).runReadAction(new Computable<Class<?>>() {
-              public Class<?> compute() {
-                try {
-                  SModule execModule = execClassModule.resolve(project.getRepository());
-                  if (execModule == null) {
-                    error(String.format("Module %s not loaded, likely broken module/plugin dependencies, check log for reasons", execClassModule.getModuleName()));
-                  }
-                  ClassLoaderManager clm = myEnvironment.getPlatform().findComponent(ClassLoaderManager.class);
-                  return clm.getClassLoader(execModule).loadClass(TASK_EXEC_CLASS);
-                } catch (Exception ex) {
-                  throw new RuntimeException("Exception during migration", ex);
-                }
+      ApplicationManager.getApplication().invokeAndWait(() -> {
+        try {
+          // FIXME why another reflection? MigrationTask builds classpath to load MigrationWorker by reflection
+          // and them MigrationWorker once again uses reflection to load another class.
+          Class<?> euClass = new ModelAccessHelper(project.getRepository()).runReadAction(() -> {
+            try {
+              SModule execModule = execClassModule.resolve(project.getRepository());
+              if (execModule == null) {
+                error(String.format("Module %s not loaded, likely broken module/plugin dependencies, check log for reasons", execClassModule.getModuleName()));
               }
-            });
-            Method method = euClass.getMethod("migrate", Project.class, Boolean.TYPE);
-            Object rv = method.invoke(null, project, preCheckFailureHalt);
-            if (rv instanceof Boolean) {
-              result.value &= (Boolean) rv;
-            } else {
-              error(String.format("Migration of project %s didn't yield expected boolean result (%s)", project.getName(), rv));
+              ClassLoaderManager clm = myEnvironment.getPlatform().findComponent(ClassLoaderManager.class);
+              return clm.getClassLoader(execModule).loadClass(TASK_EXEC_CLASS);
+            } catch (Exception ex) {
+              throw new RuntimeException("Exception during migration", ex);
             }
-          } catch (Exception e) {
-            throw new RuntimeException("Exception during migration", e);
+          });
+          Method method = euClass.getMethod("migrate", Project.class, Boolean.TYPE);
+          Object rv = method.invoke(null, project, preCheckFailureHalt);
+          if (rv instanceof Boolean) {
+            result.value &= (Boolean) rv;
+          } else {
+            error(String.format("Migration of project %s didn't yield expected boolean result (%s)", project.getName(), rv));
           }
+        } catch (Exception e) {
+          throw new RuntimeException("Exception during migration", e);
         }
       }, ModalityState.defaultModalityState());
 

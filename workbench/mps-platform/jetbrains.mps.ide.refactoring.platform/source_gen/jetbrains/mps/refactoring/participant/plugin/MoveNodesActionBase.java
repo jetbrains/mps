@@ -21,7 +21,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.platform.refactoring.MoveNodesDialog;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 
 @GeneratedClass(node = "r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)/1929018697514204727", model = "r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)")
 public class MoveNodesActionBase implements MoveNodesAction {
@@ -70,11 +69,7 @@ public class MoveNodesActionBase implements MoveNodesAction {
   }
   public NodeLocation askLocation(final MPSProject project, final List<SNode> nodesToMove) {
     final Wrappers._T<SModel> currentModel = new Wrappers._T<SModel>();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        currentModel.value = SNodeOperations.getModel(ListSequence.fromList(nodesToMove).first());
-      }
-    });
+    project.getRepository().getModelAccess().runReadAction(() -> currentModel.value = SNodeOperations.getModel(ListSequence.fromList(nodesToMove).first()));
     return MoveNodesDialog.getSelectedObject(project, currentModel.value, new MoveNodesDialog.ModelFilter() {
       public String getErrorMessage(NodeLocation selectedObject) {
         return "Choose model or node that can contain moving nodes";
@@ -83,21 +78,15 @@ public class MoveNodesActionBase implements MoveNodesAction {
       public boolean check(final NodeLocation selectedObject, SModel model) {
         if (selectedObject instanceof NodeLocation.NodeLocationChild) {
           final Wrappers._boolean roleIsDefined = new Wrappers._boolean();
-          project.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              roleIsDefined.value = tryToSetRole(project.getRepository(), nodesToMove, (NodeLocation.NodeLocationChild) selectedObject);
-            }
-          });
+          project.getRepository().getModelAccess().runReadAction(() -> roleIsDefined.value = tryToSetRole(project.getRepository(), nodesToMove, (NodeLocation.NodeLocationChild) selectedObject));
           return roleIsDefined.value;
         } else if (selectedObject instanceof NodeLocation.NodeLocationRoot) {
-          return new ModelAccessHelper(project.getRepository()).runReadAction(new Computable<Boolean>() {
-            public Boolean compute() {
-              return ListSequence.fromList(nodesToMove).all(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return selectedObject.canInsert(project.getRepository(), it);
-                }
-              });
-            }
+          return new ModelAccessHelper(project.getRepository()).runReadAction(() -> {
+            return ListSequence.fromList(nodesToMove).all(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return selectedObject.canInsert(project.getRepository(), it);
+              }
+            });
           });
         } else {
           return false;

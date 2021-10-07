@@ -97,14 +97,12 @@ public abstract class AbstractUiState {
    * Custom debugger implelemntation may create their own special thread for that.
    */
   public void invokeEvaluation(final _FunctionTypes._void_P0_E0 command) {
-    ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
-      public void run() {
-        try {
-          command.invoke();
-        } catch (Throwable t) {
-          if (LOG.isEnabledFor(Level.ERROR)) {
-            LOG.error("", t);
-          }
+    ApplicationManager.getApplication().executeOnPooledThread(() -> {
+      try {
+        command.invoke();
+      } catch (Throwable t) {
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error("", t);
         }
       }
     });

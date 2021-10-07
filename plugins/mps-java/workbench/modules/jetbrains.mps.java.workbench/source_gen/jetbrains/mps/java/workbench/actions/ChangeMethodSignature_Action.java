@@ -91,14 +91,12 @@ public class ChangeMethodSignature_Action extends BaseAction {
     final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
     ModelAccess modelAccess = repo.getModelAccess();
 
-    modelAccess.runWriteAction(new Runnable() {
-      public void run() {
-        repo.saveAll();
-        baseMethod.value = ((SNode) BHReflection.invoke0(((SNode) MapSequence.fromMap(_params).get("method")), CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("getBaseMethod", CONCEPTS.BaseMethodDeclaration$kD, "4mmymf_0z7l")));
-        if (baseMethod.value != null) {
-          message.value = "Method " + ((SNode) MapSequence.fromMap(_params).get("method")).getPresentation() + " overrides method from " + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod.value), CONCEPTS.Classifier$Ix), PROPS.name$MnvL) + ".\n";
-          message.value += "Do you want to change signature of this method instead?";
-        }
+    modelAccess.runWriteAction(() -> {
+      repo.saveAll();
+      baseMethod.value = ((SNode) BHReflection.invoke0(((SNode) MapSequence.fromMap(_params).get("method")), CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("getBaseMethod", CONCEPTS.BaseMethodDeclaration$kD, "4mmymf_0z7l")));
+      if (baseMethod.value != null) {
+        message.value = "Method " + ((SNode) MapSequence.fromMap(_params).get("method")).getPresentation() + " overrides method from " + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod.value), CONCEPTS.Classifier$Ix), PROPS.name$MnvL) + ".\n";
+        message.value += "Do you want to change signature of this method instead?";
       }
     });
 
@@ -115,17 +113,15 @@ public class ChangeMethodSignature_Action extends BaseAction {
     if (ListSequence.fromList(myRefactorings).isEmpty()) {
       return;
     }
-    modelAccess.runReadInEDT(new Runnable() {
-      public void run() {
-        if (!(SNodeUtil.isAccessible(((SNode) MapSequence.fromMap(_params).get("method")), repo))) {
-          return;
-        }
-        if (!(SNodeUtil.isAccessible(methodToRefactor, repo))) {
-          return;
-        }
-
-        RefactoringAccess.getInstance().getRefactoringFacade().execute(RefactoringContext.createRefactoringContextByName("jetbrains.mps.baseLanguage.refactorings.ChangeMethodSignature", Arrays.asList("myRefactorings"), Arrays.asList(myRefactorings), methodToRefactor, ((MPSProject) MapSequence.fromMap(_params).get("project"))));
+    modelAccess.runReadInEDT(() -> {
+      if (!(SNodeUtil.isAccessible(((SNode) MapSequence.fromMap(_params).get("method")), repo))) {
+        return;
       }
+      if (!(SNodeUtil.isAccessible(methodToRefactor, repo))) {
+        return;
+      }
+
+      RefactoringAccess.getInstance().getRefactoringFacade().execute(RefactoringContext.createRefactoringContextByName("jetbrains.mps.baseLanguage.refactorings.ChangeMethodSignature", Arrays.asList("myRefactorings"), Arrays.asList(myRefactorings), methodToRefactor, ((MPSProject) MapSequence.fromMap(_params).get("project"))));
     });
   }
 

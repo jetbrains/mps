@@ -9,7 +9,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import org.jetbrains.mps.openapi.util.Processor;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/4930617085363954527", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public class PreCheckError extends MigrationError {
@@ -30,11 +29,9 @@ public class PreCheckError extends MigrationError {
   public Iterable<IssueKindReportItem> getProblems(ProgressIndicator progressIndicator) {
     final List<IssueKindReportItem> res = ListSequence.fromList(new ArrayList<IssueKindReportItem>());
     // todo remove this hacky code after reload elimination and introducing migration annotations
-    mySession.getChecker().checkProject(new ProgressMonitorAdapter(progressIndicator), new Processor<IssueKindReportItem>() {
-      public boolean process(IssueKindReportItem p) {
-        ListSequence.fromList(res).addElement(p);
-        return ListSequence.fromList(res).count() < 100;
-      }
+    mySession.getChecker().checkProject(new ProgressMonitorAdapter(progressIndicator), (IssueKindReportItem p) -> {
+      ListSequence.fromList(res).addElement(p);
+      return ListSequence.fromList(res).count() < 100;
     });
     return res;
   }

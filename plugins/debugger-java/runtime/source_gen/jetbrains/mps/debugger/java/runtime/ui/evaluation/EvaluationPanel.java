@@ -30,12 +30,10 @@ public class EvaluationPanel extends EvaluationUi {
 
     myEvaluationModel = evaluationModel;
 
-    mpsProject.getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        SNode node = myEvaluationModel.getNode();
-        myEditor = new EmbeddableEditor(mpsProject, true);
-        myEditor.editNode(node);
-      }
+    mpsProject.getModelAccess().executeCommand(() -> {
+      SNode node = myEvaluationModel.getNode();
+      myEditor = new EmbeddableEditor(mpsProject, true);
+      myEditor.editNode(node);
     });
 
     myTree.addModel(myEvaluationModel);

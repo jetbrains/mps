@@ -301,7 +301,6 @@
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="java.util.Set" />
-    <classNode dependClassName="java.util.function.Supplier" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.IFixableMethodReference__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.scopes.ClassifierScopeUtils" />

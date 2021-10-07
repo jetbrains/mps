@@ -11,12 +11,12 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -80,15 +80,13 @@ public class CreateClassFromUsageHelper {
     final Wrappers._T<SNode> cls = new Wrappers._T<SNode>(null);
     Executor ex = (dryRun ? Executor.NoOp : Executor.Normal);
 
-    ex.exec(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        cls.value = createDecl(className);
-        SModelOperations.addRootNode(SNodeOperations.getModel(myNode), cls.value);
-        SNode constructor = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(cls.value)).first();
-        SNodeOperations.replaceWithAnother(myNode, createClassCreator_lt4o84_a0a3a0a0s0l(constructor));
-        Editor editor = NavigationSupport.getInstance().openNode(myEditorContext.getOperationContext().getProject(), cls.value, true, false);
-        editor.getEditorContext().selectWRTFocusPolicy(constructor);
-      }
+    ex.exec(() -> {
+      cls.value = createDecl(className);
+      SModelOperations.addRootNode(SNodeOperations.getModel(myNode), cls.value);
+      SNode constructor = Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(cls.value)).first();
+      SNodeOperations.replaceWithAnother(myNode, createClassCreator_lt4o84_a0a3a0a0s0l(constructor));
+      Editor editor = NavigationSupport.getInstance().openNode(myEditorContext.getOperationContext().getProject(), cls.value, true, false);
+      editor.getEditorContext().selectWRTFocusPolicy(constructor);
     });
 
     return true;

@@ -9,14 +9,12 @@ import jetbrains.mps.checkers.IChecker;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.testbench.PerformanceMessenger;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.checkers.ModelCheckerBuilder;
 import org.junit.Assert;
 import java.util.ArrayList;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
-import org.jetbrains.mps.openapi.util.Consumer;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.NodeReportItem;
@@ -35,11 +33,7 @@ public abstract class BaseCheckerTest extends BaseCheckModulesTest {
 
   public void runCheck(final List<IChecker<?, ? extends IssueKindReportItem>> checkers, PerformanceMessenger stats, String errorMessage) {
     final CheckingTestStatistic statistic = new CheckingTestStatistic();
-    List<String> errors = new ModelAccessHelper(BaseCheckModulesTest.getContextProject().getModelAccess()).runReadAction(new Computable<List<String>>() {
-      public List<String> compute() {
-        return BaseCheckerTest.this.applyChecker(myModule, new ModelCheckerBuilder.ModelsExtractorImpl().excludeGenerators(), checkers, statistic);
-      }
-    });
+    List<String> errors = new ModelAccessHelper(BaseCheckModulesTest.getContextProject().getModelAccess()).runReadAction(() -> BaseCheckerTest.this.applyChecker(myModule, new ModelCheckerBuilder.ModelsExtractorImpl().excludeGenerators(), checkers, statistic));
 
     if (stats != null) {
       stats.report("Errors", statistic.getNumErrors());
@@ -53,11 +47,7 @@ public abstract class BaseCheckerTest extends BaseCheckModulesTest {
     final Set<IssueKindReportItem> reportItems = SetSequence.fromSet(new HashSet<IssueKindReportItem>());
 
 
-    new ModelCheckerBuilder(modelExtractor).createChecker(checkers).check(ModelCheckerBuilder.ItemsToCheck.forSingleModule(module), module.getRepository(), new Consumer<IssueKindReportItem>() {
-      public void consume(IssueKindReportItem reportItem) {
-        SetSequence.fromSet(reportItems).addElement(reportItem);
-      }
-    }, new EmptyProgressMonitor());
+    new ModelCheckerBuilder(modelExtractor).createChecker(checkers).check(ModelCheckerBuilder.ItemsToCheck.forSingleModule(module), module.getRepository(), (IssueKindReportItem reportItem) -> SetSequence.fromSet(reportItems).addElement(reportItem), new EmptyProgressMonitor());
 
     for (IssueKindReportItem reportItem : reportItems) {
       if (reportItem.getSeverity().equals(MessageStatus.ERROR)) {

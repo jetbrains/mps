@@ -48,40 +48,38 @@ public class MigrationSetup {
   public MigrationSetup(final Project mpsProject, @Nullable final Iterable<SModule> modules) {
     myProject = mpsProject;
     myMigrationRegistry = ProjectMigrationsRegistry.getInstance();
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        List<ProjectMigration> migrations = myMigrationRegistry.getMigrations(myProject);
-        ListSequence.fromList(myProjectMigrations).addSequence(ListSequence.fromList(migrations).where(new IWhereFilter<ProjectMigration>() {
-          public boolean accept(ProjectMigration it) {
-            return it.shouldBeExecuted(myProject);
-          }
-        }));
-        Iterable<SModule> mmm = (modules == null ? MigrationModuleUtil.getMigrateableModulesFromProject(myProject) : modules);
-        ListSequence.fromList(myModuleMigrations).addSequence(Sequence.fromIterable(mmm).translate(new ITranslator2<SModule, ScriptApplied>() {
-          public Iterable<ScriptApplied> translate(SModule module) {
-            return getAllSteps(module);
-          }
-        }));
-
-        myBrokenDepsOfProjectModules = false;
-        myNeedImportVersionUpdate = false;
-        // not to check once for every module later
-        ModuleDependencyVersions mv = new ModuleDependencyVersions(myProject.getComponent(LanguageRegistry.class), myProject.getRepository());
-        for (SModule module : ListSequence.fromList(myProject.getProjectModulesWithGenerators())) {
-          if (!(mv.dependenciesPresent(module))) {
-            myBrokenDepsOfProjectModules = true;
-            break;
-          }
+    myProject.getRepository().getModelAccess().runReadAction(() -> {
+      List<ProjectMigration> migrations = myMigrationRegistry.getMigrations(myProject);
+      ListSequence.fromList(myProjectMigrations).addSequence(ListSequence.fromList(migrations).where(new IWhereFilter<ProjectMigration>() {
+        public boolean accept(ProjectMigration it) {
+          return it.shouldBeExecuted(myProject);
         }
+      }));
+      Iterable<SModule> mmm = (modules == null ? MigrationModuleUtil.getMigrateableModulesFromProject(myProject) : modules);
+      ListSequence.fromList(myModuleMigrations).addSequence(Sequence.fromIterable(mmm).translate(new ITranslator2<SModule, ScriptApplied>() {
+        public Iterable<ScriptApplied> translate(SModule module) {
+          return getAllSteps(module);
+        }
+      }));
 
-        if (!(myBrokenDepsOfProjectModules)) {
-          // resetVersions + needsUpdate() assert that dependenciesPresent() == true
-          mv.resetVersions();
-          for (SModule module : Sequence.fromIterable(mmm)) {
-            if (mv.needsUpdate(module)) {
-              myNeedImportVersionUpdate = true;
-              break;
-            }
+      myBrokenDepsOfProjectModules = false;
+      myNeedImportVersionUpdate = false;
+      // not to check once for every module later
+      ModuleDependencyVersions mv = new ModuleDependencyVersions(myProject.getComponent(LanguageRegistry.class), myProject.getRepository());
+      for (SModule module : ListSequence.fromList(myProject.getProjectModulesWithGenerators())) {
+        if (!(mv.dependenciesPresent(module))) {
+          myBrokenDepsOfProjectModules = true;
+          break;
+        }
+      }
+
+      if (!(myBrokenDepsOfProjectModules)) {
+        // resetVersions + needsUpdate() assert that dependenciesPresent() == true
+        mv.resetVersions();
+        for (SModule module : Sequence.fromIterable(mmm)) {
+          if (mv.needsUpdate(module)) {
+            myNeedImportVersionUpdate = true;
+            break;
           }
         }
       }

@@ -55,11 +55,7 @@ public class BreakpointsIconCache implements ProjectComponent {
       breakpoint.removeBreakpointListener(myBreakpointListener);
     }
   };
-  private final _FunctionTypes._void_P0_E0 myUpdateFromCurrent = new _FunctionTypes._void_P0_E0() {
-    public void invoke() {
-      updateIcons(currentSession());
-    }
-  };
+  private final _FunctionTypes._void_P0_E0 myUpdateFromCurrent = () -> updateIcons(currentSession());
   private final DebugSessionManagerComponent.DebugSessionAdapter myDebugSessionAdapter = new DebugSessionManagerComponent.DebugSessionAdapter() {
     @Override
     public void currentSessionChanged(AbstractDebugSession session) {
@@ -148,29 +144,23 @@ public class BreakpointsIconCache implements ProjectComponent {
     return null;
   }
   public void updateIcons(@Nullable final DebugSession session) {
-    final _FunctionTypes._void_P0_E0 update = new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        Map<IBreakpoint, Icon> icons = MapSequence.fromMap(new HashMap<IBreakpoint, Icon>());
-        for (IBreakpoint breakpoint : SetSequence.fromSet(myBreakpointManager.getAllIBreakpoints())) {
-          if (breakpoint instanceof JavaBreakpoint) {
-            JavaBreakpoint javaBreakpoint = (JavaBreakpoint) breakpoint;
-            Icon icon = getIconInternal(javaBreakpoint, session);
-            MapSequence.fromMap(icons).put(javaBreakpoint, icon);
-          }
+    final _FunctionTypes._void_P0_E0 update = () -> {
+      Map<IBreakpoint, Icon> icons = MapSequence.fromMap(new HashMap<IBreakpoint, Icon>());
+      for (IBreakpoint breakpoint : SetSequence.fromSet(myBreakpointManager.getAllIBreakpoints())) {
+        if (breakpoint instanceof JavaBreakpoint) {
+          JavaBreakpoint javaBreakpoint = (JavaBreakpoint) breakpoint;
+          Icon icon = getIconInternal(javaBreakpoint, session);
+          MapSequence.fromMap(icons).put(javaBreakpoint, icon);
         }
-        synchronized (myCache) {
-          MapSequence.fromMap(myCache).clear();
-          MapSequence.fromMap(myCache).putAll(icons);
-        }
-        myBreakpointsUiComponent.repaintBreakpoints();
       }
+      synchronized (myCache) {
+        MapSequence.fromMap(myCache).clear();
+        MapSequence.fromMap(myCache).putAll(icons);
+      }
+      myBreakpointsUiComponent.repaintBreakpoints();
     };
     if (session != null) {
-      session.getEventsProcessor().schedule(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          update.invoke();
-        }
-      });
+      session.getEventsProcessor().schedule(() -> update.invoke());
     } else {
       update.invoke();
     }

@@ -78,32 +78,30 @@ public class RunMigrationScripts_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<SearchScope> scope = new Wrappers._T<SearchScope>();
     final Wrappers._T<List<SNodeReference>> allScripts = new Wrappers._T<List<SNodeReference>>();
-    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        if (RunMigrationScripts_Action.this.global) {
-          scope.value = AbstractMigrationScriptHelper.createMigrationScope(((List<SModule>) MapSequence.fromMap(_params).get("modules")), ((List<SModel>) MapSequence.fromMap(_params).get("models")));
-        } else {
-          scope.value = AbstractMigrationScriptHelper.createMigrationScope(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
-        }
-        if (!(scope.value.getModels().iterator().hasNext())) {
-          return;
-        }
-
-        ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), RunMigrationScripts_Action.this.global);
-        allScripts.value = ListSequence.fromList(menuBuilder.getAllScripts()).sort(new ISelector<SNode, String>() {
-          public String select(SNode it) {
-            return (SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$NwlS)) == null ? "" : SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$NwlS)));
-          }
-        }, true).alsoSort(new ISelector<SNode, String>() {
-          public String select(SNode it) {
-            return (SPropertyOperations.getString(it, PROPS.toBuild$NwNU) == null ? "" : SPropertyOperations.getString(it, PROPS.toBuild$NwNU));
-          }
-        }, true).select(new ISelector<SNode, SNodeReference>() {
-          public SNodeReference select(SNode it) {
-            return it.getReference();
-          }
-        }).toListSequence();
+    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().runReadAction(() -> {
+      if (RunMigrationScripts_Action.this.global) {
+        scope.value = AbstractMigrationScriptHelper.createMigrationScope(((List<SModule>) MapSequence.fromMap(_params).get("modules")), ((List<SModel>) MapSequence.fromMap(_params).get("models")));
+      } else {
+        scope.value = AbstractMigrationScriptHelper.createMigrationScope(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
       }
+      if (!(scope.value.getModels().iterator().hasNext())) {
+        return;
+      }
+
+      ScriptsMenuBuilder menuBuilder = new ScriptsMenuBuilder(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), RunMigrationScripts_Action.this.global);
+      allScripts.value = ListSequence.fromList(menuBuilder.getAllScripts()).sort(new ISelector<SNode, String>() {
+        public String select(SNode it) {
+          return (SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$NwlS)) == null ? "" : SEnumOperations.getMemberName0(SPropertyOperations.getEnum(it, PROPS.type$NwlS)));
+        }
+      }, true).alsoSort(new ISelector<SNode, String>() {
+        public String select(SNode it) {
+          return (SPropertyOperations.getString(it, PROPS.toBuild$NwNU) == null ? "" : SPropertyOperations.getString(it, PROPS.toBuild$NwNU));
+        }
+      }, true).select(new ISelector<SNode, SNodeReference>() {
+        public SNodeReference select(SNode it) {
+          return it.getReference();
+        }
+      }).toListSequence();
     });
     final RunMigrationScriptsDialog dialog = new RunMigrationScriptsDialog(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), ((Frame) MapSequence.fromMap(_params).get("frame")), allScripts.value);
     int x = ((Frame) MapSequence.fromMap(_params).get("frame")).getX() + ((Frame) MapSequence.fromMap(_params).get("frame")).getWidth() / 2 - dialog.getWidth() / 2;
@@ -112,19 +110,17 @@ public class RunMigrationScripts_Action extends BaseAction {
     //  setLocation() has got implementation in Window class since Java7
     ((Component) dialog).setLocation(x, y);
     dialog.setVisible(true);
-    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        if (dialog.isRunChecked()) {
-          List<SNodeReference> checked = dialog.getCheckedScripts();
-          AbstractMigrationScriptHelper.doRunScripts(ListSequence.fromList(checked).select(new ISelector<SNodeReference, SNode>() {
-            public SNode select(SNodeReference it) {
-              return SNodeOperations.cast(it.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), CONCEPTS.MigrationScript$KR);
-            }
-          }).toListSequence(), scope.value, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
-        } else if (dialog.isOpenSelected()) {
-          SNodeReference selectedScript = ListSequence.fromList(dialog.getSelectedScripts()).first();
-          new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).shallFocus(true).shallSelect(true).open(selectedScript);
-        }
+    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().executeCommand(() -> {
+      if (dialog.isRunChecked()) {
+        List<SNodeReference> checked = dialog.getCheckedScripts();
+        AbstractMigrationScriptHelper.doRunScripts(ListSequence.fromList(checked).select(new ISelector<SNodeReference, SNode>() {
+          public SNode select(SNodeReference it) {
+            return SNodeOperations.cast(it.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), CONCEPTS.MigrationScript$KR);
+          }
+        }).toListSequence(), scope.value, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
+      } else if (dialog.isOpenSelected()) {
+        SNodeReference selectedScript = ListSequence.fromList(dialog.getSelectedScripts()).first();
+        new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).shallFocus(true).shallSelect(true).open(selectedScript);
       }
     });
   }

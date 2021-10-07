@@ -34,22 +34,20 @@ public class DelUsualInvalidReference_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6528040262366991178", "6528040262366991182");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-          // going to the reference
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.End_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveLeft_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.SelectUp_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+        // going to the reference
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveUp_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.End_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveLeft_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.SelectUp_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
       }, false);
     }
   }

@@ -34,11 +34,7 @@ public class BackspaceCommentedStatementAfterCommented_SemicolonSelected_Test ex
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("700792012717957831", "700792012717957848");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action"), false);
     }
   }
 }

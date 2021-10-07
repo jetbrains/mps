@@ -93,27 +93,23 @@ public class ModelDifferenceViewer implements DataProvider {
     myModels = models;
     myEditable = isModelEditable(ListSequence.fromList(myModels).getElement(1));
     // register models in repository and create changeset
-    myProject.getRepository().getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        ListSequence.fromList(myModels).visitAll(new IVisitor<SModel>() {
-          public void visit(SModel it) {
-            registerModelIfNeeded(it, perRootPersistence);
-          }
-        });
-        myMetadataModels = ListSequence.fromList(myModels).select(new ISelector<SModel, SModel>() {
-          public SModel select(SModel it) {
-            return createRegisteredMetaModel(it);
-          }
-        }).toListSequence();
-      }
+    myProject.getRepository().getModelAccess().runWriteAction(() -> {
+      ListSequence.fromList(myModels).visitAll(new IVisitor<SModel>() {
+        public void visit(SModel it) {
+          registerModelIfNeeded(it, perRootPersistence);
+        }
+      });
+      myMetadataModels = ListSequence.fromList(myModels).select(new ISelector<SModel, SModel>() {
+        public SModel select(SModel it) {
+          return createRegisteredMetaModel(it);
+        }
+      }).toListSequence();
     });
     final boolean trackMovedNodes = PropertiesComponent.getInstance().getBoolean("vcs.diff.track.moved.nodes", false);
     // TODO changesets should be probably built in a separate thread
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        myChangeSets = buildChangeSets(myModels, trackMovedNodes);
-        myMetadataChangeSets = buildChangeSets(myMetadataModels, trackMovedNodes);
-      }
+    myProject.getRepository().getModelAccess().runReadAction(() -> {
+      myChangeSets = buildChangeSets(myModels, trackMovedNodes);
+      myMetadataChangeSets = buildChangeSets(myMetadataModels, trackMovedNodes);
     });
     myDiffRegistry = CurrentDifferenceRegistry.getInstance(project.getProject());
     addModelDiffListeners(ListSequence.fromList(myModels).concat(ListSequence.fromList(myMetadataModels)));
@@ -168,11 +164,7 @@ public class ModelDifferenceViewer implements DataProvider {
     }
     // navigate to specific place in editor if requested
     if (myRootDifferencePane != null) {
-      myProject.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          myRootDifferencePane.navigateInitial(scrollTo);
-        }
-      });
+      myProject.getModelAccess().runReadAction(() -> myRootDifferencePane.navigateInitial(scrollTo));
     }
   }
 
@@ -229,15 +221,13 @@ public class ModelDifferenceViewer implements DataProvider {
     if (myTree != null) {
       myTree.dispose();
     }
-    myProject.getRepository().getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        if (myRegisteredModels != null) {
-          CollectionSequence.fromCollection(myRegisteredModels).visitAll(new IVisitor<SModel>() {
-            public void visit(SModel it) {
-              DiffModelUtil.unregisterModel(it);
-            }
-          });
-        }
+    myProject.getRepository().getModelAccess().runWriteAction(() -> {
+      if (myRegisteredModels != null) {
+        CollectionSequence.fromCollection(myRegisteredModels).visitAll(new IVisitor<SModel>() {
+          public void visit(SModel it) {
+            DiffModelUtil.unregisterModel(it);
+          }
+        });
       }
     });
     if (myRootDifferencePane != null) {
@@ -268,11 +258,7 @@ public class ModelDifferenceViewer implements DataProvider {
 
   private void syncMetadataChanges() {
     if (myEditable) {
-      myProject.getModelAccess().executeCommand(new Runnable() {
-        public void run() {
-          MetadataUtil.applyMetadataChanges(ListSequence.fromList(myModels).getElement(1), ListSequence.fromList(myMetadataModels).getElement(1));
-        }
-      });
+      myProject.getModelAccess().executeCommand(() -> MetadataUtil.applyMetadataChanges(ListSequence.fromList(myModels).getElement(1), ListSequence.fromList(myMetadataModels).getElement(1)));
     }
   }
 
@@ -296,17 +282,15 @@ public class ModelDifferenceViewer implements DataProvider {
     syncMetadataChanges();
 
     myRootId = rootId;
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        boolean isMetadataView = rootId == null;
-        SNodeId nodeId = (isMetadataView ? ListSequence.fromList(SModelOperations.roots(ListSequence.fromList(myMetadataChangeSets).getElement(0).getOldModel(), null)).first().getNodeId() : rootId);
-        if (myRootDifferencePane == null) {
-          myRootDifferencePane = (isThreePanelDiff() ? new ThreeSideRootDifferencePane(myProject, nodeId, isMetadataView, myTitles, myModels, myMetadataModels, myChangeSets, myMetadataChangeSets) : new TwoSideRootDifferencePane(myProject, nodeId, isMetadataView, myTitles, myModels, myMetadataModels, myChangeSets, myMetadataChangeSets));
-          attachRootDifferencePane(myRootDifferencePane);
-          myRootDifferencePane.navigateInitial(null);
-        } else {
-          myRootDifferencePane.setRootId(nodeId, isMetadataView);
-        }
+    myProject.getRepository().getModelAccess().runReadAction(() -> {
+      boolean isMetadataView = rootId == null;
+      SNodeId nodeId = (isMetadataView ? ListSequence.fromList(SModelOperations.roots(ListSequence.fromList(myMetadataChangeSets).getElement(0).getOldModel(), null)).first().getNodeId() : rootId);
+      if (myRootDifferencePane == null) {
+        myRootDifferencePane = (isThreePanelDiff() ? new ThreeSideRootDifferencePane(myProject, nodeId, isMetadataView, myTitles, myModels, myMetadataModels, myChangeSets, myMetadataChangeSets) : new TwoSideRootDifferencePane(myProject, nodeId, isMetadataView, myTitles, myModels, myMetadataModels, myChangeSets, myMetadataChangeSets));
+        attachRootDifferencePane(myRootDifferencePane);
+        myRootDifferencePane.navigateInitial(null);
+      } else {
+        myRootDifferencePane.setRootId(nodeId, isMetadataView);
       }
     });
   }
@@ -340,11 +324,7 @@ public class ModelDifferenceViewer implements DataProvider {
 
   public void navigate(@Nullable final Bounds scrollTo) {
     assert myRootDifferencePane != null;
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        myRootDifferencePane.navigateInitial(scrollTo);
-      }
-    });
+    myProject.getModelAccess().runReadAction(() -> myRootDifferencePane.navigateInitial(scrollTo));
   }
 
   @Nullable
@@ -463,12 +443,10 @@ public class ModelDifferenceViewer implements DataProvider {
 
   private void addDifferenceListener(final EditableSModel model) {
     final MyDifferenceListener listener = new MyDifferenceListener();
-    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
-      public void run() {
-        CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference(model);
-        MapSequence.fromMap(myCurrentDifferences).put(model, currentDifference);
-        currentDifference.addDifferenceListener(listener);
-      }
+    myDiffRegistry.getCommandQueue().runTask(() -> {
+      CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference(model);
+      MapSequence.fromMap(myCurrentDifferences).put(model, currentDifference);
+      currentDifference.addDifferenceListener(listener);
     });
     MapSequence.fromMap(myDiffListeners).put(model, listener);
   }
@@ -493,11 +471,7 @@ public class ModelDifferenceViewer implements DataProvider {
     public void changesRemoved(@NotNull List<ModelChange> changes) {
     }
     private void rehighlight() {
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          syncMetadataChanges();
-        }
-      });
+      ApplicationManager.getApplication().invokeLater(() -> syncMetadataChanges());
       check_b117w_a1a4xc(myRootDifferencePane);
     }
   }

@@ -34,11 +34,7 @@ public class Comment_DeleteMultipleRoleNodeInsideComment_Test extends BaseTransf
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("1683214195544037907", "1683214195544037914");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action"), false);
     }
   }
 }

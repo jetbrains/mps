@@ -22,7 +22,6 @@ import com.intellij.openapi.keymap.KeymapManager;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.Icon;
 import org.jdom.Element;
-import jetbrains.mps.plugins.tool.IComponentDisposer;
 import com.intellij.util.xmlb.annotations.Tag;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -94,11 +93,7 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
       tab = new DialogConsoleTab(myProject, this, title, history);
     }
     ListSequence.fromList(myTabs).addElement(tab);
-    addTab(tab, title, icon, new IComponentDisposer<BaseConsoleTab>() {
-      public void disposeComponent(BaseConsoleTab ct) {
-        ListSequence.fromList(myTabs).removeElement(ct);
-      }
-    }, openTool);
+    addTab(tab, title, icon, (BaseConsoleTab ct) -> ListSequence.fromList(myTabs).removeElement(ct), openTool);
     return tab;
   }
 
@@ -149,18 +144,10 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
 
   public void executeCommand(final SNode command) {
     final TabState tabState = new TabState();
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        tabState.title = ((String) BHReflection.invoke0(command, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
-      }
-    });
+    myProject.getRepository().getModelAccess().runReadAction(() -> tabState.title = ((String) BHReflection.invoke0(command, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))));
     tabState.isHistoryTab = true;
     final BaseConsoleTab tab = addConsoleTab(tabState, null, true);
-    myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        tab.execute(command, null, null);
-      }
-    });
+    myProject.getRepository().getModelAccess().executeCommand(() -> tab.execute(command, null, null));
   }
 
   public DialogConsoleTab getCurrentEditableTab() {

@@ -19,7 +19,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Comparator;
 import java.util.Objects;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -89,24 +88,22 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     for (SNode c : ((List<SNode>) BHReflection.invoke0(baseClass, CONCEPTS.ConceptBehavior$2, SMethodTrimmedId.create("getAllSuperBehaviors", CONCEPTS.ConceptBehavior$2, "1$X$vL9L8i8")))) {
       MapSequence.fromMap(containerIndex).put(c, i++);
     }
-    return Sequence.fromIterable(methods).sort(new Comparator<SNode>() {
-      public int compare(SNode a, SNode b) {
-        SNode parentA = SNodeOperations.getParent(a);
-        SNode parentB = SNodeOperations.getParent(b);
-        if (parentA == parentB) {
-          String aRole = SNodeOperations.getContainingLink(a).getName();
-          String bRole = SNodeOperations.getContainingLink(b).getName();
+    return Sequence.fromIterable(methods).sort((SNode a, SNode b) -> {
+      SNode parentA = SNodeOperations.getParent(a);
+      SNode parentB = SNodeOperations.getParent(b);
+      if (parentA == parentB) {
+        String aRole = SNodeOperations.getContainingLink(a).getName();
+        String bRole = SNodeOperations.getContainingLink(b).getName();
 
-          if (!(Objects.equals(aRole, bRole))) {
-            return aRole.compareTo(bRole);
-          }
-
-          return new Integer(IterableUtil.asList(parentA.getChildren(SNodeOperations.getContainingLink(a))).indexOf(a)).compareTo(IterableUtil.asList(parentB.getChildren(SNodeOperations.getContainingLink(b))).indexOf(b));
+        if (!(Objects.equals(aRole, bRole))) {
+          return aRole.compareTo(bRole);
         }
-        int iA = (parentA != null && MapSequence.fromMap(containerIndex).containsKey(parentA) ? MapSequence.fromMap(containerIndex).get(parentA) : 0);
-        int iB = (parentB != null && MapSequence.fromMap(containerIndex).containsKey(parentB) ? MapSequence.fromMap(containerIndex).get(parentB) : 0);
-        return new Integer(iA).compareTo(iB);
+
+        return new Integer(IterableUtil.asList(parentA.getChildren(SNodeOperations.getContainingLink(a))).indexOf(a)).compareTo(IterableUtil.asList(parentB.getChildren(SNodeOperations.getContainingLink(b))).indexOf(b));
       }
+      int iA = (parentA != null && MapSequence.fromMap(containerIndex).containsKey(parentA) ? MapSequence.fromMap(containerIndex).get(parentA) : 0);
+      int iB = (parentB != null && MapSequence.fromMap(containerIndex).containsKey(parentB) ? MapSequence.fromMap(containerIndex).get(parentB) : 0);
+      return new Integer(iA).compareTo(iB);
     }, true);
   }
   public static SNodeReference[] toNodePointers(Iterable<SNode> methods) {

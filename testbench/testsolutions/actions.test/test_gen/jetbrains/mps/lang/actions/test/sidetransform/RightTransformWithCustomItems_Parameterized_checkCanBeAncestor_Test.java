@@ -37,11 +37,7 @@ public class RightTransformWithCustomItems_Parameterized_checkCanBeAncestor_Test
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("3185679905992058595", "3185679905992058599");
-      EditorTestUtil.runWithTypeOverExistingText(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          typeString(" ");
-        }
-      }, false);
+      EditorTestUtil.runWithTypeOverExistingText(() -> typeString(" "), false);
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
       Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isMenuEmpty());

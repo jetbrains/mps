@@ -22,7 +22,6 @@ import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.FileSystem;
 import javax.swing.ImageIcon;
 import jetbrains.mps.util.IconCreationUtil;
-import org.jetbrains.mps.openapi.util.Consumer;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -64,11 +63,7 @@ public final class Image__BehaviorDescriptor extends BaseBHDescriptor {
     }
   }
   /*package*/ static byte[] getImageForGeneration_id2p1v3tObywX(@NotNull final SNode __thisNode__) {
-    return IconCreationUtil.drawIcon(new Consumer<IconCreationUtil.DrawContext>() {
-      public void consume(IconCreationUtil.DrawContext dc) {
-        new ImageIcon(SPropertyOperations.getString(__thisNode__, PROPS.file$He6o)).paintIcon(null, dc.g, 0, 0);
-      }
-    });
+    return IconCreationUtil.drawIcon((IconCreationUtil.DrawContext dc) -> new ImageIcon(SPropertyOperations.getString(__thisNode__, PROPS.file$He6o)).paintIcon(null, dc.g, 0, 0));
   }
 
   /*package*/ Image__BehaviorDescriptor() {

@@ -93,16 +93,14 @@ public class RenameReferencesParticipant extends RefactoringParticipantBase<SNod
               return searchResults;
             }
             public void confirm(final String finalState, final SRepository repository, RefactoringSession refactoringSession) {
-              refactoringSession.registerChange(new Runnable() {
-                public void run() {
-                  SNode node = containingNode.resolve(repository);
-                  if (node == null) {
-                    return;
-                  }
-                  if (node.getModel() instanceof EditableSModel && node.getReference(role) instanceof jetbrains.mps.smodel.SReference) {
-                    ((jetbrains.mps.smodel.SReference) node.getReference(role)).setResolveInfo(finalState);
-                    as_xv67ae_a0a1a2a0a0a0a0a1a0a0d0a0a0a0a6a1a8(node.getModel(), EditableSModel.class).setChanged(true);
-                  }
+              refactoringSession.registerChange(() -> {
+                SNode node = containingNode.resolve(repository);
+                if (node == null) {
+                  return;
+                }
+                if (node.getModel() instanceof EditableSModel && node.getReference(role) instanceof jetbrains.mps.smodel.SReference) {
+                  ((jetbrains.mps.smodel.SReference) node.getReference(role)).setResolveInfo(finalState);
+                  as_xv67ae_a0a1a2a0a0a0b0a0a3a0a0a0a0g0b0i(node.getModel(), EditableSModel.class).setChanged(true);
                 }
               });
             }
@@ -112,7 +110,7 @@ public class RenameReferencesParticipant extends RefactoringParticipantBase<SNod
       }).toListSequence();
     }
   }
-  private static <T> T as_xv67ae_a0a1a2a0a0a0a0a1a0a0d0a0a0a0a6a1a8(Object o, Class<T> type) {
+  private static <T> T as_xv67ae_a0a1a2a0a0a0b0a0a3a0a0a0a0g0b0i(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

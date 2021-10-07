@@ -19,7 +19,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import java.util.function.Supplier;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -54,11 +53,7 @@ public class StaticMethodCallOperation_Constraints extends BaseConstraintsDescri
               return new EmptyScope();
             }
             final SNode instance = SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
-            SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<SNode>() {
-              public SNode get() {
-                return TypecheckingFacade.getFromContext().getTypeOf(instance);
-              }
-            });
+            SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(() -> TypecheckingFacade.getFromContext().getTypeOf(instance));
 
             List<Scope> scopes = ListSequence.fromList(new ArrayList<Scope>());
             SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(instanceType, CONCEPTS.ClassifierType$bL);

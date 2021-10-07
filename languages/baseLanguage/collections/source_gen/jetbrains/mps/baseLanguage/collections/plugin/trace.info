@@ -22,27 +22,22 @@
   <root nodeRef="r:cf23edd7-256f-4b20-82d2-696c87889d85(jetbrains.mps.baseLanguage.collections.plugin)/5633688998557455304">
     <file name="customContainers_extension.java">
       <node id="5633688998557455304" at="17,39,18,69" concept="12" />
-      <node id="5633688998557455316" at="25,51,26,63" concept="9" />
-      <node id="5633688998557455326" at="26,63,27,177" concept="7" />
-      <node id="7260676928374766357" at="27,177,28,73" concept="8" />
-      <node id="5633688998557455304" at="34,0,35,0" concept="10" trace="CustomContainers$Mn" />
+      <node id="5633688998557455316" at="24,34,25,61" concept="9" />
+      <node id="5633688998557455326" at="25,61,26,175" concept="7" />
+      <node id="7260676928374766357" at="26,175,27,71" concept="8" />
+      <node id="5633688998557455304" at="32,0,33,0" concept="10" trace="CustomContainers$Mn" />
       <node id="5633688998557455304" at="17,0,20,0" concept="1" trace="customContainers_extension#()V" />
-      <node id="5633688998557455308" at="25,0,30,0" concept="6" trace="invoke#(Lorg/jetbrains/mps/openapi/module/SRepository;)Ljava/util/List;" />
-      <node id="5633688998557455307" at="23,89,30,6" concept="8" />
-      <node id="4296411869844546441" at="23,0,32,0" concept="0" trace="get#()Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;" />
+      <node id="5633688998557455307" at="23,89,28,6" concept="8" />
+      <node id="4296411869844546441" at="23,0,30,0" concept="0" trace="get#()Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_return_P1_E0;" />
       <scope id="5633688998557455304" at="17,39,18,69" />
       <scope id="5633688998557455304" at="17,0,20,0" />
-      <scope id="5633688998557455309" at="25,51,28,73">
+      <scope id="5633688998557455309" at="24,34,27,71">
         <var name="mdl" id="5633688998557455327" />
       </scope>
-      <scope id="5633688998557455308" at="25,0,30,0">
-        <var name="repo" id="5633688998557455308" />
-      </scope>
-      <scope id="4296411869844546443" at="23,89,30,6" />
-      <scope id="4296411869844546441" at="23,0,32,0" />
-      <unit id="5633688998557455304" at="33,0,36,0" name="jetbrains.mps.baseLanguage.collections.plugin.customContainers_extension$CONCEPTS" />
-      <unit id="5633688998557455308" at="24,15,30,5" name="jetbrains.mps.baseLanguage.collections.plugin.customContainers_extension$1" />
-      <unit id="5633688998557455304" at="16,0,37,0" name="jetbrains.mps.baseLanguage.collections.plugin.customContainers_extension" />
+      <scope id="4296411869844546443" at="23,89,28,6" />
+      <scope id="4296411869844546441" at="23,0,30,0" />
+      <unit id="5633688998557455304" at="31,0,34,0" name="jetbrains.mps.baseLanguage.collections.plugin.customContainers_extension$CONCEPTS" />
+      <unit id="5633688998557455304" at="16,0,35,0" name="jetbrains.mps.baseLanguage.collections.plugin.customContainers_extension" />
     </file>
   </root>
   <root nodeRef="r:cf23edd7-256f-4b20-82d2-696c87889d85(jetbrains.mps.baseLanguage.collections.plugin)/5633688998557707567">

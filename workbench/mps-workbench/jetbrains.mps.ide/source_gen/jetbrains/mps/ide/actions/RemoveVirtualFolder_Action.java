@@ -84,11 +84,9 @@ public class RemoveVirtualFolder_Action extends BaseAction {
       return;
     }
 
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        for (SModule module : ListSequence.fromList(event.getData(MPSCommonDataKeys.MODULES))) {
-          event.getData(MPSCommonDataKeys.MPS_PROJECT).setVirtualFolder(module, null);
-        }
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().executeCommand(() -> {
+      for (SModule module : ListSequence.fromList(event.getData(MPSCommonDataKeys.MODULES))) {
+        event.getData(MPSCommonDataKeys.MPS_PROJECT).setVirtualFolder(module, null);
       }
     });
     ProjectPane.getInstance(event.getData(CommonDataKeys.PROJECT)).rebuild();

@@ -18,7 +18,6 @@ import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.ide.platform.actions.DependenciesUtil;
 import com.intellij.openapi.ui.Messages;
 import org.jetbrains.annotations.Nullable;
@@ -88,12 +87,10 @@ public class SafeDeleteModuleDependency_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    boolean dependenciesExist = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        SModule from = SafeDeleteModuleDependency_Action.this.getModuleFrom(_params);
-        SModule to = SafeDeleteModuleDependency_Action.this.getModuleTo(_params);
-        return DependenciesUtil.hasDependenciesToShow(((MPSProject) MapSequence.fromMap(_params).get("project")), from, to);
-      }
+    boolean dependenciesExist = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess()).runReadAction(() -> {
+      SModule from = SafeDeleteModuleDependency_Action.this.getModuleFrom(_params);
+      SModule to = SafeDeleteModuleDependency_Action.this.getModuleTo(_params);
+      return DependenciesUtil.hasDependenciesToShow(((MPSProject) MapSequence.fromMap(_params).get("project")), from, to);
     });
     if (dependenciesExist) {
       int res = Messages.showDialog("Can't safe delete dependency", "Safe delete impossible", new String[]{"View dependencies", "Delete anyway", "Cancel"}, 0, null);
@@ -115,20 +112,18 @@ public class SafeDeleteModuleDependency_Action extends BaseAction {
     return check_iuftgz_a0a9(as_iuftgz_a0a0a9(((TreeNode) MapSequence.fromMap(_params).get("node")), DependencyTreeNode.class));
   }
   private void removeDependency(final Map<String, Object> _params) {
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        AbstractModule from = (AbstractModule) SafeDeleteModuleDependency_Action.this.getModuleFrom(_params);
-        final SModuleReference to = SafeDeleteModuleDependency_Action.this.getModuleTo(_params).getModuleReference();
-        ModuleDescriptor descriptor = from.getModuleDescriptor();
-        Collection<Dependency> dependencies = descriptor.getDependencies();
-        List<Dependency> badDeps = CollectionSequence.fromCollection(dependencies).where(new IWhereFilter<Dependency>() {
-          public boolean accept(Dependency it) {
-            return it.getModuleRef().equals(to);
-          }
-        }).toListSequence();
-        CollectionSequence.fromCollection(dependencies).removeSequence(ListSequence.fromList(badDeps));
-        from.save();
-      }
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().executeCommand(() -> {
+      AbstractModule from = (AbstractModule) SafeDeleteModuleDependency_Action.this.getModuleFrom(_params);
+      final SModuleReference to = SafeDeleteModuleDependency_Action.this.getModuleTo(_params).getModuleReference();
+      ModuleDescriptor descriptor = from.getModuleDescriptor();
+      Collection<Dependency> dependencies = descriptor.getDependencies();
+      List<Dependency> badDeps = CollectionSequence.fromCollection(dependencies).where(new IWhereFilter<Dependency>() {
+        public boolean accept(Dependency it) {
+          return it.getModuleRef().equals(to);
+        }
+      }).toListSequence();
+      CollectionSequence.fromCollection(dependencies).removeSequence(ListSequence.fromList(badDeps));
+      from.save();
     });
     ((Project) MapSequence.fromMap(_params).get("ideaProject")).getComponent(ProjectPluginManager.class).getTool(ModuleDependenies_Tool.class).resetAll();
   }

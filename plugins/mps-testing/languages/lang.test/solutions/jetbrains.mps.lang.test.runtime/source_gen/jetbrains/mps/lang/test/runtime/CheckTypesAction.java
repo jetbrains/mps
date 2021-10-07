@@ -23,27 +23,23 @@ public abstract class CheckTypesAction {
   }
 
   public void checkTypeIs(final SNode typeToCompare) {
-    checkNodeWithTypeCheckingAction(myNodeToCheck, new Runnable() {
-      public void run() {
-        SNode computedType = computeType();
-        NodeCheckerUtil.assertTypesAreTheSame(myNodeToCheck, computedType, typeToCompare);
-      }
+    checkNodeWithTypeCheckingAction(myNodeToCheck, () -> {
+      SNode computedType = computeType();
+      NodeCheckerUtil.assertTypesAreTheSame(myNodeToCheck, computedType, typeToCompare);
     });
   }
   public void checkTypeIn(final Collection<SNode> allowedTypes) {
-    checkNodeWithTypeCheckingAction(myNodeToCheck, new Runnable() {
-      public void run() {
-        SNode computedType = computeType();
-        boolean hasType = false;
-        for (SNode typeToCompare : allowedTypes) {
-          if (MatchingUtil.matchNodes(computedType, typeToCompare)) {
-            hasType = true;
-            break;
-          }
+    checkNodeWithTypeCheckingAction(myNodeToCheck, () -> {
+      SNode computedType = computeType();
+      boolean hasType = false;
+      for (SNode typeToCompare : allowedTypes) {
+        if (MatchingUtil.matchNodes(computedType, typeToCompare)) {
+          hasType = true;
+          break;
         }
-        Assert.assertTrue("node type <" + NodeCheckerUtil.nodeWithIdToString(computedType) + "> is not in <" + allowedTypes + ">", hasType);
-
       }
+      Assert.assertTrue("node type <" + NodeCheckerUtil.nodeWithIdToString(computedType) + "> is not in <" + allowedTypes + ">", hasType);
+
     });
   }
 

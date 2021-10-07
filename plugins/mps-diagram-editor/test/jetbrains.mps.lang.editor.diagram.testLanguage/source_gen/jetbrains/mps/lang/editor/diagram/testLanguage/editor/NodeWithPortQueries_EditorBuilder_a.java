@@ -221,21 +221,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
                 @Override
                 protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
                   super.registerSynchronizers(configuration);
-                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_X), new Runnable() {
-                    public void run() {
-                      updatePositionsFromModel(getTarget(), diagramNodeView);
-                    }
-                  }));
-                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_Y), new Runnable() {
-                    public void run() {
-                      updatePositionsFromModel(getTarget(), diagramNodeView);
-                    }
-                  }));
-                  configuration.add(Synchronizers.forProperty(getTarget().bounds(), new WritableProperty<Rectangle>() {
-                    public void set(Rectangle bounds) {
-                      getTarget().prop(MovableContentView.POSITION_X).set(bounds.origin.x);
-                      getTarget().prop(MovableContentView.POSITION_Y).set(bounds.origin.y);
-                    }
+                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_X), () -> updatePositionsFromModel(getTarget(), diagramNodeView)));
+                  configuration.add(Synchronizers.forProperty(getTarget().prop(MovableContentView.POSITION_Y), () -> updatePositionsFromModel(getTarget(), diagramNodeView)));
+                  configuration.add(Synchronizers.forProperty(getTarget().bounds(), (Rectangle bounds) -> {
+                    getTarget().prop(MovableContentView.POSITION_X).set(bounds.origin.x);
+                    getTarget().prop(MovableContentView.POSITION_Y).set(bounds.origin.y);
                   }));
                   myPropertyCell_tny8cn_a0a.registerSynchronizers(configuration, getTarget().prop(MovableContentView.POSITION_X));
                   myPropertyCell_tny8cn_a1a.registerSynchronizers(configuration, getTarget().prop(MovableContentView.POSITION_Y));
@@ -301,16 +291,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
           final BoxFigureExt contentView = (BoxFigureExt) getContentView();
           configuration.add(Synchronizers.forProperty(contentView.bounds(), getTarget().bounds));
           configuration.add(Synchronizers.forProperty(Properties.constant(Boolean.TRUE), getTarget().resizable));
-          configuration.add(Synchronizers.forProperty(getTarget().boundsDelta, new WritableProperty<Rectangle>() {
-            public void set(Rectangle delta) {
-              if (delta == null) {
-                return;
-              }
-              Vector positionDelta = delta.origin;
-              Vector sizeDelta = delta.dimension;
-              blockMapper.getTarget().move(positionDelta);
-              contentView.prop(ResizableContentView.PREFERRED_SIZE).set(contentView.prop(ResizableContentView.PREFERRED_SIZE).get().add(sizeDelta));
+          configuration.add(Synchronizers.forProperty(getTarget().boundsDelta, (Rectangle delta) -> {
+            if (delta == null) {
+              return;
             }
+            Vector positionDelta = delta.origin;
+            Vector sizeDelta = delta.dimension;
+            blockMapper.getTarget().move(positionDelta);
+            contentView.prop(ResizableContentView.PREFERRED_SIZE).set(contentView.prop(ResizableContentView.PREFERRED_SIZE).get().add(sizeDelta));
           }));
           configuration.add(Synchronizers.forObservableRole(this, myInputPorts, getTarget().inputPortDecotatorView.children(), new MapperFactory<String, PortDecoratorView>() {
             public Mapper<? extends String, ? extends PortDecoratorView> createMapper(final String id) {

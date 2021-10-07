@@ -49,20 +49,18 @@ public class InapplicableIntention_NotIncludedInMenu_Test extends BaseTransforma
       UsedLanguagesUtils.assertLanguageUsed(getEditorComponent(), MetaAdapterFactory.getLanguage(0xf015c5f872054441L, 0x9cc7dc7ef28ea903L, "jetbrains.mps.lang.editor.menus.extras.testLanguage"));
 
       final SRepository repository = getEditorComponent().getEditorContext().getRepository();
-      repository.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          AbstractIntentionMenuPart part = new AbstractIntentionMenuPart(ActionLookupUtils.getIntentionId(repository, new SNodePointer("r:8d2a217a-f2d0-4d4a-b867-e2dd2ddb731c(jetbrains.mps.lang.editor.menus.extras.testLanguage.intentions)", "6820996345401618935"))) {
-            @Nullable
-            @Override
-            protected TransformationMenuItem createItem(@NotNull TransformationMenuContext context, @NotNull IntentionExecutable executable) {
-              return new ActionItemBase();
-            }
-          };
+      repository.getModelAccess().runReadAction(() -> {
+        AbstractIntentionMenuPart part = new AbstractIntentionMenuPart(ActionLookupUtils.getIntentionId(repository, new SNodePointer("r:8d2a217a-f2d0-4d4a-b867-e2dd2ddb731c(jetbrains.mps.lang.editor.menus.extras.testLanguage.intentions)", "6820996345401618935"))) {
+          @Nullable
+          @Override
+          protected TransformationMenuItem createItem(@NotNull TransformationMenuContext context, @NotNull IntentionExecutable executable) {
+            return new ActionItemBase();
+          }
+        };
 
-          DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
+        DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
 
-          Assert.assertEquals(0, part.createItems(context).size());
-        }
+        Assert.assertEquals(0, part.createItems(context).size());
       });
     }
   }

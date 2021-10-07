@@ -12,7 +12,6 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import java.util.function.Predicate;
 import org.jetbrains.mps.openapi.model.SModel;
 
 /**
@@ -86,25 +85,13 @@ public final class ModelNameValidator {
     }
 
     final Wrappers._boolean duplicatesExistingModel = new Wrappers._boolean();
-    module.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        duplicatesExistingModel.value = !(module.getModels(new Predicate<SModel>() {
-          public boolean test(SModel model) {
-            return modelName.equals(model.getName());
-          }
-        }).isEmpty());
-      }
-    });
+    module.getRepository().getModelAccess().runReadAction(() -> duplicatesExistingModel.value = !(module.getModels((SModel model) -> modelName.equals(model.getName())).isEmpty()));
     if (duplicatesExistingModel.value) {
       return IdeBundle.message("dialogs.model.new.error.model.name.already.exists", modelName, module.getModuleName());
     }
 
     final Wrappers._boolean canCreateModel = new Wrappers._boolean();
-    module.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        canCreateModel.value = myModelRoot.canCreateModel(modelName);
-      }
-    });
+    module.getRepository().getModelAccess().runReadAction(() -> canCreateModel.value = myModelRoot.canCreateModel(modelName));
     if (!(canCreateModel.value)) {
       return IdeBundle.message("dialogs.model.new.error.unable.create.under.model.root");
     }

@@ -50,11 +50,9 @@ public class TestProgressLine extends NonOpaquePanel implements TestRunStateUpda
     if (data.getAvailableText() != null) {
       return;
     }
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        updateProgressBar(data);
-        updateLabel(data);
-      }
+    SwingUtilities.invokeLater(() -> {
+      updateProgressBar(data);
+      updateLabel(data);
     });
   }
 

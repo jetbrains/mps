@@ -17,7 +17,6 @@ import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import java.util.function.Function;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.behavior.BuildProject__BehaviorDescriptor;
@@ -57,21 +56,19 @@ public class BuildMps_ModuleDependencyOnModule_Constraints extends BaseConstrain
             // logic of aforementioned method right here, using scope evaluation mechanism capable of caching.
             final SNode bp = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.BuildProject$ae, false, false);
             final String key = SPropertyOperations.getString(bp, PROPS.name$MnvL) + bp.getNodeId();
-            return _context.getScopeEvaluationContext().ofModel(_context.getModel(), key, new Function<SModel, Scope>() {
-              public Scope apply(SModel m) {
-                Iterable<SNode> projects = Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(bp, ((boolean) false))).concat(Sequence.fromIterable(Sequence.<SNode>singleton(bp)));
-                Scope s = ListScope.forNamedElements(Sequence.fromIterable(projects).translate(new ITranslator2<SNode, SNode>() {
-                  public Iterable<SNode> translate(SNode p) {
-                    return ListSequence.fromList(SLinkOperations.getChildren(p, LINKS.parts$mGDj)).translate(new ITranslator2<SNode, SNode>() {
-                      public Iterable<SNode> translate(SNode it) {
-                        return SNodeOperations.getNodeDescendants(it, CONCEPTS.BuildMps_Module$JW, true, new SAbstractConcept[]{});
-                      }
-                    });
-                  }
-                }).toListSequence());
-                // FIXME need to get type equivalency (RefScopeType==ClassifierType<Scope>) fixed.
-                return ((Scope) s);
-              }
+            return _context.getScopeEvaluationContext().ofModel(_context.getModel(), key, (SModel m) -> {
+              Iterable<SNode> projects = Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(bp, ((boolean) false))).concat(Sequence.fromIterable(Sequence.<SNode>singleton(bp)));
+              Scope s = ListScope.forNamedElements(Sequence.fromIterable(projects).translate(new ITranslator2<SNode, SNode>() {
+                public Iterable<SNode> translate(SNode p) {
+                  return ListSequence.fromList(SLinkOperations.getChildren(p, LINKS.parts$mGDj)).translate(new ITranslator2<SNode, SNode>() {
+                    public Iterable<SNode> translate(SNode it) {
+                      return SNodeOperations.getNodeDescendants(it, CONCEPTS.BuildMps_Module$JW, true, new SAbstractConcept[]{});
+                    }
+                  });
+                }
+              }).toListSequence());
+              // FIXME need to get type equivalency (RefScopeType==ClassifierType<Scope>) fixed.
+              return ((Scope) s);
             });
           }
         };

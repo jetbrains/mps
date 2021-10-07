@@ -10,7 +10,6 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
 import com.intellij.openapi.util.Disposer;
-import com.intellij.openapi.Disposable;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -46,11 +45,7 @@ public final class ModelMergeConflictTracker implements StartupActivity.Backgrou
     }
     final RepoListenerRegistrar reg = new RepoListenerRegistrar(mpsProject.getRepository(), new LoadSaveProblemsListener(mpsProject));
     reg.attach();
-    Disposer.register(project, new Disposable() {
-      public void dispose() {
-        reg.detach();
-      }
-    });
+    Disposer.register(project, () -> reg.detach());
   }
 
 
@@ -100,34 +95,30 @@ public final class ModelMergeConflictTracker implements StartupActivity.Backgrou
 
         // FIXME next code originates from SuspiciousModelIndex and needs to be refactored!
         // runnable to get executed in EDT
-        final Computable<Object> conflictableReload = new Computable<Object>() {
-          public Object compute() {
-            final SRepository projectRepo = myProject.getRepository();
-            // see MPS-18743
-            new SaveRepositoryCommand(projectRepo).execute();
+        final Computable<Object> conflictableReload = () -> {
+          final SRepository projectRepo = myProject.getRepository();
+          // see MPS-18743
+          new SaveRepositoryCommand(projectRepo).execute();
 
-            final AbstractVcsHelper vcsHelper = AbstractVcsHelper.getInstance(myProject.getProject());
-            List<VirtualFile> mergedFiles = vcsHelper.showMergeDialog(conflictingModelFiles);
-            if (!(mergedFiles.isEmpty())) {
-              // SuspiciousModelIndex used to force reload from disk inside model command. I don't see any reason for that
-              // git log suggests ( 86fb2dc0) it was to fix MPS-7990, though I believe it might be related to module, not model files (i.e. command to re-register models)
-              projectRepo.getModelAccess().runWriteAction(new Runnable() {
-                public void run() {
-                  SModel model = modelInConflict.resolve(projectRepo);
-                  if (model instanceof EditableSModel) {
-                    ((EditableSModel) model).reloadFromSource();
-                  }
+          final AbstractVcsHelper vcsHelper = AbstractVcsHelper.getInstance(myProject.getProject());
+          List<VirtualFile> mergedFiles = vcsHelper.showMergeDialog(conflictingModelFiles);
+          if (!(mergedFiles.isEmpty())) {
+            // SuspiciousModelIndex used to force reload from disk inside model command. I don't see any reason for that
+            // git log suggests ( 86fb2dc0) it was to fix MPS-7990, though I believe it might be related to module, not model files (i.e. command to re-register models)
+            projectRepo.getModelAccess().runWriteAction(new Runnable() {
+              public void run() {
+                SModel model = modelInConflict.resolve(projectRepo);
+                if (model instanceof EditableSModel) {
+                  ((EditableSModel) model).reloadFromSource();
                 }
-              });
-            }
-            return null;
+              }
+            });
           }
+          return null;
         };
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          public void run() {
-            ReloadManager reloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
-            reloadManager.computeNoReload(conflictableReload);
-          }
+        ApplicationManager.getApplication().invokeLater(() -> {
+          ReloadManager reloadManager = ApplicationManager.getApplication().getComponent(ReloadManager.class);
+          reloadManager.computeNoReload(conflictableReload);
         }, ModalityState.defaultModalityState(), myProject.getProject().getDisposed());
       }
     }

@@ -36,22 +36,20 @@ public class MakeFieldStatic extends BaseRefactoring {
   }
   public boolean init(final RefactoringContext refactoringContext) {
     final SNode node = refactoringContext.getSelectedNode();
-    refactoringContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        if (SNodeOperations.isInstanceOf(node, CONCEPTS.FieldDeclaration$ie)) {
-          refactoringContext.setParameter("declaration", SNodeOperations.cast(node, CONCEPTS.FieldDeclaration$ie));
-        } else {
-          refactoringContext.setParameter("declaration", SNodeOperations.cast(ListSequence.fromList(SNodeOperations.getReferences(node)).first().getTargetNode(), CONCEPTS.FieldDeclaration$ie));
-        }
-        // XXX perhaps, we shall use refactoringContext.mpsProject.getScope() instead of refactoringContext.scope
-        //     as we might be interested in any usage. However, it's not clear what rc.scope is and as since it's
-        //     technically the same now, I decided to go with just rc.scope.
-        refactoringContext.setParameter("usages", FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) refactoringContext.getParameter("declaration")), refactoringContext.getCurrentScope(), "jetbrains.mps.baseLanguage.findUsages.FieldUsages_Finder"));
-        refactoringContext.setParameter("hasExternalUsages", false);
-        for (SearchResult<SNode> result : ListSequence.fromList(((SearchResults<SNode>) refactoringContext.getParameter("usages")).getSearchResults())) {
-          if (SNodeOperations.getContainingRoot(result.getObject()) != SNodeOperations.getContainingRoot(((SNode) refactoringContext.getParameter("declaration")))) {
-            refactoringContext.setParameter("hasExternalUsages", true);
-          }
+    refactoringContext.getRepository().getModelAccess().runReadAction(() -> {
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.FieldDeclaration$ie)) {
+        refactoringContext.setParameter("declaration", SNodeOperations.cast(node, CONCEPTS.FieldDeclaration$ie));
+      } else {
+        refactoringContext.setParameter("declaration", SNodeOperations.cast(ListSequence.fromList(SNodeOperations.getReferences(node)).first().getTargetNode(), CONCEPTS.FieldDeclaration$ie));
+      }
+      // XXX perhaps, we shall use refactoringContext.mpsProject.getScope() instead of refactoringContext.scope
+      //     as we might be interested in any usage. However, it's not clear what rc.scope is and as since it's
+      //     technically the same now, I decided to go with just rc.scope.
+      refactoringContext.setParameter("usages", FindUtils.getSearchResults(new EmptyProgressMonitor(), ((SNode) refactoringContext.getParameter("declaration")), refactoringContext.getCurrentScope(), "jetbrains.mps.baseLanguage.findUsages.FieldUsages_Finder"));
+      refactoringContext.setParameter("hasExternalUsages", false);
+      for (SearchResult<SNode> result : ListSequence.fromList(((SearchResults<SNode>) refactoringContext.getParameter("usages")).getSearchResults())) {
+        if (SNodeOperations.getContainingRoot(result.getObject()) != SNodeOperations.getContainingRoot(((SNode) refactoringContext.getParameter("declaration")))) {
+          refactoringContext.setParameter("hasExternalUsages", true);
         }
       }
     });

@@ -22,7 +22,6 @@ import java.util.Collections;
 import org.jetbrains.annotations.Nullable;
 import java.util.function.Function;
 import jetbrains.mps.smodel.LanguageAspect;
-import java.util.function.Consumer;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.runtime.FindUsageAspectDescriptor;
 import jetbrains.mps.smodel.runtime.FinderRegistry;
@@ -125,11 +124,7 @@ public final class FindersManager implements CoreComponent, LanguageRegistryList
     if (myLoaded) {
       return;
     }
-    myLanguageRegistry.withAvailableLanguages(new Consumer<LanguageRuntime>() {
-      public void accept(LanguageRuntime lr) {
-        initFindersDescriptor(lr);
-      }
-    });
+    myLanguageRegistry.withAvailableLanguages((LanguageRuntime lr) -> initFindersDescriptor(lr));
     myLoaded = true;
   }
   private void clear() {

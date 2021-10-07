@@ -18,7 +18,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import java.util.function.Supplier;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.baseLanguage.scopes.Members;
@@ -47,11 +46,7 @@ public class FieldReferenceOperation_Constraints extends BaseConstraintsDescript
           public Scope createScope(final ReferenceConstraintsContext _context) {
             // fields declared in hierarhy of class specified by left expression. only applicable to expressions of classifier-type
             final SNode instance = SLinkOperations.getTarget(SNodeOperations.cast((((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
-            SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<SNode>() {
-              public SNode get() {
-                return TypecheckingFacade.getFromContext().getTypeOf(instance);
-              }
-            });
+            SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(() -> TypecheckingFacade.getFromContext().getTypeOf(instance));
             SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(instanceType, CONCEPTS.ClassifierType$bL);
             if ((SLinkOperations.getTarget(classifierType, LINKS.classifier$cxMr) == null)) {
               return new EmptyScope();

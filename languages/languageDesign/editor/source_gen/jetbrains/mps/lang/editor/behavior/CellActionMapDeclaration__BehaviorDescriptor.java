@@ -155,11 +155,7 @@ public final class CellActionMapDeclaration__BehaviorDescriptor extends BaseBHDe
   }
   /*package*/ static Iterable<SNode> collectItemsOfType_id5Sx2dSLnOI$(@NotNull SNode __thisNode__, SEnumerationLiteral actionId) {
     final List<SNode> result = ListSequence.fromList(new ArrayList<SNode>());
-    Consumer<? super SNode> add = new Consumer<SNode>() {
-      public void accept(SNode item) {
-        ListSequence.fromList(result).addElement(item);
-      }
-    };
+    Consumer<? super SNode> add = (SNode item) -> ListSequence.fromList(result).addElement(item);
     CellActionMapDeclaration__BehaviorDescriptor.forEachActionOfType_id2pg2GNQfgVG.invoke(__thisNode__, actionId, add);
     return result;
   }

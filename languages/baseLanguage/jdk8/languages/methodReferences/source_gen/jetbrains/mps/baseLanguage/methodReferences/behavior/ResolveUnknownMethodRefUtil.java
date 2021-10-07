@@ -34,14 +34,12 @@ public final class ResolveUnknownMethodRefUtil {
       final SNode targetMethod = Sequence.fromIterable(IFixableMethodReference__BehaviorDescriptor.getAvailableMethodDeclarations_id50EF2fWdwEN.invoke(x, SPropertyOperations.getString(x, PROPS.methodName$oxdi))).first();
 
       if ((targetMethod != null)) {
-        return new _FunctionTypes._return_P0_E0<SNode>() {
-          public SNode invoke() {
-            SNode mRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x34d254ec4f4136fL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference"));
-            SLinkOperations.setTarget(mRef, LINKS.target$Woec, SLinkOperations.getTarget(x, LINKS.target$Woec));
-            SLinkOperations.setTarget(mRef, LINKS.method$8Sfb, targetMethod);
-            reattachTypeArguments(x, mRef);
-            return mRef;
-          }
+        return () -> {
+          SNode mRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x34d254ec4f4136fL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference"));
+          SLinkOperations.setTarget(mRef, LINKS.target$Woec, SLinkOperations.getTarget(x, LINKS.target$Woec));
+          SLinkOperations.setTarget(mRef, LINKS.method$8Sfb, targetMethod);
+          reattachTypeArguments(x, mRef);
+          return mRef;
         };
       }
     }
@@ -59,50 +57,46 @@ public final class ResolveUnknownMethodRefUtil {
     if (SNodeOperations.isInstanceOf(operand, CONCEPTS.Classifier$Ix)) {
       final SNode target = ((operand == null) ? null : SNodeOperations.cast(operand, CONCEPTS.Classifier$Ix));
 
-      return new _FunctionTypes._return_P0_E0<SNode>() {
-        public SNode invoke() {
-          SNode mRef;
+      return () -> {
+        SNode mRef;
 
-          // Usual method ref or constructor
-          if (!(Objects.equals(SPropertyOperations.getString(x, PROPS.methodName$oxdi), "<init>"))) {
-            mRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x4b3463a3c4af5feeL, "jetbrains.mps.baseLanguage.methodReferences.structure.UnknownMethodReference"));
-            SPropertyOperations.assign(SNodeOperations.cast(mRef, CONCEPTS.UnknownMethodReference$lD), PROPS.methodName$oxdi, SPropertyOperations.getString(x, PROPS.methodName$oxdi));
-            SPropertyOperations.assign(SNodeOperations.cast(mRef, CONCEPTS.UnknownMethodReference$lD), PROPS.targetResolved$e43v, true);
-          } else {
-            // Reference any constructor, auto fixing will then resolve the correct one
-            mRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x34d254ec4f4136fL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference"));
-            SLinkOperations.setTarget(mRef, LINKS.method$8Sfb, SNodeOperations.as(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(target)).findFirst(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$yG);
-              }
-            }), CONCEPTS.ConstructorDeclaration$yG));
-          }
-
-          // Resolve target
-          SNode clType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
-          SLinkOperations.setTarget(clType, LINKS.classifier$cxMr, target);
-
-          SLinkOperations.setTarget(mRef, LINKS.target$Woec, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x6dd7c320c6fc97cdL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReferenceTypeTargetExpression")));
-          SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(mRef, LINKS.target$Woec), CONCEPTS.MethodReferenceTypeTargetExpression$a3), LINKS.type$z9_f, clType);
-
-          reattachTypeArguments(x, mRef);
-          return mRef;
+        // Usual method ref or constructor
+        if (!(Objects.equals(SPropertyOperations.getString(x, PROPS.methodName$oxdi), "<init>"))) {
+          mRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x4b3463a3c4af5feeL, "jetbrains.mps.baseLanguage.methodReferences.structure.UnknownMethodReference"));
+          SPropertyOperations.assign(SNodeOperations.cast(mRef, CONCEPTS.UnknownMethodReference$lD), PROPS.methodName$oxdi, SPropertyOperations.getString(x, PROPS.methodName$oxdi));
+          SPropertyOperations.assign(SNodeOperations.cast(mRef, CONCEPTS.UnknownMethodReference$lD), PROPS.targetResolved$e43v, true);
+        } else {
+          // Reference any constructor, auto fixing will then resolve the correct one
+          mRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x34d254ec4f4136fL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReference"));
+          SLinkOperations.setTarget(mRef, LINKS.method$8Sfb, SNodeOperations.as(ListSequence.fromList(IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invoke(target)).findFirst(new IWhereFilter<SNode>() {
+            public boolean accept(SNode it) {
+              return SNodeOperations.isInstanceOf(it, CONCEPTS.ConstructorDeclaration$yG);
+            }
+          }), CONCEPTS.ConstructorDeclaration$yG));
         }
+
+        // Resolve target
+        SNode clType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
+        SLinkOperations.setTarget(clType, LINKS.classifier$cxMr, target);
+
+        SLinkOperations.setTarget(mRef, LINKS.target$Woec, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x6dd7c320c6fc97cdL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReferenceTypeTargetExpression")));
+        SLinkOperations.setTarget(SNodeOperations.cast(SLinkOperations.getTarget(mRef, LINKS.target$Woec), CONCEPTS.MethodReferenceTypeTargetExpression$a3), LINKS.type$z9_f, clType);
+
+        reattachTypeArguments(x, mRef);
+        return mRef;
       };
 
     } else if (SNodeOperations.isInstanceOf(operand, CONCEPTS.Expression$mB)) {
       // operand is some other expression. it's supposed to be an instance method call then
 
-      return new _FunctionTypes._return_P0_E0<SNode>() {
-        public SNode invoke() {
-          SNode mRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x4b3463a3c4af5feeL, "jetbrains.mps.baseLanguage.methodReferences.structure.UnknownMethodReference"));
-          SLinkOperations.setTarget(mRef, LINKS.target$Woec, SNodeOperations.cast(operand, CONCEPTS.Expression$mB));
-          SPropertyOperations.assign(mRef, PROPS.targetResolved$e43v, true);
-          SPropertyOperations.assign(mRef, PROPS.methodName$oxdi, SPropertyOperations.getString(x, PROPS.methodName$oxdi));
+      return () -> {
+        SNode mRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x4b3463a3c4af5feeL, "jetbrains.mps.baseLanguage.methodReferences.structure.UnknownMethodReference"));
+        SLinkOperations.setTarget(mRef, LINKS.target$Woec, SNodeOperations.cast(operand, CONCEPTS.Expression$mB));
+        SPropertyOperations.assign(mRef, PROPS.targetResolved$e43v, true);
+        SPropertyOperations.assign(mRef, PROPS.methodName$oxdi, SPropertyOperations.getString(x, PROPS.methodName$oxdi));
 
-          reattachTypeArguments(x, mRef);
-          return mRef;
-        }
+        reattachTypeArguments(x, mRef);
+        return mRef;
       };
 
     } else {

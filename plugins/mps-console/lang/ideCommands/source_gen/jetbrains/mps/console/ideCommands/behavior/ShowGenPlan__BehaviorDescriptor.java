@@ -35,7 +35,6 @@ import jetbrains.mps.console.ideCommands.util.PartitioningHelper;
 import jetbrains.mps.generator.impl.plan.GenerationPlan;
 import jetbrains.mps.generator.impl.plan.EngagedGeneratorCollector;
 import java.util.ArrayList;
-import java.util.function.Consumer;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -109,11 +108,7 @@ public final class ShowGenPlan__BehaviorDescriptor extends BaseBHDescriptor {
     egc.getGenerators();
     helper.printLanguages(languageRegistry, egc.getDirectlyUsedLanguages(), gp.getGenerators());
     final ArrayList<String> trace = new ArrayList<String>();
-    egc.dump(new Consumer<String>() {
-      public void accept(String s) {
-        trace.add(s);
-      }
-    });
+    egc.dump((String s) -> trace.add(s));
     helper.printToConsole("Engaged generators with trace:", trace);
     helper.printConnectedComponents(Sequence.<SModel>singleton(model));
   }

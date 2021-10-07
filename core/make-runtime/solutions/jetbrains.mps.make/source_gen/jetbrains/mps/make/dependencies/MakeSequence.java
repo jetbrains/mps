@@ -28,11 +28,9 @@ public class MakeSequence {
   }
 
   private void prepareClusters() {
-    myMakeSession.getProject().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ModulesClusterizer clusterizer = new ModulesClusterizer(myMakeSession);
-        myClusters = clusterizer.clusterize(myInputRes);
-      }
+    myMakeSession.getProject().getModelAccess().runReadAction(() -> {
+      ModulesClusterizer clusterizer = new ModulesClusterizer(myMakeSession);
+      myClusters = clusterizer.clusterize(myInputRes);
     });
   }
 

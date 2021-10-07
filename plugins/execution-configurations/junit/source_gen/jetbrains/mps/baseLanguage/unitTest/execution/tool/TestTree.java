@@ -253,11 +253,7 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
       }
       ITestNodeWrapper firstNotPassed = state.key();
       final TestTreeNode treeNode = getUINodeByModelNode(firstNotPassed);
-      TestTree.invokeLater(new Runnable() {
-        public void run() {
-          setCurrentNode(treeNode);
-        }
-      });
+      TestTree.invokeLater(() -> setCurrentNode(treeNode));
     }
   }
 
@@ -281,11 +277,7 @@ public class TestTree extends MPSTree implements Disposable, TestStateListener {
     final ITestNodeWrapper currentNode = event.getTestKey().getNode();
     updateState(currentNode, TestState.IN_PROGRESS);
     if (UnitTestOptions.isTrackRunning()) {
-      TestTree.invokeLater(new Runnable() {
-        public void run() {
-          setCurrentNode(getUINodeByModelNode(currentNode));
-        }
-      });
+      TestTree.invokeLater(() -> setCurrentNode(getUINodeByModelNode(currentNode)));
     }
   }
 

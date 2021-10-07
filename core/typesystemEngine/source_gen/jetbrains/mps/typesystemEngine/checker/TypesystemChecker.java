@@ -12,7 +12,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.TypecheckingSession;
-import java.util.function.Consumer;
+import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.errors.item.IssueKindReportItem;
@@ -23,22 +23,16 @@ public class TypesystemChecker extends IChecker.AbstractRootChecker<NodeReportIt
   }
   public Set<NodeReportItem> getErrors(final SNode root, SRepository repository) {
     final Set<NodeReportItem> errors = SetSequence.fromSet(new HashSet<NodeReportItem>());
-    TypecheckingFacade.getFromContext().runIsolated(TypecheckingSession.Flags.forRoot(root).incremental(), new Runnable() {
-      public void run() {
+    TypecheckingFacade.getFromContext().runIsolated(TypecheckingSession.Flags.forRoot(root).incremental(), () -> {
 
-        TypecheckingFacade.getFromContext().checkRecursively(root, new Consumer<NodeReportItem>() {
-          public void accept(NodeReportItem it) {
-            SetSequence.fromSet(errors).addElement(it);
-          }
-        });
+      TypecheckingFacade.getFromContext().checkRecursively(root, (NodeReportItem it) -> SetSequence.fromSet(errors).addElement(it));
 
-      }
     });
 
     return errors;
   }
   @Override
-  public void check(SNode root, SRepository repository, final org.jetbrains.mps.openapi.util.Consumer<? super NodeReportItem> errorCollector, final ProgressMonitor monitor) {
+  public void check(SNode root, SRepository repository, final Consumer<? super NodeReportItem> errorCollector, final ProgressMonitor monitor) {
     SetSequence.fromSet(getErrors(root, repository)).visitAll(new IVisitor<NodeReportItem>() {
       public void visit(NodeReportItem it) {
         errorCollector.consume(it);

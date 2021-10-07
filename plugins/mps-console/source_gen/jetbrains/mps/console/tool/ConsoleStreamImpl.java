@@ -82,15 +82,7 @@ public class ConsoleStreamImpl implements ConsoleStream {
     if (resultsCount == 0) {
       addText("empty sequence");
     } else {
-      addClosure(new Runnable() {
-        public void run() {
-          project.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              ConsoleUtil.show(project, results);
-            }
-          });
-        }
-      }, resultsCount + " " + resultDescription);
+      addClosure(() -> project.getRepository().getModelAccess().runReadAction(() -> ConsoleUtil.show(project, results)), resultsCount + " " + resultDescription);
     }
   }
 

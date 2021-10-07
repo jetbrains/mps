@@ -84,35 +84,33 @@ public class HighlightUsages_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("editing.highlightUsages");
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        NodeHighlightManager highlightManager = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightManager();
-        EditorMessageOwner messageOwner = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightMessagesOwner();
-        SNode node = APICellAdapter.getSNodeWRTReference(((EditorCell) MapSequence.fromMap(_params).get("editorCell")));
-        Set<SReference> usages = FindUsagesFacade.getInstance().findUsages(new ModelsScope(((SModel) MapSequence.fromMap(_params).get("model"))), Collections.<SNode>singleton(node), new EmptyProgressMonitor());
-        boolean highlight = highlightManager.getMessagesFor(node, messageOwner).isEmpty();
-        if (SNodeOperations.getContainingRoot(node) == ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getRootCell().getSNode().getContainingRoot()) {
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(() -> {
+      NodeHighlightManager highlightManager = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightManager();
+      EditorMessageOwner messageOwner = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getHighlightMessagesOwner();
+      SNode node = APICellAdapter.getSNodeWRTReference(((EditorCell) MapSequence.fromMap(_params).get("editorCell")));
+      Set<SReference> usages = FindUsagesFacade.getInstance().findUsages(new ModelsScope(((SModel) MapSequence.fromMap(_params).get("model"))), Collections.<SNode>singleton(node), new EmptyProgressMonitor());
+      boolean highlight = highlightManager.getMessagesFor(node, messageOwner).isEmpty();
+      if (SNodeOperations.getContainingRoot(node) == ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getRootCell().getSNode().getContainingRoot()) {
+        if (highlight) {
+          highlightManager.mark(node, HighlightConstants.NODE_COLOR, "source node", messageOwner);
+        } else {
+          for (SimpleEditorMessage message : ListSequence.fromList(highlightManager.getMessagesFor(node, messageOwner))) {
+            highlightManager.unmark(message);
+          }
+        }
+      }
+      for (SReference ref : SetSequence.fromSet(usages)) {
+        if (ref.getSourceNode().getContainingRoot() == ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getRootCell().getSNode().getContainingRoot()) {
           if (highlight) {
-            highlightManager.mark(node, HighlightConstants.NODE_COLOR, "source node", messageOwner);
+            highlightManager.mark(((SNode) ref.getSourceNode()), HighlightConstants.USAGES_COLOR, "usage", messageOwner);
           } else {
-            for (SimpleEditorMessage message : ListSequence.fromList(highlightManager.getMessagesFor(node, messageOwner))) {
+            for (SimpleEditorMessage message : ListSequence.fromList(highlightManager.getMessagesFor(((SNode) ref.getSourceNode()), messageOwner))) {
               highlightManager.unmark(message);
             }
           }
         }
-        for (SReference ref : SetSequence.fromSet(usages)) {
-          if (ref.getSourceNode().getContainingRoot() == ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getRootCell().getSNode().getContainingRoot()) {
-            if (highlight) {
-              highlightManager.mark(((SNode) ref.getSourceNode()), HighlightConstants.USAGES_COLOR, "usage", messageOwner);
-            } else {
-              for (SimpleEditorMessage message : ListSequence.fromList(highlightManager.getMessagesFor(((SNode) ref.getSourceNode()), messageOwner))) {
-                highlightManager.unmark(message);
-              }
-            }
-          }
-        }
-        highlightManager.repaintAndRebuildEditorMessages();
       }
+      highlightManager.repaintAndRebuildEditorMessages();
     });
   }
 }

@@ -61,11 +61,9 @@ public class AntTaskExecutionUtil {
         if (LOG.isEnabledFor(Level.ERROR)) {
           LOG.error(error.getMessage());
         }
-        project.getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            Logger logger = LogManager.getLogger(AntTaskExecutionUtil.class);
-            error.logProblems(new LogHandler(logger));
-          }
+        project.getRepository().getModelAccess().runReadAction(() -> {
+          Logger logger = LogManager.getLogger(AntTaskExecutionUtil.class);
+          error.logProblems(new LogHandler(logger));
         });
 
         rv.set(Boolean.FALSE);
@@ -73,11 +71,7 @@ public class AntTaskExecutionUtil {
     };
     task.run();
 
-    project.getRepository().getModelAccess().runWriteInEDT(new Runnable() {
-      public void run() {
-        project.getRepository().saveAll();
-      }
-    });
+    project.getRepository().getModelAccess().runWriteInEDT(() -> project.getRepository().saveAll());
 
     return rv.get();
   }

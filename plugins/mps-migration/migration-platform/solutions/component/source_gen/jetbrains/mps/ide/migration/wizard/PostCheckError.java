@@ -12,7 +12,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import org.jetbrains.mps.openapi.util.Processor;
 import jetbrains.mps.lang.migration.runtime.base.Problem;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/2620437876316153983", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
@@ -44,11 +43,9 @@ public class PostCheckError extends MigrationError {
   }
   public Iterable<IssueKindReportItem> getProblems(ProgressIndicator progressIndicator) {
     final List<IssueKindReportItem> res = ListSequence.fromList(new ArrayList<IssueKindReportItem>());
-    myChecker.findNotMigrated(new ProgressMonitorAdapter(progressIndicator), myMigrationsToCheck, new Processor<Problem>() {
-      public boolean process(Problem p) {
-        ListSequence.fromList(res).addElement(p);
-        return ListSequence.fromList(res).count() < 100;
-      }
+    myChecker.findNotMigrated(new ProgressMonitorAdapter(progressIndicator), myMigrationsToCheck, (Problem p) -> {
+      ListSequence.fromList(res).addElement(p);
+      return ListSequence.fromList(res).count() < 100;
     });
     return res;
   }

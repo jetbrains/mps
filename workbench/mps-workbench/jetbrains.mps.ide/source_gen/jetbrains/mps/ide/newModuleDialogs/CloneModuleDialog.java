@@ -50,19 +50,13 @@ public final class CloneModuleDialog extends AbstractModuleCreationDialog {
     CopyModuleHelper helper = new CopyModuleHelper(myProject, myModuleOriginal, mySettings.getModuleName(), moduleLocationFile, myVirtualFolder);
     try {
       myResult = helper.copy();
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          showPopup(ModuleNameUtil.getModuleType(myModuleOriginal) + " <i>" + myModuleOriginal.getModuleName() + "</i> has been successfully cloned", MessageType.INFO);
-        }
-      });
+      ApplicationManager.getApplication().invokeLater(() -> showPopup(ModuleNameUtil.getModuleType(myModuleOriginal) + " <i>" + myModuleOriginal.getModuleName() + "</i> has been successfully cloned", MessageType.INFO));
     } catch (final CopyNotSupportedException e) {
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          String errorDescription = e.getMessage();
-          String header = "Cloning of <i>" + myModuleOriginal.getModuleName() + "</i> finished with error";
-          String separator = ((errorDescription == null || errorDescription.length() == 0) ? "\n" : ":\n");
-          showPopup(header + separator + StringUtil.emptyIfNull(errorDescription), MessageType.ERROR);
-        }
+      ApplicationManager.getApplication().invokeLater(() -> {
+        String errorDescription = e.getMessage();
+        String header = "Cloning of <i>" + myModuleOriginal.getModuleName() + "</i> finished with error";
+        String separator = ((errorDescription == null || errorDescription.length() == 0) ? "\n" : ":\n");
+        showPopup(header + separator + StringUtil.emptyIfNull(errorDescription), MessageType.ERROR);
       });
     }
   }

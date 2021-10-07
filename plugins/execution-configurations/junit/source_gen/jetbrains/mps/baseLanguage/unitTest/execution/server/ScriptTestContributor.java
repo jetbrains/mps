@@ -10,10 +10,9 @@ import org.junit.runner.Request;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
-import java.util.ArrayList;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.persistence.PersistenceRegistry;
+import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.module.ReloadableModule;
@@ -48,35 +47,33 @@ import org.junit.runner.Description;
   public Iterable<Request> gatherTests() throws Exception {
     // XXX likely, need better control over context repository to load test modules from
     final SRepository repo = myEnv.getPlatform().findComponent(MPSModuleRepository.class);
-    return new ModelAccessHelper(repo).runReadAction(new Computable<ArrayList<Request>>() {
-      public ArrayList<Request> compute() {
-        final PersistenceFacade pf = myEnv.getPlatform().findComponent(PersistenceRegistry.class);
-        final ArrayList<Request> rv = new ArrayList<Request>();
-        for (ExecutorScript.TestRecord tr : CollectionSequence.fromCollection(myExecScript.getTests())) {
-          SModule testModule0 = pf.createModuleReference(tr.myTestModule).resolve(repo);
-          final Exception failure;
-          ReloadableModule testModule = null;
-          if (testModule0 instanceof ReloadableModule) {
-            testModule = (ReloadableModule) testModule0;
-            failure = null;
+    return new ModelAccessHelper(repo).runReadAction(() -> {
+      final PersistenceFacade pf = myEnv.getPlatform().findComponent(PersistenceRegistry.class);
+      final ArrayList<Request> rv = new ArrayList<Request>();
+      for (ExecutorScript.TestRecord tr : CollectionSequence.fromCollection(myExecScript.getTests())) {
+        SModule testModule0 = pf.createModuleReference(tr.myTestModule).resolve(repo);
+        final Exception failure;
+        ReloadableModule testModule = null;
+        if (testModule0 instanceof ReloadableModule) {
+          testModule = (ReloadableModule) testModule0;
+          failure = null;
+        } else {
+          if (testModule0 == null) {
+            failure = new Exception(String.format("Failed to find test module %s", tr.myTestModule));
           } else {
-            if (testModule0 == null) {
-              failure = new Exception(String.format("Failed to find test module %s", tr.myTestModule));
-            } else {
-              failure = new Exception(String.format("Test module %s is not capable to load classes", tr.myTestModule));
-            }
-          }
-
-          for (int i = 0; i < tr.myTestQualifiedName.size(); i++) {
-            String qualifiedName = tr.myTestQualifiedName.get(i);
-            String isTestCaseProp = tr.isTestCase.get(i);
-            boolean isTestCase = Boolean.valueOf(isTestCaseProp) == Boolean.TRUE;
-            Request request = (isTestCase ? processTestCase(testModule, failure, qualifiedName) : processTestMethod(testModule, failure, qualifiedName));
-            rv.add(request);
+            failure = new Exception(String.format("Test module %s is not capable to load classes", tr.myTestModule));
           }
         }
-        return rv;
+
+        for (int i = 0; i < tr.myTestQualifiedName.size(); i++) {
+          String qualifiedName = tr.myTestQualifiedName.get(i);
+          String isTestCaseProp = tr.isTestCase.get(i);
+          boolean isTestCase = Boolean.valueOf(isTestCaseProp) == Boolean.TRUE;
+          Request request = (isTestCase ? processTestCase(testModule, failure, qualifiedName) : processTestMethod(testModule, failure, qualifiedName));
+          rv.add(request);
+        }
       }
+      return rv;
     });
 
   }

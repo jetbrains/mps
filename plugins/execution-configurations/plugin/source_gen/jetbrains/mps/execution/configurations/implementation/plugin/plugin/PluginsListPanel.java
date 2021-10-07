@@ -14,7 +14,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import java.util.List;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.project.MPSProject;
@@ -34,11 +33,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class PluginsListPanel extends ListPanel<SNodeReference> {
-  private final Function<SNode, String> myPluginNameFunc = new Function<SNode, String>() {
-    public String apply(SNode n) {
-      return SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(n, CONCEPTS.BuildMpsLayout_Plugin$cj), LINKS.plugin$9ewC), PROPS.id$W4AX);
-    }
-  };
+  private final Function<SNode, String> myPluginNameFunc = (SNode n) -> SPropertyOperations.getString(SLinkOperations.getTarget(SNodeOperations.as(n, CONCEPTS.BuildMpsLayout_Plugin$cj), LINKS.plugin$9ewC), PROPS.id$W4AX);
 
   public PluginsListPanel(Project p) {
     super(p, "Plugins to deploy");
@@ -56,14 +51,12 @@ public class PluginsListPanel extends ListPanel<SNodeReference> {
   @Override
   protected String getPresentation(final SNodeReference element) {
     final SRepository repo = ProjectHelper.getProjectRepository(myProject);
-    return new ModelAccessHelper(repo).runReadAction(new Computable<String>() {
-      public String compute() {
-        SNode resolved = element.resolve(repo);
-        if (resolved == null) {
-          return "[not found] " + element.toString();
-        }
-        return myPluginNameFunc.apply(resolved);
+    return new ModelAccessHelper(repo).runReadAction(() -> {
+      SNode resolved = element.resolve(repo);
+      if (resolved == null) {
+        return "[not found] " + element.toString();
       }
+      return myPluginNameFunc.apply(resolved);
     });
   }
 
@@ -75,16 +68,14 @@ public class PluginsListPanel extends ListPanel<SNodeReference> {
       return ListSequence.fromList(new ArrayList<SNodeReference>());
     }
     ModelAccessHelper accessHelper = new ModelAccessHelper(mpsProject.getRepository());
-    return accessHelper.runReadAction(new Computable<List<SNodeReference>>() {
-      public List<SNodeReference> compute() {
-        CollectConsumer<SNode> collector = new CollectConsumer<SNode>();
-        FindUsagesFacade.getInstance().findInstances(new GlobalScope(mpsProject.getRepository()), Collections.singleton(CONCEPTS.BuildMpsLayout_Plugin$cj), false, collector, progress);
-        List<SNodeReference> rv = ListSequence.fromList(new ArrayList<SNodeReference>());
-        for (SNode node : CollectionSequence.fromCollection(collector.getResult())) {
-          ListSequence.fromList(rv).addElement(node.getReference());
-        }
-        return rv;
+    return accessHelper.runReadAction(() -> {
+      CollectConsumer<SNode> collector = new CollectConsumer<SNode>();
+      FindUsagesFacade.getInstance().findInstances(new GlobalScope(mpsProject.getRepository()), Collections.singleton(CONCEPTS.BuildMpsLayout_Plugin$cj), false, collector, progress);
+      List<SNodeReference> rv = ListSequence.fromList(new ArrayList<SNodeReference>());
+      for (SNode node : CollectionSequence.fromCollection(collector.getResult())) {
+        ListSequence.fromList(rv).addElement(node.getReference());
       }
+      return rv;
     });
   }
 

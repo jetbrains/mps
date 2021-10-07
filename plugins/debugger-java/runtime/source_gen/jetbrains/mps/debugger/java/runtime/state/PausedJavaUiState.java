@@ -15,7 +15,6 @@ import com.sun.jdi.ThreadReference;
 import org.jetbrains.annotations.Nullable;
 import com.sun.jdi.ObjectReference;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaStackFrame;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debug.api.AbstractUiState;
 import jetbrains.mps.debug.api.programState.IStackFrame;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventContext;
@@ -113,12 +112,10 @@ public class PausedJavaUiState extends JavaUiStateImpl {
   }
   @Override
   public void selectFrame(final int frame) {
-    myDebugSession.getEventsProcessor().schedule(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        PausedJavaUiState newState = selectFrameInternal(frame);
-        if (newState != PausedJavaUiState.this) {
-          myAbstractDebugSession.trySetState(PausedJavaUiState.this, newState);
-        }
+    myDebugSession.getEventsProcessor().schedule(() -> {
+      PausedJavaUiState newState = selectFrameInternal(frame);
+      if (newState != PausedJavaUiState.this) {
+        myAbstractDebugSession.trySetState(PausedJavaUiState.this, newState);
       }
     });
   }

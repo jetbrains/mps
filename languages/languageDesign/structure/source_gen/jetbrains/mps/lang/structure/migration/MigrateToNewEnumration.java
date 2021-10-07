@@ -364,16 +364,8 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
     String newName(SNode oldMember);
   }
 
-  private static final NamingStrategy BY_INTERNAL_VALUE = new NamingStrategy() {
-    public String newName(SNode oldMember) {
-      return SPropertyOperations.getString(oldMember, PROPS.internalValue$1ost);
-    }
-  };
-  private static final NamingStrategy BY_OLD_NAME = new NamingStrategy() {
-    public String newName(SNode oldMember) {
-      return EnumerationMemberDeclaration_Old__BehaviorDescriptor.getConstantName_idi2Z$rBf.invoke(oldMember);
-    }
-  };
+  private static final NamingStrategy BY_INTERNAL_VALUE = (SNode oldMember) -> SPropertyOperations.getString(oldMember, PROPS.internalValue$1ost);
+  private static final NamingStrategy BY_OLD_NAME = (SNode oldMember) -> EnumerationMemberDeclaration_Old__BehaviorDescriptor.getConstantName_idi2Z$rBf.invoke(oldMember);
 
 
   private static SNode genereateToEnumMethod(final String name, final String argName, final SNode enumm, final SNode type, List<SNode> literals, final SEnumerationLiteral replacementKind) {

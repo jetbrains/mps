@@ -11,7 +11,6 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.errors.item.FlavouredItem;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.errors.item.ReportItemBase;
-import java.util.function.Function;
 import jetbrains.mps.errors.item.NodeReportItemBase;
 import jetbrains.mps.errors.item.RuleIdFlavouredItem;
 import jetbrains.mps.errors.item.NodeReportItem;
@@ -39,11 +38,7 @@ public class SuppressErrorsChecker extends AbstractNodeCheckerInEditor {
   protected void checkNodeInEditor(SNode node, LanguageErrorsCollector errorsCollector, SRepository repository) {
     // do nothing
   }
-  public static final FlavouredItem.ReportItemFlavour<SuppressedWrapperReportItem, SNodeReference> FLAVOUR_ACTIVE_SUPPRESSOR = new ReportItemBase.SimpleReportItemFlavour<SuppressedWrapperReportItem, SNodeReference>("FLAVOUR_ACTIVE_SUPPRESSOR", SuppressedWrapperReportItem.class, new Function<SuppressedWrapperReportItem, SNodeReference>() {
-    public SNodeReference apply(SuppressedWrapperReportItem reportItem) {
-      return reportItem.getSuppressor();
-    }
-  });
+  public static final FlavouredItem.ReportItemFlavour<SuppressedWrapperReportItem, SNodeReference> FLAVOUR_ACTIVE_SUPPRESSOR = new ReportItemBase.SimpleReportItemFlavour<SuppressedWrapperReportItem, SNodeReference>("FLAVOUR_ACTIVE_SUPPRESSOR", SuppressedWrapperReportItem.class, (SuppressedWrapperReportItem reportItem) -> reportItem.getSuppressor());
   public class SuppressedWrapperReportItem extends NodeReportItemBase implements RuleIdFlavouredItem {
     private final NodeReportItem myOrigin;
     private final SNodeReference mySuppressor;

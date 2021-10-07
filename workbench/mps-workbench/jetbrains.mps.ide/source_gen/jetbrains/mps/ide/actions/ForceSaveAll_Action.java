@@ -63,50 +63,38 @@ public class ForceSaveAll_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    ProgressManager.getInstance().runProcessWithProgressSynchronously(new Runnable() {
-      public void run() {
-        ProgressIndicator pi = ProgressManager.getInstance().getProgressIndicator();
-        pi.setIndeterminate(false);
+    ProgressManager.getInstance().runProcessWithProgressSynchronously(() -> {
+      ProgressIndicator pi = ProgressManager.getInstance().getProgressIndicator();
+      pi.setIndeterminate(false);
 
-        final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
-        final Wrappers._T<List<SModuleReference>> moduleRefs = new Wrappers._T<List<SModuleReference>>();
-        repo.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            moduleRefs.value = Sequence.fromIterable((Iterable<SModule>) ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProjectModulesWithGenerators()).ofType(AbstractModule.class).select(new ISelector<AbstractModule, SModuleReference>() {
-              public SModuleReference select(AbstractModule it) {
-                return it.getModuleReference();
-              }
-            }).toListSequence();
+      final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
+      final Wrappers._T<List<SModuleReference>> moduleRefs = new Wrappers._T<List<SModuleReference>>();
+      repo.getModelAccess().runReadAction(() -> {
+        moduleRefs.value = Sequence.fromIterable((Iterable<SModule>) ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProjectModulesWithGenerators()).ofType(AbstractModule.class).select(new ISelector<AbstractModule, SModuleReference>() {
+          public SModuleReference select(AbstractModule it) {
+            return it.getModuleReference();
           }
-        });
+        }).toListSequence();
+      });
 
-        int saving = 1;
-        for (final SModuleReference moduleRef : ListSequence.fromList(moduleRefs.value)) {
-          pi.setFraction(1.0 * saving / ListSequence.fromList(moduleRefs.value).count());
-          repo.getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              AbstractModule module = (AbstractModule) moduleRef.resolve(repo);
-              if (module == null) {
-                return;
-              }
-              ProgressManager.progress2("Saving: " + module.getModuleName());
-            }
-          });
-          ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-            public void run() {
-              repo.getModelAccess().runWriteAction(new Runnable() {
-                public void run() {
-                  AbstractModule module = (AbstractModule) moduleRef.resolve(repo);
-                  if (module == null) {
-                    return;
-                  }
-                  module.forceSaveRecursively();
-                }
-              });
-            }
-          }, ModalityState.defaultModalityState());
-          saving++;
-        }
+      int saving = 1;
+      for (final SModuleReference moduleRef : ListSequence.fromList(moduleRefs.value)) {
+        pi.setFraction(1.0 * saving / ListSequence.fromList(moduleRefs.value).count());
+        repo.getModelAccess().runReadAction(() -> {
+          AbstractModule module = (AbstractModule) moduleRef.resolve(repo);
+          if (module == null) {
+            return;
+          }
+          ProgressManager.progress2("Saving: " + module.getModuleName());
+        });
+        ApplicationManager.getApplication().invokeAndWait(() -> repo.getModelAccess().runWriteAction(() -> {
+          AbstractModule module = (AbstractModule) moduleRef.resolve(repo);
+          if (module == null) {
+            return;
+          }
+          module.forceSaveRecursively();
+        }), ModalityState.defaultModalityState());
+        saving++;
       }
     }, "Saving...", false, ((Project) MapSequence.fromMap(_params).get("project")));
   }

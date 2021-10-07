@@ -45,11 +45,7 @@ public class Annotate_Action extends BaseAction {
       return true;
     }
     final Wrappers._T<VirtualFile> vf = new Wrappers._T<VirtualFile>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        vf.value = VcsActionsUtil.getFileFromModel(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODES));
-      }
-    });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> vf.value = VcsActionsUtil.getFileFromModel(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODES)));
     if (vf.value == null) {
       return false;
     }
@@ -111,11 +107,7 @@ public class Annotate_Action extends BaseAction {
       return;
     }
     final Wrappers._T<VirtualFile> vf = new Wrappers._T<VirtualFile>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        vf.value = VcsActionsUtil.getFileFromModel(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODES));
-      }
-    });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> vf.value = VcsActionsUtil.getFileFromModel(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODES)));
     AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()).getVcsFor(vf.value);
     String taskName = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getPresentation();
     BackgroundableActionLock actionLock = Annotate_Action.this.getAnnotateRootLock(event);

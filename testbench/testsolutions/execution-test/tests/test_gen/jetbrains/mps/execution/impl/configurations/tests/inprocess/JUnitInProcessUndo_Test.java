@@ -75,11 +75,9 @@ public class JUnitInProcessUndo_Test extends BaseTransformationTest {
         }
         ProcessHandler process = processExecutor.execute();
         final Wrappers._T<CheckTestStateListener> checkListener = new Wrappers._T<CheckTestStateListener>();
-        myProject.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            checkListener.value = new CheckTestStateListener(success, failure);
-            runState.addListener(checkListener.value);
-          }
+        myProject.getModelAccess().runReadAction(() -> {
+          checkListener.value = new CheckTestStateListener(success, failure);
+          runState.addListener(checkListener.value);
         });
         process.addProcessListener(new UnitTestProcessListener(runState));
         int exitcode = ProcessHandlerBuilder.startAndWait(process, 30 * 1000);

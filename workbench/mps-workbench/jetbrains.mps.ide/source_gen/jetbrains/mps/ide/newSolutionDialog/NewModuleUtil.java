@@ -32,7 +32,6 @@ import com.intellij.openapi.application.ApplicationManager;
 import javax.lang.model.SourceVersion;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -193,11 +192,9 @@ public class NewModuleUtil {
   }
 
   public static void runModuleCreation(Project p, final _FunctionTypes._void_P0_E0 r) {
-    p.getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        ApplicationManager.getApplication().assertWriteAccessAllowed();
-        r.invoke();
-      }
+    p.getRepository().getModelAccess().executeCommand(() -> {
+      ApplicationManager.getApplication().assertWriteAccessAllowed();
+      r.invoke();
     });
   }
 
@@ -213,11 +210,7 @@ public class NewModuleUtil {
     }
     final SRepository repo = mpsProject.getRepository();
     // FIXME in fact, no reason to bother with identical name, it's module id that matters
-    boolean duplicateName = new ModelAccessHelper(repo).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        return !(new ModuleRepositoryFacade(repo).getModulesByName(namespace).isEmpty());
-      }
-    });
+    boolean duplicateName = new ModelAccessHelper(repo).runReadAction(() -> !(new ModuleRepositoryFacade(repo).getModulesByName(namespace).isEmpty()));
     if (duplicateName) {
       return "Module namespace already exists";
     }

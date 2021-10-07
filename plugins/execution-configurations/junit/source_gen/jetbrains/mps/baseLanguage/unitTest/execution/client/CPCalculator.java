@@ -50,24 +50,22 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
   private List<String> calcForPlatformWithoutMPS() {
     final List<String> classpath = ListSequence.fromList(new LinkedList<String>());
     // when no MPS is started, we just build a regular Java classpath with everything test classes may need.
-    myRepo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        Set<SModule> uniqueModules = SetSequence.fromSet(new HashSet<SModule>());
-        List<SModuleReference> requiredModules = new ArrayList<SModuleReference>(myTestsWithParams.getRequiredModules());
-        requiredModules.add(MODULE_WITH_EXECUTORS());
-        for (SModuleReference testModule : requiredModules) {
-          SModule module = testModule.resolve(myRepo);
-          if (module != null) {
-            SetSequence.fromSet(uniqueModules).addElement(module);
-          } else {
-            String m = String.format("No test module %s is available, execution classpath may be invalid.", testModule.getModuleName());
-            if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn(m);
-            }
+    myRepo.getModelAccess().runReadAction(() -> {
+      Set<SModule> uniqueModules = SetSequence.fromSet(new HashSet<SModule>());
+      List<SModuleReference> requiredModules = new ArrayList<SModuleReference>(myTestsWithParams.getRequiredModules());
+      requiredModules.add(MODULE_WITH_EXECUTORS());
+      for (SModuleReference testModule : requiredModules) {
+        SModule module = testModule.resolve(myRepo);
+        if (module != null) {
+          SetSequence.fromSet(uniqueModules).addElement(module);
+        } else {
+          String m = String.format("No test module %s is available, execution classpath may be invalid.", testModule.getModuleName());
+          if (LOG.isEnabledFor(Level.WARN)) {
+            LOG.warn(m);
           }
         }
-        ListSequence.fromList(classpath).addSequence(ListSequence.fromList(Java_Command.getClasspath(uniqueModules)));
       }
+      ListSequence.fromList(classpath).addSequence(ListSequence.fromList(Java_Command.getClasspath(uniqueModules)));
     });
     return classpath;
   }
@@ -92,17 +90,15 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
     //  
     // next is to ensure TestExecutor is loaded. Though it's part of execution plugin, it's a regular mps module
     // and is managed by MPS classloader once MPS starts, while we need it first, to start MPS.
-    myRepo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SModule m = moduleWithExecutors.resolve(myRepo);
-        if (m != null) {
-          ListSequence.fromList(classpath).addSequence(ListSequence.fromList(Java_Command.getClasspath(Sequence.<SModule>singleton(m))));
-        } else {
-          String msg = String.format("No test module %s is available, execution classpath may be invalid.", moduleWithExecutors.getModuleName());
-          // we likely to fail anyway, error is better than warn
-          if (LOG.isEnabledFor(Level.ERROR)) {
-            LOG.error(msg);
-          }
+    myRepo.getModelAccess().runReadAction(() -> {
+      SModule m = moduleWithExecutors.resolve(myRepo);
+      if (m != null) {
+        ListSequence.fromList(classpath).addSequence(ListSequence.fromList(Java_Command.getClasspath(Sequence.<SModule>singleton(m))));
+      } else {
+        String msg = String.format("No test module %s is available, execution classpath may be invalid.", moduleWithExecutors.getModuleName());
+        // we likely to fail anyway, error is better than warn
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error(msg);
         }
       }
     });

@@ -37,7 +37,6 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.java.core.newparser.JavaParseException;
 import jetbrains.mps.java.core.newparser.YetUnknownResolver;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import java.util.function.Consumer;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Collection;
@@ -189,11 +188,7 @@ public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implem
         final int RESOLVE_ATTEMPTS_LIMIT = 10;
         for (int i = 0; i < RESOLVE_ATTEMPTS_LIMIT && yur.collectYetUnresolved(new EmptyProgressMonitor()); i++) {
           yur.replaceYetUnresolved(new EmptyProgressMonitor());
-          yur.withImportsOfResolved(new Consumer<SModelReference>() {
-            public void accept(SModelReference mr) {
-              mi.addModelImport(new SModel.ImportElement(mr));
-            }
-          });
+          yur.withImportsOfResolved((SModelReference mr) -> mi.addModelImport(new SModel.ImportElement(mr)));
         }
         setLoadingState(ModelLoadingState.FULLY_LOADED);
         fireModelStateChanged(oldState, ModelLoadingState.FULLY_LOADED);

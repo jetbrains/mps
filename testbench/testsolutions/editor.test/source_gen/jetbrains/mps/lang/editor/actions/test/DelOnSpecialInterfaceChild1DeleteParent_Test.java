@@ -34,11 +34,7 @@ public class DelOnSpecialInterfaceChild1DeleteParent_Test extends BaseTransforma
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("2943053183528026730", "2943053183528026737");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action"), false);
     }
   }
 }

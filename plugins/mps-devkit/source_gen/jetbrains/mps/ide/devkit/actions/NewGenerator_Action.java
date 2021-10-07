@@ -16,7 +16,6 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.dialogs.project.creation.NewGeneratorDialog;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
@@ -64,11 +63,7 @@ public class NewGenerator_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    NewGeneratorDialog dialog = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess()).runReadAction(new Computable<NewGeneratorDialog>() {
-      public NewGeneratorDialog compute() {
-        return new NewGeneratorDialog(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), (Language) ((SModule) MapSequence.fromMap(_params).get("module")));
-      }
-    });
+    NewGeneratorDialog dialog = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess()).runReadAction(() -> new NewGeneratorDialog(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), (Language) ((SModule) MapSequence.fromMap(_params).get("module"))));
     dialog.show();
     Generator result = dialog.getResult();
     if (result != null) {

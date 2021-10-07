@@ -94,11 +94,7 @@ public class ShowDefinition_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<List<SNode>> nodes = new Wrappers._T<List<SNode>>();
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        nodes.value = ShowDefinition_Action.this.findImplementations(_params);
-      }
-    });
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(() -> nodes.value = ShowDefinition_Action.this.findImplementations(_params));
     PopupWithNodeEditor popupWithNodeEditor = new SimplePopupWithNodeEditor(((MPSProject) MapSequence.fromMap(_params).get("project")), ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")), nodes.value);
     popupWithNodeEditor.show();
   }

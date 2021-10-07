@@ -17,7 +17,6 @@ import java.util.Arrays;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
-import java.util.function.Predicate;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.stream.Collectors;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -81,11 +80,7 @@ public class Modifier_SubstituteMenu extends SubstituteMenuBase {
     }
     public class SMP_Subconcepts_db4728_a0 extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
       protected Collection getConcepts(final SubstituteMenuContext _context) {
-        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Modifier$jW).stream().filter(new Predicate<SAbstractConcept>() {
-          public boolean test(SAbstractConcept concept) {
-            return filterConcept(_context, concept);
-          }
-        }).collect(Collectors.toList());
+        return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Modifier$jW).stream().filter((SAbstractConcept concept) -> filterConcept(_context, concept)).collect(Collectors.toList());
       }
       private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
         // link is null when it is called from the transformation menu so constraints are not checked,

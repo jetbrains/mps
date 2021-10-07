@@ -34,11 +34,7 @@ public class NoImplementsAfterClass_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6136581231959556348", "6136581231959556353");
-      EditorTestUtil.runWithTypeOverExistingText(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          typeString(" implements");
-        }
-      }, false);
+      EditorTestUtil.runWithTypeOverExistingText(() -> typeString(" implements"), false);
       typeString("implements");
     }
   }

@@ -13,7 +13,6 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.ide.tools.CloseAction;
 import jetbrains.mps.icons.MPSIcons;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionPlaces;
@@ -28,6 +27,7 @@ import org.jetbrains.annotations.NonNls;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.workbench.ActionPlace;
 import com.intellij.openapi.actionSystem.ToggleAction;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
@@ -41,15 +41,7 @@ public class ModuleDependenciesView extends JPanel implements DataProvider {
     myLeftTree = new DependencyTree(mpsProject);
     myRightTree = new DependencyPathTree(mpsProject);
 
-    ActionGroup group = ActionUtils.groupFromActions(new CloseAction(tool), new MyToggleAction("Show Runtime Dependencies", MPSIcons.General.Runtime, false, new _FunctionTypes._void_P1_E0<Boolean>() {
-      public void invoke(Boolean b) {
-        setShowRuntime(b);
-      }
-    }), new MyToggleAction("Show Used Languages", MPSIcons.Nodes.Language, true, new _FunctionTypes._void_P1_E0<Boolean>() {
-      public void invoke(Boolean b) {
-        setShowUsedLanguages(b);
-      }
-    }));
+    ActionGroup group = ActionUtils.groupFromActions(new CloseAction(tool), new MyToggleAction("Show Runtime Dependencies", MPSIcons.General.Runtime, false, (Boolean b) -> setShowRuntime(b)), new MyToggleAction("Show Used Languages", MPSIcons.Nodes.Language, true, (Boolean b) -> setShowUsedLanguages(b)));
 
     JComponent toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, true).getComponent();
     add(toolbar, BorderLayout.NORTH);

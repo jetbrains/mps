@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.refactoring.participant.RefactoringProcessor;
 import jetbrains.mps.refactoring.participant.plugin.DefaultRefactoringUI;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialogDefaultSettings;
@@ -51,11 +50,9 @@ public class MoveModelActionExecutor extends ModelCreationActionsBaseExecutor {
   @Override
   protected final SModule selectModule() {
     final List<SModuleReference> modules = ListSequence.fromList(new ArrayList<SModuleReference>());
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        for (SModule module : ListSequence.fromList(myProject.getProjectModulesWithGenerators())) {
-          ListSequence.fromList(modules).addElement(module.getModuleReference());
-        }
+    myProject.getRepository().getModelAccess().runReadAction(() -> {
+      for (SModule module : ListSequence.fromList(myProject.getProjectModulesWithGenerators())) {
+        ListSequence.fromList(modules).addElement(module.getModuleReference());
       }
     });
     final SModuleReference selectedModule = new MoveModelDialog(myProject, getTitle(), modules).showAndGetSelected();
@@ -63,11 +60,7 @@ public class MoveModelActionExecutor extends ModelCreationActionsBaseExecutor {
       return null;
     }
 
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<SModule>() {
-      public SModule compute() {
-        return selectedModule.resolve(myProject.getRepository());
-      }
-    });
+    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> selectedModule.resolve(myProject.getRepository()));
   }
 
 

@@ -37,21 +37,19 @@ public class FontStyleInheritanceTest_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("8545423393708629228", "");
-      getEditorComponent().getCommandContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
+      getEditorComponent().getCommandContext().getRepository().getModelAccess().runReadAction(() -> {
 
-          Font nodeWithoutCustomFont_font = CellFinderUtil.findChildByClass(getEditorComponent().findNodeCell(getNodeById("8545423393708669280")), EditorCell_Label.class, true, true).getFont();
-          Assert.assertEquals("Serif", nodeWithoutCustomFont_font.getFamily());
-          Assert.assertEquals(50, nodeWithoutCustomFont_font.getSize());
+        Font nodeWithoutCustomFont_font = CellFinderUtil.findChildByClass(getEditorComponent().findNodeCell(getNodeById("8545423393708669280")), EditorCell_Label.class, true, true).getFont();
+        Assert.assertEquals("Serif", nodeWithoutCustomFont_font.getFamily());
+        Assert.assertEquals(50, nodeWithoutCustomFont_font.getSize());
 
-          Font nodeWithCustomFontSize_font = CellFinderUtil.findChildByClass(getEditorComponent().findNodeCell(getNodeById("8545423393708641683")), EditorCell_Label.class, true, true).getFont();
-          Assert.assertEquals("Serif", nodeWithCustomFontSize_font.getFamily());
-          Assert.assertEquals(30, (int) nodeWithCustomFontSize_font.getSize());
+        Font nodeWithCustomFontSize_font = CellFinderUtil.findChildByClass(getEditorComponent().findNodeCell(getNodeById("8545423393708641683")), EditorCell_Label.class, true, true).getFont();
+        Assert.assertEquals("Serif", nodeWithCustomFontSize_font.getFamily());
+        Assert.assertEquals(30, (int) nodeWithCustomFontSize_font.getSize());
 
-          Font nodeWithCustomFontSizeAndFamily_font = CellFinderUtil.findChildByClass(getEditorComponent().findNodeCell(getNodeById("8545423393708745749")), EditorCell_Label.class, true, true).getFont();
-          Assert.assertEquals("SansSerif", nodeWithCustomFontSizeAndFamily_font.getFamily());
-          Assert.assertEquals(25, (int) nodeWithCustomFontSizeAndFamily_font.getSize());
-        }
+        Font nodeWithCustomFontSizeAndFamily_font = CellFinderUtil.findChildByClass(getEditorComponent().findNodeCell(getNodeById("8545423393708745749")), EditorCell_Label.class, true, true).getFont();
+        Assert.assertEquals("SansSerif", nodeWithCustomFontSizeAndFamily_font.getFamily());
+        Assert.assertEquals(25, (int) nodeWithCustomFontSizeAndFamily_font.getSize());
       });
     }
   }

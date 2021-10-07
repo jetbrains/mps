@@ -47,11 +47,7 @@ public class Where_Test extends Util_Test {
         return it % 2 == 1;
       }
     }));
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super Integer> cl = new _FunctionTypes._return_P1_E0<Boolean, Integer>() {
-      public Boolean invoke(Integer it) {
-        return it % 2 == 1;
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super Integer> cl = (Integer it) -> it % 2 == 1;
     this.assertIterableEquals(expected, Sequence.fromIterable(seq).where(cl));
   }
   @Test

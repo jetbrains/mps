@@ -46,11 +46,9 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
         if (monitor.isCanceled()) {
           return;
         }
-        participant.findUsages(current, nodes, consumer, new Consumer<SModel>() {
-          public void consume(SModel sModel) {
-            assert !((sModel instanceof EditableSModel && ((EditableSModel) sModel).isChanged()));
-            next.remove(sModel);
-          }
+        participant.findUsages(current, nodes, consumer, (SModel sModel) -> {
+          assert !((sModel instanceof EditableSModel && ((EditableSModel) sModel).isChanged()));
+          next.remove(sModel);
         }, monitor.subTask(1));
         current = next;
       }

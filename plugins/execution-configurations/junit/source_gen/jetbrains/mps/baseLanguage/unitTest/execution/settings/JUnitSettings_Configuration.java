@@ -26,7 +26,6 @@ import java.util.List;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.RunCachesManager;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.util.Reference;
@@ -109,11 +108,9 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
   }
   private void check(final MPSProject project) throws RuntimeConfigurationException {
     final JUnitSettings_Configuration settings = this;
-    String errorMsg = new ModelAccessHelper(project.getRepository()).runReadAction(new Computable<String>() {
-      public String compute() {
-        JUnitRunTypes chosenType = getJUnitRunType();
-        return chosenType.check(settings, project);
-      }
+    String errorMsg = new ModelAccessHelper(project.getRepository()).runReadAction(() -> {
+      JUnitRunTypes chosenType = getJUnitRunType();
+      return chosenType.check(settings, project);
     });
     if ((errorMsg != null && errorMsg.length() > 0)) {
       throw new RuntimeConfigurationError(errorMsg);
@@ -129,11 +126,7 @@ public class JUnitSettings_Configuration implements IPersistentConfiguration {
   }
   public List<SNodeReference> getTestsToMake(final MPSProject project) {
     final Reference<List<ITestNodeWrapper>> toTest = new Reference<List<ITestNodeWrapper>>();
-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-      public void run() {
-        toTest.set(getTestsUnderProgress(project));
-      }
-    }, ModalityState.NON_MODAL);
+    ApplicationManager.getApplication().invokeAndWait(() -> toTest.set(getTestsUnderProgress(project)), ModalityState.NON_MODAL);
     return ListSequence.fromList(toTest.get()).select(new ISelector<ITestNodeWrapper, SNodeReference>() {
       public SNodeReference select(ITestNodeWrapper it) {
         return it.getNodePointer();

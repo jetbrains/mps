@@ -40,16 +40,14 @@ public class ContextAssistant_Collapse_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("379023083996738158", "379023083996764056");
       invokeAction("jetbrains.mps.ide.editor.actions.Collapse_Action");
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          ContextAssistantManager contextAssistantManager = getEditorComponent().getEditorContext().getContextAssistantManager();
-          contextAssistantManager.updateImmediately();
-          Assert.assertNull(contextAssistantManager.getActiveAssistant());
-          Set<EditorCell_WithComponent> componentCells = getEditorComponent().getCellTracker().getComponentCells();
-          Assert.assertFalse(componentCells.isEmpty());
-          for (EditorCell_WithComponent cell : SetSequence.fromSet(componentCells)) {
-            Assert.assertFalse(cell.getComponent().isVisible());
-          }
+      SwingUtilities.invokeAndWait(() -> {
+        ContextAssistantManager contextAssistantManager = getEditorComponent().getEditorContext().getContextAssistantManager();
+        contextAssistantManager.updateImmediately();
+        Assert.assertNull(contextAssistantManager.getActiveAssistant());
+        Set<EditorCell_WithComponent> componentCells = getEditorComponent().getCellTracker().getComponentCells();
+        Assert.assertFalse(componentCells.isEmpty());
+        for (EditorCell_WithComponent cell : SetSequence.fromSet(componentCells)) {
+          Assert.assertFalse(cell.getComponent().isVisible());
         }
       });
     }

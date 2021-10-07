@@ -18,7 +18,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debugger.java.runtime.engine.concurrent.Commands;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debugger.java.runtime.engine.requests.StepRequestor;
 import com.sun.jdi.event.ClassPrepareEvent;
 import com.sun.jdi.event.StepEvent;
@@ -28,6 +27,7 @@ import com.sun.jdi.event.LocatableEvent;
 import jetbrains.mps.debugger.java.runtime.engine.requests.LocatableEventRequestor;
 import jetbrains.mps.debugger.java.runtime.breakpoints.JavaBreakpoint;
 import com.sun.jdi.AbsentInformationException;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.atomic.AtomicReference;
@@ -93,48 +93,40 @@ public class EventsProcessor {
     }
   }
   public void pause() {
-    myManagerThread.invoke(Commands.fromClosure(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        myVirtualMachine.suspend();
-        UserContext context = new UserContext(EventsProcessor.this);
-        myContextManager.pauseUserContext(context);
-        myMulticaster.paused(context);
-      }
+    myManagerThread.invoke(Commands.fromClosure(() -> {
+      myVirtualMachine.suspend();
+      UserContext context = new UserContext(EventsProcessor.this);
+      myContextManager.pauseUserContext(context);
+      myMulticaster.paused(context);
     }));
   }
   public void resume(@NotNull final Context context) {
-    myManagerThread.invoke(Commands.fromClosure(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        myContextManager.resume(context);
-        myMulticaster.resumed(context);
-      }
+    myManagerThread.invoke(Commands.fromClosure(() -> {
+      myContextManager.resume(context);
+      myMulticaster.resumed(context);
     }));
   }
   public void step(@NotNull final StepKind kind, @NotNull final Context context) {
-    myManagerThread.invoke(Commands.fromClosure(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        int jdiType = kind.getJdiType();
-        addNewStepRequest(new StepRequestor(context.getThread(), jdiType, myFramesSelector), jdiType, context.getThread(), context.getSuspendPolicy());
-        resume(context);
-      }
+    myManagerThread.invoke(Commands.fromClosure(() -> {
+      int jdiType = kind.getJdiType();
+      addNewStepRequest(new StepRequestor(context.getThread(), jdiType, myFramesSelector), jdiType, context.getThread(), context.getSuspendPolicy());
+      resume(context);
     }));
   }
   public void stop(final boolean terminate) {
-    myManagerThread.invoke(Commands.fromClosure(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        if (isAttached()) {
-          if (terminate) {
-            myVirtualMachine.exit(-1);
-          } else {
-            //  some VM's (like IBM VM 1.4.2 bundled with WebSpere) does not
-            //  resume threads on dispose() like it should
-            myVirtualMachine.resume();
-            myVirtualMachine.dispose();
-          }
+    myManagerThread.invoke(Commands.fromClosure(() -> {
+      if (isAttached()) {
+        if (terminate) {
+          myVirtualMachine.exit(-1);
         } else {
-          //  todo DebugProcessImpl.stopConnecting
-          closeProcess(true);
+          //  some VM's (like IBM VM 1.4.2 bundled with WebSpere) does not
+          //  resume threads on dispose() like it should
+          myVirtualMachine.resume();
+          myVirtualMachine.dispose();
         }
+      } else {
+        //  todo DebugProcessImpl.stopConnecting
+        closeProcess(true);
       }
     }));
   }
@@ -204,26 +196,24 @@ public class EventsProcessor {
     }
 
     // requestor may evaluate something inside, like a condition or an expression to print
-    scheduleEvaluation(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        boolean resume = true;
-        try {
-          resume = !(requestor.isRequestHitByEvent(context, event));
-        } finally {
-          if (resume) {
-            myContextManager.voteResume(context);
-          } else {
-            try {
-              if (requestor instanceof JavaBreakpoint && ((JavaBreakpoint) requestor).isLogMessage()) {
-                // todo move to java breakpoint?
-                myReporter.reportInformation("Breakpoint hit: " + ((JavaBreakpoint) requestor).getPresentation() + " " + event.location().sourceName() + ":" + event.location().lineNumber());
-              }
-            } catch (AbsentInformationException ignore) {
-            } finally {
-              boolean paused = myContextManager.votePause(context);
-              if (paused) {
-                myMulticaster.paused(context);
-              }
+    scheduleEvaluation(() -> {
+      boolean resume = true;
+      try {
+        resume = !(requestor.isRequestHitByEvent(context, event));
+      } finally {
+        if (resume) {
+          myContextManager.voteResume(context);
+        } else {
+          try {
+            if (requestor instanceof JavaBreakpoint && ((JavaBreakpoint) requestor).isLogMessage()) {
+              // todo move to java breakpoint?
+              myReporter.reportInformation("Breakpoint hit: " + ((JavaBreakpoint) requestor).getPresentation() + " " + event.location().sourceName() + ":" + event.location().lineNumber());
+            }
+          } catch (AbsentInformationException ignore) {
+          } finally {
+            boolean paused = myContextManager.votePause(context);
+            if (paused) {
+              myMulticaster.paused(context);
             }
           }
         }
@@ -231,14 +221,12 @@ public class EventsProcessor {
     }, thread);
   }
   public void scheduleEvaluation(final _FunctionTypes._void_P0_E0 evaluationCommand, final ThreadReference threadToEvaluateIn) {
-    ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
-      public void run() {
-        startEvaluation(threadToEvaluateIn);
-        try {
-          evaluationCommand.invoke();
-        } finally {
-          finishEvaluation(threadToEvaluateIn);
-        }
+    ApplicationManager.getApplication().executeOnPooledThread(() -> {
+      startEvaluation(threadToEvaluateIn);
+      try {
+        evaluationCommand.invoke();
+      } finally {
+        finishEvaluation(threadToEvaluateIn);
       }
     });
   }
@@ -259,25 +247,21 @@ public class EventsProcessor {
     };
     progressIndicatorListener.installToProgress(progress);
 
-    ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
-      public void run() {
-        try {
-          ProgressManager.getInstance().runProcess(new Runnable() {
-            public void run() {
-              startEvaluation(threadToEvaluateIn);
-              try {
-                resultReference.set(evaluationCommand.invoke());
-              } finally {
-                finishEvaluation(threadToEvaluateIn);
-              }
-            }
-          }, progress);
-        } catch (ProcessCanceledException e) {
-          progress.cancel();
-        } catch (RuntimeException e) {
-          progress.cancel();
-          throw e;
-        }
+    ApplicationManager.getApplication().executeOnPooledThread(() -> {
+      try {
+        ProgressManager.getInstance().runProcess(() -> {
+          startEvaluation(threadToEvaluateIn);
+          try {
+            resultReference.set(evaluationCommand.invoke());
+          } finally {
+            finishEvaluation(threadToEvaluateIn);
+          }
+        }, progress);
+      } catch (ProcessCanceledException e) {
+        progress.cancel();
+      } catch (RuntimeException e) {
+        progress.cancel();
+        throw e;
       }
     });
 
@@ -355,37 +339,31 @@ public class EventsProcessor {
         EventQueue eventQueue = myVirtualMachine.eventQueue();
         while (!(myIsStopped)) {
           final EventSet events = eventQueue.remove();
-          myManagerThread.invokeAndWait(Commands.fromClosure(new _FunctionTypes._void_P0_E0() {
-            public void invoke() {
-              EventContext context = new EventContext(EventsProcessor.this, events);
-              for (Event event : SetSequence.fromSet(events)) {
-                if (event instanceof VMDeathEvent) {
-                  processVmDeathEvent();
-                } else
-                if (event instanceof VMDisconnectEvent) {
-                  processVmDeathEvent();
-                } else
-                if (event instanceof ClassPrepareEvent) {
-                  processClassPrepareEvent(context, (ClassPrepareEvent) event);
-                } else
-                if (event instanceof StepEvent) {
-                  processStepEvent(context, (StepEvent) event);
-                } else
-                if (event instanceof LocatableEvent) {
-                  processLocatableEvent(context, (LocatableEvent) event);
-                } else {
-                  myContextManager.voteResume(context);
-                }
+          myManagerThread.invokeAndWait(Commands.fromClosure(() -> {
+            EventContext context = new EventContext(EventsProcessor.this, events);
+            for (Event event : SetSequence.fromSet(events)) {
+              if (event instanceof VMDeathEvent) {
+                processVmDeathEvent();
+              } else
+              if (event instanceof VMDisconnectEvent) {
+                processVmDeathEvent();
+              } else
+              if (event instanceof ClassPrepareEvent) {
+                processClassPrepareEvent(context, (ClassPrepareEvent) event);
+              } else
+              if (event instanceof StepEvent) {
+                processStepEvent(context, (StepEvent) event);
+              } else
+              if (event instanceof LocatableEvent) {
+                processLocatableEvent(context, (LocatableEvent) event);
+              } else {
+                myContextManager.voteResume(context);
               }
             }
           }));
         }
       } catch (InterruptedException e) {
-        myManagerThread.invokeAndWait(Commands.fromClosure(new _FunctionTypes._void_P0_E0() {
-          public void invoke() {
-            processVmDeathEvent();
-          }
-        }));
+        myManagerThread.invokeAndWait(Commands.fromClosure(() -> processVmDeathEvent()));
       }
     }
     public void stop() {

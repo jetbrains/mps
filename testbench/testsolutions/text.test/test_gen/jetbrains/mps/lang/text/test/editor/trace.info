@@ -1165,29 +1165,24 @@
       <node id="6328114375522041259" at="24,80,25,36" concept="1" />
       <node id="6328114375522041259" at="30,52,31,19" concept="5" />
       <node id="6328114375522041259" at="35,51,36,72" concept="1" />
-      <node id="6328114375522061528" at="38,44,39,73" concept="1" />
+      <node id="6328114375522060715" at="36,72,37,121" concept="1" />
       <node id="6328114375522041259" at="16,0,18,0" concept="4" trace="ourParamCache" />
       <node id="6328114375522041259" at="19,0,22,0" concept="0" trace="DeleteSpaceBetweenWordAndWrapperFromWord_Test#()V" />
       <node id="6328114375522041259" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="6328114375522060973" at="38,0,41,0" concept="2" trace="run#()V" />
       <node id="6328114375522041259" at="23,0,27,0" concept="2" trace="test_DeleteSpaceBetweenWordAndWrapperFromWord#()V" />
-      <node id="6328114375522060715" at="36,72,41,16" concept="1" />
-      <node id="6328114375522041259" at="34,0,43,0" concept="2" trace="testMethodImpl#()V" />
+      <node id="6328114375522041259" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6328114375522041259" at="19,58,20,25" />
       <scope id="6328114375522041259" at="24,80,25,36" />
       <scope id="6328114375522041259" at="30,52,31,19" />
-      <scope id="6328114375522060974" at="38,44,39,73" />
+      <scope id="6328114375522041259" at="35,51,37,121" />
       <scope id="6328114375522041259" at="19,0,22,0" />
       <scope id="6328114375522041259" at="30,0,33,0">
         <var name="owner" id="6328114375522041259" />
       </scope>
-      <scope id="6328114375522060973" at="38,0,41,0" />
       <scope id="6328114375522041259" at="23,0,27,0" />
-      <scope id="6328114375522041259" at="35,51,41,16" />
-      <scope id="6328114375522041259" at="34,0,43,0" />
-      <unit id="6328114375522060973" at="37,48,41,7" name="jetbrains.mps.lang.text.test.editor.DeleteSpaceBetweenWordAndWrapperFromWord_Test$TestBody$1" />
-      <unit id="6328114375522041259" at="28,0,44,0" name="jetbrains.mps.lang.text.test.editor.DeleteSpaceBetweenWordAndWrapperFromWord_Test$TestBody" />
-      <unit id="6328114375522041259" at="14,0,45,0" name="jetbrains.mps.lang.text.test.editor.DeleteSpaceBetweenWordAndWrapperFromWord_Test" />
+      <scope id="6328114375522041259" at="34,0,39,0" />
+      <unit id="6328114375522041259" at="28,0,40,0" name="jetbrains.mps.lang.text.test.editor.DeleteSpaceBetweenWordAndWrapperFromWord_Test$TestBody" />
+      <unit id="6328114375522041259" at="14,0,41,0" name="jetbrains.mps.lang.text.test.editor.DeleteSpaceBetweenWordAndWrapperFromWord_Test" />
     </file>
   </root>
   <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/6328114375522061918">
@@ -1196,29 +1191,24 @@
       <node id="6328114375522061918" at="24,83,25,36" concept="1" />
       <node id="6328114375522061918" at="30,52,31,19" concept="5" />
       <node id="6328114375522061918" at="35,51,36,72" concept="1" />
-      <node id="6328114375522062052" at="38,44,39,76" concept="1" />
+      <node id="6328114375522062048" at="36,72,37,124" concept="1" />
       <node id="6328114375522061918" at="16,0,18,0" concept="4" trace="ourParamCache" />
       <node id="6328114375522061918" at="19,0,22,0" concept="0" trace="BackspaceSpaceBetweenWordAndWrapperFromWord_Test#()V" />
       <node id="6328114375522061918" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="6328114375522062050" at="38,0,41,0" concept="2" trace="run#()V" />
       <node id="6328114375522061918" at="23,0,27,0" concept="2" trace="test_BackspaceSpaceBetweenWordAndWrapperFromWord#()V" />
-      <node id="6328114375522062048" at="36,72,41,16" concept="1" />
-      <node id="6328114375522061918" at="34,0,43,0" concept="2" trace="testMethodImpl#()V" />
+      <node id="6328114375522061918" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6328114375522061918" at="19,61,20,25" />
       <scope id="6328114375522061918" at="24,83,25,36" />
       <scope id="6328114375522061918" at="30,52,31,19" />
-      <scope id="6328114375522062051" at="38,44,39,76" />
+      <scope id="6328114375522061918" at="35,51,37,124" />
       <scope id="6328114375522061918" at="19,0,22,0" />
       <scope id="6328114375522061918" at="30,0,33,0">
         <var name="owner" id="6328114375522061918" />
       </scope>
-      <scope id="6328114375522062050" at="38,0,41,0" />
       <scope id="6328114375522061918" at="23,0,27,0" />
-      <scope id="6328114375522061918" at="35,51,41,16" />
-      <scope id="6328114375522061918" at="34,0,43,0" />
-      <unit id="6328114375522062050" at="37,48,41,7" name="jetbrains.mps.lang.text.test.editor.BackspaceSpaceBetweenWordAndWrapperFromWord_Test$TestBody$1" />
-      <unit id="6328114375522061918" at="28,0,44,0" name="jetbrains.mps.lang.text.test.editor.BackspaceSpaceBetweenWordAndWrapperFromWord_Test$TestBody" />
-      <unit id="6328114375522061918" at="14,0,45,0" name="jetbrains.mps.lang.text.test.editor.BackspaceSpaceBetweenWordAndWrapperFromWord_Test" />
+      <scope id="6328114375522061918" at="34,0,39,0" />
+      <unit id="6328114375522061918" at="28,0,40,0" name="jetbrains.mps.lang.text.test.editor.BackspaceSpaceBetweenWordAndWrapperFromWord_Test$TestBody" />
+      <unit id="6328114375522061918" at="14,0,41,0" name="jetbrains.mps.lang.text.test.editor.BackspaceSpaceBetweenWordAndWrapperFromWord_Test" />
     </file>
   </root>
   <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/6328114375522062147">
@@ -1283,29 +1273,24 @@
       <node id="6328114375522082447" at="24,79,25,36" concept="1" />
       <node id="6328114375522082447" at="30,52,31,19" concept="5" />
       <node id="6328114375522082447" at="35,51,36,72" concept="1" />
-      <node id="6328114375522082591" at="38,44,39,76" concept="1" />
+      <node id="6328114375522082587" at="36,72,37,124" concept="1" />
       <node id="6328114375522082447" at="16,0,18,0" concept="4" trace="ourParamCache" />
       <node id="6328114375522082447" at="19,0,22,0" concept="0" trace="BackspaceFirstLineFromStartAndWholeText_Test#()V" />
       <node id="6328114375522082447" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="6328114375522082589" at="38,0,41,0" concept="2" trace="run#()V" />
       <node id="6328114375522082447" at="23,0,27,0" concept="2" trace="test_BackspaceFirstLineFromStartAndWholeText#()V" />
-      <node id="6328114375522082587" at="36,72,41,16" concept="1" />
-      <node id="6328114375522082447" at="34,0,43,0" concept="2" trace="testMethodImpl#()V" />
+      <node id="6328114375522082447" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6328114375522082447" at="19,57,20,25" />
       <scope id="6328114375522082447" at="24,79,25,36" />
       <scope id="6328114375522082447" at="30,52,31,19" />
-      <scope id="6328114375522082590" at="38,44,39,76" />
+      <scope id="6328114375522082447" at="35,51,37,124" />
       <scope id="6328114375522082447" at="19,0,22,0" />
       <scope id="6328114375522082447" at="30,0,33,0">
         <var name="owner" id="6328114375522082447" />
       </scope>
-      <scope id="6328114375522082589" at="38,0,41,0" />
       <scope id="6328114375522082447" at="23,0,27,0" />
-      <scope id="6328114375522082447" at="35,51,41,16" />
-      <scope id="6328114375522082447" at="34,0,43,0" />
-      <unit id="6328114375522082589" at="37,48,41,7" name="jetbrains.mps.lang.text.test.editor.BackspaceFirstLineFromStartAndWholeText_Test$TestBody$1" />
-      <unit id="6328114375522082447" at="28,0,44,0" name="jetbrains.mps.lang.text.test.editor.BackspaceFirstLineFromStartAndWholeText_Test$TestBody" />
-      <unit id="6328114375522082447" at="14,0,45,0" name="jetbrains.mps.lang.text.test.editor.BackspaceFirstLineFromStartAndWholeText_Test" />
+      <scope id="6328114375522082447" at="34,0,39,0" />
+      <unit id="6328114375522082447" at="28,0,40,0" name="jetbrains.mps.lang.text.test.editor.BackspaceFirstLineFromStartAndWholeText_Test$TestBody" />
+      <unit id="6328114375522082447" at="14,0,41,0" name="jetbrains.mps.lang.text.test.editor.BackspaceFirstLineFromStartAndWholeText_Test" />
     </file>
   </root>
   <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/6328114375522082810">
@@ -1314,29 +1299,24 @@
       <node id="6328114375522082810" at="24,75,25,36" concept="1" />
       <node id="6328114375522082810" at="30,52,31,19" concept="5" />
       <node id="6328114375522082810" at="35,51,36,72" concept="1" />
-      <node id="6328114375522082826" at="38,44,39,73" concept="1" />
+      <node id="6328114375522082822" at="36,72,37,121" concept="1" />
       <node id="6328114375522082810" at="16,0,18,0" concept="4" trace="ourParamCache" />
       <node id="6328114375522082810" at="19,0,22,0" concept="0" trace="DeleteLastLineFromStartAndWholeText_Test#()V" />
       <node id="6328114375522082810" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="6328114375522082824" at="38,0,41,0" concept="2" trace="run#()V" />
       <node id="6328114375522082810" at="23,0,27,0" concept="2" trace="test_DeleteLastLineFromStartAndWholeText#()V" />
-      <node id="6328114375522082822" at="36,72,41,16" concept="1" />
-      <node id="6328114375522082810" at="34,0,43,0" concept="2" trace="testMethodImpl#()V" />
+      <node id="6328114375522082810" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6328114375522082810" at="19,53,20,25" />
       <scope id="6328114375522082810" at="24,75,25,36" />
       <scope id="6328114375522082810" at="30,52,31,19" />
-      <scope id="6328114375522082825" at="38,44,39,73" />
+      <scope id="6328114375522082810" at="35,51,37,121" />
       <scope id="6328114375522082810" at="19,0,22,0" />
       <scope id="6328114375522082810" at="30,0,33,0">
         <var name="owner" id="6328114375522082810" />
       </scope>
-      <scope id="6328114375522082824" at="38,0,41,0" />
       <scope id="6328114375522082810" at="23,0,27,0" />
-      <scope id="6328114375522082810" at="35,51,41,16" />
-      <scope id="6328114375522082810" at="34,0,43,0" />
-      <unit id="6328114375522082824" at="37,48,41,7" name="jetbrains.mps.lang.text.test.editor.DeleteLastLineFromStartAndWholeText_Test$TestBody$1" />
-      <unit id="6328114375522082810" at="28,0,44,0" name="jetbrains.mps.lang.text.test.editor.DeleteLastLineFromStartAndWholeText_Test$TestBody" />
-      <unit id="6328114375522082810" at="14,0,45,0" name="jetbrains.mps.lang.text.test.editor.DeleteLastLineFromStartAndWholeText_Test" />
+      <scope id="6328114375522082810" at="34,0,39,0" />
+      <unit id="6328114375522082810" at="28,0,40,0" name="jetbrains.mps.lang.text.test.editor.DeleteLastLineFromStartAndWholeText_Test$TestBody" />
+      <unit id="6328114375522082810" at="14,0,41,0" name="jetbrains.mps.lang.text.test.editor.DeleteLastLineFromStartAndWholeText_Test" />
     </file>
   </root>
   <root nodeRef="r:6cf522f1-8af4-45dd-b0f5-721b6e5caab5(jetbrains.mps.lang.text.test.editor@tests)/6328114375522083044">

@@ -30,7 +30,6 @@ import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.execution.lib.PointerUtils;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestMethod__BehaviorDescriptor;
@@ -248,21 +247,13 @@ public final class JUnitTests_Producer {
       if (context.getPsiLocation() instanceof MPSPsiElement) {
         final MPSPsiElement element = (MPSPsiElement) context.getPsiLocation();
         ModelAccessHelper mah = new ModelAccessHelper(element.getMPSProject().getRepository());
-        Object mpsItem = mah.runReadAction(new Computable<Object>() {
-          public Object compute() {
-            return element.getMPSItem();
-          }
-        });
+        Object mpsItem = mah.runReadAction(() -> element.getMPSItem());
         if (!(mpsItem instanceof SNode)) {
           return false;
         }
         final SNode sourceNode = (SNode) mpsItem;
         // no test for testableMethod since the run type are different for these two producers
-        SNode testableRoot = mah.runReadAction(new Computable<SNode>() {
-          public SNode compute() {
-            return TestNodeWrapperFactory.findWrappableAncestor(sourceNode, true);
-          }
-        });
+        SNode testableRoot = mah.runReadAction(() -> TestNodeWrapperFactory.findWrappableAncestor(sourceNode, true));
         if (testableRoot == null) {
           return false;
         }
@@ -320,20 +311,12 @@ public final class JUnitTests_Producer {
       if (context.getPsiLocation() instanceof MPSPsiElement) {
         final MPSPsiElement element = (MPSPsiElement) context.getPsiLocation();
         ModelAccessHelper mah = new ModelAccessHelper(element.getMPSProject().getRepository());
-        Object mpsItem = mah.runReadAction(new Computable<Object>() {
-          public Object compute() {
-            return element.getMPSItem();
-          }
-        });
+        Object mpsItem = mah.runReadAction(() -> element.getMPSItem());
         if (!(mpsItem instanceof SNode)) {
           return false;
         }
         final SNode sourceNode = (SNode) mpsItem;
-        SNode testableMethod = mah.runReadAction(new Computable<SNode>() {
-          public SNode compute() {
-            return TestNodeWrapperFactory.findWrappableAncestor(sourceNode, false);
-          }
-        });
+        SNode testableMethod = mah.runReadAction(() -> TestNodeWrapperFactory.findWrappableAncestor(sourceNode, false));
         if (testableMethod == null) {
           return false;
         }

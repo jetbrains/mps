@@ -318,14 +318,12 @@ public class Generate_Facet extends IFacet.Stub {
               Sequence.fromIterable(input).visitAll(new IVisitor<MResource>() {
                 public void visit(final MResource mod) {
                   subProgress_c0a0c.advance(100);
-                  project.getModelAccess().runReadAction(new Runnable() {
-                    public void run() {
-                      Sequence.fromIterable(mod.models()).visitAll(new IVisitor<SModel>() {
-                        public void visit(SModel m) {
-                          m.load();
-                        }
-                      });
-                    }
+                  project.getModelAccess().runReadAction(() -> {
+                    Sequence.fromIterable(mod.models()).visitAll(new IVisitor<SModel>() {
+                      public void visit(SModel m) {
+                        m.load();
+                      }
+                    });
                   });
                 }
               });
@@ -398,11 +396,7 @@ public class Generate_Facet extends IFacet.Stub {
             case 0:
               final Wrappers._T<Map<SModule, Iterable<SModel>>> retainedModels = new Wrappers._T<Map<SModule, Iterable<SModel>>>();
               final Project mpsProject = monitor.getSession().getProject();
-              mpsProject.getModelAccess().runReadAction(new Runnable() {
-                public void run() {
-                  retainedModels.value = RetainedUtil.collectModelsToRetain(input);
-                }
-              });
+              mpsProject.getModelAccess().runReadAction(() -> retainedModels.value = RetainedUtil.collectModelsToRetain(input));
 
               if (Target_configure.vars(pa.global()).customPlan() == null) {
                 mpsProject.getModelAccess().runReadAction(new Runnable() {
@@ -453,20 +447,14 @@ public class Generate_Facet extends IFacet.Stub {
 
                 final SRepository projectRepo = mpsProject.getRepository();
 
-                projectRepo.getModelAccess().runReadAction(new Runnable() {
-                  public void run() {
-                    GenerationFacade genFacade = new GenerationFacade(projectRepo, Target_configure.vars(pa.global()).generationOptions().create());
-                    genFacade.transients(Target_configure.vars(pa.global()).transientModelsProvider()).messages(mh).taskHandler(taskHandler);
-                    genFacade.process(progressMonitor.subTask(100), tasks);
-                  }
+                projectRepo.getModelAccess().runReadAction(() -> {
+                  GenerationFacade genFacade = new GenerationFacade(projectRepo, Target_configure.vars(pa.global()).generationOptions().create());
+                  genFacade.transients(Target_configure.vars(pa.global()).transientModelsProvider()).messages(mh).taskHandler(taskHandler);
+                  genFacade.process(progressMonitor.subTask(100), tasks);
                 });
 
 
-                transientsModuleRepo.getModelAccess().runWriteAction(new Runnable() {
-                  public void run() {
-                    Target_configure.vars(pa.global()).transientModelsProvider().publishAll();
-                  }
-                });
+                transientsModuleRepo.getModelAccess().runWriteAction(() -> Target_configure.vars(pa.global()).transientModelsProvider().publishAll());
 
                 for (GenerationStatus genStatus : taskHandler.getAllRecorded()) {
                   if (!(genStatus.isOk())) {

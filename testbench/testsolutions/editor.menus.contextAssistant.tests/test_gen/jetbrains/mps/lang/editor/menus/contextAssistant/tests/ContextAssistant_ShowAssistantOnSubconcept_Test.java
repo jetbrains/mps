@@ -38,20 +38,14 @@ public class ContextAssistant_ShowAssistantOnSubconcept_Test extends BaseTransfo
     public void testMethodImpl() throws Exception {
       initEditorComponent("9025427969322513568", "");
       final EditorContext editorContext = getEditorComponent().getEditorContext();
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          editorContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
+      SwingUtilities.invokeAndWait(() -> editorContext.getRepository().getModelAccess().runReadAction(() -> {
+        ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
 
-              getEditorComponent().getSelectionManager().setSelection(getNodeById("9025427969322528788"));
-              contextAssistantManager.updateImmediately();
-              Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
-              Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
-            }
-          });
-        }
-      });
+        getEditorComponent().getSelectionManager().setSelection(getNodeById("9025427969322528788"));
+        contextAssistantManager.updateImmediately();
+        Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
+        Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
+      }));
     }
   }
 }

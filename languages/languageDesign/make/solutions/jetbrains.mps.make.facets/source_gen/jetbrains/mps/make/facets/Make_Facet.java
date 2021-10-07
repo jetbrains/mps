@@ -82,45 +82,43 @@ public class Make_Facet extends IFacet.Stub {
               }
               progressMonitor.start("Reconciling", 1);
               try {
-                FileSystem.getInstance().runWriteTransaction(new Runnable() {
-                  public void run() {
-                    final List<IFile> writtenFiles = ListSequence.fromList(new ArrayList<IFile>());
-                    DeltaReconciler reconciler = new DeltaReconciler(Sequence.fromIterable(input).translate(new ITranslator2<DResource, IDelta>() {
-                      public Iterable<IDelta> translate(DResource res) {
-                        return res.delta();
-                      }
-                    }).where(new IWhereFilter<IDelta>() {
-                      public boolean accept(IDelta d) {
-                        return !(d instanceof IInternalDelta);
-                      }
-                    }));
-                    reconciler.reconcileAll();
-                    reconciler.visitAll(new FilesDelta.Visitor() {
-                      @Override
-                      public boolean acceptWritten(IFile file) {
-                        ListSequence.fromList(writtenFiles).addElement(file);
-                        return true;
-                      }
-                    });
-                    DeltaReconciler internalReconciler = new DeltaReconciler(Sequence.fromIterable(input).translate(new ITranslator2<DResource, IDelta>() {
-                      public Iterable<IDelta> translate(DResource res) {
-                        return res.delta();
-                      }
-                    }).where(new IWhereFilter<IDelta>() {
-                      public boolean accept(IDelta d) {
-                        return d instanceof IInternalDelta;
-                      }
-                    }));
-                    internalReconciler.reconcileAll();
-                    internalReconciler.visitAll(new FilesDelta.Visitor() {
-                      @Override
-                      public boolean acceptWritten(IFile file) {
-                        ListSequence.fromList(writtenFiles).addElement(file);
-                        return true;
-                      }
-                    });
-                    monitor.getSession().getProject().reconcileProjectFiles(writtenFiles);
-                  }
+                FileSystem.getInstance().runWriteTransaction(() -> {
+                  final List<IFile> writtenFiles = ListSequence.fromList(new ArrayList<IFile>());
+                  DeltaReconciler reconciler = new DeltaReconciler(Sequence.fromIterable(input).translate(new ITranslator2<DResource, IDelta>() {
+                    public Iterable<IDelta> translate(DResource res) {
+                      return res.delta();
+                    }
+                  }).where(new IWhereFilter<IDelta>() {
+                    public boolean accept(IDelta d) {
+                      return !(d instanceof IInternalDelta);
+                    }
+                  }));
+                  reconciler.reconcileAll();
+                  reconciler.visitAll(new FilesDelta.Visitor() {
+                    @Override
+                    public boolean acceptWritten(IFile file) {
+                      ListSequence.fromList(writtenFiles).addElement(file);
+                      return true;
+                    }
+                  });
+                  DeltaReconciler internalReconciler = new DeltaReconciler(Sequence.fromIterable(input).translate(new ITranslator2<DResource, IDelta>() {
+                    public Iterable<IDelta> translate(DResource res) {
+                      return res.delta();
+                    }
+                  }).where(new IWhereFilter<IDelta>() {
+                    public boolean accept(IDelta d) {
+                      return d instanceof IInternalDelta;
+                    }
+                  }));
+                  internalReconciler.reconcileAll();
+                  internalReconciler.visitAll(new FilesDelta.Visitor() {
+                    @Override
+                    public boolean acceptWritten(IFile file) {
+                      ListSequence.fromList(writtenFiles).addElement(file);
+                      return true;
+                    }
+                  });
+                  monitor.getSession().getProject().reconcileProjectFiles(writtenFiles);
                 });
                 _output_pm9z_a0a = Sequence.fromIterable(_output_pm9z_a0a).concat(Sequence.fromIterable(input));
               } finally {

@@ -11,13 +11,11 @@ import jetbrains.mps.util.PathConverters;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
-import java.util.function.Consumer;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.project.ModuleId;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import java.util.ArrayList;
@@ -71,13 +69,11 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
     setNewIdAndTimestamp(copyDescriptor);
     copyDescriptor.setNamespace(myNewName);
     if (copyDescriptor instanceof LanguageDescriptor) {
-      ((LanguageDescriptor) copyDescriptor).getGenerators().forEach(new Consumer<GeneratorDescriptor>() {
-        public void accept(GeneratorDescriptor gd) {
-          gd.setSourceLanguage(copyDescriptor.getModuleReference());
-          setNewIdAndTimestamp(gd);
-          // copied from Generator.generateGeneratorUID(Language sourceLanguage), I got no language instance here
-          gd.setNamespace(myNewName + '#' + SModel.generateUniqueId());
-        }
+      ((LanguageDescriptor) copyDescriptor).getGenerators().forEach((GeneratorDescriptor gd) -> {
+        gd.setSourceLanguage(copyDescriptor.getModuleReference());
+        setNewIdAndTimestamp(gd);
+        // copied from Generator.generateGeneratorUID(Language sourceLanguage), I got no language instance here
+        gd.setNamespace(myNewName + '#' + SModel.generateUniqueId());
       });
     }
     if (myModulePathConverter != null) {
@@ -88,11 +84,9 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
       } else
       if (copyDescriptor instanceof LanguageDescriptor) {
         hackLanguageDescriptor((LanguageDescriptor) copyDescriptor);
-        ((LanguageDescriptor) copyDescriptor).getGenerators().forEach(new Consumer<GeneratorDescriptor>() {
-          public void accept(GeneratorDescriptor genDescriptor) {
-            hackGeneratorDescriptor(genDescriptor);
-            hackModuleDescriptor(genDescriptor);
-          }
+        ((LanguageDescriptor) copyDescriptor).getGenerators().forEach((GeneratorDescriptor genDescriptor) -> {
+          hackGeneratorDescriptor(genDescriptor);
+          hackModuleDescriptor(genDescriptor);
         });
       }
     }
@@ -128,32 +122,22 @@ import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
     resaveFacetsUnderNewFile(copyDescriptor);
 
     // area of facet descriptor which is still in the module descriptor
-    List<String> newStubPaths = copyDescriptor.getJavaLibs().stream().map(new Function<String, String>() {
-      public String apply(String path) {
-        return myModulePathConverter.source2Target(path);
-      }
-    }).collect(Collectors.<String>toList());
+    List<String> newStubPaths = copyDescriptor.getJavaLibs().stream().map((String path) -> myModulePathConverter.source2Target(path)).collect(Collectors.<String>toList());
     copyDescriptor.getJavaLibs().clear();
     copyDescriptor.getJavaLibs().addAll(newStubPaths);
-    List<String> newSourcePaths = copyDescriptor.getSourcePaths().stream().map(new Function<String, String>() {
-      public String apply(String path) {
-        return myModulePathConverter.source2Target(path);
-      }
-    }).collect(Collectors.<String>toList());
+    List<String> newSourcePaths = copyDescriptor.getSourcePaths().stream().map((String path) -> myModulePathConverter.source2Target(path)).collect(Collectors.<String>toList());
     copyDescriptor.getSourcePaths().clear();
     copyDescriptor.getSourcePaths().addAll(newSourcePaths);
   }
 
   private void resaveFacetsUnderNewFile(ModuleDescriptor copyDescriptor) {
     final List<ModuleFacetDescriptor> newFacetDescriptors = new ArrayList<ModuleFacetDescriptor>();
-    copyDescriptor.getModuleFacetDescriptors().forEach(new Consumer<ModuleFacetDescriptor>() {
-      public void accept(ModuleFacetDescriptor it) {
-        Element tmp = new Element("tmp");
-        ModuleDescriptorPersistence.writeMemento(it.getMemento(), tmp, MacrosFactory.forModule(myModuleToCopy));
-        MementoImpl memo = new MementoImpl();
-        ModuleDescriptorPersistence.readMemento(memo, tmp, MacrosFactory.forModuleFile(myNewFile));
-        newFacetDescriptors.add(new ModuleFacetDescriptor(it.getType(), memo));
-      }
+    copyDescriptor.getModuleFacetDescriptors().forEach((ModuleFacetDescriptor it) -> {
+      Element tmp = new Element("tmp");
+      ModuleDescriptorPersistence.writeMemento(it.getMemento(), tmp, MacrosFactory.forModule(myModuleToCopy));
+      MementoImpl memo = new MementoImpl();
+      ModuleDescriptorPersistence.readMemento(memo, tmp, MacrosFactory.forModuleFile(myNewFile));
+      newFacetDescriptors.add(new ModuleFacetDescriptor(it.getType(), memo));
     });
     copyDescriptor.getModuleFacetDescriptors().clear();
     copyDescriptor.getModuleFacetDescriptors().addAll(newFacetDescriptors);

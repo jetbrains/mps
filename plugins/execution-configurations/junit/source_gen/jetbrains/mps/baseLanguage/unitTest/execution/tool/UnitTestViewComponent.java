@@ -48,8 +48,6 @@ import jetbrains.mps.workbench.MPSDataKeys;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.ITestNodeWrapper;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
-import org.jetbrains.mps.openapi.model.SNode;
 
 public class UnitTestViewComponent extends JPanel implements Disposable {
   private static final String SPLITTER_SIZE_PROPERTY = UnitTestOptions.PREFIX + ".UnitTestViewComponent" + ".splitter";
@@ -215,11 +213,7 @@ public class UnitTestViewComponent extends JPanel implements Disposable {
         if (testWrapper == null) {
           return null;
         }
-        return new ModelAccessHelper(myProject.getRepository()).runReadAction(new Computable<SNode>() {
-          public SNode compute() {
-            return testWrapper.getNodePointer().resolve(myProject.getRepository());
-          }
-        });
+        return new ModelAccessHelper(myProject.getRepository()).runReadAction(() -> testWrapper.getNodePointer().resolve(myProject.getRepository()));
       }
       return null;
     }

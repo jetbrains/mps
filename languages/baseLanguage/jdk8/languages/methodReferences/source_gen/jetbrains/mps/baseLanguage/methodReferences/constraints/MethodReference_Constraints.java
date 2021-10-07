@@ -19,7 +19,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import java.util.function.Supplier;
 import jetbrains.mps.baseLanguage.scopes.MethodsScope;
 import jetbrains.mps.baseLanguage.behavior.IFixableMethodReference__BehaviorDescriptor;
 import java.util.HashMap;
@@ -64,11 +63,7 @@ public class MethodReference_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return TypecheckingFacade.getFromContext().computeIsolated(new Supplier<MethodsScope>() {
-              public MethodsScope get() {
-                return new MethodsScope(IFixableMethodReference__BehaviorDescriptor.getAvailableMethodDeclarations_id50EF2fWdwEN.invoke(_context.getReferenceNode(), null));
-              }
-            });
+            return TypecheckingFacade.getFromContext().computeIsolated(() -> new MethodsScope(IFixableMethodReference__BehaviorDescriptor.getAvailableMethodDeclarations_id50EF2fWdwEN.invoke(_context.getReferenceNode(), null)));
           }
         };
       }

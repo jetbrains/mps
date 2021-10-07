@@ -30,7 +30,6 @@ import java.io.File;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import org.apache.log4j.Level;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
@@ -173,27 +172,25 @@ public class NewGeneratorDialog extends DialogWrapper {
     String filePath = myModuleDir.getText();
     final String name = myGeneratorName.getText();
     final IFile generatorModuleLocation = myProjectFS.getFile(filePath);
-    NewModuleUtil.runModuleCreation(myProject, new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        Generator newGenerator;
-        try {
-          // see MPS-18743
-          myProject.getRepository().saveAll();
-          // XXX why saveAll is not part of NewModuleUtil.runModuleCreation?
-          generatorModuleLocation.mkdirs();
-          final GeneratorDescriptor generatorDescriptor = NewModuleUtil.createGeneratorDescriptor(newGeneratorNamespace(), generatorModuleLocation, null);
-          generatorDescriptor.setAlias(name);
-          newGenerator = createNewGenerator(generatorDescriptor, generatorModuleLocation);
-          NewModuleUtil.createTemplateModelIfNoneYet(newGenerator);
-        } catch (Exception e) {
-          // XXX again, why it's not common for any runModuleCreation?
-          if (LOG.isEnabledFor(Level.ERROR)) {
-            LOG.error("Failed to create new generator module", e);
-          }
-          newGenerator = null;
+    NewModuleUtil.runModuleCreation(myProject, () -> {
+      Generator newGenerator;
+      try {
+        // see MPS-18743
+        myProject.getRepository().saveAll();
+        // XXX why saveAll is not part of NewModuleUtil.runModuleCreation?
+        generatorModuleLocation.mkdirs();
+        final GeneratorDescriptor generatorDescriptor = NewModuleUtil.createGeneratorDescriptor(newGeneratorNamespace(), generatorModuleLocation, null);
+        generatorDescriptor.setAlias(name);
+        newGenerator = createNewGenerator(generatorDescriptor, generatorModuleLocation);
+        NewModuleUtil.createTemplateModelIfNoneYet(newGenerator);
+      } catch (Exception e) {
+        // XXX again, why it's not common for any runModuleCreation?
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error("Failed to create new generator module", e);
         }
-        myResult = newGenerator;
+        newGenerator = null;
       }
+      myResult = newGenerator;
     });
     super.doOKAction();
   }

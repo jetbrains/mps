@@ -35,13 +35,11 @@ public class MoveNodeDialog extends ModelOrNodeChooserDialog {
       return;
     }
     final Wrappers._boolean doRefactoring = new Wrappers._boolean(false);
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode node = ((NodeLocation.NodeLocationChild) selectedObject).getNode().resolve(myProject.getRepository());
-        if (myNodeFilter == null || myNodeFilter.checkForObject(node, myNodeToMove, myNodeToMove.getModel(), myChooser.getComponent())) {
-          mySelectedObject = node;
-          doRefactoring.value = true;
-        }
+    myProject.getModelAccess().runReadAction(() -> {
+      SNode node = ((NodeLocation.NodeLocationChild) selectedObject).getNode().resolve(myProject.getRepository());
+      if (myNodeFilter == null || myNodeFilter.checkForObject(node, myNodeToMove, myNodeToMove.getModel(), myChooser.getComponent())) {
+        mySelectedObject = node;
+        doRefactoring.value = true;
       }
     });
     if (doRefactoring.value) {
@@ -54,11 +52,7 @@ public class MoveNodeDialog extends ModelOrNodeChooserDialog {
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        myChooser = RefactoringAccessEx.getInstance().createTargetChooser(myProject.getProject(), myNodeToMove);
-      }
-    });
+    myProject.getModelAccess().runReadAction(() -> myChooser = RefactoringAccessEx.getInstance().createTargetChooser(myProject.getProject(), myNodeToMove));
     JComponent centerPanel = myChooser.getComponent();
     centerPanel.setPreferredSize(new Dimension(400, 900));
     Disposer.register(getDisposable(), myChooser);

@@ -84,20 +84,14 @@ public class DeleteGenerator_Action extends BaseAction {
     butcher.safeDelete(safeOption.isSelected()).deleteFiles(filesOption.isSelected());
 
     final Wrappers._T<IStatus> s = new Wrappers._T<IStatus>(new Status.ERROR("Can't execute safety check"));
-    modelAccess.runReadAction(new Runnable() {
-      public void run() {
-        s.value = butcher.canDelete(generator);
-      }
-    });
+    modelAccess.runReadAction(() -> s.value = butcher.canDelete(generator));
 
     if (s.value.isOk()) {
       // While don't support undo no need for command here
-      modelAccess.runWriteAction(new Runnable() {
-        public void run() {
-          // Parameter safeDelete set to false, because safety has been already checked
-          // and DeleteModuleHelper currently not allow to do it.
-          new ModuleDeleteHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).deleteModules(Collections.singletonList(((SModule) MapSequence.fromMap(_params).get("module"))), false, filesOption.isSelected());
-        }
+      modelAccess.runWriteAction(() -> {
+        // Parameter safeDelete set to false, because safety has been already checked
+        // and DeleteModuleHelper currently not allow to do it.
+        new ModuleDeleteHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).deleteModules(Collections.singletonList(((SModule) MapSequence.fromMap(_params).get("module"))), false, filesOption.isSelected());
       });
     } else {
       Messages.showErrorDialog(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), s.value.getMessage(), "Deleting Generator");

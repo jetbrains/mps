@@ -11,7 +11,6 @@ import com.intellij.execution.runners.ExecutionEnvironment;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -60,25 +59,23 @@ public class MakeNodePointers_BeforeTask extends BaseMpsBeforeTaskProvider<MakeN
 
     public boolean execute(Project project, ExecutionEnvironment environment) {
       final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(project);
-      List<IResource> resources = new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(new Computable<List<IResource>>() {
-        public List<IResource> compute() {
-          final ModelGenerationStatusManager statusManager = mpsProject.getComponent(ModelGenerationStatusManager.class);
-          Iterable<SModel> models = ListSequence.fromList(myNodePointers).where(new NotNullWhereFilter<SNodeReference>()).select(new ISelector<SNodeReference, SModel>() {
-            public SModel select(SNodeReference it) {
-              SNode n = it.resolve(mpsProject.getRepository());
-              return (n == null ? null : n.getModel());
-            }
-          }).distinct().where(new IWhereFilter<SModel>() {
-            public boolean accept(SModel it) {
-              return statusManager.generationRequired(it);
-            }
-          });
-          if (Sequence.fromIterable(models).isEmpty()) {
-            return null;
+      List<IResource> resources = new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(() -> {
+        final ModelGenerationStatusManager statusManager = mpsProject.getComponent(ModelGenerationStatusManager.class);
+        Iterable<SModel> models = ListSequence.fromList(myNodePointers).where(new NotNullWhereFilter<SNodeReference>()).select(new ISelector<SNodeReference, SModel>() {
+          public SModel select(SNodeReference it) {
+            SNode n = it.resolve(mpsProject.getRepository());
+            return (n == null ? null : n.getModel());
           }
-          List<IResource> list = ListSequence.fromListWithValues(new ArrayList<IResource>(), new ModelsToResources(models).resources());
-          return list;
+        }).distinct().where(new IWhereFilter<SModel>() {
+          public boolean accept(SModel it) {
+            return statusManager.generationRequired(it);
+          }
+        });
+        if (Sequence.fromIterable(models).isEmpty()) {
+          return null;
         }
+        List<IResource> list = ListSequence.fromListWithValues(new ArrayList<IResource>(), new ModelsToResources(models).resources());
+        return list;
       });
 
       if (ListSequence.fromList(resources).isEmpty()) {

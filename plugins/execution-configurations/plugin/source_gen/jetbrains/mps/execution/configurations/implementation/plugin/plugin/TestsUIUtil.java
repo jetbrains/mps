@@ -14,10 +14,6 @@ public final class TestsUIUtil {
   }
 
   public static void notifyByBalloon(final Project project, final String toolWindowId, final MessageType type, final String msg) {
-    UIUtil.invokeLaterIfNeeded(new Runnable() {
-      public void run() {
-        ToolWindowManager.getInstance(project).notifyByBalloon(toolWindowId, type, msg);
-      }
-    });
+    UIUtil.invokeLaterIfNeeded(() -> ToolWindowManager.getInstance(project).notifyByBalloon(toolWindowId, type, msg));
   }
 }

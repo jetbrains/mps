@@ -21,7 +21,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.io.FilenameFilter;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.platform.util.MergeBackupUtil;
 import java.util.Arrays;
@@ -78,11 +77,7 @@ public class ReportModelMergeProblem_Action extends BaseAction {
     List<File> filesToAttach = ListSequence.fromList(new ArrayList<File>());
     ListSequence.fromList(filesToAttach).addElement(new File(System.getProperty("user.home") + File.separator + ".gitconfig"));
     ListSequence.fromList(filesToAttach).addElement(new File(PathManager.getConfigPath() + File.separator + "mps-merger.sh"));
-    ListSequence.fromList(filesToAttach).addSequence(Sequence.fromIterable(Sequence.fromArray(new File(PathManager.getLogPath()).listFiles(new FilenameFilter() {
-      public boolean accept(File dir, String name) {
-        return name.startsWith("mergedriver.log");
-      }
-    }))));
+    ListSequence.fromList(filesToAttach).addSequence(Sequence.fromIterable(Sequence.fromArray(new File(PathManager.getLogPath()).listFiles((File dir, String name) -> name.startsWith("mergedriver.log")))));
     ListSequence.fromList(filesToAttach).visitAll(new IVisitor<File>() {
       public void visit(File f) {
         blameDialog.addFile(f);
@@ -91,11 +86,7 @@ public class ReportModelMergeProblem_Action extends BaseAction {
 
     // Select merge-backup to attach
     File backupDir = new File(MergeBackupUtil.getMergeBackupDirPath());
-    File[] listFiles = backupDir.listFiles(new FilenameFilter() {
-      public boolean accept(File dir, String name) {
-        return name.endsWith(".zip");
-      }
-    });
+    File[] listFiles = backupDir.listFiles((File dir, String name) -> name.endsWith(".zip"));
     if (listFiles == null) {
       ReportModelMergeProblem_Action.this.showNoBackupsAvailable(event);
     } else {

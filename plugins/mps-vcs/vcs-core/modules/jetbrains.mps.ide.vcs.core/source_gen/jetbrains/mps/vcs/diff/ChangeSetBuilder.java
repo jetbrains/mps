@@ -47,10 +47,8 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import java.util.HashSet;
 import jetbrains.mps.vcs.diff.changes.UsedLanguageChange;
 import jetbrains.mps.vcs.diff.changes.ChangeType;
-import java.util.Collection;
 import jetbrains.mps.vcs.diff.changes.EngagedLanguageChange;
 import jetbrains.mps.extapi.model.ModelWithAttributes;
-import java.util.function.BiConsumer;
 import jetbrains.mps.vcs.diff.changes.ModelAttributeChange;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 
@@ -297,25 +295,13 @@ public final class ChangeSetBuilder {
   }
 
   private void buildForImports() {
-    _FunctionTypes._return_P1_E0<? extends Iterable<SModelReference>, ? super SModelBase> importedModelsExtractor = new _FunctionTypes._return_P1_E0<List<SModelReference>, SModelBase>() {
-      public List<SModelReference> invoke(SModelBase model) {
-        return SModelOperations.getImportedModelUIDs(model);
-      }
-    };
-    _FunctionTypes._return_P2_E0<? extends ImportedModelChange, ? super SModelReference, ? super Boolean> changeCreator = new _FunctionTypes._return_P2_E0<ImportedModelChange, SModelReference, Boolean>() {
-      public ImportedModelChange invoke(SModelReference mr, Boolean deleted) {
-        return new ImportedModelChange(myChangeSet, mr, deleted);
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Iterable<SModelReference>, ? super SModelBase> importedModelsExtractor = (SModelBase model) -> SModelOperations.getImportedModelUIDs(model);
+    _FunctionTypes._return_P2_E0<? extends ImportedModelChange, ? super SModelReference, ? super Boolean> changeCreator = (SModelReference mr, Boolean deleted) -> new ImportedModelChange(myChangeSet, mr, deleted);
     buildAddedAndDeletedDependencies(importedModelsExtractor, changeCreator);
   }
 
   private void buildForDependencies(final ModuleDependencyChange.DependencyType dependencyType, _FunctionTypes._return_P1_E0<? extends Iterable<SModuleReference>, ? super SModelBase> referencesExtractor) {
-    _FunctionTypes._return_P2_E0<? extends ModuleDependencyChange, ? super SModuleReference, ? super Boolean> changeCreator = new _FunctionTypes._return_P2_E0<ModuleDependencyChange, SModuleReference, Boolean>() {
-      public ModuleDependencyChange invoke(SModuleReference mr, Boolean deleted) {
-        return new ModuleDependencyChange(myChangeSet, mr, dependencyType, deleted);
-      }
-    };
+    _FunctionTypes._return_P2_E0<? extends ModuleDependencyChange, ? super SModuleReference, ? super Boolean> changeCreator = (SModuleReference mr, Boolean deleted) -> new ModuleDependencyChange(myChangeSet, mr, dependencyType, deleted);
     buildAddedAndDeletedDependencies(referencesExtractor, changeCreator);
   }
 
@@ -344,26 +330,14 @@ public final class ChangeSetBuilder {
   }
 
   private void buildForLanguagesEngagedOnGeneration() {
-    buildAddedAndDeletedDependencies(new _FunctionTypes._return_P1_E0<Collection<SLanguage>, SModelBase>() {
-      public Collection<SLanguage> invoke(SModelBase m) {
-        return m.getLanguagesEngagedOnGeneration();
-      }
-    }, new _FunctionTypes._return_P2_E0<EngagedLanguageChange, SLanguage, Boolean>() {
-      public EngagedLanguageChange invoke(SLanguage l, Boolean deleted) {
-        return new EngagedLanguageChange(myChangeSet, deleted, l);
-      }
-    });
+    buildAddedAndDeletedDependencies((SModelBase m) -> m.getLanguagesEngagedOnGeneration(), (SLanguage l, Boolean deleted) -> new EngagedLanguageChange(myChangeSet, deleted, l));
   }
 
   private void buildForMetadata() {
     buildForImports();
 
     buildForUsedLanguages();
-    buildForDependencies(ModuleDependencyChange.DependencyType.USED_DEVKIT, new _FunctionTypes._return_P1_E0<List<SModuleReference>, SModelBase>() {
-      public List<SModuleReference> invoke(SModelBase model) {
-        return model.importedDevkits();
-      }
-    });
+    buildForDependencies(ModuleDependencyChange.DependencyType.USED_DEVKIT, (SModelBase model) -> model.importedDevkits());
     buildForLanguagesEngagedOnGeneration();
 
     if (myNewModel instanceof ModelWithAttributes && myOldModel instanceof ModelWithAttributes) {
@@ -371,21 +345,17 @@ public final class ChangeSetBuilder {
       final ModelWithAttributes oldModel = (ModelWithAttributes) myOldModel;
 
       final Set<String> seenAttr = new HashSet<String>();
-      newModel.forEachAttribute(new BiConsumer<String, String>() {
-        public void accept(String k, String v) {
-          seenAttr.add(k);
-          String oldv = oldModel.getAttribute(k);
-          if (!(Objects.equals(v, oldv))) {
-            ListSequence.fromList(myNewChanges).addElement(new ModelAttributeChange(myChangeSet, k, v));
-          }
+      newModel.forEachAttribute((String k, String v) -> {
+        seenAttr.add(k);
+        String oldv = oldModel.getAttribute(k);
+        if (!(Objects.equals(v, oldv))) {
+          ListSequence.fromList(myNewChanges).addElement(new ModelAttributeChange(myChangeSet, k, v));
         }
       });
       // check if any attribute has been deleted in the new version of the model
-      oldModel.forEachAttribute(new BiConsumer<String, String>() {
-        public void accept(String k, String v) {
-          if (!(seenAttr.contains(k))) {
-            ListSequence.fromList(myNewChanges).addElement(new ModelAttributeChange(myChangeSet, k, null));
-          }
+      oldModel.forEachAttribute((String k, String v) -> {
+        if (!(seenAttr.contains(k))) {
+          ListSequence.fromList(myNewChanges).addElement(new ModelAttributeChange(myChangeSet, k, null));
         }
       });
     }

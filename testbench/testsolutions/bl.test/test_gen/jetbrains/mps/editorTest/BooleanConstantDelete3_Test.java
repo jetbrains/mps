@@ -34,14 +34,12 @@ public class BooleanConstantDelete3_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6450120067538813824", "6450120067538813832");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
       }, false);
     }
   }

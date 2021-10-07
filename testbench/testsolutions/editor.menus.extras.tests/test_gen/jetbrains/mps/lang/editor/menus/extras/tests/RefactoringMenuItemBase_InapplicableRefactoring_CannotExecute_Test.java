@@ -42,15 +42,13 @@ public class RefactoringMenuItemBase_InapplicableRefactoring_CannotExecute_Test 
       initEditorComponent("6820996345400829105", "");
       final SRepository repository = getEditorComponent().getEditorContext().getRepository();
 
-      repository.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          IRefactoring refactoring = ActionLookupUtils.getRefactoring(repository, new SNodePointer("r:2f49f947-e2b6-4dd2-87ae-7938deb42899(jetbrains.mps.lang.editor.menus.extras.testLanguage.refactorings)", "121597702824488195"));
+      repository.getModelAccess().runReadAction(() -> {
+        IRefactoring refactoring = ActionLookupUtils.getRefactoring(repository, new SNodePointer("r:2f49f947-e2b6-4dd2-87ae-7938deb42899(jetbrains.mps.lang.editor.menus.extras.testLanguage.refactorings)", "121597702824488195"));
 
-          DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
+        DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
 
-          ActionItem item = new RefactoringMenuItemBase(context, refactoring);
-          Assert.assertFalse(item.canExecute("irrelevant pattern"));
-        }
+        ActionItem item = new RefactoringMenuItemBase(context, refactoring);
+        Assert.assertFalse(item.canExecute("irrelevant pattern"));
       });
     }
   }

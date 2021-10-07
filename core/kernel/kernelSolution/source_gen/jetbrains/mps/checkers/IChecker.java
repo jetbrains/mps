@@ -12,7 +12,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -59,11 +58,7 @@ public interface IChecker<O, I extends IssueKindReportItem> {
    */
   abstract class AbstractRootChecker<I extends NodeReportItem> extends AbstractChecker<SNode, I> {
     public AbstractModelChecker<I> asModelChecker() {
-      final IAbstractChecker<SModel, I> result = new IteratingChecker<SModel, SNode, I>(this, new _FunctionTypes._return_P1_E0<IteratingChecker.CollectionIteratorWithProgress<SNode>, SModel>() {
-        public IteratingChecker.CollectionIteratorWithProgress<SNode> invoke(SModel model) {
-          return new IteratingChecker.CollectionIteratorWithProgress<SNode>(SModelOperations.roots(model, null));
-        }
-      });
+      final IAbstractChecker<SModel, I> result = new IteratingChecker<SModel, SNode, I>(this, (SModel model) -> new IteratingChecker.CollectionIteratorWithProgress<SNode>(SModelOperations.roots(model, null)));
       return new AbstractModelChecker<I>() {
         public IssueKindReportItem.CheckerCategory getCategory() {
           return AbstractRootChecker.this.getCategory();
@@ -89,23 +84,21 @@ public interface IChecker<O, I extends IssueKindReportItem> {
    */
   abstract class AbstractNodeChecker<I extends NodeReportItem> extends AbstractChecker<SNode, I> {
     public AbstractRootChecker<I> asRootChecker() {
-      final IteratingChecker<SNode, SNode, I> skippingChecker = new IteratingChecker<SNode, SNode, I>(this, new _FunctionTypes._return_P1_E0<IteratingChecker.CollectionIteratorWithProgress<SNode>, SNode>() {
-        public IteratingChecker.CollectionIteratorWithProgress<SNode> invoke(SNode root) {
-          List<SNode> toCheck = ListSequence.fromList(new ArrayList<SNode>());
-          DescendantsTreeIterator fullCheckIterator = new DescendantsTreeIterator(root);
-          while (fullCheckIterator.hasNext()) {
-            SNode node = fullCheckIterator.next();
-            if (AbstractNodeChecker.this.skipCondition().skipSubtree(node)) {
-              fullCheckIterator.skipChildren();
-              continue;
-            }
-            if (AbstractNodeChecker.this.skipCondition().skipSingleNode(node)) {
-              continue;
-            }
-            ListSequence.fromList(toCheck).addElement(node);
+      final IteratingChecker<SNode, SNode, I> skippingChecker = new IteratingChecker<SNode, SNode, I>(this, (SNode root) -> {
+        List<SNode> toCheck = ListSequence.fromList(new ArrayList<SNode>());
+        DescendantsTreeIterator fullCheckIterator = new DescendantsTreeIterator(root);
+        while (fullCheckIterator.hasNext()) {
+          SNode node = fullCheckIterator.next();
+          if (AbstractNodeChecker.this.skipCondition().skipSubtree(node)) {
+            fullCheckIterator.skipChildren();
+            continue;
           }
-          return new IteratingChecker.CollectionIteratorWithProgress<SNode>(toCheck);
+          if (AbstractNodeChecker.this.skipCondition().skipSingleNode(node)) {
+            continue;
+          }
+          ListSequence.fromList(toCheck).addElement(node);
         }
+        return new IteratingChecker.CollectionIteratorWithProgress<SNode>(toCheck);
       });
       return new AbstractRootChecker<I>() {
         public IssueKindReportItem.CheckerCategory getCategory() {

@@ -450,148 +450,145 @@
   </root>
   <root nodeRef="r:8ef4c1fc-fb61-4d5c-806c-7a971cfb9392(tests.testPersistence.test@tests)/2535783480591532892">
     <file name="TestPersistenceHelper.java">
-      <node id="3895553186366166678" at="34,0,35,0" concept="12" trace="START_PERSISTENCE_TEST_VERSION" />
-      <node id="3895553186365326316" at="38,45,39,104" concept="9" />
-      <node id="7132781615006198517" at="43,0,44,0" concept="3" trace="myTestModel" />
-      <node id="7132781615006770906" at="45,61,46,84" concept="10" />
-      <node id="7132781615006332676" at="48,47,49,169" concept="8" />
-      <node id="7132781615006434248" at="49,169,50,98" concept="8" />
-      <node id="7132781615006618726" at="50,98,51,113" concept="10" />
-      <node id="7132781615006688728" at="51,113,52,65" concept="10" />
-      <node id="3761501395403653944" at="53,65,54,104" concept="10" />
-      <node id="3761501395403597483" at="54,104,55,67" concept="2" />
-      <node id="7132781615006563320" at="56,9,57,72" concept="8" />
-      <node id="7132781615006590960" at="57,72,58,47" concept="8" />
-      <node id="7132781615006719391" at="58,47,59,45" concept="2" />
-      <node id="7132781615006751898" at="59,45,60,44" concept="2" />
-      <node id="7132781615006734894" at="60,44,61,46" concept="2" />
-      <node id="7132781615006768181" at="61,46,62,18" concept="9" />
-      <node id="7626086600842584348" at="68,9,69,21" concept="2" />
-      <node id="7626086600842584352" at="69,21,70,83" concept="2" />
-      <node id="7626086600842584336" at="71,27,72,26" concept="2" />
-      <node id="7626086600842584333" at="72,26,73,64" concept="2" />
-      <node id="7626086600842584343" at="74,15,75,20" concept="2" />
-      <node id="7626086600842504749" at="79,41,80,23" concept="9" />
-      <node id="3895553186365942431" at="86,38,87,39" concept="9" />
-      <node id="3895553186365942458" at="91,131,92,50" concept="8" />
-      <node id="3895553186365942464" at="92,50,93,48" concept="8" />
-      <node id="3895553186365942473" at="94,37,95,28" concept="8" />
-      <node id="3895553186365942487" at="97,56,98,23" concept="2" />
-      <node id="3895553186365942491" at="98,23,99,16" concept="0" />
-      <node id="3895553186365942501" at="102,21,103,39" concept="2" />
-      <node id="3895553186365942512" at="106,33,107,28" concept="8" />
-      <node id="3895553186365942526" at="109,56,110,23" concept="2" />
-      <node id="3895553186365942530" at="110,23,111,16" concept="0" />
-      <node id="3895553186365942540" at="114,21,115,35" concept="2" />
-      <node id="1090488322156794643" at="118,40,119,94" concept="9" />
-      <node id="1090488322156813543" at="121,38,122,86" concept="9" />
-      <node id="1090488322156837268" at="123,5,124,16" concept="9" />
-      <node id="7626086600842504809" at="79,0,82,0" concept="7" trace="getTestModel#()Ljetbrains/mps/extapi/model/SModelBase;" />
-      <node id="3895553186365942496" at="101,7,104,7" concept="6" />
-      <node id="3895553186365942535" at="113,7,116,7" concept="6" />
-      <node id="3895553186365942547" at="117,5,120,5" concept="6" />
-      <node id="3895553186365942562" at="120,5,123,5" concept="6" />
-      <node id="3895553186365326311" at="37,0,41,0" concept="7" trace="isLineOK#(Ljava/lang/String;)Z" />
-      <node id="3761501395403546883" at="52,65,56,9" concept="5" />
-      <node id="3895553186365942424" at="85,0,89,0" concept="7" trace="compare#(nullnull)I" />
-      <node id="3895553186365942479" at="96,35,100,9" concept="6" />
-      <node id="3895553186365942518" at="108,39,112,9" concept="6" />
-      <node id="3895553186365326304" at="36,0,42,0" concept="3" trace="filter" />
-      <node id="3895553186365942416" at="83,105,89,13" concept="9" />
-      <node id="3895553186365942476" at="95,28,101,7" concept="5" />
-      <node id="3895553186365942515" at="107,28,113,7" concept="5" />
-      <node id="3895553186365942405" at="83,0,91,0" concept="13" trace="assertListsEqual#(Ljava/util/List;Ljava/util/List;Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="7626086600842584330" at="67,117,76,5" concept="15" />
-      <node id="7626086600842584370" at="67,0,78,0" concept="7" trace="saveTestModelInPersistence#(Ljetbrains/mps/persistence/PersistenceUtil/InMemoryStreamDataSource;I)V" />
-      <node id="3895553186365942469" at="93,48,105,5" concept="5" />
-      <node id="3895553186365942508" at="105,5,117,5" concept="5" />
-      <node id="7132781615006258555" at="48,0,64,0" concept="7" trace="compute#()Ljetbrains/mps/smodel/TrivialModelDescriptor;" />
-      <node id="7132781615006210718" at="46,84,64,7" concept="2" />
-      <node id="7132781615005801211" at="45,0,66,0" concept="1" trace="TestPersistenceHelper#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
-      <node id="3895553186365942443" at="91,0,126,0" concept="13" trace="assertListsEqual#(Ljava/util/List;Ljava/util/List;Ljava/util/Comparator;Ljava/lang/String;)Ljava/lang/String;" />
-      <scope id="3895553186365326315" at="38,45,39,104" />
-      <scope id="7626086600842584342" at="74,15,75,20" />
-      <scope id="7626086600842504745" at="79,41,80,23" />
-      <scope id="3895553186365942430" at="86,38,87,39" />
-      <scope id="3895553186365942500" at="102,21,103,39" />
-      <scope id="3895553186365942539" at="114,21,115,35" />
-      <scope id="3895553186365942551" at="118,40,119,94" />
-      <scope id="3895553186365942566" at="121,38,122,86" />
-      <scope id="3761501395403546885" at="53,65,55,67" />
-      <scope id="7626086600842584347" at="68,9,70,83" />
-      <scope id="7626086600842584332" at="71,27,73,64" />
-      <scope id="3895553186365942486" at="97,56,99,16" />
-      <scope id="3895553186365942525" at="109,56,111,16" />
-      <scope id="7626086600842584331" at="71,5,74,5">
+      <node id="3895553186366166678" at="33,0,34,0" concept="12" trace="START_PERSISTENCE_TEST_VERSION" />
+      <node id="3895553186365326316" at="37,45,38,104" concept="9" />
+      <node id="7132781615006198517" at="42,0,43,0" concept="3" trace="myTestModel" />
+      <node id="7132781615006770906" at="44,61,45,84" concept="10" />
+      <node id="7132781615006332676" at="46,67,47,167" concept="8" />
+      <node id="7132781615006434248" at="47,167,48,96" concept="8" />
+      <node id="7132781615006618726" at="48,96,49,111" concept="10" />
+      <node id="7132781615006688728" at="49,111,50,63" concept="10" />
+      <node id="3761501395403653944" at="51,63,52,102" concept="10" />
+      <node id="3761501395403597483" at="52,102,53,65" concept="2" />
+      <node id="7132781615006563320" at="54,7,55,70" concept="8" />
+      <node id="7132781615006590960" at="55,70,56,45" concept="8" />
+      <node id="7132781615006719391" at="56,45,57,43" concept="2" />
+      <node id="7132781615006751898" at="57,43,58,42" concept="2" />
+      <node id="7132781615006734894" at="58,42,59,44" concept="2" />
+      <node id="7132781615006768181" at="59,44,60,16" concept="9" />
+      <node id="7626086600842584348" at="65,9,66,21" concept="2" />
+      <node id="7626086600842584352" at="66,21,67,83" concept="2" />
+      <node id="7626086600842584336" at="68,27,69,26" concept="2" />
+      <node id="7626086600842584333" at="69,26,70,64" concept="2" />
+      <node id="7626086600842584343" at="71,15,72,20" concept="2" />
+      <node id="7626086600842504749" at="76,41,77,23" concept="9" />
+      <node id="3895553186365942431" at="83,38,84,39" concept="9" />
+      <node id="3895553186365942458" at="88,131,89,50" concept="8" />
+      <node id="3895553186365942464" at="89,50,90,48" concept="8" />
+      <node id="3895553186365942473" at="91,37,92,28" concept="8" />
+      <node id="3895553186365942487" at="94,56,95,23" concept="2" />
+      <node id="3895553186365942491" at="95,23,96,16" concept="0" />
+      <node id="3895553186365942501" at="99,21,100,39" concept="2" />
+      <node id="3895553186365942512" at="103,33,104,28" concept="8" />
+      <node id="3895553186365942526" at="106,56,107,23" concept="2" />
+      <node id="3895553186365942530" at="107,23,108,16" concept="0" />
+      <node id="3895553186365942540" at="111,21,112,35" concept="2" />
+      <node id="1090488322156794643" at="115,40,116,94" concept="9" />
+      <node id="1090488322156813543" at="118,38,119,86" concept="9" />
+      <node id="1090488322156837268" at="120,5,121,16" concept="9" />
+      <node id="7626086600842504809" at="76,0,79,0" concept="7" trace="getTestModel#()Ljetbrains/mps/extapi/model/SModelBase;" />
+      <node id="3895553186365942496" at="98,7,101,7" concept="6" />
+      <node id="3895553186365942535" at="110,7,113,7" concept="6" />
+      <node id="3895553186365942547" at="114,5,117,5" concept="6" />
+      <node id="3895553186365942562" at="117,5,120,5" concept="6" />
+      <node id="3895553186365326311" at="36,0,40,0" concept="7" trace="isLineOK#(Ljava/lang/String;)Z" />
+      <node id="3761501395403546883" at="50,63,54,7" concept="5" />
+      <node id="3895553186365942424" at="82,0,86,0" concept="7" trace="compare#(nullnull)I" />
+      <node id="3895553186365942479" at="93,35,97,9" concept="6" />
+      <node id="3895553186365942518" at="105,39,109,9" concept="6" />
+      <node id="3895553186365326304" at="35,0,41,0" concept="3" trace="filter" />
+      <node id="3895553186365942416" at="80,105,86,13" concept="9" />
+      <node id="3895553186365942476" at="92,28,98,7" concept="5" />
+      <node id="3895553186365942515" at="104,28,110,7" concept="5" />
+      <node id="3895553186365942405" at="80,0,88,0" concept="13" trace="assertListsEqual#(Ljava/util/List;Ljava/util/List;Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="7626086600842584330" at="64,117,73,5" concept="15" />
+      <node id="7626086600842584370" at="64,0,75,0" concept="7" trace="saveTestModelInPersistence#(Ljetbrains/mps/persistence/PersistenceUtil/InMemoryStreamDataSource;I)V" />
+      <node id="3895553186365942469" at="90,48,102,5" concept="5" />
+      <node id="3895553186365942508" at="102,5,114,5" concept="5" />
+      <node id="7132781615006210718" at="45,84,61,7" concept="2" />
+      <node id="7132781615005801211" at="44,0,63,0" concept="1" trace="TestPersistenceHelper#(Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <node id="3895553186365942443" at="88,0,123,0" concept="13" trace="assertListsEqual#(Ljava/util/List;Ljava/util/List;Ljava/util/Comparator;Ljava/lang/String;)Ljava/lang/String;" />
+      <scope id="3895553186365326315" at="37,45,38,104" />
+      <scope id="7626086600842584342" at="71,15,72,20" />
+      <scope id="7626086600842504745" at="76,41,77,23" />
+      <scope id="3895553186365942430" at="83,38,84,39" />
+      <scope id="3895553186365942500" at="99,21,100,39" />
+      <scope id="3895553186365942539" at="111,21,112,35" />
+      <scope id="3895553186365942551" at="115,40,116,94" />
+      <scope id="3895553186365942566" at="118,38,119,86" />
+      <scope id="3761501395403546885" at="51,63,53,65" />
+      <scope id="7626086600842584347" at="65,9,67,83" />
+      <scope id="7626086600842584332" at="68,27,70,64" />
+      <scope id="3895553186365942486" at="94,56,96,16" />
+      <scope id="3895553186365942525" at="106,56,108,16" />
+      <scope id="7626086600842584331" at="68,5,71,5">
         <var name="e" id="7626086600842584340" />
       </scope>
-      <scope id="7626086600842504809" at="79,0,82,0" />
-      <scope id="3895553186365326311" at="37,0,41,0">
+      <scope id="7626086600842504809" at="76,0,79,0" />
+      <scope id="3895553186365326311" at="36,0,40,0">
         <var name="line" id="3895553186365326313" />
       </scope>
-      <scope id="3761501395403546883" at="52,65,56,9">
+      <scope id="3761501395403546883" at="50,63,54,7">
         <var name="r" id="3761501395403546886" />
       </scope>
-      <scope id="3895553186365942424" at="85,0,89,0">
+      <scope id="3895553186365942424" at="82,0,86,0">
         <var name="o1" id="3895553186365942426" />
         <var name="o2" id="3895553186365942428" />
       </scope>
-      <scope id="3895553186365942478" at="96,35,100,9" />
-      <scope id="3895553186365942517" at="108,39,112,9" />
-      <scope id="3895553186365942415" at="83,105,89,13" />
-      <scope id="3895553186365942476" at="95,28,101,7">
+      <scope id="3895553186365942478" at="93,35,97,9" />
+      <scope id="3895553186365942517" at="105,39,109,9" />
+      <scope id="3895553186365942415" at="80,105,86,13" />
+      <scope id="3895553186365942476" at="92,28,98,7">
         <var name="actual" id="3895553186365942492" />
       </scope>
-      <scope id="3895553186365942515" at="107,28,113,7">
+      <scope id="3895553186365942515" at="104,28,110,7">
         <var name="expected" id="3895553186365942531" />
       </scope>
-      <scope id="3895553186365942405" at="83,0,91,0">
+      <scope id="3895553186365942405" at="80,0,88,0">
         <var name="actualList" id="3895553186365942410" />
         <var name="expectedList" id="3895553186365942407" />
         <var name="name" id="3895553186365942413" />
       </scope>
-      <scope id="7626086600842584326" at="67,117,76,5" />
-      <scope id="3895553186365942471" at="94,37,104,7">
+      <scope id="7626086600842584326" at="64,117,73,5" />
+      <scope id="3895553186365942471" at="91,37,101,7">
         <var name="found" id="3895553186365942472" />
       </scope>
-      <scope id="3895553186365942510" at="106,33,116,7">
+      <scope id="3895553186365942510" at="103,33,113,7">
         <var name="found" id="3895553186365942511" />
       </scope>
-      <scope id="7626086600842584370" at="67,0,78,0">
+      <scope id="7626086600842584370" at="64,0,75,0">
         <var name="dataSource" id="7626086600842584361" />
         <var name="persistence" id="7626086600842584363" />
       </scope>
-      <scope id="3895553186365942469" at="93,48,105,5">
+      <scope id="3895553186365942469" at="90,48,102,5">
         <var name="expected" id="3895553186365942504" />
       </scope>
-      <scope id="3895553186365942508" at="105,5,117,5">
+      <scope id="3895553186365942508" at="102,5,114,5">
         <var name="actual" id="3895553186365942543" />
       </scope>
-      <scope id="7132781615006258556" at="48,47,62,18">
+      <scope id="7132781615006258556" at="46,67,60,16">
         <var name="mdClone" id="7132781615006434249" />
         <var name="mi" id="7132781615006590961" />
         <var name="rv" id="7132781615006563321" />
         <var name="testModel" id="7132781615006332677" />
       </scope>
-      <scope id="7132781615006258555" at="48,0,64,0" />
-      <scope id="7132781615005801215" at="45,61,64,7" />
-      <scope id="7132781615005801211" at="45,0,66,0">
+      <scope id="7132781615005801215" at="44,61,61,7" />
+      <scope id="7132781615005801211" at="44,0,63,0">
         <var name="repo" id="7132781615005821903" />
       </scope>
-      <scope id="3895553186365942456" at="91,131,124,16">
+      <scope id="3895553186365942456" at="88,131,121,16">
         <var name="notFoundActual" id="3895553186365942463" />
         <var name="notFoundExpected" id="3895553186365942457" />
       </scope>
-      <scope id="3895553186365942443" at="91,0,126,0">
+      <scope id="3895553186365942443" at="88,0,123,0">
         <var name="actualList" id="3895553186365942448" />
         <var name="comparator" id="3895553186365942451" />
         <var name="expectedList" id="3895553186365942445" />
         <var name="name" id="3895553186365942454" />
       </scope>
-      <unit id="3895553186365326309" at="36,39,41,3" name="tests.testPersistence.test.TestPersistenceHelper$1" />
-      <unit id="3895553186365942422" at="84,58,89,5" name="tests.testPersistence.test.TestPersistenceHelper$3" />
-      <unit id="7132781615006258555" at="47,64,64,5" name="tests.testPersistence.test.TestPersistenceHelper$2" />
-      <unit id="2535783480591532892" at="30,0,128,0" name="tests.testPersistence.test.TestPersistenceHelper" />
+      <unit id="3895553186365326309" at="35,39,40,3" name="tests.testPersistence.test.TestPersistenceHelper$1" />
+      <unit id="3895553186365942422" at="81,58,86,5" name="tests.testPersistence.test.TestPersistenceHelper$2" />
+      <unit id="2535783480591532892" at="29,0,125,0" name="tests.testPersistence.test.TestPersistenceHelper" />
     </file>
   </root>
   <root nodeRef="r:8ef4c1fc-fb61-4d5c-806c-7a971cfb9392(tests.testPersistence.test@tests)/3895553186365996362">

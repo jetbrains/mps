@@ -30,7 +30,6 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Collections;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
-import java.util.Comparator;
 import jetbrains.mps.vcs.util.MergeStrategy;
 import jetbrains.mps.vcs.diff.ChangeSetImpl;
 import jetbrains.mps.persistence.PersistenceVersionAware;
@@ -192,14 +191,12 @@ public final class MergeSession {
         ch.prepare();
       }
     });
-    for (ModelChange c : Sequence.fromIterable(changes).sort(new Comparator<ModelChange>() {
-      public int compare(ModelChange a, ModelChange b) {
-        // sort out nonconflicting changes to the end of list, so they will be ignored if other connected changes exists
-        boolean aa = a.isNonConflicting();
-        boolean bb = b.isNonConflicting();
-        int result = (aa == bb ? 0 : (aa ? 1 : -1));
-        return result;
-      }
+    for (ModelChange c : Sequence.fromIterable(changes).sort((ModelChange a, ModelChange b) -> {
+      // sort out nonconflicting changes to the end of list, so they will be ignored if other connected changes exists
+      boolean aa = a.isNonConflicting();
+      boolean bb = b.isNonConflicting();
+      int result = (aa == bb ? 0 : (aa ? 1 : -1));
+      return result;
     }, true)) {
       applyChange(c);
     }

@@ -73,11 +73,7 @@ public class HintsDialog extends DialogWrapper {
     }
     boolean rebuildRequired = myComponent.getUpdater().setInitialEditorHints(initialEditorHints);
     if (rebuildRequired) {
-      myComponent.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          myComponent.rebuildEditorContent();
-        }
-      });
+      myComponent.getEditorContext().getRepository().getModelAccess().runReadAction(() -> myComponent.rebuildEditorContent());
     }
 
     super.doOKAction();

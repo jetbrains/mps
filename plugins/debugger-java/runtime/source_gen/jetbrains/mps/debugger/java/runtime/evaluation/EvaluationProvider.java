@@ -22,7 +22,6 @@ import jetbrains.mps.project.Project;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.debugger.java.api.state.JavaUiState;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.debugger.java.runtime.ui.evaluation.EvaluationDialog;
 import jetbrains.mps.debugger.java.runtime.ui.evaluation.EditWatchDialog;
@@ -30,6 +29,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JComponent;
 import jetbrains.mps.debugger.java.runtime.ui.evaluation.WatchesPanel;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debugger.java.runtime.evaluation.model.EvaluationWithContextContainer;
 
 @GeneratedClass(node = "r:1f2ecb68-8f37-460f-acb8-866f8f05b15e(jetbrains.mps.debugger.java.runtime.evaluation)/671562190169411198", model = "r:1f2ecb68-8f37-460f-acb8-866f8f05b15e(jetbrains.mps.debugger.java.runtime.evaluation)")
@@ -61,26 +61,22 @@ public class EvaluationProvider implements IEvaluationProvider {
 
   private synchronized void init() {
     final SRepository repository = myDebugSession.getProject().getRepository();
-    repository.getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        EvaluationModule module = new EvaluationModule(ProjectHelper.fromIdeaProject(myDebugSession.getIdeaProject()).getPlatform());
-        ((SRepositoryExt) repository).registerModule(module, myDebugSession.getProject());
-        myContainerModuleRef = module.getModuleReference();
-      }
+    repository.getModelAccess().runWriteAction(() -> {
+      EvaluationModule module = new EvaluationModule(ProjectHelper.fromIdeaProject(myDebugSession.getIdeaProject()).getPlatform());
+      ((SRepositoryExt) repository).registerModule(module, myDebugSession.getProject());
+      myContainerModuleRef = module.getModuleReference();
     });
   }
 
   private synchronized void dispose() {
     final SRepository repository = myDebugSession.getProject().getRepository();
     assert myContainerModuleRef != null;
-    repository.getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        SModule resolved = myContainerModuleRef.resolve(repository);
-        if (resolved != null) {
-          ((SRepositoryExt) repository).unregisterModule(resolved, myDebugSession.getProject());
-        }
-        myContainerModuleRef = null;
+    repository.getModelAccess().runWriteAction(() -> {
+      SModule resolved = myContainerModuleRef.resolve(repository);
+      if (resolved != null) {
+        ((SRepositoryExt) repository).unregisterModule(resolved, myDebugSession.getProject());
       }
+      myContainerModuleRef = null;
     });
   }
 
@@ -97,18 +93,14 @@ public class EvaluationProvider implements IEvaluationProvider {
   @Override
   public void showEvaluationDialog(final Project mpsProject, final List<SNodeReference> selectedNodes) {
     final JavaUiState state = myDebugSession.getUiState();
-    myDebugSession.getEventsProcessor().scheduleEvaluation(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        if (state.isPausedOnBreakpoint()) {
-          final boolean isDeveloperMode = false;
-          createEvaluationContainer(isDeveloperMode, selectedNodes, new _FunctionTypes._void_P1_E0<IEvaluationContainer>() {
-            public void invoke(IEvaluationContainer container) {
-              ApplicationManager.getApplication().assertIsDispatchThread();
-              EvaluationDialog evaluationDialog = new EvaluationDialog(ProjectHelper.toIdeaProject(mpsProject), EvaluationProvider.this, container);
-              evaluationDialog.show();
-            }
-          });
-        }
+    myDebugSession.getEventsProcessor().scheduleEvaluation(() -> {
+      if (state.isPausedOnBreakpoint()) {
+        final boolean isDeveloperMode = false;
+        createEvaluationContainer(isDeveloperMode, selectedNodes, (IEvaluationContainer container) -> {
+          ApplicationManager.getApplication().assertIsDispatchThread();
+          EvaluationDialog evaluationDialog = new EvaluationDialog(ProjectHelper.toIdeaProject(mpsProject), EvaluationProvider.this, container);
+          evaluationDialog.show();
+        });
       }
     }, state.getThread().getThread());
   }
@@ -131,36 +123,22 @@ public class EvaluationProvider implements IEvaluationProvider {
   }
 
   public void addWatch(final IEvaluationContainer evaluationModel) {
-    myDebugSession.getEventsProcessor().schedule(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        evaluationModel.copy(true, new _FunctionTypes._void_P1_E0<IEvaluationContainer>() {
-          public void invoke(IEvaluationContainer container) {
-            synchronized (myWatches) {
-              myWatches.add(container);
-            }
-            fireWatchAdded(container);
-          }
-        });
+    myDebugSession.getEventsProcessor().schedule(() -> evaluationModel.copy(true, (IEvaluationContainer container) -> {
+      synchronized (myWatches) {
+        myWatches.add(container);
       }
-    });
+      fireWatchAdded(container);
+    }));
   }
 
   public void createWatch() {
-    myDebugSession.getEventsProcessor().schedule(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
+    myDebugSession.getEventsProcessor().schedule(() -> {
 
-        createEvaluationContainer(true, null, new _FunctionTypes._void_P1_E0<IEvaluationContainer>() {
-          public void invoke(final IEvaluationContainer container) {
-            ApplicationManager.getApplication().assertIsDispatchThread();
-            EditWatchDialog editWatchDialog = new EditWatchDialog(myDebugSession.getIdeaProject(), EvaluationProvider.this, container, new _FunctionTypes._void_P0_E0() {
-              public void invoke() {
-                addWatch(container);
-              }
-            });
-            editWatchDialog.show();
-          }
-        });
-      }
+      createEvaluationContainer(true, null, (final IEvaluationContainer container) -> {
+        ApplicationManager.getApplication().assertIsDispatchThread();
+        EditWatchDialog editWatchDialog = new EditWatchDialog(myDebugSession.getIdeaProject(), EvaluationProvider.this, container, () -> addWatch(container));
+        editWatchDialog.show();
+      });
     });
   }
 
@@ -181,15 +159,9 @@ public class EvaluationProvider implements IEvaluationProvider {
       return null;
     }
     final EvaluationWithContextContainer rv = new EvaluationWithContextContainer(myDebugSession.getProject(), myDebugSession, myContainerModuleRef, isWatch);
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        myDebugSession.getProject().getModelAccess().executeCommand(new Runnable() {
-          public void run() {
-            rv.setUpNode(selectedNodes);
-          }
-        });
-        onNodeSetUp.invoke(rv);
-      }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      myDebugSession.getProject().getModelAccess().executeCommand(() -> rv.setUpNode(selectedNodes));
+      onNodeSetUp.invoke(rv);
     });
     return rv;
   }

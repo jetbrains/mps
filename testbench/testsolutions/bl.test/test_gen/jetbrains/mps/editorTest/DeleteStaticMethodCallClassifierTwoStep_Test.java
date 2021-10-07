@@ -34,12 +34,10 @@ public class DeleteStaticMethodCallClassifierTwoStep_Test extends BaseTransforma
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5758795788991621373", "5758795788991647766");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          getEditorComponent().getDeletionApprover().isApprovedForDeletion(getEditorComponent().getSelectedCell().getParent());
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+        getEditorComponent().getDeletionApprover().isApprovedForDeletion(getEditorComponent().getSelectedCell().getParent());
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
       }, true);
     }
   }

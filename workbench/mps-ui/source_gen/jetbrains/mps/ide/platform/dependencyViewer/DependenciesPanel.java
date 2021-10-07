@@ -103,18 +103,16 @@ public class DependenciesPanel extends JPanel {
       ProgressManager.getInstance().run(new Task.Modal(myProject, "Analyzing dependencies", true) {
         @Override
         public void run(@NotNull final ProgressIndicator indicator) {
-          myMPSProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              ProgressMonitor monitor = new ProgressMonitorAdapter(indicator);
-              try {
-                if (myIsMeta) {
-                  results[0] = myReferencesFinder.getUsedConcepts(Sequence.fromIterable(myActiveScope.getNodes()).toListSequence(), monitor);
-                } else {
-                  results[0] = myReferencesFinder.findRefsFromScopeToOuter(myActiveScope, myTargetsView.limitedTo(), monitor);
-                }
-              } finally {
-                monitor.done();
+          myMPSProject.getRepository().getModelAccess().runReadAction(() -> {
+            ProgressMonitor monitor = new ProgressMonitorAdapter(indicator);
+            try {
+              if (myIsMeta) {
+                results[0] = myReferencesFinder.getUsedConcepts(Sequence.fromIterable(myActiveScope.getNodes()).toListSequence(), monitor);
+              } else {
+                results[0] = myReferencesFinder.findRefsFromScopeToOuter(myActiveScope, myTargetsView.limitedTo(), monitor);
               }
+            } finally {
+              monitor.done();
             }
           });
         }
@@ -138,17 +136,15 @@ public class DependenciesPanel extends JPanel {
       public void run(@NotNull ProgressIndicator indicator) {
         final ProgressMonitor monitor = new ProgressMonitorAdapter(indicator);
         final Wrappers._T<SearchResults> result = new Wrappers._T<SearchResults>();
-        myMPSProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            try {
-              if (myIsMeta) {
-                result.value = myReferencesFinder.getLanguageUsagesSearchResults(Sequence.fromIterable(myActiveScope.getNodes()).toListSequence(), targetScope, monitor);
-              } else {
-                result.value = myReferencesFinder.getRefsBetweenScopes(myActiveScope, targetScope, monitor);
-              }
-            } finally {
-              monitor.done();
+        myMPSProject.getRepository().getModelAccess().runReadAction(() -> {
+          try {
+            if (myIsMeta) {
+              result.value = myReferencesFinder.getLanguageUsagesSearchResults(Sequence.fromIterable(myActiveScope.getNodes()).toListSequence(), targetScope, monitor);
+            } else {
+              result.value = myReferencesFinder.getRefsBetweenScopes(myActiveScope, targetScope, monitor);
             }
+          } finally {
+            monitor.done();
           }
         });
         myReferencesView.setContents(result.value);

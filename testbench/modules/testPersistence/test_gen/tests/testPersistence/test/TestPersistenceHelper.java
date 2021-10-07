@@ -5,14 +5,13 @@ package tests.testPersistence.test;
 import jetbrains.mps.extapi.model.SModelBase;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.smodel.TrivialModelDescriptor;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SnapshotModelData;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.CopyUtil;
+import jetbrains.mps.smodel.TrivialModelDescriptor;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.persistence.PersistenceUtil;
 import jetbrains.mps.smodel.persistence.def.ModelPersistence;
@@ -44,23 +43,21 @@ import java.util.Arrays;
 
   /*package*/ TestPersistenceHelper(final SRepository repo) {
     // myTestModel is a copy of a sample model, detached to avoid model read access.
-    myTestModel = new ModelAccessHelper(repo).runReadAction(new Computable<TrivialModelDescriptor>() {
-      public TrivialModelDescriptor compute() {
-        SModel testModel = PersistenceFacade.getInstance().createModelReference("r:b44bed60-e0f0-4d48-bb29-e0fdb2041a66(tests.testPersistence.testModel)").resolve(repo);
-        SnapshotModelData mdClone = new SnapshotModelData(SModelOperations.getPointer(testModel));
-        // XXX in fact, duplicates CloneUtil.cloneModelWithImports. Don't want dependency from generator, though.
-        // Perhaps, need a high-level mechanism to clone a model?
-        for (SNode r : SModelOperations.roots(testModel, null)) {
-          // TrivialModelDescriptor doesn't support addRootNode(), that's why update SModelData directly
-          mdClone.addRootNode(CopyUtil.copyAndPreserveId(r, true));
-        }
-        TrivialModelDescriptor rv = new TrivialModelDescriptor(mdClone);
-        ModelImports mi = new ModelImports(rv);
-        mi.copyImportedModelsFrom(testModel);
-        mi.copyUsedLanguagesFrom(testModel);
-        mi.copyEmployedDevKitsFrom(testModel);
-        return rv;
+    myTestModel = new ModelAccessHelper(repo).runReadAction(() -> {
+      SModel testModel = PersistenceFacade.getInstance().createModelReference("r:b44bed60-e0f0-4d48-bb29-e0fdb2041a66(tests.testPersistence.testModel)").resolve(repo);
+      SnapshotModelData mdClone = new SnapshotModelData(SModelOperations.getPointer(testModel));
+      // XXX in fact, duplicates CloneUtil.cloneModelWithImports. Don't want dependency from generator, though.
+      // Perhaps, need a high-level mechanism to clone a model?
+      for (SNode r : SModelOperations.roots(testModel, null)) {
+        // TrivialModelDescriptor doesn't support addRootNode(), that's why update SModelData directly
+        mdClone.addRootNode(CopyUtil.copyAndPreserveId(r, true));
       }
+      TrivialModelDescriptor rv = new TrivialModelDescriptor(mdClone);
+      ModelImports mi = new ModelImports(rv);
+      mi.copyImportedModelsFrom(testModel);
+      mi.copyUsedLanguagesFrom(testModel);
+      mi.copyEmployedDevKitsFrom(testModel);
+      return rv;
     });
   }
 

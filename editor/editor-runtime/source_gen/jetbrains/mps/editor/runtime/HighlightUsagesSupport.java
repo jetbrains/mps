@@ -78,24 +78,12 @@ public class HighlightUsagesSupport {
       highlightTask.cancel(false);
     }
     if (selectedCell == null) {
-      scheduler.execute(new Runnable() {
-        public void run() {
-          myRepository.getModelAccess().runReadInEDT(new Runnable() {
-            public void run() {
-              clearMarks();
-            }
-          });
-        }
-      });
+      scheduler.execute(() -> myRepository.getModelAccess().runReadInEDT(() -> clearMarks()));
     } else {
       if (updateDelayMillis < 0) {
         updateDelayMillis = defaultUpdateDelayMillis;
       }
-      highlightTask = scheduler.schedule(new Runnable() {
-        public void run() {
-          highlightUsages(selectedCell);
-        }
-      }, updateDelayMillis, TimeUnit.MILLISECONDS);
+      highlightTask = scheduler.schedule(() -> highlightUsages(selectedCell), updateDelayMillis, TimeUnit.MILLISECONDS);
     }
   }
 
@@ -109,22 +97,18 @@ public class HighlightUsagesSupport {
       return;
     }
     final Set<SReference> refs = new HashSet<>();
-    myRepository.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        final SNode nodeToHighlight = APICellAdapter.getSNodeWRTReference(selectedCell);
-        if (nodeToHighlight == null) {
-          return;
-        }
-        collectUsages(nodeToHighlight, new CollectConsumer<>(refs));
-        myRepository.getModelAccess().runReadInEDT(new Runnable() {
-          public void run() {
-            EditorCell currentlySelectedCell = myEC.getSelectedCell();
-            if (selectedCell == currentlySelectedCell) {
-              markUsages(selectedCell.getSNode(), nodeToHighlight, refs);
-            }
-          }
-        });
+    myRepository.getModelAccess().runReadAction(() -> {
+      final SNode nodeToHighlight = APICellAdapter.getSNodeWRTReference(selectedCell);
+      if (nodeToHighlight == null) {
+        return;
       }
+      collectUsages(nodeToHighlight, new CollectConsumer<>(refs));
+      myRepository.getModelAccess().runReadInEDT(() -> {
+        EditorCell currentlySelectedCell = myEC.getSelectedCell();
+        if (selectedCell == currentlySelectedCell) {
+          markUsages(selectedCell.getSNode(), nodeToHighlight, refs);
+        }
+      });
     });
   }
 

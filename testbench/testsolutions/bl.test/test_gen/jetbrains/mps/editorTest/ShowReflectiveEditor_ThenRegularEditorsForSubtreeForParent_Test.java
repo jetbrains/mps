@@ -35,26 +35,16 @@ public class ShowReflectiveEditor_ThenRegularEditorsForSubtreeForParent_Test ext
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("8710742295992773244", "");
-      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), new Runnable() {
-        public void run() {
-          getEditorComponent().selectNode(getNodeById("8710742295992773247"));
-        }
-      });
+      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), () -> getEditorComponent().selectNode(getNodeById("8710742295992773247")));
       invokeAction("jetbrains.mps.ide.editor.actions.ShowReflectiveEditor_Action");
 
-      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), new Runnable() {
-        public void run() {
-          getEditorComponent().selectNode(getNodeById("8710742295992773244"));
-        }
-      });
+      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), () -> getEditorComponent().selectNode(getNodeById("8710742295992773244")));
       invokeAction("jetbrains.mps.ide.editor.actions.ShowRegularEditor_Action");
 
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getNodeById("8710742295992773244")).getCellContext()));
-          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getNodeById("8710742295992773247")).getCellContext()));
-          Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getNodeById("8710742295992773249")).getCellContext()));
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getNodeById("8710742295992773244")).getCellContext()));
+        Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getNodeById("8710742295992773247")).getCellContext()));
+        Assert.assertFalse(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getBigValidCellForNode(getNodeById("8710742295992773249")).getCellContext()));
       });
     }
   }

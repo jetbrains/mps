@@ -166,11 +166,7 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
       return false;
     }
     final Wrappers._boolean modelsHaveChanges = new Wrappers._boolean();
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        modelsHaveChanges.value = ChangeSetBuilder.hasChangesForNodeId(prevModel, model, myRootId);
-      }
-    });
+    myProject.getModelAccess().runReadAction(() -> modelsHaveChanges.value = ChangeSetBuilder.hasChangesForNodeId(prevModel, model, myRootId));
     return modelsHaveChanges.value;
   }
 

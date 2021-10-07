@@ -34,11 +34,7 @@ public class TwoStepDeleteChildWithAttributeAttributeSelected_Test extends BaseT
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("2420730201805087098", "2420730201805087105");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
-      }, true);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action"), true);
     }
   }
 }

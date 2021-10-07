@@ -120,20 +120,18 @@ public class InitialStep extends BaseStep {
     Project project = mySession.getProject();
     final DefaultMutableTreeNode root = new DefaultMutableTreeNode("empty");
 
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        Icon migrationIcon = GlobalIconManager.getInstance().getIconFor(CONCEPTS.MigrationScript$KN);
+    project.getRepository().getModelAccess().runReadAction(() -> {
+      Icon migrationIcon = GlobalIconManager.getInstance().getIconFor(CONCEPTS.MigrationScript$KN);
 
-        DefaultMutableTreeNode prepareSection = createPrepareSectionNode(migrationIcon);
-        if (prepareSection.children().hasMoreElements()) {
-          root.add(prepareSection);
-        }
+      DefaultMutableTreeNode prepareSection = createPrepareSectionNode(migrationIcon);
+      if (prepareSection.children().hasMoreElements()) {
+        root.add(prepareSection);
+      }
 
-        if (mySession.requires(MigrationSession.MigrationStepKind.MIGRATE)) {
-          DefaultMutableTreeNode migrateSection = createMigrationSectionNode(migrationIcon);
-          if (migrateSection.children().hasMoreElements()) {
-            root.add(migrateSection);
-          }
+      if (mySession.requires(MigrationSession.MigrationStepKind.MIGRATE)) {
+        DefaultMutableTreeNode migrateSection = createMigrationSectionNode(migrationIcon);
+        if (migrateSection.children().hasMoreElements()) {
+          root.add(migrateSection);
         }
       }
     });

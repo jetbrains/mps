@@ -66,43 +66,35 @@ public class ToolController implements ItemExecutor {
     }
     myNextSelection = selection;
 
-    ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
-      public void run() {
-        try {
-          Thread.sleep(500);
-        } catch (InterruptedException ex) {
-          return;
-        }
+    ApplicationManager.getApplication().executeOnPooledThread(() -> {
+      try {
+        Thread.sleep(500);
+      } catch (InterruptedException ex) {
+        return;
+      }
 
-        if (myNextSelection != selection) {
-          return;
-        }
-        myLastSelection = selection;
-        try {
-          final Wrappers._T<List<ToolComponent.IItem>> items = new Wrappers._T<List<ToolComponent.IItem>>(null);
-          myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              items.value = queryItems(selection);
-              items.value = ListSequence.fromList(items.value).where(new IWhereFilter<ToolComponent.IItem>() {
-                public boolean accept(ToolComponent.IItem it) {
-                  return it.isVisible();
-                }
-              }).sort(new ISelector<ToolComponent.IItem, String>() {
-                public String select(ToolComponent.IItem it) {
-                  return it.getLabel();
-                }
-              }, true).toListSequence();
+      if (myNextSelection != selection) {
+        return;
+      }
+      myLastSelection = selection;
+      try {
+        final Wrappers._T<List<ToolComponent.IItem>> items = new Wrappers._T<List<ToolComponent.IItem>>(null);
+        myProject.getRepository().getModelAccess().runReadAction(() -> {
+          items.value = queryItems(selection);
+          items.value = ListSequence.fromList(items.value).where(new IWhereFilter<ToolComponent.IItem>() {
+            public boolean accept(ToolComponent.IItem it) {
+              return it.isVisible();
             }
-          });
-          ThreadUtils.runInUIThreadNoWait(new Runnable() {
-            public void run() {
-              myToolComponent.loadItems(items.value);
+          }).sort(new ISelector<ToolComponent.IItem, String>() {
+            public String select(ToolComponent.IItem it) {
+              return it.getLabel();
             }
-          });
-        } catch (Exception ex) {
-          if (LOG.isEnabledFor(Level.ERROR)) {
-            LOG.error("Context actions update failed", ex);
-          }
+          }, true).toListSequence();
+        });
+        ThreadUtils.runInUIThreadNoWait(() -> myToolComponent.loadItems(items.value));
+      } catch (Exception ex) {
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error("Context actions update failed", ex);
         }
       }
     });

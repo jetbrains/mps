@@ -68,46 +68,44 @@ public class LogBuilder {
     // but action also points to node's name. But pushing caption from constructor is not a good way
     // because it relies on order in which getChanges() is called for node subtree.
     myRefactoringStep = createRefactoringLog_1o8b1n_a0h0d(moduleVersion, (caption == null ? refactoringLogName + "_" + moduleVersion : caption));
-    session.registerChange(new Runnable() {
-      public void run() {
-        SModel migrationModel = LanguageAspect.MIGRATION.getOrCreate(module);
-        SModelInternal sm = (SModelInternal) (SModel) migrationModel;
-        for (SModelReference reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myRefactoringStep, null, true, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SReference>() {
-          public Iterable<SReference> translate(SNode it) {
-            return SNodeOperations.getReferences(it);
-          }
-        }).select(new ISelector<SReference, SModelReference>() {
-          public SModelReference select(SReference it) {
-            return it.getTargetSModelReference();
-          }
-        }).distinct()) {
-          if (!(SModelOperations.getImportedModelUIDs(migrationModel).contains(reference))) {
-            sm.addModelImport(reference);
-          }
+    session.registerChange(() -> {
+      SModel migrationModel = LanguageAspect.MIGRATION.getOrCreate(module);
+      SModelInternal sm = (SModelInternal) (SModel) migrationModel;
+      for (SModelReference reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myRefactoringStep, null, true, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SReference>() {
+        public Iterable<SReference> translate(SNode it) {
+          return SNodeOperations.getReferences(it);
         }
-        sm.addLanguage(MetaAdapterFactory.getLanguage(0x9882f4ad195546feL, 0x826994189e5dbbf2L, "jetbrains.mps.lang.migration.util"));
-        jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(migrationModel, myRefactoringStep);
-        module.setModuleVersion(moduleVersion + 1);
+      }).select(new ISelector<SReference, SModelReference>() {
+        public SModelReference select(SReference it) {
+          return it.getTargetSModelReference();
+        }
+      }).distinct()) {
+        if (!(SModelOperations.getImportedModelUIDs(migrationModel).contains(reference))) {
+          sm.addModelImport(reference);
+        }
+      }
+      sm.addLanguage(MetaAdapterFactory.getLanguage(0x9882f4ad195546feL, 0x826994189e5dbbf2L, "jetbrains.mps.lang.migration.util"));
+      jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(migrationModel, myRefactoringStep);
+      module.setModuleVersion(moduleVersion + 1);
 
-        Iterable<SModule> modules = searchScope.getModules();
-        List<SModule> modulesToIncrementDependencyVersion = Sequence.fromIterable(modules).where(new IWhereFilter<SModule>() {
-          public boolean accept(SModule m) {
-            return MigrationModuleUtil.isModuleMigrateable(m);
+      Iterable<SModule> modules = searchScope.getModules();
+      List<SModule> modulesToIncrementDependencyVersion = Sequence.fromIterable(modules).where(new IWhereFilter<SModule>() {
+        public boolean accept(SModule m) {
+          return MigrationModuleUtil.isModuleMigrateable(m);
+        }
+      }).where(new IWhereFilter<SModule>() {
+        public boolean accept(SModule m) {
+          return SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(m)).contains(module);
+        }
+      }).toListSequence();
+      for (SModule m : ListSequence.fromList(modulesToIncrementDependencyVersion)) {
+        int depVersion = MigrationModuleUtil.getDependencyVersion(m, module);
+        if (moduleVersion != depVersion) {
+          if (LOG.isEnabledFor(Level.ERROR)) {
+            LOG.error("Module " + m + " depends on module " + module + " with version " + depVersion + ", but current version is " + moduleVersion);
           }
-        }).where(new IWhereFilter<SModule>() {
-          public boolean accept(SModule m) {
-            return SetSequence.fromSet(MigrationModuleUtil.getModuleDependencies(m)).contains(module);
-          }
-        }).toListSequence();
-        for (SModule m : ListSequence.fromList(modulesToIncrementDependencyVersion)) {
-          int depVersion = MigrationModuleUtil.getDependencyVersion(m, module);
-          if (moduleVersion != depVersion) {
-            if (LOG.isEnabledFor(Level.ERROR)) {
-              LOG.error("Module " + m + " depends on module " + module + " with version " + depVersion + ", but current version is " + moduleVersion);
-            }
-          } else {
-            MigrationModuleUtil.setDepVersion(m, module.getModuleReference(), moduleVersion + 1);
-          }
+        } else {
+          MigrationModuleUtil.setDepVersion(m, module.getModuleReference(), moduleVersion + 1);
         }
       }
     });

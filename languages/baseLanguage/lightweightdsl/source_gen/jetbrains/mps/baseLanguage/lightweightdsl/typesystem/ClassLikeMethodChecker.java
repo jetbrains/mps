@@ -8,7 +8,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.MethodDescriptor__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DependentTypeDescriptor__BehaviorDescriptor;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -38,19 +37,11 @@ public class ClassLikeMethodChecker {
     final SNode retType = MethodDescriptor__BehaviorDescriptor.getReturnType_id3m06Jgso0l8.invoke(SLinkOperations.getTarget(method, LINKS.decl$QvLv));
     if (SNodeOperations.isInstanceOf(retType, CONCEPTS.DependentTypeDescriptor$ny)) {
       if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.DependentTypeInstance$N9)) || SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.DependentTypeInstance$N9), LINKS.decl$HI1L) != retType) {
-        visitor.visitReturnType(method, new _FunctionTypes._return_P0_E0<SNode>() {
-          public SNode invoke() {
-            return (SNode) DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(retType, CONCEPTS.DependentTypeDescriptor$ny), method);
-          }
-        });
+        visitor.visitReturnType(method, () -> (SNode) DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(retType, CONCEPTS.DependentTypeDescriptor$ny), method));
       }
     } else {
       if (!((MatchingUtil.matchNodes(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), retType)))) {
-        visitor.visitReturnType(method, new _FunctionTypes._return_P0_E0<SNode>() {
-          public SNode invoke() {
-            return SNodeOperations.copyNode(retType);
-          }
-        });
+        visitor.visitReturnType(method, () -> SNodeOperations.copyNode(retType));
       }
     }
 
@@ -59,11 +50,7 @@ public class ClassLikeMethodChecker {
       final SNode formalPar = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.decl$QvLv), LINKS.param$HGTA)).getElement(i);
       if (cur == ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count()) {
         if (SLinkOperations.getTarget(formalPar, LINKS.condition$uzGY) == null || (boolean) ParameterDescriptor__BehaviorDescriptor.isNeeded_id7GXvAHO1j1d.invoke(formalPar, method)) {
-          visitor.visitMissingParam(method, cur++, new _FunctionTypes._return_P0_E0<SNode>() {
-            public SNode invoke() {
-              return (SNode) ParameterDescriptor__BehaviorDescriptor.create_id2h59CdJp99Y.invoke(formalPar, method);
-            }
-          });
+          visitor.visitMissingParam(method, cur++, () -> (SNode) ParameterDescriptor__BehaviorDescriptor.create_id2h59CdJp99Y.invoke(formalPar, method));
         }
         continue;
       }
@@ -76,11 +63,7 @@ public class ClassLikeMethodChecker {
         if (SLinkOperations.getTarget(formalPar, LINKS.condition$uzGY) != null) {
           // needed, but not present
           if ((boolean) ParameterDescriptor__BehaviorDescriptor.isNeeded_id7GXvAHO1j1d.invoke(formalPar, method) && SLinkOperations.getTarget(SNodeOperations.cast(actualPar, CONCEPTS.MethodParameterInstance$SI), LINKS.decl$JKxQ) != formalPar) {
-            visitor.visitMissingParam(method, cur++, new _FunctionTypes._return_P0_E0<SNode>() {
-              public SNode invoke() {
-                return (SNode) ParameterDescriptor__BehaviorDescriptor.create_id2h59CdJp99Y.invoke(formalPar, method);
-              }
-            });
+            visitor.visitMissingParam(method, cur++, () -> (SNode) ParameterDescriptor__BehaviorDescriptor.create_id2h59CdJp99Y.invoke(formalPar, method));
             continue;
           }
           // not needed, but present
@@ -102,19 +85,11 @@ public class ClassLikeMethodChecker {
 
       if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(formalPar, LINKS.type$HBuM), CONCEPTS.DependentTypeDescriptor$ny)) {
         if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(actualPar, LINKS.type$a1UY), CONCEPTS.DependentTypeInstance$N9))) {
-          visitor.visitParamType(actualPar, new _FunctionTypes._return_P0_E0<SNode>() {
-            public SNode invoke() {
-              return (SNode) DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(SLinkOperations.getTarget(formalPar, LINKS.type$HBuM), CONCEPTS.DependentTypeDescriptor$ny), method);
-            }
-          });
+          visitor.visitParamType(actualPar, () -> (SNode) DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(SLinkOperations.getTarget(formalPar, LINKS.type$HBuM), CONCEPTS.DependentTypeDescriptor$ny), method));
         }
       } else {
         if (!((MatchingUtil.matchNodes(SLinkOperations.getTarget(actualPar, LINKS.type$a1UY), SLinkOperations.getTarget(formalPar, LINKS.type$HBuM))))) {
-          visitor.visitParamType(actualPar, new _FunctionTypes._return_P0_E0<SNode>() {
-            public SNode invoke() {
-              return SNodeOperations.copyNode(SLinkOperations.getTarget(formalPar, LINKS.type$HBuM));
-            }
-          });
+          visitor.visitParamType(actualPar, () -> SNodeOperations.copyNode(SLinkOperations.getTarget(formalPar, LINKS.type$HBuM)));
         }
       }
       cur++;

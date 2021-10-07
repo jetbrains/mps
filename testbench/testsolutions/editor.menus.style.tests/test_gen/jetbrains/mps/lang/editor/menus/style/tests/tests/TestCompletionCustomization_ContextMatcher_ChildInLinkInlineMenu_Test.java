@@ -38,22 +38,18 @@ public class TestCompletionCustomization_ContextMatcher_ChildInLinkInlineMenu_Te
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("8199816903240221462", "8199816903240221464");
-      EditorTestUtil.runWithCompletionStyling(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
-          Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 2);
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
-        }
+      EditorTestUtil.runWithCompletionStyling(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
+        Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 2);
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
       }, false);
       invokeAction("jetbrains.mps.ide.editor.actions.Insert_Action");
-      EditorTestUtil.runWithCompletionStyling(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
-          Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 2);
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
-        }
+      EditorTestUtil.runWithCompletionStyling(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
+        Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 2);
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
       }, true);
     }
   }

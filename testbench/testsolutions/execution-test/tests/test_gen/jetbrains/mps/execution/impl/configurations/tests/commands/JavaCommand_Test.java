@@ -56,16 +56,14 @@ public class JavaCommand_Test extends BaseTransformationTest {
 
     public void test_startJavaByNode() throws Exception {
       final Wrappers._T<SNodeReference> pointer = new Wrappers._T<SNodeReference>();
-      myProject.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          SModel model = PersistenceFacade.getInstance().createModelReference("r:c2c670fc-188b-4168-9559-68c718816e1a(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox@tests)").resolve(myProject.getRepository());
-          SNode mainNode = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.INamedConcept$Kd)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), Main.class.getSimpleName());
-            }
-          });
-          pointer.value = new SNodePointer(mainNode);
-        }
+      myProject.getModelAccess().runReadAction(() -> {
+        SModel model = PersistenceFacade.getInstance().createModelReference("r:c2c670fc-188b-4168-9559-68c718816e1a(jetbrains.mps.execution.impl.configurations.tests.commands.sandbox@tests)").resolve(myProject.getRepository());
+        SNode mainNode = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.INamedConcept$Kd)).findFirst(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), Main.class.getSimpleName());
+          }
+        });
+        pointer.value = new SNodePointer(mainNode);
       });
 
       ProcessHandler process = new Java_Command().createProcess(pointer.value, myProject.getRepository());

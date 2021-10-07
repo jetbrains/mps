@@ -101,11 +101,7 @@ public class MigrateSourcesToMPS_Action extends BaseAction {
         parser.convertToMps(filesToParse, new ProgressMonitorAdapter(indicator));
       }
     });
-    ApplicationManager.getApplication().runWriteAction(new Runnable() {
-      public void run() {
-        parser.saveAll();
-      }
-    });
+    ApplicationManager.getApplication().runWriteAction(() -> parser.saveAll());
     // workaround for project pane not rebuilding itself when a model has been added
     // not in a command but in a write action
     ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))).rebuild();

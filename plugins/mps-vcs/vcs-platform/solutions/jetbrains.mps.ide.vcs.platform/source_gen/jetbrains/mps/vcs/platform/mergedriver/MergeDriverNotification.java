@@ -67,34 +67,32 @@ public class MergeDriverNotification {
         return (vn != null && vn.length() > 0);
       }
     }));
-    ThreadUtils.runInUIThreadNoWait(new Runnable() {
-      public void run() {
-        String whichVcses = IterableUtils.join(SetSequence.fromSet(vcsNames).select(new ISelector<String, String>() {
-          public String select(String vn) {
-            return AllVcses.getInstance(myProject).getByName(vn).getDisplayName();
+    ThreadUtils.runInUIThreadNoWait(() -> {
+      String whichVcses = IterableUtils.join(SetSequence.fromSet(vcsNames).select(new ISelector<String, String>() {
+        public String select(String vn) {
+          return AllVcses.getInstance(myProject).getByName(vn).getDisplayName();
+        }
+      }), "and");
+      String message = "<p>This project uses " + whichVcses + ". For better integration with MPS, it is necessary to update VCS settings (<a href=\"https://www.jetbrains.com/help/mps/version-control-integration.html#vcsadd-ons\"" + ">More info</a>).<p><a href=\"install\">Update</a></p>";
+      myLastNotification = new Notification("MergeDriver", "VCS Addons", message, NotificationType.WARNING, new NotificationListener() {
+        @Override
+        public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent e) {
+          if (e.getEventType() != HyperlinkEvent.EventType.ACTIVATED) {
+            return;
           }
-        }), "and");
-        String message = "<p>This project uses " + whichVcses + ". For better integration with MPS, it is necessary to update VCS settings (<a href=\"https://www.jetbrains.com/help/mps/version-control-integration.html#vcsadd-ons\"" + ">More info</a>).<p><a href=\"install\">Update</a></p>";
-        myLastNotification = new Notification("MergeDriver", "VCS Addons", message, NotificationType.WARNING, new NotificationListener() {
-          @Override
-          public void hyperlinkUpdate(@NotNull Notification notification, @NotNull HyperlinkEvent e) {
-            if (e.getEventType() != HyperlinkEvent.EventType.ACTIVATED) {
-              return;
-            }
-            if (e.getURL() != null) {
-              BrowserUtil.launchBrowser(e.getURL().toExternalForm());
-              return;
-            } else
-            if ("install".equals(e.getDescription())) {
-              MergeDriverInstaller.installWhereNeeded(myProject);
-            } else {
-              assert false;
-            }
-            notification.expire();
+          if (e.getURL() != null) {
+            BrowserUtil.launchBrowser(e.getURL().toExternalForm());
+            return;
+          } else
+          if ("install".equals(e.getDescription())) {
+            MergeDriverInstaller.installWhereNeeded(myProject);
+          } else {
+            assert false;
           }
-        });
-        Notifications.Bus.notify(myLastNotification, myProject);
-      }
+          notification.expire();
+        }
+      });
+      Notifications.Bus.notify(myLastNotification, myProject);
     });
   }
   public static MergeDriverNotification getInstance(Project project) {

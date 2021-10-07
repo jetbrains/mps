@@ -94,12 +94,10 @@ public class MigrateTryStatement extends MigrationScriptBase {
                 }
               }.invoke(nodeToMigrate);
             }
-          }, new _FunctionTypes._void_P2_E0<SNode, SNode>() {
-            public void invoke(SNode before, SNode after) {
-              SNodeId anchorId = before.getNodeId();
-              if (anchorId instanceof jetbrains.mps.smodel.SNodeId.Regular) {
-                ((jetbrains.mps.smodel.SNode) SNodeOperations.cast(SLinkOperations.getTarget(after, LINKS.type$a1UY), CONCEPTS.AlternativeType$B$)).setId(generateNodeId((jetbrains.mps.smodel.SNodeId.Regular) anchorId, ALTERNATIVE_TYPE_ID_GEN));
-              }
+          }, (SNode before, SNode after) -> {
+            SNodeId anchorId = before.getNodeId();
+            if (anchorId instanceof jetbrains.mps.smodel.SNodeId.Regular) {
+              ((jetbrains.mps.smodel.SNode) SNodeOperations.cast(SLinkOperations.getTarget(after, LINKS.type$a1UY), CONCEPTS.AlternativeType$B$)).setId(generateNodeId((jetbrains.mps.smodel.SNodeId.Regular) anchorId, ALTERNATIVE_TYPE_ID_GEN));
             }
           });
         }
@@ -250,12 +248,10 @@ public class MigrateTryStatement extends MigrationScriptBase {
                 }
               }.invoke(nodeToMigrate);
             }
-          }, new _FunctionTypes._void_P2_E0<SNode, SNode>() {
-            public void invoke(SNode before, SNode after) {
-              SNodeId anchorId = before.getNodeId();
-              if (anchorId instanceof jetbrains.mps.smodel.SNodeId.Regular) {
-                ((jetbrains.mps.smodel.SNode) SLinkOperations.getTarget(after, LINKS.finallyClause$KUl)).setId(generateNodeId((jetbrains.mps.smodel.SNodeId.Regular) anchorId, FINALLY_CLAUSE_ID_GEN));
-              }
+          }, (SNode before, SNode after) -> {
+            SNodeId anchorId = before.getNodeId();
+            if (anchorId instanceof jetbrains.mps.smodel.SNodeId.Regular) {
+              ((jetbrains.mps.smodel.SNode) SLinkOperations.getTarget(after, LINKS.finallyClause$KUl)).setId(generateNodeId((jetbrains.mps.smodel.SNodeId.Regular) anchorId, FINALLY_CLAUSE_ID_GEN));
             }
           });
         }

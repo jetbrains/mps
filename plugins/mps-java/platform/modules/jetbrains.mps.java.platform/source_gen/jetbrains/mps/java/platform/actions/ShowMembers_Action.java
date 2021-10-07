@@ -90,12 +90,10 @@ public class ShowMembers_Action extends BaseAction {
     // model contains only SNodePointers
     final MemberContainerStructureModel[] model = new MemberContainerStructureModel[1];
 
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode container = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.IMemberContainer$yM, true, false);
-        title.value = (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.INamedConcept$Kd) ? ((String) BHReflection.invoke0(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) : container.getPresentation());
-        model[0] = new MemberContainerStructureModel(((MPSProject) MapSequence.fromMap(_params).get("project")), container);
-      }
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(() -> {
+      SNode container = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.IMemberContainer$yM, true, false);
+      title.value = (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.INamedConcept$Kd) ? ((String) BHReflection.invoke0(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) : container.getPresentation());
+      model[0] = new MemberContainerStructureModel(((MPSProject) MapSequence.fromMap(_params).get("project")), container);
     });
 
     // TODO: MPS-23001 Make fabric for StructureView

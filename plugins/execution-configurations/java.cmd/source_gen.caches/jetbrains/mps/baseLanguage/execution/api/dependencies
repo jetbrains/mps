@@ -80,7 +80,6 @@
     <classNode dependClassName="com.intellij.ui.components.JBLabel" />
     <classNode dependClassName="java.awt.GridBagLayout" />
     <classNode dependClassName="java.awt.event.ActionEvent" />
-    <classNode dependClassName="java.awt.event.ActionListener" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.execution.api.JavaRunParameters" />
     <classNode dependClassName="jetbrains.mps.execution.lib.ui.FieldWithPathChooseDialog" />
     <classNode dependClassName="jetbrains.mps.execution.lib.ui.RawLineEditorComponent" />

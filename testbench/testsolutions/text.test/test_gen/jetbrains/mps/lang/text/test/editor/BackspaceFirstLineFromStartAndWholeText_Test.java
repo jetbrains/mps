@@ -34,11 +34,7 @@ public class BackspaceFirstLineFromStartAndWholeText_Test extends BaseTransforma
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6328114375522082448", "6328114375522082479");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action"), false);
     }
   }
 }

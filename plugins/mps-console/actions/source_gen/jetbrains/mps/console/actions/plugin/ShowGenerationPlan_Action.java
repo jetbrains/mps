@@ -80,15 +80,7 @@ public class ShowGenerationPlan_Action extends BaseAction {
     ts.isHistoryTab = true;
     ts.title = String.format("%s plan", NameUtil.compactModelName(event.getData(MPSCommonDataKeys.MODEL).getReference()));
     final BaseConsoleTab tab = ct.addConsoleTab(ts, null, true);
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        tab.execute(command, null, new Runnable() {
-          public void run() {
-            tab.scrollToTop();
-          }
-        });
-      }
-    });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().executeCommand(() -> tab.execute(command, null, () -> tab.scrollToTop()));
   }
   /*package*/ boolean isIgnoreExternalPlan(AnActionEvent evt, final AnActionEvent event) {
     if (evt.getInputEvent() != null && evt.getInputEvent().isAltDown()) {

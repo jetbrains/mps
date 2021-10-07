@@ -36,7 +36,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.migration.global.CleanupProjectMigration;
-import org.jetbrains.mps.openapi.util.Processor;
 import java.util.HashMap;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.errors.item.IssueKindReportItem;
@@ -209,37 +208,31 @@ public class MigrationTask {
     // in tests, we have EmptyProgressIndicator and use NON_MODAL
     JComponent modalityComponent = check_ajmasp_a0e0eb(as_ajmasp_a0a0e0fb(myMonitor.getIndicator(), InlineProgressIndicator.class));
     ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-      public void run() {
-        if (myCurrentChange == null) {
-          myCurrentChange = LocalHistory.getInstance().startAction(APPLY + localHistCaption);
-        }
-        mySession.getProject().getRepository().getModelAccess().executeCommand(new Runnable() {
-          public void run() {
-            try {
-              execute.invoke();
-            } catch (Throwable t) {
-              if (LOG.isEnabledFor(Level.ERROR)) {
-                LOG.error("Exception during migration", t);
-              }
-              noException.value = false;
-            }
+    ApplicationManager.getApplication().invokeAndWait(() -> {
+      if (myCurrentChange == null) {
+        myCurrentChange = LocalHistory.getInstance().startAction(APPLY + localHistCaption);
+      }
+      mySession.getProject().getRepository().getModelAccess().executeCommand(() -> {
+        try {
+          execute.invoke();
+        } catch (Throwable t) {
+          if (LOG.isEnabledFor(Level.ERROR)) {
+            LOG.error("Exception during migration", t);
           }
+          noException.value = false;
+        }
+      });
+
+      if (merge == null || !(merge.invoke())) {
+        final Project project = mySession.getProject();
+        m.step("Saving project...");
+        project.getRepository().getModelAccess().runWriteAction(() -> {
+          project.getRepository().saveAll();
+          saveProject(project);
         });
 
-        if (merge == null || !(merge.invoke())) {
-          final Project project = mySession.getProject();
-          m.step("Saving project...");
-          project.getRepository().getModelAccess().runWriteAction(new Runnable() {
-            public void run() {
-              project.getRepository().saveAll();
-              saveProject(project);
-            }
-          });
-
-          myCurrentChange.finish();
-          myCurrentChange = null;
-        }
+        myCurrentChange.finish();
+        myCurrentChange = null;
       }
     }, modalityState);
 
@@ -272,11 +265,7 @@ public class MigrationTask {
             }
 
             m.step(pm.getDescription());
-            if (!(executeSingleStep(m, pm.getDescription(), new _FunctionTypes._void_P0_E0() {
-              public void invoke() {
-                pm.execute(mySession.getProject());
-              }
-            }, null))) {
+            if (!(executeSingleStep(m, pm.getDescription(), () -> pm.execute(mySession.getProject()), null))) {
               success.set(false);
               if (pm instanceof CleanupProjectMigration) {
                 ((CleanupProjectMigration) pm).forceExecutionNextTime(mySession.getProject());
@@ -296,33 +285,27 @@ public class MigrationTask {
 
   private List<ScriptApplied> findMissingMigrations(ProgressMonitor m) {
     final List<ScriptApplied> res = ListSequence.fromList(new ArrayList<ScriptApplied>());
-    mySession.getChecker().checkMigrations(m, new Processor<ScriptApplied>() {
-      public boolean process(ScriptApplied sa) {
-        ListSequence.fromList(res).addElement(sa);
-        return true;
-      }
+    mySession.getChecker().checkMigrations(m, (ScriptApplied sa) -> {
+      ListSequence.fromList(res).addElement(sa);
+      return true;
     });
     return res;
   }
 
   private Map<SModule, SModule> checkMigratedLibs(ProgressMonitor m) {
     final Map<SModule, SModule> res = MapSequence.fromMap(new HashMap<SModule, SModule>());
-    mySession.getChecker().checkLibs(m, new Processor<Pair<SModule, SModule>>() {
-      public boolean process(Pair<SModule, SModule> p) {
-        MapSequence.fromMap(res).put(p.o1, p.o2);
-        return true;
-      }
+    mySession.getChecker().checkLibs(m, (Pair<SModule, SModule> p) -> {
+      MapSequence.fromMap(res).put(p.o1, p.o2);
+      return true;
     });
     return res;
   }
 
   private boolean checkModels(ProgressMonitor m) {
     final Wrappers._boolean hasErrors = new Wrappers._boolean(false);
-    mySession.getChecker().checkProject(m, new Processor<IssueKindReportItem>() {
-      public boolean process(IssueKindReportItem p) {
-        hasErrors.value = true;
-        return false;
-      }
+    mySession.getChecker().checkProject(m, (IssueKindReportItem p) -> {
+      hasErrors.value = true;
+      return false;
     });
     return hasErrors.value;
   }
@@ -330,56 +313,34 @@ public class MigrationTask {
   private void runVersionsUpdate(final ProgressMonitor m) {
     final Project project = mySession.getProject();
     String caption = "Updating versions...";
-    runLocalHistoryRecord(caption, new Runnable() {
-      public void run() {
-        JComponent modalityComponent = check_ajmasp_a0a0b0c0qb(as_ajmasp_a0a0a0a0a1a2a34(myMonitor.getIndicator(), InlineProgressIndicator.class));
-        ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
+    runLocalHistoryRecord(caption, () -> {
+      JComponent modalityComponent = check_ajmasp_a0a0b0c0qb(as_ajmasp_a0a0a0b0c0rb(myMonitor.getIndicator(), InlineProgressIndicator.class));
+      ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
 
-        ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-          public void run() {
-            project.getRepository().getModelAccess().executeCommand(new Runnable() {
-              public void run() {
-                // XXX why there's a command, not just write? Commit 076c27f6adce doesn't help to understand.
-                mySession.updateModuleImports(m);
-              }
-            });
-          }
-        }, modalityState);
-      }
+      ApplicationManager.getApplication().invokeAndWait(() -> project.getRepository().getModelAccess().executeCommand(() -> {
+        // XXX why there's a command, not just write? Commit 076c27f6adce doesn't help to understand.
+        mySession.updateModuleImports(m);
+      }), modalityState);
     });
   }
 
   private void runForceSave(final ProgressMonitor m) {
     final Wrappers._T<List<SModule>> allModules = new Wrappers._T<List<SModule>>();
     final Project project = mySession.getProject();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        allModules.value = IterableUtil.asList(project.getRepository().getModules());
-      }
-    });
+    project.getRepository().getModelAccess().runReadAction(() -> allModules.value = IterableUtil.asList(project.getRepository().getModules()));
     String caption = "Force-saving project modules, models...";
     m.start(caption, ListSequence.fromList(allModules.value).count() + 10);
-    runLocalHistoryRecord(caption, new Runnable() {
-      public void run() {
-        try {
-          JComponent modalityComponent = check_ajmasp_a0a0a0b0f0sb(as_ajmasp_a0a0a0a0a0a1a5a54(myMonitor.getIndicator(), InlineProgressIndicator.class));
-          ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
+    runLocalHistoryRecord(caption, () -> {
+      try {
+        JComponent modalityComponent = check_ajmasp_a0a0a0b0f0sb(as_ajmasp_a0a0a0a0b0f0tb(myMonitor.getIndicator(), InlineProgressIndicator.class));
+        ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
 
-          for (final SModule module : ListSequence.fromList(allModules.value)) {
-            m.advance(1);
-            ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-              public void run() {
-                project.getRepository().getModelAccess().executeCommand(new Runnable() {
-                  public void run() {
-                    ((AbstractModule) module).forceSaveRecursively();
-                  }
-                });
-              }
-            }, modalityState);
-          }
-        } finally {
-          m.done();
+        for (final SModule module : ListSequence.fromList(allModules.value)) {
+          m.advance(1);
+          ApplicationManager.getApplication().invokeAndWait(() -> project.getRepository().getModelAccess().executeCommand(() -> ((AbstractModule) module).forceSaveRecursively()), modalityState);
         }
+      } finally {
+        m.done();
       }
     });
   }
@@ -408,11 +369,7 @@ public class MigrationTask {
           }
 
           m.step(pm.getDescription());
-          if (!(executeSingleStep(m, pm.getDescription(), new _FunctionTypes._void_P0_E0() {
-            public void invoke() {
-              mySession.getExecutor().executeProjectMigration(pm);
-            }
-          }, null))) {
+          if (!(executeSingleStep(m, pm.getDescription(), () -> mySession.getExecutor().executeProjectMigration(pm), null))) {
             success.set(false);
             break;
           }
@@ -443,18 +400,12 @@ public class MigrationTask {
           String caption = sa.getScriptReference().resolve(mySession.getProject(), false).getCaption();
           m.step(caption + " [" + NameUtil.compactNamespace(sa.getModuleReference().getModuleName()) + "]");
           ListSequence.fromList(myWereRun).addElement(sa);
-          if (!(executeSingleStep(m, caption, new _FunctionTypes._void_P0_E0() {
-            public void invoke() {
-              mySession.getExecutor().executeModuleMigration(sa);
+          if (!(executeSingleStep(m, caption, () -> mySession.getExecutor().executeModuleMigration(sa), () -> {
+            ScriptApplied next = mySession.nextStepModule(preferredId.get());
+            if (next == null) {
+              return false;
             }
-          }, new _FunctionTypes._return_P0_E0<Boolean>() {
-            public Boolean invoke() {
-              ScriptApplied next = mySession.nextStepModule(preferredId.get());
-              if (next == null) {
-                return false;
-              }
-              return Objects.equals(sa.getScriptReference(), next.getScriptReference());
-            }
+            return Objects.equals(sa.getScriptReference(), next.getScriptReference());
           }))) {
             success.set(false);
             break;
@@ -471,33 +422,25 @@ public class MigrationTask {
 
   private boolean findNotMigrated(ProgressMonitor m) {
     final Wrappers._boolean haveNotMigrated = new Wrappers._boolean(false);
-    mySession.getChecker().findNotMigrated(m, myWereRun, new Processor<Problem>() {
-      public boolean process(Problem p) {
-        haveNotMigrated.value = true;
-        return false;
-      }
+    mySession.getChecker().findNotMigrated(m, myWereRun, (Problem p) -> {
+      haveNotMigrated.value = true;
+      return false;
     });
     return haveNotMigrated.value;
   }
 
   private int moduleStepsCount() {
     final Wrappers._int res = new Wrappers._int();
-    mySession.getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        res.value = CollectionSequence.fromCollection(mySession.getModuleMigrations()).count();
-      }
-    });
+    mySession.getProject().getRepository().getModelAccess().runReadAction(() -> res.value = CollectionSequence.fromCollection(mySession.getModuleMigrations()).count());
     return res.value;
   }
 
   private int projectStepsCount(final boolean isCleanup) {
     final Wrappers._int res = new Wrappers._int();
-    mySession.getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        Iterable<ProjectMigration> migrations = mySession.getProjectMigrations();
-        int cleanupSize = Sequence.fromIterable(migrations).ofType(CleanupProjectMigration.class).count();
-        res.value = (isCleanup ? cleanupSize : Sequence.fromIterable(migrations).count() - cleanupSize);
-      }
+    mySession.getProject().getRepository().getModelAccess().runReadAction(() -> {
+      Iterable<ProjectMigration> migrations = mySession.getProjectMigrations();
+      int cleanupSize = Sequence.fromIterable(migrations).ofType(CleanupProjectMigration.class).count();
+      res.value = (isCleanup ? cleanupSize : Sequence.fromIterable(migrations).count() - cleanupSize);
     });
     return res.value;
   }
@@ -522,10 +465,10 @@ public class MigrationTask {
   private static <T> T as_ajmasp_a0a0e0fb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_ajmasp_a0a0a0a0a1a2a34(Object o, Class<T> type) {
+  private static <T> T as_ajmasp_a0a0a0b0c0rb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_ajmasp_a0a0a0a0a0a1a5a54(Object o, Class<T> type) {
+  private static <T> T as_ajmasp_a0a0a0a0b0f0tb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

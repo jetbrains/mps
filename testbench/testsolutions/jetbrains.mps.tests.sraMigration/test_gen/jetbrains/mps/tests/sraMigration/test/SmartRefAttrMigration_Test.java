@@ -71,191 +71,165 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
   private MPSProject project;
   @Test
   public void test_testImplicitAttr() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
-        SNode node_implicitAttr = resolveCD(ref_implicitAttr);
+    executeUnderLock(() -> {
+      SNode node_implicitAttr = resolveCD(ref_implicitAttr);
 
-        Assert.assertTrue(SmartRefAttributeUtil.isAttributedImplicitly(node_implicitAttr));
-      }
+      Assert.assertTrue(SmartRefAttributeUtil.isAttributedImplicitly(node_implicitAttr));
     });
   }
   @Test
   public void test_testExplicitAttr_OneCustom() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
-        SNode node_explicitAttr_OneCustom = resolveCD(ref_explicitAttr_OneCustom);
+    executeUnderLock(() -> {
+      SNode node_explicitAttr_OneCustom = resolveCD(ref_explicitAttr_OneCustom);
 
-        {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node_explicitAttr_OneCustom));
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0b0(resolveLD(ref_explicitAttr_OneCustom_characteristicRef)));
-          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-        }
+      {
+        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node_explicitAttr_OneCustom));
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0b0(resolveLD(ref_explicitAttr_OneCustom_characteristicRef)));
+        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
     });
   }
   @Test
   public void test_testExpicitAttr_OneOfTwo() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
-        SNode node_explicitAttr_OneOfTwo = resolveCD(ref_explicitAttr_OneOfTwo);
+    executeUnderLock(() -> {
+      SNode node_explicitAttr_OneOfTwo = resolveCD(ref_explicitAttr_OneOfTwo);
 
-        {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node_explicitAttr_OneOfTwo));
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0c0(resolveLD(ref_explicitAttr_OneOfTwo_characteristicRef)));
-          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-        }
+      {
+        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node_explicitAttr_OneOfTwo));
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0c0(resolveLD(ref_explicitAttr_OneOfTwo_characteristicRef)));
+        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
     });
   }
   @Test
   public void test_testExpicitAttr_OneNoReq() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
-        SNode node_explicitAttr_OneNoReq = resolveCD(ref_explicitAttr_OneNoReq);
+    executeUnderLock(() -> {
+      SNode node_explicitAttr_OneNoReq = resolveCD(ref_explicitAttr_OneNoReq);
 
-        {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node_explicitAttr_OneNoReq));
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0d0(resolveLD(ref_explicitAttr_OneNoReq_characteristicRef)));
-          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-        }
+      {
+        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node_explicitAttr_OneNoReq));
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0d0(resolveLD(ref_explicitAttr_OneNoReq_characteristicRef)));
+        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
     });
   }
   @Test
   public void test_testExpicitAttr_Specialized() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
-        SNode node_explicitAttr_Specialized = resolveCD(ref_explicitAttr_Specialized);
+    executeUnderLock(() -> {
+      SNode node_explicitAttr_Specialized = resolveCD(ref_explicitAttr_Specialized);
 
-        {
-          List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node_explicitAttr_Specialized));
-          List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0e0(resolveLD(ref_explicitAttr_Specialized_characteristicRef)));
-          Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
-        }
+      {
+        List<SNode> nodesBefore = ListSequence.fromListAndArray(new ArrayList<SNode>(), new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node_explicitAttr_Specialized));
+        List<SNode> nodesAfter = ListSequence.fromListAndArray(new ArrayList<SNode>(), _quotation_createNode_m5qb0v_a0a0b0c0a0a0e0(resolveLD(ref_explicitAttr_Specialized_characteristicRef)));
+        Assert.assertTrue("The nodes '" + nodesBefore + "' and '" + nodesAfter + "' do not match!", new NodesMatcher(nodesBefore, nodesAfter).diff().isEmpty());
       }
     });
   }
   @Test
   public void test_testExplicitCellMenu() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
+    executeUnderLock(() -> {
 
-        SNode refCell = resolveCMRef(ref_explicitCellMenu_RefCell);
+      SNode refCell = resolveCMRef(ref_explicitCellMenu_RefCell);
 
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).getElement(0), CONCEPTS.CellMenuPart_ReferentPrimary$uH);
-        Assert.assertNotNull(menuPart);
-        Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho));
-        Assert.assertNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j));
-      }
+      SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).getElement(0), CONCEPTS.CellMenuPart_ReferentPrimary$uH);
+      Assert.assertNotNull(menuPart);
+      Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho));
+      Assert.assertNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j));
     });
   }
   @Test
   public void test_testExplicitCellMenu_ExplicitReferentPrimary() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
+    executeUnderLock(() -> {
 
-        SNode refCell = resolveCMRef(ref_explicitCellMenu_ExplicitReferentPrimary_RefCell);
+      SNode refCell = resolveCMRef(ref_explicitCellMenu_ExplicitReferentPrimary_RefCell);
 
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).getElement(0), CONCEPTS.CellMenuPart_ReferentPrimary$uH);
-        Assert.assertNotNull(menuPart);
-        Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho));
-        Assert.assertNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j));
-      }
+      SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).getElement(0), CONCEPTS.CellMenuPart_ReferentPrimary$uH);
+      Assert.assertNotNull(menuPart);
+      Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho));
+      Assert.assertNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j));
     });
   }
   @Test
   public void test_testExplicitCellMenu_RefPresentation() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
+    executeUnderLock(() -> {
 
-        SNode refCell = resolveCMRef(ref_explicitCellMenu_RefPresentation_RefCell);
-        SNode rpCell = resolveCMRP(ref_explicitCellMenu_RefPresentation_RPCell);
+      SNode refCell = resolveCMRef(ref_explicitCellMenu_RefPresentation_RefCell);
+      SNode rpCell = resolveCMRP(ref_explicitCellMenu_RefPresentation_RPCell);
 
-        Assert.assertNull(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$));
-        Assert.assertNotNull(SLinkOperations.getTarget(rpCell, LINKS.referentPresentation$jfwN));
-      }
+      Assert.assertNull(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$));
+      Assert.assertNotNull(SLinkOperations.getTarget(rpCell, LINKS.referentPresentation$jfwN));
     });
   }
   @Test
   public void test_testExplicitCellMenu_RefPresentation_Custom() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
+    executeUnderLock(() -> {
 
-        SNode refCell = resolveCMRef(ref_explicitCellMenu_RefPresentation_Custom_RefCell);
-        SNode rpCell = resolveCMRP(ref_explicitCellMenu_RefPresentation_Custom_RPCell);
+      SNode refCell = resolveCMRef(ref_explicitCellMenu_RefPresentation_Custom_RefCell);
+      SNode rpCell = resolveCMRP(ref_explicitCellMenu_RefPresentation_Custom_RPCell);
 
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).getElement(0), CONCEPTS.CellMenuPart_ReferentPrimary$uH);
-        Assert.assertNotNull(menuPart);
-        Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho));
-        Assert.assertNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j));
+      SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).getElement(0), CONCEPTS.CellMenuPart_ReferentPrimary$uH);
+      Assert.assertNotNull(menuPart);
+      Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho));
+      Assert.assertNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j));
 
-        Assert.assertNotNull(SLinkOperations.getTarget(rpCell, LINKS.referentPresentation$jfwN));
-      }
+      Assert.assertNotNull(SLinkOperations.getTarget(rpCell, LINKS.referentPresentation$jfwN));
     });
   }
   @Test
   public void test_testExplicitCellMenu_HasVisible() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
+    executeUnderLock(() -> {
 
-        SNode refCell = resolveCMRef(ref_explicitCellMenu_HasVisible_RefCell);
+      SNode refCell = resolveCMRef(ref_explicitCellMenu_HasVisible_RefCell);
 
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).getElement(0), CONCEPTS.CellMenuPart_ReferentPrimary$uH);
-        Assert.assertNotNull(menuPart);
-        Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho));
-        Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j));
-      }
+      SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).getElement(0), CONCEPTS.CellMenuPart_ReferentPrimary$uH);
+      Assert.assertNotNull(menuPart);
+      Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho));
+      Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j));
     });
   }
   @Test
   public void test_testExplicitCellMenu_HasVisible_RefPresentation() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
+    executeUnderLock(() -> {
 
-        SNode refCell = resolveCMRef(ref_explicitCellMenu_HasVisible_RefPresentation_RefCell);
-        SNode rpCell = resolveCMRP(ref_explicitCellMenu_HasVisible_RefPresentation_RPCell);
+      SNode refCell = resolveCMRef(ref_explicitCellMenu_HasVisible_RefPresentation_RefCell);
+      SNode rpCell = resolveCMRP(ref_explicitCellMenu_HasVisible_RefPresentation_RPCell);
 
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).getElement(0), CONCEPTS.CellMenuPart_ReferentPrimary$uH);
-        Assert.assertNotNull(menuPart);
-        Assert.assertNull(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho));
-        Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j));
+      SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).getElement(0), CONCEPTS.CellMenuPart_ReferentPrimary$uH);
+      Assert.assertNotNull(menuPart);
+      Assert.assertNull(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho));
+      Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j));
 
-        Assert.assertNotNull(SLinkOperations.getTarget(rpCell, LINKS.referentPresentation$jfwN));
-      }
+      Assert.assertNotNull(SLinkOperations.getTarget(rpCell, LINKS.referentPresentation$jfwN));
     });
   }
   @Test
   public void test_testExplicitCellMenu_HasInEditor_RefPresentation() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
+    executeUnderLock(() -> {
 
-        SNode refCell = resolveCMRef(ref_explicitCellMenu_HasInEditor_RefPresentation_RefCell);
-        SNode rpCell = resolveCMRP(ref_explicitCellMenu_HasInEditor_RefPresentation_RPCell);
+      SNode refCell = resolveCMRef(ref_explicitCellMenu_HasInEditor_RefPresentation_RefCell);
+      SNode rpCell = resolveCMRP(ref_explicitCellMenu_HasInEditor_RefPresentation_RPCell);
 
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).getElement(0), CONCEPTS.CellMenuPart_ReferentPrimary$uH);
-        Assert.assertNotNull(menuPart);
-        Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho));
-        Assert.assertNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j));
+      SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).getElement(0), CONCEPTS.CellMenuPart_ReferentPrimary$uH);
+      Assert.assertNotNull(menuPart);
+      Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho));
+      Assert.assertNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j));
 
-        Assert.assertNotNull(SLinkOperations.getTarget(rpCell, LINKS.referentPresentation$jfwN));
-      }
+      Assert.assertNotNull(SLinkOperations.getTarget(rpCell, LINKS.referentPresentation$jfwN));
     });
   }
   @Test
   public void test_testExplicitCellMenu_HasInEditor_RefPresentation_Custom() throws Exception {
-    executeUnderLock(new Runnable() {
-      public void run() {
+    executeUnderLock(() -> {
 
-        SNode refCell = resolveCMRef(ref_explicitCellMenu_HasInEditor_RefPresentation_Custom_RefCell);
-        SNode rpCell = resolveCMRP(ref_explicitCellMenu_HasInEditor_RefPresentation_Custom_RPCell);
+      SNode refCell = resolveCMRef(ref_explicitCellMenu_HasInEditor_RefPresentation_Custom_RefCell);
+      SNode rpCell = resolveCMRP(ref_explicitCellMenu_HasInEditor_RefPresentation_Custom_RPCell);
 
-        SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).getElement(0), CONCEPTS.CellMenuPart_ReferentPrimary$uH);
-        Assert.assertNotNull(menuPart);
-        Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho));
-        Assert.assertNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j));
+      SNode menuPart = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(refCell, LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD)).getElement(0), CONCEPTS.CellMenuPart_ReferentPrimary$uH);
+      Assert.assertNotNull(menuPart);
+      Assert.assertNotNull(SLinkOperations.getTarget(menuPart, LINKS.matchingText$I7Ho));
+      Assert.assertNull(SLinkOperations.getTarget(menuPart, LINKS.visibleMatchingText$ss9j));
 
-        Assert.assertNotNull(SLinkOperations.getTarget(rpCell, LINKS.referentPresentation$jfwN));
-      }
+      Assert.assertNotNull(SLinkOperations.getTarget(rpCell, LINKS.referentPresentation$jfwN));
     });
   }
   @Before
@@ -339,20 +313,14 @@ public class SmartRefAttrMigration_Test extends EnvironmentAwareTestCase {
 
   public void executeUnderLock(final Runnable runnable) {
     final Reference<Throwable> ref = new Reference<Throwable>();
-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-      public void run() {
-        project.getModelAccess().executeCommand(new Runnable() {
-          public void run() {
-            try {
-              runnable.run();
-            } catch (Throwable t) {
-              ref.set(t);
-            }
-
-          }
-        });
+    ApplicationManager.getApplication().invokeAndWait(() -> project.getModelAccess().executeCommand(() -> {
+      try {
+        runnable.run();
+      } catch (Throwable t) {
+        ref.set(t);
       }
-    }, ModalityState.defaultModalityState());
+
+    }), ModalityState.defaultModalityState());
     if (!(ref.isNull())) {
       throw new RuntimeException(ref.get());
     }

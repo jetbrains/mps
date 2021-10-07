@@ -64,7 +64,6 @@ import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
 import com.intellij.openapi.vcs.history.VcsCachingHistory;
 import com.intellij.vcsUtil.VcsUtil;
 import com.intellij.openapi.vcs.impl.VcsBackgroundableActions;
-import com.intellij.util.Consumer;
 import com.intellij.openapi.vcs.history.VcsHistorySession;
 import jetbrains.mps.vcs.diff.ui.RootHistoryDialog;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
@@ -74,6 +73,7 @@ import jetbrains.mps.vcs.annotate.AnnotatedCellMessage;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import com.intellij.vcs.log.Hash;
+import com.intellij.util.Consumer;
 import com.intellij.vcs.log.ui.MainVcsLogUi;
 import com.intellij.vcs.log.ui.VcsLogUiEx;
 import com.intellij.vcs.log.impl.VcsLogContentUtil;
@@ -101,11 +101,7 @@ public final class VcsActionsUtil {
   @Nullable
   public VirtualFile detectVirtualFile() {
     final Wrappers._T<DataSource> source = new Wrappers._T<DataSource>();
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        source.value = DataLocationAwareModelFactory.nodeLocation(myNodeRef.resolve(myProject.getRepository()));
-      }
-    });
+    myProject.getModelAccess().runReadAction(() -> source.value = DataLocationAwareModelFactory.nodeLocation(myNodeRef.resolve(myProject.getRepository())));
     if (!((source.value instanceof FileSystemBasedDataSource))) {
       return null;
     }
@@ -340,21 +336,15 @@ __switch__:
 
   public static void showNodeHistory(final SModel model, final MPSProject mpsProject, final List<SNode> nodes, final SNodeId nodeId, final String dialogTitle, final boolean compareModels) {
     final Wrappers._T<VirtualFile> vf = new Wrappers._T<VirtualFile>();
-    mpsProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        vf.value = VcsActionsUtil.getFileFromModel(model, nodes);
-      }
-    });
+    mpsProject.getModelAccess().runReadAction(() -> vf.value = VcsActionsUtil.getFileFromModel(model, nodes));
     final AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(mpsProject.getProject()).getVcsFor(vf.value);
     // see RootHistoryDialog.show for explanation why I resort to roots. The reason I do it here, not in show(), as I don't want to care about model read access there (it's likely in background).
     // copied from IDEA's SelectedBlockHistoryAction
-    VcsCachingHistory.collectInBackground(activeVCS, VcsUtil.getFilePath(vf.value), VcsBackgroundableActions.HISTORY_FOR_SELECTION, new Consumer<VcsHistorySession>() {
-      public void consume(VcsHistorySession vcsSession) {
-        if (vcsSession != null) {
-          RootHistoryDialog dlg = new RootHistoryDialog(mpsProject, vf.value, activeVCS, vcsSession, compareModels);
-          dlg.setTitle(dialogTitle);
-          dlg.show(Collections.singleton(nodeId));
-        }
+    VcsCachingHistory.collectInBackground(activeVCS, VcsUtil.getFilePath(vf.value), VcsBackgroundableActions.HISTORY_FOR_SELECTION, (VcsHistorySession vcsSession) -> {
+      if (vcsSession != null) {
+        RootHistoryDialog dlg = new RootHistoryDialog(mpsProject, vf.value, activeVCS, vcsSession, compareModels);
+        dlg.setTitle(dialogTitle);
+        dlg.show(Collections.singleton(nodeId));
       }
     });
   }

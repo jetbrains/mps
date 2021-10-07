@@ -79,23 +79,21 @@ public class JavaDebugEvaluate_Facet extends IFacet.Stub {
                 // The code below was copied from TransformingGenerationHandler
                 final Wrappers._T<SNode> evaluator = new Wrappers._T<SNode>();
                 if (outcomeModel != null) {
-                  Target_configure.vars(pa.global()).transientModelsProvider().getRepository().getModelAccess().runWriteAction(new Runnable() {
-                    public void run() {
-                      // evaluator node belongs to a model already in the repository. 
-                      // Now, AttachedNodeOwner doesn't object if we modify a model inside write (used to demand isInsideCommand())
-                      evaluator.value = SModelOperations.getRootByName(outcomeModel, Properties.EVALUATOR_NAME);
-                      if (evaluator.value != null) {
-                        try {
-                          assert SNodeOperations.getModel(evaluator.value) != null;
-                          SNode evaluateMethod = ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluator.value, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
-                            public boolean accept(SNode it) {
-                              return "evaluate".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-                            }
-                          });
-                          TransformatorBuilder.getInstance().build(evaluateMethod, true).transformEvaluator();
-                        } catch (Throwable ex) {
-                          monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(ex)));
-                        }
+                  Target_configure.vars(pa.global()).transientModelsProvider().getRepository().getModelAccess().runWriteAction(() -> {
+                    // evaluator node belongs to a model already in the repository. 
+                    // Now, AttachedNodeOwner doesn't object if we modify a model inside write (used to demand isInsideCommand())
+                    evaluator.value = SModelOperations.getRootByName(outcomeModel, Properties.EVALUATOR_NAME);
+                    if (evaluator.value != null) {
+                      try {
+                        assert SNodeOperations.getModel(evaluator.value) != null;
+                        SNode evaluateMethod = ListSequence.fromList(SNodeOperations.getNodeDescendants(evaluator.value, CONCEPTS.InstanceMethodDeclaration$39, false, new SAbstractConcept[]{})).findFirst(new IWhereFilter<SNode>() {
+                          public boolean accept(SNode it) {
+                            return "evaluate".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
+                          }
+                        });
+                        TransformatorBuilder.getInstance().build(evaluateMethod, true).transformEvaluator();
+                      } catch (Throwable ex) {
+                        monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(ex)));
                       }
                     }
                   });

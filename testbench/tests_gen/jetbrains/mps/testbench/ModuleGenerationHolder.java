@@ -19,7 +19,6 @@ import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.internal.make.cfg.TextGenFacetInitializer;
 import jetbrains.mps.internal.make.cfg.MakeFacetInitializer;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.make.cfg.GenerateFacetInitializer;
 import jetbrains.mps.make.script.IScriptController;
@@ -41,7 +40,6 @@ import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.make.script.ScriptBuilder;
@@ -104,11 +102,7 @@ public class ModuleGenerationHolder {
     // trace.info is useless for tests, however we do keep these files in repo, and diffModule test
     // fails if we don't generate one here
     TextGenFacetInitializer tgfi = new TextGenFacetInitializer().generateDebugInfo(true);
-    MakeFacetInitializer mfi = new MakeFacetInitializer().setFileToFile(new _FunctionTypes._return_P1_E0<IFile, IFile>() {
-      public IFile invoke(IFile f) {
-        return tmpFile(f);
-      }
-    });
+    MakeFacetInitializer mfi = new MakeFacetInitializer().setFileToFile((IFile f) -> tmpFile(f));
     GenerateFacetInitializer gfi = new GenerateFacetInitializer().setGenerationOptions(optBuilder);
     IScriptController ctl = new IScriptController.Stub2(session, tgfi, mfi, gfi);
     result = new TestMakeService().make(session, ModuleGenerationHolder.collectResources(project, module), scr, ctl, new EmptyProgressMonitor()).get();
@@ -281,15 +275,13 @@ public class ModuleGenerationHolder {
     myMessageHandler.cleanUp();
   }
   /*package*/ boolean needsGeneration() {
-    return new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        for (SModel descriptor : module.getModels()) {
-          if (GenerationFacade.canGenerate(descriptor)) {
-            return true;
-          }
+    return new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
+      for (SModel descriptor : module.getModels()) {
+        if (GenerationFacade.canGenerate(descriptor)) {
+          return true;
         }
-        return false;
       }
+      return false;
     });
   }
   private ScriptBuilder defaultScriptBuilder() {
@@ -303,16 +295,14 @@ public class ModuleGenerationHolder {
     }));
   }
   private static Iterable<IResource> collectResources(Project project, final SModule module) {
-    return new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<Iterable<IResource>>() {
-      public Iterable<IResource> compute() {
+    return new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
 
-        Iterable<SModel> models = Sequence.fromIterable(withGenerators(Collections.singletonList(module))).translate(new ITranslator2<SModule, SModel>() {
-          public Iterable<SModel> translate(SModule mod) {
-            return mod.getModels();
-          }
-        });
-        return new ModelsToResources(models).resources();
-      }
+      Iterable<SModel> models = Sequence.fromIterable(withGenerators(Collections.singletonList(module))).translate(new ITranslator2<SModule, SModel>() {
+        public Iterable<SModel> translate(SModule mod) {
+          return mod.getModels();
+        }
+      });
+      return new ModelsToResources(models).resources();
     });
   }
   private static class MyMessageHandler implements IMessageHandler {

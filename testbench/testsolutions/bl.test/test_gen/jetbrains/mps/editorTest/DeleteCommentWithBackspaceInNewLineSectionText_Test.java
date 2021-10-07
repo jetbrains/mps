@@ -34,11 +34,7 @@ public class DeleteCommentWithBackspaceInNewLineSectionText_Test extends BaseTra
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5864132384447271346", "5864132384447271363");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action"), false);
     }
   }
 }

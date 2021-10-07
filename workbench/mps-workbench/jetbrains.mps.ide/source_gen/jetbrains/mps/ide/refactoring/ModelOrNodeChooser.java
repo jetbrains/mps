@@ -41,11 +41,7 @@ public class ModelOrNodeChooser implements ModelElementTargetChooser {
     if (treeNode == null) {
       return;
     }
-    myTree.runWithoutExpansion(new Runnable() {
-      public void run() {
-        myTree.selectNode(treeNode);
-      }
-    });
+    myTree.runWithoutExpansion(() -> myTree.selectNode(treeNode));
   }
   @Override
   public NodeLocation getSelectedObject() {

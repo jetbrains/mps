@@ -134,11 +134,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
     // alternatively, collect files of generatedModels (recorded in 'generated'), then update with delta of generated files (i.e. substract),
     // and those that left report as 'stale' (not to merge stale delta with written/touched)
     final FilesDelta fd = new FilesDelta(new DeltaKey(myModule, generatedInputModel));
-    visitGeneratedFiles(generatedInputModel, new Consumer<IFile>() {
-      public void accept(IFile f) {
-        fd.stale(f);
-      }
-    });
+    visitGeneratedFiles(generatedInputModel, (IFile f) -> fd.stale(f));
     ListSequence.fromList(myStaleFilesDelta).addElement(fd);
   }
 
@@ -158,16 +154,8 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
     }
     IFile actualOutputRoot = myPath2File.invoke(outputRoot);
     final FilesDelta fd = new FilesDelta(new DeltaKey(myModule, generatedInputModel));
-    Consumer<IFile> staleDeltaReporter = new Consumer<IFile>() {
-      public void accept(IFile f) {
-        fd.stale(f);
-      }
-    };
-    Predicate<IFile> avoidFilesInFoldersOfRetainedModels = new Predicate<IFile>() {
-      public boolean test(IFile f) {
-        return !(myRetainedFolders.contains(f));
-      }
-    };
+    Consumer<IFile> staleDeltaReporter = (IFile f) -> fd.stale(f);
+    Predicate<IFile> avoidFilesInFoldersOfRetainedModels = (IFile f) -> !(myRetainedFolders.contains(f));
     if (myStaleFoldersWalked.add(actualOutputRoot)) {
       visitFilesDeep(actualOutputRoot, staleDeltaReporter, avoidFilesInFoldersOfRetainedModels);
     }

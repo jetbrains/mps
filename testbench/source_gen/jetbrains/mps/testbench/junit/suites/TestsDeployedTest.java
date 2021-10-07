@@ -106,28 +106,26 @@ public class TestsDeployedTest {
 
   @Test
   public void everyTestIsDeployed() {
-    ourProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        List<SNode> includedInBuildTests = ListSequence.fromList(BuildTestsHelper.findIncludedInBuildTests(ourProject.getScope(), new ModuleScope(PersistenceFacade.getInstance().createModuleReference("422c2909-59d6-41a9-b318-40e6256b250f(jetbrains.mps.ide.build)").resolve(ourProject.getRepository())))).distinct().toListSequence();
-        List<SNode> includedInSuiteTests = ListSequence.fromList(BuildTestsHelper.findIncludedInSuiteTests(ourProject.getScope(), new ModuleScope(PersistenceFacade.getInstance().createModuleReference("79f9d103-4ff6-4def-9c1a-27070f9ba255(jetbrains.mps.testbench.make)").resolve(ourProject.getRepository())))).distinct().toListSequence();
-        List<SNode> allTests = ListSequence.fromList(BuildTestsHelper.collectTests(ourProject.getScope())).select(new ISelector<SNode, SNode>() {
-          public SNode select(SNode it) {
-            return ((SNode) (SNode) BHReflection.invoke0(it, CONCEPTS.ITestRef$zt, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR")));
-          }
-        }).distinct().toListSequence();
-        List<SNode> forgottenTests = ListSequence.fromList(allTests).subtract(ListSequence.fromList(includedInSuiteTests)).subtract(ListSequence.fromList(includedInBuildTests)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(isExcluded(SNodeOperations.getModel(it)));
-          }
-        }).toListSequence();
-        if (ListSequence.fromList(forgottenTests).isNotEmpty()) {
-          StringBuilder message = new StringBuilder();
-          message.append("The following " + ListSequence.fromList(forgottenTests).count() + " tests are not included into neither buildscript nor legacy suite:\n");
-          for (SNode forgottenTest : ListSequence.fromList(forgottenTests)) {
-            message.append(forgottenTest.getName() + " from model " + SModelOperations.getModelName(SNodeOperations.getModel(forgottenTest)) + "\n");
-          }
-          Assert.fail(message.toString());
+    ourProject.getRepository().getModelAccess().runReadAction(() -> {
+      List<SNode> includedInBuildTests = ListSequence.fromList(BuildTestsHelper.findIncludedInBuildTests(ourProject.getScope(), new ModuleScope(PersistenceFacade.getInstance().createModuleReference("422c2909-59d6-41a9-b318-40e6256b250f(jetbrains.mps.ide.build)").resolve(ourProject.getRepository())))).distinct().toListSequence();
+      List<SNode> includedInSuiteTests = ListSequence.fromList(BuildTestsHelper.findIncludedInSuiteTests(ourProject.getScope(), new ModuleScope(PersistenceFacade.getInstance().createModuleReference("79f9d103-4ff6-4def-9c1a-27070f9ba255(jetbrains.mps.testbench.make)").resolve(ourProject.getRepository())))).distinct().toListSequence();
+      List<SNode> allTests = ListSequence.fromList(BuildTestsHelper.collectTests(ourProject.getScope())).select(new ISelector<SNode, SNode>() {
+        public SNode select(SNode it) {
+          return ((SNode) (SNode) BHReflection.invoke0(it, CONCEPTS.ITestRef$zt, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR")));
         }
+      }).distinct().toListSequence();
+      List<SNode> forgottenTests = ListSequence.fromList(allTests).subtract(ListSequence.fromList(includedInSuiteTests)).subtract(ListSequence.fromList(includedInBuildTests)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return !(isExcluded(SNodeOperations.getModel(it)));
+        }
+      }).toListSequence();
+      if (ListSequence.fromList(forgottenTests).isNotEmpty()) {
+        StringBuilder message = new StringBuilder();
+        message.append("The following " + ListSequence.fromList(forgottenTests).count() + " tests are not included into neither buildscript nor legacy suite:\n");
+        for (SNode forgottenTest : ListSequence.fromList(forgottenTests)) {
+          message.append(forgottenTest.getName() + " from model " + SModelOperations.getModelName(SNodeOperations.getModel(forgottenTest)) + "\n");
+        }
+        Assert.fail(message.toString());
       }
     });
   }

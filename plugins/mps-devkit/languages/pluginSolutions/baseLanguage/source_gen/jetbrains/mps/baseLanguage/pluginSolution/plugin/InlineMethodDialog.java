@@ -9,7 +9,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
@@ -58,11 +57,7 @@ public class InlineMethodDialog extends RefactoringDialog {
     setTitle("Inline Method");
     setResizable(false);
 
-    myModel = new ModelAccessHelper(myEditorRepo).runReadAction(new Computable<InlineMethodModel>() {
-      public InlineMethodModel compute() {
-        return new InlineMethodModel(node);
-      }
-    });
+    myModel = new ModelAccessHelper(myEditorRepo).runReadAction(() -> new InlineMethodModel(node));
     init();
   }
   @Nullable
@@ -95,11 +90,7 @@ public class InlineMethodDialog extends RefactoringDialog {
   }
   public void tryToShow(Component parentComponent) {
     final Wrappers._T<String> errors = new Wrappers._T<String>();
-    myEditorRepo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        errors.value = myModel.getErrors();
-      }
-    });
+    myEditorRepo.getModelAccess().runReadAction(() -> errors.value = myModel.getErrors());
     if (errors.value == null) {
       show();
     } else {
@@ -164,11 +155,7 @@ public class InlineMethodDialog extends RefactoringDialog {
     ProgressManager.getInstance().run(new Task.Modal(getProject(), "Searching for ussages", true) {
       @Override
       public void run(@NotNull final ProgressIndicator indicator) {
-        myEditorRepo.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            usages.value = MethodRefactoringUtils.findMethodUsages(ProjectHelper.fromIdeaProject(getProject()).new ProjectScope(), myModel.getMethod(), new ProgressMonitorAdapter(indicator));
-          }
-        });
+        myEditorRepo.getModelAccess().runReadAction(() -> usages.value = MethodRefactoringUtils.findMethodUsages(ProjectHelper.fromIdeaProject(getProject()).new ProjectScope(), myModel.getMethod(), new ProgressMonitorAdapter(indicator)));
       }
     });
     return usages.value;
@@ -177,16 +164,14 @@ public class InlineMethodDialog extends RefactoringDialog {
     final StringBuilder sb = new StringBuilder();
     ProgressManager.getInstance().run(new Task.Modal(getProject(), "Search for overriding methods", true) {
       public void run(@NotNull final ProgressIndicator pi) {
-        myEditorRepo.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            InlineMethodRefactoringAnalyzer analyzer;
-            if (myModel.getMethodCall() == null) {
-              analyzer = new InlineMethodRefactoringAnalyzer(null, myModel.getMethod());
-            } else {
-              analyzer = new InlineMethodRefactoringAnalyzer(myModel.getMethodCall().getNode(), myModel.getMethod());
-            }
-            analyzer.appendProblems(ProjectHelper.fromIdeaProject(getProject()).new ProjectScope(), usages, sb, new ProgressMonitorAdapter(pi));
+        myEditorRepo.getModelAccess().runReadAction(() -> {
+          InlineMethodRefactoringAnalyzer analyzer;
+          if (myModel.getMethodCall() == null) {
+            analyzer = new InlineMethodRefactoringAnalyzer(null, myModel.getMethod());
+          } else {
+            analyzer = new InlineMethodRefactoringAnalyzer(myModel.getMethodCall().getNode(), myModel.getMethod());
           }
+          analyzer.appendProblems(ProjectHelper.fromIdeaProject(getProject()).new ProjectScope(), usages, sb, new ProgressMonitorAdapter(pi));
         });
       }
     });

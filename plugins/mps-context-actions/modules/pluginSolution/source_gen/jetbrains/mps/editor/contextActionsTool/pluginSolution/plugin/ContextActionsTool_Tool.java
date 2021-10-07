@@ -34,11 +34,7 @@ public class ContextActionsTool_Tool extends GeneratedTool {
 
     ((ToolWindowEx) ContextActionsTool_Tool.this.getToolWindow()).setAdditionalGearActions(ContextActionsTool_Tool.this.createGearActionGroup());
 
-    ThreadUtils.runInUIThreadNoWait(new Runnable() {
-      public void run() {
-        ContextActionsTool_Tool.this.makeAvailableLater();
-      }
-    });
+    ThreadUtils.runInUIThreadNoWait(() -> ContextActionsTool_Tool.this.makeAvailableLater());
   }
   public void dispose() {
     ContextActionsTool_Tool.this.myController.dispose();

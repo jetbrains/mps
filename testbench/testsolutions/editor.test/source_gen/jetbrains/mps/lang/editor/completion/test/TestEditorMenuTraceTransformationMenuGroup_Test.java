@@ -51,20 +51,18 @@ public class TestEditorMenuTraceTransformationMenuGroup_Test extends BaseTransfo
       typeString(" ");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       typeString("action from group");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
-          SubstituteAction action = (SubstituteAction) getEditorComponent().getData(PlatformDataKeys.SELECTED_ITEM.getName());
-          Assert.assertTrue(action != null);
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
+        SubstituteAction action = (SubstituteAction) getEditorComponent().getData(PlatformDataKeys.SELECTED_ITEM.getName());
+        Assert.assertTrue(action != null);
 
-          EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
+        EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
 
-          SNode group = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074054"), LINKS.sections$GXaM)).first(), LINKS.parts$m99D), CONCEPTS.TransformationMenuPart_Group$z6)).first();
+        SNode group = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074054"), LINKS.sections$GXaM)).first(), LINKS.parts$m99D), CONCEPTS.TransformationMenuPart_Group$z6)).first();
 
-          SNodeReference transformAction = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(group, LINKS.parts$2tV7), CONCEPTS.TransformationMenuPart_Action$eH)).first());
+        SNodeReference transformAction = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(group, LINKS.parts$2tV7), CONCEPTS.TransformationMenuPart_Action$eH)).first());
 
-          EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, transformAction, SNodeOperations.getPointer(group), new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074054"));
-        }
+        EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, transformAction, SNodeOperations.getPointer(group), new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074054"));
       });
       pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
     }

@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import org.junit.runner.Request;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import java.util.List;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -67,23 +66,21 @@ public class NodeWrappersTestsContributor implements TestsContributor {
 
   @Override
   public Iterable<Request> gatherTests() {
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<List<Request>>() {
-      public List<Request> compute() {
-        final List<Request> requestList = new ArrayList<Request>();
-        InProcessExecutionFilter filter = new InProcessExecutionFilter();
-        for (ITestNodeWrapper testNode : myTestNodes) {
-          String fqName = testNode.getFqName();
-          final SModule testModule = testNode.getTestNodeModule().resolve(myProject.getRepository());
-          SNode testNodeSrc = testNode.getNodePointer().resolve(myProject.getRepository());
-          SModel testModel = (testNodeSrc == null ? null : testNodeSrc.getModel());
-          if (testNode.isTestCase()) {
-            requestList.add(processTestCase(filter, testNode, testModule, testModel, fqName));
-          } else {
-            requestList.add(processTestMethod(filter, testNode, testModule, testModel, fqName));
-          }
+    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> {
+      final List<Request> requestList = new ArrayList<Request>();
+      InProcessExecutionFilter filter = new InProcessExecutionFilter();
+      for (ITestNodeWrapper testNode : myTestNodes) {
+        String fqName = testNode.getFqName();
+        final SModule testModule = testNode.getTestNodeModule().resolve(myProject.getRepository());
+        SNode testNodeSrc = testNode.getNodePointer().resolve(myProject.getRepository());
+        SModel testModel = (testNodeSrc == null ? null : testNodeSrc.getModel());
+        if (testNode.isTestCase()) {
+          requestList.add(processTestCase(filter, testNode, testModule, testModel, fqName));
+        } else {
+          requestList.add(processTestMethod(filter, testNode, testModule, testModel, fqName));
         }
-        return requestList;
       }
+      return requestList;
     });
   }
 
@@ -181,9 +178,7 @@ public class NodeWrappersTestsContributor implements TestsContributor {
 
     @Override
     public void flushAllEvents() {
-      ThreadUtils.runInUIThreadAndWait(new Runnable() {
-        public void run() {
-        }
+      ThreadUtils.runInUIThreadAndWait(() -> {
       });
     }
 

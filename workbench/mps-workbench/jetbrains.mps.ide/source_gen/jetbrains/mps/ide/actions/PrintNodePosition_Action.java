@@ -46,10 +46,6 @@ public class PrintNodePosition_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        System.out.println(new TraceInfo().getPosition(event.getData(MPSCommonDataKeys.NODE)));
-      }
-    });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> System.out.println(new TraceInfo().getPosition(event.getData(MPSCommonDataKeys.NODE))));
   }
 }

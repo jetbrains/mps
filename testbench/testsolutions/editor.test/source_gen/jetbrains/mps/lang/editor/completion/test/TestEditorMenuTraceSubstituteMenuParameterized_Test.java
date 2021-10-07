@@ -47,16 +47,14 @@ public class TestEditorMenuTraceSubstituteMenuParameterized_Test extends BaseTra
       initEditorComponent("913276302144813657", "913276302144813659");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       typeString("parameterized");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
-          SubstituteAction action = (SubstituteAction) getEditorComponent().getData(PlatformDataKeys.SELECTED_ITEM.getName());
-          Assert.assertTrue(action != null);
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
+        SubstituteAction action = (SubstituteAction) getEditorComponent().getData(PlatformDataKeys.SELECTED_ITEM.getName());
+        Assert.assertTrue(action != null);
 
-          EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
-          SNode parameterizedPart = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"), LINKS.parts$yGO4), CONCEPTS.SubstituteMenuPart_Parameterized$5L)).first();
-          EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, SNodeOperations.getPointer(SLinkOperations.getTarget(parameterizedPart, LINKS.part$6LQJ)), SNodeOperations.getPointer(parameterizedPart), new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"));
-        }
+        EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
+        SNode parameterizedPart = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"), LINKS.parts$yGO4), CONCEPTS.SubstituteMenuPart_Parameterized$5L)).first();
+        EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, SNodeOperations.getPointer(SLinkOperations.getTarget(parameterizedPart, LINKS.part$6LQJ)), SNodeOperations.getPointer(parameterizedPart), new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"));
       });
     }
   }

@@ -60,11 +60,9 @@ public class BuildScript_Configuration extends BaseMpsRunConfiguration implement
     if (reference == null) {
       throw new RuntimeConfigurationError("The target of the node reference cannot be discovered " + nodePointer);
     }
-    repo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode node = reference.resolve(repo);
-        isPackaged.value = node != null && SNodeOperations.getModel(node).getModule().isPackaged();
-      }
+    repo.getModelAccess().runReadAction(() -> {
+      SNode node = reference.resolve(repo);
+      isPackaged.value = node != null && SNodeOperations.getModel(node).getModule().isPackaged();
     });
     if (isPackaged.value) {
       throw new RuntimeConfigurationError("Can not execute packaged build script.");

@@ -40,17 +40,15 @@ public class ContextAssistant_ShownWhenMenu_Test extends BaseTransformationTest 
     public void testMethodImpl() throws Exception {
       initEditorComponent("8865042036543828398", "");
       EditorContext editorContext = getEditorComponent().getEditorContext();
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          ContextAssistantManager contextAssistantManager = getEditorComponent().getEditorContext().getContextAssistantManager();
-          contextAssistantManager.updateImmediately();
+      SwingUtilities.invokeAndWait(() -> {
+        ContextAssistantManager contextAssistantManager = getEditorComponent().getEditorContext().getContextAssistantManager();
+        contextAssistantManager.updateImmediately();
 
-          Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
+        Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
 
-          List<TransformationMenuItem> activeItems = contextAssistantManager.getActiveMenuItems();
-          Assert.assertNotNull(activeItems);
-          Assert.assertTrue(activeItems.size() > 0);
-        }
+        List<TransformationMenuItem> activeItems = contextAssistantManager.getActiveMenuItems();
+        Assert.assertNotNull(activeItems);
+        Assert.assertTrue(activeItems.size() > 0);
       });
     }
   }

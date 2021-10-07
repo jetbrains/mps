@@ -39,25 +39,19 @@ public class ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu_T
     public void testMethodImpl() throws Exception {
       initEditorComponent("1966322953445256581", "");
       final EditorContext editorContext = getEditorComponent().getEditorContext();
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          editorContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
+      SwingUtilities.invokeAndWait(() -> editorContext.getRepository().getModelAccess().runReadAction(() -> {
+        ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
 
-              getEditorComponent().getSelectionManager().setSelection(((SNode) getNodeById("1966322953445270119")));
-              contextAssistantManager.updateImmediately();
-              Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
-              Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
+        getEditorComponent().getSelectionManager().setSelection(((SNode) getNodeById("1966322953445270119")));
+        contextAssistantManager.updateImmediately();
+        Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
+        Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
 
-              getEditorComponent().getSelectionManager().setSelection(((SNode) getNodeById("1966322953445265940")));
-              contextAssistantManager.updateImmediately();
-              Assert.assertNull(contextAssistantManager.getActiveAssistant());
-              Assert.assertNull(contextAssistantManager.getActiveMenuItems());
-            }
-          });
-        }
-      });
+        getEditorComponent().getSelectionManager().setSelection(((SNode) getNodeById("1966322953445265940")));
+        contextAssistantManager.updateImmediately();
+        Assert.assertNull(contextAssistantManager.getActiveAssistant());
+        Assert.assertNull(contextAssistantManager.getActiveMenuItems());
+      }));
     }
   }
 }

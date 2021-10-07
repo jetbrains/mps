@@ -38,13 +38,11 @@ public class TestCompletionCustomization_ContextMatcher_BooleanPropertyWithStyli
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5310043668063146795", "5310043668063146797");
-      EditorTestUtil.runWithCompletionStyling(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
-          Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 2);
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
-        }
+      EditorTestUtil.runWithCompletionStyling(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
+        Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 2);
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
       }, true);
     }
   }

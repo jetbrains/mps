@@ -11,9 +11,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import jetbrains.jetpad.projectional.view.ViewTraitBuilder;
 import jetbrains.jetpad.projectional.view.ViewEvents;
-import jetbrains.jetpad.projectional.view.ViewEventHandler;
-import jetbrains.jetpad.event.MouseEvent;
 import jetbrains.jetpad.projectional.view.View;
+import jetbrains.jetpad.event.MouseEvent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -31,34 +30,28 @@ public class MyBlockCreationAction implements PaletteToggleAction {
   public MyBlockCreationAction(DiagramCell diagramCell, final SNode block) {
     myDiagramCell = diagramCell;
     myMetaBlock = block;
-    myDiagramCell.getContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        myText = SPropertyOperations.getString(block, PROPS.name$MnvL);
-        myIcon = GlobalIconManager.getInstance().getIconFor(myMetaBlock);
-      }
+    myDiagramCell.getContext().getRepository().getModelAccess().runReadAction(() -> {
+      myText = SPropertyOperations.getString(block, PROPS.name$MnvL);
+      myIcon = GlobalIconManager.getInstance().getIconFor(myMetaBlock);
     });
   }
   protected ViewTrait getTrait() {
     if (myTrait == null) {
-      myTrait = new ViewTraitBuilder().on(ViewEvents.MOUSE_PRESSED, new ViewEventHandler<MouseEvent>() {
-        public void handle(View view, final MouseEvent event) {
-          if (view.viewAt(event.location()) != view) {
-            return;
-          }
-          if (!(view.focused().get())) {
-            view.container().focusedView().set(view);
-          }
-          myDiagramCell.getContext().getRepository().getModelAccess().executeCommand(new Runnable() {
-            public void run() {
-              SNode newBlockInstance = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, "jetbrains.mps.testHybridEditor.structure.BlockInstance"));
-              SLinkOperations.setTarget(newBlockInstance, LINKS.metaBlock$G_NX, myMetaBlock);
-              SPropertyOperations.assign(newBlockInstance, PROPS.x$Gfxu, event.x());
-              SPropertyOperations.assign(newBlockInstance, PROPS.y$GfKv, event.y());
-              ListSequence.fromList(SLinkOperations.getChildren(((SNode) myDiagramCell.getSNode()), LINKS.newBlocks$TkL9)).addElement(newBlockInstance);
-            }
-          });
-          event.consume();
+      myTrait = new ViewTraitBuilder().on(ViewEvents.MOUSE_PRESSED, (View view, final MouseEvent event) -> {
+        if (view.viewAt(event.location()) != view) {
+          return;
         }
+        if (!(view.focused().get())) {
+          view.container().focusedView().set(view);
+        }
+        myDiagramCell.getContext().getRepository().getModelAccess().executeCommand(() -> {
+          SNode newBlockInstance = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x913a1d639e1948faL, 0xad03e33ecccd3814L, 0x20a804e2ec43f49dL, "jetbrains.mps.testHybridEditor.structure.BlockInstance"));
+          SLinkOperations.setTarget(newBlockInstance, LINKS.metaBlock$G_NX, myMetaBlock);
+          SPropertyOperations.assign(newBlockInstance, PROPS.x$Gfxu, event.x());
+          SPropertyOperations.assign(newBlockInstance, PROPS.y$GfKv, event.y());
+          ListSequence.fromList(SLinkOperations.getChildren(((SNode) myDiagramCell.getSNode()), LINKS.newBlocks$TkL9)).addElement(newBlockInstance);
+        });
+        event.consume();
       }).build();
     }
     return myTrait;

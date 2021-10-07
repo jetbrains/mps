@@ -10,7 +10,6 @@ import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.execution.configurations.RuntimeConfigurationError;
@@ -37,22 +36,20 @@ public class NodeBySeveralConcepts_Configuration implements IPersistentConfigura
   @Override
   public void checkConfiguration(final PersistentConfigurationContext context) throws RuntimeConfigurationException {
     final SRepository repo = context.getProject().getRepository();
-    String errorText = new ModelAccessHelper(repo).runReadAction(new Computable<String>() {
-      public String compute() {
-        try {
-          final SNodeReference ptr = getNode();
-          if (ptr == null) {
-            return "Node is not specified.";
-          }
-          SNode resolved = ptr.resolve(repo);
-          if (resolved == null) {
-            return "Failed to resolve node reference";
-          }
-          return (isValid(resolved) ? null : "Node didn't pass validation");
-        } catch (IllegalArgumentException ex) {
-          String m = "Node reference is not valid";
-          return (ex.getMessage() != null ? String.format("%s: %s", m, ex.getMessage()) : m);
+    String errorText = new ModelAccessHelper(repo).runReadAction(() -> {
+      try {
+        final SNodeReference ptr = getNode();
+        if (ptr == null) {
+          return "Node is not specified.";
         }
+        SNode resolved = ptr.resolve(repo);
+        if (resolved == null) {
+          return "Failed to resolve node reference";
+        }
+        return (isValid(resolved) ? null : "Node didn't pass validation");
+      } catch (IllegalArgumentException ex) {
+        String m = "Node reference is not valid";
+        return (ex.getMessage() != null ? String.format("%s: %s", m, ex.getMessage()) : m);
       }
     });
 

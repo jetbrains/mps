@@ -37,15 +37,13 @@ public class ContextAssistant_DuplicationMenu_IncludeSameMenuForDifferentNodes_T
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("4572725119287962987", "");
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          EditorContext editorContext = getEditorComponent().getEditorContext();
-          ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
-          contextAssistantManager.updateImmediately();
-          Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
-          Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
-          Assert.assertTrue(contextAssistantManager.getActiveMenuItems().size() == 2);
-        }
+      SwingUtilities.invokeAndWait(() -> {
+        EditorContext editorContext = getEditorComponent().getEditorContext();
+        ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
+        contextAssistantManager.updateImmediately();
+        Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
+        Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
+        Assert.assertTrue(contextAssistantManager.getActiveMenuItems().size() == 2);
       });
     }
   }

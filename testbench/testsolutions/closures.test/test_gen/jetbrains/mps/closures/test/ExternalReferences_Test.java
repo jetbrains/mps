@@ -212,21 +212,13 @@ __switch__:
   }
   @Test
   public void test_mps7432() throws Exception {
-    String res = MPS7432.<String>aaaa(new _FunctionTypes._return_P0_E0<String>() {
-      public String invoke() {
-        return "fubar";
-      }
-    });
+    String res = MPS7432.<String>aaaa(() -> "fubar");
     Assert.assertEquals("fubar", res);
   }
   @Test
   public void test_mps10242() throws Exception {
     int num = 0;
-    int res = mps10242_helper(num, new _FunctionTypes._return_P1_E0<Integer, Integer>() {
-      public Integer invoke(Integer i) {
-        return i + 42;
-      }
-    });
+    int res = mps10242_helper(num, (Integer i) -> i + 42);
     Assert.assertSame(42, res);
   }
   @Test

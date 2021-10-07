@@ -36,7 +36,6 @@ import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import java.util.function.Supplier;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -219,11 +218,7 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static Iterable<SNode> getConcreteTypeParameter_id4H6sh0LUNF7(@NotNull final SNode __thisNode__) {
     if (((boolean) IInferredExpression__BehaviorDescriptor.needInference_idQ$FjPqwIoN.invoke(__thisNode__))) {
-      SNode type = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<SNode>() {
-        public SNode get() {
-          return TypecheckingFacade.getFromContext().getTypeOf(__thisNode__);
-        }
-      });
+      SNode type = TypecheckingFacade.getFromContext().computeIsolated(() -> TypecheckingFacade.getFromContext().getTypeOf(__thisNode__));
       {
         final SNode clType = type;
         if (SNodeOperations.isInstanceOf(clType, CONCEPTS.ClassifierType$bL)) {

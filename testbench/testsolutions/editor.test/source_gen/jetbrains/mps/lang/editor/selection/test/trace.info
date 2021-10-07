@@ -249,30 +249,25 @@
       <node id="3756708898179593010" at="30,52,31,19" concept="4" />
       <node id="3756708898179593010" at="35,51,36,72" concept="1" />
       <node id="3756708898179594969" at="36,72,37,72" concept="1" />
-      <node id="3756708898179599423" at="39,27,40,106" concept="1" />
-      <node id="3756708898179600243" at="42,9,43,73" concept="1" />
+      <node id="3756708898179593609" at="37,72,38,196" concept="1" />
+      <node id="3756708898179600243" at="38,196,39,73" concept="1" />
       <node id="3756708898179593010" at="16,0,18,0" concept="3" trace="ourParamCache" />
       <node id="3756708898179593010" at="19,0,22,0" concept="0" trace="SelectAllNonSelectableRootThroughNonSelectable_Test#()V" />
       <node id="3756708898179593010" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="3756708898179593610" at="39,0,42,0" concept="2" trace="run#()V" />
       <node id="3756708898179593010" at="23,0,27,0" concept="2" trace="test_SelectAllNonSelectableRootThroughNonSelectable#()V" />
-      <node id="3756708898179593609" at="37,72,42,9" concept="1" />
-      <node id="3756708898179593010" at="34,0,45,0" concept="2" trace="testMethodImpl#()V" />
+      <node id="3756708898179593010" at="34,0,41,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="3756708898179593010" at="19,64,20,25" />
       <scope id="3756708898179593010" at="24,86,25,36" />
       <scope id="3756708898179593010" at="30,52,31,19" />
-      <scope id="3756708898179593611" at="39,27,40,106" />
       <scope id="3756708898179593010" at="19,0,22,0" />
       <scope id="3756708898179593010" at="30,0,33,0">
         <var name="owner" id="3756708898179593010" />
       </scope>
-      <scope id="3756708898179593610" at="39,0,42,0" />
       <scope id="3756708898179593010" at="23,0,27,0" />
-      <scope id="3756708898179593010" at="35,51,43,73" />
-      <scope id="3756708898179593010" at="34,0,45,0" />
-      <unit id="3756708898179593610" at="38,97,42,7" name="jetbrains.mps.lang.editor.selection.test.SelectAllNonSelectableRootThroughNonSelectable_Test$TestBody$1" />
-      <unit id="3756708898179593010" at="28,0,46,0" name="jetbrains.mps.lang.editor.selection.test.SelectAllNonSelectableRootThroughNonSelectable_Test$TestBody" />
-      <unit id="3756708898179593010" at="14,0,47,0" name="jetbrains.mps.lang.editor.selection.test.SelectAllNonSelectableRootThroughNonSelectable_Test" />
+      <scope id="3756708898179593010" at="35,51,39,73" />
+      <scope id="3756708898179593010" at="34,0,41,0" />
+      <unit id="3756708898179593010" at="28,0,42,0" name="jetbrains.mps.lang.editor.selection.test.SelectAllNonSelectableRootThroughNonSelectable_Test$TestBody" />
+      <unit id="3756708898179593010" at="14,0,43,0" name="jetbrains.mps.lang.editor.selection.test.SelectAllNonSelectableRootThroughNonSelectable_Test" />
     </file>
   </root>
   <root nodeRef="r:f429894b-858b-4e34-87ae-2cfe2a061928(jetbrains.mps.lang.editor.selection.test)/4348968319430072522">

@@ -102,7 +102,6 @@
   <dependency className="jetbrains.mps.execution.impl.configurations.tests.commands.JavaCommand_Test">
     <classNode dependClassName="com.intellij.execution.process.ProcessHandler" />
     <classNode dependClassName="java.lang.Exception" />
-    <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.Throwable" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.Objects" />

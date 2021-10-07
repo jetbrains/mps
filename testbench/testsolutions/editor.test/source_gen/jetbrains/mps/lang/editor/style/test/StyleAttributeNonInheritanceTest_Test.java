@@ -42,22 +42,20 @@ public class StyleAttributeNonInheritanceTest_Test extends BaseTransformationTes
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("23293207022863752", "");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          SNode root = SNodeOperations.cast(getEditorComponent().getEditedNode(), CONCEPTS.NodeContainer$kH);
-          SNode leaf = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$4FBe)).getElement(0);
-          SNode inner1 = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$4FBe)).getElement(1);
-          SNode inner1Leaf = ListSequence.fromList(SLinkOperations.getChildren(inner1, LINKS.node$4FBe)).getElement(0);
-          SNode inner2 = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$4FBe)).getElement(2);
-          SNode inner2Leaf = ListSequence.fromList(SLinkOperations.getChildren(inner2, LINKS.node$4FBe)).getElement(0);
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        SNode root = SNodeOperations.cast(getEditorComponent().getEditedNode(), CONCEPTS.NodeContainer$kH);
+        SNode leaf = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$4FBe)).getElement(0);
+        SNode inner1 = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$4FBe)).getElement(1);
+        SNode inner1Leaf = ListSequence.fromList(SLinkOperations.getChildren(inner1, LINKS.node$4FBe)).getElement(0);
+        SNode inner2 = ListSequence.fromList(SLinkOperations.getChildren(root, LINKS.node$4FBe)).getElement(2);
+        SNode inner2Leaf = ListSequence.fromList(SLinkOperations.getChildren(inner2, LINKS.node$4FBe)).getElement(0);
 
-          Assert.assertEquals(getEditorComponent().findNodeCell(root).getStyle().get(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute")), Boolean.TRUE);
-          Assert.assertEquals(getEditorComponent().findNodeCell(leaf).getStyle().get(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute")), StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute").combine(null, null));
-          Assert.assertEquals(getEditorComponent().findNodeCell(inner1).getStyle().get(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute")), Boolean.TRUE);
-          Assert.assertEquals(getEditorComponent().findNodeCell(inner1Leaf).getStyle().get(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute")), StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute").combine(null, null));
-          Assert.assertEquals(getEditorComponent().findNodeCell(inner2).getStyle().get(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute")), Boolean.FALSE);
-          Assert.assertEquals(getEditorComponent().findNodeCell(inner2Leaf).getStyle().get(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute")), StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute").combine(null, null));
-        }
+        Assert.assertEquals(getEditorComponent().findNodeCell(root).getStyle().get(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute")), Boolean.TRUE);
+        Assert.assertEquals(getEditorComponent().findNodeCell(leaf).getStyle().get(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute")), StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute").combine(null, null));
+        Assert.assertEquals(getEditorComponent().findNodeCell(inner1).getStyle().get(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute")), Boolean.TRUE);
+        Assert.assertEquals(getEditorComponent().findNodeCell(inner1Leaf).getStyle().get(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute")), StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute").combine(null, null));
+        Assert.assertEquals(getEditorComponent().findNodeCell(inner2).getStyle().get(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute")), Boolean.FALSE);
+        Assert.assertEquals(getEditorComponent().findNodeCell(inner2Leaf).getStyle().get(StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute")), StyleAttributes.getInstance().<Boolean>getAttribute("jetbrains.mps.lang.editor.styleTests", "test-simple-attribute").combine(null, null));
       });
     }
   }

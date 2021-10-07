@@ -233,14 +233,12 @@ public class TextGen_Facet extends IFacet.Stub {
                 // We queue all models first, prior to poll(), and though ArrayBlockingQueue won't allow more than specified number of result elements, I don't care much.
                 // If I hit the limit and resultQueue is blocked, scheduled textgen tasks would get parked with tgEngine's executor service and proceed once we get to poll().
                 // Nevertheless, the fact I did my best to get modelsCount right makes me feel I'd never face this scenario.
-                mpsProject.getModelAccess().runReadAction(new Runnable() {
-                  public void run() {
-                    for (GResource res : ListSequence.fromList(resourcesWithOutput)) {
-                      for (SModel model2generate : CollectionSequence.fromCollection(res.status().getOutputModels())) {
-                        textGenInput2Resource.put(model2generate, res);
-                        // FIXME status.getOutputRepository is the one to lock for breakDownToUnits (down in schedule() call), and, perhaps, for the outer runReadAction here, too.
-                        tgEngine.schedule(model2generate, resultQueue);
-                      }
+                mpsProject.getModelAccess().runReadAction(() -> {
+                  for (GResource res : ListSequence.fromList(resourcesWithOutput)) {
+                    for (SModel model2generate : CollectionSequence.fromCollection(res.status().getOutputModels())) {
+                      textGenInput2Resource.put(model2generate, res);
+                      // FIXME status.getOutputRepository is the one to lock for breakDownToUnits (down in schedule() call), and, perhaps, for the outer runReadAction here, too.
+                      tgEngine.schedule(model2generate, resultQueue);
                     }
                   }
                 });
@@ -357,11 +355,9 @@ public class TextGen_Facet extends IFacet.Stub {
                 _output_21gswx_a0b = Sequence.fromIterable(_output_21gswx_a0b).concat(Sequence.fromIterable(Sequence.<IResource>singleton(new DResource(moduleWideStaleFiles))));
 
                 // flush stream handlers
-                if (!(FileSystem.getInstance().runWriteTransaction(new Runnable() {
-                  public void run() {
-                    for (ModuleStaleFileManager sfm : CollectionSequence.fromCollection(moduleStaleFilesMap.values())) {
-                      sfm.flushChanges();
-                    }
+                if (!(FileSystem.getInstance().runWriteTransaction(() -> {
+                  for (ModuleStaleFileManager sfm : CollectionSequence.fromCollection(moduleStaleFilesMap.values())) {
+                    sfm.flushChanges();
                   }
                 }))) {
                   monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("Failed to save files")));
@@ -499,11 +495,9 @@ public class TextGen_Facet extends IFacet.Stub {
                 }
                 final ArrayBlockingQueue<TextGenResult> resultQueue = new ArrayBlockingQueue<TextGenResult>(modelsCount);
                 for (final GResource resource : Sequence.fromIterable(input)) {
-                  monitor.getSession().getProject().getModelAccess().runReadAction(new Runnable() {
-                    public void run() {
-                      for (SModel model : CollectionSequence.fromCollection(resource.status().getOutputModels())) {
-                        tgEngine.schedule(model, resultQueue);
-                      }
+                  monitor.getSession().getProject().getModelAccess().runReadAction(() -> {
+                    for (SModel model : CollectionSequence.fromCollection(resource.status().getOutputModels())) {
+                      tgEngine.schedule(model, resultQueue);
                     }
                   });
                 }

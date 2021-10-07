@@ -35,12 +35,10 @@ public class DeleteClassifierMemberSynchronizedKeywordTwoStep_Test extends BaseT
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5758795788990955884", "5758795788990955889");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          Assert.assertTrue(getEditorComponent().getDeletionApprover().isApprovedForDeletion(getEditorComponent().getSelectedCell()));
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+        Assert.assertTrue(getEditorComponent().getDeletionApprover().isApprovedForDeletion(getEditorComponent().getSelectedCell()));
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
       }, true);
     }
   }

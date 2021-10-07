@@ -79,19 +79,17 @@ public class GoToDeclaration_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.definition");
 
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode wrtNode = APICellAdapter.getSNodeWRTReference(((EditorCell) MapSequence.fromMap(_params).get("cell")));
-        if (wrtNode != ((EditorCell) MapSequence.fromMap(_params).get("cell")).getSNode()) {
-          new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).selectIfChild().open(SNodeOperations.getPointer(wrtNode));
-        } else {
-          for (SNode anc : ListSequence.fromList(SNodeOperations.getNodeAncestors(wrtNode, null, true))) {
-            if (GoToDeclarationHandlerRegistry.navigateAll(((MPSProject) MapSequence.fromMap(_params).get("project")), anc)) {
-              return;
-            }
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(() -> {
+      SNode wrtNode = APICellAdapter.getSNodeWRTReference(((EditorCell) MapSequence.fromMap(_params).get("cell")));
+      if (wrtNode != ((EditorCell) MapSequence.fromMap(_params).get("cell")).getSNode()) {
+        new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).selectIfChild().open(SNodeOperations.getPointer(wrtNode));
+      } else {
+        for (SNode anc : ListSequence.fromList(SNodeOperations.getNodeAncestors(wrtNode, null, true))) {
+          if (GoToDeclarationHandlerRegistry.navigateAll(((MPSProject) MapSequence.fromMap(_params).get("project")), anc)) {
+            return;
           }
-          // todo show notification: can't navigate
         }
+        // todo show notification: can't navigate
       }
     });
   }

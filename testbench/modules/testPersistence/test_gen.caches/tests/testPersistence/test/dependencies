@@ -82,7 +82,6 @@
     <classNode dependClassName="jetbrains.mps.smodel.SnapshotModelData" />
     <classNode dependClassName="jetbrains.mps.smodel.TrivialModelDescriptor" />
     <classNode dependClassName="jetbrains.mps.smodel.persistence.def.ModelPersistence" />
-    <classNode dependClassName="jetbrains.mps.util.Computable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />

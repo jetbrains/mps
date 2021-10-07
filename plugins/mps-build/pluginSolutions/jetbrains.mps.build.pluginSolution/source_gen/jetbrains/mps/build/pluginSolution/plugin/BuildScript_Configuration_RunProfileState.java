@@ -34,7 +34,6 @@ import com.intellij.execution.ui.ConsoleView;
 import jetbrains.mps.execution.api.configurations.ConsoleCreator;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionResult;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionConsole;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import com.intellij.execution.executors.DefaultRunExecutor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -67,31 +66,29 @@ public class BuildScript_Configuration_RunProfileState implements RunProfileStat
     final Wrappers._T<String> mainTaskName = new Wrappers._T<String>();
     final Wrappers._T<List<String>> undefinedMacro = new Wrappers._T<List<String>>();
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
-    mpsProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNodeReference configuredNode = myRunConfiguration.getNodePointer().getNodeRef();
-        SNode projectNode = SNodeOperations.cast((configuredNode == null ? null : configuredNode.resolve(mpsProject.getRepository())), CONCEPTS.BuildProject$ae);
-        String scriptsPath = (projectNode != null ? BuildProject__BehaviorDescriptor.getScriptsPath_id4ahc858UcHk.invoke(projectNode, Context.defaultContext()) : null);
-        if (scriptsPath != null) {
-          // XXX in fact, don't need IFile here, especially the one from project's FS. Script could get generated anywhere, io.File would be better
-          file.value = mpsProject.getFileSystem().getFile(scriptsPath);
-          // todo
-          file.value = file.value.findChild(BuildProject__BehaviorDescriptor.getOutputFileName_id4gSHdTptyu0.invoke(projectNode));
-          // todo select task
-          // here used to be odd code that took name of the first BwfTask under 'common' node in presets, which happen to be 'assemble'
-          // It dated back to initial revision, and I see no reason to keep it, assume default target is better.
-          // Perhaps, shall ask user to specify one (or leave it to extra ant options
-          mainTaskName.value = null;
-          undefinedMacro.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(projectNode, LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return (SLinkOperations.getTarget(it, LINKS.defaultPath$9tbQ) == null);
-            }
-          }).select(new ISelector<SNode, String>() {
-            public String select(SNode it) {
-              return SPropertyOperations.getString(it, PROPS.name$MnvL);
-            }
-          }).toListSequence();
-        }
+    mpsProject.getModelAccess().runReadAction(() -> {
+      SNodeReference configuredNode = myRunConfiguration.getNodePointer().getNodeRef();
+      SNode projectNode = SNodeOperations.cast((configuredNode == null ? null : configuredNode.resolve(mpsProject.getRepository())), CONCEPTS.BuildProject$ae);
+      String scriptsPath = (projectNode != null ? BuildProject__BehaviorDescriptor.getScriptsPath_id4ahc858UcHk.invoke(projectNode, Context.defaultContext()) : null);
+      if (scriptsPath != null) {
+        // XXX in fact, don't need IFile here, especially the one from project's FS. Script could get generated anywhere, io.File would be better
+        file.value = mpsProject.getFileSystem().getFile(scriptsPath);
+        // todo
+        file.value = file.value.findChild(BuildProject__BehaviorDescriptor.getOutputFileName_id4gSHdTptyu0.invoke(projectNode));
+        // todo select task
+        // here used to be odd code that took name of the first BwfTask under 'common' node in presets, which happen to be 'assemble'
+        // It dated back to initial revision, and I see no reason to keep it, assume default target is better.
+        // Perhaps, shall ask user to specify one (or leave it to extra ant options
+        mainTaskName.value = null;
+        undefinedMacro.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(projectNode, LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR)).where(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return (SLinkOperations.getTarget(it, LINKS.defaultPath$9tbQ) == null);
+          }
+        }).select(new ISelector<SNode, String>() {
+          public String select(SNode it) {
+            return SPropertyOperations.getString(it, PROPS.name$MnvL);
+          }
+        }).toListSequence();
       }
     });
     if (file.value == null) {
@@ -101,11 +98,7 @@ public class BuildScript_Configuration_RunProfileState implements RunProfileStat
       ProcessHandler _processHandler = new Ant_Command().setTargetName_String(mainTaskName.value).setAntLocation_String((myRunConfiguration.getSettings().getUseOtherAntLocation() ? myRunConfiguration.getSettings().getOtherAntLocation() : null)).setOptions_String(myRunConfiguration.getSettings().getAntOptions()).setMacroToDefine_ListString(undefinedMacro.value).setProject_Project(ProjectHelper.fromIdeaProject(project)).createProcess(file.value.getPath());
       final ConsoleView _consoleView = ConsoleCreator.createConsoleView(project, false);
       _consoleView.attachToProcess(_processHandler);
-      return new DefaultExecutionResult(_processHandler, new DefaultExecutionConsole(_consoleView.getComponent(), new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          _consoleView.dispose();
-        }
-      }));
+      return new DefaultExecutionResult(_processHandler, new DefaultExecutionConsole(_consoleView.getComponent(), () -> _consoleView.dispose()));
     }
   }
 

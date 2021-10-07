@@ -189,11 +189,9 @@ __switch__:
         };
       }
     }).toListSequence();
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        AttachMappingLabelDialog dialog = new AttachMappingLabelDialog(node, existingLabels, event.getData(MPSEditorDataKeys.EDITOR_CONTEXT), event.getData(MPSCommonDataKeys.MPS_PROJECT));
-        dialog.show();
-      }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      AttachMappingLabelDialog dialog = new AttachMappingLabelDialog(node, existingLabels, event.getData(MPSEditorDataKeys.EDITOR_CONTEXT), event.getData(MPSCommonDataKeys.MPS_PROJECT));
+      dialog.show();
     });
   }
   private static boolean isNotEmptyString(String str) {

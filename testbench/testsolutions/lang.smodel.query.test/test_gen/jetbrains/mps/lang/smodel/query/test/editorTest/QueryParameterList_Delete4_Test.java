@@ -34,13 +34,11 @@ public class QueryParameterList_Delete4_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("8654290870483596018", "8654290870483596022");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          typeString("<");
-          typeString("ab");
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        typeString("<");
+        typeString("ab");
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
       }, false);
 
 

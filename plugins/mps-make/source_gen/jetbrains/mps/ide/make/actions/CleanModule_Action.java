@@ -68,11 +68,9 @@ public class CleanModule_Action extends BaseAction {
     ProgressManager.getInstance().run(new Task.Modal(event.getData(CommonDataKeys.PROJECT), "Cleaning", true) {
       @Override
       public void run(@NotNull final ProgressIndicator indicator) {
-        mpsProject.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            ModuleMaker maker = new ModuleMaker();
-            maker.clean(moduleSet, new ProgressMonitorAdapter(indicator));
-          }
+        mpsProject.getModelAccess().runReadAction(() -> {
+          ModuleMaker maker = new ModuleMaker();
+          maker.clean(moduleSet, new ProgressMonitorAdapter(indicator));
         });
       }
     });

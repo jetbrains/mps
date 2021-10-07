@@ -37,7 +37,6 @@ import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -129,11 +128,7 @@ public class BwfJavaDependency_SubstituteMenu extends SubstituteMenuBase {
   }
   public class SMP_Subconcepts_qn58zx_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BwfJavaDependency$66).stream().filter(new Predicate<SAbstractConcept>() {
-        public boolean test(SAbstractConcept concept) {
-          return filterConcept(_context, concept);
-        }
-      }).collect(Collectors.toList());
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.BwfJavaDependency$66).stream().filter((SAbstractConcept concept) -> filterConcept(_context, concept)).collect(Collectors.toList());
     }
     private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
       return !(Objects.equals(concept, CONCEPTS.BwfJavaDependency$66));

@@ -58,8 +58,8 @@
       <node id="2303280755023638844" at="87,39,88,108" concept="8" />
       <node id="2303280755023313172" at="92,60,93,28" concept="11" />
       <node id="2303280755023313181" at="96,91,97,49" concept="2" />
-      <node id="2303280755025686484" at="99,27,100,122" concept="2" />
-      <node id="2303280755023313232" at="104,27,105,122" concept="2" />
+      <node id="2303280755023313194" at="97,49,98,195" concept="2" />
+      <node id="2303280755023313224" at="98,195,99,196" concept="2" />
       <node id="2303280755023258358" at="24,0,27,0" concept="0" trace="AbstractVerticalLayoutFigure#()V" />
       <node id="2303280755023450047" at="35,62,38,7" concept="5" />
       <node id="2303280755024021246" at="43,40,46,5" concept="5" />
@@ -69,15 +69,11 @@
       <node id="2303280755023731860" at="71,0,74,0" concept="6" trace="getInsets#()Ljetbrains/mps/lang/editor/figures/library/AbstractVerticalLayoutFigure/Insets;" />
       <node id="2303280755023622296" at="87,0,90,0" concept="6" trace="join#(Ljetbrains/mps/lang/editor/figures/library/AbstractVerticalLayoutFigure/Insets;)Ljetbrains/mps/lang/editor/figures/library/AbstractVerticalLayoutFigure/Insets;" />
       <node id="2303280755023313166" at="92,0,95,0" concept="0" trace="AbstractVerticalLayoutFigureMapper#(null)V" />
-      <node id="2303280755023313200" at="99,0,102,0" concept="6" trace="run#()V" />
-      <node id="2303280755023313230" at="104,0,107,0" concept="6" trace="run#()V" />
       <node id="2303280755023450175" at="62,52,66,5" concept="5" />
-      <node id="2303280755023313194" at="97,49,102,10" concept="2" />
-      <node id="2303280755023313224" at="102,10,107,10" concept="2" />
       <node id="2303280755023600302" at="81,0,87,0" concept="0" trace="Insets#(IIII)V" />
+      <node id="2303280755023313175" at="95,0,101,0" concept="6" trace="registerSynchronizers#(Ljetbrains/jetpad/mapper/Mapper/SynchronizersConfiguration;)V" />
       <node id="2303280755023450043" at="34,44,42,5" concept="4" />
       <node id="2303280755023450111" at="51,42,59,5" concept="4" />
-      <node id="2303280755023313175" at="95,0,109,0" concept="6" trace="registerSynchronizers#(Ljetbrains/jetpad/mapper/Mapper/SynchronizersConfiguration;)V" />
       <node id="2303280755023412912" at="27,0,68,0" concept="6" trace="doValidate#(Ljetbrains/jetpad/projectional/view/View/ValidationContext;)V" />
       <scope id="2303280755023258362" at="24,44,25,34" />
       <scope id="2303280755023450050" at="36,44,37,17" />
@@ -88,8 +84,6 @@
       <scope id="2303280755023731863" at="71,32,72,31" />
       <scope id="2303280755023622300" at="87,39,88,108" />
       <scope id="2303280755023313171" at="92,60,93,28" />
-      <scope id="2303280755023313201" at="99,27,100,122" />
-      <scope id="2303280755023313231" at="104,27,105,122" />
       <scope id="2303280755023450176" at="63,52,65,23" />
       <scope id="2303280755023258358" at="24,0,27,0" />
       <scope id="2303280755023499898" at="68,0,71,0">
@@ -102,8 +96,7 @@
       <scope id="2303280755023313166" at="92,0,95,0">
         <var name="figure" id="2303280755025399621" />
       </scope>
-      <scope id="2303280755023313200" at="99,0,102,0" />
-      <scope id="2303280755023313230" at="104,0,107,0" />
+      <scope id="2303280755023313180" at="96,91,99,196" />
       <scope id="2303280755023600306" at="81,61,85,25" />
       <scope id="2303280755023450046" at="35,62,41,40">
         <var name="childBounds" id="2303280755023450053" />
@@ -117,15 +110,14 @@
         <var name="right" id="2303280755023601296" />
         <var name="top" id="2303280755023601168" />
       </scope>
+      <scope id="2303280755023313175" at="95,0,101,0">
+        <var name="configuration" id="2303280755023313178" />
+      </scope>
       <scope id="2303280755023450043" at="34,44,42,5">
         <var name="nextChild" id="2303280755023450044" />
       </scope>
       <scope id="2303280755023450111" at="51,42,59,5">
         <var name="nextChild" id="2303280755023450112" />
-      </scope>
-      <scope id="2303280755023313180" at="96,91,107,10" />
-      <scope id="2303280755023313175" at="95,0,109,0">
-        <var name="configuration" id="2303280755023313178" />
       </scope>
       <scope id="2303280755023412918" at="28,61,66,5">
         <var name="height" id="2303280755023450040" />
@@ -139,11 +131,9 @@
       <scope id="2303280755023412912" at="27,0,68,0">
         <var name="context" id="2303280755023412916" />
       </scope>
-      <unit id="2303280755023313200" at="98,79,102,7" name="jetbrains.mps.lang.editor.figures.library.AbstractVerticalLayoutFigure$AbstractVerticalLayoutFigureMapper$1" />
-      <unit id="2303280755023313230" at="103,80,107,7" name="jetbrains.mps.lang.editor.figures.library.AbstractVerticalLayoutFigure$AbstractVerticalLayoutFigureMapper$2" />
+      <unit id="2303280755023313165" at="91,0,102,0" name="jetbrains.mps.lang.editor.figures.library.AbstractVerticalLayoutFigure$AbstractVerticalLayoutFigureMapper" />
       <unit id="2303280755023576543" at="74,0,91,0" name="jetbrains.mps.lang.editor.figures.library.AbstractVerticalLayoutFigure$Insets" />
-      <unit id="2303280755023313165" at="91,0,110,0" name="jetbrains.mps.lang.editor.figures.library.AbstractVerticalLayoutFigure$AbstractVerticalLayoutFigureMapper" />
-      <unit id="2303280755023212324" at="17,0,111,0" name="jetbrains.mps.lang.editor.figures.library.AbstractVerticalLayoutFigure" />
+      <unit id="2303280755023212324" at="17,0,103,0" name="jetbrains.mps.lang.editor.figures.library.AbstractVerticalLayoutFigure" />
     </file>
   </root>
   <root nodeRef="r:257a7f19-40a4-4037-a93b-ce1b638af281(jetbrains.mps.lang.editor.figures.library)/822550549815197670">
@@ -239,32 +229,23 @@
       <node id="2303280755025410354" at="54,41,55,20" concept="11" />
       <node id="2303280755021464642" at="58,91,59,49" concept="2" />
       <node id="457655548170166761" at="59,49,60,43" concept="7" />
-      <node id="2303280755021464653" at="62,27,63,40" concept="2" />
-      <node id="2303280755021464693" at="67,27,68,40" concept="2" />
-      <node id="2303280755021464727" at="72,27,73,40" concept="2" />
-      <node id="2303280755021464729" at="75,10,76,96" concept="2" />
+      <node id="2303280755021464645" at="60,43,61,108" concept="2" />
+      <node id="2303280755021464685" at="61,108,62,109" concept="2" />
+      <node id="2303280755021464719" at="62,109,63,106" concept="2" />
+      <node id="2303280755021464729" at="63,106,64,96" concept="2" />
       <node id="8794120090375426024" at="20,0,23,0" concept="0" trace="BoxFigure#()V" />
       <node id="2303280755025056369" at="25,31,28,5" concept="5" />
       <node id="2303280755022254249" at="30,0,33,0" concept="6" trace="isExcludedFromLayout#(Ljetbrains/jetpad/projectional/view/View;)Z" />
       <node id="2303280755025363176" at="49,0,52,0" concept="6" trace="createMapper#(Ljetbrains/mps/lang/editor/figures/library/BoxFigure;)Ljetbrains/jetpad/mapper/Mapper;" />
       <node id="2303280755025378820" at="54,0,57,0" concept="0" trace="BoxFigureMapper#(null)V" />
-      <node id="2303280755021464651" at="62,0,65,0" concept="6" trace="run#()V" />
-      <node id="2303280755021464691" at="67,0,70,0" concept="6" trace="run#()V" />
-      <node id="2303280755021464725" at="72,0,75,0" concept="6" trace="run#()V" />
-      <node id="2303280755021464645" at="60,43,65,10" concept="2" />
-      <node id="2303280755021464685" at="65,10,70,10" concept="2" />
-      <node id="2303280755021464719" at="70,10,75,10" concept="2" />
       <node id="2303280755025027649" at="23,0,30,0" concept="0" trace="BoxFigure#(Ljetbrains/mps/lang/editor/figures/library/BoxFigure/BoxFigureMapperFactory;)V" />
+      <node id="2303280755021452114" at="57,0,66,0" concept="6" trace="registerSynchronizers#(Ljetbrains/jetpad/mapper/Mapper/SynchronizersConfiguration;)V" />
       <node id="5667822611620059834" at="33,0,48,0" concept="6" trace="adjustPolyLinePoints#()V" />
-      <node id="2303280755021452114" at="57,0,78,0" concept="6" trace="registerSynchronizers#(Ljetbrains/jetpad/mapper/Mapper/SynchronizersConfiguration;)V" />
       <scope id="8794120090375426028" at="20,22,21,39" />
       <scope id="2303280755025056372" at="26,32,27,52" />
       <scope id="2303280755022254252" at="30,58,31,76" />
       <scope id="2303280755025363189" at="49,92,50,52" />
       <scope id="2303280755025378824" at="54,41,55,20" />
-      <scope id="2303280755021464652" at="62,27,63,40" />
-      <scope id="2303280755021464692" at="67,27,68,40" />
-      <scope id="2303280755021464726" at="72,27,73,40" />
       <scope id="8794120090375426024" at="20,0,23,0" />
       <scope id="2303280755022254249" at="30,0,33,0">
         <var name="childView" id="2303280755022534764" />
@@ -275,12 +256,15 @@
       <scope id="2303280755025378820" at="54,0,57,0">
         <var name="figure" id="2303280755025408623" />
       </scope>
-      <scope id="2303280755021464651" at="62,0,65,0" />
-      <scope id="2303280755021464691" at="67,0,70,0" />
-      <scope id="2303280755021464725" at="72,0,75,0" />
       <scope id="2303280755025027653" at="23,61,28,5" />
+      <scope id="2303280755021452120" at="58,91,64,96">
+        <var name="source" id="457655548170166762" />
+      </scope>
       <scope id="2303280755025027649" at="23,0,30,0">
         <var name="mapperFactory" id="2303280755025046476" />
+      </scope>
+      <scope id="2303280755021452114" at="57,0,66,0">
+        <var name="configuration" id="2303280755021452118" />
       </scope>
       <scope id="5667822611620059839" at="33,39,46,72">
         <var name="height" id="8794120090380795843" />
@@ -291,18 +275,9 @@
         <var name="width" id="8794120090380787797" />
       </scope>
       <scope id="5667822611620059834" at="33,0,48,0" />
-      <scope id="2303280755021452120" at="58,91,76,96">
-        <var name="source" id="457655548170166762" />
-      </scope>
-      <scope id="2303280755021452114" at="57,0,78,0">
-        <var name="configuration" id="2303280755021452118" />
-      </scope>
-      <unit id="2303280755021464651" at="61,74,65,7" name="jetbrains.mps.lang.editor.figures.library.BoxFigure$BoxFigureMapper$1" />
-      <unit id="2303280755021464691" at="66,75,70,7" name="jetbrains.mps.lang.editor.figures.library.BoxFigure$BoxFigureMapper$2" />
-      <unit id="2303280755021464725" at="71,72,75,7" name="jetbrains.mps.lang.editor.figures.library.BoxFigure$BoxFigureMapper$3" />
       <unit id="2303280755025348865" at="48,0,53,0" name="jetbrains.mps.lang.editor.figures.library.BoxFigure$BoxFigureMapperFactory" />
-      <unit id="2303280755021427314" at="53,0,79,0" name="jetbrains.mps.lang.editor.figures.library.BoxFigure$BoxFigureMapper" />
-      <unit id="8794120090375424916" at="15,0,80,0" name="jetbrains.mps.lang.editor.figures.library.BoxFigure" />
+      <unit id="2303280755021427314" at="53,0,67,0" name="jetbrains.mps.lang.editor.figures.library.BoxFigure$BoxFigureMapper" />
+      <unit id="8794120090375424916" at="15,0,68,0" name="jetbrains.mps.lang.editor.figures.library.BoxFigure" />
     </file>
   </root>
 </debug-info>

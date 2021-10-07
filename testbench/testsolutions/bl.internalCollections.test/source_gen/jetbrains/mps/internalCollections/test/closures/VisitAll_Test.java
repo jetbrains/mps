@@ -52,11 +52,7 @@ public class VisitAll_Test extends Util_Test {
   @Test
   public void test_visitorVarOperation() throws Exception {
     final ArrayList<Integer> res = new ArrayList<Integer>();
-    _FunctionTypes._void_P1_E0<? super Integer> cl = new _FunctionTypes._void_P1_E0<Integer>() {
-      public void invoke(Integer it) {
-        res.add(it * 2);
-      }
-    };
+    _FunctionTypes._void_P1_E0<? super Integer> cl = (Integer it) -> res.add(it * 2);
     Sequence.fromIterable(this.input5()).visitAll(cl);
     this.assertIterableEquals(this.expectEven10(), res);
   }

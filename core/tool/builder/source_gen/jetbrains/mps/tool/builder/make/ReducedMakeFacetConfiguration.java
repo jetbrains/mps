@@ -27,7 +27,6 @@ import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.internal.make.cfg.GenerateFacetInitializer;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.internal.make.cfg.MakeFacetInitializer;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vfs.IFile;
 
 @GeneratedClass(node = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)/1169333190355797179", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
@@ -84,11 +83,7 @@ public class ReducedMakeFacetConfiguration {
         MakeFacetInitializer makeFacetInit = new MakeFacetInitializer();
         makeFacetInit.skipReconcile(true);
         // override solution's output path
-        makeFacetInit.setFileToFile(new _FunctionTypes._return_P1_E0<IFile, IFile>() {
-          public IFile invoke(IFile f) {
-            return outputPathRedirects.getRedirect(f);
-          }
-        });
+        makeFacetInit.setFileToFile((IFile f) -> outputPathRedirects.getRedirect(f));
         makeFacetInit.populate(pp);
       }
     };

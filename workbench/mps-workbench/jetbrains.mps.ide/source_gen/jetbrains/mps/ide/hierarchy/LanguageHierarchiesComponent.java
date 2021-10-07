@@ -27,7 +27,6 @@ import com.intellij.ui.ScrollPaneFactory;
 import javax.swing.border.LineBorder;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.workbench.action.BaseGroup;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.ide.projectPane.ProjectPaneActionGroups;
@@ -64,6 +63,7 @@ import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.BasicStroke;
 import java.awt.FontMetrics;
+import jetbrains.mps.util.Computable;
 import java.util.Collections;
 import java.util.Comparator;
 import java.awt.Point;
@@ -207,11 +207,7 @@ public class LanguageHierarchiesComponent extends JComponent implements Scrollab
     if (mySelectedConceptContainer == null) {
       return null;
     }
-    return new ModelAccessHelper(myProject.getRepository()).runReadAction(new Computable<SNode>() {
-      public SNode compute() {
-        return mySelectedConceptContainer.getNode();
-      }
-    });
+    return new ModelAccessHelper(myProject.getRepository()).runReadAction(() -> mySelectedConceptContainer.getNode());
   }
   private void processPopupMenu(MouseEvent e) {
     BaseGroup group = ActionUtils.getGroup(ProjectPaneActionGroups.NODE_ACTIONS);

@@ -45,19 +45,11 @@ public class DispatchGenUtil {
       // if it's a static method declaration then we don't look into ancestors
       // otherwise we scan all the way up
       classesToConsider = Sequence.<SNode>singleton(parentClass);
-      methods = new _FunctionTypes._return_P1_E0<Iterable<SNode>, SNode>() {
-        public Iterable<SNode> invoke(SNode cls) {
-          return (Iterable<SNode>) Classifier__BehaviorDescriptor.staticMethods_id7fFTwQrQPHW.invoke(cls);
-        }
-      };
+      methods = (SNode cls) -> (Iterable<SNode>) Classifier__BehaviorDescriptor.staticMethods_id7fFTwQrQPHW.invoke(cls);
 
     } else {
       classesToConsider = DispatchUtil.ancestors(SNodeOperations.cast(parentClass, CONCEPTS.ClassConcept$bK), true);
-      methods = new _FunctionTypes._return_P1_E0<Iterable<SNode>, SNode>() {
-        public Iterable<SNode> invoke(SNode cls) {
-          return (Iterable<SNode>) Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(cls, CONCEPTS.ClassConcept$bK));
-        }
-      };
+      methods = (SNode cls) -> (Iterable<SNode>) Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SNodeOperations.cast(cls, CONCEPTS.ClassConcept$bK));
     }
     final DispatchGroupDescriptor desc = new DispatchGroupDescriptor(dispatchMethod);
 

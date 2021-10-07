@@ -34,11 +34,7 @@ public class BackspaceFirstUsualStatementBeforeCommented_Test extends BaseTransf
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("8821749938013438501", "8821749938013438529");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action"), false);
     }
   }
 }

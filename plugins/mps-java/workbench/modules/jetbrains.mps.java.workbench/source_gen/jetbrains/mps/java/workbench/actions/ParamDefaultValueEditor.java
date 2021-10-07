@@ -63,17 +63,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
    * Create and add the editor to the parent panel
    */
   protected void build() {
-    project.getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        // Temporary model for the edition of the default value
-        model = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.forDefaultModule());
-        model.addRootNode(parentExpression);
-        model.addChangeListener(ParamDefaultValueEditor.this);
-        TemporaryModels.getInstance().addMissingImports(model);
+    project.getRepository().getModelAccess().executeCommand(() -> {
+      // Temporary model for the edition of the default value
+      model = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.forDefaultModule());
+      model.addRootNode(parentExpression);
+      model.addChangeListener(ParamDefaultValueEditor.this);
+      TemporaryModels.getInstance().addMissingImports(model);
 
-        myEditor = new SizedEmbeddableEditor(project, true, 100);
-        myEditor.editNode(parentExpression);
-      }
+      myEditor = new SizedEmbeddableEditor(project, true, 100);
+      myEditor.editNode(parentExpression);
     });
 
     myParentPanel.add(myEditor);
@@ -89,11 +87,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     if (model != null) {
-      project.getModelAccess().runWriteAction(new Runnable() {
-        public void run() {
-          // Dispose temporary model
-          TemporaryModels.getInstance().dispose(model);
-        }
+      project.getModelAccess().runWriteAction(() -> {
+        // Dispose temporary model
+        TemporaryModels.getInstance().dispose(model);
       });
     }
   }

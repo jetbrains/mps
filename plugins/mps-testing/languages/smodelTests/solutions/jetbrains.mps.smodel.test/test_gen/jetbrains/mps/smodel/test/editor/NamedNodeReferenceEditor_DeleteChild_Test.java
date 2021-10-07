@@ -34,11 +34,7 @@ public class NamedNodeReferenceEditor_DeleteChild_Test extends BaseTransformatio
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6012981979753468745", "6012981979753516727");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action"), false);
     }
   }
 }

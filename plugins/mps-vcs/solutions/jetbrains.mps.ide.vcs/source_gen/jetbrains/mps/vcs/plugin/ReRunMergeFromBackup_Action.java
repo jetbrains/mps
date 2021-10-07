@@ -24,7 +24,6 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
@@ -122,15 +121,13 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
     // FIXME prefer ModelFactory.save(openapi.SModel, in-memory stream data source); perhaps PersVersAware.getModelFactory()?
     // In fact, we need to use actual model persistence format, as strings in the zip are likely plain text from VCS, which,
     // for the same model, usually means same persistence as current (unless persistence has been changed).
-    String modelData = new ModelAccessHelper(((SModel) MapSequence.fromMap(_params).get("model")).getRepository()).runReadAction(new Computable<String>() {
-      public String compute() {
-        // FIXME as long as we use modelData to match against 'mine' content from merge backup, we implicitly assume here
-        //      that merge uses the same ModelFactory to save model into backup as we use here to obtain actual content
-        //      I'd say it has to use VCSPersistenceUtil.saveModel so that one can expect that persistence approach to backup and actual content matches
-        ModelFactory xmlPersistence = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getComponent(ModelFactoryService.class).getDefaultModelFactory(PreinstalledDataSourceTypes.MPS);
-        byte[] modelAsBytes = PersistenceUtil.modelAsBytes(((SModel) MapSequence.fromMap(_params).get("model")), xmlPersistence);
-        return (modelAsBytes == null ? null : new String(modelAsBytes, FileUtil.DEFAULT_CHARSET));
-      }
+    String modelData = new ModelAccessHelper(((SModel) MapSequence.fromMap(_params).get("model")).getRepository()).runReadAction(() -> {
+      // FIXME as long as we use modelData to match against 'mine' content from merge backup, we implicitly assume here
+      //      that merge uses the same ModelFactory to save model into backup as we use here to obtain actual content
+      //      I'd say it has to use VCSPersistenceUtil.saveModel so that one can expect that persistence approach to backup and actual content matches
+      ModelFactory xmlPersistence = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getComponent(ModelFactoryService.class).getDefaultModelFactory(PreinstalledDataSourceTypes.MPS);
+      byte[] modelAsBytes = PersistenceUtil.modelAsBytes(((SModel) MapSequence.fromMap(_params).get("model")), xmlPersistence);
+      return (modelAsBytes == null ? null : new String(modelAsBytes, FileUtil.DEFAULT_CHARSET));
     });
 
     for (File backupFile : Sequence.fromIterable(ReRunMergeFromBackup_Action.this.getBackupFiles(_params))) {

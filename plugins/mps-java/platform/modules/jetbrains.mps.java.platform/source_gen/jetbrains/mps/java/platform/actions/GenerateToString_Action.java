@@ -97,15 +97,13 @@ public class GenerateToString_Action extends BaseAction {
     SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
     final Wrappers._T<SNode> classConcept = new Wrappers._T<SNode>();
     final Wrappers._T<SNodeReference[]> fields = new Wrappers._T<SNodeReference[]>();
-    repo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        classConcept.value = GenerateToString_Action.this.getClassConcept(_params);
-        fields.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("fields", CONCEPTS.ClassConcept$bK, "4_LVZ3pC27C")))).select(new ISelector<SNode, SNodeReference>() {
-          public SNodeReference select(SNode it) {
-            return SNodeOperations.getPointer(it);
-          }
-        }).toGenericArray(SNodeReference.class);
-      }
+    repo.getModelAccess().runReadAction(() -> {
+      classConcept.value = GenerateToString_Action.this.getClassConcept(_params);
+      fields.value = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classConcept.value, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("fields", CONCEPTS.ClassConcept$bK, "4_LVZ3pC27C")))).select(new ISelector<SNode, SNodeReference>() {
+        public SNodeReference select(SNode it) {
+          return SNodeOperations.getPointer(it);
+        }
+      }).toGenericArray(SNodeReference.class);
     });
 
     SelectFieldsDialog selectFieldsDialog = new SelectFieldsDialog(fields.value, true, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
@@ -121,29 +119,27 @@ public class GenerateToString_Action extends BaseAction {
     final SNodeReference firstField = (selectedFields != null && selectedFields.length > 0 ? selectedFields[0] : null);
     final Wrappers._T<SNode> currentExpression = new Wrappers._T<SNode>(null);
 
-    repo.getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        for (SNodeReference fieldPtr : selectedFields) {
-          SNode field = SNodeOperations.cast(fieldPtr.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), CONCEPTS.FieldDeclaration$ie);
-          SNode fieldRef = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
-          SLinkOperations.setTarget(fieldRef, LINKS.variableDeclaration$N1XG, field);
-          SNode item = _quotation_createNode_satqj4_a0d0a0a61a0(((fieldPtr == firstField ? "" : ", ")) + SPropertyOperations.getString(field, PROPS.name$MnvL) + "=");
-          if (fieldPtr == firstField) {
-            currentExpression.value = _quotation_createNode_satqj4_a0a0e0a0a61a0(SPropertyOperations.getString(classConcept.value, PROPS.name$MnvL) + "{", item);
-            currentExpression.value = _quotation_createNode_satqj4_a0b0e0a0a61a0(fieldRef, currentExpression.value);
-          } else {
-            currentExpression.value = _quotation_createNode_satqj4_a0a0a4a0a0q0a(item, currentExpression.value);
-            currentExpression.value = _quotation_createNode_satqj4_a0b0a4a0a0q0a(fieldRef, currentExpression.value);
-          }
-        }
-        if (selectedFields == null || selectedFields.length == 0) {
-          rightmostExpression.value = _quotation_createNode_satqj4_a0a0b0a61a0(SPropertyOperations.getString(classConcept.value, PROPS.name$MnvL) + "{}");
+    repo.getModelAccess().executeCommand(() -> {
+      for (SNodeReference fieldPtr : selectedFields) {
+        SNode field = SNodeOperations.cast(fieldPtr.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()), CONCEPTS.FieldDeclaration$ie);
+        SNode fieldRef = SNodeFactoryOperations.createNewNode(CONCEPTS.VariableReference$TC, null);
+        SLinkOperations.setTarget(fieldRef, LINKS.variableDeclaration$N1XG, field);
+        SNode item = _quotation_createNode_satqj4_a0d0a0a61a0(((fieldPtr == firstField ? "" : ", ")) + SPropertyOperations.getString(field, PROPS.name$MnvL) + "=");
+        if (fieldPtr == firstField) {
+          currentExpression.value = _quotation_createNode_satqj4_a0a0e0a0a61a0(SPropertyOperations.getString(classConcept.value, PROPS.name$MnvL) + "{", item);
+          currentExpression.value = _quotation_createNode_satqj4_a0b0e0a0a61a0(fieldRef, currentExpression.value);
         } else {
-          rightmostExpression.value = _quotation_createNode_satqj4_a0a0a1a0q0a(currentExpression.value);
+          currentExpression.value = _quotation_createNode_satqj4_a0a0a4a0a0q0a(item, currentExpression.value);
+          currentExpression.value = _quotation_createNode_satqj4_a0b0a4a0a0q0a(fieldRef, currentExpression.value);
         }
-        SNode method = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_satqj4_a0a0c0a61a0(rightmostExpression.value));
-        ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).select(method);
       }
+      if (selectedFields == null || selectedFields.length == 0) {
+        rightmostExpression.value = _quotation_createNode_satqj4_a0a0b0a61a0(SPropertyOperations.getString(classConcept.value, PROPS.name$MnvL) + "{}");
+      } else {
+        rightmostExpression.value = _quotation_createNode_satqj4_a0a0a1a0q0a(currentExpression.value);
+      }
+      SNode method = ListSequence.fromList(SLinkOperations.getChildren(classConcept.value, LINKS.member$L_2d)).addElement(_quotation_createNode_satqj4_a0a0c0a61a0(rightmostExpression.value));
+      ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).select(method);
     });
 
   }

@@ -41,11 +41,7 @@ public class ShowReflectiveEditorsForSubtree_Test extends BaseTransformationTest
       Assert.assertFalse(isActionApplicable("jetbrains.mps.ide.editor.actions.ShowReflectiveEditorsForSubtree_Action"));
       Assert.assertTrue(isActionApplicable("jetbrains.mps.ide.editor.actions.ShowRegularEditor_Action"));
 
-      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), new Runnable() {
-        public void run() {
-          getEditorComponent().selectNode(getNodeById("897648160458178476"));
-        }
-      });
+      ReflectiveEditorActionsUtil.runReadInEDTAndWait(getEditorComponent(), () -> getEditorComponent().selectNode(getNodeById("897648160458178476")));
       Assert.assertTrue(ReflectiveHintsManager.shouldShowReflectiveEditor(getEditorComponent().getSelectedCell().getCellContext()));
       Assert.assertFalse(isActionApplicable("jetbrains.mps.ide.editor.actions.ShowReflectiveEditor_Action"));
       Assert.assertFalse(isActionApplicable("jetbrains.mps.ide.editor.actions.ShowReflectiveEditorsForSubtree_Action"));

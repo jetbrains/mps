@@ -35,8 +35,6 @@ import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import java.util.function.Supplier;
-import jetbrains.mps.internal.collections.runtime.IListSequence;
 import org.apache.log4j.Level;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 
@@ -139,14 +137,12 @@ public class StubResolver {
         if (refScope instanceof ErrorScope) {
           continue;
         }
-        List<SNode> resolved = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<IListSequence<SNode>>() {
-          public IListSequence<SNode> get() {
-            return Sequence.fromIterable(refScope.getAvailableElements(null)).where(new IWhereFilter<SNode>() {
-              public boolean accept(SNode n) {
-                return modelRef.equals(SModelOperations.getPointer(SNodeOperations.getModel(n))) && resolveInfo.equals(jetbrains.mps.util.SNodeOperations.getResolveInfo(n));
-              }
-            }).toListSequence();
-          }
+        List<SNode> resolved = TypecheckingFacade.getFromContext().computeIsolated(() -> {
+          return Sequence.fromIterable(refScope.getAvailableElements(null)).where(new IWhereFilter<SNode>() {
+            public boolean accept(SNode n) {
+              return modelRef.equals(SModelOperations.getPointer(SNodeOperations.getModel(n))) && resolveInfo.equals(jetbrains.mps.util.SNodeOperations.getResolveInfo(n));
+            }
+          }).toListSequence();
         });
         if (ListSequence.fromList(resolved).count() > 1) {
           if (LOG.isEnabledFor(Level.ERROR)) {

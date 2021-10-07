@@ -14,7 +14,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
 import jetbrains.mps.ide.ui.dialogs.modules.NewModuleDialog;
 import jetbrains.mps.project.Solution;
-import java.util.function.Supplier;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.project.MPSExtentions;
 import java.io.File;
@@ -63,22 +62,16 @@ public class GeneratePluginSolution_Action extends BaseAction {
     final NameLocationPanel cfg = new NameLocationPanel(NewModuleDialog.projectHome(mpsProject), "Plugin Solution name:", "Plugin Solution file location:");
     cfg.withDefaults("NewPluginSolution", "solutions");
     NewModuleDialog<Solution> dialog = new NewModuleDialog<>(mpsProject, cfg);
-    dialog.withCheck(new Supplier<String>() {
-      public String get() {
-        return NewModuleUtil.check(mpsProject, MPSExtentions.DOT_SOLUTION, cfg.getModuleName(), cfg.getModuleLocation().getAbsolutePath());
-      }
-    });
-    dialog.withFactory(new Supplier<Solution>() {
-      public Solution get() {
-        String devkitName = cfg.getModuleName();
-        File devkitLocation = cfg.getModuleLocation();
-        Solution result = NewModuleUtil.createSolution(devkitName, devkitLocation.getAbsolutePath(), mpsProject);
-        result.getModuleDescriptor().setKind(SolutionKind.PLUGIN_OTHER);
-        GeneratePluginSolution_Action.this.createModel(result, event);
-        mpsProject.setVirtualFolder(result, virtualFolder);
-        mpsProject.save();
-        return result;
-      }
+    dialog.withCheck(() -> NewModuleUtil.check(mpsProject, MPSExtentions.DOT_SOLUTION, cfg.getModuleName(), cfg.getModuleLocation().getAbsolutePath()));
+    dialog.withFactory(() -> {
+      String devkitName = cfg.getModuleName();
+      File devkitLocation = cfg.getModuleLocation();
+      Solution result = NewModuleUtil.createSolution(devkitName, devkitLocation.getAbsolutePath(), mpsProject);
+      result.getModuleDescriptor().setKind(SolutionKind.PLUGIN_OTHER);
+      GeneratePluginSolution_Action.this.createModel(result, event);
+      mpsProject.setVirtualFolder(result, virtualFolder);
+      mpsProject.save();
+      return result;
     });
 
     dialog.setTitle("New Plugin Solution");

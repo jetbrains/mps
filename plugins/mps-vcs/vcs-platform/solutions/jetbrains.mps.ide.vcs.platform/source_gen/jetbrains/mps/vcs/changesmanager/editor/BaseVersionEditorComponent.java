@@ -38,35 +38,31 @@ public class BaseVersionEditorComponent extends EditorComponent implements Edito
   public BaseVersionEditorComponent(SRepository repository, final ChangeGroup changeGroup) {
     super(repository);
     final ModelAccess modelAccess = repository.getModelAccess();
-    modelAccess.runWriteAction(new Runnable() {
-      public void run() {
-        myBaseModel = MergeTemporaryModel.readonlyCloneOf(ListSequence.fromList(changeGroup.getChanges()).first().getChangeSet().getOldModel());
-        DiffModelUtil.renameModelAndRegister(myBaseModel, null);
-      }
+    modelAccess.runWriteAction(() -> {
+      myBaseModel = MergeTemporaryModel.readonlyCloneOf(ListSequence.fromList(changeGroup.getChanges()).first().getChangeSet().getOldModel());
+      DiffModelUtil.renameModelAndRegister(myBaseModel, null);
     });
     final Wrappers._T<Bounds> verticalBounds = new Wrappers._T<Bounds>();
-    modelAccess.runReadAction(new Runnable() {
-      public void run() {
-        SNode baseRooot = myBaseModel.getNode(ListSequence.fromList(changeGroup.getChanges()).first().getRootId());
-        editNode(baseRooot);
+    modelAccess.runReadAction(() -> {
+      SNode baseRooot = myBaseModel.getNode(ListSequence.fromList(changeGroup.getChanges()).first().getRootId());
+      editNode(baseRooot);
 
-        setBackground(EditorSettings.getInstance().getCaretRowColor());
+      setBackground(EditorSettings.getInstance().getCaretRowColor());
 
-        Iterable<ChangeEditorMessage> messages = ListSequence.fromList(changeGroup.getChanges()).translate(new ITranslator2<ModelChange, ChangeEditorMessage>() {
-          public Iterable<ChangeEditorMessage> translate(ModelChange ch) {
-            return ChangeEditorMessageFactory.createMessages(myBaseModel, true, ch, BaseVersionEditorComponent.this, null);
-          }
-        });
-        verticalBounds.value = Sequence.fromIterable(messages).select(new ISelector<ChangeEditorMessage, Bounds>() {
-          public Bounds select(ChangeEditorMessage m) {
-            return m.getBounds(BaseVersionEditorComponent.this);
-          }
-        }).reduceLeft(new ILeftCombinator<Bounds, Bounds>() {
-          public Bounds combine(Bounds a, Bounds b) {
-            return a.merge(b);
-          }
-        });
-      }
+      Iterable<ChangeEditorMessage> messages = ListSequence.fromList(changeGroup.getChanges()).translate(new ITranslator2<ModelChange, ChangeEditorMessage>() {
+        public Iterable<ChangeEditorMessage> translate(ModelChange ch) {
+          return ChangeEditorMessageFactory.createMessages(myBaseModel, true, ch, BaseVersionEditorComponent.this, null);
+        }
+      });
+      verticalBounds.value = Sequence.fromIterable(messages).select(new ISelector<ChangeEditorMessage, Bounds>() {
+        public Bounds select(ChangeEditorMessage m) {
+          return m.getBounds(BaseVersionEditorComponent.this);
+        }
+      }).reduceLeft(new ILeftCombinator<Bounds, Bounds>() {
+        public Bounds combine(Bounds a, Bounds b) {
+          return a.merge(b);
+        }
+      });
     });
     int rightMost = 0;
     for (EditorCell leafCell = CellTraversalUtil.getFirstLeaf(getRootCell()); leafCell != null; leafCell = CellTraversalUtil.getNextLeaf(leafCell)) {
@@ -94,11 +90,7 @@ public class BaseVersionEditorComponent extends EditorComponent implements Edito
 
   @Override
   public void dispose() {
-    getRepository().getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        DiffModelUtil.unregisterModel(myBaseModel);
-      }
-    });
+    getRepository().getModelAccess().runWriteAction(() -> DiffModelUtil.unregisterModel(myBaseModel));
     super.dispose();
   }
   public JScrollPane getScrollPane() {

@@ -20,7 +20,6 @@ import java.awt.Frame;
 import jetbrains.mps.ide.blame.dialog.BlameDialog;
 import jetbrains.mps.ide.blame.dialog.BlameDialogComponent;
 import java.util.Collection;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5542140910050886364", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
@@ -93,11 +92,7 @@ public class SubmitToTracker_Action extends BaseAction {
         description.append(msg.getText()).append('\n');
       }
     }
-    dialog.addExceptions((Collection<Throwable>) ((List<IMessage>) MapSequence.fromMap(_params).get("messages")).stream().map(new Function<IMessage, Throwable>() {
-      public Throwable apply(IMessage message) {
-        return message.getException();
-      }
-    }).collect(Collectors.toList()));
+    dialog.addExceptions((Collection<Throwable>) ((List<IMessage>) MapSequence.fromMap(_params).get("messages")).stream().map((IMessage message) -> message.getException()).collect(Collectors.toList()));
     dialog.setDescription(description.toString());
     dialog.initDialog();
     dialog.show();

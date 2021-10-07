@@ -19,11 +19,9 @@ public class FilteringChecker<O, I extends ReportItem> implements IAbstractCheck
   }
   @Override
   public void check(O toCheck, final SRepository repository, final Consumer<? super I> errorCollector, ProgressMonitor monitor) {
-    Consumer<I> consumer = new Consumer<I>() {
-      public void consume(I item) {
-        if (myAccept.invoke(item, repository)) {
-          errorCollector.consume(item);
-        }
+    Consumer<I> consumer = (I item) -> {
+      if (myAccept.invoke(item, repository)) {
+        errorCollector.consume(item);
       }
     };
     myOrigin.check(toCheck, repository, consumer, monitor);

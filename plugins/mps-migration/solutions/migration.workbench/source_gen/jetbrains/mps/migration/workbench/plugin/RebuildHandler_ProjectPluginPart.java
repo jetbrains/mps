@@ -5,7 +5,6 @@ package jetbrains.mps.migration.workbench.plugin;
 import jetbrains.mps.plugins.part.ProjectPluginPart;
 import jetbrains.mps.ide.migration.IStartupMigrationExecutor;
 import jetbrains.mps.project.MPSProject;
-import java.util.function.Consumer;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.List;
@@ -42,78 +41,70 @@ public class RebuildHandler_ProjectPluginPart extends ProjectPluginPart {
       return;
     }
     final MPSProject mpsProject = project;
-    RebuildHandler_ProjectPluginPart.this.migrationTrigger.setRebuildHandler(new Consumer<Iterable<SModuleReference>>() {
-      public void accept(final Iterable<SModuleReference> modules) {
-        final SRepository repo = mpsProject.getRepository();
-        repo.getModelAccess().runWriteAction(new Runnable() {
-          public void run() {
-            final List<SModel> modelsToClean = Sequence.fromIterable(modules).translate(new ITranslator2<SModuleReference, SModel>() {
-              public Iterable<SModel> translate(SModuleReference it) {
-                SModule module = it.resolve(repo);
-                if (module == null) {
-                  return Collections.<SModel>emptyList();
-                }
+    RebuildHandler_ProjectPluginPart.this.migrationTrigger.setRebuildHandler((final Iterable<SModuleReference> modules) -> {
+      final SRepository repo = mpsProject.getRepository();
+      repo.getModelAccess().runWriteAction(() -> {
+        final List<SModel> modelsToClean = Sequence.fromIterable(modules).translate(new ITranslator2<SModuleReference, SModel>() {
+          public Iterable<SModel> translate(SModuleReference it) {
+            SModule module = it.resolve(repo);
+            if (module == null) {
+              return Collections.<SModel>emptyList();
+            }
 
-                if (!(module instanceof Language)) {
-                  return module.getModels();
-                }
+            if (!(module instanceof Language)) {
+              return module.getModels();
+            }
 
-                // this code is only to fix some UI problems, see MPS-30636 for details
-                Iterable<Generator> generators = ((Language) module).getGenerators();
-                return Sequence.fromIterable(generators).translate(new ITranslator2<Generator, SModel>() {
-                  public Iterable<SModel> translate(Generator it) {
-                    return it.getModels();
-                  }
-                }).concat(Sequence.fromIterable(module.getModels()));
+            // this code is only to fix some UI problems, see MPS-30636 for details
+            Iterable<Generator> generators = ((Language) module).getGenerators();
+            return Sequence.fromIterable(generators).translate(new ITranslator2<Generator, SModel>() {
+              public Iterable<SModel> translate(Generator it) {
+                return it.getModels();
               }
-            }).where(new IWhereFilter<SModel>() {
-              public boolean accept(SModel it) {
-                return GenerationFacade.canGenerate(it);
-              }
-            }).toListSequence();
-            // FIXME I see no reason to clear generation status for models we are going to rebuild anyway
-            mpsProject.getComponent(ModelGenerationStatusManager.class).discard(modelsToClean);
+            }).concat(Sequence.fromIterable(module.getModels()));
+          }
+        }).where(new IWhereFilter<SModel>() {
+          public boolean accept(SModel it) {
+            return GenerationFacade.canGenerate(it);
+          }
+        }).toListSequence();
+        // FIXME I see no reason to clear generation status for models we are going to rebuild anyway
+        mpsProject.getComponent(ModelGenerationStatusManager.class).discard(modelsToClean);
 
-            // todo the following is copied from MakeActionImpl, it's better to make MAI to be compiled in Idea
-            // todo (and contributed by xml); this code should use idea-compiled class then
-            // FIXME [artem] No, it's better to make this code MPS-managed and re-use MakeActionParameters
-            ApplicationManager.getApplication().invokeLater(new Runnable() {
-              public void run() {
-                // save all before launching make
-                new SaveRepositoryCommand(mpsProject.getRepository()).execute();
-                MakeSession session = new MakeSession(mpsProject, new DefaultMakeMessageHandler(mpsProject), false);
-                final IMakeService makeService = mpsProject.getComponent(MakeServiceComponent.class).get();
-                if (makeService.openNewSession(session)) {
-                  final List<IResource> inputRes = ListSequence.fromList(new ArrayList<IResource>());
-                  repo.getModelAccess().runReadAction(new Runnable() {
-                    public void run() {
-                      // FIXME this is stupid code, we revert what write action above just did in a quite complicated manner
-                      ListSequence.fromList(inputRes).addSequence(ListSequence.fromList(modelsToClean).select(new ISelector<SModel, SModule>() {
-                        public SModule select(SModel it) {
-                          return it.getModule();
-                        }
-                      }).distinct().select(new ISelector<SModule, MResource>() {
-                        public MResource select(final SModule module) {
-                          return new MResource(module, ListSequence.fromList(modelsToClean).where(new IWhereFilter<SModel>() {
-                            public boolean accept(SModel model) {
-                              return model.getModule() == module;
-                            }
-                          }));
-                        }
-                      }));
+        // todo the following is copied from MakeActionImpl, it's better to make MAI to be compiled in Idea
+        // todo (and contributed by xml); this code should use idea-compiled class then
+        // FIXME [artem] No, it's better to make this code MPS-managed and re-use MakeActionParameters
+        ApplicationManager.getApplication().invokeLater(() -> {
+          // save all before launching make
+          new SaveRepositoryCommand(mpsProject.getRepository()).execute();
+          MakeSession session = new MakeSession(mpsProject, new DefaultMakeMessageHandler(mpsProject), false);
+          final IMakeService makeService = mpsProject.getComponent(MakeServiceComponent.class).get();
+          if (makeService.openNewSession(session)) {
+            final List<IResource> inputRes = ListSequence.fromList(new ArrayList<IResource>());
+            repo.getModelAccess().runReadAction(() -> {
+              // FIXME this is stupid code, we revert what write action above just did in a quite complicated manner
+              ListSequence.fromList(inputRes).addSequence(ListSequence.fromList(modelsToClean).select(new ISelector<SModel, SModule>() {
+                public SModule select(SModel it) {
+                  return it.getModule();
+                }
+              }).distinct().select(new ISelector<SModule, MResource>() {
+                public MResource select(final SModule module) {
+                  return new MResource(module, ListSequence.fromList(modelsToClean).where(new IWhereFilter<SModel>() {
+                    public boolean accept(SModel model) {
+                      return model.getModule() == module;
                     }
-                  });
-                  if (inputRes != null) {
-                    makeService.make(session, (Iterable<? extends IResource>) (Iterable<IResource>) inputRes);
-                  } else {
-                    makeService.closeSession(session);
-                  }
+                  }));
                 }
-              }
+              }));
             });
+            if (inputRes != null) {
+              makeService.make(session, (Iterable<? extends IResource>) (Iterable<IResource>) inputRes);
+            } else {
+              makeService.closeSession(session);
+            }
           }
         });
-      }
+      });
     });
   }
   @Override

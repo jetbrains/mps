@@ -89,28 +89,26 @@ public final class ChangesStripActionsHelper {
     if (changes == null) {
       return;
     }
-    myEditorContext.getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        final SModel model = ListSequence.fromList(changes).first().getChangeSet().getNewModel();
-        final NodeCopier nc = new NodeCopier(model);
-        Iterable<ModelChange> oppositeChanges = ListSequence.fromList(changes).select(new ISelector<ModelChange, ModelChange>() {
-          public ModelChange select(ModelChange ch) {
-            return ch.getOppositeChange();
-          }
-        });
-        for (ModelChange ch : Sequence.fromIterable(oppositeChanges)) {
-          if (ch instanceof NodeGroupChange) {
-            ((NodeGroupChange) ch).prepare();
-          }
+    myEditorContext.getRepository().getModelAccess().executeCommand(() -> {
+      final SModel model = ListSequence.fromList(changes).first().getChangeSet().getNewModel();
+      final NodeCopier nc = new NodeCopier(model);
+      Iterable<ModelChange> oppositeChanges = ListSequence.fromList(changes).select(new ISelector<ModelChange, ModelChange>() {
+        public ModelChange select(ModelChange ch) {
+          return ch.getOppositeChange();
         }
-        Sequence.fromIterable(oppositeChanges).visitAll(new IVisitor<ModelChange>() {
-          public void visit(ModelChange ch) {
-            ch.apply(model, nc);
-          }
-        });
-        nc.restoreIds(true);
-        check_ikrecr_a6a0a0c0o(getPainter(), ChangesStripActionsHelper.this);
+      });
+      for (ModelChange ch : Sequence.fromIterable(oppositeChanges)) {
+        if (ch instanceof NodeGroupChange) {
+          ((NodeGroupChange) ch).prepare();
+        }
       }
+      Sequence.fromIterable(oppositeChanges).visitAll(new IVisitor<ModelChange>() {
+        public void visit(ModelChange ch) {
+          ch.apply(model, nc);
+        }
+      });
+      nc.restoreIds(true);
+      check_ikrecr_a6a0a0c0o(getPainter(), ChangesStripActionsHelper.this);
     });
   }
 

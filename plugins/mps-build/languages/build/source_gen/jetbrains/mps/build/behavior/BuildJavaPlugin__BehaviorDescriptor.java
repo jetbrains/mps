@@ -18,7 +18,6 @@ import jetbrains.mps.build.util.ScopeUtil;
 import jetbrains.mps.scope.SimpleRoleScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.build.util.DescendantsScope;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -51,11 +50,7 @@ public final class BuildJavaPlugin__BehaviorDescriptor extends BaseBHDescriptor 
           String optionsName = SPropertyOperations.getString(SNodeOperations.cast(jo, CONCEPTS.BuildSource_JavaOptions$D), PROPS.optionsName$Rr_z);
           return ((optionsName == null || optionsName.length() == 0) ? "<default options>" : optionsName);
         }
-      }, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-        public Boolean invoke(SNode node) {
-          return isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BuildSource_JavaOptions$D), PROPS.optionsName$Rr_z));
-        }
-      });
+      }, (SNode node) -> isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(node, CONCEPTS.BuildSource_JavaOptions$D), PROPS.optionsName$Rr_z)));
     }
 
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildSource_JavaModule$NC) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildSource_JavaLibrary$6q)) {

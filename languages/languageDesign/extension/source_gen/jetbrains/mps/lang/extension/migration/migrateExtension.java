@@ -19,10 +19,10 @@ import java.util.List;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.core.behavior.ChildAttribute__BehaviorDescriptor;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.lightweightdsl.behavior.DSLClassMember__BehaviorDescriptor;
@@ -94,11 +94,7 @@ public class migrateExtension extends MigrationScriptBase {
             public SNode compute() {
               return _quotation_createNode_2kk9yi_a0d0c(MigrationScriptBase.detachNodePatternVariable(pattern.getMatchedNode("type")), SPropertyOperations.castString(pattern.getMatchedPropertyValue("name")));
             }
-          }, new _FunctionTypes._void_P2_E0<SNode, SNode>() {
-            public void invoke(SNode oldNode, SNode newNode) {
-              ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$KJ43)));
-            }
-          });
+          }, (SNode oldNode, SNode newNode) -> ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$KJ43))));
         }
       });
     }
@@ -137,19 +133,17 @@ public class migrateExtension extends MigrationScriptBase {
             public SNode compute() {
               return _quotation_createNode_2kk9yi_a0f0c(pattern.getMatchedNode("decl"));
             }
-          }, new _FunctionTypes._void_P2_E0<SNode, SNode>() {
-            public void invoke(SNode oldNode, SNode newNode) {
-              ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$KJ43)));
-              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43), CONCEPTS.LinkAttribute$v_)).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), LINKS.declaration$h3Qi);
-                }
-              }).visitAll(new IVisitor<SNode>() {
-                public void visit(SNode it) {
-                  LinkAttribute__BehaviorDescriptor.setLink_id6Gg5KlvuxxF.invoke(it, LINKS.variableDeclaration$N1XG);
-                }
-              });
-            }
+          }, (SNode oldNode, SNode newNode) -> {
+            ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$KJ43)));
+            Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43), CONCEPTS.LinkAttribute$v_)).where(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), LINKS.declaration$h3Qi);
+              }
+            }).visitAll(new IVisitor<SNode>() {
+              public void visit(SNode it) {
+                LinkAttribute__BehaviorDescriptor.setLink_id6Gg5KlvuxxF.invoke(it, LINKS.variableDeclaration$N1XG);
+              }
+            });
           });
         }
       });
@@ -200,19 +194,17 @@ public class migrateExtension extends MigrationScriptBase {
                 }
               }.invoke(nodeToMigrate);
             }
-          }, new _FunctionTypes._void_P2_E0<SNode, SNode>() {
-            public void invoke(SNode oldNode, SNode newNode) {
-              ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$KJ43)));
-              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.body$e68K);
-                }
-              }).visitAll(new IVisitor<SNode>() {
-                public void visit(SNode it) {
-                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.body$5xQk);
-                }
-              });
-            }
+          }, (SNode oldNode, SNode newNode) -> {
+            ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$KJ43)));
+            Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.body$e68K);
+              }
+            }).visitAll(new IVisitor<SNode>() {
+              public void visit(SNode it) {
+                ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.body$5xQk);
+              }
+            });
           });
         }
       });
@@ -256,48 +248,46 @@ public class migrateExtension extends MigrationScriptBase {
             public SNode compute() {
               return _quotation_createNode_2kk9yi_a0j0c(MigrationScriptBase.detachListPatternVariable(pattern.getMatchedList("fields")), MigrationScriptBase.detachListPatternVariable((ListSequence.fromList(pattern.getMatchedList("activate")).isEmpty() ? ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.copyNode(activatePlaceholder)) : pattern.getMatchedList("activate"))), MigrationScriptBase.detachListPatternVariable((ListSequence.fromList(pattern.getMatchedList("deactivate")).isEmpty() ? ListSequence.fromListAndArray(new ArrayList<SNode>(), SNodeOperations.copyNode(deactivatePlaceholder)) : pattern.getMatchedList("deactivate"))), MigrationScriptBase.detachListPatternVariable(pattern.getMatchedList("statements")), SPropertyOperations.castString(pattern.getMatchedPropertyValue("name")), pattern.getMatchedNode("ep"));
             }
-          }, new _FunctionTypes._void_P2_E0<SNode, SNode>() {
-            public void invoke(SNode oldNode, SNode newNode) {
-              ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$KJ43)));
-              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.fieldDeclaration$sTgv);
-                }
-              }).visitAll(new IVisitor<SNode>() {
-                public void visit(SNode it) {
-                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.member$L_2d);
-                }
-              });
-              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.activator$4wGR);
-                }
-              }).visitAll(new IVisitor<SNode>() {
-                public void visit(SNode it) {
-                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.member$L_2d);
-                }
-              });
-              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.deactivator$4Bwk);
-                }
-              }).visitAll(new IVisitor<SNode>() {
-                public void visit(SNode it) {
-                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.member$L_2d);
-                }
-              });
+          }, (SNode oldNode, SNode newNode) -> {
+            ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(oldNode, LINKS.smodelAttribute$KJ43)));
+            Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.fieldDeclaration$sTgv);
+              }
+            }).visitAll(new IVisitor<SNode>() {
+              public void visit(SNode it) {
+                ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.member$L_2d);
+              }
+            });
+            Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.activator$4wGR);
+              }
+            }).visitAll(new IVisitor<SNode>() {
+              public void visit(SNode it) {
+                ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.member$L_2d);
+              }
+            });
+            Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(newNode, LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.deactivator$4Bwk);
+              }
+            }).visitAll(new IVisitor<SNode>() {
+              public void visit(SNode it) {
+                ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.member$L_2d);
+              }
+            });
 
-              ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:421d64ed-8024-497f-aeab-8bddeb389dd2(jetbrains.mps.lang.extension.methods)", "4103205777865557979"), newNode)).first(), LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(oldNode, LINKS.objectGetter$USDy), LINKS.smodelAttribute$KJ43)));
-              Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:421d64ed-8024-497f-aeab-8bddeb389dd2(jetbrains.mps.lang.extension.methods)", "4103205777865557979"), newNode)).first(), LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where(new IWhereFilter<SNode>() {
-                public boolean accept(SNode it) {
-                  return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.body$e68K);
-                }
-              }).visitAll(new IVisitor<SNode>() {
-                public void visit(SNode it) {
-                  ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.body$5xQk);
-                }
-              });
-            }
+            ListSequence.fromList(SLinkOperations.getChildren(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:421d64ed-8024-497f-aeab-8bddeb389dd2(jetbrains.mps.lang.extension.methods)", "4103205777865557979"), newNode)).first(), LINKS.smodelAttribute$KJ43)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(oldNode, LINKS.objectGetter$USDy), LINKS.smodelAttribute$KJ43)));
+            Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:421d64ed-8024-497f-aeab-8bddeb389dd2(jetbrains.mps.lang.extension.methods)", "4103205777865557979"), newNode)).first(), LINKS.smodelAttribute$KJ43), CONCEPTS.ChildAttribute$m8)).where(new IWhereFilter<SNode>() {
+              public boolean accept(SNode it) {
+                return Objects.equals(ChildAttribute__BehaviorDescriptor.getLink_idBpxLfMirzf.invoke(it), LINKS.body$e68K);
+              }
+            }).visitAll(new IVisitor<SNode>() {
+              public void visit(SNode it) {
+                ChildAttribute__BehaviorDescriptor.setLink_idBpxLfMirzM.invoke(it, LINKS.body$5xQk);
+              }
+            });
           });
         }
       });

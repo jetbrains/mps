@@ -98,25 +98,15 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
 
   public void executeCurrentCommand() {
     final Wrappers._boolean emptyCommand = new Wrappers._boolean();
-    getProject().getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        setCommandCursor(null);
-        TemporaryModels.getInstance().addMissingImports(getConsoleModel());
-        emptyCommand.value = (SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil) == null);
-      }
+    getProject().getRepository().getModelAccess().executeCommand(() -> {
+      setCommandCursor(null);
+      TemporaryModels.getInstance().addMissingImports(getConsoleModel());
+      emptyCommand.value = (SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil) == null);
     });
     if (emptyCommand.value) {
       return;
     }
-    execute(null, new Runnable() {
-      public void run() {
-        SLinkOperations.setTarget(myRoot, LINKS.hiddenCommand$i8Sk, null);
-      }
-    }, new Runnable() {
-      public void run() {
-        scrollToBottom();
-      }
-    });
+    execute(null, () -> SLinkOperations.setTarget(myRoot, LINKS.hiddenCommand$i8Sk, null), () -> scrollToBottom());
   }
 
   public void clear() {

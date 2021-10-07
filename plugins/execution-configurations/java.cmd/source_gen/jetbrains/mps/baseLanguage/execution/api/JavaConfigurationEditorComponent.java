@@ -7,7 +7,6 @@ import jetbrains.mps.execution.lib.ui.RawLineEditorComponent;
 import jetbrains.mps.execution.lib.ui.FieldWithPathChooseDialog;
 import com.intellij.ui.components.JBCheckBox;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import com.intellij.ui.components.JBLabel;
 import jetbrains.mps.ide.common.LayoutUtil;
@@ -31,11 +30,7 @@ public class JavaConfigurationEditorComponent extends JBPanel {
     myWorkingDirectory.setTitle("Select working directory");
     myUseAlternativeJre = new JBCheckBox("Use alternative JRE");
     myJreHome = new FieldWithPathChooseDialog();
-    myUseAlternativeJre.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent e) {
-        myJreHome.setEditable(myUseAlternativeJre.isSelected());
-      }
-    });
+    myUseAlternativeJre.addActionListener((ActionEvent e) -> myJreHome.setEditable(myUseAlternativeJre.isSelected()));
     myJreHome.setTitle("Select alternative JRE home");
 
     add(new JBLabel("VM parameters:"), LayoutUtil.createLabelConstraints(0));

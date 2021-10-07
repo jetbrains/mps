@@ -77,11 +77,7 @@ public class RenameImplementingMethodsParticipant extends RefactoringParticipant
         }
         @Override
         public void confirm(final String finalState, SRepository repository, RefactoringSession refactoringSession) {
-          refactoringSession.registerChange(new Runnable() {
-            public void run() {
-              SPropertyOperations.assign(node, PROPS.name$MnvL, finalState);
-            }
-          });
+          refactoringSession.registerChange(() -> SPropertyOperations.assign(node, PROPS.name$MnvL, finalState));
         }
       });
     }

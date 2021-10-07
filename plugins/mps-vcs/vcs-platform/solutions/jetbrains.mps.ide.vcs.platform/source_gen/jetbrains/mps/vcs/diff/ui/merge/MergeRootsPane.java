@@ -44,7 +44,6 @@ import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import java.util.function.Supplier;
 import com.intellij.openapi.diff.DiffBundle;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.diff.tools.util.DiffSplitter;
@@ -105,11 +104,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     myStateToRestore = myMergeSession.getCurrentState();
     myTitles = titles;
 
-    myConflictChecker = new ChangeEditorMessage.ConflictChecker() {
-      public boolean isChangeConflicted(ModelChange ch) {
-        return Sequence.fromIterable(myMergeSession.getConflictedWith(ch)).isNotEmpty();
-      }
-    };
+    myConflictChecker = (ModelChange ch) -> Sequence.fromIterable(myMergeSession.getConflictedWith(ch)).isNotEmpty();
 
     myMineEditor = addEditor(0, myMergeSession.getMyModel());
     myResultEditor = addEditor(1, myMergeSession.getResultModel());
@@ -128,12 +123,10 @@ public class MergeRootsPane implements PropertyChangeListener {
     highlightAllChanges();
     myTraverser.goToFirstChangeLater();
     myDiffRegistry = CurrentDifferenceRegistry.getInstance(myProject);
-    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
-      public void run() {
-        if (myMergeSession.getMyModel() instanceof EditableSModel) {
-          final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) myMergeSession.getMyModel());
-          currentDifference.addDifferenceListener(myDifferenceListener);
-        }
+    myDiffRegistry.getCommandQueue().runTask(() -> {
+      if (myMergeSession.getMyModel() instanceof EditableSModel) {
+        final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) myMergeSession.getMyModel());
+        currentDifference.addDifferenceListener(myDifferenceListener);
       }
     });
   }
@@ -225,11 +218,7 @@ public class MergeRootsPane implements PropertyChangeListener {
         showInspector(b);
       }
     });
-    myActionGroup.add(new ToggleAction(new Supplier<String>() {
-      public String get() {
-        return DiffBundle.message("synchronize.scrolling", new Object[0]);
-      }
-    }, Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING) {
+    myActionGroup.add(new ToggleAction(() -> DiffBundle.message("synchronize.scrolling", new Object[0]), Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING) {
       @Override
       public boolean isSelected(@NotNull AnActionEvent p1) {
         return isEditorsScrollingSyncOptionEnabled();
@@ -452,11 +441,9 @@ public class MergeRootsPane implements PropertyChangeListener {
           it.dispose();
         }
       });
-      myDiffRegistry.getCommandQueue().runTask(new Runnable() {
-        public void run() {
-          if (myMergeSession.getMyModel() instanceof EditableSModel) {
-            myDiffRegistry.getCurrentDifference((EditableSModel) myMergeSession.getMyModel()).removeDifferenceListener(myDifferenceListener);
-          }
+      myDiffRegistry.getCommandQueue().runTask(() -> {
+        if (myMergeSession.getMyModel() instanceof EditableSModel) {
+          myDiffRegistry.getCurrentDifference((EditableSModel) myMergeSession.getMyModel()).removeDifferenceListener(myDifferenceListener);
         }
       });
       if (myActionGroup != null) {
@@ -485,11 +472,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     }
 
     private void doInvalidate() {
-      myMA.runReadInEDT(new Runnable() {
-        public void run() {
-          rehighlight();
-        }
-      });
+      myMA.runReadInEDT(() -> rehighlight());
     }
 
     public void dispose() {
@@ -515,11 +498,7 @@ public class MergeRootsPane implements PropertyChangeListener {
   }
   private static void check_lifo0_a0a5nb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
     if (null != checkedDotOperand) {
-      checkedDotOperand.runReadInEDT(new Runnable() {
-        public void run() {
-          checkedDotThisExpression.doRehighlight();
-        }
-      });
+      checkedDotOperand.runReadInEDT(() -> checkedDotThisExpression.doRehighlight());
     }
 
   }

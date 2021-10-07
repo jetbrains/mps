@@ -29,8 +29,6 @@
     <classNode dependClassName="java.util.Map" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="java.util.concurrent.CopyOnWriteArraySet" />
-    <classNode dependClassName="java.util.function.BiConsumer" />
-    <classNode dependClassName="java.util.function.Consumer" />
     <classNode dependClassName="java.util.function.Function" />
     <classNode dependClassName="java.util.stream.Stream" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />

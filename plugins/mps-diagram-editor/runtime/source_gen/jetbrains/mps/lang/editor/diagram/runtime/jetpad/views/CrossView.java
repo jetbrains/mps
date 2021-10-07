@@ -31,16 +31,8 @@ public class CrossView extends GroupView {
         configuration.add(Synchronizers.forProperties(lineWidth, myFirstLine.width()));
         configuration.add(Synchronizers.forProperty(color, mySecondLine.color()));
         configuration.add(Synchronizers.forProperties(lineWidth, mySecondLine.width()));
-        configuration.add(Synchronizers.forProperty(centerLocation, new Runnable() {
-          public void run() {
-            updateCross(centerLocation.get(), segmentLength.get());
-          }
-        }));
-        configuration.add(Synchronizers.forProperty(segmentLength, new Runnable() {
-          public void run() {
-            updateCross(centerLocation.get(), segmentLength.get());
-          }
-        }));
+        configuration.add(Synchronizers.forProperty(centerLocation, () -> updateCross(centerLocation.get(), segmentLength.get())));
+        configuration.add(Synchronizers.forProperty(segmentLength, () -> updateCross(centerLocation.get(), segmentLength.get())));
       }
     }.attachRoot();
   }

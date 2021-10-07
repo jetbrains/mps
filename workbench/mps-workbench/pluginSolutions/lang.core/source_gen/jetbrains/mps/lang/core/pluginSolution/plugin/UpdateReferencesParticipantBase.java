@@ -228,14 +228,12 @@ public abstract class UpdateReferencesParticipantBase<T> extends RefactoringPart
           return searchResults;
         }
         public void confirm(final NodeData<T> finalState, final SRepository repository, final RefactoringSession refactoringSession) {
-          refactoringSession.registerChange(new Runnable() {
-            public void run() {
-              if (shouldUpdateReference(selectedOptions, repository, containingNode.resolve(repository), role, movingNode, refactoringSession)) {
-                doUpdateReference(selectedOptions, repository, containingNode.resolve(repository), role, finalState, resolveInfo);
-                // here, containingNode might not get resolved (e.g. if it's pointer to StaticMethodCall node that has been replaced
-                if (ListSequence.fromList(selectedOptions).contains(UpdateModelImports.OPTION)) {
-                  doUpdateModelImport(selectedOptions, repository, containingModel, finalState);
-                }
+          refactoringSession.registerChange(() -> {
+            if (shouldUpdateReference(selectedOptions, repository, containingNode.resolve(repository), role, movingNode, refactoringSession)) {
+              doUpdateReference(selectedOptions, repository, containingNode.resolve(repository), role, finalState, resolveInfo);
+              // here, containingNode might not get resolved (e.g. if it's pointer to StaticMethodCall node that has been replaced
+              if (ListSequence.fromList(selectedOptions).contains(UpdateModelImports.OPTION)) {
+                doUpdateModelImport(selectedOptions, repository, containingModel, finalState);
               }
             }
           });

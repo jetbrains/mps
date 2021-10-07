@@ -92,11 +92,9 @@ public class RenameNode_Action extends BaseAction {
 
     final Wrappers._T<String> oldName = new Wrappers._T<String>();
     final Wrappers._boolean canBeRenamed = new Wrappers._boolean();
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        canBeRenamed.value = RenameNode_Action.this.canBeRenamed(_params);
-        oldName.value = SPropertyOperations.getString(((SNode) MapSequence.fromMap(_params).get("target")), PROPS.name$MnvL);
-      }
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(() -> {
+      canBeRenamed.value = RenameNode_Action.this.canBeRenamed(_params);
+      oldName.value = SPropertyOperations.getString(((SNode) MapSequence.fromMap(_params).get("target")), PROPS.name$MnvL);
     });
     if (!(canBeRenamed.value)) {
       JOptionPane.showMessageDialog(((Frame) MapSequence.fromMap(_params).get("frame")), "Nodes with getter and without setter for the \"name\" property can't be renamed", "Read-only property", JOptionPane.INFORMATION_MESSAGE);

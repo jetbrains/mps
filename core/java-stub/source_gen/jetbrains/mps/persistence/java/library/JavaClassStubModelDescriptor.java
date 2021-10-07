@@ -181,18 +181,16 @@ public class JavaClassStubModelDescriptor extends RegularModelDescriptor impleme
       // XXX same code is in EitableSModelBase, could I refactor to avoid that?
       return;
     }
-    repo.getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        if (getSource().getPaths().isEmpty()) {
-          SModule module = getModule();
-          if (module instanceof SModuleBase) {
-            ((SModuleBase) module).unregisterModel(JavaClassStubModelDescriptor.this);
-          }
-          return;
+    repo.getModelAccess().runWriteAction(() -> {
+      if (getSource().getPaths().isEmpty()) {
+        SModule module = getModule();
+        if (module instanceof SModuleBase) {
+          ((SModuleBase) module).unregisterModel(JavaClassStubModelDescriptor.this);
         }
-        reload();
-        myTimestampTracker.updateTimestamp(getSource());
+        return;
       }
+      reload();
+      myTimestampTracker.updateTimestamp(getSource());
     });
   }
 

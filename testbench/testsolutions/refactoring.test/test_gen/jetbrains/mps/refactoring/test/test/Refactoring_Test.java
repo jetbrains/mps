@@ -60,109 +60,97 @@ public class Refactoring_Test extends AbstractRefactoringTest {
   @Test
   public void test_moveConceptOptions() throws Exception {
     doMake(project.getProjectModulesWithGenerators(), true);
-    runCommand(new Runnable() {
-      public void run() {
-        SModel targetModel = SModuleOperations.getAspect(myTargetLanguage, "structure");
-        Assert.assertNotNull(targetModel);
-        List<SNode> nodesToMove = ListSequence.fromListAndArray(new ArrayList<SNode>(), SPointerOperations.resolveNode(new SNodePointer("r:3a85a332-d9ac-4332-b817-0bc70c21b404(SourceLanguage.structure)", "3334961109014792701"), project.getRepository()));
-        Assert.assertFalse(ListSequence.fromList(nodesToMove).contains(null));
+    runCommand(() -> {
+      SModel targetModel = SModuleOperations.getAspect(myTargetLanguage, "structure");
+      Assert.assertNotNull(targetModel);
+      List<SNode> nodesToMove = ListSequence.fromListAndArray(new ArrayList<SNode>(), SPointerOperations.resolveNode(new SNodePointer("r:3a85a332-d9ac-4332-b817-0bc70c21b404(SourceLanguage.structure)", "3334961109014792701"), project.getRepository()));
+      Assert.assertFalse(ListSequence.fromList(nodesToMove).contains(null));
 
-        List<RefactoringParticipant.Option> expectedOptions = ListSequence.fromList(new ArrayList<RefactoringParticipant.Option>());
+      List<RefactoringParticipant.Option> expectedOptions = ListSequence.fromList(new ArrayList<RefactoringParticipant.Option>());
 
-        ListSequence.fromList(expectedOptions).addElement(UpdateModelImports.OPTION);
-        ListSequence.fromList(expectedOptions).addElement(UpdateReferencesParticipantBase.UpdateReferencesParticipant.OPTION);
+      ListSequence.fromList(expectedOptions).addElement(UpdateModelImports.OPTION);
+      ListSequence.fromList(expectedOptions).addElement(UpdateReferencesParticipantBase.UpdateReferencesParticipant.OPTION);
 
-        ListSequence.fromList(expectedOptions).addElement(WriteSubconceptMigrationParticipant.OPTION);
-        ListSequence.fromList(expectedOptions).addElement(MoveAspectsParticipant.OPTION);
-        ListSequence.fromList(expectedOptions).addElement(UpdateLocalInstancesParticipant.OPTION);
+      ListSequence.fromList(expectedOptions).addElement(WriteSubconceptMigrationParticipant.OPTION);
+      ListSequence.fromList(expectedOptions).addElement(MoveAspectsParticipant.OPTION);
+      ListSequence.fromList(expectedOptions).addElement(UpdateLocalInstancesParticipant.OPTION);
 
-        ListSequence.fromList(expectedOptions).addElement(LanguageStructureMigrationParticipant.OPTION);
-        ListSequence.fromList(expectedOptions).addElement(MoveNodeRefactoringLogParticipant.OPTION);
+      ListSequence.fromList(expectedOptions).addElement(LanguageStructureMigrationParticipant.OPTION);
+      ListSequence.fromList(expectedOptions).addElement(MoveNodeRefactoringLogParticipant.OPTION);
 
-        MoveNodesUtil.moveTo(project, "", MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project)).withValues(nodesToMove), new HeadlessRefactoringUI.OptionsChecker(expectedOptions));
-      }
+      MoveNodesUtil.moveTo(project, "", MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project)).withValues(nodesToMove), new HeadlessRefactoringUI.OptionsChecker(expectedOptions));
     });
   }
   @Test
   public void test_moveClassOptions() throws Exception {
-    runCommand(new Runnable() {
-      public void run() {
-        SModel targetModel = SModuleOperations.getAspect(myTargetLanguage, "behavior");
-        Assert.assertNotNull(targetModel);
-        List<SNode> nodesToMove = ListSequence.fromListAndArray(new ArrayList<SNode>(), SPointerOperations.resolveNode(new SNodePointer("r:4e3bafe1-1c8c-4aa2-ba02-dfb8dad32daa(SourceLanguage.behavior)", "6426415869175149441"), project.getRepository()));
-        Assert.assertFalse(ListSequence.fromList(nodesToMove).contains(null));
+    runCommand(() -> {
+      SModel targetModel = SModuleOperations.getAspect(myTargetLanguage, "behavior");
+      Assert.assertNotNull(targetModel);
+      List<SNode> nodesToMove = ListSequence.fromListAndArray(new ArrayList<SNode>(), SPointerOperations.resolveNode(new SNodePointer("r:4e3bafe1-1c8c-4aa2-ba02-dfb8dad32daa(SourceLanguage.behavior)", "6426415869175149441"), project.getRepository()));
+      Assert.assertFalse(ListSequence.fromList(nodesToMove).contains(null));
 
-        List<RefactoringParticipant.Option> expectedOptions = ListSequence.fromList(new ArrayList<RefactoringParticipant.Option>());
+      List<RefactoringParticipant.Option> expectedOptions = ListSequence.fromList(new ArrayList<RefactoringParticipant.Option>());
 
-        ListSequence.fromList(expectedOptions).addElement(UpdateModelImports.OPTION);
-        ListSequence.fromList(expectedOptions).addElement(UpdateReferencesParticipantBase.UpdateReferencesParticipant.OPTION);
+      ListSequence.fromList(expectedOptions).addElement(UpdateModelImports.OPTION);
+      ListSequence.fromList(expectedOptions).addElement(UpdateReferencesParticipantBase.UpdateReferencesParticipant.OPTION);
 
-        ListSequence.fromList(expectedOptions).addElement(MoveNodeRefactoringLogParticipant.OPTION);
+      ListSequence.fromList(expectedOptions).addElement(MoveNodeRefactoringLogParticipant.OPTION);
 
-        MoveNodesUtil.moveTo(project, "", MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project)).withValues(nodesToMove), new HeadlessRefactoringUI.OptionsChecker(expectedOptions));
-      }
+      MoveNodesUtil.moveTo(project, "", MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project)).withValues(nodesToMove), new HeadlessRefactoringUI.OptionsChecker(expectedOptions));
     });
   }
   @Test
   public void test_moveClassUpdateReferences() throws Exception {
-    runCommand(new Runnable() {
-      public void run() {
-        SModel targetModel = SModuleOperations.getAspect(myTargetLanguage, "constraints");
-        Assert.assertNotNull(targetModel);
-        List<SNode> nodesToMove = ListSequence.fromListAndArray(new ArrayList<SNode>(), SPointerOperations.resolveNode(new SNodePointer("r:bd146201-753a-4f62-9de3-080d0101373f(SourceLanguage.constraints)", "3794080752246611243"), project.getRepository()));
-        Assert.assertFalse(ListSequence.fromList(nodesToMove).contains(null));
+    runCommand(() -> {
+      SModel targetModel = SModuleOperations.getAspect(myTargetLanguage, "constraints");
+      Assert.assertNotNull(targetModel);
+      List<SNode> nodesToMove = ListSequence.fromListAndArray(new ArrayList<SNode>(), SPointerOperations.resolveNode(new SNodePointer("r:bd146201-753a-4f62-9de3-080d0101373f(SourceLanguage.constraints)", "3794080752246611243"), project.getRepository()));
+      Assert.assertFalse(ListSequence.fromList(nodesToMove).contains(null));
 
-        List<RefactoringParticipant.Option> options = ListSequence.fromListAndArray(new ArrayList<RefactoringParticipant.Option>(), UpdateReferencesParticipantBase.UpdateReferencesParticipant.OPTION);
+      List<RefactoringParticipant.Option> options = ListSequence.fromListAndArray(new ArrayList<RefactoringParticipant.Option>(), UpdateReferencesParticipantBase.UpdateReferencesParticipant.OPTION);
 
-        MoveNodesUtil.moveTo(project, "", MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project)).withValues(nodesToMove), new HeadlessRefactoringUI(options));
-      }
+      MoveNodesUtil.moveTo(project, "", MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project)).withValues(nodesToMove), new HeadlessRefactoringUI(options));
     });
 
     // not really needed, but still let's end the transaction before checking
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        Collection<ReportItem> sourceErrors = getErrors(SModelOperations.roots(SModuleOperations.getAspect(mySourceLanguage, "constraints"), null));
-        Assert.assertTrue("" + sourceErrors, CollectionSequence.fromCollection(sourceErrors).isEmpty());
-        Collection<ReportItem> targetErrors = getErrors(SModelOperations.roots(SModuleOperations.getAspect(myTargetLanguage, "constraints"), null));
-        Assert.assertTrue("" + targetErrors, CollectionSequence.fromCollection(targetErrors).isEmpty());
-      }
+    project.getRepository().getModelAccess().runReadAction(() -> {
+      Collection<ReportItem> sourceErrors = getErrors(SModelOperations.roots(SModuleOperations.getAspect(mySourceLanguage, "constraints"), null));
+      Assert.assertTrue("" + sourceErrors, CollectionSequence.fromCollection(sourceErrors).isEmpty());
+      Collection<ReportItem> targetErrors = getErrors(SModelOperations.roots(SModuleOperations.getAspect(myTargetLanguage, "constraints"), null));
+      Assert.assertTrue("" + targetErrors, CollectionSequence.fromCollection(targetErrors).isEmpty());
     });
   }
   @Test
   public void test_moveClassWithoutParticipants() throws Exception {
-    runCommand(new Runnable() {
-      public void run() {
-        SModel targetModel = SModuleOperations.getAspect(myTargetLanguage, "editor");
-        Assert.assertNotNull(targetModel);
-        List<SNode> nodesToMove = ListSequence.fromListAndArray(new ArrayList<SNode>(), SPointerOperations.resolveNode(new SNodePointer("r:44a0ff4c-6d4a-40cf-bc8a-75a422b1094a(SourceLanguage.editor)", "3794080752246611044"), project.getRepository()));
-        Assert.assertFalse(ListSequence.fromList(nodesToMove).contains(null));
+    runCommand(() -> {
+      SModel targetModel = SModuleOperations.getAspect(myTargetLanguage, "editor");
+      Assert.assertNotNull(targetModel);
+      List<SNode> nodesToMove = ListSequence.fromListAndArray(new ArrayList<SNode>(), SPointerOperations.resolveNode(new SNodePointer("r:44a0ff4c-6d4a-40cf-bc8a-75a422b1094a(SourceLanguage.editor)", "3794080752246611044"), project.getRepository()));
+      Assert.assertFalse(ListSequence.fromList(nodesToMove).contains(null));
 
-        List<RefactoringParticipant.Option> options = ListSequence.fromList(new ArrayList<RefactoringParticipant.Option>());
+      List<RefactoringParticipant.Option> options = ListSequence.fromList(new ArrayList<RefactoringParticipant.Option>());
 
-        MoveNodesUtil.moveTo(project, "", MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project)).withValues(nodesToMove), new HeadlessRefactoringUI(options));
-      }
+      MoveNodesUtil.moveTo(project, "", MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel), project)).withValues(nodesToMove), new HeadlessRefactoringUI(options));
     });
 
     // !!! a separate read action is needed as otherwise we'll not see broken refs due to UnregisteredNodes
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        Assert.assertTrue(CollectionSequence.fromCollection(getErrors(SModelOperations.roots(SModuleOperations.getAspect(myTargetLanguage, "editor"), null))).isEmpty());
-        Collection<ReportItem> sourceModelErrors = getErrors(SModelOperations.roots(SModuleOperations.getAspect(mySourceLanguage, "editor"), null));
-        Assert.assertTrue(CollectionSequence.fromCollection(sourceModelErrors).all(new IWhereFilter<ReportItem>() {
-          public boolean accept(ReportItem it) {
-            return it instanceof UnresolvedReferenceReportItem;
-          }
-        }));
-        SNode classNode = SPointerOperations.resolveNode(new SNodePointer("r:44a0ff4c-6d4a-40cf-bc8a-75a422b1094a(SourceLanguage.editor)", "6426415869175194521"), project.getRepository());
-        SNode varDeclNode = SPointerOperations.resolveNode(new SNodePointer("r:44a0ff4c-6d4a-40cf-bc8a-75a422b1094a(SourceLanguage.editor)", "3794080752246627979"), project.getRepository());
-        Set<SReference> expectedBrokenReferences = SetSequence.fromSetAndArray(new HashSet<SReference>(), SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(varDeclNode, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(varDeclNode, LINKS.initializer$2twD), CONCEPTS.GenericNewExpression$Fh), LINKS.creator$BsHW), CONCEPTS.DefaultClassCreator$TC), LINKS.classifier$9NRM), SNodeOperations.getReference(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.staticInitializers_id2I6sE$IuBP7.invoke(classNode)).first(), LINKS.statementList$_Gji), LINKS.statement$53DE), CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu)).first(), LINKS.baseMethodDeclaration$pyYw));
-        Assert.assertFalse(SetSequence.fromSet(expectedBrokenReferences).contains(null));
-        Assert.assertEquals(expectedBrokenReferences, SetSequence.fromSetWithValues(new HashSet<SReference>(), CollectionSequence.fromCollection(sourceModelErrors).ofType(UnresolvedReferenceReportItem.class).select(new ISelector<UnresolvedReferenceReportItem, SReference>() {
-          public SReference select(UnresolvedReferenceReportItem it) {
-            return it.getNode().resolve(project.getRepository()).getReference(it.getConceptFeature());
-          }
-        })));
-      }
+    project.getRepository().getModelAccess().runReadAction(() -> {
+      Assert.assertTrue(CollectionSequence.fromCollection(getErrors(SModelOperations.roots(SModuleOperations.getAspect(myTargetLanguage, "editor"), null))).isEmpty());
+      Collection<ReportItem> sourceModelErrors = getErrors(SModelOperations.roots(SModuleOperations.getAspect(mySourceLanguage, "editor"), null));
+      Assert.assertTrue(CollectionSequence.fromCollection(sourceModelErrors).all(new IWhereFilter<ReportItem>() {
+        public boolean accept(ReportItem it) {
+          return it instanceof UnresolvedReferenceReportItem;
+        }
+      }));
+      SNode classNode = SPointerOperations.resolveNode(new SNodePointer("r:44a0ff4c-6d4a-40cf-bc8a-75a422b1094a(SourceLanguage.editor)", "6426415869175194521"), project.getRepository());
+      SNode varDeclNode = SPointerOperations.resolveNode(new SNodePointer("r:44a0ff4c-6d4a-40cf-bc8a-75a422b1094a(SourceLanguage.editor)", "3794080752246627979"), project.getRepository());
+      Set<SReference> expectedBrokenReferences = SetSequence.fromSetAndArray(new HashSet<SReference>(), SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(varDeclNode, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), SNodeOperations.getReference(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(varDeclNode, LINKS.initializer$2twD), CONCEPTS.GenericNewExpression$Fh), LINKS.creator$BsHW), CONCEPTS.DefaultClassCreator$TC), LINKS.classifier$9NRM), SNodeOperations.getReference(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(Sequence.fromIterable(ClassConcept__BehaviorDescriptor.staticInitializers_id2I6sE$IuBP7.invoke(classNode)).first(), LINKS.statementList$_Gji), LINKS.statement$53DE), CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.InstanceMethodCallOperation$uu)).first(), LINKS.baseMethodDeclaration$pyYw));
+      Assert.assertFalse(SetSequence.fromSet(expectedBrokenReferences).contains(null));
+      Assert.assertEquals(expectedBrokenReferences, SetSequence.fromSetWithValues(new HashSet<SReference>(), CollectionSequence.fromCollection(sourceModelErrors).ofType(UnresolvedReferenceReportItem.class).select(new ISelector<UnresolvedReferenceReportItem, SReference>() {
+        public SReference select(UnresolvedReferenceReportItem it) {
+          return it.getNode().resolve(project.getRepository()).getReference(it.getConceptFeature());
+        }
+      })));
     });
   }
 
@@ -184,20 +172,14 @@ public class Refactoring_Test extends AbstractRefactoringTest {
 
   public void runCommand(final Runnable runnable) {
     final Reference<Throwable> ref = new Reference();
-    ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      public void run() {
-        project.getModelAccess().executeCommand(new Runnable() {
-          public void run() {
-            try {
-              runnable.run();
-            } catch (Throwable t) {
-              ref.set(t);
-            }
-
-          }
-        });
+    ThreadUtils.runInUIThreadAndWait(() -> project.getModelAccess().executeCommand(() -> {
+      try {
+        runnable.run();
+      } catch (Throwable t) {
+        ref.set(t);
       }
-    });
+
+    }));
     if (!(ref.isNull())) {
       throw new RuntimeException(ref.get());
     }
@@ -206,11 +188,9 @@ public class Refactoring_Test extends AbstractRefactoringTest {
   public void setUp() throws Exception {
     // XXX can't use beforeTest as it doesn't call super.setUp()!
     super.setUp();
-    project.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        myTargetLanguage = PersistenceFacade.getInstance().createModuleReference("bf13acef-3fb7-4e3b-882a-bc94b7e487b3(TargetLanguage)").resolve(project.getRepository());
-        mySourceLanguage = PersistenceFacade.getInstance().createModuleReference("0e4cf406-fc7e-4ee7-a6f3-93f8c8dbdc64(SourceLanguage)").resolve(project.getRepository());
-      }
+    project.getModelAccess().runReadAction(() -> {
+      myTargetLanguage = PersistenceFacade.getInstance().createModuleReference("bf13acef-3fb7-4e3b-882a-bc94b7e487b3(TargetLanguage)").resolve(project.getRepository());
+      mySourceLanguage = PersistenceFacade.getInstance().createModuleReference("0e4cf406-fc7e-4ee7-a6f3-93f8c8dbdc64(SourceLanguage)").resolve(project.getRepository());
     });
   }
 

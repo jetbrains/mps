@@ -107,63 +107,61 @@ public class ConvertToFilePerRootPersistence_Action extends BaseAction {
 
 
     final ModelFactoryService modelFactoryService = mpsProject.getComponent(ModelFactoryService.class);
-    repo.getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        // see MPS-18743
-        repo.saveAll();
-        for (SModel smodel : Sequence.fromIterable(seq)) {
-          IFile oldFile = ((FileDataSource) smodel.getSource()).getFile();
-          ModelRoot modelRoot = smodel.getModelRoot();
-          if (!(modelRoot instanceof FileBasedModelRoot)) {
-            continue;
-          }
+    repo.getModelAccess().runWriteAction(() -> {
+      // see MPS-18743
+      repo.saveAll();
+      for (SModel smodel : Sequence.fromIterable(seq)) {
+        IFile oldFile = ((FileDataSource) smodel.getSource()).getFile();
+        ModelRoot modelRoot = smodel.getModelRoot();
+        if (!(modelRoot instanceof FileBasedModelRoot)) {
+          continue;
+        }
 
-          SModel newModel = PersistenceUtil.loadModel(smodel.getSource(), modelFactoryService);
-          if (newModel == null) {
-            if (LOG.isEnabledFor(Level.ERROR)) {
-              LOG.error("cannot read " + smodel);
-            }
-            continue;
+        SModel newModel = PersistenceUtil.loadModel(smodel.getSource(), modelFactoryService);
+        if (newModel == null) {
+          if (LOG.isEnabledFor(Level.ERROR)) {
+            LOG.error("cannot read " + smodel);
           }
+          continue;
+        }
 
-          Iterable<SModel.Problem> problems = Sequence.fromIterable(((Iterable<SModel.Problem>) newModel.getProblems())).where(new IWhereFilter<SModel.Problem>() {
-            public boolean accept(SModel.Problem it) {
-              return it.isError();
-            }
-          });
-          if (Sequence.fromIterable(problems).isNotEmpty()) {
-            if (LOG.isEnabledFor(Level.ERROR)) {
-              LOG.error("cannot read " + smodel + ": " + Sequence.fromIterable(problems).first().getText());
-            }
-            continue;
+        Iterable<SModel.Problem> problems = Sequence.fromIterable(((Iterable<SModel.Problem>) newModel.getProblems())).where(new IWhereFilter<SModel.Problem>() {
+          public boolean accept(SModel.Problem it) {
+            return it.isError();
           }
+        });
+        if (Sequence.fromIterable(problems).isNotEmpty()) {
+          if (LOG.isEnabledFor(Level.ERROR)) {
+            LOG.error("cannot read " + smodel + ": " + Sequence.fromIterable(problems).first().getText());
+          }
+          continue;
+        }
 
-          try {
-            DataSource newDataSource = new DataSourceFactoryBridge((FileBasedModelRoot) modelRoot, mpsProject.getComponent(DataSourceFactoryRuleService.class)).createPerRootDataSource(newModel.getName(), null).getDataSource();
-            SModule module = smodel.getModule();
-            ModelFactory filePerRootFactory = modelFactoryService.getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
-            if (filePerRootFactory == null) {
-              throw new IOException("Could not find any per-root persistence model factory");
-            }
-            filePerRootFactory.save(newModel, newDataSource);
-            if (module != null) {
-              ((SModuleBase) module).unregisterModel((SModelBase) smodel);
-            }
-            oldFile.delete();
-            ((AbstractModule) module).updateModelsSet();
-          } catch (IOException ex) {
-            if (LOG.isEnabledFor(Level.ERROR)) {
-              LOG.error("cannot write " + smodel, ex);
-            }
-          } catch (ModelCannotBeCreatedException ex) {
-            if (LOG.isEnabledFor(Level.ERROR)) {
-              LOG.error("cannot write " + smodel, ex);
-            }
-          } catch (ModelSaveException ex) {
-            // shouldn't happen
-            if (LOG.isEnabledFor(Level.ERROR)) {
-              LOG.error("cannot write " + smodel, ex);
-            }
+        try {
+          DataSource newDataSource = new DataSourceFactoryBridge((FileBasedModelRoot) modelRoot, mpsProject.getComponent(DataSourceFactoryRuleService.class)).createPerRootDataSource(newModel.getName(), null).getDataSource();
+          SModule module = smodel.getModule();
+          ModelFactory filePerRootFactory = modelFactoryService.getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
+          if (filePerRootFactory == null) {
+            throw new IOException("Could not find any per-root persistence model factory");
+          }
+          filePerRootFactory.save(newModel, newDataSource);
+          if (module != null) {
+            ((SModuleBase) module).unregisterModel((SModelBase) smodel);
+          }
+          oldFile.delete();
+          ((AbstractModule) module).updateModelsSet();
+        } catch (IOException ex) {
+          if (LOG.isEnabledFor(Level.ERROR)) {
+            LOG.error("cannot write " + smodel, ex);
+          }
+        } catch (ModelCannotBeCreatedException ex) {
+          if (LOG.isEnabledFor(Level.ERROR)) {
+            LOG.error("cannot write " + smodel, ex);
+          }
+        } catch (ModelSaveException ex) {
+          // shouldn't happen
+          if (LOG.isEnabledFor(Level.ERROR)) {
+            LOG.error("cannot write " + smodel, ex);
           }
         }
       }

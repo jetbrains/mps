@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.Point;
 import javax.swing.SwingUtilities;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.nodeEditor.NodeInformationDialog;
 import com.intellij.openapi.application.ApplicationManager;
 
@@ -79,11 +78,7 @@ public class ShowNodeInfo_Action extends BaseAction {
     // Displaying this action in .invokeLater call to let popup menu be disposed first ( <node> will be disposed immediately by the corresponding events otherwise)
     final Frame frame = ((Frame) MapSequence.fromMap(_params).get("frame"));
     final SNode node = ((SNode) MapSequence.fromMap(_params).get("node"));
-    final String text = new ModelAccessHelper(((EditorComponent) MapSequence.fromMap(_params).get("editor")).getEditorContext().getRepository()).runReadAction(new Computable<String>() {
-      public String compute() {
-        return NodeInformationDialog.createNodeInfo(node);
-      }
-    });
+    final String text = new ModelAccessHelper(((EditorComponent) MapSequence.fromMap(_params).get("editor")).getEditorContext().getRepository()).runReadAction(() -> NodeInformationDialog.createNodeInfo(node));
     ApplicationManager.getApplication().invokeLater(new Runnable() {
       @Override
       public void run() {

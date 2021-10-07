@@ -127,11 +127,7 @@ public final class TripleChangeGroupLayout {
   }
 
   private DiffEditor.TooltipProvider createTooltipProvider(final DiffEditor diffEditor) {
-    return new DiffEditor.TooltipProvider() {
-      public String getTooltipText(MouseEvent mouseEvent) {
-        return diffEditor.getToolTipTextFromSelectedLayers(myIsInspector);
-      }
-    };
+    return (MouseEvent mouseEvent) -> diffEditor.getToolTipTextFromSelectedLayers(myIsInspector);
   }
 
   private void disposeEditor(DiffEditor diffEditor) {
@@ -332,15 +328,13 @@ public final class TripleChangeGroupLayout {
   }
 
   private ChangeGroupInvalidateListener createLayoutInvalidateListener() {
-    return new ChangeGroupInvalidateListener() {
-      public void changeGroupsInvalidated() {
-        myUpdateQueue.queue(new Update(myUpdateIdentity) {
-          public void run() {
-            updateChangeLayers();
-            repaintEditorMessagesAndSplitters();
-          }
-        });
-      }
+    return () -> {
+      myUpdateQueue.queue(new Update(myUpdateIdentity) {
+        public void run() {
+          updateChangeLayers();
+          repaintEditorMessagesAndSplitters();
+        }
+      });
     };
   }
 

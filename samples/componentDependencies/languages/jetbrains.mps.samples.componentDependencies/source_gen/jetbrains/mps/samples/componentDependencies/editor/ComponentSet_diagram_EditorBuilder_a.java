@@ -101,12 +101,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
     }
 
     protected SubstituteInfoPartExt[] createPaletteBlockSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Component$8s, LINKS.component$l$9M, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
-        public void invoke(SNode node, Integer x, Integer y) {
-          SPropertyOperations.assign(node, PROPS.name$MnvL, "New component");
-          SPropertyOperations.assign(node, PROPS.x$8CBf, x);
-          SPropertyOperations.assign(node, PROPS.y$8D5h, y);
-        }
+      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Component$8s, LINKS.component$l$9M, (SNode node, Integer x, Integer y) -> {
+        SPropertyOperations.assign(node, PROPS.name$MnvL, "New component");
+        SPropertyOperations.assign(node, PROPS.x$8CBf, x);
+        SPropertyOperations.assign(node, PROPS.y$8D5h, y);
       })};
     }
     protected SubstituteInfoPartExt[] createPaletteConnectorSubstituteInfoPartExts() {

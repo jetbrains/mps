@@ -50,20 +50,12 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
     //       EditorSeparator doesn't sound like a proper place to require some SRepository, and I wonder if we can make ModelChange to be 'weakly'
     //       tied to attached models or otherwise relax requirement to have model read for them.
     myRepoWithChanges = repoWithChanges;
-    ChangeListener viewportListener = new ChangeListener() {
-      public void stateChanged(ChangeEvent e) {
-        invalidateAndRepaint();
-      }
-    };
+    ChangeListener viewportListener = (ChangeEvent e) -> invalidateAndRepaint();
     getLeftViewport().addChangeListener(viewportListener);
     getRightViewport().addChangeListener(viewportListener);
     setMinimumSize(new Dimension(WIDTH, 1));
     setPreferredSize(new Dimension(WIDTH, 1));
-    myChangeGroupLayout.addInvalidateListener(new ChangeGroupInvalidateListener() {
-      public void changeGroupsInvalidated() {
-        invalidateAndRepaint();
-      }
-    });
+    myChangeGroupLayout.addInvalidateListener(() -> invalidateAndRepaint());
     // this allows com.intellij.ide.IdeTooltipManager#eventDispatched to get notification for events over this component and draw tool tip with text from getToolTipText method
     this.addMouseListener(this.myMouseAdapter);
   }
@@ -84,16 +76,14 @@ public class DiffEditorSeparator extends JComponent implements TooltipComponent 
       MapSequence.fromMap(myGroupsWithBounds).put(group, MultiTuple.<Bounds,Bounds>from(new Bounds(leftStart, leftEnd), new Bounds(rightStart, rightEnd)));
     }
 
-    myRepoWithChanges.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        myChangeGroupDescriptions = MapSequence.fromMap(new HashMap<ChangeGroup, String>());
-        for (ChangeGroup group : ListSequence.fromList(myChangeGroupLayout.getChangeGroups())) {
-          MapSequence.fromMap(myChangeGroupDescriptions).put(group, IterableUtils.join(ListSequence.fromList(group.getChanges()).select(new ISelector<ModelChange, String>() {
-            public String select(ModelChange ch) {
-              return ch.getDescription();
-            }
-          }), "\n\n"));
-        }
+    myRepoWithChanges.getModelAccess().runReadAction(() -> {
+      myChangeGroupDescriptions = MapSequence.fromMap(new HashMap<ChangeGroup, String>());
+      for (ChangeGroup group : ListSequence.fromList(myChangeGroupLayout.getChangeGroups())) {
+        MapSequence.fromMap(myChangeGroupDescriptions).put(group, IterableUtils.join(ListSequence.fromList(group.getChanges()).select(new ISelector<ModelChange, String>() {
+          public String select(ModelChange ch) {
+            return ch.getDescription();
+          }
+        }), "\n\n"));
       }
     });
   }

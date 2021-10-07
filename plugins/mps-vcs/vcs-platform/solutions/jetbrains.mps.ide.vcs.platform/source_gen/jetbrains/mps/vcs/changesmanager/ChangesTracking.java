@@ -144,11 +144,7 @@ public final class ChangesTracking {
       if (!(myDisposed)) {
         myDisposed = true;
         myRegistry.removeEventCollector(myModelDescriptor, myEventCollector);
-        myQueue.runTask(new Runnable() {
-          public void run() {
-            myDifference.removeChangeSet();
-          }
-        });
+        myQueue.runTask(() -> myDifference.removeChangeSet());
       }
     }
   }
@@ -192,34 +188,32 @@ public final class ChangesTracking {
     if (LOG.isTraceEnabled()) {
       LOG.trace("first read started");
     }
-    repo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        synchronized (LOCK) {
-          if (myDisposed) {
-            return;
-          }
-
-          boolean isConflict = ConflictsUtil.isModelOrModuleConflicting(myModelDescriptor, myProject);
-          FileStatus status = (isConflict ? FileStatus.MERGED_WITH_CONFLICTS : calcStatus());
-
-          FileStatus oldStatus = myStatusOnLastUpdate.get();
-          if (force || oldStatus != status) {
-            myStatusOnLastUpdate.set(status);
-            if (status == FileStatus.UNKNOWN || status == FileStatus.IGNORED) {
-              myDifference.removeChangeSet();
-            }
-            doTracking(isTracked());
-            myDifference.onModelStatusChanged(myModelDescriptor.getReference());
-          } else if (!(force) && oldStatus == status && status != null) {
-            return;
-          }
-
-          if (!(isTracked())) {
-            return;
-          }
-          useEmptyBaseModel.value = isAdded() || isConflict;
-          doNotContinue.value = false;
+    repo.getModelAccess().runReadAction(() -> {
+      synchronized (LOCK) {
+        if (myDisposed) {
+          return;
         }
+
+        boolean isConflict = ConflictsUtil.isModelOrModuleConflicting(myModelDescriptor, myProject);
+        FileStatus status = (isConflict ? FileStatus.MERGED_WITH_CONFLICTS : calcStatus());
+
+        FileStatus oldStatus = myStatusOnLastUpdate.get();
+        if (force || oldStatus != status) {
+          myStatusOnLastUpdate.set(status);
+          if (status == FileStatus.UNKNOWN || status == FileStatus.IGNORED) {
+            myDifference.removeChangeSet();
+          }
+          doTracking(isTracked());
+          myDifference.onModelStatusChanged(myModelDescriptor.getReference());
+        } else if (!(force) && oldStatus == status && status != null) {
+          return;
+        }
+
+        if (!(isTracked())) {
+          return;
+        }
+        useEmptyBaseModel.value = isAdded() || isConflict;
+        doNotContinue.value = false;
       }
     });
     if (LOG.isTraceEnabled()) {
@@ -255,32 +249,30 @@ public final class ChangesTracking {
     if (LOG.isTraceEnabled()) {
       LOG.trace("second read started");
     }
-    repo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        synchronized (LOCK) {
-          if (!(myDisposed)) {
-            DiffModelUtil.renameModel(baseVersionModel.value, "repository");
-            if (LOG.isTraceEnabled()) {
-              LOG.trace("change set is building");
-            }
-            ChangeSet changeSet = ChangeSetBuilder.buildChangeSet(baseVersionModel.value, myModelDescriptor, true);
-            if (LOG.isTraceEnabled()) {
-              LOG.trace("done building change set");
-            }
-            if (LOG.isTraceEnabled()) {
-              LOG.trace("setting change set");
-            }
-            myDifference.setChangeSet((ChangeSetImpl) changeSet);
-            if (LOG.isTraceEnabled()) {
-              LOG.trace("done setting change set");
-            }
-            if (LOG.isTraceEnabled()) {
-              LOG.trace("building caches");
-            }
-            buildCaches();
-            if (LOG.isTraceEnabled()) {
-              LOG.trace("done building caches");
-            }
+    repo.getModelAccess().runReadAction(() -> {
+      synchronized (LOCK) {
+        if (!(myDisposed)) {
+          DiffModelUtil.renameModel(baseVersionModel.value, "repository");
+          if (LOG.isTraceEnabled()) {
+            LOG.trace("change set is building");
+          }
+          ChangeSet changeSet = ChangeSetBuilder.buildChangeSet(baseVersionModel.value, myModelDescriptor, true);
+          if (LOG.isTraceEnabled()) {
+            LOG.trace("done building change set");
+          }
+          if (LOG.isTraceEnabled()) {
+            LOG.trace("setting change set");
+          }
+          myDifference.setChangeSet((ChangeSetImpl) changeSet);
+          if (LOG.isTraceEnabled()) {
+            LOG.trace("done setting change set");
+          }
+          if (LOG.isTraceEnabled()) {
+            LOG.trace("building caches");
+          }
+          buildCaches();
+          if (LOG.isTraceEnabled()) {
+            LOG.trace("done building caches");
           }
         }
       }
@@ -436,11 +428,7 @@ public final class ChangesTracking {
     SNode oldNode = getOldNode(nodeId);
     assert oldNode != null;
     for (SNode d : ListSequence.fromList(SNodeOperations.getNodeDescendants(oldNode, null, true, new SAbstractConcept[]{}))) {
-      removeChanges(d.getNodeId(), ModelChange.class, new _FunctionTypes._return_P1_E0<Boolean, ModelChange>() {
-        public Boolean invoke(ModelChange ch) {
-          return true;
-        }
-      });
+      removeChanges(d.getNodeId(), ModelChange.class, (ModelChange ch) -> true);
     }
   }
 
@@ -467,32 +455,28 @@ public final class ChangesTracking {
         return a.getNodeId();
       }
     }).toListSequence();
-    myQueue.runTask(new Runnable() {
-      public void run() {
-        if (myDifference.getChangeSet() == null) {
-          update(true);
+    myQueue.runTask(() -> {
+      if (myDifference.getChangeSet() == null) {
+        update(true);
+      } else {
+        if (ListSequence.fromList(ancestors).any(new IWhereFilter<SNodeId>() {
+          public boolean accept(SNodeId a) {
+            return myAddedNodesToChanges.containsKey(a);
+          }
+        })) {
+          // ignore
         } else {
-          if (ListSequence.fromList(ancestors).any(new IWhereFilter<SNodeId>() {
-            public boolean accept(SNodeId a) {
-              return myAddedNodesToChanges.containsKey(a);
-            }
-          })) {
-            // ignore
-          } else {
-            if (myEventConsumingMapping.removeEvent(event)) {
-              myDifference.getBroadcaster().changeUpdateStarted();
-              MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
-              mpsProject.getModelAccess().runReadAction(new Runnable() {
-                public void run() {
-                  synchronized (LOCK) {
-                    if (!(myDisposed)) {
-                      task.invoke();
-                    }
-                  }
+          if (myEventConsumingMapping.removeEvent(event)) {
+            myDifference.getBroadcaster().changeUpdateStarted();
+            MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
+            mpsProject.getModelAccess().runReadAction(() -> {
+              synchronized (LOCK) {
+                if (!(myDisposed)) {
+                  task.invoke();
                 }
-              });
-              myDifference.getBroadcaster().changeUpdateFinished();
-            }
+              }
+            });
+            myDifference.getBroadcaster().changeUpdateFinished();
           }
         }
       }
@@ -583,29 +567,19 @@ public final class ChangesTracking {
       // get more info for debugging
       assert node.getModel().getNode(nodeId) != null : "cannot find node " + nodeId + " in model " + node.getModel();
 
-      runUpdateTask(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          removeChanges(nodeId, SetPropertyChange.class, new _FunctionTypes._return_P1_E0<Boolean, SetPropertyChange>() {
-            public Boolean invoke(SetPropertyChange ch) {
-              return ch.isAbout(property);
-            }
-          });
-          final SNode oldNode = getOldNode(nodeId);
-          if (oldNode == null) {
-            // something unpredictable happened
-            // we can not compare properties of non-existing node.
-            String warning = "Property change event cannot be processed for the deleted node: " + node.getPresentation();
-            if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn(warning);
-            }
-            return;
+      runUpdateTask(() -> {
+        removeChanges(nodeId, SetPropertyChange.class, (SetPropertyChange ch) -> ch.isAbout(property));
+        final SNode oldNode = getOldNode(nodeId);
+        if (oldNode == null) {
+          // something unpredictable happened
+          // we can not compare properties of non-existing node.
+          String warning = "Property change event cannot be processed for the deleted node: " + node.getPresentation();
+          if (LOG.isEnabledFor(Level.WARN)) {
+            LOG.warn(warning);
           }
-          buildAndAddChanges(new _FunctionTypes._void_P1_E0<ChangeSetBuilder>() {
-            public void invoke(ChangeSetBuilder b) {
-              b.buildForProperty(oldNode, node, property);
-            }
-          });
+          return;
         }
+        buildAndAddChanges((ChangeSetBuilder b) -> b.buildForProperty(oldNode, node, property));
       }, node, event);
     }
 
@@ -623,29 +597,19 @@ public final class ChangesTracking {
       }
       final SNodeId nodeId = sourceNode.getNodeId();
       final SReferenceLink role = ref.getLink();
-      runUpdateTask(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          removeChanges(nodeId, SetReferenceChange.class, new _FunctionTypes._return_P1_E0<Boolean, SetReferenceChange>() {
-            public Boolean invoke(SetReferenceChange ch) {
-              return ch.isAbout(role);
-            }
-          });
-          final SNode oldNode = getOldNode(nodeId);
-          if (oldNode == null) {
-            // something unpredictable happened
-            // we can not compare references of non-existing node.
-            String warning = "Reference change event cannot be processed for the deleted node: " + sourceNode.getPresentation();
-            if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn(warning);
-            }
-            return;
+      runUpdateTask(() -> {
+        removeChanges(nodeId, SetReferenceChange.class, (SetReferenceChange ch) -> ch.isAbout(role));
+        final SNode oldNode = getOldNode(nodeId);
+        if (oldNode == null) {
+          // something unpredictable happened
+          // we can not compare references of non-existing node.
+          String warning = "Reference change event cannot be processed for the deleted node: " + sourceNode.getPresentation();
+          if (LOG.isEnabledFor(Level.WARN)) {
+            LOG.warn(warning);
           }
-          buildAndAddChanges(new _FunctionTypes._void_P1_E0<ChangeSetBuilder>() {
-            public void invoke(ChangeSetBuilder b) {
-              b.buildForReference(oldNode, sourceNode, role);
-            }
-          });
+          return;
         }
+        buildAndAddChanges((ChangeSetBuilder b) -> b.buildForReference(oldNode, sourceNode, role));
       }, event.getReference().getSourceNode(), event);
     }
 
@@ -677,33 +641,21 @@ public final class ChangesTracking {
           return CopyUtil.copyAndPreserveId(n, false);
         }
       }).toListSequence();
-      runUpdateTask(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          removeChanges(parentId, NodeGroupChange.class, new _FunctionTypes._return_P1_E0<Boolean, NodeGroupChange>() {
-            public Boolean invoke(NodeGroupChange ch) {
-              return ch.isAbout(childRole);
-            }
-          });
-          removeChanges(parentId, NodeIdChange.class, new _FunctionTypes._return_P1_E0<Boolean, NodeIdChange>() {
-            public Boolean invoke(NodeIdChange ch) {
-              return ch.isAbout(childRole);
-            }
-          });
-          removeDescendantChanges(parentId, childRole);
-          myLastParentAndNewChildrenIds = MultiTuple.<SNodeId,List<SNodeId>>from(parentId, Sequence.fromIterable(childrenRightAfterEvent.value).select(new ISelector<SNode, SNodeId>() {
-            public SNodeId select(SNode n) {
-              return n.getNodeId();
-            }
-          }).toListSequence());
-          buildAndAddChanges(new _FunctionTypes._void_P1_E0<ChangeSetBuilder>() {
-            public void invoke(ChangeSetBuilder b) {
-              SNode oldParentNode = getOldNode(parentId);
-              if (oldParentNode != null) {
-                b.buildForNodeRole(IterableUtil.asList(AttributeOperations.getChildNodesAndAttributes(oldParentNode, childRole)), IterableUtil.asList(childrenRightAfterEvent.value), parentId, parentId, childRole);
-              }
-            }
-          });
-        }
+      runUpdateTask(() -> {
+        removeChanges(parentId, NodeGroupChange.class, (NodeGroupChange ch) -> ch.isAbout(childRole));
+        removeChanges(parentId, NodeIdChange.class, (NodeIdChange ch) -> ch.isAbout(childRole));
+        removeDescendantChanges(parentId, childRole);
+        myLastParentAndNewChildrenIds = MultiTuple.<SNodeId,List<SNodeId>>from(parentId, Sequence.fromIterable(childrenRightAfterEvent.value).select(new ISelector<SNode, SNodeId>() {
+          public SNodeId select(SNode n) {
+            return n.getNodeId();
+          }
+        }).toListSequence());
+        buildAndAddChanges((ChangeSetBuilder b) -> {
+          SNode oldParentNode = getOldNode(parentId);
+          if (oldParentNode != null) {
+            b.buildForNodeRole(IterableUtil.asList(AttributeOperations.getChildNodesAndAttributes(oldParentNode, childRole)), IterableUtil.asList(childrenRightAfterEvent.value), parentId, parentId, childRole);
+          }
+        });
       }, parent, event);
     }
 
@@ -723,33 +675,15 @@ public final class ChangesTracking {
           return;
         }
       }
-      runUpdateTask(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          if (added) {
-            removeChanges(rootId, DeleteRootChange.class, new _FunctionTypes._return_P1_E0<Boolean, DeleteRootChange>() {
-              public Boolean invoke(DeleteRootChange ch) {
-                return true;
-              }
-            });
-            buildAndAddChanges(new _FunctionTypes._void_P1_E0<ChangeSetBuilder>() {
-              public void invoke(ChangeSetBuilder b) {
-                b.buildForNode(getOldNode(rootId), event.getRoot());
-              }
-            });
-          } else {
-            if (removeChanges(rootId, AddRootChange.class, new _FunctionTypes._return_P1_E0<Boolean, AddRootChange>() {
-              public Boolean invoke(AddRootChange ch) {
-                return true;
-              }
-            }) == 0) {
-              // root was not added
-              removeDescendantChanges(rootId);
-              buildAndAddChanges(new _FunctionTypes._void_P1_E0<ChangeSetBuilder>() {
-                public void invoke(ChangeSetBuilder b) {
-                  b.buildForNode(getOldNode(rootId), null);
-                }
-              });
-            }
+      runUpdateTask(() -> {
+        if (added) {
+          removeChanges(rootId, DeleteRootChange.class, (DeleteRootChange ch) -> true);
+          buildAndAddChanges((ChangeSetBuilder b) -> b.buildForNode(getOldNode(rootId), event.getRoot()));
+        } else {
+          if (removeChanges(rootId, AddRootChange.class, (AddRootChange ch) -> true) == 0) {
+            // root was not added
+            removeDescendantChanges(rootId);
+            buildAndAddChanges((ChangeSetBuilder b) -> b.buildForNode(getOldNode(rootId), null));
           }
         }
       }, null, event);
@@ -760,18 +694,12 @@ public final class ChangesTracking {
       final SLanguage eventLang = event.getEventLanguage();
       final SModelInternal model = as_5iuzi5_a0a1a31kc(event.getModel(), SModelInternal.class);
       final boolean deleted = !(event.isAdded());
-      runUpdateTask(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          // XXX I have no idea why we skip adding a change object if we successfully removed one or more queued earlier.
-          //  just kept it the way it is in #moduleDependencyEvent
-          if (removeChanges(null, UsedLanguageChange.class, new _FunctionTypes._return_P1_E0<Boolean, UsedLanguageChange>() {
-            public Boolean invoke(UsedLanguageChange ulc) {
-              return eventLang.equals(ulc.getLanguage());
-            }
-          }) == 0) {
-            int version = model.getLanguageImportVersion(eventLang);
-            addChange(new UsedLanguageChange(myDifference.getChangeSet(), eventLang, version, (deleted ? ChangeType.DELETE : ChangeType.ADD)));
-          }
+      runUpdateTask(() -> {
+        // XXX I have no idea why we skip adding a change object if we successfully removed one or more queued earlier.
+        //  just kept it the way it is in #moduleDependencyEvent
+        if (removeChanges(null, UsedLanguageChange.class, (UsedLanguageChange ulc) -> eventLang.equals(ulc.getLanguage())) == 0) {
+          int version = model.getLanguageImportVersion(eventLang);
+          addChange(new UsedLanguageChange(myDifference.getChangeSet(), eventLang, version, (deleted ? ChangeType.DELETE : ChangeType.ADD)));
         }
       }, null, event);
     }
@@ -782,15 +710,9 @@ public final class ChangesTracking {
     }
 
     private void moduleDependencyEvent(SModelEvent event, final SModuleReference moduleRef, final ModuleDependencyChange.DependencyType type, final boolean added) {
-      runUpdateTask(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          if (removeChanges(null, ModuleDependencyChange.class, new _FunctionTypes._return_P1_E0<Boolean, ModuleDependencyChange>() {
-            public Boolean invoke(ModuleDependencyChange mdc) {
-              return type == mdc.getDependencyType() && moduleRef.equals(mdc.getModuleReference());
-            }
-          }) == 0) {
-            addChange(new ModuleDependencyChange(myDifference.getChangeSet(), moduleRef, type, !(added)));
-          }
+      runUpdateTask(() -> {
+        if (removeChanges(null, ModuleDependencyChange.class, (ModuleDependencyChange mdc) -> type == mdc.getDependencyType() && moduleRef.equals(mdc.getModuleReference())) == 0) {
+          addChange(new ModuleDependencyChange(myDifference.getChangeSet(), moduleRef, type, !(added)));
         }
       }, null, event);
     }
@@ -798,15 +720,9 @@ public final class ChangesTracking {
     @Override
     public void visitImportEvent(final SModelImportEvent event) {
       final SModelReference modelRef = event.getModelUID();
-      runUpdateTask(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          if (removeChanges(null, ImportedModelChange.class, new _FunctionTypes._return_P1_E0<Boolean, ImportedModelChange>() {
-            public Boolean invoke(ImportedModelChange imc) {
-              return modelRef.equals(imc.getModelReference());
-            }
-          }) == 0) {
-            addChange(new ImportedModelChange(myDifference.getChangeSet(), modelRef, !(event.isAdded())));
-          }
+      runUpdateTask(() -> {
+        if (removeChanges(null, ImportedModelChange.class, (ImportedModelChange imc) -> modelRef.equals(imc.getModelReference())) == 0) {
+          addChange(new ImportedModelChange(myDifference.getChangeSet(), modelRef, !(event.isAdded())));
         }
       }, null, event);
     }

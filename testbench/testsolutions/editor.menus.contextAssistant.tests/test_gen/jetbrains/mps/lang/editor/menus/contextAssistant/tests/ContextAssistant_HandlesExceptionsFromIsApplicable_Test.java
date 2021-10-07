@@ -39,18 +39,14 @@ public class ContextAssistant_HandlesExceptionsFromIsApplicable_Test extends Bas
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("7140355682307235746", "");
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          final EditorContext editorContext = getEditorComponent().getEditorContext();
-          editorContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
-              contextAssistantManager.updateImmediately();
-              Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
-              Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
-            }
-          });
-        }
+      SwingUtilities.invokeAndWait(() -> {
+        final EditorContext editorContext = getEditorComponent().getEditorContext();
+        editorContext.getRepository().getModelAccess().runReadAction(() -> {
+          ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
+          contextAssistantManager.updateImmediately();
+          Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
+          Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
+        });
       });
     }
 

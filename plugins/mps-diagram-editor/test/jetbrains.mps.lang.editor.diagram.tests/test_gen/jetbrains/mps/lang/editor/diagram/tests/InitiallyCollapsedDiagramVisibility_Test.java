@@ -38,13 +38,11 @@ public class InitiallyCollapsedDiagramVisibility_Test extends BaseTransformation
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("1658153848510799095", "");
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          Set<EditorCell_WithComponent> componentCells = getEditorComponent().getCellTracker().getComponentCells();
-          Assert.assertFalse(componentCells.isEmpty());
-          for (EditorCell_WithComponent cell : SetSequence.fromSet(componentCells)) {
-            Assert.assertFalse(cell.getComponent().isVisible());
-          }
+      SwingUtilities.invokeAndWait(() -> {
+        Set<EditorCell_WithComponent> componentCells = getEditorComponent().getCellTracker().getComponentCells();
+        Assert.assertFalse(componentCells.isEmpty());
+        for (EditorCell_WithComponent cell : SetSequence.fromSet(componentCells)) {
+          Assert.assertFalse(cell.getComponent().isVisible());
         }
       });
 

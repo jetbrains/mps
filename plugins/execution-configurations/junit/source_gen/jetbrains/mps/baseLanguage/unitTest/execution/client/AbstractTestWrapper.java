@@ -12,7 +12,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.Nullable;
 import java.util.function.Function;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.unitTest.execution.server.WithPlatformTestExecutor;
@@ -63,11 +62,9 @@ public abstract class AbstractTestWrapper<N extends SNode> implements ITestNodeW
   }
 
   protected final <T> T withNode(final Function<N, T> fun) {
-    return new ModelAccessHelper(myRepo).runReadAction(new Computable<T>() {
-      public T compute() {
-        N resolved = (N) myNodePointer.resolve(myRepo);
-        return fun.apply(resolved);
-      }
+    return new ModelAccessHelper(myRepo).runReadAction(() -> {
+      N resolved = (N) myNodePointer.resolve(myRepo);
+      return fun.apply(resolved);
     });
   }
 

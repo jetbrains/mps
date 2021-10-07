@@ -15,7 +15,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import java.util.ArrayList;
 import com.intellij.openapi.vfs.VfsUtil;
-import com.intellij.util.Processor;
 import org.junit.Before;
 import java.io.File;
 import org.junit.After;
@@ -42,18 +41,16 @@ public class BaseProjectsTest {
     VirtualFile projectsRoot = LocalFileSystem.getInstance().findFileByPath(projectsDir);
 
     final List<Object[]> projects = new ArrayList<Object[]>();
-    VfsUtil.processFilesRecursively(projectsRoot, new Processor<VirtualFile>() {
-      public boolean process(VirtualFile file) {
-        if (!(file.isValid()) || !(file.isDirectory())) {
-          return true;
-        }
-        // is a project dir?
-        if (!(file.getName().equals(com.intellij.openapi.project.Project.DIRECTORY_STORE_FOLDER))) {
-          return true;
-        }
-        projects.add(new String[]{file.getParent().getPath()});
+    VfsUtil.processFilesRecursively(projectsRoot, (VirtualFile file) -> {
+      if (!(file.isValid()) || !(file.isDirectory())) {
         return true;
       }
+      // is a project dir?
+      if (!(file.getName().equals(com.intellij.openapi.project.Project.DIRECTORY_STORE_FOLDER))) {
+        return true;
+      }
+      projects.add(new String[]{file.getParent().getPath()});
+      return true;
     });
 
     return projects;

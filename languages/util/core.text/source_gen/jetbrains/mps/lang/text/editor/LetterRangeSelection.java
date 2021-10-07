@@ -41,7 +41,6 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
@@ -558,11 +557,7 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
   }
 
   private boolean canExecute(final EditorContext editorContext, final CellAction action) {
-    return new ModelAccessHelper(editorContext.getRepository()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        return action.canExecute(editorContext);
-      }
-    });
+    return new ModelAccessHelper(editorContext.getRepository()).runReadAction(() -> action.canExecute(editorContext));
   }
   private boolean selectNode(SNode node, boolean startPosition) {
     if (node != null) {
@@ -649,44 +644,20 @@ public class LetterRangeSelection extends AbstractMultipleSelection {
   }
 
   public void turnBold() {
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-      public Boolean invoke(SNode letter) {
-        return SPropertyOperations.getBoolean(letter, PROPS.bold$Xqbk);
-      }
-    };
-    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = new _FunctionTypes._void_P2_E0<SNode, Boolean>() {
-      public void invoke(SNode letter, Boolean value) {
-        SPropertyOperations.assign(letter, PROPS.bold$Xqbk, value);
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = (SNode letter) -> SPropertyOperations.getBoolean(letter, PROPS.bold$Xqbk);
+    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = (SNode letter, Boolean value) -> SPropertyOperations.assign(letter, PROPS.bold$Xqbk, value);
     turn(query, modifier);
   }
 
   public void turnItalics() {
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-      public Boolean invoke(SNode letter) {
-        return SPropertyOperations.getBoolean(letter, PROPS.italic$Xqql);
-      }
-    };
-    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = new _FunctionTypes._void_P2_E0<SNode, Boolean>() {
-      public void invoke(SNode letter, Boolean value) {
-        SPropertyOperations.assign(letter, PROPS.italic$Xqql, value);
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = (SNode letter) -> SPropertyOperations.getBoolean(letter, PROPS.italic$Xqql);
+    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = (SNode letter, Boolean value) -> SPropertyOperations.assign(letter, PROPS.italic$Xqql, value);
     turn(query, modifier);
   }
 
   public void turnUnderlined() {
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-      public Boolean invoke(SNode letter) {
-        return SPropertyOperations.getBoolean(letter, PROPS.underlined$XqDm);
-      }
-    };
-    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = new _FunctionTypes._void_P2_E0<SNode, Boolean>() {
-      public void invoke(SNode letter, Boolean value) {
-        SPropertyOperations.assign(letter, PROPS.underlined$XqDm, value);
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = (SNode letter) -> SPropertyOperations.getBoolean(letter, PROPS.underlined$XqDm);
+    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = (SNode letter, Boolean value) -> SPropertyOperations.assign(letter, PROPS.underlined$XqDm, value);
     turn(query, modifier);
   }
 

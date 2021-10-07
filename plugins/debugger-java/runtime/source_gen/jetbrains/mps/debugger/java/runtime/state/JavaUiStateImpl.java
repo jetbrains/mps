@@ -121,12 +121,10 @@ public abstract class JavaUiStateImpl extends JavaUiState {
   }
   @Override
   public void selectThread(@Nullable final IThread thread) {
-    myDebugSession.getEventsProcessor().schedule(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        AbstractUiState newState = selectThreadInternal(thread);
-        if (newState != JavaUiStateImpl.this) {
-          myAbstractDebugSession.trySetState(JavaUiStateImpl.this, newState);
-        }
+    myDebugSession.getEventsProcessor().schedule(() -> {
+      AbstractUiState newState = selectThreadInternal(thread);
+      if (newState != JavaUiStateImpl.this) {
+        myAbstractDebugSession.trySetState(JavaUiStateImpl.this, newState);
       }
     });
   }

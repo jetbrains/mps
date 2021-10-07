@@ -41,7 +41,6 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -514,44 +513,20 @@ public class WordRangeSelection extends AbstractMultipleSelection {
   }
 
   public void turnBold() {
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-      public Boolean invoke(SNode w) {
-        return SPropertyOperations.getBoolean(w, PROPS.bold$SBR1);
-      }
-    };
-    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = new _FunctionTypes._void_P2_E0<SNode, Boolean>() {
-      public void invoke(SNode w, Boolean value) {
-        SPropertyOperations.assign(w, PROPS.bold$SBR1, value);
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = (SNode w) -> SPropertyOperations.getBoolean(w, PROPS.bold$SBR1);
+    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = (SNode w, Boolean value) -> SPropertyOperations.assign(w, PROPS.bold$SBR1, value);
     turn(query, modifier);
   }
 
   public void turnItalics() {
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-      public Boolean invoke(SNode w) {
-        return SPropertyOperations.getBoolean(w, PROPS.italic$SC$4);
-      }
-    };
-    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = new _FunctionTypes._void_P2_E0<SNode, Boolean>() {
-      public void invoke(SNode w, Boolean value) {
-        SPropertyOperations.assign(w, PROPS.italic$SC$4, value);
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = (SNode w) -> SPropertyOperations.getBoolean(w, PROPS.italic$SC$4);
+    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = (SNode w, Boolean value) -> SPropertyOperations.assign(w, PROPS.italic$SC$4, value);
     turn(query, modifier);
   }
 
   public void turnUnderlined() {
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-      public Boolean invoke(SNode w) {
-        return SPropertyOperations.getBoolean(w, PROPS.underlined$SQS1);
-      }
-    };
-    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = new _FunctionTypes._void_P2_E0<SNode, Boolean>() {
-      public void invoke(SNode w, Boolean value) {
-        SPropertyOperations.assign(w, PROPS.underlined$SQS1, value);
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super SNode> query = (SNode w) -> SPropertyOperations.getBoolean(w, PROPS.underlined$SQS1);
+    _FunctionTypes._void_P2_E0<? super SNode, ? super Boolean> modifier = (SNode w, Boolean value) -> SPropertyOperations.assign(w, PROPS.underlined$SQS1, value);
     turn(query, modifier);
   }
 
@@ -653,11 +628,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
   }
 
   private boolean canExecute(final EditorContext editorContext, final CellAction action) {
-    return new ModelAccessHelper(editorContext.getRepository()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        return action.canExecute(editorContext);
-      }
-    });
+    return new ModelAccessHelper(editorContext.getRepository()).runReadAction(() -> action.canExecute(editorContext));
   }
   private boolean selectNode(SNode node, boolean startPosition) {
     if (node != null) {

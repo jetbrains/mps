@@ -114,7 +114,6 @@
     <classNode dependClassName="java.awt.Dimension" />
     <classNode dependClassName="java.awt.Graphics" />
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="javax.swing.JPanel" />
     <classNode dependClassName="javax.swing.border.Border" />
     <classNode dependClassName="javax.swing.border.TitledBorder" />

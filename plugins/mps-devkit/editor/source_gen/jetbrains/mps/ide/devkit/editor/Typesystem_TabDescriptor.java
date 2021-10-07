@@ -11,7 +11,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import jetbrains.mps.ide.actions.nodes.GoToRulesHelper;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.Comparator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -51,33 +50,31 @@ public class Typesystem_TabDescriptor extends RelationDescriptor {
   }
   public List<SNode> getNodes(SNode node) {
     List<SNode> rules = GoToRulesHelper.getRules(node, true);
-    return ListSequence.fromList(rules).sort(new Comparator<SNode>() {
-      public int compare(SNode a, SNode b) {
-        boolean aConceptRef = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(a, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14);
-        boolean bConceptRef = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(b, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14);
+    return ListSequence.fromList(rules).sort((SNode a, SNode b) -> {
+      boolean aConceptRef = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(a, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14);
+      boolean bConceptRef = SNodeOperations.isInstanceOf(SLinkOperations.getTarget(b, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14);
 
-        // rules with concept references go first
-        if (aConceptRef && !(bConceptRef)) {
+      // rules with concept references go first
+      if (aConceptRef && !(bConceptRef)) {
+        return 1;
+      }
+      if (!(aConceptRef) && bConceptRef) {
+        return -1;
+      }
+
+      // rules with concept references - more specific goes first
+      if (aConceptRef && bConceptRef) {
+        SNode aConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(a, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14), LINKS.concept$zIbV);
+        SNode bConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(b, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14), LINKS.concept$zIbV);
+        if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(aConcept, bConcept)) {
           return 1;
         }
-        if (!(aConceptRef) && bConceptRef) {
+        if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(bConcept, aConcept)) {
           return -1;
         }
-
-        // rules with concept references - more specific goes first
-        if (aConceptRef && bConceptRef) {
-          SNode aConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(a, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14), LINKS.concept$zIbV);
-          SNode bConcept = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(b, LINKS.applicableNode$Ro4C), CONCEPTS.ConceptReference$14), LINKS.concept$zIbV);
-          if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(aConcept, bConcept)) {
-            return 1;
-          }
-          if ((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(bConcept, aConcept)) {
-            return -1;
-          }
-        }
-
-        return 0;
       }
+
+      return 0;
     }, false).toListSequence();
   }
   public boolean isSingle() {

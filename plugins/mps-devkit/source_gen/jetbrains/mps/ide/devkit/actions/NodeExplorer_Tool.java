@@ -28,11 +28,7 @@ public class NodeExplorer_Tool extends BaseTabbedProjectTool {
   }
   public void showNode(SNode node) {
     final NodeExplorerComponent nodeExplorer = new NodeExplorerComponent(NodeExplorer_Tool.this.myProject.getComponent(MPSProject.class), node);
-    nodeExplorer.setCloseAction(new Runnable() {
-      public void run() {
-        NodeExplorer_Tool.this.closeTab(nodeExplorer);
-      }
-    });
+    nodeExplorer.setCloseAction(() -> NodeExplorer_Tool.this.closeTab(nodeExplorer));
     NodeExplorer_Tool.this.addTab(nodeExplorer, node.toString(), GlobalIconManager.getInstance().getIconFor(node), null, true);
   }
 }

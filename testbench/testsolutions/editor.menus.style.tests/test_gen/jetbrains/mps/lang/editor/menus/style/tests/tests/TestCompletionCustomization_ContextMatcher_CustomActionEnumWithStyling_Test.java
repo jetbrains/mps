@@ -39,13 +39,11 @@ public class TestCompletionCustomization_ContextMatcher_CustomActionEnumWithStyl
     public void testMethodImpl() throws Exception {
       initEditorComponent("3806643308053010696", "3806643308053010728");
       getEditorComponent().getSelectedCell().setSubstituteInfo(CustomizationTestHelper.createEnumPropertySubstituteInfo(getEditorComponent()));
-      EditorTestUtil.runWithCompletionStyling(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
-          Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 3);
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
-        }
+      EditorTestUtil.runWithCompletionStyling(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
+        Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 3);
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
       }, true);
     }
   }

@@ -113,18 +113,16 @@ public class NewRuntimeModule_Action extends BaseAction {
         if (!(p0 instanceof SModuleReference)) {
           return;
         }
-        repo.getModelAccess().runWriteInEDT(new Runnable() {
-          public void run() {
-            language.getModuleDescriptor().getRuntimeModules().add((SModuleReference) p0);
-            // next code has been inspired by ModulePropertiesConfigurable.RuntimeTableModel#apply()
-            // which has been abandoned since (e748150fb6017dd56e477b8aa5897cea5fd72af8), not sure what's the proper way
-            ModuleDependencyVersions mdv = new ModuleDependencyVersions(((MPSProject) MapSequence.fromMap(_params).get("project")).getComponent(LanguageRegistry.class), repo);
-            for (Generator g : language.getOwnedGenerators()) {
-              mdv.update(g);
-            }
-            language.save();
-            mpsTree.rebuildLater();
+        repo.getModelAccess().runWriteInEDT(() -> {
+          language.getModuleDescriptor().getRuntimeModules().add((SModuleReference) p0);
+          // next code has been inspired by ModulePropertiesConfigurable.RuntimeTableModel#apply()
+          // which has been abandoned since (e748150fb6017dd56e477b8aa5897cea5fd72af8), not sure what's the proper way
+          ModuleDependencyVersions mdv = new ModuleDependencyVersions(((MPSProject) MapSequence.fromMap(_params).get("project")).getComponent(LanguageRegistry.class), repo);
+          for (Generator g : language.getOwnedGenerators()) {
+            mdv.update(g);
           }
+          language.save();
+          mpsTree.rebuildLater();
         });
       }
     }, ModalityState.current(), true);

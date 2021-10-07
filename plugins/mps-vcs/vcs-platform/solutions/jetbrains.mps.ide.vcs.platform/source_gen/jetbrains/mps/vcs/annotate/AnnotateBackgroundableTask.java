@@ -83,25 +83,21 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
 
     final Wrappers._int processedRevisionsCount = new Wrappers._int(0);
 
-    rootAnnotation.addUpdateListener(new RootAnnotation.RootAnnotationUpdateListener() {
-      public void revisionProcessed(RevisionChanges changes) {
-        updateIndicator(indicator, ++processedRevisionsCount.value, ListSequence.fromList(revisions.value).count());
-        if (indicator.isCanceled()) {
-          rootAnnotation.cancelAnnotate();
-          wasCanceled.value = true;
-          annotationColumn.setCloseActionListener(null);
-          annotationColumn.close();
-        }
+    rootAnnotation.addUpdateListener((RevisionChanges changes) -> {
+      updateIndicator(indicator, ++processedRevisionsCount.value, ListSequence.fromList(revisions.value).count());
+      if (indicator.isCanceled()) {
+        rootAnnotation.cancelAnnotate();
+        wasCanceled.value = true;
+        annotationColumn.setCloseActionListener(null);
+        annotationColumn.close();
       }
     });
 
-    annotationColumn.setCloseActionListener(new Runnable() {
-      public void run() {
-        rootAnnotation.cancelAnnotate();
-        wasCanceled.value = true;
-        if (!(indicator.isCanceled())) {
-          indicator.cancel();
-        }
+    annotationColumn.setCloseActionListener(() -> {
+      rootAnnotation.cancelAnnotate();
+      wasCanceled.value = true;
+      if (!(indicator.isCanceled())) {
+        indicator.cancel();
       }
     });
 
@@ -132,11 +128,7 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
   }
 
   private void showWarning(final String warning) {
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        ToolWindowManager.getInstance(myActiveVcs.getProject()).notifyByBalloon(ChangesViewContentManager.TOOLWINDOW_ID, MessageType.WARNING, warning);
-      }
-    });
+    ApplicationManager.getApplication().invokeLater(() -> ToolWindowManager.getInstance(myActiveVcs.getProject()).notifyByBalloon(ChangesViewContentManager.TOOLWINDOW_ID, MessageType.WARNING, warning));
   }
 
   private void showCompleteNotification() {

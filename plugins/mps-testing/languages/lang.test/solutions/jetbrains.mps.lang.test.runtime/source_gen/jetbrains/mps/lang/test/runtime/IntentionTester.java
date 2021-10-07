@@ -31,33 +31,25 @@ public class IntentionTester {
 
   public boolean isIntentionApplicable(final String id, final SNode node) throws InterruptedException, InvocationTargetException {
     final Wrappers._boolean result = new Wrappers._boolean(false);
-    myEditorTest.runUndoableCommandInEDTAndWait(new Runnable() {
-      public void run() {
-        result.value = Sequence.fromIterable(getMatchingIntentions(node, new MatchIntentionById(id))).isNotEmpty();
-      }
-    });
+    myEditorTest.runUndoableCommandInEDTAndWait(() -> result.value = Sequence.fromIterable(getMatchingIntentions(node, new MatchIntentionById(id))).isNotEmpty());
     return result.value;
   }
 
   public void invokeMatchingIntention(final SNode node, final Condition<IntentionExecutable> intentionCondition) throws InterruptedException, InvocationTargetException {
-    myEditorTest.runUndoableCommandInEDTAndWait(new Runnable() {
-      public void run() {
-        Pair<IntentionExecutable, SNode> singleMatch = getSingleMatchingIntention(node, intentionCondition);
-        singleMatch.o1.execute(singleMatch.o2, myEditorTest.getEditorContext());
-      }
+    myEditorTest.runUndoableCommandInEDTAndWait(() -> {
+      Pair<IntentionExecutable, SNode> singleMatch = getSingleMatchingIntention(node, intentionCondition);
+      singleMatch.o1.execute(singleMatch.o2, myEditorTest.getEditorContext());
     });
   }
 
   public void invokeMatchingIntention(final Condition<IntentionExecutable> intentionCondition) throws InterruptedException, InvocationTargetException {
-    myEditorTest.runUndoableCommandInEDTAndWait(new Runnable() {
-      public void run() {
-        List<SNode> selectedNodes = myEditorTest.getEditorContext().getSelectedNodes();
-        if (selectedNodes == null || selectedNodes.isEmpty()) {
-          return;
-        }
-        Pair<IntentionExecutable, SNode> singleMatch = getSingleMatchingIntention(selectedNodes.get(0), intentionCondition);
-        singleMatch.o1.execute(singleMatch.o2, myEditorTest.getEditorContext());
+    myEditorTest.runUndoableCommandInEDTAndWait(() -> {
+      List<SNode> selectedNodes = myEditorTest.getEditorContext().getSelectedNodes();
+      if (selectedNodes == null || selectedNodes.isEmpty()) {
+        return;
       }
+      Pair<IntentionExecutable, SNode> singleMatch = getSingleMatchingIntention(selectedNodes.get(0), intentionCondition);
+      singleMatch.o1.execute(singleMatch.o2, myEditorTest.getEditorContext());
     });
   }
 

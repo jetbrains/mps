@@ -258,20 +258,16 @@ public class RequestManager implements IRequestManager {
     }
   }
   public static void createClassPrepareRequests(final JavaBreakpoint breakpoint) {
-    VMEventsProcessorManagerComponent.getInstance(breakpoint.getProject()).performAllDebugProcessesAction(new _FunctionTypes._void_P1_E0<EventsProcessor>() {
-      public void invoke(EventsProcessor processor) {
-        if (processor.isAttached()) {
-          breakpoint.createClassPrepareRequest(processor);
-        }
+    VMEventsProcessorManagerComponent.getInstance(breakpoint.getProject()).performAllDebugProcessesAction((EventsProcessor processor) -> {
+      if (processor.isAttached()) {
+        breakpoint.createClassPrepareRequest(processor);
       }
     });
   }
   public static void removeClassPrepareRequests(final JavaBreakpoint breakpoint) {
-    VMEventsProcessorManagerComponent.getInstance(breakpoint.getProject()).performAllDebugProcessesAction(new _FunctionTypes._void_P1_E0<EventsProcessor>() {
-      public void invoke(EventsProcessor processor) {
-        if (processor.isAttached()) {
-          processor.getRequestManager().deleteRequests(breakpoint);
-        }
+    VMEventsProcessorManagerComponent.getInstance(breakpoint.getProject()).performAllDebugProcessesAction((EventsProcessor processor) -> {
+      if (processor.isAttached()) {
+        processor.getRequestManager().deleteRequests(breakpoint);
       }
     });
   }
@@ -287,13 +283,11 @@ public class RequestManager implements IRequestManager {
     public void processAttached(@NotNull EventsProcessor process) {
       myEventRequestManager = myDebugEventsProcessor.getVirtualMachine().eventRequestManager();
       //  invoke later, so that requests are for sure created only _after_ 'processAttached()' methods of other listeneres are executed
-      process.schedule(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          BreakpointManagerComponent breakpointManager = myDebugEventsProcessor.getBreakpointManager();
-          for (IBreakpoint breakpoint : breakpointManager.getAllIBreakpoints()) {
-            if (breakpoint instanceof JavaBreakpoint) {
-              ((JavaBreakpoint) breakpoint).createClassPrepareRequest(myDebugEventsProcessor);
-            }
+      process.schedule(() -> {
+        BreakpointManagerComponent breakpointManager = myDebugEventsProcessor.getBreakpointManager();
+        for (IBreakpoint breakpoint : breakpointManager.getAllIBreakpoints()) {
+          if (breakpoint instanceof JavaBreakpoint) {
+            ((JavaBreakpoint) breakpoint).createClassPrepareRequest(myDebugEventsProcessor);
           }
         }
       });

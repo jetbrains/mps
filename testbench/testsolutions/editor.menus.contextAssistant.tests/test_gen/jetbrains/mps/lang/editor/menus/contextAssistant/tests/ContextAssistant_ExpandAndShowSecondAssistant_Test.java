@@ -41,22 +41,20 @@ public class ContextAssistant_ExpandAndShowSecondAssistant_Test extends BaseTran
     public void testMethodImpl() throws Exception {
       initEditorComponent("379023083997059224", "379023083997059226");
       invokeAction("jetbrains.mps.ide.editor.actions.ExpandAll_Action");
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          ContextAssistantManager contextAssistantManager = getEditorComponent().getEditorContext().getContextAssistantManager();
-          contextAssistantManager.updateImmediately();
-          Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
-          List<TransformationMenuItem> activeItems = contextAssistantManager.getActiveMenuItems();
-          Assert.assertNotNull(activeItems);
-          Assert.assertTrue(activeItems.size() > 0);
-          EditorCell_ContextAssistantComponent firstContextAssistantCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), EditorCell_ContextAssistantComponent.class, true);
-          Assert.assertNotNull(firstContextAssistantCell);
-          Assert.assertTrue(firstContextAssistantCell.getComponent().isVisible());
-          EditorCell_ContextAssistantComponent secondContextAssistantCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), EditorCell_ContextAssistantComponent.class, false);
-          Assert.assertNotNull(secondContextAssistantCell);
-          Assert.assertTrue(firstContextAssistantCell != secondContextAssistantCell);
-          Assert.assertFalse(secondContextAssistantCell.getComponent().isVisible());
-        }
+      SwingUtilities.invokeAndWait(() -> {
+        ContextAssistantManager contextAssistantManager = getEditorComponent().getEditorContext().getContextAssistantManager();
+        contextAssistantManager.updateImmediately();
+        Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
+        List<TransformationMenuItem> activeItems = contextAssistantManager.getActiveMenuItems();
+        Assert.assertNotNull(activeItems);
+        Assert.assertTrue(activeItems.size() > 0);
+        EditorCell_ContextAssistantComponent firstContextAssistantCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), EditorCell_ContextAssistantComponent.class, true);
+        Assert.assertNotNull(firstContextAssistantCell);
+        Assert.assertTrue(firstContextAssistantCell.getComponent().isVisible());
+        EditorCell_ContextAssistantComponent secondContextAssistantCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), EditorCell_ContextAssistantComponent.class, false);
+        Assert.assertNotNull(secondContextAssistantCell);
+        Assert.assertTrue(firstContextAssistantCell != secondContextAssistantCell);
+        Assert.assertFalse(secondContextAssistantCell.getComponent().isVisible());
       });
     }
   }

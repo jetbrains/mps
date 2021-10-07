@@ -8,7 +8,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.Arrays;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import java.util.Comparator;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -58,17 +57,9 @@ public class Sort_Test extends Util_Test {
         return it.length();
       }
     }, true));
-    _FunctionTypes._return_P1_E0<? extends Integer, ? super String> cl = new _FunctionTypes._return_P1_E0<Integer, String>() {
-      public Integer invoke(String it) {
-        return it.length();
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Integer, ? super String> cl = (String it) -> it.length();
     this.assertIterableEquals(input, Sequence.fromIterable(test).sort(cl, true));
-    this.assertIterableEquals(Arrays.asList("WWWW", "XXX", "YY", "Z"), Sequence.fromIterable(input).sort(new Comparator<String>() {
-      public int compare(String a, String b) {
-        return a.length() - b.length();
-      }
-    }, false));
+    this.assertIterableEquals(Arrays.asList("WWWW", "XXX", "YY", "Z"), Sequence.fromIterable(input).sort((String a, String b) -> a.length() - b.length(), false));
   }
   @Test
   public void test_caseSensitive() throws Exception {
@@ -82,11 +73,7 @@ public class Sort_Test extends Util_Test {
   @Test
   public void test_caseInsensitive() throws Exception {
     List<String> test = ListSequence.fromListAndArray(new ArrayList<String>(), "abc", "ABC", "aBC", "Abc", "abcd", "ABCD", "abcD");
-    this.assertIterableEquals(test, ListSequence.fromList(test).sort(new Comparator<String>() {
-      public int compare(String a, String b) {
-        return String.CASE_INSENSITIVE_ORDER.compare(a, b);
-      }
-    }, true));
+    this.assertIterableEquals(test, ListSequence.fromList(test).sort((String a, String b) -> String.CASE_INSENSITIVE_ORDER.compare(a, b), true));
   }
   @Test
   public void test_legacySort() throws Exception {

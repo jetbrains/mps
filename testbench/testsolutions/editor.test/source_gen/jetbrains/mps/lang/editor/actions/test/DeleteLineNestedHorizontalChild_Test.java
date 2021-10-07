@@ -34,11 +34,7 @@ public class DeleteLineNestedHorizontalChild_Test extends BaseTransformationTest
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("7814731350146952050", "7814731350146952610");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.DeleteLine_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.DeleteLine_Action"), false);
     }
   }
 }

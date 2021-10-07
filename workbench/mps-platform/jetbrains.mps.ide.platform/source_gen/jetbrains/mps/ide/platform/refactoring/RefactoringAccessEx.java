@@ -15,7 +15,6 @@ import java.util.Collection;
 import jetbrains.mps.refactoring.framework.IRefactoring;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import java.util.ArrayList;
-import java.util.function.Consumer;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.refactoring.runtime.RefactoringAspect;
 
@@ -62,14 +61,12 @@ public abstract class RefactoringAccessEx extends RefactoringAccess {
   public Collection<IRefactoring> getAllRefactorings() {
     LanguageRegistry langRegistry = myPlatform.findComponent(LanguageRegistry.class);
     final ArrayList<IRefactoring> refactorings = new ArrayList<IRefactoring>();
-    langRegistry.withAvailableLanguages(new Consumer<LanguageRuntime>() {
-      public void accept(LanguageRuntime lr) {
-        RefactoringAspect refactoringAspect = lr.getAspect(RefactoringAspect.class);
-        if (refactoringAspect == null) {
-          return;
-        }
-        refactorings.addAll(refactoringAspect.getRefactorings());
+    langRegistry.withAvailableLanguages((LanguageRuntime lr) -> {
+      RefactoringAspect refactoringAspect = lr.getAspect(RefactoringAspect.class);
+      if (refactoringAspect == null) {
+        return;
       }
+      refactorings.addAll(refactoringAspect.getRefactorings());
     });
     return refactorings;
   }

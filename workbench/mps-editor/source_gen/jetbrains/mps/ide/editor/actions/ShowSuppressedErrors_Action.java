@@ -42,7 +42,6 @@ import com.intellij.openapi.ui.popup.JBPopupFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.ide.editor.util.GoToContextMenuHelperBase;
-import jetbrains.mps.ide.editor.util.CaptionFunction;
 import jetbrains.mps.ide.editor.util.CustomizedNavigatableRenderer;
 import java.util.Comparator;
 import com.intellij.util.Function;
@@ -108,78 +107,68 @@ public class ShowSuppressedErrors_Action extends BaseAction {
     final RelativePoint relativePoint = GoToContextMenuHelper.getRelativePoint(((EditorCell) MapSequence.fromMap(_params).get("selectedCell")), event.getInputEvent());
     final List<CustomizedNavigatable> navigatables = ListSequence.fromList(new ArrayList<CustomizedNavigatable>());
     final Wrappers._T<String> title = new Wrappers._T<String>();
-    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        Tuples._2<SNode, List<SNode>> suppressedPair = ShowSuppressedErrors_Action.this.getSuppressed(_params);
-        for (final SNode suppress : ListSequence.fromList(suppressedPair._1())) {
-          Map<String, String> predicateFlavours = new HashMap<String, String>();
-          final String errorSpecialization = SPropertyOperations.getString(suppress, PROPS.filter$LICx);
-          try {
-            if ((errorSpecialization != null && errorSpecialization.length() > 0)) {
-              predicateFlavours = FlavouredItem.ReportItemPredicate.deserialize(errorSpecialization).getFlavours();
-            }
-          } catch (RuntimeException exception) {
+    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().runReadAction(() -> {
+      Tuples._2<SNode, List<SNode>> suppressedPair = ShowSuppressedErrors_Action.this.getSuppressed(_params);
+      for (final SNode suppress : ListSequence.fromList(suppressedPair._1())) {
+        Map<String, String> predicateFlavours = new HashMap<String, String>();
+        final String errorSpecialization = SPropertyOperations.getString(suppress, PROPS.filter$LICx);
+        try {
+          if ((errorSpecialization != null && errorSpecialization.length() > 0)) {
+            predicateFlavours = FlavouredItem.ReportItemPredicate.deserialize(errorSpecialization).getFlavours();
           }
-          List<RuleIdFlavouredItem.TypesystemRuleId> rules = ListSequence.fromList(new ArrayList<RuleIdFlavouredItem.TypesystemRuleId>());
-          String message = SPropertyOperations.getString(suppress, PROPS.message$_mpB);
-          DefaultActionGroup actionGroup = new DefaultActionGroup();
-          actionGroup.add(new AnAction("Stop Suppressing", "Do not suppress error", MPSIcons.Actions.SuppressedError) {
-            public void actionPerformed(@NotNull AnActionEvent event) {
-              ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().executeCommand(new Runnable() {
-                public void run() {
-                  SNodeOperations.deleteNode(suppress);
+        } catch (RuntimeException exception) {
+        }
+        List<RuleIdFlavouredItem.TypesystemRuleId> rules = ListSequence.fromList(new ArrayList<RuleIdFlavouredItem.TypesystemRuleId>());
+        String message = SPropertyOperations.getString(suppress, PROPS.message$_mpB);
+        DefaultActionGroup actionGroup = new DefaultActionGroup();
+        actionGroup.add(new AnAction("Stop Suppressing", "Do not suppress error", MPSIcons.Actions.SuppressedError) {
+          public void actionPerformed(@NotNull AnActionEvent event) {
+            ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().executeCommand(() -> SNodeOperations.deleteNode(suppress));
+          }
+        });
+        if (Objects.equals(predicateFlavours.get(IssueKindReportItem.FLAVOUR_ISSUE_KIND.toString()), IssueKindReportItem.TYPESYSTEM.deriveItemKind().toString()) && predicateFlavours.containsKey(TypesystemReportItemAdapter.FLAVOUR_RULE_ID.toString())) {
+          ListSequence.fromList(rules).addSequence(CollectionSequence.fromCollection(TypesystemReportItemAdapter.FLAVOUR_RULE_ID.deserializePredicate(predicateFlavours.get(TypesystemReportItemAdapter.FLAVOUR_RULE_ID.toString())).getValue()));
+          if (ListSequence.fromList(rules).isNotEmpty() && message != null) {
+            for (RuleIdFlavouredItem.TypesystemRuleId rule : ListSequence.fromList(rules)) {
+              SNodeReference ruleRef = rule.getSourceNode();
+              if (ruleRef == null || ruleRef.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()) == null) {
+                continue;
+              }
+              SNode ruleRoot = ruleRef.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()).getContainingRoot();
+              Icon ruleRootIcon = GlobalIconManager.getInstance().getIconFor(ruleRoot);
+              NodeNavigatable ruleNavigatable = new NodeNavigatable(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), ruleRef);
+              String goToRuleActionText;
+              if (ListSequence.fromList(rules).count() == 1) {
+                goToRuleActionText = "Go To Typesystem Rule";
+              } else if ((int) ListSequence.fromList(rules).indexOf(rule) == 0) {
+                goToRuleActionText = "Go To Immediate Rule";
+              } else {
+                goToRuleActionText = "Go To Rule " + ruleRef.getNodeId();
+              }
+              actionGroup.add(new AnAction(goToRuleActionText, "Navigate to rule declaration", ruleRootIcon) {
+                public void actionPerformed(@NotNull AnActionEvent event) {
+                  ruleNavigatable.navigate(true);
                 }
               });
             }
-          });
-          if (Objects.equals(predicateFlavours.get(IssueKindReportItem.FLAVOUR_ISSUE_KIND.toString()), IssueKindReportItem.TYPESYSTEM.deriveItemKind().toString()) && predicateFlavours.containsKey(TypesystemReportItemAdapter.FLAVOUR_RULE_ID.toString())) {
-            ListSequence.fromList(rules).addSequence(CollectionSequence.fromCollection(TypesystemReportItemAdapter.FLAVOUR_RULE_ID.deserializePredicate(predicateFlavours.get(TypesystemReportItemAdapter.FLAVOUR_RULE_ID.toString())).getValue()));
-            if (ListSequence.fromList(rules).isNotEmpty() && message != null) {
-              for (RuleIdFlavouredItem.TypesystemRuleId rule : ListSequence.fromList(rules)) {
-                SNodeReference ruleRef = rule.getSourceNode();
-                if (ruleRef == null || ruleRef.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()) == null) {
-                  continue;
-                }
-                SNode ruleRoot = ruleRef.resolve(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository()).getContainingRoot();
-                Icon ruleRootIcon = GlobalIconManager.getInstance().getIconFor(ruleRoot);
-                NodeNavigatable ruleNavigatable = new NodeNavigatable(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), ruleRef);
-                String goToRuleActionText;
-                if (ListSequence.fromList(rules).count() == 1) {
-                  goToRuleActionText = "Go To Typesystem Rule";
-                } else if ((int) ListSequence.fromList(rules).indexOf(rule) == 0) {
-                  goToRuleActionText = "Go To Immediate Rule";
-                } else {
-                  goToRuleActionText = "Go To Rule " + ruleRef.getNodeId();
-                }
-                actionGroup.add(new AnAction(goToRuleActionText, "Navigate to rule declaration", ruleRootIcon) {
-                  public void actionPerformed(@NotNull AnActionEvent event) {
-                    ruleNavigatable.navigate(true);
-                  }
-                });
-              }
-            }
           }
-          ListPopup createActionGroupPopup = JBPopupFactory.getInstance().createActionGroupPopup(message, actionGroup, event.getDataContext(), JBPopupFactory.ActionSelectionAid.ALPHA_NUMBERING, false);
-          CustomizedNavigatable navigatable = new CustomizedNavigatable(null, ((errorSpecialization == null || errorSpecialization.length() == 0) ? "Any error" : ((message == null || message.length() == 0) ? errorSpecialization : message)), "Suppressed", MPSIcons.Actions.SuppressedError) {
-            @Override
-            public void navigate(boolean requestFocus) {
-              createActionGroupPopup.show(relativePoint);
-            }
-            @Override
-            public boolean canNavigate() {
-              return true;
-            }
-          };
-          ListSequence.fromList(navigatables).addElement(navigatable);
         }
-        title.value = "Errors suppressed for " + ((String) BHReflection.invoke0(suppressedPair._0(), CONCEPTS.ICanSuppressErrors$q8, SMethodTrimmedId.create("nodeDescription", null, "4oS1ku9jIXr")));
+        ListPopup createActionGroupPopup = JBPopupFactory.getInstance().createActionGroupPopup(message, actionGroup, event.getDataContext(), JBPopupFactory.ActionSelectionAid.ALPHA_NUMBERING, false);
+        CustomizedNavigatable navigatable = new CustomizedNavigatable(null, ((errorSpecialization == null || errorSpecialization.length() == 0) ? "Any error" : ((message == null || message.length() == 0) ? errorSpecialization : message)), "Suppressed", MPSIcons.Actions.SuppressedError) {
+          @Override
+          public void navigate(boolean requestFocus) {
+            createActionGroupPopup.show(relativePoint);
+          }
+          @Override
+          public boolean canNavigate() {
+            return true;
+          }
+        };
+        ListSequence.fromList(navigatables).addElement(navigatable);
       }
+      title.value = "Errors suppressed for " + ((String) BHReflection.invoke0(suppressedPair._0(), CONCEPTS.ICanSuppressErrors$q8, SMethodTrimmedId.create("nodeDescription", null, "4oS1ku9jIXr")));
     });
-    GoToContextMenuHelperBase<CustomizedNavigatable> helper = new GoToContextMenuHelperBase<CustomizedNavigatable>(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), new CaptionFunction() {
-      public String caption(int count, boolean finished) {
-        return title.value;
-      }
-    }, new CustomizedNavigatableRenderer(), new Comparator<CustomizedNavigatable>() {
+    GoToContextMenuHelperBase<CustomizedNavigatable> helper = new GoToContextMenuHelperBase<CustomizedNavigatable>(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), (int count, boolean finished) -> title.value, new CustomizedNavigatableRenderer(), new Comparator<CustomizedNavigatable>() {
       @Override
       public int compare(CustomizedNavigatable a, CustomizedNavigatable b) {
         return Integer.compare(ListSequence.fromList(navigatables).indexOf(a), ListSequence.fromList(navigatables).indexOf(b));

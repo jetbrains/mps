@@ -36,11 +36,7 @@ public final class ClickableNode__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static Runnable execute_id7oNS25df64x(@NotNull SNode __thisNode__, final MPSProject project) {
     final SNodeReference tn = NodeIdentity__BehaviorDescriptor.toNodeReference_id4nxIQVLmsc4.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$IMmQ));
-    return new Runnable() {
-      public void run() {
-        new EditorNavigator(project).shallFocus(true).shallSelect(false).open(tn);
-      }
-    };
+    return () -> new EditorNavigator(project).shallFocus(true).shallSelect(false).open(tn);
   }
   /*package*/ static boolean canExecute_id2QdC0h7dh1h(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.target$IMmQ) != null;

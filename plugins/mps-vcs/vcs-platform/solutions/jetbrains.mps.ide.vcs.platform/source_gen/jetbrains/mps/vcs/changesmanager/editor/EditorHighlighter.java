@@ -49,79 +49,71 @@ public class EditorHighlighter implements EditorMessageOwner {
   public EditorHighlighter(@NotNull final Project project, @NotNull final EditorComponent editorComponent) {
     myEditorComponent = editorComponent;
 
-    CurrentDifferenceRegistry.getInstance(project).getCommandQueue().runTask(new Runnable() {
-      public void run() {
-        final SRepository repo = editorComponent.getEditorContext().getRepository();
-        repo.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            synchronized (myDisposedLock) {
-              if (myDisposed) {
-                return;
-              }
-              final SNode editedNode = (editorComponent.getEditedNodePointer() == null ? null : editorComponent.getEditedNodePointer().resolve(repo));
-              if (editedNode == null) {
-                return;
-              }
-              final SModel model = editedNode.getModel();
-              if (model instanceof EditableSModel && !(model.isReadOnly())) {
-                myCurrentDifference = CurrentDifferenceRegistry.getInstance(project).getCurrentDifference((EditableSModel) model);
-                myListener = new MyCurrentDifferenceListener();
-              }
-              if (myListener != null) {
-                myCurrentDifference.setEnabled(true);
-
-                ChangeSet changeSet = myCurrentDifference.getChangeSet();
-                if (changeSet != null) {
-                  ListSequence.fromList(changeSet.getModelChanges()).where(new IWhereFilter<ModelChange>() {
-                    public boolean accept(ModelChange c) {
-                      return editedNode.getNodeId().equals(c.getRootId());
-                    }
-                  }).visitAll(new IVisitor<ModelChange>() {
-                    public void visit(ModelChange c) {
-                      createMessages(c);
-                    }
-                  });
-                }
-                synchronized (myChangesMessages) {
-                  Sequence.fromIterable(MapSequence.fromMap(myChangesMessages).values()).visitAll(new IVisitor<List<ChangeEditorMessage>>() {
-                    public void visit(List<ChangeEditorMessage> messages) {
-                      ListSequence.fromList(messages).visitAll(new IVisitor<ChangeEditorMessage>() {
-                        public void visit(ChangeEditorMessage m) {
-                          getHighlightManager().mark(m);
-                        }
-                      });
-                    }
-                  });
-                }
-                getHighlightManager().repaintAndRebuildEditorMessages();
-                ThreadUtils.runInUIThreadNoWait(new Runnable() {
-                  public void run() {
-                    myStripsPainter = new ChangeStripsPainter(EditorHighlighter.this);
-                    myEditorComponent.getLeftEditorHighlighter().addFoldingAreaPainter(myStripsPainter);
-                    // .relayout() is called as a part of .addFoldingAreaPainter() method execution
-                  }
-                });
-                myCurrentDifference.addDifferenceListener(myListener);
-              }
-            }
+    CurrentDifferenceRegistry.getInstance(project).getCommandQueue().runTask(() -> {
+      final SRepository repo = editorComponent.getEditorContext().getRepository();
+      repo.getModelAccess().runReadAction(() -> {
+        synchronized (myDisposedLock) {
+          if (myDisposed) {
+            return;
           }
-        });
-      }
+          final SNode editedNode = (editorComponent.getEditedNodePointer() == null ? null : editorComponent.getEditedNodePointer().resolve(repo));
+          if (editedNode == null) {
+            return;
+          }
+          final SModel model = editedNode.getModel();
+          if (model instanceof EditableSModel && !(model.isReadOnly())) {
+            myCurrentDifference = CurrentDifferenceRegistry.getInstance(project).getCurrentDifference((EditableSModel) model);
+            myListener = new MyCurrentDifferenceListener();
+          }
+          if (myListener != null) {
+            myCurrentDifference.setEnabled(true);
+
+            ChangeSet changeSet = myCurrentDifference.getChangeSet();
+            if (changeSet != null) {
+              ListSequence.fromList(changeSet.getModelChanges()).where(new IWhereFilter<ModelChange>() {
+                public boolean accept(ModelChange c) {
+                  return editedNode.getNodeId().equals(c.getRootId());
+                }
+              }).visitAll(new IVisitor<ModelChange>() {
+                public void visit(ModelChange c) {
+                  createMessages(c);
+                }
+              });
+            }
+            synchronized (myChangesMessages) {
+              Sequence.fromIterable(MapSequence.fromMap(myChangesMessages).values()).visitAll(new IVisitor<List<ChangeEditorMessage>>() {
+                public void visit(List<ChangeEditorMessage> messages) {
+                  ListSequence.fromList(messages).visitAll(new IVisitor<ChangeEditorMessage>() {
+                    public void visit(ChangeEditorMessage m) {
+                      getHighlightManager().mark(m);
+                    }
+                  });
+                }
+              });
+            }
+            getHighlightManager().repaintAndRebuildEditorMessages();
+            ThreadUtils.runInUIThreadNoWait(() -> {
+              myStripsPainter = new ChangeStripsPainter(EditorHighlighter.this);
+              myEditorComponent.getLeftEditorHighlighter().addFoldingAreaPainter(myStripsPainter);
+              // .relayout() is called as a part of .addFoldingAreaPainter() method execution
+            });
+            myCurrentDifference.addDifferenceListener(myListener);
+          }
+        }
+      });
     });
   }
   private List<ChangeEditorMessage> createMessages(final ModelChange change) {
     final Wrappers._T<List<ChangeEditorMessage>> messages = new Wrappers._T<List<ChangeEditorMessage>>(null);
     if (!(change instanceof AddRootChange)) {
       final SRepository repo = myEditorComponent.getEditorContext().getRepository();
-      repo.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          SNode editedNode = (myEditorComponent.getEditedNodePointer() == null ? null : myEditorComponent.getEditedNodePointer().resolve(repo));
-          if (editedNode == null) {
-            return;
-          }
-          SModel model = editedNode.getModel();
-          messages.value = ChangeEditorMessageFactory.createMessages(model, change.getChangeSet().getNewModel() != model, change, EditorHighlighter.this, null, false);
+      repo.getModelAccess().runReadAction(() -> {
+        SNode editedNode = (myEditorComponent.getEditedNodePointer() == null ? null : myEditorComponent.getEditedNodePointer().resolve(repo));
+        if (editedNode == null) {
+          return;
         }
+        SModel model = editedNode.getModel();
+        messages.value = ChangeEditorMessageFactory.createMessages(model, change.getChangeSet().getNewModel() != model, change, EditorHighlighter.this, null, false);
       });
     }
     if (messages.value == null) {
@@ -160,14 +152,12 @@ public class EditorHighlighter implements EditorMessageOwner {
       return Collections.emptyList();
     }
     SRepository repo = myEditorComponent.getEditorContext().getRepository();
-    repo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        messages.value = ListSequence.fromList(messages.value).where(new IWhereFilter<ChangeEditorMessage>() {
-          public boolean accept(ChangeEditorMessage m) {
-            return !(changeNodeIsDeleted(m));
-          }
-        }).toListSequence();
-      }
+    repo.getModelAccess().runReadAction(() -> {
+      messages.value = ListSequence.fromList(messages.value).where(new IWhereFilter<ChangeEditorMessage>() {
+        public boolean accept(ChangeEditorMessage m) {
+          return !(changeNodeIsDeleted(m));
+        }
+      }).toListSequence();
     });
     return messages.value;
   }

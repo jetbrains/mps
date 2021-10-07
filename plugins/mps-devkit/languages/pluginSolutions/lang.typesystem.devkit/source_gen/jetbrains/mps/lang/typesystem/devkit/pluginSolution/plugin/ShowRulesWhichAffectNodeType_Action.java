@@ -66,11 +66,9 @@ public class ShowRulesWhichAffectNodeType_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<SearchQuery> query = new Wrappers._T<SearchQuery>();
-    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SearchScope scope = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getScope();
-        query.value = new SearchQuery(((SNode) MapSequence.fromMap(_params).get("node")), scope);
-      }
+    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().runReadAction(() -> {
+      SearchScope scope = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getScope();
+      query.value = new SearchQuery(((SNode) MapSequence.fromMap(_params).get("node")), scope);
     });
     IResultProvider provider = FindUtils.makeProvider(new AffectingRulesFinder());
     UsageToolOptions opt = new UsageToolOptions().allowRunAgain(false).navigateIfSingle(false).forceNewTab(false).notFoundMessage("no rules found");

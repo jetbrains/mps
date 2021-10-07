@@ -201,14 +201,12 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
       // non-undoable actions should not affect project files
       throw new IllegalStateException();
     }
-    getProject().getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        createConsoleModel();
-        addBuiltInImports();
-        loadHistory(history);
-        createEditor();
-        myFileEditor = new ConsoleFileEditor(myEditor);
-      }
+    getProject().getModelAccess().runWriteAction(() -> {
+      createConsoleModel();
+      addBuiltInImports();
+      loadHistory(history);
+      createEditor();
+      myFileEditor = new ConsoleFileEditor(myEditor);
     });
 
     DefaultActionGroup group = new DefaultActionGroup();
@@ -230,17 +228,11 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   }
 
   public void disposeConsoleTab() {
-    myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        if (myEditor != null) {
-          ThreadUtils.runInUIThreadNoWait(new Runnable() {
-            public void run() {
-              myEditor.dispose();
-            }
-          });
-        }
-        TemporaryModels.getInstance().dispose(myModel);
+    myProject.getRepository().getModelAccess().executeCommand(() -> {
+      if (myEditor != null) {
+        ThreadUtils.runInUIThreadNoWait(() -> myEditor.dispose());
       }
+      TemporaryModels.getInstance().dispose(myModel);
     });
     if (myHighlighter != null) {
       myHighlighter.removeAdditionalEditorComponent(myEditor);
@@ -253,17 +245,11 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   }
 
   public void selectNode(final SNode nodeToSelect) {
-    myTool.getToolWindow().activate(new Runnable() {
-      public void run() {
-        myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            myEditor.selectNode(nodeToSelect);
-            getEditorComponent().ensureSelectionVisible();
-            IdeFocusManager.getInstance(myProject.getProject()).requestFocus(myEditor, false);
-          }
-        });
-      }
-    });
+    myTool.getToolWindow().activate(() -> myProject.getRepository().getModelAccess().runReadAction(() -> {
+      myEditor.selectNode(nodeToSelect);
+      getEditorComponent().ensureSelectionVisible();
+      IdeFocusManager.getInstance(myProject.getProject()).requestFocus(myEditor, false);
+    }));
     myTool.selectTab(this);
   }
 
@@ -412,14 +398,12 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   @Nullable
   public Element saveHistory() {
     final Wrappers._T<Element> result = new Wrappers._T<Element>(null);
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        try {
-          result.value = (myModel == null ? null : PersistenceUtil.saveModelToXml(myModel, myProject.getComponent(ModelFactoryService.class)));
-        } catch (Exception e) {
-          if (LOG.isEnabledFor(Level.WARN)) {
-            LOG.warn("Error on console model saving", e);
-          }
+    myProject.getRepository().getModelAccess().runReadAction(() -> {
+      try {
+        result.value = (myModel == null ? null : PersistenceUtil.saveModelToXml(myModel, myProject.getComponent(ModelFactoryService.class)));
+      } catch (Exception e) {
+        if (LOG.isEnabledFor(Level.WARN)) {
+          LOG.warn("Error on console model saving", e);
         }
       }
     });
@@ -491,48 +475,40 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
   public void execute(@Nullable final SNode command, @Nullable final Runnable executeBefore, @Nullable final Runnable executeAfter) {
     myTool.selectTab(this);
     final SNode[] typedCommand = new SNode[1];
-    myProject.getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        typedCommand[0] = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, "jetbrains.mps.console.base.structure.CommandHolder"));
-        if (command != null) {
-          addNodeImports(command);
-          SLinkOperations.setTarget(typedCommand[0], LINKS.command$RGil, SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil)));
-          SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil, SNodeOperations.copyNode(command));
-        }
+    myProject.getModelAccess().executeCommand(() -> {
+      typedCommand[0] = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xde1ad86d6e504a02L, 0xb306d4d17f64c375L, 0x4e27160acb4484bL, "jetbrains.mps.console.base.structure.CommandHolder"));
+      if (command != null) {
+        addNodeImports(command);
+        SLinkOperations.setTarget(typedCommand[0], LINKS.command$RGil, SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil)));
+        SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil, SNodeOperations.copyNode(command));
       }
     });
     final ConsoleStream consoleStream = new ConsoleStreamImpl(this);
-    Runnable beforeCommandClosure = new Runnable() {
-      public void run() {
-        if (myProject.getModelAccess().canWrite()) {
-          // non-undoable actions should not affect project files
-          throw new IllegalStateException();
+    Runnable beforeCommandClosure = () -> {
+      if (myProject.getModelAccess().canWrite()) {
+        // non-undoable actions should not affect project files
+        throw new IllegalStateException();
+      }
+      myProject.getModelAccess().executeCommand(new EditorCommand(myEditor) {
+        public void doExecute() {
+          ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myRoot, LINKS.history$LSLq), LINKS.item$DxJ4)).addElement(SNodeOperations.copyNode(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs)));
+          SLinkOperations.setNewChild(myRoot, LINKS.commandHolder$LTfs, CONCEPTS.CommandHolder$K4);
+          SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp, SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs));
+          check_6q36mf_a3a0a0a0a1a0a4a27(executeBefore);
         }
-        myProject.getModelAccess().executeCommand(new EditorCommand(myEditor) {
-          public void doExecute() {
-            ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(myRoot, LINKS.history$LSLq), LINKS.item$DxJ4)).addElement(SNodeOperations.copyNode(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs)));
-            SLinkOperations.setNewChild(myRoot, LINKS.commandHolder$LTfs, CONCEPTS.CommandHolder$K4);
-            SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp, SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs));
-            check_6q36mf_a3a0a0a0a1a0a4a27(executeBefore);
-          }
-        });
-      }
+      });
     };
-    Runnable afterCommandClosure = new Runnable() {
-      public void run() {
-        consoleStream.commitResult();
-        myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
-          public void run() {
-            if (SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp) == SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs)) {
-              SLinkOperations.setTarget(myRoot, LINKS.commandHolder$LTfs, typedCommand[0]);
-              SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp, SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs));
-            } else {
-              SLinkOperations.setTarget(myRoot, LINKS.commandHolder$LTfs, typedCommand[0]);
-            }
-            check_6q36mf_a1a0b0a0f0uc(executeAfter);
-          }
-        });
-      }
+    Runnable afterCommandClosure = () -> {
+      consoleStream.commitResult();
+      myProject.getRepository().getModelAccess().executeCommand(() -> {
+        if (SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp) == SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs)) {
+          SLinkOperations.setTarget(myRoot, LINKS.commandHolder$LTfs, typedCommand[0]);
+          SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.cursor$hQXw), LINKS.target$kCjp, SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs));
+        } else {
+          SLinkOperations.setTarget(myRoot, LINKS.commandHolder$LTfs, typedCommand[0]);
+        }
+        check_6q36mf_a1a0b0a0f0uc(executeAfter);
+      });
     };
     BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil), CONCEPTS.Command$6M, SMethodTrimmedId.create("execute", null, "5WvH$QO9bva"), getConsoleContext(), consoleStream, beforeCommandClosure, afterCommandClosure);
   }

@@ -24,14 +24,12 @@ public class MoveNodesActionHelper {
   public static MoveNodesAction getRefactoring(final MPSProject project, final List<SNode> nodesToMove) {
     final Collection<MoveNodesAction> specialRefactorings = Sequence.fromIterable(new ExtensionPoint<MoveNodesAction>("jetbrains.mps.refactoring.participant.MoveNodesActionEP").getObjects()).toListSequence();
     final Wrappers._T<Collection<MoveNodesAction>> applicableRefactorings = new Wrappers._T<Collection<MoveNodesAction>>();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        applicableRefactorings.value = CollectionSequence.fromCollection(specialRefactorings).where(new IWhereFilter<MoveNodesAction>() {
-          public boolean accept(MoveNodesAction it) {
-            return it.isApplicable(project, nodesToMove);
-          }
-        }).toListSequence();
-      }
+    project.getRepository().getModelAccess().runReadAction(() -> {
+      applicableRefactorings.value = CollectionSequence.fromCollection(specialRefactorings).where(new IWhereFilter<MoveNodesAction>() {
+        public boolean accept(MoveNodesAction it) {
+          return it.isApplicable(project, nodesToMove);
+        }
+      }).toListSequence();
     });
     if (CollectionSequence.fromCollection(applicableRefactorings.value).isEmpty()) {
       return new MoveNodesActionBase();

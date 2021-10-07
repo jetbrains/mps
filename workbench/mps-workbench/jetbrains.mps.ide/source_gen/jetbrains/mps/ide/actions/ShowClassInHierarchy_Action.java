@@ -15,7 +15,6 @@ import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.hierarchy.BaseLanguageHierarchyViewTool;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.nodeEditor.cells.APICellAdapter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -68,11 +67,7 @@ public class ShowClassInHierarchy_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final BaseLanguageHierarchyViewTool tool = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(BaseLanguageHierarchyViewTool.class);
-    SNodeReference c = new ModelAccessHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess()).runReadAction(new Computable<SNodeReference>() {
-      public SNodeReference compute() {
-        return SNodeOperations.getPointer(ShowClassInHierarchy_Action.this.getContextClassifier(event));
-      }
-    });
+    SNodeReference c = new ModelAccessHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess()).runReadAction(() -> SNodeOperations.getPointer(ShowClassInHierarchy_Action.this.getContextClassifier(event)));
     tool.showItemInHierarchy(c);
     tool.openToolLater(true);
   }

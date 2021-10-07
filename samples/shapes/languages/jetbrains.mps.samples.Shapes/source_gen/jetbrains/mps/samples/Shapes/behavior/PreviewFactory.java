@@ -22,14 +22,12 @@ public final class PreviewFactory {
       @Override
       protected void paintComponent(final Graphics graphics) {
         super.paintComponent(graphics);
-        SNodeOperations.getModel(thisCanvas).getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            ListSequence.fromList(SLinkOperations.getChildren(thisCanvas, LINKS.shapes$8c6y)).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode it) {
-                Shape__BehaviorDescriptor.drawShape_idW6XMzE_hbz.invoke(it, graphics);
-              }
-            });
-          }
+        SNodeOperations.getModel(thisCanvas).getRepository().getModelAccess().runReadAction(() -> {
+          ListSequence.fromList(SLinkOperations.getChildren(thisCanvas, LINKS.shapes$8c6y)).visitAll(new IVisitor<SNode>() {
+            public void visit(SNode it) {
+              Shape__BehaviorDescriptor.drawShape_idW6XMzE_hbz.invoke(it, graphics);
+            }
+          });
         });
       }
 

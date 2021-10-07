@@ -73,19 +73,17 @@ public class FindUsagesOfDeprecated_Action extends BaseAction {
       @Override
       public void run(@NotNull final ProgressIndicator indicator) {
         indicator.setIndeterminate(true);
-        event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            Set<SModule> theirModules = SetSequence.fromSetWithValues(new HashSet<SModule>(), event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModules());
-            SetSequence.fromSet(theirModules).removeSequence(ListSequence.fromList(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModulesWithGenerators()));
-            Map<SNode, DeprecatedNodeProperties> depLibs = DeprecatedUtil.usagesOfDeprecated(new ModulesScope(theirModules), event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope());
-            Map<SNode, DeprecatedNodeProperties> depProj = DeprecatedUtil.usagesOfDeprecated(event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope(), event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope());
+        event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> {
+          Set<SModule> theirModules = SetSequence.fromSetWithValues(new HashSet<SModule>(), event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModules());
+          SetSequence.fromSet(theirModules).removeSequence(ListSequence.fromList(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModulesWithGenerators()));
+          Map<SNode, DeprecatedNodeProperties> depLibs = DeprecatedUtil.usagesOfDeprecated(new ModulesScope(theirModules), event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope());
+          Map<SNode, DeprecatedNodeProperties> depProj = DeprecatedUtil.usagesOfDeprecated(event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope(), event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope());
 
-            CategoryKind locationCategoryKind = CategoryKind.DEFAULT_CATEGORY_KIND;
-            Pair c1 = new Pair(locationCategoryKind, "Deprecated Library Code");
-            myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(depLibs, c1)).toListSequence());
-            Pair c2 = new Pair(locationCategoryKind, "Deprecated Project Code");
-            myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(depProj, c2)).toListSequence());
-          }
+          CategoryKind locationCategoryKind = CategoryKind.DEFAULT_CATEGORY_KIND;
+          Pair c1 = new Pair(locationCategoryKind, "Deprecated Library Code");
+          myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(depLibs, c1)).toListSequence());
+          Pair c2 = new Pair(locationCategoryKind, "Deprecated Project Code");
+          myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(depProj, c2)).toListSequence());
         });
       }
       @Override

@@ -53,7 +53,6 @@
     <classNode dependClassName="java.util.Iterator" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />
-    <classNode dependClassName="java.util.function.Supplier" />
     <classNode dependClassName="jetbrains.mps.extapi.module.SModuleBase" />
     <classNode dependClassName="jetbrains.mps.extapi.persistence.DefaultSourceRoot" />
     <classNode dependClassName="jetbrains.mps.extapi.persistence.FileBasedModelRoot" />

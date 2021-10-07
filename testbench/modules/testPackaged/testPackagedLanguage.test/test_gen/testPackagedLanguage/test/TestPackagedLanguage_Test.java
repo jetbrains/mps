@@ -32,63 +32,53 @@ public class TestPackagedLanguage_Test extends EnvironmentAwareTestCase {
   /*package*/ SRepository projectRepository;
   @Test
   public void test_testLanguagePresent() throws Exception {
-    projectRepository.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SModule language = testPackagedLanguageModule();
-        Assert.assertNotNull(language);
-        Assert.assertTrue(language instanceof Language);
-      }
+    projectRepository.getModelAccess().runReadAction(() -> {
+      SModule language = testPackagedLanguageModule();
+      Assert.assertNotNull(language);
+      Assert.assertTrue(language instanceof Language);
     });
   }
   @Test
   public void test_testStructureModel() throws Exception {
-    projectRepository.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SModel struc = SModuleOperations.getAspect(testPackagedLanguageModule(), "structure");
-        Assert.assertNotNull(struc);
-        Assert.assertEquals(ListSequence.fromList(SModelOperations.roots(struc, null)).count(), 1);
-      }
+    projectRepository.getModelAccess().runReadAction(() -> {
+      SModel struc = SModuleOperations.getAspect(testPackagedLanguageModule(), "structure");
+      Assert.assertNotNull(struc);
+      Assert.assertEquals(ListSequence.fromList(SModelOperations.roots(struc, null)).count(), 1);
     });
   }
   @Test
   public void test_testEditorModel() throws Exception {
-    projectRepository.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SModel editor = SModuleOperations.getAspect(testPackagedLanguageModule(), "editor");
-        Assert.assertNotNull(editor);
-        Assert.assertEquals(ListSequence.fromList(SModelOperations.roots(editor, null)).count(), 1);
-      }
+    projectRepository.getModelAccess().runReadAction(() -> {
+      SModel editor = SModuleOperations.getAspect(testPackagedLanguageModule(), "editor");
+      Assert.assertNotNull(editor);
+      Assert.assertEquals(ListSequence.fromList(SModelOperations.roots(editor, null)).count(), 1);
     });
   }
   @Test
   public void test_testIcons() throws Exception {
-    projectRepository.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        IconLoader.activate();
-        GlobalIconManager iconManager = GlobalIconManager.getInstance();
-        Icon icon = iconManager.getIconFor(CONCEPTS.TestConcept$ND);
-        Assert.assertNotNull(icon);
-        Assert.assertEquals(icon.getIconWidth(), 16);
-        Assert.assertEquals(icon.getIconHeight(), 16);
-      }
+    projectRepository.getModelAccess().runReadAction(() -> {
+      IconLoader.activate();
+      GlobalIconManager iconManager = GlobalIconManager.getInstance();
+      Icon icon = iconManager.getIconFor(CONCEPTS.TestConcept$ND);
+      Assert.assertNotNull(icon);
+      Assert.assertEquals(icon.getIconWidth(), 16);
+      Assert.assertEquals(icon.getIconHeight(), 16);
     });
   }
   @Test
   public void test_testStubs() throws Exception {
-    projectRepository.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SModel libraryModel = null;
-        SModelName expected = new SModelName("dummy@java_stub");
-        for (SModel m : testPackagedLanguageModule().getModels()) {
-          if (expected.equals(m.getName())) {
-            libraryModel = m;
-            break;
-          }
+    projectRepository.getModelAccess().runReadAction(() -> {
+      SModel libraryModel = null;
+      SModelName expected = new SModelName("dummy@java_stub");
+      for (SModel m : testPackagedLanguageModule().getModels()) {
+        if (expected.equals(m.getName())) {
+          libraryModel = m;
+          break;
         }
-        Assert.assertNotNull(libraryModel);
-        Assert.assertEquals(ListSequence.fromList(SModelOperations.roots(libraryModel, null)).count(), 1);
-        Assert.assertEquals(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SModelOperations.roots(libraryModel, null)).first(), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL), "DummyLibraryClass");
       }
+      Assert.assertNotNull(libraryModel);
+      Assert.assertEquals(ListSequence.fromList(SModelOperations.roots(libraryModel, null)).count(), 1);
+      Assert.assertEquals(SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(SModelOperations.roots(libraryModel, null)).first(), CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL), "DummyLibraryClass");
     });
   }
   @Before

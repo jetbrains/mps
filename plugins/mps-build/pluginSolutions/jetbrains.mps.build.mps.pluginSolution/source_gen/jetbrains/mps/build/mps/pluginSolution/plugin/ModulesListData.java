@@ -6,7 +6,6 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.LinkedList;
 import org.jetbrains.mps.openapi.module.SModule;
-import java.util.Comparator;
 import javax.swing.Icon;
 
 public class ModulesListData implements NodeData {
@@ -17,11 +16,7 @@ public class ModulesListData implements NodeData {
       ModuleData moduleData = new ModuleData(m);
       ListSequence.fromList(this.myModules).addElement(moduleData);
     }
-    ListSequence.fromList(this.myModules).sort(new Comparator<ModuleData>() {
-      public int compare(ModuleData p0, ModuleData p1) {
-        return p0.getText().compareToIgnoreCase(p1.getText());
-      }
-    }, true);
+    ListSequence.fromList(this.myModules).sort((ModuleData p0, ModuleData p1) -> p0.getText().compareToIgnoreCase(p1.getText()), true);
   }
 
   @Override

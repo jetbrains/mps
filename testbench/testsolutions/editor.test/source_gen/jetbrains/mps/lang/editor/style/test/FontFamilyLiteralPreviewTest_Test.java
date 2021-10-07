@@ -11,7 +11,6 @@ import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import org.junit.Assert;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
-import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import java.util.Objects;
@@ -39,11 +38,7 @@ public class FontFamilyLiteralPreviewTest_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("491383275436120141", "");
-      Assert.assertNotNull(CellFinderUtil.findChildByCondition(getEditorComponent().getRootCell(), new Condition<EditorCell>() {
-        public boolean met(EditorCell it) {
-          return EditorCell_Label.class.isInstance(it) && Objects.equals(((EditorCell_Label) it).getFont().getFamily(), "Serif");
-        }
-      }, true, true));
+      Assert.assertNotNull(CellFinderUtil.findChildByCondition(getEditorComponent().getRootCell(), (EditorCell it) -> EditorCell_Label.class.isInstance(it) && Objects.equals(((EditorCell_Label) it).getFont().getFamily(), "Serif"), true, true));
     }
   }
 }

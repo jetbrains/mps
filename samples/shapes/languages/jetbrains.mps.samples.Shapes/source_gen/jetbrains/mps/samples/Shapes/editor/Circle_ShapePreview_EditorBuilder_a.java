@@ -189,22 +189,16 @@ import org.jetbrains.mps.openapi.language.SConcept;
       protected void paintComponent(final Graphics graphics) {
         setOpaque(false);
         super.paintComponent(graphics);
-        SNodeOperations.getModel(myNode).getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            Shape__BehaviorDescriptor.drawShapeAt_id3u6SZi0POQS.invoke(myNode, graphics, ((int) 10), ((int) 10));
-          }
-        });
+        SNodeOperations.getModel(myNode).getRepository().getModelAccess().runReadAction(() -> Shape__BehaviorDescriptor.drawShapeAt_id3u6SZi0POQS.invoke(myNode, graphics, ((int) 10), ((int) 10)));
       }
 
       @Override
       public Dimension getPreferredSize() {
         final Dimension dimension = new Dimension();
 
-        SNodeOperations.getModel(myNode).getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            dimension.width = 20 + SPropertyOperations.getInteger(myNode, PROPS.radius$ww3I);
-            dimension.height = 20 + SPropertyOperations.getInteger(myNode, PROPS.radius$ww3I);
-          }
+        SNodeOperations.getModel(myNode).getRepository().getModelAccess().runReadAction(() -> {
+          dimension.width = 20 + SPropertyOperations.getInteger(myNode, PROPS.radius$ww3I);
+          dimension.height = 20 + SPropertyOperations.getInteger(myNode, PROPS.radius$ww3I);
         });
         return dimension;
       }

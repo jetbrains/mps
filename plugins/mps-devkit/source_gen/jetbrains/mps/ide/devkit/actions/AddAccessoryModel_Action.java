@@ -73,45 +73,39 @@ public class AddAccessoryModel_Action extends BaseAction {
     final SRepository repository = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
     ModelAccess modelAccess = repository.getModelAccess();
 
-    modelAccess.runReadAction(new Runnable() {
-      public void run() {
-        // XXX perhaps, shall use scope based on project's repository
-        Iterable<SModel> descriptors = new FilteredGlobalScope(repository).getModels();
-        ListSequence.fromList(models).addSequence(Sequence.fromIterable(descriptors).select(new ISelector<SModel, SModelReference>() {
-          public SModelReference select(SModel it) {
-            return it.getReference();
-          }
-        }));
-      }
+    modelAccess.runReadAction(() -> {
+      // XXX perhaps, shall use scope based on project's repository
+      Iterable<SModel> descriptors = new FilteredGlobalScope(repository).getModels();
+      ListSequence.fromList(models).addSequence(Sequence.fromIterable(descriptors).select(new ISelector<SModel, SModelReference>() {
+        public SModelReference select(SModel it) {
+          return it.getReference();
+        }
+      }));
     });
     final SModelReference result = CommonChoosers.showModelChooser(((MPSProject) MapSequence.fromMap(_params).get("project")), null, models);
     if (result == null) {
       return;
     }
     final Wrappers._boolean visibleFromModule = new Wrappers._boolean(true);
-    modelAccess.runReadAction(new Runnable() {
-      public void run() {
-        SModel md = result.resolve(repository);
-        visibleFromModule.value = VisibilityUtil.isVisible(language, md);
-      }
+    modelAccess.runReadAction(() -> {
+      SModel md = result.resolve(repository);
+      visibleFromModule.value = VisibilityUtil.isVisible(language, md);
     });
 
     final boolean importModuleDependency = !(visibleFromModule.value) && Messages.showYesNoDialog(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), String.format("<html>Model <b>%s</b> is added to accessories<br>Do you also want to add containing module to dependency?</html>", result.getName()), "Add Dependency", Messages.getQuestionIcon()) == Messages.YES;
 
-    modelAccess.executeCommand(new Runnable() {
-      public void run() {
-        // see MPS-18743
-        repository.saveAll();
-        LanguageDescriptor descriptor;
-        descriptor = language.getModuleDescriptor();
-        descriptor.getAccessoryModels().add(result);
-        language.setModuleDescriptor(descriptor);
-        if (importModuleDependency) {
-          SModel md = result.resolve(repository);
-          language.addDependency(md.getModule().getModuleReference(), false);
-        }
-        language.save();
+    modelAccess.executeCommand(() -> {
+      // see MPS-18743
+      repository.saveAll();
+      LanguageDescriptor descriptor;
+      descriptor = language.getModuleDescriptor();
+      descriptor.getAccessoryModels().add(result);
+      language.setModuleDescriptor(descriptor);
+      if (importModuleDependency) {
+        SModel md = result.resolve(repository);
+        language.addDependency(md.getModule().getModuleReference(), false);
       }
+      language.save();
     });
   }
   public boolean moduleCondition(SModule parameter) {

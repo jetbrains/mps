@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import java.util.function.Function;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeRoot;
 import java.util.Map;
@@ -51,11 +50,7 @@ public class ConceptDeclaration_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return _context.getScopeEvaluationContext().ofModel(_context.getModel(), "j.m.l.structure.CD", new Function<SModel, Scope>() {
-              public Scope apply(SModel m) {
-                return (Scope) Scopes.forConcepts(m, CONCEPTS.ConceptDeclaration$gH);
-              }
-            });
+            return _context.getScopeEvaluationContext().ofModel(_context.getModel(), "j.m.l.structure.CD", (SModel m) -> (Scope) Scopes.forConcepts(m, CONCEPTS.ConceptDeclaration$gH));
           }
         };
       }

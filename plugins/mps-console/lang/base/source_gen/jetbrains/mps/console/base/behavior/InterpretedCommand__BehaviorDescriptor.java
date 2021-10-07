@@ -32,16 +32,10 @@ public final class InterpretedCommand__BehaviorDescriptor extends BaseBHDescript
   }
 
   /*package*/ static void execute_id5WvH$QO9bva(@NotNull final SNode __thisNode__, final ConsoleContext context, final ConsoleStream console, final Runnable beforeCallback, final Runnable afterCallback) {
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        beforeCallback.run();
-        context.getProject().getRepository().getModelAccess().executeCommand(new Runnable() {
-          public void run() {
-            InterpretedCommand__BehaviorDescriptor.doExecute_id2SpVAIqougW.invoke(__thisNode__, context, console);
-          }
-        });
-        afterCallback.run();
-      }
+    SwingUtilities.invokeLater(() -> {
+      beforeCallback.run();
+      context.getProject().getRepository().getModelAccess().executeCommand(() -> InterpretedCommand__BehaviorDescriptor.doExecute_id2SpVAIqougW.invoke(__thisNode__, context, console));
+      afterCallback.run();
     });
   }
 

@@ -328,11 +328,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
   @Override
   public void flushAllEvents() {
     checkInitialized();
-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-      public void run() {
-        PlatformTestUtil.dispatchAllEventsInIdeEventQueue();
-      }
-    }, ModalityState.NON_MODAL);
+    ApplicationManager.getApplication().invokeAndWait(() -> PlatformTestUtil.dispatchAllEventsInIdeEventQueue(), ModalityState.NON_MODAL);
     // There's no evidence invokeAndWait() above won't pump all the pending model events, why do it again?
   }
 

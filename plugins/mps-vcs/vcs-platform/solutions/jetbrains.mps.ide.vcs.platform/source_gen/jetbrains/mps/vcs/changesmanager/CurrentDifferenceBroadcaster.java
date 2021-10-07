@@ -52,65 +52,37 @@ import java.util.List;
 
   @Override
   public void changeAdded(@NotNull final ModelChange change) {
-    fireEvent("changeAdded", new _FunctionTypes._void_P1_E0<CurrentDifferenceListener>() {
-      public void invoke(CurrentDifferenceListener listener) {
-        listener.changeAdded(change);
-      }
-    });
+    fireEvent("changeAdded", (CurrentDifferenceListener listener) -> listener.changeAdded(change));
   }
 
   @Override
   public void changeRemoved(@NotNull final ModelChange change) {
-    fireEvent("changeRemoved", new _FunctionTypes._void_P1_E0<CurrentDifferenceListener>() {
-      public void invoke(CurrentDifferenceListener listener) {
-        listener.changeRemoved(change);
-      }
-    });
+    fireEvent("changeRemoved", (CurrentDifferenceListener listener) -> listener.changeRemoved(change));
   }
 
   @Override
   public void changeUpdateStarted() {
-    fireEvent("changeUpdateStarted", new _FunctionTypes._void_P1_E0<CurrentDifferenceListener>() {
-      public void invoke(CurrentDifferenceListener listener) {
-        listener.changeUpdateStarted();
-      }
-    });
+    fireEvent("changeUpdateStarted", (CurrentDifferenceListener listener) -> listener.changeUpdateStarted());
   }
 
   @Override
   public void changeUpdateFinished() {
-    fireEvent("changeUpdateFinished", new _FunctionTypes._void_P1_E0<CurrentDifferenceListener>() {
-      public void invoke(CurrentDifferenceListener listener) {
-        listener.changeUpdateFinished();
-      }
-    });
+    fireEvent("changeUpdateFinished", (CurrentDifferenceListener listener) -> listener.changeUpdateFinished());
   }
 
   @Override
   public void modelStatusChanged(@NotNull final SModelReference reference) {
-    fireEvent("modelStatusChange", new _FunctionTypes._void_P1_E0<CurrentDifferenceListener>() {
-      public void invoke(CurrentDifferenceListener listener) {
-        listener.modelStatusChanged(reference);
-      }
-    });
+    fireEvent("modelStatusChange", (CurrentDifferenceListener listener) -> listener.modelStatusChanged(reference));
   }
 
   @Override
   public void changesAdded(@NotNull final List<ModelChange> changes) {
-    fireEvent("changesAdded", new _FunctionTypes._void_P1_E0<CurrentDifferenceListener>() {
-      public void invoke(CurrentDifferenceListener listener) {
-        listener.changesAdded(changes);
-      }
-    });
+    fireEvent("changesAdded", (CurrentDifferenceListener listener) -> listener.changesAdded(changes));
   }
 
   @Override
   public void changesRemoved(@NotNull final List<ModelChange> changes) {
-    fireEvent("changesRemoved", new _FunctionTypes._void_P1_E0<CurrentDifferenceListener>() {
-      public void invoke(CurrentDifferenceListener listener) {
-        listener.changesRemoved(changes);
-      }
-    });
+    fireEvent("changesRemoved", (CurrentDifferenceListener listener) -> listener.changesRemoved(changes));
   }
 
   public void setEnabled(boolean enabled) {

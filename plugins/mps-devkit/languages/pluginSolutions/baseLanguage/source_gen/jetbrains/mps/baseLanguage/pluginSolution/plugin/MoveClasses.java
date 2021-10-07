@@ -54,17 +54,9 @@ public class MoveClasses extends MoveNodesActionBase implements MoveNodesAction 
   public void execute(final MPSProject project, final List<SNode> nodesToMove) {
     final Wrappers._T<NodeLocation> newLocation = new Wrappers._T<NodeLocation>();
     final Wrappers._boolean isMember = new Wrappers._boolean();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        isMember.value = SNodeOperations.hasRole(ListSequence.fromList(nodesToMove).first(), LINKS.member$L_2d);
-      }
-    });
+    project.getRepository().getModelAccess().runReadAction(() -> isMember.value = SNodeOperations.hasRole(ListSequence.fromList(nodesToMove).first(), LINKS.member$L_2d));
     if (isMember.value) {
-      project.getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          newLocation.value = new NodeLocation.NodeLocationRoot(SNodeOperations.getModel(ListSequence.fromList(nodesToMove).first()));
-        }
-      });
+      project.getRepository().getModelAccess().runReadAction(() -> newLocation.value = new NodeLocation.NodeLocationRoot(SNodeOperations.getModel(ListSequence.fromList(nodesToMove).first())));
     } else {
       newLocation.value = askLocation(project, nodesToMove);
     }

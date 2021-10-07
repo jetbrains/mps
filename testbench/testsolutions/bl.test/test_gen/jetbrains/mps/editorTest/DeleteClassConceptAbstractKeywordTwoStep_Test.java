@@ -35,12 +35,10 @@ public class DeleteClassConceptAbstractKeywordTwoStep_Test extends BaseTransform
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5758795789001482522", "5758795789001482527");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          Assert.assertTrue(getEditorComponent().getDeletionApprover().isApprovedForDeletion(getEditorComponent().getSelectedCell()));
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+        Assert.assertTrue(getEditorComponent().getDeletionApprover().isApprovedForDeletion(getEditorComponent().getSelectedCell()));
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
       }, true);
 
     }

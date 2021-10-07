@@ -60,15 +60,7 @@ public class RunProjectMigration_Action extends BaseAction {
       public void run(@NotNull ProgressIndicator progressIndicator) {
         progressIndicator.setText(RunProjectMigration_Action.this.script.getDescription());
         progressIndicator.setIndeterminate(true);
-        WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
-          public void run() {
-            event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().executeCommand(new Runnable() {
-              public void run() {
-                RunProjectMigration_Action.this.script.execute(event.getData(MPSCommonDataKeys.MPS_PROJECT));
-              }
-            });
-          }
-        });
+        WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().executeCommand(() -> RunProjectMigration_Action.this.script.execute(event.getData(MPSCommonDataKeys.MPS_PROJECT))));
       }
     });
 

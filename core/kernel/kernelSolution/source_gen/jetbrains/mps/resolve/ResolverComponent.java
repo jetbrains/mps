@@ -18,18 +18,16 @@ import java.util.Iterator;
 @GeneratedClass(node = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)/3840495236046418263", model = "r:f77c2bf1-6f5c-4cb2-b314-a84dd502542e(jetbrains.mps.resolve)")
 public class ResolverComponent implements CoreComponent {
   private static ResolverComponent INSTANCE;
-  private static Comparator<SReference> REFERENCE_COMPARATOR = new Comparator<SReference>() {
-    public int compare(SReference first, SReference second) {
-      SNode firstNode = first.getSourceNode();
-      SNode secondNode = second.getSourceNode();
-      if (SNodeOperations.isAncestor(firstNode, secondNode)) {
-        return 1;
-      }
-      if (SNodeOperations.isAncestor(secondNode, firstNode)) {
-        return -1;
-      }
-      return 0;
+  private static Comparator<SReference> REFERENCE_COMPARATOR = (SReference first, SReference second) -> {
+    SNode firstNode = first.getSourceNode();
+    SNode secondNode = second.getSourceNode();
+    if (SNodeOperations.isAncestor(firstNode, secondNode)) {
+      return 1;
     }
+    if (SNodeOperations.isAncestor(secondNode, firstNode)) {
+      return -1;
+    }
+    return 0;
   };
   private List<IResolver> myResolvers;
   private ScopeResolver myScopeResolver;

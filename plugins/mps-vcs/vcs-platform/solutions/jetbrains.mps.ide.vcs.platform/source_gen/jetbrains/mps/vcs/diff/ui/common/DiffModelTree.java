@@ -29,7 +29,6 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.tree.TreePath;
 import java.util.Objects;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import javax.swing.tree.DefaultTreeModel;
 import com.intellij.util.ui.tree.TreeUtil;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -63,11 +62,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
         if (value instanceof TreeNode) {
           final TreeNode tn = (TreeNode) value;
           // FIXME this code is poor, need to check TreeNode subclasses if they really care to have model access
-          myRepo.getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              tn.doUpdatePresentation();
-            }
-          });
+          myRepo.getModelAccess().runReadAction(() -> tn.doUpdatePresentation());
           tn.renderTreeNode(this);
         }
       }
@@ -166,11 +161,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
   }
 
   public void rebuildNow() {
-    TreeNode root = new ModelAccessHelper(myRepo).runReadAction(new Computable<TreeNode>() {
-      public TreeNode compute() {
-        return rebuild();
-      }
-    });
+    TreeNode root = new ModelAccessHelper(myRepo).runReadAction(() -> rebuild());
     setModel(new DefaultTreeModel(root));
     setRootVisible(true);
     TreeUtil.expandAll(this);

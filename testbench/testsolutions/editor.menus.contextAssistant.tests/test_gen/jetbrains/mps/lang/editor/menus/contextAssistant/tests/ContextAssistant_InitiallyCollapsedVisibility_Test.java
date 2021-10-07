@@ -39,15 +39,13 @@ public class ContextAssistant_InitiallyCollapsedVisibility_Test extends BaseTran
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("379023083996637842", "");
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          ContextAssistantManager contextAssistantManager = getEditorComponent().getEditorContext().getContextAssistantManager();
-          contextAssistantManager.updateImmediately();
-          Set<EditorCell_WithComponent> componentCells = getEditorComponent().getCellTracker().getComponentCells();
-          Assert.assertFalse(componentCells.isEmpty());
-          for (EditorCell_WithComponent cell : SetSequence.fromSet(componentCells)) {
-            Assert.assertFalse(cell.getComponent().isVisible());
-          }
+      SwingUtilities.invokeAndWait(() -> {
+        ContextAssistantManager contextAssistantManager = getEditorComponent().getEditorContext().getContextAssistantManager();
+        contextAssistantManager.updateImmediately();
+        Set<EditorCell_WithComponent> componentCells = getEditorComponent().getCellTracker().getComponentCells();
+        Assert.assertFalse(componentCells.isEmpty());
+        for (EditorCell_WithComponent cell : SetSequence.fromSet(componentCells)) {
+          Assert.assertFalse(cell.getComponent().isVisible());
         }
       });
     }

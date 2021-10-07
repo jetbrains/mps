@@ -34,11 +34,7 @@ public class AddFinalAfterClass_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6136581231959461231", "6136581231959461236");
-      EditorTestUtil.runWithTypeOverExistingText(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          typeString(" final");
-        }
-      }, false);
+      EditorTestUtil.runWithTypeOverExistingText(() -> typeString(" final"), false);
       typeString("final");
     }
   }

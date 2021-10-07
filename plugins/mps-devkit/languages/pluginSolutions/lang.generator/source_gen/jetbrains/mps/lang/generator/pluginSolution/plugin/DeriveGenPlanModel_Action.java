@@ -63,26 +63,24 @@ public class DeriveGenPlanModel_Action extends BaseAction {
       return;
     }
     final SRepository repository = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository();
-    repository.getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        GenPlanFunnel gpf = new GenPlanFunnel(repository, event.getData(MPSCommonDataKeys.NODE));
-        if (dialog.useLanguageInSteps()) {
-          gpf.transformLanguages();
-        } else {
-          gpf.applyGenerators();
+    repository.getModelAccess().executeCommand(() -> {
+      GenPlanFunnel gpf = new GenPlanFunnel(repository, event.getData(MPSCommonDataKeys.NODE));
+      if (dialog.useLanguageInSteps()) {
+        gpf.transformLanguages();
+      } else {
+        gpf.applyGenerators();
+      }
+      gpf.distinctSteps(dialog.isDistinctStep());
+      SModel sampleModel = dialog.getSelectedModel().resolve(repository);
+      GenerationPlan plan = new GenerationPlan(sampleModel);
+      for (ModelGenerationPlan.Step step : plan.getSteps()) {
+        if (!(step instanceof ModelGenerationPlan.Transform)) {
+          continue;
         }
-        gpf.distinctSteps(dialog.isDistinctStep());
-        SModel sampleModel = dialog.getSelectedModel().resolve(repository);
-        GenerationPlan plan = new GenerationPlan(sampleModel);
-        for (ModelGenerationPlan.Step step : plan.getSteps()) {
-          if (!(step instanceof ModelGenerationPlan.Transform)) {
-            continue;
-          }
-          ModelGenerationPlan.Transform ts = ((ModelGenerationPlan.Transform) step);
-          for (TemplateMappingConfiguration tmc : ts.getTransformations()) {
-            SModuleReference generatorModuleRef = tmc.getModel().getModule().getModuleReference();
-            gpf.next(generatorModuleRef);
-          }
+        ModelGenerationPlan.Transform ts = ((ModelGenerationPlan.Transform) step);
+        for (TemplateMappingConfiguration tmc : ts.getTransformations()) {
+          SModuleReference generatorModuleRef = tmc.getModel().getModule().getModuleReference();
+          gpf.next(generatorModuleRef);
         }
       }
     });

@@ -72,34 +72,32 @@ public class DependencyTree extends MPSTree {
       }
       final SRepository projectRepo = myParent.getProject().getRepository();
       final DependencyViewerScope scope = new DependencyViewerScope(projectRepo);
-      projectRepo.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          for (TreePath path : paths) {
-            MPSTreeNode node = (MPSTreeNode) path.getLastPathComponent();
-            if (node instanceof SModelTreeNode) {
-              scope.add(((SModelTreeNode) node).getModel());
-            }
-            if (node instanceof ProjectModuleTreeNode) {
-              scope.add(((ProjectModuleTreeNode) node).getModule());
-            }
-            if (node instanceof SNodeTreeNode) {
-              scope.add(((SNodeTreeNode) node).getSNode());
-            }
-            if (node instanceof NamespaceTextNode) {
-              for (SModule module : ((NamespaceTextNode) node).getModulesUnder()) {
-                scope.add(module);
-              }
-              for (SModel model : ((NamespaceTextNode) node).getModelsUnder()) {
-                scope.add(model);
-              }
-            }
-            if (node instanceof PackageNode) {
-              for (SNode nodeUnder : ((PackageNode) node).getNodesUnderPackage()) {
-                scope.add(nodeUnder);
-              }
-            }
-
+      projectRepo.getModelAccess().runReadAction(() -> {
+        for (TreePath path : paths) {
+          MPSTreeNode node = (MPSTreeNode) path.getLastPathComponent();
+          if (node instanceof SModelTreeNode) {
+            scope.add(((SModelTreeNode) node).getModel());
           }
+          if (node instanceof ProjectModuleTreeNode) {
+            scope.add(((ProjectModuleTreeNode) node).getModule());
+          }
+          if (node instanceof SNodeTreeNode) {
+            scope.add(((SNodeTreeNode) node).getSNode());
+          }
+          if (node instanceof NamespaceTextNode) {
+            for (SModule module : ((NamespaceTextNode) node).getModulesUnder()) {
+              scope.add(module);
+            }
+            for (SModel model : ((NamespaceTextNode) node).getModelsUnder()) {
+              scope.add(model);
+            }
+          }
+          if (node instanceof PackageNode) {
+            for (SNode nodeUnder : ((PackageNode) node).getNodesUnderPackage()) {
+              scope.add(nodeUnder);
+            }
+          }
+
         }
       });
       myParent.updateTargetsView(scope);

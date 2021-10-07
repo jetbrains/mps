@@ -45,14 +45,12 @@ public class ScriptsActionGroupHelper {
     return migrationScripts;
   }
   public static void populateByCategoryGroup(List<SNode> migrationScripts, BaseGroup ownerGroup, boolean applyToSelection) {
-    _FunctionTypes._return_P1_E0<? extends String, ? super SNode> getCategoryClosure = new _FunctionTypes._return_P1_E0<String, SNode>() {
-      public String invoke(SNode script) {
-        String cat = NameUtil.pluralize(NameUtil.capitalize(SEnumOperations.getMemberName0(SPropertyOperations.getEnum(script, PROPS.type$NwlS))));
-        if (cat == null) {
-          cat = "<uncategorized>";
-        }
-        return cat;
+    _FunctionTypes._return_P1_E0<? extends String, ? super SNode> getCategoryClosure = (SNode script) -> {
+      String cat = NameUtil.pluralize(NameUtil.capitalize(SEnumOperations.getMemberName0(SPropertyOperations.getEnum(script, PROPS.type$NwlS))));
+      if (cat == null) {
+        cat = "<uncategorized>";
       }
+      return cat;
     };
     Map<String, List<SNode>> byCategory = groupBy(migrationScripts, getCategoryClosure);
     Set<String> sorted = new TreeSet<String>(new Comparator<String>() {
@@ -70,11 +68,7 @@ public class ScriptsActionGroupHelper {
     sorted.addAll(MapSequence.fromMap(byCategory).keySet());
     for (String cat : sorted) {
       BaseGroup categoryGroup = createGroup(cat, ownerGroup);
-      _FunctionTypes._return_P1_E0<? extends String, ? super SNode> getBuildClosure = new _FunctionTypes._return_P1_E0<String, SNode>() {
-        public String invoke(SNode script) {
-          return (SPropertyOperations.getString(script, PROPS.toBuild$NwNU) == null ? "" : SPropertyOperations.getString(script, PROPS.toBuild$NwNU));
-        }
-      };
+      _FunctionTypes._return_P1_E0<? extends String, ? super SNode> getBuildClosure = (SNode script) -> (SPropertyOperations.getString(script, PROPS.toBuild$NwNU) == null ? "" : SPropertyOperations.getString(script, PROPS.toBuild$NwNU));
       Map<String, List<SNode>> byBuild = groupBy(MapSequence.fromMap(byCategory).get(cat), getBuildClosure);
       if (SetSequence.fromSet(MapSequence.fromMap(byBuild).keySet()).count() > 1) {
         {

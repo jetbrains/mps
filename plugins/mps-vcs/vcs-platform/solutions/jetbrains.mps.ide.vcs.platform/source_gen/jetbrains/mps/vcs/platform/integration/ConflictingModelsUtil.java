@@ -11,7 +11,6 @@ import com.intellij.openapi.project.Project;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.TreeSet;
-import java.util.Comparator;
 import com.intellij.openapi.vcs.changes.Change;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import com.intellij.openapi.vcs.changes.ChangeListManager;
@@ -56,11 +55,7 @@ import org.jetbrains.annotations.Nullable;
 public class ConflictingModelsUtil {
   private static final Logger LOG = LogManager.getLogger(ConflictingModelsUtil.class);
   public static List<VirtualFile> getConflictingModelFiles(Project proj) {
-    Set<VirtualFile> conflictedFiles = SetSequence.fromSet(new TreeSet<VirtualFile>(new Comparator<VirtualFile>() {
-      public int compare(VirtualFile a, VirtualFile b) {
-        return a.getPresentableUrl().compareTo(b.getPresentableUrl());
-      }
-    }));
+    Set<VirtualFile> conflictedFiles = SetSequence.fromSet(new TreeSet<VirtualFile>((VirtualFile a, VirtualFile b) -> a.getPresentableUrl().compareTo(b.getPresentableUrl())));
     for (Change change : CollectionSequence.fromCollection(ChangeListManager.getInstance(proj).getAllChanges())) {
       if (change.getFileStatus() == FileStatus.MERGED_WITH_CONFLICTS) {
         ContentRevision before = change.getBeforeRevision();
@@ -127,11 +122,7 @@ public class ConflictingModelsUtil {
           }
 
           final Wrappers._T<MergeSession> mergeSession = new Wrappers._T<MergeSession>();
-          ProjectHelper.getModelAccess(project).runReadAction(new Runnable() {
-            public void run() {
-              mergeSession.value = MergeSession.createMergeSession(baseModel, mineModel, repoModel);
-            }
-          });
+          ProjectHelper.getModelAccess(project).runReadAction(() -> mergeSession.value = MergeSession.createMergeSession(baseModel, mineModel, repoModel));
 
           int conflictingChangesCount = Sequence.fromIterable(mergeSession.value.getAllChanges()).where(new IWhereFilter<ModelChange>() {
             public boolean accept(ModelChange c) {
@@ -225,11 +216,7 @@ public class ConflictingModelsUtil {
 
           final Wrappers._T<MergeSession> mergeSession = new Wrappers._T<MergeSession>(null);
           // read action:
-          ma.runReadAction(new Runnable() {
-            public void run() {
-              mergeSession.value = MergeSession.createMergeSession(baseModel.value, mineModel.value, repoModel.value);
-            }
-          });
+          ma.runReadAction(() -> mergeSession.value = MergeSession.createMergeSession(baseModel.value, mineModel.value, repoModel.value));
           int conflictingChangesCount = Sequence.fromIterable(mergeSession.value.getAllChanges()).where(new IWhereFilter<ModelChange>() {
             public boolean accept(ModelChange c) {
               return Sequence.fromIterable(mergeSession.value.getConflictedWith(c)).isNotEmpty();
@@ -249,26 +236,24 @@ public class ConflictingModelsUtil {
             LOG.info("no conflicting changes in " + SModelOperations.getModelName(baseModel.value));
           }
           final Wrappers._T<byte[]> resultContent = new Wrappers._T<byte[]>(null);
-          ma.runReadAction(new Runnable() {
-            public void run() {
-              mergeSession.value.applyChanges(mergeSession.value.getAllChanges());
-              SModel resultModel = mergeSession.value.getResultModel();
-              if (resultModel == null) {
-              } else if (mergeSession.value.hasIdsToRestore()) {
-                if (LOG.isInfoEnabled()) {
-                  LOG.info(String.format("%s: node id duplication detected, should merge in UI.", SModelOperations.getModelName(baseModel.value)));
-                }
-              } else {
-                try {
-                  resultContent.value = VCSPersistenceUtil.saveModel(modelFactoryService, resultModel, file.getExtension(), ext.value);
-                } catch (Throwable error) {
-                  // this can be when saving in 9 persistence after merge with 8 persistence => leave it for UI merge
-                  if (baseModel.value instanceof PersistenceVersionAware && resultModel instanceof PersistenceVersionAware && ((PersistenceVersionAware) baseModel.value).getPersistenceVersion() == 8 && ((PersistenceVersionAware) resultModel).getPersistenceVersion() == 9) {
-                    ListSequence.fromList(myUnresolvedModelFiles).addElement(file);
-                  } else {
-                    if (LOG.isEnabledFor(Level.ERROR)) {
-                      LOG.error("Cannot save merge resulting model " + SModelOperations.getModelName(resultModel), error);
-                    }
+          ma.runReadAction(() -> {
+            mergeSession.value.applyChanges(mergeSession.value.getAllChanges());
+            SModel resultModel = mergeSession.value.getResultModel();
+            if (resultModel == null) {
+            } else if (mergeSession.value.hasIdsToRestore()) {
+              if (LOG.isInfoEnabled()) {
+                LOG.info(String.format("%s: node id duplication detected, should merge in UI.", SModelOperations.getModelName(baseModel.value)));
+              }
+            } else {
+              try {
+                resultContent.value = VCSPersistenceUtil.saveModel(modelFactoryService, resultModel, file.getExtension(), ext.value);
+              } catch (Throwable error) {
+                // this can be when saving in 9 persistence after merge with 8 persistence => leave it for UI merge
+                if (baseModel.value instanceof PersistenceVersionAware && resultModel instanceof PersistenceVersionAware && ((PersistenceVersionAware) baseModel.value).getPersistenceVersion() == 8 && ((PersistenceVersionAware) resultModel).getPersistenceVersion() == 9) {
+                  ListSequence.fromList(myUnresolvedModelFiles).addElement(file);
+                } else {
+                  if (LOG.isEnabledFor(Level.ERROR)) {
+                    LOG.error("Cannot save merge resulting model " + SModelOperations.getModelName(resultModel), error);
                   }
                 }
               }
@@ -277,22 +262,16 @@ public class ConflictingModelsUtil {
 
           if (resultContent.value != null) {
             final Wrappers._boolean isWritten = new Wrappers._boolean(false);
-            ThreadUtils.runInUIThreadAndWait(new Runnable() {
-              public void run() {
-                ApplicationManager.getApplication().runWriteAction(new Runnable() {
-                  public void run() {
-                    try {
-                      file.setBinaryContent(resultContent.value);
-                      isWritten.value = true;
-                    } catch (IOException e) {
-                      if (LOG.isEnabledFor(Level.ERROR)) {
-                        LOG.error("Cannot save merge result into " + file.getPath(), e);
-                      }
-                    }
-                  }
-                });
+            ThreadUtils.runInUIThreadAndWait(() -> ApplicationManager.getApplication().runWriteAction(() -> {
+              try {
+                file.setBinaryContent(resultContent.value);
+                isWritten.value = true;
+              } catch (IOException e) {
+                if (LOG.isEnabledFor(Level.ERROR)) {
+                  LOG.error("Cannot save merge result into " + file.getPath(), e);
+                }
               }
-            });
+            }));
             if (isWritten.value) {
               check_2bxr1q_a0a2a91a0a5a21h(mySession, file);
               VcsDirtyScopeManager.getInstance(myProject).fileDirty(file);

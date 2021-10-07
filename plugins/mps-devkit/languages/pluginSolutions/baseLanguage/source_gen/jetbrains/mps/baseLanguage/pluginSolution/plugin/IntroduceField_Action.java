@@ -8,7 +8,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.ModelComputeRunnable;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -48,11 +47,7 @@ public class IntroduceField_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    SNode nodeToRefactor = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
-      public SNode compute() {
-        return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false);
-      }
-    }).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
+    SNode nodeToRefactor = new ModelComputeRunnable<SNode>(() -> SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false)).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
     if (nodeToRefactor != null && ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("component")), Sequence.<EditorCell>singleton(((EditorComponent) MapSequence.fromMap(_params).get("component")).findNodeCell(nodeToRefactor)))) {
       return false;
     }
@@ -60,11 +55,7 @@ public class IntroduceField_Action extends BaseAction {
     if (applicable) {
       return applicable;
     }
-    SNode varToRefactor = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
-      public SNode compute() {
-        return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.LocalVariableDeclaration$41, true, false);
-      }
-    }).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
+    SNode varToRefactor = new ModelComputeRunnable<SNode>(() -> SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.LocalVariableDeclaration$41, true, false)).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
     if (ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("component")), Sequence.<EditorCell>singleton(((EditorComponent) MapSequence.fromMap(_params).get("component")).findNodeCell(varToRefactor)))) {
       return false;
     }
@@ -118,63 +109,45 @@ public class IntroduceField_Action extends BaseAction {
     final Wrappers._boolean mustBeStatic = new Wrappers._boolean();
     final Wrappers._T<List<SNode>> candidateClasses = new Wrappers._T<List<SNode>>();
 
-    SNode exprToRefactor = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
-      public SNode compute() {
-        return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false);
-      }
-    }).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
+    SNode exprToRefactor = new ModelComputeRunnable<SNode>(() -> SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false)).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
     SNode varToRefactor = null;
     if (exprToRefactor == null) {
-      varToRefactor = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
-        public SNode compute() {
-          return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.LocalVariableDeclaration$41, true, false);
-        }
-      }).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
+      varToRefactor = new ModelComputeRunnable<SNode>(() -> SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.LocalVariableDeclaration$41, true, false)).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
     }
     final SNode nodeToRefactor = (exprToRefactor != null ? exprToRefactor : varToRefactor);
 
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode current = SNodeOperations.getParent(nodeToRefactor);
-        while (current != null) {
-          if (SNodeOperations.isInstanceOf(current, CONCEPTS.StaticFieldDeclaration$jR) || SNodeOperations.isInstanceOf(current, CONCEPTS.StaticMethodDeclaration$FJ) || SNodeOperations.isInstanceOf(current, CONCEPTS.StaticInitializer$Ev)) {
-            mustBeStatic.value = true;
-            break;
-          }
-          if (SNodeOperations.isInstanceOf(current, CONCEPTS.FieldDeclaration$ie) || SNodeOperations.isInstanceOf(current, CONCEPTS.InstanceMethodDeclaration$39) || SNodeOperations.isInstanceOf(current, CONCEPTS.InstanceInitializer$4x)) {
-            mustBeStatic.value = false;
-            break;
-          }
-          current = SNodeOperations.getParent(current);
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(() -> {
+      SNode current = SNodeOperations.getParent(nodeToRefactor);
+      while (current != null) {
+        if (SNodeOperations.isInstanceOf(current, CONCEPTS.StaticFieldDeclaration$jR) || SNodeOperations.isInstanceOf(current, CONCEPTS.StaticMethodDeclaration$FJ) || SNodeOperations.isInstanceOf(current, CONCEPTS.StaticInitializer$Ev)) {
+          mustBeStatic.value = true;
+          break;
         }
-        candidateClasses.value = ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToRefactor, CONCEPTS.ClassConcept$bK, false)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt));
-          }
-        }).toListSequence();
+        if (SNodeOperations.isInstanceOf(current, CONCEPTS.FieldDeclaration$ie) || SNodeOperations.isInstanceOf(current, CONCEPTS.InstanceMethodDeclaration$39) || SNodeOperations.isInstanceOf(current, CONCEPTS.InstanceInitializer$4x)) {
+          mustBeStatic.value = false;
+          break;
+        }
+        current = SNodeOperations.getParent(current);
       }
+      candidateClasses.value = ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToRefactor, CONCEPTS.ClassConcept$bK, false)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt));
+        }
+      }).toListSequence();
     });
 
     final Wrappers._T<SNode> desiredTargetClass = new Wrappers._T<SNode>();
     if (ListSequence.fromList(candidateClasses.value).count() > 1) {
       final NodeChooserDialog classChooser = new NodeChooserDialog(((Project) MapSequence.fromMap(_params).get("project")), candidateClasses.value);
       classChooser.show();
-      ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          desiredTargetClass.value = (classChooser.getResult() != null ? SNodeOperations.as(classChooser.getResult().resolve(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository()), CONCEPTS.ClassConcept$bK) : null);
-        }
-      });
+      ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(() -> desiredTargetClass.value = (classChooser.getResult() != null ? SNodeOperations.as(classChooser.getResult().resolve(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository()), CONCEPTS.ClassConcept$bK) : null));
     } else {
       desiredTargetClass.value = ListSequence.fromList(candidateClasses.value).getElement(0);
     }
 
     final AbstractIntroduceFieldRefactoring introducer = (mustBeStatic.value ? new IntroduceStaticFieldRefactoring(desiredTargetClass.value) : new IntroduceFieldRefactoring(desiredTargetClass.value));
     final Wrappers._T<String> error = new Wrappers._T<String>();
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        error.value = introducer.init(nodeToRefactor, ((EditorComponent) MapSequence.fromMap(_params).get("component")));
-      }
-    });
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().executeCommand(() -> error.value = introducer.init(nodeToRefactor, ((EditorComponent) MapSequence.fromMap(_params).get("component"))));
     if (error.value == null) {
       IntroduceFieldDialog dialog = new IntroduceFieldDialog(((Project) MapSequence.fromMap(_params).get("project")), introducer, ((EditorContext) MapSequence.fromMap(_params).get("editorContext")), mustBeStatic.value);
       dialog.show();

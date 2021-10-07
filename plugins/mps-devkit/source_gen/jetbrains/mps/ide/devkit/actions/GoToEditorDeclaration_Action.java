@@ -19,7 +19,6 @@ import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.LanguageAspect;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.Language;
@@ -83,22 +82,20 @@ public class GoToEditorDeclaration_Action extends BaseAction {
       return null;
     }
     final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
-    return new ModelAccessHelper(repo).runReadAction(new Computable<SNodeReference>() {
-      public SNodeReference compute() {
-        SNode conceptNode = sn.resolve(repo);
-        if (!(SNodeOperations.isInstanceOf(conceptNode, CONCEPTS.AbstractConceptDeclaration$KA))) {
-          return null;
-        }
-        if (!(LanguageAspect.STRUCTURE.is(SNodeOperations.getModel(conceptNode)))) {
-          return null;
-        }
-        SModel editorModel = LanguageAspect.EDITOR.get(((Language) SNodeOperations.getModel(conceptNode).getModule()));
-        if (editorModel == null) {
-          return null;
-        }
-        SNode editorDecl = GoToEditorDeclarationHelper.findEditorDeclaration(editorModel, conceptNode);
-        return (editorDecl == null ? null : SNodeOperations.getPointer(editorDecl));
+    return new ModelAccessHelper(repo).runReadAction(() -> {
+      SNode conceptNode = sn.resolve(repo);
+      if (!(SNodeOperations.isInstanceOf(conceptNode, CONCEPTS.AbstractConceptDeclaration$KA))) {
+        return null;
       }
+      if (!(LanguageAspect.STRUCTURE.is(SNodeOperations.getModel(conceptNode)))) {
+        return null;
+      }
+      SModel editorModel = LanguageAspect.EDITOR.get(((Language) SNodeOperations.getModel(conceptNode).getModule()));
+      if (editorModel == null) {
+        return null;
+      }
+      SNode editorDecl = GoToEditorDeclarationHelper.findEditorDeclaration(editorModel, conceptNode);
+      return (editorDecl == null ? null : SNodeOperations.getPointer(editorDecl));
     });
   }
 

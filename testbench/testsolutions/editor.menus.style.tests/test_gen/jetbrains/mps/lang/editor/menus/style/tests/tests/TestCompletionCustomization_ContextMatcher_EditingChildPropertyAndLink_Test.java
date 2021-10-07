@@ -38,23 +38,21 @@ public class TestCompletionCustomization_ContextMatcher_EditingChildPropertyAndL
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("7595250613974157847", "7595250613974157850");
-      EditorTestUtil.runWithCompletionStyling(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
-          // actions are hidden by ChildWithPropertyAndLink_Customization
-          Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 0);
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ESCAPE"));
-          invokeAction("jetbrains.mps.ide.editor.actions.Insert_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), "ctrl SPACE"));
-          Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 2);
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ESCAPE"));
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveDown_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 1);
-        }
+      EditorTestUtil.runWithCompletionStyling(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
+        // actions are hidden by ChildWithPropertyAndLink_Customization
+        Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 0);
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ESCAPE"));
+        invokeAction("jetbrains.mps.ide.editor.actions.Insert_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), "ctrl SPACE"));
+        Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 2);
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ESCAPE"));
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveDown_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 1);
       }, true);
     }
   }

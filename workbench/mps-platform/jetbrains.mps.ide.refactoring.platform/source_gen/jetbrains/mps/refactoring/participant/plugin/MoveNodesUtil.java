@@ -47,18 +47,16 @@ public class MoveNodesUtil {
       return false;
     }
     final Wrappers._boolean result = new Wrappers._boolean();
-    repository.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode firstNode = ListSequence.fromList(nodesToMove).first();
-        final SContainmentLink containmentLink = firstNode.getContainmentLink();
-        final SNode parent = firstNode.getParent();
-        final SModel model = firstNode.getModel();
-        result.value = ListSequence.fromList(nodesToMove).all(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return Objects.equals(it.getContainmentLink(), containmentLink) && it.getParent() == parent && it.getModel() == model;
-          }
-        });
-      }
+    repository.getModelAccess().runReadAction(() -> {
+      SNode firstNode = ListSequence.fromList(nodesToMove).first();
+      final SContainmentLink containmentLink = firstNode.getContainmentLink();
+      final SNode parent = firstNode.getParent();
+      final SModel model = firstNode.getModel();
+      result.value = ListSequence.fromList(nodesToMove).all(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return Objects.equals(it.getContainmentLink(), containmentLink) && it.getParent() == parent && it.getModel() == model;
+        }
+      });
     });
     return result.value;
   }
@@ -84,31 +82,27 @@ public class MoveNodesUtil {
 
   public static void moveTo(final Project project, final String refactoringName, final Map<NodeProcessor, List<SNode>> processorToMoveRoots, RefactoringUI refactoringUI) {
 
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        for (IMapping<NodeProcessor, List<SNode>> mapping : MapSequence.fromMap(processorToMoveRoots)) {
-          if (!(mapping.key().isValid(mapping.value()))) {
-            throw new IllegalArgumentException();
-          }
+    project.getRepository().getModelAccess().runReadAction(() -> {
+      for (IMapping<NodeProcessor, List<SNode>> mapping : MapSequence.fromMap(processorToMoveRoots)) {
+        if (!(mapping.key().isValid(mapping.value()))) {
+          throw new IllegalArgumentException();
         }
       }
     });
 
     final Map<SNodeReference, List<SNodeReference>> moveRootsToDescendants = MapSequence.fromMap(new HashMap<SNodeReference, List<SNodeReference>>());
     final List<SNode> allNodes = ListSequence.fromList(new ArrayList<SNode>());
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        for (IMapping<NodeProcessor, List<SNode>> mapping : MapSequence.fromMap(processorToMoveRoots)) {
-          NodeProcessor processor = mapping.key();
-          for (SNode moveRoot : ListSequence.fromList(mapping.value())) {
-            List<SNode> nodesToSearch = processor.getNodesToSearch(moveRoot);
-            MapSequence.fromMap(moveRootsToDescendants).put(SNodeOperations.getPointer(moveRoot), ListSequence.fromList(nodesToSearch).select(new ISelector<SNode, SNodeReference>() {
-              public SNodeReference select(SNode it) {
-                return it.getReference();
-              }
-            }).toListSequence());
-            ListSequence.fromList(allNodes).addSequence(ListSequence.fromList(nodesToSearch));
-          }
+    project.getRepository().getModelAccess().runReadAction(() -> {
+      for (IMapping<NodeProcessor, List<SNode>> mapping : MapSequence.fromMap(processorToMoveRoots)) {
+        NodeProcessor processor = mapping.key();
+        for (SNode moveRoot : ListSequence.fromList(mapping.value())) {
+          List<SNode> nodesToSearch = processor.getNodesToSearch(moveRoot);
+          MapSequence.fromMap(moveRootsToDescendants).put(SNodeOperations.getPointer(moveRoot), ListSequence.fromList(nodesToSearch).select(new ISelector<SNode, SNodeReference>() {
+            public SNodeReference select(SNode it) {
+              return it.getReference();
+            }
+          }).toListSequence());
+          ListSequence.fromList(allNodes).addSequence(ListSequence.fromList(nodesToSearch));
         }
       }
     });

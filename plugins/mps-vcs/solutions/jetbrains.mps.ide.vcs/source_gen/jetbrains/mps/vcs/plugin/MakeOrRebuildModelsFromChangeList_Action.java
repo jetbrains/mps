@@ -19,8 +19,6 @@ import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.internal.collections.runtime.IListSequence;
 import jetbrains.mps.ide.generator.GenerationCheckHelper;
 import jetbrains.mps.smodel.resources.ModelsToResources;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
@@ -89,22 +87,20 @@ public class MakeOrRebuildModelsFromChangeList_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
 
     final MPSProject project = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-    List<? extends IResource> resources = new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<IListSequence<IResource>>() {
-      public IListSequence<IResource> compute() {
-        List<SModel> models = MakeOrRebuildModelsFromChangeList_Action.this.getModels2Build(event.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY), event);
-        if (new GenerationCheckHelper().checkModelsBeforeGenerationIfNeeded(project, models)) {
-          ModelsToResources m2r;
+    List<? extends IResource> resources = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
+      List<SModel> models = MakeOrRebuildModelsFromChangeList_Action.this.getModels2Build(event.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY), event);
+      if (new GenerationCheckHelper().checkModelsBeforeGenerationIfNeeded(project, models)) {
+        ModelsToResources m2r;
 
-          if (!(MakeOrRebuildModelsFromChangeList_Action.this.rebuild)) {
-            ModelGenerationStatusManager statusManager = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(ModelGenerationStatusManager.class);
-            m2r = new ModelsToResources(statusManager.getModifiedModels(models));
-          } else {
-            m2r = new ModelsToResources(models);
-          }
-          return Sequence.fromIterable(m2r.resources()).toListSequence();
+        if (!(MakeOrRebuildModelsFromChangeList_Action.this.rebuild)) {
+          ModelGenerationStatusManager statusManager = event.getData(MPSCommonDataKeys.MPS_PROJECT).getComponent(ModelGenerationStatusManager.class);
+          m2r = new ModelsToResources(statusManager.getModifiedModels(models));
+        } else {
+          m2r = new ModelsToResources(models);
         }
-        return ListSequence.fromList(new ArrayList<IResource>());
+        return Sequence.fromIterable(m2r.resources()).toListSequence();
       }
+      return ListSequence.fromList(new ArrayList<IResource>());
     });
     if (ListSequence.fromList(resources).isEmpty()) {
       return;

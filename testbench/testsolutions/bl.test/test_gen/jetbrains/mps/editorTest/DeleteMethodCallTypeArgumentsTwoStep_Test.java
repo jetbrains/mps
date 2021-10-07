@@ -35,12 +35,10 @@ public class DeleteMethodCallTypeArgumentsTwoStep_Test extends BaseTransformatio
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5758795788991529547", "5758795788991538035");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          Assert.assertTrue(getEditorComponent().getDeletionApprover().isApprovedForDeletion(getEditorComponent().getEditorContext().getSelectedCell().getParent()));
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+        Assert.assertTrue(getEditorComponent().getDeletionApprover().isApprovedForDeletion(getEditorComponent().getEditorContext().getSelectedCell().getParent()));
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
       }, true);
     }
   }

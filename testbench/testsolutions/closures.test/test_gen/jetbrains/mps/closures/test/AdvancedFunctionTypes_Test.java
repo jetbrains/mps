@@ -9,28 +9,8 @@ import org.junit.Assert;
 public class AdvancedFunctionTypes_Test {
   @Test
   public void test_returnsFunction() throws Exception {
-    _FunctionTypes._return_P0_E0<? extends _FunctionTypes._return_P0_E0<? extends Integer>> fun1 = new _FunctionTypes._return_P0_E0<_FunctionTypes._return_P0_E0<? extends Integer>>() {
-      public _FunctionTypes._return_P0_E0<? extends Integer> invoke() {
-        return new _FunctionTypes._return_P0_E0<Integer>() {
-          public Integer invoke() {
-            return 1;
-          }
-        };
-      }
-    };
-    _FunctionTypes._return_P0_E0<? extends _FunctionTypes._return_P0_E0<? extends _FunctionTypes._return_P0_E0<? extends Integer>>> fun2 = new _FunctionTypes._return_P0_E0<_FunctionTypes._return_P0_E0<? extends _FunctionTypes._return_P0_E0<? extends Integer>>>() {
-      public _FunctionTypes._return_P0_E0<? extends _FunctionTypes._return_P0_E0<? extends Integer>> invoke() {
-        return new _FunctionTypes._return_P0_E0<_FunctionTypes._return_P0_E0<? extends Integer>>() {
-          public _FunctionTypes._return_P0_E0<? extends Integer> invoke() {
-            return new _FunctionTypes._return_P0_E0<Integer>() {
-              public Integer invoke() {
-                return 1;
-              }
-            };
-          }
-        };
-      }
-    };
+    _FunctionTypes._return_P0_E0<? extends _FunctionTypes._return_P0_E0<? extends Integer>> fun1 = () -> () -> 1;
+    _FunctionTypes._return_P0_E0<? extends _FunctionTypes._return_P0_E0<? extends _FunctionTypes._return_P0_E0<? extends Integer>>> fun2 = () -> () -> () -> 1;
     _FunctionTypes._return_P0_E0<? extends _FunctionTypes._return_P0_E0<? extends Integer>> fun3;
     _FunctionTypes._return_P0_E0<? extends _FunctionTypes._return_P0_E0<? extends Number>> fun4;
     fun1 = fun2.invoke();
@@ -40,29 +20,13 @@ public class AdvancedFunctionTypes_Test {
   }
   @Test
   public void test_acceptsFunction() throws Exception {
-    _FunctionTypes._return_P1_E0<? extends Integer, ? super _FunctionTypes._return_P0_E0<? extends Integer>> fun = new _FunctionTypes._return_P1_E0<Integer, _FunctionTypes._return_P0_E0<? extends Integer>>() {
-      public Integer invoke(_FunctionTypes._return_P0_E0<? extends Integer> f) {
-        return f.invoke();
-      }
-    };
-    _FunctionTypes._return_P2_E0<? extends Integer, ? super Integer, ? super Integer> add = new _FunctionTypes._return_P2_E0<Integer, Integer, Integer>() {
-      public Integer invoke(Integer x, Integer y) {
-        return x + y;
-      }
-    };
-    _FunctionTypes._return_P1_E0<? extends Integer, ? super Integer> plusThree = new _FunctionTypes._return_P1_E0<Integer, Integer>() {
-      public Integer invoke(Integer x) {
-        return x + 3;
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Integer, ? super _FunctionTypes._return_P0_E0<? extends Integer>> fun = (_FunctionTypes._return_P0_E0<? extends Integer> f) -> f.invoke();
+    _FunctionTypes._return_P2_E0<? extends Integer, ? super Integer, ? super Integer> add = (Integer x, Integer y) -> x + y;
+    _FunctionTypes._return_P1_E0<? extends Integer, ? super Integer> plusThree = (Integer x) -> x + 3;
     _FunctionTypes._return_P1_E0<? extends Integer, ? super Integer> curriedPlusThree = this.curry(add, 3);
     Assert.assertEquals(plusThree.invoke(1), curriedPlusThree.invoke(1));
   }
   public _FunctionTypes._return_P1_E0<? extends Integer, ? super Integer> curry(final _FunctionTypes._return_P2_E0<? extends Integer, ? super Integer, ? super Integer> fun, final int y) {
-    return new _FunctionTypes._return_P1_E0<Integer, Integer>() {
-      public Integer invoke(Integer x) {
-        return fun.invoke(x, y);
-      }
-    };
+    return (Integer x) -> fun.invoke(x, y);
   }
 }

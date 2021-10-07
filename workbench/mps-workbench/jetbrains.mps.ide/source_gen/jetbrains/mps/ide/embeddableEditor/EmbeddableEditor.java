@@ -102,11 +102,7 @@ public class EmbeddableEditor extends JPanel implements DataProvider {
 
   public void disposeEditor() {
     if (temporaryModel != null) {
-      repository.getModelAccess().runWriteAction(new Runnable() {
-        public void run() {
-          TemporaryModels.getInstance().dispose(temporaryModel);
-        }
-      });
+      repository.getModelAccess().runWriteAction(() -> TemporaryModels.getInstance().dispose(temporaryModel));
     }
     if (nodeEditor != null) {
       nodeEditor.dispose();

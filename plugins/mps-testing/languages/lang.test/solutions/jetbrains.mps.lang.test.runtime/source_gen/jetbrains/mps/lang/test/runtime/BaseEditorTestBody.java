@@ -120,30 +120,28 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
     if (!(after.equals(""))) {
       addNodeById(after);
     }
-    myProject.getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        myBefore = getNodeById(before);
-        myStart = findCellReference(getRealNodeById(before));
-        if (myStart == null) {
-          throw new IllegalStateException("Cannot find cell reference in the test case 'before'");
-        }
-        if (!(after.equals(""))) {
-          myResult = getNodeById(after);
-          myFinish = findCellReference(getRealNodeById(after));
-        }
-        myFileNodeEditor = openEditor();
-        myEditor = myFileNodeEditor.getNodeEditor();
-        myEditor.showNode(myBefore, false);
-        myCurrentEditorComponent = myEditor.getCurrentEditorComponent();
-        if (!(myCurrentEditorComponent instanceof NodeEditorComponent)) {
-          throw new IllegalArgumentException("The component is not an instance of NodeEditorComponent: " + myCurrentEditorComponent);
-        }
-        NodeEditorComponent component = (NodeEditorComponent) myCurrentEditorComponent;
-        component.addNotify();
-        component.setSize(component.getPreferredSize());
-        component.validate();
-        myCurrentEditorComponent = myStart.setupSelection(component);
+    myProject.getModelAccess().runWriteAction(() -> {
+      myBefore = getNodeById(before);
+      myStart = findCellReference(getRealNodeById(before));
+      if (myStart == null) {
+        throw new IllegalStateException("Cannot find cell reference in the test case 'before'");
       }
+      if (!(after.equals(""))) {
+        myResult = getNodeById(after);
+        myFinish = findCellReference(getRealNodeById(after));
+      }
+      myFileNodeEditor = openEditor();
+      myEditor = myFileNodeEditor.getNodeEditor();
+      myEditor.showNode(myBefore, false);
+      myCurrentEditorComponent = myEditor.getCurrentEditorComponent();
+      if (!(myCurrentEditorComponent instanceof NodeEditorComponent)) {
+        throw new IllegalArgumentException("The component is not an instance of NodeEditorComponent: " + myCurrentEditorComponent);
+      }
+      NodeEditorComponent component = (NodeEditorComponent) myCurrentEditorComponent;
+      component.addNotify();
+      component.setSize(component.getPreferredSize());
+      component.validate();
+      myCurrentEditorComponent = myStart.setupSelection(component);
     });
   }
 
@@ -159,33 +157,27 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
     final Wrappers._T<Throwable> throwable = new Wrappers._T<Throwable>(null);
     flushEvents();
     // FIXME why do we need model write here?
-    ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      public void run() {
-        myProject.getModelAccess().runWriteAction(new Runnable() {
-          public void run() {
-            if (myResult != null) {
-              try {
-                SNode editedNode = myBefore;
-                NodesMatcher nm = new NodesMatcher(editedNode, myResult);
-                List<NodeDifference> diff = nm.diff();
-                if (!(diff.isEmpty())) {
-                  StringBuilder sb = new StringBuilder();
-                  for (NodeDifference nd : diff) {
-                    sb.append(nd.print());
-                  }
-                  Assert.fail(sb.toString());
-                }
-                if (myFinish != null) {
-                  myFinish.assertSelectionIsTheSame(myCurrentEditorComponent, (Map<SNode, SNode>) nm.getMap());
-                }
-              } catch (Throwable t) {
-                throwable.value = t;
-              }
+    ThreadUtils.runInUIThreadAndWait(() -> myProject.getModelAccess().runWriteAction(() -> {
+      if (myResult != null) {
+        try {
+          SNode editedNode = myBefore;
+          NodesMatcher nm = new NodesMatcher(editedNode, myResult);
+          List<NodeDifference> diff = nm.diff();
+          if (!(diff.isEmpty())) {
+            StringBuilder sb = new StringBuilder();
+            for (NodeDifference nd : diff) {
+              sb.append(nd.print());
             }
+            Assert.fail(sb.toString());
           }
-        });
+          if (myFinish != null) {
+            myFinish.assertSelectionIsTheSame(myCurrentEditorComponent, (Map<SNode, SNode>) nm.getMap());
+          }
+        } catch (Throwable t) {
+          throwable.value = t;
+        }
       }
-    });
+    }));
     flushEvents();
     if (throwable.value != null) {
       throw throwable.value;
@@ -205,15 +197,13 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
     } finally {
       uninstallAppender(appender);
       final Throwable[] ts = new Throwable[1];
-      myProject.getModelAccess().runWriteInEDT(new Runnable() {
-        public void run() {
-          try {
-            UndoManagerImpl undoManager = (UndoManagerImpl) UndoManager.getInstance(ProjectHelper.toIdeaProject(myProject));
-            MPSNodeVirtualFile file = NodeVirtualFileSystem.getInstance().getFileFor(myProject.getRepository(), BaseEditorTestBody.this.myBefore);
-            undoManager.clearUndoRedoQueueInTests(file);
-          } catch (Throwable t) {
-            ts[0] = t;
-          }
+      myProject.getModelAccess().runWriteInEDT(() -> {
+        try {
+          UndoManagerImpl undoManager = (UndoManagerImpl) UndoManager.getInstance(ProjectHelper.toIdeaProject(myProject));
+          MPSNodeVirtualFile file = NodeVirtualFileSystem.getInstance().getFileFor(myProject.getRepository(), BaseEditorTestBody.this.myBefore);
+          undoManager.clearUndoRedoQueueInTests(file);
+        } catch (Throwable t) {
+          ts[0] = t;
         }
       });
       if (ts[0] != null) {
@@ -224,20 +214,14 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
 
   private void dispose() throws InterruptedException, InvocationTargetException {
     final Throwable[] ts = new Throwable[1];
-    ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      public void run() {
-        myProject.getModelAccess().runWriteAction(new Runnable() {
-          public void run() {
-            try {
-              myFileNodeEditor.dispose();
-              myFileNodeEditor = null;
-            } catch (Throwable t) {
-              ts[0] = t;
-            }
-          }
-        });
+    ThreadUtils.runInUIThreadAndWait(() -> myProject.getModelAccess().runWriteAction(() -> {
+      try {
+        myFileNodeEditor.dispose();
+        myFileNodeEditor = null;
+      } catch (Throwable t) {
+        ts[0] = t;
       }
-    });
+    }));
     if (ts[0] != null) {
       throw new RuntimeException("Failure during test disposal", ts[0]);
     }
@@ -291,32 +275,30 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   }
 
   protected void applyQuickFix(@Nullable final String quickFixNodeId) throws InterruptedException, InvocationTargetException {
-    runUndoableCommandInEDTAndWait(new Runnable() {
-      public void run() {
-        SNode checkedNode = getEditorContext().getSelectedNode();
-        SRepository repository = SNodeOperations.getModel(checkedNode).getRepository();
-        TestsErrorsChecker checker = new TestsErrorsChecker(myBefore);
-        Iterable<NodeReportItem> reports = checker.getErrors(checkedNode);
-        QuickFixBase fixToRun = null;
-        for (NodeReportItem report : Sequence.fromIterable(reports)) {
-          if (report instanceof QuickFixReportItem.EditorQuickfixReportItem) {
-            Collection<EditorQuickFix> fixes = QuickFixReportItem.FLAVOUR_EDITOR_QUICKFIX.get((QuickFixReportItem.EditorQuickfixReportItem) report);
-            for (EditorQuickFix fix : CollectionSequence.fromCollection(fixes)) {
-              if (matches(quickFixNodeId, fix)) {
-                if (fixToRun != null) {
-                  Assert.fail("More than one quick fix to run is available");
-                  return;
-                }
-                fixToRun = fix;
+    runUndoableCommandInEDTAndWait(() -> {
+      SNode checkedNode = getEditorContext().getSelectedNode();
+      SRepository repository = SNodeOperations.getModel(checkedNode).getRepository();
+      TestsErrorsChecker checker = new TestsErrorsChecker(myBefore);
+      Iterable<NodeReportItem> reports = checker.getErrors(checkedNode);
+      QuickFixBase fixToRun = null;
+      for (NodeReportItem report : Sequence.fromIterable(reports)) {
+        if (report instanceof QuickFixReportItem.EditorQuickfixReportItem) {
+          Collection<EditorQuickFix> fixes = QuickFixReportItem.FLAVOUR_EDITOR_QUICKFIX.get((QuickFixReportItem.EditorQuickfixReportItem) report);
+          for (EditorQuickFix fix : CollectionSequence.fromCollection(fixes)) {
+            if (matches(quickFixNodeId, fix)) {
+              if (fixToRun != null) {
+                Assert.fail("More than one quick fix to run is available");
+                return;
               }
+              fixToRun = fix;
             }
           }
         }
-        if (fixToRun != null) {
-          fixToRun.execute(repository);
-        } else {
-          Assert.fail("QuickFix not found: " + ((quickFixNodeId == null ? "<theOneAvailable>" : quickFixNodeId)));
-        }
+      }
+      if (fixToRun != null) {
+        fixToRun.execute(repository);
+      } else {
+        Assert.fail("QuickFix not found: " + ((quickFixNodeId == null ? "<theOneAvailable>" : quickFixNodeId)));
       }
     });
   }
@@ -351,22 +333,16 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
 
   protected void invokeAction(final String actionId) throws InvocationTargetException, InterruptedException {
     final AnAction action = ActionManager.getInstance().getAction(actionId);
-    runUndoableInEDTAndWait(new Runnable() {
-      public void run() {
-        action.actionPerformed(createEvent());
-      }
-    });
+    runUndoableInEDTAndWait(() -> action.actionPerformed(createEvent()));
   }
 
   protected boolean isActionApplicable(final String actionId) throws InterruptedException, InvocationTargetException {
     final Wrappers._boolean isApplicable = new Wrappers._boolean();
     final AnAction action = ActionManager.getInstance().getAction(actionId);
-    runUndoableCommandInEDTAndWait(new Runnable() {
-      public void run() {
-        AnActionEvent event = createEvent();
-        action.update(event);
-        isApplicable.value = event.getPresentation().isEnabled();
-      }
+    runUndoableCommandInEDTAndWait(() -> {
+      AnActionEvent event = createEvent();
+      action.update(event);
+      isApplicable.value = event.getPresentation().isEnabled();
     });
     return isApplicable.value;
   }
@@ -425,11 +401,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   }
 
   public void runUndoableCommandInEDTAndWait(final Runnable runnable) throws InterruptedException, InvocationTargetException {
-    runUndoableInEDTAndWait(new Runnable() {
-      public void run() {
-        getProject().getModelAccess().executeCommand(runnable);
-      }
-    });
+    runUndoableInEDTAndWait(() -> getProject().getModelAccess().executeCommand(runnable));
   }
 
   public void runUndoableInEDTAndWait(final Runnable runnable) throws InvocationTargetException, InterruptedException {

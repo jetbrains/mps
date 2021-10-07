@@ -286,11 +286,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
     final Collection<RevisionNodeChange> nodeChanges = CollectionSequence.fromCollection(new ArrayList<RevisionNodeChange>());
     for (final StructureChange modelChange : ListSequence.fromList(getRelevantChanges(modelChanges))) {
       final Wrappers._T<Collection<RevisionNodeChange>> revisionNodeChanges = new Wrappers._T<Collection<RevisionNodeChange>>();
-      myModelAccess.runReadAction(new Runnable() {
-        public void run() {
-          revisionNodeChanges.value = RevisionNodeChange.createRevisionNodeChanges(graphNode, modelChange, movedNodesIds);
-        }
-      });
+      myModelAccess.runReadAction(() -> revisionNodeChanges.value = RevisionNodeChange.createRevisionNodeChanges(graphNode, modelChange, movedNodesIds));
       CollectionSequence.fromCollection(revisionNodeChanges.value).visitAll(new IVisitor<RevisionNodeChange>() {
         public void visit(RevisionNodeChange it) {
           tryToAddNodeChange(it, graphNode, nodeChanges);
@@ -341,11 +337,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 
   private ModelChangeSet calcChangeSet(final SModel prevModel, final SModel model, final boolean withOpposite) {
     final Wrappers._T<ModelChangeSet> changeSet = new Wrappers._T<ModelChangeSet>();
-    myModelAccess.runReadAction(new Runnable() {
-      public void run() {
-        changeSet.value = ChangeSetBuilder.buildChangeSetForNode(prevModel, model, myRootId, withOpposite, true);
-      }
-    });
+    myModelAccess.runReadAction(() -> changeSet.value = ChangeSetBuilder.buildChangeSetForNode(prevModel, model, myRootId, withOpposite, true));
     return changeSet.value;
   }
 

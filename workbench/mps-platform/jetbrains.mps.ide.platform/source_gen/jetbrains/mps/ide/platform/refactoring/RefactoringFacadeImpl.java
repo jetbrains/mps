@@ -32,13 +32,11 @@ public class RefactoringFacadeImpl implements RefactoringFacade {
   public void executeSimple(final RefactoringContext context) {
     ThreadUtils.assertEDT();
     final IRefactoring refactoring = context.getRefactoring();
-    context.getSelectedProject().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        try {
-          refactoring.refactor(context);
-        } catch (Throwable t) {
-          myLog.error("An exception occured while trying to execute refactoring " + refactoring.getUserFriendlyName() + ". Models could have been corrupted.", t);
-        }
+    context.getSelectedProject().getModelAccess().executeCommand(() -> {
+      try {
+        refactoring.refactor(context);
+      } catch (Throwable t) {
+        myLog.error("An exception occured while trying to execute refactoring " + refactoring.getUserFriendlyName() + ". Models could have been corrupted.", t);
       }
     });
     try {
@@ -48,11 +46,7 @@ public class RefactoringFacadeImpl implements RefactoringFacade {
     }
   }
   private void doExecuteNoDialog(final RefactoringContext refactoringContext) {
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        executeSimple(refactoringContext);
-      }
-    });
+    ApplicationManager.getApplication().invokeLater(() -> executeSimple(refactoringContext));
   }
   public void execute(final RefactoringContext refactoringContext) {
     ThreadUtils.assertEDT();
@@ -81,17 +75,15 @@ public class RefactoringFacadeImpl implements RefactoringFacade {
   }
   private SearchResults findUsagesSimple(final RefactoringContext refactoringContext) {
     final Wrappers._T<SearchResults> result = new Wrappers._T<SearchResults>(null);
-    refactoringContext.getSelectedProject().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        try {
-          IRefactoring refactoring = refactoringContext.getRefactoring();
-          result.value = refactoring.getAffectedNodes(refactoringContext);
-          if (result.value == null) {
-            result.value = new SearchResults();
-          }
-        } catch (Throwable t) {
-          myLog.error(null, t);
+    refactoringContext.getSelectedProject().getModelAccess().runReadAction(() -> {
+      try {
+        IRefactoring refactoring = refactoringContext.getRefactoring();
+        result.value = refactoring.getAffectedNodes(refactoringContext);
+        if (result.value == null) {
+          result.value = new SearchResults();
         }
+      } catch (Throwable t) {
+        myLog.error(null, t);
       }
     });
     return result.value;

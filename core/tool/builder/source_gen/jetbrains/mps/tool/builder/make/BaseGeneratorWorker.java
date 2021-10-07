@@ -116,20 +116,18 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
     // FIXME it's odd to have distinct set of modules but lock repository to access its modules.
     // Shall rather keem modules as part of the project
     final Wrappers._T<Iterable<SModel>> models = new Wrappers._T<Iterable<SModel>>(null);
-    project.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        for (SModule mod : modules) {
-          models.value = Sequence.fromIterable(models.value).concat(Sequence.fromIterable(mod.getModels()));
-        }
+    project.getModelAccess().runReadAction(() -> {
+      for (SModule mod : modules) {
+        models.value = Sequence.fromIterable(models.value).concat(Sequence.fromIterable(mod.getModels()));
+      }
 
-        if (mySkipUnmodifiedModels) {
-          List<SModel> modelsList = (models.value == null ? ListSequence.fromList(new ArrayList<SModel>()) : Sequence.fromIterable(models.value).toListSequence());
-          int numberOfAllModels = ListSequence.fromList(modelsList).count();
+      if (mySkipUnmodifiedModels) {
+        List<SModel> modelsList = (models.value == null ? ListSequence.fromList(new ArrayList<SModel>()) : Sequence.fromIterable(models.value).toListSequence());
+        int numberOfAllModels = ListSequence.fromList(modelsList).count();
 
-          ModelGenerationStatusManager mgsm = project.getComponent(ModelGenerationStatusManager.class);
-          models.value = mgsm.getModifiedModels(modelsList);
-          info("Found " + Sequence.fromIterable(models.value).count() + " modified models out of " + numberOfAllModels + " total models.");
-        }
+        ModelGenerationStatusManager mgsm = project.getComponent(ModelGenerationStatusManager.class);
+        models.value = mgsm.getModifiedModels(modelsList);
+        info("Found " + Sequence.fromIterable(models.value).count() + " modified models out of " + numberOfAllModels + " total models.");
       }
     });
 

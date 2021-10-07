@@ -12,9 +12,8 @@ import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.jetpad.projectional.view.ViewTraitBuilder;
 import jetbrains.jetpad.projectional.view.ViewEvents;
-import jetbrains.jetpad.projectional.view.ViewEventHandler;
-import jetbrains.jetpad.event.MouseEvent;
 import jetbrains.jetpad.projectional.view.View;
+import jetbrains.jetpad.event.MouseEvent;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 
 public class PaletteElementsCreationAction extends AbstractPaletteCreationAction {
@@ -43,32 +42,30 @@ public class PaletteElementsCreationAction extends AbstractPaletteCreationAction
   }
   protected ViewTrait getTrait() {
     if (myTrait == null) {
-      myTrait = new ViewTraitBuilder().on(ViewEvents.MOUSE_PRESSED, new ViewEventHandler<MouseEvent>() {
-        public void handle(View view, MouseEvent event) {
-          if (view.viewAt(event.location()) != view) {
-            return;
-          }
-          if (!(view.focused().get())) {
-            view.container().focusedView().set(view);
-          }
-          myX = event.x();
-          myY = event.y();
-          final boolean[] result = new boolean[]{false};
-          myEditorContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              result[0] = mySubstituteAction.canSubstitute("");
-            }
-          });
-          if (!(result[0])) {
-            return;
-          }
-          myEditorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(myEditorContext) {
-            protected void doExecute() {
-              mySubstituteAction.substitute(myEditorContext, "");
-            }
-          });
-          event.consume();
+      myTrait = new ViewTraitBuilder().on(ViewEvents.MOUSE_PRESSED, (View view, MouseEvent event) -> {
+        if (view.viewAt(event.location()) != view) {
+          return;
         }
+        if (!(view.focused().get())) {
+          view.container().focusedView().set(view);
+        }
+        myX = event.x();
+        myY = event.y();
+        final boolean[] result = new boolean[]{false};
+        myEditorContext.getRepository().getModelAccess().runReadAction(new Runnable() {
+          public void run() {
+            result[0] = mySubstituteAction.canSubstitute("");
+          }
+        });
+        if (!(result[0])) {
+          return;
+        }
+        myEditorContext.getRepository().getModelAccess().executeCommand(new EditorCommand(myEditorContext) {
+          protected void doExecute() {
+            mySubstituteAction.substitute(myEditorContext, "");
+          }
+        });
+        event.consume();
       }).build();
     }
     return myTrait;

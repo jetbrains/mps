@@ -113,42 +113,40 @@ import org.jetbrains.mps.openapi.language.SProperty;
   public Map<String, VariableDescription> getVariables(final _FunctionTypes._return_P1_E0<? extends SNode, ? super String> createClassifierType) {
     final Map<String, VariableDescription> result = MapSequence.fromMap(new LinkedHashMap<String, VariableDescription>(16, (float) 0.75, false));
 
-    foreachVariable(new _FunctionTypes._return_P1_E0<Boolean, JavaLocalVariable>() {
-      public Boolean invoke(JavaLocalVariable variable) {
-        String name = variable.getName();
-        Type jdiType = null;
-        try {
-          jdiType = variable.getLocalVariable().type();
-          SNode type = getMpsTypeFromJdiType(jdiType, createClassifierType);
-          if (type == null) {
+    foreachVariable((JavaLocalVariable variable) -> {
+      String name = variable.getName();
+      Type jdiType = null;
+      try {
+        jdiType = variable.getLocalVariable().type();
+        SNode type = getMpsTypeFromJdiType(jdiType, createClassifierType);
+        if (type == null) {
+          if (LOG.isEnabledFor(Level.WARN)) {
+            LOG.warn("Could not deduce type for a variable " + name);
+          }
+        } else {
+          VariableDescription variableDescription = new VariableDescription(name, type);
+          fillVariableDescription(name, variableDescription);
+          MapSequence.fromMap(result).put(name, variableDescription);
+        }
+      } catch (ClassNotLoadedException cne) {
+        if (jdiType == null) {
+          SNode classifierType = createClassifierType.invoke(variable.getLocalVariable().typeName());
+          if (classifierType == null) {
             if (LOG.isEnabledFor(Level.WARN)) {
               LOG.warn("Could not deduce type for a variable " + name);
             }
           } else {
-            VariableDescription variableDescription = new VariableDescription(name, type);
+            VariableDescription variableDescription = new VariableDescription(name, classifierType);
             fillVariableDescription(name, variableDescription);
             MapSequence.fromMap(result).put(name, variableDescription);
           }
-        } catch (ClassNotLoadedException cne) {
-          if (jdiType == null) {
-            SNode classifierType = createClassifierType.invoke(variable.getLocalVariable().typeName());
-            if (classifierType == null) {
-              if (LOG.isEnabledFor(Level.WARN)) {
-                LOG.warn("Could not deduce type for a variable " + name);
-              }
-            } else {
-              VariableDescription variableDescription = new VariableDescription(name, classifierType);
-              fillVariableDescription(name, variableDescription);
-              MapSequence.fromMap(result).put(name, variableDescription);
-            }
-          } else {
-            if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("Exception when creating variable " + name, cne);
-            }
+        } else {
+          if (LOG.isEnabledFor(Level.WARN)) {
+            LOG.warn("Exception when creating variable " + name, cne);
           }
         }
-        return false;
       }
+      return false;
     });
 
     return result;
@@ -292,23 +290,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
   @Override
   public boolean isVariableVisible(final String variableName, final SNode variableType) {
     final Wrappers._boolean visible = new Wrappers._boolean(false);
-    foreachVariable(new _FunctionTypes._return_P1_E0<Boolean, JavaLocalVariable>() {
-      public Boolean invoke(JavaLocalVariable variable) {
-        if (Objects.equals(variable.getName(), variableName)) {
-          try {
-            String variableTypeSignature = TransformatorBuilder.getInstance().getJniSignatureFromType(variableType);
-            if (Objects.equals(variableTypeSignature, variable.getLocalVariable().type().signature())) {
-              visible.value = true;
-              return true;
-            }
-          } catch (ClassNotLoadedException ex) {
-            if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("Exception when checking variable " + variable, ex);
-            }
+    foreachVariable((JavaLocalVariable variable) -> {
+      if (Objects.equals(variable.getName(), variableName)) {
+        try {
+          String variableTypeSignature = TransformatorBuilder.getInstance().getJniSignatureFromType(variableType);
+          if (Objects.equals(variableTypeSignature, variable.getLocalVariable().type().signature())) {
+            visible.value = true;
+            return true;
+          }
+        } catch (ClassNotLoadedException ex) {
+          if (LOG.isEnabledFor(Level.WARN)) {
+            LOG.warn("Exception when checking variable " + variable, ex);
           }
         }
-        return false;
       }
+      return false;
     });
     return visible.value;
   }

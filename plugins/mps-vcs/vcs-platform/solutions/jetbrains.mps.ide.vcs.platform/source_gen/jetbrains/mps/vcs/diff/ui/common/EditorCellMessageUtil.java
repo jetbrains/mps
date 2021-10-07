@@ -25,7 +25,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.annotations.NotNull;
 import org.apache.log4j.Level;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Vertical;
@@ -101,11 +100,7 @@ public final class EditorCellMessageUtil {
       }
 
       final Wrappers._T<Iterable<SNode>> descendants = new Wrappers._T<Iterable<SNode>>();
-      new ModelAccessHelper(editor.getEditorContext().getRepository()).runReadAction(new Runnable() {
-        public void run() {
-          descendants.value = SNodeOperations.getNodeDescendants(node, null, true, new SAbstractConcept[]{});
-        }
-      });
+      new ModelAccessHelper(editor.getEditorContext().getRepository()).runReadAction(() -> descendants.value = SNodeOperations.getNodeDescendants(node, null, true, new SAbstractConcept[]{}));
       List<EditorCell> attributeCells = ListSequence.fromList(new ArrayList<EditorCell>());
       findAttributeCells(node, Sequence.fromIterable(descendants.value).select(new ISelector<SNode, SNodeId>() {
         public SNodeId select(SNode it) {
@@ -122,11 +117,7 @@ public final class EditorCellMessageUtil {
       return false;
     }
     ModelAccessHelper mah = new ModelAccessHelper(editor.getEditorContext().getRepository());
-    return mah.runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        return check_ei82tp_a0a0a0a0d0h(node) == null && !(isDirectCell(getCellForNodeAndTargetOrByName((jetbrains.mps.nodeEditor.EditorComponent) editor, messageTarget, node), messageTarget, node));
-      }
-    });
+    return mah.runReadAction(() -> check_ei82tp_a0a0a0a0d0h(node) == null && !(isDirectCell(getCellForNodeAndTargetOrByName((jetbrains.mps.nodeEditor.EditorComponent) editor, messageTarget, node), messageTarget, node)));
   }
 
   public static EditorCell getChildCell(@NotNull EditorCell_Collection collectionCell, int nodeIndex) {
@@ -182,14 +173,12 @@ public final class EditorCellMessageUtil {
       return null;
     }
     final jetbrains.mps.nodeEditor.EditorComponent editor = (jetbrains.mps.nodeEditor.EditorComponent) editorComponent;
-    return new ModelAccessHelper(editor.getEditorContext().getRepository()).runReadAction(new Computable<EditorCell>() {
-      public EditorCell compute() {
-        EditorCell editorCell = getCellForNodeAndTargetOrByName(editor, messageTarget, node);
-        if (editorCell != null) {
-          return editorCell;
-        }
-        return getCellForParentNodeInMainEditor(editor, node);
+    return new ModelAccessHelper(editor.getEditorContext().getRepository()).runReadAction(() -> {
+      EditorCell editorCell = getCellForNodeAndTargetOrByName(editor, messageTarget, node);
+      if (editorCell != null) {
+        return editorCell;
       }
+      return getCellForParentNodeInMainEditor(editor, node);
     });
   }
 
@@ -231,16 +220,14 @@ public final class EditorCellMessageUtil {
   }
 
   public static EditorCell getCellForNodeAndTargetOrByName(final jetbrains.mps.nodeEditor.EditorComponent editor, final MessageTarget messageTarget, final SNode node) {
-    return new ModelAccessHelper(editor.getEditorContext().getRepository()).runReadAction(new Computable<EditorCell>() {
-      public EditorCell compute() {
-        EditorCell cell = getCellForNodeAndMessageTarget(editor, messageTarget, node);
-        if (cell != null && cell.isBig() && !(isDirectCell(cell, messageTarget, node))) {
-          if (SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd)) {
-            cell = CellFinder.getCellForProperty(editor, node, NAME_PROPERTY);
-          }
+    return new ModelAccessHelper(editor.getEditorContext().getRepository()).runReadAction(() -> {
+      EditorCell cell = getCellForNodeAndMessageTarget(editor, messageTarget, node);
+      if (cell != null && cell.isBig() && !(isDirectCell(cell, messageTarget, node))) {
+        if (SNodeOperations.isInstanceOf(node, CONCEPTS.INamedConcept$Kd)) {
+          cell = CellFinder.getCellForProperty(editor, node, NAME_PROPERTY);
         }
-        return cell;
       }
+      return cell;
     });
   }
 

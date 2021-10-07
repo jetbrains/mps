@@ -69,29 +69,27 @@ public class CheckProjectStructure extends BaseCheckerTest {
   public void checkGenerationStatus() {
     Assume.assumeFalse("Generation status is meaningless for packaged modules", myModule.isPackaged());
     final List<String> errors = new ArrayList<String>();
-    BaseCheckModulesTest.getContextProject().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        GenerationDependenciesCache genDeps = new GenerationDependenciesCache();
-        for (SModel sm : new TestsModelExtractor().excludeDoNoGenerate().excludeGenerators().getModels(myModule)) {
-          SModule module = sm.getModule();
-          if (module == null) {
-            errors.add("Model without a module: " + sm.getReference().toString());
-            continue;
-          }
-          GenerationDependencies gd = genDeps.get(sm);
-          String genHash = (gd == null ? null : gd.getModelHash());
-          if (genHash == null) {
-            errors.add("No generated hash for " + sm.getReference().toString());
-            continue;
-          }
-          String realHash = ((GeneratableSModel) sm).getModelHash();
-          if (realHash == null) {
-            errors.add("cannot gen cache for " + sm.getReference().toString());
-            continue;
-          }
-          if (!(realHash.equals(genHash))) {
-            errors.add("model requires generation: " + sm.getReference().toString() + " last genHash:" + genHash + " modelHash:" + realHash);
-          }
+    BaseCheckModulesTest.getContextProject().getModelAccess().runReadAction(() -> {
+      GenerationDependenciesCache genDeps = new GenerationDependenciesCache();
+      for (SModel sm : new TestsModelExtractor().excludeDoNoGenerate().excludeGenerators().getModels(myModule)) {
+        SModule module = sm.getModule();
+        if (module == null) {
+          errors.add("Model without a module: " + sm.getReference().toString());
+          continue;
+        }
+        GenerationDependencies gd = genDeps.get(sm);
+        String genHash = (gd == null ? null : gd.getModelHash());
+        if (genHash == null) {
+          errors.add("No generated hash for " + sm.getReference().toString());
+          continue;
+        }
+        String realHash = ((GeneratableSModel) sm).getModelHash();
+        if (realHash == null) {
+          errors.add("cannot gen cache for " + sm.getReference().toString());
+          continue;
+        }
+        if (!(realHash.equals(genHash))) {
+          errors.add("model requires generation: " + sm.getReference().toString() + " last genHash:" + genHash + " modelHash:" + realHash);
         }
       }
     });

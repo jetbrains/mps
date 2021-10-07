@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import java.util.function.Supplier;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.baseLanguage.util.ReflectionUtil;
@@ -49,11 +48,7 @@ public final class StaticFieldReferenceOperation__BehaviorDescriptor extends Bas
       return null;
     }
     final SNode instance = SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR);
-    SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<SNode>() {
-      public SNode get() {
-        return TypecheckingFacade.getFromContext().getTypeOf(instance);
-      }
-    });
+    SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(() -> TypecheckingFacade.getFromContext().getTypeOf(instance));
 
     SNode classifierType = TypecheckingFacade.getFromContext().strongCoerceType(instanceType, CONCEPTS.ClassifierType$bL);
     if ((SLinkOperations.getTarget(classifierType, LINKS.classifier$cxMr) == null)) {

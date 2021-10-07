@@ -26,7 +26,6 @@ import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.build.util.ScopeUtil;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.build.util.DescendantsScope;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -113,11 +112,7 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
 
     if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.BuildProject$ae)) {
       final SNode _this = __thisNode__;
-      return ScopeUtil.where(new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), true, kind), new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-        public Boolean invoke(SNode n) {
-          return n != _this && !(Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(SNodeOperations.cast(n, CONCEPTS.BuildProject$ae), ((boolean) false))).contains(_this));
-        }
-      });
+      return ScopeUtil.where(new ModelPlusImportedScope(SNodeOperations.getModel(__thisNode__), true, kind), (SNode n) -> n != _this && !(Sequence.fromIterable(BuildProject__BehaviorDescriptor.getVisibleProjects_id13YBgBBRSOL.invoke(SNodeOperations.cast(n, CONCEPTS.BuildProject$ae), ((boolean) false))).contains(_this)));
     }
 
     // NOTE: references in project structure and layout should be unordered, thus
@@ -185,11 +180,7 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
     SNode containingProject = SNodeOperations.getNodeAncestor(child, CONCEPTS.BuildProject$ae, false, false);
     if (!(Objects.equals(containingProject, __thisNode__))) {
       // we are imported => give away only public macro
-      rootScope = ScopeUtil.where(rootScope, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-        public Boolean invoke(SNode node) {
-          return (boolean) BuildMacro__BehaviorDescriptor.isPublic_id5FtnUVJQZyL.invoke(SNodeOperations.cast(node, CONCEPTS.BuildMacro$qd));
-        }
-      });
+      rootScope = ScopeUtil.where(rootScope, (SNode node) -> (boolean) BuildMacro__BehaviorDescriptor.isPublic_id5FtnUVJQZyL.invoke(SNodeOperations.cast(node, CONCEPTS.BuildMacro$qd)));
     }
     if ((containingProject != null)) {
       final Wrappers._T<SNode> definedMacro = new Wrappers._T<SNode>();
@@ -204,11 +195,7 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
       }
       if ((definedMacro.value != null)) {
         // we can only see what was strictly before us
-        rootScope = ScopeUtil.where(rootScope, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-          public Boolean invoke(SNode visibleNode) {
-            return !(ListSequence.fromList(SNodeOperations.getNextSiblings(definedMacro.value, false)).contains(visibleNode)) && !((Objects.equals(definedMacro.value, visibleNode)));
-          }
-        });
+        rootScope = ScopeUtil.where(rootScope, (SNode visibleNode) -> !(ListSequence.fromList(SNodeOperations.getNextSiblings(definedMacro.value, false)).contains(visibleNode)) && !((Objects.equals(definedMacro.value, visibleNode))));
       }
     }
 

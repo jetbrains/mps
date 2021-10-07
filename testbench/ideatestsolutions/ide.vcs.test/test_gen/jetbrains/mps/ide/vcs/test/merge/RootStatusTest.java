@@ -27,11 +27,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class RootStatusTest extends ChangesTestBase {
   @Test
   public void testRemoveRoot() {
-    makeChangeAndWait(new Runnable() {
-      public void run() {
-        SNodeOperations.deleteNode(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
-      }
-    });
+    makeChangeAndWait(() -> SNodeOperations.deleteNode(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705")));
     checkRootStatuses(new RootStatusItem("Root", FileStatus.NOT_CHANGED));
   }
 
@@ -47,21 +43,13 @@ public class RootStatusTest extends ChangesTestBase {
 
   @Test
   public void testPropertyChange() {
-    makeChangeAndWait(new Runnable() {
-      public void run() {
-        SPropertyOperations.assign(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), PROPS.name$MnvL, "RenamedRoot");
-      }
-    });
+    makeChangeAndWait(() -> SPropertyOperations.assign(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), PROPS.name$MnvL, "RenamedRoot"));
     checkRootStatuses(new RootStatusItem("RenamedRoot", FileStatus.MODIFIED));
   }
 
   @Test
   public void changeReference() {
-    makeChangeAndWait(new Runnable() {
-      public void run() {
-        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "8885850892994216610"), LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
-      }
-    });
+    makeChangeAndWait(() -> SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "8885850892994216610"), LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705")));
     checkRootStatuses(new RootStatusItem("Root", FileStatus.MODIFIED));
   }
 
@@ -76,51 +64,33 @@ public class RootStatusTest extends ChangesTestBase {
   }
   @Test
   public void addNodeAttribute() {
-    makeChangeAndWait(new Runnable() {
-      public void run() {
-        new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).setNew(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
-      }
-    });
+    makeChangeAndWait(() -> new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).setNew(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705")));
     checkRootStatuses(new RootStatusItem("Root", FileStatus.MODIFIED));
   }
   @Test
   public void addChildAttribute() {
-    makeChangeAndWait(new Runnable() {
-      public void run() {
-        ChangesTestUtil.addCommentedMethod(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), null);
-      }
-    });
+    makeChangeAndWait(() -> ChangesTestUtil.addCommentedMethod(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), null));
     checkRootStatuses(new RootStatusItem("Root", FileStatus.MODIFIED));
   }
   @Test
   public void comment() {
-    makeChangeAndWait(new Runnable() {
-      public void run() {
-        CommentUtil.commentOut(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), LINKS.member$L_2d)).first());
-      }
-    });
+    makeChangeAndWait(() -> CommentUtil.commentOut(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"), LINKS.member$L_2d)).first()));
     checkRootStatuses(new RootStatusItem("Root", FileStatus.MODIFIED));
   }
 
   @Test
   public void removeChild() {
-    makeChangeAndWait(new Runnable() {
-      public void run() {
-        SNodeOperations.deleteNode(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "8885850892994216610"));
-      }
-    });
+    makeChangeAndWait(() -> SNodeOperations.deleteNode(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "8885850892994216610")));
     checkRootStatuses(new RootStatusItem("Root", FileStatus.MODIFIED));
   }
 
   @Test
   public void moveChild() {
-    makeChangeAndWait(new Runnable() {
-      public void run() {
-        SNode method = SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "8885850892994216610");
-        assert ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).count() > 2;
-        SNode firstStmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).first();
-        SNodeOperations.insertNextSiblingChild(SNodeOperations.getNextSibling(firstStmt), firstStmt);
-      }
+    makeChangeAndWait(() -> {
+      SNode method = SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "8885850892994216610");
+      assert ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).count() > 2;
+      SNode firstStmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).first();
+      SNodeOperations.insertNextSiblingChild(SNodeOperations.getNextSibling(firstStmt), firstStmt);
     });
     checkRootStatuses(new RootStatusItem("Root", FileStatus.MODIFIED));
   }

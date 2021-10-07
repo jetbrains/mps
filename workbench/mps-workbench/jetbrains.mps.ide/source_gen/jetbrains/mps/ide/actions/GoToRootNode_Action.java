@@ -15,7 +15,6 @@ import jetbrains.mps.workbench.choose.ChooseByNameData;
 import org.jetbrains.mps.openapi.persistence.NavigationParticipant;
 import jetbrains.mps.workbench.choose.NavigationTargetPresentation;
 import jetbrains.mps.scope.ConditionalScope;
-import org.jetbrains.mps.util.Condition;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.mps.openapi.module.SearchScope;
@@ -64,11 +63,7 @@ public class GoToRootNode_Action extends BaseAction {
     gotoData.derivePrompts("node").setCheckBoxName("Include stub and non-project models");
 
     MPSProject project = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject"));
-    final ConditionalScope localScope = new ConditionalScope(project.getScope(), null, new Condition<SModel>() {
-      public boolean met(SModel m) {
-        return !(SModelStereotype.isStubModel(m));
-      }
-    });
+    final ConditionalScope localScope = new ConditionalScope(project.getScope(), null, (SModel m) -> !(SModelStereotype.isStubModel(m)));
 
     // XXX I suppose the moment we get to project own repo, ProjectScope.getModels/getModules would result in *project* modules only, 
     //      while project repository would give access to modules from dependant repositories as well

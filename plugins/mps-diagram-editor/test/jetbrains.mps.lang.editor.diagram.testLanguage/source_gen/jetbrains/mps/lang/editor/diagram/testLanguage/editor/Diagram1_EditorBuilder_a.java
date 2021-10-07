@@ -94,9 +94,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     }
 
     protected SubstituteInfoPartExt[] createPaletteBlockSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.RectangleNode$Qg, LINKS.rectangles$Cqur, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
-        public void invoke(SNode node, Integer x, Integer y) {
-        }
+      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.RectangleNode$Qg, LINKS.rectangles$Cqur, (SNode node, Integer x, Integer y) -> {
       })};
     }
     protected SubstituteInfoPartExt[] createPaletteConnectorSubstituteInfoPartExts() {

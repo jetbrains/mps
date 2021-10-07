@@ -136,11 +136,7 @@ public final class NamedTupleDeclaration__BehaviorDescriptor extends BaseBHDescr
     return false;
   }
   /*package*/ static SNode getThisType_id2RtWPFZ12w7(@NotNull SNode __thisNode__) {
-    _FunctionTypes._return_P1_E0<? extends SNode, ? super SNode> tvd2tvr = new _FunctionTypes._return_P1_E0<SNode, SNode>() {
-      public SNode invoke(SNode tvr) {
-        return _quotation_createNode_ds5lpv_a0a0a0a4(tvr);
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends SNode, ? super SNode> tvd2tvr = (SNode tvr) -> _quotation_createNode_ds5lpv_a0a0a0a4(tvr);
     return _quotation_createNode_ds5lpv_a1a4(__thisNode__, ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.typeVariableDeclaration$Lipp)).select(tvd2tvr).toListSequence());
   }
   /*package*/ static void populateMembers_id6r77ob2USUV(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifierType) {

@@ -28,7 +28,6 @@ import jetbrains.mps.checkers.SuppressErrorsChecker;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.util.CollectConsumer;
 import jetbrains.mps.checkers.ModelCheckerBuilder;
-import org.jetbrains.mps.openapi.util.Consumer;
 import jetbrains.mps.errors.item.NodeFlavouredItem;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -68,12 +67,10 @@ public class NodeCheckerUtil {
     SModel model = SNodeOperations.getModel(node);
     final SRepository repository = SNodeOperations.getModel(node).getRepository();
     final CollectConsumer<NodeReportItem> resultConsumer = new CollectConsumer<NodeReportItem>();
-    new ModelCheckerBuilder(false).createChecker(getStandardCheckers(host)).check(ModelCheckerBuilder.ItemsToCheck.forSingleModel(model), repository, new Consumer<IssueKindReportItem>() {
-      public void consume(IssueKindReportItem reportItem) {
-        SNodeReference reportedNode = NodeFlavouredItem.FLAVOUR_NODE.tryToGet(reportItem);
-        if (reportedNode != null && ListSequence.fromList(SNodeOperations.getNodeAncestors(((SNode) reportedNode.resolve(repository)), null, true)).contains(node)) {
-          resultConsumer.consume((NodeReportItem) reportItem);
-        }
+    new ModelCheckerBuilder(false).createChecker(getStandardCheckers(host)).check(ModelCheckerBuilder.ItemsToCheck.forSingleModel(model), repository, (IssueKindReportItem reportItem) -> {
+      SNodeReference reportedNode = NodeFlavouredItem.FLAVOUR_NODE.tryToGet(reportItem);
+      if (reportedNode != null && ListSequence.fromList(SNodeOperations.getNodeAncestors(((SNode) reportedNode.resolve(repository)), null, true)).contains(node)) {
+        resultConsumer.consume((NodeReportItem) reportItem);
       }
     }, new EmptyProgressMonitor());
     return resultConsumer.getResult();

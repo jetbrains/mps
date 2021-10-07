@@ -29,7 +29,6 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodeId;
-import java.util.function.Function;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.findUsages.NodeUsageLookup;
@@ -40,6 +39,7 @@ import jetbrains.mps.findUsages.InstanceLookup;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.findUsages.ModelImportLookup;
+import java.util.function.Function;
 import jetbrains.mps.persistence.java.library.JavaClassStubModelDescriptor;
 import java.util.Collections;
 import jetbrains.mps.util.containers.ManyToManyMap;
@@ -104,11 +104,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
         return it.getNodeId() instanceof SNodeId.StringBasedId;
       }
     }));
-    Set<SModel> candidates = findCandidates(models, oddFilteredNodes, processedConsumer, new Function<SNode, String>() {
-      public String apply(SNode key) {
-        return key.getNodeId().toString();
-      }
-    });
+    Set<SModel> candidates = findCandidates(models, oddFilteredNodes, processedConsumer, (SNode key) -> key.getNodeId().toString());
     for (SNode nn : Sequence.fromIterable(SNodeOperations.ofConcept(oddFilteredNodes, CONCEPTS.TypeVariableDeclaration$4Y))) {
       // I don't know the reason why we extend supplied scope for Type variables. The code is here for a decade, I wonder if it there's any reason to keep it.
       SModel mm = SNodeOperations.getModel(nn);
@@ -148,11 +144,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
     }));
 
     // FIXME make sure there's index for concept qualified name!
-    Set<SModel> candidates = findCandidates(models, concepts, processedConsumer, new Function<SAbstractConcept, String>() {
-      public String apply(SAbstractConcept k) {
-        return k.getQualifiedName();
-      }
-    });
+    Set<SModel> candidates = findCandidates(models, concepts, processedConsumer, (SAbstractConcept k) -> k.getQualifiedName());
     monitor.start("", candidates.size());
     InstanceLookup nif = new InstanceLookup(concepts, consumer);
     for (SModel e : candidates) {
@@ -176,11 +168,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
         return SModelStereotype.JAVA_STUB.equals(it.getName().getStereotype());
       }
     }));
-    Set<SModel> candidates = findCandidates(scope, modelReferences, processedConsumer, new Function<SModelReference, String>() {
-      public String apply(SModelReference key) {
-        return key.getModelName();
-      }
-    });
+    Set<SModel> candidates = findCandidates(scope, modelReferences, processedConsumer, (SModelReference key) -> key.getModelName());
     ModelImportLookup mil = new ModelImportLookup(modelReferences, consumer);
     mil.withUses(candidates, new EmptyProgressMonitor());
   }

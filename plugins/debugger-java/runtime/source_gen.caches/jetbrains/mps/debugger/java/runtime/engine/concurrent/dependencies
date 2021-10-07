@@ -34,7 +34,6 @@
     <classNode dependClassName="java.util.concurrent.CountDownLatch" />
     <classNode dependClassName="java.util.concurrent.LinkedBlockingQueue" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.debugger.java.runtime.engine.concurrent.Commands" />
     <classNode dependClassName="jetbrains.mps.debugger.java.runtime.engine.concurrent.IManagerCommand" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />

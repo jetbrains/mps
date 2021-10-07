@@ -38,12 +38,10 @@ public class SmartReferenseUpdateOnChange_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("2345623147105495371", "2345623147105495377");
       invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          SNode testNode = getNodeById("2345623147105496859");
-          EditorCell editorCell = getEditorComponent().findCellWithId(testNode, "ReferencePresentation_91bvrs_a0a0");
-          Assert.assertEquals("SmartReferenseUpdat", ((EditorCell_Label) editorCell).getText());
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        SNode testNode = getNodeById("2345623147105496859");
+        EditorCell editorCell = getEditorComponent().findCellWithId(testNode, "ReferencePresentation_91bvrs_a0a0");
+        Assert.assertEquals("SmartReferenseUpdat", ((EditorCell_Label) editorCell).getText());
       });
     }
   }

@@ -18,7 +18,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.util.IconCreationUtil;
-import org.jetbrains.mps.openapi.util.Consumer;
 import com.intellij.ui.LayeredIcon;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -57,15 +56,13 @@ public final class TextIcon__BehaviorDescriptor extends BaseBHDescriptor {
       return null;
     }
 
-    byte[] iconData = IconCreationUtil.drawIcon(new Consumer<IconCreationUtil.DrawContext>() {
-      public void consume(IconCreationUtil.DrawContext dc) {
-        // todo copy layered icon into core
-        LayeredIcon res = new LayeredIcon(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.layers$pqJD)).count());
-        for (SNode layer : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.layers$pqJD))) {
-          res.setIcon(new ImageIcon(IconLayerDescription__BehaviorDescriptor.getImageForGeneration_id2p1v3tObywX.invoke(layer)), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.layers$pqJD)).indexOf(layer));
-        }
-        res.paintIcon(null, dc.g, 0, 0);
+    byte[] iconData = IconCreationUtil.drawIcon((IconCreationUtil.DrawContext dc) -> {
+      // todo copy layered icon into core
+      LayeredIcon res = new LayeredIcon(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.layers$pqJD)).count());
+      for (SNode layer : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.layers$pqJD))) {
+        res.setIcon(new ImageIcon(IconLayerDescription__BehaviorDescriptor.getImageForGeneration_id2p1v3tObywX.invoke(layer)), ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.layers$pqJD)).indexOf(layer));
       }
+      res.paintIcon(null, dc.g, 0, 0);
     });
     return ListSequence.fromListAndArray(new ArrayList<Tuples._2<IFile, byte[]>>(), MultiTuple.<IFile,byte[]>from(outputDir.getDescendant(Icon__BehaviorDescriptor.getResourceId_id2p1v3tOadt0.invoke(__thisNode__)), iconData));
   }

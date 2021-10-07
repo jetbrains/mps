@@ -12,7 +12,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236184638750", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
@@ -57,11 +56,7 @@ public class CopyNodeName_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    String text = new ModelAccessHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess()).runReadAction(new Computable<String>() {
-      public String compute() {
-        return event.getData(MPSCommonDataKeys.NODE).getModel().getName().getLongName() + '.' + event.getData(MPSCommonDataKeys.NODE).getName();
-      }
-    });
+    String text = new ModelAccessHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess()).runReadAction(() -> event.getData(MPSCommonDataKeys.NODE).getModel().getName().getLongName() + '.' + event.getData(MPSCommonDataKeys.NODE).getName());
     CopyPasteUtil.copyTextToClipboard(text);
   }
 }

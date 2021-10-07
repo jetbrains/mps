@@ -30,11 +30,7 @@ public class MouseEventsDispatcher {
     Point componentPoint = convertToComponent(x, y, targetComponent);
 
     final MouseEvent e = MouseEventsDispatcher.createMouseEvent(targetComponent, eventType, componentPoint.x, componentPoint.y);
-    myEditorTest.runUndoableInEDTAndWait(new Runnable() {
-      public void run() {
-        targetComponent.dispatchEvent(e);
-      }
-    });
+    myEditorTest.runUndoableInEDTAndWait(() -> targetComponent.dispatchEvent(e));
   }
 
   private Point convertToComponent(int x, int y, final Component targetComponent) {
@@ -73,11 +69,7 @@ public class MouseEventsDispatcher {
     Point targetComponentPoint = SwingUtilities.convertPoint(editorComponent, editorX, editorY, targetComponent);
 
     final MouseEvent e = MouseEventsDispatcher.createMouseEvent(cellComponent, eventType, targetComponentPoint.x, targetComponentPoint.y);
-    myEditorTest.runUndoableInEDTAndWait(new Runnable() {
-      public void run() {
-        targetComponent.dispatchEvent(e);
-      }
-    });
+    myEditorTest.runUndoableInEDTAndWait(() -> targetComponent.dispatchEvent(e));
     return targetComponent;
   }
 

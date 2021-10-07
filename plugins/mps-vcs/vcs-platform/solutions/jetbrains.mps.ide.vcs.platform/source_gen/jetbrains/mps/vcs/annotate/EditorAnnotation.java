@@ -103,11 +103,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     myMpsProject = mpsProject;
     myRootAnnotation = rootAnnotation;
     myAllRevisions = revisions;
-    myRootAnnotation.addUpdateListener(new RootAnnotation.RootAnnotationUpdateListener() {
-      public void revisionProcessed(RevisionChanges changes) {
-        processVcsChanges(changes);
-      }
-    });
+    myRootAnnotation.addUpdateListener((RevisionChanges changes) -> processVcsChanges(changes));
     myUpdateQueue = new MergingUpdateQueue(getClass().getSimpleName(), 300, true, null, null, null, false);
     AnnotationOptions.getInstance().addUpdateListener(this);
   }
@@ -176,22 +172,14 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
             return it.value();
           }
         }));
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          public void run() {
-            addMessagesAndRepaint(updatedAnnotations);
-          }
-        });
+        ApplicationManager.getApplication().invokeLater(() -> addMessagesAndRepaint(updatedAnnotations));
       }
     });
   }
 
   @Override
   public void repaintColumn() {
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        myEditorComponent.getLeftEditorHighlighter().relayout(false);
-      }
-    });
+    ApplicationManager.getApplication().invokeLater(() -> myEditorComponent.getLeftEditorHighlighter().relayout(false));
   }
 
   @Override
@@ -201,11 +189,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
         it.setColor(calcCellColor(it.getCommitsGraphNode(), it.getChanges()));
       }
     });
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        myEditorComponent.getHighlightManager().repaintAndRebuildEditorMessages();
-      }
-    });
+    ApplicationManager.getApplication().invokeLater(() -> myEditorComponent.getHighlightManager().repaintAndRebuildEditorMessages());
   }
 
   public SNodeId getRootId() {
@@ -241,11 +225,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       @Override
       public void run() {
         resetCellAnnotations();
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          public void run() {
-            updateMessagesAndRepaint();
-          }
-        });
+        ApplicationManager.getApplication().invokeLater(() -> updateMessagesAndRepaint());
       }
     });
   }
@@ -344,11 +324,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       public boolean accept(final RevisionNodeChange it) {
         if (SetSequence.fromSet(it.getNodeIds()).count() == 1) {
           final Wrappers._T<SNode> node = new Wrappers._T<SNode>();
-          getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              node.value = getModel().getNode(SetSequence.fromSet(it.getNodeIds()).first());
-            }
-          });
+          getModelAccess().runReadAction(() -> node.value = getModel().getNode(SetSequence.fromSet(it.getNodeIds()).first()));
           if (SNodeOperations.isInstanceOf(node.value, CONCEPTS.BaseCommentAttribute$nv)) {
             boolean commentedNode = cell.isBig() && !(Objects.equals(cell.getSNode(), node.value)) && !(Objects.equals(cell.getParent().getSNode(), node.value));
             return !(commentedNode);
@@ -418,18 +394,16 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
 
   private List<EditorCell> getCells(final RevisionNodeChange revisionNodeChange) {
     final List<EditorCell> cells = ListSequence.fromList(new ArrayList<EditorCell>());
-    getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ListSequence.fromList(cells).addSequence(SetSequence.fromSet(revisionNodeChange.getNodeIds()).select(new ISelector<SNodeId, SNode>() {
-          public SNode select(SNodeId id) {
-            return getModel().getNode(id);
-          }
-        }).where(new NotNullWhereFilter<SNode>()).translate(new ITranslator2<SNode, EditorCell>() {
-          public Iterable<EditorCell> translate(SNode node) {
-            return EditorCellMessageUtil.getCells(myEditorComponent, revisionNodeChange.getMessageTarget(), node);
-          }
-        }).distinct());
-      }
+    getModelAccess().runReadAction(() -> {
+      ListSequence.fromList(cells).addSequence(SetSequence.fromSet(revisionNodeChange.getNodeIds()).select(new ISelector<SNodeId, SNode>() {
+        public SNode select(SNodeId id) {
+          return getModel().getNode(id);
+        }
+      }).where(new NotNullWhereFilter<SNode>()).translate(new ITranslator2<SNode, EditorCell>() {
+        public Iterable<EditorCell> translate(SNode node) {
+          return EditorCellMessageUtil.getCells(myEditorComponent, revisionNodeChange.getMessageTarget(), node);
+        }
+      }).distinct());
     });
     return cells;
   }
@@ -460,11 +434,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
 
   public void unhighlightCells() {
     myEditorComponent.getHighlightManager().clearForOwner(this);
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        myEditorComponent.getHighlightManager().repaintAndRebuildEditorMessages();
-      }
-    });
+    ApplicationManager.getApplication().invokeLater(() -> myEditorComponent.getHighlightManager().repaintAndRebuildEditorMessages());
   }
 
   public List<VcsFileRevision> getAllRevisions() {
@@ -607,11 +577,9 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
         try {
           final Wrappers._T<String> rootName = new Wrappers._T<String>();
           final Wrappers._T<SNodeId> rootId = new Wrappers._T<SNodeId>();
-          getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              rootId.value = getRootId();
-              rootName.value = myEditorComponent.getEditedNode().getName();
-            }
+          getModelAccess().runReadAction(() -> {
+            rootId.value = getRootId();
+            rootName.value = myEditorComponent.getEditedNode().getName();
           });
 
           SimpleDiffRequest rq;
@@ -653,25 +621,19 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
 
     final String shortCommit = revision.getRevisionNumber().asString().substring(0, 8);
     final String taskName = root.getPresentation() + "(" + shortCommit + ")";
-    getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        DiffModelUtil.renameModelAndRegister(commitModel, shortCommit, true);
-      }
-    });
+    getModelAccess().runWriteAction(() -> DiffModelUtil.renameModelAndRegister(commitModel, shortCommit, true));
 
-    getModelAccess().runReadInEDT(new Runnable() {
-      public void run() {
-        Editor newEditor = NavigationSupport.getInstance().openNode(myMpsProject, root, true, false);
-        if (newEditor != null) {
-          EditorComponent newEditorComponent = (EditorComponent) newEditor.getCurrentEditorComponent();
-          if (newEditorComponent != null) {
-            // Revision editor is read-only and should not be highlighted. 
-            // Similarly, editors in the Diff dialog window are not highlighted.
-            newEditorComponent.getHighlighter().setPaused(true);
-            BackgroundableActionLock actionLock = VcsActionsUtil.getAnnotateRootLock(myMpsProject.getProject(), taskName);
-            actionLock.lock();
-            ProgressManager.getInstance().run(new AnnotateBackgroundableTask(myMpsProject, taskName, newEditorComponent, myFile, myVcs, actionLock, revision));
-          }
+    getModelAccess().runReadInEDT(() -> {
+      Editor newEditor = NavigationSupport.getInstance().openNode(myMpsProject, root, true, false);
+      if (newEditor != null) {
+        EditorComponent newEditorComponent = (EditorComponent) newEditor.getCurrentEditorComponent();
+        if (newEditorComponent != null) {
+          // Revision editor is read-only and should not be highlighted. 
+          // Similarly, editors in the Diff dialog window are not highlighted.
+          newEditorComponent.getHighlighter().setPaused(true);
+          BackgroundableActionLock actionLock = VcsActionsUtil.getAnnotateRootLock(myMpsProject.getProject(), taskName);
+          actionLock.lock();
+          ProgressManager.getInstance().run(new AnnotateBackgroundableTask(myMpsProject, taskName, newEditorComponent, myFile, myVcs, actionLock, revision));
         }
       }
     });

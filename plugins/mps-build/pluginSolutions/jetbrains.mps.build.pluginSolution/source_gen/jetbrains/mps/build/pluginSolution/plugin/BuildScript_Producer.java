@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.execution.actions.ConfigurationContext;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -81,20 +80,12 @@ public final class BuildScript_Producer {
       if (context.getPsiLocation() instanceof MPSPsiElement) {
         final MPSPsiElement element = (MPSPsiElement) context.getPsiLocation();
         ModelAccessHelper mah = new ModelAccessHelper(element.getMPSProject().getRepository());
-        Object mpsItem = mah.runReadAction(new Computable<Object>() {
-          public Object compute() {
-            return element.getMPSItem();
-          }
-        });
+        Object mpsItem = mah.runReadAction(() -> element.getMPSItem());
         if (!(mpsItem instanceof SNode)) {
           return false;
         }
         final SNode sourceNode = (SNode) mpsItem;
-        SNode rootNode = mah.runReadAction(new Computable<SNode>() {
-          public SNode compute() {
-            return SNodeOperations.getContainingRoot(sourceNode);
-          }
-        });
+        SNode rootNode = mah.runReadAction(() -> SNodeOperations.getContainingRoot(sourceNode));
 
         return Objects.equals(configuration.getNodePointer().getNodeRef(), rootNode.getReference());
       }

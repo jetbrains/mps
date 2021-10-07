@@ -159,83 +159,78 @@
   </root>
   <root nodeRef="r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)/1224588814561902811">
     <file name="BuildMps_ModuleDependencyOnModule_Constraints.java">
-      <node id="1224588814561902811" at="36,58,37,57" concept="10" />
-      <node id="1224588814561902812" at="48,63,49,138" concept="5" />
-      <node id="6005499924254652451" at="52,80,53,93" concept="6" />
-      <node id="6005499924254654285" at="53,93,54,102" concept="6" />
-      <node id="6005499924254673595" at="54,102,55,95" concept="6" />
-      <node id="6005499924254675059" at="55,95,56,101" concept="6" />
-      <node id="6005499924254676607" at="56,101,57,110" concept="6" />
-      <node id="6005499924254583481" at="57,110,58,128" concept="4" />
-      <node id="6005499924254649345" at="58,128,59,99" concept="4" />
-      <node id="1748554787949187857" at="61,44,62,223" concept="4" />
-      <node id="1748554787949080220" at="66,66,67,131" concept="5" />
-      <node id="6005499924254841784" at="71,37,72,98" concept="6" />
-      <node id="6005499924254830107" at="72,98,73,35" concept="5" />
-      <node id="1224588814561902811" at="79,6,80,131" concept="4" />
-      <node id="1224588814561902812" at="80,131,81,42" concept="1" />
-      <node id="1224588814561902811" at="81,42,82,22" concept="5" />
-      <node id="1224588814561902811" at="86,0,87,0" concept="8" trace="BuildMps_ModuleDependencyOnModule$1C" />
-      <node id="1224588814561902811" at="87,0,88,0" concept="8" trace="BuildProject$ae" />
-      <node id="1224588814561902811" at="88,0,89,0" concept="8" trace="BuildMps_Module$JW" />
-      <node id="1224588814561902811" at="92,0,93,0" concept="8" trace="module$kGi0" />
-      <node id="1224588814561902811" at="93,0,94,0" concept="8" trace="parts$mGDj" />
-      <node id="1224588814561902811" at="97,0,98,0" concept="8" trace="name$MnvL" />
-      <node id="1224588814561902811" at="36,0,39,0" concept="0" trace="BuildMps_ModuleDependencyOnModule_Constraints#()V" />
-      <node id="1748554787949077222" at="66,0,69,0" concept="3" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-      <node id="1224588814561902812" at="47,0,51,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="1748554787949041419" at="64,61,69,23" concept="5" />
-      <node id="1748554787949041417" at="64,0,71,0" concept="3" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
-      <node id="1748554787949031124" at="62,223,71,37" concept="4" />
-      <node id="6005499924254651689" at="61,0,75,0" concept="3" trace="apply#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/scope/Scope;" />
-      <node id="6005499924254580566" at="59,99,75,15" concept="5" />
-      <node id="1224588814561902812" at="51,0,77,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="1224588814561902812" at="45,56,77,10" concept="5" />
-      <node id="1224588814561902812" at="43,0,79,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="1224588814561902812" at="41,90,79,6" concept="4" />
-      <node id="1224588814561902811" at="40,0,84,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="1224588814561902811" at="36,58,37,57" />
-      <scope id="1224588814561902812" at="48,63,49,138" />
-      <scope id="1748554787949077223" at="66,66,67,131" />
-      <scope id="1224588814561902811" at="36,0,39,0" />
-      <scope id="1748554787949077222" at="66,0,69,0">
+      <node id="1224588814561902811" at="35,58,36,57" concept="10" />
+      <node id="1224588814561902812" at="47,63,48,138" concept="5" />
+      <node id="6005499924254652451" at="51,80,52,93" concept="6" />
+      <node id="6005499924254654285" at="52,93,53,102" concept="6" />
+      <node id="6005499924254673595" at="53,102,54,95" concept="6" />
+      <node id="6005499924254675059" at="54,95,55,101" concept="6" />
+      <node id="6005499924254676607" at="55,101,56,110" concept="6" />
+      <node id="6005499924254583481" at="56,110,57,128" concept="4" />
+      <node id="6005499924254649345" at="57,128,58,99" concept="4" />
+      <node id="1748554787949187857" at="59,105,60,221" concept="4" />
+      <node id="1748554787949080220" at="64,64,65,129" concept="5" />
+      <node id="6005499924254841784" at="69,35,70,96" concept="6" />
+      <node id="6005499924254830107" at="70,96,71,33" concept="5" />
+      <node id="1224588814561902811" at="76,6,77,131" concept="4" />
+      <node id="1224588814561902812" at="77,131,78,42" concept="1" />
+      <node id="1224588814561902811" at="78,42,79,22" concept="5" />
+      <node id="1224588814561902811" at="83,0,84,0" concept="8" trace="BuildMps_ModuleDependencyOnModule$1C" />
+      <node id="1224588814561902811" at="84,0,85,0" concept="8" trace="BuildProject$ae" />
+      <node id="1224588814561902811" at="85,0,86,0" concept="8" trace="BuildMps_Module$JW" />
+      <node id="1224588814561902811" at="89,0,90,0" concept="8" trace="module$kGi0" />
+      <node id="1224588814561902811" at="90,0,91,0" concept="8" trace="parts$mGDj" />
+      <node id="1224588814561902811" at="94,0,95,0" concept="8" trace="name$MnvL" />
+      <node id="1224588814561902811" at="35,0,38,0" concept="0" trace="BuildMps_ModuleDependencyOnModule_Constraints#()V" />
+      <node id="1748554787949077222" at="64,0,67,0" concept="3" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
+      <node id="1224588814561902812" at="46,0,50,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="1748554787949041419" at="62,59,67,21" concept="5" />
+      <node id="1748554787949041417" at="62,0,69,0" concept="3" trace="translate#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Iterable;" />
+      <node id="1748554787949031124" at="60,221,69,35" concept="4" />
+      <node id="6005499924254580566" at="58,99,72,15" concept="5" />
+      <node id="1224588814561902812" at="50,0,74,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="1224588814561902812" at="44,56,74,10" concept="5" />
+      <node id="1224588814561902812" at="42,0,76,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="1224588814561902812" at="40,90,76,6" concept="4" />
+      <node id="1224588814561902811" at="39,0,81,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="1224588814561902811" at="35,58,36,57" />
+      <scope id="1224588814561902812" at="47,63,48,138" />
+      <scope id="1748554787949077223" at="64,64,65,129" />
+      <scope id="1224588814561902811" at="35,0,38,0" />
+      <scope id="1748554787949077222" at="64,0,67,0">
         <var name="it" id="1748554787949077222" />
       </scope>
-      <scope id="1224588814561902812" at="47,0,51,0" />
-      <scope id="1748554787949041418" at="64,61,69,23" />
-      <scope id="1748554787949041417" at="64,0,71,0">
+      <scope id="1224588814561902812" at="46,0,50,0" />
+      <scope id="1748554787949041418" at="62,59,67,21" />
+      <scope id="1748554787949041417" at="62,0,69,0">
         <var name="p" id="1748554787949041417" />
       </scope>
-      <scope id="6005499924254651691" at="61,44,73,35">
+      <scope id="6005499924254651691" at="59,105,71,33">
         <var name="projects" id="1748554787949187858" />
         <var name="s" id="1748554787949031125" />
       </scope>
-      <scope id="6005499924254651689" at="61,0,75,0">
-        <var name="m" id="6005499924254651689" />
-      </scope>
-      <scope id="1224588814561902812" at="52,80,75,15">
+      <scope id="1224588814561902812" at="51,80,72,15">
         <var name="bp" id="6005499924254583482" />
         <var name="key" id="6005499924254649348" />
       </scope>
-      <scope id="1224588814561902812" at="51,0,77,0">
+      <scope id="1224588814561902812" at="50,0,74,0">
         <var name="_context" id="1224588814561902812" />
       </scope>
-      <scope id="1224588814561902812" at="45,56,77,10" />
-      <scope id="1224588814561902812" at="43,0,79,0" />
-      <scope id="1224588814561902811" at="41,90,82,22">
+      <scope id="1224588814561902812" at="44,56,74,10" />
+      <scope id="1224588814561902812" at="42,0,76,0" />
+      <scope id="1224588814561902811" at="40,90,79,22">
         <var name="d0" id="1224588814561902812" />
         <var name="references" id="1224588814561902811" />
       </scope>
-      <scope id="1224588814561902811" at="40,0,84,0" />
-      <unit id="1224588814561902811" at="96,0,99,0" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$PROPS" />
-      <unit id="1748554787949077222" at="65,113,69,21" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$1$1$1$1$1" />
-      <unit id="1224588814561902811" at="91,0,95,0" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$LINKS" />
-      <unit id="1224588814561902811" at="85,0,90,0" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$CONCEPTS" />
-      <unit id="1748554787949041417" at="63,99,71,17" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$1$1$1$1" />
-      <unit id="6005499924254651689" at="60,94,75,13" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$1$1$1" />
-      <unit id="1224588814561902812" at="46,19,77,9" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$1$1" />
-      <unit id="1224588814561902812" at="42,48,79,5" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$1" />
-      <unit id="1224588814561902811" at="35,0,100,0" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints" />
+      <scope id="1224588814561902811" at="39,0,81,0" />
+      <unit id="1224588814561902811" at="93,0,96,0" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$PROPS" />
+      <unit id="1748554787949077222" at="63,111,67,19" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$1$1$1$1" />
+      <unit id="1224588814561902811" at="88,0,92,0" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$LINKS" />
+      <unit id="1224588814561902811" at="82,0,87,0" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$CONCEPTS" />
+      <unit id="1748554787949041417" at="61,97,69,15" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$1$1$1" />
+      <unit id="1224588814561902812" at="45,19,74,9" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$1$1" />
+      <unit id="1224588814561902812" at="41,48,76,5" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints$1" />
+      <unit id="1224588814561902811" at="34,0,97,0" name="jetbrains.mps.build.mps.constraints.BuildMps_ModuleDependencyOnModule_Constraints" />
     </file>
   </root>
   <root nodeRef="r:76dda237-5120-4688-b749-201ab5c5059d(jetbrains.mps.build.mps.constraints)/1224588814561913804">

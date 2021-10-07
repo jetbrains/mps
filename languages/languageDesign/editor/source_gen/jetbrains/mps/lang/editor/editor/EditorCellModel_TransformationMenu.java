@@ -32,7 +32,6 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
 import java.util.Collections;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
@@ -240,11 +239,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
         }
       });
 
-      Iterable<SNode> editedProperties = assistantUtils.getAllCellValues(new _FunctionTypes._return_P1_E0<SNode, SNode>() {
-        public SNode invoke(SNode cell) {
-          return SLinkOperations.getTarget(SNodeOperations.as(cell, CONCEPTS.CellModel_Property$uh), LINKS.relationDeclaration$E2hc);
-        }
-      });
+      Iterable<SNode> editedProperties = assistantUtils.getAllCellValues((SNode cell) -> SLinkOperations.getTarget(SNodeOperations.as(cell, CONCEPTS.CellModel_Property$uh), LINKS.relationDeclaration$E2hc));
 
       Iterable<SNode> notEditedProperties = Sequence.fromIterable(allConceptProperties).subtract(Sequence.fromIterable(editedProperties)).sort(new ISelector<SNode, Integer>() {
         public Integer select(SNode it) {
@@ -378,11 +373,7 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
           return false;
         }
 
-        return null == assistantUtils.getFirstCellValue(new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
-          public Boolean invoke(SNode cell) {
-            return (SLinkOperations.hasPointer(SNodeOperations.as(cell, CONCEPTS.CellModel_Component$d$), LINKS.editorComponent$DNa7, new SNodePointer("r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)", "2900100530630621651")) ? Boolean.FALSE : null);
-          }
-        });
+        return null == assistantUtils.getFirstCellValue((SNode cell) -> (SLinkOperations.hasPointer(SNodeOperations.as(cell, CONCEPTS.CellModel_Component$d$), LINKS.editorComponent$DNa7, new SNodePointer("r:00000000-0000-4000-0000-011c89590284(jetbrains.mps.lang.core.editor)", "2900100530630621651")) ? Boolean.FALSE : null));
       }
 
 
@@ -421,24 +412,22 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
         }
       });
 
-      Iterable<SNode> editedLinks = assistantUtils.getAllCellValues(new _FunctionTypes._return_P1_E0<SNode, SNode>() {
-        public SNode invoke(SNode cell) {
-          SNode refNodeListCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefNodeList$Uo);
-          if (refNodeListCell != null) {
-            return SLinkOperations.getTarget(refNodeListCell, LINKS.relationDeclaration$E2hc);
-          }
-
-          SNode refCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefCell$7g);
-          if (refCell != null) {
-            return SLinkOperations.getTarget(refCell, LINKS.relationDeclaration$E2hc);
-          }
-
-          SNode refNodeCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefNode$8);
-          if (refNodeCell != null) {
-            return SLinkOperations.getTarget(refNodeCell, LINKS.relationDeclaration$E2hc);
-          }
-          return (SNode) null;
+      Iterable<SNode> editedLinks = assistantUtils.getAllCellValues((SNode cell) -> {
+        SNode refNodeListCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefNodeList$Uo);
+        if (refNodeListCell != null) {
+          return SLinkOperations.getTarget(refNodeListCell, LINKS.relationDeclaration$E2hc);
         }
+
+        SNode refCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefCell$7g);
+        if (refCell != null) {
+          return SLinkOperations.getTarget(refCell, LINKS.relationDeclaration$E2hc);
+        }
+
+        SNode refNodeCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefNode$8);
+        if (refNodeCell != null) {
+          return SLinkOperations.getTarget(refNodeCell, LINKS.relationDeclaration$E2hc);
+        }
+        return (SNode) null;
       });
 
       Iterable<SNode> notEditedLinks = Sequence.fromIterable(allConceptLinks).subtract(Sequence.fromIterable(editedLinks));
@@ -589,14 +578,12 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
           }
         });
 
-        Iterable<SNode> editedProperties = assistantUtils.getAllCellValues(new _FunctionTypes._return_P1_E0<SNode, SNode>() {
-          public SNode invoke(SNode cell) {
-            SNode propertyCell = SNodeOperations.as(cell, CONCEPTS.CellModel_Property$uh);
-            if (propertyCell != null) {
-              return SLinkOperations.getTarget(propertyCell, LINKS.relationDeclaration$E2hc);
-            }
-            return (SNode) null;
+        Iterable<SNode> editedProperties = assistantUtils.getAllCellValues((SNode cell) -> {
+          SNode propertyCell = SNodeOperations.as(cell, CONCEPTS.CellModel_Property$uh);
+          if (propertyCell != null) {
+            return SLinkOperations.getTarget(propertyCell, LINKS.relationDeclaration$E2hc);
           }
+          return (SNode) null;
         });
 
         Iterable<SNode> allConceptLinks = ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getLinkDeclarations_idhEwILKK.invoke(SLinkOperations.getTarget(assistantUtils.getEditorDeclaration(), LINKS.conceptDeclaration$HJmJ))).where(new IWhereFilter<SNode>() {
@@ -605,24 +592,22 @@ public class EditorCellModel_TransformationMenu extends TransformationMenuBase {
           }
         });
 
-        Iterable<SNode> editedLinks = assistantUtils.getAllCellValues(new _FunctionTypes._return_P1_E0<SNode, SNode>() {
-          public SNode invoke(SNode cell) {
-            SNode refNodeListCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefNodeList$Uo);
-            if (refNodeListCell != null) {
-              return SLinkOperations.getTarget(refNodeListCell, LINKS.relationDeclaration$E2hc);
-            }
-
-            SNode refCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefCell$7g);
-            if (refCell != null) {
-              return SLinkOperations.getTarget(refCell, LINKS.relationDeclaration$E2hc);
-            }
-
-            SNode refNodeCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefNode$8);
-            if (refNodeCell != null) {
-              return SLinkOperations.getTarget(refNodeCell, LINKS.relationDeclaration$E2hc);
-            }
-            return (SNode) null;
+        Iterable<SNode> editedLinks = assistantUtils.getAllCellValues((SNode cell) -> {
+          SNode refNodeListCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefNodeList$Uo);
+          if (refNodeListCell != null) {
+            return SLinkOperations.getTarget(refNodeListCell, LINKS.relationDeclaration$E2hc);
           }
+
+          SNode refCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefCell$7g);
+          if (refCell != null) {
+            return SLinkOperations.getTarget(refCell, LINKS.relationDeclaration$E2hc);
+          }
+
+          SNode refNodeCell = SNodeOperations.as(cell, CONCEPTS.CellModel_RefNode$8);
+          if (refNodeCell != null) {
+            return SLinkOperations.getTarget(refNodeCell, LINKS.relationDeclaration$E2hc);
+          }
+          return (SNode) null;
         });
 
         return Sequence.fromIterable(allConceptProperties).subtract(Sequence.fromIterable(editedProperties)).isNotEmpty() || Sequence.fromIterable(allConceptLinks).subtract(Sequence.fromIterable(editedLinks)).isNotEmpty();

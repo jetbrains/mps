@@ -35,7 +35,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Iterator;
 import jetbrains.mps.smodel.event.SModelEvent;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.event.SModelRootEvent;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.event.SModelReferenceEvent;
@@ -229,62 +228,60 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       return true;
     }
     // TODO rewrite without read action, see doc of EditorChecker#processEvents
-    return new ModelAccessHelper(myProject.getRepository()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        for (SModelEvent event : ListSequence.fromList(events)) {
-          if (event instanceof SModelRootEvent) {
+    return new ModelAccessHelper(myProject.getRepository()).runReadAction(() -> {
+      for (SModelEvent event : ListSequence.fromList(events)) {
+        if (event instanceof SModelRootEvent) {
+          return true;
+        }
+        if (event instanceof SModelChildEvent) {
+          SModelChildEvent childEvent = (SModelChildEvent) event;
+          SNode child = childEvent.getChild();
+          SNode parent = childEvent.getParent();
+          String childRole = childEvent.getChildRole();
+          // Class or Interface was added/removed
+          if (SNodeOperations.isInstanceOf(child, CONCEPTS.Interface$db) || SNodeOperations.isInstanceOf(child, CONCEPTS.ClassConcept$bK) || SNodeOperations.isInstanceOf(child, CONCEPTS.AnonymousClass$Bt) || SNodeOperations.isInstanceOf(child, CONCEPTS.AnonymousClassCreator$fS)) {
             return true;
           }
-          if (event instanceof SModelChildEvent) {
-            SModelChildEvent childEvent = (SModelChildEvent) event;
-            SNode child = childEvent.getChild();
-            SNode parent = childEvent.getParent();
-            String childRole = childEvent.getChildRole();
-            // Class or Interface was added/removed
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.Interface$db) || SNodeOperations.isInstanceOf(child, CONCEPTS.ClassConcept$bK) || SNodeOperations.isInstanceOf(child, CONCEPTS.AnonymousClass$Bt) || SNodeOperations.isInstanceOf(child, CONCEPTS.AnonymousClassCreator$fS)) {
-              return true;
-            }
-            // method was added/removed from containing Classifier
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.InstanceMethodDeclaration$39) && SNodeOperations.isInstanceOf(parent, CONCEPTS.Classifier$Ix)) {
-              return true;
-            }
-            // one of extendedInterface/superclass/implementedInterface child elements was added/removed
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.ClassifierType$bL) && (LINKS.extendedInterface$PDVO.getName().equals(childRole) || LINKS.superclass$Mp9$.getName().equals(childRole) || LINKS.implementedInterface$rujG.getName().equals(childRole))) {
-              return true;
-            }
-            // parameter was added/removed
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.ParameterDeclaration$RG) && LINKS.parameter$5xBj.getName().equals(childRole)) {
-              return true;
-            }
-            if (SNodeOperations.isInstanceOf(child, CONCEPTS.Type$bu) && isParameterType(child)) {
-              return true;
-            }
+          // method was added/removed from containing Classifier
+          if (SNodeOperations.isInstanceOf(child, CONCEPTS.InstanceMethodDeclaration$39) && SNodeOperations.isInstanceOf(parent, CONCEPTS.Classifier$Ix)) {
+            return true;
           }
-          if (event instanceof SModelReferenceEvent) {
-            SModelReferenceEvent referenceEvent = (SModelReferenceEvent) event;
-            SReference reference = referenceEvent.getReference();
-            SNode sourceNode = reference.getSourceNode();
-            SReferenceLink referenceRole = reference.getLink();
-            if (LINKS.classifier$cxMr.equals(referenceRole) && SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.ClassifierType$bL) && (SNodeOperations.isInstanceOf(SNodeOperations.getParent(sourceNode), CONCEPTS.Classifier$Ix))) {
-              return true;
-            }
-            if (LINKS.classifier$q_Y$.equals(referenceRole) && SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.AnonymousClass$Bt)) {
-              return true;
-            }
-            if (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.Type$bu) && isParameterType(sourceNode)) {
-              return true;
-            }
+          // one of extendedInterface/superclass/implementedInterface child elements was added/removed
+          if (SNodeOperations.isInstanceOf(child, CONCEPTS.ClassifierType$bL) && (LINKS.extendedInterface$PDVO.getName().equals(childRole) || LINKS.superclass$Mp9$.getName().equals(childRole) || LINKS.implementedInterface$rujG.getName().equals(childRole))) {
+            return true;
           }
-          if (event instanceof SModelPropertyEvent) {
-            SModelPropertyEvent propertyEvent = (SModelPropertyEvent) event;
-            SNode node = propertyEvent.getNode();
-            if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$kD)) {
-              return true;
-            }
+          // parameter was added/removed
+          if (SNodeOperations.isInstanceOf(child, CONCEPTS.ParameterDeclaration$RG) && LINKS.parameter$5xBj.getName().equals(childRole)) {
+            return true;
+          }
+          if (SNodeOperations.isInstanceOf(child, CONCEPTS.Type$bu) && isParameterType(child)) {
+            return true;
           }
         }
-        return false;
+        if (event instanceof SModelReferenceEvent) {
+          SModelReferenceEvent referenceEvent = (SModelReferenceEvent) event;
+          SReference reference = referenceEvent.getReference();
+          SNode sourceNode = reference.getSourceNode();
+          SReferenceLink referenceRole = reference.getLink();
+          if (LINKS.classifier$cxMr.equals(referenceRole) && SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.ClassifierType$bL) && (SNodeOperations.isInstanceOf(SNodeOperations.getParent(sourceNode), CONCEPTS.Classifier$Ix))) {
+            return true;
+          }
+          if (LINKS.classifier$q_Y$.equals(referenceRole) && SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.AnonymousClass$Bt)) {
+            return true;
+          }
+          if (SNodeOperations.isInstanceOf(sourceNode, CONCEPTS.Type$bu) && isParameterType(sourceNode)) {
+            return true;
+          }
+        }
+        if (event instanceof SModelPropertyEvent) {
+          SModelPropertyEvent propertyEvent = (SModelPropertyEvent) event;
+          SNode node = propertyEvent.getNode();
+          if (SNodeOperations.isInstanceOf(node, CONCEPTS.BaseMethodDeclaration$kD)) {
+            return true;
+          }
+        }
       }
+      return false;
     });
   }
 

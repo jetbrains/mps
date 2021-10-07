@@ -11,7 +11,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
-import org.jetbrains.mps.util.Condition;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.NotNull;
@@ -34,11 +33,7 @@ public abstract class DescendantsScope extends Scope {
   public Iterable<SNode> getAvailableElements(@Nullable final String prefix) {
     Iterable<SNode> seq = ListSequence.fromList(SNodeOperations.getChildren(node, link)).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return SNodeUtil.getDescendants(it, new Condition<SNode>() {
-          public boolean met(SNode n) {
-            return SNodeOperations.isInstanceOf(n, SNodeOperations.asSConcept(concept));
-          }
-        }, true);
+        return SNodeUtil.getDescendants(it, (SNode n) -> SNodeOperations.isInstanceOf(n, SNodeOperations.asSConcept(concept)), true);
       }
     });
     if (prefix == null || prefix.isEmpty()) {

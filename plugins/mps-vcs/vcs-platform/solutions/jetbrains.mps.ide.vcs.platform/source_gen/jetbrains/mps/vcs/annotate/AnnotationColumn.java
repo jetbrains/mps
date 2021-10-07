@@ -74,11 +74,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   /*package*/ AnnotationColumn(Project project, LeftEditorHighlighter leftEditorHighlighter, EditorAnnotation editorAnnotation) {
     super(leftEditorHighlighter);
     myEditorAnnotation = editorAnnotation;
-    myEditorAnnotation.setLineAnnotationsUpdateListener(new EditorAnnotation.LineAnnotationsUpdateListener() {
-      public void lineAnnotationsUpdated() {
-        onLineAnnotationsUpdated();
-      }
-    });
+    myEditorAnnotation.setLineAnnotationsUpdateListener(() -> onLineAnnotationsUpdated());
     ListSequence.fromList(myAspectSubcolumns).addElement(new RevisionAspectSubcolumn(myEditorAnnotation));
     ListSequence.fromList(myAspectSubcolumns).addElement(new DateAspectSubcolumn(myEditorAnnotation));
     ListSequence.fromList(myAspectSubcolumns).addElement(new AuthorAspectSubcolumn(myEditorAnnotation));

@@ -42,23 +42,21 @@ public class PluginActionMenuItemBase_InapplicableAction_CannotExecute_Test exte
       initEditorComponent("8874023590561015430", "");
       SRepository repository = getEditorComponent().getEditorContext().getRepository();
 
-      repository.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          AnAction action = new AnAction() {
-            @Override
-            public void update(AnActionEvent e) {
-              super.update(e);
-              e.getPresentation().setEnabled(false);
-            }
-            public void actionPerformed(AnActionEvent p0) {
-            }
-          };
+      repository.getModelAccess().runReadAction(() -> {
+        AnAction action = new AnAction() {
+          @Override
+          public void update(AnActionEvent e) {
+            super.update(e);
+            e.getPresentation().setEnabled(false);
+          }
+          public void actionPerformed(AnActionEvent p0) {
+          }
+        };
 
-          DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
+        DefaultTransformationMenuContext context = DefaultTransformationMenuContext.createInitialContextForCell(getEditorComponent().getSelectedCell(), "irrelevant location");
 
-          ActionItem item = new PluginActionMenuItemBase(context, action);
-          Assert.assertFalse(item.canExecute("irrelevant pattern"));
-        }
+        ActionItem item = new PluginActionMenuItemBase(context, action);
+        Assert.assertFalse(item.canExecute("irrelevant pattern"));
       });
     }
   }

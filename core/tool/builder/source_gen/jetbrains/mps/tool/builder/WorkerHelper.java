@@ -25,11 +25,7 @@ public final class WorkerHelper {
   public void makeAndReload(SRepository repo, final Supplier<Collection<SModule>> modules, JavaCompilerOptions opts) {
     final ModuleMaker maker = new ModuleMaker();
     maker.options(opts);
-    repo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        maker.prepare(modules.get(), true, new EmptyProgressMonitor());
-      }
-    });
+    repo.getModelAccess().runReadAction(() -> maker.prepare(modules.get(), true, new EmptyProgressMonitor()));
     MPSCompilationResult mpsCompilationResult = maker.make(new EmptyProgressMonitor());
     if (mpsCompilationResult.isReloadingNeeded()) {
       myPlatform.findComponent(ClassLoaderManager.class).reload(mpsCompilationResult.getAffectedModules(), new EmptyProgressMonitor());

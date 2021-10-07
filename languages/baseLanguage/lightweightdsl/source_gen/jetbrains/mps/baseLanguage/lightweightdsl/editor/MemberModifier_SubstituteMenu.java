@@ -14,7 +14,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
-import java.util.function.Predicate;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.stream.Collectors;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -50,11 +49,7 @@ public class MemberModifier_SubstituteMenu extends SubstituteMenuBase {
 
   public class SMP_Subconcepts_aj0y4j_a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.MemberModifier$px).stream().filter(new Predicate<SAbstractConcept>() {
-        public boolean test(SAbstractConcept concept) {
-          return filterConcept(_context, concept);
-        }
-      }).collect(Collectors.toList());
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.MemberModifier$px).stream().filter((SAbstractConcept concept) -> filterConcept(_context, concept)).collect(Collectors.toList());
     }
     private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
       return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNodeAncestor(_context.getParentNode(), CONCEPTS.DSLClassMember$rT, true, false), LINKS.modifier$xlAc), SNodeOperations.asSConcept(concept))).isEmpty();

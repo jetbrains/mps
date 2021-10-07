@@ -80,29 +80,27 @@ public class ModelFocusSynchronizer implements FrameStateListener {
     // synchronize file collection task with refresh task by using EDT thread. Just don't want to bother with
     // explicit sync (e.g. semaphore incremented before runReadInEDT, decremented in the end and RefreshQueue waiting for
     // semaphore == 0.
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        if (!(SetSequence.fromSet(files).isEmpty())) {
-          RefreshSession session = RefreshQueue.getInstance().createSession(true, true, null);
-          for (IFile file : SetSequence.fromSet(files)) {
-            IFile fileToRefresh = file;
-            while (!(fileToRefresh.exists())) {
-              fileToRefresh = fileToRefresh.getParent();
-            }
-            if (!(fileToRefresh instanceof IdeaFile)) {
-              if (LOG.isEnabledFor(Level.WARN)) {
-                LOG.warn("File " + fileToRefresh + " must be a project file and managed by IDEA FS");
-              }
-              continue;
-            }
-            VirtualFile virtualFile = ((IdeaFile) fileToRefresh).getVirtualFile();
-
-            if (virtualFile != null) {
-              session.addFile(virtualFile);
-            }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      if (!(SetSequence.fromSet(files).isEmpty())) {
+        RefreshSession session = RefreshQueue.getInstance().createSession(true, true, null);
+        for (IFile file : SetSequence.fromSet(files)) {
+          IFile fileToRefresh = file;
+          while (!(fileToRefresh.exists())) {
+            fileToRefresh = fileToRefresh.getParent();
           }
-          session.launch();
+          if (!(fileToRefresh instanceof IdeaFile)) {
+            if (LOG.isEnabledFor(Level.WARN)) {
+              LOG.warn("File " + fileToRefresh + " must be a project file and managed by IDEA FS");
+            }
+            continue;
+          }
+          VirtualFile virtualFile = ((IdeaFile) fileToRefresh).getVirtualFile();
+
+          if (virtualFile != null) {
+            session.addFile(virtualFile);
+          }
         }
+        session.launch();
       }
     }, ModalityState.NON_MODAL);
     // XXX explicit use of NON_MODAL is an attempt to fix MPS-32243. We don't quite understand how come default modality state here is one of the "Failed to Download" dialog,

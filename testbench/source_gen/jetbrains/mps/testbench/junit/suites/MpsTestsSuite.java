@@ -141,37 +141,35 @@ public class MpsTestsSuite extends BaseMpsSuite {
 
   private List<Runner> createChildRunners(Project project, final RunnerBuilder builder) {
     final List<Runner> result = new ArrayList<Runner>();
-    project.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        for (SModule module : ListSequence.fromList(myContextProject.getProjectModules())) {
-          ClassLoader moduleCL = ((ReloadableModule) module).getClassLoader0();
-          if (moduleCL == null) {
-            if (LOG.isEnabledFor(Level.ERROR)) {
-              LOG.error("Classloader is not found for the " + module);
-            }
-            continue;
+    project.getModelAccess().runReadAction(() -> {
+      for (SModule module : ListSequence.fromList(myContextProject.getProjectModules())) {
+        ClassLoader moduleCL = ((ReloadableModule) module).getClassLoader0();
+        if (moduleCL == null) {
+          if (LOG.isEnabledFor(Level.ERROR)) {
+            LOG.error("Classloader is not found for the " + module);
           }
-          for (SModel model : Sequence.fromIterable(module.getModels())) {
-            for (SNode testCase : ListSequence.fromList(SModelOperations.roots(((SModel) model), CONCEPTS.ITestCase$Fp))) {
-              String testClassName = ((String) BHReflection.invoke0(testCase, CONCEPTS.ITestCase$Fp, SMethodTrimmedId.create("getClassName", null, "hGBnqtL")));
-              try {
-                Class<?> testClass = moduleCL.loadClass(testClassName);
-                result.add(builder.safeRunnerForClass(testClass));
-              } catch (ClassNotFoundException e) {
-                if (LOG.isEnabledFor(Level.WARN)) {
-                  LOG.warn("Cannot find the test class " + testClassName + "; will skip this test class");
-                }
+          continue;
+        }
+        for (SModel model : Sequence.fromIterable(module.getModels())) {
+          for (SNode testCase : ListSequence.fromList(SModelOperations.roots(((SModel) model), CONCEPTS.ITestCase$Fp))) {
+            String testClassName = ((String) BHReflection.invoke0(testCase, CONCEPTS.ITestCase$Fp, SMethodTrimmedId.create("getClassName", null, "hGBnqtL")));
+            try {
+              Class<?> testClass = moduleCL.loadClass(testClassName);
+              result.add(builder.safeRunnerForClass(testClass));
+            } catch (ClassNotFoundException e) {
+              if (LOG.isEnabledFor(Level.WARN)) {
+                LOG.warn("Cannot find the test class " + testClassName + "; will skip this test class");
               }
             }
-            final String packageStmt = JavaNameUtil.packageName(model);
-            for (SNode gt : ListSequence.fromList(SModelOperations.roots(((SModel) model), CONCEPTS.GeneratorTest$C3))) {
-              String testClassName = NameUtil.longNameFromNamespaceAndShortName(packageStmt, SPropertyOperations.getString(gt, PROPS.name$MnvL));
-              try {
-                result.add(builder.safeRunnerForClass(moduleCL.loadClass(testClassName)));
-              } catch (ClassNotFoundException ex) {
-                if (LOG.isEnabledFor(Level.WARN)) {
-                  LOG.warn("Cannot find the test class " + testClassName);
-                }
+          }
+          final String packageStmt = JavaNameUtil.packageName(model);
+          for (SNode gt : ListSequence.fromList(SModelOperations.roots(((SModel) model), CONCEPTS.GeneratorTest$C3))) {
+            String testClassName = NameUtil.longNameFromNamespaceAndShortName(packageStmt, SPropertyOperations.getString(gt, PROPS.name$MnvL));
+            try {
+              result.add(builder.safeRunnerForClass(moduleCL.loadClass(testClassName)));
+            } catch (ClassNotFoundException ex) {
+              if (LOG.isEnabledFor(Level.WARN)) {
+                LOG.warn("Cannot find the test class " + testClassName);
               }
             }
           }

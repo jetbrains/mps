@@ -89,33 +89,31 @@ public class RenamePackage_Action extends BaseAction {
       return;
     }
 
-    modelAccess.executeCommandInEDT(new Runnable() {
-      public void run() {
-        final Collection<SModel> modelsToConsider;
-        if (LanguageAspectSupport.isAspectModel(model)) {
-          // the idea is to change package name in all aspect models simultaneously if we rename a package in an aspect model
-          modelsToConsider = LanguageAspectSupport.getAspectModels(model.getModule());
-        } else {
-          modelsToConsider = Collections.singleton(model);
-        }
-        ArrayList<SNode> nodesUnderPackage = new ArrayList<SNode>();
-        for (SModel am : modelsToConsider) {
-          for (SNode root : am.getRootNodes()) {
-            String rootPack = SPropertyOperations.getString(root, PROPS.virtualPackage$EkXl);
-            if (rootPack != null && rootPack.startsWith(packageName)) {
-              assert rootPack.length() >= packageName.length();
-              if (rootPack.length() == packageName.length() || rootPack.charAt(packageName.length()) == '.') {
-                nodesUnderPackage.add(root);
-              }
+    modelAccess.executeCommandInEDT(() -> {
+      final Collection<SModel> modelsToConsider;
+      if (LanguageAspectSupport.isAspectModel(model)) {
+        // the idea is to change package name in all aspect models simultaneously if we rename a package in an aspect model
+        modelsToConsider = LanguageAspectSupport.getAspectModels(model.getModule());
+      } else {
+        modelsToConsider = Collections.singleton(model);
+      }
+      ArrayList<SNode> nodesUnderPackage = new ArrayList<SNode>();
+      for (SModel am : modelsToConsider) {
+        for (SNode root : am.getRootNodes()) {
+          String rootPack = SPropertyOperations.getString(root, PROPS.virtualPackage$EkXl);
+          if (rootPack != null && rootPack.startsWith(packageName)) {
+            assert rootPack.length() >= packageName.length();
+            if (rootPack.length() == packageName.length() || rootPack.charAt(packageName.length()) == '.') {
+              nodesUnderPackage.add(root);
             }
           }
         }
+      }
 
-        for (SNode node : nodesUnderPackage) {
-          String oldPackage = SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl);
-          String newPackage = newName + oldPackage.substring(packageName.length());
-          SPropertyOperations.assign(node, PROPS.virtualPackage$EkXl, (newPackage.length() > 0 ? newPackage : null));
-        }
+      for (SNode node : nodesUnderPackage) {
+        String oldPackage = SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl);
+        String newPackage = newName + oldPackage.substring(packageName.length());
+        SPropertyOperations.assign(node, PROPS.virtualPackage$EkXl, (newPackage.length() > 0 ? newPackage : null));
       }
     });
   }

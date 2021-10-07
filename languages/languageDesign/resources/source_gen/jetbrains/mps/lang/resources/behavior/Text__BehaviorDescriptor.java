@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.IconCreationUtil;
-import org.jetbrains.mps.openapi.util.Consumer;
 import java.awt.Font;
 import java.awt.Color;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -38,18 +37,16 @@ public final class Text__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static byte[] getImageForGeneration_id2p1v3tObywX(@NotNull final SNode __thisNode__) {
-    return IconCreationUtil.drawIcon(new Consumer<IconCreationUtil.DrawContext>() {
-      public void consume(IconCreationUtil.DrawContext dc) {
-        Font font = new Font(Font.DIALOG, Font.BOLD, 12);
+    return IconCreationUtil.drawIcon((IconCreationUtil.DrawContext dc) -> {
+      Font font = new Font(Font.DIALOG, Font.BOLD, 12);
 
-        dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.color$VAO2))));
-        dc.g.setFont(font);
+      dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.color$VAO2))));
+      dc.g.setFont(font);
 
-        TextLayout text = new TextLayout(SPropertyOperations.getString(__thisNode__, PROPS.text$pUhb), font, dc.g.getFontRenderContext());
-        Rectangle2D rect = text.getBounds();
+      TextLayout text = new TextLayout(SPropertyOperations.getString(__thisNode__, PROPS.text$pUhb), font, dc.g.getFontRenderContext());
+      Rectangle2D rect = text.getBounds();
 
-        text.draw(dc.g, ((float) (((float) dc.width) / 2 - rect.getCenterX())), ((float) (((float) dc.height) / 2 - rect.getCenterY())));
-      }
+      text.draw(dc.g, ((float) (((float) dc.width) / 2 - rect.getCenterX())), ((float) (((float) dc.height) / 2 - rect.getCenterY())));
     });
   }
 

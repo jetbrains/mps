@@ -8,12 +8,9 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.Arrays;
-import java.util.Comparator;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.stream.Stream;
-import java.util.function.Function;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
 public class InferredParameter_Test {
@@ -21,14 +18,12 @@ public class InferredParameter_Test {
   public void test_returnContext() throws Exception {
     Assert.assertEquals(returnContext().invoke(3), "3");
 
-    SelectorProvider provider = new SelectorProvider() {
-      public ISelector<Integer, String> get() {
-        return new ISelector<Integer, String>() {
-          public String select(Integer obj) {
-            return String.valueOf(obj);
-          }
-        };
-      }
+    SelectorProvider provider = () -> {
+      return new ISelector<Integer, String>() {
+        public String select(Integer obj) {
+          return String.valueOf(obj);
+        }
+      };
     };
     Assert.assertEquals(provider.get().invoke(4), "4");
 
@@ -36,39 +31,33 @@ public class InferredParameter_Test {
   }
   @Test
   public void test_functionType() throws Exception {
-    _FunctionTypes._void_P4_E0<? super Integer, ? super Double, ? super String, ? super ArrayList<Integer>> method = new _FunctionTypes._void_P4_E0<Integer, Double, String, ArrayList<Integer>>() {
-      public void invoke(Integer intVar, Double doubleVar, String strVar, ArrayList<Integer> list) {
-        Integer.bitCount(intVar);
-        Double.isFinite(doubleVar);
-        strVar.substring(intVar);
-        list.clear();
-      }
+    _FunctionTypes._void_P4_E0<? super Integer, ? super Double, ? super String, ? super ArrayList<Integer>> method = (Integer intVar, Double doubleVar, String strVar, ArrayList<Integer> list) -> {
+      Integer.bitCount(intVar);
+      Double.isFinite(doubleVar);
+      strVar.substring(intVar);
+      list.clear();
     };
 
     Assert.assertNotNull(method);
   }
   @Test
   public void test_genericType() throws Exception {
-    IGeneric<Integer> method = new IGeneric<Integer>() {
-      public int resultOf(Integer val, int count, AbstractGeneric<Integer> computer) {
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i = 0; i < count; i++) {
-          list.add(i);
-        }
-        return computer.convert(val, list);
+    IGeneric<Integer> method = (Integer val, int count, AbstractGeneric<Integer> computer) -> {
+      ArrayList<Integer> list = new ArrayList<Integer>();
+      for (int i = 0; i < count; i++) {
+        list.add(i);
       }
+      return computer.convert(val, list);
     };
 
     AbstractGeneric<IGeneric<Double>> nested = new AbstractGeneric<IGeneric<Double>>() {
       public IGeneric<Double> convert(IGeneric<Double> item, List<IGeneric<Double>> list) {
-        list.forEach(new Consumer<IGeneric<Double>>() {
-          public void accept(IGeneric<Double> it) {
-            it.resultOf(3.0, 2, new AbstractGeneric<Double>() {
-              public Double convert(Double doublValue, List<Double> nestedList) {
-                return doublValue + nestedList.size();
-              }
-            });
-          }
+        list.forEach((IGeneric<Double> it) -> {
+          it.resultOf(3.0, 2, new AbstractGeneric<Double>() {
+            public Double convert(Double doublValue, List<Double> nestedList) {
+              return doublValue + nestedList.size();
+            }
+          });
         });
         return item;
       }
@@ -79,37 +68,21 @@ public class InferredParameter_Test {
   }
   @Test
   public void test_castContext() throws Exception {
-    double perform = ((ISimple) new ISimple() {
-      public double perform(int input) {
-        return input * 2.0;
-      }
-    }).perform(3);
+    double perform = ((ISimple) (int input) -> input * 2.0).perform(3);
 
     Assert.assertNotNull(perform);
   }
   @Test
   public void test_callContext() throws Exception {
     ArrayList<Integer> integers = new ArrayList();
-    integers.forEach(new Consumer<Integer>() {
-      public void accept(Integer input) {
-        input.bitCount(2);
-      }
-    });
+    integers.forEach((Integer input) -> input.bitCount(2));
   }
   @Test
   public void test_assignContext() throws Exception {
-    ISimple value = new ISimple() {
-      public double perform(int input) {
-        return 3 * input;
-      }
-    };
+    ISimple value = (int input) -> 3 * input;
     value.perform(5);
 
-    value = new ISimple() {
-      public double perform(int input2) {
-        return input2 + 3;
-      }
-    };
+    value = (int input2) -> input2 + 3;
     value.perform(3);
 
     AbstractGeneric<String> generic;
@@ -123,22 +96,14 @@ public class InferredParameter_Test {
   }
   @Test
   public void test_varAssignment() throws Exception {
-    ISimple value = (ISimple) new ISimple() {
-      public double perform(int input) {
-        return 1;
-      }
-    };
+    ISimple value = (ISimple) (int input) -> 1;
 
     Assert.assertNotNull(value);
   }
   @Test
   public void test_methodParamInferrence() throws Exception {
     String[] content = new String[]{"A", "D", "C", "B"};
-    Arrays.sort(content, new Comparator<String>() {
-      public int compare(String _this_0, String str) {
-        return _this_0.compareToIgnoreCase(str);
-      }
-    });
+    Arrays.sort(content, (String _this_0, String str) -> _this_0.compareToIgnoreCase(str));
     Assert.assertEquals(content[1], "B");
   }
   @Test
@@ -146,19 +111,7 @@ public class InferredParameter_Test {
     List<StringBuilder> builders = ListSequence.fromListAndArray(new ArrayList<StringBuilder>(), new StringBuilder("Hello"), new StringBuilder("World"));
 
     // Chained calls with inferred type from "builders", using stream API
-    Stream<String> map = builders.stream().map(new Function<StringBuilder, ItemContainer<StringBuilder>>() {
-      public ItemContainer<StringBuilder> apply(StringBuilder content) {
-        return ItemContainer.init(content);
-      }
-    }).map(new Function<ItemContainer<StringBuilder>, StringBuilder>() {
-      public StringBuilder apply(ItemContainer<StringBuilder> _this_0) {
-        return _this_0.get();
-      }
-    }).map(new Function<StringBuilder, String>() {
-      public String apply(StringBuilder _this_0) {
-        return _this_0.toString();
-      }
-    });
+    Stream<String> map = builders.stream().map((StringBuilder content) -> ItemContainer.init(content)).map((ItemContainer<StringBuilder> _this_0) -> _this_0.get()).map((StringBuilder _this_0) -> _this_0.toString());
     Assert.assertEquals(map.findFirst().get(), "Hello");
   }
   @Test

@@ -42,16 +42,14 @@ public class OverrideConceptMethodsAction {
     final Wrappers._T<SNode> contextMethod = new Wrappers._T<SNode>();
     final Wrappers._T<SNodeReference[]> methods = new Wrappers._T<SNodeReference[]>();
 
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        contextClass.value = SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.ConceptBehavior$2, true, false);
-        contextMethod.value = SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.ConceptMethodDeclaration$N0, true, false);
-        List<SNode> methodsToOverride = ((List<SNode>) BHReflection.invoke0(contextClass.value, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToImplement", null, "4GM03FJm5q2")));
-        if (myIsOverride) {
-          ListSequence.fromList(methodsToOverride).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(contextClass.value, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToOverride", null, "4GM03FJm3zL")))));
-        }
-        methods.value = OverrideConceptMethodsDialog.toNodePointers(OverrideConceptMethodsDialog.sortMethods(contextClass.value, methodsToOverride));
+    myProject.getModelAccess().runReadAction(() -> {
+      contextClass.value = SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.ConceptBehavior$2, true, false);
+      contextMethod.value = SNodeOperations.getNodeAncestor(mySelectedNode, CONCEPTS.ConceptMethodDeclaration$N0, true, false);
+      List<SNode> methodsToOverride = ((List<SNode>) BHReflection.invoke0(contextClass.value, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToImplement", null, "4GM03FJm5q2")));
+      if (myIsOverride) {
+        ListSequence.fromList(methodsToOverride).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(contextClass.value, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToOverride", null, "4GM03FJm3zL")))));
       }
+      methods.value = OverrideConceptMethodsDialog.toNodePointers(OverrideConceptMethodsDialog.sortMethods(contextClass.value, methodsToOverride));
     });
 
     final OverrideConceptMethodsDialog dialog = new OverrideConceptMethodsDialog(methods.value, ProjectHelper.toIdeaProject(myProject)) {
@@ -66,31 +64,29 @@ public class OverrideConceptMethodsAction {
     if (dialog.isOK()) {
       final Iterable<SNodeReference> selectedElements = (Iterable<SNodeReference>) dialog.getSelectedElements();
 
-      myProject.getModelAccess().executeCommandInEDT(new Runnable() {
-        public void run() {
-          List<SNode> selection = Sequence.fromIterable(selectedElements).select(new ISelector<SNodeReference, SNode>() {
-            public SNode select(SNodeReference it) {
-              return SNodeOperations.cast(it.resolve(myProject.getRepository()), CONCEPTS.BaseMethodDeclaration$kD);
-            }
-          }).toListSequence();
-          OverrideConceptMethodsHelper helper = new OverrideConceptMethodsHelper(myProject, contextClass.value, contextMethod.value, dialog.isRemoveAttributes(), dialog.isAddReturn());
-          List<SNode> insertedMethods = helper.insertMethods(selection);
-          if (insertedMethods.isEmpty()) {
-            return;
+      myProject.getModelAccess().executeCommandInEDT(() -> {
+        List<SNode> selection = Sequence.fromIterable(selectedElements).select(new ISelector<SNodeReference, SNode>() {
+          public SNode select(SNodeReference it) {
+            return SNodeOperations.cast(it.resolve(myProject.getRepository()), CONCEPTS.BaseMethodDeclaration$kD);
           }
-
-          MoveRefactoringUtils.fixImportsFromNode(contextClass.value);
-
-          SNode firstMethod = ListSequence.fromList(insertedMethods).first();
-          SNode nodeToSelect;
-          if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$5xQk), LINKS.statement$53DE)).isNotEmpty()) {
-            nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$5xQk), LINKS.statement$53DE)).first();
-          } else {
-            nodeToSelect = firstMethod;
-          }
-          myEditorContext.flushEvents();
-          myEditorContext.getSelectionManager().setSelection(nodeToSelect);
+        }).toListSequence();
+        OverrideConceptMethodsHelper helper = new OverrideConceptMethodsHelper(myProject, contextClass.value, contextMethod.value, dialog.isRemoveAttributes(), dialog.isAddReturn());
+        List<SNode> insertedMethods = helper.insertMethods(selection);
+        if (insertedMethods.isEmpty()) {
+          return;
         }
+
+        MoveRefactoringUtils.fixImportsFromNode(contextClass.value);
+
+        SNode firstMethod = ListSequence.fromList(insertedMethods).first();
+        SNode nodeToSelect;
+        if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$5xQk), LINKS.statement$53DE)).isNotEmpty()) {
+          nodeToSelect = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(firstMethod, LINKS.body$5xQk), LINKS.statement$53DE)).first();
+        } else {
+          nodeToSelect = firstMethod;
+        }
+        myEditorContext.flushEvents();
+        myEditorContext.getSelectionManager().setSelection(nodeToSelect);
       });
     }
   }

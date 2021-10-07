@@ -23,16 +23,8 @@ public abstract class AbstractExternalFrameView extends GroupView {
       @Override
       protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
         super.registerSynchronizers(configuration);
-        configuration.add(Synchronizers.forProperty(frameWidth, new Runnable() {
-          public void run() {
-            updateFrameRectangle(internalsBounds.get(), frameWidth.get());
-          }
-        }));
-        configuration.add(Synchronizers.forProperty(internalsBounds, new Runnable() {
-          public void run() {
-            updateFrameRectangle(internalsBounds.get(), frameWidth.get());
-          }
-        }));
+        configuration.add(Synchronizers.forProperty(frameWidth, () -> updateFrameRectangle(internalsBounds.get(), frameWidth.get())));
+        configuration.add(Synchronizers.forProperty(internalsBounds, () -> updateFrameRectangle(internalsBounds.get(), frameWidth.get())));
       }
     }.attachRoot();
   }

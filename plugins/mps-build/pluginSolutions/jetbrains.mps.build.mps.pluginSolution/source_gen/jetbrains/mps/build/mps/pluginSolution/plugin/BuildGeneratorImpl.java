@@ -35,7 +35,6 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.project.Solution;
 import org.jetbrains.mps.openapi.model.SModelName;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -89,23 +88,21 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
   @Override
   public void generate() {
     ModelAccess modelAccess = myProject.getRepository().getModelAccess();
-    modelAccess.executeCommandInEDT(new Runnable() {
-      public void run() {
-        SModel descriptor = getSModelDescriptor(new EmptyProgressIndicator());
+    modelAccess.executeCommandInEDT(() -> {
+      SModel descriptor = getSModelDescriptor(new EmptyProgressIndicator());
 
-        addRequiredImports(descriptor, ((AbstractModule) descriptor.getModule()).getModuleDescriptor());
+      addRequiredImports(descriptor, ((AbstractModule) descriptor.getModule()).getModuleDescriptor());
 
-        EditableSModel targetModelDescriptor = ((EditableSModel) descriptor);
+      EditableSModel targetModelDescriptor = ((EditableSModel) descriptor);
 
-        Iterable<SNode> result = createBuildScripts(targetModelDescriptor, BuildGeneratorImpl.this.getProjectName(), BuildGeneratorImpl.this.getModules());
-        ((AbstractModule) targetModelDescriptor.getModule()).save();
-        targetModelDescriptor.save();
-        for (SNode node : Sequence.fromIterable(result)) {
-          NavigationSupport.getInstance().openNode(myProject, node, true, true);
-        }
-
-        myProject.addModule(descriptor.getModule());
+      Iterable<SNode> result = createBuildScripts(targetModelDescriptor, BuildGeneratorImpl.this.getProjectName(), BuildGeneratorImpl.this.getModules());
+      ((AbstractModule) targetModelDescriptor.getModule()).save();
+      targetModelDescriptor.save();
+      for (SNode node : Sequence.fromIterable(result)) {
+        NavigationSupport.getInstance().openNode(myProject, node, true, true);
       }
+
+      myProject.addModule(descriptor.getModule());
     });
 
     if (Objects.equals(getDependencyKind(), DependencyStep.DependencyKind.STANDALONE)) {
@@ -223,11 +220,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     }
 
     // FIXME once there's no single model repository, there would be no reason to limit model name to unique in the repo
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        return new ModuleRepositoryFacade(myProject).getModelsByName(new SModelName(text)).isEmpty();
-      }
-    });
+    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> new ModuleRepositoryFacade(myProject).getModelsByName(new SModelName(text)).isEmpty());
   }
 
   public boolean isValidSolutionName(final String text) {
@@ -236,11 +229,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
       return false;
     }
 
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        return new ModuleRepositoryFacade(myProject).getModulesByName(text).isEmpty();
-      }
-    });
+    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> new ModuleRepositoryFacade(myProject).getModulesByName(text).isEmpty());
   }
 
   protected Iterable<SNode> createBuildScripts(SModel targetModelDescriptor, String name, List<NodeData> selectedData) {

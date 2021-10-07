@@ -15,18 +15,17 @@ import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.test.matcher.NodeDifference;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.junit.Assert;
 import java.util.Collection;
 import java.util.Iterator;
 import jetbrains.mps.generator.ModelGenerationPlan;
-import jetbrains.mps.generator.InterpretedPlanProvider;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.generator.InterpretedPlanProvider;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.junit.Assume;
@@ -74,11 +73,7 @@ public class BaseGeneratorTest implements EnvironmentAware {
     // equal (in aforementioned sense) nodes, for external references that the target is equal is java sense.
     // FIXME use of myProject.getModelAccess() is wrong, empty project we've just created doesn't have modules with test data,
     //       however, at the moment I've got no better idea how to access project of MpsTestsSuite
-    List<NodeDifference> diff = new ModelAccessHelper(myRepository.getModelAccess()).runReadAction(new Computable<List<NodeDifference>>() {
-      public List<NodeDifference> compute() {
-        return new NodesMatcher(SModelOperations.roots(m1, null), SModelOperations.roots(m2, null)).diff();
-      }
-    });
+    List<NodeDifference> diff = new ModelAccessHelper(myRepository.getModelAccess()).runReadAction(() -> new NodesMatcher(SModelOperations.roots(m1, null), SModelOperations.roots(m2, null)).diff());
     if (diff.isEmpty()) {
       return;
     }
@@ -99,13 +94,11 @@ public class BaseGeneratorTest implements EnvironmentAware {
   }
 
   protected final ModelGenerationPlan.Provider planProviderFromModel(final SModel gpm) {
-    return new ModelAccessHelper(gpm.getRepository()).runReadAction(new Computable<InterpretedPlanProvider>() {
-      public InterpretedPlanProvider compute() {
-        LanguageRegistry lreg = myEnv.getPlatform().findComponent(LanguageRegistry.class);
-        LogHandler mh = new LogHandler(Logger.getLogger(getClass()));
-        SNodeReference planNode = SNodeOperations.getPointer(ListSequence.fromList(SModelOperations.roots(gpm, CONCEPTS.Plan$X1)).first());
-        return new InterpretedPlanProvider(lreg, mh, planNode, myRepository);
-      }
+    return new ModelAccessHelper(gpm.getRepository()).runReadAction(() -> {
+      LanguageRegistry lreg = myEnv.getPlatform().findComponent(LanguageRegistry.class);
+      LogHandler mh = new LogHandler(Logger.getLogger(getClass()));
+      SNodeReference planNode = SNodeOperations.getPointer(ListSequence.fromList(SModelOperations.roots(gpm, CONCEPTS.Plan$X1)).first());
+      return new InterpretedPlanProvider(lreg, mh, planNode, myRepository);
     });
   }
 

@@ -35,11 +35,9 @@ public class Test_ReferenceMacroApplicable_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("2617465934949368157", "");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Assert.assertTrue(EditingUtil.isReferenceMacroApplicable(getEditorComponent().getSelectedNode(), getEditorComponent().getSelectedCell()));
-          Assert.assertFalse(EditingUtil.isPropertyMacroApplicable(getEditorComponent().getSelectedNode(), getEditorComponent().getSelectedCell()));
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        Assert.assertTrue(EditingUtil.isReferenceMacroApplicable(getEditorComponent().getSelectedNode(), getEditorComponent().getSelectedCell()));
+        Assert.assertFalse(EditingUtil.isPropertyMacroApplicable(getEditorComponent().getSelectedNode(), getEditorComponent().getSelectedCell()));
       });
     }
   }

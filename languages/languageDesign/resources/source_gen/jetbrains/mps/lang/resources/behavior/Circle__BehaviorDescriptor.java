@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.IconCreationUtil;
-import org.jetbrains.mps.openapi.util.Consumer;
 import jetbrains.mps.lang.resources.enumMigration.Size_MigrationUtils;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.awt.Color;
@@ -36,26 +35,24 @@ public final class Circle__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static byte[] getImageForGeneration_id2p1v3tObywX(@NotNull final SNode __thisNode__) {
-    return IconCreationUtil.drawIcon(new Consumer<IconCreationUtil.DrawContext>() {
-      public void consume(IconCreationUtil.DrawContext dc) {
-        int x = (int) (((float) dc.width) / 2 - Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$TZqV)));
-        int y = (int) (((float) dc.height) / 2 - Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$TZqV)));
-        int d = Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$TZqV)) * 2;
+    return IconCreationUtil.drawIcon((IconCreationUtil.DrawContext dc) -> {
+      int x = (int) (((float) dc.width) / 2 - Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$TZqV)));
+      int y = (int) (((float) dc.height) / 2 - Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$TZqV)));
+      int d = Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$TZqV)) * 2;
 
-        Color fillColor = new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$VwDK)));
-        if ((SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37) == null)) {
-          dc.g.setColor(fillColor);
-          dc.g.fillOval(x, y, d, d);
-        } else {
-          // outer
-          dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37))));
-          dc.g.fillOval(x, y, d, d);
+      Color fillColor = new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$VwDK)));
+      if ((SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37) == null)) {
+        dc.g.setColor(fillColor);
+        dc.g.fillOval(x, y, d, d);
+      } else {
+        // outer
+        dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37))));
+        dc.g.fillOval(x, y, d, d);
 
-          // inner
-          int border = 2;
-          dc.g.setColor(fillColor);
-          dc.g.fillOval(x + border, y + border, d - border * 2, d - border * 2);
-        }
+        // inner
+        int border = 2;
+        dc.g.setColor(fillColor);
+        dc.g.fillOval(x + border, y + border, d - border * 2, d - border * 2);
       }
     });
   }

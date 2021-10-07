@@ -45,11 +45,9 @@ public class BuildAllGenerators_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<List<SModule>> m = new Wrappers._T<List<SModule>>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        Iterable<SModule> projectModules = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModulesWithGenerators();
-        m.value = ListSequence.fromListWithValues(new ArrayList<SModule>(), Sequence.fromIterable(projectModules).ofType(Generator.class));
-      }
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
+      Iterable<SModule> projectModules = event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModulesWithGenerators();
+      m.value = ListSequence.fromListWithValues(new ArrayList<SModule>(), Sequence.fromIterable(projectModules).ofType(Generator.class));
     });
     new MakeActionImpl(new MakeActionParameters(event.getData(MPSCommonDataKeys.MPS_PROJECT)).modules(m.value).cleanMake(true)).executeAction();
   }

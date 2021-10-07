@@ -41,7 +41,6 @@ import jetbrains.mps.nodeEditor.MPSColors;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Component;
 import javax.swing.JComponent;
 import jetbrains.mps.editor.runtime.EditorUtil;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -290,21 +289,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
       // never happens, see show if condition on outer cell
       return null;
     }
-    return EditorUtil.createSelectImageButton(myNode, PROPS.internalBaseDirectory$_8Zr, getEditorContext(), new _FunctionTypes._return_P1_E0<String, String>() {
-      public String invoke(String path) {
-        try {
-          return rph.makeRelative(path);
-        } catch (Exception ex) {
-          return path;
-        }
+    return EditorUtil.createSelectImageButton(myNode, PROPS.internalBaseDirectory$_8Zr, getEditorContext(), (String path) -> {
+      try {
+        return rph.makeRelative(path);
+      } catch (Exception ex) {
+        return path;
       }
-    }, new _FunctionTypes._return_P1_E0<String, String>() {
-      public String invoke(String path) {
-        try {
-          return rph.makeAbsolute(path);
-        } catch (Exception ex) {
-          return path;
-        }
+    }, (String path) -> {
+      try {
+        return rph.makeAbsolute(path);
+      } catch (Exception ex) {
+        return path;
       }
     });
   }

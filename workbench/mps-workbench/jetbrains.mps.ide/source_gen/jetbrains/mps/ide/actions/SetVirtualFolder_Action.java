@@ -90,11 +90,9 @@ public class SetVirtualFolder_Action extends BaseAction {
       return;
     }
 
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        for (SModule m : ((List<SModule>) MapSequence.fromMap(_params).get("modules"))) {
-          ((MPSProject) MapSequence.fromMap(_params).get("project")).setVirtualFolder(m, (newFolder.isEmpty() ? null : newFolder));
-        }
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().executeCommand(() -> {
+      for (SModule m : ((List<SModule>) MapSequence.fromMap(_params).get("modules"))) {
+        ((MPSProject) MapSequence.fromMap(_params).get("project")).setVirtualFolder(m, (newFolder.isEmpty() ? null : newFolder));
       }
     });
     ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).rebuild();

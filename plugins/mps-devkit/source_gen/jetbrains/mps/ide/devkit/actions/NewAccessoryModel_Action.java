@@ -78,13 +78,11 @@ public class NewAccessoryModel_Action extends BaseAction {
     return new NewModelActionExecutor(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.CONTEXT_MODULE), event.getData(MPSCommonDataKeys.TREE_NODE)) {
       @Override
       protected void onModelCreated(final SModel model) {
-        myProject.getModelAccess().executeCommand(new Runnable() {
-          public void run() {
-            Language language = (Language) model.getModule();
-            LanguageDescriptor descriptor = language.getModuleDescriptor();
-            descriptor.getAccessoryModels().add(model.getReference());
-            language.save();
-          }
+        myProject.getModelAccess().executeCommand(() -> {
+          Language language = (Language) model.getModule();
+          LanguageDescriptor descriptor = language.getModuleDescriptor();
+          descriptor.getAccessoryModels().add(model.getReference());
+          language.save();
         });
         super.onModelCreated(model);
       }

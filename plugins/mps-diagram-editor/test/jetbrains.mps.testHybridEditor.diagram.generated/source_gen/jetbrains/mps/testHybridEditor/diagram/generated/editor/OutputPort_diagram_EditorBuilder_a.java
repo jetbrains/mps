@@ -20,7 +20,6 @@ import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.jetpad.geometry.Rectangle;
 import jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.editor.diagram.runtime.jetpad.views.PortDecoratorView;
 import jetbrains.jetpad.model.property.ReadableProperty;
 
@@ -105,11 +104,7 @@ import jetbrains.jetpad.model.property.ReadableProperty;
     }
     private RectView createPortView() {
       RectView portView = new RectView();
-      configureView(portView, new _FunctionTypes._return_P0_E0<Boolean>() {
-        public Boolean invoke() {
-          return true;
-        }
-      });
+      configureView(portView, () -> true);
       portView.prop(JetpadUtils.SOURCE).set(getSNode());
       portView.focusable().set(true);
       return portView;

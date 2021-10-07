@@ -101,12 +101,10 @@ public class ExtractMethod_Action extends BaseAction {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("refactoring.extractMethod");
     final Wrappers._T<ExtractMethodRefactoringParameters> params = new Wrappers._T<ExtractMethodRefactoringParameters>();
     final Wrappers._T<ExtractMethodRefactoring> refactoring = new Wrappers._T<ExtractMethodRefactoring>();
-    ((EditorContext) MapSequence.fromMap(_params).get("context")).getRepository().getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        params.value = ExtractMethodFactory.createParameters(((List<SNode>) MapSequence.fromMap(_params).get("nodes")));
-        refactoring.value = ExtractMethodFactory.createRefactoring(params.value);
-        params.value.setReturnType(refactoring.value.getMethodType());
-      }
+    ((EditorContext) MapSequence.fromMap(_params).get("context")).getRepository().getModelAccess().runWriteAction(() -> {
+      params.value = ExtractMethodFactory.createParameters(((List<SNode>) MapSequence.fromMap(_params).get("nodes")));
+      refactoring.value = ExtractMethodFactory.createRefactoring(params.value);
+      params.value.setReturnType(refactoring.value.getMethodType());
     });
     ExtractMethodDialog dialog = new ExtractMethodDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), ((EditorContext) MapSequence.fromMap(_params).get("context")), params.value, refactoring.value);
     dialog.show();

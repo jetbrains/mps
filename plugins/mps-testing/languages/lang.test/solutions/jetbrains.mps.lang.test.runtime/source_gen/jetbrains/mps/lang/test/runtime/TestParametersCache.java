@@ -94,14 +94,12 @@ public final class TestParametersCache implements TestRule {
     if (myProject == null) {
       return;
     }
-    myProject.getModelAccess().runWriteInEDT(new Runnable() {
-      public void run() {
-        if (LOG.isInfoEnabled()) {
-          LOG.info("Disposing the temporary model");
-        }
-        TemporaryModels.getInstance().dispose(myTransientModel);
-        myTransientModel = null;
+    myProject.getModelAccess().runWriteInEDT(() -> {
+      if (LOG.isInfoEnabled()) {
+        LOG.info("Disposing the temporary model");
       }
+      TemporaryModels.getInstance().dispose(myTransientModel);
+      myTransientModel = null;
     });
     myProject = null;
     myTestModel = null;
@@ -135,25 +133,23 @@ public final class TestParametersCache implements TestRule {
     }
     myProject = p;
     final SRepository repository = p.getRepository();
-    Exception exception = ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      public void run() {
-        // FIXME drop command, needed for transient/temp model initialization only
-        repository.getModelAccess().executeCommand(new Runnable() {
-          @Override
-          public void run() {
-            SModelReference modelRef = PersistenceFacade.getInstance().createModelReference(myModelRef);
-            SModel modelDescriptor = modelRef.resolve(repository);
-            if (modelDescriptor == null) {
-              throw new CouldNotFindModelException(String.format("Can't find model %s in supplied repository %s.", myModelRef, repository));
-            }
-            myTestModel = modelDescriptor;
-            SModel transientModel = TemporaryModels.getInstance().create(false, TempModuleOptions.nonReloadableModule());
-            new CloneUtil(modelDescriptor, transientModel).cloneModelWithImports();
-            new ModelDependencyUpdate(transientModel).updateModuleDependencies(repository);
-            myTransientModel = transientModel;
+    Exception exception = ThreadUtils.runInUIThreadAndWait(() -> {
+      // FIXME drop command, needed for transient/temp model initialization only
+      repository.getModelAccess().executeCommand(new Runnable() {
+        @Override
+        public void run() {
+          SModelReference modelRef = PersistenceFacade.getInstance().createModelReference(myModelRef);
+          SModel modelDescriptor = modelRef.resolve(repository);
+          if (modelDescriptor == null) {
+            throw new CouldNotFindModelException(String.format("Can't find model %s in supplied repository %s.", myModelRef, repository));
           }
-        });
-      }
+          myTestModel = modelDescriptor;
+          SModel transientModel = TemporaryModels.getInstance().create(false, TempModuleOptions.nonReloadableModule());
+          new CloneUtil(modelDescriptor, transientModel).cloneModelWithImports();
+          new ModelDependencyUpdate(transientModel).updateModuleDependencies(repository);
+          myTransientModel = transientModel;
+        }
+      });
     });
     if (exception != null) {
       throw new MPSTestModelInitializationException("Exception during model initialization", exception);

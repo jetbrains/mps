@@ -13,11 +13,9 @@ public class MPS14653_helper {
     public Context() {
     }
     public _FunctionTypes._void_P0_E1<? extends T> getFunction() {
-      return new _FunctionTypes._void_P0_E1<T>() {
-        public void invoke() throws T {
-          // Exception cannot be thrown as we cannot ensure T = Exception, in our case it is true so we cast
-          throw (T) new Exception();
-        }
+      return () -> {
+        // Exception cannot be thrown as we cannot ensure T = Exception, in our case it is true so we cast
+        throw (T) new Exception();
       };
     }
     public void acceptFunction(_FunctionTypes._void_P0_E1<? extends T> fun) throws T {

@@ -34,11 +34,7 @@ public class Comment_DeleteMultipleRoleWholeComment_Test extends BaseTransformat
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("1683214195544063349", "1683214195544063360");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action"), false);
     }
   }
 }

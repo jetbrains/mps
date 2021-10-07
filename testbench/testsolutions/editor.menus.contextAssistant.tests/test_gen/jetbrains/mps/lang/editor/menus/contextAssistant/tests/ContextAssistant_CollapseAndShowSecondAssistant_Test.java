@@ -41,17 +41,15 @@ public class ContextAssistant_CollapseAndShowSecondAssistant_Test extends BaseTr
     public void testMethodImpl() throws Exception {
       initEditorComponent("379023083996833851", "379023083996833853");
       invokeAction("jetbrains.mps.ide.editor.actions.Collapse_Action");
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          ContextAssistantManager contextAssistantManager = getEditorComponent().getEditorContext().getContextAssistantManager();
-          contextAssistantManager.updateImmediately();
-          Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
-          List<TransformationMenuItem> activeItems = contextAssistantManager.getActiveMenuItems();
-          Assert.assertNotNull(activeItems);
-          Assert.assertTrue(activeItems.size() > 0);
-          EditorCell_ContextAssistantComponent contextAssistantCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), EditorCell_ContextAssistantComponent.class, true);
-          Assert.assertTrue(contextAssistantCell.getComponent().isVisible());
-        }
+      SwingUtilities.invokeAndWait(() -> {
+        ContextAssistantManager contextAssistantManager = getEditorComponent().getEditorContext().getContextAssistantManager();
+        contextAssistantManager.updateImmediately();
+        Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
+        List<TransformationMenuItem> activeItems = contextAssistantManager.getActiveMenuItems();
+        Assert.assertNotNull(activeItems);
+        Assert.assertTrue(activeItems.size() > 0);
+        EditorCell_ContextAssistantComponent contextAssistantCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), EditorCell_ContextAssistantComponent.class, true);
+        Assert.assertTrue(contextAssistantCell.getComponent().isVisible());
       });
     }
   }

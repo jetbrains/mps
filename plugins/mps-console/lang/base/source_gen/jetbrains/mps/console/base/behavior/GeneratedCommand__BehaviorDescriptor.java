@@ -51,46 +51,40 @@ public final class GeneratedCommand__BehaviorDescriptor extends BaseBHDescriptor
         if (!(result)) {
           return;
         }
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          public void run() {
-            final SModule module = model.getModule();
-            final String name = SModelOperations.getModelName(model) + ".Main";
-            final Wrappers._T<Class<?>> aClass = new Wrappers._T<Class<?>>(null);
-            context.getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
-              public void run() {
+        ApplicationManager.getApplication().invokeLater(() -> {
+          final SModule module = model.getModule();
+          final String name = SModelOperations.getModelName(model) + ".Main";
+          final Wrappers._T<Class<?>> aClass = new Wrappers._T<Class<?>>(null);
+          context.getProject().getRepository().getModelAccess().runReadAction(() -> {
+            try {
+              aClass.value = ((ReloadableModule) module).getOwnClass(name);
+            } catch (ClassNotFoundException e) {
+              if (LOG.isEnabledFor(Level.ERROR)) {
+                LOG.error("Exception on query loading", e);
+              }
+            }
+          });
+          if (aClass.value == null) {
+            return;
+          }
+          Method[] methods = aClass.value.getMethods();
+          for (final Method method : methods) {
+            if (method.getName().equals("execute")) {
+              beforeCallback.run();
+              context.getProject().getRepository().getModelAccess().executeCommand(() -> {
                 try {
-                  aClass.value = ((ReloadableModule) module).getOwnClass(name);
-                } catch (ClassNotFoundException e) {
+                  method.invoke(null, context, console);
+                } catch (IllegalAccessException e) {
+                  if (LOG.isEnabledFor(Level.ERROR)) {
+                    LOG.error("Exception on query loading", e);
+                  }
+                } catch (InvocationTargetException e) {
                   if (LOG.isEnabledFor(Level.ERROR)) {
                     LOG.error("Exception on query loading", e);
                   }
                 }
-              }
-            });
-            if (aClass.value == null) {
-              return;
-            }
-            Method[] methods = aClass.value.getMethods();
-            for (final Method method : methods) {
-              if (method.getName().equals("execute")) {
-                beforeCallback.run();
-                context.getProject().getRepository().getModelAccess().executeCommand(new Runnable() {
-                  public void run() {
-                    try {
-                      method.invoke(null, context, console);
-                    } catch (IllegalAccessException e) {
-                      if (LOG.isEnabledFor(Level.ERROR)) {
-                        LOG.error("Exception on query loading", e);
-                      }
-                    } catch (InvocationTargetException e) {
-                      if (LOG.isEnabledFor(Level.ERROR)) {
-                        LOG.error("Exception on query loading", e);
-                      }
-                    }
-                  }
-                });
-                afterCallback.run();
-              }
+              });
+              afterCallback.run();
             }
           }
         }, ModalityState.NON_MODAL);

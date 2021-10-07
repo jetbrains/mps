@@ -34,11 +34,7 @@ public class SideDeleteStaticInitializerAtEndWithBackSpace_Test extends BaseTran
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5732053020525090684", "5732053020525121304");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action"), false);
     }
   }
 }

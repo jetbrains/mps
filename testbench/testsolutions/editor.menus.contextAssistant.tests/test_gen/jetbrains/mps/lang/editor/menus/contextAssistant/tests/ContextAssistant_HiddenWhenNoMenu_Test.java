@@ -38,25 +38,19 @@ public class ContextAssistant_HiddenWhenNoMenu_Test extends BaseTransformationTe
     public void testMethodImpl() throws Exception {
       initEditorComponent("6183626235528683202", "");
       final EditorContext editorContext = getEditorComponent().getEditorContext();
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          editorContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
-              contextAssistantManager.updateImmediately();
-              Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
-              Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
+      SwingUtilities.invokeAndWait(() -> editorContext.getRepository().getModelAccess().runReadAction(() -> {
+        ContextAssistantManager contextAssistantManager = editorContext.getContextAssistantManager();
+        contextAssistantManager.updateImmediately();
+        Assert.assertNotNull(contextAssistantManager.getActiveAssistant());
+        Assert.assertNotNull(contextAssistantManager.getActiveMenuItems());
 
-              getEditorComponent().getSelectionManager().setSelection(getNodeById("6183626235528683202"));
+        getEditorComponent().getSelectionManager().setSelection(getNodeById("6183626235528683202"));
 
-              contextAssistantManager.updateImmediately();
+        contextAssistantManager.updateImmediately();
 
-              Assert.assertNull(contextAssistantManager.getActiveAssistant());
-              Assert.assertNull(contextAssistantManager.getActiveMenuItems());
-            }
-          });
-        }
-      });
+        Assert.assertNull(contextAssistantManager.getActiveAssistant());
+        Assert.assertNull(contextAssistantManager.getActiveMenuItems());
+      }));
     }
   }
 }

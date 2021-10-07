@@ -70,21 +70,15 @@ public class RenameFileOrDirectory_Action extends BaseAction {
     }
     final String result = dialog.getResult();
 
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        try {
-          if (RenameFileOrDirectory_Action.this.isNotValid(result, _params)) {
-            return;
-          }
-          ((VirtualFile) MapSequence.fromMap(_params).get("selectedFile")).rename(null, result);
-          ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).refresh();
-          ApplicationManager.getApplication().invokeLater(new Runnable() {
-            public void run() {
-              ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).getCurrentProjectViewPane().select(null, ((VirtualFile) MapSequence.fromMap(_params).get("selectedFile")), true);
-            }
-          });
-        } catch (IOException e) {
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().executeCommand(() -> {
+      try {
+        if (RenameFileOrDirectory_Action.this.isNotValid(result, _params)) {
+          return;
         }
+        ((VirtualFile) MapSequence.fromMap(_params).get("selectedFile")).rename(null, result);
+        ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).refresh();
+        ApplicationManager.getApplication().invokeLater(() -> ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).getCurrentProjectViewPane().select(null, ((VirtualFile) MapSequence.fromMap(_params).get("selectedFile")), true));
+      } catch (IOException e) {
       }
     });
   }

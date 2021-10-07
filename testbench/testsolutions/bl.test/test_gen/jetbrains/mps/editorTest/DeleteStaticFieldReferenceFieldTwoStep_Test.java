@@ -34,12 +34,10 @@ public class DeleteStaticFieldReferenceFieldTwoStep_Test extends BaseTransformat
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5758795788991656517", "5758795788991656527");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-          getEditorComponent().getDeletionApprover().isApprovedForDeletion(getEditorComponent().getSelectedCell().getParent());
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+        getEditorComponent().getDeletionApprover().isApprovedForDeletion(getEditorComponent().getSelectedCell().getParent());
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
       }, true);
     }
   }

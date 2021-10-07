@@ -15,7 +15,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 
@@ -63,15 +62,13 @@ public class CopyNodeReference_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    String text = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess()).runReadAction(new Computable<String>() {
-      public String compute() {
-        StringBuilder builder = new StringBuilder();
-        for (SNode node : ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes")))) {
-          builder.append(NameUtil.nodeFQName(node)).append("\n");
-        }
-        builder.deleteCharAt(builder.length() - 1);
-        return builder.toString();
+    String text = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess()).runReadAction(() -> {
+      StringBuilder builder = new StringBuilder();
+      for (SNode node : ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes")))) {
+        builder.append(NameUtil.nodeFQName(node)).append("\n");
       }
+      builder.deleteCharAt(builder.length() - 1);
+      return builder.toString();
     });
     CopyPasteUtil.copyTextToClipboard(text);
   }

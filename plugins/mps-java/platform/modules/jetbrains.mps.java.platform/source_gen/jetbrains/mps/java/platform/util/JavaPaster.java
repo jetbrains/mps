@@ -97,11 +97,7 @@ public class JavaPaster {
 
       if (ListSequence.fromList(nodes).isEmpty()) {
         // Avoid AWT event inside write action (action calls this code from command)
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          public void run() {
-            Messages.showInfoMessage(String.format("Text buffer does not contain data that can be parsed as %s", (featureKind == FeatureKind.CLASS_CONTENT ? "Class content" : "Java")), "Buffer Data Is Unsuitable");
-          }
-        });
+        ApplicationManager.getApplication().invokeLater(() -> Messages.showInfoMessage(String.format("Text buffer does not contain data that can be parsed as %s", (featureKind == FeatureKind.CLASS_CONTENT ? "Class content" : "Java")), "Buffer Data Is Unsuitable"));
         return;
       }
       switch (featureKind) {
@@ -152,11 +148,7 @@ public class JavaPaster {
       mfParser.tryResolveRefs(nodes, featureKind, new EmptyProgressMonitor());
 
     } catch (final JavaParseException ex) {
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          Messages.showErrorDialog(String.format("Error message: %s", ex.getMessage()), "Java Parsing Error");
-        }
-      });
+      ApplicationManager.getApplication().invokeLater(() -> Messages.showErrorDialog(String.format("Error message: %s", ex.getMessage()), "Java Parsing Error"));
     }
   }
 

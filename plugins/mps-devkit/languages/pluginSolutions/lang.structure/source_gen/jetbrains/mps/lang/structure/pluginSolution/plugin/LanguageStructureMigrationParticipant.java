@@ -118,27 +118,25 @@ public class LanguageStructureMigrationParticipant<I, F> extends RefactoringPart
       String refactoringName = session.getRefactoringName();
       String migrationScriptName = (refactoringName == null ? "MigrationScript" : "Migrate_" + NameUtil.toValidCamelIdentifier(refactoringName));
       myRefactoringStep = createPureMigrationScript_kz6lmo_a0d0f01(languageVersion, migrationScriptName + "_" + languageVersion);
-      session.registerChange(new Runnable() {
-        public void run() {
-          SModel migrationModel = LanguageAspect.MIGRATION.getOrCreate(language);
-          SModelInternal sm = (SModelInternal) (SModel) migrationModel;
-          for (SModelReference reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myRefactoringStep, null, true, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SReference>() {
-            public Iterable<SReference> translate(SNode it) {
-              return SNodeOperations.getReferences(it);
-            }
-          }).select(new ISelector<SReference, SModelReference>() {
-            public SModelReference select(SReference it) {
-              return it.getTargetSModelReference();
-            }
-          }).distinct()) {
-            if (!(SModelOperations.getImportedModelUIDs(migrationModel).contains(reference))) {
-              sm.addModelImport(reference);
-            }
+      session.registerChange(() -> {
+        SModel migrationModel = LanguageAspect.MIGRATION.getOrCreate(language);
+        SModelInternal sm = (SModelInternal) (SModel) migrationModel;
+        for (SModelReference reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(myRefactoringStep, null, true, new SAbstractConcept[]{})).translate(new ITranslator2<SNode, SReference>() {
+          public Iterable<SReference> translate(SNode it) {
+            return SNodeOperations.getReferences(it);
           }
-          SPropertyOperations.assign(myRefactoringStep, PROPS.description$l$Pt, myDescription.description);
-          jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(migrationModel, myRefactoringStep);
-          language.setLanguageVersion(languageVersion + 1);
+        }).select(new ISelector<SReference, SModelReference>() {
+          public SModelReference select(SReference it) {
+            return it.getTargetSModelReference();
+          }
+        }).distinct()) {
+          if (!(SModelOperations.getImportedModelUIDs(migrationModel).contains(reference))) {
+            sm.addModelImport(reference);
+          }
         }
+        SPropertyOperations.assign(myRefactoringStep, PROPS.description$l$Pt, myDescription.description);
+        jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(migrationModel, myRefactoringStep);
+        language.setLanguageVersion(languageVersion + 1);
       });
     }
     public void addPart(@NotNull SNode initialStateNode, @NotNull SNode finalStateNode, SNode specialization) {

@@ -8,8 +8,6 @@ import java.io.File;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
-import jetbrains.mps.internal.collections.runtime.IListSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -39,49 +37,39 @@ public class MainClass {
     assert project != null;
 
     System.out.println("Test model access...");
-    final List<SModel> projectModels = new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<IListSequence<SModel>>() {
-      public IListSequence<SModel> compute() {
-        return ListSequence.fromListWithValues(new ArrayList<SModel>(), project.getProjectModels());
-      }
-    });
+    final List<SModel> projectModels = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> ListSequence.fromListWithValues(new ArrayList<SModel>(), project.getProjectModels()));
     assert ListSequence.fromList(projectModels).count() == 1 : "Project models count: " + ListSequence.fromList(projectModels).count();
-    final SModel model = new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<SModel>() {
-      public SModel compute() {
-        return ListSequence.fromList(projectModels).findFirst(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            return MPS_MODEL.equals(it.getName().getValue());
-          }
-        });
-      }
+    final SModel model = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
+      return ListSequence.fromList(projectModels).findFirst(new IWhereFilter<SModel>() {
+        public boolean accept(SModel it) {
+          return MPS_MODEL.equals(it.getName().getValue());
+        }
+      });
     });
     assert model != null;
     // check model content
-    final SNode node = new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<SNode>() {
-      public SNode compute() {
-        return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$bK)).findFirst(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return MODEL_CLASSNAME.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-          }
-        });
-      }
+    final SNode node = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
+      return ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ClassConcept$bK)).findFirst(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return MODEL_CLASSNAME.equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
+        }
+      });
     });
     assert node != null;
 
     // test write access
     final Wrappers._T<SNode> result = new Wrappers._T<SNode>(null);
-    ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      public void run() {
-        project.getModelAccess().executeCommand(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
-          public SNode invoke() {
-            ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_ea23db_a0a0a0a0a0a0p0e());
-            return result.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.member$L_2d), CONCEPTS.FieldDeclaration$ie)).findFirst(new IWhereFilter<SNode>() {
-              public boolean accept(SNode it) {
-                return "n".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
-              }
-            });
-          }
-        }));
-      }
+    ThreadUtils.runInUIThreadAndWait(() -> {
+      project.getModelAccess().executeCommand(new _Adapters._return_P0_E0_to_Runnable_adapter(new _FunctionTypes._return_P0_E0<SNode>() {
+        public SNode invoke() {
+          ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.member$L_2d)).addElement(_quotation_createNode_ea23db_a0a0a0a0a0a0p0e());
+          return result.value = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.member$L_2d), CONCEPTS.FieldDeclaration$ie)).findFirst(new IWhereFilter<SNode>() {
+            public boolean accept(SNode it) {
+              return "n".equals(SPropertyOperations.getString(it, PROPS.name$MnvL));
+            }
+          });
+        }
+      }));
     });
     assert result.value != null;
 

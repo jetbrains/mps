@@ -17,7 +17,6 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Comparator;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.Objects;
 import jetbrains.mps.util.IterableUtil;
@@ -96,24 +95,22 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
     for (SNode c : allSuperClassifiers) {
       MapSequence.fromMap(containerIndex).put(c, i++);
     }
-    return Sequence.fromIterable(methods).sort(new Comparator<SNode>() {
-      public int compare(SNode a, SNode b) {
-        SNode parentA = SNodeOperations.getParent(a);
-        SNode parentB = SNodeOperations.getParent(b);
-        if (parentA == parentB) {
-          SContainmentLink aRole = SNodeOperations.getContainingLink(a);
-          SContainmentLink bRole = SNodeOperations.getContainingLink(b);
+    return Sequence.fromIterable(methods).sort((SNode a, SNode b) -> {
+      SNode parentA = SNodeOperations.getParent(a);
+      SNode parentB = SNodeOperations.getParent(b);
+      if (parentA == parentB) {
+        SContainmentLink aRole = SNodeOperations.getContainingLink(a);
+        SContainmentLink bRole = SNodeOperations.getContainingLink(b);
 
-          if (!(Objects.equals(aRole, bRole))) {
-            return aRole.getName().compareTo(bRole.getName());
-          }
-
-          return new Integer(IterableUtil.asList(parentA.getChildren(aRole)).indexOf(a)).compareTo(IterableUtil.asList(parentB.getChildren(bRole)).indexOf(b));
+        if (!(Objects.equals(aRole, bRole))) {
+          return aRole.getName().compareTo(bRole.getName());
         }
-        int iA = (parentA != null && MapSequence.fromMap(containerIndex).containsKey(parentA) ? MapSequence.fromMap(containerIndex).get(parentA) : 0);
-        int iB = (parentB != null && MapSequence.fromMap(containerIndex).containsKey(parentB) ? MapSequence.fromMap(containerIndex).get(parentB) : 0);
-        return new Integer(iA).compareTo(iB);
+
+        return new Integer(IterableUtil.asList(parentA.getChildren(aRole)).indexOf(a)).compareTo(IterableUtil.asList(parentB.getChildren(bRole)).indexOf(b));
       }
+      int iA = (parentA != null && MapSequence.fromMap(containerIndex).containsKey(parentA) ? MapSequence.fromMap(containerIndex).get(parentA) : 0);
+      int iB = (parentB != null && MapSequence.fromMap(containerIndex).containsKey(parentB) ? MapSequence.fromMap(containerIndex).get(parentB) : 0);
+      return new Integer(iA).compareTo(iB);
     }, true);
   }
 

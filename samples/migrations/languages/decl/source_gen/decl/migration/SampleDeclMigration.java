@@ -8,7 +8,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.scope.ConditionalScope;
 import jetbrains.mps.ide.findusages.model.scopes.ModulesScope;
-import org.jetbrains.mps.util.Condition;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
@@ -49,11 +48,7 @@ public class SampleDeclMigration extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
     // migrate everything except migration aspects
-    SearchScope searchScope = new ConditionalScope(new ModulesScope(m), null, new Condition<SModel>() {
-      public boolean met(SModel it) {
-        return !(SModuleOperations.isAspect(it, "migration"));
-      }
-    });
+    SearchScope searchScope = new ConditionalScope(new ModulesScope(m), null, (SModel it) -> !(SModuleOperations.isAspect(it, "migration")));
 
     {
       SearchScope scope_i4ro0d_d0e = CommandUtil.createScope(searchScope);

@@ -65,14 +65,12 @@ public class UpdateModelImports extends RefactoringParticipantBase<SNodeReferenc
         return new SearchResults();
       }
       public void confirm(final SNodeReference finalState, final SRepository repository, RefactoringSession refactoringSession) {
-        refactoringSession.registerChange(new Runnable() {
-          public void run() {
-            SNode node = finalState.resolve(repository);
-            SModel model = node.getModel();
-            addLanguageImport(model, node.getConcept().getLanguage());
-            for (SReference ref : Sequence.fromIterable(node.getReferences())) {
-              addModelImport(model, ref.getTargetSModelReference().resolve(repository));
-            }
+        refactoringSession.registerChange(() -> {
+          SNode node = finalState.resolve(repository);
+          SModel model = node.getModel();
+          addLanguageImport(model, node.getConcept().getLanguage());
+          for (SReference ref : Sequence.fromIterable(node.getReferences())) {
+            addModelImport(model, ref.getTargetSModelReference().resolve(repository));
           }
         });
       }

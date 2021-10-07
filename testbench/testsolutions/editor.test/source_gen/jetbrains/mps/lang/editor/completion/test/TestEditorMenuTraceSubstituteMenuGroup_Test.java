@@ -47,18 +47,16 @@ public class TestEditorMenuTraceSubstituteMenuGroup_Test extends BaseTransformat
       initEditorComponent("1384684774806085414", "1384684774806085416");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       typeString("action from group");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
-          SubstituteAction action = (SubstituteAction) getEditorComponent().getData(PlatformDataKeys.SELECTED_ITEM.getName());
-          Assert.assertTrue(action != null);
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
+        SubstituteAction action = (SubstituteAction) getEditorComponent().getData(PlatformDataKeys.SELECTED_ITEM.getName());
+        Assert.assertTrue(action != null);
 
-          EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
-          SNode group = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"), LINKS.parts$yGO4), CONCEPTS.SubstituteMenuPart_Group$L2)).first();
+        EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
+        SNode group = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"), LINKS.parts$yGO4), CONCEPTS.SubstituteMenuPart_Group$L2)).first();
 
-          SNode substituteAction = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(group, LINKS.parts$NzgL), CONCEPTS.SubstituteMenuPart_Action$RY)).first();
-          EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, SNodeOperations.getPointer(substituteAction), SNodeOperations.getPointer(group), new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"));
-        }
+        SNode substituteAction = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(group, LINKS.parts$NzgL), CONCEPTS.SubstituteMenuPart_Action$RY)).first();
+        EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, SNodeOperations.getPointer(substituteAction), SNodeOperations.getPointer(group), new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "913276302143897423"));
       });
     }
   }

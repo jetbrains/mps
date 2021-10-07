@@ -117,11 +117,7 @@ import com.intellij.openapi.vcs.AbstractVcs;
     if (dryRun) {
       return installForRoot(vcsRootPath, dryRun);
     } else {
-      Computable<AbstractInstaller.State> function = new Computable<AbstractInstaller.State>() {
-        public AbstractInstaller.State compute() {
-          return installForRoot(vcsRootPath, dryRun);
-        }
-      };
+      Computable<AbstractInstaller.State> function = () -> installForRoot(vcsRootPath, dryRun);
       return ApplicationManager.getApplication().runWriteAction(function);
     }
   }

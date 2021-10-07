@@ -23,7 +23,6 @@ import jetbrains.mps.baseLanguage.execution.api.Java_Command;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionResult;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionConsole;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debug.api.run.IDebuggerConfiguration;
 import com.intellij.execution.executors.DefaultRunExecutor;
 import com.intellij.execution.executors.DefaultDebugExecutor;
@@ -61,11 +60,7 @@ public class Java_Configuration_RunProfileState extends DebuggerRunProfileState 
       ProcessHandler _processHandler = new Java_Command().setProject_Project(ProjectHelper.fromIdeaProject(project)).setDebuggerSettings_String(myDebuggerSettings.getCommandLine(true)).createProcess(myRunConfiguration.getRunParameters().getJavaParameters(), pointer, ProjectHelper.getProjectRepository(project));
       final ConsoleView _consoleView = console;
       _consoleView.attachToProcess(_processHandler);
-      return new DefaultExecutionResult(_processHandler, new DefaultExecutionConsole(_consoleView.getComponent(), new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          _consoleView.dispose();
-        }
-      }));
+      return new DefaultExecutionResult(_processHandler, new DefaultExecutionConsole(_consoleView.getComponent(), () -> _consoleView.dispose()));
     }
   }
 

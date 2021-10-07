@@ -54,22 +54,16 @@ public class NextPreviousTraverser {
     myChangeGroupLayouts = ListSequence.fromList(changeGroupLayouts).where(new NotNullWhereFilter<ChangeGroupLayout>()).toListSequence();
     myLastEditor = firstEditor;
 
-    final SelectionListener selectionListener = new SelectionListener() {
-      public void selectionChanged(EditorComponent editorComponent, Selection oldSelection, Selection newSelection) {
-        if (oldSelection == newSelection) {
-          return;
-        }
-        setLastEditor(editorComponent);
-        updateToolbar();
+    final SelectionListener selectionListener = (EditorComponent editorComponent, Selection oldSelection, Selection newSelection) -> {
+      if (oldSelection == newSelection) {
+        return;
       }
+      setLastEditor(editorComponent);
+      updateToolbar();
     };
     ListSequence.fromList(myChangeGroupLayouts).visitAll(new IVisitor<ChangeGroupLayout>() {
       public void visit(ChangeGroupLayout cgb) {
-        cgb.addInvalidateListener(new ChangeGroupInvalidateListener() {
-          public void changeGroupsInvalidated() {
-            updateToolbar();
-          }
-        });
+        cgb.addInvalidateListener(() -> updateToolbar());
       }
     });
     SetSequence.fromSet(SetSequence.fromSetWithValues(new HashSet<EditorComponent>(), ListSequence.fromList(myChangeGroupLayouts).translate(new ITranslator2<ChangeGroupLayout, EditorComponent>() {
@@ -89,11 +83,7 @@ public class NextPreviousTraverser {
 
   private void updateToolbar() {
     if (myActionToolbar != null) {
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          myActionToolbar.updateActionsImmediately();
-        }
-      });
+      ApplicationManager.getApplication().invokeLater(() -> myActionToolbar.updateActionsImmediately());
     }
   }
 
@@ -182,11 +172,7 @@ public class NextPreviousTraverser {
     EditorCell rc = myLastEditor.getRootCell();
     final int minY = (firstGroup == null ? rc.getY() + 1 : (int) firstGroup.start());
     final int maxY = rc.getY() + rc.getHeight() - 2;
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        goToBounds(new Bounds(minY, maxY));
-      }
-    });
+    ApplicationManager.getApplication().invokeLater(() -> goToBounds(new Bounds(minY, maxY)));
   }
 
   public void goToBounds(Bounds bounds) {

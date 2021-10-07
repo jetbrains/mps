@@ -83,11 +83,7 @@ public class NewAspectModelByDescriptor_Action extends BaseAction {
     // we need it since tree is updated later
     final Collection<SModel> aspectModels = ad.getAspectModels(((SModule) MapSequence.fromMap(_params).get("module")));
     if (aspectModels.size() == 1) {
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).selectModel(aspectModels.iterator().next(), false);
-        }
-      });
+      ApplicationManager.getApplication().invokeLater(() -> ProjectPane.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).selectModel(aspectModels.iterator().next(), false));
     }
   }
   @NotNull

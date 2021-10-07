@@ -34,11 +34,7 @@ public class DeleteCommentWithBackspaceInText_Test extends BaseTransformationTes
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5864132384445419554", "5864132384445419571");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action"), false);
     }
   }
 }

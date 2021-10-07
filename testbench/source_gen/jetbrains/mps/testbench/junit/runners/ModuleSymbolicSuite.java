@@ -72,13 +72,11 @@ public class ModuleSymbolicSuite extends ParentRunner<Runner> implements Environ
   private void initialize() {
     Project mpsProject = myEnvironment.createProject(new FromProjectPathProjectStrategy());
     final SRepository repo = mpsProject.getRepository();
-    repo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SModuleReference mr = PersistenceFacade.getInstance().createModuleReference(myModuleRef);
-        SModule mod = mr.resolve(repo);
-        for (Runner child : myRunners) {
-          ((DelegatingRunner) child).init(mod, myBuilder);
-        }
+    repo.getModelAccess().runReadAction(() -> {
+      SModuleReference mr = PersistenceFacade.getInstance().createModuleReference(myModuleRef);
+      SModule mod = mr.resolve(repo);
+      for (Runner child : myRunners) {
+        ((DelegatingRunner) child).init(mod, myBuilder);
       }
     });
     this.initialized = true;

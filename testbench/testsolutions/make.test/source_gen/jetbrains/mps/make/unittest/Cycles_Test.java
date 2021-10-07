@@ -13,7 +13,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import java.util.List;
 import java.util.ArrayList;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 public class Cycles_Test {
   @Test
@@ -66,20 +65,12 @@ public class Cycles_Test {
     graph.addEdges("A", "B");
     graph.addEdges("B", "C");
     graph.addEdges("C", "D");
-    graph.sort(new _FunctionTypes._return_P1_E0<String, String>() {
-      public String invoke(String s) {
-        return s;
-      }
-    }, false);
+    graph.sort((String s) -> s, false);
     List<List<String>> cycles = cd.findCycles();
     Assert.assertSame(0, ListSequence.fromList(cycles).count());
     cycles = cd.findCycles();
     Assert.assertSame(0, ListSequence.fromList(cycles).count());
-    graph.sort(new _FunctionTypes._return_P1_E0<Integer, String>() {
-      public Integer invoke(String s) {
-        return ((Object) s).hashCode();
-      }
-    }, true);
+    graph.sort((String s) -> ((Object) s).hashCode(), true);
     cycles = cd.findCycles();
     Assert.assertSame(0, ListSequence.fromList(cycles).count());
   }
@@ -118,11 +109,7 @@ public class Cycles_Test {
     List<List<String>> cycles = cd.findCycles();
     Assert.assertSame(0, ListSequence.fromList(cycles).count());
     Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"), cd.topologicalSort());
-    graph.sort(new _FunctionTypes._return_P1_E0<String, String>() {
-      public String invoke(String s) {
-        return s;
-      }
-    }, false);
+    graph.sort((String s) -> s, false);
     Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"), cd.topologicalSort());
   }
   @Test
@@ -175,11 +162,7 @@ public class Cycles_Test {
     graph.addEdges("D", "E");
     Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "C", "D", "E"), cd.precursors("E"));
     graph.addEdges("B", "C");
-    graph.sort(new _FunctionTypes._return_P1_E0<String, String>() {
-      public String invoke(String s) {
-        return s;
-      }
-    }, false);
+    graph.sort((String s) -> s, false);
     Utils.assertSameSequence(ListSequence.fromListAndArray(new ArrayList<String>(), "A", "B", "C", "D", "E"), cd.precursors("E"));
   }
   private Graph<String> forTotalOrder() {
@@ -209,11 +192,7 @@ public class Cycles_Test {
     graph.addEdges("M1", "M2");
     graph.addEdges("M2", "S2");
 
-    graph.sort(new _FunctionTypes._return_P1_E0<String, String>() {
-      public String invoke(String s) {
-        return s;
-      }
-    }, true);
+    graph.sort((String s) -> s, true);
     return graph;
   }
 }

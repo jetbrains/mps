@@ -13,8 +13,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.ui.tree.module.StereotypeProvider;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialogDefaultSettings;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
-import java.util.Set;
 import jetbrains.mps.ide.dialogs.project.creation.NewModelDialog;
 import jetbrains.mps.project.AbstractModule;
 import com.intellij.openapi.application.ApplicationManager;
@@ -24,6 +22,7 @@ import com.intellij.openapi.options.ex.SingleConfigurableEditor;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
 import jetbrains.mps.ide.IdeBundle;
+import java.util.Set;
 import java.util.HashSet;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.ide.dialogs.project.creation.ModelCreateHelper;
@@ -55,11 +54,7 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
   }
 
   private NewModelActionExecutor(@NotNull MPSProject project, @NotNull final SModule module, String namespace, StereotypeProvider sp) {
-    this(project, module, NewModelDialogDefaultSettings.getFactory(suggestNewModelName(new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<Set<String>>() {
-      public Set<String> compute() {
-        return existingModelNames(module);
-      }
-    }), namespace), sp));
+    this(project, module, NewModelDialogDefaultSettings.getFactory(suggestNewModelName(new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> existingModelNames(module)), namespace), sp));
   }
 
   public NewModelActionExecutor(@NotNull MPSProject project, @NotNull SModule module, @NotNull NewModelDialogSettings.Factory dialogSettingsFactory) {
@@ -88,11 +83,9 @@ public class NewModelActionExecutor extends ModelCreationActionsBaseExecutor {
   @Override
   protected void onModelCreated(final SModel model) {
     // Model creation will lead to indexes update, dialog and navigation should be performed after that
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        showSettingsForCreatedModel(model);
-        showCreatedModelnProjectView(model);
-      }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      showSettingsForCreatedModel(model);
+      showCreatedModelnProjectView(model);
     });
   }
 

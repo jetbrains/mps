@@ -219,29 +219,24 @@
       <node id="6012981979753468744" at="24,76,25,36" concept="1" />
       <node id="6012981979753468744" at="30,52,31,19" concept="4" />
       <node id="6012981979753468744" at="35,51,36,72" concept="1" />
-      <node id="8629363476785543555" at="38,44,39,76" concept="1" />
+      <node id="1241246198920217439" at="36,72,37,124" concept="1" />
       <node id="6012981979753468744" at="16,0,18,0" concept="3" trace="ourParamCache" />
       <node id="6012981979753468744" at="19,0,22,0" concept="0" trace="NamedNodeReferenceEditor_DeleteChild_Test#()V" />
       <node id="6012981979753468744" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1241246198920217441" at="38,0,41,0" concept="2" trace="run#()V" />
       <node id="6012981979753468744" at="23,0,27,0" concept="2" trace="test_NamedNodeReferenceEditor_DeleteChild#()V" />
-      <node id="1241246198920217439" at="36,72,41,16" concept="1" />
-      <node id="6012981979753468744" at="34,0,43,0" concept="2" trace="testMethodImpl#()V" />
+      <node id="6012981979753468744" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6012981979753468744" at="19,54,20,25" />
       <scope id="6012981979753468744" at="24,76,25,36" />
       <scope id="6012981979753468744" at="30,52,31,19" />
-      <scope id="1241246198920217442" at="38,44,39,76" />
+      <scope id="6012981979753468744" at="35,51,37,124" />
       <scope id="6012981979753468744" at="19,0,22,0" />
       <scope id="6012981979753468744" at="30,0,33,0">
         <var name="owner" id="6012981979753468744" />
       </scope>
-      <scope id="1241246198920217441" at="38,0,41,0" />
       <scope id="6012981979753468744" at="23,0,27,0" />
-      <scope id="6012981979753468744" at="35,51,41,16" />
-      <scope id="6012981979753468744" at="34,0,43,0" />
-      <unit id="1241246198920217441" at="37,48,41,7" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChild_Test$TestBody$1" />
-      <unit id="6012981979753468744" at="28,0,44,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChild_Test$TestBody" />
-      <unit id="6012981979753468744" at="14,0,45,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChild_Test" />
+      <scope id="6012981979753468744" at="34,0,39,0" />
+      <unit id="6012981979753468744" at="28,0,40,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChild_Test$TestBody" />
+      <unit id="6012981979753468744" at="14,0,41,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChild_Test" />
     </file>
   </root>
   <root nodeRef="r:ac4e0a5b-1a20-4b0d-81c0-8da38271aafd(jetbrains.mps.smodel.test.editor@tests)/6012981979753516823">
@@ -250,29 +245,24 @@
       <node id="6012981979753516823" at="24,85,25,36" concept="1" />
       <node id="6012981979753516823" at="30,52,31,19" concept="4" />
       <node id="6012981979753516823" at="35,51,36,72" concept="1" />
-      <node id="6012981979753516833" at="38,44,39,76" concept="1" />
+      <node id="6012981979753516829" at="36,72,37,124" concept="1" />
       <node id="6012981979753516823" at="16,0,18,0" concept="3" trace="ourParamCache" />
       <node id="6012981979753516823" at="19,0,22,0" concept="0" trace="NamedNodeReferenceEditor_DeleteChildWithChild_Test#()V" />
       <node id="6012981979753516823" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="6012981979753516831" at="38,0,41,0" concept="2" trace="run#()V" />
       <node id="6012981979753516823" at="23,0,27,0" concept="2" trace="test_NamedNodeReferenceEditor_DeleteChildWithChild#()V" />
-      <node id="6012981979753516829" at="36,72,41,16" concept="1" />
-      <node id="6012981979753516823" at="34,0,43,0" concept="2" trace="testMethodImpl#()V" />
+      <node id="6012981979753516823" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6012981979753516823" at="19,63,20,25" />
       <scope id="6012981979753516823" at="24,85,25,36" />
       <scope id="6012981979753516823" at="30,52,31,19" />
-      <scope id="6012981979753516832" at="38,44,39,76" />
+      <scope id="6012981979753516823" at="35,51,37,124" />
       <scope id="6012981979753516823" at="19,0,22,0" />
       <scope id="6012981979753516823" at="30,0,33,0">
         <var name="owner" id="6012981979753516823" />
       </scope>
-      <scope id="6012981979753516831" at="38,0,41,0" />
       <scope id="6012981979753516823" at="23,0,27,0" />
-      <scope id="6012981979753516823" at="35,51,41,16" />
-      <scope id="6012981979753516823" at="34,0,43,0" />
-      <unit id="6012981979753516831" at="37,48,41,7" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildWithChild_Test$TestBody$1" />
-      <unit id="6012981979753516823" at="28,0,44,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildWithChild_Test$TestBody" />
-      <unit id="6012981979753516823" at="14,0,45,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildWithChild_Test" />
+      <scope id="6012981979753516823" at="34,0,39,0" />
+      <unit id="6012981979753516823" at="28,0,40,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildWithChild_Test$TestBody" />
+      <unit id="6012981979753516823" at="14,0,41,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildWithChild_Test" />
     </file>
   </root>
   <root nodeRef="r:ac4e0a5b-1a20-4b0d-81c0-8da38271aafd(jetbrains.mps.smodel.test.editor@tests)/6012981979753517067">
@@ -281,29 +271,24 @@
       <node id="6012981979753517067" at="24,83,25,36" concept="1" />
       <node id="6012981979753517067" at="30,52,31,19" concept="4" />
       <node id="6012981979753517067" at="35,51,36,72" concept="1" />
-      <node id="6012981979753517078" at="38,44,39,76" concept="1" />
+      <node id="6012981979753517074" at="36,72,37,124" concept="1" />
       <node id="6012981979753517067" at="16,0,18,0" concept="3" trace="ourParamCache" />
       <node id="6012981979753517067" at="19,0,22,0" concept="0" trace="NamedNodeReferenceEditor_DeleteChildOfChild_Test#()V" />
       <node id="6012981979753517067" at="30,0,33,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="6012981979753517076" at="38,0,41,0" concept="2" trace="run#()V" />
       <node id="6012981979753517067" at="23,0,27,0" concept="2" trace="test_NamedNodeReferenceEditor_DeleteChildOfChild#()V" />
-      <node id="6012981979753517074" at="36,72,41,16" concept="1" />
-      <node id="6012981979753517067" at="34,0,43,0" concept="2" trace="testMethodImpl#()V" />
+      <node id="6012981979753517067" at="34,0,39,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="6012981979753517067" at="19,61,20,25" />
       <scope id="6012981979753517067" at="24,83,25,36" />
       <scope id="6012981979753517067" at="30,52,31,19" />
-      <scope id="6012981979753517077" at="38,44,39,76" />
+      <scope id="6012981979753517067" at="35,51,37,124" />
       <scope id="6012981979753517067" at="19,0,22,0" />
       <scope id="6012981979753517067" at="30,0,33,0">
         <var name="owner" id="6012981979753517067" />
       </scope>
-      <scope id="6012981979753517076" at="38,0,41,0" />
       <scope id="6012981979753517067" at="23,0,27,0" />
-      <scope id="6012981979753517067" at="35,51,41,16" />
-      <scope id="6012981979753517067" at="34,0,43,0" />
-      <unit id="6012981979753517076" at="37,48,41,7" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildOfChild_Test$TestBody$1" />
-      <unit id="6012981979753517067" at="28,0,44,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildOfChild_Test$TestBody" />
-      <unit id="6012981979753517067" at="14,0,45,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildOfChild_Test" />
+      <scope id="6012981979753517067" at="34,0,39,0" />
+      <unit id="6012981979753517067" at="28,0,40,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildOfChild_Test$TestBody" />
+      <unit id="6012981979753517067" at="14,0,41,0" name="jetbrains.mps.smodel.test.editor.NamedNodeReferenceEditor_DeleteChildOfChild_Test" />
     </file>
   </root>
   <root nodeRef="r:ac4e0a5b-1a20-4b0d-81c0-8da38271aafd(jetbrains.mps.smodel.test.editor@tests)/6789846430004157034">

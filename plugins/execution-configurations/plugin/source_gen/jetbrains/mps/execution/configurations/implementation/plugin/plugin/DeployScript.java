@@ -33,7 +33,6 @@ import jetbrains.mps.make.MakeServiceComponent;
 import java.util.concurrent.Future;
 import jetbrains.mps.make.script.IResult;
 import jetbrains.mps.smodel.resources.ModelsToResources;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import org.apache.log4j.Level;
@@ -84,11 +83,7 @@ public class DeployScript {
     MakeSession session = new MakeSession(myProject, new DefaultMakeMessageHandler(myProject), false);
     IMakeService makeService = myProject.getComponent(MakeServiceComponent.class).get();
     if (makeService.openNewSession(session)) {
-      Future<IResult> future = makeService.make(session, new ModelsToResources(myModelsToMake).canGenerateCondition(new _FunctionTypes._return_P1_E0<Boolean, SModel>() {
-        public Boolean invoke(SModel m) {
-          return true;
-        }
-      }).resources());
+      Future<IResult> future = makeService.make(session, new ModelsToResources(myModelsToMake).canGenerateCondition((SModel m) -> true).resources());
       IResult result = null;
       try {
         result = future.get();
@@ -116,12 +111,10 @@ public class DeployScript {
   }
 
   public void dispose() {
-    myProject.getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        SRepository projectRepo = myProject.getRepository();
-        ((SRepositoryExt) projectRepo).unregisterModule(myModule, myProject);
-        FileUtil.delete(myModuleBaseDir);
-      }
+    myProject.getModelAccess().runWriteAction(() -> {
+      SRepository projectRepo = myProject.getRepository();
+      ((SRepositoryExt) projectRepo).unregisterModule(myModule, myProject);
+      FileUtil.delete(myModuleBaseDir);
     });
   }
 

@@ -66,48 +66,40 @@ public class MigrationStep extends BaseStep {
   }
 
   private void executeToFirstError() throws ProcessCanceledException {
-    ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
-      public void run() {
-        ProgressManager.getInstance().runProcess(new Runnable() {
-          public void run() {
-            mySession.setError(null);
+    ApplicationManager.getApplication().executeOnPooledThread(() -> ProgressManager.getInstance().runProcess(() -> {
+      mySession.setError(null);
 
-            try {
-              myTask.run();
-            } catch (Throwable t) {
-              String errMsg = "Exception occurred in migration wizard";
-              myProgress.setText(errMsg);
-              if (LOG.isEnabledFor(Level.ERROR)) {
-                LOG.error(errMsg, t);
-              }
-              forceComplete();
-              return;
-            }
-
-            if (mySession.getError() != null) {
-              ApplicationManager.getApplication().invokeLater(new Runnable() {
-                public void run() {
-                  StringBuilder sb = new StringBuilder();
-                  sb.append("<html>").append(mySession.getError().getMessage().replaceAll("\n", "<br>"));
-                  if (mySession.getError().canIgnore()) {
-                    sb.append("<br><br>Continue migration?");
-                  }
-                  sb.append("</html>");
-                  myErrorLabel.setText(sb.toString());
-                  myErrorPanel.setVisible(true);
-                }
-              }, ModalityState.stateForComponent(myErrorPanel));
-
-              if (!(mySession.getError().canIgnore())) {
-                forceComplete();
-              }
-            }
-
-            fireStateChanged();
-          }
-        }, myProgress);
+      try {
+        myTask.run();
+      } catch (Throwable t) {
+        String errMsg = "Exception occurred in migration wizard";
+        myProgress.setText(errMsg);
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error(errMsg, t);
+        }
+        forceComplete();
+        return;
       }
-    });
+
+      if (mySession.getError() != null) {
+        ApplicationManager.getApplication().invokeLater(() -> {
+          StringBuilder sb = new StringBuilder();
+          sb.append("<html>").append(mySession.getError().getMessage().replaceAll("\n", "<br>"));
+          if (mySession.getError().canIgnore()) {
+            sb.append("<br><br>Continue migration?");
+          }
+          sb.append("</html>");
+          myErrorLabel.setText(sb.toString());
+          myErrorPanel.setVisible(true);
+        }, ModalityState.stateForComponent(myErrorPanel));
+
+        if (!(mySession.getError().canIgnore())) {
+          forceComplete();
+        }
+      }
+
+      fireStateChanged();
+    }, myProgress));
   }
 
   private void forceComplete() {
@@ -199,11 +191,7 @@ public class MigrationStep extends BaseStep {
       if (ThreadUtils.isInEDT()) {
         updateAndRepaint();
       } else {
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          public void run() {
-            updateAndRepaint();
-          }
-        }, ModalityState.stateForComponent(getComponent()));
+        ApplicationManager.getApplication().invokeLater(() -> updateAndRepaint(), ModalityState.stateForComponent(getComponent()));
       }
     }
 

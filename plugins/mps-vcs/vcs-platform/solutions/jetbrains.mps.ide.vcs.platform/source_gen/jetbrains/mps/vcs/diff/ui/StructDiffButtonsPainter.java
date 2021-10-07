@@ -69,11 +69,7 @@ public class StructDiffButtonsPainter extends ButtonsPainter {
     }
     @Override
     public void performAction() {
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(new Runnable() {
-        public void run() {
-          ModelChange.rollbackChanges(getChangeGroup().getChanges());
-        }
-      });
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(() -> ModelChange.rollbackChanges(getChangeGroup().getChanges()));
     }
   }
   private class MyButtonApply extends FoldingAreaButton {
@@ -82,23 +78,21 @@ public class StructDiffButtonsPainter extends ButtonsPainter {
     }
     @Override
     public void performAction() {
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(new Runnable() {
-        public void run() {
-          List<ModelChange> changes = getChangeGroup().getChanges();
-          final SModel model = ListSequence.fromList(changes).first().getChangeSet().getOldModel();
-          final NodeCopier nc = new NodeCopier(model);
-          ListSequence.fromList(changes).ofType(NodeGroupChange.class).visitAll(new IVisitor<NodeGroupChange>() {
-            public void visit(NodeGroupChange ch) {
-              ch.prepare();
-            }
-          });
-          ListSequence.fromList(changes).visitAll(new IVisitor<ModelChange>() {
-            public void visit(ModelChange ch) {
-              ch.apply(model, nc);
-            }
-          });
-          nc.restoreIds(true);
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(() -> {
+        List<ModelChange> changes = getChangeGroup().getChanges();
+        final SModel model = ListSequence.fromList(changes).first().getChangeSet().getOldModel();
+        final NodeCopier nc = new NodeCopier(model);
+        ListSequence.fromList(changes).ofType(NodeGroupChange.class).visitAll(new IVisitor<NodeGroupChange>() {
+          public void visit(NodeGroupChange ch) {
+            ch.prepare();
+          }
+        });
+        ListSequence.fromList(changes).visitAll(new IVisitor<ModelChange>() {
+          public void visit(ModelChange ch) {
+            ch.apply(model, nc);
+          }
+        });
+        nc.restoreIds(true);
       });
     }
   }

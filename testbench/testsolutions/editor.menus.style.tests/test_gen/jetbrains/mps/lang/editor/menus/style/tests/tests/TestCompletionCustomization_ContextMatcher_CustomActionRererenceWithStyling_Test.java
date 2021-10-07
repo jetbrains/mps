@@ -39,13 +39,11 @@ public class TestCompletionCustomization_ContextMatcher_CustomActionRererenceWit
     public void testMethodImpl() throws Exception {
       initEditorComponent("2739111710911113675", "2739111710911113707");
       getEditorComponent().getSelectedCell().setSubstituteInfo(CustomizationTestHelper.createReferenceSubstituteInfo(getEditorComponent(), getEditorComponent().getSelectedNode()));
-      EditorTestUtil.runWithCompletionStyling(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
-          Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 3);
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
-        }
+      EditorTestUtil.runWithCompletionStyling(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
+        Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 3);
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
       }, true);
     }
   }

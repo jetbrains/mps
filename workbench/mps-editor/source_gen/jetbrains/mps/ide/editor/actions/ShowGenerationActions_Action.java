@@ -72,15 +72,13 @@ public class ShowGenerationActions_Action extends BaseAction implements UpdateIn
     int x = ((EditorCell) MapSequence.fromMap(_params).get("selectedCell")).getX();
     int y = ((EditorCell) MapSequence.fromMap(_params).get("selectedCell")).getY() + ((EditorCell) MapSequence.fromMap(_params).get("selectedCell")).getHeight();
     final Wrappers._T<ListPopup> popup = new Wrappers._T<ListPopup>(null);
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ActionGroup group = ((ActionGroup) ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.GenerationActions_ActionGroup"));
-        group.update(event);
-        if (group.getChildren(event).length == 0) {
-          return;
-        }
-        popup.value = JBPopupFactory.getInstance().createActionGroupPopup("Generate", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.NUMBERING, false);
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(() -> {
+      ActionGroup group = ((ActionGroup) ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.GenerationActions_ActionGroup"));
+      group.update(event);
+      if (group.getChildren(event).length == 0) {
+        return;
       }
+      popup.value = JBPopupFactory.getInstance().createActionGroupPopup("Generate", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.NUMBERING, false);
     });
     if (popup.value == null) {
       return;

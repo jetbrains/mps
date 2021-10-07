@@ -44,19 +44,17 @@ public class RenameModuleDialog extends RenameDialog {
   @Override
   protected String checkValue() {
     final Wrappers._T<String> checkResult = new Wrappers._T<String>(null);
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        final String fqName = getCurrentValue();
-        for (final SModule module : myProject.getRepository().getModules()) {
-          if (module.equals(myModule)) {
-            continue;
-          }
+    myProject.getRepository().getModelAccess().runReadAction(() -> {
+      final String fqName = getCurrentValue();
+      for (final SModule module : myProject.getRepository().getModules()) {
+        if (module.equals(myModule)) {
+          continue;
+        }
 
-          // module.getModuleName() can be null
-          if (fqName.equals(module.getModuleName())) {
-            checkResult.value = IdeBundle.message("actions.module.rename.name.in.repository");
-            break;
-          }
+        // module.getModuleName() can be null
+        if (fqName.equals(module.getModuleName())) {
+          checkResult.value = IdeBundle.message("actions.module.rename.name.in.repository");
+          break;
         }
       }
     });

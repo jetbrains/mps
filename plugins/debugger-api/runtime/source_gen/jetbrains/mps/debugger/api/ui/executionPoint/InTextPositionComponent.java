@@ -122,12 +122,10 @@ public class InTextPositionComponent implements ProjectComponent {
       return null;
     }
 
-    return new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        myHighlighter = createHighlighter(location);
-        if (open) {
-          FileOpenUtil.openFile(myProject, location.getFile(), location.getLineNumber());
-        }
+    return () -> {
+      myHighlighter = createHighlighter(location);
+      if (open) {
+        FileOpenUtil.openFile(myProject, location.getFile(), location.getLineNumber());
       }
     };
   }
@@ -149,15 +147,13 @@ public class InTextPositionComponent implements ProjectComponent {
   }
   public _FunctionTypes._void_P0_E0 detachPainterRunnable() {
     if (myHighlighter != null) {
-      return new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          if (myHighlighter == null) {
-            return;
-          }
-          RangeHighlighter highlighter = myHighlighter;
-          myHighlighter = null;
-          highlighter.dispose();
+      return () -> {
+        if (myHighlighter == null) {
+          return;
         }
+        RangeHighlighter highlighter = myHighlighter;
+        myHighlighter = null;
+        highlighter.dispose();
       };
     }
     return null;

@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.ui.UIUtil;
-import com.intellij.util.PairFunction;
 import javax.swing.JCheckBox;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.ide.save.SaveRepositoryCommand;
@@ -86,11 +85,7 @@ public class DeleteModels_Action extends BaseAction {
     if (DeleteModels_Action.this.forceSafe) {
       safeDelete.value = true;
     } else {
-      int result = Messages.showCheckboxMessageDialog(IdeBundle.message("actions.model.delete.message"), IdeBundle.message("actions.model.delete.title.many"), new String[]{IdeBundle.message("actions.module.delete.ok.button.text"), Messages.CANCEL_BUTTON}, UIUtil.replaceMnemonicAmpersand(IdeBundle.message("actions.model.delete.option.safe")), true, 0, 0, Messages.getQuestionIcon(), new PairFunction<Integer, JCheckBox, Integer>() {
-        public Integer fun(Integer exitCode, JCheckBox checkBox) {
-          return (exitCode == -1 || exitCode == 1 ? Messages.CANCEL : Boolean.compare(true, checkBox.isSelected()));
-        }
-      });
+      int result = Messages.showCheckboxMessageDialog(IdeBundle.message("actions.model.delete.message"), IdeBundle.message("actions.model.delete.title.many"), new String[]{IdeBundle.message("actions.module.delete.ok.button.text"), Messages.CANCEL_BUTTON}, UIUtil.replaceMnemonicAmpersand(IdeBundle.message("actions.model.delete.option.safe")), true, 0, 0, Messages.getQuestionIcon(), (Integer exitCode, JCheckBox checkBox) -> (exitCode == -1 || exitCode == 1 ? Messages.CANCEL : Boolean.compare(true, checkBox.isSelected())));
 
       if (result == Messages.CANCEL) {
         return;
@@ -100,16 +95,14 @@ public class DeleteModels_Action extends BaseAction {
     }
 
     final SRepository repository = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository();
-    repository.getModelAccess().executeCommandInEDT(new Runnable() {
-      public void run() {
-        // see MPS-18743
-        new SaveRepositoryCommand(repository).execute();
-        for (SModel model : ListSequence.fromList(((List<SModel>) MapSequence.fromMap(_params).get("models")))) {
-          if (SModelStereotype.isStubModel(model) || SModelStereotype.isDescriptorModel(model)) {
-            continue;
-          }
-          DeleteModelHelper.deleteModel(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModule) MapSequence.fromMap(_params).get("contextModule")), model, safeDelete.value, true);
+    repository.getModelAccess().executeCommandInEDT(() -> {
+      // see MPS-18743
+      new SaveRepositoryCommand(repository).execute();
+      for (SModel model : ListSequence.fromList(((List<SModel>) MapSequence.fromMap(_params).get("models")))) {
+        if (SModelStereotype.isStubModel(model) || SModelStereotype.isDescriptorModel(model)) {
+          continue;
         }
+        DeleteModelHelper.deleteModel(((MPSProject) MapSequence.fromMap(_params).get("project")), ((SModule) MapSequence.fromMap(_params).get("contextModule")), model, safeDelete.value, true);
       }
     });
   }

@@ -191,11 +191,7 @@ public abstract class ListPanel<T> extends JBPanel {
         return;
       }
       final Wrappers._T<T> wrapper = new Wrappers._T<T>();
-      myMpsProject.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          wrapper.value = wrap(resultNode.resolve(myMpsProject.getRepository()));
-        }
-      });
+      myMpsProject.getModelAccess().runReadAction(() -> wrapper.value = wrap(resultNode.resolve(myMpsProject.getRepository())));
       if (wrapper.value == null) {
         return;
       }
@@ -237,11 +233,7 @@ public abstract class ListPanel<T> extends JBPanel {
       for (Object value : ListPanel.this.myListComponent.getSelectedValuesList()) {
         for (final T node : ListPanel.this.myValues) {
           final Wrappers._T<String> presentation = new Wrappers._T<String>();
-          myMpsProject.getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              presentation.value = getPresentation(node);
-            }
-          });
+          myMpsProject.getModelAccess().runReadAction(() -> presentation.value = getPresentation(node));
           if (presentation.value.equals(value)) {
             ListSequence.fromList(ListPanel.this.myValues).removeElement(node);
             break;

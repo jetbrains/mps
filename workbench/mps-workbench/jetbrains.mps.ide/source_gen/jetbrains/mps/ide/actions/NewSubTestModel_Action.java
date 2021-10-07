@@ -87,25 +87,23 @@ public class NewSubTestModel_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        SModelName testModelName = new SModelName(NewSubTestModel_Action.this.getTestModelName(event), SModelStereotype.TESTS);
-        SModel parentModel = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
-        SModel createdModel = SModuleOperations.createModelWithAdjustments(testModelName.getValue(), parentModel.getModelRoot());
-        if (createdModel == null) {
-          if (LOG.isEnabledFor(Level.WARN)) {
-            LOG.warn("Can't create submodel " + testModelName + " for model " + parentModel.getName());
-          }
-          return;
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().executeCommand(() -> {
+      SModelName testModelName = new SModelName(NewSubTestModel_Action.this.getTestModelName(event), SModelStereotype.TESTS);
+      SModel parentModel = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
+      SModel createdModel = SModuleOperations.createModelWithAdjustments(testModelName.getValue(), parentModel.getModelRoot());
+      if (createdModel == null) {
+        if (LOG.isEnabledFor(Level.WARN)) {
+          LOG.warn("Can't create submodel " + testModelName + " for model " + parentModel.getName());
         }
-        ModelImports imports = new ModelImports(createdModel);
-        imports.addModelImport(parentModel.getReference());
-        imports.copyImportedModelsFrom(parentModel);
-        imports.copyUsedLanguagesFrom(parentModel);
-        imports.copyEmployedDevKitsFrom(parentModel);
-        imports.copyLanguageEngagedOnGeneration(parentModel);
-        ProjectPane.getInstance(event.getData(CommonDataKeys.PROJECT)).selectModel(createdModel, false);
+        return;
       }
+      ModelImports imports = new ModelImports(createdModel);
+      imports.addModelImport(parentModel.getReference());
+      imports.copyImportedModelsFrom(parentModel);
+      imports.copyUsedLanguagesFrom(parentModel);
+      imports.copyEmployedDevKitsFrom(parentModel);
+      imports.copyLanguageEngagedOnGeneration(parentModel);
+      ProjectPane.getInstance(event.getData(CommonDataKeys.PROJECT)).selectModel(createdModel, false);
     });
   }
   /*package*/ String getTestModelName(final AnActionEvent event) {

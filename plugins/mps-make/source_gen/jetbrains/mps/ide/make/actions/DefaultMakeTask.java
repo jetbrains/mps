@@ -15,7 +15,6 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.ide.messages.DefaultMessageHandler;
 import jetbrains.mps.messages.MessageKind;
@@ -39,15 +38,13 @@ public class DefaultMakeTask extends Task.Modal {
     final ProgressMonitor monitor = new ProgressMonitorAdapter(indicator);
     monitor.start("", (needClean ? 10 : 9));
     try {
-      final MPSCompilationResult mpsCompilationResult = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<MPSCompilationResult>() {
-        public MPSCompilationResult compute() {
-          ModuleMaker maker = new ModuleMaker(new DefaultMessageHandler(getProject()).restrict(MessageKind.ERROR));
-          if (needClean) {
-            maker.clean(modules, monitor.subTask(1));
-          }
-          return maker.make(modules, monitor.subTask(7), JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(myProject));
-
+      final MPSCompilationResult mpsCompilationResult = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> {
+        ModuleMaker maker = new ModuleMaker(new DefaultMessageHandler(getProject()).restrict(MessageKind.ERROR));
+        if (needClean) {
+          maker.clean(modules, monitor.subTask(1));
         }
+        return maker.make(modules, monitor.subTask(7), JavaCompilerOptionsComponent.getInstance().getJavaCompilerOptions(myProject));
+
       });
 
       if (mpsCompilationResult.isReloadingNeeded()) {

@@ -64,11 +64,7 @@ public class MigrationsCheckUtil {
     }, migrationScript);
   }
   public static boolean hasIncludeCycles(SNode migrationScript) {
-    return hasCycles(new _FunctionTypes._return_P1_E0<Iterable<SNode>, SNode>() {
-      public Iterable<SNode> invoke(SNode pureMigrationScript) {
-        return SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(pureMigrationScript, LINKS.part$ITsP), CONCEPTS.IncludeMigrationPart$Qj), LINKS.target$yqIO), CONCEPTS.PureMigrationScript$hG);
-      }
-    }, migrationScript);
+    return hasCycles((SNode pureMigrationScript) -> SNodeOperations.ofConcept(SLinkOperations.collect(SNodeOperations.ofConcept(SLinkOperations.getChildren(pureMigrationScript, LINKS.part$ITsP), CONCEPTS.IncludeMigrationPart$Qj), LINKS.target$yqIO), CONCEPTS.PureMigrationScript$hG), migrationScript);
   }
   private static Iterable<SNode> allScriptDependencies(final SNode script) {
     Iterable<SNode> result = Sequence.fromIterable(SLinkOperations.collect(IMigrationUnit__BehaviorDescriptor.getRequiredData_id7s$_UJMVosT.invoke(script), LINKS.script$2Ure)).concat(Sequence.fromIterable(SLinkOperations.collect(IMigrationUnit__BehaviorDescriptor.getExecuteAfter_id2bWK$jI6RRp.invoke(script), LINKS.script$BxVg)));

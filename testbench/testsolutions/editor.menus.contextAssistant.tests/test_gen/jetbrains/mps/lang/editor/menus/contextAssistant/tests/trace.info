@@ -14,19 +14,18 @@
       <node id="1892012100483078654" at="27,111,28,36" concept="1" />
       <node id="1892012100483078654" at="33,52,34,19" concept="7" />
       <node id="1892012100483078654" at="38,51,39,53" concept="1" />
-      <node id="1892012100483078660" at="41,27,42,80" concept="4" />
-      <node id="1892012100483078666" at="42,80,43,103" concept="4" />
-      <node id="1892012100483078672" at="43,103,44,54" concept="1" />
-      <node id="1892012100483078676" at="44,54,45,77" concept="1" />
-      <node id="1892012100483078680" at="45,77,46,77" concept="1" />
-      <node id="1892012100483078684" at="46,77,47,86" concept="1" />
+      <node id="1892012100483078660" at="40,42,41,78" concept="4" />
+      <node id="1892012100483078666" at="41,78,42,101" concept="4" />
+      <node id="1892012100483078672" at="42,101,43,52" concept="1" />
+      <node id="1892012100483078676" at="43,52,44,75" concept="1" />
+      <node id="1892012100483078680" at="44,75,45,75" concept="1" />
+      <node id="1892012100483078684" at="45,75,46,84" concept="1" />
       <node id="1892012100483078654" at="19,0,21,0" concept="6" trace="ourParamCache" />
       <node id="1892012100483078654" at="22,0,25,0" concept="0" trace="ContextAssistant_DuplicationMenu_IncludeDifferentMenusForDifferentNodes_Test#()V" />
       <node id="1892012100483078654" at="33,0,36,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="1892012100483078654" at="26,0,30,0" concept="3" trace="test_ContextAssistant_DuplicationMenu_IncludeDifferentMenusForDifferentNodes#()V" />
-      <node id="1892012100483078658" at="41,0,49,0" concept="3" trace="run#()V" />
-      <node id="1892012100483078656" at="39,53,49,9" concept="1" />
-      <node id="1892012100483078654" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="1892012100483078656" at="39,53,47,9" concept="1" />
+      <node id="1892012100483078654" at="37,0,49,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="1892012100483078654" at="22,89,23,25" />
       <scope id="1892012100483078654" at="27,111,28,36" />
       <scope id="1892012100483078654" at="33,52,34,19" />
@@ -35,16 +34,14 @@
         <var name="owner" id="1892012100483078654" />
       </scope>
       <scope id="1892012100483078654" at="26,0,30,0" />
-      <scope id="1892012100483078659" at="41,27,47,86">
+      <scope id="1892012100483078659" at="40,42,46,84">
         <var name="contextAssistantManager" id="1892012100483078667" />
         <var name="editorContext" id="1892012100483078661" />
       </scope>
-      <scope id="1892012100483078658" at="41,0,49,0" />
-      <scope id="1892012100483078654" at="38,51,49,9" />
-      <scope id="1892012100483078654" at="37,0,51,0" />
-      <unit id="1892012100483078658" at="40,39,49,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDifferentMenusForDifferentNodes_Test$TestBody$1" />
-      <unit id="1892012100483078654" at="31,0,52,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDifferentMenusForDifferentNodes_Test$TestBody" />
-      <unit id="1892012100483078654" at="17,0,53,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDifferentMenusForDifferentNodes_Test" />
+      <scope id="1892012100483078654" at="38,51,47,9" />
+      <scope id="1892012100483078654" at="37,0,49,0" />
+      <unit id="1892012100483078654" at="31,0,50,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDifferentMenusForDifferentNodes_Test$TestBody" />
+      <unit id="1892012100483078654" at="17,0,51,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDifferentMenusForDifferentNodes_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/1892012100483348862">
@@ -53,19 +50,18 @@
       <node id="1892012100483348862" at="27,101,28,36" concept="1" />
       <node id="1892012100483348862" at="33,52,34,19" concept="7" />
       <node id="1892012100483348862" at="38,51,39,53" concept="1" />
-      <node id="1892012100483348868" at="41,27,42,80" concept="4" />
-      <node id="1892012100483348874" at="42,80,43,103" concept="4" />
-      <node id="1892012100483348880" at="43,103,44,54" concept="1" />
-      <node id="1892012100483348884" at="44,54,45,77" concept="1" />
-      <node id="1892012100483348888" at="45,77,46,77" concept="1" />
-      <node id="1892012100483348892" at="46,77,47,86" concept="1" />
+      <node id="1892012100483348868" at="40,42,41,78" concept="4" />
+      <node id="1892012100483348874" at="41,78,42,101" concept="4" />
+      <node id="1892012100483348880" at="42,101,43,52" concept="1" />
+      <node id="1892012100483348884" at="43,52,44,75" concept="1" />
+      <node id="1892012100483348888" at="44,75,45,75" concept="1" />
+      <node id="1892012100483348892" at="45,75,46,84" concept="1" />
       <node id="1892012100483348862" at="19,0,21,0" concept="6" trace="ourParamCache" />
       <node id="1892012100483348862" at="22,0,25,0" concept="0" trace="ContextAssistant_DuplicationMenu_WrapDifferentSubstituteMenus_Test#()V" />
       <node id="1892012100483348862" at="33,0,36,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="1892012100483348862" at="26,0,30,0" concept="3" trace="test_ContextAssistant_DuplicationMenu_WrapDifferentSubstituteMenus#()V" />
-      <node id="1892012100483348866" at="41,0,49,0" concept="3" trace="run#()V" />
-      <node id="1892012100483348864" at="39,53,49,9" concept="1" />
-      <node id="1892012100483348862" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="1892012100483348864" at="39,53,47,9" concept="1" />
+      <node id="1892012100483348862" at="37,0,49,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="1892012100483348862" at="22,79,23,25" />
       <scope id="1892012100483348862" at="27,101,28,36" />
       <scope id="1892012100483348862" at="33,52,34,19" />
@@ -74,16 +70,14 @@
         <var name="owner" id="1892012100483348862" />
       </scope>
       <scope id="1892012100483348862" at="26,0,30,0" />
-      <scope id="1892012100483348867" at="41,27,47,86">
+      <scope id="1892012100483348867" at="40,42,46,84">
         <var name="contextAssistantManager" id="1892012100483348875" />
         <var name="editorContext" id="1892012100483348869" />
       </scope>
-      <scope id="1892012100483348866" at="41,0,49,0" />
-      <scope id="1892012100483348862" at="38,51,49,9" />
-      <scope id="1892012100483348862" at="37,0,51,0" />
-      <unit id="1892012100483348866" at="40,39,49,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_WrapDifferentSubstituteMenus_Test$TestBody$1" />
-      <unit id="1892012100483348862" at="31,0,52,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_WrapDifferentSubstituteMenus_Test$TestBody" />
-      <unit id="1892012100483348862" at="17,0,53,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_WrapDifferentSubstituteMenus_Test" />
+      <scope id="1892012100483348862" at="38,51,47,9" />
+      <scope id="1892012100483348862" at="37,0,49,0" />
+      <unit id="1892012100483348862" at="31,0,50,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_WrapDifferentSubstituteMenus_Test$TestBody" />
+      <unit id="1892012100483348862" at="17,0,51,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_WrapDifferentSubstituteMenus_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/1966322953445256580">
@@ -93,26 +87,23 @@
       <node id="1966322953445256580" at="34,52,35,19" concept="7" />
       <node id="1966322953445256580" at="39,51,40,53" concept="1" />
       <node id="1966322953445256587" at="40,53,41,82" concept="4" />
-      <node id="4212255956136864066" at="45,31,46,107" concept="4" />
-      <node id="4212255956136864072" at="46,107,47,0" concept="5" />
-      <node id="4212255956136864073" at="47,0,48,116" concept="1" />
-      <node id="4212255956136864083" at="48,116,49,58" concept="1" />
-      <node id="4212255956136864087" at="49,58,50,81" concept="1" />
-      <node id="4212255956136864091" at="50,81,51,81" concept="1" />
-      <node id="4212255956136864095" at="51,81,52,0" concept="5" />
-      <node id="4212255956136864096" at="52,0,53,116" concept="1" />
-      <node id="4212255956136864106" at="53,116,54,58" concept="1" />
-      <node id="4212255956136864110" at="54,58,55,78" concept="1" />
-      <node id="4212255956136864114" at="55,78,56,78" concept="1" />
+      <node id="4212255956136864066" at="42,109,43,101" concept="4" />
+      <node id="4212255956136864072" at="43,101,44,0" concept="5" />
+      <node id="4212255956136864073" at="44,0,45,110" concept="1" />
+      <node id="4212255956136864083" at="45,110,46,52" concept="1" />
+      <node id="4212255956136864087" at="46,52,47,75" concept="1" />
+      <node id="4212255956136864091" at="47,75,48,75" concept="1" />
+      <node id="4212255956136864095" at="48,75,49,0" concept="5" />
+      <node id="4212255956136864096" at="49,0,50,110" concept="1" />
+      <node id="4212255956136864106" at="50,110,51,52" concept="1" />
+      <node id="4212255956136864110" at="51,52,52,72" concept="1" />
+      <node id="4212255956136864114" at="52,72,53,72" concept="1" />
       <node id="1966322953445256580" at="20,0,22,0" concept="6" trace="ourParamCache" />
       <node id="1966322953445256580" at="23,0,26,0" concept="0" trace="ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu_Test#()V" />
       <node id="1966322953445256580" at="34,0,37,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="1966322953445256580" at="27,0,31,0" concept="3" trace="test_ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu#()V" />
-      <node id="4212255956136864064" at="45,0,58,0" concept="3" trace="run#()V" />
-      <node id="4212255956136864056" at="43,27,58,13" concept="1" />
-      <node id="4212255956136864054" at="43,0,60,0" concept="3" trace="run#()V" />
-      <node id="1453235961835728910" at="41,82,60,9" concept="1" />
-      <node id="1966322953445256580" at="38,0,62,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="1453235961835728910" at="41,82,54,10" concept="1" />
+      <node id="1966322953445256580" at="38,0,56,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="1966322953445256580" at="23,83,24,25" />
       <scope id="1966322953445256580" at="28,105,29,36" />
       <scope id="1966322953445256580" at="34,52,35,19" />
@@ -121,20 +112,15 @@
         <var name="owner" id="1966322953445256580" />
       </scope>
       <scope id="1966322953445256580" at="27,0,31,0" />
-      <scope id="4212255956136864065" at="45,31,56,78">
+      <scope id="4212255956136864065" at="42,109,53,72">
         <var name="contextAssistantManager" id="4212255956136864067" />
       </scope>
-      <scope id="4212255956136864064" at="45,0,58,0" />
-      <scope id="4212255956136864055" at="43,27,58,13" />
-      <scope id="4212255956136864054" at="43,0,60,0" />
-      <scope id="1966322953445256580" at="39,51,60,9">
+      <scope id="1966322953445256580" at="39,51,54,10">
         <var name="editorContext" id="1966322953445256588" />
       </scope>
-      <scope id="1966322953445256580" at="38,0,62,0" />
-      <unit id="4212255956136864064" at="44,75,58,11" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu_Test$TestBody$1$1" />
-      <unit id="4212255956136864054" at="42,39,60,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu_Test$TestBody$1" />
-      <unit id="1966322953445256580" at="32,0,63,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu_Test$TestBody" />
-      <unit id="1966322953445256580" at="18,0,64,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu_Test" />
+      <scope id="1966322953445256580" at="38,0,56,0" />
+      <unit id="1966322953445256580" at="32,0,57,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu_Test$TestBody" />
+      <unit id="1966322953445256580" at="18,0,58,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_EmptySubclassMenuOverridesNonEmptySuperclassMenu_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/3354869018660467848">
@@ -144,42 +130,39 @@
       <node id="3354869018660467848" at="35,52,36,19" concept="7" />
       <node id="3354869018660467848" at="40,51,41,70" concept="1" />
       <node id="4212255956136889010" at="41,70,42,71" concept="1" />
-      <node id="4212255956136897388" at="44,27,45,129" concept="4" />
-      <node id="6347741106874024596" at="45,129,46,54" concept="1" />
-      <node id="4212255956136899050" at="46,54,47,74" concept="1" />
-      <node id="1658153848510799104" at="47,74,48,115" concept="4" />
-      <node id="1658153848510799113" at="48,115,49,55" concept="1" />
-      <node id="1658153848510799121" at="50,85,51,64" concept="1" />
+      <node id="4212255956136897388" at="43,42,44,127" concept="4" />
+      <node id="6347741106874024596" at="44,127,45,52" concept="1" />
+      <node id="4212255956136899050" at="45,52,46,72" concept="1" />
+      <node id="1658153848510799104" at="46,72,47,113" concept="4" />
+      <node id="1658153848510799113" at="47,113,48,53" concept="1" />
+      <node id="1658153848510799121" at="49,83,50,62" concept="1" />
       <node id="3354869018660467848" at="21,0,23,0" concept="6" trace="ourParamCache" />
       <node id="3354869018660467848" at="24,0,27,0" concept="0" trace="ContextAssistant_Collapse_Test#()V" />
       <node id="3354869018660467848" at="35,0,38,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="1658153848510799117" at="49,55,52,11" concept="2" />
+      <node id="1658153848510799117" at="48,53,51,9" concept="2" />
       <node id="3354869018660467848" at="28,0,32,0" concept="3" trace="test_ContextAssistant_Collapse#()V" />
-      <node id="4212255956137012597" at="44,0,54,0" concept="3" trace="run#()V" />
-      <node id="4212255956137011940" at="42,71,54,9" concept="1" />
-      <node id="3354869018660467848" at="39,0,56,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="4212255956137011940" at="42,71,52,9" concept="1" />
+      <node id="3354869018660467848" at="39,0,54,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="3354869018660467848" at="24,43,25,25" />
       <scope id="3354869018660467848" at="29,65,30,36" />
       <scope id="3354869018660467848" at="35,52,36,19" />
-      <scope id="1658153848510799120" at="50,85,51,64" />
+      <scope id="1658153848510799120" at="49,83,50,62" />
       <scope id="3354869018660467848" at="24,0,27,0" />
       <scope id="3354869018660467848" at="35,0,38,0">
         <var name="owner" id="3354869018660467848" />
       </scope>
-      <scope id="1658153848510799117" at="49,55,52,11">
+      <scope id="1658153848510799117" at="48,53,51,9">
         <var name="cell" id="1658153848510799118" />
       </scope>
       <scope id="3354869018660467848" at="28,0,32,0" />
-      <scope id="4212255956137012598" at="44,27,52,11">
+      <scope id="4212255956137012598" at="43,42,51,9">
         <var name="componentCells" id="1658153848510799105" />
         <var name="contextAssistantManager" id="4212255956136897389" />
       </scope>
-      <scope id="4212255956137012597" at="44,0,54,0" />
-      <scope id="3354869018660467848" at="40,51,54,9" />
-      <scope id="3354869018660467848" at="39,0,56,0" />
-      <unit id="4212255956137012597" at="43,39,54,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_Collapse_Test$TestBody$1" />
-      <unit id="3354869018660467848" at="33,0,57,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_Collapse_Test$TestBody" />
-      <unit id="3354869018660467848" at="19,0,58,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_Collapse_Test" />
+      <scope id="3354869018660467848" at="40,51,52,9" />
+      <scope id="3354869018660467848" at="39,0,54,0" />
+      <unit id="3354869018660467848" at="33,0,55,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_Collapse_Test$TestBody" />
+      <unit id="3354869018660467848" at="19,0,56,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_Collapse_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/379023083996833808">
@@ -189,21 +172,20 @@
       <node id="379023083996833808" at="36,52,37,19" concept="7" />
       <node id="379023083996833808" at="41,51,42,70" concept="1" />
       <node id="379023083996833810" at="42,70,43,71" concept="1" />
-      <node id="379023083996833816" at="45,27,46,129" concept="4" />
-      <node id="379023083996851408" at="46,129,47,54" concept="1" />
-      <node id="379023083996847968" at="47,54,48,77" concept="1" />
-      <node id="379023083997056889" at="48,77,49,98" concept="4" />
-      <node id="379023083997056896" at="49,98,50,44" concept="1" />
-      <node id="379023083997056898" at="50,44,51,52" concept="1" />
-      <node id="379023083997019360" at="51,52,52,188" concept="4" />
-      <node id="379023083997022419" at="52,188,53,77" concept="1" />
+      <node id="379023083996833816" at="44,42,45,127" concept="4" />
+      <node id="379023083996851408" at="45,127,46,52" concept="1" />
+      <node id="379023083996847968" at="46,52,47,75" concept="1" />
+      <node id="379023083997056889" at="47,75,48,96" concept="4" />
+      <node id="379023083997056896" at="48,96,49,42" concept="1" />
+      <node id="379023083997056898" at="49,42,50,50" concept="1" />
+      <node id="379023083997019360" at="50,50,51,186" concept="4" />
+      <node id="379023083997022419" at="51,186,52,75" concept="1" />
       <node id="379023083996833808" at="22,0,24,0" concept="6" trace="ourParamCache" />
       <node id="379023083996833808" at="25,0,28,0" concept="0" trace="ContextAssistant_CollapseAndShowSecondAssistant_Test#()V" />
       <node id="379023083996833808" at="36,0,39,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="379023083996833808" at="29,0,33,0" concept="3" trace="test_ContextAssistant_CollapseAndShowSecondAssistant#()V" />
-      <node id="379023083996833814" at="45,0,55,0" concept="3" trace="run#()V" />
-      <node id="379023083996833812" at="43,71,55,9" concept="1" />
-      <node id="379023083996833808" at="40,0,57,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="379023083996833812" at="43,71,53,9" concept="1" />
+      <node id="379023083996833808" at="40,0,55,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="379023083996833808" at="25,65,26,25" />
       <scope id="379023083996833808" at="30,87,31,36" />
       <scope id="379023083996833808" at="36,52,37,19" />
@@ -212,17 +194,15 @@
         <var name="owner" id="379023083996833808" />
       </scope>
       <scope id="379023083996833808" at="29,0,33,0" />
-      <scope id="379023083996833815" at="45,27,53,77">
+      <scope id="379023083996833815" at="44,42,52,75">
         <var name="activeItems" id="379023083997056890" />
         <var name="contextAssistantCell" id="379023083997019361" />
         <var name="contextAssistantManager" id="379023083996833817" />
       </scope>
-      <scope id="379023083996833814" at="45,0,55,0" />
-      <scope id="379023083996833808" at="41,51,55,9" />
-      <scope id="379023083996833808" at="40,0,57,0" />
-      <unit id="379023083996833814" at="44,39,55,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_CollapseAndShowSecondAssistant_Test$TestBody$1" />
-      <unit id="379023083996833808" at="34,0,58,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_CollapseAndShowSecondAssistant_Test$TestBody" />
-      <unit id="379023083996833808" at="20,0,59,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_CollapseAndShowSecondAssistant_Test" />
+      <scope id="379023083996833808" at="41,51,53,9" />
+      <scope id="379023083996833808" at="40,0,55,0" />
+      <unit id="379023083996833808" at="34,0,56,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_CollapseAndShowSecondAssistant_Test$TestBody" />
+      <unit id="379023083996833808" at="20,0,57,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_CollapseAndShowSecondAssistant_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/379023083997059170">
@@ -232,26 +212,25 @@
       <node id="379023083997059170" at="36,52,37,19" concept="7" />
       <node id="379023083997059170" at="41,51,42,70" concept="1" />
       <node id="379023083997059172" at="42,70,43,72" concept="1" />
-      <node id="379023083997059178" at="45,27,46,129" concept="4" />
-      <node id="379023083997059186" at="46,129,47,54" concept="1" />
-      <node id="379023083997059190" at="47,54,48,77" concept="1" />
-      <node id="379023083997059194" at="48,77,49,98" concept="4" />
-      <node id="379023083997059201" at="49,98,50,44" concept="1" />
-      <node id="379023083997059203" at="50,44,51,52" concept="1" />
-      <node id="379023083997059209" at="51,52,52,193" concept="4" />
-      <node id="8842762453099908727" at="52,193,53,58" concept="1" />
-      <node id="379023083997059218" at="53,58,54,82" concept="1" />
-      <node id="8842762453099870025" at="54,82,55,195" concept="4" />
-      <node id="8842762453099910483" at="55,195,56,59" concept="1" />
-      <node id="8842762453099936133" at="56,59,57,85" concept="1" />
-      <node id="8842762453099987462" at="57,85,58,84" concept="1" />
+      <node id="379023083997059178" at="44,42,45,127" concept="4" />
+      <node id="379023083997059186" at="45,127,46,52" concept="1" />
+      <node id="379023083997059190" at="46,52,47,75" concept="1" />
+      <node id="379023083997059194" at="47,75,48,96" concept="4" />
+      <node id="379023083997059201" at="48,96,49,42" concept="1" />
+      <node id="379023083997059203" at="49,42,50,50" concept="1" />
+      <node id="379023083997059209" at="50,50,51,191" concept="4" />
+      <node id="8842762453099908727" at="51,191,52,56" concept="1" />
+      <node id="379023083997059218" at="52,56,53,80" concept="1" />
+      <node id="8842762453099870025" at="53,80,54,193" concept="4" />
+      <node id="8842762453099910483" at="54,193,55,57" concept="1" />
+      <node id="8842762453099936133" at="55,57,56,83" concept="1" />
+      <node id="8842762453099987462" at="56,83,57,82" concept="1" />
       <node id="379023083997059170" at="22,0,24,0" concept="6" trace="ourParamCache" />
       <node id="379023083997059170" at="25,0,28,0" concept="0" trace="ContextAssistant_ExpandAndShowSecondAssistant_Test#()V" />
       <node id="379023083997059170" at="36,0,39,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="379023083997059170" at="29,0,33,0" concept="3" trace="test_ContextAssistant_ExpandAndShowSecondAssistant#()V" />
-      <node id="379023083997059176" at="45,0,60,0" concept="3" trace="run#()V" />
-      <node id="379023083997059174" at="43,72,60,9" concept="1" />
-      <node id="379023083997059170" at="40,0,62,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="379023083997059174" at="43,72,58,9" concept="1" />
+      <node id="379023083997059170" at="40,0,60,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="379023083997059170" at="25,63,26,25" />
       <scope id="379023083997059170" at="30,85,31,36" />
       <scope id="379023083997059170" at="36,52,37,19" />
@@ -260,18 +239,16 @@
         <var name="owner" id="379023083997059170" />
       </scope>
       <scope id="379023083997059170" at="29,0,33,0" />
-      <scope id="379023083997059177" at="45,27,58,84">
+      <scope id="379023083997059177" at="44,42,57,82">
         <var name="activeItems" id="379023083997059195" />
         <var name="contextAssistantManager" id="379023083997059179" />
         <var name="firstContextAssistantCell" id="379023083997059210" />
         <var name="secondContextAssistantCell" id="8842762453099870026" />
       </scope>
-      <scope id="379023083997059176" at="45,0,60,0" />
-      <scope id="379023083997059170" at="41,51,60,9" />
-      <scope id="379023083997059170" at="40,0,62,0" />
-      <unit id="379023083997059176" at="44,39,60,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ExpandAndShowSecondAssistant_Test$TestBody$1" />
-      <unit id="379023083997059170" at="34,0,63,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ExpandAndShowSecondAssistant_Test$TestBody" />
-      <unit id="379023083997059170" at="20,0,64,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ExpandAndShowSecondAssistant_Test" />
+      <scope id="379023083997059170" at="41,51,58,9" />
+      <scope id="379023083997059170" at="40,0,60,0" />
+      <unit id="379023083997059170" at="34,0,61,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ExpandAndShowSecondAssistant_Test$TestBody" />
+      <unit id="379023083997059170" at="20,0,62,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ExpandAndShowSecondAssistant_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4212255956136944358">
@@ -281,47 +258,44 @@
       <node id="4212255956136944358" at="37,52,38,19" concept="7" />
       <node id="4212255956136944358" at="42,51,43,70" concept="1" />
       <node id="4212255956136944376" at="43,70,44,72" concept="1" />
-      <node id="4212255956136944378" at="46,27,47,129" concept="4" />
-      <node id="4212255956136944386" at="47,129,48,54" concept="1" />
-      <node id="4212255956136945860" at="48,54,49,77" concept="1" />
-      <node id="4212255956136951950" at="49,77,50,98" concept="4" />
-      <node id="4212255956136951957" at="50,98,51,44" concept="1" />
-      <node id="4212255956136951959" at="51,44,52,52" concept="1" />
-      <node id="4212255956137016818" at="52,52,53,115" concept="4" />
-      <node id="4212255956137016827" at="53,115,54,55" concept="1" />
-      <node id="4212255956137021744" at="55,85,56,63" concept="1" />
-      <node id="4212255956136944401" at="59,9,60,0" concept="5" />
+      <node id="4212255956136944378" at="45,42,46,127" concept="4" />
+      <node id="4212255956136944386" at="46,127,47,52" concept="1" />
+      <node id="4212255956136945860" at="47,52,48,75" concept="1" />
+      <node id="4212255956136951950" at="48,75,49,96" concept="4" />
+      <node id="4212255956136951957" at="49,96,50,42" concept="1" />
+      <node id="4212255956136951959" at="50,42,51,50" concept="1" />
+      <node id="4212255956137016818" at="51,50,52,113" concept="4" />
+      <node id="4212255956137016827" at="52,113,53,53" concept="1" />
+      <node id="4212255956137021744" at="54,83,55,61" concept="1" />
+      <node id="4212255956136944401" at="57,9,58,0" concept="5" />
       <node id="4212255956136944358" at="23,0,25,0" concept="6" trace="ourParamCache" />
       <node id="4212255956136944358" at="26,0,29,0" concept="0" trace="ContextAssistant_Expand_Test#()V" />
       <node id="4212255956136944358" at="37,0,40,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="4212255956137016831" at="54,55,57,11" concept="2" />
+      <node id="4212255956137016831" at="53,53,56,9" concept="2" />
       <node id="4212255956136944358" at="30,0,34,0" concept="3" trace="test_ContextAssistant_Expand#()V" />
-      <node id="4212255956137016816" at="46,0,59,0" concept="3" trace="run#()V" />
-      <node id="4212255956137016814" at="44,72,59,9" concept="1" />
-      <node id="4212255956136944358" at="41,0,62,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="4212255956137016814" at="44,72,57,9" concept="1" />
+      <node id="4212255956136944358" at="41,0,60,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4212255956136944358" at="26,41,27,25" />
       <scope id="4212255956136944358" at="31,63,32,36" />
       <scope id="4212255956136944358" at="37,52,38,19" />
-      <scope id="4212255956137016834" at="55,85,56,63" />
+      <scope id="4212255956137016834" at="54,83,55,61" />
       <scope id="4212255956136944358" at="26,0,29,0" />
       <scope id="4212255956136944358" at="37,0,40,0">
         <var name="owner" id="4212255956136944358" />
       </scope>
-      <scope id="4212255956137016831" at="54,55,57,11">
+      <scope id="4212255956137016831" at="53,53,56,9">
         <var name="cell" id="4212255956137016832" />
       </scope>
       <scope id="4212255956136944358" at="30,0,34,0" />
-      <scope id="4212255956137016817" at="46,27,57,11">
+      <scope id="4212255956137016817" at="45,42,56,9">
         <var name="activeItems" id="4212255956136951951" />
         <var name="componentCells" id="4212255956137016819" />
         <var name="contextAssistantManager" id="4212255956136944379" />
       </scope>
-      <scope id="4212255956137016816" at="46,0,59,0" />
-      <scope id="4212255956136944358" at="42,51,60,0" />
-      <scope id="4212255956136944358" at="41,0,62,0" />
-      <unit id="4212255956137016816" at="45,39,59,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_Expand_Test$TestBody$1" />
-      <unit id="4212255956136944358" at="35,0,63,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_Expand_Test$TestBody" />
-      <unit id="4212255956136944358" at="21,0,64,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_Expand_Test" />
+      <scope id="4212255956136944358" at="42,51,58,0" />
+      <scope id="4212255956136944358" at="41,0,60,0" />
+      <unit id="4212255956136944358" at="35,0,61,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_Expand_Test$TestBody" />
+      <unit id="4212255956136944358" at="21,0,62,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_Expand_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4212255956137260013">
@@ -330,41 +304,38 @@
       <node id="4212255956137260013" at="29,85,30,36" concept="1" />
       <node id="4212255956137260013" at="35,52,36,19" concept="7" />
       <node id="4212255956137260013" at="40,51,41,52" concept="1" />
-      <node id="4212255956137260031" at="43,27,44,129" concept="4" />
-      <node id="4212255956137260039" at="44,129,45,54" concept="1" />
-      <node id="4212255956137260047" at="45,54,46,115" concept="4" />
-      <node id="4212255956137260056" at="46,115,47,55" concept="1" />
-      <node id="4212255956137311430" at="48,85,49,64" concept="1" />
+      <node id="4212255956137260031" at="42,42,43,127" concept="4" />
+      <node id="4212255956137260039" at="43,127,44,52" concept="1" />
+      <node id="4212255956137260047" at="44,52,45,113" concept="4" />
+      <node id="4212255956137260056" at="45,113,46,53" concept="1" />
+      <node id="4212255956137311430" at="47,83,48,62" concept="1" />
       <node id="4212255956137260013" at="21,0,23,0" concept="6" trace="ourParamCache" />
       <node id="4212255956137260013" at="24,0,27,0" concept="0" trace="ContextAssistant_InitiallyCollapsedVisibility_Test#()V" />
       <node id="4212255956137260013" at="35,0,38,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="4212255956137260060" at="47,55,50,11" concept="2" />
+      <node id="4212255956137260060" at="46,53,49,9" concept="2" />
       <node id="4212255956137260013" at="28,0,32,0" concept="3" trace="test_ContextAssistant_InitiallyCollapsedVisibility#()V" />
-      <node id="4212255956137260045" at="43,0,52,0" concept="3" trace="run#()V" />
-      <node id="4212255956137260043" at="41,52,52,9" concept="1" />
-      <node id="4212255956137260013" at="39,0,54,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="4212255956137260043" at="41,52,50,9" concept="1" />
+      <node id="4212255956137260013" at="39,0,52,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4212255956137260013" at="24,63,25,25" />
       <scope id="4212255956137260013" at="29,85,30,36" />
       <scope id="4212255956137260013" at="35,52,36,19" />
-      <scope id="4212255956137260063" at="48,85,49,64" />
+      <scope id="4212255956137260063" at="47,83,48,62" />
       <scope id="4212255956137260013" at="24,0,27,0" />
       <scope id="4212255956137260013" at="35,0,38,0">
         <var name="owner" id="4212255956137260013" />
       </scope>
-      <scope id="4212255956137260060" at="47,55,50,11">
+      <scope id="4212255956137260060" at="46,53,49,9">
         <var name="cell" id="4212255956137260061" />
       </scope>
       <scope id="4212255956137260013" at="28,0,32,0" />
-      <scope id="4212255956137260046" at="43,27,50,11">
+      <scope id="4212255956137260046" at="42,42,49,9">
         <var name="componentCells" id="4212255956137260048" />
         <var name="contextAssistantManager" id="4212255956137260032" />
       </scope>
-      <scope id="4212255956137260045" at="43,0,52,0" />
-      <scope id="4212255956137260013" at="40,51,52,9" />
-      <scope id="4212255956137260013" at="39,0,54,0" />
-      <unit id="4212255956137260045" at="42,39,52,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_InitiallyCollapsedVisibility_Test$TestBody$1" />
-      <unit id="4212255956137260013" at="33,0,55,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_InitiallyCollapsedVisibility_Test$TestBody" />
-      <unit id="4212255956137260013" at="19,0,56,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_InitiallyCollapsedVisibility_Test" />
+      <scope id="4212255956137260013" at="40,51,50,9" />
+      <scope id="4212255956137260013" at="39,0,52,0" />
+      <unit id="4212255956137260013" at="33,0,53,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_InitiallyCollapsedVisibility_Test$TestBody" />
+      <unit id="4212255956137260013" at="19,0,54,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_InitiallyCollapsedVisibility_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4572725119287878872">
@@ -373,19 +344,18 @@
       <node id="4572725119287878872" at="27,93,28,36" concept="1" />
       <node id="4572725119287878872" at="33,52,34,19" concept="7" />
       <node id="4572725119287878872" at="38,51,39,53" concept="1" />
-      <node id="4572725119287878882" at="41,27,42,80" concept="4" />
-      <node id="4572725119287878898" at="42,80,43,103" concept="4" />
-      <node id="4572725119287878904" at="43,103,44,54" concept="1" />
-      <node id="4572725119287878908" at="44,54,45,77" concept="1" />
-      <node id="4572725119287878912" at="45,77,46,77" concept="1" />
-      <node id="4572725119287890156" at="46,77,47,86" concept="1" />
+      <node id="4572725119287878882" at="40,42,41,78" concept="4" />
+      <node id="4572725119287878898" at="41,78,42,101" concept="4" />
+      <node id="4572725119287878904" at="42,101,43,52" concept="1" />
+      <node id="4572725119287878908" at="43,52,44,75" concept="1" />
+      <node id="4572725119287878912" at="44,75,45,75" concept="1" />
+      <node id="4572725119287890156" at="45,75,46,84" concept="1" />
       <node id="4572725119287878872" at="19,0,21,0" concept="6" trace="ourParamCache" />
       <node id="4572725119287878872" at="22,0,25,0" concept="0" trace="ContextAssistant_DuplicationMenu_MenuForSuperconcepts_Test#()V" />
       <node id="4572725119287878872" at="33,0,36,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="4572725119287878872" at="26,0,30,0" concept="3" trace="test_ContextAssistant_DuplicationMenu_MenuForSuperconcepts#()V" />
-      <node id="4572725119287878880" at="41,0,49,0" concept="3" trace="run#()V" />
-      <node id="4572725119287878878" at="39,53,49,9" concept="1" />
-      <node id="4572725119287878872" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="4572725119287878878" at="39,53,47,9" concept="1" />
+      <node id="4572725119287878872" at="37,0,49,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4572725119287878872" at="22,71,23,25" />
       <scope id="4572725119287878872" at="27,93,28,36" />
       <scope id="4572725119287878872" at="33,52,34,19" />
@@ -394,16 +364,14 @@
         <var name="owner" id="4572725119287878872" />
       </scope>
       <scope id="4572725119287878872" at="26,0,30,0" />
-      <scope id="4572725119287878881" at="41,27,47,86">
+      <scope id="4572725119287878881" at="40,42,46,84">
         <var name="contextAssistantManager" id="4572725119287878899" />
         <var name="editorContext" id="4572725119287878883" />
       </scope>
-      <scope id="4572725119287878880" at="41,0,49,0" />
-      <scope id="4572725119287878872" at="38,51,49,9" />
-      <scope id="4572725119287878872" at="37,0,51,0" />
-      <unit id="4572725119287878880" at="40,39,49,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_MenuForSuperconcepts_Test$TestBody$1" />
-      <unit id="4572725119287878872" at="31,0,52,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_MenuForSuperconcepts_Test$TestBody" />
-      <unit id="4572725119287878872" at="17,0,53,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_MenuForSuperconcepts_Test" />
+      <scope id="4572725119287878872" at="38,51,47,9" />
+      <scope id="4572725119287878872" at="37,0,49,0" />
+      <unit id="4572725119287878872" at="31,0,50,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_MenuForSuperconcepts_Test$TestBody" />
+      <unit id="4572725119287878872" at="17,0,51,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_MenuForSuperconcepts_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4572725119287927838">
@@ -412,19 +380,18 @@
       <node id="4572725119287927838" at="27,104,28,36" concept="1" />
       <node id="4572725119287927838" at="33,52,34,19" concept="7" />
       <node id="4572725119287927838" at="38,51,39,53" concept="1" />
-      <node id="4572725119287927845" at="41,27,42,80" concept="4" />
-      <node id="4572725119287927861" at="42,80,43,103" concept="4" />
-      <node id="4572725119287927867" at="43,103,44,54" concept="1" />
-      <node id="4572725119287927871" at="44,54,45,77" concept="1" />
-      <node id="4572725119287927875" at="45,77,46,77" concept="1" />
-      <node id="4572725119287927879" at="46,77,47,86" concept="1" />
+      <node id="4572725119287927845" at="40,42,41,78" concept="4" />
+      <node id="4572725119287927861" at="41,78,42,101" concept="4" />
+      <node id="4572725119287927867" at="42,101,43,52" concept="1" />
+      <node id="4572725119287927871" at="43,52,44,75" concept="1" />
+      <node id="4572725119287927875" at="44,75,45,75" concept="1" />
+      <node id="4572725119287927879" at="45,75,46,84" concept="1" />
       <node id="4572725119287927838" at="19,0,21,0" concept="6" trace="ourParamCache" />
       <node id="4572725119287927838" at="22,0,25,0" concept="0" trace="ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForSameNode_Test#()V" />
       <node id="4572725119287927838" at="33,0,36,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="4572725119287927838" at="26,0,30,0" concept="3" trace="test_ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForSameNode#()V" />
-      <node id="4572725119287927843" at="41,0,49,0" concept="3" trace="run#()V" />
-      <node id="4572725119287927841" at="39,53,49,9" concept="1" />
-      <node id="4572725119287927838" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="4572725119287927841" at="39,53,47,9" concept="1" />
+      <node id="4572725119287927838" at="37,0,49,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4572725119287927838" at="22,82,23,25" />
       <scope id="4572725119287927838" at="27,104,28,36" />
       <scope id="4572725119287927838" at="33,52,34,19" />
@@ -433,16 +400,14 @@
         <var name="owner" id="4572725119287927838" />
       </scope>
       <scope id="4572725119287927838" at="26,0,30,0" />
-      <scope id="4572725119287927844" at="41,27,47,86">
+      <scope id="4572725119287927844" at="40,42,46,84">
         <var name="contextAssistantManager" id="4572725119287927862" />
         <var name="editorContext" id="4572725119287927846" />
       </scope>
-      <scope id="4572725119287927843" at="41,0,49,0" />
-      <scope id="4572725119287927838" at="38,51,49,9" />
-      <scope id="4572725119287927838" at="37,0,51,0" />
-      <unit id="4572725119287927843" at="40,39,49,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForSameNode_Test$TestBody$1" />
-      <unit id="4572725119287927838" at="31,0,52,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForSameNode_Test$TestBody" />
-      <unit id="4572725119287927838" at="17,0,53,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForSameNode_Test" />
+      <scope id="4572725119287927838" at="38,51,47,9" />
+      <scope id="4572725119287927838" at="37,0,49,0" />
+      <unit id="4572725119287927838" at="31,0,50,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForSameNode_Test$TestBody" />
+      <unit id="4572725119287927838" at="17,0,51,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForSameNode_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4572725119287962937">
@@ -451,19 +416,18 @@
       <node id="4572725119287962937" at="27,105,28,36" concept="1" />
       <node id="4572725119287962937" at="33,52,34,19" concept="7" />
       <node id="4572725119287962937" at="38,51,39,53" concept="1" />
-      <node id="4572725119287962944" at="41,27,42,80" concept="4" />
-      <node id="4572725119287962960" at="42,80,43,103" concept="4" />
-      <node id="4572725119287962966" at="43,103,44,54" concept="1" />
-      <node id="4572725119287962970" at="44,54,45,77" concept="1" />
-      <node id="4572725119287962974" at="45,77,46,77" concept="1" />
-      <node id="4572725119287962978" at="46,77,47,86" concept="1" />
+      <node id="4572725119287962944" at="40,42,41,78" concept="4" />
+      <node id="4572725119287962960" at="41,78,42,101" concept="4" />
+      <node id="4572725119287962966" at="42,101,43,52" concept="1" />
+      <node id="4572725119287962970" at="43,52,44,75" concept="1" />
+      <node id="4572725119287962974" at="44,75,45,75" concept="1" />
+      <node id="4572725119287962978" at="45,75,46,84" concept="1" />
       <node id="4572725119287962937" at="19,0,21,0" concept="6" trace="ourParamCache" />
       <node id="4572725119287962937" at="22,0,25,0" concept="0" trace="ContextAssistant_DuplicationMenu_IncludeSameMenuForDifferentNodes_Test#()V" />
       <node id="4572725119287962937" at="33,0,36,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="4572725119287962937" at="26,0,30,0" concept="3" trace="test_ContextAssistant_DuplicationMenu_IncludeSameMenuForDifferentNodes#()V" />
-      <node id="4572725119287962942" at="41,0,49,0" concept="3" trace="run#()V" />
-      <node id="4572725119287962940" at="39,53,49,9" concept="1" />
-      <node id="4572725119287962937" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="4572725119287962940" at="39,53,47,9" concept="1" />
+      <node id="4572725119287962937" at="37,0,49,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4572725119287962937" at="22,83,23,25" />
       <scope id="4572725119287962937" at="27,105,28,36" />
       <scope id="4572725119287962937" at="33,52,34,19" />
@@ -472,16 +436,14 @@
         <var name="owner" id="4572725119287962937" />
       </scope>
       <scope id="4572725119287962937" at="26,0,30,0" />
-      <scope id="4572725119287962943" at="41,27,47,86">
+      <scope id="4572725119287962943" at="40,42,46,84">
         <var name="contextAssistantManager" id="4572725119287962961" />
         <var name="editorContext" id="4572725119287962945" />
       </scope>
-      <scope id="4572725119287962942" at="41,0,49,0" />
-      <scope id="4572725119287962937" at="38,51,49,9" />
-      <scope id="4572725119287962937" at="37,0,51,0" />
-      <unit id="4572725119287962942" at="40,39,49,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuForDifferentNodes_Test$TestBody$1" />
-      <unit id="4572725119287962937" at="31,0,52,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuForDifferentNodes_Test$TestBody" />
-      <unit id="4572725119287962937" at="17,0,53,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuForDifferentNodes_Test" />
+      <scope id="4572725119287962937" at="38,51,47,9" />
+      <scope id="4572725119287962937" at="37,0,49,0" />
+      <unit id="4572725119287962937" at="31,0,50,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuForDifferentNodes_Test$TestBody" />
+      <unit id="4572725119287962937" at="17,0,51,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuForDifferentNodes_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4572725119288004845">
@@ -490,19 +452,18 @@
       <node id="4572725119288004845" at="27,96,28,36" concept="1" />
       <node id="4572725119288004845" at="33,52,34,19" concept="7" />
       <node id="4572725119288004845" at="38,51,39,53" concept="1" />
-      <node id="4572725119288004852" at="41,27,42,80" concept="4" />
-      <node id="4572725119288004868" at="42,80,43,103" concept="4" />
-      <node id="4572725119288004874" at="43,103,44,54" concept="1" />
-      <node id="4572725119288004878" at="44,54,45,77" concept="1" />
-      <node id="4572725119288004882" at="45,77,46,77" concept="1" />
-      <node id="4572725119288004886" at="46,77,47,86" concept="1" />
+      <node id="4572725119288004852" at="40,42,41,78" concept="4" />
+      <node id="4572725119288004868" at="41,78,42,101" concept="4" />
+      <node id="4572725119288004874" at="42,101,43,52" concept="1" />
+      <node id="4572725119288004878" at="43,52,44,75" concept="1" />
+      <node id="4572725119288004882" at="44,75,45,75" concept="1" />
+      <node id="4572725119288004886" at="45,75,46,84" concept="1" />
       <node id="4572725119288004845" at="19,0,21,0" concept="6" trace="ourParamCache" />
       <node id="4572725119288004845" at="22,0,25,0" concept="0" trace="ContextAssistant_DuplicationMenu_WrapSubstituteMenuTwice_Test#()V" />
       <node id="4572725119288004845" at="33,0,36,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="4572725119288004845" at="26,0,30,0" concept="3" trace="test_ContextAssistant_DuplicationMenu_WrapSubstituteMenuTwice#()V" />
-      <node id="4572725119288004850" at="41,0,49,0" concept="3" trace="run#()V" />
-      <node id="4572725119288004848" at="39,53,49,9" concept="1" />
-      <node id="4572725119288004845" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="4572725119288004848" at="39,53,47,9" concept="1" />
+      <node id="4572725119288004845" at="37,0,49,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4572725119288004845" at="22,74,23,25" />
       <scope id="4572725119288004845" at="27,96,28,36" />
       <scope id="4572725119288004845" at="33,52,34,19" />
@@ -511,16 +472,14 @@
         <var name="owner" id="4572725119288004845" />
       </scope>
       <scope id="4572725119288004845" at="26,0,30,0" />
-      <scope id="4572725119288004851" at="41,27,47,86">
+      <scope id="4572725119288004851" at="40,42,46,84">
         <var name="contextAssistantManager" id="4572725119288004869" />
         <var name="editorContext" id="4572725119288004853" />
       </scope>
-      <scope id="4572725119288004850" at="41,0,49,0" />
-      <scope id="4572725119288004845" at="38,51,49,9" />
-      <scope id="4572725119288004845" at="37,0,51,0" />
-      <unit id="4572725119288004850" at="40,39,49,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_WrapSubstituteMenuTwice_Test$TestBody$1" />
-      <unit id="4572725119288004845" at="31,0,52,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_WrapSubstituteMenuTwice_Test$TestBody" />
-      <unit id="4572725119288004845" at="17,0,53,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_WrapSubstituteMenuTwice_Test" />
+      <scope id="4572725119288004845" at="38,51,47,9" />
+      <scope id="4572725119288004845" at="37,0,49,0" />
+      <unit id="4572725119288004845" at="31,0,50,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_WrapSubstituteMenuTwice_Test$TestBody" />
+      <unit id="4572725119288004845" at="17,0,51,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_WrapSubstituteMenuTwice_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4695456347261444274">
@@ -529,19 +488,18 @@
       <node id="4695456347261444274" at="27,105,28,36" concept="1" />
       <node id="4695456347261444274" at="33,52,34,19" concept="7" />
       <node id="4695456347261444274" at="38,51,39,53" concept="1" />
-      <node id="4695456347261444280" at="41,27,42,80" concept="4" />
-      <node id="4695456347261444286" at="42,80,43,103" concept="4" />
-      <node id="4695456347261444292" at="43,103,44,54" concept="1" />
-      <node id="4695456347261444296" at="44,54,45,77" concept="1" />
-      <node id="4695456347261444300" at="45,77,46,77" concept="1" />
-      <node id="4695456347261444304" at="46,77,47,86" concept="1" />
+      <node id="4695456347261444280" at="40,42,41,78" concept="4" />
+      <node id="4695456347261444286" at="41,78,42,101" concept="4" />
+      <node id="4695456347261444292" at="42,101,43,52" concept="1" />
+      <node id="4695456347261444296" at="43,52,44,75" concept="1" />
+      <node id="4695456347261444300" at="44,75,45,75" concept="1" />
+      <node id="4695456347261444304" at="45,75,46,84" concept="1" />
       <node id="4695456347261444274" at="19,0,21,0" concept="6" trace="ourParamCache" />
       <node id="4695456347261444274" at="22,0,25,0" concept="0" trace="ContextAssistant_DuplicationMenu_IncludeDifferentMenusForSameNode_Test#()V" />
       <node id="4695456347261444274" at="33,0,36,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="4695456347261444274" at="26,0,30,0" concept="3" trace="test_ContextAssistant_DuplicationMenu_IncludeDifferentMenusForSameNode#()V" />
-      <node id="4695456347261444278" at="41,0,49,0" concept="3" trace="run#()V" />
-      <node id="4695456347261444276" at="39,53,49,9" concept="1" />
-      <node id="4695456347261444274" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="4695456347261444276" at="39,53,47,9" concept="1" />
+      <node id="4695456347261444274" at="37,0,49,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4695456347261444274" at="22,83,23,25" />
       <scope id="4695456347261444274" at="27,105,28,36" />
       <scope id="4695456347261444274" at="33,52,34,19" />
@@ -550,16 +508,14 @@
         <var name="owner" id="4695456347261444274" />
       </scope>
       <scope id="4695456347261444274" at="26,0,30,0" />
-      <scope id="4695456347261444279" at="41,27,47,86">
+      <scope id="4695456347261444279" at="40,42,46,84">
         <var name="contextAssistantManager" id="4695456347261444287" />
         <var name="editorContext" id="4695456347261444281" />
       </scope>
-      <scope id="4695456347261444278" at="41,0,49,0" />
-      <scope id="4695456347261444274" at="38,51,49,9" />
-      <scope id="4695456347261444274" at="37,0,51,0" />
-      <unit id="4695456347261444278" at="40,39,49,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDifferentMenusForSameNode_Test$TestBody$1" />
-      <unit id="4695456347261444274" at="31,0,52,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDifferentMenusForSameNode_Test$TestBody" />
-      <unit id="4695456347261444274" at="17,0,53,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDifferentMenusForSameNode_Test" />
+      <scope id="4695456347261444274" at="38,51,47,9" />
+      <scope id="4695456347261444274" at="37,0,49,0" />
+      <unit id="4695456347261444274" at="31,0,50,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDifferentMenusForSameNode_Test$TestBody" />
+      <unit id="4695456347261444274" at="17,0,51,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDifferentMenusForSameNode_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4695456347261862911">
@@ -568,19 +524,18 @@
       <node id="4695456347261862911" at="27,109,28,36" concept="1" />
       <node id="4695456347261862911" at="33,52,34,19" concept="7" />
       <node id="4695456347261862911" at="38,51,39,53" concept="1" />
-      <node id="4695456347261862917" at="41,27,42,80" concept="4" />
-      <node id="4695456347261862923" at="42,80,43,103" concept="4" />
-      <node id="4695456347261862929" at="43,103,44,54" concept="1" />
-      <node id="4695456347261862933" at="44,54,45,77" concept="1" />
-      <node id="4695456347261862937" at="45,77,46,77" concept="1" />
-      <node id="4695456347261862941" at="46,77,47,86" concept="1" />
+      <node id="4695456347261862917" at="40,42,41,78" concept="4" />
+      <node id="4695456347261862923" at="41,78,42,101" concept="4" />
+      <node id="4695456347261862929" at="42,101,43,52" concept="1" />
+      <node id="4695456347261862933" at="43,52,44,75" concept="1" />
+      <node id="4695456347261862937" at="44,75,45,75" concept="1" />
+      <node id="4695456347261862941" at="45,75,46,84" concept="1" />
       <node id="4695456347261862911" at="19,0,21,0" concept="6" trace="ourParamCache" />
       <node id="4695456347261862911" at="22,0,25,0" concept="0" trace="ContextAssistant_DuplicationMenu_IncludeDefaultAndNullMenuForSameNode_Test#()V" />
       <node id="4695456347261862911" at="33,0,36,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="4695456347261862911" at="26,0,30,0" concept="3" trace="test_ContextAssistant_DuplicationMenu_IncludeDefaultAndNullMenuForSameNode#()V" />
-      <node id="4695456347261862915" at="41,0,49,0" concept="3" trace="run#()V" />
-      <node id="4695456347261862913" at="39,53,49,9" concept="1" />
-      <node id="4695456347261862911" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="4695456347261862913" at="39,53,47,9" concept="1" />
+      <node id="4695456347261862911" at="37,0,49,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4695456347261862911" at="22,87,23,25" />
       <scope id="4695456347261862911" at="27,109,28,36" />
       <scope id="4695456347261862911" at="33,52,34,19" />
@@ -589,16 +544,14 @@
         <var name="owner" id="4695456347261862911" />
       </scope>
       <scope id="4695456347261862911" at="26,0,30,0" />
-      <scope id="4695456347261862916" at="41,27,47,86">
+      <scope id="4695456347261862916" at="40,42,46,84">
         <var name="contextAssistantManager" id="4695456347261862924" />
         <var name="editorContext" id="4695456347261862918" />
       </scope>
-      <scope id="4695456347261862915" at="41,0,49,0" />
-      <scope id="4695456347261862911" at="38,51,49,9" />
-      <scope id="4695456347261862911" at="37,0,51,0" />
-      <unit id="4695456347261862915" at="40,39,49,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDefaultAndNullMenuForSameNode_Test$TestBody$1" />
-      <unit id="4695456347261862911" at="31,0,52,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDefaultAndNullMenuForSameNode_Test$TestBody" />
-      <unit id="4695456347261862911" at="17,0,53,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDefaultAndNullMenuForSameNode_Test" />
+      <scope id="4695456347261862911" at="38,51,47,9" />
+      <scope id="4695456347261862911" at="37,0,49,0" />
+      <unit id="4695456347261862911" at="31,0,50,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDefaultAndNullMenuForSameNode_Test$TestBody" />
+      <unit id="4695456347261862911" at="17,0,51,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeDefaultAndNullMenuForSameNode_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/4695456347262173362">
@@ -607,19 +560,18 @@
       <node id="4695456347262173362" at="27,118,28,36" concept="1" />
       <node id="4695456347262173362" at="33,52,34,19" concept="7" />
       <node id="4695456347262173362" at="38,51,39,53" concept="1" />
-      <node id="4695456347262173368" at="41,27,42,80" concept="4" />
-      <node id="4695456347262173374" at="42,80,43,103" concept="4" />
-      <node id="4695456347262173380" at="43,103,44,54" concept="1" />
-      <node id="4695456347262173384" at="44,54,45,77" concept="1" />
-      <node id="4695456347262173388" at="45,77,46,77" concept="1" />
-      <node id="4695456347262173392" at="46,77,47,86" concept="1" />
+      <node id="4695456347262173368" at="40,42,41,78" concept="4" />
+      <node id="4695456347262173374" at="41,78,42,101" concept="4" />
+      <node id="4695456347262173380" at="42,101,43,52" concept="1" />
+      <node id="4695456347262173384" at="43,52,44,75" concept="1" />
+      <node id="4695456347262173388" at="44,75,45,75" concept="1" />
+      <node id="4695456347262173392" at="45,75,46,84" concept="1" />
       <node id="4695456347262173362" at="19,0,21,0" concept="6" trace="ourParamCache" />
       <node id="4695456347262173362" at="22,0,25,0" concept="0" trace="ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForDifferentMenuLocations_Test#()V" />
       <node id="4695456347262173362" at="33,0,36,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="4695456347262173362" at="26,0,30,0" concept="3" trace="test_ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForDifferentMenuLocations#()V" />
-      <node id="4695456347262173366" at="41,0,49,0" concept="3" trace="run#()V" />
-      <node id="4695456347262173364" at="39,53,49,9" concept="1" />
-      <node id="4695456347262173362" at="37,0,51,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="4695456347262173364" at="39,53,47,9" concept="1" />
+      <node id="4695456347262173362" at="37,0,49,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="4695456347262173362" at="22,96,23,25" />
       <scope id="4695456347262173362" at="27,118,28,36" />
       <scope id="4695456347262173362" at="33,52,34,19" />
@@ -628,16 +580,14 @@
         <var name="owner" id="4695456347262173362" />
       </scope>
       <scope id="4695456347262173362" at="26,0,30,0" />
-      <scope id="4695456347262173367" at="41,27,47,86">
+      <scope id="4695456347262173367" at="40,42,46,84">
         <var name="contextAssistantManager" id="4695456347262173375" />
         <var name="editorContext" id="4695456347262173369" />
       </scope>
-      <scope id="4695456347262173366" at="41,0,49,0" />
-      <scope id="4695456347262173362" at="38,51,49,9" />
-      <scope id="4695456347262173362" at="37,0,51,0" />
-      <unit id="4695456347262173366" at="40,39,49,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForDifferentMenuLocations_Test$TestBody$1" />
-      <unit id="4695456347262173362" at="31,0,52,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForDifferentMenuLocations_Test$TestBody" />
-      <unit id="4695456347262173362" at="17,0,53,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForDifferentMenuLocations_Test" />
+      <scope id="4695456347262173362" at="38,51,47,9" />
+      <scope id="4695456347262173362" at="37,0,49,0" />
+      <unit id="4695456347262173362" at="31,0,50,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForDifferentMenuLocations_Test$TestBody" />
+      <unit id="4695456347262173362" at="17,0,51,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_DuplicationMenu_IncludeSameMenuTwiceForDifferentMenuLocations_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/6183626235528683201">
@@ -647,26 +597,23 @@
       <node id="6183626235528683201" at="33,52,34,19" concept="7" />
       <node id="6183626235528683201" at="38,51,39,53" concept="1" />
       <node id="6183626235528943264" at="39,53,40,82" concept="4" />
-      <node id="4212255956136868776" at="44,31,45,107" concept="4" />
-      <node id="4212255956136868782" at="45,107,46,58" concept="1" />
-      <node id="4212255956136868786" at="46,58,47,81" concept="1" />
-      <node id="4212255956136868790" at="47,81,48,81" concept="1" />
-      <node id="4212255956136868794" at="48,81,49,0" concept="5" />
-      <node id="4212255956136868795" at="49,0,50,106" concept="1" />
-      <node id="4212255956136868802" at="50,106,51,0" concept="5" />
-      <node id="4212255956136868803" at="51,0,52,58" concept="1" />
-      <node id="4212255956136868807" at="52,58,53,0" concept="5" />
-      <node id="4212255956136868808" at="53,0,54,78" concept="1" />
-      <node id="4212255956136868812" at="54,78,55,78" concept="1" />
+      <node id="4212255956136868776" at="41,109,42,101" concept="4" />
+      <node id="4212255956136868782" at="42,101,43,52" concept="1" />
+      <node id="4212255956136868786" at="43,52,44,75" concept="1" />
+      <node id="4212255956136868790" at="44,75,45,75" concept="1" />
+      <node id="4212255956136868794" at="45,75,46,0" concept="5" />
+      <node id="4212255956136868795" at="46,0,47,100" concept="1" />
+      <node id="4212255956136868802" at="47,100,48,0" concept="5" />
+      <node id="4212255956136868803" at="48,0,49,52" concept="1" />
+      <node id="4212255956136868807" at="49,52,50,0" concept="5" />
+      <node id="4212255956136868808" at="50,0,51,72" concept="1" />
+      <node id="4212255956136868812" at="51,72,52,72" concept="1" />
       <node id="6183626235528683201" at="19,0,21,0" concept="6" trace="ourParamCache" />
       <node id="6183626235528683201" at="22,0,25,0" concept="0" trace="ContextAssistant_HiddenWhenNoMenu_Test#()V" />
       <node id="6183626235528683201" at="33,0,36,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="6183626235528683201" at="26,0,30,0" concept="3" trace="test_ContextAssistant_HiddenWhenNoMenu#()V" />
-      <node id="4212255956136868774" at="44,0,57,0" concept="3" trace="run#()V" />
-      <node id="4212255956136868766" at="42,27,57,13" concept="1" />
-      <node id="4212255956136868764" at="42,0,59,0" concept="3" trace="run#()V" />
-      <node id="1453235961835808726" at="40,82,59,9" concept="1" />
-      <node id="6183626235528683201" at="37,0,61,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="1453235961835808726" at="40,82,53,10" concept="1" />
+      <node id="6183626235528683201" at="37,0,55,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="6183626235528683201" at="22,51,23,25" />
       <scope id="6183626235528683201" at="27,73,28,36" />
       <scope id="6183626235528683201" at="33,52,34,19" />
@@ -675,20 +622,15 @@
         <var name="owner" id="6183626235528683201" />
       </scope>
       <scope id="6183626235528683201" at="26,0,30,0" />
-      <scope id="4212255956136868775" at="44,31,55,78">
+      <scope id="4212255956136868775" at="41,109,52,72">
         <var name="contextAssistantManager" id="4212255956136868777" />
       </scope>
-      <scope id="4212255956136868774" at="44,0,57,0" />
-      <scope id="4212255956136868765" at="42,27,57,13" />
-      <scope id="4212255956136868764" at="42,0,59,0" />
-      <scope id="6183626235528683201" at="38,51,59,9">
+      <scope id="6183626235528683201" at="38,51,53,10">
         <var name="editorContext" id="6183626235528943265" />
       </scope>
-      <scope id="6183626235528683201" at="37,0,61,0" />
-      <unit id="4212255956136868774" at="43,75,57,11" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_HiddenWhenNoMenu_Test$TestBody$1$1" />
-      <unit id="4212255956136868764" at="41,39,59,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_HiddenWhenNoMenu_Test$TestBody$1" />
-      <unit id="6183626235528683201" at="31,0,62,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_HiddenWhenNoMenu_Test$TestBody" />
-      <unit id="6183626235528683201" at="17,0,63,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_HiddenWhenNoMenu_Test" />
+      <scope id="6183626235528683201" at="37,0,55,0" />
+      <unit id="6183626235528683201" at="31,0,56,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_HiddenWhenNoMenu_Test$TestBody" />
+      <unit id="6183626235528683201" at="17,0,57,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_HiddenWhenNoMenu_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/7140355682307235744">
@@ -697,48 +639,42 @@
       <node id="7140355682307235744" at="29,90,30,36" concept="1" />
       <node id="7140355682307235744" at="35,52,36,19" concept="7" />
       <node id="7140355682307235744" at="40,51,41,53" concept="1" />
-      <node id="2035798305174378963" at="43,27,44,86" concept="4" />
-      <node id="4212255956136866688" at="46,31,47,107" concept="4" />
-      <node id="4212255956136866696" at="47,107,48,58" concept="1" />
-      <node id="4212255956136866700" at="48,58,49,81" concept="1" />
-      <node id="4212255956136947437" at="49,81,50,81" concept="1" />
-      <node id="3941176995579255287" at="58,69,59,53" concept="1" />
+      <node id="2035798305174378963" at="42,42,43,84" concept="4" />
+      <node id="4212255956136866688" at="44,76,45,103" concept="4" />
+      <node id="4212255956136866696" at="45,103,46,54" concept="1" />
+      <node id="4212255956136866700" at="46,54,47,77" concept="1" />
+      <node id="4212255956136947437" at="47,77,48,77" concept="1" />
+      <node id="3941176995579255287" at="54,69,55,53" concept="1" />
       <node id="7140355682307235744" at="21,0,23,0" concept="6" trace="ourParamCache" />
       <node id="7140355682307235744" at="24,0,27,0" concept="0" trace="ContextAssistant_HandlesExceptionsFromIsApplicable_Test#()V" />
       <node id="7140355682307235744" at="35,0,38,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="7140355682307235744" at="28,0,32,0" concept="3" trace="test_ContextAssistant_HandlesExceptionsFromIsApplicable#()V" />
-      <node id="7140355682307235744" at="57,0,61,0" concept="3" trace="populateExpectedEvents#(Ljetbrains/mps/testbench/util/CachingAppender;)V" />
-      <node id="4212255956136866686" at="46,0,52,0" concept="3" trace="run#()V" />
-      <node id="4212255956136866678" at="44,86,52,13" concept="1" />
-      <node id="4212255956136866676" at="43,0,54,0" concept="3" trace="run#()V" />
-      <node id="1453235961835797982" at="41,53,54,9" concept="1" />
-      <node id="7140355682307235744" at="39,0,56,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="7140355682307235744" at="53,0,57,0" concept="3" trace="populateExpectedEvents#(Ljetbrains/mps/testbench/util/CachingAppender;)V" />
+      <node id="4212255956136866678" at="43,84,49,11" concept="1" />
+      <node id="1453235961835797982" at="41,53,50,9" concept="1" />
+      <node id="7140355682307235744" at="39,0,52,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="7140355682307235744" at="24,68,25,25" />
       <scope id="7140355682307235744" at="29,90,30,36" />
       <scope id="7140355682307235744" at="35,52,36,19" />
-      <scope id="7140355682307235744" at="58,69,59,53" />
+      <scope id="7140355682307235744" at="54,69,55,53" />
       <scope id="7140355682307235744" at="24,0,27,0" />
       <scope id="7140355682307235744" at="35,0,38,0">
         <var name="owner" id="7140355682307235744" />
       </scope>
       <scope id="7140355682307235744" at="28,0,32,0" />
-      <scope id="4212255956136866687" at="46,31,50,81">
+      <scope id="4212255956136866687" at="44,76,48,77">
         <var name="contextAssistantManager" id="4212255956136866689" />
       </scope>
-      <scope id="7140355682307235744" at="57,0,61,0">
+      <scope id="7140355682307235744" at="53,0,57,0">
         <var name="appender" id="7140355682307235744" />
       </scope>
-      <scope id="4212255956136866686" at="46,0,52,0" />
-      <scope id="4212255956136866677" at="43,27,52,13">
+      <scope id="4212255956136866677" at="42,42,49,11">
         <var name="editorContext" id="2035798305174378964" />
       </scope>
-      <scope id="4212255956136866676" at="43,0,54,0" />
-      <scope id="7140355682307235744" at="40,51,54,9" />
-      <scope id="7140355682307235744" at="39,0,56,0" />
-      <unit id="4212255956136866686" at="45,75,52,11" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_HandlesExceptionsFromIsApplicable_Test$TestBody$1$1" />
-      <unit id="4212255956136866676" at="42,39,54,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_HandlesExceptionsFromIsApplicable_Test$TestBody$1" />
-      <unit id="7140355682307235744" at="33,0,62,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_HandlesExceptionsFromIsApplicable_Test$TestBody" />
-      <unit id="7140355682307235744" at="19,0,63,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_HandlesExceptionsFromIsApplicable_Test" />
+      <scope id="7140355682307235744" at="40,51,50,9" />
+      <scope id="7140355682307235744" at="39,0,52,0" />
+      <unit id="7140355682307235744" at="33,0,58,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_HandlesExceptionsFromIsApplicable_Test$TestBody" />
+      <unit id="7140355682307235744" at="19,0,59,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_HandlesExceptionsFromIsApplicable_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/8258544429340822272">
@@ -750,32 +686,28 @@
       <node id="4212255956137046121" at="47,68,48,115" concept="4" />
       <node id="4212255956137046130" at="48,115,49,55" concept="1" />
       <node id="4212255956137046138" at="50,85,51,64" concept="1" />
-      <node id="6347741106874052904" at="56,27,57,99" concept="1" />
-      <node id="1366816301460724302" at="59,9,60,79" concept="1" />
-      <node id="4212255956136877914" at="62,27,63,99" concept="1" />
-      <node id="4212255956137038830" at="63,99,64,115" concept="4" />
-      <node id="4212255956137038839" at="64,115,65,55" concept="1" />
-      <node id="4212255956137049847" at="66,85,67,63" concept="1" />
-      <node id="8258544429340889769" at="70,9,71,0" concept="5" />
+      <node id="6347741106874075311" at="54,9,55,131" concept="1" />
+      <node id="1366816301460724302" at="55,131,56,79" concept="1" />
+      <node id="4212255956136877914" at="57,42,58,97" concept="1" />
+      <node id="4212255956137038830" at="58,97,59,113" concept="4" />
+      <node id="4212255956137038839" at="59,113,60,53" concept="1" />
+      <node id="4212255956137049847" at="61,83,62,61" concept="1" />
+      <node id="8258544429340889769" at="64,9,65,0" concept="5" />
       <node id="8258544429340822272" at="24,0,26,0" concept="6" trace="ourParamCache" />
       <node id="8258544429340822272" at="27,0,30,0" concept="0" trace="ContextAssistant_InitiallyExpandedVisibility_Test#()V" />
       <node id="8258544429340822272" at="38,0,41,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="4212255956137046134" at="49,55,52,11" concept="2" />
-      <node id="6347741106874088512" at="56,0,59,0" concept="3" trace="run#()V" />
-      <node id="4212255956137038843" at="65,55,68,11" concept="2" />
+      <node id="4212255956137038843" at="60,53,63,9" concept="2" />
       <node id="8258544429340822272" at="31,0,35,0" concept="3" trace="test_ContextAssistant_InitiallyExpandedVisibility#()V" />
-      <node id="6347741106874075311" at="54,9,59,9" concept="1" />
       <node id="1366816301460803789" at="46,0,54,0" concept="3" trace="editorUpdated#(Ljetbrains/mps/openapi/editor/EditorComponent;)V" />
-      <node id="4212255956136877912" at="62,0,70,0" concept="3" trace="run#()V" />
+      <node id="3354869018660445975" at="56,79,64,9" concept="1" />
       <node id="1366816301460727162" at="44,52,54,9" concept="1" />
-      <node id="3354869018660445975" at="60,79,70,9" concept="1" />
-      <node id="8258544429340822272" at="42,0,73,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="8258544429340822272" at="42,0,67,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="8258544429340822272" at="27,62,28,25" />
       <scope id="8258544429340822272" at="32,84,33,36" />
       <scope id="8258544429340822272" at="38,52,39,19" />
       <scope id="4212255956137046137" at="50,85,51,64" />
-      <scope id="6347741106874088513" at="56,27,57,99" />
-      <scope id="4212255956137038846" at="66,85,67,63" />
+      <scope id="4212255956137038846" at="61,83,62,61" />
       <scope id="8258544429340822272" at="27,0,30,0" />
       <scope id="8258544429340822272" at="38,0,41,0">
         <var name="owner" id="8258544429340822272" />
@@ -783,28 +715,24 @@
       <scope id="4212255956137046134" at="49,55,52,11">
         <var name="cell" id="4212255956137046135" />
       </scope>
-      <scope id="6347741106874088512" at="56,0,59,0" />
-      <scope id="4212255956137038843" at="65,55,68,11">
+      <scope id="4212255956137038843" at="60,53,63,9">
         <var name="cell" id="4212255956137038844" />
       </scope>
       <scope id="8258544429340822272" at="31,0,35,0" />
       <scope id="1366816301460803796" at="47,68,52,11">
         <var name="componentCells" id="4212255956137046122" />
       </scope>
-      <scope id="4212255956136877913" at="62,27,68,11">
+      <scope id="4212255956136877913" at="57,42,63,9">
         <var name="componentCells" id="4212255956137038831" />
       </scope>
       <scope id="1366816301460803789" at="46,0,54,0">
         <var name="editorComponent" id="1366816301460803793" />
       </scope>
-      <scope id="4212255956136877912" at="62,0,70,0" />
-      <scope id="8258544429340822272" at="43,51,71,0" />
-      <scope id="8258544429340822272" at="42,0,73,0" />
-      <unit id="6347741106874088512" at="55,39,59,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_InitiallyExpandedVisibility_Test$TestBody$2" />
+      <scope id="8258544429340822272" at="43,51,65,0" />
+      <scope id="8258544429340822272" at="42,0,67,0" />
       <unit id="1366816301460803589" at="45,56,54,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_InitiallyExpandedVisibility_Test$TestBody$1" />
-      <unit id="4212255956136877912" at="61,39,70,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_InitiallyExpandedVisibility_Test$TestBody$3" />
-      <unit id="8258544429340822272" at="36,0,74,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_InitiallyExpandedVisibility_Test$TestBody" />
-      <unit id="8258544429340822272" at="22,0,75,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_InitiallyExpandedVisibility_Test" />
+      <unit id="8258544429340822272" at="36,0,68,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_InitiallyExpandedVisibility_Test$TestBody" />
+      <unit id="8258544429340822272" at="22,0,69,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_InitiallyExpandedVisibility_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/8865042036543828396">
@@ -814,21 +742,20 @@
       <node id="8865042036543828396" at="35,52,36,19" concept="7" />
       <node id="8865042036543828396" at="40,51,41,53" concept="1" />
       <node id="2035798305174383860" at="41,53,42,76" concept="4" />
-      <node id="4212255956136874608" at="44,27,45,129" concept="4" />
-      <node id="4212255956136874616" at="45,129,46,54" concept="1" />
-      <node id="4212255956136874620" at="46,54,47,0" concept="5" />
-      <node id="4212255956136874621" at="47,0,48,77" concept="1" />
-      <node id="4212255956136874625" at="48,77,49,0" concept="5" />
-      <node id="4212255956136874626" at="49,0,50,98" concept="4" />
-      <node id="4212255956136874633" at="50,98,51,44" concept="1" />
-      <node id="4212255956136874635" at="51,44,52,52" concept="1" />
+      <node id="4212255956136874608" at="43,42,44,127" concept="4" />
+      <node id="4212255956136874616" at="44,127,45,52" concept="1" />
+      <node id="4212255956136874620" at="45,52,46,0" concept="5" />
+      <node id="4212255956136874621" at="46,0,47,75" concept="1" />
+      <node id="4212255956136874625" at="47,75,48,0" concept="5" />
+      <node id="4212255956136874626" at="48,0,49,96" concept="4" />
+      <node id="4212255956136874633" at="49,96,50,42" concept="1" />
+      <node id="4212255956136874635" at="50,42,51,50" concept="1" />
       <node id="8865042036543828396" at="21,0,23,0" concept="6" trace="ourParamCache" />
       <node id="8865042036543828396" at="24,0,27,0" concept="0" trace="ContextAssistant_ShownWhenMenu_Test#()V" />
       <node id="8865042036543828396" at="35,0,38,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="8865042036543828396" at="28,0,32,0" concept="3" trace="test_ContextAssistant_ShownWhenMenu#()V" />
-      <node id="4212255956136874596" at="44,0,54,0" concept="3" trace="run#()V" />
-      <node id="1453235961835832989" at="42,76,54,9" concept="1" />
-      <node id="8865042036543828396" at="39,0,56,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="1453235961835832989" at="42,76,52,9" concept="1" />
+      <node id="8865042036543828396" at="39,0,54,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="8865042036543828396" at="24,48,25,25" />
       <scope id="8865042036543828396" at="29,70,30,36" />
       <scope id="8865042036543828396" at="35,52,36,19" />
@@ -837,18 +764,16 @@
         <var name="owner" id="8865042036543828396" />
       </scope>
       <scope id="8865042036543828396" at="28,0,32,0" />
-      <scope id="4212255956136874597" at="44,27,52,52">
+      <scope id="4212255956136874597" at="43,42,51,50">
         <var name="activeItems" id="4212255956136874627" />
         <var name="contextAssistantManager" id="4212255956136874609" />
       </scope>
-      <scope id="4212255956136874596" at="44,0,54,0" />
-      <scope id="8865042036543828396" at="40,51,54,9">
+      <scope id="8865042036543828396" at="40,51,52,9">
         <var name="editorContext" id="2035798305174383861" />
       </scope>
-      <scope id="8865042036543828396" at="39,0,56,0" />
-      <unit id="4212255956136874596" at="43,39,54,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ShownWhenMenu_Test$TestBody$1" />
-      <unit id="8865042036543828396" at="33,0,57,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ShownWhenMenu_Test$TestBody" />
-      <unit id="8865042036543828396" at="19,0,58,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ShownWhenMenu_Test" />
+      <scope id="8865042036543828396" at="39,0,54,0" />
+      <unit id="8865042036543828396" at="33,0,55,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ShownWhenMenu_Test$TestBody" />
+      <unit id="8865042036543828396" at="19,0,56,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ShownWhenMenu_Test" />
     </file>
   </root>
   <root nodeRef="r:5a4d10fc-2567-46c5-982f-547e9102417b(jetbrains.mps.lang.editor.menus.contextAssistant.tests@tests)/9025427969322513567">
@@ -858,21 +783,18 @@
       <node id="9025427969322513567" at="33,52,34,19" concept="7" />
       <node id="9025427969322513567" at="38,51,39,53" concept="1" />
       <node id="9025427969322513575" at="39,53,40,82" concept="4" />
-      <node id="4212255956136871742" at="44,31,45,107" concept="4" />
-      <node id="4212255956136871748" at="45,107,46,0" concept="5" />
-      <node id="4212255956136871749" at="46,0,47,106" concept="1" />
-      <node id="4212255956136871756" at="47,106,48,58" concept="1" />
-      <node id="4212255956136871760" at="48,58,49,81" concept="1" />
-      <node id="4212255956136871764" at="49,81,50,81" concept="1" />
+      <node id="4212255956136871742" at="41,109,42,101" concept="4" />
+      <node id="4212255956136871748" at="42,101,43,0" concept="5" />
+      <node id="4212255956136871749" at="43,0,44,100" concept="1" />
+      <node id="4212255956136871756" at="44,100,45,52" concept="1" />
+      <node id="4212255956136871760" at="45,52,46,75" concept="1" />
+      <node id="4212255956136871764" at="46,75,47,75" concept="1" />
       <node id="9025427969322513567" at="19,0,21,0" concept="6" trace="ourParamCache" />
       <node id="9025427969322513567" at="22,0,25,0" concept="0" trace="ContextAssistant_ShowAssistantOnSubconcept_Test#()V" />
       <node id="9025427969322513567" at="33,0,36,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="9025427969322513567" at="26,0,30,0" concept="3" trace="test_ContextAssistant_ShowAssistantOnSubconcept#()V" />
-      <node id="4212255956136871740" at="44,0,52,0" concept="3" trace="run#()V" />
-      <node id="4212255956136871732" at="42,27,52,13" concept="1" />
-      <node id="4212255956136871730" at="42,0,54,0" concept="3" trace="run#()V" />
-      <node id="1453235961835825229" at="40,82,54,9" concept="1" />
-      <node id="9025427969322513567" at="37,0,56,0" concept="3" trace="testMethodImpl#()V" />
+      <node id="1453235961835825229" at="40,82,48,10" concept="1" />
+      <node id="9025427969322513567" at="37,0,50,0" concept="3" trace="testMethodImpl#()V" />
       <scope id="9025427969322513567" at="22,60,23,25" />
       <scope id="9025427969322513567" at="27,82,28,36" />
       <scope id="9025427969322513567" at="33,52,34,19" />
@@ -881,20 +803,15 @@
         <var name="owner" id="9025427969322513567" />
       </scope>
       <scope id="9025427969322513567" at="26,0,30,0" />
-      <scope id="4212255956136871741" at="44,31,50,81">
+      <scope id="4212255956136871741" at="41,109,47,75">
         <var name="contextAssistantManager" id="4212255956136871743" />
       </scope>
-      <scope id="4212255956136871740" at="44,0,52,0" />
-      <scope id="4212255956136871731" at="42,27,52,13" />
-      <scope id="4212255956136871730" at="42,0,54,0" />
-      <scope id="9025427969322513567" at="38,51,54,9">
+      <scope id="9025427969322513567" at="38,51,48,10">
         <var name="editorContext" id="9025427969322513576" />
       </scope>
-      <scope id="9025427969322513567" at="37,0,56,0" />
-      <unit id="4212255956136871740" at="43,75,52,11" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ShowAssistantOnSubconcept_Test$TestBody$1$1" />
-      <unit id="4212255956136871730" at="41,39,54,7" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ShowAssistantOnSubconcept_Test$TestBody$1" />
-      <unit id="9025427969322513567" at="31,0,57,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ShowAssistantOnSubconcept_Test$TestBody" />
-      <unit id="9025427969322513567" at="17,0,58,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ShowAssistantOnSubconcept_Test" />
+      <scope id="9025427969322513567" at="37,0,50,0" />
+      <unit id="9025427969322513567" at="31,0,51,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ShowAssistantOnSubconcept_Test$TestBody" />
+      <unit id="9025427969322513567" at="17,0,52,0" name="jetbrains.mps.lang.editor.menus.contextAssistant.tests.ContextAssistant_ShowAssistantOnSubconcept_Test" />
     </file>
   </root>
 </debug-info>

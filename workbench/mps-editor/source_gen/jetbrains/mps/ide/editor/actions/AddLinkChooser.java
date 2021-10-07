@@ -52,11 +52,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     c.gridx = 1;
     c.gridwidth = 3;
     c.anchor = GridBagConstraints.LINE_END;
-    myEditorComponent.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        myTextField = new JTextField(SPropertyOperations.getString(myWord, PROPS.value$zQr_), 20);
-      }
-    });
+    myEditorComponent.getEditorContext().getRepository().getModelAccess().runReadAction(() -> myTextField = new JTextField(SPropertyOperations.getString(myWord, PROPS.value$zQr_), 20));
     mainPanel.add(myTextField, c);
 
     c.gridy = 1;

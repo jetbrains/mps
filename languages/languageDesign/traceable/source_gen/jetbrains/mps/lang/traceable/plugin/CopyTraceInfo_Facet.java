@@ -106,19 +106,17 @@ public class CopyTraceInfo_Facet extends IFacet.Stub {
 
                   _output_zgz0lb_a0a = Sequence.fromIterable(_output_zgz0lb_a0a).concat(Sequence.fromIterable(Sequence.<IResource>singleton(tres)));
                 }
-                FileSystem.getInstance().runWriteTransaction(new Runnable() {
-                  public void run() {
-                    ListSequence.fromList(toCreate).visitAll(new IVisitor<IFile>() {
-                      public void visit(IFile it) {
-                        it.mkdirs();
-                      }
-                    });
-                    ListSequence.fromList(toCopy).visitAll(new IVisitor<Tuples._2<IFile, IFile>>() {
-                      public void visit(Tuples._2<IFile, IFile> ftc) {
-                        IFileUtil.copyFileContent(ftc._0(), ftc._1());
-                      }
-                    });
-                  }
+                FileSystem.getInstance().runWriteTransaction(() -> {
+                  ListSequence.fromList(toCreate).visitAll(new IVisitor<IFile>() {
+                    public void visit(IFile it) {
+                      it.mkdirs();
+                    }
+                  });
+                  ListSequence.fromList(toCopy).visitAll(new IVisitor<Tuples._2<IFile, IFile>>() {
+                    public void visit(Tuples._2<IFile, IFile> ftc) {
+                      IFileUtil.copyFileContent(ftc._0(), ftc._1());
+                    }
+                  });
                 });
               } finally {
                 progressMonitor.done();

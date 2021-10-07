@@ -142,31 +142,27 @@
       <node id="4474271214083123216" at="62,96,63,98" concept="7" />
       <node id="4474271214083123226" at="64,29,65,13" concept="8" />
       <node id="5996241366561683748" at="66,5,67,0" concept="10" />
-      <node id="4474271214083123251" at="69,25,70,137" concept="2" />
+      <node id="5996241366561685379" at="67,0,68,246" concept="2" />
       <node id="418270182880363898" at="41,95,44,5" concept="5" />
       <node id="418270182880378132" at="47,57,50,7" concept="5" />
       <node id="5996241366561682974" at="54,53,57,7" concept="5" />
       <node id="4474271214083123221" at="63,98,66,5" concept="5" />
-      <node id="5996241366561713469" at="69,0,72,0" concept="6" trace="run#()V" />
       <node id="418270182880363898" at="31,0,35,0" concept="6" trace="isDumbAware#()Z" />
       <node id="418270182880363898" at="26,0,31,0" concept="1" trace="DeleteBreakpointAction_Action#()V" />
       <node id="418270182880363898" at="35,0,40,0" concept="6" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="5996241366561685379" at="67,0,72,7" concept="2" />
       <node id="418270182880378131" at="44,5,51,5" concept="0" />
       <node id="5996241366561682973" at="51,5,58,5" concept="0" />
-      <node id="418270182880363898" at="61,0,74,0" concept="6" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="418270182880363898" at="61,0,70,0" concept="6" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="418270182880363898" at="40,0,61,0" concept="6" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
       <scope id="418270182880363898" at="32,32,33,16" />
       <scope id="418270182880363898" at="42,53,43,19" />
       <scope id="418270182880378132" at="48,22,49,21" />
       <scope id="5996241366561682974" at="55,22,56,21" />
       <scope id="4474271214083123225" at="64,29,65,13" />
-      <scope id="5996241366561713470" at="69,25,70,137" />
       <scope id="418270182880378079" at="36,89,38,59">
         <var name="breakpoint" id="418270182880378081" />
       </scope>
       <scope id="418270182880363898" at="26,42,29,52" />
-      <scope id="5996241366561713469" at="69,0,72,0" />
       <scope id="418270182880363898" at="31,0,35,0" />
       <scope id="418270182880363898" at="26,0,31,0" />
       <scope id="418270182880363898" at="35,0,40,0">
@@ -179,10 +175,10 @@
       <scope id="5996241366561682973" at="52,5,57,7">
         <var name="p" id="5996241366561682973" />
       </scope>
-      <scope id="418270182880363898" at="62,96,72,7">
+      <scope id="418270182880363898" at="62,96,68,246">
         <var name="breakpoint" id="4474271214083123217" />
       </scope>
-      <scope id="418270182880363898" at="61,0,74,0">
+      <scope id="418270182880363898" at="61,0,70,0">
         <var name="_params" id="418270182880363898" />
         <var name="event" id="418270182880363898" />
       </scope>
@@ -191,8 +187,7 @@
         <var name="_params" id="418270182880363898" />
         <var name="event" id="418270182880363898" />
       </scope>
-      <unit id="5996241366561713469" at="68,114,72,5" name="jetbrains.mps.debugger.api.ui.actions.DeleteBreakpointAction_Action$1" />
-      <unit id="418270182880363898" at="22,0,75,0" name="jetbrains.mps.debugger.api.ui.actions.DeleteBreakpointAction_Action" />
+      <unit id="418270182880363898" at="22,0,71,0" name="jetbrains.mps.debugger.api.ui.actions.DeleteBreakpointAction_Action" />
     </file>
     <file name="Runtime_ApplicationPlugin.java">
       <node id="418270182880363898" at="27,29,28,51" concept="2" />
@@ -376,39 +371,38 @@
       <node id="7064627997011532324" at="73,96,74,91" concept="7" />
       <node id="2666603886872191706" at="75,37,76,103" concept="7" />
       <node id="4789587624734726843" at="77,86,78,139" concept="7" />
-      <node id="2034046503361593572" at="83,51,84,54" concept="8" />
-      <node id="2034046503361593579" at="87,54,88,46" concept="8" />
-      <node id="7064627997011532331" at="94,7,95,123" concept="2" />
+      <node id="2034046503361593572" at="82,49,83,52" concept="8" />
+      <node id="2034046503361593579" at="86,52,87,44" concept="8" />
+      <node id="7064627997011532331" at="92,7,93,123" concept="2" />
       <node id="7064627997011532320" at="52,95,55,5" concept="5" />
       <node id="5069373260571725651" at="58,56,61,7" concept="5" />
       <node id="4789587624734686749" at="64,90,67,7" concept="5" />
-      <node id="2034046503361593570" at="83,0,86,0" concept="6" trace="iterable#()Ljava/lang/Iterable;" />
-      <node id="2034046503361593577" at="87,0,90,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/smodel/SNodePointer;" />
+      <node id="2034046503361593570" at="82,0,85,0" concept="6" trace="iterable#()Ljava/lang/Iterable;" />
+      <node id="2034046503361593577" at="86,0,89,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/smodel/SNodePointer;" />
       <node id="7064627997011532320" at="42,0,46,0" concept="6" trace="isDumbAware#()Z" />
       <node id="7064627997011532320" at="37,0,42,0" concept="1" trace="EvaluateExpression_Action#()V" />
       <node id="7064627997011532320" at="46,0,51,0" concept="6" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <node id="5069373260571725650" at="55,5,62,5" concept="0" />
       <node id="4789587624734686749" at="62,5,69,5" concept="0" />
-      <node id="2034046503361593562" at="81,31,90,18" concept="2" />
-      <node id="2034046503361593560" at="81,0,92,0" concept="6" trace="run#()V" />
-      <node id="2034046503361593556" at="79,273,92,13" concept="2" />
-      <node id="4336756357323848017" at="78,139,93,9" concept="5" />
-      <node id="4789587624734695235" at="76,103,94,7" concept="5" />
+      <node id="2034046503361593562" at="80,110,89,16" concept="2" />
+      <node id="2034046503361593556" at="79,273,90,13" concept="2" />
+      <node id="4336756357323848017" at="78,139,91,9" concept="5" />
+      <node id="4789587624734695235" at="76,103,92,7" concept="5" />
+      <node id="7064627997011532329" at="74,91,94,5" concept="5" />
       <node id="7064627997011532320" at="51,0,72,0" concept="6" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="7064627997011532329" at="74,91,96,5" concept="5" />
-      <node id="7064627997011532320" at="72,0,98,0" concept="6" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="7064627997011532320" at="72,0,96,0" concept="6" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
       <scope id="7064627997011532320" at="43,32,44,16" />
       <scope id="7064627997011532320" at="53,53,54,19" />
       <scope id="5069373260571725651" at="59,22,60,21" />
       <scope id="4789587624734686749" at="65,67,66,31" />
-      <scope id="2034046503361593571" at="83,51,84,54" />
-      <scope id="2034046503361593578" at="87,54,88,46" />
+      <scope id="2034046503361593571" at="82,49,83,52" />
+      <scope id="2034046503361593578" at="86,52,87,44" />
       <scope id="7064627997011532342" at="47,89,49,103">
         <var name="evaluationProvider" id="7064627997011532344" />
       </scope>
       <scope id="7064627997011532320" at="37,38,40,40" />
-      <scope id="2034046503361593570" at="83,0,86,0" />
-      <scope id="2034046503361593577" at="87,0,90,0">
+      <scope id="2034046503361593570" at="82,0,85,0" />
+      <scope id="2034046503361593577" at="86,0,89,0">
         <var name="it" id="2034046503361593577" />
       </scope>
       <scope id="7064627997011532320" at="42,0,46,0" />
@@ -423,31 +417,29 @@
       <scope id="4789587624734686749" at="63,5,68,69">
         <var name="editorComponent" id="4789587624734686749" />
       </scope>
-      <scope id="2034046503361593561" at="81,31,90,18" />
-      <scope id="2034046503361593560" at="81,0,92,0" />
-      <scope id="4336756357323848018" at="79,273,92,13" />
-      <scope id="4789587624734695236" at="77,86,93,9">
+      <scope id="2034046503361593561" at="80,110,89,16" />
+      <scope id="4336756357323848018" at="79,273,90,13" />
+      <scope id="4789587624734695236" at="77,86,91,9">
         <var name="selection" id="4789587624734726844" />
       </scope>
       <scope id="7064627997011532320" at="52,95,70,16" />
-      <scope id="7064627997011532330" at="75,37,95,123">
+      <scope id="7064627997011532330" at="75,37,93,123">
         <var name="nodePointers" id="2666603886872191707" />
       </scope>
       <scope id="7064627997011532320" at="51,0,72,0">
         <var name="_params" id="7064627997011532320" />
         <var name="event" id="7064627997011532320" />
       </scope>
-      <scope id="7064627997011532320" at="73,96,96,5">
+      <scope id="7064627997011532320" at="73,96,94,5">
         <var name="evaluationProvider" id="7064627997011532325" />
       </scope>
-      <scope id="7064627997011532320" at="72,0,98,0">
+      <scope id="7064627997011532320" at="72,0,96,0">
         <var name="_params" id="7064627997011532320" />
         <var name="event" id="7064627997011532320" />
       </scope>
-      <unit id="2034046503361593570" at="82,109,86,15" name="jetbrains.mps.debugger.api.ui.actions.EvaluateExpression_Action$1$1" />
-      <unit id="2034046503361593577" at="86,29,90,15" name="jetbrains.mps.debugger.api.ui.actions.EvaluateExpression_Action$1$2" />
-      <unit id="2034046503361593560" at="80,107,92,11" name="jetbrains.mps.debugger.api.ui.actions.EvaluateExpression_Action$1" />
-      <unit id="7064627997011532320" at="33,0,99,0" name="jetbrains.mps.debugger.api.ui.actions.EvaluateExpression_Action" />
+      <unit id="2034046503361593570" at="81,107,85,13" name="jetbrains.mps.debugger.api.ui.actions.EvaluateExpression_Action$1" />
+      <unit id="2034046503361593577" at="85,27,89,13" name="jetbrains.mps.debugger.api.ui.actions.EvaluateExpression_Action$2" />
+      <unit id="7064627997011532320" at="33,0,97,0" name="jetbrains.mps.debugger.api.ui.actions.EvaluateExpression_Action" />
     </file>
     <file name="Runtime_ApplicationPlugin.java">
       <node id="7064627997011532320" at="28,51,29,47" concept="2" />

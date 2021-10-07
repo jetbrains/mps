@@ -53,11 +53,7 @@ public class ReloadAll_Action extends BaseAction {
       public void run(@NotNull final ProgressIndicator indicator) {
         jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(((Project) MapSequence.fromMap(_params).get("project")));
         assert mpsProject != null;
-        mpsProject.getModelAccess().runWriteAction(new Runnable() {
-          public void run() {
-            ClassLoaderManager.getInstance().reloadAll(new ProgressMonitorAdapter(indicator));
-          }
-        });
+        mpsProject.getModelAccess().runWriteAction(() -> ClassLoaderManager.getInstance().reloadAll(new ProgressMonitorAdapter(indicator)));
       }
     });
   }

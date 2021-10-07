@@ -78,16 +78,14 @@ public class DefaultRefactoringUI implements RefactoringUI {
     ProgressManager.getInstance().run(new Task.Modal(myProject, "Refactoring", true) {
       public void run(@NotNull final ProgressIndicator progressIndicator) {
         progressIndicator.setIndeterminate(false);
-        DefaultRefactoringUI.this.myRepository.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            ProgressMonitorAdapter progressMonitor = new ProgressMonitorAdapter(progressIndicator);
-            try {
-              task.invoke(progressMonitor);
-            } catch (RuntimeException e) {
-              progressMonitor.cancel();
-              if (LOG.isEnabledFor(Level.ERROR)) {
-                LOG.error("Exception during usages search", e);
-              }
+        DefaultRefactoringUI.this.myRepository.getModelAccess().runReadAction(() -> {
+          ProgressMonitorAdapter progressMonitor = new ProgressMonitorAdapter(progressIndicator);
+          try {
+            task.invoke(progressMonitor);
+          } catch (RuntimeException e) {
+            progressMonitor.cancel();
+            if (LOG.isEnabledFor(Level.ERROR)) {
+              LOG.error("Exception during usages search", e);
             }
           }
         });
@@ -112,11 +110,7 @@ public class DefaultRefactoringUI implements RefactoringUI {
           refactoringViewItem.close();
         }
       }
-    }, new Runnable() {
-      public void run() {
-        usagesModelTracker.dispose();
-      }
-    }, searchResults, new SearchTask() {
+    }, () -> usagesModelTracker.dispose(), searchResults, new SearchTask() {
       public boolean canExecute() {
         return rerunTask.canExecute();
       }

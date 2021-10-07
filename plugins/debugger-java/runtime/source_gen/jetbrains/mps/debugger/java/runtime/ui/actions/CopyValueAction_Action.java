@@ -16,7 +16,6 @@ import jetbrains.mps.debugger.api.ui.DebugActionsUtil;
 import jetbrains.mps.debug.api.AbstractUiState;
 import jetbrains.mps.debugger.java.api.state.JavaUiState;
 import com.sun.jdi.ThreadReference;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationUtils;
 import jetbrains.mps.ide.datatransfer.CopyPasteUtil;
 import jetbrains.mps.debug.api.AbstractDebugSession;
@@ -58,11 +57,7 @@ public class CopyValueAction_Action extends BaseAction {
       return;
     }
 
-    String result = javaUiState.invokeEvaluationSynchronously(new _FunctionTypes._return_P0_E0<String>() {
-      public String invoke() {
-        return EvaluationUtils.getInstance().getStringPresentation(((JavaValue) value).getValue().getJDIValue(), thread);
-      }
-    });
+    String result = javaUiState.invokeEvaluationSynchronously(() -> EvaluationUtils.getInstance().getStringPresentation(((JavaValue) value).getValue().getJDIValue(), thread));
     if ((result != null && result.length() > 0)) {
       CopyPasteUtil.copyTextToClipboard(result);
     }

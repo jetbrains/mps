@@ -75,18 +75,16 @@ public class ShowNodeType_Action extends BaseAction {
     final Wrappers._T<SNode> type = new Wrappers._T<SNode>();
     final Wrappers._T<String> dialogTitle = new Wrappers._T<String>();
 
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        TypecheckingFacade tf = TypecheckingFacade.getFromContext();
-        type.value = tf.getTypeOf(((SNode) MapSequence.fromMap(_params).get("node")));
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(() -> {
+      TypecheckingFacade tf = TypecheckingFacade.getFromContext();
+      type.value = tf.getTypeOf(((SNode) MapSequence.fromMap(_params).get("node")));
 
-        // TODO errors reported while computing type
-        if (error.value == null && TypesUtil.hasVariablesInside(type.value)) {
-          error.value = new SimpleErrorReporter(((SNode) MapSequence.fromMap(_params).get("node")), "Type was not fully instantiated", null);
-        }
-
-        dialogTitle.value = String.format("Type Explorer [%s]", ((SNode) MapSequence.fromMap(_params).get("node")));
+      // TODO errors reported while computing type
+      if (error.value == null && TypesUtil.hasVariablesInside(type.value)) {
+        error.value = new SimpleErrorReporter(((SNode) MapSequence.fromMap(_params).get("node")), "Type was not fully instantiated", null);
       }
+
+      dialogTitle.value = String.format("Type Explorer [%s]", ((SNode) MapSequence.fromMap(_params).get("node")));
     });
 
     if (type.value == null) {
@@ -99,25 +97,21 @@ public class ShowNodeType_Action extends BaseAction {
 
     try {
 
-      ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().executeUndoTransparentCommand(new Runnable() {
-        public void run() {
-          tmpModel.value = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.forDefaultModule());
-          tmpModel.value.addRootNode(type.value);
-          TemporaryModels.getInstance().addMissingImports(tmpModel.value);
-        }
+      ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().executeUndoTransparentCommand(() -> {
+        tmpModel.value = TemporaryModels.getInstance().createReadOnly(TempModuleOptions.forDefaultModule());
+        tmpModel.value.addRootNode(type.value);
+        TemporaryModels.getInstance().addMissingImports(tmpModel.value);
       });
 
       new MyBaseNodeDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), dialogTitle.value, type.value, error.value).show();
 
     } finally {
-      ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().executeUndoTransparentCommand(new Runnable() {
-        public void run() {
-          // XXX what's the need to remove type node from the model we dispose anyway?
-          // YYY maybe b/c the type object can be referenced elsewhere and we don't want to break that code
-          // YYY that's the price one pays for having "free floating" nodes as part of the design
-          tmpModel.value.removeRootNode(type.value);
-          TemporaryModels.getInstance().dispose(tmpModel.value);
-        }
+      ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().executeUndoTransparentCommand(() -> {
+        // XXX what's the need to remove type node from the model we dispose anyway?
+        // YYY maybe b/c the type object can be referenced elsewhere and we don't want to break that code
+        // YYY that's the price one pays for having "free floating" nodes as part of the design
+        tmpModel.value.removeRootNode(type.value);
+        TemporaryModels.getInstance().dispose(tmpModel.value);
       });
     }
   }

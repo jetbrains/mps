@@ -34,12 +34,10 @@ public class SimpleRedoTest_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("1205677679168513017", "1205677679168513023");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-          invokeAction("$Undo");
-          invokeAction("$Redo");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+        invokeAction("$Undo");
+        invokeAction("$Redo");
       }, false);
     }
   }

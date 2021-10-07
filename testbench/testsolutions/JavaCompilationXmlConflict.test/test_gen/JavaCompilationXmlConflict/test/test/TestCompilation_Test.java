@@ -25,13 +25,11 @@ public class TestCompilation_Test extends EnvironmentAwareTestCase {
   public void test_compileSolution() throws Exception {
     final Project project = myEnvironment.openProject(new File(PROJECT_PATH));
     final ModuleMaker maker = new ModuleMaker(new ErrorsLoggingHandler(LogManager.getLogger(TestCompilation_Test.class)));
-    project.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        List<SModule> projectModules = project.getProjectModules();
-        Assume.assumeFalse(projectModules.isEmpty());
-        maker.clean(new HashSet<SModule>(projectModules), new EmptyProgressMonitor());
-        maker.prepare(projectModules, true, new EmptyProgressMonitor());
-      }
+    project.getModelAccess().runReadAction(() -> {
+      List<SModule> projectModules = project.getProjectModules();
+      Assume.assumeFalse(projectModules.isEmpty());
+      maker.clean(new HashSet<SModule>(projectModules), new EmptyProgressMonitor());
+      maker.prepare(projectModules, true, new EmptyProgressMonitor());
     });
 
     MPSCompilationResult result = maker.make(new EmptyProgressMonitor());

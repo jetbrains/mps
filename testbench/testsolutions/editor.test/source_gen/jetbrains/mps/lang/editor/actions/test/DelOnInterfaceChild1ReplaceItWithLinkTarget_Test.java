@@ -34,11 +34,7 @@ public class DelOnInterfaceChild1ReplaceItWithLinkTarget_Test extends BaseTransf
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("2943053183528016306", "2943053183528016314");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action"), false);
     }
   }
 }

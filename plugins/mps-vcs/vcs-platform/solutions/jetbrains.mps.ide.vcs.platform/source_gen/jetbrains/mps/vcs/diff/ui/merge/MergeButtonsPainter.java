@@ -9,11 +9,11 @@ import jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout;
 import jetbrains.mps.vcs.diff.ui.common.FoldingAreaButton;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroup;
 import jetbrains.mps.ide.icons.IdeIcons;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vcs.diff.merge.MergeSession;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import java.util.Arrays;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import javax.swing.Icon;
 
 @GeneratedClass(node = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)/708166622413811400", model = "r:351fe3d9-2ce5-4ea0-8afc-9b076259a949(jetbrains.mps.vcs.diff.ui.merge)")
@@ -27,16 +27,8 @@ public class MergeButtonsPainter extends ButtonsPainter {
   protected Iterable<FoldingAreaButton> createButtonsForChangeGroup(ChangeGroup changeGroup, int y) {
     int applyX = (isHighlightLeft() ? getX(0) : getX(1));
     int excludeX = (isHighlightLeft() ? getX(1) : getX(0));
-    FoldingAreaButton apply = new MyButton(changeGroup, applyX, y, "Apply", (isHighlightLeft() ? IdeIcons.APPLY_RIGHT : IdeIcons.APPLY), new _FunctionTypes._void_P2_E0<MergeSession, Iterable<ModelChange>>() {
-      public void invoke(MergeSession session, Iterable<ModelChange> changes) {
-        session.applyChanges(changes);
-      }
-    });
-    FoldingAreaButton exclude = new MyButton(changeGroup, excludeX, y, "Exclude", IdeIcons.EXCLUDE, new _FunctionTypes._void_P2_E0<MergeSession, Iterable<ModelChange>>() {
-      public void invoke(MergeSession session, Iterable<ModelChange> changes) {
-        session.excludeChanges(changes);
-      }
-    });
+    FoldingAreaButton apply = new MyButton(changeGroup, applyX, y, "Apply", (isHighlightLeft() ? IdeIcons.APPLY_RIGHT : IdeIcons.APPLY), (MergeSession session, Iterable<ModelChange> changes) -> session.applyChanges(changes));
+    FoldingAreaButton exclude = new MyButton(changeGroup, excludeX, y, "Exclude", IdeIcons.EXCLUDE, (MergeSession session, Iterable<ModelChange> changes) -> session.excludeChanges(changes));
     return Arrays.asList(apply, exclude);
   }
   public static MergeButtonsPainter addTo(MergeRootsPane pane, DiffEditor diffEditor, ChangeGroupLayout changeGroupLayout, boolean inspector) {
@@ -53,11 +45,9 @@ public class MergeButtonsPainter extends ButtonsPainter {
     }
     @Override
     public void performAction() {
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(new Runnable() {
-        public void run() {
-          myAction.invoke(myPane.getMergeSession(), getChangeGroup().getChanges());
-          myPane.rehighlight();
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(() -> {
+        myAction.invoke(myPane.getMergeSession(), getChangeGroup().getChanges());
+        myPane.rehighlight();
       });
     }
   }

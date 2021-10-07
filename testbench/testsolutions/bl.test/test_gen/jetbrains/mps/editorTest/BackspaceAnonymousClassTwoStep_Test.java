@@ -36,12 +36,10 @@ public class BackspaceAnonymousClassTwoStep_Test extends BaseTransformationTest 
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("7408085835052176364", "7408085835052176372");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-          Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode(), "class_body"));
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+        Assert.assertTrue(DeletionApproverUtil.isApprovedForDeletion(getEditorComponent().getEditorContext(), getEditorComponent().getSelectedNode(), "class_body"));
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
       }, true);
 
     }

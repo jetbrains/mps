@@ -80,11 +80,7 @@ public class MergeBackupUtil {
     int index = 0;
     for (final ModelVersion v : versions) {
       File file;
-      File[] files = tmpdir.listFiles(new FilenameFilter() {
-        public boolean accept(File dir, String name) {
-          return name.endsWith(MPSExtentions.DOT_MODEL + "." + v.getSuffix());
-        }
-      });
+      File[] files = tmpdir.listFiles((File dir, String name) -> name.endsWith(MPSExtentions.DOT_MODEL + "." + v.getSuffix()));
       if (files == null || files.length != 1) {
         if (LOG.isEnabledFor(Level.ERROR)) {
           LOG.error("Wrong zip contents");
@@ -118,11 +114,7 @@ public class MergeBackupUtil {
     return MergeDriverBackupUtil.chooseZipFileForModelLongName(defaultFileName, null);
   }
   public static Iterable<File> findZipFilesForModelFile(final String modelFileName) {
-    File[] files = new File(MergeBackupUtil.getMergeBackupDirPath()).listFiles(new FilenameFilter() {
-      public boolean accept(File dir, String name) {
-        return name.contains(modelFileName) && name.endsWith(".zip");
-      }
-    });
+    File[] files = new File(MergeBackupUtil.getMergeBackupDirPath()).listFiles((File dir, String name) -> name.contains(modelFileName) && name.endsWith(".zip"));
     return Sequence.fromIterable(Sequence.fromArray(files)).sort(new ISelector<File, String>() {
       public String select(File f) {
         return f.getName();

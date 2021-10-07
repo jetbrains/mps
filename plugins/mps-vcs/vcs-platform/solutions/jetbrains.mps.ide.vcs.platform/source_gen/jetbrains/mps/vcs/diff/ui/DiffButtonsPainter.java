@@ -68,11 +68,9 @@ public class DiffButtonsPainter extends ButtonsPainter {
     }
     @Override
     public void performAction() {
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(new Runnable() {
-        public void run() {
-          ModelChange.rollbackChanges(getChangeGroup().getChanges());
-          myDiffPane.rehighlight(true);
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommand(() -> {
+        ModelChange.rollbackChanges(getChangeGroup().getChanges());
+        myDiffPane.rehighlight(true);
       });
     }
   }

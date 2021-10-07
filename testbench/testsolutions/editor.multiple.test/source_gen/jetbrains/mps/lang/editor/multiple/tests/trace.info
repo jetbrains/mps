@@ -244,40 +244,32 @@
       <node id="2112659629360604435" at="42,89,43,67" concept="3" />
       <node id="8315441706324361651" at="43,67,44,123" concept="1" />
       <node id="2112659629360607754" at="44,123,45,155" concept="1" />
-      <node id="2112659629360663174" at="49,31,50,47" concept="1" />
-      <node id="2112659629360668203" at="52,13,53,53" concept="1" />
-      <node id="8961638890955733428" at="55,9,56,56" concept="1" />
-      <node id="8315441706324361630" at="56,56,57,123" concept="1" />
+      <node id="2112659629360707143" at="46,42,47,124" concept="1" />
+      <node id="2112659629360668203" at="47,124,48,51" concept="1" />
+      <node id="8961638890955733428" at="49,9,50,56" concept="1" />
+      <node id="8315441706324361630" at="50,56,51,123" concept="1" />
       <node id="2112659629360604431" at="20,0,22,0" concept="5" trace="ourParamCache" />
       <node id="2112659629360604431" at="23,0,26,0" concept="0" trace="InspectorOfCompactPresentation_pushHints_Test#()V" />
       <node id="2112659629360604431" at="34,0,37,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
-      <node id="2112659629360713217" at="49,0,52,0" concept="2" trace="run#()V" />
       <node id="2112659629360604431" at="27,0,31,0" concept="2" trace="test_InspectorOfCompactPresentation_pushHints#()V" />
-      <node id="2112659629360707143" at="47,27,52,13" concept="1" />
-      <node id="8041297453111221043" at="47,0,55,0" concept="2" trace="run#()V" />
-      <node id="8041297453111219303" at="45,155,55,9" concept="1" />
-      <node id="2112659629360604431" at="38,0,59,0" concept="2" trace="testMethodImpl#()V" />
+      <node id="8041297453111219303" at="45,155,49,9" concept="1" />
+      <node id="2112659629360604431" at="38,0,53,0" concept="2" trace="testMethodImpl#()V" />
       <scope id="2112659629360604431" at="23,58,24,25" />
       <scope id="2112659629360604431" at="28,80,29,36" />
       <scope id="2112659629360604431" at="34,52,35,19" />
-      <scope id="2112659629360713218" at="49,31,50,47" />
+      <scope id="8041297453111221044" at="46,42,48,51" />
       <scope id="2112659629360604431" at="23,0,26,0" />
       <scope id="2112659629360604431" at="34,0,37,0">
         <var name="owner" id="2112659629360604431" />
       </scope>
-      <scope id="2112659629360713217" at="49,0,52,0" />
       <scope id="2112659629360604431" at="27,0,31,0" />
-      <scope id="8041297453111221044" at="47,27,53,53" />
-      <scope id="8041297453111221043" at="47,0,55,0" />
-      <scope id="2112659629360604431" at="39,51,57,123">
+      <scope id="2112659629360604431" at="39,51,51,123">
         <var name="component" id="2112659629360607302" />
         <var name="rootCell" id="2112659629360604436" />
       </scope>
-      <scope id="2112659629360604431" at="38,0,59,0" />
-      <unit id="2112659629360713217" at="48,90,52,11" name="jetbrains.mps.lang.editor.multiple.tests.InspectorOfCompactPresentation_pushHints_Test$TestBody$1$1" />
-      <unit id="8041297453111221043" at="46,39,55,7" name="jetbrains.mps.lang.editor.multiple.tests.InspectorOfCompactPresentation_pushHints_Test$TestBody$1" />
-      <unit id="2112659629360604431" at="32,0,60,0" name="jetbrains.mps.lang.editor.multiple.tests.InspectorOfCompactPresentation_pushHints_Test$TestBody" />
-      <unit id="2112659629360604431" at="18,0,61,0" name="jetbrains.mps.lang.editor.multiple.tests.InspectorOfCompactPresentation_pushHints_Test" />
+      <scope id="2112659629360604431" at="38,0,53,0" />
+      <unit id="2112659629360604431" at="32,0,54,0" name="jetbrains.mps.lang.editor.multiple.tests.InspectorOfCompactPresentation_pushHints_Test$TestBody" />
+      <unit id="2112659629360604431" at="18,0,55,0" name="jetbrains.mps.lang.editor.multiple.tests.InspectorOfCompactPresentation_pushHints_Test" />
     </file>
   </root>
   <root nodeRef="r:dbab6746-af91-4594-857e-d38a36667e17(jetbrains.mps.lang.editor.multiple.tests)/2601164129533059968">

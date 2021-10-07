@@ -97,58 +97,56 @@ public class Binaries_Facet extends IFacet.Stub {
                 // XXX there seems to be no need to depend from Generate task now?
                 final SRepository repository = monitor.getSession().getProject().getRepository();
                 final Wrappers._boolean fail = new Wrappers._boolean(false);
-                repository.getModelAccess().runReadAction(new Runnable() {
-                  public void run() {
-                    Iterable<SModel> models = Sequence.fromIterable(input).translate(new ITranslator2<MResource, SModel>() {
-                      public Iterable<SModel> translate(MResource res) {
-                        return Sequence.fromIterable(res.models()).ofType(SModel.class).where(new IWhereFilter<SModel>() {
-                          public boolean accept(SModel it) {
-                            return SModelOperations.getOutputLocation(it) != null;
-                          }
-                        });
-                      }
-                    });
-
-                    for (SModel model : Sequence.fromIterable(models)) {
-                      final IFile outputDir = Target_make.vars(pa.global()).alternateOutput().invoke(SModelOperations.getOutputLocation(model));
-                      Iterable<Tuples._2<IFile, byte[]>> generatedBinaryFiles;
-                      try {
-                        generatedBinaryFiles = ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.nodes(model, CONCEPTS.Resource$gs)).translate(new ITranslator2<SNode, Tuples._2<IFile, byte[]>>() {
-                          public Iterable<Tuples._2<IFile, byte[]>> translate(SNode it) {
-                            return (List<Tuples._2<IFile, byte[]>>) Resource__BehaviorDescriptor.generate_id7Mb2akaesv8.invoke(it, outputDir);
-                          }
-                        }).where(new NotNullWhereFilter<Tuples._2<IFile, byte[]>>());
-                      } catch (ResourceGenerationException rge) {
-                        monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(rge.getMessage())));
-                        if (LOG.isEnabledFor(Level.ERROR)) {
-                          LOG.error("", rge);
-                        }
-                        fail.value = true;
-                        break;
-                      }
-                      if (Sequence.fromIterable(generatedBinaryFiles).isEmpty()) {
-                        continue;
-                      }
-
-                      final FileDeltaCollector fdc = new FileDeltaCollector(new FilesDelta(new DeltaKey(model.getModule(), model)), outputDir, fp);
-                      Sequence.fromIterable(generatedBinaryFiles).visitAll(new IVisitor<Tuples._2<IFile, byte[]>>() {
-                        public void visit(Tuples._2<IFile, byte[]> d) {
-                          if (d._1() != null) {
-                            fdc.saveStream(d._0(), d._1());
-                          }
+                repository.getModelAccess().runReadAction(() -> {
+                  Iterable<SModel> models = Sequence.fromIterable(input).translate(new ITranslator2<MResource, SModel>() {
+                    public Iterable<SModel> translate(MResource res) {
+                      return Sequence.fromIterable(res.models()).ofType(SModel.class).where(new IWhereFilter<SModel>() {
+                        public boolean accept(SModel it) {
+                          return SModelOperations.getOutputLocation(it) != null;
                         }
                       });
-                      if (!(monitor.getSession().isCleanMake())) {
-                        // though StaleFilesCollector is discouraged, we need to delete old resource files, therefore we have to use it here unless we move Resource processing into textgen aspect
-                        // In case of 'clean' session, it's TextGen facet that collects (and reports as stale) all files under output dir.
-                        // For an ordinary build (clean == false), I leave this code as I suppose it may report outdated (aka stale) resource files.
-                        // Java files, or anything coming from TextGen facet, are handled by files recorded in 'generated'.
-                        // I hope to refactor the whole Make process to keep content creation logic separate from delta authoring, so that we won't need to 
-                        // deal with stale 'Resource' artifacts here explicitly, but until then, have to keep ordinary build and renamed resource file scenario in mind
-                        new StaleFilesCollector(outputDir).updateDelta(fdc.getDelta());
-                      }
-                      ListSequence.fromList(deltaList).addElement(fdc.getDelta());
                     }
+                  });
+
+                  for (SModel model : Sequence.fromIterable(models)) {
+                    final IFile outputDir = Target_make.vars(pa.global()).alternateOutput().invoke(SModelOperations.getOutputLocation(model));
+                    Iterable<Tuples._2<IFile, byte[]>> generatedBinaryFiles;
+                    try {
+                      generatedBinaryFiles = ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.nodes(model, CONCEPTS.Resource$gs)).translate(new ITranslator2<SNode, Tuples._2<IFile, byte[]>>() {
+                        public Iterable<Tuples._2<IFile, byte[]>> translate(SNode it) {
+                          return (List<Tuples._2<IFile, byte[]>>) Resource__BehaviorDescriptor.generate_id7Mb2akaesv8.invoke(it, outputDir);
+                        }
+                      }).where(new NotNullWhereFilter<Tuples._2<IFile, byte[]>>());
+                    } catch (ResourceGenerationException rge) {
+                      monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(rge.getMessage())));
+                      if (LOG.isEnabledFor(Level.ERROR)) {
+                        LOG.error("", rge);
+                      }
+                      fail.value = true;
+                      break;
+                    }
+                    if (Sequence.fromIterable(generatedBinaryFiles).isEmpty()) {
+                      continue;
+                    }
+
+                    final FileDeltaCollector fdc = new FileDeltaCollector(new FilesDelta(new DeltaKey(model.getModule(), model)), outputDir, fp);
+                    Sequence.fromIterable(generatedBinaryFiles).visitAll(new IVisitor<Tuples._2<IFile, byte[]>>() {
+                      public void visit(Tuples._2<IFile, byte[]> d) {
+                        if (d._1() != null) {
+                          fdc.saveStream(d._0(), d._1());
+                        }
+                      }
+                    });
+                    if (!(monitor.getSession().isCleanMake())) {
+                      // though StaleFilesCollector is discouraged, we need to delete old resource files, therefore we have to use it here unless we move Resource processing into textgen aspect
+                      // In case of 'clean' session, it's TextGen facet that collects (and reports as stale) all files under output dir.
+                      // For an ordinary build (clean == false), I leave this code as I suppose it may report outdated (aka stale) resource files.
+                      // Java files, or anything coming from TextGen facet, are handled by files recorded in 'generated'.
+                      // I hope to refactor the whole Make process to keep content creation logic separate from delta authoring, so that we won't need to 
+                      // deal with stale 'Resource' artifacts here explicitly, but until then, have to keep ordinary build and renamed resource file scenario in mind
+                      new StaleFilesCollector(outputDir).updateDelta(fdc.getDelta());
+                    }
+                    ListSequence.fromList(deltaList).addElement(fdc.getDelta());
                   }
                 });
                 if (fail.value) {
@@ -160,11 +158,7 @@ public class Binaries_Facet extends IFacet.Stub {
                 progressMonitor.advance(1);
                 progressMonitor.step("Copying content");
 
-                FileSystem.getInstance().runWriteTransaction(new Runnable() {
-                  public void run() {
-                    fp.flushChanges();
-                  }
-                });
+                FileSystem.getInstance().runWriteTransaction(() -> fp.flushChanges());
               } finally {
                 progressMonitor.done();
               }

@@ -80,37 +80,35 @@ public class ImportAllModulesFromFolder_Action extends BaseAction {
 
     final IFile dir = mpsProject.getFileSystem().fromVirtualFile(chosenDir);
     ModelAccess modelAccess = mpsProject.getRepository().getModelAccess();
-    modelAccess.executeCommandInEDT(new Runnable() {
-      public void run() {
-        Collection<ModulesMiner.ModuleHandle> modules = new ModulesMiner(mpsProject.getPlatform()).collectModules(dir).getCollectedModules();
-        VisibleModules visible = new VisibleModules(((SNode) MapSequence.fromMap(_params).get("node")));
-        visible.collect();
+    modelAccess.executeCommandInEDT(() -> {
+      Collection<ModulesMiner.ModuleHandle> modules = new ModulesMiner(mpsProject.getPlatform()).collectModules(dir).getCollectedModules();
+      VisibleModules visible = new VisibleModules(((SNode) MapSequence.fromMap(_params).get("node")));
+      visible.collect();
 
-        List<ImportModuleHelper> helpers = new ArrayList<ImportModuleHelper>();
-        final PathConverter pathConverter = new PathConverter(((SNode) MapSequence.fromMap(_params).get("node")));
+      List<ImportModuleHelper> helpers = new ArrayList<ImportModuleHelper>();
+      final PathConverter pathConverter = new PathConverter(((SNode) MapSequence.fromMap(_params).get("node")));
 
-        DefaultMessageHandler msgHandler = new DefaultMessageHandler(mpsProject.getProject());
+      DefaultMessageHandler msgHandler = new DefaultMessageHandler(mpsProject.getProject());
 
-        for (ModulesMiner.ModuleHandle handle : modules) {
-          SModuleReference modRef = handle.getDescriptor().getModuleReference();
-          if (visible.resolve(modRef) != null) {
-            continue;
-          }
-
-          try {
-            SNode modulePath = ListSequence.fromList(pathConverter.convertPath(handle.getFile().getPath())).first();
-            ImportModuleHelper helper = new ImportModuleHelper(((SNode) MapSequence.fromMap(_params).get("node")), modulePath, handle.getDescriptor());
-            helper.create();
-            helpers.add(helper);
-          } catch (PathConverter.PathConvertException ex) {
-            msgHandler.handle(Message.createMessage(MessageKind.ERROR, ImportModuleHelper.class.getName(), ex.getMessage(), ex));
-          }
+      for (ModulesMiner.ModuleHandle handle : modules) {
+        SModuleReference modRef = handle.getDescriptor().getModuleReference();
+        if (visible.resolve(modRef) != null) {
+          continue;
         }
 
-        ModuleLoader ml = new ModuleLoader(((SNode) MapSequence.fromMap(_params).get("node")), null, msgHandler);
-        for (ImportModuleHelper helper : helpers) {
-          helper.update(ml);
+        try {
+          SNode modulePath = ListSequence.fromList(pathConverter.convertPath(handle.getFile().getPath())).first();
+          ImportModuleHelper helper = new ImportModuleHelper(((SNode) MapSequence.fromMap(_params).get("node")), modulePath, handle.getDescriptor());
+          helper.create();
+          helpers.add(helper);
+        } catch (PathConverter.PathConvertException ex) {
+          msgHandler.handle(Message.createMessage(MessageKind.ERROR, ImportModuleHelper.class.getName(), ex.getMessage(), ex));
         }
+      }
+
+      ModuleLoader ml = new ModuleLoader(((SNode) MapSequence.fromMap(_params).get("node")), null, msgHandler);
+      for (ImportModuleHelper helper : helpers) {
+        helper.update(ml);
       }
     });
   }

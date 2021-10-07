@@ -18,7 +18,6 @@ import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.nodeEditor.cells.jetpad.AbstractJetpadCell;
 import java.awt.image.BufferedImage;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.nodeEditor.cells.jetpad.DiagramCell;
 
 public class DecoratorTestRunner {
@@ -26,25 +25,15 @@ public class DecoratorTestRunner {
     editorComponent.getHighlightManager().mark(ListSequence.fromListAndArray(new ArrayList<SimpleEditorMessage>(), new ModelProblemMessage(node, MessageStatus.ERROR, null, "error", new EditorMessageOwner() {})));
     final SRepository editorRepo = editorComponent.getEditorContext().getRepository();
     // next code is to make sure EDT model read to update editor, postponed from mark(), above, has been completed
-    ThreadUtils.runInUIThreadAndWait(new Runnable() {
-      public void run() {
-        editorRepo.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            // intentionally left empty
-          }
-        });
-      }
-    });
+    ThreadUtils.runInUIThreadAndWait(() -> editorRepo.getModelAccess().runReadAction(() -> {
+      // intentionally left empty
+    }));
     EditorCell cell = CellFinderUtil.findChildByClass(editorComponent.getRootCell(), cellClass, true);
     if (cell instanceof AbstractJetpadCell) {
       ((AbstractJetpadCell) cell).paint(new BufferedImage(cell.getWidth(), cell.getHeight(), BufferedImage.TYPE_INT_RGB).getGraphics());
     }
     // see getMapper(), below, for reasons to have model read here
-    return new ModelAccessHelper(editorRepo).runReadAction(new Computable<Mapper>() {
-      public Mapper compute() {
-        return getMapper(node, editorComponent);
-      }
-    });
+    return new ModelAccessHelper(editorRepo).runReadAction(() -> getMapper(node, editorComponent));
   }
   public static Mapper getMapper(SNode node, EditorComponent editorComponent) {
 

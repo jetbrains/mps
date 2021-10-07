@@ -32,11 +32,7 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
       Collection<SModel> current = IterableUtil.asCollection(scope.getModels());
       for (FindUsagesParticipant participant : participants) {
         final Set<SModel> next = new HashSet<SModel>(current);
-        participant.findModelUsages(current, models, consumer, new Consumer<SModel>() {
-          public void consume(SModel m) {
-            next.remove(m);
-          }
-        });
+        participant.findModelUsages(current, models, consumer, (SModel m) -> next.remove(m));
         current = next;
         monitor.advance(1);
       }

@@ -74,11 +74,9 @@ public class RenameMethod_Action extends BaseAction {
 
     final Wrappers._T<String> oldName = new Wrappers._T<String>();
     final Wrappers._T<SNode> methodDeclaration = new Wrappers._T<SNode>();
-    modelAccess.runReadAction(new Runnable() {
-      public void run() {
-        methodDeclaration.value = MethodRefactoringUtil.getMethodDeclaration(((SNode) MapSequence.fromMap(_params).get("target")));
-        oldName.value = SPropertyOperations.getString(methodDeclaration.value, PROPS.name$MnvL);
-      }
+    modelAccess.runReadAction(() -> {
+      methodDeclaration.value = MethodRefactoringUtil.getMethodDeclaration(((SNode) MapSequence.fromMap(_params).get("target")));
+      oldName.value = SPropertyOperations.getString(methodDeclaration.value, PROPS.name$MnvL);
     });
     final RenameMethodDialog d = new RenameMethodDialog(((MPSProject) MapSequence.fromMap(_params).get("project")).getProject(), oldName.value);
     d.show();

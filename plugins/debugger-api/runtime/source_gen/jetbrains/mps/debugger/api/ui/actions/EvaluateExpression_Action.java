@@ -77,18 +77,16 @@ public class EvaluateExpression_Action extends BaseAction {
       if (((EditorComponent) MapSequence.fromMap(_params).get("component")) != null) {
         final Selection selection = ((EditorComponent) MapSequence.fromMap(_params).get("component")).getSelectionManager().getSelection();
         if ((selection instanceof EditorCellLabelSelection && ((EditorCellLabelSelection) selection).hasNonTrivialSelection()) || (selection instanceof EditorCellSelection && !((selection instanceof EditorCellLabelSelection))) || (selection instanceof MultipleSelection)) {
-          ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              ListSequence.fromList(nodePointers).addSequence(Sequence.fromIterable(Sequence.fromClosure(new ISequenceClosure<SNode>() {
-                public Iterable<SNode> iterable() {
-                  return selection.getSelectedNodes();
-                }
-              })).select(new ISelector<SNode, SNodePointer>() {
-                public SNodePointer select(SNode it) {
-                  return new SNodePointer(it);
-                }
-              }));
-            }
+          ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(() -> {
+            ListSequence.fromList(nodePointers).addSequence(Sequence.fromIterable(Sequence.fromClosure(new ISequenceClosure<SNode>() {
+              public Iterable<SNode> iterable() {
+                return selection.getSelectedNodes();
+              }
+            })).select(new ISelector<SNode, SNodePointer>() {
+              public SNodePointer select(SNode it) {
+                return new SNodePointer(it);
+              }
+            }));
           });
         }
       }

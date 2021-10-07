@@ -57,14 +57,12 @@ public class PaletteElementsCreationActionGroup implements PaletteActionGroup {
     return null;
   }
   private SubstituteInfoPartExt createNewDiagramNodeActions(final SNode container, SAbstractConcept childNodeConcept, final SContainmentLink containingLink) {
-    return new SubstituteInfoPartExt() {
-      public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
-        List<SubstituteAction> result = new ArrayList<SubstituteAction>();
-        for (SubstituteAction action : ListSequence.fromList(ModelActions.createChildNodeSubstituteActions(container, null, containingLink, null, new DefaultSChildSetter(containingLink), editorContext))) {
-          result.add(action);
-        }
-        return result;
+    return (CellContext cellContext, EditorContext editorContext) -> {
+      List<SubstituteAction> result = new ArrayList<SubstituteAction>();
+      for (SubstituteAction action : ListSequence.fromList(ModelActions.createChildNodeSubstituteActions(container, null, containingLink, null, new DefaultSChildSetter(containingLink), editorContext))) {
+        result.add(action);
       }
+      return result;
     };
   }
 

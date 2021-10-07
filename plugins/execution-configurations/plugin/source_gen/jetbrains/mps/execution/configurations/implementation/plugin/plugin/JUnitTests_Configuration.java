@@ -24,7 +24,6 @@ import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.execution.ui.ConsoleView;
 import jetbrains.mps.execution.api.configurations.ConsoleCreator;
 import jetbrains.mps.ide.actions.StandaloneMPSStackTraceFilter;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import com.intellij.execution.configurations.RuntimeConfigurationError;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.configurations.ConfigurationFactory;
@@ -122,11 +121,9 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
   public UnitTestViewComponent createTestViewComponent(TestRunState runState, final ProcessHandler process, Executor executor, RunConfiguration rc) {
     ConsoleView console = ConsoleCreator.createConsoleView(this.getProject(), false);
     console.addMessageFilter(new StandaloneMPSStackTraceFilter(this.getProject()));
-    return new UnitTestViewComponent(this.getProject(), rc, executor, console, runState, new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        if (process != null) {
-          process.destroyProcess();
-        }
+    return new UnitTestViewComponent(this.getProject(), rc, executor, console, runState, () -> {
+      if (process != null) {
+        process.destroyProcess();
       }
     });
   }

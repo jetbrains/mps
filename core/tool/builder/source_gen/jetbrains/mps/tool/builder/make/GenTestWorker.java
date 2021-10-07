@@ -13,7 +13,6 @@ import jetbrains.mps.project.Project;
 import java.util.Set;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.Collection;
 import jetbrains.mps.make.MakeSession;
@@ -23,10 +22,10 @@ import jetbrains.mps.make.facet.IFacet;
 import java.util.ArrayList;
 import jetbrains.mps.make.script.PropertyPoolInitializer;
 import jetbrains.mps.internal.make.cfg.MakeFacetInitializer;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.make.script.IPropertiesPool;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.internal.make.cfg.JavaCompileFacetInitializer;
 import jetbrains.mps.make.script.IScriptController;
@@ -78,11 +77,7 @@ public class GenTestWorker extends BaseGeneratorWorker {
     setGenerationProperties();
     final Project project = createDummyProject();
 
-    Set<SModule> modules = new ModelAccessHelper(project.getModelAccess()).runWriteAction(new Computable<Set<SModule>>() {
-      public Set<SModule> compute() {
-        return collectFromModuleFiles(project.getRepository());
-      }
-    });
+    Set<SModule> modules = new ModelAccessHelper(project.getModelAccess()).runWriteAction(() -> collectFromModuleFiles(project.getRepository()));
 
     if (!(modules.isEmpty())) {
       loadAndMake(project, modules);
@@ -132,11 +127,7 @@ public class GenTestWorker extends BaseGeneratorWorker {
       }
     };
     ArrayList<PropertyPoolInitializer> ppi = new ArrayList<PropertyPoolInitializer>();
-    ppi.add(new MakeFacetInitializer().setFileToFile(new _FunctionTypes._return_P1_E0<IFile, IFile>() {
-      public IFile invoke(IFile f) {
-        return tmpFile(f);
-      }
-    }));
+    ppi.add(new MakeFacetInitializer().setFileToFile((IFile f) -> tmpFile(f)));
     if (isShowDiff()) {
       PropertyPoolInitializer diffFacetInit = new PropertyPoolInitializer() {
         public void populate(IPropertiesPool ppool) {
@@ -175,29 +166,25 @@ public class GenTestWorker extends BaseGeneratorWorker {
 
   private void loadAndMake(final Project project, final Collection<SModule> modules) {
     ModelAccess access = project.getRepository().getModelAccess();
-    access.runReadAction(new Runnable() {
-      public void run() {
-        new ModuleMaker().make(modules, new EmptyProgressMonitor() {
-          @Override
-          public void step(String text) {
-            // silently
-          }
-          @Override
-          public void start(@NotNull String taskName, int work) {
-            // silently
-          }
-        }, myJavaCompilerOptions);
-      }
-    });
-    access.runWriteAction(new Runnable() {
-      public void run() {
-        // the following updates stub models that could change due to the compilation happened (webr, 3.0 migration case)
-        for (SModule m : project.getRepository().getModules()) {
-          if (!((m instanceof AbstractModule))) {
-            continue;
-          }
-          ((AbstractModule) m).updateModelsSet();
+    access.runReadAction(() -> {
+      new ModuleMaker().make(modules, new EmptyProgressMonitor() {
+        @Override
+        public void step(String text) {
+          // silently
         }
+        @Override
+        public void start(@NotNull String taskName, int work) {
+          // silently
+        }
+      }, myJavaCompilerOptions);
+    });
+    access.runWriteAction(() -> {
+      // the following updates stub models that could change due to the compilation happened (webr, 3.0 migration case)
+      for (SModule m : project.getRepository().getModules()) {
+        if (!((m instanceof AbstractModule))) {
+          continue;
+        }
+        ((AbstractModule) m).updateModelsSet();
       }
     });
   }

@@ -34,14 +34,12 @@ public class LazyTooltipCellEvaluator {
   }
 
   private void computeCell() {
-    myContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        EditorComponent component = (EditorComponent) myContext.getEditorComponent();
-        List<String> hints = new ArrayList<String>(TooltipUtils.getHintsForNode(component, myNode));
-        hints.add(myHint);
-        myEditorCellCreator = new EditorCellCreator(myContext.getRepository());
-        myCell = myEditorCellCreator.createEditorCell(myNode, hints.toArray(new String[0]));
-      }
+    myContext.getRepository().getModelAccess().runReadAction(() -> {
+      EditorComponent component = (EditorComponent) myContext.getEditorComponent();
+      List<String> hints = new ArrayList<String>(TooltipUtils.getHintsForNode(component, myNode));
+      hints.add(myHint);
+      myEditorCellCreator = new EditorCellCreator(myContext.getRepository());
+      myCell = myEditorCellCreator.createEditorCell(myNode, hints.toArray(new String[0]));
     });
     if (hackIfRenderingConditionIsEmpty(myCell)) {
       myCell = null;

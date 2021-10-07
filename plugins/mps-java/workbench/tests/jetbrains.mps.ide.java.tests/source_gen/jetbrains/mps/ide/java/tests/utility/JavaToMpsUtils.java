@@ -21,7 +21,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.lang.test.matcher.NodeDifference;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import java.util.function.Supplier;
 import jetbrains.mps.lang.test.matcher.NodesMatcher;
 import jetbrains.mps.java.core.newparser.JavaParseException;
 import jetbrains.mps.vfs.IFile;
@@ -99,11 +98,7 @@ public class JavaToMpsUtils {
       NodePatcher.fixNonStatic(result);
       NodePatcher.copyImportAttrs(result, expected);
 
-      List<NodeDifference> diff = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<List<NodeDifference>>() {
-        public List<NodeDifference> get() {
-          return new NodesMatcher(result, expected).diff();
-        }
-      });
+      List<NodeDifference> diff = TypecheckingFacade.getFromContext().computeIsolated(() -> new NodesMatcher(result, expected).diff());
 
       Assert.assertTrue(diff.toString(), diff.isEmpty());
 

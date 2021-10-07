@@ -13,7 +13,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debug.api.SessionChangeAdapter;
 import java.awt.BorderLayout;
 import com.sun.jdi.ThreadReference;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debugger.java.api.evaluation.Evaluator;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.IValueProxy;
 import jetbrains.mps.debugger.java.api.state.proxy.JavaValue;
@@ -62,24 +61,22 @@ public abstract class EvaluationUi extends JPanel {
           final Class clazz = model.generateClass();
           setEvaluating(model);
           final ThreadReference thread = check_4q63yg_a0c0a0a0a0a1a21(myDebugSession.getUiState().getThread());
-          myDebugSession.getEventsProcessor().scheduleEvaluation(new _FunctionTypes._void_P0_E0() {
-            public void invoke() {
-              try {
-                Evaluator evaluator = model.createEvaluatorInstance(clazz);
-                IValueProxy evaluatedValue = evaluator.evaluate();
-                if (evaluatedValue != null) {
-                  JavaValue value = CustomViewersManager.getInstance().fromJdi(evaluatedValue.getJDIValue(), thread);
-                  value.initSubvalues();
-                  setSuccess(value, model);
-                } else {
-                  setFailure("Evaluation returned null.", model);
-                }
-              } catch (EvaluationException e) {
-                setFailure(e, model);
-              } catch (Throwable t) {
-                setFailure(t, model);
-                LOG.error("Debug evaluation failed", t);
+          myDebugSession.getEventsProcessor().scheduleEvaluation(() -> {
+            try {
+              Evaluator evaluator = model.createEvaluatorInstance(clazz);
+              IValueProxy evaluatedValue = evaluator.evaluate();
+              if (evaluatedValue != null) {
+                JavaValue value = CustomViewersManager.getInstance().fromJdi(evaluatedValue.getJDIValue(), thread);
+                value.initSubvalues();
+                setSuccess(value, model);
+              } else {
+                setFailure("Evaluation returned null.", model);
               }
+            } catch (EvaluationException e) {
+              setFailure(e, model);
+            } catch (Throwable t) {
+              setFailure(t, model);
+              LOG.error("Debug evaluation failed", t);
             }
           }, thread);
         } catch (EvaluationException e) {

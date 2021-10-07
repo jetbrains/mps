@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.debug.api.programState.Watchable2;
 import jetbrains.mps.debug.api.programState.IValue;
 import javax.swing.tree.TreeNode;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import com.intellij.openapi.application.ApplicationManager;
 import java.util.Map;
 import java.util.HashMap;
@@ -82,49 +81,47 @@ public class WatchableNode extends AbstractWatchableNode {
     }
     // ok, we might get subvalues, schedule their calculation and update children later
     add(myEvaluateInProgress);
-    myState.invokeEvaluation(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        myWatchable.getValue().initSubvalues();
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          @Override
-          public void run() {
-            Map<String, PlaceholderTreeNode> placeholders = new HashMap<String, PlaceholderTreeNode>();
-            for (int i = getChildCount() - 1; i >= 0; i--) {
-              TreeNode childAt = getChildAt(i);
-              if (childAt == myEvaluateInProgress) {
-                remove(i);
-                continue;
-              }
-              if (childAt instanceof PlaceholderTreeNode) {
-                PlaceholderTreeNode ptn = (PlaceholderTreeNode) childAt;
-                placeholders.put(ptn.getNodeIdentifier(), ptn);
-                remove(i);
-              }
+    myState.invokeEvaluation(() -> {
+      myWatchable.getValue().initSubvalues();
+      ApplicationManager.getApplication().invokeLater(new Runnable() {
+        @Override
+        public void run() {
+          Map<String, PlaceholderTreeNode> placeholders = new HashMap<String, PlaceholderTreeNode>();
+          for (int i = getChildCount() - 1; i >= 0; i--) {
+            TreeNode childAt = getChildAt(i);
+            if (childAt == myEvaluateInProgress) {
+              remove(i);
+              continue;
             }
-            for (IWatchable watchable : ListSequence.fromList(getValue().getSubvalues())) {
-              WatchableNode newNode = new WatchableNode(watchable, myState);
-              // see PlaceholderTreeNode comment for details why we escape identifier prior to match
-              PlaceholderTreeNode placeholder = placeholders.remove(newNode.getNodeIdentifier().replaceAll(MPSTree.TREE_PATH_SEPARATOR, "-"));
-              if (placeholder != null) {
-                boolean placeholderWithChildren = placeholder.getChildCount() > 0;
-                // placeholder's chilren shall become children of a node that replaces it
-                for (MPSTreeNode ch : placeholder.getChildren()) {
-                  newNode.add(ch);
-                }
-                add(newNode);
-                if (placeholderWithChildren) {
-                  // likely, there are nested expanded/selected placeholders, need to update tree presentation to get them replaced with actual values
-                  newNode.init();
-                }
-              } else {
-                add(newNode);
-              }
+            if (childAt instanceof PlaceholderTreeNode) {
+              PlaceholderTreeNode ptn = (PlaceholderTreeNode) childAt;
+              placeholders.put(ptn.getNodeIdentifier(), ptn);
+              remove(i);
             }
-            updatePresentation();
-            nodeChanged();
           }
-        });
-      }
+          for (IWatchable watchable : ListSequence.fromList(getValue().getSubvalues())) {
+            WatchableNode newNode = new WatchableNode(watchable, myState);
+            // see PlaceholderTreeNode comment for details why we escape identifier prior to match
+            PlaceholderTreeNode placeholder = placeholders.remove(newNode.getNodeIdentifier().replaceAll(MPSTree.TREE_PATH_SEPARATOR, "-"));
+            if (placeholder != null) {
+              boolean placeholderWithChildren = placeholder.getChildCount() > 0;
+              // placeholder's chilren shall become children of a node that replaces it
+              for (MPSTreeNode ch : placeholder.getChildren()) {
+                newNode.add(ch);
+              }
+              add(newNode);
+              if (placeholderWithChildren) {
+                // likely, there are nested expanded/selected placeholders, need to update tree presentation to get them replaced with actual values
+                newNode.init();
+              }
+            } else {
+              add(newNode);
+            }
+          }
+          updatePresentation();
+          nodeChanged();
+        }
+      });
     });
     myInitialized = true;
   }

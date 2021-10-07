@@ -7,11 +7,9 @@ import java.util.List;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.ArrayList;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import java.util.function.Predicate;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -32,11 +30,7 @@ import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
     myEditorComponent = editorComponent;
     myIsReflective = isReflective;
     myIsForSubtree = isForSubtree;
-    myActions = affectedNodes.stream().map(new Function<SNode, ReflectiveHintsAction>() {
-      public ReflectiveHintsAction apply(SNode node) {
-        return getAction(node);
-      }
-    }).collect(Collectors.<ReflectiveHintsAction>toList());
+    myActions = affectedNodes.stream().map((SNode node) -> getAction(node)).collect(Collectors.<ReflectiveHintsAction>toList());
   }
   @NotNull
   private ReflectiveHintsAction getAction(SNode node) {
@@ -48,11 +42,7 @@ import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
   }
   /*package*/ void update(AnActionEvent event) {
     boolean multipleNodes = myActions.size() > 1;
-    boolean canMake = myActions.stream().anyMatch(new Predicate<ReflectiveHintsAction>() {
-      public boolean test(ReflectiveHintsAction action) {
-        return action.isApplicable();
-      }
-    }) && !((multipleNodes && !(myIsForSubtree)));
+    boolean canMake = myActions.stream().anyMatch((ReflectiveHintsAction action) -> action.isApplicable()) && !((multipleNodes && !(myIsForSubtree)));
     if (canMake) {
       String caption = String.format("Show %s Editor", (myIsReflective ? "Reflective" : "Regular"));
       if (multipleNodes) {

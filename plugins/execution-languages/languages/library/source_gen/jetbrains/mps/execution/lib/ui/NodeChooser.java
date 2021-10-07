@@ -26,7 +26,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.ide.platform.dialogs.choosers.NodeChooserDialog;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -54,14 +53,12 @@ public abstract class NodeChooser extends TextFieldWithBrowseButton.NoPathComple
         final Wrappers._T<List<SNodeReference>> toChooseFrom = new Wrappers._T<List<SNodeReference>>();
         ProgressManager.getInstance().run(new Task.Modal(project, "Searching for nodes", false) {
           public void run(@NotNull final ProgressIndicator indicator) {
-            mpsProject.getModelAccess().runReadAction(new Runnable() {
-              public void run() {
-                toChooseFrom.value = ListSequence.fromList(findToChooseFromOnInit(findUsegesManager, mpsProject.getScope(), new ProgressMonitorAdapter(indicator))).select(new ISelector<SNode, SNodeReference>() {
-                  public SNodeReference select(SNode it) {
-                    return SNodeOperations.getPointer(it);
-                  }
-                }).toListSequence();
-              }
+            mpsProject.getModelAccess().runReadAction(() -> {
+              toChooseFrom.value = ListSequence.fromList(findToChooseFromOnInit(findUsegesManager, mpsProject.getScope(), new ProgressMonitorAdapter(indicator))).select(new ISelector<SNode, SNodeReference>() {
+                public SNodeReference select(SNode it) {
+                  return SNodeOperations.getPointer(it);
+                }
+              }).toListSequence();
             });
           }
         });
@@ -71,11 +68,9 @@ public abstract class NodeChooser extends TextFieldWithBrowseButton.NoPathComple
         final SNodeReference result = chooserDialog.getResult();
         if (result != null) {
           setNode(result);
-          setText(new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(new Computable<String>() {
-            public String compute() {
-              SNode resultNode = result.resolve(mpsProject.getRepository());
-              return (resultNode == null ? null : getFqName(resultNode));
-            }
+          setText(new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(() -> {
+            SNode resultNode = result.resolve(mpsProject.getRepository());
+            return (resultNode == null ? null : getFqName(resultNode));
           }));
         }
       }

@@ -46,7 +46,6 @@
   <dependency className="testPackagedLanguage.test.TestPackagedLanguage_Test">
     <classNode dependClassName="com.intellij.openapi.util.IconLoader" />
     <classNode dependClassName="java.lang.Exception" />
-    <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="javax.swing.Icon" />
     <classNode dependClassName="jetbrains.mps.MPSLaunch" />
     <classNode dependClassName="jetbrains.mps.ide.icons.GlobalIconManager" />

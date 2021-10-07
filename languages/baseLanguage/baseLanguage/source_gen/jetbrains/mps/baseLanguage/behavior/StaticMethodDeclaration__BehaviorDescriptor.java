@@ -18,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import java.util.function.Function;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -68,11 +67,7 @@ public final class StaticMethodDeclaration__BehaviorDescriptor extends BaseBHDes
     // if we do not use resolve action, type system would compute all types in the root
     // while in resolve mode only types required for calculating typeof are computed
     // the difference between two methods is very visible in main node selection in java run configuation ()
-    return TypecheckingFacade.getFromContext().computeIsolated(new Function<TypecheckingSession, Boolean>() {
-      public Boolean apply(TypecheckingSession session) {
-        return "main".equals(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).count() == 1 && TypecheckingFacade.getFromContext().isStrongSubtype(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).first()), _quotation_createNode_qyxuoz_b0a0a0a0a3a2());
-      }
-    });
+    return TypecheckingFacade.getFromContext().computeIsolated((TypecheckingSession session) -> "main".equals(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).count() == 1 && TypecheckingFacade.getFromContext().isStrongSubtype(TypecheckingFacade.getFromContext().getTypeOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).first()), _quotation_createNode_qyxuoz_b0a0a0a0a3a2()));
   }
   /*package*/ static List<SNode> getChildrenToDisplayIntention_id3vsDNFqJVhw(@NotNull SNode __thisNode__) {
     List<SNode> result = HasAnnotation__BehaviorDescriptor.getChildrenToDisplayIntention_id3vsDNFqJVhw.invokeSuper(__thisNode__, CONCEPTS.StaticMethodDeclaration$FJ);

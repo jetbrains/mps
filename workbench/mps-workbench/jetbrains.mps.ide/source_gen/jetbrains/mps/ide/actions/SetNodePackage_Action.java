@@ -117,25 +117,21 @@ public class SetNodePackage_Action extends BaseAction {
     final Wrappers._T<List<String>> packages = new Wrappers._T<List<String>>();
     final Wrappers._T<String> oldPackage = new Wrappers._T<String>();
     ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-    modelAccess.runReadAction(new Runnable() {
-      public void run() {
-        packages.value = SetNodePackage_Action.this.fetchExistingPackages(((List<SNode>) MapSequence.fromMap(_params).get("nodes")), _params);
-        oldPackage.value = SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).first(), PROPS.virtualPackage$EkXl);
-      }
+    modelAccess.runReadAction(() -> {
+      packages.value = SetNodePackage_Action.this.fetchExistingPackages(((List<SNode>) MapSequence.fromMap(_params).get("nodes")), _params);
+      oldPackage.value = SPropertyOperations.getString(ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes"))).first(), PROPS.virtualPackage$EkXl);
     });
     final SetNodePackageDialog dialog = new SetNodePackageDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), packages.value);
     dialog.setPackage(oldPackage.value);
     if (!(dialog.showAndGet())) {
       return;
     }
-    modelAccess.executeCommandInEDT(new Runnable() {
-      public void run() {
-        for (SNode node : ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes")))) {
-          SPropertyOperations.assign(node, PROPS.virtualPackage$EkXl, dialog.getPackage());
-          if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA)) {
-            for (SNode aspect : ListSequence.fromList(SetNodePackage_Action.this.findAllAspects(((Project) MapSequence.fromMap(_params).get("ideaProject")), SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), _params))) {
-              SPropertyOperations.assign(aspect, PROPS.virtualPackage$EkXl, dialog.getPackage());
-            }
+    modelAccess.executeCommandInEDT(() -> {
+      for (SNode node : ListSequence.fromList(((List<SNode>) MapSequence.fromMap(_params).get("nodes")))) {
+        SPropertyOperations.assign(node, PROPS.virtualPackage$EkXl, dialog.getPackage());
+        if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA)) {
+          for (SNode aspect : ListSequence.fromList(SetNodePackage_Action.this.findAllAspects(((Project) MapSequence.fromMap(_params).get("ideaProject")), SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), _params))) {
+            SPropertyOperations.assign(aspect, PROPS.virtualPackage$EkXl, dialog.getPackage());
           }
         }
       }

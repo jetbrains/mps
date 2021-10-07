@@ -39,11 +39,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
 
   @Override
   protected ChangeEditorMessage.ConflictChecker getConflictChecker() {
-    return new ChangeEditorMessage.ConflictChecker() {
-      public boolean isChangeConflicted(ModelChange ch) {
-        return (myConflictsBuilder == null ? false : ListSequence.fromList(MapSequence.fromMap(myConflictsBuilder.getConflictingChanges()).get(ch.getOppositeChange())).isNotEmpty());
-      }
-    };
+    return (ModelChange ch) -> (myConflictsBuilder == null ? false : ListSequence.fromList(MapSequence.fromMap(myConflictsBuilder.getConflictingChanges()).get(ch.getOppositeChange())).isNotEmpty());
   }
 
   private MergeConflictsBuilder createConflictsBuilder(@NotNull ChangeSet myChangeSet, @NotNull ChangeSet repoChangeSet) {

@@ -29,7 +29,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.ide.editor.util.EditorComponentUtil;
 import java.util.List;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import java.util.Collections;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.debug.api.breakpoints.IBreakpointKind;
@@ -72,11 +71,7 @@ public class BreakpointsUiComponent extends BreakpointsUiComponentEx<IBreakpoint
   @Override
   public void initComponent() {
     super.init();
-    ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
-      public void run() {
-        myBreakpointsManagerComponent.setBreakpointsIO(new MyBreakpointsIO());
-      }
-    });
+    ApplicationManager.getApplication().executeOnPooledThread(() -> myBreakpointsManagerComponent.setBreakpointsIO(new MyBreakpointsIO()));
     DebugSessionManagerComponent component = myProject.getComponent(DebugSessionManagerComponent.class);
     component.addDebugSessionListener(myDebugSessionListener);
     myBreakpointsManagerComponent.addChangeListener(myBreakpointManagerListener);
@@ -91,11 +86,7 @@ public class BreakpointsUiComponent extends BreakpointsUiComponentEx<IBreakpoint
   public void editBreakpointProperties(final ILocationBreakpoint breakpoint) {
     final BreakpointsBrowserDialog breakpointsBrowserDialog = new BreakpointsBrowserDialog(myMPSProject);
     breakpointsBrowserDialog.show();
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        breakpointsBrowserDialog.selectBreakpoint(breakpoint);
-      }
-    });
+    ApplicationManager.getApplication().invokeLater(() -> breakpointsBrowserDialog.selectBreakpoint(breakpoint));
   }
 
   @NotNull
@@ -103,38 +94,36 @@ public class BreakpointsUiComponent extends BreakpointsUiComponentEx<IBreakpoint
   protected Set<ILocationBreakpoint> getBreakpointsForComponent(@NotNull final EditorComponent editorComponent) {
     final Wrappers._T<Set<ILocationBreakpoint>> result = new Wrappers._T<Set<ILocationBreakpoint>>(new HashSet<ILocationBreakpoint>());
     final SRepository repository = editorComponent.getEditorContext().getRepository();
-    repository.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        final SNode editedNode = editorComponent.getEditedNode();
-        if (editedNode == null) {
-          return;
-        }
+    repository.getModelAccess().runReadAction(() -> {
+      final SNode editedNode = editorComponent.getEditedNode();
+      if (editedNode == null) {
+        return;
+      }
 
-        if (!(SNodeUtil.isAccessible(editedNode, repository))) {
-          Set<IBreakpoint> allBreakpoints = myBreakpointsManagerComponent.getAllIBreakpoints();
-          Set<ILocationBreakpoint> locationBreakpoints = new HashSet<ILocationBreakpoint>();
-          for (IBreakpoint breakpoint : allBreakpoints) {
-            if (breakpoint instanceof ILocationBreakpoint) {
-              locationBreakpoints.add((ILocationBreakpoint) breakpoint);
-            }
+      if (!(SNodeUtil.isAccessible(editedNode, repository))) {
+        Set<IBreakpoint> allBreakpoints = myBreakpointsManagerComponent.getAllIBreakpoints();
+        Set<ILocationBreakpoint> locationBreakpoints = new HashSet<ILocationBreakpoint>();
+        for (IBreakpoint breakpoint : allBreakpoints) {
+          if (breakpoint instanceof ILocationBreakpoint) {
+            locationBreakpoints.add((ILocationBreakpoint) breakpoint);
           }
-          result.value = locationBreakpoints;
-          return;
         }
+        result.value = locationBreakpoints;
+        return;
+      }
 
-        SNode rootNode = (editedNode.getModel() == null ? null : editedNode.getContainingRoot());
-        if (rootNode == null) {
-          return;
-        }
+      SNode rootNode = (editedNode.getModel() == null ? null : editedNode.getContainingRoot());
+      if (rootNode == null) {
+        return;
+      }
 
-        final Set<ILocationBreakpoint> closeBreakpoints = myBreakpointsManagerComponent.getBreakpoints(rootNode.getReference());
+      final Set<ILocationBreakpoint> closeBreakpoints = myBreakpointsManagerComponent.getBreakpoints(rootNode.getReference());
 
-        for (ILocationBreakpoint locationBreakpoint : closeBreakpoints) {
-          SNodeReference nodePtr = locationBreakpoint.getLocation().getNodePointer();
-          SNode node = nodePtr.resolve(repository);
-          if (node != null && EditorComponentUtil.isNodeShownInTheComponent(editorComponent, node)) {
-            result.value.add(locationBreakpoint);
-          }
+      for (ILocationBreakpoint locationBreakpoint : closeBreakpoints) {
+        SNodeReference nodePtr = locationBreakpoint.getLocation().getNodePointer();
+        SNode node = nodePtr.resolve(repository);
+        if (node != null && EditorComponentUtil.isNodeShownInTheComponent(editorComponent, node)) {
+          result.value.add(locationBreakpoint);
         }
       }
     });
@@ -145,14 +134,12 @@ public class BreakpointsUiComponent extends BreakpointsUiComponentEx<IBreakpoint
   @Override
   protected List<EditorComponent> getComponentsForBreakpoint(@NotNull final ILocationBreakpoint breakpoint) {
     // reverse operation to getBreakpointsForComponent
-    return new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(new Computable<List<EditorComponent>>() {
-      public List<EditorComponent> compute() {
-        SNode node = breakpoint.getLocation().getNodePointer().resolve(myMPSProject.getRepository());
-        if (node != null) {
-          return EditorComponentUtil.findComponentForNode(node, myFileEditorManager);
-        }
-        return Collections.emptyList();
+    return new ModelAccessHelper(myMPSProject.getModelAccess()).runReadAction(() -> {
+      SNode node = breakpoint.getLocation().getNodePointer().resolve(myMPSProject.getRepository());
+      if (node != null) {
+        return EditorComponentUtil.findComponentForNode(node, myFileEditorManager);
       }
+      return Collections.emptyList();
     });
   }
 

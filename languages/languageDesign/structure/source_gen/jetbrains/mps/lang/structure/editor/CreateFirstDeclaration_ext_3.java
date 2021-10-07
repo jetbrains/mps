@@ -152,11 +152,9 @@ public class CreateFirstDeclaration_ext_3 extends TransformationMenuBase {
           EditorCell selectedCell = _context.getEditorContext().getSelectedCell();
           if (selectedCell instanceof EditorCell_Label) {
             final EditorCell_Label label = (EditorCell_Label) selectedCell;
-            _context.getEditorContext().getRepository().getModelAccess().runWriteInEDT(new Runnable() {
-              public void run() {
-                label.changeText(pattern);
-                label.setCaretPosition(pattern.length());
-              }
+            _context.getEditorContext().getRepository().getModelAccess().runWriteInEDT(() -> {
+              label.changeText(pattern);
+              label.setCaretPosition(pattern.length());
             });
           }
           return;

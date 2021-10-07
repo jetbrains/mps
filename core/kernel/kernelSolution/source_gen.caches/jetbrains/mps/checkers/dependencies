@@ -142,7 +142,6 @@
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.checkers.IAbstractChecker" />
     <classNode dependClassName="jetbrains.mps.checkers.ICheckingPostprocessor" />
     <classNode dependClassName="jetbrains.mps.checkers.IteratingChecker" />
@@ -242,7 +241,6 @@
     <classNode extendsClassName="jetbrains.mps.checkers.LanguageErrorsCollector" />
   </dependency>
   <dependency className="jetbrains.mps.checkers.ModelCheckerBuilder">
-    <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
@@ -315,7 +313,6 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Throwable" />
     <classNode dependClassName="java.util.Collection" />
-    <classNode dependClassName="java.util.function.Function" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.checkers.CheckingSession" />
     <classNode dependClassName="jetbrains.mps.checkers.ErrorReportHelper" />

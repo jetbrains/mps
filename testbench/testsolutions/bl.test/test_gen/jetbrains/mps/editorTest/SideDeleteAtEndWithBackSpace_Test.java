@@ -34,16 +34,14 @@ public class SideDeleteAtEndWithBackSpace_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("4784396099375357250", "5732053020524716262");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveDown_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveDown_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveDown_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveDown_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveDown_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveDown_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveDown_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveDown_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
       }, false);
     }
   }

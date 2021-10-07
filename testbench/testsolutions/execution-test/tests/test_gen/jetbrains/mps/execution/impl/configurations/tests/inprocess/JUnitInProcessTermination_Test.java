@@ -73,11 +73,9 @@ public class JUnitInProcessTermination_Test extends BaseTransformationTest {
         }
         ProcessHandler process = processExecutor.execute();
         final Wrappers._T<CheckTestStateListener> checkListener = new Wrappers._T<CheckTestStateListener>();
-        myProject.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            checkListener.value = new CheckTestStateListener(testNodes, ListSequence.fromList(new ArrayList<ITestNodeWrapper>()));
-            runState.addListener(checkListener.value);
-          }
+        myProject.getModelAccess().runReadAction(() -> {
+          checkListener.value = new CheckTestStateListener(testNodes, ListSequence.fromList(new ArrayList<ITestNodeWrapper>()));
+          runState.addListener(checkListener.value);
         });
         process.addProcessListener(new UnitTestProcessListener(runState));
 

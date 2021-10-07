@@ -147,11 +147,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
           SPropertyOperations.assign(node, PROPS.x$Ob90, x);
           SPropertyOperations.assign(node, PROPS.y$5Lz1, y);
         }
-      }), createNewDiagramConnectorActions(getSNode(), CONCEPTS.Connector$fp, LINKS.connectors$qP5D, new _FunctionTypes._return_P4_E0<Boolean, SNode, Object, SNode, Object>() {
-        public Boolean invoke(SNode from, Object fromId, SNode to, Object toId) {
-          return SNodeOperations.isInstanceOf(from, CONCEPTS.OutputPort$Ws) && SNodeOperations.isInstanceOf(to, CONCEPTS.InputPort$GW);
-        }
-      }, new _FunctionTypes._void_P5_E0<SNode, SNode, Object, SNode, Object>() {
+      }), createNewDiagramConnectorActions(getSNode(), CONCEPTS.Connector$fp, LINKS.connectors$qP5D, (SNode from, Object fromId, SNode to, Object toId) -> SNodeOperations.isInstanceOf(from, CONCEPTS.OutputPort$Ws) && SNodeOperations.isInstanceOf(to, CONCEPTS.InputPort$GW), new _FunctionTypes._void_P5_E0<SNode, SNode, Object, SNode, Object>() {
         public void invoke(SNode node, SNode from, Object fromId, SNode to, Object toId) {
           SLinkOperations.setTarget(node, LINKS.outputPort$ucXX, SNodeOperations.cast(from, CONCEPTS.OutputPort$Ws));
           SLinkOperations.setTarget(node, LINKS.inputPort$udU1, SNodeOperations.cast(to, CONCEPTS.InputPort$GW));
@@ -161,25 +157,17 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     }
 
     protected SubstituteInfoPartExt[] createPaletteBlockSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Block$b2, LINKS.blocks$qOBB, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
-        public void invoke(SNode node, Integer x, Integer y) {
-          SNodeFactoryOperations.addNewChild(node, LINKS.inputPorts$tXSA, CONCEPTS.InputPort$GW);
-          SNodeFactoryOperations.addNewChild(node, LINKS.outputPorts$tYmC, CONCEPTS.OutputPort$Ws);
-          SPropertyOperations.assign(node, PROPS.x$Ob90, x);
-          SPropertyOperations.assign(node, PROPS.y$5Lz1, y);
-        }
+      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.Block$b2, LINKS.blocks$qOBB, (SNode node, Integer x, Integer y) -> {
+        SNodeFactoryOperations.addNewChild(node, LINKS.inputPorts$tXSA, CONCEPTS.InputPort$GW);
+        SNodeFactoryOperations.addNewChild(node, LINKS.outputPorts$tYmC, CONCEPTS.OutputPort$Ws);
+        SPropertyOperations.assign(node, PROPS.x$Ob90, x);
+        SPropertyOperations.assign(node, PROPS.y$5Lz1, y);
       })};
     }
     protected SubstituteInfoPartExt[] createPaletteConnectorSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramConnectorActions(getSNode(), CONCEPTS.Connector$fp, LINKS.connectors$qP5D, new _FunctionTypes._return_P4_E0<Boolean, SNode, Object, SNode, Object>() {
-        public Boolean invoke(SNode from, Object fromId, SNode to, Object toId) {
-          return SNodeOperations.isInstanceOf(from, CONCEPTS.OutputPort$Ws) && SNodeOperations.isInstanceOf(to, CONCEPTS.InputPort$GW);
-        }
-      }, new _FunctionTypes._void_P5_E0<SNode, SNode, Object, SNode, Object>() {
-        public void invoke(SNode node, SNode from, Object fromId, SNode to, Object toId) {
-          SLinkOperations.setTarget(node, LINKS.outputPort$ucXX, SNodeOperations.cast(from, CONCEPTS.OutputPort$Ws));
-          SLinkOperations.setTarget(node, LINKS.inputPort$udU1, SNodeOperations.cast(to, CONCEPTS.InputPort$GW));
-        }
+      return new SubstituteInfoPartExt[]{createNewDiagramConnectorActions(getSNode(), CONCEPTS.Connector$fp, LINKS.connectors$qP5D, (SNode from, Object fromId, SNode to, Object toId) -> SNodeOperations.isInstanceOf(from, CONCEPTS.OutputPort$Ws) && SNodeOperations.isInstanceOf(to, CONCEPTS.InputPort$GW), (SNode node, SNode from, Object fromId, SNode to, Object toId) -> {
+        SLinkOperations.setTarget(node, LINKS.outputPort$ucXX, SNodeOperations.cast(from, CONCEPTS.OutputPort$Ws));
+        SLinkOperations.setTarget(node, LINKS.inputPort$udU1, SNodeOperations.cast(to, CONCEPTS.InputPort$GW));
       })};
     }
     public Mapper<SNode, DiagramView> createMapper(SNode node) {
@@ -275,11 +263,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
           SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.BlockInstance$xU), PROPS.x$Gfxu, x);
           SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.BlockInstance$xU), PROPS.y$GfKv, y);
         }
-      }), createNewDiagramConnectorActions(getSNode(), CONCEPTS.ConnectorInstance$x8, LINKS.newConnectors$Gj00, new _FunctionTypes._return_P4_E0<Boolean, SNode, Object, SNode, Object>() {
-        public Boolean invoke(SNode from, Object fromId, SNode to, Object toId) {
-          return SNodeOperations.isInstanceOf(from, CONCEPTS.BlockInstance$xU) && fromId instanceof SNode && SNodeOperations.isInstanceOf(to, CONCEPTS.BlockInstance$xU) && toId instanceof SNode && Objects.equals(SNodeOperations.getContainingLink(((SNode) toId)), LINKS.inMetaPorts$BclS);
-        }
-      }, new _FunctionTypes._void_P5_E0<SNode, SNode, Object, SNode, Object>() {
+      }), createNewDiagramConnectorActions(getSNode(), CONCEPTS.ConnectorInstance$x8, LINKS.newConnectors$Gj00, (SNode from, Object fromId, SNode to, Object toId) -> SNodeOperations.isInstanceOf(from, CONCEPTS.BlockInstance$xU) && fromId instanceof SNode && SNodeOperations.isInstanceOf(to, CONCEPTS.BlockInstance$xU) && toId instanceof SNode && Objects.equals(SNodeOperations.getContainingLink(((SNode) toId)), LINKS.inMetaPorts$BclS), new _FunctionTypes._void_P5_E0<SNode, SNode, Object, SNode, Object>() {
         public void invoke(SNode node, SNode from, Object fromId, SNode to, Object toId) {
           SNode connector = SNodeOperations.cast(node, CONCEPTS.ConnectorInstance$x8);
           SLinkOperations.setTarget(SLinkOperations.getTarget(connector, LINKS.source$qWKq), LINKS.block$8o8N, SNodeOperations.cast(from, CONCEPTS.BlockInstance$xU));
@@ -298,32 +282,24 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     }
 
     protected SubstituteInfoPartExt[] createPaletteBlockSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.BlockInstance$xU, LINKS.newBlocks$TkL9, new _FunctionTypes._void_P3_E0<SNode, Integer, Integer>() {
-        public void invoke(SNode node, Integer x, Integer y) {
-          SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.BlockInstance$xU), PROPS.name$MnvL, "block");
-          SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.BlockInstance$xU), PROPS.x$Gfxu, x);
-          SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.BlockInstance$xU), PROPS.y$GfKv, y);
-        }
+      return new SubstituteInfoPartExt[]{createNewDiagramNodeActions(getSNode(), CONCEPTS.BlockInstance$xU, LINKS.newBlocks$TkL9, (SNode node, Integer x, Integer y) -> {
+        SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.BlockInstance$xU), PROPS.name$MnvL, "block");
+        SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.BlockInstance$xU), PROPS.x$Gfxu, x);
+        SPropertyOperations.assign(SNodeOperations.cast(node, CONCEPTS.BlockInstance$xU), PROPS.y$GfKv, y);
       })};
     }
     protected SubstituteInfoPartExt[] createPaletteConnectorSubstituteInfoPartExts() {
-      return new SubstituteInfoPartExt[]{createNewDiagramConnectorActions(getSNode(), CONCEPTS.ConnectorInstance$x8, LINKS.newConnectors$Gj00, new _FunctionTypes._return_P4_E0<Boolean, SNode, Object, SNode, Object>() {
-        public Boolean invoke(SNode from, Object fromId, SNode to, Object toId) {
-          return SNodeOperations.isInstanceOf(from, CONCEPTS.BlockInstance$xU) && fromId instanceof SNode && SNodeOperations.isInstanceOf(to, CONCEPTS.BlockInstance$xU) && toId instanceof SNode && Objects.equals(SNodeOperations.getContainingLink(((SNode) toId)), LINKS.inMetaPorts$BclS);
-        }
-      }, new _FunctionTypes._void_P5_E0<SNode, SNode, Object, SNode, Object>() {
-        public void invoke(SNode node, SNode from, Object fromId, SNode to, Object toId) {
-          SNode connector = SNodeOperations.cast(node, CONCEPTS.ConnectorInstance$x8);
-          SLinkOperations.setTarget(SLinkOperations.getTarget(connector, LINKS.source$qWKq), LINKS.block$8o8N, SNodeOperations.cast(from, CONCEPTS.BlockInstance$xU));
-          final SNode port = ((SNode) fromId);
-          SLinkOperations.setTarget(SLinkOperations.getTarget(connector, LINKS.source$qWKq), LINKS.metaPort$8onO, ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(from, CONCEPTS.BlockInstance$xU), LINKS.metaBlock$G_NX), LINKS.outMetaPorts$BzNf)).findFirst(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(it, port);
-            }
-          }));
-          SLinkOperations.setTarget(SLinkOperations.getTarget(connector, LINKS.target$trP0), LINKS.block$8o8N, SNodeOperations.cast(to, CONCEPTS.BlockInstance$xU));
-          SLinkOperations.setTarget(SLinkOperations.getTarget(connector, LINKS.target$trP0), LINKS.metaPort$8onO, (SNode) toId);
-        }
+      return new SubstituteInfoPartExt[]{createNewDiagramConnectorActions(getSNode(), CONCEPTS.ConnectorInstance$x8, LINKS.newConnectors$Gj00, (SNode from, Object fromId, SNode to, Object toId) -> SNodeOperations.isInstanceOf(from, CONCEPTS.BlockInstance$xU) && fromId instanceof SNode && SNodeOperations.isInstanceOf(to, CONCEPTS.BlockInstance$xU) && toId instanceof SNode && Objects.equals(SNodeOperations.getContainingLink(((SNode) toId)), LINKS.inMetaPorts$BclS), (SNode node, SNode from, Object fromId, SNode to, Object toId) -> {
+        SNode connector = SNodeOperations.cast(node, CONCEPTS.ConnectorInstance$x8);
+        SLinkOperations.setTarget(SLinkOperations.getTarget(connector, LINKS.source$qWKq), LINKS.block$8o8N, SNodeOperations.cast(from, CONCEPTS.BlockInstance$xU));
+        final SNode port = ((SNode) fromId);
+        SLinkOperations.setTarget(SLinkOperations.getTarget(connector, LINKS.source$qWKq), LINKS.metaPort$8onO, ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.cast(from, CONCEPTS.BlockInstance$xU), LINKS.metaBlock$G_NX), LINKS.outMetaPorts$BzNf)).findFirst(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return Objects.equals(it, port);
+          }
+        }));
+        SLinkOperations.setTarget(SLinkOperations.getTarget(connector, LINKS.target$trP0), LINKS.block$8o8N, SNodeOperations.cast(to, CONCEPTS.BlockInstance$xU));
+        SLinkOperations.setTarget(SLinkOperations.getTarget(connector, LINKS.target$trP0), LINKS.metaPort$8onO, (SNode) toId);
       })};
     }
     public Mapper<SNode, DiagramView> createMapper(SNode node) {

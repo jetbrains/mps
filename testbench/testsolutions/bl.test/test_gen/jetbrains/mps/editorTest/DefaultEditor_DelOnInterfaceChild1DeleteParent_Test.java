@@ -36,11 +36,9 @@ public class DefaultEditor_DelOnInterfaceChild1DeleteParent_Test extends BaseTra
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("2943053183528184982", "2943053183528184986");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " TAB"));
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " TAB"));
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
       }, false);
     }
   }

@@ -15,7 +15,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jdom.Element;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import java.util.Comparator;
-import java.util.function.Function;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -112,16 +111,8 @@ public class ModelDependencies {
   public Element toXml() {
     Element root = new Element(DEPENDENCIES_ROOT);
     final PersistenceFacade pf = PersistenceFacade.getInstance();
-    Comparator<SLanguage> byName1 = Comparator.comparing(new Function<SLanguage, String>() {
-      public String apply(SLanguage l) {
-        return l.getQualifiedName();
-      }
-    });
-    Comparator<SModuleReference> byName2 = Comparator.comparing(new Function<SModuleReference, String>() {
-      public String apply(SModuleReference l) {
-        return l.getModuleName();
-      }
-    });
+    Comparator<SLanguage> byName1 = Comparator.comparing((SLanguage l) -> l.getQualifiedName());
+    Comparator<SModuleReference> byName2 = Comparator.comparing((SModuleReference l) -> l.getModuleName());
     for (SLanguage l : ListSequence.fromList(myLanguages.stream().distinct().sorted(byName1).collect(Collectors.<SLanguage>toList()))) {
       Element e = new Element("uses");
       e.setAttribute("language", pf.asString(l));

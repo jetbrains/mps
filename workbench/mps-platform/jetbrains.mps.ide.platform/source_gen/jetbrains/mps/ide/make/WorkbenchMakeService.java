@@ -228,21 +228,15 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
 
     try {
 
-      getSession().doExecute(new Runnable() {
-        public void run() {
-          ApplicationManager.getApplication().invokeLater(new Runnable() {
-            public void run() {
-              IdeEventQueue.getInstance().flushQueue();
-              if (currentProcess.compareAndSet(null, task)) {
-                ProgressManager.getInstance().run(task);
-              } else {
-                throw new IllegalStateException("unexpected: make process is already running");
-              }
-              IdeEventQueue.getInstance().flushQueue();
-            }
-          });
+      getSession().doExecute(() -> ApplicationManager.getApplication().invokeLater(() -> {
+        IdeEventQueue.getInstance().flushQueue();
+        if (currentProcess.compareAndSet(null, task)) {
+          ProgressManager.getInstance().run(task);
+        } else {
+          throw new IllegalStateException("unexpected: make process is already running");
         }
-      });
+        IdeEventQueue.getInstance().flushQueue();
+      }));
 
     } catch (RuntimeException rex) {
       // abort session
@@ -301,14 +295,12 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
     @Override
     public void runConfigWithMonitor(final _FunctionTypes._void_P1_E0<? super IConfigMonitor> code) {
       if (delegateScrCtr != null) {
-        delegateScrCtr.runConfigWithMonitor(new _FunctionTypes._void_P1_E0<IConfigMonitor>() {
-          public void invoke(IConfigMonitor c) {
-            try {
-              Controller.this.delegateConfMon = c;
-              code.invoke(confMon);
-            } finally {
-              Controller.this.delegateConfMon = null;
-            }
+        delegateScrCtr.runConfigWithMonitor((IConfigMonitor c) -> {
+          try {
+            Controller.this.delegateConfMon = c;
+            code.invoke(confMon);
+          } finally {
+            Controller.this.delegateConfMon = null;
           }
         });
       } else {

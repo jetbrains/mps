@@ -73,12 +73,10 @@ public class NewFile_Action extends BaseAction {
           return false;
         }
 
-        ApplicationManager.getApplication().runWriteAction(new Runnable() {
-          public void run() {
-            try {
-              result[0] = dir.createChildData(null, p);
-            } catch (IOException e) {
-            }
+        ApplicationManager.getApplication().runWriteAction(() -> {
+          try {
+            result[0] = dir.createChildData(null, p);
+          } catch (IOException e) {
           }
         });
         return true;
@@ -87,11 +85,7 @@ public class NewFile_Action extends BaseAction {
     Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("project")), IdeBundle.message("prompt.enter.new.file.name"), IdeBundle.message("title.new.file"), Messages.getQuestionIcon(), "", validator);
     if (result[0] != null) {
       ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).refresh();
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).getProjectViewPaneById(FileViewProjectPane.ID).select(null, result[0], true);
-        }
-      });
+      ApplicationManager.getApplication().invokeLater(() -> ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).getProjectViewPaneById(FileViewProjectPane.ID).select(null, result[0], true));
     }
   }
 }

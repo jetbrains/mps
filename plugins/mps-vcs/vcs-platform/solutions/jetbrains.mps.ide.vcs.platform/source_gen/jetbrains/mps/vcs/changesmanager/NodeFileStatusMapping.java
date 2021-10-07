@@ -15,7 +15,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.openapi.vcs.FileStatusManager;
 import jetbrains.mps.util.ComputeRunnable;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
@@ -57,15 +56,13 @@ public class NodeFileStatusMapping implements Disposable {
   }
 
   private void statusChanged(@NotNull final SNodeReference nodePointer) {
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode currentNode = nodePointer.resolve(myProject.getRepository());
-        if (currentNode == null) {
-          return;
-        }
-        FileStatusManager fsm = FileStatusManager.getInstance(myProject.getProject());
-        statusChanged(fsm, currentNode);
+    myProject.getModelAccess().runReadAction(() -> {
+      SNode currentNode = nodePointer.resolve(myProject.getRepository());
+      if (currentNode == null) {
+        return;
       }
+      FileStatusManager fsm = FileStatusManager.getInstance(myProject.getProject());
+      statusChanged(fsm, currentNode);
     });
   }
 
@@ -74,58 +71,54 @@ public class NodeFileStatusMapping implements Disposable {
   }
 
   private void updateNodeStatus(@NotNull final SNodeReference nodePointer) {
-    myRegistry.getCommandQueue().runTask(new Runnable() {
-      public void run() {
-        if (calcStatus(nodePointer)) {
-          statusChanged(nodePointer);
-        }
+    myRegistry.getCommandQueue().runTask(() -> {
+      if (calcStatus(nodePointer)) {
+        statusChanged(nodePointer);
       }
     });
   }
 
   private boolean calcStatus(@NotNull final SNodeReference root) {
-    ComputeRunnable<FileStatus> cr = new ComputeRunnable<FileStatus>(new Computable<FileStatus>() {
-      public FileStatus compute() {
-        SModel m = root.getModelReference().resolve(myProject.getRepository());
-        if (m instanceof EditableSModel && m.getSource() instanceof FileSystemBasedDataSource && !(m.isReadOnly())) {
-          EditableSModel model = (EditableSModel) m;
-          CurrentDifference diff = myRegistry.getCurrentDifference(model);
-          if (!(diff.isTracked())) {
-            return FileStatus.UNKNOWN;
-          }
-          if (diff.isConflicted()) {
-            return FileStatus.MERGED_WITH_CONFLICTS;
-          }
-          if (diff.getChangeSet() == null) {
-            return FileStatus.NOT_CHANGED;
-          }
-          List<ModelChange> modelChanges = check_onkh7z_a0f0b0a0a0a0r(diff.getChangeSet());
-          List<ModelChange> rootChanges = ListSequence.fromList(modelChanges).where(new IWhereFilter<ModelChange>() {
-            public boolean accept(ModelChange ch) {
-              return root.getNodeId().equals(ch.getRootId());
-            }
-          }).distinct().toListSequence();
-          if (ListSequence.fromList(rootChanges).isNotEmpty()) {
-            if (ListSequence.fromList(rootChanges).any(new IWhereFilter<ModelChange>() {
-              public boolean accept(ModelChange it) {
-                return it instanceof AddRootChange;
-              }
-            })) {
-              return FileStatus.ADDED;
-            }
-            if (ListSequence.fromList(rootChanges).any(new IWhereFilter<ModelChange>() {
-              public boolean accept(ModelChange it) {
-                return it instanceof DeleteRootChange;
-              }
-            })) {
-              return FileStatus.DELETED;
-            }
-
-            return FileStatus.MODIFIED;
-          }
+    ComputeRunnable<FileStatus> cr = new ComputeRunnable<FileStatus>(() -> {
+      SModel m = root.getModelReference().resolve(myProject.getRepository());
+      if (m instanceof EditableSModel && m.getSource() instanceof FileSystemBasedDataSource && !(m.isReadOnly())) {
+        EditableSModel model = (EditableSModel) m;
+        CurrentDifference diff = myRegistry.getCurrentDifference(model);
+        if (!(diff.isTracked())) {
+          return FileStatus.UNKNOWN;
         }
-        return FileStatus.NOT_CHANGED;
+        if (diff.isConflicted()) {
+          return FileStatus.MERGED_WITH_CONFLICTS;
+        }
+        if (diff.getChangeSet() == null) {
+          return FileStatus.NOT_CHANGED;
+        }
+        List<ModelChange> modelChanges = check_onkh7z_a0f0b0a0a0a0r(diff.getChangeSet());
+        List<ModelChange> rootChanges = ListSequence.fromList(modelChanges).where(new IWhereFilter<ModelChange>() {
+          public boolean accept(ModelChange ch) {
+            return root.getNodeId().equals(ch.getRootId());
+          }
+        }).distinct().toListSequence();
+        if (ListSequence.fromList(rootChanges).isNotEmpty()) {
+          if (ListSequence.fromList(rootChanges).any(new IWhereFilter<ModelChange>() {
+            public boolean accept(ModelChange it) {
+              return it instanceof AddRootChange;
+            }
+          })) {
+            return FileStatus.ADDED;
+          }
+          if (ListSequence.fromList(rootChanges).any(new IWhereFilter<ModelChange>() {
+            public boolean accept(ModelChange it) {
+              return it instanceof DeleteRootChange;
+            }
+          })) {
+            return FileStatus.DELETED;
+          }
+
+          return FileStatus.MODIFIED;
+        }
       }
+      return FileStatus.NOT_CHANGED;
     });
     myProject.getModelAccess().runReadAction(cr);
     FileStatus status = cr.getResult();
@@ -143,22 +136,16 @@ public class NodeFileStatusMapping implements Disposable {
         return FileStatus.MERGED_WITH_CONFLICTS;
       }
     }
-    myRegistry.getCommandQueue().runTask(new Runnable() {
-      public void run() {
-        myProject.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            SModel md = null;
-            SNode node = nodePointer.resolve(myProject.getRepository());
-            if (node != null) {
-              md = SNodeOperations.getModel(root);
-            }
-            if (md instanceof EditableSModel && !(md.isReadOnly())) {
-              myRegistry.getCurrentDifference((EditableSModel) md).setEnabled(true);
-            }
-          }
-        });
+    myRegistry.getCommandQueue().runTask(() -> myProject.getModelAccess().runReadAction(() -> {
+      SModel md = null;
+      SNode node = nodePointer.resolve(myProject.getRepository());
+      if (node != null) {
+        md = SNodeOperations.getModel(root);
       }
-    });
+      if (md instanceof EditableSModel && !(md.isReadOnly())) {
+        myRegistry.getCurrentDifference((EditableSModel) md).setEnabled(true);
+      }
+    }));
     return myFileStatusMap.get(nodePointer);
   }
 

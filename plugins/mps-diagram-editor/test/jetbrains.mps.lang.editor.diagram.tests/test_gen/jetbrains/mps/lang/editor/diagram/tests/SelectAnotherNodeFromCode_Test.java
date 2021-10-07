@@ -42,23 +42,13 @@ public class SelectAnotherNodeFromCode_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("8041297453110598745", "8041297453110598749");
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              getEditorComponent().selectNode(getNodeById("8041297453110598748"));
-            }
-          });
-        }
-      });
+      SwingUtilities.invokeAndWait(() -> getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> getEditorComponent().selectNode(getNodeById("8041297453110598748"))));
       final Wrappers._T<Mapper<? super SNode, ?>> descendantMapper = new Wrappers._T<Mapper<? super SNode, ?>>();
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          EditorCell selectedCell = getEditorComponent().getSelectedCell();
-          Assert.assertTrue(selectedCell != null);
-          DiagramCell diagramCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), DiagramCell.class, true);
-          descendantMapper.value = diagramCell.getRootMapper().getDescendantMapper(selectedCell.getSNode());
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        EditorCell selectedCell = getEditorComponent().getSelectedCell();
+        Assert.assertTrue(selectedCell != null);
+        DiagramCell diagramCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), DiagramCell.class, true);
+        descendantMapper.value = diagramCell.getRootMapper().getDescendantMapper(selectedCell.getSNode());
       });
       Assert.assertTrue(descendantMapper.value != null && descendantMapper.value.getTarget() != null);
       Assert.assertTrue(((View) descendantMapper.value.getTarget()).focused().get());

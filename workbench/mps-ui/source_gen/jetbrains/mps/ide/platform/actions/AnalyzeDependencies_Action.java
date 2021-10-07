@@ -80,23 +80,21 @@ public class AnalyzeDependencies_Action extends BaseAction {
   /*package*/ DependencyViewerScope computeScope(final AnActionEvent event) {
     SRepository repository = event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository();
     final DependencyViewerScope scope = new DependencyViewerScope(repository);
-    repository.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        if (event.getData(MPSCommonDataKeys.MODELS) != null) {
-          for (SModel model : event.getData(MPSCommonDataKeys.MODELS)) {
-            scope.add(model);
-          }
+    repository.getModelAccess().runReadAction(() -> {
+      if (event.getData(MPSCommonDataKeys.MODELS) != null) {
+        for (SModel model : event.getData(MPSCommonDataKeys.MODELS)) {
+          scope.add(model);
         }
-        if (event.getData(MPSCommonDataKeys.MODULES) != null) {
-          for (SModule module : event.getData(MPSCommonDataKeys.MODULES)) {
-            scope.add(module);
-          }
+      }
+      if (event.getData(MPSCommonDataKeys.MODULES) != null) {
+        for (SModule module : event.getData(MPSCommonDataKeys.MODULES)) {
+          scope.add(module);
         }
-        if (scope.isEmpty()) {
-          SNode node = check_rkpdtm_a0a0c0a0a2a0(event.getData(MPSCommonDataKeys.NODE));
-          if (node != null) {
-            scope.add(node);
-          }
+      }
+      if (scope.isEmpty()) {
+        SNode node = check_rkpdtm_a0a0c0a0a2a0(event.getData(MPSCommonDataKeys.NODE));
+        if (node != null) {
+          scope.add(node);
         }
       }
     });

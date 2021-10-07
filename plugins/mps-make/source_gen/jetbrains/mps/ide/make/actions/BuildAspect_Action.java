@@ -55,19 +55,17 @@ public class BuildAspect_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<List<SModel>> models = new Wrappers._T<List<SModel>>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        List<Language> projectModules = ListSequence.fromList(((List<SModule>) event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModules())).ofType(Language.class).toListSequence();
-        models.value = ListSequence.fromList(projectModules).translate(new ITranslator2<Language, SModel>() {
-          public Iterable<SModel> translate(Language it) {
-            return BuildAspect_Action.this.aspect.getAspectModels(it);
-          }
-        }).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            return GenerationFacade.canGenerate(it);
-          }
-        }).toListSequence();
-      }
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
+      List<Language> projectModules = ListSequence.fromList(((List<SModule>) event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModules())).ofType(Language.class).toListSequence();
+      models.value = ListSequence.fromList(projectModules).translate(new ITranslator2<Language, SModel>() {
+        public Iterable<SModel> translate(Language it) {
+          return BuildAspect_Action.this.aspect.getAspectModels(it);
+        }
+      }).where(new IWhereFilter<SModel>() {
+        public boolean accept(SModel it) {
+          return GenerationFacade.canGenerate(it);
+        }
+      }).toListSequence();
     });
     new MakeActionImpl(new MakeActionParameters(event.getData(MPSCommonDataKeys.MPS_PROJECT)).models(models.value).cleanMake(true)).executeAction();
   }

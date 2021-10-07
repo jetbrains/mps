@@ -30,7 +30,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
-import java.util.Comparator;
 import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.intentions.IntentionsManager;
 import jetbrains.mps.typechecking.TypecheckingSession;
@@ -103,14 +102,12 @@ public class ShowSurroundWithIntentions_Action extends BaseAction {
     int y = selectedCell.getY();
     y += selectedCell.getHeight();
     final Wrappers._T<ListPopup> popup = new Wrappers._T<ListPopup>(null);
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ActionGroup group = ShowSurroundWithIntentions_Action.this.getActionGroup(_params);
-        if (group.getChildren(event).length == 0) {
-          return;
-        }
-        popup.value = JBPopupFactory.getInstance().createActionGroupPopup("Surround with", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.ALPHA_NUMBERING, false);
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(() -> {
+      ActionGroup group = ShowSurroundWithIntentions_Action.this.getActionGroup(_params);
+      if (group.getChildren(event).length == 0) {
+        return;
       }
+      popup.value = JBPopupFactory.getInstance().createActionGroupPopup("Surround with", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.ALPHA_NUMBERING, false);
     });
     if (popup.value == null) {
       return;
@@ -133,11 +130,7 @@ public class ShowSurroundWithIntentions_Action extends BaseAction {
   private ActionGroup getActionGroup(final Map<String, Object> _params) {
     DefaultActionGroup actionGroup = new DefaultActionGroup();
 
-    Iterable<Pair<IntentionExecutable, SNode>> availableIntentions = Sequence.fromIterable(ShowSurroundWithIntentions_Action.this.getAvailableIntentions(_params)).sort(new Comparator<Pair<IntentionExecutable, SNode>>() {
-      public int compare(Pair<IntentionExecutable, SNode> a, Pair<IntentionExecutable, SNode> b) {
-        return ShowSurroundWithIntentions_Action.this.getDescriptior(a, _params).compareTo(ShowSurroundWithIntentions_Action.this.getDescriptior(b, _params));
-      }
-    }, true);
+    Iterable<Pair<IntentionExecutable, SNode>> availableIntentions = Sequence.fromIterable(ShowSurroundWithIntentions_Action.this.getAvailableIntentions(_params)).sort((Pair<IntentionExecutable, SNode> a, Pair<IntentionExecutable, SNode> b) -> ShowSurroundWithIntentions_Action.this.getDescriptior(a, _params).compareTo(ShowSurroundWithIntentions_Action.this.getDescriptior(b, _params)), true);
 
     for (Pair<IntentionExecutable, SNode> pair : Sequence.fromIterable(availableIntentions)) {
       final Pair<IntentionExecutable, SNode> finalPair = pair;

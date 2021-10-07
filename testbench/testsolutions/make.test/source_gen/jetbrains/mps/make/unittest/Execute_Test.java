@@ -14,7 +14,6 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.make.resources.IResource;
 import org.jmock.Expectations;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.make.script.IJob;
@@ -23,6 +22,7 @@ import jetbrains.mps.make.resources.IPropertiesAccessor;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.make.script.IScriptController;
 import jetbrains.mps.make.script.IFeedback;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.jmock.api.Action;
@@ -63,20 +63,14 @@ public class Execute_Test extends MockTestCase {
         atLeast(1).of(res).producesOutput();
         will(Expectations.returnValue(true));
         exactly(1).of(res).createJob();
-        will(Expectations.returnValue(Mockups.job(context, "resjob", new _FunctionTypes._return_P0_E0<IResult>() {
-          public IResult invoke() {
-            return result;
-          }
-        })));
+        will(Expectations.returnValue(Mockups.job(context, "resjob", () -> result)));
         atLeast(1).of(result).output();
         will(Expectations.onConsecutiveCalls(Expectations.returnValue(ListSequence.fromListAndArray(new ArrayList<IResource>(), resA, resB)), Expectations.returnValue(null)));
 
         exactly(1).of(make).createJob();
-        IJob makejob = new IJob() {
-          public IResult execute(Iterable<IResource> input, IJobMonitor mon, IPropertiesAccessor pa, ProgressMonitor progressMonitor) {
-            Assert.assertTrue(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<IResource>(), resA, resB)).disjunction(Sequence.fromIterable(input)).isEmpty());
-            return result;
-          }
+        IJob makejob = (Iterable<IResource> input, IJobMonitor mon, IPropertiesAccessor pa, ProgressMonitor progressMonitor) -> {
+          Assert.assertTrue(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<IResource>(), resA, resB)).disjunction(Sequence.fromIterable(input)).isEmpty());
+          return result;
         };
         will(Expectations.returnValue(makejob));
       }
@@ -107,11 +101,9 @@ public class Execute_Test extends MockTestCase {
     context.checking(new Expectations() {
       {
         exactly(1).of(make).createJob();
-        IJob makejob = new IJob() {
-          public IResult execute(Iterable<IResource> input, IJobMonitor mon, IPropertiesAccessor pa, ProgressMonitor progressMonitor) {
-            Assert.assertTrue(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<IResource>(), resA, resB)).disjunction(Sequence.fromIterable(input)).isEmpty());
-            return result;
-          }
+        IJob makejob = (Iterable<IResource> input, IJobMonitor mon, IPropertiesAccessor pa, ProgressMonitor progressMonitor) -> {
+          Assert.assertTrue(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<IResource>(), resA, resB)).disjunction(Sequence.fromIterable(input)).isEmpty());
+          return result;
         };
         will(Expectations.returnValue(makejob));
       }
@@ -144,11 +136,7 @@ public class Execute_Test extends MockTestCase {
         atLeast(1).of(res).before();
         will(Expectations.returnValue(Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("make")})));
         exactly(1).of(res).createJob();
-        will(Expectations.returnValue(Mockups.job(context, "resjob", new _FunctionTypes._return_P0_E0<IResult>() {
-          public IResult invoke() {
-            return result;
-          }
-        })));
+        will(Expectations.returnValue(Mockups.job(context, "resjob", () -> result)));
         atLeast(1).of(res).producesOutput();
         will(Expectations.returnValue(true));
         atLeast(1).of(result).output();
@@ -160,11 +148,9 @@ public class Execute_Test extends MockTestCase {
         will(Expectations.returnValue(Sequence.<ITarget.Name>singleton(new ITarget.Name("res"))));
 
         exactly(1).of(make).createJob();
-        IJob makejob = new IJob() {
-          public IResult execute(Iterable<IResource> input, IJobMonitor mon, IPropertiesAccessor pa, ProgressMonitor progressMonitor) {
-            Assert.assertTrue(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<IResource>(), resA, resB)).disjunction(Sequence.fromIterable(input)).isEmpty());
-            return result;
-          }
+        IJob makejob = (Iterable<IResource> input, IJobMonitor mon, IPropertiesAccessor pa, ProgressMonitor progressMonitor) -> {
+          Assert.assertTrue(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<IResource>(), resA, resB)).disjunction(Sequence.fromIterable(input)).isEmpty());
+          return result;
         };
         will(Expectations.returnValue(makejob));
 
@@ -203,11 +189,7 @@ public class Execute_Test extends MockTestCase {
         atLeast(1).of(res).before();
         will(Expectations.returnValue(Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("make")})));
         exactly(1).of(res).createJob();
-        will(Expectations.returnValue(Mockups.job(context, "resjob", new _FunctionTypes._return_P0_E0<IResult>() {
-          public IResult invoke() {
-            return result;
-          }
-        })));
+        will(Expectations.returnValue(Mockups.job(context, "resjob", () -> result)));
         atLeast(1).of(res).producesOutput();
         will(Expectations.returnValue(true));
         atLeast(1).of(result).output();
@@ -228,20 +210,14 @@ public class Execute_Test extends MockTestCase {
         atLeast(1).of(dup).after();
         will(Expectations.returnValue(Sequence.<ITarget.Name>singleton(new ITarget.Name("res"))));
         exactly(1).of(dup).createJob();
-        will(Expectations.returnValue(Mockups.job(context, "resjob2", new _FunctionTypes._return_P0_E0<IResult>() {
-          public IResult invoke() {
-            return result;
-          }
-        })));
+        will(Expectations.returnValue(Mockups.job(context, "resjob2", () -> result)));
         atLeast(1).of(dup).producesOutput();
         will(Expectations.returnValue(true));
 
         exactly(1).of(make).createJob();
-        IJob makejob = new IJob() {
-          public IResult execute(Iterable<IResource> input, IJobMonitor mon, IPropertiesAccessor pa, ProgressMonitor progressMonitor) {
-            Assert.assertTrue(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<IResource>(), resA, resB)).disjunction(Sequence.fromIterable(input)).isEmpty());
-            return result;
-          }
+        IJob makejob = (Iterable<IResource> input, IJobMonitor mon, IPropertiesAccessor pa, ProgressMonitor progressMonitor) -> {
+          Assert.assertTrue(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<IResource>(), resA, resB)).disjunction(Sequence.fromIterable(input)).isEmpty());
+          return result;
         };
         will(Expectations.returnValue(makejob));
       }
@@ -276,11 +252,7 @@ public class Execute_Test extends MockTestCase {
     context.checking(new Expectations() {
       {
         exactly(1).of(res).createJob();
-        will(Expectations.returnValue(Mockups.job(context, "resjob", new _FunctionTypes._return_P0_E0<IResult>() {
-          public IResult invoke() {
-            return result;
-          }
-        })));
+        will(Expectations.returnValue(Mockups.job(context, "resjob", () -> result)));
         atLeast(1).of(res).producesOutput();
         will(Expectations.returnValue(true));
         atLeast(1).of(result).output();
@@ -363,11 +335,7 @@ public class Execute_Test extends MockTestCase {
         atLeast(1).of(res).producesOutput();
         will(Expectations.returnValue(true));
         exactly(1).of(res).createJob();
-        will(Expectations.returnValue(Mockups.job(context, "resjob", new _FunctionTypes._return_P0_E0<IResult>() {
-          public IResult invoke() {
-            return okresult;
-          }
-        })));
+        will(Expectations.returnValue(Mockups.job(context, "resjob", () -> okresult)));
         atLeast(1).of(okresult).output();
         will(Expectations.returnValue(ListSequence.fromListAndArray(new ArrayList<IResource>(), resA, resB)));
 
@@ -376,11 +344,9 @@ public class Execute_Test extends MockTestCase {
         atLeast(1).of(gen).after();
         will(Expectations.returnValue(Sequence.fromArray(new ITarget.Name[]{new ITarget.Name("res")})));
 
-        IJob genjob = new IJob() {
-          public IResult execute(Iterable<IResource> input, IJobMonitor mon, IPropertiesAccessor pa, ProgressMonitor progressMonitor) {
-            Assert.assertTrue(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<IResource>(), resA, resB)).disjunction(Sequence.fromIterable(input)).isEmpty());
-            return failresult;
-          }
+        IJob genjob = (Iterable<IResource> input, IJobMonitor mon, IPropertiesAccessor pa, ProgressMonitor progressMonitor) -> {
+          Assert.assertTrue(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<IResource>(), resA, resB)).disjunction(Sequence.fromIterable(input)).isEmpty());
+          return failresult;
         };
         exactly(1).of(gen).createJob();
         will(Expectations.returnValue(genjob));
@@ -421,25 +387,21 @@ public class Execute_Test extends MockTestCase {
         atLeast(1).of(config).before();
         will(Expectations.returnValue(Sequence.<ITarget.Name>singleton(new ITarget.Name("make"))));
         exactly(1).of(config).createJob();
-        IJob cj = new IJob() {
-          public IResult execute(Iterable<IResource> res, IJobMonitor mon, IPropertiesAccessor pa, ProgressMonitor progressMonitor) {
-            String[] arr = pa.global().properties(new ITarget.Name("make"), (new String[0]).getClass());
-            arr[0] = "BARFOO";
-            return new IResult.SUCCESS(res);
-          }
+        IJob cj = (Iterable<IResource> res, IJobMonitor mon, IPropertiesAccessor pa, ProgressMonitor progressMonitor) -> {
+          String[] arr = pa.global().properties(new ITarget.Name("make"), (new String[0]).getClass());
+          arr[0] = "BARFOO";
+          return new IResult.SUCCESS(res);
         };
         will(Expectations.returnValue(cj));
 
         exactly(1).of(make).createParameters((Class<?>) with(Expectations.aNonNull(Class.class)));
         will(Expectations.returnValue(vars));
         exactly(1).of(make).createJob();
-        IJob mj = new IJob() {
-          public IResult execute(Iterable<IResource> res, IJobMonitor mon, IPropertiesAccessor pa, ProgressMonitor progressMonitor) {
-            String[] arr = pa.global().properties(new ITarget.Name("make"), (new String[0]).getClass());
-            Assert.assertEquals("BARFOO", arr[0]);
-            arr[0] = "FUBAR";
-            return new IResult.SUCCESS(res);
-          }
+        IJob mj = (Iterable<IResource> res, IJobMonitor mon, IPropertiesAccessor pa, ProgressMonitor progressMonitor) -> {
+          String[] arr = pa.global().properties(new ITarget.Name("make"), (new String[0]).getClass());
+          Assert.assertEquals("BARFOO", arr[0]);
+          arr[0] = "FUBAR";
+          return new IResult.SUCCESS(res);
         };
         will(Expectations.returnValue(mj));
       }

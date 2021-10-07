@@ -62,11 +62,7 @@ import java.util.Collections;
       }
       final Wrappers._T<SModule> module = new Wrappers._T<SModule>();
       final SRepository repo = myProject.getRepository();
-      repo.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          module.value = repo.getModules().iterator().next();
-        }
-      });
+      repo.getModelAccess().runReadAction(() -> module.value = repo.getModules().iterator().next());
       processor.process(new ScriptApplied(module.value, ListSequence.fromList(getModuleMig()).first().getReference()));
     }
     public void checkLibs(ProgressMonitor m, Processor<Pair<SModule, SModule>> processor) {
@@ -220,25 +216,23 @@ import java.util.Collections;
   private List<ScriptApplied> getModuleMigrationsApplied() {
     final Wrappers._T<List<ScriptApplied>> res = new Wrappers._T<List<ScriptApplied>>();
     final SRepository repo = myProject.getRepository();
-    repo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        final List<SModule> modules = Sequence.fromIterable(((Iterable<SModule>) repo.getModules())).take(3).toListSequence();
-        res.value = ListSequence.fromList(TestMigrationSession.this.getModuleMig()).translate(new ITranslator2<MigrationScript, ScriptApplied>() {
-          public Iterable<ScriptApplied> translate(final MigrationScript script) {
-            return ListSequence.fromList(modules).where(new IWhereFilter<SModule>() {
-              public boolean accept(SModule it) {
-                int si = ListSequence.fromList(getModuleMig()).indexOf(script);
-                int mi = ListSequence.fromList(modules).indexOf(it);
-                return ListSequence.fromList(mySettings.lMigrations).getElement(si).applyToModules[mi];
-              }
-            }).select(new ISelector<SModule, ScriptApplied>() {
-              public ScriptApplied select(SModule module) {
-                return new ScriptApplied(module, script.getReference());
-              }
-            });
-          }
-        }).toListSequence();
-      }
+    repo.getModelAccess().runReadAction(() -> {
+      final List<SModule> modules = Sequence.fromIterable(((Iterable<SModule>) repo.getModules())).take(3).toListSequence();
+      res.value = ListSequence.fromList(TestMigrationSession.this.getModuleMig()).translate(new ITranslator2<MigrationScript, ScriptApplied>() {
+        public Iterable<ScriptApplied> translate(final MigrationScript script) {
+          return ListSequence.fromList(modules).where(new IWhereFilter<SModule>() {
+            public boolean accept(SModule it) {
+              int si = ListSequence.fromList(getModuleMig()).indexOf(script);
+              int mi = ListSequence.fromList(modules).indexOf(it);
+              return ListSequence.fromList(mySettings.lMigrations).getElement(si).applyToModules[mi];
+            }
+          }).select(new ISelector<SModule, ScriptApplied>() {
+            public ScriptApplied select(SModule module) {
+              return new ScriptApplied(module, script.getReference());
+            }
+          });
+        }
+      }).toListSequence();
     });
     return res.value;
   }

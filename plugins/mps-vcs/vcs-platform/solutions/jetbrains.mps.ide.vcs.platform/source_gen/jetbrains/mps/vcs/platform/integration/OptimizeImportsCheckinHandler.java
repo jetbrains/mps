@@ -96,36 +96,20 @@ public class OptimizeImportsCheckinHandler extends CheckinHandler {
           try {
             final int modelsNumber = affectedModels.size();
             monitor.start("Optimizing imports of " + modelsNumber + " models", modelsNumber);
-            WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
-              public void run() {
-              }
+            WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> {
             });
 
             final OptimizeImportsHelper helper = new OptimizeImportsHelper(repository, mpsProject.getComponent(ModelsAutoImportsManager.class));
-            ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-              public void run() {
-                repository.getModelAccess().executeCommand(new Runnable() {
-                  public void run() {
-                    helper.optimizeModelsImports(affectedModels, monitor.subTask(modelsNumber));
-                  }
-                });
-              }
-            }, ModalityState.current());
+            ApplicationManager.getApplication().invokeAndWait(() -> repository.getModelAccess().executeCommand(() -> helper.optimizeModelsImports(affectedModels, monitor.subTask(modelsNumber))), ModalityState.current());
             if (monitor.isCanceled()) {
               return;
             }
             monitor.step("Saving...");
-            WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
-              public void run() {
-                repository.getModelAccess().executeCommand(new Runnable() {
-                  public void run() {
-                    for (SModel affectedModel : affectedModels) {
-                      ((EditableSModel) affectedModel).save();
-                    }
-                  }
-                });
+            WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> repository.getModelAccess().executeCommand(() -> {
+              for (SModel affectedModel : affectedModels) {
+                ((EditableSModel) affectedModel).save();
               }
-            });
+            }));
             monitor.advance(1);
 
           } catch (Throwable e) {

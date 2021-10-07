@@ -115,15 +115,7 @@ public class ModalProgressAction_Action extends BaseAction {
         // The correct way to call command with progress is as follows
         // The dialog might not show up if the method for the usual read & write locks are used
         adapter.step("Do some work in command in EDT...");
-        WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
-          public void run() {
-            repository.getModelAccess().executeCommand(new Runnable() {
-              public void run() {
-                ModalProgressAction_Action.this.doWork(event);
-              }
-            });
-          }
-        }, ModalityState.defaultModalityState());
+        WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> repository.getModelAccess().executeCommand(() -> ModalProgressAction_Action.this.doWork(event)), ModalityState.defaultModalityState());
 
         adapter.advance(stepValue);
         if (adapter.isCanceled()) {
@@ -131,14 +123,12 @@ public class ModalProgressAction_Action extends BaseAction {
         }
 
         adapter.step("Do some work with Read Lock in EDT using IDEA API...");
-        WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(new Runnable() {
-          public void run() {
-            repository.getModelAccess().runReadAction(new Runnable() {
-              public void run() {
-                ModalProgressAction_Action.this.doWork(event);
-              }
-            });
-          }
+        WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> {
+          repository.getModelAccess().runReadAction(new Runnable() {
+            public void run() {
+              ModalProgressAction_Action.this.doWork(event);
+            }
+          });
         });
 
         adapter.advance(stepValue);
@@ -200,11 +190,7 @@ public class ModalProgressAction_Action extends BaseAction {
 
     // The execute() method of actions must be very quick
     // so every long calculation must be invoked outside of this method like this:
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        ProgressManager.getInstance().run(modalTask);
-      }
-    });
+    ApplicationManager.getApplication().invokeLater(() -> ProgressManager.getInstance().run(modalTask));
   }
   private void block(CyclicBarrier barrier, final AnActionEvent event) {
     try {

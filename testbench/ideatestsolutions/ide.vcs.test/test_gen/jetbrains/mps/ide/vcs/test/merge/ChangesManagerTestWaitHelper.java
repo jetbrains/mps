@@ -44,38 +44,34 @@ public class ChangesManagerTestWaitHelper {
     final FileStatusManager fsm = FileStatusManager.getInstance(myProject);
     // In case fs is not updated, we need to stop waiting, so set timeout to 5 seconds
     int fsUpdateTimeout = 5000;
-    waitForSomething(new Runnable() {
-      public void run() {
-        final Wrappers._T<FileStatusListener> listener = new Wrappers._T<FileStatusListener>();
-        final _FunctionTypes._void_P0_E0 stopIfNeeded = new _FunctionTypes._void_P0_E0() {
-          public void invoke() {
-            if (expectedFileStatus == fsm.getStatus(file)) {
-              fsm.removeFileStatusListener(listener.value);
-              // Wait until changes manager is notified about changed file status
-              try {
-                Thread.sleep(100);
-              } catch (InterruptedException e) {
-                e.printStackTrace();
-              }
-              waitCompleted();
-            }
+    waitForSomething(() -> {
+      final Wrappers._T<FileStatusListener> listener = new Wrappers._T<FileStatusListener>();
+      final _FunctionTypes._void_P0_E0 stopIfNeeded = () -> {
+        if (expectedFileStatus == fsm.getStatus(file)) {
+          fsm.removeFileStatusListener(listener.value);
+          // Wait until changes manager is notified about changed file status
+          try {
+            Thread.sleep(100);
+          } catch (InterruptedException e) {
+            e.printStackTrace();
           }
-        };
-        listener.value = new FileStatusListener() {
-          @Override
-          public void fileStatusesChanged() {
-            stopIfNeeded.invoke();
-          }
-          @Override
-          public void fileStatusChanged(@NotNull VirtualFile f) {
-            stopIfNeeded.invoke();
-          }
-        };
-        fsm.addFileStatusListener(listener.value);
-        VcsDirtyScopeManager.getInstance(myProject).fileDirty(file);
-        ChangeListManagerImpl.getInstanceImpl(myProject).scheduleUpdate();
-        stopIfNeeded.invoke();
-      }
+          waitCompleted();
+        }
+      };
+      listener.value = new FileStatusListener() {
+        @Override
+        public void fileStatusesChanged() {
+          stopIfNeeded.invoke();
+        }
+        @Override
+        public void fileStatusChanged(@NotNull VirtualFile f) {
+          stopIfNeeded.invoke();
+        }
+      };
+      fsm.addFileStatusListener(listener.value);
+      VcsDirtyScopeManager.getInstance(myProject).fileDirty(file);
+      ChangeListManagerImpl.getInstanceImpl(myProject).scheduleUpdate();
+      stopIfNeeded.invoke();
     }, fsUpdateTimeout);
   }
 
@@ -91,11 +87,7 @@ public class ChangesManagerTestWaitHelper {
     }
   }
   public void waitForDiffRegistry() {
-    waitForSomething(new Runnable() {
-      public void run() {
-        CurrentDifferenceRegistry.getInstance(myProject).getCommandQueue().addTask(new WaitForChangesManagerTask());
-      }
-    }, -1);
+    waitForSomething(() -> CurrentDifferenceRegistry.getInstance(myProject).getCommandQueue().addTask(new WaitForChangesManagerTask()), -1);
   }
 
   public void waitForReloadFinished() {

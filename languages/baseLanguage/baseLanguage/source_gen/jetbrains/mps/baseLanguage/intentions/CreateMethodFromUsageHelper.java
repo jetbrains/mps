@@ -142,14 +142,12 @@ public class CreateMethodFromUsageHelper {
       return false;
     }
 
-    ex.exec(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        if (sameClassifier) {
-          SelectionUtil.selectCell(myEditorContext, method.value, SelectionManager.FIRST_EDITABLE_CELL);
-        } else {
-          Editor editor = NavigationSupport.getInstance().openNode(myEditorContext.getOperationContext().getProject(), cls, true, false);
-          editor.getEditorContext().selectWRTFocusPolicy(method.value);
-        }
+    ex.exec(() -> {
+      if (sameClassifier) {
+        SelectionUtil.selectCell(myEditorContext, method.value, SelectionManager.FIRST_EDITABLE_CELL);
+      } else {
+        Editor editor = NavigationSupport.getInstance().openNode(myEditorContext.getOperationContext().getProject(), cls, true, false);
+        editor.getEditorContext().selectWRTFocusPolicy(method.value);
       }
     });
     return true;

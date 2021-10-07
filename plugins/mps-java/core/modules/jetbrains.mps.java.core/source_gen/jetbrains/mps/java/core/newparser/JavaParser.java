@@ -25,7 +25,6 @@ import org.eclipse.jdt.internal.core.util.RecordedParsingInformation;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Comparator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.behaviour.BHReflection;
@@ -169,11 +168,7 @@ public class JavaParser {
       positions.value = ((FullASTConverter) converter).getPositions();
     }
 
-    Iterable<FullASTConverter.CodeBlock> blcks = Sequence.fromIterable(blocks).sort(new Comparator<FullASTConverter.CodeBlock>() {
-      public int compare(FullASTConverter.CodeBlock a, FullASTConverter.CodeBlock b) {
-        return a.getEndPos() - b.getEndPos();
-      }
-    }, true);
+    Iterable<FullASTConverter.CodeBlock> blcks = Sequence.fromIterable(blocks).sort((FullASTConverter.CodeBlock a, FullASTConverter.CodeBlock b) -> a.getEndPos() - b.getEndPos(), true);
     for (int[] comment : comments) {
       if (comment[1] > 0) {
         // javadoc

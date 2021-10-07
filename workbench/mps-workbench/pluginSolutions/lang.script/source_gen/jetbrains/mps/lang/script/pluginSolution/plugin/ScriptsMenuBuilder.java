@@ -9,7 +9,6 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import java.util.Comparator;
 import jetbrains.mps.ide.script.plugin.ScriptsActionGroupHelper;
 import jetbrains.mps.workbench.action.BaseGroup;
 
@@ -20,11 +19,7 @@ import jetbrains.mps.workbench.action.BaseGroup;
   public ScriptsMenuBuilder(MPSProject mpsProject, boolean applyToSelection) {
     this.applyToSelection = applyToSelection;
     this.allLanguages = ListSequence.fromListWithValues(new ArrayList<Language>(), new ModuleRepositoryFacade(mpsProject).getAllModules(Language.class));
-    ListSequence.fromList(this.allLanguages).sort(new Comparator<Language>() {
-      public int compare(Language l1, Language l2) {
-        return l1.getModuleName().compareTo(l2.getModuleName());
-      }
-    }, true);
+    ListSequence.fromList(this.allLanguages).sort((Language l1, Language l2) -> l1.getModuleName().compareTo(l2.getModuleName()), true);
     this.allScripts = ScriptsActionGroupHelper.getMigrationScripts(this.allLanguages);
   }
   public BaseGroup create_ByCategoryPopup() {

@@ -43,7 +43,6 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.vcs.log.impl.VcsLogApplicationSettings;
 import com.intellij.vcs.log.impl.CommonUiProperties;
 import com.intellij.openapi.vcs.annotate.AnnotationTooltipBuilder;
-import com.intellij.util.containers.Convertor;
 import git4idea.log.GitCommitTooltipLinkHandler;
 import com.intellij.openapi.vcs.VcsBundle;
 import com.intellij.util.text.DateFormatUtil;
@@ -334,11 +333,7 @@ public final class CommitsGraphNode implements Comparable {
 
       AnnotationTooltipBuilder atb = new AnnotationTooltipBuilder(project, true);
 
-      atb.appendRevisionLine(myRevision.getRevisionNumber(), new Convertor<VcsRevisionNumber, String>() {
-        public String convert(VcsRevisionNumber number) {
-          return GitCommitTooltipLinkHandler.createLink(number.asString(), number);
-        }
-      });
+      atb.appendRevisionLine(myRevision.getRevisionNumber(), (VcsRevisionNumber number) -> GitCommitTooltipLinkHandler.createLink(number.asString(), number));
       atb.appendLine(VcsBundle.message("commit.description.tooltip.author", myRevision.getAuthor()));
       atb.appendLine(VcsBundle.message("commit.description.tooltip.date", DateFormatUtil.formatDate(date)));
       atb.appendCommitMessageBlock(myRevision.getCommitMessage());

@@ -45,70 +45,62 @@ import org.jetbrains.annotations.NonNls;
 public class IdeCommandUtil {
   public static void make(final Project project, final Iterable<? extends SModel> models, final Iterable<? extends SModule> modules, final boolean wholeProject, final boolean dirtyOnly, final boolean depClosure) {
     final Wrappers._T<List<SModel>> modelsToGenerate = new Wrappers._T<List<SModel>>();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        if (wholeProject) {
-          modelsToGenerate.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), new ProjectScope(project).getModels());
-        } else {
-          modelsToGenerate.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<SModel>(), models)).concat(Sequence.fromIterable(modules).translate(new ITranslator2<SModule, SModel>() {
-            public Iterable<SModel> translate(SModule it) {
-              return it.getModels();
+    project.getRepository().getModelAccess().runReadAction(() -> {
+      if (wholeProject) {
+        modelsToGenerate.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), new ProjectScope(project).getModels());
+      } else {
+        modelsToGenerate.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<SModel>(), models)).concat(Sequence.fromIterable(modules).translate(new ITranslator2<SModule, SModel>() {
+          public Iterable<SModel> translate(SModule it) {
+            return it.getModels();
+          }
+        })));
+      }
+      if (depClosure) {
+        Iterable<SModel> dependencies = modelsToGenerate.value;
+        int oldSize;
+        do {
+          dependencies = Sequence.fromIterable(dependencies).translate(new ITranslator2<SModel, SModel>() {
+            public Iterable<SModel> translate(SModel it) {
+              return Sequence.fromIterable(((Iterable<SModelReference>) SModelOperations.getImportedModelUIDs(it))).select(new ISelector<SModelReference, SModel>() {
+                public SModel select(SModelReference it) {
+                  return it.resolve(project.getRepository());
+                }
+              });
             }
-          })));
-        }
-        if (depClosure) {
-          Iterable<SModel> dependencies = modelsToGenerate.value;
-          int oldSize;
-          do {
-            dependencies = Sequence.fromIterable(dependencies).translate(new ITranslator2<SModel, SModel>() {
-              public Iterable<SModel> translate(SModel it) {
-                return Sequence.fromIterable(((Iterable<SModelReference>) SModelOperations.getImportedModelUIDs(it))).select(new ISelector<SModelReference, SModel>() {
-                  public SModel select(SModelReference it) {
-                    return it.resolve(project.getRepository());
-                  }
-                });
-              }
-            }).where(new IWhereFilter<SModel>() {
-              public boolean accept(SModel it) {
-                return GenerationFacade.canGenerate(it);
-              }
-            }).distinct().subtract(ListSequence.fromList(modelsToGenerate.value)).toListSequence();
-            oldSize = ListSequence.fromList(modelsToGenerate.value).count();
-            ListSequence.fromList(modelsToGenerate.value).addSequence(Sequence.fromIterable(dependencies));
-          } while (ListSequence.fromList(modelsToGenerate.value).count() > oldSize);
-        }
-        if (dirtyOnly) {
-          final ModelGenerationStatusManager mgsm = project.getComponent(ModelGenerationStatusManager.class);
-          modelsToGenerate.value = ListSequence.fromList(modelsToGenerate.value).where(new IWhereFilter<SModel>() {
+          }).where(new IWhereFilter<SModel>() {
             public boolean accept(SModel it) {
-              return mgsm.generationRequired(it);
+              return GenerationFacade.canGenerate(it);
             }
-          }).toListSequence();
-        } else {
-          modelsToGenerate.value = ListSequence.fromList(modelsToGenerate.value).toListSequence();
-        }
+          }).distinct().subtract(ListSequence.fromList(modelsToGenerate.value)).toListSequence();
+          oldSize = ListSequence.fromList(modelsToGenerate.value).count();
+          ListSequence.fromList(modelsToGenerate.value).addSequence(Sequence.fromIterable(dependencies));
+        } while (ListSequence.fromList(modelsToGenerate.value).count() > oldSize);
+      }
+      if (dirtyOnly) {
+        final ModelGenerationStatusManager mgsm = project.getComponent(ModelGenerationStatusManager.class);
+        modelsToGenerate.value = ListSequence.fromList(modelsToGenerate.value).where(new IWhereFilter<SModel>() {
+          public boolean accept(SModel it) {
+            return mgsm.generationRequired(it);
+          }
+        }).toListSequence();
+      } else {
+        modelsToGenerate.value = ListSequence.fromList(modelsToGenerate.value).toListSequence();
       }
     });
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        new MakeActionImpl(new MakeActionParameters(project).models(modelsToGenerate.value).cleanMake(false)).executeAction();
-      }
-    });
+    SwingUtilities.invokeLater(() -> new MakeActionImpl(new MakeActionParameters(project).models(modelsToGenerate.value).cleanMake(false)).executeAction());
   }
 
   public static void cleanCaches(final Project project, final Iterable<? extends SModel> models, final Iterable<? extends SModule> modules, final boolean wholeProject) {
     final Wrappers._T<List<SModel>> modelsToClean = new Wrappers._T<List<SModel>>();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        if (wholeProject) {
-          modelsToClean.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), new ProjectScope(project).getModels());
-        } else {
-          modelsToClean.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<SModel>(), models)).concat(Sequence.fromIterable(modules).translate(new ITranslator2<SModule, SModel>() {
-            public Iterable<SModel> translate(SModule it) {
-              return it.getModels();
-            }
-          })));
-        }
+    project.getRepository().getModelAccess().runReadAction(() -> {
+      if (wholeProject) {
+        modelsToClean.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), new ProjectScope(project).getModels());
+      } else {
+        modelsToClean.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<SModel>(), models)).concat(Sequence.fromIterable(modules).translate(new ITranslator2<SModule, SModel>() {
+          public Iterable<SModel> translate(SModule it) {
+            return it.getModels();
+          }
+        })));
       }
     });
     project.getComponent(ModelGenerationStatusManager.class).discard(ListSequence.fromList(modelsToClean.value).where(new IWhereFilter<SModel>() {
@@ -120,38 +112,36 @@ public class IdeCommandUtil {
 
   public static void removeGenSources(final Project project, final Iterable<? extends SModel> models, Iterable<? extends SModule> modules, final boolean wholeProject) {
     final Wrappers._T<Iterable<? extends SModule>> _modules = new Wrappers._T<Iterable<? extends SModule>>(modules);
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        if (wholeProject) {
-          _modules.value = (Iterable<? extends SModule>) (Iterable<SModule>) project.getProjectModulesWithGenerators();
-        }
-        final Consumer<IFile> deleteIfFile = new Consumer<IFile>() {
-          public void accept(IFile file) {
-            if (!(file.isDirectory())) {
-              file.deleteIfExists();
-            }
-          }
-        };
-        Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            return !(it.getModule().isPackaged()) && GenerationFacade.canGenerate(it);
-          }
-        }).visitAll(new IVisitor<SModel>() {
-          public void visit(SModel model) {
-            for (SModuleFacet mf : model.getModule().getFacets()) {
-              if (mf instanceof GenerationTargetFacet) {
-                GenerationTargetFacet genFacet = ((GenerationTargetFacet) mf);
-
-                check_nf7729_a2a0a0a0a0c0a0a4(check_nf7729_a0c0a0a0a0a2a0a0e(genFacet.getOutputLocation(model)), deleteIfFile);
-                check_nf7729_a3a0a0a0a0c0a0a4(check_nf7729_a0d0a0a0a0a2a0a0e(genFacet.getOutputCacheLocation(model)), deleteIfFile);
-              }
-              if (mf instanceof JavaModuleFacet) {
-                check_nf7729_a0a1a0a0a0c0a0a4(check_nf7729_a0a0b0a0a0a2a0a0e(((JavaModuleFacet) mf).getClassesLocation(model)), deleteIfFile);
-              }
-            }
-          }
-        });
+    project.getRepository().getModelAccess().runReadAction(() -> {
+      if (wholeProject) {
+        _modules.value = (Iterable<? extends SModule>) (Iterable<SModule>) project.getProjectModulesWithGenerators();
       }
+      final Consumer<IFile> deleteIfFile = new Consumer<IFile>() {
+        public void accept(IFile file) {
+          if (!(file.isDirectory())) {
+            file.deleteIfExists();
+          }
+        }
+      };
+      Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
+        public boolean accept(SModel it) {
+          return !(it.getModule().isPackaged()) && GenerationFacade.canGenerate(it);
+        }
+      }).visitAll(new IVisitor<SModel>() {
+        public void visit(SModel model) {
+          for (SModuleFacet mf : model.getModule().getFacets()) {
+            if (mf instanceof GenerationTargetFacet) {
+              GenerationTargetFacet genFacet = ((GenerationTargetFacet) mf);
+
+              check_nf7729_a2a0a0a0a0c0a0a4(check_nf7729_a0c0a0a0a0a2a0a0e(genFacet.getOutputLocation(model)), deleteIfFile);
+              check_nf7729_a3a0a0a0a0c0a0a4(check_nf7729_a0d0a0a0a0a2a0a0e(genFacet.getOutputCacheLocation(model)), deleteIfFile);
+            }
+            if (mf instanceof JavaModuleFacet) {
+              check_nf7729_a0a1a0a0a0c0a0a4(check_nf7729_a0a0b0a0a0a2a0a0e(((JavaModuleFacet) mf).getClassesLocation(model)), deleteIfFile);
+            }
+          }
+        }
+      });
     });
     Sequence.fromIterable(_modules.value).visitAll(new IVisitor<SModule>() {
       public void visit(SModule module) {

@@ -53,13 +53,11 @@ public class SelectPortQuery_Test extends BaseTransformationTest {
         processSecondaryMouseEvent(eventTargetComponent_vw537p_a0, x_vw537p_a0, y_vw537p_a0, MouseEvent.MOUSE_CLICKED);
       }
       final Wrappers._T<Mapper> descendantMapper = new Wrappers._T<Mapper>();
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          EditorCell selectedCell = getEditorComponent().getSelectedCell();
-          Assert.assertTrue(selectedCell != null);
-          DiagramCell diagramCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), DiagramCell.class, true);
-          descendantMapper.value = diagramCell.getRootMapper().getDescendantMapper(SPropertyOperations.getString(getNodeById("2278461409092334466"), PROPS.name$MnvL));
-        }
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        EditorCell selectedCell = getEditorComponent().getSelectedCell();
+        Assert.assertTrue(selectedCell != null);
+        DiagramCell diagramCell = CellFinderUtil.findChildByClass(getEditorComponent().getRootCell(), DiagramCell.class, true);
+        descendantMapper.value = diagramCell.getRootMapper().getDescendantMapper(SPropertyOperations.getString(getNodeById("2278461409092334466"), PROPS.name$MnvL));
       });
       Assert.assertTrue(descendantMapper.value != null && descendantMapper.value.getTarget() != null);
       Assert.assertTrue(((View) descendantMapper.value.getTarget()).focused().get());

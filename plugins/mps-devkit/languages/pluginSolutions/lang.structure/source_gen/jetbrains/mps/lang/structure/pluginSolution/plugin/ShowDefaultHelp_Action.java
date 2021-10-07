@@ -67,18 +67,16 @@ public class ShowDefaultHelp_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        if (HelpHelper.getDefaultHelpFor(event.getData(MPSCommonDataKeys.CONTEXT_MODULE), event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODE)) == null) {
-          ContextHelpAction contextHelpAction = new ContextHelpAction();
-          contextHelpAction.update(event);
-          if (event.getPresentation().isEnabled()) {
-            contextHelpAction.actionPerformed(event);
-          }
-          return;
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
+      if (HelpHelper.getDefaultHelpFor(event.getData(MPSCommonDataKeys.CONTEXT_MODULE), event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODE)) == null) {
+        ContextHelpAction contextHelpAction = new ContextHelpAction();
+        contextHelpAction.update(event);
+        if (event.getPresentation().isEnabled()) {
+          contextHelpAction.actionPerformed(event);
         }
-        HelpHelper.showHelpFor(event.getData(MPSCommonDataKeys.CONTEXT_MODULE), event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODE));
+        return;
       }
+      HelpHelper.showHelpFor(event.getData(MPSCommonDataKeys.CONTEXT_MODULE), event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODE));
     });
   }
 }

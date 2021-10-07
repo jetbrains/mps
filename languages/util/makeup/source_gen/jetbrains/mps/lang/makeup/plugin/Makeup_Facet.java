@@ -105,32 +105,30 @@ public class Makeup_Facet extends IFacet.Stub {
                   outputModelRepo = monitor.getSession().getProject().getRepository();
                 }
                 final FilesDelta d = new FilesDelta(new DeltaKey(res.getModule(), res.getModel()));
-                outputModelRepo.getModelAccess().runReadAction(new Runnable() {
-                  public void run() {
-                    for (TextUnit tu : generatedTextUnits) {
-                      SNode startNode = tu.getStartNode();
-                      SNode annotationCopy = new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us).get(startNode);
-                      if ((annotationCopy == null)) {
-                        continue;
-                      }
-                      // TODO process macro/property values in the location, but assume it's absolute path for now
-                      String destination = SPropertyOperations.getString(annotationCopy, PROPS.location$Jy3A);
-                      if ((destination == null || destination.length() == 0)) {
-                        continue;
-                      }
-                      if (MacrosFactory.containsMacro(destination)) {
-                        destination = moduleMacros.expandPath(destination);
-                      }
-                      monitor.reportFeedback(new IFeedback.INFORMATION(String.valueOf(String.format("copy textgen outcome: %s --> %s", tu.getFileName(), destination))));
+                outputModelRepo.getModelAccess().runReadAction(() -> {
+                  for (TextUnit tu : generatedTextUnits) {
+                    SNode startNode = tu.getStartNode();
+                    SNode annotationCopy = new IAttributeDescriptor.NodeAttribute(CONCEPTS.CopyOutcome$us).get(startNode);
+                    if ((annotationCopy == null)) {
+                      continue;
+                    }
+                    // TODO process macro/property values in the location, but assume it's absolute path for now
+                    String destination = SPropertyOperations.getString(annotationCopy, PROPS.location$Jy3A);
+                    if ((destination == null || destination.length() == 0)) {
+                      continue;
+                    }
+                    if (MacrosFactory.containsMacro(destination)) {
+                      destination = moduleMacros.expandPath(destination);
+                    }
+                    monitor.reportFeedback(new IFeedback.INFORMATION(String.valueOf(String.format("copy textgen outcome: %s --> %s", tu.getFileName(), destination))));
 
-                      // next code could be outside of model read
-                      IFile destFile = localFileSystem.getFile(destination);
-                      boolean changed = fp.saveContent(destFile, tu.getBytes());
-                      if (changed) {
-                        d.written(destFile);
-                      } else {
-                        d.kept(destFile);
-                      }
+                    // next code could be outside of model read
+                    IFile destFile = localFileSystem.getFile(destination);
+                    boolean changed = fp.saveContent(destFile, tu.getBytes());
+                    if (changed) {
+                      d.written(destFile);
+                    } else {
+                      d.kept(destFile);
                     }
                   }
                 });
@@ -145,11 +143,7 @@ public class Makeup_Facet extends IFacet.Stub {
 
               subProgress_a0a0a.advance(1);
 
-              localFileSystem.runWriteTransaction(new Runnable() {
-                public void run() {
-                  fp.flushChanges();
-                }
-              });
+              localFileSystem.runWriteTransaction(() -> fp.flushChanges());
 
               subProgress_a0a0a.done();
             default:

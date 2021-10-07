@@ -40,11 +40,7 @@ public class MoveStaticField implements MoveNodesAction {
   }
   public boolean isApplicable(MPSProject project, final List<SNode> nodes) {
     final Wrappers._boolean result = new Wrappers._boolean();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        result.value = ListSequence.fromList(nodes).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), CONCEPTS.StaticFieldDeclaration$jR);
-      }
-    });
+    project.getRepository().getModelAccess().runReadAction(() -> result.value = ListSequence.fromList(nodes).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(nodes).first(), CONCEPTS.StaticFieldDeclaration$jR));
     return result.value;
   }
   public void execute(MPSProject project, List<SNode> nodes) {

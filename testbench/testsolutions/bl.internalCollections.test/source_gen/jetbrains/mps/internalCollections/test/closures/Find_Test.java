@@ -69,22 +69,14 @@ __switch__:
         return it % 2 == 0;
       }
     }));
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super Integer> cl = new _FunctionTypes._return_P1_E0<Boolean, Integer>() {
-      public Boolean invoke(Integer it) {
-        return it % 2 == 0;
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super Integer> cl = (Integer it) -> it % 2 == 0;
     Assert.assertSame(2, Sequence.fromIterable(test).findFirst(cl));
     Assert.assertSame(10, Sequence.fromIterable(test).findLast(new IWhereFilter<Integer>() {
       public boolean accept(Integer it) {
         return it % 2 == 0;
       }
     }));
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super Integer> cl2 = new _FunctionTypes._return_P1_E0<Boolean, Integer>() {
-      public Boolean invoke(Integer it) {
-        return it % 2 == 0;
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super Integer> cl2 = (Integer it) -> it % 2 == 0;
     Assert.assertSame(2, Sequence.fromIterable(test).findFirst(cl2));
   }
   @Test
@@ -151,22 +143,14 @@ __switch__:
         return it % 2 == 0;
       }
     }));
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super Integer> cl = new _FunctionTypes._return_P1_E0<Boolean, Integer>() {
-      public Boolean invoke(Integer it) {
-        return it % 2 == 0;
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super Integer> cl = (Integer it) -> it % 2 == 0;
     Assert.assertTrue(Sequence.fromIterable(test).any(cl));
     Assert.assertFalse(Sequence.fromIterable(test).all(new IWhereFilter<Integer>() {
       public boolean accept(Integer it) {
         return it % 2 == 1;
       }
     }));
-    _FunctionTypes._return_P1_E0<? extends Boolean, ? super Integer> cl2 = new _FunctionTypes._return_P1_E0<Boolean, Integer>() {
-      public Boolean invoke(Integer it) {
-        return it % 2 == 1;
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Boolean, ? super Integer> cl2 = (Integer it) -> it % 2 == 1;
     Assert.assertFalse(Sequence.fromIterable(test).all(cl2));
     Assert.assertTrue(Sequence.fromIterable(test).all(new IWhereFilter<Integer>() {
       public boolean accept(Integer it) {

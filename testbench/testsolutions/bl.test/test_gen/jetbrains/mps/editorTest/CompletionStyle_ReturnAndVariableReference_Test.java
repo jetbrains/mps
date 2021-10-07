@@ -36,14 +36,12 @@ public class CompletionStyle_ReturnAndVariableReference_Test extends BaseTransfo
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("8199816903240326886", "8199816903240326896");
-      EditorTestUtil.runWithCompletionStyling(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
-          invokeAction("jetbrains.mps.ide.editor.actions.InsertBefore_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
-        }
+      EditorTestUtil.runWithCompletionStyling(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
+        invokeAction("jetbrains.mps.ide.editor.actions.InsertBefore_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
       }, true);
 
     }

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import java.util.function.Supplier;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -106,11 +105,7 @@ public class MethodResolveUtil {
           if (SNodeOperations.isInstanceOf(term, CONCEPTS.Type$bu)) {
             typeOfArg = term;
           } else {
-            typeOfArg = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<SNode>() {
-              public SNode get() {
-                return TypecheckingFacade.getFromContext().getTypeOf(term);
-              }
-            });
+            typeOfArg = TypecheckingFacade.getFromContext().computeIsolated(() -> TypecheckingFacade.getFromContext().getTypeOf(term));
           }
 
           typeOfArg = GenericTypesUtil.getTypeWithResolvedTypeVars(SNodeOperations.as(typeOfArg, CONCEPTS.Type$bu), typeByTypeVar);

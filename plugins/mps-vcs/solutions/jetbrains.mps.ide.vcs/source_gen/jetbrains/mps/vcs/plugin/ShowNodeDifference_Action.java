@@ -67,12 +67,10 @@ public class ShowNodeDifference_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode n1 = event.getData(MPSCommonDataKeys.NODES).get(0);
-        SNode n2 = event.getData(MPSCommonDataKeys.NODES).get(1);
-        StructDifferenceDialog.showNodeDifference(event.getData(CommonDataKeys.PROJECT), n1, n2, n1.toString(), n2.toString());
-      }
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> {
+      SNode n1 = event.getData(MPSCommonDataKeys.NODES).get(0);
+      SNode n2 = event.getData(MPSCommonDataKeys.NODES).get(1);
+      StructDifferenceDialog.showNodeDifference(event.getData(CommonDataKeys.PROJECT), n1, n2, n1.toString(), n2.toString());
     });
   }
 }

@@ -15,7 +15,6 @@ import jetbrains.mps.make.facet.ITarget;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.make.script.IScript;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -73,47 +72,45 @@ public class CoreMakeTask {
     monitor.start("", clsize);
     try {
       final Wrappers._int idx = new Wrappers._int(0);
-      myMakeSequence.iterate(new _FunctionTypes._return_P2_E0<Boolean, IScript, Iterable<IResource>>() {
-        public Boolean invoke(IScript scr, Iterable<IResource> cl) {
-          boolean isEmptySeq = Sequence.fromIterable(cl).isEmpty();
-          if (isEmptySeq || !(scr.isValid())) {
-            String msg = myScrName + ((isEmptySeq ? " not started: empty make sequence" : " not started: invalid make sequence"));
-            myMessageHandler.handle(new Message((isEmptySeq ? MessageKind.WARNING : MessageKind.ERROR), CoreMakeTask.class, msg));
-            displayInfo(msg);
-            for (IMessage err : scr.validationErrors()) {
-              myMessageHandler.handle(err);
-            }
-            CoreMakeTask.this.myResult = (isEmptySeq ? new IResult.SUCCESS(null) : new IResult.FAILURE(null));
-            return false;
+      myMakeSequence.iterate((IScript scr, Iterable<IResource> cl) -> {
+        boolean isEmptySeq = Sequence.fromIterable(cl).isEmpty();
+        if (isEmptySeq || !(scr.isValid())) {
+          String msg = myScrName + ((isEmptySeq ? " not started: empty make sequence" : " not started: invalid make sequence"));
+          myMessageHandler.handle(new Message((isEmptySeq ? MessageKind.WARNING : MessageKind.ERROR), CoreMakeTask.class, msg));
+          displayInfo(msg);
+          for (IMessage err : scr.validationErrors()) {
+            myMessageHandler.handle(err);
           }
+          CoreMakeTask.this.myResult = (isEmptySeq ? new IResult.SUCCESS(null) : new IResult.FAILURE(null));
+          return false;
+        }
 
-          if (InternalFlag.isInternalMode()) {
-            myMessageHandler.handle(new Message(MessageKind.INFORMATION, "Modules cluster " + (idx.value + 1) + "/" + clsize + " [" + IterableUtils.join(Sequence.fromIterable(cl).select(new ISelector<IResource, String>() {
-              public String select(IResource r) {
-                return (r).describe();
-              }
-            }), ", ") + "]"));
-          }
-
-          monitor.step((idx.value + 1) + "/" + clsize + " " + IterableUtils.join(Sequence.fromIterable(cl).select(new ISelector<IResource, String>() {
+        if (InternalFlag.isInternalMode()) {
+          myMessageHandler.handle(new Message(MessageKind.INFORMATION, "Modules cluster " + (idx.value + 1) + "/" + clsize + " [" + IterableUtils.join(Sequence.fromIterable(cl).select(new ISelector<IResource, String>() {
             public String select(IResource r) {
               return (r).describe();
             }
-          }), ","));
-          myResult = scr.execute(CoreMakeTask.this.myController, cl, monitor.subTask(1));
-          if (CoreMakeTask.this.myResult instanceof CompositeResult) {
-            IResource timeStatResource = Sequence.fromIterable(((CompositeResult) CoreMakeTask.this.myResult).getResult(Script.TIME_STATISTIC_RESULT_NAME).output()).first();
-            Map<ITarget.Name, Long> currentStatistic = ((TimeStatisticResource) timeStatResource).getStatistic();
-            for (ITarget.Name targetName : SetSequence.fromSet(MapSequence.fromMap(currentStatistic).keySet())) {
-              MapSequence.fromMap(timeStatistic).put(targetName, ((MapSequence.fromMap(timeStatistic).containsKey(targetName) ? MapSequence.fromMap(timeStatistic).get(targetName) : 0)) + MapSequence.fromMap(currentStatistic).get(targetName));
-            }
-          }
-          if (!(CoreMakeTask.this.myResult.isSucessful()) || monitor.isCanceled()) {
-            return false;
-          }
-          idx.value++;
-          return true;
+          }), ", ") + "]"));
         }
+
+        monitor.step((idx.value + 1) + "/" + clsize + " " + IterableUtils.join(Sequence.fromIterable(cl).select(new ISelector<IResource, String>() {
+          public String select(IResource r) {
+            return (r).describe();
+          }
+        }), ","));
+        myResult = scr.execute(CoreMakeTask.this.myController, cl, monitor.subTask(1));
+        if (CoreMakeTask.this.myResult instanceof CompositeResult) {
+          IResource timeStatResource = Sequence.fromIterable(((CompositeResult) CoreMakeTask.this.myResult).getResult(Script.TIME_STATISTIC_RESULT_NAME).output()).first();
+          Map<ITarget.Name, Long> currentStatistic = ((TimeStatisticResource) timeStatResource).getStatistic();
+          for (ITarget.Name targetName : SetSequence.fromSet(MapSequence.fromMap(currentStatistic).keySet())) {
+            MapSequence.fromMap(timeStatistic).put(targetName, ((MapSequence.fromMap(timeStatistic).containsKey(targetName) ? MapSequence.fromMap(timeStatistic).get(targetName) : 0)) + MapSequence.fromMap(currentStatistic).get(targetName));
+          }
+        }
+        if (!(CoreMakeTask.this.myResult.isSucessful()) || monitor.isCanceled()) {
+          return false;
+        }
+        idx.value++;
+        return true;
       });
     } finally {
       long overallTime = Sequence.fromIterable(MapSequence.fromMap(timeStatistic).values()).foldLeft(0L, new ILeftCombinator<Long, Long>() {

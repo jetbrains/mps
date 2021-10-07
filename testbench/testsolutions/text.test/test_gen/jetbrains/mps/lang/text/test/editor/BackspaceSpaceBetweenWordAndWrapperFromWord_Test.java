@@ -34,11 +34,7 @@ public class BackspaceSpaceBetweenWordAndWrapperFromWord_Test extends BaseTransf
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6328114375522061919", "6328114375522061944");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action"), false);
     }
   }
 }

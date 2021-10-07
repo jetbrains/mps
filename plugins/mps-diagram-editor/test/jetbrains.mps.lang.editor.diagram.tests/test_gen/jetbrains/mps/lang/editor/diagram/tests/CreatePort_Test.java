@@ -38,11 +38,7 @@ public class CreatePort_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("2278461409093572745", "2278461409093572838");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommandInEDT(new Runnable() {
-        public void run() {
-          SNodeFactoryOperations.addNewChild(getNodeById("2278461409093572746"), LINKS.outputs$oKtu, null);
-        }
-      });
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().executeCommandInEDT(() -> SNodeFactoryOperations.addNewChild(getNodeById("2278461409093572746"), LINKS.outputs$oKtu, null));
       // Here used to be MA.flushEventQueue, which seems useless here, press mouse would post its own events to EDT, so that
       // by the time events are processed, the command to add a new node is over for sure.
       {

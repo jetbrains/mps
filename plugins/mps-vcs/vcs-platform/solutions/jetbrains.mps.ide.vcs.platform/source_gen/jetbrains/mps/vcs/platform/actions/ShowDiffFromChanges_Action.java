@@ -55,12 +55,10 @@ public class ShowDiffFromChanges_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Bounds bounds = new ChangesStripActionsHelper(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), ((EditorContext) MapSequence.fromMap(_params).get("editorContext"))).getCurrentChangeGroupPositionAndHidePopup();
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadInEDT(new Runnable() {
-      public void run() {
-        SNode editedNode = ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent().getEditedNode();
-        final VcsActionsUtil vau = new VcsActionsUtil(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), editedNode.getReference(), editedNode.getContainingRoot().getName());
-        vau.showRootDifference(bounds);
-      }
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadInEDT(() -> {
+      SNode editedNode = ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent().getEditedNode();
+      final VcsActionsUtil vau = new VcsActionsUtil(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), editedNode.getReference(), editedNode.getContainingRoot().getName());
+      vau.showRootDifference(bounds);
     });
   }
 }

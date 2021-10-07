@@ -134,11 +134,7 @@ public class NamedTupleLiteral_Contribution extends SubstituteMenuBase {
         @Nullable
         @Override
         public SNode createNode(@NotNull String pattern) {
-          _FunctionTypes._return_P1_E0<? extends SNode, ? super SNode> toRef = new _FunctionTypes._return_P1_E0<SNode, SNode>() {
-            public SNode invoke(SNode cmp) {
-              return _quotation_createNode_4kfnt3_a0a0a0a0a0(cmp);
-            }
-          };
+          _FunctionTypes._return_P1_E0<? extends SNode, ? super SNode> toRef = (SNode cmp) -> _quotation_createNode_4kfnt3_a0a0a0a0a0(cmp);
           return _quotation_createNode_4kfnt3_a1a0a0(ListSequence.fromList(NamedTupleDeclaration__BehaviorDescriptor.allExtends_id2ItBWjOSZqc.invoke(myParameterObject)).reversedList().translate(new ITranslator2<SNode, SNode>() {
             public Iterable<SNode> translate(SNode ntd) {
               return SLinkOperations.getChildren(ntd, LINKS.component$wCHx);

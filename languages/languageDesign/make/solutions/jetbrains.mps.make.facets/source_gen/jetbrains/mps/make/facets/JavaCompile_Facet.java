@@ -30,7 +30,6 @@ import jetbrains.mps.make.ErrorsLoggingHandler;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.make.script.IConfig;
@@ -102,14 +101,12 @@ public class JavaCompile_Facet extends IFacet.Stub {
               }
               // XXX it's odd to use dedicated ErrorsLoggingHandler provided ModuleMaker reports errors to log itself (in addition to IMessageHandler, see MessageSender). Do I need ELH here?
               final IMessageHandler msgHandler = new ErrorsLoggingHandler(LogManager.getLogger(new IFacet.Name("jetbrains.mps.make.facets.JavaCompile").getName())).compose(monitor.getSession().getMessageHandler());
-              MPSCompilationResult cr = new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(new Computable<MPSCompilationResult>() {
-                public MPSCompilationResult compute() {
-                  ModuleMaker mm = new ModuleMaker(msgHandler);
-                  // FIXME would be great to re-use deps known to textGen facet, however
-                  //    can not compile code as this class lives in IDEA-compiled solution,
-                  //    while TextGen facet is part of lang.core/plugin, managed by MPS
-                  return mm.make(toCompile, progressMonitor, vars(pa.global()).options());
-                }
+              MPSCompilationResult cr = new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(() -> {
+                ModuleMaker mm = new ModuleMaker(msgHandler);
+                // FIXME would be great to re-use deps known to textGen facet, however
+                //    can not compile code as this class lives in IDEA-compiled solution,
+                //    while TextGen facet is part of lang.core/plugin, managed by MPS
+                return mm.make(toCompile, progressMonitor, vars(pa.global()).options());
               });
               vars(pa.global()).compiledAnything(vars(pa.global()).compiledAnything() || cr.isCompiledAnything());
               if (!(cr.isOk())) {
@@ -270,14 +267,12 @@ public class JavaCompile_Facet extends IFacet.Stub {
               subProgress_p0a0b.start("Compiling in IntelliJ IDEA", 1);
 
               subProgress_p0a0b.advance(1);
-              CompilationResult cr = new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(new Computable<CompilationResult>() {
-                public CompilationResult compute() {
-                  return compiler.compileModules(Sequence.fromIterable(toCompile).select(new ISelector<TResource, SModule>() {
-                    public SModule select(TResource it) {
-                      return it.module();
-                    }
-                  }).toGenericArray(SModule.class));
-                }
+              CompilationResult cr = new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(() -> {
+                return compiler.compileModules(Sequence.fromIterable(toCompile).select(new ISelector<TResource, SModule>() {
+                  public SModule select(TResource it) {
+                    return it.module();
+                  }
+                }).toGenericArray(SModule.class));
               });
               if (!(cr.isOk())) {
                 if (cr.getErrorsCount() > 0) {

@@ -55,13 +55,11 @@ public class BlockContentView extends CenterVerticalLayoutView implements Movabl
       @Override
       protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
         super.registerSynchronizers(configuration);
-        configuration.add(Synchronizers.forProperty(isClicked, new Runnable() {
-          public void run() {
-            if (isClicked.get()) {
-              myRectView.background().set(Color.DARK_GREEN);
-            } else {
-              myRectView.background().set(Color.CYAN);
-            }
+        configuration.add(Synchronizers.forProperty(isClicked, () -> {
+          if (isClicked.get()) {
+            myRectView.background().set(Color.DARK_GREEN);
+          } else {
+            myRectView.background().set(Color.CYAN);
           }
         }));
       }

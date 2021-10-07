@@ -16,10 +16,6 @@ import com.intellij.openapi.application.ApplicationManager;
 
   @Override
   public void replaceNodes(final Runnable runnable) {
-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-      public void run() {
-        myModelAccess.executeUndoTransparentCommand(runnable);
-      }
-    });
+    ApplicationManager.getApplication().invokeAndWait(() -> myModelAccess.executeUndoTransparentCommand(runnable));
   }
 }

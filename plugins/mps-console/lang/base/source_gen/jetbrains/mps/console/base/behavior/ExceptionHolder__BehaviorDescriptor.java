@@ -35,11 +35,7 @@ public final class ExceptionHolder__BehaviorDescriptor extends BaseBHDescriptor 
   /*package*/ static Runnable execute_id7oNS25df64x(@NotNull SNode __thisNode__, final MPSProject project) {
     // Need to use local variable to save trace for later call
     final String stackTrace = SPropertyOperations.getString(__thisNode__, PROPS.stackTrace$ZaSU);
-    return new Runnable() {
-      public void run() {
-        AnalyzeStacktraceUtil.addConsole(project.getProject(), null, "<Stacktrace>", stackTrace);
-      }
-    };
+    return () -> AnalyzeStacktraceUtil.addConsole(project.getProject(), null, "<Stacktrace>", stackTrace);
   }
   /*package*/ static boolean canExecute_id2QdC0h7dh1h(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(__thisNode__, PROPS.stackTrace$ZaSU) != null;

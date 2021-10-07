@@ -34,7 +34,6 @@ import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Arrays;
-import java.util.Comparator;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -98,37 +97,31 @@ public class FindReferencesToNonReferenceable_Action extends BaseAction {
     final Wrappers._int referenceable = new Wrappers._int();
     final Map<String, Integer> used = MapSequence.fromMap(new HashMap<String, Integer>());
 
-    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ListSequence.fromList(modelDescriptors).visitAll(new IVisitor<SModel>() {
-          public void visit(SModel it) {
-            for (SNode n : it.getRootNodes()) {
-              for (SNode i : SNodeOperations.getNodeDescendants(n, null, true, new SAbstractConcept[]{})) {
-                SNode ccp = SNodeOperations.as(SNodeOperations.asNode(SNodeOperations.getConcept(i)), CONCEPTS.ConceptDeclaration$gH);
-                if (ccp != null) {
-                  total.value++;
-                  if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(ccp, PROPS.staticScope$PjQk), 0x4b014033eedc8becL))) {
-                    referenceable.value++;
-                    String cname = ((String) BHReflection.invoke0(ccp, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
-                    if (MapSequence.fromMap(used).containsKey(cname)) {
-                      MapSequence.fromMap(used).put(cname, MapSequence.fromMap(used).get(cname) + 1);
-                    } else {
-                      MapSequence.fromMap(used).put(cname, 1);
-                    }
+    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(() -> {
+      ListSequence.fromList(modelDescriptors).visitAll(new IVisitor<SModel>() {
+        public void visit(SModel it) {
+          for (SNode n : it.getRootNodes()) {
+            for (SNode i : SNodeOperations.getNodeDescendants(n, null, true, new SAbstractConcept[]{})) {
+              SNode ccp = SNodeOperations.as(SNodeOperations.asNode(SNodeOperations.getConcept(i)), CONCEPTS.ConceptDeclaration$gH);
+              if (ccp != null) {
+                total.value++;
+                if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(ccp, PROPS.staticScope$PjQk), 0x4b014033eedc8becL))) {
+                  referenceable.value++;
+                  String cname = ((String) BHReflection.invoke0(ccp, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+                  if (MapSequence.fromMap(used).containsKey(cname)) {
+                    MapSequence.fromMap(used).put(cname, MapSequence.fromMap(used).get(cname) + 1);
+                  } else {
+                    MapSequence.fromMap(used).put(cname, 1);
                   }
                 }
               }
             }
           }
-        });
-      }
+        }
+      });
     });
     String[] usedNames = SetSequence.fromSet(MapSequence.fromMap(used).keySet()).toGenericArray(String.class);
-    Arrays.sort(usedNames, new Comparator<String>() {
-      public int compare(String a, String b) {
-        return new Integer(MapSequence.fromMap(used).get(a)).compareTo(MapSequence.fromMap(used).get(b));
-      }
-    });
+    Arrays.sort(usedNames, (String a, String b) -> new Integer(MapSequence.fromMap(used).get(a)).compareTo(MapSequence.fromMap(used).get(b)));
     System.out.println("" + referenceable.value + " out of " + total.value + " nodes are referenceable");
     for (String s : usedNames) {
       System.out.println(MapSequence.fromMap(used).get(s) + "  " + s);

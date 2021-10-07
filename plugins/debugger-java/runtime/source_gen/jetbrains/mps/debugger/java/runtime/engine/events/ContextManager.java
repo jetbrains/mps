@@ -43,20 +43,12 @@ public class ContextManager {
     if (context instanceof EventContext) {
       assert ((EventContext) context).isProcessed();
       ListSequence.fromList(mySuspendedContexts).removeElement((EventContext) context);
-      tryResume5Times((EventContext) context, new _FunctionTypes._void_P1_E0<EventContext>() {
-        public void invoke(EventContext c) {
-          c.resume();
-        }
-      });
+      tryResume5Times((EventContext) context, (EventContext c) -> c.resume());
     } else if (context instanceof UserContext) {
       assert myUserContext == context;
       myUserContext = null;
       // I do not want to have resume method in the interface and do not want to create a class
-      tryResume5Times(((UserContext) context), new _FunctionTypes._void_P1_E0<UserContext>() {
-        public void invoke(UserContext c) {
-          c.resume();
-        }
-      });
+      tryResume5Times(((UserContext) context), (UserContext c) -> c.resume());
     } else {
       assert false : "Do not know what kind of context it is " + context;
     }

@@ -33,11 +33,7 @@ public abstract class ButtonsPainter extends AbstractFoldingAreaPainter {
     myWidth = (GAP + ICON_SIZE) * iconCount + LEFT_MARGIN;
     myChangeGroupLayout = changeGroupLayout;
     myHighlightLeft = changeGroupLayout.getLeftComponent() == editorComponent;
-    myChangeGroupLayout.addInvalidateListener(new ChangeGroupInvalidateListener() {
-      public void changeGroupsInvalidated() {
-        relayout();
-      }
-    });
+    myChangeGroupLayout.addInvalidateListener(() -> relayout());
   }
   protected boolean isHighlightLeft() {
     return myHighlightLeft;

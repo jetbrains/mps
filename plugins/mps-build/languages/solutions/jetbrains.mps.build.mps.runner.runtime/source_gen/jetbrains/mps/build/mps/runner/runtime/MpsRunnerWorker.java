@@ -9,7 +9,6 @@ import jetbrains.mps.tool.environment.IdeaEnvironment;
 import jetbrains.mps.tool.common.MpsRunnerProperties;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.project.structure.modules.ModuleReference;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -17,7 +16,6 @@ import jetbrains.mps.module.ReloadableModule;
 import java.util.List;
 import java.lang.reflect.Method;
 import java.util.Arrays;
-import java.util.function.Predicate;
 import java.lang.reflect.Modifier;
 import java.util.stream.Collectors;
 import jetbrains.mps.core.platform.Platform;
@@ -42,32 +40,26 @@ public class MpsRunnerWorker extends WorkerBase {
     final MPSModuleRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
 
     // XXX no idea why model write, perhaps, read would suffice
-    Class<?> mainClass = new ModelAccessHelper(repo).runWriteAction(new Computable<Class<?>>() {
-      public Class<?> compute() {
-        SModuleReference solutionRef = ModuleReference.parseReference(properties.getSolution());
-        SModule module = solutionRef.resolve(repo);
-        if (!(module instanceof ReloadableModule)) {
-          return null;
-        }
-        try {
-          return ((ReloadableModule) module).getClass(properties.getStartClass());
-        } catch (ClassNotFoundException e) {
-          error(noClassMsg(properties));
-          e.printStackTrace(System.err);
-        }
+    Class<?> mainClass = new ModelAccessHelper(repo).runWriteAction(() -> {
+      SModuleReference solutionRef = ModuleReference.parseReference(properties.getSolution());
+      SModule module = solutionRef.resolve(repo);
+      if (!(module instanceof ReloadableModule)) {
         return null;
       }
+      try {
+        return ((ReloadableModule) module).getClass(properties.getStartClass());
+      } catch (ClassNotFoundException e) {
+        error(noClassMsg(properties));
+        e.printStackTrace(System.err);
+      }
+      return null;
     });
     if (mainClass == null) {
       throw new NoClassDefFoundError(noClassMsg(properties));
     }
     try {
       final String methodName = properties.getStartMethod();
-      List<Method> methods = Arrays.stream(mainClass.getMethods()).filter(new Predicate<Method>() {
-        public boolean test(Method m) {
-          return methodName.equals(m.getName()) && Modifier.isStatic(m.getModifiers()) && m.getParameterCount() < 2;
-        }
-      }).collect(Collectors.<Method>toList());
+      List<Method> methods = Arrays.stream(mainClass.getMethods()).filter((Method m) -> methodName.equals(m.getName()) && Modifier.isStatic(m.getModifiers()) && m.getParameterCount() < 2).collect(Collectors.<Method>toList());
       if (methods.isEmpty()) {
         error(String.format("No public static method %s in the class %s", methodName, mainClass.getName()));
         return;

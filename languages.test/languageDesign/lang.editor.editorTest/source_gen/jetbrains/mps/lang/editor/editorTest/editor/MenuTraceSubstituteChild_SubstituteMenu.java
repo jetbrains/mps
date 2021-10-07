@@ -37,7 +37,6 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.Objects;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
@@ -272,11 +271,7 @@ public class MenuTraceSubstituteChild_SubstituteMenu extends SubstituteMenuBase 
   }
   public class SMP_Subconcepts_fxbim_f extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
     protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.MenuTraceSubstituteChild$3B).stream().filter(new Predicate<SAbstractConcept>() {
-        public boolean test(SAbstractConcept concept) {
-          return filterConcept(_context, concept);
-        }
-      }).collect(Collectors.toList());
+      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.MenuTraceSubstituteChild$3B).stream().filter((SAbstractConcept concept) -> filterConcept(_context, concept)).collect(Collectors.toList());
     }
     private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
       return Objects.equals(concept, CONCEPTS.MenuTraceSubstituteSubChild2$di);

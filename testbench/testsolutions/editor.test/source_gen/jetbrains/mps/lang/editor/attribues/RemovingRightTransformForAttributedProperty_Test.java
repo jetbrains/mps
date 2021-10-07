@@ -35,11 +35,7 @@ public class RemovingRightTransformForAttributedProperty_Test extends BaseTransf
     public void testMethodImpl() throws Exception {
       initEditorComponent("3447504547919057577", "3447504547919057582");
       typeString(" ");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action"), false);
     }
   }
 }

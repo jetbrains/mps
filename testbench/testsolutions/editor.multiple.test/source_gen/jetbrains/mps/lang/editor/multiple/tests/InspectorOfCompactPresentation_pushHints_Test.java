@@ -43,15 +43,9 @@ public class InspectorOfCompactPresentation_pushHints_Test extends BaseTransform
       EditorCell rootCell = component.getInspector().getRootCell();
       Assert.assertTrue(rootCell instanceof EditorCell_Label && ((EditorCell_Label) rootCell).getText().equals("default"));
       component.getUpdater().setInitialEditorHints(new String[]{"jetbrains.mps.lang.editor.multiple.testLanguage.editor.MultipleEditorTestHints.compact"});
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          component.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              component.rebuildEditorContent();
-            }
-          });
-          component.getEditorContext().flushEvents();
-        }
+      SwingUtilities.invokeAndWait(() -> {
+        component.getEditorContext().getRepository().getModelAccess().runReadAction(() -> component.rebuildEditorContent());
+        component.getEditorContext().flushEvents();
       });
       rootCell = component.getInspector().getRootCell();
       Assert.assertTrue(rootCell instanceof EditorCell_Label && ((EditorCell_Label) rootCell).getText().equals("compact"));

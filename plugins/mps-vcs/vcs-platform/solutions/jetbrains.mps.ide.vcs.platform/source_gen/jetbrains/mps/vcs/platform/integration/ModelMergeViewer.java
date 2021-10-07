@@ -35,7 +35,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.apache.log4j.Level;
 import java.io.IOException;
 import javax.swing.JComponent;
-import com.intellij.openapi.util.BooleanGetter;
 import javax.swing.Action;
 import com.intellij.diff.merge.MergeResult;
 import com.intellij.diff.merge.MergeUtil;
@@ -124,14 +123,12 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
               }
             }
             if (resultContent.value != null) {
-              ApplicationManager.getApplication().runWriteAction(new Runnable() {
-                public void run() {
-                  try {
-                    file.setBinaryContent(resultContent.value);
-                  } catch (IOException e) {
-                    if (LOG_276369528.isEnabledFor(Level.ERROR)) {
-                      LOG_276369528.error("Cannot save merge result into " + file.getPath(), e);
-                    }
+              ApplicationManager.getApplication().runWriteAction(() -> {
+                try {
+                  file.setBinaryContent(resultContent.value);
+                } catch (IOException e) {
+                  if (LOG_276369528.isEnabledFor(Level.ERROR)) {
+                    LOG_276369528.error("Cannot save merge result into " + file.getPath(), e);
                   }
                 }
               });
@@ -165,11 +162,7 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
     MergeTool.ToolbarComponents components = new MergeTool.ToolbarComponents();
 
     components.toolbarActions = myPanel.getToolbarActions();
-    components.closeHandler = new BooleanGetter() {
-      public boolean get() {
-        return allowCancel();
-      }
-    };
+    components.closeHandler = () -> allowCancel();
     return components;
   }
   @Nullable

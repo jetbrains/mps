@@ -103,15 +103,13 @@ public class CollectTests_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._boolean done = new Wrappers._boolean(false);
     IdeEventQueue.getInstance().flushQueue();
-    ProgressManager.getInstance().runProcessWithProgressSynchronously(new Runnable() {
-      public void run() {
-        ProgressIndicator proInd = ProgressManager.getInstance().getProgressIndicator();
-        proInd.pushState();
-        try {
-          done.value = CollectTests_Action.this.doExecute(proInd, _params);
-        } finally {
-          proInd.popState();
-        }
+    ProgressManager.getInstance().runProcessWithProgressSynchronously(() -> {
+      ProgressIndicator proInd = ProgressManager.getInstance().getProgressIndicator();
+      proInd.pushState();
+      try {
+        done.value = CollectTests_Action.this.doExecute(proInd, _params);
+      } finally {
+        proInd.popState();
       }
     }, "Collecting Tests", true, ((Project) MapSequence.fromMap(_params).get("project")));
     if (!(done.value)) {
@@ -122,15 +120,13 @@ public class CollectTests_Action extends BaseAction {
     final SModel model = ((SModel) MapSequence.fromMap(_params).get("modelDesc"));
     final Wrappers._T<List<SModuleReference>> solutions = new Wrappers._T<List<SModuleReference>>();
     final SRepository projectRepo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
-    projectRepo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        Iterable<Solution> allSolutions = new ModuleRepositoryFacade(projectRepo).getAllModules(Solution.class);
-        solutions.value = Sequence.fromIterable(allSolutions).select(new ISelector<Solution, SModuleReference>() {
-          public SModuleReference select(Solution s) {
-            return s.getModuleReference();
-          }
-        }).toListSequence();
-      }
+    projectRepo.getModelAccess().runReadAction(() -> {
+      Iterable<Solution> allSolutions = new ModuleRepositoryFacade(projectRepo).getAllModules(Solution.class);
+      solutions.value = Sequence.fromIterable(allSolutions).select(new ISelector<Solution, SModuleReference>() {
+        public SModuleReference select(Solution s) {
+          return s.getModuleReference();
+        }
+      }).toListSequence();
     });
 
     int done = 0;
@@ -141,11 +137,9 @@ public class CollectTests_Action extends BaseAction {
       proInd.setText("Processing " + mref.getModuleName());
       final Wrappers._T<SModule> module = new Wrappers._T<SModule>(null);
       final Wrappers._T<List<SModel>> models = new Wrappers._T<List<SModel>>();
-      projectRepo.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          module.value = mref.resolve(projectRepo);
-          models.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), (module.value == null ? null : module.value.getModels()));
-        }
+      projectRepo.getModelAccess().runReadAction(() -> {
+        module.value = mref.resolve(projectRepo);
+        models.value = ListSequence.fromListWithValues(new ArrayList<SModel>(), (module.value == null ? null : module.value.getModels()));
       });
       if (module.value != null) {
         for (final SModel smodel : models.value) {
@@ -154,38 +148,30 @@ public class CollectTests_Action extends BaseAction {
             continue;
           }
           final List<SNode> tests = new ArrayList<SNode>();
-          projectRepo.getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              collected.value = new TestCollector().collectTests(smodel, tests);
-            }
-          });
+          projectRepo.getModelAccess().runReadAction(() -> collected.value = new TestCollector().collectTests(smodel, tests));
 
           if (collected.value) {
-            ThreadUtils.runInUIThreadAndWait(new Runnable() {
-              public void run() {
-                projectRepo.getModelAccess().executeCommand(new Runnable() {
-                  public void run() {
-                    SNode suite = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ModuleSuite$mR)).findFirst(new IWhereFilter<SNode>() {
-                      public boolean accept(SNode it) {
-                        return IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(it, LINKS.moduleRef$vM9R)).equals(module.value.getModuleReference());
-                      }
-                    });
-                    if (suite != null) {
-                      for (final SNode tref : tests) {
-                        if (!(ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$R3jf)).any(new IWhereFilter<SNode>() {
-                          public boolean accept(SNode it) {
-                            return (boolean) ITestRef__BehaviorDescriptor.isSame_id1ouvi_ymQH.invoke(it, tref);
-                          }
-                        }))) {
-                          ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$R3jf)).addElement(SNodeOperations.cast(tref, CONCEPTS.ITestRef$zt));
-                          ((SModelInternal) model).addModelImport(smodel.getReference());
-                          ((AbstractModule) ((SModel) MapSequence.fromMap(_params).get("modelDesc")).getModule()).addDependency(module.value.getModuleReference(), false);
-                        }
-                      }
-                    }
+            ThreadUtils.runInUIThreadAndWait(() -> {
+              projectRepo.getModelAccess().executeCommand(() -> {
+                SNode suite = ListSequence.fromList(SModelOperations.roots(model, CONCEPTS.ModuleSuite$mR)).findFirst(new IWhereFilter<SNode>() {
+                  public boolean accept(SNode it) {
+                    return IModuleRef__BehaviorDescriptor.moduleReference_id173Z5qAOun8.invoke(SLinkOperations.getTarget(it, LINKS.moduleRef$vM9R)).equals(module.value.getModuleReference());
                   }
                 });
-              }
+                if (suite != null) {
+                  for (final SNode tref : tests) {
+                    if (!(ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$R3jf)).any(new IWhereFilter<SNode>() {
+                      public boolean accept(SNode it) {
+                        return (boolean) ITestRef__BehaviorDescriptor.isSame_id1ouvi_ymQH.invoke(it, tref);
+                      }
+                    }))) {
+                      ListSequence.fromList(SLinkOperations.getChildren(suite, LINKS.testRef$R3jf)).addElement(SNodeOperations.cast(tref, CONCEPTS.ITestRef$zt));
+                      ((SModelInternal) model).addModelImport(smodel.getReference());
+                      ((AbstractModule) ((SModel) MapSequence.fromMap(_params).get("modelDesc")).getModule()).addDependency(module.value.getModuleReference(), false);
+                    }
+                  }
+                }
+              });
             });
           }
         }

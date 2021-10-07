@@ -34,11 +34,9 @@ public class RemovingLeftTransformForAttributedProperty_Test extends BaseTransfo
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("3447504547919025678", "3447504547919025683");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          typeString(" ");
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        typeString(" ");
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
       }, false);
     }
   }

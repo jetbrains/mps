@@ -11,19 +11,11 @@ public class mps8150 {
     public Bar(_FunctionTypes._return_P0_E0<? extends Qux<U>> t) {
     }
     public static Qux<Integer> foo() {
-      new Bar<Integer>(new _FunctionTypes._return_P0_E0<Qux<Integer>>() {
-        public Qux<Integer> invoke() {
-          return foo();
-        }
-      });
+      new Bar<Integer>(() -> foo());
       return null;
     }
     public static Qux<Integer> baz() {
-      _FunctionTypes._return_P0_E0<? extends Qux<Integer>> k = new _FunctionTypes._return_P0_E0<Qux<Integer>>() {
-        public Qux<Integer> invoke() {
-          return baz();
-        }
-      };
+      _FunctionTypes._return_P0_E0<? extends Qux<Integer>> k = () -> baz();
       new Bar<Integer>(k);
       return null;
     }

@@ -63,16 +63,8 @@ public class ShowMetaLevel_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._int metaLevel = new Wrappers._int();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        metaLevel.value = (int) BaseConcept__BehaviorDescriptor.getMetaLevel_id3t0v3yFOD1A.invoke(event.getData(MPSCommonDataKeys.NODE));
-      }
-    });
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        JOptionPane.showMessageDialog(event.getData(PlatformDataKeys.CONTEXT_COMPONENT), metaLevel.value);
-      }
-    });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> metaLevel.value = (int) BaseConcept__BehaviorDescriptor.getMetaLevel_id3t0v3yFOD1A.invoke(event.getData(MPSCommonDataKeys.NODE)));
+    SwingUtilities.invokeLater(() -> JOptionPane.showMessageDialog(event.getData(PlatformDataKeys.CONTEXT_COMPONENT), metaLevel.value));
   }
 
   private static final class CONCEPTS {

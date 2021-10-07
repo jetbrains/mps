@@ -11,7 +11,6 @@ import org.jetbrains.annotations.Nullable;
 import com.intellij.project.ProjectKt;
 import javax.swing.JComponent;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 
 /**
  * 
@@ -55,11 +54,7 @@ public abstract class AbstractModuleCreationDialog<R extends AbstractModule> ext
     }
 
     super.doOKAction();
-    NewModuleUtil.runModuleCreation(myProject, new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        runCreation();
-      }
-    });
+    NewModuleUtil.runModuleCreation(myProject, () -> runCreation());
   }
 
   public R getModule() {

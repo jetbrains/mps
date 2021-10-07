@@ -51,19 +51,17 @@ public class TestEditorMenuTraceCellMenuPropertyPostfixHints_Test extends BaseTr
       initEditorComponent("1384684774804610395", "1384684774804610398");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       typeString("postfix");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
-          SubstituteAction action = (SubstituteAction) getEditorComponent().getData(PlatformDataKeys.SELECTED_ITEM.getName());
-          Assert.assertTrue(action != null);
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
+        SubstituteAction action = (SubstituteAction) getEditorComponent().getData(PlatformDataKeys.SELECTED_ITEM.getName());
+        Assert.assertTrue(action != null);
 
-          EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
-          EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774803494772"), LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Property$uh, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SLinkOperations.hasPointer(it, LINKS.relationDeclaration$E2hc, new SNodePointer("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)", "1384684774804762046"));
-            }
-          }).first(), LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD), CONCEPTS.CellMenuPart_PropertyPostfixHints$cd)).first()));
-        }
+        EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
+        EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774803494772"), LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Property$uh, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return SLinkOperations.hasPointer(it, LINKS.relationDeclaration$E2hc, new SNodePointer("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)", "1384684774804762046"));
+          }
+        }).first(), LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD), CONCEPTS.CellMenuPart_PropertyPostfixHints$cd)).first()));
       });
     }
   }

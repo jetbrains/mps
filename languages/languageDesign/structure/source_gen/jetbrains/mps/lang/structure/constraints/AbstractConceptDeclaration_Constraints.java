@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import java.util.function.Function;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
@@ -45,11 +44,7 @@ public class AbstractConceptDeclaration_Constraints extends BaseConstraintsDescr
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return _context.getScopeEvaluationContext().ofModel(_context.getModel(), "j.m.l.structure.ACD", new Function<SModel, Scope>() {
-              public Scope apply(SModel m) {
-                return (Scope) Scopes.forConcepts(m, CONCEPTS.AbstractConceptDeclaration$KA);
-              }
-            });
+            return _context.getScopeEvaluationContext().ofModel(_context.getModel(), "j.m.l.structure.ACD", (SModel m) -> (Scope) Scopes.forConcepts(m, CONCEPTS.AbstractConceptDeclaration$KA));
           }
         };
       }

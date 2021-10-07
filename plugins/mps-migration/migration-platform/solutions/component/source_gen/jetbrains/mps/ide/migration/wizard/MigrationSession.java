@@ -128,37 +128,35 @@ public interface MigrationSession {
         throw new IllegalArgumentException();
       }
       final Wrappers._T<ScriptApplied> result = new Wrappers._T<ScriptApplied>(null);
-      getProject().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Iterable<ScriptApplied> seq;
-          if (preferredId == null) {
-            seq = getModuleMigrations();
-          } else {
-            // XXX Here, we rely on proper equals() implementation in MSR and RSR.
-            // getModuleMigrations gives SA for [every module X language migration versions].
-            // First, we collect all SAs for the desired language/module+version, and then check if actual module's 
-            // language/module is == desired one (see canBeExecutedImmediately). 
-            // Once all modules for language/module+version pair denoted by preferredId got 
-            // actual used language/dependency module > mid.getFromVersion(), it's ok to move to the next
-            seq = CollectionSequence.fromCollection(getModuleMigrations()).where(new IWhereFilter<ScriptApplied>() {
-              public boolean accept(ScriptApplied sa) {
-                return sa.getScriptReference().equals(preferredId);
-              }
-            });
+      getProject().getRepository().getModelAccess().runReadAction(() -> {
+        Iterable<ScriptApplied> seq;
+        if (preferredId == null) {
+          seq = getModuleMigrations();
+        } else {
+          // XXX Here, we rely on proper equals() implementation in MSR and RSR.
+          // getModuleMigrations gives SA for [every module X language migration versions].
+          // First, we collect all SAs for the desired language/module+version, and then check if actual module's 
+          // language/module is == desired one (see canBeExecutedImmediately). 
+          // Once all modules for language/module+version pair denoted by preferredId got 
+          // actual used language/dependency module > mid.getFromVersion(), it's ok to move to the next
+          seq = CollectionSequence.fromCollection(getModuleMigrations()).where(new IWhereFilter<ScriptApplied>() {
+            public boolean accept(ScriptApplied sa) {
+              return sa.getScriptReference().equals(preferredId);
+            }
+          });
+        }
+        result.value = Sequence.fromIterable(seq).findFirst(new IWhereFilter<ScriptApplied>() {
+          public boolean accept(ScriptApplied sa) {
+            return canBeExecutedImmediately(sa);
           }
-          result.value = Sequence.fromIterable(seq).findFirst(new IWhereFilter<ScriptApplied>() {
+        });
+        if (result.value == null && preferredId != null) {
+          // no applicable found by language/module+version pair, move on to another language/module and version
+          result.value = CollectionSequence.fromCollection(getModuleMigrations()).findFirst(new IWhereFilter<ScriptApplied>() {
             public boolean accept(ScriptApplied sa) {
               return canBeExecutedImmediately(sa);
             }
           });
-          if (result.value == null && preferredId != null) {
-            // no applicable found by language/module+version pair, move on to another language/module and version
-            result.value = CollectionSequence.fromCollection(getModuleMigrations()).findFirst(new IWhereFilter<ScriptApplied>() {
-              public boolean accept(ScriptApplied sa) {
-                return canBeExecutedImmediately(sa);
-              }
-            });
-          }
         }
       });
       return result.value;

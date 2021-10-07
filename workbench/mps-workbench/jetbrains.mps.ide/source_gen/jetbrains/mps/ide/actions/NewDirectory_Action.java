@@ -77,12 +77,10 @@ public class NewDirectory_Action extends BaseAction {
           return false;
         }
 
-        ApplicationManager.getApplication().runWriteAction(new Runnable() {
-          public void run() {
-            try {
-              result[0] = dir.createChildDirectory(null, p);
-            } catch (IOException e) {
-            }
+        ApplicationManager.getApplication().runWriteAction(() -> {
+          try {
+            result[0] = dir.createChildDirectory(null, p);
+          } catch (IOException e) {
           }
         });
         return true;
@@ -91,11 +89,7 @@ public class NewDirectory_Action extends BaseAction {
     Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("project")), IdeBundle.message("prompt.enter.new.directory.name"), IdeBundle.message("title.new.directory"), Messages.getQuestionIcon(), "", validator);
     if (result[0] != null) {
       ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).refresh();
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).getProjectViewPaneById(FileViewProjectPane.ID).select(null, result[0], true);
-        }
-      });
+      ApplicationManager.getApplication().invokeLater(() -> ProjectView.getInstance(((Project) MapSequence.fromMap(_params).get("project"))).getProjectViewPaneById(FileViewProjectPane.ID).select(null, result[0], true));
     }
   }
 }

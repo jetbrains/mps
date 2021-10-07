@@ -60,11 +60,7 @@ public class NewModuleDialog<T extends SModule> extends DialogWrapper {
   @Override
   protected JComponent createCenterPanel() {
     myValues.reset();
-    myValues.onChange(new Runnable() {
-      public void run() {
-        check();
-      }
-    });
+    myValues.onChange(() -> check());
     return myValues;
   }
 
@@ -85,11 +81,7 @@ public class NewModuleDialog<T extends SModule> extends DialogWrapper {
     super.doOKAction();
     myValues.onChange(null);
     if (myCreateCode != null) {
-      myProject.getModelAccess().executeCommand(new Runnable() {
-        public void run() {
-          myResult = myCreateCode.get();
-        }
-      });
+      myProject.getModelAccess().executeCommand(() -> myResult = myCreateCode.get());
     }
   }
 

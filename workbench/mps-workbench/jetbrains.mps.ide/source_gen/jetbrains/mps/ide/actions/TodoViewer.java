@@ -95,11 +95,7 @@ public class TodoViewer extends JPanel {
     }, ActionManager.getInstance().getAction(IdeActions.ACTION_PIN_ACTIVE_TAB));
     add(myUsagesView.getComponent(), BorderLayout.CENTER);
     final Wrappers._T<ProjectScope> scope = new Wrappers._T<ProjectScope>();
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        scope.value = new ProjectScope(myProject);
-      }
-    });
+    myProject.getRepository().getModelAccess().runReadAction(() -> scope.value = new ProjectScope(myProject));
     searchTodoAction.setRunOptions(FindUtils.makeProvider(new TodoFinder()), new SearchQuery(new GenericHolder<Project>(myProject), scope.value));
     myUsagesView.setCustomNodeRepresentator(new MyNodeRepresentator());
     DataContext dataContext = DataManager.getInstance().getDataContext(myUsagesView.getComponent());

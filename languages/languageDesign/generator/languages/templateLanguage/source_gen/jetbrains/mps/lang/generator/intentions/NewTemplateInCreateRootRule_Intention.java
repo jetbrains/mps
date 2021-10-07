@@ -15,13 +15,11 @@ import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.nodeEditor.CreateFromUsageUtil;
-import jetbrains.mps.util.Setter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
-import org.jetbrains.mps.util.Condition;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -73,32 +71,28 @@ public final class NewTemplateInCreateRootRule_Intention extends AbstractIntenti
         name.value = "_name_";
       }
       final SNode rule = node;
-      CreateFromUsageUtil.showCreateNewRootMenu(editorContext, new Setter<SNode>() {
-        public void set(SNode root) {
-          if (SNodeOperations.isInstanceOf(root, CONCEPTS.INamedConcept$Kd)) {
-            SPropertyOperations.set(SNodeOperations.cast(root, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL, name.value);
-          }
-          MacroIntentionsUtil.copyVirtualPackage(root, node);
-          SNodeFactoryOperations.setNewAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O), CONCEPTS.RootTemplateAnnotation$9O);
-          SLinkOperations.setTarget(rule, LINKS.templateNode$vPtI, root);
-          SelectionUtil.selectCell(editorContext, rule, "templateName");
+      CreateFromUsageUtil.showCreateNewRootMenu(editorContext, (SNode root) -> {
+        if (SNodeOperations.isInstanceOf(root, CONCEPTS.INamedConcept$Kd)) {
+          SPropertyOperations.set(SNodeOperations.cast(root, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL, name.value);
         }
-      }, new Condition<SConcept>() {
-        public boolean met(SConcept c) {
-          if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.TemplateSwitch$j_)) {
-            return false;
-          }
-          if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.MappingConfiguration$7j)) {
-            return false;
-          }
-          if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.TemplateDeclaration$5G)) {
-            return false;
-          }
-          if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.MappingScript$kP)) {
-            return false;
-          }
-          return true;
+        MacroIntentionsUtil.copyVirtualPackage(root, node);
+        SNodeFactoryOperations.setNewAttribute(root, new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O), CONCEPTS.RootTemplateAnnotation$9O);
+        SLinkOperations.setTarget(rule, LINKS.templateNode$vPtI, root);
+        SelectionUtil.selectCell(editorContext, rule, "templateName");
+      }, (SConcept c) -> {
+        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.TemplateSwitch$j_)) {
+          return false;
         }
+        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.MappingConfiguration$7j)) {
+          return false;
+        }
+        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.TemplateDeclaration$5G)) {
+          return false;
+        }
+        if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.MappingScript$kP)) {
+          return false;
+        }
+        return true;
       });
     }
     @Override

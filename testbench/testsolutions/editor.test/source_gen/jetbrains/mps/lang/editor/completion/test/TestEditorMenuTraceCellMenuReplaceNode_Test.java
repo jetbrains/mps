@@ -53,29 +53,27 @@ public class TestEditorMenuTraceCellMenuReplaceNode_Test extends BaseTransformat
       initEditorComponent("1384684774804543182", "1384684774804543185");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       typeString("menu trace child cell menu");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
-          SubstituteAction action = (SubstituteAction) getEditorComponent().getData(PlatformDataKeys.SELECTED_ITEM.getName());
-          Assert.assertTrue(action != null);
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
+        SubstituteAction action = (SubstituteAction) getEditorComponent().getData(PlatformDataKeys.SELECTED_ITEM.getName());
+        Assert.assertTrue(action != null);
 
-          EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
-          EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, null);
+        EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
+        EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, null);
 
-          editorMenuTraceInfo = editorMenuTraceInfo.getParent();
-          EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, new SNodePointer("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)", "1384684774803494750"));
-          Assert.assertTrue(editorMenuTraceInfo.getMenuDescriptor().isImplicit());
+        editorMenuTraceInfo = editorMenuTraceInfo.getParent();
+        EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, new SNodePointer("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)", "1384684774803494750"));
+        Assert.assertTrue(editorMenuTraceInfo.getMenuDescriptor().isImplicit());
 
 
-          editorMenuTraceInfo = editorMenuTraceInfo.getParent();
-          EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774803494772"), LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Constant$4e, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return Objects.equals(SPropertyOperations.getString(it, PROPS.text$PIv7), "constant cell");
-            }
-          }).first(), LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD), CONCEPTS.CellMenuPart_ReplaceNode_CustomNodeConcept$iP)).first()));
-          editorMenuTraceInfo = editorMenuTraceInfo.getParent();
-          Assert.assertTrue(editorMenuTraceInfo == null);
-        }
+        editorMenuTraceInfo = editorMenuTraceInfo.getParent();
+        EditorMenuTraceTestUtil.checkTraceInfo(editorMenuTraceInfo, SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(ListSequence.fromList(SNodeOperations.getNodeDescendants(SLinkOperations.getTarget(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774803494772"), LINKS.cellModel$L8Uc), CONCEPTS.CellModel_Constant$4e, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return Objects.equals(SPropertyOperations.getString(it, PROPS.text$PIv7), "constant cell");
+          }
+        }).first(), LINKS.menuDescriptor$ptP$), LINKS.cellMenuPart$jjJD), CONCEPTS.CellMenuPart_ReplaceNode_CustomNodeConcept$iP)).first()));
+        editorMenuTraceInfo = editorMenuTraceInfo.getParent();
+        Assert.assertTrue(editorMenuTraceInfo == null);
       });
     }
   }

@@ -46,11 +46,7 @@ public class UnresolvedReferencesChecker extends SpecificChecker {
       // Check for unresolved references
       for (final SReference ref : ListSequence.fromList(SNodeOperations.getReferences(node))) {
         if (jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref) == null) {
-          ListSequence.fromList(results).addElement(new UnresolvedReferenceReportItem(ref, new Runnable() {
-            public void run() {
-              ResolverComponent.getInstance().resolve(ref, repository);
-            }
-          }));
+          ListSequence.fromList(results).addElement(new UnresolvedReferenceReportItem(ref, () -> ResolverComponent.getInstance().resolve(ref, repository)));
         }
         SModelReference mref = ref.getTargetSModelReference();
         if (mref == null) {

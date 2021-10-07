@@ -32,7 +32,6 @@ import jetbrains.mps.debugger.java.runtime.configurations.remote.RemoteProcessHa
 import com.intellij.execution.process.ProcessAdapter;
 import com.intellij.execution.process.ProcessEvent;
 import com.intellij.util.concurrency.Semaphore;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import com.sun.jdi.VirtualMachine;
 import java.io.IOException;
@@ -161,45 +160,35 @@ public class VmCreator extends AbstractDebugSessionCreator {
         processMulticaster.removeListener(this);
       }
     });
-    myEventsProcessor.schedule(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        final Wrappers._T<VirtualMachine> vm = new Wrappers._T<VirtualMachine>(null);
-        try {
-          final long time = System.currentTimeMillis();
-          while (System.currentTimeMillis() - time < LOCAL_START_TIMEOUT) {
-            try {
-              vm.value = doCreateVirtualMachine();
-              LOG.debug("Created VM " + vm.value);
-              break;
-            } catch (Throwable t) {
-              createVmFailed(t);
-              break;
-            }
+    myEventsProcessor.schedule(() -> {
+      final Wrappers._T<VirtualMachine> vm = new Wrappers._T<VirtualMachine>(null);
+      try {
+        final long time = System.currentTimeMillis();
+        while (System.currentTimeMillis() - time < LOCAL_START_TIMEOUT) {
+          try {
+            vm.value = doCreateVirtualMachine();
+            LOG.debug("Created VM " + vm.value);
+            break;
+          } catch (Throwable t) {
+            createVmFailed(t);
+            break;
           }
-        } finally {
-          semaphore.up();
         }
-        if (vm.value != null) {
-          executeAfterProcessStarted(new Runnable() {
-            @Override
-            public void run() {
-              VmCreator.LOG.debug("Schedule commit command.");
-              myEventsProcessor.schedule(new _FunctionTypes._void_P0_E0() {
-                public void invoke() {
-                  myEventsProcessor.commitVm(vm.value);
-                }
-              });
-            }
-          });
-        } else {
-          LOG.debug("VM is null.");
-        }
-      }
-    }, new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
+      } finally {
         semaphore.up();
       }
-    });
+      if (vm.value != null) {
+        executeAfterProcessStarted(new Runnable() {
+          @Override
+          public void run() {
+            VmCreator.LOG.debug("Schedule commit command.");
+            myEventsProcessor.schedule(() -> myEventsProcessor.commitVm(vm.value));
+          }
+        });
+      } else {
+        LOG.debug("VM is null.");
+      }
+    }, () -> semaphore.up());
     semaphore.waitFor();
   }
   private VirtualMachine doCreateVirtualMachine() throws RunFailedException {

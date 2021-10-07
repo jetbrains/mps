@@ -8,7 +8,6 @@ import org.apache.log4j.LogManager;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.CountDownLatch;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -35,21 +34,17 @@ public class ManagerThread {
       myThread.processCommand(command);
     } else {
       final CountDownLatch countDown = new CountDownLatch(1);
-      schedule(Commands.fromClosure(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          try {
-            command.invoke();
-          } finally {
-            countDown.countDown();
-          }
+      schedule(Commands.fromClosure(() -> {
+        try {
+          command.invoke();
+        } finally {
+          countDown.countDown();
         }
-      }, new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          try {
-            command.cancel();
-          } finally {
-            countDown.countDown();
-          }
+      }, () -> {
+        try {
+          command.cancel();
+        } finally {
+          countDown.countDown();
         }
       }));
       try {

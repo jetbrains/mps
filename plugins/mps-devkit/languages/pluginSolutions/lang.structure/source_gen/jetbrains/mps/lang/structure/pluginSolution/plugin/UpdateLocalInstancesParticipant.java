@@ -99,15 +99,13 @@ public class UpdateLocalInstancesParticipant<I, F> extends RefactoringParticipan
             return searchResults;
           }
           public void confirm(final Tuples._2<F, SNodeReference> finalState, final SRepository repository, final RefactoringSession refactoringSession) {
-            refactoringSession.registerChange(new Runnable() {
-              public void run() {
-                SNode node = nodeRef.resolve(repository);
-                NodeCopyTracker copyMap = NodeCopyTracker.get(refactoringSession);
-                if (node == null || MapSequence.fromMap(copyMap.getCopyMap()).containsKey(node)) {
-                  myStructureSpecialization.doReplaceInstance(MapSequence.fromMap(copyMap.getCopyMap()).get(node), initialState._0(), finalState._0());
-                }
-                myStructureSpecialization.doReplaceInstance(node, initialState._0(), finalState._0());
+            refactoringSession.registerChange(() -> {
+              SNode node = nodeRef.resolve(repository);
+              NodeCopyTracker copyMap = NodeCopyTracker.get(refactoringSession);
+              if (node == null || MapSequence.fromMap(copyMap.getCopyMap()).containsKey(node)) {
+                myStructureSpecialization.doReplaceInstance(MapSequence.fromMap(copyMap.getCopyMap()).get(node), initialState._0(), finalState._0());
               }
+              myStructureSpecialization.doReplaceInstance(node, initialState._0(), finalState._0());
             });
           }
         };

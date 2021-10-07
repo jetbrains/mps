@@ -18,7 +18,6 @@ import jetbrains.mps.ide.projectPane.logicalview.ProjectTreeFindHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1216124527478", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
 public class ShowInLogicalView_Action extends BaseAction {
@@ -82,11 +81,7 @@ public class ShowInLogicalView_Action extends BaseAction {
     if (pane.showNodeStructure()) {
       nodeToSelect = ((SNode) MapSequence.fromMap(_params).get("node")).getReference();
     } else {
-      nodeToSelect = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess()).runReadAction(new Computable<SNodeReference>() {
-        public SNodeReference compute() {
-          return ((SNode) MapSequence.fromMap(_params).get("node")).getContainingRoot().getReference();
-        }
-      });
+      nodeToSelect = new ModelAccessHelper(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess()).runReadAction(() -> ((SNode) MapSequence.fromMap(_params).get("node")).getContainingRoot().getReference());
     }
     pane.selectNode(nodeToSelect, true);
   }

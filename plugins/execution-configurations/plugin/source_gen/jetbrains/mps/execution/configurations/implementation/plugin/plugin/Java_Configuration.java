@@ -34,7 +34,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.baseLanguage.behavior.StaticMethodDeclaration__BehaviorDescriptor;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.configurations.ConfigurationFactory;
@@ -73,12 +72,10 @@ public class Java_Configuration extends BaseMpsRunConfiguration implements IPers
     this.getNode().checkConfiguration(context);
     final Wrappers._boolean hasMainMethod = new Wrappers._boolean(false);
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(this.getProject());
-    mpsProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode node = Java_Configuration.this.getNode().getNode().resolve(mpsProject.getRepository());
-        if (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK)) {
-          hasMainMethod.value = (ClassConcept__BehaviorDescriptor.getMainMethod_idhEwIClG.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)) == null);
-        }
+    mpsProject.getModelAccess().runReadAction(() -> {
+      SNode node = Java_Configuration.this.getNode().getNode().resolve(mpsProject.getRepository());
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.ClassConcept$bK)) {
+        hasMainMethod.value = (ClassConcept__BehaviorDescriptor.getMainMethod_idhEwIClG.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)) == null);
       }
     });
 
@@ -136,23 +133,21 @@ public class Java_Configuration extends BaseMpsRunConfiguration implements IPers
         return true;
       }
       final SRepository repository = mpsElement.getMPSProject().getRepository();
-      return new ModelAccessHelper(repository).runReadAction(new Computable<Boolean>() {
-        public Boolean compute() {
-          SNode source = nodePointer.resolve(repository);
-          if (!(SNodeOperations.isInstanceOf(source, CONCEPTS.Classifier$Ix))) {
-            // XXX Seems that this code assumes source to be descendant of a classifier, exactly as described in MPS-25114
-            //     If, however, source points to a non-classifier root (e.g. samples.shapes.Canvas which implements IMainClass)
-            //     the code below looks odd (StaticMethodDeclaration ancestor?!).
-            SNode mainMethodCandidate = SNodeOperations.getNodeAncestor(source, CONCEPTS.StaticMethodDeclaration$FJ, true, false);
-            if (mainMethodCandidate != null && (boolean) StaticMethodDeclaration__BehaviorDescriptor.isMainMethod_idhEwJkuu.invoke(mainMethodCandidate)) {
-              SNode classifier = SNodeOperations.getNodeAncestor(mainMethodCandidate, CONCEPTS.Classifier$Ix, false, false);
-              source = classifier;
-            } else {
-              return false;
-            }
+      return new ModelAccessHelper(repository).runReadAction(() -> {
+        SNode source = nodePointer.resolve(repository);
+        if (!(SNodeOperations.isInstanceOf(source, CONCEPTS.Classifier$Ix))) {
+          // XXX Seems that this code assumes source to be descendant of a classifier, exactly as described in MPS-25114
+          //     If, however, source points to a non-classifier root (e.g. samples.shapes.Canvas which implements IMainClass)
+          //     the code below looks odd (StaticMethodDeclaration ancestor?!).
+          SNode mainMethodCandidate = SNodeOperations.getNodeAncestor(source, CONCEPTS.StaticMethodDeclaration$FJ, true, false);
+          if (mainMethodCandidate != null && (boolean) StaticMethodDeclaration__BehaviorDescriptor.isMainMethod_idhEwJkuu.invoke(mainMethodCandidate)) {
+            SNode classifier = SNodeOperations.getNodeAncestor(mainMethodCandidate, CONCEPTS.Classifier$Ix, false, false);
+            source = classifier;
+          } else {
+            return false;
           }
-          return Objects.equals(SNodeOperations.getPointer(source), Java_Configuration.this.getNode().getNode());
         }
+        return Objects.equals(SNodeOperations.getPointer(source), Java_Configuration.this.getNode().getNode());
       });
     }
     return false;

@@ -45,11 +45,7 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
 
   @Test
   public void testRemoveRoot() {
-    testChanges(new Runnable() {
-      public void run() {
-        SNodeOperations.deleteNode(getTestRoot());
-      }
-    });
+    testChanges(() -> SNodeOperations.deleteNode(getTestRoot()));
   }
 
   @Test
@@ -63,20 +59,12 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
 
   @Test
   public void testPropertyChange() {
-    testChanges(new Runnable() {
-      public void run() {
-        SPropertyOperations.assign(getTestRoot(), PROPS.name$MnvL, "RenamedRoot");
-      }
-    });
+    testChanges(() -> SPropertyOperations.assign(getTestRoot(), PROPS.name$MnvL, "RenamedRoot"));
   }
 
   @Test
   public void changeReference() {
-    testChanges(new Runnable() {
-      public void run() {
-        SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(getTestMethod1(), LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
-      }
-    });
+    testChanges(() -> SLinkOperations.setPointer(SNodeOperations.cast(SLinkOperations.getTarget(getTestMethod1(), LINKS.returnType$5xoi), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705")));
   }
 
   @Test
@@ -102,63 +90,37 @@ public class IncrementalChangeUpdateTest_Nodes extends ChangesTestBase {
 
   @Test
   public void addNodeAttribute() {
-    testChanges(new Runnable() {
-      public void run() {
-        new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).setNew(getTestRoot());
-      }
-    });
+    testChanges(() -> new IAttributeDescriptor.NodeAttribute(CONCEPTS.ReviewMigration$8u).setNew(getTestRoot()));
   }
   @Test
   public void addChildAttribute() {
-    testChanges(new Runnable() {
-      public void run() {
-        ChangesTestUtil.addCommentedMethod(getTestRoot(), ListSequence.fromList(SLinkOperations.getChildren(getTestRoot(), LINKS.member$L_2d)).first());
-      }
-    });
+    testChanges(() -> ChangesTestUtil.addCommentedMethod(getTestRoot(), ListSequence.fromList(SLinkOperations.getChildren(getTestRoot(), LINKS.member$L_2d)).first()));
   }
 
   @Test
   public void removeChild() {
-    testChanges(new Runnable() {
-      public void run() {
-        SNodeOperations.deleteNode(getTestMethod1());
-      }
-    });
+    testChanges(() -> SNodeOperations.deleteNode(getTestMethod1()));
   }
   @Test
   public void removeChildAttribute() {
-    testChanges(new Runnable() {
-      public void run() {
-        SNodeOperations.deleteNode(SNodeOperations.cast(SNodeOperations.getParent(getTestCommentedMethod()), CONCEPTS.BaseCommentAttribute$nv));
-      }
-    });
+    testChanges(() -> SNodeOperations.deleteNode(SNodeOperations.cast(SNodeOperations.getParent(getTestCommentedMethod()), CONCEPTS.BaseCommentAttribute$nv)));
   }
   @Test
   public void commentChild() {
-    testChanges(new Runnable() {
-      public void run() {
-        CommentUtil.commentOut(getTestMethod1());
-      }
-    });
+    testChanges(() -> CommentUtil.commentOut(getTestMethod1()));
   }
   @Test
   public void uncommentChild() {
-    testChanges(new Runnable() {
-      public void run() {
-        ChangesTestUtil.uncommentFirstCommentedMethod(getTestRoot());
-      }
-    });
+    testChanges(() -> ChangesTestUtil.uncommentFirstCommentedMethod(getTestRoot()));
   }
 
   @Test
   public void moveChild() {
-    testChanges(new Runnable() {
-      public void run() {
-        SNode method = getTestMethod1();
-        assert ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).count() > 2;
-        SNode firstStmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).first();
-        SNodeOperations.insertNextSiblingChild(SNodeOperations.getNextSibling(firstStmt), firstStmt);
-      }
+    testChanges(() -> {
+      SNode method = getTestMethod1();
+      assert ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).count() > 2;
+      SNode firstStmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(method, LINKS.body$5xQk), LINKS.statement$53DE)).first();
+      SNodeOperations.insertNextSiblingChild(SNodeOperations.getNextSibling(firstStmt), firstStmt);
     });
   }
   private static SNode createClassConcept_2k50sb_a0a0a0a0a8() {

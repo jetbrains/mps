@@ -104,11 +104,9 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   /*package*/ void updateChangeListManager() {
     VcsDirtyScopeManager.getInstance(myIdeaProject).markEverythingDirty();
     myChangeListManager.ensureUpToDate();
-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-      public void run() {
-        // ensure `fileStatusesChanged' evens are fired
-        UIUtil.dispatchAllInvocationEvents();
-      }
+    ApplicationManager.getApplication().invokeAndWait(() -> {
+      // ensure `fileStatusesChanged' evens are fired
+      UIUtil.dispatchAllInvocationEvents();
     }, ModalityState.any());
   }
 
@@ -178,12 +176,10 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   protected void testChanges(Runnable change) {
     makeChangeAndWait(change);
 
-    ourProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ChangeSet cs = myDiff.getChangeSet();
-        ChangeSet rebuiltChangeSet = ChangeSetBuilder.buildChangeSet(cs.getOldModel(), cs.getNewModel());
-        Assert.assertEquals(getChangeSetString(rebuiltChangeSet), getChangeSetString(cs));
-      }
+    ourProject.getRepository().getModelAccess().runReadAction(() -> {
+      ChangeSet cs = myDiff.getChangeSet();
+      ChangeSet rebuiltChangeSet = ChangeSetBuilder.buildChangeSet(cs.getOldModel(), cs.getNewModel());
+      Assert.assertEquals(getChangeSetString(rebuiltChangeSet), getChangeSetString(cs));
     });
   }
 
@@ -198,44 +194,38 @@ public abstract class ChangesTestBase implements EnvironmentAware {
     final NodeFileStatusMapping fsm = NodeFileStatusMapping.getInstance(myIdeaProject);
     final SModel model = myDiff.getModelDescriptor();
     // query for first time
-    ourProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ListSequence.fromList(SModelOperations.roots(model, null)).visitAll(new IVisitor<SNode>() {
-          public void visit(SNode r) {
-            fsm.getStatus(r);
-          }
-        });
-      }
+    ourProject.getRepository().getModelAccess().runReadAction(() -> {
+      ListSequence.fromList(SModelOperations.roots(model, null)).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode r) {
+          fsm.getStatus(r);
+        }
+      });
     });
     // wait while statuses update
     myWaitHelper.waitForDiffRegistry();
-    ourProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ListSequence.fromList(SModelOperations.roots(model, null)).visitAll(new IVisitor<SNode>() {
-          public void visit(final SNode r) {
-            FileStatus actual = fsm.getStatus(r);
-            FileStatus expected = check_l1nwgz_a0b0a0a0a0g0mb(Sequence.fromIterable(Sequence.fromArray(statuses)).findFirst(new IWhereFilter<RootStatusItem>() {
-              public boolean accept(RootStatusItem it) {
-                return it.rootName().equals(r.getName());
-              }
-            }));
-            Assert.assertSame(expected, actual);
-          }
-        });
-      }
+    ourProject.getRepository().getModelAccess().runReadAction(() -> {
+      ListSequence.fromList(SModelOperations.roots(model, null)).visitAll(new IVisitor<SNode>() {
+        public void visit(final SNode r) {
+          FileStatus actual = fsm.getStatus(r);
+          FileStatus expected = check_l1nwgz_a0b0a0a0a0g0mb(Sequence.fromIterable(Sequence.fromArray(statuses)).findFirst(new IWhereFilter<RootStatusItem>() {
+            public boolean accept(RootStatusItem it) {
+              return it.rootName().equals(r.getName());
+            }
+          }));
+          Assert.assertSame(expected, actual);
+        }
+      });
     });
   }
 
   protected void revertMemChangesAndWait(final boolean withAsserts) {
-    ourProject.getRepository().getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        EditableSModel testModel = getTestModel();
-        if (withAsserts) {
-          Assert.assertNotNull(testModel);
-        }
-        if (testModel != null) {
-          testModel.reloadFromSource();
-        }
+    ourProject.getRepository().getModelAccess().runWriteAction(() -> {
+      EditableSModel testModel = getTestModel();
+      if (withAsserts) {
+        Assert.assertNotNull(testModel);
+      }
+      if (testModel != null) {
+        testModel.reloadFromSource();
       }
     });
     myEnv.flushAllEvents();

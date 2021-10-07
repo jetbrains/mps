@@ -122,33 +122,31 @@ public class InlineLocalVariable_Action extends BaseAction {
     String messageDialogTitle = "Inline Variable";
     final Wrappers._T<String> infoMessage = new Wrappers._T<String>(null);
     final Wrappers._T<String> yesNoMessage = new Wrappers._T<String>(null);
-    modelAccess.runReadAction(new Runnable() {
-      public void run() {
-        SNode stmt = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Statement$P6, true, false);
-        alternativeSelection.value = (SNodeOperations.getNextSibling(stmt) != null ? SNodeOperations.getNextSibling(stmt) : SNodeOperations.getPrevSibling(stmt));
-        if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.LocalVariableDeclaration$41)) {
-          SNode localVariableDeclaration = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.LocalVariableDeclaration$41);
-          InlineVariableAssignmentRefactoring inlineVARef = new InlineVariableAssignmentRefactoring(localVariableDeclaration);
+    modelAccess.runReadAction(() -> {
+      SNode stmt = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Statement$P6, true, false);
+      alternativeSelection.value = (SNodeOperations.getNextSibling(stmt) != null ? SNodeOperations.getNextSibling(stmt) : SNodeOperations.getPrevSibling(stmt));
+      if (SNodeOperations.isInstanceOf(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.LocalVariableDeclaration$41)) {
+        SNode localVariableDeclaration = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.LocalVariableDeclaration$41);
+        InlineVariableAssignmentRefactoring inlineVARef = new InlineVariableAssignmentRefactoring(localVariableDeclaration);
 
-          if ((SLinkOperations.getTarget(localVariableDeclaration, LINKS.initializer$2twD) == null)) {
-            isAvailable.value = false;
-          }
-
-          String variableName = SPropertyOperations.getString(localVariableDeclaration, PROPS.name$MnvL);
-          int nodesCount = ListSequence.fromList(inlineVARef.getNodesToRefactor()).count();
-          if (nodesCount == 0) {
-            infoMessage.value = "No occurrences of variable " + variableName + " can be inlined";
-          } else {
-            if (nodesCount > 1) {
-              yesNoMessage.value = "Inline local variable '" + variableName + "'? (" + NameUtil.formatNumericalString(nodesCount, "occurrence") + ")";
-            }
-          }
-
-          ref.value = inlineVARef;
-        } else {
-          SNode localVariableReference = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$TC);
-          ref.value = new InlineVariableReferenceRefactoring(localVariableReference);
+        if ((SLinkOperations.getTarget(localVariableDeclaration, LINKS.initializer$2twD) == null)) {
+          isAvailable.value = false;
         }
+
+        String variableName = SPropertyOperations.getString(localVariableDeclaration, PROPS.name$MnvL);
+        int nodesCount = ListSequence.fromList(inlineVARef.getNodesToRefactor()).count();
+        if (nodesCount == 0) {
+          infoMessage.value = "No occurrences of variable " + variableName + " can be inlined";
+        } else {
+          if (nodesCount > 1) {
+            yesNoMessage.value = "Inline local variable '" + variableName + "'? (" + NameUtil.formatNumericalString(nodesCount, "occurrence") + ")";
+          }
+        }
+
+        ref.value = inlineVARef;
+      } else {
+        SNode localVariableReference = SNodeOperations.cast(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.VariableReference$TC);
+        ref.value = new InlineVariableReferenceRefactoring(localVariableReference);
       }
     });
     if (!(isAvailable.value)) {

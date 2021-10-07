@@ -20,10 +20,8 @@ import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.smodel.resources.ModelsToResources;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.make.script.IResult;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.module.ReloadableModule;
 import java.util.concurrent.ExecutionException;
 import java.lang.reflect.InvocationTargetException;
@@ -46,23 +44,17 @@ public class GeneratorUtil {
     if (makeService.openNewSession(makeSession)) {
       final String fullClassName = JavaNameUtil.packageName(model) + '.' + className;
       try {
-        Iterable<IResource> resources = new ModelsToResources(Sequence.<SModel>singleton(model)).canGenerateCondition(new _FunctionTypes._return_P1_E0<Boolean, SModel>() {
-          public Boolean invoke(SModel m) {
-            return true;
-          }
-        }).resources();
+        Iterable<IResource> resources = new ModelsToResources(Sequence.<SModel>singleton(model)).canGenerateCondition((SModel m) -> true).resources();
         IResult result = makeService.make(makeSession, resources).get();
         if (result.isSucessful()) {
-          Class<?> rv = new ModelAccessHelper(model.getRepository()).runReadAction(new Computable<Class<?>>() {
-            public Class<?> compute() {
-              try {
-                // although model.getModule doesn't require model read, module classloader deep down there does
-                return ((ReloadableModule) model.getModule()).getClassLoader0().loadClass(fullClassName);
-              } catch (ClassNotFoundException ex) {
-                // ignore
-              }
-              return null;
+          Class<?> rv = new ModelAccessHelper(model.getRepository()).runReadAction(() -> {
+            try {
+              // although model.getModule doesn't require model read, module classloader deep down there does
+              return ((ReloadableModule) model.getModule()).getClassLoader0().loadClass(fullClassName);
+            } catch (ClassNotFoundException ex) {
+              // ignore
             }
+            return null;
           });
           if (rv == null) {
             throw new EvaluationException(String.format("Can not load evaluator class %s", fullClassName));

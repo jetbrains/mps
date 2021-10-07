@@ -81,31 +81,27 @@ public class FindRootableConceptsWithoutIcons_Action extends BaseAction {
         final Wrappers._T<SearchResults<SNode>> concepts = new Wrappers._T<SearchResults<SNode>>();
         final Wrappers._T<List<SearchResult<SNode>>> results = new Wrappers._T<List<SearchResult<SNode>>>();
 
-        modelAccess.runReadAction(new Runnable() {
-          public void run() {
-            concepts.value = FindUtils.getSearchResults(new EmptyProgressMonitor(), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "1071489090640"), new ProjectScope(((MPSProject) MapSequence.fromMap(_params).get("project"))), "jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder");
-            results.value = ListSequence.fromList(((List<SearchResult<SNode>>) concepts.value.getSearchResults())).where(new IWhereFilter<SearchResult<SNode>>() {
-              public boolean accept(SearchResult<SNode> it) {
-                SNode node = (SNode) it.getObject();
-                return SPropertyOperations.getBoolean(node, PROPS.rootable$_9pz) && (SLinkOperations.getTarget(node, LINKS.icon$HKhR) == null);
-              }
-            }).toListSequence();
-          }
+        modelAccess.runReadAction(() -> {
+          concepts.value = FindUtils.getSearchResults(new EmptyProgressMonitor(), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "1071489090640"), new ProjectScope(((MPSProject) MapSequence.fromMap(_params).get("project"))), "jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder");
+          results.value = ListSequence.fromList(((List<SearchResult<SNode>>) concepts.value.getSearchResults())).where(new IWhereFilter<SearchResult<SNode>>() {
+            public boolean accept(SearchResult<SNode> it) {
+              SNode node = (SNode) it.getObject();
+              return SPropertyOperations.getBoolean(node, PROPS.rootable$_9pz) && (SLinkOperations.getTarget(node, LINKS.icon$HKhR) == null);
+            }
+          }).toListSequence();
         });
 
         if (p0.isCanceled()) {
           return;
         }
 
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          public void run() {
-            RefactoringAccessEx.getInstance().showRefactoringView(((Project) MapSequence.fromMap(_params).get("ideaProject")), new RefactoringViewAction() {
-              @Override
-              public void performAction(RefactoringViewItem refactoringViewItem) {
-                refactoringViewItem.close();
-              }
-            }, new SearchResults<SNode>(concepts.value.getSearchedObjects(), results.value), false, "Safe Delete");
-          }
+        ApplicationManager.getApplication().invokeLater(() -> {
+          RefactoringAccessEx.getInstance().showRefactoringView(((Project) MapSequence.fromMap(_params).get("ideaProject")), new RefactoringViewAction() {
+            @Override
+            public void performAction(RefactoringViewItem refactoringViewItem) {
+              refactoringViewItem.close();
+            }
+          }, new SearchResults<SNode>(concepts.value.getSearchedObjects(), results.value), false, "Safe Delete");
         });
       }
     });

@@ -21,7 +21,6 @@ import com.intellij.execution.process.ProcessHandler;
 import jetbrains.mps.debugger.java.runtime.configurations.remote.RemoteProcessHandler;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionResult;
 import jetbrains.mps.execution.api.configurations.DefaultExecutionConsole;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debug.api.run.IDebuggerConfiguration;
 import jetbrains.mps.debug.api.IDebuggerSettings;
 import jetbrains.mps.debug.api.IDebugger;
@@ -56,11 +55,7 @@ public class Remote_Configuration_RunProfileState extends DebuggerRunProfileStat
       ProcessHandler _processHandler = new RemoteProcessHandler(project);
       final ConsoleView _consoleView = console;
       _consoleView.attachToProcess(_processHandler);
-      return new DefaultExecutionResult(_processHandler, new DefaultExecutionConsole(_consoleView.getComponent(), new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          _consoleView.dispose();
-        }
-      }));
+      return new DefaultExecutionResult(_processHandler, new DefaultExecutionConsole(_consoleView.getComponent(), () -> _consoleView.dispose()));
     }
   }
 

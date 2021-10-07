@@ -110,7 +110,6 @@
   </dependency>
   <dependency className="jetbrains.mps.refactoring.participant.RefactoringProcessor">
     <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.HashMap" />

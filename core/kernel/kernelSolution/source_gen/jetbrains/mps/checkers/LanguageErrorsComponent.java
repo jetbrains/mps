@@ -257,11 +257,7 @@ public class LanguageErrorsComponent extends LanguageErrorsCollector {
       Collection<ApprovableError> value = nodeErrors.getValue();
       MapSequence.fromMap(nodesToErrors).put(new IssueKindReportItem.PathObject.NodePathObject(nodeErrors.getKey().getReference()), ListSequence.fromList(ListSequence.fromListWithValues(new ArrayList<ApprovableError>(), value)).asUnmodifiable());
     }
-    final Consumer<NodeReportItem> consumer = new Consumer<NodeReportItem>() {
-      public void consume(NodeReportItem reportItem) {
-        myPostprocessedNodesToErrors.putValue(reportItem.getNode().resolve(myModel.getRepository()), reportItem);
-      }
-    };
+    final Consumer<NodeReportItem> consumer = (NodeReportItem reportItem) -> myPostprocessedNodesToErrors.putValue(reportItem.getNode().resolve(myModel.getRepository()), reportItem);
     for (AbstractNodeCheckerInEditor checker : checkers) {
       ICheckingPostprocessor postProcessChecker = checker.getPostprocessor();
       if (postProcessChecker != null) {

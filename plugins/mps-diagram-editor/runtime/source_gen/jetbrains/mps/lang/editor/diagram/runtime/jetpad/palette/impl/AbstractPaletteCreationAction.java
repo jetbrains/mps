@@ -45,11 +45,9 @@ public abstract class AbstractPaletteCreationAction implements PaletteToggleActi
    * FIXME protected method invoked from a cons is a bad pattern (e.g. subclasses may face uninitilized final fields if overide this method), please redesign!
    */
   protected void init() {
-    myDiagramCell.getContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        myIcon = createIcon();
-        myText = mySubstituteAction.getMatchingText("");
-      }
+    myDiagramCell.getContext().getRepository().getModelAccess().runReadAction(() -> {
+      myIcon = createIcon();
+      myText = mySubstituteAction.getMatchingText("");
     });
   }
   public Icon getIcon() {

@@ -78,11 +78,7 @@ public class AspectDependenciesChecker extends SpecificChecker {
         }
         SNode targetNode = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
         if (targetNode == null) {
-          ListSequence.fromList(results).addElement(new UnresolvedReferenceReportItem(ref, new Runnable() {
-            public void run() {
-              ResolverComponent.getInstance().resolve(ref, myProject.getRepository());
-            }
-          }));
+          ListSequence.fromList(results).addElement(new UnresolvedReferenceReportItem(ref, () -> ResolverComponent.getInstance().resolve(ref, myProject.getRepository())));
           continue;
         }
 

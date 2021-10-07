@@ -38,7 +38,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
 import java.util.Collection;
 import jetbrains.mps.smodel.ConceptDescendantsCache;
-import java.util.function.Predicate;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.stream.Collectors;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
@@ -428,11 +427,7 @@ public class Type_SubstituteMenu extends SubstituteMenuBase {
       }
       public class SMP_Subconcepts_mqq6an_b1a extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
         protected Collection getConcepts(final SubstituteMenuContext _context) {
-          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Type$bu).stream().filter(new Predicate<SAbstractConcept>() {
-            public boolean test(SAbstractConcept concept) {
-              return filterConcept(_context, concept);
-            }
-          }).collect(Collectors.toList());
+          return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.Type$bu).stream().filter((SAbstractConcept concept) -> filterConcept(_context, concept)).collect(Collectors.toList());
         }
         private boolean filterConcept(SubstituteMenuContext _context, SAbstractConcept concept) {
           return (boolean) Type__BehaviorDescriptor.isValueType_id4bFkYVCcmm2.invoke(SNodeOperations.asSConcept(SNodeOperations.castConcept(concept, CONCEPTS.Type$bu))) || SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.IGenericType$13) || (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.ClassCreator$ZG) && Objects.equals(_context.getLink(), LINKS.typeParameter$uYiw));

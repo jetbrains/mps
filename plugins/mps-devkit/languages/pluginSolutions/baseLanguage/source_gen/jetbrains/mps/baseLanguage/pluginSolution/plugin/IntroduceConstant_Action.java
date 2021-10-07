@@ -8,7 +8,6 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.ModelComputeRunnable;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.openapi.editor.EditorContext;
@@ -46,11 +45,7 @@ public class IntroduceConstant_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    SNode nodeToRefactor = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
-      public SNode compute() {
-        return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false);
-      }
-    }).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
+    SNode nodeToRefactor = new ModelComputeRunnable<SNode>(() -> SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false)).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
     if (ReadOnlyUtil.isCellsReadOnlyInEditor(((EditorComponent) MapSequence.fromMap(_params).get("component")), Sequence.<EditorCell>singleton(((EditorComponent) MapSequence.fromMap(_params).get("component")).findNodeCell(nodeToRefactor)))) {
       return false;
     }
@@ -102,44 +97,32 @@ public class IntroduceConstant_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("refactoring.introduceConstant");
 
-    final SNode nodeToRefactor = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
-      public SNode compute() {
-        return SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false);
-      }
-    }).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
+    final SNode nodeToRefactor = new ModelComputeRunnable<SNode>(() -> SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.Expression$mB, true, false)).runRead(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess());
 
     final Wrappers._T<IntroduceConstantRefactoring> refactoring = new Wrappers._T<IntroduceConstantRefactoring>();
     final Wrappers._T<String> error = new Wrappers._T<String>();
     final Wrappers._T<List<SNode>> candidateClasses = new Wrappers._T<List<SNode>>();
 
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        candidateClasses.value = ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToRefactor, CONCEPTS.ClassConcept$bK, false)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return !(SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt));
-          }
-        }).toListSequence();
-      }
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(() -> {
+      candidateClasses.value = ListSequence.fromList(SNodeOperations.getNodeAncestors(nodeToRefactor, CONCEPTS.ClassConcept$bK, false)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return !(SNodeOperations.isInstanceOf(it, CONCEPTS.AnonymousClass$Bt));
+        }
+      }).toListSequence();
     });
 
     final Wrappers._T<SNode> desiredTargetClass = new Wrappers._T<SNode>();
     if (ListSequence.fromList(candidateClasses.value).count() > 1) {
       final NodeChooserDialog classChooser = new NodeChooserDialog(((Project) MapSequence.fromMap(_params).get("projct")), candidateClasses.value);
       classChooser.show();
-      ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          desiredTargetClass.value = (classChooser.getResult() != null ? SNodeOperations.as(classChooser.getResult().resolve(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository()), CONCEPTS.ClassConcept$bK) : null);
-        }
-      });
+      ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(() -> desiredTargetClass.value = (classChooser.getResult() != null ? SNodeOperations.as(classChooser.getResult().resolve(((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository()), CONCEPTS.ClassConcept$bK) : null));
     } else {
       desiredTargetClass.value = ListSequence.fromList(candidateClasses.value).getElement(0);
     }
 
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        refactoring.value = new IntroduceConstantRefactoring(desiredTargetClass.value);
-        error.value = refactoring.value.init(nodeToRefactor, ((EditorComponent) MapSequence.fromMap(_params).get("component")));
-      }
+    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(() -> {
+      refactoring.value = new IntroduceConstantRefactoring(desiredTargetClass.value);
+      error.value = refactoring.value.init(nodeToRefactor, ((EditorComponent) MapSequence.fromMap(_params).get("component")));
     });
 
 

@@ -39,13 +39,11 @@ public class ExpandDiagramVisibility_Test extends BaseTransformationTest {
     public void testMethodImpl() throws Exception {
       initEditorComponent("931754141965328764", "931754141965328767");
       invokeAction("jetbrains.mps.ide.editor.actions.ExpandAll_Action");
-      SwingUtilities.invokeAndWait(new Runnable() {
-        public void run() {
-          Set<EditorCell_WithComponent> componentCells = getEditorComponent().getCellTracker().getComponentCells();
-          Assert.assertFalse(componentCells.isEmpty());
-          for (EditorCell_WithComponent cell : SetSequence.fromSet(componentCells)) {
-            Assert.assertTrue(cell.getComponent().isVisible());
-          }
+      SwingUtilities.invokeAndWait(() -> {
+        Set<EditorCell_WithComponent> componentCells = getEditorComponent().getCellTracker().getComponentCells();
+        Assert.assertFalse(componentCells.isEmpty());
+        for (EditorCell_WithComponent cell : SetSequence.fromSet(componentCells)) {
+          Assert.assertTrue(cell.getComponent().isVisible());
         }
       });
 

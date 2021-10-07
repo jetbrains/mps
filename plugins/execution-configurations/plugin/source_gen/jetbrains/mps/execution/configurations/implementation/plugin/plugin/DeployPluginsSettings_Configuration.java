@@ -34,13 +34,11 @@ public class DeployPluginsSettings_Configuration implements IPersistentConfigura
     final List<SNodeReference> nodeRefList = getPluginsListToDeploy();
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
     final Wrappers._T<SNodeReference> notResolvedPlugin = new Wrappers._T<SNodeReference>(null);
-    mpsProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        for (SNodeReference pluginRef : ListSequence.fromList(nodeRefList)) {
-          if (pluginRef.resolve(mpsProject.getRepository()) == null) {
-            notResolvedPlugin.value = pluginRef;
-            break;
-          }
+    mpsProject.getModelAccess().runReadAction(() -> {
+      for (SNodeReference pluginRef : ListSequence.fromList(nodeRefList)) {
+        if (pluginRef.resolve(mpsProject.getRepository()) == null) {
+          notResolvedPlugin.value = pluginRef;
+          break;
         }
       }
     });

@@ -14,7 +14,6 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
-import java.util.function.Function;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.runtime.ConstraintContext_CanBeRoot;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
@@ -39,11 +38,7 @@ public class InterfaceConceptDeclaration_Constraints extends BaseConstraintsDesc
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return _context.getScopeEvaluationContext().ofModel(_context.getModel(), "j.m.l.structure.ICD", new Function<SModel, Scope>() {
-              public Scope apply(SModel m) {
-                return (Scope) Scopes.forConcepts(m, CONCEPTS.InterfaceConceptDeclaration$CG);
-              }
-            });
+            return _context.getScopeEvaluationContext().ofModel(_context.getModel(), "j.m.l.structure.ICD", (SModel m) -> (Scope) Scopes.forConcepts(m, CONCEPTS.InterfaceConceptDeclaration$CG));
           }
         };
       }

@@ -34,11 +34,7 @@ public class SideDeleteEnumAtEndWithBackSpace_Test extends BaseTransformationTes
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5732053020525162765", "5732053020525162829");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action"), false);
     }
   }
 }

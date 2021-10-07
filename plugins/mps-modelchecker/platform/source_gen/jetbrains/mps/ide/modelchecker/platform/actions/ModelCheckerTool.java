@@ -24,7 +24,6 @@ import javax.swing.JOptionPane;
 import java.util.ArrayList;
 import com.intellij.openapi.vcs.checkin.CheckinHandler;
 import com.intellij.openapi.ui.Messages;
-import jetbrains.mps.plugins.tool.IComponentDisposer;
 
 @GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199793468053", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
 public class ModelCheckerTool extends BaseTabbedProjectTool {
@@ -124,11 +123,7 @@ public class ModelCheckerTool extends BaseTabbedProjectTool {
     };
   }
   public void showTabWithResults(ModelCheckerViewer viewer, String tabTitle, Icon tabIcon) {
-    this.addTab(viewer, tabTitle, tabIcon, new IComponentDisposer<ModelCheckerViewer>() {
-      public void disposeComponent(ModelCheckerViewer c) {
-        c.dispose();
-      }
-    }, true);
+    this.addTab(viewer, tabTitle, tabIcon, (ModelCheckerViewer c) -> c.dispose(), true);
   }
 
   public static ModelCheckerTool getInstance(Project p) {

@@ -35,7 +35,6 @@ import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import java.util.function.Supplier;
 import com.intellij.openapi.diff.DiffBundle;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.diff.tools.util.DiffSplitter;
@@ -106,18 +105,16 @@ public class StructDifferencePane implements PropertyChangeListener {
     myTraverser = new NextPreviousTraverser(myChangeGroupLayouts, myNewEditor.getMainEditor());
     createActionGroup();
     myDiffRegistry = CurrentDifferenceRegistry.getInstance(myProject);
-    myDiffRegistry.getCommandQueue().runTask(new Runnable() {
-      public void run() {
-        if (myChangeSet.getOldModel() instanceof EditableSModel) {
-          final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) changeSet.getOldModel());
-          currentDifference.addDifferenceListener(myDifferenceListener);
-          ListSequence.fromList(myCurrentDifferences).addElement(currentDifference);
-        }
-        if (myChangeSet.getNewModel() instanceof EditableSModel) {
-          final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) changeSet.getNewModel());
-          currentDifference.addDifferenceListener(myDifferenceListener);
-          ListSequence.fromList(myCurrentDifferences).addElement(currentDifference);
-        }
+    myDiffRegistry.getCommandQueue().runTask(() -> {
+      if (myChangeSet.getOldModel() instanceof EditableSModel) {
+        final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) changeSet.getOldModel());
+        currentDifference.addDifferenceListener(myDifferenceListener);
+        ListSequence.fromList(myCurrentDifferences).addElement(currentDifference);
+      }
+      if (myChangeSet.getNewModel() instanceof EditableSModel) {
+        final CurrentDifference currentDifference = myDiffRegistry.getCurrentDifference((EditableSModel) changeSet.getNewModel());
+        currentDifference.addDifferenceListener(myDifferenceListener);
+        ListSequence.fromList(myCurrentDifferences).addElement(currentDifference);
       }
     });
   }
@@ -193,11 +190,7 @@ public class StructDifferencePane implements PropertyChangeListener {
         showInspector(b);
       }
     });
-    myActionGroup.add(new ToggleAction(new Supplier<String>() {
-      public String get() {
-        return DiffBundle.message("synchronize.scrolling", new Object[0]);
-      }
-    }, Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING) {
+    myActionGroup.add(new ToggleAction(() -> DiffBundle.message("synchronize.scrolling", new Object[0]), Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING) {
       @Override
       public boolean isSelected(@NotNull AnActionEvent p1) {
         return isEditorsScrollingSyncOptionEnabled();
@@ -248,11 +241,7 @@ public class StructDifferencePane implements PropertyChangeListener {
   public void navigateInitial(@Nullable final Bounds firstChange) {
     highlightAllChanges();
     if (firstChange != null) {
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          myTraverser.goToBounds(firstChange);
-        }
-      });
+      ApplicationManager.getApplication().invokeLater(() -> myTraverser.goToBounds(firstChange));
     } else {
       myTraverser.goToFirstChangeLater();
     }
@@ -370,11 +359,7 @@ public class StructDifferencePane implements PropertyChangeListener {
   }
   private static void check_n8nr2l_a0a5db(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
     if (null != checkedDotOperand) {
-      checkedDotOperand.runReadInEDT(new Runnable() {
-        public void run() {
-          checkedDotThisExpression.doRehighlight();
-        }
-      });
+      checkedDotOperand.runReadInEDT(() -> checkedDotThisExpression.doRehighlight());
     }
 
   }

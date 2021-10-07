@@ -51,7 +51,6 @@ import com.intellij.openapi.vcs.VcsActions;
 import com.intellij.ui.PopupHandler;
 import com.intellij.openapi.actionSystem.ActionPlaces;
 import com.intellij.openapi.actionSystem.AnAction;
-import com.intellij.openapi.util.BooleanGetter;
 import java.util.Collection;
 import jetbrains.mps.vcs.history.CommitsGraph;
 import com.intellij.openapi.progress.util.BackgroundTaskUtil;
@@ -203,11 +202,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
     setComponent(mySplitter);
     setPreferredFocusedComponent(myList);
     closeOnEsc();
-    setOnCloseHandler(new BooleanGetter() {
-      public boolean get() {
-        return check_s4rg5p_a0a0a84a72(myRevisionsExtractor);
-      }
-    });
+    setOnCloseHandler(() -> check_s4rg5p_a0a0a84a72(myRevisionsExtractor));
   }
 
   public void show(Collection<SNodeId> selection) {
@@ -225,11 +220,7 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
   }
 
   private void showWarning(final String warning) {
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        ToolWindowManager.getInstance(myActiveVcs.getProject()).notifyByBalloon(ChangesViewContentManager.TOOLWINDOW_ID, MessageType.WARNING, warning);
-      }
-    });
+    ApplicationManager.getApplication().invokeLater(() -> ToolWindowManager.getInstance(myActiveVcs.getProject()).notifyByBalloon(ChangesViewContentManager.TOOLWINDOW_ID, MessageType.WARNING, warning));
   }
 
   private RevisionsExtractor createHistoryExtractor() throws CommitsGraph.BuildException {
@@ -241,16 +232,14 @@ public final class RootHistoryDialog extends FrameWrapper implements DataProvide
   }
 
   private Runnable getUpdateListener() {
-    return new Runnable() {
-      public void run() {
-        myUpdateQueue.queue(new Update(this) {
-          @Override
-          public void run() {
-            updateStatusLine();
-            updateRevisionList();
-          }
-        });
-      }
+    return () -> {
+      myUpdateQueue.queue(new Update(this) {
+        @Override
+        public void run() {
+          updateStatusLine();
+          updateRevisionList();
+        }
+      });
     };
   }
 

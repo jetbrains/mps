@@ -34,11 +34,7 @@ public class DeleteLineIndentVerticalMultipleCollection_Test extends BaseTransfo
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6739703022154526897", "6739703022154526901");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.DeleteLine_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.DeleteLine_Action"), false);
     }
   }
 }

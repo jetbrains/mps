@@ -21,7 +21,6 @@ import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import com.intellij.openapi.vcs.VcsException;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
@@ -52,14 +51,12 @@ public class IncrementalChangeUpdateTest_Model extends ChangesTestBase {
     VirtualFile modelFile = getTestModelFile();
     EditableSModel md = getTestModel();
 
-    makeChangeAndWait(new Runnable() {
-      public void run() {
-        try {
-          getTestModelFile().delete(null);
-        } catch (IOException e) {
-          e.printStackTrace();
-          Assert.fail();
-        }
+    makeChangeAndWait(() -> {
+      try {
+        getTestModelFile().delete(null);
+      } catch (IOException e) {
+        e.printStackTrace();
+        Assert.fail();
       }
     });
     revertDiskChangesAndWait(modelFile, true);
@@ -77,14 +74,12 @@ public class IncrementalChangeUpdateTest_Model extends ChangesTestBase {
   @Test
   public void testNoCreatedChangesForNewModel() {
     final Wrappers._T<EditableSModel> newModel = new Wrappers._T<EditableSModel>();
-    getProject().getModelAccess().runWriteInEDT(new Runnable() {
-      public void run() {
-        SModule module = myDiff.getModelDescriptor().getModule();
-        ModelRoot modelRoot = module.getModelRoots().iterator().next();
-        newModel.value = SModuleOperations.createModelWithAdjustments("jetbrains.mps.ide.vcs.test.newTestModel", modelRoot);
-        newModel.value.load();
-        newModel.value.save();
-      }
+    getProject().getModelAccess().runWriteInEDT(() -> {
+      SModule module = myDiff.getModelDescriptor().getModule();
+      ModelRoot modelRoot = module.getModelRoots().iterator().next();
+      newModel.value = SModuleOperations.createModelWithAdjustments("jetbrains.mps.ide.vcs.test.newTestModel", modelRoot);
+      newModel.value.load();
+      newModel.value.save();
     });
     myEnv.flushAllEvents();
 
@@ -97,37 +92,23 @@ public class IncrementalChangeUpdateTest_Model extends ChangesTestBase {
     myWaitHelper.waitForDiffRegistry();
     Assert.assertTrue(ListSequence.fromList(check_2jv4hj_a0a11a3(newModelDiff.getChangeSet())).isEmpty());
 
-    getProject().getModelAccess().runWriteInEDT(new Runnable() {
-      public void run() {
-        DeleteModelHelper.deleteModel(getProject(), newModel.value.getModule(), newModel.value, false, true);
-      }
-    });
+    getProject().getModelAccess().runWriteInEDT(() -> DeleteModelHelper.deleteModel(getProject(), newModel.value.getModule(), newModel.value, false, true));
   }
 
   @Test
   public void modifyExternallyRollback() throws ModelReadException, IOException, VcsException {
-    SModel modelCopy2Change = new ModelAccessHelper(getProject().getModelAccess()).runReadAction(new Computable<MergeTemporaryModel>() {
-      public MergeTemporaryModel compute() {
-        return MergeTemporaryModel.writableCloneOf(getTestModel());
-      }
-    });
+    SModel modelCopy2Change = new ModelAccessHelper(getProject().getModelAccess()).runReadAction(() -> MergeTemporaryModel.writableCloneOf(getTestModel()));
     SModelOperations.addRootNode(modelCopy2Change, createClassConcept_2jv4hj_a0a1a5());
     ModelFactory xmlPersistence = myEnv.getPlatform().findComponent(ModelFactoryService.class).getFactoryByType(PreinstalledModelFactoryTypes.PLAIN_XML);
     final byte[] changedContent = PersistenceUtil.modelAsBytes(modelCopy2Change, xmlPersistence);
 
-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-      public void run() {
-        ApplicationManager.getApplication().runWriteAction(new Runnable() {
-          public void run() {
-            try {
-              getTestModelFile().setBinaryContent(changedContent);
-            } catch (IOException e) {
-              throw new AssertionError(e);
-            }
-          }
-        });
+    ApplicationManager.getApplication().invokeAndWait(() -> ApplicationManager.getApplication().runWriteAction(() -> {
+      try {
+        getTestModelFile().setBinaryContent(changedContent);
+      } catch (IOException e) {
+        throw new AssertionError(e);
       }
-    });
+    }));
     // Once VFS changed in the write action, above, FSChangesWatcher starts a reload session with a help of ReloadManager. Session is queued with MergingUpdateQueue (EDT, 500ms) and have little
     // chance to send out DataSource.changed event till the moment DiffRegistry completes ChangesTracking.update(false) for the modified file. As long as ChangesTracking cares about changes of model 
     // against 'repository' revision (BaseVersionUtil.getBaseVersionModel() -> getBaseVersionContent() -> change.getBeforeRevision()), there are no differences with in-memory model content and

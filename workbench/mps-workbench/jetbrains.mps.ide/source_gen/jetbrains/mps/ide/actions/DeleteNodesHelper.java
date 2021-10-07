@@ -92,37 +92,35 @@ public class DeleteNodesHelper {
         }
       }
     };
-    myRepository.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        if (aspects) {
-          List<SNode> addNodes = ListSequence.fromList(myNodesToDelete).translate(new ITranslator2<SNode, SNode>() {
-            public Iterable<SNode> translate(final SNode node) {
-              List<RelationDescriptor> tabs = ProjectPluginManager.getApplicableTabs(ideaProject, node);
-              try {
-                return ListSequence.fromList(tabs).where(new IWhereFilter<RelationDescriptor>() {
-                  public boolean accept(RelationDescriptor it) {
-                    return it.isApplicable(node);
-                  }
-                }).translate(new ITranslator2<RelationDescriptor, SNode>() {
-                  public Iterable<SNode> translate(final RelationDescriptor tab) {
-                    List<SNode> nodes = tab.getNodes(node);
-                    return ListSequence.fromList(nodes).where(new IWhereFilter<SNode>() {
-                      public boolean accept(SNode it) {
-                        return tab.getBaseNode(it) == node;
-                      }
-                    });
-                  }
-                }).toListSequence();
-              } catch (Throwable t) {
-                if (LOG.isEnabledFor(Level.ERROR)) {
-                  LOG.error("Exception in extension: ", t);
+    myRepository.getModelAccess().runReadAction(() -> {
+      if (aspects) {
+        List<SNode> addNodes = ListSequence.fromList(myNodesToDelete).translate(new ITranslator2<SNode, SNode>() {
+          public Iterable<SNode> translate(final SNode node) {
+            List<RelationDescriptor> tabs = ProjectPluginManager.getApplicableTabs(ideaProject, node);
+            try {
+              return ListSequence.fromList(tabs).where(new IWhereFilter<RelationDescriptor>() {
+                public boolean accept(RelationDescriptor it) {
+                  return it.isApplicable(node);
                 }
+              }).translate(new ITranslator2<RelationDescriptor, SNode>() {
+                public Iterable<SNode> translate(final RelationDescriptor tab) {
+                  List<SNode> nodes = tab.getNodes(node);
+                  return ListSequence.fromList(nodes).where(new IWhereFilter<SNode>() {
+                    public boolean accept(SNode it) {
+                      return tab.getBaseNode(it) == node;
+                    }
+                  });
+                }
+              }).toListSequence();
+            } catch (Throwable t) {
+              if (LOG.isEnabledFor(Level.ERROR)) {
+                LOG.error("Exception in extension: ", t);
               }
-              return ListSequence.fromList(new ArrayList<SNode>());
             }
-          }).toListSequence();
-          ListSequence.fromList(myNodesToDelete).addSequence(ListSequence.fromList(addNodes));
-        }
+            return ListSequence.fromList(new ArrayList<SNode>());
+          }
+        }).toListSequence();
+        ListSequence.fromList(myNodesToDelete).addSequence(ListSequence.fromList(addNodes));
       }
     });
 
@@ -139,47 +137,45 @@ public class DeleteNodesHelper {
       @Override
       public SearchResults execute(final ProgressMonitor pm) {
         final Set<SearchResult<SNode>> results = SetSequence.fromSet(new HashSet<SearchResult<SNode>>());
-        myRepository.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            // XXX in fact, do we care to update uses in non-project modules? Perhaps, ProjectScope is sufficient?
-            final SearchScope scope = new GlobalScope(DeleteNodesHelper.this.myProject);
-            ListSequence.fromList(myNodesToDelete).visitAll(new IVisitor<SNode>() {
-              public void visit(SNode it) {
-                SearchResults<SNode> usages = FindUtils.getSearchResults(new EmptyProgressMonitor(), it, scope, "jetbrains.mps.lang.core.findUsages.NodeAndDescendantsUsages_Finder");
-                SetSequence.fromSet(results).addSequence(ListSequence.fromList(usages.getSearchResults2()));
+        myRepository.getModelAccess().runReadAction(() -> {
+          // XXX in fact, do we care to update uses in non-project modules? Perhaps, ProjectScope is sufficient?
+          final SearchScope scope = new GlobalScope(DeleteNodesHelper.this.myProject);
+          ListSequence.fromList(myNodesToDelete).visitAll(new IVisitor<SNode>() {
+            public void visit(SNode it) {
+              SearchResults<SNode> usages = FindUtils.getSearchResults(new EmptyProgressMonitor(), it, scope, "jetbrains.mps.lang.core.findUsages.NodeAndDescendantsUsages_Finder");
+              SetSequence.fromSet(results).addSequence(ListSequence.fromList(usages.getSearchResults2()));
 
-                if (pm.isCanceled()) {
-                  return;
-                }
-
-                if (SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$KA)) {
-                  SearchResults<SNode> instances = FindUtils.getSearchResults(new EmptyProgressMonitor(), it, scope, "jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder");
-                  SetSequence.fromSet(results).addSequence(ListSequence.fromList(instances.getSearchResults2()));
-                }
-
-                if (pm.isCanceled()) {
-                  return;
-                }
+              if (pm.isCanceled()) {
+                return;
               }
-            });
 
-            if (pm.isCanceled()) {
-              return;
+              if (SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$KA)) {
+                SearchResults<SNode> instances = FindUtils.getSearchResults(new EmptyProgressMonitor(), it, scope, "jetbrains.mps.lang.structure.findUsages.ConceptInstances_Finder");
+                SetSequence.fromSet(results).addSequence(ListSequence.fromList(instances.getSearchResults2()));
+              }
+
+              if (pm.isCanceled()) {
+                return;
+              }
             }
+          });
 
-            Set<SNode> nodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(results).select(new ISelector<SearchResult<SNode>, SNode>() {
-              public SNode select(SearchResult<SNode> it) {
-                return it.getObject();
-              }
-            }));
-            for (SearchResult<SNode> searchResult : ListSequence.fromListWithValues(new ArrayList<SearchResult<SNode>>(), results)) {
-              SNode resultNode = searchResult.getObject();
+          if (pm.isCanceled()) {
+            return;
+          }
 
-              for (SNode anc : ListSequence.fromList(SNodeOperations.getNodeAncestors(resultNode, null, false))) {
-                if (SetSequence.fromSet(nodes).contains(anc)) {
-                  SetSequence.fromSet(results).removeElement(searchResult);
-                  break;
-                }
+          Set<SNode> nodes = SetSequence.fromSetWithValues(new HashSet<SNode>(), SetSequence.fromSet(results).select(new ISelector<SearchResult<SNode>, SNode>() {
+            public SNode select(SearchResult<SNode> it) {
+              return it.getObject();
+            }
+          }));
+          for (SearchResult<SNode> searchResult : ListSequence.fromListWithValues(new ArrayList<SearchResult<SNode>>(), results)) {
+            SNode resultNode = searchResult.getObject();
+
+            for (SNode anc : ListSequence.fromList(SNodeOperations.getNodeAncestors(resultNode, null, false))) {
+              if (SetSequence.fromSet(nodes).contains(anc)) {
+                SetSequence.fromSet(results).removeElement(searchResult);
+                break;
               }
             }
           }
@@ -196,16 +192,14 @@ public class DeleteNodesHelper {
           return;
         }
 
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          public void run() {
-            RefactoringAccessEx.getInstance().showRefactoringView(ideaProject, new RefactoringViewAction() {
-              @Override
-              public void performAction(RefactoringViewItem refactoringViewItem) {
-                myRepository.getModelAccess().executeCommand(modelCommand);
-                refactoringViewItem.close();
-              }
-            }, null, sr, searchTask, "Safe Delete");
-          }
+        ApplicationManager.getApplication().invokeLater(() -> {
+          RefactoringAccessEx.getInstance().showRefactoringView(ideaProject, new RefactoringViewAction() {
+            @Override
+            public void performAction(RefactoringViewItem refactoringViewItem) {
+              myRepository.getModelAccess().executeCommand(modelCommand);
+              refactoringViewItem.close();
+            }
+          }, null, sr, searchTask, "Safe Delete");
         });
       }
     });

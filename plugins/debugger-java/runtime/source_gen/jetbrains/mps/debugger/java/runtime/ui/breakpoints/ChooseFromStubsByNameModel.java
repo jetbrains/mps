@@ -20,7 +20,6 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import javax.swing.ListCellRenderer;
 import com.intellij.ui.ListCellRendererWrapper;
@@ -33,36 +32,32 @@ import org.jetbrains.annotations.NotNull;
   private final Project myProject;
   /*package*/ ChooseFromStubsByNameModel(final MPSProject mpsProject) {
     myProject = mpsProject;
-    mpsProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        Iterable<SModel> mds = mpsProject.getProjectModels();
-        Iterable<SModel> stubModels = Sequence.fromIterable(mds).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            return SModelStereotype.isStubModel(it);
-          }
-        });
-        final NavigationService navService = mpsProject.getProject().getService(NavigationService.class);
-        Iterable<NavigationParticipant.NavigationTarget> descr = navService.getNavigationRoots(new ModelsScope(stubModels), new EmptyProgressMonitor());
-
-        for (NavigationParticipant.NavigationTarget descriptor : descr) {
-          String name = getName(descriptor);
-          List<NavigationParticipant.NavigationTarget> descriptorList = myPossibleNodes.get(name);
-          if (descriptorList == null) {
-            descriptorList = new ArrayList<NavigationParticipant.NavigationTarget>(4);
-            myPossibleNodes.put(name, descriptorList);
-          }
-          descriptorList.add(descriptor);
+    mpsProject.getModelAccess().runReadAction(() -> {
+      Iterable<SModel> mds = mpsProject.getProjectModels();
+      Iterable<SModel> stubModels = Sequence.fromIterable(mds).where(new IWhereFilter<SModel>() {
+        public boolean accept(SModel it) {
+          return SModelStereotype.isStubModel(it);
         }
+      });
+      final NavigationService navService = mpsProject.getProject().getService(NavigationService.class);
+      Iterable<NavigationParticipant.NavigationTarget> descr = navService.getNavigationRoots(new ModelsScope(stubModels), new EmptyProgressMonitor());
+
+      for (NavigationParticipant.NavigationTarget descriptor : descr) {
+        String name = getName(descriptor);
+        List<NavigationParticipant.NavigationTarget> descriptorList = myPossibleNodes.get(name);
+        if (descriptorList == null) {
+          descriptorList = new ArrayList<NavigationParticipant.NavigationTarget>(4);
+          myPossibleNodes.put(name, descriptorList);
+        }
+        descriptorList.add(descriptor);
       }
     });
   }
   protected abstract boolean isValid(SNode node);
   private boolean isValidClassifier(final NavigationParticipant.NavigationTarget descriptor) {
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        SNode classifier = descriptor.getNodeReference().resolve(myProject.getRepository());
-        return (classifier != null) && isValid(classifier);
-      }
+    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> {
+      SNode classifier = descriptor.getNodeReference().resolve(myProject.getRepository());
+      return (classifier != null) && isValid(classifier);
     });
   }
   private String getName(NavigationParticipant.NavigationTarget descriptor) {

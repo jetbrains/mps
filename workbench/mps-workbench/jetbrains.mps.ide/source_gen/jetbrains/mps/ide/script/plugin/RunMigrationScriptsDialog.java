@@ -223,22 +223,20 @@ public class RunMigrationScriptsDialog extends JDialog {
     public Object getValueAt(final int row, final int column) {
       final Wrappers._T<Object> result = new Wrappers._T<Object>(null);
       final SRepository repo = myProject.getRepository();
-      repo.getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          SNode sn = SNodeOperations.cast(ListSequence.fromList(myScripts).getElement(row).resolve(repo), CONCEPTS.MigrationScript$KR);
-          if (column == 0) {
-            result.value = mySelectedScriptIds.contains(SNodeOperations.getPointer(sn));
-          } else if (column == 1) {
-            result.value = "  " + SPropertyOperations.getString(sn, PROPS.title$6bZx);
-          } else if (column == 2) {
-            if (SEnumOperations.isMember(SPropertyOperations.getEnum(sn, PROPS.type$NwlS), 0x498b4f71ee081152L)) {
-              result.value = SEnumOperations.getMemberName0(SPropertyOperations.getEnum(sn, PROPS.type$NwlS)) + " (" + SPropertyOperations.getString(sn, PROPS.toBuild$NwNU) + ")";
-            } else {
-              result.value = SEnumOperations.getMemberName0(SPropertyOperations.getEnum(sn, PROPS.type$NwlS));
-            }
-          } else if (column == 3) {
-            result.value = SNodeOperations.getModel(sn).getModule().getModuleName();
+      repo.getModelAccess().runReadAction(() -> {
+        SNode sn = SNodeOperations.cast(ListSequence.fromList(myScripts).getElement(row).resolve(repo), CONCEPTS.MigrationScript$KR);
+        if (column == 0) {
+          result.value = mySelectedScriptIds.contains(SNodeOperations.getPointer(sn));
+        } else if (column == 1) {
+          result.value = "  " + SPropertyOperations.getString(sn, PROPS.title$6bZx);
+        } else if (column == 2) {
+          if (SEnumOperations.isMember(SPropertyOperations.getEnum(sn, PROPS.type$NwlS), 0x498b4f71ee081152L)) {
+            result.value = SEnumOperations.getMemberName0(SPropertyOperations.getEnum(sn, PROPS.type$NwlS)) + " (" + SPropertyOperations.getString(sn, PROPS.toBuild$NwNU) + ")";
+          } else {
+            result.value = SEnumOperations.getMemberName0(SPropertyOperations.getEnum(sn, PROPS.type$NwlS));
           }
+        } else if (column == 3) {
+          result.value = SNodeOperations.getModel(sn).getModule().getModuleName();
         }
       });
       return result.value;

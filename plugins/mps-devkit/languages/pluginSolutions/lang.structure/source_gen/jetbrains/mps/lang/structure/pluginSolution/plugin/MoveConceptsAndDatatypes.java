@@ -47,14 +47,12 @@ public class MoveConceptsAndDatatypes extends AbstractLanguageMove implements Mo
       return false;
     }
     final Wrappers._boolean result = new Wrappers._boolean();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        result.value = ListSequence.fromList(target).any(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$KA) || SNodeOperations.isInstanceOf(it, CONCEPTS.DataTypeDeclaration$AD);
-          }
-        });
-      }
+    project.getRepository().getModelAccess().runReadAction(() -> {
+      result.value = ListSequence.fromList(target).any(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return SNodeOperations.isInstanceOf(it, CONCEPTS.AbstractConceptDeclaration$KA) || SNodeOperations.isInstanceOf(it, CONCEPTS.DataTypeDeclaration$AD);
+        }
+      });
     });
     return result.value;
   }
@@ -93,11 +91,7 @@ public class MoveConceptsAndDatatypes extends AbstractLanguageMove implements Mo
     }
 
     final Wrappers._T<SModel> targetModel = new Wrappers._T<SModel>();
-    project.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        targetModel.value = targetModelRef.resolve(project.getRepository());
-      }
-    });
+    project.getRepository().getModelAccess().runReadAction(() -> targetModel.value = targetModelRef.resolve(project.getRepository()));
 
     MoveNodesUtil.moveTo(project, name, MapSequence.<MoveNodesUtil.NodeProcessor, List<SNode>>fromMapAndKeysArray(new HashMap<MoveNodesUtil.NodeProcessor, List<SNode>>(), new MoveNodesUtil.NodeCreatingProcessor(new NodeLocation.NodeLocationRoot(targetModel.value), project)).withValues(nodesToMove));
   }

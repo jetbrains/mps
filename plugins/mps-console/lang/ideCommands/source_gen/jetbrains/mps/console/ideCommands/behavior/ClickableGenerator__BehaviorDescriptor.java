@@ -107,11 +107,7 @@ __switch__:
     });
     final SingleConfigurableEditor configurableEditor = new SingleConfigurableEditor(project.getProject(), configurable, "#MPSPropertiesConfigurable");
     configurable.setParentForCallBack(configurableEditor);
-    return new Runnable() {
-      public void run() {
-        configurableEditor.show();
-      }
-    };
+    return () -> configurableEditor.show();
   }
   /*package*/ static boolean canExecute_id2QdC0h7dh1h(@NotNull SNode __thisNode__) {
     return isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.moduleId$fyhj));

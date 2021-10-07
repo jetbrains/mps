@@ -168,11 +168,7 @@ public abstract class MigrationScriptsView implements ResultsListener {
         indicator.setIndeterminate(true);
         final IResultProvider provider = FindUtils.makeProvider(newFinder);
         final Wrappers._T<SearchResults> results = new Wrappers._T<SearchResults>();
-        getMPSProject().getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            results.value = FindUtils.getSearchResults(new ProgressMonitorAdapter(indicator), myQuery, provider);
-          }
-        });
+        getMPSProject().getRepository().getModelAccess().runReadAction(() -> results.value = FindUtils.getSearchResults(new ProgressMonitorAdapter(indicator), myQuery, provider));
         int newCount = results.value.getSearchResults().size();
         if (newCount > 0) {
           updateControls(false, new JLabel("done, but there " + ((newCount == 1 ? "is 1" : "are " + newCount)) + " applicable node" + ((newCount > 1 ? "s" : "")) + " left"), createShowInNewTabButton(newFinder, provider, myQuery));

@@ -61,11 +61,7 @@ public class SelectTest_Test extends Util_Test {
         return it * 2;
       }
     }));
-    _FunctionTypes._return_P1_E0<? extends Integer, ? super Integer> cl = new _FunctionTypes._return_P1_E0<Integer, Integer>() {
-      public Integer invoke(Integer it) {
-        return it * 2;
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Integer, ? super Integer> cl = (Integer it) -> it * 2;
     this.assertIterableEquals(this.expectEven10(), Sequence.fromIterable(this.input5()).select(cl));
   }
   @Test

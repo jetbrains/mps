@@ -72,11 +72,7 @@ public class VMEventsProcessorManagerComponent implements ProjectComponent {
   }
   public void performAllDebugProcessesAction(final _FunctionTypes._void_P1_E0<? super EventsProcessor> action) {
     for (final EventsProcessor processor : getDebugProcesses()) {
-      processor.invoke(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          action.invoke(processor);
-        }
-      });
+      processor.invoke(() -> action.invoke(processor));
     }
   }
   public void addDebugSession(DebugSession debugSession) {

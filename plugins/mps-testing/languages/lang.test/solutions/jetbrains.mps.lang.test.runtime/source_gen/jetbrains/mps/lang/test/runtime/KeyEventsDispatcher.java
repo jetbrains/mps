@@ -102,34 +102,30 @@ __switch__:
     final Method processKeyEventMethod = KeyEventsDispatcher.getProcessKeyEventMethod(eventTargetComponent);
     final boolean[] eventsPassed = new boolean[]{true};
     if (eventTargetComponent == null) {
-      myEditorTest.runUndoableInEDTAndWait(new Runnable() {
-        public void run() {
-          Sequence.fromIterable(events).visitAll(new IVisitor<KeyEvent>() {
-            public void visit(KeyEvent it) {
-              if (it.getID() == KeyEvent.KEY_TYPED) {
-                myEditorTest.getEditorComponent().processKeyTyped(it);
-              } else if (it.getID() == KeyEvent.KEY_PRESSED) {
-                myEditorTest.getEditorComponent().processKeyPressed(it);
-              } else if (it.getID() == KeyEvent.KEY_RELEASED) {
-                myEditorTest.getEditorComponent().processKeyReleased(it);
-              } else {
-                assert false : "Wrong Id " + it.getID();
-              }
+      myEditorTest.runUndoableInEDTAndWait(() -> {
+        Sequence.fromIterable(events).visitAll(new IVisitor<KeyEvent>() {
+          public void visit(KeyEvent it) {
+            if (it.getID() == KeyEvent.KEY_TYPED) {
+              myEditorTest.getEditorComponent().processKeyTyped(it);
+            } else if (it.getID() == KeyEvent.KEY_PRESSED) {
+              myEditorTest.getEditorComponent().processKeyPressed(it);
+            } else if (it.getID() == KeyEvent.KEY_RELEASED) {
+              myEditorTest.getEditorComponent().processKeyReleased(it);
+            } else {
+              assert false : "Wrong Id " + it.getID();
             }
-          });
-        }
+          }
+        });
       });
     } else {
-      myEditorTest.runUndoableInEDTAndWait(new Runnable() {
-        public void run() {
-          for (KeyEvent event : Sequence.fromIterable(events)) {
-            try {
-              processKeyEventMethod.invoke(eventTargetComponent, event);
-            } catch (InvocationTargetException e) {
-              eventsPassed[0] = false;
-            } catch (IllegalAccessException e) {
-              eventsPassed[0] = false;
-            }
+      myEditorTest.runUndoableInEDTAndWait(() -> {
+        for (KeyEvent event : Sequence.fromIterable(events)) {
+          try {
+            processKeyEventMethod.invoke(eventTargetComponent, event);
+          } catch (InvocationTargetException e) {
+            eventsPassed[0] = false;
+          } catch (IllegalAccessException e) {
+            eventsPassed[0] = false;
           }
         }
       });

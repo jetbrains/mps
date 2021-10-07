@@ -65,10 +65,6 @@ public class DeleteBreakpointAction_Action extends BaseAction {
       return;
     }
 
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        BreakpointManagerComponent.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).removeBreakpoint(breakpoint);
-      }
-    });
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(() -> BreakpointManagerComponent.getInstance(((Project) MapSequence.fromMap(_params).get("ideaProject"))).removeBreakpoint(breakpoint));
   }
 }

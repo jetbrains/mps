@@ -9,21 +9,19 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacrosFactory;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
-import com.intellij.openapi.util.Condition;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import jetbrains.mps.vfs.util.PathFormatChecker;
@@ -61,44 +59,30 @@ public class EditorUtil {
 
   public static JComponent createSelectImageButton(final SNode sourceNode, final SProperty property, final EditorContext context) {
     final MacroHelper macros = MacrosFactory.forModule(sourceNode.getModel().getModule());
-    return createSelectImageButton(sourceNode, property, context, new _FunctionTypes._return_P1_E0<String, String>() {
-      public String invoke(String fullPath) {
-        return check_3m4h3r_a0a3a1a4(macros, fullPath);
-      }
-    }, new _FunctionTypes._return_P1_E0<String, String>() {
-      public String invoke(String shortPath) {
-        return check_3m4h3r_a0a4a1a4(macros, shortPath);
-      }
-    });
+    return createSelectImageButton(sourceNode, property, context, (String fullPath) -> check_3m4h3r_a0a3a1a4(macros, fullPath), (String shortPath) -> check_3m4h3r_a0a4a1a4(macros, shortPath));
   }
 
   public static JComponent createSelectImageButton(final SNode node, final SProperty property, final EditorContext context, @NotNull final _FunctionTypes._return_P1_E0<? extends String, ? super String> shrinkPath, @NotNull final _FunctionTypes._return_P1_E0<? extends String, ? super String> expandPath) {
     final Set<String> allowed = SetSequence.fromSetAndArray(new HashSet<String>(), "tiff", "tif", "gif", "jpeg", "jpg", "png", "ico");
-    final FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createSingleFileNoJarsDescriptor().withFileFilter(new Condition<VirtualFile>() {
-      public boolean value(VirtualFile f) {
-        return SetSequence.fromSet(allowed).contains(f.getExtension());
-      }
-    });
+    final FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createSingleFileNoJarsDescriptor().withFileFilter((VirtualFile f) -> SetSequence.fromSet(allowed).contains(f.getExtension()));
     descriptor.setTitle("Select Image File");
     final Project ideaProject = ProjectHelper.toIdeaProject(context.getOperationContext().getProject());
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(ideaProject);
 
     final IFile[] moduleDir = new IFile[1];
-    IFile oldFile = new ModelAccessHelper(context.getRepository()).runReadAction(new Computable<IFile>() {
-      public IFile compute() {
-        moduleDir[0] = ((AbstractModule) node.getModel().getModule()).getModuleSourceDir();
+    IFile oldFile = new ModelAccessHelper(context.getRepository()).runReadAction(() -> {
+      moduleDir[0] = ((AbstractModule) node.getModel().getModule()).getModuleSourceDir();
 
-        String filePath = expandPath.invoke(SNodeAccessUtil.getProperty(node, property));
-        if (filePath != null) {
-          try {
-            IFile f = mpsProject.getFileSystem().getFile(filePath);
-            return (f.exists() ? f : null);
-          } catch (PathFormatChecker.PathFormatException pfe) {
-            return null;
-          }
+      String filePath = expandPath.invoke(SNodeAccessUtil.getProperty(node, property));
+      if (filePath != null) {
+        try {
+          IFile f = mpsProject.getFileSystem().getFile(filePath);
+          return (f.exists() ? f : null);
+        } catch (PathFormatChecker.PathFormatException pfe) {
+          return null;
         }
-        return null;
       }
+      return null;
     });
 
     final VirtualFile oldVFile = (oldFile == null ? null : mpsProject.getFileSystem().asVirtualFile(oldFile));
@@ -125,30 +109,24 @@ public class EditorUtil {
           }
 
           final Wrappers._boolean success = new Wrappers._boolean(true);
-          context.getRepository().getModelAccess().runWriteAction(new Runnable() {
-            public void run() {
-              IFile copiedFile = moduleDir[0].findChild("icons").findChild(chosenFile.getName());
-              if (copiedFile.exists()) {
-                String rewriteMessage = String.format("A file named %s already exists in the target folder.%nDo you want to replace it?", chosenFile.getName());
-                if (Messages.showYesNoDialog(button, rewriteMessage, "Warning", Messages.getWarningIcon()) != Messages.YES) {
-                  success.value = false;
-                  return;
-                }
+          context.getRepository().getModelAccess().runWriteAction(() -> {
+            IFile copiedFile = moduleDir[0].findChild("icons").findChild(chosenFile.getName());
+            if (copiedFile.exists()) {
+              String rewriteMessage = String.format("A file named %s already exists in the target folder.%nDo you want to replace it?", chosenFile.getName());
+              if (Messages.showYesNoDialog(button, rewriteMessage, "Warning", Messages.getWarningIcon()) != Messages.YES) {
+                success.value = false;
+                return;
               }
-              IFileUtil.copyFileContent(result.value, copiedFile);
-              result.value = copiedFile;
             }
+            IFileUtil.copyFileContent(result.value, copiedFile);
+            result.value = copiedFile;
           });
           if (!(success.value)) {
             return;
           }
         }
 
-        context.getRepository().getModelAccess().executeCommand(new Runnable() {
-          public void run() {
-            SNodeAccessUtil.setProperty(node, property, shrinkPath.invoke(result.value.getPath()));
-          }
-        });
+        context.getRepository().getModelAccess().executeCommand(() -> SNodeAccessUtil.setProperty(node, property, shrinkPath.invoke(result.value.getPath())));
       }
     });
     button.setPreferredSize(new Dimension(20, 20));

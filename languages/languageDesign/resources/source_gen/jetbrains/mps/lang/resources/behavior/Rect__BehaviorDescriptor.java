@@ -14,7 +14,6 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.IconCreationUtil;
-import org.jetbrains.mps.openapi.util.Consumer;
 import java.awt.Color;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.resources.enumMigration.Size_MigrationUtils;
@@ -36,25 +35,23 @@ public final class Rect__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static byte[] getImageForGeneration_id2p1v3tObywX(@NotNull final SNode __thisNode__) {
-    return IconCreationUtil.drawIcon(new Consumer<IconCreationUtil.DrawContext>() {
-      public void consume(IconCreationUtil.DrawContext dc) {
-        int centerX = dc.width / 2;
-        int centerY = dc.height / 2;
+    return IconCreationUtil.drawIcon((IconCreationUtil.DrawContext dc) -> {
+      int centerX = dc.width / 2;
+      int centerY = dc.height / 2;
 
-        Color fillColor = new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$VwDK)));
-        if ((SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37) == null)) {
-          dc.g.setColor(fillColor);
-          dc.g.fillRect(centerX, centerY, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2);
-        } else {
-          // outer
-          dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37))));
-          dc.g.fillRect(centerX, centerY, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2);
+      Color fillColor = new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.fillColor$VwDK)));
+      if ((SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37) == null)) {
+        dc.g.setColor(fillColor);
+        dc.g.fillRect(centerX, centerY, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2);
+      } else {
+        // outer
+        dc.g.setColor(new Color((int) Color__BehaviorDescriptor.getIntValue_id1BguvjG4ybo.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.borderColor$VA37))));
+        dc.g.fillRect(centerX, centerY, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2, Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) * 2);
 
-          // inner
-          int border = 2;
-          dc.g.setColor(fillColor);
-          dc.g.fillRect(centerX, centerY, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) - border) * 2, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) - border) * 2);
-        }
+        // inner
+        int border = 2;
+        dc.g.setColor(fillColor);
+        dc.g.fillRect(centerX, centerY, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) - border) * 2, (Size_MigrationUtils.value(SPropertyOperations.getEnum(__thisNode__, PROPS.r$s2ZM)) - border) * 2);
       }
     });
   }

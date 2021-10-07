@@ -45,11 +45,7 @@ public final class INodeWithReference__BehaviorDescriptor extends BaseBHDescript
 
   /*package*/ static Runnable execute_id7oNS25df64x(@NotNull SNode __thisNode__, final MPSProject project) {
     final SNodeReference targetNode = SLinkOperations.getPointer(__thisNode__, LINKS.target$CsE);
-    return new Runnable() {
-      public void run() {
-        new EditorNavigator(project).shallFocus(true).selectIfChild().open(targetNode);
-      }
-    };
+    return () -> new EditorNavigator(project).shallFocus(true).selectIfChild().open(targetNode);
   }
   /*package*/ static boolean canExecute_id2QdC0h7dh1h(@NotNull SNode __thisNode__) {
     return !(((boolean) INodeWithReference__BehaviorDescriptor.isBroken_id7m$hACyVN2F.invoke(__thisNode__)));

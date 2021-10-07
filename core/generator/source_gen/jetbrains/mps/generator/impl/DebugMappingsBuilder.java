@@ -19,7 +19,6 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.extapi.model.TransientSModel;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.textgen.trace.TracingUtil;
-import java.util.function.Consumer;
 import jetbrains.mps.generator.impl.plan.CrossModelEnvironment;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -78,12 +77,10 @@ public class DebugMappingsBuilder {
         SNodeReference origin = TracingUtil.getInput(keyInputNode);
         SLinkOperations.setTarget(entry, LINKS.inputOrigin$JIuD, (origin == null ? null : origin.resolve(myRepo)));
         NodeMapRecord outRec = mappings.getMappingsForLabel(label).get(keyInputNode);
-        outRec.valueStream().forEach(new Consumer<SNode>() {
-          public void accept(SNode n) {
-            SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$2a);
-            SLinkOperations.setTarget(r, LINKS.node$JBUG, substituteOutputNode(checkpointModel, n, label));
-            ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).addElement(r);
-          }
+        outRec.valueStream().forEach((SNode n) -> {
+          SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$2a);
+          SLinkOperations.setTarget(r, LINKS.node$JBUG, substituteOutputNode(checkpointModel, n, label));
+          ListSequence.fromList(SLinkOperations.getChildren(entry, LINKS.outputNode$JC9e)).addElement(r);
         });
       }
     }
@@ -113,12 +110,10 @@ public class DebugMappingsBuilder {
         fill(lr.key2, n);
         SLinkOperations.setTarget(rn, LINKS.input2$dvP0, n);
       }
-      lr.values.forEach(new Consumer<SNode>() {
-        public void accept(SNode o) {
-          SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$2a);
-          SLinkOperations.setTarget(r, LINKS.node$JBUG, substituteOutputNode(checkpointModel, o, lr.label));
-          ListSequence.fromList(SLinkOperations.getChildren(rn, LINKS.output$dhZ5)).addElement(r);
-        }
+      lr.values.forEach((SNode o) -> {
+        SNode r = SModelOperations.createNewNode(checkpointModel, null, CONCEPTS.GeneratorDebug_NodeRef$2a);
+        SLinkOperations.setTarget(r, LINKS.node$JBUG, substituteOutputNode(checkpointModel, o, lr.label));
+        ListSequence.fromList(SLinkOperations.getChildren(rn, LINKS.output$dhZ5)).addElement(r);
       });
     }
     return rv;

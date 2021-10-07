@@ -27,26 +27,14 @@ public class ScriptsUtil {
   public static void executeScript(final ConsoleContext context, SNode script) {
     // it's essential to have collection one can iterate outside of model read (inside invokeLater, see MPS-32986)
     final List<SNode> commands = Sequence.fromIterable(AbstractConsoleScript__BehaviorDescriptor.getCommands_id1whNchEKZry.invoke(script)).toListSequence();
-    SwingUtilities.invokeLater(new Runnable() {
-      public void run() {
-        executeCommands(context, commands, 0);
-      }
-    });
+    SwingUtilities.invokeLater(() -> executeCommands(context, commands, 0));
   }
 
   public static void executeCommands(final ConsoleContext context, final List<SNode> commands, final int startWith) {
     if (startWith == ListSequence.fromList(commands).count()) {
       return;
     }
-    context.getProject().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        context.getOutputWindow().execute(ListSequence.fromList(commands).getElement(startWith), null, new Runnable() {
-          public void run() {
-            executeCommands(context, commands, startWith + 1);
-          }
-        });
-      }
-    });
+    context.getProject().getModelAccess().executeCommand(() -> context.getOutputWindow().execute(ListSequence.fromList(commands).getElement(startWith), null, () -> executeCommands(context, commands, startWith + 1)));
   }
 
   public static void refactor(final ConsoleContext context, final Iterable<SNode> nodes, final _FunctionTypes._void_P1_E0<? super SNode> toExecuteWithEachNode) {
@@ -54,23 +42,21 @@ public class ScriptsUtil {
     final SRepository projectRepo = context.getProject().getRepository();
     RefactoringAccessEx.getInstance().showRefactoringView(ProjectHelper.toIdeaProject(context.getProject()), new RefactoringViewAction() {
       public void performAction(final RefactoringViewItem refactoringViewItem) {
-        projectRepo.getModelAccess().executeCommand(new Runnable() {
-          public void run() {
-            Iterable<SNode> includedNodes;
-            if (refactoringViewItem instanceof RefactoringViewItemImpl) {
-              List<SNodeReference> nodeRefs = as_bb8vid_a0a0a0a1a0a0a0a0a0a0b0a2a5(refactoringViewItem, RefactoringViewItemImpl.class).getUsagesView().getIncludedResultNodes();
-              includedNodes = ListSequence.fromList(nodeRefs).select(new ISelector<SNodeReference, SNode>() {
-                public SNode select(SNodeReference it) {
-                  return it.resolve(projectRepo);
-                }
-              });
-            } else {
-              includedNodes = nodes;
-            }
-            for (SNode resultNode : Sequence.fromIterable(includedNodes)) {
-              if (resultNode != null) {
-                toExecuteWithEachNode.invoke(resultNode);
+        projectRepo.getModelAccess().executeCommand(() -> {
+          Iterable<SNode> includedNodes;
+          if (refactoringViewItem instanceof RefactoringViewItemImpl) {
+            List<SNodeReference> nodeRefs = as_bb8vid_a0a0a0a1a0a0a0a0a1a0c0f(refactoringViewItem, RefactoringViewItemImpl.class).getUsagesView().getIncludedResultNodes();
+            includedNodes = ListSequence.fromList(nodeRefs).select(new ISelector<SNodeReference, SNode>() {
+              public SNode select(SNodeReference it) {
+                return it.resolve(projectRepo);
               }
+            });
+          } else {
+            includedNodes = nodes;
+          }
+          for (SNode resultNode : Sequence.fromIterable(includedNodes)) {
+            if (resultNode != null) {
+              toExecuteWithEachNode.invoke(resultNode);
             }
           }
         });
@@ -87,7 +73,7 @@ public class ScriptsUtil {
       }
     }).toListSequence());
   }
-  private static <T> T as_bb8vid_a0a0a0a1a0a0a0a0a0a0b0a2a5(Object o, Class<T> type) {
+  private static <T> T as_bb8vid_a0a0a0a1a0a0a0a0a1a0c0f(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

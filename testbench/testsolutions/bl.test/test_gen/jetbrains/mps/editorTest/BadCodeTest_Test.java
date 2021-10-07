@@ -34,11 +34,7 @@ public class BadCodeTest_Test extends BaseTransformationTest {
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("1230058635715", "1230058635724");
-      EditorTestUtil.runWithTypeOverExistingText(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          typeString("2;");
-        }
-      }, false);
+      EditorTestUtil.runWithTypeOverExistingText(() -> typeString("2;"), false);
     }
   }
 }

@@ -87,15 +87,7 @@ public class AssemblePluginsBeforeTask_BeforeTask extends BaseMpsBeforeTaskProvi
       final jetbrains.mps.project.Project mpsProject = ProjectHelper.toMPSProject(project);
       final Project projectFinal = project;
 
-      ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-        public void run() {
-          mpsProject.getModelAccess().executeCommand(new Runnable() {
-            public void run() {
-              script.value = new DeployScript(mpsProject, myPlugins);
-            }
-          });
-        }
-      }, ModalityState.NON_MODAL);
+      ApplicationManager.getApplication().invokeAndWait(() -> mpsProject.getModelAccess().executeCommand(() -> script.value = new DeployScript(mpsProject, myPlugins)), ModalityState.NON_MODAL);
 
       String assembleScriptLocation = script.value.make();
       if ((assembleScriptLocation == null || assembleScriptLocation.length() == 0)) {
@@ -107,11 +99,7 @@ public class AssemblePluginsBeforeTask_BeforeTask extends BaseMpsBeforeTaskProvi
       }
 
       final ConsoleView[] console = new ConsoleView[1];
-      ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-        public void run() {
-          console[0] = ConsoleCreator.createConsoleView(project, false);
-        }
-      }, ModalityState.NON_MODAL);
+      ApplicationManager.getApplication().invokeAndWait(() -> console[0] = ConsoleCreator.createConsoleView(project, false), ModalityState.NON_MODAL);
       console[0].addMessageFilter(new StandaloneMPSStackTraceFilter(project));
 
       final Wrappers._T<ProcessHandler> process = new Wrappers._T<ProcessHandler>();
@@ -127,27 +115,25 @@ public class AssemblePluginsBeforeTask_BeforeTask extends BaseMpsBeforeTaskProvi
         return false;
       }
       // fixme use modern api instead
-      ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-        public void run() {
-          Executor executor = DefaultRunExecutor.getRunExecutorInstance();
+      ApplicationManager.getApplication().invokeAndWait(() -> {
+        Executor executor = DefaultRunExecutor.getRunExecutorInstance();
 
-          DefaultActionGroup group = new DefaultActionGroup();
-          JPanel consolePanel = new JPanel(new BorderLayout());
-          ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.RUNNER_TOOLBAR, group, false);
-          actionToolbar.setTargetComponent(console[0].getComponent());
-          consolePanel.add(actionToolbar.getComponent(), BorderLayout.WEST);
-          consolePanel.add(console[0].getComponent(), BorderLayout.CENTER);
+        DefaultActionGroup group = new DefaultActionGroup();
+        JPanel consolePanel = new JPanel(new BorderLayout());
+        ActionToolbar actionToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.RUNNER_TOOLBAR, group, false);
+        actionToolbar.setTargetComponent(console[0].getComponent());
+        consolePanel.add(actionToolbar.getComponent(), BorderLayout.WEST);
+        consolePanel.add(console[0].getComponent(), BorderLayout.CENTER);
 
-          RunContentDescriptor descriptor = new RunContentDescriptor(console[0], process.value, consolePanel, "Assemble Plugins", MPSIcons.Ant.Build);
+        RunContentDescriptor descriptor = new RunContentDescriptor(console[0], process.value, consolePanel, "Assemble Plugins", MPSIcons.Ant.Build);
 
-          group.add(ActionManager.getInstance().getAction("Stop"));
-          group.addSeparator();
-          AnAction pinAction = ActionManager.getInstance().getAction(IdeActions.ACTION_PIN_ACTIVE_TAB);
-          group.add(pinAction);
-          group.add(new CloseAction(executor, descriptor, projectFinal));
-          ExecutionManager.getInstance(projectFinal).getContentManager().showRunContent(executor, descriptor);
-          pinAction.actionPerformed(new AnActionEvent(null, actionToolbar.getToolbarDataContext(), ActionPlaces.RUNNER_TOOLBAR, new Presentation(), ActionManager.getInstance(), 0));
-        }
+        group.add(ActionManager.getInstance().getAction("Stop"));
+        group.addSeparator();
+        AnAction pinAction = ActionManager.getInstance().getAction(IdeActions.ACTION_PIN_ACTIVE_TAB);
+        group.add(pinAction);
+        group.add(new CloseAction(executor, descriptor, projectFinal));
+        ExecutionManager.getInstance(projectFinal).getContentManager().showRunContent(executor, descriptor);
+        pinAction.actionPerformed(new AnActionEvent(null, actionToolbar.getToolbarDataContext(), ActionPlaces.RUNNER_TOOLBAR, new Presentation(), ActionManager.getInstance(), 0));
       }, ModalityState.defaultModalityState());
 
       int exitCode = ProcessHandlerBuilder.startAndWait(process.value);

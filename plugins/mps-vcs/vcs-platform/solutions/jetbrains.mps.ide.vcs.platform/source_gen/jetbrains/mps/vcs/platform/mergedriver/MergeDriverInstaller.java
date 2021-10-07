@@ -59,10 +59,6 @@ public class MergeDriverInstaller {
     }
   }
   public static void installWhereNeeded(final Project project) {
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        new MergeDriverOptionsDialog(project).show();
-      }
-    });
+    ApplicationManager.getApplication().invokeLater(() -> new MergeDriverOptionsDialog(project).show());
   }
 }

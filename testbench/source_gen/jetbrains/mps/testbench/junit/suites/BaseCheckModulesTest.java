@@ -12,7 +12,6 @@ import org.junit.runners.Parameterized;
 import java.util.List;
 import java.lang.reflect.InvocationTargetException;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.tool.environment.EnvironmentConfig;
 import jetbrains.mps.tool.environment.ProjectStrategy;
 import jetbrains.mps.testbench.junit.runners.MPSCompositeProjectStrategy;
@@ -39,11 +38,7 @@ public class BaseCheckModulesTest {
   public static List<Object[]> testParameters() throws InvocationTargetException, InterruptedException {
     // load excluded modules from system property, can be specified by MpsTestConfiguration annotation?
     initEnvironment();
-    Iterable<SModule> modules = new ModelAccessHelper(ourContextProject.getModelAccess()).runReadAction(new Computable<List<SModule>>() {
-      public List<SModule> compute() {
-        return ourContextProject.getProjectModulesWithGenerators();
-      }
-    });
+    Iterable<SModule> modules = new ModelAccessHelper(ourContextProject.getModelAccess()).runReadAction(() -> ourContextProject.getProjectModulesWithGenerators());
     return createTestParametersFromModules(modules);
   }
 

@@ -41,11 +41,7 @@ public class ConnectorDecoratorView extends AbstractDecoratorView {
           @Override
           protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
             super.registerSynchronizers(configuration);
-            configuration.add(Synchronizers.forProperty(myValid, new Runnable() {
-              public void run() {
-                updateSelectionView(getTarget());
-              }
-            }));
+            configuration.add(Synchronizers.forProperty(myValid, () -> updateSelectionView(getTarget())));
           }
         };
       }
@@ -58,11 +54,7 @@ public class ConnectorDecoratorView extends AbstractDecoratorView {
           @Override
           protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
             super.registerSynchronizers(configuration);
-            configuration.add(Synchronizers.forProperty(myValid, new Runnable() {
-              public void run() {
-                getTarget().centerLocation.set(getErrorPoint());
-              }
-            }));
+            configuration.add(Synchronizers.forProperty(myValid, () -> getTarget().centerLocation.set(getErrorPoint())));
           }
         };
       }

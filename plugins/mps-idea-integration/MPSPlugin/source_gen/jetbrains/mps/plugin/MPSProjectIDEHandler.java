@@ -144,49 +144,47 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
   @Override
   public void showSource(final String filePath, final String modelHint, final int line, int column) throws RemoteException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(myProject);
-    mpsProject.getModelAccess().runReadInEDT(new Runnable() {
-      public void run() {
-        String fileName = new File(filePath).getName();
+    mpsProject.getModelAccess().runReadInEDT(() -> {
+      String fileName = new File(filePath).getName();
 
-        ArrayDeque<SModel> modelsByName = new ArrayDeque<>();
+      ArrayDeque<SModel> modelsByName = new ArrayDeque<>();
 
-        for (SModel it : new EditableFilteringScope(mpsProject.getScope()).getModels()) {
-          // we first look up in models with the given name (better chance to succeed), then in all other models
-          if (Objects.equals(SModelOperations.getModelName(it), modelHint)) {
-            modelsByName.addFirst(it);
-          } else {
-            modelsByName.addLast(it);
-          }
-        }
-
-        SNode bestNode = null;
-        for (SModel model : QueueSequence.fromQueue(modelsByName)) {
-          DebugInfo di = new TraceInfo().getDebugInfo(model);
-          if (di == null) {
-            if (LOG_1373119566.isEnabledFor(Level.WARN)) {
-              LOG_1373119566.warn("Debug info not found for model " + SModelOperations.getModelName(model));
-            }
-            continue;
-          }
-          // IMPORTANT: line+1 because the line parameter means "line, starting with 0", while in debug info it starts from 1
-          SNodePointer np = getBestNodeForPosition(di, fileName, line + 1);
-          bestNode = np.resolve(mpsProject.getRepository());
-          if (bestNode != null) {
-            break;
-          }
-        }
-
-        if ((bestNode == null)) {
-          final IdeFrame ideFrame = WindowManager.getInstance().getIdeFrame(myProject);
-          if (ideFrame != null) {
-            StatusBarEx statusBar = (StatusBarEx) ideFrame.getStatusBar();
-            statusBar.notifyProgressByBalloon(MessageType.WARNING, "No source found for " + fileName + ":" + line, null, null);
-          }
+      for (SModel it : new EditableFilteringScope(mpsProject.getScope()).getModels()) {
+        // we first look up in models with the given name (better chance to succeed), then in all other models
+        if (Objects.equals(SModelOperations.getModelName(it), modelHint)) {
+          modelsByName.addFirst(it);
         } else {
-          new EditorNavigator(mpsProject).shallFocus(true).selectIfChild().open(bestNode.getReference());
+          modelsByName.addLast(it);
         }
-        ProjectUtil.focusProjectWindow(myProject, true);
       }
+
+      SNode bestNode = null;
+      for (SModel model : QueueSequence.fromQueue(modelsByName)) {
+        DebugInfo di = new TraceInfo().getDebugInfo(model);
+        if (di == null) {
+          if (LOG_1373119566.isEnabledFor(Level.WARN)) {
+            LOG_1373119566.warn("Debug info not found for model " + SModelOperations.getModelName(model));
+          }
+          continue;
+        }
+        // IMPORTANT: line+1 because the line parameter means "line, starting with 0", while in debug info it starts from 1
+        SNodePointer np = getBestNodeForPosition(di, fileName, line + 1);
+        bestNode = np.resolve(mpsProject.getRepository());
+        if (bestNode != null) {
+          break;
+        }
+      }
+
+      if ((bestNode == null)) {
+        final IdeFrame ideFrame = WindowManager.getInstance().getIdeFrame(myProject);
+        if (ideFrame != null) {
+          StatusBarEx statusBar = (StatusBarEx) ideFrame.getStatusBar();
+          statusBar.notifyProgressByBalloon(MessageType.WARNING, "No source found for " + fileName + ":" + line, null, null);
+        }
+      } else {
+        new EditorNavigator(mpsProject).shallFocus(true).selectIfChild().open(bestNode.getReference());
+      }
+      ProjectUtil.focusProjectWindow(myProject, true);
     });
   }
 
@@ -240,19 +238,17 @@ public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDE
   public void showNode(final String namespace, final String id) throws RemoteException {
     final jetbrains.mps.project.Project mpsProject = ProjectHelper.fromIdeaProject(myProject);
     final SNodeId nodeId = PersistenceFacade.getInstance().createNodeId(id);
-    mpsProject.getModelAccess().runReadInEDT(new Runnable() {
-      public void run() {
-        for (SModel descriptor : new ModuleRepositoryFacade(mpsProject).getAllModels()) {
-          if (!(namespace.equals(descriptor.getName().getValue()))) {
-            continue;
-          }
-          SNode node = descriptor.getNode(nodeId);
-          if (node != null) {
-            new EditorNavigator(mpsProject).shallFocus(true).selectIfChild().open(node.getReference());
-          }
+    mpsProject.getModelAccess().runReadInEDT(() -> {
+      for (SModel descriptor : new ModuleRepositoryFacade(mpsProject).getAllModels()) {
+        if (!(namespace.equals(descriptor.getName().getValue()))) {
+          continue;
         }
-        ProjectUtil.focusProjectWindow(myProject, true);
+        SNode node = descriptor.getNode(nodeId);
+        if (node != null) {
+          new EditorNavigator(mpsProject).shallFocus(true).selectIfChild().open(node.getReference());
+        }
       }
+      ProjectUtil.focusProjectWindow(myProject, true);
     });
   }
   @Override

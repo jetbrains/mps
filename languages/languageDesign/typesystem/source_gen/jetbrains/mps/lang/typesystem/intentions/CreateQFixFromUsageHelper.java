@@ -82,22 +82,18 @@ public class CreateQFixFromUsageHelper {
       }));
     } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.TypesystemIntention$sw)) {
       created = true;
-      ex.exec(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          createdQFix.value = createQFix(qFixName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.TypesystemIntention$sw), LINKS.quickFix$ClX6, createdQFix.value);
-        }
+      ex.exec(() -> {
+        createdQFix.value = createQFix(qFixName);
+        SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.TypesystemIntention$sw), LINKS.quickFix$ClX6, createdQFix.value);
       });
     }
     if (!(created)) {
       return false;
     }
 
-    ex.exec(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        Editor editor = NavigationSupport.getInstance().openNode(myEditorContext.getOperationContext().getProject(), createdQFix.value, true, false);
-        editor.getEditorContext().selectWRTFocusPolicy(createdQFix.value);
-      }
+    ex.exec(() -> {
+      Editor editor = NavigationSupport.getInstance().openNode(myEditorContext.getOperationContext().getProject(), createdQFix.value, true, false);
+      editor.getEditorContext().selectWRTFocusPolicy(createdQFix.value);
     });
 
     return true;

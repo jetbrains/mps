@@ -88,11 +88,9 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
 
     final Wrappers._T<List<SModel>> originalAccesoryModels = new Wrappers._T<List<SModel>>();
     final Wrappers._T<List<SModel>> clonedAccesoryModels = new Wrappers._T<List<SModel>>();
-    executeUnderLock(new Runnable() {
-      public void run() {
-        originalAccesoryModels.value = originalLang.getAccessoryModels();
-        clonedAccesoryModels.value = clonedLang.getAccessoryModels();
-      }
+    executeUnderLock(() -> {
+      originalAccesoryModels.value = originalLang.getAccessoryModels();
+      clonedAccesoryModels.value = clonedLang.getAccessoryModels();
     });
     Assert.assertEquals("Different count of accesory models", originalAccesoryModels.value.size(), clonedAccesoryModels.value.size());
     int size = originalAccesoryModels.value.size();
@@ -106,19 +104,11 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
   @Before
   public void setUp() {
     project = ((MPSProject) myEnvironment.openProject(new File(PROJECT_PATH)));
-    executeUnderLock(new Runnable() {
-      public void run() {
-        clonedModulesDirectory = IFileUtil.createTmpDir();
-      }
-    });
+    executeUnderLock(() -> clonedModulesDirectory = IFileUtil.createTmpDir());
   }
   @After
   public void tearDown() {
-    executeUnderLock(new Runnable() {
-      public void run() {
-        clonedModulesDirectory.delete();
-      }
-    });
+    executeUnderLock(() -> clonedModulesDirectory.delete());
     myEnvironment.closeProject(project);
   }
 
@@ -134,20 +124,14 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
 
   public void executeUnderLock(final Runnable runnable) {
     final Reference<Throwable> ref = new Reference<Throwable>();
-    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-      public void run() {
-        project.getModelAccess().executeCommand(new Runnable() {
-          public void run() {
-            try {
-              runnable.run();
-            } catch (Throwable t) {
-              ref.set(t);
-            }
-
-          }
-        });
+    ApplicationManager.getApplication().invokeAndWait(() -> project.getModelAccess().executeCommand(() -> {
+      try {
+        runnable.run();
+      } catch (Throwable t) {
+        ref.set(t);
       }
-    }, ModalityState.defaultModalityState());
+
+    }), ModalityState.defaultModalityState());
     if (!(ref.isNull())) {
       throw new RuntimeException(ref.get());
     }
@@ -156,11 +140,7 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
   @NotNull
   private Solution resolveSolution(@NotNull final SModuleReference moduleRef) {
     final Wrappers._T<SModule> module = new Wrappers._T<SModule>();
-    executeUnderLock(new Runnable() {
-      public void run() {
-        module.value = moduleRef.resolve(project.getRepository());
-      }
-    });
+    executeUnderLock(() -> module.value = moduleRef.resolve(project.getRepository()));
     Assert.assertTrue("Solution expected; Something wrong in test case", module.value instanceof Solution);
     return (Solution) module.value;
   }
@@ -169,11 +149,7 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
   @NotNull
   private Language resolveLanguage(@NotNull final SModuleReference moduleRef) {
     final Wrappers._T<SModule> module = new Wrappers._T<SModule>();
-    executeUnderLock(new Runnable() {
-      public void run() {
-        module.value = moduleRef.resolve(project.getRepository());
-      }
-    });
+    executeUnderLock(() -> module.value = moduleRef.resolve(project.getRepository()));
     Assert.assertTrue("Language expected; Something wrong in test case", module.value instanceof Language);
     return (Language) module.value;
   }
@@ -181,25 +157,23 @@ public class CloneModule_Test extends EnvironmentAwareTestCase {
   @NotNull
   private AbstractModule testModule(@NotNull final AbstractModule originalModule, final String moduleFileNameExtension) {
     final Wrappers._T<AbstractModule> clonedModule = new Wrappers._T<AbstractModule>();
-    executeUnderLock(new Runnable() {
-      public void run() {
+    executeUnderLock(() -> {
 
-        String clonedModuleName = originalModule.getModuleName() + SUFFIX;
+      String clonedModuleName = originalModule.getModuleName() + SUFFIX;
 
-        IFile copyLocation = clonedModulesDirectory.findChild(clonedModuleName + moduleFileNameExtension);
-        CopyModuleHelper helper = new CopyModuleHelper(project, originalModule, clonedModuleName, copyLocation, "");
-        try {
-          clonedModule.value = helper.copy();
-        } catch (CopyNotSupportedException e) {
-          Assert.fail("Cloning should be supported for module " + originalModule.getModuleName() + ". Actually got CopyNotSupportedException: " + e.getMessage());
-        }
-
-        Assert.assertNotNull(clonedModule.value);
-        Assert.assertEquals(clonedModule.value.getModuleName(), clonedModuleName);
-
-        checkModule(originalModule);
-        checkModule(clonedModule.value);
+      IFile copyLocation = clonedModulesDirectory.findChild(clonedModuleName + moduleFileNameExtension);
+      CopyModuleHelper helper = new CopyModuleHelper(project, originalModule, clonedModuleName, copyLocation, "");
+      try {
+        clonedModule.value = helper.copy();
+      } catch (CopyNotSupportedException e) {
+        Assert.fail("Cloning should be supported for module " + originalModule.getModuleName() + ". Actually got CopyNotSupportedException: " + e.getMessage());
       }
+
+      Assert.assertNotNull(clonedModule.value);
+      Assert.assertEquals(clonedModule.value.getModuleName(), clonedModuleName);
+
+      checkModule(originalModule);
+      checkModule(clonedModule.value);
     });
     return clonedModule.value;
   }

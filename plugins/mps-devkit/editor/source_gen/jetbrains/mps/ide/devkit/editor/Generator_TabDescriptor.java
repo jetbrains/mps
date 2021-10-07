@@ -114,12 +114,10 @@ public class Generator_TabDescriptor extends RelationDescriptor {
 
     final Wrappers._T<Language> language = new Wrappers._T<Language>();
     final Wrappers._T<List<Generator>> genList = new Wrappers._T<List<Generator>>();
-    mpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        language.value = SModelUtil.getDeclaringLanguage(node);
-        assert language.value != null : "Language shouldn't be null for " + SNodeOperations.present(node);
-        genList.value = ListSequence.fromListWithValues(new ArrayList<Generator>(), language.value.getGenerators());
-      }
+    mpsProject.getRepository().getModelAccess().runReadAction(() -> {
+      language.value = SModelUtil.getDeclaringLanguage(node);
+      assert language.value != null : "Language shouldn't be null for " + SNodeOperations.present(node);
+      genList.value = ListSequence.fromListWithValues(new ArrayList<Generator>(), language.value.getGenerators());
     });
 
     if (ListSequence.fromList(genList.value).isEmpty()) {
@@ -131,30 +129,26 @@ public class Generator_TabDescriptor extends RelationDescriptor {
       }
       ListSequence.fromList(genList.value).addElement(createdGenerator);
     } else {
-      mpsProject.getRepository().getModelAccess().executeCommand(new Runnable() {
-        public void run() {
-          for (Generator generator : genList.value) {
-            if (generator.getOwnTemplateModels().isEmpty()) {
-              continue;
-            }
-            return;
+      mpsProject.getRepository().getModelAccess().executeCommand(() -> {
+        for (Generator generator : genList.value) {
+          if (generator.getOwnTemplateModels().isEmpty()) {
+            continue;
           }
-          // this means there are generators, but no template models
-          Generator firstGen = ListSequence.fromList(genList.value).first();
-          EditableSModel templateModelDescriptor = SModuleOperations.createModelWithAdjustments(language.value.getModuleName() + ".generator.template.main@" + SModelStereotype.GENERATOR, firstGen.getModelRoots().iterator().next());
-          templateModelDescriptor.save();
-          language.value.save();
+          return;
         }
+        // this means there are generators, but no template models
+        Generator firstGen = ListSequence.fromList(genList.value).first();
+        EditableSModel templateModelDescriptor = SModuleOperations.createModelWithAdjustments(language.value.getModuleName() + ".generator.template.main@" + SModelStereotype.GENERATOR, firstGen.getModelRoots().iterator().next());
+        templateModelDescriptor.save();
+        language.value.save();
       });
     }
 
     final List<SNode> mappings = new ArrayList<SNode>();
-    mpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        for (Generator generator : genList.value) {
-          for (SModel gm : generator.getOwnTemplateModels()) {
-            ListSequence.fromList(mappings).addSequence(ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(gm, CONCEPTS.MappingConfiguration$7j)));
-          }
+    mpsProject.getRepository().getModelAccess().runReadAction(() -> {
+      for (Generator generator : genList.value) {
+        for (SModel gm : generator.getOwnTemplateModels()) {
+          ListSequence.fromList(mappings).addSequence(ListSequence.fromList(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.roots(gm, CONCEPTS.MappingConfiguration$7j)));
         }
       }
     });
@@ -189,27 +183,25 @@ public class Generator_TabDescriptor extends RelationDescriptor {
       mapping.value = ListSequence.fromList(mappings).first();
     }
     final Wrappers._T<SNode> result = new Wrappers._T<SNode>();
-    mpsProject.getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        SModel model = SNodeOperations.getModel(mapping.value);
-        if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.IConceptAspect$Z3)) {
-          result.value = ConceptAspectsHelper.attachNewConceptAspect(node, SNodeFactoryOperations.createNewNode(((SAbstractConcept) concept), null), model);
-          MappingConfiguration__BehaviorDescriptor.addMember_id2JKPiG_HmQX.invoke(mapping.value, result.value);
-        } else if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.InlineTemplate_RuleConsequence$u9) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i)) {
-          SNode rc = SNodeFactoryOperations.createNewNode(concept, null);
-          SNode mappingRule = SLinkOperations.addNewChild(mapping.value, LINKS.reductionMappingRule$epW2, CONCEPTS.Reduction_MappingRule$9X);
-          SLinkOperations.setTarget(mappingRule, LINKS.applicableConcept$Hpnk, node);
-          SLinkOperations.setTarget(mappingRule, LINKS.ruleConsequence$UqzC, rc);
-          result.value = rc;
-        } else {
-          result.value = SNodeFactoryOperations.createNewNode(concept, null);
-          SNode rootTemplateNode = jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.createNewNode(model, null, CONCEPTS.RootTemplateAnnotation$9O);
-          SLinkOperations.setTarget(rootTemplateNode, LINKS.applicableConcept$LAIX, node);
-          new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).set(result.value, rootTemplateNode);
-          SPropertyOperations.set(SNodeOperations.as(result.value, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL, SPropertyOperations.getString(node, PROPS.name$MnvL));
-          jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(model, result.value);
-          MappingConfiguration__BehaviorDescriptor.addMember_id2JKPiG_HmQX.invoke(mapping.value, result.value);
-        }
+    mpsProject.getRepository().getModelAccess().executeCommand(() -> {
+      SModel model = SNodeOperations.getModel(mapping.value);
+      if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.IConceptAspect$Z3)) {
+        result.value = ConceptAspectsHelper.attachNewConceptAspect(node, SNodeFactoryOperations.createNewNode(((SAbstractConcept) concept), null), model);
+        MappingConfiguration__BehaviorDescriptor.addMember_id2JKPiG_HmQX.invoke(mapping.value, result.value);
+      } else if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.InlineTemplate_RuleConsequence$u9) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.InlineTemplateWithContext_RuleConsequence$9i)) {
+        SNode rc = SNodeFactoryOperations.createNewNode(concept, null);
+        SNode mappingRule = SLinkOperations.addNewChild(mapping.value, LINKS.reductionMappingRule$epW2, CONCEPTS.Reduction_MappingRule$9X);
+        SLinkOperations.setTarget(mappingRule, LINKS.applicableConcept$Hpnk, node);
+        SLinkOperations.setTarget(mappingRule, LINKS.ruleConsequence$UqzC, rc);
+        result.value = rc;
+      } else {
+        result.value = SNodeFactoryOperations.createNewNode(concept, null);
+        SNode rootTemplateNode = jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.createNewNode(model, null, CONCEPTS.RootTemplateAnnotation$9O);
+        SLinkOperations.setTarget(rootTemplateNode, LINKS.applicableConcept$LAIX, node);
+        new IAttributeDescriptor.NodeAttribute(CONCEPTS.RootTemplateAnnotation$9O).set(result.value, rootTemplateNode);
+        SPropertyOperations.set(SNodeOperations.as(result.value, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL, SPropertyOperations.getString(node, PROPS.name$MnvL));
+        jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations.addRootNode(model, result.value);
+        MappingConfiguration__BehaviorDescriptor.addMember_id2JKPiG_HmQX.invoke(mapping.value, result.value);
       }
     });
     return result.value;

@@ -34,11 +34,7 @@ public class DeleteLastCommentedStatementAfterUsual_SemicolonSelected_Test exten
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("8821749938013429943", "8821749938013429967");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action"), false);
     }
   }
 }

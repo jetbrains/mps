@@ -13,11 +13,9 @@ import jetbrains.mps.util.PathManager;
 import jetbrains.mps.textgen.trace.DefaultTraceInfoProvider;
 import org.junit.After;
 import org.junit.Test;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.junit.Assert;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.textgen.trace.TraceInfo;
-import java.util.function.Predicate;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -29,6 +27,7 @@ import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.debug.api.breakpoints.BreakpointLocation;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.textgen.trace.DebugInfo;
 import jetbrains.mps.textgen.trace.BaseLanguageNodeLookup;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -64,93 +63,65 @@ public class TraceInfoTest implements EnvironmentAware {
 
   @Test
   public void precondition() {
-    invokeTestWithModelRead(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        Assert.assertNotNull(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").resolve(myProject.getRepository()));
-        Assert.assertTrue(new TraceInfo().hasDebugInfo(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").getModelReference().resolve(myProject.getRepository())));
-        Assert.assertTrue("Trace provider by model long name (no stereotype)", myTraceProvider.debugInfo(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").getModelReference().getName().getLongName()).findAny().isPresent());
-        Assert.assertTrue("Trace provider by exact model name", myTraceProvider.debugInfo(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").getModelReference().getName(), new Predicate<SModel>() {
-          public boolean test(SModel m) {
-            return true;
-          }
-        }).findAny().isPresent());
-      }
+    invokeTestWithModelRead(() -> {
+      Assert.assertNotNull(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").resolve(myProject.getRepository()));
+      Assert.assertTrue(new TraceInfo().hasDebugInfo(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").getModelReference().resolve(myProject.getRepository())));
+      Assert.assertTrue("Trace provider by model long name (no stereotype)", myTraceProvider.debugInfo(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").getModelReference().getName().getLongName()).findAny().isPresent());
+      Assert.assertTrue("Trace provider by exact model name", myTraceProvider.debugInfo(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").getModelReference().getName(), (SModel m) -> true).findAny().isPresent());
     });
   }
 
   @Test
   public void ifTest() {
-    invokeTestWithModelRead(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        SNode node = getErrorLocation(new _FunctionTypes._void_P0_E0() {
-          public void invoke() {
-            TestClass.ifTest();
-          }
-        });
-        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, CONCEPTS.IfStatement$Q4));
-      }
+    invokeTestWithModelRead(() -> {
+      SNode node = getErrorLocation(() -> TestClass.ifTest());
+      Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, CONCEPTS.IfStatement$Q4));
     });
   }
 
   @Test
   public void forTest() {
-    invokeTestWithModelRead(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        SNode node = getErrorLocation(new _FunctionTypes._void_P0_E0() {
-          public void invoke() {
-            TestClass.forTest();
-          }
-        });
-        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, CONCEPTS.ForStatement$qV));
-      }
+    invokeTestWithModelRead(() -> {
+      SNode node = getErrorLocation(() -> TestClass.forTest());
+      Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, CONCEPTS.ForStatement$qV));
     });
   }
   @Test
   public void blockStatementTest() {
-    invokeTestWithModelRead(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        SNode node = getErrorLocation(new _FunctionTypes._void_P0_E0() {
-          public void invoke() {
-            TestClass.blockStatementTest();
-          }
-        });
-        Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, CONCEPTS.ThrowStatement$Zy));
-      }
+    invokeTestWithModelRead(() -> {
+      SNode node = getErrorLocation(() -> TestClass.blockStatementTest());
+      Assert.assertTrue("Node " + node.getNodeId().toString() + " is of concept " + SNodeOperations.getConcept(node), SNodeOperations.isInstanceOf(node, CONCEPTS.ThrowStatement$Zy));
     });
   }
 
   @Test
   public void foreachTest() {
-    invokeTestWithModelRead(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        try {
-          TestClass.foreachTest();
-        } catch (Throwable t) {
-          StackTraceElement stackTraceElement = t.getStackTrace()[0];
-          List<SNodeReference> variableNodesForPosition = myTraceProvider.debugInfo(getModelName(stackTraceElement)).findFirst().get().getVariableNodesForPosition(stackTraceElement.getFileName(), stackTraceElement.getLineNumber(), "it");
-          Assert.assertFalse(variableNodesForPosition.isEmpty());
-          SNode node = variableNodesForPosition.get(0).resolve(myProject.getRepository());
-          Assert.assertNotNull(node);
-          Assert.assertTrue("Node " + SNodeOperations.present(node) + " for variable it.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$mK));
-        }
+    invokeTestWithModelRead(() -> {
+      try {
+        TestClass.foreachTest();
+      } catch (Throwable t) {
+        StackTraceElement stackTraceElement = t.getStackTrace()[0];
+        List<SNodeReference> variableNodesForPosition = myTraceProvider.debugInfo(getModelName(stackTraceElement)).findFirst().get().getVariableNodesForPosition(stackTraceElement.getFileName(), stackTraceElement.getLineNumber(), "it");
+        Assert.assertFalse(variableNodesForPosition.isEmpty());
+        SNode node = variableNodesForPosition.get(0).resolve(myProject.getRepository());
+        Assert.assertNotNull(node);
+        Assert.assertTrue("Node " + SNodeOperations.present(node) + " for variable it.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$mK));
       }
     });
   }
 
   @Test
   public void generatedForeachTest() {
-    invokeTestWithModelRead(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        try {
-          TestClass.generatedForeachTest();
-        } catch (Throwable t) {
-          StackTraceElement stackTraceElement = t.getStackTrace()[0];
-          List<SNodeReference> variableNodesForPosition = myTraceProvider.debugInfo(getModelName(stackTraceElement)).findFirst().get().getVariableNodesForPosition(stackTraceElement.getFileName(), stackTraceElement.getLineNumber(), "it_gen");
-          Assert.assertFalse(variableNodesForPosition.isEmpty());
-          SNode node = variableNodesForPosition.get(0).resolve(myProject.getRepository());
-          Assert.assertNotNull(node);
-          Assert.assertTrue("Node " + SNodeOperations.present(node) + " for variable it_gen.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$mK));
-        }
+    invokeTestWithModelRead(() -> {
+      try {
+        TestClass.generatedForeachTest();
+      } catch (Throwable t) {
+        StackTraceElement stackTraceElement = t.getStackTrace()[0];
+        List<SNodeReference> variableNodesForPosition = myTraceProvider.debugInfo(getModelName(stackTraceElement)).findFirst().get().getVariableNodesForPosition(stackTraceElement.getFileName(), stackTraceElement.getLineNumber(), "it_gen");
+        Assert.assertFalse(variableNodesForPosition.isEmpty());
+        SNode node = variableNodesForPosition.get(0).resolve(myProject.getRepository());
+        Assert.assertNotNull(node);
+        Assert.assertTrue("Node " + SNodeOperations.present(node) + " for variable it_gen.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$mK));
       }
     });
   }
@@ -162,26 +133,20 @@ public class TraceInfoTest implements EnvironmentAware {
 
   @Test
   public void internalClassTest() {
-    invokeTestWithModelRead(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        SNode testClass = SNodeOperations.cast(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").resolve(myProject.getRepository()), CONCEPTS.ClassConcept$bK);
-        SNode statement = Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(testClass)).where(new IWhereFilter<SNode>() {
-          public boolean accept(SNode it) {
-            return SPropertyOperations.getString(it, PROPS.name$MnvL).equals("internalClassTest");
-          }
-        }), LINKS.body$5xQk), LINKS.statement$53DE)).first();
-        BreakpointLocation location = new BreakpointLocation(statement);
-        Assert.assertEquals("jetbrains.mps.traceInfo.test.TestClass", location.getTargetUnitName());
-      }
+    invokeTestWithModelRead(() -> {
+      SNode testClass = SNodeOperations.cast(new SNodePointer("r:fc539459-610a-408b-8472-ac3a7316412f(jetbrains.mps.traceInfo.test@tests)", "8529179251482782650").resolve(myProject.getRepository()), CONCEPTS.ClassConcept$bK);
+      SNode statement = Sequence.fromIterable(SLinkOperations.collectMany(SLinkOperations.collect(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(testClass)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return SPropertyOperations.getString(it, PROPS.name$MnvL).equals("internalClassTest");
+        }
+      }), LINKS.body$5xQk), LINKS.statement$53DE)).first();
+      BreakpointLocation location = new BreakpointLocation(statement);
+      Assert.assertEquals("jetbrains.mps.traceInfo.test.TestClass", location.getTargetUnitName());
     });
   }
 
   private void invokeTestWithModelRead(final _FunctionTypes._void_P0_E0 test) {
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        test.invoke();
-      }
-    });
+    myProject.getRepository().getModelAccess().runReadAction(() -> test.invoke());
   }
 
   private SNode getErrorLocation(_FunctionTypes._void_P0_E0 method) {

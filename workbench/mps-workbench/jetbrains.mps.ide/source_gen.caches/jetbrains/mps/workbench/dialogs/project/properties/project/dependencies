@@ -61,7 +61,6 @@
     <classNode dependClassName="com.intellij.ui.components.JBList" />
     <classNode dependClassName="com.intellij.uiDesigner.core.GridConstraints" />
     <classNode dependClassName="com.intellij.uiDesigner.core.GridLayoutManager" />
-    <classNode dependClassName="com.intellij.util.containers.Convertor" />
     <classNode dependClassName="java.awt.Dimension" />
     <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.Object" />
@@ -76,7 +75,6 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="java.util.function.Consumer" />
-    <classNode dependClassName="java.util.function.Predicate" />
     <classNode dependClassName="javax.swing.AbstractListModel" />
     <classNode dependClassName="javax.swing.JComponent" />
     <classNode dependClassName="javax.swing.JPanel" />

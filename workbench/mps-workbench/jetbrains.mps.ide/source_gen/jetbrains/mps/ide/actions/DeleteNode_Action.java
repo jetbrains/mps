@@ -47,11 +47,7 @@ public class DeleteNode_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._boolean res = new Wrappers._boolean();
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        res.value = Sequence.fromIterable(DeleteNode_Action.this.getAffectedNodes(_params)).count() != 0;
-      }
-    });
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(() -> res.value = Sequence.fromIterable(DeleteNode_Action.this.getAffectedNodes(_params)).count() != 0);
     return res.value;
   }
   @Override
@@ -89,19 +85,11 @@ public class DeleteNode_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<List<SNode>> affNodes = new Wrappers._T<List<SNode>>();
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        affNodes.value = Sequence.fromIterable(DeleteNode_Action.this.getAffectedNodes(_params)).toListSequence();
-      }
-    });
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(() -> affNodes.value = Sequence.fromIterable(DeleteNode_Action.this.getAffectedNodes(_params)).toListSequence());
     final DeleteNodesHelper helper = new DeleteNodesHelper(affNodes.value, ((MPSProject) MapSequence.fromMap(_params).get("project")));
 
     final Wrappers._boolean hasAspects = new Wrappers._boolean(false);
-    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        hasAspects.value = helper.hasAspectOption();
-      }
-    });
+    ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(() -> hasAspects.value = helper.hasAspectOption());
 
     DeleteDialog.DeleteOption safeOption = new DeleteDialog.DeleteOption(UIUtil.replaceMnemonicAmpersand(IdeBundle.message("dialog.node.delete.option.safe")), false, true);
     DeleteDialog.DeleteOption aspectsOption = new DeleteDialog.DeleteOption(UIUtil.replaceMnemonicAmpersand(IdeBundle.message("dialog.node.delete.option.aspects")), true, true);

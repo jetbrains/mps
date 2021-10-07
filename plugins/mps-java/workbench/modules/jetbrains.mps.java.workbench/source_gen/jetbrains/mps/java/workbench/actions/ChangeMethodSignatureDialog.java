@@ -69,11 +69,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     this.myProject = project;
     this.myDeclaration = node;
     // TODO: call this constructor inside read action?
-    myProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        ChangeMethodSignatureDialog.this.myParameters = new ChangeMethodSignatureParameters(myDeclaration);
-      }
-    });
+    myProject.getModelAccess().runReadAction(() -> ChangeMethodSignatureDialog.this.myParameters = new ChangeMethodSignatureParameters(myDeclaration));
     init();
   }
 
@@ -86,24 +82,22 @@ import org.jetbrains.mps.openapi.language.SConcept;
    */
   private JComponent createSignaturePanel(final DialogPanel parentPanel) {
     JPanel panel = new JPanel(new BorderLayout());
-    myProject.getRepository().getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        SNode baseMethodDeclaration = ChangeMethodSignatureDialog.this.myParameters.getDeclaration();
-        SLinkOperations.setTarget(baseMethodDeclaration, LINKS.body$5xQk, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4975dc2bdcfa0c49L, "jetbrains.mps.baseLanguage.structure.StubStatementList")));
+    myProject.getRepository().getModelAccess().executeCommand(() -> {
+      SNode baseMethodDeclaration = ChangeMethodSignatureDialog.this.myParameters.getDeclaration();
+      SLinkOperations.setTarget(baseMethodDeclaration, LINKS.body$5xQk, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4975dc2bdcfa0c49L, "jetbrains.mps.baseLanguage.structure.StubStatementList")));
 
-        myTempModel = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.forDefaultModule());
-        myTempModel.addRootNode(baseMethodDeclaration);
-        myTempModel.addChangeListener(myDefaultValuePanel);
-        myTempModel.addChangeListener(ChangeMethodSignatureDialog.this);
-        TemporaryModels.getInstance().addMissingImports(myTempModel);
+      myTempModel = TemporaryModels.getInstance().createEditable(true, TempModuleOptions.forDefaultModule());
+      myTempModel.addRootNode(baseMethodDeclaration);
+      myTempModel.addChangeListener(myDefaultValuePanel);
+      myTempModel.addChangeListener(ChangeMethodSignatureDialog.this);
+      TemporaryModels.getInstance().addMissingImports(myTempModel);
 
-        ChangeMethodSignatureDialog.this.myEditor = new SizedEmbeddableEditor(myProject, true, 300);
-        myEditor.editNode(baseMethodDeclaration);
+      ChangeMethodSignatureDialog.this.myEditor = new SizedEmbeddableEditor(myProject, true, 300);
+      myEditor.editNode(baseMethodDeclaration);
 
-        // Set focus on the editor
-        if (myEditor.getEditor().getCurrentEditorComponent() instanceof JComponent) {
-          parentPanel.setPreferredFocusedComponent(as_vatimf_a0a0a0n0a0a0a0b0n(myEditor.getEditor().getCurrentEditorComponent(), JComponent.class));
-        }
+      // Set focus on the editor
+      if (myEditor.getEditor().getCurrentEditorComponent() instanceof JComponent) {
+        parentPanel.setPreferredFocusedComponent(as_vatimf_a0a0a0n0a0a1a31(myEditor.getEditor().getCurrentEditorComponent(), JComponent.class));
       }
     });
     panel.setBorder(new TitledBorder("Method signature"));
@@ -170,11 +164,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       @Override
       public void run(@NotNull final ProgressIndicator indicator) {
         ModelAccess modelAccess = ChangeMethodSignatureDialog.this.myProject.getRepository().getModelAccess();
-        modelAccess.runReadAction(new Runnable() {
-          public void run() {
-            methodsToRefactor.value = MethodRefactoringUtils.findOverridingMethods(ChangeMethodSignatureDialog.this.myProject.new ProjectScope(), ChangeMethodSignatureDialog.this.myDeclaration, new ProgressMonitorAdapter(indicator));
-          }
-        });
+        modelAccess.runReadAction(() -> methodsToRefactor.value = MethodRefactoringUtils.findOverridingMethods(ChangeMethodSignatureDialog.this.myProject.new ProjectScope(), ChangeMethodSignatureDialog.this.myDeclaration, new ProgressMonitorAdapter(indicator)));
       }
     });
     ListSequence.fromList(methodsToRefactor.value).addElement(myDeclaration);
@@ -182,11 +172,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     // Get default values for new parameters (if any)
     final Wrappers._T<Map<SNode, SNode>> defaultValues = new Wrappers._T<Map<SNode, SNode>>(MapSequence.fromMap(new HashMap<SNode, SNode>()));
 
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        defaultValues.value = myDefaultValuePanel.getDefaultValues();
-      }
-    });
+    myProject.getRepository().getModelAccess().runReadAction(() -> defaultValues.value = myDefaultValuePanel.getDefaultValues());
 
     // Create refactorings
     myRefactorings = ListSequence.fromList(new ArrayList<ChangeMethodSignatureRefactoring>());
@@ -210,11 +196,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
 
     if (myTempModel != null) {
-      myProject.getModelAccess().runWriteAction(new Runnable() {
-        public void run() {
-          TemporaryModels.getInstance().dispose(myTempModel);
-          myTempModel = null;
-        }
+      myProject.getModelAccess().runWriteAction(() -> {
+        TemporaryModels.getInstance().dispose(myTempModel);
+        myTempModel = null;
       });
     }
     super.dispose();
@@ -253,7 +237,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StubStatementList$v6);
     return n0.getResult();
   }
-  private static <T> T as_vatimf_a0a0a0n0a0a0a0b0n(Object o, Class<T> type) {
+  private static <T> T as_vatimf_a0a0a0n0a0a1a31(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

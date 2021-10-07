@@ -112,47 +112,45 @@ public class DiffEditorsGroup {
 
     final SRepository editorRepo = thisEditor.getEditorContext().getRepository();
     assert editorRepo == otherEditor.getEditorContext().getRepository();
-    editorRepo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        int viewY = thisEditor.getViewport().getViewPosition().y;
-        SNode visibleNode = thisEditor.getEditedNode();
-        if (viewY > thisEditor.getRootCell().getY()) {
-          visibleNode = check_s6qw4f_a0a0c0a0a6a32(thisEditor.findCellWeak(1, viewY));
-        }
-        SModel otherModel = check_s6qw4f_a0d0a0a6a32(otherEditor.getEditedNode());
-        if (otherModel == null) {
-          return;
-        }
+    editorRepo.getModelAccess().runReadAction(() -> {
+      int viewY = thisEditor.getViewport().getViewPosition().y;
+      SNode visibleNode = thisEditor.getEditedNode();
+      if (viewY > thisEditor.getRootCell().getY()) {
+        visibleNode = check_s6qw4f_a0a0c0a0a6a32(thisEditor.findCellWeak(1, viewY));
+      }
+      SModel otherModel = check_s6qw4f_a0d0a0a6a32(otherEditor.getEditedNode());
+      if (otherModel == null) {
+        return;
+      }
 
-        while (visibleNode != null) {
-          SNodeId id = visibleNode.getNodeId();
-          EditorCell thisCell = thisEditor.findNodeCell(visibleNode);
-          if (thisCell != null) {
-            int newRelativePos = viewY - thisCell.getY();
-            SNodeId nodeId = mapID(thisDiffEditor, id, otherDiffEditor);
-            EditorCell otherCell = (nodeId != null ? otherEditor.findNodeCell(otherModel.getNode(nodeId)) : null);
-            Point position = thisEditor.getViewport().getViewPosition();
-            if (otherCell != null) {
-              Rectangle viewRect = otherEditor.getViewport().getViewRect();
-              int newX = Math.min((int) position.getX(), otherEditor.getWidth() - viewRect.width);
-              int newY = Math.min(newRelativePos + otherCell.getY(), otherEditor.getHeight() - viewRect.height);
-              otherEditor.getViewport().setViewPosition(new Point(newX, newY));
-              return;
-            }
-          }
-
-          SContainmentLink link = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(visibleNode);
-          SNode parent = visibleNode.getParent();
-
-          if (link == null || parent == null) {
+      while (visibleNode != null) {
+        SNodeId id = visibleNode.getNodeId();
+        EditorCell thisCell = thisEditor.findNodeCell(visibleNode);
+        if (thisCell != null) {
+          int newRelativePos = viewY - thisCell.getY();
+          SNodeId nodeId = mapID(thisDiffEditor, id, otherDiffEditor);
+          EditorCell otherCell = (nodeId != null ? otherEditor.findNodeCell(otherModel.getNode(nodeId)) : null);
+          Point position = thisEditor.getViewport().getViewPosition();
+          if (otherCell != null) {
+            Rectangle viewRect = otherEditor.getViewport().getViewRect();
+            int newX = Math.min((int) position.getX(), otherEditor.getWidth() - viewRect.width);
+            int newY = Math.min(newRelativePos + otherCell.getY(), otherEditor.getHeight() - viewRect.height);
+            otherEditor.getViewport().setViewPosition(new Point(newX, newY));
             return;
           }
-          int index = SNodeOperations.getIndexInChildrenAndChildAttributesCollection(visibleNode);
-          if (index != 0) {
-            visibleNode = ListSequence.fromList(Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, link)).toListSequence()).getElement(index - 1);
-          } else {
-            visibleNode = parent;
-          }
+        }
+
+        SContainmentLink link = SNodeOperations.getContainingLinkInChildrenAndChildAttributesCollection(visibleNode);
+        SNode parent = visibleNode.getParent();
+
+        if (link == null || parent == null) {
+          return;
+        }
+        int index = SNodeOperations.getIndexInChildrenAndChildAttributesCollection(visibleNode);
+        if (index != 0) {
+          visibleNode = ListSequence.fromList(Sequence.fromIterable(AttributeOperations.getChildNodesAndAttributes(parent, link)).toListSequence()).getElement(index - 1);
+        } else {
+          visibleNode = parent;
         }
       }
     });
@@ -162,17 +160,15 @@ public class DiffEditorsGroup {
     }
     @Override
     protected void selectionChangedTo(final jetbrains.mps.openapi.editor.EditorComponent component, final SingularSelection newSelection) {
-      component.getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          SNodeId selectionId = check_s6qw4f_a0a0a0a0a1y(check_s6qw4f_a0a0a0a0a0b42(newSelection.getEditorCell()));
-          if (selectionId != null) {
-            DiffEditor diffEditor0 = getDiffEditor(component);
-            for (DiffEditor diffEditor : ListSequence.fromList(myDiffEditors)) {
-              jetbrains.mps.openapi.editor.EditorComponent mainEditor = diffEditor.getEditorComponent(false);
-              SNodeId nodeId = mapID(diffEditor0, selectionId, diffEditor);
-              SNode node = (nodeId != null ? check_s6qw4f_a0a2a1a1a0a0a0b42(check_s6qw4f_a0a0c0b0b0a0a0a1y(mainEditor.getEditedNode()), nodeId) : null);
-              diffEditor.inspect(node);
-            }
+      component.getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        SNodeId selectionId = check_s6qw4f_a0a0a0a0a1y(check_s6qw4f_a0a0a0a0a0b42(newSelection.getEditorCell()));
+        if (selectionId != null) {
+          DiffEditor diffEditor0 = getDiffEditor(component);
+          for (DiffEditor diffEditor : ListSequence.fromList(myDiffEditors)) {
+            jetbrains.mps.openapi.editor.EditorComponent mainEditor = diffEditor.getEditorComponent(false);
+            SNodeId nodeId = mapID(diffEditor0, selectionId, diffEditor);
+            SNode node = (nodeId != null ? check_s6qw4f_a0a2a1a1a0a0a0b42(check_s6qw4f_a0a0c0b0b0a0a0a1y(mainEditor.getEditedNode()), nodeId) : null);
+            diffEditor.inspect(node);
           }
         }
       });

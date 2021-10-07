@@ -20,8 +20,6 @@ import java.util.function.Function;
 import java.util.concurrent.CopyOnWriteArraySet;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.ArrayList;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.runtime.MakeAspectDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -80,11 +78,7 @@ public final class FacetRegistry implements CoreComponent {
 
   public void register(SLanguage language, IFacet facet) {
     register(facet);
-    Function<SLanguage, CopyOnWriteArraySet<IFacet>> ff = new Function<SLanguage, CopyOnWriteArraySet<IFacet>>() {
-      public CopyOnWriteArraySet<IFacet> apply(SLanguage l) {
-        return new CopyOnWriteArraySet<IFacet>();
-      }
-    };
+    Function<SLanguage, CopyOnWriteArraySet<IFacet>> ff = (SLanguage l) -> new CopyOnWriteArraySet<IFacet>();
     myLang2Facet.computeIfAbsent(language, ff).add(facet);
   }
 
@@ -99,18 +93,12 @@ public final class FacetRegistry implements CoreComponent {
       }
     }));
     final ArrayList<SLanguage> toDrop = new ArrayList<>(2);
-    myLang2Facet.forEach(new BiConsumer<SLanguage, Set<IFacet>>() {
-      public void accept(SLanguage k, Set<IFacet> v) {
-        if (v.remove(facet)) {
-          toDrop.add(k);
-        }
+    myLang2Facet.forEach((SLanguage k, Set<IFacet> v) -> {
+      if (v.remove(facet)) {
+        toDrop.add(k);
       }
     });
-    toDrop.forEach(new Consumer<SLanguage>() {
-      public void accept(SLanguage it) {
-        myLang2Facet.remove(it);
-      }
-    });
+    toDrop.forEach((SLanguage it) -> myLang2Facet.remove(it));
   }
 
   public IFacet lookup(IFacet.Name fn) {
@@ -169,16 +157,10 @@ public final class FacetRegistry implements CoreComponent {
     }
     final ArrayList<IFacet> forLang = new ArrayList<>();
     // XXX would be handy to have sequence.toStream
-    myLanguageRegistry.withAvailableLanguages(Stream.of(Sequence.fromIterable(languages).toGenericArray(SLanguage.class)), new Consumer<LanguageRuntime>() {
-      public void accept(LanguageRuntime lr) {
-        MakeAspectDescriptor ma = lr.getAspect(MakeAspectDescriptor.class);
-        if (ma != null) {
-          ma.getManifest().facets().forEach(new Consumer<IFacet>() {
-            public void accept(IFacet it) {
-              forLang.add(it);
-            }
-          });
-        }
+    myLanguageRegistry.withAvailableLanguages(Stream.of(Sequence.fromIterable(languages).toGenericArray(SLanguage.class)), (LanguageRuntime lr) -> {
+      MakeAspectDescriptor ma = lr.getAspect(MakeAspectDescriptor.class);
+      if (ma != null) {
+        ma.getManifest().facets().forEach((IFacet it) -> forLang.add(it));
       }
     });
     // XXX Do I need to care about ordering. Seems right to have mechanism to override coming first, 

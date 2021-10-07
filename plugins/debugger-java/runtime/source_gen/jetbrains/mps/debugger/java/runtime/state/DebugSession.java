@@ -9,7 +9,6 @@ import jetbrains.mps.debugger.java.runtime.evaluation.EvaluationProvider;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.debugger.java.runtime.engine.events.Context;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.debug.api.DebugSessionManagerComponent;
 import jetbrains.mps.debugger.java.runtime.engine.VMEventsProcessorManagerComponent;
 import java.util.Set;
@@ -80,12 +79,10 @@ public class DebugSession extends AbstractDebugSession<JavaUiStateImpl> {
     setState(state, state.paused(suspendContext), false);
   }
   public void refresh() {
-    myEventsProcessor.schedule(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        JavaUiStateImpl state = getUiState();
-        JavaUiStateImpl newState = state.paused(state.getContext());
-        setState(state, newState);
-      }
+    myEventsProcessor.schedule(() -> {
+      JavaUiStateImpl state = getUiState();
+      JavaUiStateImpl newState = state.paused(state.getContext());
+      setState(state, newState);
     });
   }
   private void resume(Context suspendContext) {
@@ -107,27 +104,25 @@ public class DebugSession extends AbstractDebugSession<JavaUiStateImpl> {
   @Override
   public void muteBreakpoints(final boolean mute) {
     if (myEventsProcessor.isAttached()) {
-      myEventsProcessor.schedule(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          if (myIsMute != mute) {
-            Set<IBreakpoint> breakpoints = myEventsProcessor.getBreakpointManager().getAllIBreakpoints();
-            RequestManager requestManager = myEventsProcessor.getRequestManager();
-            for (IBreakpoint bp : breakpoints) {
-              if (bp instanceof JavaBreakpoint) {
-                JavaBreakpoint breakpoint = (JavaBreakpoint) bp;
-                if (mute) {
-                  requestManager.deleteRequests(breakpoint);
-                  //  todo enabling and disabling breakpoints should be symmetrical
-                } else {
-                  if (breakpoint.isValid()) {
-                    breakpoint.createOrWaitPrepare(myEventsProcessor);
-                  }
+      myEventsProcessor.schedule(() -> {
+        if (myIsMute != mute) {
+          Set<IBreakpoint> breakpoints = myEventsProcessor.getBreakpointManager().getAllIBreakpoints();
+          RequestManager requestManager = myEventsProcessor.getRequestManager();
+          for (IBreakpoint bp : breakpoints) {
+            if (bp instanceof JavaBreakpoint) {
+              JavaBreakpoint breakpoint = (JavaBreakpoint) bp;
+              if (mute) {
+                requestManager.deleteRequests(breakpoint);
+                //  todo enabling and disabling breakpoints should be symmetrical
+              } else {
+                if (breakpoint.isValid()) {
+                  breakpoint.createOrWaitPrepare(myEventsProcessor);
                 }
               }
             }
-            myIsMute = mute;
-            fireSessionMuted(DebugSession.this);
           }
+          myIsMute = mute;
+          fireSessionMuted(DebugSession.this);
         }
       });
     } else {

@@ -66,12 +66,10 @@ public class ShowTypeSystemTrace_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        TraceTool_Tool tool = event.getData(CommonDataKeys.PROJECT).getComponent(ProjectPluginManager.class).getTool(TraceTool_Tool.class);
-        tool.buildTrace(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.NODE), event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
-        tool.openToolLater(true);
-      }
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
+      TraceTool_Tool tool = event.getData(CommonDataKeys.PROJECT).getComponent(ProjectPluginManager.class).getTool(TraceTool_Tool.class);
+      tool.buildTrace(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.NODE), event.getData(MPSEditorDataKeys.EDITOR_COMPONENT));
+      tool.openToolLater(true);
     });
   }
 }

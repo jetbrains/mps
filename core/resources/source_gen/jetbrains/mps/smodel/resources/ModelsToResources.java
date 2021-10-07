@@ -29,11 +29,7 @@ public class ModelsToResources {
    */
   public ModelsToResources(Iterable<SModel> models) {
     this.models = models;
-    myCanGenerateCondition = new _FunctionTypes._return_P1_E0<Boolean, SModel>() {
-      public Boolean invoke(SModel it) {
-        return GenerationFacade.canGenerate(it);
-      }
-    };
+    myCanGenerateCondition = (SModel it) -> GenerationFacade.canGenerate(it);
   }
 
   /**

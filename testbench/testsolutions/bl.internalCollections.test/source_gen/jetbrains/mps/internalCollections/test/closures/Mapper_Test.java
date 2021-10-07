@@ -544,44 +544,28 @@ __switch__:
         return it.as;
       }
     });
-    _FunctionTypes._return_P1_E0<? extends List<A>, ? super B> cl = new _FunctionTypes._return_P1_E0<List<A>, B>() {
-      public List<A> invoke(B it) {
-        return it.as;
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends List<A>, ? super B> cl = (B it) -> it.as;
     Sequence.fromIterable(bs).translate(cl);
     Sequence.fromIterable(bs).translate(new ITranslator2<B, A>() {
       public Iterable<A> translate(B it) {
         return it.listofa;
       }
     });
-    _FunctionTypes._return_P1_E0<? extends List<A>, ? super B> cl2 = new _FunctionTypes._return_P1_E0<List<A>, B>() {
-      public List<A> invoke(B it) {
-        return it.listofa;
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends List<A>, ? super B> cl2 = (B it) -> it.listofa;
     Sequence.fromIterable(bs).translate(cl2);
     Sequence.fromIterable(bs).translate(new ITranslator2<B, A>() {
       public Iterable<A> translate(B it) {
         return it.seqofa;
       }
     });
-    _FunctionTypes._return_P1_E0<? extends Iterable<A>, ? super B> cl3 = new _FunctionTypes._return_P1_E0<Iterable<A>, B>() {
-      public Iterable<A> invoke(B it) {
-        return it.seqofa;
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Iterable<A>, ? super B> cl3 = (B it) -> it.seqofa;
     Sequence.fromIterable(bs).translate(cl3);
     Sequence.fromIterable(bs).translate(new ITranslator2<B, A>() {
       public Iterable<A> translate(B it) {
         return it.iterableofa;
       }
     });
-    _FunctionTypes._return_P1_E0<? extends Iterable<A>, ? super B> cl4 = new _FunctionTypes._return_P1_E0<Iterable<A>, B>() {
-      public Iterable<A> invoke(B it) {
-        return it.iterableofa;
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends Iterable<A>, ? super B> cl4 = (B it) -> it.iterableofa;
     Sequence.fromIterable(bs).translate(cl4);
   }
   @Test

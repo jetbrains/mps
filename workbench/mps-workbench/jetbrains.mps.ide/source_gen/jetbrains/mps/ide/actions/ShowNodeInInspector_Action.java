@@ -57,12 +57,10 @@ public class ShowNodeInInspector_Action extends BaseAction {
       ((EditorComponent) MapSequence.fromMap(_params).get("editor")).getEditorContext().openInspector();
       return;
     }
-    ((EditorComponent) MapSequence.fromMap(_params).get("editor")).getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        InspectorEditorComponent inspectorComponent = ((InspectorEditorComponent) ((EditorComponent) MapSequence.fromMap(_params).get("editor")));
-        inspectorComponent.getUpdater().setInitialEditorHints(inspectorComponent.getEditorHintsForNode(((SNode) MapSequence.fromMap(_params).get("node"))));
-        inspectorComponent.editNode(((SNode) MapSequence.fromMap(_params).get("node")));
-      }
+    ((EditorComponent) MapSequence.fromMap(_params).get("editor")).getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+      InspectorEditorComponent inspectorComponent = ((InspectorEditorComponent) ((EditorComponent) MapSequence.fromMap(_params).get("editor")));
+      inspectorComponent.getUpdater().setInitialEditorHints(inspectorComponent.getEditorHintsForNode(((SNode) MapSequence.fromMap(_params).get("node"))));
+      inspectorComponent.editNode(((SNode) MapSequence.fromMap(_params).get("node")));
     });
   }
 }

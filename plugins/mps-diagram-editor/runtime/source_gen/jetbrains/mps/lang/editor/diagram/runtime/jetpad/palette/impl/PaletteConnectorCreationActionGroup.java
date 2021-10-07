@@ -64,18 +64,16 @@ public class PaletteConnectorCreationActionGroup implements PaletteActionGroup {
     // TMP solution: manually creating instance of connection instead of using
     // ModelActions.createChildNodeSubstituteActions() because of mbeddr reqirements:
     // hiding text-specific connection substitute actions from the diagram
-    return new SubstituteInfoPartExt() {
-      public List<SubstituteAction> createActions(CellContext cellContext, final EditorContext editorContext) {
-        AbstractNodeSubstituteAction action = new AbstractNodeSubstituteAction(childNodeConcept.getDeclarationNode(), childNodeConcept, container) {
-          @Override
-          protected SNode doSubstitute(@Nullable EditorContext context, String string) {
-            SNode result = NodeFactoryManager.createNode(childNodeConcept, null, container, SNodeOperations.getModel(container));
-            ListSequence.fromList(SNodeOperations.getChildren(container, containingLink)).addElement(result);
-            return result;
-          }
-        };
-        return Collections.<SubstituteAction>singletonList(new NodeSubstituteActionWrapper(action));
-      }
+    return (CellContext cellContext, final EditorContext editorContext) -> {
+      AbstractNodeSubstituteAction action = new AbstractNodeSubstituteAction(childNodeConcept.getDeclarationNode(), childNodeConcept, container) {
+        @Override
+        protected SNode doSubstitute(@Nullable EditorContext context, String string) {
+          SNode result = NodeFactoryManager.createNode(childNodeConcept, null, container, SNodeOperations.getModel(container));
+          ListSequence.fromList(SNodeOperations.getChildren(container, containingLink)).addElement(result);
+          return result;
+        }
+      };
+      return Collections.<SubstituteAction>singletonList(new NodeSubstituteActionWrapper(action));
     };
   }
 

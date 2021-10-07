@@ -116,32 +116,30 @@ import org.apache.log4j.Level;
     // I've got set of reference to modules I need to present in a new MPS instance
     // and now have to guess their locations to pass to the new instance.
     // XXX here, we exploit the assumption module descriptor file resides under a module root
-    myRepo.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
-        for (SModuleReference testModule : myTestsToRun.getRequiredModules()) {
-          SModule tm = testModule.resolve(myRepo);
-          if (tm != null) {
-            ListSequence.fromList(modules).addElement(tm);
-          }
+    myRepo.getModelAccess().runReadAction(() -> {
+      List<SModule> modules = ListSequence.fromList(new ArrayList<SModule>());
+      for (SModuleReference testModule : myTestsToRun.getRequiredModules()) {
+        SModule tm = testModule.resolve(myRepo);
+        if (tm != null) {
+          ListSequence.fromList(modules).addElement(tm);
         }
-        Collection<SModule> execClosure = collectExecuteCP(ListSequence.fromList(modules).distinct());
-        // XXX don't we need to add respective generator module jars like we do inMpsTestsSuite and GenerateTask so tha
-        //     environment started from WithPlatformTestExecutor loads all modules properly?
-        //     OTOH, language and generator modules from the MPS platform are likely to get loaded regardless of the setting,
-        //           while languages and generators from the active project are non-deployed anyway
-        for (SModule m : CollectionSequence.fromCollection(execClosure)) {
-          if (false == m instanceof AbstractModule) {
-            continue;
-          }
-          IFile descriptorFile = ((AbstractModule) m).getDescriptorFile();
-          if (descriptorFile == null) {
-            continue;
-          }
-          // XXX in fact, for non-deployed module this would end up with a module source dir, which is not 'file' per se, but as long as there's
-          // no distinction in processing rd.files and rd.folders (ModulesMiner doesn't care), I don't bother here either.
-          rd.files.add(descriptorFile.getBundleHome().getPath());
+      }
+      Collection<SModule> execClosure = collectExecuteCP(ListSequence.fromList(modules).distinct());
+      // XXX don't we need to add respective generator module jars like we do inMpsTestsSuite and GenerateTask so tha
+      //     environment started from WithPlatformTestExecutor loads all modules properly?
+      //     OTOH, language and generator modules from the MPS platform are likely to get loaded regardless of the setting,
+      //           while languages and generators from the active project are non-deployed anyway
+      for (SModule m : CollectionSequence.fromCollection(execClosure)) {
+        if (false == m instanceof AbstractModule) {
+          continue;
         }
+        IFile descriptorFile = ((AbstractModule) m).getDescriptorFile();
+        if (descriptorFile == null) {
+          continue;
+        }
+        // XXX in fact, for non-deployed module this would end up with a module source dir, which is not 'file' per se, but as long as there's
+        // no distinction in processing rd.files and rd.folders (ModulesMiner doesn't care), I don't bother here either.
+        rd.files.add(descriptorFile.getBundleHome().getPath());
       }
     });
     startupArgs.setRepo(rd);

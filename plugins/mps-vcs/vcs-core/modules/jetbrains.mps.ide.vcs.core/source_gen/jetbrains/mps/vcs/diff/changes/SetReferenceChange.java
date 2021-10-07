@@ -142,24 +142,12 @@ public class SetReferenceChange extends NodeChange {
     String what = "target";
     _FunctionTypes._return_P1_E0<? extends String, ? super SReference> formatRef = null;
     if (!(Objects.equals(oldRef.getTargetSModelReference(), newRef.getTargetSModelReference()))) {
-      formatRef = new _FunctionTypes._return_P1_E0<String, SReference>() {
-        public String invoke(SReference ref) {
-          return String.format("[model=%s,\n  id=%s, resolveInfo=%s]", ref.getTargetSModelReference(), ref.getTargetNodeId(), SLinkOperations.getResolveInfo(ref));
-        }
-      };
+      formatRef = (SReference ref) -> String.format("[model=%s,\n  id=%s, resolveInfo=%s]", ref.getTargetSModelReference(), ref.getTargetNodeId(), SLinkOperations.getResolveInfo(ref));
     } else if (!(Objects.equals(oldRef.getTargetNodeId(), newRef.getTargetNodeId()))) {
-      formatRef = new _FunctionTypes._return_P1_E0<String, SReference>() {
-        public String invoke(SReference ref) {
-          return String.format("[id=%s, resolveInfo=%s]", ref.getTargetNodeId(), ref.getTargetNodeId());
-        }
-      };
+      formatRef = (SReference ref) -> String.format("[id=%s, resolveInfo=%s]", ref.getTargetNodeId(), ref.getTargetNodeId());
     } else if (!(Objects.equals(SLinkOperations.getResolveInfo(oldRef), SLinkOperations.getResolveInfo(newRef)))) {
       what = "resolve info";
-      formatRef = new _FunctionTypes._return_P1_E0<String, SReference>() {
-        public String invoke(SReference ref) {
-          return String.format("'%s'", SLinkOperations.getResolveInfo(ref));
-        }
-      };
+      formatRef = (SReference ref) -> String.format("'%s'", SLinkOperations.getResolveInfo(ref));
     }
     if (formatRef == null) {
       return toString();

@@ -68,38 +68,34 @@ public class CommandUtil {
   }
 
   public static _FunctionTypes._return_P0_E0<? extends SearchResults> nodesToResults(final Iterable<SNodeReference> nodes, final SRepository repository) {
-    return new _FunctionTypes._return_P0_E0<SearchResults<SNode>>() {
-      public SearchResults<SNode> invoke() {
-        final SearchResults<SNode> res = new SearchResults<SNode>();
-        Sequence.fromIterable(nodes).where(new IWhereFilter<SNodeReference>() {
-          public boolean accept(SNodeReference it) {
-            return check_1pinza_a0a0a0a0b0a0a21(it, repository) != null;
-          }
-        }).visitAll(new IVisitor<SNodeReference>() {
-          public void visit(SNodeReference it) {
-            res.getSearchResults().add(new SearchResult<SNode>(check_1pinza_a0a0a0a0a0b0a0a21(it, repository), "usage"));
-          }
-        });
-        return res;
-      }
+    return () -> {
+      final SearchResults<SNode> res = new SearchResults<SNode>();
+      Sequence.fromIterable(nodes).where(new IWhereFilter<SNodeReference>() {
+        public boolean accept(SNodeReference it) {
+          return check_1pinza_a0a0a0a0b0a0a21(it, repository) != null;
+        }
+      }).visitAll(new IVisitor<SNodeReference>() {
+        public void visit(SNodeReference it) {
+          res.getSearchResults().add(new SearchResult<SNode>(check_1pinza_a0a0a0a0a0b0a0a21(it, repository), "usage"));
+        }
+      });
+      return res;
     };
   }
 
   public static _FunctionTypes._return_P0_E0<? extends SearchResults> modelsToResults(final Iterable<SModelReference> models, final SRepository repository) {
-    return new _FunctionTypes._return_P0_E0<SearchResults<SModel>>() {
-      public SearchResults<SModel> invoke() {
-        final SearchResults<SModel> res = new SearchResults<SModel>();
-        Sequence.fromIterable(models).where(new IWhereFilter<SModelReference>() {
-          public boolean accept(SModelReference it) {
-            return check_1pinza_a0a0a0a0b0a0a41(it, repository) != null;
-          }
-        }).visitAll(new IVisitor<SModelReference>() {
-          public void visit(SModelReference it) {
-            res.getSearchResults().add(new SearchResult<SModel>(check_1pinza_a0a0a0a0a0b0a0a41(it, repository), "usage"));
-          }
-        });
-        return res;
-      }
+    return () -> {
+      final SearchResults<SModel> res = new SearchResults<SModel>();
+      Sequence.fromIterable(models).where(new IWhereFilter<SModelReference>() {
+        public boolean accept(SModelReference it) {
+          return check_1pinza_a0a0a0a0b0a0a41(it, repository) != null;
+        }
+      }).visitAll(new IVisitor<SModelReference>() {
+        public void visit(SModelReference it) {
+          res.getSearchResults().add(new SearchResult<SModel>(check_1pinza_a0a0a0a0a0b0a0a41(it, repository), "usage"));
+        }
+      });
+      return res;
     };
   }
 

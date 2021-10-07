@@ -64,11 +64,7 @@ public class ExecuteActionAttachedToCurrentNode_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<Runnable> action = new Wrappers._T<Runnable>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        action.value = ((Runnable) BHReflection.invoke0(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.IActionHolder$VD, SMethodTrimmedId.create("execute", null, "7oNS25df64x"), event.getData(MPSCommonDataKeys.MPS_PROJECT)));
-      }
-    });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> action.value = ((Runnable) BHReflection.invoke0(event.getData(MPSCommonDataKeys.NODE), CONCEPTS.IActionHolder$VD, SMethodTrimmedId.create("execute", null, "7oNS25df64x"), event.getData(MPSCommonDataKeys.MPS_PROJECT))));
     action.value.run();
   }
 

@@ -65,12 +65,10 @@ public class FindDeprecatedCode_Action extends BaseAction {
       @Override
       public void run(@NotNull final ProgressIndicator indicator) {
         indicator.setIndeterminate(true);
-        event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            Map<SNode, DeprecatedNodeProperties> dep = DeprecatedUtil.deprecated(event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope());
-            Pair categories = new Pair(CategoryKind.DEFAULT_CATEGORY_KIND, "Deprecated Code");
-            myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(dep, categories)).toListSequence());
-          }
+        event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(() -> {
+          Map<SNode, DeprecatedNodeProperties> dep = DeprecatedUtil.deprecated(event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope());
+          Pair categories = new Pair(CategoryKind.DEFAULT_CATEGORY_KIND, "Deprecated Code");
+          myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(dep, categories)).toListSequence());
         });
       }
       @Override

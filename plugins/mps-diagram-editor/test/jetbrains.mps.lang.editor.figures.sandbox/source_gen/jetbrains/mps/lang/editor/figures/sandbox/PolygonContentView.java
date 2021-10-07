@@ -16,7 +16,6 @@ import jetbrains.jetpad.projectional.view.RectView;
 import jetbrains.jetpad.geometry.Vector;
 import jetbrains.jetpad.mapper.Mapper;
 import jetbrains.jetpad.mapper.Synchronizers;
-import jetbrains.jetpad.model.property.WritableProperty;
 import jetbrains.jetpad.projectional.view.View;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.jetpad.geometry.Rectangle;
@@ -49,26 +48,10 @@ public class PolygonContentView extends PolygonView implements ResizableContentV
       @Override
       protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
         super.registerSynchronizers(configuration);
-        configuration.add(Synchronizers.forProperty(contentWidth, new Runnable() {
-          public void run() {
-            adjustPoints(contentWidth.get(), contentHeight.get());
-          }
-        }));
-        configuration.add(Synchronizers.forProperty(contentWidth, new WritableProperty<Integer>() {
-          public void set(Integer value) {
-            setPreferredSize(value, null);
-          }
-        }));
-        configuration.add(Synchronizers.forProperty(contentHeight, new Runnable() {
-          public void run() {
-            adjustPoints(contentWidth.get(), contentHeight.get());
-          }
-        }));
-        configuration.add(Synchronizers.forProperty(contentHeight, new WritableProperty<Integer>() {
-          public void set(Integer value) {
-            setPreferredSize(null, value);
-          }
-        }));
+        configuration.add(Synchronizers.forProperty(contentWidth, () -> adjustPoints(contentWidth.get(), contentHeight.get())));
+        configuration.add(Synchronizers.forProperty(contentWidth, (Integer value) -> setPreferredSize(value, null)));
+        configuration.add(Synchronizers.forProperty(contentHeight, () -> adjustPoints(contentWidth.get(), contentHeight.get())));
+        configuration.add(Synchronizers.forProperty(contentHeight, (Integer value) -> setPreferredSize(null, value)));
       }
     }.attachRoot();
   }

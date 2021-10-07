@@ -91,19 +91,17 @@ public class RenameModelsNamespace_Action extends BaseAction {
     }
 
     final ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-    modelAccess.executeCommandInEDT(new Runnable() {
-      public void run() {
-        ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
-        for (SModel model : ListSequence.fromList(node.getModelsUnder())) {
-          if (model instanceof EditableSModel) {
-            SModelName originalModelName = model.getName();
-            SModelName modifiedModelName = new SModelName(NamespaceRenameHelper.withReplacedPrefix(originalModelName.getNamespace(), originalNamespacePrefix, modifiedNamespacePrefix), originalModelName.getSimpleName(), originalModelName.getStereotype());
-            ((EditableSModel) model).rename(modifiedModelName.getValue(), model.getSource() instanceof FileDataSource);
-          }
+    modelAccess.executeCommandInEDT(() -> {
+      ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
+      for (SModel model : ListSequence.fromList(node.getModelsUnder())) {
+        if (model instanceof EditableSModel) {
+          SModelName originalModelName = model.getName();
+          SModelName modifiedModelName = new SModelName(NamespaceRenameHelper.withReplacedPrefix(originalModelName.getNamespace(), originalNamespacePrefix, modifiedNamespacePrefix), originalModelName.getSimpleName(), originalModelName.getStereotype());
+          ((EditableSModel) model).rename(modifiedModelName.getValue(), model.getSource() instanceof FileDataSource);
         }
-        Renamer.updateModelAndModuleReferences(((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository());
-        ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
       }
+      Renamer.updateModelAndModuleReferences(((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository());
+      ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
     });
   }
 }

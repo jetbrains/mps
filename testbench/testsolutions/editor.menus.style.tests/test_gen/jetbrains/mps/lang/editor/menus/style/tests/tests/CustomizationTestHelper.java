@@ -52,11 +52,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       protected List<SubstituteAction> createActions() {
         ArrayList<SubstituteAction> list = new ArrayList<SubstituteAction>();
         for (final SEnumerationLiteral member : ListSequence.fromList(SEnumOperations.getMembers(MetaAdapterFactory.getEnumeration(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b71ff4L, "jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_Enum")))) {
-          list.add(createAction(editorComponent, member.getPresentation(), new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
-            public SNode invoke(EditorContext context, String pattern, String text, SNode parent) {
-              SPropertyOperations.assignEnum(parent, PROPS.customActionEnumProperty$1pgg, member);
-              return parent;
-            }
+          list.add(createAction(editorComponent, member.getPresentation(), (EditorContext context, String pattern, String text, SNode parent) -> {
+            SPropertyOperations.assignEnum(parent, PROPS.customActionEnumProperty$1pgg, member);
+            return parent;
           }));
         }
         list.add(createEmptyAction(editorComponent));
@@ -69,11 +67,9 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       protected List<SubstituteAction> createActions() {
         ArrayList<SubstituteAction> list = new ArrayList<SubstituteAction>();
         for (final SNode child : (Iterable<SNode>) ModelConstraints.getReferenceDescriptor(currentNode, LINKS.customActionReference$peXD).getScope().getAvailableElements("")) {
-          list.add(new NodeSubstituteActionWrapper(createAction(editorComponent, SPropertyOperations.getString(child, PROPS.name$MnvL), new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
-            public SNode invoke(EditorContext context, String pattern, String text, SNode parent) {
-              SLinkOperations.setTarget(parent, LINKS.customActionReference$peXD, child);
-              return parent;
-            }
+          list.add(new NodeSubstituteActionWrapper(createAction(editorComponent, SPropertyOperations.getString(child, PROPS.name$MnvL), (EditorContext context, String pattern, String text, SNode parent) -> {
+            SLinkOperations.setTarget(parent, LINKS.customActionReference$peXD, child);
+            return parent;
           })) {
             @Override
             public Object getParameterObject() {
@@ -92,16 +88,14 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
       protected List<SubstituteAction> createActions() {
         ArrayList<SubstituteAction> list = new ArrayList<SubstituteAction>();
         for (final SConcept concept : ListSequence.fromList(SConceptOperations.getAllSubConcepts2(CONCEPTS.TestCompletionCustomization_ContextMatcherChildInMatchingLink$VP, SNodeOperations.getModel(parentNode))).subtract(ListSequence.fromList(ListSequence.fromListAndArray(new ArrayList<SConcept>(), CONCEPTS.TestCompletionCustomization_ContextMatcherChildInMatchingLink$VP)))) {
-          SubstituteAction action = new NodeSubstituteActionWrapper(createAction(editorComponent, SConceptOperations.conceptAlias(concept), new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
-            public SNode invoke(EditorContext context, String pattern, String text, SNode parent) {
-              SNode newInstance = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(concept));
-              if (currentChild == null) {
-                ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.customActionChildInMatchingLink$ss1j)).addElement(newInstance);
-              } else {
-                SNodeOperations.replaceWithAnother(currentChild, newInstance);
-              }
-              return newInstance;
+          SubstituteAction action = new NodeSubstituteActionWrapper(createAction(editorComponent, SConceptOperations.conceptAlias(concept), (EditorContext context, String pattern, String text, SNode parent) -> {
+            SNode newInstance = SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(concept));
+            if (currentChild == null) {
+              ListSequence.fromList(SLinkOperations.getChildren(parent, LINKS.customActionChildInMatchingLink$ss1j)).addElement(newInstance);
+            } else {
+              SNodeOperations.replaceWithAnother(currentChild, newInstance);
             }
+            return newInstance;
           })) {
             @Override
             public SNode getOutputConcept() {
@@ -116,11 +110,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     };
   }
   private static SubstituteAction createEmptyAction(final EditorComponent editorComponent) {
-    return createAction(editorComponent, "z_custom", new _FunctionTypes._return_P4_E0<SNode, EditorContext, String, String, SNode>() {
-      public SNode invoke(EditorContext context, String pattern, String text, SNode parent) {
-        return parent;
-      }
-    });
+    return createAction(editorComponent, "z_custom", (EditorContext context, String pattern, String text, SNode parent) -> parent);
   }
 
   private static SubstituteAction createAction(final EditorComponent editorComponent, final String text, final _FunctionTypes._return_P4_E0<? extends SNode, ? super EditorContext, ? super String, ? super String, ? super SNode> substitute) {

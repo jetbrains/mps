@@ -41,21 +41,19 @@ public class TestCompletionCustomization_Style_Test extends BaseTransformationTe
     public void testMethodImpl() throws Exception {
       initEditorComponent("8199816903239854353", "");
 
-      EditorTestUtil.runWithCompletionStyling(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
-          Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 1);
-          SubstituteAction currentSubstituteAction = nodeSubstituteChooser.getCurrentSubstituteAction();
-          EditorMenuItemStyleImpl impl = new EditorMenuItemStyleImpl();
-          currentSubstituteAction.customize("", impl);
-          Assert.assertTrue(impl.isBold());
-          Assert.assertTrue(impl.isItalic());
-          Assert.assertTrue(impl.isStrikeout());
-          Assert.assertTrue(Objects.equals(impl.getDescriptionText().orElse(null), "custom_description"));
-          Assert.assertTrue(Objects.equals(impl.getBackgroundColor().orElse(null), Color.BLUE));
-          Assert.assertTrue(Objects.equals(impl.getTextColor().orElse(null), Color.YELLOW));
-        }
+      EditorTestUtil.runWithCompletionStyling(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
+        Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 1);
+        SubstituteAction currentSubstituteAction = nodeSubstituteChooser.getCurrentSubstituteAction();
+        EditorMenuItemStyleImpl impl = new EditorMenuItemStyleImpl();
+        currentSubstituteAction.customize("", impl);
+        Assert.assertTrue(impl.isBold());
+        Assert.assertTrue(impl.isItalic());
+        Assert.assertTrue(impl.isStrikeout());
+        Assert.assertTrue(Objects.equals(impl.getDescriptionText().orElse(null), "custom_description"));
+        Assert.assertTrue(Objects.equals(impl.getBackgroundColor().orElse(null), Color.BLUE));
+        Assert.assertTrue(Objects.equals(impl.getTextColor().orElse(null), Color.YELLOW));
       }, true);
     }
   }

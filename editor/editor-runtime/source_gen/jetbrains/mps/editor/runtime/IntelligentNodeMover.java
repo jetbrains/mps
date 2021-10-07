@@ -14,7 +14,6 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
 import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.util.ModelComputeRunnable;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -73,34 +72,30 @@ public class IntelligentNodeMover {
     if (!(myIsValid)) {
       throw new IllegalStateException("IntelligentNodeMover has invalid state. Nodes to move have different parents of different containment links");
     }
-    ComputeRunnable<Boolean> mover = new ModelComputeRunnable<Boolean>(new Computable<Boolean>() {
-      public Boolean compute() {
-        PlaceToMove placeToMove = findPlaceToMove();
-        if (placeToMove == null) {
-          return false;
-        }
-        Iterable<SNode> intersection = ListSequence.fromList(SNodeOperations.getNodeAncestors(placeToMove.myParent, null, false)).intersect(CollectionSequence.fromCollection(myNodesToMove));
-        if (Sequence.fromIterable(intersection).isNotEmpty()) {
-          SNode first = Sequence.fromIterable(intersection).first();
-          LOG.error("Possible creation of cyclic tree. Node [\"" + SNodeOperations.present(first) + "\"; concept: " + SNodeOperations.getConcept(first) + "; id: " + first.getNodeId() + "] is supposed to be moved inside itself. Moving was cancelled");
-          return false;
-        }
-        doMove(placeToMove);
-        return true;
+    ComputeRunnable<Boolean> mover = new ModelComputeRunnable<Boolean>(() -> {
+      PlaceToMove placeToMove = findPlaceToMove();
+      if (placeToMove == null) {
+        return false;
       }
+      Iterable<SNode> intersection = ListSequence.fromList(SNodeOperations.getNodeAncestors(placeToMove.myParent, null, false)).intersect(CollectionSequence.fromCollection(myNodesToMove));
+      if (Sequence.fromIterable(intersection).isNotEmpty()) {
+        SNode first = Sequence.fromIterable(intersection).first();
+        LOG.error("Possible creation of cyclic tree. Node [\"" + SNodeOperations.present(first) + "\"; concept: " + SNodeOperations.getConcept(first) + "; id: " + first.getNodeId() + "] is supposed to be moved inside itself. Moving was cancelled");
+        return false;
+      }
+      doMove(placeToMove);
+      return true;
     });
     myEditorContext.getRepository().getModelAccess().executeCommand(new EditorCommandAdapter(mover, myEditorContext));
     boolean result = mover.getResult();
     if (result) {
       myEditorContext.flushEvents();
-      myEditorContext.getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          if (CollectionSequence.fromCollection(myNodesToMove).count() == 1) {
-            myEditorContext.select(getBoundaryNode());
-          } else {
-            SelectionManager selectionManager = myEditorContext.getSelectionManager();
-            selectionManager.setSelection(selectionManager.createRangeSelection(CollectionSequence.fromCollection(myNodesToMove).first(), CollectionSequence.fromCollection(myNodesToMove).last()));
-          }
+      myEditorContext.getRepository().getModelAccess().runReadAction(() -> {
+        if (CollectionSequence.fromCollection(myNodesToMove).count() == 1) {
+          myEditorContext.select(getBoundaryNode());
+        } else {
+          SelectionManager selectionManager = myEditorContext.getSelectionManager();
+          selectionManager.setSelection(selectionManager.createRangeSelection(CollectionSequence.fromCollection(myNodesToMove).first(), CollectionSequence.fromCollection(myNodesToMove).last()));
         }
       });
     }
@@ -118,38 +113,36 @@ public class IntelligentNodeMover {
    * @return true if valid
    */
   public boolean isValid() {
-    return new ModelAccessHelper(myEditorContext.getRepository()).runReadAction(new Computable<Boolean>() {
-      public Boolean compute() {
-        if (CollectionSequence.fromCollection(myNodesToMove).isEmpty()) {
+    return new ModelAccessHelper(myEditorContext.getRepository()).runReadAction(() -> {
+      if (CollectionSequence.fromCollection(myNodesToMove).isEmpty()) {
+        return false;
+      }
+      SNode commonParent = null;
+      SContainmentLink commonLink = null;
+      for (SNode node : CollectionSequence.fromCollection(myNodesToMove)) {
+        if (node == null) {
           return false;
         }
-        SNode commonParent = null;
-        SContainmentLink commonLink = null;
-        for (SNode node : CollectionSequence.fromCollection(myNodesToMove)) {
-          if (node == null) {
-            return false;
-          }
 
-          SContainmentLink link = getNodesContainmentLink(node);
-          if (link == null) {
-            return false;
-          }
-          if (commonLink == null) {
-            commonLink = link;
-          } else if (commonLink != link) {
-            return false;
-          }
-
-          SNode parent = node.getParent();
-          assert parent != null;
-          if (commonParent == null) {
-            commonParent = parent;
-          } else if (commonParent != parent) {
-            return false;
-          }
+        SContainmentLink link = getNodesContainmentLink(node);
+        if (link == null) {
+          return false;
         }
-        return true;
+        if (commonLink == null) {
+          commonLink = link;
+        } else if (commonLink != link) {
+          return false;
+        }
+
+        SNode parent = node.getParent();
+        assert parent != null;
+        if (commonParent == null) {
+          commonParent = parent;
+        } else if (commonParent != parent) {
+          return false;
+        }
       }
+      return true;
     });
   }
 
@@ -314,20 +307,18 @@ public class IntelligentNodeMover {
    * @return ancestor of the node which is contained in multiple role
    */
   public static SNode findNodeToMove(@NotNull final SNode node, @NotNull EditorContext editorContext) {
-    ModelComputeRunnable<SNode> findNode = new ModelComputeRunnable<SNode>(new Computable<SNode>() {
-      public SNode compute() {
-        SContainmentLink containmentLink = getNodesContainmentLink(node);
-        SNode current = node;
-        while (containmentLink != null) {
-          if (containmentLink.isMultiple()) {
-            return current;
-          }
-          current = SNodeOperations.getParent(current);
-          assert current != null;
-          containmentLink = getNodesContainmentLink(current);
+    ModelComputeRunnable<SNode> findNode = new ModelComputeRunnable<SNode>(() -> {
+      SContainmentLink containmentLink = getNodesContainmentLink(node);
+      SNode current = node;
+      while (containmentLink != null) {
+        if (containmentLink.isMultiple()) {
+          return current;
         }
-        return null;
+        current = SNodeOperations.getParent(current);
+        assert current != null;
+        containmentLink = getNodesContainmentLink(current);
       }
+      return null;
     });
     return findNode.runRead(editorContext.getRepository().getModelAccess());
   }

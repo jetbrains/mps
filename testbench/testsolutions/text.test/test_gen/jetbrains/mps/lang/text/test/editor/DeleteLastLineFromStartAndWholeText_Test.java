@@ -34,11 +34,7 @@ public class DeleteLastLineFromStartAndWholeText_Test extends BaseTransformation
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("6328114375522082811", "6328114375522082829");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
-      }, false);
+      EditorTestUtil.runWithTwoStepDeletion(() -> invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action"), false);
     }
   }
 }

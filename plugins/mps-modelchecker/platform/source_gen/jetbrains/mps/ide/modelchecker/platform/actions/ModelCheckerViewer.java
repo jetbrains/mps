@@ -23,7 +23,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import java.util.List;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import com.intellij.openapi.ui.Messages;
 import java.util.ArrayList;
@@ -110,11 +109,7 @@ public class ModelCheckerViewer extends JPanel {
     // Perform quick fixes
     final Wrappers._int fixedTotal = new Wrappers._int(0);
     // Select all fixable issues
-    final List<IssueKindReportItem> issuesToFix = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<List<IssueKindReportItem>>() {
-      public List<IssueKindReportItem> compute() {
-        return getIssuesToFix();
-      }
-    });
+    final List<IssueKindReportItem> issuesToFix = new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> getIssuesToFix());
     if (ListSequence.fromList(issuesToFix).isEmpty()) {
       Messages.showInfoMessage("There are no quick fixes for current problems", "No Quick Fixes");
       return;
@@ -124,22 +119,20 @@ public class ModelCheckerViewer extends JPanel {
       return;
     }
 
-    myProject.getModelAccess().executeCommandInEDT(new Runnable() {
-      public void run() {
-        while (true) {
-          int fixedBefore = fixedTotal.value;
-          for (IssueKindReportItem issue : ListSequence.fromListWithValues(new ArrayList<IssueKindReportItem>(), issuesToFix)) {
-            QuickFixBase quickFix = QuickFixReportItem.FLAVOUR_QUICKFIX.getAutoApplicable(issue);
-            boolean alive = IssueKindReportItem.PATH_OBJECT.get(issue).resolve(myProject.getRepository()) != null && quickFix.isAlive(myProject.getRepository());
-            if (alive) {
-              quickFix.execute(myProject.getRepository());
-              fixedTotal.value++;
-              ListSequence.fromList(issuesToFix).removeElement(issue);
-            }
+    myProject.getModelAccess().executeCommandInEDT(() -> {
+      while (true) {
+        int fixedBefore = fixedTotal.value;
+        for (IssueKindReportItem issue : ListSequence.fromListWithValues(new ArrayList<IssueKindReportItem>(), issuesToFix)) {
+          QuickFixBase quickFix = QuickFixReportItem.FLAVOUR_QUICKFIX.getAutoApplicable(issue);
+          boolean alive = IssueKindReportItem.PATH_OBJECT.get(issue).resolve(myProject.getRepository()) != null && quickFix.isAlive(myProject.getRepository());
+          if (alive) {
+            quickFix.execute(myProject.getRepository());
+            fixedTotal.value++;
+            ListSequence.fromList(issuesToFix).removeElement(issue);
           }
-          if (fixedBefore == fixedTotal.value) {
-            break;
-          }
+        }
+        if (fixedBefore == fixedTotal.value) {
+          break;
         }
       }
     });

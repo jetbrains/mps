@@ -59,29 +59,25 @@ public final class ShowBrokenReferences__BehaviorDescriptor extends BaseBHDescri
     if (ListSequence.fromList(brokenReferences).count() == 0) {
       console.addText("no broken references");
     } else {
-      console.addClosure(new Runnable() {
-        public void run() {
-          Project project = context.getProject();
-          final UsagesViewTool tool = check_5hdxhn_a0b0a0a0a0b0a(ProjectHelper.toIdeaProject(project));
-          assert tool != null;
-          project.getRepository().getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              final List<SearchResult> res = ListSequence.fromList(new ArrayList<SearchResult>());
-              ListSequence.fromList(brokenReferences).visitAll(new IVisitor<SReference>() {
-                public void visit(SReference it) {
-                  ListSequence.fromList(res).addElement(new SearchResult<SReference>(it, it.getSourceNode()));
-                }
-              });
-              SearchResults sr = new SearchResults(Collections.emptyList(), res);
-              tool.show(sr, "No results to show", new NodeRepresentatorBase<SReference>() {
-                @Override
-                public String getAdditionalInfo(SReference r) {
-                  return "model id = " + r.getTargetSModelReference() + "; node  id = " + r.getTargetNodeId();
-                }
-              });
+      console.addClosure(() -> {
+        Project project = context.getProject();
+        final UsagesViewTool tool = check_5hdxhn_a0b0a0a0a0b0a(ProjectHelper.toIdeaProject(project));
+        assert tool != null;
+        project.getRepository().getModelAccess().runReadAction(() -> {
+          final List<SearchResult> res = ListSequence.fromList(new ArrayList<SearchResult>());
+          ListSequence.fromList(brokenReferences).visitAll(new IVisitor<SReference>() {
+            public void visit(SReference it) {
+              ListSequence.fromList(res).addElement(new SearchResult<SReference>(it, it.getSourceNode()));
             }
           });
-        }
+          SearchResults sr = new SearchResults(Collections.emptyList(), res);
+          tool.show(sr, "No results to show", new NodeRepresentatorBase<SReference>() {
+            @Override
+            public String getAdditionalInfo(SReference r) {
+              return "model id = " + r.getTargetSModelReference() + "; node  id = " + r.getTargetNodeId();
+            }
+          });
+        });
       }, ListSequence.fromList(brokenReferences).count() + " broken references");
     }
   }

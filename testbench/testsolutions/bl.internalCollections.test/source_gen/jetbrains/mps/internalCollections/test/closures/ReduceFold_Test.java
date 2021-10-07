@@ -23,11 +23,7 @@ public class ReduceFold_Test extends Util_Test {
         return a + b;
       }
     }));
-    _FunctionTypes._return_P2_E0<? extends Integer, ? super Integer, ? super Integer> cl = new _FunctionTypes._return_P2_E0<Integer, Integer, Integer>() {
-      public Integer invoke(Integer a, Integer b) {
-        return a + b;
-      }
-    };
+    _FunctionTypes._return_P2_E0<? extends Integer, ? super Integer, ? super Integer> cl = (Integer a, Integer b) -> a + b;
     Assert.assertSame(1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10, Sequence.fromIterable(in).reduceLeft(cl));
     Assert.assertSame(1 - 2 - 3 - 4 - 5 - 6 - 7 - 8 - 9 - 10, Sequence.fromIterable(in).reduceLeft(new ILeftCombinator<Integer, Integer>() {
       public Integer combine(Integer a, Integer b) {
@@ -59,11 +55,7 @@ public class ReduceFold_Test extends Util_Test {
         return a + b;
       }
     }));
-    _FunctionTypes._return_P2_E0<? extends Integer, ? super Integer, ? super Integer> cl = new _FunctionTypes._return_P2_E0<Integer, Integer, Integer>() {
-      public Integer invoke(Integer a, Integer b) {
-        return a + b;
-      }
-    };
+    _FunctionTypes._return_P2_E0<? extends Integer, ? super Integer, ? super Integer> cl = (Integer a, Integer b) -> a + b;
     Assert.assertSame(1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10, Sequence.fromIterable(in).reduceRight(cl));
     Assert.assertSame(1 - (2 - (3 - (4 - (5 - (6 - (7 - (8 - (9 - 10)))))))), Sequence.fromIterable(in).reduceRight(new IRightCombinator<Integer, Integer>() {
       public Integer combine(Integer a, Integer b) {
@@ -95,11 +87,7 @@ public class ReduceFold_Test extends Util_Test {
         return "" + s + it;
       }
     }));
-    _FunctionTypes._return_P2_E0<? extends String, ? super String, ? super Integer> cl = new _FunctionTypes._return_P2_E0<String, String, Integer>() {
-      public String invoke(String s, Integer it) {
-        return "" + s + it;
-      }
-    };
+    _FunctionTypes._return_P2_E0<? extends String, ? super String, ? super Integer> cl = (String s, Integer it) -> "" + s + it;
     Assert.assertEquals("12345678910", Sequence.fromIterable(in).foldLeft("", cl));
     Iterable<Integer> single = Sequence.<Integer>singleton(42);
     Assert.assertEquals("bar42", Sequence.fromIterable(single).foldLeft("bar", new ILeftCombinator<Integer, String>() {
@@ -126,11 +114,7 @@ public class ReduceFold_Test extends Util_Test {
         return "" + s + it;
       }
     }));
-    _FunctionTypes._return_P2_E0<? extends String, ? super Integer, ? super String> cl = new _FunctionTypes._return_P2_E0<String, Integer, String>() {
-      public String invoke(Integer it, String s) {
-        return "" + s + it;
-      }
-    };
+    _FunctionTypes._return_P2_E0<? extends String, ? super Integer, ? super String> cl = (Integer it, String s) -> "" + s + it;
     Assert.assertEquals("10987654321", Sequence.fromIterable(in).foldRight("", cl));
     Iterable<Integer> single = Sequence.<Integer>singleton(42);
     Assert.assertEquals("bar42", Sequence.fromIterable(single).foldRight("bar", new IRightCombinator<Integer, String>() {

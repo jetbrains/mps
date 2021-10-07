@@ -20,10 +20,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.make.dependencies.graph.Graph;
 import jetbrains.mps.make.dependencies.graph.Graphs;
 import java.util.Collections;
-import java.util.Comparator;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import java.util.function.Predicate;
 import java.util.LinkedHashSet;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.CopyUtil;
@@ -95,22 +93,14 @@ public class CycleHelper {
         cycleModules.add(m.getModule());
       }
 
-      Collections.sort(cycle, new Comparator<Module>() {
-        public int compare(Module m1, Module m2) {
-          return Integer.compare(SNodeOperations.getIndexInParent(m1.getModule()), SNodeOperations.getIndexInParent(m2.getModule()));
-        }
-      });
+      Collections.sort(cycle, (Module m1, Module m2) -> Integer.compare(SNodeOperations.getIndexInParent(m1.getModule()), SNodeOperations.getIndexInParent(m2.getModule())));
       SNode first = cycle.get(0).getModule();
       SModel model = SNodeOperations.getModel(first);
       SNode cycleX = SModelOperations.createNewNode(model, null, CONCEPTS.BwfJavaModule$gv);
       cyclesToName.add(cycleX);
       SNodeOperations.insertPrevSiblingChild(first, cycleX);
       SPropertyOperations.assign(cycleX, PROPS.noWarnings$LEpn, true);
-      SPropertyOperations.assign(cycleX, PROPS.fork$H$9A, cycle.stream().anyMatch(new Predicate<Module>() {
-        public boolean test(Module mod) {
-          return SPropertyOperations.getBoolean(mod.getModule(), PROPS.fork$H$9A);
-        }
-      }));
+      SPropertyOperations.assign(cycleX, PROPS.fork$H$9A, cycle.stream().anyMatch((Module mod) -> SPropertyOperations.getBoolean(mod.getModule(), PROPS.fork$H$9A)));
 
       // build cycle sources & dependencies; trying to avoid duplication (which is not critical)
       Set<String> seenSources = new HashSet<String>();
@@ -199,11 +189,7 @@ public class CycleHelper {
       }
     }
     int cycleCounter = 0;
-    Collections.sort(cyclesToName, new Comparator<SNode>() {
-      public int compare(SNode n1, SNode n2) {
-        return Integer.compare(SNodeOperations.getIndexInParent(n1), SNodeOperations.getIndexInParent(n2));
-      }
-    });
+    Collections.sort(cyclesToName, (SNode n1, SNode n2) -> Integer.compare(SNodeOperations.getIndexInParent(n1), SNodeOperations.getIndexInParent(n2)));
     for (SNode cycleX : cyclesToName) {
       SPropertyOperations.assign(cycleX, PROPS.name$MnvL, "java.modules.cycle." + ++cycleCounter);
       SPropertyOperations.assign(cycleX, PROPS.outputFolder$CFP_, SPropertyOperations.getString(project, PROPS.temporaryFolder$kyMK) + "/" + SPropertyOperations.getString(cycleX, PROPS.name$MnvL));

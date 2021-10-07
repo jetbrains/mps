@@ -60,11 +60,7 @@ public class MigrationScriptsTool extends TabbedUsagesTool {
             final IResultProvider provider = FindUtils.makeProvider(finder);
             final SearchQuery query = new SearchQuery(scope);
             final Wrappers._T<SearchResults> results = new Wrappers._T<SearchResults>();
-            ProjectHelper.fromIdeaProject(getProject()).getRepository().getModelAccess().runReadAction(new Runnable() {
-              public void run() {
-                results.value = FindUtils.getSearchResults(new ProgressMonitorAdapter(indicator), query, provider);
-              }
-            });
+            ProjectHelper.fromIdeaProject(getProject()).getRepository().getModelAccess().runReadAction(() -> results.value = FindUtils.getSearchResults(new ProgressMonitorAdapter(indicator), query, provider));
             ApplicationManager.getApplication().invokeLater(new Runnable() {
               @Override
               public void run() {

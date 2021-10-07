@@ -22,7 +22,6 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import java.util.Comparator;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.Collection;
@@ -159,11 +158,7 @@ public final class RootCommitsGraphTraverser {
       });
       MapSequence.fromMap(myForkCommits).clear();
     }
-    CommitsGraphNode node = DequeSequence.fromDequeNew(myBranches).sort(new Comparator<CommitsGraphNode>() {
-      public int compare(CommitsGraphNode a, CommitsGraphNode b) {
-        return a.compareTo(b);
-      }
-    }, false).first();
+    CommitsGraphNode node = DequeSequence.fromDequeNew(myBranches).sort((CommitsGraphNode a, CommitsGraphNode b) -> a.compareTo(b), false).first();
     DequeSequence.fromDequeNew(myBranches).removeElement(node);
     return node;
   }

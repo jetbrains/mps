@@ -124,22 +124,16 @@ import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 
   /*package*/ Set<SLanguage> getNotDeployedUsedLanguages() {
     final Set<SLanguage> allUsedLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
-    myMpsProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        Iterable<SModule> projectModules = MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject);
-        SetSequence.fromSet(allUsedLanguages).addSequence(Sequence.fromIterable(projectModules).translate(new ITranslator2<SModule, SLanguage>() {
-          public Iterable<SLanguage> translate(SModule it) {
-            return it.getUsedLanguages();
-          }
-        }));
-      }
+    myMpsProject.getModelAccess().runReadAction(() -> {
+      Iterable<SModule> projectModules = MigrationModuleUtil.getMigrateableModulesFromProject(myMpsProject);
+      SetSequence.fromSet(allUsedLanguages).addSequence(Sequence.fromIterable(projectModules).translate(new ITranslator2<SModule, SLanguage>() {
+        public Iterable<SLanguage> translate(SModule it) {
+          return it.getUsedLanguages();
+        }
+      }));
     });
     // remove deployed languages (i.e. known to LanguageRegistry) from the set
-    myLangRegistry.withAvailableLanguages(new Consumer<LanguageRuntime>() {
-      public void accept(LanguageRuntime lr) {
-        SetSequence.fromSet(allUsedLanguages).removeElement(lr.getIdentity());
-      }
-    });
+    myLangRegistry.withAvailableLanguages((LanguageRuntime lr) -> SetSequence.fromSet(allUsedLanguages).removeElement(lr.getIdentity()));
     return allUsedLanguages;
   }
 

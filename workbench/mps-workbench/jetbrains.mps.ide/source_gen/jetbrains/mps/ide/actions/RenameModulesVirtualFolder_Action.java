@@ -86,14 +86,12 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
     }
 
     final ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
-    modelAccess.executeCommandInEDT(new Runnable() {
-      public void run() {
-        final StandaloneMPSProject mpsProject = (StandaloneMPSProject) ((MPSProject) MapSequence.fromMap(_params).get("project"));
-        for (SModule module : ListSequence.fromList(node.getModulesUnder())) {
-          mpsProject.setFolderFor(module, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getFolderFor(module), originalVFolder, modifiedVFolder));
-        }
-        RenameModulesVirtualFolder_Action.this.getProjectPane(_params).rebuild();
+    modelAccess.executeCommandInEDT(() -> {
+      final StandaloneMPSProject mpsProject = (StandaloneMPSProject) ((MPSProject) MapSequence.fromMap(_params).get("project"));
+      for (SModule module : ListSequence.fromList(node.getModulesUnder())) {
+        mpsProject.setFolderFor(module, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getFolderFor(module), originalVFolder, modifiedVFolder));
       }
+      RenameModulesVirtualFolder_Action.this.getProjectPane(_params).rebuild();
     });
   }
   private ProjectPane getProjectPane(final Map<String, Object> _params) {

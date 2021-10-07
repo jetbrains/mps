@@ -8,7 +8,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import jetbrains.mps.internal.collections.runtime.IListSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 
@@ -51,16 +50,8 @@ __switch__:
         };
       }
     });
-    fun1 = new _FunctionTypes._return_P0_E0<Iterable<Integer>>() {
-      public Iterable<Integer> invoke() {
-        return seq;
-      }
-    };
-    fun1 = new _FunctionTypes._return_P0_E0<IListSequence<Integer>>() {
-      public IListSequence<Integer> invoke() {
-        return ListSequence.fromListAndArray(new ArrayList<Integer>(), Integer.valueOf(1));
-      }
-    };
+    fun1 = () -> seq;
+    fun1 = () -> ListSequence.fromListAndArray(new ArrayList<Integer>(), Integer.valueOf(1));
     fun1 = new _FunctionTypes._return_P0_E0<Iterable<Integer>>() {
       public Iterable<Integer> invoke() {
         return new Iterable<Integer>() {
@@ -128,13 +119,9 @@ __switch__:
   }
   @Test
   public void test_acceptSequence() throws Exception {
-    _FunctionTypes._void_P1_E0<? super Iterable<Integer>> fun1 = new _FunctionTypes._void_P1_E0<Iterable<Integer>>() {
-      public void invoke(Iterable<Integer> p) {
-      }
+    _FunctionTypes._void_P1_E0<? super Iterable<Integer>> fun1 = (Iterable<Integer> p) -> {
     };
-    _FunctionTypes._void_P1_E0<? super Iterable<Integer>> fun2 = new _FunctionTypes._void_P1_E0<Iterable<Integer>>() {
-      public void invoke(Iterable<Integer> p) {
-      }
+    _FunctionTypes._void_P1_E0<? super Iterable<Integer>> fun2 = (Iterable<Integer> p) -> {
     };
     fun1 = fun2;
     fun2 = fun1;
@@ -182,11 +169,7 @@ __switch__:
       }
     });
 
-    this.assertResultsEqual2(new _FunctionTypes._return_P0_E0<Iterable<Integer>>() {
-      public Iterable<Integer> invoke() {
-        return seq;
-      }
-    }, new _FunctionTypes._return_P0_E0<Iterable<Integer>>() {
+    this.assertResultsEqual2(() -> seq, new _FunctionTypes._return_P0_E0<Iterable<Integer>>() {
       public Iterable<Integer> invoke() {
         return new Iterable<Integer>() {
           public Iterator<Integer> iterator() {

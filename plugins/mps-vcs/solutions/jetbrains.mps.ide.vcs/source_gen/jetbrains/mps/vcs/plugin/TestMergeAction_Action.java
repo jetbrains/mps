@@ -81,30 +81,28 @@ public class TestMergeAction_Action extends BaseAction {
 
     descriptor.setTitle("select archive with merge files");
     descriptor.setDescription("Zip files (*.zip) ");
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        VirtualFile vFile = FileChooser.chooseFile(descriptor, ((Project) MapSequence.fromMap(_params).get("project")), null);
+    ApplicationManager.getApplication().invokeLater(() -> {
+      VirtualFile vFile = FileChooser.chooseFile(descriptor, ((Project) MapSequence.fromMap(_params).get("project")), null);
 
-        final String resFilePath;
-        String[] zipped;
-        try {
-          zipped = MergeBackupUtil.loadZippedModelsAsText(new File(vFile.getCanonicalPath()), new MergeVersion[]{MergeVersion.BASE, MergeVersion.MINE, MergeVersion.REPOSITORY});
-          resFilePath = File.createTempFile("mpstmp", MPSExtentions.DOT_MODEL).getAbsolutePath();
-        } catch (Exception e) {
-          e.printStackTrace();
-          return;
-        }
+      final String resFilePath;
+      String[] zipped;
+      try {
+        zipped = MergeBackupUtil.loadZippedModelsAsText(new File(vFile.getCanonicalPath()), new MergeVersion[]{MergeVersion.BASE, MergeVersion.MINE, MergeVersion.REPOSITORY});
+        resFilePath = File.createTempFile("mpstmp", MPSExtentions.DOT_MODEL).getAbsolutePath();
+      } catch (Exception e) {
+        e.printStackTrace();
+        return;
+      }
 
-        VirtualFile resFile = VirtualFileUtils.getVirtualFile(resFilePath);
-        List<String> contents = ListSequence.fromListAndArray(new ArrayList<String>(), zipped);
-        List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), "Local Version", "Merge Result", "Remote Version");
-        try {
-          MergeRequest request = DiffRequestFactory.getInstance().createMergeRequest(((Project) MapSequence.fromMap(_params).get("project")), MPSFileTypeFactory.MPS_FILE_TYPE, FileDocumentManager.getInstance().getDocument(resFile), contents, "Merge files from " + vFile + " and save result to " + resFilePath, titles, null);
-          DiffManager.getInstance().showMerge(((Project) MapSequence.fromMap(_params).get("project")), request);
-        } catch (InvalidDiffRequestException e) {
-          if (LOG.isEnabledFor(Level.ERROR)) {
-            LOG.error("", e);
-          }
+      VirtualFile resFile = VirtualFileUtils.getVirtualFile(resFilePath);
+      List<String> contents = ListSequence.fromListAndArray(new ArrayList<String>(), zipped);
+      List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), "Local Version", "Merge Result", "Remote Version");
+      try {
+        MergeRequest request = DiffRequestFactory.getInstance().createMergeRequest(((Project) MapSequence.fromMap(_params).get("project")), MPSFileTypeFactory.MPS_FILE_TYPE, FileDocumentManager.getInstance().getDocument(resFile), contents, "Merge files from " + vFile + " and save result to " + resFilePath, titles, null);
+        DiffManager.getInstance().showMerge(((Project) MapSequence.fromMap(_params).get("project")), request);
+      } catch (InvalidDiffRequestException e) {
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error("", e);
         }
       }
     });

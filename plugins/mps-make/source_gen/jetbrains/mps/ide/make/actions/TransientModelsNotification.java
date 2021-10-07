@@ -53,11 +53,9 @@ public class TransientModelsNotification {
   }
 
   /*package*/ void updateWidgetLater() {
-    ThreadUtils.runInUIThreadNoWait(new Runnable() {
-      public void run() {
-        if (myWidget != null && !(Disposer.isDisposed(myWidget))) {
-          myWidget.update();
-        }
+    ThreadUtils.runInUIThreadNoWait(() -> {
+      if (myWidget != null && !(Disposer.isDisposed(myWidget))) {
+        myWidget.update();
       }
     });
   }
@@ -67,11 +65,9 @@ public class TransientModelsNotification {
     if (!(sp.getGenerationSettings().isSaveTransientModels()) || !(TransientModelBallonDisplayer.isPopupShown())) {
       return;
     }
-    ThreadUtils.runInUIThreadNoWait(new Runnable() {
-      public void run() {
-        if (myDisplayer != null && !(Disposer.isDisposed(myDisplayer))) {
-          myDisplayer.showBalloon();
-        }
+    ThreadUtils.runInUIThreadNoWait(() -> {
+      if (myDisplayer != null && !(Disposer.isDisposed(myDisplayer))) {
+        myDisplayer.showBalloon();
       }
     });
   }

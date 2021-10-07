@@ -6,7 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Optional;
-import java.util.function.Consumer;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import org.jetbrains.annotations.NotNull;
@@ -32,12 +31,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   /*package*/ static void execute(final EditorContext editorContext, EditorCell currentSelectedCell) {
     Optional<EditorCell> cellToDeleteOptional = findCellToDelete(currentSelectedCell);
-    cellToDeleteOptional.ifPresent(new Consumer<EditorCell>() {
-      public void accept(EditorCell cellToDelete) {
-        EditorComponent editorComponent = editorContext.getEditorComponent();
-        editorComponent.getDeletionApprover().approveForDeletion(cellToDelete);
-        editorComponent.getActionHandler().executeAction(cellToDelete, CellActionType.DELETE);
-      }
+    cellToDeleteOptional.ifPresent((EditorCell cellToDelete) -> {
+      EditorComponent editorComponent = editorContext.getEditorComponent();
+      editorComponent.getDeletionApprover().approveForDeletion(cellToDelete);
+      editorComponent.getActionHandler().executeAction(cellToDelete, CellActionType.DELETE);
     });
   }
 

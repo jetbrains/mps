@@ -30,15 +30,13 @@ public class BaseTestBody {
   }
 
   public final void addNodeById(final String id) {
-    myProject.getModelAccess().executeCommand(new Runnable() {
-      public void run() {
-        SNode node = getRealNodeById(id);
-        SNode copy = CopyUtil.copy(node, myMap, true);
-        for (SNode a : ListSequence.fromList(SNodeOperations.getNodeDescendants(copy, CONCEPTS.AbstractTestNodeAnnotation$lh, false, new SAbstractConcept[]{}))) {
-          SNodeOperations.deleteNode(a);
-        }
-        myModel.addRootNode(copy);
+    myProject.getModelAccess().executeCommand(() -> {
+      SNode node = getRealNodeById(id);
+      SNode copy = CopyUtil.copy(node, myMap, true);
+      for (SNode a : ListSequence.fromList(SNodeOperations.getNodeDescendants(copy, CONCEPTS.AbstractTestNodeAnnotation$lh, false, new SAbstractConcept[]{}))) {
+        SNodeOperations.deleteNode(a);
       }
+      myModel.addRootNode(copy);
     });
   }
 

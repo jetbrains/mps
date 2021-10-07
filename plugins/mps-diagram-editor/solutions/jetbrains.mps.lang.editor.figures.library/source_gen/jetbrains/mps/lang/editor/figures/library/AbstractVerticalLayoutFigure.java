@@ -95,16 +95,8 @@ public abstract class AbstractVerticalLayoutFigure extends RectView implements R
     @Override
     protected void registerSynchronizers(Mapper.SynchronizersConfiguration configuration) {
       super.registerSynchronizers(configuration);
-      configuration.add(Synchronizers.forProperty(getSource().figureWidth, new Runnable() {
-        public void run() {
-          getSource().prop(PREFERRED_SIZE).set(new Vector(getSource().figureWidth.get(), getSource().figureHeight.get()));
-        }
-      }));
-      configuration.add(Synchronizers.forProperty(getSource().figureHeight, new Runnable() {
-        public void run() {
-          getSource().prop(PREFERRED_SIZE).set(new Vector(getSource().figureWidth.get(), getSource().figureHeight.get()));
-        }
-      }));
+      configuration.add(Synchronizers.forProperty(getSource().figureWidth, () -> getSource().prop(PREFERRED_SIZE).set(new Vector(getSource().figureWidth.get(), getSource().figureHeight.get()))));
+      configuration.add(Synchronizers.forProperty(getSource().figureHeight, () -> getSource().prop(PREFERRED_SIZE).set(new Vector(getSource().figureWidth.get(), getSource().figureHeight.get()))));
     }
   }
 }

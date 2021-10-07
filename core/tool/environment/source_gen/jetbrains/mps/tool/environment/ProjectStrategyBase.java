@@ -12,7 +12,6 @@ import java.util.Collection;
 import jetbrains.mps.library.ModulesMiner;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.messages.MessageCollector;
 import java.util.ArrayList;
 import jetbrains.mps.messages.IMessage;
@@ -57,20 +56,18 @@ public abstract class ProjectStrategyBase implements ProjectStrategy {
     if (LOG.isInfoEnabled()) {
       LOG.info("Building modules within project");
     }
-    return new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<MPSCompilationResult>() {
-      public MPSCompilationResult compute() {
-        MessageCollector mc = new MessageCollector(new ArrayList<IMessage>());
-        ModuleMaker mm = new ModuleMaker(mc.restrict(MessageKind.ERROR));
-        MPSCompilationResult rv = mm.make(IterableUtil.asCollection(project.getRepository().getModules()), new EmptyProgressMonitor());
-        if (!(rv.isOk())) {
-          // regardless of what's in the log (and whether it's turned on at all(, I care to see errors
-          // Perhaps, not sysout but part of ISE from makeOnFirstTimeOpened(), shall decide once need arises.
-          for (IMessage m : mc.result()) {
-            System.out.println(m.getText());
-          }
+    return new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
+      MessageCollector mc = new MessageCollector(new ArrayList<IMessage>());
+      ModuleMaker mm = new ModuleMaker(mc.restrict(MessageKind.ERROR));
+      MPSCompilationResult rv = mm.make(IterableUtil.asCollection(project.getRepository().getModules()), new EmptyProgressMonitor());
+      if (!(rv.isOk())) {
+        // regardless of what's in the log (and whether it's turned on at all(, I care to see errors
+        // Perhaps, not sysout but part of ISE from makeOnFirstTimeOpened(), shall decide once need arises.
+        for (IMessage m : mc.result()) {
+          System.out.println(m.getText());
         }
-        return rv;
       }
+      return rv;
     });
   }
 
@@ -109,13 +106,11 @@ public abstract class ProjectStrategyBase implements ProjectStrategy {
    * when it got filled.
    */
   protected static void updateModelsInModules(@NotNull final Project project, final Set<SModuleReference> changed) {
-    project.getModelAccess().runWriteAction(new Runnable() {
-      public void run() {
-        for (SModuleReference mref : SetSequence.fromSet(changed)) {
-          SModule module = mref.resolve(project.getRepository());
-          if (module instanceof AbstractModule) {
-            ((AbstractModule) module).updateModelsSet();
-          }
+    project.getModelAccess().runWriteAction(() -> {
+      for (SModuleReference mref : SetSequence.fromSet(changed)) {
+        SModule module = mref.resolve(project.getRepository());
+        if (module instanceof AbstractModule) {
+          ((AbstractModule) module).updateModelsSet();
         }
       }
     });

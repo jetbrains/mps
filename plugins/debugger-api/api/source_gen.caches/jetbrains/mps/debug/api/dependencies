@@ -75,7 +75,6 @@
   </dependency>
   <dependency className="jetbrains.mps.debug.api.AbstractUiState">
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
-    <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.Throwable" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="java.util.List" />

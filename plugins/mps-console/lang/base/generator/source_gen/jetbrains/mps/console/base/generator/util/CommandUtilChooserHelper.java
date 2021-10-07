@@ -27,34 +27,18 @@ public class CommandUtilChooserHelper {
   }
 
   public static SNode chooseGetReferenceMethod(SNode nodeWithType, TemplateQueryContext gencontext) {
-    return getKindPropertyOrShowError(new _FunctionTypes._return_P1_E0<SNode, ShowingKind>() {
-      public SNode invoke(ShowingKind kind) {
-        return kind.chooseGetReferenceMethod();
-      }
-    }, nodeWithType, gencontext);
+    return getKindPropertyOrShowError((ShowingKind kind) -> kind.chooseGetReferenceMethod(), nodeWithType, gencontext);
   }
   public static SNode chooseToResultMethod(SNode nodeWithType, TemplateQueryContext gencontext) {
-    return getKindPropertyOrShowError(new _FunctionTypes._return_P1_E0<SNode, ShowingKind>() {
-      public SNode invoke(ShowingKind kind) {
-        return kind.chooseToResultMethod();
-      }
-    }, nodeWithType, gencontext);
+    return getKindPropertyOrShowError((ShowingKind kind) -> kind.chooseToResultMethod(), nodeWithType, gencontext);
   }
   public static boolean isSModelSequence(SNode nodeWithType) {
     return ShowingKind.getKind(TypecheckingFacade.getFromContext().getTypeOf(nodeWithType)) != null;
   }
   public static SNode getReferenceType(SNode nodeWithType, TemplateQueryContext gencontext) {
-    return getKindPropertyOrShowError(new _FunctionTypes._return_P1_E0<SNode, ShowingKind>() {
-      public SNode invoke(ShowingKind kind) {
-        return kind.getReferenceType();
-      }
-    }, nodeWithType, gencontext);
+    return getKindPropertyOrShowError((ShowingKind kind) -> kind.getReferenceType(), nodeWithType, gencontext);
   }
   public static String getKindLabel(SNode nodeWithType, TemplateQueryContext gencontext) {
-    return getKindPropertyOrShowError(new _FunctionTypes._return_P1_E0<String, ShowingKind>() {
-      public String invoke(ShowingKind kind) {
-        return kind.getKindLabel();
-      }
-    }, nodeWithType, gencontext);
+    return getKindPropertyOrShowError((ShowingKind kind) -> kind.getKindLabel(), nodeWithType, gencontext);
   }
 }

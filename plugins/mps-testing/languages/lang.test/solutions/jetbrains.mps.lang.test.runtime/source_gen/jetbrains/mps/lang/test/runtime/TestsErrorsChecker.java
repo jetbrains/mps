@@ -100,11 +100,7 @@ public final class TestsErrorsChecker {
       LOG.debug("Collecting errors in the root " + SNodeOperations.present(myRoot));
     }
     final Set<NodeReportItem> result = SetSequence.fromSet(new HashSet<NodeReportItem>());
-    Consumer<NodeReportItem> errorCollector = new Consumer<NodeReportItem>() {
-      public void consume(NodeReportItem reportItem) {
-        SetSequence.fromSet(result).addElement(reportItem);
-      }
-    };
+    Consumer<NodeReportItem> errorCollector = (NodeReportItem reportItem) -> SetSequence.fromSet(result).addElement(reportItem);
     final SRepository repository = myRoot.getModel().getRepository();
 
     new TypesystemChecker().check(myRoot, repository, errorCollector, new EmptyProgressMonitor());

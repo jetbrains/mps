@@ -9,28 +9,24 @@ public class VariableArity_Test {
   @Test
   public void test_arityType() throws Exception {
     ArrayHolder<Integer> holder = new ArrayHolder<Integer>(3, 4, 2);
-    double mean = holder.handle(new MultiProcessor<Integer, Double>() {
-      public Double accept(Integer... items) {
-        double sum = 0;
-        for (Integer item : items) {
-          sum += item;
-        }
-        return sum / items.length;
+    double mean = holder.handle((Integer... items) -> {
+      double sum = 0;
+      for (Integer item : items) {
+        sum += item;
       }
+      return sum / items.length;
     });
     Assert.assertEquals(Double.valueOf(mean), Double.valueOf(3.0d));
   }
   @Test
   public void test_inferredArityType() throws Exception {
     ArrayHolder<Integer> holder = new ArrayHolder<Integer>(3, 4, 2);
-    double mean = holder.handle(new MultiProcessor<Integer, Double>() {
-      public Double accept(Integer... items) {
-        double sum = 0;
-        for (Integer item : items) {
-          sum += item;
-        }
-        return sum / items.length;
+    double mean = holder.handle((Integer... items) -> {
+      double sum = 0;
+      for (Integer item : items) {
+        sum += item;
       }
+      return sum / items.length;
     });
     Assert.assertEquals(Double.valueOf(mean), Double.valueOf(3.0d));
   }

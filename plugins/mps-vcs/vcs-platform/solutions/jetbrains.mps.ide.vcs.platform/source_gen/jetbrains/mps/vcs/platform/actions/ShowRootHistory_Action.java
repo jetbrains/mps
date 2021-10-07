@@ -72,13 +72,11 @@ public class ShowRootHistory_Action extends BaseAction {
     final SModelName modelName = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName();
     final Wrappers._T<SNodeId> rootId = new Wrappers._T<SNodeId>();
     final Wrappers._T<String> dialogTitle = new Wrappers._T<String>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode containingRoot = event.getData(MPSCommonDataKeys.NODES).iterator().next().getContainingRoot();
-        String rootName = containingRoot.getPresentation();
-        rootId.value = containingRoot.getNodeId();
-        dialogTitle.value = modelName.getLongName() + '/' + rootName;
-      }
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
+      SNode containingRoot = event.getData(MPSCommonDataKeys.NODES).iterator().next().getContainingRoot();
+      String rootName = containingRoot.getPresentation();
+      rootId.value = containingRoot.getNodeId();
+      dialogTitle.value = modelName.getLongName() + '/' + rootName;
     });
     VcsActionsUtil.showNodeHistory(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.NODES), rootId.value, dialogTitle.value, Registry.is("vcs.show.root.history.compare.models"));
   }

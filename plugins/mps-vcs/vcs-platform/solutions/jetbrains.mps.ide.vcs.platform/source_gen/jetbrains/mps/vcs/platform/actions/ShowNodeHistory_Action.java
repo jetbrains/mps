@@ -78,15 +78,13 @@ public class ShowNodeHistory_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Wrappers._T<SNodeId> nodeId = new Wrappers._T<SNodeId>();
     final Wrappers._T<String> dialogTitle = new Wrappers._T<String>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SNode containingRoot = event.getData(MPSCommonDataKeys.NODES).iterator().next().getContainingRoot();
-        String nodeName = event.getData(MPSCommonDataKeys.NODE).getPresentation();
-        nodeId.value = event.getData(MPSCommonDataKeys.NODE).getNodeId();
-        dialogTitle.value = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName().getLongName() + "/" + containingRoot.getPresentation();
-        if (!(nodeId.value.equals(containingRoot.getNodeId()))) {
-          dialogTitle.value = dialogTitle.value + "/" + nodeName;
-        }
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> {
+      SNode containingRoot = event.getData(MPSCommonDataKeys.NODES).iterator().next().getContainingRoot();
+      String nodeName = event.getData(MPSCommonDataKeys.NODE).getPresentation();
+      nodeId.value = event.getData(MPSCommonDataKeys.NODE).getNodeId();
+      dialogTitle.value = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName().getLongName() + "/" + containingRoot.getPresentation();
+      if (!(nodeId.value.equals(containingRoot.getNodeId()))) {
+        dialogTitle.value = dialogTitle.value + "/" + nodeName;
       }
     });
     VcsActionsUtil.showNodeHistory(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.NODES), nodeId.value, dialogTitle.value, true);

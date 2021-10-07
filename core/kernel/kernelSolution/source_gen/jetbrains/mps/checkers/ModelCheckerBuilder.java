@@ -21,9 +21,9 @@ import org.apache.log4j.Level;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.Consumer;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.util.SubProgressKind;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.errors.item.ModelReportItemBase;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.errors.MessageStatus;
@@ -139,16 +139,8 @@ public class ModelCheckerBuilder {
         monitor.start("Checking", work);
 
         try {
-          IAbstractChecker<SModule, ? extends IssueKindReportItem> generalModuleChecker = aggreagateSpecificCheckers(specificModuleCheckers, new _FunctionTypes._return_P1_E0<String, SModule>() {
-            public String invoke(SModule m) {
-              return m.getModuleName();
-            }
-          });
-          IAbstractChecker<SModel, ? extends IssueKindReportItem> generalModelChecker = skipNullModules(aggreagateSpecificCheckers(specificModelCheckers, new _FunctionTypes._return_P1_E0<String, SModel>() {
-            public String invoke(SModel m) {
-              return m.getName().getLongName();
-            }
-          }));
+          IAbstractChecker<SModule, ? extends IssueKindReportItem> generalModuleChecker = aggreagateSpecificCheckers(specificModuleCheckers, (SModule m) -> m.getModuleName());
+          IAbstractChecker<SModel, ? extends IssueKindReportItem> generalModelChecker = skipNullModules(aggreagateSpecificCheckers(specificModelCheckers, (SModel m) -> m.getName().getLongName()));
 
           for (SModel model : ListSequence.fromList(models)) {
             if (monitor.isCanceled()) {
@@ -205,17 +197,15 @@ public class ModelCheckerBuilder {
   }
 
   public static IAbstractChecker<SModel, IssueKindReportItem> skipNullModules(IAbstractChecker<SModel, IssueKindReportItem> checker) {
-    return new SkippingChecker<SModel, IssueKindReportItem>(checker, new _FunctionTypes._return_P2_E0<Boolean, SModel, SRepository>() {
-      public Boolean invoke(SModel model, SRepository repository) {
-        SModule module = model.getModule();
-        if (module == null) {
-          if (LOG.isEnabledFor(Level.WARN)) {
-            LOG.warn("Module is null for " + model.getName() + " model");
-          }
-          return false;
+    return new SkippingChecker<SModel, IssueKindReportItem>(checker, (SModel model, SRepository repository) -> {
+      SModule module = model.getModule();
+      if (module == null) {
+        if (LOG.isEnabledFor(Level.WARN)) {
+          LOG.warn("Module is null for " + model.getName() + " model");
         }
-        return true;
+        return false;
       }
+      return true;
     });
   }
 

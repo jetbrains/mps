@@ -85,11 +85,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   @Override
   protected JComponent createCenterPanel() {
     final Wrappers._T<DefaultMutableTreeNode> rootNode = new Wrappers._T<DefaultMutableTreeNode>();
-    myProject.getRepository().getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        rootNode.value = createRootNode();
-      }
-    });
+    myProject.getRepository().getModelAccess().runReadAction(() -> rootNode.value = createRootNode());
     myTree = new SimpleTree(new DefaultTreeModel(rootNode.value));
     myTree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
     myTree.setCellRenderer(new ModelTreeCellRenderer());

@@ -35,59 +35,31 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class ChangesRollbackTest extends ChangesTestBase {
   @Test
   public void rollbackAllSerially() {
-    rollbackChangesSeriallyAndCheckNoDifference(new Runnable() {
-      public void run() {
-        makeAllChanges();
-      }
-    });
+    rollbackChangesSeriallyAndCheckNoDifference(() -> makeAllChanges());
   }
   @Test
   public void addAndRollbackNodeAttribute() {
-    rollbackChangesSeriallyAndCheckNoDifference(new Runnable() {
-      public void run() {
-        addNodeAttribute();
-      }
-    });
+    rollbackChangesSeriallyAndCheckNoDifference(() -> addNodeAttribute());
   }
   @Test
   public void addAndRollbackChildAttribute() {
-    rollbackChangesSeriallyAndCheckNoDifference(new Runnable() {
-      public void run() {
-        addChildAttribute();
-      }
-    });
+    rollbackChangesSeriallyAndCheckNoDifference(() -> addChildAttribute());
   }
   @Test
   public void deleteAndRollbackChildAttribute() {
-    rollbackChangesSeriallyAndCheckNoDifference(new Runnable() {
-      public void run() {
-        deleteChildAttribute();
-      }
-    });
+    rollbackChangesSeriallyAndCheckNoDifference(() -> deleteChildAttribute());
   }
   @Test
   public void commentChildAndRollback() {
-    rollbackChangesSeriallyAndCheckNoDifference(new Runnable() {
-      public void run() {
-        CommentUtil.commentOut(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "6476988416338090461"));
-      }
-    });
+    rollbackChangesSeriallyAndCheckNoDifference(() -> CommentUtil.commentOut(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "6476988416338090461")));
   }
   @Test
   public void uncommentChildAndRollback() {
-    rollbackChangesSeriallyAndCheckNoDifference(new Runnable() {
-      public void run() {
-        ChangesTestUtil.uncommentFirstCommentedMethod(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705"));
-      }
-    });
+    rollbackChangesSeriallyAndCheckNoDifference(() -> ChangesTestUtil.uncommentFirstCommentedMethod(SNodeOperations.getNode("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)", "5876208808348821705")));
   }
   @Test
   public void rollbackAllAtomically() {
-    rollbackChangesAutomaticallyAndCheckNoDifference(new Runnable() {
-      public void run() {
-        makeAllChanges();
-      }
-    });
+    rollbackChangesAutomaticallyAndCheckNoDifference(() -> makeAllChanges());
   }
 
   private void rollbackChangesSeriallyAndCheckNoDifference(Runnable changesRunnable) {
@@ -96,11 +68,7 @@ public class ChangesRollbackTest extends ChangesTestBase {
     List<ModelChange> changes = ListSequence.fromListWithValues(new ArrayList<ModelChange>(), myDiff.getChangeSet().getModelChanges());
     ListSequence.fromList(changes).reversedList().visitAll(new IVisitor<ModelChange>() {
       public void visit(final ModelChange change) {
-        testChanges(new Runnable() {
-          public void run() {
-            change.getOppositeChange().apply(model, new NodeCopier(model));
-          }
-        });
+        testChanges(() -> change.getOppositeChange().apply(model, new NodeCopier(model)));
       }
     });
     Assert.assertTrue(ListSequence.fromList(myDiff.getChangeSet().getModelChanges()).isEmpty());
@@ -114,25 +82,23 @@ public class ChangesRollbackTest extends ChangesTestBase {
         return ch.getOppositeChange();
       }
     }).toListSequence();
-    testChanges(new Runnable() {
-      public void run() {
-        final NodeCopier nc = new NodeCopier(model);
-        ListSequence.fromList(oppositeChanges).where(new IWhereFilter<ModelChange>() {
-          public boolean accept(ModelChange ch) {
-            return ch instanceof NodeGroupChange;
-          }
-        }).visitAll(new IVisitor<ModelChange>() {
-          public void visit(ModelChange ch) {
-            ((NodeGroupChange) ch).prepare();
-          }
-        });
-        ListSequence.fromList(oppositeChanges).visitAll(new IVisitor<ModelChange>() {
-          public void visit(ModelChange ch) {
-            ch.apply(model, nc);
-          }
-        });
-        nc.restoreIds(true);
-      }
+    testChanges(() -> {
+      final NodeCopier nc = new NodeCopier(model);
+      ListSequence.fromList(oppositeChanges).where(new IWhereFilter<ModelChange>() {
+        public boolean accept(ModelChange ch) {
+          return ch instanceof NodeGroupChange;
+        }
+      }).visitAll(new IVisitor<ModelChange>() {
+        public void visit(ModelChange ch) {
+          ((NodeGroupChange) ch).prepare();
+        }
+      });
+      ListSequence.fromList(oppositeChanges).visitAll(new IVisitor<ModelChange>() {
+        public void visit(ModelChange ch) {
+          ch.apply(model, nc);
+        }
+      });
+      nc.restoreIds(true);
     });
     Assert.assertTrue(ListSequence.fromList(myDiff.getChangeSet().getModelChanges()).isEmpty());
   }

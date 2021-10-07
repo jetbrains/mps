@@ -38,7 +38,6 @@ import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.openapi.editor.message.FormattingOptions;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import java.util.ArrayList;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import javax.swing.JScrollPane;
@@ -50,7 +49,6 @@ import jetbrains.mps.nodeEditor.commands.CommandContextWithVF;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
-import java.util.function.Predicate;
 import jetbrains.mps.openapi.editor.message.SimpleEditorMessage;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
@@ -239,11 +237,7 @@ public class DiffEditor implements EditorMessageOwner {
   }
 
   public void highlightChange(final SModel model, final ModelChange change, final boolean isOldEditor, final ChangeEditorMessage.ConflictChecker conflictChecker) {
-    final List<ChangeEditorMessage> messages = new ModelAccessHelper(myMpsProject.getRepository()).runReadAction(new Computable<List<ChangeEditorMessage>>() {
-      public List<ChangeEditorMessage> compute() {
-        return ChangeEditorMessageFactory.createMessages(model, isOldEditor, change, DiffEditor.this, conflictChecker);
-      }
-    });
+    final List<ChangeEditorMessage> messages = new ModelAccessHelper(myMpsProject.getRepository()).runReadAction(() -> ChangeEditorMessageFactory.createMessages(model, isOldEditor, change, DiffEditor.this, conflictChecker));
     if (ListSequence.fromList(messages).isEmpty()) {
       return;
     }
@@ -261,19 +255,17 @@ public class DiffEditor implements EditorMessageOwner {
 
   public void highlightChanges(final SModel model, final Iterable<ModelChange> changes, final boolean isOldEditor, final ChangeEditorMessage.ConflictChecker conflictChecker) {
     final List<ChangeEditorMessage> allMessages = ListSequence.fromList(new ArrayList<ChangeEditorMessage>());
-    new ModelAccessHelper(myMpsProject.getRepository()).runReadAction(new Runnable() {
-      public void run() {
-        Sequence.fromIterable(changes).visitAll(new IVisitor<ModelChange>() {
-          public void visit(ModelChange change) {
-            List<ChangeEditorMessage> messages = ChangeEditorMessageFactory.createMessages(model, isOldEditor, change, DiffEditor.this, conflictChecker);
-            if (ListSequence.fromList(messages).isEmpty()) {
-              return;
-            }
-            MapSequence.fromMap(myChangeToMessages).put(change, messages);
-            ListSequence.fromList(allMessages).addSequence(ListSequence.fromList(messages));
+    new ModelAccessHelper(myMpsProject.getRepository()).runReadAction(() -> {
+      Sequence.fromIterable(changes).visitAll(new IVisitor<ModelChange>() {
+        public void visit(ModelChange change) {
+          List<ChangeEditorMessage> messages = ChangeEditorMessageFactory.createMessages(model, isOldEditor, change, DiffEditor.this, conflictChecker);
+          if (ListSequence.fromList(messages).isEmpty()) {
+            return;
           }
-        });
-      }
+          MapSequence.fromMap(myChangeToMessages).put(change, messages);
+          ListSequence.fromList(allMessages).addSequence(ListSequence.fromList(messages));
+        }
+      });
     });
     if (ListSequence.fromList(allMessages).isEmpty()) {
       return;
@@ -417,11 +409,7 @@ public class DiffEditor implements EditorMessageOwner {
       super(repository, new EditorConfigurationBuilder().showErrorsGutter(true).showSelectionLine(false).rightToLeft(rightToLeft).build());
       myDiffFileEditor = new DiffFileEditor(this);
       setDefaultPopupGroupId(((String) BHReflection.invoke0(SNodeOperations.getNode("r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)", "426251916200108583"), CONCEPTS.ActionGroupDeclaration$VO, SMethodTrimmedId.create("getGeneratedClassFQName", CONCEPTS.ActionGroupDeclaration$VO, "hEwJa8g"))));
-      getMessagesGutter().setMessageThicknessProvider(new Predicate<SimpleEditorMessage>() {
-        public boolean test(SimpleEditorMessage m) {
-          return false;
-        }
-      });
+      getMessagesGutter().setMessageThicknessProvider((SimpleEditorMessage m) -> false);
     }
 
     @Override

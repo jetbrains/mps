@@ -51,11 +51,7 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
       }
       for (FindUsagesParticipant participant : participants) {
         final Set<SModel> next = new HashSet<SModel>(current);
-        participant.findInstances(current, queryConcepts, consumer, new Consumer<SModel>() {
-          public void consume(SModel m) {
-            next.remove(m);
-          }
-        });
+        participant.findInstances(current, queryConcepts, consumer, (SModel m) -> next.remove(m));
         current = next;
         monitor.advance(1);
       }

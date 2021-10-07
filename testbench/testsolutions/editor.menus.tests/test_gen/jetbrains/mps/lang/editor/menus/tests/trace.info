@@ -270,38 +270,28 @@
   </root>
   <root nodeRef="r:4f8193a2-048e-4ddf-b505-dfca00e8c910(jetbrains.mps.lang.editor.menus.tests@tests)/121597702824512946">
     <file name="UsedLanguagesUtils.java">
-      <node id="121597702824513072" at="12,25,13,129" concept="2" />
-      <node id="121597702824522592" at="19,25,20,134" concept="2" />
-      <node id="121597702824527199" at="24,94,25,104" concept="6" />
-      <node id="121597702824513070" at="12,0,15,0" concept="4" trace="run#()V" />
-      <node id="121597702824520110" at="19,0,22,0" concept="4" trace="run#()V" />
-      <node id="121597702824527400" at="24,0,27,0" concept="10" trace="isLanguageUsed#(Ljetbrains/mps/openapi/editor/EditorComponent;Lorg/jetbrains/mps/openapi/language/SLanguage;)Z" />
-      <node id="121597702824513069" at="10,106,15,7" concept="2" />
-      <node id="121597702824520109" at="17,109,22,7" concept="2" />
-      <node id="121597702824513047" at="10,0,17,0" concept="10" trace="assertLanguageUsed#(Ljetbrains/mps/openapi/editor/EditorComponent;Lorg/jetbrains/mps/openapi/language/SLanguage;)V" />
-      <node id="121597702824520107" at="17,0,24,0" concept="10" trace="assertLanguageNotUsed#(Ljetbrains/mps/openapi/editor/EditorComponent;Lorg/jetbrains/mps/openapi/language/SLanguage;)V" />
-      <scope id="121597702824513071" at="12,25,13,129" />
-      <scope id="121597702824520111" at="19,25,20,134" />
-      <scope id="121597702824527039" at="24,94,25,104" />
-      <scope id="121597702824513070" at="12,0,15,0" />
-      <scope id="121597702824520110" at="19,0,22,0" />
-      <scope id="121597702824527400" at="24,0,27,0">
-        <var name="editorComponent" id="121597702824527212" />
-        <var name="language" id="121597702824527214" />
-      </scope>
-      <scope id="121597702824513050" at="10,106,15,7" />
-      <scope id="121597702824520108" at="17,109,22,7" />
-      <scope id="121597702824513047" at="10,0,17,0">
+      <node id="121597702824513069" at="10,106,11,214" concept="2" />
+      <node id="121597702824520109" at="13,109,14,219" concept="2" />
+      <node id="121597702824527199" at="16,94,17,104" concept="6" />
+      <node id="121597702824513047" at="10,0,13,0" concept="10" trace="assertLanguageUsed#(Ljetbrains/mps/openapi/editor/EditorComponent;Lorg/jetbrains/mps/openapi/language/SLanguage;)V" />
+      <node id="121597702824520107" at="13,0,16,0" concept="10" trace="assertLanguageNotUsed#(Ljetbrains/mps/openapi/editor/EditorComponent;Lorg/jetbrains/mps/openapi/language/SLanguage;)V" />
+      <node id="121597702824527400" at="16,0,19,0" concept="10" trace="isLanguageUsed#(Ljetbrains/mps/openapi/editor/EditorComponent;Lorg/jetbrains/mps/openapi/language/SLanguage;)Z" />
+      <scope id="121597702824513050" at="10,106,11,214" />
+      <scope id="121597702824520108" at="13,109,14,219" />
+      <scope id="121597702824527039" at="16,94,17,104" />
+      <scope id="121597702824513047" at="10,0,13,0">
         <var name="editorComponent" id="121597702824513679" />
         <var name="language" id="121597702824516737" />
       </scope>
-      <scope id="121597702824520107" at="17,0,24,0">
+      <scope id="121597702824520107" at="13,0,16,0">
         <var name="editorComponent" id="121597702824520136" />
         <var name="language" id="121597702824520138" />
       </scope>
-      <unit id="121597702824513070" at="11,90,15,5" name="jetbrains.mps.lang.editor.menus.tests.UsedLanguagesUtils$1" />
-      <unit id="121597702824520110" at="18,90,22,5" name="jetbrains.mps.lang.editor.menus.tests.UsedLanguagesUtils$2" />
-      <unit id="121597702824512946" at="9,0,28,0" name="jetbrains.mps.lang.editor.menus.tests.UsedLanguagesUtils" />
+      <scope id="121597702824527400" at="16,0,19,0">
+        <var name="editorComponent" id="121597702824527212" />
+        <var name="language" id="121597702824527214" />
+      </scope>
+      <unit id="121597702824512946" at="9,0,20,0" name="jetbrains.mps.lang.editor.menus.tests.UsedLanguagesUtils" />
     </file>
   </root>
   <root nodeRef="r:4f8193a2-048e-4ddf-b505-dfca00e8c910(jetbrains.mps.lang.editor.menus.tests@tests)/2153278993333625967">
@@ -375,83 +365,68 @@
       <node id="2344528742722194667" at="27,59,28,156" concept="5" />
       <node id="2344528742722194891" at="28,156,29,0" concept="8" />
       <node id="3743352646564456171" at="29,0,30,108" concept="5" />
-      <node id="3743352646564458496" at="32,25,33,93" concept="2" />
-      <node id="2344528742722196345" at="35,7,36,23" concept="6" />
-      <node id="6202297022024039533" at="39,144,40,120" concept="6" />
-      <node id="6436886136983374382" at="43,136,44,75" concept="5" />
-      <node id="6436886136983374388" at="44,75,45,49" concept="5" />
-      <node id="3743352646564345714" at="45,49,46,59" concept="5" />
-      <node id="6436886136983374115" at="46,59,47,0" concept="8" />
-      <node id="6436886136983247616" at="47,0,48,166" concept="5" />
-      <node id="6436886136983247628" at="48,166,49,0" concept="8" />
-      <node id="3743352646564348320" at="49,0,50,108" concept="5" />
-      <node id="3743352646564354497" at="50,108,51,0" concept="8" />
-      <node id="3743352646564350922" at="53,25,54,93" concept="2" />
-      <node id="3743352646564353854" at="56,7,57,0" concept="8" />
-      <node id="6436886136983247629" at="57,0,58,23" concept="6" />
-      <node id="6202297022024049637" at="61,103,62,86" concept="5" />
-      <node id="6202297022024049614" at="62,86,63,65" concept="5" />
-      <node id="6202297022024049620" at="65,25,66,163" concept="2" />
-      <node id="6202297022024049645" at="68,7,69,24" concept="6" />
-      <node id="2344528742722136214" at="73,0,74,0" concept="9" trace="INamedConcept$Kd" />
-      <node id="3743352646564461112" at="32,0,35,0" concept="4" trace="run#()V" />
-      <node id="6202297022024036736" at="39,0,42,0" concept="10" trace="loadNamedMenu#(Ljetbrains/mps/openapi/editor/EditorComponent;Lorg/jetbrains/mps/openapi/model/SNodeReference;Ljava/lang/String;)Ljava/util/List;" />
-      <node id="3743352646564338788" at="53,0,56,0" concept="4" trace="run#()V" />
-      <node id="6202297022024049618" at="65,0,68,0" concept="4" trace="run#()V" />
-      <node id="3743352646564461110" at="30,108,35,7" concept="2" />
-      <node id="3743352646564338786" at="51,0,56,7" concept="2" />
-      <node id="6202297022024049617" at="63,65,68,7" concept="2" />
-      <node id="6202297022024021739" at="61,0,71,0" concept="10" trace="getMenuFqName#(Lorg/jetbrains/mps/openapi/model/SNodeReference;Ljetbrains/mps/openapi/editor/EditorComponent;)Ljava/lang/String;" />
-      <node id="2344528742722136352" at="24,0,38,0" concept="10" trace="loadDefaultMenu#(Ljetbrains/mps/openapi/editor/EditorComponent;Ljava/lang/String;)Ljava/util/List;" />
-      <node id="6436886136983246823" at="43,0,60,0" concept="10" trace="loadNamedMenu#(Ljetbrains/mps/openapi/editor/EditorComponent;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;" />
-      <scope id="3743352646564461114" at="32,25,33,93" />
-      <scope id="6202297022024036739" at="39,144,40,120" />
-      <scope id="3743352646564338790" at="53,25,54,93" />
-      <scope id="6202297022024049619" at="65,25,66,163" />
-      <scope id="3743352646564461112" at="32,0,35,0" />
-      <scope id="6202297022024036736" at="39,0,42,0">
+      <node id="3743352646564461110" at="30,108,31,138" concept="2" />
+      <node id="2344528742722196345" at="31,138,32,23" concept="6" />
+      <node id="6202297022024039533" at="35,144,36,120" concept="6" />
+      <node id="6436886136983374382" at="39,136,40,75" concept="5" />
+      <node id="6436886136983374388" at="40,75,41,49" concept="5" />
+      <node id="3743352646564345714" at="41,49,42,59" concept="5" />
+      <node id="6436886136983374115" at="42,59,43,0" concept="8" />
+      <node id="6436886136983247616" at="43,0,44,166" concept="5" />
+      <node id="6436886136983247628" at="44,166,45,0" concept="8" />
+      <node id="3743352646564348320" at="45,0,46,108" concept="5" />
+      <node id="3743352646564354497" at="46,108,47,0" concept="8" />
+      <node id="3743352646564338786" at="47,0,48,138" concept="2" />
+      <node id="3743352646564353854" at="48,138,49,0" concept="8" />
+      <node id="6436886136983247629" at="49,0,50,23" concept="6" />
+      <node id="6202297022024049637" at="53,103,54,86" concept="5" />
+      <node id="6202297022024049614" at="54,86,55,65" concept="5" />
+      <node id="6202297022024049617" at="55,65,56,208" concept="2" />
+      <node id="6202297022024049645" at="56,208,57,24" concept="6" />
+      <node id="2344528742722136214" at="61,0,62,0" concept="9" trace="INamedConcept$Kd" />
+      <node id="6202297022024036736" at="35,0,38,0" concept="10" trace="loadNamedMenu#(Ljetbrains/mps/openapi/editor/EditorComponent;Lorg/jetbrains/mps/openapi/model/SNodeReference;Ljava/lang/String;)Ljava/util/List;" />
+      <node id="6202297022024021739" at="53,0,59,0" concept="10" trace="getMenuFqName#(Lorg/jetbrains/mps/openapi/model/SNodeReference;Ljetbrains/mps/openapi/editor/EditorComponent;)Ljava/lang/String;" />
+      <node id="2344528742722136352" at="24,0,34,0" concept="10" trace="loadDefaultMenu#(Ljetbrains/mps/openapi/editor/EditorComponent;Ljava/lang/String;)Ljava/util/List;" />
+      <node id="6436886136983246823" at="39,0,52,0" concept="10" trace="loadNamedMenu#(Ljetbrains/mps/openapi/editor/EditorComponent;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;" />
+      <scope id="6202297022024036739" at="35,144,36,120" />
+      <scope id="6202297022024036736" at="35,0,38,0">
         <var name="editorComponent" id="6202297022024036876" />
         <var name="location" id="6202297022024038435" />
         <var name="menuNodeReference" id="6202297022024036984" />
       </scope>
-      <scope id="3743352646564338788" at="53,0,56,0" />
-      <scope id="6202297022024049618" at="65,0,68,0" />
-      <scope id="6202297022024021742" at="61,103,69,24">
+      <scope id="6202297022024021742" at="53,103,57,24">
         <var name="fqName" id="6202297022024049615" />
         <var name="repository" id="6202297022024049633" />
       </scope>
-      <scope id="6202297022024021739" at="61,0,71,0">
+      <scope id="6202297022024021739" at="53,0,59,0">
         <var name="editorComponent" id="6202297022024021853" />
         <var name="menuNode" id="6202297022024021806" />
       </scope>
-      <scope id="2344528742722136355" at="24,118,36,23">
+      <scope id="2344528742722136355" at="24,118,32,23">
         <var name="editorContext" id="6436886136983367785" />
         <var name="items" id="3743352646564456172" />
         <var name="lookup" id="2344528742722194668" />
         <var name="node" id="6436886136983368177" />
         <var name="repository" id="3743352646564461770" />
       </scope>
-      <scope id="2344528742722136352" at="24,0,38,0">
+      <scope id="2344528742722136352" at="24,0,34,0">
         <var name="editorComponent" id="6436886136983359546" />
         <var name="location" id="2344528742722205382" />
       </scope>
-      <scope id="6436886136983246826" at="43,136,58,23">
+      <scope id="6436886136983246826" at="39,136,50,23">
         <var name="editorContext" id="6436886136983374383" />
         <var name="items" id="3743352646564348321" />
         <var name="lookup" id="6436886136983247617" />
         <var name="node" id="6436886136983374389" />
         <var name="repository" id="3743352646564345715" />
       </scope>
-      <scope id="6436886136983246823" at="43,0,60,0">
+      <scope id="6436886136983246823" at="39,0,52,0">
         <var name="editorComponent" id="6436886136983373571" />
         <var name="location" id="6436886136983247269" />
         <var name="menuFqName" id="6436886136983306795" />
       </scope>
-      <unit id="2344528742722136214" at="72,0,75,0" name="jetbrains.mps.lang.editor.menus.tests.MenuLoadingUtils$CONCEPTS" />
-      <unit id="3743352646564461112" at="31,50,35,5" name="jetbrains.mps.lang.editor.menus.tests.MenuLoadingUtils$1" />
-      <unit id="3743352646564338788" at="52,50,56,5" name="jetbrains.mps.lang.editor.menus.tests.MenuLoadingUtils$2" />
-      <unit id="6202297022024049618" at="64,50,68,5" name="jetbrains.mps.lang.editor.menus.tests.MenuLoadingUtils$3" />
-      <unit id="2344528742722136214" at="23,0,76,0" name="jetbrains.mps.lang.editor.menus.tests.MenuLoadingUtils" />
+      <unit id="2344528742722136214" at="60,0,63,0" name="jetbrains.mps.lang.editor.menus.tests.MenuLoadingUtils$CONCEPTS" />
+      <unit id="2344528742722136214" at="23,0,64,0" name="jetbrains.mps.lang.editor.menus.tests.MenuLoadingUtils" />
     </file>
   </root>
   <root nodeRef="r:4f8193a2-048e-4ddf-b505-dfca00e8c910(jetbrains.mps.lang.editor.menus.tests@tests)/2508844969610667476">

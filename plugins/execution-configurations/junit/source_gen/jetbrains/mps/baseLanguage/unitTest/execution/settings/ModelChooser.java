@@ -57,22 +57,20 @@ public class ModelChooser extends TextFieldWithBrowseButton.NoPathCompletion {
       return Collections.<SModelReference>emptyList();
     }
     final Collection<SModelReference> modelRefs = new LinkedHashSet<SModelReference>();
-    myMpsProject.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        SAbstractConcept concept = CONCEPTS.ITestCase$Fp;
-        ProjectScope scope = new ProjectScope(myMpsProject);
-        Set<SNode> usages = getFindUsagesManager().findInstances(scope, Collections.singleton(concept), false, new EmptyProgressMonitor());
-        for (SNode node : usages) {
-          SModel model = SNodeOperations.getModel(node);
-          SModelReference md = SModelOperations.getPointer(model);
-          modelRefs.add(md);
-        }
-        // chances are there are @tests models with test concepts that doesn't extend odd ITestCase (e.g. GeneratorTest), doesn't hurt to
-        // list all @tests model (after all, why would anyone use that stereotype then?)
-        for (SModel m : scope.getModels()) {
-          if (SModelStereotype.isTestModel(m)) {
-            modelRefs.add(SModelOperations.getPointer(m));
-          }
+    myMpsProject.getModelAccess().runReadAction(() -> {
+      SAbstractConcept concept = CONCEPTS.ITestCase$Fp;
+      ProjectScope scope = new ProjectScope(myMpsProject);
+      Set<SNode> usages = getFindUsagesManager().findInstances(scope, Collections.singleton(concept), false, new EmptyProgressMonitor());
+      for (SNode node : usages) {
+        SModel model = SNodeOperations.getModel(node);
+        SModelReference md = SModelOperations.getPointer(model);
+        modelRefs.add(md);
+      }
+      // chances are there are @tests models with test concepts that doesn't extend odd ITestCase (e.g. GeneratorTest), doesn't hurt to
+      // list all @tests model (after all, why would anyone use that stereotype then?)
+      for (SModel m : scope.getModels()) {
+        if (SModelStereotype.isTestModel(m)) {
+          modelRefs.add(SModelOperations.getPointer(m));
         }
       }
     });

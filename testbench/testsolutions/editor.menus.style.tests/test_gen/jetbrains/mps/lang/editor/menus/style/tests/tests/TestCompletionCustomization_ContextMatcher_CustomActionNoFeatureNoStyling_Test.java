@@ -39,13 +39,11 @@ public class TestCompletionCustomization_ContextMatcher_CustomActionNoFeatureNoS
     public void testMethodImpl() throws Exception {
       initEditorComponent("8373324885176752931", "8373324885177150308");
       getEditorComponent().getSelectedCell().setSubstituteInfo(CustomizationTestHelper.createTextPropertySubstituteInfo(getEditorComponent(), "with priority", "no priority"));
-      EditorTestUtil.runWithCompletionStyling(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
-          NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
-          Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 3);
-          pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
-        }
+      EditorTestUtil.runWithCompletionStyling(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
+        NodeSubstituteChooser nodeSubstituteChooser = getEditorComponent().getNodeSubstituteChooser();
+        Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 3);
+        pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ENTER"));
       }, false);
     }
   }

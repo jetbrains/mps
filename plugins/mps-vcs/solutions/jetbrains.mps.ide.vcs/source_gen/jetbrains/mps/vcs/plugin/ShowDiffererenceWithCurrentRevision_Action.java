@@ -92,11 +92,7 @@ public class ShowDiffererenceWithCurrentRevision_Action extends BaseAction {
   }
   /*package*/ VcsActionsUtil getVcsActionsUtil(final AnActionEvent event) {
     final Wrappers._T<String> rootName = new Wrappers._T<String>();
-    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        rootName.value = SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)).getName();
-      }
-    });
+    event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().runReadAction(() -> rootName.value = SNodeOperations.getContainingRoot(event.getData(MPSCommonDataKeys.NODE)).getName());
     return new VcsActionsUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.NODE).getReference(), rootName.value);
   }
 }

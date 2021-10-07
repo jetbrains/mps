@@ -104,37 +104,31 @@ public class RefScopeCheckerInEditor extends RefScopeChecker {
     @Override
     public void execute(final EditorContext editorContext) {
       final SRepository repository = editorContext.getRepository();
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          final Wrappers._boolean confirmed = new Wrappers._boolean(false);
-          repository.getModelAccess().runReadAction(new Runnable() {
-            public void run() {
-              if (isAlive(repository)) {
-                SNode sourceNode = mySourceNode.resolve(repository);
-                final SModel sourceModel = sourceNode.getModel();
-                ModelImporter mi = new ModelImporter(sourceModel);
-                mi.prepare(sourceNode.getReference(myLink).getTargetSModelReference());
+      ApplicationManager.getApplication().invokeLater(() -> {
+        final Wrappers._boolean confirmed = new Wrappers._boolean(false);
+        repository.getModelAccess().runReadAction(() -> {
+          if (isAlive(repository)) {
+            SNode sourceNode = mySourceNode.resolve(repository);
+            final SModel sourceModel = sourceNode.getModel();
+            ModelImporter mi = new ModelImporter(sourceModel);
+            mi.prepare(sourceNode.getReference(myLink).getTargetSModelReference());
 
-                boolean needsConfirmation = mi.affectsModuleDependencies();
-                if (!(needsConfirmation) || mi.confirmModuleChanges(getParentComponent(editorContext))) {
-                  confirmed.value = true;
-                }
-              }
+            boolean needsConfirmation = mi.affectsModuleDependencies();
+            if (!(needsConfirmation) || mi.confirmModuleChanges(getParentComponent(editorContext))) {
+              confirmed.value = true;
+            }
+          }
 
-            }
-          });
-          repository.getModelAccess().executeCommand(new Runnable() {
-            public void run() {
-              if (confirmed.value && isAlive(repository)) {
-                SNode sourceNode = mySourceNode.resolve(repository);
-                final SModel sourceModel = sourceNode.getModel();
-                ModelImporter mi = new ModelImporter(sourceModel);
-                mi.prepare(sourceNode.getReference(myLink).getTargetSModelReference());
-                mi.execute();
-              }
-            }
-          });
-        }
+        });
+        repository.getModelAccess().executeCommand(() -> {
+          if (confirmed.value && isAlive(repository)) {
+            SNode sourceNode = mySourceNode.resolve(repository);
+            final SModel sourceModel = sourceNode.getModel();
+            ModelImporter mi = new ModelImporter(sourceModel);
+            mi.prepare(sourceNode.getReference(myLink).getTargetSModelReference());
+            mi.execute();
+          }
+        });
       });
 
     }

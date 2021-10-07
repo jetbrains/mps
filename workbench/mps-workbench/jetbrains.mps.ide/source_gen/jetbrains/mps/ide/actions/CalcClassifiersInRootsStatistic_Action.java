@@ -27,7 +27,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -35,10 +34,10 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import java.util.function.Supplier;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.logging.MessageObject;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -82,26 +81,24 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
       @Override
       public void run(@NotNull ProgressIndicator indicator) {
         final ProgressMonitorAdapter progress = new ProgressMonitorAdapter(indicator);
-        ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            Iterable<? extends SModule> modules = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModulesWithGenerators();
-            progress.start("Modules...", Sequence.fromIterable(modules).count());
-            for (SModule module : Sequence.fromIterable(modules)) {
-              ProgressMonitor subTask = progress.subTask(1);
-              Iterable<SModel> models = module.getModels();
-              subTask.start(module.getModuleName(), IterableUtil.asCollection(models).size());
-              for (SModel m : Sequence.fromIterable(models)) {
-                subTask.step(m.getModelName());
-                for (SNode node : Sequence.fromIterable(m.getRootNodes())) {
-                  rootsCount.value++;
-                  membersOverallTime.value += CalcClassifiersInRootsStatistic_Action.this.analyzeClassifiersInRoot(node, _params);
-                }
-                subTask.advance(1);
+        ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(() -> {
+          Iterable<? extends SModule> modules = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModulesWithGenerators();
+          progress.start("Modules...", Sequence.fromIterable(modules).count());
+          for (SModule module : Sequence.fromIterable(modules)) {
+            ProgressMonitor subTask = progress.subTask(1);
+            Iterable<SModel> models = module.getModels();
+            subTask.start(module.getModuleName(), IterableUtil.asCollection(models).size());
+            for (SModel m : Sequence.fromIterable(models)) {
+              subTask.step(m.getModelName());
+              for (SNode node : Sequence.fromIterable(m.getRootNodes())) {
+                rootsCount.value++;
+                membersOverallTime.value += CalcClassifiersInRootsStatistic_Action.this.analyzeClassifiersInRoot(node, _params);
               }
-              subTask.done();
+              subTask.advance(1);
             }
-            progress.done();
+            subTask.done();
           }
+          progress.done();
         });
       }
     });
@@ -114,11 +111,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
     StringBuilder sb = new StringBuilder();
 
     final Wrappers._T<List<SNode>> types = new Wrappers._T<List<SNode>>(ListSequence.fromList(new ArrayList<SNode>()));
-    long typesCalcTime = CalcClassifiersInRootsStatistic_Action.this.calculateElapsedTime(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        types.value = CalcClassifiersInRootsStatistic_Action.this.calcAllClassifierTypesInRoot(node, _params);
-      }
-    }, _params);
+    long typesCalcTime = CalcClassifiersInRootsStatistic_Action.this.calculateElapsedTime(() -> types.value = CalcClassifiersInRootsStatistic_Action.this.calcAllClassifierTypesInRoot(node, _params), _params);
 
     if (typesCalcTime > 1000) {
       sb.append(String.format("%s: type calc time = %.3f%n", nodeName, typesCalcTime * 0.001));
@@ -139,11 +132,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
     }
 
     final Wrappers._T<List<SNode>> members = new Wrappers._T<List<SNode>>(ListSequence.fromList(new ArrayList<SNode>()));
-    long membersCalcTime = CalcClassifiersInRootsStatistic_Action.this.calculateElapsedTime(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        members.value = CalcClassifiersInRootsStatistic_Action.this.calcAllMembersOfClassifiers(classifiers, _params);
-      }
-    }, _params);
+    long membersCalcTime = CalcClassifiersInRootsStatistic_Action.this.calculateElapsedTime(() -> members.value = CalcClassifiersInRootsStatistic_Action.this.calcAllMembersOfClassifiers(classifiers, _params), _params);
 
     if (ListSequence.fromList(members.value).count() > 4000) {
       sb.append(String.format("%s: members count = %d%n", nodeName, ListSequence.fromList(members.value).count()));
@@ -159,19 +148,17 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
   }
   /*package*/ List<SNode> calcAllClassifierTypesInRoot(final SNode rootNode, final Map<String, Object> _params) {
 
-    List<SNode> result = TypecheckingFacade.getFromContext().computeIsolated(new Supplier<List<SNode>>() {
-      public List<SNode> get() {
-        List<SNode> list = ListSequence.fromList(new ArrayList<SNode>());
+    List<SNode> result = TypecheckingFacade.getFromContext().computeIsolated(() -> {
+      List<SNode> list = ListSequence.fromList(new ArrayList<SNode>());
 
-        for (SNode node : SNodeOperations.getNodeDescendants(rootNode, CONCEPTS.BaseConcept$gP, true, new SAbstractConcept[]{})) {
-          SNode type = TypecheckingFacade.getFromContext().getTypeOf(node);
-          if (SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$bL)) {
-            ListSequence.fromList(list).addElement(SNodeOperations.cast(type, CONCEPTS.ClassifierType$bL));
-          }
+      for (SNode node : SNodeOperations.getNodeDescendants(rootNode, CONCEPTS.BaseConcept$gP, true, new SAbstractConcept[]{})) {
+        SNode type = TypecheckingFacade.getFromContext().getTypeOf(node);
+        if (SNodeOperations.isInstanceOf(type, CONCEPTS.ClassifierType$bL)) {
+          ListSequence.fromList(list).addElement(SNodeOperations.cast(type, CONCEPTS.ClassifierType$bL));
         }
-
-        return list;
       }
+
+      return list;
     });
 
     return result;

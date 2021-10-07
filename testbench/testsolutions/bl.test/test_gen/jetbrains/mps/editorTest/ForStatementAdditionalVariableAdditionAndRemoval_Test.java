@@ -34,17 +34,15 @@ public class ForStatementAdditionalVariableAdditionAndRemoval_Test extends BaseT
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("3461663384198595469", "3461663384198595477");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          typeString(",b=2");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveLeft_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveLeft_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveLeft_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveLeft_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveLeft_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.MoveLeft_Action");
-          invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        typeString(",b=2");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveLeft_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveLeft_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveLeft_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveLeft_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveLeft_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.MoveLeft_Action");
+        invokeAction("jetbrains.mps.ide.editor.actions.Backspace_Action");
       }, false);
 
     }

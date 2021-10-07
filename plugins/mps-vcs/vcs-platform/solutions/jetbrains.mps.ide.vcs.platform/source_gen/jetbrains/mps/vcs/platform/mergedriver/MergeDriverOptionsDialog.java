@@ -8,7 +8,6 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 import java.awt.FlowLayout;
 import com.intellij.openapi.project.Project;
-import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import java.awt.Dimension;
 import com.intellij.openapi.util.DimensionService;
@@ -47,11 +46,7 @@ public class MergeDriverOptionsDialog extends DialogWrapper {
     }
 
     myGitFixes.addIfNeeded();
-    myGitDriver.addItemListener(new ItemListener() {
-      public void itemStateChanged(ItemEvent e) {
-        myGitRepos.setEnabled(myGitDriver.isSelected());
-      }
-    });
+    myGitDriver.addItemListener((ItemEvent e) -> myGitRepos.setEnabled(myGitDriver.isSelected()));
     myGitDriver.addIfNeeded();
     myGitRepos.addIfNeeded();
     if (myIdeSvn != null) {

@@ -30,7 +30,6 @@ import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
-import java.util.function.Supplier;
 import com.intellij.openapi.diff.DiffBundle;
 import com.intellij.openapi.actionSystem.Presentation;
 import org.jetbrains.annotations.NotNull;
@@ -167,11 +166,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
         showInspector(b);
       }
     });
-    actionGroup.add(new ToggleAction(new Supplier<String>() {
-      public String get() {
-        return DiffBundle.message("synchronize.scrolling", new Object[0]);
-      }
-    }, Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING) {
+    actionGroup.add(new ToggleAction(() -> DiffBundle.message("synchronize.scrolling", new Object[0]), Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING) {
       @Override
       public boolean isSelected(@NotNull AnActionEvent p1) {
         return isEditorsScrollingSyncOptionEnabled();
@@ -264,11 +259,7 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   public void navigateInitial(@Nullable final Bounds firstChange) {
     highlightAllChanges();
     if (firstChange != null) {
-      ApplicationManager.getApplication().invokeLater(new Runnable() {
-        public void run() {
-          myTraverser.goToBounds(firstChange);
-        }
-      });
+      ApplicationManager.getApplication().invokeLater(() -> myTraverser.goToBounds(firstChange));
     } else {
       myTraverser.goToFirstChangeLater();
     }
@@ -327,13 +318,11 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   public void rehighlightInReadAction(final boolean rebuildChangeSet) {
     ModelAccess modelAccess = ProjectHelper.getModelAccess(myMpsProject.getProject());
     if (modelAccess != null) {
-      modelAccess.runReadInEDT(new Runnable() {
-        public void run() {
-          if (rebuildChangeSet) {
-            rehighlightWithRebuild();
-          } else {
-            rehighlightWithNoRebuild();
-          }
+      modelAccess.runReadInEDT(() -> {
+        if (rebuildChangeSet) {
+          rehighlightWithRebuild();
+        } else {
+          rehighlightWithNoRebuild();
         }
       });
     }

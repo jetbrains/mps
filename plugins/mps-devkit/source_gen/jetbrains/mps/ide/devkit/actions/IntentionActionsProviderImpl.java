@@ -17,7 +17,6 @@ import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.intentions.IntentionsManager;
@@ -38,11 +37,7 @@ public class IntentionActionsProviderImpl implements IntentionActionsProvider {
           return;
         }
         final SRepository repo = mpsProject.getRepository();
-        if (!(new ModelAccessHelper(repo).runReadAction(new Computable<Boolean>() {
-          public Boolean compute() {
-            return nodeRef.resolve(repo) != null;
-          }
-        }))) {
+        if (!(new ModelAccessHelper(repo).runReadAction(() -> nodeRef.resolve(repo) != null))) {
           Messages.showErrorDialog(mpsProject.getProject(), String.format("Could not find declaration for %s intention (%s)", intention.getClass().getSimpleName(), intention.getClass().getName()), "Intention Declaration");
         } else {
           new EditorNavigator(mpsProject).shallFocus(true).shallSelect(false).open(nodeRef);

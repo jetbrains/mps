@@ -35,12 +35,10 @@ public class DeleteClassConceptImplementsTwoStep_Test extends BaseTransformation
     @Override
     public void testMethodImpl() throws Exception {
       initEditorComponent("5758795789001493585", "5758795789001493589");
-      EditorTestUtil.runWithTwoStepDeletion(new EditorTestUtil.EditorTestRunnable() {
-        public void run() throws Exception {
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-          Assert.assertTrue(getEditorComponent().getDeletionApprover().isApprovedForDeletion(getEditorComponent().getSelectedCell().getParent()));
-          invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
-        }
+      EditorTestUtil.runWithTwoStepDeletion(() -> {
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
+        Assert.assertTrue(getEditorComponent().getDeletionApprover().isApprovedForDeletion(getEditorComponent().getSelectedCell().getParent()));
+        invokeAction("jetbrains.mps.ide.editor.actions.Delete_Action");
       }, true);
 
     }

@@ -13,7 +13,6 @@ import jetbrains.mps.project.Project;
 import java.awt.HeadlessException;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.ide.IdeBundle;
@@ -40,19 +39,17 @@ public class NewModelDialog extends DialogWrapper {
     myProject = (MPSProject) project;
     myModule = module;
 
-    mySettings = new ModelAccessHelper(project.getModelAccess()).runReadAction(new Computable<NewModelDialogSettings>() {
-      public NewModelDialogSettings compute() {
-        if (!(myModule.getModelRoots().iterator().hasNext())) {
-          throw new IllegalStateException("Can't create a model in solution with no model roots");
-        }
-
-        return factory.create(project, module, new NewModelDialogSettings.SettingsValidator() {
-          @Override
-          public void validate() {
-            getOKAction().setEnabled(NewModelDialog.this.check());
-          }
-        });
+    mySettings = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> {
+      if (!(myModule.getModelRoots().iterator().hasNext())) {
+        throw new IllegalStateException("Can't create a model in solution with no model roots");
       }
+
+      return factory.create(project, module, new NewModelDialogSettings.SettingsValidator() {
+        @Override
+        public void validate() {
+          getOKAction().setEnabled(NewModelDialog.this.check());
+        }
+      });
     });
     myContentPane.add(mySettings.getSettingsPanel(), BorderLayout.CENTER);
 

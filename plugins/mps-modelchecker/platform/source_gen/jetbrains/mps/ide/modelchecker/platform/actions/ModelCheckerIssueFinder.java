@@ -17,7 +17,6 @@ import jetbrains.mps.ide.findusages.model.SearchResults;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.CollectConsumer;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.ide.findusages.model.CategoryKind;
@@ -53,21 +52,19 @@ public class ModelCheckerIssueFinder implements SearchTask {
 
   @Override
   public SearchResults<IssueKindReportItem> execute(final ProgressMonitor monitor) {
-    return new ModelAccessHelper(myRepository).runReadAction(new Computable<SearchResults<IssueKindReportItem>>() {
-      public SearchResults<IssueKindReportItem> compute() {
-        CollectConsumer<IssueKindReportItem> errorCollector = new CollectConsumer<IssueKindReportItem>();
-        List<IChecker<?, ? extends IssueKindReportItem>> specificCheckers = ListSequence.fromList(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>());
-        ListSequence.fromList(specificCheckers).addSequence(ListSequence.fromList(getSpecificCheckers()));
-        // FIXME it's odd to create checker here provided outer code cares about ModelCheckerSettings and IssueKindReportItem anyway.
-        //       We could have passed IAbstractChecker (created the way from the line below) to the cons, however, can't do it right away
-        //       as I don't like to expose ModelCheckerBuilder.ItemsToCheck, and need to refactor this.
-        new ModelCheckerBuilder(ModelCheckerSettings.getInstance().isCheckStubs()).createChecker(specificCheckers).check(itemsToCheck, myRepository, errorCollector, monitor);
-        SearchResults<IssueKindReportItem> result = new SearchResults<IssueKindReportItem>();
-        for (IssueKindReportItem error : errorCollector.getResult()) {
-          result.getSearchResults().add(getSearchResultForReportItem(error));
-        }
-        return result;
+    return new ModelAccessHelper(myRepository).runReadAction(() -> {
+      CollectConsumer<IssueKindReportItem> errorCollector = new CollectConsumer<IssueKindReportItem>();
+      List<IChecker<?, ? extends IssueKindReportItem>> specificCheckers = ListSequence.fromList(new ArrayList<IChecker<?, ? extends IssueKindReportItem>>());
+      ListSequence.fromList(specificCheckers).addSequence(ListSequence.fromList(getSpecificCheckers()));
+      // FIXME it's odd to create checker here provided outer code cares about ModelCheckerSettings and IssueKindReportItem anyway.
+      //       We could have passed IAbstractChecker (created the way from the line below) to the cons, however, can't do it right away
+      //       as I don't like to expose ModelCheckerBuilder.ItemsToCheck, and need to refactor this.
+      new ModelCheckerBuilder(ModelCheckerSettings.getInstance().isCheckStubs()).createChecker(specificCheckers).check(itemsToCheck, myRepository, errorCollector, monitor);
+      SearchResults<IssueKindReportItem> result = new SearchResults<IssueKindReportItem>();
+      for (IssueKindReportItem error : errorCollector.getResult()) {
+        result.getSearchResults().add(getSearchResultForReportItem(error));
       }
+      return result;
     });
   }
   public static String getResultCategory(MessageStatus messageStatus) {

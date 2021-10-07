@@ -22,7 +22,6 @@ import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.util.ui.UIUtil;
-import com.intellij.util.PairFunction;
 import javax.swing.JCheckBox;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -99,11 +98,7 @@ public class DeleteModules_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final int result = Messages.showCheckboxMessageDialog(IdeBundle.message("actions.module.delete.message"), IdeBundle.message("actions.module.delete.title"), new String[]{IdeBundle.message("actions.module.delete.ok.button.text"), Messages.getCancelButton()}, UIUtil.replaceMnemonicAmpersand(IdeBundle.message("actions.module.delete.option.files")), false, 0, 0, Messages.getQuestionIcon(), new PairFunction<Integer, JCheckBox, Integer>() {
-      public Integer fun(Integer exitCode, JCheckBox checkBox) {
-        return (exitCode == -1 || exitCode == 1 ? Messages.CANCEL : Boolean.compare(true, checkBox.isSelected()));
-      }
-    });
+    final int result = Messages.showCheckboxMessageDialog(IdeBundle.message("actions.module.delete.message"), IdeBundle.message("actions.module.delete.title"), new String[]{IdeBundle.message("actions.module.delete.ok.button.text"), Messages.getCancelButton()}, UIUtil.replaceMnemonicAmpersand(IdeBundle.message("actions.module.delete.option.files")), false, 0, 0, Messages.getQuestionIcon(), (Integer exitCode, JCheckBox checkBox) -> (exitCode == -1 || exitCode == 1 ? Messages.CANCEL : Boolean.compare(true, checkBox.isSelected())));
 
     if (result == Messages.CANCEL) {
       return;
@@ -132,10 +127,6 @@ public class DeleteModules_Action extends BaseAction {
 
     ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
     // While don't support undo no need for command here
-    modelAccess.runWriteAction(new Runnable() {
-      public void run() {
-        new ModuleDeleteHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).deleteModules(((List<SModule>) MapSequence.fromMap(_params).get("modules")), false, deleteFiles);
-      }
-    });
+    modelAccess.runWriteAction(() -> new ModuleDeleteHelper(((MPSProject) MapSequence.fromMap(_params).get("project"))).deleteModules(((List<SModule>) MapSequence.fromMap(_params).get("modules")), false, deleteFiles));
   }
 }

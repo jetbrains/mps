@@ -11,8 +11,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
@@ -80,22 +80,18 @@ public class CreateConceptFromUsageHelper {
     final Wrappers._T<SNode> createdConcept = new Wrappers._T<SNode>(null);
     if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.LinkDeclaration$1p) && cell.isErrorState() && LINKS.target$m40F.equals(cell.getSRole())) {
       created = true;
-      ex.exec(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          SNode cncpt = createConcept(conceptName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.LinkDeclaration$1p), LINKS.target$m40F, cncpt);
-          createdConcept.value = cncpt;
-        }
+      ex.exec(() -> {
+        SNode cncpt = createConcept(conceptName);
+        SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.LinkDeclaration$1p), LINKS.target$m40F, cncpt);
+        createdConcept.value = cncpt;
       });
     } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptReference$O4)) {
       // ref concept already created, but no reference is set
       created = true;
-      ex.exec(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          SNode intfc = createConceptInterface(conceptName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptReference$O4), LINKS.intfc$zM4e, intfc);
-          createdConcept.value = intfc;
-        }
+      ex.exec(() -> {
+        SNode intfc = createConceptInterface(conceptName);
+        SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.InterfaceConceptReference$O4), LINKS.intfc$zM4e, intfc);
+        createdConcept.value = intfc;
       });
     } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$gH) && cell.isErrorState() && LINKS.implements$u_P2.equals(cell.getSRole())) {
       // ref concept not yet created, but no reference is set
@@ -109,12 +105,10 @@ public class CreateConceptFromUsageHelper {
       }));
     } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.ConceptDeclaration$gH) && cell.isErrorState() && LINKS.extends$_Isg.equals(cell.getSRole())) {
       created = true;
-      ex.exec(new _FunctionTypes._void_P0_E0() {
-        public void invoke() {
-          SNode cncpt = createConcept(conceptName);
-          SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$gH), LINKS.extends$_Isg, cncpt);
-          createdConcept.value = cncpt;
-        }
+      ex.exec(() -> {
+        SNode cncpt = createConcept(conceptName);
+        SLinkOperations.setTarget(SNodeOperations.cast(myNode, CONCEPTS.ConceptDeclaration$gH), LINKS.extends$_Isg, cncpt);
+        createdConcept.value = cncpt;
       });
     } else if (SNodeOperations.isInstanceOf(myNode, CONCEPTS.InterfaceConceptDeclaration$CG) && cell.isErrorState() && LINKS.extends$nawU.equals(cell.getSRole())) {
       // ref concept not yet created, but no reference is set
@@ -131,11 +125,9 @@ public class CreateConceptFromUsageHelper {
       return false;
     }
 
-    ex.exec(new _FunctionTypes._void_P0_E0() {
-      public void invoke() {
-        Editor editor = NavigationSupport.getInstance().openNode(myEditorContext.getOperationContext().getProject(), createdConcept.value, true, false);
-        editor.getEditorContext().selectWRTFocusPolicy(createdConcept.value);
-      }
+    ex.exec(() -> {
+      Editor editor = NavigationSupport.getInstance().openNode(myEditorContext.getOperationContext().getProject(), createdConcept.value, true, false);
+      editor.getEditorContext().selectWRTFocusPolicy(createdConcept.value);
     });
 
     return true;

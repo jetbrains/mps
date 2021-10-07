@@ -83,11 +83,9 @@ public class UpdateDependentModelsRefactoringParticipant extends RefactoringPart
     progressMonitor.start(myOption.getDescription(), 1);
     final Wrappers._T<Set<SModel>> usages = new Wrappers._T<Set<SModel>>();
     final Wrappers._T<SModel> sourceModel = new Wrappers._T<SModel>();
-    repository.getModelAccess().runReadAction(new Runnable() {
-      public void run() {
-        usages.value = FindUsagesFacade.getInstance().findModelUsages(new GlobalScope(repository), Collections.singleton(initialState), progressMonitor.subTask(1));
-        sourceModel.value = initialState.resolve(repository);
-      }
+    repository.getModelAccess().runReadAction(() -> {
+      usages.value = FindUsagesFacade.getInstance().findModelUsages(new GlobalScope(repository), Collections.singleton(initialState), progressMonitor.subTask(1));
+      sourceModel.value = initialState.resolve(repository);
     });
 
     return SetSequence.fromSet(usages.value).select(new ISelector<SModel, RefactoringParticipant.Change<SModelReference, SModelReference>>() {
@@ -99,18 +97,16 @@ public class UpdateDependentModelsRefactoringParticipant extends RefactoringPart
             return searchResults;
           }
           public void confirm(final SModelReference finalState, final SRepository repository, RefactoringSession refactoringSession) {
-            refactoringSession.registerChange(new Runnable() {
-              public void run() {
-                SModel usage = usageRef.resolve(repository);
-                if (usage instanceof SModelInternal && usage instanceof EditableSModel && ((SModelInternal) usage).getModelImports().contains(initialState)) {
-                  ((SModelInternal) usage).addModelImport(finalState);
-                  updateUsages((EditableSModel) usage, initialState, finalState);
-                  ((SModelInternal) usage).deleteModelImport(initialState);
-                }
-                SModule targetModule = finalState.resolve(repository).getModule();
-                if (usage.getModule() instanceof AbstractModule && !(new GlobalModuleDependenciesManager(usage.getModule()).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE).contains(targetModule))) {
-                  ((AbstractModule) usage.getModule()).addDependency(targetModule.getModuleReference(), false);
-                }
+            refactoringSession.registerChange(() -> {
+              SModel usage = usageRef.resolve(repository);
+              if (usage instanceof SModelInternal && usage instanceof EditableSModel && ((SModelInternal) usage).getModelImports().contains(initialState)) {
+                ((SModelInternal) usage).addModelImport(finalState);
+                updateUsages((EditableSModel) usage, initialState, finalState);
+                ((SModelInternal) usage).deleteModelImport(initialState);
+              }
+              SModule targetModule = finalState.resolve(repository).getModule();
+              if (usage.getModule() instanceof AbstractModule && !(new GlobalModuleDependenciesManager(usage.getModule()).getModules(GlobalModuleDependenciesManager.Deptype.VISIBLE).contains(targetModule))) {
+                ((AbstractModule) usage.getModule()).addDependency(targetModule.getModuleReference(), false);
               }
             });
           }

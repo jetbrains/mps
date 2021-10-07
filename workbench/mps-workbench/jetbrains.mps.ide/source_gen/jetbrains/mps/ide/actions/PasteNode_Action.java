@@ -108,45 +108,39 @@ public class PasteNode_Action extends BaseAction {
       return;
     }
 
-    modelAccess.executeCommandInEDT(new Runnable() {
-      public void run() {
-        if (SNodeOperations.isModelDisposed(((SModel) MapSequence.fromMap(_params).get("contextModel")))) {
+    modelAccess.executeCommandInEDT(() -> {
+      if (SNodeOperations.isModelDisposed(((SModel) MapSequence.fromMap(_params).get("contextModel")))) {
+        return;
+      }
+      if (addImportsRunnable != null) {
+        addImportsRunnable.run();
+      }
+      if (((SNode) MapSequence.fromMap(_params).get("node")) == null) {
+        NodePaster paster = new NodePaster(pasteNodes);
+        if (!(paster.canPasteAsRoots())) {
           return;
         }
-        if (addImportsRunnable != null) {
-          addImportsRunnable.run();
+        paster.pasteAsRoots(((SModel) MapSequence.fromMap(_params).get("contextModel")), PasteNode_Action.this.getContextPackage(_params));
+      } else {
+        NodePaster paster = new NodePaster(pasteNodes);
+        if (!(paster.canPaste(((SNode) MapSequence.fromMap(_params).get("node")), PasteEnv.PROJECT_TREE))) {
+          return;
         }
-        if (((SNode) MapSequence.fromMap(_params).get("node")) == null) {
-          NodePaster paster = new NodePaster(pasteNodes);
-          if (!(paster.canPasteAsRoots())) {
-            return;
-          }
-          paster.pasteAsRoots(((SModel) MapSequence.fromMap(_params).get("contextModel")), PasteNode_Action.this.getContextPackage(_params));
-        } else {
-          NodePaster paster = new NodePaster(pasteNodes);
-          if (!(paster.canPaste(((SNode) MapSequence.fromMap(_params).get("node")), PasteEnv.PROJECT_TREE))) {
-            return;
-          }
-          paster.paste(((SNode) MapSequence.fromMap(_params).get("node")), PasteEnv.PROJECT_TREE, PasteNode_Action.this.getContextPackage(_params));
-        }
-        ResolverComponent.getInstance().resolveScopesOnly(refsToResolve, ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository());
-        // make sure editor will be open
-        if (((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")) == null) {
-          SNode root = pasteNodes.get(0).getContainingRoot();
-          assert root != null;
-          new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).shallSelect(true).open(root.getReference());
-          new ProjectPaneNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).select(root.getReference());
-        }
+        paster.paste(((SNode) MapSequence.fromMap(_params).get("node")), PasteEnv.PROJECT_TREE, PasteNode_Action.this.getContextPackage(_params));
+      }
+      ResolverComponent.getInstance().resolveScopesOnly(refsToResolve, ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository());
+      // make sure editor will be open
+      if (((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")) == null) {
+        SNode root = pasteNodes.get(0).getContainingRoot();
+        assert root != null;
+        new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).shallSelect(true).open(root.getReference());
+        new ProjectPaneNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).select(root.getReference());
       }
     });
   }
   private PasteNodeData getPasteData(ModelAccess modelAccess, final Map<String, Object> _params) {
     final Wrappers._T<PasteNodeData> result = new Wrappers._T<PasteNodeData>();
-    modelAccess.runReadAction(new Runnable() {
-      public void run() {
-        result.value = CopyPasteUtil.getPasteNodeDataFromClipboard(((SModel) MapSequence.fromMap(_params).get("contextModel")));
-      }
-    });
+    modelAccess.runReadAction(() -> result.value = CopyPasteUtil.getPasteNodeDataFromClipboard(((SModel) MapSequence.fromMap(_params).get("contextModel"))));
     return result.value;
   }
   private boolean canPasteNodes(ModelAccess modelAccess, final Map<String, Object> _params) {

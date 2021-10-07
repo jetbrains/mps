@@ -41,16 +41,14 @@ public class TestEditorMenuTraceEnumPropertyRegularEditor_Test extends BaseTrans
       initEditorComponent("3631615103242345663", "3631615103242345661");
       invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
       typeString("enum1");
-      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(new Runnable() {
-        public void run() {
-          Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
-          SubstituteAction action = (SubstituteAction) getEditorComponent().getData(PlatformDataKeys.SELECTED_ITEM.getName());
-          Assert.assertTrue(action != null);
+      getEditorComponent().getEditorContext().getRepository().getModelAccess().runReadAction(() -> {
+        Assert.assertTrue(getEditorComponent().getNodeSubstituteChooser().isVisible());
+        SubstituteAction action = (SubstituteAction) getEditorComponent().getData(PlatformDataKeys.SELECTED_ITEM.getName());
+        Assert.assertTrue(action != null);
 
-          EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
-          SNodeReference enumMemberDeclaration = new SNodePointer("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)", "4241665505353445488");
-          EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, enumMemberDeclaration, null);
-        }
+        EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
+        SNodeReference enumMemberDeclaration = new SNodePointer("r:1a7fc406-f263-498c-a126-51036fe6a9da(jetbrains.mps.lang.editor.editorTest.structure)", "4241665505353445488");
+        EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, enumMemberDeclaration, null);
       });
     }
   }

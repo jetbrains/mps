@@ -29,7 +29,6 @@ import jetbrains.mps.vfs.refresh.FileSystemListener;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import java.util.function.Function;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.util.io.FileUtil;
 import jetbrains.mps.InternalFlag;
@@ -170,11 +169,7 @@ import java.util.Arrays;
   }
 
   private ListenerData createNewDataIfAbsent(FileEventProcessor listener) {
-    return myListener2Data.computeIfAbsent(listener, new Function<FileEventProcessor, ListenerData>() {
-      public ListenerData apply(FileEventProcessor it1) {
-        return new ListenerData();
-      }
-    });
+    return myListener2Data.computeIfAbsent(listener, (FileEventProcessor it1) -> new ListenerData());
   }
 
   private enum EventKind {

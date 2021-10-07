@@ -177,12 +177,10 @@ import com.intellij.openapi.application.ApplicationManager;
         }
         SetSequence.fromSet(mappedEditorComponent).addElement(mainEditorComponent.value);
 
-        ApplicationManager.getApplication().invokeLater(new Runnable() {
-          public void run() {
-            mainEditorComponent.value.addDisposeListener(myDisposeListener);
-            if (mainEditorComponent.value.isDisposed()) {
-              myDisposeListener.editorWillBeDisposed(mainEditorComponent.value);
-            }
+        ApplicationManager.getApplication().invokeLater(() -> {
+          mainEditorComponent.value.addDisposeListener(myDisposeListener);
+          if (mainEditorComponent.value.isDisposed()) {
+            myDisposeListener.editorWillBeDisposed(mainEditorComponent.value);
           }
         });
       }

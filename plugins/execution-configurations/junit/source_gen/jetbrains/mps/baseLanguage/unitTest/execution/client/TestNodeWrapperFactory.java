@@ -164,19 +164,11 @@ public enum TestNodeWrapperFactory {
   }
 
   public static Iterable<SAbstractConcept> getWrappedRootConcepts() {
-    return getWrappedConcepts(new _FunctionTypes._return_P1_E0<Boolean, TestNodeWrapperFactory>() {
-      public Boolean invoke(TestNodeWrapperFactory factory) {
-        return factory.isRoot();
-      }
-    });
+    return getWrappedConcepts((TestNodeWrapperFactory factory) -> factory.isRoot());
   }
 
   private static Iterable<SAbstractConcept> getWrappedNonRootConcepts() {
-    return getWrappedConcepts(new _FunctionTypes._return_P1_E0<Boolean, TestNodeWrapperFactory>() {
-      public Boolean invoke(TestNodeWrapperFactory factory) {
-        return !(factory.isRoot());
-      }
-    });
+    return getWrappedConcepts((TestNodeWrapperFactory factory) -> !(factory.isRoot()));
   }
 
   public static SNode findWrappableAncestor(SNode source, boolean isRoot) {

@@ -13,7 +13,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
@@ -34,22 +33,14 @@ public class ClassifierAdapters_Test {
   }
   @Test
   public void test_functionTypeAsInterface() throws Exception {
-    _FunctionTypes._return_P1_E0<? extends String, ? super Integer> cls = new _FunctionTypes._return_P1_E0<String, Integer>() {
-      public String invoke(Integer foo) {
-        return "Done: " + foo;
-      }
-    };
+    _FunctionTypes._return_P1_E0<? extends String, ? super Integer> cls = (Integer foo) -> "Done: " + foo;
     if (!(Constants.ONLY_CLOSURE_LITERAL_AS_FUNCTION_TYPE)) {
       assert false : "Fix the test";
     }
   }
   @Test
   public void test_closureLiteralAsInterface() throws Exception {
-    Worker wrk = new Worker() {
-      public String doWork(Integer foo) {
-        return "Done: " + foo;
-      }
-    };
+    Worker wrk = (Integer foo) -> "Done: " + foo;
     Assert.assertEquals("Done: 4321", wrk.doWork(4321));
   }
   @Test
@@ -152,27 +143,17 @@ __switch__:
   }
   @Test
   public void test_instanceMethodCall() throws Exception {
-    Assert.assertEquals("1234", this.makeWork(new Worker() {
-      public String doWork(Integer i) {
-        return String.valueOf(i);
-      }
-    }, 1234));
-    Assert.assertEquals("4321", this.makeWork(new Worker() {
-      public String doWork(Integer i) {
-        return String.valueOf(i);
-      }
-    }, 4321));
+    Assert.assertEquals("1234", this.makeWork((Integer i) -> String.valueOf(i), 1234));
+    Assert.assertEquals("4321", this.makeWork((Integer i) -> String.valueOf(i), 4321));
   }
   @Test
   public void test_exceptions() throws Exception {
     try {
-      this.process(new Processor() {
-        public int process(String instr) throws ProcessingException {
-          if (Integer.parseInt(instr) < 0) {
-            throw new ProcessingException();
-          }
-          return 1;
+      this.process((String instr) -> {
+        if (Integer.parseInt(instr) < 0) {
+          throw new ProcessingException();
         }
+        return 1;
       }, "-1");
       Assert.fail();
     } catch (ProcessingException e) {
@@ -190,21 +171,13 @@ __switch__:
     // Why declare equals() in an interface escapes me: it's already there and declaring it in an interface doesn't change anything
     // Besides, overriding only equals() without overriding also hashCode() is simply plain wrong.
     // ===================================================================
-    Collections.sort(list, new Comparator<Object>() {
-      public int compare(Object a, Object b) {
-        return a.hashCode() - b.hashCode();
-      }
-    });
+    Collections.sort(list, (Object a, Object b) -> a.hashCode() - b.hashCode());
     Assert.assertEquals(Arrays.asList(new Integer[]{1, 2, 3, 4, 5}), list);
   }
   @Test
   public void test_closureLiteralAsParameterToConstructor() throws Exception {
     final Wrappers._int foo = new Wrappers._int(-1);
-    Thread trd = new Thread(new Runnable() {
-      public void run() {
-        foo.value = 42;
-      }
-    });
+    Thread trd = new Thread(() -> foo.value = 42);
     trd.start();
     try {
       trd.join();
@@ -215,11 +188,7 @@ __switch__:
   @Test
   public void test_closureLiteralAsParameterToAnonymousClass() throws Exception {
     final Wrappers._int foo = new Wrappers._int(-1);
-    Thread trd = new Thread(new Runnable() {
-      public void run() {
-        foo.value = 42;
-      }
-    });
+    Thread trd = new Thread(() -> foo.value = 42);
     trd.start();
     try {
       trd.join();
@@ -229,11 +198,7 @@ __switch__:
   }
   @Test
   public void test_wrongParametersNumber() throws Exception {
-    this.acceptWorker(new Worker() {
-      public String doWork(Integer i) {
-        return String.valueOf(i);
-      }
-    });
+    this.acceptWorker((Integer i) -> String.valueOf(i));
   }
   @Test
   public void test__returnWorker() throws Exception {
@@ -258,11 +223,7 @@ __switch__:
   @Test
   public void test_compactInvoke() throws Exception {
     final Wrappers._int count = new Wrappers._int(0);
-    _FunctionTypes._return_P0_E0<? extends Integer> cl = new _FunctionTypes._return_P0_E0<Integer>() {
-      public Integer invoke() {
-        return count.value++;
-      }
-    };
+    _FunctionTypes._return_P0_E0<? extends Integer> cl = () -> count.value++;
     cl.invoke();
     Assert.assertSame(1, count.value);
     new _FunctionTypes._return_P0_E0<Integer>() {
@@ -370,13 +331,11 @@ __switch__:
   @Test
   public void test_mps9190() throws Exception {
     try {
-      this.acceptFunction(new _FunctionTypes._return_P1_E0<Object, String>() {
-        public Object invoke(String s) {
-          if (s.length() == 3) {
-            throw new RuntimeException();
-          }
-          return null;
+      this.acceptFunction((String s) -> {
+        if (s.length() == 3) {
+          throw new RuntimeException();
         }
+        return null;
       });
       Assert.fail();
     } catch (RuntimeException e) {
@@ -394,25 +353,15 @@ __switch__:
     return prc.process(instr);
   }
   public Worker returnWorker() {
-    return new Worker() {
-      public String doWork(Integer i) {
-        return String.valueOf(i);
-      }
-    };
+    return (Integer i) -> String.valueOf(i);
   }
   public Processor returnProcessor() {
-    return new Processor() {
-      public int process(String str) throws ProcessingException {
-        throw new ProcessingException(str);
-      }
+    return (String str) -> {
+      throw new ProcessingException(str);
     };
   }
   public IFilter filter() {
-    return new IFilter() {
-      public boolean filter(String name) {
-        return false;
-      }
-    };
+    return (String name) -> false;
   }
   public Object acceptFunction(_FunctionTypes._return_P1_E0<? extends Object, ? super String> fff) {
     return fff.invoke("foo");
