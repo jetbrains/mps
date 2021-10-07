@@ -6,7 +6,7 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
   </languages>
   <imports>
@@ -3234,7 +3234,7 @@
           </node>
           <node concept="2OqwBi" id="74EzGwfNX0k" role="3clFbw">
             <node concept="37vLTw" id="74EzGwfNX0l" role="2Oq$k0">
-              <ref role="3cqZAo" node="74EzGwfNX0a" resolve="excluded" />
+              <ref role="3cqZAo" node="74EzGwfNX0a" resolve="excludedFiles" />
             </node>
             <node concept="liA8E" id="74EzGwfNX0m" role="2OqNvi">
               <ref role="37wK5l" to="33ny:~Collection.contains(java.lang.Object)" resolve="contains" />
@@ -3407,7 +3407,7 @@
                   <ref role="3cqZAo" node="74EzGwfNX0S" resolve="child" />
                 </node>
                 <node concept="37vLTw" id="74EzGwfNX0Y" role="37wK5m">
-                  <ref role="3cqZAo" node="74EzGwfNX0a" resolve="excluded" />
+                  <ref role="3cqZAo" node="74EzGwfNX0a" resolve="excludedFiles" />
                 </node>
                 <node concept="37vLTw" id="74EzGwfNX0Z" role="37wK5m">
                   <ref role="3cqZAo" node="74EzGwfNX0d" resolve="archiveFiles" />

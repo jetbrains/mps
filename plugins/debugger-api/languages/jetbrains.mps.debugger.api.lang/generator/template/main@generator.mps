@@ -12,7 +12,7 @@
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="2" />
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="5" />
     <use id="ef7bf5ac-d06c-4342-b11d-e42104eb9343" name="jetbrains.mps.lang.plugin.standalone" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
   </languages>
@@ -284,6 +284,7 @@
         <child id="1144104376918" name="parameter" index="1xVPHs" />
       </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
       <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
       <concept id="1180031783296" name="jetbrains.mps.lang.smodel.structure.Concept_IsSubConceptOfOperation" flags="nn" index="2Zo12i">
@@ -919,8 +920,11 @@
                           <node concept="RRSsy" id="3jYQuSB35rN" role="3cqZAp">
                             <property role="RRSoG" value="gZ5fksE/warn" />
                             <node concept="3cpWs3" id="5zFeAub6Bt7" role="RRSoy">
-                              <node concept="37vLTw" id="5zFeAub6Bt8" role="3uHU7w">
-                                <ref role="3cqZAo" node="5zFeAub6BtI" resolve="debuggableNode" />
+                              <node concept="2OqwBi" id="ivXwD0Fw2o" role="3uHU7w">
+                                <node concept="37vLTw" id="5zFeAub6Bt8" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="5zFeAub6BtI" resolve="debuggableNode" />
+                                </node>
+                                <node concept="2Iv5rx" id="ivXwD0Fw2p" role="2OqNvi" />
                               </node>
                               <node concept="Xl_RD" id="5zFeAub6Bt9" role="3uHU7B">
                                 <property role="Xl_RC" value="Exception while creating breakpoint for node" />

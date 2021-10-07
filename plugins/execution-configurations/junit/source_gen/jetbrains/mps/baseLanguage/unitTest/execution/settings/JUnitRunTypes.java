@@ -16,6 +16,7 @@ import jetbrains.mps.execution.lib.PointerUtils;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.unitTest.execution.client.TestNodeWrapperFactory;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
@@ -138,7 +139,7 @@ public enum JUnitRunTypes {
               SModel model = testNode.getModel();
               SNode module = SModelOperations.getModuleStub(model);
               if (!(SPropertyOperations.getBoolean(module, PROPS.compileInMPS$2Q_X))) {
-                return "The module's " + module + " compile output is not managed by MPS.";
+                return "The module's " + SNodeOperations.present(module) + " compile output is not managed by MPS.";
               }
             }
             if (testNode == null || TestNodeWrapperFactory.tryToWrap(testNode) == null) {
@@ -173,7 +174,7 @@ public enum JUnitRunTypes {
               SModel model = testMethpdNode.getModel();
               SNode module = SModelOperations.getModuleStub(model);
               if (!(SPropertyOperations.getBoolean(module, PROPS.compileInMPS$2Q_X))) {
-                return "The module's " + module + " compile output is not managed by MPS.";
+                return "The module's " + SNodeOperations.present(module) + " compile output is not managed by MPS.";
               }
             }
             if (testMethpdNode == null || TestNodeWrapperFactory.tryToWrap(testMethpdNode) == null) {

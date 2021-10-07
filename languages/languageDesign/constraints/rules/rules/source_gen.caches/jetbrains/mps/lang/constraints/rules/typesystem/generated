@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="dft7t4ftj031jxrpezrgaaz168zmrsx">
+<product version="3" modelHash="6ayb8a0bo1j0f2pbtx5i7hqrqb3me5n">
   <files names="CheckNoCyclesInDefs_NonTypesystemRule.java:TypesystemDescriptor.java:check_ConstraintsRuleId_NonTypesystemRule.java:correct_RuleId_QuickFix.java:typeof_ConstraintsDef_InferenceRule.java:typeof_ConstraintsRule_InferenceRule.java:typeof_TypedDefReference_InferenceRule.java" />
 </product>
 

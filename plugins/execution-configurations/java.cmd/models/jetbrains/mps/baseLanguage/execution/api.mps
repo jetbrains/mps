@@ -13,7 +13,7 @@
     <use id="756e911c-3f1f-4a48-bdf5-a2ceb91b723c" name="jetbrains.mps.execution.settings" version="-1" />
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
   </languages>
@@ -445,6 +445,7 @@
         <reference id="5472444609684539883" name="conceptDeclaraton" index="2uNoUb" />
       </concept>
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
       <concept id="6995935425733782641" name="jetbrains.mps.lang.smodel.structure.Model_GetModule" flags="nn" index="13u695" />
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
@@ -2069,8 +2070,11 @@
                   <node concept="Xl_RD" id="4YEli8eID_0" role="3uHU7B">
                     <property role="Xl_RC" value="The hosting module's " />
                   </node>
-                  <node concept="37vLTw" id="4YEli8eIH3d" role="3uHU7w">
-                    <ref role="3cqZAo" node="4YEli8eIE$p" resolve="module" />
+                  <node concept="2OqwBi" id="ivXwD0FElJ" role="3uHU7w">
+                    <node concept="37vLTw" id="4YEli8eIH3d" role="2Oq$k0">
+                      <ref role="3cqZAo" node="4YEli8eIE$p" resolve="module" />
+                    </node>
+                    <node concept="2Iv5rx" id="ivXwD0FElK" role="2OqNvi" />
                   </node>
                 </node>
               </node>
@@ -2169,8 +2173,11 @@
                         <node concept="Xl_RD" id="7mvYbwTB6gR" role="3uHU7B">
                           <property role="Xl_RC" value="No unitName found for " />
                         </node>
-                        <node concept="37vLTw" id="2BHiRxgmFdQ" role="3uHU7w">
-                          <ref role="3cqZAo" node="14R2qyOBxgY" resolve="node" />
+                        <node concept="2OqwBi" id="ivXwD0FEmz" role="3uHU7w">
+                          <node concept="37vLTw" id="2BHiRxgmFdQ" role="2Oq$k0">
+                            <ref role="3cqZAo" node="14R2qyOBxgY" resolve="node" />
+                          </node>
+                          <node concept="2Iv5rx" id="ivXwD0FEm$" role="2OqNvi" />
                         </node>
                       </node>
                       <node concept="Xl_RD" id="7mvYbwTB6gT" role="3uHU7w">

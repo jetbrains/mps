@@ -303,6 +303,7 @@
         <reference id="1143235391024" name="concept" index="I8UWU" />
       </concept>
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS" />
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -8556,11 +8557,14 @@
               <node concept="Xl_RD" id="296OPknDZ1A" role="3uHU7B">
                 <property role="Xl_RC" value="concept_lit&lt;" />
               </node>
-              <node concept="2OqwBi" id="296OPknDZMf" role="3uHU7w">
-                <node concept="13iPFW" id="296OPknDZ_a" role="2Oq$k0" />
-                <node concept="3TrEf2" id="296OPknDZWd" role="2OqNvi">
-                  <ref role="3Tt5mk" to="tp25:4JM1Q3lfSBF" resolve="conceptDeclaraton" />
+              <node concept="2OqwBi" id="ivXwD0Fs_7" role="3uHU7w">
+                <node concept="2OqwBi" id="296OPknDZMf" role="2Oq$k0">
+                  <node concept="13iPFW" id="296OPknDZ_a" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="296OPknDZWd" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tp25:4JM1Q3lfSBF" resolve="conceptDeclaraton" />
+                  </node>
                 </node>
+                <node concept="2Iv5rx" id="ivXwD0Fs_8" role="2OqNvi" />
               </node>
             </node>
           </node>

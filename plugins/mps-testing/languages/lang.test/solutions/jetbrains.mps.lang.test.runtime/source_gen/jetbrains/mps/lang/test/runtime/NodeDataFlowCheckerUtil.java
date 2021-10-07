@@ -62,13 +62,13 @@ public class NodeDataFlowCheckerUtil {
         if (SNodeOperations.isInstanceOf(operation, CONCEPTS.VariableInitialized$j1)) {
           Set<Object> vars = (Set<Object>) initialized.get(instruction);
           SNode var = SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.VariableInitialized$j1), LINKS.var$irrI);
-          Assert.assertTrue("variable <" + var + "> is not initialized", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$N1XG)));
+          Assert.assertTrue("variable <" + SNodeOperations.present(var) + "> is not initialized", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$N1XG)));
         }
 
         if (SNodeOperations.isInstanceOf(operation, CONCEPTS.VariableAlive$rJ)) {
           Set<Object> vars = (Set<Object>) live.get(instruction);
           SNode var = SLinkOperations.getTarget(SNodeOperations.cast(operation, CONCEPTS.VariableInitialized$j1), LINKS.var$irrI);
-          Assert.assertTrue("variable <" + var + "> is not alive", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$N1XG)));
+          Assert.assertTrue("variable <" + SNodeOperations.present(var) + "> is not alive", SetSequence.fromSet(vars).contains(SLinkOperations.getTarget(var, LINKS.variableDeclaration$N1XG)));
         }
       }
     }

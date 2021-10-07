@@ -46,7 +46,7 @@ public class FunctionTypeUtil {
       SNode meth = FunctionTypeUtil.getFunctionMethod(functionTypeOrClassifier);
       return ClassifierTypeUtil.resolveType(SLinkOperations.getTarget(meth, LINKS.returnType$5xoi), SNodeOperations.cast(functionTypeOrClassifier, CONCEPTS.ClassifierType$bL));
     } else {
-      throw new IllegalArgumentException("Invalid argument: " + functionTypeOrClassifier);
+      throw new IllegalArgumentException("Invalid argument: " + SNodeOperations.present(functionTypeOrClassifier));
     }
   }
   public static List<SNode> getParameterTypes(SNode functionTypeOrClassifier) {
@@ -63,7 +63,7 @@ public class FunctionTypeUtil {
       }
       return res;
     } else {
-      throw new IllegalArgumentException("Invalid argument: " + functionTypeOrClassifier);
+      throw new IllegalArgumentException("Invalid argument: " + SNodeOperations.present(functionTypeOrClassifier));
     }
   }
   public static List<SNode> normalizeThrowsTypes(List<SNode> ttypes) {

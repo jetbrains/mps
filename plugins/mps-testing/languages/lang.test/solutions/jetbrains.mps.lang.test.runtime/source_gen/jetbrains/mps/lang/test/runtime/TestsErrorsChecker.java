@@ -97,7 +97,7 @@ public final class TestsErrorsChecker {
     }
 
     if (LOG.isDebugEnabled()) {
-      LOG.debug("Collecting errors in the root " + myRoot);
+      LOG.debug("Collecting errors in the root " + SNodeOperations.present(myRoot));
     }
     final Set<NodeReportItem> result = SetSequence.fromSet(new HashSet<NodeReportItem>());
     Consumer<NodeReportItem> errorCollector = new Consumer<NodeReportItem>() {

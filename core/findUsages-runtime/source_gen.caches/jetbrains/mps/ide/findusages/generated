@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="30xjolld5l00pdj6it0ht9t5txp6sgb">
+<product version="3" modelHash="b8i2eqjuyt1508iql9etg4dgy5gs8ir">
   <files names="BaseFindUsagesDescriptor.java:CantLoadSomethingException.java:CantSaveSomethingException.java:FindersManager.java:IExternalizeable.java:MPSFindUsages.java" />
 </product>
 

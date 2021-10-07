@@ -180,7 +180,7 @@ public class thisExpression extends SubstituteMenuBase {
           @Nullable
           @Override
           public String getMatchingText(@NotNull String pattern) {
-            return myParameterObject + ".this";
+            return SNodeOperations.present(myParameterObject) + ".this";
           }
           @Nullable
           @Override

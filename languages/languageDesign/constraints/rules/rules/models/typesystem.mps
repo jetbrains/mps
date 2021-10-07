@@ -202,6 +202,7 @@
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
       <concept id="1171323947159" name="jetbrains.mps.lang.smodel.structure.Model_NodesOperation" flags="nn" index="2SmgA7">
         <child id="1758937410080001570" name="conceptArgument" index="1dBWTz" />
@@ -834,8 +835,11 @@
                                   <node concept="Xl_RD" id="2mL_UKGa_Gq" role="3uHU7B">
                                     <property role="Xl_RC" value="Remove cycle in the declared defs (" />
                                   </node>
-                                  <node concept="37vLTw" id="2mL_UKGaE3x" role="3uHU7w">
-                                    <ref role="3cqZAo" node="2mL_UKGaA3R" resolve="it" />
+                                  <node concept="2OqwBi" id="ivXwD0FndI" role="3uHU7w">
+                                    <node concept="37vLTw" id="2mL_UKGaE3x" role="2Oq$k0">
+                                      <ref role="3cqZAo" node="2mL_UKGaA3R" resolve="it" />
+                                    </node>
+                                    <node concept="2Iv5rx" id="ivXwD0FndJ" role="2OqNvi" />
                                   </node>
                                 </node>
                               </node>

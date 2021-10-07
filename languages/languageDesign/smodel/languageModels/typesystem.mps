@@ -387,6 +387,7 @@
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1883223317721008708" name="jetbrains.mps.lang.smodel.structure.IfInstanceOfStatement" flags="nn" index="Jncv_">
         <reference id="1883223317721008712" name="nodeConcept" index="JncvD" />
         <child id="1883223317721008709" name="body" index="Jncv$" />
@@ -1215,8 +1216,11 @@
                   <node concept="3clFbS" id="hgACQNv" role="9aQI4">
                     <node concept="2MkqsV" id="hgACQNw" role="3cqZAp">
                       <node concept="3cpWs3" id="hgACQNx" role="2MkJ7o">
-                        <node concept="37vLTw" id="3GM_nagTAn8" role="3uHU7w">
-                          <ref role="3cqZAo" node="hgACQMy" resolve="dataType" />
+                        <node concept="2OqwBi" id="ivXwD0Fs_I" role="3uHU7w">
+                          <node concept="37vLTw" id="3GM_nagTAn8" role="2Oq$k0">
+                            <ref role="3cqZAo" node="hgACQMy" resolve="dataType" />
+                          </node>
+                          <node concept="2Iv5rx" id="ivXwD0Fs_J" role="2OqNvi" />
                         </node>
                         <node concept="Xl_RD" id="hgACQNz" role="3uHU7B">
                           <property role="Xl_RC" value="unknown property datatype: " />
@@ -3719,8 +3723,11 @@
             <ref role="3cqZAo" node="hgB6VWD" resolve="isGood" />
           </node>
           <node concept="3cpWs3" id="h$Jl5f3" role="2MkJ7o">
-            <node concept="37vLTw" id="3GM_nagTuOq" role="3uHU7w">
-              <ref role="3cqZAo" node="hPRL3Qu" resolve="LeftType" />
+            <node concept="2OqwBi" id="ivXwD0Fs_T" role="3uHU7w">
+              <node concept="37vLTw" id="3GM_nagTuOq" role="2Oq$k0">
+                <ref role="3cqZAo" node="hPRL3Qu" resolve="LeftType" />
+              </node>
+              <node concept="2Iv5rx" id="ivXwD0Fs_U" role="2OqNvi" />
             </node>
             <node concept="Xl_RD" id="h$JkCog" role="3uHU7B">
               <property role="Xl_RC" value="operation is not applicable to " />

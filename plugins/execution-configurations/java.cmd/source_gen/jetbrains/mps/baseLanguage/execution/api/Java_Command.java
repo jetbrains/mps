@@ -195,7 +195,7 @@ public class Java_Command {
     }
     if (!(SPropertyOperations.getBoolean(module, PROPS.compileInMPS$2Q_X))) {
       if (LOG.isEnabledFor(Level.ERROR)) {
-        LOG.error("The hosting module's " + module + " classes are not managed by MPS");
+        LOG.error("The hosting module's " + SNodeOperations.present(module) + " classes are not managed by MPS");
       }
     }
     DebugInfo debugInfo = new TraceInfo().getDebugInfo(model);
@@ -208,7 +208,7 @@ public class Java_Command {
       List<UnitPositionInfo> unitsForNode = debugInfo.getUnitsForNode(node);
       if (unitsForNode.isEmpty()) {
         if (LOG.isEnabledFor(Level.ERROR)) {
-          LOG.error("No unitName found for " + node + " in trace.info. Check that model is generated.");
+          LOG.error("No unitName found for " + SNodeOperations.present(node) + " in trace.info. Check that model is generated.");
         }
         return null;
       } else if (unitsForNode.size() == 1) {

@@ -78,7 +78,7 @@ public class OverriddenMethods_Finder extends GeneratedFinder {
               SModel cncptModel = SNodeOperations.getModel(ancestorConcept);
               if (cncptModel == null) {
                 if (LOG.isEnabledFor(Level.ERROR)) {
-                  LOG.error("Could not found the ancestorConcept model while looking for the ancestors for the concept '" + ancestorConcept + "'");
+                  LOG.error("Could not found the ancestorConcept model while looking for the ancestors for the concept '" + SNodeOperations.present(ancestorConcept) + "'");
                 }
                 return;
 
@@ -86,7 +86,7 @@ public class OverriddenMethods_Finder extends GeneratedFinder {
               SModel aspectModel = SModuleOperations.getAspect(cncptModel.getModule(), "behavior");
               if (aspectModel == null) {
                 if (LOG.isEnabledFor(Level.ERROR)) {
-                  LOG.error("Could not found the aspect behavior model while looking for the ancestors for the concept '" + ancestorConcept + "'");
+                  LOG.error("Could not found the aspect behavior model while looking for the ancestors for the concept '" + SNodeOperations.present(ancestorConcept) + "'");
                 }
                 return;
               }

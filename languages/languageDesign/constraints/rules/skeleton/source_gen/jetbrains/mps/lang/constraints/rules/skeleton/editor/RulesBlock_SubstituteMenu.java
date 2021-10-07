@@ -18,6 +18,7 @@ import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuIt
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -79,7 +80,7 @@ public class RulesBlock_SubstituteMenu extends SubstituteMenuBase {
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
-        return "Create rules block for the kind '" + referencedNode + "'";
+        return "Create rules block for the kind '" + SNodeOperations.present(referencedNode) + "'";
       }
       @Override
       public String getDescriptionText(String pattern) {

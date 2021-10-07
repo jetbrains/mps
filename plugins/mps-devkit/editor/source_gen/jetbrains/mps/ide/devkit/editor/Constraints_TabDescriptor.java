@@ -74,7 +74,7 @@ public class Constraints_TabDescriptor extends RelationDescriptor {
   }
   public SNode createAspect(final SNode node, final SConcept concept) {
     Language language = SModelUtil.getDeclaringLanguage(node);
-    assert language != null : "Language cannot be null for " + node;
+    assert language != null : "Language cannot be null for " + SNodeOperations.present(node);
     LanguageAspect aspect = LanguageAspect.CONSTRAINTS;
     SModel md = aspect.get(language);
     if (md == null) {

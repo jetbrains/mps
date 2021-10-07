@@ -9,7 +9,7 @@
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
     <use id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core" version="2" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
   </languages>
   <imports>
@@ -297,6 +297,7 @@
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -560,8 +561,11 @@
         </node>
         <node concept="1gVbGN" id="fA2nR_EA9p" role="3cqZAp">
           <node concept="3cpWs3" id="fA2nR_KeOe" role="1gVpfI">
-            <node concept="37vLTw" id="fA2nR_Kn7$" role="3uHU7w">
-              <ref role="3cqZAo" node="29vbt0Ia0ks" resolve="node" />
+            <node concept="2OqwBi" id="ivXwD0FDGs" role="3uHU7w">
+              <node concept="37vLTw" id="fA2nR_Kn7$" role="2Oq$k0">
+                <ref role="3cqZAo" node="29vbt0Ia0ks" resolve="node" />
+              </node>
+              <node concept="2Iv5rx" id="ivXwD0FDGt" role="2OqNvi" />
             </node>
             <node concept="Xl_RD" id="fA2nR_H7lL" role="3uHU7B">
               <property role="Xl_RC" value="This can't happen. " />
@@ -11503,8 +11507,11 @@
             <node concept="liA8E" id="29vbt0Ia1iH" role="2OqNvi">
               <ref role="37wK5l" to="wwqx:~Logger.warning(java.lang.String)" resolve="warning" />
               <node concept="3cpWs3" id="29vbt0Ia1iI" role="37wK5m">
-                <node concept="37vLTw" id="2BHiRxgm5Xt" role="3uHU7w">
-                  <ref role="3cqZAo" node="29vbt0Ia1iO" resolve="type" />
+                <node concept="2OqwBi" id="ivXwD0FDGA" role="3uHU7w">
+                  <node concept="37vLTw" id="2BHiRxgm5Xt" role="2Oq$k0">
+                    <ref role="3cqZAo" node="29vbt0Ia1iO" resolve="type" />
+                  </node>
+                  <node concept="2Iv5rx" id="ivXwD0FDGB" role="2OqNvi" />
                 </node>
                 <node concept="Xl_RD" id="29vbt0Ia1iK" role="3uHU7B">
                   <property role="Xl_RC" value="Could not deduce type" />

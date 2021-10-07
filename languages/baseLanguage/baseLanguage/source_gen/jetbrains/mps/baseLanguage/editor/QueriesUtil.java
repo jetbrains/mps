@@ -71,7 +71,7 @@ public class QueriesUtil {
       SLinkOperations.setTarget(newNode, LINKS.enumClass$PMF6, SNodeOperations.cast(classifier, CONCEPTS.EnumClass$Vk));
       return newNode;
     }
-    throw new RuntimeException("Bad parameter object " + parameterObject);
+    throw new RuntimeException("Bad parameter object " + SNodeOperations.present(parameterObject));
   }
   public static SNode fillStaticMethodCall(SNode newNode, SNode parameterObject, SNode classifier, SNode oldNode) {
     SLinkOperations.setTarget(newNode, LINKS.baseMethodDeclaration$pyYw, SNodeOperations.cast(parameterObject, CONCEPTS.StaticMethodDeclaration$FJ));

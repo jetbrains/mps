@@ -8,7 +8,7 @@
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
@@ -246,6 +246,7 @@
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1212008292747" name="jetbrains.mps.lang.smodel.structure.Model_GetLongNameOperation" flags="nn" index="LkI2h" />
       <concept id="1145567426890" name="jetbrains.mps.lang.smodel.structure.SNodeListCreator" flags="nn" index="2T8Vx0">
         <child id="1145567471833" name="createdType" index="2T96Bj" />
@@ -2132,8 +2133,11 @@
         </node>
         <node concept="3clFbF" id="5nILdfQiXbU" role="3cqZAp">
           <node concept="3cpWs3" id="5nILdfQiXcg" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxglG94" role="3uHU7w">
-              <ref role="3cqZAo" node="5nILdfQiR74" resolve="classifierMember" />
+            <node concept="2OqwBi" id="ivXwD0FCLu" role="3uHU7w">
+              <node concept="37vLTw" id="2BHiRxglG94" role="2Oq$k0">
+                <ref role="3cqZAo" node="5nILdfQiR74" resolve="classifierMember" />
+              </node>
+              <node concept="2Iv5rx" id="ivXwD0FCLv" role="2OqNvi" />
             </node>
             <node concept="Xl_RD" id="5nILdfQiXbV" role="3uHU7B">
               <property role="Xl_RC" value="No signature for " />
@@ -2193,8 +2197,11 @@
                     </node>
                     <node concept="TSZUe" id="5nILdfQiRa7" role="2OqNvi">
                       <node concept="3cpWs3" id="5nILdfQiRau" role="25WWJ7">
-                        <node concept="37vLTw" id="3GM_nagT_K$" role="3uHU7w">
-                          <ref role="3cqZAo" node="5nILdfQiP1s" resolve="member" />
+                        <node concept="2OqwBi" id="ivXwD0FCLC" role="3uHU7w">
+                          <node concept="37vLTw" id="3GM_nagT_K$" role="2Oq$k0">
+                            <ref role="3cqZAo" node="5nILdfQiP1s" resolve="member" />
+                          </node>
+                          <node concept="2Iv5rx" id="ivXwD0FCLD" role="2OqNvi" />
                         </node>
                         <node concept="Xl_RD" id="5nILdfQiRa9" role="3uHU7B">
                           <property role="Xl_RC" value="Not ClassifierMember member: " />

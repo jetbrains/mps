@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="-1" />
     <devkit ref="fbc25dd2-5da4-483a-8b19-70928e1b62d7(jetbrains.mps.devkit.general-purpose)" />
@@ -1111,7 +1111,7 @@
             </node>
             <node concept="2OqwBi" id="5CK42mQosJO" role="33vP2m">
               <node concept="37vLTw" id="3WF3aHSnQgA" role="2Oq$k0">
-                <ref role="3cqZAo" node="3WF3aHSnQgv" resolve="createActionToolbar" />
+                <ref role="3cqZAo" node="3WF3aHSnQgv" resolve="toolbar" />
               </node>
               <node concept="liA8E" id="5CK42mQosJV" role="2OqNvi">
                 <ref role="37wK5l" to="qkt:~ActionToolbar.getComponent()" resolve="getComponent" />

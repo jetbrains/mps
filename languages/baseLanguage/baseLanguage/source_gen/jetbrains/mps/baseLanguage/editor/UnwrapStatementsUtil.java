@@ -43,7 +43,7 @@ public class UnwrapStatementsUtil {
 
   public static void unwrapIContainsStatementList(SNode oldContainer) {
     if (!(SNodeOperations.isInstanceOf(oldContainer, CONCEPTS.Statement$P6))) {
-      throw new IllegalArgumentException("The supplied statement container " + oldContainer + " is not a Statement.");
+      throw new IllegalArgumentException("The supplied statement container " + SNodeOperations.present(oldContainer) + " is not a Statement.");
     }
     unwrapStatementListInContainer(SNodeOperations.cast(oldContainer, CONCEPTS.Statement$P6), IContainsStatementList__BehaviorDescriptor.getStatementList_idi0zv5tb.invoke(oldContainer));
   }

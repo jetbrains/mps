@@ -148,6 +148,7 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1180636770613" name="jetbrains.mps.lang.smodel.structure.SNodeCreator" flags="nn" index="3zrR0B">
         <child id="1180636770616" name="createdType" index="3zrR0E" />
       </concept>
@@ -377,7 +378,10 @@
                 <node concept="Xl_RD" id="6WJr2Nnc$Tx" role="3uHU7B">
                   <property role="Xl_RC" value="Create rules block for the kind '" />
                 </node>
-                <node concept="1WAUZh" id="6WJr2Nnf43e" role="3uHU7w" />
+                <node concept="2OqwBi" id="ivXwD0Fngu" role="3uHU7w">
+                  <node concept="1WAUZh" id="6WJr2Nnf43e" role="2Oq$k0" />
+                  <node concept="2Iv5rx" id="ivXwD0Fngv" role="2OqNvi" />
+                </node>
               </node>
               <node concept="Xl_RD" id="6WJr2NnfdpB" role="3uHU7w">
                 <property role="Xl_RC" value="'" />

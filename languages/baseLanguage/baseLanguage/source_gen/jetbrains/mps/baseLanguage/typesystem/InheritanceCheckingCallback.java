@@ -159,7 +159,7 @@ public class InheritanceCheckingCallback implements ClassifierTraversalCallback 
       public void report(final TypeCheckingContext typeCheckingContext) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myNodeToReport, "Cyclic inheritance involving '" + myClassifier + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7861981782408091596", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(myNodeToReport, "Cyclic inheritance involving '" + SNodeOperations.present(myClassifier) + "'", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "7861981782408091596", null, errorTarget);
         }
       }
     };

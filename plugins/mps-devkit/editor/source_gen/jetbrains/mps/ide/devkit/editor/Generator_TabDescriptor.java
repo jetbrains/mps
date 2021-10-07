@@ -117,7 +117,7 @@ public class Generator_TabDescriptor extends RelationDescriptor {
     mpsProject.getRepository().getModelAccess().runReadAction(new Runnable() {
       public void run() {
         language.value = SModelUtil.getDeclaringLanguage(node);
-        assert language.value != null : "Language shouldn't be null for " + node;
+        assert language.value != null : "Language shouldn't be null for " + SNodeOperations.present(node);
         genList.value = ListSequence.fromListWithValues(new ArrayList<Generator>(), language.value.getGenerators());
       }
     });

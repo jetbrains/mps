@@ -48,7 +48,7 @@ public class ContextClassifiersInRoot {
     }
     if (SNodeOperations.isInstanceOf(contextNode, CONCEPTS.Classifier$Ix)) {
       if (LOG.isEnabledFor(Level.WARN)) {
-        LOG.warn("contextNode is classifier in getContextClassifiers: " + contextNode);
+        LOG.warn("contextNode is classifier in getContextClassifiers: " + SNodeOperations.present(contextNode));
       }
       return Collections.emptyMap();
     }
@@ -83,7 +83,7 @@ public class ContextClassifiersInRoot {
           processNestedClassifiers = !((LINKS.superclass$Mp9$.equals(sourceChildRole) || LINKS.implementedInterface$rujG.equals(sourceChildRole)));
         } else {
           if (LOG.isEnabledFor(Level.WARN)) {
-            LOG.warn("Illegal classifier node in bl textgen: " + current);
+            LOG.warn("Illegal classifier node in bl textgen: " + SNodeOperations.present(current));
           }
         }
 

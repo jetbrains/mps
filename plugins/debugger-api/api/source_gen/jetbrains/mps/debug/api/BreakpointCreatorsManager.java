@@ -60,7 +60,7 @@ public class BreakpointCreatorsManager implements ApplicationComponent {
         _FunctionTypes._return_P2_E0<? extends ILocationBreakpoint, ? super SNode, ? super Project> function = creator._1();
         if (function == null) {
           if (LOG.isEnabledFor(Level.WARN)) {
-            LOG.warn("Could not create breakpoint for node " + node);
+            LOG.warn("Could not create breakpoint for node " + SNodeOperations.present(node));
           }
           return null;
         }

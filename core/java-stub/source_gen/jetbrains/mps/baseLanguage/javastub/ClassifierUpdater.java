@@ -173,7 +173,7 @@ public class ClassifierUpdater {
           } else {
             // TODO: avoid this quick fix for SchemeProcessor class in scheme.kt from IDEA platform
             if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("ClassifierType was expected, but received: " + typeByASMType + " when parsing the " + myClassifier);
+              LOG.warn("ClassifierType was expected, but received: " + SNodeOperations.present(typeByASMType) + " when parsing the " + myClassifier);
             }
           }
 
@@ -202,7 +202,7 @@ public class ClassifierUpdater {
           } else {
             // TODO: avoid this quick fix for SchemeProcessor class in scheme.kt from IDEA platform
             if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("ClassifierType was expected, but received: " + typeByASMType);
+              LOG.warn("ClassifierType was expected, but received: " + SNodeOperations.present(typeByASMType));
             }
           }
         }

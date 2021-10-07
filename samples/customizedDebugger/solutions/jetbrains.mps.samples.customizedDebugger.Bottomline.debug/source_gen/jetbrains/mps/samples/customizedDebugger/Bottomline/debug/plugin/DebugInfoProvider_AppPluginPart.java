@@ -62,7 +62,7 @@ public class DebugInfoProvider_AppPluginPart extends ApplicationPluginPart {
             return Debuggers.getInstance().getDebuggerByNameSafe("Java").createBreakpoint(debuggableNode, "JAVA_LINE_BREAKPOINT", project);
           } catch (DebuggerNotPresentException e) {
             if (LOG.isEnabledFor(Level.WARN)) {
-              LOG.warn("Exception while creating breakpoint for node" + debuggableNode, e);
+              LOG.warn("Exception while creating breakpoint for node" + SNodeOperations.present(debuggableNode), e);
             }
             return null;
           }

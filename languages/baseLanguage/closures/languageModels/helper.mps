@@ -7,7 +7,7 @@
     <use id="d7706f63-9be2-479c-a3da-ae92af1e64d5" name="jetbrains.mps.lang.generator.generationContext" version="2" />
     <use id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation" version="5" />
     <use id="7a5dda62-9140-4668-ab76-d5ed1746f2b2" name="jetbrains.mps.lang.typesystem" version="5" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
   </languages>
@@ -345,6 +345,7 @@
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -5087,8 +5088,11 @@
                   <node concept="1pGfFk" id="zDeyex_sn8" role="2ShVmc">
                     <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.String)" resolve="IllegalArgumentException" />
                     <node concept="3cpWs3" id="zDeyex_sna" role="37wK5m">
-                      <node concept="37vLTw" id="2BHiRxghf2y" role="3uHU7w">
-                        <ref role="3cqZAo" node="zDeyex_nSQ" resolve="functionTypeOrClassifier" />
+                      <node concept="2OqwBi" id="ivXwD0Fk1i" role="3uHU7w">
+                        <node concept="37vLTw" id="2BHiRxghf2y" role="2Oq$k0">
+                          <ref role="3cqZAo" node="zDeyex_nSQ" resolve="functionTypeOrClassifier" />
+                        </node>
+                        <node concept="2Iv5rx" id="ivXwD0Fk1j" role="2OqNvi" />
                       </node>
                       <node concept="Xl_RD" id="zDeyex_sn9" role="3uHU7B">
                         <property role="Xl_RC" value="Invalid argument: " />
@@ -5252,8 +5256,11 @@
                   <node concept="1pGfFk" id="zDeyex_st2" role="2ShVmc">
                     <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.String)" resolve="IllegalArgumentException" />
                     <node concept="3cpWs3" id="zDeyex_st3" role="37wK5m">
-                      <node concept="37vLTw" id="2BHiRxgmPay" role="3uHU7w">
-                        <ref role="3cqZAo" node="zDeyex_st7" resolve="functionTypeOrClassifier" />
+                      <node concept="2OqwBi" id="ivXwD0Fk1s" role="3uHU7w">
+                        <node concept="37vLTw" id="2BHiRxgmPay" role="2Oq$k0">
+                          <ref role="3cqZAo" node="zDeyex_st7" resolve="functionTypeOrClassifier" />
+                        </node>
+                        <node concept="2Iv5rx" id="ivXwD0Fk1t" role="2OqNvi" />
                       </node>
                       <node concept="Xl_RD" id="zDeyex_st5" role="3uHU7B">
                         <property role="Xl_RC" value="Invalid argument: " />

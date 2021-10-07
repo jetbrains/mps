@@ -617,6 +617,7 @@
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -5532,8 +5533,11 @@
                       <node concept="Xl_RD" id="7fQBo8T6Pwx" role="3uHU7B">
                         <property role="Xl_RC" value="The line " />
                       </node>
-                      <node concept="37vLTw" id="13gAna09FVP" role="3uHU7w">
-                        <ref role="3cqZAo" node="13gAna08TIc" resolve="currentLine" />
+                      <node concept="2OqwBi" id="ivXwD0Fvra" role="3uHU7w">
+                        <node concept="37vLTw" id="13gAna09FVP" role="2Oq$k0">
+                          <ref role="3cqZAo" node="13gAna08TIc" resolve="currentLine" />
+                        </node>
+                        <node concept="2Iv5rx" id="ivXwD0Fvrb" role="2OqNvi" />
                       </node>
                     </node>
                   </node>

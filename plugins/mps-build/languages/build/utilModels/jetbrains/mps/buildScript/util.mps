@@ -410,6 +410,7 @@
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -11211,8 +11212,11 @@
                     </node>
                   </node>
                   <node concept="3cpWs3" id="5DY7s5F2PNp" role="3uHU7B">
-                    <node concept="37vLTw" id="3GM_nagTyEI" role="3uHU7B">
-                      <ref role="3cqZAo" node="5DY7s5F2PKu" resolve="macroProject" />
+                    <node concept="2OqwBi" id="ivXwD0FxSm" role="3uHU7B">
+                      <node concept="37vLTw" id="3GM_nagTyEI" role="2Oq$k0">
+                        <ref role="3cqZAo" node="5DY7s5F2PKu" resolve="macroProject" />
+                      </node>
+                      <node concept="2Iv5rx" id="ivXwD0FxSn" role="2OqNvi" />
                     </node>
                     <node concept="Xl_RD" id="5DY7s5F2PNs" role="3uHU7w">
                       <property role="Xl_RC" value="." />

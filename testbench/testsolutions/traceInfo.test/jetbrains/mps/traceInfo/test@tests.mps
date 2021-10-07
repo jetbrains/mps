@@ -6,7 +6,7 @@
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="f61473f9-130f-42f6-b98d-6c438812c2f6" name="jetbrains.mps.baseLanguage.unitTest" version="1" />
     <use id="140c4818-bfbc-4850-bf7c-e3d80739a03c" name="jetbrains.mps.traceInfo.tracemacro.testlang" version="0" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
   </languages>
   <imports>
@@ -263,6 +263,7 @@
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -1461,8 +1462,11 @@
                               <node concept="Xl_RD" id="788HmqygKjF" role="3uHU7B">
                                 <property role="Xl_RC" value="Node " />
                               </node>
-                              <node concept="37vLTw" id="3GM_nagTuaA" role="3uHU7w">
-                                <ref role="3cqZAo" node="6k4GBOyma4W" resolve="node" />
+                              <node concept="2OqwBi" id="ivXwD0FVIF" role="3uHU7w">
+                                <node concept="37vLTw" id="3GM_nagTuaA" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="6k4GBOyma4W" resolve="node" />
+                                </node>
+                                <node concept="2Iv5rx" id="ivXwD0FVIG" role="2OqNvi" />
                               </node>
                             </node>
                           </node>
@@ -1656,8 +1660,11 @@
                               <node concept="Xl_RD" id="788HmqygKuF" role="3uHU7B">
                                 <property role="Xl_RC" value="Node " />
                               </node>
-                              <node concept="37vLTw" id="6k4GBOym9zP" role="3uHU7w">
-                                <ref role="3cqZAo" node="6k4GBOym6wM" resolve="node" />
+                              <node concept="2OqwBi" id="ivXwD0FVJ7" role="3uHU7w">
+                                <node concept="37vLTw" id="6k4GBOym9zP" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="6k4GBOym6wM" resolve="node" />
+                                </node>
+                                <node concept="2Iv5rx" id="ivXwD0FVJ8" role="2OqNvi" />
                               </node>
                             </node>
                           </node>

@@ -79,7 +79,7 @@ public class Feedback_TabDescriptor extends RelationDescriptor {
   }
   public SNode createAspect(final SNode node, final SConcept concept) {
     Language lang = SModelUtil.getDeclaringLanguage(node);
-    assert lang != null : "Language cannot be null for " + node;
+    assert lang != null : "Language cannot be null for " + SNodeOperations.present(node);
     LanguageAspectDescriptor feedbackAspect = LanguageAspectSupport.getAspectDescriptorById("feedback");
     if (feedbackAspect == null) {
       Messages.showErrorDialog("Feedback aspect is not found", "Aspect Not Deployed");

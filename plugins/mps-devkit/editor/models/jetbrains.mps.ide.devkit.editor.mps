@@ -4,7 +4,7 @@
   <languages>
     <use id="28f9e497-3b42-4291-aeba-0a1039153ab1" name="jetbrains.mps.lang.plugin" version="5" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="69b8a993-9b87-4d96-bf0c-3559f4bb0c63" name="jetbrains.mps.lang.slanguage" version="0" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
     <use id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions" version="4" />
@@ -322,6 +322,7 @@
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -2165,7 +2166,10 @@
               <node concept="Xl_RD" id="osMNWieEmQ" role="3uHU7B">
                 <property role="Xl_RC" value="Language cannot be null for " />
               </node>
-              <node concept="1beSmn" id="osMNWieGlM" role="3uHU7w" />
+              <node concept="2OqwBi" id="ivXwD0FG1a" role="3uHU7w">
+                <node concept="1beSmn" id="osMNWieGlM" role="2Oq$k0" />
+                <node concept="2Iv5rx" id="ivXwD0FG1b" role="2OqNvi" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs8" id="osMNWieKYo" role="3cqZAp">
@@ -2894,7 +2898,10 @@
               <node concept="Xl_RD" id="7q69Q_JmFbW" role="3uHU7B">
                 <property role="Xl_RC" value="Language cannot be null for " />
               </node>
-              <node concept="1beSmn" id="7q69Q_JmFbX" role="3uHU7w" />
+              <node concept="2OqwBi" id="ivXwD0FG1k" role="3uHU7w">
+                <node concept="1beSmn" id="7q69Q_JmFbX" role="2Oq$k0" />
+                <node concept="2Iv5rx" id="ivXwD0FG1l" role="2OqNvi" />
+              </node>
             </node>
           </node>
           <node concept="3cpWs8" id="3qkjbZlMgxK" role="3cqZAp">
@@ -3445,7 +3452,10 @@
                     </node>
                   </node>
                   <node concept="3cpWs3" id="2erTeUVF2hj" role="1gVpfI">
-                    <node concept="1beSmn" id="2erTeUVF2hk" role="3uHU7w" />
+                    <node concept="2OqwBi" id="ivXwD0FG1u" role="3uHU7w">
+                      <node concept="1beSmn" id="2erTeUVF2hk" role="2Oq$k0" />
+                      <node concept="2Iv5rx" id="ivXwD0FG1v" role="2OqNvi" />
+                    </node>
                     <node concept="Xl_RD" id="2erTeUVF2hl" role="3uHU7B">
                       <property role="Xl_RC" value="Language shouldn't be null for " />
                     </node>

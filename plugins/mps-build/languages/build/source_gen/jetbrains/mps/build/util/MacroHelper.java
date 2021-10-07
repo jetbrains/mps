@@ -76,7 +76,7 @@ public final class MacroHelper {
       context.reportProblem("macro is defined outside of the project", macro);
       return;
     }
-    String name = makeUnique((macroProject == project ? SPropertyOperations.getString(macro, PROPS.name$MnvL) : macroProject + "." + SPropertyOperations.getString(macro, PROPS.name$MnvL)), usedNames);
+    String name = makeUnique((macroProject == project ? SPropertyOperations.getString(macro, PROPS.name$MnvL) : SNodeOperations.present(macroProject) + "." + SPropertyOperations.getString(macro, PROPS.name$MnvL)), usedNames);
     macroToName.put(macro, name);
     availableMacros.add(macro);
     if (importName != null) {

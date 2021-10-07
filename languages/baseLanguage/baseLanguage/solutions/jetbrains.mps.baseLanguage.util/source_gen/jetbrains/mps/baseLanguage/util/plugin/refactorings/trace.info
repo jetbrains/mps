@@ -5983,7 +5983,7 @@
       <node id="8492459591399174806" at="326,5,327,16" concept="11" />
       <node id="8492459591399174815" at="329,31,330,43" concept="10" />
       <node id="8492459591399174820" at="330,43,331,145" concept="10" />
-      <node id="8492459591399174830" at="331,145,332,102" concept="10" />
+      <node id="8492459591399174830" at="331,145,332,127" concept="10" />
       <node id="8492459591399174848" at="333,58,334,113" concept="10" />
       <node id="8492459591399174858" at="335,169,336,26" concept="10" />
       <node id="8492459591399174864" at="337,84,338,28" concept="4" />
@@ -6114,7 +6114,7 @@
       <node id="8492459591399174357" at="203,105,217,5" concept="6" />
       <node id="8492459591399174944" at="51,0,66,0" concept="2" trace="InlineMethodRefactoring#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8492459591399174012" at="109,0,124,0" concept="9" trace="replaceReturnSatements#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="8492459591399174844" at="332,102,347,5" concept="7" />
+      <node id="8492459591399174844" at="332,127,347,5" concept="7" />
       <node id="6402048321838615398" at="168,75,185,5" concept="7" />
       <node id="8492459591399174435" at="231,0,249,0" concept="9" trace="canSubstituteParameter#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6402048321838615394" at="168,0,187,0" concept="9" trace="replaceLocalInstanceCalls#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
@@ -6359,7 +6359,7 @@
         <var name="callStatement" id="8492459591399174079" />
         <var name="returnVar" id="8492459591399174077" />
       </scope>
-      <scope id="8492459591399174844" at="332,102,347,5">
+      <scope id="8492459591399174844" at="332,127,347,5">
         <var name="node" id="8492459591399174845" />
       </scope>
       <scope id="8492459591399174437" at="231,79,247,17" />
@@ -6473,7 +6473,7 @@
       <node id="8459194913967327411" at="43,29,44,43" concept="4" />
       <node id="8459194913967299752" at="44,43,45,21" concept="4" />
       <node id="8492459591399175128" at="45,21,46,56" concept="10" />
-      <node id="8492459591399175256" at="47,76,48,70" concept="11" />
+      <node id="8492459591399175256" at="47,76,48,95" concept="11" />
       <node id="8492459591399175244" at="50,42,51,38" concept="11" />
       <node id="8492459591399175159" at="52,12,53,85" concept="4" />
       <node id="8492459591399175166" at="53,85,54,82" concept="10" />
@@ -6489,7 +6489,7 @@
       <node id="2265445107632730907" at="80,5,81,36" concept="4" />
       <node id="2265445107632730913" at="81,36,82,42" concept="4" />
       <node id="2265445107632730922" at="82,42,83,309" concept="10" />
-      <node id="2265445107632730931" at="84,76,85,70" concept="11" />
+      <node id="2265445107632730931" at="84,76,85,95" concept="11" />
       <node id="2265445107632730946" at="87,42,88,38" concept="11" />
       <node id="2265445107632730950" at="89,12,90,85" concept="4" />
       <node id="2505393827685132222" at="90,85,91,311" concept="10" />
@@ -6601,7 +6601,7 @@
       <node id="2265445107632730901" at="77,0,107,0" concept="9" trace="initForVariable#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljavax/swing/JComponent;)Ljava/lang/String;" />
       <node id="8492459591399175122" at="42,0,77,0" concept="9" trace="init#(Lorg/jetbrains/mps/openapi/model/SNode;Ljavax/swing/JComponent;)Ljava/lang/String;" />
       <scope id="1279276159889585473" at="40,41,40,41" />
-      <scope id="8492459591399175255" at="47,76,48,70" />
+      <scope id="8492459591399175255" at="47,76,48,95" />
       <scope id="8492459591399175243" at="50,42,51,38" />
       <scope id="5282963724124968568" at="56,71,57,208" />
       <scope id="8492459591399175180" at="59,41,60,101" />
@@ -6609,7 +6609,7 @@
       <scope id="8492459591399175218" at="67,42,68,45" />
       <scope id="8492459591399175233" at="71,66,72,67" />
       <scope id="2265445107632787708" at="78,89,79,48" />
-      <scope id="2265445107632730930" at="84,76,85,70" />
+      <scope id="2265445107632730930" at="84,76,85,95" />
       <scope id="2265445107632730945" at="87,42,88,38" />
       <scope id="2265445107632730987" at="93,72,94,261" />
       <scope id="2265445107632731023" at="97,42,98,45" />

@@ -33,7 +33,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
       lineContainer = SNodeOperations.getParent(lineContainer);
     }
     if (lineContainer == null) {
-      throw new IllegalStateException("The line " + currentLine + " cannot be split. It is not a member of any node collection.");
+      throw new IllegalStateException("The line " + SNodeOperations.present(currentLine) + " cannot be split. It is not a member of any node collection.");
     }
     return lineContainer;
   }

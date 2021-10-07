@@ -131,7 +131,7 @@ public class TraceInfoTest implements EnvironmentAware {
           Assert.assertFalse(variableNodesForPosition.isEmpty());
           SNode node = variableNodesForPosition.get(0).resolve(myProject.getRepository());
           Assert.assertNotNull(node);
-          Assert.assertTrue("Node " + node + " for variable it.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$mK));
+          Assert.assertTrue("Node " + SNodeOperations.present(node) + " for variable it.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$mK));
         }
       }
     });
@@ -149,7 +149,7 @@ public class TraceInfoTest implements EnvironmentAware {
           Assert.assertFalse(variableNodesForPosition.isEmpty());
           SNode node = variableNodesForPosition.get(0).resolve(myProject.getRepository());
           Assert.assertNotNull(node);
-          Assert.assertTrue("Node " + node + " for variable it_gen.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$mK));
+          Assert.assertTrue("Node " + SNodeOperations.present(node) + " for variable it_gen.", SNodeOperations.isInstanceOf(node, CONCEPTS.ForEachVariable$mK));
         }
       }
     });

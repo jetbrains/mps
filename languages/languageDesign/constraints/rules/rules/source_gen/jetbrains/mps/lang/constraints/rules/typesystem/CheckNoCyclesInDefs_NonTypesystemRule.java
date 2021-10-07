@@ -63,7 +63,7 @@ public class CheckNoCyclesInDefs_NonTypesystemRule extends AbstractNonTypesystem
             if (SetSequence.fromSet(visiting).contains(depDef)) {
               {
                 final MessageTarget errorTarget = new NodeMessageTarget();
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(def, "Remove cycle in the declared defs (" + it + " is involved)", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "2716118816012262155", null, errorTarget);
+                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(def, "Remove cycle in the declared defs (" + SNodeOperations.present(it) + " is involved)", "r:61c80a02-cc27-4085-b38d-beaf0fede70a(jetbrains.mps.lang.constraints.rules.typesystem)", "2716118816012262155", null, errorTarget);
               }
               return;
             }

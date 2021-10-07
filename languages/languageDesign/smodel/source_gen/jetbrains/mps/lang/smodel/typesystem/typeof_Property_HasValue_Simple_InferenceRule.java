@@ -62,7 +62,7 @@ public class typeof_Property_HasValue_Simple_InferenceRule extends AbstractInfer
       } else {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "unknown property datatype: " + dataType, "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1186059218144", null, errorTarget);
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(op, "unknown property datatype: " + SNodeOperations.present(dataType), "r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)", "1186059218144", null, errorTarget);
         }
       }
     }

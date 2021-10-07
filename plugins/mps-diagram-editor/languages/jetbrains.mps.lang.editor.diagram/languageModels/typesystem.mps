@@ -180,6 +180,7 @@
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS" />
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1171305280644" name="jetbrains.mps.lang.smodel.structure.Node_GetDescendantsOperation" flags="nn" index="2Rf3mk" />
       <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
       <concept id="1180031783296" name="jetbrains.mps.lang.smodel.structure.Concept_IsSubConceptOfOperation" flags="nn" index="2Zo12i">
@@ -606,13 +607,16 @@
                       <node concept="Xl_RD" id="18ftwC4dWoR" role="3uHU7B">
                         <property role="Xl_RC" value="Only sub-concept of containment link target concept (" />
                       </node>
-                      <node concept="2OqwBi" id="18ftwC4dX1N" role="3uHU7w">
-                        <node concept="37vLTw" id="18ftwC4dWRK" role="2Oq$k0">
-                          <ref role="3cqZAo" node="18ftwC4dRYu" resolve="containmentLink" />
+                      <node concept="2OqwBi" id="ivXwD0Fzpu" role="3uHU7w">
+                        <node concept="2OqwBi" id="18ftwC4dX1N" role="2Oq$k0">
+                          <node concept="37vLTw" id="18ftwC4dWRK" role="2Oq$k0">
+                            <ref role="3cqZAo" node="18ftwC4dRYu" resolve="containmentLink" />
+                          </node>
+                          <node concept="3TrEf2" id="18ftwC4dXpz" role="2OqNvi">
+                            <ref role="3Tt5mk" to="tpce:fA0lvVK" resolve="target" />
+                          </node>
                         </node>
-                        <node concept="3TrEf2" id="18ftwC4dXpz" role="2OqNvi">
-                          <ref role="3Tt5mk" to="tpce:fA0lvVK" resolve="target" />
-                        </node>
+                        <node concept="2Iv5rx" id="ivXwD0Fzpv" role="2OqNvi" />
                       </node>
                     </node>
                   </node>

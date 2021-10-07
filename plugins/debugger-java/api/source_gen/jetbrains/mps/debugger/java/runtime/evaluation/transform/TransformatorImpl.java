@@ -47,7 +47,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     myModel = SNodeOperations.getModel(node);
     // I know the exact way to reproduce a bug:
     // write an assertion with a comment 'this can't happen'
-    assert myModel != null : "This can't happen. " + node;
+    assert myModel != null : "This can't happen. " + SNodeOperations.present(node);
     myWhatToEvaluate = node;
   }
   @Override

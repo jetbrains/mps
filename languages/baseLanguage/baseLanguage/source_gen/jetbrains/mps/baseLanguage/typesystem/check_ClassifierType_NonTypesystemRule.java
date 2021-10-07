@@ -68,7 +68,7 @@ public class check_ClassifierType_NonTypesystemRule extends AbstractNonTypesyste
             if (!((boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(SLinkOperations.getTarget(typeVar_var, LINKS.bound$aZCB), typeArgument_var, substitutions))) {
               {
                 final MessageTarget errorTarget = new NodeMessageTarget();
-                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeArgument_var, "The type " + typeArgument_var + " is not a valid substitute for the bounded parameter " + typeVar_var, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928248660343", null, errorTarget);
+                IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(typeArgument_var, "The type " + SNodeOperations.present(typeArgument_var) + " is not a valid substitute for the bounded parameter " + typeVar_var, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "6871159928248660343", null, errorTarget);
               }
             }
           }

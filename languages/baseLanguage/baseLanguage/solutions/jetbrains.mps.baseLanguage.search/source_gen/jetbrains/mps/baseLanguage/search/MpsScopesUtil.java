@@ -35,13 +35,13 @@ public class MpsScopesUtil {
       SNode method = SNodeOperations.cast(classifierMember, CONCEPTS.BaseMethodDeclaration$kD);
       return classifierPrefix + SPropertyOperations.getString(method, PROPS.name$MnvL) + "<" + ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$Lipp)).count() + ">" + "(" + ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() + ")";
     }
-    return "No signature for " + classifierMember;
+    return "No signature for " + SNodeOperations.present(classifierMember);
   }
   public static List<String> getMembersSignatures(SNode classifier) {
     List<String> result = ListSequence.fromList(new ArrayList<String>());
     for (SNode member : ((Iterable<SNode>) BHReflection.invoke0(((SNode) BHReflection.invoke0(classifier, CONCEPTS.IClassifier$MF, SMethodTrimmedId.create("getThisType", null, "6r77ob2UWbY"))), CONCEPTS.IClassifierType$B1, SMethodTrimmedId.create("getMembers", CONCEPTS.IClassifierType$B1, "6r77ob2V1Fr")))) {
       if (!(SNodeOperations.isInstanceOf(member, CONCEPTS.ClassifierMember$At))) {
-        ListSequence.fromList(result).addElement("Not ClassifierMember member: " + member);
+        ListSequence.fromList(result).addElement("Not ClassifierMember member: " + SNodeOperations.present(member));
       } else {
         ListSequence.fromList(result).addElement(((((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(member, CONCEPTS.ClassifierMember$At), CONCEPTS.ClassifierMember$At, SMethodTrimmedId.create("isStaticClassifierMember", null, "7MS72Gc8avw"))) ? "static " : "")) + getSignature(member, classifier));
       }

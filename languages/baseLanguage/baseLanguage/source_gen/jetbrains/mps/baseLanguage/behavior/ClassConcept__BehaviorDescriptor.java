@@ -228,7 +228,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
 
       if ((superClass == null)) {
         if (LOG.isEnabledFor(Level.WARN)) {
-          LOG.warn("Superclass classifier is null for not java.lang.Object classifier in " + __thisNode__);
+          LOG.warn("Superclass classifier is null for not java.lang.Object classifier in " + SNodeOperations.present(__thisNode__));
         }
         return new EmptyScope();
       }

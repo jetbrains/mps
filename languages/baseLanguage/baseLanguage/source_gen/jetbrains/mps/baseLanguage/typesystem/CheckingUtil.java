@@ -128,13 +128,13 @@ public class CheckingUtil {
       // the process of retrieving compile-time constants is flaky ATM
       // e.g. StaticFieldReference pointing to a stub model may fail
       if (LOG.isTraceEnabled()) {
-        LOG.trace("Using a default compile time constant for " + expr + ".");
+        LOG.trace("Using a default compile time constant for " + SNodeOperations.present(expr) + ".");
       }
       return false;
     } catch (UnsupportedOperationException e) {
       // Some expressions may not implement the compile-time constant retrieval method
       if (LOG.isEnabledFor(Level.WARN)) {
-        LOG.warn("Unable to obtain a compile time constant for " + expr + ". Resorting to default.");
+        LOG.warn("Unable to obtain a compile time constant for " + SNodeOperations.present(expr) + ". Resorting to default.");
       }
       return false;
     }

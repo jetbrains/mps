@@ -214,7 +214,7 @@ public class TransformationUtil {
     } else if ((type == null)) {
       return _quotation_createNode_crriw5_a0a3b0x();
     }
-    LOG.warning("Could not deduce type" + type);
+    LOG.warning("Could not deduce type" + SNodeOperations.present(type));
     return _quotation_createNode_crriw5_a3a32();
   }
   public static SNode getPrimitiveType() {

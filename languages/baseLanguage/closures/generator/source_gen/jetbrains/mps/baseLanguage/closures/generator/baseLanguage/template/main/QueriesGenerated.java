@@ -283,7 +283,7 @@ public class QueriesGenerated extends QueryProviderBase {
         return null;
       }
     }
-    return "" + Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(ct, LINKS.classifier$cxMr))).first();
+    return "" + SNodeOperations.present(Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(SLinkOperations.getTarget(ct, LINKS.classifier$cxMr))).first());
   }
   public static Object propertyMacro_GetValue_3_0(final PropertyMacroContext _context) {
     SNode literal = _context.getNode();

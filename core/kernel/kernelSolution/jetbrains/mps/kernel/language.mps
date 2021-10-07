@@ -3,7 +3,7 @@
   <persistence version="9" />
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
   </languages>
   <imports>
@@ -122,6 +122,7 @@
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="7453996997717780434" name="jetbrains.mps.lang.smodel.structure.Node_GetSConceptOperation" flags="nn" index="2yIwOk" />
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -303,8 +304,11 @@
         </node>
         <node concept="1gVbGN" id="2$SWsiCtx0k" role="3cqZAp">
           <node concept="3cpWs3" id="2$SWsiCtx0o" role="1gVpfI">
-            <node concept="37vLTw" id="2BHiRxgll3T" role="3uHU7w">
-              <ref role="3cqZAo" node="2$SWsiCtx0S" resolve="conceptNode" />
+            <node concept="2OqwBi" id="ivXwD0FBDA" role="3uHU7w">
+              <node concept="37vLTw" id="2BHiRxgll3T" role="2Oq$k0">
+                <ref role="3cqZAo" node="2$SWsiCtx0S" resolve="conceptNode" />
+              </node>
+              <node concept="2Iv5rx" id="ivXwD0FBDB" role="2OqNvi" />
             </node>
             <node concept="Xl_RD" id="2$SWsiCtx0q" role="3uHU7B">
               <property role="Xl_RC" value="Language shouldn't be null for " />

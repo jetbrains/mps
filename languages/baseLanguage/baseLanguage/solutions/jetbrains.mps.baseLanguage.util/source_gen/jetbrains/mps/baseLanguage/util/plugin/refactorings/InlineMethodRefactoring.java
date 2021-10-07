@@ -329,7 +329,7 @@ public class InlineMethodRefactoring {
   public String getProblems() {
     StringBuffer buff = new StringBuffer();
     Set<SNode> nodesToCheck = ClassRefactoringUtils.getClassMemberRefernce(SLinkOperations.getTarget(this.myMethodDeclaration, LINKS.body$5xQk));
-    String end = SNodeOperations.getParent(this.myMethodDeclaration) + "." + this.myMethodDeclaration;
+    String end = SNodeOperations.present(SNodeOperations.getParent(this.myMethodDeclaration)) + "." + this.myMethodDeclaration;
     for (SNode node : SetSequence.fromSet(nodesToCheck)) {
       SNode iMemberContainer = SNodeOperations.getNodeAncestor(node, CONCEPTS.IMemberContainer$yM, false, false);
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.IVisible$zu) && !(VisibilityUtil.isVisible(this.myMethodCall, SNodeOperations.cast(node, CONCEPTS.IVisible$zu)))) {

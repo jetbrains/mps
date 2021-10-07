@@ -6,7 +6,7 @@
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="-1" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="-1" />
     <use id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples" version="-1" />
-    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="18" />
+    <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="b83431fe-5c8f-40bc-8a36-65e25f4dd253" name="jetbrains.mps.lang.textGen" version="1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <devkit ref="fa73d85a-ac7f-447b-846c-fcdc41caa600(jetbrains.mps.devkit.aspect.textgen)" />
@@ -394,6 +394,7 @@
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS">
         <reference id="1145383142433" name="elementConcept" index="2I9WkF" />
       </concept>
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -12024,8 +12025,11 @@
             <node concept="RRSsy" id="3jYQuSB35nh" role="3cqZAp">
               <property role="RRSoG" value="gZ5fksE/warn" />
               <node concept="3cpWs3" id="3XLHuwza2Cz" role="RRSoy">
-                <node concept="37vLTw" id="2BHiRxglFug" role="3uHU7w">
-                  <ref role="3cqZAo" node="3XLHuwza2Dv" resolve="contextNode" />
+                <node concept="2OqwBi" id="ivXwD0FhsT" role="3uHU7w">
+                  <node concept="37vLTw" id="2BHiRxglFug" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3XLHuwza2Dv" resolve="contextNode" />
+                  </node>
+                  <node concept="2Iv5rx" id="ivXwD0FhsU" role="2OqNvi" />
                 </node>
                 <node concept="Xl_RD" id="3XLHuwza2C_" role="3uHU7B">
                   <property role="Xl_RC" value="contextNode is classifier in getContextClassifiers: " />
@@ -12391,8 +12395,11 @@
                           <node concept="Xl_RD" id="6xvy0T1C_Rg" role="3uHU7B">
                             <property role="Xl_RC" value="Illegal classifier node in bl textgen: " />
                           </node>
-                          <node concept="37vLTw" id="3GM_nagTASU" role="3uHU7w">
-                            <ref role="3cqZAo" node="6xvy0T1C_Qa" resolve="current" />
+                          <node concept="2OqwBi" id="ivXwD0Fht4" role="3uHU7w">
+                            <node concept="37vLTw" id="3GM_nagTASU" role="2Oq$k0">
+                              <ref role="3cqZAo" node="6xvy0T1C_Qa" resolve="current" />
+                            </node>
+                            <node concept="2Iv5rx" id="ivXwD0Fht5" role="2OqNvi" />
                           </node>
                         </node>
                       </node>

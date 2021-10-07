@@ -1910,7 +1910,7 @@
             <node concept="3clFbS" id="4myorRWx0ZG" role="3eOfB_">
               <node concept="3cpWs6" id="4myorRWximP" role="3cqZAp">
                 <node concept="37vLTw" id="29TpidqaEaV" role="3cqZAk">
-                  <ref role="3cqZAo" node="29TpidqaEaR" resolve="findSelectedNode" />
+                  <ref role="3cqZAo" node="29TpidqaEaR" resolve="selectedNode" />
                 </node>
               </node>
             </node>

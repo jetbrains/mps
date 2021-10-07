@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -30,7 +31,7 @@ public final class SConceptTypeLiteral__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return "concept_lit<" + SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaraton$PVw0) + ">";
+    return "concept_lit<" + SNodeOperations.present(SLinkOperations.getTarget(__thisNode__, LINKS.conceptDeclaraton$PVw0)) + ">";
   }
 
   /*package*/ SConceptTypeLiteral__BehaviorDescriptor() {

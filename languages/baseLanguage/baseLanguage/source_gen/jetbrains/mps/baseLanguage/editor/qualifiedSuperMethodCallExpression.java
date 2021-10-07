@@ -180,7 +180,7 @@ public class qualifiedSuperMethodCallExpression extends SubstituteMenuBase {
           @Nullable
           @Override
           public String getMatchingText(@NotNull String pattern) {
-            return myParameterObject + ".super";
+            return SNodeOperations.present(myParameterObject) + ".super";
           }
           @Nullable
           @Override

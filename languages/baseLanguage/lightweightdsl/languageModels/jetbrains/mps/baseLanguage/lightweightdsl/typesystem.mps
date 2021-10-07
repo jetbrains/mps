@@ -299,6 +299,7 @@
       </concept>
       <concept id="1143226024141" name="jetbrains.mps.lang.smodel.structure.SModelType" flags="in" index="H_c77" />
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -1231,8 +1232,11 @@
                             <node concept="Xl_RD" id="2gzehMflZJM" role="3uHU7B">
                               <property role="Xl_RC" value="Duplicated member '" />
                             </node>
-                            <node concept="2GrUjf" id="2gzehMflZVD" role="3uHU7w">
-                              <ref role="2Gs0qQ" node="2gzehMflVDi" resolve="memberDescriptor" />
+                            <node concept="2OqwBi" id="ivXwD0FlkF" role="3uHU7w">
+                              <node concept="2GrUjf" id="2gzehMflZVD" role="2Oq$k0">
+                                <ref role="2Gs0qQ" node="2gzehMflVDi" resolve="memberDescriptor" />
+                              </node>
+                              <node concept="2Iv5rx" id="ivXwD0FlkG" role="2OqNvi" />
                             </node>
                           </node>
                           <node concept="Xl_RD" id="5zDW7Nr$xG7" role="3uHU7w">
@@ -1345,8 +1349,11 @@
                     <node concept="Xl_RD" id="2gzehMflRTZ" role="3uHU7B">
                       <property role="Xl_RC" value="Member '" />
                     </node>
-                    <node concept="2GrUjf" id="2gzehMflSzd" role="3uHU7w">
-                      <ref role="2Gs0qQ" node="2gzehMflLww" resolve="memberDescriptor" />
+                    <node concept="2OqwBi" id="ivXwD0FllU" role="3uHU7w">
+                      <node concept="2GrUjf" id="2gzehMflSzd" role="2Oq$k0">
+                        <ref role="2Gs0qQ" node="2gzehMflLww" resolve="memberDescriptor" />
+                      </node>
+                      <node concept="2Iv5rx" id="ivXwD0FllV" role="2OqNvi" />
                     </node>
                   </node>
                 </node>

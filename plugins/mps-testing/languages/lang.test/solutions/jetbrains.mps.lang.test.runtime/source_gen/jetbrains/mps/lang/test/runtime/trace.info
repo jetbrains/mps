@@ -43,11 +43,11 @@
       <node id="1689495970805157868" at="60,9,61,0" concept="14" />
       <node id="5219682431664851912" at="62,87,63,72" concept="11" />
       <node id="5219682431664851923" at="63,72,64,130" concept="11" />
-      <node id="5219682431664851930" at="64,130,65,173" concept="6" />
+      <node id="5219682431664851930" at="64,130,65,198" concept="6" />
       <node id="1689495970805161735" at="66,9,67,0" concept="14" />
       <node id="5219682431664851949" at="68,81,69,65" concept="11" />
       <node id="5219682431664851960" at="69,65,70,130" concept="11" />
-      <node id="5219682431664851967" at="70,130,71,167" concept="6" />
+      <node id="5219682431664851967" at="70,130,71,192" concept="6" />
       <node id="1215078243118" at="78,0,79,0" concept="15" trace="NodeOperationsContainer$aj" />
       <node id="1215078243118" at="79,0,80,0" concept="15" trace="NodeReachable$iI" />
       <node id="1215078243118" at="80,0,81,0" concept="15" trace="NodeUnreachable$ei" />
@@ -78,11 +78,11 @@
       <scope id="245688835342282923" at="41,0,44,0">
         <var name="it" id="245688835342282923" />
       </scope>
-      <scope id="5219682431664851911" at="62,87,65,173">
+      <scope id="5219682431664851911" at="62,87,65,198">
         <var name="var" id="5219682431664851924" />
         <var name="vars" id="5219682431664851913" />
       </scope>
-      <scope id="5219682431664851948" at="68,81,71,167">
+      <scope id="5219682431664851948" at="68,81,71,192">
         <var name="var" id="5219682431664851961" />
         <var name="vars" id="5219682431664851950" />
       </scope>
@@ -798,7 +798,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895903a2(jetbrains.mps.lang.test.runtime)/1302453276762085176">
     <file name="NodeCheckerUtil.java">
-      <node id="1302453276762085235" at="37,61,38,48" concept="12" />
+      <node id="1302453276762085235" at="37,61,38,73" concept="12" />
       <node id="6353154051987139581" at="41,94,42,176" concept="6" />
       <node id="4866539458460623431" at="46,100,47,127" concept="11" />
       <node id="2436047764492929511" at="48,58,49,18" concept="12" />
@@ -831,7 +831,7 @@
       <node id="1302453276762085377" at="45,0,54,0" concept="16" trace="getRuleNodeFromReporter#(Ljetbrains/mps/errors/item/NodeReportItem;Lorg/jetbrains/mps/openapi/module/SRepository;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="284455749621197098" at="55,0,66,0" concept="16" trace="getStandardCheckers#(Ljetbrains/mps/components/ComponentHost;)Ljava/util/List;" />
       <node id="284455749621194126" at="67,0,81,0" concept="16" trace="checkForNodeMessages#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/components/ComponentHost;)Ljava/util/Collection;" />
-      <scope id="1302453276762085234" at="37,61,38,48" />
+      <scope id="1302453276762085234" at="37,61,38,73" />
       <scope id="1302453276762085252" at="41,94,42,176" />
       <scope id="2436047764492927449" at="48,58,49,18" />
       <scope id="284455749619731469" at="74,165,75,62" />
@@ -1032,7 +1032,7 @@
       <node id="1277999467583127602" at="93,52,94,66" concept="11" />
       <node id="1277999467583127476" at="95,31,96,64" concept="12" />
       <node id="6978373592756704896" at="97,5,98,0" concept="14" />
-      <node id="3818729150937340992" at="99,31,100,59" concept="6" />
+      <node id="3818729150937340992" at="99,31,100,84" concept="6" />
       <node id="2276757138027266817" at="101,5,102,90" concept="11" />
       <node id="250369351436395925" at="104,54,105,59" concept="6" />
       <node id="6729911822236950558" at="107,6,108,69" concept="11" />
@@ -1081,7 +1081,7 @@
       <scope id="5091186398080935944" at="65,50,66,27" />
       <scope id="3740508248791186435" at="77,48,78,45" />
       <scope id="1277999467583057106" at="95,31,96,64" />
-      <scope id="3818729150937340992" at="99,31,100,59" />
+      <scope id="3818729150937340992" at="99,31,100,84" />
       <scope id="250369351436395924" at="104,54,105,59" />
       <scope id="2501421320961200875" at="122,51,123,103" />
       <scope id="5256253775189865767" at="135,25,136,28" />
