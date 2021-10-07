@@ -12,6 +12,10 @@ import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import javax.swing.event.ChangeEvent;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)/8492459591399165879", model = "r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)")
 public class MethodModel {
@@ -63,12 +67,12 @@ public class MethodModel {
     return null;
   }
   public String getMethodText() {
-    StringBuffer text = new StringBuffer();
+    StringBuilder text = new StringBuilder();
     if (this.myIsStatic) {
       text.append("static ");
     }
 
-    text.append(this.getReturnType());
+    text.append(((String) BHReflection.invoke0(this.getReturnType(), CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))));
     text.append(" ");
     text.append(this.getName());
     text.append("(");
@@ -84,7 +88,7 @@ public class MethodModel {
       }
     }
     text.append(")");
-    //  Add throw intems
+    //  Add throw items
     if (ListSequence.fromList(this.getThrowItems()).isNotEmpty()) {
       text.append("throws\n");
       boolean first = true;
@@ -97,5 +101,9 @@ public class MethodModel {
       }
     }
     return text.toString();
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
   }
 }
