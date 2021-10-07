@@ -1,3 +1,4 @@
+#Common IntelliJ Platform options:
 -Xmx950m
 -XX:ReservedCodeCacheSize=240m
 -XX:+UseConcMarkSweepGC
@@ -15,6 +16,7 @@
 -Dawt.useSystemAAFontSettings=lcd
 -Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine
 -Dsun.tools.attach.tmp.only=true
+#Additional MPS options:
 -client
 -Xss1024k
 -XX:NewSize=256m

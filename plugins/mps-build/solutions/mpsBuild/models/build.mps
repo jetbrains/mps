@@ -252,17 +252,9 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
-        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
-      </concept>
-      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
-        <property id="709746936026609031" name="linkId" index="3V$3ak" />
-        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
-      </concept>
-      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
-        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
       </concept>
     </language>
     <language id="d5033cee-f632-44b6-b308-89d4fbde34ff" name="jetbrains.mps.build.startup">
@@ -38436,19 +38428,13 @@
     <property role="3GE5qa" value="ide.data" />
     <property role="26EafI" value="bin" />
     <ref role="1_kbm$" node="6Iq8148fw_a" resolve="JetBrains MPS ${version.major}.${version.minor}" />
-    <node concept="1X3_iC" id="6KekG3H$kGh" role="lGtFl">
-      <property role="3V$3am" value="vmOptions64" />
-      <property role="3V$3ak" value="d5033cee-f632-44b6-b308-89d4fbde34ff/3885435385580582152/2693344784283221851" />
-      <node concept="26Ea6D" id="6KekG3H$kFM" role="8Wnug">
-        <property role="26Ea6C" value="Common IntelliJ Platform options:" />
-      </node>
+    <node concept="26Ea6D" id="6KekG3H$kFM" role="2hID6k">
+      <property role="26Ea6C" value="Common IntelliJ Platform options:" />
+      <property role="2eq24a" value="true" />
     </node>
-    <node concept="1X3_iC" id="6KekG3H$kK8" role="lGtFl">
-      <property role="3V$3am" value="vmOptions" />
-      <property role="3V$3ak" value="d5033cee-f632-44b6-b308-89d4fbde34ff/3885435385580582152/3885435385580627556" />
-      <node concept="26Ea6D" id="6KekG3H$kJE" role="8Wnug">
-        <property role="26Ea6C" value="Common IntelliJ Platform options:" />
-      </node>
+    <node concept="26Ea6D" id="6KekG3H$kJE" role="26FZ21">
+      <property role="26Ea6C" value="Common IntelliJ Platform options:" />
+      <property role="2eq24a" value="true" />
     </node>
     <node concept="26Ea6D" id="7TY3xOwW$Yp" role="2hID6k">
       <property role="26Ea6C" value="-Xmx2048m" />
@@ -38501,12 +38487,9 @@
     <node concept="26Ea6D" id="6KekG3Hebkn" role="2hID6k">
       <property role="26Ea6C" value="-Dsun.tools.attach.tmp.only=true" />
     </node>
-    <node concept="1X3_iC" id="6KekG3H$kId" role="lGtFl">
-      <property role="3V$3am" value="vmOptions64" />
-      <property role="3V$3ak" value="d5033cee-f632-44b6-b308-89d4fbde34ff/3885435385580582152/2693344784283221851" />
-      <node concept="26Ea6D" id="6KekG3H$kHH" role="8Wnug">
-        <property role="26Ea6C" value="Additional MPS options:" />
-      </node>
+    <node concept="26Ea6D" id="6KekG3H$kHH" role="2hID6k">
+      <property role="26Ea6C" value="Additional MPS options:" />
+      <property role="2eq24a" value="true" />
     </node>
     <node concept="26Ea6D" id="2lwFGYOW7EY" role="2hID6k">
       <property role="26Ea6C" value="-client" />
@@ -38614,12 +38597,9 @@
     <node concept="26Ea6D" id="6KekG3Heblg" role="26FZ21">
       <property role="26Ea6C" value="-Dsun.tools.attach.tmp.only=true" />
     </node>
-    <node concept="1X3_iC" id="6KekG3H$kM3" role="lGtFl">
-      <property role="3V$3am" value="vmOptions" />
-      <property role="3V$3ak" value="d5033cee-f632-44b6-b308-89d4fbde34ff/3885435385580582152/3885435385580627556" />
-      <node concept="26Ea6D" id="6KekG3H$kL$" role="8Wnug">
-        <property role="26Ea6C" value="Additional MPS options:" />
-      </node>
+    <node concept="26Ea6D" id="6KekG3H$kL$" role="26FZ21">
+      <property role="26Ea6C" value="Additional MPS options:" />
+      <property role="2eq24a" value="true" />
     </node>
     <node concept="26Ea6D" id="BJYGrH08XF" role="26FZ21">
       <property role="26Ea6C" value="-client" />
