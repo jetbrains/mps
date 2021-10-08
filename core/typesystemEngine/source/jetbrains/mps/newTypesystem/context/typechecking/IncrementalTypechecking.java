@@ -216,6 +216,10 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
     }
   }
 
+  public SNode getContextNode() {
+    return myNodeTypeAccess.peekNode();
+  }
+
   @Override
   public boolean applyNonTypesystemRulesToRoot(TypeCheckingContext typeCheckingContext, Cancellable c, TypecheckingObservable observable) {
     ITypeErrorComponent oldTypeErrorComponent = myTypeErrorComponent;

@@ -111,11 +111,6 @@ public class NonTypeSystemComponent extends IncrementalTypecheckingComponent<Sta
     return Collections.unmodifiableMap(myNodesToErrorsMap);
   }
 
-  @Override
-  protected IncrementalTypechecking getTypechecking() {
-    return (IncrementalTypechecking) super.getTypechecking();
-  }
-
   private void doInvalidate(Map<NonTypesystemRule_Runtime, Set<SNode>> nodesAndRules, Set<Pair<SNode, NonTypesystemRule_Runtime>> invalidatedNodesAndRules) {
     if (nodesAndRules != null) {
       for (NonTypesystemRule_Runtime ruleOfNode : nodesAndRules.keySet()) {

@@ -17,6 +17,7 @@ package jetbrains.mps.newTypesystem.context.component;
 
 import gnu.trove.THashSet;
 import jetbrains.mps.newTypesystem.context.typechecking.BaseTypechecking;
+import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.newTypesystem.state.State;
 import jetbrains.mps.smodel.AbstractNodesReadListener;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -32,6 +33,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
   private AtomicBoolean myInvalidationResult = new AtomicBoolean(false);
 
   private Set<SNode> myCurrentNodesToInvalidate = new THashSet<>();
+  private AccessTracking myAccessTracking = null;
 
   protected IncrementalTypecheckingComponent(STATE state, BaseTypechecking component) {
     super(state, component);
@@ -55,6 +57,32 @@ import java.util.concurrent.atomic.AtomicBoolean;
     myInvalidationWasPerformed.set(false);
     myCacheWasRebuilt.set(false);
     myInvalidationResult.set(false);
+  }
+
+  public void runWithAccessTracking(SNode contextNode, Runnable runnable) {
+    AccessTracking accessTracking = myAccessTracking != null ? myAccessTracking : new AccessTracking();
+    accessTracking.installReadListeners();
+    try {
+      runnable.run();
+    } finally {
+      accessTracking.removeReadListeners();
+    }
+    accessTracking.postProcess(contextNode);
+  }
+
+  @Override
+  protected void solveInequalities(AccessTracking accessTracking) {
+    this.myAccessTracking = accessTracking;
+    try {
+      super.solveInequalities(accessTracking);
+    } finally {
+      this.myAccessTracking = null;
+    }
+  }
+
+  @Override
+  protected IncrementalTypechecking getTypechecking() {
+    return (IncrementalTypechecking) super.getTypechecking();
   }
 
   public void clearNodeTypes() {

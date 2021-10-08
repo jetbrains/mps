@@ -154,7 +154,8 @@ public abstract class BaseTypecheckingContext extends TypeCheckingContext {
   }
 
   @Override
-  public void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId, boolean isShallow) {
+  @Deprecated(forRemoval = true)
+  public final void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId, boolean isShallow) {
     //todo
   }
 
@@ -169,12 +170,14 @@ public abstract class BaseTypecheckingContext extends TypeCheckingContext {
   }
 
   @Override
+  @Deprecated(forRemoval = true)
   public void whenConcrete(List<SNode> argument, Runnable r, String nodeModel, String nodeId, boolean isShallow, boolean skipError) {
     getState().addBlock(new MultipleWhenConcreteBlock(getState(), r, nodeModel, nodeId, argument, isShallow, skipError));
   }
 
   @Override
-  public void whenConcrete(List<NodeInfo> arguments, Runnable r) {
+  @Deprecated(forRemoval = true)
+  public final void whenConcrete(List<NodeInfo> arguments, Runnable r) {
     //todo
   }
 

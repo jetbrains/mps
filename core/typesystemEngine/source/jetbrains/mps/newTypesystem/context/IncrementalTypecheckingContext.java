@@ -19,6 +19,7 @@ import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.newTypesystem.SubTypingManagerNew;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.newTypesystem.state.State;
+import jetbrains.mps.newTypesystem.state.blocks.WhenConcreteBlock;
 import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.util.Computable;
@@ -80,6 +81,27 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
   @Override
   public void addDependencyForCurrent(SNode node) {
     getTypechecking().addDependencyForCurrent(node);
+  }
+  
+  @Override
+  public void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId) {
+    ContextRunnable runnable = new ContextRunnable(getTypechecking().getContextNode(), r);
+    WhenConcreteBlock block = new WhenConcreteBlock(getState(), runnable, nodeModel, nodeId, argument, false, false);
+    getState().addBlock(block);
+  }
+
+  @Override
+  public void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId, boolean isShallow, boolean skipError) {
+    ContextRunnable runnable = new ContextRunnable(getTypechecking().getContextNode(), r);
+    WhenConcreteBlock block = new WhenConcreteBlock(getState(), runnable, nodeModel, nodeId, argument, isShallow, skipError);
+    getState().addBlock(block);
+  }
+
+  @Override
+  public void whenConcrete(SNode argument, Runnable r, String nodeModel, String nodeId, boolean isShallow, boolean skipError, String warningMessage) {
+    ContextRunnable runnable = new ContextRunnable(getTypechecking().getContextNode(), r);
+    WhenConcreteBlock block = new WhenConcreteBlock(getState(), runnable, nodeModel, nodeId, argument, isShallow, skipError, warningMessage);
+    getState().addBlock(block);
   }
 
   @Override
@@ -185,5 +207,23 @@ public class IncrementalTypecheckingContext extends ReportingTypecheckingContext
   @Override
   protected void applyNonTypesystemRules() {
     getTypechecking().applyNonTypesystemRulesToRoot(this);
+  }
+
+  private class ContextRunnable implements Runnable {
+    private final SNode myContextNode;
+    private final Runnable myToRun;
+
+    public ContextRunnable(SNode contextNode, Runnable toRun) {
+      myContextNode = contextNode;
+      myToRun = toRun;
+    }
+
+    @Override
+    public void run() {
+     getTypechecking()
+         .getTypecheckingComponent()
+         .runWithAccessTracking(myContextNode,
+                                () ->  getTypechecking().runApplyRulesTo(myContextNode, myToRun));
+    }
   }
 }

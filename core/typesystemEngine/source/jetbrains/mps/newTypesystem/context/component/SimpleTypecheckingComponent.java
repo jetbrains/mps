@@ -32,7 +32,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.util.Pair;
 
 import java.util.ArrayList;
@@ -137,13 +136,7 @@ import java.util.Set;
   protected BaseTypechecking getTypechecking() {
     return myTypechecking;
   }
-
-  public void solveInequalitiesAndExpandTypes(boolean finalExpansion) {
-    myState.solveInequalities();
-    myState.expandAll(myNodes, finalExpansion);
-    myNodes.clear();
-  }
-
+  
   protected AccessTracking createAccessTracking() {
     return new AccessTracking();
   }
@@ -270,8 +263,14 @@ import java.util.Set;
     while (!myQueue.isEmpty()) {
       drainQueue(forceChildrenCheck, initialNode, accessTracking);
       if (typeCalculated(initialNode) != null) return;
-      solveInequalitiesAndExpandTypes(finalExpansion);
+      solveInequalities(accessTracking);
+      myState.expandAll(myNodes, finalExpansion);
+      myNodes.clear();
     }
+  }
+
+  protected void solveInequalities(AccessTracking accessTracking) {
+    myState.solveInequalities();
   }
 
   protected SNode computeTypesForNode_special_(SNode initialNode, Collection<SNode> givenAdditionalNodes) {
