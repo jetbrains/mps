@@ -79,7 +79,6 @@
         
         <welcome-screen logo-url="/MPS_welcomeScreen.png" />
         
-        
         <plugins url="https://plugins.jetbrains.com/" />
         <update-urls check="https://www.jetbrains.com/mps/update.xml" patches="https://www.jetbrains.com/mps/download/" />
         
