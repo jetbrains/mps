@@ -844,6 +844,27 @@
               </node>
             </node>
           </node>
+          <node concept="3clFbH" id="6AqfUU3NG62" role="3cqZAp" />
+          <node concept="3SKdUt" id="6AqfUU3NOiI" role="3cqZAp">
+            <node concept="1PaTwC" id="6AqfUU3NOiJ" role="1aUNEU">
+              <node concept="3oM_SD" id="6AqfUU3NPcM" role="1PaTwD">
+                <property role="3oM_SC" value="com.intellij.openapi.actionSystem.impl.ActionUpdater" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="6AqfUU3NI8V" role="3cqZAp">
+            <node concept="2OqwBi" id="6AqfUU3NJrv" role="3clFbG">
+              <node concept="37vLTw" id="6AqfUU3NI8T" role="2Oq$k0">
+                <ref role="3cqZAo" node="3m4z3Ef4MhY" resolve="builder" />
+              </node>
+              <node concept="liA8E" id="6AqfUU3NJyR" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~StringBuilder.append(java.lang.String)" resolve="append" />
+                <node concept="Xl_RD" id="6AqfUU3NL4X" role="37wK5m">
+                  <property role="Xl_RC" value="|(Action Updater .*)" />
+                </node>
+              </node>
+            </node>
+          </node>
           <node concept="3SKdUt" id="3m4z3Ef6VAX" role="3cqZAp">
             <node concept="1PaTwC" id="3m4z3Ef6VAY" role="1aUNEU">
               <node concept="3oM_SD" id="3m4z3Ef6WpE" role="1PaTwD">

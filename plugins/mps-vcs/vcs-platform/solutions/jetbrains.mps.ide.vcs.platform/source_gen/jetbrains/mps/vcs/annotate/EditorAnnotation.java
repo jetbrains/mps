@@ -69,7 +69,7 @@ import jetbrains.mps.vcs.platform.integration.ModelDiffViewer;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.diff.DiffManager;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
-import jetbrains.mps.ide.editor.NodeEditor;
+import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
 import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
 import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
@@ -661,13 +661,13 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
 
     getModelAccess().runReadInEDT(new Runnable() {
       public void run() {
-        NodeEditor newEditor = ((NodeEditor) NavigationSupport.getInstance().openNode(myMpsProject, root, true, false));
+        Editor newEditor = NavigationSupport.getInstance().openNode(myMpsProject, root, true, false);
         if (newEditor != null) {
-          EditorComponent newEditorComponent = newEditor.getCurrentEditorComponent();
-          // Revision editor is read-only and should not be highlighted. 
-          // Similarly, editors in the Diff dialog window are not highlighted.
-          newEditorComponent.getHighlighter().setPaused(true);
+          EditorComponent newEditorComponent = (EditorComponent) newEditor.getCurrentEditorComponent();
           if (newEditorComponent != null) {
+            // Revision editor is read-only and should not be highlighted. 
+            // Similarly, editors in the Diff dialog window are not highlighted.
+            newEditorComponent.getHighlighter().setPaused(true);
             BackgroundableActionLock actionLock = VcsActionsUtil.getAnnotateRootLock(myMpsProject.getProject(), taskName);
             actionLock.lock();
             ProgressManager.getInstance().run(new AnnotateBackgroundableTask(myMpsProject, taskName, newEditorComponent, myFile, myVcs, actionLock, revision));

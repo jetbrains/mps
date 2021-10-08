@@ -81,6 +81,9 @@ public class ThreadWatcher implements Output {
 
       // java.util.concurrent.ForkJoinPool#workerNamePrefix
       builder.append("|(ForkJoinPool.*)");
+
+      // com.intellij.openapi.actionSystem.impl.ActionUpdater
+      builder.append("|(Action Updater .*)");
       // --------------------------------
 
 
