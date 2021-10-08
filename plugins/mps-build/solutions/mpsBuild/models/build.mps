@@ -2005,7 +2005,11 @@
     <node concept="2kB4xC" id="3AMbuf1N5Oy" role="1l3spd">
       <property role="TrG5h" value="version.bugfixNr" />
       <node concept="aVJcg" id="3AMbuf1N6Pd" role="aVJcv">
-        <node concept="NbPM2" id="3AMbuf1N6Pc" role="aVJcq" />
+        <node concept="NbPM2" id="3AMbuf1N6Pc" role="aVJcq">
+          <node concept="3Mxwew" id="4nmnu_pol9$" role="3MwsjC">
+            <property role="3MwjfP" value=".1" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2kB4xC" id="3AMbuf1a7On" role="1l3spd">
@@ -38432,10 +38436,6 @@
       <property role="26Ea6C" value="Common IntelliJ Platform options:" />
       <property role="2eq24a" value="true" />
     </node>
-    <node concept="26Ea6D" id="6KekG3H$kJE" role="26FZ21">
-      <property role="26Ea6C" value="Common IntelliJ Platform options:" />
-      <property role="2eq24a" value="true" />
-    </node>
     <node concept="26Ea6D" id="7TY3xOwW$Yp" role="2hID6k">
       <property role="26Ea6C" value="-Xmx2048m" />
     </node>
@@ -38545,6 +38545,10 @@
     </node>
     <node concept="26EafG" id="BsOHnjrceI" role="26Ea7d">
       <property role="26EafJ" value="lib/jna.jar" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3H$kJE" role="26FZ21">
+      <property role="26Ea6C" value="Common IntelliJ Platform options:" />
+      <property role="2eq24a" value="true" />
     </node>
     <node concept="26Ea6D" id="7TY3xOwW_03" role="26FZ21">
       <property role="26Ea6C" value="-Xmx950m" />
