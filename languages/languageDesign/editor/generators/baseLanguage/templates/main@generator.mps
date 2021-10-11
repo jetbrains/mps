@@ -17069,6 +17069,41 @@
         </node>
       </node>
     </node>
+    <node concept="3aamgX" id="FKt$dYNJRI" role="3acgRq">
+      <property role="36QftV" value="true" />
+      <ref role="30HIoZ" to="tpc2:fBEYTCT" resolve="EditorCellModel" />
+      <node concept="j$656" id="FKt$dYNLWg" role="1lVwrX">
+        <ref role="v9R2y" node="hxAlTYk" resolve="reduce_WrapRootConditionCell" />
+      </node>
+      <node concept="30G5F_" id="FKt$dYNKKI" role="30HLyM">
+        <node concept="3clFbS" id="FKt$dYNKKJ" role="2VODD2">
+          <node concept="3clFbF" id="FKt$dYNKOJ" role="3cqZAp">
+            <node concept="1Wc70l" id="FKt$dYNMix" role="3clFbG">
+              <node concept="3y3z36" id="FKt$dYNNiY" role="3uHU7w">
+                <node concept="10Nm6u" id="FKt$dYNNse" role="3uHU7w" />
+                <node concept="2OqwBi" id="FKt$dYNMFo" role="3uHU7B">
+                  <node concept="30H73N" id="FKt$dYNMqV" role="2Oq$k0" />
+                  <node concept="3TrEf2" id="FKt$dYNMTY" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpc2:gCpqm6p" resolve="renderingCondition" />
+                  </node>
+                </node>
+              </node>
+              <node concept="2OqwBi" id="FKt$dYNLvv" role="3uHU7B">
+                <node concept="2OqwBi" id="FKt$dYNL2V" role="2Oq$k0">
+                  <node concept="30H73N" id="FKt$dYNKOI" role="2Oq$k0" />
+                  <node concept="1mfA1w" id="FKt$dYNLfV" role="2OqNvi" />
+                </node>
+                <node concept="1mIQ4w" id="FKt$dYNLBi" role="2OqNvi">
+                  <node concept="chp4Y" id="FKt$dYNLHe" role="cj9EA">
+                    <ref role="cht4Q" to="tpc2:fPQoSf$" resolve="CellModel_Alternation" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="3aamgX" id="7XYaZQTUc6z" role="3acgRq">
       <property role="36QftV" value="true" />
       <ref role="30HIoZ" to="tpc2:fPsVBsF" resolve="InlineEditorComponent" />

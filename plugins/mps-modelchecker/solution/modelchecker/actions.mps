@@ -521,8 +521,8 @@
     <property role="9BnSL" value="Audit tool for MPS models" />
     <property role="9BnSM" value="JetBrains" />
     <property role="TrG5h" value="Model Checker" />
-    <property role="9BnSO" value="211.1" />
-    <property role="9BnSK" value="2021.2" />
+    <property role="9BnSO" value="212.1" />
+    <property role="9BnSK" value="2021.2.1" />
   </node>
   <node concept="tC5Ba" id="1gEYwydCrTu">
     <property role="TrG5h" value="CheckProject" />

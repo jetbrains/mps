@@ -431,29 +431,21 @@ public class QueriesGenerated extends QueryProviderBase {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.bootClasspath$_ysz)).skip(1);
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
-    return (Iterable<SNode>) MpsStartupScript__BehaviorDescriptor.getDefaultVmOptionsLines_id2lwFGYOXBOk.invoke(_context.getNode(), ((boolean) false));
-  }
-  public static Iterable<SNode> sourceNodesQuery_3_1(final SourceSubstituteMacroNodesContext _context) {
-    return (Iterable<SNode>) MpsStartupScript__BehaviorDescriptor.getCommentedVmOptionsLines_id31jVCtHhzv9.invoke(_context.getNode(), ((boolean) false));
+    return (Iterable<SNode>) MpsStartupScript__BehaviorDescriptor.getVmOptionsTextLines_id2M0p1n5GA6s.invoke(_context.getNode(), ((boolean) false));
   }
   public static Iterable<SNode> sourceNodesQuery_4_0(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.bootClasspath$_ysz);
   }
   public static Iterable<SNode> sourceNodesQuery_5_0(final SourceSubstituteMacroNodesContext _context) {
-    return (Iterable<SNode>) MpsStartupScript__BehaviorDescriptor.getDefaultVmOptionsLines_id2lwFGYOXBOk.invoke(_context.getNode(), ((boolean) true));
-  }
-  public static Iterable<SNode> sourceNodesQuery_5_1(final SourceSubstituteMacroNodesContext _context) {
-    return (Iterable<SNode>) MpsStartupScript__BehaviorDescriptor.getCommentedVmOptionsLines_id31jVCtHhzv9.invoke(_context.getNode(), ((boolean) true));
+    return (Iterable<SNode>) MpsStartupScript__BehaviorDescriptor.getVmOptionsTextLines_id2M0p1n5GA6s.invoke(_context.getNode(), ((boolean) true));
   }
   private final Map<String, SourceNodesQuery> snsqMethods = new HashMap<String, SourceNodesQuery>();
   {
     int i = 0;
     snsqMethods.put("1731640411965079018", new SNsQ(i++));
     snsqMethods.put("1731640411967575305", new SNsQ(i++));
-    snsqMethods.put("3482389202308835526", new SNsQ(i++));
     snsqMethods.put("4487788881657835967", new SNsQ(i++));
     snsqMethods.put("2693344784288504085", new SNsQ(i++));
-    snsqMethods.put("3482389202308963357", new SNsQ(i++));
   }
   @NotNull
   @Override
@@ -474,13 +466,9 @@ public class QueriesGenerated extends QueryProviderBase {
         case 1:
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_3_0(ctx));
         case 2:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_3_1(ctx));
-        case 3:
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_4_0(ctx));
-        case 4:
+        case 3:
           return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_5_0(ctx));
-        case 5:
-          return IterableUtil.asCollection(QueriesGenerated.sourceNodesQuery_5_1(ctx));
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }

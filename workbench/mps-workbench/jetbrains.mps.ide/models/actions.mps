@@ -23625,8 +23625,8 @@
     <property role="9BnSP" value="http://www.jetbrains.com/mps/" />
     <property role="9BnSM" value="JetBrains" />
     <property role="TrG5h" value="IDE" />
-    <property role="9BnSO" value="211.1" />
-    <property role="9BnSK" value="2021.2" />
+    <property role="9BnSO" value="212.1" />
+    <property role="9BnSK" value="2021.2.1" />
   </node>
   <node concept="sE7Ow" id="1JAxb5h3N20">
     <property role="TrG5h" value="EditGivenNode" />
@@ -33428,14 +33428,14 @@
             <node concept="17QB3L" id="7QCr3uXVJIt" role="1tU5fm" />
             <node concept="3cpWs3" id="7QCr3uXVJIu" role="33vP2m">
               <node concept="3cpWs3" id="7QCr3uXVJIz" role="3uHU7B">
+                <node concept="Xl_RD" id="7QCr3uXVJI_" role="3uHU7w">
+                  <property role="Xl_RC" value="@" />
+                </node>
                 <node concept="2OqwBi" id="ivXwD0FWL0" role="3uHU7B">
                   <node concept="37vLTw" id="7QCr3uXVJI$" role="2Oq$k0">
                     <ref role="3cqZAo" node="7QCr3uXVJx2" resolve="node" />
                   </node>
                   <node concept="2Iv5rx" id="ivXwD0FWL1" role="2OqNvi" />
-                </node>
-                <node concept="Xl_RD" id="7QCr3uXVJI_" role="3uHU7w">
-                  <property role="Xl_RC" value="@" />
                 </node>
               </node>
               <node concept="2OqwBi" id="7QCr3uXVPJh" role="3uHU7w">
