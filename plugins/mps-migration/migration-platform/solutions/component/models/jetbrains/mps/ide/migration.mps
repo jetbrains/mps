@@ -3506,13 +3506,107 @@
         </node>
         <node concept="3clFbJ" id="6E3ZNOpZEi1" role="3cqZAp">
           <node concept="3clFbS" id="6E3ZNOpZEi3" role="3clFbx">
-            <node concept="3clFbF" id="6E3ZNOq07d4" role="3cqZAp">
-              <node concept="2OqwBi" id="6E3ZNOq07lS" role="3clFbG">
-                <node concept="37vLTw" id="6E3ZNOq07d2" role="2Oq$k0">
-                  <ref role="3cqZAo" node="2i74bFCeL7q" resolve="myNotifications" />
+            <node concept="3SKdUt" id="2vDJLeY3l8T" role="3cqZAp">
+              <node concept="1PaTwC" id="2vDJLeY3l8U" role="1aUNEU">
+                <node concept="3oM_SD" id="2vDJLeY3qkG" role="1PaTwD">
+                  <property role="3oM_SC" value="I" />
                 </node>
-                <node concept="liA8E" id="6E3ZNOq07Vb" role="2OqNvi">
-                  <ref role="37wK5l" node="6E3ZNOpZZgz" resolve="showPreUpdateCheckOk" />
+                <node concept="3oM_SD" id="2vDJLeY3qkI" role="1PaTwD">
+                  <property role="3oM_SC" value="hate" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3qkL" role="1PaTwD">
+                  <property role="3oM_SC" value="this" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3qkP" role="1PaTwD">
+                  <property role="3oM_SC" value="code," />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3qkU" role="1PaTwD">
+                  <property role="3oM_SC" value="but" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3ql0" role="1PaTwD">
+                  <property role="3oM_SC" value="it's" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3ql7" role="1PaTwD">
+                  <property role="3oM_SC" value="too" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3qlf" role="1PaTwD">
+                  <property role="3oM_SC" value="much" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3qlo" role="1PaTwD">
+                  <property role="3oM_SC" value="pain" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3qly" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3qlH" role="1PaTwD">
+                  <property role="3oM_SC" value="bother" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3qlT" role="1PaTwD">
+                  <property role="3oM_SC" value="with" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3qm6" role="1PaTwD">
+                  <property role="3oM_SC" value="showProblems()" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3qmk" role="1PaTwD">
+                  <property role="3oM_SC" value="refactoring" />
+                </node>
+              </node>
+            </node>
+            <node concept="3SKdUt" id="2vDJLeY3yUF" role="3cqZAp">
+              <node concept="1PaTwC" id="2vDJLeY3yUG" role="1aUNEU">
+                <node concept="3oM_SD" id="2vDJLeY3Bl7" role="1PaTwD">
+                  <property role="3oM_SC" value="NON_MODAL" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3Bl9" role="1PaTwD">
+                  <property role="3oM_SC" value="here" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3Blc" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3Blg" role="1PaTwD">
+                  <property role="3oM_SC" value="just" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3BlU" role="1PaTwD">
+                  <property role="3oM_SC" value="because" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3Bns" role="1PaTwD">
+                  <property role="3oM_SC" value="showProblem()" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3Bnz" role="1PaTwD">
+                  <property role="3oM_SC" value="uses" />
+                </node>
+                <node concept="3oM_SD" id="2vDJLeY3BnF" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="2vDJLeY2XNR" role="3cqZAp">
+              <node concept="2OqwBi" id="2vDJLeY2XNS" role="3clFbG">
+                <node concept="2YIFZM" id="2vDJLeY2XNT" role="2Oq$k0">
+                  <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+                  <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+                </node>
+                <node concept="liA8E" id="2vDJLeY2XNU" role="2OqNvi">
+                  <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable,com.intellij.openapi.application.ModalityState)" resolve="invokeLater" />
+                  <node concept="1bVj0M" id="2vDJLeY2XNV" role="37wK5m">
+                    <property role="3yWfEV" value="true" />
+                    <node concept="3clFbS" id="2vDJLeY2XNW" role="1bW5cS">
+                      <node concept="3clFbF" id="6E3ZNOq07d4" role="3cqZAp">
+                        <node concept="2OqwBi" id="6E3ZNOq07lS" role="3clFbG">
+                          <node concept="37vLTw" id="6E3ZNOq07d2" role="2Oq$k0">
+                            <ref role="3cqZAo" node="2i74bFCeL7q" resolve="myNotifications" />
+                          </node>
+                          <node concept="liA8E" id="6E3ZNOq07Vb" role="2OqNvi">
+                            <ref role="37wK5l" node="6E3ZNOpZZgz" resolve="showPreUpdateCheckOk" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="10M0yZ" id="2vDJLeY2XO8" role="37wK5m">
+                    <ref role="1PxDUh" to="bd8o:~ModalityState" resolve="ModalityState" />
+                    <ref role="3cqZAo" to="bd8o:~ModalityState.NON_MODAL" resolve="NON_MODAL" />
+                  </node>
                 </node>
               </node>
             </node>

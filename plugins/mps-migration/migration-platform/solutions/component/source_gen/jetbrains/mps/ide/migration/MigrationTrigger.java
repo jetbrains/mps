@@ -462,7 +462,13 @@ __switch__:
       }
     });
     if (ListSequence.fromList(problems).isEmpty()) {
-      myNotifications.showPreUpdateCheckOk();
+      // I hate this code, but it's too much pain to bother with showProblems() refactoring
+      // NON_MODAL here is just because showProblem() uses it
+      ApplicationManager.getApplication().invokeLater(new Runnable() {
+        public void run() {
+          myNotifications.showPreUpdateCheckOk();
+        }
+      }, ModalityState.NON_MODAL);
     } else {
       showProblems(problems);
     }
