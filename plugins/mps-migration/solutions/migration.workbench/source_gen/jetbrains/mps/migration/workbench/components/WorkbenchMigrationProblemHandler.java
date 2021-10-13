@@ -6,15 +6,16 @@ import jetbrains.mps.ide.migration.MigrationProblemHandler;
 import jetbrains.mps.project.MPSProject;
 import java.util.Collection;
 import jetbrains.mps.errors.item.IssueKindReportItem;
+import java.util.List;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerTool;
 import jetbrains.mps.ide.modelchecker.platform.actions.ModelCheckerViewer;
 import jetbrains.mps.ide.findusages.model.SearchResults;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
+import java.util.Collections;
 import com.intellij.icons.AllIcons;
 
 public class WorkbenchMigrationProblemHandler implements MigrationProblemHandler {
@@ -26,17 +27,13 @@ public class WorkbenchMigrationProblemHandler implements MigrationProblemHandler
 
   @Override
   public void showProblems(Collection<IssueKindReportItem> problems) {
-    Iterable<SearchResult<IssueKindReportItem>> items = CollectionSequence.fromCollection(problems).select(new ISelector<IssueKindReportItem, SearchResult<IssueKindReportItem>>() {
+    List<SearchResult<IssueKindReportItem>> items = CollectionSequence.fromCollection(problems).select(new ISelector<IssueKindReportItem, SearchResult<IssueKindReportItem>>() {
       public SearchResult<IssueKindReportItem> select(IssueKindReportItem p) {
         return new SearchResult<IssueKindReportItem>(p, IssueKindReportItem.PATH_OBJECT.get(p).resolve(myMpsProject.getRepository()), IssueKindReportItem.FLAVOUR_ISSUE_KIND.get(p).getSpecialization());
       }
-    }).where(new IWhereFilter<SearchResult<IssueKindReportItem>>() {
-      public boolean accept(SearchResult<IssueKindReportItem> it) {
-        return it != null;
-      }
-    });
+    }).where(new NotNullWhereFilter<SearchResult<IssueKindReportItem>>()).toListSequence();
 
-    if (Sequence.fromIterable(items).isEmpty()) {
+    if (ListSequence.fromList(items).isEmpty()) {
       return;
     }
 
@@ -49,12 +46,7 @@ public class WorkbenchMigrationProblemHandler implements MigrationProblemHandler
       }
     };
 
-    final SearchResults<IssueKindReportItem> result = new SearchResults<IssueKindReportItem>();
-    Sequence.fromIterable(items).visitAll(new IVisitor<SearchResult<IssueKindReportItem>>() {
-      public void visit(SearchResult<IssueKindReportItem> it) {
-        result.add(it);
-      }
-    });
+    SearchResults<IssueKindReportItem> result = new SearchResults<IssueKindReportItem>(Collections.emptyList(), items);
     v.setSearchResults(result);
     mcTool.showTabWithResults(v, "Migration issues", AllIcons.Nodes.ModuleGroup);
   }
