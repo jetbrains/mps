@@ -76,7 +76,7 @@ public class FindDeprecatedCodeWithNoUsages_Action extends BaseAction {
       }
       @Override
       public void onSuccess() {
-        SearchResults<SNode> sr = (myResults.isEmpty() ? SearchResults.empty() : new SearchResults<>(Collections.emptyList(), myResults));
+        SearchResults<SNode> sr = (myResults.isEmpty() ? SearchResults.<SNode>empty() : new SearchResults<>(Collections.emptyList(), myResults));
         event.getData(CommonDataKeys.PROJECT).getComponent(UsagesViewTool.class).show(sr, "No usages found");
       }
     }.queue();
