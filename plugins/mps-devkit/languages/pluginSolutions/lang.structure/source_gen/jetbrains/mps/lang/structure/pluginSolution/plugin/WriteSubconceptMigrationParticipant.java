@@ -145,9 +145,7 @@ public class WriteSubconceptMigrationParticipant extends RefactoringParticipantB
         public RefactoringParticipant.Change<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void> select(final Language subModule) {
           RefactoringParticipant.Change<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void> change = new MoveNodeRefactoringParticipant.ChangeBase<Tuples._2<NamedNodeReference, MigrationScriptRef>, Void>() {
             public SearchResults getSearchResults() {
-              SearchResults searchResults = new SearchResults();
-              searchResults.add(new SearchResult<SModule>(subModule, "induced migration script"));
-              return searchResults;
+              return SearchResults.singleton(new SearchResult<SModule>(subModule, "induced migration script"));
             }
             public void confirm(Void finalState, SRepository repository, RefactoringSession refactoringSession) {
               LanguageStructureMigrationParticipant.MigrationBuilder migrationBuilder = LanguageStructureMigrationParticipant.MigrationBuilder.getBuilder(refactoringSession, subModule);

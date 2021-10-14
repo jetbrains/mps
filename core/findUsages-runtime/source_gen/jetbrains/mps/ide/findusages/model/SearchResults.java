@@ -53,6 +53,11 @@ public class SearchResults<T> implements UsagesList {
   }
 
   @NotNull
+  public static <T> SearchResults<T> singleton(@NotNull SearchResult<T> one) {
+    return new SearchResults<T>(Collections.emptyList(), Collections.singletonList(one));
+  }
+
+  @NotNull
   public static SearchResults union(@NotNull SearchResults one, @NotNull SearchResults another) {
     SearchedObjects searchedObjects1 = one.getSearchedObjects();
     SearchedObjects searchedObjects2 = another.getSearchedObjects();

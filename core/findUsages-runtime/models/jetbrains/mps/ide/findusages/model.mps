@@ -108,6 +108,9 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
+      </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ" />
       <concept id="1109279851642" name="jetbrains.mps.baseLanguage.structure.GenericDeclaration" flags="ng" index="16eOlS">
         <child id="1109279881614" name="typeVariableDeclaration" index="16eVyc" />
@@ -1516,6 +1519,61 @@
         <ref role="3uigEE" node="J2bOg02HbG" resolve="SearchResults" />
         <node concept="16syzq" id="6hZLf2Yo3pM" role="11_B2D">
           <ref role="16sUi3" node="6hZLf2Yo3pG" resolve="T" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="1mw1E15Pfl0" role="jymVt" />
+    <node concept="2YIFZL" id="1mw1E15P9HQ" role="jymVt">
+      <property role="TrG5h" value="singleton" />
+      <property role="DiZV1" value="false" />
+      <property role="od$2w" value="false" />
+      <node concept="2AHcQZ" id="1mw1E15P9HR" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+      <node concept="16euLQ" id="1mw1E15P9HS" role="16eVyc">
+        <property role="TrG5h" value="T" />
+      </node>
+      <node concept="3clFbS" id="1mw1E15P9HT" role="3clF47">
+        <node concept="3cpWs6" id="1mw1E15P9HU" role="3cqZAp">
+          <node concept="2ShNRf" id="1mw1E15P9HV" role="3cqZAk">
+            <node concept="1pGfFk" id="1mw1E15P9HW" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" node="6hZLf2Yo3pm" resolve="SearchResults" />
+              <node concept="16syzq" id="1mw1E15PIiL" role="1pMfVU">
+                <ref role="16sUi3" node="1mw1E15P9HS" resolve="T" />
+              </node>
+              <node concept="2YIFZM" id="1mw1E15PKeh" role="37wK5m">
+                <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
+                <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+              </node>
+              <node concept="2YIFZM" id="1mw1E15PMga" role="37wK5m">
+                <ref role="37wK5l" to="33ny:~Collections.singletonList(java.lang.Object)" resolve="singletonList" />
+                <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
+                <node concept="37vLTw" id="1mw1E15PMN8" role="37wK5m">
+                  <ref role="3cqZAo" node="1mw1E15PzYT" resolve="one" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="1mw1E15P9HX" role="1B3o_S" />
+      <node concept="3uibUv" id="1mw1E15P9HY" role="3clF45">
+        <ref role="3uigEE" node="J2bOg02HbG" resolve="SearchResults" />
+        <node concept="16syzq" id="1mw1E15P9HZ" role="11_B2D">
+          <ref role="16sUi3" node="1mw1E15P9HS" resolve="T" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="1mw1E15PzYT" role="3clF46">
+        <property role="TrG5h" value="one" />
+        <node concept="3uibUv" id="1mw1E15PzYS" role="1tU5fm">
+          <ref role="3uigEE" node="J2bOg02GHT" resolve="SearchResult" />
+          <node concept="16syzq" id="1mw1E15P$_9" role="11_B2D">
+            <ref role="16sUi3" node="1mw1E15P9HS" resolve="T" />
+          </node>
+        </node>
+        <node concept="2AHcQZ" id="1mw1E15P$Rs" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
     </node>

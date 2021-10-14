@@ -130,14 +130,11 @@ public class MoveNodeRefactoringLogParticipant extends RefactoringParticipantBas
       }
     }).toListSequence();
 
-    final SearchResults results = new SearchResults();
-    results.add(new SearchResult<SModule>(sourceModule, "refactoring log"));
-
     // todo: write guard migration with 'execute after'
 
     RefactoringParticipant.Change<SNodeReference, SNodeReference> change = new MoveNodeRefactoringParticipant.ChangeBase<SNodeReference, SNodeReference>() {
       public SearchResults getSearchResults() {
-        return results;
+        return SearchResults.singleton(new SearchResult<SModule>(sourceModule, "refactoring log"));
       }
       public void confirm(SNodeReference finalState, SRepository repository, RefactoringSession refactoringSession) {
         SNode targetNode = finalState.resolve(repository);
