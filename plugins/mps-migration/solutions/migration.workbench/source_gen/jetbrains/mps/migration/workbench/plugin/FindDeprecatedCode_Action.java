@@ -13,13 +13,18 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.PerformInBackgroundOption;
-import jetbrains.mps.ide.findusages.model.SearchResults;
+import java.util.List;
+import jetbrains.mps.ide.findusages.model.SearchResult;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.ArrayList;
 import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.migration.workbench.util.DeprecatedNodeProperties;
 import jetbrains.mps.migration.workbench.util.DeprecatedUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.ide.findusages.model.CategoryKind;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.ide.findusages.model.SearchResults;
+import java.util.Collections;
 import jetbrains.mps.ide.findusages.view.UsagesViewTool;
 
 public class FindDeprecatedCode_Action extends BaseAction {
@@ -56,20 +61,22 @@ public class FindDeprecatedCode_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     new Task.Backgroundable(event.getData(CommonDataKeys.PROJECT), "Searching", true, PerformInBackgroundOption.DEAF) {
-      private SearchResults<SNode> searchResults = new SearchResults<SNode>();
+      private final List<SearchResult<SNode>> myResults = new ArrayList<>();
       @Override
       public void run(@NotNull final ProgressIndicator indicator) {
         indicator.setIndeterminate(true);
         event.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository().getModelAccess().runReadAction(new Runnable() {
           public void run() {
             Map<SNode, DeprecatedNodeProperties> dep = DeprecatedUtil.deprecated(event.getData(MPSCommonDataKeys.MPS_PROJECT).getScope());
-            UsagesFormattingUtil.addResults(searchResults, new Pair(CategoryKind.DEFAULT_CATEGORY_KIND, "Deprecated Code"), dep);
+            Pair categories = new Pair(CategoryKind.DEFAULT_CATEGORY_KIND, "Deprecated Code");
+            myResults.addAll(Sequence.fromIterable(UsagesFormattingUtil.prepare(dep, categories)).toListSequence());
           }
         });
       }
       @Override
       public void onSuccess() {
-        event.getData(CommonDataKeys.PROJECT).getComponent(UsagesViewTool.class).show(searchResults, "No usages found");
+        SearchResults<SNode> sr = (myResults.isEmpty() ? SearchResults.empty() : new SearchResults<>(Collections.emptyList(), myResults));
+        event.getData(CommonDataKeys.PROJECT).getComponent(UsagesViewTool.class).show(sr, "No usages found");
       }
     }.queue();
   }
