@@ -34,6 +34,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.NameUtil;
+import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.project.SModuleOperations;
@@ -223,27 +224,34 @@ public class NewModuleUtil {
     if (NameUtil.shortNameFromLongName(namespace).length() == 0) {
       return "Enter valid namespace";
     }
-    IFile moduleDir = getModuleFile(namespace, mpsProject.getFileSystem().getFile(rootPath), extension).getParent();
-    if (!(moduleDir.exists())) {
-      return null;
-    }
-    if (!(moduleDir.isDirectory())) {
-      return String.format("%s is not a directory", moduleDir.getPath());
-    }
-    for (IFile child : moduleDir.getChildren()) {
-      if (child.isDirectory()) {
-        // FIXME it's suspicious to check existence of a model directory to tell existence of a module
-        // E.g. it might be empty, or named differently. Left intact for now, although deserves a refactoring
-        // FWIW, LANGUAGE_MODELS==SOLUTION_MODELS
-        if (Language.LANGUAGE_MODELS.equals(child.getName()) || Language.LEGACY_LANGUAGE_MODELS.equals(child.getName()) || Solution.SOLUTION_MODELS.equals(child.getName())) {
-          return "Module already exists in this folder";
-        }
-      } else {
-        if (child.getName().endsWith(extension)) {
-          // that's what NewModuleCheckUtil.checkModuleDirectory (6b693c1e) did.
-          return String.format("Selected folder already contains module descriptor file (%s)", child.getPath());
+    try {
+      IFile moduleRoot = mpsProject.getFileSystem().getFile(rootPath);
+      IFile moduleDir = getModuleFile(namespace, moduleRoot, extension).getParent();
+      if (!(moduleDir.exists())) {
+        return null;
+      }
+      if (!(moduleDir.isDirectory())) {
+        return String.format("%s is not a directory", moduleDir.getPath());
+      }
+      for (IFile child : moduleDir.getChildren()) {
+        if (child.isDirectory()) {
+          // FIXME it's suspicious to check existence of a model directory to tell existence of a module
+          // E.g. it might be empty, or named differently. Left intact for now, although deserves a refactoring
+          // FWIW, LANGUAGE_MODELS==SOLUTION_MODELS
+          if (Language.LANGUAGE_MODELS.equals(child.getName()) || Language.LEGACY_LANGUAGE_MODELS.equals(child.getName()) || Solution.SOLUTION_MODELS.equals(child.getName())) {
+            return "Module already exists in this folder";
+          }
+        } else {
+          if (child.getName().endsWith(extension)) {
+            // that's what NewModuleCheckUtil.checkModuleDirectory (6b693c1e) did.
+            return String.format("Selected folder already contains module descriptor file (%s)", child.getPath());
+          }
         }
       }
+    } catch (PathFormatChecker.PathFormatException ex) {
+      // any invalid character in namespace may cause this exception
+      // alternatively, shall come up with a namespace check
+      return ex.getMessage();
     }
     return null;
   }
