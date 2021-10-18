@@ -121,7 +121,7 @@ public class Replacement_SubstituteMenu extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        return REGEXP_h3zx5f_a0a0a31c5.matcher(pattern).matches();
+        return REGEXP.matcher(pattern).matches();
       }
     }
   }
@@ -146,7 +146,7 @@ public class Replacement_SubstituteMenu extends SubstituteMenuBase {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
   }
-  private static final Pattern REGEXP_h3zx5f_a0a0a31c5 = Pattern.compile("[^\\\\]+", 0);
+  private static final Pattern REGEXP = Pattern.compile("[^\\\\]+", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept LiteralReplacement$ce = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x34ae970c192ab94cL, "jetbrains.mps.baseLanguage.regexp.structure.LiteralReplacement");

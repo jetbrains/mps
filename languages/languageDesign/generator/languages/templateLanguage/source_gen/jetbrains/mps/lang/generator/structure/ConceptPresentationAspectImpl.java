@@ -493,7 +493,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_MappingConfiguration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a15b0fe);
+          cpb.helpUrl(HELP_URL);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a15b0fe);
           props_MappingConfiguration = cpb.create();
         }
@@ -900,5 +900,5 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a2a0a15b0fe = URLFunction_HelpCenterDocUrl.getUrl() + "mps-generator.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "mps-generator.html";
 }

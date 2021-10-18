@@ -71,7 +71,7 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       }
       @Nullable
       public String getHelpUrl() {
-        return HELP_URL_ecu8yf_a0a7a0a0a1;
+        return HELP_URL;
       }
 
 
@@ -101,5 +101,5 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
 
     };
   }
-  private static final String HELP_URL_ecu8yf_a0a7a0a0a1 = URLFunction_HelpCenterDocUrl.getUrl() + "/editor-actions.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "/editor-actions.html";
 }

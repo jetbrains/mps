@@ -35,7 +35,7 @@ public class INamedStructureElement_Constraints extends BaseConstraintsDescripto
       return result;
     }
     private static boolean staticValidateProperty(SNode node, String propertyValue) {
-      return REGEXP_6zvlbs_a0a0a2c.matcher(propertyValue).matches();
+      return REGEXP.matcher(propertyValue).matches();
     }
   }
   @Override
@@ -44,7 +44,7 @@ public class INamedStructureElement_Constraints extends BaseConstraintsDescripto
     properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
-  private static final Pattern REGEXP_6zvlbs_a0a0a2c = Pattern.compile("[a-zA-Z\\$_][a-zA-Z0-9\\$_]*", 0);
+  private static final Pattern REGEXP = Pattern.compile("[a-zA-Z\\$_][a-zA-Z0-9\\$_]*", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept INamedStructureElement$gD = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x160b046db90a2b95L, "jetbrains.mps.lang.structure.structure.INamedStructureElement");

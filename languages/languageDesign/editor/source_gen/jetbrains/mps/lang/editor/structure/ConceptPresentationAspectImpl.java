@@ -593,7 +593,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_CellActionMapDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a91b0hr);
+          cpb.helpUrl(HELP_URL);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a91b0hr);
           props_CellActionMapDeclaration = cpb.create();
         }
@@ -665,7 +665,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_CellKeyMapDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a92b0hr);
+          cpb.helpUrl(HELP_URL1);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a92b0hr);
           props_CellKeyMapDeclaration = cpb.create();
         }
@@ -779,7 +779,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_CellMenuComponent == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a54b0hr);
+          cpb.helpUrl(HELP_URL2);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a54b0hr);
           props_CellMenuComponent = cpb.create();
         }
@@ -1327,7 +1327,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_CompletionStyling == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a121b0hr);
+          cpb.helpUrl(HELP_URL3);
           props_CompletionStyling = cpb.create();
         }
         return props_CompletionStyling;
@@ -1335,7 +1335,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ConceptEditorContextHints == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a221b0hr);
+          cpb.helpUrl(HELP_URL4);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a221b0hr);
           props_ConceptEditorContextHints = cpb.create();
         }
@@ -1344,7 +1344,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ConceptEditorDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a321b0hr);
+          cpb.helpUrl(HELP_URL5);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a321b0hr);
           props_ConceptEditorDeclaration = cpb.create();
         }
@@ -1606,7 +1606,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_EditorComponentDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a951b0hr);
+          cpb.helpUrl(HELP_URL6);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a951b0hr);
           props_EditorComponentDeclaration = cpb.create();
         }
@@ -2157,7 +2157,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ParametersInformationQuery == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a242b0hr);
+          cpb.helpUrl(HELP_URL7);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a242b0hr);
           props_ParametersInformationQuery = cpb.create();
         }
@@ -3080,7 +3080,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_StyleKeyPack == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a863b0hr);
+          cpb.helpUrl(HELP_URL8);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a863b0hr);
           props_StyleKeyPack = cpb.create();
         }
@@ -3096,7 +3096,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_StyleSheet == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a073b0hr);
+          cpb.helpUrl(HELP_URL9);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a073b0hr);
           props_StyleSheet = cpb.create();
         }
@@ -3160,7 +3160,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_SubstituteMenu == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a973b0hr);
+          cpb.helpUrl(HELP_URL10);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a973b0hr);
           props_SubstituteMenu = cpb.create();
         }
@@ -3332,7 +3332,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_SubstituteMenu_Contribution == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a204b0hr);
+          cpb.helpUrl(HELP_URL11);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a204b0hr);
           props_SubstituteMenu_Contribution = cpb.create();
         }
@@ -3342,7 +3342,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.deprecated(true);
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a3a0a304b0hr);
+          cpb.helpUrl(HELP_URL12);
           cpb.icon(IconContainer.RESOURCE_a0a4a0a304b0hr);
           props_SubstituteMenu_Default = cpb.create();
         }
@@ -3352,7 +3352,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.deprecated(true);
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a3a0a404b0hr);
+          cpb.helpUrl(HELP_URL13);
           cpb.icon(IconContainer.RESOURCE_a0a4a0a404b0hr);
           props_SubstituteMenu_Named = cpb.create();
         }
@@ -3489,7 +3489,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_TransformationMenu == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a324b0hr);
+          cpb.helpUrl(HELP_URL14);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a324b0hr);
           props_TransformationMenu = cpb.create();
         }
@@ -3498,7 +3498,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_TransformationMenuContribution == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a424b0hr);
+          cpb.helpUrl(HELP_URL15);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a424b0hr);
           props_TransformationMenuContribution = cpb.create();
         }
@@ -3636,7 +3636,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.deprecated(true);
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a3a0a244b0hr);
+          cpb.helpUrl(HELP_URL16);
           cpb.icon(IconContainer.RESOURCE_a0a4a0a244b0hr);
           props_TransformationMenu_Default = cpb.create();
         }
@@ -3646,7 +3646,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.deprecated(true);
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a3a0a344b0hr);
+          cpb.helpUrl(HELP_URL17);
           cpb.icon(IconContainer.RESOURCE_a0a4a0a344b0hr);
           props_TransformationMenu_Named = cpb.create();
         }
@@ -3682,22 +3682,22 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a2a0a91b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a92b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a54b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a121b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "/editor.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a221b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a321b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a951b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a242b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a863b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a073b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a973b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "transformation-menu-language.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a204b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "transformation-menu-language.html";
-  private static final String HELP_URL_lpa09p_a0a3a0a304b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "transformation-menu-language.html";
-  private static final String HELP_URL_lpa09p_a0a3a0a404b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "transformation-menu-language.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a324b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "/transformation-menu-language.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a424b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "transformation-menu-language.html";
-  private static final String HELP_URL_lpa09p_a0a3a0a244b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "transformation-menu-language.html";
-  private static final String HELP_URL_lpa09p_a0a3a0a344b0hr = URLFunction_HelpCenterDocUrl.getUrl() + "transformation-menu-language.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
+  private static final String HELP_URL1 = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
+  private static final String HELP_URL2 = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
+  private static final String HELP_URL3 = URLFunction_HelpCenterDocUrl.getUrl() + "/editor.html";
+  private static final String HELP_URL4 = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
+  private static final String HELP_URL5 = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
+  private static final String HELP_URL6 = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
+  private static final String HELP_URL7 = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
+  private static final String HELP_URL8 = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
+  private static final String HELP_URL9 = URLFunction_HelpCenterDocUrl.getUrl() + "editor.html";
+  private static final String HELP_URL10 = URLFunction_HelpCenterDocUrl.getUrl() + "transformation-menu-language.html";
+  private static final String HELP_URL11 = URLFunction_HelpCenterDocUrl.getUrl() + "transformation-menu-language.html";
+  private static final String HELP_URL12 = URLFunction_HelpCenterDocUrl.getUrl() + "transformation-menu-language.html";
+  private static final String HELP_URL13 = URLFunction_HelpCenterDocUrl.getUrl() + "transformation-menu-language.html";
+  private static final String HELP_URL14 = URLFunction_HelpCenterDocUrl.getUrl() + "/transformation-menu-language.html";
+  private static final String HELP_URL15 = URLFunction_HelpCenterDocUrl.getUrl() + "transformation-menu-language.html";
+  private static final String HELP_URL16 = URLFunction_HelpCenterDocUrl.getUrl() + "transformation-menu-language.html";
+  private static final String HELP_URL17 = URLFunction_HelpCenterDocUrl.getUrl() + "transformation-menu-language.html";
 }

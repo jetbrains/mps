@@ -35,7 +35,7 @@ public class INamedAspect_Constraints extends BaseConstraintsDescriptor {
       return result;
     }
     private static boolean staticValidateProperty(SNode node, String propertyValue) {
-      return REGEXP_3munj3_a0a0a2c.matcher(propertyValue).matches();
+      return REGEXP.matcher(propertyValue).matches();
     }
   }
   @Override
@@ -44,7 +44,7 @@ public class INamedAspect_Constraints extends BaseConstraintsDescriptor {
     properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
-  private static final Pattern REGEXP_3munj3_a0a0a2c = Pattern.compile("[a-zA-Z\\$_][a-zA-Z0-9\\$_]*", 0);
+  private static final Pattern REGEXP = Pattern.compile("[a-zA-Z\\$_][a-zA-Z0-9\\$_]*", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept INamedAspect$zw = MetaAdapterFactory.getInterfaceConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x6e62cf10d25a65e0L, "jetbrains.mps.lang.structure.structure.INamedAspect");

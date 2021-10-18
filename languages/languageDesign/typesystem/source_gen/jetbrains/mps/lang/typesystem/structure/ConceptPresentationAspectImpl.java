@@ -250,7 +250,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ComparisonRule == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a71b0oe);
+          cpb.helpUrl(HELP_URL);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a71b0oe);
           props_ComparisonRule = cpb.create();
         }
@@ -420,7 +420,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_InequationReplacementRule == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a04b0oe);
+          cpb.helpUrl(HELP_URL1);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a04b0oe);
           props_InequationReplacementRule = cpb.create();
         }
@@ -429,7 +429,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_InferenceRule == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a14b0oe);
+          cpb.helpUrl(HELP_URL2);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a14b0oe);
           props_InferenceRule = cpb.create();
         }
@@ -575,7 +575,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_NonTypesystemRule == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a16b0oe);
+          cpb.helpUrl(HELP_URL3);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a16b0oe);
           props_NonTypesystemRule = cpb.create();
         }
@@ -619,7 +619,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_OverloadedOpRulesContainer == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a76b0oe);
+          cpb.helpUrl(HELP_URL4);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a76b0oe);
           props_OverloadedOpRulesContainer = cpb.create();
         }
@@ -825,7 +825,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_SubstituteTypeRule == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a69b0oe);
+          cpb.helpUrl(HELP_URL5);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a69b0oe);
           props_SubstituteTypeRule = cpb.create();
         }
@@ -834,7 +834,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_SubtypingRule == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a79b0oe);
+          cpb.helpUrl(HELP_URL6);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a79b0oe);
           props_SubtypingRule = cpb.create();
         }
@@ -906,7 +906,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_TypesystemQuickFix == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a701b0oe);
+          cpb.helpUrl(HELP_URL7);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a701b0oe);
           props_TypesystemQuickFix = cpb.create();
         }
@@ -936,7 +936,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_VariableConvertersContainer == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.rawPresentation("Variable Converters");
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a111b0oe);
+          cpb.helpUrl(HELP_URL8);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a111b0oe);
           props_VariableConvertersContainer = cpb.create();
         }
@@ -980,13 +980,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a2a0a71b0oe = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a04b0oe = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a14b0oe = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a16b0oe = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a76b0oe = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a69b0oe = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a79b0oe = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a701b0oe = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a111b0oe = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
+  private static final String HELP_URL1 = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
+  private static final String HELP_URL2 = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
+  private static final String HELP_URL3 = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
+  private static final String HELP_URL4 = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
+  private static final String HELP_URL5 = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
+  private static final String HELP_URL6 = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
+  private static final String HELP_URL7 = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
+  private static final String HELP_URL8 = URLFunction_HelpCenterDocUrl.getUrl() + "typesystem.html";
 }

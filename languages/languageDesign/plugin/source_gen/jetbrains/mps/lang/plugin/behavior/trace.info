@@ -4927,7 +4927,7 @@
       <node id="471625927510013246" at="24,0,25,0" concept="12" trace="CONCEPT" />
       <node id="471625927510013246" at="26,0,27,0" concept="12" trace="getNumber_idqbzkx46jl9" />
       <node id="471625927510013246" at="28,0,29,0" concept="12" trace="BH_METHODS" />
-      <node id="471625927510036463" at="34,113,35,94" concept="9" />
+      <node id="471625927510036463" at="34,99,35,94" concept="9" />
       <node id="471625927510037503" at="36,12,37,16" concept="9" />
       <node id="471625927510013246" at="45,114,46,21" concept="4" />
       <node id="471625927510013246" at="50,114,51,49" concept="8" />
@@ -4939,7 +4939,7 @@
       <node id="471625927510013246" at="70,14,71,58" concept="15" />
       <node id="471625927510013246" at="77,48,78,22" concept="9" />
       <node id="471625927510013246" at="83,40,84,19" concept="9" />
-      <node id="471625927510035867" at="86,0,87,0" concept="12" trace="REGEXP_k3b4z8_a0a0a8" />
+      <node id="471625927510035867" at="86,0,87,0" concept="12" trace="REGEXP" />
       <node id="471625927510013246" at="89,0,90,0" concept="12" trace="number$WFYX" />
       <node id="471625927510013246" at="30,0,32,0" concept="13" trace="___init___#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="471625927510037068" at="36,10,38,5" concept="0" />
@@ -4957,7 +4957,7 @@
       <node id="471625927510013246" at="49,0,62,0" concept="7" trace="invokeSpecial0#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/core/aspects/behaviour/api/SMethod;[Ljava/lang/Object;)null" />
       <scope id="471625927510013246" at="30,63,30,63" />
       <scope id="471625927510013246" at="41,56,41,56" />
-      <scope id="471625927510021205" at="34,113,35,94" />
+      <scope id="471625927510021205" at="34,99,35,94" />
       <scope id="471625927510037069" at="36,12,37,16" />
       <scope id="471625927510013246" at="45,114,46,21" />
       <scope id="471625927510013246" at="52,26,53,56" />

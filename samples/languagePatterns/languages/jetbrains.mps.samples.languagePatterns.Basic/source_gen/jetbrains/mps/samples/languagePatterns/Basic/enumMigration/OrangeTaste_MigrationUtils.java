@@ -9,7 +9,7 @@ import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
 
 public class OrangeTaste_MigrationUtils {
   public static String value(SEnumerationLiteral enummember) {
-    switch (enumSwitchIndex_82ftuk_a0a0a.indexNullable(enummember)) {
+    switch (enumSwitchIndex.indexNullable(enummember)) {
       case 0:
         return null;
       case 1:
@@ -29,5 +29,5 @@ public class OrangeTaste_MigrationUtils {
         return null;
     }
   }
-  private static final EnumerationLiteralsIndex enumSwitchIndex_82ftuk_a0a0a = EnumerationLiteralsIndex.build(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae786bbbcL, 0x34c8853ae786bbbdL, 0x34c8853ae786bbbeL, 0x34c8853ae786bbc1L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex = EnumerationLiteralsIndex.build(0x7a6f7ef73988464bL, 0x8cc51182671c136eL, 0x34c8853ae786bbbcL, 0x34c8853ae786bbbdL, 0x34c8853ae786bbbeL, 0x34c8853ae786bbc1L);
 }

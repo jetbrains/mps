@@ -357,7 +357,7 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
   }
 
   private static boolean isValidIdentifier(String name) {
-    return (name != null && name.length() > 0) && (REGEXP_3t318f_a0a0a0a92.matcher(name).matches());
+    return (name != null && name.length() > 0) && (REGEXP.matcher(name).matches());
   }
 
   private interface NamingStrategy {
@@ -696,7 +696,7 @@ public class MigrateToNewEnumration extends MigrationScriptBase {
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
   }
-  private static final Pattern REGEXP_3t318f_a0a0a0a92 = Pattern.compile("[a-zA-Z\\$_][a-zA-Z0-9\\$_]*", 0);
+  private static final Pattern REGEXP = Pattern.compile("[a-zA-Z\\$_][a-zA-Z0-9\\$_]*", 0);
 
   private static final class PROPS {
     /*package*/ static final SProperty datatypeId$$gBg = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL, 0x6c1f946a87044403L, "datatypeId");

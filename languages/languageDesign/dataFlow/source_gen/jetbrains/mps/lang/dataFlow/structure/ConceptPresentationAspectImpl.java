@@ -99,7 +99,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_DataFlowBuilderDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a7b0jb);
+          cpb.helpUrl(HELP_URL);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a7b0jb);
           props_DataFlowBuilderDeclaration = cpb.create();
         }
@@ -286,5 +286,5 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a2a0a7b0jb = URLFunction_HelpCenterDocUrl.getUrl() + "data-flow.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "data-flow.html";
 }

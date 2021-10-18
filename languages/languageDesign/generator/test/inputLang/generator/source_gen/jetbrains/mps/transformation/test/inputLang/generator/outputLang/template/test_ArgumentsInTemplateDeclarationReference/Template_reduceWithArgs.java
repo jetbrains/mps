@@ -39,7 +39,7 @@ public class Template_reduceWithArgs extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context, null, propertyMacro_quugqv_c0a2a0a2a7)));
+    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context, null, propertyMacro)));
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }
@@ -71,5 +71,5 @@ public class Template_reduceWithArgs extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer propertyMacro_quugqv_c0a2a0a2a7 = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599876333");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599876333");
 }

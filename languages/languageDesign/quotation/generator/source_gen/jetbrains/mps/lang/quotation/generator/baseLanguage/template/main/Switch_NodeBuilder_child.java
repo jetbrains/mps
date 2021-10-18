@@ -85,13 +85,13 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
           final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
           {
             environment.nodeCopied(context3, tnode4, "tpl/r:00000000-0000-4000-0000-011c8959034c/1724959616550877003");
-            SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_5_0(new PropertyMacroContext(context3, "_node_", propertyMacro_zay0px_c0a2a1a3a1a5a2g)));
+            SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_5_0(new PropertyMacroContext(context3, "_node_", propertyMacro)));
             TemplateContext context4 = context3.subContext();
             {
               Collection<SNode> tlist5 = null;
               try {
                 TemplateContext switchContext5 = context4;
-                tlist5 = environment.trySwitch(templateSwitchNodeNoInput_zay0px_a0a0b0b0d0d0b0f0c6, switchContext5);
+                tlist5 = environment.trySwitch(templateSwitchNodeNoInput, switchContext5);
                 if (tlist5 == null) {
                   final SNode tnode6 = environment.createOutputNode(myConcepts[2]);
                   environment.associate(tnode6, myAssociationLinks[0], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.builder(MPS.Core/)", "~AbstractNodeBuilder");
@@ -121,14 +121,14 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                     }
                     {
                       Collection<SNode> tlist10 = Collections.emptyList();
-                      if (QueriesGenerated.ifMacro_Condition_5_0(new IfMacroContext(context6, ifMacroRef_zay0px_b0a0b0c0b0b0b0e0d0b0f0c6))) {
+                      if (QueriesGenerated.ifMacro_Condition_5_0(new IfMacroContext(context6, ifMacroRef))) {
                         final SNode tnode11 = environment.createOutputNode(myConcepts[5]);
                         {
                           environment.associate(tnode11, myAssociationLinks[2], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.builder(MPS.Core/)", "~AbstractNodeBuilder.forChild(org.jetbrains.mps.openapi.language.SContainmentLink)");
                           TemplateContext context7 = context6.subContext();
                           {
                             Collection<SNode> tlist12 = null;
-                            SNode callInputNode12 = QueriesGenerated.sourceNodeQuery_5_0(new SourceSubstituteMacroNodeContext(context7, callMacro_zay0px_b0a0a1a2a1a1a2a1a1a1a4a3a1a5a2g));
+                            SNode callInputNode12 = QueriesGenerated.sourceNodeQuery_5_0(new SourceSubstituteMacroNodeContext(context7, callMacro));
                             TemplateContext context8 = context7;
                             context8 = context8.subContext(null, callInputNode12);
                             if (callInputNode12 != null) {
@@ -156,7 +156,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                     TemplateContext switchContext14 = context5;
                     switchContext14 = switchContext14.withVariable("targetConcept", ((SNode) QueriesGenerated.templateArgumentQuery_5_1(new TemplateArgumentContext(switchContext14, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567147148667")))));
                     switchContext14 = switchContext14.withVariable("allowNull", ((Optional<Boolean>) QueriesGenerated.templateArgumentQuery_5_2(new TemplateArgumentContext(switchContext14, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567146643991")))));
-                    tlist14 = environment.trySwitch(templateSwitchNodeNoInput_zay0px_a0a0d0b0c0b0e0d0b0f0c6, switchContext14);
+                    tlist14 = environment.trySwitch(templateSwitchNodeNoInput1, switchContext14);
                     if (tlist14 == null) {
                       final SNode tnode15 = environment.createOutputNode(myConcepts[5]);
                       {
@@ -184,7 +184,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
       }
       tlist1 = TemplateUtil.singletonList(tnode2);
       final List<SNode> tlist17 = new ArrayList<SNode>();
-      final Iterable<SNode> loopList17 = QueriesGenerated.sourceNodesQuery_5_0(new SourceSubstituteMacroNodesContext(context, loopMacroRef_zay0px_b0a0a8a2g));
+      final Iterable<SNode> loopList17 = QueriesGenerated.sourceNodesQuery_5_0(new SourceSubstituteMacroNodesContext(context, loopMacroRef));
       for (SNode itnode17 : loopList17) {
         if (itnode17 == null) {
           continue;
@@ -193,8 +193,8 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
         Collection<SNode> tlist18 = null;
         try {
           TemplateContext switchContext18 = context10;
-          switchContext18 = switchContext18.withVariable("nodeBuilderNode", ((SNode) QueriesGenerated.templateArgumentQuery_5_0(new TemplateArgumentContext(switchContext18, templArgCall_zay0px_b0a0a1a0a1a3a9a2g))));
-          tlist18 = environment.trySwitch(templateSwitchNodeNoInput_zay0px_a0a0c0d0j0c6, switchContext18);
+          switchContext18 = switchContext18.withVariable("nodeBuilderNode", ((SNode) QueriesGenerated.templateArgumentQuery_5_0(new TemplateArgumentContext(switchContext18, templArgCall))));
+          tlist18 = environment.trySwitch(templateSwitchNodeNoInput2, switchContext18);
           if (tlist18 == null) {
             final SNode tnode19 = environment.createOutputNode(myConcepts[7]);
             {
@@ -242,7 +242,7 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                 TemplateContext switchContext3 = context2;
                 switchContext3 = switchContext3.withVariable("targetConcept", ((SNode) QueriesGenerated.templateArgumentQuery_5_3(new TemplateArgumentContext(switchContext3, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567145072672")))));
                 switchContext3 = switchContext3.withVariable("allowNull", ((Optional<Boolean>) QueriesGenerated.templateArgumentQuery_5_4(new TemplateArgumentContext(switchContext3, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567145350717")))));
-                tlist3 = environment.trySwitch(templateSwitchNodeNoInput_zay0px_a0a0d0b0b0b0b0c0b7, switchContext3);
+                tlist3 = environment.trySwitch(templateSwitchNodeNoInput3, switchContext3);
                 if (tlist3 == null) {
                   final SNode tnode4 = environment.createOutputNode(myConcepts[5]);
                   {
@@ -275,14 +275,14 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
                 }
                 {
                   Collection<SNode> tlist8 = Collections.emptyList();
-                  if (QueriesGenerated.ifMacro_Condition_5_1(new IfMacroContext(context4, ifMacroRef_zay0px_b0a0b0c0b0c0b0b0c0b7))) {
+                  if (QueriesGenerated.ifMacro_Condition_5_1(new IfMacroContext(context4, ifMacroRef1))) {
                     final SNode tnode9 = environment.createOutputNode(myConcepts[5]);
                     {
                       environment.associate(tnode9, myAssociationLinks[2], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.builder(MPS.Core/)", "~AbstractNodeBuilder.forChild(org.jetbrains.mps.openapi.language.SContainmentLink)");
                       TemplateContext context5 = context4.subContext();
                       {
                         Collection<SNode> tlist10 = null;
-                        SNode callInputNode10 = QueriesGenerated.sourceNodeQuery_5_1(new SourceSubstituteMacroNodeContext(context5, callMacro_zay0px_b0a0a1a2a1a1a2a1a2a1a1a2a1h));
+                        SNode callInputNode10 = QueriesGenerated.sourceNodeQuery_5_1(new SourceSubstituteMacroNodeContext(context5, callMacro1));
                         TemplateContext context6 = context5;
                         context6 = context6.subContext(null, callInputNode10);
                         if (callInputNode10 != null) {
@@ -359,17 +359,17 @@ public class Switch_NodeBuilder_child extends TemplateSwitchBase implements Temp
       return rv;
     }
   }
-  private static final SNodePointer propertyMacro_zay0px_c0a2a1a3a1a5a2g = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1724959616550877005");
-  private static final SNodePointer templateSwitchNodeNoInput_zay0px_a0a0b0b0d0d0b0f0c6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2595803291918772616");
-  private static final SNodePointer callMacro_zay0px_b0a0a1a2a1a1a2a1a1a1a4a3a1a5a2g = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144955");
-  private static final SNodePointer ifMacroRef_zay0px_b0a0b0c0b0b0b0e0d0b0f0c6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567143463757");
-  private static final SNodePointer templateSwitchNodeNoInput_zay0px_a0a0d0b0c0b0e0d0b0f0c6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567144984562");
-  private static final SNodePointer loopMacroRef_zay0px_b0a0a8a2g = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567145285765");
-  private static final SNodePointer templArgCall_zay0px_b0a0a1a0a1a3a9a2g = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567145285773");
-  private static final SNodePointer templateSwitchNodeNoInput_zay0px_a0a0c0d0j0c6 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288100412635");
-  private static final SNodePointer templateSwitchNodeNoInput_zay0px_a0a0d0b0b0b0b0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567144984562");
-  private static final SNodePointer callMacro_zay0px_b0a0a1a2a1a1a2a1a2a1a1a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567143532161");
-  private static final SNodePointer ifMacroRef_zay0px_b0a0b0c0b0c0b0b0c0b7 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567143532171");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1724959616550877005");
+  private static final SNodePointer templateSwitchNodeNoInput = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2595803291918772616");
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144955");
+  private static final SNodePointer ifMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567143463757");
+  private static final SNodePointer templateSwitchNodeNoInput1 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567144984562");
+  private static final SNodePointer loopMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567145285765");
+  private static final SNodePointer templArgCall = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567145285773");
+  private static final SNodePointer templateSwitchNodeNoInput2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "5756354288100412635");
+  private static final SNodePointer templateSwitchNodeNoInput3 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567144984562");
+  private static final SNodePointer callMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567143532161");
+  private static final SNodePointer ifMacroRef1 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "8642609567143532171");
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept NodeBuilderInitValueChild$Hw = MetaAdapterFactory.getInterfaceConcept(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x77f0b79c5e1788feL, "jetbrains.mps.lang.quotation.structure.NodeBuilderInitValueChild");

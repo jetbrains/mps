@@ -38,7 +38,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     {
-      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_3_1(new PropertyMacroContext(context, "method", propertyMacro_irzm9l_c0a2a0a2a6)));
+      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_3_1(new PropertyMacroContext(context, "method", propertyMacro)));
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
@@ -86,7 +86,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                               }
                               {
                                 final SNode tnode12 = environment.createOutputNode(myConcepts[9]);
-                                SNodeAccessUtil.setPropertyValue(tnode12, myProperties[1], QueriesGenerated.propertyMacro_GetValue_3_0(new PropertyMacroContext(context7, "name", propertyMacro_irzm9l_c0a2a0a1a2a1a1a1a2a1a2a1a1a1a1a1a4a2a6)));
+                                SNodeAccessUtil.setPropertyValue(tnode12, myProperties[1], QueriesGenerated.propertyMacro_GetValue_3_0(new PropertyMacroContext(context7, "name", propertyMacro1)));
                                 environment.aggregate(tnode10, myAggregationLinks[4], tnode12);
                               }
                             }
@@ -120,7 +120,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     {
-      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_3_3(new PropertyMacroContext(context, "method2", propertyMacro_irzm9l_c0a2a0a2a7)));
+      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_3_3(new PropertyMacroContext(context, "method2", propertyMacro2)));
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
@@ -173,7 +173,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                               }
                               {
                                 final SNode tnode13 = environment.createOutputNode(myConcepts[9]);
-                                SNodeAccessUtil.setPropertyValue(tnode13, myProperties[1], QueriesGenerated.propertyMacro_GetValue_3_2(new PropertyMacroContext(context7, "name", propertyMacro_irzm9l_c0a2a0a1a2a1a2a1a2a1a2a1a1a1a1a1a4a2a7)));
+                                SNodeAccessUtil.setPropertyValue(tnode13, myProperties[1], QueriesGenerated.propertyMacro_GetValue_3_2(new PropertyMacroContext(context7, "name", propertyMacro3)));
                                 environment.aggregate(tnode11, myAggregationLinks[4], tnode13);
                               }
                             }
@@ -202,7 +202,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     {
-      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_3_5(new PropertyMacroContext(context, "method3", propertyMacro_irzm9l_c0a2a0a2a8)));
+      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_3_5(new PropertyMacroContext(context, "method3", propertyMacro4)));
       TemplateContext context1 = context.subContext();
       {
         final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
@@ -250,7 +250,7 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
                               }
                               {
                                 final SNode tnode12 = environment.createOutputNode(myConcepts[9]);
-                                SNodeAccessUtil.setPropertyValue(tnode12, myProperties[1], QueriesGenerated.propertyMacro_GetValue_3_4(new PropertyMacroContext(context7, "name", propertyMacro_irzm9l_c0a2a0a1a2a1a1a1a2a1a2a1a1a1a1a1a4a2a8)));
+                                SNodeAccessUtil.setPropertyValue(tnode12, myProperties[1], QueriesGenerated.propertyMacro_GetValue_3_4(new PropertyMacroContext(context7, "name", propertyMacro5)));
                                 environment.aggregate(tnode10, myAggregationLinks[4], tnode12);
                               }
                             }
@@ -338,10 +338,10 @@ public class Template_weave_ChildConceptWeaveMany extends TemplateDeclarationBas
       return rv;
     }
   }
-  private static final SNodePointer propertyMacro_irzm9l_c0a2a0a2a6 = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533416");
-  private static final SNodePointer propertyMacro_irzm9l_c0a2a0a1a2a1a1a1a2a1a2a1a1a1a1a1a4a2a6 = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533407");
-  private static final SNodePointer propertyMacro_irzm9l_c0a2a0a2a7 = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533457");
-  private static final SNodePointer propertyMacro_irzm9l_c0a2a0a1a2a1a2a1a2a1a2a1a1a1a1a1a4a2a7 = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533448");
-  private static final SNodePointer propertyMacro_irzm9l_c0a2a0a2a8 = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533490");
-  private static final SNodePointer propertyMacro_irzm9l_c0a2a0a1a2a1a1a1a2a1a2a1a1a1a1a1a4a2a8 = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533481");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533416");
+  private static final SNodePointer propertyMacro1 = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533407");
+  private static final SNodePointer propertyMacro2 = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533457");
+  private static final SNodePointer propertyMacro3 = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533448");
+  private static final SNodePointer propertyMacro4 = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533490");
+  private static final SNodePointer propertyMacro5 = new SNodePointer("r:592e27b6-d258-4bf2-9e32-25019862e1f1(jetbrains.mps.traceInfo.testWeavingGenerated.data.generator.template.main@generator)", "6186432342008533481");
 }

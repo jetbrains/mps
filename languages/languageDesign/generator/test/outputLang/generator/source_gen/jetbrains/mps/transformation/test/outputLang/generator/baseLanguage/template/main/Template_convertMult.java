@@ -47,14 +47,14 @@ public class Template_convertMult extends TemplateDeclarationBase {
           TemplateContext context2 = context1.subContext();
           {
             Collection<SNode> tlist3 = null;
-            final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_2_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_dv1upb_b0a0c0b0b0b0c0h));
-            tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro_dv1upb_b0a0c0b0b0b0c0h, "tpl/r:00000000-0000-4000-0000-011c89590606/4265636116363093718", context2);
+            final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_2_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro));
+            tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590606/4265636116363093718", context2);
             environment.aggregate(tnode2, myAggregationLinks[0], tlist3);
           }
           {
             Collection<SNode> tlist4 = null;
-            final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_2_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_dv1upb_b0a0c0c0b0b0c0h));
-            tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_dv1upb_b0a0c0c0b0b0c0h, "tpl/r:00000000-0000-4000-0000-011c89590606/4146564171992617079", context2);
+            final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_2_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro1));
+            tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro1, "tpl/r:00000000-0000-4000-0000-011c89590606/4146564171992617079", context2);
             environment.aggregate(tnode2, myAggregationLinks[1], tlist4);
           }
         }
@@ -90,6 +90,6 @@ public class Template_convertMult extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer copySrcMacro_dv1upb_b0a0c0b0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992617088");
-  private static final SNodePointer copySrcMacro_dv1upb_b0a0c0c0b0b0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992617084");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992617088");
+  private static final SNodePointer copySrcMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992617084");
 }

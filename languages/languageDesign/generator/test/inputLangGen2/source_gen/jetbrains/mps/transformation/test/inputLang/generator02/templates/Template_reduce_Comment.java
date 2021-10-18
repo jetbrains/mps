@@ -54,7 +54,7 @@ public class Template_reduce_Comment extends TemplateDeclarationBase {
           }
           {
             final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
-            SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_2_0(new PropertyMacroContext(context2, "m", propertyMacro_476f6d_c0a2a0a1a3a1a1a2a6)));
+            SNodeAccessUtil.setPropertyValue(tnode5, myProperties[0], QueriesGenerated.propertyMacro_GetValue_2_0(new PropertyMacroContext(context2, "m", propertyMacro)));
             environment.aggregate(tnode2, myAggregationLinks[0], tnode5);
           }
         }
@@ -96,5 +96,5 @@ public class Template_reduce_Comment extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer propertyMacro_476f6d_c0a2a0a1a3a1a1a2a6 = new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832205703");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832205703");
 }

@@ -9,7 +9,7 @@ import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
 
 public class BuildMps_GeneratorOptions_SkipUnmodifiedModels_MigrationUtils {
   public static String value(SEnumerationLiteral enummember) {
-    switch (enumSwitchIndex_9ooe68_a0a0a.indexNullable(enummember)) {
+    switch (enumSwitchIndex.indexNullable(enummember)) {
       case 0:
         return null;
       case 1:
@@ -29,5 +29,5 @@ public class BuildMps_GeneratorOptions_SkipUnmodifiedModels_MigrationUtils {
         return null;
     }
   }
-  private static final EnumerationLiteralsIndex enumSwitchIndex_9ooe68_a0a0a = EnumerationLiteralsIndex.build(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x37b3e610a73c6cbL, 0x37b3e610a73c6ccL, 0x37b3e610a73c6cdL);
+  private static final EnumerationLiteralsIndex enumSwitchIndex = EnumerationLiteralsIndex.build(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x37b3e610a73c6cbL, 0x37b3e610a73c6ccL, 0x37b3e610a73c6cdL);
 }

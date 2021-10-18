@@ -9,7 +9,7 @@ import jetbrains.mps.lang.smodel.EnumerationLiteralsIndex;
 
 public class _NextLine_Enum_MigrationUtils {
   public static String value(SEnumerationLiteral enummember) {
-    switch (enumSwitchIndex_eoxqlg_a0a0a.indexNullable(enummember)) {
+    switch (enumSwitchIndex.indexNullable(enummember)) {
       case 0:
         return null;
       case 1:
@@ -33,5 +33,5 @@ public class _NextLine_Enum_MigrationUtils {
         return null;
     }
   }
-  private static final EnumerationLiteralsIndex enumSwitchIndex_eoxqlg_a0a0a = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b31a0f3f8L, 0x11b31a2f1b1L, 0x11b31a2e193L, 0x11b31a0f3f9L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex = EnumerationLiteralsIndex.build(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11b31a0f3f8L, 0x11b31a2f1b1L, 0x11b31a2e193L, 0x11b31a0f3f9L);
 }

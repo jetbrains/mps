@@ -241,7 +241,7 @@ public class BuildStringPart_SubstituteMenu extends SubstituteMenuBase {
           return "text";
         }
         {
-          Pattern _pattern_0 = REGEXP_fvo6kj_a0a0b0j2g;
+          Pattern _pattern_0 = REGEXP;
           Matcher _matcher_0 = _pattern_0.matcher(pattern);
           if (_matcher_0.find()) {
             SNode container = (SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.BuildString$bl) ? SNodeOperations.getParent(_context.getParentNode()) : _context.getParentNode());
@@ -280,7 +280,7 @@ public class BuildStringPart_SubstituteMenu extends SubstituteMenuBase {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
   }
-  private static final Pattern REGEXP_fvo6kj_a0a0b0j2g = Pattern.compile("[^\\$].*", 0);
+  private static final Pattern REGEXP = Pattern.compile("[^\\$].*", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BuildVarRefStringPart$2T = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x440d7ea3b68b7d01L, "jetbrains.mps.build.structure.BuildVarRefStringPart");

@@ -30,11 +30,11 @@
       <node id="1158700664498" at="31,0,32,0" concept="2" trace="props_NodeFactories" />
       <node id="1158700664498" at="183,42,184,76" concept="5" />
       <node id="1158700664498" at="184,76,185,35" concept="1" />
-      <node id="1158700664498" at="185,35,186,53" concept="1" />
-      <node id="1158700664498" at="186,53,187,57" concept="1" />
+      <node id="1158700664498" at="185,35,186,33" concept="1" />
+      <node id="1158700664498" at="186,33,187,57" concept="1" />
       <node id="1158700664498" at="187,57,188,45" concept="1" />
       <node id="1158700664498" at="189,9,190,35" concept="6" />
-      <node id="7510078983807255565" at="287,0,288,0" concept="7" trace="HELP_URL_lpa09p_a0a2a0a81b0gb" />
+      <node id="7510078983807255565" at="287,0,288,0" concept="7" trace="HELP_URL1" />
       <node id="1158700664498" at="182,47,189,9" concept="3" />
       <scope id="1158700664498" at="183,42,188,45">
         <var name="cpb" id="1158700664498" />
@@ -146,11 +146,11 @@
       <node id="1221135252814" at="41,0,42,0" concept="2" trace="props_PasteWrappers" />
       <node id="1221135252814" at="260,42,261,76" concept="5" />
       <node id="1221135252814" at="261,76,262,35" concept="1" />
-      <node id="1221135252814" at="262,35,263,53" concept="1" />
-      <node id="1221135252814" at="263,53,264,57" concept="1" />
+      <node id="1221135252814" at="262,35,263,33" concept="1" />
+      <node id="1221135252814" at="263,33,264,57" concept="1" />
       <node id="1221135252814" at="264,57,265,45" concept="1" />
       <node id="1221135252814" at="266,9,267,35" concept="6" />
-      <node id="7510078983807255569" at="288,0,289,0" concept="7" trace="HELP_URL_lpa09p_a0a2a0a82b0gb" />
+      <node id="7510078983807255569" at="288,0,289,0" concept="7" trace="HELP_URL2" />
       <node id="1221135252814" at="259,47,266,9" concept="3" />
       <scope id="1221135252814" at="260,42,265,45">
         <var name="cpb" id="1221135252814" />
@@ -824,10 +824,10 @@
       <node id="5948027493682789918" at="17,0,18,0" concept="2" trace="props_CopyPasteHandlers" />
       <node id="5948027493682789918" at="79,46,80,76" concept="5" />
       <node id="5948027493682789918" at="80,76,81,35" concept="1" />
-      <node id="5948027493682789918" at="81,35,82,52" concept="1" />
-      <node id="5948027493682789918" at="82,52,83,49" concept="1" />
+      <node id="5948027493682789918" at="81,35,82,32" concept="1" />
+      <node id="5948027493682789918" at="82,32,83,49" concept="1" />
       <node id="5948027493682789918" at="84,9,85,39" concept="6" />
-      <node id="7510078983807255571" at="286,0,287,0" concept="7" trace="HELP_URL_lpa09p_a0a2a0a4b0gb" />
+      <node id="7510078983807255571" at="286,0,287,0" concept="7" trace="HELP_URL" />
       <node id="5948027493682789918" at="78,51,84,9" concept="3" />
       <scope id="5948027493682789918" at="79,46,83,49">
         <var name="cpb" id="5948027493682789918" />

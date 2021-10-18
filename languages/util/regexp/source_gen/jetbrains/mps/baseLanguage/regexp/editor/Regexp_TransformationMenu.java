@@ -168,7 +168,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          if (!(REGEXP_luzgqn_a0a0a0e2e7.matcher(pattern).matches())) {
+          if (!(REGEXP.matcher(pattern).matches())) {
             return "{n}";
           }
           String s = pattern;
@@ -184,7 +184,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
           SNodeOperations.replaceWithAnother(_context.getNode(), node);
           SLinkOperations.setTarget(node, LINKS.regexp$$Nis, _context.getNode());
           {
-            Pattern _pattern_0 = REGEXP_luzgqn_a0a0d0g2e7;
+            Pattern _pattern_0 = REGEXP1;
             Matcher _matcher_0 = _pattern_0.matcher(pattern);
             if (_matcher_0.find()) {
               SPropertyOperations.assign(node, PROPS.n$OXsm, Integer.parseInt(_matcher_0.group(1)));
@@ -250,7 +250,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          if (!(REGEXP_luzgqn_a0a0a0e2f7.matcher(pattern).matches())) {
+          if (!(REGEXP2.matcher(pattern).matches())) {
             return "{n,}";
           }
           String s = pattern;
@@ -266,7 +266,7 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
           SNodeOperations.replaceWithAnother(_context.getNode(), node);
           SLinkOperations.setTarget(node, LINKS.regexp$$Nis, _context.getNode());
           {
-            Pattern _pattern_0 = REGEXP_luzgqn_a0a0d0g2f7;
+            Pattern _pattern_0 = REGEXP3;
             Matcher _matcher_0 = _pattern_0.matcher(pattern);
             if (_matcher_0.find()) {
               SPropertyOperations.assign(node, PROPS.n$FKYt, Integer.parseInt(_matcher_0.group(1)));
@@ -332,20 +332,20 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
         @Nullable
         @Override
         public String getLabelText(String pattern) {
-          if (!(REGEXP_luzgqn_a0a0a0e2g7.matcher(pattern).matches())) {
+          if (!(REGEXP4.matcher(pattern).matches())) {
             return "{n,m}";
           }
           String left = "n";
           String right = "m";
           {
-            Pattern _pattern_0 = REGEXP_luzgqn_a0a0d0e2g7;
+            Pattern _pattern_0 = REGEXP5;
             Matcher _matcher_0 = _pattern_0.matcher(pattern);
             if (_matcher_0.find()) {
               right = _matcher_0.group(1);
             }
           }
           {
-            Pattern _pattern_0 = REGEXP_luzgqn_a0a0e0e2g7;
+            Pattern _pattern_0 = REGEXP6;
             Matcher _matcher_0 = _pattern_0.matcher(pattern);
             if (_matcher_0.find()) {
               left = _matcher_0.group(1);
@@ -360,14 +360,14 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
           SNodeOperations.replaceWithAnother(_context.getNode(), node);
           SLinkOperations.setTarget(node, LINKS.regexp$$Nis, _context.getNode());
           {
-            Pattern _pattern_0 = REGEXP_luzgqn_a0a0d0g2g7;
+            Pattern _pattern_0 = REGEXP7;
             Matcher _matcher_0 = _pattern_0.matcher(pattern);
             if (_matcher_0.find()) {
               SPropertyOperations.assign(node, PROPS.m$NmrG, Integer.parseInt(_matcher_0.group(1)));
             }
           }
           {
-            Pattern _pattern_0 = REGEXP_luzgqn_a0a0e0g2g7;
+            Pattern _pattern_0 = REGEXP8;
             Matcher _matcher_0 = _pattern_0.matcher(pattern);
             if (_matcher_0.find()) {
               SPropertyOperations.assign(node, PROPS.n$X7je, Integer.parseInt(_matcher_0.group(1)));
@@ -1027,15 +1027,15 @@ public class Regexp_TransformationMenu extends TransformationMenuBase {
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
   }
-  private static final Pattern REGEXP_luzgqn_a0a0a0e2e7 = Pattern.compile("\\{\\d+\\}?", 0);
-  private static final Pattern REGEXP_luzgqn_a0a0d0g2e7 = Pattern.compile("^\\{(\\d+)", 0);
-  private static final Pattern REGEXP_luzgqn_a0a0a0e2f7 = Pattern.compile("\\{\\d+(?:,\\}?)?", 0);
-  private static final Pattern REGEXP_luzgqn_a0a0d0g2f7 = Pattern.compile("^\\{(\\d+)", 0);
-  private static final Pattern REGEXP_luzgqn_a0a0a0e2g7 = Pattern.compile("\\{\\d+(?:,(?:\\d+\\}?)?)?", 0);
-  private static final Pattern REGEXP_luzgqn_a0a0d0e2g7 = Pattern.compile("\\{\\d+,(\\d+)", 0);
-  private static final Pattern REGEXP_luzgqn_a0a0e0e2g7 = Pattern.compile("\\{(\\d+)", 0);
-  private static final Pattern REGEXP_luzgqn_a0a0d0g2g7 = Pattern.compile("\\{\\d+,(\\d+)", 0);
-  private static final Pattern REGEXP_luzgqn_a0a0e0g2g7 = Pattern.compile("\\{(\\d+)", 0);
+  private static final Pattern REGEXP = Pattern.compile("\\{\\d+\\}?", 0);
+  private static final Pattern REGEXP1 = Pattern.compile("^\\{(\\d+)", 0);
+  private static final Pattern REGEXP2 = Pattern.compile("\\{\\d+(?:,\\}?)?", 0);
+  private static final Pattern REGEXP3 = Pattern.compile("^\\{(\\d+)", 0);
+  private static final Pattern REGEXP4 = Pattern.compile("\\{\\d+(?:,(?:\\d+\\}?)?)?", 0);
+  private static final Pattern REGEXP5 = Pattern.compile("\\{\\d+,(\\d+)", 0);
+  private static final Pattern REGEXP6 = Pattern.compile("\\{(\\d+)", 0);
+  private static final Pattern REGEXP7 = Pattern.compile("\\{\\d+,(\\d+)", 0);
+  private static final Pattern REGEXP8 = Pattern.compile("\\{(\\d+)", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Regexp$aA = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11174a06efdL, "jetbrains.mps.baseLanguage.regexp.structure.Regexp");

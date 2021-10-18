@@ -85,7 +85,7 @@ public class InstallIDEAPlugin_Action extends BaseAction {
     String userHome = System.getProperty("user.home");
     String ideaConfigRootPath = (isMac ? userHome + File.separator + "Library" + File.separator + "Application Support" : userHome);
     final VirtualFile ideaConfigRoot = VirtualFileUtils.getVirtualFile(ideaConfigRootPath);
-    final Pattern namePattern = (isMac ? REGEXP_gyxeh4_a0a4a7_0 : REGEXP_gyxeh4_a0a4a7);
+    final Pattern namePattern = (isMac ? REGEXP1 : REGEXP);
     List<VirtualFile> existingIdeaConfigs = ListSequence.fromList(new ArrayList<VirtualFile>());
     for (VirtualFile child : ideaConfigRoot.getChildren()) {
       if (child.isDirectory()) {
@@ -121,6 +121,6 @@ public class InstallIDEAPlugin_Action extends BaseAction {
     assert files.length <= 1;
     return (files.length == 0 ? null : VirtualFileUtils.toFile(files[0]));
   }
-  private static final Pattern REGEXP_gyxeh4_a0a4a7 = Pattern.compile("(?:\\.IntelliJIdea.*)|(?:\\.IdeaIC.*)", 0);
-  private static final Pattern REGEXP_gyxeh4_a0a4a7_0 = Pattern.compile("(?:IntelliJIdea.*)|(?:IdeaIC.*)", 0);
+  private static final Pattern REGEXP = Pattern.compile("(?:\\.IntelliJIdea.*)|(?:\\.IdeaIC.*)", 0);
+  private static final Pattern REGEXP1 = Pattern.compile("(?:IntelliJIdea.*)|(?:IdeaIC.*)", 0);
 }

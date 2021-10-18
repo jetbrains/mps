@@ -70,7 +70,7 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      if (QueriesGenerated.rule_Condition_1_0(new BaseMappingRuleContext(context, rule_ugw0jb_b0a0c0b8))) {
+      if (QueriesGenerated.rule_Condition_1_0(new BaseMappingRuleContext(context, rule))) {
         final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
         {
           environment.associate(tnode2, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.createStrictlyBeforeRule(jetbrains.mps.generator.runtime.TemplateMappingConfigRef,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
@@ -78,19 +78,19 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
           TemplateContext context1 = context.subContext();
           {
             Collection<SNode> tlist3 = null;
-            final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_1_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_ugw0jb_b0a0c0d0b0c0b8));
-            tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro_ugw0jb_b0a0c0d0b0c0b8, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710839873", context1);
+            final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_1_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+            tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710839873", context1);
             environment.aggregate(tnode2, myAggregationLinks[0], tlist3);
           }
           {
             Collection<SNode> tlist4 = null;
-            final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_1_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_ugw0jb_b0a0c0e0b0c0b8));
-            tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_ugw0jb_b0a0c0e0b0c0b8, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710839877", context1);
+            final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_1_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro1));
+            tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro1, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710839877", context1);
             environment.aggregate(tnode2, myAggregationLinks[0], tlist4);
           }
         }
         tlist1 = TemplateUtil.singletonList(tnode2);
-      } else if (QueriesGenerated.rule_Condition_1_1(new BaseMappingRuleContext(context, rule_ugw0jb_b0a0c0b8))) {
+      } else if (QueriesGenerated.rule_Condition_1_1(new BaseMappingRuleContext(context, rule))) {
         final SNode tnode5 = environment.createOutputNode(myConcepts[0]);
         {
           environment.associate(tnode5, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.createBeforeOrTogetherRule(jetbrains.mps.generator.runtime.TemplateMappingConfigRef,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
@@ -98,19 +98,19 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
           TemplateContext context2 = context.subContext();
           {
             Collection<SNode> tlist6 = null;
-            final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_1_2(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_ugw0jb_b0a0c0d0b0a2a1i));
-            tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro_ugw0jb_b0a0c0d0b0a2a1i, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710839957", context2);
+            final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_1_2(new SourceSubstituteMacroNodeContext(context2, copySrcMacro2));
+            tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro2, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710839957", context2);
             environment.aggregate(tnode5, myAggregationLinks[0], tlist6);
           }
           {
             Collection<SNode> tlist7 = null;
-            final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_1_3(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_ugw0jb_b0a0c0e0b0a2a1i));
-            tlist7 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput7), copySrcMacro_ugw0jb_b0a0c0e0b0a2a1i, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710839965", context2);
+            final SNode copySrcInput7 = QueriesGenerated.sourceNodeQuery_1_3(new SourceSubstituteMacroNodeContext(context2, copySrcMacro3));
+            tlist7 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput7), copySrcMacro3, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710839965", context2);
             environment.aggregate(tnode5, myAggregationLinks[0], tlist7);
           }
         }
         tlist1 = TemplateUtil.singletonList(tnode5);
-      } else if (QueriesGenerated.rule_Condition_1_2(new BaseMappingRuleContext(context, rule_ugw0jb_b0a0c0b8))) {
+      } else if (QueriesGenerated.rule_Condition_1_2(new BaseMappingRuleContext(context, rule))) {
         final SNode tnode8 = environment.createOutputNode(myConcepts[0]);
         {
           environment.associate(tnode8, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.createStrictlyAfterRule(jetbrains.mps.generator.runtime.TemplateMappingConfigRef,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
@@ -118,19 +118,19 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
           TemplateContext context3 = context.subContext();
           {
             Collection<SNode> tlist9 = null;
-            final SNode copySrcInput9 = QueriesGenerated.sourceNodeQuery_1_4(new SourceSubstituteMacroNodeContext(context3, copySrcMacro_ugw0jb_b0a0c0d0b0b2a1i));
-            tlist9 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput9), copySrcMacro_ugw0jb_b0a0c0d0b0b2a1i, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/2643213347103793323", context3);
+            final SNode copySrcInput9 = QueriesGenerated.sourceNodeQuery_1_4(new SourceSubstituteMacroNodeContext(context3, copySrcMacro4));
+            tlist9 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput9), copySrcMacro4, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/2643213347103793323", context3);
             environment.aggregate(tnode8, myAggregationLinks[0], tlist9);
           }
           {
             Collection<SNode> tlist10 = null;
-            final SNode copySrcInput10 = QueriesGenerated.sourceNodeQuery_1_5(new SourceSubstituteMacroNodeContext(context3, copySrcMacro_ugw0jb_b0a0c0e0b0b2a1i));
-            tlist10 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput10), copySrcMacro_ugw0jb_b0a0c0e0b0b2a1i, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/2643213347103793331", context3);
+            final SNode copySrcInput10 = QueriesGenerated.sourceNodeQuery_1_5(new SourceSubstituteMacroNodeContext(context3, copySrcMacro5));
+            tlist10 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput10), copySrcMacro5, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/2643213347103793331", context3);
             environment.aggregate(tnode8, myAggregationLinks[0], tlist10);
           }
         }
         tlist1 = TemplateUtil.singletonList(tnode8);
-      } else if (QueriesGenerated.rule_Condition_1_3(new BaseMappingRuleContext(context, rule_ugw0jb_b0a0c0b8))) {
+      } else if (QueriesGenerated.rule_Condition_1_3(new BaseMappingRuleContext(context, rule))) {
         final SNode tnode11 = environment.createOutputNode(myConcepts[0]);
         {
           environment.associate(tnode11, myAssociationLinks[0], "215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.runtime(MPS.Generator/)", "~TemplateUtil.createAfterOrTogetherRule(jetbrains.mps.generator.runtime.TemplateMappingConfigRef,jetbrains.mps.generator.runtime.TemplateMappingConfigRef)");
@@ -138,14 +138,14 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
           TemplateContext context4 = context.subContext();
           {
             Collection<SNode> tlist12 = null;
-            final SNode copySrcInput12 = QueriesGenerated.sourceNodeQuery_1_6(new SourceSubstituteMacroNodeContext(context4, copySrcMacro_ugw0jb_b0a0c0d0b0c2a1i));
-            tlist12 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput12), copySrcMacro_ugw0jb_b0a0c0d0b0c2a1i, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/2643213347103793340", context4);
+            final SNode copySrcInput12 = QueriesGenerated.sourceNodeQuery_1_6(new SourceSubstituteMacroNodeContext(context4, copySrcMacro6));
+            tlist12 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput12), copySrcMacro6, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/2643213347103793340", context4);
             environment.aggregate(tnode11, myAggregationLinks[0], tlist12);
           }
           {
             Collection<SNode> tlist13 = null;
-            final SNode copySrcInput13 = QueriesGenerated.sourceNodeQuery_1_7(new SourceSubstituteMacroNodeContext(context4, copySrcMacro_ugw0jb_b0a0c0e0b0c2a1i));
-            tlist13 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput13), copySrcMacro_ugw0jb_b0a0c0e0b0c2a1i, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/2643213347103793348", context4);
+            final SNode copySrcInput13 = QueriesGenerated.sourceNodeQuery_1_7(new SourceSubstituteMacroNodeContext(context4, copySrcMacro7));
+            tlist13 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput13), copySrcMacro7, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/2643213347103793348", context4);
             environment.aggregate(tnode11, myAggregationLinks[0], tlist13);
           }
         }
@@ -158,14 +158,14 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
           TemplateContext context5 = context.subContext();
           {
             Collection<SNode> tlist15 = null;
-            final SNode copySrcInput15 = QueriesGenerated.sourceNodeQuery_1_8(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_ugw0jb_b0a0c0d0b0a2a1i_0));
-            tlist15 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput15), copySrcMacro_ugw0jb_b0a0c0d0b0a2a1i_0, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710839974", context5);
+            final SNode copySrcInput15 = QueriesGenerated.sourceNodeQuery_1_8(new SourceSubstituteMacroNodeContext(context5, copySrcMacro8));
+            tlist15 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput15), copySrcMacro8, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710839974", context5);
             environment.aggregate(tnode14, myAggregationLinks[0], tlist15);
           }
           {
             Collection<SNode> tlist16 = null;
-            final SNode copySrcInput16 = QueriesGenerated.sourceNodeQuery_1_9(new SourceSubstituteMacroNodeContext(context5, copySrcMacro_ugw0jb_b0a0c0e0b0a2a1i_0));
-            tlist16 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput16), copySrcMacro_ugw0jb_b0a0c0e0b0a2a1i_0, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710839982", context5);
+            final SNode copySrcInput16 = QueriesGenerated.sourceNodeQuery_1_9(new SourceSubstituteMacroNodeContext(context5, copySrcMacro9));
+            tlist16 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput16), copySrcMacro9, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710839982", context5);
             environment.aggregate(tnode14, myAggregationLinks[0], tlist16);
           }
         }
@@ -188,13 +188,13 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
         TemplateContext context1 = context.subContext();
         {
           final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-          SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a2a0a1a3a2a1j)));
+          SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context1, "", propertyMacro)));
           environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
         }
         {
           Collection<SNode> tlist3 = null;
-          final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_1_10(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_ugw0jb_b0a0c0e0c0b9));
-          tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro_ugw0jb_b0a0c0e0c0b9, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710840109", context1);
+          final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_1_10(new SourceSubstituteMacroNodeContext(context1, copySrcMacro10));
+          tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro10, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710840109", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
         }
       }
@@ -215,17 +215,17 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
         TemplateContext context1 = context.subContext();
         {
           final SNode tnode2 = environment.createOutputNode(myConcepts[1]);
-          SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_1(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a2a0a1a3a2a1k)));
+          SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_1(new PropertyMacroContext(context1, "", propertyMacro1)));
           environment.aggregate(tnode1, myAggregationLinks[0], tnode2);
         }
         {
           final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
-          SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_2(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a2a0a1a4a2a1k)));
+          SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_2(new PropertyMacroContext(context1, "", propertyMacro2)));
           environment.aggregate(tnode1, myAggregationLinks[0], tnode3);
         }
         {
           final SNode tnode4 = environment.createOutputNode(myConcepts[1]);
-          SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_3(new PropertyMacroContext(context1, "", propertyMacro_ugw0jb_c0a2a0a1a5a2a1k)));
+          SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_1_3(new PropertyMacroContext(context1, "", propertyMacro3)));
           environment.aggregate(tnode1, myAggregationLinks[0], tnode4);
         }
       }
@@ -272,8 +272,8 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
         TemplateContext context1 = context.subContext();
         {
           Collection<SNode> tlist2 = null;
-          final Iterable<SNode> copyListInput2 = QueriesGenerated.sourceNodesQuery_1_0(new SourceSubstituteMacroNodesContext(context1, copySrcListMacro_ugw0jb_b0a0a1a3a2a1n));
-          tlist2 = environment.copyNodes(copyListInput2, copySrcListMacro_ugw0jb_b0a0a1a3a2a1n, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710840044", context1);
+          final Iterable<SNode> copyListInput2 = QueriesGenerated.sourceNodesQuery_1_0(new SourceSubstituteMacroNodesContext(context1, copySrcListMacro));
+          tlist2 = environment.copyNodes(copyListInput2, copySrcListMacro, "tpl/r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508/1820665478710840044", context1);
           environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
         }
       }
@@ -352,23 +352,23 @@ public class Mapping_GeneratorModule extends MapConfigBase implements TemplateMa
       return rv;
     }
   }
-  private static final SNodePointer rule_ugw0jb_b0a0c0b8 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839815");
-  private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0d0b0c0b8 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839874");
-  private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0e0b0c0b8 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839878");
-  private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0d0b0a2a1i = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839958");
-  private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0e0b0a2a1i = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839966");
-  private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0d0b0b2a1i = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2643213347103793324");
-  private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0e0b0b2a1i = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2643213347103793332");
-  private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0d0b0c2a1i = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2643213347103793341");
-  private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0e0b0c2a1i = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2643213347103793349");
-  private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0d0b0a2a1i_0 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839975");
-  private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0e0b0a2a1i_0 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839983");
-  private static final SNodePointer propertyMacro_ugw0jb_c0a2a0a1a3a2a1j = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840121");
-  private static final SNodePointer copySrcMacro_ugw0jb_b0a0c0e0c0b9 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840111");
-  private static final SNodePointer propertyMacro_ugw0jb_c0a2a0a1a3a2a1k = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840069");
-  private static final SNodePointer propertyMacro_ugw0jb_c0a2a0a1a4a2a1k = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840072");
-  private static final SNodePointer propertyMacro_ugw0jb_c0a2a0a1a5a2a1k = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "6921375397022274339");
-  private static final SNodePointer copySrcListMacro_ugw0jb_b0a0a1a3a2a1n = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3342058859868692953");
+  private static final SNodePointer rule = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839815");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839874");
+  private static final SNodePointer copySrcMacro1 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839878");
+  private static final SNodePointer copySrcMacro2 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839958");
+  private static final SNodePointer copySrcMacro3 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839966");
+  private static final SNodePointer copySrcMacro4 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2643213347103793324");
+  private static final SNodePointer copySrcMacro5 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2643213347103793332");
+  private static final SNodePointer copySrcMacro6 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2643213347103793341");
+  private static final SNodePointer copySrcMacro7 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "2643213347103793349");
+  private static final SNodePointer copySrcMacro8 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839975");
+  private static final SNodePointer copySrcMacro9 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710839983");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840121");
+  private static final SNodePointer copySrcMacro10 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840111");
+  private static final SNodePointer propertyMacro1 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840069");
+  private static final SNodePointer propertyMacro2 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "1820665478710840072");
+  private static final SNodePointer propertyMacro3 = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "6921375397022274339");
+  private static final SNodePointer copySrcListMacro = new SNodePointer("r:1dfaf07d-c77a-451e-91d3-b6f80f0f8508(jetbrains.mps.lang.descriptor.generator.template.main@generator)", "3342058859868692953");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept MappingPriorityRule$8Q = MetaAdapterFactory.getConcept(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, "jetbrains.mps.lang.project.structure.MappingPriorityRule");

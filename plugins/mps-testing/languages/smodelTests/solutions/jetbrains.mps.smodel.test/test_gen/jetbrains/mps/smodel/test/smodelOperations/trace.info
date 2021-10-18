@@ -1422,12 +1422,12 @@
       <node id="7152267121073091857" at="265,16,266,20" concept="7" />
       <node id="7152267121073092077" at="271,15,272,19" concept="7" />
       <node id="7152267121073092073" at="273,16,274,19" concept="7" />
-      <node id="7978163097785993302" at="278,0,279,0" concept="10" trace="enumSwitchIndex_cs17f_a0b0p71" />
-      <node id="7978163097785993302" at="279,0,280,0" concept="10" trace="enumSwitchIndex_cs17f_a0a0q71" />
-      <node id="7978163097785993302" at="280,0,281,0" concept="10" trace="enumSwitchIndex_cs17f_a0b0r71" />
-      <node id="7978163097785993302" at="281,0,282,0" concept="10" trace="enumSwitchIndex_cs17f_a0b0s71" />
-      <node id="7978163097785993302" at="282,0,283,0" concept="10" trace="enumSwitchIndex_cs17f_a0a0t71" />
-      <node id="7978163097785993302" at="283,0,284,0" concept="10" trace="enumSwitchIndex_cs17f_a0a0u71" />
+      <node id="7978163097785993302" at="278,0,279,0" concept="10" trace="enumSwitchIndex" />
+      <node id="7978163097785993302" at="279,0,280,0" concept="10" trace="enumSwitchIndex1" />
+      <node id="7978163097785993302" at="280,0,281,0" concept="10" trace="enumSwitchIndex2" />
+      <node id="7978163097785993302" at="281,0,282,0" concept="10" trace="enumSwitchIndex3" />
+      <node id="7978163097785993302" at="282,0,283,0" concept="10" trace="enumSwitchIndex4" />
+      <node id="7978163097785993302" at="283,0,284,0" concept="10" trace="enumSwitchIndex5" />
       <node id="7978163097785993302" at="29,0,31,0" concept="10" trace="ourParamCache" />
       <node id="7978163097785993302" at="31,0,33,0" concept="4" trace="myWithCommandRule" />
       <node id="7978163097785993302" at="34,0,37,0" concept="2" trace="EnumerationSwitch_Test#()V" />

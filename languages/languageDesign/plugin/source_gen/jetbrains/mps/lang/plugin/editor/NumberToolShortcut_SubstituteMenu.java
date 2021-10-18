@@ -116,7 +116,7 @@ public class NumberToolShortcut_SubstituteMenu extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        return REGEXP_33swfs_a0a0a11c5.matcher(pattern).matches();
+        return REGEXP.matcher(pattern).matches();
       }
       @Nullable
       @Override
@@ -130,7 +130,7 @@ public class NumberToolShortcut_SubstituteMenu extends SubstituteMenuBase {
     n0.setProperty(PROPS.number$WFYX, p0);
     return n0.getResult();
   }
-  private static final Pattern REGEXP_33swfs_a0a0a11c5 = Pattern.compile("\\d", 0);
+  private static final Pattern REGEXP = Pattern.compile("\\d", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept NumberToolShortcut$wS = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, "jetbrains.mps.lang.plugin.structure.NumberToolShortcut");

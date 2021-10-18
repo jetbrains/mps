@@ -39,7 +39,7 @@ public class Template_reduce_InputNode_A extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final List<SNode> tlist1 = new ArrayList<SNode>();
-    final Iterable<SNode> loopList1 = QueriesGenerated.sourceNodesQuery_2_0(new SourceSubstituteMacroNodesContext(context, loopMacroRef_vff4zh_b0a0a2a6));
+    final Iterable<SNode> loopList1 = QueriesGenerated.sourceNodesQuery_2_0(new SourceSubstituteMacroNodesContext(context, loopMacroRef));
     for (SNode itnode1 : loopList1) {
       if (itnode1 == null) {
         continue;
@@ -71,7 +71,7 @@ public class Template_reduce_InputNode_A extends TemplateDeclarationBase {
     Collection<SNode> tlist1 = null;
     try {
       TemplateContext switchContext1 = context;
-      tlist1 = environment.trySwitch(templateSwitchNodeNoInput_vff4zh_a0a0b0c0j, switchContext1);
+      tlist1 = environment.trySwitch(templateSwitchNodeNoInput, switchContext1);
       if (tlist1 == null) {
         final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
         tlist1 = TemplateUtil.singletonList(tnode2);
@@ -112,6 +112,6 @@ public class Template_reduce_InputNode_A extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer loopMacroRef_vff4zh_b0a0a2a6 = new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "3893401255414161782");
-  private static final SNodePointer templateSwitchNodeNoInput_vff4zh_a0a0b0c0j = new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "1892993302480310366");
+  private static final SNodePointer loopMacroRef = new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "3893401255414161782");
+  private static final SNodePointer templateSwitchNodeNoInput = new SNodePointer("r:eca8e1c7-93fd-4ddf-9db6-91f9c2320691(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_reduceOneToMany@generator)", "1892993302480310366");
 }

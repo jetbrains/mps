@@ -10,7 +10,7 @@
       <node id="4241665505353447294" at="13,13,14,17" concept="0" />
       <node id="4241665505353447297" at="15,13,16,17" concept="0" />
       <node id="4241665505353447304" at="17,14,18,17" concept="0" />
-      <node id="4241665505353447283" at="21,0,22,0" concept="1" trace="enumSwitchIndex_abil6o_a0a0a" />
+      <node id="4241665505353447283" at="21,0,22,0" concept="1" trace="enumSwitchIndex" />
       <node id="4241665505353447304" at="9,59,19,5" concept="3" />
       <node id="4241665505353447298" at="9,0,21,0" concept="2" trace="value#(Lorg/jetbrains/mps/openapi/language/SEnumerationLiteral;)I" />
       <scope id="4241665505353447291" at="11,13,12,17" />

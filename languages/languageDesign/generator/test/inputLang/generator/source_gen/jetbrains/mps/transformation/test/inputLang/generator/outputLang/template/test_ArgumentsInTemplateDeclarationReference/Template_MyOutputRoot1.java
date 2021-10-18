@@ -28,7 +28,7 @@ public class Template_MyOutputRoot1 extends TemplateDeclarationBase {
   }
 
   public SNodeReference getTemplateNode() {
-    return template_930b4u_a0a3;
+    return template;
   }
 
   @Override
@@ -42,8 +42,8 @@ public class Template_MyOutputRoot1 extends TemplateDeclarationBase {
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final Iterable<SNode> copyListInput2 = QueriesGenerated.sourceNodesQuery_2_0(new SourceSubstituteMacroNodesContext(context1, copySrcListMacro_930b4u_b0a0a1a4a2a5));
-        tlist2 = environment.copyNodes(copyListInput2, copySrcListMacro_930b4u_b0a0a1a4a2a5, "tpl/r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37/7496726876599914771", context1);
+        final Iterable<SNode> copyListInput2 = QueriesGenerated.sourceNodesQuery_2_0(new SourceSubstituteMacroNodesContext(context1, copySrcListMacro));
+        tlist2 = environment.copyNodes(copyListInput2, copySrcListMacro, "tpl/r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37/7496726876599914771", context1);
         environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
     }
@@ -74,6 +74,6 @@ public class Template_MyOutputRoot1 extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer template_930b4u_a0a3 = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599898724");
-  private static final SNodePointer copySrcListMacro_930b4u_b0a0a1a4a2a5 = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599914776");
+  private static final SNodePointer template = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599898724");
+  private static final SNodePointer copySrcListMacro = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599914776");
 }

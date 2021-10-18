@@ -44,7 +44,7 @@ public class Template_reduce_InputNode extends TemplateDeclarationBase {
       switchContext1 = switchContext1.withVariable("text", ((String) QueriesGenerated.templateArgumentQuery_2_0(new TemplateArgumentContext(switchContext1, new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948525024")))));
       switchContext1 = switchContext1.withVariable("value", ((Integer) QueriesGenerated.templateArgumentQuery_2_1(new TemplateArgumentContext(switchContext1, new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948578444")))));
       switchContext1 = switchContext1.withVariable("element", ((SNode) switchContext1.getVariable("element")));
-      tlist1 = environment.trySwitch(templateSwitchNodeNoInput_dc4xlo_a0a0e0c0h, switchContext1);
+      tlist1 = environment.trySwitch(templateSwitchNodeNoInput, switchContext1);
       if (tlist1 == null) {
         final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
         tlist1 = TemplateUtil.singletonList(tnode2);
@@ -76,5 +76,5 @@ public class Template_reduce_InputNode extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer templateSwitchNodeNoInput_dc4xlo_a0a0e0c0h = new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948523705");
+  private static final SNodePointer templateSwitchNodeNoInput = new SNodePointer("r:f37420d7-c952-44cf-aaac-346288c56298(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_TemplateCallArguments@generator)", "6736062018948523705");
 }

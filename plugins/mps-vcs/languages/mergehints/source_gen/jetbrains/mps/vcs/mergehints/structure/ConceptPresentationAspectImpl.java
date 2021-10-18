@@ -75,12 +75,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_VCSHints == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a7b0j);
+          cpb.helpUrl(HELP_URL);
           props_VCSHints = cpb.create();
         }
         return props_VCSHints;
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a2a0a7b0j = URLFunction_HelpCenterDocUrl.getUrl() + "mergehints.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "mergehints.html";
 }

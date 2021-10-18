@@ -66,7 +66,7 @@ public class Switch_reduce_Expressions extends TemplateSwitchBase implements Tem
             TemplateContext context2 = context1.subContext();
             {
               final List<SNode> tlist4 = new ArrayList<SNode>();
-              final Iterable<SNode> loopList4 = QueriesGenerated.sourceNodesQuery_3_0(new SourceSubstituteMacroNodesContext(context2, loopMacroRef_xudziu_b0a0a1a2a1a1a3a1f));
+              final Iterable<SNode> loopList4 = QueriesGenerated.sourceNodesQuery_3_0(new SourceSubstituteMacroNodesContext(context2, loopMacroRef));
               for (SNode itnode4 : loopList4) {
                 if (itnode4 == null) {
                   continue;
@@ -130,7 +130,7 @@ public class Switch_reduce_Expressions extends TemplateSwitchBase implements Tem
       return rv;
     }
   }
-  private static final SNodePointer loopMacroRef_xudziu_b0a0a1a2a1a1a3a1f = new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832571905");
+  private static final SNodePointer loopMacroRef = new SNodePointer("r:3ae70081-5af6-4df2-938d-3936a0c7a546(jetbrains.mps.transformation.test.inputLang.generator02.templates@generator)", "2676503840832571905");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept RefTestMethodCall$3G = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x2e0420fbd0995e09L, "jetbrains.mps.transformation.test.inputLang.structure.RefTestMethodCall");

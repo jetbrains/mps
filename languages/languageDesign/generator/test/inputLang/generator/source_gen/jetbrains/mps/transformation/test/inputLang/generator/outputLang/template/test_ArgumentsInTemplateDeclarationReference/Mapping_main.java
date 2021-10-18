@@ -71,7 +71,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      TemplateContext context1 = context.withVariable("p1", ((String) QueriesGenerated.templateArgumentQuery_0_0(new TemplateArgumentContext(context, templArgCall_ief6mt_b0a0a1a0a1a1h))));
+      TemplateContext context1 = context.withVariable("p1", ((String) QueriesGenerated.templateArgumentQuery_0_0(new TemplateArgumentContext(context, templArgCall))));
       Collection<SNode> tlist1 = environment.callSite(new Template_reduceWithArgs(), new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599916819")).apply(context1);
       return tlist1;
     }
@@ -88,8 +88,8 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      if (QueriesGenerated.rule_Condition_0_0(new BaseMappingRuleContext(context, rule_ief6mt_b0a0c0c8))) {
-        TemplateContext context1 = context.withVariable("p1", ((String) QueriesGenerated.templateArgumentQuery_0_1(new TemplateArgumentContext(context, templArgCall_ief6mt_b0a0a1a0a0a2a2i))));
+      if (QueriesGenerated.rule_Condition_0_0(new BaseMappingRuleContext(context, rule))) {
+        TemplateContext context1 = context.withVariable("p1", ((String) QueriesGenerated.templateArgumentQuery_0_1(new TemplateArgumentContext(context, templArgCall1))));
         Collection<SNode> tlist2 = environment.callSite(new Template_reduceWithArgs(), new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599936898")).apply(context1);
         tlist1 = tlist2;
       } else {
@@ -113,11 +113,11 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = Collections.emptyList();
-      if (QueriesGenerated.ifMacro_Condition_0_0(new IfMacroContext(context, ifMacroRef_ief6mt_b0a0c0c9))) {
+      if (QueriesGenerated.ifMacro_Condition_0_0(new IfMacroContext(context, ifMacroRef))) {
         final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
         tlist1 = TemplateUtil.singletonList(tnode2);
       } else {
-        TemplateContext context1 = context.withVariable("p1", ((String) QueriesGenerated.templateArgumentQuery_0_2(new TemplateArgumentContext(context, templArgCall_ief6mt_b0a0a1a0a0a0c0c9))));
+        TemplateContext context1 = context.withVariable("p1", ((String) QueriesGenerated.templateArgumentQuery_0_2(new TemplateArgumentContext(context, templArgCall2))));
         Collection<SNode> tlist3 = environment.callSite(new Template_reduceWithArgs(), new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "4929591503636645032")).apply(context1);
         tlist1 = tlist3;
       }
@@ -136,11 +136,11 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      if (QueriesGenerated.rule_Condition_0_3(new BaseMappingRuleContext(context, rule_ief6mt_b0a0c0c01))) {
+      if (QueriesGenerated.rule_Condition_0_3(new BaseMappingRuleContext(context, rule1))) {
         final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
         tlist1 = TemplateUtil.singletonList(tnode2);
       } else {
-        TemplateContext context1 = context.withVariable("p1", ((String) QueriesGenerated.templateArgumentQuery_0_3(new TemplateArgumentContext(context, templArgCall_ief6mt_b0a0a1a0a0a0c0c01))));
+        TemplateContext context1 = context.withVariable("p1", ((String) QueriesGenerated.templateArgumentQuery_0_3(new TemplateArgumentContext(context, templArgCall3))));
         Collection<SNode> tlist3 = environment.callSite(new Template_reduceWithArgs(), new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "4929591503636678680")).apply(context1);
         tlist1 = tlist3;
       }
@@ -170,13 +170,13 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
 
 
   }
-  private static final SNodePointer templArgCall_ief6mt_b0a0a1a0a1a1h = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599916821");
-  private static final SNodePointer rule_ief6mt_b0a0c0c8 = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599926144");
-  private static final SNodePointer templArgCall_ief6mt_b0a0a1a0a0a2a2i = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599937590");
-  private static final SNodePointer ifMacroRef_ief6mt_b0a0c0c9 = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "4929591503636643304");
-  private static final SNodePointer templArgCall_ief6mt_b0a0a1a0a0a0c0c9 = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "4929591503636646078");
-  private static final SNodePointer rule_ief6mt_b0a0c0c01 = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "4929591503636612447");
-  private static final SNodePointer templArgCall_ief6mt_b0a0a1a0a0a0c0c01 = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "4929591503636680080");
+  private static final SNodePointer templArgCall = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599916821");
+  private static final SNodePointer rule = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599926144");
+  private static final SNodePointer templArgCall1 = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "7496726876599937590");
+  private static final SNodePointer ifMacroRef = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "4929591503636643304");
+  private static final SNodePointer templArgCall2 = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "4929591503636646078");
+  private static final SNodePointer rule1 = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "4929591503636612447");
+  private static final SNodePointer templArgCall3 = new SNodePointer("r:b5afdf3a-04e4-43b0-b72c-a4e3b5141a37(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_ArgumentsInTemplateDeclarationReference@generator)", "4929591503636680080");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept InputNode_A$Jt = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645be5a7aL, "jetbrains.mps.transformation.test.inputLang.structure.InputNode_A");

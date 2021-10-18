@@ -79,7 +79,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_CopyPasteHandlers == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a4b0gb);
+          cpb.helpUrl(HELP_URL);
           props_CopyPasteHandlers = cpb.create();
         }
         return props_CopyPasteHandlers;
@@ -183,7 +183,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_NodeFactories == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a81b0gb);
+          cpb.helpUrl(HELP_URL1);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a81b0gb);
           props_NodeFactories = cpb.create();
         }
@@ -260,7 +260,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_PasteWrappers == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a82b0gb);
+          cpb.helpUrl(HELP_URL2);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a82b0gb);
           props_PasteWrappers = cpb.create();
         }
@@ -283,7 +283,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a2a0a4b0gb = URLFunction_HelpCenterDocUrl.getUrl() + "editor-actions.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a81b0gb = URLFunction_HelpCenterDocUrl.getUrl() + "editor-actions.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a82b0gb = URLFunction_HelpCenterDocUrl.getUrl() + "editor-actions.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "editor-actions.html";
+  private static final String HELP_URL1 = URLFunction_HelpCenterDocUrl.getUrl() + "editor-actions.html";
+  private static final String HELP_URL2 = URLFunction_HelpCenterDocUrl.getUrl() + "editor-actions.html";
 }

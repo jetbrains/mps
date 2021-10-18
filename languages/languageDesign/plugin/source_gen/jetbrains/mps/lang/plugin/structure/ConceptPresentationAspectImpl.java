@@ -190,7 +190,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ActionDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a7b0ue);
+          cpb.helpUrl(HELP_URL);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a7b0ue);
           props_ActionDeclaration = cpb.create();
         }
@@ -199,7 +199,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ActionGroupDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a8b0ue);
+          cpb.helpUrl(HELP_URL1);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a8b0ue);
           props_ActionGroupDeclaration = cpb.create();
         }
@@ -501,7 +501,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL);
           cpb.deprecateProperty(0x71dc7d539b7857cfL, "commandOnCreate");
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a3a0a05b0ue);
+          cpb.helpUrl(HELP_URL2);
           cpb.icon(IconContainer.RESOURCE_a0a4a0a05b0ue);
           props_EditorTab = cpb.create();
         }
@@ -615,7 +615,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_IdeaConfigurationXml == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a66b0ue);
+          cpb.helpUrl(HELP_URL3);
           props_IdeaConfigurationXml = cpb.create();
         }
         return props_IdeaConfigurationXml;
@@ -624,7 +624,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x45b64b294c2b3514L);
           cpb.deprecateProperty(0x39d4595a63622b5fL, "vendorLogo");
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a3a0a76b0ue);
+          cpb.helpUrl(HELP_URL4);
           cpb.icon(IconContainer.RESOURCE_a0a4a0a76b0ue);
           props_IdeaInitializerDescriptor = cpb.create();
         }
@@ -654,7 +654,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_InterfaceGroup == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a17b0ue);
+          cpb.helpUrl(HELP_URL5);
           props_InterfaceGroup = cpb.create();
         }
         return props_InterfaceGroup;
@@ -690,7 +690,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_KeymapChangesDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a67b0ue);
+          cpb.helpUrl(HELP_URL6);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a67b0ue);
           props_KeymapChangesDeclaration = cpb.create();
         }
@@ -733,7 +733,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_NonDumbAwareActions == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a28b0ue);
+          cpb.helpUrl(HELP_URL7);
           props_NonDumbAwareActions = cpb.create();
         }
         return props_NonDumbAwareActions;
@@ -762,7 +762,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_Order == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a68b0ue);
+          cpb.helpUrl(HELP_URL8);
           props_Order = cpb.create();
         }
         return props_Order;
@@ -861,7 +861,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_PreferencesComponentDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a001b0ue);
+          cpb.helpUrl(HELP_URL9);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a001b0ue);
           props_PreferencesComponentDeclaration = cpb.create();
         }
@@ -920,7 +920,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_TabbedToolDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a801b0ue);
+          cpb.helpUrl(HELP_URL10);
           props_TabbedToolDeclaration = cpb.create();
         }
         return props_TabbedToolDeclaration;
@@ -955,7 +955,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ToolDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a311b0ue);
+          cpb.helpUrl(HELP_URL11);
           props_ToolDeclaration = cpb.create();
         }
         return props_ToolDeclaration;
@@ -1024,16 +1024,16 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a2a0a7b0ue = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#actionsandactiongroups";
-  private static final String HELP_URL_lpa09p_a0a2a0a8b0ue = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#actionsandactiongroups";
-  private static final String HELP_URL_lpa09p_a0a3a0a05b0ue = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#tabbedtools";
-  private static final String HELP_URL_lpa09p_a0a2a0a66b0ue = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html";
-  private static final String HELP_URL_lpa09p_a0a3a0a76b0ue = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a17b0ue = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#bootstrapgroups";
-  private static final String HELP_URL_lpa09p_a0a2a0a67b0ue = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#keymapchanges";
-  private static final String HELP_URL_lpa09p_a0a2a0a28b0ue = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#nondumbawareactions";
-  private static final String HELP_URL_lpa09p_a0a2a0a68b0ue = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#editortabs";
-  private static final String HELP_URL_lpa09p_a0a2a0a001b0ue = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#preferencescomponents";
-  private static final String HELP_URL_lpa09p_a0a2a0a801b0ue = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#preferencescomponents";
-  private static final String HELP_URL_lpa09p_a0a2a0a311b0ue = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#tools";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#actionsandactiongroups";
+  private static final String HELP_URL1 = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#actionsandactiongroups";
+  private static final String HELP_URL2 = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#tabbedtools";
+  private static final String HELP_URL3 = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html";
+  private static final String HELP_URL4 = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html";
+  private static final String HELP_URL5 = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#bootstrapgroups";
+  private static final String HELP_URL6 = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#keymapchanges";
+  private static final String HELP_URL7 = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#nondumbawareactions";
+  private static final String HELP_URL8 = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#editortabs";
+  private static final String HELP_URL9 = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#preferencescomponents";
+  private static final String HELP_URL10 = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#preferencescomponents";
+  private static final String HELP_URL11 = URLFunction_HelpCenterDocUrl.getUrl() + "plugin.html#tools";
 }

@@ -32,7 +32,7 @@ public class Template_RootCustom extends TemplateDeclarationBase {
   }
 
   public SNodeReference getTemplateNode() {
-    return template_xizpik_a0a3;
+    return template;
   }
 
   @Override
@@ -99,7 +99,7 @@ public class Template_RootCustom extends TemplateDeclarationBase {
                       }
                       {
                         final SNode tnode14 = environment.createOutputNode(myConcepts[10]);
-                        SNodeAccessUtil.setPropertyValue(tnode14, myProperties[1], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context7, "0", propertyMacro_xizpik_c0a2a0a1a4a4a1a1a1a1a3a1a5a2a5)));
+                        SNodeAccessUtil.setPropertyValue(tnode14, myProperties[1], QueriesGenerated.propertyMacro_GetValue_1_0(new PropertyMacroContext(context7, "0", propertyMacro)));
                         environment.aggregate(tnode12, myAggregationLinks[4], tnode14);
                       }
                     }
@@ -119,12 +119,12 @@ public class Template_RootCustom extends TemplateDeclarationBase {
                       TemplateContext context9 = context8.subContext();
                       {
                         final SNode tnode17 = environment.createOutputNode(myConcepts[13]);
-                        environment.resolveInTemplateLater(tnode17, myAssociationLinks[0], templateNode_xizpik_c0a0a1a1a1a1a1a2a1a3a1a5a2a5, "tpl/r:00000000-0000-4000-0000-011c89590606/5015072279636761135", "q", context9);
+                        environment.resolveInTemplateLater(tnode17, myAssociationLinks[0], templateNode, "tpl/r:00000000-0000-4000-0000-011c89590606/5015072279636761135", "q", context9);
                         environment.aggregate(tnode16, myAggregationLinks[7], tnode17);
                       }
                       {
                         final SNode tnode18 = environment.createOutputNode(myConcepts[13]);
-                        environment.resolveInTemplateLater(tnode18, myAssociationLinks[0], templateNode_xizpik_c0a0a1a2a1a1a1a2a1a3a1a5a2a5, "tpl/r:00000000-0000-4000-0000-011c89590606/5015072279636761103", "i", context9);
+                        environment.resolveInTemplateLater(tnode18, myAssociationLinks[0], templateNode1, "tpl/r:00000000-0000-4000-0000-011c89590606/5015072279636761103", "i", context9);
                         environment.aggregate(tnode16, myAggregationLinks[8], tnode18);
                       }
                     }
@@ -154,8 +154,8 @@ public class Template_RootCustom extends TemplateDeclarationBase {
           }
           {
             Collection<SNode> tlist22 = null;
-            final SNode copySrcInput22 = QueriesGenerated.sourceNodeQuery_1_0(new SourceSubstituteMacroNodeContext(context10, copySrcMacro_xizpik_b0a0c0e0b0g0c0f));
-            tlist22 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput22), copySrcMacro_xizpik_b0a0c0e0b0g0c0f, "tpl/r:00000000-0000-4000-0000-011c89590606/4146564171992412785", context10);
+            final SNode copySrcInput22 = QueriesGenerated.sourceNodeQuery_1_0(new SourceSubstituteMacroNodeContext(context10, copySrcMacro));
+            tlist22 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput22), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590606/4146564171992412785", context10);
             environment.aggregate(tnode19, myAggregationLinks[10], tlist22);
           }
         }
@@ -219,9 +219,9 @@ public class Template_RootCustom extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer template_xizpik_a0a3 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992412775");
-  private static final SNodePointer propertyMacro_xizpik_c0a2a0a1a4a4a1a1a1a1a3a1a5a2a5 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2721957369897795323");
-  private static final SNodePointer templateNode_xizpik_c0a0a1a1a1a1a1a2a1a3a1a5a2a5 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905120210705");
-  private static final SNodePointer templateNode_xizpik_c0a0a1a2a1a1a1a2a1a3a1a5a2a5 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4265636116363088829");
-  private static final SNodePointer copySrcMacro_xizpik_b0a0c0e0b0g0c0f = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992412787");
+  private static final SNodePointer template = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992412775");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "2721957369897795323");
+  private static final SNodePointer templateNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905120210705");
+  private static final SNodePointer templateNode1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4265636116363088829");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4146564171992412787");
 }

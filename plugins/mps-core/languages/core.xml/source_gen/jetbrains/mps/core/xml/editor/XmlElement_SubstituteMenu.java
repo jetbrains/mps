@@ -89,7 +89,7 @@ public class XmlElement_SubstituteMenu extends SubstituteMenuBase {
       public SNode createNode(@NotNull String pattern) {
         Matcher _matcher_xunnx5_a1a6c5;
         SNode element = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlElement$fP, null);
-        if ((_matcher_xunnx5_a1a6c5 = REGEXP_xunnx5_a0a0a2a6c5.matcher(pattern)).find()) {
+        if ((_matcher_xunnx5_a1a6c5 = REGEXP.matcher(pattern)).find()) {
           SPropertyOperations.assign(element, PROPS.tagName$ZoHR, _matcher_xunnx5_a1a6c5.group(1));
         }
         return element;
@@ -103,15 +103,15 @@ public class XmlElement_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public String getMatchingText(@NotNull String pattern) {
         Matcher _matcher_xunnx5_a0a9c5;
-        if ((_matcher_xunnx5_a0a9c5 = REGEXP_xunnx5_a0a0a1a9c5.matcher(pattern)).find()) {
+        if ((_matcher_xunnx5_a0a9c5 = REGEXP1.matcher(pattern)).find()) {
           return "<" + _matcher_xunnx5_a0a9c5.group(1) + ">";
         }
         return "<element/>";
       }
     }
   }
-  private static final Pattern REGEXP_xunnx5_a0a0a2a6c5 = Pattern.compile("^<([\\w0-9]+)>?$", 0);
-  private static final Pattern REGEXP_xunnx5_a0a0a1a9c5 = Pattern.compile("^<([\\w0-9]+)>?$", 0);
+  private static final Pattern REGEXP = Pattern.compile("^<([\\w0-9]+)>?$", 0);
+  private static final Pattern REGEXP1 = Pattern.compile("^<([\\w0-9]+)>?$", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept XmlElement$fP = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement");

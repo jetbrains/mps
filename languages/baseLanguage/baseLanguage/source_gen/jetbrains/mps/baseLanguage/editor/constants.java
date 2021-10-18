@@ -204,7 +204,7 @@ public class constants extends SubstituteMenuBase {
         if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.LongLiteral$y2)) {
           return false;
         }
-        return REGEXP_w0ulk7_a0a1a21c6.matcher(pattern).matches();
+        return REGEXP.matcher(pattern).matches();
       }
     }
   }
@@ -273,7 +273,7 @@ public class constants extends SubstituteMenuBase {
         if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.FloatingPointConstant$3o)) {
           return false;
         }
-        return REGEXP_w0ulk7_a0a1a21c7.matcher(pattern).matches();
+        return REGEXP1.matcher(pattern).matches();
       }
     }
   }
@@ -342,7 +342,7 @@ public class constants extends SubstituteMenuBase {
         if (SNodeOperations.isInstanceOf(_context.getCurrentTargetNode(), CONCEPTS.FloatingPointFloatConstant$Qh)) {
           return false;
         }
-        return REGEXP_w0ulk7_a0a1a21c8.matcher(pattern).matches();
+        return REGEXP2.matcher(pattern).matches();
       }
     }
   }
@@ -387,7 +387,7 @@ public class constants extends SubstituteMenuBase {
       public SNode createNode(@NotNull String pattern) {
         SNode stringLiteral = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.StringLiteral$xu, null);
         {
-          Pattern _pattern_0 = REGEXP_w0ulk7_a0a0b0g2j;
+          Pattern _pattern_0 = REGEXP3;
           Matcher _matcher_0 = _pattern_0.matcher(pattern);
           if (_matcher_0.matches()) {
             SPropertyOperations.set(stringLiteral, PROPS.value$w7MM, _matcher_0.group(1));
@@ -414,7 +414,7 @@ public class constants extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        return REGEXP_w0ulk7_a0a0a21c9.matcher(pattern).matches();
+        return REGEXP4.matcher(pattern).matches();
       }
     }
   }
@@ -551,11 +551,11 @@ public class constants extends SubstituteMenuBase {
       }, CONCEPTS.ArrayLiteral$Ey));
     }
   }
-  private static final Pattern REGEXP_w0ulk7_a0a1a21c6 = Pattern.compile("-?\\d+(?:l|L)", 0);
-  private static final Pattern REGEXP_w0ulk7_a0a1a21c7 = Pattern.compile("-?[0-9]+\\.[0-9]*(?:[eE][\\-\\+]?[0-9]+)?[dD]?", 0);
-  private static final Pattern REGEXP_w0ulk7_a0a1a21c8 = Pattern.compile("-?[0-9]+\\.[0-9]*(?:[eE][\\-\\+]?[0-9]+)?[fF]", 0);
-  private static final Pattern REGEXP_w0ulk7_a0a0b0g2j = Pattern.compile("\"([^\\\\\"]*)\"?", 0);
-  private static final Pattern REGEXP_w0ulk7_a0a0a21c9 = Pattern.compile("\"[^\\\\\"]*\"?", 0);
+  private static final Pattern REGEXP = Pattern.compile("-?\\d+(?:l|L)", 0);
+  private static final Pattern REGEXP1 = Pattern.compile("-?[0-9]+\\.[0-9]*(?:[eE][\\-\\+]?[0-9]+)?[dD]?", 0);
+  private static final Pattern REGEXP2 = Pattern.compile("-?[0-9]+\\.[0-9]*(?:[eE][\\-\\+]?[0-9]+)?[fF]", 0);
+  private static final Pattern REGEXP3 = Pattern.compile("\"([^\\\\\"]*)\"?", 0);
+  private static final Pattern REGEXP4 = Pattern.compile("\"[^\\\\\"]*\"?", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept IntegerConstant$Na = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant");

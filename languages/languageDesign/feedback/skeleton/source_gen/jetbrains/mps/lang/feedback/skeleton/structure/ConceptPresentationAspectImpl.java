@@ -23,7 +23,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("provides feedback for different problems");
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a3a0a0b0d);
+          cpb.helpUrl(HELP_URL);
           cpb.icon(IconContainer.RESOURCE_a0a4a0a0b0d);
           props_FeedbackPerConceptRoot = cpb.create();
         }
@@ -37,5 +37,5 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a3a0a0b0d = URLFunction_HelpCenterDocUrl.getUrl() + "feedback.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "feedback.html";
 }

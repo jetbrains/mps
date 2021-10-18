@@ -78,7 +78,7 @@ public class Template_gen_static_method extends TemplateDeclarationBase {
                   TemplateContext context6 = context3.subContext();
                   {
                     final SNode tnode9 = environment.createOutputNode(myConcepts[7]);
-                    environment.resolveInTemplateLater(tnode9, myAssociationLinks[0], templateNode_2hhfmn_c0a0a1a1a1a2a1a1a1a4a3a6, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724048", "e", context6);
+                    environment.resolveInTemplateLater(tnode9, myAssociationLinks[0], templateNode, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724048", "e", context6);
                     environment.aggregate(tnode8, myAggregationLinks[4], tnode9);
                   }
                   {
@@ -102,13 +102,13 @@ public class Template_gen_static_method extends TemplateDeclarationBase {
                   TemplateContext context8 = context7.subContext();
                   {
                     final SNode tnode13 = environment.createOutputNode(myConcepts[7]);
-                    environment.resolveInTemplateLater(tnode13, myAssociationLinks[0], templateNode_2hhfmn_c0a0a1a1a1a1a1a2a1a4a3a6, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724048", "e", context8);
+                    environment.resolveInTemplateLater(tnode13, myAssociationLinks[0], templateNode1, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724048", "e", context8);
                     environment.aggregate(tnode12, myAggregationLinks[4], tnode13);
                   }
                   {
                     final SNode tnode14 = environment.createOutputNode(myConcepts[9]);
                     {
-                      environment.resolveInTemplateLater(tnode14, myAssociationLinks[1], templateNode_2hhfmn_c0a0a1a2a1a1a1a2a1a4a3a6, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724041", "fact", context8);
+                      environment.resolveInTemplateLater(tnode14, myAssociationLinks[1], templateNode2, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724041", "fact", context8);
                       TemplateContext context9 = context8.subContext();
                       {
                         final SNode tnode15 = environment.createOutputNode(myConcepts[10]);
@@ -121,7 +121,7 @@ public class Template_gen_static_method extends TemplateDeclarationBase {
                           }
                           {
                             final SNode tnode17 = environment.createOutputNode(myConcepts[7]);
-                            environment.resolveInTemplateLater(tnode17, myAssociationLinks[0], templateNode_2hhfmn_c0a0a1a2a1a2a1a2a1a1a1a2a1a4a3a6, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724048", "e", context10);
+                            environment.resolveInTemplateLater(tnode17, myAssociationLinks[0], templateNode3, "tpl/r:00000000-0000-4000-0000-011c89590606/3392060900980724048", "e", context10);
                             environment.aggregate(tnode15, myAggregationLinks[4], tnode17);
                           }
                         }
@@ -275,8 +275,8 @@ public class Template_gen_static_method extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer templateNode_2hhfmn_c0a0a1a1a1a2a1a1a1a4a3a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905150327964");
-  private static final SNodePointer templateNode_2hhfmn_c0a0a1a1a1a1a1a2a1a4a3a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905151613299");
-  private static final SNodePointer templateNode_2hhfmn_c0a0a1a2a1a1a1a2a1a4a3a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4923130412071517799");
-  private static final SNodePointer templateNode_2hhfmn_c0a0a1a2a1a2a1a2a1a1a1a2a1a4a3a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905151738388");
+  private static final SNodePointer templateNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905150327964");
+  private static final SNodePointer templateNode1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905151613299");
+  private static final SNodePointer templateNode2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "4923130412071517799");
+  private static final SNodePointer templateNode3 = new SNodePointer("r:00000000-0000-4000-0000-011c89590606(jetbrains.mps.transformation.test.outputLang.generator.baseLanguage.template.main@generator)", "3021153905151738388");
 }

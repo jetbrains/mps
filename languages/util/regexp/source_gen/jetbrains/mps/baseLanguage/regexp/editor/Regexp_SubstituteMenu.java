@@ -119,7 +119,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        return REGEXP_6gqf7r_a0a0a21c5.matcher(pattern).matches();
+        return REGEXP.matcher(pattern).matches();
       }
     }
   }
@@ -174,7 +174,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public String getMatchingText(@NotNull String pattern) {
-        if (!(REGEXP_6gqf7r_a0a0a0j2g.matcher(pattern).matches())) {
+        if (!(REGEXP1.matcher(pattern).matches())) {
           return "(name:";
         }
         String s = pattern;
@@ -252,7 +252,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        return REGEXP_6gqf7r_a0a0a31c7.matcher(pattern).matches();
+        return REGEXP2.matcher(pattern).matches();
       }
     }
   }
@@ -323,7 +323,7 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        return REGEXP_6gqf7r_a0a0a31c8.matcher(pattern).matches();
+        return REGEXP3.matcher(pattern).matches();
       }
     }
   }
@@ -348,10 +348,10 @@ public class Regexp_SubstituteMenu extends SubstituteMenuBase {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
   }
-  private static final Pattern REGEXP_6gqf7r_a0a0a21c5 = Pattern.compile("\\\\u[\\da-fA-F]{4}", 0);
-  private static final Pattern REGEXP_6gqf7r_a0a0a0j2g = Pattern.compile("\\(\\w+:?", 0);
-  private static final Pattern REGEXP_6gqf7r_a0a0a31c7 = Pattern.compile("[^\\-\\+\\*\\[\\]\\.\\{\\}\\(\\)\\\\\\^'\\$]+", 0);
-  private static final Pattern REGEXP_6gqf7r_a0a0a31c8 = Pattern.compile("^\\\\[\\-\\+\\*\\[\\]\\.\\{\\}\\(\\)\\^'\\$]$", 0);
+  private static final Pattern REGEXP = Pattern.compile("\\\\u[\\da-fA-F]{4}", 0);
+  private static final Pattern REGEXP1 = Pattern.compile("\\(\\w+:?", 0);
+  private static final Pattern REGEXP2 = Pattern.compile("[^\\-\\+\\*\\[\\]\\.\\{\\}\\(\\)\\\\\\^'\\$]+", 0);
+  private static final Pattern REGEXP3 = Pattern.compile("^\\\\[\\-\\+\\*\\[\\]\\.\\{\\}\\(\\)\\^'\\$]$", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept UnicodeCharacterRegexp$py = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x11831260718L, "jetbrains.mps.baseLanguage.regexp.structure.UnicodeCharacterRegexp");

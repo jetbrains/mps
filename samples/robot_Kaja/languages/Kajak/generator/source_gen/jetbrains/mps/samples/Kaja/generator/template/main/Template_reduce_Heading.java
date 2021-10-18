@@ -38,12 +38,12 @@ public class Template_reduce_Heading extends TemplateDeclarationBase {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
     {
-      environment.resolveInTemplateLater(tnode1, myAssociationLinks[0], templateNode_2x0e93_c0a0a2a6, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039683754", "heading", context);
+      environment.resolveInTemplateLater(tnode1, myAssociationLinks[0], templateNode, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039683754", "heading", context);
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_9_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_2x0e93_b0a0c0c0c0g));
-        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_2x0e93_b0a0c0c0c0g, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039683764", context1);
+        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_9_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185/3308300503039683764", context1);
         environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
     }
@@ -79,6 +79,6 @@ public class Template_reduce_Heading extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer templateNode_2x0e93_c0a0a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4923130412073305297");
-  private static final SNodePointer copySrcMacro_2x0e93_b0a0c0c0c0g = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039683767");
+  private static final SNodePointer templateNode = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "4923130412073305297");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3308300503039683767");
 }

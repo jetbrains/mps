@@ -46,7 +46,7 @@ public class Template_reduce_TraceMessage extends TemplateDeclarationBase {
           TemplateContext context2 = context1.subContext();
           {
             final SNode tnode3 = environment.createOutputNode(myConcepts[2]);
-            SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_25_0(new PropertyMacroContext(context2, "message", propertyMacro_zb4n4r_c0a2a0a1a2a1a1a2a6)));
+            SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_25_0(new PropertyMacroContext(context2, "message", propertyMacro)));
             environment.aggregate(tnode2, myAggregationLinks[0], tnode3);
           }
         }
@@ -94,5 +94,5 @@ public class Template_reduce_TraceMessage extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer propertyMacro_zb4n4r_c0a2a0a1a2a1a1a2a6 = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3210697320273781183");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:3ab3501c-2f4b-48e6-9b6c-e31ff8ef3185(jetbrains.mps.samples.Kaja.generator.template.main@generator)", "3210697320273781183");
 }

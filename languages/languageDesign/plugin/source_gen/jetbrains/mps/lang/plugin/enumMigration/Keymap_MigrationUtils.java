@@ -14,7 +14,7 @@ public class Keymap_MigrationUtils {
    */
   @Deprecated(since = "19.2", forRemoval = true)
   public static String value(SEnumerationLiteral enummember) {
-    switch (enumSwitchIndex_rsd4tu_a0a0a.indexNullable(enummember)) {
+    switch (enumSwitchIndex.indexNullable(enummember)) {
       case 0:
         return "Mac OS X";
       case 1:
@@ -49,5 +49,5 @@ public class Keymap_MigrationUtils {
         return null;
     }
   }
-  private static final EnumerationLiteralsIndex enumSwitchIndex_rsd4tu_a0a0a = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, 0x15afe07f2a9bb079L, 0x2b52ed8175294e87L, 0x1a8587bfae037330L, 0x1a8587bfae037331L, 0x1a8587bfae037332L, 0x21ea68327baf70c0L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x15afe07f2a9bb078L, 0x15afe07f2a9bb079L, 0x2b52ed8175294e87L, 0x1a8587bfae037330L, 0x1a8587bfae037331L, 0x1a8587bfae037332L, 0x21ea68327baf70c0L);
 }

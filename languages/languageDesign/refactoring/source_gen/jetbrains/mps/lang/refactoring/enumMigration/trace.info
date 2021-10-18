@@ -19,7 +19,7 @@
       <node id="4241665505353447242" at="36,22,37,233" concept="1" />
       <node id="4241665505353447249" at="38,20,39,231" concept="1" />
       <node id="4241665505353447258" at="40,14,41,20" concept="1" />
-      <node id="4241665505353447178" at="44,0,45,0" concept="2" trace="enumSwitchIndex_400uyb_a0a0a" />
+      <node id="4241665505353447178" at="44,0,45,0" concept="2" trace="enumSwitchIndex" />
       <node id="4241665505353447217" at="27,61,30,5" concept="0" />
       <node id="4241665505353447255" at="30,5,42,5" concept="4" />
       <node id="4241665505353447207" at="11,62,25,5" concept="4" />

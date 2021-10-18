@@ -97,7 +97,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_Intention == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a8b0u);
+          cpb.helpUrl(HELP_URL);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a8b0u);
           props_Intention = cpb.create();
         }
@@ -172,7 +172,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_SurroundWithIntentionDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a81b0u);
+          cpb.helpUrl(HELP_URL1);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a81b0u);
           props_SurroundWithIntentionDeclaration = cpb.create();
         }
@@ -180,6 +180,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a2a0a8b0u = URLFunction_HelpCenterDocUrl.getUrl() + "mps-intentions.html";
-  private static final String HELP_URL_lpa09p_a0a2a0a81b0u = URLFunction_HelpCenterDocUrl.getUrl() + "mps-intentions.html";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "mps-intentions.html";
+  private static final String HELP_URL1 = URLFunction_HelpCenterDocUrl.getUrl() + "mps-intentions.html";
 }

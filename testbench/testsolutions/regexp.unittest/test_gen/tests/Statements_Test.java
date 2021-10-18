@@ -13,7 +13,7 @@ public class Statements_Test {
     String input = "reader@gmail.com";
     boolean matches = false;
     {
-      Pattern _pattern_0 = REGEXP_yyh11i_a0a0c0a;
+      Pattern _pattern_0 = REGEXP;
       Matcher _matcher_0 = _pattern_0.matcher(input);
       if (_matcher_0.matches()) {
         matches = true;
@@ -25,7 +25,7 @@ public class Statements_Test {
   public void test_iftilde() throws Exception {
     boolean result = false;
     {
-      Pattern _pattern_0 = REGEXP_yyh11i_a0a0b0b;
+      Pattern _pattern_0 = REGEXP1;
       Matcher _matcher_0 = _pattern_0.matcher("aaabcd");
       if (_matcher_0.find()) {
         result = true;
@@ -37,7 +37,7 @@ public class Statements_Test {
   public void test_findall() throws Exception {
     int i = 0;
     {
-      Pattern _pattern_0 = REGEXP_yyh11i_a0a0b0c;
+      Pattern _pattern_0 = REGEXP2;
       Matcher _matcher_0 = _pattern_0.matcher("abababab");
       while (_matcher_0.find()) {
         Assert.assertEquals("ab", _matcher_0.group(1));
@@ -46,7 +46,7 @@ public class Statements_Test {
     }
     Assert.assertEquals(4, i);
   }
-  private static final Pattern REGEXP_yyh11i_a0a0c0a = Pattern.compile("(?:\\w+@\\w(?:.\\w+)*)", 0);
-  private static final Pattern REGEXP_yyh11i_a0a0b0b = Pattern.compile("ab", 0);
-  private static final Pattern REGEXP_yyh11i_a0a0b0c = Pattern.compile("(\\w\\w)", 0);
+  private static final Pattern REGEXP = Pattern.compile("(?:\\w+@\\w(?:.\\w+)*)", 0);
+  private static final Pattern REGEXP1 = Pattern.compile("ab", 0);
+  private static final Pattern REGEXP2 = Pattern.compile("(\\w\\w)", 0);
 }

@@ -10,8 +10,8 @@ import java.util.regex.Pattern;
 public class Replace_Test {
   @Test
   public void test_replace1() throws Exception {
-    String s = RegexpOperations.replace("Manny goes home", REGEXP_55w9mm_b0a0a0, new _Replacer_55w9mm_a0a0a0(Replace_Test.this));
+    String s = RegexpOperations.replace("Manny goes home", REGEXP, new _Replacer_55w9mm_a0a0a0(Replace_Test.this));
     Assert.assertEquals("<Manny> <goes> <home>", s);
   }
-  private static final Pattern REGEXP_55w9mm_b0a0a0 = Pattern.compile("(\\w+)", 0);
+  private static final Pattern REGEXP = Pattern.compile("(\\w+)", 0);
 }

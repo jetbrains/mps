@@ -10,9 +10,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
-import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
-import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import java.util.Map;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
@@ -31,6 +28,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.scope.ModelPlusImportedScope;
 import jetbrains.mps.lang.structure.constraints.Scopes;
+import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
+import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
+import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -56,7 +56,6 @@ public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
           return SPropertyOperations.getString(node, PROPS.name$MnvL);
       }
     }
-    private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad1607089L), MetaIdFactory.conceptId(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad160708aL)).seal();
   }
   @Override
   protected Map<SProperty, PropertyConstraintsDescriptor> getSpecifiedProperties() {
@@ -90,6 +89,7 @@ public class IMenu_Concept_Constraints extends BaseConstraintsDescriptor {
     references.put(d0.getReference(), d0);
     return references;
   }
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad1607089L), MetaIdFactory.conceptId(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x5326ef9ad160708aL)).seal();
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IMenu_Concept$6_ = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9048c53L, "jetbrains.mps.lang.editor.structure.IMenu_Concept");

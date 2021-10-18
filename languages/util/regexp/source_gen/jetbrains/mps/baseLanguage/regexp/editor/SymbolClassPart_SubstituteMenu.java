@@ -116,7 +116,7 @@ public class SymbolClassPart_SubstituteMenu extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        return REGEXP_kfi2w2_a0a0a21c5.matcher(pattern).matches();
+        return REGEXP.matcher(pattern).matches();
       }
     }
   }
@@ -141,7 +141,7 @@ public class SymbolClassPart_SubstituteMenu extends SubstituteMenuBase {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
   }
-  private static final Pattern REGEXP_kfi2w2_a0a0a21c5 = Pattern.compile("(?:[^\\s\\\\\\[&'\\]\\-]|\\\\[\\-\\[&'\\]])", 0);
+  private static final Pattern REGEXP = Pattern.compile("(?:[^\\s\\\\\\[&'\\]\\-]|\\\\[\\-\\[&'\\]])", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept CharacterSymbolClassPart$up = MetaAdapterFactory.getConcept(0xdaafa647f1f74b0bL, 0xb09669cd7c8408c0L, 0x111791ae82fL, "jetbrains.mps.baseLanguage.regexp.structure.CharacterSymbolClassPart");

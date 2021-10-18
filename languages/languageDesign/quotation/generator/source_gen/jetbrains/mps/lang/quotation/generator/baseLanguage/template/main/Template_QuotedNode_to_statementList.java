@@ -45,7 +45,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = Collections.emptyList();
-    if (QueriesGenerated.ifMacro_Condition_0_0(new IfMacroContext(context, ifMacroRef_mmylek_b0a0c0h))) {
+    if (QueriesGenerated.ifMacro_Condition_0_0(new IfMacroContext(context, ifMacroRef))) {
       Collection<SNode> tlist2 = null;
       TemplateContext context1 = context;
       context1 = context1.withVariable("quotation", ((SNode) QueriesGenerated.templateArgumentQuery_0_0(new TemplateArgumentContext(context1, new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599746934")))));
@@ -58,7 +58,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
   protected FragmentResult applyPart1(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = Collections.emptyList();
-    if (QueriesGenerated.ifMacro_Condition_0_1(new IfMacroContext(context, ifMacroRef_mmylek_b0a0c0i))) {
+    if (QueriesGenerated.ifMacro_Condition_0_1(new IfMacroContext(context, ifMacroRef1))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
       {
         TemplateContext context1 = context.subContext();
@@ -155,7 +155,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
                                 TemplateContext context11 = context10.subContext();
                                 {
                                   Collection<SNode> tlist18 = null;
-                                  SNode callInputNode18 = QueriesGenerated.sourceNodeQuery_0_0(new SourceSubstituteMacroNodeContext(context11, callMacro_mmylek_b0a0a1a2a1a1a1a1a1a1a1a2a1a2a1a1a1a2a8));
+                                  SNode callInputNode18 = QueriesGenerated.sourceNodeQuery_0_0(new SourceSubstituteMacroNodeContext(context11, callMacro));
                                   TemplateContext context12 = context11;
                                   context12 = context12.subContext(null, callInputNode18);
                                   if (callInputNode18 != null) {
@@ -221,7 +221,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
   protected FragmentResult applyPart2(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = Collections.emptyList();
-    if (QueriesGenerated.ifMacro_Condition_0_2(new IfMacroContext(context, ifMacroRef_mmylek_b0a0c0j))) {
+    if (QueriesGenerated.ifMacro_Condition_0_2(new IfMacroContext(context, ifMacroRef2))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[13]);
       {
         TemplateContext context1 = context.subContext();
@@ -278,7 +278,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
                         TemplateContext context7 = context6.subContext();
                         {
                           Collection<SNode> tlist12 = null;
-                          SNode callInputNode12 = QueriesGenerated.sourceNodeQuery_0_1(new SourceSubstituteMacroNodeContext(context7, callMacro_mmylek_b0a0a1a2a1a1a1a1a1a1a1a3a1a2a9));
+                          SNode callInputNode12 = QueriesGenerated.sourceNodeQuery_0_1(new SourceSubstituteMacroNodeContext(context7, callMacro1));
                           TemplateContext context8 = context7;
                           context8 = context8.subContext(null, callInputNode12);
                           if (callInputNode12 != null) {
@@ -296,7 +296,7 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
                             TemplateContext context9 = context7.subContext();
                             {
                               final SNode tnode14 = environment.createOutputNode(myConcepts[4]);
-                              environment.resolveInTemplateLater(tnode14, myAssociationLinks[0], templateNode_mmylek_c0a0a1a3a1a3a1a1a1a1a1a1a1a3a1a2a9, "tpl/r:00000000-0000-4000-0000-011c8959034c/1196351887459", "child", context9);
+                              environment.resolveInTemplateLater(tnode14, myAssociationLinks[0], templateNode, "tpl/r:00000000-0000-4000-0000-011c8959034c/1196351887459", "child", context9);
                               environment.aggregate(tnode13, myAggregationLinks[9], tnode14);
                             }
                           }
@@ -400,10 +400,10 @@ public class Template_QuotedNode_to_statementList extends TemplateDeclarationBas
       return rv;
     }
   }
-  private static final SNodePointer ifMacroRef_mmylek_b0a0c0h = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599840611");
-  private static final SNodePointer callMacro_mmylek_b0a0a1a2a1a1a1a1a1a1a1a2a1a2a1a1a1a2a8 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144943");
-  private static final SNodePointer ifMacroRef_mmylek_b0a0c0i = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1196351887376");
-  private static final SNodePointer callMacro_mmylek_b0a0a1a2a1a1a1a1a1a1a1a3a1a2a9 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144944");
-  private static final SNodePointer templateNode_mmylek_c0a0a1a3a1a3a1a1a1a1a1a1a1a3a1a2a9 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "4097555883694856119");
-  private static final SNodePointer ifMacroRef_mmylek_b0a0c0j = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "21600922453832066");
+  private static final SNodePointer ifMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "2249837730599840611");
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144943");
+  private static final SNodePointer ifMacroRef1 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "1196351887376");
+  private static final SNodePointer callMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "633481135935144944");
+  private static final SNodePointer templateNode = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "4097555883694856119");
+  private static final SNodePointer ifMacroRef2 = new SNodePointer("r:00000000-0000-4000-0000-011c8959034c(jetbrains.mps.lang.quotation.generator.baseLanguage.template.main@generator)", "21600922453832066");
 }

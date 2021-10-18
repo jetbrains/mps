@@ -26,7 +26,7 @@ public class Template_outputRoot extends TemplateDeclarationBase {
   }
 
   public SNodeReference getTemplateNode() {
-    return template_ma3vac_a0a3;
+    return template;
   }
 
   @Override
@@ -73,5 +73,5 @@ public class Template_outputRoot extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer template_ma3vac_a0a3 = new SNodePointer("r:00000000-0000-4000-0000-011c895905f5(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_dontApplyReductionTwice@generator)", "1209605205934");
+  private static final SNodePointer template = new SNodePointer("r:00000000-0000-4000-0000-011c895905f5(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_dontApplyReductionTwice@generator)", "1209605205934");
 }

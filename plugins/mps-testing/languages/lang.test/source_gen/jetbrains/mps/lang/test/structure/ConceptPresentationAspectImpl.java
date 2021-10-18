@@ -237,7 +237,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           cpb.deprecateAggregation(0x11e314b78e4L, "nodeToEdit");
           cpb.deprecateAggregation(0x11e314bf3d3L, "result");
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a4a0a91b0id);
+          cpb.helpUrl(HELP_URL);
           cpb.icon(IconContainer.RESOURCE_a0a5a0a91b0id);
           props_EditorTestCase = cpb.create();
         }
@@ -364,7 +364,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x4c010b30d9be4be7L);
           cpb.deprecateAssociation(0x4c010b30d9be54a3L, "migration_old");
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a3a0a73b0id);
+          cpb.helpUrl(HELP_URL1);
           cpb.icon(IconContainer.RESOURCE_a0a4a0a73b0id);
           props_MigrationTestCase = cpb.create();
         }
@@ -537,7 +537,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_NodesTestCase == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByName();
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a16b0id);
+          cpb.helpUrl(HELP_URL2);
           cpb.icon(IconContainer.RESOURCE_a0a3a0a16b0id);
           props_NodesTestCase = cpb.create();
         }
@@ -622,7 +622,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_TestInfo == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.rawPresentation("TestInfo");
-          cpb.helpUrl(HELP_URL_lpa09p_a0a2a0a37b0id);
+          cpb.helpUrl(HELP_URL3);
           props_TestInfo = cpb.create();
         }
         return props_TestInfo;
@@ -707,8 +707,8 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
     }
     return null;
   }
-  private static final String HELP_URL_lpa09p_a0a4a0a91b0id = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#editortests";
-  private static final String HELP_URL_lpa09p_a0a3a0a73b0id = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#migrationtests";
-  private static final String HELP_URL_lpa09p_a0a2a0a16b0id = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#nodetests";
-  private static final String HELP_URL_lpa09p_a0a2a0a37b0id = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#testinfo";
+  private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#editortests";
+  private static final String HELP_URL1 = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#migrationtests";
+  private static final String HELP_URL2 = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#nodetests";
+  private static final String HELP_URL3 = URLFunction_HelpCenterDocUrl.getUrl() + "testing-languages.html#testinfo";
 }

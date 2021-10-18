@@ -20,7 +20,7 @@
       <node id="4241665505353447073" at="44,29,45,213" concept="0" />
       <node id="4241665505353447080" at="46,22,47,217" concept="0" />
       <node id="4241665505353447089" at="48,14,49,20" concept="0" />
-      <node id="4241665505353447000" at="52,0,53,0" concept="1" trace="enumSwitchIndex_rsd4tu_a0a0a" />
+      <node id="4241665505353447000" at="52,0,53,0" concept="1" trace="enumSwitchIndex" />
       <node id="4241665505353447033" at="16,62,32,5" concept="3" />
       <node id="4241665505353447086" at="34,61,50,5" concept="3" />
       <node id="4241665505353447036" at="34,0,52,0" concept="2" trace="fromValue#(Ljava/lang/String;)Lorg/jetbrains/mps/openapi/language/SEnumerationLiteral;" />

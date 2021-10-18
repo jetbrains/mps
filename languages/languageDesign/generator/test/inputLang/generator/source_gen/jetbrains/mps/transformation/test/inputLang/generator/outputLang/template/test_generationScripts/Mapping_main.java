@@ -79,7 +79,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      if (QueriesGenerated.rule_Condition_0_0(new BaseMappingRuleContext(context, rule_ief6mt_b0a0c0c11))) {
+      if (QueriesGenerated.rule_Condition_0_0(new BaseMappingRuleContext(context, rule))) {
         final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
         tnode2.setProperty(myProperties[0], "<input option : 1>");
         tlist1 = TemplateUtil.singletonList(tnode2);
@@ -153,7 +153,7 @@ public class Mapping_main extends MapConfigBase implements TemplateMappingConfig
 
 
   }
-  private static final SNodePointer rule_ief6mt_b0a0c0c11 = new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1195170730024");
+  private static final SNodePointer rule = new SNodePointer("r:00000000-0000-4000-0000-011c895905f6(jetbrains.mps.transformation.test.inputLang.generator.outputLang.template.test_generationScripts@generator)", "1195170730024");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept InputNode_A$Jt = MetaAdapterFactory.getConcept(0xab0ae915e3b54f35L, 0xb55ac655d649a03cL, 0x11645be5a7aL, "jetbrains.mps.transformation.test.inputLang.structure.InputNode_A");

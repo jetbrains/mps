@@ -205,7 +205,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   public SNode insertMemberNameOp(SNode enumm, SNode position, SNode receiver) {
     SEnumerationLiteral nameOpMigration = SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumm), PROPS.nameOpMigration$L1EO);
 
-    switch (enumSwitchIndex_dd9n22_a0c0o.indexNullable(nameOpMigration)) {
+    switch (enumSwitchIndex.indexNullable(nameOpMigration)) {
       case 0:
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a0a2a41();
@@ -235,7 +235,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   public SNode insertMemberValueOp(SNode enumm, SNode position, SNode receiver) {
     SEnumerationLiteral valueOpMigration = SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumm), PROPS.valueOpMigration$UswM);
 
-    switch (enumSwitchIndex_dd9n22_a0c0q.indexNullable(valueOpMigration)) {
+    switch (enumSwitchIndex1.indexNullable(valueOpMigration)) {
       case 0:
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a0a2a61();
@@ -292,7 +292,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   public void insertMemberForNameOp(SNode enumm, SNode position, SNode argument) {
     SEnumerationLiteral nameOpMigration = SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumm), PROPS.nameOpMigration$L1EO);
 
-    switch (enumSwitchIndex_dd9n22_a0c0s.indexNullable(nameOpMigration)) {
+    switch (enumSwitchIndex2.indexNullable(nameOpMigration)) {
       case 0:
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a0a2a81(enumm);
@@ -320,7 +320,7 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
   public void insertMemberForValueOp(SNode enumm, SNode position, SNode argument) {
     SEnumerationLiteral valueOpMigration = SPropertyOperations.getEnum(new IAttributeDescriptor.NodeAttribute(CONCEPTS.EnumMigrationInfo$S$).get(enumm), PROPS.valueOpMigration$UswM);
 
-    switch (enumSwitchIndex_dd9n22_a0c0u.indexNullable(valueOpMigration)) {
+    switch (enumSwitchIndex3.indexNullable(valueOpMigration)) {
       case 0:
         {
           SNode replacement = _quotation_createNode_dd9n22_a0a0a0a2a02(enumm, findBooleanTrueMember(enumm), enumm, findBooleanFalseMember(enumm));
@@ -1282,10 +1282,10 @@ public class EnumExpressionsMigration extends EnumUsagesMigration {
     SNodeAccessUtil.setReferenceTarget(quotedNode_4, MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbbebabf09L, 0x10a7588b546L, "classConcept"), (SNode) parameter_2);
     return quotedNode_4;
   }
-  private static final EnumerationLiteralsIndex enumSwitchIndex_dd9n22_a0c0o = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f10359640640L, 0x5a14f10359640641L, 0x5a14f10359640642L, 0x5a14f10359640645L);
-  private static final EnumerationLiteralsIndex enumSwitchIndex_dd9n22_a0c0q = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f103596433bdL, 0x5a14f103596433beL, 0x5a14f103596433bfL, 0x5a14f103596433c6L, 0x5a14f103596433cbL, 0x5a14f103596433d1L, 0x5a14f103596433d8L);
-  private static final EnumerationLiteralsIndex enumSwitchIndex_dd9n22_a0c0s = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f10359640640L, 0x5a14f10359640641L, 0x5a14f10359640642L, 0x5a14f10359640645L);
-  private static final EnumerationLiteralsIndex enumSwitchIndex_dd9n22_a0c0u = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f103596433bdL, 0x5a14f103596433c6L, 0x5a14f103596433cbL, 0x5a14f103596433d1L, 0x5a14f103596433beL, 0x5a14f103596433bfL, 0x5a14f103596433d8L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f10359640640L, 0x5a14f10359640641L, 0x5a14f10359640642L, 0x5a14f10359640645L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex1 = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f103596433bdL, 0x5a14f103596433beL, 0x5a14f103596433bfL, 0x5a14f103596433c6L, 0x5a14f103596433cbL, 0x5a14f103596433d1L, 0x5a14f103596433d8L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex2 = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f10359640640L, 0x5a14f10359640641L, 0x5a14f10359640642L, 0x5a14f10359640645L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex3 = EnumerationLiteralsIndex.build(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x5a14f103596433bdL, 0x5a14f103596433c6L, 0x5a14f103596433cbL, 0x5a14f103596433d1L, 0x5a14f103596433beL, 0x5a14f103596433bfL, 0x5a14f103596433d8L);
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");

@@ -547,7 +547,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return _context.getOutputNodeByInputNodeAndMappingLabel(_context.getNode(), "map_ConstructorParameterField");
   }
   public static Object referenceMacro_GetReferent_0_2(final ReferenceMacroContext _context) {
-    switch (enumSwitchIndex_x583g4_a0a0ef.indexNullable(SPropertyOperations.getEnum(_context.getNode(), PROPS.requiredAccess$TB4H))) {
+    switch (enumSwitchIndex.indexNullable(SPropertyOperations.getEnum(_context.getNode(), PROPS.requiredAccess$TB4H))) {
       case 0:
         return new SNodePointer("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.action(MPS.Platform/)", "~ActionAccess.UNDO_PROJECT");
       case 1:
@@ -561,7 +561,7 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   public static Object referenceMacro_GetReferent_0_3(final ReferenceMacroContext _context) {
-    switch (enumSwitchIndex_x583g4_a0a0ff.indexNullable(SPropertyOperations.getEnum(_context.getNode(), PROPS.requiredAccess$TB4H))) {
+    switch (enumSwitchIndex1.indexNullable(SPropertyOperations.getEnum(_context.getNode(), PROPS.requiredAccess$TB4H))) {
       case 0:
         return new SNodePointer("742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.action(MPS.Platform/)", "~ActionAccess");
       case 1:
@@ -3286,8 +3286,8 @@ public class QueriesGenerated extends QueryProviderBase {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5c4f4cL, "type"), quotedNode_2);
     return quotedNode_1;
   }
-  private static final EnumerationLiteralsIndex enumSwitchIndex_x583g4_a0a0ef = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6782cab5d9442836L, 0x6782cab5d9442837L, 0x6782cab5d9442838L, 0x6782cab5d9442890L, 0x6782cab5d9442894L);
-  private static final EnumerationLiteralsIndex enumSwitchIndex_x583g4_a0a0ff = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6782cab5d9442836L, 0x6782cab5d9442837L, 0x6782cab5d9442838L, 0x6782cab5d9442890L, 0x6782cab5d9442894L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6782cab5d9442836L, 0x6782cab5d9442837L, 0x6782cab5d9442838L, 0x6782cab5d9442890L, 0x6782cab5d9442894L);
+  private static final EnumerationLiteralsIndex enumSwitchIndex1 = EnumerationLiteralsIndex.build(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x6782cab5d9442836L, 0x6782cab5d9442837L, 0x6782cab5d9442838L, 0x6782cab5d9442890L, 0x6782cab5d9442894L);
   private static boolean isEmptyString(String str) {
     return str == null || str.isEmpty();
   }

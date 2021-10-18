@@ -35,7 +35,7 @@ public class BuildVariableMacro_Constraints extends BaseConstraintsDescriptor {
       return result;
     }
     private static boolean staticValidateProperty(SNode node, String propertyValue) {
-      return REGEXP_xr7ei4_a0a0a2c.matcher(propertyValue).matches();
+      return REGEXP.matcher(propertyValue).matches();
     }
   }
   @Override
@@ -44,7 +44,7 @@ public class BuildVariableMacro_Constraints extends BaseConstraintsDescriptor {
     properties.put(PROPS.name$MnvL, new Name_Property(this));
     return properties;
   }
-  private static final Pattern REGEXP_xr7ei4_a0a0a2c = Pattern.compile("[^=\\$/]*", 0);
+  private static final Pattern REGEXP = Pattern.compile("[^=\\$/]*", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BuildVariableMacro$Rk = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x3449288aa0d560e2L, "jetbrains.mps.build.structure.BuildVariableMacro");

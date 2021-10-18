@@ -48,7 +48,7 @@
       <node id="4241665505353447023" at="20,13,21,33" concept="2" />
       <node id="4241665505353447026" at="22,13,23,26" concept="2" />
       <node id="651058060500339148" at="24,14,25,20" concept="2" />
-      <node id="651058060500338897" at="28,0,29,0" concept="3" trace="enumSwitchIndex_cql3qn_a0a0b" />
+      <node id="651058060500338897" at="28,0,29,0" concept="3" trace="enumSwitchIndex" />
       <node id="651058060500339148" at="10,68,26,5" concept="5" />
       <node id="651058060500339011" at="10,0,28,0" concept="4" trace="serializeKeymap#(Lorg/jetbrains/mps/openapi/language/SEnumerationLiteral;)Ljava/lang/String;" />
       <scope id="4241665505353447011" at="12,13,13,26" />

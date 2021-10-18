@@ -82,11 +82,11 @@ public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescripto
   }
   /*package*/ static String getValidClassName_id3gpm$NHlLi1(@NotNull SAbstractConcept __thisConcept__, @NonNls String name) {
     // in between
-    name = RegexpOperations.replace(name, REGEXP_mgabp8_b0a1a52, new _Replacer_mgabp8_a0a0b0z(null));
+    name = RegexpOperations.replace(name, REGEXP, new _Replacer_mgabp8_a0a0b0z(null));
     // in the end
-    name = RegexpOperations.replace(name, REGEXP_mgabp8_b0a3a52, new _Replacer_mgabp8_a0a0d0z(null));
+    name = RegexpOperations.replace(name, REGEXP1, new _Replacer_mgabp8_a0a0d0z(null));
     // in the beggining
-    name = RegexpOperations.replace(name, REGEXP_mgabp8_b0a5a52, new _Replacer_mgabp8_a0a0f0z(null));
+    name = RegexpOperations.replace(name, REGEXP2, new _Replacer_mgabp8_a0a0f0z(null));
     return (String) IGeneratedToClass__BehaviorDescriptor.makeUpperCase_idO$iR4JBsRn.invoke(SNodeOperations.asSConcept(CONCEPTS.IGeneratedToClass$Cg), name, ((int) 0));
   }
 
@@ -151,9 +151,9 @@ public final class IGeneratedToClass__BehaviorDescriptor extends BaseBHDescripto
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static final Pattern REGEXP_mgabp8_b0a1a52 = Pattern.compile("(\\w)\\W+(\\w)", 0);
-  private static final Pattern REGEXP_mgabp8_b0a3a52 = Pattern.compile("(.)\\W+$", 0);
-  private static final Pattern REGEXP_mgabp8_b0a5a52 = Pattern.compile("^\\W+(\\w)", 0);
+  private static final Pattern REGEXP = Pattern.compile("(\\w)\\W+(\\w)", 0);
+  private static final Pattern REGEXP1 = Pattern.compile("(.)\\W+$", 0);
+  private static final Pattern REGEXP2 = Pattern.compile("^\\W+(\\w)", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IGeneratedToClass$Cg = MetaAdapterFactory.getInterfaceConcept(0x73c1a49099fa4d0dL, 0x8292b8985697c74bL, 0xd244b712f9dcdabL, "jetbrains.mps.execution.common.structure.IGeneratedToClass");

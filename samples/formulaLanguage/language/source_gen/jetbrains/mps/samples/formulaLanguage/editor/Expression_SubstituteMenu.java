@@ -119,7 +119,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
         {
-          Pattern _pattern_0 = REGEXP_or55c_a0a0a0m2f;
+          Pattern _pattern_0 = REGEXP;
           Matcher _matcher_0 = _pattern_0.matcher(pattern);
           if (_matcher_0.matches()) {
             return true;
@@ -191,7 +191,7 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
         {
-          Pattern _pattern_0 = REGEXP_or55c_a0a0a0l2g;
+          Pattern _pattern_0 = REGEXP1;
           Matcher _matcher_0 = _pattern_0.matcher(pattern);
           if (_matcher_0.matches()) {
             return true;
@@ -222,8 +222,8 @@ public class Expression_SubstituteMenu extends SubstituteMenuBase {
       return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
   }
-  private static final Pattern REGEXP_or55c_a0a0a0m2f = Pattern.compile("(?:-?)\\d+", 0);
-  private static final Pattern REGEXP_or55c_a0a0a0l2g = Pattern.compile("(?:-?)\\d+\\.\\d*", 0);
+  private static final Pattern REGEXP = Pattern.compile("(?:-?)\\d+", 0);
+  private static final Pattern REGEXP1 = Pattern.compile("(?:-?)\\d+\\.\\d*", 0);
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept IntegerConstant$sx = MetaAdapterFactory.getConcept(0xb1a9bc478a264792L, 0x8b684660c531090aL, 0x102db8aa3f9L, "jetbrains.mps.samples.formulaLanguage.structure.IntegerConstant");
