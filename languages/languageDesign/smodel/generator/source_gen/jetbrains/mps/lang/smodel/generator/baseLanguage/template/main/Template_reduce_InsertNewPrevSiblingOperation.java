@@ -44,13 +44,13 @@ public class Template_reduce_InsertNewPrevSiblingOperation extends TemplateDecla
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_7_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_v0mmj9_b0a0c0d0c0g));
-        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_v0mmj9_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/9116031298986685822", context1);
+        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_7_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/9116031298986685822", context1);
         environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
       {
         Collection<SNode> tlist3 = null;
-        SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_7_1(new SourceSubstituteMacroNodeContext(context1, callMacro_v0mmj9_b0a0a1a4a2a6));
+        SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_7_1(new SourceSubstituteMacroNodeContext(context1, callMacro));
         TemplateContext context2 = context1;
         context2 = context2.subContext(null, callInputNode3);
         if (callInputNode3 != null) {
@@ -94,6 +94,6 @@ public class Template_reduce_InsertNewPrevSiblingOperation extends TemplateDecla
       return rv;
     }
   }
-  private static final SNodePointer copySrcMacro_v0mmj9_b0a0c0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9116031298986685823");
-  private static final SNodePointer callMacro_v0mmj9_b0a0a1a4a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145284");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "9116031298986685823");
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145284");
 }

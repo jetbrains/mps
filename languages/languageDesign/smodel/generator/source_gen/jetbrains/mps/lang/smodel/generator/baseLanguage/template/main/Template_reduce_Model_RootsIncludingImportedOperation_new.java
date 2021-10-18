@@ -45,22 +45,22 @@ public class Template_reduce_Model_RootsIncludingImportedOperation_new extends T
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_38_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_eixwn7_b0a0c0d0c0g));
-        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_eixwn7_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/2702976628215407192", context1);
+        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_38_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/2702976628215407192", context1);
         environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
       {
         Collection<SNode> tlist3 = Collections.emptyList();
-        if (QueriesGenerated.ifMacro_Condition_38_0(new IfMacroContext(context1, ifMacroRef_eixwn7_b0a0b0e0c0g))) {
+        if (QueriesGenerated.ifMacro_Condition_38_0(new IfMacroContext(context1, ifMacroRef))) {
           Collection<SNode> tlist4 = null;
           {
-            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_38_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_eixwn7_b0a0a0a1a1a4a2a6));
+            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_38_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef));
             if (switchInput4 == null) {
               tlist4 = Collections.emptyList();
             } else {
               TemplateContext switchContext4 = context1;
               switchContext4 = switchContext4.subContext(null, switchInput4);
-              tlist4 = environment.trySwitch(templateSwitchNode_eixwn7_a0a0c0a1a1a1a4a2a6, switchContext4);
+              tlist4 = environment.trySwitch(templateSwitchNode, switchContext4);
               if (tlist4 == null) {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
                 tlist4 = TemplateUtil.singletonList(tnode5);
@@ -109,8 +109,8 @@ public class Template_reduce_Model_RootsIncludingImportedOperation_new extends T
       return rv;
     }
   }
-  private static final SNodePointer copySrcMacro_eixwn7_b0a0c0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2702976628215407193");
-  private static final SNodePointer switchMacroRef_eixwn7_b0a0a0a1a1a4a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6750920497477158674");
-  private static final SNodePointer templateSwitchNode_eixwn7_a0a0c0a1a1a1a4a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653355606");
-  private static final SNodePointer ifMacroRef_eixwn7_b0a0b0e0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6750920497477157899");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2702976628215407193");
+  private static final SNodePointer switchMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6750920497477158674");
+  private static final SNodePointer templateSwitchNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653355606");
+  private static final SNodePointer ifMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6750920497477157899");
 }

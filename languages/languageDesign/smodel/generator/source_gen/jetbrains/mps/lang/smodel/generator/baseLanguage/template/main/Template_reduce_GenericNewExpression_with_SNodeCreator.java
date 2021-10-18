@@ -46,7 +46,7 @@ public class Template_reduce_GenericNewExpression_with_SNodeCreator extends Temp
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        SNode callInputNode2 = QueriesGenerated.sourceNodeQuery_40_0(new SourceSubstituteMacroNodeContext(context1, callMacro_8mair_b0a0a1a3a2a7));
+        SNode callInputNode2 = QueriesGenerated.sourceNodeQuery_40_0(new SourceSubstituteMacroNodeContext(context1, callMacro));
         TemplateContext context2 = context1;
         context2 = context2.subContext(null, callInputNode2);
         if (callInputNode2 != null) {
@@ -90,5 +90,5 @@ public class Template_reduce_GenericNewExpression_with_SNodeCreator extends Temp
       return rv;
     }
   }
-  private static final SNodePointer callMacro_8mair_b0a0a1a3a2a7 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145302");
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "633481135935145302");
 }

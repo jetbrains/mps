@@ -38,7 +38,7 @@ public class Template_reduce_ConceptMethodCallReflectiveWithSuper extends Templa
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     Collection<SNode> tlist1 = Collections.emptyList();
-    if (QueriesGenerated.ifMacro_Condition_113_0(new IfMacroContext(context, ifMacroRef_qqxek3_b0a0c0g))) {
+    if (QueriesGenerated.ifMacro_Condition_112_0(new IfMacroContext(context, ifMacroRef))) {
       final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
       {
         TemplateContext context1 = context.subContext();
@@ -53,8 +53,8 @@ public class Template_reduce_ConceptMethodCallReflectiveWithSuper extends Templa
             }
             {
               Collection<SNode> tlist5 = null;
-              final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_113_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_qqxek3_b0a0c0c0b0b0b0c0g));
-              tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro_qqxek3_b0a0c0c0b0b0b0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/3099391750892222590", context2);
+              final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_112_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro));
+              tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/3099391750892222590", context2);
               environment.aggregate(tnode3, myAggregationLinks[1], tlist5);
             }
           }
@@ -95,6 +95,6 @@ public class Template_reduce_ConceptMethodCallReflectiveWithSuper extends Templa
       return rv;
     }
   }
-  private static final SNodePointer copySrcMacro_qqxek3_b0a0c0c0b0b0b0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892222591");
-  private static final SNodePointer ifMacroRef_qqxek3_b0a0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892222601");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892222591");
+  private static final SNodePointer ifMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3099391750892222601");
 }

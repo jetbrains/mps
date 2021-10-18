@@ -45,22 +45,22 @@ public class Template_reduce_Model_NodesOperation extends TemplateDeclarationBas
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_26_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_6tyzcg_b0a0c0d0c0g));
-        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_6tyzcg_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/1171324442829", context1);
+        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_26_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/1171324442829", context1);
         environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
       {
         Collection<SNode> tlist3 = Collections.emptyList();
-        if (QueriesGenerated.ifMacro_Condition_26_0(new IfMacroContext(context1, ifMacroRef_6tyzcg_b0a0b0e0c0g))) {
+        if (QueriesGenerated.ifMacro_Condition_26_0(new IfMacroContext(context1, ifMacroRef))) {
           Collection<SNode> tlist4 = null;
           {
-            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_26_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_6tyzcg_b0a0a0a1a1a4a2a6));
+            final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_26_1(new SourceSubstituteMacroNodeContext(context1, switchMacroRef));
             if (switchInput4 == null) {
               tlist4 = Collections.emptyList();
             } else {
               TemplateContext switchContext4 = context1;
               switchContext4 = switchContext4.subContext(null, switchInput4);
-              tlist4 = environment.trySwitch(templateSwitchNode_6tyzcg_a0a0c0a1a1a1a4a2a6, switchContext4);
+              tlist4 = environment.trySwitch(templateSwitchNode, switchContext4);
               if (tlist4 == null) {
                 final SNode tnode5 = environment.createOutputNode(myConcepts[1]);
                 tlist4 = TemplateUtil.singletonList(tnode5);
@@ -109,8 +109,8 @@ public class Template_reduce_Model_NodesOperation extends TemplateDeclarationBas
       return rv;
     }
   }
-  private static final SNodePointer copySrcMacro_6tyzcg_b0a0c0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1171324442830");
-  private static final SNodePointer switchMacroRef_6tyzcg_b0a0a0a1a1a4a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7665380792460609837");
-  private static final SNodePointer templateSwitchNode_6tyzcg_a0a0c0a1a1a1a4a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653355606");
-  private static final SNodePointer ifMacroRef_6tyzcg_b0a0b0e0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7665380792460614343");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1171324442830");
+  private static final SNodePointer switchMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7665380792460609837");
+  private static final SNodePointer templateSwitchNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653355606");
+  private static final SNodePointer ifMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7665380792460614343");
 }

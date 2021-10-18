@@ -75,7 +75,7 @@ public class Switch_switch_DevkitIdentity_SModuleReference extends TemplateSwitc
             TemplateContext context2 = context1.subContext();
             {
               final SNode tnode4 = environment.createOutputNode(myConcepts[3]);
-              SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_126_0(new PropertyMacroContext(context2, "", propertyMacro_yjqism_c0a2a0a1a2a1a2a2a1h)));
+              SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_125_0(new PropertyMacroContext(context2, "", propertyMacro)));
               environment.aggregate(tnode3, myAggregationLinks[1], tnode4);
             }
           }
@@ -121,7 +121,7 @@ public class Switch_switch_DevkitIdentity_SModuleReference extends TemplateSwitc
       return rv;
     }
   }
-  private static final SNodePointer propertyMacro_yjqism_c0a2a0a1a2a1a2a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7764131598616918128");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7764131598616918128");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept DevkitPointer$Qt = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x721adb764b3fbd1bL, "jetbrains.mps.lang.smodel.structure.DevkitPointer");

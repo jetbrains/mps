@@ -48,14 +48,14 @@ public class Template_reduce_ConceptId_SInterfaceConcept extends TemplateDeclara
       {
         Collection<SNode> tlist2 = null;
         {
-          final SNode switchInput2 = QueriesGenerated.sourceNodeQuery_96_0(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_acp5hl_b0a0a0a1a3a2a6));
+          final SNode switchInput2 = QueriesGenerated.sourceNodeQuery_96_0(new SourceSubstituteMacroNodeContext(context1, switchMacroRef));
           if (switchInput2 == null) {
-            environment.nullInputSwitch(templateSwitchNode_acp5hl_a0a0c0a1a1a3a2a6);
+            environment.nullInputSwitch(templateSwitchNode);
             tlist2 = Collections.emptyList();
           } else {
             TemplateContext switchContext2 = context1;
             switchContext2 = switchContext2.subContext(null, switchInput2);
-            tlist2 = environment.trySwitch(templateSwitchNode_acp5hl_a0a0c0a1a1a3a2a6, switchContext2);
+            tlist2 = environment.trySwitch(templateSwitchNode, switchContext2);
             if (tlist2 == null) {
               final SNode tnode3 = environment.createOutputNode(myConcepts[1]);
               tlist2 = TemplateUtil.singletonList(tnode3);
@@ -66,12 +66,12 @@ public class Template_reduce_ConceptId_SInterfaceConcept extends TemplateDeclara
       }
       {
         final SNode tnode4 = environment.createOutputNode(myConcepts[2]);
-        SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_96_0(new PropertyMacroContext(context1, "0L", propertyMacro_acp5hl_c0a2a0a1a4a2a6)));
+        SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_96_0(new PropertyMacroContext(context1, "0L", propertyMacro)));
         environment.aggregate(tnode1, myAggregationLinks[0], tnode4);
       }
       {
         final SNode tnode5 = environment.createOutputNode(myConcepts[3]);
-        SNodeAccessUtil.setPropertyValue(tnode5, myProperties[1], QueriesGenerated.propertyMacro_GetValue_96_1(new PropertyMacroContext(context1, "", propertyMacro_acp5hl_c0a2a0a1a5a2a6)));
+        SNodeAccessUtil.setPropertyValue(tnode5, myProperties[1], QueriesGenerated.propertyMacro_GetValue_96_1(new PropertyMacroContext(context1, "", propertyMacro1)));
         environment.aggregate(tnode1, myAggregationLinks[0], tnode5);
       }
     }
@@ -118,8 +118,8 @@ public class Template_reduce_ConceptId_SInterfaceConcept extends TemplateDeclara
       return rv;
     }
   }
-  private static final SNodePointer switchMacroRef_acp5hl_b0a0a0a1a3a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2836521009935072493");
-  private static final SNodePointer templateSwitchNode_acp5hl_a0a0c0a1a1a3a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2944629966652298601");
-  private static final SNodePointer propertyMacro_acp5hl_c0a2a0a1a4a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2836521009935072501");
-  private static final SNodePointer propertyMacro_acp5hl_c0a2a0a1a5a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2836521009935072514");
+  private static final SNodePointer switchMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2836521009935072493");
+  private static final SNodePointer templateSwitchNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2944629966652298601");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2836521009935072501");
+  private static final SNodePointer propertyMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2836521009935072514");
 }

@@ -89,7 +89,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist3 = null;
-              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_144_0(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1h));
+              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_143_0(new SourceSubstituteMacroNodeContext(context2, callMacro));
               TemplateContext context3 = context2;
               context3 = context3.subContext(null, callInputNode3);
               if (callInputNode3 != null) {
@@ -123,7 +123,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist3 = null;
-              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_144_1(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1i));
+              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_143_1(new SourceSubstituteMacroNodeContext(context2, callMacro1));
               TemplateContext context3 = context2;
               context3 = context3.subContext(null, callInputNode3);
               if (callInputNode3 != null) {
@@ -136,13 +136,13 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             {
               Collection<SNode> tlist4 = null;
               {
-                final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_144_2(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1i));
+                final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_143_2(new SourceSubstituteMacroNodeContext(context2, switchMacroRef));
                 if (switchInput4 == null) {
                   tlist4 = Collections.emptyList();
                 } else {
                   TemplateContext switchContext4 = context2;
                   switchContext4 = switchContext4.subContext(null, switchInput4);
-                  tlist4 = environment.trySwitch(templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1i, switchContext4);
+                  tlist4 = environment.trySwitch(templateSwitchNode, switchContext4);
                   if (tlist4 == null) {
                     final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
                     tlist4 = TemplateUtil.singletonList(tnode5);
@@ -175,7 +175,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist3 = null;
-              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_144_3(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1j));
+              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_143_3(new SourceSubstituteMacroNodeContext(context2, callMacro2));
               TemplateContext context3 = context2;
               context3 = context3.subContext(null, callInputNode3);
               if (callInputNode3 != null) {
@@ -188,13 +188,13 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             {
               Collection<SNode> tlist4 = null;
               {
-                final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_144_4(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1j));
+                final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_143_4(new SourceSubstituteMacroNodeContext(context2, switchMacroRef1));
                 if (switchInput4 == null) {
                   tlist4 = Collections.emptyList();
                 } else {
                   TemplateContext switchContext4 = context2;
                   switchContext4 = switchContext4.subContext(null, switchInput4);
-                  tlist4 = environment.trySwitch(templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1j, switchContext4);
+                  tlist4 = environment.trySwitch(templateSwitchNode1, switchContext4);
                   if (tlist4 == null) {
                     final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
                     tlist4 = TemplateUtil.singletonList(tnode5);
@@ -227,7 +227,7 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             TemplateContext context2 = context1.subContext();
             {
               Collection<SNode> tlist3 = null;
-              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_144_5(new SourceSubstituteMacroNodeContext(context2, callMacro_cadkmf_b0a0a1a2a1a1a2a1k));
+              SNode callInputNode3 = QueriesGenerated.sourceNodeQuery_143_5(new SourceSubstituteMacroNodeContext(context2, callMacro3));
               TemplateContext context3 = context2;
               context3 = context3.subContext(null, callInputNode3);
               if (callInputNode3 != null) {
@@ -240,13 +240,13 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
             {
               Collection<SNode> tlist4 = null;
               {
-                final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_144_6(new SourceSubstituteMacroNodeContext(context2, switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1k));
+                final SNode switchInput4 = QueriesGenerated.sourceNodeQuery_143_6(new SourceSubstituteMacroNodeContext(context2, switchMacroRef2));
                 if (switchInput4 == null) {
                   tlist4 = Collections.emptyList();
                 } else {
                   TemplateContext switchContext4 = context2;
                   switchContext4 = switchContext4.subContext(null, switchInput4);
-                  tlist4 = environment.trySwitch(templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1k, switchContext4);
+                  tlist4 = environment.trySwitch(templateSwitchNode2, switchContext4);
                   if (tlist4 == null) {
                     final SNode tnode5 = environment.createOutputNode(myConcepts[2]);
                     tlist4 = TemplateUtil.singletonList(tnode5);
@@ -289,16 +289,16 @@ public class Switch_switch_AttributeQualifier extends TemplateSwitchBase impleme
       return rv;
     }
   }
-  private static final SNodePointer callMacro_cadkmf_b0a0a1a2a1a1a2a1h = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414333");
-  private static final SNodePointer callMacro_cadkmf_b0a0a1a2a1a1a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414345");
-  private static final SNodePointer switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414353");
-  private static final SNodePointer templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1i = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2855392971717573960");
-  private static final SNodePointer callMacro_cadkmf_b0a0a1a2a1a1a2a1j = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414365");
-  private static final SNodePointer switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1j = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414373");
-  private static final SNodePointer templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1j = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2855392971717573960");
-  private static final SNodePointer callMacro_cadkmf_b0a0a1a2a1a1a2a1k = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414385");
-  private static final SNodePointer switchMacroRef_cadkmf_b0a0a0a1a3a1a1a2a1k = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414393");
-  private static final SNodePointer templateSwitchNode_cadkmf_a0a0c0a1a1a3a1a1a2a1k = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583040956");
+  private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414333");
+  private static final SNodePointer callMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414345");
+  private static final SNodePointer switchMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414353");
+  private static final SNodePointer templateSwitchNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2855392971717573960");
+  private static final SNodePointer callMacro2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414365");
+  private static final SNodePointer switchMacroRef1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414373");
+  private static final SNodePointer templateSwitchNode1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2855392971717573960");
+  private static final SNodePointer callMacro3 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414385");
+  private static final SNodePointer switchMacroRef2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2213306337134414393");
+  private static final SNodePointer templateSwitchNode2 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6407023681583040956");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept AllAttributeQualifier$la = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x58ea5217b045c8b0L, "jetbrains.mps.lang.smodel.structure.AllAttributeQualifier");

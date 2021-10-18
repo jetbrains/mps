@@ -43,14 +43,14 @@ public class Template_reduce_InsertPrevSiblingOperation extends TemplateDeclarat
       TemplateContext context1 = context.subContext();
       {
         Collection<SNode> tlist2 = null;
-        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_9_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_cik7gy_b0a0c0d0c0g));
-        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro_cik7gy_b0a0c0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/1143225530640", context1);
+        final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_9_0(new SourceSubstituteMacroNodeContext(context1, copySrcMacro));
+        tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/1143225530640", context1);
         environment.aggregate(tnode1, myAggregationLinks[0], tlist2);
       }
       {
         Collection<SNode> tlist3 = null;
-        final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_9_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro_cik7gy_b0a0c0e0c0g));
-        tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro_cik7gy_b0a0c0e0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/1143225530642", context1);
+        final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_9_1(new SourceSubstituteMacroNodeContext(context1, copySrcMacro1));
+        tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro1, "tpl/r:00000000-0000-4000-0000-011c89590303/1143225530642", context1);
         environment.aggregate(tnode1, myAggregationLinks[0], tlist3);
       }
     }
@@ -87,6 +87,6 @@ public class Template_reduce_InsertPrevSiblingOperation extends TemplateDeclarat
       return rv;
     }
   }
-  private static final SNodePointer copySrcMacro_cik7gy_b0a0c0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1143225530641");
-  private static final SNodePointer copySrcMacro_cik7gy_b0a0c0e0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1143225530643");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1143225530641");
+  private static final SNodePointer copySrcMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1143225530643");
 }

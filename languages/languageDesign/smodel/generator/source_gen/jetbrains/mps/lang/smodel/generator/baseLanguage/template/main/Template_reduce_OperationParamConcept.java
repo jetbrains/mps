@@ -42,16 +42,16 @@ public class Template_reduce_OperationParamConcept extends TemplateDeclarationBa
     TemplateContext context1 = context;
     context1 = context1.withVariable("var:conceptArg", QueriesGenerated.varMacro_Value_61_0(new TemplateVarContext(context1, new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2409421742521904783"))));
     Collection<SNode> tlist2 = Collections.emptyList();
-    if (QueriesGenerated.ifMacro_Condition_61_0(new IfMacroContext(context1, ifMacroRef_t65l13_b0a0f0g))) {
+    if (QueriesGenerated.ifMacro_Condition_61_0(new IfMacroContext(context1, ifMacroRef))) {
       Collection<SNode> tlist3 = null;
       {
-        final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_61_0(new SourceSubstituteMacroNodeContext(context1, switchMacroRef_t65l13_b0a0a0a1a5a6));
+        final SNode switchInput3 = QueriesGenerated.sourceNodeQuery_61_0(new SourceSubstituteMacroNodeContext(context1, switchMacroRef));
         if (switchInput3 == null) {
           tlist3 = Collections.emptyList();
         } else {
           TemplateContext switchContext3 = context1;
           switchContext3 = switchContext3.subContext(null, switchInput3);
-          tlist3 = environment.trySwitch(templateSwitchNode_t65l13_a0a0c0a1a1a5a6, switchContext3);
+          tlist3 = environment.trySwitch(templateSwitchNode, switchContext3);
           if (tlist3 == null) {
             final SNode tnode4 = environment.createOutputNode(myConcepts[0]);
             tlist3 = TemplateUtil.singletonList(tnode4);
@@ -90,7 +90,7 @@ public class Template_reduce_OperationParamConcept extends TemplateDeclarationBa
       return rv;
     }
   }
-  private static final SNodePointer switchMacroRef_t65l13_b0a0a0a1a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2837022116960293314");
-  private static final SNodePointer templateSwitchNode_t65l13_a0a0c0a1a1a5a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653355606");
-  private static final SNodePointer ifMacroRef_t65l13_b0a0f0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2837022116960116095");
+  private static final SNodePointer switchMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2837022116960293314");
+  private static final SNodePointer templateSwitchNode = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "3902354333653355606");
+  private static final SNodePointer ifMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "2837022116960116095");
 }

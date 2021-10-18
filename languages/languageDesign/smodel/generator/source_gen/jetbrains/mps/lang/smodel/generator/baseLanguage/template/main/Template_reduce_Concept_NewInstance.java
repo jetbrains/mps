@@ -49,8 +49,8 @@ public class Template_reduce_Concept_NewInstance extends TemplateDeclarationBase
           TemplateContext context2 = context1.subContext();
           {
             Collection<SNode> tlist3 = null;
-            final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_41_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_bwenx1_b0a0c0d0b0d0c0g));
-            tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro_bwenx1_b0a0c0d0b0d0c0g, "tpl/r:00000000-0000-4000-0000-011c89590303/742658975218956044", context2);
+            final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_41_0(new SourceSubstituteMacroNodeContext(context2, copySrcMacro));
+            tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/742658975218956044", context2);
             environment.aggregate(tnode2, myAggregationLinks[0], tlist3);
           }
         }
@@ -90,5 +90,5 @@ public class Template_reduce_Concept_NewInstance extends TemplateDeclarationBase
       return rv;
     }
   }
-  private static final SNodePointer copySrcMacro_bwenx1_b0a0c0d0b0d0c0g = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "742658975218956045");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "742658975218956045");
 }

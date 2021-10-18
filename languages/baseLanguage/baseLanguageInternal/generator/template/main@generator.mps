@@ -258,6 +258,11 @@
         <child id="1218047638032" name="baseName" index="2piZGb" />
         <child id="1218049772449" name="contextNode" index="2pr8EU" />
       </concept>
+      <concept id="1187483539462121947" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_CreateIndexedName" flags="nn" index="32eq0B">
+        <property id="1187483539462194806" name="skipFirstIndex" index="32f$Ya" />
+        <child id="1187483539462121948" name="baseName" index="32eq0w" />
+        <child id="1187483539462121949" name="contextNode" index="32eq0x" />
+      </concept>
       <concept id="1216860049627" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputByLabelAndInput" flags="nn" index="1iwH70">
         <reference id="1216860049628" name="label" index="1iwH77" />
         <child id="1216860049632" name="inputNode" index="1iwH7V" />
@@ -1055,16 +1060,17 @@
                     </node>
                   </node>
                   <node concept="3cpWs6" id="7Evf$wpZFbA" role="3cqZAp">
-                    <node concept="2OqwBi" id="7Evf$wpZFbB" role="3cqZAk">
-                      <node concept="1iwH7S" id="24rWPsEm2uL" role="2Oq$k0" />
-                      <node concept="2piZGk" id="7Evf$wpZFbD" role="2OqNvi">
-                        <node concept="2OqwBi" id="7Evf$wpZFbE" role="2piZGb">
-                          <node concept="30H73N" id="7Evf$wpZFbF" role="2Oq$k0" />
-                          <node concept="3TrcHB" id="7Evf$wpZFbL" role="2OqNvi">
+                    <node concept="2OqwBi" id="7aTghIeVD5q" role="3cqZAk">
+                      <node concept="1iwH7S" id="7aTghIeVCRJ" role="2Oq$k0" />
+                      <node concept="32eq0B" id="7aTghIeVDdG" role="2OqNvi">
+                        <property role="32f$Ya" value="true" />
+                        <node concept="2OqwBi" id="7aTghIeVDt5" role="32eq0w">
+                          <node concept="30H73N" id="7aTghIeVDjS" role="2Oq$k0" />
+                          <node concept="3TrcHB" id="7aTghIeVDFD" role="2OqNvi">
                             <ref role="3TsBF5" to="tp68:i1dyqFq" resolve="fieldName" />
                           </node>
                         </node>
-                        <node concept="37vLTw" id="3GM_nagTyBO" role="2pr8EU">
+                        <node concept="37vLTw" id="7aTghIeVE63" role="32eq0x">
                           <ref role="3cqZAo" node="7Evf$wpZFaJ" resolve="context" />
                         </node>
                       </node>

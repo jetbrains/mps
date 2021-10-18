@@ -7,21 +7,15 @@ import jetbrains.mps.generator.runtime.MapConfigBase;
 import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import java.util.Collection;
 import jetbrains.mps.generator.runtime.TemplateReductionRule;
-import jetbrains.mps.generator.runtime.TemplateWeavingRule;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.generator.runtime.TemplateModel;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.runtime.TemplateUtil;
-import jetbrains.mps.generator.template.ITemplateGenerator;
-import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.generator.runtime.ReductionRuleBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.generator.runtime.TemplateContext;
 import jetbrains.mps.generator.runtime.GenerationException;
 import jetbrains.mps.generator.runtime.TemplateExecutionEnvironment;
-import jetbrains.mps.generator.runtime.WeaveRuleBase;
-import jetbrains.mps.generator.template.WeavingMappingRuleContext;
-import jetbrains.mps.generator.runtime.TemplateCallSite;
 import jetbrains.mps.generator.runtime.MetaObjectContainer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -29,23 +23,13 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 @Generated
 public class Mapping_mc_concept_switch extends MapConfigBase implements TemplateMappingConfiguration {
   private final Collection<TemplateReductionRule> rules;
-  private final Collection<TemplateWeavingRule> weavings;
   public Mapping_mc_concept_switch(@NotNull TemplateModel model) {
     super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1717381292179408189"), "mc_concept_switch", model, false, new MO());
     rules = TemplateUtil.<TemplateReductionRule>asCollection(new ReductionRule0());
-    weavings = TemplateUtil.<TemplateWeavingRule>asCollection(new WeavingRule0());
-  }
-  @Override
-  public boolean isApplicable(@NotNull ITemplateGenerator generator) {
-    return QueriesGenerated.mc_Condition_59(new TemplateQueryContext(getMappingNode(), generator));
   }
   @Override
   public Collection<TemplateReductionRule> getReductionRules() {
     return rules;
-  }
-  @Override
-  public Collection<TemplateWeavingRule> getWeavingRules() {
-    return weavings;
   }
   /*package*/ final class ReductionRule0 extends ReductionRuleBase {
     public ReductionRule0() {
@@ -56,25 +40,6 @@ public class Mapping_mc_concept_switch extends MapConfigBase implements Template
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = environment.callSite(new Template_reduce_ConceptSwitch(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804945925519")).apply(context);
       return tlist1;
-    }
-  }
-  /*package*/ static final class WeavingRule0 extends WeaveRuleBase implements TemplateWeavingRule {
-    public WeavingRule0() {
-      super(new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804945740913"), CONCEPTS.ConceptSwitchStatement$br, false);
-    }
-    @Override
-    public boolean isApplicable(@NotNull TemplateContext context) throws GenerationException {
-      return QueriesGenerated.rule_Condition_59_0(new WeavingMappingRuleContext(context, getRuleNode()));
-    }
-    @NotNull
-    @Override
-    public SNode getContextNode(TemplateExecutionEnvironment environment, TemplateContext context) {
-      return QueriesGenerated.weavingRule_ContextQuery_59_0(new WeavingMappingRuleContext(context, getRuleNode()));
-    }
-    @Override
-    public boolean apply(final TemplateExecutionEnvironment environment, final TemplateContext context, final SNode outputContextNode) throws GenerationException {
-      final TemplateCallSite callSite = environment.callSite(new Template_weave_ConceptSwitchMap(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "7723526804945759568"));
-      return callSite.weave(context, outputContextNode, WeavingRule0.this);
     }
   }
 

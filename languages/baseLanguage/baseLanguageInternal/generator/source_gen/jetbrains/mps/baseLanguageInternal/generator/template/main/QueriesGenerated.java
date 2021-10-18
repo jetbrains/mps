@@ -73,7 +73,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
     if (SPropertyOperations.getBoolean(_context.getNode(), PROPS.makeUnique$pDva)) {
       SNode context = ContextUtil.getContextForConstant(_context, _context.getNode(), true);
-      return _context.createUniqueName(SPropertyOperations.getString(_context.getNode(), PROPS.fieldName$QHgB), context);
+      return _context.createIndexedName(SPropertyOperations.getString(_context.getNode(), PROPS.fieldName$QHgB), context, true);
     }
     return SPropertyOperations.getString(_context.getNode(), PROPS.fieldName$QHgB);
   }

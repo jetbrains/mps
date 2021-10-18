@@ -36,7 +36,7 @@ public class Template_reduce_EnumMember2Id extends TemplateDeclarationBase {
   protected FragmentResult applyPart0(@NotNull final TemplateContext context) throws GenerationException {
     final TemplateExecutionEnvironment environment = context.getEnvironment();
     final SNode tnode1 = environment.createOutputNode(myConcepts[0]);
-    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_139_0(new PropertyMacroContext(context, "0L", propertyMacro_9r6wmn_c0a2a0a2a6)));
+    SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_138_0(new PropertyMacroContext(context, "0L", propertyMacro)));
     FragmentResult rv = nodeFragment(0, tnode1);
     return rv;
   }
@@ -68,5 +68,5 @@ public class Template_reduce_EnumMember2Id extends TemplateDeclarationBase {
       return rv;
     }
   }
-  private static final SNodePointer propertyMacro_9r6wmn_c0a2a0a2a6 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1310636635388393994");
+  private static final SNodePointer propertyMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "1310636635388393994");
 }

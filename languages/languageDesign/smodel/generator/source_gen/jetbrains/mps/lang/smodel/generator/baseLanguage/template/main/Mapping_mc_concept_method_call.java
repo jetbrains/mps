@@ -55,8 +55,8 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = null;
-      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_58_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro_ihzv2u_b0a0d0c4));
-      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro_ihzv2u_b0a0d0c4, "tpl/r:00000000-0000-4000-0000-011c89590303/5850694276437457243", context);
+      final SNode copySrcInput1 = QueriesGenerated.sourceNodeQuery_58_0(new SourceSubstituteMacroNodeContext(context, copySrcMacro));
+      tlist1 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput1), copySrcMacro, "tpl/r:00000000-0000-4000-0000-011c89590303/5850694276437457243", context);
       return tlist1;
     }
   }
@@ -72,7 +72,7 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       Collection<SNode> tlist1 = Collections.emptyList();
-      if (QueriesGenerated.ifMacro_Condition_58_0(new IfMacroContext(context, ifMacroRef_ihzv2u_b0a0c0c5))) {
+      if (QueriesGenerated.ifMacro_Condition_58_0(new IfMacroContext(context, ifMacroRef))) {
         final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
         {
           TemplateContext context1 = context.subContext();
@@ -82,8 +82,8 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
               TemplateContext context2 = context1.subContext();
               {
                 Collection<SNode> tlist4 = null;
-                final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_58_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro_ihzv2u_b0a0c0b0b0b0b0c0c5));
-                tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro_ihzv2u_b0a0c0b0b0b0b0c0c5, "tpl/r:00000000-0000-4000-0000-011c89590303/5616724231236702708", context2);
+                final SNode copySrcInput4 = QueriesGenerated.sourceNodeQuery_58_1(new SourceSubstituteMacroNodeContext(context2, copySrcMacro1));
+                tlist4 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput4), copySrcMacro1, "tpl/r:00000000-0000-4000-0000-011c89590303/5616724231236702708", context2);
                 environment.aggregate(tnode3, myAggregationLinks[0], tlist4);
               }
               {
@@ -135,9 +135,9 @@ public class Mapping_mc_concept_method_call extends MapConfigBase implements Tem
       return rv;
     }
   }
-  private static final SNodePointer copySrcMacro_ihzv2u_b0a0d0c4 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5850694276437457244");
-  private static final SNodePointer copySrcMacro_ihzv2u_b0a0c0b0b0b0b0c0c5 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5616724231236702709");
-  private static final SNodePointer ifMacroRef_ihzv2u_b0a0c0c5 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5616724231236702746");
+  private static final SNodePointer copySrcMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5850694276437457244");
+  private static final SNodePointer copySrcMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5616724231236702709");
+  private static final SNodePointer ifMacroRef = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "5616724231236702746");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept DotExpression$yW = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression");
