@@ -9,10 +9,15 @@
   <imports />
   <registry>
     <language id="7ab1a6fa-0a11-4b95-9e48-75f363d6cb00" name="jetbrains.mps.lang.generator.plan">
+      <concept id="1152961914448136207" name="jetbrains.mps.lang.generator.plan.structure.LanguageEntry" flags="ng" index="2Qf6Nf">
+        <child id="1152961914448136208" name="language" index="2Qf6Ng" />
+      </concept>
       <concept id="1820634577908471803" name="jetbrains.mps.lang.generator.plan.structure.Plan" flags="ng" index="2VgMpV">
         <child id="1820634577908471815" name="steps" index="2VgMA7" />
       </concept>
       <concept id="1820634577908471810" name="jetbrains.mps.lang.generator.plan.structure.Transform" flags="ng" index="2VgMA2">
+        <property id="2209292798354050154" name="individualStepPerGenerator" index="1s431M" />
+        <child id="1152961914448142326" name="entries" index="2Qf7GQ" />
         <child id="2944629966652439181" name="languages" index="1t_9vn" />
       </concept>
       <concept id="2959971211779300533" name="jetbrains.mps.lang.generator.plan.structure.TextDocLine" flags="ng" index="16rNan">
@@ -68,6 +73,15 @@
   </node>
   <node concept="2VgMpV" id="2fM90Pxfljd">
     <property role="TrG5h" value="BaseLanguageWithExtensions" />
+    <node concept="2VgMA2" id="5SMs12rpeiu" role="2VgMA7">
+      <property role="1s431M" value="true" />
+      <node concept="2Qf6Nf" id="5SMs12rpeiO" role="2Qf7GQ">
+        <node concept="2V$Bhx" id="5SMs12rpeiS" role="2Qf6Ng">
+          <property role="2V$B1T" value="774bf8a0-62e5-41e1-af63-f4812e60e48b" />
+          <property role="2V$B1Q" value="jetbrains.mps.baseLanguage.checkedDots" />
+        </node>
+      </node>
+    </node>
     <node concept="2VgMA2" id="44d2vb6Ru$W" role="2VgMA7">
       <node concept="2V$Bhx" id="44d2vb6Ru_8" role="1t_9vn">
         <property role="2V$B1T" value="a247e09e-2435-45ba-b8d2-07e93feba96a" />

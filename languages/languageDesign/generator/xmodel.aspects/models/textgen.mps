@@ -58,12 +58,6 @@
         <ref role="3ps6dU" to="7j7i:52lx2FqH$9v" resolve="DescriptorClasses" />
       </node>
     </node>
-    <node concept="2VgMA2" id="44d2vb6Ru$z" role="2VgMA7">
-      <node concept="2V$Bhx" id="44d2vb6Ru$L" role="1t_9vn">
-        <property role="2V$B1T" value="774bf8a0-62e5-41e1-af63-f4812e60e48b" />
-        <property role="2V$B1Q" value="jetbrains.mps.baseLanguage.checkedDots" />
-      </node>
-    </node>
     <node concept="2VgMA2" id="2fM90PxfrMy" role="2VgMA7">
       <node concept="2V$Bhx" id="2fM90PxfrMI" role="1t_9vn">
         <property role="2V$B1T" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1" />

@@ -95,12 +95,6 @@
         <property role="2V$B1Q" value="jetbrains.mps.lang.quotation" />
       </node>
     </node>
-    <node concept="2VgMA2" id="3ZKqOfpDwxN" role="2VgMA7">
-      <node concept="2V$Bhx" id="3ZKqOfpDwxO" role="1t_9vn">
-        <property role="2V$B1T" value="774bf8a0-62e5-41e1-af63-f4812e60e48b" />
-        <property role="2V$B1Q" value="jetbrains.mps.baseLanguage.checkedDots" />
-      </node>
-    </node>
     <node concept="2VgMA2" id="3ZKqOfpDwxP" role="2VgMA7">
       <node concept="2V$Bhx" id="3ZKqOfpDwxQ" role="1t_9vn">
         <property role="2V$B1T" value="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" />
