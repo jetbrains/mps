@@ -421,6 +421,10 @@ public abstract class BaseNodeEditor implements Editor {
       }
     }
 
+    boolean hasErrors() {
+      return memento.hasErrors();
+    }
+
     @Override
     public int hashCode() {
       int result = memento != null ? memento.hashCode() : 0;
