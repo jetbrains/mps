@@ -9,9 +9,9 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.project.ProjectUtil;
+import com.intellij.openapi.util.Computable;
 import java.util.Collection;
 import com.intellij.psi.search.FilenameIndex;
 import com.intellij.psi.search.GlobalSearchScope;
@@ -68,17 +68,9 @@ public class HandlerUtil {
 
     new EditorNavigator(project).shallFocus(true).shallSelect(true).open(nodeReference);
 
-    ThreadUtils.runInUIThreadNoWait(new Runnable() {
-      public void run() {
-        requestFocus(project);
-      }
-    });
+    ThreadUtils.runInUIThreadNoWait(() -> requestFocus(project));
 
-    return new ModelAccessHelper(repository).runReadAction(new Computable<SNode>() {
-      public SNode compute() {
-        return nodeReference.resolve(repository);
-      }
-    });
+    return new ModelAccessHelper(repository).runReadAction(() -> nodeReference.resolve(repository));
   }
 
   public static VirtualFile getProjectRelativeFile(final Project project, String path) {
@@ -92,11 +84,7 @@ public class HandlerUtil {
 
   public static Iterable<VirtualFile> findFilesByName(final Project project, final String fileName) {
     final com.intellij.openapi.project.Project ideaProject = ideaProject(project);
-    com.intellij.openapi.util.Computable<Collection<VirtualFile>> function = new com.intellij.openapi.util.Computable<Collection<VirtualFile>>() {
-      public Collection<VirtualFile> compute() {
-        return FilenameIndex.getVirtualFilesByName(ideaProject, fileName, GlobalSearchScope.everythingScope(ideaProject));
-      }
-    };
+    Computable<Collection<VirtualFile>> function = () -> FilenameIndex.getVirtualFilesByName(ideaProject, fileName, GlobalSearchScope.everythingScope(ideaProject));
     return ApplicationManager.getApplication().runReadAction(function);
   }
 
@@ -149,11 +137,9 @@ public class HandlerUtil {
   }
 
   public static void openFile(final Project project, final VirtualFile file, final Integer line) {
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        FileOpenUtil.openFile(ideaProject(project), file, (line == null ? 1 : line));
-        requestFocus(project);
-      }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      FileOpenUtil.openFile(ideaProject(project), file, (line == null ? 1 : line));
+      requestFocus(project);
     });
   }
 
@@ -171,11 +157,9 @@ public class HandlerUtil {
   }
 
   public static void showNoProjectIsAvailablePopup() {
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        JComponent component = (as_qa1yjq_a0a0a0a0a0a0a0a43(WindowManager.getInstance().findVisibleFrame(), IdeFrame.class)).getComponent();
-        createPopupAndShow(HEADER + NO_PROJECT_IS_AVAILABLE, component);
-      }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      JComponent component = (as_qa1yjq_a0a0a0a0a0a0ib(WindowManager.getInstance().findVisibleFrame(), IdeFrame.class)).getComponent();
+      createPopupAndShow(HEADER + NO_PROJECT_IS_AVAILABLE, component);
     });
   }
 
@@ -192,18 +176,16 @@ public class HandlerUtil {
   private static void showNotFoundPopup(final Project project, final String text) {
     final MPSProject mpsProject = as_qa1yjq_a0a0a04(project, MPSProject.class);
     final com.intellij.openapi.project.Project ideaProject = mpsProject.getProject();
-    ApplicationManager.getApplication().invokeLater(new Runnable() {
-      public void run() {
-        JComponent component = WindowManager.getInstance().getStatusBar(ideaProject).getComponent();
-        createPopupAndShow(text, component);
-      }
+    ApplicationManager.getApplication().invokeLater(() -> {
+      JComponent component = WindowManager.getInstance().getStatusBar(ideaProject).getComponent();
+      createPopupAndShow(text, component);
     });
   }
 
   private static void createPopupAndShow(String text, JComponent component) {
     JBPopupFactory.getInstance().createHtmlTextBalloonBuilder(text, MessageType.WARNING, null).setFadeoutTime(POPUP_TIME).createBalloon().show(RelativePoint.getSouthWestOf(component), Balloon.Position.above);
   }
-  private static <T> T as_qa1yjq_a0a0a0a0a0a0a0a43(Object o, Class<T> type) {
+  private static <T> T as_qa1yjq_a0a0a0a0a0a0ib(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
   private static <T> T as_qa1yjq_a0a0a04(Object o, Class<T> type) {

@@ -76,11 +76,7 @@ public class NodeOpener_RequestHandler extends HttpRequestHandlerBase {
       final SNode node = HandlerUtil.openNode(this.project, this.ref);
       if (node != null) {
         final Wrappers._T<String> nodePresentation = new Wrappers._T<String>();
-        this.project.getModelAccess().runReadAction(new Runnable() {
-          public void run() {
-            nodePresentation.value = node.getPresentation();
-          }
-        });
+        this.project.getModelAccess().runReadAction(() -> nodePresentation.value = node.getPresentation());
         String text = HandlerUtil.HEADER_RESPONCE + "The requested node has been opened in MPS<br><b>Node</b>: " + nodePresentation.value + " <i>(" + node.getConcept() + ")</i><br><b>Project</b>: " + this.project.getName();
         this.request.sendResponse(HttpResponseStatus.OK, "text/html", Unpooled.copiedBuffer(text, CharsetUtil.UTF_8));
       } else {
