@@ -99,6 +99,9 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
   public JUnitRunType getJUnitRunType() {
     return JUnitRunTypes.values()[this.getRunType()];
   }
+  public void setInProcessFlag(boolean value) {
+    this.getOrd2InProcess().put(this.getRunType(), value);
+  }
   public void setJUnitRunType(@NotNull JUnitRunType runType) {
     int ix = 0;
     for (JUnitRunType possible : JUnitRunTypes.values()) {
@@ -109,8 +112,17 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
       ++ix;
     }
   }
+  /*package*/ boolean getInProcessProperty() {
+    if (this.getOrd2InProcess().containsKey(this.getRunType())) {
+      boolean inProcessFlag = this.getOrd2InProcess().get(this.getRunType());
+      return inProcessFlag;
+    } else {
+      // legacy 
+      return this.getInProcess();
+    }
+  }
   public boolean canExecuteInProcess() {
-    return this.getInProcess() && !(this.getDebug());
+    return getInProcessProperty() && !(this.getDebug());
   }
   public List<ITestNodeWrapper> getTests(final MPSProject project) {
     return ListSequence.fromList(collectTests(project)).toListSequence();
@@ -128,12 +140,12 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
     }
   }
   private void checkInProcessRunIsSingle() throws RuntimeConfigurationException {
-    if (this.getInProcess() && TestInProcessRunState.getInstance().get() != RunStateEnum.IDLE) {
+    if (getInProcessProperty() && TestInProcessRunState.getInstance().get() != RunStateEnum.IDLE) {
       throw new RuntimeConfigurationError("There is already another instance running tests in-process. Only one instance is allowed to run in-process.");
     }
   }
   private void checkCachesDirIsFreeToLock() throws RuntimeConfigurationException {
-    if (!(this.getInProcess()) && this.getReuseCaches() && RunCachesManager.isLocked(this.getCachesPath())) {
+    if (!(getInProcessProperty()) && this.getReuseCaches() && RunCachesManager.isLocked(this.getCachesPath())) {
       throw new RuntimeConfigurationError("The chosen settings directory is already locked by another run. Please choose another one.");
     }
   }
@@ -211,6 +223,9 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
   public int getRunType() {
     return myState.myRunType;
   }
+  public InProcessFlagPerScope getOrd2InProcess() {
+    return myState.myOrd2InProcess;
+  }
 
   public void setModelRef(String value) {
     myState.myModelRef = value;
@@ -242,6 +257,9 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
   public void setRunType(int value) {
     myState.myRunType = value;
   }
+  public void setOrd2InProcess(InProcessFlagPerScope value) {
+    myState.myOrd2InProcess = value;
+  }
 
   public final class MyState implements Copyable<MyState>, Cloneable {
     public String myModelRef;
@@ -254,6 +272,7 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
     public ClonableList<String> myTestCases = new ClonableList<String>();
     public ClonableList<String> myTestMethods = new ClonableList<String>();
     public int myRunType = JUnitRunTypes.PROJECT.ordinal();
+    public InProcessFlagPerScope myOrd2InProcess = new InProcessFlagPerScope();
 
     @Deprecated
     @Override
@@ -273,6 +292,9 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
         state.myTestMethods = myTestMethods.copy();
       }
       state.myRunType = myRunType;
+      if (myOrd2InProcess != null) {
+        state.myOrd2InProcess = myOrd2InProcess.copy();
+      }
       return state;
     }
 
