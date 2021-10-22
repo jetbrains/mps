@@ -23,8 +23,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.vcspersistence.VCSPersistenceUtil;
-import jetbrains.mps.vcs.diff.changes.ModelChange;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
@@ -144,40 +142,36 @@ import jetbrains.mps.vcs.diff.ChangeSetBuilder;
     CommitsGraphNode parent1 = ListSequence.fromList(node.getParents()).getElement(0);
     CommitsGraphNode parent2 = ListSequence.fromList(node.getParents()).getElement(1);
 
-    Iterable<ModelChange> changes1 = getChanges(parent1.getLoadedModel(), node.getLoadedModel());
-    Iterable<ModelChange> changes2 = getChanges(parent2.getLoadedModel(), node.getLoadedModel());
+    boolean modelsHaveChanges1 = modelsHaveChanges(parent1.getLoadedModel(), node.getLoadedModel());
+    boolean modelsHaveChanges2 = modelsHaveChanges(parent2.getLoadedModel(), node.getLoadedModel());
 
-    if (Sequence.fromIterable(changes1).isEmpty() && Sequence.fromIterable(changes2).isEmpty()) {
+    if (!(modelsHaveChanges1) && !(modelsHaveChanges2)) {
       return;
     }
 
     //  we ignore a branch if all changes from another branch were accepted   
-    if (Sequence.fromIterable(changes1).isEmpty()) {
+    if (!(modelsHaveChanges1)) {
       parent2.setIgnoredByChild(node);
       return;
     }
-    if (Sequence.fromIterable(changes2).isEmpty()) {
+    if (!(modelsHaveChanges2)) {
       parent1.setIgnoredByChild(node);
       return;
     }
     addNodeToHistory(node.getNodeWithLoadedModel());
   }
 
-  private boolean modelsHaveChanges(@Nullable SModel prevModel, @Nullable SModel model) {
-    if (prevModel == model) {
+  private boolean modelsHaveChanges(@Nullable final SModel prevModel, @Nullable final SModel model) {
+    if (prevModel == model || prevModel == null || model == null) {
       return false;
     }
-    return ListSequence.fromList(getChanges(prevModel, model)).isNotEmpty();
-  }
-
-  private List<ModelChange> getChanges(@Nullable final SModel prevModel, @Nullable final SModel model) {
-    final Wrappers._T<List<ModelChange>> changes = new Wrappers._T<List<ModelChange>>();
+    final Wrappers._boolean modelsHaveChanges = new Wrappers._boolean();
     myProject.getModelAccess().runReadAction(new Runnable() {
       public void run() {
-        changes.value = ChangeSetBuilder.buildChangeSetForNode(prevModel, model, myRootId, false, true).getModelChanges();
+        modelsHaveChanges.value = ChangeSetBuilder.hasChangesForNodeId(prevModel, model, myRootId);
       }
     });
-    return changes.value;
+    return modelsHaveChanges.value;
   }
 
   private void addNodeToHistory(CommitsGraphNode node) {

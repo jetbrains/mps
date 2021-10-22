@@ -234,7 +234,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
         SLinkOperations.setTarget(myRootNode, LINKS.superclass$Mp9$, superClass);
       }
     });
-    List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSetWithMovedNodes(myReferenceModel, myTestModel).getModelChanges();
+    List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSet(myReferenceModel, myTestModel, false, true).getModelChanges();
     ModelChange[] expectedChanges = {new NodeGroupNotMoveChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), null, myRootNode.getNodeId(), LINKS.superclass$Mp9$, ChangeType.DELETE), new ModifiedNodesGroup(changeSet.getNewModel(), Arrays.asList(new ModifiedNode(superClass.getNodeId(), changeSet.getNewModel(), ChangeType.ADD, true)), null))};
     testDiffCorrectness(realChanges, expectedChanges);
   }
@@ -345,7 +345,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
         SNodeOperations.deleteNode(method1);
       }
     });
-    List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSetWithMovedNodes(myReferenceModel, myTestModel).getModelChanges();
+    List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSet(myReferenceModel, myTestModel, false, true).getModelChanges();
     testDiffCorrectness(realChanges, new NodeGroupNotMoveChange(changeSet, new ModifiedNodesGroup(changeSet.getOldModel(), Arrays.asList(new ModifiedNode(method1.getNodeId(), changeSet.getOldModel(), ChangeType.DELETE, false)), nextNodeId), new ModifiedNodesGroup(changeSet.getNewModel(), nextNodeId, parentId, LINKS.member$L_2d, ChangeType.ADD)));
   }
 
@@ -425,7 +425,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
         commentNode.value = CommentUtil.commentOut(commentedNode);
       }
     });
-    List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSetWithMovedNodes(myReferenceModel, myTestModel).getModelChanges();
+    List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSet(myReferenceModel, myTestModel, false, true).getModelChanges();
 
     ChangeSet changeSet = createFakeChangeSet();
     SNode uncommentedNode = changeSet.getOldModel().getNode(commentedNode.getNodeId());
@@ -460,7 +460,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
       }
     });
 
-    List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSetWithMovedNodes(myReferenceModel, myTestModel).getModelChanges();
+    List<ModelChange> realChanges = ChangeSetBuilder.buildChangeSet(myReferenceModel, myTestModel, false, true).getModelChanges();
 
     ChangeSet changeSet = createFakeChangeSet();
     SNode commentedNode = changeSet.getOldModel().getNode(uncommentedNode.value.getNodeId());
@@ -522,7 +522,7 @@ public class ChangesCalculationTest extends ChangesTestBase {
     ourProject.getModelAccess().runReadAction(todo);
     // diff of detached models shall not require model read
     if (trackMovedNodes) {
-      return ChangeSetBuilder.buildChangeSetWithMovedNodes(myReferenceModel, myTestModel).getModelChanges();
+      return ChangeSetBuilder.buildChangeSet(myReferenceModel, myTestModel, false, true).getModelChanges();
     }
     ModelChangeSet diff = ChangeSetBuilder.buildChangeSet(myReferenceModel, myTestModel);
     return diff.getModelChanges();

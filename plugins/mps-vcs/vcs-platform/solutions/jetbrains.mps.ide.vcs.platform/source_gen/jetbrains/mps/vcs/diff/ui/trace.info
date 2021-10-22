@@ -1300,185 +1300,178 @@
   </root>
   <root nodeRef="r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/4799633552517352046">
     <file name="RootModelHistoryExtractor.java">
-      <node id="4799633552517352047" at="34,0,35,0" concept="6" trace="myRootId" />
-      <node id="4799633552517352050" at="35,0,36,0" concept="6" trace="myFilteredRevisions" />
-      <node id="4713353848463758181" at="36,0,37,0" concept="6" trace="myLocalRevision" />
-      <node id="4799633552517352068" at="37,0,38,0" concept="6" trace="myLoading" />
-      <node id="4799633552517352071" at="38,0,39,0" concept="6" trace="myOnUpdate" />
-      <node id="4799633552517352074" at="39,0,40,0" concept="6" trace="myTotalRevisions" />
-      <node id="4799633552517352077" at="40,0,41,0" concept="6" trace="myProcessedRevisions" />
-      <node id="4799633552517352080" at="41,0,42,0" concept="6" trace="myProject" />
-      <node id="1602210043322636243" at="42,0,43,0" concept="6" trace="myFile" />
-      <node id="4488547723936194828" at="43,0,44,0" concept="6" trace="myRevisionToNodeMap" />
-      <node id="3973066229401975123" at="46,0,47,0" concept="6" trace="myRootCommitsGraphTraverser" />
-      <node id="4799633552517352096" at="49,180,50,24" concept="5" />
-      <node id="4713353848463769085" at="50,24,51,59" concept="5" />
-      <node id="4799633552517352104" at="51,59,52,20" concept="5" />
-      <node id="1602210043322647675" at="52,20,53,18" concept="5" />
-      <node id="4799633552517352108" at="53,18,54,26" concept="5" />
-      <node id="4799633552517352112" at="54,26,55,40" concept="5" />
-      <node id="4809466702831683009" at="55,40,56,106" concept="5" />
-      <node id="7942479039261682554" at="56,106,57,97" concept="5" />
-      <node id="3973066229401990506" at="57,97,58,118" concept="5" />
-      <node id="4799633552517352122" at="62,30,63,21" concept="12" />
-      <node id="4799633552517352132" at="68,40,69,65" concept="12" />
-      <node id="4799633552517352151" at="74,40,75,28" concept="12" />
-      <node id="4799633552517352157" at="79,44,80,32" concept="12" />
-      <node id="3143542063540284981" at="86,40,87,85" concept="11" />
-      <node id="3143542063540365610" at="88,25,89,39" concept="12" />
-      <node id="4713353848465744731" at="92,60,93,34" concept="12" />
-      <node id="4799633552517352164" at="100,21,101,21" concept="5" />
-      <node id="4809466702831862839" at="102,9,103,40" concept="5" />
-      <node id="4488547723935452856" at="104,15,105,24" concept="5" />
-      <node id="3973066229402011682" at="110,25,111,39" concept="5" />
-      <node id="3973066229402061190" at="111,39,112,16" concept="12" />
-      <node id="3143542063541308351" at="115,35,116,94" concept="12" />
-      <node id="3143542063545126200" at="120,63,121,27" concept="5" />
-      <node id="3143542063545126203" at="121,27,122,21" concept="5" />
-      <node id="5349802388157779193" at="126,67,127,0" concept="14" />
-      <node id="5349802388157788333" at="127,0,128,65" concept="0" />
-      <node id="2971769857913076031" at="128,65,129,83" concept="11" />
-      <node id="5102968955825742395" at="130,80,131,54" concept="5" />
-      <node id="5102968955825897806" at="136,65,137,52" concept="5" />
-      <node id="798457724819839966" at="141,57,142,0" concept="14" />
-      <node id="3143542063542249540" at="142,0,143,65" concept="0" />
-      <node id="2971769857913100076" at="143,65,144,86" concept="11" />
-      <node id="2971769857913138920" at="144,86,145,86" concept="11" />
-      <node id="2971769857913098815" at="145,86,146,0" concept="14" />
-      <node id="5662070101151658565" at="146,0,147,97" concept="11" />
-      <node id="5662070101151666698" at="147,97,148,97" concept="11" />
-      <node id="7927010376735345018" at="148,97,149,0" concept="14" />
-      <node id="736550168095948444" at="150,97,151,13" concept="12" />
-      <node id="736550168095970469" at="152,5,153,0" concept="14" />
-      <node id="7927010376735345052" at="153,0,154,78" concept="13" />
-      <node id="692282063358861173" at="155,52,156,38" concept="5" />
-      <node id="692282063358445137" at="156,38,157,13" concept="12" />
-      <node id="692282063358875263" at="159,52,160,38" concept="5" />
-      <node id="692282063358445751" at="160,38,161,13" concept="12" />
-      <node id="2799177693515749504" at="162,5,163,52" concept="5" />
-      <node id="7684751997339197073" at="167,29,168,19" concept="12" />
-      <node id="7684751997338975615" at="169,5,170,76" concept="12" />
-      <node id="5349802388157399002" at="173,104,174,88" concept="11" />
-      <node id="5349802388157451221" at="176,25,177,122" concept="5" />
-      <node id="4631289420404835238" at="179,7,180,25" concept="12" />
-      <node id="1602210043323036581" at="183,56,184,48" concept="5" />
-      <node id="4713353848464521236" at="184,48,185,75" concept="5" />
-      <node id="4809466702831666330" at="44,0,46,0" concept="6" trace="myCommitsGraph" />
-      <node id="4799633552517352129" at="67,47,70,5" concept="18" />
-      <node id="3143542063540339901" at="87,85,90,7" concept="9" />
-      <node id="4713353848465736903" at="92,0,95,0" concept="10" trace="select#(Ljetbrains/mps/vcs/history/CommitsGraphNode;)Lcom/intellij/openapi/vcs/history/VcsFileRevision;" />
-      <node id="3143542063541283249" at="115,0,118,0" concept="10" trace="loadLocalModel#()Lorg/jetbrains/mps/openapi/model/SModel;" />
-      <node id="1602210043323068302" at="129,83,132,5" concept="9" />
-      <node id="736550168095851365" at="149,0,152,5" concept="9" />
-      <node id="7684751997339096640" at="166,89,169,5" concept="9" />
-      <node id="4631289420404799585" at="176,0,179,0" concept="10" trace="run#()V" />
-      <node id="4799633552517352119" at="61,0,65,0" concept="10" trace="isLoading#()Z" />
-      <node id="4799633552517352148" at="73,0,77,0" concept="10" trace="getTotalRevisionsNumber#()I" />
-      <node id="4799633552517352154" at="78,0,82,0" concept="10" trace="getProcessedRevisionsNumber#()I" />
-      <node id="5102968955825541144" at="135,0,139,0" concept="10" trace="processLastCommit#(Ljetbrains/mps/vcs/history/CommitsGraphNode;)V" />
-      <node id="7927010376735345071" at="154,78,158,5" concept="9" />
-      <node id="7927010376735345090" at="158,5,162,5" concept="9" />
-      <node id="5102968955825634356" at="183,0,187,0" concept="10" trace="addNodeToHistory#(Ljetbrains/mps/vcs/history/CommitsGraphNode;)V" />
-      <node id="4488547723936258863" at="90,7,95,26" concept="12" />
-      <node id="4488547723935448149" at="101,21,106,5" concept="20" />
-      <node id="3973066229401922470" at="109,0,114,0" concept="10" trace="stop#()Z" />
-      <node id="3143542063545107116" at="119,0,124,0" concept="10" trace="commitProcessingFinished#(Ljetbrains/mps/vcs/history/CommitsGraphNode;)V" />
-      <node id="4631289420404799581" at="174,88,179,7" concept="5" />
-      <node id="4799633552517352125" at="66,0,72,0" concept="10" trace="getRevisions#()Ljava/util/List;" />
-      <node id="7684751997338955264" at="166,0,172,0" concept="10" trace="modelsHaveChanges#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
-      <node id="4799633552517352160" at="99,0,108,0" concept="10" trace="run#()V" />
-      <node id="8372618110080201275" at="125,0,134,0" concept="10" trace="processSimpleCommit#(Ljetbrains/mps/vcs/history/CommitsGraphNode;)V" />
-      <node id="4631289420404789923" at="173,0,182,0" concept="10" trace="getChanges#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/util/List;" />
-      <node id="4799633552517352084" at="49,0,60,0" concept="3" trace="RootModelHistoryExtractor#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;Lorg/jetbrains/mps/openapi/model/SNodeId;Lcom/intellij/openapi/vfs/VirtualFile;Ljava/lang/Runnable;)V" />
-      <node id="4488547723936255181" at="85,77,96,5" concept="18" />
-      <node id="4488547723936232843" at="83,0,98,0" concept="10" trace="getRevisionParents#(Lcom/intellij/openapi/vcs/history/VcsFileRevision;)Ljava/util/List;" />
-      <node id="7927010376735278642" at="140,0,165,0" concept="10" trace="processMergeCommit#(Ljetbrains/mps/vcs/history/CommitsGraphNode;)V" />
-      <scope id="4799633552517352121" at="62,30,63,21" />
-      <scope id="4799633552517352131" at="68,40,69,65" />
-      <scope id="4799633552517352150" at="74,40,75,28" />
-      <scope id="4799633552517352156" at="79,44,80,32" />
-      <scope id="3143542063540339903" at="88,25,89,39" />
-      <scope id="4713353848465736904" at="92,60,93,34" />
-      <scope id="4488547723935448151" at="102,9,103,40" />
-      <scope id="4488547723935449233" at="104,15,105,24" />
-      <scope id="3143542063541283252" at="115,35,116,94" />
-      <scope id="1602210043323068304" at="130,80,131,54" />
-      <scope id="5102968955825541147" at="136,65,137,52" />
-      <scope id="736550168095851367" at="150,97,151,13" />
-      <scope id="7684751997339096642" at="167,29,168,19" />
-      <scope id="4631289420404799586" at="176,25,177,122" />
-      <scope id="3973066229401922474" at="110,25,112,16" />
-      <scope id="3143542063545107124" at="120,63,122,21" />
-      <scope id="7927010376735345072" at="155,52,157,13" />
-      <scope id="7927010376735345091" at="159,52,161,13" />
-      <scope id="5102968955825634359" at="183,56,185,75" />
-      <scope id="4799633552517352128" at="67,47,70,5" />
-      <scope id="4713353848465736903" at="92,0,95,0">
+      <node id="4799633552517352047" at="32,0,33,0" concept="6" trace="myRootId" />
+      <node id="4799633552517352050" at="33,0,34,0" concept="6" trace="myFilteredRevisions" />
+      <node id="4713353848463758181" at="34,0,35,0" concept="6" trace="myLocalRevision" />
+      <node id="4799633552517352068" at="35,0,36,0" concept="6" trace="myLoading" />
+      <node id="4799633552517352071" at="36,0,37,0" concept="6" trace="myOnUpdate" />
+      <node id="4799633552517352074" at="37,0,38,0" concept="6" trace="myTotalRevisions" />
+      <node id="4799633552517352077" at="38,0,39,0" concept="6" trace="myProcessedRevisions" />
+      <node id="4799633552517352080" at="39,0,40,0" concept="6" trace="myProject" />
+      <node id="1602210043322636243" at="40,0,41,0" concept="6" trace="myFile" />
+      <node id="4488547723936194828" at="41,0,42,0" concept="6" trace="myRevisionToNodeMap" />
+      <node id="3973066229401975123" at="44,0,45,0" concept="6" trace="myRootCommitsGraphTraverser" />
+      <node id="4799633552517352096" at="47,180,48,24" concept="5" />
+      <node id="4713353848463769085" at="48,24,49,59" concept="5" />
+      <node id="4799633552517352104" at="49,59,50,20" concept="5" />
+      <node id="1602210043322647675" at="50,20,51,18" concept="5" />
+      <node id="4799633552517352108" at="51,18,52,26" concept="5" />
+      <node id="4799633552517352112" at="52,26,53,40" concept="5" />
+      <node id="4809466702831683009" at="53,40,54,106" concept="5" />
+      <node id="7942479039261682554" at="54,106,55,97" concept="5" />
+      <node id="3973066229401990506" at="55,97,56,118" concept="5" />
+      <node id="4799633552517352122" at="60,30,61,21" concept="12" />
+      <node id="4799633552517352132" at="66,40,67,65" concept="12" />
+      <node id="4799633552517352151" at="72,40,73,28" concept="12" />
+      <node id="4799633552517352157" at="77,44,78,32" concept="12" />
+      <node id="3143542063540284981" at="84,40,85,85" concept="11" />
+      <node id="3143542063540365610" at="86,25,87,39" concept="12" />
+      <node id="4713353848465744731" at="90,60,91,34" concept="12" />
+      <node id="4799633552517352164" at="98,21,99,21" concept="5" />
+      <node id="4809466702831862839" at="100,9,101,40" concept="5" />
+      <node id="4488547723935452856" at="102,15,103,24" concept="5" />
+      <node id="3973066229402011682" at="108,25,109,39" concept="5" />
+      <node id="3973066229402061190" at="109,39,110,16" concept="12" />
+      <node id="3143542063541308351" at="113,35,114,94" concept="12" />
+      <node id="3143542063545126200" at="118,63,119,27" concept="5" />
+      <node id="3143542063545126203" at="119,27,120,21" concept="5" />
+      <node id="5349802388157779193" at="124,67,125,0" concept="14" />
+      <node id="5349802388157788333" at="125,0,126,65" concept="0" />
+      <node id="2971769857913076031" at="126,65,127,83" concept="11" />
+      <node id="5102968955825742395" at="128,80,129,54" concept="5" />
+      <node id="5102968955825897806" at="134,65,135,52" concept="5" />
+      <node id="798457724819839966" at="139,57,140,0" concept="14" />
+      <node id="3143542063542249540" at="140,0,141,65" concept="0" />
+      <node id="2971769857913100076" at="141,65,142,86" concept="11" />
+      <node id="2971769857913138920" at="142,86,143,86" concept="11" />
+      <node id="2971769857913098815" at="143,86,144,0" concept="14" />
+      <node id="4751804466477623250" at="144,0,145,100" concept="11" />
+      <node id="4751804466477707409" at="145,100,146,100" concept="11" />
+      <node id="7927010376735345018" at="146,100,147,0" concept="14" />
+      <node id="736550168095948444" at="148,57,149,13" concept="12" />
+      <node id="736550168095970469" at="150,5,151,0" concept="14" />
+      <node id="7927010376735345052" at="151,0,152,78" concept="13" />
+      <node id="692282063358861173" at="153,32,154,38" concept="5" />
+      <node id="692282063358445137" at="154,38,155,13" concept="12" />
+      <node id="692282063358875263" at="157,32,158,38" concept="5" />
+      <node id="692282063358445751" at="158,38,159,13" concept="12" />
+      <node id="2799177693515749504" at="160,5,161,52" concept="5" />
+      <node id="7684751997339197073" at="165,67,166,19" concept="12" />
+      <node id="4751804466478685841" at="167,5,168,72" concept="11" />
+      <node id="4751804466478777158" at="170,25,171,99" concept="5" />
+      <node id="4751804466478819050" at="173,7,174,35" concept="12" />
+      <node id="1602210043323036581" at="177,56,178,48" concept="5" />
+      <node id="4713353848464521236" at="178,48,179,75" concept="5" />
+      <node id="4809466702831666330" at="42,0,44,0" concept="6" trace="myCommitsGraph" />
+      <node id="4799633552517352129" at="65,47,68,5" concept="18" />
+      <node id="3143542063540339901" at="85,85,88,7" concept="9" />
+      <node id="4713353848465736903" at="90,0,93,0" concept="10" trace="select#(Ljetbrains/mps/vcs/history/CommitsGraphNode;)Lcom/intellij/openapi/vcs/history/VcsFileRevision;" />
+      <node id="3143542063541283249" at="113,0,116,0" concept="10" trace="loadLocalModel#()Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="1602210043323068302" at="127,83,130,5" concept="9" />
+      <node id="736550168095851365" at="147,0,150,5" concept="9" />
+      <node id="7684751997339096640" at="164,101,167,5" concept="9" />
+      <node id="4751804466478757057" at="170,0,173,0" concept="10" trace="run#()V" />
+      <node id="4799633552517352119" at="59,0,63,0" concept="10" trace="isLoading#()Z" />
+      <node id="4799633552517352148" at="71,0,75,0" concept="10" trace="getTotalRevisionsNumber#()I" />
+      <node id="4799633552517352154" at="76,0,80,0" concept="10" trace="getProcessedRevisionsNumber#()I" />
+      <node id="5102968955825541144" at="133,0,137,0" concept="10" trace="processLastCommit#(Ljetbrains/mps/vcs/history/CommitsGraphNode;)V" />
+      <node id="7927010376735345071" at="152,78,156,5" concept="9" />
+      <node id="7927010376735345090" at="156,5,160,5" concept="9" />
+      <node id="5102968955825634356" at="177,0,181,0" concept="10" trace="addNodeToHistory#(Ljetbrains/mps/vcs/history/CommitsGraphNode;)V" />
+      <node id="4488547723936258863" at="88,7,93,26" concept="12" />
+      <node id="4488547723935448149" at="99,21,104,5" concept="20" />
+      <node id="3973066229401922470" at="107,0,112,0" concept="10" trace="stop#()Z" />
+      <node id="3143542063545107116" at="117,0,122,0" concept="10" trace="commitProcessingFinished#(Ljetbrains/mps/vcs/history/CommitsGraphNode;)V" />
+      <node id="4751804466478730172" at="168,72,173,7" concept="5" />
+      <node id="4799633552517352125" at="64,0,70,0" concept="10" trace="getRevisions#()Ljava/util/List;" />
+      <node id="4799633552517352160" at="97,0,106,0" concept="10" trace="run#()V" />
+      <node id="8372618110080201275" at="123,0,132,0" concept="10" trace="processSimpleCommit#(Ljetbrains/mps/vcs/history/CommitsGraphNode;)V" />
+      <node id="4799633552517352084" at="47,0,58,0" concept="3" trace="RootModelHistoryExtractor#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;Lorg/jetbrains/mps/openapi/model/SNodeId;Lcom/intellij/openapi/vfs/VirtualFile;Ljava/lang/Runnable;)V" />
+      <node id="4488547723936255181" at="83,77,94,5" concept="18" />
+      <node id="7684751997338955264" at="164,0,176,0" concept="10" trace="modelsHaveChanges#(Lorg/jetbrains/mps/openapi/model/SModel;Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
+      <node id="4488547723936232843" at="81,0,96,0" concept="10" trace="getRevisionParents#(Lcom/intellij/openapi/vcs/history/VcsFileRevision;)Ljava/util/List;" />
+      <node id="7927010376735278642" at="138,0,163,0" concept="10" trace="processMergeCommit#(Ljetbrains/mps/vcs/history/CommitsGraphNode;)V" />
+      <scope id="4799633552517352121" at="60,30,61,21" />
+      <scope id="4799633552517352131" at="66,40,67,65" />
+      <scope id="4799633552517352150" at="72,40,73,28" />
+      <scope id="4799633552517352156" at="77,44,78,32" />
+      <scope id="3143542063540339903" at="86,25,87,39" />
+      <scope id="4713353848465736904" at="90,60,91,34" />
+      <scope id="4488547723935448151" at="100,9,101,40" />
+      <scope id="4488547723935449233" at="102,15,103,24" />
+      <scope id="3143542063541283252" at="113,35,114,94" />
+      <scope id="1602210043323068304" at="128,80,129,54" />
+      <scope id="5102968955825541147" at="134,65,135,52" />
+      <scope id="736550168095851367" at="148,57,149,13" />
+      <scope id="7684751997339096642" at="165,67,166,19" />
+      <scope id="4751804466478757058" at="170,25,171,99" />
+      <scope id="3973066229401922474" at="108,25,110,16" />
+      <scope id="3143542063545107124" at="118,63,120,21" />
+      <scope id="7927010376735345072" at="153,32,155,13" />
+      <scope id="7927010376735345091" at="157,32,159,13" />
+      <scope id="5102968955825634359" at="177,56,179,75" />
+      <scope id="4799633552517352128" at="65,47,68,5" />
+      <scope id="4713353848465736903" at="90,0,93,0">
         <var name="it" id="4713353848465736903" />
       </scope>
-      <scope id="3143542063541283249" at="115,0,118,0" />
-      <scope id="4631289420404799585" at="176,0,179,0" />
-      <scope id="4799633552517352119" at="61,0,65,0" />
-      <scope id="4799633552517352148" at="73,0,77,0" />
-      <scope id="4799633552517352154" at="78,0,82,0" />
-      <scope id="5102968955825541144" at="135,0,139,0">
+      <scope id="3143542063541283249" at="113,0,116,0" />
+      <scope id="4751804466478757057" at="170,0,173,0" />
+      <scope id="4799633552517352119" at="59,0,63,0" />
+      <scope id="4799633552517352148" at="71,0,75,0" />
+      <scope id="4799633552517352154" at="76,0,80,0" />
+      <scope id="5102968955825541144" at="133,0,137,0">
         <var name="node" id="5102968955825564017" />
       </scope>
-      <scope id="7684751997338955267" at="166,89,170,76" />
-      <scope id="5102968955825634356" at="183,0,187,0">
+      <scope id="5102968955825634356" at="177,0,181,0">
         <var name="node" id="5102968955825682920" />
       </scope>
-      <scope id="3973066229401922470" at="109,0,114,0" />
-      <scope id="3143542063545107116" at="119,0,124,0">
+      <scope id="3973066229401922470" at="107,0,112,0" />
+      <scope id="3143542063545107116" at="117,0,122,0">
         <var name="node" id="3143542063545107117" />
       </scope>
-      <scope id="4799633552517352125" at="66,0,72,0" />
-      <scope id="4799633552517352163" at="100,21,106,5" />
-      <scope id="8372618110080201276" at="126,67,132,5">
+      <scope id="4799633552517352125" at="64,0,70,0" />
+      <scope id="4799633552517352163" at="98,21,104,5" />
+      <scope id="8372618110080201276" at="124,67,130,5">
         <var name="parentNode" id="2971769857913076032" />
       </scope>
-      <scope id="7684751997338955264" at="166,0,172,0">
-        <var name="model" id="7684751997338967747" />
-        <var name="prevModel" id="7684751997338967744" />
-      </scope>
-      <scope id="4631289420404789926" at="173,104,180,25">
-        <var name="changes" id="5349802388157399005" />
-      </scope>
-      <scope id="4799633552517352095" at="49,180,58,118" />
-      <scope id="4488547723936255185" at="86,40,95,26">
+      <scope id="4799633552517352095" at="47,180,56,118" />
+      <scope id="4488547723936255185" at="84,40,93,26">
         <var name="node" id="3143542063540284982" />
       </scope>
-      <scope id="4799633552517352160" at="99,0,108,0" />
-      <scope id="8372618110080201275" at="125,0,134,0">
+      <scope id="4799633552517352160" at="97,0,106,0" />
+      <scope id="8372618110080201275" at="123,0,132,0">
         <var name="node" id="8372618110080201334" />
       </scope>
-      <scope id="4631289420404789923" at="173,0,182,0">
-        <var name="model" id="4631289420404802707" />
-        <var name="prevModel" id="4631289420404802710" />
+      <scope id="7684751997338955267" at="164,101,174,35">
+        <var name="modelsHaveChanges" id="4751804466478685844" />
       </scope>
-      <scope id="4799633552517352084" at="49,0,60,0">
+      <scope id="4799633552517352084" at="47,0,58,0">
         <var name="file" id="1602210043322641862" />
         <var name="onUpdate" id="4799633552517352092" />
         <var name="project" id="4799633552517352085" />
         <var name="revisions" id="4799633552517352087" />
         <var name="root" id="4799633552517352090" />
       </scope>
-      <scope id="4488547723936232846" at="85,77,96,5" />
-      <scope id="4488547723936232843" at="83,0,98,0">
+      <scope id="4488547723936232846" at="83,77,94,5" />
+      <scope id="7684751997338955264" at="164,0,176,0">
+        <var name="model" id="7684751997338967747" />
+        <var name="prevModel" id="7684751997338967744" />
+      </scope>
+      <scope id="4488547723936232843" at="81,0,96,0">
         <var name="revision" id="4488547723936237233" />
       </scope>
-      <scope id="7927010376735278645" at="141,57,163,52">
-        <var name="changes1" id="5662070101151658568" />
-        <var name="changes2" id="5662070101151666699" />
+      <scope id="7927010376735278645" at="139,57,161,52">
+        <var name="modelsHaveChanges1" id="4751804466477623253" />
+        <var name="modelsHaveChanges2" id="4751804466477707410" />
         <var name="parent1" id="2971769857913100079" />
         <var name="parent2" id="2971769857913138921" />
       </scope>
-      <scope id="7927010376735278642" at="140,0,165,0">
+      <scope id="7927010376735278642" at="138,0,163,0">
         <var name="node" id="7927010376735291722" />
       </scope>
-      <unit id="4713353848465736903" at="91,65,95,7" name="jetbrains.mps.vcs.diff.ui.RootModelHistoryExtractor$1" />
-      <unit id="4631289420404799585" at="175,49,179,5" name="jetbrains.mps.vcs.diff.ui.RootModelHistoryExtractor$2" />
-      <unit id="4799633552517352046" at="32,0,188,0" name="jetbrains.mps.vcs.diff.ui.RootModelHistoryExtractor" />
+      <unit id="4713353848465736903" at="89,65,93,7" name="jetbrains.mps.vcs.diff.ui.RootModelHistoryExtractor$1" />
+      <unit id="4751804466478757057" at="169,49,173,5" name="jetbrains.mps.vcs.diff.ui.RootModelHistoryExtractor$2" />
+      <unit id="4799633552517352046" at="30,0,182,0" name="jetbrains.mps.vcs.diff.ui.RootModelHistoryExtractor" />
     </file>
   </root>
   <root nodeRef="r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/4799633552518811124">

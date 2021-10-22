@@ -343,7 +343,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
     final Wrappers._T<ModelChangeSet> changeSet = new Wrappers._T<ModelChangeSet>();
     myModelAccess.runReadAction(new Runnable() {
       public void run() {
-        changeSet.value = ChangeSetBuilder.buildChangeSetForNode(prevModel, model, myRootId, withOpposite, true, false);
+        changeSet.value = ChangeSetBuilder.buildChangeSetForNode(prevModel, model, myRootId, withOpposite, true);
       }
     });
     return changeSet.value;
