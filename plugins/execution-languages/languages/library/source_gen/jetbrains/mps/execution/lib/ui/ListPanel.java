@@ -16,6 +16,7 @@ import java.awt.GridBagLayout;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import com.intellij.ui.ScrollPaneFactory;
+import com.intellij.util.ui.JBUI;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.workbench.action.ActionUtils;
@@ -67,6 +68,8 @@ public abstract class ListPanel<T> extends JBPanel {
     JScrollPane scrolledListComponent = ScrollPaneFactory.createScrollPane(myListComponent);
     scrolledListComponent.doLayout();
     mainPanel.add(scrolledListComponent, BorderLayout.CENTER);
+    int scaledSz = JBUI.scale(3);
+    mainPanel.setBorder(JBUI.Borders.empty(scaledSz, 0, scaledSz, 0));
 
     AnAction add = new MyListAddAction(myListComponent);
     AnAction remove = new MyListRemoveAction(this.myListComponent);
@@ -74,8 +77,8 @@ public abstract class ListPanel<T> extends JBPanel {
     ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.RUN_CONFIGURATIONS_COMBOBOX, group, false);
     mainPanel.add(toolbar.getComponent(), BorderLayout.EAST);
 
-    this.add(new JBLabel(myTitle + ":"), LayoutUtil.createLabelConstraints(0));
-    this.add(mainPanel, LayoutUtil.createPanelConstraints(1));
+    add(new JBLabel(myTitle + ":"), LayoutUtil.createLabelConstraints(0));
+    add(mainPanel, LayoutUtil.createPanelConstraints(1));
   }
 
   protected abstract T wrap(SNode node);

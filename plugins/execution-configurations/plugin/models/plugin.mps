@@ -2705,8 +2705,13 @@
               </node>
               <node concept="liA8E" id="5gyVhZ1883x" role="2OqNvi">
                 <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
-                <node concept="37vLTw" id="3FQ5zX5utPX" role="37wK5m">
-                  <ref role="3cqZAo" node="3FQ5zX5utPT" resolve="junitEditorComponent" />
+                <node concept="2OqwBi" id="1_3tIz4JeRn" role="37wK5m">
+                  <node concept="37vLTw" id="3FQ5zX5utPX" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3FQ5zX5utPT" resolve="junitEditorComponent" />
+                  </node>
+                  <node concept="liA8E" id="1_3tIz4JfrU" role="2OqNvi">
+                    <ref role="37wK5l" to="tty3:1_3tIz4DTt_" resolve="getPanel" />
+                  </node>
                 </node>
                 <node concept="1rwKMM" id="5gyVhZ1883z" role="37wK5m">
                   <property role="1rwKMK" value="panel" />

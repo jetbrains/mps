@@ -100,7 +100,10 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
     return JUnitRunTypes.values()[this.getRunType()];
   }
   public void setInProcessFlag(boolean value) {
-    this.getOrd2InProcess().put(this.getRunType(), value);
+    this.getRunType2InProcess().put(this.getRunType(), value);
+  }
+  public void setInProcessFlagForRunType(int runType, boolean value) {
+    this.getRunType2InProcess().put(runType, value);
   }
   public void setJUnitRunType(@NotNull JUnitRunType runType) {
     int ix = 0;
@@ -113,8 +116,11 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
     }
   }
   /*package*/ boolean getInProcessProperty() {
-    if (this.getOrd2InProcess().containsKey(this.getRunType())) {
-      boolean inProcessFlag = this.getOrd2InProcess().get(this.getRunType());
+    return getInProcessPropertyForRunType(this.getRunType());
+  }
+  /*package*/ boolean getInProcessPropertyForRunType(int runType) {
+    if (this.getRunType2InProcess().containsKey(runType)) {
+      boolean inProcessFlag = this.getRunType2InProcess().get(runType);
       return inProcessFlag;
     } else {
       // legacy 
@@ -223,8 +229,8 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
   public int getRunType() {
     return myState.myRunType;
   }
-  public InProcessFlagPerScope getOrd2InProcess() {
-    return myState.myOrd2InProcess;
+  public InProcessFlagPerScope getRunType2InProcess() {
+    return myState.myRunType2InProcess;
   }
 
   public void setModelRef(String value) {
@@ -257,8 +263,8 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
   public void setRunType(int value) {
     myState.myRunType = value;
   }
-  public void setOrd2InProcess(InProcessFlagPerScope value) {
-    myState.myOrd2InProcess = value;
+  public void setRunType2InProcess(InProcessFlagPerScope value) {
+    myState.myRunType2InProcess = value;
   }
 
   public final class MyState implements Copyable<MyState>, Cloneable {
@@ -272,7 +278,7 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
     public ClonableList<String> myTestCases = new ClonableList<String>();
     public ClonableList<String> myTestMethods = new ClonableList<String>();
     public int myRunType = JUnitRunTypes.PROJECT.ordinal();
-    public InProcessFlagPerScope myOrd2InProcess = new InProcessFlagPerScope();
+    public InProcessFlagPerScope myRunType2InProcess = new InProcessFlagPerScope();
 
     @Deprecated
     @Override
@@ -292,8 +298,8 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
         state.myTestMethods = myTestMethods.copy();
       }
       state.myRunType = myRunType;
-      if (myOrd2InProcess != null) {
-        state.myOrd2InProcess = myOrd2InProcess.copy();
+      if (myRunType2InProcess != null) {
+        state.myRunType2InProcess = myRunType2InProcess.copy();
       }
       return state;
     }

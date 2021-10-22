@@ -8,12 +8,22 @@ import java.util.HashMap;
 import org.jetbrains.annotations.NotNull;
 
 public class InProcessFlagPerScope implements Copyable<InProcessFlagPerScope> {
-  public final Map<Integer, Boolean> myRunType2InProcessFlag = new HashMap<Integer, Boolean>();
+  private Map<Integer, Boolean> myRunType2InProcessFlag = new HashMap<Integer, Boolean>();
+
+  public Map<Integer, Boolean> getRunType2InProcessFlag() {
+    return myRunType2InProcessFlag;
+  }
+
+  public void setRunType2InProcessFlag(Map<Integer, Boolean> val) {
+    myRunType2InProcessFlag = new HashMap<Integer, Boolean>(val);
+  }
 
   @NotNull
   @Override
   public InProcessFlagPerScope copy() {
-    return new InProcessFlagPerScope();
+    InProcessFlagPerScope res = new InProcessFlagPerScope();
+    res.myRunType2InProcessFlag.putAll(new HashMap<Integer, Boolean>(myRunType2InProcessFlag));
+    return res;
   }
 
   public void put(int runType, boolean value) {
