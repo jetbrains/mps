@@ -157,13 +157,17 @@ public final class RuleUtil {
     return MandatoryQueryMacro.contains(SNodeOperations.getConcept(nodeMacro));
   }
 
-  private static String getMappingLabelName(SNode mappingLabelDeclaration) {
+  public static String getMappingLabelName(SNode mappingLabelDeclaration) {
     if (mappingLabelDeclaration == null) {
       return null;
     }
     String result = SPropertyOperations.getString(mappingLabelDeclaration, PROPS.name$MnvL);
     return (result.length() == 0 ? null : result);
   }
+  public static boolean isMappingLabelPrivate(SNode mlDecl) {
+    return SPropertyOperations.getBoolean(mlDecl, PROPS.private$lobx);
+  }
+
   public static String getCreateRootRuleLabel(SNode rule) {
     return getMappingLabelName(SLinkOperations.getTarget(rule, LINKS.label$rz_i));
   }
@@ -358,6 +362,10 @@ public final class RuleUtil {
   public static boolean getMappingConfiguration_TopPrio(SNode mapping) {
     return SPropertyOperations.getBoolean(mapping, PROPS.topPriorityGroup$RJ4F);
   }
+  public static Iterable<SNode> getMappingConfiguration_LabelDeclarations(SNode mapping) {
+    return SLinkOperations.getChildren(mapping, LINKS.mappingLabel$Wvfj);
+  }
+
   public static SNode getTemplateDeclaration_ContentNode(SNode decl) {
     return SLinkOperations.getTarget(decl, LINKS.contentNode$CQ7t);
   }
@@ -474,6 +482,7 @@ public final class RuleUtil {
 
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty private$lobx = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L, 0x68dcc264f08443c3L, "private");
     /*package*/ static final SProperty applyToConceptInheritors$PfLi = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, 0x10fc6d8f674L, "applyToConceptInheritors");
     /*package*/ static final SProperty applyToSubConcepts$wZzZ = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x67b585b44f4d943bL, 0x1507ca8da7f37f1eL, "applyToSubConcepts");
     /*package*/ static final SProperty keepSourceRoot$OcNj = MetaAdapterFactory.getProperty(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, 0x11243d5018aL, "keepSourceRoot");
@@ -533,6 +542,7 @@ public final class RuleUtil {
     /*package*/ static final SContainmentLink defaultConsequence$hX_D = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11644fa2edeL, 0x11644fb7f64L, "defaultConsequence");
     /*package*/ static final SContainmentLink templateCall$byhU = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x6bd8eb18e44da5e3L, "templateCall");
     /*package*/ static final SContainmentLink sourceNodesQuery$x8mP = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1104fcac3b1L, 0x1104fccff43L, "sourceNodesQuery");
+    /*package*/ static final SContainmentLink mappingLabel$Wvfj = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, 0x1179be725f9L, "mappingLabel");
     /*package*/ static final SContainmentLink contentNode$CQ7t = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, 0xfe43de823bL, "contentNode");
     /*package*/ static final SContainmentLink sourceNodesQuery$XjmI = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1047ce009c3L, 0x10fef5e42d7L, "sourceNodesQuery");
     /*package*/ static final SContainmentLink sourceNodesQuery$RIct = MetaAdapterFactory.getContainmentLink(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1038b0c2cc7L, 0x11002d48f34L, "sourceNodesQuery");

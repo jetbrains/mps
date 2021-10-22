@@ -4652,6 +4652,21 @@
       </node>
       <node concept="2iRfu4" id="i2IBXSW" role="2iSdaV" />
     </node>
+    <node concept="3EZMnI" id="6zsKAjKx4qd" role="6VMZX">
+      <node concept="3EZMnI" id="6zsKAjKx4r3" role="3EZMnx">
+        <node concept="2iRfu4" id="6zsKAjKx4r4" role="2iSdaV" />
+        <node concept="3F0ifn" id="6zsKAjKx4rp" role="3EZMnx">
+          <property role="3F0ifm" value="Limited to this generator" />
+        </node>
+        <node concept="3F0A7n" id="6zsKAjKx4qX" role="3EZMnx">
+          <ref role="1NtTu8" to="tpf8:6zsKAjKx4f3" resolve="private" />
+        </node>
+      </node>
+      <node concept="3F0ifn" id="6zsKAjKx4rt" role="3EZMnx">
+        <property role="3F0ifm" value="Restrict uses of the label to templates of this generator. Label is not exported into checkpoint model" />
+      </node>
+      <node concept="2iRkQZ" id="6zsKAjKx4qg" role="2iSdaV" />
+    </node>
   </node>
   <node concept="24kQdi" id="hwbloTw">
     <property role="3GE5qa" value="rule.consequence" />

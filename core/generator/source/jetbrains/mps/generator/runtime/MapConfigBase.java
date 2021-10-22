@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -154,5 +154,43 @@ public abstract class MapConfigBase implements TemplateMappingConfiguration {
   @Override
   public Collection<ReferenceReductionRule> getReferenceReductionRules() {
     return Collections.emptySet();
+  }
+
+  /**
+   * @return empty collection
+   */
+  @NotNull
+  @Override
+  public Collection<LabelDeclaration> getLabels() {
+    return Collections.emptyList();
+  }
+
+  // factory method to produce instances for {@code getLabels()}
+  // intended for use from generated templates
+  protected LabelDeclaration label(String name, boolean isPrivate) {
+    return new LD(this, name, isPrivate);
+  }
+
+  private static class LD implements LabelDeclaration {
+    // I expect the need to tell labels not only by their names, which is not reliable, but by their TMC identity, too.
+    private final MapConfigBase myOwner;
+    private final String myName;
+    private final boolean myIsPrivate;
+
+    /*package*/ LD(MapConfigBase owner, String name, boolean isPrivate) {
+      myOwner = owner;
+      myName = name;
+      myIsPrivate = isPrivate;
+    }
+
+    @Override
+    public String getName() {
+      return myName;
+    }
+
+    @Override
+    public boolean isPrivate() {
+      return myIsPrivate;
+    };
   }
 }

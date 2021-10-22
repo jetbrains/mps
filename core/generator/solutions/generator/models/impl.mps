@@ -3085,7 +3085,7 @@
     <node concept="2YIFZL" id="1wehcMpUvm3" role="jymVt">
       <property role="TrG5h" value="getMappingLabelName" />
       <node concept="17QB3L" id="1wehcMpUvm7" role="3clF45" />
-      <node concept="3Tm6S6" id="1wehcMpUwxZ" role="1B3o_S" />
+      <node concept="3Tm1VV" id="2liaBjqDWrb" role="1B3o_S" />
       <node concept="3clFbS" id="1wehcMpUvm6" role="3clF47">
         <node concept="3clFbJ" id="1wehcMpUvma" role="3cqZAp">
           <node concept="3clFbS" id="1wehcMpUvmc" role="3clFbx">
@@ -3143,6 +3143,30 @@
         </node>
       </node>
     </node>
+    <node concept="2YIFZL" id="2liaBjqEaSP" role="jymVt">
+      <property role="TrG5h" value="isMappingLabelPrivate" />
+      <node concept="37vLTG" id="2liaBjqEsY0" role="3clF46">
+        <property role="TrG5h" value="mlDecl" />
+        <node concept="3Tqbb2" id="2liaBjqEsY1" role="1tU5fm">
+          <ref role="ehGHo" to="tpf8:hurT7o6" resolve="MappingLabelDeclaration" />
+        </node>
+      </node>
+      <node concept="10P_77" id="74D$wCobZGe" role="3clF45" />
+      <node concept="3Tm1VV" id="2liaBjqEaSS" role="1B3o_S" />
+      <node concept="3clFbS" id="2liaBjqEaST" role="3clF47">
+        <node concept="3clFbF" id="2liaBjqEAtE" role="3cqZAp">
+          <node concept="2OqwBi" id="2liaBjqEAFa" role="3clFbG">
+            <node concept="37vLTw" id="2liaBjqEAtD" role="2Oq$k0">
+              <ref role="3cqZAo" node="2liaBjqEsY0" resolve="mlDecl" />
+            </node>
+            <node concept="3TrcHB" id="2liaBjqEE6s" role="2OqNvi">
+              <ref role="3TsBF5" to="tpf8:6zsKAjKx4f3" resolve="private" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2liaBjqEHqe" role="jymVt" />
     <node concept="2YIFZL" id="1wehcMpUvlB" role="jymVt">
       <property role="TrG5h" value="getCreateRootRuleLabel" />
       <node concept="17QB3L" id="1wehcMpUwxW" role="3clF45" />
@@ -4755,6 +4779,34 @@
         </node>
       </node>
     </node>
+    <node concept="2YIFZL" id="2liaBjqD2cC" role="jymVt">
+      <property role="TrG5h" value="getMappingConfiguration_LabelDeclarations" />
+      <node concept="37vLTG" id="2liaBjqDFqP" role="3clF46">
+        <property role="TrG5h" value="mapping" />
+        <node concept="3Tqbb2" id="2liaBjqDFqQ" role="1tU5fm">
+          <ref role="ehGHo" to="tpf8:fWbUwhP" resolve="MappingConfiguration" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="2liaBjqD2cF" role="3clF47">
+        <node concept="3clFbF" id="2liaBjqDJ6w" role="3cqZAp">
+          <node concept="2OqwBi" id="2liaBjqDJRF" role="3clFbG">
+            <node concept="37vLTw" id="2liaBjqDJ6v" role="2Oq$k0">
+              <ref role="3cqZAo" node="2liaBjqDFqP" resolve="mapping" />
+            </node>
+            <node concept="3Tsc0h" id="2liaBjqDNfh" role="2OqNvi">
+              <ref role="3TtcxE" to="tpf8:hurTMnT" resolve="mappingLabel" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="2liaBjqDc7v" role="1B3o_S" />
+      <node concept="A3Dl8" id="2liaBjqDffe" role="3clF45">
+        <node concept="3Tqbb2" id="2liaBjqDin0" role="A3Ik2">
+          <ref role="ehGHo" to="tpf8:hurT7o6" resolve="MappingLabelDeclaration" />
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2liaBjqCpm3" role="jymVt" />
     <node concept="2YIFZL" id="27wogCg2ynZ" role="jymVt">
       <property role="TrG5h" value="getTemplateDeclaration_ContentNode" />
       <node concept="3Tqbb2" id="27wogCg2yoe" role="3clF45">
