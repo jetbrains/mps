@@ -7,9 +7,9 @@ import jetbrains.mps.workbench.action.BaseAction;
 import com.intellij.openapi.project.DumbAware;
 import javax.swing.Icon;
 import com.intellij.icons.AllIcons;
-import com.intellij.openapi.diff.DiffRequest;
+import com.intellij.diff.requests.DiffRequest;
 import com.intellij.openapi.ui.DialogWrapper;
-import com.intellij.openapi.diff.DiffTool;
+import com.intellij.diff.DiffTool;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.ide.actions.SynchronizeAction;
@@ -30,10 +30,10 @@ public class InvokeTextDiffAction extends BaseAction implements DumbAware {
   }
   @Override
   protected void doExecute(AnActionEvent event, Map<String, Object> map) {
-    if (myDiffTool.canShow(myDiffRequest)) {
+    /*if (myDiffTool.canShow(myDiffRequest)) {
       myDialog.close(DialogWrapper.NEXT_USER_EXIT_CODE);
       new SynchronizeAction().actionPerformed(event);
       myDiffTool.show(myDiffRequest);
-    }
+    }*/
   }
 }
