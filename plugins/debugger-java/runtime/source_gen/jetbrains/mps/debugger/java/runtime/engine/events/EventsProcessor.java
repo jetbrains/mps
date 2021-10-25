@@ -33,7 +33,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.concurrent.atomic.AtomicReference;
 import com.intellij.openapi.progress.util.ProgressWindow;
 import com.intellij.openapi.progress.util.ProgressIndicatorListener;
-import com.intellij.openapi.progress.util.ProgressIndicatorListenerAdapter;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import com.intellij.openapi.util.EmptyRunnable;
@@ -239,7 +238,7 @@ public class EventsProcessor {
     final ProgressWindow progress = new ProgressWindow(true, false, myProject);
     progress.setTitle("Evaluating");
 
-    final ProgressIndicatorListener progressIndicatorListener = new ProgressIndicatorListenerAdapter() {
+    final ProgressIndicatorListener progressIndicatorListener = new ProgressIndicatorListener() {
       @Override
       public void cancelled() {
         progress.stop();
