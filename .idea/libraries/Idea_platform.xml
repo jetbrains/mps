@@ -6,11 +6,8 @@
       <root url="jar://$PROJECT_DIR$/lib/bootstrap.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/forms_rt.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jna.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/kotlin-reflect-1.5.10-release-896.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/kotlin-stdlib-jdk8.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/kotlinx-coroutines-jdk8.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/kotlin-test.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/jna-platform.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/openapi.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-api.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/platform-impl.jar!/" />
@@ -18,11 +15,6 @@
       <root url="jar://$PROJECT_DIR$/lib/platform-statistics-devkit.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/stats.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/jps-model.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/jing-20030619.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/jshell-frontend.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/xmlbeans-4.0.0.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/intellij-coverage-agent-1.0.589.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/intellij-test-discovery-agent-1.0.589.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-api.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/java-impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/testFramework-java.jar!/" />
@@ -32,6 +24,12 @@
       <root url="jar://$PROJECT_DIR$/lib/dom-impl.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/dom-openapi.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/3rd-party.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/intellij-coverage.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/intellij-test-discovery.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlin-reflect.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlinx.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/log4j/log4j-1.2.17.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/3rd-party-rt.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
