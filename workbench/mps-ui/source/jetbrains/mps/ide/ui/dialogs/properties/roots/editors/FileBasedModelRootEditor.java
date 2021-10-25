@@ -266,9 +266,11 @@ public class FileBasedModelRootEditor implements ModelRootEntryEditor {
     }
 
     @Override
-    public @NotNull JComponent createCustomComponent(@NotNull Presentation presentation, @NotNull String place, @NotNull DataContext dataContext) {
+    public @NotNull JComponent createCustomComponent(@NotNull Presentation presentation, @NotNull String place) {
       return IconWithTextAction.createCustomComponentImpl(this, presentation, place);
     }
+
+
   }
 
   private class ChooseModelRootContentFolder extends AnAction implements DumbAware {
