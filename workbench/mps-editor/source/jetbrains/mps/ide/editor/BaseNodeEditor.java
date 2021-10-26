@@ -289,6 +289,7 @@ public abstract class BaseNodeEditor implements Editor {
         if (s.isEditorFocused && focusManager != null) {
           focusManager.requestFocus(editorComponent, true);
         }
+        editorComponent.deactivateSubstituteChooser();
       }
     });
     if (s.inspectorMemento == null) {

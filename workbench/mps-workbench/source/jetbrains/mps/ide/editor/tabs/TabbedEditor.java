@@ -352,18 +352,23 @@ public class TabbedEditor extends BaseNodeEditor {
   @Override
   public void loadState(@NotNull final EditorState newState) {
     myProject.getModelAccess().runReadAction(() -> {
-      if (newState instanceof TabbedEditorState) {
-        state = ((TabbedEditorState) newState).copy();
-        SNodeReference nodePointer = state.getNode();
-        SNode node = nodePointer == null ? null : nodePointer.resolve(myProject.getRepository());
-        if (node != null) {
-          showNode(node, false);
-        }
-      } else {
-        //regular editor was shown for that node last time
-        showNode(myBaseNode.resolve(myProject.getRepository()), false);
-      }
+      loadStateImpl(newState);
     });
+  }
+
+  private void loadStateImpl(@NotNull EditorState newState) {
+    if (newState instanceof TabbedEditorState) {
+      state = ((TabbedEditorState) newState).copy();
+      SNodeReference nodePointer = state.getNode();
+      SNode node = nodePointer == null ? null : nodePointer.resolve(myProject.getRepository());
+      if (node != null) {
+        showNode(node, false);
+        super.loadState(state.loadState(nodePointer));
+      }
+    } else {
+      //regular editor was shown for that node last time
+      showNode(myBaseNode.resolve(myProject.getRepository()), false);
+    }
   }
 
   public static final class TabbedEditorState implements EditorState {
