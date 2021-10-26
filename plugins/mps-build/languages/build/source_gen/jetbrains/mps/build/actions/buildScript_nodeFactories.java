@@ -5,8 +5,8 @@ package jetbrains.mps.build.actions;
 import jetbrains.mps.openapi.actions.descriptor.NodeFactory;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.generator.TransientModelsModule;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.generator.TransientModelsModule;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -22,19 +22,18 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public class buildScript_nodeFactories {
   public static class NodeFactory_6099797596647447256 implements NodeFactory {
     public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
-      SModel modelDescriptor = model;
-      if (model.getModule() instanceof TransientModelsModule || modelDescriptor == null) {
+      if (model == null) {
         return;
       }
-      SModule module = modelDescriptor.getModule();
-      if (module == null || ((AbstractModule) module).getDescriptorFile() == null) {
+      SModule module = model.getModule();
+      if (module == null || module instanceof TransientModelsModule || ((AbstractModule) module).getDescriptorFile() == null) {
         return;
       }
 
       SPropertyOperations.set(newNode, PROPS.internalBaseDirectory$_8Zr, ".");
-      SLinkOperations.setTarget(newNode, LINKS.scriptsDir$Ezqo, createBuildSourceProjectRelativePath_v3u3ao_a0a6a0a());
+      SLinkOperations.setTarget(newNode, LINKS.scriptsDir$Ezqo, createBuildSourceProjectRelativePath_v3u3ao_a0a5a0a());
     }
-    private static SNode createBuildSourceProjectRelativePath_v3u3ao_a0a6a0a() {
+    private static SNode createBuildSourceProjectRelativePath_v3u3ao_a0a5a0a() {
       SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.BuildSourceProjectRelativePath$uc);
       return n0.getResult();
     }

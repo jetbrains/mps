@@ -173,41 +173,13 @@
       <ref role="37XkoT" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
       <node concept="37Y9Zx" id="5iAPpylWXFp" role="37ZfLb">
         <node concept="3clFbS" id="5iAPpylWXFq" role="2VODD2">
-          <node concept="3cpWs8" id="1AfwOXhJ9Q5" role="3cqZAp">
-            <node concept="3cpWsn" id="1AfwOXhJ9Q6" role="3cpWs9">
-              <property role="TrG5h" value="modelDescriptor" />
-              <node concept="2JrnkZ" id="1AfwOXhJ9Q9" role="33vP2m">
-                <node concept="1Q6Npb" id="1AfwOXhJ9Qa" role="2JrQYb" />
-              </node>
-              <node concept="3uibUv" id="1AfwOXhJ9Q7" role="1tU5fm">
-                <ref role="3uigEE" to="mhbf:~SModel" resolve="SModel" />
-              </node>
-            </node>
-          </node>
           <node concept="3clFbJ" id="1AfwOXhJ9Qe" role="3cqZAp">
             <node concept="3clFbS" id="1AfwOXhJ9Qf" role="3clFbx">
               <node concept="3cpWs6" id="1AfwOXhJabS" role="3cqZAp" />
             </node>
-            <node concept="22lmx$" id="1AfwOXhJab9" role="3clFbw">
-              <node concept="2ZW3vV" id="3nCzltNmdUk" role="3uHU7B">
-                <node concept="3uibUv" id="3nCzltNmdUl" role="2ZW6by">
-                  <ref role="3uigEE" to="ap4t:~TransientModelsModule" resolve="TransientModelsModule" />
-                </node>
-                <node concept="2OqwBi" id="3nCzltNmdUm" role="2ZW6bz">
-                  <node concept="liA8E" id="3nCzltNmdUn" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
-                  </node>
-                  <node concept="2JrnkZ" id="3nCzltNmdUo" role="2Oq$k0">
-                    <node concept="1Q6Npb" id="3nCzltNmdUp" role="2JrQYb" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbC" id="1AfwOXhJabO" role="3uHU7w">
-                <node concept="10Nm6u" id="1AfwOXhJabR" role="3uHU7w" />
-                <node concept="37vLTw" id="3GM_nagTwex" role="3uHU7B">
-                  <ref role="3cqZAo" node="1AfwOXhJ9Q6" resolve="modelDescriptor" />
-                </node>
-              </node>
+            <node concept="3clFbC" id="1AfwOXhJabO" role="3clFbw">
+              <node concept="10Nm6u" id="1AfwOXhJabR" role="3uHU7w" />
+              <node concept="1Q6Npb" id="36IVU8OUIta" role="3uHU7B" />
             </node>
           </node>
           <node concept="3cpWs8" id="1AfwOXhJacg" role="3cqZAp">
@@ -217,8 +189,8 @@
                 <node concept="liA8E" id="256tImPkKxd" role="2OqNvi">
                   <ref role="37wK5l" to="mhbf:~SModel.getModule()" resolve="getModule" />
                 </node>
-                <node concept="37vLTw" id="3GM_nagTBJV" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1AfwOXhJ9Q6" resolve="modelDescriptor" />
+                <node concept="2JrnkZ" id="36IVU8OUILf" role="2Oq$k0">
+                  <node concept="1Q6Npb" id="36IVU8OUILg" role="2JrQYb" />
                 </node>
               </node>
               <node concept="3uibUv" id="1AfwOXhJaci" role="1tU5fm">
@@ -230,13 +202,7 @@
             <node concept="3clFbS" id="1AfwOXhJacp" role="3clFbx">
               <node concept="3cpWs6" id="1AfwOXhJacL" role="3cqZAp" />
             </node>
-            <node concept="22lmx$" id="1AfwOXhJad2" role="3clFbw">
-              <node concept="3clFbC" id="1AfwOXhJacH" role="3uHU7B">
-                <node concept="37vLTw" id="3GM_nagTrqd" role="3uHU7B">
-                  <ref role="3cqZAo" node="1AfwOXhJach" resolve="module" />
-                </node>
-                <node concept="10Nm6u" id="1AfwOXhJacK" role="3uHU7w" />
-              </node>
+            <node concept="22lmx$" id="36IVU8OUXm1" role="3clFbw">
               <node concept="3clFbC" id="1AfwOXhJadl" role="3uHU7w">
                 <node concept="10Nm6u" id="1AfwOXhJado" role="3uHU7w" />
                 <node concept="2OqwBi" id="1AfwOXhJac9" role="3uHU7B">
@@ -252,6 +218,22 @@
                   </node>
                   <node concept="liA8E" id="1AfwOXhJacf" role="2OqNvi">
                     <ref role="37wK5l" to="z1c3:~AbstractModule.getDescriptorFile()" resolve="getDescriptorFile" />
+                  </node>
+                </node>
+              </node>
+              <node concept="22lmx$" id="1AfwOXhJad2" role="3uHU7B">
+                <node concept="3clFbC" id="1AfwOXhJacH" role="3uHU7B">
+                  <node concept="37vLTw" id="3GM_nagTrqd" role="3uHU7B">
+                    <ref role="3cqZAo" node="1AfwOXhJach" resolve="module" />
+                  </node>
+                  <node concept="10Nm6u" id="1AfwOXhJacK" role="3uHU7w" />
+                </node>
+                <node concept="2ZW3vV" id="36IVU8OUXtz" role="3uHU7w">
+                  <node concept="3uibUv" id="36IVU8OUXt$" role="2ZW6by">
+                    <ref role="3uigEE" to="ap4t:~TransientModelsModule" resolve="TransientModelsModule" />
+                  </node>
+                  <node concept="37vLTw" id="36IVU8OUX_5" role="2ZW6bz">
+                    <ref role="3cqZAo" node="1AfwOXhJach" resolve="module" />
                   </node>
                 </node>
               </node>
