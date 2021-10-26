@@ -652,7 +652,11 @@ public final class ChangesTracking {
         }).toListSequence());
         buildAndAddChanges((ChangeSetBuilder b) -> {
           SNode oldParentNode = getOldNode(parentId);
-          if (oldParentNode != null) {
+          if (oldParentNode != null && Sequence.fromIterable(childrenRightAfterEvent.value).all(new IWhereFilter<SNode>() {
+            public boolean accept(SNode it) {
+              return check_5iuzi5_a0a0a0a0b0a0e0a0n0j16(check_5iuzi5_a0a0a0a0a0b0a0e0a0n0j16(myDifference.getChangeSet()), it) != null;
+            }
+          })) {
             b.buildForNodeRole(IterableUtil.asList(AttributeOperations.getChildNodesAndAttributes(oldParentNode, childRole)), IterableUtil.asList(childrenRightAfterEvent.value), parentId, parentId, childRole);
           }
         });
@@ -736,6 +740,18 @@ public final class ChangesTracking {
   private static SModel check_5iuzi5_a0a0a15(ChangeSet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getOldModel();
+    }
+    return null;
+  }
+  private static SNode check_5iuzi5_a0a0a0a0b0a0e0a0n0j16(SModel checkedDotOperand, SNode it) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getNode(it.getNodeId());
+    }
+    return null;
+  }
+  private static SModel check_5iuzi5_a0a0a0a0a0b0a0e0a0n0j16(ChangeSet checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getNewModel();
     }
     return null;
   }
