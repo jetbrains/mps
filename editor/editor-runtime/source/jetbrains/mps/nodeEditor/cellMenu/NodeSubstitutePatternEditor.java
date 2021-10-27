@@ -304,8 +304,8 @@ public class NodeSubstitutePatternEditor {
 
     @Override
     public void setCaretPosition(int caretPosition) {
-      myCaretPosition = caretPosition;
-      myCell.setCaretPositionIfPossible(caretPosition);
+      myCaretPosition = Math.min(caretPosition, myText.length());
+      myCell.setCaretPositionIfPossible(myCaretPosition);
     }
 
     @Override
