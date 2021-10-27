@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -69,9 +70,20 @@ final class GenPlanActiveStep {
     //
     // For switches, however (allTemplateModels going into RuleManager), it seems reasonable to consider all models anyway (or collect
     // models from *extending* generators only)
-    for (TemplateModule tm : myPlan.getGenerators()) {
+    myPlan.getGenerators().stream().map(TemplateModule::getModels).forEach(allTemplateModels::addAll);
+    //
+    // one can invoke templates from extended/employed generators, need to know their TM for template discovery
+    LinkedHashSet<TemplateModule> modules = new LinkedHashSet<>();
+    ArrayDeque<TemplateModule> q = new ArrayDeque<>(plan.getGenerators());
+    while (!q.isEmpty()) {
+      TemplateModule templateModule = q.removeFirst();
+      if (modules.add(templateModule)) {
+        q.addAll(templateModule.getEmployedGenerators());
+        q.addAll(templateModule.getExtendedGenerators());
+      }
+    }
+    for (TemplateModule tm : modules) {
       for (TemplateModel m : tm.getModels()) {
-        allTemplateModels.add(m);
         myModelMap.put(m.getSModelReference(), m);
       }
     }
