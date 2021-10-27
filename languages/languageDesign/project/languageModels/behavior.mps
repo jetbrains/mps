@@ -806,20 +806,8 @@
   <node concept="13h7C7" id="15qhGW3fE3H">
     <ref role="13h7C2" to="hypd:1AZH1sZHi4c" resolve="ModuleReference" />
     <node concept="13i0hz" id="15qhGW3fE3K" role="13h7CS">
-      <property role="TrG5h" value="getModuleReference" />
+      <property role="TrG5h" value="moduleReferenceAsString" />
       <property role="13i0it" value="true" />
-      <node concept="2AHcQZ" id="2BHFktfnki0" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="P$JXv" id="2BHFktfnkhX" role="lGtFl">
-        <node concept="TZ5HI" id="2BHFktfnkhY" role="3nqlJM">
-          <node concept="TZ5HA" id="2BHFktfnkhZ" role="3HnX3l">
-            <node concept="1dT_AC" id="2BHFktfnkjD" role="1dT_Ay">
-              <property role="1dT_AB" value="use toModuleReference() instead, dealing with strings is awful" />
-            </node>
-          </node>
-        </node>
-      </node>
       <node concept="3Tm1VV" id="15qhGW3fE3L" role="1B3o_S" />
       <node concept="17QB3L" id="15qhGW3fE3M" role="3clF45" />
       <node concept="3clFbS" id="15qhGW3fE3N" role="3clF47">

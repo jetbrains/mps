@@ -132,6 +132,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("generateTemplates", 0x29a5716c5dfed280L).type(PrimitiveTypeId.BOOLEAN).origin("3000929436959691392").done();
     b.aggregate("priorityRules", 0x19bfb4173fb5210bL).target(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L).optional(true).ordered(true).multiple(true).origin("1855399583446016267").done();
     b.aggregate("depGenerators", 0x19bfb4173fb5210fL).target(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL).optional(true).ordered(true).multiple(true).origin("1855399583446016271").done();
+    b.aggregate("employedGenerators", 0x1a6cbb553be7a216L).target(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x19bfb4173fb5210cL).optional(true).ordered(true).multiple(true).origin("1904102717222527510").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForLanguage() {

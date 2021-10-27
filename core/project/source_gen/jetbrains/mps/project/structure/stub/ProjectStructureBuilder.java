@@ -27,6 +27,8 @@ import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingPriorityRule;
+import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_AbstractRef;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_RefAllGlobal;
 import jetbrains.mps.project.structure.modules.mappingpriorities.MappingConfig_RefAllLocal;
@@ -38,7 +40,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -202,6 +203,13 @@ public class ProjectStructureBuilder {
     for (SModuleReference ref : source.getDepGenerators()) {
       SLinkOperations.getChildren(generator, LINKS.depGenerators$x7ju).add(convert(ref));
     }
+    // this is a hack I need to address MPS-33930 quickly. The whole approach with ModuleDescriptor has to be refactored,
+    // have to stick to SModule API only
+    for (SDependency dep : mySourceModule.getDeclaredDependencies()) {
+      if (dep.getScope() == SDependencyScope.DEFAULT && dep.getTarget() instanceof Generator) {
+        ListSequence.fromList(SLinkOperations.getChildren(generator, LINKS.employedGenerators$sSfF)).addElement(convert(dep.getTargetModule()));
+      }
+    }
     collectModels(generator);
     return generator;
   }
@@ -347,6 +355,7 @@ public class ProjectStructureBuilder {
     /*package*/ static final SContainmentLink moduleRef$79cT = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x19bfb4173fb5241eL, "moduleRef");
     /*package*/ static final SContainmentLink priorityRules$x1s5 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x19bfb4173fb5210bL, "priorityRules");
     /*package*/ static final SContainmentLink depGenerators$x7ju = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x19bfb4173fb5210fL, "depGenerators");
+    /*package*/ static final SContainmentLink employedGenerators$sSfF = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x1a6cbb553be7a216L, "employedGenerators");
     /*package*/ static final SContainmentLink left$nykA = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, 0x25c3f284595702edL, "left");
     /*package*/ static final SContainmentLink right$nyzB = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, 0x25c3f284595702eeL, "right");
     /*package*/ static final SContainmentLink refs$oz8o = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f2845957030bL, 0x25c3f2845957030cL, "refs");

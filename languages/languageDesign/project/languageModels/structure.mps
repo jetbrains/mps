@@ -22,6 +22,9 @@
         <child id="6491077959632463286" name="oldProperty" index="3l_iP" />
       </concept>
       <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9" />
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
       </concept>
@@ -265,6 +268,19 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <property role="IQ2ns" value="1855399583446016271" />
       <ref role="20lvS9" node="1AZH1sZHi4c" resolve="ModuleReference" />
+      <node concept="t5JxF" id="1DGIPkVYvPv" role="lGtFl">
+        <property role="t5JxN" value="subset of Module.dependencies, Extends dependency to a generator module" />
+      </node>
+    </node>
+    <node concept="1TJgyj" id="1DGIPkVTU8m" role="1TKVEi">
+      <property role="IQ2ns" value="1904102717222527510" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="employedGenerators" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="1AZH1sZHi4c" resolve="ModuleReference" />
+      <node concept="t5JxF" id="1DGIPkVTU8q" role="lGtFl">
+        <property role="t5JxN" value="subset of Module.dependencies, regular (aka Default) dependency that point to a generator module." />
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="5xDtKQA7vSB">

@@ -18,19 +18,19 @@ import jetbrains.mps.lang.project.behavior.ModuleReference__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.lang.project.behavior.ModelReference__BehaviorDescriptor;
 import jetbrains.mps.generator.template.IfMacroContext;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.generator.template.TemplateQueryContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.generator.template.InsertMacroContext;
 import jetbrains.mps.generator.template.TemplateVarContext;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
 import java.util.Objects;
@@ -117,10 +117,10 @@ public class QueriesGenerated {
     return (Integer) _context.getVariable("loop:index");
   }
   public static Object propertyMacro_GetValue_6_7(final PropertyMacroContext _context) {
-    return (String) ModuleReference__BehaviorDescriptor.getModuleReference_id15qhGW3fE3K.invoke(_context.getNode());
+    return (String) ModuleReference__BehaviorDescriptor.moduleReferenceAsString_id15qhGW3fE3K.invoke(_context.getNode());
   }
   public static Object propertyMacro_GetValue_6_8(final PropertyMacroContext _context) {
-    return (String) ModuleReference__BehaviorDescriptor.getModuleReference_id15qhGW3fE3K.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.moduleRef$79cT));
+    return (String) ModuleReference__BehaviorDescriptor.moduleReferenceAsString_id15qhGW3fE3K.invoke(_context.getNode());
   }
   public static Object propertyMacro_GetValue_7_0(final PropertyMacroContext _context) {
     return (String) Module__BehaviorDescriptor.getModuleReference_id7OJukvJ5PmG.invoke(_context.getNode());
@@ -132,10 +132,10 @@ public class QueriesGenerated {
     return SPropertyOperations.getString(_context.getNode(), PROPS.qualifiedName$331j) + '.' + _context.getTemplateValue();
   }
   public static Object propertyMacro_GetValue_7_3(final PropertyMacroContext _context) {
-    return (String) ModuleReference__BehaviorDescriptor.getModuleReference_id15qhGW3fE3K.invoke(_context.getNode());
+    return (String) ModuleReference__BehaviorDescriptor.moduleReferenceAsString_id15qhGW3fE3K.invoke(_context.getNode());
   }
   public static Object propertyMacro_GetValue_7_4(final PropertyMacroContext _context) {
-    return (String) ModuleReference__BehaviorDescriptor.getModuleReference_id15qhGW3fE3K.invoke(SLinkOperations.getTarget(_context.getNode(), LINKS.moduleRef$79cT));
+    return (String) ModuleReference__BehaviorDescriptor.moduleReferenceAsString_id15qhGW3fE3K.invoke(_context.getNode());
   }
   public static Object propertyMacro_GetValue_7_5(final PropertyMacroContext _context) {
     return ListSequence.fromList(((List<SNode>) _context.getVariable("var:targetLanguages"))).count();
@@ -156,25 +156,10 @@ public class QueriesGenerated {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.priorityRules$x1s5)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_6_3(final IfMacroContext _context) {
-    // FIXME module name contains '#' is a hack to filter out dependencies to non-generator modules quickly.
-    // node.dependencies include both generators we depend from, as well as other modules (languages and solutions)
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.depGenerators$x7ju)).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.dependencies$2Su5)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.moduleRef$79cT), PROPS.qualifiedName$Z4hI).contains("#");
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.depGenerators$x7ju)).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.employedGenerators$sSfF)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_7_0(final IfMacroContext _context) {
-    // XXX COPIED FROM GeneratorRuntime template.
-    // XXX Yes, I don't like it.
-
-    // FIXME module name contains '#' is a hack to filter out dependencies to non-generator modules quickly.
-    // node.dependencies include both generators we depend from, as well as other modules (languages and solutions)
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.depGenerators$x7ju)).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.dependencies$2Su5)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.moduleRef$79cT), PROPS.qualifiedName$Z4hI).contains("#");
-      }
-    }).isNotEmpty();
+    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.depGenerators$x7ju)).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.employedGenerators$sSfF)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_7_1(final IfMacroContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.priorityRules$x1s5)).isNotEmpty();
@@ -264,19 +249,7 @@ public class QueriesGenerated {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.depGenerators$x7ju);
   }
   public static Iterable<SNode> sourceNodesQuery_6_4(final SourceSubstituteMacroNodesContext _context) {
-    // Unfortunately, we duplicate 'extended' dependency between generators in regular module dependencies and in node<Generator>.depGenerators
-    // Therefore, we have to exclude 'extended' (they are already processed) when iterating over general module dependencies.
-    final List<SModuleReference> extendedGenerators = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.depGenerators$x7ju)).select(new ISelector<SNode, SModuleReference>() {
-      public SModuleReference select(SNode it) {
-        return (SModuleReference) ModuleReference__BehaviorDescriptor.toModuleReference_id2BHFktfnkjF.invoke(it);
-      }
-    }).toListSequence();
-    // XXX see $IF$ for "#" reason
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.dependencies$2Su5)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.moduleRef$79cT), PROPS.qualifiedName$Z4hI).contains("#") && !(ListSequence.fromList(extendedGenerators).contains(ModuleReference__BehaviorDescriptor.toModuleReference_id2BHFktfnkjF.invoke(SLinkOperations.getTarget(it, LINKS.moduleRef$79cT))));
-      }
-    });
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.employedGenerators$sSfF);
   }
   public static Iterable<SNode> sourceNodesQuery_7_0(final SourceSubstituteMacroNodesContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.model$2Sf4)).where(new IWhereFilter<SNode>() {
@@ -289,19 +262,7 @@ public class QueriesGenerated {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.depGenerators$x7ju);
   }
   public static Iterable<SNode> sourceNodesQuery_7_2(final SourceSubstituteMacroNodesContext _context) {
-    // Unfortunately, we duplicate 'extended' dependency between generators in regular module dependencies and in node<Generator>.depGenerators
-    // Therefore, we have to exclude 'extended' (they are already processed) when iterating over general module dependencies.
-    final List<SModuleReference> extendedGenerators = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.depGenerators$x7ju)).select(new ISelector<SNode, SModuleReference>() {
-      public SModuleReference select(SNode it) {
-        return (SModuleReference) ModuleReference__BehaviorDescriptor.toModuleReference_id2BHFktfnkjF.invoke(it);
-      }
-    }).toListSequence();
-    // XXX see $IF$ for "#" reason
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.dependencies$2Su5)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SPropertyOperations.getString(SLinkOperations.getTarget(it, LINKS.moduleRef$79cT), PROPS.qualifiedName$Z4hI).contains("#") && !(ListSequence.fromList(extendedGenerators).contains(ModuleReference__BehaviorDescriptor.toModuleReference_id2BHFktfnkjF.invoke(SLinkOperations.getTarget(it, LINKS.moduleRef$79cT))));
-      }
-    });
+    return SLinkOperations.getChildren(_context.getNode(), LINKS.employedGenerators$sSfF);
   }
   public static Iterable<SNode> sourceNodesQuery_7_3(final SourceSubstituteMacroNodesContext _context) {
     return ((List<SNode>) _context.getVariable("var:targetLanguages"));
@@ -431,9 +392,8 @@ public class QueriesGenerated {
     /*package*/ static final SContainmentLink generator$Z1xz = MetaAdapterFactory.getContainmentLink(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x3663ebbd1bf10683L, 0x6907f3fa7dfc783cL, "generator");
     /*package*/ static final SContainmentLink language$rnIG = MetaAdapterFactory.getContainmentLink(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x7d2f7947ef1533a5L, 0x179194ecf7e0953bL, "language");
     /*package*/ static final SContainmentLink generator$bDbp = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x25c3f284595727e1L, 0x25c3f284595727e3L, "generator");
-    /*package*/ static final SContainmentLink moduleRef$79cT = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe28L, 0x19bfb4173fb5241eL, "moduleRef");
     /*package*/ static final SContainmentLink priorityRules$x1s5 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x19bfb4173fb5210bL, "priorityRules");
-    /*package*/ static final SContainmentLink dependencies$2Su5 = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe2cL, "dependencies");
+    /*package*/ static final SContainmentLink employedGenerators$sSfF = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x1a6cbb553be7a216L, "employedGenerators");
     /*package*/ static final SContainmentLink depGenerators$x7ju = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe21L, 0x19bfb4173fb5210fL, "depGenerators");
     /*package*/ static final SContainmentLink left$nykA = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, 0x25c3f284595702edL, "left");
     /*package*/ static final SContainmentLink right$nyzB = MetaAdapterFactory.getContainmentLink(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe38L, 0x25c3f284595702eeL, "right");
