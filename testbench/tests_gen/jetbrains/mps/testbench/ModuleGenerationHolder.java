@@ -214,7 +214,11 @@ public class ModuleGenerationHolder {
           }
           Patch patch = DiffUtils.diff(olines, rlines);
           if (patch.getDeltas().size() >= 5) {
-            ListSequence.fromList(diffs).addElement(String.format("Too many changes (%d) in file %s", Sequence.fromIterable(diffLines).count(), onext.getPath()));
+            if (Sequence.fromIterable(diffLines).count() == 0) {
+              ListSequence.fromList(diffs).addElement(String.format("Too many differences (%d) but no changed lines (i.e. ordering changes) in file %s", patch.getDeltas().size(), onext.getPath()));
+            } else {
+              ListSequence.fromList(diffs).addElement(String.format("Too many changes (%d) in file %s", patch.getDeltas().size(), onext.getPath()));
+            }
             continue;
           }
           ListSequence.fromList(diffs).addSequence(ListSequence.fromList(DiffUtils.generateUnifiedDiff(onext.getPath(), rnext.getPath(), olines, patch, 3)));

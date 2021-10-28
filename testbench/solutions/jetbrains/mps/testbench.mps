@@ -53,6 +53,9 @@
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
+      <concept id="7485977462274819189" name="jetbrains.mps.baseLanguage.structure.FormatOperation" flags="ng" index="2cAKMz">
+        <child id="7485977462274819664" name="arguments" index="2cAKU6" />
+      </concept>
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
@@ -2646,30 +2649,93 @@
                         </node>
                       </node>
                       <node concept="3clFbS" id="7f6Fg0uMgdq" role="3clFbx">
-                        <node concept="3clFbF" id="fM_JX6fwOD" role="3cqZAp">
-                          <node concept="2OqwBi" id="fM_JX6fwOE" role="3clFbG">
-                            <node concept="37vLTw" id="fM_JX6fwOF" role="2Oq$k0">
-                              <ref role="3cqZAo" node="2XCiAnQPDFX" resolve="diffs" />
+                        <node concept="3clFbJ" id="7jsVpbHB9Iq" role="3cqZAp">
+                          <node concept="3clFbS" id="7jsVpbHB9Is" role="3clFbx">
+                            <node concept="3clFbF" id="7jsVpbHBJNQ" role="3cqZAp">
+                              <node concept="2OqwBi" id="7jsVpbHBOC4" role="3clFbG">
+                                <node concept="37vLTw" id="7jsVpbHBJNO" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="2XCiAnQPDFX" resolve="diffs" />
+                                </node>
+                                <node concept="TSZUe" id="7jsVpbHBUjj" role="2OqNvi">
+                                  <node concept="2OqwBi" id="7jsVpbHDKU_" role="25WWJ7">
+                                    <node concept="Xl_RD" id="7jsVpbHC88$" role="2Oq$k0">
+                                      <property role="Xl_RC" value="Too many differences (%d) but no changed lines (i.e. ordering changes) in file %s" />
+                                    </node>
+                                    <node concept="2cAKMz" id="7jsVpbHDPDs" role="2OqNvi">
+                                      <node concept="2OqwBi" id="7jsVpbHDUIx" role="2cAKU6">
+                                        <node concept="2OqwBi" id="7jsVpbHDUIy" role="2Oq$k0">
+                                          <node concept="37vLTw" id="7jsVpbHDUIz" role="2Oq$k0">
+                                            <ref role="3cqZAo" node="2XCiAnQPSOX" resolve="patch" />
+                                          </node>
+                                          <node concept="liA8E" id="7jsVpbHDUI$" role="2OqNvi">
+                                            <ref role="37wK5l" to="2o:~Patch.getDeltas()" resolve="getDeltas" />
+                                          </node>
+                                        </node>
+                                        <node concept="liA8E" id="7jsVpbHDUI_" role="2OqNvi">
+                                          <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
+                                        </node>
+                                      </node>
+                                      <node concept="2OqwBi" id="7jsVpbHDUIA" role="2cAKU6">
+                                        <node concept="37vLTw" id="7jsVpbHDUIB" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="2XCiAnQPSOF" resolve="onext" />
+                                        </node>
+                                        <node concept="liA8E" id="7jsVpbHDUIC" role="2OqNvi">
+                                          <ref role="37wK5l" to="guwi:~File.getPath()" resolve="getPath" />
+                                        </node>
+                                      </node>
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
                             </node>
-                            <node concept="TSZUe" id="fM_JX6fwOG" role="2OqNvi">
-                              <node concept="2YIFZM" id="fM_JX6fwOH" role="25WWJ7">
-                                <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
-                                <node concept="Xl_RD" id="fM_JX6fwOI" role="37wK5m">
-                                  <property role="Xl_RC" value="Too many changes (%d) in file %s" />
-                                </node>
-                                <node concept="2OqwBi" id="fM_JX6fwOJ" role="37wK5m">
-                                  <node concept="37vLTw" id="fM_JX6fwOK" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="fM_JX6fbjh" resolve="diffLines" />
+                          </node>
+                          <node concept="3clFbC" id="7jsVpbHBtTD" role="3clFbw">
+                            <node concept="3cmrfG" id="7jsVpbHBxPp" role="3uHU7w">
+                              <property role="3cmrfH" value="0" />
+                            </node>
+                            <node concept="2OqwBi" id="7jsVpbHBj05" role="3uHU7B">
+                              <node concept="37vLTw" id="7jsVpbHBef7" role="2Oq$k0">
+                                <ref role="3cqZAo" node="fM_JX6fbjh" resolve="diffLines" />
+                              </node>
+                              <node concept="34oBXx" id="7jsVpbHBnpu" role="2OqNvi" />
+                            </node>
+                          </node>
+                          <node concept="9aQIb" id="7jsVpbHBAun" role="9aQIa">
+                            <node concept="3clFbS" id="7jsVpbHBAuo" role="9aQI4">
+                              <node concept="3clFbF" id="fM_JX6fwOD" role="3cqZAp">
+                                <node concept="2OqwBi" id="fM_JX6fwOE" role="3clFbG">
+                                  <node concept="37vLTw" id="fM_JX6fwOF" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="2XCiAnQPDFX" resolve="diffs" />
                                   </node>
-                                  <node concept="34oBXx" id="fM_JX6fwOL" role="2OqNvi" />
-                                </node>
-                                <node concept="2OqwBi" id="fM_JX6fwOM" role="37wK5m">
-                                  <node concept="37vLTw" id="fM_JX6fwON" role="2Oq$k0">
-                                    <ref role="3cqZAo" node="2XCiAnQPSOF" resolve="onext" />
-                                  </node>
-                                  <node concept="liA8E" id="fM_JX6fwOO" role="2OqNvi">
-                                    <ref role="37wK5l" to="guwi:~File.getPath()" resolve="getPath" />
+                                  <node concept="TSZUe" id="fM_JX6fwOG" role="2OqNvi">
+                                    <node concept="2YIFZM" id="fM_JX6fwOH" role="25WWJ7">
+                                      <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                                      <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                                      <node concept="Xl_RD" id="fM_JX6fwOI" role="37wK5m">
+                                        <property role="Xl_RC" value="Too many changes (%d) in file %s" />
+                                      </node>
+                                      <node concept="2OqwBi" id="fMlSiRWc9b" role="37wK5m">
+                                        <node concept="2OqwBi" id="fMlSiRWc9c" role="2Oq$k0">
+                                          <node concept="37vLTw" id="fMlSiRWc9d" role="2Oq$k0">
+                                            <ref role="3cqZAo" node="2XCiAnQPSOX" resolve="patch" />
+                                          </node>
+                                          <node concept="liA8E" id="fMlSiRWc9e" role="2OqNvi">
+                                            <ref role="37wK5l" to="2o:~Patch.getDeltas()" resolve="getDeltas" />
+                                          </node>
+                                        </node>
+                                        <node concept="liA8E" id="fMlSiRWc9f" role="2OqNvi">
+                                          <ref role="37wK5l" to="33ny:~List.size()" resolve="size" />
+                                        </node>
+                                      </node>
+                                      <node concept="2OqwBi" id="fM_JX6fwOM" role="37wK5m">
+                                        <node concept="37vLTw" id="fM_JX6fwON" role="2Oq$k0">
+                                          <ref role="3cqZAo" node="2XCiAnQPSOF" resolve="onext" />
+                                        </node>
+                                        <node concept="liA8E" id="fM_JX6fwOO" role="2OqNvi">
+                                          <ref role="37wK5l" to="guwi:~File.getPath()" resolve="getPath" />
+                                        </node>
+                                      </node>
+                                    </node>
                                   </node>
                                 </node>
                               </node>
