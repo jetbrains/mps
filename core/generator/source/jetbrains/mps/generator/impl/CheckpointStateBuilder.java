@@ -47,6 +47,7 @@ class CheckpointStateBuilder {
   private final SModel myCheckpointModel;
   private final IGeneratorLogger myLogger;
   private boolean myCloneDone = false;
+  private SNode myDebugMappingNode; // optional, we don't keep any extra node unless there are label info to record.
 
   public CheckpointStateBuilder(@NotNull SModel transientModel, @NotNull SModel blankCheckpointModel, @NotNull ModelTransitions transitionTrace, @NotNull IGeneratorLogger log) {
     myTransientModel = transientModel;
@@ -121,13 +122,16 @@ class CheckpointStateBuilder {
     cloneTransientToCheckpoint();
     new ModelImports(myCheckpointModel).addModelImport(originalInputModel.getReference());
     DebugMappingsBuilder dmb = new DebugMappingsBuilder(originalInputModel.getRepository(), myTransitionTrace.getActiveTransition(), myLogger);
-    SNode debugMappings = dmb.build(myCheckpointModel, stepLabels);
-    myTransitionTrace.saveActiveTransition(myCheckpointModel);
-    myCheckpointModel.addRootNode(debugMappings);
+    myDebugMappingNode = dmb.build(myCheckpointModel, stepLabels);
   }
 
   /*package*/ CheckpointState create(CheckpointIdentity step) {
     cloneTransientToCheckpoint();
+    // need saveActiveTransition() call to prepare transitions regardless of node<DebugMappings> root presence.
+    myTransitionTrace.saveActiveTransition(myCheckpointModel);
+    if (myDebugMappingNode != null) {
+      myCheckpointModel.addRootNode(myDebugMappingNode);
+    }
     ConsistentNodeIdentityHelper consistentNodeIdentity = new ConsistentNodeIdentityHelper(new SNodePresentationComparator());
     consistentNodeIdentity.apply(myCheckpointModel);
     //
