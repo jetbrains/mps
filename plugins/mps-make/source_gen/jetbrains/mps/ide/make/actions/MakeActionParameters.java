@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.Generator;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.util.NameUtil;
@@ -55,10 +56,18 @@ public class MakeActionParameters {
       ListSequence.fromList(list).addSequence(Sequence.fromIterable(otherModules));
     }
     if (contextModule instanceof Generator) {
-      contextModule = ((Generator) contextModule).getSourceLanguage();
-    }
-    if (contextModule != null && !(ListSequence.fromList(list).contains(contextModule))) {
-      ListSequence.fromList(list).addElement(contextModule);
+      if (!(ListSequence.fromList(list).contains(contextModule))) {
+        // we used to include generator's language only, which doesn't work well for standalone generators
+        ListSequence.fromList(list).addElement(contextModule);
+      }
+      // what I want here is to include generator's language if it's part of the project. I.e. don't need
+      // to care about deployed language in case of standalone generator. Hope ProjectScope is the proper helper 
+      // for the scenario
+      SModuleReference langSrcModuleRef = ((Generator) contextModule).sourceLanguage().getSourceModuleReference();
+      SModule langSrcModule = myProject.getScope().resolve(langSrcModuleRef);
+      if (langSrcModule != null && !(ListSequence.fromList(list).contains(langSrcModule))) {
+        ListSequence.fromList(list).addElement(langSrcModule);
+      }
     }
     myModules = (ListSequence.fromList(list).isEmpty() ? null : list);
     return this;
@@ -174,6 +183,8 @@ public class MakeActionParameters {
   private Iterable<SModel> allModelsOf(SModule module) {
     Iterable<SModel> models = ((Iterable<SModel>) module.getModels());
     if (module instanceof Language) {
+      // we don't care about all known generators for the language - if it's a standalone generator module,
+      // it would be processed directly (as a context module in #modules(), above)
       Iterable<Generator> generators = ((Language) module).getOwnedGenerators();
       return Sequence.fromIterable(models).concat(Sequence.fromIterable(generators).translate(new ITranslator2<Generator, SModel>() {
         public Iterable<SModel> translate(Generator gen) {
