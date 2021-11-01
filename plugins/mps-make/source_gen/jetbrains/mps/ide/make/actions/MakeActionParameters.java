@@ -52,14 +52,15 @@ public class MakeActionParameters {
       return this;
     }
     List<SModule> list = ListSequence.fromList(new ArrayList<SModule>());
+    if (contextModule != null && (otherModules == null || !(Sequence.fromIterable(otherModules).contains(contextModule)))) {
+      // in case of generator context module, we used to include generator's language only, 
+      // which doesn't work well for standalone generators; include context module as the first one.
+      ListSequence.fromList(list).addElement(contextModule);
+    }
     if (otherModules != null) {
       ListSequence.fromList(list).addSequence(Sequence.fromIterable(otherModules));
     }
     if (contextModule instanceof Generator) {
-      if (!(ListSequence.fromList(list).contains(contextModule))) {
-        // we used to include generator's language only, which doesn't work well for standalone generators
-        ListSequence.fromList(list).addElement(contextModule);
-      }
       // what I want here is to include generator's language if it's part of the project. I.e. don't need
       // to care about deployed language in case of standalone generator. Hope ProjectScope is the proper helper 
       // for the scenario
