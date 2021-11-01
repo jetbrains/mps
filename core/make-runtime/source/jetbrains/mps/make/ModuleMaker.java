@@ -638,7 +638,7 @@ public final class ModuleMaker {
       final BLDependenciesCache depCache = myDependenciesCache == null ? new BLDependenciesCache() : myDependenciesCache;
       Collection<SModule> deps = initial.walkDependencies(jm, depCache);
       for (SModule d : deps) {
-        if (SModuleOperations.getJavaFacet(d) == null) {
+        if (d.getFacet(JavaModuleFacet.class) == null) {
           // we may depend on deployed modules that got classesGen == null, ModulesContainer.isExcluded would give wrong result here
           continue;
         }
