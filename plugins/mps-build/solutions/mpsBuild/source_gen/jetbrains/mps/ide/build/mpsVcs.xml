@@ -461,7 +461,6 @@
     <ant antfile="build/mpsMakePlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsPlugins.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsBuild.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsVcsPlatformPre.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsVcsPlatform.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsVcsStandaloneJar.xml" inheritAll="false" useNativeBasedir="true" />
   </target>
@@ -625,10 +624,10 @@
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.refactoring.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.runtime.jar" />
       <library file="${artifacts.mpsDevKit}/mps-devkit/languages/jetbrains.mps.ide.devkit.editor.jar" />
+      <library file="${artifacts.mpsVcsPlatform}/languages/jetbrains.mps.ide.vcs.core.jar" />
       <library file="${artifacts.mpsVcsPlatform}/languages/jetbrains.mps.ide.vcs.modelmetadata.jar" />
-      <library file="${artifacts.mpsVcsPlatform}/lib/jetbrains.mps.ide.vcs.core.jar" />
-      <library file="${artifacts.mpsVcsPlatform}/lib/jetbrains.mps.ide.vcs.platform.jar" />
-      <library file="${artifacts.mpsVcsPlatform}/lib/jetbrains.mps.vcs.mergehints.runtime.jar" />
+      <library file="${artifacts.mpsVcsPlatform}/languages/jetbrains.mps.ide.vcs.platform.jar" />
+      <library file="${artifacts.mpsVcsPlatform}/languages/jetbrains.mps.vcs.mergehints.runtime.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench-stub.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.ide.jar" />
       <library file="${artifacts.mpsWorkbench}/languages/workbench/jetbrains.mps.lang.plugin.standalone.jar" />
@@ -709,10 +708,6 @@
       <target name="assemble" />
     </ant>
     <ant antfile="build/mpsBuild.xml" inheritAll="false" useNativeBasedir="true">
-      <target name="generate" />
-      <target name="assemble" />
-    </ant>
-    <ant antfile="build/mpsVcsPlatformPre.xml" inheritAll="false" useNativeBasedir="true">
       <target name="generate" />
       <target name="assemble" />
     </ant>
@@ -846,8 +841,8 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-textgen.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-icons.jar" />
         <fileset file="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" />
-        <pathelement path="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints" />
         <fileset file="${artifacts.mpsVcsPlatform}/lib/vcs-core.jar" />
+        <pathelement path="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -909,6 +904,7 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-textgen.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-icons.jar" />
         <fileset file="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" />
+        <fileset file="${artifacts.mpsVcsPlatform}/lib/vcs-core.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.vcs.mergehints" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />

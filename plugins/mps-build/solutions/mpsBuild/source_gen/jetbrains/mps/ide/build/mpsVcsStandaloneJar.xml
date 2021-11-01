@@ -70,7 +70,6 @@
     <ant antfile="build/mpsMakePlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsPlugins.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsBuild.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsVcsPlatformPre.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsVcsPlatform.xml" inheritAll="false" useNativeBasedir="true" />
   </target>
   
@@ -129,8 +128,6 @@
         <fileset file="${artifacts.IDEA}/lib/3rd-party.jar" />
         <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj-4.16.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
-        <fileset dir="${artifacts.IDEA}/plugins/git4idea/lib" includes="*.jar" />
-        <fileset dir="${artifacts.IDEA}/plugins/svn4idea/lib" includes="*.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>

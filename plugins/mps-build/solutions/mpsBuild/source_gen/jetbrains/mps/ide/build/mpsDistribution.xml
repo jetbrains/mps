@@ -355,7 +355,6 @@
     <ant antfile="build/mpsDebuggerPlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsExecutionPlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsBuildUI.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsVcsPlatformPre.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsVcsPlatform.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsVcsStandaloneJar.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsVcs.xml" inheritAll="false" useNativeBasedir="true" />

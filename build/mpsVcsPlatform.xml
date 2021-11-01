@@ -5,16 +5,15 @@
   <property name="build.layout" location="${build.dir}/artifacts/mpsVcsPlatform" />
   <property name="idea_home" location="" />
   <property name="mps_home" location="${basedir}" />
-  <property name="artifacts.mpsVcsPlatformPre" location="${build.dir}/artifacts/mpsVcsPlatformPre" />
   <property name="artifacts.mpsBootstrapCore" location="${build.dir}/artifacts/mpsBootstrapCore" />
   <property name="artifacts.mpsCore" location="${build.dir}/artifacts/mpsCore" />
   <property name="artifacts.IDEA" location="${idea_home}" />
-  <property file="${artifacts.mpsVcsPlatformPre}/build.properties" prefix="import.mpsVcsPlatformPre" />
-  <property name="mpsBootstrapCore.version.major" value="${import.mpsVcsPlatformPre.mpsBootstrapCore.version.major}" />
-  <property name="mpsBootstrapCore.version.minor" value="${import.mpsVcsPlatformPre.mpsBootstrapCore.version.minor}" />
-  <property name="mpsBootstrapCore.version.bugfixNr" value="${import.mpsVcsPlatformPre.mpsBootstrapCore.version.bugfixNr}" />
-  <property name="mpsBootstrapCore.version.eap" value="${import.mpsVcsPlatformPre.mpsBootstrapCore.version.eap}" />
-  <property name="mpsBootstrapCore.version" value="${import.mpsVcsPlatformPre.mpsBootstrapCore.version}" />
+  <property file="${artifacts.mpsBootstrapCore}/build.properties" prefix="import.mpsBootstrapCore" />
+  <property name="mpsBootstrapCore.version.major" value="${import.mpsBootstrapCore.mpsBootstrapCore.version.major}" />
+  <property name="mpsBootstrapCore.version.minor" value="${import.mpsBootstrapCore.mpsBootstrapCore.version.minor}" />
+  <property name="mpsBootstrapCore.version.bugfixNr" value="${import.mpsBootstrapCore.mpsBootstrapCore.version.bugfixNr}" />
+  <property name="mpsBootstrapCore.version.eap" value="${import.mpsBootstrapCore.mpsBootstrapCore.version.eap}" />
+  <property name="mpsBootstrapCore.version" value="${import.mpsBootstrapCore.mpsBootstrapCore.version}" />
   <property name="environment" value="env" />
   <property name="env.JAVA_HOME" value="${java.home}/.." />
   <property name="jdk.home" value="${env.JAVA_HOME}" />
@@ -53,7 +52,7 @@
   
   <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
   
-  <target name="assemble" depends="declare-mps-tasks, classes, fetchDependencies">
+  <target name="assemble" depends="declare-mps-tasks, classes">
     <mkdir dir="${build.layout}/svn4idea" />
     <copy todir="${build.layout}/svn4idea">
       <fileset dir="${basedir}/plugins/svn4idea">
@@ -120,8 +119,74 @@
       <fileset dir="${build.tmp}/default/jetbrains.mps.git4idea.stubs.jar" />
     </jar>
     <mkdir dir="${build.layout}/lib" />
-    <copy file="${artifacts.mpsVcsPlatformPre}/lib/vcs-core.jar" todir="${build.layout}/lib" />
-    <copy file="${artifacts.mpsVcsPlatformPre}/lib/vcs-platform.jar" todir="${build.layout}/lib" />
+    <jar destfile="${build.layout}/lib/vcs-core.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/vcs-core" />
+    </jar>
+    <jar destfile="${build.layout}/lib/vcs-platform.jar" duplicate="preserve">
+      <fileset dir="${build.tmp}/java/out/vcs-platform" />
+    </jar>
+    <mkdir dir="${build.layout}/languages" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.vcs.core.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.vcs.core.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.ide.vcs.core.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.ide.vcs.core" type="solution" uuid="85836058-a162-41d7-bb1d-52e99d873f28">
+        <dependencies>
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt" />
+          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="rt" />
+          <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
+          <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
+          <module ref="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt" />
+          <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
+          <module ref="d44dab97-aaac-44cb-9745-8a14db674c03(jetbrains.mps.baseLanguage.tuples.runtime)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
+          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
+          <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
+          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
+          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
+          <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
+          <module ref="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="cl" />
+          <module ref="9ef82768-a1b1-451e-b136-5a86b2b5fdbb(jetbrains.mps.persistence)" kind="cl" />
+          <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="cl" />
+          <module ref="63089e65-5c76-4c44-9eb6-15698b4444cf(jetbrains.mps.vcs.mergehints.runtime)" kind="cl" />
+        </dependencies>
+        <uses>
+          <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+          <language id="l:774bf8a0-62e5-41e1-af63-f4812e60e48b:jetbrains.mps.baseLanguage.checkedDots" />
+          <language id="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
+          <language id="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
+          <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
+          <language id="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
+          <language id="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
+          <language id="l:df345b11-b8c7-4213-ac66-48d2a9b75d88:jetbrains.mps.baseLanguageInternal" />
+          <language id="l:dcb5a83a-19a8-44ff-a4cb-fc7d324ecc63:jetbrains.mps.core.xml.sax" />
+          <language id="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" />
+          <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
+          <language id="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
+        </uses>
+        <library jar="../lib/vcs-core.jar" />
+        <sources jar="jetbrains.mps.ide.vcs.core-src.jar" descriptor="jetbrains.mps.ide.vcs.core.msd" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.layout}/languages/jetbrains.mps.ide.vcs.core.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core" includes="icons/**, resources/**" />
+      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.ide.vcs.core.jar" />
+    </jar>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-vcs-core-modules-jetbrains.mps.ide.vcs.core-models">
+      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    </copyModels>
+    <jar destfile="${build.layout}/languages/jetbrains.mps.ide.vcs.core-src.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core/source_gen">
+        <exclude name="**/trace.info" />
+        <exclude name="**/exports" />
+        <exclude name="**/checkpoints" />
+        <exclude name="**/*.mps" />
+      </fileset>
+      <zipfileset file="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core/jetbrains.mps.ide.vcs.core.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-vcs-core-modules-jetbrains.mps.ide.vcs.core-models" prefix="module/models" />
+    </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.vcs.mergehints.runtime.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.vcs.mergehints.runtime.jar/META-INF" />
     <echoxml file="${build.tmp}/default/jetbrains.mps.vcs.mergehints.runtime.jar/META-INF/module.xml">
@@ -150,14 +215,14 @@
         <sources jar="jetbrains.mps.vcs.mergehints.runtime-src.jar" descriptor="jetbrains.mps.vcs.mergehints.runtime.msd" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/lib/jetbrains.mps.vcs.mergehints.runtime.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/languages/jetbrains.mps.vcs.mergehints.runtime.jar" duplicate="preserve">
       <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/mergehints.runtime/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.vcs.mergehints.runtime.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-vcs-core-modules-mergehints.runtime-models">
       <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/mergehints.runtime/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/lib/jetbrains.mps.vcs.mergehints.runtime-src.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/languages/jetbrains.mps.vcs.mergehints.runtime-src.jar" duplicate="preserve">
       <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/mergehints.runtime/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
@@ -222,14 +287,15 @@
         <sources jar="jetbrains.mps.ide.vcs.platform-src.jar" descriptor="jetbrains.mps.ide.vcs.platform.msd" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/lib/jetbrains.mps.ide.vcs.platform.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/languages/jetbrains.mps.ide.vcs.platform.jar" duplicate="preserve">
+      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform" includes="icons/**, resources/**" />
       <fileset dir="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.ide.vcs.platform.jar" />
     </jar>
     <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-vcs-platform-solutions-jetbrains.mps.ide.vcs.platform-models">
       <fileset dir="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/lib/jetbrains.mps.ide.vcs.platform-src.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/languages/jetbrains.mps.ide.vcs.platform-src.jar" duplicate="preserve">
       <fileset dir="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
@@ -239,68 +305,6 @@
       <zipfileset file="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/jetbrains.mps.ide.vcs.platform.msd" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-vcs-platform-solutions-jetbrains.mps.ide.vcs.platform-models" prefix="module/models" />
     </jar>
-    <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.vcs.core.jar" />
-    <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.vcs.core.jar/META-INF" />
-    <echoxml file="${build.tmp}/default/jetbrains.mps.ide.vcs.core.jar/META-INF/module.xml">
-      <module namespace="jetbrains.mps.ide.vcs.core" type="solution" uuid="85836058-a162-41d7-bb1d-52e99d873f28">
-        <dependencies>
-          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
-          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="rt" />
-          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="rt" />
-          <module ref="4c6a28d1-2c60-478d-b36e-db9b3cbb21fb(closures.runtime)" kind="rt" />
-          <module ref="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt" />
-          <module ref="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt" />
-          <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
-          <module ref="d44dab97-aaac-44cb-9745-8a14db674c03(jetbrains.mps.baseLanguage.tuples.runtime)" kind="rt" />
-          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt" />
-          <module ref="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
-          <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
-          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="cl" />
-          <module ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="cl" />
-          <module ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="cl" />
-          <module ref="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="cl" />
-          <module ref="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="cl" />
-          <module ref="9ef82768-a1b1-451e-b136-5a86b2b5fdbb(jetbrains.mps.persistence)" kind="cl" />
-          <module ref="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="cl" />
-          <module ref="63089e65-5c76-4c44-9eb6-15698b4444cf(jetbrains.mps.vcs.mergehints.runtime)" kind="cl" />
-        </dependencies>
-        <uses>
-          <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
-          <language id="l:774bf8a0-62e5-41e1-af63-f4812e60e48b:jetbrains.mps.baseLanguage.checkedDots" />
-          <language id="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
-          <language id="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
-          <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
-          <language id="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
-          <language id="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
-          <language id="l:df345b11-b8c7-4213-ac66-48d2a9b75d88:jetbrains.mps.baseLanguageInternal" />
-          <language id="l:dcb5a83a-19a8-44ff-a4cb-fc7d324ecc63:jetbrains.mps.core.xml.sax" />
-          <language id="l:ceab5195-25ea-4f22-9b92-103b95ca8c0c:jetbrains.mps.lang.core" />
-          <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
-          <language id="l:c7fb639f-be78-4307-89b0-b5959c3fa8c8:jetbrains.mps.lang.text" />
-        </uses>
-        <library jar="../lib/vcs-core.jar" />
-        <sources jar="jetbrains.mps.ide.vcs.core-src.jar" descriptor="jetbrains.mps.ide.vcs.core.msd" />
-      </module>
-    </echoxml>
-    <jar destfile="${build.layout}/lib/jetbrains.mps.ide.vcs.core.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core" includes="icons/**, resources/**" />
-      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
-      <fileset dir="${build.tmp}/default/jetbrains.mps.ide.vcs.core.jar" />
-    </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-vcs-core-modules-jetbrains.mps.ide.vcs.core-models">
-      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core/models" includes="**/*.mps, **/*.mpsr, **/.model" />
-    </copyModels>
-    <jar destfile="${build.layout}/lib/jetbrains.mps.ide.vcs.core-src.jar" duplicate="preserve">
-      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core/source_gen">
-        <exclude name="**/trace.info" />
-        <exclude name="**/exports" />
-        <exclude name="**/checkpoints" />
-        <exclude name="**/*.mps" />
-      </fileset>
-      <zipfileset file="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core/jetbrains.mps.ide.vcs.core.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-vcs-vcs-core-modules-jetbrains.mps.ide.vcs.core-models" prefix="module/models" />
-    </jar>
-    <mkdir dir="${build.layout}/languages" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.vcs.modelmetadata.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.ide.vcs.modelmetadata.jar/META-INF" />
     <echoxml file="${build.tmp}/default/jetbrains.mps.ide.vcs.modelmetadata.jar/META-INF/module.xml">
@@ -404,7 +408,6 @@
     <ant antfile="build/mpsTrueBootstrap.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsBootstrapCore.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsCore.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsVcsPlatformPre.xml" inheritAll="false" useNativeBasedir="true" />
   </target>
   
   <target name="fetchDependencies" />
@@ -581,13 +584,9 @@
       <target name="generate" />
       <target name="assemble" />
     </ant>
-    <ant antfile="build/mpsVcsPlatformPre.xml" inheritAll="false" useNativeBasedir="true">
-      <target name="generate" />
-      <target name="assemble" />
-    </ant>
   </target>
   
-  <target name="compileJava" depends="java.compile.jetbrains.mps.ide.vcs.modelmetadata" />
+  <target name="compileJava" depends="java.compile.vcs-core, java.compile.vcs-platform, java.compile.jetbrains.mps.ide.vcs.modelmetadata" />
   
   <target name="processResources" />
   
@@ -596,6 +595,84 @@
   <target name="test" depends="classes" />
   
   <target name="check" depends="test" />
+  
+  <target name="java.compile.vcs-core" depends="fetchDependencies">
+    <mkdir dir="${build.tmp}/java/out/vcs-core" />
+    <javac2 destdir="${build.tmp}/java/out/vcs-core" fork="false" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src>
+        <pathelement path="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core/source_gen" />
+        <pathelement path="${mps_home}/plugins/mps-vcs/vcs-core/modules/mergehints.runtime/source_gen" />
+      </src>
+      <classpath>
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-openapi.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-logging.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-core.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-closures.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-collections.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-tuples.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-references.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-api.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-context.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-constraints-runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-persistence.jar" />
+        <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <path refid="path.java.library.idea-vcs" />
+        <path refid="path.jdk.classpath" />
+      </classpath>
+    </javac2>
+    <copy todir="${build.tmp}/java/out/vcs-core">
+      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-core/modules/mergehints.runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+    </copy>
+  </target>
+  
+  <target name="java.compile.vcs-platform" depends="java.compile.vcs-core, fetchDependencies">
+    <mkdir dir="${build.tmp}/java/out/vcs-platform" />
+    <javac2 destdir="${build.tmp}/java/out/vcs-platform" fork="false" encoding="utf8" includeantruntime="false" debug="true">
+      <compilerarg value="-Xlint:none" />
+      <src path="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/source_gen" />
+      <classpath>
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-annotations.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-openapi.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-logging.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-core.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-closures.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-collections.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-tuples.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-references.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-api.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-messaging.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-context.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-constraints-runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-persistence.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-api.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-generator.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-platform.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-environment.jar" />
+        <pathelement path="${build.tmp}/java/out/vcs-core" />
+        <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/3rd-party.jar" />
+        <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj-4.16.jar" />
+        <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
+        <path refid="path.java.library.idea-vcs" />
+        <path refid="path.jdk.classpath" />
+      </classpath>
+    </javac2>
+    <copy todir="${build.tmp}/java/out/vcs-platform">
+      <fileset dir="${mps_home}/plugins/mps-vcs/vcs-platform/solutions/jetbrains.mps.ide.vcs.platform/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+    </copy>
+  </target>
   
   <target name="java.compile.jetbrains.mps.ide.vcs.modelmetadata" depends="fetchDependencies">
     <mkdir dir="${mps_home}/plugins/mps-vcs/vcs-platform/languages/modelmetadata/source_gen" />
