@@ -3,16 +3,22 @@
  */
 package jetbrains.mps.util;
 
+import com.intellij.openapi.util.text.StringUtilRt;
+import com.intellij.util.io.URLUtil;
 import jetbrains.mps.util.annotation.ToRemove;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jdom.Document;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.annotations.Singleton;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -42,7 +48,7 @@ public final class PathManager {
   private static String ourPlatformLibPath;
 
   /**
-   * @deprecatedto be be removed withour replacement, just inline one if you care.
+   * @deprecated to be removed without replacement, just inline one if you care.
    */
   @ToRemove(version = 2019.2)
   @Deprecated
@@ -231,37 +237,95 @@ public final class PathManager {
    * Attempts to extract classpath entry part from passed URL.
    */
   private static String extractRoot(URL resourceURL, String resourcePath) {
-    if (!(resourcePath.startsWith("/") || resourcePath.startsWith("\\"))) {
-      LOG.error("precondition failed for" + resourcePath);
+    if (resourcePath.length() == 0 || resourcePath.charAt(0) != '/' && resourcePath.charAt(0) != '\\') {
+      LOG.error("precondition failed: " + resourcePath);
       return null;
     }
-    String protocol = resourceURL.getProtocol();
-    String resultPath = null;
 
-    if (FILE.equals(protocol)) {
-      String path = resourceURL.getFile();
-      String testPath = path.replace('\\', '/').toLowerCase();
-      String testResourcePath = resourcePath.replace('\\', '/').toLowerCase();
-      if (testPath.endsWith(testResourcePath)) {
+    String resultPath = null;
+    String protocol = resourceURL.getProtocol();
+    if (URLUtil.FILE_PROTOCOL.equals(protocol)) {
+      File result;
+      try {
+        result = new File(resourceURL.toURI().getSchemeSpecificPart());
+      }
+      catch (URISyntaxException e) {
+        throw new IllegalArgumentException("URL='" + resourceURL + "'", e);
+      }
+      String path = result.getPath();
+      String testPath = path.replace('\\', '/');
+      String testResourcePath = resourcePath.replace('\\', '/');
+      if (StringUtilRt.endsWithIgnoreCase(testPath, testResourcePath)) {
         resultPath = path.substring(0, path.length() - resourcePath.length());
       }
-    } else if (JAR.equals(protocol)) {
-      String fullPath = resourceURL.getFile();
-      int delimiter = fullPath.indexOf(JAR_DELIMITER);
-      if (delimiter >= 0) {
-        String archivePath = fullPath.substring(0, delimiter);
-        if (archivePath.startsWith(FILE + PROTOCOL_DELIMITER)) {
-          resultPath = archivePath.substring(FILE.length() + PROTOCOL_DELIMITER.length());
-        }
+    }
+    else if (URLUtil.JAR_PROTOCOL.equals(protocol)) {
+      // do not use URLUtil.splitJarUrl here - used in bootstrap
+      String jarPath = splitJarUrl(resourceURL.getFile());
+      if (jarPath != null) {
+        resultPath = jarPath;
       }
     }
-
-    if (resultPath != null && resultPath.endsWith(File.separator)) {
-      resultPath = resultPath.substring(0, resultPath.length() - 1);
+    else if (URLUtil.JRT_PROTOCOL.equals(protocol)) {
+      return null;
     }
 
-    resultPath = resultPath != null ? StringUtil.replace(resultPath, "%20", " ") : null;
-    return resultPath;
+    if (resultPath == null) {
+      LOG.error("cannot extract '" + resourcePath + "' from '" + resourceURL + "'");
+      return null;
+    }
+
+    return Paths.get(resultPath).normalize().toString();
+  }
+
+  private static @Nullable String splitJarUrl(@NotNull String url) {
+    int pivot = url.indexOf(URLUtil.JAR_SEPARATOR);
+    if (pivot < 0) {
+      return null;
+    }
+
+    String jarPath = url.substring(0, pivot);
+
+    boolean startsWithConcatenation = true;
+    int offset = 0;
+    for (String prefix : new String[]{URLUtil.JAR_PROTOCOL, ":"}) {
+      int prefixLen = prefix.length();
+      if (!jarPath.regionMatches(offset, prefix, 0, prefixLen)) {
+        startsWithConcatenation = false;
+        break;
+      }
+      offset += prefixLen;
+    }
+    if (startsWithConcatenation) {
+      jarPath = jarPath.substring(URLUtil.JAR_PROTOCOL.length() + 1);
+    }
+
+    if (!jarPath.startsWith(URLUtil.FILE_PROTOCOL)) {
+      return jarPath;
+    }
+
+    try {
+      File result;
+      URL parsedUrl = new URL(jarPath);
+      try {
+        result = new File(parsedUrl.toURI().getSchemeSpecificPart());
+      } catch (URISyntaxException e) {
+        throw new IllegalArgumentException("URL='" + parsedUrl + "'", e);
+      }
+      return result.getPath().replace('\\', '/');
+    }
+    catch (Exception e) {
+      jarPath = jarPath.substring(URLUtil.FILE_PROTOCOL.length());
+      if (jarPath.startsWith(URLUtil.SCHEME_SEPARATOR)) {
+        return jarPath.substring(URLUtil.SCHEME_SEPARATOR.length());
+      }
+      else if (!jarPath.isEmpty() && jarPath.charAt(0) == ':') {
+        return jarPath.substring(1);
+      }
+      else {
+        return jarPath;
+      }
+    }
   }
 
   public static String getPreInstalledPluginsPath() {
