@@ -66,8 +66,10 @@ public abstract class LanguageAspectDescriptor implements OrderParticipant<Strin
     return Collections.emptyList();
   }
 
+  @Deprecated(forRemoval = true, since = "2021.3")
   @Nullable
   public LanguageAspectGenerator getGenerator() {
+    // LanguageAspectsEP_extension template doesn't override this method since 2021.3, remove once 2021.3 is out
     return null;
   }
 

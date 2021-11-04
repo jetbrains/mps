@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.Collection;
 
+/**
+ * MPS doesn't utilize this code (and never did), no reason to keep the interface
+ */
+@Deprecated(forRemoval = true, since = "2021.3")
 public interface LanguageAspectGenerator {
   @NotNull
   SNode generateInstantiation(SNode aspectClassParameter, SNode castTo, SModel modelBeingGenerated);

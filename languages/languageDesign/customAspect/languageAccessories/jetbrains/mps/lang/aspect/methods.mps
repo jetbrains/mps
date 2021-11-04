@@ -168,7 +168,7 @@
     <node concept="q3mfq" id="4r8JClTmU6H" role="QNr5C">
       <property role="TrG5h" value="getGenerator" />
       <node concept="QcxE9" id="5KGdJjE2Btn" role="2IRzpu">
-        <property role="QcwnP" value="aspect not generated" />
+        <property role="QcwnP" value="&lt;deprecated&gt;" />
       </node>
       <node concept="3uibUv" id="4YpmBa67cMA" role="q3mfk">
         <ref role="3uigEE" to="vndm:~LanguageAspectGenerator" resolve="LanguageAspectGenerator" />
