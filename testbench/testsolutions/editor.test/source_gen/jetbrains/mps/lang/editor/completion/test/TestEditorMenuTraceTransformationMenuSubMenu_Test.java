@@ -14,12 +14,12 @@ import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.smodel.SNodePointer;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -58,7 +58,8 @@ public class TestEditorMenuTraceTransformationMenuSubMenu_Test extends BaseTrans
 
         EditorMenuTraceInfo editorMenuTraceInfo = action.getEditorMenuTraceInfo();
 
-        SNode submenuPart = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.getNode("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074054"), LINKS.sections$GXaM)).first(), LINKS.parts$m99D), CONCEPTS.TransformationMenuPart_SubMenu$Br)).first();
+        SNode tm = EditorMenuTraceTestUtil.trMenuNode(new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074054"), getEditorComponent());
+        SNode submenuPart = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(ListSequence.fromList(SLinkOperations.getChildren(tm, LINKS.sections$GXaM)).first(), LINKS.parts$m99D), CONCEPTS.TransformationMenuPart_SubMenu$Br)).first();
         SNodeReference transformAction = SNodeOperations.getPointer(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(submenuPart, LINKS.items$zIaz), CONCEPTS.TransformationMenuPart_Action$eH)).first());
         EditorMenuTraceTestUtil.checkTraceInfoPath(editorMenuTraceInfo, transformAction, SNodeOperations.getPointer(submenuPart), new SNodePointer("r:12055fd0-2d7f-4ac3-93ec-28bb09579a63(jetbrains.mps.lang.editor.editorTest.editor)", "1384684774806074054"));
       });

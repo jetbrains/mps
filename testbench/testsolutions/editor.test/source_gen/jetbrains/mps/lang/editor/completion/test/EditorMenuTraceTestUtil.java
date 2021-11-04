@@ -7,6 +7,9 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.junit.Assert;
 import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 
 /*package*/ class EditorMenuTraceTestUtil {
   /*package*/ static void checkTraceInfo(EditorMenuTraceInfo editorMenuTraceInfo, SNodeReference sourceToCheckAgainst) {
@@ -25,5 +28,13 @@ import java.util.Objects;
     }
     Assert.assertTrue(editorMenuTraceInfo == null);
   }
-
+  /*package*/ static SNode editorDeclNode(SNodeReference ptr, EditorComponent ec) {
+    return SPointerOperations.resolveNode(ptr, ec.getEditorContext().getRepository());
+  }
+  /*package*/ static SNode substMenuNode(SNodeReference ptr, EditorComponent ec) {
+    return SPointerOperations.resolveNode(ptr, ec.getEditorContext().getRepository());
+  }
+  /*package*/ static SNode trMenuNode(SNodeReference ptr, EditorComponent ec) {
+    return SPointerOperations.resolveNode(ptr, ec.getEditorContext().getRepository());
+  }
 }
