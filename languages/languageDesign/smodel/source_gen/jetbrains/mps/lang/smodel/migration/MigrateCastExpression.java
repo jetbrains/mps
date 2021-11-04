@@ -5,30 +5,8 @@ package jetbrains.mps.lang.smodel.migration;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SearchScope;
-import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
-import jetbrains.mps.project.EditableFilteringScope;
-import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.model.SReference;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.migration.runtime.base.Problem;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
-import java.util.Objects;
-import jetbrains.mps.lang.core.behavior.LinkAttribute__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.smodel.builder.SNodeBuilder;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
-import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MigrateCastExpression extends MigrationScriptBase {
   private final String description = "migrate node/concept cast expressions";
@@ -37,120 +15,16 @@ public class MigrateCastExpression extends MigrationScriptBase {
   }
   @Override
   public boolean isRerunnable() {
-    return true;
+    return false;
   }
   public SNode execute(final SModule m) {
     doExecute(m);
     return null;
   }
   public void doExecute(final SModule m) {
-    {
-      SearchScope scope_r15y35_a0e = CommandUtil.createScope(m);
-      final SearchScope scope_r15y35_a0e_0 = new EditableFilteringScope(scope_r15y35_a0e);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_r15y35_a0e_0;
-        }
-      };
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SNodeTypeCastExpression$TK, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          // left_expression_old was completely removed
-          // concept_old was completely removed
-          if ((SLinkOperations.getTarget(it, LINKS.conceptArgument$lGRx) == null)) {
-            SReference conceptRef = SNodeOperations.getReference(it, LINKS.concept$C5xM);
-            SLinkOperations.setTarget(it, LINKS.conceptArgument$lGRx, _quotation_createNode_r15y35_a0b0c0a0a0a0a6((SNode) SLinkOperations.getTargetNode(conceptRef)));
-            moveLinkAttributes(it, conceptRef.getLink(), SLinkOperations.getTarget(it, LINKS.conceptArgument$lGRx), LINKS.conceptDeclaration$3mP7);
-          }
-          SLinkOperations.setTarget(it, LINKS.concept$C5xM, null);
-        }
-      });
-      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SConceptTypeCastExpression$50, false)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          if ((SLinkOperations.getTarget(it, LINKS.conceptArgument$lGRx) == null)) {
-            SLinkOperations.setTarget(it, LINKS.conceptArgument$lGRx, _quotation_createNode_r15y35_a0a0a0a0a1a0a6(SLinkOperations.getTarget(it, LINKS.concept$C5xM)));
-            moveLinkAttributes(it, LINKS.concept$C5xM, SLinkOperations.getTarget(it, LINKS.conceptArgument$lGRx), LINKS.conceptDeclaration$3mP7);
-          }
-          SLinkOperations.setTarget(it, LINKS.concept$C5xM, null);
-        }
-      });
-    }
-  }
-  @Override
-  public Iterable<Problem> check(SModule m) {
-    {
-      SearchScope scope_r15y35_a0f = CommandUtil.createScope(m);
-      final SearchScope scope_r15y35_a0f_0 = new EditableFilteringScope(scope_r15y35_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_r15y35_a0f_0;
-        }
-      };
-      Iterable<SNode> conceptTypeCasts = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SConceptTypeCastExpression$50, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.concept$C5xM) != null);
-        }
-      });
-      Iterable<SNode> nodeTypeCasts = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SNodeTypeCastExpression$TK, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return (SLinkOperations.getTarget(it, LINKS.concept$C5xM) != null);
-        }
-      });
-      return Sequence.fromIterable(nodeTypeCasts).concat(Sequence.fromIterable(conceptTypeCasts)).select(new ISelector<SNode, NotMigratedNode>() {
-        public NotMigratedNode select(SNode it) {
-          return new NotMigratedNode(it) {
-            public String getMessage() {
-              return "cast expression has deprecated parts";
-            }
-          };
-        }
-      });
-    }
   }
   public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 5);
   }
 
-
-
-  private void moveLinkAttributes(SNode sourceNode, final SReferenceLink sourceLink, final SNode targetNode, final SReferenceLink targetLink) {
-    Iterable<SNode> attributes = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(sourceNode, LINKS.smodelAttribute$KJ43), CONCEPTS.LinkAttribute$v_)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return Objects.equals(LinkAttribute__BehaviorDescriptor.getLink_id1avfQ4BEFo6.invoke(it), sourceLink);
-      }
-    });
-    Sequence.fromIterable(attributes).visitAll(new IVisitor<SNode>() {
-      public void visit(SNode it) {
-        SNodeOperations.deleteNode(it);
-        LinkAttribute__BehaviorDescriptor.setLink_id6Gg5KlvuxxF.invoke(it, targetLink);
-        ListSequence.fromList(SLinkOperations.getChildren(targetNode, LINKS.smodelAttribute$KJ43)).addElement(it);
-      }
-    });
-  }
-  private static SNode _quotation_createNode_r15y35_a0b0c0a0a0a0a6(Object parameter_1) {
-    SNode quotedNode_2 = null;
-    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x1120c45902cL, "RefConcept_Reference"));
-    quotedNode_2 = nb.getResult();
-    SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, 0x1120c45d024L, "conceptDeclaration"), (SNode) parameter_1);
-    return quotedNode_2;
-  }
-  private static SNode _quotation_createNode_r15y35_a0a0a0a0a1a0a6(Object parameter_1) {
-    SNode quotedNode_2 = null;
-    SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 0x1120c45902cL, "RefConcept_Reference"));
-    quotedNode_2 = nb.getResult();
-    SNodeAccessUtil.setReferenceTarget(quotedNode_2, MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, 0x1120c45d024L, "conceptDeclaration"), (SNode) parameter_1);
-    return quotedNode_2;
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept SNodeTypeCastExpression$TK = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, "jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression");
-    /*package*/ static final SConcept SConceptTypeCastExpression$50 = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1871b2e3b0ef0078L, "jetbrains.mps.lang.smodel.structure.SConceptTypeCastExpression");
-    /*package*/ static final SConcept LinkAttribute$v_ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SReferenceLink concept$C5xM = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x5d71a86e0b67ce04L, "concept");
-    /*package*/ static final SContainmentLink conceptArgument$lGRx = MetaAdapterFactory.getContainmentLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x2143399c0554e687L, 0x3636a984eed504f9L, "conceptArgument");
-    /*package*/ static final SReferenceLink conceptDeclaration$3mP7 = MetaAdapterFactory.getReferenceLink(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1120c45902cL, 0x1120c45d024L, "conceptDeclaration");
-    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
-  }
 }

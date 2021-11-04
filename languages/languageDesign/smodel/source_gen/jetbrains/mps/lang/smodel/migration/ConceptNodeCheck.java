@@ -5,19 +5,8 @@ package jetbrains.mps.lang.smodel.migration;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.lang.migration.runtime.base.Problem;
-import org.jetbrains.mps.openapi.module.SearchScope;
-import jetbrains.mps.lang.smodel.query.runtime.CommandUtil;
-import jetbrains.mps.project.EditableFilteringScope;
-import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.behavior.SNodeTypeCastExpression__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.lang.migration.runtime.base.NotMigratedNode;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SConcept;
 
 public class ConceptNodeCheck extends MigrationScriptBase {
   private final String description = "Check ";
@@ -34,36 +23,8 @@ public class ConceptNodeCheck extends MigrationScriptBase {
   }
   public void doExecute(final SModule m) {
   }
-  @Override
-  public Iterable<Problem> check(SModule m) {
-    {
-      SearchScope scope_pppjdr_a0f = CommandUtil.createScope(m);
-      final SearchScope scope_pppjdr_a0f_0 = new EditableFilteringScope(scope_pppjdr_a0f);
-      QueryExecutionContext context = new QueryExecutionContext() {
-        public SearchScope getDefaultSearchScope() {
-          return scope_pppjdr_a0f_0;
-        }
-      };
-      return CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SNodeTypeCastExpression$TK, false)).where(new IWhereFilter<SNode>() {
-        public boolean accept(SNode it) {
-          return !((boolean) SNodeTypeCastExpression__BehaviorDescriptor.isSNodeCast_idi1Btg5H.invoke(it)) || !((boolean) SNodeTypeCastExpression__BehaviorDescriptor.hasValidType_id3$jHpAYjQYh.invoke(it));
-        }
-      }).select(new ISelector<SNode, Problem>() {
-        public Problem select(SNode it) {
-          return ((Problem) new NotMigratedNode(it) {
-            public String getMessage() {
-              return "conceptNode<> casts will not be supported in next MPS release";
-            }
-          });
-        }
-      });
-    }
-  }
   public MigrationScriptReference getReference() {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"), 3);
   }
 
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept SNodeTypeCastExpression$TK = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10975850da7L, "jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression");
-  }
 }
