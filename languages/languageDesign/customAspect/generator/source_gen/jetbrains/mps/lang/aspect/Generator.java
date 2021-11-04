@@ -42,16 +42,15 @@ public class Generator extends TemplateModuleInterpreted2 {
 
   @Override
   public Collection<SLanguage> getTargetLanguages() {
-    SLanguage[] rv = new SLanguage[9];
+    SLanguage[] rv = new SLanguage[8];
     rv[0] = MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage");
     rv[1] = MetaAdapterFactory.getLanguage(0xfd3920347849419dL, 0x907112563d152375L, "jetbrains.mps.baseLanguage.closures");
     rv[2] = MetaAdapterFactory.getLanguage(0x8388864671ce4f1cL, 0x9c53c54016f6ad4fL, "jetbrains.mps.baseLanguage.collections");
     rv[3] = MetaAdapterFactory.getLanguage(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, "jetbrains.mps.baseLanguage.lightweightdsl");
     rv[4] = MetaAdapterFactory.getLanguage(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, "jetbrains.mps.baseLanguageInternal");
-    rv[5] = MetaAdapterFactory.getLanguage(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, "jetbrains.mps.lang.aspect");
-    rv[6] = MetaAdapterFactory.getLanguage(0xc0080a477e374558L, 0xbee99ae18e690549L, "jetbrains.mps.lang.extension");
-    rv[7] = MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources");
-    rv[8] = MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel");
+    rv[5] = MetaAdapterFactory.getLanguage(0xc0080a477e374558L, 0xbee99ae18e690549L, "jetbrains.mps.lang.extension");
+    rv[6] = MetaAdapterFactory.getLanguage(0x982eb8df2c964bd7L, 0x996311712ea622e5L, "jetbrains.mps.lang.resources");
+    rv[7] = MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel");
     return Arrays.asList(rv);
   }
 
