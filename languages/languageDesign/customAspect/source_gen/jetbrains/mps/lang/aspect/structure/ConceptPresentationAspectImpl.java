@@ -9,10 +9,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private ConceptPresentation props_AspectMethodDescriptor;
-  private ConceptPresentation props_GenerationDescriptor;
-  private ConceptPresentation props_GenerationDescriptor_ByInterface;
-  private ConceptPresentation props_GenerationDescriptor_Class;
   private ConceptPresentation props_IAspectConcept;
   private ConceptPresentation props_LanguageAspectDescriptor;
   private ConceptPresentation props_SimpleAspectOrderRef;
@@ -23,33 +19,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
-      case LanguageConceptSwitch.AspectMethodDescriptor:
-        if (props_AspectMethodDescriptor == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("AspectMethodDescriptor");
-          props_AspectMethodDescriptor = cpb.create();
-        }
-        return props_AspectMethodDescriptor;
-      case LanguageConceptSwitch.GenerationDescriptor:
-        if (props_GenerationDescriptor == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          props_GenerationDescriptor = cpb.create();
-        }
-        return props_GenerationDescriptor;
-      case LanguageConceptSwitch.GenerationDescriptor_ByInterface:
-        if (props_GenerationDescriptor_ByInterface == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_GenerationDescriptor_ByInterface = cpb.create();
-        }
-        return props_GenerationDescriptor_ByInterface;
-      case LanguageConceptSwitch.GenerationDescriptor_Class:
-        if (props_GenerationDescriptor_Class == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
-          props_GenerationDescriptor_Class = cpb.create();
-        }
-        return props_GenerationDescriptor_Class;
       case LanguageConceptSwitch.IAspectConcept:
         if (props_IAspectConcept == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -75,7 +44,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L);
           cpb.deprecateAggregation(0x54be5be5620c1b77L, "mainLanguages");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a7b0j);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a3b0f);
           props_SimpleLanguageAspectDescriptor = cpb.create();
         }
         return props_SimpleLanguageAspectDescriptor;

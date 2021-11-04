@@ -13,7 +13,6 @@
     <import index="oubp" ref="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:7cc2086d-c7d0-49c7-811c-ebbaf40d9195(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.structure)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
-    <import index="tp2c" ref="r:00000000-0000-4000-0000-011c89590338(jetbrains.mps.baseLanguage.closures.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -31,9 +30,6 @@
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
-        <property id="4628067390765956807" name="final" index="R5$K2" />
-        <property id="4628067390765956802" name="abstract" index="R5$K7" />
-        <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
       </concept>
       <concept id="1169125989551" name="jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration" flags="ig" index="PlHQZ" />
@@ -132,74 +128,6 @@
     </node>
     <node concept="1QGGSu" id="3RsnzA_S3ob" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/aspect.png" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="5KGdJjE3jGJ">
-    <property role="3GE5qa" value="simple.gen.trivial" />
-    <property role="TrG5h" value="GenerationDescriptor_Class" />
-    <property role="34LRSv" value="generate descriptor instantiation only" />
-    <property role="EcuMT" value="6641743975991294767" />
-    <ref role="1TJDcQ" node="5LFbgO_x_nS" resolve="GenerationDescriptor" />
-    <node concept="1TJgyj" id="5$xTughlvvt" role="1TKVEi">
-      <property role="20kJfa" value="implTemplate" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="6422667311313188829" />
-      <ref role="20lvS9" to="tpee:fz12cDA" resolve="ClassConcept" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="5LFbgO_x_nS">
-    <property role="3GE5qa" value="simple.gen" />
-    <property role="TrG5h" value="GenerationDescriptor" />
-    <property role="R5$K7" value="true" />
-    <property role="R5$K2" value="false" />
-    <property role="EcuMT" value="6659466008484795896" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyj" id="7NyVmB7TXSN" role="1TKVEi">
-      <property role="20kJfa" value="mainIntfcClass" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="8999016044020882995" />
-      <ref role="20lvS9" to="tpee:g7pOWCK" resolve="Classifier" />
-    </node>
-    <node concept="PrWs8" id="6QQeWCmTjjJ" role="PzmwI">
-      <ref role="PrY4T" to="tpee:hCUYCKd" resolve="IValidIdentifier" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="4F0TDiuCZaF">
-    <property role="3GE5qa" value="simple.gen.byInterface" />
-    <property role="TrG5h" value="GenerationDescriptor_ByInterface" />
-    <property role="34LRSv" value="descriptor generator" />
-    <property role="EcuMT" value="5386558680326206123" />
-    <ref role="1TJDcQ" node="5LFbgO_x_nS" resolve="GenerationDescriptor" />
-    <node concept="1TJgyj" id="4F0TDiuCZaH" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="methods" />
-      <property role="20lbJX" value="fLJekj6/1..n" />
-      <property role="IQ2ns" value="5386558680326206125" />
-      <ref role="20lvS9" node="4F0TDiuCZaK" resolve="AspectMethodDescriptor" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="4F0TDiuCZaK">
-    <property role="3GE5qa" value="simple.gen.byInterface" />
-    <property role="TrG5h" value="AspectMethodDescriptor" />
-    <property role="EcuMT" value="5386558680326206128" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyj" id="4F0TDiuCZaO" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="baseConceptFunc" />
-      <property role="IQ2ns" value="5386558680326206132" />
-      <ref role="20lvS9" to="tp2c:htbVj4_" resolve="ClosureLiteral" />
-    </node>
-    <node concept="1TJgyj" id="4F0TDiuCZaL" role="1TKVEi">
-      <property role="20kJfa" value="method" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="5386558680326206129" />
-      <ref role="20lvS9" to="tpee:6LFqxSRBTg8" resolve="MethodDeclaration" />
-    </node>
-    <node concept="1TJgyj" id="4F0TDiuCZaT" role="1TKVEi">
-      <property role="20kJfa" value="cncpt" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="5386558680326206137" />
-      <ref role="20lvS9" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
     </node>
   </node>
   <node concept="PlHQZ" id="7Jfx5bwQG39">

@@ -37,7 +37,6 @@
       <concept id="1137021947720" name="jetbrains.mps.baseLanguage.structure.ConceptFunction" flags="in" index="2VMwT0">
         <child id="1137022507850" name="body" index="2VODD2" />
       </concept>
-      <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068498886296" name="jetbrains.mps.baseLanguage.structure.VariableReference" flags="nn" index="37vLTw">
         <reference id="1068581517664" name="variableDeclaration" index="3cqZAo" />
       </concept>
@@ -99,9 +98,6 @@
       </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
-      <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
-        <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
-      </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
@@ -208,32 +204,6 @@
     </node>
     <node concept="13hLZK" id="7Jfx5bwQG3$" role="13h7CW">
       <node concept="3clFbS" id="7Jfx5bwQG3_" role="2VODD2" />
-    </node>
-  </node>
-  <node concept="13h7C7" id="1_lQ6trUoey">
-    <property role="3GE5qa" value="simple.gen.byInterface" />
-    <ref role="13h7C2" to="hfbu:4F0TDiuCZaF" resolve="GenerationDescriptor_ByInterface" />
-    <node concept="13hLZK" id="1_lQ6trUoez" role="13h7CW">
-      <node concept="3clFbS" id="1_lQ6trUoe$" role="2VODD2" />
-    </node>
-  </node>
-  <node concept="13h7C7" id="6QQeWCmTwll">
-    <property role="3GE5qa" value="simple" />
-    <ref role="13h7C2" to="hfbu:2Y$EcRKMr1Q" resolve="SimpleLanguageAspectDescriptor" />
-    <node concept="13i0hz" id="6QQeWCmTwlo" role="13h7CS">
-      <property role="TrG5h" value="getGenerator" />
-      <node concept="3Tm1VV" id="6QQeWCmTwlp" role="1B3o_S" />
-      <node concept="3Tqbb2" id="6QQeWCmTwlw" role="3clF45">
-        <ref role="ehGHo" to="hfbu:5LFbgO_x_nS" resolve="GenerationDescriptor" />
-      </node>
-      <node concept="3clFbS" id="6QQeWCmTwlr" role="3clF47">
-        <node concept="3clFbF" id="3RwmCqeJZZy" role="3cqZAp">
-          <node concept="10Nm6u" id="1OybC9NzG2h" role="3clFbG" />
-        </node>
-      </node>
-    </node>
-    <node concept="13hLZK" id="6QQeWCmTwlm" role="13h7CW">
-      <node concept="3clFbS" id="6QQeWCmTwln" role="2VODD2" />
     </node>
   </node>
 </model>
