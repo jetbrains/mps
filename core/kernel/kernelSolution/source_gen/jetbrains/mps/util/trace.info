@@ -17,81 +17,9 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
-  <root nodeRef="r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)/1136850375741968751">
-    <file name="Icon2IconResourceAdapter_Deprecated.java">
-      <node id="1136850375741968751" at="28,0,29,0" concept="15" trace="LOG" />
-      <node id="1136850375741968743" at="29,0,30,0" concept="6" trace="myIcon" />
-      <node id="1136850375741968761" at="31,57,32,22" concept="17" />
-      <node id="7952719687879892497" at="32,22,33,116" concept="11" />
-      <node id="7952719687879892504" at="33,116,34,42" concept="11" />
-      <node id="7952719687879892507" at="34,42,35,34" concept="5" />
-      <node id="7952719687879892513" at="35,34,36,16" concept="5" />
-      <node id="7952719687879906665" at="37,9,38,63" concept="11" />
-      <node id="7952719687879892518" at="38,63,39,68" concept="11" />
-      <node id="7952719687879892524" at="40,11,41,41" concept="5" />
-      <node id="7952719687879892549" at="41,41,42,63" concept="13" />
-      <node id="7952719687879892531" at="43,17,44,20" concept="5" />
-      <node id="7952719687879911229" at="45,7,46,34" concept="5" />
-      <node id="3818729150937329346" at="48,42,49,41" concept="5" />
-      <node id="1136850375741753229" at="54,38,55,17" concept="12" />
-      <node id="1136850375741931627" at="59,25,60,18" concept="12" />
-      <node id="7952719687879925035" at="61,5,62,44" concept="12" />
-      <node id="1136850375741961446" at="66,20,67,18" concept="12" />
-      <node id="1136850375741961458" at="69,50,70,19" concept="12" />
-      <node id="1136850375741961461" at="71,5,72,87" concept="11" />
-      <node id="1136850375741963408" at="72,87,73,47" concept="12" />
-      <node id="7952719687879960951" at="76,25,77,52" concept="12" />
-      <node id="3818729150937329346" at="47,30,50,7" concept="9" />
-      <node id="1136850375741926186" at="58,36,61,5" concept="9" />
-      <node id="1136850375741961440" at="65,35,68,5" concept="9" />
-      <node id="1136850375741961448" at="68,5,71,5" concept="9" />
-      <node id="1136850375741753221" at="53,0,57,0" concept="10" trace="isAlreadyReloaded#()Z" />
-      <node id="1136850375741753251" at="75,0,79,0" concept="10" trace="hashCode#()I" />
-      <node id="7952719687879892533" at="39,68,45,7" concept="19" />
-      <node id="1136850375741753230" at="57,0,64,0" concept="10" trace="getResource#()Ljava/io/InputStream;" />
-      <node id="1136850375741753239" at="64,0,75,0" concept="10" trace="equals#(Ljava/lang/Object;)Z" />
-      <node id="7952719687879892546" at="36,16,51,5" concept="19" />
-      <node id="1136850375741968755" at="30,0,53,0" concept="3" trace="Icon2IconResourceAdapter_Deprecated#(Ljavax/swing/Icon;)V" />
-      <scope id="7952719687879892530" at="43,17,44,20" />
-      <scope id="3818729150937329346" at="48,42,49,41" />
-      <scope id="1136850375741753226" at="54,38,55,17" />
-      <scope id="1136850375741926188" at="59,25,60,18" />
-      <scope id="1136850375741961445" at="66,20,67,18" />
-      <scope id="1136850375741961457" at="69,50,70,19" />
-      <scope id="1136850375741753256" at="76,25,77,52" />
-      <scope id="7952719687879892523" at="40,11,42,63" />
-      <scope id="7952719687879892543" at="47,30,50,7" />
-      <scope id="7952719687879892547" at="47,5,51,5">
-        <var name="ex" id="7952719687879892539" />
-      </scope>
-      <scope id="1136850375741753221" at="53,0,57,0" />
-      <scope id="1136850375741753235" at="58,36,62,44" />
-      <scope id="1136850375741753251" at="75,0,79,0" />
-      <scope id="1136850375741753230" at="57,0,64,0" />
-      <scope id="1136850375741753246" at="65,35,73,47">
-        <var name="that" id="1136850375741961460" />
-      </scope>
-      <scope id="7952719687879892516" at="37,9,46,34">
-        <var name="baos" id="7952719687879906664" />
-        <var name="ios" id="7952719687879892517" />
-      </scope>
-      <scope id="1136850375741753239" at="64,0,75,0">
-        <var name="o" id="1136850375741753243" />
-      </scope>
-      <scope id="1136850375741968756" at="31,57,51,5">
-        <var name="g" id="7952719687879892503" />
-        <var name="image" id="7952719687879892496" />
-      </scope>
-      <scope id="1136850375741968755" at="30,0,53,0">
-        <var name="icon" id="1136850375741968745" />
-      </scope>
-      <unit id="1136850375741968751" at="25,0,80,0" name="jetbrains.mps.util.Icon2IconResourceAdapter_Deprecated" />
-    </file>
-  </root>
   <root nodeRef="r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)/2089287822043606602">
     <file name="SNodeOperations.java">
       <node id="4951414497584670777" at="47,29,48,20" concept="12" />
@@ -202,7 +130,7 @@
       <node id="9160302885342508446" at="273,0,278,0" concept="16" trace="getModelLongName#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/String;" />
       <node id="5848582975470005274" at="310,0,315,0" concept="16" trace="isGeneratable#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="87164511929004007" at="45,64,51,27" concept="4" />
-      <node id="4951414497584670898" at="74,46,80,5" concept="20" />
+      <node id="4951414497584670898" at="74,46,80,5" concept="19" />
       <node id="8441062577042923658" at="233,0,239,0" concept="16" trace="copyProperties#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8441062577042956614" at="243,0,249,0" concept="16" trace="copyUserObjects#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="9196220778517123067" at="254,0,261,0" concept="16" trace="getTargetNodeSilently#(Lorg/jetbrains/mps/openapi/model/SReference;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -219,7 +147,7 @@
       <node id="2089287822043606678" at="72,0,83,0" concept="16" trace="findParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/util/Condition;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="5267619756758206565" at="153,9,168,7" concept="9" />
       <node id="8186327644827767082" at="325,0,341,0" concept="16" trace="qualifiedResolveInfo#(Lorg/jetbrains/mps/openapi/language/SReferenceLink;Lorg/jetbrains/mps/openapi/model/SModelReference;Ljava/lang/String;)Lorg/jetbrains/mps/openapi/model/ResolveInfo;" />
-      <node id="5267619756757953810" at="152,21,175,5" concept="19" />
+      <node id="5267619756757953810" at="152,21,175,5" concept="18" />
       <node id="9117569544655367277" at="144,0,178,0" concept="16" trace="getDebugText#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
       <scope id="2089287822043606819" at="38,28,38,28" />
       <scope id="4951414497584670749" at="47,29,48,20" />
@@ -487,9 +415,9 @@
       <node id="4972886494893401765" at="37,0,46,7" concept="7" />
       <node id="4972886494893402035" at="60,30,71,9" concept="9" />
       <node id="4972886494893401726" at="34,47,47,5" concept="9" />
-      <node id="4972886494893402026" at="59,49,72,7" concept="20" />
+      <node id="4972886494893402026" at="59,49,72,7" concept="19" />
       <node id="4972886494893402275" at="126,0,139,0" concept="10" trace="getDifferentSubsequences#()Ljava/util/List;" />
-      <node id="4972886494893402205" at="93,22,108,21" concept="18" />
+      <node id="4972886494893402205" at="93,22,108,21" concept="17" />
       <node id="4972886494893402205" at="91,48,109,33" concept="4" />
       <node id="4972886494893401605" at="30,0,50,0" concept="10" trace="getCommonLengths#()[[I" />
       <node id="4972886494893401883" at="53,45,74,5" concept="9" />
@@ -585,8 +513,8 @@
       <node id="5504093910384079750" at="22,0,24,0" concept="3" trace="StringsIO#()V" />
       <node id="5504093910384079705" at="42,0,45,0" concept="16" trace="writeLines#(Ljava/io/File;Ljava/lang/Iterable;)V" />
       <node id="5504093910384079731" at="46,46,49,5" concept="8" />
-      <node id="5504093910384079681" at="34,36,38,5" concept="20" />
-      <node id="5504093910384079646" at="25,51,30,5" concept="19" />
+      <node id="5504093910384079681" at="34,36,38,5" concept="19" />
+      <node id="5504093910384079646" at="25,51,30,5" concept="18" />
       <node id="5504093910384079721" at="45,0,52,0" concept="16" trace="writeLines#(Ljava/io/OutputStream;Ljava/lang/Iterable;)V" />
       <node id="5504093910384079632" at="24,0,32,0" concept="16" trace="readLines#(Ljava/io/File;)Ljava/util/List;" />
       <node id="5504093910384079663" at="32,0,42,0" concept="16" trace="readLines#(Ljava/io/InputStream;)Ljava/util/List;" />

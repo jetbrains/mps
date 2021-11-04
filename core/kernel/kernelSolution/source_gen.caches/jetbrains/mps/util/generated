@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-9oim28bkxdq384uy7zgngpu504xs7do">
-  <files names="DisjointSets.java:Icon2IconResourceAdapter_Deprecated.java:LongestCommonSubsequenceFinder.java:ModuleNameUtil.java:SNodeCompare.java:SNodeOperations.java:StringsIO.java" />
+<product version="3" modelHash="7w9xdp5ymc9dg4xce7yp8qdw9foiinu">
+  <files names="DisjointSets.java:LongestCommonSubsequenceFinder.java:ModuleNameUtil.java:SNodeCompare.java:SNodeOperations.java:StringsIO.java" />
 </product>
 

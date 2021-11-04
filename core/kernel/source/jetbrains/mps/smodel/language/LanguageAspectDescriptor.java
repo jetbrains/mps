@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.smodel.language;
 
 import jetbrains.mps.aspects.OrderParticipant;
 import jetbrains.mps.smodel.runtime.IconResource;
-import jetbrains.mps.util.Icon2IconResourceAdapter_Deprecated;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -25,7 +24,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
-import javax.swing.Icon;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -73,19 +71,9 @@ public abstract class LanguageAspectDescriptor implements OrderParticipant<Strin
     return null;
   }
 
-@Deprecated(since = "3.4", forRemoval = true)
-  @Nullable
-  public Icon getIcon() {
-    return null;
-  }
-
   @Nullable
   public IconResource getIconResource() {
-    Icon icn = getIcon();
-    if (icn == null) {
-      return MODEL_ICON;
-    }
-    return new Icon2IconResourceAdapter_Deprecated(icn);
+    return MODEL_ICON;
   }
 
   @Override
@@ -95,7 +83,7 @@ public abstract class LanguageAspectDescriptor implements OrderParticipant<Strin
 
   @Override
   public int compareTo(@NotNull OrderParticipant<String> d) {
-    //todo remove body after 3.5, needed for compilation compatibility
+    // need default impl as long as LanguageAspect.compareTo member is not mandatory
     return 0;
   }
 

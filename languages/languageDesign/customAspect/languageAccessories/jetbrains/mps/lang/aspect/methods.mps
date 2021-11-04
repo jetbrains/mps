@@ -174,16 +174,6 @@
         <ref role="3uigEE" to="vndm:~LanguageAspectGenerator" resolve="LanguageAspectGenerator" />
       </node>
     </node>
-    <node concept="qMXn0" id="4r8JClTmU99" role="QNr5C" />
-    <node concept="q3mfq" id="ghIDlF6GE1" role="QNr5C">
-      <property role="TrG5h" value="getIcon" />
-      <node concept="3uibUv" id="ghIDlF6GEd" role="q3mfk">
-        <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
-      </node>
-      <node concept="QcxE9" id="ghIDlF6HcF" role="2IRzpu">
-        <property role="QcwnP" value="&lt;deprecated&gt;" />
-      </node>
-    </node>
     <node concept="qMXn0" id="2DdXZ8RD1X_" role="QNr5C" />
     <node concept="q3mfq" id="2DdXZ8RD1Wa" role="QNr5C">
       <property role="TrG5h" value="getIconResource" />
