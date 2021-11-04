@@ -32,9 +32,9 @@
     <import index="tx4j" ref="r:9b2f0c7d-63dc-40ea-8ab2-6e06ee046562(jetbrains.mps.lang.util.order.generator.template.main@generator)" />
     <import index="1po2" ref="r:e2f5b4d9-8319-4ef0-b685-6c50fa28ea4b(jetbrains.mps.lang.util.order.structure)" />
     <import index="6uiu" ref="r:5777900a-dedf-48c6-b3b8-5fd37f887019(jetbrains.mps.lang.util.order.behavior)" />
+    <import index="9n97" ref="r:10b498c7-d1bd-4b96-8a49-bb59f0e63af3(jetbrains.mps.lang.aspect.methods)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
     <import index="90d" ref="r:421d64ed-8024-497f-aeab-8bddeb389dd2(jetbrains.mps.lang.extension.methods)" implicit="true" />
-    <import index="9n97" ref="r:10b498c7-d1bd-4b96-8a49-bb59f0e63af3(jetbrains.mps.lang.aspect.methods)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -264,6 +264,12 @@
       </concept>
       <concept id="1216860049635" name="jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext" flags="nn" index="1iwH7S" />
     </language>
+    <language id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi">
+      <concept id="4733039728785194814" name="jetbrains.mps.lang.modelapi.structure.NamedNodeReference" flags="ng" index="ZC_QK">
+        <reference id="7256306938026143658" name="target" index="2aWVGs" />
+        <child id="7256306938026143676" name="child" index="2aWVGa" />
+      </concept>
+    </language>
     <language id="df345b11-b8c7-4213-ac66-48d2a9b75d88" name="jetbrains.mps.baseLanguageInternal">
       <concept id="1173996401517" name="jetbrains.mps.baseLanguageInternal.structure.InternalNewExpression" flags="nn" index="1nCR9W">
         <property id="1173996588177" name="fqClassName" index="1nD$Q0" />
@@ -275,21 +281,17 @@
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
+      <concept id="7400021826774799413" name="jetbrains.mps.lang.smodel.structure.NodePointerExpression" flags="ng" index="2tJFMh">
+        <child id="7400021826774799510" name="ref" index="2tJFKM" />
+      </concept>
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
-      </concept>
-      <concept id="597763930871270009" name="jetbrains.mps.lang.smodel.structure.ChildNodeRefExpression" flags="nn" index="3fl2lp">
-        <reference id="597763930871272016" name="targetNode" index="3fl3PK" />
-        <child id="597763930871272014" name="parent" index="3fl3PI" />
       </concept>
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
-      <concept id="1219352745532" name="jetbrains.mps.lang.smodel.structure.NodeRefExpression" flags="nn" index="3B5_sB">
-        <reference id="1219352800908" name="referentNode" index="3B5MYn" />
-      </concept>
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
@@ -560,11 +562,13 @@
                               <node concept="2OqwBi" id="2Y$EcRKMoz_" role="2Oq$k0">
                                 <node concept="30H73N" id="2Y$EcRKMozA" role="2Oq$k0" />
                                 <node concept="2qgKlT" id="2Y$EcRKMozB" role="2OqNvi">
-                                  <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                  <node concept="3fl2lp" id="2Y$EcRKMozC" role="37wK5m">
-                                    <ref role="3fl3PK" to="9n97:2Y$EcRKLScp" resolve="getPresentableAspectName" />
-                                    <node concept="3B5_sB" id="2Y$EcRKMozD" role="3fl3PI">
-                                      <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                  <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                  <node concept="2tJFMh" id="7phNEaHiVT_" role="37wK5m">
+                                    <node concept="ZC_QK" id="7phNEaHiVT$" role="2tJFKM">
+                                      <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                      <node concept="ZC_QK" id="7phNEaHiXn3" role="2aWVGa">
+                                        <ref role="2aWVGs" to="9n97:2Y$EcRKLScp" resolve="getPresentableAspectName" />
+                                      </node>
                                     </node>
                                   </node>
                                 </node>
@@ -600,11 +604,13 @@
                               <node concept="2OqwBi" id="6eru7wBPDpe" role="2Oq$k0">
                                 <node concept="30H73N" id="6eru7wBPDpf" role="2Oq$k0" />
                                 <node concept="2qgKlT" id="6eru7wBPDpg" role="2OqNvi">
-                                  <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                  <node concept="3fl2lp" id="6eru7wBPDph" role="37wK5m">
-                                    <ref role="3fl3PK" to="9n97:22594Rb626I" resolve="getId" />
-                                    <node concept="3B5_sB" id="6eru7wBPDpi" role="3fl3PI">
-                                      <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                  <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                  <node concept="2tJFMh" id="7phNEaHj3qL" role="37wK5m">
+                                    <node concept="ZC_QK" id="7phNEaHj3qK" role="2tJFKM">
+                                      <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                      <node concept="ZC_QK" id="7phNEaHj4A_" role="2aWVGa">
+                                        <ref role="2aWVGs" to="9n97:22594Rb626I" resolve="getId" />
+                                      </node>
                                     </node>
                                   </node>
                                 </node>
@@ -650,11 +656,13 @@
                               <node concept="2OqwBi" id="6eru7wBPOVW" role="2Oq$k0">
                                 <node concept="30H73N" id="6eru7wBPOVX" role="2Oq$k0" />
                                 <node concept="2qgKlT" id="6eru7wBPOVY" role="2OqNvi">
-                                  <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                  <node concept="3fl2lp" id="6eru7wBPOVZ" role="37wK5m">
-                                    <ref role="3fl3PK" to="9n97:22594Rb62a0" resolve="compareTo" />
-                                    <node concept="3B5_sB" id="6eru7wBPOW0" role="3fl3PI">
-                                      <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                  <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                  <node concept="2tJFMh" id="7phNEaHjgWS" role="37wK5m">
+                                    <node concept="ZC_QK" id="7phNEaHjgWT" role="2tJFKM">
+                                      <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                      <node concept="ZC_QK" id="7phNEaHjgWU" role="2aWVGa">
+                                        <ref role="2aWVGs" to="9n97:22594Rb62a0" resolve="compareTo" />
+                                      </node>
                                     </node>
                                   </node>
                                 </node>
@@ -684,11 +692,13 @@
                             <node concept="2OqwBi" id="6eru7wBPKvs" role="2Oq$k0">
                               <node concept="30H73N" id="6eru7wBPKvt" role="2Oq$k0" />
                               <node concept="2qgKlT" id="6eru7wBPKvu" role="2OqNvi">
-                                <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                <node concept="3fl2lp" id="6eru7wBPKvv" role="37wK5m">
-                                  <ref role="3fl3PK" to="9n97:22594Rb62a0" resolve="compareTo" />
-                                  <node concept="3B5_sB" id="6eru7wBPKvw" role="3fl3PI">
-                                    <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                <node concept="2tJFMh" id="7phNEaHjfhK" role="37wK5m">
+                                  <node concept="ZC_QK" id="7phNEaHjfhJ" role="2tJFKM">
+                                    <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                    <node concept="ZC_QK" id="7phNEaHjfk6" role="2aWVGa">
+                                      <ref role="2aWVGs" to="9n97:22594Rb62a0" resolve="compareTo" />
+                                    </node>
                                   </node>
                                 </node>
                               </node>
@@ -721,11 +731,13 @@
                               <node concept="2OqwBi" id="4r8JClTn13v" role="2Oq$k0">
                                 <node concept="30H73N" id="4r8JClTn13w" role="2Oq$k0" />
                                 <node concept="2qgKlT" id="4r8JClTn13x" role="2OqNvi">
-                                  <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                  <node concept="3fl2lp" id="4r8JClTn13y" role="37wK5m">
-                                    <ref role="3fl3PK" to="9n97:4r8JClTmU4i" resolve="hasAspect" />
-                                    <node concept="3B5_sB" id="4r8JClTn13z" role="3fl3PI">
-                                      <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                  <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                  <node concept="2tJFMh" id="7phNEaHjlAd" role="37wK5m">
+                                    <node concept="ZC_QK" id="7phNEaHjlAe" role="2tJFKM">
+                                      <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                      <node concept="ZC_QK" id="7phNEaHjlAf" role="2aWVGa">
+                                        <ref role="2aWVGs" to="9n97:4r8JClTmU4i" resolve="hasAspect" />
+                                      </node>
                                     </node>
                                   </node>
                                 </node>
@@ -752,11 +764,13 @@
                             <node concept="2OqwBi" id="3U295U9qDlF" role="2Oq$k0">
                               <node concept="30H73N" id="3U295U9qDlG" role="2Oq$k0" />
                               <node concept="2qgKlT" id="3U295U9qDlH" role="2OqNvi">
-                                <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                <node concept="3fl2lp" id="3U295U9qDlI" role="37wK5m">
-                                  <ref role="3fl3PK" to="9n97:4r8JClTmU4i" resolve="hasAspect" />
-                                  <node concept="3B5_sB" id="3U295U9qDlJ" role="3fl3PI">
-                                    <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                <node concept="2tJFMh" id="7phNEaHjk3T" role="37wK5m">
+                                  <node concept="ZC_QK" id="7phNEaHjk3U" role="2tJFKM">
+                                    <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                    <node concept="ZC_QK" id="7phNEaHjk3V" role="2aWVGa">
+                                      <ref role="2aWVGs" to="9n97:4r8JClTmU4i" resolve="hasAspect" />
+                                    </node>
                                   </node>
                                 </node>
                               </node>
@@ -794,11 +808,13 @@
                               <node concept="2OqwBi" id="2Sw9hCAI69o" role="2Oq$k0">
                                 <node concept="30H73N" id="2Sw9hCAI69p" role="2Oq$k0" />
                                 <node concept="2qgKlT" id="2Sw9hCAI69q" role="2OqNvi">
-                                  <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                  <node concept="3fl2lp" id="2Sw9hCAI69r" role="37wK5m">
-                                    <ref role="3fl3PK" to="9n97:ghIDlF6GD9" resolve="getAspectModels" />
-                                    <node concept="3B5_sB" id="2Sw9hCAI69s" role="3fl3PI">
-                                      <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                  <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                  <node concept="2tJFMh" id="7phNEaHjp1p" role="37wK5m">
+                                    <node concept="ZC_QK" id="7phNEaHjp1q" role="2tJFKM">
+                                      <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                      <node concept="ZC_QK" id="7phNEaHjp1r" role="2aWVGa">
+                                        <ref role="2aWVGs" to="9n97:ghIDlF6GD9" resolve="getAspectModels" />
+                                      </node>
                                     </node>
                                   </node>
                                 </node>
@@ -833,20 +849,22 @@
                         <node concept="3clFbS" id="2Sw9hCAI5Tt" role="2VODD2">
                           <node concept="3clFbF" id="2Sw9hCAI5TU" role="3cqZAp">
                             <node concept="2OqwBi" id="4r8JClTmZ37" role="3clFbG">
-                              <node concept="2OqwBi" id="2Sw9hCAI5TW" role="2Oq$k0">
-                                <node concept="30H73N" id="2Sw9hCAI5TX" role="2Oq$k0" />
-                                <node concept="2qgKlT" id="2Sw9hCAI5TY" role="2OqNvi">
-                                  <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                  <node concept="3fl2lp" id="2Sw9hCAI5TZ" role="37wK5m">
-                                    <ref role="3fl3PK" to="9n97:78qQRpbiEpU" resolve="getDefaultDevkit" />
-                                    <node concept="3B5_sB" id="2Sw9hCAI5U0" role="3fl3PI">
-                                      <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                              <node concept="3TrEf2" id="4r8JClTn0Ms" role="2OqNvi">
+                                <ref role="3Tt5mk" to="tpee:fzclF7Z" resolve="body" />
+                              </node>
+                              <node concept="2OqwBi" id="7phNEaHjvma" role="2Oq$k0">
+                                <node concept="30H73N" id="7phNEaHjvmb" role="2Oq$k0" />
+                                <node concept="2qgKlT" id="7phNEaHjvmc" role="2OqNvi">
+                                  <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                  <node concept="2tJFMh" id="7phNEaHjvmd" role="37wK5m">
+                                    <node concept="ZC_QK" id="7phNEaHjvme" role="2tJFKM">
+                                      <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                      <node concept="ZC_QK" id="7phNEaHjvmf" role="2aWVGa">
+                                        <ref role="2aWVGs" to="9n97:78qQRpbiEpU" resolve="getDefaultDevkit" />
+                                      </node>
                                     </node>
                                   </node>
                                 </node>
-                              </node>
-                              <node concept="3TrEf2" id="4r8JClTn0Ms" role="2OqNvi">
-                                <ref role="3Tt5mk" to="tpee:fzclF7Z" resolve="body" />
                               </node>
                             </node>
                           </node>
@@ -865,11 +883,13 @@
                             <node concept="2OqwBi" id="6IZJ8Q4W7Ja" role="2Oq$k0">
                               <node concept="30H73N" id="6IZJ8Q4W7Jb" role="2Oq$k0" />
                               <node concept="2qgKlT" id="6IZJ8Q4W7Jc" role="2OqNvi">
-                                <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                <node concept="3fl2lp" id="6IZJ8Q4W7Jd" role="37wK5m">
-                                  <ref role="3fl3PK" to="9n97:78qQRpbiEpU" resolve="getDefaultDevkit" />
-                                  <node concept="3B5_sB" id="6IZJ8Q4W7Je" role="3fl3PI">
-                                    <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                <node concept="2tJFMh" id="7phNEaHjtSF" role="37wK5m">
+                                  <node concept="ZC_QK" id="7phNEaHjtSG" role="2tJFKM">
+                                    <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                    <node concept="ZC_QK" id="7phNEaHjtSH" role="2aWVGa">
+                                      <ref role="2aWVGs" to="9n97:78qQRpbiEpU" resolve="getDefaultDevkit" />
+                                    </node>
                                   </node>
                                 </node>
                               </node>
@@ -901,11 +921,13 @@
                               <node concept="2OqwBi" id="78qQRpbiHv3" role="2Oq$k0">
                                 <node concept="30H73N" id="78qQRpbiHv4" role="2Oq$k0" />
                                 <node concept="2qgKlT" id="78qQRpbiHv5" role="2OqNvi">
-                                  <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                  <node concept="3fl2lp" id="78qQRpbiHv6" role="37wK5m">
-                                    <ref role="3fl3PK" to="9n97:ghIDlF6HdH" resolve="getMainLanguages" />
-                                    <node concept="3B5_sB" id="78qQRpbiHv7" role="3fl3PI">
-                                      <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                  <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                  <node concept="2tJFMh" id="7phNEaHjxcx" role="37wK5m">
+                                    <node concept="ZC_QK" id="7phNEaHjxcw" role="2tJFKM">
+                                      <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                      <node concept="ZC_QK" id="7phNEaHjynD" role="2aWVGa">
+                                        <ref role="2aWVGs" to="9n97:ghIDlF6HdH" resolve="getMainLanguages" />
+                                      </node>
                                     </node>
                                   </node>
                                 </node>
@@ -946,11 +968,13 @@
                               <node concept="2OqwBi" id="2Sw9hCAI1hA" role="2Oq$k0">
                                 <node concept="30H73N" id="2Sw9hCAI1hB" role="2Oq$k0" />
                                 <node concept="2qgKlT" id="2Sw9hCAI1hC" role="2OqNvi">
-                                  <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                  <node concept="3fl2lp" id="2Sw9hCAI1hD" role="37wK5m">
-                                    <ref role="3fl3PK" to="9n97:ghIDlF6HeN" resolve="getAdditionalLanguages" />
-                                    <node concept="3B5_sB" id="2Sw9hCAI1hE" role="3fl3PI">
-                                      <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                  <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                  <node concept="2tJFMh" id="7phNEaHjEVN" role="37wK5m">
+                                    <node concept="ZC_QK" id="7phNEaHjEVM" role="2tJFKM">
+                                      <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                      <node concept="ZC_QK" id="7phNEaHjEVL" role="2aWVGa">
+                                        <ref role="2aWVGs" to="9n97:ghIDlF6HeN" resolve="getAdditionalLanguages" />
+                                      </node>
                                     </node>
                                   </node>
                                 </node>
@@ -972,11 +996,13 @@
                             <node concept="2OqwBi" id="2Sw9hCAHV$k" role="2Oq$k0">
                               <node concept="30H73N" id="2Sw9hCAHR52" role="2Oq$k0" />
                               <node concept="2qgKlT" id="2Sw9hCAHWWD" role="2OqNvi">
-                                <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                <node concept="3fl2lp" id="2Sw9hCAHYCz" role="37wK5m">
-                                  <ref role="3fl3PK" to="9n97:ghIDlF6HeN" resolve="getAdditionalLanguages" />
-                                  <node concept="3B5_sB" id="2Sw9hCAHYfX" role="3fl3PI">
-                                    <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                <node concept="2tJFMh" id="7phNEaHjL9G" role="37wK5m">
+                                  <node concept="ZC_QK" id="7phNEaHjL9F" role="2tJFKM">
+                                    <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                    <node concept="ZC_QK" id="7phNEaHjL9E" role="2aWVGa">
+                                      <ref role="2aWVGs" to="9n97:ghIDlF6HeN" resolve="getAdditionalLanguages" />
+                                    </node>
                                   </node>
                                 </node>
                               </node>
@@ -1011,11 +1037,13 @@
                               <node concept="2OqwBi" id="2DdXZ8RCVwX" role="2Oq$k0">
                                 <node concept="30H73N" id="2DdXZ8RCVwY" role="2Oq$k0" />
                                 <node concept="2qgKlT" id="2DdXZ8RCVwZ" role="2OqNvi">
-                                  <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                  <node concept="3fl2lp" id="2DdXZ8RCVx0" role="37wK5m">
-                                    <ref role="3fl3PK" to="9n97:2DdXZ8RD1Wa" resolve="getIconResource" />
-                                    <node concept="3B5_sB" id="2DdXZ8RCVx1" role="3fl3PI">
-                                      <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                  <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                  <node concept="2tJFMh" id="7phNEaHjHeK" role="37wK5m">
+                                    <node concept="ZC_QK" id="7phNEaHjHeJ" role="2tJFKM">
+                                      <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                      <node concept="ZC_QK" id="7phNEaHjHeI" role="2aWVGa">
+                                        <ref role="2aWVGs" to="9n97:2DdXZ8RD1Wa" resolve="getIconResource" />
+                                      </node>
                                     </node>
                                   </node>
                                 </node>
@@ -1037,11 +1065,13 @@
                             <node concept="2OqwBi" id="2DdXZ8RCVx8" role="2Oq$k0">
                               <node concept="30H73N" id="2DdXZ8RCVx9" role="2Oq$k0" />
                               <node concept="2qgKlT" id="2DdXZ8RCVxa" role="2OqNvi">
-                                <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                <node concept="3fl2lp" id="2DdXZ8RCVxb" role="37wK5m">
-                                  <ref role="3fl3PK" to="9n97:2DdXZ8RD1Wa" resolve="getIconResource" />
-                                  <node concept="3B5_sB" id="2DdXZ8RCVxc" role="3fl3PI">
-                                    <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                <node concept="2tJFMh" id="7phNEaHjLSS" role="37wK5m">
+                                  <node concept="ZC_QK" id="7phNEaHjLSR" role="2tJFKM">
+                                    <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                    <node concept="ZC_QK" id="7phNEaHjLSQ" role="2aWVGa">
+                                      <ref role="2aWVGs" to="9n97:2DdXZ8RD1Wa" resolve="getIconResource" />
+                                    </node>
                                   </node>
                                 </node>
                               </node>
@@ -1073,11 +1103,13 @@
                               <node concept="2OqwBi" id="2Sw9hCAIh9d" role="2Oq$k0">
                                 <node concept="30H73N" id="2Sw9hCAIh9e" role="2Oq$k0" />
                                 <node concept="2qgKlT" id="2Sw9hCAIh9f" role="2OqNvi">
-                                  <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                  <node concept="3fl2lp" id="2Sw9hCAIh9g" role="37wK5m">
-                                    <ref role="3fl3PK" to="9n97:ghIDlF6HcX" resolve="getHelpUrl" />
-                                    <node concept="3B5_sB" id="2Sw9hCAIh9h" role="3fl3PI">
-                                      <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                  <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                  <node concept="2tJFMh" id="7phNEaHjJd1" role="37wK5m">
+                                    <node concept="ZC_QK" id="7phNEaHjJd0" role="2tJFKM">
+                                      <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                      <node concept="ZC_QK" id="7phNEaHjJcZ" role="2aWVGa">
+                                        <ref role="2aWVGs" to="9n97:ghIDlF6HcX" resolve="getHelpUrl" />
+                                      </node>
                                     </node>
                                   </node>
                                 </node>
@@ -1099,11 +1131,13 @@
                             <node concept="2OqwBi" id="2Sw9hCAIetW" role="2Oq$k0">
                               <node concept="30H73N" id="2Sw9hCAIetX" role="2Oq$k0" />
                               <node concept="2qgKlT" id="2Sw9hCAIetY" role="2OqNvi">
-                                <ref role="37wK5l" to="b2yo:6d7r2Fq2j7f" resolve="getMethod" />
-                                <node concept="3fl2lp" id="2Sw9hCAIetZ" role="37wK5m">
-                                  <ref role="3fl3PK" to="9n97:ghIDlF6HcX" resolve="getHelpUrl" />
-                                  <node concept="3B5_sB" id="2Sw9hCAIeu0" role="3fl3PI">
-                                    <ref role="3B5MYn" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                <ref role="37wK5l" to="b2yo:7phNEaHi8Cl" resolve="getMethod" />
+                                <node concept="2tJFMh" id="7phNEaHjMyS" role="37wK5m">
+                                  <node concept="ZC_QK" id="7phNEaHjMyR" role="2tJFKM">
+                                    <ref role="2aWVGs" to="9n97:ghIDlF6CZM" resolve="LanguageAspect" />
+                                    <node concept="ZC_QK" id="7phNEaHjMyQ" role="2aWVGa">
+                                      <ref role="2aWVGs" to="9n97:ghIDlF6HcX" resolve="getHelpUrl" />
+                                    </node>
                                   </node>
                                 </node>
                               </node>

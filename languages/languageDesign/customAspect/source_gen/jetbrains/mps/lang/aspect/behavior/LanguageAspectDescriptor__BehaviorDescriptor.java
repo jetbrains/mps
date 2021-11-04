@@ -10,13 +10,15 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.Objects;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -28,17 +30,22 @@ public final class LanguageAspectDescriptor__BehaviorDescriptor extends BaseBHDe
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2d72cdccef70b086L, "jetbrains.mps.lang.aspect.structure.LanguageAspectDescriptor");
 
   public static final SMethod<SNode> getMethod_id6d7r2Fq2j7f = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6d7r2Fq2j7f").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getMethod_id7phNEaHi8Cl = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7phNEaHi8Cl").build(SMethodBuilder.createJavaParameter((Class<SNodeReference>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getDescriptor_idUBgfI9eMAt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("UBgfI9eMAt").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMethod_id6d7r2Fq2j7f, getDescriptor_idUBgfI9eMAt);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMethod_id6d7r2Fq2j7f, getMethod_id7phNEaHi8Cl, getDescriptor_idUBgfI9eMAt);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static SNode getMethod_id6d7r2Fq2j7f(@NotNull SNode __thisNode__, final SNode md) {
+  @Deprecated(forRemoval = true, since = "2021.3")
+  /*package*/ static SNode getMethod_id6d7r2Fq2j7f(@NotNull SNode __thisNode__, SNode md) {
+    return ((SNode) LanguageAspectDescriptor__BehaviorDescriptor.getMethod_id7phNEaHi8Cl.invoke(__thisNode__, SNodeOperations.getPointer(md)));
+  }
+  /*package*/ static SNode getMethod_id7phNEaHi8Cl(@NotNull SNode __thisNode__, final SNodeReference md) {
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.member$L_2d), CONCEPTS.MethodInstance$jE)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SLinkOperations.getTarget(it, LINKS.decl$QvLv) == md;
+        return Objects.equals(SLinkOperations.getPointer(it, LINKS.decl$QvLv), md);
       }
     });
   }
@@ -64,6 +71,8 @@ public final class LanguageAspectDescriptor__BehaviorDescriptor extends BaseBHDe
       case 0:
         return (T) ((SNode) getMethod_id6d7r2Fq2j7f(node, (SNode) parameters[0]));
       case 1:
+        return (T) ((SNode) getMethod_id7phNEaHi8Cl(node, (SNodeReference) parameters[0]));
+      case 2:
         return (T) ((SNode) getDescriptor_idUBgfI9eMAt(node));
       default:
         throw new BHMethodNotFoundException(this, method);
