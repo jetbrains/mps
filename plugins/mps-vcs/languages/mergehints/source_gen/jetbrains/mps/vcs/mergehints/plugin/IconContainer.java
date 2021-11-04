@@ -5,5 +5,5 @@ package jetbrains.mps.vcs.mergehints.plugin;
 import jetbrains.mps.smodel.runtime.IconResource;
 
 public class IconContainer {
-  protected static IconResource RESOURCE_a0a7a0a0a1 = new IconResource("commit.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a5a0a0a1 = new IconResource("commit.png", IconContainer.class);
 }

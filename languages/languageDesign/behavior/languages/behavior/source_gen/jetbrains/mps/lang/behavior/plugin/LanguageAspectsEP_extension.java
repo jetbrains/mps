@@ -4,101 +4,44 @@ package jetbrains.mps.lang.behavior.plugin;
 
 import jetbrains.mps.smodel.structure.Extension;
 import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptorBase;
+import jetbrains.mps.aspects.OrderDescriptor;
+import jetbrains.mps.lang.structure.plugin.MPSAspects_Order;
 import jetbrains.mps.aspects.OrderParticipant;
 import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.smodel.Language;
-import java.util.Collections;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
-import jetbrains.mps.smodel.language.LanguageAspectGenerator;
 import jetbrains.mps.smodel.runtime.IconResource;
-import jetbrains.mps.aspects.OrderDescriptor;
-import jetbrains.mps.lang.structure.plugin.MPSAspects_Order;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import org.jetbrains.mps.openapi.persistence.ModelRoot;
-import jetbrains.mps.project.SModuleOperations;
 
 public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspectDescriptor> {
   public LanguageAspectsEP_extension() {
     super("jetbrains.mps.lang.aspect.LanguageAspectsEP");
   }
   public LanguageAspectDescriptor get() {
-    return new LanguageAspectDescriptor() {
-      public String getPresentableAspectName() {
-        return "behavior";
-      }
-      @Override
-      public String getId() {
-        return getPresentableAspectName();
-      }
+    return new LanguageAspectDescriptorBase("behavior") {
+      private OrderDescriptor myOrderConstraints = new MPSAspects_Order();
+
       @Override
       public int compareTo(OrderParticipant<String> other) {
         return myOrderConstraints.compare(this.getId(), other.getId());
       }
       @NotNull
-      public Collection<SModel> getAspectModels(final SModule language) {
-        if (!((language instanceof Language))) {
-          return Collections.emptyList();
-        }
-        Iterable<SModel> allModels = language.getModels();
-        return Sequence.fromIterable(allModels).where(new IWhereFilter<SModel>() {
-          public boolean accept(SModel it) {
-            String fullName = it.getModelName();
-            return Objects.equals(fullName, language.getModuleName() + "." + getPresentableAspectName());
-          }
-        }).ofType(SModel.class).toListSequence();
-      }
-      @NotNull
+      @Override
       public Collection<SLanguage> getMainLanguages() {
         return ListSequence.fromListAndArray(new ArrayList<SLanguage>(), MetaAdapterFactory.getLanguage(0xaf65afd8f0dd4942L, 0x87d963a55f2a9db1L, "jetbrains.mps.lang.behavior"), MetaAdapterFactory.getLanguage(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, "jetbrains.mps.lang.smodel"));
       }
       @Nullable
-      public LanguageAspectGenerator getGenerator() {
-        return null;
-      }
-      @Nullable
       public IconResource getIconResource() {
-        return IconContainer.RESOURCE_a0a6a0a0a1;
+        return IconContainer.RESOURCE_a0a4a0a0a1;
       }
       @Nullable
       public String getHelpUrl() {
         return HELP_URL;
       }
-
-
-      private OrderDescriptor myOrderConstraints = new MPSAspects_Order();
-
-
-
-
-
-
-      public boolean canCreate(SModule language) {
-        return CollectionSequence.fromCollection(getAspectModels(language)).isEmpty();
-      }
-
-      public void create(SModule language) {
-        Language l = ((Language) language);
-        SModel structureModel = l.getStructureModelDescriptor();
-        ModelRoot modelRoot;
-        if (structureModel == null) {
-          modelRoot = l.getModelRoots().iterator().next();
-        } else {
-          modelRoot = structureModel.getModelRoot();
-        }
-        SModuleOperations.createModelWithAdjustments(l.getModuleName() + '.' + getPresentableAspectName(), modelRoot);
-      }
-
-
     };
   }
   private static final String HELP_URL = URLFunction_HelpCenterDocUrl.getUrl() + "/behavior.html";

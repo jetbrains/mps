@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <debug-info version="2">
   <concept fqn="c:c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/3751132065236767060:jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodInstance" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
-  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
@@ -22,107 +18,48 @@
   </root>
   <root nodeRef="r:6f374023-1b4e-4a80-8bf6-2cc3148faa52(jetbrains.mps.lang.editor.plugin)/3193873080290339088">
     <file name="LanguageAspectsEP_extension.java">
-      <node id="3193873080290339088" at="31,40,32,57" concept="11" />
-      <node id="3193873080290339088" at="36,48,37,24" concept="8" />
-      <node id="3193873080290339088" at="40,29,41,42" concept="8" />
-      <node id="3193873080290339088" at="44,60,45,71" concept="8" />
-      <node id="3193873080290339088" at="49,48,50,41" concept="8" />
-      <node id="3193873080290339088" at="51,9,52,58" concept="7" />
-      <node id="3193873080290339088" at="54,44,55,48" concept="7" />
-      <node id="3193873080290339088" at="55,48,56,105" concept="8" />
-      <node id="3193873080290339088" at="61,55,62,280" concept="8" />
-      <node id="3193873080290339088" at="65,53,66,20" concept="8" />
-      <node id="3193873080290339088" at="69,61,70,181" concept="8" />
-      <node id="3193873080290339088" at="73,45,74,49" concept="8" />
-      <node id="3193873080290339088" at="77,34,78,24" concept="8" />
-      <node id="3193873080290339088" at="82,0,83,0" concept="4" trace="myOrderConstraints" />
-      <node id="3193873080290339088" at="89,50,90,86" concept="8" />
-      <node id="3193873080290339088" at="93,44,94,43" concept="7" />
-      <node id="3193873080290339088" at="94,43,95,64" concept="7" />
-      <node id="3193873080290339088" at="95,64,96,28" concept="7" />
-      <node id="3193873080290339088" at="97,37,98,58" concept="3" />
-      <node id="3193873080290339088" at="99,16,100,52" concept="3" />
-      <node id="3193873080290339088" at="101,9,102,118" concept="3" />
-      <node id="4726480899536083417" at="108,0,109,0" concept="9" trace="HELP_URL" />
-      <node id="3193873080290339088" at="99,14,101,9" concept="1" />
-      <node id="3193873080290339088" at="31,0,34,0" concept="2" trace="LanguageAspectsEP_extension#()V" />
-      <node id="3193873080290339088" at="36,0,39,0" concept="6" trace="getPresentableAspectName#()Ljava/lang/String;" />
-      <node id="3193873080290339088" at="48,73,51,9" concept="5" />
-      <node id="3193873080290339088" at="89,0,92,0" concept="6" trace="canCreate#(Lorg/jetbrains/mps/openapi/module/SModule;)Z" />
-      <node id="3193873080290339088" at="39,0,43,0" concept="6" trace="getId#()Ljava/lang/String;" />
-      <node id="3193873080290339088" at="43,0,47,0" concept="6" trace="compareTo#(Ljetbrains/mps/aspects/OrderParticipant;)I" />
-      <node id="3193873080290339088" at="54,0,58,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
-      <node id="3193873080290339088" at="60,0,64,0" concept="6" trace="getMainLanguages#()Ljava/util/Collection;" />
-      <node id="3193873080290339088" at="64,0,68,0" concept="6" trace="getGenerator#()Ljetbrains/mps/smodel/language/LanguageAspectGenerator;" />
-      <node id="3193873080290339088" at="68,0,72,0" concept="6" trace="getAdditionalLanguages#()Ljava/util/Collection;" />
-      <node id="3193873080290339088" at="72,0,76,0" concept="6" trace="getIconResource#()Ljetbrains/mps/smodel/runtime/IconResource;" />
-      <node id="3193873080290339088" at="76,0,80,0" concept="6" trace="getHelpUrl#()Ljava/lang/String;" />
-      <node id="3193873080290339088" at="96,28,101,9" concept="5" />
-      <node id="3193873080290339088" at="52,58,58,49" concept="8" />
-      <node id="3193873080290339088" at="93,0,104,0" concept="6" trace="create#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
-      <node id="3193873080290339088" at="47,0,60,0" concept="6" trace="getAspectModels#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljava/util/Collection;" />
-      <node id="3193873080290339088" at="34,41,106,6" concept="8" />
-      <node id="3193873080290339088" at="34,0,108,0" concept="0" trace="get#()Ljetbrains/mps/smodel/language/LanguageAspectDescriptor;" />
-      <scope id="3193873080290339088" at="31,40,32,57" />
-      <scope id="3193873080290339088" at="36,48,37,24" />
-      <scope id="3193873080290339088" at="40,29,41,42" />
-      <scope id="3193873080290339088" at="44,60,45,71" />
-      <scope id="3193873080290339088" at="49,48,50,41" />
-      <scope id="3193873080290339088" at="61,55,62,280" />
-      <scope id="3193873080290339088" at="65,53,66,20" />
-      <scope id="3193873080290339088" at="69,61,70,181" />
-      <scope id="3193873080290339088" at="73,45,74,49" />
-      <scope id="3193873080290339088" at="77,34,78,24" />
-      <scope id="3193873080290339088" at="89,50,90,86" />
-      <scope id="3193873080290339088" at="97,37,98,58" />
-      <scope id="3193873080290339088" at="99,16,100,52" />
-      <scope id="3193873080290339088" at="54,44,56,105">
-        <var name="fullName" id="3193873080290339088" />
-      </scope>
-      <scope id="3193873080290339088" at="31,0,34,0" />
-      <scope id="3193873080290339088" at="36,0,39,0" />
-      <scope id="3193873080290339088" at="89,0,92,0">
-        <var name="language" id="3193873080290339088" />
-      </scope>
-      <scope id="3193873080290339088" at="39,0,43,0" />
-      <scope id="3193873080290339088" at="43,0,47,0">
+      <node id="3193873080290339088" at="21,40,22,57" concept="7" />
+      <node id="3193873080290339088" at="26,0,27,0" concept="2" trace="myOrderConstraints" />
+      <node id="3193873080290339088" at="29,60,30,71" concept="4" />
+      <node id="3193873080290339088" at="34,55,35,280" concept="4" />
+      <node id="3193873080290339088" at="38,61,39,181" concept="4" />
+      <node id="3193873080290339088" at="42,45,43,49" concept="4" />
+      <node id="3193873080290339088" at="46,34,47,24" concept="4" />
+      <node id="4726480899536083417" at="51,0,52,0" concept="5" trace="HELP_URL" />
+      <node id="3193873080290339088" at="21,0,24,0" concept="1" trace="LanguageAspectsEP_extension#()V" />
+      <node id="3193873080290339088" at="28,0,32,0" concept="3" trace="compareTo#(Ljetbrains/mps/aspects/OrderParticipant;)I" />
+      <node id="3193873080290339088" at="37,0,41,0" concept="3" trace="getAdditionalLanguages#()Ljava/util/Collection;" />
+      <node id="3193873080290339088" at="41,0,45,0" concept="3" trace="getIconResource#()Ljetbrains/mps/smodel/runtime/IconResource;" />
+      <node id="3193873080290339088" at="45,0,49,0" concept="3" trace="getHelpUrl#()Ljava/lang/String;" />
+      <node id="3193873080290339088" at="32,0,37,0" concept="3" trace="getMainLanguages#()Ljava/util/Collection;" />
+      <node id="3193873080290339088" at="24,41,49,6" concept="4" />
+      <node id="3193873080290339088" at="24,0,51,0" concept="0" trace="get#()Ljetbrains/mps/smodel/language/LanguageAspectDescriptor;" />
+      <scope id="3193873080290339088" at="21,40,22,57" />
+      <scope id="3193873080290339088" at="29,60,30,71" />
+      <scope id="3193873080290339088" at="34,55,35,280" />
+      <scope id="3193873080290339088" at="38,61,39,181" />
+      <scope id="3193873080290339088" at="42,45,43,49" />
+      <scope id="3193873080290339088" at="46,34,47,24" />
+      <scope id="3193873080290339088" at="21,0,24,0" />
+      <scope id="3193873080290339088" at="28,0,32,0">
         <var name="other" id="3193873080290339088" />
       </scope>
-      <scope id="3193873080290339088" at="54,0,58,0">
-        <var name="it" id="3193873080290339088" />
-      </scope>
-      <scope id="3193873080290339088" at="60,0,64,0" />
-      <scope id="3193873080290339088" at="64,0,68,0" />
-      <scope id="3193873080290339088" at="68,0,72,0" />
-      <scope id="3193873080290339088" at="72,0,76,0" />
-      <scope id="3193873080290339088" at="76,0,80,0" />
-      <scope id="3193873080290339088" at="93,44,102,118">
-        <var name="l" id="3193873080290339088" />
-        <var name="modelRoot" id="3193873080290339088" />
-        <var name="structureModel" id="3193873080290339088" />
-      </scope>
-      <scope id="3193873080290339088" at="48,73,58,49">
-        <var name="allModels" id="3193873080290339088" />
-      </scope>
-      <scope id="3193873080290339088" at="93,0,104,0">
-        <var name="language" id="3193873080290339088" />
-      </scope>
-      <scope id="3193873080290339088" at="47,0,60,0">
-        <var name="language" id="3193873080290339088" />
-      </scope>
-      <scope id="3193873080290339088" at="34,41,106,6" />
-      <scope id="3193873080290339088" at="34,0,108,0" />
-      <unit id="3193873080290339088" at="53,58,58,9" name="jetbrains.mps.lang.editor.plugin.LanguageAspectsEP_extension$1$1" />
-      <unit id="3193873080290339088" at="35,15,106,5" name="jetbrains.mps.lang.editor.plugin.LanguageAspectsEP_extension$1" />
-      <unit id="3193873080290339088" at="30,0,110,0" name="jetbrains.mps.lang.editor.plugin.LanguageAspectsEP_extension" />
+      <scope id="3193873080290339088" at="37,0,41,0" />
+      <scope id="3193873080290339088" at="41,0,45,0" />
+      <scope id="3193873080290339088" at="45,0,49,0" />
+      <scope id="3193873080290339088" at="32,0,37,0" />
+      <scope id="3193873080290339088" at="24,41,49,6" />
+      <scope id="3193873080290339088" at="24,0,51,0" />
+      <unit id="3193873080290339088" at="25,15,49,5" name="jetbrains.mps.lang.editor.plugin.LanguageAspectsEP_extension$1" />
+      <unit id="3193873080290339088" at="20,0,53,0" name="jetbrains.mps.lang.editor.plugin.LanguageAspectsEP_extension" />
     </file>
   </root>
   <root nodeRef="r:6f374023-1b4e-4a80-8bf6-2cc3148faa52(jetbrains.mps.lang.editor.plugin)/4726480899536586749">
     <file name="URLFunction_HelpCenterDocUrl.java">
-      <node id="3569916352002070174" at="11,30,12,54" concept="8" />
-      <node id="4726480899536705523" at="11,0,14,0" concept="6" trace="invoke#()Ljava/lang/String;" />
-      <node id="4726480899536586749" at="9,33,14,15" concept="8" />
-      <node id="4726480899536586749" at="9,0,16,0" concept="10" trace="getUrl#()Ljava/lang/String;" />
+      <node id="3569916352002070174" at="11,30,12,54" concept="4" />
+      <node id="4726480899536705523" at="11,0,14,0" concept="3" trace="invoke#()Ljava/lang/String;" />
+      <node id="4726480899536586749" at="9,33,14,15" concept="4" />
+      <node id="4726480899536586749" at="9,0,16,0" concept="6" trace="getUrl#()Ljava/lang/String;" />
       <scope id="4726480899536705524" at="11,30,12,54" />
       <scope id="4726480899536705523" at="11,0,14,0" />
       <scope id="4726480899536586749" at="9,33,14,15" />
