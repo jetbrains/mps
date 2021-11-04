@@ -11,8 +11,10 @@ import jetbrains.mps.lang.test.runtime.RunWithCommand;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -67,30 +69,46 @@ public class TestWeaving_Test extends BaseTransformationTest {
     }
 
     public void test_weave() throws Exception {
-      new TestUtil(myProject).testWeave(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), LINKS.weave$ef6v), 11);
+      SNode tdg = this.testDataInstanceGenerated();
+      new TestUtil(myProject).testWeave(tdg, SLinkOperations.getChildren(tdg, LINKS.weave$ef6v), 11);
     }
     public void test_weaveEach() throws Exception {
-      new TestUtil(myProject).testWeave(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), LINKS.weaveEach$eflw), 17);
+      SNode tdg = this.testDataInstanceGenerated();
+      new TestUtil(myProject).testWeave(tdg, SLinkOperations.getChildren(tdg, LINKS.weaveEach$eflw), 17);
     }
     public void test_weaveMany() throws Exception {
-      new TestUtil(myProject).testWeaveMany(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), LINKS.weaveMany$KBdy), 23);
+      SNode tdg = this.testDataInstanceGenerated();
+      new TestUtil(myProject).testWeaveMany(tdg, SLinkOperations.getChildren(tdg, LINKS.weaveMany$KBdy), 23);
     }
     public void test_weaveEachMany() throws Exception {
-      new TestUtil(myProject).testWeaveMany(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), LINKS.weaveEachMany$KBsz), 50);
+      SNode tdg = this.testDataInstanceGenerated();
+      new TestUtil(myProject).testWeaveMany(tdg, SLinkOperations.getChildren(tdg, LINKS.weaveEachMany$KBsz), 50);
     }
     public void test_weaveInterpreted() throws Exception {
-      new TestUtil(myProject).testWeave(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), LINKS.weave$XdZ3), 11);
+      SNode tdi = this.testDataInstanceInterpreted();
+      new TestUtil(myProject).testWeave(tdi, SLinkOperations.getChildren(tdi, LINKS.weave$XdZ3), 11);
     }
     public void test_weaveEachInterpreted() throws Exception {
-      new TestUtil(myProject).testWeave(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), LINKS.weaveEach$Xee4), 17);
+      SNode tdi = this.testDataInstanceInterpreted();
+      new TestUtil(myProject).testWeave(tdi, SLinkOperations.getChildren(tdi, LINKS.weaveEach$Xee4), 17);
     }
     public void test_weaveManyInterpreted() throws Exception {
-      new TestUtil(myProject).testWeaveMany(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), LINKS.weaveMany$vA66), 23);
+      SNode tdi = this.testDataInstanceInterpreted();
+      new TestUtil(myProject).testWeaveMany(tdi, SLinkOperations.getChildren(tdi, LINKS.weaveMany$vA66), 23);
     }
     public void test_weaveEachManyInterpreted() throws Exception {
-      new TestUtil(myProject).testWeaveMany(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), SLinkOperations.getChildren(SNodeOperations.getNode("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), LINKS.weaveEachMany$vAl7), 50);
+      SNode tdi = this.testDataInstanceInterpreted();
+      new TestUtil(myProject).testWeaveMany(tdi, SLinkOperations.getChildren(tdi, LINKS.weaveEachMany$vAl7), 50);
     }
 
+    public SNode testDataInstanceGenerated() {
+      // note, RootConcept here comes from traceInfo.testWeavingGenerated
+      return SPointerOperations.resolveNode(new SNodePointer("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "6186432342008485032"), myProject.getRepository());
+    }
+    public SNode testDataInstanceInterpreted() {
+      // note, RootConcept here comes from traceInfo.testWeavingInterpreted
+      return SPointerOperations.resolveNode(new SNodePointer("r:7e5623b0-f241-4ce8-8fe7-d8a5c8c44458(jetbrains.mps.traceInfo.testWeaving.data)", "2819311507031209172"), myProject.getRepository());
+    }
   }
 
   private static final class LINKS {
