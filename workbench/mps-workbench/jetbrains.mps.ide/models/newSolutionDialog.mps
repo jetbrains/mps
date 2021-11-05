@@ -2323,7 +2323,7 @@
               <property role="TrG5h" value="ex" />
               <node concept="nSUau" id="4zQJcD5N5O6" role="1tU5fm">
                 <node concept="3uibUv" id="4zQJcD5N7lI" role="nSUat">
-                  <ref role="3uigEE" to="ifj7:~PathFormatChecker$PathFormatException" resolve="PathFormatException" />
+                  <ref role="3uigEE" to="ifj7:~PathFormatChecker$PathFormatException" resolve="PathFormatChecker.PathFormatException" />
                 </node>
               </node>
             </node>

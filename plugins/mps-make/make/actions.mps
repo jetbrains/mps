@@ -2879,7 +2879,7 @@
                   <node concept="liA8E" id="7MHLsIR3mEw" role="2OqNvi">
                     <ref role="37wK5l" to="w1kc:~BaseScope.resolve(org.jetbrains.mps.openapi.module.SModuleReference)" resolve="resolve" />
                     <node concept="37vLTw" id="7MHLsIR3mEx" role="37wK5m">
-                      <ref role="3cqZAo" node="7MHLsIR38RT" resolve="langSrcModule" />
+                      <ref role="3cqZAo" node="7MHLsIR38RT" resolve="langSrcModuleRef" />
                     </node>
                   </node>
                 </node>

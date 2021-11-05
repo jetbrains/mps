@@ -5356,7 +5356,7 @@
                     <node concept="ANE8D" id="1X_O_$4y2Tv" role="2OqNvi" />
                   </node>
                   <node concept="37vLTw" id="1X_O_$4uQa8" role="37vLTJ">
-                    <ref role="3cqZAo" node="1X_O_$4lQe3" resolve="models1" />
+                    <ref role="3cqZAo" node="1X_O_$4lQe3" resolve="models" />
                   </node>
                 </node>
               </node>
@@ -5452,7 +5452,7 @@
               <ref role="3cqZAo" node="5zPLqcHLKP4" resolve="myViewer" />
             </node>
             <node concept="liA8E" id="69TGyf2fpoF" role="2OqNvi">
-              <ref role="37wK5l" to="p37l:69TGyf2eVc$" resolve="rebuildTree" />
+              <ref role="37wK5l" to="p37l:69TGyf2eVc$" resolve="showDiff" />
               <node concept="37vLTw" id="69TGyf2JCsY" role="37wK5m">
                 <ref role="3cqZAo" node="1vsKl3K0xFt" resolve="showTree" />
               </node>
@@ -6129,7 +6129,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="69TGyf1RVzy" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3clFb_" id="1R9fMbxrL$A" role="jymVt">

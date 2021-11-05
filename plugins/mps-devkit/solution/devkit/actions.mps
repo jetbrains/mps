@@ -821,7 +821,7 @@
                   <ref role="37wK5l" to="lz1h:3mo93YU21TB" resolve="projectHome" />
                   <ref role="1Pybhc" to="lz1h:3mo93YU11jY" resolve="NewModuleDialog" />
                   <node concept="37vLTw" id="3mo93YU3bBV" role="37wK5m">
-                    <ref role="3cqZAo" node="3mo93YU3bBR" resolve="project" />
+                    <ref role="3cqZAo" node="3mo93YU3bBR" resolve="mpsProject" />
                   </node>
                 </node>
                 <node concept="Xl_RD" id="7G8zgmvNHQ$" role="37wK5m">
@@ -864,7 +864,7 @@
                 <property role="373rjd" value="true" />
                 <ref role="37wK5l" to="lz1h:3mo93YU13GT" resolve="NewModuleDialog" />
                 <node concept="37vLTw" id="3mo93YU3bBW" role="37wK5m">
-                  <ref role="3cqZAo" node="3mo93YU3bBR" resolve="project" />
+                  <ref role="3cqZAo" node="3mo93YU3bBR" resolve="mpsProject" />
                 </node>
                 <node concept="37vLTw" id="3mo93YU33us" role="37wK5m">
                   <ref role="3cqZAo" node="3mo93YU2QTa" resolve="cfg" />
@@ -1100,7 +1100,7 @@
               <ref role="1Pybhc" to="rvbb:~ProjectPane" resolve="ProjectPane" />
               <ref role="37wK5l" to="rvbb:~ProjectPane.getInstance(jetbrains.mps.project.Project)" resolve="getInstance" />
               <node concept="37vLTw" id="3mo93YU3bBX" role="37wK5m">
-                <ref role="3cqZAo" node="3mo93YU3bBR" resolve="project" />
+                <ref role="3cqZAo" node="3mo93YU3bBR" resolve="mpsProject" />
               </node>
             </node>
           </node>

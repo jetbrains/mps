@@ -6482,7 +6482,7 @@
                       <node concept="3cpWsn" id="59GNzBidlin" role="3cpWs9">
                         <property role="TrG5h" value="splitterRepainter" />
                         <node concept="3uibUv" id="59GNzBidlio" role="1tU5fm">
-                          <ref role="3uigEE" to="hdhb:6Gx$enTWXiW" resolve="SplitterRepainter" />
+                          <ref role="3uigEE" to="hdhb:6Gx$enTWXiW" resolve="DiffChangeGroupLayout.SplitterRepainter" />
                         </node>
                         <node concept="1rXfSq" id="59GNzBidlip" role="33vP2m">
                           <ref role="37wK5l" node="6Gx$enTXOJV" resolve="getSplitterRepainter" />
@@ -10549,7 +10549,7 @@
                                             <node concept="3clFbC" id="1X_O_$5CPwL" role="3K4Cdx">
                                               <node concept="10Nm6u" id="1X_O_$5D0ZC" role="3uHU7w" />
                                               <node concept="37vLTw" id="1X_O_$5CJEv" role="3uHU7B">
-                                                <ref role="3cqZAo" node="5zPLqcHJB95" resolve="myChangeSet1" />
+                                                <ref role="3cqZAo" node="5zPLqcHJB95" resolve="myChangeSets" />
                                               </node>
                                             </node>
                                             <node concept="2OqwBi" id="69TGyf3b8fx" role="3K4GZi">

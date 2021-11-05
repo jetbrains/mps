@@ -9994,8 +9994,8 @@
         <node concept="3clFbF" id="3Br1n7KC6$J" role="3cqZAp">
           <node concept="2OqwBi" id="3Br1n7KC6$G" role="3clFbG">
             <node concept="10M0yZ" id="3Br1n7KC6$H" role="2Oq$k0">
-              <ref role="1PxDUh" to="wyt6:~System" />
-              <ref role="3cqZAo" to="wyt6:~System.err" />
+              <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+              <ref role="3cqZAo" to="wyt6:~System.err" resolve="err" />
             </node>
             <node concept="liA8E" id="3Br1n7KC6$I" role="2OqNvi">
               <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
@@ -10523,7 +10523,7 @@
         <node concept="3clFbJ" id="3Br1n7KBXZ2" role="3cqZAp">
           <node concept="2OqwBi" id="3Br1n7KCzZL" role="3clFbw">
             <node concept="37vLTw" id="3HdxFTUj9wO" role="2Oq$k0">
-              <ref role="3cqZAo" node="4937uxYQn7t" resolve="FILE" />
+              <ref role="3cqZAo" node="4937uxYQn7t" resolve="FILE_PROTOCOL" />
             </node>
             <node concept="liA8E" id="3Br1n7KC$Jt" role="2OqNvi">
               <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
