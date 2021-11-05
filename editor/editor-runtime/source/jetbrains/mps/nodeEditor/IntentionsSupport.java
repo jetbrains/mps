@@ -167,6 +167,9 @@ public class IntentionsSupport {
   }
 
   private void updateIntentionsStatus() {
+    if (!myEditor.getEditorConfiguration().showLightBulb) {
+      return;
+    }
     stopIntentionThread();
 
     hideLightBulb();

@@ -12697,27 +12697,33 @@
             <node concept="37vLTw" id="1UUFr_mXnsj" role="37wK5m">
               <ref role="3cqZAo" node="1UUFr_mXhba" resolve="repository" />
             </node>
-            <node concept="2OqwBi" id="5$RR$ZQhLoa" role="37wK5m">
-              <node concept="2OqwBi" id="71dZSFH4aZC" role="2Oq$k0">
-                <node concept="2OqwBi" id="5$RR$ZQhLob" role="2Oq$k0">
-                  <node concept="2ShNRf" id="5$RR$ZQhLoc" role="2Oq$k0">
-                    <node concept="1pGfFk" id="5$RR$ZQhLod" role="2ShVmc">
-                      <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.&lt;init&gt;()" resolve="EditorConfigurationBuilder" />
+            <node concept="2OqwBi" id="o22Q$svQET" role="37wK5m">
+              <node concept="2OqwBi" id="5$RR$ZQhLoa" role="2Oq$k0">
+                <node concept="2OqwBi" id="71dZSFH4aZC" role="2Oq$k0">
+                  <node concept="2OqwBi" id="5$RR$ZQhLob" role="2Oq$k0">
+                    <node concept="2ShNRf" id="5$RR$ZQhLoc" role="2Oq$k0">
+                      <node concept="1pGfFk" id="5$RR$ZQhLod" role="2ShVmc">
+                        <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.&lt;init&gt;()" resolve="EditorConfigurationBuilder" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="5$RR$ZQhLoe" role="2OqNvi">
+                      <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.rightToLeft(boolean)" resolve="rightToLeft" />
+                      <node concept="37vLTw" id="5$RR$ZQhTIT" role="37wK5m">
+                        <ref role="3cqZAo" node="5$RR$ZQhPGV" resolve="rightToLeft" />
+                      </node>
                     </node>
                   </node>
-                  <node concept="liA8E" id="5$RR$ZQhLoe" role="2OqNvi">
-                    <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.rightToLeft(boolean)" resolve="rightToLeft" />
-                    <node concept="37vLTw" id="5$RR$ZQhTIT" role="37wK5m">
-                      <ref role="3cqZAo" node="5$RR$ZQhPGV" resolve="rightToLeft" />
-                    </node>
+                  <node concept="liA8E" id="71dZSFH4bgZ" role="2OqNvi">
+                    <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.showSelectionLine(boolean)" resolve="showSelectionLine" />
+                    <node concept="3clFbT" id="71dZSFH4cD2" role="37wK5m" />
                   </node>
                 </node>
-                <node concept="liA8E" id="71dZSFH4bgZ" role="2OqNvi">
+                <node concept="liA8E" id="71dZSFH4cW4" role="2OqNvi">
                   <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.showSelectionLine(boolean)" resolve="showSelectionLine" />
-                  <node concept="3clFbT" id="71dZSFH4cD2" role="37wK5m" />
+                  <node concept="3clFbT" id="o22Q$svHCL" role="37wK5m" />
                 </node>
               </node>
-              <node concept="liA8E" id="71dZSFH4cW4" role="2OqNvi">
+              <node concept="liA8E" id="o22Q$svSig" role="2OqNvi">
                 <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.build()" resolve="build" />
               </node>
             </node>
@@ -13083,35 +13089,41 @@
             <node concept="37vLTw" id="6dXf3jYXvmR" role="37wK5m">
               <ref role="3cqZAo" node="6dXf3jYXvmo" resolve="repository" />
             </node>
-            <node concept="2OqwBi" id="3gquIuDtRrx" role="37wK5m">
-              <node concept="2OqwBi" id="3gquIuDtOuD" role="2Oq$k0">
-                <node concept="liA8E" id="3gquIuDtONb" role="2OqNvi">
-                  <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.rightToLeft(boolean)" resolve="rightToLeft" />
-                  <node concept="37vLTw" id="3gquIuDtRmh" role="37wK5m">
-                    <ref role="3cqZAo" node="6dXf3jYXvms" resolve="rightToLeft" />
+            <node concept="2OqwBi" id="o22Q$svz1e" role="37wK5m">
+              <node concept="2OqwBi" id="3gquIuDtRrx" role="2Oq$k0">
+                <node concept="2OqwBi" id="3gquIuDtOuD" role="2Oq$k0">
+                  <node concept="liA8E" id="3gquIuDtONb" role="2OqNvi">
+                    <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.rightToLeft(boolean)" resolve="rightToLeft" />
+                    <node concept="37vLTw" id="3gquIuDtRmh" role="37wK5m">
+                      <ref role="3cqZAo" node="6dXf3jYXvms" resolve="rightToLeft" />
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="71dZSFH3QdV" role="2Oq$k0">
+                    <node concept="2OqwBi" id="3gquIuDtLzg" role="2Oq$k0">
+                      <node concept="2ShNRf" id="3gquIuDtcfg" role="2Oq$k0">
+                        <node concept="1pGfFk" id="3gquIuDtJYy" role="2ShVmc">
+                          <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.&lt;init&gt;()" resolve="EditorConfigurationBuilder" />
+                        </node>
+                      </node>
+                      <node concept="liA8E" id="3gquIuDtLQX" role="2OqNvi">
+                        <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.showErrorsGutter(boolean)" resolve="showErrorsGutter" />
+                        <node concept="3clFbT" id="5$RR$ZQhZnK" role="37wK5m">
+                          <property role="3clFbU" value="true" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="71dZSFH3QAS" role="2OqNvi">
+                      <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.showSelectionLine(boolean)" resolve="showSelectionLine" />
+                      <node concept="3clFbT" id="71dZSFH47Fc" role="37wK5m" />
+                    </node>
                   </node>
                 </node>
-                <node concept="2OqwBi" id="71dZSFH3QdV" role="2Oq$k0">
-                  <node concept="2OqwBi" id="3gquIuDtLzg" role="2Oq$k0">
-                    <node concept="2ShNRf" id="3gquIuDtcfg" role="2Oq$k0">
-                      <node concept="1pGfFk" id="3gquIuDtJYy" role="2ShVmc">
-                        <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.&lt;init&gt;()" resolve="EditorConfigurationBuilder" />
-                      </node>
-                    </node>
-                    <node concept="liA8E" id="3gquIuDtLQX" role="2OqNvi">
-                      <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.showErrorsGutter(boolean)" resolve="showErrorsGutter" />
-                      <node concept="3clFbT" id="5$RR$ZQhZnK" role="37wK5m">
-                        <property role="3clFbU" value="true" />
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="71dZSFH3QAS" role="2OqNvi">
-                    <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.showSelectionLine(boolean)" resolve="showSelectionLine" />
-                    <node concept="3clFbT" id="71dZSFH47Fc" role="37wK5m" />
-                  </node>
+                <node concept="liA8E" id="3gquIuDtRKv" role="2OqNvi">
+                  <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.showLightBulb(boolean)" resolve="showLightBulb" />
+                  <node concept="3clFbT" id="o22Q$svwDY" role="37wK5m" />
                 </node>
               </node>
-              <node concept="liA8E" id="3gquIuDtRKv" role="2OqNvi">
+              <node concept="liA8E" id="o22Q$sv_rA" role="2OqNvi">
                 <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.build()" resolve="build" />
               </node>
             </node>

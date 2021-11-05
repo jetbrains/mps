@@ -25,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class EditorConfigurationBuilder {
   private boolean myRightToLeft;
+  private boolean myShowLightBulb = true;
   private boolean myShowErrorsGutter;
   private boolean myShowLeftHighlighter = true;
   private boolean myWithUI = true;
@@ -40,6 +41,11 @@ public class EditorConfigurationBuilder {
 
   public EditorConfigurationBuilder rightToLeft(boolean rightToLeft) {
     myRightToLeft = rightToLeft;
+    return this;
+  }
+
+  public EditorConfigurationBuilder showLightBulb(boolean showLightBulb) {
+    myShowLightBulb = showLightBulb;
     return this;
   }
 
@@ -86,6 +92,7 @@ public class EditorConfigurationBuilder {
   public EditorConfiguration build() {
     return new EditorConfiguration(
         myRightToLeft,
+        myShowLightBulb,
         myShowErrorsGutter,
         myShowLeftHighlighter,
         myWithUI,

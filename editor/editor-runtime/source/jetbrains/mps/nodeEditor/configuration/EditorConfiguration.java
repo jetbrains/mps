@@ -28,6 +28,7 @@ public class EditorConfiguration {
   @NotNull
   public final CaretManager caretManager;
 
+  public final boolean showLightBulb;
   public final boolean showErrorsGutter;
   public final boolean showLeftHighlighter;
   public final boolean rightToLeft;
@@ -38,6 +39,7 @@ public class EditorConfiguration {
 
   protected EditorConfiguration(
       boolean rightToLeft,
+      boolean showLightBulb,
       boolean showErrorsGutter,
       boolean showLeftHighlighter,
       boolean withUI,
@@ -47,6 +49,7 @@ public class EditorConfiguration {
       EditorPanelManager editorPanelManager,
       @NotNull CaretManager caretManager) {
     this.rightToLeft = rightToLeft;
+    this.showLightBulb = showLightBulb;
     this.showErrorsGutter = showErrorsGutter;
     this.showLeftHighlighter = showLeftHighlighter;
     this.withUI = withUI;

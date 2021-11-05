@@ -345,7 +345,7 @@ public class DiffEditor implements EditorMessageOwner {
 
 
     public MyInspectorEditorComponent(@NotNull SRepository repository, boolean rightToLeft) {
-      super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).showSelectionLine(false).build());
+      super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).showSelectionLine(false).showSelectionLine(false).build());
     }
 
     @Override
@@ -406,7 +406,7 @@ public class DiffEditor implements EditorMessageOwner {
 
 
     public MainEditorComponent(SRepository repository, boolean rightToLeft) {
-      super(repository, new EditorConfigurationBuilder().showErrorsGutter(true).showSelectionLine(false).rightToLeft(rightToLeft).build());
+      super(repository, new EditorConfigurationBuilder().showErrorsGutter(true).showSelectionLine(false).rightToLeft(rightToLeft).showLightBulb(false).build());
       myDiffFileEditor = new DiffFileEditor(this);
       setDefaultPopupGroupId(((String) BHReflection.invoke0(SNodeOperations.getNode("r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)", "426251916200108583"), CONCEPTS.ActionGroupDeclaration$VO, SMethodTrimmedId.create("getGeneratedClassFQName", CONCEPTS.ActionGroupDeclaration$VO, "hEwJa8g"))));
       getMessagesGutter().setMessageThicknessProvider((SimpleEditorMessage m) -> false);
