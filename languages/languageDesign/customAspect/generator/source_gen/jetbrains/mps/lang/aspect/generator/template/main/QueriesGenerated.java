@@ -71,6 +71,9 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Object referenceMacro_GetReferent_2_1(final ReferenceMacroContext _context) {
     return ((SNode) _context.getVariable("interfaceClass"));
   }
+  public static Object referenceMacro_GetReferent_5_0(final ReferenceMacroContext _context) {
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.proponent$mChy);
+  }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {
     return (LanguageAspectDescriptor__BehaviorDescriptor.getMethod_id7phNEaHi8Cl.invoke(_context.getNode(), new SNodePointer("r:10b498c7-d1bd-4b96-8a49-bb59f0e63af3(jetbrains.mps.lang.aspect.methods)", "2343319097654649472")) != null);
   }
@@ -109,6 +112,9 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_5_6(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.helpUrl$JqN8) != null);
+  }
+  public static boolean ifMacro_Condition_5_7(final IfMacroContext _context) {
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.proponent$mChy) != null);
   }
   public static SNode sourceNodeQuery_3_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(LanguageAspectDescriptor__BehaviorDescriptor.getMethod_id7phNEaHi8Cl.invoke(_context.getNode(), new SNodePointer("r:10b498c7-d1bd-4b96-8a49-bb59f0e63af3(jetbrains.mps.lang.aspect.methods)", "3433054418424529689")), LINKS.body$5xQk);
@@ -314,6 +320,7 @@ public class QueriesGenerated extends QueryProviderBase {
     imcMethods.put("8525822767670417402", new IfMC(i++));
     imcMethods.put("8525822767670417457", new IfMC(i++));
     imcMethods.put("8525822767670417484", new IfMC(i++));
+    imcMethods.put("3771838123084536256", new IfMC(i++));
   }
   @NotNull
   @Override
@@ -355,6 +362,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.ifMacro_Condition_5_5(ctx);
         case 12:
           return QueriesGenerated.ifMacro_Condition_5_6(ctx);
+        case 13:
+          return QueriesGenerated.ifMacro_Condition_5_7(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -364,6 +373,7 @@ public class QueriesGenerated extends QueryProviderBase {
   {
     rtqMethods.put("5700381506346614253", new RTQ(0, "Object"));
     rtqMethods.put("5700381506346613936", new RTQ(1, "Object"));
+    rtqMethods.put("3771838123084615367", new RTQ(2, "SimpleLanguageAspectDescriptor"));
   }
   @NotNull
   @Override
@@ -384,6 +394,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.referenceMacro_GetReferent_2_0(ctx);
         case 1:
           return QueriesGenerated.referenceMacro_GetReferent_2_1(ctx);
+        case 2:
+          return QueriesGenerated.referenceMacro_GetReferent_5_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -393,6 +405,7 @@ public class QueriesGenerated extends QueryProviderBase {
   private static final class LINKS {
     /*package*/ static final SReferenceLink target$d3me = MetaAdapterFactory.getReferenceLink(0xc9d137c4325944f8L, 0x80ff33ab2b506ee4L, 0x22035699bdd7814bL, 0x22035699bdd7814cL, "target");
     /*package*/ static final SContainmentLink order$QOvc = MetaAdapterFactory.getContainmentLink(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L, 0x2085244dcb121e81L, "order");
+    /*package*/ static final SReferenceLink proponent$mChy = MetaAdapterFactory.getReferenceLink(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L, 0x74f2640a65e2f4d9L, "proponent");
     /*package*/ static final SContainmentLink devkit$DZOi = MetaAdapterFactory.getContainmentLink(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L, 0x721adb764b494af2L, "devkit");
     /*package*/ static final SContainmentLink mainLanguages$IUpc = MetaAdapterFactory.getContainmentLink(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L, 0x54be5be5620c1b77L, "mainLanguages");
     /*package*/ static final SContainmentLink additionalLanguages$LptM = MetaAdapterFactory.getContainmentLink(0xf159adf43c9340f9L, 0x9c5a1f245a8697afL, 0x2fa4a8cdf0c9b076L, 0x54be5be5620c1b7dL, "additionalLanguages");

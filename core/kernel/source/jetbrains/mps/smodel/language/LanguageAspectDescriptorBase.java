@@ -77,4 +77,14 @@ public abstract class LanguageAspectDescriptorBase extends LanguageAspectDescrip
   public Collection<SLanguage> getMainLanguages() {
     return Collections.emptyList();
   }
+
+  /**
+   * Mechanism to give aspect implementation control over respective {@code @descriptor} model,
+   * now completely under {@code LanguageDescriptorModelProvider} control.
+   * @param descriptorModel {@code language@descriptor} model the aspect needs to populate/configure
+   * @since 2021.3
+   */
+  public void configureDescriptorModel(@NotNull SModel descriptorModel) {
+    // no-op initially, likely default impl that adds engaged languages shall move here
+  }
 }
