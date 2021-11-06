@@ -40,6 +40,7 @@
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
+      <concept id="5583843313507852240" name="jetbrains.mps.lang.structure.structure.MarkerInterfaceAttribute" flags="ng" index="3MrDgS" />
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="1096454100552" name="rootable" index="19KtqR" />
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
@@ -424,6 +425,7 @@
     <property role="3GE5qa" value="" />
     <property role="TrG5h" value="AutoInitDSLClass" />
     <property role="EcuMT" value="1055884086724924397" />
+    <node concept="3MrDgS" id="7jMp0D_Tek8" role="lGtFl" />
   </node>
   <node concept="1TIwiD" id="7GXvAHO00L4">
     <property role="3GE5qa" value="instances" />
