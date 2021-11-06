@@ -13,8 +13,6 @@ public class ActionIDs_extension extends Extension.Default<List<String>> {
     super("jetbrains.mps.lang.test.ActionIDs");
   }
 
-
-
   public List<String> get() {
     return ListSequence.fromListAndArray(new ArrayList<String>(), ActionManager.getInstance().getActionIds(""));
   }
