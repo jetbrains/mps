@@ -16293,8 +16293,8 @@
           </node>
         </node>
         <node concept="1SiIV0" id="hP_xM3OlEh" role="3bR37C">
-          <node concept="1Busua" id="hP_xM3OlEi" role="1SiIV1">
-            <ref role="1Busuk" node="1CtrbKI2fIc" resolve="jetbrains.mps.baseLanguage.lightweightdsl" />
+          <node concept="3bR9La" id="7jMp0DAlcij" role="1SiIV1">
+            <ref role="3bR37D" node="1CtrbKI2fIc" resolve="jetbrains.mps.baseLanguage.lightweightdsl" />
           </node>
         </node>
         <node concept="1SiIV0" id="3ldK8LuAis5" role="3bR37C">

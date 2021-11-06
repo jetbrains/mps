@@ -13,7 +13,6 @@
   </imports>
   <registry>
     <language id="c72da2b9-7cce-4447-8389-f407dc1158b7" name="jetbrains.mps.lang.structure">
-      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9" />
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -388,22 +387,6 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="536fTXa3uEm" role="PzmwI">
       <ref role="PrY4T" node="7aMlq14vYj7" resolve="DSLClassMember" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="3crTN2XY8Qo">
-    <property role="3GE5qa" value="DEPRECATED" />
-    <property role="TrG5h" value="GenerateModifier" />
-    <property role="34LRSv" value="generate" />
-    <property role="EcuMT" value="3682791316837141912" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="asaX9" id="6zkSwmUG6Et" role="lGtFl" />
-    <node concept="1TJgyi" id="3m06JgscQVS" role="1TKVEl">
-      <property role="TrG5h" value="name" />
-      <property role="IQ2nx" value="3855110916776619768" />
-      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
-    </node>
-    <node concept="PrWs8" id="3crTN2XY8Qq" role="PzmwI">
-      <ref role="PrY4T" node="2WSWNq1TGnY" resolve="MemberModifier" />
     </node>
   </node>
   <node concept="1TIwiD" id="1QReUKIFP7I">

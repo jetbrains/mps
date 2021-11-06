@@ -25,7 +25,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptDependentTypeDescriptor = createDescriptorForDependentTypeDescriptor();
   /*package*/ final ConceptDescriptor myConceptDependentTypeInstance = createDescriptorForDependentTypeInstance();
   /*package*/ final ConceptDescriptor myConceptEmptyMemberDescriptor = createDescriptorForEmptyMemberDescriptor();
-  /*package*/ final ConceptDescriptor myConceptGenerateModifier = createDescriptorForGenerateModifier();
   /*package*/ final ConceptDescriptor myConceptImplementationCode = createDescriptorForImplementationCode();
   /*package*/ final ConceptDescriptor myConceptIntegerPropertyInstance = createDescriptorForIntegerPropertyInstance();
   /*package*/ final ConceptDescriptor myConceptMemberInstance = createDescriptorForMemberInstance();
@@ -59,7 +58,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAutoInitDSLClass, myConceptBooleanPropertyInstance, myConceptCustomMemberDescriptor, myConceptDSLAnnotation, myConceptDSLClassMember, myConceptDSLDescriptor, myConceptDefaultModifier, myConceptDependentTypeDescriptor, myConceptDependentTypeInstance, myConceptEmptyMemberDescriptor, myConceptGenerateModifier, myConceptImplementationCode, myConceptIntegerPropertyInstance, myConceptMemberInstance, myConceptMemberModifier, myConceptMemberPlaceholder, myConceptMethodDescriptor, myConceptMethodInstance, myConceptMethodParameterInstance, myConceptMultipleModifier, myConceptParameterDescriptor, myConceptPlaceholderModifier, myConceptPropertyDescriptor, myConceptPropertyInstance, myConceptRequiredModifier, myConceptStringPropertyInstance);
+    return Arrays.asList(myConceptAutoInitDSLClass, myConceptBooleanPropertyInstance, myConceptCustomMemberDescriptor, myConceptDSLAnnotation, myConceptDSLClassMember, myConceptDSLDescriptor, myConceptDefaultModifier, myConceptDependentTypeDescriptor, myConceptDependentTypeInstance, myConceptEmptyMemberDescriptor, myConceptImplementationCode, myConceptIntegerPropertyInstance, myConceptMemberInstance, myConceptMemberModifier, myConceptMemberPlaceholder, myConceptMethodDescriptor, myConceptMethodInstance, myConceptMethodParameterInstance, myConceptMultipleModifier, myConceptParameterDescriptor, myConceptPlaceholderModifier, myConceptPropertyDescriptor, myConceptPropertyInstance, myConceptRequiredModifier, myConceptStringPropertyInstance);
   }
 
   @Override
@@ -86,8 +85,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptDependentTypeInstance;
       case LanguageConceptSwitch.EmptyMemberDescriptor:
         return myConceptEmptyMemberDescriptor;
-      case LanguageConceptSwitch.GenerateModifier:
-        return myConceptGenerateModifier;
       case LanguageConceptSwitch.ImplementationCode:
         return myConceptImplementationCode;
       case LanguageConceptSwitch.IntegerPropertyInstance:
@@ -224,16 +221,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:7cc2086d-c7d0-49c7-811c-ebbaf40d9195(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.structure)/5820409521797720671");
     b.version(2);
     b.alias("empty line");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForGenerateModifier() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.baseLanguage.lightweightdsl", "GenerateModifier", 0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x331be730bdf88d98L);
-    b.class_(false, false, false);
-    b.parent(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x2f38f33681e6c5feL);
-    b.origin("c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:7cc2086d-c7d0-49c7-811c-ebbaf40d9195(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.structure)/3682791316837141912");
-    b.version(2);
-    b.property("name", 0x35801af41c336ef8L).type(PrimitiveTypeId.STRING).origin("3855110916776619768").done();
-    b.alias("generate");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForImplementationCode() {

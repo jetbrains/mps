@@ -36,7 +36,6 @@
       </concept>
     </language>
     <language id="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67" name="jetbrains.mps.baseLanguage.lightweightdsl">
-      <concept id="3682791316837141912" name="jetbrains.mps.baseLanguage.lightweightdsl.structure.GenerateModifier" flags="ng" index="2eSQEC" />
       <concept id="3751132065236767079" name="jetbrains.mps.baseLanguage.lightweightdsl.structure.MethodDescriptor" flags="ng" index="q3mfq">
         <child id="3751132065236767081" name="retType" index="q3mfk" />
       </concept>
@@ -97,20 +96,17 @@
       <node concept="QcxE9" id="3zLwYDe0CPz" role="2IRzpu">
         <property role="QcwnP" value="activate" />
       </node>
-      <node concept="2eSQEC" id="3zLwYDe1iRn" role="2IRzpu" />
     </node>
     <node concept="q3mfq" id="3zLwYDe0BDO" role="QNr5C">
       <property role="TrG5h" value="deactivate" />
       <node concept="QcxE9" id="3zLwYDe0CPw" role="2IRzpu">
         <property role="QcwnP" value="deactivate" />
       </node>
-      <node concept="2eSQEC" id="3zLwYDe1iRu" role="2IRzpu" />
     </node>
     <node concept="qMXn0" id="3zLwYDe0Dgv" role="QNr5C" />
     <node concept="q3mfq" id="3zLwYDe0svr" role="QNr5C">
       <property role="TrG5h" value="get" />
       <node concept="2IRzkw" id="3zLwYDe0svu" role="2IRzpu" />
-      <node concept="2eSQEC" id="3zLwYDe1j0b" role="2IRzpu" />
       <node concept="q3mfx" id="3zLwYDe0sv$" role="q3mfk">
         <node concept="1bVj0M" id="3zLwYDe0sv_" role="q3mfw">
           <node concept="37vLTG" id="3zLwYDe0svA" role="1bW2Oz">

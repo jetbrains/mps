@@ -21,7 +21,6 @@
     <import index="wgdr" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.lang.editor.generator.internal(MPS.Editor/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
-    <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="pjrh" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter(MPS.Core/)" />
     <import index="rduf" ref="c7d5b9dd-a05f-4be2-bc73-f2e16994cc67/r:c730ea65-7d27-4707-a3cf-753587482880(jetbrains.mps.lang.classLike/jetbrains.mps.baseLanguage.lightweightdsl.actions)" />
     <import index="25zl" ref="r:7bd127a5-e641-4c13-b150-b9c9b96f76ae(jetbrains.mps.lang.modelapi.editor)" />
@@ -1694,63 +1693,6 @@
       </node>
     </node>
   </node>
-  <node concept="24kQdi" id="3crTN2Y1y6l">
-    <property role="3GE5qa" value="DEPRECATED" />
-    <ref role="1XX52x" to="oubp:3crTN2XY8Qo" resolve="GenerateModifier" />
-    <node concept="3EZMnI" id="3m06Jgsd1qs" role="2wV5jI">
-      <node concept="PMmxH" id="3m06Jgsd1qt" role="3EZMnx">
-        <ref role="PMmxG" to="tpco:2wZex4PafBj" resolve="alias" />
-      </node>
-      <node concept="3EZMnI" id="3m06Jgsd1$T" role="3EZMnx">
-        <node concept="VPM3Z" id="3m06Jgsd1$V" role="3F10Kt">
-          <property role="VOm3f" value="false" />
-        </node>
-        <node concept="3F0ifn" id="3m06Jgsd1qu" role="3EZMnx">
-          <property role="3F0ifm" value="&lt;" />
-          <node concept="11L4FC" id="3m06JgsdZGr" role="3F10Kt">
-            <property role="VOm3f" value="true" />
-          </node>
-          <node concept="11LMrY" id="3m06Jgsd1qv" role="3F10Kt">
-            <property role="VOm3f" value="true" />
-          </node>
-        </node>
-        <node concept="3F0A7n" id="3m06Jgsd1qw" role="3EZMnx">
-          <ref role="1NtTu8" to="oubp:3m06JgscQVS" resolve="name" />
-        </node>
-        <node concept="3F0ifn" id="3m06Jgsd1qx" role="3EZMnx">
-          <property role="3F0ifm" value="&gt;" />
-          <node concept="11L4FC" id="3m06Jgsd1qy" role="3F10Kt">
-            <property role="VOm3f" value="true" />
-          </node>
-        </node>
-        <node concept="l2Vlx" id="3m06Jgsd1$Y" role="2iSdaV" />
-        <node concept="pkWqt" id="3m06Jgsd1_t" role="pqm2j">
-          <node concept="3clFbS" id="3m06Jgsd1_u" role="2VODD2">
-            <node concept="3clFbF" id="3m06Jgsd1JX" role="3cqZAp">
-              <node concept="2OqwBi" id="3m06Jgsd3fc" role="3clFbG">
-                <node concept="2OqwBi" id="3m06Jgsd1O$" role="2Oq$k0">
-                  <node concept="pncrf" id="3m06Jgsd1JW" role="2Oq$k0" />
-                  <node concept="2Xjw5R" id="3m06Jgsd2it" role="2OqNvi">
-                    <node concept="1xMEDy" id="3m06Jgsd2iv" role="1xVPHs">
-                      <node concept="chp4Y" id="3m06JgsdELl" role="ri$Ld">
-                        <ref role="cht4Q" to="oubp:7aMlq14vYj7" resolve="DSLClassMember" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-                <node concept="1mIQ4w" id="3m06Jgsd3Eb" role="2OqNvi">
-                  <node concept="chp4Y" id="3m06JgsdEYs" role="cj9EA">
-                    <ref role="cht4Q" to="oubp:7aMlq14vVGL" resolve="PropertyDescriptor" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="l2Vlx" id="3m06Jgsd1qz" role="2iSdaV" />
-    </node>
-  </node>
   <node concept="312cEu" id="2nUiI4k5RgH">
     <property role="3GE5qa" value="instances" />
     <property role="TrG5h" value="ClassLikeMemberPlaceholderMenu" />
@@ -2315,10 +2257,6 @@
   <node concept="22mcaB" id="1wEcoXjIB0M">
     <ref role="aqKnT" to="oubp:3geGFOI0X5F" resolve="DependentTypeInstance" />
     <node concept="22hDWj" id="xzgvwPPp4P" role="22hAXT" />
-  </node>
-  <node concept="22mcaB" id="1wEcoXjIB0L">
-    <ref role="aqKnT" to="oubp:3crTN2XY8Qo" resolve="GenerateModifier" />
-    <node concept="22hDWj" id="xzgvwPPp4Q" role="22hAXT" />
   </node>
   <node concept="22mcaB" id="1wEcoXjIB0K">
     <ref role="aqKnT" to="oubp:5BD$AU43p5h" resolve="PropertyInstance" />
