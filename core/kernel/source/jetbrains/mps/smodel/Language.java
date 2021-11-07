@@ -514,13 +514,9 @@ public class Language extends ReloadableModuleBase implements ReloadableModule {
 
     @Override
     public Collection<SModuleReference> getDevKits(SModule contextModule, SModel forModel) {
-      Collection<SModuleReference> initialDevKits = new ArrayList<>(LanguageAspectSupport.getInitialDevKits(forModel));
       SModuleReference defaultDevkit = LanguageAspectSupport.getDefaultDevkit(forModel);
       if(defaultDevkit != null) {
-        initialDevKits.add(defaultDevkit);
-      }
-      if (!initialDevKits.isEmpty()) {
-        return initialDevKits;
+        return Collections.singleton(defaultDevkit);
       }
       return Collections.singleton(BootstrapLanguages.getGeneralPurposeDevKit());
     }

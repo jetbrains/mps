@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,13 +17,10 @@ package jetbrains.mps.smodel.language;
 
 import jetbrains.mps.aspects.InOrderSorter;
 import jetbrains.mps.project.DevKit;
-import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.smodel.structure.ExtensionPoint;
 import jetbrains.mps.util.IterableUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -42,8 +39,6 @@ import java.util.LinkedHashSet;
  * After completing the refactoring (3.3?), this class chould be cleaned up together with removal of LanguageAspect class
  */
 public class LanguageAspectSupport {
-
-  private static final Logger LOG = LogManager.getLogger(LanguageAspectSupport.class);
 
   public static boolean isAspectModel(SModel model) {
     SModule module = model.getModule();
@@ -141,33 +136,6 @@ public class LanguageAspectSupport {
     return Collections.emptyList();
   }
 
-  /**
-   * Provisional mechanism to ensure proper aspect devkit is added when model is created.
-   * Need to come up with a way to specify devkits in an aspect declaration, perhaps like main/additional languages (though not sure I like it)?
-   * @deprecated use getDefaultDevkit instead
-   */
-  @NotNull
-  @Deprecated(since = "2018.1", forRemoval = true)
-  public static Collection<SModuleReference> getInitialDevKits(SModel model) {
-    LanguageAspectDescriptor newAspect = getNewAspect(model);
-    if (newAspect == null) {
-      return Collections.emptyList();
-    }
-    String presentableAspectName = newAspect.getPresentableAspectName();
-    if ("structure".equals(presentableAspectName)) {
-      return Collections.singleton(BootstrapLanguages.getStructureAspectDevKit());
-    } else if ("constraints".equals(presentableAspectName)) {
-      return Collections.singleton(BootstrapLanguages.getConstraintAspectDevKit());
-    } else if ("dataFlow".equals(presentableAspectName)) {
-      return Collections.singleton(BootstrapLanguages.getDataFlowAspectDevKit());
-    } else if ("typesystem".equals(presentableAspectName)) {
-      return Collections.singleton(BootstrapLanguages.getTypesystemAspectDevKit());
-    } else if ("textGen".equals(presentableAspectName)) {
-      return Collections.singleton(BootstrapLanguages.getTextGenAspectDevKit());
-    }
-    return Collections.emptyList();
-  }
-
   public static boolean isLanguageModelNameForbidden(String modelName) {
     String shortName = modelName.substring(modelName.lastIndexOf('.') + 1);
     for (LanguageAspect aspect : LanguageAspect.values()) {
@@ -184,15 +152,11 @@ public class LanguageAspectSupport {
   }
 
   @Nullable
-  public static String getIconPath(SModel model) {
-    //todo
-    return null;
-  }
-
-  @Nullable
-@Deprecated(since = "3.3", forRemoval = true)
+  @Deprecated(since = "3.3", forRemoval = true)
   //for internal use only
-  public static LanguageAspect getOldAspect(SModel model) {
+  private static LanguageAspect getOldAspect(SModel model) {
+    // FTR, mbeddr still refers to old LanguageAspect.{ASPECT} constants, does it mean we
+    //      have to consult LA.values() here?
     for (LanguageAspect la : LanguageAspect.values()) {
       if (la.is(model)) return la;
     }
@@ -200,9 +164,10 @@ public class LanguageAspectSupport {
   }
 
   @Nullable
-@Deprecated(since = "3.3", forRemoval = true)
+  @Deprecated(since = "3.3", forRemoval = true)
   //for internal use only
   public static LanguageAspectDescriptor getNewAspect(SModel model) {
+    // JFYI, there's BaseIconManager that needs this method to be public
     for (LanguageAspectDescriptor d : collectAspectsUnsorted()) {
       if (d.getAspectModels(model.getModule()).contains(model)) return d;
     }
