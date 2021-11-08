@@ -3,12 +3,15 @@
  */
 package jetbrains.mps.smodel.language;
 
+import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.smodel.Language;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 import java.util.ArrayList;
@@ -76,15 +79,5 @@ public abstract class LanguageAspectDescriptorBase extends LanguageAspectDescrip
   @NotNull
   public Collection<SLanguage> getMainLanguages() {
     return Collections.emptyList();
-  }
-
-  /**
-   * Mechanism to give aspect implementation control over respective {@code @descriptor} model,
-   * now completely under {@code LanguageDescriptorModelProvider} control.
-   * @param descriptorModel {@code language@descriptor} model the aspect needs to populate/configure
-   * @since 2021.3
-   */
-  public void configureDescriptorModel(@NotNull SModel descriptorModel) {
-    // no-op initially, likely default impl that adds engaged languages shall move here
   }
 }

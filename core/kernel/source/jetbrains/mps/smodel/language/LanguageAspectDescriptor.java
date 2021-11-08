@@ -16,6 +16,8 @@
 package jetbrains.mps.smodel.language;
 
 import jetbrains.mps.aspects.OrderParticipant;
+import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.runtime.IconResource;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -24,6 +26,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -97,5 +100,25 @@ public abstract class LanguageAspectDescriptor implements OrderParticipant<Strin
   @Override
   public String toString() {
     return getId();
+  }
+
+  /**
+   * Mechanism to give aspect implementation control over respective {@code @descriptor} model,
+   * now completely under {@code LanguageDescriptorModelProvider} control.
+   * @param descriptorModel {@code language@descriptor} model the aspect needs to populate/configure
+   * @since 2021.3
+   */
+  public void configureDescriptorModel(@NotNull SModule module, @NotNull SModel descriptorModel) {
+    Collection<SLanguage> mainLanguages = new ArrayList<>(getMainLanguages());
+    SModuleReference dRef = getDefaultDevkit();
+    if (dRef != null) {
+      DevKit d = ((DevKit) dRef.resolve(module.getRepository()));
+      if (d != null) {
+        d.getAllExportedLanguageIds().forEach(mainLanguages::add);
+      }
+    }
+    for (SLanguage aspectLanguage : mainLanguages) {
+      ((SModelBase) descriptorModel).addEngagedOnGenerationLanguage(aspectLanguage);
+    }
   }
 }

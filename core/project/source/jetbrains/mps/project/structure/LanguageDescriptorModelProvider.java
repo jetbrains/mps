@@ -25,6 +25,7 @@ import jetbrains.mps.smodel.SModelId.IntegerSModelId;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.SnapshotModelData;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
+import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
 import jetbrains.mps.smodel.language.LanguageAspectSupport;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
@@ -50,7 +51,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import java.io.ByteArrayOutputStream;
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -248,12 +248,10 @@ public class LanguageDescriptorModelProvider extends DescriptorModelProvider {
       jetbrains.mps.smodel.SModel m = getSModel();
       m.addDevKit(BootstrapLanguages.getLanguageDescriptorDevKit());
       m.addEngagedOnGenerationLanguage(BootstrapLanguages.getLanguageDescriptorLang());
-      Collection<SModel> aspectModels = LanguageAspectSupport.getAspectModels(myModule);
-      for (SModel aspect : aspectModels) {
-        Collection<SLanguage> mainLanguages = new ArrayList<>(LanguageAspectSupport.getMainLanguages(aspect));
-        mainLanguages.addAll(LanguageAspectSupport.getDefaultDevkitLanguages(aspect));
-        for (@NotNull SLanguage aspectLanguage : mainLanguages) {
-          addEngagedOnGenerationLanguage(aspectLanguage);
+      for (LanguageAspectDescriptor lad : LanguageAspectSupport.collectAspects()) {
+        if (lad.hasAspect(myModule)) {
+          // at the moment, configureDescriptorModel expects myModule attached to a repo
+          lad.configureDescriptorModel(myModule, this);
         }
       }
     }

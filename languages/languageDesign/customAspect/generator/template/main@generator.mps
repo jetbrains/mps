@@ -1723,6 +1723,15 @@
                   <property role="TrG5h" value="configureDescriptorModel" />
                   <node concept="3Tm1VV" id="3hogGBOIrBN" role="1B3o_S" />
                   <node concept="3cqZAl" id="3hogGBOIrBP" role="3clF45" />
+                  <node concept="37vLTG" id="7iXwj06aH3J" role="3clF46">
+                    <property role="TrG5h" value="module" />
+                    <node concept="3uibUv" id="7iXwj06aH8U" role="1tU5fm">
+                      <ref role="3uigEE" to="lui2:~SModule" resolve="SModule" />
+                    </node>
+                    <node concept="2AHcQZ" id="7iXwj06aHfh" role="2AJF6D">
+                      <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+                    </node>
+                  </node>
                   <node concept="37vLTG" id="3hogGBOIrBQ" role="3clF46">
                     <property role="TrG5h" value="descriptorModel" />
                     <node concept="H_c77" id="3hogGBOIKWw" role="1tU5fm" />
