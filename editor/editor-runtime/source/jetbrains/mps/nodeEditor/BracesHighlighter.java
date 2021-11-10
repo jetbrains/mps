@@ -36,8 +36,6 @@ import java.util.Set;
 
 public class BracesHighlighter {
 
-  private static final Color BRACES_LEFT_HIGHLIGHT_COLOR = new JBColor(0x93D9D9, 0x3B514D);
-
   private final Set<EditorCell> myHighlightedCells = new HashSet<>();
   private final Set<EditorCell> myLeftHighlightedCells = new HashSet<>();
   private final EditorComponent myEditorComponent;
@@ -116,15 +114,16 @@ public class BracesHighlighter {
       EditorColorsScheme scheme = EditorColorsManager.getInstance().getGlobalScheme();
       Color c = mba.get(StyleAttributes.TEXT_BACKGROUND_COLOR);
       // Logic taken from com.intellij.openapi.editor.markup.DefaultLineMarkerRenderer
-      c = c != null ? c : mba.get(StyleAttributes.TEXT_COLOR);
-      c = c != null ? c : BRACES_LEFT_HIGHLIGHT_COLOR;
-      c = ColorUtil.isDark(scheme.getDefaultBackground()) ? ColorUtil.shift(c, 1.5d) : c.darker();
-      ((EditorComponent) bracePair.mySecondCell.getEditorComponent()).leftHighlightCells(
-          (jetbrains.mps.nodeEditor.cells.EditorCell) bracePair.mySecondCell,
-          (jetbrains.mps.nodeEditor.cells.EditorCell) bracePair.myFirstCell,
-          c);
-      myLeftHighlightedCells.add(bracePair.myFirstCell);
-      myLeftHighlightedCells.add(bracePair.mySecondCell);
+      c = c == null && mba.isSpecified(StyleAttributes.TEXT_COLOR) ? mba.get(StyleAttributes.TEXT_COLOR) : c;
+      if (c != null) {
+        c = ColorUtil.isDark(scheme.getDefaultBackground()) ? ColorUtil.shift(c, 1.5d) : c.darker();
+        ((EditorComponent) bracePair.mySecondCell.getEditorComponent()).leftHighlightCells(
+            (jetbrains.mps.nodeEditor.cells.EditorCell) bracePair.mySecondCell,
+            (jetbrains.mps.nodeEditor.cells.EditorCell) bracePair.myFirstCell,
+            c);
+        myLeftHighlightedCells.add(bracePair.myFirstCell);
+        myLeftHighlightedCells.add(bracePair.mySecondCell);
+      }
     }
   }
 
