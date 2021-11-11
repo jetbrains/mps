@@ -1127,6 +1127,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       }
 
       rebuildEditorContent();
+      if (hasUI()) {
+        refreshContentHighlighter();
+      }
 
       if (myNode != null && notifiesCreation()) {
         notifyCreation();
@@ -2420,16 +2423,20 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   @Override
   public void update() {
-    final jetbrains.mps.project.Project p = getCurrentProject();
-    final Highlighter highlighter = p == null ? null : p.getComponent(Highlighter.class);
     getModelAccess().runReadAction(() -> {
       //TODO: check if it's necessary to clear updater caches here?..
       rebuildAfterReloadModel();
-      if (highlighter != null) {
-        highlighter.resetCheckedStateInBackground(EditorComponent.this);
-      }
       rebuildEditorContent();
+      refreshContentHighlighter();
     });
+  }
+
+  private void refreshContentHighlighter() {
+    final jetbrains.mps.project.Project p = getCurrentProject();
+    final Highlighter highlighter = p == null ? null : p.getComponent(Highlighter.class);
+    if (highlighter != null) {
+      highlighter.resetCheckedStateInBackground(EditorComponent.this);
+    }
   }
 
   public void processKeyPressed(final KeyEvent keyEvent) {
