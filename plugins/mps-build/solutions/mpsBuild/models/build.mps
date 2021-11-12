@@ -2006,8 +2006,8 @@
       <property role="TrG5h" value="version.bugfixNr" />
       <node concept="aVJcg" id="3AMbuf1N6Pd" role="aVJcv">
         <node concept="NbPM2" id="3AMbuf1N6Pc" role="aVJcq">
-          <node concept="3Mxwew" id="4nmnu_pol9$" role="3MwsjC">
-            <property role="3MwjfP" value=".2" />
+          <node concept="3Mxwew" id="6I0qPKHzxXU" role="3MwsjC">
+            <property role="3MwjfP" value=".3" />
           </node>
         </node>
       </node>
