@@ -9,6 +9,7 @@
   </languages>
   <imports>
     <import index="tpcc" ref="r:00000000-0000-4000-0000-011c89590290(jetbrains.mps.lang.structure.plugin)" />
+    <import index="j6e7" ref="r:554f8053-4df6-4aa3-9ecf-e71658269bf9(jetbrains.mps.samples.customAspect.documentation.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -18,6 +19,7 @@
     </language>
     <language id="f159adf4-3c93-40f9-9c5a-1f245a8697af" name="jetbrains.mps.lang.aspect">
       <concept id="3433054418424672374" name="jetbrains.mps.lang.aspect.structure.SimpleLanguageAspectDescriptor" flags="ng" index="3vrhyV">
+        <reference id="8426907848585442521" name="proponent" index="h493j" />
         <child id="6106419185511570295" name="mainLanguages" index="QG$2i" />
         <child id="3433054418425083029" name="icon" index="3vqPLo" />
       </concept>
@@ -36,6 +38,7 @@
   </registry>
   <node concept="3vrhyV" id="2wQ3F8GeLNO">
     <property role="TrG5h" value="documentation" />
+    <ref role="h493j" to="j6e7:5YRAmyfn9B4" resolve="ModuleDescriptorDeputy" />
     <node concept="1QGGSu" id="2wQ3F8GeSk$" role="3vqPLo">
       <property role="1iqoE4" value="${module}/icons/documentation.png" />
     </node>

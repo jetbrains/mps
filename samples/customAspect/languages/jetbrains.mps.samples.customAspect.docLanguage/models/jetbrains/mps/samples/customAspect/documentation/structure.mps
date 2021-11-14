@@ -54,5 +54,10 @@
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
   </node>
+  <node concept="1TIwiD" id="5YRAmyfn9B4">
+    <property role="EcuMT" value="6897150028702063044" />
+    <property role="TrG5h" value="ModuleDescriptorDeputy" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+  </node>
 </model>
 

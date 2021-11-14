@@ -45,6 +45,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeChangeListenerAdapter;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -254,6 +255,20 @@ public class LanguageDescriptorModelProvider extends DescriptorModelProvider {
           lad.configureDescriptorModel(myModule, this);
         }
       }
+    }
+
+    @Override
+    public void addRootNode(@NotNull SNode node) {
+      // need this operation for alternative configureDescriptorModel() implementations that add custom roots into the model
+      // In fact, I'd prefer to modify SModelData directly, and I can pass one into the method, but then I don't
+      // know how to accomplish adding root by means of lang.smodel (if I mean to generate
+      // configureDescriptorModel() implementation eventually).
+      // This method is sort of exposed to outer world, that's why not perfectly clear for this read-only (as
+      // SModelBase#isReadOnly() suggests) model.
+      assertCanChange();
+      getModelData().addRootNode(node);
+      // I don't care to implement removeRootNode() as it's snapshot model data, rebuilt every time from scratch,
+      // and there are no custom code (that might want to do remove) for configureDescriptorModel() possible at the moment.
     }
 
     @Override

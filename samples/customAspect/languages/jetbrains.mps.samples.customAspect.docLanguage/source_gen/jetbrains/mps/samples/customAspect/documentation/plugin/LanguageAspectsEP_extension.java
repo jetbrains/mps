@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.IconResource;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 
 public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspectDescriptor> {
   public LanguageAspectsEP_extension() {
@@ -29,6 +32,10 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       @Nullable
       public IconResource getIconResource() {
         return IconContainer.RESOURCE_a0a2a0a0a1;
+      }
+      @Override
+      public void configureDescriptorModel(@NotNull SModule module, @NotNull SModel descriptorModel) {
+        SModelOperations.createNewRootNode(descriptorModel, MetaAdapterFactory.getConcept(0x22916f45e98f4433L, 0x9c1b1b382cf5bd8dL, 0x5fb799688f5c99c4L, "jetbrains.mps.samples.customAspect.documentation.structure.ModuleDescriptorDeputy"));
       }
     };
   }

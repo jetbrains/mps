@@ -14,6 +14,7 @@ import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptConceptDocumentation = createDescriptorForConceptDocumentation();
+  /*package*/ final ConceptDescriptor myConceptModuleDescriptorDeputy = createDescriptorForModuleDescriptorDeputy();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -28,7 +29,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptConceptDocumentation);
+    return Arrays.asList(myConceptConceptDocumentation, myConceptModuleDescriptorDeputy);
   }
 
   @Override
@@ -37,6 +38,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     switch (myIndexSwitch.index(id)) {
       case LanguageConceptSwitch.ConceptDocumentation:
         return myConceptConceptDocumentation;
+      case LanguageConceptSwitch.ModuleDescriptorDeputy:
+        return myConceptModuleDescriptorDeputy;
       default:
         return null;
     }
@@ -54,6 +57,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(2);
     b.property("text", 0x28360eb22c3acdf0L).type(PrimitiveTypeId.STRING).origin("2897519568668511728").done();
     b.associate("cncpt", 0x28360eb22c3ad436L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL).optional(false).origin("2897519568668513334").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForModuleDescriptorDeputy() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.customAspect.documentation", "ModuleDescriptorDeputy", 0x22916f45e98f4433L, 0x9c1b1b382cf5bd8dL, 0x5fb799688f5c99c4L);
+    b.class_(false, false, false);
+    b.origin("r:554f8053-4df6-4aa3-9ecf-e71658269bf9(jetbrains.mps.samples.customAspect.documentation.structure)/6897150028702063044");
+    b.version(2);
     return b.create();
   }
 }

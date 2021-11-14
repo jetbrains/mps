@@ -48,10 +48,8 @@ public class Language extends LanguageRuntime {
     if (aspectClass == ConstraintsAspectDescriptor.class) {
       return aspectClass.cast(new jetbrains.mps.samples.customAspect.sampleLanguage.constraints.ConstraintsAspectDescriptor());
     }
-    if (aspectClass.getName().equals("jetbrains.mps.samples.customAspect.documentation.runtime.DocumentationAspectDescriptor")) {
-      if (aspectClass == DocumentationAspectDescriptor.class) {
-        return (T) new DocumentationDescriptor();
-      }
+    if (aspectClass == DocumentationAspectDescriptor.class) {
+      return aspectClass.cast(new DocumentationDescriptor());
     }
     if (aspectClass == EditorAspectDescriptor.class) {
       return aspectClass.cast(new EditorAspectDescriptorImpl());

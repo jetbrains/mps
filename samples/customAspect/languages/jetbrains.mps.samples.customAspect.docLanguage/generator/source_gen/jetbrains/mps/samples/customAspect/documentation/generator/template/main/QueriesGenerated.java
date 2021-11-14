@@ -7,11 +7,11 @@ import jetbrains.mps.generator.impl.query.QueryProviderBase;
 import jetbrains.mps.generator.template.CreateRootRuleContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.generator.template.BaseMappingRuleContext;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.template.PropertyMacroContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -49,8 +49,11 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "documentation");
   }
   public static boolean rule_Condition_2_0(final BaseMappingRuleContext _context) {
+    // unless we invoke this template once per root, can't use 
+    // isNotEmpty check alone, as it triggers for any model
+    boolean dp = ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ModuleDescriptorDeputy$qv)).isNotEmpty();
     // see MPS-24613
-    return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "documentation");
+    return SModuleOperations.isAspect(((SModel) _context.getVariable("model")), "documentation") && dp;
   }
   public static Object propertyMacro_GetValue_1_0(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.ConceptDocumentation$mT)).findFirst(new IWhereFilter<SNode>() {
@@ -236,6 +239,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept ModuleDescriptorDeputy$qv = MetaAdapterFactory.getConcept(0x22916f45e98f4433L, 0x9c1b1b382cf5bd8dL, 0x5fb799688f5c99c4L, "jetbrains.mps.samples.customAspect.documentation.structure.ModuleDescriptorDeputy");
     /*package*/ static final SConcept ConceptDocumentation$mT = MetaAdapterFactory.getConcept(0x22916f45e98f4433L, 0x9c1b1b382cf5bd8dL, 0x28360eb22c3ac732L, "jetbrains.mps.samples.customAspect.documentation.structure.ConceptDocumentation");
   }
 
