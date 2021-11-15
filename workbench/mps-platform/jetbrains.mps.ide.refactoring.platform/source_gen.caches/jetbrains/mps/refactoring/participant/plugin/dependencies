@@ -70,8 +70,6 @@
     <classNode extendsClassName="jetbrains.mps.refactoring.participant.RefactoringUI" />
   </dependency>
   <dependency className="jetbrains.mps.refactoring.participant.plugin.ExtensionDescriptor">
-    <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.smodel.structure.ExtensionPoint" />

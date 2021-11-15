@@ -196,8 +196,6 @@
     <classNode extendsClassName="jetbrains.mps.checkers.IChecker" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.pluginSolution.plugin.ExtensionDescriptor">
-    <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.ConvertAnonymousClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveClasses" />
@@ -206,7 +204,6 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.RenameImplementingMethodsParticipant" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.StaticFieldRefactoringParticipant" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.pluginSolution.plugin.StaticMethodRefactoringParticipant" />
-    <classNode dependClassName="jetbrains.mps.smodel.structure.Extension" />
     <classNode extendsClassName="jetbrains.mps.smodel.structure.DefaultExtensionDescriptor" />
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.pluginSolution.plugin.ExtractMethodDialog">

@@ -154,8 +154,6 @@
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
   </dependency>
   <dependency className="jetbrains.mps.lang.structure.pluginSolution.plugin.ExtensionDescriptor">
-    <classNode dependClassName="java.lang.Iterable" />
-    <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="jetbrains.mps.lang.structure.pluginSolution.plugin.ImplicitNodeRenamer_extension" />
     <classNode dependClassName="jetbrains.mps.lang.structure.pluginSolution.plugin.LanguageStructureMigrationParticipant" />
@@ -165,7 +163,6 @@
     <classNode dependClassName="jetbrains.mps.lang.structure.pluginSolution.plugin.UpdateConceptReferencesParticipant" />
     <classNode dependClassName="jetbrains.mps.lang.structure.pluginSolution.plugin.UpdateLocalInstancesParticipant" />
     <classNode dependClassName="jetbrains.mps.lang.structure.pluginSolution.plugin.WriteSubconceptMigrationParticipant" />
-    <classNode dependClassName="jetbrains.mps.smodel.structure.Extension" />
     <classNode extendsClassName="jetbrains.mps.smodel.structure.DefaultExtensionDescriptor" />
   </dependency>
   <dependency className="jetbrains.mps.lang.structure.pluginSolution.plugin.HelpHelper">

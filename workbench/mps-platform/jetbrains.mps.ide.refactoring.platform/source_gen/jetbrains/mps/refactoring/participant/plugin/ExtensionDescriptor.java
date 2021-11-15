@@ -4,16 +4,12 @@ package jetbrains.mps.refactoring.participant.plugin;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.structure.DefaultExtensionDescriptor;
-import jetbrains.mps.smodel.structure.ExtensionPoint;
 import java.util.Arrays;
+import jetbrains.mps.smodel.structure.ExtensionPoint;
 
 @GeneratedClass(model = "r:cc08a4fa-e4f1-443c-b8f2-4a41972141bb(jetbrains.mps.refactoring.participant.plugin)")
 public class ExtensionDescriptor extends DefaultExtensionDescriptor {
-  private ExtensionPoint[] extensionPoints = new ExtensionPoint[]{new ExtensionPoint("jetbrains.mps.refactoring.participant.MoveNodesActionEP")};
   public ExtensionDescriptor() {
-  }
-  @Override
-  public Iterable<? extends ExtensionPoint> getExtensionPoints() {
-    return Arrays.asList(extensionPoints);
+    super(Arrays.asList(new ExtensionPoint("jetbrains.mps.refactoring.participant.MoveNodesActionEP")), null);
   }
 }
