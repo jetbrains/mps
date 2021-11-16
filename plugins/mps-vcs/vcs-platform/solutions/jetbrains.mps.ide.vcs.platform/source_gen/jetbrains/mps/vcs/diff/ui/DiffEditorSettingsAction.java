@@ -6,23 +6,17 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.workbench.action.BaseGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.icons.IdeIcons;
-import com.intellij.ide.util.PropertiesComponent;
 import com.intellij.openapi.actionSystem.AnAction;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.ToggleAction;
-import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
+import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/4621883088124559446", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 /*package*/ final class DiffEditorSettingsAction extends BaseGroup {
 
   @NotNull
   private final IHighlighter myHighlighter;
-
-  public static final String HIDE_ID_CHANGES = "vcs.hide.id.changes";
-  public static final String HIDE_RESOLVE_INFO_CHANGES = "vcs.hide.resolve.info.changes";
-  public static final String TRACK_MOVED_NODES = "vcs.diff.track.moved.nodes";
-  public static final String HIDE_UNORDERED_MOVES = "vcs.hide.unordered.moves";
 
   private static final String HIDE_ID_CHANGES_CAPTION = "Hide Non-Functional ID Changes";
   private static final String HIDE_RESOLVE_INFO_CHANGES_CAPTION = "Hide Non-Functional Resolve Info Changes";
@@ -35,18 +29,6 @@ import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
     super("Settings", null, IdeIcons.GEAR_PLAIN_ICON);
     myHighlighter = highlighter;
     setPopup(true);
-  }
-
-  /*package*/ boolean getHideIdChangesOption() {
-    return PropertiesComponent.getInstance().getBoolean(HIDE_ID_CHANGES, false);
-  }
-
-  /*package*/ boolean getHideResolveInfoChangesOption() {
-    return PropertiesComponent.getInstance().getBoolean(HIDE_RESOLVE_INFO_CHANGES, false);
-  }
-
-  /*package*/ boolean getHideUnorderedMovesOption() {
-    return PropertiesComponent.getInstance().getBoolean(HIDE_UNORDERED_MOVES, false);
   }
 
   @Override
@@ -62,12 +44,12 @@ import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 
     @Override
     public boolean isSelected(@NotNull AnActionEvent p1) {
-      return PropertiesComponent.getInstance().getBoolean(DiffEditor.USE_SHORT_CHANGE_DESCRIPTIONS, false);
+      return DiffSettingsUtil.getUseShortDescriptionsOption();
     }
 
     @Override
     public void setSelected(@NotNull AnActionEvent p1, boolean p2) {
-      PropertiesComponent.getInstance().setValue(DiffEditor.USE_SHORT_CHANGE_DESCRIPTIONS, p2);
+      DiffSettingsUtil.setUseShortDescriptionsOption(p2);
     }
   }
 
@@ -79,12 +61,12 @@ import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 
     @Override
     public boolean isSelected(@NotNull AnActionEvent p0) {
-      return PropertiesComponent.getInstance().getBoolean(HIDE_ID_CHANGES, false);
+      return DiffSettingsUtil.getHideIdChangesOption();
     }
 
     @Override
     public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
-      PropertiesComponent.getInstance().setValue(HIDE_ID_CHANGES, p1);
+      DiffSettingsUtil.setHideIdChangesOption(p1);
       myHighlighter.rehighlightInReadAction(false);
     }
   }
@@ -97,12 +79,12 @@ import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 
     @Override
     public boolean isSelected(@NotNull AnActionEvent p0) {
-      return PropertiesComponent.getInstance().getBoolean(HIDE_RESOLVE_INFO_CHANGES, false);
+      return DiffSettingsUtil.getHideResolveInfoChangesOption();
     }
 
     @Override
     public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
-      PropertiesComponent.getInstance().setValue(HIDE_RESOLVE_INFO_CHANGES, p1);
+      DiffSettingsUtil.setHideResolveInfoChangesOption(p1);
       myHighlighter.rehighlightInReadAction(false);
     }
   }
@@ -115,12 +97,12 @@ import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 
     @Override
     public boolean isSelected(@NotNull AnActionEvent p1) {
-      return PropertiesComponent.getInstance().getBoolean(TRACK_MOVED_NODES, false);
+      return DiffSettingsUtil.getTrackMovedNodesOption();
     }
 
     @Override
     public void setSelected(@NotNull AnActionEvent p1, boolean p2) {
-      PropertiesComponent.getInstance().setValue(TRACK_MOVED_NODES, p2);
+      DiffSettingsUtil.setTrackMovedNodesOption(p2);
       myHighlighter.rehighlightInReadAction(true);
     }
   }
@@ -133,18 +115,18 @@ import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 
     @Override
     public boolean isSelected(@NotNull AnActionEvent p0) {
-      return PropertiesComponent.getInstance().getBoolean(HIDE_UNORDERED_MOVES, false);
+      return DiffSettingsUtil.getHideUnorderedMovesOption();
     }
 
     @Override
     public void update(@NotNull AnActionEvent e) {
       super.update(e);
-      e.getPresentation().setEnabled(PropertiesComponent.getInstance().getBoolean(TRACK_MOVED_NODES, false));
+      e.getPresentation().setEnabled(DiffSettingsUtil.getTrackMovedNodesOption());
     }
 
     @Override
     public void setSelected(@NotNull AnActionEvent p0, boolean p1) {
-      PropertiesComponent.getInstance().setValue(HIDE_UNORDERED_MOVES, p1);
+      DiffSettingsUtil.setHideUnorderedMovesOption(p1);
       myHighlighter.rehighlightInReadAction(false);
     }
   }

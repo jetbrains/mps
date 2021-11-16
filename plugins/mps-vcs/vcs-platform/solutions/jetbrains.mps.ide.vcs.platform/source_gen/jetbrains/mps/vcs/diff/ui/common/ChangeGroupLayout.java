@@ -16,7 +16,6 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.Set;
 import jetbrains.mps.util.DisjointSets;
-import com.intellij.ide.util.PropertiesComponent;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -73,7 +72,7 @@ public abstract class ChangeGroupLayout {
     }
     Set<ModelChange> changes = MapSequence.fromMap(left).keySet();
     DisjointSets<ModelChange> ds = new DisjointSets<ModelChange>(changes);
-    boolean trackMovedNodes = PropertiesComponent.getInstance().getBoolean("vcs.diff.track.moved.nodes", false);
+    boolean trackMovedNodes = DiffSettingsUtil.getTrackMovedNodesOption();
     for (ModelChange a : SetSequence.fromSet(changes)) {
       for (ModelChange b : SetSequence.fromSet(changes)) {
 
@@ -181,7 +180,7 @@ public abstract class ChangeGroupLayout {
   }
 
   private static boolean areBoundsSeparate(Bounds a, Bounds b, boolean canBeAdjacent) {
-    if (PropertiesComponent.getInstance().getBoolean("vcs.diff.track.moved.nodes", false)) {
+    if (DiffSettingsUtil.getTrackMovedNodesOption()) {
       if (a.length() <= 2 && b.length() <= 2) {
         return true;
       }

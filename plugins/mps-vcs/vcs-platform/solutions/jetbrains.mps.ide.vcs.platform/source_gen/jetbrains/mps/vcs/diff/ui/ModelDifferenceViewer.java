@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import com.intellij.ide.util.PropertiesComponent;
+import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 import com.intellij.ui.ScrollPaneFactory;
 import java.awt.Dimension;
 import com.intellij.openapi.util.DimensionService;
@@ -105,7 +105,7 @@ public class ModelDifferenceViewer implements DataProvider {
         }
       }).toListSequence();
     });
-    final boolean trackMovedNodes = PropertiesComponent.getInstance().getBoolean("vcs.diff.track.moved.nodes", false);
+    final boolean trackMovedNodes = DiffSettingsUtil.getTrackMovedNodesOption();
     // TODO changesets should be probably built in a separate thread
     myProject.getRepository().getModelAccess().runReadAction(() -> {
       myChangeSets = buildChangeSets(myModels, trackMovedNodes);
@@ -236,10 +236,9 @@ public class ModelDifferenceViewer implements DataProvider {
   }
 
   /*package*/ void rebuildChangeSets() {
-    final boolean trackMovedNodes = PropertiesComponent.getInstance().getBoolean("vcs.diff.track.moved.nodes", false);
     ListSequence.fromList(myChangeSets).where(new NotNullWhereFilter<ModelChangeSet>()).visitAll(new IVisitor<ModelChangeSet>() {
       public void visit(ModelChangeSet it) {
-        ChangeSetBuilder.rebuildChangeSet(it, trackMovedNodes);
+        ChangeSetBuilder.rebuildChangeSet(it, DiffSettingsUtil.getTrackMovedNodesOption());
       }
     });
     ListSequence.fromList(myMetadataChangeSets).where(new NotNullWhereFilter<ModelChangeSet>()).visitAll(new IVisitor<ModelChangeSet>() {

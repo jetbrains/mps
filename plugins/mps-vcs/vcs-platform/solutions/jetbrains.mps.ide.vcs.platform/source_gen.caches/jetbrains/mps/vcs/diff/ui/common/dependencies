@@ -189,7 +189,6 @@
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout">
-    <classNode dependClassName="com.intellij.ide.util.PropertiesComponent" />
     <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.util.ArrayList" />
@@ -215,6 +214,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeGroup" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeGroupInvalidateListener" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
   </dependency>
@@ -258,7 +258,6 @@
     <classNode extendsClassName="jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.common.DiffEditor">
-    <classNode dependClassName="com.intellij.ide.util.PropertiesComponent" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.PlatformDataKeys" />
     <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColorsManager" />
     <classNode dependClassName="com.intellij.ui.JBSplitter" />
@@ -313,6 +312,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessageFactory" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.DiffEditorChangeLayer" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.DiffFileEditor" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil" />
     <classNode dependClassName="org.jetbrains.annotations.NonNls" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
@@ -517,6 +517,11 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
   </dependency>
+  <dependency className="jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil">
+    <classNode dependClassName="com.intellij.ide.util.PropertiesComponent" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+  </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.common.EditorCellMessageUtil">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.String" />
@@ -658,7 +663,6 @@
   <dependency className="jetbrains.mps.vcs.diff.ui.common.TripleChangeGroupLayout">
     <classNode dependClassName="com.intellij.diff.util.DiffDividerDrawUtil" />
     <classNode dependClassName="com.intellij.diff.util.DiffDrawUtil" />
-    <classNode dependClassName="com.intellij.ide.util.PropertiesComponent" />
     <classNode dependClassName="com.intellij.openapi.editor.ex.util.EditorUtil" />
     <classNode dependClassName="com.intellij.openapi.ui.GraphicsConfig" />
     <classNode dependClassName="com.intellij.openapi.util.Disposer" />
@@ -713,6 +717,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.DiffEditor" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.DiffEditorChangeLayer" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
   </dependency>

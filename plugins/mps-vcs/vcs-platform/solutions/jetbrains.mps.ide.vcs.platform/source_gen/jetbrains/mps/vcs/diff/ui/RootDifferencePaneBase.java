@@ -52,6 +52,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.vcs.diff.changes.NodeIdChange;
+import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
@@ -410,13 +411,13 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
   }
 
   protected boolean changeIsVisible(ModelChange change) {
-    if (change instanceof NodeIdChange && mySettingsAction.getHideIdChangesOption()) {
+    if (change instanceof NodeIdChange && DiffSettingsUtil.getHideIdChangesOption()) {
       return false;
     }
-    if (change instanceof SetReferenceChange && ((SetReferenceChange) change).isResolveInfoOnly() && mySettingsAction.getHideResolveInfoChangesOption()) {
+    if (change instanceof SetReferenceChange && ((SetReferenceChange) change).isResolveInfoOnly() && DiffSettingsUtil.getHideResolveInfoChangesOption()) {
       return false;
     }
-    if (change instanceof NodeGroupMoveChange && ((NodeGroupMoveChange) change).isUnordered() && mySettingsAction.getHideUnorderedMovesOption()) {
+    if (change instanceof NodeGroupMoveChange && ((NodeGroupMoveChange) change).isUnordered() && DiffSettingsUtil.getHideUnorderedMovesOption()) {
       return false;
     }
     return true;

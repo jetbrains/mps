@@ -39,7 +39,6 @@ import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import java.util.Objects;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import com.intellij.ide.util.PropertiesComponent;
 import javax.swing.JComponent;
 import java.awt.Component;
 import java.awt.Graphics2D;
@@ -532,7 +531,7 @@ __switch__:
   }
 
   private Pair<List<DiffEditorChangeLayer>, List<DiffEditorChangeLayer>> createLayers(DiffChangeGroupLayout layout) {
-    final boolean drawBorders = myCanDrawBorders && PropertiesComponent.getInstance().getBoolean("vcs.diff.track.moved.nodes", false);
+    final boolean drawBorders = myCanDrawBorders && DiffSettingsUtil.getTrackMovedNodesOption();
     final List<DiffEditorChangeLayer> leftLayers = ListSequence.fromList(new ArrayList<DiffEditorChangeLayer>());
     final List<DiffEditorChangeLayer> rightLayers = ListSequence.fromList(new ArrayList<DiffEditorChangeLayer>());
     ListSequence.fromList(layout.getChangeGroups()).visitAll(new IVisitor<ChangeGroup>() {

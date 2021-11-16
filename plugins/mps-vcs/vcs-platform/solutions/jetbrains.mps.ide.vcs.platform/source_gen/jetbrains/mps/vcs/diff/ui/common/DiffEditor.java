@@ -31,7 +31,6 @@ import java.awt.event.MouseEvent;
 import java.awt.Point;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import com.intellij.ide.util.PropertiesComponent;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.nodeEditor.EditorMessage;
@@ -70,7 +69,6 @@ public class DiffEditor implements EditorMessageOwner {
   private final Map<ModelChange, List<ChangeEditorMessage>> myChangeToMessages = MapSequence.fromMap(new HashMap<ModelChange, List<ChangeEditorMessage>>());
   private final MPSProject myMpsProject;
   private final boolean myRightToLeft;
-  public static final String USE_SHORT_CHANGE_DESCRIPTIONS = "vcs.diff.use.short.change.descriptions";
   private final JLabel myFailedToLoadModelPanel = new JLabel("Failed to load model", SwingConstants.CENTER);
 
 
@@ -138,14 +136,13 @@ public class DiffEditor implements EditorMessageOwner {
   }
 
   /*package*/ String getToolTipTextFromSelectedLayers(boolean inspector) {
-    final boolean useShortChangeDescription = PropertiesComponent.getInstance().getBoolean(USE_SHORT_CHANGE_DESCRIPTIONS, false);
     String text = IterableUtils.join(ListSequence.fromList(getLayers(inspector)).where(new IWhereFilter<DiffEditorChangeLayer>() {
       public boolean accept(DiffEditorChangeLayer it) {
         return it.isSelected();
       }
     }).select(new ISelector<DiffEditorChangeLayer, String>() {
       public String select(DiffEditorChangeLayer it) {
-        return it.getDescription(useShortChangeDescription);
+        return it.getDescription(DiffSettingsUtil.getUseShortDescriptionsOption());
       }
     }), "\n\n");
     return EditorMessage.formatMessage(text, FormattingOptions.PLAIN_TEXT);

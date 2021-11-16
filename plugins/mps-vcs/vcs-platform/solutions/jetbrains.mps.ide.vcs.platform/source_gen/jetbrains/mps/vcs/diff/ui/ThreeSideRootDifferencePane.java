@@ -21,7 +21,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import com.intellij.diff.tools.util.side.ThreesideContentPanel;
 import com.intellij.diff.util.Side;
-import com.intellij.ide.util.PropertiesComponent;
+import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -94,7 +94,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
     ModelChangeSet myChangeSet = getMyChangeSet();
     ModelChangeSet repoChangeSet = getRepoChangeSet();
     if (rebuildChangeSet) {
-      boolean trackMovedNodes = PropertiesComponent.getInstance().getBoolean("vcs.diff.track.moved.nodes", false);
+      boolean trackMovedNodes = DiffSettingsUtil.getTrackMovedNodesOption();
       if (myChangeSet != null) {
         ChangeSetBuilder.rebuildChangeSet(myChangeSet, trackMovedNodes);
       }

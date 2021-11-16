@@ -7434,18 +7434,9 @@
           <node concept="3cpWsn" id="5DMVGtgzN7x" role="3cpWs9">
             <property role="TrG5h" value="trackMovedNodes" />
             <node concept="10P_77" id="5DMVGtgzN7s" role="1tU5fm" />
-            <node concept="2OqwBi" id="5DMVGtgzNPh" role="33vP2m">
-              <node concept="2YIFZM" id="5DMVGtgzNPi" role="2Oq$k0">
-                <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
-                <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
-              </node>
-              <node concept="liA8E" id="5DMVGtgzNPj" role="2OqNvi">
-                <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
-                <node concept="Xl_RD" id="5DMVGtgzNPk" role="37wK5m">
-                  <property role="Xl_RC" value="vcs.diff.track.moved.nodes" />
-                </node>
-                <node concept="3clFbT" id="5DMVGtgzNPl" role="37wK5m" />
-              </node>
+            <node concept="2YIFZM" id="2G2A2Cc3yer" role="33vP2m">
+              <ref role="37wK5l" node="2G2A2CbXqzW" resolve="getTrackMovedNodesOption" />
+              <ref role="1Pybhc" node="2G2A2CbSLhf" resolve="DiffSettingsUtil" />
             </node>
           </node>
         </node>
@@ -8423,18 +8414,9 @@
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="16N3jbC96JH" role="3clFbw">
-            <node concept="2YIFZM" id="16N3jbC96JI" role="2Oq$k0">
-              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
-              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
-            </node>
-            <node concept="liA8E" id="16N3jbC96JJ" role="2OqNvi">
-              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
-              <node concept="Xl_RD" id="16N3jbC96JK" role="37wK5m">
-                <property role="Xl_RC" value="vcs.diff.track.moved.nodes" />
-              </node>
-              <node concept="3clFbT" id="16N3jbC96JL" role="37wK5m" />
-            </node>
+          <node concept="2YIFZM" id="2G2A2Cc5R6G" role="3clFbw">
+            <ref role="37wK5l" node="2G2A2CbXqzW" resolve="getTrackMovedNodesOption" />
+            <ref role="1Pybhc" node="2G2A2CbSLhf" resolve="DiffSettingsUtil" />
           </node>
         </node>
         <node concept="3cpWs8" id="13pW_eTpNz6" role="3cqZAp">
@@ -10469,15 +10451,6 @@
       <node concept="3Tm6S6" id="1aBDmM$_vCf" role="1B3o_S" />
       <node concept="10P_77" id="1aBDmM$_GeM" role="1tU5fm" />
     </node>
-    <node concept="Wx3nA" id="5W3z09jLKb8" role="jymVt">
-      <property role="TrG5h" value="USE_SHORT_CHANGE_DESCRIPTIONS" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm1VV" id="5W3z09jLKb9" role="1B3o_S" />
-      <node concept="17QB3L" id="5W3z09jLKba" role="1tU5fm" />
-      <node concept="Xl_RD" id="5W3z09jLKbb" role="33vP2m">
-        <property role="Xl_RC" value="vcs.diff.use.short.change.descriptions" />
-      </node>
-    </node>
     <node concept="312cEg" id="5zPLqcHJB9$" role="jymVt">
       <property role="34CwA1" value="false" />
       <property role="eg7rD" value="false" />
@@ -11155,25 +11128,6 @@
       <property role="TrG5h" value="getToolTipTextFromSelectedLayers" />
       <node concept="17QB3L" id="7poVolqc5Kk" role="3clF45" />
       <node concept="3clFbS" id="7poVolqc5Kl" role="3clF47">
-        <node concept="3cpWs8" id="5W3z09jO63Q" role="3cqZAp">
-          <node concept="3cpWsn" id="5W3z09jO63T" role="3cpWs9">
-            <property role="TrG5h" value="useShortChangeDescription" />
-            <node concept="10P_77" id="5W3z09jO63O" role="1tU5fm" />
-            <node concept="2OqwBi" id="5W3z09jLNnW" role="33vP2m">
-              <node concept="liA8E" id="5W3z09jLNnX" role="2OqNvi">
-                <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
-                <node concept="37vLTw" id="6wKQvsBQ9Q4" role="37wK5m">
-                  <ref role="3cqZAo" node="5W3z09jLKb8" resolve="USE_SHORT_CHANGE_DESCRIPTIONS" />
-                </node>
-                <node concept="3clFbT" id="5W3z09jLNnZ" role="37wK5m" />
-              </node>
-              <node concept="2YIFZM" id="5W3z09jLNo0" role="2Oq$k0">
-                <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
-                <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="3hNyXYyL1qs" role="3cqZAp">
           <node concept="3cpWsn" id="3hNyXYyL1qv" role="3cpWs9">
             <property role="TrG5h" value="text" />
@@ -11218,8 +11172,9 @@
                           </node>
                           <node concept="liA8E" id="7poVolqefcR" role="2OqNvi">
                             <ref role="37wK5l" node="1hR88SoIq33" resolve="getDescription" />
-                            <node concept="37vLTw" id="5W3z09jP6n8" role="37wK5m">
-                              <ref role="3cqZAo" node="5W3z09jO63T" resolve="useShortChangeDescription" />
+                            <node concept="2YIFZM" id="2G2A2CbVgDd" role="37wK5m">
+                              <ref role="37wK5l" node="2G2A2CbUvQA" resolve="getUseShortDescriptionsOption" />
+                              <ref role="1Pybhc" node="2G2A2CbSLhf" resolve="DiffSettingsUtil" />
                             </node>
                           </node>
                         </node>
@@ -30378,18 +30333,9 @@
               <node concept="37vLTw" id="jIWrNkZxXE" role="3uHU7B">
                 <ref role="3cqZAo" node="jIWrNkZkc4" resolve="myCanDrawBorders" />
               </node>
-              <node concept="2OqwBi" id="7SNKzvnRn5x" role="3uHU7w">
-                <node concept="2YIFZM" id="7SNKzvnRn5y" role="2Oq$k0">
-                  <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
-                  <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
-                </node>
-                <node concept="liA8E" id="7SNKzvnRn5z" role="2OqNvi">
-                  <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
-                  <node concept="Xl_RD" id="7SNKzvnRn5$" role="37wK5m">
-                    <property role="Xl_RC" value="vcs.diff.track.moved.nodes" />
-                  </node>
-                  <node concept="3clFbT" id="7SNKzvnRn5_" role="37wK5m" />
-                </node>
+              <node concept="2YIFZM" id="2G2A2Cc8AO6" role="3uHU7w">
+                <ref role="37wK5l" node="2G2A2CbXqzW" resolve="getTrackMovedNodesOption" />
+                <ref role="1Pybhc" node="2G2A2CbSLhf" resolve="DiffSettingsUtil" />
               </node>
             </node>
           </node>
@@ -34447,6 +34393,334 @@
       </node>
       <node concept="10P_77" id="6GIMOf7AUm$" role="3clF45" />
     </node>
+  </node>
+  <node concept="312cEu" id="2G2A2CbSLhf">
+    <property role="TrG5h" value="DiffSettingsUtil" />
+    <property role="1EXbeo" value="true" />
+    <node concept="2tJIrI" id="2G2A2CbSLBu" role="jymVt" />
+    <node concept="Wx3nA" id="CRlyEVv4SN" role="jymVt">
+      <property role="TrG5h" value="HIDE_ID_CHANGES" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="CRlyEVv4SO" role="1B3o_S" />
+      <node concept="17QB3L" id="CRlyEVv4SP" role="1tU5fm" />
+      <node concept="Xl_RD" id="4VlO8rdJi_a" role="33vP2m">
+        <property role="Xl_RC" value="vcs.hide.id.changes" />
+      </node>
+    </node>
+    <node concept="Wx3nA" id="CRlyEVv4Ty" role="jymVt">
+      <property role="TrG5h" value="HIDE_RESOLVE_INFO_CHANGES" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="CRlyEVv4Tz" role="1B3o_S" />
+      <node concept="17QB3L" id="CRlyEVv4T$" role="1tU5fm" />
+      <node concept="Xl_RD" id="4VlO8rdJlzW" role="33vP2m">
+        <property role="Xl_RC" value="vcs.hide.resolve.info.changes" />
+      </node>
+    </node>
+    <node concept="Wx3nA" id="2zjRC$7PXtK" role="jymVt">
+      <property role="TrG5h" value="HIDE_UNORDERED_MOVES" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="2zjRC$7PXtL" role="1B3o_S" />
+      <node concept="17QB3L" id="2zjRC$7PXtM" role="1tU5fm" />
+      <node concept="Xl_RD" id="2zjRC$7PXtN" role="33vP2m">
+        <property role="Xl_RC" value="vcs.hide.unordered.moves" />
+      </node>
+    </node>
+    <node concept="Wx3nA" id="2G2A2CbUQ8r" role="jymVt">
+      <property role="TrG5h" value="USE_SHORT_CHANGE_DESCRIPTIONS" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="2G2A2CbUQ8s" role="1B3o_S" />
+      <node concept="17QB3L" id="2G2A2CbUQ8t" role="1tU5fm" />
+      <node concept="Xl_RD" id="2G2A2CbUQ8u" role="33vP2m">
+        <property role="Xl_RC" value="vcs.diff.use.short.change.descriptions" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2G2A2CbXwow" role="jymVt" />
+    <node concept="Wx3nA" id="TuaAfeIafC" role="jymVt">
+      <property role="TrG5h" value="TRACK_MOVED_NODES" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="TuaAfeIafD" role="1B3o_S" />
+      <node concept="17QB3L" id="TuaAfeIafE" role="1tU5fm" />
+      <node concept="Xl_RD" id="TuaAfeIafF" role="33vP2m">
+        <property role="Xl_RC" value="vcs.diff.track.moved.nodes" />
+      </node>
+    </node>
+    <node concept="Wx3nA" id="2G2A2CbXvCz" role="jymVt">
+      <property role="TrG5h" value="TRACK_MOVED_VALUES_DEFAULT" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="2G2A2CbXuNM" role="1B3o_S" />
+      <node concept="10P_77" id="2G2A2CbXvBM" role="1tU5fm" />
+      <node concept="3clFbT" id="2G2A2CbXwnA" role="33vP2m" />
+    </node>
+    <node concept="2tJIrI" id="2G2A2CbWtYA" role="jymVt" />
+    <node concept="2tJIrI" id="2G2A2CbWM8d" role="jymVt" />
+    <node concept="3clFbW" id="2G2A2CbWtUU" role="jymVt">
+      <node concept="3cqZAl" id="2G2A2CbWtUW" role="3clF45" />
+      <node concept="3Tm6S6" id="2G2A2CbWu26" role="1B3o_S" />
+      <node concept="3clFbS" id="2G2A2CbWtUY" role="3clF47" />
+    </node>
+    <node concept="2tJIrI" id="2G2A2CbUQ6U" role="jymVt" />
+    <node concept="2YIFZL" id="2G2A2CbSYhJ" role="jymVt">
+      <property role="TrG5h" value="getHideIdChangesOption" />
+      <node concept="3clFbS" id="2G2A2CbSYhL" role="3clF47">
+        <node concept="3clFbF" id="2G2A2CbSYhM" role="3cqZAp">
+          <node concept="2OqwBi" id="2G2A2CbSYhN" role="3clFbG">
+            <node concept="liA8E" id="2G2A2CbSYhO" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
+              <node concept="37vLTw" id="2G2A2CbSYhP" role="37wK5m">
+                <ref role="3cqZAo" node="CRlyEVv4SN" resolve="HIDE_ID_CHANGES" />
+              </node>
+              <node concept="3clFbT" id="2G2A2CbSYhQ" role="37wK5m" />
+            </node>
+            <node concept="2YIFZM" id="2G2A2CbSYhR" role="2Oq$k0">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="10P_77" id="2G2A2CbSYhS" role="3clF45" />
+      <node concept="3Tm1VV" id="2G2A2CbTA6B" role="1B3o_S" />
+    </node>
+    <node concept="2tJIrI" id="2G2A2CbWsJP" role="jymVt" />
+    <node concept="2YIFZL" id="2G2A2CbWu2G" role="jymVt">
+      <property role="TrG5h" value="setHideIdChangesOption" />
+      <node concept="3clFbS" id="2G2A2CbWu2J" role="3clF47">
+        <node concept="3clFbF" id="4Eo9MbHm9Qq" role="3cqZAp">
+          <node concept="2OqwBi" id="4Eo9MbHm9Qr" role="3clFbG">
+            <node concept="2YIFZM" id="4Eo9MbHm9Qs" role="2Oq$k0">
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+            </node>
+            <node concept="liA8E" id="4Eo9MbHm9Qt" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.setValue(java.lang.String,boolean)" resolve="setValue" />
+              <node concept="37vLTw" id="2G2A2CbWvM9" role="37wK5m">
+                <ref role="3cqZAo" node="CRlyEVv4SN" resolve="HIDE_ID_CHANGES" />
+              </node>
+              <node concept="37vLTw" id="4Eo9MbHm9Qv" role="37wK5m">
+                <ref role="3cqZAo" node="2G2A2CbWw6e" resolve="hide" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="2G2A2CbWt5Q" role="1B3o_S" />
+      <node concept="3cqZAl" id="2G2A2CbWwv1" role="3clF45" />
+      <node concept="37vLTG" id="2G2A2CbWw6e" role="3clF46">
+        <property role="TrG5h" value="enable" />
+        <node concept="10P_77" id="2G2A2CbWw6d" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="40$eyTd4sUI" role="jymVt" />
+    <node concept="2YIFZL" id="2G2A2CbSYQP" role="jymVt">
+      <property role="TrG5h" value="getHideResolveInfoChangesOption" />
+      <node concept="3clFbS" id="2G2A2CbSYQR" role="3clF47">
+        <node concept="3clFbF" id="2G2A2CbSYQS" role="3cqZAp">
+          <node concept="2OqwBi" id="2G2A2CbSYQT" role="3clFbG">
+            <node concept="liA8E" id="2G2A2CbSYQU" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
+              <node concept="37vLTw" id="2G2A2CbSYQV" role="37wK5m">
+                <ref role="3cqZAo" node="CRlyEVv4Ty" resolve="HIDE_RESOLVE_INFO_CHANGES" />
+              </node>
+              <node concept="3clFbT" id="2G2A2CbSYQW" role="37wK5m" />
+            </node>
+            <node concept="2YIFZM" id="2G2A2CbSYQX" role="2Oq$k0">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="10P_77" id="2G2A2CbSYQY" role="3clF45" />
+      <node concept="3Tm1VV" id="2G2A2CbTA7W" role="1B3o_S" />
+    </node>
+    <node concept="2tJIrI" id="2G2A2CbWMcy" role="jymVt" />
+    <node concept="2YIFZL" id="2G2A2CbWN0p" role="jymVt">
+      <property role="TrG5h" value="setHideResolveInfoChangesOption" />
+      <node concept="3clFbS" id="2G2A2CbWN0s" role="3clF47">
+        <node concept="3clFbF" id="CRlyEVv4Tk" role="3cqZAp">
+          <node concept="2OqwBi" id="CRlyEVv4Tl" role="3clFbG">
+            <node concept="2YIFZM" id="CRlyEVv4Tm" role="2Oq$k0">
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+            </node>
+            <node concept="liA8E" id="CRlyEVv4Tn" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.setValue(java.lang.String,boolean)" resolve="setValue" />
+              <node concept="37vLTw" id="2G2A2CbWOlU" role="37wK5m">
+                <ref role="3cqZAo" node="CRlyEVv4Ty" resolve="HIDE_RESOLVE_INFO_CHANGES" />
+              </node>
+              <node concept="37vLTw" id="QgBy_wxJ4A" role="37wK5m">
+                <ref role="3cqZAo" node="2G2A2CbWNnN" resolve="hide" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="2G2A2CbWMxF" role="1B3o_S" />
+      <node concept="3cqZAl" id="2G2A2CbWMZS" role="3clF45" />
+      <node concept="37vLTG" id="2G2A2CbWNnN" role="3clF46">
+        <property role="TrG5h" value="enable" />
+        <node concept="10P_77" id="2G2A2CbWNnM" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="6oJ4nqGwBNt" role="jymVt" />
+    <node concept="2YIFZL" id="2G2A2CbSZoP" role="jymVt">
+      <property role="TrG5h" value="getHideUnorderedMovesOption" />
+      <node concept="3clFbS" id="2G2A2CbSZoR" role="3clF47">
+        <node concept="3clFbF" id="2G2A2CbSZoS" role="3cqZAp">
+          <node concept="2OqwBi" id="2G2A2CbSZoT" role="3clFbG">
+            <node concept="liA8E" id="2G2A2CbSZoU" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
+              <node concept="37vLTw" id="2G2A2CbSZoV" role="37wK5m">
+                <ref role="3cqZAo" node="2zjRC$7PXtK" resolve="HIDE_UNORDERED_MOVES" />
+              </node>
+              <node concept="3clFbT" id="2G2A2CbSZoW" role="37wK5m" />
+            </node>
+            <node concept="2YIFZM" id="2G2A2CbSZoX" role="2Oq$k0">
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="10P_77" id="2G2A2CbSZoY" role="3clF45" />
+      <node concept="3Tm1VV" id="2G2A2CbTA9g" role="1B3o_S" />
+    </node>
+    <node concept="2tJIrI" id="2G2A2CbX5qd" role="jymVt" />
+    <node concept="2YIFZL" id="2G2A2CbX6j4" role="jymVt">
+      <property role="TrG5h" value="setHideUnorderedMovesOption" />
+      <node concept="3clFbS" id="2G2A2CbX6j7" role="3clF47">
+        <node concept="3clFbF" id="4Eo9MbHmdO6" role="3cqZAp">
+          <node concept="2OqwBi" id="4Eo9MbHmdO7" role="3clFbG">
+            <node concept="2YIFZM" id="4Eo9MbHmdO8" role="2Oq$k0">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+            </node>
+            <node concept="liA8E" id="4Eo9MbHmdO9" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.setValue(java.lang.String,boolean)" resolve="setValue" />
+              <node concept="37vLTw" id="2G2A2CbX7EU" role="37wK5m">
+                <ref role="3cqZAo" node="2zjRC$7PXtK" resolve="HIDE_UNORDERED_MOVES" />
+              </node>
+              <node concept="37vLTw" id="4Eo9MbHmdOb" role="37wK5m">
+                <ref role="3cqZAo" node="2G2A2CbX6Eh" resolve="hide" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="2G2A2CbX5NS" role="1B3o_S" />
+      <node concept="3cqZAl" id="2G2A2CbX6iv" role="3clF45" />
+      <node concept="37vLTG" id="2G2A2CbX6Eh" role="3clF46">
+        <property role="TrG5h" value="enable" />
+        <node concept="10P_77" id="2G2A2CbX6Eg" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2G2A2CbUuVX" role="jymVt" />
+    <node concept="2YIFZL" id="2G2A2CbUvQA" role="jymVt">
+      <property role="TrG5h" value="getUseShortDescriptionsOption" />
+      <node concept="3clFbS" id="2G2A2CbUvQD" role="3clF47">
+        <node concept="3clFbF" id="2G2A2CbUw8$" role="3cqZAp">
+          <node concept="2OqwBi" id="2G2A2CbUw8A" role="3clFbG">
+            <node concept="liA8E" id="2G2A2CbUw8B" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
+              <node concept="37vLTw" id="2G2A2CbUQFH" role="37wK5m">
+                <ref role="3cqZAo" node="2G2A2CbUQ8r" resolve="USE_SHORT_CHANGE_DESCRIPTIONS" />
+              </node>
+              <node concept="3clFbT" id="2G2A2CbUw8C" role="37wK5m" />
+            </node>
+            <node concept="2YIFZM" id="2G2A2CbUw8D" role="2Oq$k0">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="2G2A2CbUvdW" role="1B3o_S" />
+      <node concept="10P_77" id="2G2A2CbUvQf" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="2G2A2CbW5yq" role="jymVt" />
+    <node concept="2YIFZL" id="2G2A2CbW5WC" role="jymVt">
+      <property role="TrG5h" value="setUseShortDescriptionsOption" />
+      <node concept="3clFbS" id="2G2A2CbW5WL" role="3clF47">
+        <node concept="3clFbF" id="2G2A2CbW5WM" role="3cqZAp">
+          <node concept="2OqwBi" id="2G2A2CbW5WN" role="3clFbG">
+            <node concept="2YIFZM" id="2G2A2CbW5WO" role="2Oq$k0">
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+            </node>
+            <node concept="liA8E" id="2G2A2CbW5WP" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.setValue(java.lang.String,boolean)" resolve="setValue" />
+              <node concept="37vLTw" id="2G2A2CbW6wu" role="37wK5m">
+                <ref role="3cqZAo" node="2G2A2CbUQ8r" resolve="USE_SHORT_CHANGE_DESCRIPTIONS" />
+              </node>
+              <node concept="37vLTw" id="2G2A2CbW5WR" role="37wK5m">
+                <ref role="3cqZAo" node="2G2A2CbW5WJ" resolve="p2" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3cqZAl" id="2G2A2CbW5WF" role="3clF45" />
+      <node concept="37vLTG" id="2G2A2CbW5WJ" role="3clF46">
+        <property role="TrG5h" value="enable" />
+        <node concept="10P_77" id="2G2A2CbW5WK" role="1tU5fm" />
+      </node>
+      <node concept="3Tm1VV" id="2G2A2CbW5WE" role="1B3o_S" />
+    </node>
+    <node concept="2tJIrI" id="2G2A2CbXpe$" role="jymVt" />
+    <node concept="2YIFZL" id="2G2A2CbXqzW" role="jymVt">
+      <property role="TrG5h" value="getTrackMovedNodesOption" />
+      <node concept="3clFbS" id="2G2A2CbXqzZ" role="3clF47">
+        <node concept="3clFbF" id="4Eo9MbHmhsA" role="3cqZAp">
+          <node concept="2OqwBi" id="4Eo9MbHmhsB" role="3clFbG">
+            <node concept="liA8E" id="4Eo9MbHmhsC" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
+              <node concept="37vLTw" id="2G2A2CbXrsL" role="37wK5m">
+                <ref role="3cqZAo" node="TuaAfeIafC" resolve="TRACK_MOVED_NODES" />
+              </node>
+              <node concept="37vLTw" id="2G2A2CbXwFs" role="37wK5m">
+                <ref role="3cqZAo" node="2G2A2CbXvCz" resolve="TRACK_MOVED_VALUES_DEFAULT" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="4Eo9MbHmhsF" role="2Oq$k0">
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="2G2A2CbXpVD" role="1B3o_S" />
+      <node concept="10P_77" id="2G2A2CbXqzj" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="2G2A2CbXrtI" role="jymVt" />
+    <node concept="2YIFZL" id="2G2A2CbXsrw" role="jymVt">
+      <property role="TrG5h" value="setTrackMovedNodesOption" />
+      <node concept="3clFbS" id="2G2A2CbXsrz" role="3clF47">
+        <node concept="3clFbF" id="4Eo9MbHmhsR" role="3cqZAp">
+          <node concept="2OqwBi" id="4Eo9MbHmhsS" role="3clFbG">
+            <node concept="2YIFZM" id="4Eo9MbHmhsT" role="2Oq$k0">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.getInstance()" resolve="getInstance" />
+              <ref role="1Pybhc" to="jmi8:~PropertiesComponent" resolve="PropertiesComponent" />
+            </node>
+            <node concept="liA8E" id="4Eo9MbHmhsU" role="2OqNvi">
+              <ref role="37wK5l" to="jmi8:~PropertiesComponent.setValue(java.lang.String,boolean)" resolve="setValue" />
+              <node concept="37vLTw" id="2G2A2CbXu1T" role="37wK5m">
+                <ref role="3cqZAo" node="TuaAfeIafC" resolve="TRACK_MOVED_NODES" />
+              </node>
+              <node concept="37vLTw" id="4Eo9MbHmhsW" role="37wK5m">
+                <ref role="3cqZAo" node="2G2A2CbXsO2" resolve="track" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="2G2A2CbXrUc" role="1B3o_S" />
+      <node concept="3cqZAl" id="2G2A2CbXsqN" role="3clF45" />
+      <node concept="37vLTG" id="2G2A2CbXsO2" role="3clF46">
+        <property role="TrG5h" value="enable" />
+        <node concept="10P_77" id="2G2A2CbXsO1" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="3Tm1VV" id="2G2A2CbSLhg" role="1B3o_S" />
   </node>
 </model>
 

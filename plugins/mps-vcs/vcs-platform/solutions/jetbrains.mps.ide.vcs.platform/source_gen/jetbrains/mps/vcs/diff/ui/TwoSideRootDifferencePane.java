@@ -16,8 +16,8 @@ import com.intellij.ui.JBSplitter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import com.intellij.diff.tools.util.side.TwosideContentPanel;
 import jetbrains.mps.vcs.diff.ui.common.DiffChangeGroupLayout;
-import com.intellij.ide.util.PropertiesComponent;
 import jetbrains.mps.vcs.diff.ChangeSetBuilder;
+import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 
@@ -101,8 +101,7 @@ import jetbrains.mps.vcs.diff.changes.ModelChange;
     }
     ModelChangeSet changeSet = getChangeSet();
     if (rebuildChangeSet && changeSet != null) {
-      boolean trackMovedNodes = PropertiesComponent.getInstance().getBoolean("vcs.diff.track.moved.nodes", false);
-      ChangeSetBuilder.rebuildChangeSet(changeSet, trackMovedNodes);
+      ChangeSetBuilder.rebuildChangeSet(changeSet, DiffSettingsUtil.getTrackMovedNodesOption());
     }
     ListSequence.fromList(getEditors()).visitAll(new IVisitor<DiffEditor>() {
       public void visit(DiffEditor it) {
