@@ -465,6 +465,7 @@ public final class ChangesTracking {
           }
         })) {
           // ignore
+          myDifference.getBroadcaster().changeUpdateFinished();
         } else {
           if (myEventConsumingMapping.removeEvent(event)) {
             myDifference.getBroadcaster().changeUpdateStarted();

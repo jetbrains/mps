@@ -10039,6 +10039,21 @@
                                 </node>
                               </node>
                             </node>
+                            <node concept="3clFbF" id="1OMXr7IOWGm" role="3cqZAp">
+                              <node concept="2OqwBi" id="1OMXr7IOWGn" role="3clFbG">
+                                <node concept="2OqwBi" id="1OMXr7IOWGo" role="2Oq$k0">
+                                  <node concept="37vLTw" id="1OMXr7IOWGp" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="2JwSLRbzlkK" resolve="myDifference" />
+                                  </node>
+                                  <node concept="liA8E" id="1OMXr7IOWGq" role="2OqNvi">
+                                    <ref role="37wK5l" node="1XuTulVDEGj" resolve="getBroadcaster" />
+                                  </node>
+                                </node>
+                                <node concept="liA8E" id="1OMXr7IOWGr" role="2OqNvi">
+                                  <ref role="37wK5l" node="7sg$kIGEM4q" resolve="changeUpdateFinished" />
+                                </node>
+                              </node>
+                            </node>
                           </node>
                           <node concept="2OqwBi" id="1XuTulVDIXD" role="3clFbw">
                             <node concept="37vLTw" id="3GM_nagTC04" role="2Oq$k0">
