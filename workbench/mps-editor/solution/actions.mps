@@ -82,6 +82,7 @@
     <import index="uddc" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.menus.transformation(MPS.Editor/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="y4ob" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.menus(MPS.Editor/)" />
+    <import index="clxi" ref="r:1797d8fa-0ead-4018-8649-d2ee4016be0a(jetbrains.mps.datatransfer)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="oulx" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.commands(MPS.Editor/)" implicit="true" />
     <import index="hox0" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.style(MPS.Editor/)" implicit="true" />
@@ -1646,6 +1647,20 @@
                         </node>
                       </node>
                     </node>
+                    <node concept="3clFbF" id="12Rzar37fRc" role="3cqZAp">
+                      <node concept="2OqwBi" id="12Rzar37hav" role="3clFbG">
+                        <node concept="2YIFZM" id="12Rzar37gVA" role="2Oq$k0">
+                          <ref role="37wK5l" to="clxi:3wPbnawHL1e" resolve="getInstance" />
+                          <ref role="1Pybhc" to="clxi:ymNu2s691f" resolve="DataTransferManager" />
+                        </node>
+                        <node concept="liA8E" id="12Rzar37hNh" role="2OqNvi">
+                          <ref role="37wK5l" to="clxi:ymNu2s9hd6" resolve="postProcessNode" />
+                          <node concept="37vLTw" id="12Rzar37hQv" role="37wK5m">
+                            <ref role="3cqZAo" node="3M9DpEEa3$v" resolve="copy" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
                     <node concept="3cpWs8" id="2OFy8b7Aapi" role="3cqZAp">
                       <node concept="3cpWsn" id="2OFy8b7Aapj" role="3cpWs9">
                         <property role="TrG5h" value="editorContext" />
@@ -1809,6 +1824,18 @@
                   <node concept="35Qw8J" id="3M9DpEEa3A5" role="2OqNvi" />
                 </node>
                 <node concept="3clFbS" id="3M9DpEEa3A6" role="2LFqv$">
+                  <node concept="3cpWs8" id="5dp3qQ83jN$" role="3cqZAp">
+                    <node concept="3cpWsn" id="5dp3qQ83jN_" role="3cpWs9">
+                      <property role="TrG5h" value="copy" />
+                      <node concept="3Tqbb2" id="5dp3qQ83jNA" role="1tU5fm" />
+                      <node concept="2OqwBi" id="5dp3qQ83jNB" role="33vP2m">
+                        <node concept="2GrUjf" id="5dp3qQ83Jn3" role="2Oq$k0">
+                          <ref role="2Gs0qQ" node="3M9DpEEa3A0" resolve="node" />
+                        </node>
+                        <node concept="1$rogu" id="5dp3qQ83jND" role="2OqNvi" />
+                      </node>
+                    </node>
+                  </node>
                   <node concept="3clFbF" id="1Oj45PFgI9e" role="3cqZAp">
                     <node concept="2OqwBi" id="1Oj45PFgIb9" role="3clFbG">
                       <node concept="2JrnkZ" id="1Oj45PFgIzq" role="2Oq$k0">
@@ -1821,14 +1848,25 @@
                         <node concept="37vLTw" id="1Oj45PFgIGH" role="37wK5m">
                           <ref role="3cqZAo" node="3M9DpEEa3_$" resolve="role" />
                         </node>
-                        <node concept="2OqwBi" id="1Oj45PFgIJq" role="37wK5m">
-                          <node concept="2GrUjf" id="1Oj45PFgIId" role="2Oq$k0">
-                            <ref role="2Gs0qQ" node="3M9DpEEa3A0" resolve="node" />
-                          </node>
-                          <node concept="1$rogu" id="1Oj45PFgJbA" role="2OqNvi" />
+                        <node concept="37vLTw" id="5dp3qQ83JtW" role="37wK5m">
+                          <ref role="3cqZAo" node="5dp3qQ83jN_" resolve="copy" />
                         </node>
                         <node concept="37vLTw" id="1Oj45PFgJi7" role="37wK5m">
                           <ref role="3cqZAo" node="3M9DpEEa3_s" resolve="lastNode" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbF" id="5dp3qQ83jrs" role="3cqZAp">
+                    <node concept="2OqwBi" id="5dp3qQ83jrt" role="3clFbG">
+                      <node concept="2YIFZM" id="5dp3qQ83jru" role="2Oq$k0">
+                        <ref role="1Pybhc" to="clxi:ymNu2s691f" resolve="DataTransferManager" />
+                        <ref role="37wK5l" to="clxi:3wPbnawHL1e" resolve="getInstance" />
+                      </node>
+                      <node concept="liA8E" id="5dp3qQ83jrv" role="2OqNvi">
+                        <ref role="37wK5l" to="clxi:ymNu2s9hd6" resolve="postProcessNode" />
+                        <node concept="37vLTw" id="5dp3qQ83LjG" role="37wK5m">
+                          <ref role="3cqZAo" node="5dp3qQ83jN_" resolve="copy" />
                         </node>
                       </node>
                     </node>

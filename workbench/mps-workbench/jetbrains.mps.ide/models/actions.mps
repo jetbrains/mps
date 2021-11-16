@@ -200,6 +200,7 @@
     <import index="ap4t" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator(MPS.Generator/)" />
     <import index="lz1h" ref="r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)" />
     <import index="tprr" ref="r:00000000-0000-4000-0000-011c895904ab(jetbrains.mps.ide.newSolutionDialog)" />
+    <import index="clxi" ref="r:1797d8fa-0ead-4018-8649-d2ee4016be0a(jetbrains.mps.datatransfer)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
     <import index="ov6m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.messages(MPS.IDEA/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
@@ -1896,6 +1897,20 @@
                     <ref role="3cqZAo" node="hIVU5V4" resolve="root" />
                   </node>
                   <node concept="1$rogu" id="hIVU5Vg" role="2OqNvi" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="25_fv2h30zC" role="3cqZAp">
+              <node concept="2OqwBi" id="25_fv2h30ZN" role="3clFbG">
+                <node concept="2YIFZM" id="25_fv2h30NF" role="2Oq$k0">
+                  <ref role="37wK5l" to="clxi:3wPbnawHL1e" resolve="getInstance" />
+                  <ref role="1Pybhc" to="clxi:ymNu2s691f" resolve="DataTransferManager" />
+                </node>
+                <node concept="liA8E" id="25_fv2h31iV" role="2OqNvi">
+                  <ref role="37wK5l" to="clxi:ymNu2s9hd6" resolve="postProcessNode" />
+                  <node concept="37vLTw" id="25_fv2h31mD" role="37wK5m">
+                    <ref role="3cqZAo" node="hIVU5Vc" resolve="copy" />
+                  </node>
                 </node>
               </node>
             </node>

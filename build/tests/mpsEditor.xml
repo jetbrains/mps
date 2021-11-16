@@ -1660,6 +1660,7 @@
       <library file="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.language-descriptor.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.language-design.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.templates.jar" />
+      <library file="${artifacts.mpsBootstrapCore}/languages/editor/jetbrains.mps.editing.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/editor/jetbrains.mps.editor.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/editor/jetbrains.mps.editorlang.runtime.jar" />
       <library file="${artifacts.mpsBootstrapCore}/languages/editor/jetbrains.mps.ide.editor.jar" />
@@ -3083,6 +3084,7 @@
       <pathelement location="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.aspect.typesystem.jar" />
       <pathelement location="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.general-purpose.jar" />
       <pathelement location="${artifacts.mpsBootstrapCore}/languages/devkits/jetbrains.mps.devkit.language-descriptor.jar" />
+      <pathelement location="${artifacts.mpsBootstrapCore}/languages/editor/jetbrains.mps.editing.runtime.jar" />
       <pathelement location="${artifacts.mpsBootstrapCore}/languages/editor/jetbrains.mps.editor.runtime.jar" />
       <pathelement location="${artifacts.mpsBootstrapCore}/languages/editor/jetbrains.mps.editorlang.runtime.jar" />
       <pathelement location="${artifacts.mpsBootstrapCore}/languages/editor/jetbrains.mps.ide.editor.jar" />

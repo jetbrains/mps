@@ -14,6 +14,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.datatransfer.DataTransferManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.openapi.navigation.NavigationSupport;
 
@@ -59,6 +60,7 @@ public class CloneRoot_Action extends BaseAction {
     for (SNode node : ListSequence.fromList(event.getData(MPSCommonDataKeys.NODES))) {
       SNode root = SNodeOperations.getContainingRoot(node);
       SNode copy = SNodeOperations.copyNode(root);
+      DataTransferManager.getInstance().postProcessNode(copy);
       SModelOperations.addRootNode(SNodeOperations.getModel(root), copy);
       NavigationSupport.getInstance().openNode(event.getData(MPSCommonDataKeys.MPS_PROJECT), copy, true, true);
       NavigationSupport.getInstance().selectInTree(event.getData(MPSCommonDataKeys.MPS_PROJECT), copy, false);

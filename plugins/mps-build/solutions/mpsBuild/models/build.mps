@@ -24018,7 +24018,6 @@
         </node>
       </node>
       <node concept="1E1JtA" id="1TaHNgiIbJ$" role="2G$12L">
-        <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.ide.editor" />
         <property role="3LESm3" value="5b1f863d-65a0-41a6-a801-33896be24202" />
         <property role="2GAjPV" value="true" />
@@ -24066,6 +24065,11 @@
         <node concept="1SiIV0" id="2a9bszgruyQ" role="3bR37C">
           <node concept="3bR9La" id="2a9bszgruyP" role="1SiIV1">
             <ref role="3bR37D" node="3MI1gu0QouH" resolve="jetbrains.mps.editor.runtime" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="7yMFiulqQJN" role="3bR37C">
+          <node concept="3bR9La" id="7yMFiulqQUN" role="1SiIV1">
+            <ref role="3bR37D" node="7G8F81M9IGs" resolve="jetbrains.mps.editing.runtime" />
           </node>
         </node>
         <node concept="1SiIV0" id="2a9bszgruyS" role="3bR37C">
@@ -25019,7 +25023,6 @@
         </node>
       </node>
       <node concept="1E1JtA" id="2eDSGe9d1qi" role="2G$12L">
-        <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.ide" />
         <property role="3LESm3" value="019b622b-0aef-4dd3-86d0-4eef01f3f6bb" />
         <property role="2GAjPV" value="true" />
@@ -25200,6 +25203,11 @@
         <node concept="1SiIV0" id="2E8SHj8Oz6Q" role="3bR37C">
           <node concept="3bR9La" id="2E8SHj8Oz6R" role="1SiIV1">
             <ref role="3bR37D" node="3MI1gu0QouH" resolve="jetbrains.mps.editor.runtime" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="79t$gxctM3r" role="3bR37C">
+          <node concept="3bR9La" id="79t$gxctM4O" role="1SiIV1">
+            <ref role="3bR37D" node="7G8F81M9IGs" resolve="jetbrains.mps.editing.runtime" />
           </node>
         </node>
         <node concept="1BupzO" id="73GUf$umQnX" role="3bR31x">
