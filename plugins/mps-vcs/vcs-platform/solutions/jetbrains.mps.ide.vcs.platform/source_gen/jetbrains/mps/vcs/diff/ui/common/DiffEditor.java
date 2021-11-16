@@ -345,7 +345,7 @@ public class DiffEditor implements EditorMessageOwner {
 
 
     public MyInspectorEditorComponent(@NotNull SRepository repository, boolean rightToLeft) {
-      super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).showSelectionLine(false).showSelectionLine(false).build());
+      super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).showSelectionLine(false).showLightBulb(false).build());
     }
 
     @Override

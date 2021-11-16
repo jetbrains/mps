@@ -12719,7 +12719,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="71dZSFH4cW4" role="2OqNvi">
-                  <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.showSelectionLine(boolean)" resolve="showSelectionLine" />
+                  <ref role="37wK5l" to="7oz1:~EditorConfigurationBuilder.showLightBulb(boolean)" resolve="showLightBulb" />
                   <node concept="3clFbT" id="o22Q$svHCL" role="37wK5m" />
                 </node>
               </node>
