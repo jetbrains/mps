@@ -9,10 +9,10 @@ import jetbrains.mps.vcs.diff.merge.MergeSession;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.vcs.diff.merge.MergeSessionState;
 import jetbrains.mps.vcs.diff.ui.common.ChangeEditorMessage;
+import java.util.List;
 import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import com.intellij.diff.tools.util.side.ThreesideContentPanel;
 import com.intellij.ide.util.PropertiesComponent;
-import java.util.List;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -27,6 +27,8 @@ import com.intellij.ui.JBSplitter;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceRegistry;
 import jetbrains.mps.vcs.diff.ui.common.TripleChangeGroupLayout;
 import jetbrains.mps.vcs.diff.ui.common.ChangeGroupMessages;
+import org.jetbrains.annotations.Nullable;
+import com.intellij.diff.DiffEditorTitleCustomizer;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -41,6 +43,7 @@ import java.util.Iterator;
 import java.util.Arrays;
 import com.intellij.diff.util.Side;
 import javax.swing.JComponent;
+import com.intellij.diff.util.DiffUtil;
 import com.intellij.openapi.actionSystem.ToggleAction;
 import com.intellij.openapi.project.DumbAware;
 import jetbrains.mps.ide.icons.IdeIcons;
@@ -72,7 +75,7 @@ public class MergeRootsPane implements PropertyChangeListener {
   private boolean myDisposed = false;
 
   private ChangeEditorMessage.ConflictChecker myConflictChecker;
-  private String[] myTitles;
+  private List<String> myTitles;
   private DiffEditor myResultEditor;
   private DiffEditor myMineEditor;
   private DiffEditor myRepositoryEditor;
@@ -96,15 +99,17 @@ public class MergeRootsPane implements PropertyChangeListener {
   private TripleChangeGroupLayout myMainLayout;
   private TripleChangeGroupLayout myInspectorLayout;
   private final List<ChangeGroupMessages> myGutterMessagesRebuilders = ListSequence.fromList(new ArrayList<ChangeGroupMessages>());
+  @Nullable
+  private final List<DiffEditorTitleCustomizer> myTitleCustomizers;
 
 
-  public MergeRootsPane(Project project, MergeSession mergeSession, SNodeId rootId, String rootName, String[] titles) {
+  public MergeRootsPane(Project project, MergeSession mergeSession, SNodeId rootId, String rootName, List<String> titles, @Nullable List<DiffEditorTitleCustomizer> titleCustomizers) {
     myProject = project;
     myMergeSession = mergeSession;
     myRootId = rootId;
     myStateToRestore = myMergeSession.getCurrentState();
     myTitles = titles;
-
+    myTitleCustomizers = titleCustomizers;
     myConflictChecker = (ModelChange ch) -> Sequence.fromIterable(myMergeSession.getConflictedWith(ch)).isNotEmpty();
 
     myMineEditor = addEditor(0, myMergeSession.getMyModel());
@@ -148,7 +153,7 @@ public class MergeRootsPane implements PropertyChangeListener {
     }
 
     private void rehighlightWithRebuild() {
-      check_lifo0_a0a5nb(ProjectHelper.getModelAccess(myProject), this);
+      check_lifo0_a0a5ob(ProjectHelper.getModelAccess(myProject), this);
     }
     private void doRehighlight() {
       rehighlight();
@@ -193,13 +198,19 @@ public class MergeRootsPane implements PropertyChangeListener {
     linkEditors(panel, true, true);
     linkEditors(panel, false, true);
     myInspectorLayout = new TripleChangeGroupLayout((DiffChangeGroupLayout) ListSequence.fromList(myChangeGroupLayouts).getElement(2), (DiffChangeGroupLayout) ListSequence.fromList(myChangeGroupLayouts).getElement(3), true);
-
     panel.setPainter(new MyDividerPainter(true), Side.LEFT);
     panel.setPainter(new MyDividerPainter(false), Side.RIGHT);
     return panel;
   }
 
   protected List<JComponent> createTitles() {
+    if (myTitleCustomizers != null) {
+      List<JComponent> titles = ListSequence.fromList(new ArrayList<JComponent>());
+      for (int i = 0; i < ListSequence.fromList(myTitles).count(); i++) {
+        ListSequence.fromList(titles).addElement(DiffUtil.createTitle(ListSequence.fromList(myTitles).getElement(i), ListSequence.fromList(myTitleCustomizers).getElement(i)));
+      }
+      return titles;
+    }
     return Arrays.asList(myMineEditor.getTitleComponent(), myResultEditor.getTitleComponent(), myRepositoryEditor.getTitleComponent());
   }
 
@@ -430,7 +441,7 @@ public class MergeRootsPane implements PropertyChangeListener {
 
   private DiffEditor addEditor(int index, SModel model) {
     SNodeId rootId = getRootNodeId(model);
-    final DiffEditor result = new DiffEditor(ProjectHelper.fromIdeaProject(myProject), model, rootId, myTitles[index], index == 0, isInspectorShown);
+    final DiffEditor result = new DiffEditor(ProjectHelper.fromIdeaProject(myProject), model, rootId, ListSequence.fromList(myTitles).getElement(index), index == 0, isInspectorShown);
     myDiffEditorsGroup.add(result);
     return result;
   }
@@ -508,7 +519,7 @@ public class MergeRootsPane implements PropertyChangeListener {
       }
     }
   }
-  private static void check_lifo0_a0a5nb(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
+  private static void check_lifo0_a0a5ob(ModelAccess checkedDotOperand, final MyDifferenceListener checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       checkedDotOperand.runReadInEDT(() -> checkedDotThisExpression.doRehighlight());
     }

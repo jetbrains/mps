@@ -95,7 +95,11 @@
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.merge.MergeModelsPanel">
+    <classNode dependClassName="com.intellij.diff.DiffEditorTitleCustomizer" />
+    <classNode dependClassName="com.intellij.diff.merge.MergeUtil" />
     <classNode dependClassName="com.intellij.diff.merge.TextMergeRequest" />
+    <classNode dependClassName="com.intellij.diff.util.DiffUserDataKeysEx" />
+    <classNode dependClassName="com.intellij.diff.util.ThreeSide" />
     <classNode dependClassName="com.intellij.icons.AllIcons" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ActionManager" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ActionPlaces" />
@@ -103,6 +107,7 @@
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnAction" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.DefaultActionGroup" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.Separator" />
+    <classNode dependClassName="com.intellij.openapi.diff.DiffBundle" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.util.DimensionService" />
     <classNode dependClassName="com.intellij.ui.JBSplitter" />
@@ -172,8 +177,10 @@
     <classNode extendsClassName="jetbrains.mps.workbench.action.BaseAction" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.merge.MergeRootsPane">
+    <classNode dependClassName="com.intellij.diff.DiffEditorTitleCustomizer" />
     <classNode dependClassName="com.intellij.diff.tools.util.DiffSplitter" />
     <classNode dependClassName="com.intellij.diff.tools.util.side.ThreesideContentPanel" />
+    <classNode dependClassName="com.intellij.diff.util.DiffUtil" />
     <classNode dependClassName="com.intellij.diff.util.Side" />
     <classNode dependClassName="com.intellij.ide.util.PropertiesComponent" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ActionGroup" />
@@ -227,6 +234,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.merge.ApplyNonConflictsForRoot" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.ui.merge.MergeButtonsPainter" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.EditableSModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />

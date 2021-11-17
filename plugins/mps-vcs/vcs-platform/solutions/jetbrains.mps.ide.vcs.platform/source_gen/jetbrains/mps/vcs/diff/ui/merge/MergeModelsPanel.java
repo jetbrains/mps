@@ -21,15 +21,20 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.vcs.diff.ui.common.GoToNeighbourRootActions;
+import com.intellij.diff.DiffEditorTitleCustomizer;
 import java.util.Set;
 import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import com.intellij.diff.merge.TextMergeRequest;
 import java.awt.BorderLayout;
+import com.intellij.diff.merge.MergeUtil;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import com.intellij.diff.util.ThreeSide;
+import com.intellij.openapi.diff.DiffBundle;
+import com.intellij.diff.util.DiffUserDataKeysEx;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.vcs.diff.ui.MetadataUtil;
 import java.util.ArrayList;
 import com.intellij.openapi.actionSystem.Separator;
@@ -83,14 +88,18 @@ public class MergeModelsPanel extends JPanel {
   private DefaultActionGroup myActionGroup;
   private GoToNeighbourRootActions myGoToNeighbourRootActions;
 
-  private String[] myContentTitles = new String[0];
+  private final List<String> myContentTitles;
+  private List<DiffEditorTitleCustomizer> myTitleCustomizers;
+
   private Set<ModelChange> myAppliedMetadataChanges = SetSequence.fromSet(new HashSet<ModelChange>());
 
   public MergeModelsPanel(Project project, final SModel baseModel, final SModel mineModel, final SModel repoModel, TextMergeRequest request, final boolean fixReferences) {
     super(new BorderLayout());
     myProject = project;
-    myContentTitles = request.getContentTitles().toArray(myContentTitles);
-    assert myContentTitles.length == 3;
+    myContentTitles = (List<String>) MergeUtil.notNullizeContentTitles(request.getContentTitles());
+    ListSequence.fromList(myContentTitles).setElement(ThreeSide.BASE.getIndex(), DiffBundle.message("merge.version.title.merged.result"));
+    myTitleCustomizers = request.getUserData(DiffUserDataKeysEx.EDITORS_TITLE_CUSTOMIZER);
+    assert ListSequence.fromList(myContentTitles).count() == 3;
     // FIXME code below requires thorough refactoring. Models that come here are IMO loaded from disk and are not
     // attached to any repository, hence there's no reason to grab lock to deal with them. OTOH, there's code that
     // registers and exposes model artifacts with a temp module, which is part of global repository now and hence
@@ -254,7 +263,7 @@ public class MergeModelsPanel extends JPanel {
     myProjectRepository.getModelAccess().runReadAction(() -> {
       SNodeId nodeId = (rootId == null ? MetadataUtil.getMetadataRootId() : rootId);
       if (myMergeRootsPane == null) {
-        myMergeRootsPane = new MergeRootsPane(myProject, session, nodeId, myMergeTree.getNameForRoot(rootId), myContentTitles);
+        myMergeRootsPane = new MergeRootsPane(myProject, session, nodeId, myMergeTree.getNameForRoot(rootId), myContentTitles, myTitleCustomizers);
         DefaultActionGroup actionGroup = new DefaultActionGroup();
         actionGroup.addAll(myMergeRootsPane.getActions());
         ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, actionGroup, true);
@@ -376,9 +385,6 @@ public class MergeModelsPanel extends JPanel {
     SetSequence.fromSet(myAppliedMetadataChanges).addSequence(Sequence.fromIterable(changes));
   }
 
-  /*package*/ String[] getContentTitles() {
-    return myContentTitles;
-  }
   /*package*/ MergeSession getMergeSession() {
     return myMergeSession;
   }
