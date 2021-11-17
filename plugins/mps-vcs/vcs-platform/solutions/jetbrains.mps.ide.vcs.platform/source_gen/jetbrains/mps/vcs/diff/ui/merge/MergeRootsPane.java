@@ -400,8 +400,7 @@ public class MergeRootsPane implements PropertyChangeListener {
   private void linkEditors(ThreesideContentPanel panel, boolean mine, boolean inspector) {
     DiffChangeGroupLayout layout = new DiffChangeGroupLayout(myConflictChecker, (mine ? myMergeSession.getMyChangeSet() : myMergeSession.getRepositoryChangeSet()), (mine ? myMineEditor : myResultEditor), (mine ? myResultEditor : myRepositoryEditor), getSplitterRepainter(panel, mine), inspector);
     MapSequence.fromMap(myDiffLayoutPart).put(layout, mine);
-    ListSequence.fromList(myGutterMessagesRebuilders).addElement(new ChangeGroupMessages(layout, false));
-    ListSequence.fromList(myGutterMessagesRebuilders).addElement(new ChangeGroupMessages(layout, true));
+    ListSequence.fromList(myGutterMessagesRebuilders).addElement(new ChangeGroupMessages(layout, mine));
     ListSequence.fromList(myChangeGroupLayouts).addElement(layout);
     MergeButtonsPainter.addTo(this, (mine ? myMineEditor : myRepositoryEditor), layout, inspector);
   }

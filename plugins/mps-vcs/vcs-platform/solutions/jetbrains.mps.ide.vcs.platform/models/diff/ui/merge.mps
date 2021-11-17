@@ -5423,28 +5423,8 @@
                   <node concept="37vLTw" id="3dhKa32ZZbL" role="37wK5m">
                     <ref role="3cqZAo" node="42UviMImjKr" resolve="layout" />
                   </node>
-                  <node concept="3clFbT" id="3dhKa32ZZbM" role="37wK5m">
-                    <property role="3clFbU" value="false" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3dhKa32ZZbN" role="3cqZAp">
-          <node concept="2OqwBi" id="3dhKa32ZZbO" role="3clFbG">
-            <node concept="37vLTw" id="3dhKa32ZZbP" role="2Oq$k0">
-              <ref role="3cqZAo" node="4v$0iiIJgCs" resolve="myGutterMessagesRebuilders" />
-            </node>
-            <node concept="TSZUe" id="3dhKa32ZZbQ" role="2OqNvi">
-              <node concept="2ShNRf" id="3dhKa32ZZbR" role="25WWJ7">
-                <node concept="1pGfFk" id="3dhKa32ZZbS" role="2ShVmc">
-                  <ref role="37wK5l" to="hdhb:D356mG1lCH" resolve="ChangeGroupMessages" />
-                  <node concept="37vLTw" id="3dhKa32ZZbT" role="37wK5m">
-                    <ref role="3cqZAo" node="42UviMImjKr" resolve="layout" />
-                  </node>
-                  <node concept="3clFbT" id="3dhKa32ZZbU" role="37wK5m">
-                    <property role="3clFbU" value="true" />
+                  <node concept="37vLTw" id="410DNiAgb6S" role="37wK5m">
+                    <ref role="3cqZAo" node="50LFMYN6gnM" resolve="mine" />
                   </node>
                 </node>
               </node>
