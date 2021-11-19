@@ -8,7 +8,7 @@
     <use id="63650c59-16c8-498a-99c8-005c7ee9515d" name="jetbrains.mps.lang.access" version="-1" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
-    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
+    <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="11" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
   </languages>
@@ -6962,108 +6962,67 @@
             <ref role="3cqZAo" node="4tEWdMGIY0C" resolve="myProjectRepository" />
           </node>
         </node>
-        <node concept="1QHqEM" id="6fe4FZiw6GL" role="3cqZAp">
-          <node concept="1QHqEC" id="6fe4FZiw6GN" role="1QHqEI">
-            <node concept="3clFbS" id="6fe4FZiw6GP" role="1bW5cS">
-              <node concept="3clFbF" id="6fe4FZiwo_6" role="3cqZAp">
-                <node concept="2YIFZM" id="2v$NtEHog2C" role="3clFbG">
-                  <ref role="1Pybhc" to="hdhb:42hl10VHaSb" resolve="DiffModelUtil" />
-                  <ref role="37wK5l" to="hdhb:6o37A5sInP5" resolve="renameModelAndRegister" />
-                  <node concept="2OqwBi" id="2v$NtEHog2D" role="37wK5m">
-                    <node concept="37vLTw" id="2BHiRxeujYY" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
-                    </node>
-                    <node concept="liA8E" id="2v$NtEHog2F" role="2OqNvi">
-                      <ref role="37wK5l" to="bmv6:3$YpntjF4s_" resolve="getBaseModel" />
-                    </node>
-                  </node>
-                  <node concept="Xl_RD" id="2v$NtEHog2G" role="37wK5m">
-                    <property role="Xl_RC" value="base" />
-                  </node>
-                  <node concept="37vLTw" id="5u75OIaAvM4" role="37wK5m">
-                    <ref role="3cqZAo" node="5u75OIaAp4o" resolve="fixReferences" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="6fe4FZiwq0b" role="3cqZAp">
-                <node concept="2YIFZM" id="2v$NtEHoD2h" role="3clFbG">
-                  <ref role="1Pybhc" to="hdhb:42hl10VHaSb" resolve="DiffModelUtil" />
-                  <ref role="37wK5l" to="hdhb:6o37A5sInP5" resolve="renameModelAndRegister" />
-                  <node concept="2OqwBi" id="2v$NtEHoD2i" role="37wK5m">
-                    <node concept="37vLTw" id="2BHiRxeuM5i" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
-                    </node>
-                    <node concept="liA8E" id="2v$NtEHoD2k" role="2OqNvi">
-                      <ref role="37wK5l" to="bmv6:3$YpntjF4sH" resolve="getMyModel" />
-                    </node>
-                  </node>
-                  <node concept="Xl_RD" id="2v$NtEHoD2l" role="37wK5m">
-                    <property role="Xl_RC" value="mine" />
-                  </node>
-                  <node concept="37vLTw" id="5u75OIaAwEZ" role="37wK5m">
-                    <ref role="3cqZAo" node="5u75OIaAp4o" resolve="fixReferences" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="6fe4FZiwurY" role="3cqZAp">
-                <node concept="2YIFZM" id="2v$NtEHoMSw" role="3clFbG">
-                  <ref role="1Pybhc" to="hdhb:42hl10VHaSb" resolve="DiffModelUtil" />
-                  <ref role="37wK5l" to="hdhb:6o37A5sInP5" resolve="renameModelAndRegister" />
-                  <node concept="2OqwBi" id="2v$NtEHoMSx" role="37wK5m">
-                    <node concept="37vLTw" id="2BHiRxeukk2" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
-                    </node>
-                    <node concept="liA8E" id="2v$NtEHoMSz" role="2OqNvi">
-                      <ref role="37wK5l" to="bmv6:3$YpntjF4sP" resolve="getRepositoryModel" />
-                    </node>
-                  </node>
-                  <node concept="Xl_RD" id="2v$NtEHoMS$" role="37wK5m">
-                    <property role="Xl_RC" value="repo" />
-                  </node>
-                  <node concept="37vLTw" id="5u75OIaAxzf" role="37wK5m">
-                    <ref role="3cqZAo" node="5u75OIaAp4o" resolve="fixReferences" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="2jv$fqwD$rx" role="3cqZAp">
-                <node concept="2YIFZM" id="2v$NtEHoWt_" role="3clFbG">
-                  <ref role="1Pybhc" to="hdhb:42hl10VHaSb" resolve="DiffModelUtil" />
-                  <ref role="37wK5l" to="hdhb:6o37A5sInP5" resolve="renameModelAndRegister" />
-                  <node concept="2OqwBi" id="2v$NtEHoWtA" role="37wK5m">
-                    <node concept="37vLTw" id="2BHiRxeunhE" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
-                    </node>
-                    <node concept="liA8E" id="2v$NtEHoWtC" role="2OqNvi">
-                      <ref role="37wK5l" to="bmv6:3$YpntjF4sv" resolve="getResultModel" />
-                    </node>
-                  </node>
-                  <node concept="Xl_RD" id="2v$NtEHoWtD" role="37wK5m">
-                    <property role="Xl_RC" value="result" />
-                  </node>
-                  <node concept="37vLTw" id="5u75OIaAys8" role="37wK5m">
-                    <ref role="3cqZAo" node="5u75OIaAp4o" resolve="fixReferences" />
-                  </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="2jv$fqwD$qB" role="3cqZAp">
-                <node concept="37vLTI" id="2jv$fqwD$qC" role="3clFbG">
-                  <node concept="2OqwBi" id="2jv$fqwD$qD" role="37vLTx">
-                    <node concept="37vLTw" id="2BHiRxeuXib" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
-                    </node>
-                    <node concept="liA8E" id="2jv$fqwD$qF" role="2OqNvi">
-                      <ref role="37wK5l" to="bmv6:3$YpntjF4tl" resolve="getCurrentState" />
-                    </node>
-                  </node>
-                  <node concept="37vLTw" id="2BHiRxeukvE" role="37vLTJ">
-                    <ref role="3cqZAo" node="2jv$fqwD$oP" resolve="myInitialState" />
-                  </node>
-                </node>
-              </node>
+        <node concept="3clFbH" id="3oMsNY6VooQ" role="3cqZAp" />
+        <node concept="3SKdUt" id="3oMsNY6SmzY" role="3cqZAp">
+          <node concept="1PaTwC" id="3oMsNY6SmzZ" role="1aUNEU">
+            <node concept="3oM_SD" id="3oMsNY6StRG" role="1PaTwD">
+              <property role="3oM_SC" value="create" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6StRI" role="1PaTwD">
+              <property role="3oM_SC" value="metamodels" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6SJP3" role="1PaTwD">
+              <property role="3oM_SC" value="before" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6SMZ8" role="1PaTwD">
+              <property role="3oM_SC" value="renaming" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6SMZd" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6SZA8" role="1PaTwD">
+              <property role="3oM_SC" value="models" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6TeCv" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6Tm67" role="1PaTwD">
+              <property role="3oM_SC" value="order" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6Tm6g" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6TtHY" role="1PaTwD">
+              <property role="3oM_SC" value="avoid" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6TtI9" role="1PaTwD">
+              <property role="3oM_SC" value="problems" />
             </node>
           </node>
-          <node concept="37vLTw" id="4tEWdMGIqpg" role="ukAjM">
-            <ref role="3cqZAo" node="4tEWdMGIY0C" resolve="myProjectRepository" />
+        </node>
+        <node concept="3SKdUt" id="3oMsNY6TRRY" role="3cqZAp">
+          <node concept="1PaTwC" id="3oMsNY6TRRZ" role="1aUNEU">
+            <node concept="3oM_SD" id="3oMsNY6TY7D" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6TY7F" role="1PaTwD">
+              <property role="3oM_SC" value="stereotypes" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6UbRj" role="1PaTwD">
+              <property role="3oM_SC" value="like" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6Uiug" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6Uiul" role="1PaTwD">
+              <property role="3oM_SC" value="MPS-32651" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6UsZi" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="3oMsNY6UsZp" role="1PaTwD">
+              <property role="3oM_SC" value="MPS-33991" />
+            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="2jv$fqwD$qH" role="3cqZAp">
@@ -7187,7 +7146,7 @@
                         </node>
                       </node>
                       <node concept="Xl_RD" id="2v$NtEHqDH$" role="37wK5m">
-                        <property role="Xl_RC" value="result" />
+                        <property role="Xl_RC" value="metadata_result" />
                       </node>
                     </node>
                   </node>
@@ -7212,6 +7171,110 @@
                 <ref role="3cqZAo" node="4tEWdMGIY0C" resolve="myProjectRepository" />
               </node>
             </node>
+          </node>
+        </node>
+        <node concept="1QHqEM" id="6fe4FZiw6GL" role="3cqZAp">
+          <node concept="1QHqEC" id="6fe4FZiw6GN" role="1QHqEI">
+            <node concept="3clFbS" id="6fe4FZiw6GP" role="1bW5cS">
+              <node concept="3clFbF" id="6fe4FZiwo_6" role="3cqZAp">
+                <node concept="2YIFZM" id="2v$NtEHog2C" role="3clFbG">
+                  <ref role="1Pybhc" to="hdhb:42hl10VHaSb" resolve="DiffModelUtil" />
+                  <ref role="37wK5l" to="hdhb:6o37A5sInP5" resolve="renameModelAndRegister" />
+                  <node concept="2OqwBi" id="2v$NtEHog2D" role="37wK5m">
+                    <node concept="37vLTw" id="2BHiRxeujYY" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
+                    </node>
+                    <node concept="liA8E" id="2v$NtEHog2F" role="2OqNvi">
+                      <ref role="37wK5l" to="bmv6:3$YpntjF4s_" resolve="getBaseModel" />
+                    </node>
+                  </node>
+                  <node concept="Xl_RD" id="2v$NtEHog2G" role="37wK5m">
+                    <property role="Xl_RC" value="base" />
+                  </node>
+                  <node concept="37vLTw" id="5u75OIaAvM4" role="37wK5m">
+                    <ref role="3cqZAo" node="5u75OIaAp4o" resolve="fixReferences" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="6fe4FZiwq0b" role="3cqZAp">
+                <node concept="2YIFZM" id="2v$NtEHoD2h" role="3clFbG">
+                  <ref role="1Pybhc" to="hdhb:42hl10VHaSb" resolve="DiffModelUtil" />
+                  <ref role="37wK5l" to="hdhb:6o37A5sInP5" resolve="renameModelAndRegister" />
+                  <node concept="2OqwBi" id="2v$NtEHoD2i" role="37wK5m">
+                    <node concept="37vLTw" id="2BHiRxeuM5i" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
+                    </node>
+                    <node concept="liA8E" id="2v$NtEHoD2k" role="2OqNvi">
+                      <ref role="37wK5l" to="bmv6:3$YpntjF4sH" resolve="getMyModel" />
+                    </node>
+                  </node>
+                  <node concept="Xl_RD" id="2v$NtEHoD2l" role="37wK5m">
+                    <property role="Xl_RC" value="mine" />
+                  </node>
+                  <node concept="37vLTw" id="5u75OIaAwEZ" role="37wK5m">
+                    <ref role="3cqZAo" node="5u75OIaAp4o" resolve="fixReferences" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="6fe4FZiwurY" role="3cqZAp">
+                <node concept="2YIFZM" id="2v$NtEHoMSw" role="3clFbG">
+                  <ref role="1Pybhc" to="hdhb:42hl10VHaSb" resolve="DiffModelUtil" />
+                  <ref role="37wK5l" to="hdhb:6o37A5sInP5" resolve="renameModelAndRegister" />
+                  <node concept="2OqwBi" id="2v$NtEHoMSx" role="37wK5m">
+                    <node concept="37vLTw" id="2BHiRxeukk2" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
+                    </node>
+                    <node concept="liA8E" id="2v$NtEHoMSz" role="2OqNvi">
+                      <ref role="37wK5l" to="bmv6:3$YpntjF4sP" resolve="getRepositoryModel" />
+                    </node>
+                  </node>
+                  <node concept="Xl_RD" id="2v$NtEHoMS$" role="37wK5m">
+                    <property role="Xl_RC" value="repo" />
+                  </node>
+                  <node concept="37vLTw" id="5u75OIaAxzf" role="37wK5m">
+                    <ref role="3cqZAo" node="5u75OIaAp4o" resolve="fixReferences" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="2jv$fqwD$rx" role="3cqZAp">
+                <node concept="2YIFZM" id="2v$NtEHoWt_" role="3clFbG">
+                  <ref role="1Pybhc" to="hdhb:42hl10VHaSb" resolve="DiffModelUtil" />
+                  <ref role="37wK5l" to="hdhb:6o37A5sInP5" resolve="renameModelAndRegister" />
+                  <node concept="2OqwBi" id="2v$NtEHoWtA" role="37wK5m">
+                    <node concept="37vLTw" id="2BHiRxeunhE" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
+                    </node>
+                    <node concept="liA8E" id="2v$NtEHoWtC" role="2OqNvi">
+                      <ref role="37wK5l" to="bmv6:3$YpntjF4sv" resolve="getResultModel" />
+                    </node>
+                  </node>
+                  <node concept="Xl_RD" id="2v$NtEHoWtD" role="37wK5m">
+                    <property role="Xl_RC" value="result" />
+                  </node>
+                  <node concept="37vLTw" id="5u75OIaAys8" role="37wK5m">
+                    <ref role="3cqZAo" node="5u75OIaAp4o" resolve="fixReferences" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="2jv$fqwD$qB" role="3cqZAp">
+                <node concept="37vLTI" id="2jv$fqwD$qC" role="3clFbG">
+                  <node concept="2OqwBi" id="2jv$fqwD$qD" role="37vLTx">
+                    <node concept="37vLTw" id="2BHiRxeuXib" role="2Oq$k0">
+                      <ref role="3cqZAo" node="2jv$fqwD$oJ" resolve="myMergeSession" />
+                    </node>
+                    <node concept="liA8E" id="2jv$fqwD$qF" role="2OqNvi">
+                      <ref role="37wK5l" to="bmv6:3$YpntjF4tl" resolve="getCurrentState" />
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="2BHiRxeukvE" role="37vLTJ">
+                    <ref role="3cqZAo" node="2jv$fqwD$oP" resolve="myInitialState" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="37vLTw" id="4tEWdMGIqpg" role="ukAjM">
+            <ref role="3cqZAo" node="4tEWdMGIY0C" resolve="myProjectRepository" />
           </node>
         </node>
         <node concept="3clFbH" id="2jv$fqwMbC8" role="3cqZAp" />

@@ -110,12 +110,7 @@ public class DiffModelUtil {
 
   private static SModelReference genDiffSModelRef(SModelReference ref, String version) {
     SModelId newId = SModelId.foreign("diff_" + version + "#" + ref.getModelId().toString());
-    // a stereotype part of the model name starts with '@' and this part is not displayed 
-    // in a diff viewer. Version part appended here should also be invisible.
-    // Therefore, we shouldn't use '@' as version separator in case when the model name 
-    // has a stereotype part. Otherwise, the stereotype part will not be truncated.
-    char versionSeparator = (ref.getName().hasStereotype() ? '_' : '@');
-    String newName = ref.getModelName() + versionSeparator + version;
+    String newName = ref.getModelName() + "@" + version;
     return PersistenceFacade.getInstance().createModelReference(ref.getModuleReference(), newId, newName);
   }
   private static SModelReference getOriginalSModelRef(SModelReference ref) {

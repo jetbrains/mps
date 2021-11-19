@@ -27,8 +27,8 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 import com.intellij.ui.ScrollPaneFactory;
 import java.awt.Dimension;
@@ -94,16 +94,18 @@ public class ModelDifferenceViewer implements DataProvider {
     myEditable = isModelEditable(ListSequence.fromList(myModels).getElement(1));
     // register models in repository and create changeset
     myProject.getRepository().getModelAccess().runWriteAction(() -> {
-      ListSequence.fromList(myModels).visitAll(new IVisitor<SModel>() {
-        public void visit(SModel it) {
-          registerModelIfNeeded(it, perRootPersistence);
-        }
-      });
+      // create metamodels before renaming the models in order to avoid problems
+      // with stereotypes like in MPS-32651 and MPS-33991
       myMetadataModels = ListSequence.fromList(myModels).select(new ISelector<SModel, SModel>() {
         public SModel select(SModel it) {
           return createRegisteredMetaModel(it);
         }
       }).toListSequence();
+      ListSequence.fromList(myModels).visitAll(new IVisitor<SModel>() {
+        public void visit(SModel it) {
+          registerModelIfNeeded(it, perRootPersistence);
+        }
+      });
     });
     final boolean trackMovedNodes = DiffSettingsUtil.getTrackMovedNodesOption();
     // TODO changesets should be probably built in a separate thread

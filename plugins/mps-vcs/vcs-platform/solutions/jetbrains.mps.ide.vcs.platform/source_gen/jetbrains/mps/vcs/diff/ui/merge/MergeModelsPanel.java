@@ -34,8 +34,8 @@ import com.intellij.diff.util.ThreeSide;
 import com.intellij.openapi.diff.DiffBundle;
 import com.intellij.diff.util.DiffUserDataKeysEx;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import jetbrains.mps.vcs.diff.ui.MetadataUtil;
+import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import java.util.ArrayList;
 import com.intellij.openapi.actionSystem.Separator;
 import com.intellij.ui.ScrollPaneFactory;
@@ -107,6 +107,19 @@ public class MergeModelsPanel extends JPanel {
     myProjectRepository = ProjectHelper.getProjectRepository(project);
     assert myProjectRepository != null;
     myProjectRepository.getModelAccess().runReadAction(() -> myMergeSession = MergeSession.createMergeSession(baseModel, mineModel, repoModel));
+
+    // create metamodels before renaming the models in order to avoid problems
+    // with stereotypes like in MPS-32651 and MPS-33991
+    if (ListSequence.fromList(myMergeSession.getMetadataChanges()).isNotEmpty()) {
+      myProjectRepository.getModelAccess().runWriteAction(() -> {
+        SModel baseMetaModel = MetadataUtil.createMetadataModel(myMergeSession.getBaseModel(), "metadata_base", false);
+        SModel mineMetaModel = MetadataUtil.createMetadataModel(myMergeSession.getMyModel(), "metadata_mine", false);
+        SModel repoMetaModel = MetadataUtil.createMetadataModel(myMergeSession.getRepositoryModel(), "metadata_repo", false);
+        myMetadataMergeSession = MergeSession.createMergeSession(baseMetaModel, mineMetaModel, repoMetaModel);
+        DiffModelUtil.renameModelAndRegister(myMetadataMergeSession.getResultModel(), "metadata_result");
+        myMetadataInitialState = myMetadataMergeSession.getCurrentState();
+      });
+    }
     myProjectRepository.getModelAccess().runWriteAction(() -> {
       DiffModelUtil.renameModelAndRegister(myMergeSession.getBaseModel(), "base", fixReferences);
       DiffModelUtil.renameModelAndRegister(myMergeSession.getMyModel(), "mine", fixReferences);
@@ -114,16 +127,6 @@ public class MergeModelsPanel extends JPanel {
       DiffModelUtil.renameModelAndRegister(myMergeSession.getResultModel(), "result", fixReferences);
       myInitialState = myMergeSession.getCurrentState();
     });
-    if (ListSequence.fromList(myMergeSession.getMetadataChanges()).isNotEmpty()) {
-      myProjectRepository.getModelAccess().runWriteAction(() -> {
-        SModel baseMetaModel = MetadataUtil.createMetadataModel(myMergeSession.getBaseModel(), "metadata_base", false);
-        SModel mineMetaModel = MetadataUtil.createMetadataModel(myMergeSession.getMyModel(), "metadata_mine", false);
-        SModel repoMetaModel = MetadataUtil.createMetadataModel(myMergeSession.getRepositoryModel(), "metadata_repo", false);
-        myMetadataMergeSession = MergeSession.createMergeSession(baseMetaModel, mineMetaModel, repoMetaModel);
-        DiffModelUtil.renameModelAndRegister(myMetadataMergeSession.getResultModel(), "result");
-        myMetadataInitialState = myMetadataMergeSession.getCurrentState();
-      });
-    }
 
     myMergeSession.installResultModelListener();
 
