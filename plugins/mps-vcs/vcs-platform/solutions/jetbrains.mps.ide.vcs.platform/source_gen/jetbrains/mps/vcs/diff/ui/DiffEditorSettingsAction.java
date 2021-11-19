@@ -10,6 +10,7 @@ import com.intellij.openapi.actionSystem.AnAction;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.ToggleAction;
+import com.intellij.openapi.project.DumbAware;
 import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
 
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/4621883088124559446", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
@@ -36,7 +37,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
     return new AnAction[]{new UseShortChangeDescriptionsAction(), new HideIdChangesAction(), new HideResolveInfoOnlyAction(), new TrackMovedNodesAction(), new HideUnorderedMovesAction()};
   }
 
-  private static class UseShortChangeDescriptionsAction extends ToggleAction {
+  private static class UseShortChangeDescriptionsAction extends ToggleAction implements DumbAware {
 
     private UseShortChangeDescriptionsAction() {
       super(USE_SHORT_DESCRIPTIONS_CAPTION);
@@ -53,7 +54,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
     }
   }
 
-  private class HideIdChangesAction extends ToggleAction {
+  private class HideIdChangesAction extends ToggleAction implements DumbAware {
 
     private HideIdChangesAction() {
       super(HIDE_ID_CHANGES_CAPTION);
@@ -71,7 +72,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
     }
   }
 
-  private class HideResolveInfoOnlyAction extends ToggleAction {
+  private class HideResolveInfoOnlyAction extends ToggleAction implements DumbAware {
 
     private HideResolveInfoOnlyAction() {
       super(HIDE_RESOLVE_INFO_CHANGES_CAPTION);
@@ -89,7 +90,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
     }
   }
 
-  private class TrackMovedNodesAction extends ToggleAction {
+  private class TrackMovedNodesAction extends ToggleAction implements DumbAware {
 
     private TrackMovedNodesAction() {
       super(TRACK_MOVED_NODES_CAPTION);
@@ -107,7 +108,7 @@ import jetbrains.mps.vcs.diff.ui.common.DiffSettingsUtil;
     }
   }
 
-  private class HideUnorderedMovesAction extends ToggleAction {
+  private class HideUnorderedMovesAction extends ToggleAction implements DumbAware {
 
     private HideUnorderedMovesAction() {
       super(HIDE_UNORDERED_MOVES_CAPTION);

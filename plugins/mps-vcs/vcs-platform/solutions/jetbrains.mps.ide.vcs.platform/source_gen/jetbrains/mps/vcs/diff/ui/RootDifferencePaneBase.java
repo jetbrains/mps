@@ -28,8 +28,10 @@ import jetbrains.mps.vcs.diff.ui.common.DiffEditor;
 import com.intellij.diff.tools.util.DiffSplitter;
 import javax.swing.JComponent;
 import com.intellij.openapi.actionSystem.ToggleAction;
+import com.intellij.openapi.project.DumbAware;
 import jetbrains.mps.ide.icons.IdeIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import java.util.function.Supplier;
 import com.intellij.openapi.diff.DiffBundle;
 import com.intellij.openapi.actionSystem.Presentation;
 import org.jetbrains.annotations.NotNull;
@@ -159,36 +161,46 @@ public abstract class RootDifferencePaneBase implements RootDifferencePane, Prop
     myTraverser.previousAction().registerCustomShortcutSet(NextPreviousTraverser.PREV_CHANGE_SHORTCUT, myPanel);
     myTraverser.nextAction().registerCustomShortcutSet(NextPreviousTraverser.NEXT_CHANGE_SHORTCUT, myPanel);
     actionGroup.addSeparator();
-    actionGroup.add(new ToggleAction("Show Inspector", "Show Inspector Windows", IdeIcons.INSPECTOR_ICON) {
-      public boolean isSelected(AnActionEvent e) {
-        return isInspectorShown;
-      }
-      public void setSelected(AnActionEvent e, boolean b) {
-        showInspector(b);
-      }
-    });
-    actionGroup.add(new ToggleAction(() -> DiffBundle.message("synchronize.scrolling", new Object[0]), Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING) {
-      @Override
-      public boolean isSelected(@NotNull AnActionEvent p1) {
-        return isEditorsScrollingSyncOptionEnabled();
-      }
-      @Override
-      public void setSelected(@NotNull AnActionEvent e, boolean b) {
-        saveEditorsScrollingSyncOption(b);
-        enableEditorsScrollingSynchronization(b);
-      }
-      @Override
-      public void update(@NotNull AnActionEvent e) {
-        super.update(e);
-        enableEditorsScrollingSynchronization(isEditorsScrollingSyncOptionEnabled());
-      }
-    });
+    actionGroup.add(new ShowInspectorAction());
+    actionGroup.add(new SyncScrollingAction());
     actionGroup.add(mySettingsAction);
     if (isEditable) {
       actionGroup.addSeparator();
       actionGroup.add(createRevertRootsAction());
     }
     return actionGroup;
+  }
+
+  private class ShowInspectorAction extends ToggleAction implements DumbAware {
+    private ShowInspectorAction() {
+      super("Show Inspector", "Show Inspector Windows", IdeIcons.INSPECTOR_ICON);
+    }
+    public boolean isSelected(AnActionEvent e) {
+      return isInspectorShown;
+    }
+    public void setSelected(AnActionEvent e, boolean b) {
+      showInspector(b);
+    }
+  }
+
+  private class SyncScrollingAction extends ToggleAction implements DumbAware {
+    private SyncScrollingAction() {
+      super((Supplier<String>) () -> DiffBundle.message("synchronize.scrolling", new Object[0]), Presentation.NULL_STRING, IdeIcons.SYNC_SCROLLING);
+    }
+    @Override
+    public boolean isSelected(@NotNull AnActionEvent p1) {
+      return isEditorsScrollingSyncOptionEnabled();
+    }
+    @Override
+    public void setSelected(@NotNull AnActionEvent e, boolean b) {
+      saveEditorsScrollingSyncOption(b);
+      enableEditorsScrollingSynchronization(b);
+    }
+    @Override
+    public void update(@NotNull AnActionEvent e) {
+      super.update(e);
+      enableEditorsScrollingSynchronization(isEditorsScrollingSyncOptionEnabled());
+    }
   }
 
   private AnAction createRevertRootsAction() {
