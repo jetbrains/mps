@@ -2318,111 +2318,111 @@
   </root>
   <root nodeRef="r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)/7241381882860001930">
     <file name="ASMModelLoader.java">
-      <node id="7241381882860002266" at="28,0,29,0" concept="15" trace="LOG" />
-      <node id="5700691190903488485" at="30,0,31,0" concept="6" trace="myModule" />
-      <node id="3902807789912264473" at="31,0,32,0" concept="6" trace="myPaths" />
-      <node id="353338984289721919" at="32,0,33,0" concept="6" trace="mySkipPrivate" />
-      <node id="4359902566557214906" at="33,0,34,0" concept="6" trace="myOnlyPublic" />
-      <node id="4359902566557275167" at="35,82,36,22" concept="5" />
-      <node id="4359902566557275179" at="36,22,37,20" concept="5" />
-      <node id="4359902566557221145" at="40,70,41,37" concept="5" />
-      <node id="4359902566557211388" at="41,37,42,16" concept="12" />
-      <node id="4359902566557228702" at="45,72,46,39" concept="5" />
-      <node id="4359902566557269668" at="46,39,47,16" concept="12" />
-      <node id="2781727533177039901" at="50,51,51,110" concept="13" />
-      <node id="2781727533177038861" at="52,48,53,93" concept="11" />
-      <node id="2781727533177043533" at="53,93,54,42" concept="11" />
-      <node id="2781727533177044798" at="55,22,56,33" concept="5" />
-      <node id="4222853992782897946" at="62,9,63,89" concept="11" />
-      <node id="2781727533177085087" at="64,50,65,99" concept="11" />
-      <node id="1801654912892294129" at="65,99,66,48" concept="11" />
-      <node id="1801654912892296072" at="67,24,68,66" concept="5" />
-      <node id="1801654912892308878" at="68,66,69,43" concept="5" />
-      <node id="4976780248421533677" at="71,7,72,37" concept="12" />
-      <node id="2781727533177093136" at="73,27,74,73" concept="5" />
-      <node id="4976780248421550483" at="75,5,76,35" concept="12" />
-      <node id="2781727533174984139" at="81,39,82,26" concept="12" />
-      <node id="2781727533174984148" at="85,50,86,32" concept="12" />
-      <node id="2781727533174984157" at="89,39,90,124" concept="12" />
-      <node id="2781727533177043940" at="54,42,57,7" concept="9" />
-      <node id="2781727533174984137" at="81,0,84,0" concept="10" trace="accept#(Ljetbrains/mps/vfs/IFile;)Z" />
-      <node id="2781727533174984146" at="85,0,88,0" concept="10" trace="translate#(Ljetbrains/mps/vfs/IFile;)Ljava/lang/Iterable;" />
-      <node id="2781727533174984155" at="89,0,92,0" concept="10" trace="accept#(Ljetbrains/mps/vfs/IFile;)Z" />
-      <node id="4359902566557272294" at="35,0,39,0" concept="3" trace="ASMModelLoader#(Ljetbrains/mps/project/AbstractModule;Ljava/util/Collection;)V" />
-      <node id="4359902566557177236" at="40,0,44,0" concept="10" trace="onlyPublicClasses#(Z)Ljetbrains/mps/baseLanguage/javastub/ASMModelLoader;" />
-      <node id="4359902566557226236" at="45,0,49,0" concept="10" trace="skipPrivateMembers#(Z)Ljetbrains/mps/baseLanguage/javastub/ASMModelLoader;" />
-      <node id="1801654912892294788" at="66,48,70,9" concept="9" />
-      <node id="2781727533177040136" at="51,110,58,5" concept="8" />
-      <node id="2781727533177058586" at="63,89,71,7" concept="8" />
-      <node id="2781727533177032356" at="50,0,60,0" concept="10" trace="populateRoots#(Ljetbrains/mps/extapi/model/SModelData;)V" />
-      <node id="2781727533174982667" at="79,45,92,7" concept="12" />
-      <node id="2781727533177091816" at="61,150,75,5" concept="20" />
-      <node id="2781727533174972961" at="79,0,94,0" concept="10" trace="getTopClassFiles#()Ljava/lang/Iterable;" />
-      <node id="2781727533177056194" at="61,0,78,0" concept="10" trace="completeModel#(Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/extapi/model/SModelData;Ljava/util/function/Function;)Ljava/util/Collection;" />
-      <scope id="2781727533177043942" at="55,22,56,33" />
-      <scope id="2781727533177091821" at="73,27,74,73" />
-      <scope id="2781727533174984138" at="81,39,82,26" />
-      <scope id="2781727533174984147" at="85,50,86,32" />
-      <scope id="2781727533174984156" at="89,39,90,124" />
-      <scope id="4359902566557272298" at="35,82,37,20" />
-      <scope id="4359902566557177240" at="40,70,42,16" />
-      <scope id="4359902566557226240" at="45,72,47,16" />
-      <scope id="1801654912892294790" at="67,24,69,43" />
-      <scope id="2781727533177091819" at="73,5,75,5">
+      <node id="7241381882860002266" at="29,0,30,0" concept="15" trace="LOG" />
+      <node id="5700691190903488485" at="31,0,32,0" concept="6" trace="myModule" />
+      <node id="3902807789912264473" at="32,0,33,0" concept="6" trace="myPaths" />
+      <node id="353338984289721919" at="33,0,34,0" concept="6" trace="mySkipPrivate" />
+      <node id="4359902566557214906" at="34,0,35,0" concept="6" trace="myOnlyPublic" />
+      <node id="4359902566557275167" at="36,82,37,22" concept="5" />
+      <node id="4359902566557275179" at="37,22,38,20" concept="5" />
+      <node id="4359902566557221145" at="41,70,42,37" concept="5" />
+      <node id="4359902566557211388" at="42,37,43,16" concept="12" />
+      <node id="4359902566557228702" at="46,72,47,39" concept="5" />
+      <node id="4359902566557269668" at="47,39,48,16" concept="12" />
+      <node id="2781727533177039901" at="51,51,52,110" concept="13" />
+      <node id="2781727533177038861" at="53,48,54,93" concept="11" />
+      <node id="2781727533177043533" at="54,93,55,42" concept="11" />
+      <node id="2781727533177044798" at="56,22,57,33" concept="5" />
+      <node id="4222853992782897946" at="63,9,64,117" concept="11" />
+      <node id="2781727533177085087" at="65,50,66,99" concept="11" />
+      <node id="1801654912892294129" at="66,99,67,48" concept="11" />
+      <node id="1801654912892296072" at="68,24,69,66" concept="5" />
+      <node id="1801654912892308878" at="69,66,70,43" concept="5" />
+      <node id="4976780248421533677" at="72,7,73,37" concept="12" />
+      <node id="2781727533177093136" at="74,27,75,73" concept="5" />
+      <node id="4976780248421550483" at="76,5,77,35" concept="12" />
+      <node id="2781727533174984139" at="82,39,83,26" concept="12" />
+      <node id="2781727533174984148" at="86,50,87,32" concept="12" />
+      <node id="2781727533174984157" at="90,39,91,124" concept="12" />
+      <node id="2781727533177043940" at="55,42,58,7" concept="9" />
+      <node id="2781727533174984137" at="82,0,85,0" concept="10" trace="accept#(Ljetbrains/mps/vfs/IFile;)Z" />
+      <node id="2781727533174984146" at="86,0,89,0" concept="10" trace="translate#(Ljetbrains/mps/vfs/IFile;)Ljava/lang/Iterable;" />
+      <node id="2781727533174984155" at="90,0,93,0" concept="10" trace="accept#(Ljetbrains/mps/vfs/IFile;)Z" />
+      <node id="4359902566557272294" at="36,0,40,0" concept="3" trace="ASMModelLoader#(Ljetbrains/mps/project/AbstractModule;Ljava/util/Collection;)V" />
+      <node id="4359902566557177236" at="41,0,45,0" concept="10" trace="onlyPublicClasses#(Z)Ljetbrains/mps/baseLanguage/javastub/ASMModelLoader;" />
+      <node id="4359902566557226236" at="46,0,50,0" concept="10" trace="skipPrivateMembers#(Z)Ljetbrains/mps/baseLanguage/javastub/ASMModelLoader;" />
+      <node id="1801654912892294788" at="67,48,71,9" concept="9" />
+      <node id="2781727533177040136" at="52,110,59,5" concept="8" />
+      <node id="2781727533177058586" at="64,117,72,7" concept="8" />
+      <node id="2781727533177032356" at="51,0,61,0" concept="10" trace="populateRoots#(Ljetbrains/mps/extapi/model/SModelData;)V" />
+      <node id="2781727533174982667" at="80,45,93,7" concept="12" />
+      <node id="2781727533177091816" at="62,150,76,5" concept="20" />
+      <node id="2781727533174972961" at="80,0,95,0" concept="10" trace="getTopClassFiles#()Ljava/lang/Iterable;" />
+      <node id="2781727533177056194" at="62,0,79,0" concept="10" trace="completeModel#(Lorg/jetbrains/mps/openapi/model/SModel;Ljetbrains/mps/extapi/model/SModelData;Ljava/util/function/Function;)Ljava/util/Collection;" />
+      <scope id="2781727533177043942" at="56,22,57,33" />
+      <scope id="2781727533177091821" at="74,27,75,73" />
+      <scope id="2781727533174984138" at="82,39,83,26" />
+      <scope id="2781727533174984147" at="86,50,87,32" />
+      <scope id="2781727533174984156" at="90,39,91,124" />
+      <scope id="4359902566557272298" at="36,82,38,20" />
+      <scope id="4359902566557177240" at="41,70,43,16" />
+      <scope id="4359902566557226240" at="46,72,48,16" />
+      <scope id="1801654912892294790" at="68,24,70,43" />
+      <scope id="2781727533177091819" at="74,5,76,5">
         <var name="e" id="2781727533177091823" />
       </scope>
-      <scope id="2781727533174984137" at="81,0,84,0">
+      <scope id="2781727533174984137" at="82,0,85,0">
         <var name="it" id="2781727533174984137" />
       </scope>
-      <scope id="2781727533174984146" at="85,0,88,0">
+      <scope id="2781727533174984146" at="86,0,89,0">
         <var name="it" id="2781727533174984146" />
       </scope>
-      <scope id="2781727533174984155" at="89,0,92,0">
+      <scope id="2781727533174984155" at="90,0,93,0">
         <var name="it" id="2781727533174984155" />
       </scope>
-      <scope id="4359902566557272294" at="35,0,39,0">
+      <scope id="4359902566557272294" at="36,0,40,0">
         <var name="module" id="4359902566557274776" />
         <var name="paths" id="4359902566557274903" />
       </scope>
-      <scope id="4359902566557177236" at="40,0,44,0">
+      <scope id="4359902566557177236" at="41,0,45,0">
         <var name="onlyPublicClasses" id="4359902566557219328" />
       </scope>
-      <scope id="4359902566557226236" at="45,0,49,0">
+      <scope id="4359902566557226236" at="46,0,50,0">
         <var name="skipPrivateMembers" id="4359902566557267580" />
       </scope>
-      <scope id="2781727533177040139" at="52,48,57,7">
+      <scope id="2781727533177040139" at="53,48,58,7">
         <var name="c" id="2781727533177043534" />
         <var name="loader" id="2781727533177038862" />
       </scope>
-      <scope id="2781727533177058589" at="64,50,70,9">
+      <scope id="2781727533177058589" at="65,50,71,9">
         <var name="c" id="1801654912892294130" />
         <var name="rootLoader" id="2781727533177085088" />
       </scope>
-      <scope id="2781727533177040136" at="51,110,58,5">
+      <scope id="2781727533177040136" at="52,110,59,5">
         <var name="classfile" id="2781727533177040137" />
       </scope>
-      <scope id="2781727533177032359" at="50,51,58,5" />
-      <scope id="2781727533177058586" at="63,89,71,7">
+      <scope id="2781727533177032359" at="51,51,59,5" />
+      <scope id="2781727533177058586" at="64,117,72,7">
         <var name="classfile" id="2781727533177058587" />
       </scope>
-      <scope id="2781727533177032356" at="50,0,60,0">
+      <scope id="2781727533177032356" at="51,0,61,0">
         <var name="modelData" id="2781727533177036145" />
       </scope>
-      <scope id="2781727533177091818" at="62,9,72,37">
+      <scope id="2781727533177091818" at="63,9,73,37">
         <var name="refFactory" id="4222853992782897947" />
       </scope>
-      <scope id="2781727533174972965" at="79,45,92,7" />
-      <scope id="2781727533177056197" at="61,150,76,35" />
-      <scope id="2781727533174972961" at="79,0,94,0" />
-      <scope id="2781727533177056194" at="61,0,78,0">
+      <scope id="2781727533174972965" at="80,45,93,7" />
+      <scope id="2781727533177056197" at="62,150,77,35" />
+      <scope id="2781727533174972961" at="80,0,95,0" />
+      <scope id="2781727533177056194" at="62,0,79,0">
         <var name="completeModelData" id="1801654912892305756" />
         <var name="docSupplier" id="8643037841688496896" />
         <var name="partialModel" id="2781727533177063443" />
       </scope>
-      <unit id="2781727533174984137" at="80,64,84,5" name="jetbrains.mps.baseLanguage.javastub.ASMModelLoader$1" />
-      <unit id="2781727533174984146" at="84,21,88,5" name="jetbrains.mps.baseLanguage.javastub.ASMModelLoader$2" />
-      <unit id="2781727533174984155" at="88,17,92,5" name="jetbrains.mps.baseLanguage.javastub.ASMModelLoader$3" />
-      <unit id="7241381882860001930" at="25,0,95,0" name="jetbrains.mps.baseLanguage.javastub.ASMModelLoader" />
+      <unit id="2781727533174984137" at="81,64,85,5" name="jetbrains.mps.baseLanguage.javastub.ASMModelLoader$1" />
+      <unit id="2781727533174984146" at="85,21,89,5" name="jetbrains.mps.baseLanguage.javastub.ASMModelLoader$2" />
+      <unit id="2781727533174984155" at="89,17,93,5" name="jetbrains.mps.baseLanguage.javastub.ASMModelLoader$3" />
+      <unit id="7241381882860001930" at="26,0,96,0" name="jetbrains.mps.baseLanguage.javastub.ASMModelLoader" />
     </file>
   </root>
   <root nodeRef="r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)/7241381882860008238">

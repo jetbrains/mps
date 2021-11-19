@@ -27,26 +27,15 @@ import org.jetbrains.mps.openapi.persistence.SModelIdFactory;
  * @author Artem Tikhomirov
  * @since 3.3
  */
-public final class JavaPackageModelId implements SModelId {
-  private final String myPackageName;
+public final class JavaPackageModelId extends PackageModelId {
 
   /*package*/ JavaPackageModelId(String packageName) {
-    myPackageName = packageName;
+    super(packageName);
   }
 
   @Override
-  public String getType() {
-    return LanguageID.JAVA;
-  }
-
-  @Override
-  public boolean isGloballyUnique() {
-    return false;
-  }
-
-  @Override
-  public String getModelName() {
-    return new SModelName(myPackageName, SModelStereotype.JAVA_STUB).getValue();
+  protected String getStereotype() {
+    return SModelStereotype.JAVA_STUB;
   }
 
   @Override
@@ -55,15 +44,8 @@ public final class JavaPackageModelId implements SModelId {
   }
 
   @Override
-  public boolean equals(Object obj) {
-    return obj instanceof JavaPackageModelId && myPackageName.equals(((JavaPackageModelId) obj).myPackageName);
-  }
-
-  @Override
-  public String toString() {
-    // FIXME add SModelIdFactory#asText(SModelId) and utilize it when serializing modelId
-    // I don't want to know type is separated with colon, it's external knowledge (i.e. PersistenceRegistry)
-    return getType() + ':' + myPackageName;
+  public String getType() {
+    return LanguageID.JAVA;
   }
 
   public static final class Factory implements SModelIdFactory {

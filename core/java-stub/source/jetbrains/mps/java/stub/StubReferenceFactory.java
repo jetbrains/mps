@@ -52,6 +52,7 @@ public final class StubReferenceFactory implements ReferenceFactory {
   private final VisibleModel myModel;
   private final String myModelLongName;
   private final SModelReference myModelReference;
+  private final String myStereotype;
 
   // 1. we used to keep this cache separately, in StubModelsResolver, which might be better approach
   // if we decide to re-use this cache throughout all models loaded within a module. We didn't use this cache,
@@ -65,11 +66,12 @@ public final class StubReferenceFactory implements ReferenceFactory {
    * @param module module we try to resolve references in, provides dependencies
    * @param model  model we try to resolve references in, ensures priority of local nodes over those from dependencies
    */
-  public StubReferenceFactory(@NotNull SModule module, @NotNull SModel model) {
+  public StubReferenceFactory(@NotNull SModule module, @NotNull SModel model, @NotNull String stereotype) {
     myModule = module;
     myModel = new VisibleModel(model);
     myModelReference = model.getReference();
     myModelLongName = model.getName().getLongName();
+    myStereotype = stereotype;
   }
 
   @NotNull
@@ -82,7 +84,7 @@ public final class StubReferenceFactory implements ReferenceFactory {
       }
     }
 
-    Collection<VisibleModel> possibleModels = findModels(new SModelName(pack, SModelStereotype.JAVA_STUB));
+    Collection<VisibleModel> possibleModels = findModels(new SModelName(pack, myStereotype));
 
     if (possibleModels.isEmpty()) {
       source.setReference(role, ResolveInfo.of(new SNodePointer(null, targetNodeId), resolveInfo));

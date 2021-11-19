@@ -863,12 +863,16 @@
                 </node>
                 <node concept="2ShNRf" id="3Eq_PkMaycs" role="33vP2m">
                   <node concept="1pGfFk" id="3Eq_PkMayct" role="2ShVmc">
-                    <ref role="37wK5l" to="i290:~StubReferenceFactory.&lt;init&gt;(org.jetbrains.mps.openapi.module.SModule,org.jetbrains.mps.openapi.model.SModel)" resolve="StubReferenceFactory" />
+                    <ref role="37wK5l" to="i290:~StubReferenceFactory.&lt;init&gt;(org.jetbrains.mps.openapi.module.SModule,org.jetbrains.mps.openapi.model.SModel,java.lang.String)" resolve="StubReferenceFactory" />
                     <node concept="37vLTw" id="3Eq_PkMaycu" role="37wK5m">
                       <ref role="3cqZAo" node="4WsV6X003Z_" resolve="myModule" />
                     </node>
                     <node concept="37vLTw" id="4kh4OiglXAe" role="37wK5m">
                       <ref role="3cqZAo" node="2qqFBg4Wkwj" resolve="partialModel" />
+                    </node>
+                    <node concept="10M0yZ" id="23HFsLIq8rd" role="37wK5m">
+                      <ref role="3cqZAo" to="w1kc:~SModelStereotype.JAVA_STUB" resolve="JAVA_STUB" />
+                      <ref role="1PxDUh" to="w1kc:~SModelStereotype" resolve="SModelStereotype" />
                     </node>
                   </node>
                 </node>
