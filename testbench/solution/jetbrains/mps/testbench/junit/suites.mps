@@ -3954,19 +3954,24 @@
             </node>
             <node concept="2OqwBi" id="28TMbOSG1XL" role="33vP2m">
               <node concept="2OqwBi" id="12CYGR0Z$fY" role="2Oq$k0">
-                <node concept="2OqwBi" id="63DSRaTik3u" role="2Oq$k0">
-                  <node concept="2OqwBi" id="12CYGR100Wd" role="2Oq$k0">
-                    <node concept="2YIFZM" id="a8z8zytENn" role="2Oq$k0">
-                      <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
-                      <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
+                <node concept="2OqwBi" id="4I5te4iCW0J" role="2Oq$k0">
+                  <node concept="2OqwBi" id="63DSRaTik3u" role="2Oq$k0">
+                    <node concept="2OqwBi" id="12CYGR100Wd" role="2Oq$k0">
+                      <node concept="2YIFZM" id="a8z8zytENn" role="2Oq$k0">
+                        <ref role="37wK5l" to="79ha:6rx4kZDkZ7z" resolve="defaultConfig" />
+                        <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
+                      </node>
+                      <node concept="liA8E" id="12CYGR1017d" role="2OqNvi">
+                        <ref role="37wK5l" to="79ha:12CYGR0ZVly" resolve="setCreatePluginClassLoaders" />
+                        <node concept="3clFbT" id="12CYGR101d9" role="37wK5m" />
+                      </node>
                     </node>
-                    <node concept="liA8E" id="12CYGR1017d" role="2OqNvi">
-                      <ref role="37wK5l" to="79ha:12CYGR0ZVly" resolve="setCreatePluginClassLoaders" />
-                      <node concept="3clFbT" id="12CYGR101d9" role="37wK5m" />
+                    <node concept="liA8E" id="63DSRaTikig" role="2OqNvi">
+                      <ref role="37wK5l" to="79ha:6uGRett37Lr" resolve="withJavaPlugin" />
                     </node>
                   </node>
-                  <node concept="liA8E" id="63DSRaTikig" role="2OqNvi">
-                    <ref role="37wK5l" to="79ha:6uGRett37Lr" resolve="withJavaPlugin" />
+                  <node concept="liA8E" id="4I5te4iCWWN" role="2OqNvi">
+                    <ref role="37wK5l" to="79ha:5n6GrsWj66a" resolve="withKotlinPlugin" />
                   </node>
                 </node>
                 <node concept="liA8E" id="12CYGR0Z_58" role="2OqNvi">

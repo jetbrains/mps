@@ -134,6 +134,10 @@ public class EnvironmentConfig {
     return addDistributedPlugin("mps-build", "jetbrains.mps.build");
   }
 
+  public EnvironmentConfig withKotlinPlugin() {
+    return addDistributedPlugin("mps-kotlin", "jetbrains.mps.kotlin");
+  }
+
   public EnvironmentConfig withJavaPlugin() {
     return addDistributedPlugin("mps-java", "jetbrains.mps.ide.java");
   }

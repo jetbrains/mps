@@ -1336,6 +1336,31 @@
         <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
       </node>
     </node>
+    <node concept="2tJIrI" id="5n6GrsWj4O7" role="jymVt" />
+    <node concept="3clFb_" id="5n6GrsWj66a" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="od$2w" value="false" />
+      <property role="DiZV1" value="false" />
+      <property role="2aFKle" value="false" />
+      <property role="TrG5h" value="withKotlinPlugin" />
+      <node concept="3clFbS" id="5n6GrsWj66b" role="3clF47">
+        <node concept="3cpWs6" id="5n6GrsWj66c" role="3cqZAp">
+          <node concept="1rXfSq" id="5n6GrsWj66d" role="3cqZAk">
+            <ref role="37wK5l" node="5avE1b7v6tC" resolve="addDistributedPlugin" />
+            <node concept="Xl_RD" id="5n6GrsWj66e" role="37wK5m">
+              <property role="Xl_RC" value="mps-kotlin" />
+            </node>
+            <node concept="Xl_RD" id="5n6GrsWj66f" role="37wK5m">
+              <property role="Xl_RC" value="jetbrains.mps.kotlin" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="5n6GrsWj66g" role="1B3o_S" />
+      <node concept="3uibUv" id="5n6GrsWj66h" role="3clF45">
+        <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="6uGRett36_g" role="jymVt" />
     <node concept="3clFb_" id="6uGRett37Lr" role="jymVt">
       <property role="1EzhhJ" value="false" />

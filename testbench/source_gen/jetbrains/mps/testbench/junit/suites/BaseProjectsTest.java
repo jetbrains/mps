@@ -33,7 +33,7 @@ public class BaseProjectsTest {
 
   @Parameterized.Parameters
   public static List<Object[]> testParameters() throws InvocationTargetException, InterruptedException {
-    EnvironmentConfig config = EnvironmentConfig.defaultConfig().setCreatePluginClassLoaders(false).withJavaPlugin().withMigrationPlugin().withTestModeOn();
+    EnvironmentConfig config = EnvironmentConfig.defaultConfig().setCreatePluginClassLoaders(false).withJavaPlugin().withKotlinPlugin().withMigrationPlugin().withTestModeOn();
 
     ourEnv = new IdeaEnvironment(config);
     ourEnv.init();

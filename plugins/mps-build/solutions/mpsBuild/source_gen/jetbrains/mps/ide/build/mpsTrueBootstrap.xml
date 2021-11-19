@@ -108,6 +108,9 @@
       <fileset dir="${build.tmp}/java/out/platform-persistence-only" />
       <fileset dir="${build.tmp}/java/out/mps-tool-convertModels" />
     </jar>
+    <copy todir="${build.layout}">
+      <fileset file="${projectHome}/plugins/mps-core/lib/kotlinx-metadata-jvm-0.4.0.jar" />
+    </copy>
     <mkdir dir="${build.layout}/to-be-imported" />
     <jar destfile="${build.layout}/to-be-imported/core-components.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/mps-core-components" />
@@ -631,6 +634,8 @@
     <mkdir dir="${projectHome}/core/persistence/source_gen" />
     <mkdir dir="${projectHome}/core/java-stub/source" />
     <mkdir dir="${projectHome}/core/java-stub/source_gen" />
+    <mkdir dir="${projectHome}/core/kotlin-stub/source" />
+    <mkdir dir="${projectHome}/core/kotlin-stub/source_gen" />
     <mkdir dir="${build.tmp}/java/out/mps-persistence" />
     <javac2 destdir="${build.tmp}/java/out/mps-persistence" fork="true" encoding="utf8" memorymaximumsize="1024m" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
@@ -639,6 +644,8 @@
         <path location="${projectHome}/core/persistence/source_gen" />
         <path location="${projectHome}/core/java-stub/source" />
         <path location="${projectHome}/core/java-stub/source_gen" />
+        <path location="${projectHome}/core/kotlin-stub/source" />
+        <path location="${projectHome}/core/kotlin-stub/source_gen" />
       </src>
       <classpath>
         <pathelement path="${build.tmp}/java/out/mps-annotations" />
@@ -660,6 +667,7 @@
         <pathelement path="${build.tmp}/java/out/feeback-context" />
         <pathelement path="${build.tmp}/java/out/constraints-runtime" />
         <pathelement path="${build.tmp}/java/out/mps-kernel" />
+        <fileset file="${projectHome}/plugins/mps-core/lib/kotlinx-metadata-jvm-0.4.0.jar" />
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.util" />
         <path refid="path.java.library.3rd-party" />

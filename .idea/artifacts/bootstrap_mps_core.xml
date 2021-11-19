@@ -47,6 +47,7 @@
       <element id="archive" name="mps-persistence.jar">
         <element id="module-output" name="persistence" />
         <element id="module-output" name="java-stub" />
+        <element id="module-output" name="kotlin-stub" />
       </element>
       <element id="archive" name="mps-messaging.jar">
         <element id="module-output" name="mps-messaging" />
@@ -69,6 +70,7 @@
       <element id="archive" name="mps-behavior-runtime.jar">
         <element id="module-output" name="behavior-runtime" />
       </element>
+      <element id="library" level="project" name="KotlinxMetadataJvm" />
     </root>
   </artifact>
 </component>

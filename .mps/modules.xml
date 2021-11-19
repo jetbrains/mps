@@ -34,6 +34,7 @@
       <modulePath path="$PROJECT_DIR$/core/java-stub/jetbrains.mps.java.stub.msd" folder="core.kernel" />
       <modulePath path="$PROJECT_DIR$/core/kernel/kernelSolution/jetbrains.mps.kernel.msd" folder="core.kernel" />
       <modulePath path="$PROJECT_DIR$/core/kernel/smodelRuntime/jetbrains.mps.runtime.msd" folder="core.kernel" />
+      <modulePath path="$PROJECT_DIR$/core/kotlin-stub/jetbrains.mps.kotlin.stubs.msd" folder="core.languages.kotlin.ide" />
       <modulePath path="$PROJECT_DIR$/core/make-runtime/solutions/jetbrains.mps.make.runtime/jetbrains.mps.make.runtime.msd" folder="core.make" />
       <modulePath path="$PROJECT_DIR$/core/make-runtime/solutions/jetbrains.mps.make/jetbrains.mps.make.msd" folder="core.make" />
       <modulePath path="$PROJECT_DIR$/core/persistence/jetbrains.mps.persistence.msd" folder="core.kernel" />
@@ -243,6 +244,14 @@
       <modulePath path="$PROJECT_DIR$/plugins/execution-languages/languages/library/jetbrains.mps.execution.library.msd" folder="workbench.execution" />
       <modulePath path="$PROJECT_DIR$/plugins/execution-languages/languages/plugin/jetbrains.mps.execution.languages.msd" folder="workbench.execution" />
       <modulePath path="$PROJECT_DIR$/plugins/jetpad/solutions/jetbrains.jetpad/jetbrains.jetpad.msd" folder="core.aspects.editor.diagram" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/devkits/kotlin.devkit.jvm/jetbrains.mps.kotlin.devkit.jvm.devkit" folder="core.languages.kotlin" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/ide/jetbrains.mps.kotlin.idePlugin/jetbrains.mps.kotlin.idePlugin.msd" folder="core.languages.kotlin" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin.javaRefs/jetbrains.mps.kotlin.javaRefs.mpl" folder="core.languages.kotlin.interop" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin/jetbrains.mps.kotlin.mpl" folder="core.languages.kotlin" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.baseLanguage.runtime/jetbrains.mps.kotlin.baseLanguage.runtime.msd" folder="core.languages.kotlin.interop" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.runtime/jetbrains.mps.kotlin.runtime.msd" folder="core.languages.kotlin" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/stubs/kotlin.stdlib.jvm/jetbrains.mps.kotlin.stdlib.jvm.msd" folder="core.languages.kotlin" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/stubs/kotlin.stdlib/jetbrains.mps.kotlin.stdlib.msd" folder="core.languages.kotlin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/languages/build.mps.runner/jetbrains.mps.build.mps.runner.mpl" folder="platform.build" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/languages/build.mps.testManifest/jetbrains.mps.build.mps.testManifest.mpl" folder="platform.build" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/languages/build.mps.tests/jetbrains.mps.build.mps.tests.mpl" folder="platform.build" />
@@ -340,8 +349,8 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-tooltips/languages/tooltips.runtime/jetbrains.mps.lang.editor.tooltips.runtime.msd" folder="core.aspects.editor.tooltips" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-tooltips/languages/tooltips/jetbrains.mps.lang.editor.tooltips.mpl" folder="core.aspects.editor.tooltips" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-vcs/languages/jetbrains.mps.devkit.aspect.vcs/jetbrains.mps.devkit.aspect.vcs.devkit" folder="platform.vcs" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-vcs/languages/mergehints/jetbrains.mps.vcs.mergehints.mpl" folder="platform.vcs" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-vcs/languages/mergehints.plugin/jetbrains.mps.vcs.mergehints.plugin.msd" folder="platform.vcs" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-vcs/languages/mergehints/jetbrains.mps.vcs.mergehints.mpl" folder="platform.vcs" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-vcs/solutions/jetbrains.mps.ide.vcs/jetbrains.mps.ide.vcs.msd" folder="platform.vcs" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-vcs/vcs-core/modules/jetbrains.mps.ide.vcs.core/jetbrains.mps.ide.vcs.core.msd" folder="platform.vcs.core" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-vcs/vcs-core/modules/mergehints.runtime/jetbrains.mps.vcs.mergehints.runtime.msd" folder="platform.vcs.core" />

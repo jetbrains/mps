@@ -36,6 +36,7 @@
 /build/resources/openJDK
 classes
 classes_gen
+kotlin_gen
 testclasses
 teamcity-info.xml
 *.hprof
@@ -43,6 +44,8 @@ teamcity-info.xml
 
 # Plugins related excludes:
 # Downloadable plugin libraries
+/plugins/mps-core/lib
+/plugins/mps-kotlin/lib
 /plugins/debugger-api/lib
 /plugins/debugger-java/lib
 /plugins/mps-vcs/lib/

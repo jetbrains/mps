@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product version="3" modelHash="dhaf8i5ym4dhtdliq4aca7oxmjam40j">
+  <files names="ClassVisitor.java:ConstructorVisitor.java:EnumFlags.java:FunctionVisitor.java:JarHelper.java:KotlinCommonConstants.java:KotlinCommonStubModelDescriptor.java:KotlinCommonStubModelRoot.java:KotlinCommonStubModelRootFactory.java:ModuleVisitor.java:ParameterVisitor.java:PropertyVisitor.java:TypeAliasVisitor.java:TypeParameterVisitor.java:TypeVisitor.java:VisitorContext.java:_Adapters.java" />
+</product>
+

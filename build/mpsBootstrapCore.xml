@@ -89,6 +89,7 @@
     <copy file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" todir="${build.layout}/lib" />
     <copy file="${artifacts.mpsTrueBootstrap}/mps-messages-for-legacy-constraints.jar" todir="${build.layout}/lib" />
     <copy file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" todir="${build.layout}/lib" />
+    <copy file="${artifacts.mpsTrueBootstrap}/kotlinx-metadata-jvm-0.4.0.jar" todir="${build.layout}/lib" />
     <jar destfile="${build.layout}/lib/mps-core.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/vfs.jar1" />
       <fileset dir="${build.tmp}/deps/mpsTrueBootstrap/util-core.jar1" />

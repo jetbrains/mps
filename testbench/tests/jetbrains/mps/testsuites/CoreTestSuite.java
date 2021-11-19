@@ -87,7 +87,7 @@ public class CoreTestSuite extends OutputWatchingTestSuite {
 
   // creating the environment for the first time
   static {
-    ourEnvironment = new MpsEnvironment(EnvironmentConfig.defaultConfig().withTestModeOn());
+    ourEnvironment = new MpsEnvironment(EnvironmentConfig.defaultConfig().withKotlinPlugin().withTestModeOn());
     ourEnvironment.init();
   }
 

@@ -71,6 +71,26 @@
     </condition>
   </target>
 
+  <target name="check-kotlinx-metadata" description="Check kotlinx-metadata library availability">
+    <condition property="kotlinxmetadata.missing" value="true" else="false">
+      <not>
+        <and>
+          <available file="${kotlinx.metadata}"/>
+          <available file="${kotlinx.metadata.src}"/>
+          <available file="${kotlinx.metadata.javadoc}"/>
+        </and>
+      </not>
+    </condition>
+  </target>
+
+  <target name="check-kotlin-libraries" description="Check kotlin libraries availability">
+    <condition property="kotlinlib.missing" value="true" else="false">
+      <not>
+        <available file="${kotlin.lib}"/>
+      </not>
+    </condition>
+  </target>
+
   <!-- ===================================================== -->
   <!-- Check platform libraries download requirement         -->
   <!-- ===================================================== -->
@@ -260,6 +280,24 @@
       <a id="JMock_JUnit_2.8.2_license_url" class="licence" href="https://opensource.org/licenses/BSD-3-Clause">New BSD</a>
     </td>
   </tr>
+<tr valign="top">
+    <td class="firstColumn">
+      <span class="name">Kotlinx Metadata</span>
+      <span class="version">0.4.0</span>
+    </td>
+    <td class="secondColumn">
+      <a id="Kotlinx_metadata_0.4.0_license_url" class="licence" href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>
+    </td>
+  </tr>
+<tr valign="top">
+    <td class="firstColumn">
+      <span class="name">Kotlin stdlib + embeddable compiler</span>
+      <span class="version">1.6.0</span>
+    </td>
+    <td class="secondColumn">
+      <a id="Kotlin_stdlib_+_embeddable_compiler_1.6.0_license_url" class="licence" href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0</a>
+    </td>
+  </tr>
 </table>]]></replacevalue>
     </replace>
   </target>
@@ -310,7 +348,32 @@
     <ivy:retrieve pattern="${basedir}/../plugins/jetpad/lib/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
   </target>
 
-  <target name="download-3rd-party" depends="download-diffutils,download-testlib,download-jetpad"
+  <target name="download-kotlin-libs" depends="check-kotlin-libraries,install-ivy" if="${kotlinlib.missing}"
+          description="Download Kotlin libraries">
+    <echo message="Kotlin libraries are missing. Downloading..."/>
+    <ivy:resolve file="./ivyKotlinLibs.xml" validate="false" showprogress="true"/>
+    <ivy:retrieve pattern="${basedir}/../plugins/mps-kotlin/lib/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
+
+    <!-- Full Kotlin builtins are not packaged in a single place (either jvm stdlib, common stdlib, compiler...). If the situation changes
+     in the future, update this script. -->
+    <echo message="Extracting kotlin builtins..."/>
+    <unzip src="${basedir}/../plugins/mps-kotlin/lib/kotlin-compiler-embeddable-${kotlin.version}.jar" dest="${basedir}/../plugins/mps-kotlin/lib/kotlin-builtins/">
+      <patternset>
+        <include name="**/*.kotlin_builtins"/>
+      </patternset>
+    </unzip>
+    <jar basedir="${basedir}/../plugins/mps-kotlin/lib/kotlin-builtins/" destfile="${basedir}/../plugins/mps-kotlin/lib/kotlin-builtins.jar"/>
+    <delete dir="${basedir}/../plugins/mps-kotlin/lib/kotlin-builtins"/>
+  </target>
+
+  <target name="download-kotlinx-metadata" depends="check-kotlinx-metadata,install-ivy" if="${kotlinxmetadata.missing}"
+          description="Download KotlinX metadata library">
+    <echo message="Kotlin metadata library is missing. Downloading..."/>
+    <ivy:resolve file="./ivyKotlinxMetadata.xml" validate="false" showprogress="true"/>
+    <ivy:retrieve pattern="${basedir}/../plugins/mps-core/lib/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
+  </target>
+
+  <target name="download-3rd-party" depends="download-diffutils,download-testlib,download-jetpad,download-kotlin-libs,download-kotlinx-metadata"
           description="Download all non platform related libs"/>
 
   <!-- ===================================================== -->
@@ -380,7 +443,14 @@
     <delete dir="${jetpad.lib}" includeemptydirs="true" failonerror="false"/>
   </target>
 
-  <target name="clean-3rd-party" depends="clean-diffutils,clean-testlib,clean-jetpad" description="Delete 3rd party libraries"/>
+  <target name="clean-kotlin">
+    <delete dir="${kotlin.lib}" includeemptydirs="true" failonerror="false"/>
+    <delete file="${kotlinx.metadata}" failonerror="false"/>
+    <delete file="${kotlinx.metadata.src}" failonerror="false"/>
+    <delete file="${kotlinx.metadata.javadoc}" failonerror="false"/>
+  </target>
+
+  <target name="clean-3rd-party" depends="clean-diffutils,clean-testlib,clean-jetpad,clean-kotlin" description="Delete 3rd party libraries"/>
 
   <target name="clean" depends="clean-3rd-party,clean-platform" description="Delete platform files and 3rd party libraries"/>
 
