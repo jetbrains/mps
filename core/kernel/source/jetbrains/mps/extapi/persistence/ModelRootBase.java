@@ -24,7 +24,6 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleListenerBase;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
@@ -33,7 +32,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -50,8 +48,6 @@ public abstract class ModelRootBase implements ModelRoot {
 
   @Nullable private SModuleBase myModule;
   @Nullable private volatile SRepository myRepository;
-  private final Set<SModel> myModels = new LinkedHashSet<>();
-  private final SyncModuleListener myModuleListener = new SyncModuleListener();
 
   /*@NotNull*/
   @Override
@@ -85,9 +81,24 @@ public abstract class ModelRootBase implements ModelRoot {
   @Override
   //todo [MM] make it return collection instead of list, do not copy anything inside (time waste, mem fragmentation)
   //todo [MM] this will be possible when stub node ids do not contain return values
+  // XXX not sure there's true need to keep this method. It has to be either Module->Model or Module->ModelRoot->Model, mixing both
+  //     is rather confusing. What reasonable *external* model API client cares what are models of a particular ModelRoot?
+  //     If needed for internal implementation reasons, shall not be part of openapi then.
+  // FWIW, uses of the method in tests.utility.JavaToMpsUtils could be refactored, by forcing module to update its model set, instead of
+  //     assumption that attach() does that.
   public final List<SModel> getModels() {
     assertCanRead();
-    return Collections.unmodifiableList(new ArrayList<>(myModels));
+    final SModule module = getModule();
+    if (module == null) {
+      return Collections.emptyList();
+    }
+    ArrayList<SModel> rv = new ArrayList<>();
+    module.getModels().forEach(m -> {
+      if (m.getModelRoot() == ModelRootBase.this) {
+        rv.add(m);
+      }
+    });
+    return rv;
   }
 
   /**
@@ -114,7 +125,6 @@ public abstract class ModelRootBase implements ModelRoot {
       throw new IllegalStateException("Module is null");
     }
     myRepository = myModule.getRepository();
-    myModule.addModuleListener(myModuleListener);
     update();
   }
 
@@ -125,11 +135,6 @@ public abstract class ModelRootBase implements ModelRoot {
         myModule.unregisterModel((SModelBase) model);
       }
     }
-    if (isRegistered()) {
-      assert myModule != null;
-      myModule.removeModuleListener(myModuleListener);
-    }
-    assert myModels.isEmpty();
     myRepository = null;
   }
 
@@ -160,20 +165,16 @@ public abstract class ModelRootBase implements ModelRoot {
       module.registerModel((SModelBase) model);
       ((SModelBase) model).setModelRoot(this);
     }
-    myModels.add(model);
   }
 
   /**
-   * note that the model will be removed from our models collection eventually
-   * since we subscribed to our model removing events via {@link SyncModuleListener}.
-   *
    * FIXME Faulty code is written here, we must not listen to the module events rather invoke this method right in the module class
+   *       Though we don't listen to module events any longer, the code still needs an update
    */
   private void unregisterModel(@NotNull SModel model) {
     SModuleBase module = (SModuleBase) getModule();
     assert module != null;
     assert module.getModel(model.getModelId()) != null;
-    assert myModels.contains(model);
     if (model instanceof SModelBase) {
       ((SModelBase) model).setModelRoot(null);
     }
@@ -277,14 +278,6 @@ public abstract class ModelRootBase implements ModelRoot {
   @Override
   public String toString() {
     return "(" + getType() + ") " + getPresentation();
-  }
-
-  private final class SyncModuleListener extends SModuleListenerBase {
-    @Override
-    public void beforeModelRemoved(@NotNull SModule module, @NotNull SModel model) {
-      assert myModule == module;
-      myModels.remove(model);
-    }
   }
 
   // WIP: towards batch model registration/un-registration under SModule's control

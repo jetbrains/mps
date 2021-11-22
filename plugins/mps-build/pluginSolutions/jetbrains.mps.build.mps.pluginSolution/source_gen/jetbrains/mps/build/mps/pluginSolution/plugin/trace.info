@@ -1079,121 +1079,99 @@
   </root>
   <root nodeRef="r:f9ed10bf-2cd1-4bab-a5dd-e89f55ef9fd1(jetbrains.mps.build.mps.pluginSolution.plugin)/8722937377469656716">
     <file name="ModelStep.java">
-      <node id="1417540733158684508" at="19,0,20,0" concept="5" trace="myMPSProject" />
-      <node id="8722937377469656722" at="21,99,22,72" concept="16" />
-      <node id="1417540733158687980" at="22,72,23,27" concept="4" />
-      <node id="8722937377469656740" at="27,46,28,45" concept="4" />
-      <node id="8722937377469656751" at="32,34,33,45" concept="11" />
-      <node id="8722937377469656761" at="37,38,38,33" concept="11" />
-      <node id="8722937377469656769" at="42,55,43,43" concept="11" />
-      <node id="8722937377469656778" at="47,39,48,46" concept="11" />
-      <node id="8722937377469656790" at="52,48,53,43" concept="4" />
-      <node id="8722937377469656801" at="57,38,58,30" concept="11" />
-      <node id="8722937377469656809" at="62,39,63,33" concept="4" />
-      <node id="8722937377469656820" at="67,39,68,29" concept="11" />
-      <node id="8722937377469656827" at="72,36,73,61" concept="10" />
-      <node id="8722937377469656837" at="74,27,75,27" concept="11" />
-      <node id="8722937377469656856" at="76,12,77,89" concept="10" />
-      <node id="5481755926445678791" at="80,27,81,91" concept="10" />
-      <node id="5481755926445746075" at="82,57,83,97" concept="4" />
-      <node id="4933738972386756794" at="86,46,87,72" concept="11" />
-      <node id="8722937377469656932" at="91,9,92,80" concept="11" />
-      <node id="8722937377469656940" at="97,34,98,58" concept="11" />
-      <node id="8722937377469656946" at="102,41,103,51" concept="11" />
-      <node id="8722937377469656959" at="107,42,108,51" concept="11" />
-      <node id="8722937377469656972" at="113,26,114,48" concept="11" />
-      <node id="8722937377469656978" at="115,5,116,69" concept="11" />
-      <node id="5481755926445578284" at="81,91,84,11" concept="7" />
-      <node id="4933738972386755317" at="86,0,89,0" concept="9" trace="accept#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
-      <node id="8722937377469656970" at="112,48,115,5" concept="8" />
-      <node id="8722937377469656718" at="21,0,25,0" concept="2" trace="ModelStep#(Ljetbrains/mps/project/Project;Ljetbrains/mps/build/mps/pluginSolution/plugin/AbstractBuildGenerator;Ljetbrains/mps/build/mps/pluginSolution/plugin/IErrorHandler;)V" />
-      <node id="8722937377469656734" at="26,0,30,0" concept="9" trace="setChecked#(Z)V" />
-      <node id="8722937377469656747" at="31,0,35,0" concept="9" trace="getChecked#()Z" />
-      <node id="8722937377469656757" at="36,0,40,0" concept="9" trace="getComboBoxName#()Ljava/lang/String;" />
-      <node id="8722937377469656763" at="41,0,45,0" concept="9" trace="getVariantName#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/String;" />
-      <node id="8722937377469656774" at="46,0,50,0" concept="9" trace="getTextFieldText#()Ljava/lang/String;" />
-      <node id="8722937377469656784" at="51,0,55,0" concept="9" trace="setTextFieldText#(Ljava/lang/String;)V" />
-      <node id="8722937377469656797" at="56,0,60,0" concept="9" trace="getCheckBoxName#()Ljava/lang/String;" />
-      <node id="8722937377469656803" at="61,0,65,0" concept="9" trace="setVariant#(Lorg/jetbrains/mps/openapi/model/SModel;)V" />
-      <node id="8722937377469656816" at="66,0,70,0" concept="9" trace="getTextFieldName#()Ljava/lang/String;" />
-      <node id="8722937377469656936" at="96,0,100,0" concept="9" trace="getDescription#()Ljava/lang/String;" />
-      <node id="8722937377469656942" at="101,0,105,0" concept="9" trace="isCheckBoxEnabled#()Z" />
-      <node id="8722937377469656953" at="106,0,110,0" concept="9" trace="isValid#(Ljava/lang/String;)Z" />
-      <node id="1417540733159133013" at="84,11,89,14" concept="4" />
-      <node id="8722937377469656966" at="111,0,118,0" concept="9" trace="getWarningText#(Ljava/lang/String;)Ljava/lang/String;" />
-      <node id="1417540733158769836" at="79,0,91,0" concept="9" trace="run#()V" />
-      <node id="1417540733158755347" at="77,89,91,9" concept="4" />
-      <node id="8722937377469656846" at="76,10,93,5" concept="1" />
-      <node id="8722937377469656835" at="73,61,93,5" concept="8" />
-      <node id="8722937377469656822" at="71,0,95,0" concept="9" trace="getVariants#()[Lorg/jetbrains/mps/openapi/model/SModel;" />
-      <scope id="8722937377469656739" at="27,46,28,45" />
-      <scope id="8722937377469656750" at="32,34,33,45" />
-      <scope id="8722937377469656760" at="37,38,38,33" />
-      <scope id="8722937377469656768" at="42,55,43,43" />
-      <scope id="8722937377469656777" at="47,39,48,46" />
-      <scope id="8722937377469656789" at="52,48,53,43" />
-      <scope id="8722937377469656800" at="57,38,58,30" />
-      <scope id="8722937377469656808" at="62,39,63,33" />
-      <scope id="8722937377469656819" at="67,39,68,29" />
-      <scope id="8722937377469656836" at="74,27,75,27" />
-      <scope id="5481755926445578286" at="82,57,83,97" />
-      <scope id="4933738972386755318" at="86,46,87,72" />
-      <scope id="8722937377469656939" at="97,34,98,58" />
-      <scope id="8722937377469656945" at="102,41,103,51" />
-      <scope id="8722937377469656958" at="107,42,108,51" />
-      <scope id="8722937377469656971" at="113,26,114,48" />
-      <scope id="8722937377469656721" at="21,99,23,27" />
-      <scope id="5481755926445578284" at="81,91,84,11">
-        <var name="mr" id="5481755926445578287" />
-      </scope>
-      <scope id="4933738972386755317" at="86,0,89,0">
-        <var name="it" id="4933738972386755317" />
-      </scope>
-      <scope id="8722937377469656718" at="21,0,25,0">
+      <node id="1417540733158684508" at="13,0,14,0" concept="5" trace="myMPSProject" />
+      <node id="8722937377469656722" at="15,99,16,72" concept="16" />
+      <node id="1417540733158687980" at="16,72,17,27" concept="4" />
+      <node id="8722937377469656740" at="21,46,22,45" concept="4" />
+      <node id="8722937377469656751" at="26,34,27,45" concept="11" />
+      <node id="8722937377469656761" at="31,38,32,33" concept="11" />
+      <node id="8722937377469656769" at="36,55,37,43" concept="11" />
+      <node id="8722937377469656778" at="41,39,42,46" concept="11" />
+      <node id="8722937377469656790" at="46,48,47,43" concept="4" />
+      <node id="8722937377469656801" at="51,38,52,30" concept="11" />
+      <node id="8722937377469656809" at="56,39,57,33" concept="4" />
+      <node id="8722937377469656820" at="61,39,62,29" concept="11" />
+      <node id="8722937377469656827" at="66,36,67,61" concept="10" />
+      <node id="8722937377469656837" at="68,27,69,27" concept="11" />
+      <node id="3694349172017709695" at="71,87,72,85" concept="12" />
+      <node id="1417540733159133013" at="72,85,73,149" concept="11" />
+      <node id="8722937377469656940" at="79,34,80,58" concept="11" />
+      <node id="8722937377469656946" at="84,41,85,51" concept="11" />
+      <node id="8722937377469656959" at="89,42,90,51" concept="11" />
+      <node id="8722937377469656972" at="95,26,96,48" concept="11" />
+      <node id="8722937377469656978" at="97,5,98,69" concept="11" />
+      <node id="8722937377469656970" at="94,48,97,5" concept="8" />
+      <node id="8722937377469656718" at="15,0,19,0" concept="2" trace="ModelStep#(Ljetbrains/mps/project/Project;Ljetbrains/mps/build/mps/pluginSolution/plugin/AbstractBuildGenerator;Ljetbrains/mps/build/mps/pluginSolution/plugin/IErrorHandler;)V" />
+      <node id="8722937377469656734" at="20,0,24,0" concept="9" trace="setChecked#(Z)V" />
+      <node id="8722937377469656747" at="25,0,29,0" concept="9" trace="getChecked#()Z" />
+      <node id="8722937377469656757" at="30,0,34,0" concept="9" trace="getComboBoxName#()Ljava/lang/String;" />
+      <node id="8722937377469656763" at="35,0,39,0" concept="9" trace="getVariantName#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljava/lang/String;" />
+      <node id="8722937377469656774" at="40,0,44,0" concept="9" trace="getTextFieldText#()Ljava/lang/String;" />
+      <node id="8722937377469656784" at="45,0,49,0" concept="9" trace="setTextFieldText#(Ljava/lang/String;)V" />
+      <node id="8722937377469656797" at="50,0,54,0" concept="9" trace="getCheckBoxName#()Ljava/lang/String;" />
+      <node id="8722937377469656803" at="55,0,59,0" concept="9" trace="setVariant#(Lorg/jetbrains/mps/openapi/model/SModel;)V" />
+      <node id="8722937377469656816" at="60,0,64,0" concept="9" trace="getTextFieldName#()Ljava/lang/String;" />
+      <node id="3694349172018030093" at="70,12,74,9" concept="11" />
+      <node id="8722937377469656936" at="78,0,82,0" concept="9" trace="getDescription#()Ljava/lang/String;" />
+      <node id="8722937377469656942" at="83,0,87,0" concept="9" trace="isCheckBoxEnabled#()Z" />
+      <node id="8722937377469656953" at="88,0,92,0" concept="9" trace="isValid#(Ljava/lang/String;)Z" />
+      <node id="8722937377469656846" at="70,10,75,5" concept="1" />
+      <node id="8722937377469656966" at="93,0,100,0" concept="9" trace="getWarningText#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="8722937377469656835" at="67,61,75,5" concept="8" />
+      <node id="8722937377469656822" at="65,0,77,0" concept="9" trace="getVariants#()[Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <scope id="8722937377469656739" at="21,46,22,45" />
+      <scope id="8722937377469656750" at="26,34,27,45" />
+      <scope id="8722937377469656760" at="31,38,32,33" />
+      <scope id="8722937377469656768" at="36,55,37,43" />
+      <scope id="8722937377469656777" at="41,39,42,46" />
+      <scope id="8722937377469656789" at="46,48,47,43" />
+      <scope id="8722937377469656800" at="51,38,52,30" />
+      <scope id="8722937377469656808" at="56,39,57,33" />
+      <scope id="8722937377469656819" at="61,39,62,29" />
+      <scope id="8722937377469656836" at="68,27,69,27" />
+      <scope id="8722937377469656939" at="79,34,80,58" />
+      <scope id="8722937377469656945" at="84,41,85,51" />
+      <scope id="8722937377469656958" at="89,42,90,51" />
+      <scope id="8722937377469656971" at="95,26,96,48" />
+      <scope id="8722937377469656721" at="15,99,17,27" />
+      <scope id="3694349172017953927" at="71,87,73,149" />
+      <scope id="8722937377469656718" at="15,0,19,0">
         <var name="buildGenerator" id="8722937377469656728" />
         <var name="handler" id="8722937377469656730" />
         <var name="project" id="8722937377469656726" />
       </scope>
-      <scope id="8722937377469656734" at="26,0,30,0">
+      <scope id="8722937377469656734" at="20,0,24,0">
         <var name="checked" id="8722937377469656737" />
       </scope>
-      <scope id="8722937377469656747" at="31,0,35,0" />
-      <scope id="8722937377469656757" at="36,0,40,0" />
-      <scope id="8722937377469656763" at="41,0,45,0">
+      <scope id="8722937377469656747" at="25,0,29,0" />
+      <scope id="8722937377469656757" at="30,0,34,0" />
+      <scope id="8722937377469656763" at="35,0,39,0">
         <var name="model" id="8722937377469656766" />
       </scope>
-      <scope id="8722937377469656774" at="46,0,50,0" />
-      <scope id="8722937377469656784" at="51,0,55,0">
+      <scope id="8722937377469656774" at="40,0,44,0" />
+      <scope id="8722937377469656784" at="45,0,49,0">
         <var name="text" id="8722937377469656787" />
       </scope>
-      <scope id="8722937377469656797" at="56,0,60,0" />
-      <scope id="8722937377469656803" at="61,0,65,0">
+      <scope id="8722937377469656797" at="50,0,54,0" />
+      <scope id="8722937377469656803" at="55,0,59,0">
         <var name="m" id="8722937377469656806" />
       </scope>
-      <scope id="8722937377469656816" at="66,0,70,0" />
-      <scope id="8722937377469656936" at="96,0,100,0" />
-      <scope id="8722937377469656942" at="101,0,105,0" />
-      <scope id="8722937377469656953" at="106,0,110,0">
+      <scope id="8722937377469656816" at="60,0,64,0" />
+      <scope id="8722937377469656847" at="70,12,74,9" />
+      <scope id="8722937377469656936" at="78,0,82,0" />
+      <scope id="8722937377469656942" at="83,0,87,0" />
+      <scope id="8722937377469656953" at="88,0,92,0">
         <var name="text" id="8722937377469656956" />
       </scope>
-      <scope id="8722937377469656969" at="112,48,116,69" />
-      <scope id="8722937377469656966" at="111,0,118,0">
+      <scope id="8722937377469656969" at="94,48,98,69" />
+      <scope id="8722937377469656966" at="93,0,100,0">
         <var name="text" id="8722937377469656984" />
       </scope>
-      <scope id="1417540733158769841" at="80,27,89,14">
-        <var name="models" id="5481755926445678794" />
-      </scope>
-      <scope id="1417540733158769836" at="79,0,91,0" />
-      <scope id="8722937377469656847" at="76,12,92,80">
-        <var name="modelsVariants" id="8722937377469656857" />
-      </scope>
-      <scope id="8722937377469656826" at="72,36,93,5">
+      <scope id="8722937377469656826" at="66,36,75,5">
         <var name="solution" id="8722937377469656828" />
       </scope>
-      <scope id="8722937377469656822" at="71,0,95,0" />
-      <unit id="4933738972386755317" at="85,100,89,11" name="jetbrains.mps.build.mps.pluginSolution.plugin.ModelStep$1$1" />
-      <unit id="8722937377469656865" at="78,54,91,7" name="jetbrains.mps.build.mps.pluginSolution.plugin.ModelStep$1" />
-      <unit id="8722937377469656716" at="18,0,119,0" name="jetbrains.mps.build.mps.pluginSolution.plugin.ModelStep" />
+      <scope id="8722937377469656822" at="65,0,77,0" />
+      <unit id="8722937377469656716" at="12,0,101,0" name="jetbrains.mps.build.mps.pluginSolution.plugin.ModelStep" />
     </file>
   </root>
   <root nodeRef="r:f9ed10bf-2cd1-4bab-a5dd-e89f55ef9fd1(jetbrains.mps.build.mps.pluginSolution.plugin)/8722937377469656986">
