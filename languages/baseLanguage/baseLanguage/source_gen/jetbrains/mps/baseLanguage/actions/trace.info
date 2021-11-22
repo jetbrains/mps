@@ -2758,26 +2758,30 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902bf(jetbrains.mps.baseLanguage.actions)/5948027493683148074">
     <file name="BL_CopyPasteHandlers_CopyPreProcessor_0.java">
       <node id="5948027493683405579" at="17,50,18,41" concept="10" />
-      <node id="4598334504606213800" at="21,58,22,179" concept="9" />
-      <node id="4598334504606213957" at="23,39,24,67" concept="4" />
-      <node id="5948027493683405579" at="29,0,30,0" concept="13" trace="VariableReference$TC" />
-      <node id="5948027493683405579" at="33,0,34,0" concept="13" trace="variableDeclaration$N1XG" />
-      <node id="4598334504606213875" at="22,179,25,5" concept="7" />
+      <node id="6552894547536892383" at="21,58,22,103" concept="11" />
+      <node id="6552894547536893549" at="22,103,23,117" concept="11" />
+      <node id="6552894547536894641" at="23,117,24,115" concept="11" />
+      <node id="6552894547536895873" at="24,115,25,55" concept="11" />
+      <node id="4598334504606213800" at="25,55,26,183" concept="9" />
+      <node id="4598334504606213957" at="27,39,28,67" concept="4" />
+      <node id="5948027493683405579" at="33,0,34,0" concept="13" trace="VariableReference$TC" />
+      <node id="5948027493683405579" at="37,0,38,0" concept="13" trace="variableDeclaration$N1XG" />
+      <node id="4598334504606213875" at="26,183,29,5" concept="7" />
       <node id="5948027493683405579" at="16,0,20,0" concept="8" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="5948027493683405579" at="20,0,27,0" concept="8" trace="preProcessNode#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="5948027493683405579" at="20,0,31,0" concept="8" trace="preProcessNode#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <scope id="5948027493683405579" at="17,50,18,41" />
-      <scope id="4598334504606213876" at="23,39,24,67" />
+      <scope id="4598334504606213876" at="27,39,28,67" />
       <scope id="5948027493683405579" at="16,0,20,0" />
-      <scope id="5948027493683405581" at="21,58,25,5">
+      <scope id="5948027493683405581" at="21,58,29,5">
         <var name="qualifiedReference" id="4598334504606213801" />
       </scope>
-      <scope id="5948027493683405579" at="20,0,27,0">
+      <scope id="5948027493683405579" at="20,0,31,0">
         <var name="copy" id="5948027493683405579" />
         <var name="original" id="5948027493683405579" />
       </scope>
-      <unit id="5948027493683405579" at="28,0,31,0" name="jetbrains.mps.baseLanguage.actions.BL_CopyPasteHandlers_CopyPreProcessor_0$CONCEPTS" />
-      <unit id="5948027493683405579" at="32,0,35,0" name="jetbrains.mps.baseLanguage.actions.BL_CopyPasteHandlers_CopyPreProcessor_0$LINKS" />
-      <unit id="5948027493683405579" at="15,0,36,0" name="jetbrains.mps.baseLanguage.actions.BL_CopyPasteHandlers_CopyPreProcessor_0" />
+      <unit id="5948027493683405579" at="32,0,35,0" name="jetbrains.mps.baseLanguage.actions.BL_CopyPasteHandlers_CopyPreProcessor_0$CONCEPTS" />
+      <unit id="5948027493683405579" at="36,0,39,0" name="jetbrains.mps.baseLanguage.actions.BL_CopyPasteHandlers_CopyPreProcessor_0$LINKS" />
+      <unit id="5948027493683405579" at="15,0,40,0" name="jetbrains.mps.baseLanguage.actions.BL_CopyPasteHandlers_CopyPreProcessor_0" />
     </file>
     <file name="BL_CopyPasteHandlers_CopyPreProcessor_1.java">
       <node id="1497252193458501839" at="16,50,17,49" concept="10" />
