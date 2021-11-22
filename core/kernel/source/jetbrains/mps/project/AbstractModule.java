@@ -15,7 +15,9 @@
  */
 package jetbrains.mps.project;
 
+import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.module.EditableSModule;
+import jetbrains.mps.extapi.module.ModelDiscoveryDelta;
 import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.persistence.ModelRootBase;
@@ -699,8 +701,49 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
       mySModelRoots.add(modelRoot);
       rootBase.attach();
     }
+    class MDD implements ModelDiscoveryDelta {
+      private final ArrayList<SModel> in = new ArrayList<>();
+      private final ArrayList<SModel> out = new ArrayList<>();
+      private final ModelRoot modelRoot;
+
+      MDD(ModelRoot modelRoot) {
+        this.modelRoot = modelRoot;
+      }
+
+      @Override
+      public SModule module() {
+        return AbstractModule.this;
+      }
+
+      @Override
+      public void unload(SModel model) {
+        model.unload();
+      }
+
+      @Override
+      public void registerModel(SModel model) {
+        in.add(model);
+      }
+
+      @Override
+      public void unregisterModel(SModel model) {
+        out.add(model);
+      }
+      void apply() {
+        AbstractModule.this.changeModelSet(in, out);
+        // FIXME setModelRoot() shall be part of model root impl
+        for (SModel m : out) {
+          ((SModelBase) m).setModelRoot(null);
+        }
+        for (SModel m : in) {
+          ((SModelBase) m).setModelRoot(modelRoot);
+        }
+      }
+    }
     for (ModelRoot modelRoot : toUpdate) {
-      ((ModelRootBase) modelRoot).update();
+      MDD mdd = new MDD(modelRoot);
+      ((ModelRootBase) modelRoot).doLoadModels(mdd);
+      mdd.apply();
     }
   }
 

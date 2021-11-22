@@ -28,6 +28,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashSet;
@@ -36,6 +37,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
 public abstract class SModuleBase implements SModule {
   private static final Logger LOG = LogManager.getLogger(SModuleBase.class);
@@ -249,15 +251,7 @@ public abstract class SModuleBase implements SModule {
                                                        model.getName(), model.getModule(), this));
     }
 
-    myCachedModelsList = null;
-    myModels.add(model);
-    myIdToModelMap.put(model.getModelId(), model);
-
-    if (myRepository != null) {
-      model.attach(myRepository);
-    }
-    model.setModule(this);
-    fireModelAdded(model);
+    changeModelSet(Collections.singleton(model), Collections.emptyList());
   }
 
   public void unregisterModel(SModelBase model) {
@@ -265,14 +259,45 @@ public abstract class SModuleBase implements SModule {
     if (model.getModule() != this) {
       throw new IllegalArgumentException(String.format("Model `%s' is registered elsewhere.", model.getName()));
     }
+    changeModelSet(Collections.emptyList(), Collections.singleton(model));
+  }
 
-    fireBeforeModelRemoved(model);
+  // eventually to replace pair of registerModel(SModelBase)/unregisterModel(SModelBase)
+  protected final void changeModelSet(Collection<? extends SModel> add, Collection<? extends SModel> forget) {
+    assertCanChange();
+
+    // FIXME at the moment, while it's private api, we just silently ignore bad arguments, there are checks outside this code;
+    //       however, once public, have to decide on proper error strategy (not sure if exception is the right way)
+    Collection<SModel> filteredAdd = add.stream().filter(m -> m.getModule() == null || m.getModule() == SModuleBase.this).collect(Collectors.toList());
+    Collection<SModel> filteredForget = forget.stream().filter(m -> m.getModule() == SModuleBase.this).collect(Collectors.toList());
+    Collection<SModelReference> filteredForgetRefs = filteredForget.stream().map(SModel::getReference).collect(Collectors.toList());
+
     myCachedModelsList = null;
-    SModelReference reference = model.getReference();
-    myIdToModelMap.remove(reference.getModelId());
-    myModels.remove(model);
-    model.detach();
-    fireModelRemoved(reference);
+    for (SModel model : filteredAdd) {
+      // FIXME I don't really need SModelBase, just need to refactor myModels uses
+      myModels.add((SModelBase) model);
+      myIdToModelMap.put(model.getModelId(), model);
+      if (model instanceof SModelBase) {
+        // and this odd code here is just to remind how it's supposed to be - we shall take/add any SModel, and
+        // if it's SModelBase, then invoke attach()+setModule()
+        if (myRepository != null) {
+          ((SModelBase) model).attach(myRepository);
+        }
+        ((SModelBase) model).setModule(this);
+      }
+    }
+
+    filteredForget.forEach(this::fireBeforeModelRemoved); // FIXME collection down there
+    filteredForgetRefs.forEach(reference -> myIdToModelMap.remove(reference.getModelId()));
+    for (SModel model : filteredForget) {
+      myModels.remove(model);
+      if (model instanceof SModelBase) {
+        ((SModelBase) model).detach(); // 'detach' is confusing as an act/verb; in fact it's 'onDetach' notification
+      }
+    }
+
+    filteredAdd.forEach(this::fireModelAdded); // FIXME fireModelAdded to take collection
+    filteredForgetRefs.forEach(this::fireModelRemoved); // FIXME same
   }
 
   protected void assertCanRead() {

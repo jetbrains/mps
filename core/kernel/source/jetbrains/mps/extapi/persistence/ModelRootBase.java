@@ -17,6 +17,7 @@ package jetbrains.mps.extapi.persistence;
 
 import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.extapi.module.ModelDiscoveryDelta;
 import jetbrains.mps.extapi.module.SModuleBase;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -125,6 +126,10 @@ public abstract class ModelRootBase implements ModelRoot {
       throw new IllegalStateException("Module is null");
     }
     myRepository = myModule.getRepository();
+    // XXX may change attach() to return MDD as a transition mechanism from 'loaded on attach' to 'loaded on demand'
+    //     but hope to refactor the code in a way I can avoid this two-step transition. There's 1 location except this one,
+    //     where update() is explicitly requested (VFS notification handling). If I manage to fix it, I can split attach()
+    //     and update() here.
     update();
   }
 
@@ -202,14 +207,14 @@ public abstract class ModelRootBase implements ModelRoot {
     assertCanChange();
     SModuleBase module = (SModuleBase) getModule();
     assert module != null;
-    final ModelDiscoveryDelta mdd = new ModelDiscoveryDelta(module);
+    final LegacyModelDiscoveryDelta mdd = new LegacyModelDiscoveryDelta(module);
     doLoadModels(mdd);
     mdd.apply();
   }
 
   // FIXME this seems to be an MR-independent code, close friend class to SModuleBase that is capable to take models loaded by a MR and
   //       combine results with present SModuleBase state. I plan to switch to that code with the help of MDD.
-  private void doLoadModels(ModelDiscoveryDelta mdd) {
+  public void doLoadModels(ModelDiscoveryDelta mdd) {
     Set<SModelId> loaded = new HashSet<>();
     Iterable<SModel> allModels = loadModels();
     for (SModel model : allModels) {
@@ -218,7 +223,7 @@ public abstract class ModelRootBase implements ModelRoot {
         continue;
       }
       loaded.add(model.getModelId());
-      SModel oldModel = mdd.module.getModel(model.getModelId());
+      SModel oldModel = mdd.module().getModel(model.getModelId());
       // in most scenarios, we are reloading exactly the same set of models we already have loaded in the module.
       if (oldModel != null) {
         // XXX not sure comment on loadModels() to return existing model, if possible, is reasonable. Perhaps, shall strive to have its
@@ -283,20 +288,25 @@ public abstract class ModelRootBase implements ModelRoot {
   // WIP: towards batch model registration/un-registration under SModule's control
   //      ModelRoot would serve as a mere source of models (one of many possible for a module, including other roots and direct
   //      registration of a model w/o MR)
-  class ModelDiscoveryDelta {
+  class LegacyModelDiscoveryDelta implements ModelDiscoveryDelta {
     private final SModuleBase module;
 
-    ModelDiscoveryDelta(SModuleBase module) {
+    LegacyModelDiscoveryDelta(SModuleBase module) {
       this.module = module;
     }
 
-    void unload(SModel model) {
+    @Override
+    public SModuleBase module() {
+      return this.module;
+    }
+
+    public void unload(SModel model) {
       model.unload();
     }
-    void registerModel(SModel model) {
+    public void registerModel(SModel model) {
       ModelRootBase.this.registerModel(model);
     }
-    void unregisterModel(SModel model) {
+    public void unregisterModel(SModel model) {
       ModelRootBase.this.unregisterModel(model);
     }
     void apply() {
