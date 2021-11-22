@@ -15,6 +15,9 @@
  */
 package jetbrains.mps.nodeEditor.leftHighlighter;
 
+import com.intellij.codeInsight.hint.LineTooltipRenderer;
+import com.intellij.codeInsight.hint.TooltipGroup;
+import com.intellij.codeInsight.hint.TooltipRenderer;
 import com.intellij.ide.DataManager;
 import com.intellij.openapi.actionSystem.ActionGroup;
 import com.intellij.openapi.actionSystem.ActionManager;
@@ -25,6 +28,8 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.ui.popup.Balloon;
+import com.intellij.openapi.ui.popup.Balloon.Position;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.UIUtil;
 import gnu.trove.THashMap;
@@ -36,6 +41,7 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer.IconRendererType;
 import jetbrains.mps.nodeEditor.EditorSettings;
+import jetbrains.mps.nodeEditor.EditorTooltipProvider;
 import jetbrains.mps.nodeEditor.leftHighlighter.IconPositionCalculator.IntLocation;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.update.UpdaterListenerAdapter;
@@ -63,6 +69,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -117,6 +124,7 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
   private int myWidth;
   private int myHeight;
   private boolean myRightToLeft;
+  private EditorTooltipProvider myTooltipProvider = new MyTooltipProvider();
 
   public LeftEditorHighlighter(@NotNull EditorComponent editorComponent, boolean rightToLeft) {
     setBackground(EditorSettings.getInstance().getLeftHighlighterBackgroundColor());
@@ -420,7 +428,7 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
       recalculateTextColumnWidth();
     } else {
       // left columns should be relayouted before calculating text column width.
-      if(updateFolding){
+      if (updateFolding) {
         myLeftColumns.forEach(column -> column.relayout(true));
       }
       recalculateTextColumnWidth();
@@ -591,6 +599,13 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
 
   @Override
   public String getToolTipText(MouseEvent e) {
+    if (getTooltipProvider() != null) {
+      return null;
+    }
+    return getToolTipTextInternal(e);
+  }
+
+  private String getToolTipTextInternal(MouseEvent e) {
     if (isInFoldingArea(e)) {
       for (AbstractFoldingAreaPainter painter : myFoldingAreaPainters) {
         if (painter.getToolTipText() != null) {
@@ -614,6 +629,35 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
       }
     }
     return null;
+  }
+
+  private class MyTooltipProvider implements EditorTooltipProvider {
+
+    private final TooltipGroup MPS_GUTTER_TOOLTIP_GROUP = new TooltipGroup("MPS_GUTTER_TOOLTIP_GROUP", 0);
+
+    @Override
+    public TooltipGroup getTooltipGroup() {
+      return MPS_GUTTER_TOOLTIP_GROUP;
+    }
+
+    @Override
+    public TooltipRenderer getTooltipRenderer(MouseEvent e) {
+      String text = getToolTipTextInternal(e);
+      return (text == null || text.isEmpty()) ? null : new LineTooltipRenderer(text, new Object[]{Arrays.asList(text)});
+    }
+
+    @Override
+    public Position getPreferredPosition() {
+      return Balloon.Position.atRight;
+    }
+  }
+
+  public EditorTooltipProvider getTooltipProvider() {
+    return myTooltipProvider;
+  }
+
+  public void setTooltipProvider(EditorTooltipProvider editorTooltipProvider) {
+    myTooltipProvider = editorTooltipProvider;
   }
 
   @Override

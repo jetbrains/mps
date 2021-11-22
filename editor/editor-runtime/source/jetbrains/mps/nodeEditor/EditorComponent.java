@@ -3,6 +3,10 @@
  */
 package jetbrains.mps.nodeEditor;
 
+import com.intellij.codeInsight.hint.LineTooltipRenderer;
+import com.intellij.codeInsight.hint.TooltipController;
+import com.intellij.codeInsight.hint.TooltipGroup;
+import com.intellij.codeInsight.hint.TooltipRenderer;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.ide.CopyProvider;
 import com.intellij.ide.CutProvider;
@@ -31,6 +35,8 @@ import com.intellij.openapi.editor.ex.util.EditorUtil;
 import com.intellij.openapi.keymap.KeymapManager;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.popup.Balloon;
+import com.intellij.openapi.ui.popup.Balloon.Position;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.IdeGlassPane;
@@ -43,6 +49,7 @@ import com.intellij.util.io.URLUtil;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.util.ui.ButtonlessScrollBarUI;
 import com.intellij.util.ui.UIUtil;
+import gnu.trove.THashSet;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
 import jetbrains.mps.editor.runtime.HighlightUsagesSupport;
@@ -365,9 +372,14 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   @NotNull
   private final EditorHighlighter myHighlighter = new EditorHighlighter(this);
 
+  private EditorTooltipProvider myTooltipProvider = new DefaultTooltipProvider();
+
   @NotNull
   private final EditorComponentFocusTracker myFocusTracker = new EditorComponentFocusTracker(this);
   private final EditorComponentSettingsImpl myEditorComponentSettings;
+
+  @Nullable
+  private PlatformEditorEmulation myPlatformEditorEmulation;
 
   public EditorComponent(@NotNull SRepository repository) {
     this(repository, EditorConfigurationBuilder.buildDefault());
@@ -565,6 +577,79 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     if (configuration.withUI) {
       createUI(configuration);
     }
+
+    if (hasUI()) {
+      // Platform Editor emulation allows one to reuse the smart tooltips from the platform.
+      // TODO find a way to create good tooltips without implementing platform's Editor interface
+      // this should be done with the issue https://youtrack.jetbrains.com/issue/MPSSPRT-295
+      myPlatformEditorEmulation = new PlatformEditorEmulation(this);
+      addMouseListener(myPlatformEditorEmulation.getMouseListener());
+      addMouseMotionListener(myPlatformEditorEmulation.getMouseMotionListener());
+      myLeftHighlighter.addMouseListener(myPlatformEditorEmulation.getMouseListener());
+      myLeftHighlighter.addMouseMotionListener(myPlatformEditorEmulation.getMouseMotionListener());
+    }
+  }
+
+  @Nullable
+  protected EditorTooltipProvider getTooltipProvider() {
+    return myTooltipProvider;
+  }
+
+  public void setTooltipProvider(EditorTooltipProvider tooltipProvider) {
+    myTooltipProvider = tooltipProvider;
+  }
+
+  private class DefaultTooltipProvider implements EditorTooltipProvider {
+
+    jetbrains.mps.openapi.editor.cells.EditorCell myLastCellUnderMouse;
+    private final TooltipGroup MPS_EDITOR_TOOLTIP_GROUP = new TooltipGroup("MPS_EDITOR_TOOLTIP_GROUP", 0);
+
+    @Override
+    public TooltipGroup getTooltipGroup() {
+      return MPS_EDITOR_TOOLTIP_GROUP;
+    }
+
+    @Override
+    public TooltipRenderer getTooltipRenderer(MouseEvent e) {
+      jetbrains.mps.openapi.editor.cells.EditorCell cell = getCellAtPoint(e.getPoint());
+      if (cell != myLastCellUnderMouse) {
+        TooltipController.getInstance().cancelTooltip(MPS_EDITOR_TOOLTIP_GROUP, e, true);
+        myLastCellUnderMouse = cell;
+      }
+
+      List<EditorMessageWithTarget> messages = getEditorMessagesFor(cell);
+      if (cell == null || messages.isEmpty()) {
+        TooltipController.getInstance().cancelTooltip(MPS_EDITOR_TOOLTIP_GROUP, null, false);
+        return null;
+      }
+
+      LineTooltipRenderer bigRenderer = null;
+      //do not show same tooltip twice
+      Set<String> tooltips = null;
+
+      for (ListIterator<EditorMessageWithTarget> it = messages.listIterator(messages.size()); it.hasPrevious(); ) {
+        final String text = it.previous().getMessage();
+        if (text == null || text.isEmpty()) {
+          continue;
+        }
+        if (tooltips == null) {
+          tooltips = new THashSet<>();
+        }
+        if (tooltips.add(text)) {
+          if (bigRenderer == null) {
+            bigRenderer = new LineTooltipRenderer(text, new Object[]{messages});
+          } else {
+            bigRenderer.addBelow(text);
+          }
+        }
+      }
+      return bigRenderer;
+    }
+
+    @Override
+    public Position getPreferredPosition() {
+      return Balloon.Position.atRight;
+    }
   }
 
   // TODO:
@@ -705,6 +790,11 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   protected JScrollPane createScrollPane() {
     return new FontSizeChangingScrollPane();
+  }
+
+  JScrollPane getScrollPane() {
+    assert hasUI();
+    return myScrollPane;
   }
 
   /**
@@ -931,6 +1021,9 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
 
   @Override
   public String getToolTipText(MouseEvent event) {
+    if (getTooltipProvider() != null) {
+      return null;
+    }
     final Reference<String> rv = new Reference<>(null);
     getModelAccess().runReadAction(new CancellableReadAction() {
       @Override
@@ -979,6 +1072,22 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     });
     return rv.get();
   }
+
+  private jetbrains.mps.openapi.editor.cells.EditorCell getCellAtPoint(Point point) {
+    final Reference<jetbrains.mps.openapi.editor.cells.EditorCell> rv = new Reference<>(null);
+    getModelAccess().runReadAction(new CancellableReadAction() {
+      @Override
+      protected void execute() {
+        if (isDisposed()) {
+          return;
+        }
+        jetbrains.mps.openapi.editor.cells.EditorCell cell = myRootCell.findLeaf(point.x, point.y);
+        rv.set(cell);
+      }
+    });
+    return rv.get();
+  }
+
 
   public void updateStatusBarMessage() {
     if (!isFocusOwner()) {
@@ -1465,6 +1574,13 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     assertInEDT();
     if (myDisposed) {
       throw new IllegalStateException(myDisposedTrace);
+    }
+    if (myPlatformEditorEmulation != null) {
+      removeMouseListener(myPlatformEditorEmulation.getMouseListener());
+      removeMouseMotionListener(myPlatformEditorEmulation.getMouseMotionListener());
+      getLeftEditorHighlighter().removeMouseListener(myPlatformEditorEmulation.getMouseListener());
+      getLeftEditorHighlighter().removeMouseMotionListener(myPlatformEditorEmulation.getMouseMotionListener());
+      myPlatformEditorEmulation.release();
     }
     fireEditorWillBeDisposed();
     myDisposed = true;

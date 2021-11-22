@@ -258,8 +258,13 @@
     <classNode extendsClassName="jetbrains.mps.vcs.diff.ui.common.ChangeGroupLayout" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.common.DiffEditor">
+    <classNode dependClassName="com.intellij.codeInsight.hint.LineTooltipRenderer" />
+    <classNode dependClassName="com.intellij.codeInsight.hint.TooltipController" />
+    <classNode dependClassName="com.intellij.codeInsight.hint.TooltipGroup" />
+    <classNode dependClassName="com.intellij.codeInsight.hint.TooltipRenderer" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.PlatformDataKeys" />
     <classNode dependClassName="com.intellij.openapi.editor.colors.EditorColorsManager" />
+    <classNode dependClassName="com.intellij.openapi.ui.popup.Balloon" />
     <classNode dependClassName="com.intellij.ui.JBSplitter" />
     <classNode dependClassName="com.intellij.util.ui.JBUI" />
     <classNode dependClassName="java.awt.Dimension" />
@@ -274,6 +279,7 @@
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="javax.swing.JComponent" />
     <classNode dependClassName="javax.swing.JLabel" />
     <classNode dependClassName="javax.swing.JPanel" />
@@ -291,6 +297,7 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorMessage" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.EditorTooltipProvider" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.cells.EditorCell_Constant" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.commands.CommandContextImpl" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.commands.CommandContextWithVF" />

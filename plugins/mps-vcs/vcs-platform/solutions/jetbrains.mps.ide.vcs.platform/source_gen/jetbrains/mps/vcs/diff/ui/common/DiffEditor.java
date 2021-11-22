@@ -39,6 +39,13 @@ import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import java.util.ArrayList;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
+import jetbrains.mps.nodeEditor.EditorTooltipProvider;
+import com.intellij.codeInsight.hint.TooltipGroup;
+import com.intellij.codeInsight.hint.TooltipRenderer;
+import java.util.Objects;
+import com.intellij.codeInsight.hint.TooltipController;
+import com.intellij.codeInsight.hint.LineTooltipRenderer;
+import com.intellij.openapi.ui.popup.Balloon;
 import javax.swing.JScrollPane;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
@@ -313,12 +320,56 @@ public class DiffEditor implements EditorMessageOwner {
     return type == CellActionType.FOLD_RECURSIVELY || type == CellActionType.FOLD_ALL || type == CellActionType.FOLD || type == CellActionType.UNFOLD || type == CellActionType.UNFOLD_RECURSIVELY || type == CellActionType.UNFOLD_ALL;
   }
 
-  /*package*/ interface TooltipProvider {
-    String getTooltipText(MouseEvent mouseEvent);
-  }
+  private class MyTooltipProvider implements EditorTooltipProvider {
 
-  /*package*/ interface TooltipConsumer {
-    void setTooltipProvider(TooltipProvider tooltipProvider);
+    private final boolean myInspector;
+    private final TooltipGroup myTooltipGroup;
+    private List<DiffEditorChangeLayer> mySelectedLayers;
+
+    private MyTooltipProvider(boolean inspector) {
+      myInspector = inspector;
+      myTooltipGroup = new TooltipGroup((inspector ? "INSPECTOR_TOOLTIP_GROUP" : "MAIN_TOOLTIP_GROUP"), 0);
+    }
+
+    @Override
+    public TooltipRenderer getTooltipRenderer(MouseEvent e) {
+
+      List<DiffEditorChangeLayer> selectedLayers = ListSequence.fromList(getLayers(myInspector)).where(new IWhereFilter<DiffEditorChangeLayer>() {
+        public boolean accept(DiffEditorChangeLayer it) {
+          return it.isSelected();
+        }
+      }).toListSequence();
+      if (!(Objects.equals(selectedLayers, mySelectedLayers))) {
+        TooltipController.getInstance().cancelTooltip(myTooltipGroup, e, true);
+        mySelectedLayers = selectedLayers;
+      }
+      if (ListSequence.fromList(selectedLayers).isEmpty()) {
+        TooltipController.getInstance().cancelTooltip(myTooltipGroup, e, false);
+        return null;
+      }
+      LineTooltipRenderer bigRenderer = null;
+
+      for (DiffEditorChangeLayer layer : selectedLayers) {
+        String text = layer.getDescription(DiffSettingsUtil.getUseShortDescriptionsOption());
+        EditorMessage.formatMessage(text, FormattingOptions.PLAIN_TEXT);
+        if (bigRenderer == null) {
+          bigRenderer = new LineTooltipRenderer(text, new Object[]{text});
+        } else {
+          bigRenderer.addBelow(text);
+        }
+      }
+      return bigRenderer;
+    }
+
+    @Override
+    public Balloon.Position getPreferredPosition() {
+      return Balloon.Position.atRight;
+    }
+
+    @Override
+    public TooltipGroup getTooltipGroup() {
+      return myTooltipGroup;
+    }
   }
 
   /*package*/ interface LayersHolder {
@@ -332,26 +383,22 @@ public class DiffEditor implements EditorMessageOwner {
     return (inspector ? myInspectorComponent.getScrollPane() : myMainEditorComponent.getScrollPane());
   }
 
-  public class MyInspectorEditorComponent extends InspectorEditorComponent implements TooltipConsumer, LayersHolder {
+  public class MyInspectorEditorComponent extends InspectorEditorComponent implements LayersHolder {
 
-    @Nullable
-    private TooltipProvider myTooltipProvider;
     @Nullable
     private List<DiffEditorChangeLayer> myLayers;
     private JScrollPane myScrollPane;
+    private final EditorTooltipProvider myTooltipProvider = new MyTooltipProvider(true);
 
 
     public MyInspectorEditorComponent(@NotNull SRepository repository, boolean rightToLeft) {
       super(repository, new EditorConfigurationBuilder().rightToLeft(rightToLeft).showSelectionLine(false).showLightBulb(false).build());
     }
 
+    @Nullable
     @Override
-    public String getToolTipText(MouseEvent event) {
-      String text = super.getToolTipText(event);
-      if (text != null && (text != null && text.length() > 0)) {
-        return text;
-      }
-      return (myTooltipProvider != null ? myTooltipProvider.getTooltipText(event) : null);
+    protected EditorTooltipProvider getTooltipProvider() {
+      return myTooltipProvider;
     }
 
     @Override
@@ -376,11 +423,6 @@ public class DiffEditor implements EditorMessageOwner {
     }
 
     @Override
-    public void setTooltipProvider(TooltipProvider tooltipProvider) {
-      myTooltipProvider = tooltipProvider;
-    }
-
-    @Override
     @Nullable
     public List<DiffEditorChangeLayer> getLayers() {
       return myLayers;
@@ -392,14 +434,13 @@ public class DiffEditor implements EditorMessageOwner {
     }
   }
 
-  public class MainEditorComponent extends EditorComponent implements TooltipConsumer, LayersHolder {
+  public class MainEditorComponent extends EditorComponent implements LayersHolder {
     private DiffFileEditor myDiffFileEditor;
     private CommandContextWithVF myCommandContext;
     @Nullable
-    private TooltipProvider myTooltipProvider;
-    @Nullable
     private List<DiffEditorChangeLayer> myLayers;
     private JScrollPane myScrollPane;
+    private EditorTooltipProvider myTooltipProvider = new MyTooltipProvider(false);
 
 
     public MainEditorComponent(SRepository repository, boolean rightToLeft) {
@@ -407,6 +448,12 @@ public class DiffEditor implements EditorMessageOwner {
       myDiffFileEditor = new DiffFileEditor(this);
       setDefaultPopupGroupId(((String) BHReflection.invoke0(SNodeOperations.getNode("r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)", "426251916200108583"), CONCEPTS.ActionGroupDeclaration$VO, SMethodTrimmedId.create("getGeneratedClassFQName", CONCEPTS.ActionGroupDeclaration$VO, "hEwJa8g"))));
       getMessagesGutter().setMessageThicknessProvider((SimpleEditorMessage m) -> false);
+    }
+
+    @Nullable
+    @Override
+    protected EditorTooltipProvider getTooltipProvider() {
+      return myTooltipProvider;
     }
 
     @Override
@@ -421,15 +468,6 @@ public class DiffEditor implements EditorMessageOwner {
     @Nullable
     private JScrollPane getScrollPane() {
       return myScrollPane;
-    }
-
-    @Override
-    public String getToolTipText(MouseEvent event) {
-      String text = super.getToolTipText(event);
-      if (text != null && (text != null && text.length() > 0)) {
-        return text;
-      }
-      return (myTooltipProvider != null ? myTooltipProvider.getTooltipText(event) : null);
     }
 
     @Override
@@ -460,11 +498,6 @@ public class DiffEditor implements EditorMessageOwner {
 
     public MPSNodeVirtualFile getVirtualFile() {
       return myCommandContext.getContextVirtualFile();
-    }
-
-    @Override
-    public void setTooltipProvider(TooltipProvider tooltipProvider) {
-      myTooltipProvider = tooltipProvider;
     }
 
     @Override
