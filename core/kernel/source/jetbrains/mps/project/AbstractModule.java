@@ -631,6 +631,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   public void updateModelsSet() {
+    doUpdateModelRoots();
     doUpdateModelsSet();
   }
 
@@ -660,7 +661,9 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     return result;
   }
 
-  private void doUpdateModelsSet() {
+  // updates mySModelRoots with proper ModelRoot instances, attaching new and disposing outdated, as needed.
+  // Requires model write (mySModelRoots is guarded with write)
+  private void doUpdateModelRoots() {
     assertCanChange();
 
     for (SModel model : getModels()) {
@@ -700,8 +703,13 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
       rootBase.setModule(this);
       mySModelRoots.add(modelRoot);
       rootBase.attach();
-      toUpdate.add(rootBase);
     }
+  }
+
+  // takes known set of model roots and updates set of module's models based on these model roots
+  private void doUpdateModelsSet() {
+    assertCanChange(); // FIXME model read + separate lock for models
+
     class MDD implements ModelDiscoveryDelta {
       private final ArrayList<SModel> in = new ArrayList<>();
       private final ArrayList<SModel> out = new ArrayList<>();
@@ -741,7 +749,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
         }
       }
     }
-    for (ModelRoot modelRoot : toUpdate) {
+    for (ModelRoot modelRoot : mySModelRoots) {
       MDD mdd = new MDD(modelRoot);
       ((ModelRootBase) modelRoot).doLoadModels(mdd);
       mdd.apply();
