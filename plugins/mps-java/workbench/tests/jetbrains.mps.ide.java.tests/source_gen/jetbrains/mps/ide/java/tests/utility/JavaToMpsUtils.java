@@ -141,6 +141,7 @@ public class JavaToMpsUtils {
     mr.setModule((SModuleBase) getModule());
     mr.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(dirPath));
     mr.attach();
+    mr.update();
 
     List<SModel> models = ListSequence.fromList(new ArrayList<SModel>());
     for (SModel md : ListSequence.fromList(mr.getModels())) {

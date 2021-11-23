@@ -700,6 +700,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
       rootBase.setModule(this);
       mySModelRoots.add(modelRoot);
       rootBase.attach();
+      toUpdate.add(rootBase);
     }
     class MDD implements ModelDiscoveryDelta {
       private final ArrayList<SModel> in = new ArrayList<>();

@@ -126,11 +126,6 @@ public abstract class ModelRootBase implements ModelRoot {
       throw new IllegalStateException("Module is null");
     }
     myRepository = myModule.getRepository();
-    // XXX may change attach() to return MDD as a transition mechanism from 'loaded on attach' to 'loaded on demand'
-    //     but hope to refactor the code in a way I can avoid this two-step transition. There's 1 location except this one,
-    //     where update() is explicitly requested (VFS notification handling). If I manage to fix it, I can split attach()
-    //     and update() here.
-    update();
   }
 
   public void dispose() {
