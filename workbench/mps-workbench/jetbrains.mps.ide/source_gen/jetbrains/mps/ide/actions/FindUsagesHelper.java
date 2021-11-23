@@ -26,6 +26,7 @@ import jetbrains.mps.ide.findusages.view.UsageToolOptions;
   private final MPSProject myProject;
   private SNode myOperationNode;
   private FindUsagesOptions myUsageOptions;
+  private String myConcept;
 
   /*package*/ FindUsagesHelper(MPSProject project) {
     myIdeaProject = project.getProject();
@@ -44,8 +45,8 @@ import jetbrains.mps.ide.findusages.view.UsageToolOptions;
   /*package*/ FindUsagesHelper prepareOptions(EditorCell cell, SNode node) {
     // needs model read
     myOperationNode = (cell == null ? node : APICellAdapter.getSNodeWRTReference(cell));
-    String concept = SNodeOperations.getConcept(myOperationNode).getQualifiedName();
-    FindUsagesOptions preset = getDefaultOptions().getDefaultSearchOptions(concept);
+    myConcept = SNodeOperations.getConcept(myOperationNode).getQualifiedName();
+    FindUsagesOptions preset = getDefaultOptions().getDefaultSearchOptions(myConcept);
     FindersOptions findersOptions = preset.getFindersOptions().cloneWithDefaultForNode(myOperationNode);
     myUsageOptions = new FindUsagesOptions(findersOptions, preset.getScopeOptions(), preset.getViewOptions());
     return this;
@@ -74,6 +75,7 @@ import jetbrains.mps.ide.findusages.view.UsageToolOptions;
       // no-op, dialog was cancelled
       return;
     }
+    getDefaultOptions().setDefaultSearchOptions(myConcept, myUsageOptions);
     IResultProvider provider = myUsageOptions.getFindersOptions().getResult();
     SearchQuery query = new SearchQuery(myOperationNode, myUsageOptions.getScopeOptions().getScope(myProject));
     ViewOptions viewOptions = myUsageOptions.getViewOptions();
