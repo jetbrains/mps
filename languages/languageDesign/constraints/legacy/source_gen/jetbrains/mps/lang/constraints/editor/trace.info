@@ -1646,7 +1646,7 @@
       <node id="2118147876589610206" at="211,50,212,50" concept="2" />
       <node id="2118147876590168603" at="212,50,213,48" concept="2" />
       <node id="1213094054781" at="213,48,214,22" concept="7" />
-      <node id="2118147876589610066" at="216,47,217,118" concept="7" />
+      <node id="2118147876589610066" at="216,47,217,246" concept="7" />
       <node id="2118147876589610116" at="219,47,220,247" concept="7" />
       <node id="1788958176606461082" at="222,48,223,41" concept="8" />
       <node id="1788958176606460874" at="223,41,224,127" concept="7" />
@@ -2115,12 +2115,13 @@
       <node id="1213094054781" at="1109,0,1110,0" concept="10" trace="defaultScope$PVUG" />
       <node id="1213094054781" at="1113,0,1114,0" concept="10" trace="LinkAttribute$v_" />
       <node id="1213094054781" at="1114,0,1115,0" concept="10" trace="PropertyAttribute$Gb" />
-      <node id="1213094054781" at="1115,0,1116,0" concept="10" trace="ConceptDeclaration$gH" />
-      <node id="1213094054781" at="1116,0,1117,0" concept="10" trace="NodePropertyConstraint$vW" />
-      <node id="1213094054781" at="1117,0,1118,0" concept="10" trace="NodeReferentConstraint$PH" />
-      <node id="1213094054781" at="1121,0,1122,0" concept="10" trace="name$MnvL" />
-      <node id="1213094054781" at="1122,0,1123,0" concept="10" trace="abstract$ibpT" />
-      <node id="1213094054781" at="1123,0,1124,0" concept="10" trace="rootable$_9pz" />
+      <node id="1213094054781" at="1115,0,1116,0" concept="10" trace="InterfaceConceptDeclaration$CG" />
+      <node id="1213094054781" at="1116,0,1117,0" concept="10" trace="ConceptDeclaration$gH" />
+      <node id="1213094054781" at="1117,0,1118,0" concept="10" trace="NodePropertyConstraint$vW" />
+      <node id="1213094054781" at="1118,0,1119,0" concept="10" trace="NodeReferentConstraint$PH" />
+      <node id="1213094054781" at="1122,0,1123,0" concept="10" trace="name$MnvL" />
+      <node id="1213094054781" at="1123,0,1124,0" concept="10" trace="abstract$ibpT" />
+      <node id="1213094054781" at="1124,0,1125,0" concept="10" trace="rootable$_9pz" />
       <node id="1213094054781" at="57,0,59,0" concept="3" trace="myNode" />
       <node id="1213094094191" at="126,0,128,0" concept="3" trace="myNode" />
       <node id="2118147876589610076" at="279,0,281,0" concept="3" trace="myNode" />
@@ -2315,7 +2316,7 @@
       <scope id="2118147876589610063" at="190,38,191,53" />
       <scope id="2118147876589610111" at="196,38,197,53" />
       <scope id="3754598629525415320" at="205,39,206,53" />
-      <scope id="2118147876589610065" at="216,47,217,118" />
+      <scope id="2118147876589610065" at="216,47,217,246" />
       <scope id="2118147876589610115" at="219,47,220,247" />
       <scope id="1213094054781" at="268,39,269,113" />
       <scope id="2118147876589610076" at="289,41,290,32" />
@@ -2894,10 +2895,10 @@
       <unit id="1213094095099" at="157,104,161,9" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$Inline_Builder0$1" />
       <unit id="1213094054781" at="267,102,271,5" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$4" />
       <unit id="2118147876589610077" at="310,104,314,9" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$Inline_Builder1$1" />
-      <unit id="1213094054781" at="1120,0,1125,0" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$PROPS" />
-      <unit id="1213094054781" at="1112,0,1119,0" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$CONCEPTS" />
+      <unit id="1213094054781" at="1121,0,1126,0" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$PROPS" />
       <unit id="1213094054781" at="95,42,103,5" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$1" />
       <unit id="1213094054781" at="245,42,253,5" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$3" />
+      <unit id="1213094054781" at="1112,0,1120,0" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$CONCEPTS" />
       <unit id="1213094054781" at="1098,0,1111,0" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$LINKS" />
       <unit id="1213094094191" at="125,0,172,0" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$Inline_Builder0" />
       <unit id="2118147876589610076" at="278,0,325,0" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$Inline_Builder1" />
@@ -2910,7 +2911,7 @@
       <unit id="1213094054781" at="767,0,822,0" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$alternativeIconSingleRoleHandler_g00aa7_b2l3a" />
       <unit id="1213094054781" at="843,0,919,0" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$propertyListHandler_g00aa7_m3a" />
       <unit id="1213094054781" at="940,0,1016,0" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a$referentListHandler_g00aa7_o3a" />
-      <unit id="1213094054781" at="56,0,1126,0" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a" />
+      <unit id="1213094054781" at="56,0,1127,0" name="jetbrains.mps.lang.constraints.editor.ConceptConstraints_EditorBuilder_a" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c89590308(jetbrains.mps.lang.constraints.editor)/1278414312222851698">
