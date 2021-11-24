@@ -637,6 +637,16 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   public final void updateModelsSet() {
+    for (SModel model : getModels()) {
+      if (model instanceof EditableSModel && ((EditableSModel) model).isChanged()) {
+        LOG.warn(
+            "Trying to reload module " + getModuleName() + " which contains a non-saved model '" +
+            model.getName() + "'. To prevent data loss, MPS will not update models in this module. " +
+            "Please save your work and restart MPS. See MPS-18743 for details."
+        );
+        return;
+      }
+    }
     doUpdateModelRoots();
     ensureModelsReady(); // == doUpdateModelsSet(), guarded with myModels lock
   }
@@ -672,17 +682,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   private void doUpdateModelRoots() {
     assertCanChange();
 
-    for (SModel model : getModels()) {
-      if (model instanceof EditableSModel && ((EditableSModel) model).isChanged()) {
-        LOG.warn(
-            "Trying to reload module " + getModuleName() + " which contains a non-saved model '" +
-            model.getName() + "'. To prevent data loss, MPS will not update models in this module. " +
-            "Please save your work and restart MPS. See MPS-18743 for details."
-        );
-        return;
-      }
-    }
-
     Set<ModelRoot> toRemove = new LinkedHashSet<>(mySModelRoots);
     Set<ModelRoot> toUpdate = new LinkedHashSet<>(mySModelRoots);
     Set<ModelRoot> toAttach = new LinkedHashSet<>();
@@ -710,6 +709,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
       mySModelRoots.add(modelRoot);
       rootBase.attach();
     }
+    markModelsIncomplete();
   }
 
 

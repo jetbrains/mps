@@ -51,12 +51,12 @@ public abstract class SModuleBase implements SModule {
   private final GuardedModels myModels = new GuardedModels();
 
   private enum ModelSetState {
-    EMPTY, INITIALISE, READY
+    INCOMPLETE, INITIALISE, READY
   }
 
   private static class GuardedModels {
     private final Set<SModel> myElements = new LinkedHashSet<>();
-    private /*volatile?*/ ModelSetState myModelSetState = ModelSetState.EMPTY;
+    private /*volatile?*/ ModelSetState myModelSetState = ModelSetState.INCOMPLETE;
     // FIXME with myElements being guarded by synchronized lock, do I need to guard this by same lock or concurrent map is the way to go
     //       (I assume it helps parallel reads)
     private final ConcurrentMap<SModelId, SModel> myIdToModelMap = new ConcurrentHashMap<>();
@@ -69,12 +69,12 @@ public abstract class SModuleBase implements SModule {
       synchronized (getLock()) {
         myElements.clear();
         myIdToModelMap.clear();
-        myModelSetState = ModelSetState.EMPTY;
+        myModelSetState = ModelSetState.INCOMPLETE;
       }
     }
     void initEnter() {
       synchronized (getLock()) {
-        assert myModelSetState == ModelSetState.EMPTY;
+        assert myModelSetState == ModelSetState.INCOMPLETE;
         myModelSetState = ModelSetState.INITIALISE;
       }
     }
@@ -84,11 +84,22 @@ public abstract class SModuleBase implements SModule {
         myModelSetState = ModelSetState.READY;
       }
     }
+    void markIncomplete() {
+      synchronized (getLock()) {
+        myModelSetState = ModelSetState.INCOMPLETE;
+      }
+    }
     boolean isReady() {
       synchronized (getLock()) {
         return myModelSetState == ModelSetState.READY;
       }
     }
+    boolean isInitializing() {
+      synchronized (getLock()) {
+        return myModelSetState == ModelSetState.INITIALISE;
+      }
+    }
+
 
     boolean contains(SModel model) {
       synchronized (getLock()) {
@@ -143,7 +154,7 @@ public abstract class SModuleBase implements SModule {
   //todo [MM] this will be possible when stub node ids do not contain return values
   public final List<SModel> getModels() {
     assertCanRead();
-    if (myCachedModelsList == null) {
+    if (myCachedModelsList == null || !myModels.isReady()) {
       // I don't care to initialize/sort twice in parallel reads, either list is the same
       ensureModelsReady();
       final List<SModel> list = myModels.asList();
@@ -320,9 +331,13 @@ public abstract class SModuleBase implements SModule {
     return myModels.get(id);
   }
 
+  protected final void markModelsIncomplete() {
+    myModels.markIncomplete();
+    myCachedModelsList = null;
+  }
   protected final void ensureModelsReady() {
     synchronized (myModels.getLock()) {
-      if (!myModels.isReady()) {
+      if (!myModels.isReady() && !myModels.isInitializing()) {
         myModels.initEnter();
         ensureModelsReady0();
         myModels.initExit();
