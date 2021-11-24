@@ -42,6 +42,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Objects;
@@ -163,6 +165,8 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
 
     myIdToModuleMap.put(moduleToRegister.getModuleId(), moduleToRegister);
     myModules.add(moduleToRegister);
+    // XXX for now, decided to let AbstractModule.attach to control whether it has incomplete model set; although might be reasonable
+    //     to keep this logic here, without the need for markIncompleteModelSet() callback or an SRepositoryListener notifications?
 
     checkModelsAreNotChanged(aModuleToRegister);
     aModuleToRegister.attach(this);
@@ -249,6 +253,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     boolean remove = myModuleToOwners.getByFirst(module).isEmpty();
     if (remove) {
       fireBeforeModuleRemoved(module);
+      myIncompleteModelLoad.forget(module);
       myModules.remove(module);
       myIdToModuleMap.remove(module.getModuleReference().getModuleId());
       return true;
@@ -294,7 +299,17 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   public SModel getModel(@NotNull SModelId modelId) {
     if (modelId.isGloballyUnique()) {
       //noinspection deprecation
-      return myModelRepository.getModelDescriptor(modelId);
+      final SModel md = myModelRepository.getModelDescriptor(modelId);
+      if (md == null) {
+        SModule peek;
+        while ((peek = myIncompleteModelLoad.removeAny()) != null) {
+          final SModel model = peek.getModel(modelId);
+          if (model != null) {
+            return model;
+          }
+        }
+      }
+      return md;
     }
     return super.getModel(modelId);
   }
@@ -304,6 +319,12 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
   public void invalidateCaches() {
     // used to invalidate ModuleScope, but since it's gone, does this method make any sense?
     // left empty for now as its uses record places we need to pay attention to (e.g. if we need to drop some caches in the future)
+  }
+
+  private final GuardedSet<SModule> myIncompleteModelLoad = new GuardedSet<>();
+  @Override
+  public void markIncompleteModelSet(SModule module) {
+    myIncompleteModelLoad.offer(module);
   }
 
   //------------------listeners--------------------
@@ -401,6 +422,33 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     public Scope ofModel(@NotNull SModel model, @NotNull Object equalityKey, @NotNull Function<SModel, Scope> factory) {
       final Map<SModel, Scope> modelScopeMap = myScopeCache.computeIfAbsent(equalityKey, k -> new HashMap<>());
       return modelScopeMap.computeIfAbsent(model, factory);
+    }
+  }
+
+  private static class GuardedSet<V> {
+    private final Set<V> myElements = new HashSet<>();
+
+    void forget(V element) {
+      synchronized (myElements) {
+        myElements.remove(element);
+      }
+    }
+    @Nullable
+    V removeAny() {
+      synchronized (myElements) {
+        final Iterator<V> it = myElements.iterator();
+        if (it.hasNext()) {
+          final V rv = it.next();
+          it.remove();
+          return rv;
+        }
+        return null;
+      }
+    }
+    void offer(V element) {
+      synchronized (myElements) {
+        myElements.add(element);
+      }
     }
   }
 }

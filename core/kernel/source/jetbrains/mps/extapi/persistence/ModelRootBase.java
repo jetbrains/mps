@@ -202,6 +202,7 @@ public abstract class ModelRootBase implements ModelRoot {
     assertCanChange();
     SModuleBase module = (SModuleBase) getModule();
     assert module != null;
+    //I'd like to do module.doUpdateModelsSet() instead of LegacyModelDiscoveryDelta, but need AM
     final LegacyModelDiscoveryDelta mdd = new LegacyModelDiscoveryDelta(module);
     doLoadModels(mdd);
     mdd.apply();

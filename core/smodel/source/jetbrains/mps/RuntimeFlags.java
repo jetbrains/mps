@@ -34,6 +34,7 @@ public final class RuntimeFlags {
   private static Boolean ourLegacyJavaCompiler = null;
   private static Boolean ourLegacyModuleMaker = null; // false by default
   private static Boolean ourModuleActivators = null;
+  private static Boolean ourLegacyLoadModels = null; // has to become false by default if my testing proves it ok
 
   private RuntimeFlags() {
   }
@@ -158,5 +159,20 @@ public final class RuntimeFlags {
       ourModuleActivators = val == null || Boolean.parseBoolean(val);
     }
     return ourModuleActivators;
+  }
+
+  /**
+   * experimental support not to load complete model set when module is attached to a repository
+   * (rather loaded on demand, when ModelReference.resolve() needs it)
+   */
+  public static boolean modelsLoadedOnModuleAttach() {
+    if (ourLegacyLoadModels == null) {
+      final String val = System.getProperty("mps.models.force");
+      // default false for testing purposes
+      ourLegacyLoadModels = Boolean.parseBoolean(val);
+      // if I don't want to enable it in release, uncomment the next line
+      // ourLegacyLoadModels = val == null || Boolean.parseBoolean(val);
+    }
+    return ourLegacyLoadModels;
   }
 }

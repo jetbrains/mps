@@ -37,6 +37,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public abstract class SModuleBase implements SModule {
@@ -47,7 +48,79 @@ public abstract class SModuleBase implements SModule {
 
   private final List<SModuleListener> myListeners = new CopyOnWriteArrayList<>();
 
-  private final Set<SModel> myModels = new LinkedHashSet<>();
+  private final GuardedModels myModels = new GuardedModels();
+
+  private enum ModelSetState {
+    EMPTY, INITIALISE, READY
+  }
+
+  private static class GuardedModels {
+    private final Set<SModel> myElements = new LinkedHashSet<>();
+    private /*volatile?*/ ModelSetState myModelSetState = ModelSetState.EMPTY;
+    // FIXME with myElements being guarded by synchronized lock, do I need to guard this by same lock or concurrent map is the way to go
+    //       (I assume it helps parallel reads)
+    private final ConcurrentMap<SModelId, SModel> myIdToModelMap = new ConcurrentHashMap<>();
+
+    Object getLock() {
+      return this;
+    }
+
+    void clear() {
+      synchronized (getLock()) {
+        myElements.clear();
+        myIdToModelMap.clear();
+        myModelSetState = ModelSetState.EMPTY;
+      }
+    }
+    void initEnter() {
+      synchronized (getLock()) {
+        assert myModelSetState == ModelSetState.EMPTY;
+        myModelSetState = ModelSetState.INITIALISE;
+      }
+    }
+    void initExit() {
+      synchronized (getLock()) {
+        assert myModelSetState == ModelSetState.INITIALISE;
+        myModelSetState = ModelSetState.READY;
+      }
+    }
+    boolean isReady() {
+      synchronized (getLock()) {
+        return myModelSetState == ModelSetState.READY;
+      }
+    }
+
+    boolean contains(SModel model) {
+      synchronized (getLock()) {
+        return myElements.contains(model);
+      }
+    }
+    void add(SModel model) {
+      synchronized (getLock()) {
+        myElements.add(model);
+        myIdToModelMap.put(model.getModelId(), model);
+      }
+    }
+    void remove(SModel model) {
+      synchronized (getLock()) {
+        myElements.remove(model);
+        myIdToModelMap.remove(model.getModelId());
+      }
+    }
+    List<SModel> asList() {
+      synchronized (getLock()) {
+        return new ArrayList<>(myElements);
+      }
+    }
+    void forEach(Consumer<SModel> it) {
+      synchronized (getLock()) {
+        myElements.forEach(it);
+      }
+    }
+    SModel get(SModelId modelId) {
+      return myIdToModelMap.get(modelId);
+    }
+  }
 
   /**
    * Sorted (!) list of models we return from {@link #getModels}, discarded on any change to myModels.
@@ -55,7 +128,6 @@ public abstract class SModuleBase implements SModule {
    * Perhaps, worth a better fix in 2019/master, just need to come up with a better alternative.
    */
   private List<SModel> myCachedModelsList;
-  private final ConcurrentMap<SModelId, SModel> myIdToModelMap = new ConcurrentHashMap<>();
 
   protected SModuleBase() {
   }
@@ -73,7 +145,8 @@ public abstract class SModuleBase implements SModule {
     assertCanRead();
     if (myCachedModelsList == null) {
       // I don't care to initialize/sort twice in parallel reads, either list is the same
-      final ArrayList<SModel> list = new ArrayList<>(myModels);
+      ensureModelsReady();
+      final List<SModel> list = myModels.asList();
       list.sort(MODEL_BY_NAME_COMPARATOR);
       myCachedModelsList = Collections.unmodifiableList(list);
     }
@@ -88,25 +161,24 @@ public abstract class SModuleBase implements SModule {
     repo.getModelAccess().checkWriteAccess();
 
     myRepository = repo;
-    for (SModel m : myModels) {
+    myModels.forEach(m -> {
       if (m instanceof SModelBase) {
         ((SModelBase) m).attach(repo);
       }
-    }
+    });
   }
 
   public void dispose() {
     assert myRepository != null;
     assertCanChange();
 
-    for (SModel m : myModels) {
+    myModels.forEach(m -> {
       if (m instanceof SModelBase) {
         ((SModelBase) m).detach();
       }
-    }
-    myModels.clear();
+    });
+    myModels.clear(); // XXX may want to combine forEach+clear under single synchronized(myModels.getLock())
     myCachedModelsList = null;
-    myIdToModelMap.clear();
     myRepository = null;
   }
 
@@ -244,7 +316,24 @@ public abstract class SModuleBase implements SModule {
     // new resolveInDependencies(SModelReference)
     assertCanRead();
 
-    return myIdToModelMap.get(id);
+    ensureModelsReady();
+    return myModels.get(id);
+  }
+
+  protected final void ensureModelsReady() {
+    synchronized (myModels.getLock()) {
+      if (!myModels.isReady()) {
+        myModels.initEnter();
+        ensureModelsReady0();
+        myModels.initExit();
+        assert myModels.isReady();
+      }
+    }
+  }
+
+  // subclasses that may get models loaded on request shall override the method
+  // it got proper locks, subclasses just need to populate models
+  protected void ensureModelsReady0() {
   }
 
   public void registerModel(SModelBase model) {
@@ -268,40 +357,39 @@ public abstract class SModuleBase implements SModule {
 
   // eventually to replace pair of registerModel(SModelBase)/unregisterModel(SModelBase)
   protected final void changeModelSet(Collection<? extends SModel> add, Collection<? extends SModel> forget) {
-    assertCanChange();
+    synchronized (myModels.getLock()) {
 
-    // FIXME at the moment, while it's private api, we just silently ignore bad arguments, there are checks outside this code;
-    //       however, once public, have to decide on proper error strategy (not sure if exception is the right way)
-    Collection<SModel> filteredAdd = add.stream().filter(m -> m.getModule() == null || m.getModule() == SModuleBase.this).collect(Collectors.toList());
-    Collection<SModel> filteredForget = forget.stream().filter(m -> m.getModule() == SModuleBase.this).collect(Collectors.toList());
-    Collection<SModelReference> filteredForgetRefs = filteredForget.stream().map(SModel::getReference).collect(Collectors.toList());
+      // FIXME at the moment, while it's private api, we just silently ignore bad arguments, there are checks outside this code;
+      //       however, once public, have to decide on proper error strategy (not sure if exception is the right way)
+      Collection<SModel> filteredAdd = add.stream().filter(m -> m.getModule() == null || m.getModule() == SModuleBase.this).collect(Collectors.toList());
+      Collection<SModel> filteredForget = forget.stream().filter(m -> m.getModule() == SModuleBase.this).collect(Collectors.toList());
+      Collection<SModelReference> filteredForgetRefs = filteredForget.stream().map(SModel::getReference).collect(Collectors.toList());
 
-    myCachedModelsList = null;
-    for (SModel model : filteredAdd) {
-      myModels.add(model);
-      myIdToModelMap.put(model.getModelId(), model);
-      if (model instanceof SModelBase) {
-        // Generally, any model is expected to be SModelBase, so that we can attach and setModule(),
-        // but I can imagine models that know their module at creation time and could
-        // live w/o 'attach' notification (e.g. @descriptor)
-        if (myRepository != null) {
-          ((SModelBase) model).attach(myRepository);
+      myCachedModelsList = null;
+      for (SModel model : filteredAdd) {
+        myModels.add(model);
+        if (model instanceof SModelBase) {
+          // Generally, any model is expected to be SModelBase, so that we can attach and setModule(),
+          // but I can imagine models that know their module at creation time and could
+          // live w/o 'attach' notification (e.g. @descriptor)
+          if (myRepository != null) {
+            ((SModelBase) model).attach(myRepository);
+          }
+          ((SModelBase) model).setModule(this); // XXX perhaps, ModelRoot could do this for us, instead?
         }
-        ((SModelBase) model).setModule(this); // XXX perhaps, ModelRoot could do this for us, instead?
       }
-    }
 
-    filteredForget.forEach(this::fireBeforeModelRemoved); // FIXME collection down there
-    filteredForgetRefs.forEach(reference -> myIdToModelMap.remove(reference.getModelId()));
-    for (SModel model : filteredForget) {
-      myModels.remove(model);
-      if (model instanceof SModelBase) {
-        ((SModelBase) model).detach(); // 'detach' is confusing as an act/verb; in fact it's 'onDetach' notification
+      filteredForget.forEach(this::fireBeforeModelRemoved); // FIXME collection down there
+      for (SModel model : filteredForget) {
+        myModels.remove(model);
+        if (model instanceof SModelBase) {
+          ((SModelBase) model).detach(); // 'detach' is confusing as an act/verb; in fact it's 'onDetach' notification
+        }
       }
-    }
 
-    filteredAdd.forEach(this::fireModelAdded); // FIXME fireModelAdded to take collection
-    filteredForgetRefs.forEach(this::fireModelRemoved); // FIXME same
+      filteredAdd.forEach(this::fireModelAdded); // FIXME fireModelAdded to take collection
+      filteredForgetRefs.forEach(this::fireModelRemoved); // FIXME same
+    }
   }
 
   protected void assertCanRead() {

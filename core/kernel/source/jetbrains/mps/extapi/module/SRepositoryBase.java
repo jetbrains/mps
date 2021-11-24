@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -74,6 +74,17 @@ public abstract class SRepositoryBase implements SRepository {
       return null;
     }
     return StreamSupport.stream(getModules().spliterator(), false).map(m -> m.getModel(modelId)).filter(Objects::nonNull).findFirst().orElse(null);
+  }
+
+
+  // XXX perhaps, has to be part of a separate interface (like SRepoExt), not in this base class
+  // this is a quick'n'dirty alternative to SRepositoryListener methods like modelSetIncomplete/modelSetComplete;
+  // once the approach proves itself, perhaps, I'll stick to MPSModuleRepository being completely responsible for markIncompleteModelSet()
+  public void markIncompleteModelSet(/*not null*/ SModule module) {
+    // base repo impl provides no support for incomplete modules.
+    // Perhaps, could force model loading, instead (i.e. with module.getModels() call)
+    // However, decided that getModel(ModelId) implementation, above, is aligned with 'incomplete' modules, as it walks all modules
+    // and asks them for a model, triggering model load, if necessary, hence no-op here.
   }
 
   @Override

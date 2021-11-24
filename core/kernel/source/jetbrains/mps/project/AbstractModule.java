@@ -15,11 +15,13 @@
  */
 package jetbrains.mps.project;
 
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.extapi.module.ModelDiscoveryDelta;
 import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.extapi.module.SModuleBase;
+import jetbrains.mps.extapi.module.SRepositoryBase;
 import jetbrains.mps.extapi.persistence.ModelRootBase;
 import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.persistence.MementoImpl;
@@ -440,10 +442,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   protected void reloadAfterDescriptorChange() {
-    initFacetsAndModels();
-  }
-
-  private void initFacetsAndModels() {
     updateFacets();
     updateModelsSet();
   }
@@ -596,7 +594,15 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   @Override
   public void attach(@NotNull SRepository repository) {
     super.attach(repository);
-    initFacetsAndModels();
+    updateFacets();
+    if (RuntimeFlags.modelsLoadedOnModuleAttach()) {
+      updateModelsSet(); // refresh model roots and load models
+    } else {
+      doUpdateModelRoots(); // just roots
+      if (repository instanceof SRepositoryBase) {
+        ((SRepositoryBase) repository).markIncompleteModelSet(this);
+      }
+    }
   }
 
   @Override
@@ -630,9 +636,9 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     return new ArrayList<>(SModuleOperations.getAllSourcePaths(this));
   }
 
-  public void updateModelsSet() {
+  public final void updateModelsSet() {
     doUpdateModelRoots();
-    doUpdateModelsSet();
+    ensureModelsReady(); // == doUpdateModelsSet(), guarded with myModels lock
   }
 
   protected Iterable<ModelRoot> loadRoots() {
@@ -706,9 +712,16 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     }
   }
 
+
+  @Override
+  protected void ensureModelsReady0() {
+    doUpdateModelsSet();
+  }
+
   // takes known set of model roots and updates set of module's models based on these model roots
   private void doUpdateModelsSet() {
-    assertCanChange(); // FIXME model read + separate lock for models
+    // assertCanChange(); // FIXME model read + separate lock for models
+    assertCanRead(); // guard access to mySModelRoots
 
     class MDD implements ModelDiscoveryDelta {
       private final ArrayList<SModel> in = new ArrayList<>();
