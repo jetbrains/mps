@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.extapi.module;
 
-import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.extapi.model.SModelBase;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -41,7 +40,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-public abstract class SModuleBase implements SModule {
+public abstract class SModuleBase implements SModule, SModuleExt {
   private static final Logger LOG = LogManager.getLogger(SModuleBase.class);
   private static final Comparator<SModel> MODEL_BY_NAME_COMPARATOR = Comparator.comparing(m -> m.getName().getValue());
 
@@ -163,6 +162,16 @@ public abstract class SModuleBase implements SModule {
       myCachedModelsList = Collections.unmodifiableList(list);
     }
     return myCachedModelsList;
+  }
+
+  /*s
+   * INTERNAL API, DON'T USE OUTSIDE OF MPS IMPLEMENTATION
+   */
+  @Override
+  public void forEachRegisteredModel(Consumer<? super SModel> c) {
+    assertCanRead();
+    final List<SModel> list = myModels.asList();
+    list.forEach(c);
   }
 
   public void attach(@NotNull SRepository repo) {

@@ -15,6 +15,7 @@
  */
 package org.jetbrains.mps.openapi.module;
 
+import jetbrains.mps.extapi.module.SModuleExt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.event.SNodeAddEvent;
 import org.jetbrains.mps.openapi.event.SNodeReadEvent;
@@ -34,7 +35,7 @@ import org.jetbrains.mps.openapi.model.SNodeChangeListener;
  * This class serves as a convenient implementation of all repository listeners at once.
  * In addition it tracks all objects (modules, models and nodes) as they come and leave the repository.
  */
-public class SRepositoryContentAdapter extends SModuleListenerBase implements
+public class SRepositoryContentAdapter implements
     SModelListener, SModuleListener, SRepositoryListener, SRepositoryAttachListener, SNodeChangeListener, SNodeAccessListener {
 
   protected SRepositoryContentAdapter() {
@@ -68,15 +69,23 @@ public class SRepositoryContentAdapter extends SModuleListenerBase implements
   protected void startListening(SModule module) {
     if (!isIncluded(module)) return;
     module.addModuleListener(this);
-    for (SModel model : module.getModels()) {
-      startListening(model);
+    if (module instanceof SModuleExt) {
+      ((SModuleExt) module).forEachRegisteredModel(this::startListening);
+    } else {
+      for (SModel model : module.getModels()) {
+        startListening(model);
+      }
     }
   }
 
   protected void stopListening(SModule module) {
     // it's not very nice to stop listening models of any module, even the one we didn't include this module in startListening(SModule), but who cares
-    for (SModel model : module.getModels()) {
-      stopListening(model);
+    if (module instanceof SModuleExt) {
+      ((SModuleExt) module).forEachRegisteredModel(this::stopListening);
+    } else {
+      for (SModel model : module.getModels()) {
+        stopListening(model);
+      }
     }
     module.removeModuleListener(this);
   }

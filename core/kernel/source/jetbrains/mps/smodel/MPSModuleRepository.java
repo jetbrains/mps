@@ -178,13 +178,12 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
 
   // Adding not saved model can cause data loss, see MPS-18743.
   private void checkModelsAreNotChanged(AbstractModule aModuleToRegister) {
-    for (org.jetbrains.mps.openapi.model.SModel model : aModuleToRegister.getModels()) {
+    aModuleToRegister.forEachRegisteredModel(model -> {
       if (model instanceof EditableSModel && ((EditableSModel) model).isChanged()) {
         LOG.error("Added a module with unsaved model to a repository. " +
-            "Modify models that are not added to a module or modify them when they are in repo already", new Throwable());
-        break;
+                  "Modify models that are not added to a module or modify them when they are in repo already", new Throwable());
       }
-    }
+    });
   }
 
   /**
