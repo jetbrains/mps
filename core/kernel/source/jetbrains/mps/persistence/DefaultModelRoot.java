@@ -15,6 +15,8 @@
  */
 package jetbrains.mps.persistence;
 
+import jetbrains.mps.extapi.model.SModelBase;
+import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.persistence.CopyNotSupportedException;
 import jetbrains.mps.extapi.persistence.CopyableModelRoot;
 import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
@@ -39,6 +41,7 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelName;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import org.jetbrains.mps.openapi.persistence.MFProblem;
 import org.jetbrains.mps.openapi.persistence.Memento;
@@ -333,8 +336,22 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
         // but doesn't hurt to force it here anyway.
         ((EditableSModel) model).setChanged(true);
       }
+      // associate with the root regardless of 'register' request.
+      // btw, why would anyone care to create a model through MR and not register it?
+      if (model instanceof SModelBase) {
+        ((SModelBase) model).setModelRoot(this);
+      }
       if (register) {
-        registerModel(model);
+        final SModule module = getModule();
+        if (module instanceof SModuleBase) {
+          // XXX it's odd code (no-op if not instanceof), but eventually I plan to lift restriction to register SModelBase
+          // (need to expose changeModelSet())
+          if (model instanceof SModelBase) {
+            ((SModuleBase) module).registerModel((SModelBase) model);
+          }
+        } else {
+          throw new ModelCannotBeCreatedException(String.format("Model registration requested but module %s doesn't support this", module));
+        }
       }
       return model;
     } catch (IOException | ModelCreationException e) {

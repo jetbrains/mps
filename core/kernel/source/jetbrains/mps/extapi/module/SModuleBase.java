@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.extapi.module;
 
+import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.extapi.model.SModelBase;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -366,6 +367,12 @@ public abstract class SModuleBase implements SModule {
     assertCanChange();
     if (model.getModule() != this) {
       throw new IllegalArgumentException(String.format("Model `%s' is registered elsewhere.", model.getName()));
+    }
+    if (model instanceof EditableSModelBase && ((EditableSModelBase) model).isChanged()) {
+      // I don't think it's the proper place for the check, but ModelRootBase.unregisterModel was worse
+      // Perhaps, it has to be update() code where it used to be, not unregister().
+      ((EditableSModelBase) model).resolveDiskConflict();
+      return;
     }
     changeModelSet(Collections.emptyList(), Collections.singleton(model));
   }

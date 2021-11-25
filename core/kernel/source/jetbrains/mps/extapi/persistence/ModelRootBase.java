@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.extapi.persistence;
 
-import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.module.ModelDiscoveryDelta;
 import jetbrains.mps.extapi.module.SModuleBase;
@@ -154,40 +153,6 @@ public abstract class ModelRootBase implements ModelRoot {
   }
 
   /**
-   * @param model is the model to be registered here as well as in the enclosing module.
-   */
-  protected final void registerModel(@NotNull SModel model) {
-    SModuleBase module = (SModuleBase) getModule();
-    assert module != null;
-    assert module.getModel(model.getModelId()) == null;
-
-    if (model instanceof SModelBase) {
-      module.registerModel((SModelBase) model);
-      ((SModelBase) model).setModelRoot(this);
-    }
-  }
-
-  /**
-   * FIXME Faulty code is written here, we must not listen to the module events rather invoke this method right in the module class
-   *       Though we don't listen to module events any longer, the code still needs an update
-   */
-  private void unregisterModel(@NotNull SModel model) {
-    SModuleBase module = (SModuleBase) getModule();
-    assert module != null;
-    assert module.getModel(model.getModelId()) != null;
-    if (model instanceof SModelBase) {
-      ((SModelBase) model).setModelRoot(null);
-    }
-    if (model instanceof EditableSModelBase && ((EditableSModelBase) model).isChanged()) {
-      ((EditableSModelBase) model).resolveDiskConflict();
-    } else {
-      if (model instanceof SModelBase) {
-        module.unregisterModel((SModelBase) model);
-      }
-    }
-  }
-
-  /**
    * IMPORTANT API METHOD
    *
    * Tricky logic which is forced onto all of subclasses.
@@ -300,10 +265,19 @@ public abstract class ModelRootBase implements ModelRoot {
       model.unload();
     }
     public void registerModel(SModel model) {
-      ModelRootBase.this.registerModel(model);
+      assert module.getModel(model.getModelId()) == null;
+
+      if (model instanceof SModelBase) {
+        module.registerModel((SModelBase) model);
+        ((SModelBase) model).setModelRoot(ModelRootBase.this);
+      }
     }
     public void unregisterModel(SModel model) {
-      ModelRootBase.this.unregisterModel(model);
+      assert module.getModel(model.getModelId()) != null;
+      if (model instanceof SModelBase) {
+        ((SModelBase) model).setModelRoot(null);
+        module.unregisterModel((SModelBase) model);
+      }
     }
     void apply() {
       // no-op
