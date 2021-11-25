@@ -80,7 +80,7 @@ final class InspectorToolWindowFixer {
 
   private String calcActiveToolWindowId(ToolWindowManagerEx toolWindowManager) {
     ToolWindow[] data = myDataContext.getData(PlatformDataKeys.LAST_ACTIVE_TOOL_WINDOWS);
-    if (data.length > 0) {
+    if (data != null && data.length > 0) {
       return data[0].getId();
     }
     LogManager.getLogger(InspectorToolWindowFixer.class).warn("no active tool windows");
