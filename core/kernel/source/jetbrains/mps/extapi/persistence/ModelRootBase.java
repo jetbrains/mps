@@ -153,6 +153,12 @@ public abstract class ModelRootBase implements ModelRoot {
   }
 
   /**
+   * @deprecated equivalent to {@link SModuleBase#updateModelsSet()} call, use that one directly
+   *
+   * ModelRoot serves as a source for models, and logic to keep set of SModule's models up-to-date is not part of the MR responsibility.
+   * At the moment, we still keep this logic in #doLoadModels in this class, although it is to move into independent class eventually.
+   *
+   *
    * IMPORTANT API METHOD
    *
    * Tricky logic which is forced onto all of subclasses.
@@ -163,14 +169,12 @@ public abstract class ModelRootBase implements ModelRoot {
    * the client of this class (and its subclasses) has to cast his <code>ModelRoot</code> to <code>ModelRootBase</code>
    * every time he wants to reload the models from their data sources.
    */
+  @Deprecated
   public void update() {
     assertCanChange();
     SModuleBase module = (SModuleBase) getModule();
     assert module != null;
-    //I'd like to do module.doUpdateModelsSet() instead of LegacyModelDiscoveryDelta, but need AM
-    final LegacyModelDiscoveryDelta mdd = new LegacyModelDiscoveryDelta(module);
-    doLoadModels(mdd);
-    mdd.apply();
+    module.updateModelsSet();
   }
 
   // FIXME this seems to be an MR-independent code, close friend class to SModuleBase that is capable to take models loaded by a MR and
@@ -244,43 +248,5 @@ public abstract class ModelRootBase implements ModelRoot {
   @Override
   public String toString() {
     return "(" + getType() + ") " + getPresentation();
-  }
-
-  // WIP: towards batch model registration/un-registration under SModule's control
-  //      ModelRoot would serve as a mere source of models (one of many possible for a module, including other roots and direct
-  //      registration of a model w/o MR)
-  class LegacyModelDiscoveryDelta implements ModelDiscoveryDelta {
-    private final SModuleBase module;
-
-    LegacyModelDiscoveryDelta(SModuleBase module) {
-      this.module = module;
-    }
-
-    @Override
-    public SModuleBase module() {
-      return this.module;
-    }
-
-    public void unload(SModel model) {
-      model.unload();
-    }
-    public void registerModel(SModel model) {
-      assert module.getModel(model.getModelId()) == null;
-
-      if (model instanceof SModelBase) {
-        module.registerModel((SModelBase) model);
-        ((SModelBase) model).setModelRoot(ModelRootBase.this);
-      }
-    }
-    public void unregisterModel(SModel model) {
-      assert module.getModel(model.getModelId()) != null;
-      if (model instanceof SModelBase) {
-        ((SModelBase) model).setModelRoot(null);
-        module.unregisterModel((SModelBase) model);
-      }
-    }
-    void apply() {
-      // no-op
-    }
   }
 }

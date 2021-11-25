@@ -368,12 +368,6 @@ public abstract class SModuleBase implements SModule {
     if (model.getModule() != this) {
       throw new IllegalArgumentException(String.format("Model `%s' is registered elsewhere.", model.getName()));
     }
-    if (model instanceof EditableSModelBase && ((EditableSModelBase) model).isChanged()) {
-      // I don't think it's the proper place for the check, but ModelRootBase.unregisterModel was worse
-      // Perhaps, it has to be update() code where it used to be, not unregister().
-      ((EditableSModelBase) model).resolveDiskConflict();
-      return;
-    }
     changeModelSet(Collections.emptyList(), Collections.singleton(model));
   }
 
@@ -412,6 +406,15 @@ public abstract class SModuleBase implements SModule {
       filteredAdd.forEach(this::fireModelAdded); // FIXME fireModelAdded to take collection
       filteredForgetRefs.forEach(this::fireModelRemoved); // FIXME same
     }
+  }
+
+  /**
+   * Mechanism to notify module implementation it needs to refresh its models, provided models
+   * come from an external source this module is aware of (e.g. ModelRoot). For modules that
+   * don't use external sources for models, and rely on direct model registration, this is no-op.
+   */
+  public void updateModelsSet() {
+    // no-op
   }
 
   protected void assertCanRead() {

@@ -31,6 +31,10 @@ import jetbrains.mps.extapi.persistence.DefaultSourceRoot;
 import java.util.Iterator;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import jetbrains.mps.extapi.module.ModelDiscoveryDelta;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
+import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.util.FileUtil;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import jetbrains.mps.persistence.MementoImpl;
@@ -138,10 +142,33 @@ public class JavaToMpsUtils {
 
   public void checkStubModels(IFile dirPath, SModelReference... expected) {
     JavaSourceStubModelRoot mr = new JavaSourceStubModelRoot();
-    mr.setModule((SModuleBase) getModule());
+    final SModuleBase moduleBase = (SModuleBase) getModule();
+    mr.setModule(moduleBase);
     mr.addSourceRoot(SourceRootKinds.SOURCES, new DefaultSourceRoot(dirPath));
     mr.attach();
-    mr.update();
+    // would love to use SModuleBase.updateModelsSet() but with MR not contributed through
+    // as module descriptor, updateModelsSet() could not pick it up. Perhaps, it's worth to change 
+    // this code to modify ModuleDescriptor instead?
+    mr.doLoadModels(new ModelDiscoveryDelta() {
+      @Override
+      public SModule module() {
+        return moduleBase;
+      }
+      @Override
+      public void unload(SModel p1) {
+        throw new UnsupportedOperationException();
+      }
+      @Override
+      public void registerModel(SModel model, @Nullable ModelRoot root) {
+        // mr.getModels(), below, requires model root to be set
+        ((SModelBase) model).setModelRoot(root);
+        moduleBase.registerModel((SModelBase) model);
+      }
+      @Override
+      public void unregisterModel(SModel p1) {
+        throw new UnsupportedOperationException();
+      }
+    });
 
     List<SModel> models = ListSequence.fromList(new ArrayList<SModel>());
     for (SModel md : ListSequence.fromList(mr.getModels())) {

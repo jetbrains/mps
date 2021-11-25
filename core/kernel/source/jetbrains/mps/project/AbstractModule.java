@@ -16,6 +16,7 @@
 package jetbrains.mps.project;
 
 import jetbrains.mps.RuntimeFlags;
+import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.extapi.module.ModelDiscoveryDelta;
@@ -644,6 +645,9 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
             model.getName() + "'. To prevent data loss, MPS will not update models in this module. " +
             "Please save your work and restart MPS. See MPS-18743 for details."
         );
+        if (model instanceof EditableSModelBase) {
+          ((EditableSModelBase) model).resolveDiskConflict();
+        }
         return;
       }
     }

@@ -16,6 +16,7 @@
 package jetbrains.mps.extapi.persistence;
 
 import jetbrains.mps.extapi.module.EditableSModule;
+import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.MementoWithFS;
 import jetbrains.mps.util.FileUtil;
@@ -31,6 +32,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
@@ -38,8 +40,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static java.util.Arrays.asList;
-import static java.util.Collections.unmodifiableList;
 import static jetbrains.mps.util.FileUtil.getAbsolutePath;
 import static jetbrains.mps.util.FileUtil.getUnixPath;
 
@@ -258,10 +258,16 @@ public abstract class FileBasedModelRoot extends ModelRootBase implements FileEv
       // XXX not sure there's any reason to update MR if it's not part of any accessible model structure
       return;
     }
+    final SModule module = getModule();
+    if (false == module instanceof SModuleBase) {
+      // nothing we can do about modules we don't know how to refresh
+      return;
+    }
+    // XXX perhaps, it has to be SModule impl to react to FS changes, not MR?
     if (!event.getCreated().isEmpty() || !event.getRemoved().isEmpty()) {
       // indeed, it's not nice to have distinct model writes for each model root, still it's better
       // than global model write in a reload manager (which is not even FS aware, let alone FS-Model relation aware.
-      getRepository().getModelAccess().runWriteAction(this::update);
+      getRepository().getModelAccess().runWriteAction(((SModuleBase) module)::updateModelsSet);
     }
   }
 
