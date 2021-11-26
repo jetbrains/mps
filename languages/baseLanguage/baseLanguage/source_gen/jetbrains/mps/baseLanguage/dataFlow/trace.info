@@ -1931,26 +1931,62 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5218334018278921421">
     <file name="ConditionUtil.java">
-      <node id="3026370834486441220" at="17,130,18,18" concept="10" />
-      <node id="4652712389471554179" at="19,5,20,164" concept="9" />
-      <node id="4652712389471554196" at="21,56,22,48" concept="10" />
-      <node id="4652712389471554202" at="23,12,24,18" concept="10" />
-      <node id="5218334018278921421" at="29,0,30,0" concept="13" trace="Expression$mB" />
-      <node id="4652712389471554200" at="23,10,25,5" concept="1" />
-      <node id="3026370834486436804" at="16,58,19,5" concept="7" />
-      <node id="4652712389471554194" at="20,164,25,5" concept="7" />
-      <node id="4652712389471554171" at="16,0,27,0" concept="14" trace="getConditionConstant#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Boolean;" />
-      <scope id="3026370834486436806" at="17,130,18,18" />
-      <scope id="4652712389471554195" at="21,56,22,48" />
-      <scope id="4652712389471554201" at="23,12,24,18" />
-      <scope id="4652712389471554172" at="16,58,25,5">
+      <node id="3026370834486441220" at="30,130,31,18" concept="10" />
+      <node id="4652712389471554179" at="32,5,33,164" concept="9" />
+      <node id="4652712389471554196" at="34,56,35,48" concept="10" />
+      <node id="8775741791850766492" at="36,12,37,51" concept="11" />
+      <node id="8775741791848156362" at="38,78,39,151" concept="9" />
+      <node id="8775741791848183912" at="40,509,41,144" concept="9" />
+      <node id="4513394054604067153" at="41,144,42,56" concept="9" />
+      <node id="8775741791849600457" at="42,56,43,69" concept="9" />
+      <node id="8775741791850195488" at="43,69,44,24" concept="9" />
+      <node id="8775741791850205562" at="46,129,47,25" concept="4" />
+      <node id="8775741791850232100" at="50,27,51,221" concept="10" />
+      <node id="4652712389471554202" at="54,7,55,18" concept="10" />
+      <node id="5218334018278921421" at="60,0,61,0" concept="13" trace="Expression$mB" />
+      <node id="5218334018278921421" at="61,0,62,0" concept="13" trace="VariableReference$TC" />
+      <node id="5218334018278921421" at="62,0,63,0" concept="13" trace="StatementList$m_" />
+      <node id="5218334018278921421" at="63,0,64,0" concept="13" trace="BooleanType$_u" />
+      <node id="5218334018278921421" at="67,0,68,0" concept="13" trace="variableDeclaration$N1XG" />
+      <node id="5218334018278921421" at="68,0,69,0" concept="13" trace="initializer$2twD" />
+      <node id="5218334018278921421" at="72,0,73,0" concept="13" trace="isFinal$gvTP" />
+      <node id="3026370834486436804" at="29,58,32,5" concept="7" />
+      <node id="8775741791850112063" at="45,48,48,13" concept="7" />
+      <node id="8775741791850220005" at="49,11,52,11" concept="7" />
+      <node id="8775741791850105725" at="44,24,49,11" concept="6" />
+      <node id="8775741791848156999" at="39,151,53,9" concept="7" />
+      <node id="8775741791848149867" at="37,51,54,7" concept="7" />
+      <node id="4652712389471554200" at="36,10,56,5" concept="1" />
+      <node id="4652712389471554194" at="33,164,56,5" concept="7" />
+      <node id="4652712389471554171" at="29,0,58,0" concept="14" trace="getConditionConstant#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Boolean;" />
+      <scope id="3026370834486436806" at="30,130,31,18" />
+      <scope id="4652712389471554195" at="34,56,35,48" />
+      <scope id="8775741791850112065" at="46,129,47,25" />
+      <scope id="8775741791850220007" at="50,27,51,221" />
+      <scope id="8775741791850105727" at="45,48,48,13" />
+      <scope id="8775741791850105725" at="44,24,49,11">
+        <var name="ins" id="8775741791850105728" />
+      </scope>
+      <scope id="8775741791848157001" at="40,509,52,11">
+        <var name="code" id="8775741791848183913" />
+        <var name="count" id="8775741791850195491" />
+        <var name="instructions" id="8775741791849600458" />
+        <var name="program" id="4513394054604067154" />
+      </scope>
+      <scope id="8775741791848149869" at="38,78,53,9">
+        <var name="variableDeclaration" id="8775741791848156363" />
+      </scope>
+      <scope id="4652712389471554201" at="36,12,55,18" />
+      <scope id="4652712389471554172" at="29,58,56,5">
         <var name="compileTimeConstantValue" id="4652712389471554180" />
       </scope>
-      <scope id="4652712389471554171" at="16,0,27,0">
+      <scope id="4652712389471554171" at="29,0,58,0">
         <var name="expr" id="4652712389471554214" />
       </scope>
-      <unit id="5218334018278921421" at="28,0,31,0" name="jetbrains.mps.baseLanguage.dataFlow.ConditionUtil$CONCEPTS" />
-      <unit id="5218334018278921421" at="11,0,32,0" name="jetbrains.mps.baseLanguage.dataFlow.ConditionUtil" />
+      <unit id="5218334018278921421" at="71,0,74,0" name="jetbrains.mps.baseLanguage.dataFlow.ConditionUtil$PROPS" />
+      <unit id="5218334018278921421" at="66,0,70,0" name="jetbrains.mps.baseLanguage.dataFlow.ConditionUtil$LINKS" />
+      <unit id="5218334018278921421" at="59,0,65,0" name="jetbrains.mps.baseLanguage.dataFlow.ConditionUtil$CONCEPTS" />
+      <unit id="5218334018278921421" at="24,0,75,0" name="jetbrains.mps.baseLanguage.dataFlow.ConditionUtil" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5351203823917419908">
