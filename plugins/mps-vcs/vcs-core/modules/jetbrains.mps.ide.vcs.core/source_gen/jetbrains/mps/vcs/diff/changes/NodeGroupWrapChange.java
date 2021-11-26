@@ -27,6 +27,8 @@ import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/4047500669634631216", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
@@ -183,9 +185,7 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
     }
     SNodeId beforeAnchorId = null;
     SNode beforeAnchor = (beforeAnchorId == null ? null : nodeCopier.getNode(model, beforeAnchorId));
-    for (SNode node : ListSequence.fromList(nodes)) {
-      parent.insertChildBefore(myWrappingGroup.getWrappedLink(), node, beforeAnchor);
-    }
+    insertNodes(nodes, parent, myWrappingGroup.getWrappedLink(), beforeAnchor);
   }
 
   private void unwrapNodes(@NotNull final SModel model, @NotNull NodeCopier nodeCopier) {
@@ -204,9 +204,7 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
     }
     SNodeId beforeAnchorId = ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).last().getNextInsertedNodeId(model);
     SNode beforeAnchor = (beforeAnchorId == null ? null : nodeCopier.getNode(model, beforeAnchorId));
-    for (SNode node : ListSequence.fromList(nodes)) {
-      parent.insertChildBefore(myWrappingGroup.getLink(), node, beforeAnchor);
-    }
+    insertNodes(nodes, parent, myWrappingGroup.getLink(), beforeAnchor);
     ListSequence.fromList(myWrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
       public boolean accept(ModifiedNodesGroup it) {
         return it.isWrappedMove();
@@ -216,6 +214,15 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
         it.setIsApplied(model);
       }
     });
+  }
+
+  private static void insertNodes(List<SNode> nodes, SNode parent, SContainmentLink link, SNode beforeAnchor) {
+    for (SNode node : ListSequence.fromList(nodes)) {
+      // nodes of type ChildAttribute can be inserted to 'smodelAttribute' role only.
+      // still, we want to show the commented nodes in the same changed group with regular nodes, see MPS-26874
+      SContainmentLink actualLink = (node.isInstanceOfConcept(CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : link);
+      parent.insertChildBefore(actualLink, node, beforeAnchor);
+    }
   }
 
   private List<SNode> getUnwrappedNodes(@NotNull SModel model, @NotNull NodeCopier nodeCopier) {
@@ -287,5 +294,13 @@ public final class NodeGroupWrapChange extends HierarchicalNodeGroupChange {
         return MultiTuple.<SNodeId,MessageTarget>from(it.getNodeId(), ((MessageTarget) new NodeMessageTarget()));
       }
     }).toListSequence();
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }
