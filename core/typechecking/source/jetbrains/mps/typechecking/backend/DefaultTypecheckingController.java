@@ -73,10 +73,8 @@ public class DefaultTypecheckingController extends TypecheckingController {
 
   @Override
   protected AuxDataContainer getDataContainer(TypecheckingProvider<?> provider) {
-    if (myActiveSession != null) {
-      return myAuxData.computeIfAbsent(provider, (key) -> provider.createDataContainer(myActiveSession.flags()));
-    }
-    else return null;
+    Flags flags = myActiveSession != null ? myActiveSession.flags() : myDefaultFlags;
+    return myAuxData.computeIfAbsent(provider, (key) -> provider.createDataContainer(flags));
   }
 
   @NotNull
