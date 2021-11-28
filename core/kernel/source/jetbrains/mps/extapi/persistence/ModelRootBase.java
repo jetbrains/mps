@@ -211,7 +211,7 @@ public abstract class ModelRootBase implements ModelRoot {
         if (oldModel.getModelRoot() != this) {
           LOG.warn(String.format("Try loaded model `%s' which has been already contributed by another model root", model));
           mdd.unregisterModel(oldModel);
-          mdd.registerModel(model);
+          mdd.registerModel(model, this);
           continue;
         }
         // oldModel came from the same root. Need to replace its data, don't want to unregister/register as it breaks listener, editor and other clients
@@ -231,10 +231,10 @@ public abstract class ModelRootBase implements ModelRoot {
         // as I don't expect this to be common scenario (pure assumption)
         LOG.debug(String.format("loadModels(`%s') discovered an identical model with data source changed", model));
         mdd.unregisterModel(oldModel);
-        mdd.registerModel(model);
+        mdd.registerModel(model, this);
       } else {
         // oldModel == null; just go ahead and register a newly discovered one
-        mdd.registerModel(model);
+        mdd.registerModel(model, this);
       }
     }
     Collection<SModel> models = new ArrayList<>(getModels());

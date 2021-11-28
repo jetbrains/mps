@@ -125,6 +125,7 @@ public abstract class SModelBase extends SModelDescriptorStub implements SModel 
       myRepository = null;
     }
     fireBeforeModelDisposed(this);
+    setModelRoot(null);
     jetbrains.mps.smodel.SModel model = getCurrentModelInternal();
     if (model != null) {
       // XXX In fact, seems reasonable to call doUnload() here, as subclasses might need to clear their state on detach in

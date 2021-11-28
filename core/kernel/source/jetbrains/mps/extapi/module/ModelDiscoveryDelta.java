@@ -3,8 +3,10 @@
  */
 package jetbrains.mps.extapi.module;
 
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 /**
  * Batch changes in a set of models, intended for use together with {@link jetbrains.mps.extapi.persistence.ModelRootBase}
@@ -18,6 +20,6 @@ public interface ModelDiscoveryDelta {
   // not null
   SModule module();
   void unload(SModel model);
-  void registerModel(SModel model);
+  void registerModel(SModel model, @Nullable ModelRoot source);
   void unregisterModel(SModel model);
 }

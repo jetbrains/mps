@@ -730,14 +730,14 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     class MDD implements ModelDiscoveryDelta {
       private final ArrayList<SModel> in = new ArrayList<>();
       private final ArrayList<SModel> out = new ArrayList<>();
-      private final ModelRoot modelRoot;
 
-      MDD(ModelRoot modelRoot) {
-        this.modelRoot = modelRoot;
+      MDD() {
       }
 
       @Override
       public SModule module() {
+        // FIXME don't need module(), shall extract ModelRootBase.doLoadModels() into separate class and
+        //       pass AM instance into the class, keeping MDD pure collector
         return AbstractModule.this;
       }
 
@@ -747,7 +747,13 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
       }
 
       @Override
-      public void registerModel(SModel model) {
+      public void registerModel(SModel model, @Nullable ModelRoot source) {
+        if (model instanceof SModelBase) {
+          // XXX not 100% sure if setModelRoot() shall be part of model root impl or this code
+          //     seems that it has to be ModelRoot impl but it's not very convenient given there are few calls
+          //     to registerModel(). Decided to keep here for now, re-consider later.
+          ((SModelBase) model).setModelRoot(source);
+        }
         in.add(model);
       }
 
@@ -757,20 +763,13 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
       }
       void apply() {
         AbstractModule.this.changeModelSet(in, out);
-        // FIXME setModelRoot() shall be part of model root impl
-        for (SModel m : out) {
-          ((SModelBase) m).setModelRoot(null);
-        }
-        for (SModel m : in) {
-          ((SModelBase) m).setModelRoot(modelRoot);
-        }
       }
     }
+    MDD mdd = new MDD();
     for (ModelRoot modelRoot : mySModelRoots) {
-      MDD mdd = new MDD(modelRoot);
       ((ModelRootBase) modelRoot).doLoadModels(mdd);
-      mdd.apply();
     }
+    mdd.apply();
   }
 
   // unlike similar method in SModel, doesn't take SRepository now
