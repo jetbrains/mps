@@ -34,6 +34,21 @@ public class ConditionUtil {
     if ((compileTimeConstantValue instanceof Boolean)) {
       return (Boolean) compileTimeConstantValue;
     } else {
+      return null;
+    }
+  }
+
+  /**
+   * Does not call isCompileTimeConstantValue()
+   */
+  public static Boolean getConditionConstantFromCheckingRules(SNode expr) {
+    if (expr == null || SNodeOperations.getModel(expr) == null || !(SNodeOperations.isInstanceOf(expr, CONCEPTS.Expression$mB))) {
+      return null;
+    }
+    Object compileTimeConstantValue = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(expr, SNodeOperations.getModel(expr).getModule());
+    if ((compileTimeConstantValue instanceof Boolean)) {
+      return (Boolean) compileTimeConstantValue;
+    } else {
       // Handle effectively final boolean variables
       if (SNodeOperations.isInstanceOf(expr, CONCEPTS.VariableReference$TC)) {
         SNode variableDeclaration = SLinkOperations.getTarget(SNodeOperations.as(expr, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG);

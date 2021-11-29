@@ -31,7 +31,7 @@ public class check_Expression_NonTypesystemRule extends AbstractNonTypesystemRul
   }
   public void applyRule(final SNode expr, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((SNodeOperations.hasRole(expr, LINKS.condition$5R17) || SNodeOperations.hasRole(expr, LINKS.condition$k0T9) || SNodeOperations.hasRole(expr, LINKS.condition$KEkM) || SNodeOperations.hasRole(expr, LINKS.condition$UPf8) || SNodeOperations.hasRole(expr, LINKS.condition$wARE))) {
-      Boolean conditionConstant = ConditionUtil.getConditionConstant(expr);
+      Boolean conditionConstant = ConditionUtil.getConditionConstantFromCheckingRules(expr);
       if (conditionConstant != null) {
         if ((SNodeOperations.isInstanceOf(SNodeOperations.getParent(expr), CONCEPTS.WhileStatement$Ay) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(expr), CONCEPTS.DoWhileStatement$9p) || SNodeOperations.isInstanceOf(SNodeOperations.getParent(expr), CONCEPTS.ForStatement$qV))) {
           boolean isInfiniteLoop = true;
