@@ -154,19 +154,22 @@ public class NodeMatcherTest {
 
     final SModelReference targetModel = new jetbrains.mps.smodel.SModelReference(null, SModelId.generate(), "M");
     final SNode targetNode = newNode(ourConcept2);
-    final SNodeReference targetNodeRef = new SNodePointer(targetModel, targetNode.getNodeId());
 
     final SNode actualNode = newNode(ourConcept1);
     final SNode actualChild = newNode(ourConcept1);
     actualNode.addChild(ourC1Child1, actualChild);
-    // doesn't matter where the reference point, but can't use SNode as ImmatureReferences.getInstance == null deep in SReferenceBase
-    actualNode.setReference(ourC1Ref, targetNodeRef); // XXX comment above about ImmatureReferences instance is no longer valid, perhaps
-    actualChild.setReference(ourC1Ref, targetNodeRef); // shall use just targetNode?
+    // doesn't matter where the reference point, and with ImmatureReferences gone, can use SNode targets
+    // besides, using SNodeReference for target may cause IMAE on lazy model loading - we don't have
+    // model read here, but SReference.getTargetNode()->SModelRepository.getModel() tries to initialize models of
+    // some modules known to a repository (in case it's the one that holds target model), and fails. I don't want to have
+    // model read here, seems fair to stick to SNode instances.
+    actualNode.setReferenceTarget(ourC1Ref, targetNode);
+    actualChild.setReferenceTarget(ourC1Ref, targetNode);
 
     final boolean matched = top.match(patternNode, actualNode);
     myErrors.checkThat("Shall match", matched, Matchers.equalTo(true));
-    myErrors.checkThat(vc.getRefTargetPointer("r1"), Matchers.equalTo(targetNodeRef));
-    myErrors.checkThat(vc.getRefTargetPointer("r2"), Matchers.equalTo(targetNodeRef));
+    myErrors.checkThat(vc.getRefTarget("r1"), Matchers.equalTo(targetNode));
+    myErrors.checkThat(vc.getRefTarget("r2"), Matchers.equalTo(targetNode));
   }
 
   @Test

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -76,7 +76,7 @@ public final class ValueContainer {
   }
 
   /**
-   * For testing purposes
+   * For testing purposes. Of no use with NodeMatcherTest converting to regular SNode targets, shall I keep it?
    */
   /*package*/ SNodeReference getRefTargetPointer(String variableName) {
     Object v = myValues.get("SNodeReference:" + variableName);
