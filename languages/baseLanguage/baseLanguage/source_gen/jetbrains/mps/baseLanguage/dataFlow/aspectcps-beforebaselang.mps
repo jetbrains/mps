@@ -5719,7 +5719,7 @@
       <uo k="s:originTrace" v="n:983" />
     </node>
     <node concept="2YIFZL" id="lM" role="jymVt">
-      <property role="TrG5h" value="getConditionConstantFromCheckingRules" />
+      <property role="TrG5h" value="getConditionEffectivelyConstantValue" />
       <uo k="s:originTrace" v="n:984" />
       <node concept="3clFbS" id="mI" role="3clF47">
         <uo k="s:originTrace" v="n:1040" />

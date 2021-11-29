@@ -1956,7 +1956,7 @@
       <node id="5218334018278921421" at="87,0,88,0" concept="13" trace="isFinal$gvTP" />
       <node id="4652712389471554200" at="36,10,38,5" concept="1" />
       <node id="3026370834486436804" at="29,58,32,5" concept="7" />
-      <node id="2743940965194457427" at="44,75,47,5" concept="7" />
+      <node id="2743940965194457427" at="44,74,47,5" concept="7" />
       <node id="2743940965194457513" at="60,48,63,13" concept="7" />
       <node id="2743940965194457534" at="64,11,67,11" concept="7" />
       <node id="4652712389471554194" at="33,164,38,5" concept="7" />
@@ -1966,7 +1966,7 @@
       <node id="2743940965194457473" at="52,51,69,7" concept="7" />
       <node id="2743940965194457464" at="51,10,71,5" concept="1" />
       <node id="2743940965194457458" at="48,164,71,5" concept="7" />
-      <node id="2743940965194457425" at="44,0,73,0" concept="14" trace="getConditionConstantFromCheckingRules#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Boolean;" />
+      <node id="2743940965194457425" at="44,0,73,0" concept="14" trace="getConditionEffectivelyConstantValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Boolean;" />
       <scope id="3026370834486436806" at="30,130,31,18" />
       <scope id="4652712389471554195" at="34,56,35,48" />
       <scope id="4652712389471554201" at="36,12,37,18" />
@@ -1994,7 +1994,7 @@
         <var name="variableDeclaration" id="2743940965194457476" />
       </scope>
       <scope id="2743940965194457465" at="51,12,70,18" />
-      <scope id="2743940965194457426" at="44,75,71,5">
+      <scope id="2743940965194457426" at="44,74,71,5">
         <var name="compileTimeConstantValue" id="2743940965194457447" />
       </scope>
       <scope id="2743940965194457425" at="44,0,73,0">

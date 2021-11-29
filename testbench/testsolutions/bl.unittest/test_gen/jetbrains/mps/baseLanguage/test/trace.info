@@ -2596,6 +2596,128 @@
       <unit id="2702384151996661689" at="21,0,55,0" name="jetbrains.mps.baseLanguage.test.SimpleUnreachable_Test" />
     </file>
   </root>
+  <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/2743940965196456945">
+    <file name="EffectivelyFinalCondition_Test.java">
+      <node id="2743940965196456945" at="27,43,28,25" concept="9" />
+      <node id="2743940965196461140" at="32,88,33,79" concept="3" />
+      <node id="2743940965196464717" at="36,88,37,79" concept="3" />
+      <node id="2743940965196470243" at="40,88,41,79" concept="3" />
+      <node id="2743940965196471526" at="44,80,45,71" concept="3" />
+      <node id="2743940965196480266" at="48,105,49,96" concept="3" />
+      <node id="2743940965196486589" at="52,88,53,79" concept="3" />
+      <node id="2743940965196489456" at="56,88,57,79" concept="3" />
+      <node id="2743940965196492883" at="60,88,61,79" concept="3" />
+      <node id="2743940965196456945" at="66,52,67,19" concept="9" />
+      <node id="2743940965196461140" at="70,90,71,65" concept="6" />
+      <node id="2743940965196461140" at="71,65,72,63" concept="6" />
+      <node id="2743940965196461140" at="72,63,73,345" concept="3" />
+      <node id="2743940965196464717" at="75,90,76,65" concept="6" />
+      <node id="2743940965196464717" at="76,65,77,63" concept="6" />
+      <node id="2743940965196464717" at="77,63,78,345" concept="3" />
+      <node id="2743940965196470243" at="80,90,81,65" concept="6" />
+      <node id="2743940965196470243" at="81,65,82,63" concept="6" />
+      <node id="2743940965196470243" at="82,63,83,345" concept="3" />
+      <node id="2743940965196471526" at="85,82,86,65" concept="6" />
+      <node id="2743940965196471526" at="86,65,87,63" concept="6" />
+      <node id="2743940965196471526" at="87,63,88,330" concept="3" />
+      <node id="2743940965196480266" at="90,107,91,65" concept="6" />
+      <node id="2743940965196480266" at="91,65,92,63" concept="6" />
+      <node id="2743940965196480266" at="92,63,93,353" concept="3" />
+      <node id="2743940965196486589" at="95,90,96,65" concept="6" />
+      <node id="2743940965196486589" at="96,65,97,63" concept="6" />
+      <node id="2743940965196486589" at="97,63,98,346" concept="3" />
+      <node id="2743940965196489456" at="100,90,101,65" concept="6" />
+      <node id="2743940965196489456" at="101,65,102,63" concept="6" />
+      <node id="2743940965196489456" at="102,63,103,346" concept="3" />
+      <node id="2743940965196492883" at="105,90,106,65" concept="6" />
+      <node id="2743940965196492883" at="106,65,107,63" concept="6" />
+      <node id="2743940965196492883" at="107,63,108,346" concept="3" />
+      <node id="2743940965196456945" at="22,0,24,0" concept="8" trace="ourParamCache" />
+      <node id="2743940965196456945" at="24,0,26,0" concept="4" trace="myWithCommandRule" />
+      <node id="2743940965196456945" at="27,0,30,0" concept="2" trace="EffectivelyFinalCondition_Test#()V" />
+      <node id="2743940965196456945" at="66,0,69,0" concept="2" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
+      <node id="2743940965196461140" at="31,0,35,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck2743940965196461140#()V" />
+      <node id="2743940965196464717" at="35,0,39,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck2743940965196464717#()V" />
+      <node id="2743940965196470243" at="39,0,43,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck2743940965196470243#()V" />
+      <node id="2743940965196471526" at="43,0,47,0" concept="5" trace="test_NodeInfiniteLoopCheck2743940965196471526#()V" />
+      <node id="2743940965196480266" at="47,0,51,0" concept="5" trace="test_NodeVariableInitializerIsRedundantWarningCheck2743940965196480266#()V" />
+      <node id="2743940965196486589" at="51,0,55,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck2743940965196486589#()V" />
+      <node id="2743940965196489456" at="55,0,59,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck2743940965196489456#()V" />
+      <node id="2743940965196492883" at="59,0,63,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck2743940965196492883#()V" />
+      <node id="2743940965196461140" at="70,0,75,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck2743940965196461140#()V" />
+      <node id="2743940965196464717" at="75,0,80,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck2743940965196464717#()V" />
+      <node id="2743940965196470243" at="80,0,85,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck2743940965196470243#()V" />
+      <node id="2743940965196471526" at="85,0,90,0" concept="5" trace="test_NodeInfiniteLoopCheck2743940965196471526#()V" />
+      <node id="2743940965196480266" at="90,0,95,0" concept="5" trace="test_NodeVariableInitializerIsRedundantWarningCheck2743940965196480266#()V" />
+      <node id="2743940965196486589" at="95,0,100,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck2743940965196486589#()V" />
+      <node id="2743940965196489456" at="100,0,105,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck2743940965196489456#()V" />
+      <node id="2743940965196492883" at="105,0,110,0" concept="5" trace="test_NodeTheConditionIsAlwaysCheck2743940965196492883#()V" />
+      <scope id="2743940965196456945" at="27,43,28,25" />
+      <scope id="2743940965196461140" at="32,88,33,79" />
+      <scope id="2743940965196464717" at="36,88,37,79" />
+      <scope id="2743940965196470243" at="40,88,41,79" />
+      <scope id="2743940965196471526" at="44,80,45,71" />
+      <scope id="2743940965196480266" at="48,105,49,96" />
+      <scope id="2743940965196486589" at="52,88,53,79" />
+      <scope id="2743940965196489456" at="56,88,57,79" />
+      <scope id="2743940965196492883" at="60,88,61,79" />
+      <scope id="2743940965196456945" at="66,52,67,19" />
+      <scope id="2743940965196456945" at="27,0,30,0" />
+      <scope id="2743940965196456945" at="66,0,69,0">
+        <var name="owner" id="2743940965196456945" />
+      </scope>
+      <scope id="2743940965196461140" at="70,90,73,345">
+        <var name="nodeToCheck" id="2743940965196461140" />
+        <var name="operation" id="2743940965196461140" />
+      </scope>
+      <scope id="2743940965196464717" at="75,90,78,345">
+        <var name="nodeToCheck" id="2743940965196464717" />
+        <var name="operation" id="2743940965196464717" />
+      </scope>
+      <scope id="2743940965196470243" at="80,90,83,345">
+        <var name="nodeToCheck" id="2743940965196470243" />
+        <var name="operation" id="2743940965196470243" />
+      </scope>
+      <scope id="2743940965196471526" at="85,82,88,330">
+        <var name="nodeToCheck" id="2743940965196471526" />
+        <var name="operation" id="2743940965196471526" />
+      </scope>
+      <scope id="2743940965196480266" at="90,107,93,353">
+        <var name="nodeToCheck" id="2743940965196480266" />
+        <var name="operation" id="2743940965196480266" />
+      </scope>
+      <scope id="2743940965196486589" at="95,90,98,346">
+        <var name="nodeToCheck" id="2743940965196486589" />
+        <var name="operation" id="2743940965196486589" />
+      </scope>
+      <scope id="2743940965196489456" at="100,90,103,346">
+        <var name="nodeToCheck" id="2743940965196489456" />
+        <var name="operation" id="2743940965196489456" />
+      </scope>
+      <scope id="2743940965196492883" at="105,90,108,346">
+        <var name="nodeToCheck" id="2743940965196492883" />
+        <var name="operation" id="2743940965196492883" />
+      </scope>
+      <scope id="2743940965196461140" at="31,0,35,0" />
+      <scope id="2743940965196464717" at="35,0,39,0" />
+      <scope id="2743940965196470243" at="39,0,43,0" />
+      <scope id="2743940965196471526" at="43,0,47,0" />
+      <scope id="2743940965196480266" at="47,0,51,0" />
+      <scope id="2743940965196486589" at="51,0,55,0" />
+      <scope id="2743940965196489456" at="55,0,59,0" />
+      <scope id="2743940965196492883" at="59,0,63,0" />
+      <scope id="2743940965196461140" at="70,0,75,0" />
+      <scope id="2743940965196464717" at="75,0,80,0" />
+      <scope id="2743940965196470243" at="80,0,85,0" />
+      <scope id="2743940965196471526" at="85,0,90,0" />
+      <scope id="2743940965196480266" at="90,0,95,0" />
+      <scope id="2743940965196486589" at="95,0,100,0" />
+      <scope id="2743940965196489456" at="100,0,105,0" />
+      <scope id="2743940965196492883" at="105,0,110,0" />
+      <unit id="2743940965196456945" at="64,0,112,0" name="jetbrains.mps.baseLanguage.test.EffectivelyFinalCondition_Test$TestBody" />
+      <unit id="2743940965196456945" at="20,0,113,0" name="jetbrains.mps.baseLanguage.test.EffectivelyFinalCondition_Test" />
+    </file>
+  </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c7(jetbrains.mps.baseLanguage.test@tests)/284804022098929234">
     <file name="AbstractPrivateMethod_Test.java">
       <node id="284804022098929234" at="29,39,30,25" concept="9" />

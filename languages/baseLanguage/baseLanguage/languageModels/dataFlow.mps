@@ -8306,7 +8306,7 @@
     </node>
     <node concept="2tJIrI" id="2okrWkj3HYR" role="jymVt" />
     <node concept="2YIFZL" id="2okrWkj3I5h" role="jymVt">
-      <property role="TrG5h" value="getConditionConstantFromCheckingRules" />
+      <property role="TrG5h" value="getConditionEffectivelyConstantValue" />
       <node concept="3clFbS" id="2okrWkj3I5i" role="3clF47">
         <node concept="3clFbJ" id="2okrWkj3I5j" role="3cqZAp">
           <node concept="3clFbS" id="2okrWkj3I5k" role="3clFbx">

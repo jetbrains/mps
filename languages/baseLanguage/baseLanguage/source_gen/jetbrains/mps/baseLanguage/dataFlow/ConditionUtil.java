@@ -41,7 +41,7 @@ public class ConditionUtil {
   /**
    * Does not call isCompileTimeConstantValue()
    */
-  public static Boolean getConditionConstantFromCheckingRules(SNode expr) {
+  public static Boolean getConditionEffectivelyConstantValue(SNode expr) {
     if (expr == null || SNodeOperations.getModel(expr) == null || !(SNodeOperations.isInstanceOf(expr, CONCEPTS.Expression$mB))) {
       return null;
     }
