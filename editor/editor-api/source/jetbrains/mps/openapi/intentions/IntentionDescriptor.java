@@ -16,6 +16,7 @@
 package jetbrains.mps.openapi.intentions;
 
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.util.annotation.ToRemove;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
@@ -37,6 +38,10 @@ public interface IntentionDescriptor {
 
   boolean isAvailableInChildNodes();
 
+  /**
+   * @deprecated we migrate to #instances, and define applicability for each instance separately
+   */
+  @Deprecated(since = "2020.3")
   default boolean isApplicable(SNode node, EditorContext editorContext) {
     return true;
   }
