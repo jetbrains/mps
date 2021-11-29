@@ -25,6 +25,8 @@ import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)/5759241003042619496", model = "r:9b4a89e1-ec38-42c4-b1bd-96ab47ffcb3f(jetbrains.mps.vcs.diff.changes)")
 public class ModifiedNodesGroup {
@@ -279,7 +281,10 @@ public class ModifiedNodesGroup {
     SNodeId beforeAnchorId = this.getNextInsertedNodeId(model);
     SNode beforeAnchor = (beforeAnchorId == null ? null : nodeCopier.getNode(model, beforeAnchorId));
     for (SNode node : ListSequence.fromList(nodes).where(new NotNullWhereFilter<SNode>())) {
-      parent.insertChildBefore(this.getLink(), node, beforeAnchor);
+      // nodes of type ChildAttribute can be inserted to 'smodelAttribute' role only.
+      // still, we want to show the commented nodes in the same changed group with regular nodes, see MPS-26874
+      SContainmentLink link = (node.isInstanceOfConcept(CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : this.getLink());
+      parent.insertChildBefore(link, node, beforeAnchor);
     }
   }
 
@@ -455,5 +460,13 @@ public class ModifiedNodesGroup {
       return checkedDotOperand.getOppositeGroup();
     }
     return null;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ChildAttribute$m8 = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x9d98713f247885aL, "jetbrains.mps.lang.core.structure.ChildAttribute");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink smodelAttribute$KJ43 = MetaAdapterFactory.getContainmentLink(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, 0x47bf8397520e5942L, "smodelAttribute");
   }
 }
