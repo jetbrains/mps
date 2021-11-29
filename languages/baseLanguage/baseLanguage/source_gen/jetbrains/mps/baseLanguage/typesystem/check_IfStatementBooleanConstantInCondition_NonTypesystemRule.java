@@ -24,7 +24,7 @@ public class check_IfStatementBooleanConstantInCondition_NonTypesystemRule exten
   public check_IfStatementBooleanConstantInCondition_NonTypesystemRule() {
   }
   public void applyRule(final SNode ifStatement, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Boolean conditionConstant = ConditionUtil.getConditionConstant(SLinkOperations.getTarget(ifStatement, LINKS.condition$5R17));
+    Boolean conditionConstant = ConditionUtil.getConditionEffectivelyConstantValue(SLinkOperations.getTarget(ifStatement, LINKS.condition$5R17));
     if (conditionConstant != null) {
       if (conditionConstant.booleanValue() == false) {
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(ifStatement, LINKS.ifTrue$5Rg8), LINKS.statement$53DE)).visitAll(new IVisitor<SNode>() {

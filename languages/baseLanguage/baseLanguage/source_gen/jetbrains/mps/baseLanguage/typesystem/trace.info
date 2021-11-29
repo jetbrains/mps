@@ -15352,7 +15352,7 @@
       </scope>
     </file>
     <file name="check_IfStatementBooleanConstantInCondition_NonTypesystemRule.java">
-      <node id="8011059391322111606" at="26,124,27,129" concept="12" />
+      <node id="8011059391322111606" at="26,124,27,145" concept="12" />
       <node id="2557916264117518373" at="32,13,33,72" concept="12" />
       <node id="2557916264117518373" at="33,72,34,233" concept="12" />
       <node id="8933433824923911191" at="43,15,44,74" concept="12" />
@@ -15384,7 +15384,7 @@
       <node id="2557916264117502431" at="28,36,38,7" concept="10" />
       <node id="8933433824923821442" at="39,134,54,9" concept="10" />
       <node id="8933433824912684698" at="38,7,55,7" concept="10" />
-      <node id="8933433824912714790" at="27,129,56,5" concept="10" />
+      <node id="8933433824912714790" at="27,145,56,5" concept="10" />
       <node id="2557916264117500036" at="26,0,58,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="2557916264117500036" at="24,74,24,74" />
       <scope id="2557916264117500036" at="58,50,59,35" />
@@ -16753,7 +16753,7 @@
       <node id="2857825852308881592" at="26,91,27,97" concept="12" />
       <node id="2857825852308875280" at="27,97,28,24" concept="12" />
       <node id="3026370834469595211" at="28,24,29,0" concept="15" />
-      <node id="5218334018278948942" at="29,0,30,78" concept="12" />
+      <node id="5218334018278948942" at="29,0,30,94" concept="12" />
       <node id="2857825852308875283" at="31,36,32,61" concept="12" />
       <node id="3026370834469613561" at="32,61,33,45" concept="6" />
       <node id="3026370834469612898" at="34,7,35,66" concept="12" />
@@ -16775,7 +16775,7 @@
       <node id="2857825852308875249" at="52,0,55,0" concept="11" trace="overrides#()Z" />
       <node id="3026370834469612905" at="36,332,42,9" concept="1" />
       <node id="3026370834469612898" at="33,45,43,7" concept="1" />
-      <node id="874246949135079167" at="30,78,44,5" concept="10" />
+      <node id="874246949135079167" at="30,94,44,5" concept="10" />
       <node id="2857825852308875249" at="24,0,46,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="2857825852308875249" at="22,68,22,68" />
       <scope id="2857825852308875249" at="46,50,47,49" />
@@ -32192,7 +32192,7 @@
       </scope>
     </file>
     <file name="check_ElsifClause_NonTypesystemRule.java">
-      <node id="8011059391323084624" at="25,124,26,129" concept="12" />
+      <node id="8011059391323084624" at="25,124,26,145" concept="12" />
       <node id="8011059391323084643" at="30,11,31,70" concept="12" />
       <node id="8011059391323084643" at="31,70,32,231" concept="12" />
       <node id="8011059391323083094" at="38,50,39,35" concept="13" />
@@ -32209,7 +32209,7 @@
       <node id="8011059391323084643" at="29,37,33,11" concept="1" />
       <node id="8011059391323084641" at="29,0,35,0" concept="11" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8011059391323084633" at="27,81,35,9" concept="6" />
-      <node id="8011059391323084631" at="26,129,36,5" concept="10" />
+      <node id="8011059391323084631" at="26,145,36,5" concept="10" />
       <node id="8011059391323083094" at="25,0,38,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
       <scope id="8011059391323083094" at="23,48,23,48" />
       <scope id="8011059391323083094" at="38,50,39,35" />

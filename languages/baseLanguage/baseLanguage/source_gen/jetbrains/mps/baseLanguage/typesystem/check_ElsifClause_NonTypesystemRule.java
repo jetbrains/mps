@@ -23,7 +23,7 @@ public class check_ElsifClause_NonTypesystemRule extends AbstractNonTypesystemRu
   public check_ElsifClause_NonTypesystemRule() {
   }
   public void applyRule(final SNode elsifClause, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    Boolean conditionConstant = ConditionUtil.getConditionConstant(SLinkOperations.getTarget(elsifClause, LINKS.condition$k0T9));
+    Boolean conditionConstant = ConditionUtil.getConditionEffectivelyConstantValue(SLinkOperations.getTarget(elsifClause, LINKS.condition$k0T9));
     if (conditionConstant != null && conditionConstant.booleanValue() == false) {
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(elsifClause, LINKS.statementList$neQf), LINKS.statement$53DE)).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
