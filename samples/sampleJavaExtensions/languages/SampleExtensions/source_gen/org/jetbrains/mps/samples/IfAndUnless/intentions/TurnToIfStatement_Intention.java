@@ -23,21 +23,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class TurnToIfStatement_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public TurnToIfStatement_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:c94a864e-ad51-4b38-a592-c0d7623187a1(org.jetbrains.mps.samples.IfAndUnless.intentions)", "393299394024668987"));
   }
+
   @Override
   public String getPresentation() {
     return "TurnToIfStatement";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -47,10 +47,12 @@ public final class TurnToIfStatement_Intention extends AbstractIntentionDescript
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Turn to an If Statement";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       // Invert condition 
@@ -94,10 +96,19 @@ public final class TurnToIfStatement_Intention extends AbstractIntentionDescript
         SNodeOperations.replaceWithAnother(node, ifStatement);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return TurnToIfStatement_Intention.this;
     }
+
   }
 
   private static final class LINKS {

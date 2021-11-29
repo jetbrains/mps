@@ -6,12 +6,10 @@ import jetbrains.mps.intentions.AbstractIntentionDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionFactory;
 import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.lang.generator.helper.EditingUtil;
 import java.util.Collection;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -19,10 +17,12 @@ import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__Behavio
 import jetbrains.mps.lang.structure.behavior.LinkDeclaration__BehaviorDescriptor;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
+import jetbrains.mps.lang.generator.helper.EditingUtil;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
+import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -30,34 +30,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class AddReferenceMacroParam_link_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
+
   public AddReferenceMacroParam_link_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)", "1240573470307"));
   }
+
   @Override
   public String getPresentation() {
     return "AddReferenceMacroParam_link";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (!(MacroIntentionsUtil.isInGeneratorModel(node))) {
-      return false;
-    }
-    EditorCell editorCell = editorContext.getSelectedCell();
-    if (editorCell == null) {
-      return false;
-    }
-    return EditingUtil.isReferenceMacroApplicable(node, editorCell);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     List<IntentionExecutable> list = ListSequence.fromList(new ArrayList<IntentionExecutable>());
     List<SNode> paramList = parameter(node, context);
@@ -86,10 +73,12 @@ public final class AddReferenceMacroParam_link_Intention extends AbstractIntenti
     public IntentionImplementation(SNode parameter) {
       myParameter = parameter;
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Add Reference Macro: node." + myParameter.getPresentation();
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode referenceMacro = EditingUtil.addReferenceMacro(node, editorContext.getSelectedCell());
@@ -106,10 +95,32 @@ public final class AddReferenceMacroParam_link_Intention extends AbstractIntenti
       // set caret 
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, referenceMacro, SelectionManager.FIRST_CELL, 2);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      if (!(MacroIntentionsUtil.isInGeneratorModel(node))) {
+        return false;
+      }
+      EditorCell editorCell = editorContext.getSelectedCell();
+      if (editorCell == null) {
+        return false;
+      }
+      return EditingUtil.isReferenceMacroApplicable(node, editorCell);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddReferenceMacroParam_link_Intention.this;
     }
+
     public Object getParameter() {
       return myParameter;
     }

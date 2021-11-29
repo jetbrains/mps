@@ -24,21 +24,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class ConvertToBeanBuilder_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertToBeanBuilder_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:7f54566a-e579-4f13-aaf4-b6e2c202aeb2(jetbrains.mps.baseLanguage.builders.intentions)", "5219429592916136228"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertToBeanBuilder";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,10 +48,12 @@ public final class ConvertToBeanBuilder_Intention extends AbstractIntentionDescr
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert To Bean Builder";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode creator = SNodeFactoryOperations.createNewNode(CONCEPTS.BuilderCreator$DG, null);
@@ -65,10 +67,19 @@ public final class ConvertToBeanBuilder_Intention extends AbstractIntentionDescr
 
       editorContext.select(SLinkOperations.getTarget(creator, LINKS.body$y9od));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertToBeanBuilder_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

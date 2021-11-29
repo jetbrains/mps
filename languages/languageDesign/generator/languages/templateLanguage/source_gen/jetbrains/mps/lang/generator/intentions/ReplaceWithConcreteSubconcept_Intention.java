@@ -6,16 +6,16 @@ import jetbrains.mps.intentions.AbstractIntentionDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionFactory;
 import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.EditorContext;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collection;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
@@ -23,31 +23,21 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 
 public final class ReplaceWithConcreteSubconcept_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
+
   public ReplaceWithConcreteSubconcept_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)", "1210374656847760938"));
   }
+
   @Override
   public String getPresentation() {
     return "ReplaceWithConcreteSubconcept";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (!(MacroIntentionsUtil.isInGeneratorModel(node))) {
-      return false;
-    }
-    SAbstractConcept selectedNodeConcept = SNodeOperations.getConcept(node);
-    return selectedNodeConcept.isAbstract();
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     List<IntentionExecutable> list = ListSequence.fromList(new ArrayList<IntentionExecutable>());
     List<SAbstractConcept> paramList = parameter(node, context);
@@ -70,20 +60,41 @@ public final class ReplaceWithConcreteSubconcept_Intention extends AbstractInten
     public IntentionImplementation(SAbstractConcept parameter) {
       myParameter = parameter;
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace with instance of  " + myParameter.getName() + " concept";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode concreteConceptInstance = SNodeFactoryOperations.createNewNode(myParameter, null);
       SNodeOperations.replaceWithAnother(node, concreteConceptInstance);
       SNodeOperations.deleteNode(node);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      if (!(MacroIntentionsUtil.isInGeneratorModel(node))) {
+        return false;
+      }
+      SAbstractConcept selectedNodeConcept = SNodeOperations.getConcept(node);
+      return selectedNodeConcept.isAbstract();
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ReplaceWithConcreteSubconcept_Intention.this;
     }
+
     public Object getParameter() {
       return myParameter;
     }

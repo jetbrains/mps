@@ -22,21 +22,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class AddAllSetElementsOperation_replace_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddAllSetElementsOperation_replace_Intention() {
     super(Kind.ERROR, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959032c(jetbrains.mps.baseLanguage.collections.intentions)", "4863683935051516260"));
   }
+
   @Override
   public String getPresentation() {
     return "AddAllSetElementsOperation_replace";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -46,18 +46,29 @@ public final class AddAllSetElementsOperation_replace_Intention extends Abstract
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace Deprecated Operation";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNodeOperations.replaceWithAnother(node, _quotation_createNode_vjw581_a0a0a0(SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.argument$sATI))));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddAllSetElementsOperation_replace_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_vjw581_a0a0a0(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();

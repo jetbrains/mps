@@ -23,27 +23,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class ToggleConceptMethodAbstract_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ToggleConceptMethodAbstract_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:dbb111e4-8af4-4e6d-b49d-e07620d0c285(jetbrains.mps.lang.behavior.intentions)", "1225201879279"));
   }
+
   @Override
   public String getPresentation() {
     return "ToggleConceptMethodAbstract";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -53,11 +47,13 @@ public final class ToggleConceptMethodAbstract_Intention extends AbstractIntenti
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       String methodName = SPropertyOperations.getString(node, PROPS.name$MnvL);
       return (SPropertyOperations.getBoolean(node, PROPS.isAbstract$qvtK) ? "Make '" + methodName + "' not abstract" : "Make '" + methodName + "' abstract");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if (!(SPropertyOperations.getBoolean(node, PROPS.isAbstract$qvtK))) {
@@ -68,10 +64,25 @@ public final class ToggleConceptMethodAbstract_Intention extends AbstractIntenti
       }
       SPropertyOperations.set(node, PROPS.isAbstract$qvtK, !(SPropertyOperations.getBoolean(node, PROPS.isAbstract$qvtK)));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ToggleConceptMethodAbstract_Intention.this;
     }
+
   }
 
   private static final class PROPS {

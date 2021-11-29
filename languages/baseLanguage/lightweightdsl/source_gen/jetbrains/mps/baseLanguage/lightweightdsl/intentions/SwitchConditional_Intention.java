@@ -23,21 +23,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class SwitchConditional_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SwitchConditional_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:5bb264d9-7f7a-4139-93e6-30697488a61b(jetbrains.mps.baseLanguage.lightweightdsl.intentions)", "2049012130657192359"));
   }
+
   @Override
   public String getPresentation() {
     return "SwitchConditional";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -47,10 +47,12 @@ public final class SwitchConditional_Intention extends AbstractIntentionDescript
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Make " + (((SLinkOperations.getTarget(node, LINKS.condition$uzGY) == null) ? "Conditional" : "Non-Conditional"));
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((SLinkOperations.getTarget(node, LINKS.condition$uzGY) != null)) {
@@ -60,10 +62,19 @@ public final class SwitchConditional_Intention extends AbstractIntentionDescript
 
       SLinkOperations.setTarget(node, LINKS.condition$uzGY, _quotation_createNode_8jtetl_a0c0a());
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SwitchConditional_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_8jtetl_a0c0a() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

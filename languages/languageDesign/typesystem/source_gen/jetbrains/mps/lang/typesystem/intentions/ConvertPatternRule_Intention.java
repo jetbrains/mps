@@ -10,10 +10,10 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.pattern.behavior.PatternExpression__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -26,27 +26,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ConvertPatternRule_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertPatternRule_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902b2(jetbrains.mps.lang.typesystem.intentions)", "252830181482184053"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertPatternRule";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.applicableNode$Ro4C), CONCEPTS.PatternCondition$zC);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -56,10 +50,12 @@ public final class ConvertPatternRule_Intention extends AbstractIntentionDescrip
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Move Pattern into Rule Body";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode patternCondition = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.applicableNode$Ro4C), CONCEPTS.PatternCondition$zC);
@@ -70,10 +66,25 @@ public final class ConvertPatternRule_Intention extends AbstractIntentionDescrip
       SNodeOperations.replaceWithAnother(SLinkOperations.getTarget(node, LINKS.applicableNode$Ro4C), newApplicable);
       SLinkOperations.setTarget(node, LINKS.body$pdJy, createStatementList_kdoxak_a0g0a(newApplicable, patternCondition, body));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.applicableNode$Ro4C), CONCEPTS.PatternCondition$zC);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertPatternRule_Intention.this;
     }
+
   }
   private static SNode createConceptReference_kdoxak_a0d0a(String p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.ConceptReference$14);

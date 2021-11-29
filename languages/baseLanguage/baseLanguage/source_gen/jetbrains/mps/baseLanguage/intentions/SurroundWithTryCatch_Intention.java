@@ -41,21 +41,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class SurroundWithTryCatch_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SurroundWithTryCatch_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "3366354716707825944"));
   }
+
   @Override
   public String getPresentation() {
     return "SurroundWithTryCatch";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return true;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -65,10 +65,12 @@ public final class SurroundWithTryCatch_Intention extends AbstractIntentionDescr
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Try / Catch";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       final SNode tryCatchStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.TryUniversalStatement$$M, null);
@@ -119,10 +121,19 @@ public final class SurroundWithTryCatch_Intention extends AbstractIntentionDescr
       }
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(tryCatchStatement, LINKS.catchClause$Q4F)).first(), LINKS.throwable$UWM1), LINKS.type$a1UY), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SurroundWithTryCatch_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

@@ -10,8 +10,6 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.test.behavior.NodesTestCase__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.components.ComponentHost;
@@ -19,33 +17,29 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.lang.test.scripts.SpecifyRuleMessagesHelper;
+import jetbrains.mps.lang.test.behavior.NodesTestCase__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class SpecifyRuleReferences_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SpecifyRuleReferences_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c89590386(jetbrains.mps.lang.test.intentions)", "7796829026680792390"));
   }
+
   @Override
   public String getPresentation() {
     return "SpecifyRuleReferences";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(CONCEPTS.NodesTestCase$nd), node);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -55,10 +49,12 @@ public final class SpecifyRuleReferences_Intention extends AbstractIntentionDesc
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Specify Rule References in Test Annotation";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       // when we have component host in editorContext, rewrite 
@@ -71,10 +67,25 @@ public final class SpecifyRuleReferences_Intention extends AbstractIntentionDesc
 
       new SpecifyRuleMessagesHelper(node, host).fillContainerWithRuleMessages();
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(CONCEPTS.NodesTestCase$nd), node);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SpecifyRuleReferences_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

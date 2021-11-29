@@ -24,21 +24,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class SurroundWithExecuteLightweightCommandStatement_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SurroundWithExecuteLightweightCommandStatement_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:4df57e9b-2a09-44c7-b16d-4af6620e3aaa(jetbrains.mps.lang.access.intentions)", "1616052750811363739"));
   }
+
   @Override
   public String getPresentation() {
     return "SurroundWithExecuteLightweightCommandStatement";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return true;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,10 +48,12 @@ public final class SurroundWithExecuteLightweightCommandStatement_Intention exte
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Read Action";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode readActionStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ExecuteLightweightCommandStatement$8$, null);
@@ -62,10 +64,19 @@ public final class SurroundWithExecuteLightweightCommandStatement_Intention exte
       }
       editorContext.select(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(readActionStatement, LINKS.commandClosureLiteral$Lead), LINKS.body$Ujx2), LINKS.statement$53DE)).first());
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SurroundWithExecuteLightweightCommandStatement_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

@@ -10,14 +10,14 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import java.util.Objects;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import java.util.List;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.Objects;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -26,33 +26,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class ConvertToList_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertToList_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:611f7e3f-ffc4-4896-a805-c9fe694989ca(jetbrains.mps.execution.commands.intentions)", "2168104298250389155"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertToList";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    if (editorContext.getSelectedNode() != node && !(isVisibleInChild(node, editorContext.getSelectedNode(), editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.items$5OzF)).isNotEmpty();
-  }
-  private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
-    return Objects.equals(SNodeOperations.getContainingLink(childNode), LINKS.items$5OzF);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -62,10 +50,12 @@ public final class ConvertToList_Intention extends AbstractIntentionDescriptor i
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert Items to Explicit List Creation";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       List<SNode> items = SLinkOperations.getChildren(node, LINKS.items$5OzF);
@@ -76,10 +66,31 @@ public final class ConvertToList_Intention extends AbstractIntentionDescriptor i
       });
       SLinkOperations.setTarget(node, LINKS.list$l1dd, _quotation_createNode_mz75hy_a0a2a0(items));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      if (editorContext.getSelectedNode() != node && !(isVisibleInChild(node, editorContext.getSelectedNode(), editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.items$5OzF)).isNotEmpty();
+    }
+
+    private boolean isVisibleInChild(final SNode node, final SNode childNode, final EditorContext editorContext) {
+      return Objects.equals(SNodeOperations.getContainingLink(childNode), LINKS.items$5OzF);
+    }
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertToList_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_mz75hy_a0a2a0(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();

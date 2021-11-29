@@ -24,21 +24,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddContext_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddContext_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)", "3462145372628250475"));
   }
+
   @Override
   public String getPresentation() {
     return "AddContext";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,10 +48,12 @@ public final class AddContext_Intention extends AbstractIntentionDescriptor impl
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to Inline Template with Context";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode tNode = SLinkOperations.getTarget(node, LINKS.templateNode$1Rss);
@@ -64,10 +66,19 @@ public final class AddContext_Intention extends AbstractIntentionDescriptor impl
       }
       EditingUtil.createTemplateFragment(tNode);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddContext_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_4m6r5j_a0a0d0a(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();

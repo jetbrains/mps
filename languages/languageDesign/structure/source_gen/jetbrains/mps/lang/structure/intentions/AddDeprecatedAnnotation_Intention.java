@@ -21,21 +21,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AddDeprecatedAnnotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddDeprecatedAnnotation_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:e5a8b5c7-85b5-4d59-9e4e-850a142e2560(jetbrains.mps.lang.structure.intentions)", "1224245135252"));
   }
+
   @Override
   public String getPresentation() {
     return "AddDeprecatedAnnotation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,6 +45,7 @@ public final class AddDeprecatedAnnotation_Intention extends AbstractIntentionDe
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(node) == null)) {
@@ -52,6 +53,7 @@ public final class AddDeprecatedAnnotation_Intention extends AbstractIntentionDe
       }
       return "Remove Deprecated Annotation";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(node) == null)) {
@@ -61,10 +63,19 @@ public final class AddDeprecatedAnnotation_Intention extends AbstractIntentionDe
         SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.DeprecatedNodeAnnotation$zV).get(node));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddDeprecatedAnnotation_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

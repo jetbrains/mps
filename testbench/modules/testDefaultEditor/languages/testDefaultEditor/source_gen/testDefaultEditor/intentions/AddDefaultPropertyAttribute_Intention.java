@@ -23,21 +23,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class AddDefaultPropertyAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddDefaultPropertyAttribute_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:be519384-ff73-407d-8bb6-1d18a1417684(testDefaultEditor.intentions)", "5527270534710867991"));
   }
+
   @Override
   public String getPresentation() {
     return "AddDefaultPropertyAttribute";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -47,6 +47,7 @@ public final class AddDefaultPropertyAttribute_Intention extends AbstractIntenti
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb).get(node) != null)) {
@@ -55,6 +56,7 @@ public final class AddDefaultPropertyAttribute_Intention extends AbstractIntenti
         return "add default property attribute";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.PropertyAttribute(CONCEPTS.DefaultPropertyAttribute$Dn, PROPS.age$rQbb).get(node) != null)) {
@@ -65,10 +67,19 @@ public final class AddDefaultPropertyAttribute_Intention extends AbstractIntenti
       }
 
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddDefaultPropertyAttribute_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

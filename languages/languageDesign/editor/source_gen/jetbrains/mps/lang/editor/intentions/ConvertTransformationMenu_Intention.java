@@ -6,16 +6,16 @@ import jetbrains.mps.intentions.AbstractIntentionDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionFactory;
 import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.EditorContext;
-import java.util.Objects;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collection;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -32,28 +32,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ConvertTransformationMenu_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
+
   public ConvertTransformationMenu_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959029b(jetbrains.mps.lang.editor.intentions)", "3597524805843504132"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertTransformationMenu";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    // disable for legacy concepts 
-    return Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenu$bn) || Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenuContribution$jD);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     List<IntentionExecutable> list = ListSequence.fromList(new ArrayList<IntentionExecutable>());
     List<SAbstractConcept> paramList = parameter(node, context);
@@ -78,6 +71,7 @@ public final class ConvertTransformationMenu_Intention extends AbstractIntention
     public IntentionImplementation(SAbstractConcept parameter) {
       myParameter = parameter;
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       String descr = SConceptOperations.conceptAlias(myParameter);
@@ -86,6 +80,7 @@ public final class ConvertTransformationMenu_Intention extends AbstractIntention
       }
       return "Convert to " + descr;
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode newNode = SNodeFactoryOperations.createNewNode(myParameter, null);
@@ -105,18 +100,34 @@ public final class ConvertTransformationMenu_Intention extends AbstractIntention
         }
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      // disable for legacy concepts 
+      return Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenu$bn) || Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenuContribution$jD);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertTransformationMenu_Intention.this;
     }
+
     public Object getParameter() {
       return myParameter;
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TransformationMenuContribution$jD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c10ff0L, "jetbrains.mps.lang.editor.structure.TransformationMenuContribution");
     /*package*/ static final SConcept TransformationMenu$bn = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0ac3ebaL, "jetbrains.mps.lang.editor.structure.TransformationMenu");
+    /*package*/ static final SConcept TransformationMenuContribution$jD = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x4e0f93d8a0c10ff0L, "jetbrains.mps.lang.editor.structure.TransformationMenuContribution");
   }
 
   private static final class LINKS {

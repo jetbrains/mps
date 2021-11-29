@@ -23,21 +23,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConvertPropertySetToAssignment_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertPropertySetToAssignment_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902ff(jetbrains.mps.lang.smodel.intentions)", "1224687584077"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertPropertySetToAssignment";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -47,10 +47,12 @@ public final class ConvertPropertySetToAssignment_Intention extends AbstractInte
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to Assignment";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode lValue = IOperation__BehaviorDescriptor.getOperand_idhEwIP$m.invoke(node);
@@ -63,10 +65,19 @@ public final class ConvertPropertySetToAssignment_Intention extends AbstractInte
       SLinkOperations.setTarget(assignment, LINKS.rValue$spNK, rValue);
       SNodeOperations.replaceWithAnother(dotExpr, assignment);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertPropertySetToAssignment_Intention.this;
     }
+
   }
 
   private static final class LINKS {

@@ -10,15 +10,15 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
+import java.util.Collections;
+import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import java.util.Collections;
-import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -26,35 +26,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SetIdsInMoveMigrations_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SetIdsInMoveMigrations_Intention() {
     super(Kind.ERROR, true, new SNodePointer("r:8524dd83-cdb1-4841-877b-826d11a828b5(jetbrains.mps.lang.migration.intentions)", "3265844182377326076"));
   }
+
   @Override
   public String getPresentation() {
     return "SetIdsInMoveMigrations";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.part$ITsP), CONCEPTS.MoveNodeMigrationPart$zn)).translate(new ITranslator2<SNode, SNode>() {
-      public Iterable<SNode> translate(SNode it) {
-        return SLinkOperations.getChildren(it, LINKS.specialization$dM5g);
-      }
-    }).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return RefactoringIdHelper.isApplicable(it);
-      }
-    });
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -64,10 +50,12 @@ public final class SetIdsInMoveMigrations_Intention extends AbstractIntentionDes
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Add Ids";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       final SRepository repo = editorContext.getRepository();
@@ -81,10 +69,33 @@ public final class SetIdsInMoveMigrations_Intention extends AbstractIntentionDes
         }
       });
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(node, LINKS.part$ITsP), CONCEPTS.MoveNodeMigrationPart$zn)).translate(new ITranslator2<SNode, SNode>() {
+        public Iterable<SNode> translate(SNode it) {
+          return SLinkOperations.getChildren(it, LINKS.specialization$dM5g);
+        }
+      }).any(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return RefactoringIdHelper.isApplicable(it);
+        }
+      });
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SetIdsInMoveMigrations_Intention.this;
     }
+
   }
 
   private static final class LINKS {

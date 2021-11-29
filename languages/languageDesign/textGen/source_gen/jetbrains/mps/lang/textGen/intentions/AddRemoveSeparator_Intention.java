@@ -19,21 +19,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AddRemoveSeparator_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddRemoveSeparator_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:7651b6e0-753b-4bcf-af83-d3dfc31e29e7(jetbrains.mps.lang.textGen.intentions)", "1237984182824"));
   }
+
   @Override
   public String getPresentation() {
     return "AddRemoveSeparator";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -43,10 +43,12 @@ public final class AddRemoveSeparator_Intention extends AbstractIntentionDescrip
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return (SPropertyOperations.getBoolean(node, PROPS.withSeparator$Pdf8) ? "Remove Separator" : "Add Separator");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if (SPropertyOperations.getBoolean(node, PROPS.withSeparator$Pdf8)) {
@@ -54,10 +56,19 @@ public final class AddRemoveSeparator_Intention extends AbstractIntentionDescrip
       }
       SPropertyOperations.assign(node, PROPS.withSeparator$Pdf8, !(SPropertyOperations.getBoolean(node, PROPS.withSeparator$Pdf8)));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddRemoveSeparator_Intention.this;
     }
+
   }
 
   private static final class PROPS {

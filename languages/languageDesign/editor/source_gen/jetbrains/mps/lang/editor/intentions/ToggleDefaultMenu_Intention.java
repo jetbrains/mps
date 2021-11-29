@@ -10,39 +10,32 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import java.util.Objects;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.editor.behavior.IMenu_Concept__BehaviorDescriptor;
+import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ToggleDefaultMenu_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ToggleDefaultMenu_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959029b(jetbrains.mps.lang.editor.intentions)", "1149574124333715228"));
   }
+
   @Override
   public String getPresentation() {
     return "ToggleDefaultMenu";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    // disable for legacy concepts 
-    return Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.SubstituteMenu$EF) || Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenu$bn);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -52,6 +45,7 @@ public final class ToggleDefaultMenu_Intention extends AbstractIntentionDescript
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if ((boolean) IMenu_Concept__BehaviorDescriptor.isDefault_id5N_GIFFh1P5.invoke(node)) {
@@ -60,14 +54,31 @@ public final class ToggleDefaultMenu_Intention extends AbstractIntentionDescript
         return "Convert to Default Menu";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       IMenu_Concept__BehaviorDescriptor.toggleDefault_id5N_GIFFi58L.invoke(node);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      // disable for legacy concepts 
+      return Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.SubstituteMenu$EF) || Objects.equals(SNodeOperations.getConcept(node), CONCEPTS.TransformationMenu$bn);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ToggleDefaultMenu_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

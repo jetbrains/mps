@@ -29,27 +29,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class ToggleMethodStatic_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ToggleMethodStatic_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:dbb111e4-8af4-4e6d-b49d-e07620d0c285(jetbrains.mps.lang.behavior.intentions)", "4748945189160275754"));
   }
+
   @Override
   public String getPresentation() {
     return "ToggleMethodStatic";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -59,11 +53,13 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       String methodName = SPropertyOperations.getString(node, PROPS.name$MnvL);
       return (SPropertyOperations.getBoolean(node, PROPS.isStatic$JhJe) ? "Make '" + methodName + "' Not Static" : "Make '" + methodName + "' Static");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       final boolean oldStatic = SPropertyOperations.getBoolean(node, PROPS.isStatic$JhJe);
@@ -84,10 +80,25 @@ public final class ToggleMethodStatic_Intention extends AbstractIntentionDescrip
         ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.body$5xQk), LINKS.statement$53DE)).clear();
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ToggleMethodStatic_Intention.this;
     }
+
   }
 
   private static final class PROPS {

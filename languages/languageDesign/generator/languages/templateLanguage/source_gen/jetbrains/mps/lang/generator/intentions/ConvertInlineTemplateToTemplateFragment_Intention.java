@@ -10,10 +10,10 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -26,31 +26,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ConvertInlineTemplateToTemplateFragment_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertInlineTemplateToTemplateFragment_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)", "1203775431223"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertInlineTemplateToTemplateFragment";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    SNode ruleNode = SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMappingRule$O5, false, false);
-    if (!((SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.Root_MappingRule$NH) || SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.Weaving_MappingRule$qb) || SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.Reduction_MappingRule$9X)))) {
-      return false;
-    }
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -60,10 +50,12 @@ public final class ConvertInlineTemplateToTemplateFragment_Intention extends Abs
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to Template Fragment";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode templateNode = SNodeFactoryOperations.createNewRootNode(SNodeOperations.getModel(node), CONCEPTS.TemplateDeclaration$5G, null);
@@ -78,19 +70,38 @@ public final class ConvertInlineTemplateToTemplateFragment_Intention extends Abs
 
       SelectionUtil.selectNode(editorContext, templateNode);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      SNode ruleNode = SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMappingRule$O5, false, false);
+      if (!((SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.Root_MappingRule$NH) || SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.Weaving_MappingRule$qb) || SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.Reduction_MappingRule$9X)))) {
+        return false;
+      }
+      return true;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertInlineTemplateToTemplateFragment_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept TemplateDeclaration$5G = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
     /*package*/ static final SConcept BaseMappingRule$O5 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b64647L, "jetbrains.mps.lang.generator.structure.BaseMappingRule");
+    /*package*/ static final SConcept TemplateDeclarationReference$QT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013906056L, "jetbrains.mps.lang.generator.structure.TemplateDeclarationReference");
     /*package*/ static final SConcept Reduction_MappingRule$9X = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fca296532L, "jetbrains.mps.lang.generator.structure.Reduction_MappingRule");
     /*package*/ static final SConcept Root_MappingRule$NH = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fd54746dbL, "jetbrains.mps.lang.generator.structure.Root_MappingRule");
     /*package*/ static final SConcept Weaving_MappingRule$qb = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0d8c573L, "jetbrains.mps.lang.generator.structure.Weaving_MappingRule");
-    /*package*/ static final SConcept TemplateDeclaration$5G = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
-    /*package*/ static final SConcept TemplateDeclarationReference$QT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x11013906056L, "jetbrains.mps.lang.generator.structure.TemplateDeclarationReference");
   }
 
   private static final class LINKS {

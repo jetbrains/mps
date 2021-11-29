@@ -24,21 +24,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class SurroundWithIf_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SurroundWithIf_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "3366354716707474220"));
   }
+
   @Override
   public String getPresentation() {
     return "SurroundWithIf";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return true;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,10 +48,12 @@ public final class SurroundWithIf_Intention extends AbstractIntentionDescriptor 
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "If";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode ifStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.IfStatement$Q4, null);
@@ -62,10 +64,19 @@ public final class SurroundWithIf_Intention extends AbstractIntentionDescriptor 
       }
       editorContext.select(SLinkOperations.getTarget(ifStatement, LINKS.condition$5R17));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SurroundWithIf_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

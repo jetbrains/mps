@@ -28,27 +28,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SurroundWithTypeCast_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SurroundWithTypeCast_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "418779379561917490"));
   }
+
   @Override
   public String getPresentation() {
     return "SurroundWithTypeCast";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return editorContext.getSelectedNodes().size() == 1;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return true;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -58,10 +52,12 @@ public final class SurroundWithTypeCast_Intention extends AbstractIntentionDescr
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "(Type) expr";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode expectedType = ExpectedType_FactoryUtil.createExpectedType(node);
@@ -88,10 +84,25 @@ public final class SurroundWithTypeCast_Intention extends AbstractIntentionDescr
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, castExpression, "leftParen", -1);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return editorContext.getSelectedNodes().size() == 1;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SurroundWithTypeCast_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_3zfq0u_a0b0a(Object parameter_1, Object parameter_2) {
     PersistenceFacade facade = PersistenceFacade.getInstance();

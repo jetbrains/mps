@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class LinkRef2Link_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public LinkRef2Link_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902ff(jetbrains.mps.lang.smodel.intentions)", "7440942041679234468"));
   }
+
   @Override
   public String getPresentation() {
     return "LinkRef2Link";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,10 +45,12 @@ public final class LinkRef2Link_Intention extends AbstractIntentionDescriptor im
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to link/.../";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode repl = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x24b2bf7ce1957615L, "jetbrains.mps.lang.smodel.structure.LinkIdRefExpression"));
@@ -56,10 +58,19 @@ public final class LinkRef2Link_Intention extends AbstractIntentionDescriptor im
       SLinkOperations.setTarget(repl, LINKS.linkDeclaration$Paax, SLinkOperations.getTarget(node, LINKS.linkDeclaration$_DZG));
       SNodeOperations.replaceWithAnother(node, repl);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return LinkRef2Link_Intention.this;
     }
+
   }
 
   private static final class LINKS {

@@ -20,21 +20,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AddRemovePresenceAnnotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddRemovePresenceAnnotation_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:a7745672-f4c2-4dce-a52a-935356e84c72(testAnnotatedType.intentions)", "6405009306797652635"));
   }
+
   @Override
   public String getPresentation() {
     return "AddRemovePresenceAnnotation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -44,10 +44,12 @@ public final class AddRemovePresenceAnnotation_Intention extends AbstractIntenti
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn).get(node) == null) ? "Add Presence Annotation" : "Remove Presence Annotation");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn).get(node) == null)) {
@@ -56,10 +58,19 @@ public final class AddRemovePresenceAnnotation_Intention extends AbstractIntenti
         SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SubstituteAnnotation$zn).get(node));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddRemovePresenceAnnotation_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

@@ -30,21 +30,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class AddMethodDocComment_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddMethodDocComment_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:17a5547b-be2d-47de-9fc3-8304c9f5de67(jetbrains.mps.baseLanguage.javadoc.intentions)", "3196018662491292781"));
   }
+
   @Override
   public String getPresentation() {
     return "AddMethodDocComment";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -54,10 +54,12 @@ public final class AddMethodDocComment_Intention extends AbstractIntentionDescri
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.MethodDocComment$HI).get(node) == null) ? "Add Documentation Comment" : "Remove Documentation Comment");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       DocCommentHelper.addJavadocLangIfMissing(node);
@@ -106,10 +108,19 @@ public final class AddMethodDocComment_Intention extends AbstractIntentionDescri
 
       SelectionUtil.selectCell(editorContext, firstPart, SelectionManager.FIRST_CELL);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddMethodDocComment_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_i2k1f8_a0b0k0a(Object parameter_1) {
     PersistenceFacade facade = PersistenceFacade.getInstance();

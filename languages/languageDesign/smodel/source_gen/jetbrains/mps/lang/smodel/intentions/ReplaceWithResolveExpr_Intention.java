@@ -28,21 +28,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class ReplaceWithResolveExpr_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ReplaceWithResolveExpr_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902ff(jetbrains.mps.lang.smodel.intentions)", "1000993208132942883"));
   }
+
   @Override
   public String getPresentation() {
     return "ReplaceWithResolveExpr";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -52,10 +52,12 @@ public final class ReplaceWithResolveExpr_Intention extends AbstractIntentionDes
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace with .resolve()";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       PersistenceFacade pf = PersistenceFacade.getInstance();
@@ -71,10 +73,19 @@ public final class ReplaceWithResolveExpr_Intention extends AbstractIntentionDes
       // blank arg for SRepo 
       SLinkOperations.addNewChild(imco, LINKS.actualArgument$pzdx, null);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ReplaceWithResolveExpr_Intention.this;
     }
+
   }
 
   private static final class PROPS {
