@@ -10,12 +10,12 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -26,27 +26,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class CreateTypesystemIntention_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public CreateTypesystemIntention_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902b2(jetbrains.mps.lang.typesystem.intentions)", "3302086321380606109"));
   }
+
   @Override
   public String getPresentation() {
     return "CreateTypesystemIntention";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.helginsIntention$WhDe)).isEmpty();
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -56,10 +50,12 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Create New QuickFix";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode quickFixNode = createTypesystemQuickFix_wv8vj7_a0a0a();
@@ -69,10 +65,25 @@ public final class CreateTypesystemIntention_Intention extends AbstractIntention
       SModelOperations.addRootNode(SNodeOperations.getModel(node), quickFixNode);
       ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.helginsIntention$WhDe)).addElement(quickFixCall);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.helginsIntention$WhDe)).isEmpty();
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return CreateTypesystemIntention_Intention.this;
     }
+
   }
   private static SNode createTypesystemQuickFix_wv8vj7_a0a0a() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.TypesystemQuickFix$$8);

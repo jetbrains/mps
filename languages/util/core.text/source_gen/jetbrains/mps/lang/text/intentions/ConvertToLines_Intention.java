@@ -10,10 +10,10 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -29,27 +29,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConvertToLines_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertToLines_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:d0aef15b-6499-4272-812e-6bb6f7408ee0(jetbrains.mps.lang.text.intentions)", "2642648362196386008"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertToLines";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.paragraphs$ZAOz)).isNotEmpty();
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -59,10 +53,12 @@ public final class ConvertToLines_Intention extends AbstractIntentionDescriptor 
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to Lines";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$U$m7)).clear();
@@ -85,15 +81,30 @@ public final class ConvertToLines_Intention extends AbstractIntentionDescriptor 
       });
       SelectionUtil.selectCell(editorContext, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$U$m7)).first(), SelectionManager.FIRST_CELL);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.paragraphs$ZAOz)).isNotEmpty();
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertToLines_Intention.this;
     }
+
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink paragraphs$ZAOz = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x7ee31bf598f6d778L, "paragraphs");
     /*package*/ static final SContainmentLink lines$U$m7 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
+    /*package*/ static final SContainmentLink paragraphs$ZAOz = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x7ee31bf598f6d778L, "paragraphs");
   }
 
   private static final class PROPS {

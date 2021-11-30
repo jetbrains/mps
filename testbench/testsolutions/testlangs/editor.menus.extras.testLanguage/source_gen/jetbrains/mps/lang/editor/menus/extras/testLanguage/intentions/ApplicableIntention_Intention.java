@@ -16,21 +16,21 @@ import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 
 public final class ApplicableIntention_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ApplicableIntention_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:8d2a217a-f2d0-4d4a-b867-e2dd2ddb731c(jetbrains.mps.lang.editor.menus.extras.testLanguage.intentions)", "6820996345401611689"));
   }
+
   @Override
   public String getPresentation() {
     return "ApplicableIntention";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -40,16 +40,27 @@ public final class ApplicableIntention_Intention extends AbstractIntentionDescri
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Applicable Intention";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ApplicableIntention_Intention.this;
     }
+
   }
 }

@@ -10,14 +10,14 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.core.behavior.IDeprecatable__BehaviorDescriptor;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.baseLanguage.behavior.IBLDeprecatable__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.lang.core.behavior.IDeprecatable__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -26,27 +26,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class AddDeprecatedBlockDocTag_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddDeprecatedBlockDocTag_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:17a5547b-be2d-47de-9fc3-8304c9f5de67(jetbrains.mps.baseLanguage.javadoc.intentions)", "8362517669643823244"));
   }
+
   @Override
   public String getPresentation() {
     return "AddDeprecatedBlockDocTag";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IBLDeprecatable$ah) && (boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IBLDeprecatable$ah));
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -56,10 +50,12 @@ public final class AddDeprecatedBlockDocTag_Intention extends AbstractIntentionD
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Add @deprecated Tag";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       IBLDeprecatable__BehaviorDescriptor.markDeprecated_id6Va_BJexupi.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IBLDeprecatable$ah));
@@ -69,10 +65,25 @@ public final class AddDeprecatedBlockDocTag_Intention extends AbstractIntentionD
         }
       }).first());
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.IBLDeprecatable$ah) && (boolean) IDeprecatable__BehaviorDescriptor.isDeprecated_idhOwoPtR.invoke(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IBLDeprecatable$ah));
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddDeprecatedBlockDocTag_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

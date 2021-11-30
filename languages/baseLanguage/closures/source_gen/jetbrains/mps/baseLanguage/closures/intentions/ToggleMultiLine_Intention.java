@@ -19,21 +19,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ToggleMultiLine_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ToggleMultiLine_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:dda1964e-d5fa-4ee3-9168-3bfd25608c63(jetbrains.mps.baseLanguage.closures.intentions)", "890797661671409032"));
   }
+
   @Override
   public String getPresentation() {
     return "ToggleMultiLine";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -43,6 +43,7 @@ public final class ToggleMultiLine_Intention extends AbstractIntentionDescriptor
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if (SPropertyOperations.getBoolean(node, PROPS.forceMultiLine$AhIn)) {
@@ -51,15 +52,25 @@ public final class ToggleMultiLine_Intention extends AbstractIntentionDescriptor
         return "Make Force Multi Line";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SPropertyOperations.assign(node, PROPS.forceMultiLine$AhIn, !(SPropertyOperations.getBoolean(node, PROPS.forceMultiLine$AhIn)));
       editorContext.getEditorComponent().rebuildEditorContent();
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ToggleMultiLine_Intention.this;
     }
+
   }
 
   private static final class PROPS {

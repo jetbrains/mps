@@ -20,21 +20,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AddRemoveMessage_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddRemoveMessage_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:ae5a3427-e70c-4b57-99b6-7ec8fc28a394(jetbrains.mps.baseLanguage.unitTest.intentions)", "7080278351417190887"));
   }
+
   @Override
   public String getPresentation() {
     return "AddRemoveMessage";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -44,10 +44,12 @@ public final class AddRemoveMessage_Intention extends AbstractIntentionDescripto
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return ((SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.message$SzPZ), LINKS.message$FmaW) == null) ? "Add message" : "Remove message");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.message$SzPZ), LINKS.message$FmaW) == null)) {
@@ -56,10 +58,19 @@ public final class AddRemoveMessage_Intention extends AbstractIntentionDescripto
         SLinkOperations.setTarget(node, LINKS.message$SzPZ, null);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddRemoveMessage_Intention.this;
     }
+
   }
 
   private static final class LINKS {

@@ -22,21 +22,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class CreateListAntiquotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public CreateListAntiquotation_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:f4b34c7d-c02f-43b9-b6e7-feff8966461c(jetbrains.mps.lang.quotation.intentions)", "1227886484790"));
   }
+
   @Override
   public String getPresentation() {
     return "CreateListAntiquotation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -46,10 +46,12 @@ public final class CreateListAntiquotation_Intention extends AbstractIntentionDe
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Create List Antiquotation";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode contextNode = editorContext.getSelectedCell().getSNode();
@@ -70,10 +72,19 @@ public final class CreateListAntiquotation_Intention extends AbstractIntentionDe
         editorContext.selectWRTFocusPolicy(listAntiquotation);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return CreateListAntiquotation_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

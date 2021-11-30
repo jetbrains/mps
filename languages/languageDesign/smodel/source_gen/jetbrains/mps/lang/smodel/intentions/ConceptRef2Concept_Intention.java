@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class ConceptRef2Concept_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConceptRef2Concept_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902ff(jetbrains.mps.lang.smodel.intentions)", "670386341911240301"));
   }
+
   @Override
   public String getPresentation() {
     return "ConceptRef2Concept";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,20 +45,31 @@ public final class ConceptRef2Concept_Intention extends AbstractIntentionDescrip
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to concept<...>";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode repl = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x24b2bf7ce180eb54L, "jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression"));
       SLinkOperations.setTarget(repl, LINKS.conceptDeclaration$l13w, SLinkOperations.getTarget(node, LINKS.conceptDeclaration$8CqL));
       SNodeOperations.replaceWithAnother(node, repl);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConceptRef2Concept_Intention.this;
     }
+
   }
 
   private static final class LINKS {

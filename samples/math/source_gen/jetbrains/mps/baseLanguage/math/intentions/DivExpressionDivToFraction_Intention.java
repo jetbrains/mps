@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class DivExpressionDivToFraction_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public DivExpressionDivToFraction_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:57529505-426f-4f87-bbc0-2843f12bd318(jetbrains.mps.baseLanguage.math.intentions)", "1237104500799"));
   }
+
   @Override
   public String getPresentation() {
     return "DivExpressionDivToFraction";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,18 +45,29 @@ public final class DivExpressionDivToFraction_Intention extends AbstractIntentio
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Use Fraction Notation for Division Operation";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNodeOperations.replaceWithAnother(node, _quotation_createNode_drx02_a0a0a0(SLinkOperations.getTarget(node, LINKS.leftExpression$sEj), SLinkOperations.getTarget(node, LINKS.rightExpression$nvX)));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return DivExpressionDivToFraction_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_drx02_a0a0a0(Object parameter_1, Object parameter_2) {
     SNode quotedNode_3 = null;

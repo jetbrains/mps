@@ -59,7 +59,7 @@ public class TestListPanel extends ListPanel<ITestNodeWrapper> {
       public List<ITestNodeWrapper> compute() {
         List<SNode> nodesList = new ArrayList<SNode>();
         Iterable<SAbstractConcept> wrappedRootConcepts = TestNodeWrapperFactory.getWrappedRootConcepts();
-        progress.start("Looking up...", Sequence.fromIterable(wrappedRootConcepts).count());
+        progress.start("Looking up test roots...", Sequence.fromIterable(wrappedRootConcepts).count());
         for (SAbstractConcept c : Sequence.fromIterable(wrappedRootConcepts)) {
           Set<SNode> usages = FindUsagesFacade.getInstance().findInstances(new ProjectScope(mpsProject), Collections.singleton(c), false, progress.subTask(1, SubProgressKind.REPLACING));
           ListSequence.fromList(nodesList).addSequence(SetSequence.fromSet(usages));
@@ -91,7 +91,7 @@ public class TestListPanel extends ListPanel<ITestNodeWrapper> {
   }
 
   public TestListPanel(Project project, boolean isTestMethods) {
-    super(project, "Tests");
+    super(project, "Test " + ((isTestMethods ? "methods" : "roots")));
     myIsTestMethods = isTestMethods;
     super.setData(ListSequence.fromList(new ArrayList<ITestNodeWrapper>()));
   }

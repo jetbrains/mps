@@ -20,21 +20,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AddPlaceholderChildAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddPlaceholderChildAttribute_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:aaff0f7f-e57d-4430-aea6-ff86ed5c75ae(jetbrains.mps.lang.editor.editorTest.intentions)", "3766420342434505259"));
   }
+
   @Override
   public String getPresentation() {
     return "AddPlaceholderChildAttribute";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -44,6 +44,7 @@ public final class AddPlaceholderChildAttribute_Intention extends AbstractIntent
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu).get(node) == null)) {
@@ -52,6 +53,7 @@ public final class AddPlaceholderChildAttribute_Intention extends AbstractIntent
         return "Remove Attribute";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu).get(node) == null)) {
@@ -60,10 +62,19 @@ public final class AddPlaceholderChildAttribute_Intention extends AbstractIntent
         SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.PlaceholderChildAttribute$pu).get(node));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddPlaceholderChildAttribute_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

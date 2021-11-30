@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class AddSimplePropertyAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddSimplePropertyAttribute_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:aaff0f7f-e57d-4430-aea6-ff86ed5c75ae(jetbrains.mps.lang.editor.editorTest.intentions)", "5527270534710867991"));
   }
+
   @Override
   public String getPresentation() {
     return "AddSimplePropertyAttribute";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,18 +45,29 @@ public final class AddSimplePropertyAttribute_Intention extends AbstractIntentio
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "add simple property attribute";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       new IAttributeDescriptor.PropertyAttribute(CONCEPTS.SimplePropertyAttribute$kA, PROPS.property$L27g).set(node, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x2c59702023f915adL, "jetbrains.mps.lang.editor.editorTest.structure.SimplePropertyAttribute")));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddSimplePropertyAttribute_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

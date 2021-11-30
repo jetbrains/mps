@@ -23,10 +23,11 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
-    <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
+    <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
+    <import index="w0gx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.modules(MPS.Core/)" />
     <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
@@ -2203,6 +2204,49 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="1htmYMkrQ6s" role="jymVt" />
+    <node concept="3clFb_" id="1htmYMks3qY" role="jymVt">
+      <property role="TrG5h" value="copy" />
+      <node concept="3Tm1VV" id="1htmYMks3qZ" role="1B3o_S" />
+      <node concept="2AHcQZ" id="1htmYMks3r1" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
+      <node concept="3uibUv" id="1htmYMksm1C" role="3clF45">
+        <ref role="3uigEE" node="4sYvxkKOO0G" resolve="ClonableList" />
+        <node concept="16syzq" id="1htmYMksnDO" role="11_B2D">
+          <ref role="16sUi3" node="4sYvxkKOO2W" resolve="T" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="1htmYMks3ra" role="3clF47">
+        <node concept="3cpWs8" id="1htmYMkszI0" role="3cqZAp">
+          <node concept="3cpWsn" id="1htmYMkszI6" role="3cpWs9">
+            <property role="TrG5h" value="result" />
+            <node concept="3uibUv" id="1htmYMkszI8" role="1tU5fm">
+              <ref role="3uigEE" node="4sYvxkKOO0G" resolve="ClonableList" />
+              <node concept="16syzq" id="1htmYMks$Mo" role="11_B2D">
+                <ref role="16sUi3" node="4sYvxkKOO2W" resolve="T" />
+              </node>
+            </node>
+            <node concept="2ShNRf" id="1htmYMks_O$" role="33vP2m">
+              <node concept="1pGfFk" id="1htmYMksAMd" role="2ShVmc">
+                <ref role="37wK5l" node="4sYvxkKOO0T" resolve="ClonableList" />
+                <node concept="37vLTw" id="1htmYMksC9n" role="37wK5m">
+                  <ref role="3cqZAo" node="4sYvxkKOO0H" resolve="myData" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="1htmYMksDny" role="3cqZAp">
+          <node concept="37vLTw" id="1htmYMksFtV" role="3cqZAk">
+            <ref role="3cqZAo" node="1htmYMkszI6" resolve="result" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="1htmYMks3rb" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="5aSLaYRVT16" role="jymVt" />
     <node concept="3clFb_" id="53CkPljtLRp" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -2349,6 +2393,15 @@
       <ref role="3uigEE" to="33ny:~AbstractList" resolve="AbstractList" />
       <node concept="16syzq" id="4sYvxkKOO2Y" role="11_B2D">
         <ref role="16sUi3" node="4sYvxkKOO2W" resolve="T" />
+      </node>
+    </node>
+    <node concept="3uibUv" id="1htmYMkrMd8" role="EKbjA">
+      <ref role="3uigEE" to="w0gx:~Copyable" resolve="Copyable" />
+      <node concept="3uibUv" id="1htmYMksitT" role="11_B2D">
+        <ref role="3uigEE" node="4sYvxkKOO0G" resolve="ClonableList" />
+        <node concept="16syzq" id="1htmYMksjLQ" role="11_B2D">
+          <ref role="16sUi3" node="4sYvxkKOO2W" resolve="T" />
+        </node>
       </node>
     </node>
   </node>

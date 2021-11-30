@@ -24,21 +24,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class ConvertToMethodFQNameSpecification_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertToMethodFQNameSpecification_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:b58ac159-1e62-40c6-8c0d-e9511a9824de(jetbrains.mps.lang.script.intentions)", "4126624587000694735"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertToMethodFQNameSpecification";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,20 +48,31 @@ public final class ConvertToMethodFQNameSpecification_Intention extends Abstract
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert Direct Method reference to hardcoded FQName specification";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode methodSpecification = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.FQNameMethodSpecification$6z);
       SPropertyOperations.assign(methodSpecification, PROPS.snodeId$n_lK, SLinkOperations.getTarget(node, LINKS.methodDeclaration$e4PM).getNodeId().toString());
       SNodeOperations.deleteNode(node);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertToMethodFQNameSpecification_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

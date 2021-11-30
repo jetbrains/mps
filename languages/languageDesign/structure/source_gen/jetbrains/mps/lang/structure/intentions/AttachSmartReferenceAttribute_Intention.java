@@ -10,11 +10,11 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -23,27 +23,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class AttachSmartReferenceAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AttachSmartReferenceAttribute_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:e5a8b5c7-85b5-4d59-9e4e-850a142e2560(jetbrains.mps.lang.structure.intentions)", "8842732777748598574"));
   }
+
   @Override
   public String getPresentation() {
     return "AttachSmartReferenceAttribute";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).isNotEmpty() && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node) == null);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -53,10 +47,12 @@ public final class AttachSmartReferenceAttribute_Intention extends AbstractInten
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Attach 'smart reference' Attribute";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).setNew(node);
@@ -64,10 +60,25 @@ public final class AttachSmartReferenceAttribute_Intention extends AbstractInten
         SLinkOperations.setTarget(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node), LINKS.charactersticReference$41pR, ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).first());
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return ListSequence.fromList(AbstractConceptDeclaration__BehaviorDescriptor.getReferenceLinkDeclarations_idhEwILL0.invoke(node)).isNotEmpty() && (new IAttributeDescriptor.NodeAttribute(CONCEPTS.SmartReferenceAttribute$B3).get(node) == null);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AttachSmartReferenceAttribute_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

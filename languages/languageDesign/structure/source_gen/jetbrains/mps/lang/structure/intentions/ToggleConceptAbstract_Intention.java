@@ -19,21 +19,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ToggleConceptAbstract_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ToggleConceptAbstract_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:e5a8b5c7-85b5-4d59-9e4e-850a142e2560(jetbrains.mps.lang.structure.intentions)", "4672725010143198841"));
   }
+
   @Override
   public String getPresentation() {
     return "ToggleConceptAbstract";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -43,11 +43,13 @@ public final class ToggleConceptAbstract_Intention extends AbstractIntentionDesc
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       String conceptName = SPropertyOperations.getString(node, PROPS.name$MnvL);
       return (SPropertyOperations.getBoolean(node, PROPS.abstract$ibpT) ? "Make '" + conceptName + "' Not Abstract" : "Make '" + conceptName + "' Abstract");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SPropertyOperations.set(node, PROPS.abstract$ibpT, !(SPropertyOperations.getBoolean(node, PROPS.abstract$ibpT)));
@@ -55,10 +57,19 @@ public final class ToggleConceptAbstract_Intention extends AbstractIntentionDesc
         SPropertyOperations.set(node, PROPS.final$ic$Y, false);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ToggleConceptAbstract_Intention.this;
     }
+
   }
 
   private static final class PROPS {

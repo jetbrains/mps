@@ -25,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +34,6 @@ import java.util.Map;
  * Date: 11/1/12
  */
 interface IntentionsVisitor {
-
   boolean visit(@NotNull IntentionFactory intentionFactory, SNode node);
 
   class CollectAvailableIntentionsVisitor implements IntentionsVisitor {
@@ -50,9 +50,11 @@ interface IntentionsVisitor {
     public boolean visit(@NotNull IntentionFactory intentionFactory, SNode node) {
       for (IntentionExecutable executable : intentionFactory.instances(node, myEditorContext)) {
         try {
-          result.put(executable, intentionFactory.getKind());
-        } catch (Exception e) {
-          LOG.error("Exception during parameterized intentions instantiation", e);
+          if (executable.isApplicable(node, myEditorContext)) {
+            result.put(executable, intentionFactory.getKind());
+          }
+        } catch (Throwable t) {
+          LOG.error("Exception during parameterized intentions instantiation", t);
         }
       }
       return true;
@@ -74,10 +76,21 @@ interface IntentionsVisitor {
 
     @Override
     public boolean visit(@NotNull IntentionFactory intentionFactory, SNode node) {
-      if (intentionFactory.instances(node, myEditorContext).size() > 0) {
+      boolean isEmpty = true;
+      for (var executable : intentionFactory.instances(node, myEditorContext)) {
+        try {
+          if (executable.isApplicable(node, myEditorContext)) {
+            isEmpty = false;
+            break;
+          }
+        } catch (Throwable t) {
+          LogManager.getLogger(IntentionsVisitor.class).error("Exception during parameterized intentions instantiation", t);
+        }
+      }
+      if (!isEmpty) {
         myIntentionKind = intentionFactory.getKind();
       }
-      return myIntentionKind == null || myIntentionKind.ordinal() > 0;
+      return myIntentionKind == null || !myIntentionKind.IsTheMostSevere();
     }
 
     @Nullable

@@ -10,11 +10,11 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.typesystem.behavior.MessageStatement__BehaviorDescriptor;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -22,27 +22,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AddMessageAnnotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddMessageAnnotation_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902b2(jetbrains.mps.lang.typesystem.intentions)", "9057440207251474622"));
   }
+
   @Override
   public String getPresentation() {
     return "AddMessageAnnotation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig).get(node) == null);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -52,19 +46,36 @@ public final class AddMessageAnnotation_Intention extends AbstractIntentionDescr
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Add Message Label";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       MessageStatement__BehaviorDescriptor.attachNewMessageAnnotation_id7nf9pEwlup1.invoke(node);
       SelectionUtil.selectCell(editorContext, new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig).get(node), SelectionManager.FIRST_EDITABLE_CELL);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return (new IAttributeDescriptor.NodeAttribute(CONCEPTS.MessageStatementAnnotation$Ig).get(node) == null);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddMessageAnnotation_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

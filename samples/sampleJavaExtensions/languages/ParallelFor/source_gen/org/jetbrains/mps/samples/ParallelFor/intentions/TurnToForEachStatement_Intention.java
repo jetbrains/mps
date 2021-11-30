@@ -29,21 +29,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class TurnToForEachStatement_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public TurnToForEachStatement_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:2614090b-4018-4457-8ad5-c503bc8936fb(org.jetbrains.mps.samples.ParallelFor.intentions)", "5384012304952504715"));
   }
+
   @Override
   public String getPresentation() {
     return "TurnToForEachStatement";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -53,10 +53,12 @@ public final class TurnToForEachStatement_Intention extends AbstractIntentionDes
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Turn to Sequential";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode forStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.ForEachStatement$RO, null);
@@ -83,10 +85,19 @@ public final class TurnToForEachStatement_Intention extends AbstractIntentionDes
       SNodeOperations.replaceWithAnother(node, forStatement);
       editorContext.selectWRTFocusPolicy(variable);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return TurnToForEachStatement_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

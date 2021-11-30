@@ -32,10 +32,10 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public enum JUnitRunTypes {
+public enum JUnitRunTypes implements JUnitRunType {
   PROJECT() {
     @Override
-    protected List<ITestNodeWrapper> doCollect(JUnitSettings_Configuration configuration, MPSProject project, ProgressMonitor monitor) {
+    public List<ITestNodeWrapper> doCollect(JUnitSettings_Configuration configuration, MPSProject project, ProgressMonitor monitor) {
       return new ProjectTestCollector(project, monitor, false).collect();
     }
     @Override
@@ -54,7 +54,7 @@ public enum JUnitRunTypes {
   },
   MODULE() {
     @Override
-    protected List<ITestNodeWrapper> doCollect(JUnitSettings_Configuration configuration, MPSProject project, ProgressMonitor monitor) {
+    public List<ITestNodeWrapper> doCollect(JUnitSettings_Configuration configuration, MPSProject project, ProgressMonitor monitor) {
       SModule module = getModule(project, configuration.getModuleReference());
       if (module == null) {
         return ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
@@ -88,13 +88,14 @@ public enum JUnitRunTypes {
   },
   MODEL() {
     @Override
-    protected List<ITestNodeWrapper> doCollect(JUnitSettings_Configuration configuration, MPSProject project, ProgressMonitor monitor) {
+    public List<ITestNodeWrapper> doCollect(JUnitSettings_Configuration configuration, MPSProject project, ProgressMonitor monitor) {
       SModel model = getModel(project, configuration.getModelReference());
       if (model == null) {
         return ListSequence.fromList(new ArrayList<ITestNodeWrapper>());
       }
       return new ModelTestCollector(model, monitor, false).collect();
     }
+    @Override
     public String check(JUnitSettings_Configuration configuration, MPSProject project) {
       if (configuration.getModelReference() == null) {
         return "Model is not selected.";
@@ -112,6 +113,7 @@ public enum JUnitRunTypes {
       }
       return null;
     }
+    @Override
     public boolean hasTests(JUnitSettings_Configuration configuration, MPSProject project) {
       SModel model = getModel(project, configuration.getModelReference());
       if (model == null) {
@@ -123,7 +125,7 @@ public enum JUnitRunTypes {
   },
   NODE() {
     @Override
-    protected List<ITestNodeWrapper> doCollect(JUnitSettings_Configuration configuration, MPSProject project, ProgressMonitor monitor) {
+    public List<ITestNodeWrapper> doCollect(JUnitSettings_Configuration configuration, MPSProject project, ProgressMonitor monitor) {
       return TestUtils.wrapPointerStrings(project, configuration.getTestCases());
     }
     public String check(JUnitSettings_Configuration configuration, MPSProject project) {
@@ -157,7 +159,7 @@ public enum JUnitRunTypes {
   },
   METHOD() {
     @Override
-    protected List<ITestNodeWrapper> doCollect(JUnitSettings_Configuration configuration, MPSProject project, ProgressMonitor monitor) {
+    public List<ITestNodeWrapper> doCollect(JUnitSettings_Configuration configuration, MPSProject project, ProgressMonitor monitor) {
       return TestUtils.wrapPointerStrings(project, configuration.getTestMethods());
     }
     @Override
@@ -169,15 +171,15 @@ public enum JUnitRunTypes {
         for (String method : configuration.getTestMethods()) {
           SNodeReference pointer = PointerUtils.stringToPointer(method);
           if (pointer == null) {
-            SNode testMethpdNode = pointer.resolve(project.getRepository());
-            if (testMethpdNode != null) {
-              SModel model = testMethpdNode.getModel();
+            SNode testMethodNode = pointer.resolve(project.getRepository());
+            if (testMethodNode != null) {
+              SModel model = testMethodNode.getModel();
               SNode module = SModelOperations.getModuleStub(model);
               if (!(SPropertyOperations.getBoolean(module, PROPS.compileInMPS$2Q_X))) {
                 return "The module's " + SNodeOperations.present(module) + " compile output is not managed by MPS.";
               }
             }
-            if (testMethpdNode == null || TestNodeWrapperFactory.tryToWrap(testMethpdNode) == null) {
+            if (testMethodNode == null || TestNodeWrapperFactory.tryToWrap(testMethodNode) == null) {
               return "Could not find test method for id " + method + ".";
             }
           }
@@ -195,6 +197,7 @@ public enum JUnitRunTypes {
   private JUnitRunTypes() {
   }
 
+  @Override
   public final List<ITestNodeWrapper> collect(final JUnitSettings_Configuration configuration, final MPSProject project) {
     final Wrappers._T<List<ITestNodeWrapper>> result = new Wrappers._T<List<ITestNodeWrapper>>();
     ProgressManager.getInstance().run(new Task.Modal(project.getProject(), "Collecting Tests to Run", true) {
@@ -226,12 +229,6 @@ public enum JUnitRunTypes {
     }
     return module.resolve(mpsProject.getRepository());
   }
-
-  protected abstract List<ITestNodeWrapper> doCollect(JUnitSettings_Configuration configuration, @NotNull MPSProject project, ProgressMonitor monitor);
-
-  public abstract boolean hasTests(JUnitSettings_Configuration configuration, @NotNull MPSProject project);
-
-  public abstract String check(JUnitSettings_Configuration configuration, @NotNull MPSProject project);
 
   private static final class PROPS {
     /*package*/ static final SProperty compileInMPS$2Q_X = MetaAdapterFactory.getProperty(0x86ef829012bb4ca7L, 0x947f093788f263a9L, 0x5869770da61dfe1eL, 0x5869770da61dfe24L, "compileInMPS");

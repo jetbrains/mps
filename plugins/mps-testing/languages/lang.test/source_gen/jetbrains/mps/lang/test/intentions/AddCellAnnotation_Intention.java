@@ -10,9 +10,9 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -33,27 +33,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class AddCellAnnotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddCellAnnotation_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c89590386(jetbrains.mps.lang.test.intentions)", "1225963656881"));
   }
+
   @Override
   public String getPresentation() {
     return "AddCellAnnotation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getNodeAncestor(node, CONCEPTS.TestNode$zF, false, false)), CONCEPTS.EditorTestCase$DN);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -63,10 +57,12 @@ public final class AddCellAnnotation_Intention extends AbstractIntentionDescript
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Add Editor Test Annotation (Record Cursor State)";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode ancessor = node;
@@ -105,16 +101,31 @@ public final class AddCellAnnotation_Intention extends AbstractIntentionDescript
       new IAttributeDescriptor.NodeAttribute(CONCEPTS.AnonymousCellAnnotation$hB).set(node, newAnnotation);
       SelectionUtil.selectNode(editorContext, newAnnotation);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return SNodeOperations.isInstanceOf(SNodeOperations.getParent(SNodeOperations.getNodeAncestor(node, CONCEPTS.TestNode$zF, false, false)), CONCEPTS.EditorTestCase$DN);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddCellAnnotation_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept TestNode$zF = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode");
     /*package*/ static final SConcept EditorTestCase$DN = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e314b20e0L, "jetbrains.mps.lang.test.structure.EditorTestCase");
     /*package*/ static final SConcept AnonymousCellAnnotation$hB = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
+    /*package*/ static final SConcept TestNode$zF = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b5a38fc01L, "jetbrains.mps.lang.test.structure.TestNode");
   }
 
   private static final class PROPS {
