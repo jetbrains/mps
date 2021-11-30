@@ -14,8 +14,6 @@ import javax.swing.Box;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import java.awt.BorderLayout;
-import jetbrains.mps.baseLanguage.execution.api.JavaConfigurationEditorComponent;
-import jetbrains.mps.execution.configurations.implementation.plugin.plugin.DeployEditorPanel;
 
 /**
  * extends JComponent only of idiotic logic in the editor part of run configurations, where you must pass JComponent with no context
@@ -55,16 +53,15 @@ public final class JUnitConfigurationEditorComponent extends JComponent {
     checkboxPanel.add(myReuseCachesCheckBox, BorderLayout.WEST);
     myPanel.add(checkboxPanel);
     myPanel.add(createSaveCachesPanel());
+    init();
   }
 
   private void syncCachesDirWithCheckBoxes(InProcessJBCheckBox checkbox) {
     myCachesDir.setEnabled(myOverrideCachesCheckBox.isSelected() & !(checkbox.isSelected()));
   }
 
-  public void attachJavaAndDeployComponentsAndUpdateInProcessFlag(JavaConfigurationEditorComponent javaEditorComponent, DeployEditorPanel deployEditorPanel) {
-    for (InProcessJBCheckBox checkbox : myScopeAndPanels.getInProcessCheckBoxes()) {
-      checkbox.registerDisableIffSelectedUpdater(javaEditorComponent);
-      checkbox.registerDisableIffSelectedUpdater(deployEditorPanel);
+  private void init() {
+    for (final InProcessJBCheckBox checkbox : myScopeAndPanels.getInProcessCheckBoxes()) {
       checkbox.registerDisableIffSelectedUpdater(myReuseCachesCheckBox);
       checkbox.registerDisableIffSelectedUpdater(myOverrideCachesCheckBox);
       InProcessJBCheckBox.Updater cachesDirUpdater = new InProcessJBCheckBox.Updater() {
@@ -74,6 +71,20 @@ public final class JUnitConfigurationEditorComponent extends JComponent {
         }
       };
       checkbox.registerUpdater(cachesDirUpdater);
+      checkbox.forceUpdate();
+    }
+  }
+
+  /**
+   * Disable supplied component when 'in-process' setting has been activated.
+   * Intended for use from run configurations that use JUnit settings along with other settings that may need to reflect 
+   * state of the 'in-process' setting.
+   */
+  public void disableComponentWhenInProcess(JComponent... component) {
+    for (final InProcessJBCheckBox checkbox : myScopeAndPanels.getInProcessCheckBoxes()) {
+      for (JComponent c : component) {
+        checkbox.registerDisableIffSelectedUpdater(c);
+      }
       checkbox.forceUpdate();
     }
   }
