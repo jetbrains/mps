@@ -38,10 +38,6 @@ public interface IntentionDescriptor {
 
   boolean isAvailableInChildNodes();
 
-  /**
-   * @deprecated we migrate to #instances, and define applicability for each instance separately
-   */
-  @Deprecated(since = "2020.3")
   default boolean isApplicable(SNode node, EditorContext editorContext) {
     return true;
   }

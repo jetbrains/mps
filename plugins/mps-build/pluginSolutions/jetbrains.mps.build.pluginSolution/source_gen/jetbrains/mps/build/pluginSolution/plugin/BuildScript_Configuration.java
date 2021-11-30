@@ -113,7 +113,7 @@ public final class BuildScript_Configuration extends BaseMpsRunConfiguration imp
   }
 
   @Override
-  @Deprecated(forRemoval = true, since = "2021.2")
+  @Deprecated
   public BuildScript_Configuration clone() {
     BuildScript_Configuration clone = createCloneTemplate();
     clone.myNodePointer = (NodeByConcept_Configuration) myNodePointer.clone();
@@ -124,8 +124,8 @@ public final class BuildScript_Configuration extends BaseMpsRunConfiguration imp
   @Override
   public BuildScript_Configuration copy() {
     BuildScript_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
-    // the value of myState, and != clone as regular Java passer-by would expect. 
+    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
+    // the value of myState, and != clone as regular Java passer-by would expect.
     cloneTemplate.myNodePointer = ((Copyable<NodeByConcept_Configuration>) myNodePointer).copy();
     cloneTemplate.mySettings = ((Copyable<AntSettings_Configuration>) mySettings).copy();
     return cloneTemplate;

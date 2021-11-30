@@ -66,7 +66,7 @@ public final class DeployPluginsSettings_Configuration implements IPersistentCon
     return PointerUtils.clonableListToNodes(this.getPluginsToDeploy());
   }
   @Override
-  @Deprecated(forRemoval = true, since = "2021.2")
+  @Deprecated
   public DeployPluginsSettings_Configuration clone() {
     DeployPluginsSettings_Configuration clone = createCloneTemplate();
     try {

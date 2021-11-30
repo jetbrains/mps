@@ -102,7 +102,7 @@ public final class DeployPlugins_Configuration extends BaseMpsRunConfiguration i
     }
   }
   @Override
-  @Deprecated(forRemoval = true, since = "2021.2")
+  @Deprecated
   public DeployPlugins_Configuration clone() {
     DeployPlugins_Configuration clone = createCloneTemplate();
     try {

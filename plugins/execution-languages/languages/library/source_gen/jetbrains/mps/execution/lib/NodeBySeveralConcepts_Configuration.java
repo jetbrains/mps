@@ -110,7 +110,7 @@ public final class NodeBySeveralConcepts_Configuration implements IPersistentCon
     }) != null;
   }
   @Override
-  @Deprecated(forRemoval = true, since = "2021.2")
+  @Deprecated
   public NodeBySeveralConcepts_Configuration clone() {
     NodeBySeveralConcepts_Configuration clone = createCloneTemplate();
     try {

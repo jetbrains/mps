@@ -159,7 +159,7 @@ public final class Java_Configuration extends BaseMpsRunConfiguration implements
     return false;
   }
   @Override
-  @Deprecated(forRemoval = true, since = "2021.2")
+  @Deprecated
   public Java_Configuration clone() {
     Java_Configuration clone = createCloneTemplate();
     clone.myNode = (NodeBySeveralConcepts_Configuration) myNode.clone();

@@ -74,7 +74,7 @@ public final class MpsStartupSettings_Configuration implements IPersistentConfig
     return new File(configPath, "plugins");
   }
   @Override
-  @Deprecated(forRemoval = true, since = "2021.2")
+  @Deprecated
   public MpsStartupSettings_Configuration clone() {
     MpsStartupSettings_Configuration clone = createCloneTemplate();
     try {

@@ -80,7 +80,7 @@ public final class DemoApplication_Configuration extends BaseMpsRunConfiguration
   }
 
   @Override
-  @Deprecated(forRemoval = true, since = "2021.2")
+  @Deprecated
   public DemoApplication_Configuration clone() {
     DemoApplication_Configuration clone = createCloneTemplate();
     clone.myNode = (NodeByConcept_Configuration) myNode.clone();

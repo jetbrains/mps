@@ -54,7 +54,7 @@ public final class Remote_Configuration extends BaseMpsRunConfiguration implemen
   }
 
   @Override
-  @Deprecated(forRemoval = true, since = "2021.2")
+  @Deprecated
   public Remote_Configuration clone() {
     Remote_Configuration clone = createCloneTemplate();
     try {

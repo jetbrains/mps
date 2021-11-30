@@ -37,7 +37,7 @@ public final class AntSettings_Configuration implements IPersistentConfiguration
   }
 
   @Override
-  @Deprecated(forRemoval = true, since = "2021.2")
+  @Deprecated
   public AntSettings_Configuration clone() {
     AntSettings_Configuration clone = createCloneTemplate();
     try {
@@ -55,8 +55,8 @@ public final class AntSettings_Configuration implements IPersistentConfiguration
   @Override
   public AntSettings_Configuration copy() {
     AntSettings_Configuration cloneTemplate = createCloneTemplate();
-    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
-    // the value of myState, and != clone as regular Java passer-by would expect. 
+    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
+    // the value of myState, and != clone as regular Java passer-by would expect.
     cloneTemplate.myState = (MyState) myState.copy();
     return cloneTemplate;
   }

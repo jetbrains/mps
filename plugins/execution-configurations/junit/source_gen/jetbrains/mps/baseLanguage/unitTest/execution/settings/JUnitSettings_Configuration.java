@@ -167,7 +167,7 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
     return getJUnitRunType().collect(this, project);
   }
   @Override
-  @Deprecated(forRemoval = true, since = "2021.2")
+  @Deprecated
   public JUnitSettings_Configuration clone() {
     JUnitSettings_Configuration clone = createCloneTemplate();
     try {

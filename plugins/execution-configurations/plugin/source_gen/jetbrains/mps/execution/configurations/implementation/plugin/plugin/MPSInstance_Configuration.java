@@ -82,7 +82,7 @@ public final class MPSInstance_Configuration extends BaseMpsRunConfiguration imp
   }
 
   @Override
-  @Deprecated(forRemoval = true, since = "2021.2")
+  @Deprecated
   public MPSInstance_Configuration clone() {
     MPSInstance_Configuration clone = createCloneTemplate();
     clone.myMpsSettings = (MpsStartupSettings_Configuration) myMpsSettings.clone();

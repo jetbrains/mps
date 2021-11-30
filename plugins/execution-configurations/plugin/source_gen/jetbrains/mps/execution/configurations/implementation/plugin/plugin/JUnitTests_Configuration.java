@@ -137,7 +137,7 @@ public final class JUnitTests_Configuration extends BaseMpsRunConfiguration impl
     }
   }
   @Override
-  @Deprecated(forRemoval = true, since = "2021.2")
+  @Deprecated
   public JUnitTests_Configuration clone() {
     JUnitTests_Configuration clone = createCloneTemplate();
     clone.myJUnitSettings = (JUnitSettings_Configuration) myJUnitSettings.clone();

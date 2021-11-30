@@ -52,7 +52,7 @@ public final class JavaRunParameters_Configuration implements IPersistentConfigu
     return userDir;
   }
   @Override
-  @Deprecated(forRemoval = true, since = "2021.2")
+  @Deprecated
   public JavaRunParameters_Configuration clone() {
     JavaRunParameters_Configuration clone = createCloneTemplate();
     try {

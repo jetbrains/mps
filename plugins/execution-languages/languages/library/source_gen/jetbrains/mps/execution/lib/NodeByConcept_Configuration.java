@@ -90,7 +90,7 @@ public final class NodeByConcept_Configuration implements IPersistentConfigurati
     this.setNodePointer((nodePtr == null ? null : PersistenceFacade.getInstance().asString(nodePtr)));
   }
   @Override
-  @Deprecated(forRemoval = true, since = "2021.2")
+  @Deprecated
   public NodeByConcept_Configuration clone() {
     NodeByConcept_Configuration clone = createCloneTemplate();
     try {
