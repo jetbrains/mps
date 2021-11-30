@@ -24,6 +24,7 @@
     <classNode dependClassName="com.intellij.ui.ScrollPaneFactory" />
     <classNode dependClassName="com.intellij.ui.components.JBLabel" />
     <classNode dependClassName="com.intellij.ui.components.JBList" />
+    <classNode dependClassName="com.intellij.util.ui.JBUI" />
     <classNode dependClassName="java.awt.BorderLayout" />
     <classNode dependClassName="java.awt.GridBagLayout" />
     <classNode dependClassName="java.awt.event.ActionListener" />

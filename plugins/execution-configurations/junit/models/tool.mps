@@ -4038,7 +4038,14 @@
                     <node concept="3clFbF" id="4LTxumy2KMg" role="3cqZAp">
                       <node concept="1rXfSq" id="4LTxumy2KMe" role="3clFbG">
                         <ref role="37wK5l" node="4LTxumxZyeX" resolve="setSelected" />
-                        <node concept="10Nm6u" id="4LTxumy2LtM" role="37wK5m" />
+                        <node concept="1eOMI4" id="1htmYMkdzqD" role="37wK5m">
+                          <node concept="10QFUN" id="1htmYMkdzqA" role="1eOMHV">
+                            <node concept="3uibUv" id="1htmYMkd$c0" role="10QFUM">
+                              <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+                            </node>
+                            <node concept="10Nm6u" id="4LTxumy2LtM" role="10QFUP" />
+                          </node>
+                        </node>
                         <node concept="2YIFZM" id="4LTxumy1FKS" role="37wK5m">
                           <ref role="1Pybhc" node="3b_6O4IZPfR" resolve="UnitTestOptions" />
                           <ref role="37wK5l" node="3b_6O4IZPfX" resolve="isHidePassed" />
@@ -4155,7 +4162,14 @@
                     <node concept="3clFbF" id="4LTxumy2Lwn" role="3cqZAp">
                       <node concept="1rXfSq" id="4LTxumy2Lwo" role="3clFbG">
                         <ref role="37wK5l" node="4LTxumxZyfC" resolve="setSelected" />
-                        <node concept="10Nm6u" id="4LTxumy2Lwp" role="37wK5m" />
+                        <node concept="1eOMI4" id="1htmYMkd_fx" role="37wK5m">
+                          <node concept="10QFUN" id="1htmYMkd_fu" role="1eOMHV">
+                            <node concept="3uibUv" id="1htmYMkd_CR" role="10QFUM">
+                              <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+                            </node>
+                            <node concept="10Nm6u" id="4LTxumy2Lwp" role="10QFUP" />
+                          </node>
+                        </node>
                         <node concept="2YIFZM" id="4LTxumy1FKM" role="37wK5m">
                           <ref role="1Pybhc" node="3b_6O4IZPfR" resolve="UnitTestOptions" />
                           <ref role="37wK5l" node="3b_6O4IZPgb" resolve="isTrackRunning" />
@@ -4710,7 +4724,14 @@
                     <node concept="3clFbF" id="4LTxumy2Lyy" role="3cqZAp">
                       <node concept="1rXfSq" id="4LTxumy2Lyz" role="3clFbG">
                         <ref role="37wK5l" node="4LTxumxZyiM" resolve="setSelected" />
-                        <node concept="10Nm6u" id="4LTxumy2Ly$" role="37wK5m" />
+                        <node concept="1eOMI4" id="1htmYMkgD0s" role="37wK5m">
+                          <node concept="10QFUN" id="1htmYMkgD0p" role="1eOMHV">
+                            <node concept="3uibUv" id="1htmYMkgDLN" role="10QFUM">
+                              <ref role="3uigEE" to="qkt:~AnActionEvent" resolve="AnActionEvent" />
+                            </node>
+                            <node concept="10Nm6u" id="4LTxumy2Ly$" role="10QFUP" />
+                          </node>
+                        </node>
                         <node concept="2YIFZM" id="4LTxumy0Umv" role="37wK5m">
                           <ref role="1Pybhc" node="3b_6O4IZPfR" resolve="UnitTestOptions" />
                           <ref role="37wK5l" node="3b_6O4IZPgj" resolve="isSelectFirstFailed" />

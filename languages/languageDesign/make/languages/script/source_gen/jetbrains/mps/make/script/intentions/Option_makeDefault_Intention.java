@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class Option_makeDefault_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public Option_makeDefault_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:5909e14d-efc7-4305-a9c5-848760da6cbc(jetbrains.mps.make.script.intentions)", "8626841540115943116"));
   }
+
   @Override
   public String getPresentation() {
     return "Option_makeDefault";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,19 +45,30 @@ public final class Option_makeDefault_Intention extends AbstractIntentionDescrip
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return (SNodeOperations.getIndexInParent(node) != SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ExpectedOption$E3), PROPS.defaultOption$pSuc) ? "Make default" : "Make not default");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       boolean makeDefault = SNodeOperations.getIndexInParent(node) != SPropertyOperations.getInteger(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ExpectedOption$E3), PROPS.defaultOption$pSuc);
       SPropertyOperations.assign(SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ExpectedOption$E3), PROPS.defaultOption$pSuc, (makeDefault ? SNodeOperations.getIndexInParent(node) : -1));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return Option_makeDefault_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

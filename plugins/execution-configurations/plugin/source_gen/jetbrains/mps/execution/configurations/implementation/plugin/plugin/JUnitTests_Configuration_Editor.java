@@ -35,7 +35,7 @@ public class JUnitTests_Configuration_Editor extends SettingsEditorEx<JUnitTests
     JUnitConfigurationEditorComponent junitEditorComponent = myJUnitSettings.createEditor();
     DeployEditorPanel pluginsEditor = myDeploySettings.createEditor();
     junitEditorComponent.disableComponentWhenInProcess(javaEditorComponent, pluginsEditor);
-    resultPanel.add(junitEditorComponent, LayoutUtil.createPanelConstraints(0));
+    resultPanel.add(junitEditorComponent.getPanel(), LayoutUtil.createPanelConstraints(0));
     resultPanel.add(javaEditorComponent, LayoutUtil.createPanelConstraints(1));
     resultPanel.add(pluginsEditor, LayoutUtil.createPanelConstraints(2));
     return resultPanel;

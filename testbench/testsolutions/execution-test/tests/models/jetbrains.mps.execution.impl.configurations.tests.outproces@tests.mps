@@ -1140,19 +1140,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="4rbJdZOYJaS" role="3cqZAp">
-          <node concept="37vLTI" id="4rbJdZOYJaT" role="3clFbG">
-            <node concept="3clFbT" id="4rbJdZOYJaU" role="37vLTx" />
-            <node concept="2OqwBi" id="4rbJdZOYJaV" role="37vLTJ">
-              <node concept="37vLTw" id="4rbJdZOYJaW" role="2Oq$k0">
-                <ref role="3cqZAo" node="4rbJdZOYJaN" resolve="junitParams" />
-              </node>
-              <node concept="yHkDZ" id="4rbJdZOYJaX" role="2OqNvi">
-                <ref role="yHkDY" to="tty3:1hvQXBo5kdH" resolve="myInProcess" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="4rbJdZOYJaY" role="3cqZAp">
           <node concept="37vLTI" id="4rbJdZOYJaZ" role="3clFbG">
             <node concept="3clFbT" id="4rbJdZOYJb0" role="37vLTx">

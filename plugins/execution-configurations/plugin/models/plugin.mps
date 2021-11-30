@@ -2565,57 +2565,6 @@
         </node>
       </node>
     </node>
-    <node concept="yHkHE" id="4YEli8eHkYf" role="yHkHi">
-      <property role="TrG5h" value="checkInProcessRunIsSingle" />
-      <node concept="3cqZAl" id="4YEli8eHm07" role="3clF45" />
-      <node concept="3clFbS" id="4YEli8eHkYh" role="3clF47">
-        <node concept="3clFbJ" id="40rNy8FLQMS" role="3cqZAp">
-          <node concept="3clFbS" id="40rNy8FLQMV" role="3clFbx">
-            <node concept="yHkDM" id="40rNy8FM2gj" role="3cqZAp">
-              <node concept="Xl_RD" id="40rNy8FM2gB" role="yHkDO">
-                <property role="Xl_RC" value="There is already another instance running tests in-process. Only one instance is allowed to run in-process." />
-              </node>
-            </node>
-          </node>
-          <node concept="1Wc70l" id="40rNy8FLS0y" role="3clFbw">
-            <node concept="3y3z36" id="4YDgfhqaNU_" role="3uHU7w">
-              <node concept="2OqwBi" id="4YDgfhqaNUB" role="3uHU7B">
-                <node concept="2YIFZM" id="37RZV2urbl8" role="2Oq$k0">
-                  <ref role="37wK5l" node="78MxLJAHsh8" resolve="getInstance" />
-                  <ref role="1Pybhc" node="1$FrpHy4ud$" resolve="TestInProcessRunState" />
-                  <node concept="2OqwBi" id="6$65u8qbdlp" role="37wK5m">
-                    <node concept="2WthIp" id="6$65u8qbd1o" role="2Oq$k0" />
-                    <node concept="3a8Xsn" id="6$65u8qbdv7" role="2OqNvi" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="4YDgfhqaNUD" role="2OqNvi">
-                  <ref role="37wK5l" node="2A5UIbg69nv" resolve="get" />
-                </node>
-              </node>
-              <node concept="Rm8GO" id="4YDgfhqaNUE" role="3uHU7w">
-                <ref role="1Px2BO" node="1$FrpHy4ufC" resolve="RunStateEnum" />
-                <ref role="Rm8GQ" node="1$FrpHy4ufD" resolve="IDLE" />
-              </node>
-            </node>
-            <node concept="2OqwBi" id="37RZV2uof0k" role="3uHU7B">
-              <node concept="2OqwBi" id="40rNy8FLR5P" role="2Oq$k0">
-                <node concept="2WthIp" id="40rNy8FLQPn" role="2Oq$k0" />
-                <node concept="yHkDZ" id="37RZV2uoexv" role="2OqNvi">
-                  <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
-                </node>
-              </node>
-              <node concept="yHkDZ" id="37RZV2uofq7" role="2OqNvi">
-                <ref role="yHkDY" to="tty3:1hvQXBo5kdH" resolve="myInProcess" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="4YEli8eHlVn" role="1B3o_S" />
-      <node concept="3uibUv" id="4YEli8eH$GV" role="Sfmx6">
-        <ref role="3uigEE" to="dj99:~RuntimeConfigurationException" resolve="RuntimeConfigurationException" />
-      </node>
-    </node>
     <node concept="yHkDk" id="5gyVhZ1882n" role="yHkHj">
       <node concept="3clFbS" id="5gyVhZ1882o" role="2VODD2">
         <node concept="3clFbF" id="1X8FusBaf$Q" role="3cqZAp">
@@ -2770,8 +2719,13 @@
               </node>
               <node concept="liA8E" id="5gyVhZ1883x" role="2OqNvi">
                 <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
-                <node concept="37vLTw" id="3FQ5zX5utPX" role="37wK5m">
-                  <ref role="3cqZAo" node="3FQ5zX5utPT" resolve="junitEditorComponent" />
+                <node concept="2OqwBi" id="1_3tIz4JeRn" role="37wK5m">
+                  <node concept="37vLTw" id="3FQ5zX5utPX" role="2Oq$k0">
+                    <ref role="3cqZAo" node="3FQ5zX5utPT" resolve="junitEditorComponent" />
+                  </node>
+                  <node concept="liA8E" id="1_3tIz4JfrU" role="2OqNvi">
+                    <ref role="37wK5l" to="tty3:1_3tIz4DTt_" resolve="getPanel" />
+                  </node>
                 </node>
                 <node concept="1rwKMM" id="5gyVhZ1883z" role="37wK5m">
                   <property role="1rwKMK" value="panel" />
@@ -3010,6 +2964,57 @@
             <node concept="3a8Xsn" id="5dZuAAfok8A" role="2OqNvi" />
           </node>
         </node>
+      </node>
+    </node>
+    <node concept="yHkHE" id="4YEli8eHkYf" role="yHkHi">
+      <property role="TrG5h" value="checkInProcessRunIsSingle" />
+      <node concept="3cqZAl" id="4YEli8eHm07" role="3clF45" />
+      <node concept="3clFbS" id="4YEli8eHkYh" role="3clF47">
+        <node concept="3clFbJ" id="40rNy8FLQMS" role="3cqZAp">
+          <node concept="3clFbS" id="40rNy8FLQMV" role="3clFbx">
+            <node concept="yHkDM" id="40rNy8FM2gj" role="3cqZAp">
+              <node concept="Xl_RD" id="40rNy8FM2gB" role="yHkDO">
+                <property role="Xl_RC" value="There is already another instance running tests in-process. Only one instance is allowed to run in-process." />
+              </node>
+            </node>
+          </node>
+          <node concept="1Wc70l" id="40rNy8FLS0y" role="3clFbw">
+            <node concept="3y3z36" id="4YDgfhqaNU_" role="3uHU7w">
+              <node concept="2OqwBi" id="4YDgfhqaNUB" role="3uHU7B">
+                <node concept="2YIFZM" id="37RZV2urbl8" role="2Oq$k0">
+                  <ref role="37wK5l" node="78MxLJAHsh8" resolve="getInstance" />
+                  <ref role="1Pybhc" node="1$FrpHy4ud$" resolve="TestInProcessRunState" />
+                  <node concept="2OqwBi" id="6$65u8qbdlp" role="37wK5m">
+                    <node concept="2WthIp" id="6$65u8qbd1o" role="2Oq$k0" />
+                    <node concept="3a8Xsn" id="6$65u8qbdv7" role="2OqNvi" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="4YDgfhqaNUD" role="2OqNvi">
+                  <ref role="37wK5l" node="2A5UIbg69nv" resolve="get" />
+                </node>
+              </node>
+              <node concept="Rm8GO" id="4YDgfhqaNUE" role="3uHU7w">
+                <ref role="1Px2BO" node="1$FrpHy4ufC" resolve="RunStateEnum" />
+                <ref role="Rm8GQ" node="1$FrpHy4ufD" resolve="IDLE" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="37RZV2uof0k" role="3uHU7B">
+              <node concept="2OqwBi" id="40rNy8FLR5P" role="2Oq$k0">
+                <node concept="2WthIp" id="40rNy8FLQPn" role="2Oq$k0" />
+                <node concept="yHkDZ" id="37RZV2uoexv" role="2OqNvi">
+                  <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
+                </node>
+              </node>
+              <node concept="yHkDZ" id="37RZV2uofq7" role="2OqNvi">
+                <ref role="yHkDY" to="tty3:1hvQXBo5kdH" resolve="myInProcess" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="4YEli8eHlVn" role="1B3o_S" />
+      <node concept="3uibUv" id="4YEli8eH$GV" role="Sfmx6">
+        <ref role="3uigEE" to="dj99:~RuntimeConfigurationException" resolve="RuntimeConfigurationException" />
       </node>
     </node>
   </node>
@@ -3511,26 +3516,6 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="3y7Yu5aPIlR" role="3cqZAp">
-            <node concept="37vLTI" id="3y7Yu5aPMi4" role="3clFbG">
-              <node concept="3clFbT" id="3y7Yu5aPMp5" role="37vLTx">
-                <property role="3clFbU" value="false" />
-              </node>
-              <node concept="2OqwBi" id="3y7Yu5aPJhP" role="37vLTJ">
-                <node concept="2OqwBi" id="3y7Yu5aPIGc" role="2Oq$k0">
-                  <node concept="37vLTw" id="3y7Yu5aPIlP" role="2Oq$k0">
-                    <ref role="3cqZAo" node="5gyVhZ1887C" resolve="configuration" />
-                  </node>
-                  <node concept="yHkDZ" id="3y7Yu5aPJ0T" role="2OqNvi">
-                    <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
-                  </node>
-                </node>
-                <node concept="yHkDZ" id="3y7Yu5aPLym" role="2OqNvi">
-                  <ref role="yHkDY" to="tty3:1hvQXBo5kdH" resolve="myInProcess" />
-                </node>
-              </node>
-            </node>
-          </node>
           <node concept="3cpWs6" id="5gyVhZ1887N" role="3cqZAp">
             <node concept="37vLTw" id="3GM_nagTsNS" role="3cqZAk">
               <ref role="3cqZAo" node="5gyVhZ1887C" resolve="configuration" />
@@ -3748,26 +3733,6 @@
                 </node>
                 <node concept="yHkDZ" id="5gyVhZ1bqMB" role="2OqNvi">
                   <ref role="yHkDY" to="tty3:5gyVhZ1bmcj" resolve="myModuleRef" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbF" id="5qZfoDoCC_E" role="3cqZAp">
-            <node concept="37vLTI" id="5qZfoDoCC_F" role="3clFbG">
-              <node concept="3clFbT" id="5qZfoDoCE3d" role="37vLTx">
-                <property role="3clFbU" value="false" />
-              </node>
-              <node concept="2OqwBi" id="5qZfoDoCC_H" role="37vLTJ">
-                <node concept="2OqwBi" id="5qZfoDoCC_I" role="2Oq$k0">
-                  <node concept="37vLTw" id="5qZfoDoCC_J" role="2Oq$k0">
-                    <ref role="3cqZAo" node="5gyVhZ1886W" resolve="configuration" />
-                  </node>
-                  <node concept="yHkDZ" id="5qZfoDoCC_K" role="2OqNvi">
-                    <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
-                  </node>
-                </node>
-                <node concept="yHkDZ" id="5qZfoDoCC_L" role="2OqNvi">
-                  <ref role="yHkDY" to="tty3:1hvQXBo5kdH" resolve="myInProcess" />
                 </node>
               </node>
             </node>
@@ -4034,26 +3999,6 @@
                 </node>
                 <node concept="yHkDZ" id="9iT$9ktjjp" role="2OqNvi">
                   <ref role="yHkDY" to="tty3:5gyVhZ1bmcj" resolve="myModuleRef" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbF" id="5qZfoDoCJmV" role="3cqZAp">
-            <node concept="37vLTI" id="5qZfoDoCJmW" role="3clFbG">
-              <node concept="3clFbT" id="5qZfoDoCKrK" role="37vLTx">
-                <property role="3clFbU" value="false" />
-              </node>
-              <node concept="2OqwBi" id="5qZfoDoCJmY" role="37vLTJ">
-                <node concept="2OqwBi" id="5qZfoDoCJmZ" role="2Oq$k0">
-                  <node concept="37vLTw" id="5qZfoDoCJn0" role="2Oq$k0">
-                    <ref role="3cqZAo" node="5gyVhZ18866" resolve="configuration" />
-                  </node>
-                  <node concept="yHkDZ" id="5qZfoDoCJn1" role="2OqNvi">
-                    <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
-                  </node>
-                </node>
-                <node concept="yHkDZ" id="5qZfoDoCJn2" role="2OqNvi">
-                  <ref role="yHkDY" to="tty3:1hvQXBo5kdH" resolve="myInProcess" />
                 </node>
               </node>
             </node>
@@ -4392,27 +4337,32 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="AMTgNOhCyL" role="3cqZAp">
-            <node concept="37vLTI" id="AMTgNOhGUR" role="3clFbG">
-              <node concept="2OqwBi" id="40J2CKBnLGa" role="37vLTx">
-                <node concept="37vLTw" id="40J2CKBnLkD" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5gyVhZ1889m" resolve="wrapper" />
-                </node>
-                <node concept="liA8E" id="40J2CKBnMct" role="2OqNvi">
-                  <ref role="37wK5l" to="sfqd:40J2CKBlFWh" resolve="canRunInProcess" />
+          <node concept="3clFbJ" id="1_3tIz4emP4" role="3cqZAp">
+            <node concept="3clFbS" id="1_3tIz4emP6" role="3clFbx">
+              <node concept="3clFbF" id="1_3tIz4enMn" role="3cqZAp">
+                <node concept="2OqwBi" id="1_3tIz4e$Dx" role="3clFbG">
+                  <node concept="2OqwBi" id="AMTgNOhCIK" role="2Oq$k0">
+                    <node concept="37vLTw" id="AMTgNOhCyJ" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5gyVhZ1889D" resolve="configuration" />
+                    </node>
+                    <node concept="yHkDZ" id="AMTgNOhDt6" role="2OqNvi">
+                      <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
+                    </node>
+                  </node>
+                  <node concept="2XshWL" id="1_3tIz4e_OP" role="2OqNvi">
+                    <ref role="2WH_rO" to="tty3:1_3tIz4epWZ" resolve="setInProcessFlag" />
+                    <node concept="3clFbT" id="1_3tIz4e_Yq" role="2XxRq1" />
+                  </node>
                 </node>
               </node>
-              <node concept="2OqwBi" id="AMTgNOhDSi" role="37vLTJ">
-                <node concept="2OqwBi" id="AMTgNOhCIK" role="2Oq$k0">
-                  <node concept="37vLTw" id="AMTgNOhCyJ" role="2Oq$k0">
-                    <ref role="3cqZAo" node="5gyVhZ1889D" resolve="configuration" />
-                  </node>
-                  <node concept="yHkDZ" id="AMTgNOhDt6" role="2OqNvi">
-                    <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
-                  </node>
+            </node>
+            <node concept="3fqX7Q" id="1_3tIz4ep9m" role="3clFbw">
+              <node concept="2OqwBi" id="1_3tIz4ep9o" role="3fr31v">
+                <node concept="37vLTw" id="1_3tIz4ep9p" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5gyVhZ1889m" resolve="wrapper" />
                 </node>
-                <node concept="yHkDZ" id="AMTgNOhG1S" role="2OqNvi">
-                  <ref role="yHkDY" to="tty3:1hvQXBo5kdH" resolve="myInProcess" />
+                <node concept="liA8E" id="1_3tIz4ep9q" role="2OqNvi">
+                  <ref role="37wK5l" to="sfqd:40J2CKBlFWh" resolve="canRunInProcess" />
                 </node>
               </node>
             </node>
@@ -4858,27 +4808,32 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="AMTgNOilnS" role="3cqZAp">
-            <node concept="37vLTI" id="AMTgNOilnT" role="3clFbG">
-              <node concept="2OqwBi" id="40J2CKBoT5P" role="37vLTx">
-                <node concept="37vLTw" id="40J2CKBoSQj" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5gyVhZ18887" resolve="wrapper" />
-                </node>
-                <node concept="liA8E" id="40J2CKBoTMl" role="2OqNvi">
-                  <ref role="37wK5l" to="sfqd:40J2CKBlFWh" resolve="canRunInProcess" />
+          <node concept="3clFbJ" id="1_3tIz4eAdM" role="3cqZAp">
+            <node concept="3clFbS" id="1_3tIz4eAdN" role="3clFbx">
+              <node concept="3clFbF" id="1_3tIz4eAdO" role="3cqZAp">
+                <node concept="2OqwBi" id="1_3tIz4eAdP" role="3clFbG">
+                  <node concept="2OqwBi" id="1_3tIz4eAdQ" role="2Oq$k0">
+                    <node concept="37vLTw" id="1_3tIz4eAdR" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5gyVhZ1888o" resolve="configuration" />
+                    </node>
+                    <node concept="yHkDZ" id="1_3tIz4eAdS" role="2OqNvi">
+                      <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
+                    </node>
+                  </node>
+                  <node concept="2XshWL" id="1_3tIz4eAdT" role="2OqNvi">
+                    <ref role="2WH_rO" to="tty3:1_3tIz4epWZ" resolve="setInProcessFlag" />
+                    <node concept="3clFbT" id="1_3tIz4eAdU" role="2XxRq1" />
+                  </node>
                 </node>
               </node>
-              <node concept="2OqwBi" id="AMTgNOilnV" role="37vLTJ">
-                <node concept="2OqwBi" id="AMTgNOilnW" role="2Oq$k0">
-                  <node concept="37vLTw" id="AMTgNOilnX" role="2Oq$k0">
-                    <ref role="3cqZAo" node="5gyVhZ1888o" resolve="configuration" />
-                  </node>
-                  <node concept="yHkDZ" id="AMTgNOilnY" role="2OqNvi">
-                    <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
-                  </node>
+            </node>
+            <node concept="3fqX7Q" id="1_3tIz4eAdV" role="3clFbw">
+              <node concept="2OqwBi" id="1_3tIz4eAdW" role="3fr31v">
+                <node concept="37vLTw" id="1_3tIz4eAdX" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5gyVhZ18887" resolve="wrapper" />
                 </node>
-                <node concept="yHkDZ" id="AMTgNOilnZ" role="2OqNvi">
-                  <ref role="yHkDY" to="tty3:1hvQXBo5kdH" resolve="myInProcess" />
+                <node concept="liA8E" id="1_3tIz4eAdY" role="2OqNvi">
+                  <ref role="37wK5l" to="sfqd:40J2CKBlFWh" resolve="canRunInProcess" />
                 </node>
               </node>
             </node>
@@ -5283,23 +5238,28 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="1uEBw$5rxEl" role="3cqZAp">
-            <node concept="37vLTI" id="1uEBw$5rEHF" role="3clFbG">
-              <node concept="37vLTw" id="1uEBw$5rFL2" role="37vLTx">
-                <ref role="3cqZAo" node="1uEBw$5r9bF" resolve="canRunInProcess" />
+          <node concept="3clFbJ" id="1_3tIz4eRzX" role="3cqZAp">
+            <node concept="3clFbS" id="1_3tIz4eRzY" role="3clFbx">
+              <node concept="3clFbF" id="1_3tIz4eRzZ" role="3cqZAp">
+                <node concept="2OqwBi" id="1_3tIz4eR$0" role="3clFbG">
+                  <node concept="2OqwBi" id="1_3tIz4eR$1" role="2Oq$k0">
+                    <node concept="37vLTw" id="1_3tIz4eR$2" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5gyVhZ188aw" resolve="configuration" />
+                    </node>
+                    <node concept="yHkDZ" id="1_3tIz4eR$3" role="2OqNvi">
+                      <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
+                    </node>
+                  </node>
+                  <node concept="2XshWL" id="1_3tIz4eR$4" role="2OqNvi">
+                    <ref role="2WH_rO" to="tty3:1_3tIz4epWZ" resolve="setInProcessFlag" />
+                    <node concept="3clFbT" id="1_3tIz4eR$5" role="2XxRq1" />
+                  </node>
+                </node>
               </node>
-              <node concept="2OqwBi" id="1uEBw$5r_Jd" role="37vLTJ">
-                <node concept="2OqwBi" id="1uEBw$5ryGA" role="2Oq$k0">
-                  <node concept="37vLTw" id="1uEBw$5rxEj" role="2Oq$k0">
-                    <ref role="3cqZAo" node="5gyVhZ188aw" resolve="configuration" />
-                  </node>
-                  <node concept="yHkDZ" id="1uEBw$5r$vu" role="2OqNvi">
-                    <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
-                  </node>
-                </node>
-                <node concept="yHkDZ" id="1uEBw$5rCpH" role="2OqNvi">
-                  <ref role="yHkDY" to="tty3:1hvQXBo5kdH" resolve="myInProcess" />
-                </node>
+            </node>
+            <node concept="3fqX7Q" id="1_3tIz4fp3J" role="3clFbw">
+              <node concept="37vLTw" id="1_3tIz4fp3L" role="3fr31v">
+                <ref role="3cqZAo" node="1uEBw$5r9bF" resolve="canRunInProcess" />
               </node>
             </node>
           </node>
@@ -5453,23 +5413,28 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="2kwDHsIl_iS" role="3cqZAp">
-            <node concept="37vLTI" id="2kwDHsIl_iT" role="3clFbG">
-              <node concept="37vLTw" id="2kwDHsIl_iU" role="37vLTx">
-                <ref role="3cqZAo" node="2kwDHsIl_YH" resolve="canRunInProcess" />
+          <node concept="3clFbJ" id="1_3tIz4frXB" role="3cqZAp">
+            <node concept="3clFbS" id="1_3tIz4frXD" role="3clFbx">
+              <node concept="3clFbF" id="2kwDHsIl_iS" role="3cqZAp">
+                <node concept="2OqwBi" id="1_3tIz4fzWI" role="3clFbG">
+                  <node concept="2OqwBi" id="2kwDHsIl_iW" role="2Oq$k0">
+                    <node concept="37vLTw" id="2kwDHsIl_iX" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5gyVhZ188b0" resolve="configuration" />
+                    </node>
+                    <node concept="yHkDZ" id="2kwDHsIl_iY" role="2OqNvi">
+                      <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
+                    </node>
+                  </node>
+                  <node concept="2XshWL" id="1_3tIz4f_uf" role="2OqNvi">
+                    <ref role="2WH_rO" to="tty3:1_3tIz4epWZ" resolve="setInProcessFlag" />
+                    <node concept="3clFbT" id="1_3tIz4fAI4" role="2XxRq1" />
+                  </node>
+                </node>
               </node>
-              <node concept="2OqwBi" id="2kwDHsIl_iV" role="37vLTJ">
-                <node concept="2OqwBi" id="2kwDHsIl_iW" role="2Oq$k0">
-                  <node concept="37vLTw" id="2kwDHsIl_iX" role="2Oq$k0">
-                    <ref role="3cqZAo" node="5gyVhZ188b0" resolve="configuration" />
-                  </node>
-                  <node concept="yHkDZ" id="2kwDHsIl_iY" role="2OqNvi">
-                    <ref role="yHkDY" node="5gyVhZ1ayaO" resolve="myJUnitSettings" />
-                  </node>
-                </node>
-                <node concept="yHkDZ" id="2kwDHsIl_iZ" role="2OqNvi">
-                  <ref role="yHkDY" to="tty3:1hvQXBo5kdH" resolve="myInProcess" />
-                </node>
+            </node>
+            <node concept="3fqX7Q" id="1_3tIz4ftmq" role="3clFbw">
+              <node concept="37vLTw" id="1_3tIz4ftmu" role="3fr31v">
+                <ref role="3cqZAo" node="2kwDHsIl_YH" resolve="canRunInProcess" />
               </node>
             </node>
           </node>
@@ -15190,6 +15155,9 @@
         </node>
         <node concept="3clFbF" id="78MxLJAHzfT" role="3cqZAp">
           <node concept="37vLTI" id="78MxLJAHzM4" role="3clFbG">
+            <node concept="37vLTw" id="78MxLJAHzfR" role="37vLTJ">
+              <ref role="3cqZAo" node="78MxLJAHuiW" resolve="myTestRunState" />
+            </node>
             <node concept="2YIFZM" id="37RZV2urbl9" role="37vLTx">
               <ref role="37wK5l" node="78MxLJAHsh8" resolve="getInstance" />
               <ref role="1Pybhc" node="1$FrpHy4ud$" resolve="TestInProcessRunState" />
@@ -15208,9 +15176,6 @@
                   </node>
                 </node>
               </node>
-            </node>
-            <node concept="37vLTw" id="78MxLJAHzfR" role="37vLTJ">
-              <ref role="3cqZAo" node="78MxLJAHuiW" resolve="myTestRunState" />
             </node>
           </node>
         </node>
@@ -15261,12 +15226,12 @@
               <node concept="liA8E" id="5uCAHWJX$Kh" role="2OqNvi">
                 <ref role="37wK5l" node="1$FrpHy4ue1" resolve="advance" />
                 <node concept="Rm8GO" id="5uCAHWJX_Qq" role="37wK5m">
-                  <ref role="1Px2BO" node="1$FrpHy4ufC" resolve="RunStateEnum" />
                   <ref role="Rm8GQ" node="1$FrpHy4ufD" resolve="IDLE" />
+                  <ref role="1Px2BO" node="1$FrpHy4ufC" resolve="RunStateEnum" />
                 </node>
                 <node concept="Rm8GO" id="5uCAHWJXCz2" role="37wK5m">
-                  <ref role="1Px2BO" node="1$FrpHy4ufC" resolve="RunStateEnum" />
                   <ref role="Rm8GQ" node="1$FrpHy4ufE" resolve="INITIALIZED" />
+                  <ref role="1Px2BO" node="1$FrpHy4ufC" resolve="RunStateEnum" />
                 </node>
               </node>
             </node>
@@ -15580,8 +15545,8 @@
                                   <ref role="Rm8GQ" node="1$FrpHy4ufF" resolve="RUNNING" />
                                 </node>
                                 <node concept="Rm8GO" id="5Ti9jVZ8rHn" role="37wK5m">
-                                  <ref role="1Px2BO" node="1$FrpHy4ufC" resolve="RunStateEnum" />
                                   <ref role="Rm8GQ" node="1$FrpHy4ufG" resolve="TERMINATING" />
+                                  <ref role="1Px2BO" node="1$FrpHy4ufC" resolve="RunStateEnum" />
                                 </node>
                               </node>
                             </node>
@@ -17365,36 +17330,6 @@
       </node>
     </node>
   </node>
-  <node concept="Qs71p" id="1$FrpHy4ufC">
-    <property role="3GE5qa" value="junit.state" />
-    <property role="TrG5h" value="RunStateEnum" />
-    <node concept="2tJIrI" id="2A5UIbg5pM0" role="jymVt" />
-    <node concept="QsSxf" id="1$FrpHy4ufD" role="Qtgdg">
-      <property role="TrG5h" value="IDLE" />
-      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-    </node>
-    <node concept="QsSxf" id="1$FrpHy4ufE" role="Qtgdg">
-      <property role="TrG5h" value="INITIALIZED" />
-      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-    </node>
-    <node concept="QsSxf" id="2A5UIbg56dC" role="Qtgdg">
-      <property role="TrG5h" value="READYTOEXECUTE" />
-      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-    </node>
-    <node concept="QsSxf" id="1$FrpHy4ufF" role="Qtgdg">
-      <property role="TrG5h" value="RUNNING" />
-      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-    </node>
-    <node concept="QsSxf" id="1$FrpHy4ufG" role="Qtgdg">
-      <property role="TrG5h" value="TERMINATING" />
-      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-    </node>
-    <node concept="QsSxf" id="1$FrpHy4ufH" role="Qtgdg">
-      <property role="TrG5h" value="TERMINATED" />
-      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
-    </node>
-    <node concept="3Tm1VV" id="1$FrpHy4ufI" role="1B3o_S" />
-  </node>
   <node concept="312cEu" id="1$FrpHy4ud$">
     <property role="3GE5qa" value="junit.state" />
     <property role="TrG5h" value="TestInProcessRunState" />
@@ -18076,6 +18011,36 @@
         <ref role="3uigEE" node="1$FrpHy4ud$" resolve="TestInProcessRunState" />
       </node>
     </node>
+  </node>
+  <node concept="Qs71p" id="1$FrpHy4ufC">
+    <property role="3GE5qa" value="junit.state" />
+    <property role="TrG5h" value="RunStateEnum" />
+    <node concept="2tJIrI" id="2A5UIbg5pM0" role="jymVt" />
+    <node concept="QsSxf" id="1$FrpHy4ufD" role="Qtgdg">
+      <property role="TrG5h" value="IDLE" />
+      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+    </node>
+    <node concept="QsSxf" id="1$FrpHy4ufE" role="Qtgdg">
+      <property role="TrG5h" value="INITIALIZED" />
+      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+    </node>
+    <node concept="QsSxf" id="2A5UIbg56dC" role="Qtgdg">
+      <property role="TrG5h" value="READYTOEXECUTE" />
+      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+    </node>
+    <node concept="QsSxf" id="1$FrpHy4ufF" role="Qtgdg">
+      <property role="TrG5h" value="RUNNING" />
+      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+    </node>
+    <node concept="QsSxf" id="1$FrpHy4ufG" role="Qtgdg">
+      <property role="TrG5h" value="TERMINATING" />
+      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+    </node>
+    <node concept="QsSxf" id="1$FrpHy4ufH" role="Qtgdg">
+      <property role="TrG5h" value="TERMINATED" />
+      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+    </node>
+    <node concept="3Tm1VV" id="1$FrpHy4ufI" role="1B3o_S" />
   </node>
 </model>
 

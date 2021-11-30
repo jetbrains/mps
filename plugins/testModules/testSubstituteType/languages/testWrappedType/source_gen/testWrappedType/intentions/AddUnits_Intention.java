@@ -10,9 +10,9 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -21,27 +21,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class AddUnits_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddUnits_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:94797e6d-aa66-4368-83b5-1cd1a89f672d(testWrappedType.intentions)", "1252378774017439690"));
   }
+
   @Override
   public String getPresentation() {
     return "AddUnits";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SNodeOperations.isInstanceOf(node, CONCEPTS.TypeWithUnits$zr));
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -51,19 +45,36 @@ public final class AddUnits_Intention extends AbstractIntentionDescriptor implem
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Add Units";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode twi = SNodeOperations.replaceWithNewChild(node, CONCEPTS.TypeWithUnits$zr);
       SLinkOperations.setTarget(twi, LINKS.wrapped$8do, node);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return !(SNodeOperations.isInstanceOf(node, CONCEPTS.TypeWithUnits$zr));
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddUnits_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

@@ -16,27 +16,21 @@ import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 
 public final class CreateConceptFromUsageInIntfcRef_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public CreateConceptFromUsageInIntfcRef_Intention() {
     super(Kind.ERROR, false, new SNodePointer("r:e5a8b5c7-85b5-4d59-9e4e-850a142e2560(jetbrains.mps.lang.structure.intentions)", "6886053617682453325"));
   }
+
   @Override
   public String getPresentation() {
     return "CreateConceptFromUsageInIntfcRef";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return new CreateConceptFromUsageHelper(node, editorContext).dryRun();
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -46,19 +40,36 @@ public final class CreateConceptFromUsageInIntfcRef_Intention extends AbstractIn
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       // better to replace with 3x"forConcept"
       CreateConceptFromUsageHelper helper = new CreateConceptFromUsageHelper(node, editorContext);
       return "Create Concept " + helper.getConceptName();
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       new CreateConceptFromUsageHelper(node, editorContext).run();
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return new CreateConceptFromUsageHelper(node, editorContext).dryRun();
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return CreateConceptFromUsageInIntfcRef_Intention.this;
     }
+
   }
 }

@@ -6,6 +6,8 @@
     <classNode dependClassName="com.intellij.openapi.util.WriteExternalException" />
     <classNode dependClassName="com.intellij.util.xmlb.XmlSerializer" />
     <classNode dependClassName="java.lang.CloneNotSupportedException" />
+    <classNode dependClassName="java.lang.Cloneable" />
+    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
@@ -17,6 +19,7 @@
     <classNode dependClassName="org.jdom.Element" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.execution.api.settings.IPersistentConfiguration" />
+    <classNode extendsClassName="jetbrains.mps.project.structure.modules.Copyable" />
   </dependency>
   <dependency className="jetbrains.mps.ant.execution.AntSettings_Configuration_Editor">
     <classNode dependClassName="com.intellij.openapi.options.ConfigurationException" />

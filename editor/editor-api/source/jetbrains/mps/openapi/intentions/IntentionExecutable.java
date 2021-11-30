@@ -28,4 +28,8 @@ public interface IntentionExecutable {
   void execute(SNode node, EditorContext editorContext);
 
   IntentionDescriptor getDescriptor();
+
+  default boolean isApplicable(SNode node, EditorContext editorContext) {
+    return true;
+  }
 }

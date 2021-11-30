@@ -4,6 +4,7 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
+import jetbrains.mps.project.structure.modules.Copyable;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
@@ -31,7 +32,7 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.openapi.util.Key;
 import com.intellij.execution.BeforeRunTask;
 
-public class Remote_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
+public final class Remote_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<Remote_Configuration> {
   private static final Logger LOG = LogManager.getLogger(Remote_Configuration.class);
   @NotNull
   private MyState myState = new MyState();
@@ -53,6 +54,7 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
   }
 
   @Override
+  @Deprecated(forRemoval = true, since = "2021.2")
   public Remote_Configuration clone() {
     Remote_Configuration clone = createCloneTemplate();
     try {
@@ -67,6 +69,15 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
     return clone;
   }
 
+  @Override
+  public Remote_Configuration copy() {
+    Remote_Configuration cloneTemplate = createCloneTemplate();
+    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
+    // the value of myState, and != clone as regular Java passer-by would expect. 
+    cloneTemplate.myState = (MyState) myState.copy();
+    return cloneTemplate;
+  }
+
   public RemoteConnectionSettings getSettings() {
     return myState.mySettings;
   }
@@ -75,16 +86,27 @@ public class Remote_Configuration extends BaseMpsRunConfiguration implements IPe
     myState.mySettings = value;
   }
 
-  public final class MyState {
+  public final class MyState implements Copyable<MyState>, Cloneable {
     public RemoteConnectionSettings mySettings = new RemoteConnectionSettings("localhost", 5005);
 
+    @Deprecated
     @Override
     public Object clone() throws CloneNotSupportedException {
-      MyState state = new MyState();
-      if (mySettings != null) {
-        state.mySettings = mySettings.clone();
-      }
+      MyState state = (MyState) super.clone();
+      state.mySettings = mySettings;
       return state;
+    }
+
+    @Override
+    public MyState copy() {
+      try {
+        return (MyState) clone();
+      } catch (CloneNotSupportedException e) {
+        if (LOG.isEnabledFor(Level.ERROR)) {
+          LOG.error("", e);
+        }
+        return null;
+      }
     }
   }
   public Remote_Configuration(Project project, ConfigurationFactory factory, String name) {

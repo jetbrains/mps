@@ -10,6 +10,7 @@
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="java.lang.Cloneable" />
     <classNode extendsClassName="java.util.AbstractList" />
+    <classNode extendsClassName="jetbrains.mps.project.structure.modules.Copyable" />
   </dependency>
   <dependency className="jetbrains.mps.execution.lib.ExecutionTool">
     <classNode dependClassName="com.intellij.execution.process.ProcessListener" />
@@ -25,6 +26,8 @@
     <classNode dependClassName="com.intellij.util.xmlb.XmlSerializer" />
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.CloneNotSupportedException" />
+    <classNode dependClassName="java.lang.Cloneable" />
+    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.IllegalArgumentException" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
@@ -48,6 +51,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
     <classNode extendsClassName="jetbrains.mps.execution.api.settings.IPersistentConfiguration" />
+    <classNode extendsClassName="jetbrains.mps.project.structure.modules.Copyable" />
   </dependency>
   <dependency className="jetbrains.mps.execution.lib.NodeByConcept_Configuration_Editor">
     <classNode dependClassName="com.intellij.openapi.options.ConfigurationException" />
@@ -69,6 +73,8 @@
     <classNode dependClassName="com.intellij.util.xmlb.XmlSerializer" />
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.CloneNotSupportedException" />
+    <classNode dependClassName="java.lang.Cloneable" />
+    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.IllegalArgumentException" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
@@ -96,6 +102,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
     <classNode dependClassName="org.jetbrains.mps.openapi.persistence.PersistenceFacade" />
     <classNode extendsClassName="jetbrains.mps.execution.api.settings.IPersistentConfiguration" />
+    <classNode extendsClassName="jetbrains.mps.project.structure.modules.Copyable" />
   </dependency>
   <dependency className="jetbrains.mps.execution.lib.NodeBySeveralConcepts_Configuration_Editor">
     <classNode dependClassName="com.intellij.openapi.options.ConfigurationException" />

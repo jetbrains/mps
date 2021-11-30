@@ -10,9 +10,9 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.nodeEditor.cells.EditorCell_Error;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -26,27 +26,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class IntroduceSinger_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public IntroduceSinger_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:c5491b56-9eb5-4130-90fd-7da3cef76a4e(jetbrains.mps.samples.languagePatterns.Basic.intentions)", "6918512748467657857"));
   }
+
   @Override
   public String getPresentation() {
     return "IntroduceSinger";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return editorContext.getSelectedCell() instanceof EditorCell_Error && isNotEmptyString(((EditorCell_Error) editorContext.getSelectedCell()).getText());
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -56,10 +50,12 @@ public final class IntroduceSinger_Intention extends AbstractIntentionDescriptor
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Introduce Singer";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       EditorCell_Error selectedCell = (EditorCell_Error) editorContext.getSelectedCell();
@@ -70,10 +66,25 @@ public final class IntroduceSinger_Intention extends AbstractIntentionDescriptor
       SNode performance = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.Performance$QQ);
       SLinkOperations.setTarget(performance, LINKS.singer$ApO$, singer);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return editorContext.getSelectedCell() instanceof EditorCell_Error && isNotEmptyString(((EditorCell_Error) editorContext.getSelectedCell()).getText());
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return IntroduceSinger_Intention.this;
     }
+
   }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;

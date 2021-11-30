@@ -21,21 +21,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class CreateAntiquotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public CreateAntiquotation_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:f4b34c7d-c02f-43b9-b6e7-feff8966461c(jetbrains.mps.lang.quotation.intentions)", "1227885451240"));
   }
+
   @Override
   public String getPresentation() {
     return "CreateAntiquotation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,10 +45,12 @@ public final class CreateAntiquotation_Intention extends AbstractIntentionDescri
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Create Antiquotation";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode contextNode = editorContext.getSelectedCell().getSNode();
@@ -66,10 +68,19 @@ public final class CreateAntiquotation_Intention extends AbstractIntentionDescri
         editorContext.selectWRTFocusPolicy(antiquotation);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return CreateAntiquotation_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

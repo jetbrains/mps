@@ -4,6 +4,7 @@ package jetbrains.mps.execution.demo.pluginSolution.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
+import jetbrains.mps.project.structure.modules.Copyable;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.execution.lib.NodeByConcept_Configuration;
@@ -40,7 +41,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-public class DemoApplication_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
+public final class DemoApplication_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<DemoApplication_Configuration> {
   private static final Logger LOG = LogManager.getLogger(DemoApplication_Configuration.class);
   private NodeByConcept_Configuration myNode = new NodeByConcept_Configuration(CONCEPTS.SomeConcept$LS, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
     public Boolean invoke(SNode node) {
@@ -79,10 +80,20 @@ public class DemoApplication_Configuration extends BaseMpsRunConfiguration imple
   }
 
   @Override
+  @Deprecated(forRemoval = true, since = "2021.2")
   public DemoApplication_Configuration clone() {
     DemoApplication_Configuration clone = createCloneTemplate();
     clone.myNode = (NodeByConcept_Configuration) myNode.clone();
     return clone;
+  }
+
+  @Override
+  public DemoApplication_Configuration copy() {
+    DemoApplication_Configuration cloneTemplate = createCloneTemplate();
+    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
+    // the value of myState, and != clone as regular Java passer-by would expect. 
+    cloneTemplate.myNode = ((Copyable<NodeByConcept_Configuration>) myNode).copy();
+    return cloneTemplate;
   }
 
   public NodeByConcept_Configuration getNode() {

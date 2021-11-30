@@ -22,21 +22,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class SwitchToNullSafe_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SwitchToNullSafe_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:24bf2ceb-413d-48b7-a7ea-ab65995b3a1b(testExtendingAnalyzer.intentions)", "1417601170173123978"));
   }
+
   @Override
   public String getPresentation() {
     return "SwitchToNullSafe";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -46,10 +46,12 @@ public final class SwitchToNullSafe_Intention extends AbstractIntentionDescripto
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Switch to Null Safe";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.NullSafeDotExpression$pS, null);
@@ -57,10 +59,19 @@ public final class SwitchToNullSafe_Intention extends AbstractIntentionDescripto
       SLinkOperations.setTarget(result, LINKS.operation$gs9E, SLinkOperations.getTarget(node, LINKS.operation$gs9E));
       SNodeOperations.replaceWithAnother(node, result);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SwitchToNullSafe_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

@@ -4,6 +4,7 @@ package jetbrains.mps.build.pluginSolution.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
+import jetbrains.mps.project.structure.modules.Copyable;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.execution.lib.NodeByConcept_Configuration;
@@ -42,7 +43,7 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class BuildScript_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
+public final class BuildScript_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<BuildScript_Configuration> {
   private static final Logger LOG = LogManager.getLogger(BuildScript_Configuration.class);
   private NodeByConcept_Configuration myNodePointer = new NodeByConcept_Configuration(CONCEPTS.BuildProject$ae, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
     public Boolean invoke(SNode node) {
@@ -112,11 +113,22 @@ public class BuildScript_Configuration extends BaseMpsRunConfiguration implement
   }
 
   @Override
+  @Deprecated(forRemoval = true, since = "2021.2")
   public BuildScript_Configuration clone() {
     BuildScript_Configuration clone = createCloneTemplate();
     clone.myNodePointer = (NodeByConcept_Configuration) myNodePointer.clone();
     clone.mySettings = (AntSettings_Configuration) mySettings.clone();
     return clone;
+  }
+
+  @Override
+  public BuildScript_Configuration copy() {
+    BuildScript_Configuration cloneTemplate = createCloneTemplate();
+    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
+    // the value of myState, and != clone as regular Java passer-by would expect. 
+    cloneTemplate.myNodePointer = ((Copyable<NodeByConcept_Configuration>) myNodePointer).copy();
+    cloneTemplate.mySettings = ((Copyable<AntSettings_Configuration>) mySettings).copy();
+    return cloneTemplate;
   }
 
   public NodeByConcept_Configuration getNodePointer() {

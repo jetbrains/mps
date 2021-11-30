@@ -4,6 +4,7 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
+import jetbrains.mps.project.structure.modules.Copyable;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
@@ -29,7 +30,7 @@ import com.intellij.openapi.util.Key;
 import com.intellij.execution.BeforeRunTask;
 import java.io.File;
 
-public class MPSInstance_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
+public final class MPSInstance_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<MPSInstance_Configuration> {
   private static final Logger LOG = LogManager.getLogger(MPSInstance_Configuration.class);
   private MpsStartupSettings_Configuration myMpsSettings = new MpsStartupSettings_Configuration();
   private DeployPluginsSettings_Configuration myPluginsSettings = new DeployPluginsSettings_Configuration(this.getProject());
@@ -81,11 +82,22 @@ public class MPSInstance_Configuration extends BaseMpsRunConfiguration implement
   }
 
   @Override
+  @Deprecated(forRemoval = true, since = "2021.2")
   public MPSInstance_Configuration clone() {
     MPSInstance_Configuration clone = createCloneTemplate();
     clone.myMpsSettings = (MpsStartupSettings_Configuration) myMpsSettings.clone();
     clone.myPluginsSettings = (DeployPluginsSettings_Configuration) myPluginsSettings.clone();
     return clone;
+  }
+
+  @Override
+  public MPSInstance_Configuration copy() {
+    MPSInstance_Configuration cloneTemplate = createCloneTemplate();
+    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as 
+    // the value of myState, and != clone as regular Java passer-by would expect. 
+    cloneTemplate.myMpsSettings = ((Copyable<MpsStartupSettings_Configuration>) myMpsSettings).copy();
+    cloneTemplate.myPluginsSettings = ((Copyable<DeployPluginsSettings_Configuration>) myPluginsSettings).copy();
+    return cloneTemplate;
   }
 
   public MpsStartupSettings_Configuration getMpsSettings() {

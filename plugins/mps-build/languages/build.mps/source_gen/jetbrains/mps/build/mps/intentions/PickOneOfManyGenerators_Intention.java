@@ -6,65 +6,47 @@ import jetbrains.mps.intentions.AbstractIntentionDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionFactory;
 import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.build.mps.util.ModuleLoader;
-import jetbrains.mps.messages.LogHandler;
-import org.apache.log4j.Logger;
-import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import java.util.Collection;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
+import jetbrains.mps.build.mps.util.ModuleLoader;
+import jetbrains.mps.messages.LogHandler;
+import org.apache.log4j.Logger;
+import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.ParameterizedIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
-import org.jetbrains.mps.openapi.language.SConcept;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class PickOneOfManyGenerators_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
+
   public PickOneOfManyGenerators_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:e8fca550-89ba-41bb-ae28-dc9cae640a8a(jetbrains.mps.build.mps.intentions)", "4742669934363744923"));
   }
+
   @Override
   public String getPresentation() {
     return "PickOneOfManyGenerators";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BuildMps_Language$RA)) {
-      return false;
-    }
-    if ((SLinkOperations.getTarget(node, LINKS.sourceLanguage$A51U) == null)) {
-      return false;
-    }
-    SNode project = SNodeOperations.as(SNodeOperations.getContainingRoot(SLinkOperations.getTarget(node, LINKS.sourceLanguage$A51U)), CONCEPTS.BuildProject$ae);
-    if ((project == null)) {
-      return false;
-    }
-    ModuleLoader ml = new ModuleLoader(project, null, new LogHandler(Logger.getLogger(ModuleLoader.class)));
-    LanguageDescriptor ld = as_rkdydg_a0a5a3(ml.createModuleChecker(SLinkOperations.getTarget(node, LINKS.sourceLanguage$A51U)).getModuleDescriptor(), LanguageDescriptor.class);
-    return ld != null && ld.getGenerators().size() > 1;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     List<IntentionExecutable> list = ListSequence.fromList(new ArrayList<IntentionExecutable>());
     List<GeneratorDescriptor> paramList = parameter(node, context);
@@ -82,7 +64,7 @@ public final class PickOneOfManyGenerators_Intention extends AbstractIntentionDe
     }
 
     ModuleLoader ml = new ModuleLoader(project, null, new LogHandler(Logger.getLogger(ModuleLoader.class)));
-    LanguageDescriptor ld = as_rkdydg_a0a4a6(ml.createModuleChecker(SLinkOperations.getTarget(node, LINKS.sourceLanguage$A51U)).getModuleDescriptor(), LanguageDescriptor.class);
+    LanguageDescriptor ld = as_rkdydg_a0a4a8(ml.createModuleChecker(SLinkOperations.getTarget(node, LINKS.sourceLanguage$A51U)).getModuleDescriptor(), LanguageDescriptor.class);
     return (ld == null ? Collections.emptyList() : ld.getGenerators());
   }
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable implements ParameterizedIntentionExecutable {
@@ -90,37 +72,66 @@ public final class PickOneOfManyGenerators_Intention extends AbstractIntentionDe
     public IntentionImplementation(GeneratorDescriptor parameter) {
       myParameter = parameter;
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return String.format("Pick generator %s/%s", myParameter.getNamespace(), myParameter.getAlias());
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SPropertyOperations.assign(node, PROPS.name$MnvL, myParameter.getNamespace());
       SPropertyOperations.assign(node, PROPS.uuid$pC01, PersistenceFacade.getInstance().asString(myParameter.getId()));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.BuildMps_Language$RA)) {
+        return false;
+      }
+      if ((SLinkOperations.getTarget(node, LINKS.sourceLanguage$A51U) == null)) {
+        return false;
+      }
+      SNode project = SNodeOperations.as(SNodeOperations.getContainingRoot(SLinkOperations.getTarget(node, LINKS.sourceLanguage$A51U)), CONCEPTS.BuildProject$ae);
+      if ((project == null)) {
+        return false;
+      }
+      ModuleLoader ml = new ModuleLoader(project, null, new LogHandler(Logger.getLogger(ModuleLoader.class)));
+      LanguageDescriptor ld = as_rkdydg_a0a5a9j(ml.createModuleChecker(SLinkOperations.getTarget(node, LINKS.sourceLanguage$A51U)).getModuleDescriptor(), LanguageDescriptor.class);
+      return ld != null && ld.getGenerators().size() > 1;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return PickOneOfManyGenerators_Intention.this;
     }
+
     public Object getParameter() {
       return myParameter;
     }
   }
-  private static <T> T as_rkdydg_a0a5a3(Object o, Class<T> type) {
+  private static <T> T as_rkdydg_a0a4a8(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_rkdydg_a0a4a6(Object o, Class<T> type) {
+  private static <T> T as_rkdydg_a0a5a9j(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept BuildMps_Language$RA = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language");
-    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
   }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink sourceLanguage$A51U = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildMps_Language$RA = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language");
   }
 
   private static final class PROPS {

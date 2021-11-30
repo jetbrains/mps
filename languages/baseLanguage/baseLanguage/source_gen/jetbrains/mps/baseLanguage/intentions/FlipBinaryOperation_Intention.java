@@ -23,27 +23,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class FlipBinaryOperation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public FlipBinaryOperation_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "1195647334600"));
   }
+
   @Override
   public String getPresentation() {
     return "FlipBinaryOperation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -53,10 +47,12 @@ public final class FlipBinaryOperation_Intention extends AbstractIntentionDescri
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Flip Binary Operation" + (((boolean) BinaryOperation__BehaviorDescriptor.flipChangesSemantics_id14Lzlw0RrBK.invoke(node) ? " (changes semantics)" : ""));
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode leftExpression = SLinkOperations.getTarget(node, LINKS.leftExpression$sEj);
@@ -69,10 +65,25 @@ public final class FlipBinaryOperation_Intention extends AbstractIntentionDescri
         SelectionUtil.selectCell(editorContext, flippedOperator, "ALIAS_EDITOR_COMPONENT");
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return FlipBinaryOperation_Intention.this;
     }
+
   }
 
   private static final class LINKS {

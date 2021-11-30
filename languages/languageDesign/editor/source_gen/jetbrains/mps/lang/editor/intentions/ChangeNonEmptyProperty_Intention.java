@@ -29,21 +29,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class ChangeNonEmptyProperty_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ChangeNonEmptyProperty_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959029b(jetbrains.mps.lang.editor.intentions)", "5137527105085214125"));
   }
+
   @Override
   public String getPresentation() {
     return "ChangeNonEmptyProperty";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -53,10 +53,12 @@ public final class ChangeNonEmptyProperty_Intention extends AbstractIntentionDes
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace Non Empty Property by Concept Property";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode property = SNodeFactoryOperations.createNewNode(CONCEPTS.CellModel_Property$uh, null);
@@ -76,10 +78,19 @@ public final class ChangeNonEmptyProperty_Intention extends AbstractIntentionDes
       }
       SNodeOperations.replaceWithAnother(node, property);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ChangeNonEmptyProperty_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {
