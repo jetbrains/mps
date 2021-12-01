@@ -10,11 +10,11 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.resources.actions.IconHelper;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -26,27 +26,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class CreateConceptIcon_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public CreateConceptIcon_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:e5a8b5c7-85b5-4d59-9e4e-850a142e2560(jetbrains.mps.lang.structure.intentions)", "8130203123065979039"));
   }
+
   @Override
   public String getPresentation() {
     return "CreateConceptIcon";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SPropertyOperations.getBoolean(node, PROPS.rootable$_9pz) && (SLinkOperations.getTarget(node, LINKS.icon$HKhR) == null);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -56,19 +50,36 @@ public final class CreateConceptIcon_Intention extends AbstractIntentionDescript
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Create Icon";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       Tuples._2<String, String> color = ConceptIconHelper.createColors();
       SLinkOperations.setTarget(node, LINKS.icon$HKhR, _quotation_createNode_46hmw2_a0b0a(color._0(), color._1(), (isEmptyString(SPropertyOperations.getString(node, PROPS.name$MnvL)) ? "" : SPropertyOperations.getString(node, PROPS.name$MnvL).charAt(0) + ""), IconHelper.createId(SNodeOperations.getModel(node))));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return SPropertyOperations.getBoolean(node, PROPS.rootable$_9pz) && (SLinkOperations.getTarget(node, LINKS.icon$HKhR) == null);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return CreateConceptIcon_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_46hmw2_a0b0a(Object parameter_1, Object parameter_2, Object parameter_3, Object parameter_4) {
     SNode quotedNode_5 = null;
@@ -110,7 +121,7 @@ public final class CreateConceptIcon_Intention extends AbstractIntentionDescript
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty rootable$_9pz = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty rootable$_9pz = MetaAdapterFactory.getProperty(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979ba0450L, 0xff49c1d648L, "rootable");
   }
 }

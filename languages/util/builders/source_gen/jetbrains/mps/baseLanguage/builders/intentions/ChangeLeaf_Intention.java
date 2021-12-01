@@ -19,21 +19,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ChangeLeaf_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ChangeLeaf_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:7f54566a-e579-4f13-aaf4-b6e2c202aeb2(jetbrains.mps.baseLanguage.builders.intentions)", "5219429592916269604"));
   }
+
   @Override
   public String getPresentation() {
     return "ChangeLeaf";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -43,18 +43,29 @@ public final class ChangeLeaf_Intention extends AbstractIntentionDescriptor impl
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return (SPropertyOperations.getBoolean(node, PROPS.leaf$sivX) ? "Make Non Leaf" : "Make Leaf");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SPropertyOperations.assign(node, PROPS.leaf$sivX, !(SPropertyOperations.getBoolean(node, PROPS.leaf$sivX)));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ChangeLeaf_Intention.this;
     }
+
   }
 
   private static final class PROPS {

@@ -10,10 +10,10 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -29,27 +29,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ConvertToParagraphs_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertToParagraphs_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:d0aef15b-6499-4272-812e-6bb6f7408ee0(jetbrains.mps.lang.text.intentions)", "7333760206680794107"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertToParagraphs";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$U$m7)).isNotEmpty() && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.paragraphs$ZAOz)).isEmpty();
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -59,10 +53,12 @@ public final class ConvertToParagraphs_Intention extends AbstractIntentionDescri
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to Paragraphs";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$U$m7)).visitAll(new IVisitor<SNode>() {
@@ -85,15 +81,30 @@ public final class ConvertToParagraphs_Intention extends AbstractIntentionDescri
       SLinkOperations.addNewChild(node, LINKS.lines$U$m7, CONCEPTS.Line$yC);
       SelectionUtil.selectCell(editorContext, ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.paragraphs$ZAOz)).first(), SelectionManager.FIRST_CELL);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.lines$U$m7)).isNotEmpty() && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.paragraphs$ZAOz)).isEmpty();
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertToParagraphs_Intention.this;
     }
+
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink paragraphs$ZAOz = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x7ee31bf598f6d778L, "paragraphs");
     /*package*/ static final SContainmentLink lines$U$m7 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x2331694e561a03b8L, "lines");
+    /*package*/ static final SContainmentLink paragraphs$ZAOz = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, 0x7ee31bf598f6d778L, "paragraphs");
   }
 
   private static final class PROPS {

@@ -22,6 +22,7 @@
     <import index="qurh" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.typesystem.runtime(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="u78q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem.inference(MPS.Core/)" />
+    <import index="w0gx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.modules(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
   </imports>
   <registry>
@@ -6828,7 +6829,7 @@
                                 <ref role="2pIpSl" to="tpee:g7uigIF" resolve="classifier" />
                                 <uo k="s:originTrace" v="n:48168216978191707" />
                                 <node concept="36bGnv" id="xh" role="28nt2d">
-                                  <ref role="36bGnp" to="wyt6:~Cloneable" resolve="Cloneable" />
+                                  <ref role="36bGnp" to="w0gx:~Copyable" resolve="Copyable" />
                                   <uo k="s:originTrace" v="n:48168216978191708" />
                                 </node>
                               </node>

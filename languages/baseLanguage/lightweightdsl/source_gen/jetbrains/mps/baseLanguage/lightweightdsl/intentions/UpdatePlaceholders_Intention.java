@@ -10,34 +10,28 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.baseLanguage.lightweightdsl.util.DSLDescriptorUtil;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.baseLanguage.lightweightdsl.util.DSLDescriptorUtil;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 
 public final class UpdatePlaceholders_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public UpdatePlaceholders_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:5bb264d9-7f7a-4139-93e6-30697488a61b(jetbrains.mps.baseLanguage.lightweightdsl.intentions)", "6647275119336296656"));
   }
+
   @Override
   public String getPresentation() {
     return "UpdatePlaceholders";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (DSLDescriptorUtil.getDescriptor(node) != null);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -47,17 +41,34 @@ public final class UpdatePlaceholders_Intention extends AbstractIntentionDescrip
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Renew placeholders";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       ClassLikeInitHelper.renew(node, DSLDescriptorUtil.getDescriptor(node));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return (DSLDescriptorUtil.getDescriptor(node) != null);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return UpdatePlaceholders_Intention.this;
     }
+
   }
 }

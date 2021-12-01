@@ -27,21 +27,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class SafeRemoveConstant_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SafeRemoveConstant_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:42e1ac37-7eb5-465e-8f7a-fef5bc98a099(org.jetbrains.mps.samples.Constants.intentions)", "3986994675334573802"));
   }
+
   @Override
   public String getPresentation() {
     return "SafeRemoveConstant";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -51,10 +51,12 @@ public final class SafeRemoveConstant_Intention extends AbstractIntentionDescrip
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Safely Remove Constant";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       Iterable<SNode> allReferences = ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.getNodeAncestor(node, CONCEPTS.Constants$Xo, false, false), CONCEPTS.ConstantReference$t4, false, new SAbstractConcept[]{})).where(new IWhereFilter<SNode>() {
@@ -69,10 +71,19 @@ public final class SafeRemoveConstant_Intention extends AbstractIntentionDescrip
       });
       SNodeOperations.deleteNode(node);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SafeRemoveConstant_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

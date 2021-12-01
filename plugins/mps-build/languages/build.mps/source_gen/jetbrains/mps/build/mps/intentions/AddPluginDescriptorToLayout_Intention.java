@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.build.mps.behavior.BuildMpsLayout_Plugin__BehaviorDescriptor;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -18,6 +17,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.build.behavior.BuildString__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.build.mps.behavior.BuildMpsLayout_Plugin__BehaviorDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -27,27 +27,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class AddPluginDescriptorToLayout_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddPluginDescriptorToLayout_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:e8fca550-89ba-41bb-ae28-dc9cae640a8a(jetbrains.mps.build.mps.intentions)", "2151778867082213988"));
   }
+
   @Override
   public String getPresentation() {
     return "AddPluginDescriptorToLayout";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isAutoLayoutForPluginDescriptorNeeded_id1RsDREuQnlU.invoke(node, null);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -57,10 +51,12 @@ public final class AddPluginDescriptorToLayout_Intention extends AbstractIntenti
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Override Plugin Descriptor Layout";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode pluginDescriptorRef = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x5b7be37b4dee437cL, "jetbrains.mps.build.mps.structure.BuildMpsLayout_PluginDescriptor"));
@@ -68,10 +64,25 @@ public final class AddPluginDescriptorToLayout_Intention extends AbstractIntenti
       SNode libFolder = _quotation_createNode_qjckkk_a0c0a(pluginDescriptorRef, BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.plugin$9ewC), LINKS.containerName$xQbG), null) + ".jar");
       ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.children$aMRO)).addElement(libFolder);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return (boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isAutoLayoutForPluginDescriptorNeeded_id1RsDREuQnlU.invoke(node, null);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddPluginDescriptorToLayout_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_qjckkk_a0c0a(Object parameter_1, Object parameter_2) {
     SNode quotedNode_3 = null;

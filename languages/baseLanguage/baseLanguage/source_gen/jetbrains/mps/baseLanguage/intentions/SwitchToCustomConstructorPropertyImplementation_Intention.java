@@ -10,10 +10,10 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -22,27 +22,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SwitchToCustomConstructorPropertyImplementation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SwitchToCustomConstructorPropertyImplementation_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "6526572214154952610"));
   }
+
   @Override
   public String getPresentation() {
     return "SwitchToCustomConstructorPropertyImplementation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.propertyImplementation$jAz0), CONCEPTS.CustomSetterPropertyImplementation$6N));
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -52,10 +46,12 @@ public final class SwitchToCustomConstructorPropertyImplementation_Intention ext
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.propertyImplementation$jAz0), CONCEPTS.DefaultPropertyImplementation$g_) ? "Customize Setter" : "Make Getter Default");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode toBeReplaced = SLinkOperations.getTarget(node, LINKS.propertyImplementation$jAz0);
@@ -64,10 +60,25 @@ public final class SwitchToCustomConstructorPropertyImplementation_Intention ext
         SLinkOperations.setTarget(replacingNode, LINKS.setAccessor$G$8l, SLinkOperations.getTarget(SNodeOperations.cast(toBeReplaced, CONCEPTS.CustomPropertyImplementation$Au), LINKS.setAccessor$W5F$));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.propertyImplementation$jAz0), CONCEPTS.CustomSetterPropertyImplementation$6N));
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SwitchToCustomConstructorPropertyImplementation_Intention.this;
     }
+
   }
 
   private static final class LINKS {
@@ -77,8 +88,8 @@ public final class SwitchToCustomConstructorPropertyImplementation_Intention ext
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept CustomSetterPropertyImplementation$6N = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, "jetbrains.mps.baseLanguage.structure.CustomSetterPropertyImplementation");
     /*package*/ static final SConcept DefaultPropertyImplementation$g_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b7633177L, "jetbrains.mps.baseLanguage.structure.DefaultPropertyImplementation");
+    /*package*/ static final SConcept CustomSetterPropertyImplementation$6N = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, "jetbrains.mps.baseLanguage.structure.CustomSetterPropertyImplementation");
     /*package*/ static final SConcept CustomPropertyImplementation$Au = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x117b8f1b18eL, "jetbrains.mps.baseLanguage.structure.CustomPropertyImplementation");
   }
 }

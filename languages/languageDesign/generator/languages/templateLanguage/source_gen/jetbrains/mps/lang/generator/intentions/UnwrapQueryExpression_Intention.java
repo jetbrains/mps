@@ -10,14 +10,14 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.InternalFlag;
-import java.util.List;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNodeId;
+import jetbrains.mps.InternalFlag;
+import java.util.List;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -25,36 +25,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class UnwrapQueryExpression_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public UnwrapQueryExpression_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)", "3657407729746493394"));
   }
+
   @Override
   public String getPresentation() {
     return "UnwrapQueryExpression";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    // we do dangerous things with model implementation here
-    if (!(InternalFlag.isInternalMode())) {
-      return false;
-    }
-    List<SNode> statements = SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.query$31w3), LINKS.body$e68K), LINKS.statement$53DE);
-    if (ListSequence.fromList(statements).count() != 1) {
-      return false;
-    }
-    SNode stmt = ListSequence.fromList(statements).first();
-    return SNodeOperations.isInstanceOf(stmt, CONCEPTS.ReturnStatement$lt) || SNodeOperations.isInstanceOf(stmt, CONCEPTS.ExpressionStatement$O8);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -64,10 +49,12 @@ public final class UnwrapQueryExpression_Intention extends AbstractIntentionDesc
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace with simple expression";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode stmt = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.query$31w3), LINKS.body$e68K), LINKS.statement$53DE)).first();
@@ -89,10 +76,34 @@ public final class UnwrapQueryExpression_Intention extends AbstractIntentionDesc
       }
       SNodeOperations.replaceWithAnother(node, expr);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      // we do dangerous things with model implementation here
+      if (!(InternalFlag.isInternalMode())) {
+        return false;
+      }
+      List<SNode> statements = SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(node, LINKS.query$31w3), LINKS.body$e68K), LINKS.statement$53DE);
+      if (ListSequence.fromList(statements).count() != 1) {
+        return false;
+      }
+      SNode stmt = ListSequence.fromList(statements).first();
+      return SNodeOperations.isInstanceOf(stmt, CONCEPTS.ReturnStatement$lt) || SNodeOperations.isInstanceOf(stmt, CONCEPTS.ExpressionStatement$O8);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return UnwrapQueryExpression_Intention.this;
     }
+
   }
 
   private static final class LINKS {

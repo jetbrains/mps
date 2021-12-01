@@ -616,8 +616,8 @@
             <node concept="YeOm9" id="6KXWFH6uvi9" role="2ShVmc">
               <node concept="1Y3b0j" id="6KXWFH6uvic" role="YeSDq">
                 <property role="2bfB8j" value="true" />
-                <ref role="1Y3XeK" node="7ipADkTevLt" resolve="CompositeScope" />
-                <ref role="37wK5l" node="7ipADkTevLv" resolve="CompositeScope" />
+                <ref role="1Y3XeK" node="4IGSh622zqz" resolve="DelegatingScope" />
+                <ref role="37wK5l" node="4IGSh622$lD" resolve="DelegatingScope" />
                 <node concept="3Tm1VV" id="6KXWFH6uvid" role="1B3o_S" />
                 <node concept="3clFb_" id="6KXWFH6unB$" role="jymVt">
                   <property role="TrG5h" value="getAdditionalDependencies" />
@@ -641,7 +641,7 @@
                               <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
                             </node>
                             <node concept="3nyPlj" id="6KXWFH6u$wj" role="37wK5m">
-                              <ref role="37wK5l" node="6GKjEsr0wAu" resolve="getAdditionalDependencies" />
+                              <ref role="37wK5l" node="6GKjEsr1qx5" resolve="getAdditionalDependencies" />
                             </node>
                           </node>
                         </node>

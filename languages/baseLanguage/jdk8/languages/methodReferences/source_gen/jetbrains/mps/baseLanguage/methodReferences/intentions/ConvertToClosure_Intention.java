@@ -21,21 +21,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ConvertToClosure_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertToClosure_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:83aba8b0-caeb-440c-9f54-988b97ce933f(jetbrains.mps.baseLanguage.methodReferences.intentions)", "6436749721962666669"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertToClosure";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,19 +45,30 @@ public final class ConvertToClosure_Intention extends AbstractIntentionDescripto
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to Closure";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode closure = MethodReferenceToClosureUtil.convertToClosure(node, SLinkOperations.getTarget(node, LINKS.method$8Sfb));
       SNodeOperations.replaceWithAnother(node, closure);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertToClosure_Intention.this;
     }
+
   }
 
   private static final class LINKS {

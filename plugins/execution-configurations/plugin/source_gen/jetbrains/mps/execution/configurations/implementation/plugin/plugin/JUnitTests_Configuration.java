@@ -4,6 +4,7 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
+import jetbrains.mps.project.structure.modules.Copyable;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitSettings_Configuration;
@@ -42,7 +43,7 @@ import com.intellij.execution.BeforeRunTask;
 import jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask;
 import java.io.File;
 
-public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration {
+public final class JUnitTests_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<JUnitTests_Configuration> {
   private static final Logger LOG = LogManager.getLogger(JUnitTests_Configuration.class);
   private JUnitSettings_Configuration myJUnitSettings = new JUnitSettings_Configuration(this.getProject());
   private JavaRunParameters_Configuration myJavaRunParameters = createJavaRunParameters();
@@ -133,12 +134,24 @@ public class JUnitTests_Configuration extends BaseMpsRunConfiguration implements
     }
   }
   @Override
+  @Deprecated
   public JUnitTests_Configuration clone() {
     JUnitTests_Configuration clone = createCloneTemplate();
     clone.myJUnitSettings = (JUnitSettings_Configuration) myJUnitSettings.clone();
     clone.myJavaRunParameters = (JavaRunParameters_Configuration) myJavaRunParameters.clone();
     clone.myDeploySettings = (DeployPluginsSettings_Configuration) myDeploySettings.clone();
     return clone;
+  }
+
+  @Override
+  public JUnitTests_Configuration copy() {
+    JUnitTests_Configuration cloneTemplate = createCloneTemplate();
+    // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
+    // the value of myState, and != clone as regular Java passer-by would expect.
+    cloneTemplate.myJUnitSettings = ((Copyable<JUnitSettings_Configuration>) myJUnitSettings).copy();
+    cloneTemplate.myJavaRunParameters = ((Copyable<JavaRunParameters_Configuration>) myJavaRunParameters).copy();
+    cloneTemplate.myDeploySettings = ((Copyable<DeployPluginsSettings_Configuration>) myDeploySettings).copy();
+    return cloneTemplate;
   }
 
   public JUnitSettings_Configuration getJUnitSettings() {

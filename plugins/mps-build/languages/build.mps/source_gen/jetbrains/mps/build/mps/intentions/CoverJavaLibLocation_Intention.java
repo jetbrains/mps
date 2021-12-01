@@ -10,9 +10,9 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -22,27 +22,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class CoverJavaLibLocation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public CoverJavaLibLocation_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:e8fca550-89ba-41bb-ae28-dc9cae640a8a(jetbrains.mps.build.mps.intentions)", "7330083795456493666"));
   }
+
   @Override
   public String getPresentation() {
     return "CoverJavaLibLocation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return (SLinkOperations.getTarget(node, LINKS.javaLibLocation$cmtb) == null);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -52,19 +46,36 @@ public final class CoverJavaLibLocation_Intention extends AbstractIntentionDescr
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Specify Java Library location covered";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SLinkOperations.setNewChild(node, LINKS.javaLibLocation$cmtb, CONCEPTS.BuildSourceProjectRelativePath$uc);
       SPropertyOperations.set(node, PROPS.reexport$RnCo, true);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return (SLinkOperations.getTarget(node, LINKS.javaLibLocation$cmtb) == null);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return CoverJavaLibLocation_Intention.this;
     }
+
   }
 
   private static final class LINKS {

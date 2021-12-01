@@ -10,14 +10,14 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -26,41 +26,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class ConvertToClosure_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertToClosure_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "7638980610829995124"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertToClosure";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    SNode newExpression = SNodeOperations.getNodeAncestor(node, CONCEPTS.GenericNewExpression$Fh, false, false);
-    if ((newExpression == null)) {
-      return false;
-    }
-    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(newExpression), CONCEPTS.BaseMethodCall$kV))) {
-      return false;
-    }
-    if (!(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(newExpression), CONCEPTS.BaseMethodCall$kV), LINKS.actualArgument$pzdx)).contains(newExpression))) {
-      return false;
-    }
-    if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.classifier$q_Y$), CONCEPTS.Interface$db)) {
-      SNode parentInterface = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.classifier$q_Y$), CONCEPTS.Interface$db);
-      return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(parentInterface)).count() == 1;
-    }
-    return false;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -70,10 +50,12 @@ public final class ConvertToClosure_Intention extends AbstractIntentionDescripto
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace Anonymous Class with Closure Literal";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode closureLiteral = SNodeFactoryOperations.createNewNode(CONCEPTS.ClosureLiteral$rp, null);
@@ -84,25 +66,54 @@ public final class ConvertToClosure_Intention extends AbstractIntentionDescripto
       ListSequence.fromList(SLinkOperations.getChildren(closureLiteral, LINKS.parameter$b4Y3)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)));
       SNodeOperations.replaceWithAnother(SNodeOperations.getNodeAncestor(node, CONCEPTS.GenericNewExpression$Fh, false, false), closureLiteral);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      SNode newExpression = SNodeOperations.getNodeAncestor(node, CONCEPTS.GenericNewExpression$Fh, false, false);
+      if ((newExpression == null)) {
+        return false;
+      }
+      if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(newExpression), CONCEPTS.BaseMethodCall$kV))) {
+        return false;
+      }
+      if (!(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(SNodeOperations.getParent(newExpression), CONCEPTS.BaseMethodCall$kV), LINKS.actualArgument$pzdx)).contains(newExpression))) {
+        return false;
+      }
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.classifier$q_Y$), CONCEPTS.Interface$db)) {
+        SNode parentInterface = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.classifier$q_Y$), CONCEPTS.Interface$db);
+        return Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(parentInterface)).count() == 1;
+      }
+      return false;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertToClosure_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept ClosureLiteral$rp = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
     /*package*/ static final SConcept GenericNewExpression$Fh = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, "jetbrains.mps.baseLanguage.structure.GenericNewExpression");
     /*package*/ static final SConcept BaseMethodCall$kV = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c78301acL, "jetbrains.mps.baseLanguage.structure.BaseMethodCall");
-    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
-    /*package*/ static final SConcept ClosureLiteral$rp = MetaAdapterFactory.getConcept(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
-    /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
     /*package*/ static final SContainmentLink body$Ujx2 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf0522fL, "body");
     /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
+    /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
     /*package*/ static final SContainmentLink parameter$b4Y3 = MetaAdapterFactory.getContainmentLink(0xfd3920347849419dL, 0x907112563d152375L, 0x1174bed3125L, 0x1174bf02c34L, "parameter");
     /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
+    /*package*/ static final SContainmentLink actualArgument$pzdx = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
   }
 }

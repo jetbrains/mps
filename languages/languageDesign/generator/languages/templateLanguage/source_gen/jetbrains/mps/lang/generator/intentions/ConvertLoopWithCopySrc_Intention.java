@@ -10,12 +10,12 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -23,48 +23,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class ConvertLoopWithCopySrc_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertLoopWithCopySrc_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)", "7834938100936599479"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertLoopWithCopySrc";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    Iterable<SNode> nodes = SNodeOperations.ofConcept(SNodeOperations.getChildren(SNodeOperations.getParent(node)), CONCEPTS.NodeMacro$qU);
-    boolean seen = false;
-    for (SNode n : nodes) {
-      if (seen) {
-        if (SNodeOperations.isInstanceOf(n, CONCEPTS.CopySrcNodeMacro$9T)) {
-          SNode m = SLinkOperations.getTarget(SNodeOperations.cast(n, CONCEPTS.CopySrcNodeMacro$9T), LINKS.sourceNodeQuery$Z$f1);
-          if ((m == null)) {
-            return true;
-          }
-          if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(m, LINKS.body$e68K), LINKS.statement$53DE)).count() != 1) {
-            return false;
-          }
-          SNode st = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(m, LINKS.body$e68K), LINKS.statement$53DE)).first();
-          return SNodeOperations.isInstanceOf(st, CONCEPTS.ExpressionStatement$O8) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(st, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M), CONCEPTS.TemplateFunctionParameter_sourceNode$hO);
-        } else {
-          return false;
-        }
-      } else if (n == node) {
-        seen = true;
-      }
-    }
-    return false;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -74,10 +47,12 @@ public final class ConvertLoopWithCopySrc_Intention extends AbstractIntentionDes
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to $COPY-SRCL$";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       Iterable<SNode> nodes = SNodeOperations.ofConcept(SNodeOperations.getChildren(SNodeOperations.getParent(node)), CONCEPTS.NodeMacro$qU);
@@ -94,18 +69,54 @@ public final class ConvertLoopWithCopySrc_Intention extends AbstractIntentionDes
         }
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      Iterable<SNode> nodes = SNodeOperations.ofConcept(SNodeOperations.getChildren(SNodeOperations.getParent(node)), CONCEPTS.NodeMacro$qU);
+      boolean seen = false;
+      for (SNode n : nodes) {
+        if (seen) {
+          if (SNodeOperations.isInstanceOf(n, CONCEPTS.CopySrcNodeMacro$9T)) {
+            SNode m = SLinkOperations.getTarget(SNodeOperations.cast(n, CONCEPTS.CopySrcNodeMacro$9T), LINKS.sourceNodeQuery$Z$f1);
+            if ((m == null)) {
+              return true;
+            }
+            if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(m, LINKS.body$e68K), LINKS.statement$53DE)).count() != 1) {
+              return false;
+            }
+            SNode st = ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(m, LINKS.body$e68K), LINKS.statement$53DE)).first();
+            return SNodeOperations.isInstanceOf(st, CONCEPTS.ExpressionStatement$O8) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(st, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M), CONCEPTS.TemplateFunctionParameter_sourceNode$hO);
+          } else {
+            return false;
+          }
+        } else if (n == node) {
+          seen = true;
+        }
+      }
+      return false;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertLoopWithCopySrc_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept NodeMacro$qU = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
+    /*package*/ static final SConcept CopySrcListMacro$LJ = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1038b0c2cc7L, "jetbrains.mps.lang.generator.structure.CopySrcListMacro");
     /*package*/ static final SConcept CopySrcNodeMacro$9T = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10389b50fefL, "jetbrains.mps.lang.generator.structure.CopySrcNodeMacro");
     /*package*/ static final SConcept ExpressionStatement$O8 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b213L, "jetbrains.mps.baseLanguage.structure.ExpressionStatement");
     /*package*/ static final SConcept TemplateFunctionParameter_sourceNode$hO = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fc0b471fcL, "jetbrains.mps.lang.generator.structure.TemplateFunctionParameter_sourceNode");
-    /*package*/ static final SConcept CopySrcListMacro$LJ = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1038b0c2cc7L, "jetbrains.mps.lang.generator.structure.CopySrcListMacro");
   }
 
   private static final class LINKS {

@@ -81,7 +81,6 @@ public final class JUnitTests_Producer {
       setSourceElement(new MPSPsiElement(getMpsProject()));
       JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + "All Tests in Project", getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.PROJECT);
-      configuration.getJUnitSettings().setInProcess(false);
       return configuration;
     }
 
@@ -117,7 +116,6 @@ public final class JUnitTests_Producer {
       JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + "Tests in '" + name + "'", getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.MODULE);
       configuration.getJUnitSettings().setModuleRef(source.getModuleReference().toString());
-      configuration.getJUnitSettings().setInProcess(false);
       return configuration;
     }
 
@@ -162,7 +160,6 @@ public final class JUnitTests_Producer {
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.MODEL);
       configuration.getJUnitSettings().setModelRef(PersistenceRegistry.getInstance().asString(source.getReference()));
       configuration.getJUnitSettings().setModuleRef(source.getModule().getModuleReference().toString());
-      configuration.getJUnitSettings().setInProcess(false);
       return configuration;
     }
 
@@ -230,7 +227,9 @@ public final class JUnitTests_Producer {
       JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + name, getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.NODE);
       configuration.getJUnitSettings().setTestCases(PointerUtils.nodeToCloneableList(testRoot));
-      configuration.getJUnitSettings().setInProcess(wrapper.canRunInProcess());
+      if (!(wrapper.canRunInProcess())) {
+        configuration.getJUnitSettings().setInProcessFlag(false);
+      }
       return configuration;
     }
 
@@ -294,7 +293,9 @@ public final class JUnitTests_Producer {
       JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + wrapper.getName(), getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.METHOD);
       configuration.getJUnitSettings().setTestMethods(PointerUtils.nodeToCloneableList(method));
-      configuration.getJUnitSettings().setInProcess(wrapper.canRunInProcess());
+      if (!(wrapper.canRunInProcess())) {
+        configuration.getJUnitSettings().setInProcessFlag(false);
+      }
       return configuration;
     }
 
@@ -369,7 +370,9 @@ public final class JUnitTests_Producer {
       JUnitTests_Configuration configuration = ((JUnitTests_Configuration) getConfigurationFactory().createConfiguration("" + SPropertyOperations.getString(SNodeOperations.cast(ListSequence.fromList(source).first(), CONCEPTS.ITestCase$Fp), PROPS.name$MnvL) + ",...", getContext().getRunManager().getConfigurationTemplate(getConfigurationFactory()).getConfiguration()));
       configuration.getJUnitSettings().setJUnitRunType(JUnitRunTypes.NODE);
       configuration.getJUnitSettings().setTestCases(PointerUtils.nodesToCloneableList(source));
-      configuration.getJUnitSettings().setInProcess(canRunInProcess);
+      if (!(canRunInProcess)) {
+        configuration.getJUnitSettings().setInProcessFlag(false);
+      }
       return configuration;
     }
 
@@ -410,7 +413,9 @@ public final class JUnitTests_Producer {
         }
       }
       configuration.getJUnitSettings().setTestMethods(PointerUtils.nodesToCloneableList(source));
-      configuration.getJUnitSettings().setInProcess(canRunInProcess);
+      if (!(canRunInProcess)) {
+        configuration.getJUnitSettings().setInProcessFlag(false);
+      }
       return configuration;
     }
 

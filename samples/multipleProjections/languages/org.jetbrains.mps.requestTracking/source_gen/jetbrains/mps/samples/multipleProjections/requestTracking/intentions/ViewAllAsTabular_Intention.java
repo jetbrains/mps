@@ -16,21 +16,21 @@ import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 
 public final class ViewAllAsTabular_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ViewAllAsTabular_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:609c99e8-3a24-425d-8723-60cb603f5c76(jetbrains.mps.samples.multipleProjections.requestTracking.intentions)", "1007054899182495150"));
   }
+
   @Override
   public String getPresentation() {
     return "ViewAllAsTabular";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -40,6 +40,7 @@ public final class ViewAllAsTabular_Intention extends AbstractIntentionDescripto
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       String[] initialEditorHints = editorContext.getEditorComponent().getUpdater().getInitialEditorHints();
@@ -49,6 +50,7 @@ public final class ViewAllAsTabular_Intention extends AbstractIntentionDescripto
         return "View All As Structural";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       String[] initialEditorHints = editorContext.getEditorComponent().getUpdater().getInitialEditorHints();
@@ -60,9 +62,18 @@ public final class ViewAllAsTabular_Intention extends AbstractIntentionDescripto
       }
       editorContext.getEditorComponent().getUpdater().update();
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ViewAllAsTabular_Intention.this;
     }
+
   }
 }

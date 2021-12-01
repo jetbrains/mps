@@ -24,21 +24,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class TurnToElement_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public TurnToElement_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:a642a635-5cf6-4051-92de-c40763df5297(jetbrains.mps.core.xml.intentions)", "2051823550761368384"));
   }
+
   @Override
   public String getPresentation() {
     return "TurnToElement";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,10 +48,12 @@ public final class TurnToElement_Intention extends AbstractIntentionDescriptor i
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Turn to Element";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode el = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, "jetbrains.mps.core.xml.structure.XmlElement"));
@@ -59,10 +61,19 @@ public final class TurnToElement_Intention extends AbstractIntentionDescriptor i
       ListSequence.fromList(SLinkOperations.getChildren(el, LINKS.content$zkQy)).addElement(node);
       SelectionUtil.selectCell(editorContext, el, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return TurnToElement_Intention.this;
     }
+
   }
 
   private static final class LINKS {

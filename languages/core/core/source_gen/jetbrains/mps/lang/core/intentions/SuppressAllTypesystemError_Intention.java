@@ -10,23 +10,23 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
-import jetbrains.mps.nodeEditor.EditorComponent;
-import jetbrains.mps.errors.item.IssueKindReportItem;
-import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import java.util.Objects;
-import jetbrains.mps.errors.MessageStatus;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.core.behavior.ICanSuppressErrors__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
+import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.item.FlavouredItem;
+import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.Objects;
+import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -34,43 +34,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class SuppressAllTypesystemError_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SuppressAllTypesystemError_Intention() {
     super(Kind.ERROR, true, new SNodePointer("r:00000000-0000-4000-0000-011c89590285(jetbrains.mps.lang.core.intentions)", "4222318806802430725"));
   }
+
   @Override
   public String getPresentation() {
     return "SuppressAllTypesystemError";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(node)).isNotEmpty()) {
-      return false;
-    }
-    EditorComponent editorComponent = (EditorComponent) editorContext.getEditorComponent();
-    Collection<IssueKindReportItem> reportItemsForCell = editorComponent.getReportItemsForCell(editorComponent.getSelectedCell());
-    if (CollectionSequence.fromCollection(reportItemsForCell).isEmpty()) {
-      return false;
-    }
-    return CollectionSequence.fromCollection(reportItemsForCell).all(new IWhereFilter<IssueKindReportItem>() {
-      public boolean accept(IssueKindReportItem it) {
-        return Objects.equals(it.getIssueKind().getChecker(), IssueKindReportItem.TYPESYSTEM);
-      }
-    }) && CollectionSequence.fromCollection(reportItemsForCell).any(new IWhereFilter<IssueKindReportItem>() {
-      public boolean accept(IssueKindReportItem it) {
-        return Objects.equals(it.getSeverity(), MessageStatus.ERROR);
-      }
-    });
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -80,10 +58,12 @@ public final class SuppressAllTypesystemError_Intention extends AbstractIntentio
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return String.format("Suppress all typesystem messages for " + ICanSuppressErrors__BehaviorDescriptor.nodeDescription_id4oS1ku9jIXr.invoke(node));
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if (ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(node)).isEmpty()) {
@@ -95,10 +75,41 @@ public final class SuppressAllTypesystemError_Intention extends AbstractIntentio
         ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(node)).clear();
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      if (ListSequence.fromList(new IAttributeDescriptor.NodeAttribute(CONCEPTS.SuppressErrorsAnnotation$D1).list(node)).isNotEmpty()) {
+        return false;
+      }
+      EditorComponent editorComponent = (EditorComponent) editorContext.getEditorComponent();
+      Collection<IssueKindReportItem> reportItemsForCell = editorComponent.getReportItemsForCell(editorComponent.getSelectedCell());
+      if (CollectionSequence.fromCollection(reportItemsForCell).isEmpty()) {
+        return false;
+      }
+      return CollectionSequence.fromCollection(reportItemsForCell).all(new IWhereFilter<IssueKindReportItem>() {
+        public boolean accept(IssueKindReportItem it) {
+          return Objects.equals(it.getIssueKind().getChecker(), IssueKindReportItem.TYPESYSTEM);
+        }
+      }) && CollectionSequence.fromCollection(reportItemsForCell).any(new IWhereFilter<IssueKindReportItem>() {
+        public boolean accept(IssueKindReportItem it) {
+          return Objects.equals(it.getSeverity(), MessageStatus.ERROR);
+        }
+      });
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SuppressAllTypesystemError_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

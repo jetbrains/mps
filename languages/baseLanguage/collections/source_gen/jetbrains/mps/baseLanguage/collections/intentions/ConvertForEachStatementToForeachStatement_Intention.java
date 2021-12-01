@@ -29,27 +29,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ConvertForEachStatementToForeachStatement_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertForEachStatementToForeachStatement_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959032c(jetbrains.mps.baseLanguage.collections.intentions)", "1193396656620"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertForEachStatementToForeachStatement";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -59,10 +53,12 @@ public final class ConvertForEachStatementToForeachStatement_Intention extends A
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to 'for (Type var: iterable)'";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       final SNode oldVariable = SLinkOperations.getTarget(node, LINKS.variable$8Haf);
@@ -83,10 +79,25 @@ public final class ConvertForEachStatementToForeachStatement_Intention extends A
         SLinkOperations.setTarget(SNodeFactoryOperations.replaceWithNewChild(oldRef, CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG, newVariable);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertForEachStatementToForeachStatement_Intention.this;
     }
+
   }
 
   private static final class LINKS {

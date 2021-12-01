@@ -24,21 +24,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class SurroundWithElement_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SurroundWithElement_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:a642a635-5cf6-4051-92de-c40763df5297(jetbrains.mps.core.xml.intentions)", "2051823550761017310"));
   }
+
   @Override
   public String getPresentation() {
     return "SurroundWithElement";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return true;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,10 +48,12 @@ public final class SurroundWithElement_Intention extends AbstractIntentionDescri
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Wrap in Element";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       List<SNode> selectedNodes = editorContext.getSelectedNodes();
@@ -63,10 +65,19 @@ public final class SurroundWithElement_Intention extends AbstractIntentionDescri
       SLinkOperations.getChildren(el, LINKS.content$zkQy).addAll(selectedNodes);
       SelectionUtil.selectCell(editorContext, el, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SurroundWithElement_Intention.this;
     }
+
   }
 
   private static final class LINKS {

@@ -19,21 +19,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class MakeStaticFieldTransient_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public MakeStaticFieldTransient_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "6468716278899299956"));
   }
+
   @Override
   public String getPresentation() {
     return "MakeStaticFieldTransient";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -43,18 +43,29 @@ public final class MakeStaticFieldTransient_Intention extends AbstractIntentionD
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return (SPropertyOperations.getBoolean(node, PROPS.isTransient$Npqn) ? "Make Field Not Transient" : "Make Field Transient");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SPropertyOperations.assign(node, PROPS.isTransient$Npqn, !(SPropertyOperations.getBoolean(node, PROPS.isTransient$Npqn)));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return MakeStaticFieldTransient_Intention.this;
     }
+
   }
 
   private static final class PROPS {

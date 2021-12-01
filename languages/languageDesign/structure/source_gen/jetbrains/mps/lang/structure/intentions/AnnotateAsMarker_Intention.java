@@ -20,21 +20,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AnnotateAsMarker_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AnnotateAsMarker_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:e5a8b5c7-85b5-4d59-9e4e-850a142e2560(jetbrains.mps.lang.structure.intentions)", "5010205435291621847"));
   }
+
   @Override
   public String getPresentation() {
     return "AnnotateAsMarker";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -44,10 +44,12 @@ public final class AnnotateAsMarker_Intention extends AbstractIntentionDescripto
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.MarkerInterfaceAttribute$8S).get(node) == null) ? "Denote as 'marker interface'" : "Drop 'marker interface'");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.MarkerInterfaceAttribute$8S).get(node) == null)) {
@@ -56,10 +58,19 @@ public final class AnnotateAsMarker_Intention extends AbstractIntentionDescripto
         new IAttributeDescriptor.NodeAttribute(CONCEPTS.MarkerInterfaceAttribute$8S).set(node, null);
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AnnotateAsMarker_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

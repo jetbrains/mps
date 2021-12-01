@@ -27,27 +27,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class ConvertToMethodReference_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ConvertToMethodReference_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:83aba8b0-caeb-440c-9f54-988b97ce933f(jetbrains.mps.baseLanguage.methodReferences.intentions)", "2055055257255713495"));
   }
+
   @Override
   public String getPresentation() {
     return "ConvertToMethodReference";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ClosureToMethodRefHelper.canBeConverted(node);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -57,10 +51,12 @@ public final class ConvertToMethodReference_Intention extends AbstractIntentionD
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert to Method Reference";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode expr = ClosureToMethodRefHelper.getSingleExpression(node);
@@ -89,10 +85,25 @@ public final class ConvertToMethodReference_Intention extends AbstractIntentionD
       SLinkOperations.setTarget(newMethodRef, LINKS.method$8Sfb, SLinkOperations.getTarget(methodCall, LINKS.baseMethodDeclaration$pyYw));
       ListSequence.fromList(SLinkOperations.getChildren(newMethodRef, LINKS.typeParameters$5Tel)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(methodCall, LINKS.typeArgument$jaIN)));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return ClosureToMethodRefHelper.canBeConverted(node);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ConvertToMethodReference_Intention.this;
     }
+
   }
   private static SNode createMethodReferenceTypeTargetExpression_m6i3ny_a0b0f0a(SNode p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.MethodReferenceTypeTargetExpression$a3);

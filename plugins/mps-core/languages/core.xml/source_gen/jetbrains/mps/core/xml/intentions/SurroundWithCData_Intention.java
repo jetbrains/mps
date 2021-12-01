@@ -10,12 +10,12 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import java.util.List;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
@@ -25,33 +25,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class SurroundWithCData_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SurroundWithCData_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:a642a635-5cf6-4051-92de-c40763df5297(jetbrains.mps.core.xml.intentions)", "2051823550761290463"));
   }
+
   @Override
   public String getPresentation() {
     return "SurroundWithCData";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    List<SNode> selectedNodes = editorContext.getSelectedNodes();
-    for (SNode n : selectedNodes) {
-      if (!(SNodeOperations.isInstanceOf(n, CONCEPTS.XmlText$q9))) {
-        return false;
-      }
-    }
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return true;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -61,10 +49,12 @@ public final class SurroundWithCData_Intention extends AbstractIntentionDescript
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Surround with CDATA";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       List<SNode> selectedNodes = editorContext.getSelectedNodes();
@@ -86,10 +76,31 @@ public final class SurroundWithCData_Intention extends AbstractIntentionDescript
       SPropertyOperations.assign(cdata, PROPS.content$Ce5_, s.toString());
       SelectionUtil.selectCell(editorContext, cdata, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      List<SNode> selectedNodes = editorContext.getSelectedNodes();
+      for (SNode n : selectedNodes) {
+        if (!(SNodeOperations.isInstanceOf(n, CONCEPTS.XmlText$q9))) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SurroundWithCData_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

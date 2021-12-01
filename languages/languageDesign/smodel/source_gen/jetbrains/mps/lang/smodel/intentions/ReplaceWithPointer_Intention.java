@@ -22,21 +22,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class ReplaceWithPointer_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ReplaceWithPointer_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902ff(jetbrains.mps.lang.smodel.intentions)", "5417829194338783451"));
   }
+
   @Override
   public String getPresentation() {
     return "ReplaceWithPointer";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -46,19 +46,30 @@ public final class ReplaceWithPointer_Intention extends AbstractIntentionDescrip
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace With node-ptr<>";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode nodeIdentity = NodePointerMigrations.toNodeIdentity(node);
       SLinkOperations.setTarget(SNodeOperations.replaceWithNewChild(node, CONCEPTS.NodePointerExpression$Fo), LINKS.ref$hevt, nodeIdentity);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ReplaceWithPointer_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

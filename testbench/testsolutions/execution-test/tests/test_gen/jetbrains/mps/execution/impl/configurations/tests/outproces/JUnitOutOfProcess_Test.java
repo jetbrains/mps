@@ -136,7 +136,6 @@ public class JUnitOutOfProcess_Test extends BaseTransformationTest {
     public JUnitSettings_Configuration createDefaultJUnitSettings() {
       Project ideaProject = ((MPSProject) myProject).getProject();
       JUnitSettings_Configuration junitParams = new JUnitSettings_Configuration(ideaProject);
-      junitParams.setInProcess(false);
       junitParams.setReuseCaches(true);
       junitParams.setOverrideCachesLocation(true);
       junitParams.setCachesPath(new File("./tmpsettings").getAbsolutePath());

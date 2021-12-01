@@ -24,21 +24,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class SwapTernaryBranches_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SwapTernaryBranches_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "7940428822325910682"));
   }
+
   @Override
   public String getPresentation() {
     return "SwapTernaryBranches";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -48,10 +48,12 @@ public final class SwapTernaryBranches_Intention extends AbstractIntentionDescri
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Swap Ternary Operator Branches";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       boolean unidentifiedConditionExpr = false;
@@ -119,10 +121,19 @@ public final class SwapTernaryBranches_Intention extends AbstractIntentionDescri
       SLinkOperations.setTarget(node, LINKS.ifTrue$Tg0R, SNodeOperations.copyNode(SLinkOperations.getTarget(node, LINKS.ifFalse$Wbma)));
       SLinkOperations.setTarget(node, LINKS.ifFalse$Wbma, ifTrue);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SwapTernaryBranches_Intention.this;
     }
+
   }
 
   private static final class LINKS {

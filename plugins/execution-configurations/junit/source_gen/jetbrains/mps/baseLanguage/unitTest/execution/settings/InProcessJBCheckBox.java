@@ -63,7 +63,6 @@ public final class InProcessJBCheckBox extends JBCheckBox {
     public void updateMe() {
       syncComponent(myComp, !(InProcessJBCheckBox.this.isSelected()));
     }
-
   }
 
   private static void syncComponent(Component component, boolean flag) {

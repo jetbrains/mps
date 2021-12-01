@@ -32,6 +32,7 @@ public class ModelChooser extends TextFieldWithBrowseButton.NoPathCompletion {
   private final Project myMpsProject;
   private SModelReference myModelRef;
 
+
   public ModelChooser(@Nullable final Project mpsProject) {
     myMpsProject = mpsProject;
     if (mpsProject != null) {
@@ -79,7 +80,8 @@ public class ModelChooser extends TextFieldWithBrowseButton.NoPathCompletion {
 
   public void setModel(@NotNull SModelReference model) {
     myModelRef = model;
-    setText(model.getModelName());
+    String modelName = model.getModelName();
+    setText(modelName);
   }
 
   @Nullable

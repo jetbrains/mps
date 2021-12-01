@@ -105,29 +105,28 @@
       <node id="5101378672992822266" at="133,47,134,55" concept="6" />
       <node id="5101378672999474436" at="136,69,137,66" concept="5" />
       <node id="5101378673001034418" at="137,66,138,93" concept="5" />
-      <node id="5101378673001034424" at="138,93,139,38" concept="1" />
-      <node id="5101378673001034430" at="139,38,140,39" concept="1" />
-      <node id="5101378673001034436" at="140,39,141,50" concept="1" />
-      <node id="5101378673000838172" at="141,50,142,77" concept="1" />
-      <node id="5101378673001034450" at="142,77,143,25" concept="6" />
-      <node id="5101378673001044572" at="145,72,146,66" concept="5" />
-      <node id="5101378673001035659" at="146,66,147,95" concept="5" />
-      <node id="5101378673001035673" at="147,95,148,103" concept="5" />
-      <node id="5101378673001035679" at="148,103,149,62" concept="1" />
-      <node id="5101378673001035685" at="149,62,150,27" concept="6" />
-      <node id="2181232403824791429" at="152,60,153,66" concept="5" />
-      <node id="2181232403824791438" at="153,66,154,111" concept="5" />
-      <node id="2181232403824791444" at="154,111,155,66" concept="1" />
-      <node id="2181232403824791452" at="155,66,156,69" concept="1" />
-      <node id="2181232403824791460" at="156,69,157,21" concept="6" />
-      <node id="7120092006645143150" at="159,57,160,45" concept="6" />
+      <node id="5101378673001034430" at="138,93,139,39" concept="1" />
+      <node id="5101378673001034436" at="139,39,140,50" concept="1" />
+      <node id="5101378673000838172" at="140,50,141,77" concept="1" />
+      <node id="5101378673001034450" at="141,77,142,25" concept="6" />
+      <node id="5101378673001044572" at="144,72,145,66" concept="5" />
+      <node id="5101378673001035659" at="145,66,146,95" concept="5" />
+      <node id="5101378673001035673" at="146,95,147,103" concept="5" />
+      <node id="5101378673001035679" at="147,103,148,62" concept="1" />
+      <node id="5101378673001035685" at="148,62,149,27" concept="6" />
+      <node id="2181232403824791429" at="151,60,152,66" concept="5" />
+      <node id="2181232403824791438" at="152,66,153,111" concept="5" />
+      <node id="2181232403824791444" at="153,111,154,66" concept="1" />
+      <node id="2181232403824791452" at="154,66,155,69" concept="1" />
+      <node id="2181232403824791460" at="155,69,156,21" concept="6" />
+      <node id="7120092006645143150" at="158,57,159,45" concept="6" />
       <node id="8128243960970298224" at="42,0,44,0" concept="9" trace="ourParamCache" />
       <node id="8128243960970298224" at="44,0,46,0" concept="2" trace="myWithCommandRule" />
       <node id="8128243960970298224" at="47,0,50,0" concept="0" trace="JUnitOutOfProcess_Test#()V" />
       <node id="8128243960970298224" at="74,0,77,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="7120092006645143139" at="124,9,127,9" concept="3" />
       <node id="5101378672992822296" at="133,0,136,0" concept="4" trace="emptyList#()Ljava/util/List;" />
-      <node id="7120092006645143150" at="159,0,162,0" concept="10" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
+      <node id="7120092006645143150" at="158,0,161,0" concept="10" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
       <node id="8128243960970298225" at="51,0,55,0" concept="4" trace="test_startSimpleTestCase#()V" />
       <node id="7120092006645143711" at="55,0,59,0" concept="4" trace="test_startFailedTestCase#()V" />
       <node id="5101378672992586235" at="59,0,63,0" concept="4" trace="test_programParametersArePassedToTheTest#()V" />
@@ -139,9 +138,9 @@
       <node id="7120092006645143121" at="119,97,124,9" concept="3" />
       <node id="5101378672992586235" at="87,0,94,0" concept="4" trace="test_programParametersArePassedToTheTest#()V" />
       <node id="5101378672992887243" at="94,0,101,0" concept="4" trace="test_programParametersWithSpacesArePassedToTheTest#()V" />
-      <node id="5101378673001035689" at="145,0,152,0" concept="4" trace="createDefaultJavaSettings#()Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;" />
-      <node id="2181232403824791464" at="152,0,159,0" concept="4" trace="createDefaultJUnitRC#()Ljetbrains/mps/execution/api/configurations/BaseMpsRunConfiguration;" />
-      <node id="5101378673001034454" at="136,0,145,0" concept="4" trace="createDefaultJUnitSettings#()Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;" />
+      <node id="5101378673001035689" at="144,0,151,0" concept="4" trace="createDefaultJavaSettings#()Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;" />
+      <node id="2181232403824791464" at="151,0,158,0" concept="4" trace="createDefaultJUnitRC#()Ljetbrains/mps/execution/api/configurations/BaseMpsRunConfiguration;" />
+      <node id="5101378673001034454" at="136,0,144,0" concept="4" trace="createDefaultJUnitSettings#()Ljetbrains/mps/execution/api/settings/IPersistentConfiguration;" />
       <node id="7120092006645245950" at="107,145,131,7" concept="12" />
       <node id="7120092006645138817" at="107,0,133,0" concept="4" trace="runTestsWithSettings#(Ljetbrains/mps/execution/api/configurations/BaseMpsRunConfiguration;Ljava/util/List;Ljava/util/List;)V" />
       <scope id="8128243960970298224" at="47,35,48,25" />
@@ -156,7 +155,7 @@
       <scope id="7120092006645143140" at="125,60,126,51" />
       <scope id="7120092006645245956" at="129,38,130,36" />
       <scope id="5101378672992822296" at="133,47,134,55" />
-      <scope id="7120092006645143150" at="159,57,160,45" />
+      <scope id="7120092006645143150" at="158,57,159,45" />
       <scope id="7120092006645143711" at="83,61,85,92">
         <var name="testsToFail" id="5101378673001047058" />
       </scope>
@@ -176,7 +175,7 @@
         <var name="testsToSucceed" id="5248278678406337896" />
       </scope>
       <scope id="5101378672992822296" at="133,0,136,0" />
-      <scope id="7120092006645143150" at="159,0,162,0">
+      <scope id="7120092006645143150" at="158,0,161,0">
         <var name="str" id="7120092006645143150" />
       </scope>
       <scope id="8128243960970298225" at="51,0,55,0" />
@@ -197,24 +196,24 @@
         <var name="vmParams" id="333315118885906456" />
       </scope>
       <scope id="5248278678406337892" at="101,0,106,0" />
-      <scope id="5101378673001035689" at="145,72,150,27">
+      <scope id="5101378673001035689" at="144,72,149,27">
         <var name="ideaProject" id="5101378673001044573" />
         <var name="javaRunParametersTuple" id="5101378673001035660" />
         <var name="javaRunParams" id="5101378673001035674" />
       </scope>
-      <scope id="2181232403824791464" at="152,60,157,21">
+      <scope id="2181232403824791464" at="151,60,156,21">
         <var name="ideaProject" id="2181232403824791430" />
         <var name="junitRC" id="2181232403824791439" />
       </scope>
-      <scope id="5101378672992586235" at="87,0,94,0" />
-      <scope id="5101378672992887243" at="94,0,101,0" />
-      <scope id="5101378673001034454" at="136,69,143,25">
+      <scope id="5101378673001034454" at="136,69,142,25">
         <var name="ideaProject" id="5101378672999474437" />
         <var name="junitParams" id="5101378673001034419" />
       </scope>
-      <scope id="5101378673001035689" at="145,0,152,0" />
-      <scope id="2181232403824791464" at="152,0,159,0" />
-      <scope id="5101378673001034454" at="136,0,145,0" />
+      <scope id="5101378672992586235" at="87,0,94,0" />
+      <scope id="5101378672992887243" at="94,0,101,0" />
+      <scope id="5101378673001035689" at="144,0,151,0" />
+      <scope id="2181232403824791464" at="151,0,158,0" />
+      <scope id="5101378673001034454" at="136,0,144,0" />
       <scope id="7120092006645245951" at="108,11,128,0">
         <var name="allTests" id="7120092006645143165" />
         <var name="checkListener" id="6339244025082257350" />
@@ -230,8 +229,8 @@
         <var name="testsToFail" id="7120092006645143068" />
         <var name="testsToSucceed" id="7120092006645138821" />
       </scope>
-      <unit id="8128243960970298224" at="72,0,163,0" name="jetbrains.mps.execution.impl.configurations.tests.outproces.JUnitOutOfProcess_Test$TestBody" />
-      <unit id="8128243960970298224" at="40,0,164,0" name="jetbrains.mps.execution.impl.configurations.tests.outproces.JUnitOutOfProcess_Test" />
+      <unit id="8128243960970298224" at="72,0,162,0" name="jetbrains.mps.execution.impl.configurations.tests.outproces.JUnitOutOfProcess_Test$TestBody" />
+      <unit id="8128243960970298224" at="40,0,163,0" name="jetbrains.mps.execution.impl.configurations.tests.outproces.JUnitOutOfProcess_Test" />
     </file>
   </root>
 </debug-info>

@@ -10,11 +10,11 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -22,27 +22,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class SwitchToCustomPropertyImplementation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SwitchToCustomPropertyImplementation_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "6526572214144685276"));
   }
+
   @Override
   public String getPresentation() {
     return "SwitchToCustomPropertyImplementation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.propertyImplementation$jAz0), CONCEPTS.CustomPropertyImplementation$Au));
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -52,10 +46,12 @@ public final class SwitchToCustomPropertyImplementation_Intention extends Abstra
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Customize Getter and Setter";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode toBeReplaced = SLinkOperations.getTarget(node, LINKS.propertyImplementation$jAz0);
@@ -64,10 +60,25 @@ public final class SwitchToCustomPropertyImplementation_Intention extends Abstra
         SLinkOperations.setTarget(replacingNode, LINKS.setAccessor$W5F$, SLinkOperations.getTarget(SNodeOperations.cast(toBeReplaced, CONCEPTS.CustomSetterPropertyImplementation$6N), LINKS.setAccessor$G$8l));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.propertyImplementation$jAz0), CONCEPTS.CustomPropertyImplementation$Au));
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SwitchToCustomPropertyImplementation_Intention.this;
     }
+
   }
 
   private static final class LINKS {

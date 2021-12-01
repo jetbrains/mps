@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class DivExpressionFractionToDiv_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public DivExpressionFractionToDiv_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:57529505-426f-4f87-bbc0-2843f12bd318(jetbrains.mps.baseLanguage.math.intentions)", "1237104496404"));
   }
+
   @Override
   public String getPresentation() {
     return "DivExpressionFractionToDiv";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,18 +45,29 @@ public final class DivExpressionFractionToDiv_Intention extends AbstractIntentio
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Use Java Notation for Division Operation";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNodeOperations.replaceWithAnother(node, _quotation_createNode_smjisl_a0a0a0(SLinkOperations.getTarget(node, LINKS.denominator$xxc3), SLinkOperations.getTarget(node, LINKS.numerator$Pd8p)));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return DivExpressionFractionToDiv_Intention.this;
     }
+
   }
   private static SNode _quotation_createNode_smjisl_a0a0a0(Object parameter_1, Object parameter_2) {
     SNode quotedNode_3 = null;

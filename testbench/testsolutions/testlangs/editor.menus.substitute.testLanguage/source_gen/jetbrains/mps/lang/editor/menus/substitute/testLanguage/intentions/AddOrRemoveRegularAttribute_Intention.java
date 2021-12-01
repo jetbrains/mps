@@ -20,21 +20,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AddOrRemoveRegularAttribute_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddOrRemoveRegularAttribute_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:1c12d022-dd1a-4314-bcc9-f6cffa796c03(jetbrains.mps.lang.editor.menus.substitute.testLanguage.intentions)", "4930188782568043529"));
   }
+
   @Override
   public String getPresentation() {
     return "AddOrRemoveRegularAttribute";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -44,6 +44,7 @@ public final class AddOrRemoveRegularAttribute_Intention extends AbstractIntenti
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_RegularEditor$28).get(node) == null)) {
@@ -52,6 +53,7 @@ public final class AddOrRemoveRegularAttribute_Intention extends AbstractIntenti
         return "Remove Regular Attribute";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_RegularEditor$28).get(node) == null)) {
@@ -60,10 +62,19 @@ public final class AddOrRemoveRegularAttribute_Intention extends AbstractIntenti
         SNodeOperations.deleteNode(new IAttributeDescriptor.NodeAttribute(CONCEPTS.TestSubstituteAttribute_RegularEditor$28).get(node));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddOrRemoveRegularAttribute_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

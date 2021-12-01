@@ -19,21 +19,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class MakeInequalityCheckOnly_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public MakeInequalityCheckOnly_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902b2(jetbrains.mps.lang.typesystem.intentions)", "6840209722389750234"));
   }
+
   @Override
   public String getPresentation() {
     return "MakeInequalityCheckOnly";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -43,6 +43,7 @@ public final class MakeInequalityCheckOnly_Intention extends AbstractIntentionDe
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if (SPropertyOperations.getBoolean(node, PROPS.checkOnly$2Mur)) {
@@ -51,14 +52,24 @@ public final class MakeInequalityCheckOnly_Intention extends AbstractIntentionDe
         return "Make Inequality Check Only ";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SPropertyOperations.set(node, PROPS.checkOnly$2Mur, !(SPropertyOperations.getBoolean(node, PROPS.checkOnly$2Mur)));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return MakeInequalityCheckOnly_Intention.this;
     }
+
   }
 
   private static final class PROPS {

@@ -17,21 +17,21 @@ import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 
 public final class DeleteTemplateMacro_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public DeleteTemplateMacro_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)", "1749435289063221050"));
   }
+
   @Override
   public String getPresentation() {
     return "DeleteTemplateMacro";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -41,17 +41,28 @@ public final class DeleteTemplateMacro_Intention extends AbstractIntentionDescri
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Remove template macro";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNodeOperations.deleteNode(node);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return DeleteTemplateMacro_Intention.this;
     }
+
   }
 }

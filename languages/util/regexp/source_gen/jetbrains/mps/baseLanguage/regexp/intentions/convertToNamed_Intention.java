@@ -19,21 +19,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class convertToNamed_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public convertToNamed_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:5c2005a8-261b-4759-9059-c2decf025b8a(jetbrains.mps.baseLanguage.regexp.intentions)", "305848682816615072"));
   }
+
   @Override
   public String getPresentation() {
     return "convertToNamed";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -43,20 +43,31 @@ public final class convertToNamed_Intention extends AbstractIntentionDescriptor 
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Convert parentheses to named capturing group";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode n = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.MatchParensRegexp$Ea);
       editorContext.flushEvents();
       editorContext.selectWRTFocusPolicy(n);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return convertToNamed_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

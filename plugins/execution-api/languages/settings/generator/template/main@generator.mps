@@ -26,6 +26,8 @@
     <import index="ic0f" ref="r:76273c4a-4818-4f7c-8673-bfc2aeb6debb(jetbrains.mps.execution.api.settings)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="tprt" ref="r:00000000-0000-4000-0000-011c895904a5(jetbrains.mps.ide.common)" />
+    <import index="eibu" ref="r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)" />
+    <import index="w0gx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.modules(MPS.Core/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -154,6 +156,7 @@
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
+      <concept id="1073063089578" name="jetbrains.mps.baseLanguage.structure.SuperMethodCall" flags="nn" index="3nyPlj" />
       <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <property id="521412098689998745" name="nonStatic" index="2bfB8j" />
@@ -1661,6 +1664,7 @@
   </node>
   <node concept="312cEu" id="4nPCR7KFTBC">
     <property role="TrG5h" value="PersistentConfiguration_Template" />
+    <property role="1EXbeo" value="true" />
     <node concept="312cEg" id="4nPCR7KFTGe" role="jymVt">
       <property role="TrG5h" value="myState" />
       <property role="3TUv4t" value="false" />
@@ -2534,12 +2538,12 @@
                   <node concept="3uibUv" id="4nPCR7KFTJN" role="10QFUM">
                     <ref role="3uigEE" node="4nPCR7KFTBD" resolve="PersistentConfiguration_Template.MyState" />
                   </node>
-                  <node concept="2OqwBi" id="4nPCR7KFTJO" role="10QFUP">
-                    <node concept="liA8E" id="4nPCR7KFTJP" role="2OqNvi">
-                      <ref role="37wK5l" node="4nPCR7KFTC5" resolve="clone" />
-                    </node>
+                  <node concept="2OqwBi" id="1htmYMkDRo_" role="10QFUP">
                     <node concept="37vLTw" id="2BHiRxeuOzr" role="2Oq$k0">
                       <ref role="3cqZAo" node="4nPCR7KFTGe" resolve="myState" />
+                    </node>
+                    <node concept="liA8E" id="1htmYMkDSIu" role="2OqNvi">
+                      <ref role="37wK5l" node="1htmYMkCSwT" resolve="clone" />
                     </node>
                   </node>
                 </node>
@@ -2742,6 +2746,312 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="4nPCR7KFTKT" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+      <node concept="2AHcQZ" id="2TKxKiNiDKh" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="1htmYMkBvR7" role="jymVt" />
+    <node concept="3clFb_" id="1htmYMkBb45" role="jymVt">
+      <property role="TrG5h" value="copy" />
+      <node concept="3Tm1VV" id="1htmYMkBb46" role="1B3o_S" />
+      <node concept="3uibUv" id="1htmYMkBb47" role="3clF45">
+        <ref role="3uigEE" node="4nPCR7KFTBC" resolve="PersistentConfiguration_Template" />
+      </node>
+      <node concept="3clFbS" id="1htmYMkBb48" role="3clF47">
+        <node concept="3cpWs8" id="1htmYMkBb49" role="3cqZAp">
+          <node concept="3cpWsn" id="1htmYMkBb4a" role="3cpWs9">
+            <property role="TrG5h" value="cloneTemplate" />
+            <node concept="3uibUv" id="1htmYMkBb4b" role="1tU5fm">
+              <ref role="3uigEE" node="4nPCR7KFTBC" resolve="PersistentConfiguration_Template" />
+            </node>
+            <node concept="1rXfSq" id="1htmYMkBb4c" role="33vP2m">
+              <ref role="37wK5l" to="ic0f:3oW7HLfqDr8" resolve="createCloneTemplate" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="1htmYMkBb4d" role="3cqZAp">
+          <node concept="1PaTwC" id="1htmYMkBb4e" role="1aUNEU">
+            <node concept="3oM_SD" id="1htmYMkBb4f" role="1PaTwD">
+              <property role="3oM_SC" value="beware," />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4g" role="1PaTwD">
+              <property role="3oM_SC" value="PersistenceConfiguration.this" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4h" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4i" role="1PaTwD">
+              <property role="3oM_SC" value="newly" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4j" role="1PaTwD">
+              <property role="3oM_SC" value="created" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4k" role="1PaTwD">
+              <property role="3oM_SC" value="MyState" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4l" role="1PaTwD">
+              <property role="3oM_SC" value="instance" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4m" role="1PaTwD">
+              <property role="3oM_SC" value="would" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4n" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4o" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4p" role="1PaTwD">
+              <property role="3oM_SC" value="same" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4q" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="1htmYMkBb4r" role="3cqZAp">
+          <node concept="1PaTwC" id="1htmYMkBb4s" role="1aUNEU">
+            <node concept="3oM_SD" id="1htmYMkBb4t" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4u" role="1PaTwD">
+              <property role="3oM_SC" value="value" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4v" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4w" role="1PaTwD">
+              <property role="3oM_SC" value="myState," />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4x" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4y" role="1PaTwD">
+              <property role="3oM_SC" value="!=" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4z" role="1PaTwD">
+              <property role="3oM_SC" value="clone" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4$" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4_" role="1PaTwD">
+              <property role="3oM_SC" value="regular" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4A" role="1PaTwD">
+              <property role="3oM_SC" value="Java" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4B" role="1PaTwD">
+              <property role="3oM_SC" value="passer-by" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4C" role="1PaTwD">
+              <property role="3oM_SC" value="would" />
+            </node>
+            <node concept="3oM_SD" id="1htmYMkBb4D" role="1PaTwD">
+              <property role="3oM_SC" value="expect." />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1htmYMkBb4E" role="3cqZAp">
+          <node concept="37vLTI" id="1htmYMkBb4F" role="3clFbG">
+            <node concept="10QFUN" id="1htmYMkBb4G" role="37vLTx">
+              <node concept="3uibUv" id="1htmYMkBb4H" role="10QFUM">
+                <ref role="3uigEE" node="4nPCR7KFTBD" resolve="PersistentConfiguration_Template.MyState" />
+              </node>
+              <node concept="2OqwBi" id="1htmYMkBb4I" role="10QFUP">
+                <node concept="liA8E" id="1htmYMkBb4J" role="2OqNvi">
+                  <ref role="37wK5l" node="4nPCR7KFTC5" resolve="copy" />
+                </node>
+                <node concept="37vLTw" id="1htmYMkBb4K" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4nPCR7KFTGe" resolve="myState" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="1htmYMkBb4L" role="37vLTJ">
+              <node concept="37vLTw" id="1htmYMkBb4M" role="2Oq$k0">
+                <ref role="3cqZAo" node="1htmYMkBb4a" resolve="cloneTemplate" />
+              </node>
+              <node concept="2OwXpG" id="1htmYMkBb4N" role="2OqNvi">
+                <ref role="2Oxat5" node="4nPCR7KFTGe" resolve="myState" />
+              </node>
+            </node>
+          </node>
+          <node concept="1W57fq" id="1htmYMkBb4O" role="lGtFl">
+            <node concept="3IZrLx" id="1htmYMkBb4P" role="3IZSJc">
+              <node concept="3clFbS" id="1htmYMkBb4Q" role="2VODD2">
+                <node concept="3SKdUt" id="1htmYMkBb4R" role="3cqZAp">
+                  <node concept="1PaTwC" id="1htmYMkBb4S" role="1aUNEU">
+                    <node concept="3oM_SD" id="1htmYMkBb4T" role="1PaTwD">
+                      <property role="3oM_SC" value="see" />
+                    </node>
+                    <node concept="3oM_SD" id="1htmYMkBb4U" role="1PaTwD">
+                      <property role="3oM_SC" value="$IF$" />
+                    </node>
+                    <node concept="3oM_SD" id="1htmYMkBb4V" role="1PaTwD">
+                      <property role="3oM_SC" value="[myState]" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="1htmYMkBb4W" role="3cqZAp">
+                  <node concept="2OqwBi" id="1htmYMkBb4X" role="3clFbG">
+                    <node concept="2OqwBi" id="1htmYMkBb4Y" role="2Oq$k0">
+                      <node concept="2OqwBi" id="1htmYMkBb4Z" role="2Oq$k0">
+                        <node concept="30H73N" id="1htmYMkBb50" role="2Oq$k0" />
+                        <node concept="3Tsc0h" id="1htmYMkBb51" role="2OqNvi">
+                          <ref role="3TtcxE" to="fb9u:O$iR4J$g4z" resolve="persistentProperty" />
+                        </node>
+                      </node>
+                      <node concept="3zZkjj" id="1htmYMkBb52" role="2OqNvi">
+                        <node concept="1bVj0M" id="1htmYMkBb53" role="23t8la">
+                          <node concept="3clFbS" id="1htmYMkBb54" role="1bW5cS">
+                            <node concept="3clFbF" id="1htmYMkBb55" role="3cqZAp">
+                              <node concept="3fqX7Q" id="1htmYMkBb56" role="3clFbG">
+                                <node concept="2OqwBi" id="1htmYMkBb57" role="3fr31v">
+                                  <node concept="37vLTw" id="1htmYMkBb58" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="1htmYMkBb5a" resolve="it" />
+                                  </node>
+                                  <node concept="2qgKlT" id="1htmYMkBb59" role="2OqNvi">
+                                    <ref role="37wK5l" to="hilv:O$iR4J$g8G" resolve="isTemplate" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="Rh6nW" id="1htmYMkBb5a" role="1bW2Oz">
+                            <property role="TrG5h" value="it" />
+                            <node concept="2jxLKc" id="1htmYMkBb5b" role="1tU5fm" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3GX2aA" id="1htmYMkBb5c" role="2OqNvi" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1htmYMkBb5d" role="3cqZAp">
+          <node concept="37vLTI" id="1htmYMkBb5e" role="3clFbG">
+            <node concept="2OqwBi" id="1htmYMkBb5f" role="37vLTx">
+              <node concept="1eOMI4" id="1htmYMkBb5g" role="2Oq$k0">
+                <node concept="10QFUN" id="1htmYMkBb5h" role="1eOMHV">
+                  <node concept="3uibUv" id="1htmYMkBb5i" role="10QFUM">
+                    <ref role="3uigEE" to="w0gx:~Copyable" resolve="Copyable" />
+                    <node concept="3uibUv" id="1htmYMkBb5j" role="11_B2D">
+                      <ref role="3uigEE" to="ic0f:3oW7HLfqDqW" resolve="IPersistentConfiguration" />
+                      <node concept="29HgVG" id="1htmYMkBb5k" role="lGtFl">
+                        <node concept="3NFfHV" id="1htmYMkBb5l" role="3NFExx">
+                          <node concept="3clFbS" id="1htmYMkBb5m" role="2VODD2">
+                            <node concept="3clFbF" id="1htmYMkBb5n" role="3cqZAp">
+                              <node concept="2OqwBi" id="1htmYMkBb5o" role="3clFbG">
+                                <node concept="3JvlWi" id="1htmYMkBb5p" role="2OqNvi" />
+                                <node concept="30H73N" id="1htmYMkBb5q" role="2Oq$k0" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="37vLTw" id="1htmYMkBb5r" role="10QFUP">
+                    <ref role="3cqZAo" node="4nPCR7KFTGl" resolve="myTemplate" />
+                    <node concept="1ZhdrF" id="1htmYMkBb5s" role="lGtFl">
+                      <property role="2qtEX8" value="variableDeclaration" />
+                      <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068498886296/1068581517664" />
+                      <node concept="3$xsQk" id="1htmYMkBb5t" role="3$ytzL">
+                        <node concept="3clFbS" id="1htmYMkBb5u" role="2VODD2">
+                          <node concept="3clFbF" id="1htmYMkBb5v" role="3cqZAp">
+                            <node concept="2OqwBi" id="1htmYMkBb5w" role="3clFbG">
+                              <node concept="1iwH7S" id="1htmYMkBb5x" role="2Oq$k0" />
+                              <node concept="1iwH70" id="1htmYMkBb5y" role="2OqNvi">
+                                <ref role="1iwH77" node="4xfklJ6jB4J" resolve="PersistentPropertyToField" />
+                                <node concept="30H73N" id="1htmYMkBb5z" role="1iwH7V" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="liA8E" id="1htmYMkBb5$" role="2OqNvi">
+                <ref role="37wK5l" to="w0gx:~Copyable.copy()" resolve="copy" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="1htmYMkBb5_" role="37vLTJ">
+              <node concept="37vLTw" id="1htmYMkBb5A" role="2Oq$k0">
+                <ref role="3cqZAo" node="1htmYMkBb4a" resolve="cloneTemplate" />
+              </node>
+              <node concept="2OwXpG" id="1htmYMkBb5B" role="2OqNvi">
+                <ref role="2Oxat5" node="4nPCR7KFTGl" resolve="myTemplate" />
+                <node concept="1ZhdrF" id="1htmYMkBb5C" role="lGtFl">
+                  <property role="2qtEX8" value="fieldDeclaration" />
+                  <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1197029447546/1197029500499" />
+                  <node concept="3$xsQk" id="1htmYMkBb5D" role="3$ytzL">
+                    <node concept="3clFbS" id="1htmYMkBb5E" role="2VODD2">
+                      <node concept="3clFbF" id="1htmYMkBb5F" role="3cqZAp">
+                        <node concept="2OqwBi" id="1htmYMkBb5G" role="3clFbG">
+                          <node concept="1iwH7S" id="1htmYMkBb5H" role="2Oq$k0" />
+                          <node concept="1iwH70" id="1htmYMkBb5I" role="2OqNvi">
+                            <ref role="1iwH77" node="4xfklJ6jB4J" resolve="PersistentPropertyToField" />
+                            <node concept="30H73N" id="1htmYMkBb5J" role="1iwH7V" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="1WS0z7" id="1htmYMkBb5K" role="lGtFl">
+            <node concept="3JmXsc" id="1htmYMkBb5L" role="3Jn$fo">
+              <node concept="3clFbS" id="1htmYMkBb5M" role="2VODD2">
+                <node concept="3clFbF" id="1htmYMkBb5N" role="3cqZAp">
+                  <node concept="2OqwBi" id="1htmYMkBb5O" role="3clFbG">
+                    <node concept="2OqwBi" id="1htmYMkBb5P" role="2Oq$k0">
+                      <node concept="30H73N" id="1htmYMkBb5Q" role="2Oq$k0" />
+                      <node concept="3Tsc0h" id="1htmYMkBb5R" role="2OqNvi">
+                        <ref role="3TtcxE" to="fb9u:O$iR4J$g4z" resolve="persistentProperty" />
+                      </node>
+                    </node>
+                    <node concept="3zZkjj" id="1htmYMkBb5S" role="2OqNvi">
+                      <node concept="1bVj0M" id="1htmYMkBb5T" role="23t8la">
+                        <node concept="3clFbS" id="1htmYMkBb5U" role="1bW5cS">
+                          <node concept="3clFbF" id="1htmYMkBb5V" role="3cqZAp">
+                            <node concept="2OqwBi" id="1htmYMkBb5W" role="3clFbG">
+                              <node concept="37vLTw" id="1htmYMkBb5X" role="2Oq$k0">
+                                <ref role="3cqZAo" node="1htmYMkBb5Z" resolve="it" />
+                              </node>
+                              <node concept="2qgKlT" id="1htmYMkBb5Y" role="2OqNvi">
+                                <ref role="37wK5l" to="hilv:O$iR4J$g8G" resolve="isTemplate" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="Rh6nW" id="1htmYMkBb5Z" role="1bW2Oz">
+                          <property role="TrG5h" value="it" />
+                          <node concept="2jxLKc" id="1htmYMkBb60" role="1tU5fm" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="1htmYMkBb61" role="3cqZAp">
+          <node concept="37vLTw" id="1htmYMkBb62" role="3cqZAk">
+            <ref role="3cqZAo" node="1htmYMkBb4a" resolve="cloneTemplate" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="1htmYMkBb63" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
@@ -3037,7 +3347,7 @@
         <property role="TrG5h" value="myPersistentProperty" />
         <node concept="3Tm1VV" id="4nPCR7KFTBF" role="1B3o_S" />
         <node concept="3uibUv" id="4nPCR7KFTBG" role="1tU5fm">
-          <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+          <ref role="3uigEE" to="w0gx:~Copyable" resolve="Copyable" />
         </node>
         <node concept="2b32R4" id="4nPCR7KFTBH" role="lGtFl">
           <node concept="3JmXsc" id="4nPCR7KFTBI" role="2P8S$">
@@ -3078,23 +3388,22 @@
           </node>
         </node>
       </node>
-      <node concept="2tJIrI" id="7DjC5ztrUZE" role="jymVt" />
-      <node concept="3clFb_" id="4nPCR7KFTC5" role="jymVt">
+      <node concept="2tJIrI" id="1htmYMkowVV" role="jymVt" />
+      <node concept="3clFb_" id="1htmYMkCSwT" role="jymVt">
         <property role="TrG5h" value="clone" />
-        <node concept="3Tm1VV" id="4nPCR7KFTC6" role="1B3o_S" />
-        <node concept="3uibUv" id="4nPCR7KFTC7" role="3clF45">
-          <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
-        </node>
-        <node concept="3clFbS" id="4nPCR7KFTC8" role="3clF47">
+        <node concept="3clFbS" id="1htmYMkCSwW" role="3clF47">
           <node concept="3cpWs8" id="4nPCR7KFTC9" role="3cqZAp">
             <node concept="3cpWsn" id="4nPCR7KFTCa" role="3cpWs9">
               <property role="TrG5h" value="state" />
               <node concept="3uibUv" id="4nPCR7KFTCb" role="1tU5fm">
                 <ref role="3uigEE" node="4nPCR7KFTBD" resolve="PersistentConfiguration_Template.MyState" />
               </node>
-              <node concept="2ShNRf" id="4nPCR7KFTCc" role="33vP2m">
-                <node concept="HV5vD" id="3qbI1lN8MDH" role="2ShVmc">
-                  <ref role="HV5vE" node="4nPCR7KFTBD" resolve="PersistentConfiguration_Template.MyState" />
+              <node concept="10QFUN" id="1htmYMkD4Qv" role="33vP2m">
+                <node concept="3uibUv" id="1htmYMkD6gG" role="10QFUM">
+                  <ref role="3uigEE" node="4nPCR7KFTBD" resolve="PersistentConfiguration_Template.MyState" />
+                </node>
+                <node concept="3nyPlj" id="1htmYMkD2J9" role="10QFUP">
+                  <ref role="37wK5l" to="wyt6:~Object.clone()" resolve="clone" />
                 </node>
               </node>
             </node>
@@ -3125,7 +3434,7 @@
                       </node>
                     </node>
                     <node concept="liA8E" id="4nPCR7KFTCs" role="2OqNvi">
-                      <ref role="37wK5l" to="wyt6:~Object.clone()" resolve="clone" />
+                      <ref role="37wK5l" to="w0gx:~Copyable.copy()" resolve="copy" />
                     </node>
                   </node>
                   <node concept="2OqwBi" id="4nPCR7KFTCt" role="37vLTJ">
@@ -3230,7 +3539,7 @@
                       </node>
                       <node concept="2c44tf" id="4nPCR7KFTDd" role="3JuZjQ">
                         <node concept="3uibUv" id="4nPCR7KFTDe" role="2c44tc">
-                          <ref role="3uigEE" to="wyt6:~Cloneable" resolve="Cloneable" />
+                          <ref role="3uigEE" to="w0gx:~Copyable" resolve="Copyable" />
                         </node>
                       </node>
                     </node>
@@ -3296,12 +3605,77 @@
             </node>
           </node>
         </node>
+        <node concept="3Tm1VV" id="1htmYMkCRjJ" role="1B3o_S" />
+        <node concept="3uibUv" id="1htmYMkCSbX" role="3clF45">
+          <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+        </node>
+        <node concept="3uibUv" id="1htmYMkDctb" role="Sfmx6">
+          <ref role="3uigEE" to="wyt6:~CloneNotSupportedException" resolve="CloneNotSupportedException" />
+        </node>
+        <node concept="2AHcQZ" id="1htmYMkDgK8" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+        </node>
+        <node concept="2AHcQZ" id="1htmYMkDfsT" role="2AJF6D">
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+        </node>
+      </node>
+      <node concept="2tJIrI" id="1htmYMkCPYV" role="jymVt" />
+      <node concept="3clFb_" id="4nPCR7KFTC5" role="jymVt">
+        <property role="TrG5h" value="copy" />
+        <node concept="3Tm1VV" id="4nPCR7KFTC6" role="1B3o_S" />
+        <node concept="3uibUv" id="4nPCR7KFTC7" role="3clF45">
+          <ref role="3uigEE" node="4nPCR7KFTBD" resolve="PersistentConfiguration_Template.MyState" />
+        </node>
+        <node concept="3clFbS" id="4nPCR7KFTC8" role="3clF47">
+          <node concept="3J1_TO" id="1htmYMkDnf_" role="3cqZAp">
+            <node concept="3uVAMA" id="1htmYMkDo4t" role="1zxBo5">
+              <node concept="XOnhg" id="1htmYMkDo4u" role="1zc67B">
+                <property role="TrG5h" value="e" />
+                <node concept="nSUau" id="1htmYMkDo4v" role="1tU5fm">
+                  <node concept="3uibUv" id="1htmYMkDp7z" role="nSUat">
+                    <ref role="3uigEE" to="wyt6:~CloneNotSupportedException" resolve="CloneNotSupportedException" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="1htmYMkDo4w" role="1zc67A">
+                <node concept="RRSsy" id="1htmYMkDtYn" role="3cqZAp">
+                  <property role="RRSoG" value="gZ5fh_4/error" />
+                  <node concept="Xl_RD" id="1htmYMkDtYp" role="RRSoy" />
+                  <node concept="37vLTw" id="1htmYMkDul7" role="RRSow">
+                    <ref role="3cqZAo" node="1htmYMkDo4u" resolve="e" />
+                  </node>
+                </node>
+                <node concept="3cpWs6" id="1htmYMkD$UD" role="3cqZAp">
+                  <node concept="10Nm6u" id="1htmYMkD_gQ" role="3cqZAk" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="1htmYMkDnfB" role="1zxBo7">
+              <node concept="3cpWs6" id="1htmYMkCUB6" role="3cqZAp">
+                <node concept="10QFUN" id="1htmYMkCZvA" role="3cqZAk">
+                  <node concept="3uibUv" id="1htmYMkD0pC" role="10QFUM">
+                    <ref role="3uigEE" node="4nPCR7KFTBD" resolve="PersistentConfiguration_Template.MyState" />
+                  </node>
+                  <node concept="1rXfSq" id="1htmYMkCWVM" role="10QFUP">
+                    <ref role="37wK5l" node="1htmYMkCSwT" resolve="clone" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="2AHcQZ" id="4nPCR7KFTDC" role="2AJF6D">
           <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
-        <node concept="3uibUv" id="4nPCR7KFTDD" role="Sfmx6">
-          <ref role="3uigEE" to="wyt6:~CloneNotSupportedException" resolve="CloneNotSupportedException" />
+      </node>
+      <node concept="3uibUv" id="1htmYMko4mk" role="EKbjA">
+        <ref role="3uigEE" to="w0gx:~Copyable" resolve="Copyable" />
+        <node concept="3uibUv" id="1htmYMko84G" role="11_B2D">
+          <ref role="3uigEE" node="4nPCR7KFTBD" resolve="PersistentConfiguration_Template.MyState" />
         </node>
+      </node>
+      <node concept="3uibUv" id="1htmYMkDe_M" role="EKbjA">
+        <ref role="3uigEE" to="wyt6:~Cloneable" resolve="Cloneable" />
       </node>
     </node>
     <node concept="3Tm1VV" id="4nPCR7KFTDE" role="1B3o_S" />
@@ -3411,6 +3785,12 @@
     </node>
     <node concept="3uibUv" id="5knQ58o710q" role="EKbjA">
       <ref role="3uigEE" to="ic0f:3oW7HLfqDqW" resolve="IPersistentConfiguration" />
+    </node>
+    <node concept="3uibUv" id="1htmYMk$kh5" role="EKbjA">
+      <ref role="3uigEE" to="w0gx:~Copyable" resolve="Copyable" />
+      <node concept="3uibUv" id="1htmYMk$moE" role="11_B2D">
+        <ref role="3uigEE" node="4nPCR7KFTBC" resolve="PersistentConfiguration_Template" />
+      </node>
     </node>
   </node>
   <node concept="13MO4I" id="4nPCR7KFTL1">

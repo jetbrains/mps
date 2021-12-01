@@ -19,21 +19,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AttachComment2_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AttachComment2_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:72e47166-8f77-453a-8c51-48d556a5cc3b(jetbrains.mps.samples.attribute.intentions)", "8081432364527460206"));
   }
+
   @Override
   public String getPresentation() {
     return "AttachComment2";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -43,18 +43,29 @@ public final class AttachComment2_Intention extends AbstractIntentionDescriptor 
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Attach Comment Attribute 2";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       new IAttributeDescriptor.AllAttributes().addNew(node, CONCEPTS.CommentAttribute2$5E);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AttachComment2_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

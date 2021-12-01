@@ -84,7 +84,7 @@ public abstract class Scope {
   }
 
   public Scope withAdditionalDependencies(final Collection<SNode> deps) {
-    return new CompositeScope(this) {
+    return new DelegatingScope(this) {
       @Override
       public Collection<SNode> getAdditionalDependencies() {
         Collection<SNode> res = new HashSet<SNode>(super.getAdditionalDependencies());

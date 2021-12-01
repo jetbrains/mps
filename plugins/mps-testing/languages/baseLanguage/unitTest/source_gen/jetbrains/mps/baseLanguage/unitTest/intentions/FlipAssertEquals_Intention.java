@@ -20,21 +20,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class FlipAssertEquals_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public FlipAssertEquals_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:ae5a3427-e70c-4b57-99b6-7ec8fc28a394(jetbrains.mps.baseLanguage.unitTest.intentions)", "7523560072226634120"));
   }
+
   @Override
   public String getPresentation() {
     return "FlipAssertEquals";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -44,10 +44,12 @@ public final class FlipAssertEquals_Intention extends AbstractIntentionDescripto
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Flip Assert Statement";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode expected = SLinkOperations.getTarget(node, LINKS.expected$QBis);
@@ -55,10 +57,19 @@ public final class FlipAssertEquals_Intention extends AbstractIntentionDescripto
       SLinkOperations.setTarget(node, LINKS.expected$QBis, SNodeOperations.copyNode(actual));
       SLinkOperations.setTarget(node, LINKS.actual$QBxt, SNodeOperations.copyNode(expected));
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return FlipAssertEquals_Intention.this;
     }
+
   }
 
   private static final class LINKS {

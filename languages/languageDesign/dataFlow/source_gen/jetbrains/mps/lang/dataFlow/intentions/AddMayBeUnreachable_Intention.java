@@ -10,10 +10,10 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -23,27 +23,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class AddMayBeUnreachable_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddMayBeUnreachable_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959037b(jetbrains.mps.lang.dataFlow.intentions)", "1206534589230"));
   }
+
   @Override
   public String getPresentation() {
     return "AddMayBeUnreachable";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.EmitMayBeUnreachable$dh));
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -53,10 +47,12 @@ public final class AddMayBeUnreachable_Intention extends AbstractIntentionDescri
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Add May Be Unreachable";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode result = SNodeFactoryOperations.createNewNode(CONCEPTS.EmitMayBeUnreachable$dh, null);
@@ -64,10 +60,25 @@ public final class AddMayBeUnreachable_Intention extends AbstractIntentionDescri
       SLinkOperations.setTarget(result, LINKS.emitStatement$Ak4T, node);
       SelectionUtil.selectNode(editorContext, node);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(node), CONCEPTS.EmitMayBeUnreachable$dh));
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddMayBeUnreachable_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

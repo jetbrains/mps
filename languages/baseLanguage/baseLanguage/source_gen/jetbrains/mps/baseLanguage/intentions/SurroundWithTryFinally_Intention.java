@@ -26,21 +26,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class SurroundWithTryFinally_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public SurroundWithTryFinally_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "3366354716707895805"));
   }
+
   @Override
   public String getPresentation() {
     return "SurroundWithTryFinally";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return true;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -50,10 +50,12 @@ public final class SurroundWithTryFinally_Intention extends AbstractIntentionDes
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Try / Finally";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode tryStatement = SNodeFactoryOperations.createNewNode(CONCEPTS.TryUniversalStatement$$M, null);
@@ -64,10 +66,19 @@ public final class SurroundWithTryFinally_Intention extends AbstractIntentionDes
       }
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, SLinkOperations.getTarget(SLinkOperations.getTarget(tryStatement, LINKS.finallyClause$KUl), LINKS.finallyBody$CRwI), SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return SurroundWithTryFinally_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

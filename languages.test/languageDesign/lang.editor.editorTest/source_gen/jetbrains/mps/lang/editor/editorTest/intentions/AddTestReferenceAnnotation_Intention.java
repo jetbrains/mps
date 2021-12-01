@@ -10,57 +10,36 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
+import java.util.Collections;
+import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.lang.generator.helper.EditingUtil;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.test.behavior.NodesTestCase__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import java.util.Collections;
-import jetbrains.mps.intentions.AbstractIntentionExecutable;
-import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AddTestReferenceAnnotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddTestReferenceAnnotation_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:aaff0f7f-e57d-4430-aea6-ff86ed5c75ae(jetbrains.mps.lang.editor.editorTest.intentions)", "7658393498702987309"));
   }
+
   @Override
   public String getPresentation() {
     return "AddTestReferenceAnnotation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    EditorCell cell = editorContext.getSelectedCell();
-    if (cell == null) {
-      return false;
-    }
 
-    SReferenceLink ref = EditingUtil.getEditedLink(cell);
-    if (ref == null || !(ref.isValid())) {
-      return false;
-    }
-
-    SNode referentNode = EditingUtil.getEditedLinkReferentNode(cell);
-    if (referentNode == null || new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAnnotataion$ZZ, ref).get(referentNode) != null) {
-      return false;
-    }
-
-    return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(CONCEPTS.NodesTestCase$nd), node);
-  }
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -70,10 +49,12 @@ public final class AddTestReferenceAnnotation_Intention extends AbstractIntentio
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Add Test Reference Annotation";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       EditorCell cell = editorContext.getSelectedCell();
@@ -81,10 +62,40 @@ public final class AddTestReferenceAnnotation_Intention extends AbstractIntentio
       SReferenceLink ref = EditingUtil.getEditedLink(cell);
       SNode result = SNodeFactoryOperations.setNewAttribute(referentNode, new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAnnotataion$ZZ, ref), CONCEPTS.ReferenceAnnotataion$ZZ);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      EditorCell cell = editorContext.getSelectedCell();
+      if (cell == null) {
+        return false;
+      }
+
+      SReferenceLink ref = EditingUtil.getEditedLink(cell);
+      if (ref == null || !(ref.isValid())) {
+        return false;
+      }
+
+      SNode referentNode = EditingUtil.getEditedLinkReferentNode(cell);
+      if (referentNode == null || new IAttributeDescriptor.LinkAttribute(CONCEPTS.ReferenceAnnotataion$ZZ, ref).get(referentNode) != null) {
+        return false;
+      }
+
+      return (boolean) NodesTestCase__BehaviorDescriptor.isIntentionApplicable_idhHDM9no.invoke(SNodeOperations.asSConcept(CONCEPTS.NodesTestCase$nd), node);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddTestReferenceAnnotation_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

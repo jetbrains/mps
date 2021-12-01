@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class ElsifSwapWithMain_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ElsifSwapWithMain_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "1206066794083"));
   }
+
   @Override
   public String getPresentation() {
     return "ElsifSwapWithMain";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,10 +45,12 @@ public final class ElsifSwapWithMain_Intention extends AbstractIntentionDescript
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Swap Elsif Clause with Main Clause";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode ifStatement = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.IfStatement$Q4);
@@ -59,10 +61,19 @@ public final class ElsifSwapWithMain_Intention extends AbstractIntentionDescript
       SLinkOperations.setTarget(node, LINKS.condition$k0T9, condition);
       SLinkOperations.setTarget(node, LINKS.statementList$neQf, statementList);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ElsifSwapWithMain_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

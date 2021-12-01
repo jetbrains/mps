@@ -10,41 +10,35 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import java.util.Objects;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class ToggleRequirementTrace_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ToggleRequirementTrace_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:fddf7047-be18-427f-9162-f31299b900ec(jetbrains.mps.samples.requirementTracking.Traces.intentions)", "4174052498196375444"));
   }
+
   @Override
   public String getPresentation() {
     return "ToggleRequirementTrace";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return ((SNodeOperations.getParent(node) == null) || SNodeOperations.getContainingLink(node).isMultiple()) && ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.RequirementTrace$U6, true)).isEmpty();
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -54,6 +48,7 @@ public final class ToggleRequirementTrace_Intention extends AbstractIntentionDes
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6).get(node) != null)) {
@@ -62,6 +57,7 @@ public final class ToggleRequirementTrace_Intention extends AbstractIntentionDes
         return "Add Requirement Traces";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if ((new IAttributeDescriptor.NodeAttribute(CONCEPTS.RequirementTrace$U6).get(node) != null)) {
@@ -90,10 +86,25 @@ public final class ToggleRequirementTrace_Intention extends AbstractIntentionDes
 
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return ((SNodeOperations.getParent(node) == null) || SNodeOperations.getContainingLink(node).isMultiple()) && ListSequence.fromList(SNodeOperations.getNodeAncestors(node, CONCEPTS.RequirementTrace$U6, true)).isEmpty();
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ToggleRequirementTrace_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

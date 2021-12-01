@@ -6,10 +6,10 @@ import jetbrains.mps.intentions.AbstractIntentionDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionFactory;
 import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.Collection;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -25,27 +25,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class AlterStatementListContainer_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
+
   public AlterStatementListContainer_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "8176191621190087466"));
   }
+
   @Override
   public String getPresentation() {
     return "AlterStatementListContainer";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     List<IntentionExecutable> list = ListSequence.fromList(new ArrayList<IntentionExecutable>());
     List<SAbstractConcept> paramList = parameter(node, context);
@@ -70,6 +64,7 @@ public final class AlterStatementListContainer_Intention extends AbstractIntenti
     public IntentionImplementation(SAbstractConcept parameter) {
       myParameter = parameter;
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       String targetName;
@@ -84,6 +79,7 @@ public final class AlterStatementListContainer_Intention extends AbstractIntenti
       targetName = "Change to " + targetName;
       return targetName;
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode newInitializedInstance = SNodeFactoryOperations.createNewNode(myParameter, null);
@@ -91,10 +87,25 @@ public final class AlterStatementListContainer_Intention extends AbstractIntenti
       SNodeOperations.replaceWithAnother(node, newInitializedInstance);
       editorContext.selectWRTFocusPolicy(newInitializedInstance);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AlterStatementListContainer_Intention.this;
     }
+
     public Object getParameter() {
       return myParameter;
     }

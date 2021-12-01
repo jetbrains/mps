@@ -10,16 +10,16 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
+import java.util.Collections;
+import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.util.OverridingMethodsCalculator;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import java.util.Collections;
-import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -30,39 +30,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class AddOverrideAnnotation_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddOverrideAnnotation_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:00000000-0000-4000-0000-011c895902c6(jetbrains.mps.baseLanguage.intentions)", "1645752949779063112"));
   }
+
   @Override
   public String getPresentation() {
     return "AddOverrideAnnotation";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    SNode classConcept = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ClassConcept$bK);
-    if (classConcept == null) {
-      return false;
-    }
-    if (!(OverridingMethodsCalculator.canOverride(node)) || ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return "java.lang.Override".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(it, LINKS.annotation$12Ek)));
-      }
-    })) {
-      return false;
-    }
-    OverridingMethodsCalculator finder = new OverridingMethodsCalculator(classConcept, Sequence.<SNode>singleton(node));
-    return SetSequence.fromSet(finder.getOverridingMethods()).isNotEmpty();
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -72,10 +54,12 @@ public final class AddOverrideAnnotation_Intention extends AbstractIntentionDesc
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Add @Override Annotation";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode classConcept = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.ClassConcept$bK);
@@ -84,10 +68,37 @@ public final class AddOverrideAnnotation_Intention extends AbstractIntentionDesc
         ListSequence.fromList(SLinkOperations.getChildren(meth, LINKS.annotation$K49I)).addElement(createAnnotationInstance_4i19oe_a0a0a2a0());
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      SNode classConcept = SNodeOperations.as(SNodeOperations.getParent(node), CONCEPTS.ClassConcept$bK);
+      if (classConcept == null) {
+        return false;
+      }
+      if (!(OverridingMethodsCalculator.canOverride(node)) || ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.annotation$K49I)).any(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return "java.lang.Override".equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(it, LINKS.annotation$12Ek)));
+        }
+      })) {
+        return false;
+      }
+      OverridingMethodsCalculator finder = new OverridingMethodsCalculator(classConcept, Sequence.<SNode>singleton(node));
+      return SetSequence.fromSet(finder.getOverridingMethods()).isNotEmpty();
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddOverrideAnnotation_Intention.this;
     }
+
   }
   private static SNode createAnnotationInstance_4i19oe_a0a0a2a0() {
     PersistenceFacade facade = PersistenceFacade.getInstance();

@@ -6,14 +6,14 @@ import jetbrains.mps.intentions.AbstractIntentionDescriptor;
 import jetbrains.mps.openapi.intentions.IntentionFactory;
 import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.generator.helper.EditingUtil;
 import java.util.Collection;
 import jetbrains.mps.openapi.intentions.IntentionExecutable;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.openapi.editor.EditorContext;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import jetbrains.mps.lang.generator.helper.EditingUtil;
 import jetbrains.mps.lang.structure.behavior.AbstractConceptDeclaration__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -34,30 +34,21 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class AddPropertyMacroParam_property_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
+
   public AddPropertyMacroParam_property_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)", "1240595522621"));
   }
+
   @Override
   public String getPresentation() {
     return "AddPropertyMacroParam_property";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (!(MacroIntentionsUtil.isInGeneratorModel(node))) {
-      return false;
-    }
-    return EditingUtil.isPropertyMacroApplicable(node, editorContext.getSelectedCell());
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     List<IntentionExecutable> list = ListSequence.fromList(new ArrayList<IntentionExecutable>());
     List<SNode> paramList = parameter(node, context);
@@ -101,10 +92,12 @@ public final class AddPropertyMacroParam_property_Intention extends AbstractInte
     public IntentionImplementation(SNode parameter) {
       myParameter = parameter;
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Add Property Macro: node." + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(myParameter) + " (property)";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode propertyMacro = EditingUtil.addPropertyMacro(node, editorContext.getSelectedCell());
@@ -121,10 +114,28 @@ public final class AddPropertyMacroParam_property_Intention extends AbstractInte
       // set caret
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, propertyMacro, SelectionManager.FIRST_CELL, 0);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      if (!(MacroIntentionsUtil.isInGeneratorModel(node))) {
+        return false;
+      }
+      return EditingUtil.isPropertyMacroApplicable(node, editorContext.getSelectedCell());
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddPropertyMacroParam_property_Intention.this;
     }
+
     public Object getParameter() {
       return myParameter;
     }

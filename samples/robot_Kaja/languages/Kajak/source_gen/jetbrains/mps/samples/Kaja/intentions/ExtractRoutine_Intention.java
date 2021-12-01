@@ -26,21 +26,21 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class ExtractRoutine_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ExtractRoutine_Intention() {
     super(Kind.NORMAL, true, new SNodePointer("r:c23df2a3-084e-497b-b2a5-1671f4fbf9de(jetbrains.mps.samples.Kaja.intentions)", "7446293342517485574"));
   }
+
   @Override
   public String getPresentation() {
     return "ExtractRoutine";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return true;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -50,10 +50,12 @@ public final class ExtractRoutine_Intention extends AbstractIntentionDescriptor 
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Extract Routine";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode routineDefinition = SNodeFactoryOperations.createNewNode(CONCEPTS.RoutineDefinition$Gg, null);
@@ -67,10 +69,19 @@ public final class ExtractRoutine_Intention extends AbstractIntentionDescriptor 
       }
       editorContext.selectWRTFocusPolicy(routineDefinition);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ExtractRoutine_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {

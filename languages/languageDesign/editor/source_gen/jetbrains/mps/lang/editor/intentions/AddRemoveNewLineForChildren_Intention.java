@@ -10,52 +10,37 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.behavior.IStyleContainer__BehaviorDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public final class AddRemoveNewLineForChildren_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public AddRemoveNewLineForChildren_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:00000000-0000-4000-0000-011c8959029b(jetbrains.mps.lang.editor.intentions)", "1445505956982000110"));
   }
+
   @Override
   public String getPresentation() {
     return "AddRemoveNewLineForChildren";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.CellModel_Collection$Og)) {
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_Collection$Og), LINKS.cellLayout$Of4I), CONCEPTS.CellLayout_Indent$Dl)) {
-        return true;
-      }
-    } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.CellModel_RefNodeList$Uo)) {
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_RefNodeList$Uo), LINKS.cellLayout$ZXkU), CONCEPTS.CellLayout_Indent$Dl)) {
-        return true;
-      }
-    }
-    return false;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -65,6 +50,7 @@ public final class AddRemoveNewLineForChildren_Intention extends AbstractIntenti
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       if (ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$4j)).isEmpty()) {
@@ -73,6 +59,7 @@ public final class AddRemoveNewLineForChildren_Intention extends AbstractIntenti
         return "Remove New Line for Children";
       }
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if (ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$4j)).isEmpty()) {
@@ -83,26 +70,50 @@ public final class AddRemoveNewLineForChildren_Intention extends AbstractIntenti
         SNodeOperations.deleteNode(ListSequence.fromList(IStyleContainer__BehaviorDescriptor.getClassItems_idhJF5KPu.invoke(node, CONCEPTS.IndentLayoutNewLineChildrenStyleClassItem$4j)).first());
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      if (SNodeOperations.isInstanceOf(node, CONCEPTS.CellModel_Collection$Og)) {
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_Collection$Og), LINKS.cellLayout$Of4I), CONCEPTS.CellLayout_Indent$Dl)) {
+          return true;
+        }
+      } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.CellModel_RefNodeList$Uo)) {
+        if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.CellModel_RefNodeList$Uo), LINKS.cellLayout$ZXkU), CONCEPTS.CellLayout_Indent$Dl)) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return AddRemoveNewLineForChildren_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SConcept IndentLayoutNewLineChildrenStyleClassItem$4j = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120194c6bfdL, "jetbrains.mps.lang.editor.structure.IndentLayoutNewLineChildrenStyleClassItem");
     /*package*/ static final SConcept CellModel_Collection$Og = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, "jetbrains.mps.lang.editor.structure.CellModel_Collection");
     /*package*/ static final SConcept CellLayout_Indent$Dl = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120150bb441L, "jetbrains.mps.lang.editor.structure.CellLayout_Indent");
     /*package*/ static final SConcept CellModel_RefNodeList$Uo = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eb0ad38eL, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList");
-    /*package*/ static final SConcept IndentLayoutNewLineChildrenStyleClassItem$4j = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x120194c6bfdL, "jetbrains.mps.lang.editor.structure.IndentLayoutNewLineChildrenStyleClassItem");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink cellLayout$Of4I = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
-    /*package*/ static final SContainmentLink cellLayout$ZXkU = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
-    /*package*/ static final SContainmentLink styleItem$FgZD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty flag$7SqM = MetaAdapterFactory.getProperty(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1143bd1283bL, 0x1143bd161dbL, "flag");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink styleItem$FgZD = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x11beb039542L, 0x11beb040d06L, "styleItem");
+    /*package*/ static final SContainmentLink cellLayout$Of4I = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xf9eaff2517L, 0x10192e0d3baL, "cellLayout");
+    /*package*/ static final SContainmentLink cellLayout$ZXkU = MetaAdapterFactory.getContainmentLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1098c8cf48aL, 0x1098c8e38e8L, "cellLayout");
   }
 }

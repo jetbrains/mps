@@ -10,9 +10,9 @@ import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Collections;
 import jetbrains.mps.intentions.AbstractIntentionExecutable;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.intentions.IntentionDescriptor;
@@ -21,27 +21,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class UnsetCardinality_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public UnsetCardinality_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:50fc5aab-7eb0-44b3-a36e-a92932aa0d2b(jetbrains.mps.samples.ChemMastery.intentions)", "7995886393882971445"));
   }
+
   @Override
   public String getPresentation() {
     return "UnsetCardinality";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    if (!(isApplicableToNode(node, editorContext))) {
-      return false;
-    }
-    return true;
-  }
-  private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-    return SPropertyOperations.getBoolean(node, PROPS.cardinalityVisible$Vfns);
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -51,19 +45,36 @@ public final class UnsetCardinality_Intention extends AbstractIntentionDescripto
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Unset Cardinality";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SPropertyOperations.assign(node, PROPS.cardinalityVisible$Vfns, false);
       SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, SelectionManager.FIRST_EDITABLE_CELL, -1);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      if (!(isApplicableToNode(node, editorContext))) {
+        return false;
+      }
+      return true;
+    }
+
+    private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
+      return SPropertyOperations.getBoolean(node, PROPS.cardinalityVisible$Vfns);
+    }
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return UnsetCardinality_Intention.this;
     }
+
   }
 
   private static final class PROPS {

@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ReplaceWithFieldReference_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ReplaceWithFieldReference_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:f0d79467-678d-44a3-9372-d1b2fb477d99(jetbrains.mps.baseLanguageInternal.intentions)", "5332097447638335653"));
   }
+
   @Override
   public String getPresentation() {
     return "ReplaceWithFieldReference";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,10 +45,12 @@ public final class ReplaceWithFieldReference_Intention extends AbstractIntention
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return "Replace with Field Reference";
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       SNode fieldDecl = SLinkOperations.getTarget(node, LINKS.constant$fw$M);
@@ -56,10 +58,19 @@ public final class ReplaceWithFieldReference_Intention extends AbstractIntention
       SLinkOperations.setTarget(fieldRef, LINKS.classifier$BPY8, SNodeOperations.as(SNodeOperations.getParent(fieldDecl), CONCEPTS.Classifier$Ix));
       SLinkOperations.setTarget(fieldRef, LINKS.variableDeclaration$N1XG, fieldDecl);
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ReplaceWithFieldReference_Intention.this;
     }
+
   }
 
   private static final class LINKS {
