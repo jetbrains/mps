@@ -9,7 +9,7 @@
   <description>Provides actions to migrate models and languages developed using previous versions of MPS</description>
   <version>2021.2</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="211.1" until-build="213.1"/>
+  <idea-version since-build="211.1" until-build="221.1"/>
 
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir="/solution" hide="true"/>

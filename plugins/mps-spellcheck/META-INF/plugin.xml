@@ -6,7 +6,7 @@
   <description>Integrate IDEA spell-checking mechanism with MPS Editors</description>
   <version>2021.2</version>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
-  <idea-version since-build="212.1" until-build="213.1"/>
+  <idea-version since-build="212.1" until-build="221.1"/>
 
   <extensions defaultExtensionNs="com.intellij">
     <mps.LanguageLibrary dir="/" hide="true"/>
