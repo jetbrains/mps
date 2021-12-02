@@ -2,7 +2,6 @@
   <library name="Util">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/util.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/log4j/log4j-1.2.17.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

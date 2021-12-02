@@ -28,7 +28,6 @@
       <root url="jar://$PROJECT_DIR$/lib/intellij-test-discovery.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/kotlin-reflect.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/kotlinx.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/log4j/log4j-1.2.17.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/3rd-party-rt.jar!/" />
     </CLASSES>
     <JAVADOC />
