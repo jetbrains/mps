@@ -3518,6 +3518,16 @@
                   </node>
                 </node>
               </node>
+              <node concept="2pNNFK" id="7gLCykubni_" role="3o6s8t">
+                <property role="qg3DV" value="true" />
+                <property role="2pNNFO" value="include" />
+                <node concept="2pNUuL" id="7gLCykubniA" role="2pNNFR">
+                  <property role="2pNUuO" value="name" />
+                  <node concept="2pMdtt" id="7gLCykubniB" role="2pMdts">
+                    <property role="2pMdty" value="3rd-party-rt.jar" />
+                  </node>
+                </node>
+              </node>
               <node concept="2pNNFK" id="VazYWZPDgr" role="3o6s8t">
                 <property role="qg3DV" value="true" />
                 <property role="2pNNFO" value="include" />
