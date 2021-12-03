@@ -10,6 +10,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Util" level="project" />
+    <orderEntry type="library" exported="" name="3rd-party" level="project" />
     <orderEntry type="module" module-name="openapi" />
     <orderEntry type="module" module-name="mps-annotations" />
   </component>
