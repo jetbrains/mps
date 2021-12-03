@@ -13,6 +13,7 @@
   <path id="path.javac2.classpath">
     <fileset dir="${idea_home}/lib">
       <include name="3rd-party.jar" />
+      <include name="3rd-party-rt.jar" />
       <include name="util.jar" />
       <include name="forms*.jar" />
     </fileset>
@@ -39,6 +40,7 @@
   
   <path id="path.java.library.util">
     <fileset file="${artifacts.IDEA}/lib/util.jar" />
+    <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
   </path>
   
   <path id="path.java.library.3rd-party">
@@ -46,7 +48,7 @@
   </path>
   
   <path id="path.java.library.ecj">
-    <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj-4.16.jar" />
+    <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj/eclipse.jar" />
   </path>
   
   <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="path.javac2.classpath" />
