@@ -146,6 +146,5 @@
     <postStartupActivity implementation="jetbrains.mps.workbench.findusages.MPSModelsFastFindSupport$Plug" />
     <mps.gotoParticipant implementation="jetbrains.mps.workbench.goTo.index.MPSModelNavigationContributor" />
     <mps.gotoParticipant implementation="jetbrains.mps.workbench.goTo.index.JavaStubNavigationContributor"/>
-
   </extensions>
 </idea-plugin>

@@ -25,8 +25,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Arrays;
 import java.util.List;
 
-/*package*/ final class MPSToolWindowManagerListener implements ToolWindowManagerListener {
-  private final List<String> myToolWindows2Disable = Arrays.asList(ToolWindowId.FIND, ToolWindowId.INSPECTION, ToolWindowId.SERVICES, ProblemsView.ID);
+/*package*/ final class DisablingPlatformToolWindowsListener implements ToolWindowManagerListener {
+  private final List<String> myToolWindows2Disable = Arrays.asList(ToolWindowId.FIND, ToolWindowId.INSPECTION, ToolWindowId.SERVICES, ToolWindowId.TODO_VIEW, ProblemsView.ID);
 
   @Override
   public void toolWindowsRegistered(@NotNull List<String> ids, @NotNull ToolWindowManager toolWindowManager) {

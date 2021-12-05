@@ -16,9 +16,8 @@
   <xi:include href="/META-INF/SpellCheckerPlugin.xml">
     <xi:fallback/>
   </xi:include>
-
   <projectListeners>
-    <listener class="jetbrains.mps.intellij.integration.MPSToolWindowManagerListener"
+    <listener class="jetbrains.mps.intellij.integration.DisablingPlatformToolWindowsListener"
               topic="com.intellij.openapi.wm.ex.ToolWindowManagerListener"/>
   </projectListeners>
   <!-- Customizations to platform -->
