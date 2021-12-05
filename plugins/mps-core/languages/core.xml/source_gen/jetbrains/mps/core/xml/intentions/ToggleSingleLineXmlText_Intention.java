@@ -21,21 +21,21 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ToggleSingleLineXmlText_Intention extends AbstractIntentionDescriptor implements IntentionFactory {
   private Collection<IntentionExecutable> myCachedExecutable;
+
   public ToggleSingleLineXmlText_Intention() {
     super(Kind.NORMAL, false, new SNodePointer("r:a642a635-5cf6-4051-92de-c40763df5297(jetbrains.mps.core.xml.intentions)", "2301667890728066735"));
   }
+
   @Override
   public String getPresentation() {
     return "ToggleSingleLineXmlText";
   }
-  @Override
-  public boolean isApplicable(final SNode node, final EditorContext editorContext) {
-    return true;
-  }
+
   @Override
   public boolean isSurroundWith() {
     return false;
   }
+
   public Collection<IntentionExecutable> instances(final SNode node, final EditorContext context) {
     if (myCachedExecutable == null) {
       myCachedExecutable = Collections.<IntentionExecutable>singletonList(new IntentionImplementation());
@@ -45,10 +45,12 @@ public final class ToggleSingleLineXmlText_Intention extends AbstractIntentionDe
   /*package*/ final class IntentionImplementation extends AbstractIntentionExecutable {
     public IntentionImplementation() {
     }
+
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
       return (SNodeOperations.isInstanceOf(node, CONCEPTS.XmlSingleLineText$jp) ? "Turn to Plain Text" : "Turn to single Line Text");
     }
+
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.XmlSingleLineText$jp)) {
@@ -59,10 +61,19 @@ public final class ToggleSingleLineXmlText_Intention extends AbstractIntentionDe
         SPropertyOperations.assign(t, PROPS.value$6Orv, SPropertyOperations.getString(node, PROPS.value$6Orv));
       }
     }
+
+    @Override
+    public boolean isApplicable(final SNode node, final EditorContext editorContext) {
+      return true;
+    }
+
+
+
     @Override
     public IntentionDescriptor getDescriptor() {
       return ToggleSingleLineXmlText_Intention.this;
     }
+
   }
 
   private static final class CONCEPTS {
