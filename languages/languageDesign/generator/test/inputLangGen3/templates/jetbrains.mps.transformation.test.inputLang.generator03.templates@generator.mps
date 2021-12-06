@@ -138,6 +138,11 @@
         <child id="1216860049632" name="inputNode" index="1iwH7V" />
       </concept>
       <concept id="1216860049635" name="jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext" flags="nn" index="1iwH7S" />
+      <concept id="1221156564099" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputListByLabelAndInput" flags="nn" index="1iAAQv">
+        <reference id="1221156564101" name="label" index="1iAAQp" />
+        <child id="1221156564104" name="inputNode" index="1iAAQk" />
+        <child id="2735079070567646928" name="input2" index="1kfFkW" />
+      </concept>
       <concept id="1048903277984174662" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef2" flags="nn" index="1psM6Z">
         <reference id="1048903277984174663" name="vardecl" index="1psM6Y" />
       </concept>
@@ -146,6 +151,7 @@
     <language id="157a9668-bf58-417b-893e-53d86388dc56" name="jetbrains.mps.transformation.test.outputLang">
       <concept id="1195164668463" name="jetbrains.mps.transformation.test.outputLang.structure.OutputRoot" flags="ng" index="15npcT">
         <property id="1195164732401" name="text" index="15nCFB" />
+        <child id="1218735665292" name="specialChild" index="32jB6n" />
         <child id="1195169631818" name="outputChild" index="15EkXs" />
       </concept>
       <concept id="1195165132070" name="jetbrains.mps.transformation.test.outputLang.structure.OutputNode" flags="ng" index="15pagK">
@@ -208,6 +214,8 @@
         <child id="1204796294226" name="closure" index="23t8la" />
       </concept>
       <concept id="1203518072036" name="jetbrains.mps.baseLanguage.collections.structure.SmartClosureParameterDeclaration" flags="ig" index="Rh6nW" />
+      <concept id="1165525191778" name="jetbrains.mps.baseLanguage.collections.structure.GetFirstOperation" flags="nn" index="1uHKPH" />
+      <concept id="1165595910856" name="jetbrains.mps.baseLanguage.collections.structure.GetLastOperation" flags="nn" index="1yVyf7" />
       <concept id="1202120902084" name="jetbrains.mps.baseLanguage.collections.structure.WhereOperation" flags="nn" index="3zZkjj" />
       <concept id="1176501494711" name="jetbrains.mps.baseLanguage.collections.structure.IsNotEmptyOperation" flags="nn" index="3GX2aA" />
     </language>
@@ -219,10 +227,16 @@
       <ref role="3lhOvi" node="6saosjUU3e_" resolve="map_RefTestClass" />
     </node>
     <node concept="2rT7sh" id="6saosjUTXMt" role="2rTMjI">
-      <property role="TrG5h" value="EXPORTED_METHOD" />
+      <property role="TrG5h" value="EXPORTED_METHOD_UNIQ" />
       <ref role="2rTdP9" to="tpm0:2S48fJgAlRY" resolve="RefTestMethod" />
       <ref role="2rZz_L" to="tq1l:hp5pakA" resolve="OutputNode" />
       <ref role="38kbH0" to="tpm0:6saosjUTKVX" resolve="ClassExport" />
+    </node>
+    <node concept="2rT7sh" id="2nOWYLLPlOv" role="2rTMjI">
+      <property role="TrG5h" value="EXPORTED_METHOD_MANY" />
+      <ref role="2rZz_L" to="tq1l:hp5pakA" resolve="OutputNode" />
+      <ref role="2rTdP9" to="tpm0:2S48fJgAlRV" resolve="RefTestClass" />
+      <ref role="38kbH0" to="tpm0:2S48fJgAlRY" resolve="RefTestMethod" />
     </node>
     <node concept="2rT7sh" id="6saosjUVTu$" role="2rTMjI">
       <property role="TrG5h" value="METHOD" />
@@ -334,7 +348,7 @@
           </node>
         </node>
         <node concept="2ZBi8u" id="6saosjUTXJy" role="lGtFl">
-          <ref role="2rW$FS" node="6saosjUTXMt" resolve="EXPORTED_METHOD" />
+          <ref role="2rW$FS" node="6saosjUTXMt" resolve="EXPORTED_METHOD_UNIQ" />
           <node concept="38ki3A" id="6saosjUTYsH" role="38klgt">
             <node concept="3clFbS" id="6saosjUTYsI" role="2VODD2">
               <node concept="3SKdUt" id="6saosjUTY_T" role="3cqZAp">
@@ -476,11 +490,11 @@
                   <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                   <node concept="3zGtF$" id="6saosjUU14M" role="37wK5m" />
                   <node concept="2OqwBi" id="1YaLVEUe5tf" role="37wK5m">
-                    <node concept="$GB7w" id="1YaLVEUdT4n" role="2Oq$k0">
-                      <property role="26SvY3" value="1jlY2aid0ut/inputNode" />
-                    </node>
                     <node concept="3TrcHB" id="1YaLVEUe5KU" role="2OqNvi">
                       <ref role="3TsBF5" to="tpm0:6saosjUTKW0" resolve="namespace" />
+                    </node>
+                    <node concept="$GB7w" id="1YaLVEUdT4n" role="2Oq$k0">
+                      <property role="26SvY3" value="1jlY2aid0ut/inputNode" />
                     </node>
                   </node>
                   <node concept="2OqwBi" id="6saosjUU2rf" role="37wK5m">
@@ -507,6 +521,44 @@
                     <node concept="30H73N" id="6saosjUVW4I" role="1iwH7V" />
                   </node>
                 </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="2ZBi8u" id="2nOWYLLPmGA" role="lGtFl">
+          <ref role="2rW$FS" node="2nOWYLLPlOv" resolve="EXPORTED_METHOD_MANY" />
+          <node concept="38ki3A" id="2nOWYLLPmXp" role="38klgt">
+            <node concept="3clFbS" id="2nOWYLLPmXq" role="2VODD2">
+              <node concept="3SKdUt" id="2nOWYLLPD9o" role="3cqZAp">
+                <node concept="1PaTwC" id="2nOWYLLPD9p" role="1aUNEU">
+                  <node concept="3oM_SD" id="2nOWYLLPD9q" role="1PaTwD">
+                    <property role="3oM_SC" value="RefTestClass" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="2nOWYLLPn16" role="3cqZAp">
+                <node concept="2OqwBi" id="2nOWYLLPnpl" role="3clFbG">
+                  <node concept="$GB7w" id="2SGNKzlCxVm" role="2Oq$k0">
+                    <property role="26SvY3" value="1jlY2aid0ut/inputNode" />
+                  </node>
+                  <node concept="3TrEf2" id="2nOWYLLPnD6" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpm0:6saosjUTKVY" resolve="clz" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="38ki3A" id="2nOWYLLPnFI" role="38klgr">
+            <node concept="3clFbS" id="2nOWYLLPnFJ" role="2VODD2">
+              <node concept="3SKdUt" id="2nOWYLLPD1U" role="3cqZAp">
+                <node concept="1PaTwC" id="2nOWYLLPD1V" role="1aUNEU">
+                  <node concept="3oM_SD" id="2nOWYLLPD1W" role="1PaTwD">
+                    <property role="3oM_SC" value="RefTestMethod" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="2nOWYLLPCSL" role="3cqZAp">
+                <node concept="30H73N" id="2nOWYLLPCSK" role="3clFbG" />
               </node>
             </node>
           </node>
@@ -680,7 +732,7 @@
                 <node concept="2OqwBi" id="6saosjUVLH1" role="3clFbG">
                   <node concept="1iwH7S" id="6saosjUVLyS" role="2Oq$k0" />
                   <node concept="1iwH70" id="6saosjUVLMb" role="2OqNvi">
-                    <ref role="1iwH77" node="6saosjUTXMt" resolve="EXPORTED_METHOD" />
+                    <ref role="1iwH77" node="6saosjUTXMt" resolve="EXPORTED_METHOD_UNIQ" />
                     <node concept="2OqwBi" id="6saosjUVNaP" role="1iwH7V">
                       <node concept="1iwH7S" id="6saosjUVN0W" role="2Oq$k0" />
                       <node concept="1psM6Z" id="6saosjUVNh4" role="2OqNvi">
@@ -735,6 +787,49 @@
               </node>
               <node concept="Xl_RD" id="6saosjUU3jf" role="3uHU7B">
                 <property role="Xl_RC" value="RTC_" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="15pagK" id="2nOWYLLPDOm" role="32jB6n">
+      <property role="15Hqq1" value="last export of the first method" />
+      <node concept="1ZhdrF" id="2nOWYLLPDZf" role="lGtFl">
+        <property role="2qtEX8" value="ref" />
+        <property role="P3scX" value="157a9668-bf58-417b-893e-53d86388dc56/1195165132070/7424854434324614872" />
+        <node concept="3$xsQk" id="2nOWYLLPDZg" role="3$ytzL">
+          <node concept="3clFbS" id="2nOWYLLPDZh" role="2VODD2">
+            <node concept="3cpWs8" id="2nOWYLLPIPy" role="3cqZAp">
+              <node concept="3cpWsn" id="2nOWYLLPIPz" role="3cpWs9">
+                <property role="TrG5h" value="firstMethod" />
+                <node concept="3Tqbb2" id="2nOWYLLPIMs" role="1tU5fm">
+                  <ref role="ehGHo" to="tpm0:2S48fJgAlRY" resolve="RefTestMethod" />
+                </node>
+                <node concept="2OqwBi" id="2nOWYLLPIP$" role="33vP2m">
+                  <node concept="2OqwBi" id="2nOWYLLPIP_" role="2Oq$k0">
+                    <node concept="30H73N" id="2nOWYLLPIPA" role="2Oq$k0" />
+                    <node concept="3Tsc0h" id="2nOWYLLPIPB" role="2OqNvi">
+                      <ref role="3TtcxE" to="tpm0:2S48fJgAlSA" resolve="methods" />
+                    </node>
+                  </node>
+                  <node concept="1uHKPH" id="2nOWYLLPIPC" role="2OqNvi" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="2nOWYLLPJ07" role="3cqZAp">
+              <node concept="2OqwBi" id="2nOWYLLPZP4" role="3clFbG">
+                <node concept="2OqwBi" id="2nOWYLLPJaM" role="2Oq$k0">
+                  <node concept="1iwH7S" id="2nOWYLLPJ06" role="2Oq$k0" />
+                  <node concept="1iAAQv" id="2nOWYLLPJhA" role="2OqNvi">
+                    <ref role="1iAAQp" node="2nOWYLLPlOv" resolve="EXPORTED_METHOD_MANY" />
+                    <node concept="30H73N" id="2nOWYLLPXBq" role="1iAAQk" />
+                    <node concept="37vLTw" id="2nOWYLLPXKV" role="1kfFkW">
+                      <ref role="3cqZAo" node="2nOWYLLPIPz" resolve="firstMethod" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="1yVyf7" id="2nOWYLLQ1wM" role="2OqNvi" />
               </node>
             </node>
           </node>

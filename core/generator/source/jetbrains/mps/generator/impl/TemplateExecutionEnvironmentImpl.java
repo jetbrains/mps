@@ -62,11 +62,13 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 /**
  * Evgeny Gryaznov, 11/10/10
@@ -494,11 +496,13 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
   // access has to be package-only, but need to get LMs for current thread from TemplateQueryContext
   // contract is pretty much the same as GM.findOutputNodeByInputNodeAndMappingName(), null if no LM found, first node in case of
   // multiple mappings.
+  // XXX Alternatively, shall make LMCollector class public and move this method implementations right into TQC,
+  //     with public LMCollector:getNamedLabels()
   public SNode findLocalOutputRecordSingle(/*not null*/SNode inputNode, /*not null*/ String label) {
     return myLabels.values(label, inputNode).findFirst().orElse(null);
   }
 
-  public SNode findLocalOutputRecordSingle(/*not null*/ String label, Object key1, Object key2) {
+  public SNode findOutputRecordSingle(/*not null*/ String label, Object key1, Object key2) {
     if (notSNodeKey(key1) || notSNodeKey(key2)) {
       warnCompositeLabelKeys(key1, key2, label);
       return null;
@@ -507,6 +511,19 @@ public class TemplateExecutionEnvironmentImpl implements TemplateExecutionEnviro
     if (rv == null) {
       rv = generator.getLabelMapLookup(label).findOutputRecordSingle((SNode) key1, (SNode) key2);
     }
+    return rv;
+  }
+
+  public List<SNode> findOutputRecordList(/*not null*/ String label, Object key1, Object key2) {
+    if (notSNodeKey(key1) || notSNodeKey(key2)) {
+      warnCompositeLabelKeys(key1, key2, label);
+      return Collections.emptyList();
+    }
+    ArrayList<SNode> rv = new ArrayList<>();
+    Stream<SNode> s1 = myLabels.getLookup(label).compositeLMValues((SNode) key1, (SNode) key2);
+    s1.forEach(rv::add);
+    Stream<SNode> s2 = generator.getLabelMapLookup(label).compositeLMValues((SNode) key1, (SNode) key2);
+    s2.forEach(rv::add);
     return rv;
   }
 

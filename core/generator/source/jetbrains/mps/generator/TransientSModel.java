@@ -21,6 +21,9 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * FIXME why it's node extapi.TransientSModel?
+ *       revisit canFireEvent() optimization which is not in use now in AttachedNodeOwner
+ *       (seems to get lost while extracting ModelEventDispatch and AttachedNodeOwner, see 8d4d307c89f3f450d568635b84d48040c967d369)
  * Evgeny Gryaznov, Apr 19, 2010
  */
 public class TransientSModel extends DefaultSModel {

@@ -10,6 +10,7 @@
     <language id="157a9668-bf58-417b-893e-53d86388dc56" name="jetbrains.mps.transformation.test.outputLang">
       <concept id="1195164668463" name="jetbrains.mps.transformation.test.outputLang.structure.OutputRoot" flags="ng" index="15npcT">
         <property id="1195164732401" name="text" index="15nCFB" />
+        <child id="1218735665292" name="specialChild" index="32jB6n" />
         <child id="1195169631818" name="outputChild" index="15EkXs" />
       </concept>
       <concept id="1195165132070" name="jetbrains.mps.transformation.test.outputLang.structure.OutputNode" flags="ng" index="15pagK">
@@ -104,6 +105,10 @@
         <ref role="2tVmWs" node="4rYoPpzX0k6" />
       </node>
     </node>
+    <node concept="15pagK" id="2nOWYLLQ3ai" role="32jB6n">
+      <property role="15Hqq1" value="last export of the first method" />
+      <ref role="2tVmWs" node="4rYoPpzX0k5" />
+    </node>
   </node>
   <node concept="15npcT" id="4rYoPpzX0kg">
     <property role="TrG5h" value="RTC_C2" />
@@ -120,6 +125,10 @@
         <property role="15Hqq1" value="EXPORTED AS" />
         <ref role="2tVmWs" node="4rYoPpzX0k3" />
       </node>
+    </node>
+    <node concept="15pagK" id="2nOWYLLQ3ak" role="32jB6n">
+      <property role="15Hqq1" value="last export of the first method" />
+      <ref role="2tVmWs" node="4rYoPpzX0k2" />
     </node>
   </node>
 </model>

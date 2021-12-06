@@ -292,6 +292,10 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
   public final class TransientSModelDescriptor extends EditableSModelBase implements jetbrains.mps.extapi.model.TransientSModel, ModelWithAttributes {
     protected volatile TransientSModel mySModel;
     private boolean wasUnloaded = false;
+    // XXX IRT relies on model changed events. TransientSModel.canFireEvents suggests our intention here was not
+    // to fire any events at all. It's not true now - we respect canFireEvents() for few SModelListener events only,
+    // perhaps, worth respecting the flag for all modification events, in which case IRT here would make no sense.
+
     private ImmatureReferencesTracker myRefsTracker = new ImmatureReferencesTracker();
     private int myBranchSerial = 0;
 

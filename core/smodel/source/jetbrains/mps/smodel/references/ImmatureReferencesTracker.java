@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,9 +25,11 @@ import org.jetbrains.mps.openapi.model.SModelListenerBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeChangeListenerAdapter;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public class ImmatureReferencesTracker {
   private SModel myModel = null;
@@ -52,7 +54,7 @@ public class ImmatureReferencesTracker {
     myModel = null;
   }
 
-  public void makeMature() {
+  public synchronized void makeMature() {
     for (StaticReference r : myImmatureRefs) {
       if (!r.isDirect()) {
         continue;
@@ -62,22 +64,28 @@ public class ImmatureReferencesTracker {
     myImmatureRefs.clear();
   }
 
-  private void checkAndAddNewRef(org.jetbrains.mps.openapi.model.SReference newRef) {
-    if (!(newRef instanceof StaticReference)) {
-      return;
-    }
-    StaticReference newRefBase = (StaticReference) newRef;
-    if (!newRefBase.isDirect()) {
+  private synchronized void checkAndAddNewRef(StaticReference newRef) {
+    if (!newRef.isDirect()) {
       return;
     }
 
-    myImmatureRefs.add(newRefBase);
+    myImmatureRefs.add(newRef);
+  }
+  private synchronized void forgetRef(StaticReference ref) {
+    myImmatureRefs.remove(ref);
   }
 
+
   private void addRefsFromModel(SModel model) {
-    for (SNode n: SNodeUtil.getDescendants(model)){
-      for (org.jetbrains.mps.openapi.model.SReference r : n.getReferences()) {
-        checkAndAddNewRef(r);
+    forEachStaticRef(SNodeUtil.getDescendants(model), this::checkAndAddNewRef);
+  }
+
+  private synchronized void forEachStaticRef(Iterable<SNode> nodes, Consumer<StaticReference> visitor) {
+    for ( SNode n : nodes) {
+      for (SReference r : n.getReferences()) {
+        if (r instanceof StaticReference) {
+          visitor.accept((StaticReference) r);
+        }
       }
     }
   }
@@ -92,30 +100,20 @@ public class ImmatureReferencesTracker {
   private class MySNodeChangeListenerAdapter extends SNodeChangeListenerAdapter {
     @Override
     public void referenceChanged(@NotNull SReferenceChangeEvent event) {
-      org.jetbrains.mps.openapi.model.SReference newRef = event.getNewValue();
-      checkAndAddNewRef(newRef);
+      SReference newRef = event.getNewValue();
+      if (newRef instanceof StaticReference) {
+        checkAndAddNewRef((StaticReference) newRef);
+      }
     }
 
     @Override
     public void nodeAdded(@NotNull SNodeAddEvent event) {
-      for (SNode n: SNodeUtil.getDescendants(event.getChild())){
-        for (org.jetbrains.mps.openapi.model.SReference r : n.getReferences()) {
-          checkAndAddNewRef(r);
-        }
-      }
+      forEachStaticRef(SNodeUtil.getDescendants(event.getChild()), ImmatureReferencesTracker.this::checkAndAddNewRef);
     }
 
     @Override
     public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
-      for (SNode n: SNodeUtil.getDescendants(event.getChild())){
-        for (org.jetbrains.mps.openapi.model.SReference r : n.getReferences()) {
-          if (!(r instanceof StaticReference)) {
-            continue;
-          }
-
-          myImmatureRefs.remove(r);
-        }
-      }
+      forEachStaticRef(SNodeUtil.getDescendants(event.getChild()), ImmatureReferencesTracker.this::forgetRef);
     }
   }
 }

@@ -63,7 +63,11 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_2_0(final ReferenceMacroContext _context) {
     // node here is ClassExport
-    return _context.getOutputForInputAndLabel("EXPORTED_METHOD", ((SNode) _context.getVariable("var:loopInput")), _context.getNode());
+    return _context.getOutputForInputAndLabel("EXPORTED_METHOD_UNIQ", ((SNode) _context.getVariable("var:loopInput")), _context.getNode());
+  }
+  public static Object referenceMacro_GetReferent_2_1(final ReferenceMacroContext _context) {
+    SNode firstMethod = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.methods$YPx5)).first();
+    return ListSequence.fromList(_context.getOutputListForInputAndLabel("EXPORTED_METHOD_MANY", _context.getNode(), firstMethod)).last();
   }
   public static Iterable<SNode> sourceNodesQuery_1_0(final SourceSubstituteMacroNodesContext _context) {
     return SModelOperations.roots(_context.getInputModel(), CONCEPTS.ClassExport$s7);
@@ -93,6 +97,14 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static SNode labelMapNode1_1(final TemplateQueryContext _context) {
     return (SNode) _context.getVariable("loop:inputNode");
+  }
+  public static SNode labelMapNode1_2(final TemplateQueryContext _context) {
+    // RefTestClass
+    return SLinkOperations.getTarget((SNode) _context.getVariable("loop:inputNode"), LINKS.clz$Kh$s);
+  }
+  public static SNode labelMapNode1_3(final TemplateQueryContext _context) {
+    // RefTestMethod
+    return _context.getNode();
   }
   private final Map<String, CreateRootCondition> crcMethods = new HashMap<String, CreateRootCondition>();
   {
@@ -195,6 +207,7 @@ public class QueriesGenerated extends QueryProviderBase {
   {
     rtqMethods.put("7424854434325180241", new RTQ(0, null));
     rtqMethods.put("7424854434325140594", new RTQ(1, null));
+    rtqMethods.put("2735079070568456143", new RTQ(2, null));
   }
   @NotNull
   @Override
@@ -215,6 +228,8 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.referenceMacro_GetReferent_1_0(ctx);
         case 1:
           return QueriesGenerated.referenceMacro_GetReferent_2_0(ctx);
+        case 2:
+          return QueriesGenerated.referenceMacro_GetReferent_2_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -249,6 +264,8 @@ public class QueriesGenerated extends QueryProviderBase {
   {
     liqMethods.put("7424854434324670253", new LIQ(0));
     liqMethods.put("7424854434324672472", new LIQ(1));
+    liqMethods.put("2735079070568378201", new LIQ(2));
+    liqMethods.put("2735079070568381166", new LIQ(3));
   }
   @NotNull
   @Override
@@ -269,6 +286,10 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.labelMapNode1_0(ctx);
         case 1:
           return QueriesGenerated.labelMapNode1_1(ctx);
+        case 2:
+          return QueriesGenerated.labelMapNode1_2(ctx);
+        case 3:
+          return QueriesGenerated.labelMapNode1_3(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
