@@ -2410,44 +2410,55 @@
       </scope>
     </file>
     <file name="check_LabelMacro_NonTypesystemRule.java">
-      <node id="6620438047800561698" at="24,7,25,94" concept="11" />
-      <node id="6620438047800561698" at="25,94,26,261" concept="11" />
-      <node id="6620438047800549590" at="30,50,31,34" concept="12" />
-      <node id="6620438047800549590" at="33,68,34,102" concept="12" />
-      <node id="6620438047800549590" at="36,30,37,17" concept="12" />
-      <node id="6620438047800549590" at="41,0,42,0" concept="15" trace="mappingLabel$jbOO" />
-      <node id="6620438047800549590" at="45,0,46,0" concept="15" trace="LabelMacro$Lz" />
-      <node id="6620438047800549590" at="20,0,22,0" concept="3" trace="check_LabelMacro_NonTypesystemRule#()V" />
-      <node id="6620438047800549590" at="30,0,33,0" concept="10" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="6620438047800549590" at="33,0,36,0" concept="10" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="6620438047800549590" at="36,0,39,0" concept="10" trace="overrides#()Z" />
-      <node id="6620438047800561698" at="23,102,27,7" concept="1" />
-      <node id="6620438047800550870" at="22,123,28,5" concept="9" />
-      <node id="6620438047800549590" at="22,0,30,0" concept="10" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="6620438047800549590" at="20,47,20,47" />
-      <scope id="6620438047800549590" at="30,50,31,34" />
-      <scope id="6620438047800549590" at="33,68,34,102" />
-      <scope id="6620438047800549590" at="36,30,37,17" />
-      <scope id="6620438047800549590" at="20,0,22,0" />
-      <scope id="6620438047800561698" at="24,7,26,261">
+      <node id="6620438047800561698" at="26,7,27,94" concept="11" />
+      <node id="6620438047800561698" at="27,94,28,261" concept="11" />
+      <node id="2735079070568412194" at="32,7,33,88" concept="11" />
+      <node id="2735079070568412194" at="33,88,34,248" concept="11" />
+      <node id="6620438047800549590" at="38,50,39,34" concept="12" />
+      <node id="6620438047800549590" at="41,68,42,102" concept="12" />
+      <node id="6620438047800549590" at="44,30,45,17" concept="12" />
+      <node id="6620438047800549590" at="49,0,50,0" concept="15" trace="mappingLabel$jbOO" />
+      <node id="6620438047800549590" at="50,0,51,0" concept="15" trace="input2$vkrW" />
+      <node id="6620438047800549590" at="51,0,52,0" concept="15" trace="sourceConcept2$sSLi" />
+      <node id="6620438047800549590" at="55,0,56,0" concept="15" trace="LabelMacro$Lz" />
+      <node id="6620438047800549590" at="22,0,24,0" concept="3" trace="check_LabelMacro_NonTypesystemRule#()V" />
+      <node id="6620438047800549590" at="38,0,41,0" concept="10" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="6620438047800549590" at="41,0,44,0" concept="10" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="6620438047800549590" at="44,0,47,0" concept="10" trace="overrides#()Z" />
+      <node id="6620438047800561698" at="25,102,29,7" concept="1" />
+      <node id="2735079070568412194" at="31,203,35,7" concept="1" />
+      <node id="6620438047800550870" at="24,123,30,5" concept="9" />
+      <node id="2735079070568402214" at="30,5,36,5" concept="9" />
+      <node id="6620438047800549590" at="24,0,38,0" concept="10" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="6620438047800549590" at="22,47,22,47" />
+      <scope id="6620438047800549590" at="38,50,39,34" />
+      <scope id="6620438047800549590" at="41,68,42,102" />
+      <scope id="6620438047800549590" at="44,30,45,17" />
+      <scope id="6620438047800549590" at="22,0,24,0" />
+      <scope id="6620438047800561698" at="26,7,28,261">
         <var name="_reporter_2309309498" id="6620438047800561698" />
         <var name="errorTarget" id="6620438047800561698" />
       </scope>
-      <scope id="6620438047800549590" at="30,0,33,0" />
-      <scope id="6620438047800549590" at="33,0,36,0">
+      <scope id="2735079070568412194" at="32,7,34,248">
+        <var name="_reporter_2309309498" id="2735079070568412194" />
+        <var name="errorTarget" id="2735079070568412194" />
+      </scope>
+      <scope id="6620438047800549590" at="38,0,41,0" />
+      <scope id="6620438047800549590" at="41,0,44,0">
         <var name="argument" id="6620438047800549590" />
       </scope>
-      <scope id="6620438047800549590" at="36,0,39,0" />
-      <scope id="6620438047800550872" at="23,102,27,7" />
-      <scope id="6620438047800549591" at="22,123,28,5" />
-      <scope id="6620438047800549590" at="22,0,30,0">
+      <scope id="6620438047800549590" at="44,0,47,0" />
+      <scope id="6620438047800550872" at="25,102,29,7" />
+      <scope id="2735079070568402216" at="31,203,35,7" />
+      <scope id="6620438047800549591" at="24,123,36,5" />
+      <scope id="6620438047800549590" at="24,0,38,0">
         <var name="labelMacro" id="6620438047800549590" />
         <var name="status" id="6620438047800549590" />
         <var name="typeCheckingContext" id="6620438047800549590" />
       </scope>
-      <unit id="6620438047800549590" at="40,0,43,0" name="jetbrains.mps.lang.generator.typesystem.check_LabelMacro_NonTypesystemRule$LINKS" />
-      <unit id="6620438047800549590" at="44,0,47,0" name="jetbrains.mps.lang.generator.typesystem.check_LabelMacro_NonTypesystemRule$CONCEPTS" />
-      <unit id="6620438047800549590" at="19,0,48,0" name="jetbrains.mps.lang.generator.typesystem.check_LabelMacro_NonTypesystemRule" />
+      <unit id="6620438047800549590" at="54,0,57,0" name="jetbrains.mps.lang.generator.typesystem.check_LabelMacro_NonTypesystemRule$CONCEPTS" />
+      <unit id="6620438047800549590" at="48,0,53,0" name="jetbrains.mps.lang.generator.typesystem.check_LabelMacro_NonTypesystemRule$LINKS" />
+      <unit id="6620438047800549590" at="21,0,58,0" name="jetbrains.mps.lang.generator.typesystem.check_LabelMacro_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e4(jetbrains.mps.lang.generator.typesystem)/6636694971610575434">

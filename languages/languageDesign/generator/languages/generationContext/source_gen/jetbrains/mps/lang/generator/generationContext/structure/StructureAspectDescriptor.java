@@ -309,6 +309,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("labelName_intern", 0x11c529a6c84L).type(PrimitiveTypeId.STRING).origin("1221156564100").done();
     b.associate("label", 0x11c529a6c85L).target(0xb401a68083254110L, 0x8fd384331ff25befL, 0x1179be47606L).optional(false).origin("1221156564101").done();
     b.aggregate("inputNode", 0x11c529a6c88L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(false).ordered(true).multiple(false).origin("1221156564104").done();
+    b.aggregate("input2", 0x25f4f3ec71ca46d0L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("2735079070567646928").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("get output list by label and input");
     return b.create();

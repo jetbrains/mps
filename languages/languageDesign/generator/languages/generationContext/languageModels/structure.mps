@@ -365,6 +365,12 @@
       <property role="IQ2ns" value="1221156564104" />
       <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
     </node>
+    <node concept="1TJgyj" id="2nOWYLLM$rg" role="1TKVEi">
+      <property role="IQ2ns" value="2735079070567646928" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="input2" />
+      <ref role="20lvS9" to="tpee:fz3vP1J" resolve="Expression" />
+    </node>
   </node>
   <node concept="1TIwiD" id="hLmkIjl">
     <property role="R5$K7" value="false" />
