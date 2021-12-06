@@ -242,7 +242,19 @@ public final class GeneratorMappings {
       }
     }
 
-    return null;
+    // XXX getInputHistory() ignores null input node, which is a legitimate case e.g. for a Create Root template
+    //     If we generate node "A" without any inputNode and then references to "A" with some inputNode set
+    //     (e.g. in lang.generator, for each reduction rule with condition, we generate instantiation of
+    //     a respective query class, which is not generated unless there are rules with conditions.)
+    //     To restore such reference, we have to check 'l.withoutInput()' case (see addOutputNodeForContext(), above).
+    //     I don't want to modify getInputHistory() yet to give null input (I suppose almost any TC would end up
+    //     with null in its input history then, and I don't want to record excessive values). Therefore, I check
+    //     here explicitly for null input just in case the one has been recorded.
+    if (templateContext.getInput() != null) {
+      // if it's null, we've checked this scenario already
+      outputTargetNode = l.get(null, tag);
+    }
+    return outputTargetNode;
   }
 
   public boolean isInputNodeHasUniqueCopiedOutputNode(SNode inputNode) {

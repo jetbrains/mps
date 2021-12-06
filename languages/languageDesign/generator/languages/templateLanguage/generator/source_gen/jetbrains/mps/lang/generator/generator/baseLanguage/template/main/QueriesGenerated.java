@@ -47,7 +47,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.generator.behavior.BaseMappingRule__BehaviorDescriptor;
 import jetbrains.mps.lang.generator.behavior.TemplateSwitchMacro__BehaviorDescriptor;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.behavior.ConceptId__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.ConceptFunction__BehaviorDescriptor;
@@ -59,6 +58,7 @@ import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.behavior.PropertyId__BehaviorDescriptor;
@@ -2404,10 +2404,6 @@ public class QueriesGenerated extends QueryProviderBase {
   public static SNode sourceNodeQuery_0_19(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.body$e68K);
   }
-  public static SNode sourceNodeQuery_0_20(final SourceSubstituteMacroNodeContext _context) {
-    // need a fake node, otherwise INCLUDE won't proceed
-    return SModelOperations.createNewNode(_context.getOutputModel(), null, CONCEPTS.BaseConcept$gP);
-  }
   public static SNode sourceNodeQuery_6_0(final SourceSubstituteMacroNodeContext _context) {
     return ListSequence.fromList(Sequence.fromIterable(SNodeOperations.ofConcept(SNodeOperations.getChildren(_context.getNode()), CONCEPTS.NodeMacro$qU)).toListSequence()).getElement(((Integer) _context.getVariable("macrosToSkip")));
   }
@@ -4130,7 +4126,6 @@ public class QueriesGenerated extends QueryProviderBase {
     snqMethods.put("1071051212914188060", new SNQ(i++));
     snqMethods.put("1048903277986508880", new SNQ(i++));
     snqMethods.put("3541437991302214044", new SNQ(i++));
-    snqMethods.put("3842310904416822044", new SNQ(i++));
     snqMethods.put("6254388211304681353", new SNQ(i++));
     snqMethods.put("6304885153124996375", new SNQ(i++));
     snqMethods.put("5070605274413823824", new SNQ(i++));
@@ -4259,150 +4254,148 @@ public class QueriesGenerated extends QueryProviderBase {
         case 19:
           return QueriesGenerated.sourceNodeQuery_0_19(ctx);
         case 20:
-          return QueriesGenerated.sourceNodeQuery_0_20(ctx);
-        case 21:
           return QueriesGenerated.sourceNodeQuery_6_0(ctx);
-        case 22:
+        case 21:
           return QueriesGenerated.sourceNodeQuery_7_0(ctx);
-        case 23:
+        case 22:
           return QueriesGenerated.sourceNodeQuery_8_0(ctx);
-        case 24:
+        case 23:
           return QueriesGenerated.sourceNodeQuery_9_0(ctx);
-        case 25:
+        case 24:
           return QueriesGenerated.sourceNodeQuery_10_0(ctx);
-        case 26:
+        case 25:
           return QueriesGenerated.sourceNodeQuery_10_1(ctx);
-        case 27:
+        case 26:
           return QueriesGenerated.sourceNodeQuery_10_2(ctx);
-        case 28:
+        case 27:
           return QueriesGenerated.sourceNodeQuery_10_3(ctx);
-        case 29:
+        case 28:
           return QueriesGenerated.sourceNodeQuery_15_0(ctx);
-        case 30:
+        case 29:
           return QueriesGenerated.sourceNodeQuery_15_1(ctx);
-        case 31:
+        case 30:
           return QueriesGenerated.sourceNodeQuery_15_2(ctx);
-        case 32:
+        case 31:
           return QueriesGenerated.sourceNodeQuery_17_0(ctx);
-        case 33:
+        case 32:
           return QueriesGenerated.sourceNodeQuery_18_0(ctx);
-        case 34:
+        case 33:
           return QueriesGenerated.sourceNodeQuery_18_1(ctx);
-        case 35:
+        case 34:
           return QueriesGenerated.sourceNodeQuery_23_0(ctx);
-        case 36:
+        case 35:
           return QueriesGenerated.sourceNodeQuery_23_1(ctx);
-        case 37:
+        case 36:
           return QueriesGenerated.sourceNodeQuery_23_2(ctx);
-        case 38:
+        case 37:
           return QueriesGenerated.sourceNodeQuery_23_3(ctx);
-        case 39:
+        case 38:
           return QueriesGenerated.sourceNodeQuery_23_4(ctx);
-        case 40:
+        case 39:
           return QueriesGenerated.sourceNodeQuery_23_5(ctx);
-        case 41:
+        case 40:
           return QueriesGenerated.sourceNodeQuery_23_6(ctx);
-        case 42:
+        case 41:
           return QueriesGenerated.sourceNodeQuery_23_7(ctx);
-        case 43:
+        case 42:
           return QueriesGenerated.sourceNodeQuery_23_8(ctx);
-        case 44:
+        case 43:
           return QueriesGenerated.sourceNodeQuery_25_0(ctx);
-        case 45:
+        case 44:
           return QueriesGenerated.sourceNodeQuery_26_0(ctx);
-        case 46:
+        case 45:
           return QueriesGenerated.sourceNodeQuery_27_0(ctx);
-        case 47:
+        case 46:
           return QueriesGenerated.sourceNodeQuery_27_1(ctx);
-        case 48:
+        case 47:
           return QueriesGenerated.sourceNodeQuery_28_0(ctx);
-        case 49:
+        case 48:
           return QueriesGenerated.sourceNodeQuery_28_1(ctx);
-        case 50:
+        case 49:
           return QueriesGenerated.sourceNodeQuery_29_0(ctx);
-        case 51:
+        case 50:
           return QueriesGenerated.sourceNodeQuery_31_0(ctx);
-        case 52:
+        case 51:
           return QueriesGenerated.sourceNodeQuery_31_1(ctx);
-        case 53:
+        case 52:
           return QueriesGenerated.sourceNodeQuery_31_2(ctx);
-        case 54:
+        case 53:
           return QueriesGenerated.sourceNodeQuery_33_0(ctx);
-        case 55:
+        case 54:
           return QueriesGenerated.sourceNodeQuery_33_1(ctx);
-        case 56:
+        case 55:
           return QueriesGenerated.sourceNodeQuery_35_0(ctx);
-        case 57:
+        case 56:
           return QueriesGenerated.sourceNodeQuery_38_0(ctx);
-        case 58:
+        case 57:
           return QueriesGenerated.sourceNodeQuery_38_1(ctx);
-        case 59:
+        case 58:
           return QueriesGenerated.sourceNodeQuery_39_0(ctx);
-        case 60:
+        case 59:
           return QueriesGenerated.sourceNodeQuery_39_1(ctx);
-        case 61:
+        case 60:
           return QueriesGenerated.sourceNodeQuery_39_2(ctx);
-        case 62:
+        case 61:
           return QueriesGenerated.sourceNodeQuery_41_0(ctx);
-        case 63:
+        case 62:
           return QueriesGenerated.sourceNodeQuery_42_0(ctx);
-        case 64:
+        case 63:
           return QueriesGenerated.sourceNodeQuery_42_1(ctx);
-        case 65:
+        case 64:
           return QueriesGenerated.sourceNodeQuery_42_2(ctx);
-        case 66:
+        case 65:
           return QueriesGenerated.sourceNodeQuery_43_0(ctx);
-        case 67:
+        case 66:
           return QueriesGenerated.sourceNodeQuery_47_0(ctx);
-        case 68:
+        case 67:
           return QueriesGenerated.sourceNodeQuery_49_0(ctx);
-        case 69:
+        case 68:
           return QueriesGenerated.sourceNodeQuery_49_1(ctx);
-        case 70:
+        case 69:
           return QueriesGenerated.sourceNodeQuery_49_2(ctx);
-        case 71:
+        case 70:
           return QueriesGenerated.sourceNodeQuery_50_0(ctx);
-        case 72:
+        case 71:
           return QueriesGenerated.sourceNodeQuery_52_0(ctx);
-        case 73:
+        case 72:
           return QueriesGenerated.sourceNodeQuery_52_1(ctx);
-        case 74:
+        case 73:
           return QueriesGenerated.sourceNodeQuery_52_2(ctx);
-        case 75:
+        case 74:
           return QueriesGenerated.sourceNodeQuery_52_3(ctx);
-        case 76:
+        case 75:
           return QueriesGenerated.sourceNodeQuery_52_4(ctx);
-        case 77:
+        case 76:
           return QueriesGenerated.sourceNodeQuery_52_5(ctx);
-        case 78:
+        case 77:
           return QueriesGenerated.sourceNodeQuery_52_6(ctx);
-        case 79:
+        case 78:
           return QueriesGenerated.sourceNodeQuery_52_7(ctx);
-        case 80:
+        case 79:
           return QueriesGenerated.sourceNodeQuery_62_0(ctx);
-        case 81:
+        case 80:
           return QueriesGenerated.sourceNodeQuery_62_1(ctx);
-        case 82:
+        case 81:
           return QueriesGenerated.sourceNodeQuery_63_0(ctx);
-        case 83:
+        case 82:
           return QueriesGenerated.sourceNodeQuery_64_0(ctx);
-        case 84:
+        case 83:
           return QueriesGenerated.sourceNodeQuery_64_1(ctx);
-        case 85:
+        case 84:
           return QueriesGenerated.sourceNodeQuery_64_2(ctx);
-        case 86:
+        case 85:
           return QueriesGenerated.sourceNodeQuery_69_0(ctx);
-        case 87:
+        case 86:
           return QueriesGenerated.sourceNodeQuery_70_0(ctx);
-        case 88:
+        case 87:
           return QueriesGenerated.sourceNodeQuery_87_0(ctx);
-        case 89:
+        case 88:
           return QueriesGenerated.sourceNodeQuery_88_0(ctx);
-        case 90:
+        case 89:
           return QueriesGenerated.sourceNodeQuery_89_0(ctx);
-        case 91:
+        case 90:
           return QueriesGenerated.sourceNodeQuery_93_0(ctx);
-        case 92:
+        case 91:
           return QueriesGenerated.sourceNodeQuery_95_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -7311,7 +7304,6 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept NodeMacro$qU = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfd47ed6742L, "jetbrains.mps.lang.generator.structure.NodeMacro");
     /*package*/ static final SConcept TemplateFragment$eq = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff1b29b76cL, "jetbrains.mps.lang.generator.structure.TemplateFragment");
     /*package*/ static final SConcept TemplateDeclaration$5G = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xfe43cb41d0L, "jetbrains.mps.lang.generator.structure.TemplateDeclaration");
-    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
     /*package*/ static final SConcept Type$bu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL, "jetbrains.mps.baseLanguage.structure.Type");
     /*package*/ static final SConcept MapSrcNodeMacro$p5 = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10759372d78L, "jetbrains.mps.lang.generator.structure.MapSrcNodeMacro");
     /*package*/ static final SConcept CreateRootRule$wZ = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x10fbbd5854aL, "jetbrains.mps.lang.generator.structure.CreateRootRule");

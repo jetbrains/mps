@@ -910,9 +910,11 @@ public final class TemplateProcessor implements ITemplateProcessor {
         throws DismissTopMappingRuleException, GenerationFailureException, GenerationCanceledException {
 
       SNode newInputNode = getNewInputNode(templateContext);
-      if (newInputNode == null) {
-        return Collections.emptyList(); // skip template
-      }
+      // we used to skip template when newInputNode == null, however, that's odd as it prevents use of
+      // CALL in create root templates. Besides, compiled templates are ok with null input, that's why we
+      // should tolerate null here as well. Similarity with compiled is the reason I don't condition
+      // `newInputNode == null && templateContext.getInput() != null`; compiled templates just invoke the query
+      // and proceed with whatever value is returned.
       final TemplateExecutionEnvironment env = templateContext.getEnvironment();
 
       if (myTemplateRT == null) {

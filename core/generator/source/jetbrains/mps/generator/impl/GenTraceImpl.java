@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -198,8 +198,15 @@ public class GenTraceImpl implements GenerationTrace {
       inputIndex = outputIndex = null;
       if (myTraceLock.tryAcquire()) {
         if (output.isEmpty()) {
-          assert input != null : "Trace node deletion without input node?";
-          myTrace.add(new Element(input, null, templateNode));
+          if (input != null) {
+            myTrace.add(new Element(input, null, templateNode));
+          }
+          // XXX it seems that input == null with empty output is ok, e.g. when we invoke
+          // other templates from within a Create Root template. If target template produces
+          // no output, what's wrong with that?
+          // The reason I left this reminder is that I wonder if this case is specific to a particular
+          // trace() call, e.g. only TemplateContainer.apply(), and has to be kept there?
+//          assert input != null : "Trace node deletion without input node?";
         } else {
           for (SNodeId n : output) {
             myTrace.add(new Element(input, n, templateNode));
