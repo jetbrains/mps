@@ -29,6 +29,7 @@ public class Launcher {
         System.setProperty(fsNotifierKey, PathManager.getBinPath() + File.separatorChar + getFsNotifierDir() + File.separatorChar + getFsNotifierName());
       }
     }
+    System.setProperty("ide.slow.operations.assertion.mps.find-usage", Boolean.toString(false));
     System.setProperty("idea.additional.classpath", getAdditionalMPSClasspathString());
     System.setProperty("idea.platform.prefix", "Idea");
     System.setProperty("ide.new.project.model", Boolean.toString(false)); // Temporary disable new project model in all places
