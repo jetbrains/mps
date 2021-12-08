@@ -278,8 +278,12 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     // replace DynamicReference with StaticReference, if needed
     if (!myPostponedRefs.isEmpty() || !myDynamicRefs.isEmpty()) {
       ttrace.push("restoring references");
+      ttrace.push("replace regular");
       myPostponedRefs.replace();
+      ttrace.pop();
+      ttrace.push("replace dynamic");
       myDynamicRefs.replace();
+      ttrace.pop();
       ttrace.pop();
     }
 

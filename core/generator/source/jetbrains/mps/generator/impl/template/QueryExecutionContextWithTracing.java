@@ -78,7 +78,7 @@ public class QueryExecutionContextWithTracing implements QueryExecutionContext {
     if (ruleNode == null) {
       return name;
     }
-    return name + ':' + ruleNode.getModelReference().getName().getLongName();
+    return name + ':' + ruleNode.getModelReference().getName().getLongName() + '/' + ruleNode.getNodeId();
   }
 
   @Override
