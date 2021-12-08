@@ -11,6 +11,8 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_List;
   private ConceptPresentation props_Lists;
+  private ConceptPresentation props_RefSource;
+  private ConceptPresentation props_RefTarget;
 
   @Override
   @Nullable
@@ -31,6 +33,20 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_Lists = cpb.create();
         }
         return props_Lists;
+      case LanguageConceptSwitch.RefSource:
+        if (props_RefSource == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_RefSource = cpb.create();
+        }
+        return props_RefSource;
+      case LanguageConceptSwitch.RefTarget:
+        if (props_RefTarget == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByName();
+          props_RefTarget = cpb.create();
+        }
+        return props_RefTarget;
     }
     return null;
   }

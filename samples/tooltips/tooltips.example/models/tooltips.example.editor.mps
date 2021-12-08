@@ -7,6 +7,7 @@
   </languages>
   <imports>
     <import index="8psh" ref="r:785fbfdf-4d16-46ea-8112-f67d04b451d9(tooltips.example.structure)" implicit="true" />
+    <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -17,12 +18,18 @@
       </concept>
       <concept id="1106270549637" name="jetbrains.mps.lang.editor.structure.CellLayout_Horizontal" flags="nn" index="2iRfu4" />
       <concept id="1106270571710" name="jetbrains.mps.lang.editor.structure.CellLayout_Vertical" flags="nn" index="2iRkQZ" />
+      <concept id="1237303669825" name="jetbrains.mps.lang.editor.structure.CellLayout_Indent" flags="nn" index="l2Vlx" />
       <concept id="709996738298806197" name="jetbrains.mps.lang.editor.structure.QueryFunction_SeparatorText" flags="in" index="2o9xnK" />
       <concept id="1080736578640" name="jetbrains.mps.lang.editor.structure.BaseEditorComponent" flags="ig" index="2wURMF">
         <child id="1080736633877" name="cellModel" index="2wV5jI" />
       </concept>
       <concept id="1186414928363" name="jetbrains.mps.lang.editor.structure.SelectableStyleSheetItem" flags="ln" index="VPM3Z" />
+      <concept id="1088013125922" name="jetbrains.mps.lang.editor.structure.CellModel_RefCell" flags="sg" stub="730538219795941030" index="1iCGBv">
+        <child id="1088186146602" name="editorComponent" index="1sWHZn" />
+      </concept>
+      <concept id="1088185857835" name="jetbrains.mps.lang.editor.structure.InlineEditorComponent" flags="ig" index="1sVBvm" />
       <concept id="1139848536355" name="jetbrains.mps.lang.editor.structure.CellModel_WithRole" flags="ng" index="1$h60E">
+        <property id="1140017977771" name="readOnly" index="1Intyy" />
         <reference id="1140103550593" name="relationDeclaration" index="1NtTu8" />
       </concept>
       <concept id="1073389446423" name="jetbrains.mps.lang.editor.structure.CellModel_Collection" flags="sn" stub="3013115976261988961" index="3EZMnI">
@@ -137,6 +144,58 @@
           </node>
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="3lDjf7vN0Su">
+    <ref role="1XX52x" to="8psh:3lDjf7vN0RZ" resolve="RefSource" />
+    <node concept="3EZMnI" id="3lDjf7vN0Sw" role="2wV5jI">
+      <node concept="3F0ifn" id="3lDjf7vN0SB" role="3EZMnx">
+        <property role="3F0ifm" value="Ref Source" />
+      </node>
+      <node concept="3F0A7n" id="3lDjf7vN0SH" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+      </node>
+      <node concept="3F0ifn" id="3lDjf7vN0SP" role="3EZMnx">
+        <property role="3F0ifm" value="target:" />
+      </node>
+      <node concept="1iCGBv" id="3lDjf7vN0SZ" role="3EZMnx">
+        <ref role="1NtTu8" to="8psh:3lDjf7vN0S0" resolve="ref" />
+        <node concept="1sVBvm" id="3lDjf7vN0T1" role="1sWHZn">
+          <node concept="1v6uyg" id="3lDjf7vN0Tb" role="2wV5jI">
+            <property role="2oejA6" value="true" />
+            <node concept="3F0A7n" id="3lDjf7vN0Tn" role="wsdo6">
+              <property role="1Intyy" value="true" />
+              <ref role="1NtTu8" to="8psh:3lDjf7vN0RX" resolve="description" />
+            </node>
+            <node concept="3F0A7n" id="3lDjf7vN0Tk" role="1j7Clw">
+              <property role="1Intyy" value="true" />
+              <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="l2Vlx" id="3lDjf7vN0Sz" role="2iSdaV" />
+      <node concept="3F0ifn" id="3lDjf7vNiJg" role="3EZMnx">
+        <property role="3F0ifm" value="(hover over target name to see a tooltip)" />
+      </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="3lDjf7vN0TO">
+    <ref role="1XX52x" to="8psh:3lDjf7vN0RU" resolve="RefTarget" />
+    <node concept="3EZMnI" id="3lDjf7vN0TT" role="2wV5jI">
+      <node concept="3F0ifn" id="3lDjf7vN0TV" role="3EZMnx">
+        <property role="3F0ifm" value="Ref Target" />
+      </node>
+      <node concept="3F0A7n" id="3lDjf7vN0U6" role="3EZMnx">
+        <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+      </node>
+      <node concept="3F0ifn" id="3lDjf7vN0Ue" role="3EZMnx">
+        <property role="3F0ifm" value="Description:" />
+      </node>
+      <node concept="3F0A7n" id="3lDjf7vN0Uo" role="3EZMnx">
+        <ref role="1NtTu8" to="8psh:3lDjf7vN0RX" resolve="description" />
+      </node>
+      <node concept="l2Vlx" id="3lDjf7vN0U0" role="2iSdaV" />
     </node>
   </node>
 </model>

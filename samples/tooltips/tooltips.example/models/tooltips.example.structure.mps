@@ -68,5 +68,33 @@
       <ref role="20lvS9" node="2Twa_fm5PQU" resolve="List" />
     </node>
   </node>
+  <node concept="1TIwiD" id="3lDjf7vN0RU">
+    <property role="EcuMT" value="3848691958290320890" />
+    <property role="TrG5h" value="RefTarget" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="3lDjf7vN0RV" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="1TJgyi" id="3lDjf7vN0RX" role="1TKVEl">
+      <property role="IQ2nx" value="3848691958290320893" />
+      <property role="TrG5h" value="description" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="3lDjf7vN0RZ">
+    <property role="EcuMT" value="3848691958290320895" />
+    <property role="TrG5h" value="RefSource" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="3lDjf7vN0S0" role="1TKVEi">
+      <property role="IQ2ns" value="3848691958290320896" />
+      <property role="20kJfa" value="ref" />
+      <ref role="20lvS9" node="3lDjf7vN0RU" resolve="RefTarget" />
+    </node>
+    <node concept="PrWs8" id="3lDjf7vN0S2" role="PzmwI">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
 </model>
 

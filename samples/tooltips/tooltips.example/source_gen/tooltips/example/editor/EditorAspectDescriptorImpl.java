@@ -17,7 +17,7 @@ import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase implements EditorHintsProvider {
-  private Collection<ConceptEditorHint> myHints = Arrays.<ConceptEditorHint>asList(new ConceptEditorHintImpl("tooltipHint_6m31uf_a0", "", false, "tooltips.example.editor.GeneratedHints.tooltipHint_6m31uf_a0"), new ConceptEditorHintImpl("tooltipHint_6m31uf_c0", "", false, "tooltips.example.editor.GeneratedHints.tooltipHint_6m31uf_c0"), new ConceptEditorHintImpl("tooltipHint_6m31uf_d4a", "", false, "tooltips.example.editor.GeneratedHints.tooltipHint_6m31uf_d4a"));
+  private Collection<ConceptEditorHint> myHints = Arrays.<ConceptEditorHint>asList(new ConceptEditorHintImpl("tooltipHint_6m31uf_a0", "", false, "tooltips.example.editor.GeneratedHints.tooltipHint_6m31uf_a0"), new ConceptEditorHintImpl("tooltipHint_6m31uf_c0", "", false, "tooltips.example.editor.GeneratedHints.tooltipHint_6m31uf_c0"), new ConceptEditorHintImpl("tooltipHint_6m31uf_d4a", "", false, "tooltips.example.editor.GeneratedHints.tooltipHint_6m31uf_d4a"), new ConceptEditorHintImpl("tooltipHint_meygxr_a0d0", "", false, "tooltips.example.editor.GeneratedHints.tooltipHint_meygxr_a0d0"));
   @NotNull
   public Collection<ConceptEditor> getDeclaredEditors(SAbstractConcept concept) {
     SAbstractConcept cncpt = ((SAbstractConcept) concept);
@@ -26,6 +26,10 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
         return Arrays.asList(new ConceptEditor[]{new List_Editor(), new List_tooltipHint_6m31uf_a0_Editor(), new List_tooltipHint_6m31uf_c0_Editor(), new List_tooltipHint_6m31uf_d4a_Editor()});
       case 1:
         return Collections.<ConceptEditor>singletonList(new Lists_Editor());
+      case 2:
+        return Collections.<ConceptEditor>singletonList(new RefSource_Editor());
+      case 3:
+        return Arrays.asList(new ConceptEditor[]{new RefTarget_Editor(), new RefTarget_tooltipHint_meygxr_a0d0_Editor()});
       default:
     }
     return Collections.<ConceptEditor>emptyList();
@@ -36,5 +40,5 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
   }
 
 
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa8c4631e640d42a1L, 0xba26250ba067c2c2L, 0x2e602a53d6175dbaL), MetaIdFactory.conceptId(0xa8c4631e640d42a1L, 0xba26250ba067c2c2L, 0x4225e11419741e64L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa8c4631e640d42a1L, 0xba26250ba067c2c2L, 0x2e602a53d6175dbaL), MetaIdFactory.conceptId(0xa8c4631e640d42a1L, 0xba26250ba067c2c2L, 0x4225e11419741e64L), MetaIdFactory.conceptId(0xa8c4631e640d42a1L, 0xba26250ba067c2c2L, 0x35694cf1dfcc0dffL), MetaIdFactory.conceptId(0xa8c4631e640d42a1L, 0xba26250ba067c2c2L, 0x35694cf1dfcc0dfaL)).seal();
 }

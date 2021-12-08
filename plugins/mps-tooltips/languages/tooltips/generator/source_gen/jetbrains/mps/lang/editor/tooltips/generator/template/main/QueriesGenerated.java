@@ -16,6 +16,7 @@ import jetbrains.mps.lang.editor.behavior.ConceptEditorHintDeclaration__Behavior
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
+import jetbrains.mps.lang.editor.behavior.AbstractComponent__BehaviorDescriptor;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.Map;
@@ -88,7 +89,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.hint$gLJA);
   }
   public static Object referenceMacro_GetReferent_4_1(final ReferenceMacroContext _context) {
-    return SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.AbstractComponent$YR), LINKS.conceptDeclaration$HJmJ);
+    return (SNode) AbstractComponent__BehaviorDescriptor.getConceptDeclaration_id67EYkym$wx3.invoke(SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.AbstractComponent$YR, false, false));
   }
   public static Object referenceMacro_GetReferent_4_2(final ReferenceMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.hint$gLJA);
@@ -333,7 +334,6 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink tooltip$cjSW = MetaAdapterFactory.getContainmentLink(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x35cfce3215b739b5L, 0x955054acf64dc63L, "tooltip");
     /*package*/ static final SReferenceLink hint$gLJA = MetaAdapterFactory.getReferenceLink(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x35cfce3215b739b5L, 0x35cfce3215b85a20L, "hint");
     /*package*/ static final SContainmentLink visibleCell$VE5n = MetaAdapterFactory.getContainmentLink(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L, 0x7f7a04fd2c64819dL, "visibleCell");
-    /*package*/ static final SReferenceLink conceptDeclaration$HJmJ = MetaAdapterFactory.getReferenceLink(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, 0x10f7df451aeL, "conceptDeclaration");
   }
 
   private static final class PROPS {
