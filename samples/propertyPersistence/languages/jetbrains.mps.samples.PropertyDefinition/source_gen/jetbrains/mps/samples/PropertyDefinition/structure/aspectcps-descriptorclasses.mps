@@ -314,8 +314,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$" role="3Kbmr1">
-              <ref role="3cqZAo" node="1t" resolve="Property" />
               <ref role="1PxDUh" node="1r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1t" resolve="Property" />
             </node>
           </node>
           <node concept="3KbdKl" id="v" role="3KbHQx">
@@ -376,8 +376,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="W" role="3Kbmr1">
-              <ref role="3cqZAo" node="1u" resolve="PropertyCollection" />
               <ref role="1PxDUh" node="1r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1u" resolve="PropertyCollection" />
             </node>
           </node>
         </node>
@@ -727,8 +727,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3z" role="3Kbmr1">
-              <ref role="3cqZAo" node="1t" resolve="Property" />
               <ref role="1PxDUh" node="1r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1t" resolve="Property" />
             </node>
           </node>
           <node concept="3KbdKl" id="3v" role="3KbHQx">
@@ -740,8 +740,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3B" role="3Kbmr1">
-              <ref role="3cqZAo" node="1u" resolve="PropertyCollection" />
               <ref role="1PxDUh" node="1r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1u" resolve="PropertyCollection" />
             </node>
           </node>
           <node concept="2OqwBi" id="3w" role="3KbGdf">

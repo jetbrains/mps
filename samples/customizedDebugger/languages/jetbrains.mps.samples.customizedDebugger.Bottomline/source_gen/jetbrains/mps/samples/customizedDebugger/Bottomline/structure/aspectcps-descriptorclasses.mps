@@ -314,8 +314,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$" role="3Kbmr1">
-              <ref role="3cqZAo" node="1u" resolve="MessageSequence" />
               <ref role="1PxDUh" node="1s" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1u" resolve="MessageSequence" />
             </node>
           </node>
           <node concept="3KbdKl" id="v" role="3KbHQx">
@@ -380,8 +380,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="W" role="3Kbmr1">
-              <ref role="3cqZAo" node="1v" resolve="OutputMessage" />
               <ref role="1PxDUh" node="1s" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1v" resolve="OutputMessage" />
             </node>
           </node>
         </node>
@@ -731,8 +731,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3$" role="3Kbmr1">
-              <ref role="3cqZAo" node="1u" resolve="MessageSequence" />
               <ref role="1PxDUh" node="1s" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1u" resolve="MessageSequence" />
             </node>
           </node>
           <node concept="3KbdKl" id="3w" role="3KbHQx">
@@ -744,8 +744,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3C" role="3Kbmr1">
-              <ref role="3cqZAo" node="1v" resolve="OutputMessage" />
               <ref role="1PxDUh" node="1s" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1v" resolve="OutputMessage" />
             </node>
           </node>
           <node concept="2OqwBi" id="3x" role="3KbGdf">

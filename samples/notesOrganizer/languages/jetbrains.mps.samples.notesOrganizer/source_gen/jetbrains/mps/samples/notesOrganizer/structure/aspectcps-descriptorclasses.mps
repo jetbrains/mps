@@ -405,8 +405,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="14" role="3Kbmr1">
-              <ref role="3cqZAo" node="7B" resolve="Category" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7B" resolve="Category" />
             </node>
           </node>
           <node concept="3KbdKl" id="R" role="3KbHQx">
@@ -495,8 +495,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1s" role="3Kbmr1">
-              <ref role="3cqZAo" node="7C" resolve="CategoryReference" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7C" resolve="CategoryReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="S" role="3KbHQx">
@@ -561,8 +561,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1V" role="3Kbmr1">
-              <ref role="3cqZAo" node="7D" resolve="Note" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7D" resolve="Note" />
             </node>
           </node>
           <node concept="3KbdKl" id="T" role="3KbHQx">
@@ -612,8 +612,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2k" role="3Kbmr1">
-              <ref role="3cqZAo" node="7E" resolve="NoteMetaInfo" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7E" resolve="NoteMetaInfo" />
             </node>
           </node>
           <node concept="3KbdKl" id="U" role="3KbHQx">
@@ -663,8 +663,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2C" role="3Kbmr1">
-              <ref role="3cqZAo" node="7F" resolve="NotePart" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7F" resolve="NotePart" />
             </node>
           </node>
           <node concept="3KbdKl" id="V" role="3KbHQx">
@@ -738,8 +738,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2W" role="3Kbmr1">
-              <ref role="3cqZAo" node="7G" resolve="Notes" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7G" resolve="Notes" />
             </node>
           </node>
           <node concept="3KbdKl" id="W" role="3KbHQx">
@@ -800,8 +800,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3p" role="3Kbmr1">
-              <ref role="3cqZAo" node="7H" resolve="NotesConfiguration" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7H" resolve="NotesConfiguration" />
             </node>
           </node>
           <node concept="3KbdKl" id="X" role="3KbHQx">
@@ -862,8 +862,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3L" role="3Kbmr1">
-              <ref role="3cqZAo" node="7I" resolve="Priority" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7I" resolve="Priority" />
             </node>
           </node>
           <node concept="3KbdKl" id="Y" role="3KbHQx">
@@ -924,8 +924,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="49" role="3Kbmr1">
-              <ref role="3cqZAo" node="7J" resolve="Status" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7J" resolve="Status" />
             </node>
           </node>
           <node concept="3KbdKl" id="Z" role="3KbHQx">
@@ -990,8 +990,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4x" role="3Kbmr1">
-              <ref role="3cqZAo" node="7K" resolve="TextNotePart" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7K" resolve="TextNotePart" />
             </node>
           </node>
         </node>
@@ -2275,8 +2275,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bM" role="3Kbmr1">
-              <ref role="3cqZAo" node="7B" resolve="Category" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7B" resolve="Category" />
             </node>
           </node>
           <node concept="3KbdKl" id="bA" role="3KbHQx">
@@ -2288,8 +2288,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bQ" role="3Kbmr1">
-              <ref role="3cqZAo" node="7C" resolve="CategoryReference" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7C" resolve="CategoryReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="bB" role="3KbHQx">
@@ -2301,8 +2301,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bU" role="3Kbmr1">
-              <ref role="3cqZAo" node="7D" resolve="Note" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7D" resolve="Note" />
             </node>
           </node>
           <node concept="3KbdKl" id="bC" role="3KbHQx">
@@ -2314,8 +2314,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bY" role="3Kbmr1">
-              <ref role="3cqZAo" node="7E" resolve="NoteMetaInfo" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7E" resolve="NoteMetaInfo" />
             </node>
           </node>
           <node concept="3KbdKl" id="bD" role="3KbHQx">
@@ -2327,8 +2327,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="c2" role="3Kbmr1">
-              <ref role="3cqZAo" node="7F" resolve="NotePart" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7F" resolve="NotePart" />
             </node>
           </node>
           <node concept="3KbdKl" id="bE" role="3KbHQx">
@@ -2340,8 +2340,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="c6" role="3Kbmr1">
-              <ref role="3cqZAo" node="7G" resolve="Notes" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7G" resolve="Notes" />
             </node>
           </node>
           <node concept="3KbdKl" id="bF" role="3KbHQx">
@@ -2353,8 +2353,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ca" role="3Kbmr1">
-              <ref role="3cqZAo" node="7H" resolve="NotesConfiguration" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7H" resolve="NotesConfiguration" />
             </node>
           </node>
           <node concept="3KbdKl" id="bG" role="3KbHQx">
@@ -2366,8 +2366,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ce" role="3Kbmr1">
-              <ref role="3cqZAo" node="7I" resolve="Priority" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7I" resolve="Priority" />
             </node>
           </node>
           <node concept="3KbdKl" id="bH" role="3KbHQx">
@@ -2379,8 +2379,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ci" role="3Kbmr1">
-              <ref role="3cqZAo" node="7J" resolve="Status" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7J" resolve="Status" />
             </node>
           </node>
           <node concept="3KbdKl" id="bI" role="3KbHQx">
@@ -2392,8 +2392,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cm" role="3Kbmr1">
-              <ref role="3cqZAo" node="7K" resolve="TextNotePart" />
               <ref role="1PxDUh" node="7_" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="7K" resolve="TextNotePart" />
             </node>
           </node>
           <node concept="2OqwBi" id="bJ" role="3KbGdf">

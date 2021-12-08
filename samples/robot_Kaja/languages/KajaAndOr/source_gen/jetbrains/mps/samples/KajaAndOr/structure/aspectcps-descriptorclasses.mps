@@ -324,8 +324,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="C" role="3Kbmr1">
-              <ref role="3cqZAo" node="1R" resolve="And" />
               <ref role="1PxDUh" node="1P" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1R" resolve="And" />
             </node>
           </node>
           <node concept="3KbdKl" id="y" role="3KbHQx">
@@ -375,8 +375,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="11" role="3Kbmr1">
-              <ref role="3cqZAo" node="1S" resolve="LogicalOperator" />
               <ref role="1PxDUh" node="1P" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1S" resolve="LogicalOperator" />
             </node>
           </node>
           <node concept="3KbdKl" id="z" role="3KbHQx">
@@ -441,8 +441,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1l" role="3Kbmr1">
-              <ref role="3cqZAo" node="1T" resolve="Or" />
               <ref role="1PxDUh" node="1P" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1T" resolve="Or" />
             </node>
           </node>
         </node>
@@ -853,8 +853,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4k" role="3Kbmr1">
-              <ref role="3cqZAo" node="1R" resolve="And" />
               <ref role="1PxDUh" node="1P" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1R" resolve="And" />
             </node>
           </node>
           <node concept="3KbdKl" id="4f" role="3KbHQx">
@@ -866,8 +866,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4o" role="3Kbmr1">
-              <ref role="3cqZAo" node="1S" resolve="LogicalOperator" />
               <ref role="1PxDUh" node="1P" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1S" resolve="LogicalOperator" />
             </node>
           </node>
           <node concept="3KbdKl" id="4g" role="3KbHQx">
@@ -879,8 +879,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4s" role="3Kbmr1">
-              <ref role="3cqZAo" node="1T" resolve="Or" />
               <ref role="1PxDUh" node="1P" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1T" resolve="Or" />
             </node>
           </node>
           <node concept="2OqwBi" id="4h" role="3KbGdf">

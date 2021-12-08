@@ -362,8 +362,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="S" role="3Kbmr1">
-              <ref role="3cqZAo" node="3X" resolve="IModuleRef" />
               <ref role="1PxDUh" node="3V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3X" resolve="IModuleRef" />
             </node>
           </node>
           <node concept="3KbdKl" id="I" role="3KbHQx">
@@ -413,8 +413,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1c" role="3Kbmr1">
-              <ref role="3cqZAo" node="3Y" resolve="ITestRef" />
               <ref role="1PxDUh" node="3V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3Y" resolve="ITestRef" />
             </node>
           </node>
           <node concept="3KbdKl" id="J" role="3KbHQx">
@@ -503,8 +503,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1w" role="3Kbmr1">
-              <ref role="3cqZAo" node="3Z" resolve="JUnit3TestCaseRef" />
               <ref role="1PxDUh" node="3V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3Z" resolve="JUnit3TestCaseRef" />
             </node>
           </node>
           <node concept="3KbdKl" id="K" role="3KbHQx">
@@ -593,8 +593,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Z" role="3Kbmr1">
-              <ref role="3cqZAo" node="40" resolve="JUnit4TestCaseRef" />
               <ref role="1PxDUh" node="3V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="40" resolve="JUnit4TestCaseRef" />
             </node>
           </node>
           <node concept="3KbdKl" id="L" role="3KbHQx">
@@ -673,8 +673,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2u" role="3Kbmr1">
-              <ref role="3cqZAo" node="41" resolve="ModuleSuite" />
               <ref role="1PxDUh" node="3V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="41" resolve="ModuleSuite" />
             </node>
           </node>
           <node concept="3KbdKl" id="M" role="3KbHQx">
@@ -739,8 +739,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2W" role="3Kbmr1">
-              <ref role="3cqZAo" node="42" resolve="SolutionRef" />
               <ref role="1PxDUh" node="3V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="42" resolve="SolutionRef" />
             </node>
           </node>
           <node concept="3KbdKl" id="N" role="3KbHQx">
@@ -829,8 +829,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3l" role="3Kbmr1">
-              <ref role="3cqZAo" node="43" resolve="TestCaseRef" />
               <ref role="1PxDUh" node="3V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="43" resolve="TestCaseRef" />
             </node>
           </node>
         </node>
@@ -1390,8 +1390,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7j" role="3Kbmr1">
-              <ref role="3cqZAo" node="3X" resolve="IModuleRef" />
               <ref role="1PxDUh" node="3V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3X" resolve="IModuleRef" />
             </node>
           </node>
           <node concept="3KbdKl" id="7a" role="3KbHQx">
@@ -1403,8 +1403,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7n" role="3Kbmr1">
-              <ref role="3cqZAo" node="3Y" resolve="ITestRef" />
               <ref role="1PxDUh" node="3V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3Y" resolve="ITestRef" />
             </node>
           </node>
           <node concept="3KbdKl" id="7b" role="3KbHQx">
@@ -1416,8 +1416,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7r" role="3Kbmr1">
-              <ref role="3cqZAo" node="3Z" resolve="JUnit3TestCaseRef" />
               <ref role="1PxDUh" node="3V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3Z" resolve="JUnit3TestCaseRef" />
             </node>
           </node>
           <node concept="3KbdKl" id="7c" role="3KbHQx">
@@ -1429,8 +1429,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7v" role="3Kbmr1">
-              <ref role="3cqZAo" node="40" resolve="JUnit4TestCaseRef" />
               <ref role="1PxDUh" node="3V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="40" resolve="JUnit4TestCaseRef" />
             </node>
           </node>
           <node concept="3KbdKl" id="7d" role="3KbHQx">
@@ -1442,8 +1442,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7z" role="3Kbmr1">
-              <ref role="3cqZAo" node="41" resolve="ModuleSuite" />
               <ref role="1PxDUh" node="3V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="41" resolve="ModuleSuite" />
             </node>
           </node>
           <node concept="3KbdKl" id="7e" role="3KbHQx">
@@ -1455,8 +1455,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7B" role="3Kbmr1">
-              <ref role="3cqZAo" node="42" resolve="SolutionRef" />
               <ref role="1PxDUh" node="3V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="42" resolve="SolutionRef" />
             </node>
           </node>
           <node concept="3KbdKl" id="7f" role="3KbHQx">
@@ -1468,8 +1468,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7F" role="3Kbmr1">
-              <ref role="3cqZAo" node="43" resolve="TestCaseRef" />
               <ref role="1PxDUh" node="3V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="43" resolve="TestCaseRef" />
             </node>
           </node>
           <node concept="2OqwBi" id="7g" role="3KbGdf">

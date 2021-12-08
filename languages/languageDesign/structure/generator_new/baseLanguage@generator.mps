@@ -5918,7 +5918,6 @@
               </node>
             </node>
             <node concept="1WS0z7" id="2xIo4FpUpB9" role="lGtFl">
-              <property role="1qytDF" value="" />
               <node concept="3JmXsc" id="2xIo4FpUpBb" role="3Jn$fo">
                 <node concept="3clFbS" id="2xIo4FpUpBd" role="2VODD2">
                   <node concept="3clFbF" id="2xIo4FpUqSn" role="3cqZAp">

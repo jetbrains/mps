@@ -659,8 +659,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2$" role="3Kbmr1">
-              <ref role="3cqZAo" node="gj" resolve="AbstractPatternProvider" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gj" resolve="AbstractPatternProvider" />
             </node>
           </node>
           <node concept="3KbdKl" id="1Z" role="3KbHQx">
@@ -725,8 +725,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2S" role="3Kbmr1">
-              <ref role="3cqZAo" node="gk" resolve="ActionAsPattern" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gk" resolve="ActionAsPattern" />
             </node>
           </node>
           <node concept="3KbdKl" id="20" role="3KbHQx">
@@ -776,8 +776,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3h" role="3Kbmr1">
-              <ref role="3cqZAo" node="gl" resolve="ActionStatement" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gl" resolve="ActionStatement" />
             </node>
           </node>
           <node concept="3KbdKl" id="21" role="3KbHQx">
@@ -846,8 +846,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3_" role="3Kbmr1">
-              <ref role="3cqZAo" node="gm" resolve="AsPattern" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gm" resolve="AsPattern" />
             </node>
           </node>
           <node concept="3KbdKl" id="22" role="3KbHQx">
@@ -912,8 +912,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3Z" role="3Kbmr1">
-              <ref role="3cqZAo" node="gn" resolve="ExpressionPatternProvider" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gn" resolve="ExpressionPatternProvider" />
             </node>
           </node>
           <node concept="3KbdKl" id="23" role="3KbHQx">
@@ -978,8 +978,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4o" role="3Kbmr1">
-              <ref role="3cqZAo" node="go" resolve="GeneratorInternal_ChildDescriptor" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="go" resolve="GeneratorInternal_ChildDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="24" role="3KbHQx">
@@ -1044,8 +1044,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4L" role="3Kbmr1">
-              <ref role="3cqZAo" node="gp" resolve="GeneratorInternal_PropertyDescriptor" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gp" resolve="GeneratorInternal_PropertyDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="25" role="3KbHQx">
@@ -1110,8 +1110,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5a" role="3Kbmr1">
-              <ref role="3cqZAo" node="gq" resolve="GeneratorInternal_ReferenceDescriptor" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gq" resolve="GeneratorInternal_ReferenceDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="26" role="3KbHQx">
@@ -1176,8 +1176,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5z" role="3Kbmr1">
-              <ref role="3cqZAo" node="gr" resolve="InlinePatternProvider" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gr" resolve="InlinePatternProvider" />
             </node>
           </node>
           <node concept="3KbdKl" id="27" role="3KbHQx">
@@ -1255,8 +1255,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5W" role="3Kbmr1">
-              <ref role="3cqZAo" node="gs" resolve="InsertAfterPosition" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gs" resolve="InsertAfterPosition" />
             </node>
           </node>
           <node concept="3KbdKl" id="28" role="3KbHQx">
@@ -1321,8 +1321,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6q" role="3Kbmr1">
-              <ref role="3cqZAo" node="gt" resolve="InsertBeforePosition" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gt" resolve="InsertBeforePosition" />
             </node>
           </node>
           <node concept="3KbdKl" id="29" role="3KbHQx">
@@ -1372,8 +1372,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6N" role="3Kbmr1">
-              <ref role="3cqZAo" node="gu" resolve="InsertPosition" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gu" resolve="InsertPosition" />
             </node>
           </node>
           <node concept="3KbdKl" id="2a" role="3KbHQx">
@@ -1434,8 +1434,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="77" role="3Kbmr1">
-              <ref role="3cqZAo" node="gv" resolve="LabeledNode" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gv" resolve="LabeledNode" />
             </node>
           </node>
           <node concept="3KbdKl" id="2b" role="3KbHQx">
@@ -1504,8 +1504,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7v" role="3Kbmr1">
-              <ref role="3cqZAo" node="gw" resolve="LinkPatternVariableDeclaration" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gw" resolve="LinkPatternVariableDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="2c" role="3KbHQx">
@@ -1583,8 +1583,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7T" role="3Kbmr1">
-              <ref role="3cqZAo" node="gx" resolve="ListPattern" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gx" resolve="ListPattern" />
             </node>
           </node>
           <node concept="3KbdKl" id="2d" role="3KbHQx">
@@ -1673,8 +1673,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8n" role="3Kbmr1">
-              <ref role="3cqZAo" node="gy" resolve="LocalPatternReference" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gy" resolve="LocalPatternReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="2e" role="3KbHQx">
@@ -1743,8 +1743,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8Q" role="3Kbmr1">
-              <ref role="3cqZAo" node="gz" resolve="OrPattern" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gz" resolve="OrPattern" />
             </node>
           </node>
           <node concept="3KbdKl" id="2f" role="3KbHQx">
@@ -1809,8 +1809,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9g" role="3Kbmr1">
-              <ref role="3cqZAo" node="g$" resolve="OrPatternClause" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="g$" resolve="OrPatternClause" />
             </node>
           </node>
           <node concept="3KbdKl" id="2g" role="3KbHQx">
@@ -1899,8 +1899,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9D" role="3Kbmr1">
-              <ref role="3cqZAo" node="g_" resolve="OrPatternVariableReference" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="g_" resolve="OrPatternVariableReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="2h" role="3KbHQx">
@@ -1950,8 +1950,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="a8" role="3Kbmr1">
-              <ref role="3cqZAo" node="gA" resolve="Pattern" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gA" resolve="Pattern" />
             </node>
           </node>
           <node concept="3KbdKl" id="2i" role="3KbHQx">
@@ -2016,8 +2016,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="as" role="3Kbmr1">
-              <ref role="3cqZAo" node="gB" resolve="PatternBuilder" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gB" resolve="PatternBuilder" />
             </node>
           </node>
           <node concept="3KbdKl" id="2j" role="3KbHQx">
@@ -2109,8 +2109,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="aP" role="3Kbmr1">
-              <ref role="3cqZAo" node="gC" resolve="PatternBuilderClassifierMember" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gC" resolve="PatternBuilderClassifierMember" />
             </node>
           </node>
           <node concept="3KbdKl" id="2k" role="3KbHQx">
@@ -2160,8 +2160,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bn" role="3Kbmr1">
-              <ref role="3cqZAo" node="gD" resolve="PatternBuilderVariable" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gD" resolve="PatternBuilderVariable" />
             </node>
           </node>
           <node concept="3KbdKl" id="2l" role="3KbHQx">
@@ -2226,8 +2226,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bF" role="3Kbmr1">
-              <ref role="3cqZAo" node="gE" resolve="PatternBuilderVariableReference" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gE" resolve="PatternBuilderVariableReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="2m" role="3KbHQx">
@@ -2292,8 +2292,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="c4" role="3Kbmr1">
-              <ref role="3cqZAo" node="gF" resolve="PatternExpression" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gF" resolve="PatternExpression" />
             </node>
           </node>
           <node concept="3KbdKl" id="2n" role="3KbHQx">
@@ -2358,8 +2358,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ct" role="3Kbmr1">
-              <ref role="3cqZAo" node="gG" resolve="PatternSwitchCase" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gG" resolve="PatternSwitchCase" />
             </node>
           </node>
           <node concept="3KbdKl" id="2o" role="3KbHQx">
@@ -2428,8 +2428,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cQ" role="3Kbmr1">
-              <ref role="3cqZAo" node="gH" resolve="PatternSwitchStatement" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gH" resolve="PatternSwitchStatement" />
             </node>
           </node>
           <node concept="3KbdKl" id="2p" role="3KbHQx">
@@ -2494,8 +2494,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="dg" role="3Kbmr1">
-              <ref role="3cqZAo" node="gI" resolve="PatternVariableDeclaration" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gI" resolve="PatternVariableDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="2q" role="3KbHQx">
@@ -2556,8 +2556,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="dD" role="3Kbmr1">
-              <ref role="3cqZAo" node="gJ" resolve="PatternVariableNode" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gJ" resolve="PatternVariableNode" />
             </node>
           </node>
           <node concept="3KbdKl" id="2r" role="3KbHQx">
@@ -2618,8 +2618,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="e1" role="3Kbmr1">
-              <ref role="3cqZAo" node="gK" resolve="PatternVariableProperty" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gK" resolve="PatternVariableProperty" />
             </node>
           </node>
           <node concept="3KbdKl" id="2s" role="3KbHQx">
@@ -2721,8 +2721,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ep" role="3Kbmr1">
-              <ref role="3cqZAo" node="gL" resolve="PatternVariableReference" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gL" resolve="PatternVariableReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="2t" role="3KbHQx">
@@ -2791,8 +2791,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="eX" role="3Kbmr1">
-              <ref role="3cqZAo" node="gM" resolve="PropertyPatternVariableDeclaration" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gM" resolve="PropertyPatternVariableDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="2u" role="3KbHQx">
@@ -2857,8 +2857,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="fn" role="3Kbmr1">
-              <ref role="3cqZAo" node="gN" resolve="QualifiedPatternReference" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gN" resolve="QualifiedPatternReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="2v" role="3KbHQx">
@@ -2927,8 +2927,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="fK" role="3Kbmr1">
-              <ref role="3cqZAo" node="gO" resolve="WildcardPattern" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gO" resolve="WildcardPattern" />
             </node>
           </node>
         </node>
@@ -4698,8 +4698,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="qP" role="3Kbmr1">
-              <ref role="3cqZAo" node="gj" resolve="AbstractPatternProvider" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gj" resolve="AbstractPatternProvider" />
             </node>
           </node>
           <node concept="3KbdKl" id="qh" role="3KbHQx">
@@ -4711,8 +4711,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="qT" role="3Kbmr1">
-              <ref role="3cqZAo" node="gk" resolve="ActionAsPattern" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gk" resolve="ActionAsPattern" />
             </node>
           </node>
           <node concept="3KbdKl" id="qi" role="3KbHQx">
@@ -4724,8 +4724,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="qX" role="3Kbmr1">
-              <ref role="3cqZAo" node="gl" resolve="ActionStatement" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gl" resolve="ActionStatement" />
             </node>
           </node>
           <node concept="3KbdKl" id="qj" role="3KbHQx">
@@ -4737,8 +4737,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="r1" role="3Kbmr1">
-              <ref role="3cqZAo" node="gm" resolve="AsPattern" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gm" resolve="AsPattern" />
             </node>
           </node>
           <node concept="3KbdKl" id="qk" role="3KbHQx">
@@ -4750,8 +4750,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="r5" role="3Kbmr1">
-              <ref role="3cqZAo" node="gn" resolve="ExpressionPatternProvider" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gn" resolve="ExpressionPatternProvider" />
             </node>
           </node>
           <node concept="3KbdKl" id="ql" role="3KbHQx">
@@ -4763,8 +4763,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="r9" role="3Kbmr1">
-              <ref role="3cqZAo" node="go" resolve="GeneratorInternal_ChildDescriptor" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="go" resolve="GeneratorInternal_ChildDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="qm" role="3KbHQx">
@@ -4776,8 +4776,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="rd" role="3Kbmr1">
-              <ref role="3cqZAo" node="gp" resolve="GeneratorInternal_PropertyDescriptor" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gp" resolve="GeneratorInternal_PropertyDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="qn" role="3KbHQx">
@@ -4789,8 +4789,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="rh" role="3Kbmr1">
-              <ref role="3cqZAo" node="gq" resolve="GeneratorInternal_ReferenceDescriptor" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gq" resolve="GeneratorInternal_ReferenceDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="qo" role="3KbHQx">
@@ -4802,8 +4802,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="rl" role="3Kbmr1">
-              <ref role="3cqZAo" node="gr" resolve="InlinePatternProvider" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gr" resolve="InlinePatternProvider" />
             </node>
           </node>
           <node concept="3KbdKl" id="qp" role="3KbHQx">
@@ -4815,8 +4815,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="rp" role="3Kbmr1">
-              <ref role="3cqZAo" node="gs" resolve="InsertAfterPosition" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gs" resolve="InsertAfterPosition" />
             </node>
           </node>
           <node concept="3KbdKl" id="qq" role="3KbHQx">
@@ -4828,8 +4828,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="rt" role="3Kbmr1">
-              <ref role="3cqZAo" node="gt" resolve="InsertBeforePosition" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gt" resolve="InsertBeforePosition" />
             </node>
           </node>
           <node concept="3KbdKl" id="qr" role="3KbHQx">
@@ -4841,8 +4841,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="rx" role="3Kbmr1">
-              <ref role="3cqZAo" node="gu" resolve="InsertPosition" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gu" resolve="InsertPosition" />
             </node>
           </node>
           <node concept="3KbdKl" id="qs" role="3KbHQx">
@@ -4854,8 +4854,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="r_" role="3Kbmr1">
-              <ref role="3cqZAo" node="gv" resolve="LabeledNode" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gv" resolve="LabeledNode" />
             </node>
           </node>
           <node concept="3KbdKl" id="qt" role="3KbHQx">
@@ -4867,8 +4867,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="rD" role="3Kbmr1">
-              <ref role="3cqZAo" node="gw" resolve="LinkPatternVariableDeclaration" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gw" resolve="LinkPatternVariableDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="qu" role="3KbHQx">
@@ -4880,8 +4880,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="rH" role="3Kbmr1">
-              <ref role="3cqZAo" node="gx" resolve="ListPattern" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gx" resolve="ListPattern" />
             </node>
           </node>
           <node concept="3KbdKl" id="qv" role="3KbHQx">
@@ -4893,8 +4893,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="rL" role="3Kbmr1">
-              <ref role="3cqZAo" node="gy" resolve="LocalPatternReference" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gy" resolve="LocalPatternReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="qw" role="3KbHQx">
@@ -4906,8 +4906,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="rP" role="3Kbmr1">
-              <ref role="3cqZAo" node="gz" resolve="OrPattern" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gz" resolve="OrPattern" />
             </node>
           </node>
           <node concept="3KbdKl" id="qx" role="3KbHQx">
@@ -4919,8 +4919,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="rT" role="3Kbmr1">
-              <ref role="3cqZAo" node="g$" resolve="OrPatternClause" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="g$" resolve="OrPatternClause" />
             </node>
           </node>
           <node concept="3KbdKl" id="qy" role="3KbHQx">
@@ -4932,8 +4932,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="rX" role="3Kbmr1">
-              <ref role="3cqZAo" node="g_" resolve="OrPatternVariableReference" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="g_" resolve="OrPatternVariableReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="qz" role="3KbHQx">
@@ -4945,8 +4945,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="s1" role="3Kbmr1">
-              <ref role="3cqZAo" node="gA" resolve="Pattern" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gA" resolve="Pattern" />
             </node>
           </node>
           <node concept="3KbdKl" id="q$" role="3KbHQx">
@@ -4958,8 +4958,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="s5" role="3Kbmr1">
-              <ref role="3cqZAo" node="gB" resolve="PatternBuilder" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gB" resolve="PatternBuilder" />
             </node>
           </node>
           <node concept="3KbdKl" id="q_" role="3KbHQx">
@@ -4971,8 +4971,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="s9" role="3Kbmr1">
-              <ref role="3cqZAo" node="gC" resolve="PatternBuilderClassifierMember" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gC" resolve="PatternBuilderClassifierMember" />
             </node>
           </node>
           <node concept="3KbdKl" id="qA" role="3KbHQx">
@@ -4984,8 +4984,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="sd" role="3Kbmr1">
-              <ref role="3cqZAo" node="gD" resolve="PatternBuilderVariable" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gD" resolve="PatternBuilderVariable" />
             </node>
           </node>
           <node concept="3KbdKl" id="qB" role="3KbHQx">
@@ -4997,8 +4997,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="sh" role="3Kbmr1">
-              <ref role="3cqZAo" node="gE" resolve="PatternBuilderVariableReference" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gE" resolve="PatternBuilderVariableReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="qC" role="3KbHQx">
@@ -5010,8 +5010,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="sl" role="3Kbmr1">
-              <ref role="3cqZAo" node="gF" resolve="PatternExpression" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gF" resolve="PatternExpression" />
             </node>
           </node>
           <node concept="3KbdKl" id="qD" role="3KbHQx">
@@ -5023,8 +5023,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="sp" role="3Kbmr1">
-              <ref role="3cqZAo" node="gG" resolve="PatternSwitchCase" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gG" resolve="PatternSwitchCase" />
             </node>
           </node>
           <node concept="3KbdKl" id="qE" role="3KbHQx">
@@ -5036,8 +5036,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="st" role="3Kbmr1">
-              <ref role="3cqZAo" node="gH" resolve="PatternSwitchStatement" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gH" resolve="PatternSwitchStatement" />
             </node>
           </node>
           <node concept="3KbdKl" id="qF" role="3KbHQx">
@@ -5049,8 +5049,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="sx" role="3Kbmr1">
-              <ref role="3cqZAo" node="gI" resolve="PatternVariableDeclaration" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gI" resolve="PatternVariableDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="qG" role="3KbHQx">
@@ -5062,8 +5062,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="s_" role="3Kbmr1">
-              <ref role="3cqZAo" node="gJ" resolve="PatternVariableNode" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gJ" resolve="PatternVariableNode" />
             </node>
           </node>
           <node concept="3KbdKl" id="qH" role="3KbHQx">
@@ -5075,8 +5075,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="sD" role="3Kbmr1">
-              <ref role="3cqZAo" node="gK" resolve="PatternVariableProperty" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gK" resolve="PatternVariableProperty" />
             </node>
           </node>
           <node concept="3KbdKl" id="qI" role="3KbHQx">
@@ -5088,8 +5088,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="sH" role="3Kbmr1">
-              <ref role="3cqZAo" node="gL" resolve="PatternVariableReference" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gL" resolve="PatternVariableReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="qJ" role="3KbHQx">
@@ -5101,8 +5101,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="sL" role="3Kbmr1">
-              <ref role="3cqZAo" node="gM" resolve="PropertyPatternVariableDeclaration" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gM" resolve="PropertyPatternVariableDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="qK" role="3KbHQx">
@@ -5114,8 +5114,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="sP" role="3Kbmr1">
-              <ref role="3cqZAo" node="gN" resolve="QualifiedPatternReference" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gN" resolve="QualifiedPatternReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="qL" role="3KbHQx">
@@ -5127,8 +5127,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="sT" role="3Kbmr1">
-              <ref role="3cqZAo" node="gO" resolve="WildcardPattern" />
               <ref role="1PxDUh" node="gh" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="gO" resolve="WildcardPattern" />
             </node>
           </node>
           <node concept="2OqwBi" id="qM" role="3KbGdf">

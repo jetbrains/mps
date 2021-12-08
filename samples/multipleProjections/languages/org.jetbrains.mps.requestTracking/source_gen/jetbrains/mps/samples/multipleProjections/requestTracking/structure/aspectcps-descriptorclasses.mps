@@ -321,8 +321,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$" role="3Kbmr1">
-              <ref role="3cqZAo" node="3H" resolve="Workflow" />
               <ref role="1PxDUh" node="3F" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3H" resolve="Workflow" />
             </node>
           </node>
           <node concept="3KbdKl" id="v" role="3KbHQx">
@@ -383,8 +383,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="W" role="3Kbmr1">
-              <ref role="3cqZAo" node="3I" resolve="WorkflowContainer" />
               <ref role="1PxDUh" node="3F" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3I" resolve="WorkflowContainer" />
             </node>
           </node>
         </node>
@@ -1279,8 +1279,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5Z" role="3Kbmr1">
-              <ref role="3cqZAo" node="3H" resolve="Workflow" />
               <ref role="1PxDUh" node="3F" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3H" resolve="Workflow" />
             </node>
           </node>
           <node concept="3KbdKl" id="5V" role="3KbHQx">
@@ -1292,8 +1292,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="63" role="3Kbmr1">
-              <ref role="3cqZAo" node="3I" resolve="WorkflowContainer" />
               <ref role="1PxDUh" node="3F" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3I" resolve="WorkflowContainer" />
             </node>
           </node>
           <node concept="2OqwBi" id="5W" role="3KbGdf">

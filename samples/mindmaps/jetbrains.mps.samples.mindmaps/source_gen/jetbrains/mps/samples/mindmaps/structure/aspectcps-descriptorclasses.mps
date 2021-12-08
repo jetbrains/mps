@@ -354,8 +354,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="O" role="3Kbmr1">
-              <ref role="3cqZAo" node="3b" resolve="CoreThrought" />
               <ref role="1PxDUh" node="39" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3b" resolve="CoreThrought" />
             </node>
           </node>
           <node concept="3KbdKl" id="F" role="3KbHQx">
@@ -416,8 +416,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1c" role="3Kbmr1">
-              <ref role="3cqZAo" node="3c" resolve="MindMap" />
               <ref role="1PxDUh" node="39" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3c" resolve="MindMap" />
             </node>
           </node>
           <node concept="3KbdKl" id="G" role="3KbHQx">
@@ -482,8 +482,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1$" role="3Kbmr1">
-              <ref role="3cqZAo" node="3d" resolve="Relationship" />
               <ref role="1PxDUh" node="39" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3d" resolve="Relationship" />
             </node>
           </node>
           <node concept="3KbdKl" id="H" role="3KbHQx">
@@ -548,8 +548,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1X" role="3Kbmr1">
-              <ref role="3cqZAo" node="3e" resolve="Specializes" />
               <ref role="1PxDUh" node="39" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3e" resolve="Specializes" />
             </node>
           </node>
           <node concept="3KbdKl" id="I" role="3KbHQx">
@@ -610,8 +610,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2m" role="3Kbmr1">
-              <ref role="3cqZAo" node="3f" resolve="Thought" />
               <ref role="1PxDUh" node="39" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3f" resolve="Thought" />
             </node>
           </node>
           <node concept="3KbdKl" id="J" role="3KbHQx">
@@ -661,8 +661,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2I" role="3Kbmr1">
-              <ref role="3cqZAo" node="3g" resolve="VisualBox" />
               <ref role="1PxDUh" node="39" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3g" resolve="VisualBox" />
             </node>
           </node>
         </node>
@@ -1180,8 +1180,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6h" role="3Kbmr1">
-              <ref role="3cqZAo" node="3b" resolve="CoreThrought" />
               <ref role="1PxDUh" node="39" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3b" resolve="CoreThrought" />
             </node>
           </node>
           <node concept="3KbdKl" id="69" role="3KbHQx">
@@ -1193,8 +1193,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6l" role="3Kbmr1">
-              <ref role="3cqZAo" node="3c" resolve="MindMap" />
               <ref role="1PxDUh" node="39" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3c" resolve="MindMap" />
             </node>
           </node>
           <node concept="3KbdKl" id="6a" role="3KbHQx">
@@ -1206,8 +1206,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6p" role="3Kbmr1">
-              <ref role="3cqZAo" node="3d" resolve="Relationship" />
               <ref role="1PxDUh" node="39" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3d" resolve="Relationship" />
             </node>
           </node>
           <node concept="3KbdKl" id="6b" role="3KbHQx">
@@ -1219,8 +1219,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6t" role="3Kbmr1">
-              <ref role="3cqZAo" node="3e" resolve="Specializes" />
               <ref role="1PxDUh" node="39" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3e" resolve="Specializes" />
             </node>
           </node>
           <node concept="3KbdKl" id="6c" role="3KbHQx">
@@ -1232,8 +1232,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6x" role="3Kbmr1">
-              <ref role="3cqZAo" node="3f" resolve="Thought" />
               <ref role="1PxDUh" node="39" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3f" resolve="Thought" />
             </node>
           </node>
           <node concept="3KbdKl" id="6d" role="3KbHQx">
@@ -1245,8 +1245,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6_" role="3Kbmr1">
-              <ref role="3cqZAo" node="3g" resolve="VisualBox" />
               <ref role="1PxDUh" node="39" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3g" resolve="VisualBox" />
             </node>
           </node>
           <node concept="2OqwBi" id="6e" role="3KbGdf">

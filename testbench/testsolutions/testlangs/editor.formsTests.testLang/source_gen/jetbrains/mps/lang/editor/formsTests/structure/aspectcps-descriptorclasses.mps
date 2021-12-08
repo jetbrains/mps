@@ -328,8 +328,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="C" role="3Kbmr1">
-              <ref role="3cqZAo" node="1W" resolve="UsesPlatformCheckbox" />
               <ref role="1PxDUh" node="1U" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1W" resolve="UsesPlatformCheckbox" />
             </node>
           </node>
           <node concept="3KbdKl" id="y" role="3KbHQx">
@@ -394,8 +394,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="11" role="3Kbmr1">
-              <ref role="3cqZAo" node="1X" resolve="UsesTextCheckbox" />
               <ref role="1PxDUh" node="1U" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1X" resolve="UsesTextCheckbox" />
             </node>
           </node>
           <node concept="3KbdKl" id="z" role="3KbHQx">
@@ -460,8 +460,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1q" role="3Kbmr1">
-              <ref role="3cqZAo" node="1Y" resolve="VariousCheckboxes" />
               <ref role="1PxDUh" node="1U" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1Y" resolve="VariousCheckboxes" />
             </node>
           </node>
         </node>
@@ -853,8 +853,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4i" role="3Kbmr1">
-              <ref role="3cqZAo" node="1W" resolve="UsesPlatformCheckbox" />
               <ref role="1PxDUh" node="1U" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1W" resolve="UsesPlatformCheckbox" />
             </node>
           </node>
           <node concept="3KbdKl" id="4d" role="3KbHQx">
@@ -866,8 +866,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4m" role="3Kbmr1">
-              <ref role="3cqZAo" node="1X" resolve="UsesTextCheckbox" />
               <ref role="1PxDUh" node="1U" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1X" resolve="UsesTextCheckbox" />
             </node>
           </node>
           <node concept="3KbdKl" id="4e" role="3KbHQx">
@@ -879,8 +879,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4q" role="3Kbmr1">
-              <ref role="3cqZAo" node="1Y" resolve="VariousCheckboxes" />
               <ref role="1PxDUh" node="1U" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1Y" resolve="VariousCheckboxes" />
             </node>
           </node>
           <node concept="2OqwBi" id="4f" role="3KbGdf">

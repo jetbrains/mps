@@ -345,8 +345,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="G" role="3Kbmr1">
-              <ref role="3cqZAo" node="2H" resolve="QueryFunctionParameter_IntentionExecutable" />
               <ref role="1PxDUh" node="2F" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2H" resolve="QueryFunctionParameter_IntentionExecutable" />
             </node>
           </node>
           <node concept="3KbdKl" id="_" role="3KbHQx">
@@ -424,8 +424,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1a" role="3Kbmr1">
-              <ref role="3cqZAo" node="2I" resolve="TransformationMenuPart_Intention" />
               <ref role="1PxDUh" node="2F" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2I" resolve="TransformationMenuPart_Intention" />
             </node>
           </node>
           <node concept="3KbdKl" id="A" role="3KbHQx">
@@ -503,8 +503,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1C" role="3Kbmr1">
-              <ref role="3cqZAo" node="2J" resolve="TransformationMenuPart_PluginAction" />
               <ref role="1PxDUh" node="2F" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2J" resolve="TransformationMenuPart_PluginAction" />
             </node>
           </node>
           <node concept="3KbdKl" id="B" role="3KbHQx">
@@ -582,8 +582,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="26" role="3Kbmr1">
-              <ref role="3cqZAo" node="2K" resolve="TransformationMenuPart_Refactoring" />
               <ref role="1PxDUh" node="2F" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2K" resolve="TransformationMenuPart_Refactoring" />
             </node>
           </node>
         </node>
@@ -1036,8 +1036,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5q" role="3Kbmr1">
-              <ref role="3cqZAo" node="2H" resolve="QueryFunctionParameter_IntentionExecutable" />
               <ref role="1PxDUh" node="2F" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2H" resolve="QueryFunctionParameter_IntentionExecutable" />
             </node>
           </node>
           <node concept="3KbdKl" id="5k" role="3KbHQx">
@@ -1049,8 +1049,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5u" role="3Kbmr1">
-              <ref role="3cqZAo" node="2I" resolve="TransformationMenuPart_Intention" />
               <ref role="1PxDUh" node="2F" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2I" resolve="TransformationMenuPart_Intention" />
             </node>
           </node>
           <node concept="3KbdKl" id="5l" role="3KbHQx">
@@ -1062,8 +1062,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5y" role="3Kbmr1">
-              <ref role="3cqZAo" node="2J" resolve="TransformationMenuPart_PluginAction" />
               <ref role="1PxDUh" node="2F" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2J" resolve="TransformationMenuPart_PluginAction" />
             </node>
           </node>
           <node concept="3KbdKl" id="5m" role="3KbHQx">
@@ -1075,8 +1075,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5A" role="3Kbmr1">
-              <ref role="3cqZAo" node="2K" resolve="TransformationMenuPart_Refactoring" />
               <ref role="1PxDUh" node="2F" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2K" resolve="TransformationMenuPart_Refactoring" />
             </node>
           </node>
           <node concept="2OqwBi" id="5n" role="3KbGdf">

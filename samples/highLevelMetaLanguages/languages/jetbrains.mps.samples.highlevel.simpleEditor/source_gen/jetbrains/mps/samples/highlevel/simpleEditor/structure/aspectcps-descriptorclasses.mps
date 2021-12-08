@@ -328,8 +328,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="C" role="3Kbmr1">
-              <ref role="3cqZAo" node="28" resolve="EditorAspectDeclaration" />
               <ref role="1PxDUh" node="26" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="28" resolve="EditorAspectDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="y" role="3KbHQx">
@@ -418,8 +418,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="11" role="3Kbmr1">
-              <ref role="3cqZAo" node="29" resolve="SimpleEditorDeclaration" />
               <ref role="1PxDUh" node="26" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="29" resolve="SimpleEditorDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="z" role="3KbHQx">
@@ -508,8 +508,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1w" role="3Kbmr1">
-              <ref role="3cqZAo" node="2a" resolve="SimplePropertyReference" />
               <ref role="1PxDUh" node="26" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2a" resolve="SimplePropertyReference" />
             </node>
           </node>
         </node>
@@ -901,8 +901,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4u" role="3Kbmr1">
-              <ref role="3cqZAo" node="28" resolve="EditorAspectDeclaration" />
               <ref role="1PxDUh" node="26" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="28" resolve="EditorAspectDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="4p" role="3KbHQx">
@@ -914,8 +914,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4y" role="3Kbmr1">
-              <ref role="3cqZAo" node="29" resolve="SimpleEditorDeclaration" />
               <ref role="1PxDUh" node="26" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="29" resolve="SimpleEditorDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="4q" role="3KbHQx">
@@ -927,8 +927,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4A" role="3Kbmr1">
-              <ref role="3cqZAo" node="2a" resolve="SimplePropertyReference" />
               <ref role="1PxDUh" node="26" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2a" resolve="SimplePropertyReference" />
             </node>
           </node>
           <node concept="2OqwBi" id="4r" role="3KbGdf">

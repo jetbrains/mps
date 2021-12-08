@@ -381,8 +381,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="W" role="3Kbmr1">
-              <ref role="3cqZAo" node="4j" resolve="ConceptVCSDescriptor" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4j" resolve="ConceptVCSDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="L" role="3KbHQx">
@@ -432,8 +432,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1l" role="3Kbmr1">
-              <ref role="3cqZAo" node="4k" resolve="FeatureVCSDescriptor" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4k" resolve="FeatureVCSDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="M" role="3KbHQx">
@@ -522,8 +522,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1D" role="3Kbmr1">
-              <ref role="3cqZAo" node="4l" resolve="LinkVCSDescriptor" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4l" resolve="LinkVCSDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="N" role="3KbHQx">
@@ -573,8 +573,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="28" role="3Kbmr1">
-              <ref role="3cqZAo" node="4m" resolve="MergeStrategy" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4m" resolve="MergeStrategy" />
             </node>
           </node>
           <node concept="3KbdKl" id="O" role="3KbHQx">
@@ -639,8 +639,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2s" role="3Kbmr1">
-              <ref role="3cqZAo" node="4n" resolve="OursStrategy" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4n" resolve="OursStrategy" />
             </node>
           </node>
           <node concept="3KbdKl" id="P" role="3KbHQx">
@@ -729,8 +729,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2P" role="3Kbmr1">
-              <ref role="3cqZAo" node="4o" resolve="PropertyVCSDescriptor" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4o" resolve="PropertyVCSDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="Q" role="3KbHQx">
@@ -795,8 +795,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3k" role="3Kbmr1">
-              <ref role="3cqZAo" node="4p" resolve="TheirsStrategy" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4p" resolve="TheirsStrategy" />
             </node>
           </node>
           <node concept="3KbdKl" id="R" role="3KbHQx">
@@ -872,8 +872,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3H" role="3Kbmr1">
-              <ref role="3cqZAo" node="4q" resolve="VCSHints" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4q" resolve="VCSHints" />
             </node>
           </node>
         </node>
@@ -1475,8 +1475,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7T" role="3Kbmr1">
-              <ref role="3cqZAo" node="4j" resolve="ConceptVCSDescriptor" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4j" resolve="ConceptVCSDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="7J" role="3KbHQx">
@@ -1488,8 +1488,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7X" role="3Kbmr1">
-              <ref role="3cqZAo" node="4k" resolve="FeatureVCSDescriptor" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4k" resolve="FeatureVCSDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="7K" role="3KbHQx">
@@ -1501,8 +1501,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="81" role="3Kbmr1">
-              <ref role="3cqZAo" node="4l" resolve="LinkVCSDescriptor" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4l" resolve="LinkVCSDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="7L" role="3KbHQx">
@@ -1514,8 +1514,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="85" role="3Kbmr1">
-              <ref role="3cqZAo" node="4m" resolve="MergeStrategy" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4m" resolve="MergeStrategy" />
             </node>
           </node>
           <node concept="3KbdKl" id="7M" role="3KbHQx">
@@ -1527,8 +1527,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="89" role="3Kbmr1">
-              <ref role="3cqZAo" node="4n" resolve="OursStrategy" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4n" resolve="OursStrategy" />
             </node>
           </node>
           <node concept="3KbdKl" id="7N" role="3KbHQx">
@@ -1540,8 +1540,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8d" role="3Kbmr1">
-              <ref role="3cqZAo" node="4o" resolve="PropertyVCSDescriptor" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4o" resolve="PropertyVCSDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="7O" role="3KbHQx">
@@ -1553,8 +1553,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8h" role="3Kbmr1">
-              <ref role="3cqZAo" node="4p" resolve="TheirsStrategy" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4p" resolve="TheirsStrategy" />
             </node>
           </node>
           <node concept="3KbdKl" id="7P" role="3KbHQx">
@@ -1566,8 +1566,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8l" role="3Kbmr1">
-              <ref role="3cqZAo" node="4q" resolve="VCSHints" />
               <ref role="1PxDUh" node="4h" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4q" resolve="VCSHints" />
             </node>
           </node>
           <node concept="2OqwBi" id="7Q" role="3KbGdf">

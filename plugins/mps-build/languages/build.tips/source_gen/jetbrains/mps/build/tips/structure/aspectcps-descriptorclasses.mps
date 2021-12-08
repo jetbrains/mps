@@ -334,8 +334,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="G" role="3Kbmr1">
-              <ref role="3cqZAo" node="2n" resolve="MPSTipsAndTricks" />
               <ref role="1PxDUh" node="2l" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2n" resolve="MPSTipsAndTricks" />
             </node>
           </node>
           <node concept="3KbdKl" id="_" role="3KbHQx">
@@ -400,8 +400,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="14" role="3Kbmr1">
-              <ref role="3cqZAo" node="2o" resolve="MPSTipsAndTricks_Image" />
               <ref role="1PxDUh" node="2l" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2o" resolve="MPSTipsAndTricks_Image" />
             </node>
           </node>
           <node concept="3KbdKl" id="A" role="3KbHQx">
@@ -466,8 +466,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1t" role="3Kbmr1">
-              <ref role="3cqZAo" node="2p" resolve="MPSTipsAndTricks_Text" />
               <ref role="1PxDUh" node="2l" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2p" resolve="MPSTipsAndTricks_Text" />
             </node>
           </node>
           <node concept="3KbdKl" id="B" role="3KbHQx">
@@ -528,8 +528,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Q" role="3Kbmr1">
-              <ref role="3cqZAo" node="2q" resolve="MPSTipsAndTricks_Tip" />
               <ref role="1PxDUh" node="2l" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2q" resolve="MPSTipsAndTricks_Tip" />
             </node>
           </node>
         </node>
@@ -982,8 +982,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="54" role="3Kbmr1">
-              <ref role="3cqZAo" node="2n" resolve="MPSTipsAndTricks" />
               <ref role="1PxDUh" node="2l" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2n" resolve="MPSTipsAndTricks" />
             </node>
           </node>
           <node concept="3KbdKl" id="4Y" role="3KbHQx">
@@ -995,8 +995,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="58" role="3Kbmr1">
-              <ref role="3cqZAo" node="2o" resolve="MPSTipsAndTricks_Image" />
               <ref role="1PxDUh" node="2l" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2o" resolve="MPSTipsAndTricks_Image" />
             </node>
           </node>
           <node concept="3KbdKl" id="4Z" role="3KbHQx">
@@ -1008,8 +1008,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5c" role="3Kbmr1">
-              <ref role="3cqZAo" node="2p" resolve="MPSTipsAndTricks_Text" />
               <ref role="1PxDUh" node="2l" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2p" resolve="MPSTipsAndTricks_Text" />
             </node>
           </node>
           <node concept="3KbdKl" id="50" role="3KbHQx">
@@ -1021,8 +1021,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5g" role="3Kbmr1">
-              <ref role="3cqZAo" node="2q" resolve="MPSTipsAndTricks_Tip" />
               <ref role="1PxDUh" node="2l" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2q" resolve="MPSTipsAndTricks_Tip" />
             </node>
           </node>
           <node concept="2OqwBi" id="51" role="3KbGdf">

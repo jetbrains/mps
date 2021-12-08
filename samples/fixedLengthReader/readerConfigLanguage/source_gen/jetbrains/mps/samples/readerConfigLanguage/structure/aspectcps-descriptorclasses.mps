@@ -324,8 +324,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="C" role="3Kbmr1">
-              <ref role="3cqZAo" node="1T" resolve="Field" />
               <ref role="1PxDUh" node="1R" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1T" resolve="Field" />
             </node>
           </node>
           <node concept="3KbdKl" id="y" role="3KbHQx">
@@ -386,8 +386,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="10" role="3Kbmr1">
-              <ref role="3cqZAo" node="1U" resolve="Mapping" />
               <ref role="1PxDUh" node="1R" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1U" resolve="Mapping" />
             </node>
           </node>
           <node concept="3KbdKl" id="z" role="3KbHQx">
@@ -448,8 +448,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1o" role="3Kbmr1">
-              <ref role="3cqZAo" node="1V" resolve="ReaderConfiguration" />
               <ref role="1PxDUh" node="1R" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1V" resolve="ReaderConfiguration" />
             </node>
           </node>
         </node>
@@ -841,8 +841,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4f" role="3Kbmr1">
-              <ref role="3cqZAo" node="1T" resolve="Field" />
               <ref role="1PxDUh" node="1R" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1T" resolve="Field" />
             </node>
           </node>
           <node concept="3KbdKl" id="4a" role="3KbHQx">
@@ -854,8 +854,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4j" role="3Kbmr1">
-              <ref role="3cqZAo" node="1U" resolve="Mapping" />
               <ref role="1PxDUh" node="1R" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1U" resolve="Mapping" />
             </node>
           </node>
           <node concept="3KbdKl" id="4b" role="3KbHQx">
@@ -867,8 +867,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4n" role="3Kbmr1">
-              <ref role="3cqZAo" node="1V" resolve="ReaderConfiguration" />
               <ref role="1PxDUh" node="1R" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1V" resolve="ReaderConfiguration" />
             </node>
           </node>
           <node concept="2OqwBi" id="4c" role="3KbGdf">

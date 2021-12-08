@@ -353,8 +353,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="S" role="3Kbmr1">
-              <ref role="3cqZAo" node="3P" resolve="AbstractStateMachineElement" />
               <ref role="1PxDUh" node="3N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3P" resolve="AbstractStateMachineElement" />
             </node>
           </node>
           <node concept="3KbdKl" id="I" role="3KbHQx">
@@ -415,8 +415,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1c" role="3Kbmr1">
-              <ref role="3cqZAo" node="3Q" resolve="Event" />
               <ref role="1PxDUh" node="3N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3Q" resolve="Event" />
             </node>
           </node>
           <node concept="3KbdKl" id="J" role="3KbHQx">
@@ -505,8 +505,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1$" role="3Kbmr1">
-              <ref role="3cqZAo" node="3R" resolve="EventReference" />
               <ref role="1PxDUh" node="3N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3R" resolve="EventReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="K" role="3KbHQx">
@@ -567,8 +567,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="23" role="3Kbmr1">
-              <ref role="3cqZAo" node="3S" resolve="State" />
               <ref role="1PxDUh" node="3N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3S" resolve="State" />
             </node>
           </node>
           <node concept="3KbdKl" id="L" role="3KbHQx">
@@ -633,8 +633,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2r" role="3Kbmr1">
-              <ref role="3cqZAo" node="3T" resolve="StateMachine" />
               <ref role="1PxDUh" node="3N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3T" resolve="StateMachine" />
             </node>
           </node>
           <node concept="3KbdKl" id="M" role="3KbHQx">
@@ -723,8 +723,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2O" role="3Kbmr1">
-              <ref role="3cqZAo" node="3U" resolve="StateReference" />
               <ref role="1PxDUh" node="3N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3U" resolve="StateReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="N" role="3KbHQx">
@@ -789,8 +789,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3j" role="3Kbmr1">
-              <ref role="3cqZAo" node="3V" resolve="Transition" />
               <ref role="1PxDUh" node="3N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3V" resolve="Transition" />
             </node>
           </node>
         </node>
@@ -1350,8 +1350,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7b" role="3Kbmr1">
-              <ref role="3cqZAo" node="3P" resolve="AbstractStateMachineElement" />
               <ref role="1PxDUh" node="3N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3P" resolve="AbstractStateMachineElement" />
             </node>
           </node>
           <node concept="3KbdKl" id="72" role="3KbHQx">
@@ -1363,8 +1363,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7f" role="3Kbmr1">
-              <ref role="3cqZAo" node="3Q" resolve="Event" />
               <ref role="1PxDUh" node="3N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3Q" resolve="Event" />
             </node>
           </node>
           <node concept="3KbdKl" id="73" role="3KbHQx">
@@ -1376,8 +1376,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7j" role="3Kbmr1">
-              <ref role="3cqZAo" node="3R" resolve="EventReference" />
               <ref role="1PxDUh" node="3N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3R" resolve="EventReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="74" role="3KbHQx">
@@ -1389,8 +1389,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7n" role="3Kbmr1">
-              <ref role="3cqZAo" node="3S" resolve="State" />
               <ref role="1PxDUh" node="3N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3S" resolve="State" />
             </node>
           </node>
           <node concept="3KbdKl" id="75" role="3KbHQx">
@@ -1402,8 +1402,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7r" role="3Kbmr1">
-              <ref role="3cqZAo" node="3T" resolve="StateMachine" />
               <ref role="1PxDUh" node="3N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3T" resolve="StateMachine" />
             </node>
           </node>
           <node concept="3KbdKl" id="76" role="3KbHQx">
@@ -1415,8 +1415,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7v" role="3Kbmr1">
-              <ref role="3cqZAo" node="3U" resolve="StateReference" />
               <ref role="1PxDUh" node="3N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3U" resolve="StateReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="77" role="3KbHQx">
@@ -1428,8 +1428,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7z" role="3Kbmr1">
-              <ref role="3cqZAo" node="3V" resolve="Transition" />
               <ref role="1PxDUh" node="3N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3V" resolve="Transition" />
             </node>
           </node>
           <node concept="2OqwBi" id="78" role="3KbGdf">

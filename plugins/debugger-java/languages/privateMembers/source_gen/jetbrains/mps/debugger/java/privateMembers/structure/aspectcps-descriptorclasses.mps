@@ -360,8 +360,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="G" role="3Kbmr1">
-              <ref role="3cqZAo" node="2_" resolve="PrivateFieldReferenceOperation" />
               <ref role="1PxDUh" node="2z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2_" resolve="PrivateFieldReferenceOperation" />
             </node>
           </node>
           <node concept="3KbdKl" id="_" role="3KbHQx">
@@ -450,8 +450,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1b" role="3Kbmr1">
-              <ref role="3cqZAo" node="2A" resolve="PrivateInstanceMethodCallOperation" />
               <ref role="1PxDUh" node="2z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2A" resolve="PrivateInstanceMethodCallOperation" />
             </node>
           </node>
           <node concept="3KbdKl" id="A" role="3KbHQx">
@@ -516,8 +516,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1E" role="3Kbmr1">
-              <ref role="3cqZAo" node="2B" resolve="PrivateStaticFieldReference" />
               <ref role="1PxDUh" node="2z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2B" resolve="PrivateStaticFieldReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="B" role="3KbHQx">
@@ -582,8 +582,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="23" role="3Kbmr1">
-              <ref role="3cqZAo" node="2C" resolve="PrivateStaticMethodCall" />
               <ref role="1PxDUh" node="2z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2C" resolve="PrivateStaticMethodCall" />
             </node>
           </node>
         </node>
@@ -1017,8 +1017,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5b" role="3Kbmr1">
-              <ref role="3cqZAo" node="2_" resolve="PrivateFieldReferenceOperation" />
               <ref role="1PxDUh" node="2z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2_" resolve="PrivateFieldReferenceOperation" />
             </node>
           </node>
           <node concept="3KbdKl" id="55" role="3KbHQx">
@@ -1030,8 +1030,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5f" role="3Kbmr1">
-              <ref role="3cqZAo" node="2A" resolve="PrivateInstanceMethodCallOperation" />
               <ref role="1PxDUh" node="2z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2A" resolve="PrivateInstanceMethodCallOperation" />
             </node>
           </node>
           <node concept="3KbdKl" id="56" role="3KbHQx">
@@ -1043,8 +1043,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5j" role="3Kbmr1">
-              <ref role="3cqZAo" node="2B" resolve="PrivateStaticFieldReference" />
               <ref role="1PxDUh" node="2z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2B" resolve="PrivateStaticFieldReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="57" role="3KbHQx">
@@ -1056,8 +1056,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5n" role="3Kbmr1">
-              <ref role="3cqZAo" node="2C" resolve="PrivateStaticMethodCall" />
               <ref role="1PxDUh" node="2z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2C" resolve="PrivateStaticMethodCall" />
             </node>
           </node>
           <node concept="2OqwBi" id="58" role="3KbGdf">

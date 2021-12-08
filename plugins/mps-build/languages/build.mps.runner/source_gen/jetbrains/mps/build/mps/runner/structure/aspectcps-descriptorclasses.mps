@@ -324,8 +324,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="C" role="3Kbmr1">
-              <ref role="3cqZAo" node="27" resolve="BuildSolutionRunnerAspect" />
               <ref role="1PxDUh" node="25" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="27" resolve="BuildSolutionRunnerAspect" />
             </node>
           </node>
           <node concept="3KbdKl" id="y" role="3KbHQx">
@@ -403,8 +403,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="11" role="3Kbmr1">
-              <ref role="3cqZAo" node="28" resolve="BuildSolutionRunnerPlugin" />
               <ref role="1PxDUh" node="25" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="28" resolve="BuildSolutionRunnerPlugin" />
             </node>
           </node>
           <node concept="3KbdKl" id="z" role="3KbHQx">
@@ -493,8 +493,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1v" role="3Kbmr1">
-              <ref role="3cqZAo" node="29" resolve="RequiredPlugin" />
               <ref role="1PxDUh" node="25" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="29" resolve="RequiredPlugin" />
             </node>
           </node>
         </node>
@@ -905,8 +905,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4$" role="3Kbmr1">
-              <ref role="3cqZAo" node="27" resolve="BuildSolutionRunnerAspect" />
               <ref role="1PxDUh" node="25" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="27" resolve="BuildSolutionRunnerAspect" />
             </node>
           </node>
           <node concept="3KbdKl" id="4v" role="3KbHQx">
@@ -918,8 +918,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4C" role="3Kbmr1">
-              <ref role="3cqZAo" node="28" resolve="BuildSolutionRunnerPlugin" />
               <ref role="1PxDUh" node="25" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="28" resolve="BuildSolutionRunnerPlugin" />
             </node>
           </node>
           <node concept="3KbdKl" id="4w" role="3KbHQx">
@@ -931,8 +931,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4G" role="3Kbmr1">
-              <ref role="3cqZAo" node="29" resolve="RequiredPlugin" />
               <ref role="1PxDUh" node="25" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="29" resolve="RequiredPlugin" />
             </node>
           </node>
           <node concept="2OqwBi" id="4x" role="3KbGdf">

@@ -348,8 +348,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="w" role="3Kbmr1">
-              <ref role="3cqZAo" node="1a" resolve="CopyOutcome" />
               <ref role="1PxDUh" node="18" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1a" resolve="CopyOutcome" />
             </node>
           </node>
         </node>
@@ -657,8 +657,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="30" role="3Kbmr1">
-              <ref role="3cqZAo" node="1a" resolve="CopyOutcome" />
               <ref role="1PxDUh" node="18" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1a" resolve="CopyOutcome" />
             </node>
           </node>
           <node concept="2OqwBi" id="2X" role="3KbGdf">

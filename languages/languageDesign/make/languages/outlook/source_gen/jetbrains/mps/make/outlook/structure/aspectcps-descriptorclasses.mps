@@ -300,8 +300,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="w" role="3Kbmr1">
-              <ref role="3cqZAo" node="11" resolve="Outlook" />
               <ref role="1PxDUh" node="Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="11" resolve="Outlook" />
             </node>
           </node>
         </node>
@@ -628,8 +628,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2Y" role="3Kbmr1">
-              <ref role="3cqZAo" node="11" resolve="Outlook" />
               <ref role="1PxDUh" node="Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="11" resolve="Outlook" />
             </node>
           </node>
           <node concept="2OqwBi" id="2V" role="3KbGdf">

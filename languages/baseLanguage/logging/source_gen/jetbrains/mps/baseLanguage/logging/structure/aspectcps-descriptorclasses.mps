@@ -343,8 +343,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="G" role="3Kbmr1">
-              <ref role="3cqZAo" node="6a" resolve="IMessage" />
               <ref role="1PxDUh" node="68" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6a" resolve="IMessage" />
             </node>
           </node>
           <node concept="3KbdKl" id="_" role="3KbHQx">
@@ -413,8 +413,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="10" role="3Kbmr1">
-              <ref role="3cqZAo" node="6b" resolve="LogLowLevelStatement" />
               <ref role="1PxDUh" node="68" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6b" resolve="LogLowLevelStatement" />
             </node>
           </node>
           <node concept="3KbdKl" id="A" role="3KbHQx">
@@ -483,8 +483,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1q" role="3Kbmr1">
-              <ref role="3cqZAo" node="6c" resolve="MsgStatement" />
               <ref role="1PxDUh" node="68" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6c" resolve="MsgStatement" />
             </node>
           </node>
           <node concept="3KbdKl" id="B" role="3KbHQx">
@@ -569,8 +569,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1O" role="3Kbmr1">
-              <ref role="3cqZAo" node="6d" resolve="PrintStatement" />
               <ref role="1PxDUh" node="68" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6d" resolve="PrintStatement" />
             </node>
           </node>
         </node>
@@ -1890,8 +1890,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8W" role="3Kbmr1">
-              <ref role="3cqZAo" node="6a" resolve="IMessage" />
               <ref role="1PxDUh" node="68" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6a" resolve="IMessage" />
             </node>
           </node>
           <node concept="3KbdKl" id="8Q" role="3KbHQx">
@@ -1903,8 +1903,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="90" role="3Kbmr1">
-              <ref role="3cqZAo" node="6b" resolve="LogLowLevelStatement" />
               <ref role="1PxDUh" node="68" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6b" resolve="LogLowLevelStatement" />
             </node>
           </node>
           <node concept="3KbdKl" id="8R" role="3KbHQx">
@@ -1916,8 +1916,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="94" role="3Kbmr1">
-              <ref role="3cqZAo" node="6c" resolve="MsgStatement" />
               <ref role="1PxDUh" node="68" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6c" resolve="MsgStatement" />
             </node>
           </node>
           <node concept="3KbdKl" id="8S" role="3KbHQx">
@@ -1929,8 +1929,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="98" role="3Kbmr1">
-              <ref role="3cqZAo" node="6d" resolve="PrintStatement" />
               <ref role="1PxDUh" node="68" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6d" resolve="PrintStatement" />
             </node>
           </node>
           <node concept="2OqwBi" id="8T" role="3KbGdf">

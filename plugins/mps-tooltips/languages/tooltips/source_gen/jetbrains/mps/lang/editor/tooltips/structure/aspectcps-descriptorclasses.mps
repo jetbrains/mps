@@ -330,8 +330,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$" role="3Kbmr1">
-              <ref role="3cqZAo" node="1w" resolve="AuxEditorCellWithRefToGeneratedHint" />
               <ref role="1PxDUh" node="1u" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1w" resolve="AuxEditorCellWithRefToGeneratedHint" />
             </node>
           </node>
           <node concept="3KbdKl" id="v" role="3KbHQx">
@@ -396,8 +396,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="Y" role="3Kbmr1">
-              <ref role="3cqZAo" node="1x" resolve="CellModel_Tooltip" />
               <ref role="1PxDUh" node="1u" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1x" resolve="CellModel_Tooltip" />
             </node>
           </node>
         </node>
@@ -766,8 +766,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3H" role="3Kbmr1">
-              <ref role="3cqZAo" node="1w" resolve="AuxEditorCellWithRefToGeneratedHint" />
               <ref role="1PxDUh" node="1u" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1w" resolve="AuxEditorCellWithRefToGeneratedHint" />
             </node>
           </node>
           <node concept="3KbdKl" id="3D" role="3KbHQx">
@@ -779,8 +779,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3L" role="3Kbmr1">
-              <ref role="3cqZAo" node="1x" resolve="CellModel_Tooltip" />
               <ref role="1PxDUh" node="1u" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1x" resolve="CellModel_Tooltip" />
             </node>
           </node>
           <node concept="2OqwBi" id="3E" role="3KbGdf">

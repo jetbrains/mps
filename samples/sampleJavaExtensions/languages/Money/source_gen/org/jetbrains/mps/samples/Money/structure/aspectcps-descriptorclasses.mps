@@ -398,8 +398,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="14" role="3Kbmr1">
-              <ref role="3cqZAo" node="56" resolve="ConvertTo" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="56" resolve="ConvertTo" />
             </node>
           </node>
           <node concept="3KbdKl" id="R" role="3KbHQx">
@@ -464,8 +464,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1t" role="3Kbmr1">
-              <ref role="3cqZAo" node="57" resolve="CurrencyDefTable" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="57" resolve="CurrencyDefTable" />
             </node>
           </node>
           <node concept="3KbdKl" id="S" role="3KbHQx">
@@ -526,8 +526,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Q" role="3Kbmr1">
-              <ref role="3cqZAo" node="58" resolve="CurrencyUnit" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="58" resolve="CurrencyUnit" />
             </node>
           </node>
           <node concept="3KbdKl" id="T" role="3KbHQx">
@@ -592,8 +592,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2e" role="3Kbmr1">
-              <ref role="3cqZAo" node="59" resolve="CurrentStockPrice" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="59" resolve="CurrentStockPrice" />
             </node>
           </node>
           <node concept="3KbdKl" id="U" role="3KbHQx">
@@ -658,8 +658,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2B" role="3Kbmr1">
-              <ref role="3cqZAo" node="5a" resolve="GetAmount" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="5a" resolve="GetAmount" />
             </node>
           </node>
           <node concept="3KbdKl" id="V" role="3KbHQx">
@@ -724,8 +724,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="30" role="3Kbmr1">
-              <ref role="3cqZAo" node="5b" resolve="GetCurrency" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="5b" resolve="GetCurrency" />
             </node>
           </node>
           <node concept="3KbdKl" id="W" role="3KbHQx">
@@ -790,8 +790,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3p" role="3Kbmr1">
-              <ref role="3cqZAo" node="5c" resolve="MoneyLiteral" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="5c" resolve="MoneyLiteral" />
             </node>
           </node>
           <node concept="3KbdKl" id="X" role="3KbHQx">
@@ -856,8 +856,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3M" role="3Kbmr1">
-              <ref role="3cqZAo" node="5d" resolve="MoneyType" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="5d" resolve="MoneyType" />
             </node>
           </node>
           <node concept="3KbdKl" id="Y" role="3KbHQx">
@@ -922,8 +922,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4b" role="3Kbmr1">
-              <ref role="3cqZAo" node="5e" resolve="MovingAverage" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="5e" resolve="MovingAverage" />
             </node>
           </node>
           <node concept="3KbdKl" id="Z" role="3KbHQx">
@@ -988,8 +988,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4$" role="3Kbmr1">
-              <ref role="3cqZAo" node="5f" resolve="StockSymbol" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="5f" resolve="StockSymbol" />
             </node>
           </node>
         </node>
@@ -1694,8 +1694,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9j" role="3Kbmr1">
-              <ref role="3cqZAo" node="56" resolve="ConvertTo" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="56" resolve="ConvertTo" />
             </node>
           </node>
           <node concept="3KbdKl" id="97" role="3KbHQx">
@@ -1707,8 +1707,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9n" role="3Kbmr1">
-              <ref role="3cqZAo" node="57" resolve="CurrencyDefTable" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="57" resolve="CurrencyDefTable" />
             </node>
           </node>
           <node concept="3KbdKl" id="98" role="3KbHQx">
@@ -1720,8 +1720,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9r" role="3Kbmr1">
-              <ref role="3cqZAo" node="58" resolve="CurrencyUnit" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="58" resolve="CurrencyUnit" />
             </node>
           </node>
           <node concept="3KbdKl" id="99" role="3KbHQx">
@@ -1733,8 +1733,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9v" role="3Kbmr1">
-              <ref role="3cqZAo" node="59" resolve="CurrentStockPrice" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="59" resolve="CurrentStockPrice" />
             </node>
           </node>
           <node concept="3KbdKl" id="9a" role="3KbHQx">
@@ -1746,8 +1746,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9z" role="3Kbmr1">
-              <ref role="3cqZAo" node="5a" resolve="GetAmount" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="5a" resolve="GetAmount" />
             </node>
           </node>
           <node concept="3KbdKl" id="9b" role="3KbHQx">
@@ -1759,8 +1759,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9B" role="3Kbmr1">
-              <ref role="3cqZAo" node="5b" resolve="GetCurrency" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="5b" resolve="GetCurrency" />
             </node>
           </node>
           <node concept="3KbdKl" id="9c" role="3KbHQx">
@@ -1772,8 +1772,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9F" role="3Kbmr1">
-              <ref role="3cqZAo" node="5c" resolve="MoneyLiteral" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="5c" resolve="MoneyLiteral" />
             </node>
           </node>
           <node concept="3KbdKl" id="9d" role="3KbHQx">
@@ -1785,8 +1785,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9J" role="3Kbmr1">
-              <ref role="3cqZAo" node="5d" resolve="MoneyType" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="5d" resolve="MoneyType" />
             </node>
           </node>
           <node concept="3KbdKl" id="9e" role="3KbHQx">
@@ -1798,8 +1798,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9N" role="3Kbmr1">
-              <ref role="3cqZAo" node="5e" resolve="MovingAverage" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="5e" resolve="MovingAverage" />
             </node>
           </node>
           <node concept="3KbdKl" id="9f" role="3KbHQx">
@@ -1811,8 +1811,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9R" role="3Kbmr1">
-              <ref role="3cqZAo" node="5f" resolve="StockSymbol" />
               <ref role="1PxDUh" node="54" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="5f" resolve="StockSymbol" />
             </node>
           </node>
           <node concept="2OqwBi" id="9g" role="3KbGdf">

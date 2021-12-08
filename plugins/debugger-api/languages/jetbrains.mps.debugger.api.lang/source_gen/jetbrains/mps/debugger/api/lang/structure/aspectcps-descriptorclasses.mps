@@ -428,8 +428,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1g" role="3Kbmr1">
-              <ref role="3cqZAo" node="6$" resolve="BreakpointCreator" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6$" resolve="BreakpointCreator" />
             </node>
           </node>
           <node concept="3KbdKl" id="10" role="3KbHQx">
@@ -494,8 +494,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1D" role="3Kbmr1">
-              <ref role="3cqZAo" node="6_" resolve="BreakpointableNodeItem" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6_" resolve="BreakpointableNodeItem" />
             </node>
           </node>
           <node concept="3KbdKl" id="11" role="3KbHQx">
@@ -584,8 +584,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="22" role="3Kbmr1">
-              <ref role="3cqZAo" node="6A" resolve="ConceptDeclarationReference" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6A" resolve="ConceptDeclarationReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="12" role="3KbHQx">
@@ -650,8 +650,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2x" role="3Kbmr1">
-              <ref role="3cqZAo" node="6B" resolve="ConceptFunctionParameter_Concept" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6B" resolve="ConceptFunctionParameter_Concept" />
             </node>
           </node>
           <node concept="3KbdKl" id="13" role="3KbHQx">
@@ -716,8 +716,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2U" role="3Kbmr1">
-              <ref role="3cqZAo" node="6C" resolve="ConceptFunctionParameter_Debug_Project" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6C" resolve="ConceptFunctionParameter_Debug_Project" />
             </node>
           </node>
           <node concept="3KbdKl" id="14" role="3KbHQx">
@@ -782,8 +782,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3j" role="3Kbmr1">
-              <ref role="3cqZAo" node="6D" resolve="ConceptFunctionParameter_DebuggableNode" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6D" resolve="ConceptFunctionParameter_DebuggableNode" />
             </node>
           </node>
           <node concept="3KbdKl" id="15" role="3KbHQx">
@@ -848,8 +848,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3G" role="3Kbmr1">
-              <ref role="3cqZAo" node="6E" resolve="ConceptFunction_CreateBreakpoint" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6E" resolve="ConceptFunction_CreateBreakpoint" />
             </node>
           </node>
           <node concept="3KbdKl" id="16" role="3KbHQx">
@@ -914,8 +914,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="45" role="3Kbmr1">
-              <ref role="3cqZAo" node="6F" resolve="ConceptFunction_IsApplicableBreakpoint" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6F" resolve="ConceptFunction_IsApplicableBreakpoint" />
             </node>
           </node>
           <node concept="3KbdKl" id="17" role="3KbHQx">
@@ -980,8 +980,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4u" role="3Kbmr1">
-              <ref role="3cqZAo" node="6G" resolve="CreateBreakpointOperation" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6G" resolve="CreateBreakpointOperation" />
             </node>
           </node>
           <node concept="3KbdKl" id="18" role="3KbHQx">
@@ -1046,8 +1046,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4R" role="3Kbmr1">
-              <ref role="3cqZAo" node="6H" resolve="DebuggerConfiguration" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6H" resolve="DebuggerConfiguration" />
             </node>
           </node>
           <node concept="3KbdKl" id="19" role="3KbHQx">
@@ -1112,8 +1112,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5g" role="3Kbmr1">
-              <ref role="3cqZAo" node="6I" resolve="DebuggerReference" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6I" resolve="DebuggerReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="1a" role="3KbHQx">
@@ -1178,8 +1178,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5D" role="3Kbmr1">
-              <ref role="3cqZAo" node="6J" resolve="DebuggerType" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6J" resolve="DebuggerType" />
             </node>
           </node>
           <node concept="3KbdKl" id="1b" role="3KbHQx">
@@ -1244,8 +1244,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="62" role="3Kbmr1">
-              <ref role="3cqZAo" node="6K" resolve="GetDebuggerSettings_Function" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6K" resolve="GetDebuggerSettings_Function" />
             </node>
           </node>
         </node>
@@ -2095,8 +2095,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bC" role="3Kbmr1">
-              <ref role="3cqZAo" node="6$" resolve="BreakpointCreator" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6$" resolve="BreakpointCreator" />
             </node>
           </node>
           <node concept="3KbdKl" id="bp" role="3KbHQx">
@@ -2108,8 +2108,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bG" role="3Kbmr1">
-              <ref role="3cqZAo" node="6_" resolve="BreakpointableNodeItem" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6_" resolve="BreakpointableNodeItem" />
             </node>
           </node>
           <node concept="3KbdKl" id="bq" role="3KbHQx">
@@ -2121,8 +2121,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bK" role="3Kbmr1">
-              <ref role="3cqZAo" node="6A" resolve="ConceptDeclarationReference" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6A" resolve="ConceptDeclarationReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="br" role="3KbHQx">
@@ -2134,8 +2134,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bO" role="3Kbmr1">
-              <ref role="3cqZAo" node="6B" resolve="ConceptFunctionParameter_Concept" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6B" resolve="ConceptFunctionParameter_Concept" />
             </node>
           </node>
           <node concept="3KbdKl" id="bs" role="3KbHQx">
@@ -2147,8 +2147,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bS" role="3Kbmr1">
-              <ref role="3cqZAo" node="6C" resolve="ConceptFunctionParameter_Debug_Project" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6C" resolve="ConceptFunctionParameter_Debug_Project" />
             </node>
           </node>
           <node concept="3KbdKl" id="bt" role="3KbHQx">
@@ -2160,8 +2160,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bW" role="3Kbmr1">
-              <ref role="3cqZAo" node="6D" resolve="ConceptFunctionParameter_DebuggableNode" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6D" resolve="ConceptFunctionParameter_DebuggableNode" />
             </node>
           </node>
           <node concept="3KbdKl" id="bu" role="3KbHQx">
@@ -2173,8 +2173,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="c0" role="3Kbmr1">
-              <ref role="3cqZAo" node="6E" resolve="ConceptFunction_CreateBreakpoint" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6E" resolve="ConceptFunction_CreateBreakpoint" />
             </node>
           </node>
           <node concept="3KbdKl" id="bv" role="3KbHQx">
@@ -2186,8 +2186,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="c4" role="3Kbmr1">
-              <ref role="3cqZAo" node="6F" resolve="ConceptFunction_IsApplicableBreakpoint" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6F" resolve="ConceptFunction_IsApplicableBreakpoint" />
             </node>
           </node>
           <node concept="3KbdKl" id="bw" role="3KbHQx">
@@ -2199,8 +2199,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="c8" role="3Kbmr1">
-              <ref role="3cqZAo" node="6G" resolve="CreateBreakpointOperation" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6G" resolve="CreateBreakpointOperation" />
             </node>
           </node>
           <node concept="3KbdKl" id="bx" role="3KbHQx">
@@ -2212,8 +2212,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cc" role="3Kbmr1">
-              <ref role="3cqZAo" node="6H" resolve="DebuggerConfiguration" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6H" resolve="DebuggerConfiguration" />
             </node>
           </node>
           <node concept="3KbdKl" id="by" role="3KbHQx">
@@ -2225,8 +2225,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="cg" role="3Kbmr1">
-              <ref role="3cqZAo" node="6I" resolve="DebuggerReference" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6I" resolve="DebuggerReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="bz" role="3KbHQx">
@@ -2238,8 +2238,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ck" role="3Kbmr1">
-              <ref role="3cqZAo" node="6J" resolve="DebuggerType" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6J" resolve="DebuggerType" />
             </node>
           </node>
           <node concept="3KbdKl" id="b$" role="3KbHQx">
@@ -2251,8 +2251,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="co" role="3Kbmr1">
-              <ref role="3cqZAo" node="6K" resolve="GetDebuggerSettings_Function" />
               <ref role="1PxDUh" node="6y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6K" resolve="GetDebuggerSettings_Function" />
             </node>
           </node>
           <node concept="2OqwBi" id="b_" role="3KbGdf">

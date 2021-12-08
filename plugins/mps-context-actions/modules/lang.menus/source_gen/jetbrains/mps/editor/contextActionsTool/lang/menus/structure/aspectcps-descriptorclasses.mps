@@ -361,8 +361,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="K" role="3Kbmr1">
-              <ref role="3cqZAo" node="35" resolve="QueryFunction_TransformationMenu_Icon" />
               <ref role="1PxDUh" node="33" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="35" resolve="QueryFunction_TransformationMenu_Icon" />
             </node>
           </node>
           <node concept="3KbdKl" id="C" role="3KbHQx">
@@ -440,8 +440,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1e" role="3Kbmr1">
-              <ref role="3cqZAo" node="36" resolve="QueryFunction_TransformationMenu_Tooltip" />
               <ref role="1PxDUh" node="33" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="36" resolve="QueryFunction_TransformationMenu_Tooltip" />
             </node>
           </node>
           <node concept="3KbdKl" id="D" role="3KbHQx">
@@ -506,8 +506,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1G" role="3Kbmr1">
-              <ref role="3cqZAo" node="37" resolve="TransformationFeature_Icon" />
               <ref role="1PxDUh" node="33" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="37" resolve="TransformationFeature_Icon" />
             </node>
           </node>
           <node concept="3KbdKl" id="E" role="3KbHQx">
@@ -572,8 +572,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="25" role="3Kbmr1">
-              <ref role="3cqZAo" node="38" resolve="TransformationFeature_Tooltip" />
               <ref role="1PxDUh" node="33" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="38" resolve="TransformationFeature_Tooltip" />
             </node>
           </node>
           <node concept="3KbdKl" id="F" role="3KbHQx">
@@ -651,8 +651,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2u" role="3Kbmr1">
-              <ref role="3cqZAo" node="39" resolve="TransformationLocation_ContextActionsTool" />
               <ref role="1PxDUh" node="33" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="39" resolve="TransformationLocation_ContextActionsTool" />
             </node>
           </node>
         </node>
@@ -1128,8 +1128,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5V" role="3Kbmr1">
-              <ref role="3cqZAo" node="35" resolve="QueryFunction_TransformationMenu_Icon" />
               <ref role="1PxDUh" node="33" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="35" resolve="QueryFunction_TransformationMenu_Icon" />
             </node>
           </node>
           <node concept="3KbdKl" id="5O" role="3KbHQx">
@@ -1141,8 +1141,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5Z" role="3Kbmr1">
-              <ref role="3cqZAo" node="36" resolve="QueryFunction_TransformationMenu_Tooltip" />
               <ref role="1PxDUh" node="33" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="36" resolve="QueryFunction_TransformationMenu_Tooltip" />
             </node>
           </node>
           <node concept="3KbdKl" id="5P" role="3KbHQx">
@@ -1154,8 +1154,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="63" role="3Kbmr1">
-              <ref role="3cqZAo" node="37" resolve="TransformationFeature_Icon" />
               <ref role="1PxDUh" node="33" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="37" resolve="TransformationFeature_Icon" />
             </node>
           </node>
           <node concept="3KbdKl" id="5Q" role="3KbHQx">
@@ -1167,8 +1167,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="67" role="3Kbmr1">
-              <ref role="3cqZAo" node="38" resolve="TransformationFeature_Tooltip" />
               <ref role="1PxDUh" node="33" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="38" resolve="TransformationFeature_Tooltip" />
             </node>
           </node>
           <node concept="3KbdKl" id="5R" role="3KbHQx">
@@ -1180,8 +1180,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6b" role="3Kbmr1">
-              <ref role="3cqZAo" node="39" resolve="TransformationLocation_ContextActionsTool" />
               <ref role="1PxDUh" node="33" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="39" resolve="TransformationLocation_ContextActionsTool" />
             </node>
           </node>
           <node concept="2OqwBi" id="5S" role="3KbGdf">

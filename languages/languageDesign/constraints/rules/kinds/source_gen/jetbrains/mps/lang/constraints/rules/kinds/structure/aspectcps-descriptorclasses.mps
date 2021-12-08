@@ -312,8 +312,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="w" role="3Kbmr1">
-              <ref role="3cqZAo" node="12" resolve="RuleKind" />
               <ref role="1PxDUh" node="10" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="12" resolve="RuleKind" />
             </node>
           </node>
         </node>
@@ -621,8 +621,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2S" role="3Kbmr1">
-              <ref role="3cqZAo" node="12" resolve="RuleKind" />
               <ref role="1PxDUh" node="10" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="12" resolve="RuleKind" />
             </node>
           </node>
           <node concept="2OqwBi" id="2P" role="3KbGdf">

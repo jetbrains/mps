@@ -397,8 +397,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="10" role="3Kbmr1">
-              <ref role="3cqZAo" node="4y" resolve="ExternalViewFigure" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4y" resolve="ExternalViewFigure" />
             </node>
           </node>
           <node concept="3KbdKl" id="O" role="3KbHQx">
@@ -459,8 +459,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1o" role="3Kbmr1">
-              <ref role="3cqZAo" node="4z" resolve="ExternalViewFigureParameter" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4z" resolve="ExternalViewFigureParameter" />
             </node>
           </node>
           <node concept="3KbdKl" id="P" role="3KbHQx">
@@ -510,8 +510,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1K" role="3Kbmr1">
-              <ref role="3cqZAo" node="4$" resolve="Figure" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4$" resolve="Figure" />
             </node>
           </node>
           <node concept="3KbdKl" id="Q" role="3KbHQx">
@@ -588,8 +588,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="24" role="3Kbmr1">
-              <ref role="3cqZAo" node="4_" resolve="FigureAttribute" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4_" resolve="FigureAttribute" />
             </node>
           </node>
           <node concept="3KbdKl" id="R" role="3KbHQx">
@@ -639,8 +639,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2w" role="3Kbmr1">
-              <ref role="3cqZAo" node="4A" resolve="FigureParameter" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4A" resolve="FigureParameter" />
             </node>
           </node>
           <node concept="3KbdKl" id="S" role="3KbHQx">
@@ -690,8 +690,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2O" role="3Kbmr1">
-              <ref role="3cqZAo" node="4B" resolve="FigureParameterAttribute" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4B" resolve="FigureParameterAttribute" />
             </node>
           </node>
           <node concept="3KbdKl" id="T" role="3KbHQx">
@@ -764,8 +764,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="38" role="3Kbmr1">
-              <ref role="3cqZAo" node="4C" resolve="FigureParameterAttributeField" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4C" resolve="FigureParameterAttributeField" />
             </node>
           </node>
           <node concept="3KbdKl" id="U" role="3KbHQx">
@@ -838,8 +838,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3z" role="3Kbmr1">
-              <ref role="3cqZAo" node="4D" resolve="FigureParameterAttributeMethod" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4D" resolve="FigureParameterAttributeMethod" />
             </node>
           </node>
           <node concept="3KbdKl" id="V" role="3KbHQx">
@@ -912,8 +912,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3Y" role="3Kbmr1">
-              <ref role="3cqZAo" node="4E" resolve="FigureParameterAttributeViewProperty" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4E" resolve="FigureParameterAttributeViewProperty" />
             </node>
           </node>
         </node>
@@ -1557,8 +1557,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8o" role="3Kbmr1">
-              <ref role="3cqZAo" node="4y" resolve="ExternalViewFigure" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4y" resolve="ExternalViewFigure" />
             </node>
           </node>
           <node concept="3KbdKl" id="8d" role="3KbHQx">
@@ -1570,8 +1570,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8s" role="3Kbmr1">
-              <ref role="3cqZAo" node="4z" resolve="ExternalViewFigureParameter" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4z" resolve="ExternalViewFigureParameter" />
             </node>
           </node>
           <node concept="3KbdKl" id="8e" role="3KbHQx">
@@ -1583,8 +1583,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8w" role="3Kbmr1">
-              <ref role="3cqZAo" node="4$" resolve="Figure" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4$" resolve="Figure" />
             </node>
           </node>
           <node concept="3KbdKl" id="8f" role="3KbHQx">
@@ -1596,8 +1596,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8$" role="3Kbmr1">
-              <ref role="3cqZAo" node="4_" resolve="FigureAttribute" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4_" resolve="FigureAttribute" />
             </node>
           </node>
           <node concept="3KbdKl" id="8g" role="3KbHQx">
@@ -1609,8 +1609,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8C" role="3Kbmr1">
-              <ref role="3cqZAo" node="4A" resolve="FigureParameter" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4A" resolve="FigureParameter" />
             </node>
           </node>
           <node concept="3KbdKl" id="8h" role="3KbHQx">
@@ -1622,8 +1622,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8G" role="3Kbmr1">
-              <ref role="3cqZAo" node="4B" resolve="FigureParameterAttribute" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4B" resolve="FigureParameterAttribute" />
             </node>
           </node>
           <node concept="3KbdKl" id="8i" role="3KbHQx">
@@ -1635,8 +1635,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8K" role="3Kbmr1">
-              <ref role="3cqZAo" node="4C" resolve="FigureParameterAttributeField" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4C" resolve="FigureParameterAttributeField" />
             </node>
           </node>
           <node concept="3KbdKl" id="8j" role="3KbHQx">
@@ -1648,8 +1648,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8O" role="3Kbmr1">
-              <ref role="3cqZAo" node="4D" resolve="FigureParameterAttributeMethod" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4D" resolve="FigureParameterAttributeMethod" />
             </node>
           </node>
           <node concept="3KbdKl" id="8k" role="3KbHQx">
@@ -1661,8 +1661,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8S" role="3Kbmr1">
-              <ref role="3cqZAo" node="4E" resolve="FigureParameterAttributeViewProperty" />
               <ref role="1PxDUh" node="4w" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="4E" resolve="FigureParameterAttributeViewProperty" />
             </node>
           </node>
           <node concept="2OqwBi" id="8l" role="3KbGdf">

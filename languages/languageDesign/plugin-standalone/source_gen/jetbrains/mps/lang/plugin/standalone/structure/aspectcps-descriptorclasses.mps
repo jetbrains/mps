@@ -438,8 +438,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1c" role="3Kbmr1">
-              <ref role="3cqZAo" node="6s" resolve="ApplicationPluginDeclaration" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6s" resolve="ApplicationPluginDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="X" role="3KbHQx">
@@ -504,8 +504,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1E" role="3Kbmr1">
-              <ref role="3cqZAo" node="6t" resolve="ApplicationPluginDisposeBlock" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6t" resolve="ApplicationPluginDisposeBlock" />
             </node>
           </node>
           <node concept="3KbdKl" id="Y" role="3KbHQx">
@@ -570,8 +570,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="23" role="3Kbmr1">
-              <ref role="3cqZAo" node="6u" resolve="ApplicationPluginInitBlock" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6u" resolve="ApplicationPluginInitBlock" />
             </node>
           </node>
           <node concept="3KbdKl" id="Z" role="3KbHQx">
@@ -636,8 +636,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2s" role="3Kbmr1">
-              <ref role="3cqZAo" node="6v" resolve="ApplicationPluginType" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6v" resolve="ApplicationPluginType" />
             </node>
           </node>
           <node concept="3KbdKl" id="10" role="3KbHQx">
@@ -726,8 +726,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2P" role="3Kbmr1">
-              <ref role="3cqZAo" node="6w" resolve="GetPreferencesComponentInProjectOperation" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6w" resolve="GetPreferencesComponentInProjectOperation" />
             </node>
           </node>
           <node concept="3KbdKl" id="11" role="3KbHQx">
@@ -816,8 +816,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3k" role="3Kbmr1">
-              <ref role="3cqZAo" node="6x" resolve="GetToolInProjectOperation" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6x" resolve="GetToolInProjectOperation" />
             </node>
           </node>
           <node concept="3KbdKl" id="12" role="3KbHQx">
@@ -895,8 +895,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3N" role="3Kbmr1">
-              <ref role="3cqZAo" node="6y" resolve="PlatformAccessExpression" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6y" resolve="PlatformAccessExpression" />
             </node>
           </node>
           <node concept="3KbdKl" id="13" role="3KbHQx">
@@ -973,8 +973,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4h" role="3Kbmr1">
-              <ref role="3cqZAo" node="6z" resolve="ProjectPluginDeclaration" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6z" resolve="ProjectPluginDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="14" role="3KbHQx">
@@ -1039,8 +1039,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4J" role="3Kbmr1">
-              <ref role="3cqZAo" node="6$" resolve="ProjectPluginDisposeBlock" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6$" resolve="ProjectPluginDisposeBlock" />
             </node>
           </node>
           <node concept="3KbdKl" id="15" role="3KbHQx">
@@ -1105,8 +1105,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="58" role="3Kbmr1">
-              <ref role="3cqZAo" node="6_" resolve="ProjectPluginInitBlock" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6_" resolve="ProjectPluginInitBlock" />
             </node>
           </node>
           <node concept="3KbdKl" id="16" role="3KbHQx">
@@ -1171,8 +1171,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5x" role="3Kbmr1">
-              <ref role="3cqZAo" node="6A" resolve="ProjectPluginType" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6A" resolve="ProjectPluginType" />
             </node>
           </node>
           <node concept="3KbdKl" id="17" role="3KbHQx">
@@ -1237,8 +1237,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5U" role="3Kbmr1">
-              <ref role="3cqZAo" node="6B" resolve="StandalonePluginDescriptor" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6B" resolve="StandalonePluginDescriptor" />
             </node>
           </node>
         </node>
@@ -2084,8 +2084,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bu" role="3Kbmr1">
-              <ref role="3cqZAo" node="6s" resolve="ApplicationPluginDeclaration" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6s" resolve="ApplicationPluginDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="bg" role="3KbHQx">
@@ -2097,8 +2097,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="by" role="3Kbmr1">
-              <ref role="3cqZAo" node="6t" resolve="ApplicationPluginDisposeBlock" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6t" resolve="ApplicationPluginDisposeBlock" />
             </node>
           </node>
           <node concept="3KbdKl" id="bh" role="3KbHQx">
@@ -2110,8 +2110,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bA" role="3Kbmr1">
-              <ref role="3cqZAo" node="6u" resolve="ApplicationPluginInitBlock" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6u" resolve="ApplicationPluginInitBlock" />
             </node>
           </node>
           <node concept="3KbdKl" id="bi" role="3KbHQx">
@@ -2123,8 +2123,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bE" role="3Kbmr1">
-              <ref role="3cqZAo" node="6v" resolve="ApplicationPluginType" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6v" resolve="ApplicationPluginType" />
             </node>
           </node>
           <node concept="3KbdKl" id="bj" role="3KbHQx">
@@ -2136,8 +2136,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bI" role="3Kbmr1">
-              <ref role="3cqZAo" node="6w" resolve="GetPreferencesComponentInProjectOperation" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6w" resolve="GetPreferencesComponentInProjectOperation" />
             </node>
           </node>
           <node concept="3KbdKl" id="bk" role="3KbHQx">
@@ -2149,8 +2149,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bM" role="3Kbmr1">
-              <ref role="3cqZAo" node="6x" resolve="GetToolInProjectOperation" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6x" resolve="GetToolInProjectOperation" />
             </node>
           </node>
           <node concept="3KbdKl" id="bl" role="3KbHQx">
@@ -2162,8 +2162,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bQ" role="3Kbmr1">
-              <ref role="3cqZAo" node="6y" resolve="PlatformAccessExpression" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6y" resolve="PlatformAccessExpression" />
             </node>
           </node>
           <node concept="3KbdKl" id="bm" role="3KbHQx">
@@ -2175,8 +2175,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bU" role="3Kbmr1">
-              <ref role="3cqZAo" node="6z" resolve="ProjectPluginDeclaration" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6z" resolve="ProjectPluginDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="bn" role="3KbHQx">
@@ -2188,8 +2188,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bY" role="3Kbmr1">
-              <ref role="3cqZAo" node="6$" resolve="ProjectPluginDisposeBlock" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6$" resolve="ProjectPluginDisposeBlock" />
             </node>
           </node>
           <node concept="3KbdKl" id="bo" role="3KbHQx">
@@ -2201,8 +2201,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="c2" role="3Kbmr1">
-              <ref role="3cqZAo" node="6_" resolve="ProjectPluginInitBlock" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6_" resolve="ProjectPluginInitBlock" />
             </node>
           </node>
           <node concept="3KbdKl" id="bp" role="3KbHQx">
@@ -2214,8 +2214,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="c6" role="3Kbmr1">
-              <ref role="3cqZAo" node="6A" resolve="ProjectPluginType" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6A" resolve="ProjectPluginType" />
             </node>
           </node>
           <node concept="3KbdKl" id="bq" role="3KbHQx">
@@ -2227,8 +2227,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ca" role="3Kbmr1">
-              <ref role="3cqZAo" node="6B" resolve="StandalonePluginDescriptor" />
               <ref role="1PxDUh" node="6q" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6B" resolve="StandalonePluginDescriptor" />
             </node>
           </node>
           <node concept="2OqwBi" id="br" role="3KbGdf">

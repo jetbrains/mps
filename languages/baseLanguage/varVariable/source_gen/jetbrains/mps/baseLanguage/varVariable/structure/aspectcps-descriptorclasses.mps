@@ -316,8 +316,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$" role="3Kbmr1">
-              <ref role="3cqZAo" node="1z" resolve="VarType" />
               <ref role="1PxDUh" node="1x" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1z" resolve="VarType" />
             </node>
           </node>
           <node concept="3KbdKl" id="v" role="3KbHQx">
@@ -391,8 +391,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="X" role="3Kbmr1">
-              <ref role="3cqZAo" node="1$" resolve="VarVariableDeclaration" />
               <ref role="1PxDUh" node="1x" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1$" resolve="VarVariableDeclaration" />
             </node>
           </node>
         </node>
@@ -742,8 +742,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3D" role="3Kbmr1">
-              <ref role="3cqZAo" node="1z" resolve="VarType" />
               <ref role="1PxDUh" node="1x" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1z" resolve="VarType" />
             </node>
           </node>
           <node concept="3KbdKl" id="3_" role="3KbHQx">
@@ -755,8 +755,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3H" role="3Kbmr1">
-              <ref role="3cqZAo" node="1$" resolve="VarVariableDeclaration" />
               <ref role="1PxDUh" node="1x" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1$" resolve="VarVariableDeclaration" />
             </node>
           </node>
           <node concept="2OqwBi" id="3A" role="3KbGdf">

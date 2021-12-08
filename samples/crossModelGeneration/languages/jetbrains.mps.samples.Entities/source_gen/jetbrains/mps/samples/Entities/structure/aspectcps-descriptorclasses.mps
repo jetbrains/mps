@@ -320,8 +320,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="C" role="3Kbmr1">
-              <ref role="3cqZAo" node="20" resolve="Entity" />
               <ref role="1PxDUh" node="1Y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="20" resolve="Entity" />
             </node>
           </node>
           <node concept="3KbdKl" id="y" role="3KbHQx">
@@ -410,8 +410,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="10" role="3Kbmr1">
-              <ref role="3cqZAo" node="21" resolve="EntityReference" />
               <ref role="1PxDUh" node="1Y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="21" resolve="EntityReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="z" role="3KbHQx">
@@ -472,8 +472,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1v" role="3Kbmr1">
-              <ref role="3cqZAo" node="22" resolve="Relationship" />
               <ref role="1PxDUh" node="1Y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="22" resolve="Relationship" />
             </node>
           </node>
         </node>
@@ -865,8 +865,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4m" role="3Kbmr1">
-              <ref role="3cqZAo" node="20" resolve="Entity" />
               <ref role="1PxDUh" node="1Y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="20" resolve="Entity" />
             </node>
           </node>
           <node concept="3KbdKl" id="4h" role="3KbHQx">
@@ -878,8 +878,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4q" role="3Kbmr1">
-              <ref role="3cqZAo" node="21" resolve="EntityReference" />
               <ref role="1PxDUh" node="1Y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="21" resolve="EntityReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="4i" role="3KbHQx">
@@ -891,8 +891,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4u" role="3Kbmr1">
-              <ref role="3cqZAo" node="22" resolve="Relationship" />
               <ref role="1PxDUh" node="1Y" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="22" resolve="Relationship" />
             </node>
           </node>
           <node concept="2OqwBi" id="4j" role="3KbGdf">

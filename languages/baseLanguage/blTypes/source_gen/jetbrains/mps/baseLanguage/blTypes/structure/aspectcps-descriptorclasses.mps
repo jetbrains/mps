@@ -338,8 +338,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$" role="3Kbmr1">
-              <ref role="3cqZAo" node="1E" resolve="PrimitiveTypeDescriptor" />
               <ref role="1PxDUh" node="1C" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1E" resolve="PrimitiveTypeDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="v" role="3KbHQx">
@@ -428,8 +428,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="12" role="3Kbmr1">
-              <ref role="3cqZAo" node="1F" resolve="PrimitiveTypeRef" />
               <ref role="1PxDUh" node="1C" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1F" resolve="PrimitiveTypeRef" />
             </node>
           </node>
         </node>
@@ -779,8 +779,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3K" role="3Kbmr1">
-              <ref role="3cqZAo" node="1E" resolve="PrimitiveTypeDescriptor" />
               <ref role="1PxDUh" node="1C" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1E" resolve="PrimitiveTypeDescriptor" />
             </node>
           </node>
           <node concept="3KbdKl" id="3G" role="3KbHQx">
@@ -792,8 +792,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3O" role="3Kbmr1">
-              <ref role="3cqZAo" node="1F" resolve="PrimitiveTypeRef" />
               <ref role="1PxDUh" node="1C" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1F" resolve="PrimitiveTypeRef" />
             </node>
           </node>
           <node concept="2OqwBi" id="3H" role="3KbGdf">

@@ -364,8 +364,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="S" role="3Kbmr1">
-              <ref role="3cqZAo" node="41" resolve="BuildAspect_MpsTestModules" />
               <ref role="1PxDUh" node="3Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="41" resolve="BuildAspect_MpsTestModules" />
             </node>
           </node>
           <node concept="3KbdKl" id="I" role="3KbHQx">
@@ -443,8 +443,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1g" role="3Kbmr1">
-              <ref role="3cqZAo" node="42" resolve="BuildModuleTestsPlugin" />
               <ref role="1PxDUh" node="3Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="42" resolve="BuildModuleTestsPlugin" />
             </node>
           </node>
           <node concept="3KbdKl" id="J" role="3KbHQx">
@@ -533,8 +533,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1I" role="3Kbmr1">
-              <ref role="3cqZAo" node="43" resolve="BuildMps_TestModule" />
               <ref role="1PxDUh" node="3Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="43" resolve="BuildMps_TestModule" />
             </node>
           </node>
           <node concept="3KbdKl" id="K" role="3KbHQx">
@@ -623,8 +623,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2d" role="3Kbmr1">
-              <ref role="3cqZAo" node="44" resolve="BuildMps_TestModuleGroup" />
               <ref role="1PxDUh" node="3Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="44" resolve="BuildMps_TestModuleGroup" />
             </node>
           </node>
           <node concept="3KbdKl" id="L" role="3KbHQx">
@@ -674,8 +674,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2G" role="3Kbmr1">
-              <ref role="3cqZAo" node="45" resolve="BuildMps_TestModules_Content" />
               <ref role="1PxDUh" node="3Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="45" resolve="BuildMps_TestModules_Content" />
             </node>
           </node>
           <node concept="3KbdKl" id="M" role="3KbHQx">
@@ -740,8 +740,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="30" role="3Kbmr1">
-              <ref role="3cqZAo" node="46" resolve="BuildMps_TestModules_Options" />
               <ref role="1PxDUh" node="3Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="46" resolve="BuildMps_TestModules_Options" />
             </node>
           </node>
           <node concept="3KbdKl" id="N" role="3KbHQx">
@@ -830,8 +830,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3p" role="3Kbmr1">
-              <ref role="3cqZAo" node="47" resolve="RequiredPlugin" />
               <ref role="1PxDUh" node="3Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="47" resolve="RequiredPlugin" />
             </node>
           </node>
         </node>
@@ -1429,8 +1429,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7_" role="3Kbmr1">
-              <ref role="3cqZAo" node="41" resolve="BuildAspect_MpsTestModules" />
               <ref role="1PxDUh" node="3Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="41" resolve="BuildAspect_MpsTestModules" />
             </node>
           </node>
           <node concept="3KbdKl" id="7s" role="3KbHQx">
@@ -1442,8 +1442,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7D" role="3Kbmr1">
-              <ref role="3cqZAo" node="42" resolve="BuildModuleTestsPlugin" />
               <ref role="1PxDUh" node="3Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="42" resolve="BuildModuleTestsPlugin" />
             </node>
           </node>
           <node concept="3KbdKl" id="7t" role="3KbHQx">
@@ -1455,8 +1455,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7H" role="3Kbmr1">
-              <ref role="3cqZAo" node="43" resolve="BuildMps_TestModule" />
               <ref role="1PxDUh" node="3Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="43" resolve="BuildMps_TestModule" />
             </node>
           </node>
           <node concept="3KbdKl" id="7u" role="3KbHQx">
@@ -1468,8 +1468,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7L" role="3Kbmr1">
-              <ref role="3cqZAo" node="44" resolve="BuildMps_TestModuleGroup" />
               <ref role="1PxDUh" node="3Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="44" resolve="BuildMps_TestModuleGroup" />
             </node>
           </node>
           <node concept="3KbdKl" id="7v" role="3KbHQx">
@@ -1481,8 +1481,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7P" role="3Kbmr1">
-              <ref role="3cqZAo" node="45" resolve="BuildMps_TestModules_Content" />
               <ref role="1PxDUh" node="3Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="45" resolve="BuildMps_TestModules_Content" />
             </node>
           </node>
           <node concept="3KbdKl" id="7w" role="3KbHQx">
@@ -1494,8 +1494,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7T" role="3Kbmr1">
-              <ref role="3cqZAo" node="46" resolve="BuildMps_TestModules_Options" />
               <ref role="1PxDUh" node="3Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="46" resolve="BuildMps_TestModules_Options" />
             </node>
           </node>
           <node concept="3KbdKl" id="7x" role="3KbHQx">
@@ -1507,8 +1507,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7X" role="3Kbmr1">
-              <ref role="3cqZAo" node="47" resolve="RequiredPlugin" />
               <ref role="1PxDUh" node="3Z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="47" resolve="RequiredPlugin" />
             </node>
           </node>
           <node concept="2OqwBi" id="7y" role="3KbGdf">

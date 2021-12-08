@@ -355,8 +355,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$" role="3Kbmr1">
-              <ref role="3cqZAo" node="1C" resolve="RequirementEntryReference" />
               <ref role="1PxDUh" node="1A" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1C" resolve="RequirementEntryReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="v" role="3KbHQx">
@@ -433,8 +433,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="13" role="3Kbmr1">
-              <ref role="3cqZAo" node="1D" resolve="RequirementTrace" />
               <ref role="1PxDUh" node="1A" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1D" resolve="RequirementTrace" />
             </node>
           </node>
         </node>
@@ -784,8 +784,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3I" role="3Kbmr1">
-              <ref role="3cqZAo" node="1C" resolve="RequirementEntryReference" />
               <ref role="1PxDUh" node="1A" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1C" resolve="RequirementEntryReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="3E" role="3KbHQx">
@@ -797,8 +797,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3M" role="3Kbmr1">
-              <ref role="3cqZAo" node="1D" resolve="RequirementTrace" />
               <ref role="1PxDUh" node="1A" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1D" resolve="RequirementTrace" />
             </node>
           </node>
           <node concept="2OqwBi" id="3F" role="3KbGdf">

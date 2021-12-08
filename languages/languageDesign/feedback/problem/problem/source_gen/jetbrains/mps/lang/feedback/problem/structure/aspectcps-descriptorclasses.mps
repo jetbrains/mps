@@ -317,8 +317,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="C" role="3Kbmr1">
-              <ref role="3cqZAo" node="1X" resolve="Problem" />
               <ref role="1PxDUh" node="1V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1X" resolve="Problem" />
             </node>
           </node>
           <node concept="3KbdKl" id="y" role="3KbHQx">
@@ -379,8 +379,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="W" role="3Kbmr1">
-              <ref role="3cqZAo" node="1Y" resolve="ProblemKind" />
               <ref role="1PxDUh" node="1V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1Y" resolve="ProblemKind" />
             </node>
           </node>
           <node concept="3KbdKl" id="z" role="3KbHQx">
@@ -473,8 +473,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1k" role="3Kbmr1">
-              <ref role="3cqZAo" node="1Z" resolve="ProblemPointsToKindRoot" />
               <ref role="1PxDUh" node="1V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1Z" resolve="ProblemPointsToKindRoot" />
             </node>
           </node>
         </node>
@@ -885,8 +885,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4q" role="3Kbmr1">
-              <ref role="3cqZAo" node="1X" resolve="Problem" />
               <ref role="1PxDUh" node="1V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1X" resolve="Problem" />
             </node>
           </node>
           <node concept="3KbdKl" id="4l" role="3KbHQx">
@@ -898,8 +898,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4u" role="3Kbmr1">
-              <ref role="3cqZAo" node="1Y" resolve="ProblemKind" />
               <ref role="1PxDUh" node="1V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1Y" resolve="ProblemKind" />
             </node>
           </node>
           <node concept="3KbdKl" id="4m" role="3KbHQx">
@@ -911,8 +911,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4y" role="3Kbmr1">
-              <ref role="3cqZAo" node="1Z" resolve="ProblemPointsToKindRoot" />
               <ref role="1PxDUh" node="1V" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1Z" resolve="ProblemPointsToKindRoot" />
             </node>
           </node>
           <node concept="2OqwBi" id="4n" role="3KbGdf">

@@ -354,8 +354,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="K" role="3Kbmr1">
-              <ref role="3cqZAo" node="2P" resolve="DeclMigrationData" />
               <ref role="1PxDUh" node="2N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2P" resolve="DeclMigrationData" />
             </node>
           </node>
           <node concept="3KbdKl" id="C" role="3KbHQx">
@@ -416,8 +416,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="19" role="3Kbmr1">
-              <ref role="3cqZAo" node="2Q" resolve="NewComponent" />
               <ref role="1PxDUh" node="2N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2Q" resolve="NewComponent" />
             </node>
           </node>
           <node concept="3KbdKl" id="D" role="3KbHQx">
@@ -467,8 +467,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1x" role="3Kbmr1">
-              <ref role="3cqZAo" node="2R" resolve="NewComponentMember" />
               <ref role="1PxDUh" node="2N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2R" resolve="NewComponentMember" />
             </node>
           </node>
           <node concept="3KbdKl" id="E" role="3KbHQx">
@@ -545,8 +545,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1P" role="3Kbmr1">
-              <ref role="3cqZAo" node="2S" resolve="OldComponent" />
               <ref role="1PxDUh" node="2N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2S" resolve="OldComponent" />
             </node>
           </node>
           <node concept="3KbdKl" id="F" role="3KbHQx">
@@ -609,8 +609,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2j" role="3Kbmr1">
-              <ref role="3cqZAo" node="2T" resolve="OldComponentMember" />
               <ref role="1PxDUh" node="2N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2T" resolve="OldComponentMember" />
             </node>
           </node>
         </node>
@@ -1086,8 +1086,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5F" role="3Kbmr1">
-              <ref role="3cqZAo" node="2P" resolve="DeclMigrationData" />
               <ref role="1PxDUh" node="2N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2P" resolve="DeclMigrationData" />
             </node>
           </node>
           <node concept="3KbdKl" id="5$" role="3KbHQx">
@@ -1099,8 +1099,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5J" role="3Kbmr1">
-              <ref role="3cqZAo" node="2Q" resolve="NewComponent" />
               <ref role="1PxDUh" node="2N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2Q" resolve="NewComponent" />
             </node>
           </node>
           <node concept="3KbdKl" id="5_" role="3KbHQx">
@@ -1112,8 +1112,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5N" role="3Kbmr1">
-              <ref role="3cqZAo" node="2R" resolve="NewComponentMember" />
               <ref role="1PxDUh" node="2N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2R" resolve="NewComponentMember" />
             </node>
           </node>
           <node concept="3KbdKl" id="5A" role="3KbHQx">
@@ -1125,8 +1125,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5R" role="3Kbmr1">
-              <ref role="3cqZAo" node="2S" resolve="OldComponent" />
               <ref role="1PxDUh" node="2N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2S" resolve="OldComponent" />
             </node>
           </node>
           <node concept="3KbdKl" id="5B" role="3KbHQx">
@@ -1138,8 +1138,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5V" role="3Kbmr1">
-              <ref role="3cqZAo" node="2T" resolve="OldComponentMember" />
               <ref role="1PxDUh" node="2N" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2T" resolve="OldComponentMember" />
             </node>
           </node>
           <node concept="2OqwBi" id="5C" role="3KbGdf">

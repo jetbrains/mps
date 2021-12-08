@@ -382,8 +382,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="O" role="3Kbmr1">
-              <ref role="3cqZAo" node="3F" resolve="JavaClassInheritanceSpecifier" />
               <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3F" resolve="JavaClassInheritanceSpecifier" />
             </node>
           </node>
           <node concept="3KbdKl" id="F" role="3KbHQx">
@@ -448,8 +448,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1j" role="3Kbmr1">
-              <ref role="3cqZAo" node="3G" resolve="JavaClassType" />
               <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3G" resolve="JavaClassType" />
             </node>
           </node>
           <node concept="3KbdKl" id="G" role="3KbHQx">
@@ -538,8 +538,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1G" role="3Kbmr1">
-              <ref role="3cqZAo" node="3H" resolve="JavaMethodCall" />
               <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3H" resolve="JavaMethodCall" />
             </node>
           </node>
           <node concept="3KbdKl" id="H" role="3KbHQx">
@@ -604,8 +604,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2b" role="3Kbmr1">
-              <ref role="3cqZAo" node="3I" resolve="JavaMethodVariableReference" />
               <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3I" resolve="JavaMethodVariableReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="I" role="3KbHQx">
@@ -694,8 +694,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2$" role="3Kbmr1">
-              <ref role="3cqZAo" node="3J" resolve="JavaTypeVariableReferenceType" />
               <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3J" resolve="JavaTypeVariableReferenceType" />
             </node>
           </node>
           <node concept="3KbdKl" id="J" role="3KbHQx">
@@ -784,8 +784,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="33" role="3Kbmr1">
-              <ref role="3cqZAo" node="3K" resolve="JavaVariableReference" />
               <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3K" resolve="JavaVariableReference" />
             </node>
           </node>
         </node>
@@ -1303,8 +1303,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6L" role="3Kbmr1">
-              <ref role="3cqZAo" node="3F" resolve="JavaClassInheritanceSpecifier" />
               <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3F" resolve="JavaClassInheritanceSpecifier" />
             </node>
           </node>
           <node concept="3KbdKl" id="6D" role="3KbHQx">
@@ -1316,8 +1316,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6P" role="3Kbmr1">
-              <ref role="3cqZAo" node="3G" resolve="JavaClassType" />
               <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3G" resolve="JavaClassType" />
             </node>
           </node>
           <node concept="3KbdKl" id="6E" role="3KbHQx">
@@ -1329,8 +1329,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6T" role="3Kbmr1">
-              <ref role="3cqZAo" node="3H" resolve="JavaMethodCall" />
               <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3H" resolve="JavaMethodCall" />
             </node>
           </node>
           <node concept="3KbdKl" id="6F" role="3KbHQx">
@@ -1342,8 +1342,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6X" role="3Kbmr1">
-              <ref role="3cqZAo" node="3I" resolve="JavaMethodVariableReference" />
               <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3I" resolve="JavaMethodVariableReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="6G" role="3KbHQx">
@@ -1355,8 +1355,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="71" role="3Kbmr1">
-              <ref role="3cqZAo" node="3J" resolve="JavaTypeVariableReferenceType" />
               <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3J" resolve="JavaTypeVariableReferenceType" />
             </node>
           </node>
           <node concept="3KbdKl" id="6H" role="3KbHQx">
@@ -1368,8 +1368,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="75" role="3Kbmr1">
-              <ref role="3cqZAo" node="3K" resolve="JavaVariableReference" />
               <ref role="1PxDUh" node="3D" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3K" resolve="JavaVariableReference" />
             </node>
           </node>
           <node concept="2OqwBi" id="6I" role="3KbGdf">

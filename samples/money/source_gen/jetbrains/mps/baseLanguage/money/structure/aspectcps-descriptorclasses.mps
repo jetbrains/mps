@@ -381,8 +381,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="S" role="3Kbmr1">
-              <ref role="3cqZAo" node="3K" resolve="MoneyCreator" />
               <ref role="1PxDUh" node="3I" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3K" resolve="MoneyCreator" />
             </node>
           </node>
           <node concept="3KbdKl" id="I" role="3KbHQx">
@@ -447,8 +447,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1m" role="3Kbmr1">
-              <ref role="3cqZAo" node="3L" resolve="MoneyGetAmountMethodCall" />
               <ref role="1PxDUh" node="3I" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3L" resolve="MoneyGetAmountMethodCall" />
             </node>
           </node>
           <node concept="3KbdKl" id="J" role="3KbHQx">
@@ -513,8 +513,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1J" role="3Kbmr1">
-              <ref role="3cqZAo" node="3M" resolve="MoneyGetCurrencyMethodCall" />
               <ref role="1PxDUh" node="3I" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3M" resolve="MoneyGetCurrencyMethodCall" />
             </node>
           </node>
           <node concept="3KbdKl" id="K" role="3KbHQx">
@@ -579,8 +579,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="28" role="3Kbmr1">
-              <ref role="3cqZAo" node="3N" resolve="MoneyIsZeroMethodCall" />
               <ref role="1PxDUh" node="3I" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3N" resolve="MoneyIsZeroMethodCall" />
             </node>
           </node>
           <node concept="3KbdKl" id="L" role="3KbHQx">
@@ -645,8 +645,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2x" role="3Kbmr1">
-              <ref role="3cqZAo" node="3O" resolve="MoneyLiteral" />
               <ref role="1PxDUh" node="3I" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3O" resolve="MoneyLiteral" />
             </node>
           </node>
           <node concept="3KbdKl" id="M" role="3KbHQx">
@@ -696,8 +696,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2U" role="3Kbmr1">
-              <ref role="3cqZAo" node="3P" resolve="MoneyMethodCall" />
               <ref role="1PxDUh" node="3I" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3P" resolve="MoneyMethodCall" />
             </node>
           </node>
           <node concept="3KbdKl" id="N" role="3KbHQx">
@@ -762,8 +762,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3e" role="3Kbmr1">
-              <ref role="3cqZAo" node="3Q" resolve="MoneyType" />
               <ref role="1PxDUh" node="3I" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3Q" resolve="MoneyType" />
             </node>
           </node>
         </node>
@@ -1374,8 +1374,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7o" role="3Kbmr1">
-              <ref role="3cqZAo" node="3K" resolve="MoneyCreator" />
               <ref role="1PxDUh" node="3I" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3K" resolve="MoneyCreator" />
             </node>
           </node>
           <node concept="3KbdKl" id="7f" role="3KbHQx">
@@ -1387,8 +1387,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7s" role="3Kbmr1">
-              <ref role="3cqZAo" node="3L" resolve="MoneyGetAmountMethodCall" />
               <ref role="1PxDUh" node="3I" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3L" resolve="MoneyGetAmountMethodCall" />
             </node>
           </node>
           <node concept="3KbdKl" id="7g" role="3KbHQx">
@@ -1400,8 +1400,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7w" role="3Kbmr1">
-              <ref role="3cqZAo" node="3M" resolve="MoneyGetCurrencyMethodCall" />
               <ref role="1PxDUh" node="3I" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3M" resolve="MoneyGetCurrencyMethodCall" />
             </node>
           </node>
           <node concept="3KbdKl" id="7h" role="3KbHQx">
@@ -1413,8 +1413,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7$" role="3Kbmr1">
-              <ref role="3cqZAo" node="3N" resolve="MoneyIsZeroMethodCall" />
               <ref role="1PxDUh" node="3I" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3N" resolve="MoneyIsZeroMethodCall" />
             </node>
           </node>
           <node concept="3KbdKl" id="7i" role="3KbHQx">
@@ -1426,8 +1426,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7C" role="3Kbmr1">
-              <ref role="3cqZAo" node="3O" resolve="MoneyLiteral" />
               <ref role="1PxDUh" node="3I" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3O" resolve="MoneyLiteral" />
             </node>
           </node>
           <node concept="3KbdKl" id="7j" role="3KbHQx">
@@ -1439,8 +1439,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7G" role="3Kbmr1">
-              <ref role="3cqZAo" node="3P" resolve="MoneyMethodCall" />
               <ref role="1PxDUh" node="3I" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3P" resolve="MoneyMethodCall" />
             </node>
           </node>
           <node concept="3KbdKl" id="7k" role="3KbHQx">
@@ -1452,8 +1452,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7K" role="3Kbmr1">
-              <ref role="3cqZAo" node="3Q" resolve="MoneyType" />
               <ref role="1PxDUh" node="3I" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="3Q" resolve="MoneyType" />
             </node>
           </node>
           <node concept="2OqwBi" id="7l" role="3KbGdf">

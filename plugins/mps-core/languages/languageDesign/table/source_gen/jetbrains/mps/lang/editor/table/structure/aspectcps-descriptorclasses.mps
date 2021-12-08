@@ -328,8 +328,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="C" role="3Kbmr1">
-              <ref role="3cqZAo" node="1W" resolve="CellModel_HierarchycalTable" />
               <ref role="1PxDUh" node="1U" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1W" resolve="CellModel_HierarchycalTable" />
             </node>
           </node>
           <node concept="3KbdKl" id="y" role="3KbHQx">
@@ -394,8 +394,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="11" role="3Kbmr1">
-              <ref role="3cqZAo" node="1X" resolve="CellModel_Table" />
               <ref role="1PxDUh" node="1U" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1X" resolve="CellModel_Table" />
             </node>
           </node>
           <node concept="3KbdKl" id="z" role="3KbHQx">
@@ -460,8 +460,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1q" role="3Kbmr1">
-              <ref role="3cqZAo" node="1Y" resolve="QueryFunction_TableModel" />
               <ref role="1PxDUh" node="1U" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1Y" resolve="QueryFunction_TableModel" />
             </node>
           </node>
         </node>
@@ -872,8 +872,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4p" role="3Kbmr1">
-              <ref role="3cqZAo" node="1W" resolve="CellModel_HierarchycalTable" />
               <ref role="1PxDUh" node="1U" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1W" resolve="CellModel_HierarchycalTable" />
             </node>
           </node>
           <node concept="3KbdKl" id="4k" role="3KbHQx">
@@ -885,8 +885,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4t" role="3Kbmr1">
-              <ref role="3cqZAo" node="1X" resolve="CellModel_Table" />
               <ref role="1PxDUh" node="1U" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1X" resolve="CellModel_Table" />
             </node>
           </node>
           <node concept="3KbdKl" id="4l" role="3KbHQx">
@@ -898,8 +898,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4x" role="3Kbmr1">
-              <ref role="3cqZAo" node="1Y" resolve="QueryFunction_TableModel" />
               <ref role="1PxDUh" node="1U" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1Y" resolve="QueryFunction_TableModel" />
             </node>
           </node>
           <node concept="2OqwBi" id="4m" role="3KbGdf">

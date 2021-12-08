@@ -493,8 +493,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1K" role="3Kbmr1">
-              <ref role="3cqZAo" node="9Z" resolve="TestConstraintsInheritance_Base" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="9Z" resolve="TestConstraintsInheritance_Base" />
             </node>
           </node>
           <node concept="3KbdKl" id="1o" role="3KbHQx">
@@ -559,8 +559,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="24" role="3Kbmr1">
-              <ref role="3cqZAo" node="a0" resolve="TestConstraintsInheritance_Concept_CC" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a0" resolve="TestConstraintsInheritance_Concept_CC" />
             </node>
           </node>
           <node concept="3KbdKl" id="1p" role="3KbHQx">
@@ -638,8 +638,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2t" role="3Kbmr1">
-              <ref role="3cqZAo" node="a1" resolve="TestConstraintsInheritance_Concept_CI" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a1" resolve="TestConstraintsInheritance_Concept_CI" />
             </node>
           </node>
           <node concept="3KbdKl" id="1q" role="3KbHQx">
@@ -704,8 +704,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2V" role="3Kbmr1">
-              <ref role="3cqZAo" node="a2" resolve="TestConstraintsInheritance_Concept_II" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a2" resolve="TestConstraintsInheritance_Concept_II" />
             </node>
           </node>
           <node concept="3KbdKl" id="1r" role="3KbHQx">
@@ -770,8 +770,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3k" role="3Kbmr1">
-              <ref role="3cqZAo" node="a3" resolve="TestConstraintsInheritance_Container" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a3" resolve="TestConstraintsInheritance_Container" />
             </node>
           </node>
           <node concept="3KbdKl" id="1s" role="3KbHQx">
@@ -821,8 +821,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3H" role="3Kbmr1">
-              <ref role="3cqZAo" node="a4" resolve="TestConstraintsInheritance_Derived1_Constrained" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a4" resolve="TestConstraintsInheritance_Derived1_Constrained" />
             </node>
           </node>
           <node concept="3KbdKl" id="1t" role="3KbHQx">
@@ -872,8 +872,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="41" role="3Kbmr1">
-              <ref role="3cqZAo" node="a5" resolve="TestConstraintsInheritance_Derived1_Inherited" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a5" resolve="TestConstraintsInheritance_Derived1_Inherited" />
             </node>
           </node>
           <node concept="3KbdKl" id="1u" role="3KbHQx">
@@ -923,8 +923,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4l" role="3Kbmr1">
-              <ref role="3cqZAo" node="a6" resolve="TestConstraintsInheritance_Derived2_Constrained" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a6" resolve="TestConstraintsInheritance_Derived2_Constrained" />
             </node>
           </node>
           <node concept="3KbdKl" id="1v" role="3KbHQx">
@@ -974,8 +974,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4D" role="3Kbmr1">
-              <ref role="3cqZAo" node="a7" resolve="TestConstraintsInheritance_Derived2_Inherited" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a7" resolve="TestConstraintsInheritance_Derived2_Inherited" />
             </node>
           </node>
           <node concept="3KbdKl" id="1w" role="3KbHQx">
@@ -1040,8 +1040,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4X" role="3Kbmr1">
-              <ref role="3cqZAo" node="a8" resolve="TestConstraintsInvocation_CanBeAncestorFail" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a8" resolve="TestConstraintsInvocation_CanBeAncestorFail" />
             </node>
           </node>
           <node concept="3KbdKl" id="1x" role="3KbHQx">
@@ -1106,8 +1106,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5m" role="3Kbmr1">
-              <ref role="3cqZAo" node="a9" resolve="TestConstraintsInvocation_CanBeChildFail" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a9" resolve="TestConstraintsInvocation_CanBeChildFail" />
             </node>
           </node>
           <node concept="3KbdKl" id="1y" role="3KbHQx">
@@ -1172,8 +1172,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5J" role="3Kbmr1">
-              <ref role="3cqZAo" node="aa" resolve="TestConstraintsInvocation_CanBeParentFail" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="aa" resolve="TestConstraintsInvocation_CanBeParentFail" />
             </node>
           </node>
           <node concept="3KbdKl" id="1z" role="3KbHQx">
@@ -1238,8 +1238,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="68" role="3Kbmr1">
-              <ref role="3cqZAo" node="ab" resolve="TestConstraintsInvocation_Child" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="ab" resolve="TestConstraintsInvocation_Child" />
             </node>
           </node>
           <node concept="3KbdKl" id="1$" role="3KbHQx">
@@ -1289,8 +1289,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6x" role="3Kbmr1">
-              <ref role="3cqZAo" node="ac" resolve="TestRefConstraints_BaseReference_Handler" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="ac" resolve="TestRefConstraints_BaseReference_Handler" />
             </node>
           </node>
           <node concept="3KbdKl" id="1_" role="3KbHQx">
@@ -1340,8 +1340,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="6P" role="3Kbmr1">
-              <ref role="3cqZAo" node="ad" resolve="TestRefConstraints_BaseReference_Scoping" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="ad" resolve="TestRefConstraints_BaseReference_Scoping" />
             </node>
           </node>
           <node concept="3KbdKl" id="1A" role="3KbHQx">
@@ -1406,8 +1406,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="79" role="3Kbmr1">
-              <ref role="3cqZAo" node="ae" resolve="TestRefConstraints_Container" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="ae" resolve="TestRefConstraints_Container" />
             </node>
           </node>
           <node concept="3KbdKl" id="1B" role="3KbHQx">
@@ -1495,8 +1495,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="7y" role="3Kbmr1">
-              <ref role="3cqZAo" node="af" resolve="TestRefConstraints_SubReference_HandlerSuperHandler" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="af" resolve="TestRefConstraints_SubReference_HandlerSuperHandler" />
             </node>
           </node>
           <node concept="3KbdKl" id="1C" role="3KbHQx">
@@ -1584,8 +1584,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="81" role="3Kbmr1">
-              <ref role="3cqZAo" node="ag" resolve="TestRefConstraints_SubReference_HandlerSuperScoping" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="ag" resolve="TestRefConstraints_SubReference_HandlerSuperScoping" />
             </node>
           </node>
           <node concept="3KbdKl" id="1D" role="3KbHQx">
@@ -1673,8 +1673,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8w" role="3Kbmr1">
-              <ref role="3cqZAo" node="ah" resolve="TestRefConstraints_SubReference_ScopingSuperHandler" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="ah" resolve="TestRefConstraints_SubReference_ScopingSuperHandler" />
             </node>
           </node>
           <node concept="3KbdKl" id="1E" role="3KbHQx">
@@ -1762,8 +1762,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="8Z" role="3Kbmr1">
-              <ref role="3cqZAo" node="ai" resolve="TestRefConstraints_SubReference_ScopingSuperScoping" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="ai" resolve="TestRefConstraints_SubReference_ScopingSuperScoping" />
             </node>
           </node>
           <node concept="3KbdKl" id="1F" role="3KbHQx">
@@ -1824,8 +1824,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="9u" role="3Kbmr1">
-              <ref role="3cqZAo" node="aj" resolve="TestRefConstraints_Target" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="aj" resolve="TestRefConstraints_Target" />
             </node>
           </node>
         </node>
@@ -2973,8 +2973,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="gP" role="3Kbmr1">
-              <ref role="3cqZAo" node="9Z" resolve="TestConstraintsInheritance_Base" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="9Z" resolve="TestConstraintsInheritance_Base" />
             </node>
           </node>
           <node concept="3KbdKl" id="gu" role="3KbHQx">
@@ -2986,8 +2986,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="gT" role="3Kbmr1">
-              <ref role="3cqZAo" node="a0" resolve="TestConstraintsInheritance_Concept_CC" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a0" resolve="TestConstraintsInheritance_Concept_CC" />
             </node>
           </node>
           <node concept="3KbdKl" id="gv" role="3KbHQx">
@@ -2999,8 +2999,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="gX" role="3Kbmr1">
-              <ref role="3cqZAo" node="a1" resolve="TestConstraintsInheritance_Concept_CI" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a1" resolve="TestConstraintsInheritance_Concept_CI" />
             </node>
           </node>
           <node concept="3KbdKl" id="gw" role="3KbHQx">
@@ -3012,8 +3012,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="h1" role="3Kbmr1">
-              <ref role="3cqZAo" node="a2" resolve="TestConstraintsInheritance_Concept_II" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a2" resolve="TestConstraintsInheritance_Concept_II" />
             </node>
           </node>
           <node concept="3KbdKl" id="gx" role="3KbHQx">
@@ -3025,8 +3025,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="h5" role="3Kbmr1">
-              <ref role="3cqZAo" node="a3" resolve="TestConstraintsInheritance_Container" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a3" resolve="TestConstraintsInheritance_Container" />
             </node>
           </node>
           <node concept="3KbdKl" id="gy" role="3KbHQx">
@@ -3038,8 +3038,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="h9" role="3Kbmr1">
-              <ref role="3cqZAo" node="a4" resolve="TestConstraintsInheritance_Derived1_Constrained" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a4" resolve="TestConstraintsInheritance_Derived1_Constrained" />
             </node>
           </node>
           <node concept="3KbdKl" id="gz" role="3KbHQx">
@@ -3051,8 +3051,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hd" role="3Kbmr1">
-              <ref role="3cqZAo" node="a5" resolve="TestConstraintsInheritance_Derived1_Inherited" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a5" resolve="TestConstraintsInheritance_Derived1_Inherited" />
             </node>
           </node>
           <node concept="3KbdKl" id="g$" role="3KbHQx">
@@ -3064,8 +3064,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hh" role="3Kbmr1">
-              <ref role="3cqZAo" node="a6" resolve="TestConstraintsInheritance_Derived2_Constrained" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a6" resolve="TestConstraintsInheritance_Derived2_Constrained" />
             </node>
           </node>
           <node concept="3KbdKl" id="g_" role="3KbHQx">
@@ -3077,8 +3077,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hl" role="3Kbmr1">
-              <ref role="3cqZAo" node="a7" resolve="TestConstraintsInheritance_Derived2_Inherited" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a7" resolve="TestConstraintsInheritance_Derived2_Inherited" />
             </node>
           </node>
           <node concept="3KbdKl" id="gA" role="3KbHQx">
@@ -3090,8 +3090,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hp" role="3Kbmr1">
-              <ref role="3cqZAo" node="a8" resolve="TestConstraintsInvocation_CanBeAncestorFail" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a8" resolve="TestConstraintsInvocation_CanBeAncestorFail" />
             </node>
           </node>
           <node concept="3KbdKl" id="gB" role="3KbHQx">
@@ -3103,8 +3103,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="ht" role="3Kbmr1">
-              <ref role="3cqZAo" node="a9" resolve="TestConstraintsInvocation_CanBeChildFail" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="a9" resolve="TestConstraintsInvocation_CanBeChildFail" />
             </node>
           </node>
           <node concept="3KbdKl" id="gC" role="3KbHQx">
@@ -3116,8 +3116,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hx" role="3Kbmr1">
-              <ref role="3cqZAo" node="aa" resolve="TestConstraintsInvocation_CanBeParentFail" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="aa" resolve="TestConstraintsInvocation_CanBeParentFail" />
             </node>
           </node>
           <node concept="3KbdKl" id="gD" role="3KbHQx">
@@ -3129,8 +3129,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="h_" role="3Kbmr1">
-              <ref role="3cqZAo" node="ab" resolve="TestConstraintsInvocation_Child" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="ab" resolve="TestConstraintsInvocation_Child" />
             </node>
           </node>
           <node concept="3KbdKl" id="gE" role="3KbHQx">
@@ -3142,8 +3142,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hD" role="3Kbmr1">
-              <ref role="3cqZAo" node="ac" resolve="TestRefConstraints_BaseReference_Handler" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="ac" resolve="TestRefConstraints_BaseReference_Handler" />
             </node>
           </node>
           <node concept="3KbdKl" id="gF" role="3KbHQx">
@@ -3155,8 +3155,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hH" role="3Kbmr1">
-              <ref role="3cqZAo" node="ad" resolve="TestRefConstraints_BaseReference_Scoping" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="ad" resolve="TestRefConstraints_BaseReference_Scoping" />
             </node>
           </node>
           <node concept="3KbdKl" id="gG" role="3KbHQx">
@@ -3168,8 +3168,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hL" role="3Kbmr1">
-              <ref role="3cqZAo" node="ae" resolve="TestRefConstraints_Container" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="ae" resolve="TestRefConstraints_Container" />
             </node>
           </node>
           <node concept="3KbdKl" id="gH" role="3KbHQx">
@@ -3181,8 +3181,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hP" role="3Kbmr1">
-              <ref role="3cqZAo" node="af" resolve="TestRefConstraints_SubReference_HandlerSuperHandler" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="af" resolve="TestRefConstraints_SubReference_HandlerSuperHandler" />
             </node>
           </node>
           <node concept="3KbdKl" id="gI" role="3KbHQx">
@@ -3194,8 +3194,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hT" role="3Kbmr1">
-              <ref role="3cqZAo" node="ag" resolve="TestRefConstraints_SubReference_HandlerSuperScoping" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="ag" resolve="TestRefConstraints_SubReference_HandlerSuperScoping" />
             </node>
           </node>
           <node concept="3KbdKl" id="gJ" role="3KbHQx">
@@ -3207,8 +3207,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="hX" role="3Kbmr1">
-              <ref role="3cqZAo" node="ah" resolve="TestRefConstraints_SubReference_ScopingSuperHandler" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="ah" resolve="TestRefConstraints_SubReference_ScopingSuperHandler" />
             </node>
           </node>
           <node concept="3KbdKl" id="gK" role="3KbHQx">
@@ -3220,8 +3220,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="i1" role="3Kbmr1">
-              <ref role="3cqZAo" node="ai" resolve="TestRefConstraints_SubReference_ScopingSuperScoping" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="ai" resolve="TestRefConstraints_SubReference_ScopingSuperScoping" />
             </node>
           </node>
           <node concept="3KbdKl" id="gL" role="3KbHQx">
@@ -3233,8 +3233,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="i5" role="3Kbmr1">
-              <ref role="3cqZAo" node="aj" resolve="TestRefConstraints_Target" />
               <ref role="1PxDUh" node="9X" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="aj" resolve="TestRefConstraints_Target" />
             </node>
           </node>
           <node concept="2OqwBi" id="gM" role="3KbGdf">

@@ -319,8 +319,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="G" role="3Kbmr1">
-              <ref role="3cqZAo" node="2t" resolve="AbstractConsoleScript" />
               <ref role="1PxDUh" node="2r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2t" resolve="AbstractConsoleScript" />
             </node>
           </node>
           <node concept="3KbdKl" id="_" role="3KbHQx">
@@ -381,8 +381,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="10" role="3Kbmr1">
-              <ref role="3cqZAo" node="2u" resolve="ConsoleScript" />
               <ref role="1PxDUh" node="2r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2u" resolve="ConsoleScript" />
             </node>
           </node>
           <node concept="3KbdKl" id="A" role="3KbHQx">
@@ -460,8 +460,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1o" role="3Kbmr1">
-              <ref role="3cqZAo" node="2v" resolve="Execute" />
               <ref role="1PxDUh" node="2r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2v" resolve="Execute" />
             </node>
           </node>
           <node concept="3KbdKl" id="B" role="3KbHQx">
@@ -539,8 +539,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1Q" role="3Kbmr1">
-              <ref role="3cqZAo" node="2w" resolve="RefactorOperation" />
               <ref role="1PxDUh" node="2r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2w" resolve="RefactorOperation" />
             </node>
           </node>
         </node>
@@ -1069,8 +1069,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5A" role="3Kbmr1">
-              <ref role="3cqZAo" node="2t" resolve="AbstractConsoleScript" />
               <ref role="1PxDUh" node="2r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2t" resolve="AbstractConsoleScript" />
             </node>
           </node>
           <node concept="3KbdKl" id="5w" role="3KbHQx">
@@ -1082,8 +1082,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5E" role="3Kbmr1">
-              <ref role="3cqZAo" node="2u" resolve="ConsoleScript" />
               <ref role="1PxDUh" node="2r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2u" resolve="ConsoleScript" />
             </node>
           </node>
           <node concept="3KbdKl" id="5x" role="3KbHQx">
@@ -1095,8 +1095,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5I" role="3Kbmr1">
-              <ref role="3cqZAo" node="2v" resolve="Execute" />
               <ref role="1PxDUh" node="2r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2v" resolve="Execute" />
             </node>
           </node>
           <node concept="3KbdKl" id="5y" role="3KbHQx">
@@ -1108,8 +1108,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5M" role="3Kbmr1">
-              <ref role="3cqZAo" node="2w" resolve="RefactorOperation" />
               <ref role="1PxDUh" node="2r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2w" resolve="RefactorOperation" />
             </node>
           </node>
           <node concept="2OqwBi" id="5z" role="3KbGdf">

@@ -428,8 +428,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1g" role="3Kbmr1">
-              <ref role="3cqZAo" node="6p" resolve="CustomFontContainer" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6p" resolve="CustomFontContainer" />
             </node>
           </node>
           <node concept="3KbdKl" id="10" role="3KbHQx">
@@ -494,8 +494,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1D" role="3Kbmr1">
-              <ref role="3cqZAo" node="6q" resolve="HugePriorityStyle" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6q" resolve="HugePriorityStyle" />
             </node>
           </node>
           <node concept="3KbdKl" id="11" role="3KbHQx">
@@ -560,8 +560,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="22" role="3Kbmr1">
-              <ref role="3cqZAo" node="6r" resolve="LeafNode" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6r" resolve="LeafNode" />
             </node>
           </node>
           <node concept="3KbdKl" id="12" role="3KbHQx">
@@ -611,8 +611,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2r" role="3Kbmr1">
-              <ref role="3cqZAo" node="6s" resolve="NodeContainer" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6s" resolve="NodeContainer" />
             </node>
           </node>
           <node concept="3KbdKl" id="13" role="3KbHQx">
@@ -677,8 +677,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2J" role="3Kbmr1">
-              <ref role="3cqZAo" node="6t" resolve="PriorityStyle" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6t" resolve="PriorityStyle" />
             </node>
           </node>
           <node concept="3KbdKl" id="14" role="3KbHQx">
@@ -743,8 +743,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="38" role="3Kbmr1">
-              <ref role="3cqZAo" node="6u" resolve="PriorityStyleCopy" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6u" resolve="PriorityStyleCopy" />
             </node>
           </node>
           <node concept="3KbdKl" id="15" role="3KbHQx">
@@ -809,8 +809,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3x" role="3Kbmr1">
-              <ref role="3cqZAo" node="6v" resolve="SerifFromQueryNode" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6v" resolve="SerifFromQueryNode" />
             </node>
           </node>
           <node concept="3KbdKl" id="16" role="3KbHQx">
@@ -875,8 +875,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3U" role="3Kbmr1">
-              <ref role="3cqZAo" node="6w" resolve="SerifNode" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6w" resolve="SerifNode" />
             </node>
           </node>
           <node concept="3KbdKl" id="17" role="3KbHQx">
@@ -941,8 +941,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4j" role="3Kbmr1">
-              <ref role="3cqZAo" node="6x" resolve="TestConceptWithStyleAttributes" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6x" resolve="TestConceptWithStyleAttributes" />
             </node>
           </node>
           <node concept="3KbdKl" id="18" role="3KbHQx">
@@ -1007,8 +1007,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="4G" role="3Kbmr1">
-              <ref role="3cqZAo" node="6y" resolve="TestInheritedAttribute" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6y" resolve="TestInheritedAttribute" />
             </node>
           </node>
           <node concept="3KbdKl" id="19" role="3KbHQx">
@@ -1073,8 +1073,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="55" role="3Kbmr1">
-              <ref role="3cqZAo" node="6z" resolve="TestSimpleAttribute" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6z" resolve="TestSimpleAttribute" />
             </node>
           </node>
           <node concept="3KbdKl" id="1a" role="3KbHQx">
@@ -1139,8 +1139,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5u" role="3Kbmr1">
-              <ref role="3cqZAo" node="6$" resolve="URLCellContainer" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6$" resolve="URLCellContainer" />
             </node>
           </node>
           <node concept="3KbdKl" id="1b" role="3KbHQx">
@@ -1205,8 +1205,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5R" role="3Kbmr1">
-              <ref role="3cqZAo" node="6_" resolve="UnapplyPriorityStyleCopy" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6_" resolve="UnapplyPriorityStyleCopy" />
             </node>
           </node>
         </node>
@@ -2018,8 +2018,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bf" role="3Kbmr1">
-              <ref role="3cqZAo" node="6p" resolve="CustomFontContainer" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6p" resolve="CustomFontContainer" />
             </node>
           </node>
           <node concept="3KbdKl" id="b0" role="3KbHQx">
@@ -2031,8 +2031,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bj" role="3Kbmr1">
-              <ref role="3cqZAo" node="6q" resolve="HugePriorityStyle" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6q" resolve="HugePriorityStyle" />
             </node>
           </node>
           <node concept="3KbdKl" id="b1" role="3KbHQx">
@@ -2044,8 +2044,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bn" role="3Kbmr1">
-              <ref role="3cqZAo" node="6r" resolve="LeafNode" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6r" resolve="LeafNode" />
             </node>
           </node>
           <node concept="3KbdKl" id="b2" role="3KbHQx">
@@ -2057,8 +2057,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="br" role="3Kbmr1">
-              <ref role="3cqZAo" node="6s" resolve="NodeContainer" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6s" resolve="NodeContainer" />
             </node>
           </node>
           <node concept="3KbdKl" id="b3" role="3KbHQx">
@@ -2070,8 +2070,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bv" role="3Kbmr1">
-              <ref role="3cqZAo" node="6t" resolve="PriorityStyle" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6t" resolve="PriorityStyle" />
             </node>
           </node>
           <node concept="3KbdKl" id="b4" role="3KbHQx">
@@ -2083,8 +2083,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bz" role="3Kbmr1">
-              <ref role="3cqZAo" node="6u" resolve="PriorityStyleCopy" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6u" resolve="PriorityStyleCopy" />
             </node>
           </node>
           <node concept="3KbdKl" id="b5" role="3KbHQx">
@@ -2096,8 +2096,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bB" role="3Kbmr1">
-              <ref role="3cqZAo" node="6v" resolve="SerifFromQueryNode" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6v" resolve="SerifFromQueryNode" />
             </node>
           </node>
           <node concept="3KbdKl" id="b6" role="3KbHQx">
@@ -2109,8 +2109,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bF" role="3Kbmr1">
-              <ref role="3cqZAo" node="6w" resolve="SerifNode" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6w" resolve="SerifNode" />
             </node>
           </node>
           <node concept="3KbdKl" id="b7" role="3KbHQx">
@@ -2122,8 +2122,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bJ" role="3Kbmr1">
-              <ref role="3cqZAo" node="6x" resolve="TestConceptWithStyleAttributes" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6x" resolve="TestConceptWithStyleAttributes" />
             </node>
           </node>
           <node concept="3KbdKl" id="b8" role="3KbHQx">
@@ -2135,8 +2135,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bN" role="3Kbmr1">
-              <ref role="3cqZAo" node="6y" resolve="TestInheritedAttribute" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6y" resolve="TestInheritedAttribute" />
             </node>
           </node>
           <node concept="3KbdKl" id="b9" role="3KbHQx">
@@ -2148,8 +2148,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bR" role="3Kbmr1">
-              <ref role="3cqZAo" node="6z" resolve="TestSimpleAttribute" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6z" resolve="TestSimpleAttribute" />
             </node>
           </node>
           <node concept="3KbdKl" id="ba" role="3KbHQx">
@@ -2161,8 +2161,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bV" role="3Kbmr1">
-              <ref role="3cqZAo" node="6$" resolve="URLCellContainer" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6$" resolve="URLCellContainer" />
             </node>
           </node>
           <node concept="3KbdKl" id="bb" role="3KbHQx">
@@ -2174,8 +2174,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="bZ" role="3Kbmr1">
-              <ref role="3cqZAo" node="6_" resolve="UnapplyPriorityStyleCopy" />
               <ref role="1PxDUh" node="6n" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="6_" resolve="UnapplyPriorityStyleCopy" />
             </node>
           </node>
           <node concept="2OqwBi" id="bc" role="3KbGdf">

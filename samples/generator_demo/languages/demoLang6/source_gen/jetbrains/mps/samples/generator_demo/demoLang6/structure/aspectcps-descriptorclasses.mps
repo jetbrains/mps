@@ -312,8 +312,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$" role="3Kbmr1">
-              <ref role="3cqZAo" node="1t" resolve="Button" />
               <ref role="1PxDUh" node="1r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1t" resolve="Button" />
             </node>
           </node>
           <node concept="3KbdKl" id="v" role="3KbHQx">
@@ -374,8 +374,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="W" role="3Kbmr1">
-              <ref role="3cqZAo" node="1u" resolve="Label" />
               <ref role="1PxDUh" node="1r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1u" resolve="Label" />
             </node>
           </node>
         </node>
@@ -725,8 +725,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3z" role="3Kbmr1">
-              <ref role="3cqZAo" node="1t" resolve="Button" />
               <ref role="1PxDUh" node="1r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1t" resolve="Button" />
             </node>
           </node>
           <node concept="3KbdKl" id="3v" role="3KbHQx">
@@ -738,8 +738,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3B" role="3Kbmr1">
-              <ref role="3cqZAo" node="1u" resolve="Label" />
               <ref role="1PxDUh" node="1r" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1u" resolve="Label" />
             </node>
           </node>
           <node concept="2OqwBi" id="3w" role="3KbGdf">

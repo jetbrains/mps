@@ -318,8 +318,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$" role="3Kbmr1">
-              <ref role="3cqZAo" node="1v" resolve="StepData" />
               <ref role="1PxDUh" node="1t" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1v" resolve="StepData" />
             </node>
           </node>
           <node concept="3KbdKl" id="v" role="3KbHQx">
@@ -384,8 +384,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="X" role="3Kbmr1">
-              <ref role="3cqZAo" node="1w" resolve="StringData" />
               <ref role="1PxDUh" node="1t" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1w" resolve="StringData" />
             </node>
           </node>
         </node>
@@ -754,8 +754,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3G" role="3Kbmr1">
-              <ref role="3cqZAo" node="1v" resolve="StepData" />
               <ref role="1PxDUh" node="1t" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1v" resolve="StepData" />
             </node>
           </node>
           <node concept="3KbdKl" id="3C" role="3KbHQx">
@@ -767,8 +767,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3K" role="3Kbmr1">
-              <ref role="3cqZAo" node="1w" resolve="StringData" />
               <ref role="1PxDUh" node="1t" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1w" resolve="StringData" />
             </node>
           </node>
           <node concept="2OqwBi" id="3D" role="3KbGdf">

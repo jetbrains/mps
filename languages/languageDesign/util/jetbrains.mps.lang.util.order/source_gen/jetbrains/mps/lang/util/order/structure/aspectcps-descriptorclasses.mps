@@ -333,8 +333,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="K" role="3Kbmr1">
-              <ref role="3cqZAo" node="2G" resolve="Order" />
               <ref role="1PxDUh" node="2E" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2G" resolve="Order" />
             </node>
           </node>
           <node concept="3KbdKl" id="C" role="3KbHQx">
@@ -395,8 +395,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="14" role="3Kbmr1">
-              <ref role="3cqZAo" node="2H" resolve="OrderDeclaration" />
               <ref role="1PxDUh" node="2E" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2H" resolve="OrderDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="D" role="3KbHQx">
@@ -446,8 +446,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1s" role="3Kbmr1">
-              <ref role="3cqZAo" node="2I" resolve="OrderParticipant" />
               <ref role="1PxDUh" node="2E" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2I" resolve="OrderParticipant" />
             </node>
           </node>
           <node concept="3KbdKl" id="E" role="3KbHQx">
@@ -497,8 +497,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1K" role="3Kbmr1">
-              <ref role="3cqZAo" node="2J" resolve="OrderParticipantReference" />
               <ref role="1PxDUh" node="2E" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2J" resolve="OrderParticipantReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="F" role="3KbHQx">
@@ -587,8 +587,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="24" role="3Kbmr1">
-              <ref role="3cqZAo" node="2K" resolve="OrderReference" />
               <ref role="1PxDUh" node="2E" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2K" resolve="OrderReference" />
             </node>
           </node>
         </node>
@@ -1064,8 +1064,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5y" role="3Kbmr1">
-              <ref role="3cqZAo" node="2G" resolve="Order" />
               <ref role="1PxDUh" node="2E" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2G" resolve="Order" />
             </node>
           </node>
           <node concept="3KbdKl" id="5r" role="3KbHQx">
@@ -1077,8 +1077,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5A" role="3Kbmr1">
-              <ref role="3cqZAo" node="2H" resolve="OrderDeclaration" />
               <ref role="1PxDUh" node="2E" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2H" resolve="OrderDeclaration" />
             </node>
           </node>
           <node concept="3KbdKl" id="5s" role="3KbHQx">
@@ -1090,8 +1090,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5E" role="3Kbmr1">
-              <ref role="3cqZAo" node="2I" resolve="OrderParticipant" />
               <ref role="1PxDUh" node="2E" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2I" resolve="OrderParticipant" />
             </node>
           </node>
           <node concept="3KbdKl" id="5t" role="3KbHQx">
@@ -1103,8 +1103,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5I" role="3Kbmr1">
-              <ref role="3cqZAo" node="2J" resolve="OrderParticipantReference" />
               <ref role="1PxDUh" node="2E" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2J" resolve="OrderParticipantReference" />
             </node>
           </node>
           <node concept="3KbdKl" id="5u" role="3KbHQx">
@@ -1116,8 +1116,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5M" role="3Kbmr1">
-              <ref role="3cqZAo" node="2K" resolve="OrderReference" />
               <ref role="1PxDUh" node="2E" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2K" resolve="OrderReference" />
             </node>
           </node>
           <node concept="2OqwBi" id="5v" role="3KbGdf">

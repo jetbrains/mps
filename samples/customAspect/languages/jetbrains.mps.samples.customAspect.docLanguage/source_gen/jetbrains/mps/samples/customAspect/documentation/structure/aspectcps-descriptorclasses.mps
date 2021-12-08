@@ -342,8 +342,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="$" role="3Kbmr1">
-              <ref role="3cqZAo" node="1_" resolve="ConceptDocumentation" />
               <ref role="1PxDUh" node="1z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1_" resolve="ConceptDocumentation" />
             </node>
           </node>
           <node concept="3KbdKl" id="v" role="3KbHQx">
@@ -408,8 +408,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="13" role="3Kbmr1">
-              <ref role="3cqZAo" node="1A" resolve="ModuleDescriptorDeputy" />
               <ref role="1PxDUh" node="1z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1A" resolve="ModuleDescriptorDeputy" />
             </node>
           </node>
         </node>
@@ -759,8 +759,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3F" role="3Kbmr1">
-              <ref role="3cqZAo" node="1_" resolve="ConceptDocumentation" />
               <ref role="1PxDUh" node="1z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1_" resolve="ConceptDocumentation" />
             </node>
           </node>
           <node concept="3KbdKl" id="3B" role="3KbHQx">
@@ -772,8 +772,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="3J" role="3Kbmr1">
-              <ref role="3cqZAo" node="1A" resolve="ModuleDescriptorDeputy" />
               <ref role="1PxDUh" node="1z" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="1A" resolve="ModuleDescriptorDeputy" />
             </node>
           </node>
           <node concept="2OqwBi" id="3C" role="3KbGdf">

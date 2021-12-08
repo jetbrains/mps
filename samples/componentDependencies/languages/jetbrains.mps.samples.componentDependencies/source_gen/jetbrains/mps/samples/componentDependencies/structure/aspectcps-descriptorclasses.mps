@@ -344,8 +344,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="K" role="3Kbmr1">
-              <ref role="3cqZAo" node="2M" resolve="Component" />
               <ref role="1PxDUh" node="2K" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2M" resolve="Component" />
             </node>
           </node>
           <node concept="3KbdKl" id="C" role="3KbHQx">
@@ -406,8 +406,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="18" role="3Kbmr1">
-              <ref role="3cqZAo" node="2N" resolve="ComponentSet" />
               <ref role="1PxDUh" node="2K" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2N" resolve="ComponentSet" />
             </node>
           </node>
           <node concept="3KbdKl" id="D" role="3KbHQx">
@@ -472,8 +472,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1w" role="3Kbmr1">
-              <ref role="3cqZAo" node="2O" resolve="Dependency" />
               <ref role="1PxDUh" node="2K" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2O" resolve="Dependency" />
             </node>
           </node>
           <node concept="3KbdKl" id="E" role="3KbHQx">
@@ -534,8 +534,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="1T" role="3Kbmr1">
-              <ref role="3cqZAo" node="2P" resolve="InPort" />
               <ref role="1PxDUh" node="2K" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2P" resolve="InPort" />
             </node>
           </node>
           <node concept="3KbdKl" id="F" role="3KbHQx">
@@ -596,8 +596,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="2h" role="3Kbmr1">
-              <ref role="3cqZAo" node="2Q" resolve="OutPort" />
               <ref role="1PxDUh" node="2K" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2Q" resolve="OutPort" />
             </node>
           </node>
         </node>
@@ -1073,8 +1073,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5C" role="3Kbmr1">
-              <ref role="3cqZAo" node="2M" resolve="Component" />
               <ref role="1PxDUh" node="2K" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2M" resolve="Component" />
             </node>
           </node>
           <node concept="3KbdKl" id="5x" role="3KbHQx">
@@ -1086,8 +1086,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5G" role="3Kbmr1">
-              <ref role="3cqZAo" node="2N" resolve="ComponentSet" />
               <ref role="1PxDUh" node="2K" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2N" resolve="ComponentSet" />
             </node>
           </node>
           <node concept="3KbdKl" id="5y" role="3KbHQx">
@@ -1099,8 +1099,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5K" role="3Kbmr1">
-              <ref role="3cqZAo" node="2O" resolve="Dependency" />
               <ref role="1PxDUh" node="2K" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2O" resolve="Dependency" />
             </node>
           </node>
           <node concept="3KbdKl" id="5z" role="3KbHQx">
@@ -1112,8 +1112,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5O" role="3Kbmr1">
-              <ref role="3cqZAo" node="2P" resolve="InPort" />
               <ref role="1PxDUh" node="2K" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2P" resolve="InPort" />
             </node>
           </node>
           <node concept="3KbdKl" id="5$" role="3KbHQx">
@@ -1125,8 +1125,8 @@
               </node>
             </node>
             <node concept="10M0yZ" id="5S" role="3Kbmr1">
-              <ref role="3cqZAo" node="2Q" resolve="OutPort" />
               <ref role="1PxDUh" node="2K" resolve="LanguageConceptSwitch" />
+              <ref role="3cqZAo" node="2Q" resolve="OutPort" />
             </node>
           </node>
           <node concept="2OqwBi" id="5_" role="3KbGdf">
