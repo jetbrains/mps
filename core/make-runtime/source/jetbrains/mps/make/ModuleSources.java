@@ -30,6 +30,8 @@ import java.util.List;
 import java.util.Map;
 
 // FIXME AP refactor
+// FIXME [artem] just remove it along with the legacy make branch in ModuleMaker
+//       but have to deal with TestMakeOnRealProject first
 public final class ModuleSources {
   private Map<SModule, ModuleSources> myAvailableSources;
   private Dependencies myDependencies;

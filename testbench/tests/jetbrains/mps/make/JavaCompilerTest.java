@@ -15,13 +15,18 @@
  */
 package jetbrains.mps.make;
 
-import jetbrains.mps.compiler.ClassFile;
-import jetbrains.mps.compiler.ErrorSink;
-import jetbrains.mps.compiler.JavaCompiler;
 import jetbrains.mps.compiler.JavaCompilerOptions;
 import jetbrains.mps.compiler.JavaCompilerOptionsComponent.JavaVersion;
+import jetbrains.mps.make.BaseModuleContainer.JavaModule;
+import jetbrains.mps.make.ModuleAnalyzer.ModuleAnalyzerResult;
+import jetbrains.mps.messages.IMessage;
+import jetbrains.mps.messages.IMessageHandler;
+import jetbrains.mps.messages.MessageKind;
+import jetbrains.mps.project.structure.modules.ModuleReference;
 import jetbrains.mps.util.FileUtil;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Before;
@@ -32,7 +37,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 /**
  * @author Artem Tikhomirov
@@ -44,9 +53,11 @@ public class JavaCompilerTest {
 
   private File mySourceRoot;
   private File junitLib;
+  private File myJavaHome;
 
   @Before
   public void createSourceRoot() throws IOException {
+    myJavaHome = new File(System.getProperty("java.home"));
     mySourceRoot = Files.createTempDirectory("mps-compile-test").toFile();
     File projectRoot = new File(System.getProperty("user.dir"));
     // just need anything to use as additional classpath
@@ -54,98 +65,136 @@ public class JavaCompilerTest {
     Assume.assumeTrue(junitLib.getPath(), junitLib.exists());
   }
 
+
+
   @Test
   public void testWithEclipseCompiler() throws Exception {
-    doTest(new EclipseCompilerFacade());
+    final JavaCompilerOptions co = new JavaCompilerOptions(JavaVersion.VERSION_9);
+    try (JavaCompilerImpl jc = new JavaCompilerImpl(myJavaHome, co, JavaCompilerImpl.eclipseCompiler())) {
+      doTest(jc);
+    }
   }
 
   @Test
   public void testWithJavaxToolsCompiler() throws Exception {
-    doTest(new JdkToolCompilerFacade());
+    final JavaCompilerOptions co = new JavaCompilerOptions(JavaVersion.VERSION_9);
+    try (JavaCompilerImpl jc = new JavaCompilerImpl(myJavaHome, co, JavaCompilerImpl.defaultCompiler())) {
+      doTest(jc);
+    }
   }
 
-  private void doTest(JavaCompiler compiler) throws IOException {
-    compiler.setClasspath(Arrays.asList(junitLib.getAbsolutePath()));
-    compiler.setOptions(new JavaCompilerOptions(JavaVersion.VERSION_9));
-    CompilerErrors ce1 = new CompilerErrors();
-    compiler.setErrorSink(ce1);
-    ArrayList<ClassFile> cf1 = new ArrayList<>();
-    compiler.setClassFileSink(cf1::add);
+  private void doTest(JavaCompilerImpl compiler) throws IOException {
+    JavaModule jm = new JavaModule() {
+      @Override
+      public String name() {
+        return mySourceRoot.getName();
+      }
+
+      @Override
+      public SModuleReference moduleReference() {
+        return new ModuleReference(name(), null);
+      }
+
+      @Override
+      public Collection<String> getAllSourcePaths() {
+        return Collections.singleton(mySourceRoot.getAbsolutePath());
+      }
+
+      @Nullable
+      @Override
+      public File getClassesOut() {
+        return mySourceRoot;
+      }
+
+      @Nullable
+      @Override
+      public File getSourceOut() {
+        return null;
+      }
+
+      @Override
+      public Iterable<ResourceFile> getResourcesToCopy() {
+        return Collections.emptyList();
+      }
+
+      @Override
+      public boolean hasJavaToCompile() {
+        return true;
+      }
+    };
+    class MC implements BaseModuleContainer<JavaModule> {
+      @Override
+      public Stream<JavaModule> getDirtyModules() {
+        return Stream.of(jm);
+      }
+
+      @Override
+      public Collection<String> getCompileClasspath() {
+        return Arrays.asList(junitLib.getAbsolutePath());
+      }
+
+      @Override
+      public ModuleAnalyzerResult analyze() {
+        return ModuleAnalyzerResult.build(true, false, Collections.emptySet(), Collections.emptySet());
+      }
+    }
+    final Supplier<List<File>> findClassFiles = () -> {
+      File[] files = new File(jm.getClassesOut(), "a/b").listFiles((file, s) -> s.endsWith(".class"));
+      return files == null ? Collections.emptyList() : Arrays.asList(files);
+    };
+    //
     final File s1 = new File(mySourceRoot, "a/b/C.java");
     FileUtil.writeFile(s1, String.format(S1, "", ""));
-    compiler.addSource(new JavaFile(s1, "a.b.C", -1));
-    compiler.compile();
-    Assert.assertEquals(1, cf1.size());
-    cf1.forEach(this::assertClassFileNoErrors);
-    Assert.assertEquals(0, ce1.myFatals.size());
-    Assert.assertEquals(0, ce1.myCompile.size());
+    CompilerErrors ce = new CompilerErrors();
+    MPSCompilationResult cr = compiler.compile(new MC(), compiler.tracerForTests(ce));
+
+    Assert.assertTrue(cr.isCompiledAnything());
+    Assert.assertTrue(cr.isOk());
+    Assert.assertEquals(0, ce.myCompile.size());
+    Assert.assertEquals(0, cr.getErrorsCount());
+    Assert.assertEquals(0, cr.getWarningsCount());
+    List<File> cf = findClassFiles.get();
+    Assert.assertEquals(1, cf.size());
+    cf.forEach(this::assertClassFileNoErrors);
     //
-    cf1.clear();
-    CompilerErrors ce2 = new CompilerErrors();
+    FileUtil.clear(mySourceRoot);
     FileUtil.writeFile(s1, String.format(S1, AC1, IC1));
-    compiler.addSource(new JavaFile(s1, "a.b.C", -1));
-    compiler.setErrorSink(ce2);
-    compiler.compile();
-    Assert.assertEquals(3, cf1.size());
-    cf1.forEach(this::assertClassFileNoErrors);
-    Assert.assertEquals(0, ce2.myFatals.size());
-    Assert.assertEquals(0, ce2.myCompile.size());
+    ce = new CompilerErrors();
+    cr = compiler.compile(new MC(), compiler.tracerForTests(ce));
+    Assert.assertTrue(cr.isCompiledAnything());
+    Assert.assertTrue(cr.isOk());
+    Assert.assertEquals(0, ce.myCompile.size());
+    Assert.assertEquals(0, cr.getErrorsCount());
+    Assert.assertEquals(0, cr.getWarningsCount());
+    cf = findClassFiles.get();
+    Assert.assertEquals(3, cf.size());
+    cf.forEach(this::assertClassFileNoErrors);
     //
     // error inside main class
-    cf1.clear();
-    CompilerErrors ce3 = new CompilerErrors();
+    FileUtil.clear(mySourceRoot);
     FileUtil.writeFile(s1, String.format(S1, "new Object()", IC1));
-    compiler.addSource(new JavaFile(s1, "a.b.C", -1));
-    compiler.setErrorSink(ce3);
-    compiler.compile();
-    Assert.assertEquals(0, ce3.myFatals.size());
-    Assert.assertEquals(1, ce3.myCompile.size());
-    // ECJ reports 2 classes, C and C$Inner, while javax.tools only 1, C
-    //Assert.assertEquals(2, cf1.size());
-    Assert.assertTrue(cf1.size() >= 1);
-    cf1.forEach(this::assertClassFileWithErrors);
+    ce = new CompilerErrors();
+    cr = compiler.compile(new MC(), compiler.tracerForTests(ce));
+    Assert.assertEquals(2, ce.myCompile.size()); // one for general "Compilation issues"
+    Assert.assertEquals(1, cr.getErrorsCount());
+    Assert.assertEquals(0, cr.getWarningsCount());
+    cf = findClassFiles.get();
+    Assert.assertEquals(0, cf.size());
+    Assert.assertTrue(ce.myCompile.stream().anyMatch(m -> m.getHintObject() instanceof FileWithPosition));
   }
 
-  private void assertClassFileWithErrors(ClassFile cf) {
-    Assert.assertTrue(cf.hasErrors());
-    final byte[] classBytes = cf.getBytes();
-    // ECJ still reports bytes
-//    Assert.assertNull(classBytes);
+  private void assertClassFileNoErrors(File cf) {
+    Assert.assertTrue(cf.length() > 100);
   }
 
-  private void assertClassFileNoErrors(ClassFile cf) {
-    Assert.assertFalse(cf.hasErrors());
-    final byte[] classBytes = cf.getBytes();
-    Assert.assertNotNull(classBytes);
-    Assert.assertTrue(classBytes.length > 100);
-  }
-
-  private static final class CompilerErrors implements ErrorSink {
-    final List<String> myFatals = new ArrayList<>();
-    final List<Error> myCompile = new ArrayList<>();
+  private static final class CompilerErrors implements IMessageHandler {
+    final List<IMessage> myCompile = new ArrayList<>();
 
     @Override
-    public void fatalError(@NotNull String message) {
-      myFatals.add(message);
-    }
-
-    @Override
-    public void compileError(String fqName, String message, int lineNumber, int offset) {
-      myCompile.add(new Error(fqName, message, lineNumber, offset));
-    }
-  }
-
-  static final class Error {
-    final String fqName;
-    final String message;
-    final int lineNumber;
-    final int offset;
-
-    public Error(String fqName, String message, int lineNumber, int offset) {
-      this.fqName = fqName;
-      this.message = message;
-      this.lineNumber = lineNumber;
-      this.offset = offset;
+    public void handle(@NotNull IMessage msg) {
+      if (msg.getKind() == MessageKind.ERROR) {
+        myCompile.add(msg);
+      }
     }
   }
 }

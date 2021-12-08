@@ -31,6 +31,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+// builds caches based on {@link jetbrains.mps.make.java.ModelDependencies} information
+// stored in'dependencies' files.
 class Dependencies {
   private final Map<String, Set<String>> myDependencies = new HashMap<>();
   private final Map<String, Set<String>> myExtendsDependencies = new HashMap<>();
@@ -99,16 +101,6 @@ class Dependencies {
       myDependencies.put(className, r.getDependencies());
       myExtendsDependencies.put(className, r.getExtends());
     }
-  }
-
-  /**
-   * @deprecated no-op, always 0
-   *             there's no point in bogus file lookup logic independent of any other module file management
-   *             remove once 2021.1 is out
-   */
-@Deprecated(since = "2021.1", forRemoval = true)
-  public long getJavaFileLastModified(String fqName) {
-    return 0;
   }
 
   public SModule getModule(String fqName) {

@@ -36,10 +36,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * @deprecated not in use by {@code MPS} since {@code 2021.2}, MPS is capable to
+ * use Eclipse Compiler (ECJ) through regular {@link javax.tools.JavaCompiler} API.
+ *
+ * XXX don't forget to remove ecj.jar dependency once this class is gone
+ *
  * MPS java compiler class, which relies on the eclipse compiler {@link Compiler} functionality.
  * Works by consequently adding java source files by calling the method {@link #addSource(String, String)}
  * and once the method {@link #compile} after that
  */
+@Deprecated(since = "2021.3", forRemoval = true)
 public class EclipseJavaCompiler {
   private Map<String, CompilationUnit> myCompilationUnits = new HashMap<>();
   private Map<String, byte[]> myClasses = new HashMap<>();

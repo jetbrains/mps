@@ -18,9 +18,14 @@ package jetbrains.mps.make;
 import jetbrains.mps.compiler.JavaCompilerOptions;
 import jetbrains.mps.make.BaseModuleContainer.JavaModule;
 import jetbrains.mps.make.ModuleAnalyzer.ModuleAnalyzerResult;
+import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.util.performance.IPerformanceTracer.NullPerformanceTracer;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.TestOnly;
 
 import javax.tools.Diagnostic;
 import javax.tools.Diagnostic.Kind;
@@ -190,6 +195,15 @@ final class JavaCompilerImpl implements AutoCloseable {
       myFileManagerListener.withoutReporter();
       tracer.done();
     }
+  }
+
+  /**
+   * CompositeTracer got no public constructor, and I see no reason to expose one just for the sake of tests
+   */
+  @TestOnly
+  public CompositeTracer tracerForTests(IMessageHandler mh) {
+    final MessageSender ms = new MessageSender(mh, Logger.getLogger(getClass()), "", Level.ERROR);
+    return new CompositeTracer(new NullPerformanceTracer(), ms);
   }
 
   // neither argument is null. assume classpath configured

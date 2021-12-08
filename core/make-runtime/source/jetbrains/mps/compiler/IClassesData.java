@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,10 @@
 package jetbrains.mps.compiler;
 
 /**
+ * @deprecated Not in use any more nor any plans to resurrect.
  * fyodor, 1/27/11
  */
+@Deprecated(since = "2021.3", forRemoval = true)
 public interface IClassesData {
   ClassLoader getClassLoader(ClassLoader parent);
 }

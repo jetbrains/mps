@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -259,6 +259,8 @@ public class FileUtil {
   }
 
   /**
+   * FIXME how come this is the only method that brings IFile dependency here? I had an impression
+   *       this class is more about File, whereas IFileUtil is about IFile?
    * deletes the file and all its parents above which happen to be empty after this file's removal
    *
    * @return true iff the file has been removed

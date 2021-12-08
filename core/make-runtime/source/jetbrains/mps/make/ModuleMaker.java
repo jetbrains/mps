@@ -77,7 +77,8 @@ import java.util.stream.Stream;
  * <p>
  * Underneath this class analyzes module dependencies,
  * chooses which of the modules are dirty, collects all the java sources and handles
- * them to the eclipse java compiler (the mps wrapper {@link EclipseJavaCompiler})
+ * them to a {@link JavaCompilerImpl java compiler wrapper} that hides {@link JavaCompiler}
+ * peculiarities under {@link BaseModuleContainer}
  * <p>
  * fixme use bundle for this package
  * fixme check multiple computations of the same modules' dependencies (time wasting)
