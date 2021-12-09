@@ -19,7 +19,6 @@
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <!-- For historical reasons, next libraries were exposed through MPS.Core; need to write migration code to update references to proper solutions -->
       <sourceRoot location="util.jar" />
-      <sourceRoot location="3rd-party.jar" />
       <PackageScope>
         <include prefix="gnu.trove."/> <!-- trove4j.jar -->
         <include prefix="org.jdom."/> <!-- jdom.jar -->
