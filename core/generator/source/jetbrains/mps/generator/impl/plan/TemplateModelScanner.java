@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.generator.impl.plan;
 
 import jetbrains.mps.generator.impl.RuleUtil;
-import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.smodel.FastNodeFinder;
 import jetbrains.mps.smodel.FastNodeFinderManager;
 import jetbrains.mps.smodel.SNodeUtil;
@@ -38,8 +37,6 @@ import java.util.Iterator;
 import java.util.Set;
 
 /**
- * TemplateModelScanner done right.
- *
  * Facility to analyze generator model and collect set of target languages along with set of languages in generator queries
  * <pre>
  *   new ModelScanner().scan(modelA).scan(modelB).getTargetLanguages();
@@ -47,11 +44,12 @@ import java.util.Set;
  *
  * @author Artem Tikhomirov
  */
-public final class ModelScanner {
+public final class TemplateModelScanner {
+  // JFTR, there's previous version of this class, named TemplateModelScanner, while this one was ModelScanner.
   private final Set<SLanguage> myTargetLanguages = new HashSet<>();
   private final Set<SLanguage> myQueryLanguages = new HashSet<>();
 
-  public ModelScanner() {
+  public TemplateModelScanner() {
   }
 
   public Set<SLanguage> getTargetLanguages() {
@@ -62,30 +60,7 @@ public final class ModelScanner {
     return myQueryLanguages;
   }
 
-  /**
-   * Compatibility code, do not use.
-   * Legacy TemplateModelScanner used to add j.m.lang.generator to query languages if there's at least one node in template model,
-   * likely to force generation of QueriesGenerated. Shall check if everything is ok if QueriesGenerated is missing,
-   * but templates/rules are present (e.g. there might be an MC with a drop rule that doesn't require any query).
-   * Also shall check generated generators case, if they are ok (i.e. TemplateModel or whatever else needed get generated)
-   *
-   * Another trick TemplateModelScanner used to do is to drop lang.generator from target languages, likely as a quick-n-dirty
-   * way not to fail in case there are errors in the scanner. Generally, lang.generator shall not pop up in target languages,
-   * provided there are no errors in the TMS implementation, and we are not targeting template language.
-   *
-   * Drop once there's no use of this method.
-   */
-  @Deprecated(since = "0", forRemoval = true)
-  public ModelScanner scanInLegacyMode(SModel model) {
-    scan(model);
-
-    if (model.getRootNodes().iterator().hasNext()) {
-      myQueryLanguages.add(BootstrapLanguages.getGeneratorLang());
-    }
-    return this;
-  }
-
-  public ModelScanner scan(SModel model) {
+  public TemplateModelScanner scan(SModel model) {
 //    assert SModelStereotype.isGeneratorModel(model);
     FastNodeFinder fnf = FastNodeFinderManager.get(model);
     Translate<SNode, SNode> parentExtractor = t -> t.getParent();

@@ -2833,11 +2833,11 @@
                   <node concept="3cpWsn" id="eB6_hfBaWh" role="3cpWs9">
                     <property role="TrG5h" value="ms" />
                     <node concept="3uibUv" id="eB6_hfBaWi" role="1tU5fm">
-                      <ref role="3uigEE" to="tft2:~ModelScanner" resolve="ModelScanner" />
+                      <ref role="3uigEE" to="tft2:~TemplateModelScanner" resolve="TemplateModelScanner" />
                     </node>
                     <node concept="2ShNRf" id="eB6_hfBaWj" role="33vP2m">
                       <node concept="1pGfFk" id="eB6_hfBaWk" role="2ShVmc">
-                        <ref role="37wK5l" to="tft2:~ModelScanner.&lt;init&gt;()" resolve="ModelScanner" />
+                        <ref role="37wK5l" to="tft2:~TemplateModelScanner.&lt;init&gt;()" resolve="TemplateModelScanner" />
                       </node>
                     </node>
                   </node>
@@ -2883,7 +2883,7 @@
                               <ref role="3cqZAo" node="eB6_hfBaWh" resolve="ms" />
                             </node>
                             <node concept="liA8E" id="eB6_hfBaWu" role="2OqNvi">
-                              <ref role="37wK5l" to="tft2:~ModelScanner.scan(org.jetbrains.mps.openapi.model.SModel)" resolve="scan" />
+                              <ref role="37wK5l" to="tft2:~TemplateModelScanner.scan(org.jetbrains.mps.openapi.model.SModel)" resolve="scan" />
                               <node concept="37vLTw" id="eB6_hfBaWv" role="37wK5m">
                                 <ref role="3cqZAo" node="eB6_hfBaWy" resolve="m" />
                               </node>
@@ -2928,7 +2928,7 @@
                         <ref role="3cqZAo" node="eB6_hfBaWh" resolve="ms" />
                       </node>
                       <node concept="liA8E" id="eB6_hfBaWH" role="2OqNvi">
-                        <ref role="37wK5l" to="tft2:~ModelScanner.getTargetLanguages()" resolve="getTargetLanguages" />
+                        <ref role="37wK5l" to="tft2:~TemplateModelScanner.getTargetLanguages()" resolve="getTargetLanguages" />
                       </node>
                     </node>
                   </node>
@@ -3749,11 +3749,11 @@
                 <node concept="3cpWsn" id="VdkN0k0Yl7" role="3cpWs9">
                   <property role="TrG5h" value="ms" />
                   <node concept="3uibUv" id="VdkN0k0Yl8" role="1tU5fm">
-                    <ref role="3uigEE" to="tft2:~ModelScanner" resolve="ModelScanner" />
+                    <ref role="3uigEE" to="tft2:~TemplateModelScanner" resolve="TemplateModelScanner" />
                   </node>
                   <node concept="2ShNRf" id="VdkN0k0Yl9" role="33vP2m">
                     <node concept="1pGfFk" id="VdkN0k0Yla" role="2ShVmc">
-                      <ref role="37wK5l" to="tft2:~ModelScanner.&lt;init&gt;()" resolve="ModelScanner" />
+                      <ref role="37wK5l" to="tft2:~TemplateModelScanner.&lt;init&gt;()" resolve="TemplateModelScanner" />
                     </node>
                   </node>
                 </node>
@@ -3799,7 +3799,7 @@
                             <ref role="3cqZAo" node="VdkN0k0Yl7" resolve="ms" />
                           </node>
                           <node concept="liA8E" id="VdkN0k0Ylk" role="2OqNvi">
-                            <ref role="37wK5l" to="tft2:~ModelScanner.scan(org.jetbrains.mps.openapi.model.SModel)" resolve="scan" />
+                            <ref role="37wK5l" to="tft2:~TemplateModelScanner.scan(org.jetbrains.mps.openapi.model.SModel)" resolve="scan" />
                             <node concept="37vLTw" id="VdkN0k0Yll" role="37wK5m">
                               <ref role="3cqZAo" node="VdkN0k0Ylo" resolve="m" />
                             </node>
@@ -3844,7 +3844,7 @@
                       <ref role="3cqZAo" node="VdkN0k0Yl7" resolve="ms" />
                     </node>
                     <node concept="liA8E" id="VdkN0k0Ylz" role="2OqNvi">
-                      <ref role="37wK5l" to="tft2:~ModelScanner.getTargetLanguages()" resolve="getTargetLanguages" />
+                      <ref role="37wK5l" to="tft2:~TemplateModelScanner.getTargetLanguages()" resolve="getTargetLanguages" />
                     </node>
                   </node>
                 </node>

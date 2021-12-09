@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -88,7 +88,7 @@ public class TemplateModelScanTest implements EnvironmentAware {
     System.out.println("Total template models:" + templateModels2Test.length);
     */
     try {
-      final ModelScanner[] s2 = new ModelScanner[templateModels2Test.length];
+      final TemplateModelScanner[] s2 = new TemplateModelScanner[templateModels2Test.length];
       final long[] s2Dur = new long[s2.length];
       Runnable cmd = new Runnable() {
         @Override
@@ -97,7 +97,7 @@ public class TemplateModelScanTest implements EnvironmentAware {
             final SModelReference mr = PersistenceFacade.getInstance().createModelReference(templateModels2Test[i]);
             SModel m = mr.resolve(mpsProject.getRepository());
             final long start = System.nanoTime();
-            s2[i] = new ModelScanner();
+            s2[i] = new TemplateModelScanner();
             s2[i].scan(m);
 //            s2[i].scanInLegacyMode(m);
             final long end = System.nanoTime();

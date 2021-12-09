@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.smodel.Language;
 import java.util.Objects;
-import jetbrains.mps.generator.impl.plan.ModelScanner;
+import jetbrains.mps.generator.impl.plan.TemplateModelScanner;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.behavior.LanguageIdentity__BehaviorDescriptor;
@@ -326,7 +326,7 @@ public class QueriesGenerated {
     SRepository repo = _context.getOriginalInputModel().getRepository();
     SModuleReference generatorModuleRef = PersistenceFacade.getInstance().createModuleReference(Module__BehaviorDescriptor.getModuleReference_id7OJukvJ5PmG.invoke(_context.getNode()));
     SModule generatorModule = generatorModuleRef.resolve(repo);
-    ModelScanner ms = new ModelScanner();
+    TemplateModelScanner ms = new TemplateModelScanner();
     // don't want to cast to smodel.Generator, mimic its getOwnTemplateModels()
     for (SModel m : generatorModule.getModels()) {
       if (SModelStereotype.isGeneratorModel(m)) {
@@ -352,7 +352,7 @@ public class QueriesGenerated {
     SRepository repo = _context.getOriginalInputModel().getRepository();
     SModuleReference generatorModuleRef = PersistenceFacade.getInstance().createModuleReference(Module__BehaviorDescriptor.getModuleReference_id7OJukvJ5PmG.invoke(_context.getNode()));
     SModule generatorModule = generatorModuleRef.resolve(repo);
-    ModelScanner ms = new ModelScanner();
+    TemplateModelScanner ms = new TemplateModelScanner();
     // don't want to cast to smodel.Generator, mimic its getOwnTemplateModels()
     for (SModel m : generatorModule.getModels()) {
       if (SModelStereotype.isGeneratorModel(m)) {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import jetbrains.mps.errors.item.ModelReportItem;
 import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.generator.impl.RuleUtil;
-import jetbrains.mps.generator.impl.plan.ModelScanner;
+import jetbrains.mps.generator.impl.plan.TemplateModelScanner;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
@@ -259,7 +259,7 @@ public final class ModelValidator {
   // pre: SModelStereotype.isGeneratorModel(model) == true
   private void checkGeneratorModelNotEmpty(Consumer<? super ModelValidationProblem> result) {
     SModel model = myModel;
-    ModelScanner ms = new ModelScanner().scan(model);
+    TemplateModelScanner ms = new TemplateModelScanner().scan(model);
     if (ms.getTargetLanguages().isEmpty() && ms.getQueryLanguages().isEmpty()) {
       FastNodeFinder fnf = FastNodeFinderManager.get(model);
       boolean noModifyRules = fnf.getNodes(RuleUtil.concept_AbandonInput_RuleConsequence, false).isEmpty();

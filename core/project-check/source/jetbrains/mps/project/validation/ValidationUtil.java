@@ -23,7 +23,7 @@ import jetbrains.mps.errors.item.ModelReportItemBase;
 import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.generator.impl.GenPlanTranslator;
 import jetbrains.mps.generator.impl.plan.DependencyCollectorPlanBuilder;
-import jetbrains.mps.generator.impl.plan.ModelScanner;
+import jetbrains.mps.generator.impl.plan.TemplateModelScanner;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
@@ -229,7 +229,7 @@ public class ValidationUtil {
         continue;
       }
       {
-        ModelScanner ms = new ModelScanner().scan(model);
+        TemplateModelScanner ms = new TemplateModelScanner().scan(model);
         usedLanguages.addAll(ms.getTargetLanguages());
       }
       depScan.walk(model);
