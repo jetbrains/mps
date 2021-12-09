@@ -191,7 +191,6 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
     ttrace.pop();
     myInplaceModelChange = myDeltaBuilder != null;
 
-    myPerThreadLabels.add(myLabeledMappings); // just in case there's anything there (quite unlikely, though; for script there's relevant code in executeScript())
     getMappings().fillFrom(myPerThreadLabels);
     // we can't just throw LMCollectors away, there could be weaving rules and delayed changes that
     // may register more labels that we need to flush once more. The only assumption is that there are no
@@ -301,7 +300,6 @@ public class TemplateGenerator extends AbstractTemplateGenerator {
 
   public void executeScript(TemplateMappingScript script) throws GenerationFailureException {
     getDefaultExecutionContext().executeScript(script, myInputModel, newExecutionEnvironment(getDefaultExecutionContext()));
-    getMappings().fillFrom(Collections.singletonList(myLabeledMappings));
   }
 
   protected void applyReductions(boolean isPrimary) throws GenerationCanceledException, GenerationFailureException {

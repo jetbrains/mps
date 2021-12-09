@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,11 +66,6 @@ import java.util.List;
   @Override
   public boolean areMappingsAvailable() {
     return false;
-  }
-
-  @Override
-  public void registerMappingLabel(SNode inputNode, String mappingName, SNode outputNode) {
-    throw new UnsupportedOperationException();
   }
 
   @Nullable

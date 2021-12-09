@@ -205,12 +205,12 @@ public class TemplateQueryContext {
     // technically, we could do myGenerator.isStrict() && myGenerator.areMappingsAvailable() -> fail "no more labels once transformation is over"
     // but this would expose knowledge that areMappingsAvailable is meaningful only in strict mode.
     // Since we do not restrict registration of mapping labels e.g. in TEEImpl, I decided not to keep a check here
-    if (myEnv == null) {
-      // FIXME now that we use TEE for scripts, we can avoid direct ITemplateGenerator,
-      //       left this code until compiled templates switch to TEE (once 2021.1 is out)
-      myGenerator.registerMappingLabel(inputNode, mappingName, outputNode);
-    } else {
+    if (myEnv != null) {
       myEnv.registerLabel(inputNode, outputNode, mappingName);
+    } else {
+      // with Scripts using TQC initialized with TEE (since 21.1) and they are primary clients of this operation,
+      // the only scenario we get here is compiled templates from 20.3 or earlier.
+      throw new IllegalStateException("ML registration is not possible here");
     }
   }
 

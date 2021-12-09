@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,19 +33,11 @@ public interface ITemplateGenerator extends GeneratorQueryProvider.Source {
   /**
    * Generally, mapping labels are not available till the end ot structure transformation, which may run in
    * parallel threads and thus access to label would be unpredictable.
-   * Use this method to control retrieve of labels only, it's not suitable to tell whether it's
-   * possible to {@link #registerMappingLabel(SNode, String, SNode) add new label}
-   * @return <code>true</code> if it's proper time to query (!) for label
+   * Use this method to control retrieval of labels only, it's not suitable to tell whether it's
+   * possible to add new label
+   * @return {@code true} if it's proper time to query (!) for label
    */
   boolean areMappingsAvailable();
-
-  /**
-   * @deprecated Use {@link jetbrains.mps.generator.runtime.TemplateExecutionEnvironment#registerLabel(SNode, SNode, String)} instead when
-   *   possible. This method is left solely for scenarios of LM registration from inside scripts (through genContext/TemplateQueryContext operations) when
-   *   TEE is not available.
-   */
-@Deprecated(since = "2021.1", forRemoval = true)
-  void registerMappingLabel(SNode inputNode, String mappingName, SNode outputNode);
 
   /**
    * @param inputNode node from almost any model that may have served as an input for a generator. We tolerate null value now, indicating

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,9 +44,6 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
 
   private final RoleValidation myValidation;
   private final GeneratorMappings myMappings;
-  // just for this generator instance, not shared between runs (collected data merged into GM at the end of step)
-  // FIXME refactor TemplateMappingScript to take TEE instead of just IGenerator, and remove this collection altogether
-  protected final LMCollector myLabeledMappings = new LMCollector();
   private final Source myQuerySource;
 
   protected AbstractTemplateGenerator(GenerationSessionContext operationContext, SModel inputModel, SModel outputModel, GeneratorMappings mappings,
@@ -95,20 +92,7 @@ public abstract class AbstractTemplateGenerator implements ITemplateGenerator {
   }
 
   @Override
-  public void registerMappingLabel(SNode inputNode, String mappingName, SNode outputNode) {
-    if (mappingName == null || outputNode == null) {
-      return;
-    }
-    if (inputNode != null) {
-      myLabeledMappings.add(mappingName, inputNode, outputNode);
-    } else {
-      myLabeledMappings.add(mappingName, outputNode);
-    }
-  }
-
-  @Override
   public SNode findOutputNodeByInputNodeAndMappingName(SNode inputNode, String mappingName) {
-    // FIXME guess, I shall check myLabeledMappings here first, pretty much like TQC consults TEE LMs first, and then resort to that known for all threads
     if (inputNode != null) {
       return myMappings.findOutputNodeByInputNodeAndMappingName(inputNode, mappingName);
     } else {
