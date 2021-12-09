@@ -114,14 +114,14 @@ public class ChangeEditorMessage extends EditorMessageWithTarget {
 
       boolean commentedNode = baseCommentAttribute && childCell.isBig() && !(Objects.equals(childCell.getSNode(), getNode())) && !(Objects.equals(childCell.getParent().getSNode(), getNode()));
 
-      boolean useBackgroundColor = Sequence.fromIterable(movedNodes).isNotEmpty() && color != backgroundColor && Sequence.fromIterable(movedNodes).contains(editorCell.getSNode().getNodeId()) && (!(baseCommentAttribute) || commentedNode);
+      boolean useBackgroundColor = Sequence.fromIterable(movedNodes).isNotEmpty() && color != backgroundColor && Sequence.fromIterable(movedNodes).contains(check_myu41h_a0a0a0d0e0v(editorCell.getSNode())) && (!(baseCommentAttribute) || commentedNode);
 
       Color childCellColor = (useBackgroundColor ? backgroundColor : color);
 
       if (childCell instanceof EditorCell_Collection) {
         paintSelection(graphics, childCellColor, backgroundColor, movedNodes, ((EditorCell_Collection) childCell));
       } else {
-        if (SetSequence.fromSet(myDescendantIds).contains(childCell.getSNode().getNodeId())) {
+        if (SetSequence.fromSet(myDescendantIds).contains(check_myu41h_a0a0a0h0e0v(childCell.getSNode()))) {
           ((jetbrains.mps.nodeEditor.cells.EditorCell) childCell).paintSelection(graphics, childCellColor, false);
         }
       }
@@ -452,6 +452,18 @@ __switch__:
 
   public interface ConflictChecker {
     boolean isChangeConflicted(ModelChange change);
+  }
+  private static SNodeId check_myu41h_a0a0a0d0e0v(SNode checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getNodeId();
+    }
+    return null;
+  }
+  private static SNodeId check_myu41h_a0a0a0h0e0v(SNode checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getNodeId();
+    }
+    return null;
   }
 
   private static final class CONCEPTS {
