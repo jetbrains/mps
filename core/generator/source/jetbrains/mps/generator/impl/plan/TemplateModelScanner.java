@@ -100,6 +100,12 @@ public final class TemplateModelScanner {
   }
 
   private void processTemplateNode(Collection<SNode> templateNodes, Translate<SNode, SNode> t) {
+    // FIXME there are certain macros which templateNode we don't need to look at (e.g. COPY-SRC)
+    //       We can use RuleUtil.isMacroIgnoringTemplateNode(node) to tell these, however, can not
+    //       decide where to put the check. MacroFilter is there to *prevent* visiting structure of
+    //       the macro. Seems that NodeScanner.scanStructure has to check each node if there's
+    //       a macro there, and the last one of these is !RuleUtil.isMacroIgnoringTemplateNode(node),
+    //       but this sounds a bit too much. Pass another condition into scanStructure?
     final NodeScanner ns = new NodeScanner(new MacroFilter());
     for (SNode tn : templateNodes) {
       ns.scanStructure(t.translate(tn));
@@ -225,7 +231,6 @@ public final class TemplateModelScanner {
 
 
   // walk hierarchy of nodes, excluding template macros
-  // FIXME there are certain macros which templateNode we don't need to look at (e.g. COPY-SRC)
   private static class MacroFilter implements Condition<SNode> {
 
     @Override

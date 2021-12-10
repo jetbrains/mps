@@ -2659,6 +2659,142 @@
         </node>
       </node>
     </node>
+    <node concept="Wx3nA" id="6aVDk93i82w" role="jymVt">
+      <property role="TrG5h" value="NodeMacroIgnoreTemplateNode" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="6aVDk93i82x" role="1B3o_S" />
+      <node concept="3uibUv" id="6aVDk93i82y" role="1tU5fm">
+        <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
+        <node concept="3uibUv" id="6aVDk93i82z" role="11_B2D">
+          <ref role="3uigEE" to="c17a:~SConcept" resolve="SConcept" />
+        </node>
+      </node>
+      <node concept="2ShNRf" id="6aVDk93i82$" role="33vP2m">
+        <node concept="2i4dXS" id="6aVDk93i82_" role="2ShVmc">
+          <node concept="3uibUv" id="6aVDk93i82A" role="HW$YZ">
+            <ref role="3uigEE" to="c17a:~SConcept" resolve="SConcept" />
+          </node>
+        </node>
+      </node>
+      <node concept="z59LJ" id="6aVDk93i82B" role="lGtFl">
+        <node concept="TZ5HA" id="6aVDk93i82C" role="TZ5H$">
+          <node concept="1dT_AC" id="6aVDk93i82D" role="1dT_Ay">
+            <property role="1dT_AB" value="Some node macro ignore template node they are attached to, e.g. COPY-SRC, CALL (when template doesn't use" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="6aVDk93isxF" role="TZ5H$">
+          <node concept="1dT_AC" id="6aVDk93isxG" role="1dT_Ay">
+            <property role="1dT_AB" value="call site), etc. Languages of these template nodes could be safely ignored as they are not going to show up" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="6aVDk93ivIF" role="TZ5H$">
+          <node concept="1dT_AC" id="6aVDk93ivIG" role="1dT_Ay">
+            <property role="1dT_AB" value="in an output model. Though it's unlikely a big deal, as most of such macros would be attached to a node " />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="6aVDk93iyYy" role="TZ5H$">
+          <node concept="1dT_AC" id="6aVDk93iyYz" role="1dT_Ay">
+            <property role="1dT_AB" value="with a language used elsewhere in templates, I still think it's worth to avoid superfluous languages" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="6aVDk93iAer" role="TZ5H$">
+          <node concept="1dT_AC" id="6aVDk93iAes" role="1dT_Ay">
+            <property role="1dT_AB" value="e.g. in case pieces of a template has been copied between different template models." />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1Pe0a1" id="6aVDk93iLWn" role="jymVt">
+      <node concept="3clFbS" id="6aVDk93iLWp" role="1Pe0a2">
+        <node concept="3clFbF" id="6aVDk93iTV$" role="3cqZAp">
+          <node concept="2OqwBi" id="6aVDk93iXB8" role="3clFbG">
+            <node concept="37vLTw" id="6aVDk93iTVz" role="2Oq$k0">
+              <ref role="3cqZAo" node="6aVDk93i82w" resolve="NodeMacroIgnoreTemplateNode" />
+            </node>
+            <node concept="liA8E" id="6aVDk93j0uf" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
+              <node concept="37vLTw" id="6aVDk93j3CW" role="37wK5m">
+                <ref role="3cqZAo" node="7QeCZOGPu8L" resolve="concept_CopySrcNodeMacro" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6aVDk93jdSC" role="3cqZAp">
+          <node concept="2OqwBi" id="6aVDk93jdSD" role="3clFbG">
+            <node concept="37vLTw" id="6aVDk93jdSE" role="2Oq$k0">
+              <ref role="3cqZAo" node="6aVDk93i82w" resolve="NodeMacroIgnoreTemplateNode" />
+            </node>
+            <node concept="liA8E" id="6aVDk93jdSF" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
+              <node concept="37vLTw" id="6aVDk93jdSG" role="37wK5m">
+                <ref role="3cqZAo" node="7QeCZOGPu8P" resolve="concept_CopySrcListMacro" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6aVDk93j$1d" role="3cqZAp">
+          <node concept="2OqwBi" id="6aVDk93j$1e" role="3clFbG">
+            <node concept="37vLTw" id="6aVDk93j$1f" role="2Oq$k0">
+              <ref role="3cqZAo" node="6aVDk93i82w" resolve="NodeMacroIgnoreTemplateNode" />
+            </node>
+            <node concept="liA8E" id="6aVDk93j$1g" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
+              <node concept="37vLTw" id="6aVDk93j$1h" role="37wK5m">
+                <ref role="3cqZAo" node="18LSMZRFvcz" resolve="concept_InsertMacro" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6aVDk93jG_k" role="3cqZAp">
+          <node concept="2OqwBi" id="6aVDk93jG_l" role="3clFbG">
+            <node concept="37vLTw" id="6aVDk93jG_m" role="2Oq$k0">
+              <ref role="3cqZAo" node="6aVDk93i82w" resolve="NodeMacroIgnoreTemplateNode" />
+            </node>
+            <node concept="liA8E" id="6aVDk93jG_n" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
+              <node concept="37vLTw" id="6aVDk93jG_o" role="37wK5m">
+                <ref role="3cqZAo" node="Ck8l7WsYqD" resolve="concept_InsertCallSiteMacro" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="6aVDk93lb1t" role="3cqZAp">
+          <node concept="1PaTwC" id="6aVDk93lb1u" role="1aUNEU">
+            <node concept="3oM_SD" id="6aVDk93lFj2" role="1PaTwD">
+              <property role="3oM_SC" value="CALL" />
+            </node>
+            <node concept="3oM_SD" id="6aVDk93lbPh" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="6aVDk93lFja" role="1PaTwD">
+              <property role="3oM_SC" value="SWITCH" />
+            </node>
+            <node concept="3oM_SD" id="6aVDk93lbPt" role="1PaTwD">
+              <property role="3oM_SC" value="require" />
+            </node>
+            <node concept="3oM_SD" id="6aVDk93lbPE" role="1PaTwD">
+              <property role="3oM_SC" value="further" />
+            </node>
+            <node concept="3oM_SD" id="6aVDk93lbPM" role="1PaTwD">
+              <property role="3oM_SC" value="check," />
+            </node>
+            <node concept="3oM_SD" id="6aVDk93lFjh" role="1PaTwD">
+              <property role="3oM_SC" value="therefore" />
+            </node>
+            <node concept="3oM_SD" id="6aVDk93lFjp" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="6aVDk93lFjy" role="1PaTwD">
+              <property role="3oM_SC" value="listed" />
+            </node>
+            <node concept="3oM_SD" id="6aVDk93lFjG" role="1PaTwD">
+              <property role="3oM_SC" value="here" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="6aVDk93i6Ru" role="jymVt" />
     <node concept="Wx3nA" id="64UEbXFWxak" role="jymVt">
       <property role="TrG5h" value="TemplateLangElements" />
       <property role="3TUv4t" value="true" />
@@ -3078,6 +3214,138 @@
         <property role="TrG5h" value="nodeMacro" />
         <node concept="3Tqbb2" id="7vbaBZCVgSQ" role="1tU5fm">
           <ref role="ehGHo" to="tpf8:fP7Vmt2" resolve="NodeMacro" />
+        </node>
+      </node>
+    </node>
+    <node concept="2YIFZL" id="6aVDk93jXy7" role="jymVt">
+      <property role="TrG5h" value="isMacroIgnoringTemplateNode" />
+      <node concept="37vLTG" id="6aVDk93krDx" role="3clF46">
+        <property role="TrG5h" value="n" />
+        <node concept="3Tqbb2" id="6aVDk93krDy" role="1tU5fm" />
+      </node>
+      <node concept="10P_77" id="6aVDk93k5I_" role="3clF45" />
+      <node concept="3Tm1VV" id="6aVDk93jXya" role="1B3o_S" />
+      <node concept="3clFbS" id="6aVDk93jXyb" role="3clF47">
+        <node concept="3cpWs8" id="6aVDk93lFlt" role="3cqZAp">
+          <node concept="3cpWsn" id="6aVDk93lFlu" role="3cpWs9">
+            <property role="TrG5h" value="cc" />
+            <node concept="3bZ5Sz" id="6aVDk93l6km" role="1tU5fm" />
+            <node concept="2OqwBi" id="6aVDk93lFlv" role="33vP2m">
+              <node concept="37vLTw" id="6aVDk93lFlw" role="2Oq$k0">
+                <ref role="3cqZAo" node="6aVDk93krDx" resolve="n" />
+              </node>
+              <node concept="2yIwOk" id="6aVDk93lFlx" role="2OqNvi" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6aVDk93lOqg" role="3cqZAp">
+          <node concept="3clFbS" id="6aVDk93lOqi" role="3clFbx">
+            <node concept="3cpWs6" id="6aVDk93m0SX" role="3cqZAp">
+              <node concept="3clFbT" id="6aVDk93m1ai" role="3cqZAk">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="6aVDk93kBHn" role="3clFbw">
+            <node concept="37vLTw" id="6aVDk93lVDr" role="2Oq$k0">
+              <ref role="3cqZAo" node="6aVDk93i82w" resolve="NodeMacroIgnoreTemplateNode" />
+            </node>
+            <node concept="liA8E" id="6aVDk93kGNZ" role="2OqNvi">
+              <ref role="37wK5l" to="33ny:~Set.contains(java.lang.Object)" resolve="contains" />
+              <node concept="37vLTw" id="6aVDk93lFly" role="37wK5m">
+                <ref role="3cqZAo" node="6aVDk93lFlu" resolve="cc" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6aVDk93m719" role="3cqZAp">
+          <node concept="3clFbS" id="6aVDk93m71b" role="3clFbx">
+            <node concept="3cpWs6" id="6aVDk93nCml" role="3cqZAp">
+              <node concept="3clFbT" id="6aVDk93nCHJ" role="3cqZAk">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+          <node concept="1Wc70l" id="6aVDk93mVDs" role="3clFbw">
+            <node concept="3fqX7Q" id="6aVDk93n$82" role="3uHU7w">
+              <node concept="2OqwBi" id="6aVDk93n$84" role="3fr31v">
+                <node concept="2OqwBi" id="6aVDk93n$85" role="2Oq$k0">
+                  <node concept="1PxgMI" id="6aVDk93n$86" role="2Oq$k0">
+                    <property role="1BlNFB" value="true" />
+                    <node concept="chp4Y" id="6aVDk93n$87" role="3oSUPX">
+                      <ref role="cht4Q" to="tpf8:1jRYachIf5f" resolve="TemplateCallMacro" />
+                    </node>
+                    <node concept="37vLTw" id="6aVDk93n$88" role="1m5AlR">
+                      <ref role="3cqZAo" node="6aVDk93krDx" resolve="n" />
+                    </node>
+                  </node>
+                  <node concept="3TrEf2" id="6aVDk93n$89" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpf8:1vDgt48Nz5N" resolve="template" />
+                  </node>
+                </node>
+                <node concept="3TrcHB" id="6aVDk93n$8a" role="2OqNvi">
+                  <ref role="3TsBF5" to="tpf8:1zGVNdDoES9" resolve="needCallSite" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="6aVDk93mIl8" role="3uHU7B">
+              <node concept="37vLTw" id="6aVDk93mEbd" role="2Oq$k0">
+                <ref role="3cqZAo" node="7QeCZOGPu99" resolve="concept_TemplateCallMacro" />
+              </node>
+              <node concept="liA8E" id="6aVDk93mMwt" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
+                <node concept="37vLTw" id="6aVDk93mRo0" role="37wK5m">
+                  <ref role="3cqZAo" node="6aVDk93lFlu" resolve="cc" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="6aVDk93nG$3" role="3cqZAp">
+          <node concept="3clFbS" id="6aVDk93nG$4" role="3clFbx">
+            <node concept="3cpWs6" id="6aVDk93nG$5" role="3cqZAp">
+              <node concept="3clFbT" id="6aVDk93nG$6" role="3cqZAk">
+                <property role="3clFbU" value="true" />
+              </node>
+            </node>
+          </node>
+          <node concept="1Wc70l" id="6aVDk93nG$7" role="3clFbw">
+            <node concept="3fqX7Q" id="6aVDk93nG$8" role="3uHU7w">
+              <node concept="2OqwBi" id="6aVDk93nG$9" role="3fr31v">
+                <node concept="2OqwBi" id="6aVDk93nG$a" role="2Oq$k0">
+                  <node concept="1PxgMI" id="6aVDk93nG$b" role="2Oq$k0">
+                    <property role="1BlNFB" value="true" />
+                    <node concept="chp4Y" id="6aVDk93nG$c" role="3oSUPX">
+                      <ref role="cht4Q" to="tpf8:QzR6Tht7mj" resolve="TemplateSwitchMacro" />
+                    </node>
+                    <node concept="37vLTw" id="6aVDk93nG$d" role="1m5AlR">
+                      <ref role="3cqZAo" node="6aVDk93krDx" resolve="n" />
+                    </node>
+                  </node>
+                  <node concept="3TrEf2" id="6aVDk93nG$e" role="2OqNvi">
+                    <ref role="3Tt5mk" to="tpf8:1vDgt48Nz5N" resolve="template" />
+                  </node>
+                </node>
+                <node concept="3TrcHB" id="6aVDk93nG$f" role="2OqNvi">
+                  <ref role="3TsBF5" to="tpf8:1zGVNdDoES9" resolve="needCallSite" />
+                </node>
+              </node>
+            </node>
+            <node concept="2OqwBi" id="6aVDk93nG$g" role="3uHU7B">
+              <node concept="37vLTw" id="6aVDk93nG$h" role="2Oq$k0">
+                <ref role="3cqZAo" node="QzR6Ti1bA3" resolve="concept_TemplateSwitchMacro" />
+              </node>
+              <node concept="liA8E" id="6aVDk93nG$i" role="2OqNvi">
+                <ref role="37wK5l" to="wyt6:~Object.equals(java.lang.Object)" resolve="equals" />
+                <node concept="37vLTw" id="6aVDk93nG$j" role="37wK5m">
+                  <ref role="3cqZAo" node="6aVDk93lFlu" resolve="cc" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="6aVDk93kvoP" role="3cqZAp">
+          <node concept="3clFbT" id="6aVDk93o5DI" role="3cqZAk" />
         </node>
       </node>
     </node>
