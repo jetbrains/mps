@@ -6,10 +6,11 @@
     <facet pluginId="jetbrains.mps.kotlin" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <!-- this module only provide java libraries for compilation, see jetbrains.mps.kotlin.stdlib for actual stubs -->
     <stubModelEntry path="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-common-1.6.0.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-kotlin/lib/kotlin-stdlib-1.6.0.jar" />
   </stubModelEntries>
   <models>
+    <!-- Regular (JVM) stdlib is not included there -->
     <modelRoot contentPath="${mps_home}/plugins/mps-kotlin/lib" type="kotlin_common">
       <sourceRoot location="kotlin-stdlib-common-1.6.0.jar" />
       <sourceRoot location="kotlin-builtins.jar" />

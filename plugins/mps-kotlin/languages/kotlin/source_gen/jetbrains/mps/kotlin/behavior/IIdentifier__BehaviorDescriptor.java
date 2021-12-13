@@ -10,20 +10,24 @@ import jetbrains.mps.kotlin.runtime.members.signature.MemberSignature;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class IIdentifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af330L, "jetbrains.mps.kotlin.structure.IIdentifier");
 
   public static final SMethod<Class<? extends MemberSignature>> getMemberSignatureKind_id5q426iHFtTk = new SMethodBuilder<Class<? extends MemberSignature>>(new SJavaCompoundTypeImpl(Class.class)).name("getMemberSignatureKind").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5q426iHFtTk").build();
+  public static final SMethod<String> getNestedName_id1d2BQ0ZyA$g = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNestedName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1d2BQ0ZyA$g").build(SMethodBuilder.createJavaParameter(NestedIdentifierConfiguration.class, ""));
+  public static final SMethod<SNode> getImportRoot_id1d2BQ0ZAmKw = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getImportRoot").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1d2BQ0ZAmKw").build(SMethodBuilder.createJavaParameter(NestedIdentifierConfiguration.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMemberSignatureKind_id5q426iHFtTk);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMemberSignatureKind_id5q426iHFtTk, getNestedName_id1d2BQ0ZyA$g, getImportRoot_id1d2BQ0ZAmKw);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -31,6 +35,30 @@ public final class IIdentifier__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static Class<? extends MemberSignature> getMemberSignatureKind_id5q426iHFtTk(@NotNull SAbstractConcept __thisConcept__) {
     // Any kind of signature by default
     return MemberSignature.class;
+  }
+  /*package*/ static String getNestedName_id1d2BQ0ZyA$g(@NotNull SNode __thisNode__, NestedIdentifierConfiguration configuration) {
+    SNode ancestor = SNodeOperations.getNodeAncestorWhereConceptInList(__thisNode__, new SAbstractConcept[]{CONCEPTS.IIdentifier$wg, CONCEPTS.IKotlinRoot$wS}, false, false);
+    String parentName;
+    String thisName = configuration.getName(__thisNode__);
+    if (configuration.isRoot(__thisNode__, ancestor)) {
+      return thisName;
+    } else if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.IKotlinRoot$wS)) {
+      parentName = configuration.getName(ancestor);
+    } else {
+      parentName = IIdentifier__BehaviorDescriptor.getNestedName_id1d2BQ0ZyA$g.invoke(SNodeOperations.cast(ancestor, CONCEPTS.IIdentifier$wg), configuration);
+    }
+
+    return ((parentName == null || parentName.length() == 0) ? thisName : parentName + "." + thisName);
+  }
+  /*package*/ static SNode getImportRoot_id1d2BQ0ZAmKw(@NotNull SNode __thisNode__, NestedIdentifierConfiguration configuration) {
+    SNode ancestor = SNodeOperations.getNodeAncestorWhereConceptInList(__thisNode__, new SAbstractConcept[]{CONCEPTS.IIdentifier$wg, CONCEPTS.IKotlinRoot$wS}, false, false);
+    if (configuration.isRoot(__thisNode__, ancestor)) {
+      return __thisNode__;
+    } else if (SNodeOperations.isInstanceOf(ancestor, CONCEPTS.IKotlinRoot$wS)) {
+      return ancestor;
+    }
+
+    return IIdentifier__BehaviorDescriptor.getImportRoot_id1d2BQ0ZAmKw.invoke(SNodeOperations.cast(ancestor, CONCEPTS.IIdentifier$wg), configuration);
   }
 
   /*package*/ IIdentifier__BehaviorDescriptor() {
@@ -48,6 +76,10 @@ public final class IIdentifier__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 1:
+        return (T) ((String) getNestedName_id1d2BQ0ZyA$g(node, (NestedIdentifierConfiguration) parameters[0]));
+      case 2:
+        return (T) ((SNode) getImportRoot_id1d2BQ0ZAmKw(node, (NestedIdentifierConfiguration) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -77,5 +109,10 @@ public final class IIdentifier__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IIdentifier$wg = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af330L, "jetbrains.mps.kotlin.structure.IIdentifier");
+    /*package*/ static final SInterfaceConcept IKotlinRoot$wS = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
   }
 }

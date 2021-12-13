@@ -303,6 +303,8 @@
           <module ref="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" kind="cl" />
           <module ref="6b3888c1-9802-44d8-8baf-f8e6c33ed689(jetbrains.mps.kotlin)" kind="cl" />
           <module ref="9e4ff22b-60f1-43ef-a50b-f9f0fcec22e0(jetbrains.mps.kotlin.javaRefs)" kind="cl" />
+          <module ref="e6477889-841a-4dd6-b8fa-21093ba0e76d(jetbrains.mps.kotlin.runtime)" kind="cl" />
+          <module ref="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="cl" />
         </dependencies>
         <uses>
           <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
@@ -401,28 +403,13 @@
         <dependencies />
         <uses />
         <library jar="../../lib/kotlin-stdlib-common-1.6.0.jar" />
+        <library jar="../../lib/kotlin-stdlib-1.6.0.jar" />
         <sources jar="." descriptor="jetbrains.mps.kotlin.stdlib.msd" />
       </module>
     </echoxml>
     <jar destfile="${build.layout}/mps-kotlin/languages/kotlin/jetbrains.mps.kotlin.stdlib.jar" duplicate="preserve">
       <zipfileset file="${plugin_home}/solutions/stubs/kotlin.stdlib/jetbrains.mps.kotlin.stdlib.msd" prefix="module" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.kotlin.stdlib.jar" />
-    </jar>
-    <mkdir dir="${build.tmp}/default/jetbrains.mps.kotlin.stdlib.jvm.jar" />
-    <mkdir dir="${build.tmp}/default/jetbrains.mps.kotlin.stdlib.jvm.jar/META-INF" />
-    <echoxml file="${build.tmp}/default/jetbrains.mps.kotlin.stdlib.jvm.jar/META-INF/module.xml">
-      <module namespace="jetbrains.mps.kotlin.stdlib.jvm" type="solution" uuid="b50d89c0-0fb9-1234-b652-222148c26a9b">
-        <dependencies>
-          <module ref="f3061a53-9226-4cc5-a443-f952ceaf5816(jetbrains.mps.baseLanguage)" kind="cl" />
-        </dependencies>
-        <uses />
-        <library jar="../../lib/kotlin-stdlib-1.6.0.jar" />
-        <sources jar="." descriptor="jetbrains.mps.kotlin.stdlib.jvm.msd" />
-      </module>
-    </echoxml>
-    <jar destfile="${build.layout}/mps-kotlin/languages/kotlin/jetbrains.mps.kotlin.stdlib.jvm.jar" duplicate="preserve">
-      <zipfileset file="${plugin_home}/solutions/stubs/kotlin.stdlib.jvm/jetbrains.mps.kotlin.stdlib.jvm.msd" prefix="module" />
-      <fileset dir="${build.tmp}/default/jetbrains.mps.kotlin.stdlib.jvm.jar" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.kotlin.devkit.jvm.jar" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.kotlin.devkit.jvm.jar/META-INF" />
@@ -621,7 +608,6 @@
         <module file="${plugin_home}/languages/kotlin.javaRefs/jetbrains.mps.kotlin.javaRefs.mpl" />
         <module file="${plugin_home}/solutions/kotlin.runtime/jetbrains.mps.kotlin.runtime.msd" />
         <module file="${plugin_home}/solutions/stubs/kotlin.stdlib/jetbrains.mps.kotlin.stdlib.msd" />
-        <module file="${plugin_home}/solutions/stubs/kotlin.stdlib.jvm/jetbrains.mps.kotlin.stdlib.jvm.msd" />
       </chunk>
       <jvmargs>
         <arg value="-ea" />

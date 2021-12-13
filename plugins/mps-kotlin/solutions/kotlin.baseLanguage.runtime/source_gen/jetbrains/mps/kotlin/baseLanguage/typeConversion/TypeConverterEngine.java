@@ -69,6 +69,9 @@ public class TypeConverterEngine<S extends SNode, R extends SNode> {
   }
 
   public R convert(S sourceNode) {
+    if (sourceNode == null) {
+      return null;
+    }
     return convert(SNodeOperations.getConcept(sourceNode), sourceNode);
   }
 

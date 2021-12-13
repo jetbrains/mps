@@ -8,72 +8,146 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root nodeRef="r:22e37fb0-8cf5-424c-a769-6983cf740d03(jetbrains.mps.kotlin.baseLanguage.toJava)/1675356390020193024">
+    <file name="KotlinPropertyHelper.java">
+      <node id="1675356390020213728" at="7,58,8,47" concept="7" />
+      <node id="1675356390020193531" at="10,58,11,47" concept="7" />
+      <node id="1675356390020208857" at="13,77,14,93" concept="7" />
+      <node id="1675356390020208124" at="7,0,10,0" concept="11" trace="getterNameOf#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="1675356390020193344" at="10,0,13,0" concept="11" trace="setterNameOf#(Ljava/lang/String;)Ljava/lang/String;" />
+      <node id="1675356390020208853" at="13,0,16,0" concept="11" trace="accessorNameOf#(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" />
+      <scope id="1675356390020208127" at="7,58,8,47" />
+      <scope id="1675356390020193347" at="10,58,11,47" />
+      <scope id="1675356390020208856" at="13,77,14,93" />
+      <scope id="1675356390020208124" at="7,0,10,0">
+        <var name="variableName" id="1675356390020208125" />
+      </scope>
+      <scope id="1675356390020193344" at="10,0,13,0">
+        <var name="variableName" id="1675356390020193387" />
+      </scope>
+      <scope id="1675356390020208853" at="13,0,16,0">
+        <var name="category" id="1675356390020210491" />
+        <var name="variableName" id="1675356390020208854" />
+      </scope>
+      <unit id="1675356390020193024" at="6,0,17,0" name="jetbrains.mps.kotlin.baseLanguage.toJava.KotlinPropertyHelper" />
+    </file>
+  </root>
   <root nodeRef="r:22e37fb0-8cf5-424c-a769-6983cf740d03(jetbrains.mps.kotlin.baseLanguage.toJava)/5019502120966452100">
     <file name="KtToJavaEngine.java">
-      <node id="5019502120966457433" at="26,27,27,51" concept="11" />
-      <node id="5019502120967093145" at="32,5,33,36" concept="6" />
-      <node id="5019502120967093148" at="34,81,35,50" concept="7" />
-      <node id="5019502120967093153" at="37,5,38,0" concept="8" />
-      <node id="5019502120967291242" at="38,0,39,76" concept="6" />
-      <node id="5019502120967196422" at="39,76,40,97" concept="6" />
-      <node id="5019502120967093160" at="40,97,41,0" concept="8" />
-      <node id="5019502120967253240" at="42,118,43,194" concept="6" />
-      <node id="5019502120967262690" at="43,194,44,62" concept="2" />
-      <node id="5019502120967283396" at="44,62,45,16" concept="7" />
-      <node id="5019502120967331191" at="46,125,47,195" concept="6" />
-      <node id="5019502120967331197" at="47,195,48,63" concept="2" />
-      <node id="5019502120967331203" at="48,63,49,17" concept="7" />
-      <node id="5019502120967346990" at="50,5,51,0" concept="8" />
-      <node id="5019502120967352578" at="51,0,52,18" concept="7" />
-      <node id="5019502120967093149" at="55,59,56,72" concept="6" />
-      <node id="5019502120967093149" at="56,72,57,26" concept="7" />
-      <node id="5019502120966452100" at="61,0,62,0" concept="9" trace="ClassType$jI" />
-      <node id="5019502120966452100" at="62,0,63,0" concept="9" trace="StarProjection$5H" />
-      <node id="5019502120966452100" at="63,0,64,0" concept="9" trace="TypeProjection$5e" />
-      <node id="5019502120966452100" at="64,0,65,0" concept="9" trace="WildCardType$uV" />
-      <node id="5019502120966452100" at="68,0,69,0" concept="9" trace="class$ExdX" />
-      <node id="5019502120966452100" at="69,0,70,0" concept="9" trace="type$x3no" />
-      <node id="5019502120966452100" at="70,0,71,0" concept="9" trace="bound$ciZM" />
-      <node id="5019502120966452100" at="71,0,72,0" concept="9" trace="bound$$a6H" />
-      <node id="5019502120966452100" at="75,0,76,0" concept="9" trace="variance$9nw2" />
-      <node id="5019502120966457416" at="26,0,29,0" concept="1" trace="KtToJavaEngine#()V" />
-      <node id="5019502120967093145" at="33,36,36,7" concept="4" />
-      <node id="5019502120967093149" at="55,0,59,0" concept="10" trace="createWildCardType_j03ock_a0a0a3#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="5019502120967093145" at="31,102,37,5" concept="0" />
-      <node id="5019502120967093161" at="41,0,50,5" concept="4" />
-      <node id="5019502120967093143" at="31,0,54,0" concept="10" trace="convertProjection#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/kotlin/baseLanguage/typeConversion/TypeConverterEngine;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="5019502120966457432" at="26,27,27,51" />
-      <scope id="5019502120967093147" at="34,81,35,50" />
-      <scope id="5019502120967093149" at="55,59,57,26">
+      <node id="5019502120966457433" at="30,27,31,51" concept="12" />
+      <node id="5494632093664357832" at="31,51,32,0" concept="9" />
+      <node id="5494632093664358535" at="32,0,33,38" concept="8" />
+      <node id="5494632093665061934" at="34,115,35,34" concept="8" />
+      <node id="1387846870912706197" at="35,34,36,196" concept="6" />
+      <node id="1387846870912706203" at="36,196,37,165" concept="2" />
+      <node id="5494632093664954531" at="37,165,38,209" concept="2" />
+      <node id="1387846870912706230" at="38,209,39,18" concept="7" />
+      <node id="5494632093664793858" at="40,7,41,0" concept="9" />
+      <node id="5494632093665203233" at="41,0,42,57" concept="8" />
+      <node id="5494632093665203238" at="42,57,43,291" concept="2" />
+      <node id="5494632093664860899" at="46,148,47,39" concept="8" />
+      <node id="5494632093664650470" at="49,37,50,52" concept="7" />
+      <node id="5019502120967093145" at="56,5,57,36" concept="6" />
+      <node id="5019502120967093148" at="58,81,59,50" concept="7" />
+      <node id="5019502120967093153" at="61,5,62,0" concept="9" />
+      <node id="5019502120967291242" at="62,0,63,76" concept="6" />
+      <node id="5019502120967196422" at="63,76,64,97" concept="6" />
+      <node id="5019502120967093160" at="64,97,65,0" concept="9" />
+      <node id="5019502120967253240" at="66,118,67,194" concept="6" />
+      <node id="5019502120967262690" at="67,194,68,62" concept="2" />
+      <node id="5019502120967283396" at="68,62,69,16" concept="7" />
+      <node id="5019502120967331191" at="70,125,71,195" concept="6" />
+      <node id="5019502120967331197" at="71,195,72,63" concept="2" />
+      <node id="5019502120967331203" at="72,63,73,17" concept="7" />
+      <node id="5019502120967346990" at="74,5,75,0" concept="9" />
+      <node id="5019502120967352578" at="75,0,76,18" concept="7" />
+      <node id="5494632093665203246" at="79,79,80,81" concept="6" />
+      <node id="5494632093665203246" at="80,81,81,66" concept="2" />
+      <node id="5494632093665203246" at="81,66,82,26" concept="7" />
+      <node id="5019502120967093149" at="84,59,85,72" concept="6" />
+      <node id="5019502120967093149" at="85,72,86,26" concept="7" />
+      <node id="5019502120966452100" at="90,0,91,0" concept="10" trace="ClassType$jI" />
+      <node id="5019502120966452100" at="91,0,92,0" concept="10" trace="JavaClassType$Gf" />
+      <node id="5019502120966452100" at="92,0,93,0" concept="10" trace="JavaTypeVariableReferenceType$TS" />
+      <node id="5019502120966452100" at="93,0,94,0" concept="10" trace="StarProjection$5H" />
+      <node id="5019502120966452100" at="94,0,95,0" concept="10" trace="TypeProjection$5e" />
+      <node id="5019502120966452100" at="95,0,96,0" concept="10" trace="TypeVariableReference$WL" />
+      <node id="5019502120966452100" at="96,0,97,0" concept="10" trace="WildCardType$uV" />
+      <node id="5019502120966452100" at="100,0,101,0" concept="10" trace="class$ExdX" />
+      <node id="5019502120966452100" at="101,0,102,0" concept="10" trace="classifier$cxMr" />
+      <node id="5019502120966452100" at="102,0,103,0" concept="10" trace="javaClass$CQOW" />
+      <node id="5019502120966452100" at="103,0,104,0" concept="10" trace="typeProjections$vhti" />
+      <node id="5019502120966452100" at="104,0,105,0" concept="10" trace="parameter$oqG$" />
+      <node id="5019502120966452100" at="105,0,106,0" concept="10" trace="typeVariable$LHQO" />
+      <node id="5019502120966452100" at="106,0,107,0" concept="10" trace="type$x3no" />
+      <node id="5019502120966452100" at="107,0,108,0" concept="10" trace="bound$ciZM" />
+      <node id="5019502120966452100" at="108,0,109,0" concept="10" trace="bound$$a6H" />
+      <node id="5019502120966452100" at="109,0,110,0" concept="10" trace="typeVariableDeclaration$Lz1I" />
+      <node id="5019502120966452100" at="113,0,114,0" concept="10" trace="variance$9nw2" />
+      <node id="5494632093664621120" at="49,0,52,0" concept="5" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5019502120967093145" at="57,36,60,7" concept="4" />
+      <node id="5019502120967093149" at="84,0,88,0" concept="11" trace="createWildCardType_j03ock_a0a0a4#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5494632093664594902" at="47,39,52,8" concept="2" />
+      <node id="5494632093665203246" at="79,0,84,0" concept="11" trace="createTypeVariableReference_j03ock_a0a1a0g0a#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="5019502120967093145" at="55,102,61,5" concept="0" />
+      <node id="1387846870912835968" at="33,38,40,7" concept="2" />
+      <node id="5494632093664570538" at="46,0,54,0" concept="11" trace="convertProjectionsInto#(Ljava/lang/Iterable;Ljava/util/List;Ljetbrains/mps/kotlin/baseLanguage/typeConversion/TypeConverterEngine;)V" />
+      <node id="5019502120967093161" at="65,0,74,5" concept="4" />
+      <node id="5019502120966457416" at="30,0,45,0" concept="1" trace="KtToJavaEngine#()V" />
+      <node id="5019502120967093143" at="55,0,78,0" concept="11" trace="convertProjection#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/kotlin/baseLanguage/typeConversion/TypeConverterEngine;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="5494632093664621121" at="49,37,50,52" />
+      <scope id="5019502120967093147" at="58,81,59,50" />
+      <scope id="5019502120967093149" at="84,59,86,26">
         <var name="n0" id="5019502120967093149" />
       </scope>
-      <scope id="5019502120966457416" at="26,0,29,0" />
-      <scope id="5019502120967093162" at="42,118,45,16">
+      <scope id="5494632093664621120" at="49,0,52,0">
+        <var name="it" id="5494632093664621120" />
+      </scope>
+      <scope id="5019502120967093162" at="66,118,69,16">
         <var name="up" id="5019502120967253241" />
       </scope>
-      <scope id="5019502120967093188" at="46,125,49,17">
+      <scope id="5019502120967093188" at="70,125,73,17">
         <var name="low" id="5019502120967331192" />
       </scope>
-      <scope id="5019502120967093145" at="32,5,36,7">
+      <scope id="5494632093665203246" at="79,79,82,26">
+        <var name="n0" id="5494632093665203246" />
+      </scope>
+      <scope id="5019502120967093145" at="56,5,60,7">
         <var name="upperBound" id="5019502120967093145" />
       </scope>
-      <scope id="5019502120967093149" at="55,0,59,0" />
-      <scope id="5019502120967093144" at="31,102,52,18">
+      <scope id="5019502120967093149" at="84,0,88,0" />
+      <scope id="5494632093663999881" at="34,115,39,18">
+        <var name="node" id="1387846870912706198" />
+      </scope>
+      <scope id="5494632093665203246" at="79,0,84,0">
+        <var name="p0" id="5494632093665203246" />
+      </scope>
+      <scope id="5494632093664570541" at="46,148,52,8" />
+      <scope id="5494632093664570538" at="46,0,54,0">
+        <var name="targetList" id="5494632093664587020" />
+        <var name="typeConverter" id="5494632093664584676" />
+        <var name="types" id="5494632093664579534" />
+      </scope>
+      <scope id="5019502120966457432" at="30,27,43,291" />
+      <scope id="5019502120966457416" at="30,0,45,0" />
+      <scope id="5019502120967093144" at="55,102,76,18">
         <var name="nested" id="5019502120967196423" />
         <var name="projection" id="5019502120967291243" />
       </scope>
-      <scope id="5019502120967093143" at="31,0,54,0">
+      <scope id="5019502120967093143" at="55,0,78,0">
         <var name="type" id="5019502120967093235" />
         <var name="typeConverter" id="5019502120967093237" />
       </scope>
-      <unit id="5019502120966452100" at="74,0,77,0" name="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine$PROPS" />
-      <unit id="5019502120966452100" at="60,0,66,0" name="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine$CONCEPTS" />
-      <unit id="5019502120966452100" at="67,0,73,0" name="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine$LINKS" />
-      <unit id="5019502120966452100" at="25,0,78,0" name="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine" />
+      <unit id="5019502120966452100" at="112,0,115,0" name="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine$PROPS" />
+      <unit id="5494632093664621120" at="48,90,52,5" name="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine$1" />
+      <unit id="5019502120966452100" at="89,0,98,0" name="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine$CONCEPTS" />
+      <unit id="5019502120966452100" at="99,0,111,0" name="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine$LINKS" />
+      <unit id="5019502120966452100" at="29,0,116,0" name="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine" />
     </file>
   </root>
   <root nodeRef="r:22e37fb0-8cf5-424c-a769-6983cf740d03(jetbrains.mps.kotlin.baseLanguage.toJava)/5019502120966464477">
@@ -83,7 +157,7 @@
       <node id="5019502120966475660" at="20,90,21,196" concept="6" />
       <node id="5019502120966480301" at="21,196,22,62" concept="2" />
       <node id="5019502120966465220" at="22,62,23,18" concept="7" />
-      <node id="5019502120966464477" at="27,0,28,0" concept="9" trace="classifier$cxMr" />
+      <node id="5019502120966464477" at="27,0,28,0" concept="10" trace="classifier$cxMr" />
       <node id="5019502120966465203" at="15,0,18,0" concept="1" trace="JavaClassTypeBuilder#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)V" />
       <node id="5019502120966465214" at="19,0,25,0" concept="5" trace="convert#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/kotlin/baseLanguage/typeConversion/TypeConverterEngine;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <scope id="5019502120966465206" at="15,59,16,32" />
@@ -103,13 +177,13 @@
   </root>
   <root nodeRef="r:22e37fb0-8cf5-424c-a769-6983cf740d03(jetbrains.mps.kotlin.baseLanguage.toJava)/5019502120967719689">
     <file name="JavaGenericClassTypeBuilder.java">
-      <node id="5019502120967719899" at="17,66,18,23" concept="11" />
+      <node id="5019502120967719899" at="17,66,18,23" concept="12" />
       <node id="5019502120967730736" at="23,86,24,52" concept="6" />
       <node id="5019502120967730757" at="26,37,27,60" concept="7" />
       <node id="5019502120967868798" at="29,8,30,21" concept="7" />
-      <node id="5019502120967719689" at="34,0,35,0" concept="9" trace="parameter$oqG$" />
-      <node id="5019502120967719689" at="35,0,36,0" concept="9" trace="typeProjections$vhti" />
-      <node id="5019502120967719689" at="39,0,40,0" concept="9" trace="ClassType$jI" />
+      <node id="5019502120967719689" at="34,0,35,0" concept="10" trace="parameter$oqG$" />
+      <node id="5019502120967719689" at="35,0,36,0" concept="10" trace="typeProjections$vhti" />
+      <node id="5019502120967719689" at="39,0,40,0" concept="10" trace="ClassType$jI" />
       <node id="5019502120967719888" at="17,0,20,0" concept="1" trace="JavaGenericClassTypeBuilder#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)V" />
       <node id="5019502120967730755" at="26,0,29,0" concept="5" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="5019502120967730742" at="24,52,29,8" concept="2" />

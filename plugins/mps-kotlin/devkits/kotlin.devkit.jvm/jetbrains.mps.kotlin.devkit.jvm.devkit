@@ -4,7 +4,7 @@
   <exported-language name="6b3888c1-9802-44d8-8baf-f8e6c33ed689(jetbrains.mps.kotlin)" />
   <exported-language name="9e4ff22b-60f1-43ef-a50b-f9f0fcec22e0(jetbrains.mps.kotlin.javaRefs)" />
   <exported-solutions>
-    <exported-solution>b50d89c0-0fb9-1234-b652-222148c26a9b(jetbrains.mps.kotlin.stdlib.jvm)</exported-solution>
+    <exported-solution>b50d89c0-0fb9-4105-b652-222148c26a9b(jetbrains.mps.kotlin.stdlib)</exported-solution>
   </exported-solutions>
 </dev-kit>
 

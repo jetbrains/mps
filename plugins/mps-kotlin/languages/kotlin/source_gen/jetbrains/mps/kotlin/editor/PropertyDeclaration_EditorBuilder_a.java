@@ -369,6 +369,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.getter$C1zs);
       }
+      Style style = new StyleImpl();
+      style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, true);
+      style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
+      editorCell.getStyle().putAll(style);
     }
     @Override
     protected EditorCell createEmptyCell() {
@@ -424,6 +428,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.setter$C2Xy);
       }
+      Style style = new StyleImpl();
+      style.set(StyleAttributes.INDENT_LAYOUT_ON_NEW_LINE, true);
+      style.set(StyleAttributes.INDENT_LAYOUT_INDENT, true);
+      editorCell.getStyle().putAll(style);
     }
     @Override
     protected EditorCell createEmptyCell() {

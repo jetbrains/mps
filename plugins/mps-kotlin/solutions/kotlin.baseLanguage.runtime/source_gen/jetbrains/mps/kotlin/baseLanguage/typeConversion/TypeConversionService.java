@@ -5,7 +5,6 @@ package jetbrains.mps.kotlin.baseLanguage.typeConversion;
 import jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine;
 import jetbrains.mps.references.Reference;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine;
-import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaTypeParameterConversion;
 
 public class TypeConversionService {
   private static TypeConversionService INSTANCE;
@@ -64,8 +63,6 @@ public class TypeConversionService {
     // Most simple types that are mapped to kotlin
     ClassToConceptEnum.populate(getJavaToKt(), getKtToJava());
     ClassToClassEnum.populate(getJavaToKt(), getKtToJava());
-
-    JavaTypeParameterConversion.register(getJavaToKt());
 
     // Can be extended using module activators
   }

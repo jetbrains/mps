@@ -15,6 +15,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.kotlin.behavior.IKotlinRoot__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -278,6 +279,12 @@ public abstract class KotlinTextGen {
     if ((SLinkOperations.getTarget(node, LINKS.header$Q2G5) != null)) {
       tgs.pushTextArea("header");
       tgs.appendNode(SLinkOperations.getTarget(node, LINKS.header$Q2G5));
+      tgs.popTextArea();
+    } else {
+      tgs.pushTextArea("header");
+      tgs.append("package ");
+      tgs.append(IKotlinRoot__BehaviorDescriptor.getPackageName_id4f4W8JpDCGu.invoke(node));
+      tgs.newLine();
       tgs.popTextArea();
     }
 

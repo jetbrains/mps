@@ -11,6 +11,7 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.kotlin.runtime.members.SignatureVisitor;
 import jetbrains.mps.kotlin.runtime.members.SuperTypesVisitor;
+import jetbrains.mps.kotlin.runtime.generics.TypeVarSubs;
 import jetbrains.mps.kotlin.runtime.types.identifiers.TypeKey;
 import java.util.List;
 import java.util.Arrays;
@@ -28,7 +29,7 @@ public final class TypeAliasType__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Void> populateSignatures_id5q426iHK5S9 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateSignatures").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5q426iHK5S9").build(SMethodBuilder.createJavaParameter(SignatureVisitor.class, ""));
   public static final SMethod<Void> visitHierarchy_id5q426iHtYvR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("visitHierarchy").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5q426iHtYvR").build(SMethodBuilder.createJavaParameter(SuperTypesVisitor.class, ""));
-  public static final SMethod<Void> populateSubstitutions_id4f4W8JpwgWV = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateSubstitutions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4f4W8JpwgWV").build(SMethodBuilder.createJavaParameter(NodeTypeVarSubs.class, ""));
+  public static final SMethod<Void> populateSubstitutions_id4f4W8JpwgWV = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateSubstitutions").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4f4W8JpwgWV").build(SMethodBuilder.createJavaParameter(TypeVarSubs.class, ""));
   public static final SMethod<String> toString_id4nn3FPlZH$r = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4nn3FPlZH$r").build(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   public static final SMethod<TypeKey> shallowId_idJmO2PmZtH5 = new SMethodBuilder<TypeKey>(new SJavaCompoundTypeImpl(TypeKey.class)).name("shallowId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("JmO2PmZtH5").build();
 
@@ -48,7 +49,7 @@ public final class TypeAliasType__BehaviorDescriptor extends BaseBHDescriptor {
     IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(visitor.expandWithCollectedSubstitutions(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeAlias$NsaN), LINKS.type$JuNU)), visitor);
     visitor.exitType(__thisNode__);
   }
-  /*package*/ static void populateSubstitutions_id4f4W8JpwgWV(@NotNull SNode __thisNode__, NodeTypeVarSubs subs) {
+  /*package*/ static void populateSubstitutions_id4f4W8JpwgWV(@NotNull SNode __thisNode__, TypeVarSubs<SNode> subs) {
     subs.populate(KotlinTypeParameterDeclaration.of(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.typeAlias$NsaN), LINKS.typeParameters$eq6K)), SLinkOperations.getChildren(__thisNode__, LINKS.typeProjections$vhti));
   }
   /*package*/ static String toString_id4nn3FPlZH$r(@NotNull SNode __thisNode__, boolean erased) {
@@ -80,7 +81,7 @@ public final class TypeAliasType__BehaviorDescriptor extends BaseBHDescriptor {
         visitHierarchy_id5q426iHtYvR(node, (SuperTypesVisitor) parameters[0]);
         return null;
       case 2:
-        populateSubstitutions_id4f4W8JpwgWV(node, (NodeTypeVarSubs) parameters[0]);
+        populateSubstitutions_id4f4W8JpwgWV(node, (TypeVarSubs<SNode>) parameters[0]);
         return null;
       case 3:
         return (T) ((String) toString_id4nn3FPlZH$r(node, ((boolean) (Boolean) parameters[0])));

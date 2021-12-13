@@ -15,7 +15,6 @@
     <import index="1p8r" ref="r:966de44c-de72-437f-889f-78347a061f0c(jetbrains.mps.kotlin.runtime.declaration)" />
     <import index="vciu" ref="r:42fb31e7-122b-4950-aa58-2f5f6e5595ce(jetbrains.mps.kotlin.overloading)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
-    <import index="wbbs" ref="r:63fc91b7-ce2b-43fd-a9e4-94a1182c5fb3(jetbrains.mps.kotlin.runtime.types)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -831,34 +830,47 @@
             </node>
           </node>
         </node>
-        <node concept="1Wc70l" id="5dNsAxXP1YJ" role="3clFbw">
-          <node concept="3fqX7Q" id="5dNsAxXP3m9" role="3uHU7w">
-            <node concept="2OqwBi" id="5dNsAxXP3mb" role="3fr31v">
-              <node concept="2OqwBi" id="5dNsAxXP3mc" role="2Oq$k0">
-                <node concept="1YBJjd" id="5dNsAxXP3md" role="2Oq$k0">
-                  <ref role="1YBMHb" node="5dNsAxXObBI" resolve="decl" />
-                </node>
-                <node concept="3TrEf2" id="5dNsAxXP3me" role="2OqNvi">
-                  <ref role="3Tt5mk" to="hcm8:5dNsAxXOVNr" resolve="inheritance" />
-                </node>
-              </node>
-              <node concept="1mIQ4w" id="5dNsAxXP3mf" role="2OqNvi">
-                <node concept="chp4Y" id="5dNsAxXP3mg" role="cj9EA">
-                  <ref role="cht4Q" to="hcm8:2yYXHtl6JjM" resolve="AbstractInheritanceModifier" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="5dNsAxXOcuY" role="3uHU7B">
-            <node concept="2OqwBi" id="5dNsAxXObTM" role="2Oq$k0">
-              <node concept="1YBJjd" id="5dNsAxXObC4" role="2Oq$k0">
+        <node concept="1Wc70l" id="7Xv4bwMTJdv" role="3clFbw">
+          <node concept="2OqwBi" id="7Xv4bwMTKM0" role="3uHU7w">
+            <node concept="2OqwBi" id="7Xv4bwMTJO$" role="2Oq$k0">
+              <node concept="1YBJjd" id="7Xv4bwMTJwq" role="2Oq$k0">
                 <ref role="1YBMHb" node="5dNsAxXObBI" resolve="decl" />
               </node>
-              <node concept="3TrEf2" id="5dNsAxXOchr" role="2OqNvi">
-                <ref role="3Tt5mk" to="hcm8:2yYXHtl6JuU" resolve="assignment" />
+              <node concept="3TrEf2" id="7Xv4bwMTK$M" role="2OqNvi">
+                <ref role="3Tt5mk" to="hcm8:1502Vugzd3J" resolve="getter" />
               </node>
             </node>
-            <node concept="3w_OXm" id="5dNsAxXOfsA" role="2OqNvi" />
+            <node concept="3w_OXm" id="7Xv4bwMTLvJ" role="2OqNvi" />
+          </node>
+          <node concept="1Wc70l" id="5dNsAxXP1YJ" role="3uHU7B">
+            <node concept="2OqwBi" id="5dNsAxXOcuY" role="3uHU7B">
+              <node concept="2OqwBi" id="5dNsAxXObTM" role="2Oq$k0">
+                <node concept="1YBJjd" id="5dNsAxXObC4" role="2Oq$k0">
+                  <ref role="1YBMHb" node="5dNsAxXObBI" resolve="decl" />
+                </node>
+                <node concept="3TrEf2" id="5dNsAxXOchr" role="2OqNvi">
+                  <ref role="3Tt5mk" to="hcm8:2yYXHtl6JuU" resolve="assignment" />
+                </node>
+              </node>
+              <node concept="3w_OXm" id="5dNsAxXOfsA" role="2OqNvi" />
+            </node>
+            <node concept="3fqX7Q" id="5dNsAxXP3m9" role="3uHU7w">
+              <node concept="2OqwBi" id="5dNsAxXP3mb" role="3fr31v">
+                <node concept="2OqwBi" id="5dNsAxXP3mc" role="2Oq$k0">
+                  <node concept="1YBJjd" id="5dNsAxXP3md" role="2Oq$k0">
+                    <ref role="1YBMHb" node="5dNsAxXObBI" resolve="decl" />
+                  </node>
+                  <node concept="3TrEf2" id="5dNsAxXP3me" role="2OqNvi">
+                    <ref role="3Tt5mk" to="hcm8:5dNsAxXOVNr" resolve="inheritance" />
+                  </node>
+                </node>
+                <node concept="1mIQ4w" id="5dNsAxXP3mf" role="2OqNvi">
+                  <node concept="chp4Y" id="5dNsAxXP3mg" role="cj9EA">
+                    <ref role="cht4Q" to="hcm8:2yYXHtl6JjM" resolve="AbstractInheritanceModifier" />
+                  </node>
+                </node>
+              </node>
+            </node>
           </node>
         </node>
       </node>

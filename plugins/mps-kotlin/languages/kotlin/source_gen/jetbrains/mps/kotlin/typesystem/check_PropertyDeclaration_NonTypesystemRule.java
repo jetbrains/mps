@@ -22,7 +22,7 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
   public check_PropertyDeclaration_NonTypesystemRule() {
   }
   public void applyRule(final SNode decl, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if ((SLinkOperations.getTarget(decl, LINKS.assignment$nl1j) == null) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(decl, LINKS.inheritance$TFvr), CONCEPTS.AbstractInheritanceModifier$GA))) {
+    if ((SLinkOperations.getTarget(decl, LINKS.assignment$nl1j) == null) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(decl, LINKS.inheritance$TFvr), CONCEPTS.AbstractInheritanceModifier$GA)) && (SLinkOperations.getTarget(decl, LINKS.getter$C1zs) == null)) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(decl, "Property must be initialized or be abstract", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "6013275720582756209", null, errorTarget);
@@ -56,7 +56,8 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink inheritance$TFvr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, 0x537372687dd3bcdbL, "inheritance");
+    /*package*/ static final SContainmentLink getter$C1zs = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, 0x11400bb7908cd0efL, "getter");
     /*package*/ static final SContainmentLink assignment$nl1j = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90aaL, 0x28bef6d7551af7baL, "assignment");
+    /*package*/ static final SContainmentLink inheritance$TFvr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, 0x537372687dd3bcdbL, "inheritance");
   }
 }

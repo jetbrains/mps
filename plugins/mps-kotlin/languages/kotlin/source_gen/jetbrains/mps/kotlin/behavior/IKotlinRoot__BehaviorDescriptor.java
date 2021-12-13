@@ -47,7 +47,7 @@ public final class IKotlinRoot__BehaviorDescriptor extends BaseBHDescriptor {
       return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
     }
 
-    return packageName + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
+    return packageName + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) + "Kt";
   }
 
   /*package*/ IKotlinRoot__BehaviorDescriptor() {

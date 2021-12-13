@@ -244,14 +244,6 @@
       <modulePath path="$PROJECT_DIR$/plugins/execution-languages/languages/library/jetbrains.mps.execution.library.msd" folder="workbench.execution" />
       <modulePath path="$PROJECT_DIR$/plugins/execution-languages/languages/plugin/jetbrains.mps.execution.languages.msd" folder="workbench.execution" />
       <modulePath path="$PROJECT_DIR$/plugins/jetpad/solutions/jetbrains.jetpad/jetbrains.jetpad.msd" folder="core.aspects.editor.diagram" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/devkits/kotlin.devkit.jvm/jetbrains.mps.kotlin.devkit.jvm.devkit" folder="core.languages.kotlin" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/ide/jetbrains.mps.kotlin.idePlugin/jetbrains.mps.kotlin.idePlugin.msd" folder="core.languages.kotlin" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin.javaRefs/jetbrains.mps.kotlin.javaRefs.mpl" folder="core.languages.kotlin.interop" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin/jetbrains.mps.kotlin.mpl" folder="core.languages.kotlin" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.baseLanguage.runtime/jetbrains.mps.kotlin.baseLanguage.runtime.msd" folder="core.languages.kotlin.interop" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.runtime/jetbrains.mps.kotlin.runtime.msd" folder="core.languages.kotlin" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/stubs/kotlin.stdlib.jvm/jetbrains.mps.kotlin.stdlib.jvm.msd" folder="core.languages.kotlin" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/stubs/kotlin.stdlib/jetbrains.mps.kotlin.stdlib.msd" folder="core.languages.kotlin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/languages/build.mps.runner/jetbrains.mps.build.mps.runner.mpl" folder="platform.build" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/languages/build.mps.testManifest/jetbrains.mps.build.mps.testManifest.mpl" folder="platform.build" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/languages/build.mps.tests/jetbrains.mps.build.mps.tests.mpl" folder="platform.build" />
@@ -326,6 +318,13 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-java/workbench/modules/jetbrains.mps.java.workbench/jetbrains.mps.java.workbench.msd" folder="platform.mpsjava" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.testMaterial/jetbrains.mps.ide.java.testMaterial.msd" folder="platform.mpsjava.test" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.tests/jetbrains.mps.ide.java.tests.msd" folder="platform.mpsjava.test" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/devkits/kotlin.devkit.jvm/jetbrains.mps.kotlin.devkit.jvm.devkit" folder="core.languages.kotlin" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/ide/jetbrains.mps.kotlin.idePlugin/jetbrains.mps.kotlin.idePlugin.msd" folder="core.languages.kotlin" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin.javaRefs/jetbrains.mps.kotlin.javaRefs.mpl" folder="core.languages.kotlin.interop" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin/jetbrains.mps.kotlin.mpl" folder="core.languages.kotlin" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.baseLanguage.runtime/jetbrains.mps.kotlin.baseLanguage.runtime.msd" folder="core.languages.kotlin.interop" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.runtime/jetbrains.mps.kotlin.runtime.msd" folder="core.languages.kotlin" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/stubs/kotlin.stdlib/jetbrains.mps.kotlin.stdlib.msd" folder="core.languages.kotlin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-make/jetbrains.mps.ide.make.msd" folder="platform" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-migration/migration-platform/solutions/component/jetbrains.mps.migration.component.msd" folder="platform.migration" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-migration/solutions/migration.workbench/jetbrains.mps.migration.workbench.msd" folder="platform.migration" />

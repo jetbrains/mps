@@ -14,8 +14,7 @@ public class PackageHeader_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     if (isNotEmptyString(trim_vcxox7_a0a1a0(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.packageName$Mxdm)))) {
-      tgs.append("package");
-      tgs.append(" ");
+      tgs.append("package ");
       tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.packageName$Mxdm));
       tgs.newLine();
     }

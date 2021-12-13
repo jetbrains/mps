@@ -7,8 +7,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.kotlin.behavior.IKotlinRoot__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.kotlin.behavior.IIdentifier__BehaviorDescriptor;
+import jetbrains.mps.kotlin.behavior.NestedIdentifierConfiguration;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -25,17 +27,15 @@ public class ImportContext {
   }
 
   public void add(SNode ref) {
-    SNode root = SNodeOperations.getNodeAncestor(ref, CONCEPTS.IKotlinRoot$wS, false, false);
-    if (!(Objects.equals(IKotlinRoot__BehaviorDescriptor.getPackageName_id4f4W8JpDCGu.invoke(root), myPackage))) {
-      // Only import the root one
-      // TODO in kotlin the nested one can be imported directly
-      while (ref != null && SNodeOperations.getParent(ref) != root) {
-        ref = SNodeOperations.as(SNodeOperations.getParent(ref), CONCEPTS.IIdentifier$wg);
-      }
+    // Same package, no need to bother
+    if (Objects.equals(IKotlinRoot__BehaviorDescriptor.getPackageName_id4f4W8JpDCGu.invoke(SNodeOperations.getNodeAncestor(ref, CONCEPTS.IKotlinRoot$wS, false, false)), myPackage)) {
+      return;
+    }
 
-      if ((ref != null)) {
-        SetSequence.fromSet(importedRefs).addElement(ref);
-      }
+    // Otherwise, import the top most declaration
+    SNode root = SNodeOperations.as(IIdentifier__BehaviorDescriptor.getImportRoot_id1d2BQ0ZAmKw.invoke(ref, NestedIdentifierConfiguration.Kotlin), CONCEPTS.IIdentifier$wg);
+    if ((root != null)) {
+      SetSequence.fromSet(importedRefs).addElement(root);
     }
   }
 

@@ -78,7 +78,6 @@
   <dependency className="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService">
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaTypeParameterConversion" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.ClassToClassEnum" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.ClassToConceptEnum" />
     <classNode dependClassName="jetbrains.mps.references.Reference" />

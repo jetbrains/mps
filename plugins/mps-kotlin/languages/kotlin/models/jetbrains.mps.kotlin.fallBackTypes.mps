@@ -15,6 +15,9 @@
       <concept id="7358760241248942182" name="jetbrains.mps.kotlin.structure.Comment" flags="ng" index="gXE$l">
         <child id="7358760241248948562" name="lines" index="gXG0x" />
       </concept>
+      <concept id="781120894705658104" name="jetbrains.mps.kotlin.structure.IKotlinRoot" flags="ng" index="2_hZ6C">
+        <child id="2936055411798374535" name="header" index="1XD0Tg" />
+      </concept>
       <concept id="7138249191285121087" name="jetbrains.mps.kotlin.structure.IVisible" flags="ng" index="2BPcvI">
         <child id="7138249191285121088" name="visibility" index="2BPcuh" />
       </concept>
@@ -26,6 +29,9 @@
       </concept>
       <concept id="2936055411798373620" name="jetbrains.mps.kotlin.structure.OpenInheritanceModifier" flags="ng" index="1XD08z" />
       <concept id="2936055411798373619" name="jetbrains.mps.kotlin.structure.FinalInheritanceModifier" flags="ng" index="1XD08$" />
+      <concept id="2936055411798373558" name="jetbrains.mps.kotlin.structure.PackageHeader" flags="ng" index="1XD09x">
+        <property id="1243006380191787010" name="packageName" index="21C2eP" />
+      </concept>
       <concept id="2936055411798373481" name="jetbrains.mps.kotlin.structure.ClassDeclaration" flags="ng" index="1XD0aY">
         <child id="2324909103763444261" name="constructor" index="KDYUA" />
       </concept>
@@ -150,6 +156,43 @@
           <property role="3oM_SC" value="load." />
         </node>
       </node>
+      <node concept="1PaTwC" id="5HAsIbMr03w" role="gXG0x">
+        <node concept="3oM_SD" id="5HAsIbMr03v" role="1PaTwD">
+          <property role="3oM_SC" value="" />
+        </node>
+      </node>
+      <node concept="1PaTwC" id="5HAsIbMr4lG" role="gXG0x">
+        <node concept="3oM_SD" id="5HAsIbMr4lF" role="1PaTwD">
+          <property role="3oM_SC" value="TODO:" />
+        </node>
+        <node concept="3oM_SD" id="5HAsIbMr4ml" role="1PaTwD">
+          <property role="3oM_SC" value="as" />
+        </node>
+        <node concept="3oM_SD" id="5HAsIbMr4mo" role="1PaTwD">
+          <property role="3oM_SC" value="the" />
+        </node>
+        <node concept="3oM_SD" id="5HAsIbMr4ms" role="1PaTwD">
+          <property role="3oM_SC" value="stubs" />
+        </node>
+        <node concept="3oM_SD" id="5HAsIbMr4mx" role="1PaTwD">
+          <property role="3oM_SC" value="are" />
+        </node>
+        <node concept="3oM_SD" id="5HAsIbMr4mB" role="1PaTwD">
+          <property role="3oM_SC" value="stable," />
+        </node>
+        <node concept="3oM_SD" id="5HAsIbMr4mI" role="1PaTwD">
+          <property role="3oM_SC" value="this" />
+        </node>
+        <node concept="3oM_SD" id="5HAsIbMr4mQ" role="1PaTwD">
+          <property role="3oM_SC" value="should" />
+        </node>
+        <node concept="3oM_SD" id="5HAsIbMr4mZ" role="1PaTwD">
+          <property role="3oM_SC" value="get" />
+        </node>
+        <node concept="3oM_SD" id="5HAsIbMr4n9" role="1PaTwD">
+          <property role="3oM_SC" value="removed" />
+        </node>
+      </node>
     </node>
     <node concept="1XD0mN" id="2PMtXoJOPdu" role="1XD0Tu">
       <property role="TrG5h" value="Unit" />
@@ -260,6 +303,9 @@
       <node concept="1XD08x" id="7WBNRYUy0Xe" role="AST3G">
         <ref role="KYurZ" node="7WBNRYUy0Vl" resolve="Number" />
       </node>
+    </node>
+    <node concept="1XD09x" id="5HAsIbMqZVT" role="1XD0Tg">
+      <property role="21C2eP" value="kotlin" />
     </node>
   </node>
 </model>

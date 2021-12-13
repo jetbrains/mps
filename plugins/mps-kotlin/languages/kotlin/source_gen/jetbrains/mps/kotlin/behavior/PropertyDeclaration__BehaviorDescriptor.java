@@ -51,7 +51,11 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
     // TODO create proper signature
     if (visitor.acceptKind(PropertyAccessorSignature.class)) {
       visitor.declareSignature(KotlinSignatures.forGetter(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$IdZv)));
-      visitor.declareSignature(KotlinSignatures.forSetter(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$IdZv)));
+
+      // Only if not read only
+      if (((boolean) IVariableDeclarationConstraintHolder__BehaviorDescriptor.isChildVariableAssignable_idCy8Bus9qei.invoke(__thisNode__))) {
+        visitor.declareSignature(KotlinSignatures.forSetter(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$IdZv)));
+      }
     }
   }
   /*package*/ static boolean hasExplicityType_id2n1mrwy6RU_(@NotNull SNode __thisNode__) {
