@@ -51524,6 +51524,9 @@
         <node concept="1E0d5M" id="7cyQleb98FA" role="1E1XAP">
           <ref role="1E0d5P" node="Ye$g8PO9xV" resolve="jetbrains.mps.kotlin.stdlib" />
         </node>
+        <node concept="2EVzJI" id="bbFPPuodoR" role="2EVzJD">
+          <ref role="2EVzJJ" node="Ye$g8PO9xV" resolve="jetbrains.mps.kotlin.stdlib" />
+        </node>
       </node>
       <node concept="1E1JtD" id="Ye$g8PO8TM" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -51667,11 +51670,6 @@
             <ref role="3bR37D" node="Ye$g8PO8TM" resolve="jetbrains.mps.kotlin.javaRefs" />
           </node>
         </node>
-        <node concept="1SiIV0" id="4I5te4iLwZY" role="3bR37C">
-          <node concept="3bR9La" id="4I5te4iLwZZ" role="1SiIV1">
-            <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="7cyQleb98FR" role="3bR37C">
           <node concept="3bR9La" id="7cyQleb98FS" role="1SiIV1">
             <ref role="3bR37D" node="7Kfy9QB6KXW" resolve="jetbrains.mps.lang.core" />
@@ -51813,9 +51811,6 @@
         </node>
         <node concept="3LEDTy" id="Ye$g8PO9MH" role="3LEDUa">
           <ref role="3LEDTV" node="Ye$g8PO8TM" resolve="jetbrains.mps.kotlin.javaRefs" />
-        </node>
-        <node concept="3LEDTM" id="7cyQleb98GP" role="3LEDUa">
-          <ref role="3LEDTN" node="Ye$g8PO9xV" resolve="jetbrains.mps.kotlin.stdlib" />
         </node>
       </node>
     </node>

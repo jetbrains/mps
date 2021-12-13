@@ -21,7 +21,7 @@ public class ValueArgument_TextGen extends TextGenDescriptorBase {
       tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.parameter$8rO1), PROPS.name$MnvL));
       tgs.append(" = ");
     }
-    KotlinTextGen.modifier(SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isVararg$Z9rG), "*", ctx);
+    KotlinTextGen.modifier(SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isVararg$zs5Z), "*", ctx);
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.expression$RzsN));
   }
 
@@ -32,6 +32,6 @@ public class ValueArgument_TextGen extends TextGenDescriptorBase {
 
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-    /*package*/ static final SProperty isVararg$Z9rG = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x695a62ae1c28f688L, 0x11400bb790b4ef7eL, "isVararg");
+    /*package*/ static final SProperty isVararg$zs5Z = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af579L, 0x11400bb790b4ef7eL, "isVararg");
   }
 }

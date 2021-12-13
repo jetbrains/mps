@@ -13,7 +13,6 @@
   <uses module="9b80526e-f0bf-4992-bdf5-cee39c1833f3(collections.runtime)" kind="rt+dp" />
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
   <uses module="6b3888c1-9802-44d8-8baf-f8e6c33ed689(jetbrains.mps.kotlin)" kind="dp" />
-  <uses module="b50d89c0-0fb9-4105-b652-222148c26a9b(jetbrains.mps.kotlin.stdlib)" kind="dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt+dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac4(jetbrains.mps.lang.behavior.runtime)" kind="rt" />
   <uses module="ceab5195-25ea-4f22-9b92-103b95ca8c0c(jetbrains.mps.lang.core)" kind="dp" />
@@ -29,6 +28,8 @@
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.FunctionReceiver" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.ParameterDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.TypeParameterDeclaration" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
@@ -39,13 +40,16 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.TypeParameterDeclaration" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
   </dependency>
   <dependency className="jetbrains.mps.kotlin.runtime.declaration.InferrableFunctionDeclaration">
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration" />
   </dependency>
   <dependency className="jetbrains.mps.kotlin.runtime.declaration.ParameterDeclaration">
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
   <dependency className="jetbrains.mps.kotlin.runtime.declaration.TypeParameterDeclaration">

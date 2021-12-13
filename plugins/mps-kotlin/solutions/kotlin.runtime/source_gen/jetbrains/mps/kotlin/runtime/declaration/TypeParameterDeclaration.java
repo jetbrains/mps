@@ -7,10 +7,24 @@ import java.util.List;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 
 /**
- * Declaration of a type parameter, should implement hashCode and equals delegated to getNode()
+ * Declaration of a type parameter, should implement hashCode and equals delegated to getNode().
+ * 
+ * @see jetbrains.mps.kotlin.runtime.declaration.DefaultTypeParameterDeclaration for default implementations of hashCode and equals
  */
 public interface TypeParameterDeclaration {
+  /**
+   * Returns the node declaring the type parameter.
+   */
   SNode getNode();
+
+  /**
+   * Returns the types bounding the type parameter, if any.
+   */
   List<SNode> getUpperBounds();
+
+  /**
+   * Returns the default variance of the type parameter. It may be overridden by use site variance
+   * (see Kotlin specification regarding variance for more details).
+   */
   SEnumerationLiteral getVariance();
 }

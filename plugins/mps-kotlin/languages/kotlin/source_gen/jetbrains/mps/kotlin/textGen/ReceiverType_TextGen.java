@@ -13,8 +13,6 @@ public class ReceiverType_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    // TODO does this node can really have annotations?
-    KotlinTextGen.annotations(ctx.getPrimaryInput(), false, ctx);
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$NVFj));
   }
 

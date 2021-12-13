@@ -15,8 +15,8 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.runtime.members.SignatureVisitor;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.kotlin.runtime.members.signature.PropertyAccessorSignature;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -43,13 +43,13 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
   }
 
   /*package*/ static void populateDeclarations_id213J8cgCCAN(@NotNull SNode __thisNode__, ScopeFilter filter, List<SNode> target) {
-    if (filter.acceptKind(CONCEPTS.VariableDeclaration$DF)) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$NO1r) == null) && filter.acceptKind(CONCEPTS.VariableDeclaration$DF)) {
       ListSequence.fromList(target).addElement(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$IdZv));
     }
   }
   /*package*/ static void populateSignatures_id18X2O0FJBER(@NotNull SNode __thisNode__, SignatureVisitor visitor) {
     // TODO create proper signature
-    if (visitor.acceptKind(PropertyAccessorSignature.class)) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$NO1r) == null) && visitor.acceptKind(PropertyAccessorSignature.class)) {
       visitor.declareSignature(KotlinSignatures.forGetter(SLinkOperations.getTarget(__thisNode__, LINKS.declaration$IdZv)));
 
       // Only if not read only
@@ -133,6 +133,7 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink declaration$IdZv = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, 0x123d0b402b9ae3edL, "declaration");
+    /*package*/ static final SContainmentLink receiverType$NO1r = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L, 0x11400bb7908c7f23L, "receiverType");
     /*package*/ static final SContainmentLink type$RmkT = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af571L, 0x28bef6d7551af917L, "type");
   }
 

@@ -16,8 +16,8 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
     <file name="TextGenAspectDescriptor.java">
-      <unit at="345,0,349,0" name="jetbrains.mps.kotlin.textGen.TextGenAspectDescriptor$CONCEPTS" />
-      <unit at="19,0,350,0" name="jetbrains.mps.kotlin.textGen.TextGenAspectDescriptor" />
+      <unit at="343,0,347,0" name="jetbrains.mps.kotlin.textGen.TextGenAspectDescriptor$CONCEPTS" />
+      <unit at="19,0,348,0" name="jetbrains.mps.kotlin.textGen.TextGenAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/1478702293899839012">
@@ -43,8 +43,8 @@
       <unit id="1478702293899839012" at="15,0,35,0" name="jetbrains.mps.kotlin.textGen.OverloadedAssignment_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="1478702293899839012" at="189,54,190,50" concept="9" />
-      <scope id="1478702293899839012" at="189,54,190,50" />
+      <node id="1478702293899839012" at="187,54,188,50" concept="9" />
+      <scope id="1478702293899839012" at="187,54,188,50" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/2713726945902531573">
@@ -65,8 +65,8 @@
       <unit id="2713726945902531573" at="14,0,29,0" name="jetbrains.mps.kotlin.textGen.FunctionMemberTarget_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="2713726945902531573" at="121,54,122,50" concept="9" />
-      <scope id="2713726945902531573" at="121,54,122,50" />
+      <node id="2713726945902531573" at="119,54,120,50" concept="9" />
+      <scope id="2713726945902531573" at="119,54,120,50" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/4883292379416123349">
@@ -83,14 +83,14 @@
       <unit id="4883292379416123349" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.FunctionStubBody_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4883292379416123349" at="125,50,126,46" concept="9" />
-      <scope id="4883292379416123349" at="125,50,126,46" />
+      <node id="4883292379416123349" at="123,50,124,46" concept="9" />
+      <scope id="4883292379416123349" at="123,50,124,46" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/4883292379416954840">
     <file name="TextGenAspectDescriptor.java">
-      <node id="4883292379416954840" at="261,47,262,43" concept="9" />
-      <scope id="4883292379416954840" at="261,47,262,43" />
+      <node id="4883292379416954840" at="259,47,260,43" concept="9" />
+      <scope id="4883292379416954840" at="259,47,260,43" />
     </file>
     <file name="TypeAliasType_TextGen.java">
       <node id="4883292379416954840" at="15,54,16,55" concept="8" />
@@ -112,8 +112,8 @@
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/4883292379420789413">
     <file name="TextGenAspectDescriptor.java">
-      <node id="4883292379420789413" at="281,52,282,48" concept="9" />
-      <scope id="4883292379420789413" at="281,52,282,48" />
+      <node id="4883292379420789413" at="279,52,280,48" concept="9" />
+      <scope id="4883292379420789413" at="279,52,280,48" />
     </file>
     <file name="VisibilityModifier_TextGen.java">
       <node id="4883292379420789413" at="13,54,14,55" concept="8" />
@@ -148,8 +148,8 @@
       <unit id="4883292379421578667" at="12,0,27,0" name="jetbrains.mps.kotlin.textGen.ObjectDeclaration_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="4883292379421578667" at="183,51,184,47" concept="9" />
-      <scope id="4883292379421578667" at="183,51,184,47" />
+      <node id="4883292379421578667" at="181,51,182,47" concept="9" />
+      <scope id="4883292379421578667" at="181,51,182,47" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696082761">
@@ -193,8 +193,8 @@
       <unit id="6153771967696082761" at="16,0,48,0" name="jetbrains.mps.kotlin.textGen.CatchBlock_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696082761" at="59,44,60,40" concept="9" />
-      <scope id="6153771967696082761" at="59,44,60,40" />
+      <node id="6153771967696082761" at="57,44,58,40" concept="9" />
+      <scope id="6153771967696082761" at="57,44,58,40" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696082975">
@@ -214,8 +214,8 @@
       <unit id="6153771967696082975" at="12,0,24,0" name="jetbrains.mps.kotlin.textGen.PropertyDefaultAssignement_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696082975" at="207,60,208,56" concept="9" />
-      <scope id="6153771967696082975" at="207,60,208,56" />
+      <node id="6153771967696082975" at="205,60,206,56" concept="9" />
+      <scope id="6153771967696082975" at="205,60,206,56" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696083039">
@@ -243,8 +243,8 @@
       <unit id="6153771967696083039" at="14,0,36,0" name="jetbrains.mps.kotlin.textGen.FunctionType_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696083039" at="127,46,128,42" concept="9" />
-      <scope id="6153771967696083039" at="127,46,128,42" />
+      <node id="6153771967696083039" at="125,46,126,42" concept="9" />
+      <scope id="6153771967696083039" at="125,46,126,42" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696083544">
@@ -318,14 +318,14 @@
       <unit id="6153771967696083870" at="12,0,27,0" name="jetbrains.mps.kotlin.textGen.PropertyGetter_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696083870" at="211,48,212,44" concept="9" />
-      <scope id="6153771967696083870" at="211,48,212,44" />
+      <node id="6153771967696083870" at="209,48,210,44" concept="9" />
+      <scope id="6153771967696083870" at="209,48,210,44" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696084067">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696084067" at="283,43,284,39" concept="9" />
-      <scope id="6153771967696084067" at="283,43,284,39" />
+      <node id="6153771967696084067" at="281,43,282,39" concept="9" />
+      <scope id="6153771967696084067" at="281,43,282,39" />
     </file>
     <file name="WhenEntry_TextGen.java">
       <node id="6153771967696084067" at="16,54,17,55" concept="8" />
@@ -391,8 +391,8 @@
       <unit id="6153771967696084174" at="12,0,38,0" name="jetbrains.mps.kotlin.textGen.SecondaryConstructor_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696084174" at="227,54,228,50" concept="9" />
-      <scope id="6153771967696084174" at="227,54,228,50" />
+      <node id="6153771967696084174" at="225,54,226,50" concept="9" />
+      <scope id="6153771967696084174" at="225,54,226,50" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696084676">
@@ -435,8 +435,8 @@
       <unit id="6153771967696084676" at="15,0,44,0" name="jetbrains.mps.kotlin.textGen.FileAnnotation_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696084676" at="109,48,110,44" concept="9" />
-      <scope id="6153771967696084676" at="109,48,110,44" />
+      <node id="6153771967696084676" at="107,48,108,44" concept="9" />
+      <scope id="6153771967696084676" at="107,48,108,44" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085003">
@@ -457,8 +457,8 @@
       <unit id="6153771967696085003" at="12,0,25,0" name="jetbrains.mps.kotlin.textGen.StringExpressionEvaluation_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085003" at="235,60,236,56" concept="9" />
-      <scope id="6153771967696085003" at="235,60,236,56" />
+      <node id="6153771967696085003" at="233,60,234,56" concept="9" />
+      <scope id="6153771967696085003" at="233,60,234,56" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085062">
@@ -478,8 +478,8 @@
       <unit id="6153771967696085062" at="12,0,24,0" name="jetbrains.mps.kotlin.textGen.ImportHeader_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085062" at="139,46,140,42" concept="9" />
-      <scope id="6153771967696085062" at="139,46,140,42" />
+      <node id="6153771967696085062" at="137,46,138,42" concept="9" />
+      <scope id="6153771967696085062" at="137,46,138,42" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085123">
@@ -496,8 +496,8 @@
       <unit id="6153771967696085123" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.TailRecFunctionModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085123" at="249,57,250,53" concept="9" />
-      <scope id="6153771967696085123" at="249,57,250,53" />
+      <node id="6153771967696085123" at="247,57,248,53" concept="9" />
+      <scope id="6153771967696085123" at="247,57,248,53" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085144">
@@ -514,8 +514,8 @@
       <unit id="6153771967696085144" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.OperatorFunctionModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085144" at="187,58,188,54" concept="9" />
-      <scope id="6153771967696085144" at="187,58,188,54" />
+      <node id="6153771967696085144" at="185,58,186,54" concept="9" />
+      <scope id="6153771967696085144" at="185,58,186,54" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085165">
@@ -532,8 +532,8 @@
       <unit id="6153771967696085165" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.InfixFunctionModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085165" at="145,55,146,51" concept="9" />
-      <scope id="6153771967696085165" at="145,55,146,51" />
+      <node id="6153771967696085165" at="143,55,144,51" concept="9" />
+      <scope id="6153771967696085165" at="143,55,144,51" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085186">
@@ -550,8 +550,8 @@
       <unit id="6153771967696085186" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.InlineFunctionModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085186" at="147,56,148,52" concept="9" />
-      <scope id="6153771967696085186" at="147,56,148,52" />
+      <node id="6153771967696085186" at="145,56,146,52" concept="9" />
+      <scope id="6153771967696085186" at="145,56,146,52" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085207">
@@ -568,8 +568,8 @@
       <unit id="6153771967696085207" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.ExternalFunctionModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085207" at="105,58,106,54" concept="9" />
-      <scope id="6153771967696085207" at="105,58,106,54" />
+      <node id="6153771967696085207" at="103,58,104,54" concept="9" />
+      <scope id="6153771967696085207" at="103,58,104,54" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085228">
@@ -586,8 +586,8 @@
       <unit id="6153771967696085228" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.SuspendFunctionModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085228" at="247,57,248,53" concept="9" />
-      <scope id="6153771967696085228" at="247,57,248,53" />
+      <node id="6153771967696085228" at="245,57,246,53" concept="9" />
+      <scope id="6153771967696085228" at="245,57,246,53" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085249">
@@ -606,14 +606,14 @@
       <unit id="6153771967696085249" at="12,0,23,0" name="jetbrains.mps.kotlin.textGen.Label_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085249" at="163,39,164,35" concept="9" />
-      <scope id="6153771967696085249" at="163,39,164,35" />
+      <node id="6153771967696085249" at="161,39,162,35" concept="9" />
+      <scope id="6153771967696085249" at="161,39,162,35" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085284">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085284" at="269,48,270,44" concept="9" />
-      <scope id="6153771967696085284" at="269,48,270,44" />
+      <node id="6153771967696085284" at="267,48,268,44" concept="9" />
+      <scope id="6153771967696085284" at="267,48,268,44" />
     </file>
     <file name="TypeProjection_TextGen.java">
       <node id="6153771967696085284" at="17,54,18,55" concept="8" />
@@ -651,8 +651,8 @@
       <unit id="6153771967696085404" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.StarProjection_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085404" at="233,48,234,44" concept="9" />
-      <scope id="6153771967696085404" at="233,48,234,44" />
+      <node id="6153771967696085404" at="231,48,232,44" concept="9" />
+      <scope id="6153771967696085404" at="231,48,232,44" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085425">
@@ -691,8 +691,8 @@
       <unit id="6153771967696085450" at="12,0,23,0" name="jetbrains.mps.kotlin.textGen.IntegerLiteral_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085450" at="151,48,152,44" concept="9" />
-      <scope id="6153771967696085450" at="151,48,152,44" />
+      <node id="6153771967696085450" at="149,48,150,44" concept="9" />
+      <scope id="6153771967696085450" at="149,48,150,44" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085478">
@@ -712,8 +712,8 @@
       <unit id="6153771967696085478" at="12,0,24,0" name="jetbrains.mps.kotlin.textGen.HexLiteral_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085478" at="133,44,134,40" concept="9" />
-      <scope id="6153771967696085478" at="133,44,134,40" />
+      <node id="6153771967696085478" at="131,44,132,40" concept="9" />
+      <scope id="6153771967696085478" at="131,44,132,40" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085518">
@@ -755,8 +755,8 @@
       <unit id="6153771967696085559" at="12,0,25,0" name="jetbrains.mps.kotlin.textGen.CharLiteral_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085559" at="61,45,62,41" concept="9" />
-      <scope id="6153771967696085559" at="61,45,62,41" />
+      <node id="6153771967696085559" at="59,45,60,41" concept="9" />
+      <scope id="6153771967696085559" at="59,45,60,41" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085609">
@@ -775,8 +775,8 @@
       <unit id="6153771967696085609" at="12,0,23,0" name="jetbrains.mps.kotlin.textGen.RealLiteral_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085609" at="217,45,218,41" concept="9" />
-      <scope id="6153771967696085609" at="217,45,218,41" />
+      <node id="6153771967696085609" at="215,45,216,41" concept="9" />
+      <scope id="6153771967696085609" at="215,45,216,41" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085633">
@@ -793,8 +793,8 @@
       <unit id="6153771967696085633" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.NullLiteral_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085633" at="181,45,182,41" concept="9" />
-      <scope id="6153771967696085633" at="181,45,182,41" />
+      <node id="6153771967696085633" at="179,45,180,41" concept="9" />
+      <scope id="6153771967696085633" at="179,45,180,41" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085654">
@@ -813,14 +813,14 @@
       <unit id="6153771967696085654" at="12,0,23,0" name="jetbrains.mps.kotlin.textGen.LongLiteral_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085654" at="169,45,170,41" concept="9" />
-      <scope id="6153771967696085654" at="169,45,170,41" />
+      <node id="6153771967696085654" at="167,45,168,41" concept="9" />
+      <scope id="6153771967696085654" at="167,45,168,41" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085678">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085678" at="273,49,274,45" concept="9" />
-      <scope id="6153771967696085678" at="273,49,274,45" />
+      <node id="6153771967696085678" at="271,49,272,45" concept="9" />
+      <scope id="6153771967696085678" at="271,49,272,45" />
     </file>
     <file name="UnsignedLiteral_TextGen.java">
       <node id="6153771967696085678" at="14,54,15,55" concept="8" />
@@ -855,8 +855,8 @@
       <unit id="6153771967696085704" at="12,0,25,0" name="jetbrains.mps.kotlin.textGen.ParenthesizedExpression_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085704" at="197,57,198,53" concept="9" />
-      <scope id="6153771967696085704" at="197,57,198,53" />
+      <node id="6153771967696085704" at="195,57,196,53" concept="9" />
+      <scope id="6153771967696085704" at="195,57,196,53" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085768">
@@ -908,43 +908,43 @@
       <unit id="6153771967696085846" at="9,0,18,0" name="jetbrains.mps.kotlin.textGen.KtScript_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696085846" at="161,42,162,38" concept="9" />
-      <node id="6153771967696085846" at="296,59,297,50" concept="8" />
-      <node id="6153771967696085846" at="297,50,298,53" concept="8" />
-      <node id="6153771967696085846" at="298,53,299,101" concept="3" />
-      <node id="6153771967696085846" at="299,101,300,17" concept="2" />
-      <node id="6153771967696085846" at="310,58,311,26" concept="9" />
-      <node id="6683421192262801077" at="316,63,317,17" concept="9" />
-      <node id="6153771967696085846" at="322,72,323,55" concept="8" />
-      <node id="445544999164184883" at="323,55,324,21" concept="3" />
-      <node id="4855355919801713456" at="324,21,325,22" concept="3" />
-      <node id="4855355919801713270" at="325,22,326,19" concept="3" />
-      <node id="6153771967696085846" at="326,19,327,24" concept="3" />
-      <node id="6153771967696085846" at="327,24,328,67" concept="8" />
-      <node id="6153771967696085846" at="328,67,329,36" concept="3" />
-      <node id="6153771967696085846" at="330,86,331,14" concept="9" />
-      <node id="6153771967696085846" at="310,0,313,0" concept="13" trace="getFileName_KtScript#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="6153771967696085846" at="316,0,319,0" concept="13" trace="getFileExtension_KtScript#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="6153771967696085846" at="295,58,301,7" concept="6" />
-      <node id="6153771967696085846" at="322,0,333,0" concept="13" trace="createTextUnit0#(Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/text/TextUnit;" />
-      <scope id="6153771967696085846" at="161,42,162,38" />
-      <scope id="6153771967696085846" at="310,58,311,26" />
-      <scope id="6153771967696085846" at="316,63,317,17" />
-      <scope id="6153771967696085846" at="310,0,313,0">
+      <node id="6153771967696085846" at="159,42,160,38" concept="9" />
+      <node id="6153771967696085846" at="294,59,295,50" concept="8" />
+      <node id="6153771967696085846" at="295,50,296,53" concept="8" />
+      <node id="6153771967696085846" at="296,53,297,101" concept="3" />
+      <node id="6153771967696085846" at="297,101,298,17" concept="2" />
+      <node id="6153771967696085846" at="308,58,309,26" concept="9" />
+      <node id="6683421192262801077" at="314,63,315,17" concept="9" />
+      <node id="6153771967696085846" at="320,72,321,55" concept="8" />
+      <node id="445544999164184883" at="321,55,322,21" concept="3" />
+      <node id="4855355919801713456" at="322,21,323,22" concept="3" />
+      <node id="4855355919801713270" at="323,22,324,19" concept="3" />
+      <node id="6153771967696085846" at="324,19,325,24" concept="3" />
+      <node id="6153771967696085846" at="325,24,326,67" concept="8" />
+      <node id="6153771967696085846" at="326,67,327,36" concept="3" />
+      <node id="6153771967696085846" at="328,86,329,14" concept="9" />
+      <node id="6153771967696085846" at="308,0,311,0" concept="13" trace="getFileName_KtScript#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="6153771967696085846" at="314,0,317,0" concept="13" trace="getFileExtension_KtScript#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="6153771967696085846" at="293,58,299,7" concept="6" />
+      <node id="6153771967696085846" at="320,0,331,0" concept="13" trace="createTextUnit0#(Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/text/TextUnit;" />
+      <scope id="6153771967696085846" at="159,42,160,38" />
+      <scope id="6153771967696085846" at="308,58,309,26" />
+      <scope id="6153771967696085846" at="314,63,315,17" />
+      <scope id="6153771967696085846" at="308,0,311,0">
         <var name="node" id="6153771967696085846" />
       </scope>
-      <scope id="6153771967696085846" at="316,0,319,0">
+      <scope id="6153771967696085846" at="314,0,317,0">
         <var name="node" id="6153771967696085846" />
       </scope>
-      <scope id="6153771967696085846" at="296,59,300,17">
+      <scope id="6153771967696085846" at="294,59,298,17">
         <var name="ext" id="6153771967696085846" />
         <var name="fname" id="6153771967696085846" />
       </scope>
-      <scope id="6153771967696085846" at="322,72,331,14">
+      <scope id="6153771967696085846" at="320,72,329,14">
         <var name="lb" id="6153771967696085846" />
         <var name="rv" id="6153771967696085846" />
       </scope>
-      <scope id="6153771967696085846" at="322,0,333,0">
+      <scope id="6153771967696085846" at="320,0,331,0">
         <var name="filename" id="6153771967696085846" />
         <var name="node" id="6153771967696085846" />
       </scope>
@@ -964,8 +964,8 @@
       <unit id="6153771967696086161" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.FieldUseSiteTarget_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696086161" at="107,52,108,48" concept="9" />
-      <scope id="6153771967696086161" at="107,52,108,48" />
+      <node id="6153771967696086161" at="105,52,106,48" concept="9" />
+      <scope id="6153771967696086161" at="105,52,106,48" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696086182">
@@ -982,8 +982,8 @@
       <unit id="6153771967696086182" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.PropertyUseSiteTarget_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696086182" at="215,55,216,51" concept="9" />
-      <scope id="6153771967696086182" at="215,55,216,51" />
+      <node id="6153771967696086182" at="213,55,214,51" concept="9" />
+      <scope id="6153771967696086182" at="213,55,214,51" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696086203">
@@ -1000,8 +1000,8 @@
       <unit id="6153771967696086203" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.GetUseSiteTarget_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696086203" at="131,50,132,46" concept="9" />
-      <scope id="6153771967696086203" at="131,50,132,46" />
+      <node id="6153771967696086203" at="129,50,130,46" concept="9" />
+      <scope id="6153771967696086203" at="129,50,130,46" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696086224">
@@ -1018,8 +1018,8 @@
       <unit id="6153771967696086224" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.SetUseSiteTarget_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696086224" at="229,50,230,46" concept="9" />
-      <scope id="6153771967696086224" at="229,50,230,46" />
+      <node id="6153771967696086224" at="227,50,228,46" concept="9" />
+      <scope id="6153771967696086224" at="227,50,228,46" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696086245">
@@ -1036,8 +1036,8 @@
       <unit id="6153771967696086245" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.ReceiverUseSiteTarget_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696086245" at="221,55,222,51" concept="9" />
-      <scope id="6153771967696086245" at="221,55,222,51" />
+      <node id="6153771967696086245" at="219,55,220,51" concept="9" />
+      <scope id="6153771967696086245" at="219,55,220,51" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696086266">
@@ -1054,8 +1054,8 @@
       <unit id="6153771967696086266" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.ParamUseSiteTarget_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696086266" at="193,52,194,48" concept="9" />
-      <scope id="6153771967696086266" at="193,52,194,48" />
+      <node id="6153771967696086266" at="191,52,192,48" concept="9" />
+      <scope id="6153771967696086266" at="191,52,192,48" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696086287">
@@ -1072,8 +1072,8 @@
       <unit id="6153771967696086287" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.SetparamUseSiteTarget_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696086287" at="231,55,232,51" concept="9" />
-      <scope id="6153771967696086287" at="231,55,232,51" />
+      <node id="6153771967696086287" at="229,55,230,51" concept="9" />
+      <scope id="6153771967696086287" at="229,55,230,51" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696086308">
@@ -1090,8 +1090,8 @@
       <unit id="6153771967696086308" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.DelegateUseSiteTarget_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696086308" at="85,55,86,51" concept="9" />
-      <scope id="6153771967696086308" at="85,55,86,51" />
+      <node id="6153771967696086308" at="83,55,84,51" concept="9" />
+      <scope id="6153771967696086308" at="83,55,84,51" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696086362">
@@ -1133,8 +1133,8 @@
       <unit id="6153771967696086362" at="14,0,50,0" name="jetbrains.mps.kotlin.textGen.FunctionParameter_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696086362" at="123,51,124,47" concept="9" />
-      <scope id="6153771967696086362" at="123,51,124,47" />
+      <node id="6153771967696086362" at="121,51,122,47" concept="9" />
+      <scope id="6153771967696086362" at="121,51,122,47" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696086747">
@@ -1151,8 +1151,8 @@
       <unit id="6153771967696086747" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.EnumClassModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696086747" at="99,51,100,47" concept="9" />
-      <scope id="6153771967696086747" at="99,51,100,47" />
+      <node id="6153771967696086747" at="97,51,98,47" concept="9" />
+      <scope id="6153771967696086747" at="97,51,98,47" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696086768">
@@ -1169,8 +1169,8 @@
       <unit id="6153771967696086768" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.SealedInheritanceModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696086768" at="225,59,226,55" concept="9" />
-      <scope id="6153771967696086768" at="225,59,226,55" />
+      <node id="6153771967696086768" at="223,59,224,55" concept="9" />
+      <scope id="6153771967696086768" at="223,59,224,55" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696086787">
@@ -1205,8 +1205,8 @@
       <unit id="6153771967696086806" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.DataClassModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696086806" at="83,51,84,47" concept="9" />
-      <scope id="6153771967696086806" at="83,51,84,47" />
+      <node id="6153771967696086806" at="81,51,82,47" concept="9" />
+      <scope id="6153771967696086806" at="81,51,82,47" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696086827">
@@ -1223,8 +1223,8 @@
       <unit id="6153771967696086827" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.InnerClassModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696086827" at="149,52,150,48" concept="9" />
-      <scope id="6153771967696086827" at="149,52,150,48" />
+      <node id="6153771967696086827" at="147,52,148,48" concept="9" />
+      <scope id="6153771967696086827" at="147,52,148,48" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696086882">
@@ -1261,8 +1261,8 @@
       <unit id="6153771967696086882" at="15,0,46,0" name="jetbrains.mps.kotlin.textGen.PrimaryConstructor_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696086882" at="203,52,204,48" concept="9" />
-      <scope id="6153771967696086882" at="203,52,204,48" />
+      <node id="6153771967696086882" at="201,52,202,48" concept="9" />
+      <scope id="6153771967696086882" at="201,52,202,48" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696087371">
@@ -1292,14 +1292,14 @@
       <unit id="6153771967696087371" at="12,0,34,0" name="jetbrains.mps.kotlin.textGen.IfExpression_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696087371" at="137,46,138,42" concept="9" />
-      <scope id="6153771967696087371" at="137,46,138,42" />
+      <node id="6153771967696087371" at="135,46,136,42" concept="9" />
+      <scope id="6153771967696087371" at="135,46,136,42" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696087544">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696087544" at="271,42,272,38" concept="9" />
-      <scope id="6153771967696087544" at="271,42,272,38" />
+      <node id="6153771967696087544" at="269,42,270,38" concept="9" />
+      <scope id="6153771967696087544" at="269,42,270,38" />
     </file>
     <file name="TypeTest_TextGen.java">
       <node id="6153771967696087544" at="16,54,17,55" concept="8" />
@@ -1374,8 +1374,8 @@
       <unit id="6153771967696087698" at="15,0,55,0" name="jetbrains.mps.kotlin.textGen.ForStatement_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696087698" at="115,46,116,42" concept="9" />
-      <scope id="6153771967696087698" at="115,46,116,42" />
+      <node id="6153771967696087698" at="113,46,114,42" concept="9" />
+      <scope id="6153771967696087698" at="113,46,114,42" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696088210">
@@ -1441,8 +1441,8 @@
       <unit id="6153771967696088210" at="18,0,74,0" name="jetbrains.mps.kotlin.textGen.FunctionDeclaration_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696088210" at="119,53,120,49" concept="9" />
-      <scope id="6153771967696088210" at="119,53,120,49" />
+      <node id="6153771967696088210" at="117,53,118,49" concept="9" />
+      <scope id="6153771967696088210" at="117,53,118,49" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696089512">
@@ -1487,8 +1487,8 @@
       <unit id="6153771967696089991" at="12,0,25,0" name="jetbrains.mps.kotlin.textGen.CollectionLiteral_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696089991" at="71,51,72,47" concept="9" />
-      <scope id="6153771967696089991" at="71,51,72,47" />
+      <node id="6153771967696089991" at="69,51,70,47" concept="9" />
+      <scope id="6153771967696089991" at="69,51,70,47" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696090079">
@@ -1515,8 +1515,8 @@
       <unit id="6153771967696090079" at="14,0,35,0" name="jetbrains.mps.kotlin.textGen.NavigationOperation_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696090079" at="177,53,178,49" concept="9" />
-      <scope id="6153771967696090079" at="177,53,178,49" />
+      <node id="6153771967696090079" at="175,53,176,49" concept="9" />
+      <scope id="6153771967696090079" at="175,53,176,49" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696090188">
@@ -1546,8 +1546,8 @@
       <unit id="6153771967696090188" at="12,0,34,0" name="jetbrains.mps.kotlin.textGen.DoWhileStatement_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696090188" at="87,50,88,46" concept="9" />
-      <scope id="6153771967696090188" at="87,50,88,46" />
+      <node id="6153771967696090188" at="85,50,86,46" concept="9" />
+      <scope id="6153771967696090188" at="85,50,86,46" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696090366">
@@ -1573,8 +1573,8 @@
       <unit id="6153771967696090366" at="13,0,28,0" name="jetbrains.mps.kotlin.textGen.MultiLineStringLiteral_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696090366" at="175,56,176,52" concept="9" />
-      <scope id="6153771967696090366" at="175,56,176,52" />
+      <node id="6153771967696090366" at="173,56,174,52" concept="9" />
+      <scope id="6153771967696090366" at="173,56,174,52" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696090462">
@@ -1595,8 +1595,8 @@
       <unit id="6153771967696090462" at="11,0,24,0" name="jetbrains.mps.kotlin.textGen.InterfaceDeclaration_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696090462" at="153,54,154,50" concept="9" />
-      <scope id="6153771967696090462" at="153,54,154,50" />
+      <node id="6153771967696090462" at="151,54,152,50" concept="9" />
+      <scope id="6153771967696090462" at="151,54,152,50" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696091440">
@@ -1613,8 +1613,8 @@
       <unit id="6153771967696091440" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.NoinlineParameterModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696091440" at="179,59,180,55" concept="9" />
-      <scope id="6153771967696091440" at="179,59,180,55" />
+      <node id="6153771967696091440" at="177,59,178,55" concept="9" />
+      <scope id="6153771967696091440" at="177,59,178,55" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696091461">
@@ -1631,8 +1631,8 @@
       <unit id="6153771967696091461" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.CrossinslineParameterModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696091461" at="81,63,82,59" concept="9" />
-      <scope id="6153771967696091461" at="81,63,82,59" />
+      <node id="6153771967696091461" at="79,63,80,59" concept="9" />
+      <scope id="6153771967696091461" at="79,63,80,59" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696091482">
@@ -1649,8 +1649,8 @@
       <unit id="6153771967696091482" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.ExpectPlatformModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696091482" at="103,56,104,52" concept="9" />
-      <scope id="6153771967696091482" at="103,56,104,52" />
+      <node id="6153771967696091482" at="101,56,102,52" concept="9" />
+      <scope id="6153771967696091482" at="101,56,102,52" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696091503">
@@ -1691,8 +1691,8 @@
       <unit id="6153771967696091530" at="12,0,27,0" name="jetbrains.mps.kotlin.textGen.MultiLambdaParameter_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696091530" at="173,54,174,50" concept="9" />
-      <scope id="6153771967696091530" at="173,54,174,50" />
+      <node id="6153771967696091530" at="171,54,172,50" concept="9" />
+      <scope id="6153771967696091530" at="171,54,172,50" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696091638">
@@ -1734,8 +1734,8 @@
       <unit id="6153771967696092115" at="12,0,24,0" name="jetbrains.mps.kotlin.textGen.FinallyBlock_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696092115" at="113,46,114,42" concept="9" />
-      <scope id="6153771967696092115" at="113,46,114,42" />
+      <node id="6153771967696092115" at="111,46,112,42" concept="9" />
+      <scope id="6153771967696092115" at="111,46,112,42" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696092158">
@@ -1770,8 +1770,8 @@
       <unit id="6153771967696092158" at="12,0,33,0" name="jetbrains.mps.kotlin.textGen.PackageHeader_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696092158" at="191,47,192,43" concept="9" />
-      <scope id="6153771967696092158" at="191,47,192,43" />
+      <node id="6153771967696092158" at="189,47,190,43" concept="9" />
+      <scope id="6153771967696092158" at="189,47,190,43" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696092210">
@@ -1793,14 +1793,14 @@
       <unit id="6153771967696092210" at="13,0,27,0" name="jetbrains.mps.kotlin.textGen.ClassType_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696092210" at="69,43,70,39" concept="9" />
-      <scope id="6153771967696092210" at="69,43,70,39" />
+      <node id="6153771967696092210" at="67,43,68,39" concept="9" />
+      <scope id="6153771967696092210" at="67,43,68,39" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696092413">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696092413" at="259,43,260,39" concept="9" />
-      <scope id="6153771967696092413" at="259,43,260,39" />
+      <node id="6153771967696092413" at="257,43,258,39" concept="9" />
+      <scope id="6153771967696092413" at="257,43,258,39" />
     </file>
     <file name="TypeAlias_TextGen.java">
       <node id="6153771967696092413" at="16,54,17,55" concept="8" />
@@ -1846,8 +1846,8 @@
       <unit id="6153771967696092834" at="12,0,29,0" name="jetbrains.mps.kotlin.textGen.PropertySetter_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696092834" at="213,48,214,44" concept="9" />
-      <scope id="6153771967696092834" at="213,48,214,44" />
+      <node id="6153771967696092834" at="211,48,212,44" concept="9" />
+      <scope id="6153771967696092834" at="211,48,212,44" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696093124">
@@ -1882,8 +1882,8 @@
       <unit id="6153771967696093145" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.FinalInheritanceModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696093145" at="111,58,112,54" concept="9" />
-      <scope id="6153771967696093145" at="111,58,112,54" />
+      <node id="6153771967696093145" at="109,58,110,54" concept="9" />
+      <scope id="6153771967696093145" at="109,58,110,54" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696093166">
@@ -1900,8 +1900,8 @@
       <unit id="6153771967696093166" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.OpenInheritanceModifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696093166" at="185,57,186,53" concept="9" />
-      <scope id="6153771967696093166" at="185,57,186,53" />
+      <node id="6153771967696093166" at="183,57,184,53" concept="9" />
+      <scope id="6153771967696093166" at="183,57,184,53" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696093194">
@@ -1928,8 +1928,8 @@
       <unit id="6153771967696093194" at="15,0,36,0" name="jetbrains.mps.kotlin.textGen.ConstructorCall_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696093194" at="77,49,78,45" concept="9" />
-      <scope id="6153771967696093194" at="77,49,78,45" />
+      <node id="6153771967696093194" at="75,49,76,45" concept="9" />
+      <scope id="6153771967696093194" at="75,49,76,45" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696093534">
@@ -1946,8 +1946,8 @@
       <unit id="6153771967696093534" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.DynamicType_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696093534" at="89,45,90,41" concept="9" />
-      <scope id="6153771967696093534" at="89,45,90,41" />
+      <node id="6153771967696093534" at="87,45,88,41" concept="9" />
+      <scope id="6153771967696093534" at="87,45,88,41" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696093560">
@@ -1983,8 +1983,8 @@
       <unit id="6153771967696093560" at="14,0,36,0" name="jetbrains.mps.kotlin.textGen.StringLiteral_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696093560" at="237,47,238,43" concept="9" />
-      <scope id="6153771967696093560" at="237,47,238,43" />
+      <node id="6153771967696093560" at="235,47,236,43" concept="9" />
+      <scope id="6153771967696093560" at="235,47,236,43" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696093628">
@@ -2010,8 +2010,8 @@
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696093701">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696093701" at="265,47,266,43" concept="9" />
-      <scope id="6153771967696093701" at="265,47,266,43" />
+      <node id="6153771967696093701" at="263,47,264,43" concept="9" />
+      <scope id="6153771967696093701" at="263,47,264,43" />
     </file>
     <file name="TypeParameter_TextGen.java">
       <node id="6153771967696093701" at="17,54,18,55" concept="8" />
@@ -2085,14 +2085,14 @@
       <unit id="6153771967696094014" at="14,0,47,0" name="jetbrains.mps.kotlin.textGen.LambdaLiteral_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696094014" at="165,47,166,43" concept="9" />
-      <scope id="6153771967696094014" at="165,47,166,43" />
+      <node id="6153771967696094014" at="163,47,164,43" concept="9" />
+      <scope id="6153771967696094014" at="163,47,164,43" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696094285">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696094285" at="263,48,264,44" concept="9" />
-      <scope id="6153771967696094285" at="263,48,264,44" />
+      <node id="6153771967696094285" at="261,48,262,44" concept="9" />
+      <scope id="6153771967696094285" at="261,48,262,44" />
     </file>
     <file name="TypeConstraint_TextGen.java">
       <node id="6153771967696094285" at="17,54,18,55" concept="8" />
@@ -2117,8 +2117,8 @@
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696094451">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696094451" at="257,47,258,43" concept="9" />
-      <scope id="6153771967696094451" at="257,47,258,43" />
+      <node id="6153771967696094451" at="255,47,256,43" concept="9" />
+      <scope id="6153771967696094451" at="255,47,256,43" />
     </file>
     <file name="TryExpression_TextGen.java">
       <node id="6153771967696094451" at="15,54,16,55" concept="8" />
@@ -2150,8 +2150,8 @@
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696094658">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696094658" at="287,48,288,44" concept="9" />
-      <scope id="6153771967696094658" at="287,48,288,44" />
+      <node id="6153771967696094658" at="285,48,286,44" concept="9" />
+      <scope id="6153771967696094658" at="285,48,286,44" />
     </file>
     <file name="WhileStatement_TextGen.java">
       <node id="6153771967696094658" at="14,54,15,55" concept="8" />
@@ -2205,43 +2205,43 @@
       <unit id="6153771967696094853" at="14,0,34,0" name="jetbrains.mps.kotlin.textGen.KotlinFile_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696094853" at="159,44,160,40" concept="9" />
-      <node id="6153771967696094853" at="302,61,303,52" concept="8" />
-      <node id="6153771967696094853" at="303,52,304,55" concept="8" />
-      <node id="6153771967696094853" at="304,55,305,101" concept="3" />
-      <node id="6153771967696094853" at="305,101,306,17" concept="2" />
-      <node id="6153771967696094853" at="313,60,314,26" concept="9" />
-      <node id="6153771967696095178" at="319,65,320,16" concept="9" />
-      <node id="6153771967696094853" at="333,72,334,55" concept="8" />
-      <node id="445544999164188270" at="334,55,335,21" concept="3" />
-      <node id="8174299105127422576" at="335,21,336,22" concept="3" />
-      <node id="8174299105127420943" at="336,22,337,19" concept="3" />
-      <node id="6153771967696094853" at="337,19,338,24" concept="3" />
-      <node id="6153771967696094853" at="338,24,339,67" concept="8" />
-      <node id="6153771967696094853" at="339,67,340,36" concept="3" />
-      <node id="6153771967696094853" at="341,86,342,14" concept="9" />
-      <node id="6153771967696094853" at="313,0,316,0" concept="13" trace="getFileName_KotlinFile#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="6153771967696094853" at="319,0,322,0" concept="13" trace="getFileExtension_KotlinFile#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="6153771967696094853" at="301,7,307,7" concept="6" />
-      <node id="6153771967696094853" at="333,0,344,0" concept="13" trace="createTextUnit1#(Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/text/TextUnit;" />
-      <scope id="6153771967696094853" at="159,44,160,40" />
-      <scope id="6153771967696094853" at="313,60,314,26" />
-      <scope id="6153771967696094853" at="319,65,320,16" />
-      <scope id="6153771967696094853" at="313,0,316,0">
+      <node id="6153771967696094853" at="157,44,158,40" concept="9" />
+      <node id="6153771967696094853" at="300,61,301,52" concept="8" />
+      <node id="6153771967696094853" at="301,52,302,55" concept="8" />
+      <node id="6153771967696094853" at="302,55,303,101" concept="3" />
+      <node id="6153771967696094853" at="303,101,304,17" concept="2" />
+      <node id="6153771967696094853" at="311,60,312,26" concept="9" />
+      <node id="6153771967696095178" at="317,65,318,16" concept="9" />
+      <node id="6153771967696094853" at="331,72,332,55" concept="8" />
+      <node id="445544999164188270" at="332,55,333,21" concept="3" />
+      <node id="8174299105127422576" at="333,21,334,22" concept="3" />
+      <node id="8174299105127420943" at="334,22,335,19" concept="3" />
+      <node id="6153771967696094853" at="335,19,336,24" concept="3" />
+      <node id="6153771967696094853" at="336,24,337,67" concept="8" />
+      <node id="6153771967696094853" at="337,67,338,36" concept="3" />
+      <node id="6153771967696094853" at="339,86,340,14" concept="9" />
+      <node id="6153771967696094853" at="311,0,314,0" concept="13" trace="getFileName_KotlinFile#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="6153771967696094853" at="317,0,320,0" concept="13" trace="getFileExtension_KotlinFile#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="6153771967696094853" at="299,7,305,7" concept="6" />
+      <node id="6153771967696094853" at="331,0,342,0" concept="13" trace="createTextUnit1#(Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/text/TextUnit;" />
+      <scope id="6153771967696094853" at="157,44,158,40" />
+      <scope id="6153771967696094853" at="311,60,312,26" />
+      <scope id="6153771967696094853" at="317,65,318,16" />
+      <scope id="6153771967696094853" at="311,0,314,0">
         <var name="node" id="6153771967696094853" />
       </scope>
-      <scope id="6153771967696094853" at="319,0,322,0">
+      <scope id="6153771967696094853" at="317,0,320,0">
         <var name="node" id="6153771967696094853" />
       </scope>
-      <scope id="6153771967696094853" at="302,61,306,17">
+      <scope id="6153771967696094853" at="300,61,304,17">
         <var name="ext" id="6153771967696094853" />
         <var name="fname" id="6153771967696094853" />
       </scope>
-      <scope id="6153771967696094853" at="333,72,342,14">
+      <scope id="6153771967696094853" at="331,72,340,14">
         <var name="lb" id="6153771967696094853" />
         <var name="rv" id="6153771967696094853" />
       </scope>
-      <scope id="6153771967696094853" at="333,0,344,0">
+      <scope id="6153771967696094853" at="331,0,342,0">
         <var name="filename" id="6153771967696094853" />
         <var name="node" id="6153771967696094853" />
       </scope>
@@ -2276,14 +2276,14 @@
       <unit id="6153771967696095204" at="14,0,40,0" name="jetbrains.mps.kotlin.textGen.ParameterWithOptionalType_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696095204" at="195,59,196,55" concept="9" />
-      <scope id="6153771967696095204" at="195,59,196,55" />
+      <node id="6153771967696095204" at="193,59,194,55" concept="9" />
+      <scope id="6153771967696095204" at="193,59,194,55" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696095494">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696095494" at="285,48,286,44" concept="9" />
-      <scope id="6153771967696095494" at="285,48,286,44" />
+      <node id="6153771967696095494" at="283,48,284,44" concept="9" />
+      <scope id="6153771967696095494" at="283,48,284,44" />
     </file>
     <file name="WhenExpression_TextGen.java">
       <node id="6153771967696095494" at="18,54,19,55" concept="8" />
@@ -2360,8 +2360,8 @@
       <unit id="6153771967696095849" at="15,0,40,0" name="jetbrains.mps.kotlin.textGen.EnumEntry_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696095849" at="101,43,102,39" concept="9" />
-      <scope id="6153771967696095849" at="101,43,102,39" />
+      <node id="6153771967696095849" at="99,43,100,39" concept="9" />
+      <scope id="6153771967696095849" at="99,43,100,39" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696096325">
@@ -2378,31 +2378,8 @@
       <unit id="6153771967696096325" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.ClassMemberTarget_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696096325" at="65,51,66,47" concept="9" />
-      <scope id="6153771967696096325" at="65,51,66,47" />
-    </file>
-  </root>
-  <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696096348">
-    <file name="CallableReferenceExpression_TextGen.java">
-      <node id="6153771967696096348" at="14,54,15,55" concept="8" />
-      <node id="6153771967696096357" at="15,55,16,90" concept="3" />
-      <node id="6153771967696096374" at="16,90,17,21" concept="3" />
-      <node id="6153771967696096394" at="17,21,18,91" concept="3" />
-      <node id="6153771967696096348" at="22,0,23,0" concept="12" trace="receiver$NGUi" />
-      <node id="6153771967696096348" at="23,0,24,0" concept="12" trace="reference$NHBl" />
-      <node id="6153771967696096348" at="13,0,20,0" concept="7" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="6153771967696096348" at="14,54,18,91">
-        <var name="tgs" id="6153771967696096348" />
-      </scope>
-      <scope id="6153771967696096348" at="13,0,20,0">
-        <var name="ctx" id="6153771967696096348" />
-      </scope>
-      <unit id="6153771967696096348" at="21,0,25,0" name="jetbrains.mps.kotlin.textGen.CallableReferenceExpression_TextGen$LINKS" />
-      <unit id="6153771967696096348" at="12,0,26,0" name="jetbrains.mps.kotlin.textGen.CallableReferenceExpression_TextGen" />
-    </file>
-    <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696096348" at="57,61,58,57" concept="9" />
-      <scope id="6153771967696096348" at="57,61,58,57" />
+      <node id="6153771967696096325" at="63,51,64,47" concept="9" />
+      <scope id="6153771967696096325" at="63,51,64,47" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696096451">
@@ -2455,30 +2432,28 @@
       <unit id="6153771967696096451" at="16,0,57,0" name="jetbrains.mps.kotlin.textGen.ClassParameter_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696096451" at="67,48,68,44" concept="9" />
-      <scope id="6153771967696096451" at="67,48,68,44" />
+      <node id="6153771967696096451" at="65,48,66,44" concept="9" />
+      <scope id="6153771967696096451" at="65,48,66,44" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696096864">
     <file name="ReceiverType_TextGen.java">
       <node id="6153771967696096864" at="14,54,15,55" concept="8" />
-      <node id="6153771967697590616" at="15,55,16,55" concept="10" />
-      <node id="6153771967697590069" at="16,55,17,65" concept="3" />
-      <node id="6153771967696096956" at="17,65,18,86" concept="3" />
-      <node id="6153771967696096864" at="22,0,23,0" concept="12" trace="type$NVFj" />
-      <node id="6153771967696096864" at="13,0,20,0" concept="7" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="6153771967696096864" at="14,54,18,86">
+      <node id="6153771967696096956" at="15,55,16,86" concept="3" />
+      <node id="6153771967696096864" at="20,0,21,0" concept="12" trace="type$NVFj" />
+      <node id="6153771967696096864" at="13,0,18,0" concept="7" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="6153771967696096864" at="14,54,16,86">
         <var name="tgs" id="6153771967696096864" />
       </scope>
-      <scope id="6153771967696096864" at="13,0,20,0">
+      <scope id="6153771967696096864" at="13,0,18,0">
         <var name="ctx" id="6153771967696096864" />
       </scope>
-      <unit id="6153771967696096864" at="21,0,24,0" name="jetbrains.mps.kotlin.textGen.ReceiverType_TextGen$LINKS" />
-      <unit id="6153771967696096864" at="12,0,25,0" name="jetbrains.mps.kotlin.textGen.ReceiverType_TextGen" />
+      <unit id="6153771967696096864" at="19,0,22,0" name="jetbrains.mps.kotlin.textGen.ReceiverType_TextGen$LINKS" />
+      <unit id="6153771967696096864" at="12,0,23,0" name="jetbrains.mps.kotlin.textGen.ReceiverType_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696096864" at="219,46,220,42" concept="9" />
-      <scope id="6153771967696096864" at="219,46,220,42" />
+      <node id="6153771967696096864" at="217,46,218,42" concept="9" />
+      <scope id="6153771967696096864" at="217,46,218,42" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696096974">
@@ -2498,8 +2473,8 @@
       <unit id="6153771967696096974" at="12,0,24,0" name="jetbrains.mps.kotlin.textGen.PropertyDelegateAssignement_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696096974" at="209,61,210,57" concept="9" />
-      <scope id="6153771967696096974" at="209,61,210,57" />
+      <node id="6153771967696096974" at="207,61,208,57" concept="9" />
+      <scope id="6153771967696096974" at="207,61,208,57" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696097022">
@@ -2522,14 +2497,14 @@
       <unit id="6153771967696097022" at="12,0,27,0" name="jetbrains.mps.kotlin.textGen.IndexOperation_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696097022" at="141,48,142,44" concept="9" />
-      <scope id="6153771967696097022" at="141,48,142,44" />
+      <node id="6153771967696097022" at="139,48,140,44" concept="9" />
+      <scope id="6153771967696097022" at="139,48,140,44" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696097223">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696097223" at="255,49,256,45" concept="9" />
-      <scope id="6153771967696097223" at="255,49,256,45" />
+      <node id="6153771967696097223" at="253,49,254,45" concept="9" />
+      <scope id="6153771967696097223" at="253,49,254,45" />
     </file>
     <file name="ThrowExpression_TextGen.java">
       <node id="6153771967696097223" at="14,54,15,55" concept="8" />
@@ -2565,8 +2540,8 @@
       <unit id="6153771967696097267" at="12,0,25,0" name="jetbrains.mps.kotlin.textGen.ReturnExpression_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696097267" at="223,50,224,46" concept="9" />
-      <scope id="6153771967696097267" at="223,50,224,46" />
+      <node id="6153771967696097267" at="221,50,222,46" concept="9" />
+      <scope id="6153771967696097267" at="221,50,222,46" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696097360">
@@ -2584,8 +2559,8 @@
       <unit id="6153771967696097360" at="9,0,17,0" name="jetbrains.mps.kotlin.textGen.ContinueExpression_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696097360" at="79,52,80,48" concept="9" />
-      <scope id="6153771967696097360" at="79,52,80,48" />
+      <node id="6153771967696097360" at="77,52,78,48" concept="9" />
+      <scope id="6153771967696097360" at="77,52,78,48" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696097431">
@@ -2609,8 +2584,8 @@
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696097516">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696097516" at="277,53,278,49" concept="9" />
-      <scope id="6153771967696097516" at="277,53,278,49" />
+      <node id="6153771967696097516" at="275,53,276,49" concept="9" />
+      <scope id="6153771967696097516" at="275,53,276,49" />
     </file>
     <file name="VariableDeclaration_TextGen.java">
       <node id="6153771967696097516" at="16,54,17,55" concept="8" />
@@ -2662,14 +2637,14 @@
       <unit id="6153771967696097730" at="14,0,39,0" name="jetbrains.mps.kotlin.textGen.SuperExpression_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696097730" at="243,49,244,45" concept="9" />
-      <scope id="6153771967696097730" at="243,49,244,45" />
+      <node id="6153771967696097730" at="241,49,242,45" concept="9" />
+      <scope id="6153771967696097730" at="241,49,242,45" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696097969">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696097969" at="275,47,276,43" concept="9" />
-      <scope id="6153771967696097969" at="275,47,276,43" />
+      <node id="6153771967696097969" at="273,47,274,43" concept="9" />
+      <scope id="6153771967696097969" at="273,47,274,43" />
     </file>
     <file name="ValueArgument_TextGen.java">
       <node id="6153771967696097969" at="17,54,18,55" concept="8" />
@@ -2681,7 +2656,7 @@
       <node id="6153771967696097969" at="29,0,30,0" concept="12" trace="parameter$8rO1" />
       <node id="6153771967696097969" at="30,0,31,0" concept="12" trace="expression$RzsN" />
       <node id="6153771967696097969" at="34,0,35,0" concept="12" trace="name$MnvL" />
-      <node id="6153771967696097969" at="35,0,36,0" concept="12" trace="isVararg$Z9rG" />
+      <node id="6153771967696097969" at="35,0,36,0" concept="12" trace="isVararg$zs5Z" />
       <node id="6153771967696098206" at="19,65,23,5" concept="6" />
       <node id="6153771967696097969" at="16,0,27,0" concept="7" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <scope id="6153771967696098205" at="20,91,22,24" />
@@ -2766,8 +2741,8 @@
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696098849">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696098849" at="251,63,252,59" concept="9" />
-      <scope id="6153771967696098849" at="251,63,252,59" />
+      <node id="6153771967696098849" at="249,63,250,59" concept="9" />
+      <scope id="6153771967696098849" at="249,63,250,59" />
     </file>
     <file name="ThisConstructorDelegationCall_TextGen.java">
       <node id="6153771967696098849" at="14,54,15,55" concept="8" />
@@ -2804,8 +2779,8 @@
       <unit id="6153771967696099057" at="12,0,25,0" name="jetbrains.mps.kotlin.textGen.SuperConstructorDelegationCall_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696099057" at="241,64,242,60" concept="9" />
-      <scope id="6153771967696099057" at="241,64,242,60" />
+      <node id="6153771967696099057" at="239,64,240,60" concept="9" />
+      <scope id="6153771967696099057" at="239,64,240,60" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696099274">
@@ -2833,8 +2808,8 @@
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696099357">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696099357" at="253,48,254,44" concept="9" />
-      <scope id="6153771967696099357" at="253,48,254,44" />
+      <node id="6153771967696099357" at="251,48,252,44" concept="9" />
+      <scope id="6153771967696099357" at="251,48,252,44" />
     </file>
     <file name="ThisExpression_TextGen.java">
       <node id="6153771967696099357" at="16,54,17,55" concept="8" />
@@ -2878,8 +2853,8 @@
       <unit id="6153771967696099487" at="13,0,31,0" name="jetbrains.mps.kotlin.textGen.ClassDeclaration_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696099487" at="63,50,64,46" concept="9" />
-      <scope id="6153771967696099487" at="63,50,64,46" />
+      <node id="6153771967696099487" at="61,50,62,46" concept="9" />
+      <scope id="6153771967696099487" at="61,50,62,46" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696100582">
@@ -2928,8 +2903,8 @@
       <unit id="6153771967696100691" at="14,0,32,0" name="jetbrains.mps.kotlin.textGen.IdentityOperator_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696100691" at="135,50,136,46" concept="9" />
-      <scope id="6153771967696100691" at="135,50,136,46" />
+      <node id="6153771967696100691" at="133,50,134,46" concept="9" />
+      <scope id="6153771967696100691" at="133,50,134,46" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696100986">
@@ -2956,8 +2931,8 @@
       <unit id="6153771967696100986" at="15,0,36,0" name="jetbrains.mps.kotlin.textGen.InfixCallOperator_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696100986" at="143,51,144,47" concept="9" />
-      <scope id="6153771967696100986" at="143,51,144,47" />
+      <node id="6153771967696100986" at="141,51,142,47" concept="9" />
+      <scope id="6153771967696100986" at="141,51,142,47" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696101125">
@@ -2977,8 +2952,8 @@
       <unit id="6153771967696101125" at="14,0,26,0" name="jetbrains.mps.kotlin.textGen.PrefixUnaryExpression_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696101125" at="201,55,202,51" concept="9" />
-      <scope id="6153771967696101125" at="201,55,202,51" />
+      <node id="6153771967696101125" at="199,55,200,51" concept="9" />
+      <scope id="6153771967696101125" at="199,55,200,51" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696101218">
@@ -2997,8 +2972,8 @@
       <unit id="6153771967696101218" at="12,0,23,0" name="jetbrains.mps.kotlin.textGen.StringLiteralRaw_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696101218" at="239,50,240,46" concept="9" />
-      <scope id="6153771967696101218" at="239,50,240,46" />
+      <node id="6153771967696101218" at="237,50,238,46" concept="9" />
+      <scope id="6153771967696101218" at="237,50,238,46" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696101249">
@@ -3027,8 +3002,8 @@
       <unit id="6153771967696101249" at="14,0,36,0" name="jetbrains.mps.kotlin.textGen.IsOperator_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696101249" at="157,44,158,40" concept="9" />
-      <scope id="6153771967696101249" at="157,44,158,40" />
+      <node id="6153771967696101249" at="155,44,156,40" concept="9" />
+      <scope id="6153771967696101249" at="155,44,156,40" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696101394">
@@ -3045,14 +3020,14 @@
       <unit id="6153771967696101394" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.EmptyDeclaration_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696101394" at="93,50,94,46" concept="9" />
-      <scope id="6153771967696101394" at="93,50,94,46" />
+      <node id="6153771967696101394" at="91,50,92,46" concept="9" />
+      <scope id="6153771967696101394" at="91,50,92,46" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696101413">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696101413" at="279,55,280,51" concept="9" />
-      <scope id="6153771967696101413" at="279,55,280,51" />
+      <node id="6153771967696101413" at="277,55,278,51" concept="9" />
+      <scope id="6153771967696101413" at="277,55,278,51" />
     </file>
     <file name="VariableRefExpression_TextGen.java">
       <node id="6153771967696101413" at="16,54,17,55" concept="8" />
@@ -3112,8 +3087,8 @@
       <unit id="6153771967696101469" at="15,0,50,0" name="jetbrains.mps.kotlin.textGen.EnumClassDeclaration_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696101469" at="97,54,98,50" concept="9" />
-      <scope id="6153771967696101469" at="97,54,98,50" />
+      <node id="6153771967696101469" at="95,54,96,50" concept="9" />
+      <scope id="6153771967696101469" at="95,54,96,50" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696102260">
@@ -3142,8 +3117,8 @@
       <unit id="6153771967696102260" at="15,0,38,0" name="jetbrains.mps.kotlin.textGen.SuperInterfaceSpecifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696102260" at="245,57,246,53" concept="9" />
-      <scope id="6153771967696102260" at="245,57,246,53" />
+      <node id="6153771967696102260" at="243,57,244,53" concept="9" />
+      <scope id="6153771967696102260" at="243,57,244,53" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696102488">
@@ -3160,8 +3135,8 @@
       <unit id="6153771967696102488" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.EmptyClassMemberDeclaration_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696102488" at="91,61,92,57" concept="9" />
-      <scope id="6153771967696102488" at="91,61,92,57" />
+      <node id="6153771967696102488" at="89,61,90,57" concept="9" />
+      <scope id="6153771967696102488" at="89,61,90,57" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696102508">
@@ -3178,8 +3153,8 @@
       <unit id="6153771967696102508" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.EmptyStatement_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696102508" at="95,48,96,44" concept="9" />
-      <scope id="6153771967696102508" at="95,48,96,44" />
+      <node id="6153771967696102508" at="93,48,94,44" concept="9" />
+      <scope id="6153771967696102508" at="93,48,94,44" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696102579">
@@ -3212,8 +3187,8 @@
       <unit id="6153771967696102579" at="15,0,38,0" name="jetbrains.mps.kotlin.textGen.FunctionBody_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696102579" at="117,46,118,42" concept="9" />
-      <scope id="6153771967696102579" at="117,46,118,42" />
+      <node id="6153771967696102579" at="115,46,116,42" concept="9" />
+      <scope id="6153771967696102579" at="115,46,116,42" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696103012">
@@ -3269,8 +3244,8 @@
       <unit id="6153771967696103012" at="15,0,66,0" name="jetbrains.mps.kotlin.textGen.PropertyDeclaration_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696103012" at="205,53,206,49" concept="9" />
-      <scope id="6153771967696103012" at="205,53,206,49" />
+      <node id="6153771967696103012" at="203,53,204,49" concept="9" />
+      <scope id="6153771967696103012" at="203,53,204,49" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696104455">
@@ -3317,8 +3292,8 @@
       <unit id="6153771967696104455" at="15,0,55,0" name="jetbrains.mps.kotlin.textGen.LocalPropertyDeclaration_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696104455" at="167,58,168,54" concept="9" />
-      <scope id="6153771967696104455" at="167,58,168,54" />
+      <node id="6153771967696104455" at="165,58,166,54" concept="9" />
+      <scope id="6153771967696104455" at="165,58,166,54" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696105438">
@@ -3350,8 +3325,8 @@
       <unit id="6153771967696105438" at="14,0,37,0" name="jetbrains.mps.kotlin.textGen.FunctionTypeParameter_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696105438" at="129,55,130,51" concept="9" />
-      <scope id="6153771967696105438" at="129,55,130,51" />
+      <node id="6153771967696105438" at="127,55,128,51" concept="9" />
+      <scope id="6153771967696105438" at="127,55,128,51" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696105879">
@@ -3373,8 +3348,8 @@
       <unit id="6153771967696105879" at="12,0,26,0" name="jetbrains.mps.kotlin.textGen.MemberNavigationOperation_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696105879" at="171,59,172,55" concept="9" />
-      <scope id="6153771967696105879" at="171,59,172,55" />
+      <node id="6153771967696105879" at="169,59,170,55" concept="9" />
+      <scope id="6153771967696105879" at="169,59,170,55" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696105941">
@@ -3408,14 +3383,14 @@
       <unit id="6153771967696105941" at="14,0,34,0" name="jetbrains.mps.kotlin.textGen.IntersectionType_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696105941" at="155,50,156,46" concept="9" />
-      <scope id="6153771967696105941" at="155,50,156,46" />
+      <node id="6153771967696105941" at="153,50,154,46" concept="9" />
+      <scope id="6153771967696105941" at="153,50,154,46" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696105993">
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696105993" at="267,56,268,52" concept="9" />
-      <scope id="6153771967696105993" at="267,56,268,52" />
+      <node id="6153771967696105993" at="265,56,266,52" concept="9" />
+      <scope id="6153771967696105993" at="265,56,266,52" />
     </file>
     <file name="TypeParameterReference_TextGen.java">
       <node id="6153771967696105993" at="16,54,17,55" concept="8" />
@@ -3964,8 +3939,8 @@
       <unit id="6153771967696641659" at="25,0,339,0" name="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="8174299105127453316" at="329,36,330,86" concept="3" />
-      <node id="8174299105127453316" at="340,36,341,86" concept="3" />
+      <node id="8174299105127453316" at="327,36,328,86" concept="3" />
+      <node id="8174299105127453316" at="338,36,339,86" concept="3" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967699178102">
@@ -4019,8 +3994,8 @@
       <unit id="6153771967699178102" at="17,0,56,0" name="jetbrains.mps.kotlin.textGen.CompanionObject_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967699178102" at="75,49,76,45" concept="9" />
-      <scope id="6153771967699178102" at="75,49,76,45" />
+      <node id="6153771967699178102" at="73,49,74,45" concept="9" />
+      <scope id="6153771967699178102" at="73,49,74,45" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/7358760241249968458">
@@ -4063,8 +4038,8 @@
       <unit id="7358760241249968458" at="16,0,47,0" name="jetbrains.mps.kotlin.textGen.Comment_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="7358760241249968458" at="73,41,74,37" concept="9" />
-      <scope id="7358760241249968458" at="73,41,74,37" />
+      <node id="7358760241249968458" at="71,41,72,37" concept="9" />
+      <scope id="7358760241249968458" at="71,41,72,37" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/8174299105127451862">
@@ -4143,8 +4118,8 @@
       <unit id="8217000529247469068" at="14,0,26,0" name="jetbrains.mps.kotlin.textGen.PostfixUnaryExpression_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="8217000529247469068" at="199,56,200,52" concept="9" />
-      <scope id="8217000529247469068" at="199,56,200,52" />
+      <node id="8217000529247469068" at="197,56,198,52" concept="9" />
+      <scope id="8217000529247469068" at="197,56,198,52" />
     </file>
   </root>
 </debug-info>

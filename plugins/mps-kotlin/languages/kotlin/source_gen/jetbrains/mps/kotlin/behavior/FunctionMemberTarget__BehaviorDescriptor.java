@@ -10,10 +10,10 @@ import jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
-import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -25,9 +25,8 @@ public final class FunctionMemberTarget__BehaviorDescriptor extends BaseBHDescri
 
   public static final SMethod<FunctionDeclaration> getFunction_id4vugIDegoqT = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunction").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4vugIDegoqT").build();
   public static final SMethod<Boolean> isResolved_id4MvRlgZCbFz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isResolved").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4MvRlgZCbFz").build();
-  public static final SMethod<SNode> tryResolveNamed_id4MvRlgZCbi_ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("tryResolveNamed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4MvRlgZCbi_").build(SMethodBuilder.createJavaParameter(String.class, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFunction_id4vugIDegoqT, isResolved_id4MvRlgZCbFz, tryResolveNamed_id4MvRlgZCbi_);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFunction_id4vugIDegoqT, isResolved_id4MvRlgZCbFz);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -37,9 +36,6 @@ public final class FunctionMemberTarget__BehaviorDescriptor extends BaseBHDescri
   }
   /*package*/ static boolean isResolved_id4MvRlgZCbFz(@NotNull SNode __thisNode__) {
     return (SLinkOperations.getTarget(__thisNode__, LINKS.function$xU7v) != null);
-  }
-  /*package*/ static SNode tryResolveNamed_id4MvRlgZCbi_(@NotNull SNode __thisNode__, String name) {
-    return null;
   }
 
   /*package*/ FunctionMemberTarget__BehaviorDescriptor() {
@@ -61,8 +57,6 @@ public final class FunctionMemberTarget__BehaviorDescriptor extends BaseBHDescri
         return (T) ((FunctionDeclaration) getFunction_id4vugIDegoqT(node));
       case 1:
         return (T) ((Boolean) isResolved_id4MvRlgZCbFz(node));
-      case 2:
-        return (T) ((SNode) tryResolveNamed_id4MvRlgZCbi_(node, (String) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

@@ -49,23 +49,18 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
-    editorCell.addEditorCell(createComponent_0());
     editorCell.addEditorCell(createRefNode_0());
     return editorCell;
   }
-  private EditorCell createComponent_0() {
-    EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.kotlin.editor.Annotations_Component");
-    return editorCell;
-  }
   private EditorCell createRefNode_0() {
-    SingleRoleCellProvider provider = new typeSingleRoleHandler_dzh4k1_b0(myNode, LINKS.type$NVFj, getEditorContext());
+    SingleRoleCellProvider provider = new typeSingleRoleHandler_dzh4k1_a0(myNode, LINKS.type$NVFj, getEditorContext());
     return provider.createCell();
   }
-  private static class typeSingleRoleHandler_dzh4k1_b0 extends SingleRoleCellProvider {
+  private static class typeSingleRoleHandler_dzh4k1_a0 extends SingleRoleCellProvider {
     @NotNull
     private SNode myNode;
 
-    public typeSingleRoleHandler_dzh4k1_b0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
+    public typeSingleRoleHandler_dzh4k1_a0(SNode ownerNode, SContainmentLink containmentLink, EditorContext context) {
       super(containmentLink, context);
       myNode = ownerNode;
     }

@@ -14,11 +14,6 @@ import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
-import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
-import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
-import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -29,7 +24,6 @@ public class FunctionMemberTarget_SubstituteMenu extends SubstituteMenuBase {
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_eixudm_a(), CONCEPTS.FunctionMemberTarget$It));
-    result.add(new SMP_Subconcepts_eixudm_b());
     return result;
   }
 
@@ -37,7 +31,7 @@ public class FunctionMemberTarget_SubstituteMenu extends SubstituteMenuBase {
   @Override
   public List<SubstituteMenuItem> createMenuItems(@NotNull SubstituteMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for FunctionMemberTarget. Generated from implicit smart reference attribute.", new SNodePointer("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)", "5178650195625337545")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for " + "FunctionMemberTarget", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "201447423894548208")));
     try {
       return super.createMenuItems(context);
     } finally {
@@ -56,7 +50,7 @@ public class FunctionMemberTarget_SubstituteMenu extends SubstituteMenuBase {
     @Override
     public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
       context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("reference scope substitute menu part", null));
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("reference scope substitute menu part", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "201447423894549668")));
       try {
         return super.createItems(context);
       } finally {
@@ -64,27 +58,6 @@ public class FunctionMemberTarget_SubstituteMenu extends SubstituteMenuBase {
       }
     }
 
-  }
-  public class SMP_Subconcepts_eixudm_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-    protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.FunctionMemberTarget$It);
-    }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "FunctionMemberTarget", null));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
-    @Override
-    protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
-      return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
-    }
   }
 
   private static final class CONCEPTS {

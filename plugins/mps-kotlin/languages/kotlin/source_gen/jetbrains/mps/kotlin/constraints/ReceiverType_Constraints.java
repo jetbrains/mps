@@ -11,6 +11,7 @@ import jetbrains.mps.smodel.runtime.CheckingNodeContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -37,8 +38,8 @@ public class ReceiverType_Constraints extends BaseConstraintsDescriptor {
     };
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
-    // TODO this is probably not right, if so remove IExpression for ancestors
-    return link == LINKS.receiverType$NO1r || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.MemberNavigationOperation$7I);
+    // TODO this may not be right, if so remove IExpression for ancestors
+    return Objects.equals(link, LINKS.receiverType$NO1r) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.MemberNavigationOperation$7I);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:133e8cac-c6ad-447f-a90c-5146ca3b1aed(jetbrains.mps.kotlin.constraints)", "5098819071454168025");
 

@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class IResolvableReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4fdccef2ee1b30b0L, "jetbrains.mps.kotlin.structure.IResolvableReference");
 
-  public static final SMethod<SNode> tryResolveNamed_id4MvRlgZCbi_ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("tryResolveNamed").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4MvRlgZCbi_").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<SNode> tryResolveNamed_id4MvRlgZCbi_ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("tryResolveNamed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4MvRlgZCbi_").build(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<SNode> tryResolve_id4MvRlgZCbFB = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("tryResolve").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4MvRlgZCbFB").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(tryResolveNamed_id4MvRlgZCbi_, tryResolve_id4MvRlgZCbFB);
@@ -32,6 +32,11 @@ public final class IResolvableReference__BehaviorDescriptor extends BaseBHDescri
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  /*package*/ static SNode tryResolveNamed_id4MvRlgZCbi_(@NotNull SNode __thisNode__, String name) {
+    // TODO make abstract when there is a need for this be implemented
+    // partial implementation for methods is present in 31b8b85e6a4905df1e2af474ff0fb6017919b92e
+    return null;
+  }
   /*package*/ static SNode tryResolve_id4MvRlgZCbFB(@NotNull SNode __thisNode__) {
     {
       final SNode refIndication = SNodeOperations.getParent(__thisNode__);
@@ -58,6 +63,8 @@ public final class IResolvableReference__BehaviorDescriptor extends BaseBHDescri
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 0:
+        return (T) ((SNode) tryResolveNamed_id4MvRlgZCbi_(node, (String) parameters[0]));
       case 1:
         return (T) ((SNode) tryResolve_id4MvRlgZCbFB(node));
       default:

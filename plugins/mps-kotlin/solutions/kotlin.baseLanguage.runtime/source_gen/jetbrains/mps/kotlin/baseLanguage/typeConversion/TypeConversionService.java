@@ -6,6 +6,9 @@ import jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine;
 import jetbrains.mps.references.Reference;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine;
 
+/**
+ * Service holding type conversion engine from and to kotlin and baseLanguage.
+ */
 public class TypeConversionService {
   private static TypeConversionService INSTANCE;
 
@@ -67,6 +70,9 @@ public class TypeConversionService {
     // Can be extended using module activators
   }
 
+  /**
+   * Get the conversion service. This is probably a temporary API, use with caution.
+   */
   public static TypeConversionService getInstance() {
     if (INSTANCE == null) {
       INSTANCE = new TypeConversionService();

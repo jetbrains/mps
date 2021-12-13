@@ -11,7 +11,14 @@
     </facet>
   </facets>
   <accessoryModels>
-    <model modelUID="r:87008447-3a16-40ab-b506-5b0d1111fd16(jetbrains.mps.kotlin.fallBackTypes)" />
+    <model modelUID="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin(jetbrains.mps.kotlin.stdlib/)" />
+    <model modelUID="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin.collections(jetbrains.mps.kotlin.stdlib/)" />
+    <model modelUID="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin.io(jetbrains.mps.kotlin.stdlib/)" />
+    <model modelUID="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin.annotation(jetbrains.mps.kotlin.stdlib/)" />
+    <model modelUID="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin.ranges(jetbrains.mps.kotlin.stdlib/)" />
+    <model modelUID="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin.sequences(jetbrains.mps.kotlin.stdlib/)" />
+    <model modelUID="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin.text(jetbrains.mps.kotlin.stdlib/)" />
+    <model modelUID="b50d89c0-0fb9-4105-b652-222148c26a9b/kotlin:kotlin.comparisons(jetbrains.mps.kotlin.stdlib/)" />
   </accessoryModels>
   <sourcePath />
   <dependencies>
@@ -38,7 +45,6 @@
     <language slang="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" version="0" />
     <language slang="l:acfc188d-d5d6-4598-b370-6f4a983f05b2:jetbrains.mps.baseLanguage.methodReferences" version="0" />
     <language slang="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" version="0" />
-    <language slang="l:6b3888c1-9802-44d8-8baf-f8e6c33ed689:jetbrains.mps.kotlin" version="0" />
     <language slang="l:aee9cad2-acd4-4608-aef2-0004f6a1cdbd:jetbrains.mps.lang.actions" version="4" />
     <language slang="l:af65afd8-f0dd-4942-87d9-63a55f2a9db1:jetbrains.mps.lang.behavior" version="2" />
     <language slang="l:3f4bc5f5-c6c1-4a28-8b10-c83066ffa4a1:jetbrains.mps.lang.constraints" version="6" />

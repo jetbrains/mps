@@ -3317,35 +3317,6 @@
       </node>
     </node>
   </node>
-  <node concept="WtQ9Q" id="5lA_K0zi4Ls">
-    <property role="3GE5qa" value="expression.callable_ref" />
-    <ref role="WuzLi" to="hcm8:2yYXHtl6JkT" resolve="CallableReferenceExpression" />
-    <node concept="11bSqf" id="5lA_K0zi4Lt" role="11c4hB">
-      <node concept="3clFbS" id="5lA_K0zi4Lu" role="2VODD2">
-        <node concept="lc7rE" id="5lA_K0zi4LB" role="3cqZAp">
-          <node concept="l9hG8" id="5lA_K0zi4L_" role="lcghm">
-            <node concept="2OqwBi" id="5lA_K0zi4LA" role="lb14g">
-              <node concept="117lpO" id="5lA_K0zi4L$" role="2Oq$k0" />
-              <node concept="3TrEf2" id="5lA_K0zi4Lx" role="2OqNvi">
-                <ref role="3Tt5mk" to="hcm8:2yYXHtl6JyG" resolve="receiver" />
-              </node>
-            </node>
-          </node>
-          <node concept="la8eA" id="5lA_K0zi4LQ" role="lcghm">
-            <property role="lacIc" value="::" />
-          </node>
-          <node concept="l9hG8" id="5lA_K0zi4Ma" role="lcghm">
-            <node concept="2OqwBi" id="5lA_K0zi4Mb" role="lb14g">
-              <node concept="117lpO" id="5lA_K0zi4M9" role="2Oq$k0" />
-              <node concept="3TrEf2" id="5lA_K0zi4M6" role="2OqNvi">
-                <ref role="3Tt5mk" to="hcm8:2yYXHtl6JyJ" resolve="reference" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-  </node>
   <node concept="WtQ9Q" id="5lA_K0zi4N3">
     <property role="3GE5qa" value="declaration.class.constructor" />
     <ref role="WuzLi" to="hcm8:2yYXHtl6JkU" resolve="ClassParameter" />
@@ -3449,40 +3420,7 @@
     <ref role="WuzLi" to="hcm8:2yYXHtl6Jl1" resolve="ReceiverType" />
     <node concept="11bSqf" id="5lA_K0zi4Tx" role="11c4hB">
       <node concept="3clFbS" id="5lA_K0zi4Ty" role="2VODD2">
-        <node concept="3SKdUt" id="5lA_K0znL_o" role="3cqZAp">
-          <node concept="1PaTwC" id="5lA_K0znL_p" role="1aUNEU">
-            <node concept="3oM_SD" id="5lA_K0znLAn" role="1PaTwD">
-              <property role="3oM_SC" value="TODO" />
-            </node>
-            <node concept="3oM_SD" id="5lA_K0znLAt" role="1PaTwD">
-              <property role="3oM_SC" value="does" />
-            </node>
-            <node concept="3oM_SD" id="5lA_K0znLA_" role="1PaTwD">
-              <property role="3oM_SC" value="this" />
-            </node>
-            <node concept="3oM_SD" id="5lA_K0znLAI" role="1PaTwD">
-              <property role="3oM_SC" value="node" />
-            </node>
-            <node concept="3oM_SD" id="5lA_K0znLAS" role="1PaTwD">
-              <property role="3oM_SC" value="can" />
-            </node>
-            <node concept="3oM_SD" id="5lA_K0znLBo" role="1PaTwD">
-              <property role="3oM_SC" value="really" />
-            </node>
-            <node concept="3oM_SD" id="5lA_K0znLBx" role="1PaTwD">
-              <property role="3oM_SC" value="have" />
-            </node>
-            <node concept="3oM_SD" id="5lA_K0znLBM" role="1PaTwD">
-              <property role="3oM_SC" value="annotations?" />
-            </node>
-          </node>
-        </node>
         <node concept="lc7rE" id="5lA_K0zi4UP" role="3cqZAp">
-          <node concept="1bDJIP" id="5lA_K0znLsP" role="lcghm">
-            <ref role="1rvKf6" node="5lA_K0zkz2T" resolve="annotations" />
-            <node concept="117lpO" id="5lA_K0znLxA" role="1ryhcI" />
-            <node concept="3clFbT" id="5lA_K0znLz7" role="1ryhcI" />
-          </node>
           <node concept="l9hG8" id="5lA_K0zi4UW" role="lcghm">
             <node concept="2OqwBi" id="5lA_K0zi4UX" role="lb14g">
               <node concept="117lpO" id="5lA_K0zi4UV" role="2Oq$k0" />
@@ -3806,7 +3744,7 @@
             <node concept="2OqwBi" id="5lA_K0zo9sq" role="1ryhcI">
               <node concept="117lpO" id="5lA_K0zo9ku" role="2Oq$k0" />
               <node concept="3TrcHB" id="5lA_K0zo9_o" role="2OqNvi">
-                <ref role="3TsBF5" to="hcm8:1502VugHeXY" resolve="isVararg" />
+                <ref role="3TsBF5" to="hcm8:bbFPPtRLzX" resolve="isVararg" />
               </node>
             </node>
             <node concept="Xl_RD" id="5lA_K0zo9Cm" role="1ryhcI">

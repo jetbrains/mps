@@ -72,7 +72,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return editorCell;
   }
   private boolean nodeCondition_bqjbim_a1a() {
-    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(myNode, LINKS._inheritance$ul4z), CONCEPTS.FinalInheritanceModifier$H5));
+    return !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(myNode, LINKS.inheritance$TFvr), CONCEPTS.FinalInheritanceModifier$H5));
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.kotlin.editor.Visibility_Component");
@@ -174,7 +174,6 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink _inheritance$ul4z = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b56dL, 0xad71950af4c706dL, "_inheritance");
     /*package*/ static final SContainmentLink inheritance$TFvr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, 0x537372687dd3bcdbL, "inheritance");
   }
 

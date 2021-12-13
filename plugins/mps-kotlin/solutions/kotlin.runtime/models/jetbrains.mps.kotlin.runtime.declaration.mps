@@ -11,6 +11,7 @@
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
+    <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -119,11 +120,24 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="6832197706140896242" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocComment" flags="ng" index="z59LJ" />
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
+        <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
+      <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="2217234381367190443" name="jetbrains.mps.baseLanguage.javadoc.structure.SeeBlockDocTag" flags="ng" index="VUp57">
+        <property id="2217234381367190444" name="text" index="VUp50" />
+        <child id="2217234381367190458" name="reference" index="VUp5m" />
+      </concept>
+      <concept id="2217234381367530212" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocReference" flags="ng" index="VXe08">
+        <reference id="2217234381367530213" name="classifier" index="VXe09" />
+      </concept>
+      <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
+        <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -176,7 +190,25 @@
       <node concept="3Tqbb2" id="26mUjU3_u5N" role="3clF45">
         <ref role="ehGHo" to="tpck:h0TrEE$" resolve="INamedConcept" />
       </node>
+      <node concept="P$JXv" id="bbFPPueB5I" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueB5J" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueB5K" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns the node declaring the function." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="bbFPPueB79" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueB7a" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="bbFPPueB7j" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueB7k" role="1dT_Ay">
+            <property role="1dT_AB" value="Note: The name requirement could be dropped in favor of a getName() method." />
+          </node>
+        </node>
+      </node>
     </node>
+    <node concept="2tJIrI" id="bbFPPueBcj" role="jymVt" />
     <node concept="3clFb_" id="26mUjU3_jXv" role="jymVt">
       <property role="TrG5h" value="getParameters" />
       <node concept="3clFbS" id="26mUjU3_jXy" role="3clF47" />
@@ -186,7 +218,23 @@
           <ref role="3uigEE" node="26mUjU3_q_o" resolve="ParameterDeclaration" />
         </node>
       </node>
+      <node concept="P$JXv" id="bbFPPueB9L" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueB9M" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueB9N" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns the parameters of the function" />
+          </node>
+        </node>
+        <node concept="VUp57" id="bbFPPueBfU" role="3nqlJM">
+          <node concept="VXe08" id="bbFPPueBh7" role="VUp5m">
+            <ref role="VXe09" node="26mUjU3_q_o" resolve="ParameterDeclaration" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="bbFPPueNeM" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
     </node>
+    <node concept="2tJIrI" id="bbFPPueBjX" role="jymVt" />
     <node concept="3clFb_" id="26mUjU3B2UY" role="jymVt">
       <property role="TrG5h" value="getTypeParameters" />
       <node concept="3clFbS" id="26mUjU3B2V1" role="3clF47" />
@@ -196,7 +244,24 @@
           <ref role="3uigEE" node="26mUjU3_L7_" resolve="TypeParameterDeclaration" />
         </node>
       </node>
+      <node concept="P$JXv" id="bbFPPueBiy" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueBiz" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueBi$" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns the type parameters of the function" />
+          </node>
+        </node>
+        <node concept="VUp57" id="bbFPPueBmx" role="3nqlJM">
+          <node concept="VXe08" id="bbFPPueBmy" role="VUp5m">
+            <ref role="VXe09" node="26mUjU3_L7_" resolve="TypeParameterDeclaration" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="bbFPPueNhc" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
     </node>
+    <node concept="2tJIrI" id="bbFPPueBnQ" role="jymVt" />
+    <node concept="2tJIrI" id="bbFPPueBpn" role="jymVt" />
     <node concept="3clFb_" id="26mUjU3_jVO" role="jymVt">
       <property role="TrG5h" value="getReturnType" />
       <node concept="3clFbS" id="26mUjU3_jVR" role="3clF47" />
@@ -204,7 +269,22 @@
       <node concept="3Tqbb2" id="26mUjU3_jV_" role="3clF45">
         <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
       </node>
+      <node concept="P$JXv" id="bbFPPueBs3" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueBs4" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueBs5" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns the return type of the method, if applicable." />
+          </node>
+        </node>
+        <node concept="VUp57" id="bbFPPueCiN" role="3nqlJM">
+          <property role="VUp50" value="for inferring that return type from a node instead" />
+          <node concept="VXe08" id="bbFPPueCk0" role="VUp5m">
+            <ref role="VXe09" node="26mUjU3_STW" resolve="InferrableFunctionDeclaration" />
+          </node>
+        </node>
+      </node>
     </node>
+    <node concept="2tJIrI" id="bbFPPueCoa" role="jymVt" />
+    <node concept="2tJIrI" id="bbFPPueCr0" role="jymVt" />
     <node concept="3clFb_" id="26mUjU3DTOx" role="jymVt">
       <property role="TrG5h" value="getReceiver" />
       <node concept="3clFbS" id="26mUjU3DTO$" role="3clF47" />
@@ -212,7 +292,29 @@
       <node concept="3uibUv" id="26mUjU3DTMT" role="3clF45">
         <ref role="3uigEE" node="26mUjU3_v7T" resolve="FunctionReceiver" />
       </node>
+      <node concept="P$JXv" id="bbFPPueCtU" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueCtV" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueCtW" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns the receiver of the function (the class that holds it) if applicable." />
+          </node>
+        </node>
+        <node concept="VUp57" id="bbFPPueCZW" role="3nqlJM">
+          <node concept="VXe08" id="bbFPPueD19" role="VUp5m">
+            <ref role="VXe09" node="26mUjU3_v7T" resolve="FunctionReceiver" />
+          </node>
+        </node>
+        <node concept="VUp57" id="bbFPPueD3K" role="3nqlJM">
+          <property role="VUp50" value="to have a non-nullable version" />
+          <node concept="VXe0Z" id="bbFPPueQCW" role="VUp5m">
+            <ref role="VXe0S" node="26mUjU49FHn" resolve="getNotNull" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="bbFPPueNjE" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
     </node>
+    <node concept="2tJIrI" id="bbFPPueD6v" role="jymVt" />
     <node concept="3clFb_" id="26mUjU3_LvR" role="jymVt">
       <property role="TrG5h" value="hasModifier" />
       <node concept="3clFbS" id="26mUjU3_LvU" role="3clF47" />
@@ -222,6 +324,36 @@
         <property role="TrG5h" value="modifier" />
         <node concept="3bZ5Sz" id="26mUjU3_Lx8" role="1tU5fm">
           <ref role="3bZ5Sy" to="hcm8:2yYXHtl6JeY" resolve="IFunctionModifier" />
+        </node>
+        <node concept="2AHcQZ" id="bbFPPueDo$" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="bbFPPueDcG" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueDcH" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueDcI" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns whether the method has the given modifier. If the provided modifier to test against is null, returns whether" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="bbFPPueDvm" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueDvn" role="1dT_Ay">
+            <property role="1dT_AB" value="the function can be used in a general purpose call (should be true in most cases)." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="bbFPPueDqT" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueDqU" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="bbFPPueDr7" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueDr8" role="1dT_Ay">
+            <property role="1dT_AB" value="In Kotlin, for instance, operator functions can be used as regular calls (a.plus(b)), so if null is provided true" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="bbFPPueDsw" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueDsx" role="1dT_Ay">
+            <property role="1dT_AB" value="is returned." />
+          </node>
         </node>
       </node>
     </node>
@@ -294,7 +426,15 @@
       <node concept="3Tqbb2" id="26mUjU3_LkA" role="3clF45">
         <ref role="ehGHo" to="tpck:h0TrEE$" resolve="INamedConcept" />
       </node>
+      <node concept="P$JXv" id="bbFPPueLqd" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueLs_" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueLsA" role="1dT_Ay">
+            <property role="1dT_AB" value="Node that declares the function parameter. Used for its name or error reporting." />
+          </node>
+        </node>
+      </node>
     </node>
+    <node concept="2tJIrI" id="bbFPPueLtp" role="jymVt" />
     <node concept="3clFb_" id="26mUjU3_LfM" role="jymVt">
       <property role="TrG5h" value="getType" />
       <node concept="3clFbS" id="26mUjU3_LfP" role="3clF47" />
@@ -302,20 +442,53 @@
       <node concept="3Tqbb2" id="26mUjU3_Lfg" role="3clF45">
         <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
       </node>
+      <node concept="P$JXv" id="bbFPPueMU8" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueMU9" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueMUa" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns the expected type of argument used with this parameter." />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="bbFPPueQVc" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
     </node>
+    <node concept="2tJIrI" id="bbFPPueMVO" role="jymVt" />
     <node concept="3clFb_" id="26mUjU3_Lev" role="jymVt">
       <property role="TrG5h" value="isVararg" />
       <node concept="3clFbS" id="26mUjU3_Ley" role="3clF47" />
       <node concept="3Tm1VV" id="26mUjU3_Lez" role="1B3o_S" />
       <node concept="10P_77" id="26mUjU3_Lei" role="3clF45" />
+      <node concept="P$JXv" id="bbFPPueMY6" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueMY7" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueMY8" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns whether this parameter can be used with variable arity." />
+          </node>
+        </node>
+      </node>
     </node>
+    <node concept="2tJIrI" id="bbFPPueN1k" role="jymVt" />
     <node concept="3clFb_" id="26mUjU3_Lj1" role="jymVt">
       <property role="TrG5h" value="isOptional" />
       <node concept="3clFbS" id="26mUjU3_Lj4" role="3clF47" />
       <node concept="3Tm1VV" id="26mUjU3_Lj5" role="1B3o_S" />
       <node concept="10P_77" id="26mUjU3_Liq" role="3clF45" />
+      <node concept="P$JXv" id="bbFPPueN2V" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueN2W" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueN2X" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns whether this parameter is optional and can be omitted when called." />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3Tm1VV" id="26mUjU3_q_p" role="1B3o_S" />
+    <node concept="3UR2Jj" id="bbFPPueLpg" role="lGtFl">
+      <node concept="TZ5HA" id="bbFPPueLph" role="TZ5H$">
+        <node concept="1dT_AC" id="bbFPPueLpi" role="1dT_Ay">
+          <property role="1dT_AB" value="Abstraction of a function parameter declaration." />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="3HP615" id="26mUjU3_v7T">
     <property role="3GE5qa" value="" />
@@ -325,7 +498,23 @@
       <node concept="3clFbS" id="26mUjU3Eta8" role="3clF47" />
       <node concept="3Tm1VV" id="26mUjU3Eta9" role="1B3o_S" />
       <node concept="2sp9CU" id="26mUjU3EsZi" role="3clF45" />
+      <node concept="P$JXv" id="bbFPPueIM9" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueIMa" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueIMb" role="1dT_Ay">
+            <property role="1dT_AB" value="Reference to the class hosting the function. No restriction is set of concept kind, but references should be usable" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="bbFPPueJFS" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueJFT" role="1dT_Ay">
+            <property role="1dT_AB" value="as comparable keys (refA == refB implies classifierA == classifierB)." />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="bbFPPuePn1" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
     </node>
+    <node concept="2tJIrI" id="bbFPPueKqA" role="jymVt" />
     <node concept="3clFb_" id="26mUjU3_LcK" role="jymVt">
       <property role="TrG5h" value="getTypeParameters" />
       <node concept="3clFbS" id="26mUjU3_LcN" role="3clF47" />
@@ -334,6 +523,21 @@
         <node concept="3uibUv" id="69s32WIWbZ_" role="A3Ik2">
           <ref role="3uigEE" node="26mUjU3_L7_" resolve="TypeParameterDeclaration" />
         </node>
+      </node>
+      <node concept="P$JXv" id="bbFPPueJU7" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueJU8" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueJU9" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns the type parameters of the class." />
+          </node>
+        </node>
+        <node concept="VUp57" id="bbFPPueKd4" role="3nqlJM">
+          <node concept="VXe08" id="bbFPPueKij" role="VUp5m">
+            <ref role="VXe09" node="26mUjU3_L7_" resolve="TypeParameterDeclaration" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="bbFPPueQgF" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
     <node concept="2tJIrI" id="26mUjU49piD" role="jymVt" />
@@ -392,6 +596,13 @@
           </node>
         </node>
       </node>
+      <node concept="z59LJ" id="bbFPPueKIL" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueKIM" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueKIN" role="1dT_Ay">
+            <property role="1dT_AB" value="Default implementation for function with no receivers" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="26mUjU49Fxj" role="jymVt" />
     <node concept="2YIFZL" id="26mUjU49FHn" role="jymVt">
@@ -444,8 +655,43 @@
       <node concept="3uibUv" id="26mUjU49FF6" role="3clF45">
         <ref role="3uigEE" node="26mUjU3_v7T" resolve="FunctionReceiver" />
       </node>
+      <node concept="2AHcQZ" id="bbFPPueQrR" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+      </node>
     </node>
     <node concept="3Tm1VV" id="26mUjU3_v7U" role="1B3o_S" />
+    <node concept="3UR2Jj" id="bbFPPueEyP" role="lGtFl">
+      <node concept="TZ5HA" id="bbFPPueEyQ" role="TZ5H$">
+        <node concept="1dT_AC" id="bbFPPueEyR" role="1dT_Ay">
+          <property role="1dT_AB" value="Abstraction of the receiver of a function. It usually have the semantics of a class supported by the type system" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="bbFPPueECM" role="TZ5H$">
+        <node concept="1dT_AC" id="bbFPPueECN" role="1dT_Ay">
+          <property role="1dT_AB" value="(by default IClassType)." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="bbFPPueGZ$" role="TZ5H$">
+        <node concept="1dT_AC" id="bbFPPueGZ_" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="bbFPPueGZM" role="TZ5H$">
+        <node concept="1dT_AC" id="bbFPPueGZN" role="1dT_Ay">
+          <property role="1dT_AB" value="No restrictions is set on classifier concept as Kotlin may encounter classes of external languages (java, javascript," />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="bbFPPueIaI" role="TZ5H$">
+        <node concept="1dT_AC" id="bbFPPueIaJ" role="1dT_Ay">
+          <property role="1dT_AB" value="dsl...). Support for such concepts should be implemented in the typesystem (you may refer to baseLanguage/kotlin" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="bbFPPueIAl" role="TZ5H$">
+        <node concept="1dT_AC" id="bbFPPueIAm" role="1dT_Ay">
+          <property role="1dT_AB" value="interoperability languages for examples)." />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="3HP615" id="26mUjU3_L7_">
     <property role="3GE5qa" value="" />
@@ -457,7 +703,15 @@
       <node concept="3Tqbb2" id="26mUjU3_L89" role="3clF45">
         <ref role="ehGHo" to="tpck:h0TrEE$" resolve="INamedConcept" />
       </node>
+      <node concept="P$JXv" id="bbFPPueL8d" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueL8e" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueL8f" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns the node declaring the type parameter." />
+          </node>
+        </node>
+      </node>
     </node>
+    <node concept="2tJIrI" id="bbFPPueL9B" role="jymVt" />
     <node concept="3clFb_" id="4W0pdSCLAuW" role="jymVt">
       <property role="TrG5h" value="getUpperBounds" />
       <node concept="3clFbS" id="4W0pdSCLAuZ" role="3clF47" />
@@ -465,7 +719,15 @@
       <node concept="2I9FWS" id="4W0pdSCLAuq" role="3clF45">
         <ref role="2I9WkF" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
       </node>
+      <node concept="P$JXv" id="bbFPPueLaH" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueLaI" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueLaJ" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns the types bounding the type parameter, if any." />
+          </node>
+        </node>
+      </node>
     </node>
+    <node concept="2tJIrI" id="bbFPPueLhj" role="jymVt" />
     <node concept="3clFb_" id="4W0pdSCLCF0" role="jymVt">
       <property role="TrG5h" value="getVariance" />
       <node concept="3clFbS" id="4W0pdSCLCF3" role="3clF47" />
@@ -473,11 +735,29 @@
       <node concept="2ZThk1" id="4W0pdSCLCEg" role="3clF45">
         <ref role="2ZWj4r" to="hcm8:27wMicCAy69" resolve="VarianceModifier" />
       </node>
+      <node concept="P$JXv" id="bbFPPueLfT" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueLfU" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueLfV" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns the default variance of the type parameter. It may be overridden by use site variance" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="bbFPPueLi_" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueLiA" role="1dT_Ay">
+            <property role="1dT_AB" value="(see Kotlin specification regarding variance for more details)." />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3UR2Jj" id="26mUjU3B9Re" role="lGtFl">
       <node concept="TZ5HA" id="26mUjU3B9Rf" role="TZ5H$">
         <node concept="1dT_AC" id="26mUjU3B9Rg" role="1dT_Ay">
-          <property role="1dT_AB" value="Declaration of a type parameter, should implement hashCode and equals delegated to getNode()" />
+          <property role="1dT_AB" value="Declaration of a type parameter, should implement hashCode and equals delegated to getNode()." />
+        </node>
+      </node>
+      <node concept="VUp57" id="bbFPPueKRD" role="3nqlJM">
+        <property role="VUp50" value="for default implementations of hashCode and equals" />
+        <node concept="VXe08" id="bbFPPueKSi" role="VUp5m">
+          <ref role="VXe09" node="6czvyFyngzY" resolve="DefaultTypeParameterDeclaration" />
         </node>
       </node>
     </node>
@@ -491,10 +771,37 @@
       <node concept="3clFbS" id="26mUjU3_T3o" role="3clF47" />
       <node concept="3Tm1VV" id="26mUjU3_T3p" role="1B3o_S" />
       <node concept="3Tqbb2" id="26mUjU3_T33" role="3clF45" />
+      <node concept="P$JXv" id="bbFPPueN6S" role="lGtFl">
+        <node concept="TZ5HA" id="bbFPPueN6T" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueN6U" role="1dT_Ay">
+            <property role="1dT_AB" value="Expression whose type should be evaluated as the return type. If the return type is declared" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="bbFPPueN7S" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueN7T" role="1dT_Ay">
+            <property role="1dT_AB" value="as well (not null), it will have priority and the type of this expression should be tested against it" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="bbFPPueN8o" role="TZ5H$">
+          <node concept="1dT_AC" id="bbFPPueN8p" role="1dT_Ay">
+            <property role="1dT_AB" value="for checking purposes." />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="bbFPPueN96" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
     </node>
     <node concept="3Tm1VV" id="26mUjU3_STX" role="1B3o_S" />
     <node concept="3uibUv" id="26mUjU3_SVS" role="3HQHJm">
       <ref role="3uigEE" node="26mUjU3_jTe" resolve="FunctionDeclaration" />
+    </node>
+    <node concept="3UR2Jj" id="bbFPPueN69" role="lGtFl">
+      <node concept="TZ5HA" id="bbFPPueN6a" role="TZ5H$">
+        <node concept="1dT_AC" id="bbFPPueN6b" role="1dT_Ay">
+          <property role="1dT_AB" value="Function declaration whose type can be inferred from the type of a node." />
+        </node>
+      </node>
     </node>
   </node>
   <node concept="312cEu" id="6czvyFyngzY">

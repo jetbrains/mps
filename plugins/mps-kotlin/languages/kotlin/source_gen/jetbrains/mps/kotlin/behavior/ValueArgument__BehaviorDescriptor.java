@@ -14,19 +14,22 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class ValueArgument__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af579L, "jetbrains.mps.kotlin.structure.ValueArgument");
 
   public static final SMethod<KotlinParameterDeclaration> getNamedTarget_id2PMtXoK3vgE = new SMethodBuilder<KotlinParameterDeclaration>(new SJavaCompoundTypeImpl(KotlinParameterDeclaration.class)).name("getNamedTarget").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2PMtXoK3vgE").build();
   public static final SMethod<SNode> getArgExpression_id26mUjU3EUyw = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getArgExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("26mUjU3EUyw").build();
+  public static final SMethod<Boolean> isVarArg_idbbFPPtRGEL = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVarArg").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("bbFPPtRGEL").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNamedTarget_id2PMtXoK3vgE, getArgExpression_id26mUjU3EUyw);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNamedTarget_id2PMtXoK3vgE, getArgExpression_id26mUjU3EUyw, isVarArg_idbbFPPtRGEL);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -36,6 +39,9 @@ public final class ValueArgument__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static SNode getArgExpression_id26mUjU3EUyw(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.expression$RzsN);
+  }
+  /*package*/ static boolean isVarArg_idbbFPPtRGEL(@NotNull SNode __thisNode__) {
+    return SPropertyOperations.getBoolean(__thisNode__, PROPS.isVararg$zs5Z);
   }
 
   /*package*/ ValueArgument__BehaviorDescriptor() {
@@ -57,6 +63,8 @@ public final class ValueArgument__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((KotlinParameterDeclaration) getNamedTarget_id2PMtXoK3vgE(node));
       case 1:
         return (T) ((SNode) getArgExpression_id26mUjU3EUyw(node));
+      case 2:
+        return (T) ((Boolean) isVarArg_idbbFPPtRGEL(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -89,5 +97,9 @@ public final class ValueArgument__BehaviorDescriptor extends BaseBHDescriptor {
   private static final class LINKS {
     /*package*/ static final SReferenceLink parameter$8rO1 = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af579L, 0x11400bb790b4f87bL, "parameter");
     /*package*/ static final SContainmentLink expression$RzsN = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af579L, 0x28bef6d7551af924L, "expression");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty isVararg$zs5Z = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af579L, 0x11400bb790b4ef7eL, "isVararg");
   }
 }

@@ -23,12 +23,16 @@ public final class IArgument__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<ParameterDeclaration> getNamedTarget_id2PMtXoK3vgE = new SMethodBuilder<ParameterDeclaration>(new SJavaCompoundTypeImpl(ParameterDeclaration.class)).name("getNamedTarget").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2PMtXoK3vgE").build();
   public static final SMethod<SNode> getArgExpression_id26mUjU3EUyw = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getArgExpression").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("26mUjU3EUyw").build();
+  public static final SMethod<Boolean> isVarArg_idbbFPPtRGEL = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVarArg").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("bbFPPtRGEL").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNamedTarget_id2PMtXoK3vgE, getArgExpression_id26mUjU3EUyw);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNamedTarget_id2PMtXoK3vgE, getArgExpression_id26mUjU3EUyw, isVarArg_idbbFPPtRGEL);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  /*package*/ static boolean isVarArg_idbbFPPtRGEL(@NotNull SNode __thisNode__) {
+    return false;
+  }
 
   /*package*/ IArgument__BehaviorDescriptor() {
   }
@@ -45,6 +49,8 @@ public final class IArgument__BehaviorDescriptor extends BaseBHDescriptor {
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 2:
+        return (T) ((Boolean) isVarArg_idbbFPPtRGEL(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

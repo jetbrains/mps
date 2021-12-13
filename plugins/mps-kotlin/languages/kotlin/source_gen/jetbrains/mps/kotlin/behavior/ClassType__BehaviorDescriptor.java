@@ -42,11 +42,10 @@ public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> visitHierarchy_id5q426iHtYvR = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("visitHierarchy").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5q426iHtYvR").build(SMethodBuilder.createJavaParameter(SuperTypesVisitor.class, ""));
   public static final SMethod<Void> populateSignatures_id5q426iHK5S9 = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateSignature").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5q426iHK5S9").build(SMethodBuilder.createJavaParameter(SignatureVisitor.class, ""));
   public static final SMethod<Scope> getScope_id7ubb0gUcNKV = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7ubb0gUcNKV").build(SMethodBuilder.createJavaParameter(ScopeFilter.class, ""), SMethodBuilder.createJavaParameter(SRepository.class, ""));
-  public static final SMethod<SNode> tryResolveNamed_id4MvRlgZCbi_ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("tryResolveNamed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4MvRlgZCbi_").build(SMethodBuilder.createJavaParameter(String.class, ""));
   public static final SMethod<SNode> getClassifier_id7an2tsIdpk7 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7an2tsIdpk7").build();
   public static final SMethod<Iterable<TypeParameterDeclaration>> getTypeParameters_id7an2tsIdpkM = new SMethodBuilder<Iterable<TypeParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeParameterDeclaration>>) ((Class) Object.class))).name("getTypeParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7an2tsIdpkM").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, populateSignatures_id5q426iHK5S9, getScope_id7ubb0gUcNKV, tryResolveNamed_id4MvRlgZCbi_, getClassifier_id7an2tsIdpk7, getTypeParameters_id7an2tsIdpkM);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, populateSignatures_id5q426iHK5S9, getScope_id7ubb0gUcNKV, getClassifier_id7an2tsIdpk7, getTypeParameters_id7an2tsIdpkM);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -113,10 +112,6 @@ public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static Scope getScope_id7ubb0gUcNKV(@NotNull SNode __thisNode__, ScopeFilter filter, SRepository repository) {
     return new NamedElementsScope(IDeclarationScopeProvider__BehaviorDescriptor.getDeclarations_id213J8chg2jD.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.class$ExdX), filter));
   }
-  /*package*/ static SNode tryResolveNamed_id4MvRlgZCbi_(@NotNull SNode __thisNode__, String name) {
-    // TODO ?
-    return null;
-  }
   /*package*/ static SNode getClassifier_id7an2tsIdpk7(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.class$ExdX);
   }
@@ -154,10 +149,8 @@ public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
       case 2:
         return (T) ((Scope) getScope_id7ubb0gUcNKV(node, (ScopeFilter) parameters[0], (SRepository) parameters[1]));
       case 3:
-        return (T) ((SNode) tryResolveNamed_id4MvRlgZCbi_(node, (String) parameters[0]));
-      case 4:
         return (T) ((SNode) getClassifier_id7an2tsIdpk7(node));
-      case 5:
+      case 4:
         return (T) ((Iterable<TypeParameterDeclaration>) getTypeParameters_id7an2tsIdpkM(node));
       default:
         throw new BHMethodNotFoundException(this, method);

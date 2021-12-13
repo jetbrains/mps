@@ -54,8 +54,6 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new BreakExpression_TextGen();
       case LanguageConceptSwitch.CallOperation:
         return new CallOperation_TextGen();
-      case LanguageConceptSwitch.CallableReferenceExpression:
-        return new CallableReferenceExpression_TextGen();
       case LanguageConceptSwitch.CatchBlock:
         return new CatchBlock_TextGen();
       case LanguageConceptSwitch.CharLiteral:

@@ -26,9 +26,6 @@
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
-      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
-        <property id="1225118933224" name="comment" index="YLQ7P" />
-      </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -51,6 +48,9 @@
       </concept>
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
+      </concept>
+      <concept id="418049251856799813" name="jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute" flags="ig" index="1AhYRh">
+        <property id="418049251856799817" name="comment" index="1AhYRt" />
       </concept>
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="1096454100552" name="rootable" index="19KtqR" />
@@ -1743,33 +1743,6 @@
       <ref role="PrY4T" node="6TRHYuCB$BU" resolve="IAnnotated" />
     </node>
   </node>
-  <node concept="1TIwiD" id="2yYXHtl6JkT">
-    <property role="EcuMT" value="2936055411798373689" />
-    <property role="TrG5h" value="CallableReferenceExpression" />
-    <property role="34LRSv" value="::" />
-    <property role="R4oN_" value="callable reference expression" />
-    <property role="3GE5qa" value="expression.callable_ref" />
-    <node concept="1TJgyj" id="2yYXHtl6JyG" role="1TKVEi">
-      <property role="IQ2ns" value="2936055411798374572" />
-      <property role="20kJfa" value="receiver" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="2yYXHtl6Jl1" resolve="ReceiverType" />
-    </node>
-    <node concept="1TJgyj" id="2yYXHtl6JyJ" role="1TKVEi">
-      <property role="IQ2ns" value="2936055411798374575" />
-      <property role="20kJfa" value="reference" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <ref role="20lvS9" node="2yYXHtl6JkP" resolve="IMemberTarget" />
-    </node>
-    <node concept="PrWs8" id="4gvOB2uWef4" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
-    </node>
-    <node concept="asaX9" id="4r2DeT814hM" role="lGtFl">
-      <property role="YLQ7P" value="replaced by MemberNavigationTarget, but MemberNavTarget does not handle type reference -&gt; to merge" />
-    </node>
-  </node>
   <node concept="1TIwiD" id="2yYXHtl6JkU">
     <property role="EcuMT" value="2936055411798373690" />
     <property role="TrG5h" value="ClassParameter" />
@@ -1805,11 +1778,14 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <ref role="20lvS9" node="2yYXHtl6Jh1" resolve="IType" />
     </node>
-    <node concept="PrWs8" id="5NCMNb3nF$V" role="PzmwI">
-      <ref role="PrY4T" node="6TRHYuCB$BU" resolve="IAnnotated" />
-    </node>
     <node concept="PrWs8" id="4r2DeT80NMi" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
+    </node>
+    <node concept="PrWs8" id="bbFPPu7je8" role="PzmwI">
+      <ref role="PrY4T" node="6563FJLeShn" resolve="IStaticType" />
+    </node>
+    <node concept="t5JxF" id="bbFPPtM_4_" role="lGtFl">
+      <property role="t5JxN" value="type that can be used as reference or as target for member operations" />
     </node>
   </node>
   <node concept="PlHQZ" id="2yYXHtl6Jl2">
@@ -1983,6 +1959,11 @@
     <property role="R4oN_" value="value argument" />
     <property role="3GE5qa" value="expression.operator.overloaded.postfix.call" />
     <property role="34LRSv" value="&lt;param&gt; = &lt;value&gt;" />
+    <node concept="1TJgyi" id="bbFPPtRLzX" role="1TKVEl">
+      <property role="IQ2nx" value="1243006380188954494" />
+      <property role="TrG5h" value="isVararg" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
     <node concept="1TJgyj" id="2yYXHtl6J$$" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798374692" />
       <property role="20kJfa" value="expression" />
@@ -2226,25 +2207,6 @@
     </node>
     <node concept="PrWs8" id="6VSCWXCaksS" role="PrDN$">
       <ref role="PrY4T" node="6VSCWXCakph" resolve="IInheritExplicitly" />
-    </node>
-    <node concept="1TJgyj" id="Fn6l2Jj71H" role="1TKVEi">
-      <property role="IQ2ns" value="781120894701170797" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="_inheritance" />
-      <ref role="20lvS9" node="2yYXHtl6JjL" resolve="IInheritanceModifier" />
-      <node concept="asaX9" id="5dNsAxXZEYJ" role="lGtFl">
-        <property role="YLQ7P" value="replaced by inheritance modifier in IInheritable" />
-      </node>
-    </node>
-    <node concept="1TJgyj" id="213J8cgIe4C" role="1TKVEi">
-      <property role="IQ2ns" value="2324909103760597288" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="_superclasses" />
-      <property role="20lbJX" value="fLJekj5/_0__n" />
-      <ref role="20lvS9" node="213J8cgKswc" resolve="IInheritanceSpecifier" />
-      <node concept="asaX9" id="6VSCWXCakt4" role="lGtFl">
-        <property role="YLQ7P" value="replaced in IInheritExplicitely" />
-      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtlhVmE">
@@ -3530,6 +3492,9 @@
     <node concept="PrWs8" id="4MvRlgZQCZ0" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6JeQ" resolve="INavigationTarget" />
     </node>
+    <node concept="1AhYRh" id="bbFPPtLQ7Y" role="lGtFl">
+      <property role="1AhYRt" value="could be used for a future parsing of kotlin code" />
+    </node>
   </node>
   <node concept="PlHQZ" id="4ZsNJbI6N2K">
     <property role="EcuMT" value="5754701966644818096" />
@@ -3538,11 +3503,17 @@
     <node concept="PrWs8" id="4MvRlgZCbU8" role="PrDN$">
       <ref role="PrY4T" node="4MvRlgZCbzn" resolve="IResolvable" />
     </node>
+    <node concept="1AhYRh" id="bbFPPtLX0u" role="lGtFl">
+      <property role="1AhYRt" value="could be used for a future parsing of kotlin code" />
+    </node>
   </node>
   <node concept="PlHQZ" id="4MvRlgZCbzn">
     <property role="EcuMT" value="5521375022094006487" />
     <property role="TrG5h" value="IResolvable" />
     <property role="3GE5qa" value="resolving" />
+    <node concept="1AhYRh" id="bbFPPtLXW7" role="lGtFl">
+      <property role="1AhYRt" value="could be used for a future parsing of kotlin code" />
+    </node>
   </node>
   <node concept="PlHQZ" id="Fn6l2J$ezS">
     <property role="EcuMT" value="781120894705658104" />
@@ -3702,11 +3673,6 @@
     <property role="EcuMT" value="7591488621822670472" />
     <property role="3GE5qa" value="expression.operator.overloaded.postfix.call" />
     <property role="TrG5h" value="IArgument" />
-    <node concept="1TJgyi" id="1502VugHeXY" role="1TKVEl">
-      <property role="IQ2nx" value="1243006380188954494" />
-      <property role="TrG5h" value="isVararg" />
-      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
-    </node>
   </node>
   <node concept="PlHQZ" id="4W0pdSD7eW$">
     <property role="EcuMT" value="5692660834331586340" />

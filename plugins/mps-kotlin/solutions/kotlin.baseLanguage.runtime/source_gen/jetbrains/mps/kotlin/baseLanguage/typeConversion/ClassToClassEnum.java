@@ -21,22 +21,22 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
  * Contains all default mappings between Kotlin and java classes, allow to fill the hashMap for type mapping both way.
  */
 public enum ClassToClassEnum {
-  ANY(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"), "kotlin/Any", false, new SNodePointer("r:87008447-3a16-40ab-b506-5b0d1111fd16(jetbrains.mps.kotlin.fallBackTypes)", "3274811640860857258")),
+  ANY(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"), "kotlin/Any", false),
   CLONEABLE(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Cloneable"), "kotlin/Cloneable", false),
   COMPARABLE(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Comparable"), "kotlin/Comparable", true),
   ENUM(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Enum"), "kotlin/Enum", true),
   CHAR_SEQUENCE(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~CharSequence"), "kotlin/CharSequence", false),
-  STRING(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"), "kotlin/String", false, new SNodePointer("r:87008447-3a16-40ab-b506-5b0d1111fd16(jetbrains.mps.kotlin.fallBackTypes)", "3274811640860857452")),
-  NUMBER(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Number"), "kotlin/Number", false, new SNodePointer("r:87008447-3a16-40ab-b506-5b0d1111fd16(jetbrains.mps.kotlin.fallBackTypes)", "9162520114405838547")),
+  STRING(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~String"), "kotlin/String", false),
+  NUMBER(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Number"), "kotlin/Number", false),
   THROWABLE(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Throwable"), "kotlin/Throwable", false),
   BYTE(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Byte"), "kotlin/Byte", false),
   SHORT(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Short"), "kotlin/Short", false),
-  INT(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Integer"), "kotlin/Int", false, new SNodePointer("r:87008447-3a16-40ab-b506-5b0d1111fd16(jetbrains.mps.kotlin.fallBackTypes)", "3274811640860858474")),
-  LONG(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Long"), "kotlin/Long", false, new SNodePointer("r:87008447-3a16-40ab-b506-5b0d1111fd16(jetbrains.mps.kotlin.fallBackTypes)", "3274811640860858298")),
+  INT(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Integer"), "kotlin/Int", false),
+  LONG(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Long"), "kotlin/Long", false),
   CHAR(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Character"), "kotlin/Char", false),
-  FLOAT(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Float"), "kotlin/Float", false, new SNodePointer("r:87008447-3a16-40ab-b506-5b0d1111fd16(jetbrains.mps.kotlin.fallBackTypes)", "3274811640860857976")),
-  DOUBLE(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Double"), "kotlin/Double", false, new SNodePointer("r:87008447-3a16-40ab-b506-5b0d1111fd16(jetbrains.mps.kotlin.fallBackTypes)", "3274811640860858132")),
-  BOOLEAN(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"), "kotlin/Boolean", false, new SNodePointer("r:87008447-3a16-40ab-b506-5b0d1111fd16(jetbrains.mps.kotlin.fallBackTypes)", "3274811640860857564")),
+  FLOAT(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Float"), "kotlin/Float", false),
+  DOUBLE(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Double"), "kotlin/Double", false),
+  BOOLEAN(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Boolean"), "kotlin/Boolean", false),
   ITERATOR(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)", "~Iterator"), "kotlin/collections/Iterator", true),
   ITERABLE(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Iterable"), "kotlin/collections/Iterable", true),
   COLLECTION(new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)", "~Collection"), "kotlin/collections/Collection", true),
@@ -51,20 +51,9 @@ public enum ClassToClassEnum {
   private boolean withGenerics;
 
   ClassToClassEnum(SNodeReference javaPointer, String kotlinType, boolean handleGenerics) {
-    this(javaPointer, kotlinType, handleGenerics, new SNodePointer("r:87008447-3a16-40ab-b506-5b0d1111fd16(jetbrains.mps.kotlin.fallBackTypes)", "3274811640860857258"));
-  }
-
-  ClassToClassEnum(SNodeReference javaPointer, String kotlinType, boolean handleGenerics, SNodeReference fallBackKotlinPtr) {
-    SNodePointer pointer = BuiltIn.pointerOf(kotlinType);
     javaPtr = javaPointer;
     withGenerics = handleGenerics;
-
-    // TODO fallback to remove eventually
-    if (pointer == null) {
-      kotlinPtr = fallBackKotlinPtr;
-    } else {
-      kotlinPtr = pointer;
-    }
+    kotlinPtr = BuiltIn.pointerOf(kotlinType);
   }
 
   public static void populate(JavaToKtEngine fromJava, KtToJavaEngine fromKt) {

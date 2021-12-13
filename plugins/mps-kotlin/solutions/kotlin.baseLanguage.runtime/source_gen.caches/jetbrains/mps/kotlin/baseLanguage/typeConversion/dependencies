@@ -18,7 +18,6 @@
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt+dp" />
   <uses module="e39e4a59-8cb6-498e-860e-8fa8361c0d90(jetbrains.mps.baseLanguage.scopes)" kind="dp" />
   <uses module="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="dp" />
-  <uses module="6b3888c1-9802-44d8-8baf-f8e6c33ed689(jetbrains.mps.kotlin)" kind="dp" />
   <uses module="ee552a53-f5a7-42c7-b209-42227f41a990(jetbrains.mps.kotlin.baseLanguage.runtime)" kind="dp" />
   <uses module="e6477889-841a-4dd6-b8fa-21093ba0e76d(jetbrains.mps.kotlin.runtime)" kind="dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt+dp" />
@@ -50,7 +49,6 @@
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.KotlinClassTypeBuilder" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.ConceptBuilder" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.types.BuiltIn" />
-    <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />

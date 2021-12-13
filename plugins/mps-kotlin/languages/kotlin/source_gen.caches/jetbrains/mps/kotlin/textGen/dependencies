@@ -153,15 +153,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode extendsClassName="jetbrains.mps.text.rt.TextGenDescriptorBase" />
   </dependency>
-  <dependency className="jetbrains.mps.kotlin.textGen.CallableReferenceExpression_TextGen">
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="jetbrains.mps.text.impl.TextGenSupport" />
-    <classNode dependClassName="jetbrains.mps.text.rt.TextGenContext" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
-    <classNode extendsClassName="jetbrains.mps.text.rt.TextGenDescriptorBase" />
-  </dependency>
   <dependency className="jetbrains.mps.kotlin.textGen.CatchBlock_TextGen">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
@@ -970,7 +961,6 @@
   </dependency>
   <dependency className="jetbrains.mps.kotlin.textGen.ReceiverType_TextGen">
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.text.impl.TextGenSupport" />
@@ -1122,7 +1112,6 @@
     <classNode dependClassName="jetbrains.mps.kotlin.textGen.BooleanLiteral_TextGen" />
     <classNode dependClassName="jetbrains.mps.kotlin.textGen.BreakExpression_TextGen" />
     <classNode dependClassName="jetbrains.mps.kotlin.textGen.CallOperation_TextGen" />
-    <classNode dependClassName="jetbrains.mps.kotlin.textGen.CallableReferenceExpression_TextGen" />
     <classNode dependClassName="jetbrains.mps.kotlin.textGen.CatchBlock_TextGen" />
     <classNode dependClassName="jetbrains.mps.kotlin.textGen.CharLiteral_TextGen" />
     <classNode dependClassName="jetbrains.mps.kotlin.textGen.ClassDeclaration_TextGen" />

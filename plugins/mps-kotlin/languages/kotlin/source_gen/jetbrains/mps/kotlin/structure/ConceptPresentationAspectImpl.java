@@ -26,7 +26,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_BooleanLiteral;
   private ConceptPresentation props_BreakExpression;
   private ConceptPresentation props_CallOperation;
-  private ConceptPresentation props_CallableReferenceExpression;
   private ConceptPresentation props_CatchBlock;
   private ConceptPresentation props_CharLiteral;
   private ConceptPresentation props_ClassDeclaration;
@@ -388,15 +387,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_CallOperation = cpb.create();
         }
         return props_CallOperation;
-      case LanguageConceptSwitch.CallableReferenceExpression:
-        if (props_CallableReferenceExpression == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.deprecated(true);
-          cpb.shortDesc("callable reference expression");
-          cpb.rawPresentation("::");
-          props_CallableReferenceExpression = cpb.create();
-        }
-        return props_CallableReferenceExpression;
       case LanguageConceptSwitch.CatchBlock:
         if (props_CatchBlock == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -811,9 +801,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         return props_IArguments;
       case LanguageConceptSwitch.IClassDeclaration:
         if (props_IClassDeclaration == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b56dL);
-          cpb.deprecateAggregation(0xad71950af4c706dL, "_inheritance");
-          cpb.deprecateAggregation(0x2043bc8310b8e128L, "_superclasses");
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           props_IClassDeclaration = cpb.create();
         }
         return props_IClassDeclaration;
@@ -1078,12 +1066,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.IResolvable:
         if (props_IResolvable == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.experimental(true);
           props_IResolvable = cpb.create();
         }
         return props_IResolvable;
       case LanguageConceptSwitch.IResolvableReference:
         if (props_IResolvableReference == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.experimental(true);
           props_IResolvableReference = cpb.create();
         }
         return props_IResolvableReference;
@@ -1330,7 +1320,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("kotlin file");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a351b0lj);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a251b0kj);
           props_KotlinFile = cpb.create();
         }
         return props_KotlinFile;
@@ -1339,7 +1329,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("script");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a451b0lj);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a351b0kj);
           props_KtScript = cpb.create();
         }
         return props_KtScript;
@@ -1958,6 +1948,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.UnresolvedParsedReference:
         if (props_UnresolvedParsedReference == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.experimental(true);
           cpb.shortDesc("generic reference that was not resolved during parsing");
           cpb.rawPresentation("UnresolvedParsedReference");
           props_UnresolvedParsedReference = cpb.create();

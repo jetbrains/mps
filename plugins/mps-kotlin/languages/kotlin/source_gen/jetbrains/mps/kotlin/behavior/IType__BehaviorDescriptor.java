@@ -52,9 +52,10 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static void visitHierarchy_id5q426iHtYvR(@NotNull SNode __thisNode__, SuperTypesVisitor visitor) {
-    visitor.enterType(__thisNode__);
-    // No recursion to declare -> visitor will call populateSignatures if needed
-    visitor.exitType(__thisNode__);
+    if (visitor.enterType(__thisNode__)) {
+      // No recursion to declare -> visitor will call populateSignatures if needed
+      visitor.exitType(__thisNode__);
+    }
   }
   /*package*/ static void populateSubstitutions_id4f4W8JpwgWV(@NotNull SNode __thisNode__, TypeVarSubs<SNode> subs) {
     // by default -> no substitutions
