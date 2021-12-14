@@ -235,22 +235,30 @@
       <node id="8662434627813366228" at="289,5,290,33" concept="12" />
       <node id="3971771588400019676" at="292,135,293,55" concept="11" />
       <node id="3971771588400019687" at="293,55,294,96" concept="5" />
-      <node id="1697917907976982423" at="296,89,297,55" concept="12" />
-      <node id="2791683072066470332" at="299,55,300,43" concept="12" />
-      <node id="1234796104060" at="304,0,305,0" concept="15" trace="actualArgument$pzdx" />
-      <node id="1234796104060" at="305,0,306,0" concept="15" trace="annotation$K49I" />
-      <node id="1234796104060" at="306,0,307,0" concept="15" trace="annotation$12Ek" />
-      <node id="1234796104060" at="307,0,308,0" concept="15" trace="type$a1UY" />
-      <node id="1234796104060" at="308,0,309,0" concept="15" trace="initializer$2twD" />
-      <node id="1234796104060" at="309,0,310,0" concept="15" trace="baseMethodDeclaration$pyYw" />
-      <node id="1234796104060" at="310,0,311,0" concept="15" trace="typeArgument$jaIN" />
-      <node id="1234796104060" at="314,0,315,0" concept="15" trace="IDeprecatable$2W" />
-      <node id="1234796104060" at="315,0,316,0" concept="15" trace="Classifier$Ix" />
-      <node id="1234796104060" at="316,0,317,0" concept="15" trace="ConstructorDeclaration$yG" />
-      <node id="1234796104060" at="320,0,321,0" concept="15" trace="nestedName$Em3S" />
-      <node id="1234796104060" at="321,0,322,0" concept="15" trace="isFinal$gvTP" />
-      <node id="1234796104060" at="322,0,323,0" concept="15" trace="name$MnvL" />
-      <node id="1234796104060" at="323,0,324,0" concept="15" trace="packageName$n3Xr" />
+      <node id="1387846870915670903" at="296,124,297,55" concept="11" />
+      <node id="1387846870916557922" at="297,55,298,135" concept="11" />
+      <node id="1387846870916559025" at="299,30,300,34" concept="5" />
+      <node id="1387846870916559027" at="300,34,301,28" concept="5" />
+      <node id="1387846870916559028" at="301,28,302,36" concept="5" />
+      <node id="1387846870916559032" at="302,36,303,22" concept="5" />
+      <node id="1387846870916559033" at="303,22,304,20" concept="5" />
+      <node id="1387846870916559025" at="304,20,305,24" concept="5" />
+      <node id="1697917907976982423" at="308,89,309,55" concept="12" />
+      <node id="2791683072066470332" at="311,55,312,43" concept="12" />
+      <node id="1234796104060" at="316,0,317,0" concept="15" trace="actualArgument$pzdx" />
+      <node id="1234796104060" at="317,0,318,0" concept="15" trace="annotation$K49I" />
+      <node id="1234796104060" at="318,0,319,0" concept="15" trace="annotation$12Ek" />
+      <node id="1234796104060" at="319,0,320,0" concept="15" trace="type$a1UY" />
+      <node id="1234796104060" at="320,0,321,0" concept="15" trace="initializer$2twD" />
+      <node id="1234796104060" at="321,0,322,0" concept="15" trace="baseMethodDeclaration$pyYw" />
+      <node id="1234796104060" at="322,0,323,0" concept="15" trace="typeArgument$jaIN" />
+      <node id="1234796104060" at="326,0,327,0" concept="15" trace="IDeprecatable$2W" />
+      <node id="1234796104060" at="327,0,328,0" concept="15" trace="Classifier$Ix" />
+      <node id="1234796104060" at="328,0,329,0" concept="15" trace="ConstructorDeclaration$yG" />
+      <node id="1234796104060" at="332,0,333,0" concept="15" trace="nestedName$Em3S" />
+      <node id="1234796104060" at="333,0,334,0" concept="15" trace="isFinal$gvTP" />
+      <node id="1234796104060" at="334,0,335,0" concept="15" trace="name$MnvL" />
+      <node id="1234796104060" at="335,0,336,0" concept="15" trace="packageName$n3Xr" />
       <node id="1234800229030" at="96,10,98,5" concept="1" />
       <node id="5729254867409171689" at="193,10,195,5" concept="1" />
       <node id="1237463992099" at="42,31,45,11" concept="9" />
@@ -262,8 +270,8 @@
       <node id="7204211436280825061" at="204,115,207,5" concept="9" />
       <node id="8419587467111854914" at="236,14,239,9" concept="1" />
       <node id="2791683072066456406" at="268,55,271,5" concept="9" />
-      <node id="1697917907976982423" at="296,0,299,0" concept="16" trace="contextObjectInstance_ctx#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/baseLanguage/textGen/ClassifierUnitContext;" />
-      <node id="2791683072066470332" at="299,0,302,0" concept="16" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
+      <node id="1697917907976982423" at="308,0,311,0" concept="16" trace="contextObjectInstance_ctx#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/baseLanguage/textGen/ClassifierUnitContext;" />
+      <node id="2791683072066470332" at="311,0,314,0" concept="16" trace="isNotEmptyString#(Ljava/lang/String;)Z" />
       <node id="4026438661936176750" at="79,102,83,9" concept="9" />
       <node id="1237310744896" at="115,0,119,0" concept="16" trace="internalClassName#(Ljava/lang/String;Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <node id="1237559180671" at="126,69,130,5" concept="9" />
@@ -291,11 +299,13 @@
       <node id="1234796511838" at="267,0,274,0" concept="16" trace="getPackageName#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/text/rt/TextGenContext;)Ljava/lang/String;" />
       <node id="1234800177954" at="92,0,100,0" concept="16" trace="visibility#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <node id="8662434627813149780" at="281,150,289,5" concept="9" />
+      <node id="1387846870916559024" at="298,135,306,5" concept="9" />
       <node id="1237463992099" at="37,22,47,7" concept="1" />
       <node id="1237463991792" at="53,20,63,5" concept="1" />
       <node id="1275823045676472295" at="105,0,115,0" concept="16" trace="internalClassifierName#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <node id="163269897332208695" at="159,22,169,7" concept="1" />
       <node id="7204211436279995574" at="230,12,241,7" concept="1" />
+      <node id="1387846870915670903" at="296,0,308,0" concept="16" trace="appendImport#(Ljava/lang/String;Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <node id="1235584330956" at="119,0,132,0" concept="16" trace="variableDeclaration#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <node id="1234802320752" at="135,105,148,5" concept="9" />
       <node id="1234796271792" at="35,55,49,5" concept="9" />
@@ -327,8 +337,8 @@
       <scope id="7204211436280825062" at="205,38,206,13" />
       <scope id="7204211436279995315" at="228,38,229,165" />
       <scope id="2791683072066456408" at="269,166,270,151" />
-      <scope id="1697917907976982423" at="296,89,297,55" />
-      <scope id="2791683072066470332" at="299,55,300,43" />
+      <scope id="1697917907976982423" at="308,89,309,55" />
+      <scope id="2791683072066470332" at="311,55,312,43" />
       <scope id="4026438661936176751" at="80,178,82,16" />
       <scope id="1237310744896" at="115,123,117,145">
         <var name="tgs" id="1237310744896" />
@@ -361,10 +371,10 @@
       <scope id="7204211436279971800" at="244,31,247,20">
         <var name="msg" id="2975042811628888435" />
       </scope>
-      <scope id="1697917907976982423" at="296,0,299,0">
+      <scope id="1697917907976982423" at="308,0,311,0">
         <var name="primaryInputNode" id="1697917907976982423" />
       </scope>
-      <scope id="2791683072066470332" at="299,0,302,0">
+      <scope id="2791683072066470332" at="311,0,314,0">
         <var name="str" id="2791683072066470332" />
       </scope>
       <scope id="1237463992099" at="41,39,45,11" />
@@ -425,6 +435,7 @@
         <var name="item" id="163269897332208695" />
       </scope>
       <scope id="8662434627813149782" at="282,36,288,24" />
+      <scope id="1387846870916559025" at="299,30,305,24" />
       <scope id="1234796511838" at="267,0,274,0">
         <var name="cls" id="1234796535889" />
         <var name="ctx" id="1234796511838" />
@@ -457,6 +468,10 @@
       <scope id="7204211436279995575" at="230,14,240,70">
         <var name="lastDot" id="7204211436279971841" />
       </scope>
+      <scope id="1387846870915670903" at="296,124,306,5">
+        <var name="entry" id="1387846870916557923" />
+        <var name="tgs" id="1387846870915670903" />
+      </scope>
       <scope id="1235584330956" at="119,80,130,5">
         <var name="tgs" id="1235584330956" />
       </scope>
@@ -466,6 +481,12 @@
         <var name="containsDeprecated" id="4969103988980291764" />
       </scope>
       <scope id="163269897332208692" at="158,111,170,22" />
+      <scope id="1387846870915670903" at="296,0,308,0">
+        <var name="contextNode" id="1387846870916555367" />
+        <var name="ctx" id="1387846870915670903" />
+        <var name="packageName" id="1387846870915674561" />
+        <var name="rootToImport" id="1387846870915675120" />
+      </scope>
       <scope id="1234796367381" at="51,76,64,20">
         <var name="tgs" id="1234796367381" />
       </scope>
@@ -551,10 +572,10 @@
         <var name="classifierRef" id="7204211436280011427" />
         <var name="ctx" id="7204211436280011419" />
       </scope>
-      <unit id="1234796104060" at="313,0,318,0" name="jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen$CONCEPTS" />
-      <unit id="1234796104060" at="319,0,325,0" name="jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen$PROPS" />
-      <unit id="1234796104060" at="303,0,312,0" name="jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen$LINKS" />
-      <unit id="1234796104060" at="33,0,326,0" name="jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen" />
+      <unit id="1234796104060" at="325,0,330,0" name="jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen$CONCEPTS" />
+      <unit id="1234796104060" at="331,0,337,0" name="jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen$PROPS" />
+      <unit id="1234796104060" at="315,0,324,0" name="jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen$LINKS" />
+      <unit id="1234796104060" at="33,0,338,0" name="jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
       <node id="1697917907976982423" at="422,36,423,84" concept="5" />
@@ -4893,74 +4914,84 @@
       <node id="2375442768070516253" at="44,107,45,111" concept="13" />
       <node id="6010780875090484422" at="45,111,46,87" concept="13" />
       <node id="2375442768070512796" at="46,87,47,84" concept="12" />
-      <node id="2375442768070548171" at="50,65,51,50" concept="13" />
-      <node id="2375442768070548173" at="51,50,52,74" concept="11" />
-      <node id="2375442768070548179" at="52,74,53,43" concept="11" />
-      <node id="2375442768070548186" at="53,43,54,28" concept="11" />
-      <node id="2375442768070548191" at="55,25,56,32" concept="5" />
-      <node id="2375442768070548200" at="57,12,58,79" concept="5" />
-      <node id="5029055697677107546" at="59,5,60,69" concept="13" />
-      <node id="2375442768070549642" at="60,69,61,55" concept="5" />
-      <node id="2375442768070561807" at="64,49,65,105" concept="11" />
-      <node id="2375442768070760546" at="66,67,67,154" concept="5" />
-      <node id="2375442768070761727" at="68,77,69,160" concept="5" />
-      <node id="2375442768070762592" at="69,160,70,175" concept="5" />
-      <node id="2375442768070731376" at="79,94,80,115" concept="13" />
-      <node id="2375442768070731378" at="80,115,81,101" concept="13" />
-      <node id="2375442768070765380" at="81,101,82,0" concept="14" />
-      <node id="5029055697677129781" at="82,0,83,105" concept="13" />
-      <node id="2375442768070772467" at="83,105,84,69" concept="11" />
-      <node id="2375442768070731407" at="85,81,86,44" concept="5" />
-      <node id="8250292662928219171" at="90,52,91,115" concept="13" />
-      <node id="6010780875089192159" at="91,115,92,106" concept="13" />
-      <node id="6010780875089514501" at="92,106,93,49" concept="13" />
-      <node id="6010780875089526001" at="93,49,94,126" concept="13" />
-      <node id="6010780875089535629" at="94,126,95,42" concept="13" />
-      <node id="6010780875089193799" at="95,42,96,169" concept="12" />
-      <node id="6010780875089192855" at="96,169,97,121" concept="13" />
-      <node id="2375442768070808327" at="97,121,98,162" concept="13" />
-      <node id="8250292662928225835" at="102,45,103,46" concept="13" />
-      <node id="8250292662928316633" at="103,46,104,62" concept="11" />
-      <node id="8250292662928313280" at="104,62,105,97" concept="13" />
-      <node id="8250292662928331873" at="105,97,106,35" concept="5" />
-      <node id="8250292662928357215" at="106,35,107,33" concept="5" />
-      <node id="8250292662928383236" at="107,33,108,27" concept="5" />
-      <node id="8250292662928409734" at="108,27,109,33" concept="5" />
-      <node id="8250292662928478580" at="109,33,110,106" concept="13" />
-      <node id="8250292662928436040" at="110,106,111,27" concept="5" />
-      <node id="8250292662928506500" at="111,27,112,61" concept="11" />
-      <node id="8250292662928597487" at="112,61,113,61" concept="11" />
-      <node id="8250292662928626351" at="113,61,114,26" concept="5" />
-      <node id="8250292662928613586" at="114,26,115,26" concept="5" />
-      <node id="8250292662928073130" at="115,26,116,54" concept="12" />
-      <node id="2375442768070475842" at="120,0,121,0" concept="15" trace="Interface$db" />
-      <node id="2375442768070475842" at="121,0,122,0" concept="15" trace="ClassConcept$bK" />
-      <node id="2375442768070475842" at="122,0,123,0" concept="15" trace="Classifier$Ix" />
-      <node id="2375442768070475842" at="126,0,127,0" concept="15" trace="extendedInterface$PDVO" />
-      <node id="2375442768070475842" at="127,0,128,0" concept="15" trace="implementedInterface$rujG" />
-      <node id="2375442768070475842" at="128,0,129,0" concept="15" trace="superclass$Mp9$" />
-      <node id="2375442768070475842" at="129,0,130,0" concept="15" trace="classifier$cxMr" />
-      <node id="2375442768070548198" at="57,10,59,5" concept="1" />
-      <node id="2375442768070731405" at="84,69,87,5" concept="8" />
-      <node id="2375442768070548189" at="54,28,59,5" concept="9" />
-      <node id="2375442768070563458" at="65,105,71,5" concept="9" />
+      <node id="1387846870916190067" at="50,99,51,149" concept="13" />
+      <node id="1387846870915853694" at="51,149,52,65" concept="5" />
+      <node id="1387846870915853746" at="52,65,53,86" concept="12" />
+      <node id="2375442768070548171" at="56,65,57,50" concept="13" />
+      <node id="2375442768070548173" at="57,50,58,74" concept="11" />
+      <node id="2375442768070548179" at="58,74,59,43" concept="11" />
+      <node id="2375442768070548186" at="59,43,60,28" concept="11" />
+      <node id="2375442768070548191" at="61,25,62,32" concept="5" />
+      <node id="2375442768070548200" at="63,12,64,79" concept="5" />
+      <node id="5029055697677107546" at="65,5,66,69" concept="13" />
+      <node id="2375442768070549642" at="66,69,67,55" concept="5" />
+      <node id="2375442768070561807" at="70,49,71,105" concept="11" />
+      <node id="2375442768070760546" at="72,67,73,154" concept="5" />
+      <node id="2375442768070761727" at="74,77,75,160" concept="5" />
+      <node id="2375442768070762592" at="75,160,76,175" concept="5" />
+      <node id="2375442768070731376" at="85,94,86,115" concept="13" />
+      <node id="2375442768070731378" at="86,115,87,101" concept="13" />
+      <node id="2375442768070765380" at="87,101,88,0" concept="14" />
+      <node id="5029055697677129781" at="88,0,89,105" concept="13" />
+      <node id="2375442768070772467" at="89,105,90,69" concept="11" />
+      <node id="2375442768070731407" at="91,81,92,44" concept="5" />
+      <node id="8250292662928219171" at="96,52,97,115" concept="13" />
+      <node id="6010780875089192159" at="97,115,98,106" concept="13" />
+      <node id="6010780875089514501" at="98,106,99,49" concept="13" />
+      <node id="6010780875089526001" at="99,49,100,126" concept="13" />
+      <node id="6010780875089535629" at="100,126,101,42" concept="13" />
+      <node id="6010780875089193799" at="101,42,102,169" concept="12" />
+      <node id="6010780875089192855" at="102,169,103,121" concept="13" />
+      <node id="2375442768070808327" at="103,121,104,162" concept="13" />
+      <node id="8250292662928225835" at="108,45,109,46" concept="13" />
+      <node id="8250292662928316633" at="109,46,110,62" concept="11" />
+      <node id="8250292662928313280" at="110,62,111,97" concept="13" />
+      <node id="8250292662928331873" at="111,97,112,35" concept="5" />
+      <node id="8250292662928357215" at="112,35,113,33" concept="5" />
+      <node id="8250292662928383236" at="113,33,114,27" concept="5" />
+      <node id="8250292662928409734" at="114,27,115,33" concept="5" />
+      <node id="8250292662928478580" at="115,33,116,106" concept="13" />
+      <node id="8250292662928436040" at="116,106,117,27" concept="5" />
+      <node id="8250292662928506500" at="117,27,118,61" concept="11" />
+      <node id="8250292662928597487" at="118,61,119,61" concept="11" />
+      <node id="8250292662928626351" at="119,61,120,26" concept="5" />
+      <node id="8250292662928613586" at="120,26,121,26" concept="5" />
+      <node id="8250292662928073130" at="121,26,122,54" concept="12" />
+      <node id="2375442768070475842" at="126,0,127,0" concept="15" trace="Interface$db" />
+      <node id="2375442768070475842" at="127,0,128,0" concept="15" trace="ClassConcept$bK" />
+      <node id="2375442768070475842" at="128,0,129,0" concept="15" trace="Classifier$Ix" />
+      <node id="2375442768070475842" at="132,0,133,0" concept="15" trace="extendedInterface$PDVO" />
+      <node id="2375442768070475842" at="133,0,134,0" concept="15" trace="implementedInterface$rujG" />
+      <node id="2375442768070475842" at="134,0,135,0" concept="15" trace="superclass$Mp9$" />
+      <node id="2375442768070475842" at="135,0,136,0" concept="15" trace="classifier$cxMr" />
+      <node id="2375442768070548198" at="63,10,65,5" concept="1" />
+      <node id="2375442768070731405" at="90,69,93,5" concept="8" />
+      <node id="1387846870915853684" at="50,0,55,0" concept="10" trace="getRefTextFor#(Ljava/lang/String;Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/baseLanguage/textGen/ImportEntry;" />
+      <node id="2375442768070548189" at="60,28,65,5" concept="9" />
+      <node id="2375442768070563458" at="71,105,77,5" concept="9" />
       <node id="2375442768070477864" at="34,0,41,0" concept="3" trace="ClassifierUnitContext#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="2375442768070497827" at="42,0,49,0" concept="10" trace="getClassifierRefText#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;Ljava/lang/String;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/baseLanguage/textGen/ImportEntry;" />
-      <node id="2375442768070560232" at="64,0,73,0" concept="10" trace="registerDependenciesOf#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="2375442768070730185" at="79,0,89,0" concept="10" trace="registerExtendsRelation#(Ljava/lang/Iterable;Z)V" />
-      <node id="6010780875089044306" at="90,0,100,0" concept="10" trace="getTopmostClassifierName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="2375442768070546434" at="50,0,63,0" concept="10" trace="addDependency#(Ljava/lang/String;Ljava/lang/String;)V" />
-      <node id="8250292662928068383" at="101,0,118,0" concept="10" trace="getDependencies#()Ljetbrains/mps/make/java/RootDependencies;" />
-      <scope id="2375442768070548190" at="55,25,56,32" />
-      <scope id="2375442768070548199" at="57,12,58,79" />
-      <scope id="2375442768070563459" at="66,67,67,154" />
-      <scope id="2375442768070731406" at="85,81,86,44" />
-      <scope id="2375442768070563476" at="68,77,70,175" />
-      <scope id="2375442768070731405" at="84,69,87,5">
+      <node id="2375442768070560232" at="70,0,79,0" concept="10" trace="registerDependenciesOf#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="2375442768070730185" at="85,0,95,0" concept="10" trace="registerExtendsRelation#(Ljava/lang/Iterable;Z)V" />
+      <node id="6010780875089044306" at="96,0,106,0" concept="10" trace="getTopmostClassifierName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
+      <node id="2375442768070546434" at="56,0,69,0" concept="10" trace="addDependency#(Ljava/lang/String;Ljava/lang/String;)V" />
+      <node id="8250292662928068383" at="107,0,124,0" concept="10" trace="getDependencies#()Ljetbrains/mps/make/java/RootDependencies;" />
+      <scope id="2375442768070548190" at="61,25,62,32" />
+      <scope id="2375442768070548199" at="63,12,64,79" />
+      <scope id="2375442768070563459" at="72,67,73,154" />
+      <scope id="2375442768070731406" at="91,81,92,44" />
+      <scope id="2375442768070563476" at="74,77,76,175" />
+      <scope id="1387846870915853693" at="50,99,53,86" />
+      <scope id="2375442768070731405" at="90,69,93,5">
         <var name="c" id="2375442768070731415" />
       </scope>
       <scope id="2375442768070477867" at="34,57,39,38" />
       <scope id="2375442768070497831" at="42,111,47,84" />
+      <scope id="1387846870915853684" at="50,0,55,0">
+        <var name="contextNode" id="1387846870915853689" />
+        <var name="packageName" id="1387846870915853685" />
+        <var name="rootToImport" id="1387846870915853687" />
+      </scope>
       <scope id="2375442768070477864" at="34,0,41,0">
         <var name="topClassifierNode" id="2375442768070491771" />
       </scope>
@@ -4970,41 +5001,41 @@
         <var name="packageName" id="2375442768070512659" />
         <var name="target" id="5036999749031988007" />
       </scope>
-      <scope id="2375442768070560235" at="64,49,71,5">
+      <scope id="2375442768070560235" at="70,49,77,5">
         <var name="topClassifier" id="2375442768070561808" />
       </scope>
-      <scope id="2375442768070730189" at="79,94,87,5">
+      <scope id="2375442768070730189" at="85,94,93,5">
         <var name="deps" id="2375442768070772468" />
       </scope>
-      <scope id="6010780875089044309" at="90,52,98,162" />
-      <scope id="2375442768070560232" at="64,0,73,0">
+      <scope id="6010780875089044309" at="96,52,104,162" />
+      <scope id="2375442768070560232" at="70,0,79,0">
         <var name="cls" id="2375442768070560508" />
       </scope>
-      <scope id="2375442768070730185" at="79,0,89,0">
+      <scope id="2375442768070730185" at="85,0,95,0">
         <var name="classifiers" id="2375442768070742394" />
         <var name="isTopClassifier" id="2375442768070742396" />
       </scope>
-      <scope id="6010780875089044306" at="90,0,100,0">
+      <scope id="6010780875089044306" at="96,0,106,0">
         <var name="c" id="6010780875089049491" />
       </scope>
-      <scope id="2375442768070546438" at="50,65,61,55">
+      <scope id="2375442768070546438" at="56,65,67,55">
         <var name="dependencyFqName" id="2375442768070548187" />
         <var name="dotIndex" id="2375442768070548180" />
         <var name="nestedName" id="2375442768070548174" />
       </scope>
-      <scope id="2375442768070546434" at="50,0,63,0">
+      <scope id="2375442768070546434" at="56,0,69,0">
         <var name="fqName" id="2375442768070546873" />
         <var name="packageName" id="2375442768070546871" />
       </scope>
-      <scope id="8250292662928068387" at="102,45,116,54">
+      <scope id="8250292662928068387" at="108,45,122,54">
         <var name="dep" id="8250292662928506501" />
         <var name="ext" id="8250292662928597493" />
         <var name="nodeFQName" id="8250292662928316634" />
       </scope>
-      <scope id="8250292662928068383" at="101,0,118,0" />
-      <unit id="2375442768070475842" at="119,0,124,0" name="jetbrains.mps.baseLanguage.textGen.ClassifierUnitContext$CONCEPTS" />
-      <unit id="2375442768070475842" at="125,0,131,0" name="jetbrains.mps.baseLanguage.textGen.ClassifierUnitContext$LINKS" />
-      <unit id="2375442768070475842" at="28,0,132,0" name="jetbrains.mps.baseLanguage.textGen.ClassifierUnitContext" />
+      <scope id="8250292662928068383" at="107,0,124,0" />
+      <unit id="2375442768070475842" at="125,0,130,0" name="jetbrains.mps.baseLanguage.textGen.ClassifierUnitContext$CONCEPTS" />
+      <unit id="2375442768070475842" at="131,0,137,0" name="jetbrains.mps.baseLanguage.textGen.ClassifierUnitContext$LINKS" />
+      <unit id="2375442768070475842" at="28,0,138,0" name="jetbrains.mps.baseLanguage.textGen.ClassifierUnitContext" />
     </file>
   </root>
   <root nodeRef="r:c6eeedda-084d-4659-9c4d-80b7768f2bb2(jetbrains.mps.baseLanguage.textGen)/2519056534000777264">
@@ -5644,7 +5675,7 @@
       <node id="8890142141482040953" at="73,277,74,138" concept="12" />
       <node id="8662434627813178368" at="76,7,77,62" concept="12" />
       <node id="6696079523538109814" at="78,5,79,31" concept="12" />
-      <node id="7671513720556427323" at="82,105,83,38" concept="0" />
+      <node id="7671513720556427323" at="82,109,83,38" concept="0" />
       <node id="7671513720556427645" at="83,38,84,0" concept="14" />
       <node id="6499137186596944620" at="85,32,86,40" concept="12" />
       <node id="6499137186596973189" at="87,5,88,0" concept="14" />
@@ -5729,7 +5760,7 @@
         <var name="packageName" id="8461140963537451839" />
         <var name="target" id="5036999749031998819" />
       </scope>
-      <scope id="7671513720556427317" at="82,105,123,74">
+      <scope id="7671513720556427317" at="82,109,123,74">
         <var name="fqName" id="7671513720556427648" />
         <var name="nestedClassifiersBinding" id="9056120994487512607" />
         <var name="shouldBeImported" id="3669895684330069947" />

@@ -709,8 +709,10 @@
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-httpsupport/solutions/runtime/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-kotlin/languages">
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/languages/baseLanguage.kotlinRefs/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/languages/kotlin.javaRefs/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/languages/kotlin/source_gen" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/languages/baseLanguage.kotlinRefs/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/languages/kotlin.javaRefs/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/languages/kotlin/classes_gen" />
     </content>

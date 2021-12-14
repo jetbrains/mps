@@ -1578,6 +1578,81 @@
         <node concept="3Tqbb2" id="7QHNx0BoylT" role="1tU5fm" />
       </node>
     </node>
+    <node concept="1JqxBV" id="1d2BQ0Z$edR" role="1Jy66y">
+      <property role="TrG5h" value="appendImport" />
+      <node concept="3cqZAl" id="1d2BQ0Z$eVc" role="3clF45" />
+      <node concept="3clFbS" id="1d2BQ0Z$edT" role="3clF47">
+        <node concept="3cpWs8" id="1d2BQ0ZBALy" role="3cqZAp">
+          <node concept="3cpWsn" id="1d2BQ0ZBALz" role="3cpWs9">
+            <property role="TrG5h" value="entry" />
+            <node concept="3uibUv" id="1d2BQ0ZBAJU" role="1tU5fm">
+              <ref role="3uigEE" node="7wR9Ao0Q1uO" resolve="ImportEntry" />
+            </node>
+            <node concept="2OqwBi" id="1d2BQ0ZBAL$" role="33vP2m">
+              <node concept="1mRsxo" id="1d2BQ0ZBAL_" role="2Oq$k0">
+                <ref role="1mRsxr" node="1ugdPtyJwYn" resolve="ctx" />
+              </node>
+              <node concept="liA8E" id="1d2BQ0ZBALA" role="2OqNvi">
+                <ref role="37wK5l" node="1d2BQ0Z$UPO" resolve="getRefTextFor" />
+                <node concept="37vLTw" id="1d2BQ0ZBALB" role="37wK5m">
+                  <ref role="3cqZAo" node="1d2BQ0Z$f71" resolve="packageName" />
+                </node>
+                <node concept="37vLTw" id="1d2BQ0ZBALC" role="37wK5m">
+                  <ref role="3cqZAo" node="1d2BQ0Z$ffK" resolve="rootToImport" />
+                </node>
+                <node concept="37vLTw" id="1d2BQ0ZBALD" role="37wK5m">
+                  <ref role="3cqZAo" node="1d2BQ0ZBA9B" resolve="contextNode" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="1d2BQ0ZBB2K" role="3cqZAp">
+          <node concept="3clFbS" id="1d2BQ0ZBB2L" role="3clFbx">
+            <node concept="lc7rE" id="1d2BQ0ZBB2M" role="3cqZAp">
+              <ref role="2dFDx7" node="3DQwDJfhrGp" resolve="IMPORTS" />
+              <node concept="la8eA" id="1d2BQ0ZBB2N" role="lcghm">
+                <property role="lacIc" value="import " />
+              </node>
+              <node concept="l9hG8" id="1d2BQ0ZBB2O" role="lcghm">
+                <node concept="2OqwBi" id="1d2BQ0ZBB2P" role="lb14g">
+                  <node concept="37vLTw" id="1d2BQ0ZBB2Q" role="2Oq$k0">
+                    <ref role="3cqZAo" node="1d2BQ0ZBALz" resolve="entry" />
+                  </node>
+                  <node concept="liA8E" id="1d2BQ0ZBB2R" role="2OqNvi">
+                    <ref role="37wK5l" node="7wR9Ao0Q3Oz" resolve="getImport" />
+                  </node>
+                </node>
+              </node>
+              <node concept="la8eA" id="1d2BQ0ZBB2S" role="lcghm">
+                <property role="lacIc" value=";" />
+              </node>
+              <node concept="l8MVK" id="1d2BQ0ZBB2T" role="lcghm" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="1d2BQ0ZBB2U" role="3clFbw">
+            <node concept="37vLTw" id="1d2BQ0ZBB2V" role="2Oq$k0">
+              <ref role="3cqZAo" node="1d2BQ0ZBALz" resolve="entry" />
+            </node>
+            <node concept="liA8E" id="1d2BQ0ZBB2W" role="2OqNvi">
+              <ref role="37wK5l" node="7wR9Ao0Q3tn" resolve="needsImport" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="1d2BQ0Z$f71" role="3clF46">
+        <property role="TrG5h" value="packageName" />
+        <node concept="17QB3L" id="1d2BQ0Z$f70" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="1d2BQ0Z$ffK" role="3clF46">
+        <property role="TrG5h" value="rootToImport" />
+        <node concept="17QB3L" id="1d2BQ0Z$fhG" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="1d2BQ0ZBA9B" role="3clF46">
+        <property role="TrG5h" value="contextNode" />
+        <node concept="3Tqbb2" id="1d2BQ0ZBA9C" role="1tU5fm" />
+      </node>
+    </node>
     <node concept="1bwezc" id="hXZ_zy0" role="1bwxVq">
       <property role="TrG5h" value="typeParameters" />
       <node concept="3cqZAl" id="hXZ_zy1" role="3clF45" />
@@ -10863,8 +10938,8 @@
             <property role="TrG5h" value="nestedName" />
             <node concept="17QB3L" id="6DQGhlrjhws" role="1tU5fm" />
             <node concept="2YIFZM" id="6DQGhlrjhwv" role="33vP2m">
-              <ref role="37wK5l" to="18ew:~JavaNameUtil.nestedClassName(java.lang.String,java.lang.String)" resolve="nestedClassName" />
               <ref role="1Pybhc" to="18ew:~JavaNameUtil" resolve="JavaNameUtil" />
+              <ref role="37wK5l" to="18ew:~JavaNameUtil.nestedClassName(java.lang.String,java.lang.String)" resolve="nestedClassName" />
               <node concept="37vLTw" id="2BHiRxghiAy" role="37wK5m">
                 <ref role="3cqZAo" node="7lG0I2m9ZGZ" resolve="packageName" />
               </node>
@@ -11363,7 +11438,6 @@
       <node concept="3uibUv" id="7wR9Ao0Q85w" role="3clF45">
         <ref role="3uigEE" node="7wR9Ao0Q1uO" resolve="ImportEntry" />
       </node>
-      <node concept="3Tm6S6" id="6DQGhlrjhE5" role="1B3o_S" />
       <node concept="3clFbS" id="6DQGhlrjhwP" role="3clF47">
         <node concept="1gVbGN" id="6DQGhlrjhwV" role="3cqZAp">
           <node concept="3fqX7Q" id="5NHgd_Gg6si" role="1gVkn0">
@@ -13698,6 +13772,150 @@
               </node>
               <node concept="37vLTw" id="23Rh9MB7hBo" role="37wK5m">
                 <ref role="3cqZAo" node="23Rh9MB7h0n" resolve="contextNode" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="1d2BQ0Z$YFo" role="jymVt" />
+    <node concept="3clFb_" id="1d2BQ0Z$UPO" role="jymVt">
+      <property role="TrG5h" value="getRefTextFor" />
+      <node concept="37vLTG" id="1d2BQ0Z$UPP" role="3clF46">
+        <property role="TrG5h" value="packageName" />
+        <node concept="17QB3L" id="1d2BQ0Z$UPQ" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="1d2BQ0Z$UPR" role="3clF46">
+        <property role="TrG5h" value="rootToImport" />
+        <node concept="17QB3L" id="1d2BQ0Z$UPS" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="1d2BQ0Z$UPT" role="3clF46">
+        <property role="TrG5h" value="contextNode" />
+        <node concept="3Tqbb2" id="1d2BQ0Z$UPU" role="1tU5fm" />
+      </node>
+      <node concept="3uibUv" id="1d2BQ0Z$UPV" role="3clF45">
+        <ref role="3uigEE" node="7wR9Ao0Q1uO" resolve="ImportEntry" />
+      </node>
+      <node concept="3Tmbuc" id="1d2BQ0ZAfDS" role="1B3o_S" />
+      <node concept="3clFbS" id="1d2BQ0Z$UPX" role="3clF47">
+        <node concept="3SKdUt" id="1d2BQ0ZAcXN" role="3cqZAp">
+          <node concept="1PaTwC" id="1d2BQ0ZAcXO" role="1aUNEU">
+            <node concept="3oM_SD" id="1d2BQ0ZAheG" role="1PaTwD">
+              <property role="3oM_SC" value="Same" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhfz" role="1PaTwD">
+              <property role="3oM_SC" value="as" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhhg" role="1PaTwD">
+              <property role="3oM_SC" value="above" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhiZ" role="1PaTwD">
+              <property role="3oM_SC" value="but" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhl$" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhnn" role="1PaTwD">
+              <property role="3oM_SC" value="manual" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhqO" role="1PaTwD">
+              <property role="3oM_SC" value="insertion" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhvV" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhx0" role="1PaTwD">
+              <property role="3oM_SC" value="import" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhyV" role="1PaTwD">
+              <property role="3oM_SC" value="(to" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhBk" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhCv" role="1PaTwD">
+              <property role="3oM_SC" value="used" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhDG" role="1PaTwD">
+              <property role="3oM_SC" value="when" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhIb" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhKg" role="1PaTwD">
+              <property role="3oM_SC" value="thing" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhNb" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhNG" role="1PaTwD">
+              <property role="3oM_SC" value="import" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhPR" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhRg" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAjqT" role="1PaTwD">
+              <property role="3oM_SC" value="linked" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAjso" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAjtT" role="1PaTwD">
+              <property role="3oM_SC" value="any" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAhTk" role="1PaTwD">
+              <property role="3oM_SC" value="Classifier," />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAjCo" role="1PaTwD">
+              <property role="3oM_SC" value="ie." />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAjEL" role="1PaTwD">
+              <property role="3oM_SC" value="kotlin" />
+            </node>
+            <node concept="3oM_SD" id="1d2BQ0ZAjGo" role="1PaTwD">
+              <property role="3oM_SC" value="classifier)" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1d2BQ0Z$UPY" role="3cqZAp">
+          <node concept="1rXfSq" id="1d2BQ0Z$UPZ" role="3clFbG">
+            <ref role="37wK5l" node="23Rh9MB7pg2" resolve="addDependency" />
+            <node concept="37vLTw" id="1d2BQ0Z$UQ0" role="37wK5m">
+              <ref role="3cqZAo" node="1d2BQ0Z$UPP" resolve="packageName" />
+            </node>
+            <node concept="3cpWs3" id="1d2BQ0Z_FWJ" role="37wK5m">
+              <node concept="3cpWs3" id="1d2BQ0Z_KNf" role="3uHU7B">
+                <node concept="Xl_RD" id="1d2BQ0Z_NL7" role="3uHU7w">
+                  <property role="Xl_RC" value="." />
+                </node>
+                <node concept="37vLTw" id="1d2BQ0Z_J3S" role="3uHU7B">
+                  <ref role="3cqZAo" node="1d2BQ0Z$UPP" resolve="packageName" />
+                </node>
+              </node>
+              <node concept="37vLTw" id="1d2BQ0Z$UQ1" role="3uHU7w">
+                <ref role="3cqZAo" node="1d2BQ0Z$UPR" resolve="rootToImport" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="1d2BQ0Z$UQM" role="3cqZAp">
+          <node concept="2OqwBi" id="1d2BQ0Z$UQN" role="3cqZAk">
+            <node concept="37vLTw" id="1d2BQ0Z$UQO" role="2Oq$k0">
+              <ref role="3cqZAo" node="23Rh9MB7bWn" resolve="myImports" />
+            </node>
+            <node concept="liA8E" id="1d2BQ0Z$UQP" role="2OqNvi">
+              <ref role="37wK5l" node="6DQGhlrjhwM" resolve="getRootClassifierRefText" />
+              <node concept="37vLTw" id="1d2BQ0Z$UQQ" role="37wK5m">
+                <ref role="3cqZAo" node="1d2BQ0Z$UPP" resolve="packageName" />
+              </node>
+              <node concept="37vLTw" id="1d2BQ0ZDeKy" role="37wK5m">
+                <ref role="3cqZAo" node="1d2BQ0Z$UPR" resolve="rootToImport" />
+              </node>
+              <node concept="37vLTw" id="1d2BQ0Z$UQS" role="37wK5m">
+                <ref role="3cqZAo" node="1d2BQ0Z$UPT" resolve="contextNode" />
               </node>
             </node>
           </node>

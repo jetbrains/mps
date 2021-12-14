@@ -293,6 +293,18 @@ public abstract class BaseLanguageTextGen {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.append(BaseLanguageTextGen.getClassName(target, packageName, fqName, contextNode, ctx));
   }
+  protected static void appendImport(String packageName, String rootToImport, SNode contextNode, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    ImportEntry entry = tgs.getContextObject("ctx", ClassifierUnitContext.class).getRefTextFor(packageName, rootToImport, contextNode);
+    if (entry.needsImport()) {
+      tgs.pushTextArea("IMPORTS");
+      tgs.append("import ");
+      tgs.append(entry.getImport());
+      tgs.append(";");
+      tgs.newLine();
+      tgs.popTextArea();
+    }
+  }
   public static ClassifierUnitContext contextObjectInstance_ctx(SNode primaryInputNode) {
     return new ClassifierUnitContext(primaryInputNode);
   }

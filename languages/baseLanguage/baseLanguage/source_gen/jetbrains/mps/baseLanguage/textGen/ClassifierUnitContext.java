@@ -47,6 +47,12 @@ public class ClassifierUnitContext implements RootDependencies.Source {
     return myImports.getClassifierRefText(target, packageName, fqName, contextNode);
   }
 
+  protected ImportEntry getRefTextFor(String packageName, String rootToImport, SNode contextNode) {
+    // Same as above but with manual insertion of import (to be used when the thing to import is not linked to any Classifier, ie. kotlin classifier)
+    addDependency(packageName, packageName + "." + rootToImport);
+    return myImports.getRootClassifierRefText(packageName, rootToImport, contextNode);
+  }
+
   private void addDependency(String packageName, String fqName) {
     // using only root classifiers as dependencies
     String nestedName = JavaNameUtil.nestedClassName(packageName, fqName);
