@@ -16,4 +16,11 @@ public interface InferrableFunctionDeclaration extends FunctionDeclaration {
    */
   @Nullable
   SNode getReturnExpression();
+
+  static SNode getReturnExpression(FunctionDeclaration declaration) {
+    if (declaration instanceof InferrableFunctionDeclaration) {
+      return ((InferrableFunctionDeclaration) declaration).getReturnExpression();
+    }
+    return null;
+  }
 }

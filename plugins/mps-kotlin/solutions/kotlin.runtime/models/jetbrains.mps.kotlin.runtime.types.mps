@@ -709,10 +709,10 @@
               </node>
               <node concept="2ShNRf" id="2b3dSh2xw4_" role="37wK5m">
                 <node concept="1pGfFk" id="2b3dSh2xw4A" role="2ShVmc">
-                  <ref role="37wK5l" to="w1kc:~SNodeId$Foreign.&lt;init&gt;(java.lang.String)" resolve="Foreign" />
+                  <ref role="37wK5l" to="w1kc:~SNodeId$Foreign.&lt;init&gt;(java.lang.String)" resolve="SNodeId.Foreign" />
                   <node concept="3cpWs3" id="2b3dSh2xw4m" role="37wK5m">
                     <node concept="10M0yZ" id="2b3dSh2xw4o" role="3uHU7B">
-                      <ref role="1PxDUh" to="w1kc:~SNodeId$Foreign" resolve="Foreign" />
+                      <ref role="1PxDUh" to="w1kc:~SNodeId$Foreign" resolve="SNodeId.Foreign" />
                       <ref role="3cqZAo" to="w1kc:~SNodeId$Foreign.ID_PREFIX" resolve="ID_PREFIX" />
                     </node>
                     <node concept="37vLTw" id="2b3dSh2xw4p" role="3uHU7w">

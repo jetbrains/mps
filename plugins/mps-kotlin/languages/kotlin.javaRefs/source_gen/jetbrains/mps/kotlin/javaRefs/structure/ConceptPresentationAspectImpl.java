@@ -11,6 +11,7 @@ import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
   private ConceptPresentation props_JavaClassInheritanceSpecifier;
   private ConceptPresentation props_JavaClassType;
+  private ConceptPresentation props_JavaInterfaceInheritanceSpecifier;
   private ConceptPresentation props_JavaMethodCall;
   private ConceptPresentation props_JavaMethodVariableReference;
   private ConceptPresentation props_JavaTypeVariableReferenceType;
@@ -35,6 +36,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_JavaClassType = cpb.create();
         }
         return props_JavaClassType;
+      case LanguageConceptSwitch.JavaInterfaceInheritanceSpecifier:
+        if (props_JavaInterfaceInheritanceSpecifier == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0xfd0b6783f85b1faL, 0xfd0b6783f85e8c3L, "interface", "", "");
+          props_JavaInterfaceInheritanceSpecifier = cpb.create();
+        }
+        return props_JavaInterfaceInheritanceSpecifier;
       case LanguageConceptSwitch.JavaMethodCall:
         if (props_JavaMethodCall == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

@@ -951,9 +951,6 @@
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="7SVeP541Cl6" resolve="IFunctionBody" />
     </node>
-    <node concept="PrWs8" id="2yYXHtl6JEo" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jcy" resolve="IStatement" />
-    </node>
     <node concept="PrWs8" id="2yYXHtl6JEp" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjj" resolve="IDeclaration" />
     </node>
@@ -1368,9 +1365,6 @@
       <property role="20lbJX" value="fLJekj4/_1" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <ref role="20lvS9" node="2yYXHtl6Jh1" resolve="IType" />
-    </node>
-    <node concept="PrWs8" id="2yYXHtl6JEs" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jcy" resolve="IStatement" />
     </node>
     <node concept="PrWs8" id="2yYXHtl6JEt" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjj" resolve="IDeclaration" />
@@ -2175,9 +2169,6 @@
     <property role="EcuMT" value="2936055411801306477" />
     <property role="3GE5qa" value="declaration.class" />
     <property role="TrG5h" value="IClassDeclaration" />
-    <node concept="PrWs8" id="2yYXHtlhVm2" role="PrDN$">
-      <ref role="PrY4T" node="2yYXHtl6Jcy" resolve="IStatement" />
-    </node>
     <node concept="PrWs8" id="6cg9X74gsdj" role="PrDN$">
       <ref role="PrY4T" node="6TRHYuCB$BU" resolve="IAnnotated" />
     </node>
@@ -2484,6 +2475,9 @@
       <property role="20lbJX" value="fLJekj4/_1" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <ref role="20lvS9" node="2yYXHtl6JkP" resolve="IMemberTarget" />
+    </node>
+    <node concept="PrWs8" id="3xTUo83$ePK" role="PzmwI">
+      <ref role="PrY4T" node="6563FJLeOY_" resolve="IDataflowPassToChild" />
     </node>
   </node>
   <node concept="25R3W" id="1502VugCScI">
@@ -3347,6 +3341,9 @@
     <property role="EcuMT" value="7009306070417624997" />
     <property role="3GE5qa" value="expression.dataflow" />
     <property role="TrG5h" value="IDataflowPassToChild" />
+    <node concept="t5JxF" id="3xTUo83$r$n" role="lGtFl">
+      <property role="t5JxN" value="node whose type equals the type of his child" />
+    </node>
   </node>
   <node concept="PlHQZ" id="6563FJLeQak">
     <property role="EcuMT" value="7009306070417629844" />
@@ -3422,14 +3419,14 @@
     <property role="TrG5h" value="ClassMemberTarget" />
     <property role="34LRSv" value="class" />
     <property role="R4oN_" value="callable reference class target" />
-    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
     <node concept="PrWs8" id="2yYXHtl6JFC" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6JkP" resolve="IMemberTarget" />
     </node>
   </node>
   <node concept="1TIwiD" id="4vugIDegmb9">
     <property role="EcuMT" value="5178650195625337545" />
-    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
     <property role="TrG5h" value="FunctionMemberTarget" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="4vugIDegmTY" role="1TKVEi">
@@ -3439,7 +3436,7 @@
       <ref role="20lvS9" node="2Dtd0_QziWF" resolve="IFunctionDeclaration" />
     </node>
     <node concept="PrWs8" id="4vugIDegrob" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6JkP" resolve="IMemberTarget" />
+      <ref role="PrY4T" node="3xTUo83AQgz" resolve="IFunctionMemberTarget" />
     </node>
     <node concept="PrWs8" id="4MvRlgZOYiD" role="PzmwI">
       <ref role="PrY4T" node="4ZsNJbI6N2K" resolve="IResolvableReference" />
@@ -3448,7 +3445,7 @@
   <node concept="PlHQZ" id="2yYXHtl6JkP">
     <property role="EcuMT" value="2936055411798373685" />
     <property role="TrG5h" value="IMemberTarget" />
-    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
   </node>
   <node concept="1TIwiD" id="4caNtEtMR$Y">
     <property role="EcuMT" value="4830899889142200638" />
@@ -3724,6 +3721,14 @@
     <property role="EcuMT" value="3682058567273098877" />
     <property role="3GE5qa" value="expression.literal.string" />
     <property role="TrG5h" value="IStringLiteral" />
+  </node>
+  <node concept="PlHQZ" id="3xTUo83AQgz">
+    <property role="EcuMT" value="4069540482921489443" />
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
+    <property role="TrG5h" value="IFunctionMemberTarget" />
+    <node concept="PrWs8" id="3xTUo83ARdO" role="PrDN$">
+      <ref role="PrY4T" node="2yYXHtl6JkP" resolve="IMemberTarget" />
+    </node>
   </node>
 </model>
 

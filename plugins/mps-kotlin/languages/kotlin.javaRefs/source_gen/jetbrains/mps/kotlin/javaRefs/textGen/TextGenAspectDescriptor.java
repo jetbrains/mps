@@ -21,6 +21,10 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
     switch (myIndex.index(concept)) {
       case LanguageConceptSwitch.JavaClassInheritanceSpecifier:
         return new JavaClassInheritanceSpecifier_TextGen();
+      case LanguageConceptSwitch.JavaClassType:
+        return new JavaClassType_TextGen();
+      case LanguageConceptSwitch.JavaInterfaceInheritanceSpecifier:
+        return new JavaInterfaceInheritanceSpecifier_TextGen();
       case LanguageConceptSwitch.JavaMethodCall:
         return new JavaMethodCall_TextGen();
       case LanguageConceptSwitch.JavaMethodVariableReference:

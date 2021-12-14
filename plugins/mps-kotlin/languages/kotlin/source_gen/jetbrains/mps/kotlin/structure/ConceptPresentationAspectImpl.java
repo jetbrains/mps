@@ -100,6 +100,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_IFunctionCallLike;
   private ConceptPresentation props_IFunctionDeclaration;
   private ConceptPresentation props_IFunctionIdentifier;
+  private ConceptPresentation props_IFunctionMemberTarget;
   private ConceptPresentation props_IFunctionModifier;
   private ConceptPresentation props_IFunctionParameters;
   private ConceptPresentation props_IIdentifier;
@@ -919,6 +920,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IFunctionIdentifier = cpb.create();
         }
         return props_IFunctionIdentifier;
+      case LanguageConceptSwitch.IFunctionMemberTarget:
+        if (props_IFunctionMemberTarget == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_IFunctionMemberTarget = cpb.create();
+        }
+        return props_IFunctionMemberTarget;
       case LanguageConceptSwitch.IFunctionModifier:
         if (props_IFunctionModifier == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -1320,7 +1327,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("kotlin file");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a251b0kj);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a351b0lj);
           props_KotlinFile = cpb.create();
         }
         return props_KotlinFile;
@@ -1329,7 +1336,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("script");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a351b0kj);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a451b0lj);
           props_KtScript = cpb.create();
         }
         return props_KtScript;

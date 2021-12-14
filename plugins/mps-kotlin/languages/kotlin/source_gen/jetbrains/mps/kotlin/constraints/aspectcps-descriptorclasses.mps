@@ -3780,7 +3780,7 @@
     </node>
   </node>
   <node concept="312cEu" id="fs">
-    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
     <property role="TrG5h" value="FunctionMemberTarget_Constraints" />
     <uo k="s:originTrace" v="n:201447423893303478" />
     <node concept="3Tm1VV" id="ft" role="1B3o_S">

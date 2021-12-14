@@ -47,7 +47,7 @@
   <node concept="1TIwiD" id="6zWVWr21w3P">
     <property role="EcuMT" value="7565185111013327093" />
     <property role="TrG5h" value="JavaClassType" />
-    <property role="3GE5qa" value="" />
+    <property role="3GE5qa" value="types" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="6zWVWr21w5T" role="1TKVEi">
       <property role="IQ2ns" value="7565185111013327225" />
@@ -92,7 +92,7 @@
   </node>
   <node concept="1TIwiD" id="26mUjU3QZBY">
     <property role="EcuMT" value="2420378304467696126" />
-    <property role="3GE5qa" value="" />
+    <property role="3GE5qa" value="extends" />
     <property role="TrG5h" value="JavaClassInheritanceSpecifier" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="26mUjU3QZBZ" role="PzmwI">
@@ -113,7 +113,7 @@
   </node>
   <node concept="1TIwiD" id="7an2tsI0MdE">
     <property role="EcuMT" value="8257079261601669994" />
-    <property role="3GE5qa" value="" />
+    <property role="3GE5qa" value="types" />
     <property role="TrG5h" value="JavaTypeVariableReferenceType" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="7an2tsI0MdH" role="1TKVEi">
@@ -174,6 +174,24 @@
     </node>
     <node concept="PrWs8" id="4mvBIJf4zxp" role="PzmwI">
       <ref role="PrY4T" to="hcm8:2yYXHtl6JeQ" resolve="INavigationTarget" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="ZgHBwZxr7U">
+    <property role="EcuMT" value="1139611333302792698" />
+    <property role="TrG5h" value="JavaInterfaceInheritanceSpecifier" />
+    <property role="3GE5qa" value="extends" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="ZgHBwZxuz3" role="1TKVEi">
+      <property role="IQ2ns" value="1139611333302806723" />
+      <property role="20kJfa" value="interface" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:g7HP654" resolve="Interface" />
+    </node>
+    <node concept="PrWs8" id="ZgHBwZxwyq" role="PzmwI">
+      <ref role="PrY4T" to="hcm8:213J8cgKswc" resolve="IInheritanceSpecifier" />
+    </node>
+    <node concept="PrWs8" id="ZgHBwZxwTC" role="PzmwI">
+      <ref role="PrY4T" to="hcm8:2gj5XQXEpsk" resolve="ITypeArguments" />
     </node>
   </node>
 </model>

@@ -2036,7 +2036,7 @@
     <ref role="1M2myG" to="hcm8:2yYXHtl6Jjg" resolve="IExpression" />
   </node>
   <node concept="1M2fIO" id="bbFPPu4Z2Q">
-    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
     <ref role="1M2myG" to="hcm8:4vugIDegmb9" resolve="FunctionMemberTarget" />
     <node concept="1N5Pfh" id="bbFPPu4ZaZ" role="1Mr941">
       <ref role="1N5Vy1" to="hcm8:4vugIDegmTY" resolve="function" />

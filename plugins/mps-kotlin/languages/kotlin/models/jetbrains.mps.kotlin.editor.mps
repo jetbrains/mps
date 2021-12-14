@@ -3171,7 +3171,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="2yYXHtl6Kti">
-    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
     <ref role="1XX52x" to="hcm8:2yYXHtl6JkR" resolve="ClassMemberTarget" />
     <node concept="3EZMnI" id="2yYXHtl6Ktj" role="2wV5jI">
       <node concept="l2Vlx" id="2yYXHtl6Ktk" role="2iSdaV" />
@@ -9922,7 +9922,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="4vugIDegnJX">
-    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
     <ref role="1XX52x" to="hcm8:4vugIDegmb9" resolve="FunctionMemberTarget" />
     <node concept="3EZMnI" id="4vugIDegnOb" role="2wV5jI">
       <node concept="1iCGBv" id="4vugIDegnTX" role="3EZMnx">
@@ -11252,7 +11252,7 @@
           </node>
           <node concept="3clFbF" id="bbFPPtMHUL" role="3cqZAp">
             <node concept="37vLTw" id="bbFPPtMIDi" role="3clFbG">
-              <ref role="3cqZAo" node="bbFPPtMIDe" resolve="node" />
+              <ref role="3cqZAo" node="bbFPPtMIDe" resolve="receiver" />
             </node>
           </node>
         </node>
@@ -11297,7 +11297,7 @@
     </node>
   </node>
   <node concept="22mcaB" id="bbFPPu9IVK">
-    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
     <ref role="aqKnT" to="hcm8:4vugIDegmb9" resolve="FunctionMemberTarget" />
     <node concept="22hDWj" id="bbFPPu9J6l" role="22hAXT" />
     <node concept="3XHNnq" id="bbFPPu9Ji$" role="3ft7WO">

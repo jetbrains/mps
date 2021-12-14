@@ -1962,5 +1962,36 @@
       <ref role="1YaFvo" to="hcm8:2yYXHtl6Jix" resolve="PropertyDeclaration" />
     </node>
   </node>
+  <node concept="1YbPZF" id="3xTUo83$v2e">
+    <property role="TrG5h" value="typeof_IDataflowPassToChild" />
+    <property role="3GE5qa" value="expression.dataflow" />
+    <node concept="3clFbS" id="3xTUo83$v2f" role="18ibNy">
+      <node concept="1Z5TYs" id="3xTUo83$wgf" role="3cqZAp">
+        <node concept="mw_s8" id="3xTUo83$w_B" role="1ZfhKB">
+          <node concept="1Z2H0r" id="3xTUo83$w_z" role="mwGJk">
+            <node concept="1YBJjd" id="3xTUo83$wP6" role="1Z2MuG">
+              <ref role="1YBMHb" node="3xTUo83$v2h" resolve="iDataflowPassToChild" />
+            </node>
+          </node>
+        </node>
+        <node concept="mw_s8" id="3xTUo83$wgi" role="1ZfhK$">
+          <node concept="1Z2H0r" id="3xTUo83$vaR" role="mwGJk">
+            <node concept="2OqwBi" id="3xTUo83$v$2" role="1Z2MuG">
+              <node concept="1YBJjd" id="3xTUo83$vsc" role="2Oq$k0">
+                <ref role="1YBMHb" node="3xTUo83$v2h" resolve="iDataflowPassToChild" />
+              </node>
+              <node concept="2qgKlT" id="3xTUo83$vRg" role="2OqNvi">
+                <ref role="37wK5l" to="hez:6563FJLePC_" resolve="getDataFlowChild" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="3xTUo83$v2h" role="1YuTPh">
+      <property role="TrG5h" value="iDataflowPassToChild" />
+      <ref role="1YaFvo" to="hcm8:6563FJLeOY_" resolve="IDataflowPassToChild" />
+    </node>
+  </node>
 </model>
 

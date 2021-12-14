@@ -93,6 +93,9 @@
         <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
+      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
+        <child id="1079359253376" name="expression" index="1eOMHV" />
+      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
       </concept>
@@ -789,6 +792,55 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="bbFPPueN96" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3xTUo83DB9X" role="jymVt" />
+    <node concept="2YIFZL" id="3xTUo83DBqm" role="jymVt">
+      <property role="TrG5h" value="getReturnExpression" />
+      <node concept="3clFbS" id="3xTUo83DBqp" role="3clF47">
+        <node concept="3clFbJ" id="3xTUo83DBGD" role="3cqZAp">
+          <node concept="2ZW3vV" id="3xTUo83DC6M" role="3clFbw">
+            <node concept="3uibUv" id="3xTUo83DCfw" role="2ZW6by">
+              <ref role="3uigEE" node="26mUjU3_STW" resolve="InferrableFunctionDeclaration" />
+            </node>
+            <node concept="37vLTw" id="3xTUo83DBKW" role="2ZW6bz">
+              <ref role="3cqZAo" node="3xTUo83DB$v" resolve="declaration" />
+            </node>
+          </node>
+          <node concept="3clFbS" id="3xTUo83DBGF" role="3clFbx">
+            <node concept="3cpWs6" id="3xTUo83DCk6" role="3cqZAp">
+              <node concept="2OqwBi" id="3xTUo83DCC9" role="3cqZAk">
+                <node concept="1eOMI4" id="3xTUo83DCvg" role="2Oq$k0">
+                  <node concept="10QFUN" id="3xTUo83DCvd" role="1eOMHV">
+                    <node concept="3uibUv" id="3xTUo83DCvi" role="10QFUM">
+                      <ref role="3uigEE" node="26mUjU3_STW" resolve="InferrableFunctionDeclaration" />
+                    </node>
+                    <node concept="37vLTw" id="3xTUo83DCvj" role="10QFUP">
+                      <ref role="3cqZAo" node="3xTUo83DB$v" resolve="declaration" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="liA8E" id="3xTUo83DCOX" role="2OqNvi">
+                  <ref role="37wK5l" node="26mUjU3_T3l" resolve="getReturnExpression" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="3xTUo83DCZA" role="3cqZAp">
+          <node concept="10Nm6u" id="3xTUo83DD3q" role="3cqZAk" />
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="3xTUo83DBqq" role="1B3o_S" />
+      <node concept="3Tqbb2" id="3xTUo83DBtA" role="3clF45" />
+      <node concept="37vLTG" id="3xTUo83DB$v" role="3clF46">
+        <property role="TrG5h" value="declaration" />
+        <node concept="3uibUv" id="3xTUo83DB$u" role="1tU5fm">
+          <ref role="3uigEE" node="26mUjU3_jTe" resolve="FunctionDeclaration" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3xTUo83DBQY" role="2AJF6D">
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
       </node>
     </node>

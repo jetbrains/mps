@@ -3305,7 +3305,7 @@
     </node>
   </node>
   <node concept="WtQ9Q" id="5lA_K0zi4L5">
-    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
     <ref role="WuzLi" to="hcm8:2yYXHtl6JkR" resolve="ClassMemberTarget" />
     <node concept="11bSqf" id="5lA_K0zi4L6" role="11c4hB">
       <node concept="3clFbS" id="5lA_K0zi4L7" role="2VODD2">
@@ -6348,7 +6348,7 @@
     </node>
   </node>
   <node concept="WtQ9Q" id="2mD64u3VhfP">
-    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
     <ref role="WuzLi" to="hcm8:4vugIDegmb9" resolve="FunctionMemberTarget" />
     <node concept="11bSqf" id="2mD64u3VhfQ" role="11c4hB">
       <node concept="3clFbS" id="2mD64u3VhfR" role="2VODD2">

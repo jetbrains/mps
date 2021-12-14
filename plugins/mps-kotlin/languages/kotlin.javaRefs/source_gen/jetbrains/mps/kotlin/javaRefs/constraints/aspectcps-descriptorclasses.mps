@@ -427,7 +427,7 @@
     </node>
   </node>
   <node concept="312cEu" id="M">
-    <property role="3GE5qa" value="" />
+    <property role="3GE5qa" value="extends" />
     <property role="TrG5h" value="JavaClassInheritanceSpecifier_Constraints" />
     <uo k="s:originTrace" v="n:2420378304467722603" />
     <node concept="3Tm1VV" id="N" role="1B3o_S">

@@ -15,6 +15,7 @@ import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptJavaClassInheritanceSpecifier = createDescriptorForJavaClassInheritanceSpecifier();
   /*package*/ final ConceptDescriptor myConceptJavaClassType = createDescriptorForJavaClassType();
+  /*package*/ final ConceptDescriptor myConceptJavaInterfaceInheritanceSpecifier = createDescriptorForJavaInterfaceInheritanceSpecifier();
   /*package*/ final ConceptDescriptor myConceptJavaMethodCall = createDescriptorForJavaMethodCall();
   /*package*/ final ConceptDescriptor myConceptJavaMethodVariableReference = createDescriptorForJavaMethodVariableReference();
   /*package*/ final ConceptDescriptor myConceptJavaTypeVariableReferenceType = createDescriptorForJavaTypeVariableReferenceType();
@@ -33,7 +34,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptJavaClassInheritanceSpecifier, myConceptJavaClassType, myConceptJavaMethodCall, myConceptJavaMethodVariableReference, myConceptJavaTypeVariableReferenceType, myConceptJavaVariableReference);
+    return Arrays.asList(myConceptJavaClassInheritanceSpecifier, myConceptJavaClassType, myConceptJavaInterfaceInheritanceSpecifier, myConceptJavaMethodCall, myConceptJavaMethodVariableReference, myConceptJavaTypeVariableReferenceType, myConceptJavaVariableReference);
   }
 
   @Override
@@ -44,6 +45,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptJavaClassInheritanceSpecifier;
       case LanguageConceptSwitch.JavaClassType:
         return myConceptJavaClassType;
+      case LanguageConceptSwitch.JavaInterfaceInheritanceSpecifier:
+        return myConceptJavaInterfaceInheritanceSpecifier;
       case LanguageConceptSwitch.JavaMethodCall:
         return myConceptJavaMethodCall;
       case LanguageConceptSwitch.JavaMethodVariableReference:
@@ -81,6 +84,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)/7565185111013327093");
     b.version(2);
     b.associate("javaClass", 0x68fcefc6c2060179L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L).optional(true).origin("7565185111013327225").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForJavaInterfaceInheritanceSpecifier() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin.javaRefs", "JavaInterfaceInheritanceSpecifier", 0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0xfd0b6783f85b1faL);
+    b.class_(false, false, false);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L);
+    b.origin("r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)/1139611333302792698");
+    b.version(2);
+    b.associate("interface", 0xfd0b6783f85e8c3L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L).optional(false).origin("1139611333302806723").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForJavaMethodCall() {

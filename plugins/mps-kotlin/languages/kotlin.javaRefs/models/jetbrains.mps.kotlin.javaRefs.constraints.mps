@@ -612,7 +612,7 @@
     </node>
   </node>
   <node concept="1M2fIO" id="26mUjU3R65F">
-    <property role="3GE5qa" value="" />
+    <property role="3GE5qa" value="extends" />
     <ref role="1M2myG" to="5m2i:26mUjU3QZBY" resolve="JavaClassInheritanceSpecifier" />
     <node concept="1N5Pfh" id="26mUjU3R99v" role="1Mr941">
       <ref role="1N5Vy1" to="5m2i:26mUjU3R2JX" resolve="constructor" />

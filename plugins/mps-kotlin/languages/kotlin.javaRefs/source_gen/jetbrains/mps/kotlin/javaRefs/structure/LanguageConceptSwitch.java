@@ -11,15 +11,17 @@ public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
   public static final int JavaClassInheritanceSpecifier = 0;
   public static final int JavaClassType = 1;
-  public static final int JavaMethodCall = 2;
-  public static final int JavaMethodVariableReference = 3;
-  public static final int JavaTypeVariableReferenceType = 4;
-  public static final int JavaVariableReference = 5;
+  public static final int JavaInterfaceInheritanceSpecifier = 2;
+  public static final int JavaMethodCall = 3;
+  public static final int JavaMethodVariableReference = 4;
+  public static final int JavaTypeVariableReferenceType = 5;
+  public static final int JavaVariableReference = 6;
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L);
     builder.put(0x2196e93e83dbf9feL, JavaClassInheritanceSpecifier);
     builder.put(0x68fcefc6c20600f5L, JavaClassType);
+    builder.put(0xfd0b6783f85b1faL, JavaInterfaceInheritanceSpecifier);
     builder.put(0x2196e93e834d57ccL, JavaMethodCall);
     builder.put(0x3569a755572a0ffbL, JavaMethodVariableReference);
     builder.put(0x729709d72e03236aL, JavaTypeVariableReferenceType);

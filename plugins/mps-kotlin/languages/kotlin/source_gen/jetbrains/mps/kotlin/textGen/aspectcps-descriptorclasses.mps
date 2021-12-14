@@ -3466,7 +3466,7 @@
   <node concept="312cEu" id="dD">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="ClassMemberTarget_TextGen" />
-    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
     <uo k="s:originTrace" v="n:6153771967696096325" />
     <node concept="3Tm1VV" id="dE" role="1B3o_S">
       <uo k="s:originTrace" v="n:6153771967696096325" />
@@ -9057,7 +9057,7 @@
   <node concept="312cEu" id="Ae">
     <property role="1sVAO0" value="false" />
     <property role="TrG5h" value="FunctionMemberTarget_TextGen" />
-    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation" />
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
     <uo k="s:originTrace" v="n:2713726945902531573" />
     <node concept="3Tm1VV" id="Af" role="1B3o_S">
       <uo k="s:originTrace" v="n:2713726945902531573" />

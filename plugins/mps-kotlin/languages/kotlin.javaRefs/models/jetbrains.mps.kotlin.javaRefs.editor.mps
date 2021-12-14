@@ -12,6 +12,7 @@
     <import index="5m2i" ref="r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" implicit="true" />
+    <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="18bc6592-03a6-4e29-a83a-7ff23bde13ba" name="jetbrains.mps.lang.editor">
@@ -251,7 +252,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="26mUjU3R5S$">
-    <property role="3GE5qa" value="" />
+    <property role="3GE5qa" value="extends" />
     <ref role="1XX52x" to="5m2i:26mUjU3QZBY" resolve="JavaClassInheritanceSpecifier" />
     <node concept="3EZMnI" id="2yYXHtl6Kng" role="2wV5jI">
       <node concept="l2Vlx" id="2yYXHtl6Knh" role="2iSdaV" />
@@ -347,7 +348,7 @@
     </node>
   </node>
   <node concept="24kQdi" id="7KVUDZav7kK">
-    <property role="3GE5qa" value="" />
+    <property role="3GE5qa" value="types" />
     <ref role="1XX52x" to="5m2i:6zWVWr21w3P" resolve="JavaClassType" />
     <node concept="3EZMnI" id="2yYXHtl6Klc" role="2wV5jI">
       <node concept="l2Vlx" id="2yYXHtl6Kld" role="2iSdaV" />
@@ -387,6 +388,31 @@
           <property role="VOm3f" value="true" />
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="24kQdi" id="ZgHBwZxJmg">
+    <property role="3GE5qa" value="extends" />
+    <ref role="1XX52x" to="5m2i:ZgHBwZxr7U" resolve="JavaInterfaceInheritanceSpecifier" />
+    <node concept="3EZMnI" id="ZgHBwZxJmh" role="2wV5jI">
+      <node concept="l2Vlx" id="ZgHBwZxJmi" role="2iSdaV" />
+      <node concept="1iCGBv" id="ZgHBwZxJmj" role="3EZMnx">
+        <ref role="1NtTu8" to="5m2i:ZgHBwZxuz3" resolve="interface" />
+        <node concept="1sVBvm" id="ZgHBwZxJmk" role="1sWHZn">
+          <node concept="3F0A7n" id="ZgHBwZxJml" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpee:hCjj90d" resolve="nestedName" />
+            <node concept="OXEIz" id="ZgHBwZxJmm" role="P5bDN">
+              <node concept="UkePV" id="ZgHBwZxJmn" role="OY2wv">
+                <ref role="Ul1FP" to="hcm8:213J8cgKswc" resolve="IInheritanceSpecifier" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="PMmxH" id="ZgHBwZxJmo" role="3EZMnx">
+        <ref role="PMmxG" to="r5qz:2gj5XQXEpCS" resolve="TypeArguments_Component" />
+      </node>
+      <node concept="VPM3Z" id="ZgHBwZxJmq" role="3F10Kt" />
     </node>
   </node>
 </model>
