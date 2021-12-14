@@ -718,8 +718,10 @@
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.baseLanguage.runtime/source_gen" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.make/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.runtime/source_gen" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.baseLanguage.runtime/classes_gen" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.make/classes_gen" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-kotlin/solutions/kotlin.runtime/classes_gen" />
     </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-make">

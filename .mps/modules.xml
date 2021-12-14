@@ -324,6 +324,7 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin.javaRefs/jetbrains.mps.kotlin.javaRefs.mpl" folder="core.languages.kotlin.interop" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin/jetbrains.mps.kotlin.mpl" folder="core.languages.kotlin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.baseLanguage.runtime/jetbrains.mps.kotlin.baseLanguage.runtime.msd" folder="core.languages.kotlin.interop" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.make/jetbrains.mps.kotlin.make.msd" folder="core.languages.kotlin.execution" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.runtime/jetbrains.mps.kotlin.runtime.msd" folder="core.languages.kotlin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/stubs/kotlin.stdlib/jetbrains.mps.kotlin.stdlib.msd" folder="core.languages.kotlin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-make/jetbrains.mps.ide.make.msd" folder="platform" />

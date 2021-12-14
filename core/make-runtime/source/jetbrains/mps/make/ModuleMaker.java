@@ -354,7 +354,7 @@ public final class ModuleMaker {
   }
 
   // shall not keep SModule, but only relevant parts that may be used without model access
-  static class JM implements IVertex, BaseModuleContainer.JavaModule {
+  public static class JM implements IVertex, BaseModuleContainer.JavaModule {
     private final SModuleReference myModule;
     private CompileState myCompileState = CompileState.UNCHECKED;
     private final List<JM> myDependencies = new ArrayList<>();
@@ -434,6 +434,11 @@ public final class ModuleMaker {
     @Override
     public File getClassesOut() {
       return myClassesOut;
+    }
+
+    @Nullable
+    public Set<String> getClasspath() {
+      return myClasspath;
     }
 
     @Nullable
@@ -613,12 +618,82 @@ public final class ModuleMaker {
     }
   }
 
+  public static class BMC implements BaseModuleContainer<JM> {
+    private final Collection<JM> myModules;
+    private final Collection<File> myExternalOutputToKeep;
+
+    BMC(Collection<JM> modules, Collection<File> externalOutputToKeep) {
+      myModules = modules;
+      myExternalOutputToKeep = externalOutputToKeep;
+    }
+
+    @Override
+    public Stream<JM> getDirtyModules() {
+      return myModules.stream();
+    }
+
+    @Override
+    public Collection<String> getCompileClasspath() {
+      return getCompileClasspath(myModules);
+    }
+
+    /**
+     * Return the classpath of a set of modules
+     * @param modules modules to get the classpath from
+     * @return list of paths
+     */
+    public static Collection<String> getCompileClasspath(Collection<JM> modules) {
+      HashSet<JM> seen = new HashSet<>();
+      ArrayDeque<JM> queue = new ArrayDeque<>(modules);
+      HashSet<String> rv = new LinkedHashSet<>();
+      do {
+        final JM jm = queue.removeFirst();
+        if (seen.add(jm)) {
+          if (jm.myClasspath == null) {
+            System.out.printf("Module %s got no classpath!\n", jm.name());
+            continue;
+          }
+          rv.addAll(jm.myClasspath);
+          jm.dependsFrom().forEach(queue::add);
+        }
+      } while (!queue.isEmpty());
+      return rv;
+    }
+
+    @Override
+    public ModuleAnalyzerResult analyze() {
+      boolean hasJavaToCompile = false;
+      boolean hasResourcesToUpdate = false;
+      Set<BaseModuleContainer.JavaModule> modulesWithRemovals = new HashSet<>();
+      Set<File> filesToDelete = new HashSet<>();
+      for (JM jm : myModules) {
+        if (jm.mySources == null) {
+          System.out.printf("Module %s got no sources!\n", jm.name());
+          continue;
+        }
+        // !isResourcesUpToDate == (myFilesToDelete.isEmpty() && myResourcesToCopy.isEmpty())
+        // XXX is it right to include files to delete into condition?
+        hasResourcesToUpdate |= !jm.mySources.myResourcesToCopy.isEmpty() || !jm.mySources.myFilesToDelete.isEmpty();
+        hasJavaToCompile |= !jm.mySources.myFilesToCompile.isEmpty();
+        if (filesToDelete.addAll(jm.mySources.myFilesToDelete)) {
+          modulesWithRemovals.add(jm);
+        }
+      }
+      // prevent removal of externally managed files
+      if (myExternalOutputToKeep != null) {
+        myExternalOutputToKeep.forEach(filesToDelete::remove);
+      }
+      return ModuleAnalyzerResult.build(hasJavaToCompile, hasResourcesToUpdate, modulesWithRemovals, filesToDelete);
+    }
+  }
+
   enum CompileState {
     CLEAN, DIRTY, UNCHECKED;
   }
 
   // requires model read
-  public void prepare(final Collection<? extends SModule> modules, boolean forceCompile, @NotNull final ProgressMonitor monitor) {
+  @Nullable
+  public List<List<JM>> prepare(final Collection<? extends SModule> modules, boolean forceCompile, @NotNull final ProgressMonitor monitor) {
     myToCompile = Collections.emptyList();
     final CompositeTracer tracer = new CompositeTracer(myTracer, monitor);
     tracer.start(String.format(CALCULATING_DEPENDENCIES_TO_COMPILE_MSG, modules.size()), 10);
@@ -629,7 +704,7 @@ public final class ModuleMaker {
     }
     if (initial.isEmpty()) {
       // report "nothing to make"
-      return;
+      return null;
     }
 
     // depJM - one of requested modules depend on a module which is not among requested. we keep these targets in depJM
@@ -666,7 +741,7 @@ public final class ModuleMaker {
       // walk graph of JMs
       if (!withDeps.needsCompile(initial)) {
         // FIXME report "nothing to make"
-        return;
+        return null;
       }
     }
     // XXX may compile classpath for each JM, not only dirty, CP for a dirty module needs CP of its dependencies.
@@ -704,7 +779,7 @@ public final class ModuleMaker {
       }
     }
     tracer.done();
-    myToCompile = components;
+    return myToCompile = components;
   }
 
   private List<List<JM>> myToCompile;
@@ -712,10 +787,16 @@ public final class ModuleMaker {
   // doesn't need model read, deals with what #prepare() got ready
   @NotNull
   public MPSCompilationResult make(@NotNull final ProgressMonitor monitor) {
+    return make(monitor, null);
+  }
+
+  // doesn't need model read, deals with what #prepare() got ready
+  @NotNull
+  public MPSCompilationResult make(@NotNull final ProgressMonitor monitor, @Nullable Collection<File> externalOutputToKeep) {
     final CompositeTracer tracer = new CompositeTracer(myTracer, monitor);
     tracer.start(String.format(BUILDING_MODULES_MSG, myToCompile.size()), 10);
     try {
-      return compileCycles2(tracer.subTracer(9, SubProgressKind.REPLACING));
+      return compileCycles2(tracer.subTracer(9, SubProgressKind.REPLACING), externalOutputToKeep);
     } catch (Exception ex) {
       String m = String.format("Unexpected exception '%s', compilation aborted!", ex.getMessage() == null ? ex.getClass().getName() : ex.getMessage());
       tracer.getSender().error(m, ex);
@@ -726,7 +807,7 @@ public final class ModuleMaker {
     }
   }
 
-  private MPSCompilationResult compileCycles2(CompositeTracer tracer) {
+  private MPSCompilationResult compileCycles2(CompositeTracer tracer, @Nullable Collection<File> externalOutputToKeep) {
     List<MPSCompilationResult> cycleCompilationResults = new ArrayList<>();
     tracer.start("Cycles", myToCompile.size());
 
@@ -740,53 +821,7 @@ public final class ModuleMaker {
         CompositeTracer cycleTracer = tracer.subTracer(1);
         tracer.getSender().info(String.format(CYCLE_FORMAT_MSG, cycleNumber, cc.stream().map(JM::name).collect(Collectors.joining(","))));
         cycleTracer.start(getCycleString(cycleNumber, cc), 1);
-        BaseModuleContainer<JM> modulesContainer = new BaseModuleContainer<JM>() {
-          @Override
-          public Stream<JM> getDirtyModules() {
-            return cc.stream();
-          }
-
-          @Override
-          public Collection<String> getCompileClasspath() {
-            HashSet<JM> seen = new HashSet<>();
-            ArrayDeque<JM> queue = new ArrayDeque<>(cc);
-            HashSet<String> rv = new LinkedHashSet<>();
-            do {
-              final JM jm = queue.removeFirst();
-              if (seen.add(jm)) {
-                if (jm.myClasspath == null) {
-                  System.out.printf("Module %s got no classpath!\n", jm.name());
-                  continue;
-                }
-                rv.addAll(jm.myClasspath);
-                jm.dependsFrom().forEach(queue::add);
-              }
-            } while (!queue.isEmpty());
-            return rv;
-          }
-
-          @Override
-          public ModuleAnalyzerResult analyze() {
-            boolean hasJavaToCompile = false;
-            boolean hasResourcesToUpdate = false;
-            Set<BaseModuleContainer.JavaModule> modulesWithRemovals = new HashSet<>();
-            Set<File> filesToDelete = new HashSet<>();
-            for (JM jm : cc) {
-              if (jm.mySources == null) {
-                System.out.printf("Module %s got no sources!\n", jm.name());
-                continue;
-              }
-              // !isResourcesUpToDate == (myFilesToDelete.isEmpty() && myResourcesToCopy.isEmpty())
-              // XXX is it right to include files to delete into condition?
-              hasResourcesToUpdate |= !jm.mySources.myResourcesToCopy.isEmpty() || !jm.mySources.myFilesToDelete.isEmpty();
-              hasJavaToCompile |= !jm.mySources.myFilesToCompile.isEmpty();
-              if (filesToDelete.addAll(jm.mySources.myFilesToDelete)) {
-                modulesWithRemovals.add(jm);
-              }
-            }
-            return ModuleAnalyzerResult.build(hasJavaToCompile, hasResourcesToUpdate, modulesWithRemovals, filesToDelete);
-          }
-        };
+        BaseModuleContainer<JM> modulesContainer = new BMC(cc, externalOutputToKeep);
         final MPSCompilationResult cycleCompilationResult = jc.compile(modulesContainer, cycleTracer.subTracer(1, SubProgressKind.AS_COMMENT));
         cycleCompilationResults.add(cycleCompilationResult);
         cycleTracer.done(0);
