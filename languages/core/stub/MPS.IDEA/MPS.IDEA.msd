@@ -17,6 +17,7 @@
       <sourceRoot location="tests_bootstrap.jar" />
       <!-- -->
       <sourceRoot location="util.jar" />
+      <sourceRoot location="3rd-party-rt.jar" />
       <sourceRoot location="forms_rt.jar" />
     </modelRoot>
   </models>
@@ -40,6 +41,7 @@
     <stubModelEntry path="${platform_lib}/tests_bootstrap.jar" />
     <!-- aka 'idea jars' -->
     <stubModelEntry path="${platform_lib}/util.jar" />
+    <stubModelEntry path="${platform_lib}/3rd-party-rt.jar" />
     <stubModelEntry path="${platform_lib}/forms_rt.jar" />
   </stubModelEntries>
   <sourcePath />

@@ -6,7 +6,7 @@
       <sourceRoot location="models" />
     </modelRoot>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
-      <sourceRoot location="3rd-party.jar" />
+      <sourceRoot location="3rd-party-rt.jar" />
       <PackageScope skip-private="false">
         <include prefix="org.jetbrains.org.objectweb.asm." />
       </PackageScope>
@@ -20,7 +20,7 @@
   </facets>
   <stubModelEntries>
     <stubModelEntry path="${module}/classes" />
-    <stubModelEntry path="${platform_lib}/3rd-party.jar" />
+    <stubModelEntry path="${platform_lib}/3rd-party-rt.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
