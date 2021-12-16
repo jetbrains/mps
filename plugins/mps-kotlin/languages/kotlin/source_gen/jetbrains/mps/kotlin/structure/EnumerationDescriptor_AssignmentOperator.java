@@ -15,15 +15,14 @@ public class EnumerationDescriptor_AssignmentOperator extends EnumerationDescrip
     super(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954e6bL, "AssignmentOperator", "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186881643");
   }
 
-  private final EnumerationDescriptor.MemberDescriptor myMember_assign_0 = new EnumerationDescriptor.MemberDescriptor("assign", "=", 0x11400bb790ca754aL, "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380190365002");
   private final EnumerationDescriptor.MemberDescriptor myMember_plusAssign_0 = new EnumerationDescriptor.MemberDescriptor("plusAssign", "+=", 0x11400bb790954e71L, "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186881649");
   private final EnumerationDescriptor.MemberDescriptor myMember_minusAssign_0 = new EnumerationDescriptor.MemberDescriptor("minusAssign", "-=", 0x11400bb790954e74L, "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186881652");
   private final EnumerationDescriptor.MemberDescriptor myMember_timesAssign_0 = new EnumerationDescriptor.MemberDescriptor("timesAssign", "*=", 0x11400bb790954e78L, "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186881656");
   private final EnumerationDescriptor.MemberDescriptor myMember_divAssign_0 = new EnumerationDescriptor.MemberDescriptor("divAssign", "/=", 0x11400bb790954e7dL, "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186881661");
   private final EnumerationDescriptor.MemberDescriptor myMember_remAssign_0 = new EnumerationDescriptor.MemberDescriptor("remAssign", "%=", 0x11400bb790954e83L, "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186881667");
 
-  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954e6bL, 0x11400bb790ca754aL, 0x11400bb790954e71L, 0x11400bb790954e74L, 0x11400bb790954e78L, 0x11400bb790954e7dL, 0x11400bb790954e83L);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_assign_0, myMember_plusAssign_0, myMember_minusAssign_0, myMember_timesAssign_0, myMember_divAssign_0, myMember_remAssign_0);
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954e6bL, 0x11400bb790954e71L, 0x11400bb790954e74L, 0x11400bb790954e78L, 0x11400bb790954e7dL, 0x11400bb790954e83L);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_plusAssign_0, myMember_minusAssign_0, myMember_timesAssign_0, myMember_divAssign_0, myMember_remAssign_0);
 
   @Nullable
   @Override
@@ -44,8 +43,6 @@ public class EnumerationDescriptor_AssignmentOperator extends EnumerationDescrip
       return null;
     }
     switch (memberName) {
-      case "assign":
-        return myMember_assign_0;
       case "plusAssign":
         return myMember_plusAssign_0;
       case "minusAssign":

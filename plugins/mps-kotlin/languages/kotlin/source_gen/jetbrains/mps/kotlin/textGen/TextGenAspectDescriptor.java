@@ -40,6 +40,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new AnonymousFunction_TextGen();
       case LanguageConceptSwitch.AnonymousInitializer:
         return new AnonymousInitializer_TextGen();
+      case LanguageConceptSwitch.AsOperation:
+        return new AsOperation_TextGen();
       case LanguageConceptSwitch.Assignment:
         return new Assignment_TextGen();
       case LanguageConceptSwitch.BinLiteral:

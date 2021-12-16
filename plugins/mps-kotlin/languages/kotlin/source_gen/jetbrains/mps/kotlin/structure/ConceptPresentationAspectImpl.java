@@ -19,6 +19,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_AnnotationClassModifier;
   private ConceptPresentation props_AnonymousFunction;
   private ConceptPresentation props_AnonymousInitializer;
+  private ConceptPresentation props_AsOperation;
   private ConceptPresentation props_Assignment;
   private ConceptPresentation props_BinLiteral;
   private ConceptPresentation props_BinaryExpression;
@@ -239,6 +240,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_TypeConstraint;
   private ConceptPresentation props_TypeParameter;
   private ConceptPresentation props_TypeParameterReference;
+  private ConceptPresentation props_TypePostFixUnaryExpression;
   private ConceptPresentation props_TypeProjection;
   private ConceptPresentation props_TypeTest;
   private ConceptPresentation props_UnaryExpression;
@@ -333,6 +335,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_AnonymousInitializer = cpb.create();
         }
         return props_AnonymousInitializer;
+      case LanguageConceptSwitch.AsOperation:
+        if (props_AsOperation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("cast an expression");
+          cpb.rawPresentation("as");
+          props_AsOperation = cpb.create();
+        }
+        return props_AsOperation;
       case LanguageConceptSwitch.Assignment:
         if (props_Assignment == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -432,7 +442,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_ClassType == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("class type");
-          cpb.rawPresentation("ABC<>");
+          cpb.presentationByReference(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5c7be90f2440b378L, 0x5c7be90f2440b37bL, "class", "", "");
           props_ClassType = cpb.create();
         }
         return props_ClassType;
@@ -1327,7 +1337,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("kotlin file");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a351b0lj);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a451b0nj);
           props_KotlinFile = cpb.create();
         }
         return props_KotlinFile;
@@ -1336,7 +1346,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("script");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a451b0lj);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a551b0nj);
           props_KtScript = cpb.create();
         }
         return props_KtScript;
@@ -1915,6 +1925,12 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_TypeParameterReference = cpb.create();
         }
         return props_TypeParameterReference;
+      case LanguageConceptSwitch.TypePostFixUnaryExpression:
+        if (props_TypePostFixUnaryExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          props_TypePostFixUnaryExpression = cpb.create();
+        }
+        return props_TypePostFixUnaryExpression;
       case LanguageConceptSwitch.TypeProjection:
         if (props_TypeProjection == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

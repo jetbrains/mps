@@ -6,7 +6,7 @@ import jetbrains.mps.baseLanguage.textGen.BaseLanguageTextGen;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
-import jetbrains.mps.kotlin.behavior.NestedIdentifierConfiguration;
+import jetbrains.mps.kotlin.behavior.KtEnvironmentConfig;
 import jetbrains.mps.kotlin.behavior.IIdentifier__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.IKotlinRoot__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -41,7 +41,7 @@ public abstract class KotlinForBLTextGen extends BaseLanguageTextGen {
     }
 
     // Use JVM config for recovering names
-    NestedIdentifierConfiguration configuration = NestedIdentifierConfiguration.Jvm;
+    KtEnvironmentConfig configuration = KtEnvironmentConfig.Jvm;
 
     // Get the root to be import, its package name
     SNode root = IIdentifier__BehaviorDescriptor.getImportRoot_id1d2BQ0ZAmKw.invoke(classifier, configuration);
@@ -54,7 +54,7 @@ public abstract class KotlinForBLTextGen extends BaseLanguageTextGen {
   }
   public static void kotlinFileRef(SNode file, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    String name = NestedIdentifierConfiguration.Jvm.getName(file);
+    String name = KtEnvironmentConfig.Jvm.getName(file);
     BaseLanguageTextGen.appendImport(IKotlinRoot__BehaviorDescriptor.getPackageName_id4f4W8JpDCGu.invoke(file), name, file, ctx);
     tgs.append(name);
   }

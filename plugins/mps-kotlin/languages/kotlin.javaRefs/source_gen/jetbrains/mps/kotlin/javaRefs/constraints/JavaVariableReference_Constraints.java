@@ -43,14 +43,14 @@ public class JavaVariableReference_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Tuples._2<Boolean, SNode> context = ScopeHelper.navigatableContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink());
+            Tuples._3<Boolean, SNode, Boolean> context = ScopeHelper.navigatableContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink());
 
             // Call on receiver
             if ((boolean) context._0()) {
               SNode type = context._1();
 
               // Here we seek function signatures from java concepts
-              ScopeFilter scopeFilter = new ScopeFilter(CONCEPTS.VariableDeclaration$Y0, PropertyAccessorSignature.class);
+              ScopeFilter scopeFilter = new ScopeFilter(CONCEPTS.VariableDeclaration$Y0, PropertyAccessorSignature.class, (boolean) context._2());
               Scope scope = IType__BehaviorDescriptor.getScope_id7ubb0gUcNKV.invoke(type, scopeFilter, _context.getContextNode().getModel().getRepository());
 
               return (scope == null ? new EmptyScope() : scope);

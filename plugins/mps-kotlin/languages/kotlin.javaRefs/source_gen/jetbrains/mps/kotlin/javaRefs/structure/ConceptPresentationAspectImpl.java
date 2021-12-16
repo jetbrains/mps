@@ -32,7 +32,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.JavaClassType:
         if (props_JavaClassType == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("JavaClassType");
+          cpb.presentationByReference(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x68fcefc6c20600f5L, 0x68fcefc6c2060179L, "javaClass", "", "");
           props_JavaClassType = cpb.create();
         }
         return props_JavaClassType;

@@ -21,12 +21,12 @@ public class IsOperator_TextGen extends TextGenDescriptorBase {
     } else {
       tgs.append(" is ");
     }
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$6Pnt));
+    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$omaO));
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink operand$YS5t = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, 0x11400bb790956f23L, "operand");
-    /*package*/ static final SContainmentLink type$6Pnt = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954fd4L, 0x3b2c155eb84a3c8L, "type");
+    /*package*/ static final SContainmentLink type$omaO = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6babb2d406575098L, 0x3b2c155eb84a3c8L, "type");
   }
 
   private static final class PROPS {

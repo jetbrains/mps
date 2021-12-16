@@ -18,8 +18,9 @@ public class ScopeHelper {
    * Return the navigation context if present based on scope request.
    * 
    * If the node is used as target, first object in the tuple is true.
+   * If the scope to resolve is about companion object / static scope, third object is true.
    */
-  public static Tuples._2<Boolean, SNode> navigatableContext(SNode referenceNode, SNode contextNode, SContainmentLink containmentLink) {
+  public static Tuples._3<Boolean, SNode, Boolean> navigatableContext(SNode referenceNode, SNode contextNode, SContainmentLink containmentLink) {
     final SNode context = SNodeOperations.as((((referenceNode == null) ? contextNode : SNodeOperations.getParent(referenceNode))), CONCEPTS.NavigationOperation$4I);
 
     // In navigation -> get from operand type if used target
@@ -28,19 +29,21 @@ public class ScopeHelper {
       boolean isTargetFromLink = LINKS.target$C6zp.equals(containmentLink);
 
       if (isTargetFromLink || isTargetFromNode) {
-        SNode type = TypecheckingFacade.getFromContext().computeIsolated(() -> (SNode) NavigationOperation__BehaviorDescriptor.getContextType_id7ubb0gUcL0j.invoke(SNodeOperations.as(context, CONCEPTS.NavigationOperation$4I)));
-        return MultiTuple.<Boolean,SNode>from(true, type);
+        SNode type = TypecheckingFacade.getFromContext().computeIsolated(() -> (SNode) NavigationOperation__BehaviorDescriptor.getContextType_id7ubb0gUcL0j.invoke(context));
+        return MultiTuple.<Boolean,SNode,Boolean>from(true, type, SNodeOperations.isInstanceOf(SLinkOperations.getTarget(context, LINKS.operand$YS5t), CONCEPTS.ReceiverType$$f));
       }
     }
 
-    return MultiTuple.<Boolean,SNode>from(false, (SNode) null);
+    return MultiTuple.<Boolean,SNode,Boolean>from(false, (SNode) null, false);
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept NavigationOperation$4I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af450L, "jetbrains.mps.kotlin.structure.NavigationOperation");
+    /*package*/ static final SConcept ReceiverType$$f = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af541L, "jetbrains.mps.kotlin.structure.ReceiverType");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink target$C6zp = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af450L, 0x28bef6d7551af73bL, "target");
+    /*package*/ static final SContainmentLink operand$YS5t = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, 0x11400bb790956f23L, "operand");
   }
 }

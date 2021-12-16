@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -22,7 +21,7 @@ public final class KtScript__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3efL, "jetbrains.mps.kotlin.structure.KtScript");
 
   public static final SMethod<Boolean> isRunnable_idoITd3IthrB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRunnable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("oITd3IthrB").build();
-  public static final SMethod<String> getClassName_id7klTmOSHg_9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7klTmOSHg_9").build();
+  public static final SMethod<String> getClassName_id7klTmOSHg_9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7klTmOSHg_9").build(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9);
 
@@ -32,8 +31,8 @@ public final class KtScript__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean isRunnable_idoITd3IthrB(@NotNull SNode __thisNode__) {
     return true;
   }
-  /*package*/ static String getClassName_id7klTmOSHg_9(@NotNull SNode __thisNode__) {
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(__thisNode__);
+  /*package*/ static String getClassName_id7klTmOSHg_9(@NotNull SNode __thisNode__, KtEnvironmentConfig envConfig) {
+    return IKotlinRoot__BehaviorDescriptor.getFqName_id5M0hl5mCfjP.invoke(__thisNode__, envConfig);
   }
 
   /*package*/ KtScript__BehaviorDescriptor() {
@@ -54,7 +53,7 @@ public final class KtScript__BehaviorDescriptor extends BaseBHDescriptor {
       case 0:
         return (T) ((Boolean) isRunnable_idoITd3IthrB(node));
       case 1:
-        return (T) ((String) getClassName_id7klTmOSHg_9(node));
+        return (T) ((String) getClassName_id7klTmOSHg_9(node, (KtEnvironmentConfig) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

@@ -97,11 +97,6 @@ public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
     visitor.exitType(__thisNode__);
   }
   /*package*/ static void populateSignatures_id5q426iHK5S9(@NotNull SNode __thisNode__, final SignatureVisitor visitor) {
-    // Superclasses
-
-    // Constructor
-    // TODO remove from there? only for visited type
-
     // Members
     ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.class$ExdX), LINKS.members$gqdV)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {

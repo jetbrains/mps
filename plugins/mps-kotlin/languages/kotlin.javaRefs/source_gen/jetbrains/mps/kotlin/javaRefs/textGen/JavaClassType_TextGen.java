@@ -17,6 +17,7 @@ public class JavaClassType_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     JavaKotlinTextGen.javaReference(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.javaClass$CQOW), ctx);
     KotlinTextGen.projections(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeProjections$vhti), ctx);
+    KotlinTextGen.nullable(ctx.getPrimaryInput(), ctx);
   }
 
   private static final class LINKS {

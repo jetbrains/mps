@@ -64,10 +64,34 @@ public class ScopeFilter {
       }
     };
   }
+  private boolean myCompanionScope;
+  public boolean isCompanionScope() {
+    return this.myCompanionScope;
+  }
+  private void _setCompanionScope(boolean value) {
+    this.myCompanionScope = value;
+  }
+  private boolean setCompanionScope(boolean value) {
+    _setCompanionScope(value);
+    return value;
+  }
+  private Reference<Boolean> refToCompanionScope() {
+    return new Reference<Boolean>() {
+      public Boolean get() {
+        return isCompanionScope();
+      }
+      public void set(Boolean value) {
+        _setCompanionScope(value);
+      }
+    };
+  }
 
-  public ScopeFilter(SAbstractConcept filterConcept, Class<? extends MemberSignature> signatureKind) {
+  public ScopeFilter(SAbstractConcept filterConcept, Class<? extends MemberSignature> signatureKind, boolean staticScope) {
     this.setConceptFilter(filterConcept);
     this.setSignatureKind(signatureKind);
+
+    // Whether we're looking for static / companion definitions of the type
+    this.setCompanionScope(staticScope);
   }
 
   public boolean acceptSignature(Class<? extends MemberSignature> signatureKind) {
@@ -82,7 +106,18 @@ public class ScopeFilter {
     return SConceptOperations.isSuperConceptOf(SNodeOperations.asSConcept(getConceptFilter()), SNodeOperations.asSConcept(concept));
   }
 
+  public ScopeFilter toLocal() {
+    if (isCompanionScope()) {
+      return new ScopeFilter(getConceptFilter(), getSignatureKind(), false);
+    }
+    return this;
+  }
+
+  public static ScopeFilter forKind(SAbstractConcept identifier, boolean companionScope) {
+    return new ScopeFilter(identifier, IIdentifier__BehaviorDescriptor.getMemberSignatureKind_id5q426iHFtTk.invoke(SNodeOperations.asSConcept(identifier)), companionScope);
+  }
+
   public static ScopeFilter forKind(SAbstractConcept identifier) {
-    return new ScopeFilter(identifier, IIdentifier__BehaviorDescriptor.getMemberSignatureKind_id5q426iHFtTk.invoke(SNodeOperations.asSConcept(identifier)));
+    return forKind(identifier, false);
   }
 }

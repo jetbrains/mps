@@ -45,12 +45,12 @@ public class VariableRefExpression_Constraints extends BaseConstraintsDescriptor
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Tuples._2<Boolean, SNode> context = ScopeHelper.navigatableContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink());
+            Tuples._3<Boolean, SNode, Boolean> context = ScopeHelper.navigatableContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink());
 
             // In navigation -> get from operand type if target
             if ((boolean) context._0()) {
               SNode type = context._1();
-              Scope scope = IType__BehaviorDescriptor.getScope_id7ubb0gUcNKV.invoke(type, ScopeFilter.forKind(CONCEPTS.IVariableIdentifier$v2), _context.getContextNode().getModel().getRepository());
+              Scope scope = IType__BehaviorDescriptor.getScope_id7ubb0gUcNKV.invoke(type, ScopeFilter.forKind(CONCEPTS.IVariableIdentifier$v2, (boolean) context._2()), _context.getContextNode().getModel().getRepository());
 
               // Also retrieve scope for receiver types
               ReceiverTypeScope receiverTypeScope = new ReceiverTypeScope(SNodeOperations.getModel(_context.getContextNode()), IType__BehaviorDescriptor.shallowId_idJmO2PmZtH5.invoke(type), CONCEPTS.IVariableIdentifier$v2);

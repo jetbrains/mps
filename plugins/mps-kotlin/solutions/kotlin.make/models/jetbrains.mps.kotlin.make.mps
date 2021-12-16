@@ -1727,7 +1727,7 @@
                 <node concept="2OqwBi" id="69yGeXkvB_4" role="37wK5m">
                   <node concept="2n6ZRZ" id="69yGeXkvB_5" role="2Oq$k0">
                     <node concept="2e$Q_j" id="69yGeXkvB_6" role="2n6ZRX">
-                      <ref role="1Mm5Yu" node="5heFtF6aX5r" resolve="KotlinJvm" />
+                      <ref role="1Mm5Yu" node="5heFtF6aX5r" resolve="KotlinJvmCompile" />
                     </node>
                   </node>
                   <node concept="liA8E" id="69yGeXkvB_7" role="2OqNvi">
@@ -2364,7 +2364,7 @@
                         <node concept="2OqwBi" id="69yGeXkuWpq" role="37wK5m">
                           <node concept="2n6ZRZ" id="69yGeXkuWpr" role="2Oq$k0">
                             <node concept="2e$Q_j" id="69yGeXkuWps" role="2n6ZRX">
-                              <ref role="1Mm5Yu" node="5heFtF6aX5r" resolve="KotlinJvm" />
+                              <ref role="1Mm5Yu" node="5heFtF6aX5r" resolve="KotlinJvmCompile" />
                             </node>
                           </node>
                           <node concept="liA8E" id="69yGeXkuWpt" role="2OqNvi">
@@ -3235,7 +3235,7 @@
                   </node>
                   <node concept="2OqwBi" id="3Ch7xrckgSw" role="2Oq$k0">
                     <node concept="2v9SQr" id="3Ch7xrckgSx" role="2Oq$k0">
-                      <ref role="2v9SMg" node="5heFtF6aX5r" resolve="KotlinJvm" />
+                      <ref role="2v9SMg" node="5heFtF6aX5r" resolve="KotlinJvmCompile" />
                     </node>
                     <node concept="liA8E" id="3Ch7xrckgSy" role="2OqNvi">
                       <ref role="37wK5l" to="wyt6:~Class.getDeclaredConstructor(java.lang.Class...)" resolve="getDeclaredConstructor" />

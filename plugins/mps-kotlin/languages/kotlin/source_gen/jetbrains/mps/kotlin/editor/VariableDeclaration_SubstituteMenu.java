@@ -20,6 +20,8 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.kotlin.constraints.Identifiers;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -99,6 +101,10 @@ public class VariableDeclaration_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public String getDescriptionText(@NotNull String pattern) {
         return "variable decl";
+      }
+      @Override
+      public void select(@NotNull SNode createdNode, @NotNull String pattern) {
+        SelectionUtil.selectCell(_context.getEditorContext(), createdNode, SelectionManager.LAST_EDITABLE_CELL);
       }
       @Nullable
       @Override

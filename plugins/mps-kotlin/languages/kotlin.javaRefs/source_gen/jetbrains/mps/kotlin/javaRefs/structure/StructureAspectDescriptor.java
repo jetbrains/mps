@@ -83,7 +83,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb7f7eL);
     b.origin("r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)/7565185111013327093");
     b.version(2);
-    b.associate("javaClass", 0x68fcefc6c2060179L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L).optional(true).origin("7565185111013327225").done();
+    b.associate("javaClass", 0x68fcefc6c2060179L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L).optional(false).origin("7565185111013327225").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForJavaInterfaceInheritanceSpecifier() {

@@ -268,6 +268,7 @@
                 <node concept="3Tqbb2" id="3lDDPlndk0I" role="1Lm7xW">
                   <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
                 </node>
+                <node concept="10P_77" id="1dpU28wWNyt" role="1Lm7xW" />
               </node>
               <node concept="2YIFZM" id="3lDDPlndktJ" role="33vP2m">
                 <ref role="37wK5l" to="tbhz:3lDDPlndeEE" resolve="navigatableContext" />
@@ -353,6 +354,14 @@
                       </node>
                       <node concept="3VsKOn" id="3rRma5vNJSU" role="37wK5m">
                         <ref role="3VsUkX" to="nww:5q426iHsmma" resolve="FunctionSignature" />
+                      </node>
+                      <node concept="1LFfDK" id="1dpU28wWOzm" role="37wK5m">
+                        <node concept="3cmrfG" id="1dpU28wWOKm" role="1LF_Uc">
+                          <property role="3cmrfH" value="2" />
+                        </node>
+                        <node concept="37vLTw" id="1dpU28wWESf" role="1LFl5Q">
+                          <ref role="3cqZAo" node="3lDDPlndktI" resolve="context" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -769,6 +778,7 @@
                 <node concept="3Tqbb2" id="3lDDPlndY5l" role="1Lm7xW">
                   <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
                 </node>
+                <node concept="10P_77" id="1dpU28wWQjP" role="1Lm7xW" />
               </node>
               <node concept="2YIFZM" id="3lDDPlndY5m" role="33vP2m">
                 <ref role="37wK5l" to="tbhz:3lDDPlndeEE" resolve="navigatableContext" />
@@ -779,7 +789,26 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbH" id="3lDDPlndXUi" role="3cqZAp" />
+          <node concept="3clFbH" id="1dpU28wWT1p" role="3cqZAp" />
+          <node concept="3SKdUt" id="1dpU28wWQND" role="3cqZAp">
+            <node concept="1PaTwC" id="1dpU28wWQNE" role="1aUNEU">
+              <node concept="3oM_SD" id="1dpU28wWRAn" role="1PaTwD">
+                <property role="3oM_SC" value="TODO" />
+              </node>
+              <node concept="3oM_SD" id="1dpU28wWREv" role="1PaTwD">
+                <property role="3oM_SC" value="static" />
+              </node>
+              <node concept="3oM_SD" id="1dpU28wWRJ7" role="1PaTwD">
+                <property role="3oM_SC" value="methods" />
+              </node>
+              <node concept="3oM_SD" id="1dpU28wWRLl" role="1PaTwD">
+                <property role="3oM_SC" value="if" />
+              </node>
+              <node concept="3oM_SD" id="1dpU28wWRN5" role="1PaTwD">
+                <property role="3oM_SC" value="context[2]" />
+              </node>
+            </node>
+          </node>
           <node concept="3clFbJ" id="3lDDPlndZvV" role="3cqZAp">
             <node concept="3clFbS" id="3lDDPlndZvX" role="3clFbx">
               <node concept="3cpWs8" id="3lDDPlne4uY" role="3cqZAp">
@@ -1101,6 +1130,7 @@
                 <node concept="3Tqbb2" id="4mvBIJf3VB$" role="1Lm7xW">
                   <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
                 </node>
+                <node concept="10P_77" id="1dpU28wWU0y" role="1Lm7xW" />
               </node>
               <node concept="2YIFZM" id="4mvBIJf3VB_" role="33vP2m">
                 <ref role="37wK5l" to="tbhz:3lDDPlndeEE" resolve="navigatableContext" />
@@ -1186,6 +1216,14 @@
                       </node>
                       <node concept="3VsKOn" id="4mvBIJf3VC8" role="37wK5m">
                         <ref role="3VsUkX" to="nww:5q426iHsjrS" resolve="PropertyAccessorSignature" />
+                      </node>
+                      <node concept="1LFfDK" id="1dpU28wWVcm" role="37wK5m">
+                        <node concept="37vLTw" id="1dpU28wWUv$" role="1LFl5Q">
+                          <ref role="3cqZAo" node="4mvBIJf3VBx" resolve="context" />
+                        </node>
+                        <node concept="3cmrfG" id="1dpU28wWVGK" role="1LF_Uc">
+                          <property role="3cmrfH" value="2" />
+                        </node>
                       </node>
                     </node>
                   </node>

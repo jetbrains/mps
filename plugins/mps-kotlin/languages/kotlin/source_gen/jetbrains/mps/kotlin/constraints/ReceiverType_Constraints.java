@@ -39,13 +39,14 @@ public class ReceiverType_Constraints extends BaseConstraintsDescriptor {
   }
   private static boolean staticCanBeAChild(SNode node, SNode parentNode, SAbstractConcept childConcept, SContainmentLink link) {
     // TODO this may not be right, if so remove IExpression for ancestors
-    return Objects.equals(link, LINKS.receiverType$NO1r) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.MemberNavigationOperation$7I);
+    return Objects.equals(link, LINKS.receiverType$NO1r) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.MemberNavigationOperation$7I) || SNodeOperations.isInstanceOf(parentNode, CONCEPTS.NavigationOperation$4I);
   }
   private static final SNodePointer canBeChildBreakingPoint = new SNodePointer("r:133e8cac-c6ad-447f-a90c-5146ca3b1aed(jetbrains.mps.kotlin.constraints)", "5098819071454168025");
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ReceiverType$$f = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af541L, "jetbrains.mps.kotlin.structure.ReceiverType");
     /*package*/ static final SConcept MemberNavigationOperation$7I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, "jetbrains.mps.kotlin.structure.MemberNavigationOperation");
+    /*package*/ static final SConcept NavigationOperation$4I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af450L, "jetbrains.mps.kotlin.structure.NavigationOperation");
   }
 
   private static final class LINKS {

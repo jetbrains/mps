@@ -21,7 +21,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
-import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -36,7 +35,7 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Scope> getLocalScope_id46gC9M66Lsd = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getLocalScope").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("46gC9M66Lsd").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> isRunnable_idoITd3IthrB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRunnable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("oITd3IthrB").build();
-  public static final SMethod<String> getClassName_id7klTmOSHg_9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7klTmOSHg_9").build();
+  public static final SMethod<String> getClassName_id7klTmOSHg_9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7klTmOSHg_9").build(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMembers_id213J8chg2xy, getScope_id52_Geb4QDV$, getLocalScope_id46gC9M66Lsd, isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9);
 
@@ -61,8 +60,8 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean isRunnable_idoITd3IthrB(@NotNull SNode __thisNode__) {
     return (KotlinFile__BehaviorDescriptor.getLocalScope_id46gC9M66Lsd.invoke(__thisNode__, CONCEPTS.IFunctionIdentifier$K$, __thisNode__).resolve(__thisNode__, "main") != null);
   }
-  /*package*/ static String getClassName_id7klTmOSHg_9(@NotNull SNode __thisNode__) {
-    return INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(__thisNode__);
+  /*package*/ static String getClassName_id7klTmOSHg_9(@NotNull SNode __thisNode__, KtEnvironmentConfig envConfig) {
+    return IKotlinRoot__BehaviorDescriptor.getFqName_id5M0hl5mCfjP.invoke(__thisNode__, envConfig);
   }
 
   /*package*/ KotlinFile__BehaviorDescriptor() {
@@ -89,7 +88,7 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
       case 3:
         return (T) ((Boolean) isRunnable_idoITd3IthrB(node));
       case 4:
-        return (T) ((String) getClassName_id7klTmOSHg_9(node));
+        return (T) ((String) getClassName_id7klTmOSHg_9(node, (KtEnvironmentConfig) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

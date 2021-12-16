@@ -106,6 +106,10 @@ public class ITypeParameters_Insert_Transform extends TransformationMenuBase {
       }
 
 
+      @Override
+      public String getShortDescriptionText(@NotNull String pattern) {
+        return "add type parameter";
+      }
 
 
       @Override

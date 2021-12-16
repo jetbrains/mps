@@ -52,6 +52,7 @@
     <node concept="1TJgyj" id="6zWVWr21w5T" role="1TKVEi">
       <property role="IQ2ns" value="7565185111013327225" />
       <property role="20kJfa" value="javaClass" />
+      <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" to="tpee:g7pOWCK" resolve="Classifier" />
     </node>
     <node concept="PrWs8" id="6zWVWr21w3Q" role="PzmwI">

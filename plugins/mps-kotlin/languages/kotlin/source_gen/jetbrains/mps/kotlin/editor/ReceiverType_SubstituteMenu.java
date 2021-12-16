@@ -12,10 +12,14 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
+import jetbrains.mps.lang.editor.menus.GroupMenuPart;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.util.Computable;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import java.util.Objects;
+import java.util.Arrays;
+import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
+import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import org.apache.log4j.Logger;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
@@ -27,7 +31,7 @@ import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import jetbrains.mps.kotlin.behavior.IIdentifier__BehaviorDescriptor;
-import jetbrains.mps.kotlin.behavior.NestedIdentifierConfiguration;
+import jetbrains.mps.kotlin.behavior.KtEnvironmentConfig;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.lang.editor.menus.substitute.WrapperSubstituteMenuPart;
 import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
@@ -45,20 +49,20 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public class ReceiverType_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_tggf8n_a(), CONCEPTS.IExpression$2i));
+    result.add(new SMP_Group_tggf8n_a());
     result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_tggf8n_b(), CONCEPTS.IExpression$2i));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_tggf8n_c(), CONCEPTS.ReceiverType$$f));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_tggf8n_c(), CONCEPTS.IExpression$2i));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Wrap_tggf8n_d(), CONCEPTS.ReceiverType$$f));
     return result;
   }
 
@@ -75,120 +79,261 @@ public class ReceiverType_SubstituteMenu extends SubstituteMenuBase {
   }
 
 
-  private class SMP_Param_tggf8n_a extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
-    @NotNull
+  public class SMP_Group_tggf8n_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
+    private Iterable<SNode> classes;
     @Override
-    protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
-      return new SMP_Action_tggf8n_a0(parameter).createItems(context);
+    protected void initialize(SubstituteMenuContext _context) {
+      super.initialize(_context);
+      classes = new Computable<Iterable<SNode>>() {
+        public Iterable<SNode> compute() {
+          // Is it better to have it there or as separate parameterized actions?
+          return SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.IClassDeclaration$bQ);
+        }
+      }.compute();
+    }
+    @Override
+    protected boolean isApplicable(SubstituteMenuContext _context) {
+      return !(Objects.equals(_context.getLink(), LINKS.receiverType$NO1r));
     }
     @NotNull
     @Override
     public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
       context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("parameterized substitute menu part", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1741258697586961062")));
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1394400792923237897")));
       try {
         return super.createItems(context);
       } finally {
         context.getEditorMenuTrace().popTraceInfo();
       }
     }
-    @Nullable
-    @Override
-    protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
-      return SModelOperations.nodesIncludingImported(_context.getModel(), CONCEPTS.IClassLike$go);
-    }
-    private class SMP_Action_tggf8n_a0 extends SingleItemSubstituteMenuPart {
-      private final SNode myParameterObject;
-      public SMP_Action_tggf8n_a0(SNode parameterObject) {
-        myParameterObject = parameterObject;
-      }
 
+    @Override
+    protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_tggf8n_a0(), CONCEPTS.IExpression$2i), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_tggf8n_b0(), CONCEPTS.IExpression$2i));
+    }
+    private class SMP_Param_tggf8n_a0 extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
+      @NotNull
+      @Override
+      protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
+        return new SMP_Action_tggf8n_a0a(parameter).createItems(context);
+      }
+      @NotNull
+      @Override
+      public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
+        context.getEditorMenuTrace().pushTraceInfo();
+        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("parameterized substitute menu part", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1394400792923276395")));
+        try {
+          return super.createItems(context);
+        } finally {
+          context.getEditorMenuTrace().popTraceInfo();
+        }
+      }
       @Nullable
       @Override
-      protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-        Item item = new Item(_context);
-        String description;
-        try {
-          description = "Substitute item: " + item.getMatchingText("");
-          description += ". Parameter object: " + myParameterObject;
-        } catch (Throwable t) {
-          Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-          return null;
-        }
-
-        _context.getEditorMenuTrace().pushTraceInfo();
-        try {
-          _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1741258697586961149")));
-          item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
-        } finally {
-          _context.getEditorMenuTrace().popTraceInfo();
-        }
-
-        return item;
+      protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
+        return classes;
       }
-      private class Item extends DefaultSubstituteMenuItem {
-        private final SubstituteMenuContext _context;
-        private EditorMenuTraceInfo myTraceInfo;
-        public Item(SubstituteMenuContext context) {
-          super(CONCEPTS.IExpression$2i, context);
-          _context = context;
-        }
-
-        private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-          myTraceInfo = traceInfo;
+      private class SMP_Action_tggf8n_a0a extends SingleItemSubstituteMenuPart {
+        private final SNode myParameterObject;
+        public SMP_Action_tggf8n_a0a(SNode parameterObject) {
+          myParameterObject = parameterObject;
         }
 
         @Nullable
         @Override
-        public SNode createNode(@NotNull String pattern) {
-          // TODO merge with wrap IType below
-          SNode classType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4dfL, "jetbrains.mps.kotlin.structure.ClassType"));
-          SLinkOperations.setTarget(classType, LINKS.class$ExdX, myParameterObject);
-
-          SNode receiver = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af541L, "jetbrains.mps.kotlin.structure.ReceiverType"));
-          SLinkOperations.setTarget(receiver, LINKS.type$NVFj, classType);
-
-          SNode navigationOperation = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, "jetbrains.mps.kotlin.structure.MemberNavigationOperation"));
-          SLinkOperations.setTarget(navigationOperation, LINKS.operand$YS5t, receiver);
-          return navigationOperation;
-        }
-
-        @Override
-        public EditorMenuTraceInfo getTraceInfo() {
-          return myTraceInfo;
-        }
-        @NotNull
-        protected CompletionItemInformation createInformation(String pattern) {
-          return new CompletionItemInformation(myParameterObject, CONCEPTS.IExpression$2i, getMatchingText(pattern), getDescriptionText(pattern));
-        }
-        @Nullable
-        @Override
-        public IconResource getIcon(@NotNull String pattern) {
-          if (myParameterObject instanceof SNode) {
-            return IconResourceUtil.getIconResourceForNode(((SNode) myParameterObject));
+        protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
+          Item item = new Item(_context);
+          String description;
+          try {
+            description = "Substitute item: " + item.getMatchingText("");
+            description += ". Parameter object: " + myParameterObject;
+          } catch (Throwable t) {
+            Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
+            return null;
           }
-          return null;
+
+          _context.getEditorMenuTrace().pushTraceInfo();
+          try {
+            _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1394400792923276404")));
+            item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
+          } finally {
+            _context.getEditorMenuTrace().popTraceInfo();
+          }
+
+          return item;
         }
-        @Nullable
-        @Override
-        public String getMatchingText(@NotNull String pattern) {
-          return IIdentifier__BehaviorDescriptor.getNestedName_id1d2BQ0ZyA$g.invoke(myParameterObject, NestedIdentifierConfiguration.Kotlin) + "::";
-        }
-        @Nullable
-        @Override
-        public String getDescriptionText(@NotNull String pattern) {
-          return "ref ^" + NodePresentationUtil.descriptionText(myParameterObject);
+        private class Item extends DefaultSubstituteMenuItem {
+          private final SubstituteMenuContext _context;
+          private EditorMenuTraceInfo myTraceInfo;
+          public Item(SubstituteMenuContext context) {
+            super(CONCEPTS.IExpression$2i, context);
+            _context = context;
+          }
+
+          private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
+            myTraceInfo = traceInfo;
+          }
+
+          @Nullable
+          @Override
+          public SNode createNode(@NotNull String pattern) {
+            // TODO merge with wrap IType below
+            SNode classType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4dfL, "jetbrains.mps.kotlin.structure.ClassType"));
+            SLinkOperations.setTarget(classType, LINKS.class$ExdX, myParameterObject);
+
+            SNode receiver = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af541L, "jetbrains.mps.kotlin.structure.ReceiverType"));
+            SLinkOperations.setTarget(receiver, LINKS.type$NVFj, classType);
+
+            SNode navigationOperation = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, "jetbrains.mps.kotlin.structure.MemberNavigationOperation"));
+            SLinkOperations.setTarget(navigationOperation, LINKS.operand$YS5t, receiver);
+            return navigationOperation;
+          }
+
+          @Override
+          public EditorMenuTraceInfo getTraceInfo() {
+            return myTraceInfo;
+          }
+          @NotNull
+          protected CompletionItemInformation createInformation(String pattern) {
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.IExpression$2i, getMatchingText(pattern), getDescriptionText(pattern));
+          }
+          @Nullable
+          @Override
+          public IconResource getIcon(@NotNull String pattern) {
+            if (myParameterObject instanceof SNode) {
+              return IconResourceUtil.getIconResourceForNode(((SNode) myParameterObject));
+            }
+            return null;
+          }
+          @Nullable
+          @Override
+          public String getMatchingText(@NotNull String pattern) {
+            return IIdentifier__BehaviorDescriptor.getNestedName_id1d2BQ0ZyA$g.invoke(myParameterObject, KtEnvironmentConfig.Kotlin) + "::";
+          }
+          @Nullable
+          @Override
+          public String getDescriptionText(@NotNull String pattern) {
+            return "ref ^" + NodePresentationUtil.descriptionText(myParameterObject);
+          }
         }
       }
-    }
 
+    }
+    private class SMP_Param_tggf8n_b0 extends ParameterizedMenuPart<SNode, SubstituteMenuItem, SubstituteMenuContext> {
+      @NotNull
+      @Override
+      protected List<SubstituteMenuItem> createItems(SNode parameter, SubstituteMenuContext context) {
+        return new SMP_Action_tggf8n_a1a(parameter).createItems(context);
+      }
+      @NotNull
+      @Override
+      public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
+        context.getEditorMenuTrace().pushTraceInfo();
+        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("parameterized substitute menu part", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1394400792923282813")));
+        try {
+          return super.createItems(context);
+        } finally {
+          context.getEditorMenuTrace().popTraceInfo();
+        }
+      }
+      @Nullable
+      @Override
+      protected Iterable<? extends SNode> getParameters(SubstituteMenuContext _context) {
+        return classes;
+      }
+      private class SMP_Action_tggf8n_a1a extends SingleItemSubstituteMenuPart {
+        private final SNode myParameterObject;
+        public SMP_Action_tggf8n_a1a(SNode parameterObject) {
+          myParameterObject = parameterObject;
+        }
+
+        @Nullable
+        @Override
+        protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
+          Item item = new Item(_context);
+          String description;
+          try {
+            description = "Substitute item: " + item.getMatchingText("");
+            description += ". Parameter object: " + myParameterObject;
+          } catch (Throwable t) {
+            Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
+            return null;
+          }
+
+          _context.getEditorMenuTrace().pushTraceInfo();
+          try {
+            _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1394400792923282819")));
+            item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
+          } finally {
+            _context.getEditorMenuTrace().popTraceInfo();
+          }
+
+          return item;
+        }
+        private class Item extends DefaultSubstituteMenuItem {
+          private final SubstituteMenuContext _context;
+          private EditorMenuTraceInfo myTraceInfo;
+          public Item(SubstituteMenuContext context) {
+            super(CONCEPTS.IExpression$2i, context);
+            _context = context;
+          }
+
+          private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
+            myTraceInfo = traceInfo;
+          }
+
+          @Nullable
+          @Override
+          public SNode createNode(@NotNull String pattern) {
+            // TODO merge with wrap IType below
+            SNode classType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4dfL, "jetbrains.mps.kotlin.structure.ClassType"));
+            SLinkOperations.setTarget(classType, LINKS.class$ExdX, myParameterObject);
+
+            SNode receiver = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af541L, "jetbrains.mps.kotlin.structure.ReceiverType"));
+            SLinkOperations.setTarget(receiver, LINKS.type$NVFj, classType);
+
+            SNode navigationOperation = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af450L, "jetbrains.mps.kotlin.structure.NavigationOperation"));
+            SLinkOperations.setTarget(navigationOperation, LINKS.operand$YS5t, receiver);
+            return navigationOperation;
+          }
+
+          @Override
+          public EditorMenuTraceInfo getTraceInfo() {
+            return myTraceInfo;
+          }
+          @NotNull
+          protected CompletionItemInformation createInformation(String pattern) {
+            return new CompletionItemInformation(myParameterObject, CONCEPTS.IExpression$2i, getMatchingText(pattern), getDescriptionText(pattern));
+          }
+          @Nullable
+          @Override
+          public IconResource getIcon(@NotNull String pattern) {
+            if (myParameterObject instanceof SNode) {
+              return IconResourceUtil.getIconResourceForNode(((SNode) myParameterObject));
+            }
+            return null;
+          }
+          @Nullable
+          @Override
+          public String getMatchingText(@NotNull String pattern) {
+            return IIdentifier__BehaviorDescriptor.getNestedName_id1d2BQ0ZyA$g.invoke(myParameterObject, KtEnvironmentConfig.Kotlin) + ".";
+          }
+          @Nullable
+          @Override
+          public String getDescriptionText(@NotNull String pattern) {
+            return "static ^" + NodePresentationUtil.descriptionText(myParameterObject);
+          }
+        }
+      }
+
+    }
   }
   private class SMP_Wrap_tggf8n_b extends WrapperSubstituteMenuPart {
     @NotNull
     @Override
     public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
       context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "IType", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "201447423888561742")));
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "IType", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1394400792923300038")));
       try {
         return super.createItems(context);
       } finally {
@@ -249,7 +394,13 @@ public class ReceiverType_SubstituteMenu extends SubstituteMenuBase {
         }
         public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
           // TODO merge with above definition if a way is found to have matching text working
-          return !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(wrappedItem.getOutputConcept()), CONCEPTS.ClassType$jI));
+          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(wrappedItem.getOutputConcept()), CONCEPTS.ClassType$jI)) {
+            return false;
+          }
+          if (strictly) {
+            return Objects.equals(pattern, wrappedItem.getMatchingText(pattern) + "::");
+          }
+          return true;
         }
       };
     }
@@ -265,6 +416,93 @@ public class ReceiverType_SubstituteMenu extends SubstituteMenuBase {
     }
   }
   private class SMP_Wrap_tggf8n_c extends WrapperSubstituteMenuPart {
+    @NotNull
+    @Override
+    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap " + "default substitute menu for " + "IType", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "201447423888561742")));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+
+    @NotNull
+    @Override
+    protected SubstituteMenuItem wrapItem(final SubstituteMenuItem item, final SubstituteMenuContext _context) {
+      final SubstituteItemProxy wrappedItem = new SubstituteItemProxy(item);
+      return new SubstituteMenuItemWrapper(item) {
+        private SNode myCreatedNode;
+
+        @Nullable
+        @Override
+        public SAbstractConcept getOutputConcept() {
+          return CONCEPTS.IExpression$2i;
+        }
+        @Nullable
+        @Override
+        public SNode createNode(@NotNull String pattern) {
+          SNode nodeToWrap = super.createNode(pattern);
+          myCreatedNode = nodeToWrap;
+          SNode receiver = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af541L, "jetbrains.mps.kotlin.structure.ReceiverType"));
+          SLinkOperations.setTarget(receiver, LINKS.type$NVFj, nodeToWrap);
+
+          SNode navigationOperation = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af450L, "jetbrains.mps.kotlin.structure.NavigationOperation"));
+          SLinkOperations.setTarget(navigationOperation, LINKS.operand$YS5t, receiver);
+          return navigationOperation;
+        }
+        @Override
+        public void select(@NotNull SNode createdNode, @NotNull String pattern) {
+          super.select(myCreatedNode, pattern);
+        }
+
+        public void customize(String pattern, EditorMenuItemStyle style) {
+          super.customize(pattern, style);
+          SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext creatingContext = new SubstituteMenuContextToEditorMenuItemCreatingCustomizationContext(_context, getOutputConcept());
+          SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext modifyingContext = new SubstituteMenuContextToEditorMenuItemModifyingCustomizationContext(_context);
+          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, creatingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, getOutputConcept(), getMatchingText(pattern), getDescriptionText(pattern))));
+          for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
+            customizer.customize(style, compositeContext);
+          }
+        }
+        @Nullable
+        @Override
+        public String getMatchingText(@NotNull String pattern) {
+          return wrappedItem.getMatchingText(pattern) + ".";
+        }
+        @Override
+        public boolean canExecute(@NotNull String pattern) {
+          return canExecute_internal(pattern, false);
+        }
+        @Override
+        public boolean canExecuteStrictly(@NotNull String pattern) {
+          return canExecute_internal(pattern, true);
+        }
+        public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
+          // TODO merge with above definition if a way is found to have matching text working
+          if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(wrappedItem.getOutputConcept()), CONCEPTS.ClassType$jI)) {
+            return false;
+          }
+          if (strictly) {
+            return Objects.equals(pattern, wrappedItem.getMatchingText(pattern) + ".");
+          }
+          return true;
+        }
+      };
+    }
+    @Nullable
+    @Override
+    protected SubstituteMenuLookup getLookup(SubstituteMenuContext _context) {
+      final EditorContext editorContext = _context.getEditorContext();
+      SAbstractConcept conceptToFindMenuFor = getConceptToFindMenuFor(_context);
+      return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
+    }
+    private SAbstractConcept getConceptToFindMenuFor(SubstituteMenuContext _context) {
+      return CONCEPTS.IType$Ni;
+    }
+  }
+  private class SMP_Wrap_tggf8n_d extends WrapperSubstituteMenuPart {
     @NotNull
     @Override
     public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
@@ -322,7 +560,13 @@ public class ReceiverType_SubstituteMenu extends SubstituteMenuBase {
         }
         public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
           // Natural receiver type only for
-          return Objects.equals(_context.getLink(), LINKS.receiverType$NO1r);
+          if (!(Objects.equals(_context.getLink(), LINKS.receiverType$NO1r))) {
+            return false;
+          }
+          if (strictly) {
+            return Objects.equals(wrappedItem.getMatchingText(pattern), pattern);
+          }
+          return true;
         }
       };
     }
@@ -341,15 +585,15 @@ public class ReceiverType_SubstituteMenu extends SubstituteMenuBase {
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IExpression$2i = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L, "jetbrains.mps.kotlin.structure.IExpression");
     /*package*/ static final SConcept ReceiverType$$f = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af541L, "jetbrains.mps.kotlin.structure.ReceiverType");
-    /*package*/ static final SInterfaceConcept IClassLike$go = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x298a6a355c110274L, "jetbrains.mps.kotlin.structure.IClassLike");
+    /*package*/ static final SInterfaceConcept IClassDeclaration$bQ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b56dL, "jetbrains.mps.kotlin.structure.IClassDeclaration");
     /*package*/ static final SConcept ClassType$jI = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4dfL, "jetbrains.mps.kotlin.structure.ClassType");
     /*package*/ static final SInterfaceConcept IType$Ni = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af441L, "jetbrains.mps.kotlin.structure.IType");
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink receiverType$NO1r = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L, 0x11400bb7908c7f23L, "receiverType");
     /*package*/ static final SReferenceLink class$ExdX = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5c7be90f2440b378L, 0x5c7be90f2440b37bL, "class");
     /*package*/ static final SContainmentLink type$NVFj = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af541L, 0x28bef6d7551af8c0L, "type");
     /*package*/ static final SContainmentLink operand$YS5t = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, 0x11400bb790956f23L, "operand");
-    /*package*/ static final SContainmentLink receiverType$NO1r = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L, 0x11400bb7908c7f23L, "receiverType");
   }
 }

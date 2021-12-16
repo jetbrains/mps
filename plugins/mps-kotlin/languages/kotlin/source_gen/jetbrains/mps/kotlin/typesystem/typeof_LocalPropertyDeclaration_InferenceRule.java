@@ -7,14 +7,13 @@ import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
+import jetbrains.mps.kotlin.behavior.AbstractPropertyDeclaration__BehaviorDescriptor;
+import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class typeof_LocalPropertyDeclaration_InferenceRule extends AbstractInferenceRule_Runtime implements InferenceRule_Runtime {
@@ -22,7 +21,7 @@ public class typeof_LocalPropertyDeclaration_InferenceRule extends AbstractInfer
   }
   public void applyRule(final SNode decl, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // Stub typesystem: actual implementation with coderules
-    if (ListSequence.fromList(SLinkOperations.getChildren(decl, LINKS.declarations$pA8V)).count() == 1 && !(SPropertyOperations.getBoolean(decl, PROPS.isDeconstructing$FQve))) {
+    if (!((boolean) AbstractPropertyDeclaration__BehaviorDescriptor.isDeconstructing_id7RZWrHVbnio.invoke(decl))) {
       {
         SNode _nodeToCheck_1029348928467 = decl;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "9061588857366971634", 0, null);
@@ -42,10 +41,6 @@ public class typeof_LocalPropertyDeclaration_InferenceRule extends AbstractInfer
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink declarations$pA8V = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90b9L, 0x123d0b402b9ae3f5L, "declarations");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty isDeconstructing$FQve = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90b9L, 0x123d0b402b9a9097L, "isDeconstructing");
   }
 
   private static final class CONCEPTS {

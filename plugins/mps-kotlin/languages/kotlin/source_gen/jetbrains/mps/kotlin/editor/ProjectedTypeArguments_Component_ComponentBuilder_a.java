@@ -12,8 +12,6 @@ import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.LDiamondStyleClass;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
@@ -56,17 +54,6 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     Style style = new StyleImpl();
     style.set(StyleAttributes.SELECTABLE, false);
     editorCell.getStyle().putAll(style);
-    if (nodeCondition_t7hxt_a0a()) {
-      editorCell.addEditorCell(createCollection_1());
-    }
-    return editorCell;
-  }
-  private boolean nodeCondition_t7hxt_a0a() {
-    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.typeProjections$vhti)).isNotEmpty();
-  }
-  private EditorCell createCollection_1() {
-    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Indent());
-    editorCell.setCellId("Collection_t7hxt_a0");
     editorCell.addEditorCell(createConstant_0());
     editorCell.addEditorCell(createRefNodeList_0());
     editorCell.addEditorCell(createConstant_1());
@@ -74,7 +61,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "<");
-    editorCell.setCellId("Constant_t7hxt_a0a");
+    editorCell.setCellId("Constant_t7hxt_a0");
     Style style = new StyleImpl();
     new LDiamondStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
@@ -82,17 +69,17 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
-    AbstractCellListHandler handler = new typeProjectionsListHandler_t7hxt_b0a(myNode, getEditorContext());
+    AbstractCellListHandler handler = new typeProjectionsListHandler_t7hxt_b0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("PTAC_refNodeList_typeProjections");
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }
-  private static class typeProjectionsListHandler_t7hxt_b0a extends RefNodeListHandler {
+  private static class typeProjectionsListHandler_t7hxt_b0 extends RefNodeListHandler {
     @NotNull
     private SNode myNode;
 
-    public typeProjectionsListHandler_t7hxt_b0a(SNode ownerNode, EditorContext context) {
+    public typeProjectionsListHandler_t7hxt_b0(SNode ownerNode, EditorContext context) {
       super(context, false);
       myNode = ownerNode;
     }
@@ -115,7 +102,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     }
     public EditorCell createEmptyCell() {
       getCellFactory().pushCellContext();
-      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(typeProjectionsListHandler_t7hxt_b0a.this.getNode(), LINKS.typeProjections$vhti));
+      getCellFactory().setNodeLocation(new SNodeLocation.FromParentAndLink(typeProjectionsListHandler_t7hxt_b0.this.getNode(), LINKS.typeProjections$vhti));
       try {
         EditorCell emptyCell = null;
         emptyCell = super.createEmptyCell();
@@ -170,7 +157,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
   private EditorCell createConstant_1() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, ">");
-    editorCell.setCellId("Constant_t7hxt_c0a");
+    editorCell.setCellId("Constant_t7hxt_c0");
     Style style = new StyleImpl();
     new RDiamondStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);

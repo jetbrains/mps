@@ -27,9 +27,10 @@ public final class IKotlinRoot__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
 
   public static final SMethod<String> getPackageName_id4f4W8JpDCGu = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPackageName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4f4W8JpDCGu").build();
+  public static final SMethod<String> getFqName_id5M0hl5mCfjP = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5M0hl5mCfjP").build(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
   public static final SMethod<String> getFqName_idhEwIO9y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFqName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIO9y").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPackageName_id4f4W8JpDCGu, getFqName_idhEwIO9y);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPackageName_id4f4W8JpDCGu, getFqName_id5M0hl5mCfjP, getFqName_idhEwIO9y);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -41,13 +42,13 @@ public final class IKotlinRoot__BehaviorDescriptor extends BaseBHDescriptor {
 
     return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.header$Q2G5), PROPS.packageName$Mxdm);
   }
-  /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
+  /*package*/ static String getFqName_id5M0hl5mCfjP(@NotNull SNode __thisNode__, KtEnvironmentConfig config) {
     String packageName = IKotlinRoot__BehaviorDescriptor.getPackageName_id4f4W8JpDCGu.invoke(__thisNode__);
-    if ((packageName == null || packageName.length() == 0)) {
-      return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
-    }
-
-    return packageName + "." + SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) + "Kt";
+    String name = config.getName(__thisNode__);
+    return ((packageName == null || packageName.length() == 0) ? name : packageName + "." + name);
+  }
+  /*package*/ static String getFqName_idhEwIO9y(@NotNull SNode __thisNode__) {
+    return IKotlinRoot__BehaviorDescriptor.getFqName_id5M0hl5mCfjP.invoke(__thisNode__, KtEnvironmentConfig.Kotlin);
   }
 
   /*package*/ IKotlinRoot__BehaviorDescriptor() {
@@ -68,6 +69,8 @@ public final class IKotlinRoot__BehaviorDescriptor extends BaseBHDescriptor {
       case 0:
         return (T) ((String) getPackageName_id4f4W8JpDCGu(node));
       case 1:
+        return (T) ((String) getFqName_id5M0hl5mCfjP(node, (KtEnvironmentConfig) parameters[0]));
+      case 2:
         return (T) ((String) getFqName_idhEwIO9y(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -104,6 +107,5 @@ public final class IKotlinRoot__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class PROPS {
     /*package*/ static final SProperty packageName$Mxdm = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4b6L, 0x11400bb790e02802L, "packageName");
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

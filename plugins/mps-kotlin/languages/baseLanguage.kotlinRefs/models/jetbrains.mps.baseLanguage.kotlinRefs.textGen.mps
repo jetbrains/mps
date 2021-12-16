@@ -370,11 +370,11 @@
           <node concept="3cpWsn" id="1d2BQ0ZDtpy" role="3cpWs9">
             <property role="TrG5h" value="configuration" />
             <node concept="3uibUv" id="1d2BQ0ZBxpn" role="1tU5fm">
-              <ref role="3uigEE" to="hez:1d2BQ0ZzpqZ" resolve="NestedIdentifierConfiguration" />
+              <ref role="3uigEE" to="hez:1d2BQ0ZzpqZ" resolve="KtEnvironmentConfig" />
             </node>
             <node concept="10M0yZ" id="1d2BQ0ZDtpz" role="33vP2m">
               <ref role="3cqZAo" to="hez:1d2BQ0ZzqJQ" resolve="Jvm" />
-              <ref role="1PxDUh" to="hez:1d2BQ0ZzpqZ" resolve="NestedIdentifierConfiguration" />
+              <ref role="1PxDUh" to="hez:1d2BQ0ZzpqZ" resolve="KtEnvironmentConfig" />
             </node>
           </node>
         </node>
@@ -533,7 +533,7 @@
             <node concept="2OqwBi" id="ZgHBwZwKSu" role="33vP2m">
               <node concept="10M0yZ" id="ZgHBwZwKSv" role="2Oq$k0">
                 <ref role="3cqZAo" to="hez:1d2BQ0ZzqJQ" resolve="Jvm" />
-                <ref role="1PxDUh" to="hez:1d2BQ0ZzpqZ" resolve="NestedIdentifierConfiguration" />
+                <ref role="1PxDUh" to="hez:1d2BQ0ZzpqZ" resolve="KtEnvironmentConfig" />
               </node>
               <node concept="liA8E" id="ZgHBwZwKSw" role="2OqNvi">
                 <ref role="37wK5l" to="hez:1d2BQ0ZAnXq" resolve="getName" />

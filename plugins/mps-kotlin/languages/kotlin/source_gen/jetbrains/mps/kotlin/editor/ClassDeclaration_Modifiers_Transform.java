@@ -119,6 +119,10 @@ public class ClassDeclaration_Modifiers_Transform extends TransformationMenuBase
         return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.constructor$QvZc), LINKS.parameters$$EEQ)).isEmpty();
       }
 
+      @Override
+      public String getShortDescriptionText(@NotNull String pattern) {
+        return "specify class constructor";
+      }
 
 
       @Override

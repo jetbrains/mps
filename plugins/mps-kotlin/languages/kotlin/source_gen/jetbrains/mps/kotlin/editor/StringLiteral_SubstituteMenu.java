@@ -104,6 +104,7 @@ public class StringLiteral_SubstituteMenu extends SubstituteMenuBase {
       public SNode createNode(@NotNull String pattern) {
         SNode lit = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4fbL, "jetbrains.mps.kotlin.structure.StringLiteral"));
         SNode content = SNodeFactoryOperations.addNewChild(lit, LINKS.content$JVfe, CONCEPTS.StringLiteralRaw$ar);
+        // TODO escape pattern
         SPropertyOperations.assign(content, PROPS.content$3$6V, pattern);
         return lit;
       }

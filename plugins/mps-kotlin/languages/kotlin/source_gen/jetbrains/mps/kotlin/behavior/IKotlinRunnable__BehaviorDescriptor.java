@@ -15,26 +15,26 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class IKotlinRunnable__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x62ee4d0ee7516dbL, "jetbrains.mps.kotlin.structure.IKotlinRunnable");
 
   public static final SMethod<Boolean> isRunnable_idoITd3IthrB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRunnable").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("oITd3IthrB").build();
-  public static final SMethod<String> getDescription_idoITd3IuNFU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDescription").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("oITd3IuNFU").build(SMethodBuilder.createJavaParameter(String.class, ""));
-  public static final SMethod<String> getClassName_id7klTmOSHg_9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7klTmOSHg_9").build();
+  public static final SMethod<String> getDescription_idoITd3IuNFU = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDescription").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("oITd3IuNFU").build(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
+  public static final SMethod<String> getClassName_id7klTmOSHg_9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7klTmOSHg_9").build(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
+  public static final SMethod<Boolean> isNodeRunnable_id431DWIovi3C = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isNodeRunnable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("431DWIovi3C").build();
+  public static final SMethod<String> getUnitName_id4pl5GY7LKmR = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getUnitName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4pl5GY7LKmR").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRunnable_idoITd3IthrB, getDescription_idoITd3IuNFU, getClassName_id7klTmOSHg_9);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRunnable_idoITd3IthrB, getDescription_idoITd3IuNFU, getClassName_id7klTmOSHg_9, isNodeRunnable_id431DWIovi3C, getUnitName_id4pl5GY7LKmR);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static String getDescription_idoITd3IuNFU(@NotNull SNode __thisNode__, String env) {
+  /*package*/ static String getDescription_idoITd3IuNFU(@NotNull SNode __thisNode__, KtEnvironmentConfig envConfig) {
     StringBuilder str = new StringBuilder();
 
     // Capitalized concept alias
@@ -45,12 +45,20 @@ public final class IKotlinRunnable__BehaviorDescriptor extends BaseBHDescriptor 
     {
       final SNode named = __thisNode__;
       if (SNodeOperations.isInstanceOf(named, CONCEPTS.INamedConcept$Kd)) {
-        str.append(" ").append(SPropertyOperations.getString(named, PROPS.name$MnvL));
+        str.append(" ").append(envConfig.getName(named));
       }
     }
 
-    str.append(" (").append(env).append(")");
+    str.append(" (").append(envConfig.getEnvName()).append(")");
     return str.toString();
+  }
+  /*package*/ static boolean isNodeRunnable_id431DWIovi3C(@NotNull SNode __thisNode__) {
+    // To use in JVM configurations
+    return ((boolean) IKotlinRunnable__BehaviorDescriptor.isRunnable_idoITd3IthrB.invoke(__thisNode__));
+  }
+  /*package*/ static String getUnitName_id4pl5GY7LKmR(@NotNull SNode __thisNode__) {
+    // Name of the java class to run
+    return IKotlinRunnable__BehaviorDescriptor.getClassName_id7klTmOSHg_9.invoke(__thisNode__, KtEnvironmentConfig.Jvm);
   }
 
   /*package*/ IKotlinRunnable__BehaviorDescriptor() {
@@ -69,7 +77,11 @@ public final class IKotlinRunnable__BehaviorDescriptor extends BaseBHDescriptor 
     }
     switch (methodIndex) {
       case 1:
-        return (T) ((String) getDescription_idoITd3IuNFU(node, (String) parameters[0]));
+        return (T) ((String) getDescription_idoITd3IuNFU(node, (KtEnvironmentConfig) parameters[0]));
+      case 3:
+        return (T) ((Boolean) isNodeRunnable_id431DWIovi3C(node));
+      case 4:
+        return (T) ((String) getUnitName_id4pl5GY7LKmR(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -101,9 +113,5 @@ public final class IKotlinRunnable__BehaviorDescriptor extends BaseBHDescriptor 
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

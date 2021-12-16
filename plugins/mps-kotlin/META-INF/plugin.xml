@@ -2,7 +2,7 @@
 <idea-plugin xmlns:xi="http://www.w3.org/2001/XInclude">
   <id>jetbrains.mps.kotlin</id>
   <name>Kotlin MPS</name>
-  <description>Kotlin model descriptors and utilities to import stubs</description>
+  <description>Kotlin languages for MPS and interoperability with baseLanguage</description>
   <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
 
   <depends>jetbrains.mps.core</depends>

@@ -284,9 +284,11 @@
     <node concept="3EZMnI" id="3lDDPlnbuw4" role="2wV5jI">
       <node concept="3F0A7n" id="3lDDPlnbADC" role="3EZMnx">
         <ref role="1NtTu8" to="5m2i:3lDDPlnbuO8" resolve="visibleName" />
+        <ref role="1k5W1q" to="r5qz:54Gi6NCBcjr" resolve="Field" />
         <node concept="3yfXC2" id="3lDDPlnipQR" role="3F10Kt">
           <ref role="3ygfmf" to="5m2i:3lDDPlnaxtc" resolve="getter" />
         </node>
+        <node concept="VPxyj" id="6IFGHg6t_i5" role="3F10Kt" />
       </node>
       <node concept="l2Vlx" id="3lDDPlnbuw7" role="2iSdaV" />
     </node>
@@ -334,6 +336,7 @@
           <node concept="3F0A7n" id="4mvBIJf3N6C" role="2wV5jI">
             <property role="1Intyy" value="true" />
             <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+            <ref role="1k5W1q" to="r5qz:54Gi6NCBcjr" resolve="Field" />
           </node>
         </node>
       </node>
@@ -357,7 +360,7 @@
         <node concept="1sVBvm" id="1502VugH8yT" role="1sWHZn">
           <node concept="3F0A7n" id="213J8cgBM0K" role="2wV5jI">
             <property role="1Intyy" value="true" />
-            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+            <ref role="1NtTu8" to="tpee:hCjj90d" resolve="nestedName" />
           </node>
         </node>
         <node concept="OXEIz" id="6yQJbFyzER$" role="P5bDN">
@@ -368,6 +371,21 @@
       </node>
       <node concept="PMmxH" id="5GtPw5yMrD$" role="3EZMnx">
         <ref role="PMmxG" to="r5qz:5GtPw5yMnm7" resolve="ProjectedTypeArguments_Component" />
+        <node concept="pkWqt" id="5L2mPNETHeU" role="pqm2j">
+          <node concept="3clFbS" id="5L2mPNETHeV" role="2VODD2">
+            <node concept="3clFbF" id="5L2mPNETHjL" role="3cqZAp">
+              <node concept="2OqwBi" id="5L2mPNETJnL" role="3clFbG">
+                <node concept="2OqwBi" id="5L2mPNETH$y" role="2Oq$k0">
+                  <node concept="pncrf" id="5L2mPNETHjK" role="2Oq$k0" />
+                  <node concept="3Tsc0h" id="5L2mPNETI1d" role="2OqNvi">
+                    <ref role="3TtcxE" to="hcm8:5GtPw5yMnlW" resolve="typeProjections" />
+                  </node>
+                </node>
+                <node concept="3GX2aA" id="5L2mPNETMk$" role="2OqNvi" />
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="3F0ifn" id="5q426iHwzNb" role="3EZMnx">
         <property role="3F0ifm" value="?" />
@@ -413,6 +431,26 @@
         <ref role="PMmxG" to="r5qz:2gj5XQXEpCS" resolve="TypeArguments_Component" />
       </node>
       <node concept="VPM3Z" id="ZgHBwZxJmq" role="3F10Kt" />
+    </node>
+  </node>
+  <node concept="22mcaB" id="3xTUo84aCDf">
+    <property role="3GE5qa" value="types" />
+    <ref role="aqKnT" to="5m2i:6zWVWr21w3P" resolve="JavaClassType" />
+    <node concept="22hDWj" id="3xTUo84aCJI" role="22hAXT" />
+    <node concept="3XHNnq" id="3xTUo84aCR5" role="3ft7WO">
+      <ref role="3XGfJA" to="5m2i:6zWVWr21w5T" resolve="javaClass" />
+      <node concept="1WAQ3h" id="3xTUo84aD3n" role="1WZ6D9">
+        <node concept="3clFbS" id="3xTUo84aD3p" role="2VODD2">
+          <node concept="3clFbF" id="3xTUo84aDh2" role="3cqZAp">
+            <node concept="2OqwBi" id="3xTUo84aDAq" role="3clFbG">
+              <node concept="1WAUZh" id="3xTUo84aDh1" role="2Oq$k0" />
+              <node concept="3TrcHB" id="3xTUo84aEjQ" role="2OqNvi">
+                <ref role="3TsBF5" to="tpee:hCjj90d" resolve="nestedName" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
   </node>
 </model>

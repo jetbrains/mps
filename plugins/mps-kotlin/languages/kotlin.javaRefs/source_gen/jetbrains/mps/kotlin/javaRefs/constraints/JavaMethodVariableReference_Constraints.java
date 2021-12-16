@@ -72,8 +72,9 @@ public class JavaMethodVariableReference_Constraints extends BaseConstraintsDesc
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Tuples._2<Boolean, SNode> context = ScopeHelper.navigatableContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink());
+            Tuples._3<Boolean, SNode, Boolean> context = ScopeHelper.navigatableContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink());
 
+            // TODO static methods if context[2]
             if ((boolean) context._0()) {
               SNode receiverType = context._1();
               if (receiverType == null) {

@@ -15,6 +15,9 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import java.util.List;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import java.util.Collections;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.kotlin.stubs.common.KotlinId;
@@ -35,7 +38,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import kotlinx.metadata.impl.ReadContextExtension;
 import java.io.IOException;
-import java.util.Collections;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
@@ -68,6 +70,18 @@ public class KotlinCommonStubModelDescriptor extends LazyEditableSModelBase {
   @Override
   public Collection<SLanguage> importedLanguageIds() {
     return SetSequence.fromSetAndArray(new HashSet<SLanguage>(), MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin"));
+  }
+
+  @Override
+  public List<SModuleReference> importedDevkits() {
+    // Implementation of this method is necessary to prevent premature loading of interface (before language are registered to ConceptRegistry)
+    return Collections.emptyList();
+  }
+
+  @NotNull
+  @Override
+  public Collection<SLanguage> getLanguagesEngagedOnGeneration() {
+    return Collections.emptyList();
   }
 
   protected SNode createFile(IFile file) {

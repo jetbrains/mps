@@ -66,6 +66,9 @@
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
+      <concept id="2820489544401957797" name="jetbrains.mps.baseLanguage.structure.DefaultClassCreator" flags="nn" index="HV5vD">
+        <reference id="2820489544401957798" name="classifier" index="HV5vE" />
+      </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
       </concept>
@@ -1969,6 +1972,19 @@
             </node>
             <node concept="37vLTw" id="4L0QGs23MRo" role="37vLTx">
               <ref role="3cqZAo" node="4L0QGs22jxJ" resolve="repository" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="5L2mPNEyBUH" role="3cqZAp">
+          <node concept="37vLTI" id="5L2mPNEyDqR" role="3clFbG">
+            <node concept="2ShNRf" id="5L2mPNEyDI2" role="37vLTx">
+              <node concept="HV5vD" id="5L2mPNEyF$W" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="HV5vE" to="hez:27wMicCxyJQ" resolve="NodeTypeVarSubs" />
+              </node>
+            </node>
+            <node concept="338YkY" id="5L2mPNEyBUF" role="37vLTJ">
+              <ref role="338YkT" node="27wMicCITc8" resolve="substitutions" />
             </node>
           </node>
         </node>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-448uevj9li4cljsid6t2q9vx6w18qhm">
-  <files names="ConceptPresentationAspectImpl.java:EnumerationDescriptor_AssignmentOperator.java:EnumerationDescriptor_PostfixOperator.java:EnumerationDescriptor_VarianceModifier.java:IconContainer.java:LanguageConceptSwitch.java:StructureAspectDescriptor.java" />
+<product version="3" modelHash="cyvusbzmqoqj6rv5gsdiob4ctjy6t3a">
+  <files names="ConceptPresentationAspectImpl.java:EnumerationDescriptor_AssignmentOperator.java:EnumerationDescriptor_VarianceModifier.java:IconContainer.java:LanguageConceptSwitch.java:StructureAspectDescriptor.java" />
 </product>
 

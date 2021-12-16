@@ -10,7 +10,7 @@ import jetbrains.mps.kotlin.behavior.IKotlinRoot__BehaviorDescriptor;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.behavior.IIdentifier__BehaviorDescriptor;
-import jetbrains.mps.kotlin.behavior.NestedIdentifierConfiguration;
+import jetbrains.mps.kotlin.behavior.KtEnvironmentConfig;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -33,7 +33,7 @@ public class ImportContext {
     }
 
     // Otherwise, import the top most declaration
-    SNode root = SNodeOperations.as(IIdentifier__BehaviorDescriptor.getImportRoot_id1d2BQ0ZAmKw.invoke(ref, NestedIdentifierConfiguration.Kotlin), CONCEPTS.IIdentifier$wg);
+    SNode root = SNodeOperations.as(IIdentifier__BehaviorDescriptor.getImportRoot_id1d2BQ0ZAmKw.invoke(ref, KtEnvironmentConfig.Kotlin), CONCEPTS.IIdentifier$wg);
     if ((root != null)) {
       SetSequence.fromSet(importedRefs).addElement(root);
     }

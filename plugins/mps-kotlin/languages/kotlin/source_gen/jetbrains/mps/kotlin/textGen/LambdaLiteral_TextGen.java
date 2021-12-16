@@ -26,11 +26,17 @@ public class LambdaLiteral_TextGen extends TextGenDescriptorBase {
       tgs.append("->");
     }
 
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.statements$Kpvh)).count() > 1) {
+      tgs.newLine();
+    }
+
     ctx.getBuffer().area().increaseIndent();
     for (SNode statement : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.statements$Kpvh))) {
       tgs.indent();
       tgs.appendNode(statement);
-      tgs.newLine();
+      if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.statements$Kpvh)).count() > 1) {
+        tgs.newLine();
+      }
     }
     ctx.getBuffer().area().decreaseIndent();
 

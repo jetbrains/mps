@@ -20,14 +20,14 @@
     <file name="JavaMethodCall_Constraints.java">
       <node id="2420378304458731290" at="34,39,35,38" concept="10" />
       <node id="8257079261608484310" at="46,63,47,144" concept="5" />
-      <node id="3848791341541967725" at="50,80,51,166" concept="4" />
-      <node id="3848791341541977640" at="51,166,52,0" concept="7" />
+      <node id="3848791341541967725" at="50,80,51,175" concept="4" />
+      <node id="3848791341541977640" at="51,175,52,0" concept="7" />
       <node id="3848791341542060068" at="52,0,53,31" concept="6" />
       <node id="3848791341542021003" at="54,41,55,40" concept="4" />
       <node id="3848791341541979538" at="55,40,56,0" concept="7" />
       <node id="3960731847416029977" at="56,0,57,68" concept="6" />
-      <node id="3960731847416020533" at="57,68,58,116" concept="4" />
-      <node id="8614027108945531040" at="58,116,59,157" concept="4" />
+      <node id="3960731847416020533" at="57,68,58,140" concept="4" />
+      <node id="8614027108945531040" at="58,140,59,157" concept="4" />
       <node id="188861480736804054" at="59,157,60,0" concept="7" />
       <node id="3848791341542113634" at="60,0,61,64" concept="5" />
       <node id="6737238604821245875" at="62,13,63,0" concept="7" />
@@ -188,53 +188,54 @@
       <node id="3848791341541519661" at="58,119,59,75" concept="1" />
       <node id="3848791341541519374" at="59,75,60,22" concept="5" />
       <node id="3848791341541840539" at="70,63,71,144" concept="5" />
-      <node id="3848791341542138191" at="74,80,75,166" concept="4" />
-      <node id="3848791341542137490" at="75,166,76,0" concept="7" />
-      <node id="3848791341542164414" at="77,41,78,48" concept="4" />
-      <node id="8657391497894364143" at="79,41,80,40" concept="5" />
-      <node id="8657391497894352851" at="81,15,82,0" concept="7" />
-      <node id="3848791341541849988" at="82,0,83,67" concept="6" />
-      <node id="6234117012691359413" at="83,67,84,153" concept="4" />
-      <node id="8657391497894021092" at="84,153,85,0" concept="7" />
-      <node id="8657391497894029981" at="85,0,86,99" concept="1" />
-      <node id="8257079261609168234" at="86,99,87,0" concept="7" />
-      <node id="6234117012692353139" at="87,0,88,53" concept="6" />
-      <node id="8657391497894333518" at="90,60,91,211" concept="5" />
-      <node id="8657391497894333541" at="94,58,95,40" concept="5" />
-      <node id="8657391497894390210" at="97,17,98,0" concept="7" />
-      <node id="8257079261608593437" at="98,0,99,54" concept="5" />
-      <node id="3848791341541850037" at="100,13,101,0" concept="7" />
-      <node id="3848791341542244555" at="101,0,102,59" concept="6" />
-      <node id="3848791341542240607" at="102,59,103,36" concept="5" />
-      <node id="3848791341541519374" at="107,6,108,131" concept="4" />
-      <node id="3848791341541840539" at="108,131,109,42" concept="1" />
-      <node id="3848791341541519374" at="109,42,110,22" concept="5" />
-      <node id="3848791341541519374" at="114,0,115,0" concept="8" trace="JavaMethodVariableReference$l$" />
-      <node id="3848791341541519374" at="115,0,116,0" concept="8" trace="BaseMethodDeclaration$kD" />
-      <node id="3848791341541519374" at="119,0,120,0" concept="8" trace="visibleName$9XYg" />
-      <node id="3848791341541519374" at="123,0,124,0" concept="8" trace="getter$1vvk" />
+      <node id="3848791341542138191" at="74,80,75,175" concept="4" />
+      <node id="1394400792927244377" at="75,175,76,0" concept="7" />
+      <node id="1394400792927235305" at="76,0,77,48" concept="6" />
+      <node id="3848791341542164414" at="78,41,79,48" concept="4" />
+      <node id="8657391497894364143" at="80,41,81,40" concept="5" />
+      <node id="8657391497894352851" at="82,15,83,0" concept="7" />
+      <node id="3848791341541849988" at="83,0,84,67" concept="6" />
+      <node id="6234117012691359413" at="84,67,85,153" concept="4" />
+      <node id="8657391497894021092" at="85,153,86,0" concept="7" />
+      <node id="8657391497894029981" at="86,0,87,99" concept="1" />
+      <node id="8257079261609168234" at="87,99,88,0" concept="7" />
+      <node id="6234117012692353139" at="88,0,89,53" concept="6" />
+      <node id="8657391497894333518" at="91,60,92,211" concept="5" />
+      <node id="8657391497894333541" at="95,58,96,40" concept="5" />
+      <node id="8657391497894390210" at="98,17,99,0" concept="7" />
+      <node id="8257079261608593437" at="99,0,100,54" concept="5" />
+      <node id="3848791341541850037" at="101,13,102,0" concept="7" />
+      <node id="3848791341542244555" at="102,0,103,59" concept="6" />
+      <node id="3848791341542240607" at="103,59,104,36" concept="5" />
+      <node id="3848791341541519374" at="108,6,109,131" concept="4" />
+      <node id="3848791341541840539" at="109,131,110,42" concept="1" />
+      <node id="3848791341541519374" at="110,42,111,22" concept="5" />
+      <node id="3848791341541519374" at="115,0,116,0" concept="8" trace="JavaMethodVariableReference$l$" />
+      <node id="3848791341541519374" at="116,0,117,0" concept="8" trace="BaseMethodDeclaration$kD" />
+      <node id="3848791341541519374" at="120,0,121,0" concept="8" trace="visibleName$9XYg" />
+      <node id="3848791341541519374" at="124,0,125,0" concept="8" trace="getter$1vvk" />
       <node id="3848791341541519374" at="43,0,46,0" concept="0" trace="JavaMethodVariableReference_Constraints#()V" />
       <node id="3848791341541519661" at="48,0,51,0" concept="0" trace="VisibleName_Property#(Ljetbrains/mps/smodel/runtime/ConstraintsDescriptor;)V" />
-      <node id="8657391497894356182" at="78,48,81,15" concept="2" />
-      <node id="8657391497894333516" at="90,0,93,0" concept="3" trace="accept#(Ljetbrains/mps/kotlin/runtime/members/SourcedSignature;)Z" />
-      <node id="8657391497894333539" at="94,0,97,0" concept="3" trace="select#(Ljetbrains/mps/kotlin/runtime/members/SourcedSignature;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="8657391497894356182" at="79,48,82,15" concept="2" />
+      <node id="8657391497894333516" at="91,0,94,0" concept="3" trace="accept#(Ljetbrains/mps/kotlin/runtime/members/SourcedSignature;)Z" />
+      <node id="8657391497894333539" at="95,0,98,0" concept="3" trace="select#(Ljetbrains/mps/kotlin/runtime/members/SourcedSignature;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="3848791341541519661" at="51,0,55,0" concept="3" trace="getValue#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Object;" />
       <node id="3848791341541840539" at="69,0,73,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="3848791341541519374" at="56,0,62,0" concept="3" trace="getSpecifiedProperties#()Ljava/util/Map;" />
-      <node id="8657391497894333510" at="88,53,97,17" concept="4" />
-      <node id="3848791341542143995" at="76,0,100,13" concept="2" />
-      <node id="3848791341541840539" at="73,0,105,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
-      <node id="3848791341541840539" at="67,56,105,10" concept="5" />
-      <node id="3848791341541840539" at="65,0,107,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
-      <node id="3848791341541840539" at="63,90,107,6" concept="4" />
-      <node id="3848791341541519374" at="62,0,112,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <node id="8657391497894333510" at="89,53,98,17" concept="4" />
+      <node id="3848791341542143995" at="77,48,101,13" concept="2" />
+      <node id="3848791341541840539" at="73,0,106,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="3848791341541840539" at="67,56,106,10" concept="5" />
+      <node id="3848791341541840539" at="65,0,108,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="3848791341541840539" at="63,90,108,6" concept="4" />
+      <node id="3848791341541519374" at="62,0,113,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
       <scope id="3848791341541519374" at="43,52,44,51" />
       <scope id="3848791341541519661" at="48,66,49,67" />
       <scope id="3848791341541520134" at="52,40,53,99" />
       <scope id="3848791341541840539" at="70,63,71,144" />
-      <scope id="8657391497894356184" at="79,41,80,40" />
-      <scope id="8657391497894333517" at="90,60,91,211" />
-      <scope id="8657391497894333540" at="94,58,95,40" />
+      <scope id="8657391497894356184" at="80,41,81,40" />
+      <scope id="8657391497894333517" at="91,60,92,211" />
+      <scope id="8657391497894333540" at="95,58,96,40" />
       <scope id="3848791341541519374" at="43,0,46,0" />
       <scope id="3848791341541519661" at="48,0,51,0">
         <var name="container" id="3848791341541519661" />
@@ -242,10 +243,10 @@
       <scope id="3848791341541519374" at="57,84,60,22">
         <var name="properties" id="3848791341541519374" />
       </scope>
-      <scope id="8657391497894333516" at="90,0,93,0">
+      <scope id="8657391497894333516" at="91,0,94,0">
         <var name="it" id="8657391497894333516" />
       </scope>
-      <scope id="8657391497894333539" at="94,0,97,0">
+      <scope id="8657391497894333539" at="95,0,98,0">
         <var name="it" id="8657391497894333539" />
       </scope>
       <scope id="3848791341541519661" at="51,0,55,0">
@@ -253,47 +254,47 @@
       </scope>
       <scope id="3848791341541840539" at="69,0,73,0" />
       <scope id="3848791341541519374" at="56,0,62,0" />
-      <scope id="3848791341542143997" at="77,41,99,54">
+      <scope id="3848791341542143997" at="78,41,100,54">
         <var name="elements" id="8657391497894333511" />
         <var name="receiverType" id="3848791341542164415" />
         <var name="visitor" id="6234117012691359414" />
       </scope>
-      <scope id="3848791341541840539" at="74,80,103,36">
+      <scope id="3848791341541840539" at="74,80,104,36">
         <var name="context" id="3848791341542138194" />
       </scope>
-      <scope id="3848791341541840539" at="73,0,105,0">
+      <scope id="3848791341541840539" at="73,0,106,0">
         <var name="_context" id="3848791341541840539" />
       </scope>
-      <scope id="3848791341541840539" at="67,56,105,10" />
-      <scope id="3848791341541840539" at="65,0,107,0" />
-      <scope id="3848791341541519374" at="63,90,110,22">
+      <scope id="3848791341541840539" at="67,56,106,10" />
+      <scope id="3848791341541840539" at="65,0,108,0" />
+      <scope id="3848791341541519374" at="63,90,111,22">
         <var name="d0" id="3848791341541840539" />
         <var name="references" id="3848791341541519374" />
       </scope>
-      <scope id="3848791341541519374" at="62,0,112,0" />
-      <unit id="3848791341541519374" at="118,0,121,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$PROPS" />
-      <unit id="3848791341541519374" at="122,0,125,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$LINKS" />
-      <unit id="8657391497894333516" at="89,95,93,15" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$1$1$1" />
-      <unit id="8657391497894333539" at="93,28,97,15" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$1$1$2" />
-      <unit id="3848791341541519374" at="113,0,117,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$CONCEPTS" />
+      <scope id="3848791341541519374" at="62,0,113,0" />
+      <unit id="3848791341541519374" at="119,0,122,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$PROPS" />
+      <unit id="3848791341541519374" at="123,0,126,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$LINKS" />
+      <unit id="8657391497894333516" at="90,95,94,15" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$1$1$1" />
+      <unit id="8657391497894333539" at="94,28,98,15" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$1$1$2" />
+      <unit id="3848791341541519374" at="114,0,118,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$CONCEPTS" />
       <unit id="3848791341541519661" at="47,0,56,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$VisibleName_Property" />
-      <unit id="3848791341541840539" at="68,19,105,9" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$1$1" />
-      <unit id="3848791341541840539" at="64,48,107,5" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$1" />
-      <unit id="3848791341541519374" at="42,0,126,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints" />
+      <unit id="3848791341541840539" at="68,19,106,9" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$1$1" />
+      <unit id="3848791341541840539" at="64,48,108,5" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints$1" />
+      <unit id="3848791341541519374" at="42,0,127,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints" />
     </file>
   </root>
   <root nodeRef="r:a8be947e-2401-458d-a5e8-7789d9a23eaf(jetbrains.mps.kotlin.javaRefs.constraints)/5016903245542431925">
     <file name="JavaVariableReference_Constraints.java">
       <node id="5016903245542431925" at="29,46,30,45" concept="10" />
       <node id="5016903245542432682" at="41,63,42,144" concept="5" />
-      <node id="5016903245542439392" at="45,80,46,166" concept="4" />
-      <node id="5016903245542439401" at="46,166,47,0" concept="7" />
+      <node id="5016903245542439392" at="45,80,46,175" concept="4" />
+      <node id="5016903245542439401" at="46,175,47,0" concept="7" />
       <node id="5016903245542439402" at="47,0,48,31" concept="6" />
       <node id="5016903245542439409" at="49,41,50,40" concept="4" />
       <node id="5016903245542439415" at="50,40,51,0" concept="7" />
       <node id="5016903245542439416" at="51,0,52,68" concept="6" />
-      <node id="5016903245542439426" at="52,68,53,122" concept="4" />
-      <node id="5016903245542439433" at="53,122,54,157" concept="4" />
+      <node id="5016903245542439426" at="52,68,53,146" concept="4" />
+      <node id="5016903245542439433" at="53,146,54,157" concept="4" />
       <node id="5016903245542439446" at="54,157,55,0" concept="7" />
       <node id="5016903245542439447" at="55,0,56,64" concept="5" />
       <node id="5016903245542439458" at="57,13,58,0" concept="7" />

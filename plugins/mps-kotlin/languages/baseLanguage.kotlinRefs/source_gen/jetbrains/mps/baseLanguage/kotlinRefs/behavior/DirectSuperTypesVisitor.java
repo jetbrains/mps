@@ -67,6 +67,7 @@ public class DirectSuperTypesVisitor implements SuperTypesVisitor {
   protected DirectSuperTypesVisitor(SNode visitedType, SRepository repository) {
     myVisitedType = visitedType;
     myRepository = repository;
+    setSubstitutions(new NodeTypeVarSubs());
   }
 
   @Override
