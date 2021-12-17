@@ -57,7 +57,7 @@ public class JarClassPathItemTest {
     final RealClassPathItem j1 = RealClassPathItem.create(oj.getAbsolutePath() + "!/inner.jar", getClass().getName());
     Assert.assertNotNull(j1);
     Assert.assertTrue(j1 instanceof JarFileClassPathItem);
-    final URL r1 = j1.getResource("org/apache/log4j/xml/log4j.dtd"); // something that exists in the original (aka inner) jar
+    final URL r1 = j1.getResource("messages/UtilBundle.properties"); // something that exists in the original (aka inner) jar
     final URL r2 = j1.getResource("org/jetbrains/SomethingThatDoesnotExist.png");
     Assert.assertNotNull(r1);
     Assert.assertNull(r2);
