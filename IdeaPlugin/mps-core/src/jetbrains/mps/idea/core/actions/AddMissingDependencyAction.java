@@ -26,6 +26,7 @@ import com.intellij.openapi.roots.ModifiableRootModel;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.Pair;
+import com.intellij.util.modules.CircularModuleDependenciesDetector;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.project.SolutionIdea;
@@ -94,7 +95,8 @@ public class AddMissingDependencyAction extends BaseAction {
 
           ideaModulesToDependOn.add(ideaModuleToDependOn);
 
-          Pair<Module, Module> circularModules = ModuleCompilerUtil.addingDependencyFormsCircularity(ideaDependentModule, ideaModuleToDependOn);
+          Pair<Module, Module> circularModules = CircularModuleDependenciesDetector.addingDependencyFormsCircularity(
+              ideaDependentModule, ideaModuleToDependOn);
           if (circularModules != null) {
             circularDependentModulesSet.add(circularModules.getFirst());
             circularDependentModulesSet.add(circularModules.getSecond());
