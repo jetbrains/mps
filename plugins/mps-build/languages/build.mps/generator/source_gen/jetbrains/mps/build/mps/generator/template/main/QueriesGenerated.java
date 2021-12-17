@@ -1799,7 +1799,7 @@ public class QueriesGenerated extends QueryProviderBase {
     String artifact = "util";
     SNode jar = helper.getArtifact(artifact);
     if ((jar != null)) {
-      return helper.getLocation(jar);
+      return helper.getLocation(jar).replace("/util.jar", "");
     }
     if (!(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.macros$r8_A)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
@@ -2397,7 +2397,7 @@ public class QueriesGenerated extends QueryProviderBase {
     pvqMethods.put("7832771629085133853", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value"), "JetBrains"));
     pvqMethods.put("6592112598314985446", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x16838b3fce9aa513L, 0x16838b3fce9aaa68L, "value"), "jetbrains.mps.core"));
     pvqMethods.put("2436117033632111129", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "${mps_home}/lib/ant/lib/ant-mps.jar"));
-    pvqMethods.put("2436117033632111186", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "${mps_home}/lib/util.jar"));
+    pvqMethods.put("2436117033632111186", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "${mps_home}/lib"));
     pvqMethods.put("4297162197629738842", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "true"));
     pvqMethods.put("978600701690073082", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "plugins.path"));
     pvqMethods.put("5970181360960745172", new PVQ(i++, MetaAdapterFactory.getProperty(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54cfd1fL, 0x5c842a42c54cfd20L, "text"), "aaa"));

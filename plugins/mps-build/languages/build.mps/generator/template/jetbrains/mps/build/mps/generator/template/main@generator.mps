@@ -14615,12 +14615,31 @@
             </node>
           </node>
           <node concept="2pNNFK" id="5D0zVz80jZK" role="10O6PF">
-            <property role="qg3DV" value="true" />
-            <property role="2pNNFO" value="pathelement" />
+            <property role="2pNNFO" value="fileset" />
+            <node concept="2pNNFK" id="3sxJVsTgjNA" role="3o6s8t">
+              <property role="2pNNFO" value="include" />
+              <property role="qg3DV" value="true" />
+              <node concept="2pNUuL" id="3sxJVsTgjNB" role="2pNNFR">
+                <property role="2pNUuO" value="name" />
+                <node concept="2pMdtt" id="3sxJVsTgjNC" role="2pMdts">
+                  <property role="2pMdty" value="util.jar" />
+                </node>
+              </node>
+            </node>
+            <node concept="2pNNFK" id="3sxJVsTgjND" role="3o6s8t">
+              <property role="2pNNFO" value="include" />
+              <property role="qg3DV" value="true" />
+              <node concept="2pNUuL" id="3sxJVsTgjNE" role="2pNNFR">
+                <property role="2pNUuO" value="name" />
+                <node concept="2pMdtt" id="3sxJVsTgjNF" role="2pMdts">
+                  <property role="2pMdty" value="3rd-party-rt.jar" />
+                </node>
+              </node>
+            </node>
             <node concept="2pNUuL" id="5D0zVz80jZL" role="2pNNFR">
-              <property role="2pNUuO" value="location" />
+              <property role="2pNUuO" value="dir" />
               <node concept="2pMdtt" id="5D0zVz80jZM" role="2pMdts">
-                <property role="2pMdty" value="${mps_home}/lib/util.jar" />
+                <property role="2pMdty" value="${mps_home}/lib" />
                 <node concept="17Uvod" id="27eOSzOUTDi" role="lGtFl">
                   <property role="2qtEX9" value="text" />
                   <property role="P4ACc" value="479c7a8c-02f9-43b5-9139-d910cb22f298/6666499814681541919/6666499814681541920" />
@@ -14709,14 +14728,25 @@
                     <node concept="3clFbJ" id="2TqXzNeAABe" role="3cqZAp">
                       <node concept="3clFbS" id="2TqXzNeAABf" role="3clFbx">
                         <node concept="3cpWs6" id="2TqXzNeAABg" role="3cqZAp">
-                          <node concept="2OqwBi" id="7anWVWZAlnP" role="3cqZAk">
-                            <node concept="37vLTw" id="7anWVWZAl6D" role="2Oq$k0">
-                              <ref role="3cqZAo" node="2TqXzNeAAAV" resolve="helper" />
+                          <node concept="2OqwBi" id="3sxJVsTgkn_" role="3cqZAk">
+                            <node concept="2OqwBi" id="7anWVWZAlnP" role="2Oq$k0">
+                              <node concept="37vLTw" id="7anWVWZAl6D" role="2Oq$k0">
+                                <ref role="3cqZAo" node="2TqXzNeAAAV" resolve="helper" />
+                              </node>
+                              <node concept="liA8E" id="7anWVWZAl_N" role="2OqNvi">
+                                <ref role="37wK5l" to="o3n2:4g7NqzBtxkQ" resolve="getLocation" />
+                                <node concept="37vLTw" id="7anWVWZAlUF" role="37wK5m">
+                                  <ref role="3cqZAo" node="2TqXzNeAAB6" resolve="jar" />
+                                </node>
+                              </node>
                             </node>
-                            <node concept="liA8E" id="7anWVWZAl_N" role="2OqNvi">
-                              <ref role="37wK5l" to="o3n2:4g7NqzBtxkQ" resolve="getLocation" />
-                              <node concept="37vLTw" id="7anWVWZAlUF" role="37wK5m">
-                                <ref role="3cqZAo" node="2TqXzNeAAB6" resolve="jar" />
+                            <node concept="liA8E" id="3sxJVsTgknM" role="2OqNvi">
+                              <ref role="37wK5l" to="wyt6:~String.replace(java.lang.CharSequence,java.lang.CharSequence)" resolve="replace" />
+                              <node concept="Xl_RD" id="3sxJVsTgknN" role="37wK5m">
+                                <property role="Xl_RC" value="/util.jar" />
+                              </node>
+                              <node concept="Xl_RD" id="3sxJVsTgknO" role="37wK5m">
+                                <property role="Xl_RC" value="" />
                               </node>
                             </node>
                           </node>
