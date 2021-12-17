@@ -88,7 +88,7 @@
     <key>JVMOptions</key>
     <dict>
       <key>ClassPath</key>
-      <string>$APP_PACKAGE/Contents/lib/branding.jar:$APP_PACKAGE/Contents/lib/mps-boot.jar:$APP_PACKAGE/Contents/lib/mps-boot-util.jar:$APP_PACKAGE/Contents/lib/bootstrap.jar:$APP_PACKAGE/Contents/lib/extensions.jar:$APP_PACKAGE/Contents/lib/util.jar:$APP_PACKAGE/Contents/lib/jna.jar</string>
+      <string>$APP_PACKAGE/Contents/lib/branding.jar:$APP_PACKAGE/Contents/lib/mps-boot.jar:$APP_PACKAGE/Contents/lib/mps-boot-util.jar:$APP_PACKAGE/Contents/lib/bootstrap.jar:$APP_PACKAGE/Contents/lib/extensions.jar:$APP_PACKAGE/Contents/lib/util.jar:$APP_PACKAGE/Contents/lib/3rd-party-rt.jar:$APP_PACKAGE/Contents/lib/jna.jar</string>
       <key>JVMVersion</key>
       <string>11*</string>
       <key>MainClass</key>

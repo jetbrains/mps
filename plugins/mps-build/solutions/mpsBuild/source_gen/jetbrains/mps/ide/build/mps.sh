@@ -202,6 +202,7 @@ CLASSPATH="$CLASSPATH:$IDE_HOME/lib/mps-boot-util.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/bootstrap.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/extensions.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/util.jar"
+CLASSPATH="$CLASSPATH:$IDE_HOME/lib/3rd-party-rt.jar"
 CLASSPATH="$CLASSPATH:$IDE_HOME/lib/jna.jar"
 CLASSPATH="$CLASSPATH:$JDK/lib/tools.jar"
 # shellcheck disable=SC2154

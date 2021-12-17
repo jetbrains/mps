@@ -38427,6 +38427,9 @@
     <node concept="26EafG" id="BJYGrH08XA" role="26Ea7d">
       <property role="26EafJ" value="lib/util.jar" />
     </node>
+    <node concept="26EafG" id="1qnfmGRRAQy" role="26Ea7d">
+      <property role="26EafJ" value="lib/3rd-party-rt.jar" />
+    </node>
     <node concept="26EafG" id="BsOHnjrceI" role="26Ea7d">
       <property role="26EafJ" value="lib/jna.jar" />
     </node>
