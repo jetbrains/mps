@@ -47,7 +47,7 @@
   </dependency>
   <dependency className="jetbrains.mps.lang.quotation.pluginSolution.plugin.ShowMetaLevel_Action">
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
-    <classNode dependClassName="com.intellij.openapi.actionSystem.PlatformDataKeys" />
+    <classNode dependClassName="com.intellij.openapi.actionSystem.PlatformCoreDataKeys" />
     <classNode dependClassName="java.awt.Component" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />

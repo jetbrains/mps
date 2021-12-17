@@ -13,7 +13,7 @@ import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.PlatformCoreDataKeys;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 
 @GeneratedClass(node = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)/6743831156946309831", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
@@ -61,7 +61,7 @@ public class Escape_Action extends BaseAction {
       }
     }
     {
-      Boolean p = event.getData(PlatformDataKeys.IS_MODAL_CONTEXT);
+      Boolean p = event.getData(PlatformCoreDataKeys.IS_MODAL_CONTEXT);
       MapSequence.fromMap(_params).put("isModalContext", p);
       if (p == null) {
         return false;

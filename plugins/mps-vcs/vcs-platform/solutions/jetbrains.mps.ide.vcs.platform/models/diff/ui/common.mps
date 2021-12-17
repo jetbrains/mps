@@ -90,6 +90,8 @@
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="jmi8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.util(MPS.IDEA/)" />
     <import index="a3j8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.ex.util(MPS.IDEA/)" />
+    <import index="phib" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff.requests(MPS.IDEA/)" />
+    <import index="yt4f" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff(MPS.IDEA/)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
     <import index="8m69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.markup(MPS.IDEA/)" implicit="true" />
   </imports>
@@ -495,6 +497,13 @@
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
+      </concept>
+      <concept id="709746936026466394" name="jetbrains.mps.lang.core.structure.ChildAttribute" flags="ng" index="3VBwX9">
+        <property id="709746936026609031" name="linkId" index="3V$3ak" />
+        <property id="709746936026609029" name="role_DebugInfo" index="3V$3am" />
+      </concept>
+      <concept id="4452961908202556907" name="jetbrains.mps.lang.core.structure.BaseCommentAttribute" flags="ng" index="1X3_iC">
+        <child id="3078666699043039389" name="commentedNode" index="8Wnug" />
       </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
@@ -13396,7 +13405,7 @@
             <node concept="2OqwBi" id="3YbyueeVCPS" role="3clFbw">
               <node concept="10M0yZ" id="3YbyueeVCPR" role="2Oq$k0">
                 <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
-                <ref role="3cqZAo" to="qkt:~PlatformDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
+                <ref role="3cqZAo" to="qkt:~PlatformCoreDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
               </node>
               <node concept="liA8E" id="3WnQdVJvUhg" role="2OqNvi">
                 <ref role="37wK5l" to="qkt:~DataKey.is(java.lang.String)" resolve="is" />
@@ -23258,7 +23267,7 @@
     <node concept="312cEg" id="7$NO6fvW2BF" role="jymVt">
       <property role="TrG5h" value="myDiffRequest" />
       <node concept="3uibUv" id="7$NO6fvW2BH" role="1tU5fm">
-        <ref role="3uigEE" to="ok99:~DiffRequest" resolve="DiffRequest" />
+        <ref role="3uigEE" to="phib:~DiffRequest" resolve="DiffRequest" />
       </node>
       <node concept="3Tm6S6" id="7$NO6fvW2BG" role="1B3o_S" />
     </node>
@@ -23273,7 +23282,7 @@
       <property role="TrG5h" value="myDiffTool" />
       <node concept="3Tm6S6" id="7$NO6fvW2BM" role="1B3o_S" />
       <node concept="3uibUv" id="7$NO6fvW2BN" role="1tU5fm">
-        <ref role="3uigEE" to="ok99:~DiffTool" resolve="DiffTool" />
+        <ref role="3uigEE" to="yt4f:~DiffTool" resolve="DiffTool" />
       </node>
     </node>
     <node concept="3clFbW" id="7$NO6fvW2BQ" role="jymVt">
@@ -23356,13 +23365,13 @@
       <node concept="37vLTG" id="7$NO6fvW2Cm" role="3clF46">
         <property role="TrG5h" value="diffRequest" />
         <node concept="3uibUv" id="7$NO6fvW2Cn" role="1tU5fm">
-          <ref role="3uigEE" to="ok99:~DiffRequest" resolve="DiffRequest" />
+          <ref role="3uigEE" to="phib:~DiffRequest" resolve="DiffRequest" />
         </node>
       </node>
       <node concept="37vLTG" id="7$NO6fvW2Co" role="3clF46">
         <property role="TrG5h" value="diffTool" />
         <node concept="3uibUv" id="7$NO6fvW2Cp" role="1tU5fm">
-          <ref role="3uigEE" to="ok99:~DiffTool" resolve="DiffTool" />
+          <ref role="3uigEE" to="yt4f:~DiffTool" resolve="DiffTool" />
         </node>
       </node>
     </node>
@@ -23371,60 +23380,64 @@
       <property role="TrG5h" value="doExecute" />
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="7$NO6fvW2Cz" role="3clF47">
-        <node concept="3clFbJ" id="7$NO6fvW2C$" role="3cqZAp">
-          <node concept="3clFbS" id="7$NO6fvW2C_" role="3clFbx">
-            <node concept="3clFbF" id="7$NO6fvW2CA" role="3cqZAp">
-              <node concept="2OqwBi" id="7$NO6fvW2CB" role="3clFbG">
-                <node concept="37vLTw" id="2BHiRxeujQI" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7$NO6fvW2BI" resolve="myDialog" />
+        <node concept="1X3_iC" id="7e2lvFsl_e7" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="3clFbJ" id="7$NO6fvW2C$" role="8Wnug">
+            <node concept="3clFbS" id="7$NO6fvW2C_" role="3clFbx">
+              <node concept="3clFbF" id="7$NO6fvW2CA" role="3cqZAp">
+                <node concept="2OqwBi" id="7$NO6fvW2CB" role="3clFbG">
+                  <node concept="37vLTw" id="2BHiRxeujQI" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7$NO6fvW2BI" resolve="myDialog" />
+                  </node>
+                  <node concept="liA8E" id="7$NO6fvW2CD" role="2OqNvi">
+                    <ref role="37wK5l" to="jkm4:~DialogWrapper.close(int)" resolve="close" />
+                    <node concept="10M0yZ" id="7$NO6fvW2CZ" role="37wK5m">
+                      <ref role="3cqZAo" to="jkm4:~DialogWrapper.NEXT_USER_EXIT_CODE" resolve="NEXT_USER_EXIT_CODE" />
+                      <ref role="1PxDUh" to="jkm4:~DialogWrapper" resolve="DialogWrapper" />
+                    </node>
+                  </node>
                 </node>
-                <node concept="liA8E" id="7$NO6fvW2CD" role="2OqNvi">
-                  <ref role="37wK5l" to="jkm4:~DialogWrapper.close(int)" resolve="close" />
-                  <node concept="10M0yZ" id="7$NO6fvW2CZ" role="37wK5m">
-                    <ref role="3cqZAo" to="jkm4:~DialogWrapper.NEXT_USER_EXIT_CODE" resolve="NEXT_USER_EXIT_CODE" />
-                    <ref role="1PxDUh" to="jkm4:~DialogWrapper" resolve="DialogWrapper" />
+              </node>
+              <node concept="3clFbF" id="6Ygl$L$FRUB" role="3cqZAp">
+                <node concept="2OqwBi" id="6Ygl$L$GT$I" role="3clFbG">
+                  <node concept="2ShNRf" id="6Ygl$L$FRUz" role="2Oq$k0">
+                    <node concept="1pGfFk" id="6Ygl$L$GTti" role="2ShVmc">
+                      <ref role="37wK5l" to="tqbz:~SynchronizeAction.&lt;init&gt;()" resolve="SynchronizeAction" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="6Ygl$L$GTW5" role="2OqNvi">
+                    <ref role="37wK5l" to="tqbz:~SynchronizeAction.actionPerformed(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="actionPerformed" />
+                    <node concept="37vLTw" id="6Ygl$L$GTXC" role="37wK5m">
+                      <ref role="3cqZAo" node="7$NO6fvW2Ct" resolve="event" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="7$NO6fvW2CE" role="3cqZAp">
+                <node concept="2OqwBi" id="7$NO6fvW2CF" role="3clFbG">
+                  <node concept="37vLTw" id="2BHiRxeulyd" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7$NO6fvW2BL" resolve="myDiffTool" />
+                  </node>
+                  <node concept="liA8E" id="7$NO6fvW2CH" role="2OqNvi">
+                    <ref role="37wK5l" to="ok99:~DiffTool.show(com.intellij.openapi.diff.DiffRequest)" resolve="show" />
+                    <node concept="37vLTw" id="2BHiRxeun3M" role="37wK5m">
+                      <ref role="3cqZAo" node="7$NO6fvW2BF" resolve="myDiffRequest" />
+                    </node>
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="6Ygl$L$FRUB" role="3cqZAp">
-              <node concept="2OqwBi" id="6Ygl$L$GT$I" role="3clFbG">
-                <node concept="2ShNRf" id="6Ygl$L$FRUz" role="2Oq$k0">
-                  <node concept="1pGfFk" id="6Ygl$L$GTti" role="2ShVmc">
-                    <ref role="37wK5l" to="tqbz:~SynchronizeAction.&lt;init&gt;()" resolve="SynchronizeAction" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="6Ygl$L$GTW5" role="2OqNvi">
-                  <ref role="37wK5l" to="tqbz:~SynchronizeAction.actionPerformed(com.intellij.openapi.actionSystem.AnActionEvent)" resolve="actionPerformed" />
-                  <node concept="37vLTw" id="6Ygl$L$GTXC" role="37wK5m">
-                    <ref role="3cqZAo" node="7$NO6fvW2Ct" resolve="event" />
-                  </node>
+            <node concept="2OqwBi" id="7$NO6fvW2CJ" role="3clFbw">
+              <node concept="liA8E" id="7$NO6fvW2CL" role="2OqNvi">
+                <ref role="37wK5l" to="yt4f:~DiffTool.canShow(com.intellij.diff.DiffContext,com.intellij.diff.requests.DiffRequest)" resolve="canShow" />
+                <node concept="37vLTw" id="2BHiRxeuMvn" role="37wK5m">
+                  <ref role="3cqZAo" node="7$NO6fvW2BF" resolve="myDiffRequest" />
                 </node>
               </node>
-            </node>
-            <node concept="3clFbF" id="7$NO6fvW2CE" role="3cqZAp">
-              <node concept="2OqwBi" id="7$NO6fvW2CF" role="3clFbG">
-                <node concept="37vLTw" id="2BHiRxeulyd" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7$NO6fvW2BL" resolve="myDiffTool" />
-                </node>
-                <node concept="liA8E" id="7$NO6fvW2CH" role="2OqNvi">
-                  <ref role="37wK5l" to="ok99:~DiffTool.show(com.intellij.openapi.diff.DiffRequest)" resolve="show" />
-                  <node concept="37vLTw" id="2BHiRxeun3M" role="37wK5m">
-                    <ref role="3cqZAo" node="7$NO6fvW2BF" resolve="myDiffRequest" />
-                  </node>
-                </node>
+              <node concept="37vLTw" id="2BHiRxeukFQ" role="2Oq$k0">
+                <ref role="3cqZAo" node="7$NO6fvW2BL" resolve="myDiffTool" />
               </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="7$NO6fvW2CJ" role="3clFbw">
-            <node concept="liA8E" id="7$NO6fvW2CL" role="2OqNvi">
-              <ref role="37wK5l" to="ok99:~DiffTool.canShow(com.intellij.openapi.diff.DiffRequest)" resolve="canShow" />
-              <node concept="37vLTw" id="2BHiRxeuMvn" role="37wK5m">
-                <ref role="3cqZAo" node="7$NO6fvW2BF" resolve="myDiffRequest" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="2BHiRxeukFQ" role="2Oq$k0">
-              <ref role="3cqZAo" node="7$NO6fvW2BL" resolve="myDiffTool" />
             </node>
           </node>
         </node>

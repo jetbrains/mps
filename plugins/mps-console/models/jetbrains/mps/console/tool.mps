@@ -1557,15 +1557,15 @@
         </node>
         <node concept="3clFbF" id="758rrhN5fyP" role="3cqZAp">
           <node concept="37vLTI" id="758rrhN5fRP" role="3clFbG">
+            <node concept="37vLTw" id="758rrhN5fFu" role="37vLTJ">
+              <ref role="3cqZAo" node="758rrhN5ex$" resolve="myProject" />
+            </node>
             <node concept="2YIFZM" id="2lLB0zmTTVY" role="37vLTx">
               <ref role="37wK5l" to="alof:~ProjectHelper.fromIdeaProjectOrFail(com.intellij.openapi.project.Project)" resolve="fromIdeaProjectOrFail" />
               <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
               <node concept="37vLTw" id="2lLB0zmTVmq" role="37wK5m">
                 <ref role="3cqZAo" node="1iC2RjkXSrU" resolve="ideaProject" />
               </node>
-            </node>
-            <node concept="37vLTw" id="758rrhN5fFu" role="37vLTJ">
-              <ref role="3cqZAo" node="758rrhN5ex$" resolve="myProject" />
             </node>
           </node>
         </node>
@@ -4417,7 +4417,7 @@
           <node concept="2OqwBi" id="22CzinarXZi" role="3clFbw">
             <node concept="10M0yZ" id="22CzinarXuK" role="2Oq$k0">
               <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
-              <ref role="3cqZAo" to="qkt:~PlatformDataKeys.HELP_ID" resolve="HELP_ID" />
+              <ref role="3cqZAo" to="qkt:~PlatformCoreDataKeys.HELP_ID" resolve="HELP_ID" />
             </node>
             <node concept="liA8E" id="22CzinarYbj" role="2OqNvi">
               <ref role="37wK5l" to="qkt:~DataKey.is(java.lang.String)" resolve="is" />
@@ -4862,7 +4862,7 @@
                         <node concept="2OqwBi" id="6ysF3v1j_cT" role="3clFbw">
                           <node concept="10M0yZ" id="6ysF3v1j_cU" role="2Oq$k0">
                             <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
-                            <ref role="3cqZAo" to="qkt:~PlatformDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
+                            <ref role="3cqZAo" to="qkt:~PlatformCoreDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
                           </node>
                           <node concept="liA8E" id="6ysF3v1j_cV" role="2OqNvi">
                             <ref role="37wK5l" to="qkt:~DataKey.is(java.lang.String)" resolve="is" />

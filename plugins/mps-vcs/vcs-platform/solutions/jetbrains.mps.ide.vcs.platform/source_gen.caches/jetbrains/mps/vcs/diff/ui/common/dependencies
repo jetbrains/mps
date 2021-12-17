@@ -601,11 +601,10 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.diff.ui.common.InvokeTextDiffAction">
+    <classNode dependClassName="com.intellij.diff.DiffTool" />
+    <classNode dependClassName="com.intellij.diff.requests.DiffRequest" />
     <classNode dependClassName="com.intellij.icons.AllIcons" />
-    <classNode dependClassName="com.intellij.ide.actions.SynchronizeAction" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.AnActionEvent" />
-    <classNode dependClassName="com.intellij.openapi.diff.DiffRequest" />
-    <classNode dependClassName="com.intellij.openapi.diff.DiffTool" />
     <classNode dependClassName="com.intellij.openapi.ui.DialogWrapper" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />

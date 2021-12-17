@@ -34,7 +34,6 @@
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="xnls" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.icons(MPS.Platform/)" />
-    <import index="nf37" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.diff.impl.mergeTool(MPS.IDEA/)" />
     <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
     <import index="g1qu" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.ui(MPS.IDEA/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
@@ -7311,11 +7310,6 @@
                       <node concept="Xjq3P" id="4qk_0lIq2Qw" role="37wK5m" />
                       <node concept="37vLTw" id="4qk_0lIq2Qx" role="37wK5m">
                         <ref role="3cqZAo" node="2jv$fqwD$u3" resolve="request" />
-                      </node>
-                      <node concept="2ShNRf" id="4qk_0lIq2Qy" role="37wK5m">
-                        <node concept="1pGfFk" id="4qk_0lIq2Qz" role="2ShVmc">
-                          <ref role="37wK5l" to="nf37:~MergeTool.&lt;init&gt;()" resolve="MergeTool" />
-                        </node>
                       </node>
                     </node>
                   </node>

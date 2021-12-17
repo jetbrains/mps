@@ -10,7 +10,7 @@ import java.util.Map;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.fileEditor.FileEditor;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.PlatformCoreDataKeys;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.ide.structureView.StructureViewBuilder;
@@ -42,7 +42,7 @@ public class ShowStructure_Action extends BaseAction {
       }
     }
     {
-      FileEditor p = event.getData(PlatformDataKeys.FILE_EDITOR);
+      FileEditor p = event.getData(PlatformCoreDataKeys.FILE_EDITOR);
       if (p == null) {
         return false;
       }
@@ -57,13 +57,13 @@ public class ShowStructure_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final StructureViewBuilder structureViewBuilder = event.getData(PlatformDataKeys.FILE_EDITOR).getStructureViewBuilder();
+    final StructureViewBuilder structureViewBuilder = event.getData(PlatformCoreDataKeys.FILE_EDITOR).getStructureViewBuilder();
     if (structureViewBuilder == null) {
       return;
     }
 
-    StructureView structureView = structureViewBuilder.createStructureView(event.getData(PlatformDataKeys.FILE_EDITOR), event.getData(CommonDataKeys.PROJECT));
-    FileStructurePopup popup = new FileStructurePopup(event.getData(CommonDataKeys.PROJECT), event.getData(PlatformDataKeys.FILE_EDITOR), structureView, true);
+    StructureView structureView = structureViewBuilder.createStructureView(event.getData(PlatformCoreDataKeys.FILE_EDITOR), event.getData(CommonDataKeys.PROJECT));
+    FileStructurePopup popup = new FileStructurePopup(event.getData(CommonDataKeys.PROJECT), event.getData(PlatformCoreDataKeys.FILE_EDITOR), structureView, true);
     if (event.getData(CommonDataKeys.VIRTUAL_FILE) != null) {
       // todo: look like this action is unnecessary (it's just ctrl+f12 idea action by logic and implementation)
       popup.setTitle(event.getData(CommonDataKeys.VIRTUAL_FILE).getName());

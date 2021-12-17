@@ -5597,37 +5597,32 @@
   </root>
   <root nodeRef="r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/8733553229778921962">
     <file name="InvokeTextDiffAction.java">
-      <node id="4435250098740535444" at="19,0,20,0" concept="16" trace="TEXT_ICON" />
-      <node id="8733553229778921963" at="20,0,21,0" concept="7" trace="myDiffRequest" />
-      <node id="8733553229778921966" at="21,0,22,0" concept="7" trace="myDialog" />
-      <node id="8733553229778921969" at="22,0,23,0" concept="7" trace="myDiffTool" />
-      <node id="8733553229778921978" at="23,131,24,41" concept="18" />
-      <node id="8733553229778921982" at="24,41,25,22" concept="6" />
-      <node id="8733553229778921986" at="25,22,26,32" concept="6" />
-      <node id="8733553229778921990" at="26,32,27,26" concept="6" />
-      <node id="8733553229778921994" at="27,26,28,33" concept="6" />
-      <node id="8733553229778921997" at="28,33,29,35" concept="6" />
-      <node id="8733553229778922022" at="33,44,34,56" concept="6" />
-      <node id="8039020220963061415" at="34,56,35,53" concept="6" />
-      <node id="8733553229778922026" at="35,53,36,37" concept="6" />
-      <node id="8733553229778922020" at="32,74,37,5" concept="10" />
-      <node id="8733553229778921974" at="23,0,31,0" concept="3" trace="InvokeTextDiffAction#(Ljava/lang/String;Ljava/lang/String;Lcom/intellij/openapi/ui/DialogWrapper;Lcom/intellij/openapi/diff/DiffRequest;Lcom/intellij/openapi/diff/DiffTool;)V" />
-      <node id="8733553229778922010" at="31,0,39,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <scope id="8733553229778922021" at="33,44,36,37" />
-      <scope id="8733553229778922019" at="32,74,37,5" />
-      <scope id="8733553229778921977" at="23,131,29,35" />
-      <scope id="8733553229778921974" at="23,0,31,0">
+      <node id="4435250098740535444" at="18,0,19,0" concept="16" trace="TEXT_ICON" />
+      <node id="8733553229778921963" at="19,0,20,0" concept="7" trace="myDiffRequest" />
+      <node id="8733553229778921966" at="20,0,21,0" concept="7" trace="myDialog" />
+      <node id="8733553229778921969" at="21,0,22,0" concept="7" trace="myDiffTool" />
+      <node id="8733553229778921978" at="22,131,23,41" concept="18" />
+      <node id="8733553229778921982" at="23,41,24,22" concept="6" />
+      <node id="8733553229778921986" at="24,22,25,32" concept="6" />
+      <node id="8733553229778921990" at="25,32,26,26" concept="6" />
+      <node id="8733553229778921994" at="26,26,27,33" concept="6" />
+      <node id="8733553229778921997" at="27,33,28,35" concept="6" />
+      <node id="8733553229778922010" at="30,0,33,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="8733553229778921974" at="22,0,30,0" concept="3" trace="InvokeTextDiffAction#(Ljava/lang/String;Ljava/lang/String;Lcom/intellij/openapi/ui/DialogWrapper;Lcom/intellij/diff/requests/DiffRequest;Lcom/intellij/diff/DiffTool;)V" />
+      <scope id="8733553229778922019" at="31,74,31,74" />
+      <scope id="8733553229778922010" at="30,0,33,0">
+        <var name="event" id="8733553229778922013" />
+        <var name="map" id="8733553229778922015" />
+      </scope>
+      <scope id="8733553229778921977" at="22,131,28,35" />
+      <scope id="8733553229778921974" at="22,0,30,0">
         <var name="description" id="8733553229778922002" />
         <var name="dialog" id="8733553229778922004" />
         <var name="diffRequest" id="8733553229778922006" />
         <var name="diffTool" id="8733553229778922008" />
         <var name="title" id="8733553229778922000" />
       </scope>
-      <scope id="8733553229778922010" at="31,0,39,0">
-        <var name="event" id="8733553229778922013" />
-        <var name="map" id="8733553229778922015" />
-      </scope>
-      <unit id="8733553229778921962" at="17,0,40,0" name="jetbrains.mps.vcs.diff.ui.common.InvokeTextDiffAction" />
+      <unit id="8733553229778921962" at="16,0,34,0" name="jetbrains.mps.vcs.diff.ui.common.InvokeTextDiffAction" />
     </file>
   </root>
   <root nodeRef="r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/9170101780449072521">

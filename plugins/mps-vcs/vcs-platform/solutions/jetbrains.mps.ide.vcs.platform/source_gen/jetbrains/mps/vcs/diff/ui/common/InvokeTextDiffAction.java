@@ -12,7 +12,6 @@ import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.diff.DiffTool;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import com.intellij.ide.actions.SynchronizeAction;
 
 @GeneratedClass(node = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/8733553229778921962", model = "r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)")
 public class InvokeTextDiffAction extends BaseAction implements DumbAware {
@@ -30,10 +29,5 @@ public class InvokeTextDiffAction extends BaseAction implements DumbAware {
   }
   @Override
   protected void doExecute(AnActionEvent event, Map<String, Object> map) {
-    /*if (myDiffTool.canShow(myDiffRequest)) {
-      myDialog.close(DialogWrapper.NEXT_USER_EXIT_CODE);
-      new SynchronizeAction().actionPerformed(event);
-      myDiffTool.show(myDiffRequest);
-    }*/
   }
 }

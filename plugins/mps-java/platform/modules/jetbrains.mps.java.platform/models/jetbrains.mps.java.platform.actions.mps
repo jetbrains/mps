@@ -17428,7 +17428,7 @@
     </node>
     <node concept="1DS2jV" id="7hPfx88rrc3" role="1NuT2Z">
       <property role="TrG5h" value="fileEditor" />
-      <ref role="1DUlNI" to="qkt:~PlatformDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
+      <ref role="1DUlNI" to="qkt:~PlatformCoreDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
       <node concept="1oajcY" id="7hPfx88rrc4" role="1oa70y" />
     </node>
     <node concept="2ScWuX" id="beXdrGepwM" role="tmbBb">

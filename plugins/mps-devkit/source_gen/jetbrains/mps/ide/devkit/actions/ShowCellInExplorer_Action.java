@@ -9,6 +9,7 @@ import jetbrains.mps.icons.MPSIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.PlatformCoreDataKeys;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -36,7 +37,7 @@ public class ShowCellInExplorer_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return event.getData(PlatformDataKeys.TOOL_WINDOW) != null || (event.getData(PlatformDataKeys.FILE_EDITOR) != null && event.getData(MPSCommonDataKeys.NODE) != null);
+    return event.getData(PlatformDataKeys.TOOL_WINDOW) != null || (event.getData(PlatformCoreDataKeys.FILE_EDITOR) != null && event.getData(MPSCommonDataKeys.NODE) != null);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -57,7 +58,7 @@ public class ShowCellInExplorer_Action extends BaseAction {
       ToolWindow p = event.getData(PlatformDataKeys.TOOL_WINDOW);
     }
     {
-      FileEditor p = event.getData(PlatformDataKeys.FILE_EDITOR);
+      FileEditor p = event.getData(PlatformCoreDataKeys.FILE_EDITOR);
     }
     {
       SNode p = event.getData(MPSCommonDataKeys.NODE);
@@ -84,7 +85,7 @@ public class ShowCellInExplorer_Action extends BaseAction {
     tool.showCell(event.getData(MPSEditorDataKeys.EDITOR_CELL), runnable);
   }
   private Runnable getEditorActivator(final AnActionEvent event) {
-    final FileEditor fileEditor = event.getData(PlatformDataKeys.FILE_EDITOR);
+    final FileEditor fileEditor = event.getData(PlatformCoreDataKeys.FILE_EDITOR);
     final ToolWindow toolWindow = event.getData(PlatformDataKeys.TOOL_WINDOW);
     if (toolWindow != null) {
       return new Runnable() {

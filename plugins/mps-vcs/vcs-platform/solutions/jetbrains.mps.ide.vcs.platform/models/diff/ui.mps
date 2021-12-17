@@ -19271,7 +19271,7 @@
                   <node concept="2OqwBi" id="2cnBllvcvvC" role="3clFbw">
                     <node concept="10M0yZ" id="2cnBllvcvvB" role="2Oq$k0">
                       <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
-                      <ref role="3cqZAo" to="qkt:~PlatformDataKeys.HELP_ID" resolve="HELP_ID" />
+                      <ref role="3cqZAo" to="qkt:~PlatformCoreDataKeys.HELP_ID" resolve="HELP_ID" />
                     </node>
                     <node concept="liA8E" id="2cnBllvcvvD" role="2OqNvi">
                       <ref role="37wK5l" to="qkt:~DataKey.is(java.lang.String)" resolve="is" />

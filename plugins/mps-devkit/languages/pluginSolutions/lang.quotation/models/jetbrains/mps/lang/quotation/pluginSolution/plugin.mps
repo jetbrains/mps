@@ -147,7 +147,7 @@
     </node>
     <node concept="1DS2jV" id="4KDfkUwM8Vf" role="1NuT2Z">
       <property role="TrG5h" value="component" />
-      <ref role="1DUlNI" to="qkt:~PlatformDataKeys.CONTEXT_COMPONENT" resolve="CONTEXT_COMPONENT" />
+      <ref role="1DUlNI" to="qkt:~PlatformCoreDataKeys.CONTEXT_COMPONENT" resolve="CONTEXT_COMPONENT" />
       <node concept="1oajcY" id="4KDfkUwM8Vg" role="1oa70y" />
     </node>
     <node concept="tnohg" id="4KDfkUwM8Vh" role="tncku">

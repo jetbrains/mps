@@ -4726,7 +4726,7 @@
     </node>
     <node concept="1DS2jV" id="GRRiPWjgOg" role="1NuT2Z">
       <property role="TrG5h" value="fileEditor" />
-      <ref role="1DUlNI" to="qkt:~PlatformDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
+      <ref role="1DUlNI" to="qkt:~PlatformCoreDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
     </node>
     <node concept="1DS2jV" id="1E3vQRZsbBh" role="1NuT2Z">
       <property role="TrG5h" value="node" />
@@ -7336,7 +7336,7 @@
     </node>
     <node concept="1DS2jV" id="12Xh7JlccnN" role="1NuT2Z">
       <property role="TrG5h" value="fileEditor" />
-      <ref role="1DUlNI" to="qkt:~PlatformDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
+      <ref role="1DUlNI" to="qkt:~PlatformCoreDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
       <node concept="1oajcY" id="12Xh7JlccnO" role="1oa70y" />
     </node>
     <node concept="1DS2jV" id="12Xh7JlccnP" role="1NuT2Z">
@@ -9967,7 +9967,7 @@
     <property role="72QZ$" value="true" />
     <node concept="1DS2jV" id="3FLkBKnZE7M" role="1NuT2Z">
       <property role="TrG5h" value="selectedItem" />
-      <ref role="1DUlNI" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
+      <ref role="1DUlNI" to="qkt:~PlatformCoreDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
       <node concept="1oajcY" id="3FLkBKnZE7N" role="1oa70y" />
     </node>
     <node concept="1DS2jV" id="WbWijtNJMx" role="1NuT2Z">

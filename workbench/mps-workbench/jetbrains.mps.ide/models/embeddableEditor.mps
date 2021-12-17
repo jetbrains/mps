@@ -599,8 +599,8 @@
               <ref role="37wK5l" to="wyt6:~String.equals(java.lang.Object)" resolve="equals" />
               <node concept="2OqwBi" id="1xyr94TfM1t" role="37wK5m">
                 <node concept="10M0yZ" id="1xyr94TfM1u" role="2Oq$k0">
-                  <ref role="3cqZAo" to="qkt:~PlatformDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
                   <ref role="1PxDUh" to="3s15:~MPSDataKeys" resolve="MPSDataKeys" />
+                  <ref role="3cqZAo" to="qkt:~PlatformCoreDataKeys.FILE_EDITOR" resolve="FILE_EDITOR" />
                 </node>
                 <node concept="liA8E" id="1xyr94TfM1v" role="2OqNvi">
                   <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />

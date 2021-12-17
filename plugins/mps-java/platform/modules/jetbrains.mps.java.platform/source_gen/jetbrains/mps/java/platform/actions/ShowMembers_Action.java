@@ -16,7 +16,7 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.fileEditor.FileEditor;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.PlatformCoreDataKeys;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
@@ -76,7 +76,7 @@ public class ShowMembers_Action extends BaseAction {
       }
     }
     {
-      FileEditor p = event.getData(PlatformDataKeys.FILE_EDITOR);
+      FileEditor p = event.getData(PlatformCoreDataKeys.FILE_EDITOR);
       MapSequence.fromMap(_params).put("fileEditor", p);
       if (p == null) {
         return false;

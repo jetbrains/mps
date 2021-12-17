@@ -7,7 +7,7 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.actionSystem.PlatformCoreDataKeys;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuItem;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +32,7 @@ public class ShowEditorMenuItemTrace_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return event.getData(PlatformDataKeys.SELECTED_ITEM) != null && (event.getData(PlatformDataKeys.SELECTED_ITEM) instanceof TransformationMenuItem || event.getData(PlatformDataKeys.SELECTED_ITEM) instanceof SubstituteAction);
+    return event.getData(PlatformCoreDataKeys.SELECTED_ITEM) != null && (event.getData(PlatformCoreDataKeys.SELECTED_ITEM) instanceof TransformationMenuItem || event.getData(PlatformCoreDataKeys.SELECTED_ITEM) instanceof SubstituteAction);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -44,7 +44,7 @@ public class ShowEditorMenuItemTrace_Action extends BaseAction {
       return false;
     }
     {
-      Object p = event.getData(PlatformDataKeys.SELECTED_ITEM);
+      Object p = event.getData(PlatformCoreDataKeys.SELECTED_ITEM);
       if (p == null) {
         return false;
       }
@@ -61,10 +61,10 @@ public class ShowEditorMenuItemTrace_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     EditorMenuTraceTool tool = event.getData(CommonDataKeys.PROJECT).getComponent(EditorMenuTraceTool.class);
     EditorMenuTraceInfo editorMenuTraceInfo = null;
-    if (event.getData(PlatformDataKeys.SELECTED_ITEM) instanceof SubstituteAction) {
-      editorMenuTraceInfo = ((SubstituteAction) event.getData(PlatformDataKeys.SELECTED_ITEM)).getEditorMenuTraceInfo();
-    } else if (event.getData(PlatformDataKeys.SELECTED_ITEM) instanceof TransformationMenuItem) {
-      editorMenuTraceInfo = ((TransformationMenuItem) event.getData(PlatformDataKeys.SELECTED_ITEM)).getTraceInfo();
+    if (event.getData(PlatformCoreDataKeys.SELECTED_ITEM) instanceof SubstituteAction) {
+      editorMenuTraceInfo = ((SubstituteAction) event.getData(PlatformCoreDataKeys.SELECTED_ITEM)).getEditorMenuTraceInfo();
+    } else if (event.getData(PlatformCoreDataKeys.SELECTED_ITEM) instanceof TransformationMenuItem) {
+      editorMenuTraceInfo = ((TransformationMenuItem) event.getData(PlatformCoreDataKeys.SELECTED_ITEM)).getTraceInfo();
     }
     tool.showEditorMenuTraceInfo(editorMenuTraceInfo);
   }

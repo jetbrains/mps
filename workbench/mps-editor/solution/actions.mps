@@ -5557,7 +5557,7 @@
     </node>
     <node concept="1DS2jV" id="234vdksFUdb" role="1NuT2Z">
       <property role="TrG5h" value="isModalContext" />
-      <ref role="1DUlNI" to="qkt:~PlatformDataKeys.IS_MODAL_CONTEXT" resolve="IS_MODAL_CONTEXT" />
+      <ref role="1DUlNI" to="qkt:~PlatformCoreDataKeys.IS_MODAL_CONTEXT" resolve="IS_MODAL_CONTEXT" />
       <node concept="1oajcY" id="7HZe2EwZDkz" role="1oa70y" />
     </node>
     <node concept="2ScWuX" id="6hOpHnkyfoN" role="tmbBb">
@@ -17724,8 +17724,8 @@
                 <ref role="37wK5l" to="exr9:~EditorComponent.getData(java.lang.String)" resolve="getData" />
                 <node concept="2OqwBi" id="3zdPyHKAFQa" role="37wK5m">
                   <node concept="10M0yZ" id="3zdPyHKAtgr" role="2Oq$k0">
-                    <ref role="3cqZAo" to="qkt:~PlatformDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
                     <ref role="1PxDUh" to="qkt:~PlatformDataKeys" resolve="PlatformDataKeys" />
+                    <ref role="3cqZAo" to="qkt:~PlatformCoreDataKeys.SELECTED_ITEM" resolve="SELECTED_ITEM" />
                   </node>
                   <node concept="liA8E" id="3zdPyHKAGgI" role="2OqNvi">
                     <ref role="37wK5l" to="qkt:~DataKey.getName()" resolve="getName" />
