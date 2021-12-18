@@ -1600,6 +1600,39 @@
       <node concept="10Nm6u" id="1CFidgmvUht" role="33vP2m" />
     </node>
     <node concept="2tJIrI" id="1CFidgmvt9C" role="jymVt" />
+    <node concept="2YIFZL" id="3SnNvqCaJob" role="jymVt">
+      <property role="TrG5h" value="getInstance" />
+      <property role="DiZV1" value="false" />
+      <node concept="3Tm1VV" id="3SnNvqCaJoc" role="1B3o_S" />
+      <node concept="3uibUv" id="3SnNvqCaJod" role="3clF45">
+        <ref role="3uigEE" node="3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
+      </node>
+      <node concept="37vLTG" id="3SnNvqCaJoe" role="3clF46">
+        <property role="TrG5h" value="project" />
+        <property role="3TUv4t" value="false" />
+        <node concept="3uibUv" id="3oTAX9lRJHX" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+        </node>
+        <node concept="2AHcQZ" id="3SnNvqCaJog" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="3SnNvqCaJoh" role="3clF47">
+        <node concept="3cpWs6" id="3SnNvqCaJoi" role="3cqZAp">
+          <node concept="2OqwBi" id="3SnNvqCaJoj" role="3cqZAk">
+            <node concept="37vLTw" id="2BHiRxgmLKL" role="2Oq$k0">
+              <ref role="3cqZAo" node="3SnNvqCaJoe" resolve="project" />
+            </node>
+            <node concept="liA8E" id="3SnNvqCaJol" role="2OqNvi">
+              <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+              <node concept="3VsKOn" id="3SnNvqCaJom" role="37wK5m">
+                <ref role="3VsUkX" node="3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="3clFbW" id="3SnNvqCaJnV" role="jymVt">
       <node concept="3Tm1VV" id="3SnNvqCaJnW" role="1B3o_S" />
       <node concept="3cqZAl" id="3SnNvqCaJnX" role="3clF45" />
@@ -2268,39 +2301,6 @@
                     <ref role="3cqZAo" node="3SnNvqCaJnD" resolve="myCurrentDebugSessionListeners" />
                   </node>
                 </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2YIFZL" id="3SnNvqCaJob" role="jymVt">
-      <property role="TrG5h" value="getInstance" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCaJoc" role="1B3o_S" />
-      <node concept="3uibUv" id="3SnNvqCaJod" role="3clF45">
-        <ref role="3uigEE" node="3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
-      </node>
-      <node concept="37vLTG" id="3SnNvqCaJoe" role="3clF46">
-        <property role="TrG5h" value="project" />
-        <property role="3TUv4t" value="false" />
-        <node concept="3uibUv" id="3oTAX9lRJHX" role="1tU5fm">
-          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
-        </node>
-        <node concept="2AHcQZ" id="3SnNvqCaJog" role="2AJF6D">
-          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-        </node>
-      </node>
-      <node concept="3clFbS" id="3SnNvqCaJoh" role="3clF47">
-        <node concept="3cpWs6" id="3SnNvqCaJoi" role="3cqZAp">
-          <node concept="2OqwBi" id="3SnNvqCaJoj" role="3cqZAk">
-            <node concept="37vLTw" id="2BHiRxgmLKL" role="2Oq$k0">
-              <ref role="3cqZAo" node="3SnNvqCaJoe" resolve="project" />
-            </node>
-            <node concept="liA8E" id="3SnNvqCaJol" role="2OqNvi">
-              <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-              <node concept="3VsKOn" id="3SnNvqCaJom" role="37wK5m">
-                <ref role="3VsUkX" node="3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
               </node>
             </node>
           </node>

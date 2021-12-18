@@ -91,7 +91,7 @@ public class DebugSession extends AbstractDebugSession<JavaUiStateImpl> {
   }
   @Override
   public void sessionRegistered(DebugSessionManagerComponent manager) {
-    VMEventsProcessorManagerComponent vmManager = manager.getProject().getComponent(VMEventsProcessorManagerComponent.class);
+    VMEventsProcessorManagerComponent vmManager = VMEventsProcessorManagerComponent.getInstance(manager.getProject());
     vmManager.addDebugSession(this);
   }
   @Override

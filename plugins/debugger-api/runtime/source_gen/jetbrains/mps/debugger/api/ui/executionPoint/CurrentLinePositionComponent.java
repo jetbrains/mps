@@ -41,21 +41,21 @@ public class CurrentLinePositionComponent extends CurrentLinePositionComponentEx
   @Override
   public void initComponent() {
     super.init();
-    DebugSessionManagerComponent component = myProject.getComponent(DebugSessionManagerComponent.class);
+    DebugSessionManagerComponent component = DebugSessionManagerComponent.getInstance(myProject);
     component.addDebugSessionListener(myCurrentDebugSessionListener);
   }
   @Override
   public void disposeComponent() {
-    DebugSessionManagerComponent component = myProject.getComponent(DebugSessionManagerComponent.class);
+    DebugSessionManagerComponent component = DebugSessionManagerComponent.getInstance(myProject);
     component.removeDebugSessionListener(myCurrentDebugSessionListener);
     super.dispose();
   }
   @Override
   protected AbstractDebugSession getCurrentSession() {
-    return myProject.getComponent(DebugSessionManagerComponent.class).getDebugSessionByCurrentTab();
+    return DebugSessionManagerComponent.getInstance(myProject).getDebugSessionByCurrentTab();
   }
   protected Collection<? extends AbstractDebugSession> getAllSessions() {
-    return myProject.getComponent(DebugSessionManagerComponent.class).getDebugSessions();
+    return DebugSessionManagerComponent.getInstance(myProject).getDebugSessions();
   }
   @Override
   public SNodeReference getNode(AbstractDebugSession session) {

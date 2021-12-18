@@ -52,7 +52,7 @@ public class InTextPositionComponent implements ProjectComponent {
   }
   @Override
   public void initComponent() {
-    DebugSessionManagerComponent component = myProject.getComponent(DebugSessionManagerComponent.class);
+    DebugSessionManagerComponent component = DebugSessionManagerComponent.getInstance(myProject);
     component.addDebugSessionListener(myCurrentDebugSessionListener);
     myConnection = myProject.getMessageBus().connect();
     myConnection.subscribe(FileEditorManagerListener.FILE_EDITOR_MANAGER, new FileEditorManagerListener() {
@@ -69,7 +69,7 @@ public class InTextPositionComponent implements ProjectComponent {
   @Override
   public void disposeComponent() {
     myConnection.disconnect();
-    DebugSessionManagerComponent component = myProject.getComponent(DebugSessionManagerComponent.class);
+    DebugSessionManagerComponent component = DebugSessionManagerComponent.getInstance(myProject);
     component.removeDebugSessionListener(myCurrentDebugSessionListener);
   }
   @NonNls
@@ -79,7 +79,7 @@ public class InTextPositionComponent implements ProjectComponent {
     return "Text Position Component";
   }
   protected AbstractDebugSession getCurrentSession() {
-    return myProject.getComponent(DebugSessionManagerComponent.class).getDebugSessionByCurrentTab();
+    return DebugSessionManagerComponent.getInstance(myProject).getDebugSessionByCurrentTab();
   }
   public void currentSessionChanged(AbstractDebugSession session) {
     reAttachPainter(session);

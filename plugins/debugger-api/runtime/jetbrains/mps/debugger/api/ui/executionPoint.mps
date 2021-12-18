@@ -13,7 +13,6 @@
     <import index="8fo5" ref="r:7e184eff-8349-496f-875b-1e3646bb06f3(jetbrains.mps.debug.api.source)" />
     <import index="tprt" ref="r:00000000-0000-4000-0000-011c895904a5(jetbrains.mps.ide.common)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="z60i" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.awt(JDK/)" />
     <import index="8m69" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.markup(MPS.IDEA/)" />
     <import index="iwsx" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.fileEditor(MPS.IDEA/)" />
     <import index="tbgs" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.ex(MPS.IDEA/)" />
@@ -179,9 +178,6 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
-      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
-        <reference id="1116615189566" name="classifier" index="3VsUkX" />
-      </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
@@ -338,15 +334,11 @@
             <node concept="3uibUv" id="1ijklmZVTVM" role="1tU5fm">
               <ref role="3uigEE" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
             </node>
-            <node concept="2OqwBi" id="1ijklmZVTVN" role="33vP2m">
-              <node concept="37vLTw" id="2BHiRxeumuD" role="2Oq$k0">
+            <node concept="2YIFZM" id="2rqlzH6uIlj" role="33vP2m">
+              <ref role="1Pybhc" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
+              <ref role="37wK5l" to="1l1h:3SnNvqCaJob" resolve="getInstance" />
+              <node concept="37vLTw" id="2rqlzH6uIlk" role="37wK5m">
                 <ref role="3cqZAo" to="tzxy:~CurrentLinePositionComponentEx.myProject" resolve="myProject" />
-              </node>
-              <node concept="liA8E" id="1ijklmZVTVP" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="1ijklmZVTVQ" role="37wK5m">
-                  <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
-                </node>
               </node>
             </node>
           </node>
@@ -383,15 +375,11 @@
             <node concept="3uibUv" id="1ijklmZVTW3" role="1tU5fm">
               <ref role="3uigEE" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
             </node>
-            <node concept="2OqwBi" id="1ijklmZVTW4" role="33vP2m">
-              <node concept="37vLTw" id="2BHiRxeuL5R" role="2Oq$k0">
+            <node concept="2YIFZM" id="2rqlzH6uHBj" role="33vP2m">
+              <ref role="1Pybhc" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
+              <ref role="37wK5l" to="1l1h:3SnNvqCaJob" resolve="getInstance" />
+              <node concept="37vLTw" id="2rqlzH6uHBk" role="37wK5m">
                 <ref role="3cqZAo" to="tzxy:~CurrentLinePositionComponentEx.myProject" resolve="myProject" />
-              </node>
-              <node concept="liA8E" id="1ijklmZVTW6" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="1ijklmZVTW7" role="37wK5m">
-                  <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
-                </node>
               </node>
             </node>
           </node>
@@ -430,19 +418,15 @@
       <node concept="3clFbS" id="1ijklmZVTWj" role="3clF47">
         <node concept="3clFbF" id="1ijklmZVTWk" role="3cqZAp">
           <node concept="2OqwBi" id="1ijklmZVTWl" role="3clFbG">
-            <node concept="2OqwBi" id="1ijklmZVTWm" role="2Oq$k0">
-              <node concept="37vLTw" id="2BHiRxeuu3d" role="2Oq$k0">
-                <ref role="3cqZAo" to="tzxy:~CurrentLinePositionComponentEx.myProject" resolve="myProject" />
-              </node>
-              <node concept="liA8E" id="1ijklmZVTWo" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="1ijklmZVTWp" role="37wK5m">
-                  <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
-                </node>
-              </node>
-            </node>
             <node concept="liA8E" id="1ijklmZVTWq" role="2OqNvi">
               <ref role="37wK5l" to="1l1h:3SnNvqCaJoX" resolve="getDebugSessionByCurrentTab" />
+            </node>
+            <node concept="2YIFZM" id="2rqlzH6u56R" role="2Oq$k0">
+              <ref role="1Pybhc" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
+              <ref role="37wK5l" to="1l1h:3SnNvqCaJob" resolve="getInstance" />
+              <node concept="37vLTw" id="2rqlzH6uaSv" role="37wK5m">
+                <ref role="3cqZAo" to="tzxy:~CurrentLinePositionComponentEx.myProject" resolve="myProject" />
+              </node>
             </node>
           </node>
         </node>
@@ -467,19 +451,15 @@
       <node concept="3clFbS" id="2OK5FUlJckJ" role="3clF47">
         <node concept="3clFbF" id="2OK5FUlJeCM" role="3cqZAp">
           <node concept="2OqwBi" id="2OK5FUlJAAL" role="3clFbG">
-            <node concept="2OqwBi" id="2OK5FUlJf1O" role="2Oq$k0">
-              <node concept="37vLTw" id="2OK5FUlJf1P" role="2Oq$k0">
-                <ref role="3cqZAo" to="tzxy:~CurrentLinePositionComponentEx.myProject" resolve="myProject" />
-              </node>
-              <node concept="liA8E" id="2OK5FUlJf1Q" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="2OK5FUlJf1R" role="37wK5m">
-                  <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
-                </node>
-              </node>
-            </node>
             <node concept="liA8E" id="2OK5FUlJDXS" role="2OqNvi">
               <ref role="37wK5l" to="1l1h:3SnNvqCaJqI" resolve="getDebugSessions" />
+            </node>
+            <node concept="2YIFZM" id="2rqlzH6uGF7" role="2Oq$k0">
+              <ref role="1Pybhc" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
+              <ref role="37wK5l" to="1l1h:3SnNvqCaJob" resolve="getInstance" />
+              <node concept="37vLTw" id="2rqlzH6uGF8" role="37wK5m">
+                <ref role="3cqZAo" to="tzxy:~CurrentLinePositionComponentEx.myProject" resolve="myProject" />
+              </node>
             </node>
           </node>
         </node>
@@ -970,15 +950,11 @@
             <node concept="3uibUv" id="1ijklmZVTYX" role="1tU5fm">
               <ref role="3uigEE" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
             </node>
-            <node concept="2OqwBi" id="1ijklmZVTYY" role="33vP2m">
-              <node concept="37vLTw" id="2BHiRxeujnf" role="2Oq$k0">
+            <node concept="2YIFZM" id="2rqlzH6uPXO" role="33vP2m">
+              <ref role="37wK5l" to="1l1h:3SnNvqCaJob" resolve="getInstance" />
+              <ref role="1Pybhc" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
+              <node concept="37vLTw" id="2rqlzH6uPXP" role="37wK5m">
                 <ref role="3cqZAo" node="1ijklmZVTYt" resolve="myProject" />
-              </node>
-              <node concept="liA8E" id="1ijklmZVTZ0" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="1ijklmZVTZ1" role="37wK5m">
-                  <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
-                </node>
               </node>
             </node>
           </node>
@@ -1139,15 +1115,11 @@
             <node concept="3uibUv" id="1ijklmZVTZd" role="1tU5fm">
               <ref role="3uigEE" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
             </node>
-            <node concept="2OqwBi" id="1ijklmZVTZe" role="33vP2m">
-              <node concept="37vLTw" id="2BHiRxeuT$B" role="2Oq$k0">
+            <node concept="2YIFZM" id="2rqlzH6uOAE" role="33vP2m">
+              <ref role="37wK5l" to="1l1h:3SnNvqCaJob" resolve="getInstance" />
+              <ref role="1Pybhc" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
+              <node concept="37vLTw" id="2rqlzH6uOAF" role="37wK5m">
                 <ref role="3cqZAo" node="1ijklmZVTYt" resolve="myProject" />
-              </node>
-              <node concept="liA8E" id="1ijklmZVTZg" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="1ijklmZVTZh" role="37wK5m">
-                  <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
-                </node>
               </node>
             </node>
           </node>
@@ -1204,19 +1176,15 @@
       <node concept="3clFbS" id="1ijklmZVTZy" role="3clF47">
         <node concept="3clFbF" id="1ijklmZVTZz" role="3cqZAp">
           <node concept="2OqwBi" id="1ijklmZVTZ$" role="3clFbG">
-            <node concept="2OqwBi" id="1ijklmZVTZ_" role="2Oq$k0">
-              <node concept="37vLTw" id="2BHiRxeuNVI" role="2Oq$k0">
-                <ref role="3cqZAo" node="1ijklmZVTYt" resolve="myProject" />
-              </node>
-              <node concept="liA8E" id="1ijklmZVTZB" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="1ijklmZVTZC" role="37wK5m">
-                  <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
-                </node>
-              </node>
-            </node>
             <node concept="liA8E" id="1ijklmZVTZD" role="2OqNvi">
               <ref role="37wK5l" to="1l1h:3SnNvqCaJoX" resolve="getDebugSessionByCurrentTab" />
+            </node>
+            <node concept="2YIFZM" id="2rqlzH6uLpg" role="2Oq$k0">
+              <ref role="1Pybhc" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
+              <ref role="37wK5l" to="1l1h:3SnNvqCaJob" resolve="getInstance" />
+              <node concept="37vLTw" id="2rqlzH6uLph" role="37wK5m">
+                <ref role="3cqZAo" node="1ijklmZVTYt" resolve="myProject" />
+              </node>
             </node>
           </node>
         </node>

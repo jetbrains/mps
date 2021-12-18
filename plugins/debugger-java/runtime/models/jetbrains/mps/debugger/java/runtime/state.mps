@@ -23,7 +23,6 @@
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="5qx8" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi.event(JDK-tools/)" />
-    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
@@ -208,9 +207,6 @@
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
       <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
-      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
-        <reference id="1116615189566" name="classifier" index="3VsUkX" />
-      </concept>
       <concept id="1178893518978" name="jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" flags="nn" index="1VxSAg" />
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
@@ -904,19 +900,15 @@
             <node concept="3uibUv" id="3L_P6qKH8df" role="1tU5fm">
               <ref role="3uigEE" to="1nsa:7Lv9a5UcAjq" resolve="VMEventsProcessorManagerComponent" />
             </node>
-            <node concept="2OqwBi" id="3L_P6qKH8dg" role="33vP2m">
-              <node concept="2OqwBi" id="3L_P6qKH8dh" role="2Oq$k0">
+            <node concept="2YIFZM" id="2rqlzH6pW6R" role="33vP2m">
+              <ref role="1Pybhc" to="1nsa:7Lv9a5UcAjq" resolve="VMEventsProcessorManagerComponent" />
+              <ref role="37wK5l" to="1nsa:7Lv9a5UcAlk" resolve="getInstance" />
+              <node concept="2OqwBi" id="3L_P6qKH8dh" role="37wK5m">
                 <node concept="37vLTw" id="2BHiRxgkYZ7" role="2Oq$k0">
                   <ref role="3cqZAo" node="3L_P6qKH8da" resolve="manager" />
                 </node>
                 <node concept="liA8E" id="3L_P6qKH8dj" role="2OqNvi">
                   <ref role="37wK5l" to="1l1h:3SnNvqCaJon" resolve="getProject" />
-                </node>
-              </node>
-              <node concept="liA8E" id="3L_P6qKH8dk" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="3L_P6qKH8dl" role="37wK5m">
-                  <ref role="3VsUkX" to="1nsa:7Lv9a5UcAjq" resolve="VMEventsProcessorManagerComponent" />
                 </node>
               </node>
             </node>

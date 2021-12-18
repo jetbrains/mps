@@ -72,14 +72,14 @@ public class BreakpointsUiComponent extends BreakpointsUiComponentEx<IBreakpoint
   public void initComponent() {
     super.init();
     ApplicationManager.getApplication().executeOnPooledThread(() -> myBreakpointsManagerComponent.setBreakpointsIO(new MyBreakpointsIO()));
-    DebugSessionManagerComponent component = myProject.getComponent(DebugSessionManagerComponent.class);
+    DebugSessionManagerComponent component = DebugSessionManagerComponent.getInstance(myProject);
     component.addDebugSessionListener(myDebugSessionListener);
     myBreakpointsManagerComponent.addChangeListener(myBreakpointManagerListener);
   }
   @Override
   public void disposeComponent() {
     myBreakpointsManagerComponent.removeChangeListener(myBreakpointManagerListener);
-    DebugSessionManagerComponent component = myProject.getComponent(DebugSessionManagerComponent.class);
+    DebugSessionManagerComponent component = DebugSessionManagerComponent.getInstance(myProject);
     component.removeDebugSessionListener(myDebugSessionListener);
     super.dispose();
   }

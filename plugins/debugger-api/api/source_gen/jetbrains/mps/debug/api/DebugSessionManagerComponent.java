@@ -31,6 +31,9 @@ public class DebugSessionManagerComponent implements ProjectComponent {
 
   private MessageBusConnection myConnection = null;
 
+  public static DebugSessionManagerComponent getInstance(@NotNull Project project) {
+    return project.getComponent(DebugSessionManagerComponent.class);
+  }
   public DebugSessionManagerComponent(Project project) {
     myProject = project;
   }
@@ -131,9 +134,6 @@ public class DebugSessionManagerComponent implements ProjectComponent {
     synchronized (myCurrentDebugSessionListeners) {
       return new ArrayList<DebugSessionListener>(myCurrentDebugSessionListeners);
     }
-  }
-  public static DebugSessionManagerComponent getInstance(@NotNull Project project) {
-    return project.getComponent(DebugSessionManagerComponent.class);
   }
   public interface DebugSessionListener {
     void registered(AbstractDebugSession session);

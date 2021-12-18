@@ -28,9 +28,6 @@
     <!--api-->
     <!--runtime-->
     <component>
-      <implementation-class>jetbrains.mps.debugger.java.runtime.engine.VMEventsProcessorManagerComponent</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.debugger.java.runtime.breakpoints.BreakpointsIconCache</implementation-class>
     </component>
   </project-components>
@@ -44,6 +41,7 @@
     <mps.LanguageLibrary dir="/" hide="true"/>
     <mps.PluginComponentContributor application="jetbrains.mps.debugger.java.customViewers.plugin.plugin.Plugin_ApplicationPlugin" />
     <mps.PluginComponentContributor application="jetbrains.mps.debugger.java.runtime.ui.actions.Runtime_ApplicationPlugin" />
+    <projectService serviceImplementation="jetbrains.mps.debugger.java.runtime.engine.VMEventsProcessorManagerComponent"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">

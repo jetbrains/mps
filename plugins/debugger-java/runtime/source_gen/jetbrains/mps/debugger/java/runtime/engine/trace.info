@@ -860,188 +860,175 @@
   </root>
   <root nodeRef="r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)/8961922059449033946">
     <file name="VMEventsProcessorManagerComponent.java">
-      <node id="8961922059449034044" at="27,0,28,0" concept="4" trace="myEventProcessorToSessionMap" />
-      <node id="8961922059449034053" at="28,0,29,0" concept="4" trace="myListener" />
-      <node id="8961922059449034058" at="29,0,30,0" concept="4" trace="myAllProcessListeners" />
-      <node id="8961922059449034065" at="30,0,31,0" concept="4" trace="myDebugManager" />
-      <node id="8961922059449034085" at="31,84,32,31" concept="3" />
-      <node id="8961922059449034103" at="42,36,43,52" concept="10" />
-      <node id="8961922059449034135" at="54,75,55,39" concept="10" />
-      <node id="8961922059449034144" at="57,10,58,23" concept="10" />
-      <node id="8961922059449034154" at="62,49,63,135" concept="10" />
-      <node id="8961922059449034170" at="67,49,68,103" concept="9" />
-      <node id="8961922059449034177" at="68,103,69,54" concept="3" />
-      <node id="8961922059449034182" at="70,5,71,51" concept="3" />
-      <node id="8961922059449034200" at="74,65,75,55" concept="3" />
-      <node id="8961922059449034217" at="78,58,79,64" concept="9" />
-      <node id="8961922059449034226" at="80,49,81,83" concept="3" />
-      <node id="8961922059449034232" at="82,5,83,48" concept="3" />
-      <node id="8961922059449034246" at="86,42,87,42" concept="3" />
-      <node id="8961922059449034260" at="91,42,92,45" concept="3" />
-      <node id="8961922059449034273" at="96,42,97,72" concept="10" />
-      <node id="8961922059449034074" at="100,80,101,73" concept="10" />
-      <node id="8961922059449033965" at="108,70,109,36" concept="3" />
-      <node id="8961922059449033982" at="114,70,115,42" concept="3" />
-      <node id="8961922059449034001" at="120,70,121,56" concept="3" />
-      <node id="8961922059449034007" at="122,7,123,34" concept="3" />
-      <node id="8961922059449034022" at="127,70,128,41" concept="3" />
-      <node id="8961922059449034039" at="133,70,134,40" concept="3" />
-      <node id="8961922059449034129" at="139,36,140,37" concept="10" />
-      <node id="8961922059449034129" at="141,5,142,16" concept="10" />
-      <node id="8961922059449033952" at="104,0,106,0" concept="2" trace="MyDebugProcessesMulticaster#()V" />
-      <node id="8961922059449034079" at="31,0,34,0" concept="2" trace="VMEventsProcessorManagerComponent#(Ljetbrains/mps/debug/api/DebugSessionManagerComponent;)V" />
-      <node id="8961922059449034089" at="34,0,37,0" concept="8" trace="projectOpened#()V" />
-      <node id="8961922059449034094" at="37,0,40,0" concept="8" trace="projectClosed#()V" />
-      <node id="8961922059449034107" at="45,0,48,0" concept="8" trace="initComponent#()V" />
-      <node id="8961922059449034112" at="48,0,51,0" concept="8" trace="disposeComponent#()V" />
-      <node id="8961922059449034133" at="54,0,57,0" concept="8" trace="accept#(Ljetbrains/mps/internal/collections/runtime/IMapping;)Z" />
-      <node id="8961922059449034151" at="61,52,64,5" concept="16" />
-      <node id="8961922059449034195" at="73,112,76,5" concept="6" />
-      <node id="8961922059449034223" at="79,64,82,5" concept="16" />
-      <node id="8961922059449034243" at="85,68,88,5" concept="16" />
-      <node id="8961922059449034257" at="90,71,93,5" concept="16" />
-      <node id="8961922059449034270" at="95,62,98,5" concept="16" />
-      <node id="8961922059449034068" at="100,0,103,0" concept="14" trace="getInstance#(Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/debugger/java/runtime/engine/VMEventsProcessorManagerComponent;" />
-      <node id="8961922059449033960" at="107,36,110,7" concept="6" />
-      <node id="8961922059449033977" at="113,67,116,7" concept="6" />
-      <node id="8961922059449033996" at="119,89,122,7" concept="6" />
-      <node id="8961922059449034017" at="126,58,129,7" concept="6" />
-      <node id="8961922059449034034" at="132,57,135,7" concept="6" />
-      <node id="8961922059449034129" at="138,114,141,5" concept="7" />
-      <node id="8961922059449034167" at="66,60,70,5" concept="16" />
-      <node id="8961922059449034099" at="40,0,45,0" concept="8" trace="getComponentName#()Ljava/lang/String;" />
-      <node id="8961922059449034126" at="52,49,57,10" concept="9" />
-      <node id="8961922059449034146" at="61,0,66,0" concept="8" trace="getDebugProcesses#()Ljava/util/Set;" />
-      <node id="8961922059449034187" at="73,0,78,0" concept="8" trace="performAllDebugProcessesAction#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P1_E0;)V" />
-      <node id="8961922059449034237" at="85,0,90,0" concept="8" trace="addAllProcessListener#(Ljetbrains/mps/debugger/java/runtime/engine/DebugProcessListener;)V" />
-      <node id="8961922059449034251" at="90,0,95,0" concept="8" trace="removeAllProcessListener#(Ljetbrains/mps/debugger/java/runtime/engine/DebugProcessListener;)V" />
-      <node id="8961922059449034265" at="95,0,100,0" concept="8" trace="getAllProcessListeners#()Ljava/util/List;" />
-      <node id="8961922059449033956" at="106,0,112,0" concept="8" trace="connectorIsReady#()V" />
-      <node id="8961922059449033970" at="112,0,118,0" concept="8" trace="processAttached#(Ljetbrains/mps/debugger/java/runtime/engine/events/EventsProcessor;)V" />
-      <node id="8961922059449034010" at="125,0,131,0" concept="8" trace="resumed#(Ljetbrains/mps/debugger/java/runtime/engine/events/Context;)V" />
-      <node id="8961922059449034027" at="131,0,137,0" concept="8" trace="paused#(Ljetbrains/mps/debugger/java/runtime/engine/events/Context;)V" />
-      <node id="8961922059449034129" at="138,0,144,0" concept="14" trace="check_4p75cp_a0a0a0k#(Ljetbrains/mps/internal/collections/runtime/IMapping;)Ljetbrains/mps/debugger/java/runtime/engine/events/EventsProcessor;" />
-      <node id="8961922059449034161" at="66,0,73,0" concept="8" trace="removeDebugProcess#(Ljetbrains/mps/debugger/java/runtime/engine/events/EventsProcessor;)V" />
-      <node id="8961922059449034211" at="78,0,85,0" concept="8" trace="addDebugSession#(Ljetbrains/mps/debugger/java/runtime/state/DebugSession;)V" />
-      <node id="8961922059449033987" at="118,0,125,0" concept="8" trace="processDetached#(Ljetbrains/mps/debugger/java/runtime/engine/events/EventsProcessor;Z)V" />
-      <node id="8961922059449034123" at="51,73,59,5" concept="16" />
-      <node id="8961922059449034117" at="51,0,61,0" concept="8" trace="getEventsProcessor#(Ljetbrains/mps/debugger/java/runtime/state/DebugSession;)Ljetbrains/mps/debugger/java/runtime/engine/events/EventsProcessor;" />
-      <scope id="8961922059449034092" at="35,31,35,31" />
-      <scope id="8961922059449034097" at="38,31,38,31" />
-      <scope id="8961922059449034110" at="46,31,46,31" />
-      <scope id="8961922059449034115" at="49,34,49,34" />
-      <scope id="8961922059449033955" at="104,43,104,43" />
-      <scope id="8961922059449034084" at="31,84,32,31" />
-      <scope id="8961922059449034102" at="42,36,43,52" />
-      <scope id="8961922059449034134" at="54,75,55,39" />
-      <scope id="8961922059449034153" at="62,49,63,135" />
-      <scope id="8961922059449034199" at="74,65,75,55" />
-      <scope id="8961922059449034225" at="80,49,81,83" />
-      <scope id="8961922059449034245" at="86,42,87,42" />
-      <scope id="8961922059449034259" at="91,42,92,45" />
-      <scope id="8961922059449034272" at="96,42,97,72" />
-      <scope id="8961922059449034073" at="100,80,101,73" />
-      <scope id="8961922059449033964" at="108,70,109,36" />
-      <scope id="8961922059449033981" at="114,70,115,42" />
-      <scope id="8961922059449034000" at="120,70,121,56" />
-      <scope id="8961922059449034021" at="127,70,128,41" />
-      <scope id="8961922059449034038" at="133,70,134,40" />
-      <scope id="8961922059449034129" at="139,36,140,37" />
-      <scope id="8961922059449034169" at="67,49,69,54">
-        <var name="debugSession" id="8961922059449034171" />
-      </scope>
-      <scope id="8961922059449033952" at="104,0,106,0" />
-      <scope id="8961922059449034079" at="31,0,34,0">
-        <var name="component" id="8961922059449034082" />
-      </scope>
-      <scope id="8961922059449034089" at="34,0,37,0" />
-      <scope id="8961922059449034094" at="37,0,40,0" />
-      <scope id="8961922059449034107" at="45,0,48,0" />
-      <scope id="8961922059449034112" at="48,0,51,0" />
-      <scope id="8961922059449034133" at="54,0,57,0">
+      <node id="8961922059449034044" at="26,0,27,0" concept="4" trace="myEventProcessorToSessionMap" />
+      <node id="8961922059449034053" at="27,0,28,0" concept="4" trace="myListener" />
+      <node id="8961922059449034058" at="28,0,29,0" concept="4" trace="myAllProcessListeners" />
+      <node id="2799644930949061017" at="29,0,30,0" concept="4" trace="myProject" />
+      <node id="2799644930949061021" at="31,65,32,28" concept="3" />
+      <node id="2799644930948624062" at="32,28,33,45" concept="11" />
+      <node id="8961922059449034135" at="39,75,40,39" concept="10" />
+      <node id="8961922059449034144" at="42,10,43,23" concept="10" />
+      <node id="8961922059449034154" at="47,49,48,135" concept="10" />
+      <node id="8961922059449034170" at="52,49,53,103" concept="9" />
+      <node id="2799644930949008943" at="53,103,54,91" concept="11" />
+      <node id="2799644930949166997" at="54,91,55,89" concept="11" />
+      <node id="2799644930949031569" at="55,89,56,91" concept="3" />
+      <node id="8961922059449034182" at="57,5,58,51" concept="3" />
+      <node id="8961922059449034200" at="62,65,63,55" concept="3" />
+      <node id="8961922059449034217" at="67,58,68,64" concept="9" />
+      <node id="8961922059449034226" at="69,49,70,83" concept="3" />
+      <node id="8961922059449034232" at="71,5,72,48" concept="3" />
+      <node id="8961922059449034246" at="76,42,77,42" concept="3" />
+      <node id="8961922059449034260" at="82,42,83,45" concept="3" />
+      <node id="8961922059449034273" at="88,42,89,72" concept="10" />
+      <node id="8961922059449034074" at="93,80,94,71" concept="10" />
+      <node id="8961922059449033965" at="102,70,103,36" concept="3" />
+      <node id="8961922059449033982" at="108,70,109,42" concept="3" />
+      <node id="8961922059449034001" at="114,70,115,56" concept="3" />
+      <node id="8961922059449034007" at="116,7,117,34" concept="3" />
+      <node id="8961922059449034022" at="121,70,122,41" concept="3" />
+      <node id="8961922059449034039" at="127,70,128,40" concept="3" />
+      <node id="8961922059449034129" at="133,36,134,37" concept="10" />
+      <node id="8961922059449034129" at="135,5,136,16" concept="10" />
+      <node id="8961922059449033952" at="98,0,100,0" concept="2" trace="MyDebugProcessesMulticaster#()V" />
+      <node id="8961922059449034133" at="39,0,42,0" concept="8" trace="accept#(Ljetbrains/mps/internal/collections/runtime/IMapping;)Z" />
+      <node id="8961922059449034151" at="46,52,49,5" concept="16" />
+      <node id="8961922059449034195" at="61,112,64,5" concept="6" />
+      <node id="8961922059449034223" at="68,64,71,5" concept="16" />
+      <node id="8961922059449034243" at="75,68,78,5" concept="16" />
+      <node id="8961922059449034257" at="81,71,84,5" concept="16" />
+      <node id="8961922059449034270" at="87,62,90,5" concept="16" />
+      <node id="8961922059449034068" at="93,0,96,0" concept="14" trace="getInstance#(Lcom/intellij/openapi/project/Project;)Ljetbrains/mps/debugger/java/runtime/engine/VMEventsProcessorManagerComponent;" />
+      <node id="8961922059449033960" at="101,36,104,7" concept="6" />
+      <node id="8961922059449033977" at="107,67,110,7" concept="6" />
+      <node id="8961922059449033996" at="113,89,116,7" concept="6" />
+      <node id="8961922059449034017" at="120,58,123,7" concept="6" />
+      <node id="8961922059449034034" at="126,57,129,7" concept="6" />
+      <node id="8961922059449034129" at="132,114,135,5" concept="7" />
+      <node id="8961922059449034079" at="31,0,35,0" concept="2" trace="VMEventsProcessorManagerComponent#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="8961922059449034126" at="37,49,42,10" concept="9" />
+      <node id="8961922059449034146" at="46,0,51,0" concept="8" trace="getDebugProcesses#()Ljava/util/Set;" />
+      <node id="8961922059449034187" at="61,0,66,0" concept="8" trace="performAllDebugProcessesAction#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P1_E0;)V" />
+      <node id="8961922059449034237" at="75,0,80,0" concept="8" trace="addAllProcessListener#(Ljetbrains/mps/debugger/java/runtime/engine/DebugProcessListener;)V" />
+      <node id="8961922059449034251" at="81,0,86,0" concept="8" trace="removeAllProcessListener#(Ljetbrains/mps/debugger/java/runtime/engine/DebugProcessListener;)V" />
+      <node id="8961922059449034265" at="87,0,92,0" concept="8" trace="getAllProcessListeners#()Ljava/util/List;" />
+      <node id="8961922059449034167" at="51,60,57,5" concept="16" />
+      <node id="8961922059449033956" at="100,0,106,0" concept="8" trace="connectorIsReady#()V" />
+      <node id="8961922059449033970" at="106,0,112,0" concept="8" trace="processAttached#(Ljetbrains/mps/debugger/java/runtime/engine/events/EventsProcessor;)V" />
+      <node id="8961922059449034010" at="119,0,125,0" concept="8" trace="resumed#(Ljetbrains/mps/debugger/java/runtime/engine/events/Context;)V" />
+      <node id="8961922059449034027" at="125,0,131,0" concept="8" trace="paused#(Ljetbrains/mps/debugger/java/runtime/engine/events/Context;)V" />
+      <node id="8961922059449034129" at="132,0,138,0" concept="14" trace="check_4p75cp_a0a0a0h#(Ljetbrains/mps/internal/collections/runtime/IMapping;)Ljetbrains/mps/debugger/java/runtime/engine/events/EventsProcessor;" />
+      <node id="8961922059449034211" at="67,0,74,0" concept="8" trace="addDebugSession#(Ljetbrains/mps/debugger/java/runtime/state/DebugSession;)V" />
+      <node id="8961922059449033987" at="112,0,119,0" concept="8" trace="processDetached#(Ljetbrains/mps/debugger/java/runtime/engine/events/EventsProcessor;Z)V" />
+      <node id="8961922059449034123" at="36,73,44,5" concept="16" />
+      <node id="8961922059449034161" at="51,0,60,0" concept="8" trace="removeDebugProcess#(Ljetbrains/mps/debugger/java/runtime/engine/events/EventsProcessor;)V" />
+      <node id="8961922059449034117" at="36,0,46,0" concept="8" trace="getEventsProcessor#(Ljetbrains/mps/debugger/java/runtime/state/DebugSession;)Ljetbrains/mps/debugger/java/runtime/engine/events/EventsProcessor;" />
+      <scope id="8961922059449033955" at="98,43,98,43" />
+      <scope id="8961922059449034134" at="39,75,40,39" />
+      <scope id="8961922059449034153" at="47,49,48,135" />
+      <scope id="8961922059449034199" at="62,65,63,55" />
+      <scope id="8961922059449034225" at="69,49,70,83" />
+      <scope id="8961922059449034245" at="76,42,77,42" />
+      <scope id="8961922059449034259" at="82,42,83,45" />
+      <scope id="8961922059449034272" at="88,42,89,72" />
+      <scope id="8961922059449034073" at="93,80,94,71" />
+      <scope id="8961922059449033964" at="102,70,103,36" />
+      <scope id="8961922059449033981" at="108,70,109,42" />
+      <scope id="8961922059449034000" at="114,70,115,56" />
+      <scope id="8961922059449034021" at="121,70,122,41" />
+      <scope id="8961922059449034038" at="127,70,128,40" />
+      <scope id="8961922059449034129" at="133,36,134,37" />
+      <scope id="8961922059449034084" at="31,65,33,45" />
+      <scope id="8961922059449033952" at="98,0,100,0" />
+      <scope id="8961922059449034133" at="39,0,42,0">
         <var name="it" id="8961922059449034133" />
       </scope>
-      <scope id="8961922059449034150" at="61,52,64,5" />
-      <scope id="8961922059449034194" at="73,112,76,5" />
-      <scope id="8961922059449034195" at="73,112,76,5">
+      <scope id="8961922059449034150" at="46,52,49,5" />
+      <scope id="8961922059449034194" at="61,112,64,5" />
+      <scope id="8961922059449034195" at="61,112,64,5">
         <var name="processor" id="8961922059449034197" />
       </scope>
-      <scope id="8961922059449034242" at="85,68,88,5" />
-      <scope id="8961922059449034256" at="90,71,93,5" />
-      <scope id="8961922059449034269" at="95,62,98,5" />
-      <scope id="8961922059449034068" at="100,0,103,0">
+      <scope id="8961922059449034242" at="75,68,78,5" />
+      <scope id="8961922059449034256" at="81,71,84,5" />
+      <scope id="8961922059449034269" at="87,62,90,5" />
+      <scope id="8961922059449034068" at="93,0,96,0">
         <var name="project" id="8961922059449034071" />
       </scope>
-      <scope id="8961922059449033959" at="107,36,110,7" />
-      <scope id="8961922059449033960" at="107,36,110,7">
+      <scope id="8961922059449033959" at="101,36,104,7" />
+      <scope id="8961922059449033960" at="101,36,104,7">
         <var name="listener" id="8961922059449033962" />
       </scope>
-      <scope id="8961922059449033976" at="113,67,116,7" />
-      <scope id="8961922059449033977" at="113,67,116,7">
+      <scope id="8961922059449033976" at="107,67,110,7" />
+      <scope id="8961922059449033977" at="107,67,110,7">
         <var name="listener" id="8961922059449033979" />
       </scope>
-      <scope id="8961922059449033996" at="119,89,122,7">
+      <scope id="8961922059449033996" at="113,89,116,7">
         <var name="listener" id="8961922059449033998" />
       </scope>
-      <scope id="8961922059449034016" at="126,58,129,7" />
-      <scope id="8961922059449034017" at="126,58,129,7">
+      <scope id="8961922059449034016" at="120,58,123,7" />
+      <scope id="8961922059449034017" at="120,58,123,7">
         <var name="listener" id="8961922059449034019" />
       </scope>
-      <scope id="8961922059449034033" at="132,57,135,7" />
-      <scope id="8961922059449034034" at="132,57,135,7">
+      <scope id="8961922059449034033" at="126,57,129,7" />
+      <scope id="8961922059449034034" at="126,57,129,7">
         <var name="listener" id="8961922059449034036" />
       </scope>
-      <scope id="8961922059449033995" at="119,89,123,34" />
-      <scope id="8961922059449034129" at="138,114,142,16" />
-      <scope id="8961922059449034099" at="40,0,45,0" />
-      <scope id="8961922059449034146" at="61,0,66,0" />
-      <scope id="8961922059449034166" at="66,60,71,51" />
-      <scope id="8961922059449034187" at="73,0,78,0">
+      <scope id="8961922059449034079" at="31,0,35,0">
+        <var name="ideaProject" id="2799644930949058642" />
+      </scope>
+      <scope id="8961922059449034169" at="52,49,56,91">
+        <var name="debugSession" id="8961922059449034171" />
+      </scope>
+      <scope id="8961922059449033995" at="113,89,117,34" />
+      <scope id="8961922059449034129" at="132,114,136,16" />
+      <scope id="8961922059449034146" at="46,0,51,0" />
+      <scope id="8961922059449034187" at="61,0,66,0">
         <var name="action" id="8961922059449034190" />
       </scope>
-      <scope id="8961922059449034216" at="78,58,83,48">
+      <scope id="8961922059449034216" at="67,58,72,48">
         <var name="process" id="8961922059449034218" />
       </scope>
-      <scope id="8961922059449034237" at="85,0,90,0">
+      <scope id="8961922059449034237" at="75,0,80,0">
         <var name="listener" id="8961922059449034240" />
       </scope>
-      <scope id="8961922059449034251" at="90,0,95,0">
+      <scope id="8961922059449034251" at="81,0,86,0">
         <var name="listener" id="8961922059449034254" />
       </scope>
-      <scope id="8961922059449034265" at="95,0,100,0" />
-      <scope id="8961922059449034125" at="52,49,58,23">
+      <scope id="8961922059449034265" at="87,0,92,0" />
+      <scope id="8961922059449034125" at="37,49,43,23">
         <var name="processor" id="8961922059449034127" />
       </scope>
-      <scope id="8961922059449033956" at="106,0,112,0" />
-      <scope id="8961922059449033970" at="112,0,118,0">
+      <scope id="8961922059449033956" at="100,0,106,0" />
+      <scope id="8961922059449033970" at="106,0,112,0">
         <var name="process" id="8961922059449033973" />
       </scope>
-      <scope id="8961922059449034010" at="125,0,131,0">
+      <scope id="8961922059449034010" at="119,0,125,0">
         <var name="suspendContext" id="8961922059449034013" />
       </scope>
-      <scope id="8961922059449034027" at="131,0,137,0">
+      <scope id="8961922059449034027" at="125,0,131,0">
         <var name="suspendContext" id="8961922059449034030" />
       </scope>
-      <scope id="8961922059449034129" at="138,0,144,0">
+      <scope id="8961922059449034129" at="132,0,138,0">
         <var name="checkedDotOperand" id="8961922059449034129" />
       </scope>
-      <scope id="8961922059449034161" at="66,0,73,0">
-        <var name="process" id="8961922059449034164" />
-      </scope>
-      <scope id="8961922059449034211" at="78,0,85,0">
+      <scope id="8961922059449034166" at="51,60,58,51" />
+      <scope id="8961922059449034211" at="67,0,74,0">
         <var name="debugSession" id="8961922059449034214" />
       </scope>
-      <scope id="8961922059449033987" at="118,0,125,0">
+      <scope id="8961922059449033987" at="112,0,119,0">
         <var name="closedByUser" id="8961922059449033993" />
         <var name="process" id="8961922059449033990" />
       </scope>
-      <scope id="8961922059449034122" at="51,73,59,5" />
-      <scope id="8961922059449034117" at="51,0,61,0">
+      <scope id="8961922059449034122" at="36,73,44,5" />
+      <scope id="8961922059449034161" at="51,0,60,0">
+        <var name="process" id="8961922059449034164" />
+      </scope>
+      <scope id="8961922059449034117" at="36,0,46,0">
         <var name="session" id="8961922059449034120" />
       </scope>
-      <unit id="8961922059449034133" at="53,119,57,7" name="jetbrains.mps.debugger.java.runtime.engine.VMEventsProcessorManagerComponent$1" />
-      <unit id="8961922059449033949" at="103,0,138,0" name="jetbrains.mps.debugger.java.runtime.engine.VMEventsProcessorManagerComponent$MyDebugProcessesMulticaster" />
-      <unit id="8961922059449033946" at="25,0,145,0" name="jetbrains.mps.debugger.java.runtime.engine.VMEventsProcessorManagerComponent" />
+      <unit id="8961922059449034133" at="38,119,42,7" name="jetbrains.mps.debugger.java.runtime.engine.VMEventsProcessorManagerComponent$1" />
+      <unit id="8961922059449033949" at="97,0,132,0" name="jetbrains.mps.debugger.java.runtime.engine.VMEventsProcessorManagerComponent$MyDebugProcessesMulticaster" />
+      <unit id="8961922059449033946" at="24,0,139,0" name="jetbrains.mps.debugger.java.runtime.engine.VMEventsProcessorManagerComponent" />
     </file>
   </root>
   <root nodeRef="r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)/8961922059449034278">

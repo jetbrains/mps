@@ -8077,15 +8077,11 @@
             <node concept="3uibUv" id="3SnNvqCbyG4" role="1tU5fm">
               <ref role="3uigEE" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
             </node>
-            <node concept="2OqwBi" id="3SnNvqCbyG5" role="33vP2m">
-              <node concept="37vLTw" id="1SewtUOgFjH" role="2Oq$k0">
+            <node concept="2YIFZM" id="2rqlzH6u56R" role="33vP2m">
+              <ref role="1Pybhc" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
+              <ref role="37wK5l" to="1l1h:3SnNvqCaJob" resolve="getInstance" />
+              <node concept="37vLTw" id="2rqlzH6uaSv" role="37wK5m">
                 <ref role="3cqZAo" to="zobu:~BreakpointsUiComponentEx.myProject" resolve="myProject" />
-              </node>
-              <node concept="liA8E" id="3SnNvqCbyG7" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="3SnNvqCbyG8" role="37wK5m">
-                  <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
-                </node>
               </node>
             </node>
           </node>
@@ -8148,15 +8144,11 @@
             <node concept="3uibUv" id="3SnNvqCbyGV" role="1tU5fm">
               <ref role="3uigEE" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
             </node>
-            <node concept="2OqwBi" id="3SnNvqCbyGW" role="33vP2m">
-              <node concept="37vLTw" id="1SewtUOgFQY" role="2Oq$k0">
+            <node concept="2YIFZM" id="2rqlzH6usBY" role="33vP2m">
+              <ref role="1Pybhc" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
+              <ref role="37wK5l" to="1l1h:3SnNvqCaJob" resolve="getInstance" />
+              <node concept="37vLTw" id="2rqlzH6usBZ" role="37wK5m">
                 <ref role="3cqZAo" to="zobu:~BreakpointsUiComponentEx.myProject" resolve="myProject" />
-              </node>
-              <node concept="liA8E" id="3SnNvqCbyGY" role="2OqNvi">
-                <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="3SnNvqCbyGZ" role="37wK5m">
-                  <ref role="3VsUkX" to="1l1h:3SnNvqCaJmA" resolve="DebugSessionManagerComponent" />
-                </node>
               </node>
             </node>
           </node>
