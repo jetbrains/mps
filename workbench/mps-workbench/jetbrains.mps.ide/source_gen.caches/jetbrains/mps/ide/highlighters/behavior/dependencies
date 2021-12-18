@@ -71,14 +71,12 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
   </dependency>
   <dependency className="jetbrains.mps.ide.highlighters.behavior.ConceptInheritanceHighlighter">
-    <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.highlighters.behavior.OverrideConceptMethodsChecker" />
     <classNode dependClassName="jetbrains.mps.ide.highlighters.structure.OverrideConceptsChecker" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.Highlighter" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode extendsClassName="com.intellij.openapi.components.ProjectComponent" />
   </dependency>
   <dependency className="jetbrains.mps.ide.highlighters.behavior.DescendantsMethodsLookup">
     <classNode dependClassName="java.lang.Boolean" />

@@ -10,7 +10,6 @@
     <use id="64d34fcd-ad02-4e73-aff8-a581124c2e30" name="jetbrains.mps.lang.findUsages" version="-1" />
   </languages>
   <imports>
-    <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
@@ -104,7 +103,6 @@
       </concept>
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
-        <child id="1095933932569" name="implementedInterface" index="EKbjA" />
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
       <concept id="1068431474542" name="jetbrains.mps.baseLanguage.structure.VariableDeclaration" flags="ng" index="33uBYm">
@@ -206,9 +204,6 @@
       </concept>
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
-      <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
-        <reference id="1116615189566" name="classifier" index="3VsUkX" />
-      </concept>
       <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
       <concept id="1170345865475" name="jetbrains.mps.baseLanguage.structure.AnonymousClass" flags="ig" index="1Y3b0j">
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
@@ -431,16 +426,12 @@
         <ref role="3uigEE" to="exr9:~Highlighter" resolve="Highlighter" />
       </node>
       <node concept="3clFbS" id="1dN09JzTCKk" role="3clF47">
-        <node concept="3clFbF" id="1dN09JzTCKl" role="3cqZAp">
-          <node concept="2OqwBi" id="1dN09JzTCKm" role="3clFbG">
-            <node concept="37vLTw" id="1dN09JzTCKn" role="2Oq$k0">
+        <node concept="3clFbF" id="3Q8_1zORdBt" role="3cqZAp">
+          <node concept="2YIFZM" id="3Q8_1zORe8X" role="3clFbG">
+            <ref role="37wK5l" to="exr9:~Highlighter.getInstance(jetbrains.mps.project.MPSProject)" resolve="getInstance" />
+            <ref role="1Pybhc" to="exr9:~Highlighter" resolve="Highlighter" />
+            <node concept="37vLTw" id="3Q8_1zOReCi" role="37wK5m">
               <ref role="3cqZAo" node="1dN09JzT_Ra" resolve="myProject" />
-            </node>
-            <node concept="liA8E" id="1dN09JzTCKo" role="2OqNvi">
-              <ref role="37wK5l" to="z1c3:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
-              <node concept="3VsKOn" id="1dN09JzTCKp" role="37wK5m">
-                <ref role="3VsUkX" to="exr9:~Highlighter" resolve="Highlighter" />
-              </node>
             </node>
           </node>
         </node>
@@ -449,7 +440,7 @@
     <node concept="2tJIrI" id="1dN09JzT_vQ" role="jymVt" />
     <node concept="3clFb_" id="1dN09JzT$C1" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="initComponent" />
+      <property role="TrG5h" value="init" />
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <node concept="3Tm1VV" id="1dN09JzT$C2" role="1B3o_S" />
@@ -482,14 +473,11 @@
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="1dN09JzT$C7" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
     </node>
     <node concept="2tJIrI" id="1dN09JzTAtc" role="jymVt" />
     <node concept="3clFb_" id="1dN09JzT$C8" role="jymVt">
       <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="disposeComponent" />
+      <property role="TrG5h" value="dispose" />
       <property role="DiZV1" value="false" />
       <property role="od$2w" value="false" />
       <node concept="3Tm1VV" id="1dN09JzT$C9" role="1B3o_S" />
@@ -522,14 +510,8 @@
           </node>
         </node>
       </node>
-      <node concept="2AHcQZ" id="1dN09JzT$Ce" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
     </node>
     <node concept="3Tm1VV" id="1dN09JzTrVJ" role="1B3o_S" />
-    <node concept="3uibUv" id="1dN09JzTxrW" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ProjectComponent" resolve="ProjectComponent" />
-    </node>
     <node concept="3UR2Jj" id="1dN09JzT_ob" role="lGtFl">
       <node concept="TZ5HA" id="1dN09JzT_oc" role="TZ5H$">
         <node concept="1dT_AC" id="1dN09JzT_od" role="1dT_Ay">

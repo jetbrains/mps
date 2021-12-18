@@ -15,11 +15,11 @@ public class HighligterHook_ProjectPluginPart extends ProjectPluginPart {
   @Override
   public void init(MPSProject project) {
     HighligterHook_ProjectPluginPart.this.highlighter = new ConceptInheritanceHighlighter(project);
-    HighligterHook_ProjectPluginPart.this.highlighter.initComponent();
+    HighligterHook_ProjectPluginPart.this.highlighter.init();
   }
   @Override
   public void dispose(MPSProject project) {
-    HighligterHook_ProjectPluginPart.this.highlighter.disposeComponent();
+    HighligterHook_ProjectPluginPart.this.highlighter.dispose();
     HighligterHook_ProjectPluginPart.this.highlighter = null;
   }
 }

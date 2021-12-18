@@ -17,32 +17,32 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root nodeRef="r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)/1401464578585771758">
     <file name="ConceptInheritanceHighlighter.java">
-      <node id="1401464578585812426" at="17,0,18,0" concept="4" trace="myProject" />
-      <node id="1401464578586801092" at="19,0,20,0" concept="4" trace="myBehaviorChecker" />
-      <node id="2707675432438002327" at="20,0,21,0" concept="4" trace="myStructureChecker" />
-      <node id="1401464578585812970" at="22,69,23,24" concept="3" />
-      <node id="1401464578586802629" at="23,24,24,67" concept="3" />
-      <node id="2707675432438017034" at="24,67,25,62" concept="3" />
-      <node id="1401464578585824277" at="28,40,29,53" concept="9" />
-      <node id="1401464578585824288" at="33,31,34,52" concept="3" />
-      <node id="2707675432438020617" at="34,52,35,51" concept="3" />
-      <node id="1401464578586811166" at="39,34,40,54" concept="3" />
-      <node id="2707675432438021245" at="40,54,41,55" concept="3" />
-      <node id="1401464578585824284" at="28,0,31,0" concept="7" trace="getHighlighter#()Ljetbrains/mps/nodeEditor/Highlighter;" />
-      <node id="1401464578585810677" at="22,0,27,0" concept="2" trace="ConceptInheritanceHighlighter#(Ljetbrains/mps/project/MPSProject;)V" />
-      <node id="1401464578585807361" at="32,0,37,0" concept="7" trace="initComponent#()V" />
-      <node id="1401464578585807368" at="38,0,43,0" concept="7" trace="disposeComponent#()V" />
-      <scope id="1401464578585824276" at="28,40,29,53" />
-      <scope id="1401464578585807366" at="33,31,35,51" />
-      <scope id="1401464578585807373" at="39,34,41,55" />
-      <scope id="1401464578585810680" at="22,69,25,62" />
-      <scope id="1401464578585824284" at="28,0,31,0" />
-      <scope id="1401464578585810677" at="22,0,27,0">
+      <node id="1401464578585812426" at="16,0,17,0" concept="4" trace="myProject" />
+      <node id="1401464578586801092" at="18,0,19,0" concept="4" trace="myBehaviorChecker" />
+      <node id="2707675432438002327" at="19,0,20,0" concept="4" trace="myStructureChecker" />
+      <node id="1401464578585812970" at="21,69,22,24" concept="3" />
+      <node id="1401464578586802629" at="22,24,23,67" concept="3" />
+      <node id="2707675432438017034" at="23,67,24,62" concept="3" />
+      <node id="4433956668054493661" at="27,40,28,46" concept="9" />
+      <node id="1401464578585824288" at="31,22,32,52" concept="3" />
+      <node id="2707675432438020617" at="32,52,33,51" concept="3" />
+      <node id="1401464578586811166" at="36,25,37,54" concept="3" />
+      <node id="2707675432438021245" at="37,54,38,55" concept="3" />
+      <node id="1401464578585824284" at="27,0,30,0" concept="7" trace="getHighlighter#()Ljetbrains/mps/nodeEditor/Highlighter;" />
+      <node id="1401464578585807361" at="31,0,35,0" concept="7" trace="init#()V" />
+      <node id="1401464578585807368" at="36,0,40,0" concept="7" trace="dispose#()V" />
+      <node id="1401464578585810677" at="21,0,26,0" concept="2" trace="ConceptInheritanceHighlighter#(Ljetbrains/mps/project/MPSProject;)V" />
+      <scope id="1401464578585824276" at="27,40,28,46" />
+      <scope id="1401464578585807366" at="31,22,33,51" />
+      <scope id="1401464578585807373" at="36,25,38,55" />
+      <scope id="1401464578585810680" at="21,69,24,62" />
+      <scope id="1401464578585824284" at="27,0,30,0" />
+      <scope id="1401464578585807361" at="31,0,35,0" />
+      <scope id="1401464578585807368" at="36,0,40,0" />
+      <scope id="1401464578585810677" at="21,0,26,0">
         <var name="project" id="1401464578585811183" />
       </scope>
-      <scope id="1401464578585807361" at="32,0,37,0" />
-      <scope id="1401464578585807368" at="38,0,43,0" />
-      <unit id="1401464578585771758" at="15,0,44,0" name="jetbrains.mps.ide.highlighters.behavior.ConceptInheritanceHighlighter" />
+      <unit id="1401464578585771758" at="14,0,41,0" name="jetbrains.mps.ide.highlighters.behavior.ConceptInheritanceHighlighter" />
     </file>
   </root>
   <root nodeRef="r:59f5b892-a6eb-4a9b-9c81-ecffc10026ee(jetbrains.mps.ide.highlighters.behavior)/1401464578585832882">

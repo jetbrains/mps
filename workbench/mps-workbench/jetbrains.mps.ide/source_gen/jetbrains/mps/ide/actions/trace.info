@@ -4038,15 +4038,15 @@
     <file name="HighligterHook_ProjectPluginPart.java">
       <node id="1401464578588052534" at="12,0,13,0" concept="7" trace="highlighter" />
       <node id="1401464578588053371" at="16,40,17,99" concept="6" />
-      <node id="1401464578588061040" at="17,99,18,70" concept="6" />
-      <node id="1401464578588063650" at="21,43,22,73" concept="6" />
-      <node id="1401464578588066490" at="22,73,23,61" concept="6" />
+      <node id="1401464578588061040" at="17,99,18,61" concept="6" />
+      <node id="1401464578588063650" at="21,43,22,64" concept="6" />
+      <node id="1401464578588066490" at="22,64,23,61" concept="6" />
       <node id="1401464578588050605" at="13,0,15,0" concept="3" trace="HighligterHook_ProjectPluginPart#()V" />
       <node id="1401464578588050605" at="15,0,20,0" concept="11" trace="init#(Ljetbrains/mps/project/MPSProject;)V" />
       <node id="1401464578588050605" at="20,0,25,0" concept="11" trace="dispose#(Ljetbrains/mps/project/MPSProject;)V" />
       <scope id="1401464578588050605" at="13,45,13,45" />
       <scope id="1401464578588050605" at="13,0,15,0" />
-      <scope id="1401464578588053128" at="16,40,18,70" />
+      <scope id="1401464578588053128" at="16,40,18,61" />
       <scope id="1401464578588053152" at="21,43,23,61" />
       <scope id="1401464578588050605" at="15,0,20,0">
         <var name="project" id="1401464578588050605" />
