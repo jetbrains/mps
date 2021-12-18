@@ -30,10 +30,10 @@ public class EvaluationPanel extends EvaluationUi {
 
     myEvaluationModel = evaluationModel;
 
-    // FIXME is it truly necessary to have command here?
-    mpsProject.getModelAccess().executeCommand(() -> {
+    myEditor = new EmbeddableEditor(mpsProject, true);
+    // used to be command with no apparent reason, reduced to write; does it need even write?
+    mpsProject.getModelAccess().runWriteAction(() -> {
       SNode node = myEvaluationModel.getNode();
-      myEditor = new EmbeddableEditor(mpsProject, true);
       myEditor.editNode(node);
     });
 
