@@ -12,8 +12,10 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.project.MPSProject;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.icons.MPSIcons;
 import com.intellij.openapi.wm.ToolWindowAnchor;
+import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.Map;
 import javax.swing.KeyStroke;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -38,11 +40,11 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
 
   private MyState loadedState;
   private List<BaseConsoleTab> myTabs = ListSequence.fromList(new ArrayList<BaseConsoleTab>());
-  private MPSProject myProject;
+  private final MPSProject myProject;
 
-  public ConsoleTool(MPSProject project) {
-    super(project.getProject(), "Console", getKeymap(), MPSIcons.ToolWindows.OpenTerminal_13x13, ToolWindowAnchor.BOTTOM, true);
-    myProject = project;
+  public ConsoleTool(Project ideaProject) {
+    super(ideaProject, "Console", getKeymap(), MPSIcons.ToolWindows.OpenTerminal_13x13, ToolWindowAnchor.BOTTOM, true);
+    myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
   }
 
   private static Map<String, KeyStroke> getKeymap() {
