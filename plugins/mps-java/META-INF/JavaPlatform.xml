@@ -13,9 +13,6 @@
 
   <project-components>
     <component>
-      <implementation-class>jetbrains.mps.java.platform.actions.OverrideImplementMethodComponent</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.java.platform.highlighters.JavaHighlighters</implementation-class>
     </component>
   </project-components>
@@ -23,5 +20,6 @@
   <extensions defaultExtensionNs="com.intellij">
     <fileBasedIndex implementation="jetbrains.mps.java.platform.index.ClassifierSuccessorsIndexer"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
+    <projectService serviceImplementation="jetbrains.mps.java.platform.actions.OverrideImplementMethodComponent" />
   </extensions>
 </idea-plugin>

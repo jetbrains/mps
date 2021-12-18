@@ -37,11 +37,7 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
 
   @Override
   protected void initOptions() {
-    try {
-      myOptions = myProject.getComponent(OverrideImplementMethodComponent.class).getState();
-    } catch (Exception e) {
-      myOptions = null;
-    }
+    myOptions = OverrideImplementMethodComponent.getInstance(myProject).getState();
 
     myAddReturn = new NonFocusableCheckBox("Add return keyword");
     myAddReturn.setMnemonic('r');
@@ -81,11 +77,10 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
 
   @Override
   public void dispose() {
-    if (myOptions != null) {
-      myOptions.addOverrideAnnotation = myInsertOverride.isSelected();
-      myOptions.addReturnsOnImplement = myAddReturn.isSelected();
-      myOptions.removeAttributes = myRemoveAttributes.isSelected();
-    }
+    // imply getState gave us direct instance so we can modify options
+    myOptions.addOverrideAnnotation = myInsertOverride.isSelected();
+    myOptions.addReturnsOnImplement = myAddReturn.isSelected();
+    myOptions.removeAttributes = myRemoveAttributes.isSelected();
     super.dispose();
   }
 

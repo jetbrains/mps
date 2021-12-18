@@ -5,50 +5,38 @@ package jetbrains.mps.java.platform.actions;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
 import jetbrains.mps.annotations.GeneratedClass;
-import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.ide.MPSCoreComponents;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 
 @com.intellij.openapi.components.State(name = "OverrideImplementMethodComponent", storages = @Storage(value = StoragePathMacros.WORKSPACE_FILE)
 , reportStatistic = true)
 @GeneratedClass(node = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)/8838506468326925850", model = "r:c6bc30d1-d0d1-44c6-ba7e-90e78619615e(jetbrains.mps.java.platform.actions)")
-public class OverrideImplementMethodComponent implements ProjectComponent, PersistentStateComponent<OverrideImplementMethodComponent.State> {
+public class OverrideImplementMethodComponent implements PersistentStateComponent<OverrideImplementMethodComponent.State> {
   private State myState;
-  public OverrideImplementMethodComponent(Project project, MPSCoreComponents coreComponents) {
+
+  public static OverrideImplementMethodComponent getInstance(Project ideaProject) {
+    return ideaProject.getService(OverrideImplementMethodComponent.class);
   }
+
+  public OverrideImplementMethodComponent(Project ideaProject) {
+  }
+
   @Override
-  public void projectOpened() {
+  public void noStateLoaded() {
+    myState = new State();
   }
-  @NonNls
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "OverrideImplementMethodComponent";
-  }
-  @Override
-  public void disposeComponent() {
-    myState = null;
-  }
-  @Override
-  public void initComponent() {
-    if (myState == null) {
-      myState = new State();
-    }
-  }
+
   @Override
   public void loadState(State state) {
     myState = state;
   }
+
   @Override
   public State getState() {
+    // Beware, OverrideImplementMethodsDialog assumes we provide instance for modification here
     return myState;
   }
-  @Override
-  public void projectClosed() {
-  }
+
   public static class State {
     public boolean addReturnsOnImplement = false;
     public boolean addOverrideAnnotation = true;

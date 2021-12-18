@@ -767,13 +767,8 @@
     <classNode dependClassName="com.intellij.openapi.components.StoragePathMacros" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.ide.MPSCoreComponents" />
-    <classNode dependClassName="org.jetbrains.annotations.NonNls" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="com.intellij.openapi.components.PersistentStateComponent" />
-    <classNode extendsClassName="com.intellij.openapi.components.ProjectComponent" />
   </dependency>
   <dependency className="jetbrains.mps.java.platform.actions.OverrideImplementMethodInEnumConstantAction">
     <classNode dependClassName="java.lang.Iterable" />
@@ -806,7 +801,6 @@
   <dependency className="jetbrains.mps.java.platform.actions.OverrideImplementMethodsDialog">
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.ui.NonFocusableCheckBox" />
-    <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
