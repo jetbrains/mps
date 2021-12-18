@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ import java.util.Collection;
 import java.util.Set;
 
 public abstract class BaseDirectoryIndexExcludePolicy implements DirectoryIndexExcludePolicy {
-  private Project myProject;
+  private final Project myProject;
 
   protected BaseDirectoryIndexExcludePolicy(@NotNull Project project) {
     myProject = project;

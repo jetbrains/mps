@@ -31,6 +31,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 // XXX Resembles GeneratedFilesExcludePolicy, which deals with generated sources, while this one with artifacts compiled from these sources.
+// XXX there's suspicious DirectoryIndexExcludeUpdater that is interested in BaseDirectoryIndexExcludePolicy subclasses!?
 public class ClassesGenPolicy extends BaseDirectoryIndexExcludePolicy {
   protected ClassesGenPolicy(@NotNull Project project) {
     super(project);

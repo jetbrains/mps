@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,24 +16,22 @@
 package jetbrains.mps.ide.vfs;
 
 import com.intellij.ProjectTopics;
-import com.intellij.openapi.application.ApplicationAdapter;
 import com.intellij.openapi.application.ApplicationListener;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.AbstractProjectComponent;
-import com.intellij.openapi.extensions.Extensions;
+import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.roots.impl.DirectoryIndex;
 import com.intellij.openapi.roots.impl.DirectoryIndexExcludePolicy;
 import com.intellij.openapi.roots.impl.ModuleRootEventImpl;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.newvfs.BulkFileListener;
-import com.intellij.openapi.vfs.newvfs.BulkFileListener.Adapter;
 import com.intellij.openapi.vfs.newvfs.events.VFileCreateEvent;
 import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
 import com.intellij.util.messages.MessageBus;
 import com.intellij.util.messages.MessageBusConnection;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.RepoListenerRegistrar;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -45,20 +43,18 @@ import java.util.List;
 
 /**
  * @author Evgeny Gerashchenko
- *         Date: 30 June 11
  */
-public class DirectoryIndexExcludeUpdater extends AbstractProjectComponent {
-  private final MPSProject myMpsProject;
-  private MyModuleRepositoryListener myRepositoryListener = new MyModuleRepositoryListener();
-  private MessageBus myMessageBus;
+public class DirectoryIndexExcludeUpdater implements ProjectComponent {
+  private final MPSProject myProject;
+  private final MyModuleRepositoryListener myRepositoryListener = new MyModuleRepositoryListener();
   private MessageBusConnection myConnection;
-  private BulkFileListener myFSListener = new BulkFileChangesListener();
-  private DirectoryIndexExcludePolicy[] myExcludePolicies;
+  private final BulkFileListener myFSListener = new BulkFileChangesListener();
+  private final DirectoryIndexExcludePolicy[] myExcludePolicies;
 
   private final Object LOCK = new Object();
   private boolean myInvalidated = false;
 
-  private ApplicationListener myListener = new ApplicationAdapter() {
+  private ApplicationListener myListener = new ApplicationListener() {
     @Override
     public void writeActionFinished(@NotNull Object action) {
       synchronized (LOCK) {
@@ -69,12 +65,10 @@ public class DirectoryIndexExcludeUpdater extends AbstractProjectComponent {
     }
   };
 
-  public DirectoryIndexExcludeUpdater(Project project, DirectoryIndex directoryIndex, MPSProject mpsProject) {
-    super(project);
-    myMpsProject = mpsProject;
-    myMessageBus = myProject.getMessageBus();
+  public DirectoryIndexExcludeUpdater(Project ideaProject) {
+    myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
 
-    DirectoryIndexExcludePolicy[] allExcludePolicies = Extensions.getExtensions(DirectoryIndexExcludePolicy.EP_NAME, myProject);
+    DirectoryIndexExcludePolicy[] allExcludePolicies = DirectoryIndexExcludePolicy.getExtensions(ideaProject);
     List<DirectoryIndexExcludePolicy> excludePolicies = new ArrayList<>();
     for (DirectoryIndexExcludePolicy ep : allExcludePolicies) {
       if (ep instanceof BaseDirectoryIndexExcludePolicy) {
@@ -86,9 +80,9 @@ public class DirectoryIndexExcludeUpdater extends AbstractProjectComponent {
 
   @Override
   public void initComponent() {
-    final SRepository repository = getRepository();
-    repository.getModelAccess().runReadAction(() -> myRepositoryListener.subscribeTo(repository));
-    myConnection = myMessageBus.connect();
+    new RepoListenerRegistrar(getRepository(), myRepositoryListener).attach();
+    myConnection = myProject.getProject().getMessageBus().connect();
+    // these 2 could get replaced with message bus subscription in xml
     myConnection.subscribe(VirtualFileManager.VFS_CHANGES, myFSListener);
     ApplicationManager.getApplication().addApplicationListener(myListener);
   }
@@ -97,12 +91,11 @@ public class DirectoryIndexExcludeUpdater extends AbstractProjectComponent {
   public void disposeComponent() {
     ApplicationManager.getApplication().removeApplicationListener(myListener);
     myConnection.disconnect();
-    final SRepository repository = getRepository();
-    repository.getModelAccess().runReadAction(() -> myRepositoryListener.unsubscribeFrom(repository));
+    new RepoListenerRegistrar(getRepository(), myRepositoryListener).detach();
   }
 
   private SRepository getRepository() {
-    return myMpsProject.getRepository();
+    return myProject.getRepository();
   }
 
   private void notifyRootsChanged(boolean async) {
@@ -113,8 +106,10 @@ public class DirectoryIndexExcludeUpdater extends AbstractProjectComponent {
         }
       } else {
         // MPS-24027: send event with beforeRootsChange() to avoid exception in com.intellij.psi.impl.file.impl.PsiVFSListener.MyModuleRootListener
-        myMessageBus.syncPublisher(ProjectTopics.PROJECT_ROOTS).beforeRootsChange(new ModuleRootEventImpl(myProject, false));
-        myMessageBus.syncPublisher(ProjectTopics.PROJECT_ROOTS).rootsChanged(new ModuleRootEventImpl(myProject, false));
+        final Project ideaProject = myProject.getProject();
+        final MessageBus messageBus = ideaProject.getMessageBus();
+        messageBus.syncPublisher(ProjectTopics.PROJECT_ROOTS).beforeRootsChange(new ModuleRootEventImpl(ideaProject, false));
+        messageBus.syncPublisher(ProjectTopics.PROJECT_ROOTS).rootsChanged(new ModuleRootEventImpl(ideaProject, false));
       }
     }
   }
@@ -128,7 +123,7 @@ public class DirectoryIndexExcludeUpdater extends AbstractProjectComponent {
     return false;
   }
 
-  private class BulkFileChangesListener extends Adapter {
+  private class BulkFileChangesListener implements BulkFileListener {
     @Override
     public void after(@NotNull final List<? extends VFileEvent> events) {
       for (VFileEvent event : events) {
@@ -146,7 +141,7 @@ public class DirectoryIndexExcludeUpdater extends AbstractProjectComponent {
     @Override
     public void moduleAdded(@NotNull SModule module) {
       super.moduleAdded(module);
-      if (myMpsProject.isProjectModule(module)) {
+      if (myProject.isProjectModule(module)) {
         notifyRootsChanged(true);
       }
     }
@@ -154,7 +149,7 @@ public class DirectoryIndexExcludeUpdater extends AbstractProjectComponent {
     @Override
     public void moduleChanged(SModule module) {
       super.moduleChanged(module);
-      if (myMpsProject.isProjectModule(module)) {
+      if (myProject.isProjectModule(module)) {
         notifyRootsChanged(true);
       }
     }
