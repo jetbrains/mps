@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,10 @@ import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.command.impl.UndoManagerImpl;
 import com.intellij.openapi.command.undo.UndoManager;
 import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.containers.WeakList;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodefs.FileSystemProjectBridge;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
@@ -40,7 +42,6 @@ import java.util.Set;
 // XXX This non-public class is loaded due to ComponentConfigComponentAdapter (instantiated by ComponentManagerImpl, both from
 //     from com.intellij.openapi.components.impl) that defaults to allowNonPublicClasses == true.
 class OnReloadingUndoCleaner implements ProjectComponent {
-  private final UndoManagerImpl myUndoManager;
   private final MPSProject myProject;
   private RepoListenerRegistrar myListenerRegistrar;
 
@@ -49,17 +50,17 @@ class OnReloadingUndoCleaner implements ProjectComponent {
    * <p>
    * All references to a Document may be removed from all other places. In this case a document should be
    * garbage-collected. Weak container was used here to NOT prevent it from being garbage-collected.
-   * Same logic (weak container) you can found in {@link com.intellij.openapi.fileEditor.impl.FileDocumentManagerImpl#myDocumentCache}
+   * Same logic (weak container) you can found in {@code com.intellij.openapi.fileEditor.impl.FileDocumentManagerImpl#myDocumentCache}
    */
-  private Map<SModelId, WeakList<VirtualFile>> myUndoForModel = new HashMap<>();
+  private final Map<SModelId, WeakList<VirtualFile>> myUndoForModel = new HashMap<>();
 
   /**
    * Dependency on {@link FileSystemProjectBridge} was introduced here just to reflect the fact that this
    * functionality will not work without another component.
    */
-  OnReloadingUndoCleaner(MPSProject project, UndoManager undoManager, FileSystemProjectBridge fsPB) {
-    myProject = project;
-    myUndoManager = (UndoManagerImpl) undoManager;
+  OnReloadingUndoCleaner(Project ideaProject) {
+    myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
+    assert null != ideaProject.getComponent(FileSystemProjectBridge.class);
   }
 
   @Override
@@ -137,8 +138,12 @@ class OnReloadingUndoCleaner implements ProjectComponent {
         if (isDisposed()) {
           return;
         }
+        UndoManager undoManager = UndoManager.getInstance(myProject.getProject());
+        if (false == undoManager instanceof UndoManagerImpl) {
+          return;
+        }
         for (VirtualFile file : registeredFiles) {
-          myUndoManager.clearUndoRedoQueueInTests(file);
+          ((UndoManagerImpl) undoManager).clearUndoRedoQueueInTests(file);
         }
       }, ModalityState.NON_MODAL);
     }
