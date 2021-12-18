@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
 import com.intellij.openapi.editor.colors.EditorColors;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
+import com.intellij.openapi.project.Project;
 import com.intellij.ui.ColorUtil;
 import com.intellij.ui.JBColor;
 import com.intellij.ui.RetrievableIcon;
@@ -30,13 +31,13 @@ import com.intellij.util.IconUtil;
 import com.intellij.util.PlatformIcons;
 import com.intellij.util.ui.JBCachingScalableIcon;
 import jetbrains.mps.ide.bookmark.BookmarkManager.MyState;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodeEditor.Highlighter;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.util.Pair;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -72,46 +73,32 @@ public class BookmarkManager implements ProjectComponent, PersistentStateCompone
 
   private static final Icon DEFAULT_ICON = new MyCheckedIcon();
 
-  private List<BookmarkListener> myBookmarkListeners = new ArrayList<>();
+  private final List<BookmarkListener> myBookmarkListeners = new ArrayList<>();
 
-  private SNodeReference[] myBookmarks = new SNodeReference[10];
+  private final SNodeReference[] myBookmarks = new SNodeReference[10];
 
-  private List<SNodeReference> myUnnumberedBookmarks = new ArrayList<>();
+  private final List<SNodeReference> myUnnumberedBookmarks = new ArrayList<>();
 
   private final MPSProject myProject;
   private Highlighter myHighlighter;
   private BookmarksHighlighter myChecker;
 
-  public BookmarkManager(MPSProject project, Highlighter highlighter) {
-    myProject = project;
-    myHighlighter = highlighter;
+  public BookmarkManager(Project ideaProject) {
+    myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
   }
 
   @Override
   public void projectOpened() {
-  }
-
-  @Override
-  public void projectClosed() {
-  }
-
-  @Override
-  @NonNls
-  @NotNull
-  public String getComponentName() {
-    return getClass().getName();
-  }
-
-  @Override
-  public void initComponent() {
+    myHighlighter = Highlighter.getInstance(myProject);
     myChecker = new BookmarksHighlighter(this);
     myHighlighter.addChecker(myChecker);
   }
 
   @Override
-  public void disposeComponent() {
+  public void projectClosed() {
     myHighlighter.removeChecker(myChecker);
     myChecker.dispose();
+    myHighlighter = null;
   }
 
   /**

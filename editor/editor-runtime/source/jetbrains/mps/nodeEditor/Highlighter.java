@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,7 +62,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -107,6 +106,10 @@ public class Highlighter implements IHighlighter, ProjectComponent {
   // Keeps track of which editors may be checked incrementally. Must only be accessed from the highlighter background thread.
   private final HighlighterEditorTracker myEditorTracker = new HighlighterEditorTracker();
   private final MakeServiceComponent myMakeComponent;
+
+  public static Highlighter getInstance(MPSProject mpsProject) {
+    return mpsProject.getComponent(Highlighter.class);
+  }
 
   /*
    * MPSProject was used as a parameter of this constructor because corresponding component should be initialised after
