@@ -49,9 +49,10 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
   private final PluginLoaderRegistry myRegistry;
   private final RunConfigurationsState myState = new RunConfigurationsState();
 
-  public RunConfigurationsStateManager(Project project, PluginLoaderRegistry registry) {
+  public RunConfigurationsStateManager(Project project) {
+    // to stop being ProjectComponent, need PluginLoaderRegistry to publish events on the bus
     myProject = project;
-    myRegistry = registry;
+    myRegistry = PluginLoaderRegistry.getInstance();
   }
 
   @Override
@@ -76,20 +77,12 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
 
   @Override
   public void initComponent() {
-    myRegistry.addReloadingListener(RunConfigurationsStateManager.this);
+    myRegistry.addReloadingListener(this);
   }
 
   @Override
   public void disposeComponent() {
     myRegistry.removeReloadingListener(this);
-  }
-
-  @Override
-  public void projectOpened() {
-  }
-
-  @Override
-  public void projectClosed() {
   }
 
   private void disposeRunContentDescriptors() {
