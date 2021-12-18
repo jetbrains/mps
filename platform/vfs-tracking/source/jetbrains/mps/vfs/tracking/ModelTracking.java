@@ -16,7 +16,9 @@
 package jetbrains.mps.vfs.tracking;
 
 import com.intellij.openapi.Disposable;
+import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
@@ -29,12 +31,15 @@ public final class ModelTracking implements Disposable {
   private final ModelStorageProblemsListener myProblemsListener;
   private final MPSProject myProject;
 
-  public ModelTracking(@NotNull MPSProject project, @NotNull MPSCoreComponents coreComponents) {
-    myConflictsListener = new ModelStorageConflictsListener(project,
+  public ModelTracking(Project ideaProject) {
+    myProject = ProjectHelper.fromIdeaProjectOrFail(ideaProject);
+    MPSCoreComponents coreComponents = MPSCoreComponents.getInstance();
+    // FIXME I don't agree with ModelStorageConflictsListener approach. To listen to every
+    //       model in a repository to set a resolver doesn't sound right to me.
+    myConflictsListener = new ModelStorageConflictsListener(myProject,
                                                             coreComponents.getPersistenceFacade(),
                                                             coreComponents.getPlatform().findComponent(VFSManager.class));
-    myProblemsListener = new ModelStorageProblemsListener(project);
-    myProject = project;
+    myProblemsListener = new ModelStorageProblemsListener(myProject);
     attachListeners();
   }
 
