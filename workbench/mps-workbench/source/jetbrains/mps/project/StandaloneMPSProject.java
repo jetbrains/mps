@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,9 +66,9 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   private final VFSManager myManager;
 
   @SuppressWarnings("UnusedParameters")
-  public StandaloneMPSProject(final Project project, ProjectLibraryManager projectLibraryManager, ProjectRootListenerComponent unused,
+  public StandaloneMPSProject(final Project project, ProjectLibraryManager projectLibraryManager,
                               MPSCoreComponents mpsCore, IdeaFileSystem ideaFS) {
-    super(project, unused, mpsCore, ideaFS);
+    super(project, mpsCore, ideaFS);
     myManager = mpsCore.getPlatform().findComponent(VFSManager.class);
   }
 

@@ -17,7 +17,6 @@ package jetbrains.mps.project;
 
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.components.BaseComponent;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
@@ -25,7 +24,6 @@ import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.vcs.changes.ChangeListManager;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
@@ -57,10 +55,11 @@ public class MPSProject extends ProjectBase implements FileBasedProject, Project
   // WorkbenchModelAccess is provisional argument. Now it provides implementation of executeCommand method
   // with respect to shared model lock object from its smodel.ModelAccess superclass. Once each MA has own
   // model lock object and executeCommand* implementations, we won't need this WMA parameter
-  public MPSProject(@NotNull com.intellij.openapi.project.Project project, ProjectRootListenerComponent unused, MPSCoreComponents mpsCore, IdeaFileSystem ideaFS) {
+  public MPSProject(@NotNull com.intellij.openapi.project.Project project, MPSCoreComponents mpsCore, IdeaFileSystem ideaFS) {
     super(new ProjectDescriptor(project.getName()), mpsCore.getPlatform(), false);
     myProject = project;
     myProjectFileSystem = ideaFS;
+    project.getService(ProjectRootListenerComponent.class).boostProjectRead(ideaFS);
     final MPSModuleRepository extRepo = mpsCore.getPlatform().findComponent(MPSModuleRepository.class);
     final SRepositoryRegistry registry = mpsCore.getPlatform().findComponent(SRepositoryRegistry.class);
     final ModelAccess projectMA = ((WorkbenchModelAccess) ApplicationManager.getApplication().getComponent(ModelAccess.class)).createForProject(MPSProject.this);
