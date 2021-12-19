@@ -26,7 +26,6 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.smodel.SNodeLegacy;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.refactoring.runtime.access.RefactoringAccess;
 
 @GeneratedClass(node = "r:bd8551c6-e2e3-4499-a261-45b0c886d1d1(jetbrains.mps.refactoring.framework)/4792031542972811415", model = "r:bd8551c6-e2e3-4499-a261-45b0c886d1d1(jetbrains.mps.refactoring.framework)")
@@ -270,8 +269,8 @@ public class RefactoringContext {
     result.setCurrentScope(project.getScope());
     return result;
   }
-  public static RefactoringContext createRefactoringContextByName(final String refName, List names, List parameters, Object target, Project project) {
-    IRefactoring refactoring = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> RefactoringAccess.getInstance().getRefactoringByClassName(refName));
+  public static RefactoringContext createRefactoringContextByName(String refName, List names, List parameters, Object target, Project project) {
+    IRefactoring refactoring = RefactoringAccess.getInstance().getRefactoringByClassName(refName);
     return createRefactoringContext(refactoring, names, parameters, target, project);
   }
 }

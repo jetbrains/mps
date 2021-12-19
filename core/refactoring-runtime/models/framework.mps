@@ -2548,39 +2548,15 @@
             <node concept="3uibUv" id="5lCz6ko76mY" role="1tU5fm">
               <ref role="3uigEE" node="4a0HOMfn9$I" resolve="IRefactoring" />
             </node>
-            <node concept="2OqwBi" id="6CS$e10CUGz" role="33vP2m">
-              <node concept="2ShNRf" id="6CS$e10CSo0" role="2Oq$k0">
-                <node concept="1pGfFk" id="6CS$e10CUti" role="2ShVmc">
-                  <ref role="37wK5l" to="w1kc:~ModelAccessHelper.&lt;init&gt;(org.jetbrains.mps.openapi.module.ModelAccess)" resolve="ModelAccessHelper" />
-                  <node concept="2OqwBi" id="7nMNws3dDL1" role="37wK5m">
-                    <node concept="37vLTw" id="7nMNws3dDO1" role="2Oq$k0">
-                      <ref role="3cqZAo" node="5lCz6ko41HC" resolve="project" />
-                    </node>
-                    <node concept="liA8E" id="7nMNws3dDL3" role="2OqNvi">
-                      <ref role="37wK5l" to="z1c3:~Project.getModelAccess()" resolve="getModelAccess" />
-                    </node>
-                  </node>
-                </node>
+            <node concept="2OqwBi" id="6CS$e10CRlP" role="33vP2m">
+              <node concept="2YIFZM" id="6CS$e10CRgi" role="2Oq$k0">
+                <ref role="1Pybhc" to="y38:3dEPKBAxz0O" resolve="RefactoringAccess" />
+                <ref role="37wK5l" to="y38:1dH5fOG2bPt" resolve="getInstance" />
               </node>
-              <node concept="liA8E" id="6CS$e10CUPl" role="2OqNvi">
-                <ref role="37wK5l" to="w1kc:~ModelAccessHelper.runReadAction(jetbrains.mps.util.Computable)" resolve="runReadAction" />
-                <node concept="1bVj0M" id="6CS$e10CURH" role="37wK5m">
-                  <node concept="3clFbS" id="6CS$e10CURI" role="1bW5cS">
-                    <node concept="3clFbF" id="6CS$e10DcH5" role="3cqZAp">
-                      <node concept="2OqwBi" id="6CS$e10CRlP" role="3clFbG">
-                        <node concept="2YIFZM" id="6CS$e10CRgi" role="2Oq$k0">
-                          <ref role="1Pybhc" to="y38:3dEPKBAxz0O" resolve="RefactoringAccess" />
-                          <ref role="37wK5l" to="y38:1dH5fOG2bPt" resolve="getInstance" />
-                        </node>
-                        <node concept="liA8E" id="6CS$e10CRuz" role="2OqNvi">
-                          <ref role="37wK5l" to="y38:10tOJLdhm35" resolve="getRefactoringByClassName" />
-                          <node concept="37vLTw" id="6CS$e10CShr" role="37wK5m">
-                            <ref role="3cqZAo" node="5lCz6ko41Hr" resolve="refName" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
+              <node concept="liA8E" id="6CS$e10CRuz" role="2OqNvi">
+                <ref role="37wK5l" to="y38:10tOJLdhm35" resolve="getRefactoringByClassName" />
+                <node concept="37vLTw" id="6CS$e10CShr" role="37wK5m">
+                  <ref role="3cqZAo" node="5lCz6ko41Hr" resolve="refName" />
                 </node>
               </node>
             </node>
