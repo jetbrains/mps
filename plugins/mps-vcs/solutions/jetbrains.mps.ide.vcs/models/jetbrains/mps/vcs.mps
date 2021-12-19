@@ -118,9 +118,7 @@
         <child id="1070534934091" name="type" index="10QFUM" />
         <child id="1070534934092" name="expression" index="10QFUP" />
       </concept>
-      <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg">
-        <property id="1240249534625" name="isVolatile" index="34CwA1" />
-      </concept>
+      <concept id="1068390468200" name="jetbrains.mps.baseLanguage.structure.FieldDeclaration" flags="ig" index="312cEg" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <property id="1075300953594" name="abstractClass" index="1sVAO0" />
         <property id="1221565133444" name="isFinal" index="1EXbeo" />
@@ -251,9 +249,6 @@
         <reference id="1170346070688" name="classifier" index="1Y3XeK" />
       </concept>
     </language>
-    <language id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots">
-      <concept id="4079382982702596667" name="jetbrains.mps.baseLanguage.checkedDots.structure.CheckedDotExpression" flags="nn" index="2EnYce" />
-    </language>
     <language id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures">
       <concept id="1199569711397" name="jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral" flags="nn" index="1bVj0M">
         <child id="1199569916463" name="body" index="1bW5cS" />
@@ -264,6 +259,7 @@
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
       </concept>
+      <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
       </concept>
@@ -351,66 +347,7 @@
         <ref role="3uigEE" to="jlcu:~FileStatus" resolve="FileStatus" />
       </node>
     </node>
-    <node concept="312cEg" id="38_6U8fKv61" role="jymVt">
-      <property role="TrG5h" value="myManager" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="38_6U8fKv62" role="1tU5fm">
-        <ref role="3uigEE" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
-      </node>
-      <node concept="3Tm6S6" id="38_6U8fKv63" role="1B3o_S" />
-    </node>
-    <node concept="312cEg" id="38_6U8fKv64" role="jymVt">
-      <property role="TrG5h" value="myChangeListManager" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="38_6U8fKv65" role="1tU5fm">
-        <ref role="3uigEE" to="1037:~ChangeListManager" resolve="ChangeListManager" />
-      </node>
-      <node concept="3Tm6S6" id="38_6U8fKv66" role="1B3o_S" />
-    </node>
-    <node concept="312cEg" id="38_6U8fKv6b" role="jymVt">
-      <property role="TrG5h" value="myChangeListManagerInitialized" />
-      <property role="34CwA1" value="true" />
-      <node concept="10P_77" id="38_6U8fKv6c" role="1tU5fm" />
-      <node concept="3Tm6S6" id="38_6U8fKv6d" role="1B3o_S" />
-      <node concept="3clFbT" id="38_6U8fKv6e" role="33vP2m" />
-    </node>
-    <node concept="312cEg" id="38_6U8fKv6k" role="jymVt">
-      <property role="TrG5h" value="myChangeListUpdateListener" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="38_6U8fKv6l" role="1tU5fm">
-        <ref role="3uigEE" to="1037:~ChangeListAdapter" resolve="ChangeListAdapter" />
-      </node>
-      <node concept="3Tm6S6" id="38_6U8fKv6m" role="1B3o_S" />
-      <node concept="2ShNRf" id="38_6U8fKv6n" role="33vP2m">
-        <node concept="YeOm9" id="38_6U8fKv6o" role="2ShVmc">
-          <node concept="1Y3b0j" id="38_6U8fKv6p" role="YeSDq">
-            <property role="TrG5h" value="" />
-            <ref role="37wK5l" to="1037:~ChangeListAdapter.&lt;init&gt;()" resolve="ChangeListAdapter" />
-            <ref role="1Y3XeK" to="1037:~ChangeListAdapter" resolve="ChangeListAdapter" />
-            <node concept="3clFb_" id="38_6U8fKv6q" role="jymVt">
-              <property role="TrG5h" value="changeListUpdateDone" />
-              <node concept="3Tm1VV" id="38_6U8fKv6r" role="1B3o_S" />
-              <node concept="3cqZAl" id="38_6U8fKv6s" role="3clF45" />
-              <node concept="3clFbS" id="38_6U8fKvbz" role="3clF47">
-                <node concept="3clFbF" id="38_6U8fKvb$" role="3cqZAp">
-                  <node concept="37vLTI" id="38_6U8fKvb_" role="3clFbG">
-                    <node concept="37vLTw" id="2BHiRxeuTz5" role="37vLTJ">
-                      <ref role="3cqZAo" node="38_6U8fKv6b" resolve="myChangeListManagerInitialized" />
-                    </node>
-                    <node concept="3clFbT" id="38_6U8fKvbB" role="37vLTx">
-                      <property role="3clFbU" value="true" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="2AHcQZ" id="3tYsUK_Sj82" role="2AJF6D">
-                <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
+    <node concept="2tJIrI" id="3qzU$0EbGOZ" role="jymVt" />
     <node concept="312cEg" id="78tlMyQ2HsM" role="jymVt">
       <property role="TrG5h" value="myFileStatusListener" />
       <node concept="3Tm6S6" id="78tlMyQ2HsN" role="1B3o_S" />
@@ -440,18 +377,6 @@
           <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
         </node>
       </node>
-      <node concept="37vLTG" id="38_6U8fKv6I" role="3clF46">
-        <property role="TrG5h" value="manager" />
-        <node concept="3uibUv" id="38_6U8fKv6J" role="1tU5fm">
-          <ref role="3uigEE" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="38_6U8fKv6K" role="3clF46">
-        <property role="TrG5h" value="clmanager" />
-        <node concept="3uibUv" id="38_6U8fKv6L" role="1tU5fm">
-          <ref role="3uigEE" to="1037:~ChangeListManager" resolve="ChangeListManager" />
-        </node>
-      </node>
       <node concept="3clFbS" id="38_6U8fKv6M" role="3clF47">
         <node concept="3clFbF" id="38_6U8fKv6N" role="3cqZAp">
           <node concept="37vLTI" id="38_6U8fKv6O" role="3clFbG">
@@ -460,26 +385,6 @@
             </node>
             <node concept="37vLTw" id="2BHiRxglb0a" role="37vLTx">
               <ref role="3cqZAo" node="38_6U8fKv6G" resolve="project" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="38_6U8fKv6R" role="3cqZAp">
-          <node concept="37vLTI" id="38_6U8fKv6S" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeujU8" role="37vLTJ">
-              <ref role="3cqZAo" node="38_6U8fKv61" resolve="myManager" />
-            </node>
-            <node concept="37vLTw" id="2BHiRxgl83y" role="37vLTx">
-              <ref role="3cqZAo" node="38_6U8fKv6I" resolve="manager" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="38_6U8fKv6V" role="3cqZAp">
-          <node concept="37vLTI" id="38_6U8fKv6W" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeumQE" role="37vLTJ">
-              <ref role="3cqZAo" node="38_6U8fKv64" resolve="myChangeListManager" />
-            </node>
-            <node concept="37vLTw" id="2BHiRxgmhC0" role="37vLTx">
-              <ref role="3cqZAo" node="38_6U8fKv6K" resolve="clmanager" />
             </node>
           </node>
         </node>
@@ -505,13 +410,17 @@
               <ref role="3uigEE" to="jlcu:~AbstractVcs" resolve="AbstractVcs" />
             </node>
             <node concept="2OqwBi" id="38_6U8fKv7q" role="33vP2m">
-              <node concept="37vLTw" id="2BHiRxeuXyG" role="2Oq$k0">
-                <ref role="3cqZAo" node="38_6U8fKv61" resolve="myManager" />
-              </node>
               <node concept="liA8E" id="38_6U8fKv7s" role="2OqNvi">
                 <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getVcsFor(com.intellij.openapi.vfs.VirtualFile)" resolve="getVcsFor" />
                 <node concept="37vLTw" id="2BHiRxgm8CI" role="37wK5m">
                   <ref role="3cqZAo" node="38_6U8fKv71" resolve="vfile" />
+                </node>
+              </node>
+              <node concept="2YIFZM" id="3qzU$0EaE59" role="2Oq$k0">
+                <ref role="37wK5l" to="jlcu:~ProjectLevelVcsManager.getInstance(com.intellij.openapi.project.Project)" resolve="getInstance" />
+                <ref role="1Pybhc" to="jlcu:~ProjectLevelVcsManager" resolve="ProjectLevelVcsManager" />
+                <node concept="37vLTw" id="3qzU$0EaGw_" role="37wK5m">
+                  <ref role="3cqZAo" node="38_6U8fKv5Y" resolve="myProject" />
                 </node>
               </node>
             </node>
@@ -682,6 +591,28 @@
           </node>
         </node>
       </node>
+      <node concept="P$JXv" id="3qzU$0EaM1S" role="lGtFl">
+        <node concept="TZ5HA" id="3qzU$0EaM1T" role="TZ5H$">
+          <node concept="1dT_AC" id="3qzU$0EaM1U" role="1dT_Ay">
+            <property role="1dT_AB" value="This method is not in use now, but hold your temptation to remove it." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3qzU$0EaPlz" role="TZ5H$">
+          <node concept="1dT_AC" id="3qzU$0EaPl$" role="1dT_Ay">
+            <property role="1dT_AB" value="First, get some historic insight, read comment in problemsDetected() of ModelMergeConflictTracker." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3qzU$0EaRy4" role="TZ5H$">
+          <node concept="1dT_AC" id="3qzU$0EaRy5" role="1dT_Ay">
+            <property role="1dT_AB" value="Then, please explain me the difference between use of FileStatusManager in ConflictsUtil vs " />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="3qzU$0EaTuJ" role="TZ5H$">
+          <node concept="1dT_AC" id="3qzU$0EaTuK" role="1dT_Ay">
+            <property role="1dT_AB" value="use of ChangeProvider in this method. Which one is right?" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="4_rZUNaXnDK" role="jymVt" />
     <node concept="3clFb_" id="38_6U8fKv8w" role="jymVt">
@@ -724,6 +655,25 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="3qzU$0Ebwj3" role="3cqZAp">
+          <node concept="1PaTwC" id="3qzU$0Ebwj4" role="1aUNEU">
+            <node concept="3oM_SD" id="3qzU$0EbxI8" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Eby6u" role="1PaTwD">
+              <property role="3oM_SC" value="could" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Eby6r" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Eby6z" role="1PaTwD">
+              <property role="3oM_SC" value="StartupActivity" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Eby6C" role="1PaTwD">
+              <property role="3oM_SC" value="" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="6lEzp8ArmNN" role="3cqZAp">
           <node concept="3cpWsn" id="6lEzp8ArmNO" role="3cpWs9">
             <property role="TrG5h" value="mergeDriverNotification" />
@@ -746,6 +696,22 @@
             </node>
             <node concept="liA8E" id="ZbBldQnjZo" role="2OqNvi">
               <ref role="37wK5l" to="80f9:63ZcAL21OJd" resolve="showNotificationIfNeeded" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="3qzU$0Eb$4D" role="3cqZAp">
+          <node concept="1PaTwC" id="3qzU$0Eb$4E" role="1aUNEU">
+            <node concept="3oM_SD" id="3qzU$0Eb_T3" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0EbY19" role="1PaTwD">
+              <property role="3oM_SC" value="Could" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Eb_T5" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Eb_Wk" role="1PaTwD">
+              <property role="3oM_SC" value="&lt;projectListener&gt;" />
             </node>
           </node>
         </node>
@@ -808,6 +774,76 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="3qzU$0EbZ8t" role="3cqZAp">
+          <node concept="1PaTwC" id="3qzU$0EbZ8u" role="1aUNEU">
+            <node concept="3oM_SD" id="3qzU$0Ec17a" role="1PaTwD">
+              <property role="3oM_SC" value="nah," />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec17c" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec17f" role="1PaTwD">
+              <property role="3oM_SC" value="one" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec17j" role="1PaTwD">
+              <property role="3oM_SC" value="has" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec17o" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec17u" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec17_" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec19X" role="1PaTwD">
+              <property role="3oM_SC" value="code;" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec1bG" role="1PaTwD">
+              <property role="3oM_SC" value="although" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec1bQ" role="1PaTwD">
+              <property role="3oM_SC" value="its" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec1c1" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec1cd" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec1cq" role="1PaTwD">
+              <property role="3oM_SC" value="detect" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec1cC" role="1PaTwD">
+              <property role="3oM_SC" value="merge" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec1cR" role="1PaTwD">
+              <property role="3oM_SC" value="conflict" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec1d7" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec1do" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec1dE" role="1PaTwD">
+              <property role="3oM_SC" value="single" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec1eh" role="1PaTwD">
+              <property role="3oM_SC" value="project" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec1dX" role="1PaTwD">
+              <property role="3oM_SC" value="file" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec1eA" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="3qzU$0Ec1eW" role="1PaTwD">
+              <property role="3oM_SC" value="dubious" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="78tlMyQ2NpZ" role="3cqZAp">
           <node concept="2OqwBi" id="78tlMyQ2Nq3" role="3clFbG">
             <node concept="2YIFZM" id="78tlMyQ2Nq1" role="2Oq$k0">
@@ -818,9 +854,12 @@
               </node>
             </node>
             <node concept="liA8E" id="78tlMyQ2NuG" role="2OqNvi">
-              <ref role="37wK5l" to="jlcu:~FileStatusManager.addFileStatusListener(com.intellij.openapi.vcs.FileStatusListener)" resolve="addFileStatusListener" />
+              <ref role="37wK5l" to="jlcu:~FileStatusManager.addFileStatusListener(com.intellij.openapi.vcs.FileStatusListener,com.intellij.openapi.Disposable)" resolve="addFileStatusListener" />
               <node concept="37vLTw" id="2BHiRxeuu4l" role="37wK5m">
                 <ref role="3cqZAo" node="78tlMyQ2HsM" resolve="myFileStatusListener" />
+              </node>
+              <node concept="37vLTw" id="3qzU$0EbCNa" role="37wK5m">
+                <ref role="3cqZAo" node="38_6U8fKv5Y" resolve="myProject" />
               </node>
             </node>
           </node>
@@ -854,7 +893,7 @@
           </node>
         </node>
         <node concept="3clFbF" id="6KGokXnAqRJ" role="3cqZAp">
-          <node concept="2EnYce" id="6OnFPjfFMeV" role="3clFbG">
+          <node concept="2OqwBi" id="3qzU$0EbEDS" role="3clFbG">
             <node concept="37vLTw" id="2BHiRxeuwv2" role="2Oq$k0">
               <ref role="3cqZAo" node="6KGokXnAqRl" resolve="myMessageBusConnection" />
             </node>
@@ -865,89 +904,6 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3tYsUK_RWdQ" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4_rZUNaXljR" role="jymVt" />
-    <node concept="3clFb_" id="38_6U8fKv8C" role="jymVt">
-      <property role="TrG5h" value="getComponentName" />
-      <node concept="3Tm1VV" id="38_6U8fKv8D" role="1B3o_S" />
-      <node concept="17QB3L" id="58ajVF2ork5" role="3clF45" />
-      <node concept="3clFbS" id="38_6U8fKv8F" role="3clF47">
-        <node concept="3cpWs6" id="38_6U8fKv8G" role="3cqZAp">
-          <node concept="Xl_RD" id="38_6U8fKv8H" role="3cqZAk">
-            <property role="Xl_RC" value="VCS Manager" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="38_6U8fKv8I" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
-      </node>
-      <node concept="2AHcQZ" id="38_6U8fKv8J" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_RWdV" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4_rZUNaXknE" role="jymVt" />
-    <node concept="3clFb_" id="38_6U8fKv90" role="jymVt">
-      <property role="TrG5h" value="isChangeListManagerInitialized" />
-      <node concept="3Tm1VV" id="38_6U8fKv91" role="1B3o_S" />
-      <node concept="10P_77" id="38_6U8fKv92" role="3clF45" />
-      <node concept="3clFbS" id="38_6U8fKv93" role="3clF47">
-        <node concept="3cpWs6" id="38_6U8fKv94" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeuFKU" role="3cqZAk">
-            <ref role="3cqZAo" node="38_6U8fKv6b" resolve="myChangeListManagerInitialized" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4_rZUNaXiR9" role="jymVt" />
-    <node concept="3clFb_" id="38_6U8fKv96" role="jymVt">
-      <property role="TrG5h" value="initComponent" />
-      <node concept="3Tm1VV" id="38_6U8fKv97" role="1B3o_S" />
-      <node concept="3cqZAl" id="38_6U8fKv98" role="3clF45" />
-      <node concept="3clFbS" id="38_6U8fKv99" role="3clF47">
-        <node concept="3clFbF" id="38_6U8fKv9i" role="3cqZAp">
-          <node concept="2OqwBi" id="38_6U8fKv9j" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeumV8" role="2Oq$k0">
-              <ref role="3cqZAo" node="38_6U8fKv64" resolve="myChangeListManager" />
-            </node>
-            <node concept="liA8E" id="38_6U8fKv9l" role="2OqNvi">
-              <ref role="37wK5l" to="1037:~ChangeListManager.addChangeListListener(com.intellij.openapi.vcs.changes.ChangeListListener)" resolve="addChangeListListener" />
-              <node concept="37vLTw" id="2BHiRxeukrt" role="37wK5m">
-                <ref role="3cqZAo" node="38_6U8fKv6k" resolve="myChangeListUpdateListener" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_RWdN" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="4_rZUNaXhUY" role="jymVt" />
-    <node concept="3clFb_" id="38_6U8fKv9n" role="jymVt">
-      <property role="TrG5h" value="disposeComponent" />
-      <node concept="3Tm1VV" id="38_6U8fKv9o" role="1B3o_S" />
-      <node concept="3cqZAl" id="38_6U8fKv9p" role="3clF45" />
-      <node concept="3clFbS" id="38_6U8fKv9q" role="3clF47">
-        <node concept="3clFbF" id="38_6U8fKv9z" role="3cqZAp">
-          <node concept="2OqwBi" id="38_6U8fKv9$" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeuTsA" role="2Oq$k0">
-              <ref role="3cqZAo" node="38_6U8fKv64" resolve="myChangeListManager" />
-            </node>
-            <node concept="liA8E" id="38_6U8fKv9A" role="2OqNvi">
-              <ref role="37wK5l" to="1037:~ChangeListManager.removeChangeListListener(com.intellij.openapi.vcs.changes.ChangeListListener)" resolve="removeChangeListListener" />
-              <node concept="37vLTw" id="2BHiRxeuXzS" role="37wK5m">
-                <ref role="3cqZAo" node="38_6U8fKv6k" resolve="myChangeListUpdateListener" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_RWdH" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>

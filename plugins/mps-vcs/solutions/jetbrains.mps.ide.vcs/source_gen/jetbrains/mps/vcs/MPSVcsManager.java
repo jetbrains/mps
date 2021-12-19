@@ -8,12 +8,10 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.FileStatus;
-import com.intellij.openapi.vcs.ProjectLevelVcsManager;
-import com.intellij.openapi.vcs.changes.ChangeListManager;
-import com.intellij.openapi.vcs.changes.ChangeListAdapter;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vcs.AbstractVcs;
+import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.vcs.changes.VcsDirtyScopeImpl;
 import com.intellij.openapi.vcs.actions.VcsContextFactory;
 import com.intellij.openapi.vcs.changes.ChangeProvider;
@@ -23,13 +21,12 @@ import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.vcs.platform.mergedriver.MergeDriverNotification;
 import com.intellij.openapi.vcs.VcsListener;
 import com.intellij.openapi.vcs.FileStatusManager;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.vcs.AbstractVcsHelper;
 import java.util.Arrays;
 import java.util.List;
 import com.intellij.openapi.vcs.changes.ChangeListManagerImpl;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vcs.changes.ChangeListManagerGate;
 import com.intellij.openapi.vcs.changes.LocalChangeList;
 import org.jetbrains.annotations.Nullable;
@@ -47,26 +44,22 @@ public class MPSVcsManager implements ProjectComponent {
   private static final Logger LOG = LogManager.getLogger(MPSVcsManager.class);
   private final Project myProject;
   private FileStatus myLastProjectStatus;
-  private final ProjectLevelVcsManager myManager;
-  private final ChangeListManager myChangeListManager;
-  private volatile boolean myChangeListManagerInitialized = false;
-  private final ChangeListAdapter myChangeListUpdateListener = new ChangeListAdapter() {
-    @Override
-    public void changeListUpdateDone() {
-      myChangeListManagerInitialized = true;
-    }
-  };
+
   private MyFileStatusListener myFileStatusListener = new MyFileStatusListener();
   private MessageBusConnection myMessageBusConnection;
 
-  public MPSVcsManager(Project project, ProjectLevelVcsManager manager, ChangeListManager clmanager) {
+  public MPSVcsManager(Project project) {
     myProject = project;
-    myManager = manager;
-    myChangeListManager = clmanager;
   }
 
+  /**
+   * This method is not in use now, but hold your temptation to remove it.
+   * First, get some historic insight, read comment in problemsDetected() of ModelMergeConflictTracker.
+   * Then, please explain me the difference between use of FileStatusManager in ConflictsUtil vs 
+   * use of ChangeProvider in this method. Which one is right?
+   */
   public boolean isInConflict(final VirtualFile vfile) {
-    AbstractVcs vcs = myManager.getVcsFor(vfile);
+    AbstractVcs vcs = ProjectLevelVcsManager.getInstance(myProject).getVcsFor(vfile);
     if (vcs == null) {
       return false;
     }
@@ -90,39 +83,21 @@ public class MPSVcsManager implements ProjectComponent {
     if (ApplicationManager.getApplication().isUnitTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment() || myProject.isDefault()) {
       return;
     }
+    // XXX could be StartupActivity 
     final MergeDriverNotification mergeDriverNotification = MergeDriverNotification.getInstance(myProject);
     mergeDriverNotification.showNotificationIfNeeded();
+    // XXX Could be <projectListener>
     myMessageBusConnection = myProject.getMessageBus().connect();
     VcsListener vcsListener = () -> mergeDriverNotification.showNotificationIfNeeded();
     myMessageBusConnection.subscribe(ProjectLevelVcsManager.VCS_CONFIGURATION_CHANGED, vcsListener);
-    FileStatusManager.getInstance(myProject).addFileStatusListener(myFileStatusListener);
+    // nah, this one has to be in code; although its use to detect merge conflict of a single project file is dubious
+    FileStatusManager.getInstance(myProject).addFileStatusListener(myFileStatusListener, myProject);
   }
 
   @Override
   public void projectClosed() {
     FileStatusManager.getInstance(myProject).removeFileStatusListener(myFileStatusListener);
-    check_2eqssr_a1a61(myMessageBusConnection);
-  }
-
-  @NonNls
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "VCS Manager";
-  }
-
-  public boolean isChangeListManagerInitialized() {
-    return myChangeListManagerInitialized;
-  }
-
-  @Override
-  public void initComponent() {
-    myChangeListManager.addChangeListListener(myChangeListUpdateListener);
-  }
-
-  @Override
-  public void disposeComponent() {
-    myChangeListManager.removeChangeListListener(myChangeListUpdateListener);
+    myMessageBusConnection.disconnect();
   }
 
   private void checkIfProjectIsConflicting() {
@@ -236,11 +211,5 @@ public class MPSVcsManager implements ProjectComponent {
         checkIfProjectIsConflicting();
       }
     }
-  }
-  private static void check_2eqssr_a1a61(MessageBusConnection checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      checkedDotOperand.disconnect();
-    }
-
   }
 }
