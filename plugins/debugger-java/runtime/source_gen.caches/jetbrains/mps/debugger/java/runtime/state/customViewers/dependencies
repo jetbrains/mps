@@ -45,7 +45,6 @@
     <classNode extendsClassName="jetbrains.mps.debugger.java.api.state.proxy.ValueWrapperFactory" />
   </dependency>
   <dependency className="jetbrains.mps.debugger.java.runtime.state.customViewers.BaseLanguageCustomViewers">
-    <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.HashSet" />
     <classNode dependClassName="java.util.Set" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
@@ -57,15 +56,15 @@
     <classNode dependClassName="jetbrains.mps.debugger.java.runtime.state.customViewers.StringWrapperFactory" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IVisitor" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
-    <classNode dependClassName="org.jetbrains.annotations.NonNls" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="com.intellij.openapi.components.ApplicationComponent" />
   </dependency>
   <dependency className="jetbrains.mps.debugger.java.runtime.state.customViewers.CustomViewersManagerImpl">
+    <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.project.ProjectManager" />
     <classNode dependClassName="com.intellij.openapi.project.ProjectManagerAdapter" />
     <classNode dependClassName="com.intellij.openapi.project.ProjectManagerListener" />
+    <classNode dependClassName="com.intellij.util.messages.MessageBusConnection" />
     <classNode dependClassName="com.sun.jdi.ClassType" />
     <classNode dependClassName="com.sun.jdi.InterfaceType" />
     <classNode dependClassName="com.sun.jdi.ObjectReference" />

@@ -6,7 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debugger.java.api.state.customViewers.CustomViewersManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
-import com.intellij.openapi.project.ProjectManager;
 import java.util.Map;
 import jetbrains.mps.debugger.java.api.state.proxy.ValueWrapperFactory;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -14,6 +13,9 @@ import java.util.HashMap;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
 import jetbrains.mps.debug.api.DebugSessionManagerComponent;
 import com.intellij.openapi.project.ProjectManagerListener;
+import com.intellij.util.messages.MessageBusConnection;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.project.ProjectManager;
 import org.jetbrains.annotations.NotNull;
 import java.util.Set;
 import jetbrains.mps.debugger.java.api.evaluation.proxies.IValueProxy;
@@ -45,21 +47,24 @@ import com.intellij.openapi.project.ProjectManagerAdapter;
 @GeneratedClass(node = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)/3432969378036015275", model = "r:4388830e-b413-4ab4-a4d2-e76a7bc17a27(jetbrains.mps.debugger.java.runtime.state.customViewers)")
 public class CustomViewersManagerImpl extends CustomViewersManager {
   private static final Logger LOG = LogManager.getLogger(CustomViewersManagerImpl.class);
-  private final ProjectManager myProjectManager;
   private final Map<String, ValueWrapperFactory> myFactories = MapSequence.fromMap(new HashMap<String, ValueWrapperFactory>());
   private final Map<DebugSession, Map<Long, String>> myObjectIdToFactory = MapSequence.fromMap(new HashMap<DebugSession, Map<Long, String>>());
   private final DebugSessionManagerComponent.DebugSessionAdapter myDebugSessionListener = new MyDebugSessionAdapter();
   private final ProjectManagerListener myProjectManagerListener = new MyProjectManagerAdapter();
-  public CustomViewersManagerImpl(ProjectManager projectManager) {
-    myProjectManager = projectManager;
+  private MessageBusConnection myBusConnection;
+
+  public CustomViewersManagerImpl() {
   }
+
   @Override
   public void initComponent() {
-    myProjectManager.addProjectManagerListener(myProjectManagerListener);
+    myBusConnection = ApplicationManager.getApplication().getMessageBus().connect();
+    myBusConnection.subscribe(ProjectManager.TOPIC, myProjectManagerListener);
   }
   @Override
   public void disposeComponent() {
-    myProjectManager.removeProjectManagerListener(myProjectManagerListener);
+    myBusConnection.disconnect();
+    myBusConnection = null;
   }
   @Override
   public void addFactory(@NotNull ValueWrapperFactory factory) {
