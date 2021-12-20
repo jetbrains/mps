@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,14 +21,12 @@ import jetbrains.mps.extapi.module.FacetsRegistry;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.repository.IdeaPluginFacetComponent;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 
 public final class IdeaPluginModuleFacetImplComponent implements IdeaPluginFacetComponent, Disposable {
-  private final MPSCoreComponents myCoreComponents;
   private final FacetFactory IDEA_PLUGIN_FACET_FACTORY = new FacetFactory() {
     @Override
     public SModuleFacet create(@NotNull SModule module) {
@@ -47,13 +45,12 @@ public final class IdeaPluginModuleFacetImplComponent implements IdeaPluginFacet
     }
   };
 
-  public IdeaPluginModuleFacetImplComponent(MPSCoreComponents coreComponents) {
-    myCoreComponents = coreComponents;
+  public IdeaPluginModuleFacetImplComponent() {
     setUpIdeaFacet();
   }
 
   private void setUpIdeaFacet() {
-    final FacetsRegistry facetsRegistry = myCoreComponents.getPlatform().findComponent(FacetsRegistry.class);
+    final FacetsRegistry facetsRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(FacetsRegistry.class);
     FacetFactory dumbFactory = facetsRegistry.getFacetFactory(IdeaPluginModuleFacet.FACET_TYPE);
     assert dumbFactory != null;
     facetsRegistry.removeFactory(dumbFactory);
@@ -62,7 +59,7 @@ public final class IdeaPluginModuleFacetImplComponent implements IdeaPluginFacet
 
   @Override
   public void dispose() {
-    final FacetsRegistry facetsRegistry = myCoreComponents.getPlatform().findComponent(FacetsRegistry.class);
+    final FacetsRegistry facetsRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(FacetsRegistry.class);
     facetsRegistry.removeFactory(IDEA_PLUGIN_FACET_FACTORY);
   }
 }
