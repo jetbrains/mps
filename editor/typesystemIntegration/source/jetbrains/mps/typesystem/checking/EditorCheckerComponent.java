@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,6 @@
 package jetbrains.mps.typesystem.checking;
 
 import com.intellij.openapi.Disposable;
-import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.errors.CheckerRegistry;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker;
@@ -25,16 +24,15 @@ import typesystemIntegration.languageChecker.RefScopeCheckerInEditor;
 
 // XXX this one could be ProjectComponent if needs to pass context down to checkers (e.g. TypesystemChecker)
 public class EditorCheckerComponent implements Disposable {
-  private final MPSCoreComponents myCoreComponents;
   private TypesystemChecker myTypesystemChecker;
   private NonTypesystemChecker myNonTypesystemChecker;
   private RefScopeCheckerInEditor myRefScopeCheckerInEditor;
 
-  public EditorCheckerComponent(MPSCoreComponents mpsCoreComponents) {
-    myCoreComponents = mpsCoreComponents;
-    final CheckerRegistry registry = myCoreComponents.getPlatform().findComponent(CheckerRegistry.class);
+  public EditorCheckerComponent() {
+    MPSCoreComponents cc = MPSCoreComponents.getInstance();
+    final CheckerRegistry registry = cc.getPlatform().findComponent(CheckerRegistry.class);
     if (registry != null) {
-      myRefScopeCheckerInEditor = new RefScopeCheckerInEditor(myCoreComponents.getPlatform());
+      myRefScopeCheckerInEditor = new RefScopeCheckerInEditor(cc.getPlatform());
       myTypesystemChecker = new TypesystemChecker();
       myNonTypesystemChecker = new NonTypesystemChecker();
       registry.registerChecker(myNonTypesystemChecker);
@@ -45,7 +43,7 @@ public class EditorCheckerComponent implements Disposable {
 
   @Override
   public void dispose() {
-    final CheckerRegistry registry = myCoreComponents.getPlatform().findComponent(CheckerRegistry.class);
+    final CheckerRegistry registry = MPSCoreComponents.getInstance().getPlatform().findComponent(CheckerRegistry.class);
     if (registry != null) {
       registry.unregisterChecker(myNonTypesystemChecker);
       registry.unregisterChecker(myTypesystemChecker);
