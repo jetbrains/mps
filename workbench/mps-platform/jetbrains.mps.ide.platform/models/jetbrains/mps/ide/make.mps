@@ -444,8 +444,9 @@
         <node concept="3clFbF" id="1LibDRnMisW" role="3cqZAp">
           <node concept="37vLTI" id="1LibDRnMisY" role="3clFbG">
             <node concept="2OqwBi" id="1LibDRnMii9" role="37vLTx">
-              <node concept="37vLTw" id="1LibDRnMiia" role="2Oq$k0">
-                <ref role="3cqZAo" node="1LibDRnMhj6" resolve="mpsComponents" />
+              <node concept="2YIFZM" id="1vwCG6QuVxt" role="2Oq$k0">
+                <ref role="37wK5l" to="3a50:~MPSCoreComponents.getInstance()" resolve="getInstance" />
+                <ref role="1Pybhc" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
               </node>
               <node concept="liA8E" id="1LibDRnMiib" role="2OqNvi">
                 <ref role="37wK5l" to="3a50:~MPSCoreComponents.getPlatform()" resolve="getPlatform" />
@@ -474,12 +475,6 @@
               <node concept="Xjq3P" id="1LibDRnMzuE" role="37wK5m" />
             </node>
           </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="1LibDRnMhj6" role="3clF46">
-        <property role="TrG5h" value="mpsComponents" />
-        <node concept="3uibUv" id="1LibDRnMhj5" role="1tU5fm">
-          <ref role="3uigEE" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
         </node>
       </node>
     </node>

@@ -71,8 +71,8 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
   private List<IMakeNotificationListener> listeners = Collections.synchronizedList(ListSequence.fromList(new ArrayList<IMakeNotificationListener>()));
   private final Platform myPlatform;
 
-  public WorkbenchMakeService(MPSCoreComponents mpsComponents) {
-    myPlatform = mpsComponents.getPlatform();
+  public WorkbenchMakeService() {
+    myPlatform = MPSCoreComponents.getInstance().getPlatform();
     myPlatform.findComponent(MakeServiceComponent.class).install(this);
   }
 
