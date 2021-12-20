@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@ package jetbrains.mps.persistence;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRule;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.ide.MPSCoreComponents;
@@ -32,6 +31,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * A platform-level extension point to client custom data source factories
  * delegates to the {@link DataSourceFactoryRuleService}
  *
+ * FIXME (a) could be a service, not an app component (b) with extensions come and go, would be better for this class to become
+ *       'provider' answering based on actual extpoint state; rather than simply add/remove code from extensions.
  * @author apyshkin
  */
 @Internal
@@ -40,8 +41,8 @@ public final class DataSourceFactoryRuleRegistrar implements Disposable {
   private final List<DataSourceFactoryRule> myRegisteredRules = new CopyOnWriteArrayList<>();
   private final MPSCoreComponents myCoreComponents;
 
-  public DataSourceFactoryRuleRegistrar(MPSCoreComponents mpsCoreComponents) {
-    myCoreComponents = mpsCoreComponents;
+  public DataSourceFactoryRuleRegistrar() {
+    myCoreComponents = MPSCoreComponents.getInstance();
     DataSourceFactoryRuleService dsRegistry = myCoreComponents.getPlatform().findComponent(DataSourceFactoryRuleService.class);
     for (DataSourceFactoryRuleProvider provider : DataSourceFactoryRuleProvider.EP_DATA_SOURCE_FACTORY.getExtensions()) {
       try {
