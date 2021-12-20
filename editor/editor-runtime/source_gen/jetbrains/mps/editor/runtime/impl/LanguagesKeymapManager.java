@@ -20,7 +20,6 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Collections;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -43,8 +42,9 @@ public class LanguagesKeymapManager implements ApplicationComponent {
   private final LanguageLoadListener myListener = new LanguageLoadListener();
   private final LanguageRegistry myLanguageRegistry;
 
-  public LanguagesKeymapManager(MPSCoreComponents coreComponents) {
-    myLanguageRegistry = coreComponents.getPlatform().findComponent(LanguageRegistry.class);
+  public LanguagesKeymapManager() {
+    myLanguageRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class);
+    // StringLiteral='Language KeyMap Manager'
   }
 
   public List<KeyMap> getKeyMapsForLanguage(@NotNull SLanguage l) {
@@ -74,18 +74,8 @@ public class LanguagesKeymapManager implements ApplicationComponent {
     myLanguageRegistry.removeRegistryListener(myListener);
   }
 
-  @NonNls
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "Language KeyMap Manager";
-  }
-
-  private void clearCaches() {
-    MapSequence.fromMap(myLanguagesToKeyMaps).clear();
-  }
-
   private List<KeyMap> loadLanguageKeyMaps(LanguageRuntime languageRuntime, SModule languageSource) {
+    // FIXME expose through EditorAspectDescriptor or a new aspect!
     SModel editorModelDescriptor = SModuleOperations.getAspect(languageSource, "editor");
     SModel editorModel = (editorModelDescriptor != null ? editorModelDescriptor : null);
     if (editorModel == null) {
@@ -103,17 +93,9 @@ public class LanguagesKeymapManager implements ApplicationComponent {
         if (keyMap.isApplicableToEveryModel()) {
           ListSequence.fromList(keyMaps).addElement(keyMap);
         }
-      } catch (ClassNotFoundException ex) {
+      } catch (ClassNotFoundException | InstantiationException | IllegalAccessException ex) {
         if (LOG.isEnabledFor(Level.WARN)) {
           LOG.warn("Failed to instantiate keymap", ex);
-        }
-      } catch (InstantiationException e) {
-        if (LOG.isEnabledFor(Level.ERROR)) {
-          LOG.error("Failed to instantiate keymap", e);
-        }
-      } catch (IllegalAccessException e) {
-        if (LOG.isEnabledFor(Level.ERROR)) {
-          LOG.error("Failed to instantiate keymap", e);
         }
       }
     }

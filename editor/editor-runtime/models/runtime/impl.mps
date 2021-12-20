@@ -33,7 +33,6 @@
     <import index="e8bb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)" />
     <import index="ryx4" ref="r:cb40950c-9102-4caf-8d31-b0388f359313(jetbrains.mps.kernel.language)" />
     <import index="ze1i" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.runtime(MPS.Core/)" />
-    <import index="9hsz" ref="r:16d53f5e-7835-4b72-9581-fafeae0db9b1(jetbrains.mps.lang.editor.enumMigration)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -266,6 +265,9 @@
       </concept>
     </language>
     <language id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text">
+      <concept id="3133179214568824809" name="jetbrains.mps.lang.text.structure.NodeWrapperElement" flags="nn" index="tu5oc">
+        <child id="3133179214568824810" name="node" index="tu5of" />
+      </concept>
       <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
         <property id="155656958578482949" name="value" index="3oM_SC" />
       </concept>
@@ -308,7 +310,6 @@
         <child id="1197687035757" name="valueType" index="3rHtpV" />
       </concept>
       <concept id="1165530316231" name="jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation" flags="nn" index="1v1jN8" />
-      <concept id="1208542034276" name="jetbrains.mps.baseLanguage.collections.structure.MapClearOperation" flags="nn" index="1yHZxX" />
       <concept id="1197932370469" name="jetbrains.mps.baseLanguage.collections.structure.MapElement" flags="nn" index="3EllGN">
         <child id="1197932505799" name="map" index="3ElQJh" />
         <child id="1197932525128" name="key" index="3ElVtu" />
@@ -723,12 +724,6 @@
     </node>
     <node concept="2tJIrI" id="3cMIXQCJ_Mw" role="jymVt" />
     <node concept="3clFbW" id="11BHxZ7C7Nc" role="jymVt">
-      <node concept="37vLTG" id="29L65AG5Zsz" role="3clF46">
-        <property role="TrG5h" value="coreComponents" />
-        <node concept="3uibUv" id="1km689rJQyS" role="1tU5fm">
-          <ref role="3uigEE" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
-        </node>
-      </node>
       <node concept="3cqZAl" id="11BHxZ7C7Ne" role="3clF45" />
       <node concept="3Tm1VV" id="11BHxZ7C7Nd" role="1B3o_S" />
       <node concept="3clFbS" id="11BHxZ7C7Nl" role="3clF47">
@@ -742,8 +737,9 @@
                 <node concept="liA8E" id="1ZE4Es_W3_w" role="2OqNvi">
                   <ref role="37wK5l" to="3a50:~MPSCoreComponents.getPlatform()" resolve="getPlatform" />
                 </node>
-                <node concept="37vLTw" id="1ZE4Es_W3_x" role="2Oq$k0">
-                  <ref role="3cqZAo" node="29L65AG5Zsz" resolve="coreComponents" />
+                <node concept="2YIFZM" id="5uS$ttcyRsL" role="2Oq$k0">
+                  <ref role="37wK5l" to="3a50:~MPSCoreComponents.getInstance()" resolve="getInstance" />
+                  <ref role="1Pybhc" to="3a50:~MPSCoreComponents" resolve="MPSCoreComponents" />
                 </node>
               </node>
               <node concept="liA8E" id="1ZE4Es_W3_y" role="2OqNvi">
@@ -751,6 +747,15 @@
                 <node concept="3VsKOn" id="1ZE4Es_W3_z" role="37wK5m">
                   <ref role="3VsUkX" to="vndm:~LanguageRegistry" resolve="LanguageRegistry" />
                 </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="5uS$ttcyVf7" role="3cqZAp">
+          <node concept="1PaTwC" id="5uS$ttcyVf8" role="1aUNEU">
+            <node concept="tu5oc" id="5uS$ttcyVnR" role="1PaTwD">
+              <node concept="Xl_RD" id="11BHxZ7C7O8" role="tu5of">
+                <property role="Xl_RC" value="Language KeyMap Manager" />
               </node>
             </node>
           </node>
@@ -1035,48 +1040,38 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="2tJIrI" id="1ZE4Es_Xzj8" role="jymVt" />
-    <node concept="3clFb_" id="11BHxZ7C7O3" role="jymVt">
-      <property role="TrG5h" value="getComponentName" />
-      <node concept="17QB3L" id="11BHxZ7CoFP" role="3clF45" />
-      <node concept="3Tm1VV" id="11BHxZ7C7O4" role="1B3o_S" />
-      <node concept="3clFbS" id="11BHxZ7C7O6" role="3clF47">
-        <node concept="3cpWs6" id="11BHxZ7C7O7" role="3cqZAp">
-          <node concept="Xl_RD" id="11BHxZ7C7O8" role="3cqZAk">
-            <property role="Xl_RC" value="Language KeyMap Manager" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="11BHxZ7C7O9" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NonNls" resolve="NonNls" />
-      </node>
-      <node concept="2AHcQZ" id="11BHxZ7C7Oa" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_t3vB" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="3cMIXQCJD9c" role="jymVt" />
-    <node concept="3clFb_" id="11BHxZ7C7Op" role="jymVt">
-      <property role="TrG5h" value="clearCaches" />
-      <node concept="3clFbS" id="11BHxZ7C7Os" role="3clF47">
-        <node concept="3clFbF" id="11BHxZ7C7Ot" role="3cqZAp">
-          <node concept="2OqwBi" id="11BHxZ7CoFQ" role="3clFbG">
-            <node concept="1yHZxX" id="11BHxZ7CoFU" role="2OqNvi" />
-            <node concept="37vLTw" id="2BHiRxeuFis" role="2Oq$k0">
-              <ref role="3cqZAo" node="11BHxZ7C8Hy" resolve="myLanguagesToKeyMaps" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="11BHxZ7C7Oq" role="1B3o_S" />
-      <node concept="3cqZAl" id="11BHxZ7C7Or" role="3clF45" />
-    </node>
     <node concept="2tJIrI" id="3cMIXQCJEgI" role="jymVt" />
     <node concept="3clFb_" id="11BHxZ7C7Ox" role="jymVt">
       <property role="TrG5h" value="loadLanguageKeyMaps" />
       <node concept="3clFbS" id="11BHxZ7C7OA" role="3clF47">
+        <node concept="3SKdUt" id="5uS$ttcz89R" role="3cqZAp">
+          <node concept="1PaTwC" id="5uS$ttcz89S" role="1aUNEU">
+            <node concept="3oM_SD" id="5uS$ttcz8_h" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="5uS$ttcz8_j" role="1PaTwD">
+              <property role="3oM_SC" value="expose" />
+            </node>
+            <node concept="3oM_SD" id="5uS$ttcz8_m" role="1PaTwD">
+              <property role="3oM_SC" value="through" />
+            </node>
+            <node concept="3oM_SD" id="5uS$ttcz8Fn" role="1PaTwD">
+              <property role="3oM_SC" value="EditorAspectDescriptor" />
+            </node>
+            <node concept="3oM_SD" id="5uS$ttcz8H2" role="1PaTwD">
+              <property role="3oM_SC" value="or" />
+            </node>
+            <node concept="3oM_SD" id="5uS$ttcz8H8" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="5uS$ttcz8Hf" role="1PaTwD">
+              <property role="3oM_SC" value="new" />
+            </node>
+            <node concept="3oM_SD" id="5uS$ttcz8Hn" role="1PaTwD">
+              <property role="3oM_SC" value="aspect!" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="11BHxZ7C7OB" role="3cqZAp">
           <node concept="3cpWsn" id="11BHxZ7C7OC" role="3cpWs9">
             <property role="TrG5h" value="editorModelDescriptor" />
@@ -1283,6 +1278,12 @@
                     <node concept="3uibUv" id="1ZE4Es_Xd1$" role="nSUat">
                       <ref role="3uigEE" to="wyt6:~ClassNotFoundException" resolve="ClassNotFoundException" />
                     </node>
+                    <node concept="3uibUv" id="5uS$ttcz3A9" role="nSUat">
+                      <ref role="3uigEE" to="wyt6:~InstantiationException" resolve="InstantiationException" />
+                    </node>
+                    <node concept="3uibUv" id="5uS$ttcz5a3" role="nSUat">
+                      <ref role="3uigEE" to="wyt6:~IllegalAccessException" resolve="IllegalAccessException" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3clFbS" id="1ZE4Es_XcBH" role="1zc67A">
@@ -1293,50 +1294,6 @@
                     </node>
                     <node concept="37vLTw" id="1ZE4Es_XhTU" role="RRSow">
                       <ref role="3cqZAo" node="1ZE4Es_XcBF" resolve="ex" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3uVAMA" id="3cMIXQCK5Cq" role="1zxBo5">
-                <node concept="XOnhg" id="3cMIXQCK5Cs" role="1zc67B">
-                  <property role="3TUv4t" value="false" />
-                  <property role="TrG5h" value="e" />
-                  <node concept="nSUau" id="xvs04dGApm" role="1tU5fm">
-                    <node concept="3uibUv" id="3cMIXQCK5Ct" role="nSUat">
-                      <ref role="3uigEE" to="wyt6:~InstantiationException" resolve="InstantiationException" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbS" id="3cMIXQCK5Cr" role="1zc67A">
-                  <node concept="RRSsy" id="3jYQuSB379p" role="3cqZAp">
-                    <property role="RRSoG" value="gZ5fh_4/error" />
-                    <node concept="Xl_RD" id="3cMIXQCK8FL" role="RRSoy">
-                      <property role="Xl_RC" value="Failed to instantiate keymap" />
-                    </node>
-                    <node concept="37vLTw" id="3cMIXQCK8FK" role="RRSow">
-                      <ref role="3cqZAo" node="3cMIXQCK5Cs" resolve="e" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3uVAMA" id="3cMIXQCK5Cu" role="1zxBo5">
-                <node concept="XOnhg" id="3cMIXQCK5Cw" role="1zc67B">
-                  <property role="3TUv4t" value="false" />
-                  <property role="TrG5h" value="e" />
-                  <node concept="nSUau" id="xvs04dGApo" role="1tU5fm">
-                    <node concept="3uibUv" id="3cMIXQCK5Cx" role="nSUat">
-                      <ref role="3uigEE" to="wyt6:~IllegalAccessException" resolve="IllegalAccessException" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbS" id="3cMIXQCK5Cv" role="1zc67A">
-                  <node concept="RRSsy" id="3jYQuSB379x" role="3cqZAp">
-                    <property role="RRSoG" value="gZ5fh_4/error" />
-                    <node concept="Xl_RD" id="1ZE4Es_WWxV" role="RRSoy">
-                      <property role="Xl_RC" value="Failed to instantiate keymap" />
-                    </node>
-                    <node concept="37vLTw" id="3cMIXQCK9S4" role="RRSow">
-                      <ref role="3cqZAo" node="3cMIXQCK5Cw" resolve="e" />
                     </node>
                   </node>
                 </node>
