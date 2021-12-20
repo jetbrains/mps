@@ -6,8 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.platform.refactoring.RefactoringAccessEx;
 import com.intellij.openapi.components.ApplicationComponent;
 import jetbrains.mps.ide.MPSCoreComponents;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.platform.refactoring.ModelElementTargetChooser;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -26,8 +24,10 @@ import jetbrains.mps.ide.findusages.model.SearchResult;
 public class RefactoringAccessImpl extends RefactoringAccessEx implements ApplicationComponent {
   private static final int MAX_SEARCH_RESULTS = 30000;
 
-  public RefactoringAccessImpl(MPSCoreComponents coreComponents) {
-    super(coreComponents.getPlatform());
+  public RefactoringAccessImpl() {
+    super(MPSCoreComponents.getInstance().getPlatform());
+    // MPS Workbench-specific Refactoring Access implementation
+    // FIXME refactoring rt as core module is bad; static field init with an app component, too.
   }
 
   @Override
@@ -38,13 +38,6 @@ public class RefactoringAccessImpl extends RefactoringAccessEx implements Applic
   @Override
   public void disposeComponent() {
     RefactoringAccessEx.setInstance(null);
-  }
-
-  @NonNls
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "MPS Workbench-specific Refactoring Access implementation";
   }
 
   @Override

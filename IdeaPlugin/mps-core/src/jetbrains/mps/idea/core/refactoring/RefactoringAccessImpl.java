@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,8 +36,8 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 public class RefactoringAccessImpl extends RefactoringAccessEx implements Disposable {
 
-  public RefactoringAccessImpl(MPSCoreComponents coreComponents) {
-    super(coreComponents.getPlatform());
+  public RefactoringAccessImpl() {
+    super(MPSCoreComponents.getInstance().getPlatform());
     RefactoringAccessEx.setInstance(this);
   }
 
