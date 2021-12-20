@@ -12,7 +12,12 @@ public class EditorResolverComponent implements Disposable {
 
   private EditorResolver myResolver;
 
-  public EditorResolverComponent(MPSCoreComponents coreComponents) {
+  public EditorResolverComponent() {
+    if (MPSCoreComponents.getInstance() == null) {
+      // this odd check is just to make sure MPSCoreComponent goes first,
+      // that's how I understand f5e81a10a54 fix
+      throw new IllegalStateException();
+    }
     myResolver = new EditorResolver();
     ResolverComponent.getInstance().addResolver(myResolver);
   }
