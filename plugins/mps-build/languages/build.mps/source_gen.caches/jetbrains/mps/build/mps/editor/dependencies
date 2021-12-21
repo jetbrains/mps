@@ -3689,8 +3689,10 @@
     <classNode dependClassName="jetbrains.mps.build.mps.editor.add_moduleLocationAndFlags_BuildMps_Module_ext_4" />
     <classNode dependClassName="jetbrains.mps.build.mps.editor.add_reexport" />
     <classNode dependClassName="jetbrains.mps.build.mps.editor.add_reexport_BuildMps_ModuleDependencyOnJavaModule" />
+    <classNode dependClassName="jetbrains.mps.build.mps.editor.create_IdeaPluginDescription" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.NamedMenuId" />

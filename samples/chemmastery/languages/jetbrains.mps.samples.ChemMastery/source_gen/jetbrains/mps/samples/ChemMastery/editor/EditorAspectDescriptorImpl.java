@@ -16,6 +16,7 @@ import jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent;
 import jetbrains.mps.openapi.editor.descriptor.TransformationMenu;
 import jetbrains.mps.openapi.editor.descriptor.NamedMenuId;
 import jetbrains.mps.openapi.editor.descriptor.SubstituteMenu;
+import jetbrains.mps.openapi.editor.cells.KeyMap;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
@@ -141,6 +142,11 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
       default:
     }
     return Collections.<SubstituteMenu>emptyList();
+  }
+  @NotNull
+  @Override
+  public Collection<KeyMap> getDeclaredKeyMaps() {
+    return Arrays.<KeyMap>asList(new Checkbox_KeyMap_8qm7p9_d0());
   }
 
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2130L), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba5396eL), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dbL), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af2L), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L), MetaIdFactory.conceptId(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24daL)).seal();

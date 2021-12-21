@@ -170,6 +170,7 @@
     <classNode dependClassName="jetbrains.mps.editor.runtime.descriptor.ConceptEditorHintImpl" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorHint" />
@@ -177,6 +178,7 @@
     <classNode dependClassName="jetbrains.mps.samples.notesOrganizer.editor.CategoryReference_Editor" />
     <classNode dependClassName="jetbrains.mps.samples.notesOrganizer.editor.CategoryReference_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.samples.notesOrganizer.editor.Category_Editor" />
+    <classNode dependClassName="jetbrains.mps.samples.notesOrganizer.editor.Checkbox_KeyMap_gjf57x_b0" />
     <classNode dependClassName="jetbrains.mps.samples.notesOrganizer.editor.MetaInfo" />
     <classNode dependClassName="jetbrains.mps.samples.notesOrganizer.editor.NoteMetaInformation" />
     <classNode dependClassName="jetbrains.mps.samples.notesOrganizer.editor.Note_Editor" />

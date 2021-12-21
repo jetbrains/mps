@@ -644,6 +644,7 @@
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.LoopMacroNamespaceAccessor_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.LoopMacroNamespaceAccessor_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.LoopMacro_Editor" />
+    <classNode dependClassName="jetbrains.mps.lang.generator.editor.MacrosSwitch_KeyMap" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.MapSrcListMacro_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.MapSrcNodeMacro_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.MappingConfiguration_Editor" />
@@ -663,6 +664,7 @@
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.ReferenceReductionRule_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.ReplaceNodeMacro" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.RootTemplateAnnotation_Editor" />
+    <classNode dependClassName="jetbrains.mps.lang.generator.editor.RootTemplateAnnotation_KeyMap" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.Root_MappingRule_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.RuleConsequence_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.RuleConsequence_SubstituteMenu" />
@@ -706,6 +708,7 @@
     <classNode dependClassName="jetbrains.mps.lang.generator.editor.templateCallArguments_Contribution" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.NamedMenuId" />

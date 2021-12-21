@@ -41,7 +41,7 @@
       <unit at="30,0,132,0" name="jetbrains.mps.build.editor.BuildSourceMacroRelativePath_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="20,0,425,0" name="jetbrains.mps.build.editor.EditorAspectDescriptorImpl" />
+      <unit at="21,0,431,0" name="jetbrains.mps.build.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="GeneratorInternal_BuildSource_JarFolder_SubstituteMenu.java">
       <unit at="90,0,93,0" name="jetbrains.mps.build.editor.GeneratorInternal_BuildSource_JarFolder_SubstituteMenu$CONCEPTS" />
@@ -1825,8 +1825,8 @@
   </root>
   <root nodeRef="r:00f69407-23a8-49a2-a236-9e89a32679aa(jetbrains.mps.build.editor)/1741258697587200865">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587200865" at="309,75,310,97" concept="9" />
-      <scope id="1741258697587200865" at="309,75,310,97" />
+      <node id="1741258697587200865" at="310,75,311,97" concept="9" />
+      <scope id="1741258697587200865" at="310,75,311,97" />
     </file>
     <file name="add_reexport_BuildSourcePath.java">
       <node id="1741258697587200865" at="29,0,30,0" concept="4" trace="myLocations" />
@@ -2700,8 +2700,8 @@
   </root>
   <root nodeRef="r:00f69407-23a8-49a2-a236-9e89a32679aa(jetbrains.mps.build.editor)/1741258697587201127">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587201127" at="311,86,312,108" concept="9" />
-      <scope id="1741258697587201127" at="311,86,312,108" />
+      <node id="1741258697587201127" at="312,86,313,108" concept="9" />
+      <scope id="1741258697587201127" at="312,86,313,108" />
     </file>
     <file name="transform_CompositePath_BuildSourcePath.java">
       <node id="1741258697587201127" at="50,0,51,0" concept="4" trace="myLocations" />
@@ -3069,8 +3069,8 @@
   </root>
   <root nodeRef="r:00f69407-23a8-49a2-a236-9e89a32679aa(jetbrains.mps.build.editor)/1741258697587201309">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587201309" at="300,69,301,91" concept="9" />
-      <scope id="1741258697587201309" at="300,69,301,91" />
+      <node id="1741258697587201309" at="301,69,302,91" concept="9" />
+      <scope id="1741258697587201309" at="301,69,302,91" />
     </file>
     <file name="add_DependencyLocation.java">
       <node id="1741258697587201309" at="43,0,44,0" concept="4" trace="myLocations" />
@@ -11538,8 +11538,8 @@
       <unit id="4747359941571311902" at="32,0,126,0" name="jetbrains.mps.build.editor.BuildSource_JavaExternalJarRef_SmartReference" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4747359941571311902" at="406,92,407,110" concept="9" />
-      <scope id="4747359941571311902" at="406,92,407,110" />
+      <node id="4747359941571311902" at="407,92,408,110" concept="9" />
+      <scope id="4747359941571311902" at="407,92,408,110" />
     </file>
   </root>
   <root nodeRef="r:00f69407-23a8-49a2-a236-9e89a32679aa(jetbrains.mps.build.editor)/4747359941571311904">
@@ -11735,8 +11735,8 @@
       <unit id="4747359941571312009" at="32,0,126,0" name="jetbrains.mps.build.editor.BuildSource_JavaExternalJarFolderRef_SmartReference" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="4747359941571312009" at="397,98,398,116" concept="9" />
-      <scope id="4747359941571312009" at="397,98,398,116" />
+      <node id="4747359941571312009" at="398,98,399,116" concept="9" />
+      <scope id="4747359941571312009" at="398,98,399,116" />
     </file>
   </root>
   <root nodeRef="r:00f69407-23a8-49a2-a236-9e89a32679aa(jetbrains.mps.build.editor)/4747359941571312011">

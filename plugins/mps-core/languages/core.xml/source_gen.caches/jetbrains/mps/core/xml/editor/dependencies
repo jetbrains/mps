@@ -104,6 +104,7 @@
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlSingleLineText_Editor" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlTextValue_Editor" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlTextValue_SubstituteMenu" />
+    <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlTextValue_text" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlText_Editor" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlText_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.core.xml.editor.XmlText_TransformationMenu" />
@@ -115,6 +116,7 @@
     <classNode dependClassName="jetbrains.mps.core.xml.editor.transform_ElementAttributes_XmlElement_ext_1" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.NamedMenuId" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.SubstituteMenu" />

@@ -1340,6 +1340,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.collections.editor.RemoveSetElementOperation_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.collections.editor.RemoveSetElementOperation_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.collections.editor.SequenceCreator_Editor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.editor.SequenceCreator_add_initializer" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.collections.editor.SequenceOperation_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.collections.editor.SequenceOperation_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.collections.editor.SequenceType_Editor" />
@@ -1383,6 +1384,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.collections.editor.substitute_IOperation_MappingType" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.NamedMenuId" />

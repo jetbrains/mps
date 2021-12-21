@@ -18,6 +18,7 @@ import jetbrains.mps.openapi.editor.style.StyleAttribute;
 import jetbrains.mps.editor.runtime.style.InheritableStyleAttribute;
 import jetbrains.mps.openapi.editor.descriptor.TransformationMenu;
 import jetbrains.mps.openapi.editor.descriptor.NamedMenuId;
+import jetbrains.mps.openapi.editor.cells.KeyMap;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
@@ -186,6 +187,11 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
     }
 
     return Collections.<TransformationMenu>emptyList();
+  }
+  @NotNull
+  @Override
+  public Collection<KeyMap> getDeclaredKeyMaps() {
+    return Arrays.<KeyMap>asList(new TestTargetKeymap());
   }
 
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde8953186ee02L), MetaIdFactory.conceptId(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a5a543L), MetaIdFactory.conceptId(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a70c22L), MetaIdFactory.conceptId(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531a70c23L), MetaIdFactory.conceptId(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531adc76dL), MetaIdFactory.conceptId(0xeaa98d49af584b80L, 0xb585c05e7b5fd335L, 0xbde89531aadcccL)).seal();

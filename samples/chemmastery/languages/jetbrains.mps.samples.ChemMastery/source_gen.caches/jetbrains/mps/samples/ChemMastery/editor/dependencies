@@ -509,12 +509,14 @@
     <classNode dependClassName="jetbrains.mps.editor.runtime.descriptor.ConceptEditorHintImpl" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorHint" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.NamedMenuId" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.TransformationMenu" />
+    <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.Checkbox_KeyMap_8qm7p9_d0" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.ChemEquation_Editor" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.ChemSheet_Editor" />
     <classNode dependClassName="jetbrains.mps.samples.ChemMastery.editor.CompoundComponentWithCardinality_TransformationMenu" />

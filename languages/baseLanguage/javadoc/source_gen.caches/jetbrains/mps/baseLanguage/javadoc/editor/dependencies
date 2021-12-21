@@ -654,12 +654,14 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.DocTypeParameterReference_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.EmptyBlockDocTag_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.EmptyBlockDocTag_SubstituteMenu" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.EmptyCommentLine" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.FieldDocComment_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.FieldDocReference_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.FieldDocReference_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.HTMLElement_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.InheritDocInlineDocTag_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.InlineTagCommentLinePart_Editor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.InsertAnEmptyCommentLine" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.LinkInlineDocTag_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.MethodDocComment_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.MethodDocReference_Editor" />
@@ -678,6 +680,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.javadoc.editor.VersionBlockDocTag_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.NamedMenuId" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.SubstituteMenu" />

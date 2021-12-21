@@ -7025,6 +7025,7 @@
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.AbstractClassifierReference_Editor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.AbstractClassifierReference_KeyMap" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.AbstractClassifierReference_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.AbstractClassifierReference_TransformationMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.AbstractCreator_Editor" />
@@ -7034,6 +7035,8 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.AddAnnotationMemberDefaultValue" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.AddBoundToTypeVariableDeclaration" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.AddFieldModifiersOnTypes" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.AddFirstMemberToClass" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.AddForStatementVar" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.AddMethodCallTypeArgument" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.AddMethodCallTypeArgument_ext_1" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.AddMethodModifiersOnTypes" />
@@ -7100,6 +7103,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BreakStatement_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.BreakStatement_TransformationMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.CastExpression_Editor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.CastExpression_KeyMap" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.CastExpression_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.CatchClause_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.CatchClause_TransformationMenu" />
@@ -7129,6 +7133,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ClassifierType_SmartReference" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ClassifierType_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ClassifierType_TransformationMenu" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.CloseParenthesis_KeyMap" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ClosureParameterReference_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ClosureParameterReference_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ClosureParameter_Editor" />
@@ -7181,6 +7186,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.EnumConstantDeclaration_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.EnumConstantDeclaration_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.EnumConstantReference_Editor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.EnumConstants" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.EnumValueOfExpression_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.EnumValueOfExpression_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.EnumValuesExpression_Editor" />
@@ -7198,6 +7204,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.FieldDeclaration_ApplySideTransforms" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.FieldDeclaration_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.FieldDeclaration_TransformationMenu" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.FieldDeclaration_keyMap" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.FieldReferenceOperation_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.FieldReferenceOperation_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.FinallyClause_Editor" />
@@ -7225,6 +7232,8 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IOperation_TransformationMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IfStatement_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IfStatement_SubstituteMenu" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IgnoreRightSquareBrackedInIncompleteMember" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IgnoreRightSquareBracketInVariableName" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ImplicitAnnotationInstanceValue_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ImplicitAnnotationInstanceValue_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.IncompleteLeftParen_Editor" />
@@ -7278,6 +7287,8 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.LoopLabel_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.LovalVariableDeclaration_Type" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.LowerBoundType_Editor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.MakeTypeArray" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.MethodCallArguments_ListSeparator" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.MethodCallFixer_AddFirstArgument" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.MethodDeclaration_TransformationMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.MethodDeclaration_final_native_sync_all_mods" />
@@ -7296,6 +7307,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.NullType_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.Number_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.OctalIntegerLiteral_Editor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.OpenParenthesis_KeyMap" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ParameterDeclaration_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ParameterDeclaration_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ParensAroundEmptyExpression" />
@@ -7319,6 +7331,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.Property_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.QualifiedSuperMethodCall_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.RemarkStatement_Editor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.RemarkStatement_KeyMap" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.RemarkStatement_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ReplaceQualifiedReference" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ReplaceQuilifiedReference_Substitute" />
@@ -7327,6 +7340,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ReturnStatement_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ReturnStatement_TransformationMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.SetAccessor_Editor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.SingleLineCommentKeys" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.SingleLineComment_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.SingleLineComment_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.StatementCommentPart_Editor" />
@@ -7386,6 +7400,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.TextCommentPart_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ThisConstructorInvocation_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ThisConstructorInvocation_SubstituteMenu" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ThisExpressionToLocal" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ThisExpression_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ThisExpression_TransformationMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.ThrowStatement_Editor" />
@@ -7399,6 +7414,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.TryUniversalStatement_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.TryUniversalStatement_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.TypeVariableDeclaration_Editor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.editor.TypeVariableDeclaration_addAuxBoundAfterBound_KeyMap" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.TypeVariableReference_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.TypeVariableReference_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.editor.Type_Editor" />
@@ -7526,6 +7542,7 @@
     <classNode dependClassName="jetbrains.mps.editor.runtime.descriptor.ConceptEditorHintImpl" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorHint" />

@@ -5445,6 +5445,7 @@
     <classNode dependClassName="jetbrains.mps.build.editor.BuildProjectDependency_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.build.editor.BuildProjectPart_Editor" />
     <classNode dependClassName="jetbrains.mps.build.editor.BuildProject_Editor" />
+    <classNode dependClassName="jetbrains.mps.build.editor.BuildSimpleName_text" />
     <classNode dependClassName="jetbrains.mps.build.editor.BuildSourceArchiveRelativePath_Editor" />
     <classNode dependClassName="jetbrains.mps.build.editor.BuildSourceArchiveRelativePath_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.build.editor.BuildSourceMacroRelativePath_Editor" />
@@ -5533,9 +5534,11 @@
     <classNode dependClassName="jetbrains.mps.build.editor.GeneratorInternal_ProjectDependency_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.build.editor.add_DependencyLocation" />
     <classNode dependClassName="jetbrains.mps.build.editor.add_reexport_BuildSourcePath" />
+    <classNode dependClassName="jetbrains.mps.build.editor.create_JarManifestName" />
     <classNode dependClassName="jetbrains.mps.build.editor.transform_CompositePath_BuildSourcePath" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.NamedMenuId" />

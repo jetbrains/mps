@@ -13,6 +13,7 @@ import jetbrains.mps.openapi.editor.descriptor.TransformationMenu;
 import jetbrains.mps.openapi.editor.descriptor.NamedMenuId;
 import java.util.Arrays;
 import jetbrains.mps.openapi.editor.descriptor.SubstituteMenu;
+import jetbrains.mps.openapi.editor.cells.KeyMap;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
@@ -154,6 +155,11 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
 
     return Collections.<SubstituteMenu>emptyList();
+  }
+  @NotNull
+  @Override
+  public Collection<KeyMap> getDeclaredKeyMaps() {
+    return Arrays.<KeyMap>asList(new _CreateAntiquotationKeyMap());
   }
 
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104656L), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104658L), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465eL), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x2e06ff6184da106eL), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4a9dL), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a3132eL), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20c8e1aL), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0339L), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20b0325L), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a2df32L), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x4bb51009d20a4aa0L), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x60f18f425c76d21aL), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x718e3f4cb7a0fa93L), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x116aac96587L), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c104659L), MetaIdFactory.conceptId(0x3a13115c633c4c5cL, 0xbbcc75c4219e9555L, 0x1168c10465dL)).seal();

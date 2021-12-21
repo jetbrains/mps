@@ -112,11 +112,14 @@
     <classNode dependClassName="jetbrains.mps.lang.messages.editor.CombinedMessageExpression_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.lang.messages.editor.LiteralMessageAllowsMacros" />
     <classNode dependClassName="jetbrains.mps.lang.messages.editor.LiteralMessageExpression_Editor" />
+    <classNode dependClassName="jetbrains.mps.lang.messages.editor.LiteralMessageExpression_KeyMap" />
     <classNode dependClassName="jetbrains.mps.lang.messages.editor.MacroMessageExpression_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.messages.editor.MacroMessageExpression_TransformationMenu" />
+    <classNode dependClassName="jetbrains.mps.lang.messages.editor.MacroMessageExpression_completeTextToLiteralAndPercentToMacro" />
     <classNode dependClassName="jetbrains.mps.lang.messages.editor.MessageExpression_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.NamedMenuId" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.SubstituteMenu" />

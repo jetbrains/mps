@@ -161,8 +161,10 @@
     <classNode dependClassName="jetbrains.mps.lang.quotation.editor.Quotation_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.quotation.editor.Quotation_TransformationMenu" />
     <classNode dependClassName="jetbrains.mps.lang.quotation.editor.ReferenceAntiquotation_Editor" />
+    <classNode dependClassName="jetbrains.mps.lang.quotation.editor._CreateAntiquotationKeyMap" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.NamedMenuId" />

@@ -286,8 +286,10 @@
     <classNode dependClassName="jetbrains.mps.lang.pattern.editor.QualifiedPatternReference_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.lang.pattern.editor.ReplaceQualifierReference_Pattern" />
     <classNode dependClassName="jetbrains.mps.lang.pattern.editor.WildcardPattern_Editor" />
+    <classNode dependClassName="jetbrains.mps.lang.pattern.editor._PatternExpression_KeyMap" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.NamedMenuId" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.SubstituteMenu" />

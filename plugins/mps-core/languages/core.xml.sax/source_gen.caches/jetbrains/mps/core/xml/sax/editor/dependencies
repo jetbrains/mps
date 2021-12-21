@@ -40,6 +40,7 @@
     <classNode dependClassName="jetbrains.mps.core.xml.sax.editor.XMLSAXAttributeReference_SmartReference" />
     <classNode dependClassName="jetbrains.mps.core.xml.sax.editor.XMLSAXAttributeReference_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.core.xml.sax.editor.XMLSAXAttributeRule_Editor" />
+    <classNode dependClassName="jetbrains.mps.core.xml.sax.editor.XMLSAXBreakReturn" />
     <classNode dependClassName="jetbrains.mps.core.xml.sax.editor.XMLSAXBreakStatement_Editor" />
     <classNode dependClassName="jetbrains.mps.core.xml.sax.editor.XMLSAXChildRule_Editor" />
     <classNode dependClassName="jetbrains.mps.core.xml.sax.editor.XMLSAXChildRule_SubstituteMenu" />
@@ -58,6 +59,7 @@
     <classNode dependClassName="jetbrains.mps.core.xml.sax.editor.XMLSAXTextRule_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.NamedMenuId" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.SubstituteMenu" />

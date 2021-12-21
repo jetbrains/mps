@@ -17,13 +17,13 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="25,0,195,0" name="jetbrains.mps.lang.editor.test.generation.editor.EditorAspectDescriptorImpl" />
+      <unit at="26,0,201,0" name="jetbrains.mps.lang.editor.test.generation.editor.EditorAspectDescriptorImpl" />
     </file>
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/2205542354335541099">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="2205542354335541099" at="116,87,117,73" concept="8" />
-      <scope id="2205542354335541099" at="116,87,117,73" />
+      <node id="2205542354335541099" at="117,87,118,73" concept="8" />
+      <scope id="2205542354335541099" at="117,87,118,73" />
     </file>
     <file name="RefNodeList_ListWithRole.java">
       <node id="2205542354335541099" at="15,47,16,35" concept="8" />
@@ -7534,8 +7534,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/2895511001984650029">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="2895511001984650029" at="177,95,178,95" concept="8" />
-      <scope id="2895511001984650029" at="177,95,178,95" />
+      <node id="2895511001984650029" at="178,95,179,95" concept="8" />
+      <scope id="2895511001984650029" at="178,95,179,95" />
     </file>
     <file name="TestContextActionsToolMenu.java">
       <node id="2895511001984650029" at="44,0,45,0" concept="3" trace="myLocations" />
@@ -7702,8 +7702,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/3800232685123488325">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="3800232685123488325" at="90,87,91,73" concept="8" />
-      <scope id="3800232685123488325" at="90,87,91,73" />
+      <node id="3800232685123488325" at="91,87,92,73" concept="8" />
+      <scope id="3800232685123488325" at="91,87,92,73" />
     </file>
     <file name="Property_IStyleContainer.java">
       <node id="3800232685123488325" at="15,47,16,35" concept="8" />
@@ -8202,8 +8202,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/3800232685123507505">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="3800232685123507505" at="88,79,89,65" concept="8" />
-      <scope id="3800232685123507505" at="88,79,89,65" />
+      <node id="3800232685123507505" at="89,79,90,65" concept="8" />
+      <scope id="3800232685123507505" at="89,79,90,65" />
     </file>
     <file name="Property_Default.java">
       <node id="3800232685123507505" at="15,47,16,35" concept="8" />
@@ -8282,8 +8282,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498077147333">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498077160296" at="163,33,164,92" concept="8" />
-      <scope id="53454498077160296" at="163,33,164,92" />
+      <node id="53454498077160296" at="164,33,165,92" concept="8" />
+      <scope id="53454498077160296" at="164,33,165,92" />
     </file>
     <file name="TestTargetStyleSheet_StyleSheet.java">
       <node id="53454498077147336" at="17,74,18,69" concept="7" />
@@ -8402,8 +8402,8 @@
       <unit id="53454498077179542" at="12,0,38,0" name="jetbrains.mps.lang.editor.test.generation.editor.Constant_Default_ComponentBuilder_a" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498077179542" at="49,79,50,65" concept="8" />
-      <scope id="53454498077179542" at="49,79,50,65" />
+      <node id="53454498077179542" at="50,79,51,65" concept="8" />
+      <scope id="53454498077179542" at="50,79,51,65" />
     </file>
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498077179582">
@@ -8848,8 +8848,8 @@
       <unit id="53454498077179582" at="34,0,336,0" name="jetbrains.mps.lang.editor.test.generation.editor.Constant_IStyleContainer_ComponentBuilder_a" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498077179582" at="55,87,56,73" concept="8" />
-      <scope id="53454498077179582" at="55,87,56,73" />
+      <node id="53454498077179582" at="56,87,57,73" concept="8" />
+      <scope id="53454498077179582" at="56,87,57,73" />
     </file>
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498077179584">
@@ -9193,8 +9193,8 @@
       <unit id="53454498077179584" at="43,0,248,0" name="jetbrains.mps.lang.editor.test.generation.editor.Constant_EditorCellModel_ComponentBuilder_a" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498077179584" at="51,87,52,73" concept="8" />
-      <scope id="53454498077179584" at="51,87,52,73" />
+      <node id="53454498077179584" at="52,87,53,73" concept="8" />
+      <scope id="53454498077179584" at="52,87,53,73" />
     </file>
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498078385695">
@@ -9290,8 +9290,8 @@
       <unit id="53454498078679541" at="15,0,44,0" name="jetbrains.mps.lang.editor.test.generation.editor.Constant_ICellStyle_ComponentBuilder_a" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498078679541" at="53,82,54,68" concept="8" />
-      <scope id="53454498078679541" at="53,82,54,68" />
+      <node id="53454498078679541" at="54,82,55,68" concept="8" />
+      <scope id="53454498078679541" at="54,82,55,68" />
     </file>
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498078952541">
@@ -9305,8 +9305,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498078979819">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498078979819" at="179,97,180,97" concept="8" />
-      <scope id="53454498078979819" at="179,97,180,97" />
+      <node id="53454498078979819" at="180,97,181,97" concept="8" />
+      <scope id="53454498078979819" at="180,97,181,97" />
     </file>
     <file name="TestTargetTransformationMenu.java">
       <node id="53454498078979819" at="19,0,20,0" concept="3" trace="myLocations" />
@@ -9456,8 +9456,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079024452">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079024452" at="62,76,63,62" concept="8" />
-      <scope id="53454498079024452" at="62,76,63,62" />
+      <node id="53454498079024452" at="63,76,64,62" concept="8" />
+      <scope id="53454498079024452" at="63,76,64,62" />
     </file>
     <file name="Error_Default.java">
       <node id="53454498079024452" at="15,47,16,35" concept="8" />
@@ -9504,8 +9504,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079029138">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079029138" at="68,84,69,70" concept="8" />
-      <scope id="53454498079029138" at="68,84,69,70" />
+      <node id="53454498079029138" at="69,84,70,70" concept="8" />
+      <scope id="53454498079029138" at="69,84,70,70" />
     </file>
     <file name="Error_IStyleContainer.java">
       <node id="53454498079029138" at="15,47,16,35" concept="8" />
@@ -9948,8 +9948,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079122749">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079122749" at="75,82,76,68" concept="8" />
-      <scope id="53454498079122749" at="75,82,76,68" />
+      <node id="53454498079122749" at="76,82,77,68" concept="8" />
+      <scope id="53454498079122749" at="76,82,77,68" />
     </file>
     <file name="ModelAccess_Default.java">
       <node id="53454498079122749" at="15,47,16,35" concept="8" />
@@ -10202,8 +10202,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079193697">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079193697" at="81,90,82,76" concept="8" />
-      <scope id="53454498079193697" at="81,90,82,76" />
+      <node id="53454498079193697" at="82,90,83,76" concept="8" />
+      <scope id="53454498079193697" at="82,90,83,76" />
     </file>
     <file name="ModelAccess_IStyleContainer.java">
       <node id="53454498079193697" at="15,47,16,35" concept="8" />
@@ -10688,8 +10688,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079219886">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079219886" at="101,100,102,86" concept="8" />
-      <scope id="53454498079219886" at="101,100,102,86" />
+      <node id="53454498079219886" at="102,100,103,86" concept="8" />
+      <scope id="53454498079219886" at="102,100,103,86" />
     </file>
     <file name="ReadOnlyModelAccessor_IStyleContainer.java">
       <node id="53454498079219886" at="15,47,16,35" concept="8" />
@@ -11147,8 +11147,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079237703">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079237703" at="66,79,67,65" concept="8" />
-      <scope id="53454498079237703" at="66,79,67,65" />
+      <node id="53454498079237703" at="67,79,68,65" concept="8" />
+      <scope id="53454498079237703" at="67,79,68,65" />
     </file>
     <file name="Error_ICellStyle.java">
       <node id="53454498079237703" at="15,47,16,35" concept="8" />
@@ -11199,8 +11199,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079237705">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079237705" at="79,85,80,71" concept="8" />
-      <scope id="53454498079237705" at="79,85,80,71" />
+      <node id="53454498079237705" at="80,85,81,71" concept="8" />
+      <scope id="53454498079237705" at="80,85,81,71" />
     </file>
     <file name="ModelAccess_ICellStyle.java">
       <node id="53454498079237705" at="15,47,16,35" concept="8" />
@@ -11272,8 +11272,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079237851">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079237851" at="99,95,100,81" concept="8" />
-      <scope id="53454498079237851" at="99,95,100,81" />
+      <node id="53454498079237851" at="100,95,101,81" concept="8" />
+      <scope id="53454498079237851" at="100,95,101,81" />
     </file>
     <file name="ReadOnlyModelAccessor_ICellStyle.java">
       <node id="53454498079237851" at="15,47,16,35" concept="8" />
@@ -11332,8 +11332,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079251212">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079251212" at="64,84,65,70" concept="8" />
-      <scope id="53454498079251212" at="64,84,65,70" />
+      <node id="53454498079251212" at="65,84,66,70" concept="8" />
+      <scope id="53454498079251212" at="65,84,66,70" />
     </file>
     <file name="Error_EditorCellModel.java">
       <node id="53454498079251212" at="15,47,16,35" concept="8" />
@@ -11676,8 +11676,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079251214">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079251214" at="77,90,78,76" concept="8" />
-      <scope id="53454498079251214" at="77,90,78,76" />
+      <node id="53454498079251214" at="78,90,79,76" concept="8" />
+      <scope id="53454498079251214" at="78,90,79,76" />
     </file>
     <file name="ModelAccess_EditorCellModel.java">
       <node id="53454498079251214" at="15,47,16,35" concept="8" />
@@ -12041,8 +12041,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079251216">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079251216" at="97,100,98,86" concept="8" />
-      <scope id="53454498079251216" at="97,100,98,86" />
+      <node id="53454498079251216" at="98,100,99,86" concept="8" />
+      <scope id="53454498079251216" at="98,100,99,86" />
     </file>
     <file name="ReadOnlyModelAccessor_EditorCellModel.java">
       <node id="53454498079251216" at="15,47,16,35" concept="8" />
@@ -12396,8 +12396,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079369078">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079369078" at="123,92,124,78" concept="8" />
-      <scope id="53454498079369078" at="123,92,124,78" />
+      <node id="53454498079369078" at="124,92,125,78" concept="8" />
+      <scope id="53454498079369078" at="124,92,125,78" />
     </file>
     <file name="TransactionalProperty_Default.java">
       <node id="53454498079369078" at="15,47,16,35" concept="8" />
@@ -12580,8 +12580,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079425120">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079425120" at="129,100,130,86" concept="8" />
-      <scope id="53454498079425120" at="129,100,130,86" />
+      <node id="53454498079425120" at="130,100,131,86" concept="8" />
+      <scope id="53454498079425120" at="130,100,131,86" />
     </file>
     <file name="TransactionalProperty_IStyleContainer.java">
       <node id="53454498079425120" at="15,47,16,35" concept="8" />
@@ -13110,8 +13110,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079440631">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079440631" at="127,95,128,81" concept="8" />
-      <scope id="53454498079440631" at="127,95,128,81" />
+      <node id="53454498079440631" at="128,95,129,81" concept="8" />
+      <scope id="53454498079440631" at="128,95,129,81" />
     </file>
     <file name="TransactionalProperty_ICellStyle.java">
       <node id="53454498079440631" at="15,47,16,35" concept="8" />
@@ -13206,8 +13206,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079445315">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079445315" at="125,100,126,86" concept="8" />
-      <scope id="53454498079445315" at="125,100,126,86" />
+      <node id="53454498079445315" at="126,100,127,86" concept="8" />
+      <scope id="53454498079445315" at="126,100,127,86" />
     </file>
     <file name="TransactionalProperty_EditorCellModel.java">
       <node id="53454498079445315" at="15,47,16,35" concept="8" />
@@ -13670,8 +13670,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079558539">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079558539" at="108,82,109,68" concept="8" />
-      <scope id="53454498079558539" at="108,82,109,68" />
+      <node id="53454498079558539" at="109,82,110,68" concept="8" />
+      <scope id="53454498079558539" at="109,82,110,68" />
     </file>
     <file name="RefNodeList_Default.java">
       <node id="53454498079558539" at="15,47,16,35" concept="8" />
@@ -13813,8 +13813,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079575708">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079575708" at="114,90,115,76" concept="8" />
-      <scope id="53454498079575708" at="114,90,115,76" />
+      <node id="53454498079575708" at="115,90,116,76" concept="8" />
+      <scope id="53454498079575708" at="115,90,116,76" />
     </file>
     <file name="RefNodeList_IStyleContainer.java">
       <node id="53454498079575708" at="15,47,16,35" concept="8" />
@@ -14543,8 +14543,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079759856">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079759856" at="112,86,113,72" concept="8" />
-      <scope id="53454498079759856" at="112,86,113,72" />
+      <node id="53454498079759856" at="113,86,114,72" concept="8" />
+      <scope id="53454498079759856" at="113,86,114,72" />
     </file>
     <file name="RefNodeList_ICelllStyle.java">
       <node id="53454498079759856" at="15,47,16,35" concept="8" />
@@ -14690,8 +14690,8 @@
   </root>
   <root nodeRef="r:5198f57a-b6fe-4b27-af15-f0dc1a790395(jetbrains.mps.lang.editor.test.generation.editor)/53454498079778473">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="53454498079778473" at="110,90,111,76" concept="8" />
-      <scope id="53454498079778473" at="110,90,111,76" />
+      <node id="53454498079778473" at="111,90,112,76" concept="8" />
+      <scope id="53454498079778473" at="111,90,112,76" />
     </file>
     <file name="RefNodeList_EditorCellModel.java">
       <node id="53454498079778473" at="15,47,16,35" concept="8" />

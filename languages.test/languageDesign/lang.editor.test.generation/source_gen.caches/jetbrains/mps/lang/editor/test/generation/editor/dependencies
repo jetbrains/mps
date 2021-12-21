@@ -225,6 +225,7 @@
     <classNode dependClassName="jetbrains.mps.lang.editor.test.generation.editor.RefNodeList_IStyleContainer" />
     <classNode dependClassName="jetbrains.mps.lang.editor.test.generation.editor.RefNodeList_ListWithRole" />
     <classNode dependClassName="jetbrains.mps.lang.editor.test.generation.editor.TestContextActionsToolMenu" />
+    <classNode dependClassName="jetbrains.mps.lang.editor.test.generation.editor.TestTargetKeymap" />
     <classNode dependClassName="jetbrains.mps.lang.editor.test.generation.editor.TestTargetTransformationMenu" />
     <classNode dependClassName="jetbrains.mps.lang.editor.test.generation.editor.TransactionalProperty_Default" />
     <classNode dependClassName="jetbrains.mps.lang.editor.test.generation.editor.TransactionalProperty_Editor" />
@@ -233,6 +234,7 @@
     <classNode dependClassName="jetbrains.mps.lang.editor.test.generation.editor.TransactionalProperty_IStyleContainer" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorHint" />

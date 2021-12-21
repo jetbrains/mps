@@ -26,7 +26,7 @@
       <unit at="26,0,98,0" name="jetbrains.mps.baseLanguage.javadoc.editor.DocMethodParameterReference_SubstituteMenu" />
     </file>
     <file name="EditorAspectDescriptorImpl.java">
-      <unit at="19,0,151,0" name="jetbrains.mps.baseLanguage.javadoc.editor.EditorAspectDescriptorImpl" />
+      <unit at="20,0,157,0" name="jetbrains.mps.baseLanguage.javadoc.editor.EditorAspectDescriptorImpl" />
     </file>
     <file name="PresentationProviders.java">
       <unit at="52,0,55,0" name="jetbrains.mps.baseLanguage.javadoc.editor.PresentationProviders$PROPS" />
@@ -423,8 +423,8 @@
   </root>
   <root nodeRef="r:87ed07dc-bdb2-44c5-8db4-8d5a74e959ff(jetbrains.mps.baseLanguage.javadoc.editor)/1741258697587190277">
     <file name="EditorAspectDescriptorImpl.java">
-      <node id="1741258697587190277" at="111,101,112,108" concept="9" />
-      <scope id="1741258697587190277" at="111,101,112,108" />
+      <node id="1741258697587190277" at="112,101,113,108" concept="9" />
+      <scope id="1741258697587190277" at="112,101,113,108" />
     </file>
     <file name="TextCommentLinePart_ApplySideTransforms.java">
       <node id="1741258697587190277" at="30,0,31,0" concept="3" trace="myLocations" />

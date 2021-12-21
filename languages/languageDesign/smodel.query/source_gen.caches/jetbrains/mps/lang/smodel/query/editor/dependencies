@@ -134,6 +134,7 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.query.editor.ModulesScope_old_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.query.editor.QueryExpression_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.query.editor.QueryExpression_EditorComponent" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.query.editor.QueryExpression_KeyMap" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.query.editor.QueryParameterIncludeReadOnly_old_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.query.editor.QueryParameterIncludeReadOnly_old_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.query.editor.QueryParameterList_Editor" />
@@ -146,6 +147,7 @@
     <classNode dependClassName="jetbrains.mps.lang.smodel.query.editor.UsagesExpression_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.query.editor.WithStatement_EditableMenu" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.query.editor.WithStatement_Editor" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.NamedMenuId" />

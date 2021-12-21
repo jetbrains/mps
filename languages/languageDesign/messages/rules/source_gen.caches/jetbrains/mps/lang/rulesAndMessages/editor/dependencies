@@ -84,14 +84,17 @@
   </dependency>
   <dependency className="jetbrains.mps.lang.rulesAndMessages.editor.EditorAspectDescriptorImpl">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.Collection" />
     <classNode dependClassName="java.util.Collections" />
     <classNode dependClassName="jetbrains.mps.lang.rulesAndMessages.editor.AddMyselfToMenuOfRuleBlockMember" />
     <classNode dependClassName="jetbrains.mps.lang.rulesAndMessages.editor.AddMyselfToTransformationMenu" />
     <classNode dependClassName="jetbrains.mps.lang.rulesAndMessages.editor.InlineMessageProvider_Editor" />
+    <classNode dependClassName="jetbrains.mps.lang.rulesAndMessages.editor.NoMessageKeymap" />
     <classNode dependClassName="jetbrains.mps.lang.rulesAndMessages.editor.RuleWithMessage_Editor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.TransformationMenu" />
