@@ -68,6 +68,10 @@ class Memento implements EditorComponentState {
   private Memento() {
   }
 
+  public boolean hasErrors() {
+    return !myErrors.isEmpty();
+  }
+
   @Override
   public void clearSessionState() {
     mySaveSessionState = false;
