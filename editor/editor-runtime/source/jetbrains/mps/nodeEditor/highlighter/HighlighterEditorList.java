@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,9 @@ public class HighlighterEditorList {
   private final FileEditorManager myFileEditorManager;
 
   public HighlighterEditorList(FileEditorManager fileEditorManager) {
+    // XXX perhaps, has to take Project and access FEM instance on demand?
+    //     what I don't like about Project param is that it gives very wide scope of dependency for the class
+    //     i.e. no idea for outside what this code is about. OTOH, seems to be IDEA's approach to do things.
     myFileEditorManager = fileEditorManager;
   }
 
