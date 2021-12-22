@@ -130,9 +130,17 @@ public class CellLayout_Vertical extends AbstractCellLayout {
           int lineWidth = 0;
           int columnNumber = 0;
           for (EditorCell columnCell : collectionCell) {
-            setX(columnCell, x + lineWidth);
             int columnWidth = columnWidths.get(columnNumber);
-            columnCell.setWidth(columnWidth);
+            CellAlign cellAlign = columnCell.getStyle().get(StyleAttributes.HORIZONTAL_ALIGN);
+            if (cellAlign == CellAlign.RIGHT) {
+              setX(columnCell, x + lineWidth + columnWidth - columnCell.getWidth());
+            } else if (cellAlign == CellAlign.CENTER) {
+              int halfGap = (columnWidth - columnCell.getWidth()) / 2;
+              setX(columnCell, x + lineWidth + halfGap);
+            } else {
+              setX(columnCell, x + lineWidth);
+              columnCell.setWidth(columnWidth);
+            }
             lineWidth += columnWidth;
             columnNumber++;
           }
