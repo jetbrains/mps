@@ -16,11 +16,8 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.util.SystemInfo;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-
-import java.util.Locale;
 
 /**
  * Any MPS module which has a java facet is a subject to MPS custom class loading.
