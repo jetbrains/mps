@@ -147,7 +147,8 @@ public interface EditorAspectDescriptor extends ILanguageAspect {
    *
    * XXX I'm not sure KeyMap is the best interface here, as it contains modification methods one would not expect
    *     to see/use for elements coming from this aspect class. But for the purpose to migrate from reflective
-   *     to compiled access, seems fair.
+   *     to compiled access, seems fair. Besides, generated code gives new instances of KeyMapImpl for each request,
+   *     if LanguagesKeymapManager would not cache these, it's ok even to modify these.
    * @since 2021.3
    */
   @NotNull

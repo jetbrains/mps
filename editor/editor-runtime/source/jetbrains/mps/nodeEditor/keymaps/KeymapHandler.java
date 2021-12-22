@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.nodeEditor.keymaps;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.editor.runtime.impl.LanguagesKeymapManager;
 import jetbrains.mps.editor.runtime.style.StyleAttributesUtil;
+import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
@@ -28,6 +29,7 @@ import jetbrains.mps.openapi.editor.cells.KeyMapAction;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SLanguageHierarchy;
 import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 import org.apache.log4j.LogManager;
@@ -111,7 +113,11 @@ public abstract class KeymapHandler<E> {
       //  As long as our concept hierarchy mimics that of languages, it's ok to go through extended languages
       // to find out possible editors/keymaps declared for super-concepts. This code has to change into generated
       // factory for keymaps, so that we don't need to walk hierarchy here.
-      for (SLanguage l : new SLanguageHierarchy(SModelOperations.getAllLanguageImports(model)).getExtended()) {
+      final LanguageRegistry languageRegistry = MPSCoreComponents.getInstance().getPlatform().findComponent(LanguageRegistry.class);
+      // FWIW, LanguagesKeymapManager has instance of LR, yet I hope to remove its listener code and LKM altogether.
+      for (SLanguage l : new SLanguageHierarchy(languageRegistry, SModelOperations.getAllLanguageImports(model)).getExtended()) {
+        // FIXME likely I don't need LanguagesKeymapManager here at all, may consult EAD directly.
+        //       I believe the longest operation here is to collect extended languages
         List<KeyMap> keyMapsForNamespace = LanguagesKeymapManager.getInstance().getKeyMapsForLanguage(l);
         if (keyMapsForNamespace != null) {
           for (KeyMap keymap : keyMapsForNamespace) {

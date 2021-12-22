@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 public class LanguageRegistryHelper {
   private static final Logger LOG = Logger.getLogger(LanguageRegistryHelper.class);
 
+  @Nullable
   public static EditorAspectDescriptor getEditorAspectDescriptor(LanguageRegistry languageRegistry, SLanguage language) {
     LanguageRuntime languageRuntime = languageRegistry.getLanguage(language);
     if (languageRuntime == null) {
