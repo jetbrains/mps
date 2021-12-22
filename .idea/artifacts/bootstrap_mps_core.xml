@@ -27,7 +27,7 @@
         <element id="module-output" name="module" />
       </element>
       <element id="archive" name="mps-boot-util.jar">
-        <element id="module-output" name="startup-util" />
+        <element id="module-output" name="boot-util" />
       </element>
       <element id="archive" name="mps-closures.jar">
         <element id="module-output" name="closures-runtime" />

@@ -94,7 +94,7 @@
     <orderEntry type="module" module-name="mps-samples" />
     <orderEntry type="module" module-name="smodel" />
     <orderEntry type="module" module-name="startup" />
-    <orderEntry type="module" module-name="startup-util" />
+    <orderEntry type="module" module-name="boot-util" />
     <orderEntry type="module" module-name="testbench" />
     <orderEntry type="module" module-name="textgen" />
     <orderEntry type="module" module-name="tools" />

@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.util/baseLanguage-util.iml" filepath="$PROJECT_DIR$/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.util/baseLanguage-util.iml" group="languages" />
       <module fileurl="file://$PROJECT_DIR$/core/aspects/behavior/behavior-api/behavior-api.iml" filepath="$PROJECT_DIR$/core/aspects/behavior/behavior-api/behavior-api.iml" group="core/aspects/behavior" />
       <module fileurl="file://$PROJECT_DIR$/core/aspects/behavior/behavior-runtime/behavior-runtime.iml" filepath="$PROJECT_DIR$/core/aspects/behavior/behavior-runtime/behavior-runtime.iml" group="core/aspects/behavior" />
+      <module fileurl="file://$PROJECT_DIR$/startup/boot-util/boot-util.iml" filepath="$PROJECT_DIR$/startup/boot-util/boot-util.iml" />
       <module fileurl="file://$PROJECT_DIR$/languages/baseLanguage/closures/runtime/closures-runtime.iml" filepath="$PROJECT_DIR$/languages/baseLanguage/closures/runtime/closures-runtime.iml" group="languages" />
       <module fileurl="file://$PROJECT_DIR$/languages/baseLanguage/collections/runtime/collections-runtime.iml" filepath="$PROJECT_DIR$/languages/baseLanguage/collections/runtime/collections-runtime.iml" group="languages" />
       <module fileurl="file://$PROJECT_DIR$/core/components/components.iml" filepath="$PROJECT_DIR$/core/components/components.iml" group="core" />
@@ -92,7 +93,6 @@
       <module fileurl="file://$PROJECT_DIR$/core/scripts-runtime/scripts-runtime.iml" filepath="$PROJECT_DIR$/core/scripts-runtime/scripts-runtime.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/smodel/smodel.iml" filepath="$PROJECT_DIR$/core/smodel/smodel.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/startup/startup.iml" filepath="$PROJECT_DIR$/startup/startup.iml" />
-      <module fileurl="file://$PROJECT_DIR$/startup/startup-util/startup-util.iml" filepath="$PROJECT_DIR$/startup/startup-util/startup-util.iml" />
       <module fileurl="file://$PROJECT_DIR$/testbench/testbench.iml" filepath="$PROJECT_DIR$/testbench/testbench.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/textgen/textgen.iml" filepath="$PROJECT_DIR$/core/textgen/textgen.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/tools/tools/tools.iml" filepath="$PROJECT_DIR$/tools/tools/tools.iml" />

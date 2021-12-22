@@ -20,6 +20,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Annotations" level="project" />
-    <orderEntry type="module" module-name="startup-util" />
+    <orderEntry type="module" module-name="boot-util" />
   </component>
 </module>

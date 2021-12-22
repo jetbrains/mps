@@ -23,7 +23,7 @@
     <orderEntry type="module" module-name="behavior-runtime" />
     <orderEntry type="module" module-name="typechecking" />
     <orderEntry type="module" module-name="pattern-runtime" />
-    <orderEntry type="module" module-name="startup-util" />
+    <orderEntry type="module" module-name="boot-util" />
     <orderEntry type="module" module-name="java-stub" />
   </component>
 </module>

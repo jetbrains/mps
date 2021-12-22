@@ -79,7 +79,7 @@
     <orderEntry type="module" module-name="constraints-runtime" />
     <orderEntry type="module" module-name="messages-api" />
     <orderEntry type="module" module-name="mps-httpsupport" />
-    <orderEntry type="module" module-name="startup-util" scope="TEST" />
+    <orderEntry type="module" module-name="boot-util" scope="TEST" />
     <orderEntry type="module" module-name="vfs-tracking" scope="TEST" />
   </component>
 </module>
