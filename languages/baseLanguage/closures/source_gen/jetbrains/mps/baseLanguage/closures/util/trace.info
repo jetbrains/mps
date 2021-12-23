@@ -25,56 +25,59 @@
   </root>
   <root nodeRef="r:c8f09818-27d0-4e31-9cdf-dedd92fee7ef(jetbrains.mps.baseLanguage.closures.util)/6271186418883631209">
     <file name="FunctionalInterfaceHelper.java">
-      <node id="6271186418892138087" at="19,0,20,0" concept="9" trace="NO_ABSTRACT_METHOD" />
-      <node id="6271186418887675609" at="20,0,21,0" concept="9" trace="MORE_THAN_ONE_METHOD" />
-      <node id="6271186418892149846" at="21,0,22,0" concept="9" trace="REGULAR_FUNCTIONAL_INTERFACE" />
-      <node id="6271186418892163179" at="34,38,35,183" concept="6" />
-      <node id="6271186418892163198" at="37,7,38,0" concept="8" />
-      <node id="6271186418892163201" at="39,49,40,77" concept="6" />
-      <node id="6271186418892163216" at="41,59,42,111" concept="6" />
-      <node id="6271186418892163223" at="43,12,44,62" concept="7" />
-      <node id="6271186418892163234" at="44,62,45,57" concept="5" />
-      <node id="6271186418892345191" at="45,57,46,128" concept="5" />
-      <node id="6271186418893986737" at="46,128,47,0" concept="8" />
-      <node id="6271186418894002499" at="47,0,48,191" concept="7" />
-      <node id="6271186418892163252" at="50,41,51,138" concept="6" />
-      <node id="6271186418892163259" at="53,64,54,64" concept="6" />
-      <node id="6271186418883631209" at="59,0,60,0" concept="9" trace="name$MnvL" />
-      <node id="6271186418883631782" at="23,0,25,0" concept="1" trace="FunctionalInterfaceHelper#()V" />
-      <node id="6271186418892163177" at="34,0,37,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="6271186418892163250" at="50,0,53,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="6271186418892163171" at="32,80,37,7" concept="5" />
-      <node id="6271186418892163240" at="48,191,53,64" concept="5" />
-      <node id="6271186418892163221" at="43,10,55,5" concept="0" />
-      <node id="6271186418892163199" at="38,0,55,5" concept="3" />
-      <node id="6271186418892163167" at="32,0,57,0" concept="10" trace="getFunctionalMethod#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
-      <scope id="6271186418883631785" at="23,39,23,39" />
-      <scope id="6271186418892163178" at="34,38,35,183" />
-      <scope id="6271186418892163200" at="39,49,40,77" />
-      <scope id="6271186418892163215" at="41,59,42,111" />
-      <scope id="6271186418892163251" at="50,41,51,138" />
-      <scope id="6271186418883631782" at="23,0,25,0" />
-      <scope id="6271186418892163177" at="34,0,37,0">
+      <node id="6271186418892138087" at="21,0,22,0" concept="9" trace="NO_ABSTRACT_METHOD" />
+      <node id="6271186418887675609" at="22,0,23,0" concept="9" trace="MORE_THAN_ONE_METHOD" />
+      <node id="6271186418892149846" at="23,0,24,0" concept="9" trace="REGULAR_FUNCTIONAL_INTERFACE" />
+      <node id="2998782254602930009" at="34,80,35,114" concept="7" />
+      <node id="6271186418892163179" at="37,38,38,183" concept="6" />
+      <node id="6271186418892163198" at="40,7,41,0" concept="8" />
+      <node id="6271186418892163201" at="42,49,43,77" concept="6" />
+      <node id="6271186418892163216" at="44,59,45,111" concept="6" />
+      <node id="6271186418892163223" at="46,12,47,62" concept="7" />
+      <node id="6271186418892163234" at="47,62,48,57" concept="5" />
+      <node id="6271186418892345191" at="48,57,49,128" concept="5" />
+      <node id="6271186418893986737" at="49,128,50,0" concept="8" />
+      <node id="6271186418894002499" at="50,0,51,191" concept="7" />
+      <node id="6271186418892163252" at="53,41,54,138" concept="6" />
+      <node id="6271186418892163259" at="56,64,57,64" concept="6" />
+      <node id="6271186418883631209" at="62,0,63,0" concept="9" trace="InstanceMethodDeclaration$39" />
+      <node id="6271186418883631209" at="66,0,67,0" concept="9" trace="name$MnvL" />
+      <node id="6271186418883631782" at="25,0,27,0" concept="1" trace="FunctionalInterfaceHelper#()V" />
+      <node id="6271186418892163177" at="37,0,40,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="6271186418892163250" at="53,0,56,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="6271186418892163171" at="35,114,40,7" concept="5" />
+      <node id="6271186418892163240" at="51,191,56,64" concept="5" />
+      <node id="6271186418892163221" at="46,10,58,5" concept="0" />
+      <node id="6271186418892163199" at="41,0,58,5" concept="3" />
+      <node id="6271186418892163167" at="34,0,60,0" concept="10" trace="getFunctionalMethod#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
+      <scope id="6271186418883631785" at="25,39,25,39" />
+      <scope id="6271186418892163178" at="37,38,38,183" />
+      <scope id="6271186418892163200" at="42,49,43,77" />
+      <scope id="6271186418892163215" at="44,59,45,111" />
+      <scope id="6271186418892163251" at="53,41,54,138" />
+      <scope id="6271186418883631782" at="25,0,27,0" />
+      <scope id="6271186418892163177" at="37,0,40,0">
         <var name="m" id="6271186418892163177" />
       </scope>
-      <scope id="6271186418892163250" at="50,0,53,0">
+      <scope id="6271186418892163250" at="53,0,56,0">
         <var name="it" id="6271186418892163250" />
       </scope>
-      <scope id="6271186418892163222" at="43,12,54,64">
+      <scope id="6271186418892163222" at="46,12,57,64">
         <var name="erasureSignature" id="6271186418892345192" />
         <var name="errorMessage" id="6271186418892163241" />
         <var name="first" id="6271186418892163235" />
       </scope>
-      <scope id="6271186418892163170" at="32,80,55,5">
+      <scope id="6271186418892163170" at="34,80,58,5">
         <var name="cands" id="6271186418892163172" />
       </scope>
-      <scope id="6271186418892163167" at="32,0,57,0">
+      <scope id="6271186418892163167" at="34,0,60,0">
         <var name="classifier" id="6271186418892163168" />
       </scope>
-      <unit id="6271186418883631209" at="58,0,61,0" name="jetbrains.mps.baseLanguage.closures.util.FunctionalInterfaceHelper$PROPS" />
-      <unit id="6271186418892163177" at="33,181,37,5" name="jetbrains.mps.baseLanguage.closures.util.FunctionalInterfaceHelper$1" />
-      <unit id="6271186418892163250" at="49,74,53,7" name="jetbrains.mps.baseLanguage.closures.util.FunctionalInterfaceHelper$2" />
-      <unit id="6271186418883631209" at="18,0,62,0" name="jetbrains.mps.baseLanguage.closures.util.FunctionalInterfaceHelper" />
+      <unit id="6271186418883631209" at="61,0,64,0" name="jetbrains.mps.baseLanguage.closures.util.FunctionalInterfaceHelper$CONCEPTS" />
+      <unit id="6271186418883631209" at="65,0,68,0" name="jetbrains.mps.baseLanguage.closures.util.FunctionalInterfaceHelper$PROPS" />
+      <unit id="6271186418892163177" at="36,272,40,5" name="jetbrains.mps.baseLanguage.closures.util.FunctionalInterfaceHelper$1" />
+      <unit id="6271186418892163250" at="52,74,56,7" name="jetbrains.mps.baseLanguage.closures.util.FunctionalInterfaceHelper$2" />
+      <unit id="6271186418883631209" at="20,0,69,0" name="jetbrains.mps.baseLanguage.closures.util.FunctionalInterfaceHelper" />
     </file>
   </root>
   <root nodeRef="r:c8f09818-27d0-4e31-9cdf-dedd92fee7ef(jetbrains.mps.baseLanguage.closures.util)/9046093740210861314">

@@ -5,15 +5,17 @@ package jetbrains.mps.baseLanguage.closures.util;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.baseLanguage.scopes.Members;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.behavior.IClassifierType__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import java.util.Objects;
-import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class FunctionalInterfaceHelper {
   public static final String NO_ABSTRACT_METHOD = "no abstract method";
@@ -30,7 +32,8 @@ public class FunctionalInterfaceHelper {
    * A method could be returned even if the error message is provided.
    */
   public static Tuples._2<SNode, String> getFunctionalMethod(SNode classifier) {
-    Iterable<SNode> cands = Sequence.fromIterable(Members.visibleInstanceMethods(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(classifier), classifier)).where(new IWhereFilter<SNode>() {
+    // Visibility not checked as it is assumed abstract methods are visible (otherwise class cannot be overridden)
+    Iterable<SNode> cands = Sequence.fromIterable(SNodeOperations.ofConcept(IClassifierType__BehaviorDescriptor.getMembers_id6r77ob2V1Fr.invoke(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(classifier)), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode m) {
         return !("equals".equals(SPropertyOperations.getString(m, PROPS.name$MnvL))) && (boolean) BaseMethodDeclaration__BehaviorDescriptor.isAnAbstractMethod_id28P2dHxCoRl.invoke(m);
       }
@@ -53,6 +56,10 @@ public class FunctionalInterfaceHelper {
       }) ? REGULAR_FUNCTIONAL_INTERFACE : MORE_THAN_ONE_METHOD);
       return MultiTuple.<SNode,String>from(first, errorMessage);
     }
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept InstanceMethodDeclaration$39 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration");
   }
 
   private static final class PROPS {
