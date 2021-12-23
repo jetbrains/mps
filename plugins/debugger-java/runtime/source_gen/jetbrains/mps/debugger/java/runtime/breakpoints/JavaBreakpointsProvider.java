@@ -80,11 +80,6 @@ public class JavaBreakpointsProvider implements IBreakpointsProvider<JavaBreakpo
   @Override
   @Nullable
   public JavaBreakpoint loadFromState(Element state, JavaBreakpointKind kind, final Project project) {
-    final JavaBreakpoint javaBreakpoint = loadFromStateInternal(state, kind, project);
-    javaBreakpoint.addBreakpointListener(BreakpointsIconCache.getInstance(project).getBreakpointListener());
-    return javaBreakpoint;
-  }
-  private JavaBreakpoint loadFromStateInternal(Element state, JavaBreakpointKind kind, Project project) {
     switch (kind) {
       case LINE_BREAKPOINT:
         {
@@ -130,23 +125,25 @@ public class JavaBreakpointsProvider implements IBreakpointsProvider<JavaBreakpo
     }
     return null;
   }
+
   @Override
   @Nullable
   public Element saveToState(@NotNull JavaBreakpoint breakpoint) {
     //  MPS-11065 exception while saving breakpoints
+    BreakpointLocation location = null;
     if (breakpoint instanceof ILocationBreakpoint) {
       ILocationBreakpoint locationBreakpoint = (ILocationBreakpoint) breakpoint;
-      BreakpointLocation location = locationBreakpoint.getLocation();
+      location = locationBreakpoint.getLocation();
     }
     switch (breakpoint.getKind()) {
       case EXCEPTION_BREAKPOINT:
         return XmlSerializer.serialize(new ExceptionBreakpoint.ExceptionBreakpointInfo((ExceptionBreakpoint) breakpoint));
       case LINE_BREAKPOINT:
-        return XmlSerializer.serialize(new JavaBreakpointInfo(breakpoint, ((ILocationBreakpoint) breakpoint).getLocation()));
+
       case METHOD_BREAKPOINT:
-        return XmlSerializer.serialize(new JavaBreakpointInfo(breakpoint, ((ILocationBreakpoint) breakpoint).getLocation()));
+
       case FIELD_BREAKPOINT:
-        return XmlSerializer.serialize(new JavaBreakpointInfo(breakpoint, ((ILocationBreakpoint) breakpoint).getLocation()));
+        return XmlSerializer.serialize(new JavaBreakpointInfo(breakpoint, location));
       default:
     }
     return null;

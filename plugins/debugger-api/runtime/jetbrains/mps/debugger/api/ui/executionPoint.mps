@@ -274,7 +274,7 @@
       </node>
       <node concept="3clFbS" id="1ijklmZVTVk" role="3clF47">
         <node concept="XkiVB" id="1ijklmZVTVl" role="3cqZAp">
-          <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.&lt;init&gt;(com.intellij.openapi.project.Project,com.intellij.openapi.fileEditor.FileEditorManager)" resolve="CurrentLinePositionComponentEx" />
+          <ref role="37wK5l" to="tzxy:~CurrentLinePositionComponentEx.&lt;init&gt;(com.intellij.openapi.project.Project)" resolve="CurrentLinePositionComponentEx" />
           <node concept="37vLTw" id="2BHiRxgm7WG" role="37wK5m">
             <ref role="3cqZAo" node="1ijklmZVTVg" resolve="project" />
           </node>

@@ -188,9 +188,7 @@ public class BreakpointsIconCache implements ProjectComponent {
     }
     return null;
   }
-  public IBreakpointListener getBreakpointListener() {
-    return myBreakpointListener;
-  }
+
   @NonNls
   @NotNull
   @Override

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="at2vxvjek6qirmxmypvbzx1di1peva0">
+<product version="3" modelHash="fcgjcn7rn0uwwns7dghjahub6r4qfl">
   <files names="BreakpointLocationUpdate.java:BreakpointPresentation.java:BreakpointsIconCache.java:ExceptionBreakpoint.java:FieldBreakpoint.java:JavaBreakpoint.java:JavaBreakpointInfo.java:JavaBreakpointKind.java:JavaBreakpointsProvider.java:LineBreakpoint.java:MethodBreakpoint.java" />
 </product>
 
