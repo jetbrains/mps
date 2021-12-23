@@ -89,6 +89,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.kotlinRefs.editor.KotlinFileReference_Editor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.kotlinRefs.editor.KotlinFileReference_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.kotlinRefs.editor.KotlinFunctionArgument_Editor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.kotlinRefs.editor.KotlinFunctionCallArguments_ListSeparator" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.kotlinRefs.editor.KotlinFunctionCall_Component" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.kotlinRefs.editor.KotlinFunctionCall_SubstituteMenu" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.kotlinRefs.editor.KotlinPropertyGetterCall_SubstituteMenu" />
@@ -98,6 +99,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.kotlinRefs.editor.KtFunctionCallTypeArguments_Component" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndex" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder" />
+    <classNode dependClassName="jetbrains.mps.openapi.editor.cells.KeyMap" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditor" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.ConceptEditorComponent" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.descriptor.NamedMenuId" />

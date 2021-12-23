@@ -13,6 +13,7 @@ import jetbrains.mps.openapi.editor.descriptor.TransformationMenu;
 import jetbrains.mps.openapi.editor.descriptor.NamedMenuId;
 import java.util.Arrays;
 import jetbrains.mps.openapi.editor.descriptor.SubstituteMenu;
+import jetbrains.mps.openapi.editor.cells.KeyMap;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
 import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
@@ -104,6 +105,11 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
       default:
     }
     return Collections.<SubstituteMenu>emptyList();
+  }
+  @NotNull
+  @Override
+  public Collection<KeyMap> getDeclaredKeyMaps() {
+    return Arrays.<KeyMap>asList(new KotlinFunctionCallArguments_ListSeparator());
   }
 
   private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc380f3L), MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc2e9d2L), MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x68fcefc6c20b5c6cL), MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x13429f603fcbe305L), MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x13429f603fcc87daL), MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddd3d84dL)).seal();
