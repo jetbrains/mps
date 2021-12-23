@@ -11,6 +11,7 @@ import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.kotlin.behavior.ConstructorDeclaration__BehaviorDescriptor;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
@@ -75,7 +76,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.addEditorCell(createComponent_2());
     editorCell.addEditorCell(createProperty_0());
     editorCell.addEditorCell(createComponent_3());
-    editorCell.addEditorCell(createRefNode_2());
+    if (nodeCondition_yk1pkl_a7a()) {
+      editorCell.addEditorCell(createRefNode_2());
+    }
     editorCell.addEditorCell(createComponent_4());
     editorCell.addEditorCell(createComponent_5());
     editorCell.addEditorCell(createComponent_6());
@@ -86,6 +89,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
   private boolean nodeCondition_yk1pkl_a3a() {
     return (SLinkOperations.getTarget(myNode, LINKS.modifier$C$4W) != null);
+  }
+  private boolean nodeCondition_yk1pkl_a7a() {
+    return (boolean) ConstructorDeclaration__BehaviorDescriptor.isVisibleInEditor_id2AtO9a4wP1W.invoke(SLinkOperations.getTarget(myNode, LINKS.constructor$QvZc));
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.kotlin.editor.Annotations_Component");

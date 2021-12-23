@@ -15,6 +15,7 @@ import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.LParenthesisStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
+import jetbrains.mps.editor.runtime.style.FocusPolicy;
 import jetbrains.mps.lang.editor.cellProviders.RefNodeListHandler;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -69,6 +70,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
     AbstractCellListHandler handler = new argumentsListHandler_bia7ii_b0(myNode, getEditorContext());
     EditorCell_Collection editorCell = handler.createCells(new CellLayout_Indent(), false);
     editorCell.setCellId("AC_refNodeList_arguments");
+    if (true) {
+      editorCell.getStyle().set(StyleAttributes.FOCUS_POLICY, FocusPolicy.FIRST_EDITABLE_CELL);
+    }
     editorCell.setSRole(handler.getElementSRole());
     return editorCell;
   }

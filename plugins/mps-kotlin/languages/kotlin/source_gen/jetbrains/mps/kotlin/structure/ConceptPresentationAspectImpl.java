@@ -153,6 +153,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_IfExpression;
   private ConceptPresentation props_ImportHeader;
   private ConceptPresentation props_IncOperation;
+  private ConceptPresentation props_IncompleteDeclaration;
   private ConceptPresentation props_IndexOperation;
   private ConceptPresentation props_InfixCallOperator;
   private ConceptPresentation props_InfixFunctionModifier;
@@ -579,6 +580,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.EmptyClassMemberDeclaration:
         if (props_EmptyClassMemberDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.deprecated(true);
           cpb.shortDesc("empty class member declaration");
           cpb.rawPresentation("EmptyClassMemberDeclaration");
           props_EmptyClassMemberDeclaration = cpb.create();
@@ -1252,6 +1254,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_IncOperation = cpb.create();
         }
         return props_IncOperation;
+      case LanguageConceptSwitch.IncompleteDeclaration:
+        if (props_IncompleteDeclaration == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.rawPresentation("IncompleteDeclaration");
+          props_IncompleteDeclaration = cpb.create();
+        }
+        return props_IncompleteDeclaration;
       case LanguageConceptSwitch.IndexOperation:
         if (props_IndexOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -1337,7 +1346,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("kotlin file");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a451b0nj);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a551b0oj);
           props_KotlinFile = cpb.create();
         }
         return props_KotlinFile;
@@ -1346,7 +1355,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("script");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a551b0nj);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a651b0oj);
           props_KtScript = cpb.create();
         }
         return props_KtScript;

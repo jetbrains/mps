@@ -37,8 +37,9 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
   public static final SMethod<SNode> getReturnType_id6QVUYzas5Of = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReturnType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6QVUYzas5Of").build();
   public static final SMethod<SNode> getReceiverType_id2gj5XQXMFhP = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReceiverType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2gj5XQXMFhP").build();
   public static final SMethod<Boolean> hasModifier_id5D4bOjrv7QE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasModifer").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjrv7QE").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isVisibleInEditor_id2AtO9a4wP1W = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVisibleInEditor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2AtO9a4wP1W").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMemberSignatureKind_id5q426iHFtTk, getDetailedPresentation_id22G2W3WJ92t, getTypeParameters_id1VI7K1kLcNv, getReturnType_id6QVUYzas5Of, getReceiverType_id2gj5XQXMFhP, hasModifier_id5D4bOjrv7QE);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMemberSignatureKind_id5q426iHFtTk, getDetailedPresentation_id22G2W3WJ92t, getTypeParameters_id1VI7K1kLcNv, getReturnType_id6QVUYzas5Of, getReceiverType_id2gj5XQXMFhP, hasModifier_id5D4bOjrv7QE, isVisibleInEditor_id2AtO9a4wP1W);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -77,6 +78,9 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
     // TODO should there be some modifier here?
     return modifierKind == null;
   }
+  /*package*/ static boolean isVisibleInEditor_id2AtO9a4wP1W(@NotNull SNode __thisNode__) {
+    return true;
+  }
 
   /*package*/ ConstructorDeclaration__BehaviorDescriptor() {
   }
@@ -103,6 +107,8 @@ public final class ConstructorDeclaration__BehaviorDescriptor extends BaseBHDesc
         return (T) ((SNode) getReceiverType_id2gj5XQXMFhP(node));
       case 5:
         return (T) ((Boolean) hasModifier_id5D4bOjrv7QE(node, (SAbstractConcept) parameters[0]));
+      case 6:
+        return (T) ((Boolean) isVisibleInEditor_id2AtO9a4wP1W(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

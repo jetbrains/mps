@@ -28,6 +28,9 @@
         <reference id="1075010451642646892" name="defaultMember" index="1H5jkz" />
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
+      <concept id="1224240836180" name="jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation" flags="ig" index="asaX9">
+        <property id="1225118933224" name="comment" index="YLQ7P" />
+      </concept>
       <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
         <property id="7862711839422615217" name="text" index="t5JxN" />
       </concept>
@@ -140,9 +143,6 @@
     <property role="3GE5qa" value="statement.object" />
     <node concept="PrWs8" id="2yYXHtl6JEn" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjj" resolve="IDeclaration" />
-    </node>
-    <node concept="PrWs8" id="2yYXHtl6JJS" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jcf" resolve="IClassMemberDeclaration" />
     </node>
     <node concept="PrWs8" id="213J8chjiJ$" role="PzmwI">
       <ref role="PrY4T" node="213J8chjiEQ" resolve="IVariableIdentifier" />
@@ -957,6 +957,9 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="inheritance" />
       <ref role="20lvS9" node="2yYXHtl6JjL" resolve="IInheritanceModifier" />
+      <node concept="t5JxF" id="2AtO9a5slV$" role="lGtFl">
+        <property role="t5JxN" value="no use of IInheritable as here this specifier is optional (can be standalone)" />
+      </node>
     </node>
     <node concept="1TJgyj" id="2yYXHtl$9A6" role="1TKVEi">
       <property role="IQ2ns" value="2936055411806083462" />
@@ -967,9 +970,6 @@
     </node>
     <node concept="PrWs8" id="2yYXHtl6JEp" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjj" resolve="IDeclaration" />
-    </node>
-    <node concept="PrWs8" id="2yYXHtl6JJT" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jcf" resolve="IClassMemberDeclaration" />
     </node>
     <node concept="PrWs8" id="2Dtd0_QzlO3" role="PzmwI">
       <ref role="PrY4T" node="2Dtd0_QziWF" resolve="IFunctionDeclaration" />
@@ -1274,9 +1274,6 @@
     <node concept="PrWs8" id="5dNsAxXP0kw" role="PzmwI">
       <ref role="PrY4T" node="5dNsAxXOVNq" resolve="IInheritable" />
     </node>
-    <node concept="PrWs8" id="2yYXHtl6JJU" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jcf" resolve="IClassMemberDeclaration" />
-    </node>
     <node concept="PrWs8" id="1502Vugzd1A" role="PzmwI">
       <ref role="PrY4T" node="1502Vugz7Wy" resolve="IWithReceiver" />
     </node>
@@ -1350,7 +1347,10 @@
     <property role="TrG5h" value="IDeclaration" />
     <property role="3GE5qa" value="root" />
     <node concept="PrWs8" id="213J8chg1H5" role="PrDN$">
-      <ref role="PrY4T" node="213J8cgCCAA" resolve="IScopePart" />
+      <ref role="PrY4T" node="2yYXHtl6Jcf" resolve="IClassMemberDeclaration" />
+    </node>
+    <node concept="t5JxF" id="2AtO9a5kUrV" role="lGtFl">
+      <property role="t5JxN" value="any kind of declaration, can be a member of a class or a standalone declaration" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jjv">
@@ -1385,9 +1385,6 @@
     </node>
     <node concept="PrWs8" id="2yYXHtl6JEt" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjj" resolve="IDeclaration" />
-    </node>
-    <node concept="PrWs8" id="2yYXHtl6JJV" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jcf" resolve="IClassMemberDeclaration" />
     </node>
     <node concept="PrWs8" id="2yYXHtlhVgq" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6JcK" resolve="IIdentifier" />
@@ -2192,9 +2189,6 @@
     <node concept="PrWs8" id="2yYXHtlhVm3" role="PrDN$">
       <ref role="PrY4T" node="2yYXHtl6Jjj" resolve="IDeclaration" />
     </node>
-    <node concept="PrWs8" id="2yYXHtlhVm4" role="PrDN$">
-      <ref role="PrY4T" node="2yYXHtl6Jcf" resolve="IClassMemberDeclaration" />
-    </node>
     <node concept="PrWs8" id="2yYXHtlhVm6" role="PrDN$">
       <ref role="PrY4T" node="2yYXHtl6JcK" resolve="IIdentifier" />
     </node>
@@ -2617,6 +2611,9 @@
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="213J8cgR8Cn" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jcf" resolve="IClassMemberDeclaration" />
+    </node>
+    <node concept="asaX9" id="2AtO9a5l7Dm" role="lGtFl">
+      <property role="YLQ7P" value="merged into EmptyDeclaration since IDeclarations are IClassMemberDeclarations" />
     </node>
   </node>
   <node concept="PlHQZ" id="213J8chg1H9">
@@ -3750,6 +3747,26 @@
     <ref role="1TJDcQ" node="6IFGHg6lP2o" resolve="TypePostFixUnaryExpression" />
     <node concept="PrWs8" id="6IFGHg6lUv5" role="PzmwI">
       <ref role="PrY4T" node="6563FJLeShn" resolve="IStaticType" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="2AtO9a4X07a">
+    <property role="EcuMT" value="2998782254613004746" />
+    <property role="TrG5h" value="IncompleteDeclaration" />
+    <property role="3GE5qa" value="edition" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="1TJgyi" id="2AtO9a5ybKg" role="1TKVEl">
+      <property role="IQ2nx" value="2998782254622751760" />
+      <property role="TrG5h" value="isOverride" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="PrWs8" id="2AtO9a4X15l" role="PzmwI">
+      <ref role="PrY4T" node="2yYXHtl6Jjj" resolve="IDeclaration" />
+    </node>
+    <node concept="PrWs8" id="2AtO9a4YHXY" role="PzmwI">
+      <ref role="PrY4T" node="6cg9X74Le0Z" resolve="IVisible" />
+    </node>
+    <node concept="PrWs8" id="2AtO9a4YI6_" role="PzmwI">
+      <ref role="PrY4T" node="5dNsAxXOVNq" resolve="IInheritable" />
     </node>
   </node>
 </model>

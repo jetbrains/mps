@@ -4466,7 +4466,7 @@
   </node>
   <node concept="WtQ9Q" id="5lA_K0zi6ho">
     <property role="3GE5qa" value="declaration.class.member" />
-    <ref role="WuzLi" to="hcm8:213J8cgR8Cm" resolve="EmptyClassMemberDeclaration" />
+    <ref role="WuzLi" to="hcm8:213J8cgR8Cm" resolve="EmptyDeclaration" />
     <node concept="11bSqf" id="5lA_K0zi6hp" role="11c4hB">
       <node concept="3clFbS" id="5lA_K0zi6hq" role="2VODD2">
         <node concept="lc7rE" id="5lA_K0zi6ht" role="3cqZAp">

@@ -52,22 +52,22 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_IDeclaration_cellMenu_j85r0f_a0a(), new SChildSubstituteInfoPartEx(editorCell)}));
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new ReplaceWith_IClassMemberDeclaration_cellMenu_j85r0f_a0a(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
   }
-  public static class ReplaceWith_IDeclaration_cellMenu_j85r0f_a0a extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
-    public ReplaceWith_IDeclaration_cellMenu_j85r0f_a0a() {
+  public static class ReplaceWith_IClassMemberDeclaration_cellMenu_j85r0f_a0a extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
+    public ReplaceWith_IClassMemberDeclaration_cellMenu_j85r0f_a0a() {
     }
     public SAbstractConcept getReplacementConcept() {
-      return CONCEPTS.IDeclaration$3J;
+      return CONCEPTS.IClassMemberDeclaration$LK;
     }
     @Override
     protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
-      return new EditorMenuDescriptorBase("replace node (custom node concept: " + "IDeclaration" + ")", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2324909103764843390"));
+      return new EditorMenuDescriptorBase("replace node (custom node concept: " + "IClassMemberDeclaration" + ")", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2324909103764843390"));
     }
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IDeclaration$3J = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d3L, "jetbrains.mps.kotlin.structure.IDeclaration");
+    /*package*/ static final SInterfaceConcept IClassMemberDeclaration$LK = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af30fL, "jetbrains.mps.kotlin.structure.IClassMemberDeclaration");
   }
 }

@@ -5483,7 +5483,7 @@
           <uo k="s:originTrace" v="n:2324909103762934319" />
           <node concept="1BaE9c" id="mD" role="3clFbG">
             <property role="1ouuDV" value="CONCEPTS" />
-            <property role="1BaxDp" value="EmptyClassMemberDeclaration$Ab" />
+            <property role="1BaxDp" value="EmptyDeclaration$V" />
             <uo k="s:originTrace" v="n:2324909103762934319" />
             <node concept="2YIFZM" id="mE" role="1Bazha">
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
@@ -5498,11 +5498,11 @@
                 <uo k="s:originTrace" v="n:2324909103762934319" />
               </node>
               <node concept="1adDum" id="mH" role="37wK5m">
-                <property role="1adDun" value="0x2043bc8310dc8a16L" />
+                <property role="1adDun" value="0x4e07f19a40c4182bL" />
                 <uo k="s:originTrace" v="n:2324909103762934319" />
               </node>
               <node concept="Xl_RD" id="mI" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.kotlin.structure.EmptyClassMemberDeclaration" />
+                <property role="Xl_RC" value="jetbrains.mps.kotlin.structure.EmptyDeclaration" />
                 <uo k="s:originTrace" v="n:2324909103762934319" />
               </node>
             </node>

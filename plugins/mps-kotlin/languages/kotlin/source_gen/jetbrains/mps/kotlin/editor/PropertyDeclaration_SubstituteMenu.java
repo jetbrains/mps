@@ -87,7 +87,7 @@ public class PropertyDeclaration_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.PropertyDeclaration$SE, null);
+        SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.PropertyDeclaration$SE, _context.getCurrentTargetNode());
         SPropertyOperations.assign(node, PROPS.isReadonly$jzqd, true);
         return node;
       }
@@ -142,7 +142,7 @@ public class PropertyDeclaration_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        return SNodeFactoryOperations.createNewNode(CONCEPTS.PropertyDeclaration$SE, null);
+        return SNodeFactoryOperations.createNewNode(CONCEPTS.PropertyDeclaration$SE, _context.getCurrentTargetNode());
       }
 
       @Override
@@ -195,7 +195,7 @@ public class PropertyDeclaration_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public SNode createNode(@NotNull String pattern) {
-        SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.PropertyDeclaration$SE, null);
+        SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.PropertyDeclaration$SE, _context.getCurrentTargetNode());
         SPropertyOperations.assign(node, PROPS.isReadonly$jzqd, true);
         SPropertyOperations.assign(node, PROPS.isConstant$zvIz, true);
         return node;

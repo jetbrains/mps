@@ -20,13 +20,16 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IInheritanceSpecifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL, "jetbrains.mps.kotlin.structure.IInheritanceSpecifier");
 
-  public static final SMethod<SNode> getInheritedType_id5q426iHvzD9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInheritedType").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5q426iHvzD9").build();
+  public static final SMethod<SNode> getInheritedType_id5q426iHvzD9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInheritedType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5q426iHvzD9").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInheritedType_id5q426iHvzD9);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  /*package*/ static SNode getInheritedType_id5q426iHvzD9(@NotNull SNode __thisNode__) {
+    return null;
+  }
 
   /*package*/ IInheritanceSpecifier__BehaviorDescriptor() {
   }
@@ -43,6 +46,8 @@ public final class IInheritanceSpecifier__BehaviorDescriptor extends BaseBHDescr
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 0:
+        return (T) ((SNode) getInheritedType_id5q426iHvzD9(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

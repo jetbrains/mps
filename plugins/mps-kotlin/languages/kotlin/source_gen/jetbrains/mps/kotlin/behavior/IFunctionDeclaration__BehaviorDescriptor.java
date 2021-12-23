@@ -31,8 +31,9 @@ public final class IFunctionDeclaration__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<SNode> getReceiverType_id2gj5XQXMFhP = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReceiverType").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2gj5XQXMFhP").build();
   public static final SMethod<SNode> getClass_id4vugIDehkCF = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4vugIDehkCF").build();
   public static final SMethod<Boolean> hasModifier_id5D4bOjrv7QE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasModifier").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjrv7QE").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getEditorNavigatableTarget_id2AtO9a4xtWa = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEditorNavigatableTarget").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2AtO9a4xtWa").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameters_id6f3juM$_Kx4, getReturnType_id6QVUYzas5Of, getReturnExpression_id6yQJbFyGtec, getReceiverType_id2gj5XQXMFhP, getClass_id4vugIDehkCF, hasModifier_id5D4bOjrv7QE);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameters_id6f3juM$_Kx4, getReturnType_id6QVUYzas5Of, getReturnExpression_id6yQJbFyGtec, getReceiverType_id2gj5XQXMFhP, getClass_id4vugIDehkCF, hasModifier_id5D4bOjrv7QE, getEditorNavigatableTarget_id2AtO9a4xtWa);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -49,6 +50,10 @@ public final class IFunctionDeclaration__BehaviorDescriptor extends BaseBHDescri
     }
 
     return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IClassLike$go, false, false);
+  }
+  /*package*/ static SNode getEditorNavigatableTarget_id2AtO9a4xtWa(@NotNull SNode __thisNode__) {
+    // By default and in most case: the declaration
+    return __thisNode__;
   }
 
   /*package*/ IFunctionDeclaration__BehaviorDescriptor() {
@@ -70,6 +75,8 @@ public final class IFunctionDeclaration__BehaviorDescriptor extends BaseBHDescri
         return (T) ((SNode) getReturnExpression_id6yQJbFyGtec(node));
       case 4:
         return (T) ((SNode) getClass_id4vugIDehkCF(node));
+      case 6:
+        return (T) ((SNode) getEditorNavigatableTarget_id2AtO9a4xtWa(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

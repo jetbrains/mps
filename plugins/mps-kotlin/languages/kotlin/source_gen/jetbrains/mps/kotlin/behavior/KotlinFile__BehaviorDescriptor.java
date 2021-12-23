@@ -45,11 +45,13 @@ public final class KotlinFile__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static List<SNode> getMembers_id213J8chg2xy(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.declarations$NgHw);
   }
-  /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, final SAbstractConcept kind, final SNode child) {
+  /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull final SNode __thisNode__, final SAbstractConcept kind, final SNode child) {
     final CompositeScope composite = new CompositeScope(KotlinFile__BehaviorDescriptor.getLocalScope_id46gC9M66Lsd.invoke(__thisNode__, kind, child));
     ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(__thisNode__), CONCEPTS.KotlinFile$4h)).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        composite.addScope(KotlinFile__BehaviorDescriptor.getLocalScope_id46gC9M66Lsd.invoke(it, kind, child));
+        if (it != __thisNode__) {
+          composite.addScope(KotlinFile__BehaviorDescriptor.getLocalScope_id46gC9M66Lsd.invoke(it, kind, child));
+        }
       }
     });
     return composite;

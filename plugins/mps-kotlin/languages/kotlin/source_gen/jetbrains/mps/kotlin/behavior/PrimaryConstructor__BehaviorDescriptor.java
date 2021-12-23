@@ -14,23 +14,38 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class PrimaryConstructor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af418L, "jetbrains.mps.kotlin.structure.PrimaryConstructor");
 
   public static final SMethod<List<SNode>> getParameters_id6f3juM$_Kx4 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6f3juM$_Kx4").build();
+  public static final SMethod<Boolean> isVisibleInEditor_id2AtO9a4wP1W = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVisibleInEditor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2AtO9a4wP1W").build();
+  public static final SMethod<SNode> getEditorNavigatableTarget_id2AtO9a4xtWa = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEditorNavigatableTarget").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2AtO9a4xtWa").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameters_id6f3juM$_Kx4);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameters_id6f3juM$_Kx4, isVisibleInEditor_id2AtO9a4wP1W, getEditorNavigatableTarget_id2AtO9a4xtWa);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static List<SNode> getParameters_id6f3juM$_Kx4(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.parameters$$EEQ);
+  }
+  /*package*/ static boolean isVisibleInEditor_id2AtO9a4wP1W(@NotNull SNode __thisNode__) {
+    return ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameters$$EEQ)).isNotEmpty() || ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.annotations$bXtr)).isNotEmpty() || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.visibility$vnSV), CONCEPTS.PublicVisibility$Me));
+  }
+  /*package*/ static SNode getEditorNavigatableTarget_id2AtO9a4xtWa(@NotNull SNode __thisNode__) {
+    if (!(((boolean) ConstructorDeclaration__BehaviorDescriptor.isVisibleInEditor_id2AtO9a4wP1W.invoke(__thisNode__)))) {
+      return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IClassLike$go, false, false);
+    }
+    return __thisNode__;
   }
 
   /*package*/ PrimaryConstructor__BehaviorDescriptor() {
@@ -50,6 +65,10 @@ public final class PrimaryConstructor__BehaviorDescriptor extends BaseBHDescript
     switch (methodIndex) {
       case 0:
         return (T) ((List<SNode>) getParameters_id6f3juM$_Kx4(node));
+      case 1:
+        return (T) ((Boolean) isVisibleInEditor_id2AtO9a4wP1W(node));
+      case 2:
+        return (T) ((SNode) getEditorNavigatableTarget_id2AtO9a4xtWa(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -81,5 +100,12 @@ public final class PrimaryConstructor__BehaviorDescriptor extends BaseBHDescript
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink parameters$$EEQ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af418L, 0x28bef6d7551af6dfL, "parameters");
+    /*package*/ static final SContainmentLink annotations$bXtr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6e77b7e7a89e49faL, 0x6e77b7e7a89e49fbL, "annotations");
+    /*package*/ static final SContainmentLink visibility$vnSV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, 0x631027d1c4c4e040L, "visibility");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept PublicVisibility$Me = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af395L, "jetbrains.mps.kotlin.structure.PublicVisibility");
+    /*package*/ static final SInterfaceConcept IClassLike$go = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x298a6a355c110274L, "jetbrains.mps.kotlin.structure.IClassLike");
   }
 }

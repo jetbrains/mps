@@ -14,11 +14,11 @@ public class IClassMemberDeclaration_Constraints extends BaseConstraintsDescript
 
   @Override
   public SConcept getDefaultConcreteConcept() {
-    return CONCEPTS.EmptyClassMemberDeclaration$Ab;
+    return CONCEPTS.EmptyDeclaration$V;
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IClassMemberDeclaration$LK = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af30fL, "jetbrains.mps.kotlin.structure.IClassMemberDeclaration");
-    /*package*/ static final SConcept EmptyClassMemberDeclaration$Ab = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310dc8a16L, "jetbrains.mps.kotlin.structure.EmptyClassMemberDeclaration");
+    /*package*/ static final SConcept EmptyDeclaration$V = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4e07f19a40c4182bL, "jetbrains.mps.kotlin.structure.EmptyDeclaration");
   }
 }

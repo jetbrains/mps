@@ -1147,7 +1147,7 @@
   <node concept="1M2fIO" id="213J8cgR8CJ">
     <property role="3GE5qa" value="declaration.class.member" />
     <ref role="1M2myG" to="hcm8:2yYXHtl6Jcf" resolve="IClassMemberDeclaration" />
-    <ref role="1MND4H" to="hcm8:213J8cgR8Cm" resolve="EmptyClassMemberDeclaration" />
+    <ref role="1MND4H" to="hcm8:4S7WpD0L1wF" resolve="EmptyDeclaration" />
   </node>
   <node concept="1M2fIO" id="5GtPw5y$JYd">
     <property role="3GE5qa" value="expression.operator.binary.infix" />

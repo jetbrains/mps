@@ -27,7 +27,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
-import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
+import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
+import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
+import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
+import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -36,6 +39,12 @@ import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.EditorManager;
 import jetbrains.mps.openapi.editor.update.AttributeKind;
+import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
+import jetbrains.mps.nodeEditor.cellMenu.CellContext;
+import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.ColonStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -165,7 +174,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
       editorCell.setDefaultText("<no name>");
       editorCell.setCellId("property_name");
-      editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
+      editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new ReplaceWith_FunctionParameter_cellMenu_r9vhx9_a0d0(), new SChildSubstituteInfoPartEx(editorCell)}));
       setCellContext(editorCell);
       Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
       Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
@@ -180,6 +189,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return editorCell;
     } finally {
       getCellFactory().popCellContext();
+    }
+  }
+  public static class ReplaceWith_FunctionParameter_cellMenu_r9vhx9_a0d0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
+    public ReplaceWith_FunctionParameter_cellMenu_r9vhx9_a0d0() {
+    }
+    public SAbstractConcept getReplacementConcept() {
+      return CONCEPTS.FunctionParameter$tR;
+    }
+    @Override
+    protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
+      return new EditorMenuDescriptorBase("replace node (custom node concept: " + "FunctionParameter" + ")", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "2998782254609036256"));
     }
   }
   private EditorCell createConstant_1() {
@@ -331,5 +351,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SConcept FunctionParameter$tR = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af405L, "jetbrains.mps.kotlin.structure.FunctionParameter");
   }
 }

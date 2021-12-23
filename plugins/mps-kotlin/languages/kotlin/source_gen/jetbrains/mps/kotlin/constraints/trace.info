@@ -300,13 +300,13 @@
   <root nodeRef="r:133e8cac-c6ad-447f-a90c-5146ca3b1aed(jetbrains.mps.kotlin.constraints)/2324909103762934319">
     <file name="IClassMemberDeclaration_Constraints.java">
       <node id="2324909103762934319" at="11,48,12,47" concept="12" />
-      <node id="2324909103762934319" at="16,47,17,51" concept="7" />
+      <node id="2324909103762934319" at="16,47,17,39" concept="7" />
       <node id="2324909103762934319" at="21,0,22,0" concept="10" trace="IClassMemberDeclaration$LK" />
-      <node id="2324909103762934319" at="22,0,23,0" concept="10" trace="EmptyClassMemberDeclaration$Ab" />
+      <node id="2324909103762934319" at="22,0,23,0" concept="10" trace="EmptyDeclaration$V" />
       <node id="2324909103762934319" at="11,0,14,0" concept="1" trace="IClassMemberDeclaration_Constraints#()V" />
       <node id="2324909103762934319" at="15,0,19,0" concept="5" trace="getDefaultConcreteConcept#()Lorg/jetbrains/mps/openapi/language/SConcept;" />
       <scope id="2324909103762934319" at="11,48,12,47" />
-      <scope id="2324909103762934319" at="16,47,17,51" />
+      <scope id="2324909103762934319" at="16,47,17,39" />
       <scope id="2324909103762934319" at="11,0,14,0" />
       <scope id="2324909103762934319" at="15,0,19,0" />
       <unit id="2324909103762934319" at="20,0,24,0" name="jetbrains.mps.kotlin.constraints.IClassMemberDeclaration_Constraints$CONCEPTS" />
