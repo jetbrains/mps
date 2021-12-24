@@ -47,6 +47,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
+@SuppressWarnings("UnstableApiUsage")
 public abstract class BaseAction extends AnAction {
   private boolean myIsAlwaysVisible = true;
   private ActionAccess myActionAccess = null;
@@ -163,11 +164,12 @@ public abstract class BaseAction extends AnAction {
     getModelAccess(e).runReadAction(() -> {
       try {
         Map<String, Object> params = new THashMap<>();
-        if (!collectActionData(e, params)) {
+        final AnActionEvent dcBridgeEvent = e.withDataContext(new LegacyDataContextBridge(e.getDataContext()));
+        if (!collectActionData(dcBridgeEvent, params)) {
           disable(e.getPresentation());
           return;
         }
-        doUpdate(e, params);
+        doUpdate(dcBridgeEvent, params);
       } catch (ProcessCanceledException ex) {
         // though PCE states we shall not catch it, I don't see how to let it go without alerting ModelAccess code that doesn't like exceptions
         // thrown inside a model action
@@ -195,8 +197,9 @@ public abstract class BaseAction extends AnAction {
       try {
         Map<String, Object> params = new THashMap<>();
         // read action here is redundant always except ActionAccess.EmptyAccess
-        getModelAccess(event).runReadAction(() -> collectActionData(event, params));
-        doExecute(event, params);
+        final AnActionEvent dcBridgeEvent = event.withDataContext(new LegacyDataContextBridge(event.getDataContext()));
+        getModelAccess(event).runReadAction(() -> collectActionData(dcBridgeEvent, params));
+        doExecute(dcBridgeEvent, params);
       } catch (RuntimeException ex) {
         final Logger log = LogManager.getLogger(getClass());
         if (log.isEnabledFor(Level.ERROR)) {
