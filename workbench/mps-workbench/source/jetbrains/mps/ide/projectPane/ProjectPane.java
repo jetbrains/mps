@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,7 +77,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
+import org.jetbrains.mps.openapi.module.SRepositoryListener;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -92,7 +92,7 @@ import java.util.function.Supplier;
 
 public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectViewPaneOverride {
   private static final Logger LOG = LogManager.getLogger(ProjectPane.class);
-  private final SRepositoryListenerBase myRepositoryListener = new SRepositoryListenerBase() {
+  private final SRepositoryListener myRepositoryListener = new SRepositoryListener() {
     @Override
     public void moduleAdded(@NotNull SModule module) {
       if (module instanceof TempModule || module instanceof TempModule2) {

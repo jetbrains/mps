@@ -32,11 +32,15 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.VirtualFileManagerListener;
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
 import jetbrains.mps.ide.actions.CopyNode_Action;
 import jetbrains.mps.ide.actions.CutNode_Action;
 import jetbrains.mps.ide.actions.PasteNode_Action;
+import jetbrains.mps.ide.actions.SModelActionData;
+import jetbrains.mps.ide.actions.SModuleActionData;
+import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.fileSystem.nodes.ProjectTreeNode;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
@@ -49,7 +53,6 @@ import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SNodeTreeNode;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.make.IMakeNotificationListener;
 import jetbrains.mps.make.IMakeNotificationListener.Stub;
 import jetbrains.mps.make.MakeNotification;
@@ -66,6 +69,7 @@ import jetbrains.mps.workbench.ActionPlace;
 import jetbrains.mps.workbench.FileSystemModelHelper;
 import jetbrains.mps.workbench.MPSDataKeys;
 import jetbrains.mps.workbench.action.ActionUtils;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -81,6 +85,7 @@ import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -137,38 +142,119 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
 
   public abstract void rebuild();
 
+  // XXX likely can not make use of these keys reported, we'd likely to get traces from PreCachedDataContext only
+  private final HashSet<String> myReportedOldDataKeys = new HashSet<>();
+  @SuppressWarnings("UnstableApiUsage")
+  private void logDeprecatedDataKey(String dataId) {
+    if (!myReportedOldDataKeys.add(dataId)) {
+      return;
+    }
+    final Logger l = Logger.getLogger(getClass());
+    String m = String.format("Use of deprecated DataKey '%s'", dataId);
+    if (RuntimeFlags.isInternalMode()) {
+      l.error(m, new Throwable());
+    } else {
+      l.debug(m, new Throwable());
+    }
+  }
+
   @Override
   public Object getData(String dataId) {
+    if (SNodeActionData.KEY.is(dataId)) {
+      final List<SNode> selectedNodes = getSelectedSNodes();
+      if (selectedNodes.isEmpty()) {
+        return null;
+      }
+      // that's what getSelectedSNode() does
+      if (selectedNodes.size() == 1) {
+        // FIXME tree node is capable to give SNodePointer, use it
+        return SNodeActionData.from(selectedNodes.get(0).getReference());
+      }
+      assert selectedNodes.size() > 1;
+      return SNodeActionData.from(selectedNodes.stream().map(SNode::getReference));
+    }
+    if (SModelActionData.KEY.is(dataId)) {
+      final List<SModelTreeNode> selected = getSelectedTreeNodes(SModelTreeNode.class);
+      if (selected.isEmpty()) {
+        return null;
+      }
+      // though SModelTreeNode.getModel() seems to be not null, doesn't hurt to account for null there
+      final List<SModel> m = selected.stream().map(SModelTreeNode::getModel).dropWhile(Objects::isNull).collect(Collectors.toList());
+      if (m.isEmpty()) {
+        return null;
+      }
+      if (m.size() == 1) {
+        return SModelActionData.from(m.get(0).getReference());
+      }
+      assert m.size() > 1;
+      return SModelActionData.from(m.stream().map(SModel::getReference));
+    }
+    if (SModuleActionData.KEY.is(dataId)) {
+      final List<ProjectModuleTreeNode> selected = getSelectedTreeNodes(ProjectModuleTreeNode.class);
+      if (selected.isEmpty()) {
+        return null;
+      }
+      final List<SModule> m = selected.stream().map(ProjectModuleTreeNode::getModule).dropWhile(Objects::isNull).collect(Collectors.toList());
+      if (m.isEmpty()) {
+        return null;
+      }
+      if (m.size() == 1) {
+        return SModuleActionData.from(m.get(0).getModuleReference());
+      }
+      assert m.size() > 1;
+      return SModuleActionData.from(m.stream().map(SModule::getModuleReference));
+    }
+
     //MPSDK
     if (MPSDataKeys.NODE.is(dataId)) {
-      return getSelectedSNode();
+      final SNode node = getSelectedSNode();
+      if (node != null) {
+        // shall not log in case of empty selection, where null for SNodeActionData.KEY is perfectly legal
+        // and we get here through a fall-back path
+        logDeprecatedDataKey(dataId);
+      }
+      return node;
     }
     if (MPSDataKeys.NODES.is(dataId)) {
       final List<SNode> selectedNodes = getSelectedSNodes();
-      return selectedNodes.isEmpty() ? null : selectedNodes;
+      if (selectedNodes.isEmpty()) {
+        return null;
+      }
+      logDeprecatedDataKey(dataId);
+      return selectedNodes;
     }
-
     if (MPSDataKeys.MODEL.is(dataId)) {
-      return getSelectedModel();
-    }
-    if (MPSDataKeys.CONTEXT_MODEL.is(dataId)) {
-      return getContextModel();
+      final SModel model = getSelectedModel();
+      if (model != null) {
+        // see MPSDataKeys.NODE case, above
+        logDeprecatedDataKey(dataId);
+      }
+      return model;
     }
     if (MPSDataKeys.MODELS.is(dataId)) {
       final List<SModel> selectedModels = getSelectedModels();
-      return selectedModels.isEmpty() ? null : selectedModels;
+      if (selectedModels.isEmpty()) {
+        return null;
+      }
+      logDeprecatedDataKey(dataId);
+      return selectedModels;
     }
 
     if (MPSDataKeys.MODULE.is(dataId)) {
       return getSelectedModule();
     }
-    if (MPSDataKeys.CONTEXT_MODULE.is(dataId)) {
-      return getContextModule();
-    }
     if (MPSDataKeys.MODULES.is(dataId)) {
       final List<SModule> selectedModules = getSelectedModules();
       return selectedModules.isEmpty() ? null : selectedModules;
     }
+
+    if (MPSDataKeys.CONTEXT_MODEL.is(dataId)) {
+      return getContextModel();
+    }
+    if (MPSDataKeys.CONTEXT_MODULE.is(dataId)) {
+      return getContextModule();
+    }
+
 
     if (MPSDataKeys.VIRTUAL_PACKAGES.is(dataId)) {
       final List<Pair<SModel, String>> rv = getSelectedPackages();
@@ -208,6 +294,8 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
       return new MyCutProvider();
     }
     if (PlatformDataKeys.VIRTUAL_FILE_ARRAY.is(dataId)) {
+      // XXX perhaps, has to move to SLOW_DATA_PROVIDERS (i.e. collect selected elements in EDT and return
+      //     another DataProvider instance that would transformed selected models/modules into VirtualFile?
       return getSelectedFiles();
     }
 
@@ -231,6 +319,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     if (isComponentCreated()) {
       removeListeners();
     }
+    myReportedOldDataKeys.clear();
     myDisposed = true;
     super.dispose();
   }
@@ -446,7 +535,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
   @NotNull
   public <T extends TreeNode> List<T> getSelectedTreeNodes(Class<T> nodeClass) {
     TreePath[] selectionPaths = getTree().getSelectionPaths();
-    if (selectionPaths == null) {
+    if (selectionPaths == null || selectionPaths.length == 0) {
       return Collections.emptyList();
     }
 
