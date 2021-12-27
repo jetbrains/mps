@@ -73,6 +73,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
@@ -142,17 +143,16 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
   @Override
   public Object getData(String dataId) {
     if (SNodeActionData.KEY.is(dataId)) {
-      final List<SNode> selectedNodes = getSelectedSNodes();
-      if (selectedNodes.isEmpty()) {
+      final List<MPSTreeNodeEx> selected = getSelectedTreeNodes(MPSTreeNodeEx.class);
+      final List<SNodeReference> n = selected.stream().map(MPSTreeNodeEx::getNodePointer).dropWhile(Objects::isNull).collect(Collectors.toList());
+      if (n.isEmpty()) {
         return null;
       }
-      // that's what getSelectedSNode() does
-      if (selectedNodes.size() == 1) {
-        // FIXME tree node is capable to give SNodePointer, use it
-        return SNodeActionData.from(selectedNodes.get(0).getReference());
+      if (n.size() == 1) {
+        return SNodeActionData.from(n.get(0));
       }
-      assert selectedNodes.size() > 1;
-      return SNodeActionData.from(selectedNodes.stream().map(SNode::getReference));
+      assert n.size() > 1;
+      return SNodeActionData.from(n.stream());
     }
     if (SModelActionData.KEY.is(dataId)) {
       final List<SModelTreeNode> selected = getSelectedTreeNodes(SModelTreeNode.class);
@@ -359,9 +359,14 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     if (selectedTreeNodes.isEmpty()) {
       return Collections.emptyList();
     }
+    final SRepository repo = ProjectHelper.getProjectRepository(getProject());
+    if (repo == null) {
+      return Collections.emptyList();
+    }
     List<SNode> result = new ArrayList<>(selectedTreeNodes.size());
     for (MPSTreeNodeEx node : selectedTreeNodes) {
-      SNode snode = node.getSNode();
+      final SNodeReference np = node.getNodePointer();
+      SNode snode = np == null ? null : np.resolve(repo);
       if (snode == null) {
         continue;
       }
