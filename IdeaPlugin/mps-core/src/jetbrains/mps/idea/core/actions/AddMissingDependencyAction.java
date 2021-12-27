@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -66,6 +66,7 @@ public class AddMissingDependencyAction extends BaseAction {
         return;
       }
       DataContext dataContext = e.getDataContext();
+      // there's model read as the action is executed inside command
       SNode curNode = MPSCommonDataKeys.NODE.getData(dataContext);
       if (curNode == null) {
         return;

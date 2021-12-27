@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import com.intellij.util.ui.UIUtil;
 import gnu.trove.THashMap;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.nodeEditor.EditorComponent;
@@ -83,7 +84,7 @@ import java.util.TreeSet;
 /**
  * This class should be called in UI (EventDispatch) thread only
  */
-public final class LeftEditorHighlighter extends JComponent implements TooltipComponent {
+public final class LeftEditorHighlighter extends JComponent {
   public static final String ICON_AREA = "LeftEditorHighlighterIconArea";
 
   private static final int MIN_LEFT_TEXT_WIDTH = 0;
@@ -593,11 +594,6 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
   }
 
   @Override
-  public String getMPSTooltipText(MouseEvent event) {
-    return getToolTipText(event);
-  }
-
-  @Override
   public String getToolTipText(MouseEvent e) {
     if (getTooltipProvider() != null) {
       return null;
@@ -851,7 +847,13 @@ public final class LeftEditorHighlighter extends JComponent implements TooltipCo
 
     @Override
     public Object getData(@NotNull @NonNls String dataId) {
+      if (SNodeActionData.KEY.is(dataId) && mySelectedNode != null) {
+        // XXX not sure I need this here unless MPS actions start using SNodeActionData, not MPSCommonDataKeys.NODE;
+        //     nevertheless, doesn't hurt to keep this code here for future use.
+        return SNodeActionData.from(mySelectedNode.getReference());
+      }
       if (MPSCommonDataKeys.NODE.is(dataId)) {
+        // this context is not accessible to IDEA's PreCachedDataContext, don't bother with model access.
         return mySelectedNode;
       }
       if (MPSEditorDataKeys.EDITOR_CELL.is(dataId)) {

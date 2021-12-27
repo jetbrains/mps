@@ -62,6 +62,7 @@ import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSActions;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectView.ProjectViewSelectInProvider;
@@ -2854,10 +2855,25 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     boolean isInSubstituteChooser = myNodeSubstituteChooser.isVisible();
 
     //MPSDK
-    if (dataId.equals(MPSCommonDataKeys.NODE.getName())) {
+    if (SNodeActionData.KEY.is(dataId)) {
+      if (isInSubstituteChooser || isInSearchPanel) {
+        // see NODE and NODES code, below
+        return null;
+      }
+      Selection selection = mySelectionManager.getSelection();
+      final List<SNode> selectedNodes = selection.getSelectedNodes();
+      if (selection instanceof SingularSelection && selectedNodes.size() == 1) {
+        return SNodeActionData.from(selectedNodes.get(0).getReference());
+      }
+      if (selectedNodes.size() > 0) {
+        return SNodeActionData.from(selectedNodes.stream().map(SNode::getReference));
+      }
+    }
+    // XXX keep NODE/NODES for another release or two, for actions to switch to SNodeActionData
+    if (MPSCommonDataKeys.NODE.is(dataId)) {
       return isInSubstituteChooser || isInSearchPanel ? null : getSelectedNode();
     }
-    if (dataId.equals(MPSCommonDataKeys.NODES.getName())) {
+    if (MPSCommonDataKeys.NODES.is(dataId)) {
       return isInSubstituteChooser || isInSearchPanel ? null : getSelectedNodes();
     }
     if (dataId.equals(MPSEditorDataKeys.CONTEXT_MODEL.getName())) {

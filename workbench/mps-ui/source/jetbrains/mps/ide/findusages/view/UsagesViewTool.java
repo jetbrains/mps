@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -423,6 +423,12 @@ public class UsagesViewTool extends TabbedUsagesTool implements PersistentStateC
           }
           // if a caller asks for an SNode, I assume it has appropriate model read, otherwise what would be SNode for?
           if (MPSCommonDataKeys.NODE.is(dataId)) {
+            // FIXME have to keep this code (legacy NODE DataKey) as long as our own actions query NODE, not SNodeActionData.
+            //    Once templates for actions switch to SNodeActionData, shall fix this code to handle respective KEY.
+            //    Besides, this is dynamic context, not visible to IDEA's PreCachedDataContext, no need to worry it
+            //    is accessed in not appropriate moment of time
+            // FIXME this code traces back to 5ec439b5 (2013), and I'm confused whether we still need it
+            //    or can contribute FIND_USAGES_WITH_DIALOG_ACTION action by regular IDEA means (contributor to toolbar?)
             return searchedNode.resolve(myRepository);
           }
           return myDelegate.getData(dataId);

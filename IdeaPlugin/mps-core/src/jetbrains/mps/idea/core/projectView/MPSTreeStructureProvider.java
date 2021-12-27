@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import com.intellij.ide.projectView.ProjectViewNode;
 import com.intellij.ide.projectView.SelectableTreeStructureProvider;
 import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode;
-import com.intellij.ide.projectView.impl.nodes.PsiFileNode;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
 import com.intellij.openapi.actionSystem.LangDataKeys;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
@@ -37,8 +36,12 @@ import com.intellij.psi.PsiElement;
 import jetbrains.mps.extapi.persistence.FolderDataSource;
 import jetbrains.mps.fileTypes.MPSFileTypeFactory;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.actions.SModelActionData;
+import jetbrains.mps.ide.actions.SModuleActionData;
+import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.MPSDataKeys;
@@ -52,6 +55,7 @@ import jetbrains.mps.idea.core.psi.impl.MPSPsiProvider;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiRealNode;
 import jetbrains.mps.idea.core.psi.impl.MPSPsiRootNode;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.util.ModelComputeRunnable;
 import jetbrains.mps.vfs.IFile;
@@ -133,7 +137,7 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
             VirtualFile vFile = ((ProjectViewNode) child).getVirtualFile();
 
             // check if it's a single file model
-            IdeaFileSystem fs = mpsProject.getFileSystem();
+            FileSystemBridge fs = mpsProject.getFileSystem();
             if (!fs.canConvert(vFile)) {
               continue;
             }
@@ -195,12 +199,25 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     return result.get();
   }
 
+  /**
+   * @deprecated favor {@link #findModelReferenceByPsiDirNode}. Refactor two uses inside single model read to pass VF here, as this method
+   *             does not really care about ProjectViewNode.
+   */
   @Nullable
+  @Deprecated
   private SModel findModelByPsiDirNode(MPSProject p, ProjectViewNode dn) {
     SModelFileTracker ft = SModelFileTracker.getInstance(p.getRepository());
-    IdeaFileSystem fs = p.getFileSystem();
+    FileSystemBridge fs = p.getFileSystem();
     VirtualFile vf = dn.getVirtualFile();
     return fs.canConvert(vf) ? ft.findModel(fs.fromVirtualFile(vf)) : null;
+  }
+
+  @Nullable
+  private SModelReference findModelReferenceByPsiDirNode(MPSProject p, ProjectViewNode<?> dn) {
+    SModelFileTracker ft = SModelFileTracker.getInstance(p.getRepository());
+    FileSystemBridge fs = p.getFileSystem();
+    VirtualFile vf = dn.getVirtualFile();
+    return fs.canConvert(vf) ? ft.modelFor(fs.fromVirtualFile(vf)) : null;
   }
 
   @Nullable
@@ -235,15 +252,35 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
       return getModelFilesArray(selectedNode);
     }
     if (PlatformDataKeys.PASTE_PROVIDER.is(dataName)) {
+      // FIXME getModelProvider requires model read to resolve model reference, with IDEA's async
+      //       action update we no longer get this method invoked inside controlled moment (only EDT is guaranteed)
       return getModelProvider(selectedNode, PASTE_PROVIDER_FACTORY);
     }
+    if (SNodeActionData.KEY.is(dataName)) {
+      final SNodeReference nr = getNode(selectedNode);
+      return nr == null ? null : SNodeActionData.from(nr);
+    }
+    if (SModelActionData.KEY.is(dataName)) {
+      final SModelReference mr = getModel(selectedNode);
+      return mr == null ? null : SModelActionData.from(mr);
+    }
+    if (SModuleActionData.KEY.is(dataName)) {
+      final SModule module = getModule(selectedNode);
+      return module == null ? null : SModuleActionData.from(module.getModuleReference());
+    }
+    // FIXME remove legacy NODE, MODEL and MODULE DataKeys
     if (MPSCommonDataKeys.NODE.is(dataName)) {
-      return getNode(selectedNode);
+      final SNodeReference nr = getNode(selectedNode);
+      final SRepository repository = ProjectHelper.getProjectRepository(selectedNode.getProject());
+      return new ModelAccessHelper(repository).runReadAction(() -> nr.resolve(repository));
     }
     if (MPSCommonDataKeys.CONTEXT_MODEL.is(dataName) || MPSCommonDataKeys.MODEL.is(dataName)) {
-      return getModel(selectedNode);
+      // XXX there's getContextModel(), why don't we use it for CONTEXT_MODEL key?
+      final SModelReference mr = getModel(selectedNode);
+      return mr == null ? null : mr.resolve(ProjectHelper.getProjectRepository(selectedNode.getProject()));
     }
     if (MPSCommonDataKeys.CONTEXT_MODULE.is(dataName) || MPSCommonDataKeys.MODULE.is(dataName)) {
+      // XXX does reference resolve inside
       return getModule(selectedNode);
     }
     if (LangDataKeys.MODULE.is(dataName)) {
@@ -314,8 +351,8 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
       return null;
     }
 
-    EditableSModel md = getModel(treeNode);
-    return md != null ? createProvider.create(md, md, mpsProject) : null;
+    SModel md = psiModel.getSModelReference().resolve(mpsProject.getRepository());
+    return md instanceof EditableSModel ? createProvider.create((EditableSModel) md, mpsProject) : null;
   }
 
   private Set<IFile> getModelFiles(Collection<AbstractTreeNode<?>> selected) {
@@ -369,7 +406,7 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     return modelVFile;
   }
 
-  private SNode getNode(AbstractTreeNode<?> treeNode) {
+  private SNodeReference getNode(AbstractTreeNode<?> treeNode) {
     if (!(treeNode instanceof MPSPsiElementTreeNode)) {
       return null;
     }
@@ -377,10 +414,7 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     if (!(psiNode instanceof MPSPsiRealNode)) {
       return null;
     }
-    final SNodeReference nodeRef = ((MPSPsiRealNode) psiNode).getSNodeReference();
-    final SRepository repository = ProjectHelper.getProjectRepository(treeNode.getProject());
-    // TODO remove read action from here once SModelFileTracker stops doing the same (creating read action if not already in one)
-    return new ModelComputeRunnable<>(() -> nodeRef.resolve(repository)).runRead(repository.getModelAccess());
+    return ((MPSPsiRealNode) psiNode).getSNodeReference();
   }
 
   private Module getIdeaModule(AbstractTreeNode<?> treeNode) {
@@ -390,36 +424,36 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
   }
 
   private SModule getModule(AbstractTreeNode<?> selectedNode) {
-    EditableSModel contextModel = getContextModel(selectedNode);
-    return contextModel != null ? contextModel.getModule() : null;
+    SModelReference contextModel = getContextModel(selectedNode);
+    if (contextModel == null) {
+      return null;
+    }
+    final SModel m = contextModel.resolve(ProjectHelper.getProjectRepository(selectedNode.getProject()));
+    return m != null ? m.getModule() : null;
   }
 
-  private EditableSModel getModel(AbstractTreeNode<?> selectedNode) {
-    MPSProject mpsProject = ProjectHelper.fromIdeaProject(selectedNode.getProject());
+  private SModelReference getModel(AbstractTreeNode<?> selectedNode) {
     if (selectedNode instanceof MPSPsiElementTreeNode) {
       MPSPsiNodeBase value = ((MPSPsiElementTreeNode) selectedNode).getValue();
-      return getModel(value);
+      return value.getContainingModel().getSModelReference()
     } else if (selectedNode instanceof MPSPsiModelTreeNode) {
       MPSPsiModel psiModel = ((MPSPsiModelTreeNode) selectedNode).getModel();
-      SModel sModel = psiModel.getSModelReference().resolve(mpsProject.getRepository());
-      return (EditableSModel) sModel;
-    } else if (selectedNode instanceof ProjectViewNode && ((ProjectViewNode) selectedNode).getVirtualFile() != null && ((ProjectViewNode) selectedNode).getVirtualFile().isDirectory()) {
-      SModel sModel = findModelByPsiDirNode(mpsProject, (ProjectViewNode) selectedNode);
-      if (sModel instanceof EditableSModel) {
-        return (EditableSModel) sModel;
-      }
+      return psiModel.getSModelReference();
+    } else if (selectedNode instanceof ProjectViewNode && ((ProjectViewNode<?>) selectedNode).getVirtualFile() != null && ((ProjectViewNode<?>) selectedNode).getVirtualFile().isDirectory()) {
+      // XXX [artem] FWIW, I don't quite understand ProjectViewNode change by MB. Is it for per-root persistence?
+      MPSProject mpsProject = ProjectHelper.fromIdeaProject(selectedNode.getProject());
+      return findModelReferenceByPsiDirNode(mpsProject, (ProjectViewNode<?>) selectedNode);
     }
     return null;
   }
 
-  private EditableSModel getContextModel(AbstractTreeNode<?> selectedNode) {
+  private SModelReference getContextModel(AbstractTreeNode<?> selectedNode) {
     if (selectedNode instanceof MPSPsiElementTreeNode) {
       MPSPsiNodeBase value = ((MPSPsiElementTreeNode) selectedNode).getValue();
-      return getModel(value);
+      return value.getContainingModel().getSModelReference();
     } else if (selectedNode instanceof MPSPsiModelTreeNode) {
       MPSPsiModel psiModel = ((MPSPsiModelTreeNode) selectedNode).getModel();
-      SModel sModel = psiModel.getSModelReference().resolve(ProjectHelper.getProjectRepository(selectedNode.getProject()));
-      return (EditableSModel) sModel;
+      return psiModel.getSModelReference();
     }
     return null;
   }
@@ -435,7 +469,7 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
   }
 
   private interface ModelProviderFactory<T> {
-    T create(@NotNull EditableSModel modelDescriptor, SModel sModel, @NotNull jetbrains.mps.project.Project project);
+    T create(@NotNull EditableSModel modelDescriptor, @NotNull jetbrains.mps.project.Project project);
   }
 
   private static final ProviderFactory<SNodeCutCopyProvider> CUT_COPY_PROVIDER_FACTORY =
@@ -445,6 +479,6 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     (selectedNodes, modelDescriptor, sModel, project) -> new SNodeDeleteProvider(selectedNodes, project);
 
   private static final ModelProviderFactory<SNodePasteProvider> PASTE_PROVIDER_FACTORY =
-    (modelDescriptor, sModel, project) -> new SNodePasteProvider(sModel, project, modelDescriptor);
+    (modelDescriptor, project) -> new SNodePasteProvider(modelDescriptor, project);
 
 }

@@ -42,6 +42,8 @@ public interface SNodeActionData extends ActionData {
   SNodeReference node();
 
   // == nodes().findAny().isEmpty()
+  // FIXME this ^^ effectively means one can't use nodes() for single selection (e.g. if processing code
+  //     doesn't care about the number of nodes). Do I really care to give empty stream for a single selection?
   boolean isSingle();
 
   @NotNull
