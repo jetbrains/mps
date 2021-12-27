@@ -52,7 +52,11 @@ final class LegacyDataContextBridge implements DataContext {
   @Override
   @Nullable
   public Object getData(@NotNull String dataId) {
-    throw new IllegalStateException("MPS actions are supposed to ask getData(DataKey)");
+    // would love to avoid implementing this method, however DataKey.getData() doesn't pass 'this' but invokes
+    //    this method instead; have to account for this scenario as well
+    //    (e.g. DebugActionsUtil use `PlatformDataKeys.PROJECT.getData(dataContext)`)
+    // throw new IllegalStateException("MPS actions are supposed to ask getData(DataKey)");
+    return getData(DataKey.create(dataId)); // rely on internal static cache inside DataKey
   }
 
   @Override
