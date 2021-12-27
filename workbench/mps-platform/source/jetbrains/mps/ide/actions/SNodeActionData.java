@@ -4,11 +4,9 @@
 package jetbrains.mps.ide.actions;
 
 import com.intellij.openapi.actionSystem.DataKey;
-import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -51,7 +49,7 @@ public interface SNodeActionData extends ActionData {
 
   @NotNull
   static SNodeActionData from(@NotNull SNodeReference node) {
-    return new Impl(node);
+    return new NodeAD(node);
   }
 
   /**
@@ -63,44 +61,7 @@ public interface SNodeActionData extends ActionData {
     if (c.isEmpty()) {
       throw new IllegalArgumentException();
     }
-    return new Impl(c);
+    return new NodeAD(c);
   }
 
-  class Impl implements SNodeActionData {
-    private final SNodeReference myNode;
-    private final Collection<SNodeReference> myNodes;
-
-    /*package*/ Impl(SNodeReference single) {
-      myNode = single;
-      myNodes = null;
-    }
-
-    /*package*/ Impl(Collection<SNodeReference> multiple) {
-      myNode = null;
-      myNodes = multiple;
-    }
-
-    @NotNull
-    @Override
-    public SNodeReference node() {
-      //noinspection OptionalGetWithoutIsPresent
-      return myNode == null ? nodes().findFirst().get() : myNode;
-    }
-
-    @Override
-    public boolean isSingle() {
-      return myNode != null;
-    }
-
-    @NotNull
-    @Override
-    public Stream<SNodeReference> nodes() {
-      return myNodes == null ? Stream.empty() : myNodes.stream();
-    }
-
-    @Override
-    public String toString() {
-      return NameUtil.shortNameFromLongName(getClass().getName());
-    }
-  }
 }

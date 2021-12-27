@@ -4,11 +4,9 @@
 package jetbrains.mps.ide.actions;
 
 import com.intellij.openapi.actionSystem.DataKey;
-import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -29,7 +27,7 @@ public interface SModuleActionData extends ActionData {
   Stream<SModuleReference> modules();
 
   static SModuleActionData from(@NotNull SModuleReference module) {
-    return new Impl(module);
+    return new ModuleAD(module);
   }
 
   static SModuleActionData from(@NotNull Stream<SModuleReference> modules) throws IllegalArgumentException {
@@ -37,44 +35,7 @@ public interface SModuleActionData extends ActionData {
     if (c.isEmpty()) {
       throw new IllegalArgumentException();
     }
-    return new Impl(c);
+    return new ModuleAD(c);
   }
 
-  class Impl implements SModuleActionData {
-    private final SModuleReference myModule;
-    private final Collection<SModuleReference> myModules;
-
-    /*package*/ Impl(SModuleReference module) {
-      myModule = module;
-      myModules = null;
-    }
-
-    /*package*/ Impl(Collection<SModuleReference> modules) {
-      myModule = null;
-      myModules = modules;
-    }
-
-    @NotNull
-    @Override
-    public SModuleReference module() {
-      //noinspection OptionalGetWithoutIsPresent
-      return myModule == null ? modules().findFirst().get() : myModule;
-    }
-
-    @Override
-    public boolean isSingle() {
-      return myModule != null;
-    }
-
-    @NotNull
-    @Override
-    public Stream<SModuleReference> modules() {
-      return myModules == null ? Stream.empty() : myModules.stream();
-    }
-
-    @Override
-    public String toString() {
-      return NameUtil.shortNameFromLongName(getClass().getName());
-    }
-  }
 }
