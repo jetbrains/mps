@@ -39,6 +39,7 @@ import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.Icon;
 import java.awt.event.KeyEvent;
@@ -161,10 +162,14 @@ public abstract class BaseAction extends AnAction {
     }
 
     // In fact, here might be no read required. Perhaps, ActionAccess should also responsible for this.
-    getModelAccess(e).runReadAction(() -> {
+    final SRepository repo = getRepository(e);
+    repo.getModelAccess().runReadAction(() -> {
       try {
         Map<String, Object> params = new THashMap<>();
-        final AnActionEvent dcBridgeEvent = e.withDataContext(new LegacyDataContextBridge(e.getDataContext()));
+        // for unknown reason, I can't get MPSCommonDataKeys.MPS_PROJECT from event's DataContext despite MPSProjectRule
+        // being consulted (it fails to get CommonDataKeys.PROJECT, no idea how come). Therefore, need to pass
+        // repository to resolve node/model/module pointers at explicitly
+        final AnActionEvent dcBridgeEvent = e.withDataContext(new LegacyDataContextBridge(repo, e.getDataContext()));
         if (!collectActionData(dcBridgeEvent, params)) {
           disable(e.getPresentation());
           return;
@@ -196,9 +201,10 @@ public abstract class BaseAction extends AnAction {
     getActionAccess().runWithAccess(event, () -> {
       try {
         Map<String, Object> params = new THashMap<>();
-        // read action here is redundant always except ActionAccess.EmptyAccess
-        final AnActionEvent dcBridgeEvent = event.withDataContext(new LegacyDataContextBridge(event.getDataContext()));
-        getModelAccess(event).runReadAction(() -> collectActionData(dcBridgeEvent, params));
+        // read action here is redundant always except ActionAccess.EmptyAccess; we're already within appropriate model lock
+        final SRepository repo = getRepository(event);
+        final AnActionEvent dcBridgeEvent = event.withDataContext(new LegacyDataContextBridge(repo, event.getDataContext()));
+        repo.getModelAccess().runReadAction(() -> collectActionData(dcBridgeEvent, params));
         doExecute(dcBridgeEvent, params);
       } catch (RuntimeException ex) {
         final Logger log = LogManager.getLogger(getClass());
@@ -210,13 +216,23 @@ public abstract class BaseAction extends AnAction {
     });
   }
 
-  protected static ModelAccess getModelAccess(AnActionEvent event) {
+  protected static SRepository getRepository(AnActionEvent event) {
     Project project = getEventProject(event);
     if (project != null && !project.isDisposed()) {
-      return ProjectHelper.getModelAccess(project);
+      return ProjectHelper.getProjectRepository(project);
     } else {
-      return MPSCoreComponents.getInstance().getModuleRepository().getModelAccess();
+      //noinspection removal
+      return MPSCoreComponents.getInstance().getModuleRepository();
     }
+
+  }
+
+  /**
+   * @deprecated use {@link #getRepository(AnActionEvent)} if necessary
+   */
+  @Deprecated(forRemoval = true, since = "2021.3")
+  protected static ModelAccess getModelAccess(AnActionEvent event) {
+    return getRepository(event).getModelAccess();
   }
 
   protected void disable(Presentation p) {

@@ -44,11 +44,6 @@ final class LegacyDataContextBridge implements DataContext {
   // original context of the action, with all the real data available
   private final DataContext myDelegate;
 
-  LegacyDataContextBridge(DataContext delegate) {
-    // FIXME for actions without a project, there's no MPS_Project to get repo from!!!
-    this(delegate.getData(MPSCommonDataKeys.MPS_PROJECT).getRepository(), delegate);
-  }
-
   LegacyDataContextBridge(SRepository repo, DataContext delegate) {
     myRepository = repo;
     myDelegate = delegate;
