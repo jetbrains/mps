@@ -42,7 +42,6 @@ import jetbrains.mps.ide.actions.SModuleActionData;
 import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.fileSystem.nodes.ProjectTreeNode;
-import jetbrains.mps.ide.ui.tree.MPSTreeNode;
 import jetbrains.mps.ide.ui.tree.MPSTreeNodeEx;
 import jetbrains.mps.ide.ui.tree.module.GeneratorTreeNode;
 import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
@@ -187,35 +186,6 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     }
 
     //MPSDK
-    if (MPSDataKeys.NODE.is(dataId)) {
-      return getSelectedSNode();
-    }
-    if (MPSDataKeys.NODES.is(dataId)) {
-      final List<SNode> selectedNodes = getSelectedSNodes();
-      if (selectedNodes.isEmpty()) {
-        return null;
-      }
-      return selectedNodes;
-    }
-    if (MPSDataKeys.MODEL.is(dataId)) {
-      return getSelectedModel();
-    }
-    if (MPSDataKeys.MODELS.is(dataId)) {
-      final List<SModel> selectedModels = getSelectedModels();
-      if (selectedModels.isEmpty()) {
-        return null;
-      }
-      return selectedModels;
-    }
-
-    if (MPSDataKeys.MODULE.is(dataId)) {
-      return getSelectedModule();
-    }
-    if (MPSDataKeys.MODULES.is(dataId)) {
-      final List<SModule> selectedModules = getSelectedModules();
-      return selectedModules.isEmpty() ? null : selectedModules;
-    }
-
     if (MPSDataKeys.CONTEXT_MODEL.is(dataId)) {
       return getContextModel();
     }
@@ -345,6 +315,9 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     mpsProject.getComponent(ClassLoaderManager.class).addListener(myClassesListener);
   }
 
+  /**
+   * expects model read lock at least
+   */
   public SNode getSelectedSNode() {
     List<SNode> result = getSelectedSNodes();
     if (result.size() != 1) {
@@ -353,6 +326,9 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
     return result.get(0);
   }
 
+  /**
+   * expects model read lock at least
+   */
   @NotNull
   public List<SNode> getSelectedSNodes() {
     final List<MPSTreeNodeEx> selectedTreeNodes = getSelectedTreeNodes(MPSTreeNodeEx.class);
@@ -445,16 +421,15 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
 
   @NotNull
   public List<Pair<SModel, String>> getSelectedPackages() {
-    List<Pair<SModel, String>> result = new ArrayList<>();
     TreePath[] paths = getTree().getSelectionPaths();
     SRepository projectRepo = ProjectHelper.getProjectRepository(getProject());
-    if (paths == null || projectRepo == null) {
-      return result;
+    if (paths == null || paths.length == 0 || projectRepo == null) {
+      return Collections.emptyList();
     }
+    List<Pair<SModel, String>> result = new ArrayList<>();
     for (TreePath path : paths) {
-      MPSTreeNode node = (MPSTreeNode) path.getLastPathComponent();
-      if (node instanceof PackageNode) {
-        PackageNode pn = (PackageNode) node;
+      if (path.getLastPathComponent() instanceof PackageNode) {
+        PackageNode pn = (PackageNode) path.getLastPathComponent();
         result.add(new Pair<>(pn.getModelReference().resolve(projectRepo), pn.getFullPackage()));
       }
     }
