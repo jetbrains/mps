@@ -5,12 +5,14 @@ package jetbrains.mps.workbench.action;
 
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DataKey;
+import gnu.trove.THashMap;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.actions.SModelActionData;
 import jetbrains.mps.ide.actions.SModuleActionData;
 import jetbrains.mps.ide.actions.SNodeActionData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Objects;
@@ -44,6 +46,8 @@ final class LegacyDataContextBridge implements DataContext {
   // original context of the action, with all the real data available
   private final DataContext myDelegate;
 
+  private final THashMap<String, Object> myCache = new THashMap<>(11);
+
   LegacyDataContextBridge(SRepository repo, DataContext delegate) {
     myRepository = repo;
     myDelegate = delegate;
@@ -67,12 +71,18 @@ final class LegacyDataContextBridge implements DataContext {
     // This provides fallback solution for actions generated prior to MPS 2021.3 (in fact, until the
     // moment I update action templates to use new keys and, perhaps, even new ActionData API directly).
     final String dataId = key.getName();
+    final Object cached = myCache.get(dataId);
+    if (cached != null) {
+      return (T) cached;
+    }
     if (MPSCommonDataKeys.NODE.is(dataId) || MPSCommonDataKeys.NODES.is(dataId)) {
       // SNodeActionData case
       final SNodeActionData newData = myDelegate.getData(SNodeActionData.KEY);
       if (newData != null) {
         if (MPSCommonDataKeys.NODE.is(dataId) && newData.isSingle()) {
-          return (T) newData.node().resolve(myRepository);
+          final SNode rv = newData.node().resolve(myRepository);
+          myCache.put(dataId, rv);
+          return (T) rv;
         }
         if (MPSCommonDataKeys.NODES.is(dataId) && !newData.isSingle()) {
           return (T) newData.nodes().map(r -> r.resolve(myRepository)).dropWhile(Objects::isNull).collect(Collectors.toList());
