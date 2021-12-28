@@ -50,7 +50,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("L1", "C1", 0x44fbc51b46754a9fL, 0x830a34ac104c76f0L, 0x35542dfcdab8ffe4L);
     b.class_(false, false, false);
     b.origin("r:b80eefbf-b232-45f9-9c5a-78761b26244b(L1.structure)/3842746946078441444");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
 }

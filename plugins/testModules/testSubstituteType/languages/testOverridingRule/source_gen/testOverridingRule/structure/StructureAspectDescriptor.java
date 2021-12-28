@@ -57,25 +57,27 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testOverridingRule", "ConceptA", 0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874ca31L);
     b.class_(false, false, false);
     b.origin("r:1440b521-6c1d-4859-b19d-60ba0d9d36b1(testOverridingRule.structure)/8837437332634520113");
-    b.version(2);
+    b.version(3);
     b.property("conceptAProp", 0x7aa4e26e6874ca74L).type(PrimitiveTypeId.STRING).origin("8837437332634520180").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForConceptB() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testOverridingRule", "ConceptB", 0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa4L);
     b.class_(false, false, false);
-    b.super_("testOverridingRule.structure.ConceptA", 0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874ca31L);
+    // extends: testOverridingRule.structure.ConceptA
+    b.super_(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874ca31L);
     b.origin("r:1440b521-6c1d-4859-b19d-60ba0d9d36b1(testOverridingRule.structure)/8837437332634520228");
-    b.version(2);
+    b.version(3);
     b.property("conceptBProp", 0x7aa4e26e6874caa5L).type(PrimitiveTypeId.STRING).origin("8837437332634520229").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForConceptC() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testOverridingRule", "ConceptC", 0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa6L);
     b.class_(false, false, false);
-    b.super_("testOverridingRule.structure.ConceptB", 0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa4L);
+    // extends: testOverridingRule.structure.ConceptB
+    b.super_(0x38be1c36cdf64e3cL, 0xb9db14f88a11fa03L, 0x7aa4e26e6874caa4L);
     b.origin("r:1440b521-6c1d-4859-b19d-60ba0d9d36b1(testOverridingRule.structure)/8837437332634520230");
-    b.version(2);
+    b.version(3);
     b.property("conceptCProp", 0x7aa4e26e6874caa7L).type(PrimitiveTypeId.STRING).origin("8837437332634520231").done();
     return b.create();
   }

@@ -52,7 +52,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:13099be6-e9be-4c1b-a5cd-d0d83a6c9f0a(jetbrains.mps.transformation.test.errorReporting.structure)/7287346816896104019");
-    b.version(2);
+    b.version(3);
     b.property("intval", 0x6521db51e82a9208L).type(PrimitiveTypeId.INTEGER).origin("7287346816896111112").done();
     return b.create();
   }

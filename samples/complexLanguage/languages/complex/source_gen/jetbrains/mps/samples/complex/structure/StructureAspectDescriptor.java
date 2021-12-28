@@ -76,9 +76,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForAbsExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.complex", "AbsExpression", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686e48f9fL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.complex.structure.SingleComplexExpression", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL);
+    // extends: jetbrains.mps.samples.complex.structure.SingleComplexExpression
+    b.super_(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL);
     b.origin("r:00000000-0000-4000-0000-011c89590425(jetbrains.mps.samples.complex.structure)/1196264034207");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("abs");
     return b.create();
@@ -86,9 +87,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForArgExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.complex", "ArgExpression", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686e1a51cL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.complex.structure.SingleComplexExpression", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL);
+    // extends: jetbrains.mps.samples.complex.structure.SingleComplexExpression
+    b.super_(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL);
     b.origin("r:00000000-0000-4000-0000-011c89590425(jetbrains.mps.samples.complex.structure)/1196263843100");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("arg");
     return b.create();
@@ -96,9 +98,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForComplexType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.complex", "ComplexType", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686a0422aL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.PrimitiveType", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L);
+    // extends: jetbrains.mps.baseLanguage.structure.PrimitiveType
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10f0ad8bde4L);
     b.origin("r:00000000-0000-4000-0000-011c89590425(jetbrains.mps.samples.complex.structure)/1196259557930");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.NONE);
     b.alias("complex");
     return b.create();
@@ -106,9 +109,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForConjugateComplexExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.complex", "ConjugateComplexExpression", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x116901f57f4L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.complex.structure.SingleComplexExpression", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL);
+    // extends: jetbrains.mps.samples.complex.structure.SingleComplexExpression
+    b.super_(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL);
     b.origin("r:00000000-0000-4000-0000-011c89590425(jetbrains.mps.samples.complex.structure)/1196418881524");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("conj");
     return b.create();
@@ -116,9 +120,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForDegreeComplexExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.complex", "DegreeComplexExpression", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x116904e45f4L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.complex.structure.SingleComplexExpression", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL);
+    // extends: jetbrains.mps.samples.complex.structure.SingleComplexExpression
+    b.super_(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL);
     b.origin("r:00000000-0000-4000-0000-011c89590425(jetbrains.mps.samples.complex.structure)/1196421957108");
-    b.version(2);
+    b.version(3);
     b.aggregate("degree", 0x116904f9752L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129778b846L).optional(false).ordered(true).multiple(false).origin("1196422043474").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("deg");
@@ -127,9 +132,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForImExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.complex", "ImExpression", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686c35f98L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.complex.structure.SingleComplexExpression", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL);
+    // extends: jetbrains.mps.samples.complex.structure.SingleComplexExpression
+    b.super_(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL);
     b.origin("r:00000000-0000-4000-0000-011c89590425(jetbrains.mps.samples.complex.structure)/1196261859224");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("im");
     return b.create();
@@ -137,9 +143,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForImaginaryUnit() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.complex", "ImaginaryUnit", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11691060ce1L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    // extends: jetbrains.mps.baseLanguage.structure.Expression
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
     b.origin("r:00000000-0000-4000-0000-011c89590425(jetbrains.mps.samples.complex.structure)/1196434001121");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("i");
     return b.create();
@@ -147,9 +154,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForReExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.complex", "ReExpression", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b25791L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.complex.structure.SingleComplexExpression", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL);
+    // extends: jetbrains.mps.samples.complex.structure.SingleComplexExpression
+    b.super_(0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL);
     b.origin("r:00000000-0000-4000-0000-011c89590425(jetbrains.mps.samples.complex.structure)/1196260743057");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("re");
     return b.create();
@@ -157,9 +165,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForSingleComplexExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.complex", "SingleComplexExpression", 0xff24ab03965e4d15L, 0x9aed52dc276658f4L, 0x11686b3b49dL);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    // extends: jetbrains.mps.baseLanguage.structure.Expression
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
     b.origin("r:00000000-0000-4000-0000-011c89590425(jetbrains.mps.samples.complex.structure)/1196260832413");
-    b.version(2);
+    b.version(3);
     b.aggregate("complexExpression", 0x11686b4a081L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL).optional(true).ordered(true).multiple(false).origin("1196260892801").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();

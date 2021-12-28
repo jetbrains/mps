@@ -123,18 +123,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForAndSimpleMathExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "AndSimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b825cc49L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.LogicalSimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81dcba5L);
+    // extends: jetbrains.mps.samples.Expressions.structure.LogicalSimpleMathExpression
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81dcba5L);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467208490057");
-    b.version(2);
+    b.version(3);
     b.alias("and");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForArithmeticSimpleMathExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "ArithmeticSimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b8289497L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.BinarySimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL);
+    // extends: jetbrains.mps.samples.Expressions.structure.BinarySimpleMathExpression
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467208672407");
-    b.version(2);
+    b.version(3);
     b.property("operator", 0x1cc69153b82894eaL).type(PrimitiveTypeId.STRING).origin("2073504467208672490").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     return b.create();
@@ -142,9 +144,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForBinarySimpleMathExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "BinarySimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathExpression
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467207869132");
-    b.version(2);
+    b.version(3);
     b.aggregate("left", 0x1cc69153b81d5476L).target(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL).optional(false).ordered(true).multiple(false).origin("2073504467207935094").done();
     b.aggregate("right", 0x1cc69153b81d5478L).target(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL).optional(false).ordered(true).multiple(false).origin("2073504467207935096").done();
     return b.create();
@@ -152,35 +155,39 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForLogicalSimpleMathExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "LogicalSimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81dcba5L);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.BinarySimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL);
+    // extends: jetbrains.mps.samples.Expressions.structure.BinarySimpleMathExpression
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c52ccL);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467207965605");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForNotSimpleMathExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "NotSimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81d5484L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.UnarySimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81d547bL);
+    // extends: jetbrains.mps.samples.Expressions.structure.UnarySimpleMathExpression
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81d547bL);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467207935108");
-    b.version(2);
+    b.version(3);
     b.alias("not");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForOrSimpleMathExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "OrSimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b825cc4aL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.LogicalSimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81dcba5L);
+    // extends: jetbrains.mps.samples.Expressions.structure.LogicalSimpleMathExpression
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81dcba5L);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467208490058");
-    b.version(2);
+    b.version(3);
     b.alias("or");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSimpleMathAssignment() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathAssignment", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0xce8a4f56651064cL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathExpression
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/930174696942536268");
-    b.version(2);
+    b.version(3);
     b.aggregate("variable", 0xce8a4f566511a30L).target(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b832e4e1L).optional(false).ordered(true).multiple(false).origin("930174696942541360").done();
     b.aggregate("expression", 0xce8a4f566511a32L).target(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL).optional(false).ordered(true).multiple(false).origin("930174696942541362").done();
     b.alias(":=");
@@ -189,18 +196,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForSimpleMathBooleanConstant() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathBooleanConstant", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b826823eL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathExpression
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467208536638");
-    b.version(2);
+    b.version(3);
     b.property("value", 0x1cc69153b826823fL).type(PrimitiveTypeId.BOOLEAN).origin("2073504467208536639").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSimpleMathBooleanType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathBooleanType", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f68L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathType", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f67L);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathType
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f67L);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467208085352");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("Bool");
     return b.create();
@@ -208,9 +217,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForSimpleMathElementType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathElementType", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b835454eL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathType", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f67L);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathType
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f67L);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467209504078");
-    b.version(2);
+    b.version(3);
     b.alias("Element");
     return b.create();
   }
@@ -218,69 +228,76 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
     b.class_(false, true, false);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467207867403");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSimpleMathFloatConstant() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathFloatConstant", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b84b40a4L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathExpression
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467210944676");
-    b.version(2);
+    b.version(3);
     b.property("value", 0x1cc69153b84b40a5L).type(MetaIdFactory.dataTypeId(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10324579ea7L)).origin("2073504467210944677").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSimpleMathFloatType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathFloatType", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b84b3e3eL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathType", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f67L);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathType
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f67L);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467210944062");
-    b.version(2);
+    b.version(3);
     b.alias("Float");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSimpleMathIntegerConstant() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathIntegerConstant", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b826940aL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathExpression
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467208541194");
-    b.version(2);
+    b.version(3);
     b.property("value", 0x1cc69153b826940bL).type(PrimitiveTypeId.INTEGER).origin("2073504467208541195").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSimpleMathIntegerType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathIntegerType", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b82698e0L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathType", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f67L);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathType
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f67L);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467208542432");
-    b.version(2);
+    b.version(3);
     b.alias("Int");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSimpleMathLongConstant() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathLongConstant", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b83bf7eaL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathExpression
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467209943018");
-    b.version(2);
+    b.version(3);
     b.property("value", 0x1cc69153b83bf81eL).type(PrimitiveTypeId.INTEGER).origin("2073504467209943070").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSimpleMathLongType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathLongType", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b837a88aL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathType", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f67L);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathType
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f67L);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467209660554");
-    b.version(2);
+    b.version(3);
     b.alias("Long");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSimpleMathNumberType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathNumberType", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b8354763L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathType", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f67L);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathType
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f67L);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467209504611");
-    b.version(2);
+    b.version(3);
     b.alias("Number");
     return b.create();
   }
@@ -288,25 +305,27 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathType", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f67L);
     b.class_(false, true, false);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467208085351");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSimpleMathTypedVarDeclaration() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathTypedVarDeclaration", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x77a1220187231476L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathVarDeclaration", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b832ccbfL);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathVarDeclaration
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b832ccbfL);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/8620208551721374838");
-    b.version(2);
+    b.version(3);
     b.aggregate("type", 0x77a122018723285dL).target(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81f9f67L).optional(false).ordered(true).multiple(false).origin("8620208551721379933").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSimpleMathVarDeclaration() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathVarDeclaration", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b832ccbfL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathExpression
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467209342143");
-    b.version(2);
+    b.version(3);
     b.aggregate("initializer", 0x1cc69153b832cd14L).target(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL).optional(false).ordered(true).multiple(false).origin("2073504467209342228").done();
     b.alias("var");
     return b.create();
@@ -314,27 +333,30 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForSimpleMathVarReference() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathVarReference", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b832e4e1L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathExpression
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467209348321");
-    b.version(2);
+    b.version(3);
     b.associate("declaration", 0x1cc69153b832e4e2L).target(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b832ccbfL).optional(false).origin("2073504467209348322").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSimpleMathWrapper() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "SimpleMathWrapper", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b8237002L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Statement", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
+    // extends: jetbrains.mps.baseLanguage.structure.Statement
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467208335362");
-    b.version(2);
+    b.version(3);
     b.aggregate("expressions", 0x1cc69153b8237177L).target(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL).optional(true).ordered(true).multiple(true).origin("2073504467208335735").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForUnarySimpleMathExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.Expressions", "UnarySimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81d547bL);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.samples.Expressions.structure.SimpleMathExpression", 0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
+    // extends: jetbrains.mps.samples.Expressions.structure.SimpleMathExpression
+    b.super_(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL);
     b.origin("r:5607284d-edb3-4e34-bafc-a3b8fa3360be(jetbrains.mps.samples.Expressions.structure)/2073504467207935099");
-    b.version(2);
+    b.version(3);
     b.aggregate("original", 0x1cc69153b81d547cL).target(0x7e282943fc6b4900L, 0xada534c0024cc4f4L, 0x1cc69153b81c4c0bL).optional(false).ordered(true).multiple(false).origin("2073504467207935100").done();
     return b.create();
   }

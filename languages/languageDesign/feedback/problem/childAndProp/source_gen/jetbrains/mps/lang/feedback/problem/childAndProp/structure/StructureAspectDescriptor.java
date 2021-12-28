@@ -49,9 +49,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForFailingPropertyConstraintsProblem() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.feedback.problem.childAndProp", "FailingPropertyConstraintsProblem", 0xcddf55b3117e46ecL, 0x837cff50eb7b89b0L, 0x56aefe6c18a706L);
     b.class_(true, false, false);
-    b.super_("jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot", 0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
+    // extends: jetbrains.mps.lang.feedback.problem.structure.ProblemPointsToKindRoot
+    b.super_(0x33598a476a947e1L, 0xac89a300c0fceab8L, 0x6b178cfa773dc73aL);
     b.origin("r:47656d18-dbba-45c4-80e3-b6a073fd7710(jetbrains.mps.lang.feedback.problem.childAndProp.structure)/24399255755597574");
-    b.version(2);
+    b.version(3);
     b.associate("property", 0x56aefe6c18edb7L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086bL).optional(false).origin("24399255755615671").done();
     b.alias("when property constraint fails");
     return b.create();

@@ -59,31 +59,33 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.behavior.test", "A", 0xa18fb831fb54541L, 0x97c9a13312451954L, 0x41ab5625f92e5b2aL);
     b.class_(false, false, false);
     b.origin("r:2031ed21-5d78-4758-831e-aa590362bfba(jetbrains.mps.lang.behavior.test.structure)/4731970554577181482");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForB() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.behavior.test", "B", 0xa18fb831fb54541L, 0x97c9a13312451954L, 0x41ab5625f92e5b5eL);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.lang.behavior.test.structure.A", 0xa18fb831fb54541L, 0x97c9a13312451954L, 0x41ab5625f92e5b2aL);
+    // extends: jetbrains.mps.lang.behavior.test.structure.A
+    b.super_(0xa18fb831fb54541L, 0x97c9a13312451954L, 0x41ab5625f92e5b2aL);
     b.origin("r:2031ed21-5d78-4758-831e-aa590362bfba(jetbrains.mps.lang.behavior.test.structure)/4731970554577181534");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForC() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.behavior.test", "C", 0xa18fb831fb54541L, 0x97c9a13312451954L, 0x41ab5625f92e6873L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.behavior.test.structure.B", 0xa18fb831fb54541L, 0x97c9a13312451954L, 0x41ab5625f92e5b5eL);
+    // extends: jetbrains.mps.lang.behavior.test.structure.B
+    b.super_(0xa18fb831fb54541L, 0x97c9a13312451954L, 0x41ab5625f92e5b5eL);
     b.parent(0xa18fb831fb54541L, 0x97c9a13312451954L, 0x41ab5625f92e6814L);
     b.origin("r:2031ed21-5d78-4758-831e-aa590362bfba(jetbrains.mps.lang.behavior.test.structure)/4731970554577184883");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForI() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.behavior.test", "I", 0xa18fb831fb54541L, 0x97c9a13312451954L, 0x41ab5625f92e6814L);
     b.interface_();
     b.origin("r:2031ed21-5d78-4758-831e-aa590362bfba(jetbrains.mps.lang.behavior.test.structure)/4731970554577184788");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
 }

@@ -53,9 +53,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForButton() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.generator_demo.demoLang6", "Button", 0x82fb751df7fb4b58L, 0xa16e303356f8e0afL, 0x37350ebbae8d1283L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.sampleXML.structure.ElementPart", 0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8beL);
+    // extends: jetbrains.mps.sampleXML.structure.ElementPart
+    b.super_(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8beL);
     b.origin("r:5a5bef13-c898-42e0-9736-2063b8209071(jetbrains.mps.samples.generator_demo.demoLang6.structure)/3978102045101855363");
-    b.version(2);
+    b.version(3);
     b.property("text", 0x37350ebbae8d12f3L).type(PrimitiveTypeId.STRING).origin("3978102045101855475").done();
     b.alias("button");
     return b.create();
@@ -63,9 +64,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForLabel() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.generator_demo.demoLang6", "Label", 0x82fb751df7fb4b58L, 0xa16e303356f8e0afL, 0x37350ebbae8d186cL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.sampleXML.structure.ElementPart", 0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8beL);
+    // extends: jetbrains.mps.sampleXML.structure.ElementPart
+    b.super_(0x772f6dcd8c0d48f7L, 0x869c908e036f7c8eL, 0x11d45f8a8beL);
     b.origin("r:5a5bef13-c898-42e0-9736-2063b8209071(jetbrains.mps.samples.generator_demo.demoLang6.structure)/3978102045101856876");
-    b.version(2);
+    b.version(3);
     b.property("text", 0x37350ebbae8d1876L).type(PrimitiveTypeId.STRING).origin("3978102045101856886").done();
     b.alias("label");
     return b.create();

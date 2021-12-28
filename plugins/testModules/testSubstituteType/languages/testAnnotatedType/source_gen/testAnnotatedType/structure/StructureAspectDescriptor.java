@@ -76,15 +76,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:c0db73ed-f604-44cb-9fd9-3e3424a144b7(testAnnotatedType.structure)/6405009306797650375");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForPrimDoubleType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testAnnotatedType", "PrimDoubleType", 0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09c62e6L);
     b.class_(false, false, false);
-    b.super_("testAnnotatedType.structure.PrimType", 0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bcL);
+    // extends: testAnnotatedType.structure.PrimType
+    b.super_(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bcL);
     b.origin("r:c0db73ed-f604-44cb-9fd9-3e3424a144b7(testAnnotatedType.structure)/1470921783545455334");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     b.alias("_double");
     return b.create();
@@ -92,9 +93,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForPrimFloatType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testAnnotatedType", "PrimFloatType", 0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bdL);
     b.class_(false, false, false);
-    b.super_("testAnnotatedType.structure.PrimType", 0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bcL);
+    // extends: testAnnotatedType.structure.PrimType
+    b.super_(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bcL);
     b.origin("r:c0db73ed-f604-44cb-9fd9-3e3424a144b7(testAnnotatedType.structure)/6405009306797650365");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     b.alias("_float");
     return b.create();
@@ -102,9 +104,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForPrimIntType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testAnnotatedType", "PrimIntType", 0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be609eL);
     b.class_(false, false, false);
-    b.super_("testAnnotatedType.structure.PrimType", 0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bcL);
+    // extends: testAnnotatedType.structure.PrimType
+    b.super_(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bcL);
     b.origin("r:c0db73ed-f604-44cb-9fd9-3e3424a144b7(testAnnotatedType.structure)/6405009306797629598");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     b.alias("_int");
     return b.create();
@@ -112,9 +115,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForPrimLongType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testAnnotatedType", "PrimLongType", 0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x786549534310b4f5L);
     b.class_(false, false, false);
-    b.super_("testAnnotatedType.structure.PrimType", 0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bcL);
+    // extends: testAnnotatedType.structure.PrimType
+    b.super_(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bcL);
     b.origin("r:c0db73ed-f604-44cb-9fd9-3e3424a144b7(testAnnotatedType.structure)/8675420879155410165");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     b.alias("_long");
     return b.create();
@@ -122,9 +126,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForPrimNumConstant() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testAnnotatedType", "PrimNumConstant", 0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x1469c391a09a5eefL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Expression", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
+    // extends: jetbrains.mps.baseLanguage.structure.Expression
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL);
     b.origin("r:c0db73ed-f604-44cb-9fd9-3e3424a144b7(testAnnotatedType.structure)/1470921783545323247");
-    b.version(2);
+    b.version(3);
     b.property("value", 0x1469c391a09bd6aaL).type(PrimitiveTypeId.STRING).origin("1470921783545419434").done();
     b.property("isFloat", 0x1469c391a09a5ef0L).type(PrimitiveTypeId.STRING).origin("1470921783545323248").done();
     return b.create();
@@ -132,18 +137,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForPrimType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testAnnotatedType", "PrimType", 0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bcL);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Type", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
+    // extends: jetbrains.mps.baseLanguage.structure.Type
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
     b.origin("r:c0db73ed-f604-44cb-9fd9-3e3424a144b7(testAnnotatedType.structure)/6405009306797650364");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSubstituteAnnotation() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testAnnotatedType", "SubstituteAnnotation", 0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782be61ecL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.core.structure.NodeAttribute", 0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
+    // extends: jetbrains.mps.lang.core.structure.NodeAttribute
+    b.super_(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da54L);
     b.origin("r:c0db73ed-f604-44cb-9fd9-3e3424a144b7(testAnnotatedType.structure)/6405009306797629932");
-    b.version(2);
+    b.version(3);
     b.aggregate("substitute", 0x58e32a0782beb1baL).target(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1bcL).optional(false).ordered(true).multiple(false).origin("6405009306797650362").done();
     b.aggregate("condition", 0x58e32a0782beb1c4L).target(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1c7L).optional(false).ordered(true).multiple(false).origin("6405009306797650372").done();
     return b.create();

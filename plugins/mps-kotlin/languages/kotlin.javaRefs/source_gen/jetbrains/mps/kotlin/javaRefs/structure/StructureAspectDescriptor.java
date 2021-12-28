@@ -72,7 +72,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L);
     b.origin("r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)/2420378304467696126");
-    b.version(2);
+    b.version(3);
     b.associate("constructor", 0x2196e93e83dc2bfdL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L).optional(false).origin("2420378304467708925").done();
     return b.create();
   }
@@ -82,7 +82,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x729709d72e3594f9L);
     b.parent(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x66c71d82c2eb7f7eL);
     b.origin("r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)/7565185111013327093");
-    b.version(2);
+    b.version(3);
     b.associate("javaClass", 0x68fcefc6c2060179L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L).optional(false).origin("7565185111013327225").done();
     return b.create();
   }
@@ -92,7 +92,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L);
     b.origin("r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)/1139611333302792698");
-    b.version(2);
+    b.version(3);
     b.associate("interface", 0xfd0b6783f85e8c3L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L).optional(false).origin("1139611333302806723").done();
     return b.create();
   }
@@ -106,7 +106,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6186632f85a74c27L);
     b.origin("r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)/2420378304458348492");
-    b.version(2);
+    b.version(3);
     b.associate("method", 0x2196e93e834d58feL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL).optional(false).origin("2420378304458348798").done();
     return b.create();
   }
@@ -117,7 +117,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3b6L);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5a442f44db6c8a2cL);
     b.origin("r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)/3848791341541232635");
-    b.version(2);
+    b.version(3);
     b.property("visibleName", 0x3569a755572ded08L).type(PrimitiveTypeId.STRING).origin("3848791341541485832").done();
     b.associate("getter", 0x3569a755572a174cL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL).optional(false).origin("3848791341541234508").done();
     b.associate("setter", 0x78253bb2d181ac1dL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL).optional(true).origin("8657391497894800413").done();
@@ -128,7 +128,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4f0064de291cef24L);
     b.origin("r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)/8257079261601669994");
-    b.version(2);
+    b.version(3);
     b.associate("typeVariable", 0x729709d72e03236dL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1024639ed74L).optional(false).origin("8257079261601669997").done();
     return b.create();
   }
@@ -139,7 +139,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3b6L);
     b.origin("r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)/5016903245542350786");
-    b.version(2);
+    b.version(3);
     b.associate("variable", 0x459f9eebcf0ee37bL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL).optional(false).origin("5016903245542384507").done();
     return b.create();
   }

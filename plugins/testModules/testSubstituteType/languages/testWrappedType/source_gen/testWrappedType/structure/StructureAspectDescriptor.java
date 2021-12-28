@@ -56,9 +56,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForTypeWithUnits() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testWrappedType", "TypeWithUnits", 0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c532bL);
     b.class_(false, false, false);
-    b.super_("testWrappedType.structure.WrapperType", 0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c52bcL);
+    // extends: testWrappedType.structure.WrapperType
+    b.super_(0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c52bcL);
     b.origin("r:58c474dc-af49-44e4-a2d1-3b8edbb18985(testWrappedType.structure)/1252378774017430315");
-    b.version(2);
+    b.version(3);
     b.property("unit", 0x116157dc0d8c532cL).type(PrimitiveTypeId.STRING).origin("1252378774017430316").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     return b.create();
@@ -66,9 +67,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForWrapperType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testWrappedType", "WrapperType", 0x9290638e635b4ec6L, 0xbcad945ecb88a928L, 0x116157dc0d8c52bcL);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Type", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
+    // extends: jetbrains.mps.baseLanguage.structure.Type
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
     b.origin("r:58c474dc-af49-44e4-a2d1-3b8edbb18985(testWrappedType.structure)/1252378774017430204");
-    b.version(2);
+    b.version(3);
     b.aggregate("wrapped", 0x116157dc0d8c52bdL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL).optional(false).ordered(true).multiple(false).origin("1252378774017430205").done();
     b.kind(ConceptKind.INTERFACE, StaticScope.GLOBAL);
     return b.create();

@@ -55,7 +55,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.highlevel.sampleLanguage", "Car", 0x99aa3e0fa1624dc1L, 0xbcff2def4d654205L, 0x346ead2c08d7a618L);
     b.class_(false, false, true);
     b.origin("r:4d03b397-cc28-4073-ab6e-06a2ea51daa1(jetbrains.mps.samples.highlevel.sampleLanguage.structure)/3778147542048941592");
-    b.version(2);
+    b.version(3);
     b.property("model", 0x346ead2c08d7a61dL).type(PrimitiveTypeId.STRING).origin((SNodeReference) null).done();
     b.property("year", 0x346ead2c08d7a61fL).type(PrimitiveTypeId.STRING).origin((SNodeReference) null).done();
     return b.create();
@@ -64,7 +64,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.highlevel.sampleLanguage", "Person", 0x99aa3e0fa1624dc1L, 0xbcff2def4d654205L, 0x346ead2c08d7a611L);
     b.class_(false, false, true);
     b.origin("r:4d03b397-cc28-4073-ab6e-06a2ea51daa1(jetbrains.mps.samples.highlevel.sampleLanguage.structure)/3778147542048941585");
-    b.version(2);
+    b.version(3);
     b.property("name", 0x346ead2c08d7a613L).type(PrimitiveTypeId.STRING).origin((SNodeReference) null).done();
     b.property("age", 0x346ead2c08d7a615L).type(PrimitiveTypeId.STRING).origin((SNodeReference) null).done();
     return b.create();

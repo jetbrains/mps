@@ -94,7 +94,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "ChemEquation", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L);
     b.class_(false, false, false);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/7995886393880420659");
-    b.version(2);
+    b.version(3);
     b.property("condition", 0x6ef7184faba451a7L).type(PrimitiveTypeId.STRING).origin("7995886393880760743").done();
     b.aggregate("left", 0x6ef7184fab9faa28L).target(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL).optional(true).ordered(true).multiple(true).origin("7995886393880455720").done();
     b.aggregate("right", 0x6ef7184fab9faa2aL).target(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL).optional(true).ordered(true).multiple(true).origin("7995886393880455722").done();
@@ -105,7 +105,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/7995886393880420656");
-    b.version(2);
+    b.version(3);
     b.property("showButtons", 0x5b2638e8bdbef0c0L).type(PrimitiveTypeId.BOOLEAN).origin("6567999678833422528").done();
     b.aggregate("description", 0x6ef7184fab9f2134L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L).optional(false).ordered(true).multiple(false).origin("7995886393880420660").done();
     b.aggregate("entries", 0x6ef7184fab9f24ddL).target(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24daL).optional(true).ordered(true).multiple(true).origin("7995886393880421597").done();
@@ -115,9 +115,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForCompound() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "Compound", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba62978L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.ChemMastery.structure.EquationComponent", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL);
+    // extends: jetbrains.mps.samples.ChemMastery.structure.EquationComponent
+    b.super_(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/7995886393880881528");
-    b.version(2);
+    b.version(3);
     b.property("cardinality", 0x6ef7184faba62979L).type(PrimitiveTypeId.INTEGER).origin("7995886393880881529").done();
     b.property("cardinalityVisible", 0x6ef7184fabe70dd6L).type(PrimitiveTypeId.BOOLEAN).origin("7995886393885134294").done();
     b.aggregate("elements", 0x6ef7184faba6e3a3L).target(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L).optional(true).ordered(true).multiple(true).origin("7995886393880929187").done();
@@ -128,15 +129,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "CompoundComponent", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L);
     b.class_(false, true, false);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/3123291046850546417");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForCompoundComponentWithCardinality() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "CompoundComponentWithCardinality", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.ChemMastery.structure.CompoundComponent", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L);
+    // extends: jetbrains.mps.samples.ChemMastery.structure.CompoundComponent
+    b.super_(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/3123291046851837264");
-    b.version(2);
+    b.version(3);
     b.property("cardinality", 0x2b5828a8c1c2fd51L).type(PrimitiveTypeId.INTEGER).origin("3123291046851837265").done();
     b.property("cardinalityVisible", 0x2b5828a8c1c2fd52L).type(PrimitiveTypeId.BOOLEAN).origin("3123291046851837266").done();
     return b.create();
@@ -144,9 +146,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForDocumentationEntry() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "DocumentationEntry", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e2L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.ChemMastery.structure.SheetEntry", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24daL);
+    // extends: jetbrains.mps.samples.ChemMastery.structure.SheetEntry
+    b.super_(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24daL);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/7995886393880421602");
-    b.version(2);
+    b.version(3);
     b.aggregate("text", 0x6ef7184fab9f24e3L).target(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L).optional(false).ordered(true).multiple(false).origin("7995886393880421603").done();
     b.alias("description");
     return b.create();
@@ -156,7 +159,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/7995886393880820081");
-    b.version(2);
+    b.version(3);
     b.property("id", 0x5b2638e8bdcd7deaL).type(PrimitiveTypeId.STRING).origin("6567999678834376170").done();
     b.property("atomic_number", 0x6ef7184faba53976L).type(PrimitiveTypeId.INTEGER).origin("7995886393880820086").done();
     b.property("details_url", 0x2b5828a8c1e2ab18L).type(PrimitiveTypeId.STRING).origin("3123291046853913368").done();
@@ -168,7 +171,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/7995886393880820078");
-    b.version(2);
+    b.version(3);
     b.aggregate("elements", 0x6ef7184faba53979L).target(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L).optional(true).ordered(true).multiple(true).origin("7995886393880820089").done();
     b.alias("Element List");
     return b.create();
@@ -176,9 +179,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForElementRef() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "ElementRef", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba6297bL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L);
+    // extends: jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality
+    b.super_(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/7995886393880881531");
-    b.version(2);
+    b.version(3);
     b.property("ionization", 0x6ef7184faba62980L).type(PrimitiveTypeId.INTEGER).origin("7995886393880881536").done();
     b.associate("element", 0x6ef7184faba6297cL).target(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184faba53971L).optional(false).origin("7995886393880881532").done();
     return b.create();
@@ -186,9 +190,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForEnergy() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "Energy", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dbL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.ChemMastery.structure.EquationComponent", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL);
+    // extends: jetbrains.mps.samples.ChemMastery.structure.EquationComponent
+    b.super_(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/6567999678834231771");
-    b.version(2);
+    b.version(3);
     b.alias("energy");
     return b.create();
   }
@@ -196,15 +201,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "EquationComponent", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x5b2638e8bdcb49dcL);
     b.class_(false, false, false);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/6567999678834231772");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForEquationEntry() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "EquationEntry", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24e0L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.ChemMastery.structure.SheetEntry", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24daL);
+    // extends: jetbrains.mps.samples.ChemMastery.structure.SheetEntry
+    b.super_(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24daL);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/7995886393880421600");
-    b.version(2);
+    b.version(3);
     b.aggregate("equation", 0x6ef7184fab9f24dbL).target(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f2133L).optional(false).ordered(true).multiple(false).origin("7995886393880421595").done();
     b.alias("equation");
     return b.create();
@@ -212,18 +218,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForExplicitBond() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "ExplicitBond", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af2L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.ChemMastery.structure.CompoundComponent", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L);
+    // extends: jetbrains.mps.samples.ChemMastery.structure.CompoundComponent
+    b.super_(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/3123291046850546418");
-    b.version(2);
+    b.version(3);
     b.alias("-");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForParens() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "Parens", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af8L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L);
+    // extends: jetbrains.mps.samples.ChemMastery.structure.CompoundComponentWithCardinality
+    b.super_(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1c2fd50L);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/3123291046850546424");
-    b.version(2);
+    b.version(3);
     b.aggregate("elements", 0x2b5828a8c1af4af9L).target(0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x2b5828a8c1af4af1L).optional(true).ordered(true).multiple(true).origin("3123291046850546425").done();
     b.alias("(");
     return b.create();
@@ -232,7 +240,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.ChemMastery", "SheetEntry", 0xa9a262e8f8054598L, 0x88c614f38937d309L, 0x6ef7184fab9f24daL);
     b.class_(false, false, false);
     b.origin("r:bdc165a5-467f-4770-a2dc-cee62bfac766(jetbrains.mps.samples.ChemMastery.structure)/7995886393880421594");
-    b.version(2);
+    b.version(3);
     b.alias("entry");
     return b.create();
   }

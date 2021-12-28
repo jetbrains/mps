@@ -64,9 +64,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForAbstractBuilderCommand() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.KajaSceneConstruction", "AbstractBuilderCommand", 0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL);
     b.class_(false, true, false);
-    b.super_("jetbrains.mps.samples.Kaja.structure.AbstractCommand", 0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
+    // extends: jetbrains.mps.samples.Kaja.structure.AbstractCommand
+    b.super_(0x49a08c51fe543ccL, 0xbd998b46d641d7f5L, 0x2d523c5e4cc4574aL);
     b.origin("r:ce42c9d0-9778-4b7f-ba63-609d51a475fd(jetbrains.mps.samples.KajaSceneConstruction.structure)/3210697320273608255");
-    b.version(2);
+    b.version(3);
     b.property("row", 0x2c8eb033a834fe40L).type(PrimitiveTypeId.INTEGER).origin("3210697320273608256").done();
     b.property("col", 0x2c8eb033a834fe41L).type(PrimitiveTypeId.INTEGER).origin("3210697320273608257").done();
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
@@ -75,9 +76,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForBuildWall() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.KajaSceneConstruction", "BuildWall", 0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a8341e10L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.KajaSceneConstruction.structure.AbstractBuilderCommand", 0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL);
+    // extends: jetbrains.mps.samples.KajaSceneConstruction.structure.AbstractBuilderCommand
+    b.super_(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL);
     b.origin("r:ce42c9d0-9778-4b7f-ba63-609d51a475fd(jetbrains.mps.samples.KajaSceneConstruction.structure)/3210697320273550864");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("build wall");
     return b.create();
@@ -85,9 +87,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForDestroyWall() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.KajaSceneConstruction", "DestroyWall", 0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fa55L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.KajaSceneConstruction.structure.AbstractBuilderCommand", 0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL);
+    // extends: jetbrains.mps.samples.KajaSceneConstruction.structure.AbstractBuilderCommand
+    b.super_(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL);
     b.origin("r:ce42c9d0-9778-4b7f-ba63-609d51a475fd(jetbrains.mps.samples.KajaSceneConstruction.structure)/3210697320273607253");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("destroy wall");
     return b.create();
@@ -95,9 +98,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForDropMark() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.KajaSceneConstruction", "DropMark", 0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3eL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.KajaSceneConstruction.structure.AbstractBuilderCommand", 0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL);
+    // extends: jetbrains.mps.samples.KajaSceneConstruction.structure.AbstractBuilderCommand
+    b.super_(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL);
     b.origin("r:ce42c9d0-9778-4b7f-ba63-609d51a475fd(jetbrains.mps.samples.KajaSceneConstruction.structure)/3210697320273608254");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("drop mark");
     return b.create();
@@ -105,9 +109,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForPickMark() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.KajaSceneConstruction", "PickMark", 0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a835165fL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.samples.KajaSceneConstruction.structure.AbstractBuilderCommand", 0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL);
+    // extends: jetbrains.mps.samples.KajaSceneConstruction.structure.AbstractBuilderCommand
+    b.super_(0xb56912a3674f4530L, 0xb0cf55261b526a1fL, 0x2c8eb033a834fe3fL);
     b.origin("r:ce42c9d0-9778-4b7f-ba63-609d51a475fd(jetbrains.mps.samples.KajaSceneConstruction.structure)/3210697320273614431");
-    b.version(2);
+    b.version(3);
     b.kind(ConceptKind.NORMAL, StaticScope.NONE);
     b.alias("pick mark");
     return b.create();

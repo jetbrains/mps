@@ -54,7 +54,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("tooltips.example", "List", 0xa8c4631e640d42a1L, 0xba26250ba067c2c2L, 0x2e602a53d6175dbaL);
     b.class_(false, false, true);
     b.origin("r:785fbfdf-4d16-46ea-8112-f67d04b451d9(tooltips.example.structure)/3341717463071415738");
-    b.version(2);
+    b.version(3);
     b.property("a", 0x61349daa9dd5fb71L).type(PrimitiveTypeId.INTEGER).origin("7004396676586011505").done();
     return b.create();
   }
@@ -63,7 +63,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:785fbfdf-4d16-46ea-8112-f67d04b451d9(tooltips.example.structure)/4766463257084173924");
-    b.version(2);
+    b.version(3);
     b.aggregate("ls", 0x4225e11419741e67L).target(0xa8c4631e640d42a1L, 0xba26250ba067c2c2L, 0x2e602a53d6175dbaL).optional(true).ordered(true).multiple(true).origin("4766463257084173927").done();
     return b.create();
   }

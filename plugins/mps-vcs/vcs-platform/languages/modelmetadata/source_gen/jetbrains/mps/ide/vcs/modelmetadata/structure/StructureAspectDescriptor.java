@@ -60,7 +60,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.vcs.modelmetadata", "LanguageDependency", 0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x660570953ee5d6b9L);
     b.class_(false, false, false);
     b.origin("r:d1664c60-f6de-4b25-a874-54417df516ea(jetbrains.mps.ide.vcs.modelmetadata.structure)/7351405753059890873");
-    b.version(2);
+    b.version(3);
     b.property("value", 0x660570953ee5dadfL).type(PrimitiveTypeId.STRING).origin("7351405753059891935").done();
     return b.create();
   }
@@ -69,7 +69,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:d1664c60-f6de-4b25-a874-54417df516ea(jetbrains.mps.ide.vcs.modelmetadata.structure)/8374934269827354989");
-    b.version(2);
+    b.version(3);
     b.property("longname", 0x7439be589a4e11e6L).type(PrimitiveTypeId.STRING).origin("8374934269827355110").done();
     b.property("uuid", 0x7439be589a4e11e8L).type(PrimitiveTypeId.STRING).origin("8374934269827355112").done();
     b.property("donotgenerate", 0x7439be589a4e11f4L).type(PrimitiveTypeId.BOOLEAN).origin("8374934269827355124").done();
@@ -83,7 +83,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.vcs.modelmetadata", "ModelReference", 0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x39c8ca3b79aaafdeL);
     b.class_(false, false, false);
     b.origin("r:d1664c60-f6de-4b25-a874-54417df516ea(jetbrains.mps.ide.vcs.modelmetadata.structure)/4163800212297134046");
-    b.version(2);
+    b.version(3);
     b.property("stringValue", 0x39c8ca3b79aaafdfL).type(PrimitiveTypeId.STRING).origin("4163800212297134047").done();
     return b.create();
   }
@@ -91,7 +91,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.ide.vcs.modelmetadata", "ModuleReference", 0x6df0089f32884998L, 0x9d57e698e7c8e145L, 0x39c8ca3b79aaafe1L);
     b.class_(false, false, false);
     b.origin("r:d1664c60-f6de-4b25-a874-54417df516ea(jetbrains.mps.ide.vcs.modelmetadata.structure)/4163800212297134049");
-    b.version(2);
+    b.version(3);
     b.property("stringValue", 0x39c8ca3b79aaafe2L).type(PrimitiveTypeId.STRING).origin("4163800212297134050").done();
     return b.create();
   }

@@ -85,7 +85,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba114cbL);
     b.origin("r:2721a314-71a4-4f87-8d33-9d2d1cd9ce6c(BHL5.structure)/3845307305753232935");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForC1() {
@@ -93,7 +93,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba114cbL);
     b.origin("r:2721a314-71a4-4f87-8d33-9d2d1cd9ce6c(BHL5.structure)/3845307305753197511");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForC2() {
@@ -101,7 +101,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba23ba9L);
     b.origin("r:2721a314-71a4-4f87-8d33-9d2d1cd9ce6c(BHL5.structure)/3845307305753244039");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForC3() {
@@ -109,51 +109,55 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba114cbL);
     b.origin("r:2721a314-71a4-4f87-8d33-9d2d1cd9ce6c(BHL5.structure)/3845307305753245743");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForC4() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BHL5", "C4", 0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba30886L);
     b.class_(false, false, false);
-    b.super_("BHL5.structure.C3", 0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba2f82fL);
+    // extends: BHL5.structure.C3
+    b.super_(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba2f82fL);
     b.parent(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba114cbL);
     b.origin("r:2721a314-71a4-4f87-8d33-9d2d1cd9ce6c(BHL5.structure)/3845307305753249926");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForC5() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BHL5", "C5", 0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x3f852a67e9131504L);
     b.class_(false, false, false);
-    b.super_("BHL5.structure.C3", 0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba2f82fL);
+    // extends: BHL5.structure.C3
+    b.super_(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba2f82fL);
     b.parent(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba114cbL);
     b.origin("r:2721a314-71a4-4f87-8d33-9d2d1cd9ce6c(BHL5.structure)/4577111222072317188");
-    b.version(2);
+    b.version(3);
     b.property("b", 0x3f852a67e913151eL).type(PrimitiveTypeId.BOOLEAN).origin("4577111222072317214").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForC6() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BHL5", "C6", 0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x23a893587ca1aaedL);
     b.class_(false, false, false);
-    b.super_("BHL5.structure.C5", 0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x3f852a67e9131504L);
+    // extends: BHL5.structure.C5
+    b.super_(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x3f852a67e9131504L);
     b.origin("r:2721a314-71a4-4f87-8d33-9d2d1cd9ce6c(BHL5.structure)/2569465595672242925");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForC7() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BHL5", "C7", 0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x23a893587ca1af93L);
     b.class_(false, false, false);
-    b.super_("BHL5.structure.C6", 0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x23a893587ca1aaedL);
+    // extends: BHL5.structure.C6
+    b.super_(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x23a893587ca1aaedL);
     b.parent(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x25076477397e4c6fL);
     b.parent(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x25076477397e4c74L);
     b.origin("r:2721a314-71a4-4f87-8d33-9d2d1cd9ce6c(BHL5.structure)/2569465595672244115");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForI1() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BHL5", "I1", 0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba114cbL);
     b.interface_();
     b.origin("r:2721a314-71a4-4f87-8d33-9d2d1cd9ce6c(BHL5.structure)/3845307305753121995");
-    b.version(2);
+    b.version(3);
     b.property("a", 0x355d469f0ba114e9L).type(PrimitiveTypeId.STRING).origin("3845307305753122025").done();
     return b.create();
   }
@@ -162,14 +166,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.interface_();
     b.parent(0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x355d469f0ba114cbL);
     b.origin("r:2721a314-71a4-4f87-8d33-9d2d1cd9ce6c(BHL5.structure)/3845307305753197481");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForI3() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BHL5", "I3", 0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x25076477397e4c6fL);
     b.interface_();
     b.origin("r:2721a314-71a4-4f87-8d33-9d2d1cd9ce6c(BHL5.structure)/2668211767468772463");
-    b.version(2);
+    b.version(3);
     b.property("c", 0x6c4ee9d44295ea26L).type(PrimitiveTypeId.STRING).origin("7804432302139107878").done();
     return b.create();
   }
@@ -177,7 +181,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("BHL5", "I4", 0xb4fa1e36714a4c77L, 0x8e953eae9632decbL, 0x25076477397e4c74L);
     b.interface_();
     b.origin("r:2721a314-71a4-4f87-8d33-9d2d1cd9ce6c(BHL5.structure)/2668211767468772468");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
 }

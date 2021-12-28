@@ -53,7 +53,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:a7cbf330-9260-4b6d-8d53-3b6cb70171c0(jetbrains.mps.lang.editor.imageGen.structure)/2359976223559993484");
-    b.version(2);
+    b.version(3);
     b.property("fileName", 0x20c051df23a9da87L).type(PrimitiveTypeId.STRING).origin("2359976223560030855").done();
     b.property("id", 0x2d0ad2528389ad26L).type(PrimitiveTypeId.STRING).origin("3245637733309852966").done();
     b.property("imageFormat", 0x132781a3b11568fbL).type(PrimitiveTypeId.STRING).origin("1380214350862969083").done();

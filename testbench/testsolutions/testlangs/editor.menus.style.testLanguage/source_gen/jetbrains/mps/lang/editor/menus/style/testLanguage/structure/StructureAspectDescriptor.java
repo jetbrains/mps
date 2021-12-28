@@ -112,18 +112,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ChildInLinkNoPriority() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ChildInLinkNoPriority", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf553L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherChildInMatchingLink", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL);
+    // extends: jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherChildInMatchingLink
+    b.super_(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/4639084645851198803");
-    b.version(2);
+    b.version(3);
     b.alias("no priority");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ChildInLinkWithPriority() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ChildInLinkWithPriority", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf554L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherChildInMatchingLink", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL);
+    // extends: jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherChildInMatchingLink
+    b.super_(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/4639084645851198804");
-    b.version(2);
+    b.version(3);
     b.alias("with priority");
     return b.create();
   }
@@ -131,15 +133,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ChildNoMenu", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510aaf4beL);
     b.interface_();
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668062336190");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ChildNoPriority() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ChildNoPriority", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510979992L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherBaseChild", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5eddcL);
+    // extends: jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherBaseChild
+    b.super_(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5eddcL);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668061067666");
-    b.version(2);
+    b.version(3);
     b.alias("no priority");
     return b.create();
   }
@@ -147,14 +150,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ChildParameterizedSubstituteMenu", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b4fee9L);
     b.interface_();
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668062994153");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ChildSimpleSubstituteMenu() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ChildSimpleSubstituteMenu", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510ac9aacL);
     b.interface_();
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668062444204");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ChildToReference() {
@@ -162,15 +165,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/4639084645851051086");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ChildWithPriority() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ChildWithPriority", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510979993L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherBaseChild", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5eddcL);
+    // extends: jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ContextMatcherBaseChild
+    b.super_(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5eddcL);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668061067667");
-    b.version(2);
+    b.version(3);
     b.alias("with priority");
     return b.create();
   }
@@ -178,7 +182,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ChildWithPropertyAndLink", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x6967c03129fda5e0L);
     b.class_(false, false, false);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/7595250613974050272");
-    b.version(2);
+    b.version(3);
     b.property("property", 0x6967c03129fdb3bbL).type(PrimitiveTypeId.BOOLEAN).origin("7595250613974053819").done();
     b.associate("reference", 0x6967c03129fdb4bdL).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eebb44dL).optional(true).origin("7595250613974054077").done();
     return b.create();
@@ -187,7 +191,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ChildWrapSubstituteMenu", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8a8L);
     b.interface_();
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668063045800");
-    b.version(2);
+    b.version(3);
     b.aggregate("wrapped", 0x49b1109510b5c8dfL).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8dcL).optional(true).ordered(true).multiple(false).origin("5310043668063045855").done();
     return b.create();
   }
@@ -195,24 +199,26 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ConceptToWrap", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8dcL);
     b.class_(false, true, false);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668063045852");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ConceptToWrapNoPriority() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ConceptToWrapNoPriority", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8deL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ConceptToWrap", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8dcL);
+    // extends: jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ConceptToWrap
+    b.super_(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8dcL);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668063045854");
-    b.version(2);
+    b.version(3);
     b.alias("no priority");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ConceptToWrapWithPriority() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ConceptToWrapWithPriority", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8ddL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ConceptToWrap", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8dcL);
+    // extends: jetbrains.mps.lang.editor.menus.style.testLanguage.structure.TestCompletionCustomization_ConceptToWrap
+    b.super_(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8dcL);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668063045853");
-    b.version(2);
+    b.version(3);
     b.alias("with priority");
     return b.create();
   }
@@ -224,14 +230,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b4fee9L);
     b.parent(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b5c8a8L);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668063055324");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ContextMatcherChildInMatchingLink() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ContextMatcherChildInMatchingLink", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eedf54eL);
     b.class_(false, true, false);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/4639084645851198798");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ContextMatcherChildToSubstitute() {
@@ -239,14 +245,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/4639084645853153301");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_ParentTestContextMatcher() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ParentTestContextMatcher", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b11095109798c7L);
     b.class_(false, false, false);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/5310043668061067463");
-    b.version(2);
+    b.version(3);
     b.property("booleanProperty", 0x49b1109510b71d68L).type(PrimitiveTypeId.BOOLEAN).origin("5310043668063133032").done();
     b.property("enumProperty", 0x49b1109510b71ff1L).type(MetaIdFactory.dataTypeId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b71ff4L)).origin("4241665505353454390").done();
     b.property("customActionEnumProperty", 0x34d3e9eb931270eaL).type(MetaIdFactory.dataTypeId(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x49b1109510b71ff4L)).origin("4241665505353454392").done();
@@ -269,7 +275,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.menus.style.testLanguage", "TestCompletionCustomization_ParentTestStyle", 0xb4a430be169648bfL, 0xbb724333242e590cL, 0x71cb9a076cd90360L);
     b.class_(false, false, false);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/8199816903239730016");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForTestCompletionCustomization_RootToReference() {
@@ -277,7 +283,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, true);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
     b.origin("r:6ffe895d-c627-4bc6-b29b-11834fa1d0d7(jetbrains.mps.lang.editor.menus.style.testLanguage.structure)/4639084645851051085");
-    b.version(2);
+    b.version(3);
     b.aggregate("children", 0x406156e80eebb451L).target(0xb4a430be169648bfL, 0xbb724333242e590cL, 0x406156e80eebb44eL).optional(true).ordered(true).multiple(true).origin("4639084645851051089").done();
     return b.create();
   }

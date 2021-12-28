@@ -52,9 +52,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForTypeWithProperties() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("testPrimitiveType", "TypeWithProperties", 0x8a53c70515e44f87L, 0x8796457845605512L, 0x9cc88b154a54d6cL);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.baseLanguage.structure.Type", 0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
+    // extends: jetbrains.mps.baseLanguage.structure.Type
+    b.super_(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506dL);
     b.origin("r:f452be5e-b693-4373-bee9-3f7a3df5e603(testPrimitiveType.structure)/706089536801033580");
-    b.version(2);
+    b.version(3);
     b.property("str", 0x9cc88b154a556a2L).type(PrimitiveTypeId.STRING).origin("706089536801035938").done();
     b.property("num", 0x9cc88b154a556a8L).type(PrimitiveTypeId.INTEGER).origin("706089536801035944").done();
     b.property("bool", 0x9cc88b154a556abL).type(PrimitiveTypeId.BOOLEAN).origin("706089536801035947").done();

@@ -5,6 +5,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
@@ -15,7 +16,7 @@
       <unit at="10,0,30,0" name="jetbrains.mps.lang.editor.tooltips.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="15,0,77,0" name="jetbrains.mps.lang.editor.tooltips.structure.StructureAspectDescriptor" />
+      <unit at="15,0,79,0" name="jetbrains.mps.lang.editor.tooltips.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(jetbrains.mps.lang.editor.tooltips.structure)/3877544518697302453">
@@ -32,7 +33,7 @@
       <scope id="3877544518697302453" at="20,69,26,57" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="3877544518697302453" at="12,0,13,0" concept="5" trace="AuxEditorCellWithRefToGeneratedHint" />
+      <node id="3877544518697302453" at="12,0,13,0" concept="6" trace="AuxEditorCellWithRefToGeneratedHint" />
       <node id="3877544518697302453" at="16,116,17,74" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
@@ -40,18 +41,19 @@
       <node id="3877544518697302453" at="40,69,41,60" concept="4" />
       <node id="3877544518697302453" at="54,93,55,204" concept="3" />
       <node id="3877544518697302453" at="55,204,56,33" concept="0" />
-      <node id="3877544518697302453" at="56,33,57,125" concept="0" />
-      <node id="3877544518697302453" at="57,125,58,121" concept="0" />
-      <node id="3877544518697302453" at="58,121,59,17" concept="0" />
-      <node id="3877544518697376288" at="59,17,60,168" concept="0" />
-      <node id="672449538226969699" at="60,168,61,192" concept="0" />
-      <node id="3877544518697302453" at="61,192,62,22" concept="4" />
-      <node id="3877544518697302453" at="54,0,64,0" concept="6" trace="createDescriptorForAuxEditorCellWithRefToGeneratedHint#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="3877544518697302453" at="56,33,57,67" concept="5" />
+      <node id="3877544518697302453" at="57,67,58,70" concept="0" />
+      <node id="3877544518697302453" at="58,70,59,121" concept="0" />
+      <node id="3877544518697302453" at="59,121,60,17" concept="0" />
+      <node id="3877544518697376288" at="60,17,61,168" concept="0" />
+      <node id="672449538226969699" at="61,168,62,192" concept="0" />
+      <node id="3877544518697302453" at="62,192,63,22" concept="4" />
+      <node id="3877544518697302453" at="54,0,65,0" concept="7" trace="createDescriptorForAuxEditorCellWithRefToGeneratedHint#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="3877544518697302453" at="40,69,41,60" />
-      <scope id="3877544518697302453" at="54,93,62,22">
+      <scope id="3877544518697302453" at="54,93,63,22">
         <var name="b" id="3877544518697302453" />
       </scope>
-      <scope id="3877544518697302453" at="54,0,64,0" />
+      <scope id="3877544518697302453" at="54,0,65,0" />
     </file>
   </root>
   <root nodeRef="r:34a4cfb6-903f-41e9-95dc-ea24a6097ced(jetbrains.mps.lang.editor.tooltips.structure)/8032738370786720738">
@@ -68,28 +70,29 @@
       <scope id="8032738370786720738" at="27,51,33,39" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="8032738370786720738" at="13,0,14,0" concept="5" trace="CellModel_Tooltip" />
+      <node id="8032738370786720738" at="13,0,14,0" concept="6" trace="CellModel_Tooltip" />
       <node id="8032738370786720738" at="17,74,18,56" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="8032738370786720738" at="17,0,18,0" concept="1" trace="myConceptCellModel_Tooltip" />
       <node id="8032738370786720738" at="42,51,43,42" concept="4" />
-      <node id="8032738370786720738" at="64,75,65,186" concept="3" />
-      <node id="8032738370786720738" at="65,186,66,34" concept="0" />
-      <node id="8032738370786720738" at="66,34,67,125" concept="0" />
-      <node id="8032738370786720738" at="67,125,68,121" concept="0" />
-      <node id="8032738370786720738" at="68,121,69,17" concept="0" />
-      <node id="4804083432920625643" at="69,17,70,111" concept="0" />
-      <node id="3877544518697818164" at="70,111,71,199" concept="0" />
-      <node id="9185659875393569181" at="71,199,72,199" concept="0" />
-      <node id="8032738370786720738" at="72,199,73,23" concept="0" />
-      <node id="8032738370786720738" at="73,23,74,22" concept="4" />
-      <node id="8032738370786720738" at="64,0,76,0" concept="6" trace="createDescriptorForCellModel_Tooltip#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="8032738370786720738" at="65,75,66,186" concept="3" />
+      <node id="8032738370786720738" at="66,186,67,34" concept="0" />
+      <node id="8032738370786720738" at="67,34,68,67" concept="5" />
+      <node id="8032738370786720738" at="68,67,69,70" concept="0" />
+      <node id="8032738370786720738" at="69,70,70,121" concept="0" />
+      <node id="8032738370786720738" at="70,121,71,17" concept="0" />
+      <node id="4804083432920625643" at="71,17,72,111" concept="0" />
+      <node id="3877544518697818164" at="72,111,73,199" concept="0" />
+      <node id="9185659875393569181" at="73,199,74,199" concept="0" />
+      <node id="8032738370786720738" at="74,199,75,23" concept="0" />
+      <node id="8032738370786720738" at="75,23,76,22" concept="4" />
+      <node id="8032738370786720738" at="65,0,78,0" concept="7" trace="createDescriptorForCellModel_Tooltip#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="8032738370786720738" at="42,51,43,42" />
-      <scope id="8032738370786720738" at="64,75,74,22">
+      <scope id="8032738370786720738" at="65,75,76,22">
         <var name="b" id="8032738370786720738" />
       </scope>
-      <scope id="8032738370786720738" at="64,0,76,0" />
+      <scope id="8032738370786720738" at="65,0,78,0" />
     </file>
   </root>
 </debug-info>

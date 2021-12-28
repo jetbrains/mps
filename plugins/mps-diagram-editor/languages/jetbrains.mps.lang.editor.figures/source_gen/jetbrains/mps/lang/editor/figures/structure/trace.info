@@ -5,6 +5,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/6329021646629104954:jetbrains.mps.baseLanguage.structure.SingleLineComment" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <root>
@@ -15,7 +16,7 @@
       <unit at="10,0,44,0" name="jetbrains.mps.lang.editor.figures.structure.LanguageConceptSwitch" />
     </file>
     <file name="StructureAspectDescriptor.java">
-      <unit at="14,0,151,0" name="jetbrains.mps.lang.editor.figures.structure.StructureAspectDescriptor" />
+      <unit at="14,0,156,0" name="jetbrains.mps.lang.editor.figures.structure.StructureAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:64327a98-9d9a-43f9-aa56-fe3b1ee87c60(jetbrains.mps.lang.editor.figures.structure)/2084788800270473556">
@@ -32,24 +33,25 @@
       <scope id="2084788800270473556" at="73,64,79,52" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2084788800270473556" at="19,0,20,0" concept="5" trace="FigureParameterAttributeMethod" />
+      <node id="2084788800270473556" at="19,0,20,0" concept="6" trace="FigureParameterAttributeMethod" />
       <node id="2084788800270473556" at="30,68,31,69" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2084788800270473556" at="22,0,23,0" concept="1" trace="myConceptFigureParameterAttributeMethod" />
       <node id="2084788800270473556" at="59,64,60,55" concept="4" />
-      <node id="2084788800270473556" at="134,88,135,198" concept="3" />
-      <node id="2084788800270473556" at="135,198,136,34" concept="0" />
-      <node id="2084788800270473556" at="136,34,137,148" concept="0" />
-      <node id="2084788800270473556" at="137,148,138,120" concept="0" />
-      <node id="2084788800270473556" at="138,120,139,17" concept="0" />
-      <node id="2084788800270473556" at="139,17,140,22" concept="4" />
-      <node id="2084788800270473556" at="134,0,142,0" concept="6" trace="createDescriptorForFigureParameterAttributeMethod#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="2084788800270473556" at="137,88,138,198" concept="3" />
+      <node id="2084788800270473556" at="138,198,139,34" concept="0" />
+      <node id="2084788800270473556" at="139,34,140,84" concept="5" />
+      <node id="2084788800270473556" at="140,84,141,76" concept="0" />
+      <node id="2084788800270473556" at="141,76,142,120" concept="0" />
+      <node id="2084788800270473556" at="142,120,143,17" concept="0" />
+      <node id="2084788800270473556" at="143,17,144,22" concept="4" />
+      <node id="2084788800270473556" at="137,0,146,0" concept="7" trace="createDescriptorForFigureParameterAttributeMethod#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="2084788800270473556" at="59,64,60,55" />
-      <scope id="2084788800270473556" at="134,88,140,22">
+      <scope id="2084788800270473556" at="137,88,144,22">
         <var name="b" id="2084788800270473556" />
       </scope>
-      <scope id="2084788800270473556" at="134,0,142,0" />
+      <scope id="2084788800270473556" at="137,0,146,0" />
     </file>
   </root>
   <root nodeRef="r:64327a98-9d9a-43f9-aa56-fe3b1ee87c60(jetbrains.mps.lang.editor.figures.structure)/2084788800270473590">
@@ -66,24 +68,25 @@
       <scope id="2084788800270473590" at="66,63,72,51" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2084788800270473590" at="18,0,19,0" concept="5" trace="FigureParameterAttributeField" />
+      <node id="2084788800270473590" at="18,0,19,0" concept="6" trace="FigureParameterAttributeField" />
       <node id="2084788800270473590" at="29,63,30,68" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="2084788800270473590" at="21,0,22,0" concept="1" trace="myConceptFigureParameterAttributeField" />
       <node id="2084788800270473590" at="57,63,58,54" concept="4" />
-      <node id="2084788800270473590" at="126,87,127,197" concept="3" />
-      <node id="2084788800270473590" at="127,197,128,34" concept="0" />
-      <node id="2084788800270473590" at="128,34,129,148" concept="0" />
-      <node id="2084788800270473590" at="129,148,130,120" concept="0" />
-      <node id="2084788800270473590" at="130,120,131,17" concept="0" />
-      <node id="2084788800270473590" at="131,17,132,22" concept="4" />
-      <node id="2084788800270473590" at="126,0,134,0" concept="6" trace="createDescriptorForFigureParameterAttributeField#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="2084788800270473590" at="128,87,129,197" concept="3" />
+      <node id="2084788800270473590" at="129,197,130,34" concept="0" />
+      <node id="2084788800270473590" at="130,34,131,84" concept="5" />
+      <node id="2084788800270473590" at="131,84,132,76" concept="0" />
+      <node id="2084788800270473590" at="132,76,133,120" concept="0" />
+      <node id="2084788800270473590" at="133,120,134,17" concept="0" />
+      <node id="2084788800270473590" at="134,17,135,22" concept="4" />
+      <node id="2084788800270473590" at="128,0,137,0" concept="7" trace="createDescriptorForFigureParameterAttributeField#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="2084788800270473590" at="57,63,58,54" />
-      <scope id="2084788800270473590" at="126,87,132,22">
+      <scope id="2084788800270473590" at="128,87,135,22">
         <var name="b" id="2084788800270473590" />
       </scope>
-      <scope id="2084788800270473590" at="126,0,134,0" />
+      <scope id="2084788800270473590" at="128,0,137,0" />
     </file>
   </root>
   <root nodeRef="r:64327a98-9d9a-43f9-aa56-fe3b1ee87c60(jetbrains.mps.lang.editor.figures.structure)/2178507174411801538">
@@ -100,7 +103,7 @@
       <scope id="2178507174411801538" at="27,52,33,40" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2178507174411801538" at="12,0,13,0" concept="5" trace="ExternalViewFigure" />
+      <node id="2178507174411801538" at="12,0,13,0" concept="6" trace="ExternalViewFigure" />
       <node id="2178507174411801538" at="23,116,24,57" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
@@ -115,7 +118,7 @@
       <node id="2178507174411801591" at="79,17,80,168" concept="0" />
       <node id="2178507174411801664" at="80,168,81,198" concept="0" />
       <node id="2178507174411801538" at="81,198,82,22" concept="4" />
-      <node id="2178507174411801538" at="73,0,84,0" concept="6" trace="createDescriptorForExternalViewFigure#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="2178507174411801538" at="73,0,84,0" concept="7" trace="createDescriptorForExternalViewFigure#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="2178507174411801538" at="45,52,46,43" />
       <scope id="2178507174411801538" at="73,76,82,22">
         <var name="b" id="2178507174411801538" />
@@ -137,7 +140,7 @@
       <scope id="2178507174411801606" at="34,61,40,49" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="2178507174411801606" at="13,0,14,0" concept="5" trace="ExternalViewFigureParameter" />
+      <node id="2178507174411801606" at="13,0,14,0" concept="6" trace="ExternalViewFigureParameter" />
       <node id="2178507174411801606" at="24,57,25,66" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
@@ -150,7 +153,7 @@
       <node id="2178507174411801606" at="89,120,90,17" concept="0" />
       <node id="2178507174411801649" at="90,17,91,174" concept="0" />
       <node id="2178507174411801606" at="91,174,92,22" concept="4" />
-      <node id="2178507174411801606" at="84,0,94,0" concept="6" trace="createDescriptorForExternalViewFigureParameter#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="2178507174411801606" at="84,0,94,0" concept="7" trace="createDescriptorForExternalViewFigureParameter#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="2178507174411801606" at="47,61,48,52" />
       <scope id="2178507174411801606" at="84,85,92,22">
         <var name="b" id="2178507174411801606" />
@@ -171,25 +174,25 @@
       <scope id="342110547581235541" at="54,49,59,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="342110547581235541" at="16,0,17,0" concept="5" trace="FigureParameter" />
+      <node id="342110547581235541" at="16,0,17,0" concept="6" trace="FigureParameter" />
       <node id="342110547581235541" at="27,54,28,53" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="342110547581235541" at="19,0,20,0" concept="1" trace="myConceptFigureParameter" />
       <node id="342110547581235541" at="53,49,54,40" concept="4" />
       <node id="342110547581235541" at="87,71,88,75" concept="0" />
-      <node id="342110547581235541" at="110,73,111,182" concept="3" />
-      <node id="342110547581235541" at="111,182,112,19" concept="0" />
-      <node id="342110547581235541" at="112,19,113,119" concept="0" />
-      <node id="342110547581235541" at="113,119,114,17" concept="0" />
-      <node id="342110547581235541" at="114,17,115,22" concept="4" />
-      <node id="342110547581235541" at="120,127,121,75" concept="0" />
-      <node id="342110547581235541" at="110,0,117,0" concept="6" trace="createDescriptorForFigureParameter#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="342110547581235541" at="111,73,112,182" concept="3" />
+      <node id="342110547581235541" at="112,182,113,19" concept="0" />
+      <node id="342110547581235541" at="113,19,114,119" concept="0" />
+      <node id="342110547581235541" at="114,119,115,17" concept="0" />
+      <node id="342110547581235541" at="115,17,116,22" concept="4" />
+      <node id="342110547581235541" at="122,76,123,75" concept="0" />
+      <node id="342110547581235541" at="111,0,118,0" concept="7" trace="createDescriptorForFigureParameter#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="342110547581235541" at="53,49,54,40" />
-      <scope id="342110547581235541" at="110,73,115,22">
+      <scope id="342110547581235541" at="111,73,116,22">
         <var name="b" id="342110547581235541" />
       </scope>
-      <scope id="342110547581235541" at="110,0,117,0" />
+      <scope id="342110547581235541" at="111,0,118,0" />
     </file>
   </root>
   <root nodeRef="r:64327a98-9d9a-43f9-aa56-fe3b1ee87c60(jetbrains.mps.lang.editor.figures.structure)/5422656561926747556">
@@ -206,7 +209,7 @@
       <scope id="5422656561926747556" at="47,49,53,37" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5422656561926747556" at="15,0,16,0" concept="5" trace="FigureAttribute" />
+      <node id="5422656561926747556" at="15,0,16,0" concept="6" trace="FigureAttribute" />
       <node id="5422656561926747556" at="26,44,27,54" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
@@ -214,17 +217,18 @@
       <node id="5422656561926747556" at="51,49,52,40" concept="4" />
       <node id="5422656561926747556" at="101,73,102,183" concept="3" />
       <node id="5422656561926747556" at="102,183,103,34" concept="0" />
-      <node id="5422656561926747556" at="103,34,104,127" concept="0" />
-      <node id="5422656561926747556" at="104,127,105,120" concept="0" />
-      <node id="5422656561926747556" at="105,120,106,17" concept="0" />
-      <node id="5422656561926747556" at="106,17,107,23" concept="0" />
-      <node id="5422656561926747556" at="107,23,108,22" concept="4" />
-      <node id="5422656561926747556" at="101,0,110,0" concept="6" trace="createDescriptorForFigureAttribute#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="5422656561926747556" at="103,34,104,63" concept="5" />
+      <node id="5422656561926747556" at="104,63,105,76" concept="0" />
+      <node id="5422656561926747556" at="105,76,106,120" concept="0" />
+      <node id="5422656561926747556" at="106,120,107,17" concept="0" />
+      <node id="5422656561926747556" at="107,17,108,23" concept="0" />
+      <node id="5422656561926747556" at="108,23,109,22" concept="4" />
+      <node id="5422656561926747556" at="101,0,111,0" concept="7" trace="createDescriptorForFigureAttribute#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="5422656561926747556" at="51,49,52,40" />
-      <scope id="5422656561926747556" at="101,73,108,22">
+      <scope id="5422656561926747556" at="101,73,109,22">
         <var name="b" id="5422656561926747556" />
       </scope>
-      <scope id="5422656561926747556" at="101,0,110,0" />
+      <scope id="5422656561926747556" at="101,0,111,0" />
     </file>
   </root>
   <root nodeRef="r:64327a98-9d9a-43f9-aa56-fe3b1ee87c60(jetbrains.mps.lang.editor.figures.structure)/5422656561929884641">
@@ -240,24 +244,25 @@
       <scope id="5422656561929884641" at="60,58,65,46" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="5422656561929884641" at="17,0,18,0" concept="5" trace="FigureParameterAttribute" />
+      <node id="5422656561929884641" at="17,0,18,0" concept="6" trace="FigureParameterAttribute" />
       <node id="5422656561929884641" at="28,53,29,63" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="5422656561929884641" at="20,0,21,0" concept="1" trace="myConceptFigureParameterAttribute" />
       <node id="5422656561929884641" at="55,58,56,49" concept="4" />
-      <node id="5422656561929884641" at="117,82,118,192" concept="3" />
-      <node id="5422656561929884641" at="118,192,119,33" concept="0" />
-      <node id="5422656561929884641" at="119,33,120,127" concept="0" />
-      <node id="5422656561929884641" at="121,75,122,120" concept="0" />
-      <node id="5422656561929884641" at="122,120,123,17" concept="0" />
-      <node id="5422656561929884641" at="123,17,124,22" concept="4" />
-      <node id="5422656561929884641" at="117,0,126,0" concept="6" trace="createDescriptorForFigureParameterAttribute#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="5422656561929884641" at="118,82,119,192" concept="3" />
+      <node id="5422656561929884641" at="119,192,120,33" concept="0" />
+      <node id="5422656561929884641" at="120,33,121,63" concept="5" />
+      <node id="5422656561929884641" at="121,63,122,76" concept="0" />
+      <node id="5422656561929884641" at="123,75,124,120" concept="0" />
+      <node id="5422656561929884641" at="124,120,125,17" concept="0" />
+      <node id="5422656561929884641" at="125,17,126,22" concept="4" />
+      <node id="5422656561929884641" at="118,0,128,0" concept="7" trace="createDescriptorForFigureParameterAttribute#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="5422656561929884641" at="55,58,56,49" />
-      <scope id="5422656561929884641" at="117,82,124,22">
+      <scope id="5422656561929884641" at="118,82,126,22">
         <var name="b" id="5422656561929884641" />
       </scope>
-      <scope id="5422656561929884641" at="117,0,126,0" />
+      <scope id="5422656561929884641" at="118,0,128,0" />
     </file>
   </root>
   <root nodeRef="r:64327a98-9d9a-43f9-aa56-fe3b1ee87c60(jetbrains.mps.lang.editor.figures.structure)/7319867929567295724">
@@ -274,24 +279,25 @@
       <scope id="7319867929567295724" at="80,70,86,58" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="7319867929567295724" at="20,0,21,0" concept="5" trace="FigureParameterAttributeViewProperty" />
+      <node id="7319867929567295724" at="20,0,21,0" concept="6" trace="FigureParameterAttributeViewProperty" />
       <node id="7319867929567295724" at="31,69,32,75" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
       <node id="7319867929567295724" at="23,0,24,0" concept="1" trace="myConceptFigureParameterAttributeViewProperty" />
       <node id="7319867929567295724" at="61,70,62,61" concept="4" />
-      <node id="7319867929567295724" at="142,94,143,204" concept="3" />
-      <node id="7319867929567295724" at="143,204,144,34" concept="0" />
-      <node id="7319867929567295724" at="144,34,145,148" concept="0" />
-      <node id="7319867929567295724" at="145,148,146,120" concept="0" />
-      <node id="7319867929567295724" at="146,120,147,17" concept="0" />
-      <node id="7319867929567295724" at="147,17,148,22" concept="4" />
-      <node id="7319867929567295724" at="142,0,150,0" concept="6" trace="createDescriptorForFigureParameterAttributeViewProperty#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="7319867929567295724" at="146,94,147,204" concept="3" />
+      <node id="7319867929567295724" at="147,204,148,34" concept="0" />
+      <node id="7319867929567295724" at="148,34,149,84" concept="5" />
+      <node id="7319867929567295724" at="149,84,150,76" concept="0" />
+      <node id="7319867929567295724" at="150,76,151,120" concept="0" />
+      <node id="7319867929567295724" at="151,120,152,17" concept="0" />
+      <node id="7319867929567295724" at="152,17,153,22" concept="4" />
+      <node id="7319867929567295724" at="146,0,155,0" concept="7" trace="createDescriptorForFigureParameterAttributeViewProperty#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="7319867929567295724" at="61,70,62,61" />
-      <scope id="7319867929567295724" at="142,94,148,22">
+      <scope id="7319867929567295724" at="146,94,153,22">
         <var name="b" id="7319867929567295724" />
       </scope>
-      <scope id="7319867929567295724" at="142,0,150,0" />
+      <scope id="7319867929567295724" at="146,0,155,0" />
     </file>
   </root>
   <root nodeRef="r:64327a98-9d9a-43f9-aa56-fe3b1ee87c60(jetbrains.mps.lang.editor.figures.structure)/785823818609017605">
@@ -307,7 +313,7 @@
       <scope id="785823818609017605" at="41,40,46,28" />
     </file>
     <file name="LanguageConceptSwitch.java">
-      <node id="785823818609017605" at="14,0,15,0" concept="5" trace="Figure" />
+      <node id="785823818609017605" at="14,0,15,0" concept="6" trace="Figure" />
       <node id="785823818609017605" at="25,66,26,44" concept="0" />
     </file>
     <file name="StructureAspectDescriptor.java">
@@ -318,7 +324,7 @@
       <node id="785823818609017605" at="96,33,97,119" concept="0" />
       <node id="785823818609017605" at="97,119,98,17" concept="0" />
       <node id="785823818609017605" at="98,17,99,22" concept="4" />
-      <node id="785823818609017605" at="94,0,101,0" concept="6" trace="createDescriptorForFigure#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
+      <node id="785823818609017605" at="94,0,101,0" concept="7" trace="createDescriptorForFigure#()Ljetbrains/mps/smodel/runtime/ConceptDescriptor;" />
       <scope id="785823818609017605" at="49,40,50,31" />
       <scope id="785823818609017605" at="94,64,99,22">
         <var name="b" id="785823818609017605" />

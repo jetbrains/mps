@@ -49,9 +49,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForActionMapImportTesterExtension() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.editor.editorTest.extension", "ActionMapImportTesterExtension", 0xe7808658592b442eL, 0x9770511bd6bd751dL, 0x3f7dd538e5b63894L);
     b.class_(false, false, false);
-    b.super_("jetbrains.mps.lang.editor.editorTest.structure.ActionMapImportTester", 0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x3a5c07622668cc83L);
+    // extends: jetbrains.mps.lang.editor.editorTest.structure.ActionMapImportTester
+    b.super_(0x81f0abb8d71e4d13L, 0xa0c1d2291fbb28b7L, 0x3a5c07622668cc83L);
     b.origin("r:7a2a702d-28cd-4325-9c0b-086e8aac9f62(jetbrains.mps.lang.editor.editorTest.extension.structure)/4575047236827101332");
-    b.version(2);
+    b.version(3);
     return b.create();
   }
 }
