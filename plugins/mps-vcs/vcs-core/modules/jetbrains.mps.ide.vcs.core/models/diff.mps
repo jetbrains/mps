@@ -13443,7 +13443,7 @@
                   <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
                 </node>
                 <node concept="1rXfSq" id="6Jktl0zAkc8" role="33vP2m">
-                  <ref role="37wK5l" node="6Jktl0z_Wqg" />
+                  <ref role="37wK5l" node="6Jktl0z_Wqg" resolve="getFirstComparableNode" />
                   <node concept="37vLTw" id="6Jktl0zAmvA" role="37wK5m">
                     <ref role="3cqZAo" node="yQXwz4fomo" resolve="aChildIterator" />
                   </node>
@@ -13460,7 +13460,7 @@
                   <ref role="3uigEE" to="mhbf:~SNode" resolve="SNode" />
                 </node>
                 <node concept="1rXfSq" id="6Jktl0zAtmq" role="33vP2m">
-                  <ref role="37wK5l" node="6Jktl0z_Wqg" />
+                  <ref role="37wK5l" node="6Jktl0z_Wqg" resolve="getFirstComparableNode" />
                   <node concept="37vLTw" id="6Jktl0zAvI0" role="37wK5m">
                     <ref role="3cqZAo" node="yQXwz4fomy" resolve="bChildIterator" />
                   </node>
@@ -13482,7 +13482,7 @@
                   </node>
                   <node concept="3fqX7Q" id="yQXwz4fon6" role="3clFbw">
                     <node concept="1rXfSq" id="4hiugqysiCG" role="3fr31v">
-                      <ref role="37wK5l" node="34$SXTn6hy" />
+                      <ref role="37wK5l" node="34$SXTn6hy" resolve="nodeEquals" />
                       <node concept="37vLTw" id="66cr1lpoQmI" role="37wK5m">
                         <ref role="3cqZAo" node="66cr1lpnDdM" resolve="aChild" />
                       </node>
@@ -13504,7 +13504,7 @@
                       <ref role="3cqZAo" node="66cr1lpnDdM" resolve="aChild" />
                     </node>
                     <node concept="1rXfSq" id="6Jktl0zBQf3" role="37vLTx">
-                      <ref role="37wK5l" node="6Jktl0z_Wqg" />
+                      <ref role="37wK5l" node="6Jktl0z_Wqg" resolve="getFirstComparableNode" />
                       <node concept="37vLTw" id="6Jktl0zBQf4" role="37wK5m">
                         <ref role="3cqZAo" node="yQXwz4fomo" resolve="aChildIterator" />
                       </node>
@@ -13520,7 +13520,7 @@
                       <ref role="3cqZAo" node="66cr1lpohuG" resolve="bChild" />
                     </node>
                     <node concept="1rXfSq" id="6Jktl0zBY8A" role="37vLTx">
-                      <ref role="37wK5l" node="6Jktl0z_Wqg" />
+                      <ref role="37wK5l" node="6Jktl0z_Wqg" resolve="getFirstComparableNode" />
                       <node concept="37vLTw" id="6Jktl0zBY8B" role="37wK5m">
                         <ref role="3cqZAo" node="yQXwz4fomy" resolve="bChildIterator" />
                       </node>
@@ -13856,7 +13856,7 @@
         <node concept="3cpWs6" id="7rChfv1NRdC" role="3cqZAp">
           <node concept="2ShNRf" id="7rChfv1NWuR" role="3cqZAk">
             <node concept="1pGfFk" id="7rChfv1NWuS" role="2ShVmc">
-              <ref role="37wK5l" to="pa15:~MetaModelInfoProvider$RegularMetaModelInfo.&lt;init&gt;()" resolve="RegularMetaModelInfo" />
+              <ref role="37wK5l" to="pa15:~MetaModelInfoProvider$RegularMetaModelInfo.&lt;init&gt;()" resolve="MetaModelInfoProvider.RegularMetaModelInfo" />
             </node>
           </node>
         </node>
@@ -23979,7 +23979,7 @@
                     <node concept="3clFbC" id="4Uft8ubH0n8" role="3clFbw">
                       <node concept="10Nm6u" id="4Uft8ubH5yY" role="3uHU7w" />
                       <node concept="37vLTw" id="4Uft8ubGVmS" role="3uHU7B">
-                        <ref role="3cqZAo" node="4Uft8ubAOIg" resolve="id" />
+                        <ref role="3cqZAo" node="4Uft8ubAOIg" resolve="notMovedNodeId" />
                       </node>
                     </node>
                   </node>
@@ -23987,22 +23987,22 @@
                   <node concept="3clFbJ" id="4Uft8ub_O1A" role="3cqZAp">
                     <node concept="17QLQc" id="4Uft8ubShQ8" role="3clFbw">
                       <node concept="37vLTw" id="4Uft8ubPs1o" role="3uHU7B">
-                        <ref role="3cqZAo" node="4Uft8ub_we5" resolve="prevNodeId" />
+                        <ref role="3cqZAo" node="4Uft8ub_we5" resolve="prevNotMovedNodeId" />
                       </node>
                       <node concept="37vLTw" id="4Uft8ubPAAr" role="3uHU7w">
-                        <ref role="3cqZAo" node="4Uft8ubAOIg" resolve="id" />
+                        <ref role="3cqZAo" node="4Uft8ubAOIg" resolve="notMovedNodeId" />
                       </node>
                     </node>
                     <node concept="3clFbS" id="4Uft8ub_O1C" role="3clFbx">
                       <node concept="3clFbF" id="4Uft8ubQXTG" role="3cqZAp">
                         <node concept="2OqwBi" id="4Uft8ubR324" role="3clFbG">
                           <node concept="37vLTw" id="4Uft8ubQXTF" role="2Oq$k0">
-                            <ref role="3cqZAo" node="4Uft8ubMTUf" resolve="unwrappedMoves" />
+                            <ref role="3cqZAo" node="4Uft8ubMTUf" resolve="idAndMovesList" />
                           </node>
                           <node concept="TSZUe" id="4Uft8ubRaik" role="2OqNvi">
                             <node concept="1Ls8ON" id="4Uft8ubRfwW" role="25WWJ7">
                               <node concept="37vLTw" id="4Uft8ubRq6X" role="1Lso8e">
-                                <ref role="3cqZAo" node="4Uft8ubAOIg" resolve="id" />
+                                <ref role="3cqZAo" node="4Uft8ubAOIg" resolve="notMovedNodeId" />
                               </node>
                               <node concept="2ShNRf" id="4Uft8ubRD4k" role="1Lso8e">
                                 <node concept="Tc6Ow" id="4Uft8ubRJrV" role="2ShVmc">
@@ -24025,7 +24025,7 @@
                         </node>
                         <node concept="2OqwBi" id="4Uft8ubQ1vn" role="1LFl5Q">
                           <node concept="37vLTw" id="4Uft8ubPWUf" role="2Oq$k0">
-                            <ref role="3cqZAo" node="4Uft8ubMTUf" resolve="unwrappedMoves" />
+                            <ref role="3cqZAo" node="4Uft8ubMTUf" resolve="idAndMovesList" />
                           </node>
                           <node concept="1yVyf7" id="4Uft8ubQ9nh" role="2OqNvi" />
                         </node>
@@ -24040,10 +24040,10 @@
                   <node concept="3clFbF" id="4Uft8ubC5tk" role="3cqZAp">
                     <node concept="37vLTI" id="4Uft8ubCbBr" role="3clFbG">
                       <node concept="37vLTw" id="4Uft8ubCiry" role="37vLTx">
-                        <ref role="3cqZAo" node="4Uft8ubAOIg" resolve="id" />
+                        <ref role="3cqZAo" node="4Uft8ubAOIg" resolve="notMovedNodeId" />
                       </node>
                       <node concept="37vLTw" id="4Uft8ubC5ti" role="37vLTJ">
-                        <ref role="3cqZAo" node="4Uft8ub_we5" resolve="prevNodeId" />
+                        <ref role="3cqZAo" node="4Uft8ub_we5" resolve="prevNotMovedNodeId" />
                       </node>
                     </node>
                   </node>
@@ -24087,7 +24087,7 @@
           </node>
           <node concept="2OqwBi" id="4Uft8ubICMg" role="3clFbw">
             <node concept="37vLTw" id="4Uft8ubIzd$" role="2Oq$k0">
-              <ref role="3cqZAo" node="4Uft8ubMTUf" resolve="unwrappedMoves" />
+              <ref role="3cqZAo" node="4Uft8ubMTUf" resolve="idAndMovesList" />
             </node>
             <node concept="1v1jN8" id="4Uft8ubIILM" role="2OqNvi" />
           </node>
@@ -24142,7 +24142,7 @@
                 <node concept="2OqwBi" id="4Uft8ubThN5" role="37wK5m">
                   <node concept="2OqwBi" id="4Uft8ubSNnv" role="2Oq$k0">
                     <node concept="37vLTw" id="wJDoiH1ylj" role="2Oq$k0">
-                      <ref role="3cqZAo" node="4Uft8ubMTUf" resolve="unwrappedMoves" />
+                      <ref role="3cqZAo" node="4Uft8ubMTUf" resolve="idAndMovesList" />
                     </node>
                     <node concept="3$u5V9" id="4Uft8ubSUBA" role="2OqNvi">
                       <node concept="1bVj0M" id="4Uft8ubSUBC" role="23t8la">
@@ -24884,7 +24884,7 @@
           <node concept="3cpWsn" id="rYRALL0xcf" role="3cpWs9">
             <property role="TrG5h" value="movesGroup" />
             <node concept="3uibUv" id="rYRALL0xcg" role="1tU5fm">
-              <ref role="3uigEE" node="rYRALKooVe" resolve="UnwrappedMovesGroup" />
+              <ref role="3uigEE" node="rYRALKooVe" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
             </node>
             <node concept="2OqwBi" id="rYRALLcN5m" role="33vP2m">
               <node concept="1rXfSq" id="rYRALLcN5n" role="2Oq$k0">
@@ -25027,13 +25027,13 @@
         <node concept="3Tm6S6" id="rYRALKoHMd" role="1B3o_S" />
         <node concept="3vKaQO" id="rYRALLarkz" role="1tU5fm">
           <node concept="3uibUv" id="rYRALLark$" role="3O5elw">
-            <ref role="3uigEE" node="rYRALKooVe" resolve="SiblingGroups" />
+            <ref role="3uigEE" node="rYRALKooVe" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
           </node>
         </node>
         <node concept="2ShNRf" id="rYRALLaRkP" role="33vP2m">
           <node concept="Tc6Ow" id="rYRALLaZKq" role="2ShVmc">
             <node concept="3uibUv" id="rYRALLbf4s" role="HW$YZ">
-              <ref role="3uigEE" node="rYRALKooVe" resolve="SiblingGroups" />
+              <ref role="3uigEE" node="rYRALKooVe" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
             </node>
           </node>
         </node>
@@ -25044,13 +25044,13 @@
         <node concept="3Tm6S6" id="rYRALKoJOV" role="1B3o_S" />
         <node concept="3vKaQO" id="rYRALKoKlV" role="1tU5fm">
           <node concept="3uibUv" id="rYRALKoKm$" role="3O5elw">
-            <ref role="3uigEE" node="rYRALKooVe" resolve="SiblingGroups" />
+            <ref role="3uigEE" node="rYRALKooVe" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
           </node>
         </node>
         <node concept="2ShNRf" id="rYRALKqTeN" role="33vP2m">
           <node concept="Tc6Ow" id="rYRALKqUdi" role="2ShVmc">
             <node concept="3uibUv" id="rYRALKqUB$" role="HW$YZ">
-              <ref role="3uigEE" node="rYRALKooVe" resolve="SiblingGroups" />
+              <ref role="3uigEE" node="rYRALKooVe" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
             </node>
           </node>
         </node>
@@ -25095,11 +25095,11 @@
               <node concept="2OqwBi" id="rYRALKr$yg" role="37vLTJ">
                 <node concept="Xjq3P" id="rYRALKr$yh" role="2Oq$k0" />
                 <node concept="2OwXpG" id="rYRALKr$yi" role="2OqNvi">
-                  <ref role="2Oxat5" node="rYRALKo_fz" resolve="myParentIdLink" />
+                  <ref role="2Oxat5" node="rYRALKo_fz" resolve="myParentNode" />
                 </node>
               </node>
               <node concept="37vLTw" id="rYRALKr$yj" role="37vLTx">
-                <ref role="3cqZAo" node="rYRALKr$yc" resolve="parentIdLink" />
+                <ref role="3cqZAo" node="rYRALKr$yc" resolve="myParentNodeId" />
               </node>
             </node>
           </node>
@@ -25253,13 +25253,13 @@
             <property role="TrG5h" value="movesGroups" />
             <node concept="3vKaQO" id="rYRALKSPhh" role="1tU5fm">
               <node concept="3uibUv" id="rYRALKT3KS" role="3O5elw">
-                <ref role="3uigEE" node="rYRALKooVe" resolve="UnwrappedMovesGroup" />
+                <ref role="3uigEE" node="rYRALKooVe" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
               </node>
             </node>
             <node concept="2ShNRf" id="3$QQjGlRQ$O" role="33vP2m">
               <node concept="Tc6Ow" id="rYRALKTiJf" role="2ShVmc">
                 <node concept="3uibUv" id="rYRALKTya1" role="HW$YZ">
-                  <ref role="3uigEE" node="rYRALKooVe" resolve="UnwrappedMovesGroup" />
+                  <ref role="3uigEE" node="rYRALKooVe" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
                 </node>
               </node>
             </node>
@@ -25316,7 +25316,7 @@
               <node concept="3cpWsn" id="rYRALKCb5s" role="3cpWs9">
                 <property role="TrG5h" value="movesGroup" />
                 <node concept="3uibUv" id="rYRALKCb5t" role="1tU5fm">
-                  <ref role="3uigEE" node="rYRALKooVe" resolve="UnwrappedMovesGroup" />
+                  <ref role="3uigEE" node="rYRALKooVe" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
                 </node>
                 <node concept="2OqwBi" id="rYRALKUzCW" role="33vP2m">
                   <node concept="37vLTw" id="rYRALKUrBM" role="2Oq$k0">
@@ -25407,7 +25407,7 @@
               <node concept="37vLTI" id="rYRALKU5re" role="3clFbG">
                 <node concept="2ShNRf" id="rYRALKCuVK" role="37vLTx">
                   <node concept="1pGfFk" id="rYRALKCuVL" role="2ShVmc">
-                    <ref role="37wK5l" node="rYRALKq54Y" resolve="UnwrappedMovesGroup" />
+                    <ref role="37wK5l" node="rYRALKq54Y" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
                     <node concept="1LFfDK" id="rYRALKCuVM" role="37wK5m">
                       <node concept="3cmrfG" id="rYRALKCuVN" role="1LF_Uc">
                         <property role="3cmrfH" value="0" />
@@ -25458,7 +25458,7 @@
                     <node concept="3clFbS" id="rYRALKPEyX" role="1bW5cS">
                       <node concept="3clFbF" id="rYRALKQ0A4" role="3cqZAp">
                         <node concept="1rXfSq" id="rYRALKQ0A3" role="3clFbG">
-                          <ref role="37wK5l" node="rYRALKM6st" />
+                          <ref role="37wK5l" node="rYRALKM6st" resolve="findDescendants" />
                           <node concept="37vLTw" id="rYRALKQ80_" role="37wK5m">
                             <ref role="3cqZAo" node="rYRALKCb5s" resolve="movesGroup" />
                           </node>
@@ -25469,7 +25469,7 @@
                       </node>
                       <node concept="3clFbF" id="rYRALKRkTm" role="3cqZAp">
                         <node concept="1rXfSq" id="rYRALKRkTk" role="3clFbG">
-                          <ref role="37wK5l" node="rYRALKM6st" />
+                          <ref role="37wK5l" node="rYRALKM6st" resolve="findDescendants" />
                           <node concept="37vLTw" id="rYRALKRrur" role="37wK5m">
                             <ref role="3cqZAo" node="rYRALKPEyY" resolve="it" />
                           </node>
@@ -25513,7 +25513,7 @@
       </node>
       <node concept="3vKaQO" id="rYRALKROQt" role="3clF45">
         <node concept="3uibUv" id="rYRALKS3Px" role="3O5elw">
-          <ref role="3uigEE" node="rYRALKooVe" resolve="UnwrappedMovesGroup" />
+          <ref role="3uigEE" node="rYRALKooVe" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
         </node>
       </node>
     </node>
@@ -25523,13 +25523,13 @@
       <node concept="37vLTG" id="rYRALKMjrN" role="3clF46">
         <property role="TrG5h" value="gr1" />
         <node concept="3uibUv" id="rYRALKMrb4" role="1tU5fm">
-          <ref role="3uigEE" node="rYRALKooVe" resolve="UnwrappedMovesGroup" />
+          <ref role="3uigEE" node="rYRALKooVe" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
         </node>
       </node>
       <node concept="37vLTG" id="rYRALKMrE_" role="3clF46">
         <property role="TrG5h" value="gr2" />
         <node concept="3uibUv" id="rYRALKMzif" role="1tU5fm">
-          <ref role="3uigEE" node="rYRALKooVe" resolve="UnwrappedMovesGroup" />
+          <ref role="3uigEE" node="rYRALKooVe" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
         </node>
       </node>
       <node concept="3clFbS" id="rYRALKM6sw" role="3clF47">
@@ -25787,7 +25787,7 @@
       <node concept="37vLTG" id="42HD3FTeD$I" role="3clF46">
         <property role="TrG5h" value="movesGroup" />
         <node concept="3uibUv" id="42HD3FTeM6j" role="1tU5fm">
-          <ref role="3uigEE" node="rYRALKooVe" resolve="UnwrappedMovesGroup" />
+          <ref role="3uigEE" node="rYRALKooVe" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
         </node>
       </node>
       <node concept="37vLTG" id="42HD3FTmm_X" role="3clF46">
@@ -25903,7 +25903,7 @@
                 </node>
                 <node concept="2OqwBi" id="42HD3FSHHen" role="2Oq$k0">
                   <node concept="37vLTw" id="42HD3FSHFmi" role="2Oq$k0">
-                    <ref role="3cqZAo" node="42HD3FSH$lS" resolve="siblingGroups" />
+                    <ref role="3cqZAo" node="42HD3FSH$lS" resolve="movesGroup" />
                   </node>
                   <node concept="2OwXpG" id="42HD3FSHI71" role="2OqNvi">
                     <ref role="2Oxat5" node="rYRALKoEdw" resolve="myGroups" />
@@ -25971,7 +25971,7 @@
       <node concept="37vLTG" id="42HD3FSH$lS" role="3clF46">
         <property role="TrG5h" value="movesGroup" />
         <node concept="3uibUv" id="42HD3FSH$lR" role="1tU5fm">
-          <ref role="3uigEE" node="rYRALKooVe" resolve="SiblingGroups" />
+          <ref role="3uigEE" node="rYRALKooVe" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
         </node>
       </node>
     </node>
@@ -26357,7 +26357,7 @@
             </node>
             <node concept="2OqwBi" id="rYRALLgboX" role="33vP2m">
               <node concept="37vLTw" id="rYRALLg5W1" role="2Oq$k0">
-                <ref role="3cqZAo" node="42HD3FT6kXC" resolve="siblingGroup" />
+                <ref role="3cqZAo" node="42HD3FT6kXC" resolve="movesGroup" />
               </node>
               <node concept="liA8E" id="rYRALLgied" role="2OqNvi">
                 <ref role="37wK5l" node="rYRALLeCKo" resolve="getUnwrappedIds" />
@@ -26409,7 +26409,7 @@
                 <ref role="3cqZAo" node="wJDoiH1ypw" resolve="unwrappedIds" />
               </node>
               <node concept="37vLTw" id="42HD3FSIfPX" role="37wK5m">
-                <ref role="3cqZAo" node="42HD3FT6kXC" resolve="siblingGroup" />
+                <ref role="3cqZAo" node="42HD3FT6kXC" resolve="movesGroup" />
               </node>
             </node>
           </node>
@@ -26719,7 +26719,7 @@
       <node concept="37vLTG" id="42HD3FT6kXC" role="3clF46">
         <property role="TrG5h" value="movesGroup" />
         <node concept="3uibUv" id="42HD3FT6uXH" role="1tU5fm">
-          <ref role="3uigEE" node="rYRALKooVe" resolve="SiblingGroups" />
+          <ref role="3uigEE" node="rYRALKooVe" resolve="WrappingGroupsBuilder.UnwrappedMovesGroup" />
         </node>
       </node>
       <node concept="37vLTG" id="42HD3FSOSRc" role="3clF46">
@@ -26796,7 +26796,7 @@
             </node>
             <node concept="2OqwBi" id="wJDoiH1yxG" role="33vP2m">
               <node concept="37vLTw" id="wJDoiH1yxH" role="2Oq$k0">
-                <ref role="3cqZAo" node="wJDoiH1yyG" resolve="oldGroup" />
+                <ref role="3cqZAo" node="wJDoiH1yyG" resolve="initialGroup" />
               </node>
               <node concept="liA8E" id="wJDoiH1yxI" role="2OqNvi">
                 <ref role="37wK5l" to="btf5:4lFvOuO7z8E" resolve="getNextGroup" />
@@ -26812,7 +26812,7 @@
             </node>
             <node concept="2OqwBi" id="wJDoiH1yxM" role="33vP2m">
               <node concept="37vLTw" id="wJDoiH1yxN" role="2Oq$k0">
-                <ref role="3cqZAo" node="wJDoiH1yyG" resolve="oldGroup" />
+                <ref role="3cqZAo" node="wJDoiH1yyG" resolve="initialGroup" />
               </node>
               <node concept="liA8E" id="wJDoiH1yxO" role="2OqNvi">
                 <ref role="37wK5l" to="btf5:4lFvOuO3HX$" resolve="getNextNodeId" />
@@ -26879,7 +26879,7 @@
             </node>
             <node concept="2OqwBi" id="wJDoiH1yyb" role="2Oq$k0">
               <node concept="37vLTw" id="wJDoiH1yyc" role="2Oq$k0">
-                <ref role="3cqZAo" node="wJDoiH1yyG" resolve="oldGroup" />
+                <ref role="3cqZAo" node="wJDoiH1yyG" resolve="initialGroup" />
               </node>
               <node concept="liA8E" id="wJDoiH1yyd" role="2OqNvi">
                 <ref role="37wK5l" to="btf5:1tCBXFSRf7S" resolve="getPrevGroup" />
@@ -26897,7 +26897,7 @@
             </node>
             <node concept="2OqwBi" id="wJDoiH1yyi" role="2Oq$k0">
               <node concept="37vLTw" id="wJDoiH1yyj" role="2Oq$k0">
-                <ref role="3cqZAo" node="wJDoiH1yyG" resolve="oldGroup" />
+                <ref role="3cqZAo" node="wJDoiH1yyG" resolve="initialGroup" />
               </node>
               <node concept="liA8E" id="wJDoiH1yyk" role="2OqNvi">
                 <ref role="37wK5l" to="btf5:1tCBXFSRf7S" resolve="getPrevGroup" />
@@ -26911,7 +26911,7 @@
             <node concept="10P_77" id="wJDoiH1yyn" role="1tU5fm" />
             <node concept="2OqwBi" id="wJDoiH1yyo" role="33vP2m">
               <node concept="37vLTw" id="wJDoiH1yyp" role="2Oq$k0">
-                <ref role="3cqZAo" node="wJDoiH1yyG" resolve="oldGroup" />
+                <ref role="3cqZAo" node="wJDoiH1yyG" resolve="initialGroup" />
               </node>
               <node concept="liA8E" id="wJDoiH1yyq" role="2OqNvi">
                 <ref role="37wK5l" to="btf5:4loISA2KcCI" resolve="isNew" />
@@ -26929,7 +26929,7 @@
             </node>
             <node concept="3dhRuq" id="wJDoiH1yyv" role="2OqNvi">
               <node concept="37vLTw" id="wJDoiH1yyw" role="25WWJ7">
-                <ref role="3cqZAo" node="wJDoiH1yyG" resolve="oldGroup" />
+                <ref role="3cqZAo" node="wJDoiH1yyG" resolve="initialGroup" />
               </node>
             </node>
           </node>
@@ -26944,7 +26944,7 @@
             </node>
             <node concept="X8dFx" id="wJDoiH1yy_" role="2OqNvi">
               <node concept="37vLTw" id="wJDoiH1yyA" role="25WWJ7">
-                <ref role="3cqZAo" node="wJDoiH1yyD" resolve="newGroups" />
+                <ref role="3cqZAo" node="wJDoiH1yyD" resolve="replacingGroups" />
               </node>
             </node>
           </node>

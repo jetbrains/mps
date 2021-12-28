@@ -45314,7 +45314,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1dN09J$2bth" role="2OqNvi">
-              <ref role="37wK5l" to="9teg:1dN09JzT$C1" resolve="initComponent" />
+              <ref role="37wK5l" to="9teg:1dN09JzT$C1" resolve="init" />
             </node>
           </node>
         </node>
@@ -45331,7 +45331,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1dN09J$2c5O" role="2OqNvi">
-              <ref role="37wK5l" to="9teg:1dN09JzT$C8" resolve="disposeComponent" />
+              <ref role="37wK5l" to="9teg:1dN09JzT$C8" resolve="dispose" />
             </node>
           </node>
         </node>

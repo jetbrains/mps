@@ -2285,10 +2285,10 @@
               <node concept="1rXfSq" id="4hiugqysw8R" role="3clFbG">
                 <ref role="37wK5l" node="2TzypFyLJ6C" resolve="copyDependencies" />
                 <node concept="37vLTw" id="122O9m6WB2h" role="37wK5m">
-                  <ref role="3cqZAo" node="122O9m6WB2e" resolve="loadDependencies" />
+                  <ref role="3cqZAo" node="122O9m6WB2e" resolve="local" />
                 </node>
                 <node concept="37vLTw" id="3GM_nagT_ow" role="37wK5m">
-                  <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="dependencies" />
+                  <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="base" />
                 </node>
               </node>
             </node>
@@ -2310,10 +2310,10 @@
               <node concept="1rXfSq" id="4hiugqysqGJ" role="3clFbG">
                 <ref role="37wK5l" node="2TzypFyLJ6C" resolve="copyDependencies" />
                 <node concept="37vLTw" id="122O9m6WJRj" role="37wK5m">
-                  <ref role="3cqZAo" node="122O9m6WJRg" resolve="loadDependencies" />
+                  <ref role="3cqZAo" node="122O9m6WJRg" resolve="remote" />
                 </node>
                 <node concept="37vLTw" id="3GM_nagTwx8" role="37wK5m">
-                  <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="dependencies" />
+                  <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="base" />
                 </node>
               </node>
             </node>
@@ -2323,7 +2323,7 @@
                 <node concept="3clFbF" id="122O9m6RPCJ" role="3cqZAp">
                   <node concept="2OqwBi" id="122O9m6RRZC" role="3clFbG">
                     <node concept="37vLTw" id="122O9m6RPCH" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="dependencies" />
+                      <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="base" />
                     </node>
                     <node concept="liA8E" id="122O9m6RTG9" role="2OqNvi">
                       <ref role="37wK5l" to="vmu8:42$XXVberJv" resolve="setLanguageRuntimeModules" />
@@ -2350,7 +2350,7 @@
                         </node>
                         <node concept="2OqwBi" id="122O9m6Suks" role="37wK5m">
                           <node concept="37vLTw" id="122O9m6Sukt" role="2Oq$k0">
-                            <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="dependencies" />
+                            <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="base" />
                           </node>
                           <node concept="liA8E" id="122O9m6Suku" role="2OqNvi">
                             <ref role="37wK5l" to="vmu8:42$XXVbdMHU" resolve="getLanguageRuntimeModules" />
@@ -2363,7 +2363,7 @@
                 <node concept="3clFbF" id="122O9m6RXcB" role="3cqZAp">
                   <node concept="2OqwBi" id="122O9m6RYEH" role="3clFbG">
                     <node concept="37vLTw" id="122O9m6RXc_" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="dependencies" />
+                      <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="base" />
                     </node>
                     <node concept="liA8E" id="122O9m6S0Gs" role="2OqNvi">
                       <ref role="37wK5l" to="vmu8:4dXFBzEhE53" resolve="setLanguages" />
@@ -2390,7 +2390,7 @@
                         </node>
                         <node concept="2OqwBi" id="122O9m6SHZH" role="37wK5m">
                           <node concept="37vLTw" id="122O9m6SHZI" role="2Oq$k0">
-                            <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="dependencies" />
+                            <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="base" />
                           </node>
                           <node concept="liA8E" id="122O9m6SHZJ" role="2OqNvi">
                             <ref role="37wK5l" to="vmu8:4dXFBzEhnAN" resolve="getLanguages" />
@@ -2403,7 +2403,7 @@
                 <node concept="3clFbF" id="122O9m6S1NW" role="3cqZAp">
                   <node concept="2OqwBi" id="122O9m6S4$l" role="3clFbG">
                     <node concept="37vLTw" id="122O9m6S1NU" role="2Oq$k0">
-                      <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="dependencies" />
+                      <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="base" />
                     </node>
                     <node concept="liA8E" id="122O9m6S6S0" role="2OqNvi">
                       <ref role="37wK5l" to="vmu8:4dXFBzEjnhY" resolve="setModuleDependencies" />
@@ -2430,7 +2430,7 @@
                         </node>
                         <node concept="2OqwBi" id="122O9m6SV7X" role="37wK5m">
                           <node concept="37vLTw" id="122O9m6SV7Y" role="2Oq$k0">
-                            <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="dependencies" />
+                            <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="base" />
                           </node>
                           <node concept="liA8E" id="122O9m6SV7Z" role="2OqNvi">
                             <ref role="37wK5l" to="vmu8:4dXFBzEj2nC" resolve="getModuleDependencies" />
@@ -2478,7 +2478,7 @@
               <node concept="1rXfSq" id="4hiugqysiQQ" role="3clFbG">
                 <ref role="37wK5l" node="2TzypFyLJ6n" resolve="saveDependencies" />
                 <node concept="37vLTw" id="3GM_nagTtI4" role="37wK5m">
-                  <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="dependencies" />
+                  <ref role="3cqZAo" node="2TzypFyLJ8Q" resolve="base" />
                 </node>
                 <node concept="37vLTw" id="3GM_nagTrsg" role="37wK5m">
                   <ref role="3cqZAo" node="2TzypFyLJ96" resolve="out" />
@@ -2513,7 +2513,7 @@
                   <ref role="3uigEE" to="mmaq:~JDOMException" resolve="JDOMException" />
                 </node>
                 <node concept="3uibUv" id="122O9m72OaM" role="nSUat">
-                  <ref role="3uigEE" node="2TzypFyLJ9M" resolve="MergeException" />
+                  <ref role="3uigEE" node="2TzypFyLJ9M" resolve="JavaDependenciesMerger.MergeException" />
                 </node>
               </node>
             </node>

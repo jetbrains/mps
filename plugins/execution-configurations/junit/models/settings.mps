@@ -5633,7 +5633,7 @@
                 <node concept="YeOm9" id="5QXtzFzJVaa" role="2ShVmc">
                   <node concept="1Y3b0j" id="5QXtzFzJVad" role="YeSDq">
                     <property role="2bfB8j" value="true" />
-                    <ref role="1Y3XeK" node="5QXtzFzIPMx" resolve="SelectionChangeListener" />
+                    <ref role="1Y3XeK" node="5QXtzFzIPMx" resolve="ScopeAndPanels.SelectionChangeListener" />
                     <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                     <node concept="3Tm1VV" id="5QXtzFzJVae" role="1B3o_S" />
                     <node concept="3clFb_" id="5QXtzFzJVaj" role="jymVt">

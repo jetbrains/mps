@@ -625,7 +625,7 @@
             <node concept="3cpWs6" id="6OnFPjfFMO8" role="3cqZAp" />
           </node>
           <node concept="1rXfSq" id="GzQDfj4JVD" role="3clFbw">
-            <ref role="37wK5l" node="GzQDfj4DLr" resolve="projectOpenCloseEventOfInterest" />
+            <ref role="37wK5l" node="GzQDfj4DLr" resolve="projectOpenCloseEventIgnored" />
           </node>
         </node>
         <node concept="3SKdUt" id="3qzU$0Ebwj3" role="3cqZAp">
@@ -917,7 +917,7 @@
             <node concept="22lmx$" id="npQ_fH7e_E" role="3uHU7B">
               <node concept="2OqwBi" id="npQ_fH7hA6" role="3uHU7w">
                 <node concept="37vLTw" id="GzQDfj4Pa5" role="2Oq$k0">
-                  <ref role="3cqZAo" node="GzQDfj4Pa2" resolve="application" />
+                  <ref role="3cqZAo" node="GzQDfj4Pa2" resolve="app" />
                 </node>
                 <node concept="liA8E" id="npQ_fH7hHI" role="2OqNvi">
                   <ref role="37wK5l" to="bd8o:~Application.isHeadlessEnvironment()" resolve="isHeadlessEnvironment" />
@@ -925,7 +925,7 @@
               </node>
               <node concept="2OqwBi" id="6OnFPjfFMNU" role="3uHU7B">
                 <node concept="37vLTw" id="GzQDfj4Pa4" role="2Oq$k0">
-                  <ref role="3cqZAo" node="GzQDfj4Pa2" resolve="application" />
+                  <ref role="3cqZAo" node="GzQDfj4Pa2" resolve="app" />
                 </node>
                 <node concept="liA8E" id="6OnFPjfFMNY" role="2OqNvi">
                   <ref role="37wK5l" to="bd8o:~Application.isUnitTestMode()" resolve="isUnitTestMode" />

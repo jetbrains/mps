@@ -8995,7 +8995,7 @@
             <node concept="3clFbJ" id="3SnNvqCbyN6" role="3cqZAp">
               <node concept="2OqwBi" id="3SnNvqCbyN7" role="3clFbw">
                 <node concept="37vLTw" id="7Tz7JMVK5P8" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7Tz7JMVK5P6" resolve="instance" />
+                  <ref role="3cqZAo" node="7Tz7JMVK5P6" resolve="bcm" />
                 </node>
                 <node concept="liA8E" id="3SnNvqCbyN9" role="2OqNvi">
                   <ref role="37wK5l" to="1l1h:3SnNvqCaJEC" resolve="isDebuggableNode" />

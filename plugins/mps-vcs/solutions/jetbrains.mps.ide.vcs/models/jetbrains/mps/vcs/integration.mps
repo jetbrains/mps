@@ -1284,7 +1284,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="57iyDtTeY$q" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="3clFb_" id="57iyDtTeY$x" role="jymVt">
@@ -1349,7 +1349,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="57iyDtTeY$G" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="2tJIrI" id="57iyDtTfdZ1" role="jymVt" />
@@ -1459,7 +1459,7 @@
                     <property role="2bfB8j" value="true" />
                     <property role="373rjd" value="true" />
                     <ref role="1Y3XeK" to="82uw:~Predicate" resolve="Predicate" />
-                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                     <node concept="3Tm1VV" id="57iyDtTfZ7g" role="1B3o_S" />
                     <node concept="3clFb_" id="57iyDtTfZ7u" role="jymVt">
                       <property role="TrG5h" value="test" />
@@ -1489,7 +1489,7 @@
                         </node>
                       </node>
                       <node concept="2AHcQZ" id="57iyDtTfZ7A" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" />
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                       </node>
                     </node>
                     <node concept="3uibUv" id="57iyDtTfZ7F" role="2Ghqu4">

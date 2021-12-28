@@ -11036,12 +11036,12 @@
                 <ref role="37wK5l" node="79FiGkx5dQ7" resolve="DeployScript.TemporalModuleWithDescriptorFile" />
                 <node concept="2OqwBi" id="2OS1ucF1Xli" role="37wK5m">
                   <node concept="37vLTw" id="2OS1ucF1WBb" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2OS1ucF1SDe" />
+                    <ref role="3cqZAo" node="2OS1ucF1SDe" resolve="pojoFS" />
                   </node>
                   <node concept="liA8E" id="2OS1ucF1YdG" role="2OqNvi">
                     <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
                     <node concept="37vLTw" id="2OS1ucF2C5N" role="37wK5m">
-                      <ref role="3cqZAo" node="2OS1ucF2wfP" />
+                      <ref role="3cqZAo" node="2OS1ucF2wfP" resolve="myModuleBaseDir" />
                     </node>
                   </node>
                 </node>

@@ -63,7 +63,7 @@
     <property role="EcuMT" value="6897150028702063044" />
     <property role="TrG5h" value="ModuleDescriptorDeputy" />
     <property role="19KtqR" value="true" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="5Z6N5M4XY00" role="PzmwI">
       <ref role="PrY4T" to="yv2q:5Z6N5M4XbRr" resolve="AspectDescriptor" />
     </node>

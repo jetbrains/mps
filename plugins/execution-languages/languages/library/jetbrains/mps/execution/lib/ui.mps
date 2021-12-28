@@ -2342,7 +2342,7 @@
               <ref role="1Pybhc" to="lzb2:~ScrollPaneFactory" resolve="ScrollPaneFactory" />
               <ref role="37wK5l" to="lzb2:~ScrollPaneFactory.createScrollPane(java.awt.Component)" resolve="createScrollPane" />
               <node concept="37vLTw" id="6ury$Ihz9kT" role="37wK5m">
-                <ref role="3cqZAo" node="1DeqbSMDT0u" />
+                <ref role="3cqZAo" node="1DeqbSMDT0u" resolve="myListComponent" />
               </node>
             </node>
             <node concept="3uibUv" id="7OiZBHE04_p" role="1tU5fm">

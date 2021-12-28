@@ -6692,7 +6692,7 @@
         <ref role="tCJdB" node="2Qdh779$bbR" resolve="AnnotatePreviousRevision" />
       </node>
       <node concept="tCFHf" id="1YQ$Agpy6zG" role="ftvYc">
-        <ref role="tCJdB" node="1YQ$Agpgz3w" resolve="ExcludeRevision" />
+        <ref role="tCJdB" node="1YQ$Agpgz3w" resolve="HideRevision" />
       </node>
     </node>
     <node concept="tT9cl" id="1Xv6sND23T8" role="2f5YQi">
@@ -7267,7 +7267,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1YQ$Agpgz4g" role="2OqNvi">
-              <ref role="37wK5l" to="bvbc:1YQ$AgphouZ" resolve="excludeRevision" />
+              <ref role="37wK5l" to="bvbc:1YQ$AgphouZ" resolve="hideRevision" />
               <node concept="2OqwBi" id="1YQ$Agpgz4h" role="37wK5m">
                 <node concept="37vLTw" id="1YQ$Agpgz4i" role="2Oq$k0">
                   <ref role="3cqZAo" node="1YQ$Agpgz3P" resolve="cellMessage" />
@@ -7308,7 +7308,7 @@
     <node concept="1QGGSu" id="1YQ$Agpgz4C" role="3Uehp1">
       <node concept="10M0yZ" id="5tfq$cL$Qu5" role="3xaMm5">
         <ref role="3cqZAo" to="z2i8:~AllIcons$Vcs.Remove" resolve="Remove" />
-        <ref role="1PxDUh" to="z2i8:~AllIcons$Vcs" resolve="Vcs" />
+        <ref role="1PxDUh" to="z2i8:~AllIcons$Vcs" resolve="AllIcons.Vcs" />
       </node>
     </node>
   </node>

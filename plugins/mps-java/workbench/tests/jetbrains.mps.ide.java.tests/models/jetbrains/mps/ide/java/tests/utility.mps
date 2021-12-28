@@ -1329,7 +1329,7 @@
             <node concept="liA8E" id="7q5dBpSh9Jt" role="2OqNvi">
               <ref role="37wK5l" to="ends:~ModelRootBase.setModule(jetbrains.mps.extapi.module.SModuleBase)" resolve="setModule" />
               <node concept="37vLTw" id="7vXIE_IRkcH" role="37wK5m">
-                <ref role="3cqZAo" node="7vXIE_IRkcD" resolve="base" />
+                <ref role="3cqZAo" node="7vXIE_IRkcD" resolve="moduleBase" />
               </node>
             </node>
             <node concept="37vLTw" id="7q5dBpSh9Jx" role="2Oq$k0">
@@ -1490,7 +1490,7 @@
                     <property role="2bfB8j" value="true" />
                     <property role="373rjd" value="true" />
                     <ref role="1Y3XeK" to="31cb:~ModelDiscoveryDelta" resolve="ModelDiscoveryDelta" />
-                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+                    <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                     <node concept="3Tm1VV" id="7vXIE_IR9x4" role="1B3o_S" />
                     <node concept="3clFb_" id="7vXIE_IR9xi" role="jymVt">
                       <property role="TrG5h" value="module" />
@@ -1506,7 +1506,7 @@
                         </node>
                       </node>
                       <node concept="2AHcQZ" id="7vXIE_IR9xo" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" />
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                       </node>
                     </node>
                     <node concept="3clFb_" id="7vXIE_IR9xq" role="jymVt">
@@ -1530,7 +1530,7 @@
                         </node>
                       </node>
                       <node concept="2AHcQZ" id="7vXIE_IR9xy" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" />
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                       </node>
                     </node>
                     <node concept="3clFb_" id="7vXIE_IR9x$" role="jymVt">
@@ -1613,7 +1613,7 @@
                                   <ref role="3uigEE" to="g3l6:~SModelBase" resolve="SModelBase" />
                                 </node>
                                 <node concept="37vLTw" id="7vXIE_IS5tX" role="10QFUP">
-                                  <ref role="3cqZAo" node="7vXIE_IR9xC" resolve="p1" />
+                                  <ref role="3cqZAo" node="7vXIE_IR9xC" resolve="model" />
                                 </node>
                               </node>
                             </node>
@@ -1621,7 +1621,7 @@
                         </node>
                       </node>
                       <node concept="2AHcQZ" id="7vXIE_IR9xJ" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" />
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                       </node>
                     </node>
                     <node concept="3clFb_" id="7vXIE_IR9xL" role="jymVt">
@@ -1645,7 +1645,7 @@
                         </node>
                       </node>
                       <node concept="2AHcQZ" id="7vXIE_IR9xT" role="2AJF6D">
-                        <ref role="2AI5Lk" to="wyt6:~Override" />
+                        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                       </node>
                     </node>
                   </node>

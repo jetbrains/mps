@@ -945,7 +945,7 @@
           </node>
           <node concept="1sPUBX" id="5Z6N5M4XfUO" role="lGtFl">
             <property role="34cw8o" value="takes node&lt;AspectDescriptor&gt; instance and let extending switch inject instantiation code" />
-            <ref role="v9R2y" node="5Z6N5M4Xe2c" resolve="InstantiateAspectDescriptor_PerRoot" />
+            <ref role="v9R2y" node="5Z6N5M4Xe2c" resolve="AspectDescriptor_Instantiate" />
           </node>
         </node>
         <node concept="3cpWs6" id="NIUB61fjet" role="3cqZAp">

@@ -2067,7 +2067,7 @@
                     </node>
                   </node>
                   <node concept="2AHcQZ" id="3hogGBOIrBV" role="2AJF6D">
-                    <ref role="2AI5Lk" to="wyt6:~Override" />
+                    <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                   </node>
                   <node concept="1W57fq" id="3hogGBOIHB0" role="lGtFl">
                     <node concept="3IZrLx" id="3hogGBOIHB1" role="3IZSJc">

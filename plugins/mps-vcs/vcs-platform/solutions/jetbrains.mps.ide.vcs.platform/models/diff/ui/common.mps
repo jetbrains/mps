@@ -12772,20 +12772,20 @@
               <node concept="3clFbF" id="18gpp3XVT1P" role="3cqZAp">
                 <node concept="37vLTI" id="18gpp3XVUhT" role="3clFbG">
                   <node concept="37vLTw" id="18gpp3XVVmC" role="37vLTx">
-                    <ref role="3cqZAo" node="18gpp3XVJNl" resolve="strips" />
+                    <ref role="3cqZAo" node="18gpp3XVJNl" resolve="selectedLayers" />
                   </node>
                   <node concept="37vLTw" id="18gpp3XVT1N" role="37vLTJ">
-                    <ref role="3cqZAo" node="18gpp3XVDr3" resolve="myStripsUnderMouse" />
+                    <ref role="3cqZAo" node="18gpp3XVDr3" resolve="mySelectedLayers" />
                   </node>
                 </node>
               </node>
             </node>
             <node concept="17QLQc" id="18gpp3XVQx$" role="3clFbw">
               <node concept="37vLTw" id="18gpp3XVRWV" role="3uHU7w">
-                <ref role="3cqZAo" node="18gpp3XVDr3" resolve="myStripsUnderMouse" />
+                <ref role="3cqZAo" node="18gpp3XVDr3" resolve="mySelectedLayers" />
               </node>
               <node concept="37vLTw" id="18gpp3XVOSS" role="3uHU7B">
-                <ref role="3cqZAo" node="18gpp3XVJNl" resolve="strips" />
+                <ref role="3cqZAo" node="18gpp3XVJNl" resolve="selectedLayers" />
               </node>
             </node>
           </node>
@@ -12815,7 +12815,7 @@
             </node>
             <node concept="2OqwBi" id="18gpp3XW1Nt" role="3clFbw">
               <node concept="37vLTw" id="18gpp3XW0gn" role="2Oq$k0">
-                <ref role="3cqZAo" node="18gpp3XVJNl" resolve="strips" />
+                <ref role="3cqZAo" node="18gpp3XVJNl" resolve="selectedLayers" />
               </node>
               <node concept="1v1jN8" id="3oSjOhxMmUb" role="2OqNvi" />
             </node>
@@ -12947,7 +12947,7 @@
           <node concept="3clFbF" id="6mNCvHSfumV" role="3cqZAp">
             <node concept="Rm8GO" id="6mNCvHSfxyU" role="3clFbG">
               <ref role="Rm8GQ" to="gspm:~Balloon$Position.atRight" resolve="atRight" />
-              <ref role="1Px2BO" to="gspm:~Balloon$Position" resolve="Position" />
+              <ref role="1Px2BO" to="gspm:~Balloon$Position" resolve="Balloon.Position" />
             </node>
           </node>
         </node>
@@ -13081,7 +13081,7 @@
         <node concept="2ShNRf" id="3oSjOhxPSil" role="33vP2m">
           <node concept="1pGfFk" id="3oSjOhxQrWO" role="2ShVmc">
             <property role="373rjd" value="true" />
-            <ref role="37wK5l" node="6mNCvHSfBy0" resolve="MyTooltipProvider" />
+            <ref role="37wK5l" node="6mNCvHSfBy0" resolve="DiffEditor.MyTooltipProvider" />
             <node concept="3clFbT" id="3oSjOhxQyHc" role="37wK5m">
               <property role="3clFbU" value="true" />
             </node>
@@ -13164,7 +13164,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="1WhnszxOMev" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="2tJIrI" id="1I2O4_rhaEe" role="jymVt" />
@@ -13397,7 +13397,7 @@
         <node concept="2ShNRf" id="3oSjOhxR$Ox" role="33vP2m">
           <node concept="1pGfFk" id="3oSjOhxR$Oy" role="2ShVmc">
             <property role="373rjd" value="true" />
-            <ref role="37wK5l" node="6mNCvHSfBy0" resolve="MyTooltipProvider" />
+            <ref role="37wK5l" node="6mNCvHSfBy0" resolve="DiffEditor.MyTooltipProvider" />
             <node concept="3clFbT" id="3oSjOhxR$Oz" role="37wK5m" />
           </node>
         </node>
@@ -13539,7 +13539,7 @@
           </node>
         </node>
         <node concept="2AHcQZ" id="1WhnszxQ160" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" />
+          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
         </node>
       </node>
       <node concept="2tJIrI" id="4CGE8md84Dc" role="jymVt" />
@@ -34510,7 +34510,7 @@
                 <ref role="3cqZAo" node="CRlyEVv4SN" resolve="HIDE_ID_CHANGES" />
               </node>
               <node concept="37vLTw" id="4Eo9MbHm9Qv" role="37wK5m">
-                <ref role="3cqZAo" node="2G2A2CbWw6e" resolve="hide" />
+                <ref role="3cqZAo" node="2G2A2CbWw6e" resolve="enable" />
               </node>
             </node>
           </node>
@@ -34562,7 +34562,7 @@
                 <ref role="3cqZAo" node="CRlyEVv4Ty" resolve="HIDE_RESOLVE_INFO_CHANGES" />
               </node>
               <node concept="37vLTw" id="QgBy_wxJ4A" role="37wK5m">
-                <ref role="3cqZAo" node="2G2A2CbWNnN" resolve="hide" />
+                <ref role="3cqZAo" node="2G2A2CbWNnN" resolve="enable" />
               </node>
             </node>
           </node>
@@ -34614,7 +34614,7 @@
                 <ref role="3cqZAo" node="2zjRC$7PXtK" resolve="HIDE_UNORDERED_MOVES" />
               </node>
               <node concept="37vLTw" id="4Eo9MbHmdOb" role="37wK5m">
-                <ref role="3cqZAo" node="2G2A2CbX6Eh" resolve="hide" />
+                <ref role="3cqZAo" node="2G2A2CbX6Eh" resolve="enable" />
               </node>
             </node>
           </node>
@@ -34666,7 +34666,7 @@
                 <ref role="3cqZAo" node="2G2A2CbUQ8r" resolve="USE_SHORT_CHANGE_DESCRIPTIONS" />
               </node>
               <node concept="37vLTw" id="2G2A2CbW5WR" role="37wK5m">
-                <ref role="3cqZAo" node="2G2A2CbW5WJ" resolve="p2" />
+                <ref role="3cqZAo" node="2G2A2CbW5WJ" resolve="enable" />
               </node>
             </node>
           </node>
@@ -34688,10 +34688,10 @@
             <node concept="liA8E" id="4Eo9MbHmhsC" role="2OqNvi">
               <ref role="37wK5l" to="jmi8:~PropertiesComponent.getBoolean(java.lang.String,boolean)" resolve="getBoolean" />
               <node concept="37vLTw" id="2G2A2CbXrsL" role="37wK5m">
-                <ref role="3cqZAo" node="TuaAfeIafC" resolve="TRACK_MOVED_NODES" />
+                <ref role="3cqZAo" node="TuaAfeIafC" resolve="TRACK_MOVED_NODES_IN_DIFF" />
               </node>
               <node concept="37vLTw" id="2G2A2CbXwFs" role="37wK5m">
-                <ref role="3cqZAo" node="2G2A2CbXvCz" resolve="TRACK_MOVED_VALUES_DEFAULT" />
+                <ref role="3cqZAo" node="2G2A2CbXvCz" resolve="TRACK_MOVED_NODES_DIFF_DEFAULT" />
               </node>
             </node>
             <node concept="2YIFZM" id="4Eo9MbHmhsF" role="2Oq$k0">
@@ -34717,10 +34717,10 @@
             <node concept="liA8E" id="4Eo9MbHmhsU" role="2OqNvi">
               <ref role="37wK5l" to="jmi8:~PropertiesComponent.setValue(java.lang.String,boolean)" resolve="setValue" />
               <node concept="37vLTw" id="2G2A2CbXu1T" role="37wK5m">
-                <ref role="3cqZAo" node="TuaAfeIafC" resolve="TRACK_MOVED_NODES" />
+                <ref role="3cqZAo" node="TuaAfeIafC" resolve="TRACK_MOVED_NODES_IN_DIFF" />
               </node>
               <node concept="37vLTw" id="4Eo9MbHmhsW" role="37wK5m">
-                <ref role="3cqZAo" node="2G2A2CbXsO2" resolve="track" />
+                <ref role="3cqZAo" node="2G2A2CbXsO2" resolve="enable" />
               </node>
             </node>
           </node>

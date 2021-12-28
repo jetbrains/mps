@@ -15478,7 +15478,7 @@
         <node concept="3clFbF" id="4cbrNPJX80k" role="3cqZAp">
           <node concept="2OqwBi" id="4cbrNPJXbWN" role="3clFbG">
             <node concept="37vLTw" id="4cbrNPJX80j" role="2Oq$k0">
-              <ref role="3cqZAo" node="4cbrNPJX6aA" resolve="project" />
+              <ref role="3cqZAo" node="4cbrNPJX6aA" resolve="ideaProject" />
             </node>
             <node concept="liA8E" id="4cbrNPJXcEm" role="2OqNvi">
               <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
@@ -15516,7 +15516,7 @@
           <node concept="37vLTI" id="7OyUyLn8$5S" role="3clFbG">
             <node concept="2ShNRf" id="7OyUyLn8$5V" role="37vLTx">
               <node concept="1pGfFk" id="7OyUyLn8$kv" role="2ShVmc">
-                <ref role="37wK5l" node="7OyUyLn8xV2" resolve="State" />
+                <ref role="37wK5l" node="7OyUyLn8xV2" resolve="OverrideImplementMethodComponent.State" />
               </node>
             </node>
             <node concept="37vLTw" id="2BHiRxeusrs" role="37vLTJ">
@@ -15526,7 +15526,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="4cbrNPJWzFD" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="4cbrNPJWz_d" role="jymVt" />

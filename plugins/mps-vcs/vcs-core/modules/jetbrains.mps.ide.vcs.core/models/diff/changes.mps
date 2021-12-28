@@ -20362,7 +20362,7 @@
               <node concept="2OqwBi" id="ogDg8_5Qd6" role="3uHU7B">
                 <node concept="2OqwBi" id="1ZAImljf4Ol" role="2Oq$k0">
                   <node concept="37vLTw" id="1ZAImljf4Om" role="2Oq$k0">
-                    <ref role="3cqZAo" node="3an5bvIJJ4e" resolve="oppositeGroup" />
+                    <ref role="3cqZAo" node="3an5bvIJJ4e" resolve="oppositeWrappingGroup" />
                   </node>
                   <node concept="liA8E" id="1ZAImljf4On" role="2OqNvi">
                     <ref role="37wK5l" node="BXthlwlA3H" resolve="getUnwrappedGroups" />
@@ -20373,7 +20373,7 @@
             </node>
             <node concept="3y3z36" id="1ZAImljeN5n" role="3uHU7B">
               <node concept="37vLTw" id="1ZAImljeN5o" role="3uHU7B">
-                <ref role="3cqZAo" node="3an5bvIJJ4e" resolve="oppositeGroup" />
+                <ref role="3cqZAo" node="3an5bvIJJ4e" resolve="oppositeWrappingGroup" />
               </node>
               <node concept="10Nm6u" id="1ZAImljeN5p" role="3uHU7w" />
             </node>
@@ -25165,7 +25165,7 @@
           <node concept="3clFbS" id="cTfzhpaoGF" role="3clFbx">
             <node concept="3cpWs6" id="5wFY8cvR$CR" role="3cqZAp">
               <node concept="2YIFZM" id="5wFY8cvRKzH" role="3cqZAk">
-                <ref role="1Pybhc" node="FDs5L_aEV$" resolve="ConflictsUtil" />
+                <ref role="1Pybhc" node="FDs5L_aEV$" resolve="HierarchicalChangeConflictsUtil" />
                 <ref role="37wK5l" node="FDs5L_bcQP" resolve="moveConflictsWithNotMove" />
                 <node concept="Xjq3P" id="5wFY8cvRR7K" role="37wK5m" />
                 <node concept="0kSF2" id="5wFY8cvS2A5" role="37wK5m">
@@ -25196,7 +25196,7 @@
           <node concept="3clFbS" id="3Miqhmclhth" role="3clFbx">
             <node concept="3cpWs6" id="vW1RBX2LmQ" role="3cqZAp">
               <node concept="2YIFZM" id="vW1RBX2X0G" role="3cqZAk">
-                <ref role="1Pybhc" node="FDs5L_aEV$" resolve="ConflictsUtil" />
+                <ref role="1Pybhc" node="FDs5L_aEV$" resolve="HierarchicalChangeConflictsUtil" />
                 <ref role="37wK5l" node="FDs5L_hcwH" resolve="wrapConflictsWithNotMove" />
                 <node concept="0kSF2" id="vW1RBX325t" role="37wK5m">
                   <node concept="3uibUv" id="vW1RBX3e8d" role="0kSFW">
@@ -25368,7 +25368,7 @@
           <node concept="1rXfSq" id="FDs5L_mDn2" role="3cqZAk">
             <ref role="37wK5l" node="FDs5L_lMBt" resolve="nodeIsDescendantOf" />
             <node concept="37vLTw" id="FDs5L_mIJQ" role="37wK5m">
-              <ref role="3cqZAo" node="cTfzhoyopJ" resolve="node" />
+              <ref role="3cqZAo" node="cTfzhoyopJ" resolve="oldNode" />
             </node>
             <node concept="37vLTw" id="FDs5L_oaSD" role="37wK5m">
               <ref role="3cqZAo" node="FDs5L_nw76" resolve="deletedNodeIds" />
@@ -25437,7 +25437,7 @@
               </node>
               <node concept="2OqwBi" id="FDs5L_mccm" role="3clFbw">
                 <node concept="37vLTw" id="FDs5L_mccn" role="2Oq$k0">
-                  <ref role="3cqZAo" node="FDs5L_lXVj" resolve="deletedNodeIds" />
+                  <ref role="3cqZAo" node="FDs5L_lXVj" resolve="ancestorNodeIds" />
                 </node>
                 <node concept="3JPx81" id="FDs5L_mcco" role="2OqNvi">
                   <node concept="2OqwBi" id="FDs5L_mccp" role="25WWJ7">
@@ -27355,7 +27355,7 @@
                       <ref role="3cqZAo" node="3IyRVkVi8bV" resolve="wrappingGroup" />
                     </node>
                     <node concept="37vLTw" id="3IyRVkVfeBK" role="37vLTJ">
-                      <ref role="3cqZAo" node="3IyRVkVdkc1" resolve="externalGroup" />
+                      <ref role="3cqZAo" node="3IyRVkVdkc1" resolve="effectiveGroup" />
                     </node>
                   </node>
                 </node>
@@ -27407,7 +27407,7 @@
         </node>
         <node concept="3cpWs6" id="6VQVwlets_$" role="3cqZAp">
           <node concept="37vLTw" id="3IyRVkVeLOM" role="3cqZAk">
-            <ref role="3cqZAo" node="3IyRVkVdkc1" resolve="externalGroup" />
+            <ref role="3cqZAo" node="3IyRVkVdkc1" resolve="effectiveGroup" />
           </node>
         </node>
       </node>
@@ -28561,7 +28561,7 @@
                   <ref role="37wK5l" node="7suzjLdPk1v" resolve="isWrap" />
                 </node>
                 <node concept="2YIFZM" id="2KJC1LIQGxq" role="3uHU7w">
-                  <ref role="37wK5l" node="FDs5L_ihoj" resolve="wrappingGroupConflictsWithOldGroup" />
+                  <ref role="37wK5l" node="FDs5L_ihoj" resolve="wrappingGroupConflictsWithGroup" />
                   <ref role="1Pybhc" node="FDs5L_aEV$" resolve="HierarchicalChangeConflictsUtil" />
                   <node concept="37vLTw" id="2KJC1LIRyLt" role="37wK5m">
                     <ref role="3cqZAo" node="2Sq$KvUw9GY" resolve="myWrappingGroup" />
@@ -29044,11 +29044,11 @@
                 <ref role="3cqZAo" node="cTfzhpiP1k" resolve="other" />
               </node>
               <node concept="liA8E" id="Op1088uukJ" role="2OqNvi">
-                <ref role="37wK5l" node="Op1088tqpK" />
+                <ref role="37wK5l" node="Op1088tqpK" resolve="getWrappedIds" />
               </node>
             </node>
             <node concept="1rXfSq" id="Op1088u6d_" role="3uHU7B">
-              <ref role="37wK5l" node="Op1088tqpK" />
+              <ref role="37wK5l" node="Op1088tqpK" resolve="getWrappedIds" />
             </node>
           </node>
         </node>
@@ -29063,7 +29063,7 @@
       <node concept="3clFbS" id="5nyxmShzty8" role="3clF47">
         <node concept="3clFbF" id="5nyxmSh$7dj" role="3cqZAp">
           <node concept="2YIFZM" id="5nyxmSh$e7$" role="3clFbG">
-            <ref role="37wK5l" node="5nyxmShzUeo" resolve="changeIsInternal" />
+            <ref role="37wK5l" node="5nyxmShzUeo" resolve="modifiedGroupIsInternalInWrap" />
             <ref role="1Pybhc" node="FDs5L_aEV$" resolve="HierarchicalChangeConflictsUtil" />
             <node concept="37vLTw" id="5nyxmShGyNb" role="37wK5m">
               <ref role="3cqZAo" node="2Sq$KvUw9GY" resolve="myWrappingGroup" />
@@ -29804,7 +29804,7 @@
           <node concept="3clFbS" id="cTfzhpcpuT" role="3clFbx">
             <node concept="3cpWs6" id="5wFY8cvQYrv" role="3cqZAp">
               <node concept="2YIFZM" id="5wFY8cvR3GL" role="3cqZAk">
-                <ref role="1Pybhc" node="FDs5L_aEV$" resolve="ConflictsUtil" />
+                <ref role="1Pybhc" node="FDs5L_aEV$" resolve="HierarchicalChangeConflictsUtil" />
                 <ref role="37wK5l" node="FDs5L_bcQP" resolve="moveConflictsWithNotMove" />
                 <node concept="0kSF2" id="5wFY8cvR8u7" role="37wK5m">
                   <node concept="3uibUv" id="5wFY8cvR8ua" role="0kSFW">
@@ -29834,7 +29834,7 @@
           <node concept="3clFbS" id="7LCGlk9QC9p" role="3clFbx">
             <node concept="3cpWs6" id="XsSECQrjO" role="3cqZAp">
               <node concept="2YIFZM" id="7LCGlk9R_2f" role="3cqZAk">
-                <ref role="1Pybhc" node="FDs5L_aEV$" resolve="ConflictsUtil" />
+                <ref role="1Pybhc" node="FDs5L_aEV$" resolve="HierarchicalChangeConflictsUtil" />
                 <ref role="37wK5l" node="FDs5L_hcxP" resolve="wrapConflictsWithMove" />
                 <node concept="0kSF2" id="7LCGlk9R_2g" role="37wK5m">
                   <node concept="3uibUv" id="7LCGlk9RKgm" role="0kSFW">
@@ -30435,7 +30435,7 @@
                                       <ref role="3cqZAo" node="3hkusPvT9$g" resolve="unwrappedGroup" />
                                     </node>
                                     <node concept="37vLTw" id="2x2M7WZ7ALQ" role="37wK5m">
-                                      <ref role="3cqZAo" node="2x2M7WZ7o2V" resolve="allGroups" />
+                                      <ref role="3cqZAo" node="2x2M7WZ7o2V" resolve="oppositeGroups" />
                                     </node>
                                   </node>
                                 </node>
@@ -30803,7 +30803,7 @@
                     </node>
                   </node>
                   <node concept="37vLTw" id="2x2M7WZ899t" role="2Oq$k0">
-                    <ref role="3cqZAo" node="2x2M7WZ7qp5" resolve="allGroups" />
+                    <ref role="3cqZAo" node="2x2M7WZ7qp5" resolve="oppositeGroups" />
                   </node>
                 </node>
                 <node concept="2S7cBI" id="42HD3FSQuf2" role="2OqNvi">
@@ -30961,7 +30961,7 @@
               </node>
               <node concept="2WmjW8" id="3KEyQcnT59u" role="2OqNvi">
                 <node concept="37vLTw" id="3KEyQcnT59v" role="25WWJ7">
-                  <ref role="3cqZAo" node="3KEyQcnT59V" resolve="oldWrappedGroup" />
+                  <ref role="3cqZAo" node="3KEyQcnT59V" resolve="oldUnwrappedGroup" />
                 </node>
               </node>
             </node>
@@ -31020,7 +31020,7 @@
             </node>
             <node concept="3dhRuq" id="3KEyQcnT59S" role="2OqNvi">
               <node concept="37vLTw" id="3KEyQcnT59T" role="25WWJ7">
-                <ref role="3cqZAo" node="3KEyQcnT59V" resolve="oldWrappedGroup" />
+                <ref role="3cqZAo" node="3KEyQcnT59V" resolve="oldUnwrappedGroup" />
               </node>
             </node>
           </node>
@@ -31123,13 +31123,13 @@
           <node concept="3y3z36" id="1JV1VsW7gGv" role="1gVkn0">
             <node concept="10Nm6u" id="1JV1VsW7hvz" role="3uHU7w" />
             <node concept="37vLTw" id="1JV1VsW7eNK" role="3uHU7B">
-              <ref role="3cqZAo" node="1JV1VsW6ZbK" resolve="nodeId" />
+              <ref role="3cqZAo" node="1JV1VsW6ZbK" resolve="wrappingNodeId" />
             </node>
           </node>
         </node>
         <node concept="3cpWs6" id="1JV1VsW7kcj" role="3cqZAp">
           <node concept="37vLTw" id="1JV1VsW7kJj" role="3cqZAk">
-            <ref role="3cqZAo" node="1JV1VsW6ZbK" resolve="nodeId" />
+            <ref role="3cqZAo" node="1JV1VsW6ZbK" resolve="wrappingNodeId" />
           </node>
         </node>
       </node>
@@ -31563,7 +31563,7 @@
             <node concept="3cpWs6" id="FDs5L_hcx2" role="3cqZAp">
               <node concept="22lmx$" id="FDs5L_hcx3" role="3cqZAk">
                 <node concept="1rXfSq" id="FDs5L_ixdq" role="3uHU7B">
-                  <ref role="37wK5l" node="FDs5L_ihoj" resolve="wrappingGroupConflictsWithOldGroup" />
+                  <ref role="37wK5l" node="FDs5L_ihoj" resolve="wrappingGroupConflictsWithGroup" />
                   <node concept="37vLTw" id="FDs5L_hdBw" role="37wK5m">
                     <ref role="3cqZAo" node="FDs5L_hcwL" resolve="wrappingGroup" />
                   </node>
@@ -31729,7 +31729,7 @@
                 <node concept="22lmx$" id="FDs5L_hcyb" role="3uHU7B">
                   <node concept="22lmx$" id="1JV1VsWYYC$" role="3uHU7B">
                     <node concept="1rXfSq" id="FDs5L_i_7Q" role="3uHU7B">
-                      <ref role="37wK5l" node="FDs5L_ihoj" resolve="wrappingGroupConflictsWithOldGroup" />
+                      <ref role="37wK5l" node="FDs5L_ihoj" resolve="wrappingGroupConflictsWithGroup" />
                       <node concept="37vLTw" id="FDs5L_hdB6" role="37wK5m">
                         <ref role="3cqZAo" node="FDs5L_hcxT" resolve="wrappingGroup" />
                       </node>
@@ -31750,7 +31750,7 @@
                       </node>
                     </node>
                     <node concept="1rXfSq" id="1JV1VsWYZJ1" role="3uHU7w">
-                      <ref role="37wK5l" node="FDs5L_ihoj" resolve="wrappingGroupConflictsWithOldGroup" />
+                      <ref role="37wK5l" node="FDs5L_ihoj" resolve="wrappingGroupConflictsWithGroup" />
                       <node concept="37vLTw" id="1JV1VsWYZJ2" role="37wK5m">
                         <ref role="3cqZAo" node="FDs5L_hcxT" resolve="wrappingGroup" />
                       </node>
@@ -32359,7 +32359,7 @@
                 <ref role="3cqZAo" node="fq08L$tzA$" resolve="isWrap" />
               </node>
               <node concept="37vLTw" id="5nyxmShSyGW" role="37wK5m">
-                <ref role="3cqZAo" node="FDs5L_ihp_" resolve="oldGroup" />
+                <ref role="3cqZAo" node="FDs5L_ihp_" resolve="group" />
               </node>
             </node>
             <node concept="3fqX7Q" id="5nyxmShSsce" role="3uHU7B">
@@ -32388,7 +32388,7 @@
               </node>
               <node concept="2OqwBi" id="FDs5L_ihov" role="3uHU7w">
                 <node concept="37vLTw" id="FDs5L_ihow" role="2Oq$k0">
-                  <ref role="3cqZAo" node="FDs5L_ihp_" resolve="oldGroup" />
+                  <ref role="3cqZAo" node="FDs5L_ihp_" resolve="group" />
                 </node>
                 <node concept="liA8E" id="FDs5L_ihox" role="2OqNvi">
                   <ref role="37wK5l" node="7HxfgBpLDFM" resolve="getParentId" />
@@ -32406,7 +32406,7 @@
               </node>
               <node concept="2OqwBi" id="FDs5L_ihoA" role="3uHU7w">
                 <node concept="37vLTw" id="FDs5L_ihoB" role="2Oq$k0">
-                  <ref role="3cqZAo" node="FDs5L_ihp_" resolve="oldGroup" />
+                  <ref role="3cqZAo" node="FDs5L_ihp_" resolve="group" />
                 </node>
                 <node concept="liA8E" id="FDs5L_ihoC" role="2OqNvi">
                   <ref role="37wK5l" node="7HxfgBpKku9" resolve="getLink" />
@@ -32463,7 +32463,7 @@
                 <ref role="37wK5l" node="50UgzriufOM" resolve="getBegin" />
               </node>
               <node concept="37vLTw" id="FDs5L_ihoZ" role="2Oq$k0">
-                <ref role="3cqZAo" node="FDs5L_ihp_" resolve="oldGroup" />
+                <ref role="3cqZAo" node="FDs5L_ihp_" resolve="group" />
               </node>
             </node>
           </node>
@@ -32477,7 +32477,7 @@
                 <ref role="37wK5l" node="50UgzriufOk" resolve="getEnd" />
               </node>
               <node concept="37vLTw" id="FDs5L_ihp5" role="2Oq$k0">
-                <ref role="3cqZAo" node="FDs5L_ihp_" resolve="oldGroup" />
+                <ref role="3cqZAo" node="FDs5L_ihp_" resolve="group" />
               </node>
             </node>
           </node>

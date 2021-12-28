@@ -5057,7 +5057,7 @@
               <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
               <node concept="2ShNRf" id="2OJKTJ7v1Mu" role="37wK5m">
                 <node concept="1pGfFk" id="54K62OskMIN" role="2ShVmc">
-                  <ref role="37wK5l" node="3ELCs8FdrJz" resolve="ShowInspectorAction" />
+                  <ref role="37wK5l" node="3ELCs8FdrJz" resolve="RootDifferencePaneBase.ShowInspectorAction" />
                 </node>
               </node>
             </node>
@@ -5072,7 +5072,7 @@
               <ref role="37wK5l" to="qkt:~DefaultActionGroup.add(com.intellij.openapi.actionSystem.AnAction)" resolve="add" />
               <node concept="2ShNRf" id="2wTEqNK$qx9" role="37wK5m">
                 <node concept="1pGfFk" id="54K62OslHJm" role="2ShVmc">
-                  <ref role="37wK5l" node="3ELCs8FfyNx" resolve="SyncScrollingAction" />
+                  <ref role="37wK5l" node="3ELCs8FfyNx" resolve="RootDifferencePaneBase.SyncScrollingAction" />
                 </node>
               </node>
             </node>
@@ -8200,7 +8200,7 @@
             <property role="TrG5h" value="trackMovedNodes" />
             <node concept="10P_77" id="7SNKzvnRlw7" role="1tU5fm" />
             <node concept="2YIFZM" id="2G2A2CbZi5u" role="33vP2m">
-              <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesOption" />
+              <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesDiffOption" />
               <ref role="1Pybhc" to="hdhb:2G2A2CbSLhf" resolve="DiffSettingsUtil" />
             </node>
           </node>
@@ -9640,7 +9640,7 @@
                         <ref role="3cqZAo" node="69TGyf39Esj" resolve="it" />
                       </node>
                       <node concept="2YIFZM" id="2G2A2CbZyzR" role="37wK5m">
-                        <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesOption" />
+                        <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesDiffOption" />
                         <ref role="1Pybhc" to="hdhb:2G2A2CbSLhf" resolve="DiffSettingsUtil" />
                       </node>
                     </node>
@@ -22265,7 +22265,7 @@
         <node concept="3clFbS" id="5W3z09jLNob" role="3clF47">
           <node concept="3clFbF" id="2G2A2CbWbba" role="3cqZAp">
             <node concept="2YIFZM" id="2G2A2CbWbYE" role="3clFbG">
-              <ref role="37wK5l" to="hdhb:2G2A2CbW5WC" resolve="useShortDescriptionsOption" />
+              <ref role="37wK5l" to="hdhb:2G2A2CbW5WC" resolve="setUseShortDescriptionsOption" />
               <ref role="1Pybhc" to="hdhb:2G2A2CbSLhf" resolve="DiffSettingsUtil" />
               <node concept="37vLTw" id="2G2A2CbWdFb" role="37wK5m">
                 <ref role="3cqZAo" node="5W3z09jLNo9" resolve="p2" />
@@ -22353,7 +22353,7 @@
         <node concept="3clFbS" id="4Eo9MbHm9Qp" role="3clF47">
           <node concept="3clFbF" id="2G2A2CbW_Yb" role="3cqZAp">
             <node concept="2YIFZM" id="2G2A2CbWAJq" role="3clFbG">
-              <ref role="37wK5l" to="hdhb:2G2A2CbWu2G" resolve="hideIdChangesOption" />
+              <ref role="37wK5l" to="hdhb:2G2A2CbWu2G" resolve="setHideIdChangesOption" />
               <ref role="1Pybhc" to="hdhb:2G2A2CbSLhf" resolve="DiffSettingsUtil" />
               <node concept="37vLTw" id="2G2A2CbWCpQ" role="37wK5m">
                 <ref role="3cqZAo" node="4Eo9MbHm9Qn" resolve="p1" />
@@ -22448,7 +22448,7 @@
         <node concept="3clFbS" id="4oUnwPILDGL" role="3clF47">
           <node concept="3clFbF" id="2G2A2CbWTTb" role="3cqZAp">
             <node concept="2YIFZM" id="2G2A2CbWUCZ" role="3clFbG">
-              <ref role="37wK5l" to="hdhb:2G2A2CbWN0p" resolve="hideResolveInfoChangesOption" />
+              <ref role="37wK5l" to="hdhb:2G2A2CbWN0p" resolve="setHideResolveInfoChangesOption" />
               <ref role="1Pybhc" to="hdhb:2G2A2CbSLhf" resolve="DiffSettingsUtil" />
               <node concept="37vLTw" id="2G2A2CbWWmk" role="37wK5m">
                 <ref role="3cqZAo" node="4oUnwPILDGJ" resolve="p1" />
@@ -22509,7 +22509,7 @@
         <node concept="3clFbS" id="4Eo9MbHmhs_" role="3clF47">
           <node concept="3clFbF" id="2G2A2CbXKO1" role="3cqZAp">
             <node concept="2YIFZM" id="2G2A2CbXLuY" role="3clFbG">
-              <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesOption" />
+              <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesDiffOption" />
               <ref role="1Pybhc" to="hdhb:2G2A2CbSLhf" resolve="DiffSettingsUtil" />
             </node>
           </node>
@@ -22539,7 +22539,7 @@
         <node concept="3clFbS" id="4Eo9MbHmhsQ" role="3clF47">
           <node concept="3clFbF" id="2G2A2CbXB3x" role="3cqZAp">
             <node concept="2YIFZM" id="2G2A2CbXBK0" role="3clFbG">
-              <ref role="37wK5l" to="hdhb:2G2A2CbXsrw" resolve="trackMovedNodesOption" />
+              <ref role="37wK5l" to="hdhb:2G2A2CbXsrw" resolve="setTrackMovedNodesDiffOption" />
               <ref role="1Pybhc" to="hdhb:2G2A2CbSLhf" resolve="DiffSettingsUtil" />
               <node concept="37vLTw" id="2G2A2CbXDxp" role="37wK5m">
                 <ref role="3cqZAo" node="4Eo9MbHmhsO" resolve="p2" />
@@ -22651,7 +22651,7 @@
               <node concept="liA8E" id="7VZusqKd67v" role="2OqNvi">
                 <ref role="37wK5l" to="qkt:~Presentation.setEnabled(boolean)" resolve="setEnabled" />
                 <node concept="2YIFZM" id="2G2A2CbX_Zv" role="37wK5m">
-                  <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesOption" />
+                  <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesDiffOption" />
                   <ref role="1Pybhc" to="hdhb:2G2A2CbSLhf" resolve="DiffSettingsUtil" />
                 </node>
               </node>
@@ -22683,7 +22683,7 @@
         <node concept="3clFbS" id="4Eo9MbHmdO5" role="3clF47">
           <node concept="3clFbF" id="2G2A2CbXc5a" role="3cqZAp">
             <node concept="2YIFZM" id="2G2A2CbXcNz" role="3clFbG">
-              <ref role="37wK5l" to="hdhb:2G2A2CbX6j4" resolve="hideUnorderedMovesOption" />
+              <ref role="37wK5l" to="hdhb:2G2A2CbX6j4" resolve="setHideUnorderedMovesOption" />
               <ref role="1Pybhc" to="hdhb:2G2A2CbSLhf" resolve="DiffSettingsUtil" />
               <node concept="37vLTw" id="2G2A2CbXeAW" role="37wK5m">
                 <ref role="3cqZAo" node="4Eo9MbHmdO3" resolve="p1" />
@@ -24654,7 +24654,7 @@
                   <ref role="3cqZAo" node="6_wuB0UANdC" resolve="changeSet" />
                 </node>
                 <node concept="2YIFZM" id="2G2A2CctUZt" role="37wK5m">
-                  <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesOption" />
+                  <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesDiffOption" />
                   <ref role="1Pybhc" to="hdhb:2G2A2CbSLhf" resolve="DiffSettingsUtil" />
                 </node>
               </node>
@@ -25115,7 +25115,7 @@
               </node>
             </node>
             <node concept="2YIFZM" id="47Kt9forJEv" role="3K4Cdx">
-              <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesOption" />
+              <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesDiffOption" />
               <ref role="1Pybhc" to="hdhb:2G2A2CbSLhf" resolve="DiffSettingsUtil" />
             </node>
             <node concept="2YIFZM" id="41RbbbWQRto" role="3K4GZi">
@@ -25544,7 +25544,7 @@
                 <property role="TrG5h" value="trackMovedNodes" />
                 <node concept="10P_77" id="5sfInVAiAVa" role="1tU5fm" />
                 <node concept="2YIFZM" id="2G2A2Cc10PS" role="33vP2m">
-                  <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesOption" />
+                  <ref role="37wK5l" to="hdhb:2G2A2CbXqzW" resolve="getTrackMovedNodesDiffOption" />
                   <ref role="1Pybhc" to="hdhb:2G2A2CbSLhf" resolve="DiffSettingsUtil" />
                 </node>
               </node>

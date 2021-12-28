@@ -7749,7 +7749,7 @@
                       <property role="TrG5h" value="exceptionBreakpointInfo" />
                       <property role="3TUv4t" value="false" />
                       <node concept="3uibUv" id="3L_P6qKH8ZQ" role="1tU5fm">
-                        <ref role="3uigEE" node="2wxFklq8H4f" resolve="ExceptionBreakpointInfo" />
+                        <ref role="3uigEE" node="2wxFklq8H4f" resolve="ExceptionBreakpoint.ExceptionBreakpointInfo" />
                       </node>
                       <node concept="2YIFZM" id="3L_P6qKH8ZR" role="33vP2m">
                         <ref role="1Pybhc" to="mz8t:~XmlSerializer" resolve="XmlSerializer" />
@@ -7758,7 +7758,7 @@
                           <ref role="3cqZAo" node="3L_P6qKH8Ys" resolve="state" />
                         </node>
                         <node concept="3VsKOn" id="3L_P6qKH8ZT" role="37wK5m">
-                          <ref role="3VsUkX" node="2wxFklq8H4f" resolve="ExceptionBreakpointInfo" />
+                          <ref role="3VsUkX" node="2wxFklq8H4f" resolve="ExceptionBreakpoint.ExceptionBreakpointInfo" />
                         </node>
                       </node>
                     </node>

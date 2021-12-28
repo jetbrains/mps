@@ -3275,7 +3275,7 @@
         <node concept="3clFbF" id="2rqlzH6shAt" role="3cqZAp">
           <node concept="37vLTI" id="2rqlzH6shAv" role="3clFbG">
             <node concept="37vLTw" id="2rqlzH6shAy" role="37vLTJ">
-              <ref role="3cqZAo" node="2rqlzH6shAp" resolve="myIdeaProject" />
+              <ref role="3cqZAo" node="2rqlzH6shAp" resolve="myProject" />
             </node>
             <node concept="37vLTw" id="2rqlzH6shAz" role="37vLTx">
               <ref role="3cqZAo" node="2rqlzH6sh1i" resolve="ideaProject" />

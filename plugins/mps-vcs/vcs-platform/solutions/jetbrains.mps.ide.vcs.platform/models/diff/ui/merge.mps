@@ -2645,7 +2645,7 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="44EradnMBQl" role="1B3o_S" />
       <node concept="3uibUv" id="44EradnMKAi" role="1tU5fm">
-        <ref role="3uigEE" node="44EradnMloV" resolve="TrackMovedNodesModeUpdater" />
+        <ref role="3uigEE" node="44EradnMloV" resolve="MergeRootsPane.TrackMovedNodesModeUpdater" />
       </node>
     </node>
     <node concept="2tJIrI" id="4v$0iiJ0Npr" role="jymVt" />
@@ -3073,7 +3073,7 @@
       <node concept="37vLTG" id="44EradnMxyS" role="3clF46">
         <property role="TrG5h" value="trackMovedNodesModeUpdater" />
         <node concept="3uibUv" id="44EradnMyTJ" role="1tU5fm">
-          <ref role="3uigEE" node="44EradnMloV" resolve="TrackMovedNodesModeUpdater" />
+          <ref role="3uigEE" node="44EradnMloV" resolve="MergeRootsPane.TrackMovedNodesModeUpdater" />
         </node>
       </node>
     </node>
@@ -3949,7 +3949,7 @@
               <node concept="2ShNRf" id="2OJKTJ7v1Mu" role="37wK5m">
                 <node concept="1pGfFk" id="3ELCs8Fexdd" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="3ELCs8FdrJz" resolve="ShowInspectorAction" />
+                  <ref role="37wK5l" node="3ELCs8FdrJz" resolve="MergeRootsPane.ShowInspectorAction" />
                 </node>
               </node>
             </node>
@@ -3965,7 +3965,7 @@
               <node concept="2ShNRf" id="2wTEqNK$qx9" role="37wK5m">
                 <node concept="1pGfFk" id="3ELCs8Fg1yG" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="3ELCs8FfyNx" resolve="SyncScrollingAction" />
+                  <ref role="37wK5l" node="3ELCs8FfyNx" resolve="MergeRootsPane.SyncScrollingAction" />
                 </node>
               </node>
             </node>
@@ -3981,7 +3981,7 @@
               <node concept="2ShNRf" id="44EradnP2SS" role="37wK5m">
                 <node concept="1pGfFk" id="44EradnP2ST" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="37wK5l" node="44EradnORKG" resolve="SettingsAction" />
+                  <ref role="37wK5l" node="44EradnORKG" resolve="MergeRootsPane.SettingsAction" />
                 </node>
               </node>
             </node>
@@ -4287,13 +4287,13 @@
                 <node concept="2ShNRf" id="VRt2v0uKce" role="3g7hyw">
                   <node concept="1pGfFk" id="VRt2v0uKcf" role="2ShVmc">
                     <property role="373rjd" value="true" />
-                    <ref role="37wK5l" node="6wKQvsBVQDA" resolve="UseShortChangeDescriptionsAction" />
+                    <ref role="37wK5l" node="6wKQvsBVQDA" resolve="MergeRootsPane.UseShortChangeDescriptionsAction" />
                   </node>
                 </node>
                 <node concept="2ShNRf" id="VRt2v0uKcm" role="3g7hyw">
                   <node concept="1pGfFk" id="VRt2v0uKcn" role="2ShVmc">
                     <property role="373rjd" value="true" />
-                    <ref role="37wK5l" node="6wKQvsBWKGs" resolve="TrackMovedNodesAction" />
+                    <ref role="37wK5l" node="6wKQvsBWKGs" resolve="MergeRootsPane.TrackMovedNodesAction" />
                   </node>
                 </node>
                 <node concept="3uibUv" id="VRt2v0uIIj" role="3g7fb8">
