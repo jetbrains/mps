@@ -6,7 +6,6 @@
       <sourceRoot location="mps-core.jar" />
       <sourceRoot location="mps-logging.jar" />
       <sourceRoot location="mps-messaging.jar" />
-      <sourceRoot location="mps-boot-util.jar" />
       <sourceRoot location="mps-project-check.jar" />
 
       <sourceRoot location="mps-generator.jar" />
