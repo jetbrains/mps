@@ -45,6 +45,7 @@
     <import index="mmaq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.jdom(MPS.Core/)" />
     <import index="6zv4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.jdom.adapters(MPS.Core/)" />
     <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
+    <import index="smlj" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:jetbrains.mps.string(MPS.Boot/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -9846,23 +9847,23 @@
                         </node>
                         <node concept="3clFbJ" id="1ROuiHUPPq" role="3cqZAp">
                           <node concept="22lmx$" id="1ROuiHUPPr" role="3clFbw">
-                            <node concept="2YIFZM" id="1ROuiHUQRA" role="3uHU7B">
-                              <ref role="1Pybhc" to="ddon:1qyC25m1pXL" resolve="StringUtil" />
-                              <ref role="37wK5l" to="ddon:1qyC25m1pXR" resolve="endsWithIgnoreCase" />
-                              <node concept="37vLTw" id="1ROuiHUQRB" role="37wK5m">
+                            <node concept="2YIFZM" id="4reaALv8Ax5" role="3uHU7B">
+                              <ref role="37wK5l" to="smlj:~Strings.endsWithIgnoreCase(java.lang.String,java.lang.String)" resolve="endsWithIgnoreCase" />
+                              <ref role="1Pybhc" to="smlj:~Strings" resolve="Strings" />
+                              <node concept="37vLTw" id="4reaALv8Ax6" role="37wK5m">
                                 <ref role="3cqZAo" node="1ROuiHUPPm" resolve="name" />
                               </node>
-                              <node concept="Xl_RD" id="1ROuiHUQRC" role="37wK5m">
+                              <node concept="Xl_RD" id="4reaALv8Ax7" role="37wK5m">
                                 <property role="Xl_RC" value=".jar" />
                               </node>
                             </node>
-                            <node concept="2YIFZM" id="1ROuiHUQKG" role="3uHU7w">
-                              <ref role="1Pybhc" to="ddon:1qyC25m1pXL" resolve="StringUtil" />
-                              <ref role="37wK5l" to="ddon:1qyC25m1pXR" resolve="endsWithIgnoreCase" />
-                              <node concept="37vLTw" id="1ROuiHUQKH" role="37wK5m">
+                            <node concept="2YIFZM" id="4reaALv8Iqo" role="3uHU7w">
+                              <ref role="37wK5l" to="smlj:~Strings.endsWithIgnoreCase(java.lang.String,java.lang.String)" resolve="endsWithIgnoreCase" />
+                              <ref role="1Pybhc" to="smlj:~Strings" resolve="Strings" />
+                              <node concept="37vLTw" id="4reaALv8Iqp" role="37wK5m">
                                 <ref role="3cqZAo" node="1ROuiHUPPm" resolve="name" />
                               </node>
-                              <node concept="Xl_RD" id="1ROuiHUQKI" role="37wK5m">
+                              <node concept="Xl_RD" id="4reaALv8Iqq" role="37wK5m">
                                 <property role="Xl_RC" value=".zip" />
                               </node>
                             </node>

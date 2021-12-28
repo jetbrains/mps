@@ -23,7 +23,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.io.File;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.LinkedHashSet;
-import jetbrains.mps.core.tool.environment.common.StringUtil;
+import jetbrains.mps.string.Strings;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
 /*package*/ class CPCalculator {
@@ -77,6 +77,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
     ListSequence.fromList(classpath).addSequence(ListSequence.fromList(collectFromLibFolder()).distinct());
     if (PathManager.isFromSources()) {
       final String homePath = com.intellij.openapi.application.PathManager.getHomePath();
+      // it is needed only for sources, as far as I see
       List<String> auxCP = new ClassPathReader(homePath).read();
       ListSequence.fromList(classpath).addSequence(ListSequence.fromList(auxCP).select(new ISelector<String, String>() {
         public String select(String it) {
@@ -172,7 +173,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
       return false;
     }
     final String name = file.getName();
-    return StringUtil.endsWithIgnoreCase(name, ".jar") || StringUtil.endsWithIgnoreCase(name, ".zip");
+    return Strings.endsWithIgnoreCase(name, ".jar") || Strings.endsWithIgnoreCase(name, ".zip");
   }
 
   @NotNull

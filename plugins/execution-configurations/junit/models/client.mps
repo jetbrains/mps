@@ -61,6 +61,8 @@
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
     <import index="zdap" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.text(MPS.IDEA/)" />
     <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
+    <import index="18ex" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:jetbrains.mps.util(MPS.Boot/)" />
+    <import index="smlj" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:jetbrains.mps.string(MPS.Boot/)" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" implicit="true" />
   </imports>
   <registry>
@@ -17024,6 +17026,43 @@
                 </node>
               </node>
             </node>
+            <node concept="3SKdUt" id="4reaALv7Z9o" role="3cqZAp">
+              <node concept="1PaTwC" id="4reaALv7Z9p" role="1aUNEU">
+                <node concept="3oM_SD" id="4reaALv822W" role="1PaTwD">
+                  <property role="3oM_SC" value="it" />
+                </node>
+                <node concept="3oM_SD" id="4reaALv823C" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="4reaALv823M" role="1PaTwD">
+                  <property role="3oM_SC" value="needed" />
+                </node>
+                <node concept="3oM_SD" id="4reaALv823X" role="1PaTwD">
+                  <property role="3oM_SC" value="only" />
+                </node>
+                <node concept="3oM_SD" id="4reaALv822Y" role="1PaTwD">
+                  <property role="3oM_SC" value="for" />
+                </node>
+                <node concept="3oM_SD" id="4reaALv8231" role="1PaTwD">
+                  <property role="3oM_SC" value="sources," />
+                </node>
+                <node concept="3oM_SD" id="4reaALv8235" role="1PaTwD">
+                  <property role="3oM_SC" value="as" />
+                </node>
+                <node concept="3oM_SD" id="4reaALv823a" role="1PaTwD">
+                  <property role="3oM_SC" value="far" />
+                </node>
+                <node concept="3oM_SD" id="4reaALv823g" role="1PaTwD">
+                  <property role="3oM_SC" value="as" />
+                </node>
+                <node concept="3oM_SD" id="4reaALv823n" role="1PaTwD">
+                  <property role="3oM_SC" value="I" />
+                </node>
+                <node concept="3oM_SD" id="4reaALv823v" role="1PaTwD">
+                  <property role="3oM_SC" value="see" />
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs8" id="AuyzvqkwH1" role="3cqZAp">
               <node concept="3cpWsn" id="AuyzvqkwH2" role="3cpWs9">
                 <property role="TrG5h" value="auxCP" />
@@ -17035,14 +17074,14 @@
                 <node concept="2OqwBi" id="AuyzvqkwH3" role="33vP2m">
                   <node concept="2ShNRf" id="AuyzvqkwH4" role="2Oq$k0">
                     <node concept="1pGfFk" id="AuyzvqkwH5" role="2ShVmc">
-                      <ref role="37wK5l" to="18ew:~ClassPathReader.&lt;init&gt;(java.lang.String)" resolve="ClassPathReader" />
+                      <ref role="37wK5l" to="18ex:~ClassPathReader.&lt;init&gt;(java.lang.String)" resolve="ClassPathReader" />
                       <node concept="37vLTw" id="AuyzvqmCMe" role="37wK5m">
                         <ref role="3cqZAo" node="AuyzvqmCMc" resolve="homePath" />
                       </node>
                     </node>
                   </node>
                   <node concept="liA8E" id="AuyzvqkwH7" role="2OqNvi">
-                    <ref role="37wK5l" to="18ew:~ClassPathReader.read()" resolve="read" />
+                    <ref role="37wK5l" to="18ex:~ClassPathReader.read()" resolve="read" />
                   </node>
                 </node>
               </node>
@@ -18268,23 +18307,23 @@
         </node>
         <node concept="3cpWs6" id="1bMaI2XqGnG" role="3cqZAp">
           <node concept="22lmx$" id="1bMaI2XqGnH" role="3cqZAk">
-            <node concept="2YIFZM" id="1bMaI2XqGnI" role="3uHU7B">
-              <ref role="37wK5l" to="ddon:1qyC25m1pXR" resolve="endsWithIgnoreCase" />
-              <ref role="1Pybhc" to="ddon:1qyC25m1pXL" resolve="StringUtil" />
-              <node concept="37vLTw" id="3GM_nagTwZK" role="37wK5m">
+            <node concept="2YIFZM" id="4reaALv8gS3" role="3uHU7B">
+              <ref role="37wK5l" to="smlj:~Strings.endsWithIgnoreCase(java.lang.String,java.lang.String)" resolve="endsWithIgnoreCase" />
+              <ref role="1Pybhc" to="smlj:~Strings" resolve="Strings" />
+              <node concept="37vLTw" id="4reaALv8gS4" role="37wK5m">
                 <ref role="3cqZAo" node="1bMaI2XqGnB" resolve="name" />
               </node>
-              <node concept="Xl_RD" id="1bMaI2XqGnK" role="37wK5m">
+              <node concept="Xl_RD" id="4reaALv8gS5" role="37wK5m">
                 <property role="Xl_RC" value=".jar" />
               </node>
             </node>
-            <node concept="2YIFZM" id="1bMaI2XqGnL" role="3uHU7w">
-              <ref role="37wK5l" to="ddon:1qyC25m1pXR" resolve="endsWithIgnoreCase" />
-              <ref role="1Pybhc" to="ddon:1qyC25m1pXL" resolve="StringUtil" />
-              <node concept="37vLTw" id="3GM_nagTyno" role="37wK5m">
+            <node concept="2YIFZM" id="4reaALv8jQj" role="3uHU7w">
+              <ref role="37wK5l" to="smlj:~Strings.endsWithIgnoreCase(java.lang.String,java.lang.String)" resolve="endsWithIgnoreCase" />
+              <ref role="1Pybhc" to="smlj:~Strings" resolve="Strings" />
+              <node concept="37vLTw" id="4reaALv8jQk" role="37wK5m">
                 <ref role="3cqZAo" node="1bMaI2XqGnB" resolve="name" />
               </node>
-              <node concept="Xl_RD" id="1bMaI2XqGnN" role="37wK5m">
+              <node concept="Xl_RD" id="4reaALv8jQl" role="37wK5m">
                 <property role="Xl_RC" value=".zip" />
               </node>
             </node>

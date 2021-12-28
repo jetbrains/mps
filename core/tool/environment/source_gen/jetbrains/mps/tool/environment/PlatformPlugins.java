@@ -19,7 +19,7 @@ import java.util.Collection;
 import java.util.Collections;
 import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
-import jetbrains.mps.core.tool.environment.common.StringUtil;
+import jetbrains.mps.string.Strings;
 import java.net.URL;
 import java.net.MalformedURLException;
 import java.net.URLClassLoader;
@@ -146,7 +146,7 @@ import java.net.URLClassLoader;
         for (final File f : files) {
           if (f.isFile()) {
             final String name = f.getName();
-            if (StringUtil.endsWithIgnoreCase(name, ".jar") || StringUtil.endsWithIgnoreCase(name, ".zip")) {
+            if (Strings.endsWithIgnoreCase(name, ".jar") || Strings.endsWithIgnoreCase(name, ".zip")) {
               result.add(f);
             }
           } else {
