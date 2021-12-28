@@ -7,7 +7,7 @@
       <PackageScope skip-private="false">
         <include prefix="com.intellij.application" />
         <include prefix="com.intellij.util" />
-        <include prefix="com.intellij.openapi.util" />
+        <include prefix="com.intellij.openapi" />
       </PackageScope>
     </modelRoot>
     <modelRoot contentPath="${mps_home}/lib/" type="java_classes">
@@ -20,6 +20,7 @@
   </facets>
   <stubModelEntries>
     <stubModelEntry path="${platform_lib}/util.jar" />
+    <stubModelEntry path="${mps_home}/lib/mps-boot-util.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
