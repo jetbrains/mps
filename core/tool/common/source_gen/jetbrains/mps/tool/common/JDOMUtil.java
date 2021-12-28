@@ -101,6 +101,7 @@ public class JDOMUtil {
     xmlOutputter.setFormat(Format.getPrettyFormat().setLineSeparator(System.getProperty("line.separator")));
     return xmlOutputter;
   }
+
   public static class MyXMLOutputter extends XMLOutputter {
     public MyXMLOutputter() {
     }

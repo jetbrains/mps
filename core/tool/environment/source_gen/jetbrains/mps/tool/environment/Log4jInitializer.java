@@ -17,7 +17,7 @@ import org.jdom.adapters.JAXPDOMAdapter;
 import org.jdom.JDOMException;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.apache.log4j.LogManager;
-import jetbrains.mps.core.tool.environment.common.StringUtil;
+import jetbrains.mps.string.Strings;
 import org.jetbrains.annotations.NotNull;
 import org.apache.log4j.Logger;
 import org.apache.log4j.Level;
@@ -92,7 +92,7 @@ public final class Log4jInitializer {
   }
 
   private static String replace0(String text, String s1, String s2) {
-    return StringUtil.replace(text, s1, s2);
+    return Strings.replace(text, s1, s2);
   }
 
   @NotNull

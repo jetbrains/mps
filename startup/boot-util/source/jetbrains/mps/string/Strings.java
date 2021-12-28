@@ -5,7 +5,7 @@ package jetbrains.mps.string;
 
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.util.text.StringUtilRt;
-import com.intellij.util.text.VersionComparatorUtil;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -22,6 +22,18 @@ public final class Strings {
       return path.substring(1, path.length() - 1);
     }
     return path;
+  }
+
+  public static boolean startsWithChar(@Nullable CharSequence s, char c) {
+    return s != null && s.length() > 0 && s.charAt(0) == c;
+  }
+
+  public static boolean endsWithChar(@Nullable CharSequence s, char c) {
+    return StringUtilRt.endsWithChar(s, c);
+  }
+
+  public static boolean startsWithIgnoreCase(@NonNls @NotNull String text, @NonNls @NotNull String suffix) {
+    return StringUtilRt.startsWithIgnoreCase(text, suffix);
   }
 
   public static boolean endsWithIgnoreCase(@NonNls @NotNull String text, @NonNls @NotNull String suffix) {

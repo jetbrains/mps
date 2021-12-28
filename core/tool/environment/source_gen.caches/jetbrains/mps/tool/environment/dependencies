@@ -138,7 +138,7 @@
     <classNode dependClassName="java.nio.file.Path" />
     <classNode dependClassName="java.nio.file.Paths" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.core.tool.environment.common.StringUtil" />
+    <classNode dependClassName="jetbrains.mps.string.Strings" />
     <classNode dependClassName="jetbrains.mps.tool.common.PathManager" />
     <classNode dependClassName="jetbrains.mps.util.JDOMUtil" />
     <classNode dependClassName="jetbrains.mps.util.PathManager" />

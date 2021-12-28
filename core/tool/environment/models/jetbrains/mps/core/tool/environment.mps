@@ -33,7 +33,6 @@
     <import index="asz6" ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="ni5j" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.regex(JDK/)" />
-    <import index="ddon" ref="r:58ba176b-8a52-400c-bf27-725996471cb9(jetbrains.mps.core.tool.environment.common)" />
     <import index="zfbc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio(JDK/)" />
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="w0gx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.modules(MPS.Core/)" />
@@ -5890,16 +5889,16 @@
       </node>
       <node concept="3clFbS" id="2519QBqdbTV" role="3clF47">
         <node concept="3cpWs6" id="2519QBqdySX" role="3cqZAp">
-          <node concept="2YIFZM" id="2519QBqdyWC" role="3cqZAk">
-            <ref role="37wK5l" to="ddon:7vzkp06On7Z" resolve="replace" />
-            <ref role="1Pybhc" to="ddon:1qyC25m1pXL" resolve="StringUtil" />
-            <node concept="37vLTw" id="2519QBqdyWV" role="37wK5m">
+          <node concept="2YIFZM" id="1yd$V1csofq" role="3cqZAk">
+            <ref role="37wK5l" to="smlj:~Strings.replace(java.lang.String,java.lang.String,java.lang.String)" resolve="replace" />
+            <ref role="1Pybhc" to="smlj:~Strings" resolve="Strings" />
+            <node concept="37vLTw" id="1yd$V1csofr" role="37wK5m">
               <ref role="3cqZAo" node="2519QBqdbTP" resolve="text" />
             </node>
-            <node concept="37vLTw" id="2519QBqdyXQ" role="37wK5m">
+            <node concept="37vLTw" id="1yd$V1csofs" role="37wK5m">
               <ref role="3cqZAo" node="2519QBqdbTR" resolve="s1" />
             </node>
-            <node concept="37vLTw" id="2519QBqdyYy" role="37wK5m">
+            <node concept="37vLTw" id="1yd$V1csoft" role="37wK5m">
               <ref role="3cqZAo" node="2519QBqdbTT" resolve="s2" />
             </node>
           </node>

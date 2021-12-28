@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-lha35ywdt70m8znwcvzur94s8pu04w">
+<product version="3" modelHash="3r3b688mqx5nbhw4o05galyidx1ya66">
   <files names="GeneratorProperties.java:JDOMUtil.java:JavaCompilerProperties.java:MigrateTaskProperties.java:MpsRunnerProperties.java:PathManager.java:PluginData.java:RepositoryDescriptor.java:Script.java:ScriptData.java:ScriptProperties.java" />
 </product>
 

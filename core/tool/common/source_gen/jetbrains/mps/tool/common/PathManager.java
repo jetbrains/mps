@@ -11,10 +11,9 @@ import java.io.IOException;
 import jetbrains.mps.file.Paths;
 import org.jetbrains.annotations.Nullable;
 import java.net.URL;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import java.net.URISyntaxException;
-import jetbrains.mps.core.tool.environment.common.StringUtil;
+import jetbrains.mps.string.Strings;
+import org.jetbrains.annotations.NotNull;
 import java.util.Properties;
 import java.util.Set;
 
@@ -166,46 +165,6 @@ public class PathManager {
     System.err.println(msg);
   }
 
-  @Contract(pure = true)
-  public static boolean charsEqualIgnoreCase(char a, char b) {
-    return a == b || toUpperCase(a) == toUpperCase(b) || toLowerCase(a) == toLowerCase(b);
-  }
-
-  @Contract(pure = true)
-  public static char toUpperCase(char a) {
-    if (a < 'a') {
-      return a;
-    }
-    if (a <= 'z') {
-      return (char) (a + ('A' - 'a'));
-    }
-    return Character.toUpperCase(a);
-  }
-
-  @Contract(pure = true)
-  public static char toLowerCase(char a) {
-    if (a <= 'z') {
-      return (a >= 'A' && a <= 'Z' ? (char) (a + ('a' - 'A')) : a);
-    }
-    return Character.toLowerCase(a);
-  }
-
-  @Contract(pure = true)
-  public static boolean endsWithIgnoreCase(@NotNull CharSequence text, @NotNull CharSequence suffix) {
-    int l1 = text.length();
-    int l2 = suffix.length();
-    if (l1 < l2) {
-      return false;
-    }
-    for (int i = l1 - 1; i >= l1 - l2; i--) {
-      if (!(charsEqualIgnoreCase(text.charAt(i), suffix.charAt(i + l2 - l1)))) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-
   /**
    * Attempts to extract classpath entry part from passed URL.
    */
@@ -226,7 +185,7 @@ public class PathManager {
       String path = result.getPath();
       String testPath = path.replace('\\', '/');
       String testResourcePath = resourcePath.replace('\\', '/');
-      if (endsWithIgnoreCase(testPath, testResourcePath)) {
+      if (Strings.endsWithIgnoreCase(testPath, testResourcePath)) {
         resultPath = path.substring(0, path.length() - resourcePath.length());
       }
     } else
@@ -304,13 +263,13 @@ public class PathManager {
     if (s.startsWith("..")) {
       s = ideaHomePath + File.separatorChar + PathManager.BIN_FOLDER + File.separatorChar + s;
     }
-    s = StringUtil.replace(s, "${idea.home}", ideaHomePath);
+    s = Strings.replace(s, "${idea.home}", ideaHomePath);
     final Properties props = System.getProperties();
     final Set keys = props.keySet();
     for (final Object key1 : keys) {
       String key = (String) key1;
       String value = props.getProperty(key);
-      s = StringUtil.replace(s, "${" + key + "}", value);
+      s = Strings.replace(s, "${" + key + "}", value);
     }
     return s;
   }

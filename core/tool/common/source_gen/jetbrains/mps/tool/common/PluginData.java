@@ -17,7 +17,7 @@ public class PluginData {
   public final String id;
 
   public PluginData(String path2Plugin, String pluginId) {
-    this.path = path2Plugin;
-    this.id = pluginId;
+    path = path2Plugin;
+    id = pluginId;
   }
 }
