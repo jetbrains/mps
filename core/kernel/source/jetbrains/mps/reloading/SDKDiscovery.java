@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.reloading;
 
+import com.intellij.openapi.util.text.StringUtil;
 import jetbrains.mps.util.SystemInfo;
 import jetbrains.mps.vfs.Files;
 import jetbrains.mps.vfs.IFileSystem;
@@ -154,7 +155,7 @@ public class SDKDiscovery {
         p.load(stream);
         String modules = p.getProperty("MODULES");
         if (modules != null) {
-          return split(unquoteString(modules), " ", true, true);
+          return StringUtil.split(StringUtil.unquoteString(modules), " ", true, true);
         }
       } catch (IOException | IllegalArgumentException e) {
         LOG.info(e);
@@ -264,82 +265,5 @@ public class SDKDiscovery {
     } catch (IOException e) {
       return null;
     }
-  }
-
-  //-------------------------------------copied from StringUtil----------------------------------
-
-  @NotNull
-  @SuppressWarnings("unchecked")
-  public static List<String> split(@NotNull String s, @NotNull String separator, boolean excludeSeparator, boolean excludeEmptyStrings) {
-    return (List) split((CharSequence) s, separator, excludeSeparator, excludeEmptyStrings);
-  }
-
-  @NotNull
-  public static List<CharSequence> split(@NotNull CharSequence s, @NotNull CharSequence separator, boolean excludeSeparator, boolean excludeEmptyStrings) {
-    if (separator.length() == 0) {
-      return Collections.singletonList(s);
-    }
-    List<CharSequence> result = new ArrayList<CharSequence>();
-    int pos = 0;
-    while (true) {
-      int index = indexOf(s, separator, pos);
-      if (index == -1) {
-        break;
-      }
-      final int nextPos = index + separator.length();
-      CharSequence token = s.subSequence(pos, excludeSeparator ? index : nextPos);
-      if (token.length() != 0 || !excludeEmptyStrings) {
-        result.add(token);
-      }
-      pos = nextPos;
-    }
-    if (pos < s.length() || !excludeEmptyStrings && pos == s.length()) {
-      result.add(s.subSequence(pos, s.length()));
-    }
-    return result;
-  }
-
-  public static int indexOf(@NotNull CharSequence sequence, @NotNull CharSequence infix, int start) {
-    return indexOf(sequence, infix, start, sequence.length());
-  }
-
-  public static int indexOf(@NotNull CharSequence sequence, @NotNull CharSequence infix, int start, int end) {
-    for (int i = start; i <= end - infix.length(); i++) {
-      if (startsWith(sequence, i, infix)) {
-        return i;
-      }
-    }
-    return -1;
-  }
-
-  public static boolean startsWith(@NotNull CharSequence text, int startIndex, @NotNull CharSequence prefix) {
-    int tl = text.length();
-    if (startIndex < 0 || startIndex > tl) {
-      throw new IllegalArgumentException("Index is out of bounds: " + startIndex + ", length: " + tl);
-    }
-    int l1 = tl - startIndex;
-    int l2 = prefix.length();
-    if (l1 < l2) {
-      return false;
-    }
-
-    for (int i = 0; i < l2; i++) {
-      if (text.charAt(i + startIndex) != prefix.charAt(i)) {
-        return false;
-      }
-    }
-
-    return true;
-  }
-
-  //-------------------------------------copied from StringUtilRt----------------------------------
-
-  public static boolean isQuotedString(@NotNull String s) {
-    return s.length() > 1 && (s.charAt(0) == '\'' || s.charAt(0) == '\"') && s.charAt(0) == s.charAt(s.length() - 1);
-  }
-
-  @NotNull
-  public static String unquoteString(@NotNull String s) {
-    return isQuotedString(s) ? s.substring(1, s.length() - 1) : s;
   }
 }
