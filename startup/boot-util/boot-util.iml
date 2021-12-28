@@ -9,8 +9,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="Annotations" level="project" />
     <orderEntry type="library" exported="" name="Util" level="project" />
-    <orderEntry type="library" name="Annotations" level="project" />
     <orderEntry type="library" name="3rd-party" level="project" />
   </component>
 </module>
