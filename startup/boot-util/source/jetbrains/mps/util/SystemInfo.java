@@ -41,6 +41,8 @@ public final class SystemInfo {
   public static final String JAVA_RUNTIME_VERSION = com.intellij.openapi.util.SystemInfo.JAVA_RUNTIME_VERSION;
   private static final String JAVA_VERSION = com.intellij.openapi.util.SystemInfo.JAVA_VERSION;
 
+  public static boolean isFileSystemCaseSensitive = com.intellij.openapi.util.SystemInfo.isFileSystemCaseSensitive;
+
   public static boolean isOsVersionAtLeast(@NotNull String version) {
     return com.intellij.openapi.util.SystemInfo.isOsVersionAtLeast(version);
   }
