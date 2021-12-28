@@ -70,9 +70,6 @@ public class PathManager {
     if (property != null) {
       PathManager.ourHomePath = Files.getAbsolutePath(property);
     } else {
-      // FIXME if this PathManager class is loaded through ant cp (lib/ant/lib/ant-mps.jar), home folder would be wrong!
-      //       This means use of this method and related makes sense for the case when this PathManager is loaded through e.g. core.tool.environment
-      //       or tool.builder classloaders (mps-tool.jar or mps-environment.jar).
       final Class aClass = PathManager.class;
       String rootPath = PathManager.getResourceRoot(aClass, "/" + aClass.getName().replace('.', '/') + ".class");
       if (rootPath != null) {
