@@ -1470,6 +1470,42 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDkqTS" role="jymVt" />
+    <node concept="3clFb_" id="5P325eDkHBS" role="jymVt">
+      <property role="TrG5h" value="setAutomaticPluginDiscoveryMode" />
+      <node concept="3clFbS" id="5P325eDkHBV" role="3clF47">
+        <node concept="3clFbF" id="5P325eDkQf8" role="3cqZAp">
+          <node concept="2OqwBi" id="5P325eDkUWQ" role="3clFbG">
+            <node concept="37vLTw" id="5P325eDkQf7" role="2Oq$k0">
+              <ref role="3cqZAo" node="6aGZllYSCBv" resolve="myStartupData" />
+            </node>
+            <node concept="liA8E" id="5P325eDnbjh" role="2OqNvi">
+              <ref role="37wK5l" node="5P325eDlStb" resolve="setLoadAllBundledPlugins" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="5P325eDk_Ue" role="1B3o_S" />
+      <node concept="3cqZAl" id="5P325eDkEMB" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="5P325eDtW7e" role="jymVt" />
+    <node concept="3clFb_" id="5P325eDudaG" role="jymVt">
+      <property role="TrG5h" value="getAutomaticPluginDiscoveryMode" />
+      <node concept="3clFbS" id="5P325eDudaJ" role="3clF47">
+        <node concept="3cpWs6" id="5P325eDuljQ" role="3cqZAp">
+          <node concept="2OqwBi" id="5P325eDuxW2" role="3cqZAk">
+            <node concept="37vLTw" id="5P325eDurIh" role="2Oq$k0">
+              <ref role="3cqZAo" node="6aGZllYSCBv" resolve="myStartupData" />
+            </node>
+            <node concept="liA8E" id="5P325eDuCkE" role="2OqNvi">
+              <ref role="37wK5l" node="5P325eDszMb" resolve="getAutomaticPLuginDiscoveryMode" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="5P325eDu5SO" role="1B3o_S" />
+      <node concept="10P_77" id="5P325eDucS$" role="3clF45" />
+    </node>
     <node concept="2tJIrI" id="3O0qRXvbc3y" role="jymVt" />
     <node concept="3clFb_" id="r$A3E5tFQj" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -3032,6 +3068,16 @@
         <property role="Xl_RC" value="loadBootstrapLibraries" />
       </node>
     </node>
+    <node concept="Wx3nA" id="6DTB6TKevyH" role="jymVt">
+      <property role="3TUv4t" value="true" />
+      <property role="TrG5h" value="PROP_PLUGIN_AUTO_DISCOVERY_MODE" />
+      <node concept="3Tm6S6" id="6DTB6TKevyI" role="1B3o_S" />
+      <node concept="17QB3L" id="6DTB6TKevyJ" role="1tU5fm" />
+      <node concept="Xl_RD" id="6DTB6TKevyK" role="33vP2m">
+        <property role="Xl_RC" value="pluginAutoDiscoveryMode" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="6DTB6TKfGJ4" role="jymVt" />
     <node concept="Wx3nA" id="KL8Aql8eFl" role="jymVt">
       <property role="TrG5h" value="ELEM_PROPERTY" />
       <property role="3TUv4t" value="true" />
@@ -3183,6 +3229,12 @@
       <node concept="3clFbT" id="KL8Aql8eG2" role="33vP2m">
         <property role="3clFbU" value="true" />
       </node>
+    </node>
+    <node concept="312cEg" id="5P325eDltPp" role="jymVt">
+      <property role="TrG5h" value="myAutomaticPluginDiscoveryMode" />
+      <node concept="3Tm6S6" id="5P325eDlk2x" role="1B3o_S" />
+      <node concept="10P_77" id="5P325eDltOV" role="1tU5fm" />
+      <node concept="3clFbT" id="5P325eDlB0c" role="33vP2m" />
     </node>
     <node concept="312cEg" id="KL8Aql8eG3" role="jymVt">
       <property role="TrG5h" value="myProperties" />
@@ -3404,6 +3456,26 @@
                 <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean)" resolve="toString" />
                 <node concept="37vLTw" id="1288c6E80X6" role="37wK5m">
                   <ref role="3cqZAo" node="KL8Aql8eFZ" resolve="myLoadBootstrapLibraries" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="6DTB6TKeFfM" role="3cqZAp">
+          <node concept="2OqwBi" id="6DTB6TKeFfN" role="3clFbG">
+            <node concept="37vLTw" id="6DTB6TKeFfO" role="2Oq$k0">
+              <ref role="3cqZAo" node="1288c6E3_RJ" resolve="misc" />
+            </node>
+            <node concept="liA8E" id="6DTB6TKeFfP" role="2OqNvi">
+              <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
+              <node concept="37vLTw" id="6DTB6TKf4Qp" role="37wK5m">
+                <ref role="3cqZAo" node="6DTB6TKevyH" resolve="ELEM_PLUGIN_AUTO_DISCOVERY_MODE" />
+              </node>
+              <node concept="2YIFZM" id="6DTB6TKgC8M" role="37wK5m">
+                <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean)" resolve="toString" />
+                <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+                <node concept="37vLTw" id="6DTB6TKgKrZ" role="37wK5m">
+                  <ref role="3cqZAo" node="5P325eDltPp" resolve="myAutomaticPluginDiscoveryMode" />
                 </node>
               </node>
             </node>
@@ -4215,6 +4287,28 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="6DTB6TKgTaY" role="3cqZAp">
+          <node concept="37vLTI" id="6DTB6TKgTaZ" role="3clFbG">
+            <node concept="37vLTw" id="6DTB6TKgTb0" role="37vLTJ">
+              <ref role="3cqZAo" node="5P325eDltPp" resolve="myAutomaticPluginDiscoveryMode" />
+            </node>
+            <node concept="2YIFZM" id="6DTB6TKgTb1" role="37vLTx">
+              <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+              <ref role="37wK5l" to="wyt6:~Boolean.parseBoolean(java.lang.String)" resolve="parseBoolean" />
+              <node concept="2OqwBi" id="6DTB6TKgTb2" role="37wK5m">
+                <node concept="37vLTw" id="6DTB6TKgTb3" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1288c6E81VG" resolve="misc" />
+                </node>
+                <node concept="liA8E" id="6DTB6TKgTb4" role="2OqNvi">
+                  <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String)" resolve="getAttributeValue" />
+                  <node concept="37vLTw" id="6DTB6TKgTb5" role="37wK5m">
+                    <ref role="3cqZAo" node="6DTB6TKevyH" resolve="PROP_PLUGIN_AUTO_DISCOVERY_MODE" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbH" id="1288c6E841L" role="3cqZAp" />
         <node concept="1DcWWT" id="1288c6E8EsB" role="3cqZAp">
           <node concept="3clFbS" id="1288c6E8EsE" role="2LFqv$">
@@ -4706,6 +4800,7 @@
         <node concept="17QB3L" id="KL8Aql8eLY" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfL" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eLZ" role="jymVt">
       <property role="TrG5h" value="getWorker" />
       <node concept="17QB3L" id="KL8Aql8eM0" role="3clF45" />
@@ -4718,6 +4813,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfM" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eM5" role="jymVt">
       <property role="TrG5h" value="setFailOnError" />
       <node concept="3cqZAl" id="KL8Aql8eM6" role="3clF45" />
@@ -4739,6 +4835,7 @@
         <node concept="10P_77" id="KL8Aql8eMe" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfN" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eMf" role="jymVt">
       <property role="TrG5h" value="getFailOnError" />
       <node concept="10P_77" id="KL8Aql8eMg" role="3clF45" />
@@ -4751,6 +4848,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfO" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eMl" role="jymVt">
       <property role="TrG5h" value="setLogLevel" />
       <node concept="3cqZAl" id="KL8Aql8eMm" role="3clF45" />
@@ -4774,6 +4872,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfP" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eMv" role="jymVt">
       <property role="TrG5h" value="getLogLevel" />
       <node concept="3uibUv" id="KL8Aql8eMw" role="3clF45">
@@ -4788,6 +4887,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfQ" role="jymVt" />
     <node concept="3clFb_" id="6aGZllYU5b8" role="jymVt">
       <property role="TrG5h" value="getRepo" />
       <node concept="3uibUv" id="6aGZllYU5b9" role="3clF45">
@@ -4802,6 +4902,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfR" role="jymVt" />
     <node concept="3clFb_" id="6aGZllYU5be" role="jymVt">
       <property role="TrG5h" value="setRepo" />
       <node concept="3cqZAl" id="6aGZllYU5bf" role="3clF45" />
@@ -4825,6 +4926,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfS" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eM_" role="jymVt">
       <property role="TrG5h" value="setLoadBootstrapLibraries" />
       <node concept="3cqZAl" id="KL8Aql8eMA" role="3clF45" />
@@ -4846,6 +4948,7 @@
         <node concept="10P_77" id="KL8Aql8eMI" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfT" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eMJ" role="jymVt">
       <property role="TrG5h" value="getLoadBootstrapLibraries" />
       <node concept="10P_77" id="KL8Aql8eMK" role="3clF45" />
@@ -4858,6 +4961,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfU" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eMP" role="jymVt">
       <property role="TrG5h" value="setProperties" />
       <node concept="3cqZAl" id="KL8Aql8eMQ" role="3clF45" />
@@ -4883,6 +4987,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfV" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eN1" role="jymVt">
       <property role="TrG5h" value="getProperties" />
       <node concept="3uibUv" id="KL8Aql8eN2" role="3clF45">
@@ -4899,6 +5004,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfW" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eN9" role="jymVt">
       <property role="TrG5h" value="addProperty" />
       <node concept="3cqZAl" id="KL8Aql8eNa" role="3clF45" />
@@ -4930,6 +5036,7 @@
         <node concept="17QB3L" id="KL8Aql8eNm" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfX" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eNn" role="jymVt">
       <property role="TrG5h" value="setMacros" />
       <node concept="3cqZAl" id="KL8Aql8eNo" role="3clF45" />
@@ -4955,6 +5062,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfY" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eNz" role="jymVt">
       <property role="TrG5h" value="getMacros" />
       <node concept="3uibUv" id="KL8Aql8eN$" role="3clF45">
@@ -4971,6 +5079,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNfZ" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eNF" role="jymVt">
       <property role="TrG5h" value="addMacro" />
       <node concept="3cqZAl" id="KL8Aql8eNG" role="3clF45" />
@@ -5002,6 +5111,7 @@
         <node concept="17QB3L" id="KL8Aql8eNS" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNg0" role="jymVt" />
     <node concept="3clFb_" id="r$A3E5taIM" role="jymVt">
       <property role="TrG5h" value="getPlugins" />
       <node concept="3uibUv" id="r$A3E5taIN" role="3clF45">
@@ -5019,6 +5129,38 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNg1" role="jymVt" />
+    <node concept="3clFb_" id="5P325eDlStb" role="jymVt">
+      <property role="TrG5h" value="setAutomaticPLuginDiscoveryMode" />
+      <node concept="3clFbS" id="5P325eDlSte" role="3clF47">
+        <node concept="3clFbF" id="5P325eDm2in" role="3cqZAp">
+          <node concept="37vLTI" id="5P325eDm99a" role="3clFbG">
+            <node concept="3clFbT" id="5P325eDmfOD" role="37vLTx">
+              <property role="3clFbU" value="true" />
+            </node>
+            <node concept="37vLTw" id="5P325eDm2im" role="37vLTJ">
+              <ref role="3cqZAo" node="5P325eDltPp" resolve="myLoadAllBundledPlugins" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="5P325eDlJ9K" role="1B3o_S" />
+      <node concept="3cqZAl" id="5P325eDlRbh" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="5P325eDsHSN" role="jymVt" />
+    <node concept="3clFb_" id="5P325eDszMb" role="jymVt">
+      <property role="TrG5h" value="getAutomaticPLuginDiscoveryMode" />
+      <node concept="3clFbS" id="5P325eDszMc" role="3clF47">
+        <node concept="3cpWs6" id="5P325eDtpbT" role="3cqZAp">
+          <node concept="37vLTw" id="5P325eDtvSU" role="3cqZAk">
+            <ref role="3cqZAo" node="5P325eDltPp" resolve="myAutomaticPluginDiscoveryMode" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="5P325eDszMh" role="1B3o_S" />
+      <node concept="10P_77" id="5P325eDuKzr" role="3clF45" />
+    </node>
+    <node concept="2tJIrI" id="5P325eDrNg2" role="jymVt" />
     <node concept="3clFb_" id="r$A3E5sNES" role="jymVt">
       <property role="TrG5h" value="addPlugin" />
       <node concept="3cqZAl" id="r$A3E5sNET" role="3clF45" />
@@ -5045,6 +5187,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNg3" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eNT" role="jymVt">
       <property role="TrG5h" value="setLibraries" />
       <node concept="3cqZAl" id="KL8Aql8eNU" role="3clF45" />
@@ -5072,6 +5215,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNg4" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eO5" role="jymVt">
       <property role="TrG5h" value="getLibraries" />
       <node concept="3uibUv" id="KL8Aql8eO6" role="3clF45">
@@ -5090,6 +5234,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNg5" role="jymVt" />
     <node concept="3clFb_" id="KL8Aql8eOd" role="jymVt">
       <property role="TrG5h" value="addLibrary" />
       <node concept="3cqZAl" id="KL8Aql8eOe" role="3clF45" />
@@ -5167,6 +5312,7 @@
         <node concept="17QB3L" id="6tzA4yInV2y" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDrNg6" role="jymVt" />
     <node concept="3clFb_" id="6tzA4yInV2z" role="jymVt">
       <property role="TrG5h" value="getLibraryJars" />
       <node concept="3Tm1VV" id="6tzA4yInV2$" role="1B3o_S" />

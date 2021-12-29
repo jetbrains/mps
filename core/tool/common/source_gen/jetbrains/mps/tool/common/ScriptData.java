@@ -31,6 +31,8 @@ public class ScriptData {
   private static final String PROP_FAILONERROR = "failOnError";
   private static final String PROP_LOGLEVEL = "logLevel";
   private static final String PROP_LOADBOOTSTRAPLIBRARIES = "loadBootstrapLibraries";
+  private static final String PROP_PLUGIN_AUTO_DISCOVERY_MODE = "pluginAutoDiscoveryMode";
+
   private static final String ELEM_PROPERTY = "property";
   private static final String ELEM_MACRO = "macro";
   private static final String NAME = "name";
@@ -51,6 +53,7 @@ public class ScriptData {
   private boolean myFailOnError = true;
   private Level myLogLevel = Level.INFO;
   private boolean myLoadBootstrapLibraries = true;
+  private boolean myAutomaticPluginDiscoveryMode = false;
   private Map<String, String> myProperties = new LinkedHashMap<String, String>();
   private Map<String, String> myMacros = new LinkedHashMap<String, String>();
   private Map<String, File> myLibraries = new LinkedHashMap<String, File>();
@@ -70,6 +73,7 @@ public class ScriptData {
     misc.setAttribute(PROP_FAILONERROR, Boolean.toString(myFailOnError));
     misc.setAttribute(PROP_LOGLEVEL, Integer.toString(myLogLevel.toInt()));
     misc.setAttribute(PROP_LOADBOOTSTRAPLIBRARIES, Boolean.toString(myLoadBootstrapLibraries));
+    misc.setAttribute(PROP_PLUGIN_AUTO_DISCOVERY_MODE, Boolean.toString(myAutomaticPluginDiscoveryMode));
     root.addContent(misc);
 
     if (!(myLibraries.isEmpty()) || !(myLibraryJars.isEmpty())) {
@@ -113,6 +117,7 @@ public class ScriptData {
     int logLevelInt = Integer.parseInt(misc.getAttributeValue(PROP_LOGLEVEL));
     myLogLevel = Level.toLevel(logLevelInt, Level.INFO);
     myLoadBootstrapLibraries = Boolean.parseBoolean(misc.getAttributeValue(PROP_LOADBOOTSTRAPLIBRARIES));
+    myAutomaticPluginDiscoveryMode = Boolean.parseBoolean(misc.getAttributeValue(PROP_PLUGIN_AUTO_DISCOVERY_MODE));
 
     for (Element e : root.getChildren(ELEM_LIBRARIES)) {
       for (Element lib : e.getChildren(ELEM_LIBRARY)) {
@@ -150,63 +155,91 @@ public class ScriptData {
   public void setWorker(String workerClass) {
     myWorker = workerClass;
   }
+
   public String getWorker() {
     return myWorker;
   }
+
   public void setFailOnError(boolean failOnError) {
     myFailOnError = failOnError;
   }
+
   public boolean getFailOnError() {
     return myFailOnError;
   }
+
   public void setLogLevel(Level logLevel) {
     myLogLevel = logLevel;
   }
+
   public Level getLogLevel() {
     return myLogLevel;
   }
+
   public RepositoryDescriptor getRepo() {
     return myRepo;
   }
+
   public void setRepo(RepositoryDescriptor repo) {
     myRepo = repo;
   }
+
   public void setLoadBootstrapLibraries(boolean isLoadBootstrapLibraries) {
     myLoadBootstrapLibraries = isLoadBootstrapLibraries;
   }
+
   public boolean getLoadBootstrapLibraries() {
     return myLoadBootstrapLibraries;
   }
+
   public void setProperties(Map<String, String> properties) {
     myProperties = properties;
   }
+
   public Map<String, String> getProperties() {
     return myProperties;
   }
+
   public void addProperty(String key, String value) {
     myProperties.put(key, value);
   }
+
   public void setMacros(Map<String, String> macros) {
     myMacros = macros;
   }
+
   public Map<String, String> getMacros() {
     return myMacros;
   }
+
   public void addMacro(String key, String value) {
     myMacros.put(key, value);
   }
+
   public List<PluginData> getPlugins() {
     return myPlugins;
   }
+
+  public void setAutomaticPLuginDiscoveryMode() {
+    myAutomaticPluginDiscoveryMode = true;
+  }
+
+  public boolean getAutomaticPLuginDiscoveryMode() {
+    return myAutomaticPluginDiscoveryMode;
+  }
+
   public void addPlugin(PluginData p) {
     myPlugins.add(p);
   }
+
   public void setLibraries(Map<String, File> libraries) {
     myLibraries = libraries;
   }
+
   public Map<String, File> getLibraries() {
     return myLibraries;
   }
+
   /**
    * XXX seems to be identical to library jar, both end up in EnvironmentConfig.addLib(). Deprecate?
    * 
@@ -220,6 +253,7 @@ public class ScriptData {
   public void addLibraryJar(String libraryJar) {
     myLibraryJars.add(libraryJar);
   }
+
   public List<String> getLibraryJars() {
     return myLibraryJars;
   }

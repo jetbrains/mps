@@ -157,6 +157,14 @@ public class Script {
     myStartupData.addPlugin(p);
   }
 
+  public void setAutomaticPluginDiscoveryMode() {
+    myStartupData.setAutomaticPLuginDiscoveryMode();
+  }
+
+  public boolean getAutomaticPluginDiscoveryMode() {
+    return myStartupData.getAutomaticPLuginDiscoveryMode();
+  }
+
   public List<PluginData> getPlugins() {
     return Collections.unmodifiableList(myStartupData.getPlugins());
   }

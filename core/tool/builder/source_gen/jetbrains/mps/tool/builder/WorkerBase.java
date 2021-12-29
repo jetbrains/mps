@@ -78,7 +78,13 @@ public abstract class WorkerBase {
   protected abstract Environment createEnvironment();
 
   protected EnvironmentConfig initEnvironmentConfig() {
-    return EnvironmentConfig.emptyConfig().withDefaultSamples().withDefaultPlugins().withBootstrapLibraries().withWorkbenchPath();
+    EnvironmentConfig res = EnvironmentConfig.emptyConfig().withDefaultSamples().withBootstrapLibraries().withWorkbenchPath();
+    if (myWhatToDo.getAutomaticPluginDiscoveryMode()) {
+      res = res.withAutomaticPluginDiscovery();
+    } else {
+      res = res.withDefaultPlugins();
+    }
+    return res;
   }
 
   protected EnvironmentConfig createEnvironmentConfig(Script whatToDo) {

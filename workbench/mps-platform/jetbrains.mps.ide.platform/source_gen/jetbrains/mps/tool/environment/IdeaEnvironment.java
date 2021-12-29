@@ -95,6 +95,13 @@ public final class IdeaEnvironment extends EnvironmentBase {
    */
   @Hack
   private void addRequiredPlugins(EnvironmentConfig config) {
+    if (myConfig.areLoadingPluginsAutomatically()) {
+      if (LOG.isInfoEnabled()) {
+        LOG.info("The environment config is set to automatic plugins discovery mode");
+      }
+      return;
+    }
+
     setPluginPathProperty();
     setPluginIdsPropertyFromConfig(config);
   }

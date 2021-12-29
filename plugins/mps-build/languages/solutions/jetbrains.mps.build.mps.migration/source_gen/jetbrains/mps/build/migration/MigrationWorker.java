@@ -47,8 +47,13 @@ public class MigrationWorker extends WorkerBase {
 
   @Override
   protected EnvironmentConfig initEnvironmentConfig() {
-    // for mysterious reasons, lang.migration.util is part of mps-core plugin
-    return EnvironmentConfig.emptyConfig().withBootstrapLibraries().withCorePlugin().withMigrationPlugin();
+    EnvironmentConfig withBootstrapLibraries = EnvironmentConfig.emptyConfig().withBootstrapLibraries();
+    if (myWhatToDo.getAutomaticPluginDiscoveryMode()) {
+      return withBootstrapLibraries.withAutomaticPluginDiscovery();
+    } else {
+      // for mysterious reasons, lang.migration.util is part of mps-core plugin
+      return withBootstrapLibraries.withCorePlugin().withMigrationPlugin();
+    }
   }
 
   @Override

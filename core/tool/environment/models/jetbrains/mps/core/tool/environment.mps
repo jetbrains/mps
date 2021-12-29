@@ -743,7 +743,7 @@
       </node>
     </node>
     <node concept="312cEg" id="4UQyhJFi2v7" role="jymVt">
-      <property role="TrG5h" value="myLoadAllPluginsNoRestrictions" />
+      <property role="TrG5h" value="myAutomaticPluginsDiscoveryMode" />
       <node concept="3Tm6S6" id="4UQyhJFi1$Y" role="1B3o_S" />
       <node concept="10P_77" id="4UQyhJFi2r6" role="1tU5fm" />
       <node concept="3clFbT" id="4UQyhJFi3$m" role="33vP2m" />
@@ -776,12 +776,6 @@
       <node concept="10P_77" id="28TMbOSF06_" role="1tU5fm" />
       <node concept="3clFbT" id="28TMbOSF1me" role="33vP2m" />
     </node>
-    <node concept="312cEg" id="7YybdScOERL" role="jymVt">
-      <property role="TrG5h" value="myLoadAllBundledPlugins" />
-      <node concept="3Tm6S6" id="7YybdScODdL" role="1B3o_S" />
-      <node concept="10P_77" id="7YybdScODk$" role="1tU5fm" />
-      <node concept="3clFbT" id="7YybdScOEZ1" role="33vP2m" />
-    </node>
     <node concept="2tJIrI" id="6rx4kZDkayQ" role="jymVt" />
     <node concept="3clFbW" id="3YQ3dO9lyd8" role="jymVt">
       <node concept="3Tm6S6" id="3YQ3dO9lyp2" role="1B3o_S" />
@@ -790,7 +784,7 @@
     </node>
     <node concept="2tJIrI" id="4UQyhJFi5kG" role="jymVt" />
     <node concept="3clFb_" id="4UQyhJFic1B" role="jymVt">
-      <property role="TrG5h" value="areLoadingPluginsNoRestrictions" />
+      <property role="TrG5h" value="areLoadingPluginsAutomatically" />
       <node concept="3clFbS" id="4UQyhJFic1E" role="3clF47">
         <node concept="3cpWs6" id="4UQyhJFid7H" role="3cqZAp">
           <node concept="37vLTw" id="4UQyhJFid8V" role="3cqZAk">
@@ -820,7 +814,7 @@
                 <node concept="1pGfFk" id="4UQyhJFibBU" role="2ShVmc">
                   <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.String)" resolve="IllegalArgumentException" />
                   <node concept="Xl_RD" id="4UQyhJFibEN" role="37wK5m">
-                    <property role="Xl_RC" value="Does not make much sense when the flag 'myLoadAllPluginsNoRestrictions' is set" />
+                    <property role="Xl_RC" value="The flag 'myAutoLoadPluginsMode' is set, nothing to return" />
                   </node>
                 </node>
               </node>
@@ -910,6 +904,26 @@
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="6rx4kZDk6GF" role="3clF47">
+        <node concept="3clFbJ" id="5P325eDotty" role="3cqZAp">
+          <node concept="3clFbS" id="5P325eDott$" role="3clFbx">
+            <node concept="RRSsy" id="5P325eDovjm" role="3cqZAp">
+              <property role="RRSoG" value="gZ5fksE/warn" />
+              <node concept="2YIFZM" id="5P325eDo_RX" role="RRSoy">
+                <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
+                <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
+                <node concept="Xl_RD" id="5P325eDo_RY" role="37wK5m">
+                  <property role="Xl_RC" value="Not adding the plugin=%s; path=%s, since the automatic mode is on" />
+                </node>
+                <node concept="37vLTw" id="5P325eDo_RZ" role="37wK5m">
+                  <ref role="3cqZAo" node="7lKcB_1uNEu" resolve="path" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="37vLTw" id="5P325eDoucE" role="3clFbw">
+            <ref role="3cqZAo" node="4UQyhJFi2v7" resolve="myLoadAllPluginsNoRestrictions" />
+          </node>
+        </node>
         <node concept="3cpWs8" id="7lKcB_1uGKF" role="3cqZAp">
           <node concept="3cpWsn" id="7lKcB_1uGKG" role="3cpWs9">
             <property role="TrG5h" value="pluginLocation" />
@@ -1501,6 +1515,7 @@
         <ref role="3uigEE" node="6rx4kZDk5A9" resolve="EnvironmentConfig" />
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDp3Iw" role="jymVt" />
     <node concept="3clFb_" id="2btCvgzFdFi" role="jymVt">
       <property role="TrG5h" value="withModelCheckerPlugin" />
       <node concept="3clFbS" id="2btCvgzFdFl" role="3clF47">
@@ -1592,18 +1607,15 @@
     </node>
     <node concept="2tJIrI" id="5avE1b7v7v3" role="jymVt" />
     <node concept="3clFb_" id="7YybdScOBt7" role="jymVt">
-      <property role="TrG5h" value="withBundledPlugins" />
+      <property role="TrG5h" value="withAutomaticPluginDiscovery" />
       <node concept="3clFbS" id="7YybdScOBta" role="3clF47">
         <node concept="3clFbF" id="7YybdScOFPU" role="3cqZAp">
           <node concept="37vLTI" id="7YybdScOKbN" role="3clFbG">
             <node concept="3clFbT" id="7YybdScOKXt" role="37vLTx">
               <property role="3clFbU" value="true" />
             </node>
-            <node concept="2OqwBi" id="7YybdScOH2f" role="37vLTJ">
-              <node concept="Xjq3P" id="7YybdScOFPT" role="2Oq$k0" />
-              <node concept="2OwXpG" id="7YybdScOIKd" role="2OqNvi">
-                <ref role="2Oxat5" node="7YybdScOERL" resolve="myLoadAllBundledPlugins" />
-              </node>
+            <node concept="37vLTw" id="5P325eDpcAL" role="37vLTJ">
+              <ref role="3cqZAo" node="4UQyhJFi2v7" resolve="myAutoLoadPluginsMode" />
             </node>
           </node>
         </node>
@@ -1653,16 +1665,6 @@
             <node concept="3oM_SD" id="ATZLwXo9g7" role="1PaTwD">
               <property role="3oM_SC" value="/plugins" />
             </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="7YybdScOOo6" role="3cqZAp">
-          <node concept="3clFbS" id="7YybdScOOo8" role="3clFbx">
-            <node concept="3cpWs6" id="7YybdScOQ8m" role="3cqZAp">
-              <node concept="Xjq3P" id="7YybdScORup" role="3cqZAk" />
-            </node>
-          </node>
-          <node concept="37vLTw" id="7YybdScOP2o" role="3clFbw">
-            <ref role="3cqZAo" node="7YybdScOERL" resolve="myLoadAllBundledPlugins" />
           </node>
         </node>
         <node concept="3cpWs8" id="5avE1b7w6Gq" role="3cqZAp">
@@ -1831,7 +1833,7 @@
     </node>
     <node concept="2tJIrI" id="2$4oShLa$jK" role="jymVt" />
     <node concept="2YIFZL" id="2$4oShLawGj" role="jymVt">
-      <property role="TrG5h" value="defaultConfigWithBundledPlugins" />
+      <property role="TrG5h" value="defaultConfigWithAutoDiscoveryPluginsMode" />
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />
       <node concept="3clFbS" id="2$4oShLawGk" role="3clF47">
@@ -1867,7 +1869,7 @@
       </node>
       <node concept="P$JXv" id="2$4oShLa_j5" role="lGtFl">
         <node concept="x79VA" id="2$4oShLa_j8" role="3nqlJM">
-          <property role="x79VB" value="EnvironmentConfig with no specified plugins. At the time of writing it meant that the platform will load all the plugins. Note that one needs to provide a proper class path." />
+          <property role="x79VB" value="EnvironmentConfig with no explicitly specified plugins. At the time of writing it meant that the platform will load the plugins from cp, from plugins path, and from the system property." />
         </node>
       </node>
     </node>

@@ -41,21 +41,20 @@ public class EnvironmentConfig {
    * By default set to false because we are unable to run without errors in our tests when all of the plugins are on.
    * Probably that should change.
    */
-  private boolean myLoadAllPluginsNoRestrictions = false;
+  private boolean myAutomaticPluginsDiscoveryMode = false;
   private boolean myTestModeOn = false;
-  private boolean myLoadAllBundledPlugins = false;
 
   private EnvironmentConfig() {
   }
 
-  public boolean areLoadingPluginsNoRestrictions() {
-    return myLoadAllPluginsNoRestrictions;
+  public boolean areLoadingPluginsAutomatically() {
+    return myAutomaticPluginsDiscoveryMode;
   }
 
   @NotNull
   public Set<PluginData> getPlugins() {
-    if (myLoadAllPluginsNoRestrictions) {
-      throw new IllegalArgumentException("Does not make much sense when the flag 'myLoadAllPluginsNoRestrictions' is set");
+    if (myAutomaticPluginsDiscoveryMode) {
+      throw new IllegalArgumentException("The flag 'myAutoLoadPluginsMode' is set, nothing to return");
     }
     return SetSequence.fromSet(myPlugins).asUnmodifiable();
   }
@@ -73,6 +72,11 @@ public class EnvironmentConfig {
   }
 
   public EnvironmentConfig addPlugin(String path, String id) {
+    if (myAutomaticPluginsDiscoveryMode) {
+      if (LOG.isEnabledFor(Level.WARN)) {
+        LOG.warn(String.format("Not adding the plugin=%s; path=%s, since the automatic mode is on", path));
+      }
+    }
     File pluginLocation = new File(path);
     if (!(pluginLocation.exists())) {
       if (LOG.isEnabledFor(Level.WARN)) {
@@ -151,6 +155,7 @@ public class EnvironmentConfig {
   public EnvironmentConfig withDebuggerPlugin() {
     return addDistributedPlugin("debugger-api", "jetbrains.mps.debugger.api").addDistributedPlugin("debugger-java", "jetbrains.mps.debugger.java").addDistributedPlugin("execution-api", "jetbrains.mps.execution.api");
   }
+
   public EnvironmentConfig withModelCheckerPlugin() {
     return addDistributedPlugin("mps-modelchecker", "jetbrains.mps.ide.modelchecker").withTestingPlugin();
   }
@@ -160,16 +165,13 @@ public class EnvironmentConfig {
     return withModelCheckerPlugin().addDistributedPlugin("mps-migration", "jetbrains.mps.ide.migration.workbench").addDistributedPlugin("mps-project-migrations", "jetbrains.mps.ide.mpsmigration");
   }
 
-  public EnvironmentConfig withBundledPlugins() {
-    this.myLoadAllBundledPlugins = true;
+  public EnvironmentConfig withAutomaticPluginDiscovery() {
+    myAutomaticPluginsDiscoveryMode = true;
     return this;
   }
 
   private EnvironmentConfig addDistributedPlugin(String folder, String id) {
     // for internal use only, accepts a folder in /plugins
-    if (myLoadAllBundledPlugins) {
-      return this;
-    }
     File preinstalledPluginFolder = new File(PathManager.getPreInstalledPluginsPath());
     return addPlugin(new File(preinstalledPluginFolder, folder).getAbsolutePath(), id);
   }
@@ -193,10 +195,10 @@ public class EnvironmentConfig {
 
   /**
    * 
-   * @return EnvironmentConfig with no specified plugins. At the time of writing it meant that the platform will load all the plugins. Note that one needs to provide a proper class path.
+   * @return EnvironmentConfig with no explicitly specified plugins. At the time of writing it meant that the platform will load the plugins from cp, from plugins path, and from the system property.
    */
-  public static EnvironmentConfig defaultConfigWithBundledPlugins() {
-    return emptyConfig().withDefaultSamples().withBootstrapLibraries().withWorkbenchPath().withBundledPlugins();
+  public static EnvironmentConfig defaultConfigWithAutoDiscoveryPluginsMode() {
+    return emptyConfig().withDefaultSamples().withBootstrapLibraries().withWorkbenchPath().withAutomaticPluginDiscovery();
   }
 
   /**

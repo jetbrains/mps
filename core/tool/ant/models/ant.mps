@@ -1721,6 +1721,37 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="5P325eDnEhx" role="jymVt" />
+    <node concept="3clFb_" id="5P325eDnuBO" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="setAutoPluginDiscovery" />
+      <property role="DiZV1" value="false" />
+      <node concept="3Tm1VV" id="5P325eDnuBP" role="1B3o_S" />
+      <node concept="3cqZAl" id="5P325eDnuBQ" role="3clF45" />
+      <node concept="3clFbS" id="5P325eDnuBT" role="3clF47">
+        <node concept="3clFbJ" id="6DTB6TKcZJ8" role="3cqZAp">
+          <node concept="3clFbS" id="6DTB6TKcZJa" role="3clFbx">
+            <node concept="3clFbF" id="6DTB6TKbV8A" role="3cqZAp">
+              <node concept="2OqwBi" id="6DTB6TKc38f" role="3clFbG">
+                <node concept="37vLTw" id="6DTB6TKbV8x" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3ufQioQQtje" resolve="myWhatToDo" />
+                </node>
+                <node concept="liA8E" id="6DTB6TKcclF" role="2OqNvi">
+                  <ref role="37wK5l" to="asz6:5P325eDkHBS" resolve="setAutomaticPluginDiscoveryMode" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="37vLTw" id="6DTB6TKcZKu" role="3clFbw">
+            <ref role="3cqZAo" node="6DTB6TKcQbR" resolve="value" />
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="6DTB6TKcQbR" role="3clF46">
+        <property role="TrG5h" value="value" />
+        <node concept="10P_77" id="6DTB6TKcQbQ" role="1tU5fm" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="1_4F7FNq2W_" role="jymVt" />
     <node concept="3clFb_" id="3ufQioQQtn3" role="jymVt">
       <property role="1EzhhJ" value="false" />

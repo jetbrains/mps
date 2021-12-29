@@ -104,6 +104,12 @@ public class MpsLoadTask extends Task {
     myUsePropertiesAsMacro = usePropertiesAsMacro;
   }
 
+  public void setAutoPluginDiscovery(boolean value) {
+    if (value) {
+      myWhatToDo.setAutomaticPluginDiscoveryMode();
+    }
+  }
+
   public void addConfiguredJvmArg(Arg jvmArg) {
     if (!(myFork)) {
       throw new BuildException("Nested jvmarg is only allowed in fork mode.");

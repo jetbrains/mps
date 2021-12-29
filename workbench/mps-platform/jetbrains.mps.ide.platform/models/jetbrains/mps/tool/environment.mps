@@ -509,6 +509,26 @@
     <node concept="3clFb_" id="sjigSAx$6d" role="jymVt">
       <property role="TrG5h" value="addRequiredPlugins" />
       <node concept="3clFbS" id="sjigSAx$6f" role="3clF47">
+        <node concept="3clFbJ" id="5P325eDq5gv" role="3cqZAp">
+          <node concept="3clFbS" id="5P325eDq5gx" role="3clFbx">
+            <node concept="RRSsy" id="5P325eDqhFV" role="3cqZAp">
+              <property role="RRSoG" value="h1akgim/info" />
+              <node concept="Xl_RD" id="5P325eDqhFX" role="RRSoy">
+                <property role="Xl_RC" value="The environment config is set to automatic plugins discovery mode" />
+              </node>
+            </node>
+            <node concept="3cpWs6" id="5P325eDqLow" role="3cqZAp" />
+          </node>
+          <node concept="2OqwBi" id="5P325eDqaty" role="3clFbw">
+            <node concept="37vLTw" id="5P325eDq7TL" role="2Oq$k0">
+              <ref role="3cqZAo" to="79ha:3eUNqOk7wUa" resolve="myConfig" />
+            </node>
+            <node concept="liA8E" id="5P325eDqe26" role="2OqNvi">
+              <ref role="37wK5l" to="79ha:4UQyhJFic1B" resolve="areLoadingPluginsAutomatically" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="5P325eDqF_0" role="3cqZAp" />
         <node concept="3clFbF" id="sjigSAx$6x" role="3cqZAp">
           <node concept="1rXfSq" id="sjigSAx$6y" role="3clFbG">
             <ref role="37wK5l" node="sjigSAxAsb" resolve="setPluginPathProperty" />
