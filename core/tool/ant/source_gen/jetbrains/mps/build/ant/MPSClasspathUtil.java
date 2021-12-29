@@ -6,10 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.io.File;
 import org.apache.tools.ant.BuildException;
 import org.jetbrains.annotations.NotNull;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.net.MalformedURLException;
-import java.io.UnsupportedEncodingException;
+import com.intellij.openapi.application.PathManager;
 import java.util.List;
 import org.apache.tools.ant.Project;
 import java.util.ArrayList;
@@ -46,76 +43,8 @@ public class MPSClasspathUtil {
    * Attempts to detect classpath entry which contains given resource
    */
   @NotNull
-  private static String getResourceRoot(Class context, String path) {
-    URL url = context.getResource(path);
-    if (url == null) {
-      url = ClassLoader.getSystemResource(path.substring(1));
-    }
-    if (url == null) {
-      throw new BuildException("cannot detect jar location; no resource `" + path + "'");
-    }
-    // try to decode non-latin characters in url (MPS-20091)
-    try {
-      url = new URL(url.getProtocol(), url.getHost(), url.getPort(), URLDecoder.decode(url.getFile(), "UTF-8"));
-    } catch (MalformedURLException e) {
-    } catch (UnsupportedEncodingException e) {
-    }
-    return extractRoot(url, path);
-  }
-
-  /**
-   * Attempts to extract classpath entry part from passed URL.
-   */
-  @NotNull
-  private static String extractRoot(@NotNull URL resourceURL, String resourcePath) {
-    if (!((resourcePath.startsWith("/") || resourcePath.startsWith("\\")))) {
-      throw new BuildException("cannot detect jar location: precondition failed for" + resourcePath);
-    }
-    String protocol = resourceURL.getProtocol();
-    String resultPath = null;
-
-    if (MPSClasspathUtil.FILE.equals(protocol)) {
-      String path = resourceURL.getFile();
-      String testPath = path.replace('\\', '/').toLowerCase();
-      String testResourcePath = resourcePath.replace('\\', '/').toLowerCase();
-      if (testPath.endsWith(testResourcePath)) {
-        resultPath = path.substring(0, path.length() - resourcePath.length());
-      }
-    } else
-    if (MPSClasspathUtil.JAR.equals(protocol)) {
-      String fullPath = resourceURL.getFile();
-      int delimiter = fullPath.indexOf(MPSClasspathUtil.JAR_DELIMITER);
-      if (delimiter >= 0) {
-        String archivePath = fullPath.substring(0, delimiter);
-        if (archivePath.startsWith(MPSClasspathUtil.FILE + MPSClasspathUtil.PROTOCOL_DELIMITER)) {
-          resultPath = archivePath.substring(MPSClasspathUtil.FILE.length() + MPSClasspathUtil.PROTOCOL_DELIMITER.length());
-        }
-      }
-    }
-    if (resultPath == null) {
-      throw new BuildException("cannot detect jar location: url=`" + resourceURL.toString() + "'");
-    }
-
-    if (resultPath.endsWith(File.separator)) {
-      resultPath = resultPath.substring(0, resultPath.length() - 1);
-    }
-
-    return replace(resultPath, "%20", " ");
-  }
-
-  @NotNull
-  private static String replace(@NotNull String text, @NotNull String from, @NotNull String to) {
-    final StringBuilder result = new StringBuilder(text.length());
-    final int len = from.length();
-    for (int i = 0; i < text.length(); i++) {
-      if (text.regionMatches(i, from, 0, len)) {
-        result.append(to);
-        i += len - 1;
-        continue;
-      }
-      result.append(text.charAt(i));
-    }
-    return result.toString();
+  private static String getResourceRoot(Class<?> context, String path) {
+    return PathManager.getResourceRoot(context, path);
   }
 
   public static List<File> getClassPathRootsFromDependencies(Project project) {
