@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2021 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,9 @@ package jetbrains.mps.workbench.dataExtraction.runConfig;
 
 import com.intellij.ide.impl.dataRules.GetDataRule;
 import com.intellij.openapi.actionSystem.DataProvider;
+import jetbrains.mps.ide.actions.SModelActionData;
+import jetbrains.mps.ide.actions.SModuleActionData;
+import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.plugins.runconfigs.MPSLocation;
 import jetbrains.mps.plugins.runconfigs.MPSPsiElement;
 import jetbrains.mps.project.MPSProject;
@@ -28,7 +31,9 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SModule;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Provides values for {@link com.intellij.execution.Location#DATA_KEY "Location"} key.
@@ -62,6 +67,25 @@ public class LocationRule implements GetDataRule {
       //    with MPSLocation for any DataProvider then?
       return null;
     }
+    final SNodeActionData nad = SNodeActionData.KEY.getData(dataProvider);
+    if (nad != null) {
+      if (nad.isSingle()) {
+        return new MPSLocation(mpsProject, new MPSPsiElement(Collections.singleton(nad.node()), mpsProject));
+      } else {
+        return new MPSLocation(mpsProject, new MPSPsiElement(nad.nodes().collect(Collectors.toList()), mpsProject));
+      }
+    }
+    final SModelActionData mad = SModelActionData.KEY.getData(dataProvider);
+    if (mad != null && mad.isSingle()) {
+      return new MPSLocation(mpsProject, new MPSPsiElement(mad.model(), mpsProject));
+    }
+    final SModuleActionData modp = SModuleActionData.KEY.getData(dataProvider);
+    if (modp != null && modp.isSingle()) {
+      return new MPSLocation(mpsProject, new MPSPsiElement(modp.module(), mpsProject));
+    }
+
+    // FIXME remove legacy keys once 2021.3 is out (left for compatibility with foreign providers not yet capable to
+    //       answer with S*ActionData. Just don't forget to keep default case with mpsProject only
     return new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(() -> {
       List<SNode> nodes = MPSDataKeys.NODES.getData(dataProvider);
       if (nodes != null && nodes.size() > 1) {
