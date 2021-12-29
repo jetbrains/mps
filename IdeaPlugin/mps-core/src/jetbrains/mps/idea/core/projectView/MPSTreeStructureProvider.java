@@ -271,6 +271,9 @@ public class MPSTreeStructureProvider implements SelectableTreeStructureProvider
     // FIXME remove legacy NODE, MODEL and MODULE DataKeys
     if (MPSCommonDataKeys.NODE.is(dataName)) {
       final SNodeReference nr = getNode(selectedNode);
+      if (nr == null) {
+        return null;
+      }
       final SRepository repository = ProjectHelper.getProjectRepository(selectedNode.getProject());
       return new ModelAccessHelper(repository).runReadAction(() -> nr.resolve(repository));
     }
