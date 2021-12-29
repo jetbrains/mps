@@ -200,9 +200,10 @@ public class GenSourcesAndCompilerXmlGenerationTest {
     names.add("collections-runtime");
     // j.m.references.Reference is in use from [kernel]SPropertyOperations
     names.add("baseLanguage-runtime"); // this one I'd like get rid of
-    // ClassPathReader, ClasssType, SystemInfo from [startup-util] are in use from [kernel].
-    // No idea why the module is not under core/
-    names.add("startup-util");
+    // ClassPathReader, ClasssType, SystemInfo from [boot-util] are in use from [kernel].
+    // modules are not in core, they essentially are allowed to be used by any code which starts MPS, particularly
+    // lightweight implementation like we have in ant integration
+    names.add("boot-util");
     for (IDEAModule m : coreModules) {
       if (names.containsAll(m.compileDependencies())) {
         continue;
