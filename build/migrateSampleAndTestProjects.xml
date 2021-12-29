@@ -43,7 +43,7 @@
   </dirset>
 
   <target name="migrateSampleProjects">
-    <migrate mpsHome="${mps_home}" makeDistribModules="false">
+    <migrate mpsHome="${mps_home}" makeDistribModules="false" autoPluginDiscovery="true">
       <dirset refid="samples"/>
       <jvmargs>
         <arg value="-Xmx1200m" />
@@ -52,7 +52,7 @@
   </target>
 
   <target name="migrateTestProjects">
-    <migrate mpsHome="${mps_home}" makeDistribModules="false">
+    <migrate mpsHome="${mps_home}" makeDistribModules="false" autoPluginDiscovery="true">
       <project path="${basedir}/languages/languageDesign/generator/project.xmodel.test1"/>
       <project path="${basedir}/testbench/testsolutions/closures.test"/>
       <project path="${basedir}/testbench/modules/build.mps.runner.test/project"/>
