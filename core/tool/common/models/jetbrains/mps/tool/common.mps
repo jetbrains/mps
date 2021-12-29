@@ -1480,7 +1480,7 @@
               <ref role="3cqZAo" node="6aGZllYSCBv" resolve="myStartupData" />
             </node>
             <node concept="liA8E" id="5P325eDnbjh" role="2OqNvi">
-              <ref role="37wK5l" node="5P325eDlStb" resolve="setLoadAllBundledPlugins" />
+              <ref role="37wK5l" node="5P325eDlStb" resolve="setAutomaticPLuginDiscoveryMode" />
             </node>
           </node>
         </node>
@@ -3469,7 +3469,7 @@
             <node concept="liA8E" id="6DTB6TKeFfP" role="2OqNvi">
               <ref role="37wK5l" to="mmaq:~Element.setAttribute(java.lang.String,java.lang.String)" resolve="setAttribute" />
               <node concept="37vLTw" id="6DTB6TKf4Qp" role="37wK5m">
-                <ref role="3cqZAo" node="6DTB6TKevyH" resolve="ELEM_PLUGIN_AUTO_DISCOVERY_MODE" />
+                <ref role="3cqZAo" node="6DTB6TKevyH" resolve="PROP_PLUGIN_AUTO_DISCOVERY_MODE" />
               </node>
               <node concept="2YIFZM" id="6DTB6TKgC8M" role="37wK5m">
                 <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean)" resolve="toString" />
@@ -5139,7 +5139,7 @@
               <property role="3clFbU" value="true" />
             </node>
             <node concept="37vLTw" id="5P325eDm2im" role="37vLTJ">
-              <ref role="3cqZAo" node="5P325eDltPp" resolve="myLoadAllBundledPlugins" />
+              <ref role="3cqZAo" node="5P325eDltPp" resolve="myAutomaticPluginDiscoveryMode" />
             </node>
           </node>
         </node>

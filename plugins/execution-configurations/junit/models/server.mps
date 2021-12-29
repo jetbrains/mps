@@ -1463,7 +1463,7 @@
               <ref role="3uigEE" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
             </node>
             <node concept="2YIFZM" id="1_D5Bk1SJqS" role="33vP2m">
-              <ref role="37wK5l" to="79ha:2$4oShLawGj" resolve="defaultConfigWithBundledPlugins" />
+              <ref role="37wK5l" to="79ha:2$4oShLawGj" resolve="defaultConfigWithAutoDiscoveryPluginsMode" />
               <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
             </node>
           </node>
