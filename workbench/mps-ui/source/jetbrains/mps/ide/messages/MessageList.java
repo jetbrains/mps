@@ -325,7 +325,7 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
     group.add(new ClearAction());
 
     myToolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, group, false);
-
+    myToolbar.setTargetComponent(myComponent);
     myComponent.setToolbar(myToolbar.getComponent());
     final JScrollPane scrollPane = ScrollPaneFactory.createScrollPane(myList, true);
     // Add MouseWheelListener to scrollPane instead of myList itself, because otherwise scrollPane default behaviour will be blocked
