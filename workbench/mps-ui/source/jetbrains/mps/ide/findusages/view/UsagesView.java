@@ -137,16 +137,18 @@ public class UsagesView implements IExternalizeable {
 
     myOccurrenceNavigator = new OccurenceNavigatorSupport(myTreeComponent.getTree()) {
       @Override
-      protected Navigatable createDescriptorForNode(DefaultMutableTreeNode node) {
+      protected Navigatable createDescriptorForNode(@NotNull DefaultMutableTreeNode node) {
         Navigatable n = myTreeComponent.getTree().toNavigatable(node);
         return n != null && n.canNavigate() ? n : null;
       }
 
+      @NotNull
       @Override
       public String getNextOccurenceActionName() {
         return UsageViewBundle.message("action.next.occurrence");
       }
 
+      @NotNull
       @Override
       public String getPreviousOccurenceActionName() {
         return UsageViewBundle.message("action.previous.occurrence");
@@ -259,8 +261,7 @@ public class UsagesView implements IExternalizeable {
   /**
    * the need to implement OccurenceNavigator is unfortunate consequence of IDEA approach to discover one
    * using awt.Component hierarchy, see {@code OccurenceNavigatorActionBase#getNavigator()} implementation.
-   * Even though MPS controls the way OccurenceNavigator is discovered (e.g. check {@link InspectorRespectingPreviousOccurrenceAction}),
-   * it seems unreasonable to introduce own mechanism in addition to IDEA's.
+   * @see com.intellij.usages.impl.UsageViewImpl, we are doing the same
    */
   private class RootPanel extends JPanel implements DataProvider, OccurenceNavigator {
     public RootPanel() {
@@ -269,7 +270,7 @@ public class UsagesView implements IExternalizeable {
 
     @Nullable
     @Override
-    public Object getData(@NonNls String dataId) {
+    public Object getData(@NotNull @NonNls String dataId) {
       if (PlatformDataKeys.HELP_ID.is(dataId)) {
         return "ideaInterface.usagesView";
       }

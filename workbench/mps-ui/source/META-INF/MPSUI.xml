@@ -46,10 +46,6 @@
       </action>
       <action id="jetbrains.mps.ui.usage.tree.selected-only" text="Include selected only" class="jetbrains.mps.ide.findusages.view.SelectedOnlyAction"/>
     </group>
-    <action id="PreviousOccurence" class="jetbrains.mps.ide.findusages.view.InspectorRespectingPreviousOccurrenceAction"
-            icon="AllIcons.Actions.PreviousOccurence" overrides="true"/>
-    <action id="NextOccurence" class="jetbrains.mps.ide.findusages.view.InspectorRespectingNextOccurrenceAction"
-            icon="AllIcons.Actions.NextOccurence" overrides="true"/>
   </actions>
 
   <extensions defaultExtensionNs="com.intellij">
