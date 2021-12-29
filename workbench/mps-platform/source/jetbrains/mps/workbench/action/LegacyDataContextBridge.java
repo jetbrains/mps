@@ -15,6 +15,8 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -84,7 +86,18 @@ final class LegacyDataContextBridge implements DataContext {
           myCache.put(dataId, rv);
           return (T) rv;
         }
-        if (MPSCommonDataKeys.NODES.is(dataId) && !newData.isSingle()) {
+        if (MPSCommonDataKeys.NODES.is(dataId)) {
+          // clients requesting NODES are fine with collection of size == 1 (e.g. SafeDelete action)
+          if (newData.isSingle()) {
+            final SNode nn = newData.node().resolve(myRepository);
+            if (nn == null) {
+              // just in case
+              return null;
+            }
+            final List<SNode> rv = Collections.singletonList(nn);
+            // myCache.put(dataId, rv);
+            return (T) rv;
+          }
           return (T) newData.nodes().map(r -> r.resolve(myRepository)).dropWhile(Objects::isNull).collect(Collectors.toList());
         }
       } // else fallback, try original key
