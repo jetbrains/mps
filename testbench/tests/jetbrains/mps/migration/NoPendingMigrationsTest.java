@@ -33,6 +33,7 @@ import java.util.stream.Collectors;
 
 public class NoPendingMigrationsTest extends BaseProjectsTest {
   private final static Logger LOG = LogManager.getLogger(NoPendingMigrationsTest.class);
+  private static final String MARKER_FILE_NAME = ".allow-pending-migrations";
 
   public NoPendingMigrationsTest(String projectDir) {
     super(projectDir);
@@ -42,8 +43,8 @@ public class NoPendingMigrationsTest extends BaseProjectsTest {
   public void noMigrationNeeded() {
     VirtualFile projectDir = LocalFileSystem.getInstance().findFileByPath(getProjectDir());
     assert projectDir != null;
-    if (projectDir.findChild(".allow-pending-migrations") != null) {
-      LOG.info("Project " + projectDir.getName() + ": migrations are allowed (.am file is present in project dir)");
+    if (projectDir.findChild(MARKER_FILE_NAME) != null) {
+      LOG.info("Project " + projectDir.getName() + ": automatic migrations are not allowed (" + MARKER_FILE_NAME + " file is present in project dir)");
       return;
     } else {
       LOG.info("Project " + projectDir.getName() + ": should be tested");

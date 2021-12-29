@@ -15,6 +15,7 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import java.io.File;
+import java.nio.file.Files;
 import jetbrains.mps.project.Project;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -29,6 +30,8 @@ import java.io.IOException;
 
 public class MigrationWorker extends WorkerBase {
   private static final String TASK_EXEC_CLASS = "jetbrains.mps.ide.migration.AntTaskExecutionUtil";
+
+  private static final String MARKER_FILE_NAME = ".allow-pending-migrations";
 
   public MigrationWorker(Script whatToDo) {
     super(whatToDo);
@@ -67,6 +70,13 @@ public class MigrationWorker extends WorkerBase {
     final SModuleReference execClassModule = PersistenceFacade.getInstance().createModuleReference("a5b1c28d-abeb-49a6-a58c-559039616d64(jetbrains.mps.migration.component)");
 
     for (File file : myWhatToDo.getMPSProjectFiles()) {
+      // fixme duplicate in NoPendingMigrationTest    
+      if (Files.exists(file.toPath().resolve(MARKER_FILE_NAME))) {
+        info("Project " + file.getName() + ": automatic migrations are not allowed (" + MARKER_FILE_NAME + " file is present in project dir)");
+
+        continue;
+      }
+
       final Project[] container = new Project[1];
       container[0] = myEnvironment.openProject(file);
       final Project project = container[0];

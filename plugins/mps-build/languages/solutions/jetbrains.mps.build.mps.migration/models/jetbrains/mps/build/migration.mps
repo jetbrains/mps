@@ -5,6 +5,8 @@
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
+    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
+    <use id="446c26eb-2b7b-4bf0-9b35-f83fa582753e" name="jetbrains.mps.lang.modelapi" version="0" />
   </languages>
   <imports>
     <import index="cky9" ref="r:1d4e7c57-c144-4228-9dec-8180ddf9f0ee(jetbrains.mps.tool.environment)" />
@@ -22,6 +24,7 @@
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="3qmy" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.classloading(MPS.Core/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
+    <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -196,6 +199,7 @@
         <child id="1163668922816" name="ifTrue" index="3K4E3e" />
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
+      <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
@@ -246,6 +250,16 @@
       <node concept="17QB3L" id="75eqTYkqm2M" role="1tU5fm" />
       <node concept="Xl_RD" id="75eqTYkqm2N" role="33vP2m">
         <property role="Xl_RC" value="jetbrains.mps.ide.migration.AntTaskExecutionUtil" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="2btCvgzE6hp" role="jymVt" />
+    <node concept="Wx3nA" id="2btCvgzEb8k" role="jymVt">
+      <property role="TrG5h" value="MARKER_FILE_NAME" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="2btCvgzE6x$" role="1B3o_S" />
+      <node concept="17QB3L" id="2btCvgzE95o" role="1tU5fm" />
+      <node concept="Xl_RD" id="2btCvgzEdH0" role="33vP2m">
+        <property role="Xl_RC" value=".allow-pending-migrations" />
       </node>
     </node>
     <node concept="2tJIrI" id="75eqTYkqemK" role="jymVt" />
@@ -620,6 +634,94 @@
             </node>
           </node>
           <node concept="3clFbS" id="KL8Aqll4rl" role="2LFqv$">
+            <node concept="3SKdUt" id="2btCvgzExG6" role="3cqZAp">
+              <node concept="1PaTwC" id="2btCvgzExG7" role="1aUNEU">
+                <node concept="3oM_SD" id="2btCvgzEzm0" role="1PaTwD">
+                  <property role="3oM_SC" value="fixme" />
+                </node>
+                <node concept="3oM_SD" id="2btCvgzEzmt" role="1PaTwD">
+                  <property role="3oM_SC" value="duplicate" />
+                </node>
+                <node concept="3oM_SD" id="2btCvgzEzmV" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="2btCvgzEzzt" role="1PaTwD">
+                  <property role="3oM_SC" value="NoPendingMigrationTest" />
+                </node>
+                <node concept="3oM_SD" id="2btCvgzEAYc" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="2btCvgzEAYd" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="2btCvgzEAYe" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+                <node concept="3oM_SD" id="2btCvgzEAYf" role="1PaTwD">
+                  <property role="3oM_SC" value="" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="2btCvgzDJ0Q" role="3cqZAp">
+              <node concept="2YIFZM" id="2btCvgzDWxU" role="3clFbw">
+                <ref role="37wK5l" to="eoo2:~Files.exists(java.nio.file.Path,java.nio.file.LinkOption...)" resolve="exists" />
+                <ref role="1Pybhc" to="eoo2:~Files" resolve="Files" />
+                <node concept="2OqwBi" id="2btCvgzE2P0" role="37wK5m">
+                  <node concept="2OqwBi" id="2btCvgzDZsL" role="2Oq$k0">
+                    <node concept="37vLTw" id="2btCvgzDXW0" role="2Oq$k0">
+                      <ref role="3cqZAo" node="KL8Aqll4rj" resolve="file" />
+                    </node>
+                    <node concept="liA8E" id="2btCvgzE0yS" role="2OqNvi">
+                      <ref role="37wK5l" to="guwi:~File.toPath()" resolve="toPath" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="2btCvgzE4$z" role="2OqNvi">
+                    <ref role="37wK5l" to="eoo2:~Path.resolve(java.lang.String)" resolve="resolve" />
+                    <node concept="37vLTw" id="2btCvgzElXW" role="37wK5m">
+                      <ref role="3cqZAo" node="2btCvgzEb8k" resolve="MARKER_FILE_NAME" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="2btCvgzDJ0X" role="3clFbx">
+                <node concept="3clFbF" id="2btCvgzDJ0Y" role="3cqZAp">
+                  <node concept="1rXfSq" id="2btCvgzDJ0Z" role="3clFbG">
+                    <ref role="37wK5l" to="jo3e:KL8Aqlj5zc" resolve="info" />
+                    <node concept="3cpWs3" id="2btCvgzDJ10" role="37wK5m">
+                      <node concept="3cpWs3" id="2btCvgzDJ11" role="3uHU7B">
+                        <node concept="3cpWs3" id="2btCvgzDJ12" role="3uHU7B">
+                          <node concept="3cpWs3" id="2btCvgzDJ13" role="3uHU7B">
+                            <node concept="Xl_RD" id="2btCvgzDJ14" role="3uHU7B">
+                              <property role="Xl_RC" value="Project " />
+                            </node>
+                            <node concept="2OqwBi" id="2btCvgzEqr2" role="3uHU7w">
+                              <node concept="37vLTw" id="2btCvgzEoTg" role="2Oq$k0">
+                                <ref role="3cqZAo" node="KL8Aqll4rj" resolve="file" />
+                              </node>
+                              <node concept="liA8E" id="2btCvgzErI2" role="2OqNvi">
+                                <ref role="37wK5l" to="guwi:~File.getName()" resolve="getName" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="Xl_RD" id="2btCvgzDJ16" role="3uHU7w">
+                            <property role="Xl_RC" value=": automatic migrations are not allowed (" />
+                          </node>
+                        </node>
+                        <node concept="37vLTw" id="2btCvgzDJ17" role="3uHU7w">
+                          <ref role="3cqZAo" node="2btCvgzEb8k" resolve="MARKER_FILE_NAME" />
+                        </node>
+                      </node>
+                      <node concept="Xl_RD" id="2btCvgzDJ18" role="3uHU7w">
+                        <property role="Xl_RC" value=" file is present in project dir)" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbH" id="2btCvgzDLkq" role="3cqZAp" />
+                <node concept="3N13vt" id="2btCvgzDJ19" role="3cqZAp" />
+              </node>
+            </node>
+            <node concept="3clFbH" id="2btCvgzDGzk" role="3cqZAp" />
             <node concept="3cpWs8" id="srfjDK0EqB" role="3cqZAp">
               <node concept="3cpWsn" id="srfjDK0EqC" role="3cpWs9">
                 <property role="TrG5h" value="container" />

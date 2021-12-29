@@ -43,8 +43,6 @@
   </dirset>
 
   <target name="migrateSampleProjects">
-    <echo message="IMPORTANT: This dask doesn't ignore projects with .allow-pending-migrations file (see NoPendingMigrationTest"/>
-    <echo message="  Either revert results in these projects, or use explicit includes attribute in dirset"/>
     <migrate mpsHome="${mps_home}" makeDistribModules="false">
       <dirset refid="samples"/>
       <jvmargs>
