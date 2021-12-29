@@ -2,8 +2,12 @@
   <library name="idea-runtime">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/idea_rt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/3rd-party-rt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/3rd-party.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/3rd-party.jar!/" />
+    </SOURCES>
   </library>
 </component>
