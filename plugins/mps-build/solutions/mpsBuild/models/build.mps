@@ -4684,6 +4684,11 @@
             <ref role="3bR37D" node="44LXwdzyvTi" resolve="Annotations" />
           </node>
         </node>
+        <node concept="1SiIV0" id="6$Oqbzwqh0U" role="3bR37C">
+          <node concept="3bR9La" id="6$OqbzwqhmQ" role="1SiIV1">
+            <ref role="3bR37D" node="4m1I2e4jdlp" resolve="MPS.Boot" />
+          </node>
+        </node>
         <node concept="1BupzO" id="73GUf$umm7y" role="3bR31x">
           <property role="3ZfqAx" value="models" />
           <property role="1Hdu6h" value="true" />
