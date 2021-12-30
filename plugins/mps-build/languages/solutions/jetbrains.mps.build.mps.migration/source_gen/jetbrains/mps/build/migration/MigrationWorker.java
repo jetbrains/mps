@@ -76,7 +76,7 @@ public class MigrationWorker extends WorkerBase {
 
     for (File file : myWhatToDo.getMPSProjectFiles()) {
       // fixme duplicate in NoPendingMigrationTest    
-      if (!(taskProps.getForceFlag()) || Files.exists(file.toPath().resolve(MARKER_FILE_NAME))) {
+      if (!(taskProps.getForceFlag()) && Files.exists(file.toPath().resolve(MARKER_FILE_NAME))) {
         info("Project " + file.getName() + ": automatic migrations are not allowed (" + MARKER_FILE_NAME + " file is present in project dir)");
 
         continue;

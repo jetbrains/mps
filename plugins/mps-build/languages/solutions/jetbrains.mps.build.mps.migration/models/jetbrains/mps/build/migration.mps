@@ -28,7 +28,6 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
-      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
@@ -704,14 +703,14 @@
               </node>
             </node>
             <node concept="3clFbJ" id="2btCvgzDJ0Q" role="3cqZAp">
-              <node concept="22lmx$" id="3nVsxxCIl4w" role="3clFbw">
+              <node concept="1Wc70l" id="5Cf62BAT47d" role="3clFbw">
                 <node concept="3fqX7Q" id="3nVsxxCImZm" role="3uHU7B">
                   <node concept="2OqwBi" id="3nVsxxCIr3S" role="3fr31v">
                     <node concept="37vLTw" id="3nVsxxCIpbB" role="2Oq$k0">
                       <ref role="3cqZAo" node="3vL64Mrye0t" resolve="taskProps" />
                     </node>
                     <node concept="liA8E" id="3nVsxxCIwq1" role="2OqNvi">
-                      <ref role="37wK5l" to="asz6:3nVsxxCHL0w" resolve="force" />
+                      <ref role="37wK5l" to="asz6:3nVsxxCHL0w" resolve="getForceFlag" />
                     </node>
                   </node>
                 </node>
