@@ -130,6 +130,7 @@ public class UnitTestViewComponent extends JPanel implements Disposable {
     DefaultActionGroup group = new DefaultActionGroup(console.createConsoleActions());
     ActionManager manager = ActionManager.getInstance();
     ActionToolbar toolbar = manager.createActionToolbar("TestRunnerResults", group, false);
+    toolbar.setTargetComponent(console.getComponent());
     toolbar.setLayoutPolicy(ActionToolbar.WRAP_LAYOUT_POLICY);
     return toolbar.getComponent();
   }
