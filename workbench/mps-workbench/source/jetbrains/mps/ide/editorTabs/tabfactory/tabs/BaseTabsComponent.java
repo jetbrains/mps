@@ -142,6 +142,7 @@ public abstract class BaseTabsComponent implements TabsComponent {
     }
   }
 
+  // here we create all the tab editors (invoking <code>TabDescriptor.getNodes</code>)
   protected TabEditorLayout updateDocumentsAndNodes() {
     List<Document> editedDocumentsNew = new ArrayList<>();
 

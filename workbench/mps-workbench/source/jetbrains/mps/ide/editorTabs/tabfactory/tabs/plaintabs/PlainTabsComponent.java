@@ -37,6 +37,7 @@ import jetbrains.mps.plugins.relations.RelationDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.JComponent;
 import java.awt.Color;
@@ -46,6 +47,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class PlainTabsComponent extends BaseTabsComponent {
   private final List<PlainEditorTab> myRealTabs = new ArrayList<>();
@@ -187,13 +190,43 @@ public class PlainTabsComponent extends BaseTabsComponent {
     updateTabs(Collections.singletonList(reference));
   }
 
-  @Override
-  public synchronized void updateTabs(Collection<SNodeReference> changedRoots) {
-    final SNodeReference reference = getEditedNode() != null ? getEditedNode() : myBaseNodeRef;
-    if (isDisposed() || !changedRoots.contains(reference)) {
-      return;
+  public boolean needUpdateTabs(Collection<SNodeReference> changedRootRefs) {
+    if (isDisposed()) {
+      return false;
     }
 
+    SNodeReference editedNode = getEditedNode();
+    var repository = getProject().getRepository();
+    boolean needUpdate = false;
+    needUpdate |= (editedNode != null && changedRootRefs.contains(editedNode));
+    needUpdate |= changedRootRefs.contains(myBaseNodeRef);
+    boolean realTabsContainChangedRoots = myRealTabs.stream()
+                                                    .map(PlainEditorTab::getNode)
+                                                    .anyMatch(changedRootRefs::contains);
+    needUpdate |= realTabsContainChangedRoots;
+
+    Set<SNode> changedRoots = changedRootRefs.stream()
+                                             .map(nref -> nref.resolve(repository))
+                                             .dropWhile(Objects::isNull)
+                                             .collect(Collectors.toSet());
+    if (myBaseNodeRef != null) {
+      boolean changedRootsRefersToOurBaseNode = myPossibleTabs.stream()
+                                                              .anyMatch(it -> changedRoots.stream()
+                                                                                          .map(it::getBaseNode)
+                                                                                          .dropWhile(Objects::isNull)
+                                                                                          .map(SNode::getReference)
+                                                                                          .anyMatch(myBaseNodeRef::equals));
+      needUpdate |= changedRootsRefersToOurBaseNode;
+
+    }
+    return needUpdate;
+  }
+
+  @Override
+  public synchronized void updateTabs(Collection<SNodeReference> changedRootRefs) {
+    if (!needUpdateTabs(changedRootRefs)) {
+      return;
+    }
     SNodeReference selectedNode = null;
 
     int selected = myTabs.getTabCount() > 0 ? myTabs.getIndexOf(myTabs.getSelectedInfo()) : -1;
@@ -203,6 +236,7 @@ public class PlainTabsComponent extends BaseTabsComponent {
 
     boolean oldRebuilding = myRebuilding;
     myRebuilding = true;
+    var repository = getProject().getRepository();
     try {
       myTabs.removeAllTabs();
       myRealTabs.clear();
@@ -215,7 +249,7 @@ public class PlainTabsComponent extends BaseTabsComponent {
           for (Entry tabDescriptor : newContent.get(tab)) {
             final PlainEditorTab pet = new PlainEditorTab(tabDescriptor);
             myRealTabs.add(pet);
-            SNode node = pet.getNode().resolve(getProject().getRepository());
+            SNode node = pet.getNode().resolve(repository);
 
             TabInfo info = new TabInfo(getSpacer())
                                .setIcon(GlobalIconManager.getInstance().getIconFor(node))
@@ -239,7 +273,7 @@ public class PlainTabsComponent extends BaseTabsComponent {
 
     boolean selectionRestored = false;
     // selectedNode.resolve() != null even for removed roots because at the moment we get #updateTabs() from commandFinish
-    if (selectedNode != null && selectedNode.resolve(getProject().getRepository()) != null) {
+    if (selectedNode != null && selectedNode.resolve(repository) != null) {
       for (PlainEditorTab tab : myRealTabs) {
         if (selectedNode.equals(tab.getNode())) {
           myTabs.select(myTabs.getTabAt(myRealTabs.indexOf(tab)), true);

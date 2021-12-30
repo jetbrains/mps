@@ -42,9 +42,9 @@ import java.util.HashSet;
  * Listener is shared between multiple editors (one for project) and available as project service
  * <p/>
  * FIXME for the time being, treats any model/root node removal as worth tab rebuild, perhaps shall respect actual documents (TabsComponent#getAllEditedDocuments())
- *
+ * <p>
  * FIXME I don't like the idea of idea service for an otherwise pure-MPS repo listener,
- *    can we address MPS-27686 (6df275a2) in less platform-dependent way?
+ * can we address MPS-27686 (6df275a2) in less platform-dependent way?
  *
  * @author Artem Tikhomirov
  */
@@ -62,6 +62,7 @@ class TabbedEditorsRepoChangeListener extends SRepositoryContentAdapter implemen
 
   public TabbedEditorsRepoChangeListener(com.intellij.openapi.project.Project project) {
     myProject = ProjectHelper.fromIdeaProject(project);
+    attachRepoListener();
   }
 
   @Override
@@ -84,17 +85,11 @@ class TabbedEditorsRepoChangeListener extends SRepositoryContentAdapter implemen
   }
 
   /*package*/ void addTabComponent(@NotNull TabsComponent tabsComponent) {
-    if (myTabsComponents.isEmpty()) {
-      attachRepoListener();
-    }
     myTabsComponents.add(tabsComponent);
   }
 
-  /*package*/ void removeTabComponent (@NotNull TabsComponent tabsComponent) {
+  /*package*/ void removeTabComponent(@NotNull TabsComponent tabsComponent) {
     myTabsComponents.remove(tabsComponent);
-    if (myTabsComponents.isEmpty()) {
-      detachRepoListener();
-    }
   }
 
   @Override
@@ -147,6 +142,9 @@ class TabbedEditorsRepoChangeListener extends SRepositoryContentAdapter implemen
 
   @Override
   public void referenceChanged(@NotNull SReferenceChangeEvent event) {
+    if (event.getOldValue().getTargetNode().getParent() == null) {
+      myChangedRoots.add(event.getOldValue().getTargetNodeReference());
+    }
     if (event.getNewValue().getTargetNode().getParent() == null) {
       myChangedRoots.add(event.getNewValue().getTargetNodeReference());
     }
@@ -161,7 +159,7 @@ class TabbedEditorsRepoChangeListener extends SRepositoryContentAdapter implemen
   public void commandFinished(SRepository repository) {
     if (!myChangedRoots.isEmpty()) {
       for (TabsComponent tabsComponent : myTabsComponents) {
-        tabsComponent.updateTabs();
+        tabsComponent.updateTabs(myChangedRoots);
       }
     }
     myChangedRoots.clear();
