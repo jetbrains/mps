@@ -142,9 +142,6 @@ class TabbedEditorsRepoChangeListener extends SRepositoryContentAdapter implemen
 
   @Override
   public void referenceChanged(@NotNull SReferenceChangeEvent event) {
-    if (event.getOldValue().getTargetNode().getParent() == null) {
-      myChangedRoots.add(event.getOldValue().getTargetNodeReference());
-    }
     if (event.getNewValue().getTargetNode().getParent() == null) {
       myChangedRoots.add(event.getNewValue().getTargetNodeReference());
     }

@@ -39,6 +39,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class ButtonTabsComponent extends BaseTabsComponent {
   private final List<ButtonEditorTab> myRealTabs = new ArrayList<>();
@@ -93,10 +94,14 @@ public class ButtonTabsComponent extends BaseTabsComponent {
     updateTabs(Collections.singletonList(reference));
   }
 
+  @NotNull
+  protected Stream<ButtonEditorTab> getRealTabs() {
+    return myRealTabs.stream();
+  }
+
   @Override
   public void updateTabs(Collection<SNodeReference> changedRoots) {
-    final SNodeReference reference = getEditedNode() != null ? getEditedNode() : myBaseNodeRef;
-    if (isDisposed() || !changedRoots.contains(reference)) {
+    if (!needUpdateTabs(changedRoots)) {
       return;
     }
 

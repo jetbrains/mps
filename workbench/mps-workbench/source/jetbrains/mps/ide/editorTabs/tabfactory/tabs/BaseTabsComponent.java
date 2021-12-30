@@ -40,7 +40,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * This class expects subclasses to supply single component to serve UI functions. Subclasses shall use {@link #setContent(JComponent)}
@@ -115,6 +118,39 @@ public abstract class BaseTabsComponent implements TabsComponent {
     return myEditedDocuments;
   }
 
+  protected boolean needUpdateTabs(Collection<SNodeReference> changedRootRefs) {
+    if (isDisposed()) {
+      return false;
+    }
+
+    SNodeReference editedNode = getEditedNode();
+    var repository = getProject().getRepository();
+    boolean needUpdate = false;
+    needUpdate |= (editedNode != null && changedRootRefs.contains(editedNode));
+    needUpdate |= changedRootRefs.contains(myBaseNodeRef);
+    boolean realTabsContainChangedRoots = getRealTabs().flatMap(AbstractEditorTab::getNodes)
+                                                       .anyMatch(changedRootRefs::contains);
+    needUpdate |= realTabsContainChangedRoots;
+
+    Set<SNode> changedRoots = changedRootRefs.stream()
+                                             .map(nref -> nref.resolve(repository))
+                                             .dropWhile(Objects::isNull)
+                                             .collect(Collectors.toSet());
+    if (myBaseNodeRef != null) {
+      boolean changedRootsRefersToOurBaseNode = myPossibleTabs.stream()
+                                                              .anyMatch(it -> changedRoots.stream()
+                                                                                          .map(it::getBaseNode)
+                                                                                          .dropWhile(Objects::isNull)
+                                                                                          .map(SNode::getReference)
+                                                                                          .anyMatch(myBaseNodeRef::equals));
+      needUpdate |= changedRootsRefersToOurBaseNode;
+
+    }
+    return needUpdate;
+  }
+
+  protected abstract Stream<? extends AbstractEditorTab> getRealTabs();
+
   @Override
   public void editNode(SNodeReference node) {
     myLastNode = node;
@@ -162,7 +198,7 @@ public abstract class BaseTabsComponent implements TabsComponent {
       List<SNode> nodes;
       try {
         nodes = d.getNodes(baseNode);
-      } catch (Throwable t){
+      } catch (Throwable t) {
         LOG.error("Exception in extension: ", t);
         nodes = Collections.emptyList();
       }

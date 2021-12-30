@@ -37,7 +37,6 @@ import jetbrains.mps.plugins.relations.RelationDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import org.jetbrains.mps.openapi.module.SRepository;
 
 import javax.swing.JComponent;
 import java.awt.Color;
@@ -47,7 +46,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class PlainTabsComponent extends BaseTabsComponent {
@@ -84,6 +82,10 @@ public class PlainTabsComponent extends BaseTabsComponent {
     });
   }
 
+  @NotNull
+  protected Stream<PlainEditorTab> getRealTabs() {
+    return myRealTabs.stream();
+  }
 
   private synchronized void onTabIndexChange(boolean userAction) {
     if (isDisposed() || myRebuilding) {
@@ -188,38 +190,6 @@ public class PlainTabsComponent extends BaseTabsComponent {
     // Emulate old behaviour - always update
     final SNodeReference reference = getEditedNode() != null ? getEditedNode() : myBaseNodeRef;
     updateTabs(Collections.singletonList(reference));
-  }
-
-  public boolean needUpdateTabs(Collection<SNodeReference> changedRootRefs) {
-    if (isDisposed()) {
-      return false;
-    }
-
-    SNodeReference editedNode = getEditedNode();
-    var repository = getProject().getRepository();
-    boolean needUpdate = false;
-    needUpdate |= (editedNode != null && changedRootRefs.contains(editedNode));
-    needUpdate |= changedRootRefs.contains(myBaseNodeRef);
-    boolean realTabsContainChangedRoots = myRealTabs.stream()
-                                                    .map(PlainEditorTab::getNode)
-                                                    .anyMatch(changedRootRefs::contains);
-    needUpdate |= realTabsContainChangedRoots;
-
-    Set<SNode> changedRoots = changedRootRefs.stream()
-                                             .map(nref -> nref.resolve(repository))
-                                             .dropWhile(Objects::isNull)
-                                             .collect(Collectors.toSet());
-    if (myBaseNodeRef != null) {
-      boolean changedRootsRefersToOurBaseNode = myPossibleTabs.stream()
-                                                              .anyMatch(it -> changedRoots.stream()
-                                                                                          .map(it::getBaseNode)
-                                                                                          .dropWhile(Objects::isNull)
-                                                                                          .map(SNode::getReference)
-                                                                                          .anyMatch(myBaseNodeRef::equals));
-      needUpdate |= changedRootsRefersToOurBaseNode;
-
-    }
-    return needUpdate;
   }
 
   @Override
