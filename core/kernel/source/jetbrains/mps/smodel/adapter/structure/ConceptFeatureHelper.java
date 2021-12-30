@@ -23,13 +23,13 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public class ConceptFeatureHelper {
   @NotNull
-  public static SAbstractConcept getOwner(SConceptFeatureId featureId) {
+  public static SAbstractConcept getOwner(@NotNull SConceptFeatureId featureId) {
     ConceptDescriptor conceptDescriptor = getOwnerDescriptor(featureId);
     return MetaAdapterFactory.getAbstractConcept(conceptDescriptor);
   }
 
   @NotNull
-  public static ConceptDescriptor getOwnerDescriptor(SConceptFeatureId featureId) {
+  public static ConceptDescriptor getOwnerDescriptor(@NotNull SConceptFeatureId featureId) {
     return ConceptRegistry.getInstance().getConceptDescriptor(featureId.getConceptId());
   }
 }
