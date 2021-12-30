@@ -11304,6 +11304,15 @@
         <property role="Xl_RC" value="migrate.make-distrib-modules" />
       </node>
     </node>
+    <node concept="Wx3nA" id="3nVsxxCHLWm" role="jymVt">
+      <property role="TrG5h" value="FORCE" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="3nVsxxCHLWn" role="1B3o_S" />
+      <node concept="17QB3L" id="3nVsxxCHLWo" role="1tU5fm" />
+      <node concept="Xl_RD" id="3nVsxxCHLWp" role="33vP2m">
+        <property role="Xl_RC" value="migrate.force" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="3vL64Mrnfx1" role="jymVt" />
     <node concept="312cEg" id="3vL64Mrnfwb" role="jymVt">
       <property role="TrG5h" value="myScript" />
@@ -11338,7 +11347,7 @@
     </node>
     <node concept="2tJIrI" id="3vL64MrnfGZ" role="jymVt" />
     <node concept="3clFb_" id="3vL64MrnfIL" role="jymVt">
-      <property role="TrG5h" value="preCheckFailureHalt" />
+      <property role="TrG5h" value="setPreCheckFailureHalt" />
       <node concept="3uibUv" id="3vL64MrnfKs" role="3clF45">
         <ref role="3uigEE" node="3vL64MrmMR4" resolve="MigrateTaskProperties" />
       </node>
@@ -11373,8 +11382,9 @@
         <node concept="10P_77" id="3vL64MrngHu" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3nVsxxCHMjo" role="jymVt" />
     <node concept="3clFb_" id="3vL64Mrni5x" role="jymVt">
-      <property role="TrG5h" value="isPreCheckFailureHalt" />
+      <property role="TrG5h" value="getPreCheckFailureHalt" />
       <node concept="3clFbS" id="3vL64Mrni5$" role="3clF47">
         <node concept="3cpWs6" id="3vL64Mrni9Q" role="3cqZAp">
           <node concept="2YIFZM" id="3vL64Mrnjdz" role="3cqZAk">
@@ -11399,7 +11409,7 @@
     </node>
     <node concept="2tJIrI" id="3vL64MruuXu" role="jymVt" />
     <node concept="3clFb_" id="3vL64Mruv9h" role="jymVt">
-      <property role="TrG5h" value="outputPropertyFile" />
+      <property role="TrG5h" value="setOutputPropertyFile" />
       <node concept="3uibUv" id="3vL64MruvgG" role="3clF45">
         <ref role="3uigEE" node="3vL64MrmMR4" resolve="MigrateTaskProperties" />
       </node>
@@ -11437,8 +11447,9 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3nVsxxCHMjp" role="jymVt" />
     <node concept="3clFb_" id="3vL64MruvTT" role="jymVt">
-      <property role="TrG5h" value="outputPropertyFile" />
+      <property role="TrG5h" value="getOutputPropertyFile" />
       <node concept="3uibUv" id="3vL64MruwEe" role="3clF45">
         <ref role="3uigEE" to="guwi:~File" resolve="File" />
       </node>
@@ -11485,7 +11496,7 @@
     </node>
     <node concept="2tJIrI" id="3vL64MruPMR" role="jymVt" />
     <node concept="3clFb_" id="3vL64MruPjf" role="jymVt">
-      <property role="TrG5h" value="outputPropertyErrorKey" />
+      <property role="TrG5h" value="setOutputPropertyErrorKey" />
       <node concept="3uibUv" id="3vL64MruPti" role="3clF45">
         <ref role="3uigEE" node="3vL64MrmMR4" resolve="MigrateTaskProperties" />
       </node>
@@ -11516,8 +11527,9 @@
         <node concept="17QB3L" id="3vL64MruQtP" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3nVsxxCHMjq" role="jymVt" />
     <node concept="3clFb_" id="3vL64MruUv4" role="jymVt">
-      <property role="TrG5h" value="outputPropertyErrorKey" />
+      <property role="TrG5h" value="getOutputPropertyErrorKey" />
       <node concept="3clFbS" id="3vL64MruUv7" role="3clF47">
         <node concept="3cpWs6" id="3vL64MruUMS" role="3cqZAp">
           <node concept="2OqwBi" id="3vL64MruV63" role="3cqZAk">
@@ -11538,7 +11550,7 @@
     </node>
     <node concept="2tJIrI" id="3vL64MruOJr" role="jymVt" />
     <node concept="3clFb_" id="3vL64MrATMR" role="jymVt">
-      <property role="TrG5h" value="makeDistribModules" />
+      <property role="TrG5h" value="setMakeDistribModules" />
       <node concept="3uibUv" id="3vL64MrAU0y" role="3clF45">
         <ref role="3uigEE" node="3vL64MrmMR4" resolve="MigrateTaskProperties" />
       </node>
@@ -11616,8 +11628,9 @@
         <node concept="10P_77" id="3vL64MrAUCF" role="1tU5fm" />
       </node>
     </node>
+    <node concept="2tJIrI" id="3nVsxxCHKfU" role="jymVt" />
     <node concept="3clFb_" id="3vL64MrAXHI" role="jymVt">
-      <property role="TrG5h" value="makeDistribModules" />
+      <property role="TrG5h" value="getMakeDistribModules" />
       <node concept="10P_77" id="3vL64MrAY3l" role="3clF45" />
       <node concept="3Tm1VV" id="3vL64MrAXHL" role="1B3o_S" />
       <node concept="3clFbS" id="3vL64MrAXHM" role="3clF47">
@@ -11633,6 +11646,68 @@
                 <ref role="37wK5l" node="KL8Aql8eBs" resolve="getProperty" />
                 <node concept="37vLTw" id="3vL64MrAZdV" role="37wK5m">
                   <ref role="3cqZAo" node="3vL64MrAPTs" resolve="MAKE_DISTRIB_MODULES" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3nVsxxCHKyn" role="jymVt" />
+    <node concept="3clFb_" id="3nVsxxCHJRc" role="jymVt">
+      <property role="TrG5h" value="setForceFlag" />
+      <node concept="3uibUv" id="3nVsxxCHJRd" role="3clF45">
+        <ref role="3uigEE" node="3vL64MrmMR4" resolve="MigrateTaskProperties" />
+      </node>
+      <node concept="3Tm1VV" id="3nVsxxCHJRe" role="1B3o_S" />
+      <node concept="3clFbS" id="3nVsxxCHJRf" role="3clF47">
+        <node concept="3clFbF" id="3nVsxxCHJRv" role="3cqZAp">
+          <node concept="2OqwBi" id="3nVsxxCHJRw" role="3clFbG">
+            <node concept="37vLTw" id="3nVsxxCHJRx" role="2Oq$k0">
+              <ref role="3cqZAo" node="3vL64Mrnfwb" resolve="myScript" />
+            </node>
+            <node concept="liA8E" id="3nVsxxCHJRy" role="2OqNvi">
+              <ref role="37wK5l" node="KL8Aql8eBe" resolve="putProperty" />
+              <node concept="37vLTw" id="3nVsxxCHJRz" role="37wK5m">
+                <ref role="3cqZAo" node="3nVsxxCHLWm" resolve="FORCE" />
+              </node>
+              <node concept="2YIFZM" id="3nVsxxCHJR$" role="37wK5m">
+                <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean)" resolve="toString" />
+                <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+                <node concept="37vLTw" id="3nVsxxCHJR_" role="37wK5m">
+                  <ref role="3cqZAo" node="3nVsxxCHJRC" resolve="value" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="3nVsxxCHJRA" role="3cqZAp">
+          <node concept="Xjq3P" id="3nVsxxCHJRB" role="3cqZAk" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="3nVsxxCHJRC" role="3clF46">
+        <property role="TrG5h" value="value" />
+        <node concept="10P_77" id="3nVsxxCHJRD" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3nVsxxCHLkO" role="jymVt" />
+    <node concept="3clFb_" id="3nVsxxCHL0w" role="jymVt">
+      <property role="TrG5h" value="getForceFlag" />
+      <node concept="10P_77" id="3nVsxxCHL0x" role="3clF45" />
+      <node concept="3Tm1VV" id="3nVsxxCHL0y" role="1B3o_S" />
+      <node concept="3clFbS" id="3nVsxxCHL0z" role="3clF47">
+        <node concept="3cpWs6" id="3nVsxxCHL0$" role="3cqZAp">
+          <node concept="2YIFZM" id="3nVsxxCHL0_" role="3cqZAk">
+            <ref role="37wK5l" to="wyt6:~Boolean.parseBoolean(java.lang.String)" resolve="parseBoolean" />
+            <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+            <node concept="2OqwBi" id="3nVsxxCHL0A" role="37wK5m">
+              <node concept="37vLTw" id="3nVsxxCHL0B" role="2Oq$k0">
+                <ref role="3cqZAo" node="3vL64Mrnfwb" resolve="myScript" />
+              </node>
+              <node concept="liA8E" id="3nVsxxCHL0C" role="2OqNvi">
+                <ref role="37wK5l" node="KL8Aql8eBs" resolve="getProperty" />
+                <node concept="37vLTw" id="3nVsxxCHL0D" role="37wK5m">
+                  <ref role="3cqZAo" node="3nVsxxCHLWm" resolve="FORCE" />
                 </node>
               </node>
             </node>

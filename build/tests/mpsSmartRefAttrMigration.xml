@@ -28,7 +28,7 @@
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path"/>
 
   <target name="check">
-    <migrate project="${test.project}" mpsHome="${mps_home}" makeDistribModules="false">
+    <migrate project="${test.project}" mpsHome="${mps_home}" makeDistribModules="false" force="true">
       <jvmargs>
         <arg value="-Xmx1200m" />
         <arg value="-ea" />

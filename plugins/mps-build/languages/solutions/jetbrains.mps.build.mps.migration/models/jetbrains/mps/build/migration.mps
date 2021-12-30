@@ -28,6 +28,7 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
@@ -148,6 +149,9 @@
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
+      <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
+        <child id="1081516765348" name="expression" index="3fr31v" />
+      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
@@ -700,22 +704,34 @@
               </node>
             </node>
             <node concept="3clFbJ" id="2btCvgzDJ0Q" role="3cqZAp">
-              <node concept="2YIFZM" id="2btCvgzDWxU" role="3clFbw">
-                <ref role="37wK5l" to="eoo2:~Files.exists(java.nio.file.Path,java.nio.file.LinkOption...)" resolve="exists" />
-                <ref role="1Pybhc" to="eoo2:~Files" resolve="Files" />
-                <node concept="2OqwBi" id="2btCvgzE2P0" role="37wK5m">
-                  <node concept="2OqwBi" id="2btCvgzDZsL" role="2Oq$k0">
-                    <node concept="37vLTw" id="2btCvgzDXW0" role="2Oq$k0">
-                      <ref role="3cqZAo" node="KL8Aqll4rj" resolve="file" />
+              <node concept="22lmx$" id="3nVsxxCIl4w" role="3clFbw">
+                <node concept="3fqX7Q" id="3nVsxxCImZm" role="3uHU7B">
+                  <node concept="2OqwBi" id="3nVsxxCIr3S" role="3fr31v">
+                    <node concept="37vLTw" id="3nVsxxCIpbB" role="2Oq$k0">
+                      <ref role="3cqZAo" node="3vL64Mrye0t" resolve="taskProps" />
                     </node>
-                    <node concept="liA8E" id="2btCvgzE0yS" role="2OqNvi">
-                      <ref role="37wK5l" to="guwi:~File.toPath()" resolve="toPath" />
+                    <node concept="liA8E" id="3nVsxxCIwq1" role="2OqNvi">
+                      <ref role="37wK5l" to="asz6:3nVsxxCHL0w" resolve="force" />
                     </node>
                   </node>
-                  <node concept="liA8E" id="2btCvgzE4$z" role="2OqNvi">
-                    <ref role="37wK5l" to="eoo2:~Path.resolve(java.lang.String)" resolve="resolve" />
-                    <node concept="37vLTw" id="2btCvgzElXW" role="37wK5m">
-                      <ref role="3cqZAo" node="2btCvgzEb8k" resolve="MARKER_FILE_NAME" />
+                </node>
+                <node concept="2YIFZM" id="2btCvgzDWxU" role="3uHU7w">
+                  <ref role="37wK5l" to="eoo2:~Files.exists(java.nio.file.Path,java.nio.file.LinkOption...)" resolve="exists" />
+                  <ref role="1Pybhc" to="eoo2:~Files" resolve="Files" />
+                  <node concept="2OqwBi" id="2btCvgzE2P0" role="37wK5m">
+                    <node concept="2OqwBi" id="2btCvgzDZsL" role="2Oq$k0">
+                      <node concept="37vLTw" id="2btCvgzDXW0" role="2Oq$k0">
+                        <ref role="3cqZAo" node="KL8Aqll4rj" resolve="file" />
+                      </node>
+                      <node concept="liA8E" id="2btCvgzE0yS" role="2OqNvi">
+                        <ref role="37wK5l" to="guwi:~File.toPath()" resolve="toPath" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="2btCvgzE4$z" role="2OqNvi">
+                      <ref role="37wK5l" to="eoo2:~Path.resolve(java.lang.String)" resolve="resolve" />
+                      <node concept="37vLTw" id="2btCvgzElXW" role="37wK5m">
+                        <ref role="3cqZAo" node="2btCvgzEb8k" resolve="MARKER_FILE_NAME" />
+                      </node>
                     </node>
                   </node>
                 </node>

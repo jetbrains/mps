@@ -14,6 +14,7 @@ public class MigrateTaskProperties {
   private static final String OUT_FILE_NAME = "migrate.output-prop-file";
   private static final String ERR_CODE_KEY = "migrate.errcode-key";
   private static final String MAKE_DISTRIB_MODULES = "migrate.make-distrib-modules";
+  private static final String FORCE = "migrate.force";
 
   private final Script myScript;
 
@@ -21,37 +22,50 @@ public class MigrateTaskProperties {
     myScript = script;
   }
 
-  public MigrateTaskProperties preCheckFailureHalt(boolean haltOnPreCheckFailure) {
+  public MigrateTaskProperties setPreCheckFailureHalt(boolean haltOnPreCheckFailure) {
     myScript.putProperty(PRE_CHECK_HALT, Boolean.toString(haltOnPreCheckFailure));
     return this;
   }
-  public boolean isPreCheckFailureHalt() {
+
+  public boolean getPreCheckFailureHalt() {
     return Boolean.parseBoolean(myScript.getProperty(PRE_CHECK_HALT));
   }
 
-  public MigrateTaskProperties outputPropertyFile(File file) {
+  public MigrateTaskProperties setOutputPropertyFile(File file) {
     myScript.putProperty(OUT_FILE_NAME, file.getPath());
     return this;
   }
-  public File outputPropertyFile() {
+
+  public File getOutputPropertyFile() {
     String filename = myScript.getProperty(OUT_FILE_NAME);
     return (filename == null ? null : new File(filename));
   }
 
-  public MigrateTaskProperties outputPropertyErrorKey(String errCodeKey) {
+  public MigrateTaskProperties setOutputPropertyErrorKey(String errCodeKey) {
     myScript.putProperty(ERR_CODE_KEY, errCodeKey);
     return this;
   }
-  public String outputPropertyErrorKey() {
+
+  public String getOutputPropertyErrorKey() {
     return myScript.getProperty(ERR_CODE_KEY);
   }
 
-  public MigrateTaskProperties makeDistribModules(boolean value) {
+  public MigrateTaskProperties setMakeDistribModules(boolean value) {
     // FIXME I don't quite understand the need for this, perhaps, shall just drop?
     myScript.putProperty(MAKE_DISTRIB_MODULES, Boolean.toString(value));
     return this;
   }
-  public boolean makeDistribModules() {
+
+  public boolean getMakeDistribModules() {
     return Boolean.parseBoolean(myScript.getProperty(MAKE_DISTRIB_MODULES));
+  }
+
+  public MigrateTaskProperties setForceFlag(boolean value) {
+    myScript.putProperty(FORCE, Boolean.toString(value));
+    return this;
+  }
+
+  public boolean getForceFlag() {
+    return Boolean.parseBoolean(myScript.getProperty(FORCE));
   }
 }

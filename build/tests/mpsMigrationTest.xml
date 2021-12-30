@@ -48,7 +48,7 @@
   </jvmargs>
 
   <target name="checkAll" depends="compileTestClasses">
-    <migrate project="${project.simpleMigration}" mpsHome="${mps_home}" makeDistribModules="false">
+    <migrate project="${project.simpleMigration}" mpsHome="${mps_home}" makeDistribModules="false" force="true">
       <jvmargs>
         <arg value="-Didea.log.config.file=log.xml"/> 
         <!--<arg value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5071" />-->
@@ -62,7 +62,7 @@
       <formatter type="xml" extension=".testSimpleMigration.xml"/>
     </junit>
 
-    <migrate makeDistribModules="false"> <!-- implicit mpsHome through artifacts.mps value-->
+    <migrate makeDistribModules="false" force="true"> <!-- implicit mpsHome through artifacts.mps value-->
       <project path="${project.consMigrations}"/>
       <jvmargs refid="just-assert"/>
     </migrate>
@@ -74,7 +74,7 @@
       <formatter type="xml" extension=".testConsequentMigrations.xml"/>
     </junit>
 
-    <migrate project="${project.migrationTaskPlugin}" makeDistribModules="false"> <!-- implicit mpsHome through artifacts.mps value-->
+    <migrate project="${project.migrationTaskPlugin}" makeDistribModules="false" force="true"> <!-- implicit mpsHome through artifacts.mps value-->
       <plugin path="${mps_home}/plugins/mps-httpsupport/" id="jetbrains.mps.ide.httpsupport"/>
       <jvmargs refid="just-assert"/>
     </migrate>

@@ -61,14 +61,14 @@ public class MigrationWorker extends WorkerBase {
     final MigrateTaskProperties taskProps = new MigrateTaskProperties(myWhatToDo);
     WorkerHelper compileReloadHelper = new WorkerHelper(myEnvironment.getPlatform());
 
-    if (taskProps.makeDistribModules()) {
+    if (taskProps.getMakeDistribModules()) {
       // todo the following line is needed until we introduce layered migration
       // FIXME why do I care to make these modules?
       final MPSModuleRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
       compileReloadHelper.makeAndReload(repo, () -> IterableUtil.asCollection(repo.getModules()), myJavaCompilerOptions);
     }
 
-    final boolean preCheckFailureHalt = taskProps.isPreCheckFailureHalt();
+    final boolean preCheckFailureHalt = taskProps.getPreCheckFailureHalt();
 
     final Wrappers._boolean result = new Wrappers._boolean(true);
 
@@ -76,7 +76,7 @@ public class MigrationWorker extends WorkerBase {
 
     for (File file : myWhatToDo.getMPSProjectFiles()) {
       // fixme duplicate in NoPendingMigrationTest    
-      if (Files.exists(file.toPath().resolve(MARKER_FILE_NAME))) {
+      if (!(taskProps.getForceFlag()) || Files.exists(file.toPath().resolve(MARKER_FILE_NAME))) {
         info("Project " + file.getName() + ": automatic migrations are not allowed (" + MARKER_FILE_NAME + " file is present in project dir)");
 
         continue;
@@ -125,10 +125,10 @@ public class MigrationWorker extends WorkerBase {
     }
 
     // here we treat no projects case as 'success', although that differs from previous logic. Do I care?
-    File propFile = taskProps.outputPropertyFile();
-    if (propFile != null && taskProps.outputPropertyErrorKey() != null) {
+    File propFile = taskProps.getOutputPropertyFile();
+    if (propFile != null && taskProps.getOutputPropertyErrorKey() != null) {
       final Properties properties = new Properties();
-      properties.setProperty(taskProps.outputPropertyErrorKey(), (result.value ? "0" : "1"));
+      properties.setProperty(taskProps.getOutputPropertyErrorKey(), (result.value ? "0" : "1"));
       try (FileOutputStream fos = new FileOutputStream(propFile)) {
         properties.store(fos, "");
       } catch (IOException ex) {

@@ -25,7 +25,7 @@ public class MigrationTask extends MpsLoadTask {
   public MigrationTask() {
     super("jetbrains.mps.build.migration.MigrationWorker");
     // generally, this task is executed with without explicit fork="true", with default MpsLoadTask.myFork == true.
-    myProps = new MigrateTaskProperties(myWhatToDo).preCheckFailureHalt(true).makeDistribModules(true);
+    myProps = new MigrateTaskProperties(myWhatToDo).setPreCheckFailureHalt(true).setMakeDistribModules(true);
     // makeDistribModules==true here is for backwards compatibility
     setFailOnError(true);
   }
@@ -65,11 +65,18 @@ public class MigrationTask extends MpsLoadTask {
   }
 
   public void setHaltOnPrecheckFailure(boolean haltOnPrecheckFailure) {
-    myProps.preCheckFailureHalt(haltOnPrecheckFailure);
+    myProps.setPreCheckFailureHalt(haltOnPrecheckFailure);
   }
 
   public void setMakeDistribModules(boolean makeDistrib) {
-    myProps.makeDistribModules(makeDistrib);
+    myProps.setMakeDistribModules(makeDistrib);
+  }
+
+  /**
+   * force flag ignores the marker files for projects which allow pending migrations, migrating them anyway
+   */
+  public void setForce(boolean value) {
+    myProps.setForceFlag(value);
   }
 
   @Override
@@ -77,7 +84,7 @@ public class MigrationTask extends MpsLoadTask {
     final File propFile = new File(getProject().getBaseDir(), "migration_result.properties");
     propFile.deleteOnExit();
     final String errCodeKey = "mps.migration.errcode";
-    myProps.outputPropertyFile(propFile).outputPropertyErrorKey(errCodeKey);
+    myProps.setOutputPropertyFile(propFile).setOutputPropertyErrorKey(errCodeKey);
 
     super.execute();
     Properties p = new Properties();
