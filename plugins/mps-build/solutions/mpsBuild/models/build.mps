@@ -52015,6 +52015,11 @@
             <ref role="3bR37D" node="Ye$g8PO8Uc" resolve="jetbrains.mps.kotlin" />
           </node>
         </node>
+        <node concept="1SiIV0" id="1pD7IS3nHrA" role="3bR37C">
+          <node concept="3bR9La" id="1pD7IS3nHrB" role="1SiIV1">
+            <ref role="3bR37D" node="44LXwdzyvTi" resolve="Annotations" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="Ye$g8PO9xV" role="2G$12L">
         <property role="BnDLt" value="true" />
@@ -52025,13 +52030,10 @@
           <ref role="398BVh" node="1fy59xXoa5p" resolve="plugin_home" />
           <node concept="2Ry0Ak" id="Ye$g8PO9xX" role="iGT6I">
             <property role="2Ry0Am" value="solutions" />
-            <node concept="2Ry0Ak" id="Ye$g8PO9xY" role="2Ry0An">
-              <property role="2Ry0Am" value="stubs" />
-              <node concept="2Ry0Ak" id="Ye$g8PO9xZ" role="2Ry0An">
-                <property role="2Ry0Am" value="kotlin.stdlib" />
-                <node concept="2Ry0Ak" id="Ye$g8PO9y0" role="2Ry0An">
-                  <property role="2Ry0Am" value="jetbrains.mps.kotlin.stdlib.msd" />
-                </node>
+            <node concept="2Ry0Ak" id="Ye$g8PO9xZ" role="2Ry0An">
+              <property role="2Ry0Am" value="kotlin.stdlib" />
+              <node concept="2Ry0Ak" id="Ye$g8PO9y0" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.kotlin.stdlib.msd" />
               </node>
             </node>
           </node>

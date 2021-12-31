@@ -360,6 +360,10 @@
     <unzip src="${basedir}/../plugins/mps-kotlin/lib/kotlin-compiler-embeddable-${kotlin.version}.jar" dest="${basedir}/../plugins/mps-kotlin/lib/kotlin-builtins/">
       <patternset>
         <include name="**/*.kotlin_builtins"/>
+
+        <!-- TODO for some reason data in kotlin reflect is duplicated in kotlin-common-stdlib, until some adequate merging is performed it is better to keep it
+        this way -->
+        <exclude name="kotlin/reflect/reflect.kotlin_builtins"/>
       </patternset>
     </unzip>
     <jar basedir="${basedir}/../plugins/mps-kotlin/lib/kotlin-builtins/" destfile="${basedir}/../plugins/mps-kotlin/lib/kotlin-builtins.jar"/>

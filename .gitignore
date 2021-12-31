@@ -36,7 +36,6 @@
 /build/resources/openJDK
 classes
 classes_gen
-kotlin_gen
 testclasses
 teamcity-info.xml
 *.hprof
