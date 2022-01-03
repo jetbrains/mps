@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.util.DepthFirstConceptIterator;
 
-public class BaseReferenceConstraintsDescriptor implements ReferenceConstraintsDispatchable {
+public class BaseReferenceConstraintsDescriptor implements ReferenceConstraintsDescriptor {
   private final SReferenceLink myReferenceLink;
   private final ConstraintsDescriptor container;
 
@@ -90,6 +90,9 @@ public class BaseReferenceConstraintsDescriptor implements ReferenceConstraintsD
     assert container.getConcept().equals(next);
     while (it.hasNext()) {
       next = it.next();
+      // XXX when myReferenceLink comes from a deep super-concept, every sub-concepts answers with
+      // with hasReference() == true. We can move this code outside of loop, and check
+      // container.getConcept() only
       if (!((SAbstractConceptAdapter) next).hasReference(myReferenceLink)) {
         continue;
       }
@@ -101,13 +104,6 @@ public class BaseReferenceConstraintsDescriptor implements ReferenceConstraintsD
 
       if (parentReferenceDescriptor instanceof BaseReferenceConstraintsDescriptor) {
         parentCalculated = parameters.getParentCalculatedDescriptor((BaseReferenceConstraintsDescriptor) parentReferenceDescriptor);
-      } else if (parentReferenceDescriptor instanceof ReferenceConstraintsDispatchable) {
-        // this seems to be dead code these days - all RCD we generate are BaseReferenceConstraintsDescriptor!
-        if (parameters.hasOwn((ReferenceConstraintsDispatchable) parentReferenceDescriptor)) {
-          parentCalculated = parentReferenceDescriptor;
-        } else {
-          parentCalculated = null; // just go on with iteration
-        }
       } else {
         parentCalculated = parentReferenceDescriptor;
       }
@@ -148,42 +144,36 @@ public class BaseReferenceConstraintsDescriptor implements ReferenceConstraintsD
     }
   }
 
-  @Override
+  /**
+   * @deprecated don't expect overrides once uses of {@link #BaseReferenceConstraintsDescriptor(SReferenceLink, ConstraintsDescriptor)} gone
+   */
+  @Deprecated(forRemoval = true)
   public boolean hasOwnScopeProvider() {
     return myOwnScope;
   }
 
-  @Override
+  /**
+   * @deprecated don't expect overrides once uses of {@link #BaseReferenceConstraintsDescriptor(SReferenceLink, ConstraintsDescriptor)} gone
+   */
+  @Deprecated(forRemoval = true)
   public boolean hasOwnOnReferenceSetHandler() {
     return myOwnRefHandler;
   }
 
   private interface InheritanceCalculateParameters {
     ReferenceConstraintsDescriptor getParentCalculatedDescriptor(BaseReferenceConstraintsDescriptor parentDescriptor);
-
-    boolean hasOwn(ReferenceConstraintsDispatchable parentDescriptor);
   }
 
   private static final InheritanceCalculateParameters SCOPE_INHERITANCE_PARAMETERS = new InheritanceCalculateParameters() {
     @Override
     public ReferenceConstraintsDescriptor getParentCalculatedDescriptor(BaseReferenceConstraintsDescriptor parentDescriptor) {
-      return parentDescriptor.scopeProviderDescriptor;
-    }
-
-    @Override
-    public boolean hasOwn(ReferenceConstraintsDispatchable parentDescriptor) {
-      return parentDescriptor.hasOwnScopeProvider();
+      return parentDescriptor.hasOwnScopeProvider() ? parentDescriptor.scopeProviderDescriptor : null;
     }
   };
   private static final InheritanceCalculateParameters ON_SET_HANDLER_INHERITANCE_PARAMETERS = new InheritanceCalculateParameters() {
     @Override
     public ReferenceConstraintsDescriptor getParentCalculatedDescriptor(BaseReferenceConstraintsDescriptor parentDescriptor) {
-      return parentDescriptor.onReferenceSetHandlerDescriptor;
-    }
-
-    @Override
-    public boolean hasOwn(ReferenceConstraintsDispatchable parentDescriptor) {
-      return parentDescriptor.hasOwnOnReferenceSetHandler();
+      return parentDescriptor.hasOwnOnReferenceSetHandler() ? parentDescriptor.onReferenceSetHandlerDescriptor : null;
     }
   };
 }
