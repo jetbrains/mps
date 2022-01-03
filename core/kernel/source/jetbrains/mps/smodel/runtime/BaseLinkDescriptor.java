@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-public class BaseLinkDescriptor implements LinkDescriptor {
+public final class BaseLinkDescriptor implements LinkDescriptor {
   private final SContainmentLinkId myId;
   private final String myName;
   private final SConceptId myTargetConcept;
@@ -29,13 +29,9 @@ public class BaseLinkDescriptor implements LinkDescriptor {
   private final boolean myIsMultiple;
   private final boolean myIsUnordered;
   private final SNodeReference mySrcNode;
+  private final SContainmentLinkId mySpecializedLink;
 
-  @Deprecated
-  public BaseLinkDescriptor(SContainmentLinkId id, String name, SConceptId targetConcept, boolean isOptional, boolean isMultiple, boolean isUnordered) {
-    this(id, name, targetConcept, isOptional, isMultiple, isUnordered, null);
-  }
-
-  public BaseLinkDescriptor(SContainmentLinkId id, String name, SConceptId targetConcept, boolean isOptional, boolean isMultiple, boolean isUnordered, @Nullable SNodeReference srcNode) {
+  public BaseLinkDescriptor(SContainmentLinkId id, String name, SConceptId targetConcept, boolean isOptional, boolean isMultiple, boolean isUnordered, @Nullable SNodeReference srcNode, @Nullable SContainmentLinkId specializedLink) {
     myId = id;
     myName = name;
     myTargetConcept = targetConcept;
@@ -43,6 +39,7 @@ public class BaseLinkDescriptor implements LinkDescriptor {
     myIsMultiple = isMultiple;
     myIsUnordered = isUnordered;
     mySrcNode = srcNode;
+    mySpecializedLink = specializedLink;
   }
 
   public SContainmentLinkId getId() {
@@ -72,5 +69,11 @@ public class BaseLinkDescriptor implements LinkDescriptor {
   @Override
   public SNodeReference getSourceNode() {
     return mySrcNode;
+  }
+
+  @Nullable
+  @Override
+  public SContainmentLinkId getSpecializedLink() {
+    return mySpecializedLink;
   }
 }

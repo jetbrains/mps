@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,25 +20,21 @@ import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
-public class BaseReferenceDescriptor implements ReferenceDescriptor {
+public final class BaseReferenceDescriptor implements ReferenceDescriptor {
   private final SReferenceLinkId myId;
   private final String myName;
   private final SConceptId myTargetConcept;
   private final boolean myIsOptional;
-  @Nullable
   private final SNodeReference mySrcNode;
+  private final SReferenceLinkId mySpecializedLink;
 
-  @Deprecated
-  public BaseReferenceDescriptor(SReferenceLinkId id, String name, SConceptId targetConcept, boolean isOptional) {
-    this(id, name, targetConcept, isOptional, null);
-  }
-
-  public BaseReferenceDescriptor(SReferenceLinkId id, String name, SConceptId targetConcept, boolean isOptional, @Nullable SNodeReference srcNode) {
+  public BaseReferenceDescriptor(SReferenceLinkId id, String name, SConceptId targetConcept, boolean isOptional, @Nullable SNodeReference srcNode, @Nullable SReferenceLinkId specializedLink) {
     myId = id;
     myName = name;
     myTargetConcept = targetConcept;
     myIsOptional = isOptional;
     mySrcNode = srcNode;
+    mySpecializedLink = specializedLink;
   }
 
   public SReferenceLinkId getId() {
@@ -60,5 +56,11 @@ public class BaseReferenceDescriptor implements ReferenceDescriptor {
   @Override
   public SNodeReference getSourceNode() {
     return mySrcNode;
+  }
+
+  @Nullable
+  @Override
+  public SReferenceLinkId getSpecializedLink() {
+    return mySpecializedLink;
   }
 }

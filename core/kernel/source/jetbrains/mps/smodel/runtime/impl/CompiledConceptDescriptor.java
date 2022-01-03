@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -166,8 +166,8 @@ public final class CompiledConceptDescriptor implements ConceptDescriptor {
 
       initAncestors(parentDescriptors);
       initPropertyNames(parentDescriptors);
-      initReferenceNames(parentDescriptors);
-      initChildNames(parentDescriptors);
+      initAssociations(parentDescriptors);
+      initAggregations(parentDescriptors);
       myInitialized = true;
     }
   }
@@ -197,11 +197,15 @@ public final class CompiledConceptDescriptor implements ConceptDescriptor {
     properties = Collections.unmodifiableMap(propsMap);
   }
 
-  private void initReferenceNames(List<ConceptDescriptor> parentDescriptors) {
+  private void initAssociations(List<ConceptDescriptor> parentDescriptors) {
     assert !myInitialized;
 
     Map<SReferenceLinkId, ReferenceDescriptor> refsMap = new LinkedHashMap<>();
     for (ReferenceDescriptor r : myOwnReferences) {
+      if (r.getSpecializedLink() != null) {
+        // ignore specialized links for now
+        continue;
+      }
       refsMap.put(r.getId(), r);
     }
     for (ConceptDescriptor parentDescriptor : parentDescriptors) {
@@ -212,12 +216,16 @@ public final class CompiledConceptDescriptor implements ConceptDescriptor {
     references = Collections.unmodifiableMap(refsMap);
   }
 
-  private void initChildNames(List<ConceptDescriptor> parentDescriptors) {
+  private void initAggregations(List<ConceptDescriptor> parentDescriptors) {
     assert !myInitialized;
 
     //ids
     Map<SContainmentLinkId, LinkDescriptor> linksMap = new LinkedHashMap<>();
     for (LinkDescriptor r : myOwnLinks) {
+      if (r.getSpecializedLink() != null) {
+        // ignore specialized links for now
+        continue;
+      }
       linksMap.put(r.getId(), r);
     }
     for (ConceptDescriptor parentDescriptor : parentDescriptors) {

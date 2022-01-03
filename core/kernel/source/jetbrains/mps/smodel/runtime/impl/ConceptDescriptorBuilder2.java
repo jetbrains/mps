@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -266,11 +266,8 @@ public class ConceptDescriptorBuilder2 {
     }
 
     public ConceptDescriptorBuilder2 done() {
-      if (mySpecializedLink == null) {
-        // ignore specialized links for now
-        final SReferenceLinkId id = MetaIdFactory.refId(myBuilder.myConceptId, myId);
-        myBuilder.addAssociation(new BaseReferenceDescriptor(id, myName, myTargetConcept, myIsOptional, super.myOrigin));
-      }
+      final SReferenceLinkId id = MetaIdFactory.refId(myBuilder.myConceptId, myId);
+      myBuilder.addAssociation(new BaseReferenceDescriptor(id, myName, myTargetConcept, myIsOptional, super.myOrigin, mySpecializedLink));
       return myBuilder;
     }
 
@@ -329,11 +326,8 @@ public class ConceptDescriptorBuilder2 {
     }
 
     public ConceptDescriptorBuilder2 done() {
-      if (mySpecializedLink == null) {
-        // XXX ignore specialized links for now
-        final SContainmentLinkId id = MetaIdFactory.linkId(myBuilder.myConceptId, myId);
-        myBuilder.addAggregation(new BaseLinkDescriptor(id, myName, myTargetConcept, myIsOptional, myIsMultiple, !myIsOrdered, super.myOrigin));
-      }
+      final SContainmentLinkId id = MetaIdFactory.linkId(myBuilder.myConceptId, myId);
+      myBuilder.addAggregation(new BaseLinkDescriptor(id, myName, myTargetConcept, myIsOptional, myIsMultiple, !myIsOrdered, super.myOrigin, mySpecializedLink));
       return myBuilder;
     }
 
