@@ -15,11 +15,9 @@
  */
 package jetbrains.mps.smodel.runtime.base;
 
-import jetbrains.mps.smodel.adapter.structure.concept.SAbstractConceptAdapter;
 import jetbrains.mps.smodel.language.ConceptRegistry;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
-import jetbrains.mps.smodel.runtime.ReferenceConstraintsDispatchable;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -90,12 +88,6 @@ public class BaseReferenceConstraintsDescriptor implements ReferenceConstraintsD
     assert container.getConcept().equals(next);
     while (it.hasNext()) {
       next = it.next();
-      // XXX when myReferenceLink comes from a deep super-concept, every sub-concepts answers with
-      // with hasReference() == true. We can move this code outside of loop, and check
-      // container.getConcept() only
-      if (!((SAbstractConceptAdapter) next).hasReference(myReferenceLink)) {
-        continue;
-      }
 
       ConstraintsDescriptor parentDescriptor = ConceptRegistry.getInstance().getConstraintsDescriptor(next);
       ReferenceConstraintsDescriptor parentReferenceDescriptor = parentDescriptor.getReference(myReferenceLink);
