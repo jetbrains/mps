@@ -22,9 +22,6 @@ import jetbrains.mps.smodel.adapter.ids.SContainmentLinkId;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId;
 import jetbrains.mps.smodel.adapter.ids.STypeId;
-import jetbrains.mps.smodel.runtime.BaseLinkDescriptor;
-import jetbrains.mps.smodel.runtime.BasePropertyDescriptor;
-import jetbrains.mps.smodel.runtime.BaseReferenceDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptDescriptor;
 import jetbrains.mps.smodel.runtime.ConceptKind;
 import jetbrains.mps.smodel.runtime.LinkDescriptor;
@@ -178,9 +175,9 @@ public class ConceptDescriptorBuilder2 {
     return this;
   }
 
-  // optional, version == 1 by default as this builder was introduced late in 3.4 cycle
-  // code generated with 2018.2 shall set version to 2 once stubId is generated. Once 2018.2 is out, shall change default value in this class to 2
-  // version == 3 indicates addition of specialized links and use of super_() without qualified name.
+  // version == 1 indicates the builder, introduced late in 3.4 cycle
+  // In 2018.2, version indicates 2 stubId field is generated.
+  // version == 3 indicates addition of specialized links and use of super_() without qualified name, 2021.3
   public ConceptDescriptorBuilder2 version(int version) {
     myVersion = version;
     return this;
