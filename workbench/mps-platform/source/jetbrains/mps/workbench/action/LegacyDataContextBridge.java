@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.workbench.action;
 
@@ -12,7 +12,9 @@ import jetbrains.mps.ide.actions.SModuleActionData;
 import jetbrains.mps.ide.actions.SNodeActionData;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Collections;
@@ -105,10 +107,15 @@ final class LegacyDataContextBridge implements DataContext {
       // SModelActionData case
       final SModelActionData newData = myDelegate.getData(SModelActionData.KEY);
       if (newData != null) {
-        if (MPSCommonDataKeys.MODEL.is(dataId) && newData.isSingle()) {
-          return (T) newData.model().resolve(myRepository);
+        if (MPSCommonDataKeys.MODEL.is(dataId)) {
+          return newData.isSingle() ? (T) newData.model().resolve(myRepository) : null;
         }
-        if (MPSCommonDataKeys.MODELS.is(dataId) && !newData.isSingle()) {
+        // MODELS.
+        if (MPSCommonDataKeys.MODELS.is(dataId)) {
+          if (newData.isSingle()) {
+            final SModel model = newData.model().resolve(myRepository);
+            return model == null ? null : (T) Collections.singletonList(model);
+          }
           return (T) newData.models().map(r -> r.resolve(myRepository)).dropWhile(Objects::isNull).collect(Collectors.toList());
         }
       } // else fallback, try original key
@@ -116,12 +123,15 @@ final class LegacyDataContextBridge implements DataContext {
       // SModuleActionData case
       final SModuleActionData newData = myDelegate.getData(SModuleActionData.KEY);
       if (newData != null) {
-        if (MPSCommonDataKeys.MODULE.is(dataId) && newData.isSingle()) {
-          return (T) newData.module().resolve(myRepository);
+        if (MPSCommonDataKeys.MODULE.is(dataId)) {
+          return newData.isSingle() ? (T) newData.module().resolve(myRepository) : null;
         }
-        if (MPSCommonDataKeys.MODULES.is(dataId) && !newData.isSingle()) {
-          return (T) newData.modules().map(r -> r.resolve(myRepository)).dropWhile(Objects::isNull).collect(Collectors.toList());
+        // MODULES. Same as with NODES, single selected module is ok for MODULES
+        if (newData.isSingle()) {
+          final SModule module = newData.module().resolve(myRepository);
+          return module == null ? null : (T) Collections.singletonList(module);
         }
+        return (T) newData.modules().map(r -> r.resolve(myRepository)).dropWhile(Objects::isNull).collect(Collectors.toList());
       } // else fallback, try original key
     } else if (MPSCommonDataKeys.CONTEXT_MODEL.is(dataId) || MPSCommonDataKeys.CONTEXT_MODULE.is(dataId)) {
       // XXX could re-use SModelActionData/SModuleActionData; just need a different key. Alternatively
