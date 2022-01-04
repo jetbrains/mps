@@ -1235,15 +1235,6 @@
                 </node>
               </node>
             </node>
-            <node concept="3clFbF" id="2KCY0UALr0Y" role="3cqZAp">
-              <node concept="2YIFZM" id="2KCY0UALssp" role="3clFbG">
-                <ref role="1Pybhc" to="wyt6:~Thread" resolve="Thread" />
-                <ref role="37wK5l" to="wyt6:~Thread.sleep(long)" resolve="sleep" />
-                <node concept="3cmrfG" id="2KCY0UALssq" role="37wK5m">
-                  <property role="3cmrfH" value="10000" />
-                </node>
-              </node>
-            </node>
             <node concept="3clFbF" id="5AcmpEOaLb7" role="3cqZAp">
               <node concept="1rXfSq" id="5AcmpEOaLb5" role="3clFbG">
                 <ref role="37wK5l" node="KL8Aqlj5oc" resolve="dispose" />
