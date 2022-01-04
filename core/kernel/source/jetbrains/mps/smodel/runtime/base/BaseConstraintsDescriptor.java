@@ -127,11 +127,6 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
   }
 
   protected ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    if (hasOwnDefaultScopeProvider()) {
-      // branch for interoperability with legacy non-regenerated code
-      // remove after 2017.2
-      return (context, checkingNodeContext) -> getDefaultScopeProvider();
-    }
     return ConstraintFunctions.createScopeProviderComposition(collectParents(ConstraintFunctions::getDefaultScopeConstraintFunction));
   }
 
@@ -172,13 +167,9 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
     return null;
   }
 
-  @Deprecated
-  public boolean hasOwnDefaultScopeProvider() {
-    return false;
-  }
-
+  @NotNull
   @Override
-  public SAbstractConcept getConcept() {
+  public final SAbstractConcept getConcept() {
     return myConcept;
   }
 
