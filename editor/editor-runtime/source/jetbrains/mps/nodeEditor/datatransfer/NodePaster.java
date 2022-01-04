@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import jetbrains.mps.nodeEditor.SNodeEditorUtil;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import jetbrains.mps.smodel.SNodeUtil;
-import jetbrains.mps.smodel.search.LinkDeclarationLookup;
+import jetbrains.mps.smodel.language.ConceptRegistryUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -266,7 +266,7 @@ public class NodePaster {
 
   @NotNull
   private SAbstractConcept getSpecifiedConcept(@NotNull SNode pasteNode, @NotNull SContainmentLink link) {
-    return new LinkDeclarationLookup(pasteNode.getConcept()).getMostSpecificLinkTarget(link);
+    return ConceptRegistryUtil.getMostSpecificLinkTarget(pasteNode, link);
   }
 
   private boolean canPasteToParent(SNode anchorNode, SContainmentLink link, boolean exactly) {

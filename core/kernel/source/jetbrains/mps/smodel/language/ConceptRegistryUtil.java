@@ -67,8 +67,12 @@ public class ConceptRegistryUtil {
    *       ConceptRegistry/StructureRegistry/... deals with SAbstractConcept/SConceptId/ConceptDescriptor.
    */
   public static SAbstractConcept getMostSpecificLinkTarget(@NotNull SNode node, @NotNull SReferenceLink link) {
+    return getMostSpecificLinkTarget(node.getConcept(), link);
+  }
+
+  public static SAbstractConcept getMostSpecificLinkTarget(@NotNull SAbstractConcept contextConcept, @NotNull SReferenceLink link) {
     final StructureRegistry reg = ConceptRegistry.getInstance().getStructureRegistry();
-    final SConceptId cid = MetaIdHelper.getConcept(node.getConcept());
+    final SConceptId cid = MetaIdHelper.getConcept(contextConcept);
     if (MetaIdFactory.INVALID_CONCEPT_ID.equals(cid)) {
       // StructureRegistry relation to invalid id is not clear, rather have it handled here explicitly.
       // Have to fix this along with ConceptRegistry.getConceptDescriptor(SConceptId)

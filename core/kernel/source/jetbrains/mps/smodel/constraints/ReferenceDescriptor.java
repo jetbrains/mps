@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import jetbrains.mps.smodel.language.ConceptRegistryUtil;
 import jetbrains.mps.smodel.runtime.EvaluateScopeContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
-import jetbrains.mps.smodel.search.LinkDeclarationLookup;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -185,9 +184,7 @@ public abstract class ReferenceDescriptor {
 
     @NotNull
     private static SAbstractConcept getLinkTarget(@NotNull SReferenceLink genuineLink, @NotNull SAbstractConcept concreteConcept) {
-      // TODO for now, link target is calculated using language sources.
-      //      it will be possible to do it without sources when information about link specialization will be generated.
-      return new LinkDeclarationLookup(concreteConcept).getMostSpecificLinkTarget(genuineLink);
+      return ConceptRegistryUtil.getMostSpecificLinkTarget(concreteConcept, genuineLink);
     }
 
     private SModel getModel() {
