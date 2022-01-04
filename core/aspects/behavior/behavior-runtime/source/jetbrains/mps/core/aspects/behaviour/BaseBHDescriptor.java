@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,6 @@ import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.api.SParameter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.smodel.SModelUtil_new;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -66,15 +65,6 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
   private boolean myInitialized = false;
   private SMethodVirtualTable myVTable;
   private AncestorCache myAncestorCache;
-
-  /**
-   * @deprecated shall use no-arg cons instead, and pass BehaviorRegistry through init()
-   *  shall survive 2019.2 release to ensure code generated/compiled with previous MPS releases works (ensures binary compatibility)
-   */
-@Deprecated(since = "2019.2", forRemoval = true)
-  protected BaseBHDescriptor(BehaviorRegistry behaviorRegistry) {
-    myBehaviorRegistry = behaviorRegistry;
-  }
 
   protected BaseBHDescriptor() {
     // since 2019.2
