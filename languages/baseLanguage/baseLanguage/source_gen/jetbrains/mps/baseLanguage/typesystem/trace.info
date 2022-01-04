@@ -23702,49 +23702,51 @@
       </scope>
     </file>
     <file name="check_FinalVariableReferenceNotAssigned_NonTypesystemRule.java">
-      <node id="4705425356437995912" at="27,9,28,68" concept="12" />
-      <node id="4705425356437995912" at="28,68,29,404" concept="12" />
-      <node id="4914488904501091779" at="34,50,35,41" concept="13" />
-      <node id="4914488904501091779" at="37,68,38,102" concept="13" />
-      <node id="4914488904501091779" at="40,30,41,17" concept="13" />
-      <node id="4914488904501091779" at="45,0,46,0" concept="16" trace="variableDeclaration$N1XG" />
-      <node id="4914488904501091779" at="49,0,50,0" concept="16" trace="name$MnvL" />
-      <node id="4914488904501091779" at="50,0,51,0" concept="16" trace="isFinal$gvTP" />
-      <node id="4914488904501091779" at="54,0,55,0" concept="16" trace="VariableReference$TC" />
-      <node id="4914488904501091779" at="22,0,24,0" concept="3" trace="check_FinalVariableReferenceNotAssigned_NonTypesystemRule#()V" />
-      <node id="4914488904501091779" at="34,0,37,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
-      <node id="4914488904501091779" at="37,0,40,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
-      <node id="4914488904501091779" at="40,0,43,0" concept="11" trace="overrides#()Z" />
-      <node id="4705425356437995912" at="26,77,30,9" concept="1" />
-      <node id="3084663847510173633" at="25,139,31,7" concept="10" />
-      <node id="4914488904501097568" at="24,130,32,5" concept="10" />
-      <node id="4914488904501091779" at="24,0,34,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
-      <scope id="4914488904501091779" at="22,70,22,70" />
-      <scope id="4914488904501091779" at="34,50,35,41" />
-      <scope id="4914488904501091779" at="37,68,38,102" />
-      <scope id="4914488904501091779" at="40,30,41,17" />
-      <scope id="4914488904501091779" at="22,0,24,0" />
-      <scope id="4705425356437995912" at="27,9,29,404">
+      <node id="4705425356437995912" at="28,9,29,68" concept="12" />
+      <node id="4705425356437995912" at="29,68,30,404" concept="12" />
+      <node id="4914488904501091779" at="35,50,36,41" concept="13" />
+      <node id="4914488904501091779" at="38,68,39,102" concept="13" />
+      <node id="4914488904501091779" at="41,30,42,17" concept="13" />
+      <node id="4914488904501091779" at="46,0,47,0" concept="16" trace="variableDeclaration$N1XG" />
+      <node id="4914488904501091779" at="50,0,51,0" concept="16" trace="name$MnvL" />
+      <node id="4914488904501091779" at="51,0,52,0" concept="16" trace="isFinal$gvTP" />
+      <node id="4914488904501091779" at="55,0,56,0" concept="16" trace="AbstractUnaryNumberOperation$Q6" />
+      <node id="4914488904501091779" at="56,0,57,0" concept="16" trace="UnaryMinus$na" />
+      <node id="4914488904501091779" at="57,0,58,0" concept="16" trace="VariableReference$TC" />
+      <node id="4914488904501091779" at="23,0,25,0" concept="3" trace="check_FinalVariableReferenceNotAssigned_NonTypesystemRule#()V" />
+      <node id="4914488904501091779" at="35,0,38,0" concept="11" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="4914488904501091779" at="38,0,41,0" concept="11" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
+      <node id="4914488904501091779" at="41,0,44,0" concept="11" trace="overrides#()Z" />
+      <node id="4705425356437995912" at="27,304,31,9" concept="1" />
+      <node id="3084663847510173633" at="26,139,32,7" concept="10" />
+      <node id="4914488904501097568" at="25,130,33,5" concept="10" />
+      <node id="4914488904501091779" at="25,0,35,0" concept="11" trace="applyRule#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/typesystem/inference/TypeCheckingContext;Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;)V" />
+      <scope id="4914488904501091779" at="23,70,23,70" />
+      <scope id="4914488904501091779" at="35,50,36,41" />
+      <scope id="4914488904501091779" at="38,68,39,102" />
+      <scope id="4914488904501091779" at="41,30,42,17" />
+      <scope id="4914488904501091779" at="23,0,25,0" />
+      <scope id="4705425356437995912" at="28,9,30,404">
         <var name="_reporter_2309309498" id="4705425356437995912" />
         <var name="errorTarget" id="4705425356437995912" />
       </scope>
-      <scope id="4914488904501091779" at="34,0,37,0" />
-      <scope id="4914488904501091779" at="37,0,40,0">
+      <scope id="4914488904501091779" at="35,0,38,0" />
+      <scope id="4914488904501091779" at="38,0,41,0">
         <var name="argument" id="4914488904501091779" />
       </scope>
-      <scope id="4914488904501091779" at="40,0,43,0" />
-      <scope id="3084663847510173634" at="26,77,30,9" />
-      <scope id="4914488904501097569" at="25,139,31,7" />
-      <scope id="4914488904501091780" at="24,130,32,5" />
-      <scope id="4914488904501091779" at="24,0,34,0">
+      <scope id="4914488904501091779" at="41,0,44,0" />
+      <scope id="3084663847510173634" at="27,304,31,9" />
+      <scope id="4914488904501097569" at="26,139,32,7" />
+      <scope id="4914488904501091780" at="25,130,33,5" />
+      <scope id="4914488904501091779" at="25,0,35,0">
         <var name="status" id="4914488904501091779" />
         <var name="typeCheckingContext" id="4914488904501091779" />
         <var name="variableReference" id="4914488904501091779" />
       </scope>
-      <unit id="4914488904501091779" at="44,0,47,0" name="jetbrains.mps.baseLanguage.typesystem.check_FinalVariableReferenceNotAssigned_NonTypesystemRule$LINKS" />
-      <unit id="4914488904501091779" at="53,0,56,0" name="jetbrains.mps.baseLanguage.typesystem.check_FinalVariableReferenceNotAssigned_NonTypesystemRule$CONCEPTS" />
-      <unit id="4914488904501091779" at="48,0,52,0" name="jetbrains.mps.baseLanguage.typesystem.check_FinalVariableReferenceNotAssigned_NonTypesystemRule$PROPS" />
-      <unit id="4914488904501091779" at="21,0,57,0" name="jetbrains.mps.baseLanguage.typesystem.check_FinalVariableReferenceNotAssigned_NonTypesystemRule" />
+      <unit id="4914488904501091779" at="45,0,48,0" name="jetbrains.mps.baseLanguage.typesystem.check_FinalVariableReferenceNotAssigned_NonTypesystemRule$LINKS" />
+      <unit id="4914488904501091779" at="49,0,53,0" name="jetbrains.mps.baseLanguage.typesystem.check_FinalVariableReferenceNotAssigned_NonTypesystemRule$PROPS" />
+      <unit id="4914488904501091779" at="54,0,59,0" name="jetbrains.mps.baseLanguage.typesystem.check_FinalVariableReferenceNotAssigned_NonTypesystemRule$CONCEPTS" />
+      <unit id="4914488904501091779" at="22,0,60,0" name="jetbrains.mps.baseLanguage.typesystem.check_FinalVariableReferenceNotAssigned_NonTypesystemRule" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/4940013265625385407">
