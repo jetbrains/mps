@@ -44,7 +44,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
 public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
@@ -108,26 +107,26 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
 
   protected ConstraintFunction<ConstraintContext_CanBeChild, Boolean> calculateCanBeChildConstraint() {
     myCanBeChildIsDefined = false;
-    return ConstraintFunctions.createBooleanComposition(collectParents(ConstraintFunctions::getCanBeChildConstraintFunction));
+    return ConstraintFunctions.createBooleanComposition(collectParents().map(ConstraintFunctions::getCanBeChildConstraintFunction));
   }
 
   protected ConstraintFunction<ConstraintContext_CanBeRoot, Boolean> calculateCanBeRootConstraint() {
     myCanBeRootIsDefined = false;
-    return ConstraintFunctions.createBooleanComposition(collectParents(ConstraintFunctions::getCanBeRootConstraintFunction));
+    return ConstraintFunctions.createBooleanComposition(collectParents().map(ConstraintFunctions::getCanBeRootConstraintFunction));
   }
 
   protected ConstraintFunction<ConstraintContext_CanBeParent, Boolean> calculateCanBeParentConstraint() {
     myCanBeParentIsDefined = false;
-    return ConstraintFunctions.createBooleanComposition(collectParents(ConstraintFunctions::getCanBeParentConstraintFunction));
+    return ConstraintFunctions.createBooleanComposition(collectParents().map(ConstraintFunctions::getCanBeParentConstraintFunction));
   }
 
   protected ConstraintFunction<ConstraintContext_CanBeAncestor, Boolean> calculateCanBeAncestorConstraint() {
     myCanBeAncestorIsDefined = false;
-    return ConstraintFunctions.createBooleanComposition(collectParents(ConstraintFunctions::getCanBeAncestorConstraintFunction));
+    return ConstraintFunctions.createBooleanComposition(collectParents().map(ConstraintFunctions::getCanBeAncestorConstraintFunction));
   }
 
   protected ConstraintFunction<ConstraintContext_DefaultScopeProvider, ReferenceScopeProvider> calculateDefaultScopeConstraint() {
-    return ConstraintFunctions.createScopeProviderComposition(collectParents(ConstraintFunctions::getDefaultScopeConstraintFunction));
+    return ConstraintFunctions.createScopeProviderComposition(collectParents().map(ConstraintFunctions::getDefaultScopeConstraintFunction));
   }
 
   public ConstraintFunction<ConstraintContext_CanBeChild, Boolean> getCanBeChildConstraint() {
@@ -150,13 +149,12 @@ public class BaseConstraintsDescriptor implements ConstraintsDescriptor {
     return myDefaultScopeConstraint;
   }
 
-  private <C, R> Stream<ConstraintFunction<C, R>> collectParents(Function<BaseConstraintsDescriptor, ConstraintFunction<C, R>> mapper) {
+  private Stream<BaseConstraintsDescriptor> collectParents() {
     // fixme rewrite without recursion
     List<SAbstractConcept> directSuperConcepts = SModelUtil.getDirectSuperConcepts(myConcept);
     return directSuperConcepts.stream()
                               .map(BaseConstraintsDescriptor::getDescriptor)
-                              .filter(Objects::nonNull)
-                              .map(mapper);
+                              .filter(Objects::nonNull);
   }
 
   protected static BaseConstraintsDescriptor getDescriptor(SAbstractConcept concept) {
