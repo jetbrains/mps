@@ -412,9 +412,22 @@ public class FullASTConverter extends ASTConverterWithExpressions {
             if ((inititalizer != null)) {
               SLinkOperations.setTarget(additionalForLoopVariable, LINKS.initializer$2twD, inititalizer);
             }
-            SNode typeCandidate = SLinkOperations.getTarget(SLinkOperations.getTarget(forStatement, LINKS.variable$JNH6), LINKS.type$a1UY);
-            if ((typeCandidate != null)) {
-              SLinkOperations.setTarget(additionalForLoopVariable, LINKS.type$a1UY, SNodeOperations.copyNode(typeCandidate));
+            if ((SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY) != null)) {
+              // if LVD comes with recognized Type, just re-use it (much like we re-use complete LVD for the 
+              // first variable), it's a throw-away node anyway.
+              SLinkOperations.setTarget(additionalForLoopVariable, LINKS.type$a1UY, SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY));
+            } else {
+              SNode typeCandidate = SLinkOperations.getTarget(SLinkOperations.getTarget(forStatement, LINKS.variable$JNH6), LINKS.type$a1UY);
+              if ((typeCandidate != null)) {
+                // typeCanditate is ClassifierType with CT.classifier likely as dynamic reference.
+                // During copy, we attempt to resolve references and DR doesn't like to resolve in
+                // detached nodes (see CopyUtil). We may end up with exception from MPS-29786 here
+                // unless we come up with a mechanism to copy such references. Perhaps, shall avoid
+                // resolve attempts for references of detached nodes at all (for static references, it's
+                // doesn't work well either, just doesn't fail with assert). Besides, for SR we have immature 
+                // targets, which helps, too.
+                SLinkOperations.setTarget(additionalForLoopVariable, LINKS.type$a1UY, SNodeOperations.copyNode(typeCandidate));
+              }
             }
             ListSequence.fromList(SLinkOperations.getChildren(forStatement, LINKS.additionalVar$xxfz)).addElement(additionalForLoopVariable);
           }

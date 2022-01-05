@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -221,6 +221,10 @@ public final class CopyUtil {
         //       if it's reasonable to copy it bluntly with describeTarget(), what if its target is among
         //       copied ancestors/descendants mapping (for a regular reference)? No idea how to tackle this properly,
         //       without cast to DynamicReference and creepy ifs
+        // XXX perhaps, shall attempt reference resolve only when inputNode.getModel() != null
+        //     In fact, StaticReference.getTarget() needs source model (unlike DR, it doesn't fail with AE if there's none).
+        //     OTOH, SR may have immature SNode (quite likely for a detached node) and skip reference resolve altogether
+        //     in that case would be great to keep logic that maps target from original to copied node.
         SNode inputTargetNode = cloneRefs ? null : jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
         if (inputTargetNode == null) { //broken reference or need to clone
           outputNode.setReference(ref.getLink(), ref.describeTarget());
