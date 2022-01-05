@@ -11,15 +11,15 @@ import jetbrains.mps.icons.MPSIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
+import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.smodel.SModelStereotype;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.project.MPSProject;
-import org.jetbrains.mps.openapi.model.SModel;
 import javax.swing.tree.TreeNode;
 import org.jetbrains.mps.openapi.model.SModelName;
-import jetbrains.mps.project.SModuleOperations;
 import org.apache.log4j.Level;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.ide.projectPane.ProjectPane;
@@ -48,7 +48,13 @@ public class NewSubTestModel_Action extends BaseAction {
     if (!(event.getData(MPSCommonDataKeys.TREE_NODE) instanceof SModelTreeNode)) {
       return false;
     }
-    return !(event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName().hasStereotype()) && event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getModelRoot().canCreateModel(event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName().withStereotype(SModelStereotype.TESTS));
+    SModel m = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
+    if (m.getName().hasStereotype()) {
+      // XXX NONE.equals(stereotype) was from inception, is there any reason why *any* stereotype, not 'tests'?
+      return false;
+    }
+    ModelRoot modelRoot = m.getModelRoot();
+    return modelRoot != null && modelRoot.canCreateModel(m.getName().withStereotype(SModelStereotype.TESTS));
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -90,10 +96,10 @@ public class NewSubTestModel_Action extends BaseAction {
     event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().executeCommand(() -> {
       SModelName testModelName = new SModelName(NewSubTestModel_Action.this.getTestModelName(event), SModelStereotype.TESTS);
       SModel parentModel = event.getData(MPSCommonDataKeys.CONTEXT_MODEL);
-      SModel createdModel = SModuleOperations.createModelWithAdjustments(testModelName.getValue(), parentModel.getModelRoot());
+      SModel createdModel = parentModel.getModelRoot().createModel(testModelName.getValue());
       if (createdModel == null) {
         if (LOG.isEnabledFor(Level.WARN)) {
-          LOG.warn("Can't create submodel " + testModelName + " for model " + parentModel.getName());
+          LOG.warn(String.format("Can't create sub-model %s for model %s", testModelName, parentModel.getName()));
         }
         return;
       }
