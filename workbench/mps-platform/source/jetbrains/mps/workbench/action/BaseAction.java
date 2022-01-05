@@ -205,7 +205,8 @@ public abstract class BaseAction extends AnAction {
         Map<String, Object> params = new THashMap<>();
         // read action here is redundant always except ActionAccess.EmptyAccess; we're already within appropriate model lock
         final SRepository repo = getRepository(event);
-        final AnActionEvent dcBridgeEvent = event.withDataContext(legacyWrap(repo, event.getDataContext()));
+        final DataContext dataContext = new CachingDataContext(legacyWrap(repo, event.getDataContext()));
+        final AnActionEvent dcBridgeEvent = event.withDataContext(dataContext);
         repo.getModelAccess().runReadAction(() -> collectActionData(dcBridgeEvent, params));
         doExecute(dcBridgeEvent, params);
       } catch (RuntimeException ex) {
