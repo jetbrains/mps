@@ -248,7 +248,7 @@
         <property role="TrG5h" value="execute" />
         <node concept="3cqZAl" id="23X86fnVai1" role="3clF45" />
         <node concept="37vLTG" id="23X86fnVai2" role="3clF46">
-          <property role="TrG5h" value="consoleontext" />
+          <property role="TrG5h" value="consoleContext" />
           <node concept="3uibUv" id="23X86fnVai3" role="1tU5fm">
             <ref role="3uigEE" to="qgo0:jysm2GDsTL" resolve="ConsoleContext" />
           </node>
@@ -266,7 +266,7 @@
               <ref role="1Pybhc" to="8wae:1whNchEH953" resolve="ScriptsUtil" />
               <ref role="37wK5l" to="8wae:23X86fnS_$6" resolve="refactor" />
               <node concept="37vLTw" id="23X86fnVb5G" role="37wK5m">
-                <ref role="3cqZAo" node="23X86fnVai2" resolve="consoleontext" />
+                <ref role="3cqZAo" node="23X86fnVai2" resolve="consoleContext" />
               </node>
               <node concept="10Nm6u" id="23X86fnVCLP" role="37wK5m">
                 <node concept="29HgVG" id="23X86fnVCQt" role="lGtFl">
