@@ -7,17 +7,9 @@ import jetbrains.mps.tool.common.Script;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
 import jetbrains.mps.tool.common.MpsRunnerProperties;
-import jetbrains.mps.smodel.MPSModuleRepository;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import org.jetbrains.mps.openapi.module.SModuleReference;
-import jetbrains.mps.project.structure.modules.ModuleReference;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.module.ReloadableModule;
-import java.util.List;
+import jetbrains.mps.tool.run.ModuleClassCode;
+import java.util.Optional;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.lang.reflect.Modifier;
-import java.util.stream.Collectors;
 import jetbrains.mps.core.platform.Platform;
 import java.lang.reflect.InvocationTargetException;
 import java.io.File;
@@ -37,33 +29,10 @@ public class MpsRunnerWorker extends WorkerBase {
   @Override
   public void work() {
     final MpsRunnerProperties properties = new MpsRunnerProperties(myWhatToDo);
-    final MPSModuleRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
-
-    // XXX no idea why model write, perhaps, read would suffice
-    Class<?> mainClass = new ModelAccessHelper(repo).runWriteAction(() -> {
-      SModuleReference solutionRef = ModuleReference.parseReference(properties.getSolution());
-      SModule module = solutionRef.resolve(repo);
-      if (!(module instanceof ReloadableModule)) {
-        return null;
-      }
-      try {
-        return ((ReloadableModule) module).getClass(properties.getStartClass());
-      } catch (ClassNotFoundException e) {
-        error(noClassMsg(properties));
-        e.printStackTrace(System.err);
-      }
-      return null;
-    });
-    if (mainClass == null) {
-      throw new NoClassDefFoundError(noClassMsg(properties));
-    }
+    final ModuleClassCode cc = new ModuleClassCode(properties.getSolution());
     try {
+      cc.load(myEnvironment.getPlatform(), properties.getStartClass());
       final String methodName = properties.getStartMethod();
-      List<Method> methods = Arrays.stream(mainClass.getMethods()).filter((Method m) -> methodName.equals(m.getName()) && Modifier.isStatic(m.getModifiers()) && m.getParameterCount() < 2).collect(Collectors.<Method>toList());
-      if (methods.isEmpty()) {
-        error(String.format("No public static method %s in the class %s", methodName, mainClass.getName()));
-        return;
-      }
       // First, look for methods with parameters. Prefer one with Environment over the one with Platform as more specific.
       // However, we shall not document or encourage use of Environment instead of Platform. Environment is mostly for our own use (MPS internals aware).
       // Most clients shall be fine with Platform.
@@ -71,42 +40,31 @@ public class MpsRunnerWorker extends WorkerBase {
       //     Do we need an option to open a project and pass project instance into the method?
       //  
       // I) public static void mpsMain(Environment env)
-      for (Method m : methods) {
-        Class<?>[] parameterTypes = m.getParameterTypes();
-        if (parameterTypes.length != 1) {
-          continue;
-        }
-        if (parameterTypes[0].isAssignableFrom(Environment.class)) {
-          m.invoke(null, myEnvironment);
-          return;
-        }
+      Optional<Method> method = cc.staticMethod(methodName, Environment.class);
+      if (method.isPresent()) {
+        method.get().invoke(null, myEnvironment);
+        return;
       }
       //  
       // II) public static void mpsMain(Platform p)
-      for (Method m : methods) {
-        Class<?>[] parameterTypes = m.getParameterTypes();
-        if (parameterTypes.length != 1) {
-          continue;
-        }
-        if (parameterTypes[0].isAssignableFrom(Platform.class)) {
-          m.invoke(null, myEnvironment.getPlatform());
-          return;
-        }
+      method = cc.staticMethod(methodName, Platform.class);
+      if (method.isPresent()) {
+        method.get().invoke(null, myEnvironment.getPlatform());
+        return;
       }
       // Otherwise, resort to no-arg method
       // III) public static mpsMain()
-      for (Method m : methods) {
-        Class<?>[] parameterTypes = m.getParameterTypes();
-        if (parameterTypes.length != 0) {
-          continue;
-        }
-        m.invoke(null);
+      method = cc.staticMethod(methodName);
+      if (method.isPresent()) {
+        method.get().invoke(null);
         return;
       }
-    } catch (InvocationTargetException ex) {
-      throw new RuntimeException(ex.getCause());
-    } catch (IllegalAccessException ex) {
-      throw new RuntimeException(ex.getCause());
+      error(String.format("No public static method %s in the class %s", methodName, properties.getStartClass()));
+    } catch (ClassNotFoundException e) {
+      error(noClassMsg(properties));
+      e.printStackTrace(System.err);
+    } catch (InvocationTargetException | IllegalAccessException e) {
+      throw new RuntimeException(e.getCause());
     }
   }
 
