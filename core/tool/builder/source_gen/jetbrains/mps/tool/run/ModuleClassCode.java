@@ -6,9 +6,9 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.persistence.PersistenceRegistry;
+import jetbrains.mps.classloading.ClassLoaderManager;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.module.ReloadableModule;
 import java.util.Optional;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -26,9 +26,13 @@ public final class ModuleClassCode {
   public void load(Platform mpsComponents, final String classFQN) throws ClassNotFoundException {
     final MPSModuleRepository repo = mpsComponents.findComponent(MPSModuleRepository.class);
     final PersistenceRegistry pf = mpsComponents.findComponent(PersistenceRegistry.class);
+    final ClassLoaderManager clm = mpsComponents.findComponent(ClassLoaderManager.class);
+    assert pf != null;
+    assert clm != null;
     final SModuleReference mr = pf.createModuleReference(myModuleReference);
     final ClassNotFoundException[] ex = new ClassNotFoundException[]{null};
     // XXX no idea why model write, that's the way MpsRunnerWorker did. Perhaps, read would suffice?
+    // FWIW, MigrationWorker did read from EDT
     repo.getModelAccess().runWriteAction(new Runnable() {
       @Override
       public void run() {
@@ -37,12 +41,8 @@ public final class ModuleClassCode {
           ex[0] = new ClassNotFoundException(String.format("No module %s among loaded", mr));
           return;
         }
-        if (!(module instanceof ReloadableModule)) {
-          ex[0] = new ClassNotFoundException(String.format("Module %s is not associated with a classloader", mr.getModuleName()));
-          return;
-        }
         try {
-          myLoadedClass = ((ReloadableModule) module).getClass(classFQN);
+          myLoadedClass = clm.getClassLoader(module).loadClass(classFQN);
         } catch (ClassNotFoundException e) {
           ex[0] = e;
         }

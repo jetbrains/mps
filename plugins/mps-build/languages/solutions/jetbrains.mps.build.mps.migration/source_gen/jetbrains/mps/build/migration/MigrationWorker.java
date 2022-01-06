@@ -20,8 +20,7 @@ import jetbrains.mps.project.Project;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SModule;
 import com.intellij.openapi.application.ApplicationManager;
-import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.tool.run.ModuleClassCode;
 import java.lang.reflect.Method;
 import com.intellij.openapi.application.ModalityState;
 import java.util.Properties;
@@ -43,7 +42,6 @@ public class MigrationWorker extends WorkerBase {
     environment.init();
     return environment;
   }
-
 
   @Override
   protected EnvironmentConfig initEnvironmentConfig() {
@@ -96,27 +94,26 @@ public class MigrationWorker extends WorkerBase {
         try {
           // FIXME why another reflection? MigrationTask builds classpath to load MigrationWorker by reflection
           // and them MigrationWorker once again uses reflection to load another class.
-          Class<?> euClass = new ModelAccessHelper(project.getRepository()).runReadAction(() -> {
-            try {
-              SModule execModule = execClassModule.resolve(project.getRepository());
-              if (execModule == null) {
-                error(String.format("Module %s not loaded, likely broken module/plugin dependencies, check log for reasons", execClassModule.getModuleName()));
-              }
-              ClassLoaderManager clm = myEnvironment.getPlatform().findComponent(ClassLoaderManager.class);
-              return clm.getClassLoader(execModule).loadClass(TASK_EXEC_CLASS);
-            } catch (Exception ex) {
-              throw new RuntimeException("Exception during migration", ex);
-            }
-          });
-          Method method = euClass.getMethod("migrate", Project.class, Boolean.TYPE);
+          // The answer to ^^ is twofold. One, I'd like to get rid of this by generic IdeaEnv worker and the rest
+          // being run from within MPS-managed code. Two, this worker performs some activities prior to switching to
+          // MPS code, and first I'd need to move this carefully into the TASK_EXEC_CLASS (or elsewhere, it's not specific 
+          // to the code to start IDEA).
+          ModuleClassCode cc = new ModuleClassCode(execClassModule.toString());
+          cc.load(myEnvironment.getPlatform(), TASK_EXEC_CLASS);
+          Method method = cc.staticMethod("migrate", Project.class, Boolean.TYPE).orElseThrow();
           Object rv = method.invoke(null, project, preCheckFailureHalt);
           if (rv instanceof Boolean) {
             result.value &= (Boolean) rv;
           } else {
             error(String.format("Migration of project %s didn't yield expected boolean result (%s)", project.getName(), rv));
+            result.value = false;
           }
+        } catch (ClassNotFoundException e) {
+          error(String.format("Module %s not loaded, likely broken module/plugin dependencies, check log for reasons", execClassModule.getModuleName()), e);
+          result.value = false;
         } catch (Exception e) {
-          throw new RuntimeException("Exception during migration", e);
+          error("Exception during migration", e);
+          result.value = false;
         }
       }, ModalityState.defaultModalityState());
 
@@ -132,7 +129,7 @@ public class MigrationWorker extends WorkerBase {
       try (FileOutputStream fos = new FileOutputStream(propFile)) {
         properties.store(fos, "");
       } catch (IOException ex) {
-        log("Exception while saving property file with result code", ex);
+        error("Exception while saving property file with result code", ex);
       }
     }
   }

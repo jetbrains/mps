@@ -61,8 +61,7 @@ public class MpsRunnerWorker extends WorkerBase {
       }
       error(String.format("No public static method %s in the class %s", methodName, properties.getStartClass()));
     } catch (ClassNotFoundException e) {
-      error(noClassMsg(properties));
-      e.printStackTrace(System.err);
+      error(noClassMsg(properties), e);
     } catch (InvocationTargetException | IllegalAccessException e) {
       throw new RuntimeException(e.getCause());
     }

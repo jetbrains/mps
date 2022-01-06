@@ -59,9 +59,6 @@
       <concept id="1164991038168" name="jetbrains.mps.baseLanguage.structure.ThrowStatement" flags="nn" index="YS8fn">
         <child id="1164991057263" name="throwable" index="YScLw" />
       </concept>
-      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
-        <reference id="1144433057691" name="classifier" index="1PxDUh" />
-      </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534760951" name="jetbrains.mps.baseLanguage.structure.ArrayType" flags="in" index="10Q1$e">
         <child id="1070534760952" name="componentType" index="10Q1$1" />
@@ -863,26 +860,15 @@
             <node concept="3clFbS" id="5AcmpEObevm" role="1zc67A">
               <node concept="3clFbF" id="55GXSETpOYM" role="3cqZAp">
                 <node concept="1rXfSq" id="55GXSETpOYN" role="3clFbG">
-                  <ref role="37wK5l" to="jo3e:KL8Aqlj5zJ" resolve="error" />
+                  <ref role="37wK5l" to="jo3e:3R5dWNYRHqp" resolve="error" />
                   <node concept="1rXfSq" id="X8UZrxRbKN" role="37wK5m">
                     <ref role="37wK5l" node="X8UZrxRbKI" resolve="noClassMsg" />
                     <node concept="37vLTw" id="X8UZrxRbKM" role="37wK5m">
                       <ref role="3cqZAo" node="1Vi5mb_oEYY" resolve="properties" />
                     </node>
                   </node>
-                </node>
-              </node>
-              <node concept="3clFbF" id="X8UZrxRROb" role="3cqZAp">
-                <node concept="2OqwBi" id="X8UZrxRTlu" role="3clFbG">
-                  <node concept="37vLTw" id="X8UZrxRRO9" role="2Oq$k0">
+                  <node concept="37vLTw" id="3FIdrOJL76J" role="37wK5m">
                     <ref role="3cqZAo" node="5AcmpEObevk" resolve="e" />
-                  </node>
-                  <node concept="liA8E" id="X8UZrxRV6v" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~Throwable.printStackTrace(java.io.PrintStream)" resolve="printStackTrace" />
-                    <node concept="10M0yZ" id="X8UZrxRYvl" role="37wK5m">
-                      <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
-                      <ref role="3cqZAo" to="wyt6:~System.err" resolve="err" />
-                    </node>
                   </node>
                 </node>
               </node>

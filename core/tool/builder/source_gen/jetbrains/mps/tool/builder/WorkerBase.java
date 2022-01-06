@@ -134,7 +134,7 @@ public abstract class WorkerBase {
       dispose();
       System.exit(0);
     } catch (Throwable e) {
-      log(e);
+      error("workFromMain", e);
       System.exit(1);
     }
   }
@@ -240,15 +240,15 @@ public abstract class WorkerBase {
     log(text, Level.ERROR);
     myErrors.add(text);
   }
-  public void log(Throwable e) {
-    StringBuffer sb = WorkerBase.extractStackTrace(e);
-    error(sb.toString());
+  public void error(String text, Throwable e) {
+    if (e != null) {
+      StringBuffer sb = WorkerBase.extractStackTrace(e);
+      text = text + "\n" + sb.toString();
+    }
+    log(text, Level.ERROR);
+    myErrors.add(text);
   }
-  public void log(String text, Throwable e) {
-    StringBuffer sb = WorkerBase.extractStackTrace(e);
-    error(text + "\n" + sb.toString());
-  }
-  public static StringBuffer extractStackTrace(Throwable e) {
+  private static StringBuffer extractStackTrace(Throwable e) {
     StringWriter writer = new StringWriter();
     e.printStackTrace(new PrintWriter(writer));
     return writer.getBuffer();

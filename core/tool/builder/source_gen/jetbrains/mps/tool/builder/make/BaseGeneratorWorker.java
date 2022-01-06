@@ -31,7 +31,6 @@ import jetbrains.mps.smodel.resources.ModelsToResources;
 import jetbrains.mps.messages.IMessageHandler;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.messages.IMessage;
-import jetbrains.mps.tool.builder.WorkerBase;
 
 @GeneratedClass(node = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)/878521226301293996", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
 public abstract class BaseGeneratorWorker extends CoreWorker {
@@ -143,14 +142,7 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
     public void handle(@NotNull IMessage msg) {
       switch (msg.getKind()) {
         case ERROR:
-          if (msg.getException() != null) {
-            StringBuilder m = new StringBuilder(msg.getText());
-            m.append('\n');
-            m.append(WorkerBase.extractStackTrace(msg.getException()));
-            BaseGeneratorWorker.this.error(m.toString());
-          } else {
-            BaseGeneratorWorker.this.error(msg.getText());
-          }
+          BaseGeneratorWorker.this.error(msg.getText(), msg.getException());
           break;
         case WARNING:
           BaseGeneratorWorker.this.warning(msg.getText());
