@@ -22,12 +22,9 @@ import org.apache.log4j.Logger;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.components.ComponentHost;
 import java.util.Set;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.generator.GenerationFacade;
-import java.util.Collection;
 import org.jetbrains.mps.openapi.module.SRepository;
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
@@ -182,25 +179,6 @@ public abstract class WorkerBase {
     }
   }
 
-  protected void extractModels(Set<SModel> result, Project project) {
-    for (SModule module : project.getProjectModulesWithGenerators()) {
-      for (SModel model : module.getModels()) {
-        if (includeModel(model)) {
-          result.add(model);
-        }
-      }
-    }
-  }
-  private boolean includeModel(SModel model) {
-    return !(SModelStereotype.isStubModel(model)) && GenerationFacade.canGenerate(model);
-  }
-  protected void extractModels(Collection<SModel> modelsList, SModule m) {
-    for (SModel d : m.getModels()) {
-      if (includeModel(d)) {
-        modelsList.add(d);
-      }
-    }
-  }
   /**
    * Discovers module(s) from specified location of a module descriptor, loads and registers them in
    * global (JUST FOR NOW) repository with custom owner.
