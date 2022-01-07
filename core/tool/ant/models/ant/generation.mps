@@ -405,15 +405,11 @@
     <property role="TrG5h" value="GenerateTask" />
     <property role="1sVAO0" value="false" />
     <property role="1EXbeo" value="false" />
-    <node concept="312cEg" id="3pzB6wMWzXv" role="jymVt">
-      <property role="34CwA1" value="false" />
-      <property role="eg7rD" value="false" />
-      <property role="TrG5h" value="myJavaCompilerProperties" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="3pzB6wMWzXx" role="1tU5fm">
-        <ref role="3uigEE" to="asz6:3pzB6wMWmOx" resolve="JavaCompilerProperties" />
-      </node>
-      <node concept="3Tm6S6" id="3pzB6wMWzXy" role="1B3o_S" />
+    <node concept="312cEg" id="g9$9d2Eizj" role="jymVt">
+      <property role="TrG5h" value="myTargetJavaVersion" />
+      <node concept="3Tm6S6" id="g9$9d2Ef5X" role="1B3o_S" />
+      <node concept="17QB3L" id="g9$9d2EgsP" role="1tU5fm" />
+      <node concept="10Nm6u" id="g9$9d2EjiF" role="33vP2m" />
     </node>
     <node concept="312cEg" id="g9$9d2Capd" role="jymVt">
       <property role="TrG5h" value="mySettings" />
@@ -550,21 +546,6 @@
             </node>
             <node concept="3oM_SD" id="g9$9d2DLg1" role="1PaTwD">
               <property role="3oM_SC" value="attributes." />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="3pzB6wMWANY" role="3cqZAp">
-          <node concept="37vLTI" id="3pzB6wMWANZ" role="3clFbG">
-            <node concept="37vLTw" id="3pzB6wMWAO0" role="37vLTJ">
-              <ref role="3cqZAo" node="3pzB6wMWzXv" resolve="myJavaCompilerProperties" />
-            </node>
-            <node concept="2ShNRf" id="3pzB6wMWAO6" role="37vLTx">
-              <node concept="1pGfFk" id="3pzB6wMWAO7" role="2ShVmc">
-                <ref role="37wK5l" to="asz6:3pzB6wMWswn" resolve="JavaCompilerProperties" />
-                <node concept="37vLTw" id="3pzB6wMWAO2" role="37wK5m">
-                  <ref role="3cqZAo" to="644x:3ufQioQQtje" resolve="myWhatToDo" />
-                </node>
-              </node>
             </node>
           </node>
         </node>
@@ -1226,6 +1207,91 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="g9$9d2EEKN" role="3cqZAp">
+          <node concept="1PaTwC" id="g9$9d2EEKO" role="1aUNEU">
+            <node concept="3oM_SD" id="g9$9d2EFde" role="1PaTwD">
+              <property role="3oM_SC" value="keep" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EFdg" role="1PaTwD">
+              <property role="3oM_SC" value="JCP" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EFdj" role="1PaTwD">
+              <property role="3oM_SC" value="out" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EFdn" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EFds" role="1PaTwD">
+              <property role="3oM_SC" value="if" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EFdy" role="1PaTwD">
+              <property role="3oM_SC" value="just" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EFdD" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EFdL" role="1PaTwD">
+              <property role="3oM_SC" value="case" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EFdU" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EFe4" role="1PaTwD">
+              <property role="3oM_SC" value="sets" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EFef" role="1PaTwD">
+              <property role="3oM_SC" value="some" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EFer" role="1PaTwD">
+              <property role="3oM_SC" value="defaults" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EFeC" role="1PaTwD">
+              <property role="3oM_SC" value="in" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EFeQ" role="1PaTwD">
+              <property role="3oM_SC" value="constructor" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="g9$9d2Etil" role="3cqZAp">
+          <node concept="3cpWsn" id="g9$9d2Etim" role="3cpWs9">
+            <property role="TrG5h" value="jcp" />
+            <node concept="3uibUv" id="g9$9d2Et4j" role="1tU5fm">
+              <ref role="3uigEE" to="asz6:3pzB6wMWmOx" resolve="JavaCompilerProperties" />
+            </node>
+            <node concept="2ShNRf" id="g9$9d2Etin" role="33vP2m">
+              <node concept="1pGfFk" id="g9$9d2Etio" role="2ShVmc">
+                <ref role="37wK5l" to="asz6:3pzB6wMWswn" resolve="JavaCompilerProperties" />
+                <node concept="37vLTw" id="g9$9d2Etip" role="37wK5m">
+                  <ref role="3cqZAo" node="g9$9d2C0XF" resolve="whatToDo" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="g9$9d2Eu_4" role="3cqZAp">
+          <node concept="3clFbS" id="g9$9d2Eu_6" role="3clFbx">
+            <node concept="3clFbF" id="3pzB6wMWAYr" role="3cqZAp">
+              <node concept="2OqwBi" id="3pzB6wMWAYy" role="3clFbG">
+                <node concept="37vLTw" id="3pzB6wMWAYx" role="2Oq$k0">
+                  <ref role="3cqZAo" node="g9$9d2Etim" resolve="jcp" />
+                </node>
+                <node concept="liA8E" id="3pzB6wMWAYz" role="2OqNvi">
+                  <ref role="37wK5l" to="asz6:3pzB6wMWswx" resolve="setTargetJavaVersion" />
+                  <node concept="37vLTw" id="3pzB6wMWAYt" role="37wK5m">
+                    <ref role="3cqZAo" node="g9$9d2Eizj" resolve="myTargetJavaVersion" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3y3z36" id="g9$9d2ExfY" role="3clFbw">
+            <node concept="10Nm6u" id="g9$9d2Eym9" role="3uHU7w" />
+            <node concept="37vLTw" id="g9$9d2EwzO" role="3uHU7B">
+              <ref role="3cqZAo" node="g9$9d2Eizj" resolve="myTargetJavaVersion" />
+            </node>
+          </node>
+        </node>
       </node>
       <node concept="2AHcQZ" id="g9$9d2C0XU" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" />
@@ -1490,16 +1556,53 @@
         <node concept="17QB3L" id="70B3qCBD4_u" role="1tU5fm" />
       </node>
       <node concept="3clFbS" id="3pzB6wMWAYq" role="3clF47">
-        <node concept="3clFbF" id="3pzB6wMWAYr" role="3cqZAp">
-          <node concept="2OqwBi" id="3pzB6wMWAYy" role="3clFbG">
-            <node concept="37vLTw" id="3pzB6wMWAYx" role="2Oq$k0">
-              <ref role="3cqZAo" node="3pzB6wMWzXv" resolve="myJavaCompilerProperties" />
+        <node concept="3SKdUt" id="g9$9d2EGlw" role="3cqZAp">
+          <node concept="1PaTwC" id="g9$9d2EGlx" role="1aUNEU">
+            <node concept="3oM_SD" id="g9$9d2EGKC" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
             </node>
-            <node concept="liA8E" id="3pzB6wMWAYz" role="2OqNvi">
-              <ref role="37wK5l" to="asz6:3pzB6wMWswx" resolve="setTargetJavaVersion" />
-              <node concept="37vLTw" id="3pzB6wMWAYt" role="37wK5m">
-                <ref role="3cqZAo" node="3pzB6wMWAYo" resolve="targetJavaVersion" />
-              </node>
+            <node concept="3oM_SD" id="g9$9d2EGL5" role="1PaTwD">
+              <property role="3oM_SC" value="shall" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EGLY" role="1PaTwD">
+              <property role="3oM_SC" value="follow" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EGNj" role="1PaTwD">
+              <property role="3oM_SC" value="GeneratorSettings" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EGPv" role="1PaTwD">
+              <property role="3oM_SC" value="approach" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EGQr" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EGQX" role="1PaTwD">
+              <property role="3oM_SC" value="extract" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EGRw" role="1PaTwD">
+              <property role="3oM_SC" value="a" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EGSU" role="1PaTwD">
+              <property role="3oM_SC" value="distinct" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EGT4" role="1PaTwD">
+              <property role="3oM_SC" value="compile" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EGVL" role="1PaTwD">
+              <property role="3oM_SC" value="settings" />
+            </node>
+            <node concept="3oM_SD" id="g9$9d2EGVX" role="1PaTwD">
+              <property role="3oM_SC" value="typedef" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="g9$9d2EknC" role="3cqZAp">
+          <node concept="37vLTI" id="g9$9d2Elg6" role="3clFbG">
+            <node concept="37vLTw" id="g9$9d2ElLp" role="37vLTx">
+              <ref role="3cqZAo" node="3pzB6wMWAYo" resolve="targetJavaVersion" />
+            </node>
+            <node concept="37vLTw" id="g9$9d2EknA" role="37vLTJ">
+              <ref role="3cqZAo" node="g9$9d2Eizj" resolve="myTargetJavaVersion" />
             </node>
           </node>
         </node>
@@ -1540,6 +1643,12 @@
     <property role="TrG5h" value="GenTestTask" />
     <property role="1sVAO0" value="false" />
     <property role="1EXbeo" value="false" />
+    <node concept="312cEg" id="g9$9d2EIbJ" role="jymVt">
+      <property role="TrG5h" value="myIsDiff" />
+      <node concept="3Tm6S6" id="g9$9d2EHYx" role="1B3o_S" />
+      <node concept="10P_77" id="g9$9d2EI83" role="1tU5fm" />
+      <node concept="3clFbT" id="g9$9d2EIrI" role="33vP2m" />
+    </node>
     <node concept="3uibUv" id="JPOEsuruc1" role="1zkMxy">
       <ref role="3uigEE" node="3GGnItM970V" resolve="GenerateTask" />
     </node>
@@ -1558,32 +1667,58 @@
       </node>
       <node concept="3Tm1VV" id="4vDU0BPA2AY" role="1B3o_S" />
     </node>
-    <node concept="3clFb_" id="3ufQioQQtFv" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getShowDiff" />
-      <property role="DiZV1" value="false" />
-      <node concept="3clFbS" id="3ufQioQQtFy" role="3clF47">
-        <node concept="3cpWs6" id="3ufQioQQtFz" role="3cqZAp">
-          <node concept="2YIFZM" id="3ufQioQQtF$" role="3cqZAk">
-            <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
-            <ref role="37wK5l" to="wyt6:~Boolean.parseBoolean(java.lang.String)" resolve="parseBoolean" />
-            <node concept="2OqwBi" id="3ufQioQQtF_" role="37wK5m">
-              <node concept="37vLTw" id="2BHiRxeufOG" role="2Oq$k0">
-                <ref role="3cqZAo" to="644x:3ufQioQQtje" resolve="myWhatToDo" />
-              </node>
-              <node concept="liA8E" id="3ufQioQQtFB" role="2OqNvi">
-                <ref role="37wK5l" to="asz6:KL8Aql8eBs" resolve="getProperty" />
-                <node concept="10M0yZ" id="1bMaI2Xpbuy" role="37wK5m">
-                  <ref role="1PxDUh" to="asz6:6R7vamtty$v" resolve="ScriptProperties" />
-                  <ref role="3cqZAo" to="asz6:1bMaI2Xpbut" resolve="SHOW_DIFF" />
+    <node concept="2tJIrI" id="g9$9d2EHf_" role="jymVt" />
+    <node concept="3clFb_" id="g9$9d2EHq7" role="jymVt">
+      <property role="TrG5h" value="finalizeSciptSettings" />
+      <node concept="3Tmbuc" id="g9$9d2EHq8" role="1B3o_S" />
+      <node concept="3cqZAl" id="g9$9d2EHq9" role="3clF45" />
+      <node concept="37vLTG" id="g9$9d2EHqa" role="3clF46">
+        <property role="TrG5h" value="whatToDo" />
+        <node concept="3uibUv" id="g9$9d2EHqb" role="1tU5fm">
+          <ref role="3uigEE" to="asz6:KL8Aql8enO" resolve="Script" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="g9$9d2EHqV" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+      <node concept="3clFbS" id="g9$9d2EHqW" role="3clF47">
+        <node concept="3clFbF" id="g9$9d2EHqZ" role="3cqZAp">
+          <node concept="3nyPlj" id="g9$9d2EHqY" role="3clFbG">
+            <ref role="37wK5l" node="g9$9d2C0X6" resolve="finalizeSciptSettings" />
+            <node concept="37vLTw" id="g9$9d2EHqX" role="37wK5m">
+              <ref role="3cqZAo" node="g9$9d2EHqa" resolve="whatToDo" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="g9$9d2EJsK" role="3cqZAp">
+          <node concept="3clFbS" id="g9$9d2EJsM" role="3clFbx">
+            <node concept="3clFbF" id="3ufQioQQtFJ" role="3cqZAp">
+              <node concept="2OqwBi" id="3ufQioQQtFK" role="3clFbG">
+                <node concept="liA8E" id="3ufQioQQtFM" role="2OqNvi">
+                  <ref role="37wK5l" to="asz6:KL8Aql8eBe" resolve="putProperty" />
+                  <node concept="10M0yZ" id="1bMaI2Xpbuz" role="37wK5m">
+                    <ref role="1PxDUh" to="asz6:6R7vamtty$v" resolve="ScriptProperties" />
+                    <ref role="3cqZAo" to="asz6:1bMaI2Xpbut" resolve="SHOW_DIFF" />
+                  </node>
+                  <node concept="2YIFZM" id="3ufQioQQtFO" role="37wK5m">
+                    <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean)" resolve="toString" />
+                    <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+                    <node concept="37vLTw" id="2BHiRxghekK" role="37wK5m">
+                      <ref role="3cqZAo" node="g9$9d2EIbJ" resolve="myIsDiff" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="37vLTw" id="2BHiRxeuTrw" role="2Oq$k0">
+                  <ref role="3cqZAo" node="g9$9d2EHqa" resolve="whatToDo" />
                 </node>
               </node>
             </node>
           </node>
+          <node concept="37vLTw" id="g9$9d2EJ$Y" role="3clFbw">
+            <ref role="3cqZAo" node="g9$9d2EIbJ" resolve="myIsDiff" />
+          </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="3ufQioQQtFw" role="1B3o_S" />
-      <node concept="10P_77" id="3ufQioQQtFx" role="3clF45" />
     </node>
     <node concept="3clFb_" id="3ufQioQQtFD" role="jymVt">
       <property role="1EzhhJ" value="false" />
@@ -1592,24 +1727,13 @@
       <node concept="3Tm1VV" id="3ufQioQQtFE" role="1B3o_S" />
       <node concept="3cqZAl" id="3ufQioQQtFF" role="3clF45" />
       <node concept="3clFbS" id="3ufQioQQtFI" role="3clF47">
-        <node concept="3clFbF" id="3ufQioQQtFJ" role="3cqZAp">
-          <node concept="2OqwBi" id="3ufQioQQtFK" role="3clFbG">
-            <node concept="liA8E" id="3ufQioQQtFM" role="2OqNvi">
-              <ref role="37wK5l" to="asz6:KL8Aql8eBe" resolve="putProperty" />
-              <node concept="10M0yZ" id="1bMaI2Xpbuz" role="37wK5m">
-                <ref role="1PxDUh" to="asz6:6R7vamtty$v" resolve="ScriptProperties" />
-                <ref role="3cqZAo" to="asz6:1bMaI2Xpbut" resolve="SHOW_DIFF" />
-              </node>
-              <node concept="2YIFZM" id="3ufQioQQtFO" role="37wK5m">
-                <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean)" resolve="toString" />
-                <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
-                <node concept="37vLTw" id="2BHiRxghekK" role="37wK5m">
-                  <ref role="3cqZAo" node="3ufQioQQtFG" resolve="isDifferenceCalculated" />
-                </node>
-              </node>
+        <node concept="3clFbF" id="g9$9d2EIC3" role="3cqZAp">
+          <node concept="37vLTI" id="g9$9d2EIUX" role="3clFbG">
+            <node concept="37vLTw" id="g9$9d2EJdH" role="37vLTx">
+              <ref role="3cqZAo" node="3ufQioQQtFG" resolve="isDifferenceCalculated" />
             </node>
-            <node concept="37vLTw" id="2BHiRxeuTrw" role="2Oq$k0">
-              <ref role="3cqZAo" to="644x:3ufQioQQtje" resolve="myWhatToDo" />
+            <node concept="37vLTw" id="g9$9d2EIC1" role="37vLTJ">
+              <ref role="3cqZAo" node="g9$9d2EIbJ" resolve="myIsDiff" />
             </node>
           </node>
         </node>

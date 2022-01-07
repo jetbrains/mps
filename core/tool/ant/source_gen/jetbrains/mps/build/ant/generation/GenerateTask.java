@@ -4,7 +4,6 @@ package jetbrains.mps.build.ant.generation;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.build.ant.MpsLoadTask;
-import jetbrains.mps.tool.common.JavaCompilerProperties;
 import jetbrains.mps.build.ant.GeneratorSettings;
 import jetbrains.mps.build.ant.ModuleJarDataType;
 import java.io.BufferedReader;
@@ -13,10 +12,11 @@ import java.io.File;
 import org.apache.tools.ant.Project;
 import jetbrains.mps.tool.common.Script;
 import jetbrains.mps.tool.common.GeneratorProperties;
+import jetbrains.mps.tool.common.JavaCompilerProperties;
 
 @GeneratedClass(node = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)/4263887295358464059", model = "r:f80180a9-2bac-487b-83fc-3ef65f97aea3(jetbrains.mps.build.ant.generation)")
 public class GenerateTask extends MpsLoadTask {
-  private final JavaCompilerProperties myJavaCompilerProperties;
+  private String myTargetJavaVersion = null;
   private GeneratorSettings mySettings;
   private int myParallelThreads = 4;
 
@@ -24,7 +24,6 @@ public class GenerateTask extends MpsLoadTask {
     super("jetbrains.mps.tool.builder.make.GeneratorWorker");
     // FIXME remove all setXXX methods related to GeneratorSettings once approach with nested <settings> element is in use for at least a year,
     //   just in case there are old <generate> tasks with settings as attributes.
-    myJavaCompilerProperties = new JavaCompilerProperties(myWhatToDo);
   }
 
   public void addConfiguredChunk(Chunk chunk) {
@@ -80,6 +79,11 @@ public class GenerateTask extends MpsLoadTask {
     super.finalizeSciptSettings(whatToDo);
     GeneratorProperties gp = new GeneratorProperties(whatToDo);
     getSettings().feedInto(gp);
+    // keep JCP out of if just in case it sets some defaults in constructor
+    JavaCompilerProperties jcp = new JavaCompilerProperties(whatToDo);
+    if (myTargetJavaVersion != null) {
+      jcp.setTargetJavaVersion(myTargetJavaVersion);
+    }
   }
 
   public void setStrictMode(boolean strictMode) {
@@ -110,7 +114,8 @@ public class GenerateTask extends MpsLoadTask {
     getSettings().setSkipUnmodifiedModels(skipUnmodifiedModels);
   }
   public void setTargetJavaVersion(String targetJavaVersion) {
-    myJavaCompilerProperties.setTargetJavaVersion(targetJavaVersion);
+    // FIXME shall follow GeneratorSettings approach and extract a distinct compile settings typedef
+    myTargetJavaVersion = targetJavaVersion;
   }
   public void setMessageLevel(String level) {
     getSettings().setMessageLevel(level);

@@ -18,8 +18,10 @@
   </dependency>
   <dependency className="jetbrains.mps.build.ant.generation.GenTestTask">
     <classNode dependClassName="java.lang.Boolean" />
+    <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.build.ant.generation.ModuleChunkPart" />
+    <classNode dependClassName="jetbrains.mps.tool.common.Script" />
     <classNode dependClassName="jetbrains.mps.tool.common.ScriptProperties" />
     <classNode extendsClassName="jetbrains.mps.build.ant.generation.GenerateTask" />
   </dependency>
