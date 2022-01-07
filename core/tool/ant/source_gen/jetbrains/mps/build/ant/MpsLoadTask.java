@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.ArrayList;
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Project;
-import java.util.Set;
 import java.util.Hashtable;
+import java.util.Set;
 import org.apache.tools.ant.util.JavaEnvUtils;
 import java.util.HashSet;
 import java.io.IOException;
@@ -169,19 +169,29 @@ public class MpsLoadTask extends Task {
     return myWorkerClass;
   }
 
-  @Override
-  public void execute() throws BuildException {
-    // By default, we build a classpath that presumably contains all necessary MPS jars (expecting MpsEnvironment or even IdeaEnvironment to fire up)
-    // though specific task subclasses have control over what to include there. Unfortunately, there's no yet fine-grained control e.g. to include
-    // only jars sufficient for MpsEnvironment (i.e. not to include any IDEA stuff)
-    Set<File> classPaths = calculateClassPath(myFork);
+  /**
+   * Gives subclasses a chance to put anything necessary into the script prior to {@link jetbrains.mps.build.ant.MpsLoadTask#execute() }.
+   * If you override the method, don't forget to invoke super implementation
+   * 
+   * @param whatToDo description of what and how to run
+   */
+  protected void finalizeSciptSettings(Script whatToDo) {
     if (myUsePropertiesAsMacro) {
       Hashtable properties = getProject().getProperties();
       for (Object name : properties.keySet()) {
         Object value = properties.get(name);
-        myWhatToDo.addMacro((String) name, (String) value);
+        whatToDo.addMacro((String) name, (String) value);
       }
     }
+  }
+
+  @Override
+  public void execute() throws BuildException {
+    finalizeSciptSettings(myWhatToDo);
+    // By default, we build a classpath that presumably contains all necessary MPS jars (expecting MpsEnvironment or even IdeaEnvironment to fire up)
+    // though specific task subclasses have control over what to include there. Unfortunately, there's no yet fine-grained control e.g. to include
+    // only jars sufficient for MpsEnvironment (i.e. not to include any IDEA stuff)
+    Set<File> classPaths = calculateClassPath(myFork);
     if (myFork) {
       String currentClassPathString = System.getProperty("java.class.path");
       List<String> commandLine = new ArrayList<String>();

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-27ayl7746emagnhu8ozf5unifhu6zp4">
-  <files names="AllModulesDataType.java:Arg.java:ExcludeNested.java:JvmArgs.java:MPSClasspathUtil.java:Macro.java:MigrationTask.java:ModuleDataType.java:ModuleJarDataType.java:ModulesDataType.java:MpsLoadTask.java:MyExecuteStreamHandler.java:Plugin.java:ProjectPath.java:RepositoryDataType.java" />
+<product version="3" modelHash="-dct8lrupafr6847k3jr8ez15c0ld730">
+  <files names="AllModulesDataType.java:Arg.java:ExcludeNested.java:GeneratorSettings.java:JvmArgs.java:MPSClasspathUtil.java:Macro.java:MigrationTask.java:ModuleDataType.java:ModuleJarDataType.java:ModulesDataType.java:MpsLoadTask.java:MyExecuteStreamHandler.java:Plugin.java:ProjectPath.java:RepositoryDataType.java" />
 </product>
 
