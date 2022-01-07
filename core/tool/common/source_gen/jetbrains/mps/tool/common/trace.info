@@ -102,9 +102,11 @@
       <node id="250862790756795985" at="75,84,76,89" concept="5" />
       <node id="250862790756793856" at="76,89,77,16" concept="12" />
       <node id="250862790756804300" at="79,43,80,78" concept="12" />
-      <node id="4060892479724002563" at="82,60,83,43" concept="5" />
-      <node id="4060892479724012434" at="83,43,84,16" concept="12" />
-      <node id="4060892479724024987" at="86,35,87,43" concept="12" />
+      <node id="290922613095581193" at="83,24,84,94" concept="13" />
+      <node id="290922613095582609" at="84,94,85,112" concept="13" />
+      <node id="4060892479724002563" at="85,112,86,45" concept="5" />
+      <node id="4060892479724012434" at="87,5,88,16" concept="12" />
+      <node id="4060892479724024987" at="90,35,91,43" concept="12" />
       <node id="3415722583341620826" at="26,0,29,0" concept="3" trace="GeneratorProperties#(Ljetbrains/mps/tool/common/Script;)V" />
       <node id="5682549678865142936" at="33,0,36,0" concept="10" trace="isStrictMode#()Z" />
       <node id="5682549678865142980" at="40,0,43,0" concept="10" trace="isParallelMode#()Z" />
@@ -112,7 +114,7 @@
       <node id="3938719774424675061" at="65,0,68,0" concept="10" trace="isHideWarnings#()Z" />
       <node id="7766370779597763617" at="72,0,75,0" concept="10" trace="isCreateStaticRefs#()Z" />
       <node id="250862790756802090" at="79,0,82,0" concept="10" trace="isSkipUnmodifiedModels#()Z" />
-      <node id="4060892479724019966" at="86,0,89,0" concept="10" trace="getMessageLevel#()Ljava/lang/String;" />
+      <node id="4060892479724019966" at="90,0,93,0" concept="10" trace="getMessageLevel#()Ljava/lang/String;" />
       <node id="5682549678865142914" at="29,0,33,0" concept="10" trace="setStrictMode#(Z)Ljetbrains/mps/tool/common/GeneratorProperties;" />
       <node id="5682549678865142958" at="36,0,40,0" concept="10" trace="setParallelMode#(Z)Ljetbrains/mps/tool/common/GeneratorProperties;" />
       <node id="4297162197629886268" at="43,0,47,0" concept="10" trace="setParallelThreads#(I)Ljetbrains/mps/tool/common/GeneratorProperties;" />
@@ -120,9 +122,10 @@
       <node id="3938719774424675043" at="61,0,65,0" concept="10" trace="setHideWarnings#(Z)Ljetbrains/mps/tool/common/GeneratorProperties;" />
       <node id="7766370779597762076" at="68,0,72,0" concept="10" trace="setCreateStaticRefs#(Z)Ljetbrains/mps/tool/common/GeneratorProperties;" />
       <node id="250862790756791516" at="75,0,79,0" concept="10" trace="setSkipUnmodifiedModels#(Z)Ljetbrains/mps/tool/common/GeneratorProperties;" />
-      <node id="4060892479723994735" at="82,0,86,0" concept="10" trace="setMessageLevel#(Ljava/lang/String;)Ljetbrains/mps/tool/common/GeneratorProperties;" />
       <node id="4297162197629942116" at="47,35,52,5" concept="19" />
+      <node id="290922613095571393" at="82,60,87,5" concept="9" />
       <node id="4297162197629902829" at="47,0,54,0" concept="10" trace="getParallelThreads#()I" />
+      <node id="4060892479723994735" at="82,0,90,0" concept="10" trace="setMessageLevel#(Ljava/lang/String;)Ljetbrains/mps/tool/common/GeneratorProperties;" />
       <scope id="3415722583341620830" at="26,45,27,22" />
       <scope id="5682549678865142939" at="33,33,34,67" />
       <scope id="5682549678865142983" at="40,35,41,69" />
@@ -132,7 +135,7 @@
       <scope id="3938719774424675064" at="65,35,66,67" />
       <scope id="7766370779597763621" at="72,39,73,71" />
       <scope id="250862790756802093" at="79,43,80,78" />
-      <scope id="4060892479724019969" at="86,35,87,43" />
+      <scope id="4060892479724019969" at="90,35,91,43" />
       <scope id="5682549678865142919" at="29,64,31,16" />
       <scope id="5682549678865142963" at="36,68,38,16" />
       <scope id="4297162197629886272" at="43,67,45,16" />
@@ -143,7 +146,6 @@
       <scope id="3938719774424675046" at="61,63,63,16" />
       <scope id="7766370779597762080" at="68,73,70,16" />
       <scope id="250862790756791519" at="75,84,77,16" />
-      <scope id="4060892479723994739" at="82,60,84,16" />
       <scope id="3415722583341620826" at="26,0,29,0">
         <var name="script" id="3415722583341620871" />
       </scope>
@@ -153,7 +155,8 @@
       <scope id="3938719774424675061" at="65,0,68,0" />
       <scope id="7766370779597763617" at="72,0,75,0" />
       <scope id="250862790756802090" at="79,0,82,0" />
-      <scope id="4060892479724019966" at="86,0,89,0" />
+      <scope id="290922613095571395" at="83,24,86,45" />
+      <scope id="4060892479724019966" at="90,0,93,0" />
       <scope id="5682549678865142914" at="29,0,33,0">
         <var name="strictMode" id="5682549678865142917" />
       </scope>
@@ -175,12 +178,13 @@
       <scope id="250862790756791516" at="75,0,79,0">
         <var name="skipUnmodifiedModels" id="250862790756792761" />
       </scope>
-      <scope id="4060892479723994735" at="82,0,86,0">
+      <scope id="4297162197629902833" at="47,35,52,5" />
+      <scope id="4060892479723994739" at="82,60,88,16" />
+      <scope id="4297162197629902829" at="47,0,54,0" />
+      <scope id="4060892479723994735" at="82,0,90,0">
         <var name="level" id="4060892479724001150" />
       </scope>
-      <scope id="4297162197629902833" at="47,35,52,5" />
-      <scope id="4297162197629902829" at="47,0,54,0" />
-      <unit id="3415722583340914388" at="10,0,90,0" name="jetbrains.mps.tool.common.GeneratorProperties" />
+      <unit id="3415722583340914388" at="10,0,94,0" name="jetbrains.mps.tool.common.GeneratorProperties" />
     </file>
   </root>
   <root nodeRef="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)/3919148072087678241">

@@ -80,7 +80,11 @@ public final class GeneratorProperties {
     return Boolean.parseBoolean(myScript.getProperty(SKIP_UNMODIFIED_MODELS));
   }
   public GeneratorProperties setMessageLevel(String level) {
-    myScript.putProperty(MSG_LEVEL, level);
+    if (level != null) {
+      // there's no mechanism to 'delete' a property, but as long as script is populated once,
+      // seems fine just to ignore null(default) value. FTR, Script serialization code doesn't like null values.
+      myScript.putProperty(MSG_LEVEL, level);
+    }
     return this;
   }
   public String getMessageLevel() {
