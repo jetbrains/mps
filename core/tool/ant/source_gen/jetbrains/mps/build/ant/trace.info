@@ -265,10 +265,10 @@
       <node id="290922613093752344" at="67,5,68,78" concept="13" />
       <node id="290922613093744791" at="69,112,70,28" concept="5" />
       <node id="4060892479724422693" at="71,5,72,87" concept="5" />
-      <node id="290922613094463899" at="75,48,76,96" concept="13" />
-      <node id="290922613094467409" at="76,96,77,120" concept="13" />
-      <node id="290922613094474277" at="77,120,78,155" concept="13" />
-      <node id="290922613094440684" at="79,24,80,77" concept="5" />
+      <node id="290922613094463899" at="75,48,76,105" concept="13" />
+      <node id="5423338990221234756" at="76,105,77,110" concept="13" />
+      <node id="290922613094440684" at="78,24,79,77" concept="5" />
+      <node id="5423338990221277722" at="79,77,80,13" concept="12" />
       <node id="290922613093874084" at="81,5,82,102" concept="5" />
       <node id="290922613093795358" at="82,102,83,110" concept="5" />
       <node id="290922613093879308" at="83,110,84,81" concept="5" />
@@ -280,8 +280,8 @@
       <node id="290922613093608538" at="55,0,58,0" concept="10" trace="setSkipUnmodifiedModels#(Z)V" />
       <node id="290922613093611233" at="59,0,62,0" concept="10" trace="setWarnWrongChild#(Z)V" />
       <node id="290922613093747948" at="68,78,71,5" concept="9" />
-      <node id="290922613094435389" at="78,155,81,5" concept="9" />
       <node id="4060892479724435941" at="63,45,67,5" concept="9" />
+      <node id="290922613094435389" at="77,110,81,5" concept="9" />
       <node id="290922613093606226" at="40,0,46,0" concept="10" trace="setParallelThreads#(I)V" />
       <node id="290922613093613209" at="63,0,74,0" concept="10" trace="setMessageLevel#(Ljava/lang/String;)V" />
       <node id="290922613093783298" at="75,0,86,0" concept="10" trace="feedInto#(Ljetbrains/mps/tool/common/GeneratorProperties;)V" />
@@ -293,9 +293,9 @@
       <scope id="290922613093608541" at="55,69,56,44" />
       <scope id="290922613093611236" at="59,62,60,43" />
       <scope id="290922613093747950" at="69,112,70,28" />
-      <scope id="290922613094435391" at="79,24,80,77" />
       <scope id="290922613093596325" at="29,0,31,0" />
       <scope id="4060892479724435943" at="64,75,66,13" />
+      <scope id="290922613094435391" at="78,24,80,13" />
       <scope id="290922613093605606" at="32,0,35,0">
         <var name="strictMode" id="290922613093605883" />
       </scope>

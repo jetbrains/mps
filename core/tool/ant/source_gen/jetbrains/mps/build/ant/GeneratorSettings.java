@@ -73,11 +73,11 @@ public final class GeneratorSettings extends DataType {
   }
 
   public void feedInto(GeneratorProperties gp) {
-    // FIXME first feed 'base' settings, if any, to override later with those from this instance
-    //    however, if I truly want to use this scenario with partial overrides, need to account for changed values only,
-    //    code after the if effectively resets anything to default. This code here is (a) to handle refid only scenario; (b) remind of the possible feature
+    // TODO partial overrides scenario - first feed 'base' settings, if any, to override later with those
+    //    from this instance. Would need to account for changed values only, not to reset anything to default.
     if (isReference()) {
       getCheckedRef(GeneratorSettings.class, getDataTypeName()).feedInto(gp);
+      return;
     }
     gp.setStrictMode(myIsStrict).setParallelMode(myThreadCount > 1).setParallelThreads(myThreadCount);
     gp.setInplaceTransform(myIsInplace).setHideWarnings(!(myWarnWrongChild)).setCreateStaticRefs(myUseStatic);
