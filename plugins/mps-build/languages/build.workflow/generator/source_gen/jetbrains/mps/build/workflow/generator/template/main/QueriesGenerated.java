@@ -328,10 +328,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.part$wrvD);
   }
   public static SNode sourceNodeQuery_0_2(final SourceSubstituteMacroNodeContext _context) {
-    return _context.getNode();
+    return SLinkOperations.getTarget(_context.getNode(), LINKS.element$yTy$);
   }
   public static SNode sourceNodeQuery_0_3(final SourceSubstituteMacroNodeContext _context) {
-    return ((SNode) _context.getPatternVariable("patternVar_pathvalue"));
+    return _context.getNode();
   }
   public static SNode sourceNodeQuery_0_4(final SourceSubstituteMacroNodeContext _context) {
     return ((SNode) _context.getPatternVariable("patternVar_pathvalue"));
@@ -340,6 +340,9 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((SNode) _context.getPatternVariable("patternVar_pathvalue"));
   }
   public static SNode sourceNodeQuery_0_6(final SourceSubstituteMacroNodeContext _context) {
+    return ((SNode) _context.getPatternVariable("patternVar_pathvalue"));
+  }
+  public static SNode sourceNodeQuery_0_7(final SourceSubstituteMacroNodeContext _context) {
     return ((SNode) _context.getPatternVariable("patternVar_idvalue"));
   }
   public static SNode sourceNodeQuery_3_0(final SourceSubstituteMacroNodeContext _context) {
@@ -388,7 +391,7 @@ public class QueriesGenerated extends QueryProviderBase {
   public static Iterable<SNode> sourceNodesQuery_3_1(final SourceSubstituteMacroNodesContext _context) {
     return Sequence.fromIterable(Sequence.fromArray(SPropertyOperations.getString(_context.getNode(), PROPS.compilerOptions$rUpp).split("\\s+"))).select(new ISelector<String, SNode>() {
       public SNode select(String it) {
-        return _quotation_createNode_x583g4_a0a0a0a0hd(it);
+        return _quotation_createNode_x583g4_a0a0a0a0id(it);
       }
     });
   }
@@ -469,28 +472,28 @@ public class QueriesGenerated extends QueryProviderBase {
     }
   }
   public static GeneratedMatchingPattern patternRule_Condition_0_0(final PatternRuleContext _context) {
-    GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0vd(_quotation_createNode_x583g4_a0a0a0vd());
-    if (!(pattern.match(_context.getNode()))) {
-      return null;
-    }
-    return pattern;
-  }
-  public static GeneratedMatchingPattern patternRule_Condition_0_1(final PatternRuleContext _context) {
     GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0wd(_quotation_createNode_x583g4_a0a0a0wd());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
     return pattern;
   }
-  public static GeneratedMatchingPattern patternRule_Condition_0_2(final PatternRuleContext _context) {
+  public static GeneratedMatchingPattern patternRule_Condition_0_1(final PatternRuleContext _context) {
     GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0xd(_quotation_createNode_x583g4_a0a0a0xd());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
     return pattern;
   }
-  public static GeneratedMatchingPattern patternRule_Condition_0_3(final PatternRuleContext _context) {
+  public static GeneratedMatchingPattern patternRule_Condition_0_2(final PatternRuleContext _context) {
     GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0yd(_quotation_createNode_x583g4_a0a0a0yd());
+    if (!(pattern.match(_context.getNode()))) {
+      return null;
+    }
+    return pattern;
+  }
+  public static GeneratedMatchingPattern patternRule_Condition_0_3(final PatternRuleContext _context) {
+    GeneratedMatchingPattern pattern = new Pattern_x583g4_a0a0zd(_quotation_createNode_x583g4_a0a0a0zd());
     if (!(pattern.match(_context.getNode()))) {
       return null;
     }
@@ -646,6 +649,7 @@ public class QueriesGenerated extends QueryProviderBase {
     int i = 0;
     snqMethods.put("5369202620937104487", new SNQ(i++));
     snqMethods.put("2529023923283121142", new SNQ(i++));
+    snqMethods.put("5423338990219734528", new SNQ(i++));
     snqMethods.put("8654221991637535910", new SNQ(i++));
     snqMethods.put("6647099934207260081", new SNQ(i++));
     snqMethods.put("8654221991637509687", new SNQ(i++));
@@ -682,6 +686,8 @@ public class QueriesGenerated extends QueryProviderBase {
         case 6:
           return QueriesGenerated.sourceNodeQuery_0_6(ctx);
         case 7:
+          return QueriesGenerated.sourceNodeQuery_0_7(ctx);
+        case 8:
           return QueriesGenerated.sourceNodeQuery_3_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -1114,7 +1120,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode _quotation_createNode_x583g4_a0a0a0a0hd(Object parameter_1) {
+  private static SNode _quotation_createNode_x583g4_a0a0a0a0id(Object parameter_1) {
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
@@ -1131,7 +1137,7 @@ public class QueriesGenerated extends QueryProviderBase {
     quotedNode_2.addChild(MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x5c842a42c54b10b5L, "attributes"), quotedNode_3);
     return quotedNode_2;
   }
-  private static SNode _quotation_createNode_x583g4_a0a0a0vd() {
+  private static SNode _quotation_createNode_x583g4_a0a0a0wd() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -1154,7 +1160,7 @@ public class QueriesGenerated extends QueryProviderBase {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content"), quotedNode_2);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_x583g4_a0a0a0wd() {
+  private static SNode _quotation_createNode_x583g4_a0a0a0xd() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -1177,7 +1183,7 @@ public class QueriesGenerated extends QueryProviderBase {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content"), quotedNode_2);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_x583g4_a0a0a0xd() {
+  private static SNode _quotation_createNode_x583g4_a0a0a0yd() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -1200,7 +1206,7 @@ public class QueriesGenerated extends QueryProviderBase {
     quotedNode_1.addChild(MetaAdapterFactory.getContainmentLink(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L, 0x16838b3fce9a4922L, "content"), quotedNode_2);
     return quotedNode_1;
   }
-  private static SNode _quotation_createNode_x583g4_a0a0a0yd() {
+  private static SNode _quotation_createNode_x583g4_a0a0a0zd() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNode quotedNode_3 = null;
@@ -1267,6 +1273,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink resources$L_us = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x1708d207f21b161dL, "resources");
     /*package*/ static final SContainmentLink element$_HPX = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5dc467L, 0x2670d5989d5dc468L, "element");
     /*package*/ static final SContainmentLink part$wrvD = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2318e5dbdfc153dbL, 0x2318e5dbdfc153ddL, "part");
+    /*package*/ static final SContainmentLink element$yTy$ = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x4b439213d8911608L, 0x4b439213d8911b85L, "element");
     /*package*/ static final SContainmentLink classpath$Bst8 = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede077L, 0x6e014d63c0847621L, "classpath");
     /*package*/ static final SContainmentLink subTasks$u4ob = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6273L, 0x2670d5989d5a6277L, "subTasks");
     /*package*/ static final SContainmentLink subTasks$aim9 = MetaAdapterFactory.getContainmentLink(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x36fb0dc9fd32c1b8L, 0x36fb0dc9fd32c1baL, "subTasks");

@@ -2477,5 +2477,18 @@
       <ref role="4PJHt" to="8xvf:AbdozcomNa" resolve="XmlForeignRefValue" />
     </node>
   </node>
+  <node concept="24kQdi" id="4H3$xfo$iiF">
+    <property role="3GE5qa" value="Structure" />
+    <ref role="1XX52x" to="8xvf:4H3$xfo$ho8" resolve="BwfAntProjectPart" />
+    <node concept="3EZMnI" id="4H3$xfo$ikJ" role="2wV5jI">
+      <node concept="l2Vlx" id="4H3$xfo$ikK" role="2iSdaV" />
+      <node concept="3F0ifn" id="4H3$xfo$imU" role="3EZMnx">
+        <property role="3F0ifm" value="ant" />
+      </node>
+      <node concept="3F1sOY" id="4H3$xfo$ir4" role="3EZMnx">
+        <ref role="1NtTu8" to="8xvf:4H3$xfo$hI5" resolve="element" />
+      </node>
+    </node>
+  </node>
 </model>
 

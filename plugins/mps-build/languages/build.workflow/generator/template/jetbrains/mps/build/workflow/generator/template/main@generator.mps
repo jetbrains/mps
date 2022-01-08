@@ -1584,6 +1584,37 @@
         </node>
       </node>
     </node>
+    <node concept="3aamgX" id="4H3$xfo$CWy" role="3acgRq">
+      <ref role="30HIoZ" to="8xvf:4H3$xfo$ho8" resolve="BwfAntProjectPart" />
+      <node concept="1Koe21" id="4H3$xfoDo5U" role="1lVwrX">
+        <node concept="2pNNFK" id="4H3$xfoDr1q" role="1Koe22">
+          <property role="2pNNFO" value="project" />
+          <node concept="3o6iSG" id="4H3$xfoDr4i" role="3o6s8t" />
+          <node concept="3o6iSG" id="4H3$xfoDrjk" role="3o6s8t">
+            <node concept="raruj" id="4H3$xfoDrnj" role="lGtFl" />
+          </node>
+          <node concept="2pNNFK" id="4H3$xfo$ERY" role="3o6s8t">
+            <property role="qg3DV" value="true" />
+            <property role="2pNNFO" value="tstamp" />
+            <node concept="raruj" id="4H3$xfoDo5V" role="lGtFl" />
+            <node concept="29HgVG" id="4H3$xfo$ERZ" role="lGtFl">
+              <node concept="3NFfHV" id="4H3$xfo$ES0" role="3NFExx">
+                <node concept="3clFbS" id="4H3$xfo$ES1" role="2VODD2">
+                  <node concept="3clFbF" id="4H3$xfo$ES2" role="3cqZAp">
+                    <node concept="2OqwBi" id="4H3$xfo$ES3" role="3clFbG">
+                      <node concept="30H73N" id="4H3$xfo$ES4" role="2Oq$k0" />
+                      <node concept="3TrEf2" id="4H3$xfo$ES5" role="2OqNvi">
+                        <ref role="3Tt5mk" to="8xvf:4H3$xfo$hI5" resolve="element" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="3aamgX" id="5KZfyKsWnl2" role="3acgRq">
       <ref role="30HIoZ" to="8xvf:5KZfyKsVOKv" resolve="BwfPathReference" />
       <node concept="gft3U" id="5KZfyKsWnl4" role="1lVwrX">

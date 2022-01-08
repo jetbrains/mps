@@ -13,6 +13,7 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
+  /*package*/ final ConceptDescriptor myConceptBwfAntProjectPart = createDescriptorForBwfAntProjectPart();
   /*package*/ final ConceptDescriptor myConceptBwfAntStatement = createDescriptorForBwfAntStatement();
   /*package*/ final ConceptDescriptor myConceptBwfAntTaskBundleDeclaration = createDescriptorForBwfAntTaskBundleDeclaration();
   /*package*/ final ConceptDescriptor myConceptBwfAntTaskDeclaration = createDescriptorForBwfAntTaskDeclaration();
@@ -60,13 +61,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptBwfAntStatement, myConceptBwfAntTaskBundleDeclaration, myConceptBwfAntTaskDeclaration, myConceptBwfCustomMacro, myConceptBwfDependency, myConceptBwfFileSet, myConceptBwfJavaClassPath, myConceptBwfJavaDependency, myConceptBwfJavaDescriptor, myConceptBwfJavaLibrary, myConceptBwfJavaLibraryReference, myConceptBwfJavaModule, myConceptBwfJavaModuleReference, myConceptBwfMacro, myConceptBwfMacroListImport, myConceptBwfPathDeclaration, myConceptBwfPathReference, myConceptBwfProject, myConceptBwfProjectPart, myConceptBwfProjectPartStatement, myConceptBwfStatement, myConceptBwfSubTask, myConceptBwfSubTaskDependency, myConceptBwfTask, myConceptBwfTaskDependency, myConceptBwfTaskLibrary, myConceptBwfTaskLibraryDependency, myConceptBwfTaskPart, myConceptBwfValueReference, myConceptBwfValueStatement, myConceptXmlForeignRefValue);
+    return Arrays.asList(myConceptBwfAntProjectPart, myConceptBwfAntStatement, myConceptBwfAntTaskBundleDeclaration, myConceptBwfAntTaskDeclaration, myConceptBwfCustomMacro, myConceptBwfDependency, myConceptBwfFileSet, myConceptBwfJavaClassPath, myConceptBwfJavaDependency, myConceptBwfJavaDescriptor, myConceptBwfJavaLibrary, myConceptBwfJavaLibraryReference, myConceptBwfJavaModule, myConceptBwfJavaModuleReference, myConceptBwfMacro, myConceptBwfMacroListImport, myConceptBwfPathDeclaration, myConceptBwfPathReference, myConceptBwfProject, myConceptBwfProjectPart, myConceptBwfProjectPartStatement, myConceptBwfStatement, myConceptBwfSubTask, myConceptBwfSubTaskDependency, myConceptBwfTask, myConceptBwfTaskDependency, myConceptBwfTaskLibrary, myConceptBwfTaskLibraryDependency, myConceptBwfTaskPart, myConceptBwfValueReference, myConceptBwfValueStatement, myConceptXmlForeignRefValue);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
+      case LanguageConceptSwitch.BwfAntProjectPart:
+        return myConceptBwfAntProjectPart;
       case LanguageConceptSwitch.BwfAntStatement:
         return myConceptBwfAntStatement;
       case LanguageConceptSwitch.BwfAntTaskBundleDeclaration:
@@ -139,6 +142,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
+  private static ConceptDescriptor createDescriptorForBwfAntProjectPart() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.build.workflow", "BwfAntProjectPart", 0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x4b439213d8911608L);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.build.workflow.structure.BwfProjectPart
+    b.super_(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6287L);
+    b.origin("r:ed179f4d-7cf2-479d-8348-50c1fc63b96a(jetbrains.mps.build.workflow.structure)/5423338990219630088");
+    b.version(3);
+    b.aggregate("element", 0x4b439213d8911b85L).target(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b10b2L).optional(false).ordered(true).multiple(false).origin("5423338990219631493").done();
+    b.alias("ant");
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForBwfAntStatement() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.build.workflow", "BwfAntStatement", 0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5dc467L);
     b.class_(false, false, false);

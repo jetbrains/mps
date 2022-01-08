@@ -660,5 +660,22 @@
       <property role="t5JxN" value="Mechanism to build attribute value based on referenced value" />
     </node>
   </node>
+  <node concept="1TIwiD" id="4H3$xfo$ho8">
+    <property role="EcuMT" value="5423338990219630088" />
+    <property role="3GE5qa" value="Structure" />
+    <property role="TrG5h" value="BwfAntProjectPart" />
+    <property role="34LRSv" value="ant" />
+    <ref role="1TJDcQ" node="2pKPpytmAa7" resolve="BwfProjectPart" />
+    <node concept="1TJgyj" id="4H3$xfo$hI5" role="1TKVEi">
+      <property role="IQ2ns" value="5423338990219631493" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="element" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="iuxj:5M4a$b5iL2M" resolve="XmlElement" />
+    </node>
+    <node concept="t5JxF" id="4H3$xfo$izg" role="lGtFl">
+      <property role="t5JxN" value="Analogy to BwfAntStatement, resides up at project level" />
+    </node>
+  </node>
 </model>
 
