@@ -18,12 +18,7 @@ import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuIt
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import jetbrains.mps.smodel.presentation.NodePresentationUtil;
-import jetbrains.mps.lang.editor.menus.ConceptMenusPart;
-import java.util.Collection;
-import jetbrains.mps.smodel.ConceptDescendantsCache;
-import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
-import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.kotlin.behavior.IFunctionDeclaration__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -33,7 +28,6 @@ public class FunctionCallTarget_SubstituteMenu extends SubstituteMenuBase {
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
     result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_qebfc8_a(), CONCEPTS.FunctionCallTarget$SS));
-    result.add(new SMP_Subconcepts_qebfc8_b());
     return result;
   }
 
@@ -41,7 +35,7 @@ public class FunctionCallTarget_SubstituteMenu extends SubstituteMenuBase {
   @Override
   public List<SubstituteMenuItem> createMenuItems(@NotNull SubstituteMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for FunctionCallTarget. Generated from the smart reference attribute.", new SNodePointer("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)", "5937978644277709268")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for " + "FunctionCallTarget", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "8625556777609183743")));
     try {
       return super.createMenuItems(context);
     } finally {
@@ -60,7 +54,7 @@ public class FunctionCallTarget_SubstituteMenu extends SubstituteMenuBase {
     @Override
     public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
       context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("reference scope substitute menu part", null));
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("reference scope substitute menu part", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "8625556777609184797")));
       try {
         return super.createItems(context);
       } finally {
@@ -86,7 +80,7 @@ public class FunctionCallTarget_SubstituteMenu extends SubstituteMenuBase {
       }
       @Override
       public String getMatchingText(String pattern) {
-        return "" + NodePresentationUtil.matchingText(getReferent(), getParentNode(), false) + "";
+        return (String) IFunctionDeclaration__BehaviorDescriptor.getFunctionPresentation_id7uO8z1BmwrX.invoke(referencedNode, ((boolean) false));
       }
       @Override
       public String getVisibleMatchingText(String pattern) {
@@ -97,27 +91,6 @@ public class FunctionCallTarget_SubstituteMenu extends SubstituteMenuBase {
       public EditorMenuTraceInfo getTraceInfo() {
         return myTraceInfo;
       }
-    }
-  }
-  public class SMP_Subconcepts_qebfc8_b extends ConceptMenusPart<SubstituteMenuItem, SubstituteMenuContext> {
-    protected Collection getConcepts(final SubstituteMenuContext _context) {
-      return ConceptDescendantsCache.getInstance().getDirectDescendants(CONCEPTS.FunctionCallTarget$SS);
-    }
-    @NotNull
-    @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-      context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include menus for all the direct subconcepts of " + "FunctionCallTarget", null));
-      try {
-        return super.createItems(context);
-      } finally {
-        context.getEditorMenuTrace().popTraceInfo();
-      }
-    }
-
-    @Override
-    protected Collection<SubstituteMenuItem> createItemsForConcept(SubstituteMenuContext context, SAbstractConcept concept) {
-      return context.createItems(new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(context.getEditorContext().getRepository()), concept));
     }
   }
 

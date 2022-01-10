@@ -6360,7 +6360,7 @@
           <node concept="2OqwBi" id="Ad0bnW7c7c" role="3clFbw">
             <node concept="10M0yZ" id="Ad0bnW7gpD" role="2Oq$k0">
               <ref role="3cqZAo" to="z352:~Flag$Type.IS_SUSPEND" resolve="IS_SUSPEND" />
-              <ref role="1PxDUh" to="z352:~Flag$Type" resolve="Type" />
+              <ref role="1PxDUh" to="z352:~Flag$Type" resolve="Flag.Type" />
             </node>
             <node concept="liA8E" id="Ad0bnW7c7e" role="2OqNvi">
               <ref role="37wK5l" to="z352:~Flag.invoke(int)" resolve="invoke" />
@@ -6460,7 +6460,7 @@
           </node>
           <node concept="2OqwBi" id="Ad0bnW5N2$" role="3clFbw">
             <node concept="10M0yZ" id="Ad0bnW5MvJ" role="2Oq$k0">
-              <ref role="1PxDUh" to="z352:~Flag$Type" resolve="Type" />
+              <ref role="1PxDUh" to="z352:~Flag$Type" resolve="Flag.Type" />
               <ref role="3cqZAo" to="z352:~Flag$Type.IS_NULLABLE" resolve="IS_NULLABLE" />
             </node>
             <node concept="liA8E" id="Ad0bnW5P3e" role="2OqNvi">

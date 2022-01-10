@@ -55,10 +55,10 @@ public final class ClassDeclaration__BehaviorDescriptor extends BaseBHDescriptor
   public static final SMethod<Iterable<SNode>> getConstructors_id2NtWm0y9fFa = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getConstructors").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2NtWm0y9fFa").build();
   public static final SMethod<List<SNode>> getParameters_id6f3juM$_Kx4 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6f3juM$_Kx4").build();
   public static final SMethod<Boolean> usesDefaultConstructor_id5H$PF0dBJLd = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("usesDefaultConstructor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5H$PF0dBJLd").build();
-  public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIMiw").build();
+  public static final SMethod<String> getFunctionPresentation_id7uO8z1BmwrX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFunctionPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7uO8z1BmwrX").build(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   public static final SMethod<Boolean> hasModifier_id2NtWm0y2Y2A = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasModifier").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2NtWm0y2Y2A").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateNonMemberSignatures_id1pD7IS2T3rZ, getScope_id52_Geb4QDV$, getScope_id52_Geb4QFgX, getScopeForSuperClasses_id1pD7IS2Z5sE, populateDeclarations_id213J8cgCCAN, populateSignatures_id18X2O0FJBER, getConstructors_id2NtWm0y9fFa, getParameters_id6f3juM$_Kx4, usesDefaultConstructor_id5H$PF0dBJLd, getPresentation_idhEwIMiw, hasModifier_id2NtWm0y2Y2A);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateNonMemberSignatures_id1pD7IS2T3rZ, getScope_id52_Geb4QDV$, getScope_id52_Geb4QFgX, getScopeForSuperClasses_id1pD7IS2Z5sE, populateDeclarations_id213J8cgCCAN, populateSignatures_id18X2O0FJBER, getConstructors_id2NtWm0y9fFa, getParameters_id6f3juM$_Kx4, usesDefaultConstructor_id5H$PF0dBJLd, getFunctionPresentation_id7uO8z1BmwrX, hasModifier_id2NtWm0y2Y2A);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -177,7 +177,7 @@ __switch__:
   /*package*/ static boolean usesDefaultConstructor_id5H$PF0dBJLd(@NotNull SNode __thisNode__) {
     return (SLinkOperations.getTarget(__thisNode__, LINKS.primaryConstructor$QvZc) == null) && Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(__thisNode__, LINKS.members$gqdV), CONCEPTS.SecondaryConstructor$Lg)).isEmpty();
   }
-  /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
+  /*package*/ static String getFunctionPresentation_id7uO8z1BmwrX(@NotNull SNode __thisNode__, boolean erased) {
     // Presentation of default constructor
     return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL) + "()";
   }
@@ -222,7 +222,7 @@ __switch__:
       case 8:
         return (T) ((Boolean) usesDefaultConstructor_id5H$PF0dBJLd(node));
       case 9:
-        return (T) ((String) getPresentation_idhEwIMiw(node));
+        return (T) ((String) getFunctionPresentation_id7uO8z1BmwrX(node, ((boolean) (Boolean) parameters[0])));
       case 10:
         return (T) ((Boolean) hasModifier_id2NtWm0y2Y2A(node, (SAbstractConcept) parameters[0]));
       default:

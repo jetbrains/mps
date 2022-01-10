@@ -13,30 +13,26 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-public final class InterfaceDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
-  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7554886bfL, "jetbrains.mps.kotlin.structure.InterfaceDeclaration");
+public final class IInheritable__BehaviorDescriptor extends BaseBHDescriptor {
+  private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, "jetbrains.mps.kotlin.structure.IInheritable");
 
   public static final SMethod<SAbstractConcept> getDefaultInheritance_id7uO8z1Cfao7 = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getDefaultInheritance").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7uO8z1Cfao7").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultInheritance_id7uO8z1Cfao7);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
-    SLinkOperations.setTarget(__thisNode__, LINKS.inheritance$TFvr, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f2L, "jetbrains.mps.kotlin.structure.AbstractInheritanceModifier")));
   }
 
   /*package*/ static SAbstractConcept getDefaultInheritance_id7uO8z1Cfao7(@NotNull SAbstractConcept __thisConcept__) {
-    return CONCEPTS.AbstractInheritanceModifier$GA;
+    return CONCEPTS.FinalInheritanceModifier$H5;
   }
 
-  /*package*/ InterfaceDeclaration__BehaviorDescriptor() {
+  /*package*/ IInheritable__BehaviorDescriptor() {
   }
 
   @Override
@@ -82,11 +78,7 @@ public final class InterfaceDeclaration__BehaviorDescriptor extends BaseBHDescri
     return CONCEPT;
   }
 
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink inheritance$TFvr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, 0x537372687dd3bcdbL, "inheritance");
-  }
-
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AbstractInheritanceModifier$GA = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f2L, "jetbrains.mps.kotlin.structure.AbstractInheritanceModifier");
+    /*package*/ static final SConcept FinalInheritanceModifier$H5 = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f3L, "jetbrains.mps.kotlin.structure.FinalInheritanceModifier");
   }
 }

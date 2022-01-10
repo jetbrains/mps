@@ -18,7 +18,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -37,8 +36,9 @@ public final class IFunctionDeclaration__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<SNode> getClass_id4vugIDehkCF = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4vugIDehkCF").build();
   public static final SMethod<Iterable<SAbstractConcept>> getModifiers_id4q11fqJUzWN = new SMethodBuilder<Iterable<SAbstractConcept>>(new SJavaCompoundTypeImpl((Class<Iterable<SAbstractConcept>>) ((Class) Object.class))).name("getModifiers").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4q11fqJUzWN").build();
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIMiw").build();
+  public static final SMethod<String> getFunctionPresentation_id7uO8z1BmwrX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFunctionPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7uO8z1BmwrX").build(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameters_id6f3juM$_Kx4, getReturnType_id6QVUYzas5Of, getReturnExpression_id6yQJbFyGtec, getReceiverType_id2gj5XQXMFhP, getClass_id4vugIDehkCF, getModifiers_id4q11fqJUzWN, getPresentation_idhEwIMiw);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameters_id6f3juM$_Kx4, getReturnType_id6QVUYzas5Of, getReturnExpression_id6yQJbFyGtec, getReceiverType_id2gj5XQXMFhP, getClass_id4vugIDehkCF, getModifiers_id4q11fqJUzWN, getPresentation_idhEwIMiw, getFunctionPresentation_id7uO8z1BmwrX);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -57,16 +57,19 @@ public final class IFunctionDeclaration__BehaviorDescriptor extends BaseBHDescri
     return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IClassLike$go, false, false);
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
+    return IFunctionDeclaration__BehaviorDescriptor.getFunctionPresentation_id7uO8z1BmwrX.invoke(__thisNode__, ((boolean) false));
+  }
+  /*package*/ static String getFunctionPresentation_id7uO8z1BmwrX(@NotNull SNode __thisNode__, boolean erased) {
     StringBuilder builder = new StringBuilder(SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL));
     builder.append("(");
 
     Iterator<SNode> itr = ListSequence.fromList(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(__thisNode__)).iterator();
     if (itr.hasNext()) {
-      builder.append(BaseConcept__BehaviorDescriptor.getDetailedPresentation_id22G2W3WJ92t.invoke(itr.next()));
+      builder.append(Parameter__BehaviorDescriptor.getPresentationInFunction_id7uO8z1BmBpf.invoke(itr.next(), ((boolean) erased)));
     }
     while (itr.hasNext()) {
       builder.append(", ");
-      builder.append(BaseConcept__BehaviorDescriptor.getDetailedPresentation_id22G2W3WJ92t.invoke(itr.next()));
+      builder.append(Parameter__BehaviorDescriptor.getPresentationInFunction_id7uO8z1BmBpf.invoke(itr.next(), ((boolean) erased)));
     }
 
     builder.append(")");
@@ -94,6 +97,8 @@ public final class IFunctionDeclaration__BehaviorDescriptor extends BaseBHDescri
         return (T) ((SNode) getClass_id4vugIDehkCF(node));
       case 6:
         return (T) ((String) getPresentation_idhEwIMiw(node));
+      case 7:
+        return (T) ((String) getFunctionPresentation_id7uO8z1BmwrX(node, ((boolean) (Boolean) parameters[0])));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

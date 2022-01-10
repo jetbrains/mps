@@ -33,11 +33,21 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.FieldStyleClass;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
-import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
+import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
+import jetbrains.mps.lang.editor.cellProviders.PropertyCellContext;
+import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
+import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.IVariableIdentifier__BehaviorDescriptor;
+import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_ReplaceNode_CustomNodeConcept;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.openapi.editor.menus.EditorMenuDescriptor;
+import jetbrains.mps.nodeEditor.cellMenu.CellContext;
+import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /*package*/ class VariableRefExpression_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -140,7 +150,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
         }
         style.set(StyleAttributes.AUTO_DELETABLE, true);
         editorCell.getStyle().putAll(style);
-        editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
+        editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new PropertyCellContext(myNode, property), new SubstituteInfoPartExt[]{new ReplaceWith_IExpression_cellMenu_yhqwn2_a0a0a0(), new ReplaceWith_INavigationTarget_cellMenu_yhqwn2_b0a0a0(), new SChildSubstituteInfoPartEx(editorCell)}));
         setCellContext(editorCell);
         Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
         Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
@@ -160,6 +170,28 @@ import org.jetbrains.mps.openapi.language.SConcept;
     private boolean _StyleParameter_QueryFunction_yhqwn2_a0a0a0() {
       return !((boolean) IVariableIdentifier__BehaviorDescriptor.isLocal_id1vYW8S3rTh_.invoke(getNode()));
     }
+    public static class ReplaceWith_IExpression_cellMenu_yhqwn2_a0a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
+      public ReplaceWith_IExpression_cellMenu_yhqwn2_a0a0a0() {
+      }
+      public SAbstractConcept getReplacementConcept() {
+        return CONCEPTS.IExpression$2i;
+      }
+      @Override
+      protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
+        return new EditorMenuDescriptorBase("replace node (custom node concept: " + "IExpression" + ")", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "8625556777610602379"));
+      }
+    }
+    public static class ReplaceWith_INavigationTarget_cellMenu_yhqwn2_b0a0a0 extends AbstractCellMenuPart_ReplaceNode_CustomNodeConcept {
+      public ReplaceWith_INavigationTarget_cellMenu_yhqwn2_b0a0a0() {
+      }
+      public SAbstractConcept getReplacementConcept() {
+        return CONCEPTS.INavigationTarget$Ae;
+      }
+      @Override
+      protected EditorMenuDescriptor createEditorMenuDescriptor(CellContext cellContext, EditorContext editorContext) {
+        return new EditorMenuDescriptorBase("replace node (custom node concept: " + "INavigationTarget" + ")", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "8625556777610602621"));
+      }
+    }
   }
 
   private static final class LINKS {
@@ -169,6 +201,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private static final class CONCEPTS {
     /*package*/ static final SConcept LinkAttribute$v_ = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da51L, "jetbrains.mps.lang.core.structure.LinkAttribute");
     /*package*/ static final SConcept PropertyAttribute$Gb = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x2eb1ad060897da56L, "jetbrains.mps.lang.core.structure.PropertyAttribute");
+    /*package*/ static final SInterfaceConcept IExpression$2i = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L, "jetbrains.mps.kotlin.structure.IExpression");
+    /*package*/ static final SInterfaceConcept INavigationTarget$Ae = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3b6L, "jetbrains.mps.kotlin.structure.INavigationTarget");
   }
 
   private static final class PROPS {

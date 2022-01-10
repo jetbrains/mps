@@ -26,8 +26,9 @@ public final class Parameter__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<Boolean> isLocal_id1vYW8S3rTh_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLocal").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1vYW8S3rTh_").build();
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIMiw").build();
+  public static final SMethod<String> getPresentationInFunction_id7uO8z1BmBpf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentationInFunction").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7uO8z1BmBpf").build(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, getPresentation_idhEwIMiw);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, getPresentation_idhEwIMiw, getPresentationInFunction_id7uO8z1BmBpf);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -36,6 +37,9 @@ public final class Parameter__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
+    return Parameter__BehaviorDescriptor.getPresentationInFunction_id7uO8z1BmBpf.invoke(__thisNode__, ((boolean) false));
+  }
+  /*package*/ static String getPresentationInFunction_id7uO8z1BmBpf(@NotNull SNode __thisNode__, boolean erased) {
     StringBuilder sb = new StringBuilder();
     if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isVararg$GaYv)) {
       sb.append("vararg ");
@@ -43,7 +47,7 @@ public final class Parameter__BehaviorDescriptor extends BaseBHDescriptor {
 
     // Name omitted as not displayed in FunctionDeclaration presentation
     // If it is necessary for other purposes, add it back and change FunctionDeclaration presentatation
-    sb.append(IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$1aXr), ((boolean) false)));
+    sb.append(IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$1aXr), ((boolean) erased)));
     return sb.toString();
   }
 
@@ -66,6 +70,8 @@ public final class Parameter__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Boolean) isLocal_id1vYW8S3rTh_(node));
       case 1:
         return (T) ((String) getPresentation_idhEwIMiw(node));
+      case 2:
+        return (T) ((String) getPresentationInFunction_id7uO8z1BmBpf(node, ((boolean) (Boolean) parameters[0])));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

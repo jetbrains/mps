@@ -139,6 +139,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     style.set(StyleAttributes.SELECTABLE, true);
     editorCell.getStyle().putAll(style);
+    UnaryExpression_RemoveFromSuffix.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.NavigationOperation$4I, "jetbrains.mps.kotlin.editor.NavigationOperation_SetNullSafe"));
     editorCell.setDefaultText("");
     editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
@@ -180,6 +181,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       if (editorCell.getSRole() == null) {
         editorCell.setSRole(LINKS.target$C6zp);
       }
+      UnaryExpression_RemoveFromSuffix.setCellActions(editorCell, getNode(), getEditorContext());
     }
     @Override
     protected EditorCell createEmptyCell() {

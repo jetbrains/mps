@@ -1279,7 +1279,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.IncompleteDeclaration:
         if (props_IncompleteDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.rawPresentation("IncompleteDeclaration");
+          cpb.presentationByName();
           props_IncompleteDeclaration = cpb.create();
         }
         return props_IncompleteDeclaration;
@@ -1669,7 +1669,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_PropertyDeclaration == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("property declaration");
-          cpb.rawPresentation("var");
+          cpb.presentationByName();
           props_PropertyDeclaration = cpb.create();
         }
         return props_PropertyDeclaration;
@@ -1701,7 +1701,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_PropertySetter == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("property setter");
-          cpb.rawPresentation("set");
+          cpb.presentationByName();
           props_PropertySetter = cpb.create();
         }
         return props_PropertySetter;

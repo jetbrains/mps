@@ -185,7 +185,7 @@ public class ClassDeclaration_Modifiers_Transform extends TransformationMenuBase
       @Override
       public void execute(@NotNull String pattern) {
         SNode constructor = SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.primaryConstructor$QvZc, null);
-        SelectionUtil.selectCell(_context.getEditorContext(), constructor, SelectionManager.LAST_EDITABLE_CELL);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), constructor, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
       }
 
       @Override
