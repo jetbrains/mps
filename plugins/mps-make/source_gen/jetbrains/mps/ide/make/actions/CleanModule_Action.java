@@ -9,13 +9,10 @@ import java.util.Map;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
-import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.ide.project.ProjectHelper;
+import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Set;
-import jetbrains.mps.util.CollectionUtil;
+import java.util.Collections;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
@@ -36,7 +33,7 @@ public class CleanModule_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return SModuleOperations.isCompileInMps(event.getData(MPSCommonDataKeys.MODULE));
+    return SModuleOperations.isCompileInMps(event.getData(MPSCommonDataKeys.MODULE)) && !(event.getData(MPSCommonDataKeys.MODULE).isReadOnly());
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -48,7 +45,7 @@ public class CleanModule_Action extends BaseAction {
       return false;
     }
     {
-      Project p = event.getData(CommonDataKeys.PROJECT);
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
       if (p == null) {
         return false;
       }
@@ -63,9 +60,9 @@ public class CleanModule_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(event.getData(CommonDataKeys.PROJECT));
-    final Set<SModule> moduleSet = CollectionUtil.set(event.getData(MPSCommonDataKeys.MODULE));
-    ProgressManager.getInstance().run(new Task.Modal(event.getData(CommonDataKeys.PROJECT), "Cleaning", true) {
+    final MPSProject mpsProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+    final Set<SModule> moduleSet = Collections.singleton(event.getData(MPSCommonDataKeys.MODULE));
+    ProgressManager.getInstance().run(new Task.Modal(mpsProject.getProject(), "Cleaning", true) {
       @Override
       public void run(@NotNull final ProgressIndicator indicator) {
         mpsProject.getModelAccess().runReadAction(() -> {

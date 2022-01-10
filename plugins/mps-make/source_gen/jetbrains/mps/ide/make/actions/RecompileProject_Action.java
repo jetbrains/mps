@@ -6,8 +6,6 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
@@ -36,12 +34,6 @@ public class RecompileProject_Action extends BaseAction {
       return false;
     }
     {
-      Project p = event.getData(CommonDataKeys.PROJECT);
-      if (p == null) {
-        return false;
-      }
-    }
-    {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
       if (p == null) {
         return false;
@@ -53,6 +45,6 @@ public class RecompileProject_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final Set<SModule> modules = SetSequence.fromSet(new LinkedHashSet<SModule>());
     SetSequence.fromSet(modules).addSequence(ListSequence.fromList(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProjectModules(SModule.class)));
-    ProgressManager.getInstance().run(new DefaultMakeTask(event.getData(CommonDataKeys.PROJECT), "Compiling", modules, true));
+    ProgressManager.getInstance().run(new DefaultMakeTask(event.getData(MPSCommonDataKeys.MPS_PROJECT), "Compiling", modules, true));
   }
 }

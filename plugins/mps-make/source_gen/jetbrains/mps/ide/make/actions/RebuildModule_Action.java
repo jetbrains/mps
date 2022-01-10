@@ -9,8 +9,7 @@ import java.util.Map;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
+import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Set;
 import java.util.Collections;
@@ -30,7 +29,7 @@ public class RebuildModule_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return SModuleOperations.isCompileInMps(event.getData(MPSCommonDataKeys.MODULE));
+    return SModuleOperations.isCompileInMps(event.getData(MPSCommonDataKeys.MODULE)) && !(event.getData(MPSCommonDataKeys.MODULE).isReadOnly());
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -42,7 +41,7 @@ public class RebuildModule_Action extends BaseAction {
       return false;
     }
     {
-      Project p = event.getData(CommonDataKeys.PROJECT);
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
       if (p == null) {
         return false;
       }
@@ -58,6 +57,6 @@ public class RebuildModule_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     Set<SModule> modules = Collections.<SModule>singleton(event.getData(MPSCommonDataKeys.MODULE));
-    ProgressManager.getInstance().run(new DefaultMakeTask(event.getData(CommonDataKeys.PROJECT), "Compiling", modules, true));
+    ProgressManager.getInstance().run(new DefaultMakeTask(event.getData(MPSCommonDataKeys.MPS_PROJECT), "Compiling", modules, true));
   }
 }
