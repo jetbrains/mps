@@ -28,9 +28,9 @@ import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.make.ErrorsLoggingHandler;
 import org.apache.log4j.LogManager;
-import jetbrains.mps.make.MPSCompilationResult;
-import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.make.ModuleMaker;
+import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.make.script.IFeedback;
 import jetbrains.mps.make.script.IConfig;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
@@ -99,15 +99,19 @@ public class JavaCompile_Facet extends IFacet.Stub {
               if (SetSequence.fromSet(toCompile).isEmpty()) {
                 return new IResult.SUCCESS(_output_wf1ya0_a0a);
               }
+              progressMonitor.start("Compiling Java", 100);
               // XXX it's odd to use dedicated ErrorsLoggingHandler provided ModuleMaker reports errors to log itself (in addition to IMessageHandler, see MessageSender). Do I need ELH here?
-              final IMessageHandler msgHandler = new ErrorsLoggingHandler(LogManager.getLogger(new IFacet.Name("jetbrains.mps.make.facets.JavaCompile").getName())).compose(monitor.getSession().getMessageHandler());
-              MPSCompilationResult cr = new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(() -> {
-                ModuleMaker mm = new ModuleMaker(msgHandler);
+              IMessageHandler msgHandler = new ErrorsLoggingHandler(LogManager.getLogger(new IFacet.Name("jetbrains.mps.make.facets.JavaCompile").getName())).compose(monitor.getSession().getMessageHandler());
+              final ModuleMaker mm = new ModuleMaker(msgHandler);
+              mm.options(vars(pa.global()).options());
+              new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(() -> {
                 // FIXME would be great to re-use deps known to textGen facet, however
                 //    can not compile code as this class lives in IDEA-compiled solution,
                 //    while TextGen facet is part of lang.core/plugin, managed by MPS
-                return mm.make(toCompile, progressMonitor, vars(pa.global()).options());
+                mm.prepare(toCompile, false, progressMonitor.subTask(40));
               });
+              MPSCompilationResult cr = mm.make(progressMonitor.subTask(60));
+
               vars(pa.global()).compiledAnything(vars(pa.global()).compiledAnything() || cr.isCompiledAnything());
               if (!(cr.isOk())) {
                 if (cr.getErrorsCount() > 0) {
@@ -128,6 +132,7 @@ public class JavaCompile_Facet extends IFacet.Stub {
                   _output_wf1ya0_a0a = Sequence.fromIterable(_output_wf1ya0_a0a).concat(Sequence.fromIterable(Sequence.<IResource>singleton(tres)));
                 }
               }
+              progressMonitor.done();
             default:
               progressMonitor.done();
               return new IResult.SUCCESS(_output_wf1ya0_a0a);

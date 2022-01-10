@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.compiler.JavaCompilerOptions;
 import jetbrains.mps.compiler.JavaCompilerOptionsComponent;
 import jetbrains.mps.make.ModuleAnalyzer.ModuleAnalyzerResult;
-import jetbrains.mps.make.ModulesContainer.JavaModule;
 import jetbrains.mps.make.dependencies.graph.Graph;
 import jetbrains.mps.make.dependencies.graph.IVertex;
 import jetbrains.mps.make.java.BLDependenciesCache;
@@ -59,7 +58,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -70,10 +68,14 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * ModuleMaker is able to make sources of the given modules.
- * Main API is two #make methods, one of them accepts also the compiler options argument (e.g. to choose the java language level
- * for the compiler)
+ * {@code ModuleMaker} compiles sources of the given modules.
+ * Takes optional {@link #options(JavaCompilerOptions)} java compiler options.
+ * Needs model access to {@link #prepare(Collection, boolean, ProgressMonitor) get ready}.
+ * Compilation per se, {@link #make(ProgressMonitor)} runs with collected and prepared state.
+ * Optionally, may {@link #clean(Set, ProgressMonitor)} existing module sources.
  * <p>
+ *
+ * </p>
  * Underneath this class analyzes module dependencies,
  * chooses which of the modules are dirty, collects all the java sources and handles
  * them to a {@link JavaCompilerImpl java compiler wrapper} that hides {@link JavaCompiler}
@@ -87,6 +89,7 @@ public final class ModuleMaker {
 
   private final static String BUILDING_MODULES_MSG = "Building %d Modules";
   private final static String CYCLE_FORMAT_MSG = "Cycle #%d: [%s]";
+  // XXX do I want to report these phases?
   private final static String COLLECTING_DEPENDENCIES_MSG = "Collecting Dependent Candidates";
   private final static String LOADING_DEPENDENCIES_MSG = "Loading Dependencies";
   private final static String CALCULATING_DEPENDENCIES_TO_COMPILE_MSG = "Calculating Modules To Compile";
@@ -833,81 +836,28 @@ public final class ModuleMaker {
   }
 
 
+  /**
+   * @deprecated check {@link #make(Collection, ProgressMonitor, JavaCompilerOptions)} for details
+   */
+  @Deprecated(forRemoval = true, since = "2021.3")
   @NotNull
   public MPSCompilationResult make(final Collection<? extends SModule> modules, @NotNull final ProgressMonitor monitor) {
     return make(modules, monitor, null);
   }
 
+  /**
+   * @deprecated replace with sequence of {@code options()}, {@code prepare()} and {@code make()} calls, where
+   *    only {@code prepare()} needs model access over modules.
+   *    Single use in MPS through make(), above.
+   */
+  @Deprecated(forRemoval = true, since = "2021.3")
   @NotNull
   public MPSCompilationResult make(final Collection<? extends SModule> modules, @NotNull final ProgressMonitor monitor,
                                    @Nullable final JavaCompilerOptions compilerOptions) {
     options(compilerOptions);
-    if (!RuntimeFlags.useLegacyModuleMaker()) {
-      monitor.start("", 3);
-      //    final long s = System.nanoTime();
-      prepare(modules, false, monitor.subTask(2));
-      //    final long s1 = System.nanoTime();
-      return make(monitor.subTask(1));
-      //    myTracer.getSender().debug(String.format("MAKE2 took %d + %d us\n", (s1-s)/1000, (System.nanoTime()-s1)/1000));
-    }
-    CompositeTracer tracer = new CompositeTracer(myTracer, monitor);
-    tracer.start(String.format(BUILDING_MODULES_MSG, modules.size()), 10);
-    try {
-      tracer.push(COLLECTING_DEPENDENCIES_MSG);
-      Set<SModule> candidates = new LinkedHashSet<>(new GlobalModuleDependenciesManager(modules).getModules(Deptype.COMPILE));
-      final ModulesContainer modulesContainer = new ModulesContainer(candidates);
-      tracer.pop(1);
-
-      tracer.push(LOADING_DEPENDENCIES_MSG);
-      Dependencies dependencies = new Dependencies(candidates, myDependenciesCache); // fixme AP why do we need to look for some other deps??
-      tracer.pop(1);
-
-      tracer.push(CALCULATING_DEPENDENCIES_TO_COMPILE_MSG);
-      modulesContainer.fillDependencies(dependencies);
-      tracer.pop(1);
-      Set<JavaModule> toCompile = buildDirtyModulesClosure(modulesContainer, tracer.subTracer(1));
-
-      tracer.push(BUILDING_MODULE_CYCLES_MSG);
-      List<Set<JavaModule>> schedule = getStronglyConnectedComponents(toCompile);
-      tracer.pop(1);
-
-      return compileCycles(schedule, tracer.subTracer(5, SubProgressKind.REPLACING), modulesContainer);
-    } catch (Exception ex) {
-      // XXX I see no reason to propagate exception up, we can fail compilation process gracefully;
-      String m = String.format("Unexpected exception '%s', compilation aborted!", ex.getMessage() == null ? ex.getClass().getName() : ex.getMessage());
-      tracer.getSender().error(m, ex);
-      return new MPSCompilationResult(1, 0, true, Collections.emptySet());
-    } finally {
-      tracer.done();
-      tracer.printReport();
-    }
-  }
-
-  @NotNull
-  private MPSCompilationResult compileCycles(List<Set<JavaModule>> cyclesToCompile, @NotNull CompositeTracer tracer, @NotNull ModulesContainer allModules) {
-    List<MPSCompilationResult> cycleCompilationResults = new ArrayList<>();
-    tracer.start("Cycles", cyclesToCompile.size());
-
-    try (JavaCompilerImpl jc = decideOnActualCompiler(tracer.getSender())) {
-      int cycleNumber = 0;
-      for (Set<JavaModule> modulesInCycle : cyclesToCompile) {
-        if (tracer.isMonitorCanceled()) {
-          break;
-        }
-        ++cycleNumber;
-        CompositeTracer cycleTracer = tracer.subTracer(1);
-        tracer.getSender().info(String.format(CYCLE_FORMAT_MSG, cycleNumber, modulesInCycle.stream().map(JavaModule::name).collect(Collectors.toList())));
-        cycleTracer.start(getCycleString(cycleNumber, modulesInCycle), 1);
-        ModulesContainer modulesContainer = allModules.restricted(modulesInCycle);
-        final MPSCompilationResult cycleCompilationResult = jc.compile(modulesContainer, cycleTracer.subTracer(1, SubProgressKind.AS_COMMENT));
-        cycleCompilationResults.add(cycleCompilationResult);
-        cycleTracer.done(0);
-      }
-    } finally {
-      tracer.done();
-    }
-
-    return combineCycleCompilationResults(cycleCompilationResults);
+    monitor.start("", 3);
+    prepare(modules, false, monitor.subTask(2));
+    return make(monitor.subTask(1));
   }
 
   private String getCycleString(int cycleNumber, Collection<? extends BaseModuleContainer.JavaModule> modulesInCycle) {
@@ -959,37 +909,4 @@ public final class ModuleMaker {
     return new MPSCompilationResult(errorCount, warnCount, false, changedModules);
   }
 
-  private Set<JavaModule> buildDirtyModulesClosure(ModulesContainer modulesContainer, CompositeTracer tracer) {
-    tracer.start(BUILDING_DIRTY_CLOSURE, 3);
-    HashSet<JavaModule> result = new HashSet<>();
-    Stream<JavaModule> dirtyModules = modulesContainer.getDirtyModules();
-
-    // select from modules those that are affected by the "dirty" modules
-    // M={m}, D={m*}, D<=M, R:M->2^M (required), R* transitive closure of R
-    // C={m|m from M, exists m* from D: m* in R*(m)}
-    // to compile T=D union C
-
-    dirtyModules.forEach(jm -> jm.reportWithDependants(result::add));
-    tracer.done();
-    return result;
-  }
-
-  private List<Set<JavaModule>> getStronglyConnectedComponents(Collection<JavaModule> toCompile) {
-    // based on StronglyConnectedModules
-    Graph<JavaModule> graph = new Graph<>();
-    toCompile.forEach(graph::add);
-    // JM uses reversed edges for IVertex.next, hence the need to reverse topological order
-    final List<List<JavaModule>> cycles = graph.sccReverse();
-
-    List<Set<JavaModule>> result = new LinkedList<>();
-    int i = 0;
-    for (List<JavaModule> cycle : cycles) {
-      myTracer.getSender().debug(String.format("cycle #%d: %s", i++, cycle));
-      // XXX not sure there's any reason to convert List to Set, need to check if there could be duplicates at all
-      result.add(new LinkedHashSet<>(cycle));
-    }
-
-
-    return result;
-  }
 }

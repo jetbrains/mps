@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,6 @@ public final class RuntimeFlags {
   private static Boolean ourCastException = null;
   private static Boolean ourEclipseJavaCompiler = null;
   private static Boolean ourLegacyJavaCompiler = null;
-  private static Boolean ourLegacyModuleMaker = null; // false by default
   private static Boolean ourModuleActivators = null;
   private static Boolean ourLegacyLoadModels = null; // has to become false by default if my testing proves it ok
 
@@ -132,21 +131,6 @@ public final class RuntimeFlags {
       ourLegacyJavaCompiler = "ecjlegacy".equalsIgnoreCase(System.getProperty("mps.compiler.java"));
     }
     return ourLegacyJavaCompiler;
-  }
-
-  /**
-   * Provisional flag to facilitate transition from single-step ModuleMaker to a new one, 2-step algorithm
-   * that makes use of module-level dependencies stored in generated 'dependencies' cache.
-   * Clients using ModuleMaker directly decide which algorithm to use by themselves; this setting is relevant for uses
-   * like JavaCompile facet
-   * @return {@code true} if pre-2021.2 ModuleMaker logic to group compiled modules has to be employed
-   */
-  public static boolean useLegacyModuleMaker() {
-    if (ourLegacyModuleMaker == null) {
-      final String val = System.getProperty("mps.make.modules");
-      ourLegacyModuleMaker = "legacy".equalsIgnoreCase(val) || "1step".equals(val);
-    }
-    return ourLegacyModuleMaker;
   }
 
   /**
