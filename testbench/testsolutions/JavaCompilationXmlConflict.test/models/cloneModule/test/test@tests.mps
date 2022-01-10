@@ -20,6 +20,7 @@
     <import index="vqh0" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.make(MPS.Core/)" />
     <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
+    <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -33,6 +34,10 @@
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
+      </concept>
+      <concept id="1083260308424" name="jetbrains.mps.baseLanguage.structure.EnumConstantReference" flags="nn" index="Rm8GO">
+        <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
+        <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
@@ -191,15 +196,24 @@
               <node concept="2ShNRf" id="70nQ7d49quf" role="33vP2m">
                 <node concept="1pGfFk" id="70nQ7d49qug" role="2ShVmc">
                   <ref role="37wK5l" to="vqh0:~ModuleMaker.&lt;init&gt;(jetbrains.mps.messages.IMessageHandler)" resolve="ModuleMaker" />
-                  <node concept="2ShNRf" id="70nQ7d49quh" role="37wK5m">
-                    <node concept="1pGfFk" id="70nQ7d49qui" role="2ShVmc">
-                      <ref role="37wK5l" to="vqh0:~ErrorsLoggingHandler.&lt;init&gt;(org.apache.log4j.Logger)" resolve="ErrorsLoggingHandler" />
-                      <node concept="2YIFZM" id="70nQ7d49quj" role="37wK5m">
-                        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-                        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-                        <node concept="3VsKOn" id="70nQ7d49quk" role="37wK5m">
-                          <ref role="3VsUkX" node="7l0SErcZhR9" resolve="TestCompilation_Test" />
+                  <node concept="2OqwBi" id="6vAdUN5VDaG" role="37wK5m">
+                    <node concept="2ShNRf" id="70nQ7d49quh" role="2Oq$k0">
+                      <node concept="1pGfFk" id="70nQ7d49qui" role="2ShVmc">
+                        <ref role="37wK5l" to="et5u:~LogHandler.&lt;init&gt;(org.apache.log4j.Logger)" resolve="LogHandler" />
+                        <node concept="2YIFZM" id="70nQ7d49quj" role="37wK5m">
+                          <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
+                          <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
+                          <node concept="3VsKOn" id="70nQ7d49quk" role="37wK5m">
+                            <ref role="3VsUkX" node="7l0SErcZhR9" resolve="TestCompilation_Test" />
+                          </node>
                         </node>
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="6vAdUN5VDLd" role="2OqNvi">
+                      <ref role="37wK5l" to="et5u:~IMessageHandler.restrict(jetbrains.mps.messages.MessageKind)" resolve="restrict" />
+                      <node concept="Rm8GO" id="6vAdUN5VEBG" role="37wK5m">
+                        <ref role="Rm8GQ" to="et5u:~MessageKind.ERROR" resolve="ERROR" />
+                        <ref role="1Px2BO" to="et5u:~MessageKind" resolve="MessageKind" />
                       </node>
                     </node>
                   </node>

@@ -14,7 +14,8 @@ import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.make.MakeSession;
-import jetbrains.mps.make.ErrorsLoggingHandler;
+import jetbrains.mps.messages.LogHandler;
+import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.make.resources.IResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -55,7 +56,7 @@ public abstract class AbstractRefactoringTest extends EnvironmentAwareTestCase {
     if (LOG.isInfoEnabled()) {
       LOG.info("Making modules: " + ListSequence.fromList(modules).toListSequence());
     }
-    MakeSession session = new MakeSession(project, new ErrorsLoggingHandler(LogManager.getLogger(AbstractRefactoringTest.class)), true);
+    MakeSession session = new MakeSession(project, new LogHandler(LogManager.getLogger(AbstractRefactoringTest.class)).restrict(MessageKind.ERROR), true);
     final Wrappers._T<List<? extends IResource>> inputRes = new Wrappers._T<List<? extends IResource>>(null);
     project.getRepository().getModelAccess().runReadAction(() -> inputRes.value = Sequence.fromIterable(new MakeActionParameters(project).cleanMake(cleanMake).modules(modules).collectInput()).toListSequence());
     // FIXME install proper IMakeService in MpsTestsSuite (likely, TestMakeService, to avoid 

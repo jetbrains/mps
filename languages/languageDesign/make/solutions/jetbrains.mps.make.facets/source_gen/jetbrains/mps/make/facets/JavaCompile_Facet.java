@@ -26,8 +26,9 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.messages.IMessageHandler;
-import jetbrains.mps.make.ErrorsLoggingHandler;
+import jetbrains.mps.messages.LogHandler;
 import org.apache.log4j.LogManager;
+import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.make.MPSCompilationResult;
@@ -101,7 +102,8 @@ public class JavaCompile_Facet extends IFacet.Stub {
               }
               progressMonitor.start("Compiling Java", 100);
               // XXX it's odd to use dedicated ErrorsLoggingHandler provided ModuleMaker reports errors to log itself (in addition to IMessageHandler, see MessageSender). Do I need ELH here?
-              IMessageHandler msgHandler = new ErrorsLoggingHandler(LogManager.getLogger(new IFacet.Name("jetbrains.mps.make.facets.JavaCompile").getName())).compose(monitor.getSession().getMessageHandler());
+              // The only reason I could imagine is to make sure errors got logged and could get easily detected in the log.
+              IMessageHandler msgHandler = new LogHandler(LogManager.getLogger(new IFacet.Name("jetbrains.mps.make.facets.JavaCompile").getName())).restrict(MessageKind.ERROR).compose(monitor.getSession().getMessageHandler());
               final ModuleMaker mm = new ModuleMaker(msgHandler);
               mm.options(vars(pa.global()).options());
               new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(() -> {

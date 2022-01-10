@@ -27,9 +27,6 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.project.SModuleOperations;
-import jetbrains.mps.messages.IMessageHandler;
-import jetbrains.mps.make.ErrorsLoggingHandler;
-import org.apache.log4j.LogManager;
 import jetbrains.mps.make.ModuleMaker;
 import org.jetbrains.kotlin.modules.Module;
 import jetbrains.mps.smodel.ModelAccessHelper;
@@ -105,9 +102,7 @@ public class KotlinJvmCompile_Facet extends IFacet.Stub {
                 return new IResult.SUCCESS(_output_xh4yll_a0a);
               }
 
-              // Same comment as in JavaCompile I guess?
-              IMessageHandler messageHandler = new ErrorsLoggingHandler(LogManager.getLogger(new IFacet.Name("jetbrains.mps.kotlin.make.KotlinJvmCompile").getName())).compose(monitor.getSession().getMessageHandler());
-              final ModuleMaker mm = new ModuleMaker(messageHandler);
+              final ModuleMaker mm = new ModuleMaker(monitor.getSession().getMessageHandler());
               if (Target_compile.vars(pa.global()) != null) {
                 mm.options(Target_compile.vars(pa.global()).options());
               }
@@ -115,7 +110,7 @@ public class KotlinJvmCompile_Facet extends IFacet.Stub {
               List<Module> modules = new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(() -> {
                 // Step 1: analyze modules
                 subTask.value = progressMonitor.subTask(30);
-                Stream<ModuleMaker.JM> javaModules = check_xh4yll_a0c0a0a0n0a0a(check_xh4yll_a0a2a0a0a31a0a0(mm.prepare(toCompile, false, subTask.value)));
+                Stream<ModuleMaker.JM> javaModules = check_xh4yll_a0c0a0a0l0a0a(check_xh4yll_a0a2a0a0a11a0a0(mm.prepare(toCompile, false, subTask.value)));
                 subTask.value.advance(0);
 
                 if (javaModules == null) {
@@ -220,13 +215,13 @@ public class KotlinJvmCompile_Facet extends IFacet.Stub {
       T t = createParameters(cls);
       return t;
     }
-    private static Stream<ModuleMaker.JM> check_xh4yll_a0c0a0a0n0a0a(Stream<List<ModuleMaker.JM>> checkedDotOperand) {
+    private static Stream<ModuleMaker.JM> check_xh4yll_a0c0a0a0l0a0a(Stream<List<ModuleMaker.JM>> checkedDotOperand) {
       if (null != checkedDotOperand) {
         return checkedDotOperand.flatMap(Collection::stream);
       }
       return null;
     }
-    private static Stream<List<ModuleMaker.JM>> check_xh4yll_a0a2a0a0a31a0a0(List<List<ModuleMaker.JM>> checkedDotOperand) {
+    private static Stream<List<ModuleMaker.JM>> check_xh4yll_a0a2a0a0a11a0a0(List<List<ModuleMaker.JM>> checkedDotOperand) {
       if (null != checkedDotOperand) {
         return checkedDotOperand.stream();
       }

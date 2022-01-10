@@ -23,7 +23,9 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Handles only error IMessage's unlike the super {@link LogHandler}
+ * @deprecated use {@link LogHandler} and {@link jetbrains.mps.messages.IMessageHandler#restrict(MessageKind)}
  */
+@Deprecated
 public final class ErrorsLoggingHandler extends LogHandler {
   public ErrorsLoggingHandler(@NotNull Logger log) {
     super(log);

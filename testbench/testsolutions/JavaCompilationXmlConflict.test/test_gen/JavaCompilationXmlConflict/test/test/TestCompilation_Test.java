@@ -8,8 +8,9 @@ import org.junit.Test;
 import jetbrains.mps.project.Project;
 import java.io.File;
 import jetbrains.mps.make.ModuleMaker;
-import jetbrains.mps.make.ErrorsLoggingHandler;
+import jetbrains.mps.messages.LogHandler;
 import org.apache.log4j.LogManager;
+import jetbrains.mps.messages.MessageKind;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.junit.Assume;
@@ -24,7 +25,7 @@ public class TestCompilation_Test extends EnvironmentAwareTestCase {
   @Test
   public void test_compileSolution() throws Exception {
     final Project project = myEnvironment.openProject(new File(PROJECT_PATH));
-    final ModuleMaker maker = new ModuleMaker(new ErrorsLoggingHandler(LogManager.getLogger(TestCompilation_Test.class)));
+    final ModuleMaker maker = new ModuleMaker(new LogHandler(LogManager.getLogger(TestCompilation_Test.class)).restrict(MessageKind.ERROR));
     project.getModelAccess().runReadAction(() -> {
       List<SModule> projectModules = project.getProjectModules();
       Assume.assumeFalse(projectModules.isEmpty());

@@ -81,6 +81,10 @@
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
       </concept>
+      <concept id="1083260308424" name="jetbrains.mps.baseLanguage.structure.EnumConstantReference" flags="nn" index="Rm8GO">
+        <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
+        <reference id="1144432896254" name="enumClass" index="1Px2BO" />
+      </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
@@ -637,6 +641,73 @@
                 </node>
               </node>
             </node>
+            <node concept="3SKdUt" id="6vAdUN5SQEh" role="3cqZAp">
+              <node concept="1PaTwC" id="6vAdUN5SQEi" role="1aUNEU">
+                <node concept="3oM_SD" id="6vAdUN5SRAl" role="1PaTwD">
+                  <property role="3oM_SC" value="The" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SRAn" role="1PaTwD">
+                  <property role="3oM_SC" value="only" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SRAq" role="1PaTwD">
+                  <property role="3oM_SC" value="reason" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSdR" role="1PaTwD">
+                  <property role="3oM_SC" value="I" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSdX" role="1PaTwD">
+                  <property role="3oM_SC" value="could" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSe3" role="1PaTwD">
+                  <property role="3oM_SC" value="imagine" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSec" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSek" role="1PaTwD">
+                  <property role="3oM_SC" value="to" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSeu" role="1PaTwD">
+                  <property role="3oM_SC" value="make" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSeD" role="1PaTwD">
+                  <property role="3oM_SC" value="sure" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSeO" role="1PaTwD">
+                  <property role="3oM_SC" value="errors" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSfu" role="1PaTwD">
+                  <property role="3oM_SC" value="got" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSfG" role="1PaTwD">
+                  <property role="3oM_SC" value="logged" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSfX" role="1PaTwD">
+                  <property role="3oM_SC" value="and" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSgc" role="1PaTwD">
+                  <property role="3oM_SC" value="could" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSgs" role="1PaTwD">
+                  <property role="3oM_SC" value="get" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSgK" role="1PaTwD">
+                  <property role="3oM_SC" value="easily" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSh3" role="1PaTwD">
+                  <property role="3oM_SC" value="detected" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SShq" role="1PaTwD">
+                  <property role="3oM_SC" value="in" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SShJ" role="1PaTwD">
+                  <property role="3oM_SC" value="the" />
+                </node>
+                <node concept="3oM_SD" id="6vAdUN5SSi5" role="1PaTwD">
+                  <property role="3oM_SC" value="log." />
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs8" id="3k48dctEXQc" role="3cqZAp">
               <node concept="3cpWsn" id="3k48dctEXQd" role="3cpWs9">
                 <property role="TrG5h" value="msgHandler" />
@@ -644,22 +715,31 @@
                   <ref role="3uigEE" to="et5u:~IMessageHandler" resolve="IMessageHandler" />
                 </node>
                 <node concept="2OqwBi" id="3D3uKT_PbAT" role="33vP2m">
-                  <node concept="2ShNRf" id="3k48dctF0X4" role="2Oq$k0">
-                    <node concept="1pGfFk" id="3k48dctF1iu" role="2ShVmc">
-                      <ref role="37wK5l" to="vqh0:~ErrorsLoggingHandler.&lt;init&gt;(org.apache.log4j.Logger)" resolve="ErrorsLoggingHandler" />
-                      <node concept="2YIFZM" id="3k48dctF1Ll" role="37wK5m">
-                        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.String)" resolve="getLogger" />
-                        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-                        <node concept="2OqwBi" id="3k48dctF3ok" role="37wK5m">
-                          <node concept="2n6ZRZ" id="3k48dctF3dw" role="2Oq$k0">
-                            <node concept="2e$Q_j" id="3k48dctF3dx" role="2n6ZRX">
-                              <ref role="1Mm5Yu" node="5L5h3brvDPx" resolve="JavaCompile" />
+                  <node concept="2OqwBi" id="6vAdUN5SVHN" role="2Oq$k0">
+                    <node concept="2ShNRf" id="3k48dctF0X4" role="2Oq$k0">
+                      <node concept="1pGfFk" id="3k48dctF1iu" role="2ShVmc">
+                        <ref role="37wK5l" to="et5u:~LogHandler.&lt;init&gt;(org.apache.log4j.Logger)" resolve="LogHandler" />
+                        <node concept="2YIFZM" id="3k48dctF1Ll" role="37wK5m">
+                          <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.String)" resolve="getLogger" />
+                          <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
+                          <node concept="2OqwBi" id="3k48dctF3ok" role="37wK5m">
+                            <node concept="2n6ZRZ" id="3k48dctF3dw" role="2Oq$k0">
+                              <node concept="2e$Q_j" id="3k48dctF3dx" role="2n6ZRX">
+                                <ref role="1Mm5Yu" node="5L5h3brvDPx" resolve="JavaCompile" />
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="2SVpevUn6Od" role="2OqNvi">
+                              <ref role="37wK5l" to="rk9m:hxx6lM0OuF" resolve="getName" />
                             </node>
                           </node>
-                          <node concept="liA8E" id="2SVpevUn6Od" role="2OqNvi">
-                            <ref role="37wK5l" to="rk9m:hxx6lM0OuF" resolve="getName" />
-                          </node>
                         </node>
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="6vAdUN5SWGK" role="2OqNvi">
+                      <ref role="37wK5l" to="et5u:~IMessageHandler.restrict(jetbrains.mps.messages.MessageKind)" resolve="restrict" />
+                      <node concept="Rm8GO" id="6vAdUN5SZ5U" role="37wK5m">
+                        <ref role="Rm8GQ" to="et5u:~MessageKind.ERROR" resolve="ERROR" />
+                        <ref role="1Px2BO" to="et5u:~MessageKind" resolve="MessageKind" />
                       </node>
                     </node>
                   </node>

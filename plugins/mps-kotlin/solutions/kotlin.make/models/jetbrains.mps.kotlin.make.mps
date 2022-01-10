@@ -2323,69 +2323,6 @@
               </node>
             </node>
             <node concept="3clFbH" id="rZW9nW5Z6Z" role="3cqZAp" />
-            <node concept="3SKdUt" id="rZW9nW6tzY" role="3cqZAp">
-              <node concept="1PaTwC" id="rZW9nW6tzZ" role="1aUNEU">
-                <node concept="3oM_SD" id="rZW9nW6unf" role="1PaTwD">
-                  <property role="3oM_SC" value="Same" />
-                </node>
-                <node concept="3oM_SD" id="rZW9nW6uGq" role="1PaTwD">
-                  <property role="3oM_SC" value="comment" />
-                </node>
-                <node concept="3oM_SD" id="rZW9nW6uMY" role="1PaTwD">
-                  <property role="3oM_SC" value="as" />
-                </node>
-                <node concept="3oM_SD" id="rZW9nW6v8b" role="1PaTwD">
-                  <property role="3oM_SC" value="in" />
-                </node>
-                <node concept="3oM_SD" id="rZW9nW6v8g" role="1PaTwD">
-                  <property role="3oM_SC" value="JavaCompile" />
-                </node>
-                <node concept="3oM_SD" id="rZW9nW6vlA" role="1PaTwD">
-                  <property role="3oM_SC" value="I" />
-                </node>
-                <node concept="3oM_SD" id="rZW9nW6vzJ" role="1PaTwD">
-                  <property role="3oM_SC" value="guess?" />
-                </node>
-              </node>
-            </node>
-            <node concept="3cpWs8" id="69yGeXkuWpk" role="3cqZAp">
-              <node concept="3cpWsn" id="69yGeXkuWpl" role="3cpWs9">
-                <property role="TrG5h" value="messageHandler" />
-                <node concept="3uibUv" id="69yGeXkuW0h" role="1tU5fm">
-                  <ref role="3uigEE" to="et5u:~IMessageHandler" resolve="IMessageHandler" />
-                </node>
-                <node concept="2OqwBi" id="69yGeXkuWpm" role="33vP2m">
-                  <node concept="2ShNRf" id="69yGeXkuWpn" role="2Oq$k0">
-                    <node concept="1pGfFk" id="69yGeXkuWpo" role="2ShVmc">
-                      <ref role="37wK5l" to="vqh0:~ErrorsLoggingHandler.&lt;init&gt;(org.apache.log4j.Logger)" resolve="ErrorsLoggingHandler" />
-                      <node concept="2YIFZM" id="69yGeXkuWpp" role="37wK5m">
-                        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.String)" resolve="getLogger" />
-                        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-                        <node concept="2OqwBi" id="69yGeXkuWpq" role="37wK5m">
-                          <node concept="2n6ZRZ" id="69yGeXkuWpr" role="2Oq$k0">
-                            <node concept="2e$Q_j" id="69yGeXkuWps" role="2n6ZRX">
-                              <ref role="1Mm5Yu" node="5heFtF6aX5r" resolve="KotlinJvmCompile" />
-                            </node>
-                          </node>
-                          <node concept="liA8E" id="69yGeXkuWpt" role="2OqNvi">
-                            <ref role="37wK5l" to="rk9m:hxx6lM0OuF" resolve="getName" />
-                          </node>
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="69yGeXkuWpu" role="2OqNvi">
-                    <ref role="37wK5l" to="et5u:~IMessageHandler.compose(jetbrains.mps.messages.IMessageHandler)" resolve="compose" />
-                    <node concept="2OqwBi" id="69yGeXkuWpv" role="37wK5m">
-                      <node concept="2_BwXt" id="69yGeXkuWpw" role="2Oq$k0" />
-                      <node concept="liA8E" id="69yGeXkuWpx" role="2OqNvi">
-                        <ref role="37wK5l" to="hfuk:7yGn3z4N4Nw" resolve="getMessageHandler" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="3cpWs8" id="6SVxhiG6cyr" role="3cqZAp">
               <node concept="3cpWsn" id="6SVxhiG6cys" role="3cpWs9">
                 <property role="TrG5h" value="mm" />
@@ -2395,8 +2332,11 @@
                 <node concept="2ShNRf" id="6SVxhiG6cyt" role="33vP2m">
                   <node concept="1pGfFk" id="6SVxhiG6cyu" role="2ShVmc">
                     <ref role="37wK5l" to="vqh0:~ModuleMaker.&lt;init&gt;(jetbrains.mps.messages.IMessageHandler)" resolve="ModuleMaker" />
-                    <node concept="37vLTw" id="69yGeXkuWpy" role="37wK5m">
-                      <ref role="3cqZAo" node="69yGeXkuWpl" resolve="messageHandler" />
+                    <node concept="2OqwBi" id="6vAdUN5TjIT" role="37wK5m">
+                      <node concept="2_BwXt" id="6vAdUN5TjIU" role="2Oq$k0" />
+                      <node concept="liA8E" id="6vAdUN5TjIV" role="2OqNvi">
+                        <ref role="37wK5l" to="hfuk:7yGn3z4N4Nw" resolve="getMessageHandler" />
+                      </node>
                     </node>
                   </node>
                 </node>
