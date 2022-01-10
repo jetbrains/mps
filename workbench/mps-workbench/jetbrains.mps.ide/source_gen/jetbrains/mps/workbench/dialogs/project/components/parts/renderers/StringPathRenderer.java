@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.DefaultListCellRenderer;
 import java.awt.Component;
 import javax.swing.JList;
-import jetbrains.mps.ide.ui.dialogs.properties.StateUtil;
+import java.io.File;
 import jetbrains.mps.nodeEditor.MPSColors;
 
 @GeneratedClass(node = "r:4cfa2d82-0f6c-496f-bd56-08bca0eb8e02(jetbrains.mps.workbench.dialogs.project.components.parts.renderers)/1560298786499492799", model = "r:4cfa2d82-0f6c-496f-bd56-08bca0eb8e02(jetbrains.mps.workbench.dialogs.project.components.parts.renderers)")
@@ -23,7 +23,7 @@ public class StringPathRenderer extends DefaultListCellRenderer {
     if (isSelected) {
       return result;
     }
-    if (!(StateUtil.isAvailable(path))) {
+    if (!(new File(path).exists())) {
       setForeground(MPSColors.RED);
     }
     return result;

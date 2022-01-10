@@ -14,7 +14,7 @@ import jetbrains.mps.vcs.util.MergeVersion;
 import jetbrains.mps.project.MPSExtentions;
 import com.intellij.openapi.util.io.FileUtil;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -75,7 +75,7 @@ public class TestMergeDialog {
       return;
     }
 
-    VirtualFile resFile = VirtualFileUtils.getVirtualFile(resultFile);
+    VirtualFile resFile = LocalFileSystem.getInstance().findFileByIoFile(new File(resultFile));
     List<String> contents = ListSequence.fromListAndArray(new ArrayList<String>(), models);
     List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), "Local Version", "Merge Result", "Remote Version");
     try {

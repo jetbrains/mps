@@ -3908,11 +3908,6 @@
       <ref role="1DUlNI" to="qkt:~CommonDataKeys.PROJECT" resolve="PROJECT" />
       <node concept="1oajcY" id="4odLqy5SXtn" role="1oa70y" />
     </node>
-    <node concept="1DS2jV" id="1gbSomzvHQg" role="1NuT2Z">
-      <property role="TrG5h" value="mpsProject" />
-      <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.MPS_PROJECT" resolve="MPS_PROJECT" />
-      <node concept="1oajcY" id="1gbSomzvHQh" role="1oa70y" />
-    </node>
     <node concept="tnohg" id="4odLqy5SVBl" role="tncku">
       <node concept="3clFbS" id="4odLqy5SVBm" role="2VODD2">
         <node concept="3cpWs8" id="4odLqy5T4PZ" role="3cqZAp">
@@ -4073,7 +4068,9 @@
                     <node concept="3cpWsn" id="4odLqy5TTvj" role="3cpWs9">
                       <property role="TrG5h" value="resFilePath" />
                       <property role="3TUv4t" value="true" />
-                      <node concept="17QB3L" id="4odLqy5TTvk" role="1tU5fm" />
+                      <node concept="3uibUv" id="2_MQfvmqpTD" role="1tU5fm">
+                        <ref role="3uigEE" to="guwi:~File" resolve="File" />
+                      </node>
                     </node>
                   </node>
                   <node concept="3cpWs8" id="4odLqy5TTvd" role="3cqZAp">
@@ -4158,20 +4155,15 @@
                           <node concept="37vLTw" id="4gQ5MKiF_qz" role="37vLTJ">
                             <ref role="3cqZAo" node="4odLqy5TTvj" resolve="resFilePath" />
                           </node>
-                          <node concept="2OqwBi" id="4odLqy5TTwc" role="37vLTx">
-                            <node concept="2YIFZM" id="4odLqy5TTwd" role="2Oq$k0">
-                              <ref role="1Pybhc" to="guwi:~File" resolve="File" />
-                              <ref role="37wK5l" to="guwi:~File.createTempFile(java.lang.String,java.lang.String)" resolve="createTempFile" />
-                              <node concept="Xl_RD" id="4odLqy5TTwe" role="37wK5m">
-                                <property role="Xl_RC" value="mpstmp" />
-                              </node>
-                              <node concept="10M0yZ" id="3OgfWJy14aa" role="37wK5m">
-                                <ref role="1PxDUh" to="z1c3:~MPSExtentions" resolve="MPSExtentions" />
-                                <ref role="3cqZAo" to="z1c3:~MPSExtentions.DOT_MODEL" resolve="DOT_MODEL" />
-                              </node>
+                          <node concept="2YIFZM" id="4odLqy5TTwd" role="37vLTx">
+                            <ref role="1Pybhc" to="guwi:~File" resolve="File" />
+                            <ref role="37wK5l" to="guwi:~File.createTempFile(java.lang.String,java.lang.String)" resolve="createTempFile" />
+                            <node concept="Xl_RD" id="4odLqy5TTwe" role="37wK5m">
+                              <property role="Xl_RC" value="mpstmp" />
                             </node>
-                            <node concept="liA8E" id="4odLqy5TTwg" role="2OqNvi">
-                              <ref role="37wK5l" to="guwi:~File.getAbsolutePath()" resolve="getAbsolutePath" />
+                            <node concept="10M0yZ" id="3OgfWJy14aa" role="37wK5m">
+                              <ref role="1PxDUh" to="z1c3:~MPSExtentions" resolve="MPSExtentions" />
+                              <ref role="3cqZAo" to="z1c3:~MPSExtentions.DOT_MODEL" resolve="DOT_MODEL" />
                             </node>
                           </node>
                         </node>
@@ -4185,11 +4177,16 @@
                       <node concept="3uibUv" id="4gQ5MKiFaY0" role="1tU5fm">
                         <ref role="3uigEE" to="jlff:~VirtualFile" resolve="VirtualFile" />
                       </node>
-                      <node concept="2YIFZM" id="4gQ5MKiFeM$" role="33vP2m">
-                        <ref role="37wK5l" to="4hrd:~VirtualFileUtils.getVirtualFile(java.lang.String)" resolve="getVirtualFile" />
-                        <ref role="1Pybhc" to="4hrd:~VirtualFileUtils" resolve="VirtualFileUtils" />
-                        <node concept="37vLTw" id="4gQ5MKiFf34" role="37wK5m">
-                          <ref role="3cqZAo" node="4odLqy5TTvj" resolve="resFilePath" />
+                      <node concept="2OqwBi" id="2_MQfvmqrtE" role="33vP2m">
+                        <node concept="2YIFZM" id="2_MQfvmqr13" role="2Oq$k0">
+                          <ref role="37wK5l" to="jlff:~LocalFileSystem.getInstance()" resolve="getInstance" />
+                          <ref role="1Pybhc" to="jlff:~LocalFileSystem" resolve="LocalFileSystem" />
+                        </node>
+                        <node concept="liA8E" id="2_MQfvmqrYu" role="2OqNvi">
+                          <ref role="37wK5l" to="jlff:~LocalFileSystem.findFileByIoFile(java.io.File)" resolve="findFileByIoFile" />
+                          <node concept="37vLTw" id="2_MQfvmqsbp" role="37wK5m">
+                            <ref role="3cqZAo" node="4odLqy5TTvj" resolve="resFilePath" />
+                          </node>
                         </node>
                       </node>
                     </node>

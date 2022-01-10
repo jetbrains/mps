@@ -49,10 +49,15 @@
       <node id="2483009129666123960" at="106,7,107,44" concept="7" />
       <node id="2483009129666123965" at="107,44,108,44" concept="7" />
       <node id="2483009129666123970" at="108,44,109,40" concept="8" />
-      <node id="2483009129666132302" at="115,60,116,71" concept="7" />
+      <node id="2483009129666132302" at="115,60,116,62" concept="7" />
       <node id="2483009129666132314" at="117,24,118,22" concept="8" />
       <node id="2483009129666132319" at="119,7,120,51" concept="8" />
-      <node id="2483009129666115584" at="126,60,127,56" concept="8" />
+      <node id="3995997045458686472" at="124,51,125,35" concept="8" />
+      <node id="3995997045458686523" at="128,28,129,15" concept="8" />
+      <node id="3995997045458686531" at="131,28,132,16" concept="8" />
+      <node id="3995997045458686537" at="133,5,134,13" concept="8" />
+      <node id="3995997045458686594" at="136,63,137,60" concept="8" />
+      <node id="2483009129666115584" at="142,60,143,56" concept="8" />
       <node id="3201642974933580365" at="21,0,23,0" concept="0" trace="ProjectProperties#()V" />
       <node id="3201642974933580387" at="24,0,27,0" concept="6" trace="getModules#()Ljava/util/List;" />
       <node id="8376559132768629771" at="45,81,48,5" concept="5" />
@@ -60,11 +65,15 @@
       <node id="3201642974933580599" at="89,83,92,5" concept="4" />
       <node id="2483009129666123922" at="98,0,101,0" concept="6" trace="getPathString#(Ljetbrains/mps/project/structure/project/ModulePath;)Ljava/lang/String;" />
       <node id="2483009129666123953" at="103,60,106,7" concept="5" />
-      <node id="2483009129666132312" at="116,71,119,7" concept="5" />
+      <node id="2483009129666132312" at="116,62,119,7" concept="5" />
+      <node id="3995997045458686451" at="124,0,127,0" concept="12" trace="isAvailable#(Ljava/lang/String;)Z" />
+      <node id="3995997045458686521" at="127,61,130,5" concept="5" />
+      <node id="3995997045458686529" at="130,5,133,5" concept="5" />
+      <node id="3995997045458686590" at="136,0,139,0" concept="12" trace="_compare#(Ljava/lang/String;Ljava/lang/String;)I" />
       <node id="8376559132768615030" at="36,81,40,5" concept="5" />
-      <node id="2483009129666115576" at="125,0,129,0" concept="6" trace="compare#(Ljetbrains/mps/project/structure/project/ModulePath;Ljetbrains/mps/project/structure/project/ModulePath;)I" />
+      <node id="2483009129666115576" at="141,0,145,0" concept="6" trace="compare#(Ljetbrains/mps/project/structure/project/ModulePath;Ljetbrains/mps/project/structure/project/ModulePath;)I" />
       <node id="3201642974933580414" at="73,0,79,0" concept="6" trace="isSame#(Ljetbrains/mps/project/structure/project/ProjectDescriptor;)Z" />
-      <node id="2483009129666115567" at="124,0,130,0" concept="11" trace="IGNORE_VIRTUAL_FOLDER_COMPARATOR" />
+      <node id="2483009129666115567" at="140,0,146,0" concept="11" trace="IGNORE_VIRTUAL_FOLDER_COMPARATOR" />
       <node id="3201642974933580503" at="80,0,87,0" concept="6" trace="loadFrom#(Ljetbrains/mps/project/StandaloneMPSProject;)V" />
       <node id="8376559132768553029" at="35,0,43,0" concept="6" trace="add#(Ljetbrains/mps/project/structure/project/ModulePath;)I" />
       <node id="8376559132768556509" at="44,0,52,0" concept="6" trace="remove#(Ljetbrains/mps/project/structure/project/ModulePath;)I" />
@@ -72,6 +81,7 @@
       <node id="2483009129666132294" at="114,0,122,0" concept="6" trace="compare#(Ljetbrains/mps/project/structure/project/ModulePath;Ljetbrains/mps/project/structure/project/ModulePath;)I" />
       <node id="229373242963549275" at="63,0,72,0" concept="6" trace="getModulePathByFSPath#(Ljava/lang/String;)Ljetbrains/mps/project/structure/project/ModulePath;" />
       <node id="2483009129666123945" at="102,0,111,0" concept="6" trace="compare#(Ljetbrains/mps/project/structure/project/ModulePath;Ljetbrains/mps/project/structure/project/ModulePath;)I" />
+      <node id="3995997045458686517" at="127,0,136,0" concept="12" trace="_compare#(ZZ)I" />
       <node id="2483009129666132286" at="113,0,123,0" concept="11" trace="PATH_VALID_COMPARATOR" />
       <node id="2483009129666123914" at="97,0,112,0" concept="11" trace="PATH_COMPARATOR" />
       <scope id="3201642974933580367" at="21,30,21,30" />
@@ -82,7 +92,11 @@
       <scope id="2483009129666123927" at="98,51,99,88" />
       <scope id="2483009129666123957" at="104,27,105,17" />
       <scope id="2483009129666132313" at="117,24,118,22" />
-      <scope id="2483009129666115583" at="126,60,127,56" />
+      <scope id="3995997045458686454" at="124,51,125,35" />
+      <scope id="3995997045458686522" at="128,28,129,15" />
+      <scope id="3995997045458686530" at="131,28,132,16" />
+      <scope id="3995997045458686593" at="136,63,137,60" />
+      <scope id="2483009129666115583" at="142,60,143,56" />
       <scope id="3201642974933580365" at="21,0,23,0" />
       <scope id="8376559132768615032" at="37,20,39,33" />
       <scope id="3201642974933580387" at="24,0,27,0" />
@@ -92,10 +106,17 @@
       <scope id="2483009129666123922" at="98,0,101,0">
         <var name="path" id="2483009129666123925" />
       </scope>
+      <scope id="3995997045458686451" at="124,0,127,0">
+        <var name="path" id="3995997045458686474" />
+      </scope>
+      <scope id="3995997045458686590" at="136,0,139,0">
+        <var name="path1" id="3995997045458686600" />
+        <var name="path2" id="3995997045458686602" />
+      </scope>
       <scope id="3201642974933580419" at="73,62,77,35">
         <var name="paths" id="3201642974933580421" />
       </scope>
-      <scope id="2483009129666115576" at="125,0,129,0">
+      <scope id="2483009129666115576" at="141,0,145,0">
         <var name="path1" id="2483009129666115579" />
         <var name="path2" id="2483009129666115581" />
       </scope>
@@ -127,6 +148,7 @@
       <scope id="3201642974933580503" at="80,0,87,0">
         <var name="project" id="3201642974933580506" />
       </scope>
+      <scope id="3995997045458686520" at="127,61,134,13" />
       <scope id="8376559132768553029" at="35,0,43,0">
         <var name="path" id="8376559132768554270" />
       </scope>
@@ -147,10 +169,14 @@
         <var name="path1" id="2483009129666123948" />
         <var name="path2" id="2483009129666123950" />
       </scope>
-      <unit id="2483009129666115574" at="124,85,129,3" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties$3" />
+      <scope id="3995997045458686517" at="127,0,136,0">
+        <var name="isOk1" id="3995997045458686539" />
+        <var name="isOk2" id="3995997045458686541" />
+      </scope>
+      <unit id="2483009129666115574" at="140,85,145,3" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties$3" />
       <unit id="2483009129666132292" at="113,73,122,3" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties$2" />
       <unit id="2483009129666123920" at="97,68,111,3" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties$1" />
-      <unit id="3201642974933580312" at="17,0,131,0" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties" />
+      <unit id="3201642974933580312" at="17,0,147,0" name="jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties" />
     </file>
   </root>
   <root nodeRef="r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/3201642974933583134">

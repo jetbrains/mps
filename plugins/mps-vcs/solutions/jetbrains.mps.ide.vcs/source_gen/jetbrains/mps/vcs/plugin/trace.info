@@ -341,90 +341,81 @@
   </root>
   <root nodeRef="r:5ec7bf64-acd2-448b-8f9b-ce1b8d920038(jetbrains.mps.vcs.plugin)/5047908084943665620">
     <file name="TestMergeAction_Action.java">
-      <node id="5047908084943665620" at="40,0,41,0" concept="13" trace="LOG" />
-      <node id="5047908084943665620" at="41,0,42,0" concept="13" trace="ICON" />
-      <node id="5047908084943665620" at="43,35,44,48" concept="15" />
-      <node id="5047908084943665620" at="44,48,45,35" concept="4" />
-      <node id="5047908084943665620" at="45,35,46,40" concept="4" />
-      <node id="5047908084943665620" at="49,32,50,16" concept="10" />
-      <node id="5047908084943665620" at="54,53,55,19" concept="10" />
-      <node id="5047908084943673174" at="57,5,58,56" concept="9" />
-      <node id="5047908084943673174" at="58,56,59,53" concept="4" />
-      <node id="5047908084943673175" at="60,22,61,21" concept="10" />
-      <node id="1444496069592276368" at="64,5,65,66" concept="9" />
-      <node id="1444496069592276368" at="65,66,66,56" concept="4" />
-      <node id="1444496069592276369" at="67,22,68,21" concept="10" />
-      <node id="5047908084943665620" at="70,5,71,16" concept="10" />
-      <node id="5047908084943704357" at="77,57,78,88" concept="10" />
-      <node id="5047908084943704373" at="80,6,81,0" concept="12" />
-      <node id="5047908084943704374" at="81,0,82,59" concept="4" />
-      <node id="5047908084943704379" at="82,59,83,52" concept="4" />
-      <node id="5047908084943708031" at="84,59,85,124" concept="9" />
-      <node id="5047908084943715237" at="85,124,86,0" concept="12" />
-      <node id="5047908084943919058" at="86,0,87,31" concept="9" />
-      <node id="5047908084943919053" at="87,31,88,22" concept="9" />
-      <node id="5047908084943919093" at="89,11,90,175" concept="4" />
-      <node id="5047908084943919069" at="90,175,91,95" concept="4" />
-      <node id="5047908084943919155" at="92,29,93,28" concept="4" />
-      <node id="5047908084943923467" at="93,28,94,15" concept="10" />
-      <node id="5047908084943918995" at="95,7,96,0" concept="12" />
-      <node id="4915141521380781950" at="96,0,97,73" concept="9" />
-      <node id="4915141521380462819" at="97,73,98,93" concept="9" />
-      <node id="4915141521380566783" at="98,93,99,134" concept="9" />
-      <node id="4915141521380728663" at="100,11,101,322" concept="9" />
-      <node id="4915141521380765409" at="101,322,102,110" concept="4" />
-      <node id="3818729150937340912" at="104,44,105,27" concept="4" />
-      <node id="5047908084943665620" at="53,95,56,5" concept="7" />
-      <node id="5047908084943673175" at="59,53,62,7" concept="7" />
-      <node id="1444496069592276369" at="66,56,69,7" concept="7" />
-      <node id="3818729150937340912" at="103,47,106,9" concept="7" />
-      <node id="5047908084943665620" at="48,0,52,0" concept="8" trace="isDumbAware#()Z" />
-      <node id="5047908084943704351" at="76,0,80,0" concept="8" trace="isFileSelectable#(Lcom/intellij/openapi/vfs/VirtualFile;)Z" />
-      <node id="5047908084943665620" at="43,0,48,0" concept="2" trace="TestMergeAction_Action#()V" />
-      <node id="5047908084943703423" at="74,96,80,6" concept="9" />
-      <node id="5047908084943673174" at="56,5,63,5" concept="1" />
-      <node id="1444496069592276368" at="63,5,70,5" concept="1" />
-      <node id="5047908084943919062" at="88,22,95,7" concept="16" />
-      <node id="4915141521380953057" at="99,134,107,7" concept="16" />
-      <node id="5047908084943665620" at="52,0,73,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="1092784201483719405" at="83,52,108,7" concept="4" />
-      <node id="5047908084943665620" at="73,0,110,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <scope id="5047908084943665620" at="49,32,50,16" />
-      <scope id="5047908084943665620" at="54,53,55,19" />
-      <scope id="5047908084943673175" at="60,22,61,21" />
-      <scope id="1444496069592276369" at="67,22,68,21" />
-      <scope id="5047908084943704356" at="77,57,78,88" />
-      <scope id="3818729150937340912" at="104,44,105,27" />
-      <scope id="5047908084943919063" at="89,11,91,95" />
-      <scope id="5047908084943919068" at="92,29,94,15" />
-      <scope id="4915141521380953059" at="100,11,102,110">
+      <node id="5047908084943665620" at="38,0,39,0" concept="13" trace="LOG" />
+      <node id="5047908084943665620" at="39,0,40,0" concept="13" trace="ICON" />
+      <node id="5047908084943665620" at="41,35,42,48" concept="15" />
+      <node id="5047908084943665620" at="42,48,43,35" concept="4" />
+      <node id="5047908084943665620" at="43,35,44,40" concept="4" />
+      <node id="5047908084943665620" at="47,32,48,16" concept="10" />
+      <node id="5047908084943665620" at="52,53,53,19" concept="10" />
+      <node id="5047908084943673174" at="55,5,56,56" concept="9" />
+      <node id="5047908084943673174" at="56,56,57,53" concept="4" />
+      <node id="5047908084943673175" at="58,22,59,21" concept="10" />
+      <node id="5047908084943665620" at="61,5,62,16" concept="10" />
+      <node id="5047908084943704357" at="68,57,69,88" concept="10" />
+      <node id="5047908084943704373" at="71,6,72,0" concept="12" />
+      <node id="5047908084943704374" at="72,0,73,59" concept="4" />
+      <node id="5047908084943704379" at="73,59,74,52" concept="4" />
+      <node id="5047908084943708031" at="75,59,76,124" concept="9" />
+      <node id="5047908084943715237" at="76,124,77,0" concept="12" />
+      <node id="5047908084943919058" at="77,0,78,29" concept="9" />
+      <node id="5047908084943919053" at="78,29,79,22" concept="9" />
+      <node id="5047908084943919093" at="80,11,81,175" concept="4" />
+      <node id="5047908084943919069" at="81,175,82,77" concept="4" />
+      <node id="5047908084943919155" at="83,29,84,28" concept="4" />
+      <node id="5047908084943923467" at="84,28,85,15" concept="10" />
+      <node id="5047908084943918995" at="86,7,87,0" concept="12" />
+      <node id="4915141521380781950" at="87,0,88,88" concept="9" />
+      <node id="4915141521380462819" at="88,88,89,93" concept="9" />
+      <node id="4915141521380566783" at="89,93,90,134" concept="9" />
+      <node id="4915141521380728663" at="91,11,92,322" concept="9" />
+      <node id="4915141521380765409" at="92,322,93,110" concept="4" />
+      <node id="3818729150937340912" at="95,44,96,27" concept="4" />
+      <node id="5047908084943665620" at="51,95,54,5" concept="7" />
+      <node id="5047908084943673175" at="57,53,60,7" concept="7" />
+      <node id="3818729150937340912" at="94,47,97,9" concept="7" />
+      <node id="5047908084943665620" at="46,0,50,0" concept="8" trace="isDumbAware#()Z" />
+      <node id="5047908084943704351" at="67,0,71,0" concept="8" trace="isFileSelectable#(Lcom/intellij/openapi/vfs/VirtualFile;)Z" />
+      <node id="5047908084943665620" at="41,0,46,0" concept="2" trace="TestMergeAction_Action#()V" />
+      <node id="5047908084943703423" at="65,96,71,6" concept="9" />
+      <node id="5047908084943673174" at="54,5,61,5" concept="1" />
+      <node id="5047908084943919062" at="79,22,86,7" concept="16" />
+      <node id="4915141521380953057" at="90,134,98,7" concept="16" />
+      <node id="5047908084943665620" at="50,0,64,0" concept="8" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <node id="1092784201483719405" at="74,52,99,7" concept="4" />
+      <node id="5047908084943665620" at="64,0,101,0" concept="8" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <scope id="5047908084943665620" at="47,32,48,16" />
+      <scope id="5047908084943665620" at="52,53,53,19" />
+      <scope id="5047908084943673175" at="58,22,59,21" />
+      <scope id="5047908084943704356" at="68,57,69,88" />
+      <scope id="3818729150937340912" at="95,44,96,27" />
+      <scope id="5047908084943919063" at="80,11,82,77" />
+      <scope id="5047908084943919068" at="83,29,85,15" />
+      <scope id="4915141521380953059" at="91,11,93,110">
         <var name="request" id="4915141521380728664" />
       </scope>
-      <scope id="5047908084943665620" at="43,35,46,40" />
-      <scope id="5047908084943919065" at="92,7,95,7">
+      <scope id="5047908084943665620" at="41,35,44,40" />
+      <scope id="5047908084943919065" at="83,7,86,7">
         <var name="e" id="5047908084943919066" />
       </scope>
-      <scope id="4915141521380953066" at="103,47,106,9" />
-      <scope id="5047908084943665620" at="48,0,52,0" />
-      <scope id="5047908084943704351" at="76,0,80,0">
+      <scope id="4915141521380953066" at="94,47,97,9" />
+      <scope id="5047908084943665620" at="46,0,50,0" />
+      <scope id="5047908084943704351" at="67,0,71,0">
         <var name="file" id="5047908084943704354" />
       </scope>
-      <scope id="4915141521380953060" at="103,7,107,7">
+      <scope id="4915141521380953060" at="94,7,98,7">
         <var name="e" id="4915141521380953062" />
       </scope>
-      <scope id="5047908084943665620" at="43,0,48,0" />
-      <scope id="5047908084943673174" at="57,5,62,7">
+      <scope id="5047908084943665620" at="41,0,46,0" />
+      <scope id="5047908084943673174" at="55,5,60,7">
         <var name="p" id="5047908084943673174" />
       </scope>
-      <scope id="1444496069592276368" at="64,5,69,7">
-        <var name="p" id="1444496069592276368" />
-      </scope>
-      <scope id="5047908084943665620" at="53,95,71,16" />
-      <scope id="5047908084943665620" at="52,0,73,0">
+      <scope id="5047908084943665620" at="51,95,62,16" />
+      <scope id="5047908084943665620" at="50,0,64,0">
         <var name="_params" id="5047908084943665620" />
         <var name="event" id="5047908084943665620" />
       </scope>
-      <scope id="5047908084943708030" at="84,59,107,7">
+      <scope id="5047908084943708030" at="75,59,98,7">
         <var name="contents" id="4915141521380462822" />
         <var name="resFile" id="4915141521380781951" />
         <var name="resFilePath" id="5047908084943919059" />
@@ -432,15 +423,15 @@
         <var name="vFile" id="5047908084943708032" />
         <var name="zipped" id="5047908084943919054" />
       </scope>
-      <scope id="5047908084943665620" at="74,96,108,7">
+      <scope id="5047908084943665620" at="65,96,99,7">
         <var name="descriptor" id="5047908084943703424" />
       </scope>
-      <scope id="5047908084943665620" at="73,0,110,0">
+      <scope id="5047908084943665620" at="64,0,101,0">
         <var name="_params" id="5047908084943665620" />
         <var name="event" id="5047908084943665620" />
       </scope>
-      <unit id="5047908084943704349" at="75,49,80,5" name="jetbrains.mps.vcs.plugin.TestMergeAction_Action$1" />
-      <unit id="5047908084943665620" at="38,0,111,0" name="jetbrains.mps.vcs.plugin.TestMergeAction_Action" />
+      <unit id="5047908084943704349" at="66,49,71,5" name="jetbrains.mps.vcs.plugin.TestMergeAction_Action$1" />
+      <unit id="5047908084943665620" at="36,0,102,0" name="jetbrains.mps.vcs.plugin.TestMergeAction_Action" />
     </file>
     <file name="Vcs_ApplicationPlugin.java">
       <node id="5047908084943665620" at="37,47,38,44" concept="4" />

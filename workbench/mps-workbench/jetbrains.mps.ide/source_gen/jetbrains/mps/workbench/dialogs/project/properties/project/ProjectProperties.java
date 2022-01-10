@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.project.StandaloneMPSProject;
 import java.util.Comparator;
-import jetbrains.mps.ide.ui.dialogs.properties.StateUtil;
+import java.io.File;
 
 @GeneratedClass(node = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/3201642974933580312", model = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)")
 public final class ProjectProperties {
@@ -113,13 +113,29 @@ public final class ProjectProperties {
   public static final Comparator<ModulePath> PATH_VALID_COMPARATOR = new Comparator<ModulePath>() {
     @Override
     public int compare(ModulePath path1, ModulePath path2) {
-      int result = StateUtil.compare(path1.getPath(), path2.getPath());
+      int result = _compare(path1.getPath(), path2.getPath());
       if (result != 0) {
         return result;
       }
       return PATH_COMPARATOR.compare(path1, path2);
     }
   };
+
+  private static boolean isAvailable(String path) {
+    return new File(path).exists();
+  }
+  private static int _compare(boolean isOk1, boolean isOk2) {
+    if (isOk1 && !(isOk2)) {
+      return 1;
+    }
+    if (isOk2 && !(isOk1)) {
+      return -1;
+    }
+    return 0;
+  }
+  /*package*/ static int _compare(String path1, String path2) {
+    return _compare(isAvailable(path1), isAvailable(path2));
+  }
 
   private static final Comparator<ModulePath> IGNORE_VIRTUAL_FOLDER_COMPARATOR = new Comparator<ModulePath>() {
     @Override

@@ -12,18 +12,16 @@ import java.util.Map;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
-import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.fileChooser.FileChooser;
-import jetbrains.mps.vcs.platform.util.MergeBackupUtil;
 import java.io.File;
+import jetbrains.mps.vcs.platform.util.MergeBackupUtil;
 import jetbrains.mps.vcs.util.MergeVersion;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -61,13 +59,6 @@ public class TestMergeAction_Action extends BaseAction {
         return false;
       }
     }
-    {
-      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
-      MapSequence.fromMap(_params).put("mpsProject", p);
-      if (p == null) {
-        return false;
-      }
-    }
     return true;
   }
   @Override
@@ -84,17 +75,17 @@ public class TestMergeAction_Action extends BaseAction {
     ApplicationManager.getApplication().invokeLater(() -> {
       VirtualFile vFile = FileChooser.chooseFile(descriptor, ((Project) MapSequence.fromMap(_params).get("project")), null);
 
-      final String resFilePath;
+      final File resFilePath;
       String[] zipped;
       try {
         zipped = MergeBackupUtil.loadZippedModelsAsText(new File(vFile.getCanonicalPath()), new MergeVersion[]{MergeVersion.BASE, MergeVersion.MINE, MergeVersion.REPOSITORY});
-        resFilePath = File.createTempFile("mpstmp", MPSExtentions.DOT_MODEL).getAbsolutePath();
+        resFilePath = File.createTempFile("mpstmp", MPSExtentions.DOT_MODEL);
       } catch (Exception e) {
         e.printStackTrace();
         return;
       }
 
-      VirtualFile resFile = VirtualFileUtils.getVirtualFile(resFilePath);
+      VirtualFile resFile = LocalFileSystem.getInstance().findFileByIoFile(resFilePath);
       List<String> contents = ListSequence.fromListAndArray(new ArrayList<String>(), zipped);
       List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), "Local Version", "Merge Result", "Remote Version");
       try {

@@ -9,7 +9,6 @@
   <uses module="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="dp" />
   <uses module="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61(MPS.Platform)" kind="dp" />
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
-  <uses module="25092e07-e655-497c-92fb-558a8e3080ed(jetbrains.mps.ide.ui)" kind="dp" />
   <dependency className="jetbrains.mps.workbench.dialogs.project.components.parts.renderers.PathRenderer">
     <classNode dependClassName="java.awt.Component" />
     <classNode dependClassName="java.lang.Object" />
@@ -23,12 +22,12 @@
   </dependency>
   <dependency className="jetbrains.mps.workbench.dialogs.project.components.parts.renderers.StringPathRenderer">
     <classNode dependClassName="java.awt.Component" />
+    <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="javax.swing.JList" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.ide.ui.dialogs.properties.StateUtil" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.MPSColors" />
     <classNode extendsClassName="javax.swing.DefaultListCellRenderer" />
   </dependency>

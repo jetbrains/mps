@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,10 +23,10 @@ import com.intellij.openapi.fileChooser.FileChooserFactory;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.ui.DocumentAdapter;
 import com.intellij.ui.IdeBorderFactory;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -36,10 +36,11 @@ import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.io.File;
 
 public class MoveFileDialog extends DialogWrapper {
-  private JLabel myLabel;
-  private TextFieldWithBrowseButton myDirectoryField = new TextFieldWithBrowseButton();
+  private final JLabel myLabel;
+  private final TextFieldWithBrowseButton myDirectoryField = new TextFieldWithBrowseButton();
 
   public MoveFileDialog(final Project project, final String initialText, boolean isDirectory) {
     super(project);
@@ -48,7 +49,7 @@ public class MoveFileDialog extends DialogWrapper {
     myDirectoryField.addActionListener(e -> ApplicationManager.getApplication().invokeLater(() -> {
       FileChooserDescriptor chooser = new FileChooserDescriptor(false, true, false, false, false, false);
       FileChooserDialog dialog = FileChooserFactory.getInstance().createFileChooser(chooser, project, getOwner());
-      VirtualFile[] selectedFiles = dialog.choose(project, VirtualFileUtils.getVirtualFile(initialText));
+      VirtualFile[] selectedFiles = dialog.choose(project, LocalFileSystem.getInstance().findFileByIoFile(new File(initialText)));
       if (selectedFiles.length > 0 && selectedFiles[0] != null) {
         myDirectoryField.setText(selectedFiles[0].getPath());
       }
@@ -57,7 +58,7 @@ public class MoveFileDialog extends DialogWrapper {
       @Override
       protected void textChanged(DocumentEvent e) {
         // Check that destination path exist and block apply if not
-        final VirtualFile virtualFile = VirtualFileUtils.getVirtualFile(myDirectoryField.getText());
+        final VirtualFile virtualFile = LocalFileSystem.getInstance().findFileByIoFile(new File(myDirectoryField.getText()));
         if (virtualFile == null || !virtualFile.exists()) {
           MoveFileDialog.this.setErrorText("Destination does not exists");
           MoveFileDialog.this.setOKActionEnabled(false);

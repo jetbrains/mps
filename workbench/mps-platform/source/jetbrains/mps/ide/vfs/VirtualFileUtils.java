@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VfsUtil;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.util.annotation.Hack;
@@ -39,6 +40,7 @@ import java.net.JarURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.List;
 
 public final class VirtualFileUtils {
@@ -47,9 +49,16 @@ public final class VirtualFileUtils {
   private VirtualFileUtils() {
   }
 
+  /**
+   * @deprecated No reason whatsoever not to use IDEA's native mechanism, see
+   *             {@link LocalFileSystem#findFileByIoFile(File)} and
+   *             {@link com.intellij.openapi.vfs.VirtualFileManager#findFileByNioPath(Path)}.
+   *             No uses in MPS, drop after 2021.3 release
+   */
   @Nullable
+  @Deprecated(forRemoval = true, since = "2021.3")
   public static VirtualFile getVirtualFile(String path) {
-    return getVirtualFile(FileSystem.getInstance().findExistingFile(path));
+    return VirtualFileManager.getInstance().findFileByNioPath(Path.of(path));
   }
 
   /**
@@ -69,7 +78,7 @@ public final class VirtualFileUtils {
    * @deprecated please use {@link IdeaFileSystem#asVirtualFile(IFile)} instead.
    *             To get FS associated with the project, use {@link MPSProject#getFileSystem()}.
    */
-  @Deprecated
+  @Deprecated(forRemoval = true, since = "2021.3")
   @Nullable
   public static VirtualFile getProjectVirtualFile(@NotNull IFile file) {
     if (file instanceof IdeaFile) {
@@ -90,7 +99,7 @@ public final class VirtualFileUtils {
    * (we would rather make them read-only)
    */
   @Hack
-@Deprecated(since = "3.4", forRemoval = true)
+  @Deprecated(since = "3.4", forRemoval = true)
   public static VirtualFile getOrCreateVirtualFile(@NotNull IFile file) {
     if (file.getFileSystem() instanceof IoFileSystem) {
       file = FileSystemExtPoint.getFS().getFile(file.getPath());
@@ -108,6 +117,7 @@ public final class VirtualFileUtils {
   /**
    * @deprecated Prefer {@link IdeaFileSystem#fromVirtualFile(VirtualFile)} instead.
    *             This method relies on global FS singleton.
+   *             No uses in MPS code, will be removed after 2021.3 release
    * @return null if current fs is not idea-based (it is very unlikely but still)
    */
   @Nullable
