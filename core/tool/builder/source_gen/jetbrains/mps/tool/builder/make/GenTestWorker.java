@@ -32,17 +32,17 @@ import jetbrains.mps.make.script.IScriptController;
 import java.util.concurrent.Future;
 import jetbrains.mps.make.script.IResult;
 import java.util.concurrent.ExecutionException;
-import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.make.MPSCompilationResult;
+import jetbrains.mps.classloading.ClassLoaderManager;
 import java.util.Queue;
 import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.tool.common.ScriptProperties;
 import jetbrains.mps.messages.IMessageHandler;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.tool.builder.unittest.ITestReporter;
 import jetbrains.mps.tool.builder.unittest.XmlTestReporter;
@@ -164,29 +164,15 @@ public class GenTestWorker extends BaseGeneratorWorker {
     }
   }
 
-  private void loadAndMake(final Project project, final Collection<SModule> modules) {
-    ModelAccess access = project.getRepository().getModelAccess();
-    access.runReadAction(() -> {
-      new ModuleMaker().make(modules, new EmptyProgressMonitor() {
-        @Override
-        public void step(String text) {
-          // silently
-        }
-        @Override
-        public void start(@NotNull String taskName, int work) {
-          // silently
-        }
-      }, myJavaCompilerOptions);
-    });
-    access.runWriteAction(() -> {
-      // the following updates stub models that could change due to the compilation happened (webr, 3.0 migration case)
-      for (SModule m : project.getRepository().getModules()) {
-        if (!((m instanceof AbstractModule))) {
-          continue;
-        }
-        ((AbstractModule) m).updateModelsSet();
-      }
-    });
+  private void loadAndMake(Project project, final Collection<SModule> modules) {
+    final ModuleMaker mm = new ModuleMaker();
+    mm.options(myJavaCompilerOptions);
+    project.getModelAccess().runReadAction(() -> mm.prepare(modules, true, new EmptyProgressMonitor()));
+    MPSCompilationResult res = mm.make(new EmptyProgressMonitor());
+    // here used to be suspicious code "to update stub models that could change due to the compilation happened (webr, 3.0 migration case)"
+    // replaced with a CLM approach, much like DefaultMakeTask does. Don't quite understand why would need to reload models only
+    // without class reloading - why would I care to compile code then?
+    getPlatform().findComponent(ClassLoaderManager.class).reload(res.getAffectedModules(), new EmptyProgressMonitor());
   }
 
   private void cleanUp() {
