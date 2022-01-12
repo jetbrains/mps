@@ -632,7 +632,6 @@
     <ant antfile="build/mpsJavaPlatformPre.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsJavaPlatform.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsWorkbench.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJavaPre.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsJava.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsMakePlugin.xml" inheritAll="false" useNativeBasedir="true" />
   </target>
@@ -839,9 +838,6 @@
     </ant>
     <ant antfile="build/mpsWorkbench.xml" inheritAll="false" useNativeBasedir="true">
       <target name="generate" />
-      <target name="assemble" />
-    </ant>
-    <ant antfile="build/mpsJavaPre.xml" inheritAll="false" useNativeBasedir="true">
       <target name="assemble" />
     </ant>
     <ant antfile="build/mpsJava.xml" inheritAll="false" useNativeBasedir="true">
