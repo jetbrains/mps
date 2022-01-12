@@ -187,7 +187,7 @@ public abstract class BreakpointsUiComponentEx<B, L extends B> {
           component.repaintExternalComponent();
         }
       }
-    });
+    }, myProject.getDisposed());
   }
   private class MyLeftMarginMouseListener implements LeftMarginMouseListener {
     private MyLeftMarginMouseListener() {

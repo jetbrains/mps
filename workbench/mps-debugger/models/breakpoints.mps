@@ -2383,7 +2383,7 @@
               <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
             </node>
             <node concept="liA8E" id="1VInrN6DeId" role="2OqNvi">
-              <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable)" resolve="invokeLater" />
+              <ref role="37wK5l" to="bd8o:~Application.invokeLater(java.lang.Runnable,com.intellij.openapi.util.Condition)" resolve="invokeLater" />
               <node concept="2ShNRf" id="1VInrN6DeIf" role="37wK5m">
                 <node concept="YeOm9" id="1VInrN6DeIj" role="2ShVmc">
                   <node concept="1Y3b0j" id="1VInrN6DeIk" role="YeSDq">
@@ -2449,6 +2449,14 @@
                       </node>
                     </node>
                   </node>
+                </node>
+              </node>
+              <node concept="2OqwBi" id="11ZuOXFki9P" role="37wK5m">
+                <node concept="37vLTw" id="11ZuOXFkd5U" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2meLaIF5nk2" resolve="myProject" />
+                </node>
+                <node concept="liA8E" id="11ZuOXFklZr" role="2OqNvi">
+                  <ref role="37wK5l" to="1m72:~ComponentManager.getDisposed()" resolve="getDisposed" />
                 </node>
               </node>
             </node>

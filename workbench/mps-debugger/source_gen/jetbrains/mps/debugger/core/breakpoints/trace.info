@@ -116,7 +116,7 @@
       <node id="4474271214083124821" at="205,0,212,0" concept="6" trace="run#()V" />
       <node id="4474271214083124736" at="173,0,181,0" concept="6" trace="removeLocationBreakpoint#(null)V" />
       <node id="4474271214083124698" at="164,0,173,0" concept="6" trace="addLocationBreakpoint#(null)V" />
-      <node id="2228821930962875349" at="181,36,190,7" concept="2" />
+      <node id="2228821930962875349" at="181,36,190,32" concept="2" />
       <node id="4474271214083124814" at="203,48,212,11" concept="2" />
       <node id="2706316667685006349" at="55,0,65,0" concept="6" trace="init#()V" />
       <node id="2228821930962874067" at="181,0,192,0" concept="6" trace="repaintBreakpoints#()V" />
@@ -252,7 +252,7 @@
       <scope id="4474271214083124698" at="164,0,173,0">
         <var name="breakpoint" id="4474271214083124701" />
       </scope>
-      <scope id="2228821930962874070" at="181,36,190,7" />
+      <scope id="2228821930962874070" at="181,36,190,32" />
       <scope id="4474271214083124813" at="203,48,212,11" />
       <scope id="2706316667685006349" at="55,0,65,0" />
       <scope id="4474271214083124443" at="95,64,105,16">
