@@ -175,7 +175,6 @@
     <ant antfile="build/mpsTrueBootstrap.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsBootstrapCore.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsCore.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJavaCorePre.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsJavaCore.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsJavaPlatform.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsWorkbench.xml" inheritAll="false" useNativeBasedir="true" />
@@ -320,9 +319,6 @@
       <target name="generate" />
       <target name="assemble" />
     </ant>
-    <ant antfile="build/mpsJavaCorePre.xml" inheritAll="false" useNativeBasedir="true">
-      <target name="assemble" />
-    </ant>
     <ant antfile="build/mpsJavaCore.xml" inheritAll="false" useNativeBasedir="true">
       <target name="generate" />
       <target name="assemble" />
@@ -373,13 +369,13 @@
         <fileset file="${artifacts.mps}/lib/mps-editor-runtime.jar" />
         <fileset file="${artifacts.mps}/lib/mps-environment.jar" />
         <fileset file="${artifacts.mps}/lib/mps-generator.jar" />
+        <fileset file="${artifacts.mps}/plugins/mps-java/lib/java-core.jar" />
         <fileset file="${artifacts.mps}/lib/mps-persistence.jar" />
         <fileset file="${artifacts.mps}/lib/mps-project-check.jar" />
         <fileset file="${artifacts.mps}/lib/mps-test.jar" />
         <fileset file="${artifacts.mps}/lib/mps-textgen.jar" />
         <fileset file="${artifacts.IDEA}/lib/ant/lib/ant.jar" />
         <fileset file="${artifacts.IDEA}/lib/junit4.jar" />
-        <fileset file="${artifacts.mps}/plugins/mps-java/lib/java-core.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />

@@ -150,7 +150,6 @@
     <ant antfile="build/mpsTrueBootstrap.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsBootstrapCore.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsCore.xml" inheritAll="false" useNativeBasedir="true" />
-    <ant antfile="build/mpsJavaCorePre.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsJavaCore.xml" inheritAll="false" useNativeBasedir="true" />
   </target>
   
@@ -313,9 +312,6 @@
     </ant>
     <ant antfile="build/mpsCore.xml" inheritAll="false" useNativeBasedir="true">
       <target name="generate" />
-      <target name="assemble" />
-    </ant>
-    <ant antfile="build/mpsJavaCorePre.xml" inheritAll="false" useNativeBasedir="true">
       <target name="assemble" />
     </ant>
     <ant antfile="build/mpsJavaCore.xml" inheritAll="false" useNativeBasedir="true">
