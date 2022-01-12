@@ -11,12 +11,10 @@
     <use id="9ded098b-ad6a-4657-bfd9-48636cfe8bc3" name="jetbrains.mps.lang.traceable" version="-1" />
   </languages>
   <imports>
-    <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="5h2r" ref="r:e985db5c-6ba2-43f6-94fe-1b4547c2cc5c(jetbrains.mps.baseLanguage.search)" />
-    <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="j8aq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.module(MPS.Core/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
@@ -52,12 +50,6 @@
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1224573963862" name="jetbrains.mps.baseLanguage.structure.EnumValuesExpression" flags="nn" index="uiWXb">
         <reference id="1224573974191" name="enumClass" index="uiZuM" />
-      </concept>
-      <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
-        <reference id="1188208074048" name="annotation" index="2AI5Lk" />
-      </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
-        <child id="1188208488637" name="annotation" index="2AJF6D" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -226,25 +218,11 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="2546654756694997551" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag" flags="ng" index="92FcH">
-        <child id="2546654756694997556" name="reference" index="92FcQ" />
-        <child id="3106559687488913694" name="line" index="2XjZqd" />
-      </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
-        <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
-      </concept>
-      <concept id="2217234381367530195" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocReference" flags="ng" index="VXe0Z">
-        <reference id="2217234381367530196" name="methodDeclaration" index="VXe0S" />
-      </concept>
-      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
-        <child id="6962838954693749192" name="tag" index="qph3F" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -1989,63 +1967,6 @@
       <node concept="TZ5HA" id="6OrnGrbdDo0" role="TZ5H$">
         <node concept="1dT_AC" id="6OrnGrbdDo1" role="1dT_Ay">
           <property role="1dT_AB" value="use the ClassifierMethodsHierarchyChecker idea instead of this class" />
-        </node>
-      </node>
-    </node>
-  </node>
-  <node concept="312cEu" id="6FltliuC5is">
-    <property role="TrG5h" value="IdentifierConstraintsUtil" />
-    <node concept="3clFbW" id="6FltliuC6w$" role="jymVt">
-      <node concept="3cqZAl" id="6FltliuC6w_" role="3clF45" />
-      <node concept="3clFbS" id="6FltliuC6wB" role="3clF47" />
-      <node concept="3Tm6S6" id="6FltliuC6vs" role="1B3o_S" />
-    </node>
-    <node concept="2YIFZL" id="DxJezr2d4j" role="jymVt">
-      <property role="TrG5h" value="isJavaReserved" />
-      <node concept="10P_77" id="DxJezr2f8B" role="3clF45" />
-      <node concept="3Tm1VV" id="DxJezr2d4l" role="1B3o_S" />
-      <node concept="3clFbS" id="DxJezr2d4m" role="3clF47">
-        <node concept="3cpWs6" id="DxJezr2f9X" role="3cqZAp">
-          <node concept="2YIFZM" id="4E1FVglvg2_" role="3cqZAk">
-            <ref role="37wK5l" to="18ew:~JavaNameUtil.isJavaReserved(java.lang.String)" resolve="isJavaReserved" />
-            <ref role="1Pybhc" to="18ew:~JavaNameUtil" resolve="JavaNameUtil" />
-            <node concept="37vLTw" id="4E1FVglvg3r" role="37wK5m">
-              <ref role="3cqZAo" node="DxJezr2f8C" resolve="s" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="37vLTG" id="DxJezr2f8C" role="3clF46">
-        <property role="TrG5h" value="s" />
-        <node concept="17QB3L" id="DxJezr2f8D" role="1tU5fm" />
-      </node>
-    </node>
-    <node concept="3Tm1VV" id="6FltliuC5it" role="1B3o_S" />
-    <node concept="2AHcQZ" id="4E1FVglv8R4" role="2AJF6D">
-      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-    </node>
-    <node concept="3UR2Jj" id="4E1FVglv8Of" role="lGtFl">
-      <node concept="TZ5HA" id="4E1FVglv8Og" role="TZ5H$">
-        <node concept="1dT_AC" id="4E1FVglv8Oh" role="1dT_Ay">
-          <property role="1dT_AB" value="This class will be removed in MPS 2019.2" />
-        </node>
-      </node>
-      <node concept="TZ5HI" id="4E1FVglv8O$" role="3nqlJM">
-        <node concept="TZ5HA" id="4E1FVglv8O_" role="3HnX3l">
-          <node concept="1dT_AC" id="4E1FVglv8Rn" role="1dT_Ay">
-            <property role="1dT_AB" value="use " />
-          </node>
-          <node concept="1dT_AA" id="4E1FVglvg43" role="1dT_Ay">
-            <node concept="92FcH" id="4E1FVglvg49" role="qph3F">
-              <node concept="TZ5HA" id="4E1FVglvg4b" role="2XjZqd" />
-              <node concept="VXe0Z" id="4E1FVglvEG3" role="92FcQ">
-                <ref role="VXe0S" to="18ew:~JavaNameUtil.isJavaReserved(java.lang.String)" resolve="isJavaReserved" />
-              </node>
-            </node>
-          </node>
-          <node concept="1dT_AC" id="4E1FVglvg42" role="1dT_Ay">
-            <property role="1dT_AB" value=" instead" />
-          </node>
         </node>
       </node>
     </node>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="64n6qpat182z07jgy90p9xm3dp205me">
-  <files names="BaseLanguageEnvironmentHelper.java:CheckingUtil.java:IdentifierConstraintsUtil.java:OverridingMethodsCalculator.java:ReflectionUtil.java:VariableInitializationUtil.java" />
+<product version="3" modelHash="bnbkc4xd87du9hdifkg83fcu1qstplv">
+  <files names="BaseLanguageEnvironmentHelper.java:CheckingUtil.java:OverridingMethodsCalculator.java:ReflectionUtil.java:VariableInitializationUtil.java" />
 </product>
 
