@@ -432,6 +432,7 @@
     <classNode dependClassName="jetbrains.mps.build.mps.pluginSolution.plugin.ImportAllModulesFromFolder_Action" />
     <classNode dependClassName="jetbrains.mps.build.mps.pluginSolution.plugin.IntentionsEx_ActionGroup" />
     <classNode dependClassName="jetbrains.mps.build.mps.pluginSolution.plugin.ProjectPaneProjectAddition_ActionGroup" />
+    <classNode dependClassName="jetbrains.mps.ide.actions.NamespaceNewActions_ActionGroup" />
     <classNode dependClassName="jetbrains.mps.ide.actions.ProjectNewActions_ActionGroup" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode extendsClassName="jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin" />

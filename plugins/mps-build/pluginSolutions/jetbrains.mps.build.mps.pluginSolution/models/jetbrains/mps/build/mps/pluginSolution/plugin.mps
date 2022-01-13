@@ -17103,6 +17103,9 @@
     <node concept="tT9cl" id="7$e6lgA3BAr" role="2f5YQi">
       <ref role="tU$_T" to="tprs:hyf4HSg" resolve="ProjectNewActions" />
     </node>
+    <node concept="tT9cl" id="6mhEhX8ilqs" role="2f5YQi">
+      <ref role="tU$_T" to="tprs:3vQPCiAiTP$" resolve="NamespaceNewActions" />
+    </node>
   </node>
   <node concept="312cEu" id="1UT7A5lZjbq">
     <property role="TrG5h" value="DependencyStep" />
