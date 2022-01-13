@@ -24,7 +24,6 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
-import jetbrains.mps.baseLanguage.util.plugin.refactorings.MemberInsertingUtils;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -108,8 +107,8 @@ public class AddConstructorParameter_Action extends BaseAction {
     SRepository repository = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getRepository();
 
     if (Sequence.fromIterable(constructors).isEmpty()) {
-      SNode c = SNodeFactoryOperations.createNewNode(CONCEPTS.ConstructorDeclaration$yG, null);
-      MemberInsertingUtils.insertClassifierMemberInBestPlace(clazz, c);
+      SNode c = SNodeFactoryOperations.createNewNode(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), CONCEPTS.ConstructorDeclaration$yG, null);
+      BHReflection.invoke0(clazz, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("insertInBestPlace", null, "7exmRT6rEUA"), c);
       selectedConstructors = new SNodeReference[]{SNodeOperations.getPointer(c)};
     } else if (Sequence.fromIterable(constructors).count() == 1) {
       selectedConstructors = new SNodeReference[]{SNodeOperations.getPointer(Sequence.fromIterable(constructors).first())};
@@ -137,5 +136,6 @@ public class AddConstructorParameter_Action extends BaseAction {
     /*package*/ static final SConcept FieldDeclaration$ie = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca68L, "jetbrains.mps.baseLanguage.structure.FieldDeclaration");
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
   }
 }

@@ -4446,11 +4446,12 @@
       <node id="9088427053767147790" at="63,55,64,39" concept="18" />
       <node id="3366214456101180517" at="67,70,68,47" concept="12" />
       <node id="8238758872512708711" at="69,30,70,42" concept="6" />
-      <node id="7539251793091479335" at="71,7,72,202" concept="6" />
-      <node id="9126454250599937719" at="77,0,78,0" concept="16" trace="StaticFieldDeclaration$jR" />
-      <node id="9126454250599937719" at="78,0,79,0" concept="16" trace="Classifier$Ix" />
-      <node id="9126454250599937719" at="79,0,80,0" concept="16" trace="ClassifierMember$At" />
-      <node id="9126454250599937719" at="83,0,84,0" concept="16" trace="member$L_2d" />
+      <node id="8332041383519877158" at="71,7,72,94" concept="12" />
+      <node id="8332041383519952700" at="72,94,73,145" concept="6" />
+      <node id="9126454250599937719" at="78,0,79,0" concept="16" trace="StaticFieldDeclaration$jR" />
+      <node id="9126454250599937719" at="79,0,80,0" concept="16" trace="Classifier$Ix" />
+      <node id="9126454250599937719" at="80,0,81,0" concept="16" trace="ClassifierMember$At" />
+      <node id="9126454250599937719" at="84,0,85,0" concept="16" trace="member$L_2d" />
       <node id="9126454250599950216" at="30,0,33,0" concept="4" trace="MoveStaticField_extension#()V" />
       <node id="9126454250599950218" at="33,0,36,0" concept="0" trace="get#()Ljetbrains/mps/refactoring/participant/plugin/MoveNodesAction;" />
       <node id="9126454250600054869" at="38,0,41,0" concept="11" trace="getName#()Ljava/lang/String;" />
@@ -4460,7 +4461,7 @@
       <node id="3464535278051984799" at="50,0,54,0" concept="11" trace="check#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
       <node id="9126454250600054874" at="41,0,46,0" concept="11" trace="isApplicable#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;)Z" />
       <node id="3464535278051984786" at="48,0,54,7" concept="12" />
-      <node id="9088427053767152511" at="66,0,74,0" concept="11" trace="insertNode#(Lorg/jetbrains/mps/openapi/module/SRepository;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="9088427053767152511" at="66,0,75,0" concept="11" trace="insertNode#(Lorg/jetbrains/mps/openapi/module/SRepository;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="9126454250600054885" at="46,0,61,0" concept="11" trace="execute#(Ljetbrains/mps/project/MPSProject;Ljava/util/List;)V" />
       <scope id="9126454250599950216" at="30,40,31,71" />
       <scope id="9126454250599950220" at="33,34,34,35" />
@@ -4487,10 +4488,11 @@
         <var name="nodes" id="9126454250600054877" />
         <var name="project" id="9126454250600054875" />
       </scope>
-      <scope id="9088427053767152545" at="67,70,72,202">
+      <scope id="9088427053767152545" at="67,70,73,145">
+        <var name="csf" id="8332041383519877159" />
         <var name="oldParent" id="3366214456101180518" />
       </scope>
-      <scope id="9088427053767152511" at="66,0,74,0">
+      <scope id="9088427053767152511" at="66,0,75,0">
         <var name="nodeToMove" id="9088427053767152543" />
         <var name="repository" id="9088427053767152512" />
       </scope>
@@ -4502,12 +4504,12 @@
         <var name="nodes" id="9126454250600054888" />
         <var name="project" id="9126454250600054886" />
       </scope>
-      <unit id="9126454250599937719" at="82,0,85,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveStaticField$LINKS" />
+      <unit id="9126454250599937719" at="83,0,86,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveStaticField$LINKS" />
       <unit id="3464535278051984796" at="49,84,54,5" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveStaticField$1" />
-      <unit id="9126454250599937719" at="76,0,81,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveStaticField$CONCEPTS" />
+      <unit id="9126454250599937719" at="77,0,82,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveStaticField$CONCEPTS" />
       <unit id="9126454250599950216" at="29,0,37,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveStaticField$MoveStaticField_extension" />
-      <unit id="9088427053767113812" at="62,0,75,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveStaticField$NodeLocationClassifierMember" />
-      <unit id="9126454250599937719" at="27,0,86,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveStaticField" />
+      <unit id="9088427053767113812" at="62,0,76,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveStaticField$NodeLocationClassifierMember" />
+      <unit id="9126454250599937719" at="27,0,87,0" name="jetbrains.mps.baseLanguage.pluginSolution.plugin.MoveStaticField" />
     </file>
   </root>
   <root nodeRef="r:dfc27cab-2d08-4c79-ac99-e95209e18392(jetbrains.mps.baseLanguage.pluginSolution.plugin)/9126454250600098577">

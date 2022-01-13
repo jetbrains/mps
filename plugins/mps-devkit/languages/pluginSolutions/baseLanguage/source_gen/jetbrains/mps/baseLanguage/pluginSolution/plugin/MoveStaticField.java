@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import jetbrains.mps.ide.platform.refactoring.NodeLocation;
 import org.jetbrains.mps.openapi.module.SRepository;
-import jetbrains.mps.baseLanguage.util.plugin.refactorings.MemberInsertingUtils;
+import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -69,7 +69,8 @@ public class MoveStaticField implements MoveNodesAction {
       if (oldParent != null) {
         oldParent.removeChild(nodeToMove);
       }
-      MemberInsertingUtils.insertClassifierMemberInBestPlace(SNodeOperations.cast(getNode().resolve(repository), CONCEPTS.Classifier$Ix), SNodeOperations.cast(nodeToMove, CONCEPTS.ClassifierMember$At));
+      SNode csf = SNodeOperations.cast(getNode().resolve(repository), CONCEPTS.Classifier$Ix);
+      Classifier__BehaviorDescriptor.insertInBestPlace_id7exmRT6rEUA.invoke(csf, SNodeOperations.cast(nodeToMove, CONCEPTS.ClassifierMember$At));
     }
   }
 

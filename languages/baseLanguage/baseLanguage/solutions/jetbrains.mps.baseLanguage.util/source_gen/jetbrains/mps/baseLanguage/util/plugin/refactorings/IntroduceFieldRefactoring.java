@@ -6,9 +6,9 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -48,7 +48,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
       SPropertyOperations.assign(newDeclaration, PROPS.isFinal$gvTP, true);
     }
     SNode classConcept = SNodeOperations.as(myContainer, CONCEPTS.ClassConcept$bK);
-    MemberInsertingUtils.insertClassifierMemberInBestPlace(classConcept, newDeclaration);
+    BHReflection.invoke0(classConcept, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("insertInBestPlace", null, "7exmRT6rEUA"), newDeclaration);
 
     if (getExpression() != null) {
       SNode assignStatement = _quotation_createNode_baxqxe_a0a0h0f(newDeclaration, SNodeOperations.copyNode(this.getExpression()));
@@ -87,7 +87,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
     SLinkOperations.setTarget(c, LINKS.visibility$Yyua, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility")));
     SLinkOperations.setTarget(c, LINKS.body$5xQk, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList")));
     SLinkOperations.setTarget(c, LINKS.returnType$5xoi, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc6bf96dL, "jetbrains.mps.baseLanguage.structure.VoidType")));
-    MemberInsertingUtils.insertClassifierMemberInBestPlace(classConcept, c);
+    BHReflection.invoke0(classConcept, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("insertInBestPlace", null, "7exmRT6rEUA"), c);
   }
 
   @Override
@@ -183,6 +183,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 

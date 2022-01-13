@@ -6580,11 +6580,6 @@
             <ref role="3bR37D" node="7Kfy9QB6KXW" resolve="jetbrains.mps.lang.core" />
           </node>
         </node>
-        <node concept="1SiIV0" id="2a7_mUnxBA2" role="3bR37C">
-          <node concept="3bR9La" id="2a7_mUnxBA3" role="1SiIV1">
-            <ref role="3bR37D" node="7Kfy9QB6LaO" resolve="jetbrains.mps.lang.structure" />
-          </node>
-        </node>
         <node concept="1BupzO" id="73GUf$ummdw" role="3bR31x">
           <property role="3ZfqAx" value="solution" />
           <property role="1Hdu6h" value="true" />
@@ -41245,6 +41240,11 @@
       <node concept="1SiIV0" id="2ucthr8W_8L" role="3bR37C">
         <node concept="3bR9La" id="2ucthr8W_8M" role="1SiIV1">
           <ref role="3bR37D" node="2ucthr8W_1x" resolve="jetbrains.mps.java.core" />
+        </node>
+      </node>
+      <node concept="1SiIV0" id="7exmRT6KbgZ" role="3bR37C">
+        <node concept="3bR9La" id="7exmRT6Kbh0" role="1SiIV1">
+          <ref role="3bR37D" node="7Kfy9QB6LaO" resolve="jetbrains.mps.lang.structure" />
         </node>
       </node>
       <node concept="1E1SXE" id="11ZuOXFC8pz" role="3bR37C">

@@ -4373,32 +4373,44 @@
               </node>
             </node>
           </node>
-          <node concept="3clFbF" id="6ywNoYBsssB" role="3cqZAp">
-            <node concept="2YIFZM" id="6ywNoYBsyKl" role="3clFbG">
-              <ref role="37wK5l" to="89o2:5E0izLqEQq2" resolve="insertClassifierMemberInBestPlace" />
-              <ref role="1Pybhc" to="89o2:6ywNoYBsf8F" resolve="MemberInsertingUtils" />
-              <node concept="1PxgMI" id="5E0izLqEXEm" role="37wK5m">
-                <node concept="2OqwBi" id="7Sw_42UPT4N" role="1m5AlR">
-                  <node concept="1rXfSq" id="7Sw_42UPT4O" role="2Oq$k0">
+          <node concept="3cpWs8" id="7exmRT6zBwA" role="3cqZAp">
+            <node concept="3cpWsn" id="7exmRT6zBwB" role="3cpWs9">
+              <property role="TrG5h" value="csf" />
+              <node concept="3Tqbb2" id="7exmRT6zAse" role="1tU5fm">
+                <ref role="ehGHo" to="tpee:g7pOWCK" resolve="Classifier" />
+              </node>
+              <node concept="1PxgMI" id="7exmRT6zBwC" role="33vP2m">
+                <node concept="2OqwBi" id="7exmRT6zBwD" role="1m5AlR">
+                  <node concept="1rXfSq" id="7exmRT6zBwE" role="2Oq$k0">
                     <ref role="37wK5l" to="u42p:1F5g4zQuW9T" resolve="getNode" />
                   </node>
-                  <node concept="liA8E" id="7Sw_42UPT4P" role="2OqNvi">
+                  <node concept="liA8E" id="7exmRT6zBwF" role="2OqNvi">
                     <ref role="37wK5l" to="mhbf:~SNodeReference.resolve(org.jetbrains.mps.openapi.module.SRepository)" resolve="resolve" />
-                    <node concept="37vLTw" id="7Sw_42UPT4Q" role="37wK5m">
+                    <node concept="37vLTw" id="7exmRT6zBwG" role="37wK5m">
                       <ref role="3cqZAo" node="7Sw_42UPPe0" resolve="repository" />
                     </node>
                   </node>
                 </node>
-                <node concept="chp4Y" id="714IaVdGYPg" role="3oSUPX">
+                <node concept="chp4Y" id="7exmRT6zBwH" role="3oSUPX">
                   <ref role="cht4Q" to="tpee:g7pOWCK" resolve="Classifier" />
                 </node>
               </node>
-              <node concept="1PxgMI" id="6ywNoYBszgZ" role="37wK5m">
-                <node concept="37vLTw" id="7Sw_42UPTZ9" role="1m5AlR">
-                  <ref role="3cqZAo" node="7Sw_42UPPev" resolve="nodeToMove" />
-                </node>
-                <node concept="chp4Y" id="714IaVdGYOG" role="3oSUPX">
-                  <ref role="cht4Q" to="tpee:h9ngReX" resolve="ClassifierMember" />
+            </node>
+          </node>
+          <node concept="3clFbF" id="7exmRT6zTWW" role="3cqZAp">
+            <node concept="2OqwBi" id="7exmRT6zV36" role="3clFbG">
+              <node concept="37vLTw" id="7exmRT6zTWU" role="2Oq$k0">
+                <ref role="3cqZAo" node="7exmRT6zBwB" resolve="csf" />
+              </node>
+              <node concept="2qgKlT" id="7exmRT6zXbq" role="2OqNvi">
+                <ref role="37wK5l" to="tpek:7exmRT6rEUA" resolve="insertInBestPlace" />
+                <node concept="1PxgMI" id="6ywNoYBszgZ" role="37wK5m">
+                  <node concept="37vLTw" id="7Sw_42UPTZ9" role="1m5AlR">
+                    <ref role="3cqZAo" node="7Sw_42UPPev" resolve="nodeToMove" />
+                  </node>
+                  <node concept="chp4Y" id="714IaVdGYOG" role="3oSUPX">
+                    <ref role="cht4Q" to="tpee:h9ngReX" resolve="ClassifierMember" />
+                  </node>
                 </node>
               </node>
             </node>

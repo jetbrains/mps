@@ -123,9 +123,10 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Void> populateMember_id6r77ob2UW9O = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("populateMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6r77ob2UW9O").build(SMethodBuilder.createJavaParameter(MembersPopulatingContext.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getPresentation_id69Qfsw3IoJg = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("69Qfsw3IoJg").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> addMember_id32Td0IabBk_ = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("addMember").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("32Td0IabBk_").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<List<SAbstractConcept>>) ((Class) Object.class), ""));
+  public static final SMethod<Void> insertInBestPlace_id7exmRT6rEUA = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("insertInBestPlace").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7exmRT6rEUA").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Map<SNode, SNode>> getInferredTypeByTypeVar_id4H6sh0LDcte = new SMethodBuilder<Map<SNode, SNode>>(new SJavaCompoundTypeImpl((Class<Map<SNode, SNode>>) ((Class) Object.class))).name("getInferredTypeByTypeVar").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4H6sh0LDcte").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, getVisibleMembers_id70J2WaK$Uj3, traverseClassifierHierarchy_id3rj45ZUtGbP, dfs_id3rj45ZVCYEm, getMethodsToImplement_id4GM03FJm5q2, getMethodsToOverride_id4GM03FJm3zL, getFqName_idhEwIO9y, getMembers_idhEwJjl2, getMembers_id1UeCwxlVpJs, getExtendedClassifierTypes_id1UeCwxlWKny, getAllSuperClassifiers_id59G_UM6ah0X, getAllExtendedClassifiers_id2xreLMO8jma, getAllExtendedClassifiers_id2xreLMO8jm_, getPresentation_idhEwIMiw, hasStaticMemebers_idhFq8xqE, getNestedName_id7q4lzBFjvIX, getAncestorNonAnnymousClassifier_id5mpyJtmQBek, banParent_id4o2ZZuMGUFv, getClassifierPathToContext_id2qKFNTWiPl1, getClassifierPathDistinctFromContext_id2qKFNTWlEOm, buildClassifierPath_id2qKFNTWoqtI, getNestedNameInContext_id7q4lzBFjvF8, isStatic_id6r77ob2USS8, isInner_idsWroEc0xXl, checkLoops_id3sXyOQUqKq0, isDescendant_id6dL7A1DpKo1, isDescendant_checkLoops_id6dL7A1DpKoA, isSame_id4dzXPK1BpyE, checkLoops_id3sXyOQUqKq5, canInstantiateIn_id610WLfjPjne, getOwnMethods_id1DPgsAlM_WC, getSideIcon_id6TtJ6IUjtJX, getThisType_id2RtWPFZ12w7, getWithResolvedTypevars_id2RtWPFZ0VAJ, getWithResolvedTypeVars_id5DGRLTWx81d, getResolvedVar_id2RtWPFZ12Bt, getResolvedMethodVar_idIqmIRMsvlW, getScope_id52_Geb4QDV$, getTypeVariables_id6r77ob2URXZ, getSuperTypes_id6r77ob2URYj, getThisType_id6r77ob2UWbY, populateMembers_id6r77ob2USUV, members_id1hodSy8nQmC, nestedClassifiers_id4_LVZ3pBjGQ, staticFields_id4_LVZ3pBr7M, staticMethods_id7fFTwQrQPHW, methods_id4_LVZ3pBKCn, canBeInterfaceMember_id2zJQqQIUx2B, getNonStaticContextClassifiers_id5S7J9l$QYtM, getContextClassifier_id5mDmeD1aaq0, populateMember_id6r77ob2UW9O, getPresentation_id69Qfsw3IoJg, addMember_id32Td0IabBk_, getInferredTypeByTypeVar_id4H6sh0LDcte);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, getVisibleMembers_id70J2WaK$Uj3, traverseClassifierHierarchy_id3rj45ZUtGbP, dfs_id3rj45ZVCYEm, getMethodsToImplement_id4GM03FJm5q2, getMethodsToOverride_id4GM03FJm3zL, getFqName_idhEwIO9y, getMembers_idhEwJjl2, getMembers_id1UeCwxlVpJs, getExtendedClassifierTypes_id1UeCwxlWKny, getAllSuperClassifiers_id59G_UM6ah0X, getAllExtendedClassifiers_id2xreLMO8jma, getAllExtendedClassifiers_id2xreLMO8jm_, getPresentation_idhEwIMiw, hasStaticMemebers_idhFq8xqE, getNestedName_id7q4lzBFjvIX, getAncestorNonAnnymousClassifier_id5mpyJtmQBek, banParent_id4o2ZZuMGUFv, getClassifierPathToContext_id2qKFNTWiPl1, getClassifierPathDistinctFromContext_id2qKFNTWlEOm, buildClassifierPath_id2qKFNTWoqtI, getNestedNameInContext_id7q4lzBFjvF8, isStatic_id6r77ob2USS8, isInner_idsWroEc0xXl, checkLoops_id3sXyOQUqKq0, isDescendant_id6dL7A1DpKo1, isDescendant_checkLoops_id6dL7A1DpKoA, isSame_id4dzXPK1BpyE, checkLoops_id3sXyOQUqKq5, canInstantiateIn_id610WLfjPjne, getOwnMethods_id1DPgsAlM_WC, getSideIcon_id6TtJ6IUjtJX, getThisType_id2RtWPFZ12w7, getWithResolvedTypevars_id2RtWPFZ0VAJ, getWithResolvedTypeVars_id5DGRLTWx81d, getResolvedVar_id2RtWPFZ12Bt, getResolvedMethodVar_idIqmIRMsvlW, getScope_id52_Geb4QDV$, getTypeVariables_id6r77ob2URXZ, getSuperTypes_id6r77ob2URYj, getThisType_id6r77ob2UWbY, populateMembers_id6r77ob2USUV, members_id1hodSy8nQmC, nestedClassifiers_id4_LVZ3pBjGQ, staticFields_id4_LVZ3pBr7M, staticMethods_id7fFTwQrQPHW, methods_id4_LVZ3pBKCn, canBeInterfaceMember_id2zJQqQIUx2B, getNonStaticContextClassifiers_id5S7J9l$QYtM, getContextClassifier_id5mDmeD1aaq0, populateMember_id6r77ob2UW9O, getPresentation_id69Qfsw3IoJg, addMember_id32Td0IabBk_, insertInBestPlace_id7exmRT6rEUA, getInferredTypeByTypeVar_id4H6sh0LDcte);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SLinkOperations.setNewChild(__thisNode__, LINKS.visibility$Yyua, CONCEPTS.PublicVisibility$R0);
@@ -758,6 +759,30 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     }
     ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.member$L_2d)).addElement(member);
   }
+  /*package*/ static void insertInBestPlace_id7exmRT6rEUA(@NotNull SNode __thisNode__, SNode memberToInsert) {
+    if ((memberToInsert == null)) {
+      // no-op. Is it right to tolerate null here? Isn't it a programming error?
+      return;
+    }
+    final List<SAbstractConcept> ORDER = ListSequence.fromListAndArray(new ArrayList<SAbstractConcept>(), CONCEPTS.StaticFieldDeclaration$jR, CONCEPTS.FieldDeclaration$ie, CONCEPTS.StaticInitializer$Ev, CONCEPTS.InstanceInitializer$4x, CONCEPTS.ConstructorDeclaration$yG, CONCEPTS.InstanceMethodDeclaration$39, CONCEPTS.StaticMethodDeclaration$FJ);
+    final int rank = ListSequence.fromList(ORDER).indexOf(SNodeOperations.getConcept(memberToInsert));
+    if (rank == -1) {
+      ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.member$L_2d)).addElement(memberToInsert);
+      return;
+    }
+    for (SNode m : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.member$L_2d))) {
+      int r = ListSequence.fromList(ORDER).indexOf(SNodeOperations.getConcept(m));
+      if (r <= rank) {
+        // pre:rank >= 0   ==> r == -1 is handled here
+        continue;
+      }
+      // m is the first one with greater 'rank', new node comes in front of it
+      SNodeOperations.insertPrevSiblingChild(m, memberToInsert);
+      return;
+    }
+    // ok, no existing members with greater rank, just add at the end
+    ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.member$L_2d)).addElement(memberToInsert);
+  }
   /*package*/ static Map<SNode, SNode> getInferredTypeByTypeVar_id4H6sh0LDcte(@NotNull SNode __thisNode__) {
     return MapSequence.fromMap(new HashMap<SNode, SNode>());
   }
@@ -880,6 +905,9 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
         addMember_id32Td0IabBk_(node, (SNode) parameters[0], (List<SAbstractConcept>) parameters[1]);
         return null;
       case 53:
+        insertInBestPlace_id7exmRT6rEUA(node, (SNode) parameters[0]);
+        return null;
+      case 54:
         return (T) ((Map<SNode, SNode>) getInferredTypeByTypeVar_id4H6sh0LDcte(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -994,6 +1022,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
     /*package*/ static final SConcept MethodDeclaration$_P = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6c6b6a1e379f9408L, "jetbrains.mps.baseLanguage.structure.MethodDeclaration");
     /*package*/ static final SInterfaceConcept ContextClassifierKind$9Z = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x32e8e5805c50376L, "jetbrains.mps.baseLanguage.structure.ContextClassifierKind");
+    /*package*/ static final SConcept ConstructorDeclaration$yG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration");
   }
 
   private static final class PROPS {

@@ -50,7 +50,7 @@ public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefac
       SPropertyOperations.assign(newDeclaration, PROPS.isFinal$gvTP, true);
     }
     SNode classConcept = SNodeOperations.as(myContainer, CONCEPTS.ClassConcept$bK);
-    MemberInsertingUtils.insertClassifierMemberInBestPlace(classConcept, newDeclaration);
+    BHReflection.invoke0(classConcept, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("insertInBestPlace", null, "7exmRT6rEUA"), newDeclaration);
 
     if (getExpression() != null) {
       SNode assignExp = _quotation_createNode_282g55_a0a0l0f(expression, newDeclaration);
@@ -173,6 +173,7 @@ public class IntroduceStaticFieldRefactoring extends AbstractIntroduceFieldRefac
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
   }
 

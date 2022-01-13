@@ -5,6 +5,8 @@ package jetbrains.mps.baseLanguage.util.plugin.refactorings;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -30,7 +32,7 @@ public class MoveRefactoringUtils {
   }
   public static void addNodeAtLink(SNode container, SNode node) {
     if (SNodeOperations.isInstanceOf(container, CONCEPTS.Classifier$Ix) && SNodeOperations.isInstanceOf(node, CONCEPTS.ClassifierMember$At)) {
-      MemberInsertingUtils.insertClassifierMemberInBestPlace(SNodeOperations.cast(container, CONCEPTS.Classifier$Ix), SNodeOperations.cast(node, CONCEPTS.ClassifierMember$At));
+      BHReflection.invoke0(SNodeOperations.cast(container, CONCEPTS.Classifier$Ix), CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("insertInBestPlace", null, "7exmRT6rEUA"), SNodeOperations.cast(node, CONCEPTS.ClassifierMember$At));
     } else {
       SAbstractConcept concept = SNodeOperations.getConcept(node);
       for (SContainmentLink link : CollectionSequence.fromCollection(SNodeOperations.getConcept(container).getContainmentLinks())) {

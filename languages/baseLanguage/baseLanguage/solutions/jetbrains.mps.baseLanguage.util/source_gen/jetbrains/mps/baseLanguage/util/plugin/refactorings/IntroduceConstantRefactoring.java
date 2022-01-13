@@ -5,6 +5,8 @@ package jetbrains.mps.baseLanguage.util.plugin.refactorings;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.smodel.behaviour.BHReflection;
+import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -24,7 +26,7 @@ public class IntroduceConstantRefactoring extends IntroduceVariableRefactoring {
   @Override
   public SNode doRefactoring() {
     SNode newDeclaration = _quotation_createNode_2jj2z2_a0a0e(myVisibilityLevel.getNode(), SNodeOperations.copyNode(getExpressionType()), SNodeOperations.copyNode(getExpression()), getName());
-    MemberInsertingUtils.insertClassifierMemberInBestPlace(SNodeOperations.cast(this.myContainer, CONCEPTS.ClassConcept$bK), newDeclaration);
+    BHReflection.invoke0(SNodeOperations.cast(this.myContainer, CONCEPTS.ClassConcept$bK), CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("insertInBestPlace", null, "7exmRT6rEUA"), newDeclaration);
     replaceNode(getExpression(), newDeclaration);
     if (this.myIsReplacingAll) {
       for (SNode duplicate : ListSequence.fromList(this.myDuplicates)) {
@@ -97,6 +99,7 @@ public class IntroduceConstantRefactoring extends IntroduceVariableRefactoring {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
     /*package*/ static final SConcept VariableDeclaration$Y0 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37a7f6eL, "jetbrains.mps.baseLanguage.structure.VariableDeclaration");
     /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
   }

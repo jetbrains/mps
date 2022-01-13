@@ -113,7 +113,7 @@ public class ConvertAnonymousRefactoring {
   private void makeInnerConstructor(SNode innerClass) {
     if (Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(innerClass, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd")))).isEmpty()) {
       SNode ctor = SModelOperations.createNewNode(SNodeOperations.getModel(innerClass), null, CONCEPTS.ConstructorDeclaration$yG);
-      MemberInsertingUtils.insertClassifierMemberInBestPlace(innerClass, ctor);
+      BHReflection.invoke0(innerClass, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("insertInBestPlace", null, "7exmRT6rEUA"), ctor);
       SLinkOperations.setNewChild(ctor, LINKS.body$5xQk, null);
       SLinkOperations.setNewChild(ctor, LINKS.visibility$Yyua, CONCEPTS.PublicVisibility$R0);
       SLinkOperations.setNewChild(ctor, LINKS.returnType$5xoi, CONCEPTS.VoidType$BF);
@@ -156,7 +156,7 @@ public class ConvertAnonymousRefactoring {
   }
   private void addFieldsToInnerClass(SNode innerClass) {
     for (SNode field : Sequence.fromIterable(MapSequence.fromMap(this.myInnerFields).values())) {
-      MemberInsertingUtils.insertClassifierMemberInBestPlace(innerClass, field);
+      BHReflection.invoke0(innerClass, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("insertInBestPlace", null, "7exmRT6rEUA"), field);
     }
     for (SNode varReference : Sequence.fromIterable(this.getExternalReferences(innerClass))) {
       SNodeOperations.replaceWithAnother(varReference, _quotation_createNode_qy1soj_a0a0a1a02(innerClass, MapSequence.fromMap(this.myInnerFields).get(SLinkOperations.getTarget(varReference, LINKS.variableDeclaration$N1XG))));
