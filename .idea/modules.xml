@@ -67,7 +67,6 @@
       <module fileurl="file://$PROJECT_DIR$/IdeaPlugin/mps-idea-plugin.iml" filepath="$PROJECT_DIR$/IdeaPlugin/mps-idea-plugin.iml" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-java/core/mps-java-core.iml" filepath="$PROJECT_DIR$/plugins/mps-java/core/mps-java-core.iml" group="plugins/java" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-java/platform/mps-java-platform.iml" filepath="$PROJECT_DIR$/plugins/mps-java/platform/mps-java-platform.iml" group="plugins/java" />
-      <module fileurl="file://$PROJECT_DIR$/plugins/mps-java/workbench/mps-java-workbench.iml" filepath="$PROJECT_DIR$/plugins/mps-java/workbench/mps-java-workbench.iml" group="plugins/java" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-kotlin/mps-kotlin.iml" filepath="$PROJECT_DIR$/plugins/mps-kotlin/mps-kotlin.iml" group="plugins" />
       <module fileurl="file://$PROJECT_DIR$/plugins/mps-memtool/mps-memtool.iml" filepath="$PROJECT_DIR$/plugins/mps-memtool/mps-memtool.iml" group="plugins" />
       <module fileurl="file://$PROJECT_DIR$/core/mps-messaging/mps-messaging.iml" filepath="$PROJECT_DIR$/core/mps-messaging/mps-messaging.iml" group="core" />

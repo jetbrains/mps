@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<solution name="jetbrains.mps.java.workbench" uuid="8a2e464f-d2c2-485e-a2ed-8b50c6327795" moduleVersion="0" pluginKind="PLUGIN_OTHER" compileInMPS="false">
-  <compileInIDEA />
+<solution name="jetbrains.mps.java.workbench" uuid="8a2e464f-d2c2-485e-a2ed-8b50c6327795" moduleVersion="0" pluginKind="PLUGIN_OTHER" compileInMPS="true">
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />
     </modelRoot>
   </models>
   <facets>
-    <facet pluginId="jetbrains.mps.ide.java" type="ideaPlugin" />
-    <facet type="java">
-      <classes generated="true" />
+    <facet type="java" languageLevel="JAVA_10">
+      <classes generated="true" path="${module}/classes_gen" />
     </facet>
   </facets>
-  <stubModelEntries>
-    <stubModelEntry path="${mps_home}/plugins/mps-java/lib/java-workbench.jar" />
-  </stubModelEntries>
   <sourcePath />
   <dependencies>
     <dependency reexport="false">3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)</dependency>

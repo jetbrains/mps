@@ -31103,38 +31103,6 @@
     </node>
     <node concept="ftmFs" id="3CM_lYH0jCy" role="ftER_" />
   </node>
-  <node concept="1ESbSp" id="3CM_lYH0jCt">
-    <property role="TrG5h" value="JavaNewModelActions" />
-    <property role="3GE5qa" value="Menu.ProjectPane.JavaBootstrap" />
-    <node concept="tT9cl" id="1bRM4HyGTmM" role="2f5YQi">
-      <ref role="2f8Tey" node="1bRM4HyGTmN" resolve="newModel" />
-      <ref role="tU$_T" node="1bRM4HyGTmi" resolve="GeneratorNewActions" />
-    </node>
-    <node concept="tT9cl" id="1bRM4HyGTmO" role="2f5YQi">
-      <ref role="tU$_T" node="1bRM4HyGTmn" resolve="LanguageNewActions" />
-      <ref role="2f8Tey" node="1bRM4HyGTmC" resolve="newModel" />
-    </node>
-    <node concept="tT9cl" id="1bRM4HyGTmP" role="2f5YQi">
-      <ref role="tU$_T" node="hyf4Jpv" resolve="SolutionNewActions" />
-      <ref role="2f8Tey" node="1bRM4HyGTmR" resolve="newModel" />
-    </node>
-    <node concept="Xl_RD" id="3CM_lYH0nMD" role="3mKD$K">
-      <property role="Xl_RC" value="jetbrains.mps.java.workbench.actions.ModelNewActions_ActionGroup" />
-    </node>
-    <node concept="ftmFs" id="3CM_lYH0jCv" role="ftER_" />
-  </node>
-  <node concept="1ESbSp" id="3CM_lYH0jCq">
-    <property role="TrG5h" value="JavaSolutionActions" />
-    <property role="3GE5qa" value="Menu.ProjectPane.JavaBootstrap" />
-    <node concept="tT9cl" id="1bRM4HyGOKP" role="2f5YQi">
-      <ref role="tU$_T" node="hyf4Jd1" resolve="SolutionActions" />
-      <ref role="2f8Tey" node="1bRM4HyGOKI" resolve="contents" />
-    </node>
-    <node concept="Xl_RD" id="3CM_lYH0nMC" role="3mKD$K">
-      <property role="Xl_RC" value="jetbrains.mps.java.workbench.actions.SolutionActionsEx_ActionGroup" />
-    </node>
-    <node concept="ftmFs" id="3CM_lYH0jCs" role="ftER_" />
-  </node>
   <node concept="sE7Ow" id="4HeMkQiYObz">
     <property role="fJN8o" value="true" />
     <property role="TrG5h" value="ShowTodoViewer" />
@@ -40548,22 +40516,6 @@
       <node concept="2AHcQZ" id="3EnpNH2IokX" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
-    </node>
-  </node>
-  <node concept="1ESbSp" id="5_Vx0VjP8Ah">
-    <property role="3GE5qa" value="Menu.ProjectPane.JavaBootstrap" />
-    <property role="TrG5h" value="JavaAnalyzeActions" />
-    <node concept="tT9cl" id="5_Vx0VjPjy4" role="2f5YQi">
-      <ref role="tU$_T" node="6XVANXZCfq$" resolve="AnalyzeModule" />
-      <ref role="2f8Tey" node="2Y91NYHo6WU" resolve="analyze" />
-    </node>
-    <node concept="tT9cl" id="6nfhHi_uSoV" role="2f5YQi">
-      <ref role="tU$_T" node="hyf4J_e" resolve="DevkitActions" />
-      <ref role="2f8Tey" node="6nfhHi_rKIZ" resolve="analyze" />
-    </node>
-    <node concept="ftmFs" id="5_Vx0VjPbCw" role="ftER_" />
-    <node concept="Xl_RD" id="5_Vx0VjPjxE" role="3mKD$K">
-      <property role="Xl_RC" value="jetbrains.mps.java.workbench.actions.AnalyzeJavaActions_ActionGroup" />
     </node>
   </node>
   <node concept="tC5Ba" id="1wNvKTcoaln">

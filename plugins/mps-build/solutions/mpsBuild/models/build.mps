@@ -45657,43 +45657,6 @@
         <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
       </node>
     </node>
-    <node concept="398b33" id="2xKmvAPrnsI" role="3989C9">
-      <property role="TrG5h" value="mps-java-workbench" />
-      <node concept="2GAZfH" id="2xKmvAPrnsJ" role="398b2p">
-        <node concept="TIC1d" id="2xKmvAPrnsK" role="2GAZfG">
-          <node concept="398BVA" id="2xKmvAPrnsL" role="TIC6M">
-            <ref role="398BVh" node="6WtY9M1bDNn" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="2xKmvAPrnsM" role="iGT6I">
-              <property role="2Ry0Am" value="plugins" />
-              <node concept="2Ry0Ak" id="2xKmvAPrnsN" role="2Ry0An">
-                <property role="2Ry0Am" value="mps-java" />
-                <node concept="2Ry0Ak" id="2xKmvAPrnsO" role="2Ry0An">
-                  <property role="2Ry0Am" value="workbench" />
-                  <node concept="2Ry0Ak" id="2xKmvAPrnsP" role="2Ry0An">
-                    <property role="2Ry0Am" value="modules" />
-                    <node concept="2Ry0Ak" id="2xKmvAPrnsQ" role="2Ry0An">
-                      <property role="2Ry0Am" value="jetbrains.mps.java.workbench" />
-                      <node concept="2Ry0Ak" id="2xKmvAPrnsR" role="2Ry0An">
-                        <property role="2Ry0Am" value="source_gen" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="nCB5N" id="2xKmvAPrnsS" role="nCB5Z">
-        <ref role="nCB5Y" node="2xKmvAPr964" resolve="mps-java-platform" />
-      </node>
-      <node concept="nCB5N" id="2xKmvAPrnsT" role="nCB5Z">
-        <ref role="nCB5Y" node="2eDSGe9d1oD" resolve="mps-workbench" />
-      </node>
-      <node concept="nCB5N" id="4_qKb05xjDL" role="nCB5Z">
-        <ref role="nCB5Y" node="4_qKb05xiaz" resolve="aux-runtimes" />
-      </node>
-    </node>
     <node concept="2sgV4H" id="6WtY9M1bDNm" role="1l3spa">
       <ref role="1l3spb" node="6S1jmf0xDFC" resolve="mpsBootstrapCore" />
     </node>
@@ -45711,7 +45674,6 @@
       <property role="BnDLt" value="true" />
       <property role="TrG5h" value="jetbrains.mps.java.workbench" />
       <property role="3LESm3" value="8a2e464f-d2c2-485e-a2ed-8b50c6327795" />
-      <property role="2GAjPV" value="true" />
       <node concept="3rtmxn" id="2ucthr8YCRk" role="3bR31x">
         <node concept="3LXTmp" id="2ucthr8YCRl" role="3rtmxm">
           <node concept="3qWCbU" id="2ucthr8YCRm" role="3LXTna">
@@ -45853,25 +45815,6 @@
           <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
         </node>
       </node>
-      <node concept="1E1SXE" id="11ZuOXFsU1o" role="3bR37C">
-        <property role="1E1SXH" value="true" />
-        <ref role="1E1SXG" node="2xKmvAPrnsI" resolve="mps-java-workbench" />
-        <node concept="398BVA" id="11ZuOXFsU2m" role="17Grwy">
-          <ref role="398BVh" node="6WtY9M1bDNn" resolve="mps_home" />
-          <node concept="2Ry0Ak" id="11ZuOXFsU34" role="iGT6I">
-            <property role="2Ry0Am" value="plugins" />
-            <node concept="2Ry0Ak" id="11ZuOXFsU3t" role="2Ry0An">
-              <property role="2Ry0Am" value="mps-java" />
-              <node concept="2Ry0Ak" id="11ZuOXFsU3E" role="2Ry0An">
-                <property role="2Ry0Am" value="lib" />
-                <node concept="2Ry0Ak" id="11ZuOXFsU4n" role="2Ry0An">
-                  <property role="2Ry0Am" value="java-workbench.jar" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
     </node>
     <node concept="m$_wf" id="6WtY9M1bDO_" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.ide.java" />
@@ -45936,29 +45879,9 @@
             </node>
           </node>
           <node concept="3981dx" id="2xKmvAPrnut" role="39821P">
-            <node concept="Saw0i" id="2xKmvAPrnuw" role="39821P">
-              <ref role="Saw0g" node="2xKmvAPrnsI" resolve="mps-java-workbench" />
-            </node>
             <node concept="398223" id="27RA$fwMU53" role="39821P">
               <node concept="m_q07" id="27RA$fwMU4Y" role="39821P">
                 <ref role="m_q06" node="6WtY9M1bDO_" resolve="jetbrains.mps.ide.java" />
-              </node>
-              <node concept="28jJK3" id="27RA$fwMU5M" role="39821P">
-                <node concept="398BVA" id="27RA$fwMU5N" role="28jJRO">
-                  <ref role="398BVh" node="6WtY9M1bDNn" resolve="mps_home" />
-                  <node concept="2Ry0Ak" id="27RA$fwMU5O" role="iGT6I">
-                    <property role="2Ry0Am" value="plugins" />
-                    <node concept="2Ry0Ak" id="27RA$fwMU5P" role="2Ry0An">
-                      <property role="2Ry0Am" value="mps-java" />
-                      <node concept="2Ry0Ak" id="27RA$fwMU5Q" role="2Ry0An">
-                        <property role="2Ry0Am" value="META-INF" />
-                        <node concept="2Ry0Ak" id="27RA$fwMU5R" role="2Ry0An">
-                          <property role="2Ry0Am" value="JavaWorkbenchActions.xml" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
               </node>
               <node concept="3_J27D" id="27RA$fwMU54" role="Nbhlr">
                 <node concept="3Mxwew" id="27RA$fwMU55" role="3MwsjC">
@@ -45985,24 +45908,6 @@
           </node>
           <node concept="L2wRC" id="2ucthr90$oC" role="39821P">
             <ref role="L2wRA" node="2ucthr8W$$t" resolve="jetbrains.mps.java.workbench" />
-            <node concept="3yLZsm" id="2ucthr90$oD" role="3yL2VB">
-              <property role="3yLZsk" value="../lib/java-workbench.jar" />
-              <node concept="398BVA" id="2ucthr90$oE" role="3yLZsn">
-                <ref role="398BVh" node="6WtY9M1bDNn" resolve="mps_home" />
-                <node concept="2Ry0Ak" id="2ucthr90$oF" role="iGT6I">
-                  <property role="2Ry0Am" value="plugins" />
-                  <node concept="2Ry0Ak" id="2ucthr90$oG" role="2Ry0An">
-                    <property role="2Ry0Am" value="mps-java" />
-                    <node concept="2Ry0Ak" id="2ucthr90$oH" role="2Ry0An">
-                      <property role="2Ry0Am" value="lib" />
-                      <node concept="2Ry0Ak" id="2ucthr90$pG" role="2Ry0An">
-                        <property role="2Ry0Am" value="java-workbench.jar" />
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
           </node>
         </node>
       </node>
