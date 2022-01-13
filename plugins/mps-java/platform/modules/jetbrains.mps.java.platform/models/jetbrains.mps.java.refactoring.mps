@@ -12,7 +12,6 @@
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
-    <import index="pz2c" ref="r:2a308ea0-c7e3-4fa5-a624-ad74ee5cfab5(jetbrains.mps.baseLanguage.util)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
@@ -970,11 +969,17 @@
                 <node concept="3Tqbb2" id="5ZFTYQpJje2" role="1tU5fm">
                   <ref role="ehGHo" to="tpee:fz3vP1J" resolve="Expression" />
                 </node>
-                <node concept="2YIFZM" id="5ZFTYQpJje3" role="33vP2m">
-                  <ref role="1Pybhc" to="pz2c:65XsgximP7R" resolve="VariableInitializationUtil" />
-                  <ref role="37wK5l" to="pz2c:5ZFTYQpAjN$" resolve="createDefaultInitializer" />
-                  <node concept="37vLTw" id="5ZFTYQpJje4" role="37wK5m">
-                    <ref role="3cqZAo" node="65XsgxijCfQ" resolve="field" />
+                <node concept="2OqwBi" id="7exmRT6qmF5" role="33vP2m">
+                  <node concept="2OqwBi" id="7exmRT6qlAo" role="2Oq$k0">
+                    <node concept="37vLTw" id="5ZFTYQpJje4" role="2Oq$k0">
+                      <ref role="3cqZAo" node="65XsgxijCfQ" resolve="field" />
+                    </node>
+                    <node concept="3TrEf2" id="7exmRT6qmlE" role="2OqNvi">
+                      <ref role="3Tt5mk" to="tpee:4VkOLwjf83e" resolve="type" />
+                    </node>
+                  </node>
+                  <node concept="2qgKlT" id="7exmRT6qn89" role="2OqNvi">
+                    <ref role="37wK5l" to="tpek:2UvJdVpqUA4" resolve="createDefaultTypeExpression" />
                   </node>
                 </node>
               </node>

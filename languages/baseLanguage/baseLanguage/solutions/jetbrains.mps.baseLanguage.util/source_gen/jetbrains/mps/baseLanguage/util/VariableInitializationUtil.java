@@ -16,8 +16,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 @GeneratedClass(node = "r:2a308ea0-c7e3-4fa5-a624-ad74ee5cfab5(jetbrains.mps.baseLanguage.util)/7024895274323235319", model = "r:2a308ea0-c7e3-4fa5-a624-ad74ee5cfab5(jetbrains.mps.baseLanguage.util)")
-public class VariableInitializationUtil {
+public final class VariableInitializationUtil {
   public static SNode createDefaultInitializer(SNode field) {
+    // XXX why not field.type.createDefaultTypeExpression()? Indeed, it doesn't handle ClassifierType that well
+    //    as this class, is that important enough to justify this helper? Is there a mechanism to do 
+    //    the same in ClassifierType.createDefaultTypeExpression() implementation?
     SNode init;
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.IntegerType$7a) || (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL) && SLinkOperations.hasPointer(SNodeOperations.cast(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Integer")))) {
       init = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc59b314L, "jetbrains.mps.baseLanguage.structure.IntegerConstant"));

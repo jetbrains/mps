@@ -89,58 +89,61 @@
   </root>
   <root nodeRef="r:2a308ea0-c7e3-4fa5-a624-ad74ee5cfab5(jetbrains.mps.baseLanguage.util)/7024895274323235319">
     <file name="VariableInitializationUtil.java">
-      <node id="6911873060800393681" at="20,61,21,15" concept="8" />
-      <node id="6911873060800380213" at="22,473,23,190" concept="3" />
-      <node id="6911873060800380219" at="23,190,24,111" concept="3" />
-      <node id="6911873060800380254" at="25,478,26,197" concept="3" />
-      <node id="6911873060800380260" at="26,197,27,121" concept="3" />
-      <node id="6911873060800380295" at="28,476,29,207" concept="3" />
-      <node id="6911873060800380301" at="29,207,30,127" concept="3" />
-      <node id="6911873060800380336" at="31,480,32,190" concept="3" />
-      <node id="6911873060800380342" at="32,190,33,115" concept="3" />
-      <node id="6911873060800380377" at="34,478,35,188" concept="3" />
-      <node id="6911873060800380383" at="35,188,36,110" concept="3" />
-      <node id="6911873060800380418" at="37,125,38,186" concept="3" />
-      <node id="6911873060800380432" at="39,12,40,185" concept="3" />
-      <node id="6911873060800394443" at="41,5,42,16" concept="9" />
-      <node id="7024895274323235319" at="46,0,47,0" concept="12" trace="IntegerConstant$Na" />
-      <node id="7024895274323235319" at="47,0,48,0" concept="12" trace="IntegerType$7a" />
-      <node id="7024895274323235319" at="48,0,49,0" concept="12" trace="ClassifierType$bL" />
-      <node id="7024895274323235319" at="49,0,50,0" concept="12" trace="FloatingPointConstant$3o" />
-      <node id="7024895274323235319" at="50,0,51,0" concept="12" trace="DoubleType$x0" />
-      <node id="7024895274323235319" at="51,0,52,0" concept="12" trace="FloatingPointFloatConstant$Qh" />
-      <node id="7024895274323235319" at="52,0,53,0" concept="12" trace="FloatType$up" />
-      <node id="7024895274323235319" at="53,0,54,0" concept="12" trace="BooleanConstant$n4" />
-      <node id="7024895274323235319" at="54,0,55,0" concept="12" trace="BooleanType$_u" />
-      <node id="7024895274323235319" at="55,0,56,0" concept="12" trace="StringLiteral$xu" />
-      <node id="7024895274323235319" at="56,0,57,0" concept="12" trace="StringType$uX" />
-      <node id="7024895274323235319" at="60,0,61,0" concept="12" trace="value$jgCM" />
-      <node id="7024895274323235319" at="61,0,62,0" concept="12" trace="value$ENN8" />
-      <node id="7024895274323235319" at="62,0,63,0" concept="12" trace="value$kirj" />
-      <node id="7024895274323235319" at="63,0,64,0" concept="12" trace="value$5y_M" />
-      <node id="7024895274323235319" at="64,0,65,0" concept="12" trace="value$w7MM" />
-      <node id="7024895274323235319" at="68,0,69,0" concept="12" trace="type$a1UY" />
-      <node id="7024895274323235319" at="69,0,70,0" concept="12" trace="classifier$cxMr" />
-      <node id="6911873060800380430" at="39,10,41,5" concept="0" />
-      <node id="6911873060800380211" at="21,15,41,5" concept="6" />
-      <node id="6911873060800380132" at="20,0,44,0" concept="13" trace="createDefaultInitializer#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="6911873060800380417" at="37,125,38,186" />
-      <scope id="6911873060800380431" at="39,12,40,185" />
-      <scope id="6911873060800380212" at="22,473,24,111" />
-      <scope id="6911873060800380253" at="25,478,27,121" />
-      <scope id="6911873060800380294" at="28,476,30,127" />
-      <scope id="6911873060800380335" at="31,480,33,115" />
-      <scope id="6911873060800380376" at="34,478,36,110" />
-      <scope id="6911873060800380135" at="20,61,42,16">
+      <node id="8332041383517093806" at="20,61,21,111" concept="10" />
+      <node id="8332041383517185609" at="21,111,22,101" concept="10" />
+      <node id="8332041383517187907" at="22,101,23,82" concept="10" />
+      <node id="6911873060800393681" at="23,82,24,15" concept="8" />
+      <node id="6911873060800380213" at="25,473,26,190" concept="3" />
+      <node id="6911873060800380219" at="26,190,27,111" concept="3" />
+      <node id="6911873060800380254" at="28,478,29,197" concept="3" />
+      <node id="6911873060800380260" at="29,197,30,121" concept="3" />
+      <node id="6911873060800380295" at="31,476,32,207" concept="3" />
+      <node id="6911873060800380301" at="32,207,33,127" concept="3" />
+      <node id="6911873060800380336" at="34,480,35,190" concept="3" />
+      <node id="6911873060800380342" at="35,190,36,115" concept="3" />
+      <node id="6911873060800380377" at="37,478,38,188" concept="3" />
+      <node id="6911873060800380383" at="38,188,39,110" concept="3" />
+      <node id="6911873060800380418" at="40,125,41,186" concept="3" />
+      <node id="6911873060800380432" at="42,12,43,185" concept="3" />
+      <node id="6911873060800394443" at="44,5,45,16" concept="9" />
+      <node id="7024895274323235319" at="49,0,50,0" concept="12" trace="IntegerConstant$Na" />
+      <node id="7024895274323235319" at="50,0,51,0" concept="12" trace="IntegerType$7a" />
+      <node id="7024895274323235319" at="51,0,52,0" concept="12" trace="ClassifierType$bL" />
+      <node id="7024895274323235319" at="52,0,53,0" concept="12" trace="FloatingPointConstant$3o" />
+      <node id="7024895274323235319" at="53,0,54,0" concept="12" trace="DoubleType$x0" />
+      <node id="7024895274323235319" at="54,0,55,0" concept="12" trace="FloatingPointFloatConstant$Qh" />
+      <node id="7024895274323235319" at="55,0,56,0" concept="12" trace="FloatType$up" />
+      <node id="7024895274323235319" at="56,0,57,0" concept="12" trace="BooleanConstant$n4" />
+      <node id="7024895274323235319" at="57,0,58,0" concept="12" trace="BooleanType$_u" />
+      <node id="7024895274323235319" at="58,0,59,0" concept="12" trace="StringLiteral$xu" />
+      <node id="7024895274323235319" at="59,0,60,0" concept="12" trace="StringType$uX" />
+      <node id="7024895274323235319" at="63,0,64,0" concept="12" trace="value$jgCM" />
+      <node id="7024895274323235319" at="64,0,65,0" concept="12" trace="value$ENN8" />
+      <node id="7024895274323235319" at="65,0,66,0" concept="12" trace="value$kirj" />
+      <node id="7024895274323235319" at="66,0,67,0" concept="12" trace="value$5y_M" />
+      <node id="7024895274323235319" at="67,0,68,0" concept="12" trace="value$w7MM" />
+      <node id="7024895274323235319" at="71,0,72,0" concept="12" trace="type$a1UY" />
+      <node id="7024895274323235319" at="72,0,73,0" concept="12" trace="classifier$cxMr" />
+      <node id="6911873060800380430" at="42,10,44,5" concept="0" />
+      <node id="6911873060800380211" at="24,15,44,5" concept="6" />
+      <node id="6911873060800380132" at="20,0,47,0" concept="13" trace="createDefaultInitializer#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="6911873060800380417" at="40,125,41,186" />
+      <scope id="6911873060800380431" at="42,12,43,185" />
+      <scope id="6911873060800380212" at="25,473,27,111" />
+      <scope id="6911873060800380253" at="28,478,30,121" />
+      <scope id="6911873060800380294" at="31,476,33,127" />
+      <scope id="6911873060800380335" at="34,480,36,115" />
+      <scope id="6911873060800380376" at="37,478,39,110" />
+      <scope id="6911873060800380135" at="20,61,45,16">
         <var name="init" id="6911873060800393682" />
       </scope>
-      <scope id="6911873060800380132" at="20,0,44,0">
+      <scope id="6911873060800380132" at="20,0,47,0">
         <var name="field" id="6911873060800380161" />
       </scope>
-      <unit id="7024895274323235319" at="67,0,71,0" name="jetbrains.mps.baseLanguage.util.VariableInitializationUtil$LINKS" />
-      <unit id="7024895274323235319" at="59,0,66,0" name="jetbrains.mps.baseLanguage.util.VariableInitializationUtil$PROPS" />
-      <unit id="7024895274323235319" at="45,0,58,0" name="jetbrains.mps.baseLanguage.util.VariableInitializationUtil$CONCEPTS" />
-      <unit id="7024895274323235319" at="18,0,72,0" name="jetbrains.mps.baseLanguage.util.VariableInitializationUtil" />
+      <unit id="7024895274323235319" at="70,0,74,0" name="jetbrains.mps.baseLanguage.util.VariableInitializationUtil$LINKS" />
+      <unit id="7024895274323235319" at="62,0,69,0" name="jetbrains.mps.baseLanguage.util.VariableInitializationUtil$PROPS" />
+      <unit id="7024895274323235319" at="48,0,61,0" name="jetbrains.mps.baseLanguage.util.VariableInitializationUtil$CONCEPTS" />
+      <unit id="7024895274323235319" at="18,0,75,0" name="jetbrains.mps.baseLanguage.util.VariableInitializationUtil" />
     </file>
   </root>
   <root nodeRef="r:2a308ea0-c7e3-4fa5-a624-ad74ee5cfab5(jetbrains.mps.baseLanguage.util)/8432634623182691821">

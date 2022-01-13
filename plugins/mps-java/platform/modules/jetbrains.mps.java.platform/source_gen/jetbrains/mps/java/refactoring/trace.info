@@ -53,62 +53,64 @@
   </root>
   <root nodeRef="r:3617248a-3a59-4f8e-b825-e9a1ec1b53de(jetbrains.mps.java.refactoring)/7024895274322369629">
     <file name="InitializeFieldInConstructorRefactoring.java">
-      <node id="8833038268015520284" at="23,53,24,98" concept="7" />
-      <node id="6911873060802737024" at="24,98,25,78" concept="7" />
-      <node id="6911873060802737029" at="25,78,26,73" concept="7" />
-      <node id="6911873060802737044" at="26,73,27,143" concept="2" />
-      <node id="6911873060802737032" at="30,85,31,79" concept="7" />
-      <node id="6911873060802737032" at="32,5,33,98" concept="7" />
-      <node id="6911873060802737032" at="34,7,35,93" concept="7" />
-      <node id="6911873060802737032" at="35,93,36,66" concept="2" />
-      <node id="6911873060802737032" at="37,7,38,80" concept="2" />
-      <node id="6911873060802737032" at="39,5,40,26" concept="8" />
-      <node id="7024895274322369629" at="44,0,45,0" concept="10" trace="ConstructorDeclaration$yG" />
-      <node id="7024895274322369629" at="45,0,46,0" concept="10" trace="ExpressionStatement$O8" />
-      <node id="7024895274322369629" at="46,0,47,0" concept="10" trace="AssignmentExpression$SE" />
-      <node id="7024895274322369629" at="47,0,48,0" concept="10" trace="VariableReference$TC" />
-      <node id="7024895274322369629" at="48,0,49,0" concept="10" trace="Expression$mB" />
-      <node id="7024895274322369629" at="52,0,53,0" concept="10" trace="body$5xQk" />
-      <node id="7024895274322369629" at="53,0,54,0" concept="10" trace="statement$53DE" />
-      <node id="7024895274322369629" at="54,0,55,0" concept="10" trace="expression$5L7M" />
-      <node id="7024895274322369629" at="55,0,56,0" concept="10" trace="lValue$splI" />
-      <node id="7024895274322369629" at="56,0,57,0" concept="10" trace="variableDeclaration$N1XG" />
-      <node id="7024895274322369629" at="57,0,58,0" concept="10" trace="rValue$spNK" />
-      <node id="6911873060802737032" at="33,98,37,7" concept="0" />
-      <node id="8833038268015520282" at="22,110,28,5" concept="4" />
-      <node id="7024895274322394815" at="22,0,30,0" concept="6" trace="performRefactoring#(Lorg/jetbrains/mps/openapi/model/SNode;[Lorg/jetbrains/mps/openapi/model/SNodeReference;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
-      <node id="6911873060802737032" at="31,79,39,5" concept="0" />
-      <node id="6911873060802737032" at="30,0,42,0" concept="11" trace="createExpressionStatement_liqiui_a0c0a0b#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="6911873060802737032" at="34,7,36,66">
+      <node id="8833038268015520284" at="24,53,25,98" concept="7" />
+      <node id="6911873060802737024" at="25,98,26,196" concept="7" />
+      <node id="6911873060802737029" at="26,196,27,73" concept="7" />
+      <node id="6911873060802737044" at="27,73,28,143" concept="2" />
+      <node id="6911873060802737032" at="31,85,32,79" concept="7" />
+      <node id="6911873060802737032" at="33,5,34,98" concept="7" />
+      <node id="6911873060802737032" at="35,7,36,93" concept="7" />
+      <node id="6911873060802737032" at="36,93,37,66" concept="2" />
+      <node id="6911873060802737032" at="38,7,39,80" concept="2" />
+      <node id="6911873060802737032" at="40,5,41,26" concept="8" />
+      <node id="7024895274322369629" at="45,0,46,0" concept="10" trace="ConstructorDeclaration$yG" />
+      <node id="7024895274322369629" at="46,0,47,0" concept="10" trace="Type$bu" />
+      <node id="7024895274322369629" at="47,0,48,0" concept="10" trace="ExpressionStatement$O8" />
+      <node id="7024895274322369629" at="48,0,49,0" concept="10" trace="AssignmentExpression$SE" />
+      <node id="7024895274322369629" at="49,0,50,0" concept="10" trace="VariableReference$TC" />
+      <node id="7024895274322369629" at="50,0,51,0" concept="10" trace="Expression$mB" />
+      <node id="7024895274322369629" at="54,0,55,0" concept="10" trace="type$a1UY" />
+      <node id="7024895274322369629" at="55,0,56,0" concept="10" trace="body$5xQk" />
+      <node id="7024895274322369629" at="56,0,57,0" concept="10" trace="statement$53DE" />
+      <node id="7024895274322369629" at="57,0,58,0" concept="10" trace="expression$5L7M" />
+      <node id="7024895274322369629" at="58,0,59,0" concept="10" trace="lValue$splI" />
+      <node id="7024895274322369629" at="59,0,60,0" concept="10" trace="variableDeclaration$N1XG" />
+      <node id="7024895274322369629" at="60,0,61,0" concept="10" trace="rValue$spNK" />
+      <node id="6911873060802737032" at="34,98,38,7" concept="0" />
+      <node id="8833038268015520282" at="23,110,29,5" concept="4" />
+      <node id="7024895274322394815" at="23,0,31,0" concept="6" trace="performRefactoring#(Lorg/jetbrains/mps/openapi/model/SNode;[Lorg/jetbrains/mps/openapi/model/SNodeReference;Lorg/jetbrains/mps/openapi/module/SRepository;)V" />
+      <node id="6911873060802737032" at="32,79,40,5" concept="0" />
+      <node id="6911873060802737032" at="31,0,43,0" concept="11" trace="createExpressionStatement_liqiui_a0c0a0b#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="6911873060802737032" at="35,7,37,66">
         <var name="n2" id="6911873060802737032" />
       </scope>
-      <scope id="8833038268015520283" at="23,53,27,143">
+      <scope id="8833038268015520283" at="24,53,28,143">
         <var name="c" id="8833038268015520285" />
         <var name="init" id="6911873060802737025" />
         <var name="stmt" id="6911873060802737030" />
       </scope>
-      <scope id="7024895274322394818" at="22,110,28,5" />
-      <scope id="8833038268015520282" at="22,110,28,5">
+      <scope id="7024895274322394818" at="23,110,29,5" />
+      <scope id="8833038268015520282" at="23,110,29,5">
         <var name="ref" id="8833038268015520349" />
       </scope>
-      <scope id="6911873060802737032" at="32,5,38,80">
+      <scope id="6911873060802737032" at="33,5,39,80">
         <var name="n1" id="6911873060802737032" />
       </scope>
-      <scope id="7024895274322394815" at="22,0,30,0">
+      <scope id="7024895274322394815" at="23,0,31,0">
         <var name="field" id="7024895274322396150" />
         <var name="repository" id="1904418645614127861" />
         <var name="selectedConstructors" id="7024895274322413826" />
       </scope>
-      <scope id="6911873060802737032" at="30,85,40,26">
+      <scope id="6911873060802737032" at="31,85,41,26">
         <var name="n0" id="6911873060802737032" />
       </scope>
-      <scope id="6911873060802737032" at="30,0,42,0">
+      <scope id="6911873060802737032" at="31,0,43,0">
         <var name="p0" id="6911873060802737032" />
         <var name="p1" id="6911873060802737032" />
       </scope>
-      <unit id="7024895274322369629" at="43,0,50,0" name="jetbrains.mps.java.refactoring.InitializeFieldInConstructorRefactoring$CONCEPTS" />
-      <unit id="7024895274322369629" at="51,0,59,0" name="jetbrains.mps.java.refactoring.InitializeFieldInConstructorRefactoring$LINKS" />
-      <unit id="7024895274322369629" at="19,0,60,0" name="jetbrains.mps.java.refactoring.InitializeFieldInConstructorRefactoring" />
+      <unit id="7024895274322369629" at="44,0,52,0" name="jetbrains.mps.java.refactoring.InitializeFieldInConstructorRefactoring$CONCEPTS" />
+      <unit id="7024895274322369629" at="53,0,62,0" name="jetbrains.mps.java.refactoring.InitializeFieldInConstructorRefactoring$LINKS" />
+      <unit id="7024895274322369629" at="20,0,63,0" name="jetbrains.mps.java.refactoring.InitializeFieldInConstructorRefactoring" />
     </file>
   </root>
   <root nodeRef="r:3617248a-3a59-4f8e-b825-e9a1ec1b53de(jetbrains.mps.java.refactoring)/775260118347134758">
