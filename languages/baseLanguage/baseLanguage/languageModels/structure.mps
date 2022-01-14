@@ -1034,18 +1034,18 @@
     <node concept="PrWs8" id="1wHCnsn5CFE" role="PzmwI">
       <ref role="PrY4T" node="1wHCnsn58oY" resolve="IBinaryLike" />
     </node>
-    <node concept="1TJgyj" id="fJuHU4r" role="1TKVEi">
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="rightExpression" />
-      <property role="20lbJX" value="fLJekj4/1" />
-      <property role="IQ2ns" value="1081773367579" />
-      <ref role="20lvS9" node="fz3vP1J" resolve="Expression" />
-    </node>
     <node concept="1TJgyj" id="fJuHU4s" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="leftExpression" />
       <property role="20lbJX" value="fLJekj4/1" />
       <property role="IQ2ns" value="1081773367580" />
+      <ref role="20lvS9" node="fz3vP1J" resolve="Expression" />
+    </node>
+    <node concept="1TJgyj" id="fJuHU4r" role="1TKVEi">
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="rightExpression" />
+      <property role="20lbJX" value="fLJekj4/1" />
+      <property role="IQ2ns" value="1081773367579" />
       <ref role="20lvS9" node="fz3vP1J" resolve="Expression" />
     </node>
   </node>
