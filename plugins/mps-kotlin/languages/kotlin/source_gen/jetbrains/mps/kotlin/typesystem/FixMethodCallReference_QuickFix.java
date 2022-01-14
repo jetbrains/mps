@@ -5,6 +5,7 @@ package jetbrains.mps.kotlin.typesystem;
 import jetbrains.mps.errors.QuickFix_Runtime;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.kotlin.behavior.IFunctionCallLike__BehaviorDescriptor;
 
 public class FixMethodCallReference_QuickFix extends QuickFix_Runtime {
@@ -15,6 +16,7 @@ public class FixMethodCallReference_QuickFix extends QuickFix_Runtime {
     return "Fix with overload resolution result";
   }
   public void execute(SNode node) {
-    ((SNode) FixMethodCallReference_QuickFix.this.getField("call")[0]).setReferenceTarget(IFunctionCallLike__BehaviorDescriptor.getTargetLink_id5D4bOjrrcOr.invoke(((SNode) FixMethodCallReference_QuickFix.this.getField("call")[0])), ((SNode) FixMethodCallReference_QuickFix.this.getField("newTarget")[0]));
+    SReferenceLink link = (((SReferenceLink) FixMethodCallReference_QuickFix.this.getField("targetLink")[0]) != null ? ((SReferenceLink) FixMethodCallReference_QuickFix.this.getField("targetLink")[0]) : IFunctionCallLike__BehaviorDescriptor.getTargetLink_id5D4bOjrrcOr.invoke(((SNode) FixMethodCallReference_QuickFix.this.getField("call")[0])));
+    ((SNode) FixMethodCallReference_QuickFix.this.getField("call")[0]).setReferenceTarget(link, ((SNode) FixMethodCallReference_QuickFix.this.getField("newTarget")[0]));
   }
 }

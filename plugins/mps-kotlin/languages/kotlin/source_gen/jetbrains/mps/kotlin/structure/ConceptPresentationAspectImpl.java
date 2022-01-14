@@ -2055,7 +2055,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.WhenEntry:
         if (props_WhenEntry == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af391L);
-          cpb.deprecateAggregation(0x28bef6d7551af635L, "body");
+          cpb.deprecateAggregation(0x28bef6d7551af635L, "body_");
           cpb.shortDesc("when entry");
           cpb.rawPresentation("->");
           props_WhenEntry = cpb.create();

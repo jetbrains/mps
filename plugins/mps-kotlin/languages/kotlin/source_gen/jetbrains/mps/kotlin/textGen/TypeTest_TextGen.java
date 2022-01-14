@@ -19,7 +19,7 @@ public class TypeTest_TextGen extends TextGenDescriptorBase {
       tgs.append("!");
     }
 
-    tgs.append("is");
+    tgs.append("is ");
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$_0jF));
   }
 

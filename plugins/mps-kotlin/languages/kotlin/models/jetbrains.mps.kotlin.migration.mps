@@ -683,7 +683,7 @@
                 </node>
                 <node concept="359W_D" id="1yTI8p9GVip" role="37wK5m">
                   <ref role="359W_E" to="hcm8:2yYXHtl6Jeh" resolve="WhenEntry" />
-                  <ref role="359W_F" to="hcm8:2yYXHtl6JoP" resolve="body" />
+                  <ref role="359W_F" to="hcm8:2yYXHtl6JoP" resolve="body_" />
                 </node>
               </node>
             </node>

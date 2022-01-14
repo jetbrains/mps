@@ -81,7 +81,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return LINKS.conditions$jFw5;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.IWhenCondition$Ae;
+      return CONCEPTS.IExpression$2i;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -163,6 +163,6 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IWhenCondition$Ae = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af59aL, "jetbrains.mps.kotlin.structure.IWhenCondition");
+    /*package*/ static final SInterfaceConcept IExpression$2i = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L, "jetbrains.mps.kotlin.structure.IExpression");
   }
 }

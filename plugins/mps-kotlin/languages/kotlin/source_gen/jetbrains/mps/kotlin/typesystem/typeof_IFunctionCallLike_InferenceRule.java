@@ -9,7 +9,13 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration;
 import jetbrains.mps.kotlin.behavior.IFunctionCallLike__BehaviorDescriptor;
+import jetbrains.mps.kotlin.behavior.NodeTypeVarSubs;
+import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typesystem.inference.EquationInfo;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import java.util.HashSet;
+import jetbrains.mps.kotlin.runtime.declaration.TypeParameterDeclaration;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -19,12 +25,32 @@ public class typeof_IFunctionCallLike_InferenceRule extends AbstractInferenceRul
   }
   public void applyRule(final SNode call, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // Stub typesystem: actual implementation with coderules
-    FunctionDeclaration functionDescriptor = IFunctionCallLike__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(call);
+    final FunctionDeclaration functionDescriptor = IFunctionCallLike__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(call);
     if (functionDescriptor != null) {
-      {
-        SNode _nodeToCheck_1029348928467 = call;
-        EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8952006656345515064", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8952006656345513611", true), (SNode) functionDescriptor.getReturnType(), _info_12389875345);
+      // Get substitutions from operand type
+      SNode receiver = IFunctionCallLike__BehaviorDescriptor.getReceiver_id5D4bOjrrgiZ.invoke(call);
+      if ((receiver != null)) {
+        {
+          final SNode receiverType = typeCheckingContext.typeOf(receiver, "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8480058639852782331", true);
+          typeCheckingContext.whenConcrete(receiverType, new Runnable() {
+            public void run() {
+              NodeTypeVarSubs subs = new NodeTypeVarSubs();
+              IType__BehaviorDescriptor.populateSubstitutions_id4f4W8JpwgWV.invoke(SNodeOperations.as(typeCheckingContext.getExpandedNode(receiverType), CONCEPTS.IType$Ni), subs);
+
+              {
+                SNode _nodeToCheck_1029348928467 = call;
+                EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8480058639852793799", 0, null);
+                typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8480058639852793805", true), (SNode) subs.expand(functionDescriptor.getReturnType(), SetSequence.fromSet(new HashSet<TypeParameterDeclaration>())), _info_12389875345);
+              }
+            }
+          }, "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8480058639852782090", false, false);
+        }
+      } else {
+        {
+          SNode _nodeToCheck_1029348928467 = call;
+          EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8952006656345515064", 0, null);
+          typeCheckingContext.createEquation((SNode) typeCheckingContext.typeOf(_nodeToCheck_1029348928467, "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "8952006656345513611", true), (SNode) functionDescriptor.getReturnType(), _info_12389875345);
+        }
       }
     }
   }
@@ -39,6 +65,7 @@ public class typeof_IFunctionCallLike_InferenceRule extends AbstractInferenceRul
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IType$Ni = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af441L, "jetbrains.mps.kotlin.structure.IType");
     /*package*/ static final SInterfaceConcept IFunctionCallLike$Sf = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5a442f44db6c8a2cL, "jetbrains.mps.kotlin.structure.IFunctionCallLike");
   }
 }

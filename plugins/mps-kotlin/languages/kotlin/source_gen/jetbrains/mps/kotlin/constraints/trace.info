@@ -15,7 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="13,0,91,0" name="jetbrains.mps.kotlin.constraints.ConstraintsAspectDescriptor" />
+      <unit at="13,0,93,0" name="jetbrains.mps.kotlin.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:133e8cac-c6ad-447f-a90c-5146ca3b1aed(jetbrains.mps.kotlin.constraints)/1243006380186798615">
@@ -1313,6 +1313,49 @@
       <unit id="8480058639843186874" at="43,0,46,0" name="jetbrains.mps.kotlin.constraints.CompiledStubStatement_Constraints$CONCEPTS" />
       <unit id="8480058639843186874" at="25,15,36,5" name="jetbrains.mps.kotlin.constraints.CompiledStubStatement_Constraints$1" />
       <unit id="8480058639843186874" at="18,0,47,0" name="jetbrains.mps.kotlin.constraints.CompiledStubStatement_Constraints" />
+    </file>
+  </root>
+  <root nodeRef="r:133e8cac-c6ad-447f-a90c-5146ca3b1aed(jetbrains.mps.kotlin.constraints)/8939835910410882638">
+    <file name="TypeTest_Constraints.java">
+      <node id="8939835910410882638" at="20,33,21,32" concept="12" />
+      <node id="8939835910410882638" at="28,127,29,128" concept="6" />
+      <node id="8939835910410882638" at="29,128,30,0" concept="9" />
+      <node id="8939835910410882638" at="31,55,32,71" concept="2" />
+      <node id="8939835910410882638" at="33,9,34,0" concept="9" />
+      <node id="8939835910410882638" at="34,0,35,22" concept="7" />
+      <node id="8939835910410889585" at="39,128,40,55" concept="7" />
+      <node id="8939835910410882638" at="42,0,43,0" concept="10" trace="canBeChildBreakingPoint" />
+      <node id="8939835910410882638" at="45,0,46,0" concept="10" trace="TypeTest$U8" />
+      <node id="8939835910410882638" at="49,0,50,0" concept="10" trace="conditions$jFw5" />
+      <node id="8939835910410882638" at="20,0,23,0" concept="1" trace="TypeTest_Constraints#()V" />
+      <node id="8939835910410882638" at="30,0,33,9" concept="4" />
+      <node id="8939835910410882638" at="39,0,42,0" concept="11" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
+      <node id="8939835910410882638" at="27,0,37,0" concept="5" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
+      <node id="8939835910410882638" at="25,103,37,6" concept="7" />
+      <node id="8939835910410882638" at="24,0,39,0" concept="5" trace="calculateCanBeChildConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
+      <scope id="8939835910410882638" at="20,33,21,32" />
+      <scope id="8939835910410882638" at="31,55,32,71" />
+      <scope id="8939835910410882910" at="39,128,40,55" />
+      <scope id="8939835910410882638" at="20,0,23,0" />
+      <scope id="8939835910410882638" at="39,0,42,0">
+        <var name="childConcept" id="8939835910410882638" />
+        <var name="link" id="8939835910410882638" />
+        <var name="node" id="8939835910410882638" />
+        <var name="parentNode" id="8939835910410882638" />
+      </scope>
+      <scope id="8939835910410882638" at="28,127,35,22">
+        <var name="result" id="8939835910410882638" />
+      </scope>
+      <scope id="8939835910410882638" at="27,0,37,0">
+        <var name="checkingNodeContext" id="8939835910410882638" />
+        <var name="context" id="8939835910410882638" />
+      </scope>
+      <scope id="8939835910410882638" at="25,103,37,6" />
+      <scope id="8939835910410882638" at="24,0,39,0" />
+      <unit id="8939835910410882638" at="44,0,47,0" name="jetbrains.mps.kotlin.constraints.TypeTest_Constraints$CONCEPTS" />
+      <unit id="8939835910410882638" at="48,0,51,0" name="jetbrains.mps.kotlin.constraints.TypeTest_Constraints$LINKS" />
+      <unit id="8939835910410882638" at="26,15,37,5" name="jetbrains.mps.kotlin.constraints.TypeTest_Constraints$1" />
+      <unit id="8939835910410882638" at="19,0,52,0" name="jetbrains.mps.kotlin.constraints.TypeTest_Constraints" />
     </file>
   </root>
 </debug-info>

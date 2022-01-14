@@ -11,6 +11,7 @@ import jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.kotlin.behavior.IFunctionCallLike__BehaviorDescriptor;
 import jetbrains.mps.kotlin.overloading.OverloadResolutionSolver;
+import jetbrains.mps.kotlin.overloading.NodeFunctionCall;
 import jetbrains.mps.kotlin.overloading.AmbiguousException;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -35,7 +36,7 @@ public class check_IFunctionCallLike_Overloading_NonTypesystemRule extends Abstr
     // No need to solve it if there is no way to put it somewhere
     if (targetLink != null) {
       try {
-        resolved = new OverloadResolutionSolver(call).resolve();
+        resolved = new OverloadResolutionSolver(new NodeFunctionCall(call), call).resolve();
       } catch (AmbiguousException error) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();

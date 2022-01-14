@@ -64,7 +64,6 @@ public interface FunctionDeclaration {
    * Returns the receiver of the function (the class that holds it) if applicable.
    * 
    * @see jetbrains.mps.kotlin.runtime.declaration.FunctionReceiver 
-   * @see jetbrains.mps.kotlin.runtime.declaration.FunctionReceiver#getNotNull(FunctionDeclaration) to have a non-nullable version
    */
   @Nullable
   FunctionReceiver getReceiver();

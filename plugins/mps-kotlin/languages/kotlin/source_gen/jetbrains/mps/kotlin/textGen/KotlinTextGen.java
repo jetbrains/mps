@@ -194,13 +194,13 @@ public abstract class KotlinTextGen {
   }
   public static void controlStructureStatements(SNode node, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    KotlinTextGen.optionallyWrappedStatements(node, "", ";", ctx);
+    KotlinTextGen.optionallyWrappedStatements(node, "", ctx);
   }
   public static void functionStatements(SNode node, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    KotlinTextGen.optionallyWrappedStatements(node, "= ", "Unit", ctx);
+    KotlinTextGen.optionallyWrappedStatements(node, "= ", ctx);
   }
-  public static void optionallyWrappedStatements(SNode node, String prependNonBlock, String emptyValue, final TextGenContext ctx) {
+  public static void optionallyWrappedStatements(SNode node, String prependNonBlock, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     SNode singleExpression = IStatementHolder__BehaviorDescriptor.asSingleExpression_id18X2O0FvKfA.invoke(node);
     if ((singleExpression != null) && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.statements$R3pt)).isNotEmpty()) {
@@ -210,7 +210,7 @@ public abstract class KotlinTextGen {
       KotlinTextGen.wrappedStatements(node, ctx);
     } else {
       tgs.append(prependNonBlock);
-      tgs.append(emptyValue);
+      tgs.append("Unit");
     }
   }
   public static void wrappedStatements(SNode node, final TextGenContext ctx) {

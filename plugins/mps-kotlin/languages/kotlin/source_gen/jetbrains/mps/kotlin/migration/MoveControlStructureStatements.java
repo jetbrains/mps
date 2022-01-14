@@ -56,7 +56,7 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
       migrate(ifExpressions, LINKS.body_$$TIK);
       migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.SecondaryConstructor$Lg, false), LINKS.body_$jT7X);
       migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.TryExpression$Oi, false), LINKS.block_$N0hs);
-      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.WhenEntry$Ki, false), LINKS.body$jLAv);
+      migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.WhenEntry$Ki, false), LINKS.body_$jLAv);
 
       // Concepts whose function body is deprecated
       migrate(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.AnonymousFunction$9D, false), LINKS._body$UbWV);
@@ -153,7 +153,7 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
     /*package*/ static final SContainmentLink body_$$TIK = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af41eL, 0x28bef6d7551af6f5L, "body_");
     /*package*/ static final SContainmentLink body_$jT7X = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af393L, 0x28bef6d7551af640L, "body_");
     /*package*/ static final SContainmentLink block_$N0hs = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af51dL, 0x28bef6d7551af86eL, "block_");
-    /*package*/ static final SContainmentLink body$jLAv = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af391L, 0x28bef6d7551af635L, "body");
+    /*package*/ static final SContainmentLink body_$jLAv = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af391L, 0x28bef6d7551af635L, "body_");
     /*package*/ static final SContainmentLink _body$UbWV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af589L, 0x28bef6d7551af93cL, "_body");
     /*package*/ static final SContainmentLink _body$4ZBW = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, 0x28bef6d755909986L, "_body");
     /*package*/ static final SContainmentLink _body$jE43 = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af38dL, 0x28bef6d7551af62aL, "_body");

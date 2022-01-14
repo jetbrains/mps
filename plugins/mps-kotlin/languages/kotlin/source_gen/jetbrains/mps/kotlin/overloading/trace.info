@@ -230,163 +230,151 @@
   </root>
   <root nodeRef="r:42fb31e7-122b-4950-aa58-2f5f6e5595ce(jetbrains.mps.kotlin.overloading)/6504375734615413336">
     <file name="OverloadResolutionSolver.java">
-      <node id="6504375734616417557" at="43,0,44,0" concept="3" trace="myCall" />
-      <node id="5080347312208398514" at="44,0,45,0" concept="3" trace="myFunctionName" />
-      <node id="8952006656350416249" at="45,0,46,0" concept="3" trace="overloadResolver" />
-      <node id="6504375734616417561" at="47,53,48,18" concept="2" />
-      <node id="8952006656352164262" at="50,50,51,36" concept="9" />
-      <node id="5080347312208408550" at="53,7,54,43" concept="2" />
-      <node id="1060241541151560234" at="59,60,60,57" concept="9" />
-      <node id="4214449641600848862" at="66,49,67,18" concept="9" />
-      <node id="8952006656350830898" at="68,5,69,0" concept="11" />
-      <node id="8952006656350835008" at="69,0,70,99" concept="10" />
-      <node id="7087553310370012071" at="71,35,72,159" concept="8" />
-      <node id="8952006656349373356" at="72,159,73,51" concept="9" />
-      <node id="8952006656349349232" at="74,5,75,0" concept="11" />
-      <node id="8952006656350828488" at="75,0,76,24" concept="10" />
-      <node id="9149616139759179526" at="76,24,77,111" concept="8" />
-      <node id="9149616139759197884" at="77,111,78,0" concept="11" />
-      <node id="9149616139757842899" at="78,0,79,46" concept="8" />
-      <node id="1060241541151352757" at="80,22,81,17" concept="9" />
-      <node id="1060241541153172629" at="82,43,83,37" concept="16" />
-      <node id="6504375734616403718" at="84,5,85,0" concept="11" />
-      <node id="6504375734616403719" at="85,0,86,16" concept="9" />
-      <node id="8952006656350505058" at="89,66,90,94" concept="10" />
-      <node id="8952006656350806409" at="91,74,92,18" concept="9" />
-      <node id="8952006656350440111" at="93,5,94,0" concept="11" />
-      <node id="5080347312207295907" at="94,0,95,76" concept="10" />
-      <node id="5080347312207277834" at="96,33,97,18" concept="9" />
-      <node id="5080347312207234394" at="98,5,99,0" concept="11" />
-      <node id="6504375734615440017" at="99,0,100,77" concept="10" />
-      <node id="6504375734616079160" at="100,77,101,100" concept="8" />
-      <node id="6504375734616074512" at="102,29,103,137" concept="9" />
-      <node id="6504375734616086239" at="104,5,105,0" concept="11" />
-      <node id="6504375734616721578" at="105,0,106,16" concept="9" />
-      <node id="6504375734616407676" at="109,104,110,31" concept="8" />
-      <node id="1752885245470703511" at="110,31,111,63" concept="8" />
-      <node id="6504375734616407679" at="111,63,112,0" concept="11" />
-      <node id="6504375734616407680" at="112,0,113,58" concept="10" />
-      <node id="6504375734616407691" at="113,58,114,187" concept="8" />
-      <node id="6504375734616407708" at="114,187,115,89" concept="2" />
-      <node id="1614855948976758782" at="117,62,118,80" concept="9" />
-      <node id="6504375734616407715" at="121,65,122,20" concept="9" />
-      <node id="6504375734616407726" at="123,5,124,0" concept="11" />
-      <node id="6504375734616407727" at="124,0,125,215" concept="10" />
-      <node id="1752885245470607746" at="125,215,126,107" concept="8" />
-      <node id="1060241541153072470" at="128,39,129,206" concept="9" />
-      <node id="6504375734616407803" at="132,65,133,20" concept="9" />
-      <node id="6504375734616407812" at="134,5,135,0" concept="11" />
-      <node id="6504375734616407813" at="135,0,136,97" concept="10" />
-      <node id="6504375734616407829" at="136,97,137,108" concept="10" />
-      <node id="6504375734616407848" at="137,108,138,91" concept="10" />
-      <node id="6504375734616407863" at="138,91,139,166" concept="10" />
-      <node id="6504375734616407888" at="139,166,140,130" concept="10" />
-      <node id="6504375734616407904" at="140,130,141,154" concept="8" />
-      <node id="6504375734616407927" at="142,68,143,20" concept="9" />
-      <node id="6504375734616407936" at="144,5,145,0" concept="11" />
-      <node id="6504375734616407937" at="145,0,146,0" concept="11" />
-      <node id="6504375734616407938" at="146,0,147,18" concept="9" />
-      <node id="5937978644274188431" at="150,52,151,110" concept="10" />
-      <node id="5937978644274098336" at="153,39,154,102" concept="9" />
-      <node id="5080347312208288674" at="162,52,163,99" concept="8" />
-      <node id="5080347312208328458" at="164,23,165,18" concept="9" />
-      <node id="5080347312208537623" at="166,5,167,158" concept="9" />
-      <node id="6504375734615413336" at="171,0,172,0" concept="12" trace="IType$Ni" />
-      <node id="6504375734615413336" at="172,0,173,0" concept="12" trace="IFunctionIdentifier$K$" />
-      <node id="6504375734615413336" at="173,0,174,0" concept="12" trace="IFunctionDeclaration$ZB" />
-      <node id="6504375734615413336" at="177,0,178,0" concept="12" trace="name$MnvL" />
-      <node id="8952006656352163695" at="50,0,53,0" concept="7" trace="accept#(Ljetbrains/mps/kotlin/overloading/OverloadResolver;)Z" />
-      <node id="1060241541151560234" at="59,0,62,0" concept="7" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
-      <node id="4214449641600836812" at="65,130,68,5" concept="6" />
-      <node id="8952006656350784056" at="90,94,93,5" concept="6" />
-      <node id="5080347312207241345" at="95,76,98,5" concept="6" />
-      <node id="6504375734616066005" at="101,100,104,5" concept="6" />
-      <node id="1614855948976758780" at="117,0,120,0" concept="7" trace="select#(Ljetbrains/mps/kotlin/runtime/members/SourcedSignature;)Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
-      <node id="6504375734616407713" at="120,7,123,5" concept="6" />
-      <node id="1060241541153072468" at="128,0,131,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="6504375734616407801" at="131,7,134,5" concept="6" />
-      <node id="6504375734616407925" at="141,154,144,5" concept="6" />
-      <node id="5937978644274095176" at="153,0,156,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="5080347312208301471" at="163,99,166,5" concept="6" />
-      <node id="8952006656349310475" at="70,99,74,5" concept="6" />
-      <node id="8952006656350419823" at="48,18,53,7" concept="2" />
-      <node id="6504375734616398226" at="57,114,62,75" concept="9" />
-      <node id="1060241541151292427" at="79,46,84,5" concept="6" />
-      <node id="1614855948976758773" at="115,89,120,7" concept="8" />
-      <node id="1060241541153072459" at="126,107,131,7" concept="8" />
-      <node id="1060241541152957531" at="151,110,156,7" concept="9" />
-      <node id="6504375734616398223" at="57,0,64,0" concept="7" trace="inspectNodeSet#(Ljava/lang/Iterable;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
-      <node id="5080347312208420655" at="162,0,169,0" concept="13" trace="getFunctionName#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="1060241541152942685" at="150,0,158,0" concept="7" trace="functionsOf#(Ljetbrains/mps/scope/Scope;)Ljava/lang/Iterable;" />
-      <node id="6504375734616413585" at="47,0,56,0" concept="1" trace="OverloadResolutionSolver#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="6504375734615438852" at="89,0,108,0" concept="7" trace="resolve#()Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
-      <node id="6504375734616403684" at="65,0,88,0" concept="7" trace="inspectSet#(Ljava/lang/Iterable;Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
-      <node id="6504375734616407673" at="109,0,149,0" concept="7" trace="resolveWithExplicitReceiver#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
-      <scope id="8952006656352163696" at="50,50,51,36" />
-      <scope id="1060241541151560234" at="59,60,60,57" />
-      <scope id="4214449641600836814" at="66,49,67,18" />
-      <scope id="1060241541151292429" at="80,22,81,17" />
-      <scope id="1060241541153160354" at="82,43,83,37" />
-      <scope id="8952006656350784058" at="91,74,92,18" />
-      <scope id="5080347312207241347" at="96,33,97,18" />
-      <scope id="6504375734616066007" at="102,29,103,137" />
-      <scope id="1614855948976758781" at="117,62,118,80" />
-      <scope id="6504375734616407714" at="121,65,122,20" />
-      <scope id="1060241541153072469" at="128,39,129,206" />
-      <scope id="6504375734616407802" at="132,65,133,20" />
-      <scope id="6504375734616407926" at="142,68,143,20" />
-      <scope id="5937978644274095177" at="153,39,154,102" />
-      <scope id="5080347312208301473" at="164,23,165,18" />
-      <scope id="8952006656349310477" at="71,35,73,51">
+      <node id="6504375734616417557" at="40,0,41,0" concept="3" trace="myCall" />
+      <node id="5080347312208398514" at="41,0,42,0" concept="3" trace="myFunctionName" />
+      <node id="8952006656350416249" at="42,0,43,0" concept="3" trace="overloadResolver" />
+      <node id="8480058639847671794" at="43,0,44,0" concept="3" trace="myContextNode" />
+      <node id="6504375734616417561" at="45,79,46,18" concept="2" />
+      <node id="8952006656352164262" at="48,50,49,43" concept="9" />
+      <node id="5080347312208408550" at="51,7,52,44" concept="2" />
+      <node id="8480058639847681403" at="52,44,53,32" concept="2" />
+      <node id="1060241541151560234" at="58,60,59,57" concept="9" />
+      <node id="4214449641600848862" at="65,49,66,18" concept="9" />
+      <node id="8952006656350830898" at="67,5,68,0" concept="11" />
+      <node id="8952006656350835008" at="68,0,69,99" concept="10" />
+      <node id="7087553310370012071" at="70,35,71,159" concept="8" />
+      <node id="8952006656349373356" at="71,159,72,51" concept="9" />
+      <node id="8952006656349349232" at="73,5,74,0" concept="11" />
+      <node id="8952006656350828488" at="74,0,75,24" concept="10" />
+      <node id="9149616139759179526" at="75,24,76,112" concept="8" />
+      <node id="9149616139759197884" at="76,112,77,0" concept="11" />
+      <node id="9149616139757842899" at="77,0,78,46" concept="8" />
+      <node id="1060241541151352757" at="79,22,80,17" concept="9" />
+      <node id="1060241541153172629" at="81,43,82,37" concept="16" />
+      <node id="6504375734616403718" at="83,5,84,0" concept="11" />
+      <node id="6504375734616403719" at="84,0,85,16" concept="9" />
+      <node id="8952006656350505058" at="88,66,89,94" concept="10" />
+      <node id="8952006656350806409" at="90,74,91,18" concept="9" />
+      <node id="8952006656350440111" at="92,5,93,0" concept="11" />
+      <node id="5080347312207295907" at="93,0,94,76" concept="10" />
+      <node id="5080347312207277834" at="95,33,96,18" concept="9" />
+      <node id="5080347312207234394" at="97,5,98,0" concept="11" />
+      <node id="6504375734615440017" at="98,0,99,77" concept="10" />
+      <node id="6504375734616079160" at="99,77,100,46" concept="8" />
+      <node id="6504375734616074512" at="101,29,102,51" concept="9" />
+      <node id="6504375734616086239" at="103,5,104,0" concept="11" />
+      <node id="6504375734616721578" at="104,0,105,16" concept="9" />
+      <node id="6504375734616407676" at="108,104,109,31" concept="8" />
+      <node id="1752885245470703511" at="109,31,110,85" concept="8" />
+      <node id="6504375734616407679" at="110,85,111,0" concept="11" />
+      <node id="6504375734616407680" at="111,0,112,58" concept="10" />
+      <node id="6504375734616407691" at="112,58,113,129" concept="8" />
+      <node id="6504375734616407708" at="113,129,114,89" concept="2" />
+      <node id="1614855948976758782" at="116,62,117,80" concept="9" />
+      <node id="6504375734616407715" at="120,51,121,20" concept="9" />
+      <node id="6504375734616407726" at="122,5,123,0" concept="11" />
+      <node id="6504375734616407727" at="123,0,124,215" concept="10" />
+      <node id="1752885245470607746" at="124,215,125,107" concept="8" />
+      <node id="1060241541153072470" at="127,39,128,206" concept="9" />
+      <node id="6504375734616407803" at="131,51,132,20" concept="9" />
+      <node id="6504375734616407812" at="133,5,134,0" concept="11" />
+      <node id="6504375734616407813" at="134,0,135,97" concept="10" />
+      <node id="6504375734616407829" at="135,97,136,108" concept="10" />
+      <node id="6504375734616407848" at="136,108,137,91" concept="10" />
+      <node id="6504375734616407863" at="137,91,138,166" concept="10" />
+      <node id="6504375734616407888" at="138,166,139,130" concept="10" />
+      <node id="6504375734616407904" at="139,130,140,161" concept="8" />
+      <node id="6504375734616407927" at="141,54,142,20" concept="9" />
+      <node id="6504375734616407936" at="143,5,144,0" concept="11" />
+      <node id="6504375734616407937" at="144,0,145,0" concept="11" />
+      <node id="6504375734616407938" at="145,0,146,18" concept="9" />
+      <node id="5937978644274188431" at="149,52,150,110" concept="10" />
+      <node id="5937978644274098336" at="152,39,153,102" concept="9" />
+      <node id="6504375734615413336" at="159,0,160,0" concept="12" trace="IFunctionIdentifier$K$" />
+      <node id="6504375734615413336" at="160,0,161,0" concept="12" trace="IFunctionDeclaration$ZB" />
+      <node id="6504375734615413336" at="164,0,165,0" concept="12" trace="name$MnvL" />
+      <node id="8952006656352163695" at="48,0,51,0" concept="7" trace="accept#(Ljetbrains/mps/kotlin/overloading/OverloadResolver;)Z" />
+      <node id="1060241541151560234" at="58,0,61,0" concept="7" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
+      <node id="4214449641600836812" at="64,110,67,5" concept="6" />
+      <node id="8952006656350784056" at="89,94,92,5" concept="6" />
+      <node id="5080347312207241345" at="94,76,97,5" concept="6" />
+      <node id="6504375734616066005" at="100,46,103,5" concept="6" />
+      <node id="1614855948976758780" at="116,0,119,0" concept="7" trace="select#(Ljetbrains/mps/kotlin/runtime/members/SourcedSignature;)Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
+      <node id="6504375734616407713" at="119,7,122,5" concept="6" />
+      <node id="1060241541153072468" at="127,0,130,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="6504375734616407801" at="130,7,133,5" concept="6" />
+      <node id="6504375734616407925" at="140,161,143,5" concept="6" />
+      <node id="5937978644274095176" at="152,0,155,0" concept="7" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="8952006656349310475" at="69,99,73,5" concept="6" />
+      <node id="8952006656350419823" at="46,18,51,7" concept="2" />
+      <node id="6504375734616398226" at="56,94,61,61" concept="9" />
+      <node id="1060241541151292427" at="78,46,83,5" concept="6" />
+      <node id="1614855948976758773" at="114,89,119,7" concept="8" />
+      <node id="1060241541153072459" at="125,107,130,7" concept="8" />
+      <node id="1060241541152957531" at="150,110,155,7" concept="9" />
+      <node id="6504375734616398223" at="56,0,63,0" concept="7" trace="inspectNodeSet#(Ljava/lang/Iterable;)Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
+      <node id="1060241541152942685" at="149,0,157,0" concept="7" trace="functionsOf#(Ljetbrains/mps/scope/Scope;)Ljava/lang/Iterable;" />
+      <node id="6504375734616413585" at="45,0,55,0" concept="1" trace="OverloadResolutionSolver#(Ljetbrains/mps/kotlin/overloading/FunctionCall;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="6504375734615438852" at="88,0,107,0" concept="7" trace="resolve#()Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
+      <node id="6504375734616403684" at="64,0,87,0" concept="7" trace="inspectSet#(Ljava/lang/Iterable;)Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
+      <node id="6504375734616407673" at="108,0,148,0" concept="7" trace="resolveWithExplicitReceiver#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
+      <scope id="8952006656352163696" at="48,50,49,43" />
+      <scope id="1060241541151560234" at="58,60,59,57" />
+      <scope id="4214449641600836814" at="65,49,66,18" />
+      <scope id="1060241541151292429" at="79,22,80,17" />
+      <scope id="1060241541153160354" at="81,43,82,37" />
+      <scope id="8952006656350784058" at="90,74,91,18" />
+      <scope id="5080347312207241347" at="95,33,96,18" />
+      <scope id="6504375734616066007" at="101,29,102,51" />
+      <scope id="1614855948976758781" at="116,62,117,80" />
+      <scope id="6504375734616407714" at="120,51,121,20" />
+      <scope id="1060241541153072469" at="127,39,128,206" />
+      <scope id="6504375734616407802" at="131,51,132,20" />
+      <scope id="6504375734616407926" at="141,54,142,20" />
+      <scope id="5937978644274095177" at="152,39,153,102" />
+      <scope id="8952006656349310477" at="70,35,72,51">
         <var name="result" id="7087553310370012072" />
       </scope>
-      <scope id="8952006656352163695" at="50,0,53,0">
+      <scope id="8952006656352163695" at="48,0,51,0">
         <var name="it" id="8952006656352163695" />
       </scope>
-      <scope id="1060241541151560234" at="59,0,62,0">
+      <scope id="1060241541151560234" at="58,0,61,0">
         <var name="declaration" id="1060241541151560234" />
       </scope>
-      <scope id="1614855948976758780" at="117,0,120,0">
+      <scope id="1614855948976758780" at="116,0,119,0">
         <var name="it" id="1614855948976758780" />
       </scope>
-      <scope id="1060241541153072468" at="128,0,131,0">
+      <scope id="1060241541153072468" at="127,0,130,0">
         <var name="it" id="1060241541153072468" />
       </scope>
-      <scope id="5937978644274095176" at="153,0,156,0">
+      <scope id="5937978644274095176" at="152,0,155,0">
         <var name="it" id="5937978644274095176" />
       </scope>
-      <scope id="6504375734616398225" at="57,114,62,75" />
-      <scope id="5080347312208251915" at="162,52,167,158">
-        <var name="name" id="5080347312208288675" />
-      </scope>
-      <scope id="1060241541152942688" at="150,52,156,7" />
-      <scope id="6504375734616413589" at="47,53,54,43" />
-      <scope id="6504375734616398223" at="57,0,64,0">
+      <scope id="6504375734616398225" at="56,94,61,61" />
+      <scope id="1060241541152942688" at="149,52,155,7" />
+      <scope id="6504375734616398223" at="56,0,63,0">
         <var name="nodes" id="6504375734616398245" />
-        <var name="receiverType" id="1017539033584365324" />
       </scope>
-      <scope id="5080347312208420655" at="162,0,169,0">
-        <var name="node" id="5080347312208412897" />
-      </scope>
-      <scope id="1060241541152942685" at="150,0,158,0">
+      <scope id="6504375734616413589" at="45,79,53,32" />
+      <scope id="1060241541152942685" at="149,0,157,0">
         <var name="scope" id="1060241541152953884" />
       </scope>
-      <scope id="6504375734616413585" at="47,0,56,0">
+      <scope id="6504375734616413585" at="45,0,55,0">
         <var name="call" id="6504375734616417117" />
+        <var name="contextNode" id="8480058639847409824" />
       </scope>
-      <scope id="6504375734615438855" at="89,66,106,16">
+      <scope id="6504375734615438855" at="88,66,105,16">
         <var name="receiver" id="6504375734616079161" />
       </scope>
-      <scope id="6504375734615438852" at="89,0,108,0" />
-      <scope id="6504375734616403686" at="65,130,86,16">
+      <scope id="6504375734615438852" at="88,0,107,0" />
+      <scope id="6504375734616403686" at="64,110,85,16">
         <var name="res" id="9149616139757842900" />
         <var name="resolution" id="9149616139759179527" />
       </scope>
-      <scope id="6504375734616403684" at="65,0,88,0">
+      <scope id="6504375734616403684" at="64,0,87,0">
         <var name="nodes" id="6504375734616403722" />
-        <var name="receiverType" id="1017539033584311400" />
       </scope>
-      <scope id="6504375734616407675" at="109,104,147,18">
+      <scope id="6504375734616407675" at="108,104,146,18">
         <var name="imported" id="6504375734616407905" />
         <var name="instances" id="1614855948976758774" />
         <var name="local" id="1060241541153072460" />
@@ -395,17 +383,17 @@
         <var name="result" id="6504375734616407677" />
         <var name="visitor" id="6504375734616407692" />
       </scope>
-      <scope id="6504375734616407673" at="109,0,149,0">
+      <scope id="6504375734616407673" at="108,0,148,0">
         <var name="receiverType" id="6504375734616407944" />
       </scope>
-      <unit id="6504375734615413336" at="176,0,179,0" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver$PROPS" />
-      <unit id="8952006656352163695" at="49,160,53,5" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver$1" />
-      <unit id="1060241541151560234" at="58,62,62,5" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver$2" />
-      <unit id="1614855948976758780" at="116,101,120,5" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver$3" />
-      <unit id="1060241541153072468" at="127,138,131,5" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver$4" />
-      <unit id="5937978644274095176" at="152,148,156,5" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver$5" />
-      <unit id="6504375734615413336" at="170,0,175,0" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver$CONCEPTS" />
-      <unit id="6504375734615413336" at="42,0,180,0" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver" />
+      <unit id="6504375734615413336" at="163,0,166,0" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver$PROPS" />
+      <unit id="8952006656352163695" at="47,160,51,5" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver$1" />
+      <unit id="1060241541151560234" at="57,62,61,5" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver$2" />
+      <unit id="1614855948976758780" at="115,101,119,5" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver$3" />
+      <unit id="1060241541153072468" at="126,152,130,5" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver$4" />
+      <unit id="5937978644274095176" at="151,148,155,5" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver$5" />
+      <unit id="6504375734615413336" at="158,0,162,0" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver$CONCEPTS" />
+      <unit id="6504375734615413336" at="39,0,167,0" name="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver" />
     </file>
   </root>
   <root nodeRef="r:42fb31e7-122b-4950-aa58-2f5f6e5595ce(jetbrains.mps.kotlin.overloading)/8217000529238919739">
@@ -477,83 +465,160 @@
       <unit id="8294725016781720953" at="6,0,11,0" name="jetbrains.mps.kotlin.overloading.ParamException" />
     </file>
   </root>
+  <root nodeRef="r:42fb31e7-122b-4950-aa58-2f5f6e5595ce(jetbrains.mps.kotlin.overloading)/8480058639846886612">
+    <file name="FunctionCall.java">
+      <node id="8480058639846888820" at="14,0,15,0" concept="7" trace="getFunctionName#()Ljava/lang/String;" />
+      <node id="8480058639847267441" at="15,0,16,0" concept="7" trace="getModifierFilter#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="8480058639846886857" at="16,0,17,0" concept="7" trace="getArguments#()Ljava/lang/Iterable;" />
+      <node id="8939835910401547860" at="17,0,18,0" concept="7" trace="getTypeArguments#()Ljava/lang/Iterable;" />
+      <node id="8480058639847296012" at="18,0,19,0" concept="7" trace="getTargetLink#()Lorg/jetbrains/mps/openapi/language/SReferenceLink;" />
+      <node id="8480058639847366746" at="19,0,20,0" concept="7" trace="getReceiverType#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="8480058639847443066" at="20,0,21,0" concept="7" trace="getFunctionDescriptor#()Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
+      <scope id="8480058639846888820" at="14,0,15,0" />
+      <scope id="8480058639847267441" at="15,0,16,0" />
+      <scope id="8480058639846886857" at="16,0,17,0" />
+      <scope id="8939835910401547860" at="17,0,18,0" />
+      <scope id="8480058639847296012" at="18,0,19,0" />
+      <scope id="8480058639847366746" at="19,0,20,0" />
+      <scope id="8480058639847443066" at="20,0,21,0" />
+      <unit id="8480058639846886612" at="13,0,23,0" name="jetbrains.mps.kotlin.overloading.FunctionCall" />
+    </file>
+  </root>
+  <root nodeRef="r:42fb31e7-122b-4950-aa58-2f5f6e5595ce(jetbrains.mps.kotlin.overloading)/8480058639847269372">
+    <file name="NodeFunctionCall.java">
+      <node id="8480058639847271073" at="21,0,22,0" concept="3" trace="myFunctionCall" />
+      <node id="8480058639847583958" at="22,0,23,0" concept="3" trace="receiverType" />
+      <node id="8480058639847271077" at="23,47,24,34" concept="2" />
+      <node id="5080347312208288674" at="28,35,29,109" concept="8" />
+      <node id="5080347312208328458" at="30,23,31,18" concept="9" />
+      <node id="5080347312208537623" at="32,5,33,178" concept="9" />
+      <node id="8480058639847274956" at="36,47,37,123" concept="9" />
+      <node id="8480058639847277918" at="40,41,41,117" concept="9" />
+      <node id="8939835910401552790" at="44,45,45,121" concept="9" />
+      <node id="8480058639847298727" at="48,41,49,117" concept="9" />
+      <node id="8480058639847389227" at="52,34,53,108" concept="8" />
+      <node id="8480058639847390023" at="54,29,55,18" concept="9" />
+      <node id="8480058639847598218" at="57,33,58,116" concept="2" />
+      <node id="8480058639847591946" at="59,5,60,24" concept="9" />
+      <node id="8480058639847447844" at="63,54,64,108" concept="9" />
+      <node id="8480058639847269372" at="68,0,69,0" concept="12" trace="IType$Ni" />
+      <node id="8480058639847270315" at="23,0,26,0" concept="1" trace="NodeFunctionCall#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="5080347312208301471" at="29,109,32,5" concept="6" />
+      <node id="8480058639847379151" at="53,108,56,5" concept="6" />
+      <node id="8480058639847586206" at="56,5,59,5" concept="6" />
+      <node id="8480058639847271472" at="35,0,39,0" concept="7" trace="getModifierFilter#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
+      <node id="8480058639847271478" at="39,0,43,0" concept="7" trace="getArguments#()Ljava/lang/Iterable;" />
+      <node id="8939835910401548978" at="43,0,47,0" concept="7" trace="getTypeArguments#()Ljava/lang/Iterable;" />
+      <node id="8480058639847296985" at="47,0,51,0" concept="7" trace="getTargetLink#()Lorg/jetbrains/mps/openapi/language/SReferenceLink;" />
+      <node id="8480058639847444228" at="62,0,66,0" concept="7" trace="getFunctionDescriptor#()Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
+      <node id="8480058639847271464" at="27,0,35,0" concept="7" trace="getFunctionName#()Ljava/lang/String;" />
+      <node id="8480058639847367947" at="51,0,62,0" concept="7" trace="getReceiverType#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <scope id="8480058639847270319" at="23,47,24,34" />
+      <scope id="5080347312208301473" at="30,23,31,18" />
+      <scope id="8480058639847271476" at="36,47,37,123" />
+      <scope id="8480058639847271483" at="40,41,41,117" />
+      <scope id="8939835910401548983" at="44,45,45,121" />
+      <scope id="8480058639847296989" at="48,41,49,117" />
+      <scope id="8480058639847379153" at="54,29,55,18" />
+      <scope id="8480058639847586208" at="57,33,58,116" />
+      <scope id="8480058639847444232" at="63,54,64,108" />
+      <scope id="8480058639847270315" at="23,0,26,0">
+        <var name="functionCall" id="8480058639847270412" />
+      </scope>
+      <scope id="8480058639847271472" at="35,0,39,0" />
+      <scope id="8480058639847271478" at="39,0,43,0" />
+      <scope id="8939835910401548978" at="43,0,47,0" />
+      <scope id="8480058639847296985" at="47,0,51,0" />
+      <scope id="8480058639847444228" at="62,0,66,0" />
+      <scope id="8480058639847271468" at="28,35,33,178">
+        <var name="name" id="5080347312208288675" />
+      </scope>
+      <scope id="8480058639847271464" at="27,0,35,0" />
+      <scope id="8480058639847367951" at="52,34,60,24">
+        <var name="receiver" id="8480058639847389228" />
+      </scope>
+      <scope id="8480058639847367947" at="51,0,62,0" />
+      <unit id="8480058639847269372" at="67,0,70,0" name="jetbrains.mps.kotlin.overloading.NodeFunctionCall$CONCEPTS" />
+      <unit id="8480058639847269372" at="20,0,71,0" name="jetbrains.mps.kotlin.overloading.NodeFunctionCall" />
+    </file>
+  </root>
   <root nodeRef="r:42fb31e7-122b-4950-aa58-2f5f6e5595ce(jetbrains.mps.kotlin.overloading)/8952006656349062083">
     <file name="OverloadResolverUtil.java">
-      <node id="8952006656349093638" at="27,164,28,116" concept="8" />
-      <node id="8952006656349160052" at="28,116,29,0" concept="11" />
-      <node id="8952006656350610250" at="31,111,32,57" concept="9" />
-      <node id="8952006656350607842" at="41,160,42,32" concept="10" />
-      <node id="8952006656350607851" at="43,140,44,18" concept="9" />
-      <node id="8952006656350607860" at="45,5,46,0" concept="11" />
-      <node id="8952006656350607861" at="46,0,47,80" concept="10" />
-      <node id="8952006656350607874" at="47,80,48,48" concept="8" />
-      <node id="8952006656350607888" at="49,9,50,232" concept="8" />
-      <node id="8952006656350607910" at="50,232,51,59" concept="2" />
-      <node id="8952006656350607885" at="52,36,53,18" concept="9" />
-      <node id="8952006656350607918" at="54,5,55,0" concept="11" />
-      <node id="8952006656350607919" at="55,0,56,104" concept="9" />
-      <node id="8952006656350765352" at="67,85,68,132" concept="8" />
-      <node id="8952006656350553478" at="68,132,69,195" concept="9" />
-      <node id="8952006656349062083" at="73,0,74,0" concept="12" trace="name$MnvL" />
-      <node id="8952006656349093654" at="31,0,34,0" concept="7" trace="select#(Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
-      <node id="8952006656350607849" at="42,32,45,5" concept="6" />
-      <node id="8952006656350549962" at="67,0,71,0" concept="13" trace="canBeImproved#(Ljetbrains/mps/kotlin/overloading/OverloadResolver;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="8952006656349147740" at="29,0,34,99" concept="9" />
-      <node id="8952006656350607878" at="48,48,54,5" concept="17" />
-      <node id="8952006656349091058" at="27,0,36,0" concept="13" trace="filterByArguments#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Iterable;)Ljava/lang/Iterable;" />
-      <node id="8952006656350607832" at="41,0,58,0" concept="13" trace="mapParameters#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Iterable;Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
-      <scope id="8952006656349093655" at="31,111,32,57" />
-      <scope id="8952006656350607850" at="43,140,44,18" />
-      <scope id="8952006656350607884" at="52,36,53,18" />
-      <scope id="8952006656350607887" at="49,9,51,59">
+      <node id="8952006656349093638" at="26,171,27,58" concept="8" />
+      <node id="8952006656349160052" at="27,58,28,0" concept="11" />
+      <node id="8952006656350610250" at="30,111,31,57" concept="9" />
+      <node id="8952006656350607842" at="40,167,41,32" concept="10" />
+      <node id="8952006656350607851" at="42,82,43,18" concept="9" />
+      <node id="8952006656350607860" at="44,5,45,0" concept="11" />
+      <node id="8952006656350607861" at="45,0,46,80" concept="10" />
+      <node id="8952006656350607874" at="46,80,47,48" concept="8" />
+      <node id="8952006656350607888" at="48,9,49,232" concept="8" />
+      <node id="8952006656350607910" at="49,232,50,59" concept="2" />
+      <node id="8952006656350607885" at="51,36,52,18" concept="9" />
+      <node id="8952006656350607918" at="53,5,54,0" concept="11" />
+      <node id="8952006656350607919" at="54,0,55,104" concept="9" />
+      <node id="8952006656350765352" at="66,92,67,74" concept="8" />
+      <node id="8952006656350553478" at="67,74,68,137" concept="9" />
+      <node id="8952006656349062083" at="72,0,73,0" concept="12" trace="name$MnvL" />
+      <node id="8952006656349093654" at="30,0,33,0" concept="7" trace="select#(Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
+      <node id="8952006656350607849" at="41,32,44,5" concept="6" />
+      <node id="8952006656350549962" at="66,0,70,0" concept="13" trace="canBeImproved#(Ljetbrains/mps/kotlin/overloading/OverloadResolver;Ljetbrains/mps/kotlin/overloading/FunctionCall;)Z" />
+      <node id="8952006656349147740" at="28,0,33,99" concept="9" />
+      <node id="8952006656350607878" at="47,48,53,5" concept="17" />
+      <node id="8952006656349091058" at="26,0,35,0" concept="13" trace="filterByArguments#(Ljetbrains/mps/kotlin/overloading/FunctionCall;Ljava/lang/Iterable;)Ljava/lang/Iterable;" />
+      <node id="8952006656350607832" at="40,0,57,0" concept="13" trace="mapParameters#(Ljetbrains/mps/kotlin/overloading/FunctionCall;Ljava/lang/Iterable;Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
+      <scope id="8952006656349093655" at="30,111,31,57" />
+      <scope id="8952006656350607850" at="42,82,43,18" />
+      <scope id="8952006656350607884" at="51,36,52,18" />
+      <scope id="8952006656350607887" at="48,9,50,59">
         <var name="mapper" id="8952006656350607890" />
       </scope>
-      <scope id="8952006656350607880" at="52,5,54,5">
+      <scope id="8952006656350607880" at="51,5,53,5">
         <var name="issue" id="8952006656350607881" />
       </scope>
-      <scope id="8952006656350549965" at="67,85,69,195">
+      <scope id="8952006656350549965" at="66,92,68,137">
         <var name="functionDescriptor" id="8952006656350765353" />
       </scope>
-      <scope id="8952006656349093654" at="31,0,34,0">
+      <scope id="8952006656349093654" at="30,0,33,0">
         <var name="candidate" id="8952006656349093654" />
       </scope>
-      <scope id="8952006656350549962" at="67,0,71,0">
+      <scope id="8952006656350549962" at="66,0,70,0">
         <var name="availableSolver" id="8952006656350553008" />
         <var name="call" id="8952006656350553109" />
       </scope>
-      <scope id="8952006656349091061" at="27,164,34,99">
+      <scope id="8952006656349091061" at="26,171,33,99">
         <var name="arguments" id="8952006656349093639" />
       </scope>
-      <scope id="8952006656349091058" at="27,0,36,0">
+      <scope id="8952006656349091058" at="26,0,35,0">
         <var name="call" id="8952006656349102595" />
         <var name="candidates" id="8952006656349110134" />
       </scope>
-      <scope id="8952006656350607841" at="41,160,56,104">
+      <scope id="8952006656350607841" at="40,167,55,104">
         <var name="mappedParameters" id="8952006656350607875" />
       </scope>
-      <scope id="8952006656350607832" at="41,0,58,0">
+      <scope id="8952006656350607832" at="40,0,57,0">
         <var name="arguments" id="8952006656350607836" />
         <var name="call" id="8952006656350607834" />
         <var name="candidate" id="8952006656350607839" />
       </scope>
-      <unit id="8952006656349062083" at="72,0,75,0" name="jetbrains.mps.kotlin.overloading.OverloadResolverUtil$PROPS" />
-      <unit id="8952006656349093654" at="30,56,34,5" name="jetbrains.mps.kotlin.overloading.OverloadResolverUtil$1" />
-      <unit id="8952006656349062083" at="19,0,76,0" name="jetbrains.mps.kotlin.overloading.OverloadResolverUtil" />
+      <unit id="8952006656349062083" at="71,0,74,0" name="jetbrains.mps.kotlin.overloading.OverloadResolverUtil$PROPS" />
+      <unit id="8952006656349093654" at="29,56,33,5" name="jetbrains.mps.kotlin.overloading.OverloadResolverUtil$1" />
+      <unit id="8952006656349062083" at="18,0,75,0" name="jetbrains.mps.kotlin.overloading.OverloadResolverUtil" />
     </file>
   </root>
   <root nodeRef="r:42fb31e7-122b-4950-aa58-2f5f6e5595ce(jetbrains.mps.kotlin.overloading)/9149616139757575645">
     <file name="OverloadResolver.java">
-      <node id="9149616139757588010" at="16,0,17,0" concept="7" trace="resolve#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Iterable;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
-      <node id="8952006656352070150" at="21,0,22,0" concept="7" trace="isAvailable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <scope id="9149616139757588010" at="16,0,17,0">
+      <node id="9149616139757588010" at="15,0,16,0" concept="7" trace="resolve#(Ljetbrains/mps/kotlin/overloading/FunctionCall;Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/Iterable;)Ljetbrains/mps/baseLanguage/tuples/runtime/Tuples/_2;" />
+      <node id="8952006656352070150" at="20,0,21,0" concept="7" trace="isAvailable#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <scope id="9149616139757588010" at="15,0,16,0">
         <var name="call" id="9149616139757610858" />
         <var name="candidates" id="9149616139757588852" />
-        <var name="receiverType" id="8492840566265279571" />
+        <var name="contextNode" id="8492840566265279571" />
       </scope>
-      <scope id="8952006656352070150" at="21,0,22,0">
+      <scope id="8952006656352070150" at="20,0,21,0">
         <var name="contextNode" id="8952006656352106313" />
       </scope>
-      <unit id="9149616139757575645" at="10,0,23,0" name="jetbrains.mps.kotlin.overloading.OverloadResolver" />
+      <unit id="9149616139757575645" at="9,0,22,0" name="jetbrains.mps.kotlin.overloading.OverloadResolver" />
     </file>
   </root>
 </debug-info>

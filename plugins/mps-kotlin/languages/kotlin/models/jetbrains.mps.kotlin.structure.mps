@@ -277,11 +277,11 @@
       <property role="20kJfa" value="conditions" />
       <property role="20lbJX" value="fLJekj6/_1__n" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <ref role="20lvS9" node="2yYXHtl6Jmq" resolve="IWhenCondition" />
+      <ref role="20lvS9" node="2yYXHtl6Jjg" resolve="IExpression" />
     </node>
     <node concept="1TJgyj" id="2yYXHtl6JoP" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798373941" />
-      <property role="20kJfa" value="body" />
+      <property role="20kJfa" value="body_" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <ref role="20lvS9" node="2yYXHtl6JfB" resolve="FlexibleBlock" />
       <node concept="asaX9" id="6gam351VuNq" role="lGtFl" />
@@ -920,6 +920,23 @@
     <property role="34LRSv" value="for in" />
     <property role="R4oN_" value="for statement" />
     <property role="3GE5qa" value="statement.loop" />
+    <node concept="1TJgyj" id="7mJe6tmwf4s" role="1TKVEi">
+      <property role="IQ2ns" value="8480058639846011164" />
+      <property role="20kJfa" value="iteratorFunction" />
+      <ref role="20lvS9" node="2Dtd0_QziWF" resolve="IFunctionDeclaration" />
+      <ref role="20ksaX" node="3I4vn5LSeq0" resolve="provider" />
+      <node concept="t5JxF" id="7mJe6tmwfU$" role="lGtFl">
+        <property role="t5JxN" value="function to call on 'in' to get the iterator" />
+      </node>
+    </node>
+    <node concept="1TJgyj" id="7mJe6tmwfET" role="1TKVEi">
+      <property role="IQ2ns" value="8480058639846013625" />
+      <property role="20kJfa" value="nextFunction" />
+      <ref role="20lvS9" node="2Dtd0_QziWF" resolve="IFunctionDeclaration" />
+      <node concept="t5JxF" id="7mJe6tmwgtX" role="lGtFl">
+        <property role="t5JxN" value="function to call on the iterator resolved with 'iteratorFunction' to get the element" />
+      </node>
+    </node>
     <node concept="1TJgyj" id="2yYXHtl6Js7" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798374151" />
       <property role="20kJfa" value="variables" />
@@ -955,6 +972,9 @@
     </node>
     <node concept="PrWs8" id="6IFGHg6hhwj" role="PzmwI">
       <ref role="PrY4T" node="18X2O0Fy6BI" resolve="IStatementHolder" />
+    </node>
+    <node concept="PrWs8" id="7mJe6tmzA2z" role="PzmwI">
+      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JgO">
@@ -1337,9 +1357,6 @@
     <property role="EcuMT" value="2936055411798373584" />
     <property role="TrG5h" value="IExpression" />
     <property role="3GE5qa" value="expression" />
-    <node concept="PrWs8" id="1502VugFRz0" role="PrDN$">
-      <ref role="PrY4T" node="2yYXHtl6Jmq" resolve="IWhenCondition" />
-    </node>
     <node concept="PrWs8" id="4Nah4_Qh57X" role="PrDN$">
       <ref role="PrY4T" node="2yYXHtl6Jcy" resolve="IStatement" />
     </node>
@@ -1759,6 +1776,9 @@
     <node concept="PrWs8" id="4gvOB2uWefH" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
     </node>
+    <node concept="PrWs8" id="7KgFmkHTMog" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JkN">
     <property role="EcuMT" value="2936055411798373683" />
@@ -2155,11 +2175,6 @@
       <ref role="PrY4T" node="6563FJLeShn" resolve="IStaticType" />
     </node>
   </node>
-  <node concept="PlHQZ" id="2yYXHtl6Jmq">
-    <property role="EcuMT" value="2936055411798373786" />
-    <property role="TrG5h" value="IWhenCondition" />
-    <property role="3GE5qa" value="expression.control.when" />
-  </node>
   <node concept="Az7Fb" id="2yYXHtl6Jq4">
     <property role="TrG5h" value="hex" />
     <property role="3GE5qa" value="datatypes" />
@@ -2432,9 +2447,6 @@
       <property role="IQ2nx" value="1243006380190945668" />
       <property role="TrG5h" value="negation" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
-    </node>
-    <node concept="PrWs8" id="3CHKp3ducU" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jmq" resolve="IWhenCondition" />
     </node>
   </node>
   <node concept="1TIwiD" id="1502Vug_m75">
@@ -3412,13 +3424,16 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <ref role="20lvS9" node="2yYXHtl6Jh1" resolve="IType" />
     </node>
-    <node concept="PrWs8" id="2yYXHtl6JG7" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jmq" resolve="IWhenCondition" />
-    </node>
     <node concept="1TJgyi" id="1502VugB9SK" role="1TKVEl">
       <property role="IQ2nx" value="1243006380187360816" />
       <property role="TrG5h" value="negation" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="PrWs8" id="7KgFmkIk$OV" role="PzmwI">
+      <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
+    </node>
+    <node concept="t5JxF" id="7KgFmkInzIa" role="lGtFl">
+      <property role="t5JxN" value="unlike IsOperator, this uses expression from when as operand" />
     </node>
   </node>
   <node concept="PlHQZ" id="2mD64u3yQho">
@@ -3856,6 +3871,11 @@
     <node concept="PrWs8" id="6Bt5QZR_ayg" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6JdA" resolve="IPropertyAssignment" />
     </node>
+  </node>
+  <node concept="PlHQZ" id="2yYXHtl6Jmq">
+    <property role="EcuMT" value="2936055411798373786" />
+    <property role="TrG5h" value="IWhenCondition" />
+    <property role="3GE5qa" value="expression.control.when" />
   </node>
 </model>
 

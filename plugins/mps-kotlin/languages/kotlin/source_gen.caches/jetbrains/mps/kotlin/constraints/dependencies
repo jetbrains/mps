@@ -120,6 +120,7 @@
     <classNode dependClassName="jetbrains.mps.kotlin.constraints.SuperInterfaceSpecifier_Constraints" />
     <classNode dependClassName="jetbrains.mps.kotlin.constraints.TypeAliasType_Constraints" />
     <classNode dependClassName="jetbrains.mps.kotlin.constraints.TypeParameterReference_Constraints" />
+    <classNode dependClassName="jetbrains.mps.kotlin.constraints.TypeTest_Constraints" />
     <classNode dependClassName="jetbrains.mps.kotlin.constraints.ValueArgument_Constraints" />
     <classNode dependClassName="jetbrains.mps.kotlin.constraints.VariableRefExpression_Constraints" />
     <classNode dependClassName="jetbrains.mps.kotlin.constraints.VisibilityModifier_Constraints" />
@@ -540,6 +541,23 @@
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
+    <classNode extendsClassName="jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor" />
+  </dependency>
+  <dependency className="jetbrains.mps.kotlin.constraints.TypeTest_Constraints">
+    <classNode dependClassName="java.lang.Boolean" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Objects" />
+    <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.CheckingNodeContext" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConstraintContext_CanBeChild" />
+    <classNode dependClassName="jetbrains.mps.smodel.runtime.ConstraintFunction" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor" />
   </dependency>
   <dependency className="jetbrains.mps.kotlin.constraints.UnitScope">
