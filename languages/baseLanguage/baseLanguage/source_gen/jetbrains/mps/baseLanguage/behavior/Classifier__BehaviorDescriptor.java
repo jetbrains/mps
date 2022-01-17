@@ -43,7 +43,7 @@ import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
 import java.util.Objects;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper;
+import jetbrains.mps.baseLanguage.util.StubClassDiscovery;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.scopes.ClassifierResolveUtils;
@@ -465,8 +465,9 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     if (!(Objects.equals(SNodeOperations.getConcept(__thisNode__), SNodeOperations.getConcept(that)))) {
       return false;
     }
-    List<SNode> thisMirrors = new BaseLanguageEnvironmentHelper().findCompatibleClassifiers(__thisNode__);
-    List<SNode> thatMirrors = new BaseLanguageEnvironmentHelper().findCompatibleClassifiers(that);
+    StubClassDiscovery scd = new StubClassDiscovery();
+    List<SNode> thisMirrors = scd.findCompatibleClassifiers(__thisNode__);
+    List<SNode> thatMirrors = scd.findCompatibleClassifiers(that);
     return ListSequence.fromList(thisMirrors).contains(that) || ListSequence.fromList(thatMirrors).contains(__thisNode__) || Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(__thisNode__), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(that));
   }
   /*package*/ static boolean checkLoops_id3sXyOQUqKq5(@NotNull SNode __thisNode__, Set<SNode> visited) {
