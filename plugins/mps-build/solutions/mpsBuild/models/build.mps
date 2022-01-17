@@ -45596,7 +45596,7 @@
       <node concept="3rtmxn" id="2ucthr8YCRk" role="3bR31x">
         <node concept="3LXTmp" id="2ucthr8YCRl" role="3rtmxm">
           <node concept="3qWCbU" id="2ucthr8YCRm" role="3LXTna">
-            <property role="3qWCbO" value="icons/**, resources/**" />
+            <property role="3qWCbO" value="icons/**, resources/**, startup.properties" />
           </node>
           <node concept="398BVA" id="2ucthr8YCRn" role="3LXTmr">
             <ref role="398BVh" node="6WtY9M1bDNn" resolve="mps_home" />
