@@ -22,6 +22,7 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="bk90" ref="r:1dca72a1-44ae-4339-a783-4859610b0285(jetbrains.mps.baseLanguage.migration)" />
+    <import index="ntzd" ref="r:bf32fdbc-530f-4631-ba64-3e7b620ac47f(jetbrains.mps.baseLanguage.util)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -1408,9 +1409,9 @@
                                 </node>
                               </node>
                             </node>
-                            <node concept="2YIFZM" id="1rmSTqnwEh5" role="3uHU7B">
-                              <ref role="37wK5l" to="pz2c:7k6J8c3tHXh" resolve="canOverride" />
-                              <ref role="1Pybhc" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
+                            <node concept="2YIFZM" id="3pl5zXF9NCe" role="3uHU7B">
+                              <ref role="37wK5l" to="ntzd:7k6J8c3tHXh" resolve="canOverride" />
+                              <ref role="1Pybhc" to="ntzd:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
                               <node concept="37vLTw" id="1rmSTqnwEh6" role="37wK5m">
                                 <ref role="3cqZAo" node="1rmSTqnwEh7" resolve="it" />
                               </node>
@@ -1424,9 +1425,9 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="2YIFZM" id="1rmSTqnwEh9" role="2Oq$k0">
-                    <ref role="1Pybhc" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
-                    <ref role="37wK5l" to="pz2c:7k6J8c3tHW_" resolve="getInstanceMethods" />
+                  <node concept="2YIFZM" id="3pl5zXF9NCa" role="2Oq$k0">
+                    <ref role="37wK5l" to="ntzd:7k6J8c3tHW_" resolve="getInstanceMethods" />
+                    <ref role="1Pybhc" to="ntzd:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
                     <node concept="_YI3z" id="1rmSTqnwEha" role="37wK5m" />
                   </node>
                 </node>
@@ -1439,7 +1440,7 @@
               <property role="TrG5h" value="finder" />
               <node concept="2ShNRf" id="1rmSTqnwEhl" role="33vP2m">
                 <node concept="1pGfFk" id="1rmSTqnwEhm" role="2ShVmc">
-                  <ref role="37wK5l" to="pz2c:7k6J8c3tHZ1" resolve="OverridingMethodsCalculator" />
+                  <ref role="37wK5l" to="ntzd:7k6J8c3tHZ1" resolve="OverridingMethodsCalculator" />
                   <node concept="_YI3z" id="1rmSTqnwEhn" role="37wK5m" />
                   <node concept="37vLTw" id="1rmSTqnwEho" role="37wK5m">
                     <ref role="3cqZAo" node="1rmSTqnwEgC" resolve="instanceMethods" />
@@ -1447,7 +1448,7 @@
                 </node>
               </node>
               <node concept="3uibUv" id="1rmSTqnwEhp" role="1tU5fm">
-                <ref role="3uigEE" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
+                <ref role="3uigEE" to="ntzd:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
               </node>
             </node>
           </node>
@@ -1484,7 +1485,7 @@
             </node>
             <node concept="2OqwBi" id="1rmSTqnwEht" role="2GsD0m">
               <node concept="liA8E" id="1rmSTqnwEhu" role="2OqNvi">
-                <ref role="37wK5l" to="pz2c:7k6J8c3tHRI" resolve="getOverridingMethods" />
+                <ref role="37wK5l" to="ntzd:7k6J8c3tHRI" resolve="getOverridingMethods" />
               </node>
               <node concept="37vLTw" id="1rmSTqnwEhv" role="2Oq$k0">
                 <ref role="3cqZAo" node="1rmSTqnwEhk" resolve="finder" />
@@ -1555,9 +1556,9 @@
                                 </node>
                               </node>
                             </node>
-                            <node concept="2YIFZM" id="1rmSTqnth2L" role="3uHU7B">
-                              <ref role="37wK5l" to="pz2c:7k6J8c3tHXh" resolve="canOverride" />
-                              <ref role="1Pybhc" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
+                            <node concept="2YIFZM" id="3pl5zXF9NCf" role="3uHU7B">
+                              <ref role="37wK5l" to="ntzd:7k6J8c3tHXh" resolve="canOverride" />
+                              <ref role="1Pybhc" to="ntzd:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
                               <node concept="37vLTw" id="1rmSTqntl_Q" role="37wK5m">
                                 <ref role="3cqZAo" node="1rmSTqnt5vk" resolve="it" />
                               </node>
@@ -1571,9 +1572,9 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="2YIFZM" id="1rmSTqnt1_W" role="2Oq$k0">
-                    <ref role="37wK5l" to="pz2c:7k6J8c3tHW_" resolve="getInstanceMethods" />
-                    <ref role="1Pybhc" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
+                  <node concept="2YIFZM" id="3pl5zXF9NCb" role="2Oq$k0">
+                    <ref role="37wK5l" to="ntzd:7k6J8c3tHW_" resolve="getInstanceMethods" />
+                    <ref role="1Pybhc" to="ntzd:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
                     <node concept="_YI3z" id="1rmSTqntlaL" role="37wK5m" />
                   </node>
                 </node>
@@ -1601,7 +1602,7 @@
               <property role="TrG5h" value="finder" />
               <node concept="2ShNRf" id="1rmSTqnvhT3" role="33vP2m">
                 <node concept="1pGfFk" id="1rmSTqnvkgu" role="2ShVmc">
-                  <ref role="37wK5l" to="pz2c:7k6J8c3tHZ1" resolve="OverridingMethodsCalculator" />
+                  <ref role="37wK5l" to="ntzd:7k6J8c3tHZ1" resolve="OverridingMethodsCalculator" />
                   <node concept="_YI3z" id="1rmSTqnvkDx" role="37wK5m" />
                   <node concept="37vLTw" id="1rmSTqnvm0i" role="37wK5m">
                     <ref role="3cqZAo" node="1rmSTqnt1_V" resolve="instanceMethods" />
@@ -1609,7 +1610,7 @@
                 </node>
               </node>
               <node concept="3uibUv" id="1rmSTqnvh73" role="1tU5fm">
-                <ref role="3uigEE" to="pz2c:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
+                <ref role="3uigEE" to="ntzd:7k6J8c3tHRH" resolve="OverridingMethodsCalculator" />
               </node>
             </node>
           </node>
@@ -1618,7 +1619,7 @@
               <node concept="3GX2aA" id="1rmSTqnw7Uq" role="2OqNvi" />
               <node concept="2OqwBi" id="1rmSTqnvqUV" role="2Oq$k0">
                 <node concept="liA8E" id="1rmSTqnvs3O" role="2OqNvi">
-                  <ref role="37wK5l" to="pz2c:7k6J8c3tHRI" resolve="getOverridingMethods" />
+                  <ref role="37wK5l" to="ntzd:7k6J8c3tHRI" resolve="getOverridingMethods" />
                 </node>
                 <node concept="37vLTw" id="1rmSTqnvqfI" role="2Oq$k0">
                   <ref role="3cqZAo" node="1rmSTqnvh72" resolve="finder" />

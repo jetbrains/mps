@@ -58,9 +58,9 @@
       <modulePath path="$PROJECT_DIR$/languages.test/languageDesign/lang.editor.test.generation/module.mpl" folder="core.aspects.editor" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage/jetbrains.mps.baseLanguage.mpl" folder="core.baseLanguage" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage/sandbox/jetbrains.mps.baseLanguage.sandbox.msd" folder="core.baseLanguage" />
-      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.scopes/jetbrains.mps.baseLanguage.scopes.msd" folder="core.baseLanguage" />
-      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.search/jetbrains.mps.baseLanguage.search.msd" folder="core.baseLanguage" />
-      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.util/jetbrains.mps.baseLanguage.util.msd" folder="core.baseLanguage" />
+      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage.scopes/jetbrains.mps.baseLanguage.scopes.msd" folder="core.baseLanguage" />
+      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage.search/jetbrains.mps.baseLanguage.search.msd" folder="core.baseLanguage" />
+      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage.util/jetbrains.mps.baseLanguage.util.msd" folder="core.baseLanguage" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguageInternal/jetbrains.mps.baseLanguageInternal.mpl" folder="core.baseLanguage" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/blTypes/jetbrains.mps.baseLanguage.blTypes.mpl" folder="core.baseLanguage.extensions" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/checkDot/languages/checkedDots/jetbrains.mps.baseLanguage.checkedDots.mpl" folder="core.baseLanguage.checkedDots" />

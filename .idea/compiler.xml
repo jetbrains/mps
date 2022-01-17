@@ -9,9 +9,10 @@
       <directory url="file://$PROJECT_DIR$/languages.test/languageDesign/lang.editor.ide.tests/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages.test/languageDesign/lang.editor.test.generation/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages.test/languageDesign/lang.editor.test.generation/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/baseLanguage/baseLanguage.scopes/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/languages/baseLanguage/baseLanguage.util/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/baseLanguage/baseLanguage/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/baseLanguage/baseLanguage/sandbox/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/languages/baseLanguage/baseLanguage/solutions/jetbrains.mps.baseLanguage.scopes/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/baseLanguage/baseLanguage/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/baseLanguage/baseLanguageInternal/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/languages/baseLanguage/baseLanguageInternal/source_gen" includeSubdirectories="true" />
@@ -840,4 +841,3 @@
     <option name="MAXIMUM_HEAP_SIZE" value="1024" />
   </component>
 </project>
-
