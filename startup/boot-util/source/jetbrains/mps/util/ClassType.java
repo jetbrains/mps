@@ -19,21 +19,12 @@ package jetbrains.mps.util;
  * Represents the type of library paths MPS has.
  * These are used in stubs, also in class paths (for example to run ant we pass jdk-tools paths).
  *
- * @see CommonPaths
+ * @see jetbrains.mps.reloading.CommonPaths
  */
 public enum ClassType {
   JDK("jdk"),
   JDK_TOOLS("jdk-tools"),
-  ANNOTATIONS("annotations"),
-  OPENAPI("openapi"),
-  ASPECTS("aspects"),
-  CORE("core"),
-  EDITOR("editor"),
-  IDEA_PLATFORM("ideaPlatform"),
-  PLATFORM("platform"),
-  IDEA("idea"),
-  WORKBENCH("workbench"),
-  TEST("test");
+  ASPECTS("aspects"); // although not queried, keep as long as idea.additional.classpath.txt lists additional cp entries for ':aspects'
 
   private final String myTypeString;
 
