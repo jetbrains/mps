@@ -6,16 +6,12 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.openapi.editor.message.EditorMessageOwner;
 import java.util.concurrent.ScheduledExecutorService;
 import com.intellij.util.ConcurrencyUtil;
-import java.awt.Color;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import org.jetbrains.mps.openapi.module.SRepository;
 import com.intellij.openapi.project.DumbService;
 import java.util.concurrent.ScheduledFuture;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.editor.markup.TextAttributes;
-import com.intellij.openapi.editor.colors.EditorColorsManager;
 import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import java.util.concurrent.TimeUnit;
@@ -31,6 +27,10 @@ import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
 import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import java.util.Collections;
+import com.intellij.openapi.editor.colors.TextAttributesKey;
+import com.intellij.openapi.editor.markup.TextAttributes;
+import com.intellij.openapi.editor.colors.EditorColorsManager;
+import java.awt.Color;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -42,7 +42,6 @@ public class HighlightUsagesSupport {
   private static final EditorMessageOwner emo = new EditorMessageOwner() {};
   private static final ScheduledExecutorService scheduler = ConcurrencyUtil.newSingleScheduledThreadExecutor("HighlightUsages");
 
-  private final Color myHighlightColor;
   private final EditorComponent myEC;
   private final SRepository myRepository;
   private final DumbService myDumbService;
@@ -55,15 +54,11 @@ public class HighlightUsagesSupport {
     if (dumbService == null) {
       return null;
     }
-    TextAttributesKey attributes = TextAttributesKey.createTextAttributesKey("IDENTIFIER_UNDER_CARET_ATTRIBUTES");
-    TextAttributes textAttributes = EditorColorsManager.getInstance().getGlobalScheme().getAttributes(attributes);
-    Color color = textAttributes.getErrorStripeColor();
-    return new HighlightUsagesSupport(ec, repository, color, dumbService);
+    return new HighlightUsagesSupport(ec, repository, dumbService);
   }
 
-  private HighlightUsagesSupport(@NotNull EditorComponent ec, @Nullable SRepository repository, Color color, @NotNull DumbService dumbService) {
+  private HighlightUsagesSupport(@NotNull EditorComponent ec, @Nullable SRepository repository, @NotNull DumbService dumbService) {
     myEC = ec;
-    myHighlightColor = color;
     myRepository = repository;
     myDumbService = dumbService;
   }
@@ -143,6 +138,13 @@ public class HighlightUsagesSupport {
     NodeHighlightManager hm = myEC.getHighlightManager();
     EditorMessageOwner highlightMessagesOwner = myEC.getHighlightMessagesOwner();
 
+    TextAttributesKey attributes = TextAttributesKey.createTextAttributesKey("IDENTIFIER_UNDER_CARET_ATTRIBUTES");
+    TextAttributes textAttributes = EditorColorsManager.getInstance().getGlobalScheme().getAttributes(attributes);
+    Color color = textAttributes.getErrorStripeColor();
+    if (color == null) {
+      return;
+    }
+
     SNode editedRoot = getEditedRoot();
     SNode highlightingRoot = nodeToHighlight.getContainingRoot();
 
@@ -150,12 +152,12 @@ public class HighlightUsagesSupport {
       SNode referenceNode = ref.getSourceNode();
       SNode referenceRoot = referenceNode.getContainingRoot();
       if (referenceRoot == editedRoot && referenceNode != selectedCellNode && hm.getMessagesFor(referenceNode, highlightMessagesOwner).isEmpty()) {
-        hm.mark(referenceNode, myHighlightColor, "usage", emo);
+        hm.mark(referenceNode, color, "usage", emo);
       }
     }
 
     if (highlightingRoot == editedRoot && nodeToHighlight != selectedCellNode && nodeToHighlight != editedRoot && hm.getMessagesFor(nodeToHighlight, highlightMessagesOwner).isEmpty()) {
-      hm.mark(nodeToHighlight, myHighlightColor, "usage", emo);
+      hm.mark(nodeToHighlight, color, "usage", emo);
     }
   }
 

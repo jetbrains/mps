@@ -9761,14 +9761,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="6cVOF37kMME" role="jymVt" />
-    <node concept="312cEg" id="5KVavYegX7" role="jymVt">
-      <property role="TrG5h" value="myHighlightColor" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="5KVavYegXa" role="1tU5fm">
-        <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
-      </node>
-      <node concept="3Tm6S6" id="5KVavYenCY" role="1B3o_S" />
-    </node>
     <node concept="312cEg" id="Qnt6MoXp2L" role="jymVt">
       <property role="TrG5h" value="myEC" />
       <property role="3TUv4t" value="true" />
@@ -9859,62 +9851,6 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="516stgz5kLn" role="3cqZAp">
-          <node concept="3cpWsn" id="516stgz5kLo" role="3cpWs9">
-            <property role="TrG5h" value="attributes" />
-            <node concept="3uibUv" id="516stgz5kLp" role="1tU5fm">
-              <ref role="3uigEE" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
-            </node>
-            <node concept="2YIFZM" id="516stgz5l1f" role="33vP2m">
-              <ref role="37wK5l" to="drih:~TextAttributesKey.createTextAttributesKey(java.lang.String)" resolve="createTextAttributesKey" />
-              <ref role="1Pybhc" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
-              <node concept="Xl_RD" id="516stgz5l7I" role="37wK5m">
-                <property role="Xl_RC" value="IDENTIFIER_UNDER_CARET_ATTRIBUTES" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="516stgz5lv7" role="3cqZAp">
-          <node concept="3cpWsn" id="516stgz5lv8" role="3cpWs9">
-            <property role="TrG5h" value="textAttributes" />
-            <node concept="3uibUv" id="516stgz5lv9" role="1tU5fm">
-              <ref role="3uigEE" to="8m69:~TextAttributes" resolve="TextAttributes" />
-            </node>
-            <node concept="2OqwBi" id="516stgz5nwY" role="33vP2m">
-              <node concept="2OqwBi" id="516stgz5lU2" role="2Oq$k0">
-                <node concept="2YIFZM" id="516stgz5lMQ" role="2Oq$k0">
-                  <ref role="37wK5l" to="drih:~EditorColorsManager.getInstance()" resolve="getInstance" />
-                  <ref role="1Pybhc" to="drih:~EditorColorsManager" resolve="EditorColorsManager" />
-                </node>
-                <node concept="liA8E" id="516stgz5m57" role="2OqNvi">
-                  <ref role="37wK5l" to="drih:~EditorColorsManager.getGlobalScheme()" resolve="getGlobalScheme" />
-                </node>
-              </node>
-              <node concept="liA8E" id="516stgz5nRr" role="2OqNvi">
-                <ref role="37wK5l" to="drih:~TextAttributesScheme.getAttributes(com.intellij.openapi.editor.colors.TextAttributesKey)" resolve="getAttributes" />
-                <node concept="37vLTw" id="516stgz5o2S" role="37wK5m">
-                  <ref role="3cqZAo" node="516stgz5kLo" resolve="attributes" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="516stgz5omJ" role="3cqZAp">
-          <node concept="3cpWsn" id="516stgz5omK" role="3cpWs9">
-            <property role="TrG5h" value="color" />
-            <node concept="3uibUv" id="516stgz5omL" role="1tU5fm">
-              <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
-            </node>
-            <node concept="2OqwBi" id="516stgz5oRE" role="33vP2m">
-              <node concept="37vLTw" id="516stgz5oDK" role="2Oq$k0">
-                <ref role="3cqZAo" node="516stgz5lv8" resolve="textAttributes" />
-              </node>
-              <node concept="liA8E" id="516stgz5pac" role="2OqNvi">
-                <ref role="37wK5l" to="8m69:~TextAttributes.getErrorStripeColor()" resolve="getErrorStripeColor" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs6" id="6D4TY6jwhGz" role="3cqZAp">
           <node concept="2ShNRf" id="6D4TY6jwhOY" role="3cqZAk">
             <node concept="1pGfFk" id="6D4TY6jwTJD" role="2ShVmc">
@@ -9924,9 +9860,6 @@
               </node>
               <node concept="37vLTw" id="6D4TY6jwU0c" role="37wK5m">
                 <ref role="3cqZAo" node="6D4TY6jwfQR" resolve="repository" />
-              </node>
-              <node concept="37vLTw" id="516stgz5pia" role="37wK5m">
-                <ref role="3cqZAo" node="516stgz5omK" resolve="color" />
               </node>
               <node concept="37vLTw" id="6D4TY6jwUpX" role="37wK5m">
                 <ref role="3cqZAo" node="6D4TY6jwgo9" resolve="dumbService" />
@@ -9952,16 +9885,6 @@
             </node>
             <node concept="37vLTw" id="5pCI92ZqNm0" role="37vLTJ">
               <ref role="3cqZAo" node="Qnt6MoXp2L" resolve="myEC" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="5KVavYeoJP" role="3cqZAp">
-          <node concept="37vLTI" id="5KVavYeq_h" role="3clFbG">
-            <node concept="37vLTw" id="5KVavYeqMw" role="37vLTx">
-              <ref role="3cqZAo" node="5KVavYelNy" resolve="color" />
-            </node>
-            <node concept="37vLTw" id="5KVavYeoJN" role="37vLTJ">
-              <ref role="3cqZAo" node="5KVavYegX7" resolve="myHighlightColor" />
             </node>
           </node>
         </node>
@@ -10002,12 +9925,6 @@
         </node>
         <node concept="2AHcQZ" id="2KgqwSdFwgk" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="5KVavYelNy" role="3clF46">
-        <property role="TrG5h" value="color" />
-        <node concept="3uibUv" id="5KVavYenaC" role="1tU5fm">
-          <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
         </node>
       </node>
       <node concept="37vLTG" id="6D4TY6jwfZN" role="3clF46">
@@ -10655,6 +10572,74 @@
           </node>
         </node>
         <node concept="3clFbH" id="3lk$pEhaekU" role="3cqZAp" />
+        <node concept="3cpWs8" id="516stgz5kLn" role="3cqZAp">
+          <node concept="3cpWsn" id="516stgz5kLo" role="3cpWs9">
+            <property role="TrG5h" value="attributes" />
+            <node concept="3uibUv" id="516stgz5kLp" role="1tU5fm">
+              <ref role="3uigEE" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
+            </node>
+            <node concept="2YIFZM" id="516stgz5l1f" role="33vP2m">
+              <ref role="1Pybhc" to="drih:~TextAttributesKey" resolve="TextAttributesKey" />
+              <ref role="37wK5l" to="drih:~TextAttributesKey.createTextAttributesKey(java.lang.String)" resolve="createTextAttributesKey" />
+              <node concept="Xl_RD" id="516stgz5l7I" role="37wK5m">
+                <property role="Xl_RC" value="IDENTIFIER_UNDER_CARET_ATTRIBUTES" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="516stgz5lv7" role="3cqZAp">
+          <node concept="3cpWsn" id="516stgz5lv8" role="3cpWs9">
+            <property role="TrG5h" value="textAttributes" />
+            <node concept="3uibUv" id="516stgz5lv9" role="1tU5fm">
+              <ref role="3uigEE" to="8m69:~TextAttributes" resolve="TextAttributes" />
+            </node>
+            <node concept="2OqwBi" id="516stgz5nwY" role="33vP2m">
+              <node concept="2OqwBi" id="516stgz5lU2" role="2Oq$k0">
+                <node concept="2YIFZM" id="516stgz5lMQ" role="2Oq$k0">
+                  <ref role="1Pybhc" to="drih:~EditorColorsManager" resolve="EditorColorsManager" />
+                  <ref role="37wK5l" to="drih:~EditorColorsManager.getInstance()" resolve="getInstance" />
+                </node>
+                <node concept="liA8E" id="516stgz5m57" role="2OqNvi">
+                  <ref role="37wK5l" to="drih:~EditorColorsManager.getGlobalScheme()" resolve="getGlobalScheme" />
+                </node>
+              </node>
+              <node concept="liA8E" id="516stgz5nRr" role="2OqNvi">
+                <ref role="37wK5l" to="drih:~TextAttributesScheme.getAttributes(com.intellij.openapi.editor.colors.TextAttributesKey)" resolve="getAttributes" />
+                <node concept="37vLTw" id="516stgz5o2S" role="37wK5m">
+                  <ref role="3cqZAo" node="516stgz5kLo" resolve="attributes" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="516stgz5omJ" role="3cqZAp">
+          <node concept="3cpWsn" id="516stgz5omK" role="3cpWs9">
+            <property role="TrG5h" value="color" />
+            <node concept="3uibUv" id="516stgz5omL" role="1tU5fm">
+              <ref role="3uigEE" to="z60i:~Color" resolve="Color" />
+            </node>
+            <node concept="2OqwBi" id="516stgz5oRE" role="33vP2m">
+              <node concept="37vLTw" id="516stgz5oDK" role="2Oq$k0">
+                <ref role="3cqZAo" node="516stgz5lv8" resolve="textAttributes" />
+              </node>
+              <node concept="liA8E" id="516stgz5pac" role="2OqNvi">
+                <ref role="37wK5l" to="8m69:~TextAttributes.getErrorStripeColor()" resolve="getErrorStripeColor" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="739Wc_Ia_mq" role="3cqZAp">
+          <node concept="3clFbS" id="739Wc_Ia_ms" role="3clFbx">
+            <node concept="3cpWs6" id="739Wc_IaJei" role="3cqZAp" />
+          </node>
+          <node concept="3clFbC" id="739Wc_IaFGo" role="3clFbw">
+            <node concept="10Nm6u" id="739Wc_IaI2w" role="3uHU7w" />
+            <node concept="37vLTw" id="739Wc_IaC2N" role="3uHU7B">
+              <ref role="3cqZAo" node="516stgz5omK" resolve="color" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="739Wc_IaLxv" role="3cqZAp" />
         <node concept="3cpWs8" id="3lk$pEhaMet" role="3cqZAp">
           <node concept="3cpWsn" id="3lk$pEhaMew" role="3cpWs9">
             <property role="TrG5h" value="editedRoot" />
@@ -10730,7 +10715,7 @@
                         <ref role="3cqZAo" node="3lk$pEhb3q0" resolve="referenceNode" />
                       </node>
                       <node concept="37vLTw" id="3lk$pEhb3qi" role="37wK5m">
-                        <ref role="3cqZAo" node="5KVavYegX7" resolve="myHighlightColor" />
+                        <ref role="3cqZAo" node="516stgz5omK" resolve="color" />
                       </node>
                       <node concept="Xl_RD" id="3lk$pEhb3qj" role="37wK5m">
                         <property role="Xl_RC" value="usage" />
@@ -10798,7 +10783,7 @@
                     <ref role="3cqZAo" node="3lk$pEh9Kab" resolve="nodeToHighlight" />
                   </node>
                   <node concept="37vLTw" id="3lk$pEhb3qL" role="37wK5m">
-                    <ref role="3cqZAo" node="5KVavYegX7" resolve="myHighlightColor" />
+                    <ref role="3cqZAo" node="516stgz5omK" resolve="color" />
                   </node>
                   <node concept="Xl_RD" id="3lk$pEhb3qM" role="37wK5m">
                     <property role="Xl_RC" value="usage" />
