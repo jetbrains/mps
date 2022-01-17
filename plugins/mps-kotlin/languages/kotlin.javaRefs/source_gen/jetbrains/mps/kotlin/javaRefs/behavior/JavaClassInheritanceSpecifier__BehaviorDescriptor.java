@@ -10,6 +10,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import jetbrains.mps.kotlin.runtime.declaration.ParameterDeclaration;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -19,6 +20,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.behavior.ITypeArguments__BehaviorDescriptor;
+import java.util.Collections;
+import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration;
+import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -30,8 +34,9 @@ public final class JavaClassInheritanceSpecifier__BehaviorDescriptor extends Bas
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x2196e93e83dbf9feL, "jetbrains.mps.kotlin.javaRefs.structure.JavaClassInheritanceSpecifier");
 
   public static final SMethod<SNode> getInheritedType_id5q426iHvzD9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInheritedType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5q426iHvzD9").build();
+  public static final SMethod<Iterable<ParameterDeclaration>> getAvailableParameters_id1$jFvlD0xqw = new SMethodBuilder<Iterable<ParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<ParameterDeclaration>>) ((Class) Object.class))).name("getAvailableParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1$jFvlD0xqw").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInheritedType_id5q426iHvzD9);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInheritedType_id5q426iHvzD9, getAvailableParameters_id1$jFvlD0xqw);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -41,6 +46,13 @@ public final class JavaClassInheritanceSpecifier__BehaviorDescriptor extends Bas
     SLinkOperations.setTarget(type, LINKS.javaClass$CQOW, SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(__thisNode__, LINKS.constructor$5yLG), CONCEPTS.Classifier$Ix, false, false));
     ListSequence.fromList(SLinkOperations.getChildren(type, LINKS.typeProjections$vhti)).addSequence(Sequence.fromIterable(ITypeArguments__BehaviorDescriptor.getTypeProjections_idFn6l2JqIEF.invoke(__thisNode__)));
     return type;
+  }
+  @NotNull
+  /*package*/ static Iterable<ParameterDeclaration> getAvailableParameters_id1$jFvlD0xqw(@NotNull SNode __thisNode__) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.constructor$5yLG) == null)) {
+      return Sequence.fromIterable(Collections.<ParameterDeclaration>emptyList());
+    }
+    return new JavaMethodDeclaration(SLinkOperations.getTarget(__thisNode__, LINKS.constructor$5yLG), TypeConversionService.getInstance().getJavaToKt()).getParameters();
   }
 
   /*package*/ JavaClassInheritanceSpecifier__BehaviorDescriptor() {
@@ -60,6 +72,8 @@ public final class JavaClassInheritanceSpecifier__BehaviorDescriptor extends Bas
     switch (methodIndex) {
       case 0:
         return (T) ((SNode) getInheritedType_id5q426iHvzD9(node));
+      case 1:
+        return (T) ((Iterable<ParameterDeclaration>) getAvailableParameters_id1$jFvlD0xqw(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

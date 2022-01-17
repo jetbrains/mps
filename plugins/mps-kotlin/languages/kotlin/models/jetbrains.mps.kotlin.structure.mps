@@ -917,7 +917,7 @@
   <node concept="1TIwiD" id="2yYXHtl6Jg_">
     <property role="EcuMT" value="2936055411798373413" />
     <property role="TrG5h" value="ForStatement" />
-    <property role="34LRSv" value="for in" />
+    <property role="34LRSv" value="for" />
     <property role="R4oN_" value="for statement" />
     <property role="3GE5qa" value="statement.loop" />
     <node concept="1TJgyj" id="7mJe6tmwf4s" role="1TKVEi">
@@ -2033,7 +2033,7 @@
     <node concept="1TJgyj" id="1502VugHfxV" role="1TKVEi">
       <property role="IQ2ns" value="1243006380188956795" />
       <property role="20kJfa" value="parameter" />
-      <ref role="20lvS9" node="6f3juM$y8Zy" resolve="Parameter" />
+      <ref role="20lvS9" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="PrWs8" id="6cg9X74hA21" role="PzmwI">
       <ref role="PrY4T" node="6TRHYuCB$BU" resolve="IAnnotated" />
@@ -2465,9 +2465,15 @@
     <ref role="1TJDcQ" node="1502Vug_kVv" resolve="BinaryExpression" />
     <node concept="1TJgyj" id="1502Vug_m78" role="1TKVEi">
       <property role="IQ2ns" value="1243006380186886600" />
-      <property role="20kJfa" value="method" />
+      <property role="20kJfa" value="function" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="2yYXHtl6JgO" resolve="FunctionDeclaration" />
+    </node>
+    <node concept="RPilO" id="rbYB7QUgrA" role="lGtFl">
+      <ref role="RPilL" node="1502Vug_m78" resolve="function" />
+    </node>
+    <node concept="PrWs8" id="rbYB7R3JjM" role="PzmwI">
+      <ref role="PrY4T" node="5D4bOjrr8CG" resolve="IFunctionCallLike" />
     </node>
   </node>
   <node concept="1TIwiD" id="1502Vug_mWt">
@@ -3785,6 +3791,19 @@
     <property role="TrG5h" value="IncompleteDeclaration" />
     <property role="3GE5qa" value="edition" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="1$jFvlCOvOX" role="1TKVEi">
+      <property role="IQ2ns" value="1806979145042885949" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="funModifiers" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="2yYXHtl6JeY" resolve="IFunctionModifier" />
+    </node>
+    <node concept="1TJgyj" id="1$jFvlCUrqs" role="1TKVEi">
+      <property role="IQ2ns" value="1806979145044440732" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="classModifier" />
+      <ref role="20lvS9" node="2yYXHtl6Jg6" resolve="IClassModifier" />
+    </node>
     <node concept="1TJgyi" id="2AtO9a5ybKg" role="1TKVEl">
       <property role="IQ2nx" value="2998782254622751760" />
       <property role="TrG5h" value="isOverride" />

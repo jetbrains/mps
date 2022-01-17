@@ -37,7 +37,7 @@ public final class Parameter__BehaviorDescriptor extends BaseBHDescriptor {
     return true;
   }
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
-    return Parameter__BehaviorDescriptor.getPresentationInFunction_id7uO8z1BmBpf.invoke(__thisNode__, ((boolean) false));
+    return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
   }
   /*package*/ static String getPresentationInFunction_id7uO8z1BmBpf(@NotNull SNode __thisNode__, boolean erased) {
     StringBuilder sb = new StringBuilder();
@@ -102,6 +102,7 @@ public final class Parameter__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty isVararg$GaYv = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L, 0x2a5d340976790b94L, "isVararg");
   }
 

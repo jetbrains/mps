@@ -36,6 +36,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Property;
 import jetbrains.mps.nodeEditor.cells.SPropertyAccessor;
+import jetbrains.mps.openapi.editor.style.Style;
+import jetbrains.mps.editor.runtime.style.StyleImpl;
+import jetbrains.mps.kotlin.editor.KotlinKeyPack_KeyPack.METHOD_CALL_StyleKey;
 import jetbrains.mps.nodeEditor.cellMenu.SPropertySubstituteInfo;
 import jetbrains.mps.lang.core.behavior.PropertyAttribute__BehaviorDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -127,10 +130,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private EditorCell createRefCell_0() {
-    final SReferenceLink referenceLink = LINKS.method$i6$W;
+    final SReferenceLink referenceLink = LINKS.function$i6$W;
     SReferenceCellProvider provider = new SReferenceCellProvider(getNode(), referenceLink, getEditorContext()) {
       protected EditorCell createReferenceCell(final SNode targetNode) {
-        EditorCell cell = getUpdateSession().updateReferencedNodeCell(() -> new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell(), targetNode, LINKS.method$i6$W);
+        EditorCell cell = getUpdateSession().updateReferencedNodeCell(() -> new Inline_Builder0(getEditorContext(), getNode(), targetNode).createCell(), targetNode, LINKS.function$i6$W);
         CellUtil.setupIDeprecatableStyles(targetNode, cell);
         setSemanticNodeToCells(cell, getNode());
         installDeleteActions_notnull_smartReference(cell);
@@ -145,12 +148,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
       }
     };
 
-    provider.setNoTargetText("<no method>");
+    provider.setNoTargetText("<no function>");
     EditorCell editorCell = provider.createCell();
 
     if (editorCell.getSRole() == null) {
       editorCell.setReferenceCell(true);
-      editorCell.setSRole(LINKS.method$i6$W);
+      editorCell.setSRole(LINKS.function$i6$W);
     }
     editorCell.setSubstituteInfo(new SReferenceSubstituteInfoSmartReferenceDecorator(new SReferenceSubstituteInfo(editorCell, referenceLink)));
     Iterable<SNode> referenceAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.LinkAttribute$v_);
@@ -194,6 +197,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
         EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, true, false), myNode);
         editorCell.setDefaultText("<no name>");
         editorCell.setCellId("property_name");
+        Style style = new StyleImpl();
+        new METHOD_CALL_StyleKey().apply(style);
+        editorCell.getStyle().putAll(style);
         BinaryOperator_RemoveFromOperator.setCellActions(editorCell, myNode, getEditorContext());
         editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
         setCellContext(editorCell);
@@ -272,7 +278,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink left$yQgK = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, 0x11400bb790954ee0L, "left");
-    /*package*/ static final SReferenceLink method$i6$W = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7909561c6L, 0x11400bb7909561c8L, "method");
+    /*package*/ static final SReferenceLink function$i6$W = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7909561c6L, 0x11400bb7909561c8L, "function");
     /*package*/ static final SContainmentLink right$yQIM = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, 0x11400bb790954ee2L, "right");
   }
 

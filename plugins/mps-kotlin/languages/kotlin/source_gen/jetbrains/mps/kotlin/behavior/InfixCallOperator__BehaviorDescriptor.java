@@ -9,26 +9,58 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class InfixCallOperator__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7909561c6L, "jetbrains.mps.kotlin.structure.InfixCallOperator");
 
   public static final SMethod<Precedence> getPrecedenceLevel_id666oMY59eOv = new SMethodBuilder<Precedence>(new SJavaCompoundTypeImpl(Precedence.class)).name("getPriority").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("666oMY59eOv").build();
+  public static final SMethod<String> getFunctionName_id4nn3FPlEjh5 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFunctionName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4nn3FPlEjh5").build();
+  public static final SMethod<SReferenceLink> getTargetLink_id5D4bOjrrcOr = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getTargetLink").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjrrcOr").build();
+  public static final SMethod<SNode> getReceiver_id5D4bOjrrgiZ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReceiver").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjrrgiZ").build();
+  public static final SMethod<SAbstractConcept> getModifierFilter_id5D4bOjruyUS = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getModifierFilter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjruyUS").build();
+  public static final SMethod<Iterable<SNode>> getArguments_id1VI7K1jROBX = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1VI7K1jROBX").build();
+  public static final SMethod<FunctionDeclaration> getFunctionDescriptor_id26mUjU3xhgD = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunctionDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("26mUjU3xhgD").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPrecedenceLevel_id666oMY59eOv);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPrecedenceLevel_id666oMY59eOv, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, getModifierFilter_id5D4bOjruyUS, getArguments_id1VI7K1jROBX, getFunctionDescriptor_id26mUjU3xhgD);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
   /*package*/ static Precedence getPrecedenceLevel_id666oMY59eOv(@NotNull SNode __thisNode__) {
     return Precedence.INFIX;
+  }
+  /*package*/ static String getFunctionName_id4nn3FPlEjh5(@NotNull SNode __thisNode__) {
+    return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.function$i6$W), PROPS.name$MnvL);
+  }
+  /*package*/ static SReferenceLink getTargetLink_id5D4bOjrrcOr(@NotNull SNode __thisNode__) {
+    return LINKS.function$i6$W;
+  }
+  /*package*/ static SNode getReceiver_id5D4bOjrrgiZ(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(__thisNode__, LINKS.left$yQgK);
+  }
+  /*package*/ static SAbstractConcept getModifierFilter_id5D4bOjruyUS(@NotNull SNode __thisNode__) {
+    return CONCEPTS.InfixFunctionModifier$PI;
+  }
+  /*package*/ static Iterable<SNode> getArguments_id1VI7K1jROBX(@NotNull SNode __thisNode__) {
+    return Sequence.<SNode>singleton(SLinkOperations.getTarget(__thisNode__, LINKS.right$yQIM));
+  }
+  /*package*/ static FunctionDeclaration getFunctionDescriptor_id26mUjU3xhgD(@NotNull SNode __thisNode__) {
+    return KotlinFunctionDeclaration.of(SLinkOperations.getTarget(__thisNode__, LINKS.function$i6$W));
   }
 
   /*package*/ InfixCallOperator__BehaviorDescriptor() {
@@ -48,6 +80,18 @@ public final class InfixCallOperator__BehaviorDescriptor extends BaseBHDescripto
     switch (methodIndex) {
       case 0:
         return (T) ((Precedence) getPrecedenceLevel_id666oMY59eOv(node));
+      case 1:
+        return (T) ((String) getFunctionName_id4nn3FPlEjh5(node));
+      case 2:
+        return (T) ((SReferenceLink) getTargetLink_id5D4bOjrrcOr(node));
+      case 3:
+        return (T) ((SNode) getReceiver_id5D4bOjrrgiZ(node));
+      case 4:
+        return (T) ((SAbstractConcept) getModifierFilter_id5D4bOjruyUS(node));
+      case 5:
+        return (T) ((Iterable<SNode>) getArguments_id1VI7K1jROBX(node));
+      case 6:
+        return (T) ((FunctionDeclaration) getFunctionDescriptor_id26mUjU3xhgD(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -75,5 +119,19 @@ public final class InfixCallOperator__BehaviorDescriptor extends BaseBHDescripto
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink function$i6$W = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7909561c6L, 0x11400bb7909561c8L, "function");
+    /*package*/ static final SContainmentLink left$yQgK = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, 0x11400bb790954ee0L, "left");
+    /*package*/ static final SContainmentLink right$yQIM = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, 0x11400bb790954ee2L, "right");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept InfixFunctionModifier$PI = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3c1L, "jetbrains.mps.kotlin.structure.InfixFunctionModifier");
   }
 }

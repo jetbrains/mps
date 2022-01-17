@@ -26,7 +26,7 @@ public class CompletionPriorities {
       basePriority -= UNKNOWN_DECAY;
     } else if (SNodeOperations.getModel(node) != SNodeOperations.getModel(contextNode)) {
       basePriority -= EXTERNAL_MODEL_DECAY;
-    } else if (SNodeOperations.getModel(node) != SNodeOperations.getModel(contextNode)) {
+    } else if (SNodeOperations.getContainingRoot(node) != SNodeOperations.getContainingRoot(contextNode)) {
       basePriority -= EXTERNAL_ROOT_DECAY;
     } else {
       style.setBold();

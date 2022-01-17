@@ -9,10 +9,13 @@ import jetbrains.mps.lang.editor.menus.MenuPart;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
-import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.lang.editor.menus.GroupMenuPart;
+import java.util.Objects;
+import java.util.Arrays;
+import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
+import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
 import org.jetbrains.annotations.Nullable;
 import org.apache.log4j.Logger;
@@ -21,8 +24,9 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class IsOperator_SubstituteMenu extends SubstituteMenuBase {
@@ -30,21 +34,7 @@ public class IsOperator_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.IsOperator$V0) {
-
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "IsOperator", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "5533310174486372954")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-      }
-    }, CONCEPTS.IsOperator$V0));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_5fo1j9_b(), CONCEPTS.IsOperator$V0));
+    result.add(new SMP_Group_5fo1j9_a());
     return result;
   }
 
@@ -61,60 +51,99 @@ public class IsOperator_SubstituteMenu extends SubstituteMenuBase {
   }
 
 
-  private class SMP_Action_5fo1j9_b extends SingleItemSubstituteMenuPart {
-
-    @Nullable
+  public class SMP_Group_5fo1j9_a extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
     @Override
-    protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
-      Item item = new Item(_context);
-      String description;
+    protected boolean isApplicable(SubstituteMenuContext _context) {
+      return !(Objects.equals(_context.getLink(), LINKS.conditions$jFw5));
+    }
+    @NotNull
+    @Override
+    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("substitute menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "489760351868779528")));
       try {
-        description = "Substitute item: " + item.getMatchingText("");
-      } catch (Throwable t) {
-        Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
-        return null;
-      }
-
-      _context.getEditorMenuTrace().pushTraceInfo();
-      try {
-        _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "5533310174486372967")));
-        item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
+        return super.createItems(context);
       } finally {
-        _context.getEditorMenuTrace().popTraceInfo();
+        context.getEditorMenuTrace().popTraceInfo();
       }
-
-      return item;
     }
-    private class Item extends DefaultSubstituteMenuItem {
-      private final SubstituteMenuContext _context;
-      private EditorMenuTraceInfo myTraceInfo;
-      public Item(SubstituteMenuContext context) {
-        super(CONCEPTS.IsOperator$V0, context);
-        _context = context;
-      }
 
-      private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
-        myTraceInfo = traceInfo;
-      }
+    @Override
+    protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts() {
+      return Arrays.<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>asList(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.IsOperator$V0) {
+
+        @NotNull
+        @Override
+        public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
+          context.getEditorMenuTrace().pushTraceInfo();
+          context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "IsOperator", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "5533310174486372954")));
+          try {
+            return super.createItems(context);
+          } finally {
+            context.getEditorMenuTrace().popTraceInfo();
+          }
+        }
+      }, CONCEPTS.IsOperator$V0), new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_5fo1j9_b0(), CONCEPTS.IsOperator$V0));
+    }
+    private class SMP_Action_5fo1j9_b0 extends SingleItemSubstituteMenuPart {
 
       @Nullable
       @Override
-      public SNode createNode(@NotNull String pattern) {
-        SNode operator = SNodeFactoryOperations.createNewNode(CONCEPTS.IsOperator$V0, null);
-        SPropertyOperations.assign(operator, PROPS.negation$kFAJ, true);
-        return operator;
-      }
+      protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
+        Item item = new Item(_context);
+        String description;
+        try {
+          description = "Substitute item: " + item.getMatchingText("");
+        } catch (Throwable t) {
+          Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
+          return null;
+        }
 
-      @Override
-      public EditorMenuTraceInfo getTraceInfo() {
-        return myTraceInfo;
+        _context.getEditorMenuTrace().pushTraceInfo();
+        try {
+          _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "5533310174486372967")));
+          item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
+        } finally {
+          _context.getEditorMenuTrace().popTraceInfo();
+        }
+
+        return item;
       }
-      @Nullable
-      @Override
-      public String getMatchingText(@NotNull String pattern) {
-        return "!is";
+      private class Item extends DefaultSubstituteMenuItem {
+        private final SubstituteMenuContext _context;
+        private EditorMenuTraceInfo myTraceInfo;
+        public Item(SubstituteMenuContext context) {
+          super(CONCEPTS.IsOperator$V0, context);
+          _context = context;
+        }
+
+        private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
+          myTraceInfo = traceInfo;
+        }
+
+        @Nullable
+        @Override
+        public SNode createNode(@NotNull String pattern) {
+          SNode operator = SNodeFactoryOperations.createNewNode(CONCEPTS.IsOperator$V0, null);
+          SPropertyOperations.assign(operator, PROPS.negation$kFAJ, true);
+          return operator;
+        }
+
+        @Override
+        public EditorMenuTraceInfo getTraceInfo() {
+          return myTraceInfo;
+        }
+        @Nullable
+        @Override
+        public String getMatchingText(@NotNull String pattern) {
+          return "!is";
+        }
       }
     }
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink conditions$jFw5 = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af391L, 0x28bef6d7551af630L, "conditions");
   }
 
   private static final class CONCEPTS {

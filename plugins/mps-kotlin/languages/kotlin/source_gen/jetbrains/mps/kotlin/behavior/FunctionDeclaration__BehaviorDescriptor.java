@@ -84,7 +84,7 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
     }
 
     // Parameters
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.IVariableIdentifier$v2) && ListSequence.fromList(SNodeOperations.getNodeAncestors(child, CONCEPTS.FunctionDeclaration$oD, false)).contains(__thisNode__)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.IVariableIdentifier$v2)) {
       return new NamedElementsScope(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(__thisNode__));
     }
 
@@ -170,7 +170,6 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IClassLike$go = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x298a6a355c110274L, "jetbrains.mps.kotlin.structure.IClassLike");
     /*package*/ static final SConcept TypeParameter$oc = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, "jetbrains.mps.kotlin.structure.TypeParameter");
-    /*package*/ static final SConcept FunctionDeclaration$oD = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, "jetbrains.mps.kotlin.structure.FunctionDeclaration");
     /*package*/ static final SInterfaceConcept IVariableIdentifier$v2 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc83114d2ab6L, "jetbrains.mps.kotlin.structure.IVariableIdentifier");
   }
 

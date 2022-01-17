@@ -84,6 +84,12 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
           ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statements$R3pt)).addElement(elseExpression);
         }
       });
+
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.EmptyClassMemberDeclaration$Ab, false)).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode it) {
+          SNodeOperations.replaceWithNewChild(it, CONCEPTS.EmptyDeclaration$V);
+        }
+      });
     }
   }
   public MigrationScriptReference getReference() {
@@ -141,6 +147,8 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
     /*package*/ static final SConcept LambdaLiteral$Bd = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, "jetbrains.mps.kotlin.structure.LambdaLiteral");
     /*package*/ static final SInterfaceConcept IStatement$fj = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af322L, "jetbrains.mps.kotlin.structure.IStatement");
     /*package*/ static final SConcept FlexibleBlock$KO = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3e7L, "jetbrains.mps.kotlin.structure.FlexibleBlock");
+    /*package*/ static final SConcept EmptyClassMemberDeclaration$Ab = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310dc8a16L, "jetbrains.mps.kotlin.structure.EmptyClassMemberDeclaration");
+    /*package*/ static final SConcept EmptyDeclaration$V = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4e07f19a40c4182bL, "jetbrains.mps.kotlin.structure.EmptyDeclaration");
     /*package*/ static final SConcept FunctionBody$7Q = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b7f03b2L, "jetbrains.mps.kotlin.structure.FunctionBody");
   }
 

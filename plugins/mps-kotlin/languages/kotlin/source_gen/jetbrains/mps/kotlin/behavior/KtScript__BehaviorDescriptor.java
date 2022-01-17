@@ -9,21 +9,31 @@ import jetbrains.mps.core.aspects.behaviour.api.SMethod;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import jetbrains.mps.scope.Scope;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.scope.CompositeScope;
+import jetbrains.mps.lang.core.behavior.ScopeProvider__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class KtScript__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3efL, "jetbrains.mps.kotlin.structure.KtScript");
 
   public static final SMethod<Boolean> isRunnable_idoITd3IthrB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRunnable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("oITd3IthrB").build();
   public static final SMethod<String> getClassName_id7klTmOSHg_9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7klTmOSHg_9").build(SMethodBuilder.createJavaParameter(KtEnvironmentConfig.class, ""));
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRunnable_idoITd3IthrB, getClassName_id7klTmOSHg_9, getScope_id52_Geb4QDV$);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -33,6 +43,15 @@ public final class KtScript__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static String getClassName_id7klTmOSHg_9(@NotNull SNode __thisNode__, KtEnvironmentConfig envConfig) {
     return IKotlinRoot__BehaviorDescriptor.getFqName_id5M0hl5mCfjP.invoke(__thisNode__, envConfig);
+  }
+  /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, final SAbstractConcept kind, final SNode child) {
+    final CompositeScope composite = new CompositeScope(ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.IStatementHolder$84, kind, child));
+    ListSequence.fromList(SModelOperations.rootsIncludingImported(SNodeOperations.getModel(__thisNode__), CONCEPTS.KotlinFile$4h)).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        composite.addScope(KotlinFile__BehaviorDescriptor.getLocalScope_id46gC9M66Lsd.invoke(it, kind, child));
+      }
+    });
+    return composite;
   }
 
   /*package*/ KtScript__BehaviorDescriptor() {
@@ -54,6 +73,8 @@ public final class KtScript__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Boolean) isRunnable_idoITd3IthrB(node));
       case 1:
         return (T) ((String) getClassName_id7klTmOSHg_9(node, (KtEnvironmentConfig) parameters[0]));
+      case 2:
+        return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -81,5 +102,10 @@ public final class KtScript__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IStatementHolder$84 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL, "jetbrains.mps.kotlin.structure.IStatementHolder");
+    /*package*/ static final SConcept KotlinFile$4h = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af529L, "jetbrains.mps.kotlin.structure.KotlinFile");
   }
 }

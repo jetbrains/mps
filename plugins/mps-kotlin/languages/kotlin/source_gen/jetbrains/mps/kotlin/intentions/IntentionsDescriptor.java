@@ -52,6 +52,20 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
           intentions[0] = new LabelNode_Intention();
         }
         break;
+      case 3:
+        if (true) {
+          // concept
+          intentions = new IntentionFactory[1];
+          intentions[0] = new ToggleParameterVarArg_Intention();
+        }
+        break;
+      case 4:
+        if (true) {
+          // concept
+          intentions = new IntentionFactory[1];
+          intentions[0] = new ToggleArgumentVarArg_Intention();
+        }
+        break;
       default:
     }
     myCached.put(concept, intentions);
@@ -61,11 +75,13 @@ public final class IntentionsDescriptor extends AbstractIntentionAspectDescripto
   @NotNull
   @Override
   public Collection<IntentionFactory> getAllIntentions() {
-    IntentionFactory[] rv = new IntentionFactory[3];
+    IntentionFactory[] rv = new IntentionFactory[5];
     rv[0] = new AnnotateNode_Intention();
     rv[1] = new LabelNode_Intention();
     rv[2] = new SetClassModifier_Intention();
+    rv[3] = new ToggleParameterVarArg_Intention();
+    rv[4] = new ToggleArgumentVarArg_Intention();
     return Arrays.asList(rv);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L), MetaIdFactory.conceptId(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6e77b7e7a89e49faL), MetaIdFactory.conceptId(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c446692eL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L), MetaIdFactory.conceptId(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6e77b7e7a89e49faL), MetaIdFactory.conceptId(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c446692eL), MetaIdFactory.conceptId(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L), MetaIdFactory.conceptId(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af579L)).seal();
 }

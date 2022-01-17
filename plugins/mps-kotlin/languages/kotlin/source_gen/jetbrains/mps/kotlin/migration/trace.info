@@ -54,86 +54,93 @@
       <node id="1781658014495108040" at="81,37,82,126" concept="5" />
       <node id="1781658014495106903" at="82,126,83,103" concept="5" />
       <node id="1781658014495095521" at="83,103,84,118" concept="1" />
-      <node id="4787009421625770137" at="89,50,90,141" concept="6" />
-      <node id="1781658014488561256" at="95,42,96,89" concept="5" />
-      <node id="1781658014488561279" at="97,33,98,39" concept="5" />
-      <node id="1781658014492176858" at="98,39,99,164" concept="7" />
-      <node id="1781658014488561285" at="100,11,101,37" concept="5" />
-      <node id="1781658014488561288" at="102,81,103,193" concept="1" />
-      <node id="1781658014506206962" at="103,193,104,48" concept="1" />
-      <node id="1781658014506297631" at="106,11,107,0" concept="8" />
-      <node id="1781658014488797926" at="108,11,109,42" concept="5" />
-      <node id="1781658014488882536" at="110,83,111,122" concept="1" />
-      <node id="1781658014506315140" at="113,11,114,0" concept="8" />
-      <node id="1781658014503063918" at="115,11,116,44" concept="5" />
-      <node id="1781658014503140183" at="117,87,118,200" concept="1" />
-      <node id="1781658014503325417" at="118,200,119,55" concept="1" />
-      <node id="4787009421625770137" at="128,0,129,0" concept="9" trace="IfExpression$TD" />
-      <node id="4787009421625770137" at="129,0,130,0" concept="9" trace="AbstractConditionalLoop$w2" />
-      <node id="4787009421625770137" at="130,0,131,0" concept="9" trace="AnonymousInitializer$mg" />
-      <node id="4787009421625770137" at="131,0,132,0" concept="9" trace="CatchBlock$el" />
-      <node id="4787009421625770137" at="132,0,133,0" concept="9" trace="FinallyBlock$6e" />
-      <node id="4787009421625770137" at="133,0,134,0" concept="9" trace="ForStatement$7d" />
-      <node id="4787009421625770137" at="134,0,135,0" concept="9" trace="SecondaryConstructor$Lg" />
-      <node id="4787009421625770137" at="135,0,136,0" concept="9" trace="TryExpression$Oi" />
-      <node id="4787009421625770137" at="136,0,137,0" concept="9" trace="WhenEntry$Ki" />
-      <node id="4787009421625770137" at="137,0,138,0" concept="9" trace="AnonymousFunction$9D" />
-      <node id="4787009421625770137" at="138,0,139,0" concept="9" trace="FunctionDeclaration$oD" />
-      <node id="4787009421625770137" at="139,0,140,0" concept="9" trace="PropertyGetter$Im" />
-      <node id="4787009421625770137" at="140,0,141,0" concept="9" trace="PropertySetter$s8" />
-      <node id="4787009421625770137" at="141,0,142,0" concept="9" trace="LambdaLiteral$Bd" />
-      <node id="4787009421625770137" at="142,0,143,0" concept="9" trace="IStatement$fj" />
-      <node id="4787009421625770137" at="143,0,144,0" concept="9" trace="FlexibleBlock$KO" />
-      <node id="4787009421625770137" at="144,0,145,0" concept="9" trace="FunctionBody$7Q" />
-      <node id="4787009421625770137" at="148,0,149,0" concept="9" trace="body_$2bz9" />
-      <node id="4787009421625770137" at="149,0,150,0" concept="9" trace="block_$KaUn" />
-      <node id="4787009421625770137" at="150,0,151,0" concept="9" trace="body_$g161" />
-      <node id="4787009421625770137" at="151,0,152,0" concept="9" trace="block_$GcPT" />
-      <node id="4787009421625770137" at="152,0,153,0" concept="9" trace="body_$_8Ij" />
-      <node id="4787009421625770137" at="153,0,154,0" concept="9" trace="body_$$TIK" />
-      <node id="4787009421625770137" at="154,0,155,0" concept="9" trace="body_$jT7X" />
-      <node id="4787009421625770137" at="155,0,156,0" concept="9" trace="block_$N0hs" />
-      <node id="4787009421625770137" at="156,0,157,0" concept="9" trace="body_$jLAv" />
-      <node id="4787009421625770137" at="157,0,158,0" concept="9" trace="_body$UbWV" />
-      <node id="4787009421625770137" at="158,0,159,0" concept="9" trace="_body$4ZBW" />
-      <node id="4787009421625770137" at="159,0,160,0" concept="9" trace="_body$jE43" />
-      <node id="4787009421625770137" at="160,0,161,0" concept="9" trace="_body$JAlR" />
-      <node id="4787009421625770137" at="161,0,162,0" concept="9" trace="statements$R3pt" />
-      <node id="4787009421625770137" at="162,0,163,0" concept="9" trace="statements_$Kpvh" />
-      <node id="4787009421625770137" at="163,0,164,0" concept="9" trace="else$$UEO" />
+      <node id="1806979145045275552" at="86,9,87,0" concept="8" />
+      <node id="1806979145045285295" at="89,37,90,79" concept="1" />
+      <node id="4787009421625770137" at="95,50,96,141" concept="6" />
+      <node id="1781658014488561256" at="101,42,102,89" concept="5" />
+      <node id="1781658014488561279" at="103,33,104,39" concept="5" />
+      <node id="1781658014492176858" at="104,39,105,164" concept="7" />
+      <node id="1781658014488561285" at="106,11,107,37" concept="5" />
+      <node id="1781658014488561288" at="108,81,109,193" concept="1" />
+      <node id="1781658014506206962" at="109,193,110,48" concept="1" />
+      <node id="1781658014506297631" at="112,11,113,0" concept="8" />
+      <node id="1781658014488797926" at="114,11,115,42" concept="5" />
+      <node id="1781658014488882536" at="116,83,117,122" concept="1" />
+      <node id="1781658014506315140" at="119,11,120,0" concept="8" />
+      <node id="1781658014503063918" at="121,11,122,44" concept="5" />
+      <node id="1781658014503140183" at="123,87,124,200" concept="1" />
+      <node id="1781658014503325417" at="124,200,125,55" concept="1" />
+      <node id="4787009421625770137" at="134,0,135,0" concept="9" trace="IfExpression$TD" />
+      <node id="4787009421625770137" at="135,0,136,0" concept="9" trace="AbstractConditionalLoop$w2" />
+      <node id="4787009421625770137" at="136,0,137,0" concept="9" trace="AnonymousInitializer$mg" />
+      <node id="4787009421625770137" at="137,0,138,0" concept="9" trace="CatchBlock$el" />
+      <node id="4787009421625770137" at="138,0,139,0" concept="9" trace="FinallyBlock$6e" />
+      <node id="4787009421625770137" at="139,0,140,0" concept="9" trace="ForStatement$7d" />
+      <node id="4787009421625770137" at="140,0,141,0" concept="9" trace="SecondaryConstructor$Lg" />
+      <node id="4787009421625770137" at="141,0,142,0" concept="9" trace="TryExpression$Oi" />
+      <node id="4787009421625770137" at="142,0,143,0" concept="9" trace="WhenEntry$Ki" />
+      <node id="4787009421625770137" at="143,0,144,0" concept="9" trace="AnonymousFunction$9D" />
+      <node id="4787009421625770137" at="144,0,145,0" concept="9" trace="FunctionDeclaration$oD" />
+      <node id="4787009421625770137" at="145,0,146,0" concept="9" trace="PropertyGetter$Im" />
+      <node id="4787009421625770137" at="146,0,147,0" concept="9" trace="PropertySetter$s8" />
+      <node id="4787009421625770137" at="147,0,148,0" concept="9" trace="LambdaLiteral$Bd" />
+      <node id="4787009421625770137" at="148,0,149,0" concept="9" trace="IStatement$fj" />
+      <node id="4787009421625770137" at="149,0,150,0" concept="9" trace="FlexibleBlock$KO" />
+      <node id="4787009421625770137" at="150,0,151,0" concept="9" trace="EmptyClassMemberDeclaration$Ab" />
+      <node id="4787009421625770137" at="151,0,152,0" concept="9" trace="EmptyDeclaration$V" />
+      <node id="4787009421625770137" at="152,0,153,0" concept="9" trace="FunctionBody$7Q" />
+      <node id="4787009421625770137" at="156,0,157,0" concept="9" trace="body_$2bz9" />
+      <node id="4787009421625770137" at="157,0,158,0" concept="9" trace="block_$KaUn" />
+      <node id="4787009421625770137" at="158,0,159,0" concept="9" trace="body_$g161" />
+      <node id="4787009421625770137" at="159,0,160,0" concept="9" trace="block_$GcPT" />
+      <node id="4787009421625770137" at="160,0,161,0" concept="9" trace="body_$_8Ij" />
+      <node id="4787009421625770137" at="161,0,162,0" concept="9" trace="body_$$TIK" />
+      <node id="4787009421625770137" at="162,0,163,0" concept="9" trace="body_$jT7X" />
+      <node id="4787009421625770137" at="163,0,164,0" concept="9" trace="block_$N0hs" />
+      <node id="4787009421625770137" at="164,0,165,0" concept="9" trace="body_$jLAv" />
+      <node id="4787009421625770137" at="165,0,166,0" concept="9" trace="_body$UbWV" />
+      <node id="4787009421625770137" at="166,0,167,0" concept="9" trace="_body$4ZBW" />
+      <node id="4787009421625770137" at="167,0,168,0" concept="9" trace="_body$jE43" />
+      <node id="4787009421625770137" at="168,0,169,0" concept="9" trace="_body$JAlR" />
+      <node id="4787009421625770137" at="169,0,170,0" concept="9" trace="statements$R3pt" />
+      <node id="4787009421625770137" at="170,0,171,0" concept="9" trace="statements_$Kpvh" />
+      <node id="4787009421625770137" at="171,0,172,0" concept="9" trace="else$$UEO" />
       <node id="4787009421625770137" at="28,0,31,0" concept="4" trace="getCaption#()Ljava/lang/String;" />
       <node id="1781658014488296743" at="44,0,47,0" concept="4" trace="getDefaultSearchScope#()Lorg/jetbrains/mps/openapi/module/SearchScope;" />
       <node id="1781658014495083018" at="77,0,80,0" concept="4" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="4787009421625770137" at="89,0,92,0" concept="4" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
-      <node id="1781658014488797926" at="109,42,112,13" concept="3" />
+      <node id="1806979145045284914" at="89,0,92,0" concept="4" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="4787009421625770137" at="95,0,98,0" concept="4" trace="getReference#()Ljetbrains/mps/lang/migration/runtime/base/MigrationScriptReference;" />
+      <node id="1781658014488797926" at="115,42,118,13" concept="3" />
       <node id="4787009421625770137" at="31,0,35,0" concept="4" trace="isRerunnable#()Z" />
       <node id="4787009421625770137" at="35,0,39,0" concept="4" trace="execute#(Lorg/jetbrains/mps/openapi/module/SModule;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="1781658014490998225" at="69,0,73,0" concept="4" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="1781658014488561285" at="101,37,105,13" concept="3" />
-      <node id="1781658014503063918" at="116,44,120,13" concept="3" />
+      <node id="1781658014488561285" at="107,37,111,13" concept="3" />
+      <node id="1781658014503063918" at="122,44,126,13" concept="3" />
       <node id="1781658014488296743" at="42,90,47,8" concept="5" />
       <node id="1781658014495095141" at="81,0,86,0" concept="4" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1806979145045278335" at="87,0,92,9" concept="1" />
       <node id="1781658014490991916" at="67,65,73,9" concept="1" />
-      <node id="1781658014488797926" at="107,0,113,11" concept="0" />
-      <node id="1781658014488561285" at="99,164,106,11" concept="0" />
-      <node id="1781658014503063918" at="114,0,121,11" concept="0" />
+      <node id="1781658014488797926" at="113,0,119,11" concept="0" />
+      <node id="1781658014488561285" at="105,164,112,11" concept="0" />
+      <node id="1781658014503063918" at="120,0,127,11" concept="0" />
       <node id="1781658014495074622" at="75,92,86,9" concept="1" />
-      <node id="1781658014488561268" at="96,89,122,9" concept="3" />
-      <node id="1781658014488668812" at="95,0,124,0" concept="4" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="1781658014488666075" at="93,92,124,7" concept="1" />
-      <node id="1781658014488309706" at="93,0,126,0" concept="10" trace="migrate#(Ljava/util/Collection;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)V" />
-      <node id="1781658014488296743" at="39,42,87,5" concept="0" />
-      <node id="4787009421625770137" at="39,0,89,0" concept="4" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <node id="1781658014488561268" at="102,89,128,9" concept="3" />
+      <node id="1781658014488668812" at="101,0,130,0" concept="4" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1781658014488666075" at="99,92,130,7" concept="1" />
+      <node id="1781658014488309706" at="99,0,132,0" concept="10" trace="migrate#(Ljava/util/Collection;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)V" />
+      <node id="1781658014488296743" at="39,42,93,5" concept="0" />
+      <node id="4787009421625770137" at="39,0,95,0" concept="4" trace="doExecute#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
       <scope id="4787009421625770137" at="28,30,29,23" />
       <scope id="4787009421625770137" at="32,33,33,16" />
       <scope id="1781658014488296743" at="44,52,45,36" />
       <scope id="1781658014495083019" at="77,41,78,227" />
-      <scope id="4787009421625770137" at="89,50,90,141" />
-      <scope id="1781658014488797930" at="110,83,111,122" />
+      <scope id="1806979145045284915" at="89,37,90,79" />
+      <scope id="4787009421625770137" at="95,50,96,141" />
+      <scope id="1781658014488797930" at="116,83,117,122" />
       <scope id="4787009421625770137" at="35,41,37,16" />
       <scope id="1781658014490998226" at="69,37,71,97" />
-      <scope id="1781658014488561287" at="102,81,104,48" />
-      <scope id="1781658014503063922" at="117,87,119,55" />
+      <scope id="1781658014488561287" at="108,81,110,48" />
+      <scope id="1781658014503063922" at="123,87,125,55" />
       <scope id="4787009421625770137" at="28,0,31,0" />
       <scope id="1781658014488296743" at="44,0,47,0" />
       <scope id="1781658014495083018" at="77,0,80,0">
@@ -143,7 +150,10 @@
         <var name="block" id="1781658014495106904" />
         <var name="elseExpression" id="1781658014495108041" />
       </scope>
-      <scope id="4787009421625770137" at="89,0,92,0" />
+      <scope id="1806979145045284914" at="89,0,92,0">
+        <var name="it" id="1806979145045284914" />
+      </scope>
+      <scope id="4787009421625770137" at="95,0,98,0" />
       <scope id="4787009421625770137" at="31,0,35,0" />
       <scope id="4787009421625770137" at="35,0,39,0">
         <var name="m" id="4787009421625770137" />
@@ -151,50 +161,51 @@
       <scope id="1781658014490998225" at="69,0,73,0">
         <var name="it" id="1781658014490998225" />
       </scope>
-      <scope id="1781658014488797926" at="108,11,112,13">
+      <scope id="1781658014488797926" at="114,11,118,13">
         <var name="expression" id="1781658014488797926" />
       </scope>
       <scope id="1781658014495095141" at="81,0,86,0">
         <var name="it" id="1781658014495095141" />
       </scope>
-      <scope id="1781658014488561285" at="100,11,105,13">
+      <scope id="1781658014488561285" at="106,11,111,13">
         <var name="block" id="1781658014488561285" />
       </scope>
-      <scope id="1781658014503063918" at="115,11,120,13">
+      <scope id="1781658014503063918" at="121,11,126,13">
         <var name="functionBody" id="1781658014503063918" />
       </scope>
-      <scope id="1781658014488561278" at="97,33,121,11">
+      <scope id="1781658014488561278" at="103,33,127,11">
         <var name="next" id="1781658014488561280" />
       </scope>
-      <scope id="1781658014488668813" at="95,42,122,9">
+      <scope id="1781658014488668813" at="101,42,128,9">
         <var name="iterator" id="1781658014488561257" />
       </scope>
-      <scope id="1781658014488668812" at="95,0,124,0">
+      <scope id="1781658014488668812" at="101,0,130,0">
         <var name="container" id="1781658014488668812" />
       </scope>
-      <scope id="1781658014488309709" at="93,92,124,7" />
-      <scope id="1781658014488309706" at="93,0,126,0">
+      <scope id="1781658014488309709" at="99,92,130,7" />
+      <scope id="1781658014488309706" at="99,0,132,0">
         <var name="blockLink" id="1781658014488311006" />
         <var name="elements" id="1781658014488310445" />
       </scope>
-      <scope id="1781658014488296743" at="40,5,86,9">
+      <scope id="1781658014488296743" at="40,5,92,9">
         <var name="context" id="1781658014488296743" />
         <var name="ifExpressions" id="1781658014495045205" />
         <var name="scope_yftl6d_a0e" id="1781658014488296743" />
         <var name="scope_yftl6d_a0e_0" id="1781658014488296743" />
       </scope>
-      <scope id="4787009421625770137" at="39,42,87,5" />
-      <scope id="4787009421625770137" at="39,0,89,0">
+      <scope id="4787009421625770137" at="39,42,93,5" />
+      <scope id="4787009421625770137" at="39,0,95,0">
         <var name="m" id="4787009421625770137" />
       </scope>
       <unit id="1781658014488296743" at="43,42,47,7" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$1" />
       <unit id="1781658014495083018" at="76,65,80,7" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$3" />
+      <unit id="1806979145045284914" at="88,164,92,7" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$5" />
       <unit id="1781658014490998225" at="68,150,73,7" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$2" />
       <unit id="1781658014495095141" at="80,22,86,7" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$4" />
-      <unit id="4787009421625770137" at="147,0,165,0" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$LINKS" />
-      <unit id="4787009421625770137" at="127,0,146,0" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$CONCEPTS" />
-      <unit id="1781658014488668812" at="94,61,124,5" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$5" />
-      <unit id="4787009421625770137" at="26,0,166,0" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements" />
+      <unit id="4787009421625770137" at="155,0,173,0" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$LINKS" />
+      <unit id="4787009421625770137" at="133,0,154,0" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$CONCEPTS" />
+      <unit id="1781658014488668812" at="100,61,130,5" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements$6" />
+      <unit id="4787009421625770137" at="26,0,174,0" name="jetbrains.mps.kotlin.migration.MoveControlStructureStatements" />
     </file>
   </root>
 </debug-info>

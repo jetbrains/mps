@@ -1407,7 +1407,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("variables", 0x28bef6d7551af707L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af571L).optional(false).ordered(true).multiple(true).origin("2936055411798374151").done();
     b.aggregate("in", 0x28bef6d7551af708L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L).optional(false).ordered(true).multiple(false).origin("2936055411798374152").done();
     b.aggregate("body_", 0x28bef6d7551af70aL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3e7L).optional(true).ordered(true).multiple(false).origin("2936055411798374154").done();
-    b.alias("for in");
+    b.alias("for");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForFunctionBody() {
@@ -2190,6 +2190,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2998782254613004746");
     b.version(3);
     b.property("isOverride", 0x299dd0928588bc10L).type(PrimitiveTypeId.BOOLEAN).origin("2998782254622751760").done();
+    b.aggregate("funModifiers", 0x1913adf568d1fd3dL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3beL).optional(true).ordered(true).multiple(true).origin("1806979145042885949").done();
+    b.aggregate("classModifier", 0x1913adf568e9b69cL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af406L).optional(true).ordered(true).multiple(false).origin("1806979145044440732").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForIndexOperation() {
@@ -2208,9 +2210,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     // extends: jetbrains.mps.kotlin.structure.BinaryExpression
     b.super_(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5a442f44db6c8a2cL);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186886598");
     b.version(3);
-    b.associate("method", 0x11400bb7909561c8L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L).optional(false).origin("1243006380186886600").done();
+    b.associate("function", 0x11400bb7909561c8L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L).optional(false).origin("1243006380186886600").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForInfixFunctionModifier() {
@@ -3217,7 +3220,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373753");
     b.version(3);
     b.property("isVararg", 0x11400bb790b4ef7eL).type(PrimitiveTypeId.BOOLEAN).origin("201447423889840381").done();
-    b.associate("parameter", 0x11400bb790b4f87bL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L).optional(true).origin("1243006380188956795").done();
+    b.associate("parameter", 0x11400bb790b4f87bL).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L).optional(true).origin("1243006380188956795").done();
     b.aggregate("expression", 0x28bef6d7551af924L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L).optional(false).ordered(true).multiple(false).origin("2936055411798374692").done();
     b.alias("<param> = <value>");
     return b.create();

@@ -706,7 +706,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af425L);
           cpb.deprecateAggregation(0x28bef6d7551af70aL, "body_");
           cpb.shortDesc("for statement");
-          cpb.rawPresentation("for in");
+          cpb.rawPresentation("for");
           props_ForStatement = cpb.create();
         }
         return props_ForStatement;
@@ -1296,7 +1296,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_InfixCallOperator == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("infix call operator");
-          cpb.presentationByReference(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7909561c6L, 0x11400bb7909561c8L, "method", "", "");
+          cpb.presentationByReference(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7909561c6L, 0x11400bb7909561c8L, "function", "", "");
           props_InfixCallOperator = cpb.create();
         }
         return props_InfixCallOperator;

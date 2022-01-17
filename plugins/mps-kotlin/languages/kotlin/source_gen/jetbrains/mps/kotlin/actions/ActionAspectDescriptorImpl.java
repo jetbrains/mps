@@ -16,6 +16,8 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
   public Collection<NodeFactory> getFactories(SAbstractConcept concept) {
     if (LANGUAGE_FQ_NAME.equals(concept.getLanguage().getQualifiedName())) {
       switch (concept.getName()) {
+        case "ClassDeclaration":
+          return Collections.<NodeFactory>singletonList(new MembersFactories.NodeFactory_1806979145044527064());
         case "ClassParameter":
           return Collections.<NodeFactory>singletonList(new ParametersFactories.NodeFactory_2998782254610272790());
         case "FunctionDeclaration":

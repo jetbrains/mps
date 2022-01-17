@@ -21,10 +21,10 @@ public class FunctionParamIterator<I, T extends Throwable> {
   private boolean[] seen;
 
   public FunctionParamIterator(FunctionParamMapper<I, ?> parentMapper, ParamErrorHandler<T> errorHandler) {
+    seen = new boolean[parentMapper.parameters.size()];
     mapper = parentMapper;
     internalErrorHandler = errorHandler;
     parentMapper.withDefaults.forEach((Integer it) -> seen[it] = true);
-    seen = new boolean[parentMapper.parameters.size()];
   }
 
   /**

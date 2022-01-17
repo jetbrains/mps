@@ -5,6 +5,7 @@ package jetbrains.mps.kotlin.behavior;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -21,29 +22,36 @@ public class PrecedenceUtil {
   private PrecedenceUtil() {
   }
 
-  public static SNode getTargetForTransform(SNode contextNode, SNode resultNode, boolean leftTransform) {
-    Precedence resultPrecedence = IExpression__BehaviorDescriptor.getPrecedenceLevel_id666oMY59eOv.invoke(resultNode);
+  public static SNode getTargetForTransform(SNode contextNode, Precedence resultPrecedence, boolean leftTransform) {
     SNode targetNode = contextNode;
     SNode parentNode = SNodeOperations.as(SNodeOperations.getParent(targetNode), CONCEPTS.IExpression$2i);
+
+    // We're looking for a term used as expression (eg. navigation target is not used as expression even if concept is compatible)
+    while (parentNode != null && !(SConceptOperations.isSuperConceptOf(SNodeOperations.asSConcept(CONCEPTS.IExpression$2i), SNodeOperations.asSConcept(SNodeOperations.getContainingLink(targetNode).getTargetConcept())))) {
+      targetNode = parentNode;
+      parentNode = SNodeOperations.as(SNodeOperations.getParent(targetNode), CONCEPTS.IExpression$2i);
+    }
 
     while (parentNode != null) {
       // Parent expression with lower priority or not applicable to precedence -> stop there
       Precedence parent = IExpression__BehaviorDescriptor.getPrecedenceLevel_id666oMY59eOv.invoke(parentNode);
       float current = resultPrecedence.asNumber();
 
-      // Target concept of containing link is checked, as an expression node may be used in another context than regular expression tree (eg. navigation)
-      if (!(Precedence.isApplicable(parent)) || (parent.asNumber() >= current && SConceptOperations.isSuperConceptOf(SNodeOperations.asSConcept(CONCEPTS.IExpression$2i), SNodeOperations.asSConcept(SNodeOperations.getContainingLink(targetNode).getTargetConcept())))) {
+      if (!(Precedence.isApplicable(parent)) || parent.asNumber() > current || (leftTransform && parent.asNumber() == current)) {
         break;
       }
 
-      {
-        final SNode binary = parentNode;
-        if (SNodeOperations.isInstanceOf(binary, CONCEPTS.BinaryExpression$$S)) {
-          // Binary expression, if left transform on the right side we do not have to go further up (same for right transform)
-          if (((leftTransform ? SLinkOperations.getTarget(binary, LINKS.right$yQIM) : SLinkOperations.getTarget(binary, LINKS.left$yQgK))) == targetNode) {
-            break;
-          }
+      if (SNodeOperations.isInstanceOf(parentNode, CONCEPTS.BinaryExpression$$S)) {
+        // Binary expression, if left transform on the right side we do not have to go further up (same for right transform)
+        if (Objects.equals(((leftTransform ? LINKS.right$yQIM : LINKS.left$yQgK)), SNodeOperations.getContainingLink(targetNode))) {
+          break;
         }
+      } else if (!(leftTransform) && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.PostfixUnaryExpression$2v)) {
+        // Postfix: right transform shouldn't pass through
+        break;
+      } else if (leftTransform && SNodeOperations.isInstanceOf(parentNode, CONCEPTS.PrefixUnaryExpression$JZ)) {
+        // Prefix: left transform shouldn't pass through
+        break;
       }
 
       targetNode = parentNode;
@@ -58,7 +66,7 @@ public class PrecedenceUtil {
   }
 
   public static SNode processTransform(SNode sourceNode, SNode result, boolean isLeftTransform) {
-    SNode nodeToProcess = PrecedenceUtil.getTargetForTransform(sourceNode, result, isLeftTransform);
+    SNode nodeToProcess = PrecedenceUtil.getTargetForTransform(sourceNode, IExpression__BehaviorDescriptor.getPrecedenceLevel_id666oMY59eOv.invoke(result), isLeftTransform);
 
     if (isLeftTransform) {
       // since BinaryOperations are left-associative we should perform complex LT then
@@ -86,7 +94,7 @@ public class PrecedenceUtil {
   }
 
   public static SNode processUnaryTransform(SNode sourceNode, SNode unary, boolean isLeft) {
-    SNode nodeToProcess = PrecedenceUtil.getTargetForTransform(sourceNode, unary, isLeft);
+    SNode nodeToProcess = PrecedenceUtil.getTargetForTransform(sourceNode, IExpression__BehaviorDescriptor.getPrecedenceLevel_id666oMY59eOv.invoke(unary), isLeft);
     SNodeOperations.replaceWithAnother(nodeToProcess, unary);
     SLinkOperations.setTarget(unary, LINKS.operand$YS5t, nodeToProcess);
     return unary;
@@ -96,6 +104,8 @@ public class PrecedenceUtil {
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IExpression$2i = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L, "jetbrains.mps.kotlin.structure.IExpression");
     /*package*/ static final SConcept BinaryExpression$$S = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, "jetbrains.mps.kotlin.structure.BinaryExpression");
+    /*package*/ static final SConcept PostfixUnaryExpression$2v = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956fd8L, "jetbrains.mps.kotlin.structure.PostfixUnaryExpression");
+    /*package*/ static final SConcept PrefixUnaryExpression$JZ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f1dL, "jetbrains.mps.kotlin.structure.PrefixUnaryExpression");
   }
 
   private static final class LINKS {
