@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.vcs;
 
 import com.intellij.ide.plugins.IdeaPluginDescriptor;
 import com.intellij.ide.plugins.PluginManager;
+import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.openapi.extensions.PluginId;
 import jetbrains.mps.vcs.platform.mergedriver.MergeDriverPacker;
 
@@ -25,9 +26,9 @@ import java.io.File;
 public class MergeDriverPackerImpl extends MergeDriverPacker {
 
   private String getMPSCorePluginPath() {
-    IdeaPluginDescriptor mpsCorePlugin = PluginManager.getPlugin(PluginId.getId("jetbrains.mps.core"));
+    IdeaPluginDescriptor mpsCorePlugin = PluginManagerCore.getPlugin(PluginId.getId("jetbrains.mps.core"));
     assert mpsCorePlugin != null;
-    return mpsCorePlugin.getPath().getPath();
+    return mpsCorePlugin.getPluginPath().toString();
   }
 
   @Override
@@ -37,9 +38,9 @@ public class MergeDriverPackerImpl extends MergeDriverPacker {
 
   @Override
   protected String getVCSCorePluginPath() {
-    IdeaPluginDescriptor vcsCorePlugin = PluginManager.getPlugin(PluginId.getId("jetbrains.mps.idea.vcs"));
+    IdeaPluginDescriptor vcsCorePlugin = PluginManagerCore.getPlugin(PluginId.getId("jetbrains.mps.idea.vcs"));
     assert vcsCorePlugin != null;
-    return vcsCorePlugin.getPath().getPath();
+    return vcsCorePlugin.getPluginPath().toString();
   }
 
   @Override
