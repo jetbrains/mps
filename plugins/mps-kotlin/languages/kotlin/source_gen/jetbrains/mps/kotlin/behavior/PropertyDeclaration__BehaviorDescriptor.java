@@ -14,6 +14,7 @@ import jetbrains.mps.kotlin.scopes.ScopeContext;
 import jetbrains.mps.kotlin.runtime.members.SignatureCollector;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.scope.Scope;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -25,11 +26,16 @@ import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.scope.CompositeScope;
+import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
+import jetbrains.mps.lang.scopes.runtime.ScopeUtils;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
@@ -41,8 +47,9 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<List<SNode>> getDeclarations_id7RZWrHVaXCH = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7RZWrHVaXCH").build();
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIMiw").build();
   public static final SMethod<SNode> getIdentifiable_idauY8guyXvs = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getIdentifiable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("auY8guyXvs").build();
+  public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("52_Geb4QDV$").build(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateDeclarations_id213J8cgCCAN, populateSignatures_id18X2O0FJBER, hasExplicityType_id2n1mrwy6RU_, getDeclarations_id7RZWrHVaXCH, getPresentation_idhEwIMiw, getIdentifiable_idauY8guyXvs);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateDeclarations_id213J8cgCCAN, populateSignatures_id18X2O0FJBER, hasExplicityType_id2n1mrwy6RU_, getDeclarations_id7RZWrHVaXCH, getPresentation_idhEwIMiw, getIdentifiable_idauY8guyXvs, getScope_id52_Geb4QDV$);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -123,6 +130,15 @@ __switch__:
   /*package*/ static SNode getIdentifiable_idauY8guyXvs(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.declaration$IdZv);
   }
+  /*package*/ static Scope getScope_id52_Geb4QDV$(@NotNull SNode __thisNode__, SAbstractConcept kind, SNode child) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.IVariableIdentifier$v2)) {
+      // Property accessor has access to constructor scope
+      Iterable<SNode> params = ClassDeclaration__BehaviorDescriptor.getPrimaryNonPropertyVariables_id1$jFvlDFKeB.invoke(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.ClassDeclaration$Jm));
+      return new CompositeScope(new NamedElementsScope(params), ScopeUtils.lazyParentScope(__thisNode__, kind));
+    }
+
+    return null;
+  }
 
   /*package*/ PropertyDeclaration__BehaviorDescriptor() {
   }
@@ -153,6 +169,8 @@ __switch__:
         return (T) ((String) getPresentation_idhEwIMiw(node));
       case 5:
         return (T) ((SNode) getIdentifiable_idauY8guyXvs(node));
+      case 6:
+        return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -190,6 +208,8 @@ __switch__:
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IClassLike$go = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x298a6a355c110274L, "jetbrains.mps.kotlin.structure.IClassLike");
+    /*package*/ static final SConcept ClassDeclaration$Jm = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, "jetbrains.mps.kotlin.structure.ClassDeclaration");
+    /*package*/ static final SInterfaceConcept IVariableIdentifier$v2 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc83114d2ab6L, "jetbrains.mps.kotlin.structure.IVariableIdentifier");
   }
 
   private static final class PROPS {

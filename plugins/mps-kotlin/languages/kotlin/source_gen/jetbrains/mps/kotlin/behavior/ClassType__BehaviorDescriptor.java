@@ -23,6 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.kotlin.runtime.types.BuiltIn;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
@@ -35,7 +36,6 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
-import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4dfL, "jetbrains.mps.kotlin.structure.ClassType");
@@ -61,29 +61,29 @@ public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
     {
       final SNode inherited = SLinkOperations.getTarget(__thisNode__, LINKS.class$ExdX);
       if (SNodeOperations.isInstanceOf(inherited, CONCEPTS.IInheritExplicitly$UG)) {
+        final Wrappers._int superClassIndex = new Wrappers._int(-1);
         SNode[] supertypes = ListSequence.fromList(SLinkOperations.getChildren(inherited, LINKS.superclasses$6CkZ)).select(new ISelector<SNode, SNode>() {
           public SNode select(SNode it) {
+            if (superClassIndex.value < 0 && (boolean) ISuperTypeSpecifier__BehaviorDescriptor.isClass_id1$jFvlEiPXX.invoke(it)) {
+              superClassIndex.value = SNodeOperations.getIndexInParent(it);
+            }
+
             // Expand type with visitor internal substitutions if any
-            return visitor.expandWithCollectedSubstitutions(IInheritanceSpecifier__BehaviorDescriptor.getInheritedType_id5q426iHvzD9.invoke(it));
+            return visitor.expandWithCollectedSubstitutions(ISuperTypeSpecifier__BehaviorDescriptor.getInheritedType_id5q426iHvzD9.invoke(it));
           }
         }).toGenericArray(SNode.class);
 
         // Visit superclass first (if any)
-        int superClassIndex = 0;
-        for (; superClassIndex < supertypes.length; superClassIndex++) {
-          SNode next = supertypes[superClassIndex];
-          if (SNodeOperations.isInstanceOf(next, CONCEPTS.ClassType$jI) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(next, CONCEPTS.ClassType$jI), LINKS.class$ExdX), CONCEPTS.ClassDeclaration$Jm)) {
-            IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(SNodeOperations.cast(next, CONCEPTS.ClassType$jI), visitor);
-            break;
-          }
+        if (superClassIndex.value >= 0) {
+          IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(supertypes[superClassIndex.value], visitor);
         }
 
-        // Then visit other children
+        // Then visit other children (skip superclass if present)
         for (SNode next : supertypes) {
-          if (superClassIndex != 0) {
+          if (superClassIndex.value != 0) {
             IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(next, visitor);
           }
-          superClassIndex--;
+          superClassIndex.value--;
         }
 
         explicitSubtypeAny &= supertypes.length == 0;
@@ -191,8 +191,6 @@ public final class ClassType__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IInheritExplicitly$UG = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, "jetbrains.mps.kotlin.structure.IInheritExplicitly");
-    /*package*/ static final SConcept ClassType$jI = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4dfL, "jetbrains.mps.kotlin.structure.ClassType");
-    /*package*/ static final SConcept ClassDeclaration$Jm = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, "jetbrains.mps.kotlin.structure.ClassDeclaration");
     /*package*/ static final SInterfaceConcept ITypeParameters$G$ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7556a4df5L, "jetbrains.mps.kotlin.structure.ITypeParameters");
   }
 }

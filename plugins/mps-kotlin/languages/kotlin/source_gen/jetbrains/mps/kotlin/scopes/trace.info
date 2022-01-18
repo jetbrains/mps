@@ -360,13 +360,13 @@
       <node id="3444023549502390441" at="22,35,23,17" concept="10" />
       <node id="3444023549502390441" at="27,28,28,39" concept="10" />
       <node id="3444023549502390441" at="30,38,31,39" concept="4" />
-      <node id="3444023549502390441" at="35,0,36,0" concept="5" trace="myWithConstructors" />
-      <node id="3444023549502390441" at="36,39,37,35" concept="10" />
-      <node id="3444023549502390441" at="39,52,40,36" concept="4" />
-      <node id="3444023549502390441" at="42,54,43,32" concept="4" />
-      <node id="3444023549502390441" at="43,32,44,17" concept="10" />
-      <node id="3444023549502390441" at="48,28,49,36" concept="10" />
-      <node id="3444023549502390441" at="51,38,52,36" concept="4" />
+      <node id="3444023549502390441" at="35,0,36,0" concept="5" trace="myWithNestedConstructors" />
+      <node id="3444023549502390441" at="36,45,37,41" concept="10" />
+      <node id="3444023549502390441" at="39,58,40,42" concept="4" />
+      <node id="3444023549502390441" at="42,60,43,38" concept="4" />
+      <node id="3444023549502390441" at="43,38,44,17" concept="10" />
+      <node id="3444023549502390441" at="48,28,49,42" concept="10" />
+      <node id="3444023549502390441" at="51,38,52,42" concept="4" />
       <node id="3444023549502390441" at="56,0,57,0" concept="5" trace="myWithCompanionMembers" />
       <node id="3444023549502390441" at="57,43,58,39" concept="10" />
       <node id="3444023549502390441" at="60,56,61,40" concept="4" />
@@ -381,16 +381,23 @@
       <node id="3444023549502390441" at="85,42,86,17" concept="10" />
       <node id="3444023549502390441" at="90,28,91,46" concept="10" />
       <node id="3444023549502390441" at="93,38,94,46" concept="4" />
-      <node id="3444023549502402154" at="99,118,100,46" concept="4" />
-      <node id="3444023549502398516" at="100,46,101,47" concept="4" />
-      <node id="3444023549502394561" at="101,47,102,48" concept="4" />
-      <node id="3444023549502425944" at="102,48,103,55" concept="4" />
+      <node id="1806979145069117637" at="99,118,100,39" concept="11" />
+      <node id="3444023549502402154" at="100,39,101,46" concept="4" />
+      <node id="1806979145069118389" at="101,46,102,0" concept="12" />
+      <node id="1806979145069118852" at="102,0,103,78" concept="11" />
+      <node id="3444023549502398516" at="103,78,104,53" concept="4" />
+      <node id="1806979145069120107" at="104,53,105,0" concept="12" />
+      <node id="1806979145069120666" at="105,0,106,34" concept="11" />
+      <node id="3444023549502394561" at="106,34,107,48" concept="4" />
+      <node id="1806979145069122121" at="107,48,108,0" concept="12" />
+      <node id="1806979145069122656" at="108,0,109,56" concept="11" />
+      <node id="3444023549502425944" at="109,56,110,55" concept="4" />
       <node id="3444023549502390441" at="15,0,18,0" concept="8" trace="isWithInstanceMembers#()Z" />
       <node id="3444023549502390441" at="18,0,21,0" concept="8" trace="_setWithInstanceMembers#(Z)V" />
       <node id="3444023549502390441" at="27,0,30,0" concept="8" trace="get#()Ljava/lang/Boolean;" />
       <node id="3444023549502390441" at="30,0,33,0" concept="8" trace="set#(Ljava/lang/Boolean;)V" />
-      <node id="3444023549502390441" at="36,0,39,0" concept="8" trace="isWithConstructors#()Z" />
-      <node id="3444023549502390441" at="39,0,42,0" concept="8" trace="_setWithConstructors#(Z)V" />
+      <node id="3444023549502390441" at="36,0,39,0" concept="8" trace="isWithNestedConstructors#()Z" />
+      <node id="3444023549502390441" at="39,0,42,0" concept="8" trace="_setWithNestedConstructors#(Z)V" />
       <node id="3444023549502390441" at="48,0,51,0" concept="8" trace="get#()Ljava/lang/Boolean;" />
       <node id="3444023549502390441" at="51,0,54,0" concept="8" trace="set#(Ljava/lang/Boolean;)V" />
       <node id="3444023549502390441" at="57,0,60,0" concept="8" trace="isWithCompanionMembers#()Z" />
@@ -402,26 +409,26 @@
       <node id="3444023549502390441" at="90,0,93,0" concept="8" trace="get#()Ljava/lang/Boolean;" />
       <node id="3444023549502390441" at="93,0,96,0" concept="8" trace="set#(Ljava/lang/Boolean;)V" />
       <node id="3444023549502390441" at="21,0,25,0" concept="8" trace="setWithInstanceMembers#(Z)Z" />
-      <node id="3444023549502390441" at="42,0,46,0" concept="8" trace="setWithConstructors#(Z)Z" />
+      <node id="3444023549502390441" at="42,0,46,0" concept="8" trace="setWithNestedConstructors#(Z)Z" />
       <node id="3444023549502390441" at="63,0,67,0" concept="8" trace="setWithCompanionMembers#(Z)Z" />
       <node id="3444023549502390441" at="84,0,88,0" concept="8" trace="setWithStandaloneDeclarations#(Z)Z" />
-      <node id="3444023549502393774" at="99,0,105,0" concept="2" trace="ScopeContext#(ZZZZ)V" />
       <node id="3444023549502390441" at="25,57,33,6" concept="10" />
-      <node id="3444023549502390441" at="46,54,54,6" concept="10" />
+      <node id="3444023549502390441" at="46,60,54,6" concept="10" />
       <node id="3444023549502390441" at="67,58,75,6" concept="10" />
       <node id="3444023549502390441" at="88,64,96,6" concept="10" />
       <node id="3444023549502390441" at="25,0,35,0" concept="8" trace="refToWithInstanceMembers#()Ljetbrains/mps/references/Reference;" />
-      <node id="3444023549502390441" at="46,0,56,0" concept="8" trace="refToWithConstructors#()Ljetbrains/mps/references/Reference;" />
+      <node id="3444023549502390441" at="46,0,56,0" concept="8" trace="refToWithNestedConstructors#()Ljetbrains/mps/references/Reference;" />
       <node id="3444023549502390441" at="67,0,77,0" concept="8" trace="refToWithCompanionMembers#()Ljetbrains/mps/references/Reference;" />
       <node id="3444023549502390441" at="88,0,98,0" concept="8" trace="refToWithStandaloneDeclarations#()Ljetbrains/mps/references/Reference;" />
+      <node id="3444023549502393774" at="99,0,112,0" concept="2" trace="ScopeContext#(ZZZZ)V" />
       <scope id="3444023549502390441" at="15,42,16,38" />
       <scope id="3444023549502390441" at="18,55,19,39" />
       <scope id="3444023549502390441" at="27,28,28,39" />
       <scope id="3444023549502390441" at="30,38,31,39" />
-      <scope id="3444023549502390441" at="36,39,37,35" />
-      <scope id="3444023549502390441" at="39,52,40,36" />
-      <scope id="3444023549502390441" at="48,28,49,36" />
-      <scope id="3444023549502390441" at="51,38,52,36" />
+      <scope id="3444023549502390441" at="36,45,37,41" />
+      <scope id="3444023549502390441" at="39,58,40,42" />
+      <scope id="3444023549502390441" at="48,28,49,42" />
+      <scope id="3444023549502390441" at="51,38,52,42" />
       <scope id="3444023549502390441" at="57,43,58,39" />
       <scope id="3444023549502390441" at="60,56,61,40" />
       <scope id="3444023549502390441" at="69,28,70,40" />
@@ -431,7 +438,7 @@
       <scope id="3444023549502390441" at="90,28,91,46" />
       <scope id="3444023549502390441" at="93,38,94,46" />
       <scope id="3444023549502390441" at="21,57,23,17" />
-      <scope id="3444023549502390441" at="42,54,44,17" />
+      <scope id="3444023549502390441" at="42,60,44,17" />
       <scope id="3444023549502390441" at="63,58,65,17" />
       <scope id="3444023549502390441" at="84,64,86,17" />
       <scope id="3444023549502390441" at="15,0,18,0" />
@@ -478,26 +485,26 @@
       <scope id="3444023549502390441" at="84,0,88,0">
         <var name="value" id="3444023549502390441" />
       </scope>
-      <scope id="3444023549502393778" at="99,118,103,55" />
-      <scope id="3444023549502393774" at="99,0,105,0">
-        <var name="fromCompanion" id="3444023549502394280" />
-        <var name="fromConstructors" id="3444023549502394278" />
-        <var name="fromInstance" id="3444023549502394276" />
-        <var name="fromStandalone" id="3444023549502424165" />
-      </scope>
       <scope id="3444023549502390441" at="25,57,33,6" />
-      <scope id="3444023549502390441" at="46,54,54,6" />
+      <scope id="3444023549502390441" at="46,60,54,6" />
       <scope id="3444023549502390441" at="67,58,75,6" />
       <scope id="3444023549502390441" at="88,64,96,6" />
       <scope id="3444023549502390441" at="25,0,35,0" />
       <scope id="3444023549502390441" at="46,0,56,0" />
       <scope id="3444023549502390441" at="67,0,77,0" />
       <scope id="3444023549502390441" at="88,0,98,0" />
+      <scope id="3444023549502393778" at="99,118,110,55" />
+      <scope id="3444023549502393774" at="99,0,112,0">
+        <var name="fromCompanion" id="3444023549502394280" />
+        <var name="fromConstructors" id="3444023549502394278" />
+        <var name="fromInstance" id="3444023549502394276" />
+        <var name="fromStandalone" id="3444023549502424165" />
+      </scope>
       <unit id="3444023549502390441" at="26,15,33,5" name="jetbrains.mps.kotlin.scopes.ScopeContext$1" />
       <unit id="3444023549502390441" at="47,15,54,5" name="jetbrains.mps.kotlin.scopes.ScopeContext$2" />
       <unit id="3444023549502390441" at="68,15,75,5" name="jetbrains.mps.kotlin.scopes.ScopeContext$3" />
       <unit id="3444023549502390441" at="89,15,96,5" name="jetbrains.mps.kotlin.scopes.ScopeContext$4" />
-      <unit id="3444023549502390441" at="7,0,106,0" name="jetbrains.mps.kotlin.scopes.ScopeContext" />
+      <unit id="3444023549502390441" at="7,0,113,0" name="jetbrains.mps.kotlin.scopes.ScopeContext" />
     </file>
   </root>
   <root nodeRef="r:7d051f7f-1a28-4ed6-9de6-95fd49d3fa23(jetbrains.mps.kotlin.scopes)/3444023549505894450">

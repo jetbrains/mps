@@ -7,8 +7,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
@@ -22,6 +22,15 @@ public class PrecedenceUtil {
   private PrecedenceUtil() {
   }
 
+  /**
+   * Returns the expression on which the transformation should be applied with regards to operator
+   * precedence.
+   * 
+   * @param contextNode node on which to transform is called
+   * @param resultPrecedence precedence of the inserted operator
+   * @param leftTransform whether this transformation is opered on the left side
+   * @return expression on which to apply the transformation
+   */
   public static SNode getTargetForTransform(SNode contextNode, Precedence resultPrecedence, boolean leftTransform) {
     SNode targetNode = contextNode;
     SNode parentNode = SNodeOperations.as(SNodeOperations.getParent(targetNode), CONCEPTS.IExpression$2i);
@@ -80,7 +89,14 @@ public class PrecedenceUtil {
       }
     }
 
-    SNodeOperations.replaceWithAnother(nodeToProcess, result);
+    if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(nodeToProcess), CONCEPTS.UnaryExpression$Ls)) {
+      SNode parens = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3e2L, "jetbrains.mps.kotlin.structure.ParenthesizedExpression"));
+      SNodeOperations.replaceWithAnother(nodeToProcess, parens);
+      SLinkOperations.setTarget(parens, LINKS.nested$xoIL, result);
+    } else {
+      SNodeOperations.replaceWithAnother(nodeToProcess, result);
+    }
+
     if (isLeftTransform) {
       SLinkOperations.setTarget(result, LINKS.right$yQIM, nodeToProcess);
     } else {
@@ -106,11 +122,13 @@ public class PrecedenceUtil {
     /*package*/ static final SConcept BinaryExpression$$S = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, "jetbrains.mps.kotlin.structure.BinaryExpression");
     /*package*/ static final SConcept PostfixUnaryExpression$2v = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956fd8L, "jetbrains.mps.kotlin.structure.PostfixUnaryExpression");
     /*package*/ static final SConcept PrefixUnaryExpression$JZ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f1dL, "jetbrains.mps.kotlin.structure.PrefixUnaryExpression");
+    /*package*/ static final SConcept UnaryExpression$Ls = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, "jetbrains.mps.kotlin.structure.UnaryExpression");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink right$yQIM = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, 0x11400bb790954ee2L, "right");
     /*package*/ static final SContainmentLink left$yQgK = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, 0x11400bb790954ee0L, "left");
+    /*package*/ static final SContainmentLink nested$xoIL = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3e2L, 0x28bef6d7551af699L, "nested");
     /*package*/ static final SContainmentLink operand$YS5t = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, 0x11400bb790956f23L, "operand");
   }
 }

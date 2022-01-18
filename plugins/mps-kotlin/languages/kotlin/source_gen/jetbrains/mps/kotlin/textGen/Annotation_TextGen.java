@@ -7,44 +7,26 @@ import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class Annotation_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append("@");
-
-    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.target$HTD$) != null)) {
-      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.target$HTD$));
-      tgs.append(":");
-    }
-
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.annotations$HTS_)).count() > 1) {
-      tgs.append("[");
-    }
-
-    {
-      Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.annotations$HTS_);
-      final SNode lastItem = Sequence.fromIterable(collection).last();
-      for (SNode item : collection) {
-        tgs.appendNode(item);
-        if (item != lastItem) {
-          tgs.append(" ");
-        }
-      }
-    }
-
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.annotations$HTS_)).count() > 1) {
-      tgs.append("]");
+    KotlinTextGen.reference(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.constructor$F_F2), true, ctx);
+    KotlinTextGen.projections(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.typeArguments$86s6), ctx);
+    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.arguments$zJyV)).isNotEmpty()) {
+      tgs.append("(");
+      KotlinTextGen.arguments(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.arguments$zJyV), ctx);
+      tgs.append(")");
     }
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink target$HTD$ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37fL, 0x1ba36e493dc8425bL, "target");
-    /*package*/ static final SContainmentLink annotations$HTS_ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37fL, 0x1ba36e493dc8425cL, "annotations");
+    /*package*/ static final SReferenceLink constructor$F_F2 = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x446a1050b763ccb9L, 0x446a1050b7640681L, "constructor");
+    /*package*/ static final SContainmentLink typeArguments$86s6 = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L, 0x5b1dd60162c9757cL, "typeArguments");
+    /*package*/ static final SContainmentLink arguments$zJyV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL, 0x5b1dd60162ecf00cL, "arguments");
   }
 }

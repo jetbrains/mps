@@ -130,7 +130,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return LINKS.annotations$zNfA;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.ConstructorCall$SH;
+      return CONCEPTS.ConstructorSuperSpecifier$SH;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -201,6 +201,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept ConstructorCall$SH = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f6L, "jetbrains.mps.kotlin.structure.ConstructorCall");
+    /*package*/ static final SConcept ConstructorSuperSpecifier$SH = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f6L, "jetbrains.mps.kotlin.structure.ConstructorSuperSpecifier");
   }
 }

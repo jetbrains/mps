@@ -32,24 +32,24 @@ public class ScopeContext {
       }
     };
   }
-  private boolean myWithConstructors;
-  public boolean isWithConstructors() {
-    return this.myWithConstructors;
+  private boolean myWithNestedConstructors;
+  public boolean isWithNestedConstructors() {
+    return this.myWithNestedConstructors;
   }
-  private void _setWithConstructors(boolean value) {
-    this.myWithConstructors = value;
+  private void _setWithNestedConstructors(boolean value) {
+    this.myWithNestedConstructors = value;
   }
-  private boolean setWithConstructors(boolean value) {
-    _setWithConstructors(value);
+  private boolean setWithNestedConstructors(boolean value) {
+    _setWithNestedConstructors(value);
     return value;
   }
-  private Reference<Boolean> refToWithConstructors() {
+  private Reference<Boolean> refToWithNestedConstructors() {
     return new Reference<Boolean>() {
       public Boolean get() {
-        return isWithConstructors();
+        return isWithNestedConstructors();
       }
       public void set(Boolean value) {
-        _setWithConstructors(value);
+        _setWithNestedConstructors(value);
       }
     };
   }
@@ -97,9 +97,16 @@ public class ScopeContext {
   }
 
   public ScopeContext(boolean fromInstance, boolean fromConstructors, boolean fromCompanion, boolean fromStandalone) {
+    // Instance members of current type
     this.setWithInstanceMembers(fromInstance);
-    this.setWithConstructors(fromConstructors);
+
+    // Constructors accessible from type (nested classes' constructors mostly)
+    this.setWithNestedConstructors(fromConstructors);
+
+    // Members of companion object
     this.setWithCompanionMembers(fromCompanion);
+
+    // Standalone declarations (not member of any class)
     this.setWithStandaloneDeclarations(fromStandalone);
   }
 }

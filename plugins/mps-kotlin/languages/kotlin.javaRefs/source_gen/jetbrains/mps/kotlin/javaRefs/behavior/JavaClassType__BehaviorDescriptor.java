@@ -156,7 +156,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     // Nested constructors
-    if (context.isWithConstructors()) {
+    if (context.isWithNestedConstructors()) {
       if (collector.value == null) {
         collector.value = new FilteredSignatureCollector(filter.getSignatureFilter());
       }

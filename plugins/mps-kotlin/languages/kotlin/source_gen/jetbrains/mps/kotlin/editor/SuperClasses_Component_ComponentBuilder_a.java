@@ -107,7 +107,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       return LINKS.superclasses$6CkZ;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.IInheritanceSpecifier$PQ;
+      return CONCEPTS.ISuperTypeSpecifier$PQ;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -177,6 +177,6 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IInheritanceSpecifier$PQ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL, "jetbrains.mps.kotlin.structure.IInheritanceSpecifier");
+    /*package*/ static final SInterfaceConcept ISuperTypeSpecifier$PQ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL, "jetbrains.mps.kotlin.structure.ISuperTypeSpecifier");
   }
 }

@@ -631,7 +631,7 @@
   </node>
   <node concept="1M2fIO" id="26mUjU3R65F">
     <property role="3GE5qa" value="extends" />
-    <ref role="1M2myG" to="5m2i:26mUjU3QZBY" resolve="JavaClassInheritanceSpecifier" />
+    <ref role="1M2myG" to="5m2i:26mUjU3QZBY" resolve="JavaConstructorSuperSpecifier" />
     <node concept="1N5Pfh" id="26mUjU3R99v" role="1Mr941">
       <ref role="1N5Vy1" to="5m2i:26mUjU3R2JX" resolve="constructor" />
       <node concept="3dgokm" id="26mUjU3R9aQ" role="1N6uqs">
@@ -1276,7 +1276,7 @@
   </node>
   <node concept="1M2fIO" id="5H$PF0dtqkC">
     <property role="3GE5qa" value="extends" />
-    <ref role="1M2myG" to="5m2i:5H$PF0dtma6" resolve="JavaDefaultConstructorInheritanceSpecifier" />
+    <ref role="1M2myG" to="5m2i:5H$PF0dtma6" resolve="JavaDefaultConstructorSuperSpecifier" />
     <node concept="1N5Pfh" id="5H$PF0dtqqF" role="1Mr941">
       <ref role="1N5Vy1" to="5m2i:5H$PF0dtmad" resolve="classifier" />
       <node concept="3dgokm" id="5H$PF0dtqGR" role="1N6uqs">

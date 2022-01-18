@@ -169,6 +169,16 @@ public class KotlinStyles_StyleSheet {
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
     new CommentStyleClass(editorContext, node).apply(style, editorCell);
   }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_Annotation(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new AnnotationStyleClass(editorContext, node).apply(style, editorCell);
+  }
 
   public static class LParenthesisStyleClass extends AbstractStyleClass {
     public LParenthesisStyleClass(EditorContext editorContext, SNode node) {
@@ -336,6 +346,17 @@ public class KotlinStyles_StyleSheet {
     @Override
     public void apply(Style style, EditorCell editorCell) {
       new jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    }
+
+  }
+  public static class AnnotationStyleClass extends AbstractStyleClass {
+    public AnnotationStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      new jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.AnnotationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     }
 
   }

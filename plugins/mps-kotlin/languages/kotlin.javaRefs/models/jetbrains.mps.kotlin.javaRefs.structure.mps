@@ -102,16 +102,10 @@
   <node concept="1TIwiD" id="26mUjU3QZBY">
     <property role="EcuMT" value="2420378304467696126" />
     <property role="3GE5qa" value="extends" />
-    <property role="TrG5h" value="JavaClassInheritanceSpecifier" />
+    <property role="TrG5h" value="JavaConstructorSuperSpecifier" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="26mUjU3QZBZ" role="PzmwI">
-      <ref role="PrY4T" to="hcm8:213J8cgKswc" resolve="IInheritanceSpecifier" />
-    </node>
-    <node concept="PrWs8" id="26mUjU3R5SK" role="PzmwI">
-      <ref role="PrY4T" to="hcm8:5GtPw5yVf0b" resolve="IArguments" />
-    </node>
-    <node concept="PrWs8" id="26mUjU3R4xW" role="PzmwI">
-      <ref role="PrY4T" to="hcm8:2gj5XQXEpsk" resolve="ITypeArguments" />
+      <ref role="PrY4T" to="hcm8:1$jFvlEU70c" resolve="IConstructorSuperSpecifier" />
     </node>
     <node concept="1TJgyj" id="26mUjU3R2JX" role="1TKVEi">
       <property role="IQ2ns" value="2420378304467708925" />
@@ -196,23 +190,20 @@
   </node>
   <node concept="1TIwiD" id="ZgHBwZxr7U">
     <property role="EcuMT" value="1139611333302792698" />
-    <property role="TrG5h" value="JavaInterfaceInheritanceSpecifier" />
+    <property role="TrG5h" value="JavaClassSuperSpecifier" />
     <property role="3GE5qa" value="extends" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="ZgHBwZxuz3" role="1TKVEi">
       <property role="IQ2ns" value="1139611333302806723" />
-      <property role="20kJfa" value="interface" />
+      <property role="20kJfa" value="classifier" />
       <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" to="tpee:g7HP654" resolve="Interface" />
+      <ref role="20lvS9" to="tpee:g7pOWCK" resolve="Classifier" />
     </node>
     <node concept="PrWs8" id="ZgHBwZxwyq" role="PzmwI">
-      <ref role="PrY4T" to="hcm8:213J8cgKswc" resolve="IInheritanceSpecifier" />
-    </node>
-    <node concept="PrWs8" id="ZgHBwZxwTC" role="PzmwI">
-      <ref role="PrY4T" to="hcm8:2gj5XQXEpsk" resolve="ITypeArguments" />
+      <ref role="PrY4T" to="hcm8:1$jFvlEWaYg" resolve="IClassSuperSpecifier" />
     </node>
     <node concept="RPilO" id="5H$PF0dtkQD" role="lGtFl">
-      <ref role="RPilL" node="ZgHBwZxuz3" resolve="interface" />
+      <ref role="RPilL" node="ZgHBwZxuz3" resolve="classifier" />
     </node>
   </node>
   <node concept="1TIwiD" id="5H$PF0dovDV">
@@ -241,15 +232,9 @@
   <node concept="1TIwiD" id="5H$PF0dtma6">
     <property role="EcuMT" value="6585624606750892678" />
     <property role="3GE5qa" value="extends" />
-    <property role="TrG5h" value="JavaDefaultConstructorInheritanceSpecifier" />
+    <property role="TrG5h" value="JavaDefaultConstructorSuperSpecifier" />
     <node concept="PrWs8" id="5H$PF0dtma7" role="PzmwI">
-      <ref role="PrY4T" to="hcm8:213J8cgKswc" resolve="IInheritanceSpecifier" />
-    </node>
-    <node concept="PrWs8" id="5H$PF0dtmaa" role="PzmwI">
-      <ref role="PrY4T" to="hcm8:5GtPw5yVf0b" resolve="IArguments" />
-    </node>
-    <node concept="PrWs8" id="5H$PF0dtmab" role="PzmwI">
-      <ref role="PrY4T" to="hcm8:2gj5XQXEpsk" resolve="ITypeArguments" />
+      <ref role="PrY4T" to="hcm8:1$jFvlEU70c" resolve="IConstructorSuperSpecifier" />
     </node>
     <node concept="1TJgyj" id="5H$PF0dtmad" role="1TKVEi">
       <property role="IQ2ns" value="6585624606750892685" />

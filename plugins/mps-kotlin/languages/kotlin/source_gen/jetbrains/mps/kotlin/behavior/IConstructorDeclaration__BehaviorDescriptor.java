@@ -45,7 +45,7 @@ public final class IConstructorDeclaration__BehaviorDescriptor extends BaseBHDes
     return IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(IFunctionDeclaration__BehaviorDescriptor.getClass_id4vugIDehkCF.invoke(__thisNode__), ((boolean) false));
   }
   /*package*/ static SNode getConstructedClass_id7WpE6U5evQG(@NotNull SNode __thisNode__) {
-    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IClassLike$go, true, false);
+    return SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.IClassDeclaration$bQ, true, false);
   }
   /*package*/ static SNode getClass_id4vugIDehkCF(@NotNull SNode __thisNode__) {
     SNode builtClass = IConstructorDeclaration__BehaviorDescriptor.getConstructedClass_id7WpE6U5evQG.invoke(__thisNode__);
@@ -131,9 +131,9 @@ public final class IConstructorDeclaration__BehaviorDescriptor extends BaseBHDes
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IClassDeclaration$bQ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b56dL, "jetbrains.mps.kotlin.structure.IClassDeclaration");
     /*package*/ static final SInterfaceConcept IClassLike$go = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x298a6a355c110274L, "jetbrains.mps.kotlin.structure.IClassLike");
     /*package*/ static final SConcept InnerClassModifier$wL = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af40bL, "jetbrains.mps.kotlin.structure.InnerClassModifier");
-    /*package*/ static final SInterfaceConcept IClassDeclaration$bQ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b56dL, "jetbrains.mps.kotlin.structure.IClassDeclaration");
   }
 
   private static final class LINKS {

@@ -6,13 +6,8 @@ import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class CompanionObject_TextGen extends TextGenDescriptorBase {
   @Override
@@ -25,20 +20,7 @@ public class CompanionObject_TextGen extends TextGenDescriptorBase {
       tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.customName$sUyF));
     }
 
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.superclasses$6CkZ)).isNotEmpty()) {
-      tgs.append(" : ");
-      {
-        Iterable<SNode> collection = SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.superclasses$6CkZ);
-        final SNode lastItem = Sequence.fromIterable(collection).last();
-        for (SNode item : collection) {
-          tgs.appendNode(item);
-          if (item != lastItem) {
-            tgs.append(", ");
-          }
-        }
-      }
-    }
-
+    KotlinTextGen.superclasses(ctx.getPrimaryInput(), ctx);
     KotlinTextGen.classBody(ctx.getPrimaryInput(), ctx);
   }
   private static boolean isNotEmptyString(String str) {
@@ -47,9 +29,5 @@ public class CompanionObject_TextGen extends TextGenDescriptorBase {
 
   private static final class PROPS {
     /*package*/ static final SProperty customName$sUyF = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af57dL, 0x2043bc831118d92cL, "customName");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink superclasses$6CkZ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, 0x1ba36e493d40fea5L, "superclasses");
   }
 }

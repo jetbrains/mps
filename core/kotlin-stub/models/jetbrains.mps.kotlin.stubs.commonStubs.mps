@@ -4330,7 +4330,7 @@
                     </node>
                     <node concept="3clFbS" id="2Aaqzls7cvH" role="1bW5cS">
                       <node concept="Jncv_" id="2Aaqzls7cvI" role="3cqZAp">
-                        <ref role="JncvD" to="hcm8:213J8cgKswc" resolve="IInheritanceSpecifier" />
+                        <ref role="JncvD" to="hcm8:213J8cgKswc" resolve="ISuperTypeSpecifier" />
                         <node concept="37vLTw" id="2Aaqzls7cvJ" role="JncvB">
                           <ref role="3cqZAo" node="2Aaqzls7cvF" resolve="type" />
                         </node>
@@ -4369,12 +4369,12 @@
                             <node concept="3cpWsn" id="nozGpWWujc" role="3cpWs9">
                               <property role="TrG5h" value="superType" />
                               <node concept="3Tqbb2" id="nozGpWWt02" role="1tU5fm">
-                                <ref role="ehGHo" to="hcm8:213J8cgIr6k" resolve="SuperInterfaceSpecifier" />
+                                <ref role="ehGHo" to="hcm8:213J8cgIr6k" resolve="SuperClassSpecifier" />
                               </node>
                               <node concept="2ShNRf" id="nozGpWW$JI" role="33vP2m">
                                 <node concept="3zrR0B" id="nozGpWWztO" role="2ShVmc">
                                   <node concept="3Tqbb2" id="nozGpWWztR" role="3zrR0E">
-                                    <ref role="ehGHo" to="hcm8:213J8cgIr6k" resolve="SuperInterfaceSpecifier" />
+                                    <ref role="ehGHo" to="hcm8:213J8cgIr6k" resolve="SuperClassSpecifier" />
                                   </node>
                                 </node>
                               </node>
@@ -4450,7 +4450,7 @@
                                   <node concept="liA8E" id="4nzhnY10ziP" role="2OqNvi">
                                     <ref role="37wK5l" to="mhbf:~SNode.setReferenceTarget(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode)" resolve="setReferenceTarget" />
                                     <node concept="359W_D" id="4nzhnY10Bnd" role="37wK5m">
-                                      <ref role="359W_E" to="hcm8:213J8cgIr6k" resolve="SuperInterfaceSpecifier" />
+                                      <ref role="359W_E" to="hcm8:213J8cgIr6k" resolve="SuperClassSpecifier" />
                                       <ref role="359W_F" to="hcm8:213J8cgIr6l" resolve="target" />
                                     </node>
                                     <node concept="37vLTw" id="4nzhnY10Pr_" role="37wK5m">
@@ -4478,7 +4478,7 @@
                                     <node concept="liA8E" id="4nzhnY14Qz5" role="2OqNvi">
                                       <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.ResolveInfo)" resolve="setReference" />
                                       <node concept="359W_D" id="4nzhnY14Qz6" role="37wK5m">
-                                        <ref role="359W_E" to="hcm8:213J8cgIr6k" resolve="SuperInterfaceSpecifier" />
+                                        <ref role="359W_E" to="hcm8:213J8cgIr6k" resolve="SuperClassSpecifier" />
                                         <ref role="359W_F" to="hcm8:213J8cgIr6l" resolve="target" />
                                       </node>
                                       <node concept="2OqwBi" id="13KYllCbF11" role="37wK5m">
@@ -7645,7 +7645,7 @@
               </node>
             </node>
             <node concept="WFELt" id="1yTI8p9sfUX" role="2OqNvi">
-              <ref role="1A0vxQ" to="hcm8:1yTI8p9rQY3" resolve="CompiledCodeStatement" />
+              <ref role="1A0vxQ" to="hcm8:1yTI8p9rQY3" resolve="CompiledStubStatement" />
             </node>
           </node>
         </node>

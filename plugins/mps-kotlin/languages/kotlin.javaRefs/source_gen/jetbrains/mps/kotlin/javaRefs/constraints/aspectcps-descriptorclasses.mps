@@ -365,7 +365,7 @@
             <node concept="3clFbS" id="v" role="1pnPq1">
               <node concept="3cpWs6" id="x" role="3cqZAp">
                 <node concept="1nCR9W" id="y" role="3cqZAk">
-                  <property role="1nD$Q0" value="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassInheritanceSpecifier_Constraints" />
+                  <property role="1nD$Q0" value="jetbrains.mps.kotlin.javaRefs.constraints.JavaConstructorSuperSpecifier_Constraints" />
                   <node concept="3uibUv" id="z" role="2lIhxL">
                     <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
@@ -373,7 +373,7 @@
               </node>
             </node>
             <node concept="3gn64h" id="w" role="1pnPq6">
-              <ref role="3gnhBz" to="5m2i:26mUjU3QZBY" resolve="JavaClassInheritanceSpecifier" />
+              <ref role="3gnhBz" to="5m2i:26mUjU3QZBY" resolve="JavaConstructorSuperSpecifier" />
             </node>
           </node>
           <node concept="1pnPoh" id="k" role="1_3QMm">
@@ -425,7 +425,7 @@
             <node concept="3clFbS" id="N" role="1pnPq1">
               <node concept="3cpWs6" id="P" role="3cqZAp">
                 <node concept="1nCR9W" id="Q" role="3cqZAk">
-                  <property role="1nD$Q0" value="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorInheritanceSpecifier_Constraints" />
+                  <property role="1nD$Q0" value="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorSuperSpecifier_Constraints" />
                   <node concept="3uibUv" id="R" role="2lIhxL">
                     <ref role="3uigEE" to="ze1i:~ConstraintsDescriptor" resolve="ConstraintsDescriptor" />
                   </node>
@@ -433,7 +433,7 @@
               </node>
             </node>
             <node concept="3gn64h" id="O" role="1pnPq6">
-              <ref role="3gnhBz" to="5m2i:5H$PF0dtma6" resolve="JavaDefaultConstructorInheritanceSpecifier" />
+              <ref role="3gnhBz" to="5m2i:5H$PF0dtma6" resolve="JavaDefaultConstructorSuperSpecifier" />
             </node>
           </node>
           <node concept="1pnPoh" id="o" role="1_3QMm">
@@ -858,7 +858,7 @@
   </node>
   <node concept="312cEu" id="2I">
     <property role="3GE5qa" value="extends" />
-    <property role="TrG5h" value="JavaClassInheritanceSpecifier_Constraints" />
+    <property role="TrG5h" value="JavaConstructorSuperSpecifier_Constraints" />
     <uo k="s:originTrace" v="n:2420378304467722603" />
     <node concept="3Tm1VV" id="2J" role="1B3o_S">
       <uo k="s:originTrace" v="n:2420378304467722603" />
@@ -879,7 +879,7 @@
           <uo k="s:originTrace" v="n:2420378304467722603" />
           <node concept="1BaE9c" id="2U" role="37wK5m">
             <property role="1ouuDV" value="CONCEPTS" />
-            <property role="1BaxDp" value="JavaClassInheritanceSpecifier$OZ" />
+            <property role="1BaxDp" value="JavaConstructorSuperSpecifier$OZ" />
             <uo k="s:originTrace" v="n:2420378304467722603" />
             <node concept="2YIFZM" id="2V" role="1Bazha">
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
@@ -898,7 +898,7 @@
                 <uo k="s:originTrace" v="n:2420378304467722603" />
               </node>
               <node concept="Xl_RD" id="2Z" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.kotlin.javaRefs.structure.JavaClassInheritanceSpecifier" />
+                <property role="Xl_RC" value="jetbrains.mps.kotlin.javaRefs.structure.JavaConstructorSuperSpecifier" />
                 <uo k="s:originTrace" v="n:2420378304467722603" />
               </node>
             </node>
@@ -2019,7 +2019,7 @@
   </node>
   <node concept="312cEu" id="7C">
     <property role="3GE5qa" value="extends" />
-    <property role="TrG5h" value="JavaDefaultConstructorInheritanceSpecifier_Constraints" />
+    <property role="TrG5h" value="JavaDefaultConstructorSuperSpecifier_Constraints" />
     <uo k="s:originTrace" v="n:6585624606750909736" />
     <node concept="3Tm1VV" id="7D" role="1B3o_S">
       <uo k="s:originTrace" v="n:6585624606750909736" />
@@ -2040,7 +2040,7 @@
           <uo k="s:originTrace" v="n:6585624606750909736" />
           <node concept="1BaE9c" id="7M" role="37wK5m">
             <property role="1ouuDV" value="CONCEPTS" />
-            <property role="1BaxDp" value="JavaDefaultConstructorInheritanceSpecifier$YV" />
+            <property role="1BaxDp" value="JavaDefaultConstructorSuperSpecifier$YV" />
             <uo k="s:originTrace" v="n:6585624606750909736" />
             <node concept="2YIFZM" id="7N" role="1Bazha">
               <ref role="1Pybhc" to="2k9e:~MetaAdapterFactory" resolve="MetaAdapterFactory" />
@@ -2059,7 +2059,7 @@
                 <uo k="s:originTrace" v="n:6585624606750909736" />
               </node>
               <node concept="Xl_RD" id="7R" role="37wK5m">
-                <property role="Xl_RC" value="jetbrains.mps.kotlin.javaRefs.structure.JavaDefaultConstructorInheritanceSpecifier" />
+                <property role="Xl_RC" value="jetbrains.mps.kotlin.javaRefs.structure.JavaDefaultConstructorSuperSpecifier" />
                 <uo k="s:originTrace" v="n:6585624606750909736" />
               </node>
             </node>

@@ -134,8 +134,8 @@ public class SuperInterface_Specify_Transform extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.delegate$mZkX, null);
-        SelectionUtil.selectNode(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.delegate$mZkX));
+        SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.delegate$pKtK, null);
+        SelectionUtil.selectNode(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.delegate$pKtK));
       }
 
 
@@ -163,6 +163,6 @@ public class SuperInterface_Specify_Transform extends TransformationMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink delegate$mZkX = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310b9b194L, 0x2043bc8310b9b197L, "delegate");
+    /*package*/ static final SContainmentLink delegate$pKtK = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56af0af90L, 0x2043bc8310b9b197L, "delegate");
   }
 }

@@ -111,7 +111,7 @@ public class IObject_SpecifySuperType_Transform extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.superclasses$6CkZ)).addElement(SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL, "jetbrains.mps.kotlin.structure.IInheritanceSpecifier"))));
+        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.superclasses$6CkZ)).addElement(SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL, "jetbrains.mps.kotlin.structure.ISuperTypeSpecifier"))));
       }
 
       @Override

@@ -25,8 +25,9 @@ public final class InterfaceDeclaration__BehaviorDescriptor extends BaseBHDescri
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7554886bfL, "jetbrains.mps.kotlin.structure.InterfaceDeclaration");
 
   public static final SMethod<SAbstractConcept> getDefaultInheritance_id7uO8z1Cfao7 = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getDefaultInheritance").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7uO8z1Cfao7").build();
+  public static final SMethod<Boolean> hasPrimaryConstructor_id1$jFvlEi5P5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasPrimaryConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1$jFvlEi5P5").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultInheritance_id7uO8z1Cfao7);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDefaultInheritance_id7uO8z1Cfao7, hasPrimaryConstructor_id1$jFvlEi5P5);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
     SLinkOperations.setTarget(__thisNode__, LINKS.inheritance$TFvr, SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f2L, "jetbrains.mps.kotlin.structure.AbstractInheritanceModifier")));
@@ -34,6 +35,9 @@ public final class InterfaceDeclaration__BehaviorDescriptor extends BaseBHDescri
 
   /*package*/ static SAbstractConcept getDefaultInheritance_id7uO8z1Cfao7(@NotNull SAbstractConcept __thisConcept__) {
     return CONCEPTS.AbstractInheritanceModifier$GA;
+  }
+  /*package*/ static boolean hasPrimaryConstructor_id1$jFvlEi5P5(@NotNull SNode __thisNode__) {
+    return false;
   }
 
   /*package*/ InterfaceDeclaration__BehaviorDescriptor() {
@@ -51,6 +55,8 @@ public final class InterfaceDeclaration__BehaviorDescriptor extends BaseBHDescri
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 1:
+        return (T) ((Boolean) hasPrimaryConstructor_id1$jFvlEi5P5(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

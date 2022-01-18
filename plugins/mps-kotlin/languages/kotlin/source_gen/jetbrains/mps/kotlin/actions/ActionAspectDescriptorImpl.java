@@ -22,10 +22,14 @@ public class ActionAspectDescriptorImpl extends BaseActionAspectDescriptor imple
           return Collections.<NodeFactory>singletonList(new ParametersFactories.NodeFactory_2998782254610272790());
         case "FunctionDeclaration":
           return Collections.<NodeFactory>singletonList(new MembersFactories.NodeFactory_2998782254621247415());
+        case "IArguments":
+          return Collections.<NodeFactory>singletonList(new ParametersFactories.NodeFactory_4929770680975399214());
         case "IInheritable":
           return Collections.<NodeFactory>singletonList(new MembersFactories.NodeFactory_2998782254613448499());
         case "IStatementHolder":
           return Collections.<NodeFactory>singletonList(new StructureFactories.NodeFactory_7208671122137144284());
+        case "ITypeArguments":
+          return Collections.<NodeFactory>singletonList(new ParametersFactories.NodeFactory_1806979145075646805());
         case "IVisible":
           return Collections.<NodeFactory>singletonList(new MembersFactories.NodeFactory_2998782254613442582());
         case "NumericBaseLiteral":

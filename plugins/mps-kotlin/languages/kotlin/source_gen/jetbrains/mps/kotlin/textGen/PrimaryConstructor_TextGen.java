@@ -26,11 +26,9 @@ public class PrimaryConstructor_TextGen extends TextGenDescriptorBase {
       tgs.append("constructor");
     }
 
-    if (ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.parameters$$EEQ)).isNotEmpty()) {
-      tgs.append("(");
-      KotlinTextGen.arguments(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.parameters$$EEQ), ctx);
-      tgs.append(")");
-    }
+    tgs.append("(");
+    KotlinTextGen.arguments(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.parameters$$EEQ), ctx);
+    tgs.append(")");
   }
 
   private static final class LINKS {

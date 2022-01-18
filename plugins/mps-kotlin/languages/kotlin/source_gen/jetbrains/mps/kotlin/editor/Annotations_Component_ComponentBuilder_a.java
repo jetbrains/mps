@@ -88,7 +88,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return LINKS.annotations$bXtr;
     }
     public SAbstractConcept getChildSConcept() {
-      return CONCEPTS.Annotation$je;
+      return CONCEPTS.AnnotationList$je;
     }
 
     public EditorCell createNodeCell(SNode elementNode) {
@@ -145,6 +145,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Annotation$je = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37fL, "jetbrains.mps.kotlin.structure.Annotation");
+    /*package*/ static final SConcept AnnotationList$je = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37fL, "jetbrains.mps.kotlin.structure.AnnotationList");
   }
 }

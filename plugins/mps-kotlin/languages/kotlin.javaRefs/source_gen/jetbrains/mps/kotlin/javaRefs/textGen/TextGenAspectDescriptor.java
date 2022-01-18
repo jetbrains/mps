@@ -19,16 +19,16 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   @Override
   public TextGenDescriptor getDescriptor(@NotNull SAbstractConcept concept) {
     switch (myIndex.index(concept)) {
-      case LanguageConceptSwitch.JavaClassInheritanceSpecifier:
-        return new JavaClassInheritanceSpecifier_TextGen();
+      case LanguageConceptSwitch.JavaClassSuperSpecifier:
+        return new JavaClassSuperSpecifier_TextGen();
       case LanguageConceptSwitch.JavaClassType:
         return new JavaClassType_TextGen();
+      case LanguageConceptSwitch.JavaConstructorSuperSpecifier:
+        return new JavaConstructorSuperSpecifier_TextGen();
       case LanguageConceptSwitch.JavaDefaultConstructorCall:
         return new JavaDefaultConstructorCall_TextGen();
-      case LanguageConceptSwitch.JavaDefaultConstructorInheritanceSpecifier:
-        return new JavaDefaultConstructorInheritanceSpecifier_TextGen();
-      case LanguageConceptSwitch.JavaInterfaceInheritanceSpecifier:
-        return new JavaInterfaceInheritanceSpecifier_TextGen();
+      case LanguageConceptSwitch.JavaDefaultConstructorSuperSpecifier:
+        return new JavaDefaultConstructorSuperSpecifier_TextGen();
       case LanguageConceptSwitch.JavaMemberTarget:
         return new JavaMemberTarget_TextGen();
       case LanguageConceptSwitch.JavaMethodCall:

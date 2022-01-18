@@ -2870,7 +2870,7 @@
       <node concept="10P_77" id="2ZbCiJaaSwP" role="2RkE6I" />
     </node>
     <node concept="2RhdJD" id="2ZbCiJaaSCk" role="jymVt">
-      <property role="2RkwnN" value="withConstructors" />
+      <property role="2RkwnN" value="withNestedConstructors" />
       <node concept="3Tm1VV" id="2ZbCiJaaSCl" role="1B3o_S" />
       <node concept="2RoN1w" id="2ZbCiJaaSCm" role="2RnVtd">
         <node concept="3wEZqW" id="2ZbCiJaaSCn" role="3wFrgM" />
@@ -2923,6 +2923,25 @@
       <node concept="3cqZAl" id="2ZbCiJaaSQK" role="3clF45" />
       <node concept="3Tm1VV" id="2ZbCiJaaSQL" role="1B3o_S" />
       <node concept="3clFbS" id="2ZbCiJaaSQM" role="3clF47">
+        <node concept="3SKdUt" id="1$jFvlEo$35" role="3cqZAp">
+          <node concept="1PaTwC" id="1$jFvlEo$36" role="1aUNEU">
+            <node concept="3oM_SD" id="1$jFvlEo$90" role="1PaTwD">
+              <property role="3oM_SC" value="Instance" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo$9R" role="1PaTwD">
+              <property role="3oM_SC" value="members" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo$ba" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo$bF" role="1PaTwD">
+              <property role="3oM_SC" value="current" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo$d2" role="1PaTwD">
+              <property role="3oM_SC" value="type" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="2ZbCiJaaUTE" role="3cqZAp">
           <node concept="37vLTI" id="2ZbCiJaaVzg" role="3clFbG">
             <node concept="37vLTw" id="2ZbCiJaaVBR" role="37vLTx">
@@ -2936,6 +2955,35 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbH" id="1$jFvlEo$eP" role="3cqZAp" />
+        <node concept="3SKdUt" id="1$jFvlEo$m4" role="3cqZAp">
+          <node concept="1PaTwC" id="1$jFvlEo$m5" role="1aUNEU">
+            <node concept="3oM_SD" id="1$jFvlEo$rP" role="1PaTwD">
+              <property role="3oM_SC" value="Constructors" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo$tw" role="1PaTwD">
+              <property role="3oM_SC" value="accessible" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo$vd" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo$w8" role="1PaTwD">
+              <property role="3oM_SC" value="type" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo$x5" role="1PaTwD">
+              <property role="3oM_SC" value="(nested" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo$$6" role="1PaTwD">
+              <property role="3oM_SC" value="classes'" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo$_V" role="1PaTwD">
+              <property role="3oM_SC" value="constructors" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo$Bo" role="1PaTwD">
+              <property role="3oM_SC" value="mostly)" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="2ZbCiJaaU0O" role="3cqZAp">
           <node concept="37vLTI" id="2ZbCiJaaUF9" role="3clFbG">
             <node concept="37vLTw" id="2ZbCiJaaUKd" role="37vLTx">
@@ -2944,8 +2992,25 @@
             <node concept="2OqwBi" id="2ZbCiJaaU6R" role="37vLTJ">
               <node concept="Xjq3P" id="2ZbCiJaaU0M" role="2Oq$k0" />
               <node concept="2S8uIT" id="2ZbCiJaaUhT" role="2OqNvi">
-                <ref role="2S8YL0" node="2ZbCiJaaSCk" resolve="withConstructors" />
+                <ref role="2S8YL0" node="2ZbCiJaaSCk" resolve="withNestedConstructors" />
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="1$jFvlEo$DF" role="3cqZAp" />
+        <node concept="3SKdUt" id="1$jFvlEo$Mq" role="3cqZAp">
+          <node concept="1PaTwC" id="1$jFvlEo$Mr" role="1aUNEU">
+            <node concept="3oM_SD" id="1$jFvlEo$SV" role="1PaTwD">
+              <property role="3oM_SC" value="Members" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo$To" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo$TR" role="1PaTwD">
+              <property role="3oM_SC" value="companion" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo$VA" role="1PaTwD">
+              <property role="3oM_SC" value="object" />
             </node>
           </node>
         </node>
@@ -2959,6 +3024,32 @@
               <node concept="2S8uIT" id="2ZbCiJaaTkp" role="2OqNvi">
                 <ref role="2S8YL0" node="2ZbCiJaaSb0" resolve="withCompanionMembers" />
               </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="1$jFvlEo_99" role="3cqZAp" />
+        <node concept="3SKdUt" id="1$jFvlEo_hw" role="3cqZAp">
+          <node concept="1PaTwC" id="1$jFvlEo_hx" role="1aUNEU">
+            <node concept="3oM_SD" id="1$jFvlEo_nP" role="1PaTwD">
+              <property role="3oM_SC" value="Standalone" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo_pU" role="1PaTwD">
+              <property role="3oM_SC" value="declarations" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo_sP" role="1PaTwD">
+              <property role="3oM_SC" value="(not" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo_u$" role="1PaTwD">
+              <property role="3oM_SC" value="member" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo_vx" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo_vG" role="1PaTwD">
+              <property role="3oM_SC" value="any" />
+            </node>
+            <node concept="3oM_SD" id="1$jFvlEo_wj" role="1PaTwD">
+              <property role="3oM_SC" value="class)" />
             </node>
           </node>
         </node>

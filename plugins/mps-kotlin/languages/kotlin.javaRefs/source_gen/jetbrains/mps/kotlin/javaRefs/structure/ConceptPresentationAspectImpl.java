@@ -9,11 +9,11 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
-  private ConceptPresentation props_JavaClassInheritanceSpecifier;
+  private ConceptPresentation props_JavaClassSuperSpecifier;
   private ConceptPresentation props_JavaClassType;
+  private ConceptPresentation props_JavaConstructorSuperSpecifier;
   private ConceptPresentation props_JavaDefaultConstructorCall;
-  private ConceptPresentation props_JavaDefaultConstructorInheritanceSpecifier;
-  private ConceptPresentation props_JavaInterfaceInheritanceSpecifier;
+  private ConceptPresentation props_JavaDefaultConstructorSuperSpecifier;
   private ConceptPresentation props_JavaMemberTarget;
   private ConceptPresentation props_JavaMethodCall;
   private ConceptPresentation props_JavaMethodVariableReference;
@@ -25,13 +25,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
-      case LanguageConceptSwitch.JavaClassInheritanceSpecifier:
-        if (props_JavaClassInheritanceSpecifier == null) {
+      case LanguageConceptSwitch.JavaClassSuperSpecifier:
+        if (props_JavaClassSuperSpecifier == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByReference(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x2196e93e83dbf9feL, 0x2196e93e83dc2bfdL, "constructor", "", "");
-          props_JavaClassInheritanceSpecifier = cpb.create();
+          cpb.presentationByReference(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0xfd0b6783f85b1faL, 0xfd0b6783f85e8c3L, "classifier", "", "");
+          props_JavaClassSuperSpecifier = cpb.create();
         }
-        return props_JavaClassInheritanceSpecifier;
+        return props_JavaClassSuperSpecifier;
       case LanguageConceptSwitch.JavaClassType:
         if (props_JavaClassType == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -39,6 +39,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_JavaClassType = cpb.create();
         }
         return props_JavaClassType;
+      case LanguageConceptSwitch.JavaConstructorSuperSpecifier:
+        if (props_JavaConstructorSuperSpecifier == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x2196e93e83dbf9feL, 0x2196e93e83dc2bfdL, "constructor", "", "");
+          props_JavaConstructorSuperSpecifier = cpb.create();
+        }
+        return props_JavaConstructorSuperSpecifier;
       case LanguageConceptSwitch.JavaDefaultConstructorCall:
         if (props_JavaDefaultConstructorCall == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -46,20 +53,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_JavaDefaultConstructorCall = cpb.create();
         }
         return props_JavaDefaultConstructorCall;
-      case LanguageConceptSwitch.JavaDefaultConstructorInheritanceSpecifier:
-        if (props_JavaDefaultConstructorInheritanceSpecifier == null) {
+      case LanguageConceptSwitch.JavaDefaultConstructorSuperSpecifier:
+        if (props_JavaDefaultConstructorSuperSpecifier == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.presentationByReference(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x5b64d6b00d756286L, 0x5b64d6b00d75628dL, "classifier", "", "()");
-          props_JavaDefaultConstructorInheritanceSpecifier = cpb.create();
+          props_JavaDefaultConstructorSuperSpecifier = cpb.create();
         }
-        return props_JavaDefaultConstructorInheritanceSpecifier;
-      case LanguageConceptSwitch.JavaInterfaceInheritanceSpecifier:
-        if (props_JavaInterfaceInheritanceSpecifier == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByReference(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0xfd0b6783f85b1faL, 0xfd0b6783f85e8c3L, "interface", "", "");
-          props_JavaInterfaceInheritanceSpecifier = cpb.create();
-        }
-        return props_JavaInterfaceInheritanceSpecifier;
+        return props_JavaDefaultConstructorSuperSpecifier;
       case LanguageConceptSwitch.JavaMemberTarget:
         if (props_JavaMemberTarget == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

@@ -50,6 +50,13 @@ public abstract class KotlinTextGen {
       tgs.append(">");
     }
   }
+  public static void delegate(SNode node, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    if ((SLinkOperations.getTarget(node, LINKS.delegate$pKtK) != null)) {
+      tgs.append(" by ");
+      tgs.appendNode(SLinkOperations.getTarget(node, LINKS.delegate$pKtK));
+    }
+  }
   public static void typeParameters(SNode node, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameters$eq6K)).isNotEmpty()) {
@@ -349,6 +356,7 @@ public abstract class KotlinTextGen {
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink delegate$pKtK = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56af0af90L, 0x2043bc8310b9b197L, "delegate");
     /*package*/ static final SContainmentLink typeParameters$eq6K = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7556a4df5L, 0x28bef6d7556a4df6L, "typeParameters");
     /*package*/ static final SReferenceLink targetLabel$iS7r = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790af2908L, 0x11400bb790af2909L, "targetLabel");
     /*package*/ static final SContainmentLink visibility$vnSV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, 0x631027d1c4c4e040L, "visibility");

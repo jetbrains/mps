@@ -152,7 +152,7 @@
               </node>
             </node>
             <node concept="WFELt" id="6cg9X74e8ww" role="2OqNvi">
-              <ref role="1A0vxQ" to="hcm8:2yYXHtl6JdZ" resolve="Annotation" />
+              <ref role="1A0vxQ" to="hcm8:2yYXHtl6JdZ" resolve="AnnotationList" />
             </node>
           </node>
         </node>

@@ -92,7 +92,7 @@
     </file>
   </root>
   <root nodeRef="r:a8be947e-2401-458d-a5e8-7789d9a23eaf(jetbrains.mps.kotlin.javaRefs.constraints)/2420378304467722603">
-    <file name="JavaClassInheritanceSpecifier_Constraints.java">
+    <file name="JavaConstructorSuperSpecifier_Constraints.java">
       <node id="2420378304467722603" at="34,54,35,53" concept="10" />
       <node id="2420378304467722603" at="42,127,43,128" concept="4" />
       <node id="2420378304467722603" at="43,128,44,0" concept="7" />
@@ -109,11 +109,11 @@
       <node id="2420378304467722603" at="80,42,81,22" concept="5" />
       <node id="2420378304467722859" at="83,128,84,89" concept="5" />
       <node id="2420378304467722603" at="86,0,87,0" concept="8" trace="canBeChildBreakingPoint" />
-      <node id="2420378304467722603" at="89,0,90,0" concept="8" trace="JavaClassInheritanceSpecifier$OZ" />
+      <node id="2420378304467722603" at="89,0,90,0" concept="8" trace="JavaConstructorSuperSpecifier$OZ" />
       <node id="2420378304467722603" at="90,0,91,0" concept="8" trace="ClassConcept$bK" />
       <node id="2420378304467722603" at="91,0,92,0" concept="8" trace="InterfaceDeclaration$fL" />
       <node id="2420378304467722603" at="95,0,96,0" concept="8" trace="constructor$5yLG" />
-      <node id="2420378304467722603" at="34,0,37,0" concept="0" trace="JavaClassInheritanceSpecifier_Constraints#()V" />
+      <node id="2420378304467722603" at="34,0,37,0" concept="0" trace="JavaConstructorSuperSpecifier_Constraints#()V" />
       <node id="2420378304467722603" at="44,0,47,9" concept="2" />
       <node id="2420378304467722603" at="83,0,86,0" concept="9" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="2420378304467735135" at="60,0,64,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
@@ -168,13 +168,13 @@
         <var name="references" id="2420378304467722603" />
       </scope>
       <scope id="2420378304467722603" at="53,0,83,0" />
-      <unit id="2420378304467722603" at="94,0,97,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassInheritanceSpecifier_Constraints$LINKS" />
-      <unit id="2420378304467722603" at="88,0,93,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassInheritanceSpecifier_Constraints$CONCEPTS" />
-      <unit id="382812245237209902" at="67,23,74,13" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassInheritanceSpecifier_Constraints$2$1$1" />
-      <unit id="2420378304467722603" at="40,15,51,5" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassInheritanceSpecifier_Constraints$1" />
-      <unit id="2420378304467735135" at="59,19,76,9" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassInheritanceSpecifier_Constraints$2$1" />
-      <unit id="2420378304467735135" at="55,48,78,5" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassInheritanceSpecifier_Constraints$2" />
-      <unit id="2420378304467722603" at="33,0,98,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassInheritanceSpecifier_Constraints" />
+      <unit id="2420378304467722603" at="94,0,97,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaConstructorSuperSpecifier_Constraints$LINKS" />
+      <unit id="2420378304467722603" at="88,0,93,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaConstructorSuperSpecifier_Constraints$CONCEPTS" />
+      <unit id="382812245237209902" at="67,23,74,13" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaConstructorSuperSpecifier_Constraints$2$1$1" />
+      <unit id="2420378304467722603" at="40,15,51,5" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaConstructorSuperSpecifier_Constraints$1" />
+      <unit id="2420378304467735135" at="59,19,76,9" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaConstructorSuperSpecifier_Constraints$2$1" />
+      <unit id="2420378304467735135" at="55,48,78,5" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaConstructorSuperSpecifier_Constraints$2" />
+      <unit id="2420378304467722603" at="33,0,98,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaConstructorSuperSpecifier_Constraints" />
     </file>
   </root>
   <root nodeRef="r:a8be947e-2401-458d-a5e8-7789d9a23eaf(jetbrains.mps.kotlin.javaRefs.constraints)/3444023549506984971">
@@ -378,23 +378,23 @@
     </file>
   </root>
   <root nodeRef="r:a8be947e-2401-458d-a5e8-7789d9a23eaf(jetbrains.mps.kotlin.javaRefs.constraints)/6585624606750909736">
-    <file name="JavaDefaultConstructorInheritanceSpecifier_Constraints.java">
-      <node id="6585624606750909736" at="22,67,23,66" concept="10" />
+    <file name="JavaDefaultConstructorSuperSpecifier_Constraints.java">
+      <node id="6585624606750909736" at="22,61,23,60" concept="10" />
       <node id="6585624606750910123" at="34,63,35,144" concept="5" />
       <node id="6585624606750927292" at="38,80,39,80" concept="5" />
       <node id="6585624606750909736" at="43,6,44,131" concept="4" />
       <node id="6585624606750910123" at="44,131,45,42" concept="1" />
       <node id="6585624606750909736" at="45,42,46,22" concept="5" />
-      <node id="6585624606750909736" at="50,0,51,0" concept="8" trace="JavaDefaultConstructorInheritanceSpecifier$YV" />
+      <node id="6585624606750909736" at="50,0,51,0" concept="8" trace="JavaDefaultConstructorSuperSpecifier$YV" />
       <node id="6585624606750909736" at="54,0,55,0" concept="8" trace="classifier$ZmfH" />
-      <node id="6585624606750909736" at="22,0,25,0" concept="0" trace="JavaDefaultConstructorInheritanceSpecifier_Constraints#()V" />
+      <node id="6585624606750909736" at="22,0,25,0" concept="0" trace="JavaDefaultConstructorSuperSpecifier_Constraints#()V" />
       <node id="6585624606750910123" at="33,0,37,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
       <node id="6585624606750910123" at="37,0,41,0" concept="3" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
       <node id="6585624606750910123" at="31,56,41,10" concept="5" />
       <node id="6585624606750910123" at="29,0,43,0" concept="3" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
       <node id="6585624606750910123" at="27,90,43,6" concept="4" />
       <node id="6585624606750909736" at="26,0,48,0" concept="3" trace="getSpecifiedReferences#()Ljava/util/Map;" />
-      <scope id="6585624606750909736" at="22,67,23,66" />
+      <scope id="6585624606750909736" at="22,61,23,60" />
       <scope id="6585624606750910123" at="34,63,35,144" />
       <scope id="6585624606750910123" at="38,80,39,80" />
       <scope id="6585624606750909736" at="22,0,25,0" />
@@ -409,11 +409,11 @@
         <var name="references" id="6585624606750909736" />
       </scope>
       <scope id="6585624606750909736" at="26,0,48,0" />
-      <unit id="6585624606750909736" at="49,0,52,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorInheritanceSpecifier_Constraints$CONCEPTS" />
-      <unit id="6585624606750909736" at="53,0,56,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorInheritanceSpecifier_Constraints$LINKS" />
-      <unit id="6585624606750910123" at="32,19,41,9" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorInheritanceSpecifier_Constraints$1$1" />
-      <unit id="6585624606750910123" at="28,48,43,5" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorInheritanceSpecifier_Constraints$1" />
-      <unit id="6585624606750909736" at="21,0,57,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorInheritanceSpecifier_Constraints" />
+      <unit id="6585624606750909736" at="49,0,52,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorSuperSpecifier_Constraints$CONCEPTS" />
+      <unit id="6585624606750909736" at="53,0,56,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorSuperSpecifier_Constraints$LINKS" />
+      <unit id="6585624606750910123" at="32,19,41,9" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorSuperSpecifier_Constraints$1$1" />
+      <unit id="6585624606750910123" at="28,48,43,5" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorSuperSpecifier_Constraints$1" />
+      <unit id="6585624606750909736" at="21,0,57,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorSuperSpecifier_Constraints" />
     </file>
   </root>
   <root nodeRef="r:a8be947e-2401-458d-a5e8-7789d9a23eaf(jetbrains.mps.kotlin.javaRefs.constraints)/6585624606750912550">

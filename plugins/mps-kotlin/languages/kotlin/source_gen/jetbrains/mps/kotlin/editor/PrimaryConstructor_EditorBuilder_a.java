@@ -62,16 +62,11 @@ import org.jetbrains.mps.openapi.language.SConcept;
     if (nodeCondition_33ai62_a2a()) {
       editorCell.addEditorCell(createConstant_0());
     }
-    if (nodeCondition_33ai62_a3a()) {
-      editorCell.addEditorCell(createCollection_1());
-    }
+    editorCell.addEditorCell(createCollection_1());
     return editorCell;
   }
   private boolean nodeCondition_33ai62_a2a() {
     return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.parameters$$EEQ)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.annotations$bXtr)).isNotEmpty() || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(myNode, LINKS.visibility$vnSV), CONCEPTS.PublicVisibility$Me));
-  }
-  private boolean nodeCondition_33ai62_a3a() {
-    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.parameters$$EEQ)).isNotEmpty();
   }
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.kotlin.editor.Annotations_Component");
@@ -107,6 +102,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Constant_33ai62_a3a");
     Style style = new StyleImpl();
     new LParenthesisStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     editorCell.getStyle().putAll(style);
     NodeElement_Remove.setCellActions(editorCell, myNode, getEditorContext());
     editorCell.setDefaultText("");
