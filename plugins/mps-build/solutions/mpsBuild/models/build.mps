@@ -25085,11 +25085,6 @@
             <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
           </node>
         </node>
-        <node concept="1SiIV0" id="1ZhbvpqUwcM" role="3bR37C">
-          <node concept="3bR9La" id="1ZhbvpqUwcN" role="1SiIV1">
-            <ref role="3bR37D" node="44LXwdzyvTi" resolve="Annotations" />
-          </node>
-        </node>
         <node concept="1BupzO" id="73GUf$umQor" role="3bR31x">
           <property role="3ZfqAx" value="models" />
           <property role="1Hdu6h" value="true" />
@@ -25116,6 +25111,11 @@
             <node concept="3qWCbU" id="73GUf$umQot" role="3LXTna">
               <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
             </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1ZhbvpqUwcM" role="3bR37C">
+          <node concept="3bR9La" id="1ZhbvpqUwcN" role="1SiIV1">
+            <ref role="3bR37D" node="44LXwdzyvTi" resolve="Annotations" />
           </node>
         </node>
       </node>
@@ -45611,6 +45611,12 @@
                 <property role="2Ry0Am" value="mps-java" />
                 <node concept="2Ry0Ak" id="2ucthr8YCRG" role="2Ry0An">
                   <property role="2Ry0Am" value="workbench" />
+                  <node concept="2Ry0Ak" id="6a3O$tWqgR" role="2Ry0An">
+                    <property role="2Ry0Am" value="modules" />
+                    <node concept="2Ry0Ak" id="6a3O$tWqgW" role="2Ry0An">
+                      <property role="2Ry0Am" value="jetbrains.mps.java.workbench" />
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>

@@ -123,7 +123,7 @@
     </echoxml>
     <jar destfile="${build.layout}/mps-java/modules/jetbrains.mps.java.workbench.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.java.workbench" />
-      <fileset dir="${mps_home}/plugins/mps-java/workbench" includes="icons/**, resources/**, startup.properties" />
+      <fileset dir="${mps_home}/plugins/mps-java/workbench/modules/jetbrains.mps.java.workbench" includes="icons/**, resources/**, startup.properties" />
       <fileset dir="${mps_home}/plugins/mps-java/workbench/modules/jetbrains.mps.java.workbench/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.java.workbench.jar" />
     </jar>
