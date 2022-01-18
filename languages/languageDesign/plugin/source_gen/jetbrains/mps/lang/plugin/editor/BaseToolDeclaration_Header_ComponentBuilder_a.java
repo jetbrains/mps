@@ -80,7 +80,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_g0vxcd_a2a() {
-    return !(isNotEmptyString(SPropertyOperations.getString(myNode, PROPS.number$DT6H)));
+    return isNotEmptyString(SPropertyOperations.getString(myNode, PROPS.number$DT6H));
   }
   private EditorCell createCollection_1() {
     EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());

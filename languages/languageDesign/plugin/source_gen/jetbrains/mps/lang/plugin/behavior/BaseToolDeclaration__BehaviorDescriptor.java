@@ -51,7 +51,7 @@ public final class BaseToolDeclaration__BehaviorDescriptor extends BaseBHDescrip
   }
   @Deprecated(since = "3.5", forRemoval = true)
   /*package*/ static boolean hasNumber_id5FstybB4d8v(@NotNull SNode __thisNode__) {
-    return !(isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.number$DT6H)));
+    return isNotEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.number$DT6H));
   }
   /*package*/ static SNode createType_idhEwJimy(@NotNull SNode __thisNode__) {
     return _quotation_createNode_7ol7e8_a0a3(__thisNode__);
