@@ -8,7 +8,7 @@ import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.project.MPSProject;
 import java.util.ArrayList;
 import jetbrains.mps.lang.script.runtime.RefactoringScript;
-import jetbrains.mps.ide.script.migrationtool.MigrationScriptsTool;
+import jetbrains.mps.plugins.projectplugins.ProjectPluginManager;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.Language;
@@ -46,7 +46,7 @@ public abstract class AbstractMigrationScriptHelper {
         scripts.add(ms);
       }
     }
-    context.getComponent(MigrationScriptsTool.class).startMigration(scripts, scope);
+    context.getProject().getComponent(ProjectPluginManager.class).getTool(MigrationScriptsTool_Tool.class).startMigration(scripts, scope);
   }
 
   public static RefactoringScript toExecutable(SNode scriptNode, MPSProject contextProject) {
@@ -83,7 +83,7 @@ public abstract class AbstractMigrationScriptHelper {
     return createMigrationScopeInternal(project.getProjectModulesWithGenerators(), (Iterable<SModel>) Collections.<SModel>emptySet());
   }
 
-  private static SearchScope createMigrationScopeInternal(Iterable<? extends SModule> modules, Iterable<? extends SModel> models) {
+  private static SearchScope createMigrationScopeInternal(Iterable<SModule> modules, Iterable<SModel> models) {
     Set<SModel> result = SetSequence.fromSet(new HashSet<SModel>());
     SetSequence.fromSet(result).addSequence(Sequence.fromIterable(models).where(new IWhereFilter<SModel>() {
       public boolean accept(SModel it) {

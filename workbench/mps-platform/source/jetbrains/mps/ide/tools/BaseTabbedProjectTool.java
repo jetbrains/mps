@@ -156,6 +156,15 @@ public abstract class BaseTabbedProjectTool extends BaseProjectTool {
     /* no-op */
   }
 
+  @Override
+  public Project getProject() {
+    // FIXME methods declared inside node<TabbedToolDeclaration> instance don't see protected
+    //       methods from BaseTabbedProjectTool/BaseTool superclasses, despite recognizing these.
+    //       To address this limitation, provisionally expose protected method as public
+    //       Pretty much the same needed for getContentManager(), overcame that with getToolWindow().getContentManager()
+    return super.getProject();
+  }
+
   public interface IDisposableTab {
     void disposeTab();
 
