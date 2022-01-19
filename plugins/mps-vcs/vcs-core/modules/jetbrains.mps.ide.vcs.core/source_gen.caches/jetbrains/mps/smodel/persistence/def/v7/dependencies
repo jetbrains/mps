@@ -50,12 +50,12 @@
   <dependency className="jetbrains.mps.smodel.persistence.def.v7.ModelReader7Handler">
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Integer" />
-    <classNode dependClassName="java.lang.NumberFormatException" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Stack" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.extapi.model.GeneratableSModel" />
     <classNode dependClassName="jetbrains.mps.smodel.DefaultSModel" />
     <classNode dependClassName="jetbrains.mps.smodel.SModel" />
     <classNode dependClassName="jetbrains.mps.smodel.SModelHeader" />

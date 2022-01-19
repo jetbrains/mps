@@ -60,6 +60,7 @@
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.Tuples" />
+    <classNode dependClassName="jetbrains.mps.extapi.model.GeneratableSModel" />
     <classNode dependClassName="jetbrains.mps.smodel.DefaultSModel" />
     <classNode dependClassName="jetbrains.mps.smodel.InterfaceSNode" />
     <classNode dependClassName="jetbrains.mps.smodel.SModel" />

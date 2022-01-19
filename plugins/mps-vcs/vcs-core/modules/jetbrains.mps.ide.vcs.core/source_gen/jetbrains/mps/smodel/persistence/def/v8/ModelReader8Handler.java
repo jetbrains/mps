@@ -18,6 +18,7 @@ import org.xml.sax.SAXParseException;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
+import jetbrains.mps.extapi.model.GeneratableSModel;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.smodel.SModelLegacy;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -181,7 +182,7 @@ public class ModelReader8Handler extends XMLSAXHandler<ModelLoadResult> {
         return;
       }
       if ("doNotGenerate".equals(name)) {
-        my_headerParam.setOptionalProperty(SModelHeader.DO_NOT_GENERATE, value);
+        my_headerParam.setOptionalProperty(GeneratableSModel.DO_NOT_GENERATE, value);
         return;
       }
       super.handleAttribute(resultObject, name, value);

@@ -169,13 +169,21 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
   public void setDoNotGenerate(boolean value) {
     assertCanChange();
 
-    getModelHeader().setOptionalProperty(SModelHeader.DO_NOT_GENERATE, Boolean.toString(value));
+    if (isDoNotGenerate() == value) {
+      return;
+    }
+    if (!value) {
+      // false is default, no need to keep this explicitly
+      getModelHeader().removeOptionalProperty(GeneratableSModel.DO_NOT_GENERATE);
+    } else {
+      getModelHeader().setOptionalProperty(GeneratableSModel.DO_NOT_GENERATE, Boolean.toString(value));
+    }
     setChanged(true);
   }
 
   @Override
   public boolean isDoNotGenerate() {
-    return Boolean.parseBoolean(getModelHeader().getOptionalProperty(SModelHeader.DO_NOT_GENERATE));
+    return Boolean.parseBoolean(getModelHeader().getOptionalProperty(GeneratableSModel.DO_NOT_GENERATE));
   }
 
   @Override

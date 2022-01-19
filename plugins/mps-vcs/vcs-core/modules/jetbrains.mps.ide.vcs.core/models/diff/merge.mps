@@ -9854,9 +9854,9 @@
                 </node>
                 <node concept="liA8E" id="4dBl_L4GABa" role="2OqNvi">
                   <ref role="37wK5l" to="w1kc:~SModelHeader.setOptionalProperty(java.lang.String,java.lang.String)" resolve="setOptionalProperty" />
-                  <node concept="10M0yZ" id="4dBl_L4GAG7" role="37wK5m">
-                    <ref role="3cqZAo" to="w1kc:~SModelHeader.DO_NOT_GENERATE" resolve="DO_NOT_GENERATE" />
-                    <ref role="1PxDUh" to="w1kc:~SModelHeader" resolve="SModelHeader" />
+                  <node concept="10M0yZ" id="46tcvZVMnWD" role="37wK5m">
+                    <ref role="3cqZAo" to="g3l6:~GeneratableSModel.DO_NOT_GENERATE" resolve="DO_NOT_GENERATE" />
+                    <ref role="1PxDUh" to="g3l6:~GeneratableSModel" resolve="GeneratableSModel" />
                   </node>
                   <node concept="2YIFZM" id="4dBl_L4GANK" role="37wK5m">
                     <ref role="37wK5l" to="wyt6:~Boolean.toString(boolean)" resolve="toString" />
@@ -9912,9 +9912,9 @@
                   </node>
                   <node concept="liA8E" id="4dBl_L4GBE$" role="2OqNvi">
                     <ref role="37wK5l" to="w1kc:~SModelHeader.getOptionalProperty(java.lang.String)" resolve="getOptionalProperty" />
-                    <node concept="10M0yZ" id="4dBl_L4GBE_" role="37wK5m">
-                      <ref role="1PxDUh" to="w1kc:~SModelHeader" resolve="SModelHeader" />
-                      <ref role="3cqZAo" to="w1kc:~SModelHeader.DO_NOT_GENERATE" resolve="DO_NOT_GENERATE" />
+                    <node concept="10M0yZ" id="46tcvZVMn2h" role="37wK5m">
+                      <ref role="3cqZAo" to="g3l6:~GeneratableSModel.DO_NOT_GENERATE" resolve="DO_NOT_GENERATE" />
+                      <ref role="1PxDUh" to="g3l6:~GeneratableSModel" resolve="GeneratableSModel" />
                     </node>
                   </node>
                 </node>
