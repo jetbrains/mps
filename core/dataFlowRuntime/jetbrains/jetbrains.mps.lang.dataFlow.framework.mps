@@ -945,7 +945,7 @@
             <node concept="3uibUv" id="3yaa4ph8uCe" role="1tU5fm">
               <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
               <node concept="3uibUv" id="3yaa4ph8uCf" role="11_B2D">
-                <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Entry" />
+                <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Map.Entry" />
                 <node concept="3uibUv" id="3yaa4ph8uCg" role="11_B2D">
                   <ref role="3uigEE" node="3yaa4ph8tpD" resolve="ProgramState" />
                 </node>
@@ -996,7 +996,7 @@
                   <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
                   <node concept="2ShNRf" id="3yaa4ph8K_4" role="37wK5m">
                     <node concept="1pGfFk" id="3yaa4ph8K_h" role="2ShVmc">
-                      <ref role="37wK5l" node="3yaa4ph8u_I" resolve="MyEntry" />
+                      <ref role="37wK5l" node="3yaa4ph8u_I" resolve="ProgramStateMap.MyEntry" />
                       <node concept="37vLTw" id="3yaa4ph8K_i" role="37wK5m">
                         <ref role="3cqZAo" node="3yaa4ph8uCk" resolve="i" />
                       </node>
@@ -1017,7 +1017,7 @@
       <node concept="3uibUv" id="3yaa4ph8uCB" role="3clF45">
         <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
         <node concept="3uibUv" id="3yaa4ph8uCC" role="11_B2D">
-          <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Entry" />
+          <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Map.Entry" />
           <node concept="3uibUv" id="3yaa4ph8uCD" role="11_B2D">
             <ref role="3uigEE" node="3yaa4ph8tpD" resolve="ProgramState" />
           </node>
@@ -1032,7 +1032,7 @@
       <property role="2bfB8j" value="true" />
       <node concept="3Tm6S6" id="3yaa4ph8u_A" role="1B3o_S" />
       <node concept="3uibUv" id="3yaa4ph8u_B" role="EKbjA">
-        <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Entry" />
+        <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Map.Entry" />
         <node concept="3uibUv" id="3yaa4ph8u_C" role="11_B2D">
           <ref role="3uigEE" node="3yaa4ph8tpD" resolve="ProgramState" />
         </node>
@@ -1498,7 +1498,7 @@
     <node concept="3Tm1VV" id="3yaa4ph8tuK" role="1B3o_S" />
     <node concept="QsSxf" id="3yaa4ph8tuM" role="Qtgdg">
       <property role="TrG5h" value="FORWARD" />
-      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
       <node concept="3clFb_" id="3yaa4phdu2l" role="2HKRsH">
         <property role="TrG5h" value="dependencies" />
         <node concept="37vLTG" id="3yaa4phdujL" role="3clF46">
@@ -1564,7 +1564,7 @@
     </node>
     <node concept="QsSxf" id="3yaa4ph8tuO" role="Qtgdg">
       <property role="TrG5h" value="BACKWARD" />
-      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" />
+      <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
       <node concept="3clFb_" id="3yaa4phdvMJ" role="2HKRsH">
         <property role="TrG5h" value="dependencies" />
         <node concept="37vLTG" id="3yaa4phdvMK" role="3clF46">
@@ -3930,7 +3930,7 @@
       <node concept="3uibUv" id="3yaa4ph8t$e" role="1tU5fm">
         <ref role="3uigEE" to="33ny:~List" resolve="List" />
         <node concept="3uibUv" id="3yaa4ph8t$f" role="11_B2D">
-          <ref role="3uigEE" node="3yaa4ph8tze" resolve="TryFinallyInfo" />
+          <ref role="3uigEE" node="3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
         </node>
       </node>
       <node concept="2ShNRf" id="3yaa4ph8A6S" role="33vP2m">
@@ -4648,7 +4648,7 @@
           <node concept="3cpWsn" id="3yaa4ph8tC8" role="1Duv9x">
             <property role="TrG5h" value="e" />
             <node concept="3uibUv" id="3yaa4ph8tCa" role="1tU5fm">
-              <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Entry" />
+              <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Map.Entry" />
               <node concept="3uibUv" id="3yaa4ph8tCb" role="11_B2D">
                 <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               </node>
@@ -4712,7 +4712,7 @@
           <node concept="3cpWsn" id="3yaa4ph8tCs" role="1Duv9x">
             <property role="TrG5h" value="e" />
             <node concept="3uibUv" id="3yaa4ph8tCu" role="1tU5fm">
-              <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Entry" />
+              <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Map.Entry" />
               <node concept="3uibUv" id="3yaa4ph8tCv" role="11_B2D">
                 <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
               </node>
@@ -5414,7 +5414,7 @@
             <node concept="3uibUv" id="3yaa4ph8tG8" role="1tU5fm">
               <ref role="3uigEE" to="33ny:~Stack" resolve="Stack" />
               <node concept="3uibUv" id="3yaa4ph8tG9" role="11_B2D">
-                <ref role="3uigEE" node="3yaa4ph8tze" resolve="TryFinallyInfo" />
+                <ref role="3uigEE" node="3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
               </node>
             </node>
             <node concept="2ShNRf" id="3yaa4ph8AN2" role="33vP2m">
@@ -5450,11 +5450,11 @@
                   <node concept="3cpWsn" id="3yaa4ph8tGk" role="3cpWs9">
                     <property role="TrG5h" value="info" />
                     <node concept="3uibUv" id="3yaa4ph8tGm" role="1tU5fm">
-                      <ref role="3uigEE" node="3yaa4ph8tze" resolve="TryFinallyInfo" />
+                      <ref role="3uigEE" node="3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
                     </node>
                     <node concept="2ShNRf" id="3yaa4ph8AN8" role="33vP2m">
                       <node concept="HV5vD" id="3yaa4ph8ANa" role="2ShVmc">
-                        <ref role="HV5vE" node="3yaa4ph8tze" resolve="TryFinallyInfo" />
+                        <ref role="HV5vE" node="3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
                       </node>
                     </node>
                   </node>
@@ -5508,7 +5508,7 @@
                       <node concept="3cpWsn" id="3yaa4ph8tGA" role="3cpWs9">
                         <property role="TrG5h" value="parent" />
                         <node concept="3uibUv" id="3yaa4ph8tGC" role="1tU5fm">
-                          <ref role="3uigEE" node="3yaa4ph8tze" resolve="TryFinallyInfo" />
+                          <ref role="3uigEE" node="3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
                         </node>
                         <node concept="2OqwBi" id="3yaa4ph8HDg" role="33vP2m">
                           <node concept="37vLTw" id="3yaa4ph8ANr" role="2Oq$k0">
@@ -6625,7 +6625,7 @@
       <node concept="3uibUv" id="3yaa4ph8tMi" role="3clF45">
         <ref role="3uigEE" to="33ny:~List" resolve="List" />
         <node concept="3uibUv" id="3yaa4ph8tMj" role="11_B2D">
-          <ref role="3uigEE" node="3yaa4ph8tze" resolve="TryFinallyInfo" />
+          <ref role="3uigEE" node="3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
         </node>
       </node>
     </node>
@@ -6927,7 +6927,7 @@
       <node concept="312cEg" id="3yaa4ph8tzs" role="jymVt">
         <property role="TrG5h" value="myParent" />
         <node concept="3uibUv" id="3yaa4ph8tzu" role="1tU5fm">
-          <ref role="3uigEE" node="3yaa4ph8tze" resolve="TryFinallyInfo" />
+          <ref role="3uigEE" node="3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
         </node>
         <node concept="3Tmbuc" id="3yaa4ph8tzv" role="1B3o_S" />
       </node>
@@ -6936,7 +6936,7 @@
         <node concept="3uibUv" id="3yaa4ph8tzy" role="1tU5fm">
           <ref role="3uigEE" to="33ny:~List" resolve="List" />
           <node concept="3uibUv" id="3yaa4ph8tzz" role="11_B2D">
-            <ref role="3uigEE" node="3yaa4ph8tze" resolve="TryFinallyInfo" />
+            <ref role="3uigEE" node="3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
           </node>
         </node>
         <node concept="2ShNRf" id="3yaa4ph8B4Q" role="33vP2m">
@@ -7000,7 +7000,7 @@
         </node>
         <node concept="3Tm1VV" id="3yaa4ph8tzW" role="1B3o_S" />
         <node concept="3uibUv" id="3yaa4ph8tzX" role="3clF45">
-          <ref role="3uigEE" node="3yaa4ph8tze" resolve="TryFinallyInfo" />
+          <ref role="3uigEE" node="3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
         </node>
       </node>
       <node concept="3clFb_" id="3yaa4ph8tzY" role="jymVt">
@@ -7020,7 +7020,7 @@
         <node concept="3uibUv" id="3yaa4ph8t$4" role="3clF45">
           <ref role="3uigEE" to="33ny:~List" resolve="List" />
           <node concept="3uibUv" id="3yaa4ph8t$5" role="11_B2D">
-            <ref role="3uigEE" node="3yaa4ph8tze" resolve="TryFinallyInfo" />
+            <ref role="3uigEE" node="3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
           </node>
         </node>
       </node>
@@ -8259,7 +8259,7 @@
       </node>
       <node concept="3Tm1VV" id="3yaa4ph8unF" role="1B3o_S" />
       <node concept="3uibUv" id="3yaa4ph8unG" role="3clF45">
-        <ref role="3uigEE" node="3yaa4ph8ul8" resolve="Position" />
+        <ref role="3uigEE" node="3yaa4ph8ul8" resolve="StructuralProgramBuilder.Position" />
       </node>
     </node>
     <node concept="3clFb_" id="3yaa4ph8unH" role="jymVt">
@@ -8294,7 +8294,7 @@
       </node>
       <node concept="3Tm1VV" id="3yaa4ph8unS" role="1B3o_S" />
       <node concept="3uibUv" id="3yaa4ph8unT" role="3clF45">
-        <ref role="3uigEE" node="3yaa4ph8ul8" resolve="Position" />
+        <ref role="3uigEE" node="3yaa4ph8ul8" resolve="StructuralProgramBuilder.Position" />
       </node>
     </node>
     <node concept="3clFb_" id="3yaa4ph8unU" role="jymVt">
@@ -8470,7 +8470,7 @@
       </node>
       <node concept="3Tm1VV" id="3yaa4ph8uoP" role="1B3o_S" />
       <node concept="3uibUv" id="3yaa4ph8uoQ" role="3clF45">
-        <ref role="3uigEE" node="3yaa4ph8ul8" resolve="Position" />
+        <ref role="3uigEE" node="3yaa4ph8ul8" resolve="StructuralProgramBuilder.Position" />
       </node>
     </node>
     <node concept="3clFb_" id="3yaa4ph8uoR" role="jymVt">
@@ -8599,7 +8599,7 @@
           <node concept="3cpWsn" id="3yaa4ph8upM" role="1Duv9x">
             <property role="TrG5h" value="labels" />
             <node concept="3uibUv" id="3yaa4ph8upO" role="1tU5fm">
-              <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Entry" />
+              <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Map.Entry" />
               <node concept="16syzq" id="3yaa4ph8upP" role="11_B2D">
                 <ref role="16sUi3" node="3yaa4ph8ul7" resolve="N" />
               </node>
@@ -8632,7 +8632,7 @@
               <node concept="3cpWsn" id="3yaa4ph8upF" role="1Duv9x">
                 <property role="TrG5h" value="label" />
                 <node concept="3uibUv" id="3yaa4ph8upH" role="1tU5fm">
-                  <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Entry" />
+                  <ref role="3uigEE" to="33ny:~Map$Entry" resolve="Map.Entry" />
                   <node concept="3uibUv" id="3yaa4ph8upI" role="11_B2D">
                     <ref role="3uigEE" to="wyt6:~String" resolve="String" />
                   </node>
@@ -9280,7 +9280,7 @@
         <property role="TrG5h" value="position" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="3yaa4ph8utu" role="1tU5fm">
-          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="Position" />
+          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="StructuralProgramBuilder.Position" />
         </node>
       </node>
       <node concept="37vLTG" id="3yaa4ph8utv" role="3clF46">
@@ -9414,7 +9414,7 @@
         <property role="TrG5h" value="position" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="3yaa4ph8uub" role="1tU5fm">
-          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="Position" />
+          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="StructuralProgramBuilder.Position" />
         </node>
       </node>
       <node concept="3clFbS" id="3yaa4ph8uuc" role="3clF47">
@@ -9437,7 +9437,7 @@
         <property role="TrG5h" value="position" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="3yaa4ph8uul" role="1tU5fm">
-          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="Position" />
+          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="StructuralProgramBuilder.Position" />
         </node>
       </node>
       <node concept="37vLTG" id="3yaa4ph8uum" role="3clF46">
@@ -9565,7 +9565,7 @@
         <property role="TrG5h" value="position" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="3yaa4ph8uv0" role="1tU5fm">
-          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="Position" />
+          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="StructuralProgramBuilder.Position" />
         </node>
       </node>
       <node concept="37vLTG" id="3yaa4ph8uv1" role="3clF46">
@@ -9604,7 +9604,7 @@
         <property role="TrG5h" value="position" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="3yaa4ph8uve" role="1tU5fm">
-          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="Position" />
+          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="StructuralProgramBuilder.Position" />
         </node>
       </node>
       <node concept="3clFbS" id="3yaa4ph8uvf" role="3clF47">
@@ -9635,7 +9635,7 @@
         <property role="TrG5h" value="position" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="3yaa4ph8uvq" role="1tU5fm">
-          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="Position" />
+          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="StructuralProgramBuilder.Position" />
         </node>
       </node>
       <node concept="37vLTG" id="3yaa4ph8uvr" role="3clF46">
@@ -9676,7 +9676,7 @@
         <property role="TrG5h" value="position" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="3yaa4ph8uvE" role="1tU5fm">
-          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="Position" />
+          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="StructuralProgramBuilder.Position" />
         </node>
       </node>
       <node concept="37vLTG" id="3yaa4ph8uvF" role="3clF46">
@@ -9912,7 +9912,7 @@
       <node concept="37vLTG" id="3yaa4ph8ux4" role="3clF46">
         <property role="TrG5h" value="position" />
         <node concept="3uibUv" id="3yaa4ph8ux5" role="1tU5fm">
-          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="Position" />
+          <ref role="3uigEE" node="3yaa4ph8ul8" resolve="StructuralProgramBuilder.Position" />
         </node>
       </node>
       <node concept="3clFbS" id="3yaa4ph8ux6" role="3clF47">

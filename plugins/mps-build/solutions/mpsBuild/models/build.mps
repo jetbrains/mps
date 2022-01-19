@@ -623,10 +623,6 @@
     <node concept="398b33" id="PI$1s21VRQ" role="3989C9">
       <property role="TrG5h" value="dataflow-rt" />
       <node concept="398b2D" id="1iPsR6PacP9" role="398b2p">
-        <node concept="nFU4i" id="1iPsR6Pagkj" role="nFU4p">
-          <property role="nFU4j" value="source" />
-          <property role="3LZaj6" value="source" />
-        </node>
         <node concept="nFU4i" id="1iPsR6Pagkk" role="nFU4p">
           <property role="nFU4j" value="source_gen" />
           <property role="3LZaj6" value="source" />

@@ -307,7 +307,7 @@
         <property role="TrG5h" value="position" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="3yaa4ph8uQI" role="1tU5fm">
-          <ref role="3uigEE" to="8qxk:3yaa4ph8ul8" resolve="Position" />
+          <ref role="3uigEE" to="8qxk:3yaa4ph8ul8" resolve="StructuralProgramBuilder.Position" />
         </node>
       </node>
       <node concept="3clFbS" id="3yaa4ph8uQJ" role="3clF47">
@@ -527,7 +527,7 @@
           <node concept="3cpWsn" id="3yaa4ph8ub9" role="3cpWs9">
             <property role="TrG5h" value="blockInfo" />
             <node concept="3uibUv" id="3yaa4ph8ubb" role="1tU5fm">
-              <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
             </node>
             <node concept="1rXfSq" id="3yaa4ph8ubc" role="33vP2m">
               <ref role="37wK5l" node="3yaa4ph8tSY" resolve="getEnclosingBlock" />
@@ -687,7 +687,7 @@
     <node concept="312cEg" id="3yaa4ph8ueH" role="jymVt">
       <property role="TrG5h" value="myInfo" />
       <node concept="3uibUv" id="3yaa4ph8ueJ" role="1tU5fm">
-        <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+        <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
       </node>
       <node concept="3Tm6S6" id="3yaa4ph8ueK" role="1B3o_S" />
     </node>
@@ -714,7 +714,7 @@
       <node concept="3uibUv" id="3yaa4ph8ueT" role="1tU5fm">
         <ref role="3uigEE" to="33ny:~List" resolve="List" />
         <node concept="3uibUv" id="3yaa4ph8ueU" role="11_B2D">
-          <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+          <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
         </node>
       </node>
       <node concept="2ShNRf" id="3yaa4ph8xb0" role="33vP2m">
@@ -788,7 +788,7 @@
           <node concept="3cpWsn" id="3yaa4ph8ufz" role="1Duv9x">
             <property role="TrG5h" value="info" />
             <node concept="3uibUv" id="3yaa4ph8uf_" role="1tU5fm">
-              <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
             </node>
           </node>
           <node concept="3clFbS" id="3yaa4ph8ufn" role="2LFqv$">
@@ -960,7 +960,7 @@
           <node concept="3cpWsn" id="3yaa4ph8ugt" role="1Duv9x">
             <property role="TrG5h" value="info" />
             <node concept="3uibUv" id="3yaa4ph8ugv" role="1tU5fm">
-              <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
             </node>
           </node>
           <node concept="3clFbS" id="3yaa4ph8ugj" role="2LFqv$">
@@ -1111,7 +1111,7 @@
               <node concept="3cpWsn" id="3yaa4ph8uhh" role="1Duv9x">
                 <property role="TrG5h" value="childInfo" />
                 <node concept="3uibUv" id="3yaa4ph8uhj" role="1tU5fm">
-                  <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+                  <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
                 </node>
               </node>
               <node concept="3clFbS" id="3yaa4ph8uh5" role="2LFqv$">
@@ -1678,7 +1678,7 @@
         <property role="TrG5h" value="position" />
         <property role="3TUv4t" value="true" />
         <node concept="3uibUv" id="3yaa4ph8uKK" role="1tU5fm">
-          <ref role="3uigEE" to="8qxk:3yaa4ph8ul8" resolve="Position" />
+          <ref role="3uigEE" to="8qxk:3yaa4ph8ul8" resolve="StructuralProgramBuilder.Position" />
         </node>
       </node>
       <node concept="3clFbS" id="3yaa4ph8uKL" role="3clF47">
@@ -1901,7 +1901,7 @@
     <node concept="312cEg" id="3yaa4ph8tR3" role="jymVt">
       <property role="TrG5h" value="myBlockInfo" />
       <node concept="3uibUv" id="3yaa4ph8tR5" role="1tU5fm">
-        <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+        <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
       </node>
       <node concept="3Tmbuc" id="3yaa4ph8tR6" role="1B3o_S" />
     </node>
@@ -2104,7 +2104,7 @@
           <node concept="3cpWsn" id="3yaa4ph8tSs" role="3cpWs9">
             <property role="TrG5h" value="bestMatch" />
             <node concept="3uibUv" id="3yaa4ph8tSu" role="1tU5fm">
-              <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
             </node>
             <node concept="10Nm6u" id="3yaa4ph8tSv" role="33vP2m" />
           </node>
@@ -2121,7 +2121,7 @@
           <node concept="3cpWsn" id="3yaa4ph8tSN" role="1Duv9x">
             <property role="TrG5h" value="info" />
             <node concept="3uibUv" id="3yaa4ph8tSP" role="1tU5fm">
-              <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
             </node>
           </node>
           <node concept="3clFbS" id="3yaa4ph8tSy" role="2LFqv$">
@@ -2204,7 +2204,7 @@
       </node>
       <node concept="3Tm1VV" id="3yaa4ph8tT2" role="1B3o_S" />
       <node concept="3uibUv" id="3yaa4ph8tT3" role="3clF45">
-        <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+        <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
       </node>
     </node>
     <node concept="3clFb_" id="3yaa4ph8tT4" role="jymVt">
@@ -3060,7 +3060,7 @@
       <node concept="3uibUv" id="3yaa4ph8uHH" role="1tU5fm">
         <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
         <node concept="3uibUv" id="3yaa4ph8uHI" role="11_B2D">
-          <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+          <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
         </node>
       </node>
       <node concept="2ShNRf" id="3yaa4ph8xm6" role="33vP2m">
@@ -3186,7 +3186,7 @@
           <node concept="3cpWsn" id="3yaa4ph8uID" role="1Duv9x">
             <property role="TrG5h" value="info" />
             <node concept="3uibUv" id="3yaa4ph8uIF" role="1tU5fm">
-              <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
             </node>
           </node>
           <node concept="3clFbS" id="3yaa4ph8uIv" role="2LFqv$">
@@ -3338,7 +3338,7 @@
               <node concept="3cpWsn" id="3yaa4ph8uJt" role="1Duv9x">
                 <property role="TrG5h" value="info" />
                 <node concept="3uibUv" id="3yaa4ph8uJv" role="1tU5fm">
-                  <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+                  <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
                 </node>
               </node>
               <node concept="3clFbS" id="3yaa4ph8uJn" role="2LFqv$">
@@ -3442,7 +3442,7 @@
     <node concept="312cEg" id="3yaa4ph8uhG" role="jymVt">
       <property role="TrG5h" value="myInfo" />
       <node concept="3uibUv" id="3yaa4ph8uhI" role="1tU5fm">
-        <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+        <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
       </node>
       <node concept="3Tm6S6" id="3yaa4ph8uhJ" role="1B3o_S" />
     </node>
@@ -3526,7 +3526,7 @@
           <node concept="3cpWsn" id="3yaa4ph8uis" role="1Duv9x">
             <property role="TrG5h" value="info" />
             <node concept="3uibUv" id="3yaa4ph8uiu" role="1tU5fm">
-              <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
             </node>
           </node>
           <node concept="3clFbS" id="3yaa4ph8uig" role="2LFqv$">
@@ -3736,7 +3736,7 @@
                 <node concept="3cpWsn" id="3yaa4ph8ujw" role="3cpWs9">
                   <property role="TrG5h" value="info" />
                   <node concept="3uibUv" id="3yaa4ph8ujy" role="1tU5fm">
-                    <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+                    <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
                   </node>
                   <node concept="1rXfSq" id="3yaa4ph8ujz" role="33vP2m">
                     <ref role="37wK5l" node="3yaa4ph8tSY" resolve="getEnclosingBlock" />
@@ -3932,7 +3932,7 @@
               <node concept="3cpWsn" id="3yaa4ph8uk_" role="1Duv9x">
                 <property role="TrG5h" value="child" />
                 <node concept="3uibUv" id="3yaa4ph8ukB" role="1tU5fm">
-                  <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="TryFinallyInfo" />
+                  <ref role="3uigEE" to="8qxk:3yaa4ph8tze" resolve="Program.TryFinallyInfo" />
                 </node>
               </node>
               <node concept="3clFbS" id="3yaa4ph8ukp" role="2LFqv$">

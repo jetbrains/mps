@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.core.aspects.feedback.api.MPSFeedbackPlugin;
 import jetbrains.mps.generator.MPSGenerator;
 import jetbrains.mps.ide.findusages.MPSFindUsages;
-import jetbrains.mps.lang.dataFlow.MPSDataFlow;
 import jetbrains.mps.make.facets.MPSMake;
 import jetbrains.mps.persistence.MPSPersistence;
 import jetbrains.mps.smodel.MPSModuleRepository;
@@ -73,7 +72,6 @@ class PlatformBase implements Platform {
           initAndRegister(new MPSFindUsages(myCore.getLanguageRegistry()));
           initAndRegister(new MPSTextGenerator(myCore.getLanguageRegistry()));
           initAndRegister(new MPSFeedbackPlugin(myCore.getLanguageRegistry()));
-          initAndRegister(new MPSDataFlow(myCore.getClassLoaderManager()));
           initAndRegister(new DynamicComponentPlugin());
         }
       }.run();
