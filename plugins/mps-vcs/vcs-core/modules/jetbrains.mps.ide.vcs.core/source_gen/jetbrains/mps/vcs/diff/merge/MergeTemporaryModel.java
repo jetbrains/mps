@@ -19,7 +19,6 @@ import jetbrains.mps.smodel.DefaultSModel;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
-import jetbrains.mps.smodel.SModelHeader;
 
 /**
  * Merge model has to be EditableSModel for now (there's otherwise dubious use of isChanged status),
@@ -126,13 +125,13 @@ public final class MergeTemporaryModel extends EditableModelDescriptor implement
   @Override
   public void setDoNotGenerate(boolean b) {
     if (getModelData() instanceof DefaultSModel) {
-      ((DefaultSModel) getModelData()).getSModelHeader().setOptionalProperty(SModelHeader.DO_NOT_GENERATE, Boolean.toString(b));
+      ((DefaultSModel) getModelData()).getSModelHeader().setOptionalProperty(GeneratableSModel.DO_NOT_GENERATE, Boolean.toString(b));
     }
   }
   @Override
   public boolean isDoNotGenerate() {
     if (getModelData() instanceof DefaultSModel) {
-      return Boolean.parseBoolean(((DefaultSModel) getModelData()).getSModelHeader().getOptionalProperty(SModelHeader.DO_NOT_GENERATE));
+      return Boolean.parseBoolean(((DefaultSModel) getModelData()).getSModelHeader().getOptionalProperty(GeneratableSModel.DO_NOT_GENERATE));
     }
     return false;
   }

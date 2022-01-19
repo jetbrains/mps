@@ -16,6 +16,7 @@ import org.xml.sax.SAXParseException;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.SModel;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
+import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -186,7 +187,10 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     protected void handleAttribute(Object resultObject, String name, String value) throws SAXException {
       ModelLoadResult result = (ModelLoadResult) resultObject;
       if ("doNotGenerate".equals(name)) {
-        my_modelField.getSModelHeader().setOptionalProperty(SModelHeader.DO_NOT_GENERATE, value);
+        // XXX in fact, we recognize any attribute of the model element as an optional value, see
+        // HeaderOnlyHandler code. Either need support for arbitrary attributes in xml lang to do
+        // the same here, or to stop processing attributes in the HeaderOnlyHandler
+        my_modelField.getSModelHeader().setOptionalProperty(GeneratableSModel.DO_NOT_GENERATE, value);
         return;
       }
       if ("content".equals(name)) {

@@ -14,7 +14,7 @@ import jetbrains.mps.extapi.model.SModelBase;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.extapi.model.ModelWithAttributes;
-import jetbrains.mps.smodel.SModelHeader;
+import jetbrains.mps.extapi.model.GeneratableSModel;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -22,7 +22,6 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import jetbrains.mps.extapi.model.GeneratableSModel;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.LinkedHashSet;
@@ -69,7 +68,7 @@ public class MetadataUtil {
     SNode root = SModelOperations.createNewNode(myMetadataModel, getMetadataRootId(), CONCEPTS.Model$fS);
     SPropertyOperations.assign(root, PROPS.longname$LR$t, SModelOperations.getModelName(origin));
     if (origin instanceof ModelWithAttributes) {
-      String doNotGenerateValue = ((ModelWithAttributes) origin).getAttribute(SModelHeader.DO_NOT_GENERATE);
+      String doNotGenerateValue = ((ModelWithAttributes) origin).getAttribute(GeneratableSModel.DO_NOT_GENERATE);
       SPropertyOperations.assign(root, PROPS.donotgenerate$LZM0, Boolean.parseBoolean(doNotGenerateValue));
     }
     for (SLanguage language : CollectionSequence.fromCollection(modelBase.importedLanguageIds())) {

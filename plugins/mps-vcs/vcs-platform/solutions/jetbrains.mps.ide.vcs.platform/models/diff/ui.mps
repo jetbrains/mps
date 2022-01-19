@@ -1779,9 +1779,9 @@
                   </node>
                   <node concept="liA8E" id="4dBl_L4HP7W" role="2OqNvi">
                     <ref role="37wK5l" to="g3l6:~ModelWithAttributes.getAttribute(java.lang.String)" resolve="getAttribute" />
-                    <node concept="10M0yZ" id="4dBl_L4HP7X" role="37wK5m">
-                      <ref role="3cqZAo" to="w1kc:~SModelHeader.DO_NOT_GENERATE" resolve="DO_NOT_GENERATE" />
-                      <ref role="1PxDUh" to="w1kc:~SModelHeader" resolve="SModelHeader" />
+                    <node concept="10M0yZ" id="46tcvZVOzdm" role="37wK5m">
+                      <ref role="3cqZAo" to="g3l6:~GeneratableSModel.DO_NOT_GENERATE" resolve="DO_NOT_GENERATE" />
+                      <ref role="1PxDUh" to="g3l6:~GeneratableSModel" resolve="GeneratableSModel" />
                     </node>
                   </node>
                 </node>

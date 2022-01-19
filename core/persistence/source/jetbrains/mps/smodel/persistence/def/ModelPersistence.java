@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,6 +91,11 @@ public class ModelPersistence {
 
   public static final String PERSISTENCE = "persistence";
   public static final String PERSISTENCE_VERSION = "version";
+
+  // attribute for <model> tag we use to denote type of per-root content (header or a root).
+  // have to process individually not to get the value into header's properties (i.e. until we keep the code to
+  // copy <model> attributes as header's properties)
+  public static final String PER_ROOT_CONTENT = "content";
 
   public static final int FIRST_SUPPORTED_VERSION = 9;
   public static final int LAST_VERSION = 9;
@@ -394,13 +399,13 @@ public class ModelPersistence {
           if (MODEL_UID.equals(name) || ModelPersistence9.REF.equals(name)) {
             final SModelReference mr = value == null ? null : PersistenceFacade.getInstance().createModelReference(value);
             myResult.setModelReference(mr);
-          } else if (SModelHeader.DO_NOT_GENERATE.equals(name)) {
-            myResult.setOptionalProperty(name, value);
-          } else if ("version".equals(name)) {
-            // old model version
-            // [AP] copied as is from the VCSPersistenceSupport: I have know idea whether this branch is necessary
-            // nop
+          } else if (PER_ROOT_CONTENT.equals(name)) {
+            // ignore the value; this is our implementation tag, we don't want to have it in header's properties
+            // Complete reader uses the value to setContentKind of ModelLoadResult.
+            continue;
           } else {
+            // XXX in fact, with dedicated <attribute> child support since 2018, we may drop
+            //     this fallback here. Perhaps, shall keep one for legacy persistence versions (in VCS)?
             myResult.setOptionalProperty(name, StringUtil.unescapeXml(value));
           }
         }
