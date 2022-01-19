@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.util.PathUtil;
+import org.jetbrains.mps.annotations.Internal;
 
 import java.io.File;
 import java.util.Collection;
@@ -50,11 +51,13 @@ public final class CommonPaths {
 //    }
   }
 
-  @Deprecated(since = "2019.1", forRemoval = true)
-  //use getPaths
-  public static List<String> getMPSPaths(ClassType type) {
-    // there's only 1 use in Ant_Command with ClassType.JDK_TOOLS
-    return getPaths(type).stream().map(qualifiedPath -> qualifiedPath.getPath()).collect(Collectors.toList());
+  /**
+   * Don't use outside of MPS
+   */
+  @Internal
+  public static List<String> getJDKToolsPath() {
+    // FIXME is there true need for the method?
+    return getPaths(ClassType.JDK_TOOLS).stream().map(QualifiedPath::getPath).collect(Collectors.toList());
   }
 
   @Deprecated(since = "2021.3", forRemoval = true)
