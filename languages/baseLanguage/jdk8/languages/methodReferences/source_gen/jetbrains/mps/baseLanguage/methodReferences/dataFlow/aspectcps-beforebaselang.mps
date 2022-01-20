@@ -11,8 +11,8 @@
     <import index="ki4v" ref="r:dac1cb43-aefd-4328-af54-b9cfc20a846b(jetbrains.mps.baseLanguage.methodReferences.dataFlow)" />
     <import index="ksn4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.smodel(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
+    <import index="8qxk" ref="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)" />
     <import index="i8bi" ref="r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)" />
-    <import index="1fjm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework(MPS.Core/)" />
     <import index="e8bb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.ids(MPS.Core/)" />
     <import index="2k9e" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
@@ -177,7 +177,7 @@
         <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
         <uo k="s:originTrace" v="n:7" />
         <node concept="3uibUv" id="b" role="11_B2D">
-          <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
+          <ref role="3uigEE" to="8qxk:3yaa4ph8uyb" resolve="IDataFlowBuilder" />
           <uo k="s:originTrace" v="n:11" />
         </node>
       </node>
@@ -243,7 +243,7 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="w" role="3PaCim">
-                    <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
+                    <ref role="3uigEE" to="8qxk:3yaa4ph8uyb" resolve="IDataFlowBuilder" />
                     <uo k="s:originTrace" v="n:28" />
                   </node>
                 </node>
@@ -272,7 +272,7 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="B" role="3PaCim">
-                    <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
+                    <ref role="3uigEE" to="8qxk:3yaa4ph8uyb" resolve="IDataFlowBuilder" />
                     <uo k="s:originTrace" v="n:35" />
                   </node>
                 </node>
@@ -301,7 +301,7 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="I" role="3PaCim">
-                    <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
+                    <ref role="3uigEE" to="8qxk:3yaa4ph8uyb" resolve="IDataFlowBuilder" />
                     <uo k="s:originTrace" v="n:42" />
                   </node>
                 </node>
@@ -404,7 +404,7 @@
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <uo k="s:originTrace" v="n:44" />
             <node concept="3uibUv" id="16" role="3PaCim">
-              <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8uyb" resolve="IDataFlowBuilder" />
               <uo k="s:originTrace" v="n:45" />
             </node>
           </node>
@@ -419,7 +419,7 @@
       <uo k="s:originTrace" v="n:3" />
     </node>
     <node concept="3uibUv" id="4" role="1zkMxy">
-      <ref role="3uigEE" to="1fjm:~DataFlowAspectDescriptorBase" resolve="DataFlowAspectDescriptorBase" />
+      <ref role="3uigEE" to="8qxk:3yaa4ph8ud_" resolve="DataFlowAspectDescriptorBase" />
       <uo k="s:originTrace" v="n:4" />
     </node>
   </node>
@@ -471,7 +471,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1k" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
+              <ref role="37wK5l" to="8qxk:3yaa4ph8unf" resolve="build" />
               <uo k="s:originTrace" v="n:75" />
               <node concept="10QFUN" id="1n" role="37wK5m">
                 <uo k="s:originTrace" v="n:78" />
@@ -572,7 +572,7 @@
               </node>
             </node>
             <node concept="liA8E" id="1K" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
+              <ref role="37wK5l" to="8qxk:3yaa4ph8unf" resolve="build" />
               <uo k="s:originTrace" v="n:97" />
               <node concept="10QFUN" id="1N" role="37wK5m">
                 <uo k="s:originTrace" v="n:100" />
@@ -673,7 +673,7 @@
               </node>
             </node>
             <node concept="liA8E" id="2c" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
+              <ref role="37wK5l" to="8qxk:3yaa4ph8unf" resolve="build" />
               <uo k="s:originTrace" v="n:119" />
               <node concept="10QFUN" id="2f" role="37wK5m">
                 <uo k="s:originTrace" v="n:122" />

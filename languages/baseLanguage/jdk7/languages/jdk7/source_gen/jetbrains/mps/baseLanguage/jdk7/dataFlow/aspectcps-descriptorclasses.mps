@@ -7,7 +7,7 @@
   <languages />
   <imports>
     <import index="zygu" ref="r:eff5fa57-b736-432e-80c4-b866c1eada21(jetbrains.mps.baseLanguage.jdk7.dataFlow)" />
-    <import index="1fjm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework(MPS.Core/)" />
+    <import index="8qxk" ref="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -53,7 +53,7 @@
     <node concept="2tJIrI" id="1" role="jymVt" />
     <node concept="3Tm1VV" id="2" role="1B3o_S" />
     <node concept="3uibUv" id="3" role="1zkMxy">
-      <ref role="3uigEE" to="1fjm:~DataFlowAspectDescriptorBase" resolve="DataFlowAspectDescriptorBase" />
+      <ref role="3uigEE" to="8qxk:3yaa4ph8ud_" resolve="DataFlowAspectDescriptorBase" />
     </node>
   </node>
   <node concept="39dXUE" id="4">

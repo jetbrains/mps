@@ -8,13 +8,14 @@
   <imports>
     <import index="go1" ref="r:11be8b48-b45e-48e5-98ad-b77dc1b202b1(testCustomAnalyzer.dataFlow)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
+    <import index="8qxk" ref="r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)" />
     <import index="1fjm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="8ov6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow(MPS.Core/)" />
     <import index="9cnx" ref="r:c1c38648-eb71-424b-8ade-f463a1eb273d(testCustomAnalyzer.structure)" />
     <import index="dau9" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.instructions(MPS.Core/)" />
-    <import index="aplb" ref="2af156ab-65c1-4a62-bd0d-ea734f71eab6/r:a1d8bbbf-d4f0-431f-8dcd-a6badc777315(jetbrains.mps.dataFlow.runtime/jetbrains.mps.lang.dataFlow)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
+    <import index="aplb" ref="2af156ab-65c1-4a62-bd0d-ea734f71eab6/r:a1d8bbbf-d4f0-431f-8dcd-a6badc777315(jetbrains.mps.dataFlow.runtime/jetbrains.mps.lang.dataFlow)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="mu20" ref="r:fc94574f-a075-45e6-9927-48e7e87153e6(jetbrains.mps.analyzers.runtime.framework)" />
   </imports>
@@ -453,7 +454,7 @@
             <node concept="2ShNRf" id="O" role="37wK5m">
               <uo k="s:originTrace" v="n:2955426575106084983" />
               <node concept="1pGfFk" id="Q" role="2ShVmc">
-                <ref role="37wK5l" to="1fjm:~ConceptDataFlowModeId.&lt;init&gt;(java.lang.String)" resolve="ConceptDataFlowModeId" />
+                <ref role="37wK5l" to="8qxk:3yaa4ph8uyE" resolve="ConceptDataFlowModeId" />
                 <uo k="s:originTrace" v="n:2955426575106084983" />
                 <node concept="Xl_RD" id="R" role="37wK5m">
                   <property role="Xl_RC" value="jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode" />
@@ -860,7 +861,7 @@
           <uo k="s:originTrace" v="n:4383142553201250307" />
           <node concept="2OqwBi" id="2C" role="3clFbG">
             <node concept="liA8E" id="2D" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String)" resolve="emitNop" />
+              <ref role="37wK5l" to="8qxk:3yaa4ph8uqK" resolve="emitNop" />
               <node concept="Xl_RD" id="2F" role="37wK5m">
                 <property role="Xl_RC" value="r:11be8b48-b45e-48e5-98ad-b77dc1b202b1(testCustomAnalyzer.dataFlow)/4383142553201250307" />
               </node>
@@ -879,7 +880,7 @@
           <uo k="s:originTrace" v="n:4383142553201250358" />
           <node concept="2OqwBi" id="2I" role="3clFbG">
             <node concept="liA8E" id="2J" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String)" resolve="emitNop" />
+              <ref role="37wK5l" to="8qxk:3yaa4ph8uqK" resolve="emitNop" />
               <node concept="Xl_RD" id="2L" role="37wK5m">
                 <property role="Xl_RC" value="r:11be8b48-b45e-48e5-98ad-b77dc1b202b1(testCustomAnalyzer.dataFlow)/4383142553201250358" />
               </node>
@@ -909,7 +910,7 @@
         <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
         <uo k="s:originTrace" v="n:4383142553201250304" />
         <node concept="3uibUv" id="2S" role="11_B2D">
-          <ref role="3uigEE" to="1fjm:~IDataFlowModeId" resolve="IDataFlowModeId" />
+          <ref role="3uigEE" to="8qxk:3yaa4ph8tQx" resolve="IDataFlowModeId" />
           <uo k="s:originTrace" v="n:4383142553201250304" />
         </node>
       </node>
@@ -928,7 +929,7 @@
             <node concept="2ShNRf" id="2V" role="37wK5m">
               <uo k="s:originTrace" v="n:4383142553201250330" />
               <node concept="1pGfFk" id="2X" role="2ShVmc">
-                <ref role="37wK5l" to="1fjm:~ConceptDataFlowModeId.&lt;init&gt;(java.lang.String)" resolve="ConceptDataFlowModeId" />
+                <ref role="37wK5l" to="8qxk:3yaa4ph8uyE" resolve="ConceptDataFlowModeId" />
                 <uo k="s:originTrace" v="n:4383142553201250330" />
                 <node concept="Xl_RD" id="2Y" role="37wK5m">
                   <property role="Xl_RC" value="jetbrains.mps.testCustomDataFlow.structure.IntraProceduralSpecific_BuilderMode" />
@@ -937,7 +938,7 @@
               </node>
             </node>
             <node concept="3uibUv" id="2W" role="3PaCim">
-              <ref role="3uigEE" to="1fjm:~IDataFlowModeId" resolve="IDataFlowModeId" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8tQx" resolve="IDataFlowModeId" />
               <uo k="s:originTrace" v="n:4383142553201250304" />
             </node>
           </node>
@@ -979,7 +980,7 @@
           <uo k="s:originTrace" v="n:2955426575105812292" />
           <node concept="2OqwBi" id="3a" role="3clFbG">
             <node concept="liA8E" id="3b" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String)" resolve="emitNop" />
+              <ref role="37wK5l" to="8qxk:3yaa4ph8uqK" resolve="emitNop" />
               <node concept="Xl_RD" id="3d" role="37wK5m">
                 <property role="Xl_RC" value="r:11be8b48-b45e-48e5-98ad-b77dc1b202b1(testCustomAnalyzer.dataFlow)/2955426575105812292" />
               </node>
@@ -1009,7 +1010,7 @@
         <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
         <uo k="s:originTrace" v="n:2955426575105435842" />
         <node concept="3uibUv" id="3k" role="11_B2D">
-          <ref role="3uigEE" to="1fjm:~IDataFlowModeId" resolve="IDataFlowModeId" />
+          <ref role="3uigEE" to="8qxk:3yaa4ph8tQx" resolve="IDataFlowModeId" />
           <uo k="s:originTrace" v="n:2955426575105435842" />
         </node>
       </node>
@@ -1028,7 +1029,7 @@
             <node concept="2ShNRf" id="3n" role="37wK5m">
               <uo k="s:originTrace" v="n:2955426575105521938" />
               <node concept="1pGfFk" id="3p" role="2ShVmc">
-                <ref role="37wK5l" to="1fjm:~ConceptDataFlowModeId.&lt;init&gt;(java.lang.String)" resolve="ConceptDataFlowModeId" />
+                <ref role="37wK5l" to="8qxk:3yaa4ph8uyE" resolve="ConceptDataFlowModeId" />
                 <uo k="s:originTrace" v="n:2955426575105521938" />
                 <node concept="Xl_RD" id="3q" role="37wK5m">
                   <property role="Xl_RC" value="jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode" />
@@ -1037,7 +1038,7 @@
               </node>
             </node>
             <node concept="3uibUv" id="3o" role="3PaCim">
-              <ref role="3uigEE" to="1fjm:~IDataFlowModeId" resolve="IDataFlowModeId" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8tQx" resolve="IDataFlowModeId" />
               <uo k="s:originTrace" v="n:2955426575105435842" />
             </node>
           </node>
@@ -2091,7 +2092,7 @@
       <node concept="3uibUv" id="87" role="3clF45">
         <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
         <node concept="3uibUv" id="8c" role="11_B2D">
-          <ref role="3uigEE" to="1fjm:~DataFlowConstructor" resolve="DataFlowConstructor" />
+          <ref role="3uigEE" to="8qxk:3yaa4ph8uRC" resolve="DataFlowConstructor" />
         </node>
       </node>
       <node concept="3clFbS" id="88" role="3clF47">
@@ -2111,7 +2112,7 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="8o" role="3PaCim">
-                    <ref role="3uigEE" to="1fjm:~DataFlowConstructor" resolve="DataFlowConstructor" />
+                    <ref role="3uigEE" to="8qxk:3yaa4ph8uRC" resolve="DataFlowConstructor" />
                   </node>
                 </node>
               </node>
@@ -2132,7 +2133,7 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="8v" role="3PaCim">
-                    <ref role="3uigEE" to="1fjm:~DataFlowConstructor" resolve="DataFlowConstructor" />
+                    <ref role="3uigEE" to="8qxk:3yaa4ph8uRC" resolve="DataFlowConstructor" />
                   </node>
                 </node>
               </node>
@@ -2148,7 +2149,7 @@
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
             <node concept="3uibUv" id="8y" role="3PaCim">
-              <ref role="3uigEE" to="1fjm:~DataFlowConstructor" resolve="DataFlowConstructor" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8uRC" resolve="DataFlowConstructor" />
             </node>
           </node>
         </node>
@@ -2177,7 +2178,7 @@
       <node concept="3uibUv" id="8A" role="3clF45">
         <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
         <node concept="3uibUv" id="8E" role="11_B2D">
-          <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
+          <ref role="3uigEE" to="8qxk:3yaa4ph8uyb" resolve="IDataFlowBuilder" />
         </node>
       </node>
       <node concept="37vLTG" id="8B" role="3clF46">
@@ -2205,7 +2206,7 @@
                   <node concept="2ShNRf" id="8W" role="37wK5m">
                     <node concept="3g6Rrh" id="8X" role="2ShVmc">
                       <node concept="3uibUv" id="8Y" role="3g7fb8">
-                        <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
+                        <ref role="3uigEE" to="8qxk:3yaa4ph8uyb" resolve="IDataFlowBuilder" />
                       </node>
                       <node concept="2ShNRf" id="8Z" role="3g7hyw">
                         <node concept="HV5vD" id="91" role="2ShVmc">
@@ -2238,7 +2239,7 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="98" role="3PaCim">
-                    <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
+                    <ref role="3uigEE" to="8qxk:3yaa4ph8uyb" resolve="IDataFlowBuilder" />
                   </node>
                 </node>
               </node>
@@ -2259,7 +2260,7 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="9f" role="3PaCim">
-                    <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
+                    <ref role="3uigEE" to="8qxk:3yaa4ph8uyb" resolve="IDataFlowBuilder" />
                   </node>
                 </node>
               </node>
@@ -2280,7 +2281,7 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="9m" role="3PaCim">
-                    <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
+                    <ref role="3uigEE" to="8qxk:3yaa4ph8uyb" resolve="IDataFlowBuilder" />
                   </node>
                 </node>
               </node>
@@ -2301,7 +2302,7 @@
                     </node>
                   </node>
                   <node concept="3uibUv" id="9t" role="3PaCim">
-                    <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
+                    <ref role="3uigEE" to="8qxk:3yaa4ph8uyb" resolve="IDataFlowBuilder" />
                   </node>
                 </node>
               </node>
@@ -2317,7 +2318,7 @@
             <ref role="37wK5l" to="33ny:~Collections.emptyList()" resolve="emptyList" />
             <ref role="1Pybhc" to="33ny:~Collections" resolve="Collections" />
             <node concept="3uibUv" id="9w" role="3PaCim">
-              <ref role="3uigEE" to="1fjm:~IDataFlowBuilder" resolve="IDataFlowBuilder" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8uyb" resolve="IDataFlowBuilder" />
             </node>
           </node>
         </node>
@@ -2328,7 +2329,7 @@
     </node>
     <node concept="3Tm1VV" id="84" role="1B3o_S" />
     <node concept="3uibUv" id="85" role="1zkMxy">
-      <ref role="3uigEE" to="1fjm:~DataFlowAspectDescriptorBase" resolve="DataFlowAspectDescriptorBase" />
+      <ref role="3uigEE" to="8qxk:3yaa4ph8ud_" resolve="DataFlowAspectDescriptorBase" />
     </node>
   </node>
   <node concept="39dXUE" id="9x">
@@ -2645,7 +2646,7 @@
               </node>
             </node>
             <node concept="liA8E" id="ba" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
+              <ref role="37wK5l" to="8qxk:3yaa4ph8unf" resolve="build" />
               <node concept="10QFUN" id="bd" role="37wK5m">
                 <node concept="2OqwBi" id="be" role="10QFUP">
                   <uo k="s:originTrace" v="n:7078910619969194220" />
@@ -2673,7 +2674,7 @@
           <uo k="s:originTrace" v="n:7078910619969196244" />
           <node concept="2OqwBi" id="bk" role="3clFbG">
             <node concept="liA8E" id="bl" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String)" resolve="emitNop" />
+              <ref role="37wK5l" to="8qxk:3yaa4ph8uqK" resolve="emitNop" />
               <node concept="Xl_RD" id="bn" role="37wK5m">
                 <property role="Xl_RC" value="r:11be8b48-b45e-48e5-98ad-b77dc1b202b1(testCustomAnalyzer.dataFlow)/7078910619969196244" />
               </node>
@@ -2703,7 +2704,7 @@
         <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
         <uo k="s:originTrace" v="n:7078910619969193816" />
         <node concept="3uibUv" id="bu" role="11_B2D">
-          <ref role="3uigEE" to="1fjm:~IDataFlowModeId" resolve="IDataFlowModeId" />
+          <ref role="3uigEE" to="8qxk:3yaa4ph8tQx" resolve="IDataFlowModeId" />
           <uo k="s:originTrace" v="n:7078910619969193816" />
         </node>
       </node>
@@ -2722,7 +2723,7 @@
             <node concept="2ShNRf" id="bx" role="37wK5m">
               <uo k="s:originTrace" v="n:7078910619969195689" />
               <node concept="1pGfFk" id="bz" role="2ShVmc">
-                <ref role="37wK5l" to="1fjm:~ConceptDataFlowModeId.&lt;init&gt;(java.lang.String)" resolve="ConceptDataFlowModeId" />
+                <ref role="37wK5l" to="8qxk:3yaa4ph8uyE" resolve="ConceptDataFlowModeId" />
                 <uo k="s:originTrace" v="n:7078910619969195689" />
                 <node concept="Xl_RD" id="b$" role="37wK5m">
                   <property role="Xl_RC" value="jetbrains.mps.lang.dataFlow.structure.IntraProcedural_BuilderMode" />
@@ -2731,7 +2732,7 @@
               </node>
             </node>
             <node concept="3uibUv" id="by" role="3PaCim">
-              <ref role="3uigEE" to="1fjm:~IDataFlowModeId" resolve="IDataFlowModeId" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8tQx" resolve="IDataFlowModeId" />
               <uo k="s:originTrace" v="n:7078910619969193816" />
             </node>
           </node>
@@ -2806,7 +2807,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="bT" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
+                  <ref role="37wK5l" to="8qxk:3yaa4ph8unf" resolve="build" />
                   <node concept="10QFUN" id="bW" role="37wK5m">
                     <node concept="2GrUjf" id="bX" role="10QFUP">
                       <ref role="2Gs0qQ" node="bJ" resolve="child" />
@@ -2856,7 +2857,7 @@
           <uo k="s:originTrace" v="n:7078910619969195916" />
           <node concept="2OqwBi" id="ca" role="3clFbG">
             <node concept="liA8E" id="cb" role="2OqNvi">
-              <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.emitNop(int,java.lang.String)" resolve="emitNop" />
+              <ref role="37wK5l" to="8qxk:3yaa4ph8uqK" resolve="emitNop" />
               <node concept="Xl_RD" id="cd" role="37wK5m">
                 <property role="Xl_RC" value="r:11be8b48-b45e-48e5-98ad-b77dc1b202b1(testCustomAnalyzer.dataFlow)/7078910619969195916" />
               </node>
@@ -2886,7 +2887,7 @@
         <ref role="3uigEE" to="33ny:~Collection" resolve="Collection" />
         <uo k="s:originTrace" v="n:7078910619969195895" />
         <node concept="3uibUv" id="ck" role="11_B2D">
-          <ref role="3uigEE" to="1fjm:~IDataFlowModeId" resolve="IDataFlowModeId" />
+          <ref role="3uigEE" to="8qxk:3yaa4ph8tQx" resolve="IDataFlowModeId" />
           <uo k="s:originTrace" v="n:7078910619969195895" />
         </node>
       </node>
@@ -2905,7 +2906,7 @@
             <node concept="2ShNRf" id="cn" role="37wK5m">
               <uo k="s:originTrace" v="n:7078910619969195935" />
               <node concept="1pGfFk" id="cp" role="2ShVmc">
-                <ref role="37wK5l" to="1fjm:~ConceptDataFlowModeId.&lt;init&gt;(java.lang.String)" resolve="ConceptDataFlowModeId" />
+                <ref role="37wK5l" to="8qxk:3yaa4ph8uyE" resolve="ConceptDataFlowModeId" />
                 <uo k="s:originTrace" v="n:7078910619969195935" />
                 <node concept="Xl_RD" id="cq" role="37wK5m">
                   <property role="Xl_RC" value="jetbrains.mps.testCustomDataFlow.structure.IntraProceduralSpecific_BuilderMode" />
@@ -2914,7 +2915,7 @@
               </node>
             </node>
             <node concept="3uibUv" id="co" role="3PaCim">
-              <ref role="3uigEE" to="1fjm:~IDataFlowModeId" resolve="IDataFlowModeId" />
+              <ref role="3uigEE" to="8qxk:3yaa4ph8tQx" resolve="IDataFlowModeId" />
               <uo k="s:originTrace" v="n:7078910619969195895" />
             </node>
           </node>
@@ -2972,7 +2973,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="cF" role="2OqNvi">
-                  <ref role="37wK5l" to="1fjm:~StructuralProgramBuilder.build(java.lang.Object)" resolve="build" />
+                  <ref role="37wK5l" to="8qxk:3yaa4ph8unf" resolve="build" />
                   <node concept="10QFUN" id="cI" role="37wK5m">
                     <node concept="2GrUjf" id="cJ" role="10QFUP">
                       <ref role="2Gs0qQ" node="c_" resolve="child" />
