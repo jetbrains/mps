@@ -139,21 +139,20 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.Runnable" />
     <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="javax.swing.JComponent" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchResults" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchTask" />
-    <classNode dependClassName="jetbrains.mps.ide.findusages.view.UsagesView" />
     <classNode dependClassName="jetbrains.mps.ide.icons.IdeIcons" />
     <classNode dependClassName="jetbrains.mps.ide.platform.refactoring.RefactoringViewAction" />
     <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
     <classNode dependClassName="jetbrains.mps.ide.refactoring.RefactoringViewItemImpl" />
+    <classNode dependClassName="jetbrains.mps.plugins.tool.IComponentDisposer" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
     <classNode dependClassName="jetbrains.mps.refactoring.framework.RefactoringContext" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode extendsClassName="jetbrains.mps.ide.findusages.view.TabbedUsagesTool" />
+    <classNode extendsClassName="jetbrains.mps.ide.tools.BaseTabbedProjectTool" />
   </dependency>
   <dependency className="jetbrains.mps.ide.refactoring.RefactoringViewItemImpl">
     <classNode dependClassName="com.intellij.icons.AllIcons" />

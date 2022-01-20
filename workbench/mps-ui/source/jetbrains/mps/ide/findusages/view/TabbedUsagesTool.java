@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,18 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.Icon;
 import java.util.Set;
 
+/**
+ * @deprecated not very great for sub-classing, proper MPS tools shall subclass e.g.
+ *             {@link jetbrains.mps.ide.tools.BaseTabbedProjectTool} instead.
+ *             Functionality of this class might make sense for non-reloadable tool (registered in IDEA's .xml)
+ *             which needs its content completely rebuilt on module changes. However, it's not clear
+ *             why change in deployment of user/project modules shall affect reported usages.
+ *             If the idea was to reload the tool itself, then lang.plugin mechanism
+ *             of MPS is much better, as tools contributed with lang.plugin get completely reloaded on
+ *             reload of a module that distributes them, and keep their state on reload of unrelateed/user/project modules.
+ *             Commit 8066b7ef doesn't really help to understand the initial intention.
+ */
+@Deprecated(since = "2022.1", forRemoval = true)
 public abstract class TabbedUsagesTool extends BaseProjectTool {
 
   private final ClassLoaderManager myClassLoaderManager;
