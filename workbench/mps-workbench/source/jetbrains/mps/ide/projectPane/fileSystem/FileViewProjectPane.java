@@ -158,6 +158,7 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
         getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), openEditorAction);
         getActionMap().put(openEditorAction, openEditorAction);
       }
+
       @Override
       protected ActionGroup createPopupActionGroup(final MPSTreeNode node) {
         return ProjectPaneActionGroups.getActionGroup(node);
@@ -295,11 +296,20 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
   }
 
   //todo eliminate code duplication in BaseLogicalViewProjectPane
+  @Nullable
   private <T extends TreeNode> T getSelectedTreeNode(Class<T> nodeClass) {
-    TreePath selectionPath = getTree().getSelectionPath();
-    if (selectionPath == null) return null;
+    MPSTree tree = getTree();
+    if (tree == null) {
+      return null;
+    }
+    TreePath selectionPath = tree.getSelectionPath();
+    if (selectionPath == null) {
+      return null;
+    }
     Object selectedNode = selectionPath.getLastPathComponent();
-    if (!(nodeClass.isInstance(selectedNode))) return null;
+    if (!(nodeClass.isInstance(selectedNode))) {
+      return null;
+    }
     return (T) selectedNode;
   }
 
@@ -329,7 +339,7 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
     };
     if (changeView) {
       projectViewToolWindow.activate(() -> ProjectView.getInstance(myProject).changeViewCB(getId(), null)
-                                                        .doWhenDone(selectionRunnable), true);
+                                                      .doWhenDone(selectionRunnable), true);
     } else {
       selectionRunnable.run();
     }
@@ -337,7 +347,11 @@ public class FileViewProjectPane extends AbstractProjectViewPane implements Data
 
   @Nullable
   protected MPSTreeNode getNode(VirtualFile file) {
-    DefaultTreeModel treeModel = getTree().getModel();
+    MPSTree tree = getTree();
+    if (tree == null) {
+      return null;
+    }
+    DefaultTreeModel treeModel = tree.getModel();
     MPSTreeNode rootTreeNode = (MPSTreeNode) treeModel.getRoot();
     return getNode(rootTreeNode, file);
   }

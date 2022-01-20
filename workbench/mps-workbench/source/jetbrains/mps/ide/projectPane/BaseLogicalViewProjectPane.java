@@ -79,6 +79,7 @@ import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import org.jetbrains.mps.openapi.repository.CommandListener;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
+import javax.swing.JTree;
 import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 import java.util.ArrayList;
@@ -309,6 +310,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
 
   /**
    * expects model read lock at least
+   *
    * @deprecated don't use, prefer {@code SNodeReference} and {@code DataContext.getData()}
    */
   @Deprecated(forRemoval = true, since = "2021.3")
@@ -322,6 +324,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
 
   /**
    * expects model read lock at least
+   *
    * @deprecated don't use, prefer {@code SNodeReference} and {@code DataContext.getData()}
    */
   @NotNull
@@ -350,7 +353,7 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
   @NotNull
   public List<SModel> getSelectedModels() {
     final List<SModelTreeNode> selectedTreeNodes = getSelectedTreeNodes(SModelTreeNode.class);
-    if(selectedTreeNodes.isEmpty()) {
+    if (selectedTreeNodes.isEmpty()) {
       return Collections.emptyList();
     }
     List<SModel> result = new ArrayList<>(selectedTreeNodes.size());
@@ -417,7 +420,11 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
 
   @NotNull
   public List<Pair<SModel, String>> getSelectedPackages() {
-    TreePath[] paths = getTree().getSelectionPaths();
+    JTree tree = getTree();
+    if (tree == null) {
+      return Collections.emptyList();
+    }
+    TreePath[] paths = tree.getSelectionPaths();
     SRepository projectRepo = ProjectHelper.getProjectRepository(getProject());
     if (paths == null || paths.length == 0 || projectRepo == null) {
       return Collections.emptyList();
@@ -470,7 +477,11 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
    */
   @Nullable
   protected final <T extends TreeNode> T getSelectedTreeNode(Class<T> nodeClass) {
-    TreePath selectionPath = getTree().getSelectionPath();
+    JTree tree = getTree();
+    if (tree == null) {
+      return null;
+    }
+    TreePath selectionPath = tree.getSelectionPath();
     if (selectionPath == null) {
       return null;
     }
@@ -480,7 +491,11 @@ public abstract class BaseLogicalViewProjectPane extends AbstractProjectViewPane
 
   @NotNull
   public <T extends TreeNode> List<T> getSelectedTreeNodes(Class<T> nodeClass) {
-    TreePath[] selectionPaths = getTree().getSelectionPaths();
+    JTree tree = getTree();
+    if (tree == null) {
+      return Collections.emptyList();
+    }
+    TreePath[] selectionPaths = tree.getSelectionPaths();
     if (selectionPaths == null || selectionPaths.length == 0) {
       return Collections.emptyList();
     }

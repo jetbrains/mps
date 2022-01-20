@@ -62,6 +62,9 @@ public final class ProjectTreeFindHelper {
       return result;
     }
 
+    if (myProjectTree == null) {
+      return null;
+    }
     ProjectModulesPoolTreeNode modulesPoolNode = myProjectTree.getModulesPoolNode();
     if (modulesPoolNode == null) {
       return null;
@@ -402,6 +405,9 @@ public final class ProjectTreeFindHelper {
 
   @Nullable
   private MPSTreeNode getRootNode() {
+    if (myProjectTree == null) {
+      return null;
+    }
     return myProjectTree.getRootNode();
   }
 }

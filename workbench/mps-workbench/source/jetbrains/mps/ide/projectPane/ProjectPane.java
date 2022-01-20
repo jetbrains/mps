@@ -265,11 +265,12 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
     myUpdateQueue.queue(new AbstractUpdate(UpdateID.REBUILD) {
       @Override
       public void run() {
-        if (getTree() == null || getProject().isDisposed()) {
+        ProjectTree tree = getTree();
+        if (tree == null || getProject().isDisposed()) {
           cb.reject("already disposed");
           return;
         }
-        getTree().rebuildNow();
+        tree.rebuildNow();
         cb.setDone();
       }
     });
@@ -573,11 +574,12 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   }
 
   @Nullable
-  /*package*/ ErrorStripe getErrorStripe(Object object) {
+    /*package*/ ErrorStripe getErrorStripe(Object object) {
     if (object instanceof MPSTreeNode) {
       final Collection<TreeErrorMessage> messages = ((MPSTreeNode) object).findMessages(TreeErrorMessage.class);
       final TreeCellRenderer cellRenderer;
-      if (messages.isEmpty() || false == ((cellRenderer = getTree().getCellRenderer()) instanceof ProjectTreeCellRenderer)) {
+      ProjectTree tree = getTree();
+      if (messages.isEmpty() || tree == null || !((cellRenderer = tree.getCellRenderer()) instanceof ProjectTreeCellRenderer)) {
         return null;
       }
       assert cellRenderer != null : "project tree without cell renderer";
@@ -613,7 +615,7 @@ public class ProjectPane extends BaseLogicalViewProjectPane implements ProjectVi
   }
 
   @NotNull
-  /*package*/ ProjectTreeFindHelper createFindHelper() {
+    /*package*/ ProjectTreeFindHelper createFindHelper() {
     return new ProjectTreeFindHelper(getTree());
   }
 
