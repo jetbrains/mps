@@ -70,7 +70,6 @@
       <element id="archive" name="mps-behavior-runtime.jar">
         <element id="module-output" name="behavior-runtime" />
       </element>
-      <element id="library" level="project" name="KotlinxMetadataJvm" />
     </root>
   </artifact>
 </component>
