@@ -12,5 +12,6 @@
     <orderEntry type="library" name="idea-bootstrap" level="project" />
     <orderEntry type="library" name="Annotations" level="project" />
     <orderEntry type="module" module-name="boot-util" />
+    <orderEntry type="library" scope="RUNTIME" name="KotlinxMetadataJvm" level="project" />
   </component>
 </module>
