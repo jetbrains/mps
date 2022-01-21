@@ -37,13 +37,13 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
     // insertions
     applyWrapChanges(changes);
     insertNotMoveGroups(changes);
-    excludeNotMoveChanges(changes);
 
     // moves
     applyMoveChanges(changes);
 
     // deletions
     deleteNotMoveGroups(changes);
+    excludeNotMoveChanges(changes);
     applyUnwrapChanges(changes);
   }
 
