@@ -56,7 +56,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
   private static final Logger LOG = LogManager.getLogger(IdeaEnvironment.class);
   private static final String PLUGIN_PATH = "plugin.path";
   private static final String IDEA_LOAD_PLUGINS_ID = "idea.load.plugins.id";
-  public static final String CREATE_PLUGIN_CLASSLOADERS = "idea.run.tests.with.bundled.plugins";
+  private static final String IDEA_USE_CORE_CL = "idea.force.use.core.classloader";
 
   private Object myIdeaApplication;
 
@@ -166,11 +166,12 @@ public final class IdeaEnvironment extends EnvironmentBase {
     }
     System.setProperty("ide.new.project.model", Boolean.toString(false));
     System.setProperty("ide.open.readme.md.on.startup", Boolean.toString(false));
+    String oldValue = System.getProperty(IDEA_USE_CORE_CL);
+    if (oldValue == null) {
+      // always true, resorting to the default behavior loading plugins from cp [apyshkin]
+      System.setProperty(IDEA_USE_CORE_CL, Boolean.TRUE.toString());
+    }
     if (myConfig.isTestMode()) {
-      String oldValue = System.getProperty(CREATE_PLUGIN_CLASSLOADERS);
-      if (oldValue == null) {
-        System.setProperty(CREATE_PLUGIN_CLASSLOADERS, myConfig.doesCreatePluginClassLoaders() + "");
-      }
       // Force GraphicsEnvironment to cache headless false state before TestApplicationManager resets it to true
       System.setProperty("java.awt.headless", Boolean.FALSE.toString());
       GraphicsEnvironment.isHeadless();
