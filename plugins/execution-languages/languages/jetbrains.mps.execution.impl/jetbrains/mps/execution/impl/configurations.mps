@@ -30,6 +30,7 @@
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
+      <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
@@ -406,12 +407,22 @@
           </node>
         </node>
         <node concept="3clFbJ" id="4tDMPuHd$Q9" role="3cqZAp">
-          <node concept="2OqwBi" id="4tDMPuHd$Qa" role="3clFbw">
-            <node concept="37vLTw" id="2BHiRxeuq92" role="2Oq$k0">
-              <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
+          <node concept="22lmx$" id="1rm1p2$kT4v" role="3clFbw">
+            <node concept="2OqwBi" id="1rm1p2$kY9X" role="3uHU7w">
+              <node concept="37vLTw" id="1rm1p2$kWUN" role="2Oq$k0">
+                <ref role="3cqZAo" node="2dPl3A21des" resolve="contributors" />
+              </node>
+              <node concept="liA8E" id="1rm1p2$kZlA" role="2OqNvi">
+                <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
+              </node>
             </node>
-            <node concept="liA8E" id="4tDMPuHd$Qc" role="2OqNvi">
-              <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
+            <node concept="2OqwBi" id="4tDMPuHd$Qa" role="3uHU7B">
+              <node concept="37vLTw" id="2BHiRxeuq92" role="2Oq$k0">
+                <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
+              </node>
+              <node concept="liA8E" id="4tDMPuHd$Qc" role="2OqNvi">
+                <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
+              </node>
             </node>
           </node>
           <node concept="3clFbS" id="4tDMPuHd$Qd" role="3clFbx">
@@ -471,12 +482,22 @@
           </node>
         </node>
         <node concept="3clFbJ" id="7rb2_bmZtsK" role="3cqZAp">
-          <node concept="2OqwBi" id="7rb2_bmZtsL" role="3clFbw">
-            <node concept="37vLTw" id="7rb2_bmZtsM" role="2Oq$k0">
-              <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
+          <node concept="22lmx$" id="1rm1p2$l0IQ" role="3clFbw">
+            <node concept="2OqwBi" id="1rm1p2$l2Vh" role="3uHU7w">
+              <node concept="37vLTw" id="1rm1p2$l1Dm" role="2Oq$k0">
+                <ref role="3cqZAo" node="2dPl3A21gq5" resolve="contributors" />
+              </node>
+              <node concept="liA8E" id="1rm1p2$l45$" role="2OqNvi">
+                <ref role="37wK5l" to="33ny:~List.isEmpty()" resolve="isEmpty" />
+              </node>
             </node>
-            <node concept="liA8E" id="7rb2_bmZtsN" role="2OqNvi">
-              <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
+            <node concept="2OqwBi" id="7rb2_bmZtsL" role="3uHU7B">
+              <node concept="37vLTw" id="7rb2_bmZtsM" role="2Oq$k0">
+                <ref role="3cqZAo" node="4tDMPuHd$PD" resolve="myProject" />
+              </node>
+              <node concept="liA8E" id="7rb2_bmZtsN" role="2OqNvi">
+                <ref role="37wK5l" to="1m72:~ComponentManager.isDisposed()" resolve="isDisposed" />
+              </node>
             </node>
           </node>
           <node concept="3clFbS" id="7rb2_bmZtsO" role="3clFbx">
@@ -1202,7 +1223,7 @@
     <node concept="3UR2Jj" id="1mC8n7NOa9R" role="lGtFl">
       <node concept="TZ5HA" id="1mC8n7NOadr" role="TZ5H$">
         <node concept="1dT_AC" id="1mC8n7NOads" role="1dT_Ay">
-          <property role="1dT_AB" value="This component allows to create reloadable (!) run configurations within MPS." />
+          <property role="1dT_AB" value="This component allows us to create reloadable (!) run configurations within MPS." />
         </node>
       </node>
       <node concept="TZ5HA" id="1mC8n7NOfzl" role="TZ5H$">

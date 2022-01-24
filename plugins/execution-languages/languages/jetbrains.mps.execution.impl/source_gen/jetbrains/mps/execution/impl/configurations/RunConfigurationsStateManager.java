@@ -33,7 +33,7 @@ import com.intellij.execution.RunnerAndConfigurationSettings;
 import org.jetbrains.annotations.Nullable;
 
 /**
- * This component allows to create reloadable (!) run configurations within MPS.
+ * This component allows us to create reloadable (!) run configurations within MPS.
  * It listens to the project plugins manager because we use custom project plugins to register custom 'before' tasks (like 'make' etc.)
  * It saves all run configurations at the plugin unload and then restores them at the plugin load event
  * Currently before tasks are saved but not loaded (they are loaded from template configurations) due to change in IDEA api
@@ -58,7 +58,7 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
   @Override
   public void afterPluginsLoaded(List<PluginContributor> contributors) {
     // this can be executed in "later", so we check that the project is not yet closed
-    if (myProject.isDisposed()) {
+    if (myProject.isDisposed() || contributors.isEmpty()) {
       return;
     }
 
@@ -68,7 +68,7 @@ public class RunConfigurationsStateManager implements ProjectComponent, PluginRe
   @Override
   public void beforePluginsUnloaded(List<PluginContributor> contributors) {
     // same here
-    if (myProject.isDisposed()) {
+    if (myProject.isDisposed() || contributors.isEmpty()) {
       return;
     }
 
