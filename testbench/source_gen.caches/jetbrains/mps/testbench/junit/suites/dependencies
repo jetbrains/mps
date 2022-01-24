@@ -40,12 +40,9 @@
   <uses module="d3c5a46f-b8c2-47db-ad0a-30b8f19c2055(jetbrains.mps.testbench.suite)" kind="dp" />
   <uses module="20c6e580-bdc5-4067-8049-d7e3265a86de(jetbrains.mps.typesystemEngine)" kind="dp" />
   <dependency className="jetbrains.mps.testbench.junit.suites.AntModuleTestSuite">
-    <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Deprecated" />
-    <classNode dependClassName="java.lang.System" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.testbench.junit.suites.MpsTestsSuite" />
-    <classNode dependClassName="jetbrains.mps.tool.environment.IdeaEnvironment" />
     <classNode dependClassName="org.junit.runner.RunWith" />
   </dependency>
   <dependency className="jetbrains.mps.testbench.junit.suites.AntModuleTestSuite0">

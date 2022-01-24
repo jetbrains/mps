@@ -293,9 +293,6 @@
         <child id="1163668934364" name="ifFalse" index="3K4GZi" />
       </concept>
       <concept id="1082113931046" name="jetbrains.mps.baseLanguage.structure.ContinueStatement" flags="nn" index="3N13vt" />
-      <concept id="1221737317277" name="jetbrains.mps.baseLanguage.structure.StaticInitializer" flags="lg" index="1Pe0a1">
-        <child id="1221737317278" name="statementList" index="1Pe0a2" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
@@ -468,39 +465,6 @@
   </registry>
   <node concept="312cEu" id="53UI$MLlMdq">
     <property role="TrG5h" value="AntModuleTestSuite" />
-    <node concept="1Pe0a1" id="12CYGR0YO0B" role="jymVt">
-      <node concept="3clFbS" id="12CYGR0YO0D" role="1Pe0a2">
-        <node concept="3SKdUt" id="12CYGR0ZgLp" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXop$W" role="1aUNEU">
-            <node concept="3oM_SD" id="ATZLwXop$X" role="1PaTwD">
-              <property role="3oM_SC" value="old" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXop$Y" role="1PaTwD">
-              <property role="3oM_SC" value="behavior" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="12CYGR0YO1c" role="3cqZAp">
-          <node concept="2YIFZM" id="12CYGR0YO1t" role="3clFbG">
-            <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String)" resolve="setProperty" />
-            <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
-            <node concept="10M0yZ" id="12CYGR0ZfAD" role="37wK5m">
-              <ref role="3cqZAo" to="cky9:12CYGR0YZor" resolve="CREATE_PLUGIN_CLASSLOADERS" />
-              <ref role="1PxDUh" to="cky9:6rx4kZDk5Br" resolve="IdeaEnvironment" />
-            </node>
-            <node concept="2OqwBi" id="12CYGR0ZgjC" role="37wK5m">
-              <node concept="10M0yZ" id="12CYGR0ZfWV" role="2Oq$k0">
-                <ref role="3cqZAo" to="wyt6:~Boolean.FALSE" resolve="FALSE" />
-                <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
-              </node>
-              <node concept="liA8E" id="12CYGR0ZgJ_" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~Boolean.toString()" resolve="toString" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="3UR2Jj" id="5sV3JxOTGwn" role="lGtFl">
       <node concept="TZ5HI" id="12CYGR0YIZu" role="3nqlJM">
         <node concept="TZ5HA" id="12CYGR0YIZv" role="3HnX3l">

@@ -384,10 +384,7 @@
   </root>
   <root nodeRef="r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/5835181105767457626">
     <file name="AntModuleTestSuite.java">
-      <node id="1200485062307286105" at="18,10,19,19" concept="10" />
-      <node id="1200485062307168332" at="19,19,20,93" concept="3" />
-      <scope id="1200485062307168297" at="18,10,20,93" />
-      <unit id="5835181105767457626" at="14,0,23,0" name="jetbrains.mps.testbench.junit.suites.AntModuleTestSuite" />
+      <unit id="5835181105767457626" at="13,0,18,0" name="jetbrains.mps.testbench.junit.suites.AntModuleTestSuite" />
     </file>
   </root>
   <root nodeRef="r:984811b0-078d-45d7-bf58-fa501204c2fc(jetbrains.mps.testbench.junit.suites)/6944172844332268314">
