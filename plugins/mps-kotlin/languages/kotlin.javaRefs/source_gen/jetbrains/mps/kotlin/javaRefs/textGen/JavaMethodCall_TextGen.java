@@ -23,7 +23,7 @@ public class JavaMethodCall_TextGen extends TextGenDescriptorBase {
     } else {
       tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.method$yYmq), PROPS.name$MnvL));
     }
-    KotlinTextGen.functionArguments(ctx.getPrimaryInput(), ctx);
+    KotlinTextGen.orderedFunctionArguments(ctx.getPrimaryInput(), ctx);
   }
 
   private static final class LINKS {

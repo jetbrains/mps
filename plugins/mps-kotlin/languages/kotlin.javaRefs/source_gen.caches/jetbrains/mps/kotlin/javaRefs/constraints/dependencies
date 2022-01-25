@@ -61,7 +61,6 @@
   <dependency className="jetbrains.mps.kotlin.javaRefs.constraints.GetterFilter">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
-    <classNode dependClassName="jetbrains.mps.kotlin.runtime.members.signature.MemberSignature" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.members.signature.PropertyAccessorKind" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.members.signature.PropertyAccessorSignature" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />

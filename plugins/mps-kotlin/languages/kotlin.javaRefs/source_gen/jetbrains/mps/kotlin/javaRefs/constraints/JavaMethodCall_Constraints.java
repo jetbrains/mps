@@ -56,7 +56,7 @@ public class JavaMethodCall_Constraints extends BaseConstraintsDescriptor {
               SNode type = context._1();
 
               // Here we seek function signatures from java concepts
-              Scope scope = IType__BehaviorDescriptor.getTypeScope_id7ubb0gUcNKV.invoke(type, new SignedDeclarationFilter(CONCEPTS.BaseMethodDeclaration$kD, FunctionSignature.class), context._2(), _context.getContextNode().getModel().getRepository());
+              Scope scope = IType__BehaviorDescriptor.getTypeScope_id7ubb0gUcNKV.invoke(type, new SignedDeclarationFilter(CONCEPTS.BaseMethodDeclaration$kD, FunctionSignature.class), context._2());
 
               return (scope == null ? new EmptyScope() : scope);
             }

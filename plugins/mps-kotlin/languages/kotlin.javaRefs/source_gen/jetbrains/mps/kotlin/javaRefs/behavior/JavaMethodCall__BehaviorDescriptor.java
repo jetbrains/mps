@@ -23,7 +23,6 @@ import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class JavaMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
@@ -33,12 +32,9 @@ public final class JavaMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SReferenceLink> getTargetLink_id5D4bOjrrcOr = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getTargetLink").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjrrcOr").build();
   public static final SMethod<SNode> getReceiver_id5D4bOjrrgiZ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReceiver").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjrrgiZ").build();
   public static final SMethod<Boolean> isReceiverExternal_id4bAAzIAVSHE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReceiverExternal").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4bAAzIAVSHE").build();
-  public static final SMethod<SAbstractConcept> getModifierFilter_id5D4bOjruyUS = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getModifierFilter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjruyUS").build();
-  public static final SMethod<Iterable<SNode>> getArguments_id1VI7K1jROBX = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1VI7K1jROBX").build();
-  public static final SMethod<Iterable<SNode>> getTypeArguments_id5JfKd21NW9H = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTypeArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5JfKd21NW9H").build();
   public static final SMethod<FunctionDeclaration> getFunctionDescriptor_id26mUjU3xhgD = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunctionDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("26mUjU3xhgD").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, isReceiverExternal_id4bAAzIAVSHE, getModifierFilter_id5D4bOjruyUS, getArguments_id1VI7K1jROBX, getTypeArguments_id5JfKd21NW9H, getFunctionDescriptor_id26mUjU3xhgD);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, isReceiverExternal_id4bAAzIAVSHE, getFunctionDescriptor_id26mUjU3xhgD);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -55,15 +51,6 @@ public final class JavaMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean isReceiverExternal_id4bAAzIAVSHE(@NotNull SNode __thisNode__) {
     // May be not be true if used as expression, but in such case getReceiver returns null
     return true;
-  }
-  /*package*/ static SAbstractConcept getModifierFilter_id5D4bOjruyUS(@NotNull SNode __thisNode__) {
-    return null;
-  }
-  /*package*/ static Iterable<SNode> getArguments_id1VI7K1jROBX(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.arguments$zJyV);
-  }
-  /*package*/ static Iterable<SNode> getTypeArguments_id5JfKd21NW9H(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.typeArguments$86s6);
   }
   /*package*/ static FunctionDeclaration getFunctionDescriptor_id26mUjU3xhgD(@NotNull SNode __thisNode__) {
     if (SLinkOperations.getTarget(__thisNode__, LINKS.method$yYmq) == null) {
@@ -96,12 +83,6 @@ public final class JavaMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
       case 3:
         return (T) ((Boolean) isReceiverExternal_id4bAAzIAVSHE(node));
       case 4:
-        return (T) ((SAbstractConcept) getModifierFilter_id5D4bOjruyUS(node));
-      case 5:
-        return (T) ((Iterable<SNode>) getArguments_id1VI7K1jROBX(node));
-      case 6:
-        return (T) ((Iterable<SNode>) getTypeArguments_id5JfKd21NW9H(node));
-      case 7:
         return (T) ((FunctionDeclaration) getFunctionDescriptor_id26mUjU3xhgD(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -134,8 +115,6 @@ public final class JavaMethodCall__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink method$yYmq = MetaAdapterFactory.getReferenceLink(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x2196e93e834d57ccL, 0x2196e93e834d58feL, "method");
-    /*package*/ static final SContainmentLink arguments$zJyV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL, 0x5b1dd60162ecf00cL, "arguments");
-    /*package*/ static final SContainmentLink typeArguments$86s6 = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L, 0x5b1dd60162c9757cL, "typeArguments");
   }
 
   private static final class PROPS {

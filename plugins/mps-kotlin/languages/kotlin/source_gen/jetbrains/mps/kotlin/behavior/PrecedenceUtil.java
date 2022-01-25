@@ -36,7 +36,7 @@ public class PrecedenceUtil {
     SNode parentNode = SNodeOperations.as(SNodeOperations.getParent(targetNode), CONCEPTS.IExpression$2i);
 
     // We're looking for a term used as expression (eg. navigation target is not used as expression even if concept is compatible)
-    while (parentNode != null && !(SConceptOperations.isSuperConceptOf(SNodeOperations.asSConcept(CONCEPTS.IExpression$2i), SNodeOperations.asSConcept(SNodeOperations.getContainingLink(targetNode).getTargetConcept())))) {
+    while (parentNode != null && !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(CONCEPTS.IExpression$2i), SNodeOperations.asSConcept(SNodeOperations.getContainingLink(targetNode).getTargetConcept())))) {
       targetNode = parentNode;
       parentNode = SNodeOperations.as(SNodeOperations.getParent(targetNode), CONCEPTS.IExpression$2i);
     }

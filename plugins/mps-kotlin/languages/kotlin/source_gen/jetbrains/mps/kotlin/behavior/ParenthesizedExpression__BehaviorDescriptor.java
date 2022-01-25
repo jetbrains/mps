@@ -6,10 +6,10 @@ import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
-import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -22,17 +22,13 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ParenthesizedExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3e2L, "jetbrains.mps.kotlin.structure.ParenthesizedExpression");
 
-  public static final SMethod<Precedence> getPrecedenceLevel_id666oMY59eOv = new SMethodBuilder<Precedence>(new SJavaCompoundTypeImpl(Precedence.class)).name("getPrecedenceLevel").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("666oMY59eOv").build();
   public static final SMethod<SNode> getDataFlowChild_id6563FJLePC_ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDataFlowChild").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6563FJLePC_").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPrecedenceLevel_id666oMY59eOv, getDataFlowChild_id6563FJLePC_);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDataFlowChild_id6563FJLePC_);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static Precedence getPrecedenceLevel_id666oMY59eOv(@NotNull SNode __thisNode__) {
-    return Precedence.notApplicable();
-  }
   /*package*/ static SNode getDataFlowChild_id6563FJLePC_(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.nested$xoIL);
   }
@@ -53,8 +49,6 @@ public final class ParenthesizedExpression__BehaviorDescriptor extends BaseBHDes
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((Precedence) getPrecedenceLevel_id666oMY59eOv(node));
-      case 1:
         return (T) ((SNode) getDataFlowChild_id6563FJLePC_(node));
       default:
         throw new BHMethodNotFoundException(this, method);

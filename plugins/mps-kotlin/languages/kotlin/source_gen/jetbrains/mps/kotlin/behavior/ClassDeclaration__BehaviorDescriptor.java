@@ -170,7 +170,11 @@ __switch__:
       Sequence.fromIterable(ClassDeclaration__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(__thisNode__)).visitAll(new IVisitor<SNode>() {
         public void visit(final SNode it) {
           // Declare them as instance method (same scope)
-          visitor.addSimpleDeclaration(it, true, FunctionSignature.class, () -> KotlinSignatures.forConstructor(it));
+          visitor.addSimpleDeclaration(it, true, FunctionSignature.class, () -> {
+            // TODO constructor as instance methods have special behavior regarding inheritance
+            String erasureOf = KotlinSignatures.erasureOf(SLinkOperations.collect(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(it), LINKS.type$1aXr), visitor);
+            return new FunctionSignature(KotlinFunctionDeclaration.of(it), erasureOf);
+          });
         }
       });
     }
@@ -279,6 +283,7 @@ __switch__:
     /*package*/ static final SContainmentLink primaryConstructor$QvZc = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, 0x2043bc8310e45225L, "primaryConstructor");
     /*package*/ static final SContainmentLink parameters$$EEQ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af418L, 0x28bef6d7551af6dfL, "parameters");
     /*package*/ static final SContainmentLink superclasses$6CkZ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, 0x1ba36e493d40fea5L, "superclasses");
+    /*package*/ static final SContainmentLink type$1aXr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L, 0x63c34deca4888fe3L, "type");
     /*package*/ static final SContainmentLink members$gqdV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310a1ff68L, 0x2043bc8310a1ff69L, "members");
     /*package*/ static final SContainmentLink modifier$C$4W = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, 0x28bef6d7551af762L, "modifier");
   }

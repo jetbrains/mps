@@ -4,21 +4,19 @@ package jetbrains.mps.kotlin.constraints;
 
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
 import jetbrains.mps.kotlin.runtime.members.signature.FunctionSignature;
-import jetbrains.mps.kotlin.runtime.members.signature.MemberSignature;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class InfixSignatureFilter extends SignatureFilter {
+public class InfixSignatureFilter extends SignatureFilter<FunctionSignature> {
   public InfixSignatureFilter() {
     super(FunctionSignature.class);
   }
 
   @Override
-  public boolean accept(MemberSignature signature, SNode source) {
-    FunctionSignature functionSig = (FunctionSignature) signature;
-    return FunctionDeclaration.hasModifier(functionSig.getFunctionDeclaration(), CONCEPTS.InfixFunctionModifier$PI);
+  protected boolean accept(FunctionSignature signature, SNode source) {
+    return FunctionDeclaration.hasModifier(signature.getFunctionDeclaration(), CONCEPTS.InfixFunctionModifier$PI);
   }
 
   private static final class CONCEPTS {

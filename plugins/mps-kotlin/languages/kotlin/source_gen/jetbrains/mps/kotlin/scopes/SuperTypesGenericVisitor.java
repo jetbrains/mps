@@ -4,7 +4,6 @@ package jetbrains.mps.kotlin.scopes;
 
 import jetbrains.mps.kotlin.behavior.NodeTypeVarSubs;
 import jetbrains.mps.references.Reference;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -37,15 +36,14 @@ public class SuperTypesGenericVisitor extends SuperTypesVisitor {
     };
   }
 
-  public SuperTypesGenericVisitor(SRepository repository) {
-    super(repository);
+  public SuperTypesGenericVisitor() {
     setSubstitutions(new NodeTypeVarSubs());
   }
 
   @Override
-  public boolean enterType(SNode clazz) {
-    IType__BehaviorDescriptor.populateSubstitutions_id4f4W8JpwgWV.invoke(clazz, getSubstitutions());
-    return super.enterType(clazz);
+  public boolean enterType(SNode type) {
+    IType__BehaviorDescriptor.populateSubstitutions_id4f4W8JpwgWV.invoke(type, getSubstitutions());
+    return super.enterType(type);
   }
 
 

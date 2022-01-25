@@ -59,7 +59,7 @@ public class InfixCallOperator_Constraints extends BaseConstraintsDescriptor {
             }
 
             // instance scope
-            Scope scope = IType__BehaviorDescriptor.getTypeScope_id7ubb0gUcNKV.invoke(type, new SignedDeclarationFilter(CONCEPTS.IFunctionDeclaration$ZB, new InfixSignatureFilter()), ScopeContext.INSTANCE_RECEIVER, SNodeOperations.getModel(_context.getContextNode()).getRepository());
+            Scope scope = IType__BehaviorDescriptor.getTypeScope_id7ubb0gUcNKV.invoke(type, new SignedDeclarationFilter(CONCEPTS.IFunctionDeclaration$ZB, new InfixSignatureFilter()), ScopeContext.INSTANCE_RECEIVER);
 
             // + receiver scope
             ReceiverTypeScope receiverTypeScope = new ReceiverTypeScope(SNodeOperations.getModel(_context.getContextNode()), type, CONCEPTS.IFunctionIdentifier$K$);

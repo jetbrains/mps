@@ -141,7 +141,7 @@ public class typeof_IKotlinFunctionLikeCall_InferenceRule extends AbstractInfere
             }
           }, (ParameterDeclaration node) -> SPropertyOperations.getString(node.getNode(), PROPS.name$MnvL), IKotlinFunctionLikeCall__BehaviorDescriptor.getFunctionParameters_idUG7NftR_2Q.invoke(fCall));
 
-          List<SNode> typel = ListSequence.fromList(mapper.checkParameters(SLinkOperations.getChildren(fCall, LINKS.actualArgument$Q6nt))).select(ParameterDeclaration::typeOf).select(converter::convert).toListSequence();
+          List<SNode> typel = ListSequence.fromList(mapper.checkArguments(SLinkOperations.getChildren(fCall, LINKS.actualArgument$Q6nt))).select(ParameterDeclaration::typeOf).select(converter::convert).toListSequence();
 
           for (SNode type : ListSequence.fromList(typel)) {
             if (SNodeOperations.isInstanceOf(type, CONCEPTS.IGenericType$13)) {

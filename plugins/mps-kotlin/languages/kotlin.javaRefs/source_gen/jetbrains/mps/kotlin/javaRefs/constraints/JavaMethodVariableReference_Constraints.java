@@ -75,7 +75,7 @@ public class JavaMethodVariableReference_Constraints extends BaseConstraintsDesc
 
               // Here we seek property signatures from java methods
               SignedDeclarationFilter filter = new SignedDeclarationFilter(CONCEPTS.BaseMethodDeclaration$kD, new GetterFilter());
-              return IType__BehaviorDescriptor.getTypeScope_id7ubb0gUcNKV.invoke(receiverType, filter, context._2(), _context.getContextNode().getModel().getRepository());
+              return IType__BehaviorDescriptor.getTypeScope_id7ubb0gUcNKV.invoke(receiverType, filter, context._2());
             }
 
             // TODO context receiver scope in above context

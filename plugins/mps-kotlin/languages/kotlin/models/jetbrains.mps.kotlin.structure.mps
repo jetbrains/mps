@@ -3959,7 +3959,7 @@
     <property role="EcuMT" value="4929770680970628281" />
     <property role="3GE5qa" value="annotation" />
     <property role="TrG5h" value="Annotation" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="4hE452RsWTh" role="PzmwI">
       <ref role="PrY4T" node="4hE452RoXme" resolve="IAnnotation" />
     </node>

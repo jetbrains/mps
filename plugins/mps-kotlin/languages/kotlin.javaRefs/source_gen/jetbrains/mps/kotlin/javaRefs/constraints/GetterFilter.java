@@ -4,18 +4,17 @@ package jetbrains.mps.kotlin.javaRefs.constraints;
 
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
 import jetbrains.mps.kotlin.runtime.members.signature.PropertyAccessorSignature;
-import jetbrains.mps.kotlin.runtime.members.signature.MemberSignature;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Objects;
 import jetbrains.mps.kotlin.runtime.members.signature.PropertyAccessorKind;
 
-public class GetterFilter extends SignatureFilter {
+public class GetterFilter extends SignatureFilter<PropertyAccessorSignature> {
   public GetterFilter() {
     super(PropertyAccessorSignature.class);
   }
 
   @Override
-  public boolean accept(MemberSignature signature, SNode source) {
-    return Objects.equals(((PropertyAccessorSignature) signature).getKind(), PropertyAccessorKind.GETTER);
+  public boolean accept(PropertyAccessorSignature signature, SNode source) {
+    return Objects.equals(signature.getKind(), PropertyAccessorKind.GETTER);
   }
 }

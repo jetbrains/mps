@@ -68,7 +68,7 @@ public final class IClassLike__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static List<SNode> getInstanceDeclarations_id2ZbCiJ9JNq0(@NotNull SNode __thisNode__, SignedDeclarationFilter filter) {
     // Visit the tree of member signatures
-    ClassMemberVisitor visitor = new ClassMemberVisitor(filter.getSignatureFilter(), __thisNode__.getModel().getRepository());
+    ClassMemberVisitor visitor = new ClassMemberVisitor(filter.getSignatureFilter());
     IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(__thisNode__, ((boolean) false)), visitor);
 
     // Return retained nodes

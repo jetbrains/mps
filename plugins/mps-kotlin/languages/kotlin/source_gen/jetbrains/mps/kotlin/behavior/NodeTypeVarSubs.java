@@ -60,6 +60,12 @@ public class NodeTypeVarSubs extends TypeVarSubs<SNode> {
 
     SNode expanded = expand(ITypeProjection__BehaviorDescriptor.substituteType_id27wMicCGGe5.invoke(substitute, SPropertyOperations.getEnum(targetProjection, PROPS.variance$9nw2), parameter), visited);
     SetSequence.fromSet(visited).removeElement(parameter);
+
+    // Propagate nullability
+    if (SPropertyOperations.getBoolean(ref, PROPS.isNullable$KWwD) && SNodeOperations.isInstanceOf(expanded, CONCEPTS.INullableType$$I)) {
+      SPropertyOperations.assign(SNodeOperations.cast(expanded, CONCEPTS.INullableType$$I), PROPS.isNullable$KWwD, true);
+    }
+
     return expanded;
   }
 
@@ -67,9 +73,11 @@ public class NodeTypeVarSubs extends TypeVarSubs<SNode> {
     /*package*/ static final SConcept TypeParameterReference$ya = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x21e0c9232886358dL, "jetbrains.mps.kotlin.structure.TypeParameterReference");
     /*package*/ static final SInterfaceConcept ITypeParameterReference$9i = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4f0064de291cef24L, "jetbrains.mps.kotlin.structure.ITypeParameterReference");
     /*package*/ static final SConcept TypeProjection$5e = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3ccL, "jetbrains.mps.kotlin.structure.TypeProjection");
+    /*package*/ static final SInterfaceConcept INullableType$$I = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af542L, "jetbrains.mps.kotlin.structure.INullableType");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty variance$9nw2 = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3ccL, 0x21e0c923289a222cL, "variance");
+    /*package*/ static final SProperty isNullable$KWwD = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af542L, 0x56840864ad823b96L, "isNullable");
   }
 }

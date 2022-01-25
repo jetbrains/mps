@@ -47,7 +47,7 @@ public class OverloadResolverUtil {
     List<ParameterDeclaration> mappedParameters;
     try {
       FunctionParamMapper<String, ParamException> mapper = new FunctionParamMapper<>(ParamErrorHandler.THROW, (ParameterDeclaration node) -> SPropertyOperations.getString(node.getNode(), PROPS.name$MnvL), candidate.getParameters());
-      mappedParameters = mapper.checkParameters(arguments);
+      mappedParameters = mapper.checkArguments(arguments);
     } catch (ParamException issue) {
       return null;
     }

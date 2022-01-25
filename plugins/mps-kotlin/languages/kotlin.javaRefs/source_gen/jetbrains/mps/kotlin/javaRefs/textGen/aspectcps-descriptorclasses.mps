@@ -1649,7 +1649,7 @@
         <node concept="3clFbF" id="5G" role="3cqZAp">
           <uo k="s:originTrace" v="n:1467822947166694400" />
           <node concept="1niqFM" id="6l" role="3clFbG">
-            <property role="1npL6y" value="functionArguments" />
+            <property role="1npL6y" value="orderedFunctionArguments" />
             <property role="1npUBZ" value="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
             <uo k="s:originTrace" v="n:1467822947166694400" />
             <node concept="3uibUv" id="6m" role="32Mpfj">

@@ -14,6 +14,9 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.kotlin.behavior.IStatementHolder__BehaviorDescriptor;
+import jetbrains.mps.kotlin.overloading.FunctionParamHelper;
+import jetbrains.mps.kotlin.behavior.IFunctionCallLike__BehaviorDescriptor;
+import jetbrains.mps.kotlin.overloading.ParamException;
 import jetbrains.mps.kotlin.behavior.IIdentifier__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.KtEnvironmentConfig;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -80,7 +83,7 @@ public abstract class KotlinTextGen {
       tgs.append("?");
     }
   }
-  public static void arguments(List<SNode> elements, final TextGenContext ctx) {
+  public static void arguments(Iterable<SNode> elements, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     {
       Iterable<SNode> collection = elements;
@@ -238,9 +241,9 @@ public abstract class KotlinTextGen {
     }
     ctx.getBuffer().area().decreaseIndent();
   }
-  public static void argumentsWithLambda(SNode node, List<SNode> arguments, final TextGenContext ctx) {
+  public static void argumentsWithLambda(SNode node, Iterable<SNode> arguments, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if (ListSequence.fromList(arguments).isNotEmpty() || (SLinkOperations.getTarget(node, LINKS.lambda$U$kC) == null)) {
+    if (Sequence.fromIterable(arguments).isNotEmpty() || (SLinkOperations.getTarget(node, LINKS.lambda$U$kC) == null)) {
       tgs.append("(");
       KotlinTextGen.arguments(arguments, ctx);
       tgs.append(")");
@@ -248,6 +251,29 @@ public abstract class KotlinTextGen {
 
     if ((SLinkOperations.getTarget(node, LINKS.lambda$U$kC) != null)) {
       tgs.appendNode(SLinkOperations.getTarget(node, LINKS.lambda$U$kC));
+    }
+  }
+  public static void orderedFunctionArguments(SNode functionCall, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    // Arguments for a method without named parameters (which are forbidden in java for instance)
+    Iterable<SNode> list;
+
+    try {
+      list = FunctionParamHelper.toOrderedList(IFunctionCallLike__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(functionCall).getParameters(), IFunctionCallLike__BehaviorDescriptor.getArguments_id1VI7K1jROBX.invoke(functionCall));
+    } catch (ParamException e) {
+      tgs.reportError(e.getMessage());
+      return;
+    }
+
+    KotlinTextGen.projections(SLinkOperations.getChildren(functionCall, LINKS.typeArguments$86s6), ctx);
+
+    // Still handle lambda expression, if any
+    if (Sequence.fromIterable(list).isNotEmpty() && Sequence.fromIterable(list).last() == SLinkOperations.getTarget(functionCall, LINKS.lambda$U$kC)) {
+      KotlinTextGen.argumentsWithLambda(functionCall, Sequence.fromIterable(list).take(Sequence.fromIterable(list).count() - 1), ctx);
+    } else {
+      tgs.append("(");
+      KotlinTextGen.arguments(list, ctx);
+      tgs.append(")");
     }
   }
   public static void functionArguments(SNode functionCall, final TextGenContext ctx) {

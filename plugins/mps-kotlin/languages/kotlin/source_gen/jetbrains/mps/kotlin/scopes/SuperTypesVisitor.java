@@ -7,17 +7,11 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
 import jetbrains.mps.kotlin.runtime.types.identifiers.TypeKey;
 import java.util.HashSet;
-import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 
 public class SuperTypesVisitor implements jetbrains.mps.kotlin.runtime.members.SuperTypesVisitor {
   protected final Stack<SNode> visitedTypes = new Stack<SNode>();
   public final Set<TypeKey> superTypes = new HashSet<TypeKey>();
-  private final SRepository repository;
-
-  public SuperTypesVisitor(SRepository repository) {
-    this.repository = repository;
-  }
 
   @Override
   public boolean enterType(SNode type) {
@@ -37,13 +31,8 @@ public class SuperTypesVisitor implements jetbrains.mps.kotlin.runtime.members.S
     return visitedTypes.lastElement();
   }
 
-  @Override
-  public SRepository getRepository() {
-    return repository;
-  }
-
-  public static Iterable<TypeKey> getSupertypes(SNode type, SRepository repo) {
-    SuperTypesVisitor visitor = new SuperTypesVisitor(repo);
+  public static Iterable<TypeKey> getSupertypes(SNode type) {
+    SuperTypesVisitor visitor = new SuperTypesVisitor();
     IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(type, visitor);
     return visitor.superTypes;
   }

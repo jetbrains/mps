@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import jetbrains.mps.kotlin.runtime.members.SourcedSignature;
 import jetbrains.mps.references.Reference;
-import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -49,24 +48,21 @@ public class ClassMemberVisitor extends SuperTypesGenericVisitor implements Sign
       }
     };
   }
-  private final SignatureFilter filter;
+  private final SignatureFilter<? extends MemberSignature> filter;
 
-  public ClassMemberVisitor(SRepository repo) {
+  public ClassMemberVisitor() {
     // Take all members by default
-    this(MemberSignature.class, repo);
+    this(MemberSignature.class);
   }
 
-  public ClassMemberVisitor(@NotNull Class<? extends MemberSignature> signatureKind, SRepository repo) {
-    this(new SignatureFilter(signatureKind), repo);
+  public ClassMemberVisitor(@NotNull Class<? extends MemberSignature> signatureKind) {
+    this(new SignatureFilter<>(signatureKind));
   }
 
-  public ClassMemberVisitor(@NotNull SignatureFilter signatureFilter, SRepository repo) {
-    super(repo);
+  public ClassMemberVisitor(@NotNull SignatureFilter<? extends MemberSignature> signatureFilter) {
     this.setMembers(ListSequence.fromList(new ArrayList<SourcedSignature>()));
     this.filter = signatureFilter;
   }
-
-
 
   @Override
   public <T extends MemberSignature> void addDeclaration(SNode source, boolean isInstance, Class<T> signatureKind, _FunctionTypes._return_P0_E0<? extends Iterable<T>> signaturesBuilder) {
@@ -76,7 +72,7 @@ public class ClassMemberVisitor extends SuperTypesGenericVisitor implements Sign
     }
 
     for (T signature : Sequence.fromIterable(signaturesBuilder.invoke())) {
-      if (!(filter.accept(signature, source))) {
+      if (!(filter.acceptSignature(signature, source))) {
         continue;
       }
 
@@ -90,6 +86,11 @@ public class ClassMemberVisitor extends SuperTypesGenericVisitor implements Sign
         MapSequence.fromMap(signaturesHolder).put(signature, getCurrentType());
       }
     }
+  }
+
+  @Override
+  public SNode expandType(SNode type) {
+    return this.expandWithCollectedSubstitutions(type);
   }
 
   @Override

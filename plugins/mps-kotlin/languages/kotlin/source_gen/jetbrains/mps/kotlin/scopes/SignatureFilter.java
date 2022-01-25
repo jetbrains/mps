@@ -6,30 +6,30 @@ import jetbrains.mps.kotlin.runtime.members.signature.MemberSignature;
 import jetbrains.mps.references.Reference;
 import org.jetbrains.mps.openapi.model.SNode;
 
-public class SignatureFilter {
-  private Class<? extends MemberSignature> myMySignatureKind;
-  public Class<? extends MemberSignature> getMySignatureKind() {
+public class SignatureFilter<T extends MemberSignature> {
+  private Class<T> myMySignatureKind;
+  public Class<T> getMySignatureKind() {
     return this.myMySignatureKind;
   }
-  private void _setMySignatureKind(Class<? extends MemberSignature> value) {
+  private void _setMySignatureKind(Class<T> value) {
     this.myMySignatureKind = value;
   }
-  private Class<? extends MemberSignature> setMySignatureKind(Class<? extends MemberSignature> value) {
+  private Class<T> setMySignatureKind(Class<T> value) {
     _setMySignatureKind(value);
     return value;
   }
-  private Reference<Class<? extends MemberSignature>> refToMySignatureKind() {
-    return new Reference<Class<? extends MemberSignature>>() {
-      public Class<? extends MemberSignature> get() {
+  private Reference<Class<T>> refToMySignatureKind() {
+    return new Reference<Class<T>>() {
+      public Class<T> get() {
         return getMySignatureKind();
       }
-      public void set(Class<? extends MemberSignature> value) {
+      public void set(Class<T> value) {
         _setMySignatureKind(value);
       }
     };
   }
 
-  public SignatureFilter(Class<? extends MemberSignature> signatureKind) {
+  public SignatureFilter(Class<T> signatureKind) {
     setMySignatureKind(signatureKind);
   }
 
@@ -43,8 +43,12 @@ public class SignatureFilter {
    * For instance, filtering on node's concept could prevent external signatures to overload
    * resolution, and have some signature not hidden correctly after processing.
    */
-  public boolean accept(MemberSignature signature, SNode source) {
+  protected boolean accept(T signature, SNode source) {
     return true;
+  }
+
+  public final boolean acceptSignature(MemberSignature signature, SNode source) {
+    return accept((T) signature, source);
   }
 
   /**

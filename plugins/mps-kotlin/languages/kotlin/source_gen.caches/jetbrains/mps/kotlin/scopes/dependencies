@@ -47,7 +47,6 @@
     <classNode dependClassName="jetbrains.mps.references.Reference" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
     <classNode extendsClassName="jetbrains.mps.kotlin.runtime.members.SignatureCollector" />
     <classNode extendsClassName="jetbrains.mps.kotlin.scopes.SuperTypesGenericVisitor" />
   </dependency>
@@ -166,7 +165,6 @@
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.TypeParameterDeclaration" />
     <classNode dependClassName="jetbrains.mps.references.Reference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
     <classNode extendsClassName="jetbrains.mps.kotlin.scopes.SuperTypesVisitor" />
   </dependency>
   <dependency className="jetbrains.mps.kotlin.scopes.SuperTypesVisitor">
@@ -178,7 +176,6 @@
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.types.identifiers.TypeKey" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
     <classNode extendsClassName="jetbrains.mps.kotlin.runtime.members.SuperTypesVisitor" />
   </dependency>
 </dependenciesRoot>

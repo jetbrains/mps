@@ -462,7 +462,6 @@
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.members.signature.FunctionSignature" />
-    <classNode dependClassName="jetbrains.mps.kotlin.runtime.members.signature.MemberSignature" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />

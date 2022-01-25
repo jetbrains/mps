@@ -4,6 +4,11 @@ package jetbrains.mps.kotlin.overloading;
 
 
 public interface ParamErrorHandler<T extends Throwable> {
+  String MULTIPLE_VARARGS = "multiple vararg parameters are prohibited";
+  String WRONG_ARGUMENT_COUNT = "wrong number of arguments";
+  String MIX_NAMED_POSITIONED = "mixing named and positioned arguments is not allowed";
+  String ARGUMENT_ALREADY_PASSED = "an argument is already passed for this parameter";
+
   void error(String message) throws T;
 
   ParamErrorHandler<ParamException> THROW = new ParamErrorHandler<ParamException>() {

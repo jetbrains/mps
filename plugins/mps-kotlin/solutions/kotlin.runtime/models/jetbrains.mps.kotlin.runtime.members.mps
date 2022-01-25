@@ -9,7 +9,6 @@
   <imports>
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
-    <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="nww" ref="r:f44f82b0-1fd9-4105-a80c-2fa6e5033003(jetbrains.mps.kotlin.runtime.members.signature)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
@@ -379,22 +378,6 @@
         <property role="TrG5h" value="original" />
         <node concept="3Tqbb2" id="27wMicD5WEr" role="1tU5fm">
           <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="6ov$ndRz9J0" role="jymVt" />
-    <node concept="3clFb_" id="6ov$ndRz9Mp" role="jymVt">
-      <property role="TrG5h" value="getRepository" />
-      <node concept="3clFbS" id="6ov$ndRz9Ms" role="3clF47" />
-      <node concept="3Tm1VV" id="6ov$ndRz9Mt" role="1B3o_S" />
-      <node concept="3uibUv" id="6ov$ndRz9Rv" role="3clF45">
-        <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
-      </node>
-      <node concept="P$JXv" id="6ov$ndRz9Pa" role="lGtFl">
-        <node concept="TZ5HA" id="6ov$ndRz9Pb" role="TZ5H$">
-          <node concept="1dT_AC" id="6ov$ndRz9Pc" role="1dT_Ay">
-            <property role="1dT_AB" value="Returns the repository, useful in the context where a detached node need access to built-in types." />
-          </node>
         </node>
       </node>
     </node>

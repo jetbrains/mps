@@ -27,8 +27,6 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 
 public final class KotlinClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
@@ -51,7 +49,7 @@ public final class KotlinClassifierType__BehaviorDescriptor extends BaseBHDescri
 
     // TODO this visitor/implementation may not handle raw types
     // Seems like expected behavior is to collects substitutions for all supertypes, we can use kotlin API for that
-    SuperTypesGenericVisitor visitor = new SuperTypesGenericVisitor(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$5Cta).getModel().getRepository());
+    SuperTypesGenericVisitor visitor = new SuperTypesGenericVisitor();
     IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(TypeConversionService.getInstance().getJavaToKt().convert(__thisNode__), visitor);
 
     // Then we convert it back to BL
@@ -69,7 +67,7 @@ public final class KotlinClassifierType__BehaviorDescriptor extends BaseBHDescri
   /*package*/ static List<SNode> getSupertypes_id4w2h6RLlygH(@NotNull SNode __thisNode__) {
     // We use kotlin API as the class is defined with kotlin constructs
     SNode thisType = TypeConversionService.getInstance().getJavaToKt().convert(__thisNode__);
-    List<SNode> supertypes = DirectSuperTypesVisitor.get(thisType, check_9x3lnu_b0a2a1(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$5Cta).getModel()));
+    List<SNode> supertypes = DirectSuperTypesVisitor.get(thisType);
 
     // Then we convert back the result
     final KtToJavaEngine converter = TypeConversionService.getInstance().getKtToJava();
@@ -127,12 +125,6 @@ public final class KotlinClassifierType__BehaviorDescriptor extends BaseBHDescri
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
-  }
-  private static SRepository check_9x3lnu_b0a2a1(SModel checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.getRepository();
-    }
-    return null;
   }
 
   private static final class LINKS {
