@@ -29,7 +29,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModelChange" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
   </dependency>
-  <dependency className="jetbrains.mps.vcs.diff.merge.HierarchicalChangesMerger">
+  <dependency className="jetbrains.mps.vcs.diff.merge.HierarchicalChangesApplier">
     <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.util.ArrayList" />
@@ -41,7 +41,9 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.MapSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.SetSequence" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.ChangeSet" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.HierarchicalNodeGroupChange" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModelChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.ModifiedNodesGroup" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeGroupNotMoveChange" />
@@ -141,7 +143,7 @@
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.changes.NodeIdChange" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.merge.ChangeConflictsBuilder" />
-    <classNode dependClassName="jetbrains.mps.vcs.diff.merge.HierarchicalChangesMerger" />
+    <classNode dependClassName="jetbrains.mps.vcs.diff.merge.HierarchicalChangesApplier" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.merge.MergeConflictsBuilder" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.merge.MergeSessionState" />
     <classNode dependClassName="jetbrains.mps.vcs.diff.merge.MergeTemporaryModel" />

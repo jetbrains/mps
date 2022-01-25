@@ -14,27 +14,36 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.vcs.diff.changes.ModifiedNodesGroup;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
+import jetbrains.mps.vcs.diff.ChangeSet;
+import jetbrains.mps.vcs.diff.changes.ModelChange;
 import jetbrains.mps.vcs.diff.changes.WrappingNodesGroup;
 import jetbrains.mps.vcs.diff.changes.NodeGroupNotMoveChange;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
 
 @GeneratedClass(node = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)/7822689919781181313", model = "r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)")
-/*package*/ final class HierarchicalChangesMerger {
+/*package*/ final class HierarchicalChangesApplier {
 
   @NotNull
   private final MergeSession myMergeSession;
 
-  /*package*/ HierarchicalChangesMerger(@NotNull MergeSession mergeSession) {
+  /*package*/ HierarchicalChangesApplier(@NotNull MergeSession mergeSession) {
     myMergeSession = mergeSession;
   }
 
   /*package*/ void applyHierarchicalChanges(List<HierarchicalNodeGroupChange> changes) {
+    // 'move' changes should be applied AFTER all new nodes are inserted and BEFORE old nodes are deleted. Therefore, so called 'not move' changes which correspond to insertions, deletions and in-place modifications are applied in two steps and 'move' changes are applied between these two steps. Wrap changes are basically insertions and unwrap changes are deletions.
+
+    // insertions
     applyWrapChanges(changes);
     insertNotMoveGroups(changes);
-    excludeNotMoveChanges(changes);
+
+    // moves
     applyMoveChanges(changes);
+
+    // deletions
     deleteNotMoveGroups(changes);
+    excludeNotMoveChanges(changes);
     applyUnwrapChanges(changes);
   }
 
@@ -71,43 +80,52 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
       ListSequence.fromList(wrapChangeInternalGroups).addSequence(ListSequence.fromList(getWrapChangeInternalGroups(change)));
     }
     change.apply(myMergeSession.getResultModel(), myMergeSession.getNodeCopier());
-    updateGroups(change);
-    updateInternalGroups(change, wrapChangeInternalGroups);
+    setSymmetricGroupsApplied(change);
+    updateInternalGroupsInWrapChange(change, wrapChangeInternalGroups);
     myMergeSession.excludeChangeWithConflictedChanges(change);
   }
 
   private List<ModifiedNodesGroup> getWrapChangeInternalGroups(final NodeGroupWrapChange wrapChange) {
     final List<ModifiedNodesGroup> internalGroups = ListSequence.fromList(new ArrayList<ModifiedNodesGroup>());
-    ListSequence.fromList(((wrapChange.getChangeSet() == myMergeSession.getMyChangeSet() ? myMergeSession.getRepositoryChangeSet() : myMergeSession.getMyChangeSet())).getModelChanges()).ofType(HierarchicalNodeGroupChange.class).visitAll(new IVisitor<HierarchicalNodeGroupChange>() {
+    ListSequence.fromList(getChangeOppositeChangeSet(wrapChange).getModelChanges()).ofType(HierarchicalNodeGroupChange.class).visitAll(new IVisitor<HierarchicalNodeGroupChange>() {
       public void visit(HierarchicalNodeGroupChange change) {
-        if (change instanceof NodeGroupWrapChange) {
-          WrappingNodesGroup wrappingGroup = as_jjwyfu_a0a0a0a0a0a0a0b0n(change, NodeGroupWrapChange.class).getWrappingGroup();
-          tryToAddGroupToWrapChangeInternalGroups(wrapChange, wrappingGroup, internalGroups);
-          ListSequence.fromList(wrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
-            public boolean accept(ModifiedNodesGroup it) {
-              return it.isWrappedMove();
-            }
-          }).visitAll(new IVisitor<ModifiedNodesGroup>() {
-            public void visit(ModifiedNodesGroup it) {
-              tryToAddGroupToWrapChangeInternalGroups(wrapChange, it, internalGroups);
-            }
-          });
-        } else {
-          tryToAddGroupToWrapChangeInternalGroups(wrapChange, change.getGroup(false), internalGroups);
-          tryToAddGroupToWrapChangeInternalGroups(wrapChange, change.getGroup(true), internalGroups);
-        }
+        tryAddChangeGroupsToWrapChangeInternalGroups(wrapChange, change, internalGroups);
       }
     });
     return internalGroups;
   }
 
-  private void tryToAddGroupToWrapChangeInternalGroups(NodeGroupWrapChange wrapChange, ModifiedNodesGroup group, List<ModifiedNodesGroup> internalGroups) {
+  @NotNull
+  private ChangeSet getChangeOppositeChangeSet(ModelChange change) {
+    return (change.getChangeSet() == myMergeSession.getMyChangeSet() ? myMergeSession.getRepositoryChangeSet() : myMergeSession.getMyChangeSet());
+  }
+
+  private static void tryAddChangeGroupsToWrapChangeInternalGroups(final NodeGroupWrapChange wrapChange, HierarchicalNodeGroupChange change, final List<ModifiedNodesGroup> internalGroups) {
+    if (change instanceof NodeGroupWrapChange) {
+      WrappingNodesGroup wrappingGroup = as_nggbvs_a0a0a0a0r(change, NodeGroupWrapChange.class).getWrappingGroup();
+      tryToAddGroupToWrapChangeInternalGroups(wrapChange, wrappingGroup, internalGroups);
+      ListSequence.fromList(wrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
+        public boolean accept(ModifiedNodesGroup it) {
+          return it.isWrappedMove();
+        }
+      }).visitAll(new IVisitor<ModifiedNodesGroup>() {
+        public void visit(ModifiedNodesGroup it) {
+          tryToAddGroupToWrapChangeInternalGroups(wrapChange, it, internalGroups);
+        }
+      });
+    } else {
+      tryToAddGroupToWrapChangeInternalGroups(wrapChange, change.getGroup(false), internalGroups);
+      tryToAddGroupToWrapChangeInternalGroups(wrapChange, change.getGroup(true), internalGroups);
+    }
+  }
+
+  private static void tryToAddGroupToWrapChangeInternalGroups(NodeGroupWrapChange wrapChange, ModifiedNodesGroup group, List<ModifiedNodesGroup> internalGroups) {
     if (wrapChange.groupIsInternal(group)) {
       ListSequence.fromList(internalGroups).addElement(group);
     }
   }
 
-  private void updateGroups(HierarchicalNodeGroupChange change) {
+  private void setSymmetricGroupsApplied(NodeGroupWrapChange change) {
     if (MapSequence.fromMap(myMergeSession.getSymmetricChanges()).containsKey(change)) {
       ListSequence.fromList(MapSequence.fromMap(myMergeSession.getSymmetricChanges()).get(change)).ofType(HierarchicalNodeGroupChange.class).visitAll(new IVisitor<HierarchicalNodeGroupChange>() {
         public void visit(HierarchicalNodeGroupChange it) {
@@ -117,7 +135,7 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
     }
   }
 
-  private void updateInternalGroups(final NodeGroupWrapChange wrapChange, List<ModifiedNodesGroup> wrapChangeInternalGroups) {
+  private void updateInternalGroupsInWrapChange(final NodeGroupWrapChange wrapChange, List<ModifiedNodesGroup> wrapChangeInternalGroups) {
     // update internal changes in the same change set
     updateWrapChangeInternalGroups(wrapChange, false);
     // update internal changes in the opposite change set
@@ -141,7 +159,7 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
     }).visitAll(new IVisitor<HierarchicalNodeGroupChange>() {
       public void visit(HierarchicalNodeGroupChange change) {
         if (change instanceof NodeGroupWrapChange) {
-          WrappingNodesGroup wrappingGroup = as_jjwyfu_a0a0a0a0a0a0a0a0v(change, NodeGroupWrapChange.class).getWrappingGroup();
+          WrappingNodesGroup wrappingGroup = as_nggbvs_a0a0a0a0a0a0a0a0z(change, NodeGroupWrapChange.class).getWrappingGroup();
           updateSymmetricWrapChangeInternalGroup(wrapChange, wrappingGroup, isSymmetric);
           ListSequence.fromList(wrappingGroup.getUnwrappedGroups()).where(new IWhereFilter<ModifiedNodesGroup>() {
             public boolean accept(ModifiedNodesGroup it) {
@@ -238,10 +256,10 @@ import jetbrains.mps.vcs.diff.changes.NodeGroupMoveChange;
       }
     });
   }
-  private static <T> T as_jjwyfu_a0a0a0a0a0a0a0b0n(Object o, Class<T> type) {
+  private static <T> T as_nggbvs_a0a0a0a0r(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_jjwyfu_a0a0a0a0a0a0a0a0v(Object o, Class<T> type) {
+  private static <T> T as_nggbvs_a0a0a0a0a0a0a0a0z(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

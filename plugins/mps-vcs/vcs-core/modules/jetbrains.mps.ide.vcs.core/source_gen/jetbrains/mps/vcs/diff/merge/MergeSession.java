@@ -226,7 +226,7 @@ public final class MergeSession {
   }
 
   private void applyHierarchicalChanges(Iterable<ModelChange> changes) {
-    new HierarchicalChangesMerger(this).applyHierarchicalChanges(Sequence.fromIterable(changes).ofType(HierarchicalNodeGroupChange.class).select(new ISelector<HierarchicalNodeGroupChange, HierarchicalNodeGroupChange>() {
+    new HierarchicalChangesApplier(this).applyHierarchicalChanges(Sequence.fromIterable(changes).ofType(HierarchicalNodeGroupChange.class).select(new ISelector<HierarchicalNodeGroupChange, HierarchicalNodeGroupChange>() {
       public HierarchicalNodeGroupChange select(HierarchicalNodeGroupChange it) {
         return (HierarchicalNodeGroupChange) getChangeByMergeStrategy(it);
       }
