@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,6 @@ import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -339,11 +338,27 @@ final class JavaCompilerImpl implements AutoCloseable {
     final String compileVer = myCompilerOptions.getTargetJavaVersion().getCompilerVersion();
     // javac --release option: "Supported targets: 6, 7, 8, 9, 10, 11"
     final String releaseVer = compileVer.startsWith("1.") ? compileVer.substring(2) : compileVer;
-    if (cycleTempCompile) {
-      return Arrays.asList("-encoding", "UTF-8", "--release", releaseVer, "-g:none", "-proc:none", "-nowarn");
+    final boolean strictRelease = myCompilerOptions.isStrictReleaseTarget();
+    ArrayList<String> rv = new ArrayList<>(12);
+    rv.add("-encoding");
+    rv.add("UTF-8");
+    if (strictRelease) {
+      rv.add("--release");
+      rv.add(releaseVer);
     } else {
-      return Arrays.asList("-encoding", "UTF-8", "--release", releaseVer, "-g");
+      rv.add("-source");
+      rv.add(releaseVer);
+      rv.add("-target");
+      rv.add(releaseVer);
     }
+    if (cycleTempCompile) {
+      rv.add("-g:none");
+      rv.add("-proc:none");
+      rv.add("-nowarn");
+    } else {
+      rv.add("-g");
+    }
+    return rv;
   }
 
   private Iterable<JavaFileObject> cuFromSourcePath() throws IOException {
