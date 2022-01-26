@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,6 +42,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -223,7 +224,15 @@ public class Generator extends ReloadableModuleBase {
     rv.add(new SDependencyImpl(mySourceLanguage0.getSourceModuleReference(), repo, SDependencyScope.DEFAULT, false));
     // mySourceLanguage0.getLanguageRuntimes() gives RTs for deployed languages only, but I don't care. Not sure I need these
     // RT dependencies here at all.
-    for (SModuleReference rt : mySourceLanguage0.getLanguageRuntimes()) {
+    // XXX The idea is to move RT dependencies into Generator, as various generators may need different runtime, but for the
+    // time being we have to deal with RT modules specified for a Langugae.
+    final LinkedHashSet<SModuleReference> languageRuntimes = new LinkedHashSet<>();
+    if (mySourceLanguage != null) {
+      languageRuntimes.addAll(mySourceLanguage.getRuntimeModulesReferences());
+    }
+    // intersect with deployed information, if any
+    mySourceLanguage0.getLanguageRuntimes().forEach(languageRuntimes::add);
+    for (SModuleReference rt : languageRuntimes) {
       rv.add(new SDependencyImpl(rt, repo, SDependencyScope.RUNTIME, false));
     }
 
