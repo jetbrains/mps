@@ -364,6 +364,8 @@ final class JavaCompilerImpl implements AutoCloseable {
       rv.add(releaseVer);
       rv.add("-target");
       rv.add(releaseVer);
+      // don't want to see warning: [options] bootstrap class path not set in conjunction with -source XX
+      rv.add("-Xlint:-options");
     }
     if (cycleTempCompile) {
       rv.add("-g:none");

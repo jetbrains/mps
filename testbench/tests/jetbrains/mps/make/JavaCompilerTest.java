@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -78,6 +78,14 @@ public class JavaCompilerTest {
   @Test
   public void testWithJavaxToolsCompiler() throws Exception {
     final JavaCompilerOptions co = new JavaCompilerOptions(JavaVersion.VERSION_9);
+    try (JavaCompilerImpl jc = new JavaCompilerImpl(myJavaHome, co, JavaCompilerImpl.defaultCompiler())) {
+      doTest(jc);
+    }
+  }
+
+  @Test
+  public void testWithJavaxToolsCompilerStrictRelease() throws Exception {
+    final JavaCompilerOptions co = new JavaCompilerOptions(JavaVersion.VERSION_9, true);
     try (JavaCompilerImpl jc = new JavaCompilerImpl(myJavaHome, co, JavaCompilerImpl.defaultCompiler())) {
       doTest(jc);
     }
