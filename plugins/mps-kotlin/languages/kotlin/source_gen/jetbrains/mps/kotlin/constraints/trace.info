@@ -15,7 +15,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="13,0,99,0" name="jetbrains.mps.kotlin.constraints.ConstraintsAspectDescriptor" />
+      <unit at="13,0,97,0" name="jetbrains.mps.kotlin.constraints.ConstraintsAspectDescriptor" />
     </file>
   </root>
   <root nodeRef="r:133e8cac-c6ad-447f-a90c-5146ca3b1aed(jetbrains.mps.kotlin.constraints)/1243006380186798615">
@@ -1363,58 +1363,6 @@
       <unit id="7358760241246935473" at="35,19,44,9" name="jetbrains.mps.kotlin.constraints.SuperClassSpecifier_Constraints$1$1" />
       <unit id="7358760241246935473" at="31,48,46,5" name="jetbrains.mps.kotlin.constraints.SuperClassSpecifier_Constraints$1" />
       <unit id="7358760241246935472" at="24,0,61,0" name="jetbrains.mps.kotlin.constraints.SuperClassSpecifier_Constraints" />
-    </file>
-  </root>
-  <root nodeRef="r:133e8cac-c6ad-447f-a90c-5146ca3b1aed(jetbrains.mps.kotlin.constraints)/7758491406788013056">
-    <file name="IfExpression_Constraints.java">
-      <node id="7758491406788013056" at="24,37,25,36" concept="12" />
-      <node id="7758491406788013056" at="32,128,33,133" concept="6" />
-      <node id="7758491406788013056" at="33,133,34,0" concept="9" />
-      <node id="7758491406788013056" at="35,55,36,72" concept="2" />
-      <node id="7758491406788013056" at="37,9,38,0" concept="9" />
-      <node id="7758491406788013056" at="38,0,39,22" concept="7" />
-      <node id="7758491406788037255" at="43,128,44,91" concept="8" />
-      <node id="7208671122130574854" at="46,56,47,107" concept="7" />
-      <node id="7208671122130629178" at="48,7,49,54" concept="7" />
-      <node id="7208671122130632556" at="50,5,51,16" concept="7" />
-      <node id="7758491406788013056" at="53,0,54,0" concept="10" trace="canBeParentBreakingPoint" />
-      <node id="7758491406788013056" at="56,0,57,0" concept="10" trace="IfExpression$TD" />
-      <node id="7758491406788013056" at="57,0,58,0" concept="10" trace="LambdaLiteral$Bd" />
-      <node id="7758491406788013056" at="61,0,62,0" concept="10" trace="statements$R3pt" />
-      <node id="7758491406788013056" at="62,0,63,0" concept="10" trace="else$$UEO" />
-      <node id="7758491406788013056" at="24,0,27,0" concept="1" trace="IfExpression_Constraints#()V" />
-      <node id="7758491406788013056" at="34,0,37,9" concept="4" />
-      <node id="7208671122130572332" at="45,113,48,7" concept="4" />
-      <node id="7208671122130570584" at="44,91,50,5" concept="4" />
-      <node id="7758491406788013056" at="31,0,41,0" concept="5" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeParent;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
-      <node id="7758491406788013056" at="43,0,53,0" concept="11" trace="staticCanBeAParent#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
-      <node id="7758491406788013056" at="29,105,41,6" concept="7" />
-      <node id="7758491406788013056" at="28,0,43,0" concept="5" trace="calculateCanBeParentConstraint#()Ljetbrains/mps/smodel/runtime/ConstraintFunction;" />
-      <scope id="7758491406788013056" at="24,37,25,36" />
-      <scope id="7758491406788013056" at="35,55,36,72" />
-      <scope id="7208671122130572334" at="46,56,47,107" />
-      <scope id="7758491406788013056" at="24,0,27,0" />
-      <scope id="7208671122130570586" at="45,113,49,54" />
-      <scope id="7758491406788013056" at="32,128,39,22">
-        <var name="result" id="7758491406788013056" />
-      </scope>
-      <scope id="7208671122139535112" at="43,128,51,16" />
-      <scope id="7758491406788013056" at="31,0,41,0">
-        <var name="checkingNodeContext" id="7758491406788013056" />
-        <var name="context" id="7758491406788013056" />
-      </scope>
-      <scope id="7758491406788013056" at="43,0,53,0">
-        <var name="childConcept" id="7758491406788013056" />
-        <var name="childNode" id="7758491406788013056" />
-        <var name="link" id="7758491406788013056" />
-        <var name="node" id="7758491406788013056" />
-      </scope>
-      <scope id="7758491406788013056" at="29,105,41,6" />
-      <scope id="7758491406788013056" at="28,0,43,0" />
-      <unit id="7758491406788013056" at="55,0,59,0" name="jetbrains.mps.kotlin.constraints.IfExpression_Constraints$CONCEPTS" />
-      <unit id="7758491406788013056" at="60,0,64,0" name="jetbrains.mps.kotlin.constraints.IfExpression_Constraints$LINKS" />
-      <unit id="7758491406788013056" at="30,15,41,5" name="jetbrains.mps.kotlin.constraints.IfExpression_Constraints$1" />
-      <unit id="7758491406788013056" at="23,0,65,0" name="jetbrains.mps.kotlin.constraints.IfExpression_Constraints" />
     </file>
   </root>
   <root nodeRef="r:133e8cac-c6ad-447f-a90c-5146ca3b1aed(jetbrains.mps.kotlin.constraints)/781120894701182937">

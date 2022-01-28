@@ -96,6 +96,9 @@ public final class IStatementHolder__BehaviorDescriptor extends BaseBHDescriptor
     }
     if (ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statements$R3pt)).count() == 1 && SNodeOperations.isInstanceOf(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statements$R3pt)).getElement(0), CONCEPTS.IExpression$2i)) {
       SNode expr = SNodeOperations.as(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.statements$R3pt)).getElement(0), CONCEPTS.IExpression$2i);
+      if (SNodeOperations.isInstanceOf(expr, CONCEPTS.LambdaLiteral$Bd)) {
+        return null;
+      }
       if (ListSequence.fromList(SNodeOperations.getNodeDescendants(expr, CONCEPTS.ReturnExpression$c8, true, new SAbstractConcept[]{})).isNotEmpty()) {
         return null;
       }
@@ -171,6 +174,7 @@ public final class IStatementHolder__BehaviorDescriptor extends BaseBHDescriptor
     /*package*/ static final SInterfaceConcept IIdentifier$wg = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af330L, "jetbrains.mps.kotlin.structure.IIdentifier");
     /*package*/ static final SInterfaceConcept ScopeProvider$aq = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L, "jetbrains.mps.lang.core.structure.ScopeProvider");
     /*package*/ static final SInterfaceConcept IExpression$2i = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L, "jetbrains.mps.kotlin.structure.IExpression");
+    /*package*/ static final SConcept LambdaLiteral$Bd = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, "jetbrains.mps.kotlin.structure.LambdaLiteral");
     /*package*/ static final SConcept ReturnExpression$c8 = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af55eL, "jetbrains.mps.kotlin.structure.ReturnExpression");
   }
 }

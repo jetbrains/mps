@@ -628,9 +628,13 @@
       <concept id="1240170042401" name="jetbrains.mps.lang.smodel.structure.SEnumerationMemberType" flags="in" index="2ZThk1">
         <reference id="1240170836027" name="enum" index="2ZWj4r" />
       </concept>
+      <concept id="1171500988903" name="jetbrains.mps.lang.smodel.structure.Node_GetChildrenOperation" flags="nn" index="32TBzR" />
       <concept id="2644386474301421077" name="jetbrains.mps.lang.smodel.structure.LinkIdRefExpression" flags="nn" index="359W_D">
         <reference id="2644386474301421078" name="conceptDeclaration" index="359W_E" />
         <reference id="2644386474301421079" name="linkDeclaration" index="359W_F" />
+      </concept>
+      <concept id="5168775467716640652" name="jetbrains.mps.lang.smodel.structure.OperationParm_LinkQualifier" flags="ng" index="1aIX9F">
+        <child id="5168775467716640653" name="linkQualifier" index="1aIX9E" />
       </concept>
       <concept id="1182511038748" name="jetbrains.mps.lang.smodel.structure.Model_NodesIncludingImportedOperation" flags="nn" index="1j9C0f">
         <child id="6750920497477143623" name="conceptArgument" index="3MHPCF" />
@@ -2903,7 +2907,12 @@
         <node concept="lj46D" id="1502Vug_gPb" role="3F10Kt">
           <property role="VOm3f" value="true" />
         </node>
-        <node concept="3F0ifn" id="6gam351oJdW" role="2czzBI" />
+        <node concept="3F0ifn" id="6gam351oJdW" role="2czzBI">
+          <ref role="1k5W1q" to="tpen:hinfsDb" resolve="EmptyCell" />
+          <node concept="VPxyj" id="45iC02HKQ6$" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
       </node>
       <node concept="3F0ifn" id="2yYXHtlfBwN" role="3EZMnx">
         <property role="3F0ifm" value="}" />
@@ -17356,6 +17365,87 @@
     </node>
     <node concept="22hDWg" id="6qs$OhcExYR" role="22hAXT">
       <property role="TrG5h" value="StatementHolder_InsertStatement" />
+    </node>
+  </node>
+  <node concept="22mcaB" id="45iC02HDT35">
+    <property role="3GE5qa" value="expression.function" />
+    <ref role="aqKnT" to="hcm8:2yYXHtl6Jkn" resolve="LambdaLiteral" />
+    <node concept="22hDWj" id="45iC02HDT9K" role="22hAXT" />
+    <node concept="3eGOop" id="45iC02HDXsS" role="3ft7WO">
+      <node concept="ucgPf" id="45iC02HDXsT" role="3aKz83">
+        <node concept="3clFbS" id="45iC02HDXsU" role="2VODD2">
+          <node concept="3cpWs6" id="45iC02HEc8L" role="3cqZAp">
+            <node concept="2ShNRf" id="45iC02HEc8M" role="3cqZAk">
+              <node concept="2fJWfE" id="45iC02HEc8N" role="2ShVmc">
+                <node concept="3Tqbb2" id="45iC02HEc8O" role="3zrR0E">
+                  <ref role="ehGHo" to="hcm8:2yYXHtl6Jkn" resolve="LambdaLiteral" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="16NfWO" id="45iC02HDXKU" role="upBLP">
+        <node concept="uGdhv" id="45iC02HDXT7" role="16NeZM">
+          <node concept="3clFbS" id="45iC02HDXT9" role="2VODD2">
+            <node concept="3cpWs8" id="45iC02HE1mM" role="3cqZAp">
+              <node concept="3cpWsn" id="45iC02HE1mN" role="3cpWs9">
+                <property role="TrG5h" value="isOnlyItemOnStatements" />
+                <node concept="10P_77" id="45iC02HE1fb" role="1tU5fm" />
+                <node concept="1Wc70l" id="45iC02HE2PX" role="33vP2m">
+                  <node concept="2OqwBi" id="45iC02HE7Ll" role="3uHU7w">
+                    <node concept="2OqwBi" id="45iC02HE3rR" role="2Oq$k0">
+                      <node concept="3bvxqY" id="45iC02HE3c5" role="2Oq$k0" />
+                      <node concept="32TBzR" id="45iC02HE3EX" role="2OqNvi">
+                        <node concept="1aIX9F" id="45iC02HE5UT" role="1xVPHs">
+                          <node concept="25Kdxt" id="45iC02HE6fD" role="1aIX9E">
+                            <node concept="1J7kdh" id="45iC02HE6B1" role="25KhWn" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="1v1jN8" id="45iC02HE94v" role="2OqNvi" />
+                  </node>
+                  <node concept="17R0WA" id="45iC02HE1mO" role="3uHU7B">
+                    <node concept="359W_D" id="45iC02HE1mQ" role="3uHU7B">
+                      <ref role="359W_E" to="hcm8:18X2O0Fy6BI" resolve="IStatementHolder" />
+                      <ref role="359W_F" to="hcm8:18X2O0Fy6BL" resolve="statements" />
+                    </node>
+                    <node concept="1J7kdh" id="45iC02HE1mP" role="3uHU7w" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs6" id="45iC02HE9ie" role="3cqZAp">
+              <node concept="3K4zz7" id="45iC02HE9if" role="3cqZAk">
+                <node concept="Xl_RD" id="45iC02HE9ig" role="3K4E3e">
+                  <property role="Xl_RC" value="lambda {}" />
+                </node>
+                <node concept="37vLTw" id="45iC02HE9ii" role="3K4Cdx">
+                  <ref role="3cqZAo" node="45iC02HE1mN" resolve="isOnlyItemOnStatements" />
+                </node>
+                <node concept="1eOMI4" id="45iC02HOljX" role="3K4GZi">
+                  <node concept="3K4zz7" id="45iC02HOk68" role="1eOMHV">
+                    <node concept="ub8z3" id="45iC02HOkk4" role="3K4E3e" />
+                    <node concept="Xl_RD" id="45iC02HOku0" role="3K4GZi">
+                      <property role="Xl_RC" value="{" />
+                    </node>
+                    <node concept="2OqwBi" id="45iC02HOehQ" role="3K4Cdx">
+                      <node concept="liA8E" id="45iC02HOf8y" role="2OqNvi">
+                        <ref role="37wK5l" to="wyt6:~String.startsWith(java.lang.String)" resolve="startsWith" />
+                        <node concept="ub8z3" id="45iC02HOhv3" role="37wK5m" />
+                      </node>
+                      <node concept="Xl_RD" id="45iC02HE9ih" role="2Oq$k0">
+                        <property role="Xl_RC" value="{}" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
     </node>
   </node>
 </model>

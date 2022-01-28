@@ -210,7 +210,7 @@ public abstract class KotlinTextGen {
   public static void optionallyWrappedStatements(SNode node, String prependNonBlock, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     SNode singleExpression = IStatementHolder__BehaviorDescriptor.asSingleExpression_id18X2O0FvKfA.invoke(node);
-    if ((singleExpression != null) && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.statements$R3pt)).isNotEmpty()) {
+    if ((singleExpression != null)) {
       tgs.append(prependNonBlock);
       tgs.appendNode(singleExpression);
     } else if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.statements$R3pt)).isNotEmpty()) {
