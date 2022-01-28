@@ -66,5 +66,6 @@
     <registryKey key="mps.ProjectPane.messages.error.only" defaultValue="false" description="Do not show warning and informational messages in the project tree" restartRequired="false"/>
     <registryKey key="mps.ProjectPane.show.descriptor.generator" defaultValue="false" description="Show @descriptor model in Generator modules" restartRequired="false"/>
     <registryKey key="mps.ProjectPane.show.descriptor.solution" defaultValue="false" description="Show @descriptor model in Solution modules" restartRequired="false"/>
+    <registryKey key="ide.favorites.tool.window.applicable" defaultValue="true" description="Allows to enable the Favorites tool window" restartRequired="false"/>
   </extensions>
 </idea-plugin>
