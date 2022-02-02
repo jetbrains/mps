@@ -19,8 +19,8 @@ import org.jetbrains.annotations.Nullable;
 
 public enum JavaLanguageLevel {
   JAVA_7(7, "", false),
-  JAVA_8(8," - default and static interface methods"),
-  JAVA_8_NO_LAMBDA(8, " - default and static interface methods (do not generate lambdas)", false),
+  JAVA_8(8," - default and static interface methods, closures as lambdas"),
+  JAVA_8_NO_LAMBDA(8, " - default and static interface methods, closures as anonymous classes", false),
   JAVA_9(9," - private interface methods"),
   JAVA_10(10," - local variable type inference");
 
