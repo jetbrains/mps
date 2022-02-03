@@ -4576,11 +4576,6 @@
                   <ref role="1iFR8X" to="ekwn:R3$tg1aBO2" resolve="MoveDown" />
                 </node>
               </node>
-              <node concept="2HxZob" id="4GZlU10yWUH" role="3cqZAp">
-                <node concept="1iFQzN" id="4GZlU10yWUI" role="3iKnsn">
-                  <ref role="1iFR8X" to="ekwn:R3$tg1aBNW" resolve="MoveRight" />
-                </node>
-              </node>
               <node concept="2HxZob" id="6_BK34E0378" role="3cqZAp">
                 <node concept="1iFQzN" id="6_BK34E0379" role="3iKnsn">
                   <ref role="1iFR8X" to="ekwn:2XByp9s_j7f" resolve="Complete" />

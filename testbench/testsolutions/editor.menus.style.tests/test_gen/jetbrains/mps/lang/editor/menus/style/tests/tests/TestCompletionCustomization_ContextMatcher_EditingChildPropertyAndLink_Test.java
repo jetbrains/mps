@@ -50,7 +50,6 @@ public class TestCompletionCustomization_ContextMatcher_EditingChildPropertyAndL
         Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 2);
         pressKeys(ListSequence.fromListAndArray(new ArrayList<String>(), " ESCAPE"));
         invokeAction("jetbrains.mps.ide.editor.actions.MoveDown_Action");
-        invokeAction("jetbrains.mps.ide.editor.actions.MoveRight_Action");
         invokeAction("jetbrains.mps.ide.editor.actions.Complete_Action");
         Assert.assertTrue(nodeSubstituteChooser.getNumberOfActions() == 1);
       }, true);
