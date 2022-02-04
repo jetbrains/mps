@@ -130,7 +130,6 @@ public class NodeSubstitutePatternEditor {
         mySavedCaretPosition = myTextLineOperations.getCaretPosition();
         myTextLineOperations.setCaretPosition(0);
       }
-      myTextLineOperations.saveCaretPosition();
       myTextLineOperations.repaint();
     } else {
       if (mySavedCaretPosition != 0) {
@@ -235,7 +234,6 @@ public class NodeSubstitutePatternEditor {
   private interface TextLineOperations {
     void setText(String text);
     void setCaretPosition(int caretPosition);
-    void saveCaretPosition();
     void relayout();
     void repaint();
     int getCaretPosition();
@@ -256,7 +254,7 @@ public class NodeSubstitutePatternEditor {
   private class TextLineDelegate implements TextLineOperations {
     private final EditorComponent editorComponent;
     private final String myOriginalText;
-    private int myOriginalCaretPosition;
+    private final int myOriginalCaretPosition;
     private String myText;
     private int myCaretPosition;
     private boolean myCommitted;
@@ -325,11 +323,6 @@ public class NodeSubstitutePatternEditor {
     @Override
     public String getText() {
       return myText;
-    }
-
-    @Override
-    public void saveCaretPosition() {
-      myOriginalCaretPosition = myCaretPosition;
     }
 
     @Override
@@ -431,10 +424,6 @@ public class NodeSubstitutePatternEditor {
       myTextLine = new TextLine("", settings);
       mySettings = settings;
       add(new EditorPanel());
-    }
-
-    @Override
-    public void saveCaretPosition() {
     }
 
     @Override
