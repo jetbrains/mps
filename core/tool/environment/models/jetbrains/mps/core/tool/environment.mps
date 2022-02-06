@@ -2022,6 +2022,35 @@
             <property role="Xl_RC" value="Creating MPS environment" />
           </node>
         </node>
+        <node concept="3clFbJ" id="1HNHfSAwfxM" role="3cqZAp">
+          <node concept="3clFbS" id="1HNHfSAwfxO" role="3clFbx">
+            <node concept="3clFbF" id="1HNHfSAw$Vx" role="3cqZAp">
+              <node concept="2YIFZM" id="1HNHfSAwBsS" role="3clFbG">
+                <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+                <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String)" resolve="setProperty" />
+                <node concept="10M0yZ" id="1HNHfSAxC5d" role="37wK5m">
+                  <ref role="1PxDUh" to="bd8o:~PathManager" resolve="PathManager" />
+                  <ref role="3cqZAo" to="bd8o:~PathManager.PROPERTY_PATHS_SELECTOR" resolve="PROPERTY_PATHS_SELECTOR" />
+                </node>
+                <node concept="Xl_RD" id="1HNHfSAwJYy" role="37wK5m">
+                  <property role="Xl_RC" value="MPSNoPlatform" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="1HNHfSAwvmM" role="3clFbw">
+            <node concept="10Nm6u" id="1HNHfSAwxWD" role="3uHU7w" />
+            <node concept="2YIFZM" id="1HNHfSAwmM9" role="3uHU7B">
+              <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+              <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
+              <node concept="10M0yZ" id="1HNHfSAxBtK" role="37wK5m">
+                <ref role="3cqZAo" to="bd8o:~PathManager.PROPERTY_PATHS_SELECTOR" resolve="PROPERTY_PATHS_SELECTOR" />
+                <ref role="1PxDUh" to="bd8o:~PathManager" resolve="PathManager" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="1HNHfSAx$zJ" role="3cqZAp" />
         <node concept="3clFbF" id="11RXB4mdbcQ" role="3cqZAp">
           <node concept="37vLTI" id="11RXB4mdbIw" role="3clFbG">
             <node concept="2YIFZM" id="Y1BBlvzSbI" role="37vLTx">
@@ -5624,6 +5653,7 @@
         <node concept="3cpWs8" id="2519QBqdbS2" role="3cqZAp">
           <node concept="3cpWsn" id="2519QBqdbS1" role="3cpWs9">
             <property role="TrG5h" value="text" />
+            <node concept="17QB3L" id="6K3LhleUFZ" role="1tU5fm" />
             <node concept="2YIFZM" id="2519QBqdfay" role="33vP2m">
               <ref role="37wK5l" to="eoo2:~Files.readString(java.nio.file.Path)" resolve="readString" />
               <ref role="1Pybhc" to="eoo2:~Files" resolve="Files" />
@@ -5631,7 +5661,6 @@
                 <ref role="3cqZAo" node="2519QBqdbRX" resolve="xmlFile" />
               </node>
             </node>
-            <node concept="17QB3L" id="6K3LhleUFZ" role="1tU5fm" />
           </node>
         </node>
         <node concept="3clFbF" id="2519QBqdbS6" role="3cqZAp">

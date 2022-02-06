@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.core.platform.Platform;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.core.platform.PlatformFactory;
 import jetbrains.mps.core.platform.PlatformOptionsBuilder;
 import jetbrains.mps.extapi.module.FacetsRegistry;
@@ -45,6 +46,10 @@ public final class MpsEnvironment extends EnvironmentBase {
     if (LOG.isInfoEnabled()) {
       LOG.info("Creating MPS environment");
     }
+    if (System.getProperty(PathManager.PROPERTY_PATHS_SELECTOR) == null) {
+      System.setProperty(PathManager.PROPERTY_PATHS_SELECTOR, "MPSNoPlatform");
+    }
+
     myPlatform = PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
     myPlugins = new PlatformPlugins(myConfig);
     registerFacetFactory(myPlatform.findComponent(FacetsRegistry.class));
