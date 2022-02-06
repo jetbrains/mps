@@ -1226,6 +1226,45 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbJ" id="1HNHfSAwfxM" role="3cqZAp">
+          <node concept="3clFbS" id="1HNHfSAwfxO" role="3clFbx">
+            <node concept="3clFbF" id="1HNHfSAw$Vx" role="3cqZAp">
+              <node concept="2YIFZM" id="1HNHfSAwBsS" role="3clFbG">
+                <ref role="37wK5l" to="wyt6:~System.setProperty(java.lang.String,java.lang.String)" resolve="setProperty" />
+                <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+                <node concept="10M0yZ" id="1HNHfSAwDSQ" role="37wK5m">
+                  <ref role="1PxDUh" to="bd8o:~PathManager" resolve="PathManager" />
+                  <ref role="3cqZAo" to="bd8o:~PathManager.PROPERTY_PATHS_SELECTOR" resolve="PROPERTY_PATHS_SELECTOR" />
+                </node>
+                <node concept="3cpWs3" id="1HNHfSAwZ4U" role="37wK5m">
+                  <node concept="2OqwBi" id="1HNHfSAxfuH" role="3uHU7w">
+                    <node concept="2YIFZM" id="1HNHfSAx6Dn" role="2Oq$k0">
+                      <ref role="37wK5l" to="bd8o:~ApplicationInfo.getInstance()" resolve="getInstance" />
+                      <ref role="1Pybhc" to="bd8o:~ApplicationInfo" resolve="ApplicationInfo" />
+                    </node>
+                    <node concept="liA8E" id="1HNHfSAxhIV" role="2OqNvi">
+                      <ref role="37wK5l" to="bd8o:~ApplicationInfo.getFullVersion()" resolve="getFullVersion" />
+                    </node>
+                  </node>
+                  <node concept="Xl_RD" id="1HNHfSAwJYy" role="3uHU7B">
+                    <property role="Xl_RC" value="MPSCmdLine" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbC" id="1HNHfSAwvmM" role="3clFbw">
+            <node concept="10Nm6u" id="1HNHfSAwxWD" role="3uHU7w" />
+            <node concept="2YIFZM" id="1HNHfSAwmM9" role="3uHU7B">
+              <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String)" resolve="getProperty" />
+              <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
+              <node concept="10M0yZ" id="1HNHfSAwt07" role="37wK5m">
+                <ref role="3cqZAo" to="bd8o:~PathManager.PROPERTY_PATHS_SELECTOR" resolve="PROPERTY_PATHS_SELECTOR" />
+                <ref role="1PxDUh" to="bd8o:~PathManager" resolve="PathManager" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="2Tuefk2gna7" role="3cqZAp">
           <node concept="3cpWsn" id="2Tuefk2gna8" role="3cpWs9">
             <property role="TrG5h" value="oldValue" />
