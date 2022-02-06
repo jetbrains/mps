@@ -71,28 +71,11 @@
     <classNode dependClassName="jetbrains.mps.tool.common.Script" />
   </dependency>
   <dependency className="jetbrains.mps.tool.common.PathManager">
-    <classNode dependClassName="java.io.File" />
-    <classNode dependClassName="java.io.IOException" />
-    <classNode dependClassName="java.lang.Class" />
-    <classNode dependClassName="java.lang.ClassLoader" />
-    <classNode dependClassName="java.lang.Exception" />
-    <classNode dependClassName="java.lang.IllegalArgumentException" />
-    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="com.intellij.openapi.application.PathManager" />
+    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.lang.System" />
-    <classNode dependClassName="java.net.URISyntaxException" />
-    <classNode dependClassName="java.net.URL" />
-    <classNode dependClassName="java.nio.file.Paths" />
-    <classNode dependClassName="java.util.Properties" />
-    <classNode dependClassName="java.util.Set" />
+    <classNode dependClassName="java.nio.file.Path" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.file.Files" />
-    <classNode dependClassName="jetbrains.mps.file.Paths" />
-    <classNode dependClassName="jetbrains.mps.string.Strings" />
-    <classNode dependClassName="jetbrains.mps.util.SystemInfo" />
-    <classNode dependClassName="org.jetbrains.annotations.NonNls" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
   </dependency>
   <dependency className="jetbrains.mps.tool.common.PluginData">
     <classNode dependClassName="java.lang.String" />
