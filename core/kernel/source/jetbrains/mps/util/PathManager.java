@@ -171,7 +171,7 @@ public final class PathManager {
   /**
    * Attempts to detect classpath entry which contains given resource
    */
-  public static String getResourceRoot(Class<?> context, String path) {
+  private static String getResourceRoot(Class<?> context, String path) {
     return com.intellij.openapi.application.PathManager.getResourceRoot(context, path);
   }
 
