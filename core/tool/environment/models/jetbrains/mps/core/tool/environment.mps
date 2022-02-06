@@ -44,6 +44,7 @@
     <import index="6zv4" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.jdom.adapters(MPS.Core/)" />
     <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
     <import index="smlj" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:jetbrains.mps.string(MPS.Boot/)" />
+    <import index="bd8o" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:com.intellij.openapi.application(MPS.Boot/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -5448,15 +5449,16 @@
         </node>
         <node concept="3cpWs8" id="2519QBqd1nC" role="3cqZAp">
           <node concept="3cpWsn" id="2519QBqd1nB" role="3cpWs9">
-            <property role="TrG5h" value="configPath" />
+            <property role="TrG5h" value="logXmlPathStr" />
             <node concept="3uibUv" id="2519QBqd1nD" role="1tU5fm">
               <ref role="3uigEE" to="wyt6:~String" resolve="String" />
             </node>
             <node concept="2YIFZM" id="2519QBqd2Uk" role="33vP2m">
               <ref role="1Pybhc" to="wyt6:~System" resolve="System" />
               <ref role="37wK5l" to="wyt6:~System.getProperty(java.lang.String,java.lang.String)" resolve="getProperty" />
-              <node concept="Xl_RD" id="2519QBqd2Ul" role="37wK5m">
-                <property role="Xl_RC" value="idea.log.config.file" />
+              <node concept="10M0yZ" id="6K3Lhle5A_" role="37wK5m">
+                <ref role="3cqZAo" to="bd8o:~PathManager.PROPERTY_LOG_CONFIG_FILE" resolve="PROPERTY_LOG_CONFIG_FILE" />
+                <ref role="1PxDUh" to="bd8o:~PathManager" resolve="PathManager" />
               </node>
               <node concept="Xl_RD" id="oo$YE0zyit" role="37wK5m">
                 <property role="Xl_RC" value="log.xml" />
@@ -5466,7 +5468,7 @@
         </node>
         <node concept="3cpWs8" id="2519QBqd1nN" role="3cqZAp">
           <node concept="3cpWsn" id="2519QBqd1nM" role="3cpWs9">
-            <property role="TrG5h" value="configFile" />
+            <property role="TrG5h" value="logXmlPath" />
             <node concept="3uibUv" id="2519QBqd1nO" role="1tU5fm">
               <ref role="3uigEE" to="eoo2:~Path" resolve="Path" />
             </node>
@@ -5575,7 +5577,7 @@
                 <node concept="liA8E" id="6JG_W6gHZm" role="2OqNvi">
                   <ref role="37wK5l" to="guwi:~PrintStream.printf(java.lang.String,java.lang.Object...)" resolve="printf" />
                   <node concept="Xl_RD" id="6JG_W6gelf" role="37wK5m">
-                    <property role="Xl_RC" value="Log4j is initialized by MPS from the configuration file %s\nLOG_DIR macro was evaluated to %s\n" />
+                    <property role="Xl_RC" value="Log4j is (re-)initialized by MPS from the configuration file %s\nLOG_DIR macro was evaluated to %s\n" />
                   </node>
                   <node concept="2OqwBi" id="6JG_W6gcyF" role="37wK5m">
                     <node concept="37vLTw" id="6JG_W6gbZS" role="2Oq$k0">
@@ -5607,35 +5609,6 @@
       <node concept="3cqZAl" id="2519QBqd1og" role="3clF45" />
     </node>
     <node concept="2tJIrI" id="2519QBqd2rF" role="jymVt" />
-    <node concept="2YIFZL" id="2519QBqd1oh" role="jymVt">
-      <property role="TrG5h" value="getBinPath" />
-      <node concept="3clFbS" id="2519QBqd1oi" role="3clF47">
-        <node concept="3cpWs6" id="2519QBqd1oj" role="3cqZAp">
-          <node concept="2OqwBi" id="2519QBqd1ok" role="3cqZAk">
-            <node concept="2ShNRf" id="2519QBqd3uf" role="2Oq$k0">
-              <node concept="1pGfFk" id="2519QBqd3uU" role="2ShVmc">
-                <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="File" />
-                <node concept="2YIFZM" id="2519QBqd8N7" role="37wK5m">
-                  <ref role="37wK5l" to="18ew:~PathManager.getHomePath()" resolve="getHomePath" />
-                  <ref role="1Pybhc" to="18ew:~PathManager" resolve="PathManager" />
-                </node>
-                <node concept="Xl_RD" id="2519QBqd3uW" role="37wK5m">
-                  <property role="Xl_RC" value="bin" />
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="2519QBqd1oo" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~File.getAbsolutePath()" resolve="getAbsolutePath" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="2519QBqd1op" role="1B3o_S" />
-      <node concept="3uibUv" id="2519QBqd1oq" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="6JG_W6g8u7" role="jymVt" />
     <node concept="2YIFZL" id="2519QBqdbRW" role="jymVt">
       <property role="TrG5h" value="configureFromXmlFile" />
       <node concept="37vLTG" id="2519QBqdbRX" role="3clF46">
@@ -5651,9 +5624,6 @@
         <node concept="3cpWs8" id="2519QBqdbS2" role="3cqZAp">
           <node concept="3cpWsn" id="2519QBqdbS1" role="3cpWs9">
             <property role="TrG5h" value="text" />
-            <node concept="3uibUv" id="2519QBqdbS3" role="1tU5fm">
-              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-            </node>
             <node concept="2YIFZM" id="2519QBqdfay" role="33vP2m">
               <ref role="37wK5l" to="eoo2:~Files.readString(java.nio.file.Path)" resolve="readString" />
               <ref role="1Pybhc" to="eoo2:~Files" resolve="Files" />
@@ -5661,6 +5631,7 @@
                 <ref role="3cqZAo" node="2519QBqdbRX" resolve="xmlFile" />
               </node>
             </node>
+            <node concept="17QB3L" id="6K3LhleUFZ" role="1tU5fm" />
           </node>
         </node>
         <node concept="3clFbF" id="2519QBqdbS6" role="3cqZAp">
@@ -5695,9 +5666,9 @@
               <node concept="37vLTw" id="2519QBqdbSi" role="37wK5m">
                 <ref role="3cqZAo" node="2519QBqd1nk" resolve="APPLICATION_MACRO" />
               </node>
-              <node concept="2YIFZM" id="2519QBqdfNi" role="37wK5m">
-                <ref role="37wK5l" to="asz6:4937uxYQn9c" resolve="getHomePath" />
-                <ref role="1Pybhc" to="asz6:4937uxYQn6D" resolve="PathManager" />
+              <node concept="2YIFZM" id="6K3Lhle4hS" role="37wK5m">
+                <ref role="37wK5l" to="bd8o:~PathManager.getHomePath()" resolve="getHomePath" />
+                <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
               </node>
             </node>
           </node>
@@ -5892,7 +5863,7 @@
       <node concept="3Tm6S6" id="2519QBqdbTs" role="1B3o_S" />
       <node concept="3cqZAl" id="2519QBqdbTt" role="3clF45" />
     </node>
-    <node concept="2tJIrI" id="2519QBqdzez" role="jymVt" />
+    <node concept="2tJIrI" id="6K3Lhle8jn" role="jymVt" />
     <node concept="2YIFZL" id="2519QBqdbTu" role="jymVt">
       <property role="TrG5h" value="replace" />
       <node concept="37vLTG" id="2519QBqdbTv" role="3clF46">
@@ -5997,81 +5968,30 @@
         <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
     </node>
-    <node concept="2tJIrI" id="2519QBqd2rG" role="jymVt" />
-    <node concept="2YIFZL" id="2519QBqd1q6" role="jymVt">
-      <property role="TrG5h" value="getCachesPath" />
-      <node concept="2AHcQZ" id="2519QBqd1q7" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="3clFbS" id="2519QBqd1q8" role="3clF47">
-        <node concept="3cpWs8" id="2519QBqd1qa" role="3cqZAp">
-          <node concept="3cpWsn" id="2519QBqd1q9" role="3cpWs9">
-            <property role="TrG5h" value="file" />
-            <node concept="3uibUv" id="2519QBqd1qb" role="1tU5fm">
-              <ref role="3uigEE" to="guwi:~File" resolve="File" />
-            </node>
-            <node concept="2ShNRf" id="2519QBqd3lo" role="33vP2m">
-              <node concept="1pGfFk" id="2519QBqd3ua" role="2ShVmc">
-                <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
-                <node concept="Xl_RD" id="2519QBqd3ub" role="37wK5m">
-                  <property role="Xl_RC" value=".mps-caches" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="2519QBqd1qe" role="3cqZAp">
-          <node concept="2OqwBi" id="2519QBqd408" role="3clFbG">
-            <node concept="37vLTw" id="2519QBqd407" role="2Oq$k0">
-              <ref role="3cqZAo" node="2519QBqd1q9" resolve="file" />
-            </node>
-            <node concept="liA8E" id="2519QBqd409" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~File.mkdirs()" resolve="mkdirs" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="2519QBqd1qg" role="3cqZAp">
-          <node concept="37vLTw" id="2519QBqd1qh" role="3cqZAk">
-            <ref role="3cqZAo" node="2519QBqd1q9" resolve="file" />
+    <node concept="2tJIrI" id="2519QBqd2rI" role="jymVt" />
+    <node concept="2YIFZL" id="2519QBqd1oh" role="jymVt">
+      <property role="TrG5h" value="getBinPath" />
+      <node concept="3clFbS" id="2519QBqd1oi" role="3clF47">
+        <node concept="3cpWs6" id="6K3Lhle64C" role="3cqZAp">
+          <node concept="2YIFZM" id="6K3Lhle6BK" role="3cqZAk">
+            <ref role="37wK5l" to="bd8o:~PathManager.getBinPath()" resolve="getBinPath" />
+            <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
           </node>
         </node>
       </node>
-      <node concept="3Tm6S6" id="2519QBqd1qi" role="1B3o_S" />
-      <node concept="3uibUv" id="2519QBqd1qj" role="3clF45">
-        <ref role="3uigEE" to="guwi:~File" resolve="File" />
+      <node concept="3Tm6S6" id="2519QBqd1op" role="1B3o_S" />
+      <node concept="3uibUv" id="2519QBqd1oq" role="3clF45">
+        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
       </node>
     </node>
-    <node concept="2tJIrI" id="2519QBqd2rI" role="jymVt" />
+    <node concept="2tJIrI" id="6K3Lhleb3f" role="jymVt" />
     <node concept="2YIFZL" id="2519QBqd1qk" role="jymVt">
       <property role="TrG5h" value="getSystemPath" />
       <node concept="3clFbS" id="2519QBqd1ql" role="3clF47">
-        <node concept="3cpWs8" id="2519QBqd1qn" role="3cqZAp">
-          <node concept="3cpWsn" id="2519QBqd1qm" role="3cpWs9">
-            <property role="TrG5h" value="file" />
-            <node concept="3uibUv" id="2519QBqd1qo" role="1tU5fm">
-              <ref role="3uigEE" to="guwi:~File" resolve="File" />
-            </node>
-            <node concept="1rXfSq" id="2519QBqd1qp" role="33vP2m">
-              <ref role="37wK5l" node="2519QBqd1q6" resolve="getCachesPath" />
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs6" id="2519QBqd1qq" role="3cqZAp">
-          <node concept="2OqwBi" id="2519QBqd1qr" role="3cqZAk">
-            <node concept="2ShNRf" id="2519QBqd3gh" role="2Oq$k0">
-              <node concept="1pGfFk" id="2519QBqd3g$" role="2ShVmc">
-                <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.io.File,java.lang.String)" resolve="File" />
-                <node concept="37vLTw" id="2519QBqd3g_" role="37wK5m">
-                  <ref role="3cqZAo" node="2519QBqd1qm" resolve="file" />
-                </node>
-                <node concept="Xl_RD" id="2519QBqd3gA" role="37wK5m">
-                  <property role="Xl_RC" value="system" />
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="2519QBqd1qv" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~File.getAbsolutePath()" resolve="getAbsolutePath" />
-            </node>
+          <node concept="2YIFZM" id="6K3LhldXr8" role="3cqZAk">
+            <ref role="37wK5l" to="bd8o:~PathManager.getSystemPath()" resolve="getSystemPath" />
+            <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
           </node>
         </node>
       </node>
@@ -6084,33 +6004,10 @@
     <node concept="2YIFZL" id="2519QBqd1qy" role="jymVt">
       <property role="TrG5h" value="getLogPath" />
       <node concept="3clFbS" id="2519QBqd1qz" role="3clF47">
-        <node concept="3cpWs8" id="2519QBqd1q_" role="3cqZAp">
-          <node concept="3cpWsn" id="2519QBqd1q$" role="3cpWs9">
-            <property role="TrG5h" value="file" />
-            <node concept="3uibUv" id="2519QBqd1qA" role="1tU5fm">
-              <ref role="3uigEE" to="guwi:~File" resolve="File" />
-            </node>
-            <node concept="1rXfSq" id="2519QBqd1qB" role="33vP2m">
-              <ref role="37wK5l" node="2519QBqd1q6" resolve="getCachesPath" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="2519QBqd1qC" role="3cqZAp">
-          <node concept="2OqwBi" id="2519QBqd1qD" role="3cqZAk">
-            <node concept="2ShNRf" id="2519QBqd3kY" role="2Oq$k0">
-              <node concept="1pGfFk" id="2519QBqd3lh" role="2ShVmc">
-                <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.io.File,java.lang.String)" resolve="File" />
-                <node concept="37vLTw" id="2519QBqd3li" role="37wK5m">
-                  <ref role="3cqZAo" node="2519QBqd1q$" resolve="file" />
-                </node>
-                <node concept="Xl_RD" id="2519QBqd3lj" role="37wK5m">
-                  <property role="Xl_RC" value="logs" />
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="2519QBqd1qH" role="2OqNvi">
-              <ref role="37wK5l" to="guwi:~File.getAbsolutePath()" resolve="getAbsolutePath" />
-            </node>
+        <node concept="3cpWs6" id="6K3LhldY5U" role="3cqZAp">
+          <node concept="2YIFZM" id="6K3LhldYqn" role="3cqZAk">
+            <ref role="37wK5l" to="bd8o:~PathManager.getLogPath()" resolve="getLogPath" />
+            <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
           </node>
         </node>
       </node>

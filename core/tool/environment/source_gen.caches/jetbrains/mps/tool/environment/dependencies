@@ -128,7 +128,7 @@
     <classNode dependClassName="jetbrains.mps.vfs.impl.IoFileSystem" />
   </dependency>
   <dependency className="jetbrains.mps.tool.environment.Log4jInitializer">
-    <classNode dependClassName="java.io.File" />
+    <classNode dependClassName="com.intellij.openapi.application.PathManager" />
     <classNode dependClassName="java.io.StringReader" />
     <classNode dependClassName="java.lang.Exception" />
     <classNode dependClassName="java.lang.Override" />
@@ -139,9 +139,7 @@
     <classNode dependClassName="java.nio.file.Paths" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.string.Strings" />
-    <classNode dependClassName="jetbrains.mps.tool.common.PathManager" />
     <classNode dependClassName="jetbrains.mps.util.JDOMUtil" />
-    <classNode dependClassName="jetbrains.mps.util.PathManager" />
     <classNode dependClassName="org.apache.log4j.ConsoleAppender" />
     <classNode dependClassName="org.apache.log4j.Level" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
@@ -153,7 +151,6 @@
     <classNode dependClassName="org.jdom.JDOMException" />
     <classNode dependClassName="org.jdom.adapters.JAXPDOMAdapter" />
     <classNode dependClassName="org.jdom.output.DOMOutputter" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.w3c.dom.Document" />
     <classNode dependClassName="org.w3c.dom.Element" />
   </dependency>
