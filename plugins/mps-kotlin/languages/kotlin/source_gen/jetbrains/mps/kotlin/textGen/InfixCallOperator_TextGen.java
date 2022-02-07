@@ -18,14 +18,14 @@ public class InfixCallOperator_TextGen extends TextGenDescriptorBase {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.left$yQgK));
     tgs.append(" ");
-    tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.method$i6$W), PROPS.name$MnvL));
+    tgs.append(SPropertyOperations.getString(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.function$i6$W), PROPS.name$MnvL));
     tgs.append(" ");
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.right$yQIM));
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink left$yQgK = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, 0x11400bb790954ee0L, "left");
-    /*package*/ static final SReferenceLink method$i6$W = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7909561c6L, 0x11400bb7909561c8L, "method");
+    /*package*/ static final SReferenceLink function$i6$W = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7909561c6L, 0x11400bb7909561c8L, "function");
     /*package*/ static final SContainmentLink right$yQIM = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, 0x11400bb790954ee2L, "right");
   }
 

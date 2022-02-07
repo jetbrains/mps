@@ -6,16 +6,13 @@ import jetbrains.mps.kotlin.runtime.members.signature.PropertyAccessorSignature;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.runtime.members.signature.PropertyAccessorKind;
-import jetbrains.mps.kotlin.runtime.members.signature.FunctionSignature;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.kotlin.runtime.members.signature.ClassSignature;
+import jetbrains.mps.kotlin.runtime.members.SignatureCollector;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 /**
  * Builder for kotlin signature using kotlin language concepts
@@ -33,39 +30,15 @@ public class KotlinSignatures {
     return new PropertyAccessorSignature(name, kind);
   }
 
-  public static FunctionSignature forConstructor(SNode function) {
-    // TODO constructor as instance methods have special behavior regarding inheritance
-    return new FunctionSignature(KotlinFunctionDeclaration.of(function), erasureOf(SLinkOperations.collect(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(function), LINKS.type$1aXr)));
-  }
-
-  public static ClassSignature forClassDeclaration(SNode prop) {
-    return new ClassSignature(SPropertyOperations.getString(prop, PROPS.name$MnvL));
-  }
-
-  public static FunctionSignature forFunctionType(final SNode function) {
-    return new FunctionSignature(new FunctionTypeInvokeDeclaration(function), erasureOf(SLinkOperations.collect(SLinkOperations.getChildren(function, LINKS.parameters$jkhy), LINKS.type$69zk)));
-  }
-
-  public static FunctionSignature forMethod(SNode function) {
-    // Receiver not included as we're using such signature to compare between different inheriting receiver aswell
-    return new FunctionSignature(KotlinFunctionDeclaration.of(function), erasureOf(SLinkOperations.collect(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(function), LINKS.type$1aXr)));
-  }
-
-  public static String erasureOf(Iterable<SNode> types) {
+  public static String erasureOf(Iterable<SNode> types, final SignatureCollector collector) {
     return IterableUtils.join(Sequence.fromIterable(types).where(new NotNullWhereFilter<SNode>()).select(new ISelector<SNode, String>() {
       public String select(SNode it) {
-        return (String) IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(it, ((boolean) true));
+        return (String) IType__BehaviorDescriptor.toString_id4nn3FPlZH$r.invoke(collector.expandType(it), ((boolean) true));
       }
     }), ",");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink type$1aXr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L, 0x63c34deca4888fe3L, "type");
-    /*package*/ static final SContainmentLink parameters$jkhy = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37dL, 0x28bef6d7551af60eL, "parameters");
-    /*package*/ static final SContainmentLink type$69zk = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca48843ccL, 0x63c34deca48843d1L, "type");
   }
 }

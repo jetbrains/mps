@@ -13,10 +13,6 @@ import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import java.util.List;
 import jetbrains.mps.kotlin.runtime.declaration.ParameterDeclaration;
-import jetbrains.mps.kotlin.behavior.IFunctionCallLike__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.typechecking.TypecheckingFacade;
-import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.kotlin.scopes.ClassMemberVisitor;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -27,8 +23,8 @@ import jetbrains.mps.kotlin.scopes.SuperTypesVisitor;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.kotlin.behavior.IFunctionDeclaration__BehaviorDescriptor;
 import jetbrains.mps.kotlin.scopes.ReceiverTypeScope;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -40,29 +36,31 @@ import org.jetbrains.mps.openapi.language.SProperty;
  * variables as callables.
  */
 public class OverloadResolutionSolver {
-  private final SNode myCall;
+  private final FunctionCall myCall;
   private final String myFunctionName;
   private final OverloadResolver overloadResolver;
+  private final SNode myContextNode;
 
-  public OverloadResolutionSolver(final SNode call) {
+  public OverloadResolutionSolver(FunctionCall call, final SNode contextNode) {
     myCall = call;
     overloadResolver = Sequence.fromIterable(new ExtensionPoint<OverloadResolver>("jetbrains.mps.kotlin.OverloadResolverExtension").getObjects()).findFirst(new IWhereFilter<OverloadResolver>() {
       public boolean accept(OverloadResolver it) {
-        return it.isAvailable(call);
+        return it.isAvailable(contextNode);
       }
     });
-    myFunctionName = getFunctionName(call);
+    myFunctionName = call.getFunctionName();
+    myContextNode = contextNode;
   }
 
-  public FunctionDeclaration inspectNodeSet(Iterable<SNode> nodes, SNode receiverType) throws AmbiguousException {
+  public FunctionDeclaration inspectNodeSet(Iterable<SNode> nodes) throws AmbiguousException {
     return inspectSet(Sequence.fromIterable(nodes).select(new ISelector<SNode, FunctionDeclaration>() {
       public FunctionDeclaration select(SNode declaration) {
         return KotlinFunctionDeclaration.of(declaration);
       }
-    }).where(new NotNullWhereFilter<FunctionDeclaration>()), receiverType);
+    }).where(new NotNullWhereFilter<FunctionDeclaration>()));
   }
 
-  public FunctionDeclaration inspectSet(final Iterable<FunctionDeclaration> nodes, SNode receiverType) throws AmbiguousException {
+  public FunctionDeclaration inspectSet(final Iterable<FunctionDeclaration> nodes) throws AmbiguousException {
     if (Sequence.fromIterable(nodes).isEmpty()) {
       return null;
     }
@@ -74,7 +72,7 @@ public class OverloadResolutionSolver {
     }
 
     // Actual resolution
-    Tuples._2<FunctionDeclaration, Boolean> resolution = overloadResolver.resolve(myCall, receiverType, nodes);
+    Tuples._2<FunctionDeclaration, Boolean> resolution = overloadResolver.resolve(myCall, myContextNode, nodes);
 
     FunctionDeclaration res = resolution._0();
     if (res != null) {
@@ -98,9 +96,9 @@ public class OverloadResolutionSolver {
     }
 
     // https://kotlinlang.org/spec/overload-resolution.html#c-level-partition
-    SNode receiver = IFunctionCallLike__BehaviorDescriptor.getReceiver_id5D4bOjrrgiZ.invoke(myCall);
+    SNode receiver = myCall.getReceiverType();
     if ((receiver != null)) {
-      return resolveWithExplicitReceiver(SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(receiver), CONCEPTS.IType$Ni));
+      return resolveWithExplicitReceiver(receiver);
     }
 
     return null;
@@ -108,28 +106,26 @@ public class OverloadResolutionSolver {
 
   public FunctionDeclaration resolveWithExplicitReceiver(SNode receiverType) throws AmbiguousException {
     FunctionDeclaration result;
-    SRepository repository = myCall.getModel().getRepository();
-
     // 1. Non-extension member callables named f of type T
-    ClassMemberVisitor visitor = OverloadedSignatureFilter.createVisitor(repository, myFunctionName, IFunctionCallLike__BehaviorDescriptor.getModifierFilter_id5D4bOjruyUS.invoke(myCall));
+    ClassMemberVisitor visitor = OverloadedSignatureFilter.createVisitor(myFunctionName, myCall.getModifierFilter());
     IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(receiverType, visitor);
     Iterable<FunctionDeclaration> instances = ListSequence.fromList(visitor.getMembers()).select(new ISelector<SourcedSignature, FunctionDeclaration>() {
       public FunctionDeclaration select(SourcedSignature it) {
         return ((FunctionSignature) it.getSignature()).getFunctionDeclaration();
       }
     });
-    if ((result = inspectSet(instances, receiverType)) != null) {
+    if ((result = inspectSet(instances)) != null) {
       return result;
     }
 
     // 2. Local extension callables named f, whose receiver type conforms to type T, in the current scope and its upwards-linked scopes, ordered by the size of the scope (smallest first), excluding the package scope
-    final Iterable<TypeKey> receiverSupertypes = SuperTypesVisitor.getSupertypes(receiverType, repository);
-    Iterable<SNode> local = Sequence.fromIterable(functionsOf(Scope.getScope(myCall, myCall, CONCEPTS.IFunctionIdentifier$K$))).where(new IWhereFilter<SNode>() {
+    final Iterable<TypeKey> receiverSupertypes = SuperTypesVisitor.getSupertypes(receiverType);
+    Iterable<SNode> local = Sequence.fromIterable(functionsOf(Scope.getScope(myContextNode, myContextNode, CONCEPTS.IFunctionIdentifier$K$))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return Sequence.fromIterable(receiverSupertypes).contains(IType__BehaviorDescriptor.shallowId_idJmO2PmZtH5.invoke(IFunctionDeclaration__BehaviorDescriptor.getReceiverType_id2gj5XQXMFhP.invoke(it)));
       }
     });
-    if ((result = inspectNodeSet(local, receiverType)) != null) {
+    if ((result = inspectNodeSet(local)) != null) {
       return result;
     }
 
@@ -138,8 +134,8 @@ public class OverloadResolutionSolver {
     // 5. Star-imported extension callables named f, whose receiver type conforms to type T
     // 6. Implicitly imported extension callables named f (either from the Kotlin standard library or platform-specific ones), whose receiver type conforms to type T.
     // Well from this point it's all a bit mixed up in the following as import mechanism in MPS is not similar to text editors :')
-    Iterable<SNode> imported = functionsOf(new ReceiverTypeScope(SNodeOperations.getModel(myCall), receiverSupertypes, CONCEPTS.IFunctionDeclaration$ZB));
-    if ((result = inspectNodeSet(imported, receiverType)) != null) {
+    Iterable<SNode> imported = functionsOf(new ReceiverTypeScope(SNodeOperations.getModel(myContextNode), receiverSupertypes, CONCEPTS.IFunctionDeclaration$ZB));
+    if ((result = inspectNodeSet(imported)) != null) {
       return result;
     }
 
@@ -156,19 +152,7 @@ public class OverloadResolutionSolver {
     });
   }
 
-  /**
-   * Returns the name to use for resolving the method in the scope.
-   */
-  public static String getFunctionName(SNode node) {
-    String name = IFunctionCallLike__BehaviorDescriptor.getFunctionName_id4nn3FPlEjh5.invoke(node);
-    if (name != null) {
-      return name;
-    }
-    return SLinkOperations.getResolveInfo(SNodeOperations.getReference(node, IFunctionCallLike__BehaviorDescriptor.getTargetLink_id5D4bOjrrcOr.invoke(node)));
-  }
-
   private static final class CONCEPTS {
-    /*package*/ static final SInterfaceConcept IType$Ni = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af441L, "jetbrains.mps.kotlin.structure.IType");
     /*package*/ static final SInterfaceConcept IFunctionIdentifier$K$ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x36c39bccb20f46cfL, "jetbrains.mps.kotlin.structure.IFunctionIdentifier");
     /*package*/ static final SInterfaceConcept IFunctionDeclaration$ZB = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2a5d3409768d2f2bL, "jetbrains.mps.kotlin.structure.IFunctionDeclaration");
   }

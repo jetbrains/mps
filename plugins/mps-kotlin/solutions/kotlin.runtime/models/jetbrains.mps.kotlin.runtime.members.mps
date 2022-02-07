@@ -9,7 +9,6 @@
   <imports>
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
-    <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="nww" ref="r:f44f82b0-1fd9-4105-a80c-2fa6e5033003(jetbrains.mps.kotlin.runtime.members.signature)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
@@ -22,14 +21,7 @@
       <concept id="2323553266850475941" name="jetbrains.mps.baseLanguage.structure.IHasModifiers" flags="ng" index="2frcj7">
         <child id="2323553266850475953" name="modifiers" index="2frcjj" />
       </concept>
-      <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
-      <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
-        <reference id="1188208074048" name="annotation" index="2AI5Lk" />
-      </concept>
-      <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
-        <child id="1188208488637" name="annotation" index="2AJF6D" />
-      </concept>
       <concept id="4678410916365116210" name="jetbrains.mps.baseLanguage.structure.DefaultModifier" flags="ng" index="2JFqV2" />
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
@@ -52,10 +44,6 @@
       </concept>
       <concept id="1070475354124" name="jetbrains.mps.baseLanguage.structure.ThisExpression" flags="nn" index="Xjq3P" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
-      <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
-        <child id="1070534934091" name="type" index="10QFUM" />
-        <child id="1070534934092" name="expression" index="10QFUP" />
-      </concept>
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu" />
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ">
         <child id="1214996921760" name="bound" index="3ztrMU" />
@@ -86,10 +74,10 @@
       <concept id="1068580123136" name="jetbrains.mps.baseLanguage.structure.StatementList" flags="sn" stub="5293379017992965193" index="3clFbS">
         <child id="1068581517665" name="statement" index="3cqZAp" />
       </concept>
-      <concept id="1068580123137" name="jetbrains.mps.baseLanguage.structure.BooleanConstant" flags="nn" index="3clFbT">
-        <property id="1068580123138" name="value" index="3clFbU" />
-      </concept>
       <concept id="1068580123140" name="jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" flags="ig" index="3clFbW" />
+      <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
+        <child id="1068581517676" name="expression" index="3cqZAk" />
+      </concept>
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
@@ -97,9 +85,6 @@
       </concept>
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
-      </concept>
-      <concept id="1171903916106" name="jetbrains.mps.baseLanguage.structure.UpperBoundType" flags="in" index="3qUE_q">
-        <child id="1171903916107" name="bound" index="3qUE_r" />
       </concept>
       <concept id="7812454656619025412" name="jetbrains.mps.baseLanguage.structure.LocalMethodCall" flags="nn" index="1rXfSq" />
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
@@ -145,9 +130,6 @@
       </concept>
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
-      </concept>
-      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
-        <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
       <concept id="2217234381367190443" name="jetbrains.mps.baseLanguage.javadoc.structure.SeeBlockDocTag" flags="ng" index="VUp57">
         <child id="2217234381367190458" name="reference" index="VUp5m" />
@@ -399,22 +381,6 @@
         </node>
       </node>
     </node>
-    <node concept="2tJIrI" id="6ov$ndRz9J0" role="jymVt" />
-    <node concept="3clFb_" id="6ov$ndRz9Mp" role="jymVt">
-      <property role="TrG5h" value="getRepository" />
-      <node concept="3clFbS" id="6ov$ndRz9Ms" role="3clF47" />
-      <node concept="3Tm1VV" id="6ov$ndRz9Mt" role="1B3o_S" />
-      <node concept="3uibUv" id="6ov$ndRz9Rv" role="3clF45">
-        <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
-      </node>
-      <node concept="P$JXv" id="6ov$ndRz9Pa" role="lGtFl">
-        <node concept="TZ5HA" id="6ov$ndRz9Pb" role="TZ5H$">
-          <node concept="1dT_AC" id="6ov$ndRz9Pc" role="1dT_Ay">
-            <property role="1dT_AB" value="Returns the repository, useful in the context where a detached node need access to built-in types." />
-          </node>
-        </node>
-      </node>
-    </node>
     <node concept="3Tm1VV" id="18X2O0FJI_h" role="1B3o_S" />
     <node concept="3UR2Jj" id="27wMicCZiZQ" role="lGtFl">
       <node concept="TZ5HA" id="27wMicCZiZR" role="TZ5H$">
@@ -426,138 +392,6 @@
   </node>
   <node concept="3HP615" id="27wMicCZj8w">
     <property role="TrG5h" value="SignatureCollector" />
-    <node concept="3clFb_" id="5q426iHtpU2" role="jymVt">
-      <property role="TrG5h" value="acceptKind" />
-      <node concept="3clFbS" id="5q426iHtpU5" role="3clF47">
-        <node concept="3clFbF" id="1CCu0CNxIkv" role="3cqZAp">
-          <node concept="3clFbT" id="1CCu0CNxIku" role="3clFbG">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="5q426iHtpU6" role="1B3o_S" />
-      <node concept="10P_77" id="5q426iHtpTP" role="3clF45" />
-      <node concept="37vLTG" id="5q426iHtpZV" role="3clF46">
-        <property role="TrG5h" value="signatureKind" />
-        <node concept="3uibUv" id="5q426iHtpZU" role="1tU5fm">
-          <ref role="3uigEE" to="wyt6:~Class" resolve="Class" />
-          <node concept="3qUE_q" id="5q426iHts37" role="11_B2D">
-            <node concept="3uibUv" id="5q426iHttqi" role="3qUE_r">
-              <ref role="3uigEE" to="nww:18X2O0FJocj" resolve="MemberSignature" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="P$JXv" id="5q426iHttrM" role="lGtFl">
-        <node concept="TZ5HA" id="5q426iHttrN" role="TZ5H$">
-          <node concept="1dT_AC" id="5q426iHttrO" role="1dT_Ay">
-            <property role="1dT_AB" value="Returns true if the visitor will handle signature of given class" />
-          </node>
-        </node>
-        <node concept="TUZQ0" id="5q426iHttrP" role="3nqlJM">
-          <property role="TUZQ4" value="type of signature extending MemberSignature" />
-          <node concept="zr_55" id="5q426iHttrR" role="zr_5Q">
-            <ref role="zr_51" node="5q426iHtpZV" resolve="signatureKind" />
-          </node>
-        </node>
-        <node concept="TZ5HI" id="1CCu0CNxH_x" role="3nqlJM">
-          <node concept="TZ5HA" id="1CCu0CNxH_y" role="3HnX3l">
-            <node concept="1dT_AC" id="1CCu0CNxHJD" role="1dT_Ay">
-              <property role="1dT_AB" value="now handled by implementation of declareSignature" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="1CCu0CNxH_z" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2JFqV2" id="1CCu0CNxHR3" role="2frcjj" />
-    </node>
-    <node concept="2tJIrI" id="27wMicDl2FM" role="jymVt" />
-    <node concept="3clFb_" id="18X2O0FJIA1" role="jymVt">
-      <property role="TrG5h" value="declareSignature" />
-      <node concept="3clFbS" id="18X2O0FJIA4" role="3clF47">
-        <node concept="3clFbF" id="1CCu0CNxEvt" role="3cqZAp">
-          <node concept="1rXfSq" id="1CCu0CNxEvs" role="3clFbG">
-            <ref role="37wK5l" node="1CCu0CNwsXq" resolve="addSimpleDeclaration" />
-            <node concept="2OqwBi" id="1CCu0CNxEJr" role="37wK5m">
-              <node concept="37vLTw" id="1CCu0CNxEEF" role="2Oq$k0">
-                <ref role="3cqZAo" node="18X2O0FJIB4" resolve="source" />
-              </node>
-              <node concept="2S8uIT" id="1CCu0CNxEST" role="2OqNvi">
-                <ref role="2S8YL0" node="18X2O0FJJhS" resolve="source" />
-              </node>
-            </node>
-            <node concept="3clFbT" id="2QFnHPqjoOZ" role="37wK5m">
-              <property role="3clFbU" value="true" />
-            </node>
-            <node concept="10QFUN" id="7EJIG_FVTZj" role="37wK5m">
-              <node concept="3uibUv" id="7EJIG_FVTZf" role="10QFUM">
-                <ref role="3uigEE" to="wyt6:~Class" resolve="Class" />
-                <node concept="3uibUv" id="7EJIG_FVUm8" role="11_B2D">
-                  <ref role="3uigEE" to="nww:18X2O0FJocj" resolve="MemberSignature" />
-                </node>
-              </node>
-              <node concept="2OqwBi" id="1CCu0CNxFtI" role="10QFUP">
-                <node concept="2OqwBi" id="1CCu0CNxFe0" role="2Oq$k0">
-                  <node concept="37vLTw" id="1CCu0CNxF8N" role="2Oq$k0">
-                    <ref role="3cqZAo" node="18X2O0FJIB4" resolve="source" />
-                  </node>
-                  <node concept="2S8uIT" id="1CCu0CNxFkU" role="2OqNvi">
-                    <ref role="2S8YL0" node="5q426iHsllV" resolve="signature" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="1CCu0CNxFFK" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
-                </node>
-              </node>
-            </node>
-            <node concept="1bVj0M" id="1CCu0CNxGks" role="37wK5m">
-              <node concept="3clFbS" id="1CCu0CNxGku" role="1bW5cS">
-                <node concept="3clFbF" id="1CCu0CNxG$R" role="3cqZAp">
-                  <node concept="2OqwBi" id="1CCu0CNxGGZ" role="3clFbG">
-                    <node concept="37vLTw" id="1CCu0CNxG$Q" role="2Oq$k0">
-                      <ref role="3cqZAo" node="18X2O0FJIB4" resolve="source" />
-                    </node>
-                    <node concept="2S8uIT" id="1CCu0CNxGRZ" role="2OqNvi">
-                      <ref role="2S8YL0" node="5q426iHsllV" resolve="signature" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="18X2O0FJIA5" role="1B3o_S" />
-      <node concept="3cqZAl" id="18X2O0FJI_O" role="3clF45" />
-      <node concept="37vLTG" id="18X2O0FJIB4" role="3clF46">
-        <property role="TrG5h" value="source" />
-        <node concept="3uibUv" id="18X2O0FJKLE" role="1tU5fm">
-          <ref role="3uigEE" node="18X2O0FJIBL" resolve="SourcedSignature" />
-        </node>
-      </node>
-      <node concept="P$JXv" id="27wMicDl2G_" role="lGtFl">
-        <node concept="TZ5HA" id="27wMicDl2GA" role="TZ5H$">
-          <node concept="1dT_AC" id="27wMicDl2GB" role="1dT_Ay">
-            <property role="1dT_AB" value="Visit a signature" />
-          </node>
-        </node>
-        <node concept="TZ5HI" id="1CCu0CNxEfV" role="3nqlJM">
-          <node concept="TZ5HA" id="1CCu0CNxEfW" role="3HnX3l">
-            <node concept="1dT_AC" id="1CCu0CNxIx4" role="1dT_Ay">
-              <property role="1dT_AB" value="now handled through declareSignature/s" />
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="1CCu0CNxEfX" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-      </node>
-      <node concept="2JFqV2" id="1CCu0CNxEmV" role="2frcjj" />
-    </node>
-    <node concept="2tJIrI" id="1CCu0CNwwRN" role="jymVt" />
-    <node concept="2tJIrI" id="1CCu0CNwtQ3" role="jymVt" />
     <node concept="3clFb_" id="1CCu0CNwsXq" role="jymVt">
       <property role="TrG5h" value="addSimpleDeclaration" />
       <node concept="3clFbS" id="1CCu0CNwsXt" role="3clF47">
@@ -764,6 +598,39 @@
       <node concept="TZ5HA" id="2QFnHPqiO5E" role="TZ5H$">
         <node concept="1dT_AC" id="2QFnHPqiO5F" role="1dT_Ay">
           <property role="1dT_AB" value="Interface collecting declarations." />
+        </node>
+      </node>
+    </node>
+    <node concept="3clFb_" id="6qs$OhcsnyK" role="jymVt">
+      <property role="TrG5h" value="expandType" />
+      <node concept="3clFbS" id="6qs$OhcsnyN" role="3clF47">
+        <node concept="3cpWs6" id="6qs$OhcsnX5" role="3cqZAp">
+          <node concept="37vLTw" id="6qs$Ohcso3v" role="3cqZAk">
+            <ref role="3cqZAo" node="6qs$OhcsnEL" resolve="type" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="6qs$OhcsnyO" role="1B3o_S" />
+      <node concept="3Tqbb2" id="6qs$Ohcsnq_" role="3clF45">
+        <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
+      </node>
+      <node concept="37vLTG" id="6qs$OhcsnEL" role="3clF46">
+        <property role="TrG5h" value="type" />
+        <node concept="3Tqbb2" id="6qs$OhcsnEK" role="1tU5fm">
+          <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
+        </node>
+      </node>
+      <node concept="2JFqV2" id="6qs$OhcsnQc" role="2frcjj" />
+      <node concept="P$JXv" id="6qs$Ohcso8Z" role="lGtFl">
+        <node concept="TZ5HA" id="6qs$Ohcso90" role="TZ5H$">
+          <node concept="1dT_AC" id="6qs$Ohcso91" role="1dT_Ay">
+            <property role="1dT_AB" value="Expand the type according to implementation generics / substitution handling. Should be called on any type that" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="6qs$Ohcsowe" role="TZ5H$">
+          <node concept="1dT_AC" id="6qs$Ohcsowf" role="1dT_Ay">
+            <property role="1dT_AB" value="is considered in signatures computation." />
+          </node>
         </node>
       </node>
     </node>

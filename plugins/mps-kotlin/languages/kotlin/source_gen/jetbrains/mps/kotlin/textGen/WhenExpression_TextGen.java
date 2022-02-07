@@ -26,18 +26,21 @@ public class WhenExpression_TextGen extends TextGenDescriptorBase {
     }
 
     tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.target$I2XO));
-    tgs.append("){");
+    tgs.append(") {");
     tgs.newLine();
 
     ctx.getBuffer().area().increaseIndent();
     for (SNode entry : ListSequence.fromList(SLinkOperations.getChildren(ctx.getPrimaryInput(), LINKS.entries$NvX2))) {
       tgs.indent();
       tgs.appendNode(entry);
+      tgs.newLine();
     }
-    tgs.indent();
-    tgs.append("else ->");
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.elseEntry$vv2S));
-    tgs.newLine();
+    if ((SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.elseEntry$vv2S) != null)) {
+      tgs.indent();
+      tgs.append("else -> ");
+      tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.elseEntry$vv2S));
+      tgs.newLine();
+    }
     ctx.getBuffer().area().decreaseIndent();
 
     tgs.indent();

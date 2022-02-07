@@ -30,7 +30,7 @@ public final class IFunctionCallLike__BehaviorDescriptor extends BaseBHDescripto
   public static final SMethod<SReferenceLink> getTargetLink_id5D4bOjrrcOr = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getTargetLink").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjrrcOr").build();
   public static final SMethod<SNode> getReceiver_id5D4bOjrrgiZ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReceiver").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjrrgiZ").build();
   public static final SMethod<Boolean> isReceiverExternal_id4bAAzIAVSHE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReceiverExternal").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4bAAzIAVSHE").build();
-  public static final SMethod<SAbstractConcept> getModifierFilter_id5D4bOjruyUS = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getModifierFilter").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjruyUS").build();
+  public static final SMethod<SAbstractConcept> getModifierFilter_id5D4bOjruyUS = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getModifierFilter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjruyUS").build();
   public static final SMethod<Iterable<SNode>> getArguments_id1VI7K1jROBX = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getArguments").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1VI7K1jROBX").build();
   public static final SMethod<Iterable<SNode>> getTypeArguments_id5JfKd21NW9H = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTypeArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5JfKd21NW9H").build();
   public static final SMethod<FunctionDeclaration> getFunctionDescriptor_id26mUjU3xhgD = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunctionDescriptor").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("26mUjU3xhgD").build();
@@ -43,6 +43,9 @@ public final class IFunctionCallLike__BehaviorDescriptor extends BaseBHDescripto
 
   /*package*/ static boolean isReceiverExternal_id4bAAzIAVSHE(@NotNull SNode __thisNode__) {
     return false;
+  }
+  /*package*/ static SAbstractConcept getModifierFilter_id5D4bOjruyUS(@NotNull SNode __thisNode__) {
+    return null;
   }
   /*package*/ static Iterable<SNode> getTypeArguments_id5JfKd21NW9H(@NotNull SNode __thisNode__) {
     return Sequence.fromIterable(Collections.<SNode>emptyList());
@@ -75,6 +78,8 @@ public final class IFunctionCallLike__BehaviorDescriptor extends BaseBHDescripto
     switch (methodIndex) {
       case 3:
         return (T) ((Boolean) isReceiverExternal_id4bAAzIAVSHE(node));
+      case 4:
+        return (T) ((SAbstractConcept) getModifierFilter_id5D4bOjruyUS(node));
       case 6:
         return (T) ((Iterable<SNode>) getTypeArguments_id5JfKd21NW9H(node));
       case 8:

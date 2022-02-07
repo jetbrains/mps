@@ -10,18 +10,16 @@ import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class AbstractFunctionCall__BehaviorDescriptor extends BaseBHDescriptor {
@@ -30,12 +28,9 @@ public final class AbstractFunctionCall__BehaviorDescriptor extends BaseBHDescri
   public static final SMethod<Boolean> isResolved_id4MvRlgZCbFz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isResolved").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4MvRlgZCbFz").build();
   public static final SMethod<String> getFunctionName_id4nn3FPlEjh5 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFunctionName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4nn3FPlEjh5").build();
   public static final SMethod<SReferenceLink> getTargetLink_id5D4bOjrrcOr = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getTargetLink").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjrrcOr").build();
-  public static final SMethod<SAbstractConcept> getModifierFilter_id5D4bOjruyUS = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getModifierFilter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjruyUS").build();
-  public static final SMethod<Iterable<SNode>> getArguments_id1VI7K1jROBX = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1VI7K1jROBX").build();
-  public static final SMethod<Iterable<SNode>> getTypeArguments_id5JfKd21NW9H = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTypeArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5JfKd21NW9H").build();
   public static final SMethod<FunctionDeclaration> getFunctionDescriptor_id26mUjU3xhgD = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunctionDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("26mUjU3xhgD").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isResolved_id4MvRlgZCbFz, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getModifierFilter_id5D4bOjruyUS, getArguments_id1VI7K1jROBX, getTypeArguments_id5JfKd21NW9H, getFunctionDescriptor_id26mUjU3xhgD);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isResolved_id4MvRlgZCbFz, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getFunctionDescriptor_id26mUjU3xhgD);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -48,21 +43,6 @@ public final class AbstractFunctionCall__BehaviorDescriptor extends BaseBHDescri
   }
   /*package*/ static SReferenceLink getTargetLink_id5D4bOjrrcOr(@NotNull SNode __thisNode__) {
     return LINKS.function$Weyv;
-  }
-  /*package*/ static SAbstractConcept getModifierFilter_id5D4bOjruyUS(@NotNull SNode __thisNode__) {
-    return null;
-  }
-  /*package*/ static Iterable<SNode> getArguments_id1VI7K1jROBX(@NotNull SNode __thisNode__) {
-    Iterable<SNode> seq = SLinkOperations.getChildren(__thisNode__, LINKS.arguments$zJyV);
-
-    if ((SLinkOperations.getTarget(__thisNode__, LINKS.lambda$U$kC) != null)) {
-      return Sequence.fromIterable(seq).concat(Sequence.fromIterable(Sequence.<SNode>singleton(SLinkOperations.getTarget(__thisNode__, LINKS.lambda$U$kC))));
-    }
-
-    return seq;
-  }
-  /*package*/ static Iterable<SNode> getTypeArguments_id5JfKd21NW9H(@NotNull SNode __thisNode__) {
-    return SLinkOperations.getChildren(__thisNode__, LINKS.typeArguments$86s6);
   }
   /*package*/ static FunctionDeclaration getFunctionDescriptor_id26mUjU3xhgD(@NotNull SNode __thisNode__) {
     return KotlinFunctionDeclaration.of(SLinkOperations.getTarget(__thisNode__, LINKS.function$Weyv));
@@ -90,12 +70,6 @@ public final class AbstractFunctionCall__BehaviorDescriptor extends BaseBHDescri
       case 2:
         return (T) ((SReferenceLink) getTargetLink_id5D4bOjrrcOr(node));
       case 3:
-        return (T) ((SAbstractConcept) getModifierFilter_id5D4bOjruyUS(node));
-      case 4:
-        return (T) ((Iterable<SNode>) getArguments_id1VI7K1jROBX(node));
-      case 5:
-        return (T) ((Iterable<SNode>) getTypeArguments_id5JfKd21NW9H(node));
-      case 6:
         return (T) ((FunctionDeclaration) getFunctionDescriptor_id26mUjU3xhgD(node));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -128,9 +102,6 @@ public final class AbstractFunctionCall__BehaviorDescriptor extends BaseBHDescri
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink function$Weyv = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af43fL, 0x1ba36e493d8ad4e9L, "function");
-    /*package*/ static final SContainmentLink arguments$zJyV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL, 0x5b1dd60162ecf00cL, "arguments");
-    /*package*/ static final SContainmentLink lambda$U$kC = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6186632f85a74c27L, 0x28bef6d7551af77dL, "lambda");
-    /*package*/ static final SContainmentLink typeArguments$86s6 = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L, 0x5b1dd60162c9757cL, "typeArguments");
   }
 
   private static final class PROPS {

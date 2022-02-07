@@ -51255,6 +51255,7 @@
         </node>
         <node concept="1SiIV0" id="Ye$g8PO9I1" role="3bR37C">
           <node concept="3bR9La" id="Ye$g8PO9I2" role="1SiIV1">
+            <property role="3bR36h" value="true" />
             <ref role="3bR37D" node="Ye$g8PO8Vb" resolve="jetbrains.mps.kotlin.runtime" />
           </node>
         </node>
@@ -51462,11 +51463,6 @@
         <node concept="1SiIV0" id="1t03Waz67At" role="3bR37C">
           <node concept="3bR9La" id="1t03Waz67Au" role="1SiIV1">
             <ref role="3bR37D" node="Ye$g8PO8Vb" resolve="jetbrains.mps.kotlin.runtime" />
-          </node>
-        </node>
-        <node concept="1SiIV0" id="4L0QGs1JVLR" role="3bR37C">
-          <node concept="3bR9La" id="4L0QGs1JVLS" role="1SiIV1">
-            <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
           </node>
         </node>
         <node concept="1SiIV0" id="4L0QGs1JVLT" role="3bR37C">

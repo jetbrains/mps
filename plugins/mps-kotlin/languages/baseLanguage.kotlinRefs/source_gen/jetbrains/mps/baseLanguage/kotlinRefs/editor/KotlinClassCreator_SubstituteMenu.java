@@ -37,7 +37,7 @@ public class KotlinClassCreator_SubstituteMenu extends SubstituteMenuBase {
   @Override
   public List<SubstituteMenuItem> createMenuItems(@NotNull SubstituteMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for KotlinClassCreator. Generated from implicit smart reference attribute.", new SNodePointer("r:c0bc7504-314a-4a6f-850a-c38847b9f916(jetbrains.mps.baseLanguage.kotlinRefs.structure)", "1057254320149555666")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for KotlinClassCreator. Generated from the smart reference attribute.", new SNodePointer("r:c0bc7504-314a-4a6f-850a-c38847b9f916(jetbrains.mps.baseLanguage.kotlinRefs.structure)", "1891166538785059787")));
     try {
       return super.createMenuItems(context);
     } finally {

@@ -26,6 +26,9 @@
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
+      <concept id="8842732777748207592" name="jetbrains.mps.lang.structure.structure.SmartReferenceAttribute" flags="ng" index="RPilO">
+        <reference id="8842732777748207597" name="charactersticReference" index="RPilL" />
+      </concept>
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <reference id="1071489389519" name="extends" index="1TJDcQ" />
         <child id="1169129564478" name="implements" index="PzmwI" />
@@ -76,6 +79,9 @@
     </node>
     <node concept="t5JxF" id="1t03WazjDZk" role="lGtFl">
       <property role="t5JxN" value="kotlin type, cant extends IClassifierType because of concept restrictions" />
+    </node>
+    <node concept="RPilO" id="1CYLv9VnLtm" role="lGtFl">
+      <ref role="RPilL" node="6zWVWr23zsw" resolve="classifier" />
     </node>
   </node>
   <node concept="1TIwiD" id="26mUjU3jlvc">
@@ -136,8 +142,11 @@
       <property role="IQ2ns" value="1675356390019228812" />
       <property role="20kJfa" value="constructor" />
       <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" to="hcm8:6f3juM$wHwB" resolve="AbstractConstructorDeclaration" />
       <ref role="20ksaX" node="1t03Wazi3lp" resolve="function" />
+      <ref role="20lvS9" to="hcm8:71DDynMG2ea" resolve="IConstructorDeclaration" />
+    </node>
+    <node concept="RPilO" id="1CYLv9VoRfb" role="lGtFl">
+      <ref role="RPilL" node="1t03WazhIic" resolve="constructor" />
     </node>
   </node>
   <node concept="PlHQZ" id="UG7NftKS3N">

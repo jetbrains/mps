@@ -58,7 +58,7 @@ public class FunctionParamMapper<I, T extends Throwable> {
 
     if (parameter.isVararg()) {
       if (varArgIndex >= 0) {
-        errorHandler.error("multiple vararg parameters are prohibited");
+        errorHandler.error(ParamErrorHandler.MULTIPLE_VARARGS);
         return;
       }
       varArgIndex = index;
@@ -76,20 +76,18 @@ public class FunctionParamMapper<I, T extends Throwable> {
   }
 
   /**
-   * Raise an error if the provided number of parameter will not fit the method
-   * requirements. Otherwise, the method may be valid (and further checks should be
+   * Raise an error if the provided number of arguments will not fit the method
+   * requirements. Otherwise, the call may be valid (and further checks should be
    * operated)
    * 
    * @param argumentsCount number of arguments provided on call
    */
   public void assertMaySpecify(int argumentsCount) throws T {
     if (argumentsCount < minimumSpecified) {
-      errorHandler.error("wrong number of arguments");
+      errorHandler.error(ParamErrorHandler.WRONG_ARGUMENT_COUNT);
+    } else if (argumentsCount > parameters.size() && varArgIndex < 0) {
+      errorHandler.error(ParamErrorHandler.WRONG_ARGUMENT_COUNT);
     }
-  }
-
-  public FunctionParamIterator<I, T> iterator() {
-    return iterator(errorHandler);
   }
 
   /**
@@ -99,7 +97,7 @@ public class FunctionParamMapper<I, T extends Throwable> {
    * Depending on the state of the model, some parameters may be null, which indicates an error
    * in usage (reported to the error handler) or in declaration (unreported).
    */
-  public List<ParameterDeclaration> checkParameters(Iterable<SNode> arguments) throws T {
+  public List<ParameterDeclaration> checkArguments(Iterable<SNode> arguments) throws T {
     List<ParameterDeclaration> matchedParams = ListSequence.fromList(new ArrayList<ParameterDeclaration>());
 
     // 1. simple check for arg count (eliminate simple cases)
@@ -113,6 +111,10 @@ public class FunctionParamMapper<I, T extends Throwable> {
     it.dispose();
 
     return matchedParams;
+  }
+
+  public FunctionParamIterator<I, T> iterator() {
+    return iterator(errorHandler);
   }
 
   public <E extends Throwable> FunctionParamIterator<I, E> iterator(ParamErrorHandler<E> internalErrorHandler) {

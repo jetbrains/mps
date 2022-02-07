@@ -5,7 +5,6 @@ package jetbrains.mps.kotlin.overloading;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.annotations.Nullable;
 
 public interface OverloadResolver {
   /**
@@ -13,7 +12,7 @@ public interface OverloadResolver {
    * 
    * @return function to apply or null, plus a boolean indicating ambiguity in case of failure
    */
-  Tuples._2<FunctionDeclaration, Boolean> resolve(SNode call, @Nullable SNode receiverType, Iterable<FunctionDeclaration> candidates);
+  Tuples._2<FunctionDeclaration, Boolean> resolve(FunctionCall call, SNode contextNode, Iterable<FunctionDeclaration> candidates);
 
   /**
    * Returns whether the solver is available for resolution purposes.

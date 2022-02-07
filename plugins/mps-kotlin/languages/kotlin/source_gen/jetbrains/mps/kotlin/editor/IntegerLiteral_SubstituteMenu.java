@@ -10,7 +10,6 @@ import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuContext;
 import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
-import jetbrains.mps.lang.editor.menus.substitute.SimpleConceptSubstituteMenuPart;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
@@ -31,21 +30,7 @@ public class IntegerLiteral_SubstituteMenu extends SubstituteMenuBase {
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SimpleConceptSubstituteMenuPart(CONCEPTS.IntegerLiteral$7a) {
-
-      @NotNull
-      @Override
-      public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
-        context.getEditorMenuTrace().pushTraceInfo();
-        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("simple substitute menu part for concept: " + "IntegerLiteral", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "7138249191281624412")));
-        try {
-          return super.createItems(context);
-        } finally {
-          context.getEditorMenuTrace().popTraceInfo();
-        }
-      }
-    }, CONCEPTS.IntegerLiteral$7a));
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_15avur_b(), CONCEPTS.IntegerLiteral$7a));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Action_15avur_a(), CONCEPTS.IntegerLiteral$7a));
     return result;
   }
 
@@ -62,7 +47,7 @@ public class IntegerLiteral_SubstituteMenu extends SubstituteMenuBase {
   }
 
 
-  private class SMP_Action_15avur_b extends SingleItemSubstituteMenuPart {
+  private class SMP_Action_15avur_a extends SingleItemSubstituteMenuPart {
 
     @Nullable
     @Override

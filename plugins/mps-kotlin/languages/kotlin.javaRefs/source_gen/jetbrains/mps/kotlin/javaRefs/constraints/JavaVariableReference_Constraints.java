@@ -52,7 +52,7 @@ public class JavaVariableReference_Constraints extends BaseConstraintsDescriptor
 
               // Here we seek function signatures from java concepts
               SignedDeclarationFilter scopeFilter = new SignedDeclarationFilter(CONCEPTS.VariableDeclaration$Y0, PropertyAccessorSignature.class);
-              Scope scope = IType__BehaviorDescriptor.getTypeScope_id7ubb0gUcNKV.invoke(type, scopeFilter, context._2(), _context.getContextNode().getModel().getRepository());
+              Scope scope = IType__BehaviorDescriptor.getTypeScope_id7ubb0gUcNKV.invoke(type, scopeFilter, context._2());
 
               return (scope == null ? new EmptyScope() : scope);
             }

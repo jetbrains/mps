@@ -13,6 +13,7 @@
     <import index="fnmy" ref="r:89c0fb70-0977-4113-a076-5906f9d8630f(jetbrains.mps.baseLanguage.scopes)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="3hq4" ref="r:22e37fb0-8cf5-424c-a769-6983cf740d03(jetbrains.mps.kotlin.baseLanguage.toJava)" />
+    <import index="hez" ref="r:b038209d-51a9-4919-b6e5-4fafce96fa00(jetbrains.mps.kotlin.behavior)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="w8y0" ref="r:77d5d6f9-26b4-4cf8-adc6-7c4e21017b07(jetbrains.mps.baseLanguage.kotlinRefs.behavior)" implicit="true" />
   </imports>
@@ -216,6 +217,9 @@
       <concept id="1081236700938" name="jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" flags="ig" index="2YIFZL" />
       <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
         <reference id="1144433194310" name="classConcept" index="1Pybhc" />
+      </concept>
+      <concept id="1070533707846" name="jetbrains.mps.baseLanguage.structure.StaticFieldReference" flags="nn" index="10M0yZ">
+        <reference id="1144433057691" name="classifier" index="1PxDUh" />
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu" />
@@ -1032,24 +1036,15 @@
           <node concept="3SHvHV" id="3YPB4zZihmD" role="2wV5jI">
             <node concept="1NMggl" id="47y0FrqhJIO" role="2N1_XE">
               <node concept="3clFbS" id="47y0FrqhJIP" role="2VODD2">
-                <node concept="3SKdUt" id="1t03WazkDtR" role="3cqZAp">
-                  <node concept="1PaTwC" id="1t03WazkDtS" role="1aUNEU">
-                    <node concept="3oM_SD" id="1t03WazkDB2" role="1PaTwD">
-                      <property role="3oM_SC" value="TODO" />
-                    </node>
-                    <node concept="3oM_SD" id="1t03WazkDBX" role="1PaTwD">
-                      <property role="3oM_SC" value="nested" />
-                    </node>
-                    <node concept="3oM_SD" id="1t03WazkDGn" role="1PaTwD">
-                      <property role="3oM_SC" value="names" />
-                    </node>
-                  </node>
-                </node>
                 <node concept="3clFbF" id="47y0FrqhJIQ" role="3cqZAp">
                   <node concept="2OqwBi" id="47y0FrqhJIR" role="3clFbG">
                     <node concept="1NM5Ph" id="47y0FrqhJIV" role="2Oq$k0" />
-                    <node concept="3TrcHB" id="1t03WazkDi9" role="2OqNvi">
-                      <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+                    <node concept="2qgKlT" id="1CYLv9VofPN" role="2OqNvi">
+                      <ref role="37wK5l" to="hez:1d2BQ0ZyA$g" resolve="getNestedName" />
+                      <node concept="10M0yZ" id="1CYLv9VogQm" role="37wK5m">
+                        <ref role="3cqZAo" to="hez:1d2BQ0ZzqJQ" resolve="Jvm" />
+                        <ref role="1PxDUh" to="hez:1d2BQ0ZzpqZ" resolve="KtEnvironmentConfig" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -1793,6 +1788,30 @@
   <node concept="22mcaB" id="4L0QGs2ilk0">
     <ref role="aqKnT" to="48vp:4L0QGs2ijQD" resolve="KotlinTypeParameterReference" />
     <node concept="22hDWj" id="4L0QGs2iltx" role="22hAXT" />
+  </node>
+  <node concept="22mcaB" id="1CYLv9VoeNS">
+    <property role="3GE5qa" value="" />
+    <ref role="aqKnT" to="48vp:6zWVWr22PLG" resolve="KotlinClassifierType" />
+    <node concept="22hDWj" id="1CYLv9VoeSa" role="22hAXT" />
+    <node concept="3XHNnq" id="1CYLv9Vof18" role="3ft7WO">
+      <ref role="3XGfJA" to="48vp:6zWVWr23zsw" resolve="classifier" />
+      <node concept="1WAQ3h" id="1CYLv9Vohru" role="1WZ6D9">
+        <node concept="3clFbS" id="1CYLv9Vohrw" role="2VODD2">
+          <node concept="3clFbF" id="1CYLv9Vohxo" role="3cqZAp">
+            <node concept="2OqwBi" id="1CYLv9Vohxq" role="3clFbG">
+              <node concept="1WAUZh" id="1CYLv9VohVg" role="2Oq$k0" />
+              <node concept="2qgKlT" id="1CYLv9Vohxs" role="2OqNvi">
+                <ref role="37wK5l" to="hez:1d2BQ0ZyA$g" resolve="getNestedName" />
+                <node concept="10M0yZ" id="1CYLv9Vohxt" role="37wK5m">
+                  <ref role="3cqZAo" to="hez:1d2BQ0ZzqJQ" resolve="Jvm" />
+                  <ref role="1PxDUh" to="hez:1d2BQ0ZzpqZ" resolve="KtEnvironmentConfig" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
 </model>
 

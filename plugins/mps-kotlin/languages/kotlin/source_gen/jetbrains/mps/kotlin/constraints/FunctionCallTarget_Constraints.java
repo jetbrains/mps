@@ -54,7 +54,7 @@ public class FunctionCallTarget_Constraints extends BaseConstraintsDescriptor {
             SNode type = TypecheckingFacade.getFromContext().computeIsolated(() -> (SNode) NavigationOperation__BehaviorDescriptor.getContextType_id7ubb0gUcL0j.invoke(context));
 
             ScopeContext scopeContext = (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(context, LINKS.operand$YS5t), CONCEPTS.ReceiverType$$f) ? ScopeContext.STATIC_RECEIVER : ScopeContext.INSTANCE_RECEIVER);
-            Scope scope = IType__BehaviorDescriptor.getTypeScope_id7ubb0gUcNKV.invoke(type, new SignedDeclarationFilter(CONCEPTS.IFunctionIdentifier$K$), scopeContext, _context.getContextNode().getModel().getRepository());
+            Scope scope = IType__BehaviorDescriptor.getTypeScope_id7ubb0gUcNKV.invoke(type, new SignedDeclarationFilter(CONCEPTS.IFunctionIdentifier$K$), scopeContext);
 
             // Also retrieve scope for receiver types
             ReceiverTypeScope receiverTypeScope = new ReceiverTypeScope(SNodeOperations.getModel(_context.getContextNode()), type, CONCEPTS.IFunctionIdentifier$K$);

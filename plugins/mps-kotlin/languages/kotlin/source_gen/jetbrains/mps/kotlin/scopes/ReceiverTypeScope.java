@@ -35,7 +35,7 @@ public class ReceiverTypeScope extends Scope {
   private final SAbstractConcept myTargetConcept;
   private final Iterable<TypeKey> myTargetTypes;
   public ReceiverTypeScope(SModel model, SNode targetType, SAbstractConcept targetConcept) {
-    this(model, SuperTypesVisitor.getSupertypes(targetType, model.getRepository()), targetConcept);
+    this(model, SuperTypesVisitor.getSupertypes(targetType), targetConcept);
   }
 
   public ReceiverTypeScope(SModel model, Iterable<TypeKey> targetTypes, SAbstractConcept targetConcept) {

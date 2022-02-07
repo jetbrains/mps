@@ -14,6 +14,9 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.kotlin.behavior.IStatementHolder__BehaviorDescriptor;
+import jetbrains.mps.kotlin.overloading.FunctionParamHelper;
+import jetbrains.mps.kotlin.behavior.IFunctionCallLike__BehaviorDescriptor;
+import jetbrains.mps.kotlin.overloading.ParamException;
 import jetbrains.mps.kotlin.behavior.IIdentifier__BehaviorDescriptor;
 import jetbrains.mps.kotlin.behavior.KtEnvironmentConfig;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -50,6 +53,13 @@ public abstract class KotlinTextGen {
       tgs.append(">");
     }
   }
+  public static void delegate(SNode node, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    if ((SLinkOperations.getTarget(node, LINKS.delegate$pKtK) != null)) {
+      tgs.append(" by ");
+      tgs.appendNode(SLinkOperations.getTarget(node, LINKS.delegate$pKtK));
+    }
+  }
   public static void typeParameters(SNode node, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeParameters$eq6K)).isNotEmpty()) {
@@ -73,7 +83,7 @@ public abstract class KotlinTextGen {
       tgs.append("?");
     }
   }
-  public static void arguments(List<SNode> elements, final TextGenContext ctx) {
+  public static void arguments(Iterable<SNode> elements, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     {
       Iterable<SNode> collection = elements;
@@ -194,23 +204,23 @@ public abstract class KotlinTextGen {
   }
   public static void controlStructureStatements(SNode node, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    KotlinTextGen.optionallyWrappedStatements(node, "", ";", ctx);
+    KotlinTextGen.optionallyWrappedStatements(node, "", ctx);
   }
   public static void functionStatements(SNode node, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    KotlinTextGen.optionallyWrappedStatements(node, "= ", "Unit", ctx);
+    KotlinTextGen.optionallyWrappedStatements(node, "= ", ctx);
   }
-  public static void optionallyWrappedStatements(SNode node, String prependNonBlock, String emptyValue, final TextGenContext ctx) {
+  public static void optionallyWrappedStatements(SNode node, String prependNonBlock, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     SNode singleExpression = IStatementHolder__BehaviorDescriptor.asSingleExpression_id18X2O0FvKfA.invoke(node);
-    if ((singleExpression != null) && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.statements$R3pt)).isNotEmpty()) {
+    if ((singleExpression != null)) {
       tgs.append(prependNonBlock);
       tgs.appendNode(singleExpression);
     } else if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.statements$R3pt)).isNotEmpty()) {
       KotlinTextGen.wrappedStatements(node, ctx);
     } else {
       tgs.append(prependNonBlock);
-      tgs.append(emptyValue);
+      tgs.append("Unit");
     }
   }
   public static void wrappedStatements(SNode node, final TextGenContext ctx) {
@@ -231,9 +241,9 @@ public abstract class KotlinTextGen {
     }
     ctx.getBuffer().area().decreaseIndent();
   }
-  public static void argumentsWithLambda(SNode node, List<SNode> arguments, final TextGenContext ctx) {
+  public static void argumentsWithLambda(SNode node, Iterable<SNode> arguments, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    if (ListSequence.fromList(arguments).isNotEmpty() || (SLinkOperations.getTarget(node, LINKS.lambda$U$kC) == null)) {
+    if (Sequence.fromIterable(arguments).isNotEmpty() || (SLinkOperations.getTarget(node, LINKS.lambda$U$kC) == null)) {
       tgs.append("(");
       KotlinTextGen.arguments(arguments, ctx);
       tgs.append(")");
@@ -241,6 +251,29 @@ public abstract class KotlinTextGen {
 
     if ((SLinkOperations.getTarget(node, LINKS.lambda$U$kC) != null)) {
       tgs.appendNode(SLinkOperations.getTarget(node, LINKS.lambda$U$kC));
+    }
+  }
+  public static void orderedFunctionArguments(SNode functionCall, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    // Arguments for a method without named parameters (which are forbidden in java for instance)
+    Iterable<SNode> list;
+
+    try {
+      list = FunctionParamHelper.toOrderedList(IFunctionCallLike__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(functionCall).getParameters(), IFunctionCallLike__BehaviorDescriptor.getArguments_id1VI7K1jROBX.invoke(functionCall));
+    } catch (ParamException e) {
+      tgs.reportError(e.getMessage());
+      return;
+    }
+
+    KotlinTextGen.projections(SLinkOperations.getChildren(functionCall, LINKS.typeArguments$86s6), ctx);
+
+    // Still handle lambda expression, if any
+    if (Sequence.fromIterable(list).isNotEmpty() && Sequence.fromIterable(list).last() == SLinkOperations.getTarget(functionCall, LINKS.lambda$U$kC)) {
+      KotlinTextGen.argumentsWithLambda(functionCall, Sequence.fromIterable(list).take(Sequence.fromIterable(list).count() - 1), ctx);
+    } else {
+      tgs.append("(");
+      KotlinTextGen.arguments(list, ctx);
+      tgs.append(")");
     }
   }
   public static void functionArguments(SNode functionCall, final TextGenContext ctx) {
@@ -284,6 +317,11 @@ public abstract class KotlinTextGen {
       tgs.append(str);
       tgs.append(" ");
     }
+  }
+  public static void customReference(SNode ref, String customName, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    tgs.append(customName);
+    KotlinTextGen.require(ref, ctx);
   }
   public static void reference(SNode ref, boolean nested, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
@@ -349,6 +387,7 @@ public abstract class KotlinTextGen {
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink delegate$pKtK = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56af0af90L, 0x2043bc8310b9b197L, "delegate");
     /*package*/ static final SContainmentLink typeParameters$eq6K = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7556a4df5L, 0x28bef6d7556a4df6L, "typeParameters");
     /*package*/ static final SReferenceLink targetLabel$iS7r = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790af2908L, 0x11400bb790af2909L, "targetLabel");
     /*package*/ static final SContainmentLink visibility$vnSV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, 0x631027d1c4c4e040L, "visibility");

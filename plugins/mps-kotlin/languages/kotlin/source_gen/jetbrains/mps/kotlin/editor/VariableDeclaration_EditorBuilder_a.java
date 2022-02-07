@@ -9,6 +9,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.openapi.editor.menus.transformation.SPropertyInfo;
@@ -67,12 +68,17 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setCellId("Collection_lfy4ev_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
-    editorCell.addEditorCell(createComponent_0());
+    if (nodeCondition_lfy4ev_a0a()) {
+      editorCell.addEditorCell(createComponent_0());
+    }
     editorCell.addEditorCell(createProperty_0());
     if (nodeCondition_lfy4ev_a2a()) {
       editorCell.addEditorCell(createCollection_1());
     }
     return editorCell;
+  }
+  private boolean nodeCondition_lfy4ev_a0a() {
+    return ListSequence.fromList(SLinkOperations.getChildren(myNode, LINKS.annotations$bXtr)).isNotEmpty();
   }
   private boolean nodeCondition_lfy4ev_a2a() {
     return (SLinkOperations.getTarget(myNode, LINKS.type$RmkT) != null);
@@ -192,6 +198,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   }
 
   private static final class LINKS {
+    /*package*/ static final SContainmentLink annotations$bXtr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6e77b7e7a89e49faL, 0x6e77b7e7a89e49fbL, "annotations");
     /*package*/ static final SContainmentLink type$RmkT = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af571L, 0x28bef6d7551af917L, "type");
   }
 

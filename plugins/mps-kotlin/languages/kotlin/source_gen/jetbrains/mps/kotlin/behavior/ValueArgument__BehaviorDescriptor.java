@@ -6,6 +6,7 @@ import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
+import jetbrains.mps.kotlin.runtime.declaration.ParameterDeclaration;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
@@ -13,11 +14,15 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -25,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ValueArgument__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af579L, "jetbrains.mps.kotlin.structure.ValueArgument");
 
-  public static final SMethod<KotlinParameterDeclaration> getNamedTarget_id2PMtXoK3vgE = new SMethodBuilder<KotlinParameterDeclaration>(new SJavaCompoundTypeImpl(KotlinParameterDeclaration.class)).name("getNamedTarget").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2PMtXoK3vgE").build();
+  public static final SMethod<ParameterDeclaration> getNamedTarget_id2PMtXoK3vgE = new SMethodBuilder<ParameterDeclaration>(new SJavaCompoundTypeImpl(ParameterDeclaration.class)).name("getNamedTarget").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2PMtXoK3vgE").build();
   public static final SMethod<SNode> getArgExpression_id26mUjU3EUyw = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getArgExpression").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("26mUjU3EUyw").build();
   public static final SMethod<Boolean> isVarArg_idbbFPPtRGEL = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isVarArg").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("bbFPPtRGEL").build();
 
@@ -34,8 +39,13 @@ public final class ValueArgument__BehaviorDescriptor extends BaseBHDescriptor {
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static KotlinParameterDeclaration getNamedTarget_id2PMtXoK3vgE(@NotNull SNode __thisNode__) {
-    return KotlinParameterDeclaration.of(SLinkOperations.getTarget(__thisNode__, LINKS.parameter$8rO1));
+  /*package*/ static ParameterDeclaration getNamedTarget_id2PMtXoK3vgE(@NotNull final SNode __thisNode__) {
+    // Get the parameter back from function definition (because parameter may not be a kotlin parameter)
+    return Sequence.fromIterable(IArguments__BehaviorDescriptor.getAvailableParameters_id1$jFvlD0xqw.invoke(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.IArguments$xj))).findFirst(new IWhereFilter<ParameterDeclaration>() {
+      public boolean accept(ParameterDeclaration it) {
+        return it != null && it.getNode() == SLinkOperations.getTarget(__thisNode__, LINKS.parameter$8rO1);
+      }
+    });
   }
   /*package*/ static SNode getArgExpression_id26mUjU3EUyw(@NotNull SNode __thisNode__) {
     return SLinkOperations.getTarget(__thisNode__, LINKS.expression$RzsN);
@@ -60,7 +70,7 @@ public final class ValueArgument__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((KotlinParameterDeclaration) getNamedTarget_id2PMtXoK3vgE(node));
+        return (T) ((ParameterDeclaration) getNamedTarget_id2PMtXoK3vgE(node));
       case 1:
         return (T) ((SNode) getArgExpression_id26mUjU3EUyw(node));
       case 2:
@@ -92,6 +102,10 @@ public final class ValueArgument__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IArguments$xj = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL, "jetbrains.mps.kotlin.structure.IArguments");
   }
 
   private static final class LINKS {

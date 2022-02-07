@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.kotlin.scopes.SignedDeclarationFilter;
 import jetbrains.mps.kotlin.scopes.ScopeContext;
-import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.kotlin.runtime.types.identifiers.TypeKey;
 import java.util.List;
 import java.util.Arrays;
@@ -45,7 +44,7 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIMiw").build();
   public static final SMethod<SNode> asProjection_idJmO2PmVt2A = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("asProjection").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("JmO2PmVt2A").build(SMethodBuilder.createJavaParameter((Class<SEnumerationLiteral>) ((Class) Object.class), ""));
   public static final SMethod<SNode> asInvariantProjection_id2gj5XQXIqKf = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("asInvariantProjection").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2gj5XQXIqKf").build();
-  public static final SMethod<Scope> getTypeScope_id7ubb0gUcNKV = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getTypeScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7ubb0gUcNKV").build(SMethodBuilder.createJavaParameter(SignedDeclarationFilter.class, ""), SMethodBuilder.createJavaParameter(ScopeContext.class, ""), SMethodBuilder.createJavaParameter(SRepository.class, ""));
+  public static final SMethod<Scope> getTypeScope_id7ubb0gUcNKV = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getTypeScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7ubb0gUcNKV").build(SMethodBuilder.createJavaParameter(SignedDeclarationFilter.class, ""), SMethodBuilder.createJavaParameter(ScopeContext.class, ""));
   public static final SMethod<TypeKey> shallowId_idJmO2PmZtH5 = new SMethodBuilder<TypeKey>(new SJavaCompoundTypeImpl(TypeKey.class)).name("shallowId").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("JmO2PmZtH5").build();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, populateTypeSignatures_id5q426iHK5S9, populateSubstitutions_id4f4W8JpwgWV, toString_id4nn3FPlZH$r, getPresentation_idhEwIMiw, asProjection_idJmO2PmVt2A, asInvariantProjection_id2gj5XQXIqKf, getTypeScope_id7ubb0gUcNKV, shallowId_idJmO2PmZtH5);
@@ -77,7 +76,7 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SNode asInvariantProjection_id2gj5XQXIqKf(@NotNull SNode __thisNode__) {
     return IType__BehaviorDescriptor.asProjection_idJmO2PmVt2A.invoke(__thisNode__, SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x21e0c923289a2189L, "jetbrains.mps.kotlin.structure.VarianceModifier"), 0x21e0c923289a2222L, "inv"));
   }
-  /*package*/ static Scope getTypeScope_id7ubb0gUcNKV(@NotNull SNode __thisNode__, SignedDeclarationFilter filter, ScopeContext context, SRepository repository) {
+  /*package*/ static Scope getTypeScope_id7ubb0gUcNKV(@NotNull SNode __thisNode__, SignedDeclarationFilter filter, ScopeContext context) {
     // TODO null?
     return new EmptyScope();
   }
@@ -118,7 +117,7 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
       case 6:
         return (T) ((SNode) asInvariantProjection_id2gj5XQXIqKf(node));
       case 7:
-        return (T) ((Scope) getTypeScope_id7ubb0gUcNKV(node, (SignedDeclarationFilter) parameters[0], (ScopeContext) parameters[1], (SRepository) parameters[2]));
+        return (T) ((Scope) getTypeScope_id7ubb0gUcNKV(node, (SignedDeclarationFilter) parameters[0], (ScopeContext) parameters[1]));
       case 8:
         return (T) ((TypeKey) shallowId_idJmO2PmZtH5(node));
       default:

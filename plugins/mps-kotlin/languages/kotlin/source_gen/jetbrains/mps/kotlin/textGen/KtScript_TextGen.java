@@ -15,9 +15,15 @@ public class KtScript_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     tgs.createUnitInfo();
+    tgs.pushTextArea("header");
     KotlinTextGen.fileHeader(ctx.getPrimaryInput(), ctx);
+    tgs.popTextArea();
+    tgs.pushTextArea("body");
     KotlinTextGen.statements(ctx.getPrimaryInput(), ctx);
+    tgs.popTextArea();
+    tgs.pushTextArea("imports");
     KotlinTextGen.imports(ctx);
+    tgs.popTextArea();
     if (tgs.needPositions()) {
       tgs.fillUnitInfo(UnitConcept__BehaviorDescriptor.getUnitName_id4pl5GY7LKmR.invoke(SNodeOperations.cast(ctx.getPrimaryInput(), CONCEPTS.UnitConcept$1g)));
     }

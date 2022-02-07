@@ -34,12 +34,20 @@ import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationCo
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.lang.editor.menus.transformation.WrapSubstituteMenuTransformationMenuPart;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
+import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
+import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.lang.editor.menus.transformation.SubstituteMenuItemAsActionItem;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
+import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.lang.editor.menus.transformation.IncludeTransformationMenuTransformationMenuPart;
 import jetbrains.mps.openapi.editor.menus.transformation.TransformationMenuLookup;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
-import jetbrains.mps.smodel.language.LanguageRegistry;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
@@ -68,9 +76,10 @@ public class IClassDeclaration_Modifiers_Transform extends TransformationMenuBas
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
       result.add(new TMP_Action_yag55m_a0());
-      result.add(new TMP_Include_yag55m_b0());
+      result.add(new TMP_WrapSM_yag55m_b0());
       result.add(new TMP_Include_yag55m_c0());
       result.add(new TMP_Include_yag55m_d0());
+      result.add(new TMP_Include_yag55m_e0());
     }
     return result;
   }
@@ -113,7 +122,7 @@ public class IClassDeclaration_Modifiers_Transform extends TransformationMenuBas
 
       @Override
       public void execute(@NotNull String pattern) {
-        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.superclasses$6CkZ)).addElement(SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL, "jetbrains.mps.kotlin.structure.IInheritanceSpecifier"))));
+        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.superclasses$6CkZ)).addElement(SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL, "jetbrains.mps.kotlin.structure.ISuperTypeSpecifier"))));
       }
 
       @Override
@@ -139,7 +148,74 @@ public class IClassDeclaration_Modifiers_Transform extends TransformationMenuBas
     }
 
   }
-  public class TMP_Include_yag55m_b0 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_WrapSM_yag55m_b0 extends WrapSubstituteMenuTransformationMenuPart {
+    @NotNull
+    @Override
+    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap substitute menu " + "default substitute menu for " + "IInheritanceModifier", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1806979145073761207")));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+
+    @Nullable
+    @Override
+    protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext _context) {
+      final EditorContext editorContext = _context.getEditorContext();
+      SAbstractConcept conceptToFindMenuFor = getConceptToFindMenuFor(_context);
+      return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
+    }
+    private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
+      return CONCEPTS.IInheritanceModifier$G7;
+    }
+
+
+    private class SMIasTMI extends SubstituteMenuItemAsActionItem implements SideTransformCompletionActionItem {
+
+      private final SNode targetNode;
+      private final TransformationMenuContext _context;
+      private final SubstituteItemProxy wrappedItem;
+
+      public SMIasTMI(SubstituteMenuItem substituteItem, SNode targetNode, TransformationMenuContext tctx) {
+        super(substituteItem);
+        this.targetNode = targetNode;
+        this._context = tctx;
+        wrappedItem = new SubstituteItemProxy(substituteItem);
+      }
+
+      @Override
+      public void execute(@NotNull String pattern) {
+        SNode createdNode = getSubstituteItem().createNode(pattern);
+        SLinkOperations.setTarget(_context.getNode(), LINKS.inheritance$TFvr, createdNode);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.LAST_CELL, -1);
+      }
+
+      @Override
+      public void customize(String pattern, EditorMenuItemStyle style) {
+        super.customize(pattern, style);
+        if (targetNode != null) {
+          EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
+          CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+          for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
+            customizer.customize(style, compositeContext);
+          }
+
+        }
+      }
+
+    }
+
+
+    @Override
+    protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
+      return new SMIasTMI(item, targetNode, _context);
+    }
+  }
+  public class TMP_Include_yag55m_c0 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -162,7 +238,7 @@ public class IClassDeclaration_Modifiers_Transform extends TransformationMenuBas
     }
 
   }
-  public class TMP_Include_yag55m_c0 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_yag55m_d0 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -185,7 +261,7 @@ public class IClassDeclaration_Modifiers_Transform extends TransformationMenuBas
     }
 
   }
-  public class TMP_Include_yag55m_d0 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_yag55m_e0 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -211,9 +287,11 @@ public class IClassDeclaration_Modifiers_Transform extends TransformationMenuBas
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink superclasses$6CkZ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, 0x1ba36e493d40fea5L, "superclasses");
+    /*package*/ static final SContainmentLink inheritance$TFvr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, 0x537372687dd3bcdbL, "inheritance");
   }
 
   private static final class CONCEPTS {
+    /*package*/ static final SInterfaceConcept IInheritanceModifier$G7 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f1L, "jetbrains.mps.kotlin.structure.IInheritanceModifier");
     /*package*/ static final SInterfaceConcept IVisible$LZ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, "jetbrains.mps.kotlin.structure.IVisible");
     /*package*/ static final SInterfaceConcept ITypeParameters$G$ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7556a4df5L, "jetbrains.mps.kotlin.structure.ITypeParameters");
     /*package*/ static final SInterfaceConcept IWithClassBody$QD = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310a1ff68L, "jetbrains.mps.kotlin.structure.IWithClassBody");

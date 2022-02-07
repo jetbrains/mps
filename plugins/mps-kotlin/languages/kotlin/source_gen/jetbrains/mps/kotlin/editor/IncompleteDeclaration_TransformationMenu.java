@@ -45,6 +45,8 @@ import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -77,12 +79,16 @@ public class IncompleteDeclaration_TransformationMenu extends TransformationMenu
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
       result.add(new TMP_Group_jyycyd_a0());
       result.add(new TMP_Action_jyycyd_b0());
-      result.add(new TMP_Group_jyycyd_c0());
+      result.add(new TMP_WrapSM_jyycyd_c0());
+      result.add(new TMP_Group_jyycyd_d0());
+      result.add(new TMP_Group_jyycyd_e0());
     }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.SUBSTITUTE).contains(_context.getMenuLocation())) {
       result.add(new TMP_Group_jyycyd_a0());
       result.add(new TMP_Action_jyycyd_b0());
-      result.add(new TMP_Group_jyycyd_c0());
+      result.add(new TMP_WrapSM_jyycyd_c0());
+      result.add(new TMP_Group_jyycyd_d0());
+      result.add(new TMP_Group_jyycyd_e0());
     }
     return result;
   }
@@ -241,7 +247,170 @@ public class IncompleteDeclaration_TransformationMenu extends TransformationMenu
     }
 
   }
-  public class TMP_Group_jyycyd_c0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+  public class TMP_WrapSM_jyycyd_c0 extends WrapSubstituteMenuTransformationMenuPart {
+    @NotNull
+    @Override
+    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap substitute menu " + "default substitute menu for " + "IFunctionModifier", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1806979145042949775")));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+
+    @Nullable
+    @Override
+    protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext _context) {
+      final EditorContext editorContext = _context.getEditorContext();
+      SAbstractConcept conceptToFindMenuFor = getConceptToFindMenuFor(_context);
+      return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
+    }
+    private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
+      return CONCEPTS.IFunctionModifier$Oh;
+    }
+
+
+    private class SMIasTMI extends SubstituteMenuItemAsActionItem implements SideTransformCompletionActionItem, SubstituteCompletionActionItem {
+
+      private final SNode targetNode;
+      private final TransformationMenuContext _context;
+      private final SubstituteItemProxy wrappedItem;
+
+      public SMIasTMI(SubstituteMenuItem substituteItem, SNode targetNode, TransformationMenuContext tctx) {
+        super(substituteItem);
+        this.targetNode = targetNode;
+        this._context = tctx;
+        wrappedItem = new SubstituteItemProxy(substituteItem);
+      }
+
+      @Override
+      public void execute(@NotNull String pattern) {
+        SNode createdNode = getSubstituteItem().createNode(pattern);
+        if (ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.funModifiers$vmCQ)).any(new IWhereFilter<SNode>() {
+          public boolean accept(SNode it) {
+            return Objects.equals(SNodeOperations.getConcept(it), SNodeOperations.getConcept(createdNode));
+          }
+        })) {
+          return;
+        }
+        ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.funModifiers$vmCQ)).addElement(createdNode);
+        _context.getEditorContext().selectWRTFocusPolicy(_context.getNode());
+      }
+
+      @Override
+      public void customize(String pattern, EditorMenuItemStyle style) {
+        super.customize(pattern, style);
+        if (targetNode != null) {
+          EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
+          CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+          EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+          for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
+            customizer.customize(style, compositeContext);
+          }
+
+        }
+      }
+
+    }
+
+
+    @Override
+    protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
+      return new SMIasTMI(item, targetNode, _context);
+    }
+  }
+  public class TMP_Group_jyycyd_d0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    @Override
+    protected boolean isApplicable(TransformationMenuContext _context) {
+      return (SLinkOperations.getTarget(_context.getNode(), LINKS.classModifier$gUVP) == null);
+    }
+
+    @NotNull
+    @Override
+    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("transformation menu group", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1806979145044505716")));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+    @Override
+    protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_jyycyd_a3a());
+    }
+    public class TMP_WrapSM_jyycyd_a3a extends WrapSubstituteMenuTransformationMenuPart {
+      @NotNull
+      @Override
+      public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
+        context.getEditorMenuTrace().pushTraceInfo();
+        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("wrap substitute menu " + "default substitute menu for " + "IClassModifier", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1806979145044490176")));
+        try {
+          return super.createItems(context);
+        } finally {
+          context.getEditorMenuTrace().popTraceInfo();
+        }
+      }
+
+      @Nullable
+      @Override
+      protected SubstituteMenuLookup getSubstituteMenuLookup(TransformationMenuContext _context) {
+        final EditorContext editorContext = _context.getEditorContext();
+        SAbstractConcept conceptToFindMenuFor = getConceptToFindMenuFor(_context);
+        return new DefaultSubstituteMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), conceptToFindMenuFor);
+      }
+      private SAbstractConcept getConceptToFindMenuFor(TransformationMenuContext _context) {
+        return CONCEPTS.IClassModifier$um;
+      }
+
+
+      private class SMIasTMI extends SubstituteMenuItemAsActionItem implements SideTransformCompletionActionItem, SubstituteCompletionActionItem {
+
+        private final SNode targetNode;
+        private final TransformationMenuContext _context;
+        private final SubstituteItemProxy wrappedItem;
+
+        public SMIasTMI(SubstituteMenuItem substituteItem, SNode targetNode, TransformationMenuContext tctx) {
+          super(substituteItem);
+          this.targetNode = targetNode;
+          this._context = tctx;
+          wrappedItem = new SubstituteItemProxy(substituteItem);
+        }
+
+        @Override
+        public void execute(@NotNull String pattern) {
+          SNode createdNode = getSubstituteItem().createNode(pattern);
+          SLinkOperations.setTarget(_context.getNode(), LINKS.classModifier$gUVP, createdNode);
+          _context.getEditorContext().selectWRTFocusPolicy(_context.getNode());
+        }
+
+        @Override
+        public void customize(String pattern, EditorMenuItemStyle style) {
+          super.customize(pattern, style);
+          if (targetNode != null) {
+            EditorMenuItemModifyingCustomizationContext context = new EditorMenuItemModifyingCustomizationContext(targetNode, null, null, null);
+            CompletionItemInformation completionItemInformation = new CompletionItemInformation(null, null, getMatchingText(pattern), getShortDescriptionText(pattern));
+            EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(context, new CompletionMenuItemCustomizationContext(completionItemInformation));
+            for (EditorMenuItemCustomizer customizer : _context.getCustomizers()) {
+              customizer.customize(style, compositeContext);
+            }
+
+          }
+        }
+
+      }
+
+
+      @Override
+      protected TransformationMenuItem createTransformationItem(final SNode targetNode, final SubstituteMenuItem item, final TransformationMenuContext _context) {
+        return new SMIasTMI(item, targetNode, _context);
+      }
+    }
+  }
+  public class TMP_Group_jyycyd_e0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
       return (SLinkOperations.getTarget(_context.getNode(), LINKS.inheritance$TFvr) == null);
@@ -260,9 +429,9 @@ public class IncompleteDeclaration_TransformationMenu extends TransformationMenu
     }
     @Override
     protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts() {
-      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_jyycyd_a2a());
+      return Arrays.<MenuPart<TransformationMenuItem, TransformationMenuContext>>asList(new TMP_WrapSM_jyycyd_a4a());
     }
-    public class TMP_WrapSM_jyycyd_a2a extends WrapSubstituteMenuTransformationMenuPart {
+    public class TMP_WrapSM_jyycyd_a4a extends WrapSubstituteMenuTransformationMenuPart {
       @NotNull
       @Override
       public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -333,11 +502,15 @@ public class IncompleteDeclaration_TransformationMenu extends TransformationMenu
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink visibility$vnSV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, 0x631027d1c4c4e040L, "visibility");
+    /*package*/ static final SContainmentLink funModifiers$vmCQ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x299dd09284f401caL, 0x1913adf568d1fd3dL, "funModifiers");
+    /*package*/ static final SContainmentLink classModifier$gUVP = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x299dd09284f401caL, 0x1913adf568e9b69cL, "classModifier");
     /*package*/ static final SContainmentLink inheritance$TFvr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, 0x537372687dd3bcdbL, "inheritance");
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept VisibilityModifier$c5 = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x43c4f08bd9cc2f8cL, "jetbrains.mps.kotlin.structure.VisibilityModifier");
+    /*package*/ static final SInterfaceConcept IFunctionModifier$Oh = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3beL, "jetbrains.mps.kotlin.structure.IFunctionModifier");
+    /*package*/ static final SInterfaceConcept IClassModifier$um = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af406L, "jetbrains.mps.kotlin.structure.IClassModifier");
     /*package*/ static final SInterfaceConcept IInheritanceModifier$G7 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f1L, "jetbrains.mps.kotlin.structure.IInheritanceModifier");
   }
 

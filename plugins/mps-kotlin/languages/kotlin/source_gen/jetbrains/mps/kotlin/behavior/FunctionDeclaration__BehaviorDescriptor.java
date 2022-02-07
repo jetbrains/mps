@@ -56,10 +56,13 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
       collector.declare(__thisNode__, FunctionSignature.class);
     }
   }
-  /*package*/ static void populateSignatures_id18X2O0FJBER(@NotNull final SNode __thisNode__, SignatureCollector visitor) {
+  /*package*/ static void populateSignatures_id18X2O0FJBER(@NotNull final SNode __thisNode__, final SignatureCollector visitor) {
     // If receiver, this is not included in usual signature population
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.receiverType$NO1r) == null)) {
-      visitor.addSimpleDeclaration(__thisNode__, true, FunctionSignature.class, () -> KotlinSignatures.forMethod(__thisNode__));
+      visitor.addSimpleDeclaration(__thisNode__, true, FunctionSignature.class, () -> {
+        String erasure = KotlinSignatures.erasureOf(SLinkOperations.collect(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(__thisNode__), LINKS.type$1aXr), visitor);
+        return new FunctionSignature(KotlinFunctionDeclaration.of(__thisNode__), erasure);
+      });
     }
   }
   /*package*/ static List<SNode> getParameters_id6f3juM$_Kx4(@NotNull SNode __thisNode__) {
@@ -84,7 +87,7 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
     }
 
     // Parameters
-    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.IVariableIdentifier$v2) && ListSequence.fromList(SNodeOperations.getNodeAncestors(child, CONCEPTS.FunctionDeclaration$oD, false)).contains(__thisNode__)) {
+    if (SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(kind), CONCEPTS.IVariableIdentifier$v2)) {
       return new NamedElementsScope(IFunctionDeclaration__BehaviorDescriptor.getParameters_id6f3juM$_Kx4.invoke(__thisNode__));
     }
 
@@ -170,12 +173,12 @@ public final class FunctionDeclaration__BehaviorDescriptor extends BaseBHDescrip
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IClassLike$go = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x298a6a355c110274L, "jetbrains.mps.kotlin.structure.IClassLike");
     /*package*/ static final SConcept TypeParameter$oc = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, "jetbrains.mps.kotlin.structure.TypeParameter");
-    /*package*/ static final SConcept FunctionDeclaration$oD = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, "jetbrains.mps.kotlin.structure.FunctionDeclaration");
     /*package*/ static final SInterfaceConcept IVariableIdentifier$v2 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc83114d2ab6L, "jetbrains.mps.kotlin.structure.IVariableIdentifier");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink receiverType$NO1r = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L, 0x11400bb7908c7f23L, "receiverType");
+    /*package*/ static final SContainmentLink type$1aXr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L, 0x63c34deca4888fe3L, "type");
     /*package*/ static final SContainmentLink parameters$dfEr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d755909980L, 0x28bef6d755909981L, "parameters");
     /*package*/ static final SContainmentLink returnType$fGYV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908cd887L, 0x11400bb7908cd888L, "returnType");
     /*package*/ static final SContainmentLink type$NVFj = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af541L, 0x28bef6d7551af8c0L, "type");

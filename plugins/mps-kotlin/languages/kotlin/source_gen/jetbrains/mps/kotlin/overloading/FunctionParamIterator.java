@@ -14,17 +14,21 @@ import jetbrains.mps.kotlin.behavior.IArgument__BehaviorDescriptor;
  * @param <T> error to be thrown from the error handler
  */
 public class FunctionParamIterator<I, T extends Throwable> {
+  private static final byte UNSPECIFIED = 0;
+  private static final byte USING_DEFAULT = 1;
+  private static final byte SET = 2;
+
   private final FunctionParamMapper<I, ?> mapper;
   private final ParamErrorHandler<T> internalErrorHandler;
   private int parameterIndex = -1;
   private boolean onlyNamed = false;
-  private boolean[] seen;
+  private byte[] seen;
 
   public FunctionParamIterator(FunctionParamMapper<I, ?> parentMapper, ParamErrorHandler<T> errorHandler) {
+    seen = new byte[parentMapper.parameters.size()];
     mapper = parentMapper;
     internalErrorHandler = errorHandler;
-    parentMapper.withDefaults.forEach((Integer it) -> seen[it] = true);
-    seen = new boolean[parentMapper.parameters.size()];
+    parentMapper.withDefaults.forEach((Integer it) -> seen[it] = USING_DEFAULT);
   }
 
   /**
@@ -40,13 +44,14 @@ public class FunctionParamIterator<I, T extends Throwable> {
 
   @Nullable
   private ParameterDeclaration nextNamed(I namedKey) throws T {
-    if (!(mapper.namedParameters.containsKey(namedKey))) {
-      internalErrorHandler.error("cannot find a parameter with key " + namedKey.toString());
-      return null;
+    int index = mapper.namedParameters.get(namedKey);
+
+    // Checked only here as that cannot happen naturally with non named parameters (otherwise -> type error rather than this one)
+    if (seen[index] == SET) {
+      internalErrorHandler.error(ParamErrorHandler.ARGUMENT_ALREADY_PASSED);
     }
 
-    int index = mapper.namedParameters.get(namedKey);
-    seen[index] = true;
+    seen[index] = SET;
     onlyNamed = true;
     parameterIndex = index;
     return mapper.parameters.get(index);
@@ -55,32 +60,61 @@ public class FunctionParamIterator<I, T extends Throwable> {
   @Nullable
   public ParameterDeclaration next() throws T {
     if (onlyNamed) {
-      internalErrorHandler.error("mixing named and positioned arguments is not allowed");
+      internalErrorHandler.error(ParamErrorHandler.MIX_NAMED_POSITIONED);
       return null;
     }
+
     if (parameterIndex != mapper.varArgIndex) {
       parameterIndex += 1;
     }
 
     if (parameterIndex >= seen.length) {
-      internalErrorHandler.error("wrong number of arguments");
+      internalErrorHandler.error(ParamErrorHandler.WRONG_ARGUMENT_COUNT);
       return null;
-
     }
 
     ParameterDeclaration type = mapper.parameters.get(parameterIndex);
-    seen[parameterIndex] = true;
+    seen[parameterIndex] = SET;
     return type;
   }
 
   @Nullable
   public ParameterDeclaration nextFor(SNode arg) throws T {
     ParameterDeclaration parameter = IArgument__BehaviorDescriptor.getNamedTarget_id2PMtXoK3vgE.invoke(arg);
-    if (parameter != null) {
-      return this.nextNamed(mapper.nameKey.invoke(parameter));
-    } else {
-      return this.next();
+
+    // Substitute last parameter with the one declared
+    if (parameter == FunctionParamHelper.LAST_PARAMETER) {
+      int index = mapper.parameters.size() - 1;
+      parameter = (index < 0 ? null : mapper.parameters.get(index));
     }
+
+    if (parameter != null) {
+      I key = mapper.nameKey.invoke(parameter);
+      if (!(mapper.namedParameters.containsKey(key))) {
+        internalErrorHandler.error("cannot find a parameter with key " + key.toString());
+        return null;
+      }
+
+      // If expected, fall-through to regular parameter (named parameter is just here for the style)
+      if (!(isExpectedNext(key))) {
+        return this.nextNamed(key);
+      }
+    }
+
+    return this.next();
+  }
+
+  /**
+   * Returns true if the given param is expected for the next argument
+   */
+  private boolean isExpectedNext(I paramKey) {
+    if (onlyNamed) {
+      // Once named arguments are used, no expectation on the next one
+      return false;
+    }
+
+    // Note: if the current parameter is vararg, this should also continue to next parameter, it is not expected to have vararg named argument after one vararg element is specified
+    return mapper.namedParameters.get(paramKey) == parameterIndex + 1;
   }
 
   /**
@@ -89,8 +123,8 @@ public class FunctionParamIterator<I, T extends Throwable> {
   public void dispose() throws T {
     // One parameter not defined
     for (int i = 0; i < seen.length; i++) {
-      if (!(seen[i]) && i != mapper.varArgIndex) {
-        internalErrorHandler.error("wrong number of arguments");
+      if (seen[i] == UNSPECIFIED && i != mapper.varArgIndex) {
+        internalErrorHandler.error(ParamErrorHandler.WRONG_ARGUMENT_COUNT);
         return;
       }
     }

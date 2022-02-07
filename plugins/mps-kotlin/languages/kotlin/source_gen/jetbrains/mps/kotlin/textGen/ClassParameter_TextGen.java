@@ -28,6 +28,10 @@ public class ClassParameter_TextGen extends TextGenDescriptorBase {
       }
     }
 
+    if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isVararg$GaYv)) {
+      tgs.append("vararg ");
+    }
+
     if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isProperty$MCKN)) {
       tgs.append((SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.isReadOnly$MDeP) ? "val " : "var "));
     }
@@ -49,6 +53,7 @@ public class ClassParameter_TextGen extends TextGenDescriptorBase {
   }
 
   private static final class PROPS {
+    /*package*/ static final SProperty isVararg$GaYv = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L, 0x2a5d340976790b94L, "isVararg");
     /*package*/ static final SProperty isReadOnly$MDeP = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x11400bb790af7d0aL, "isReadOnly");
     /*package*/ static final SProperty isProperty$MCKN = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x11400bb790af7d08L, "isProperty");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-7bd5jgsmcvud62tjqgwrojie6cd4wpf">
-  <files names="AnnotateNode_Intention.java:IntentionsDescriptor.java:LabelNode_Intention.java:SetClassModifier_Intention.java" />
+<product version="3" modelHash="4eyh61cnl1v5lin42g32fxb5o6u4mnz">
+  <files names="AnnotateNode_Intention.java:IntentionsDescriptor.java:LabelNode_Intention.java:SetClassModifier_Intention.java:ToggleArgumentVarArg_Intention.java:ToggleParameterVarArg_Intention.java" />
 </product>
 

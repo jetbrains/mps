@@ -10,9 +10,11 @@ import org.jetbrains.annotations.Nullable;
 import kotlinx.metadata.KmTypeVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import kotlinx.metadata.internal.metadata.deserialization.Flags;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 @GeneratedClass(node = "r:6c6710f1-72ef-4241-9ac5-bafd05beea2c(jetbrains.mps.kotlin.ide.commonStubs)/2993321679752346832", model = "r:6c6710f1-72ef-4241-9ac5-bafd05beea2c(jetbrains.mps.kotlin.ide.commonStubs)")
 public class ParameterVisitor extends KmValueParameterVisitor {
@@ -56,19 +58,28 @@ public class ParameterVisitor extends KmValueParameterVisitor {
     }
   }
 
-  public static ParameterVisitor create(SNode param, VisitorContext ctx, _FunctionTypes._void_P1_E0<? super String> idProvider, String name) {
+  public static ParameterVisitor create(SNode param, VisitorContext ctx, int flags, _FunctionTypes._void_P1_E0<? super String> idProvider, String name) {
     SPropertyOperations.assign(param, PROPS.name$MnvL, name);
-    ctx.setChildId(param, name);
 
+    if (Flags.DECLARES_DEFAULT_VALUE.get(flags)) {
+      SLinkOperations.setNewChild(param, LINKS.defaultValue$1bcs, CONCEPTS.CompiledStubStatement$Af);
+    }
+
+    ctx.setChildId(param, name);
     return new ParameterVisitor(param, ctx, idProvider);
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink type$1aXr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L, 0x63c34deca4888fe3L, "type");
+    /*package*/ static final SContainmentLink defaultValue$1bcs = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L, 0x63c34deca4888fe4L, "defaultValue");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty isVararg$GaYv = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L, 0x2a5d340976790b94L, "isVararg");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept CompiledStubStatement$Af = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x18b9b886496f6f83L, "jetbrains.mps.kotlin.structure.CompiledStubStatement");
   }
 }

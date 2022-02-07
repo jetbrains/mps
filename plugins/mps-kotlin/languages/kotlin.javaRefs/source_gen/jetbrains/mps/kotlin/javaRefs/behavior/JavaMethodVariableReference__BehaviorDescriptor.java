@@ -41,11 +41,10 @@ public final class JavaMethodVariableReference__BehaviorDescriptor extends BaseB
   public static final SMethod<SReferenceLink> getTargetLink_id5D4bOjrrcOr = new SMethodBuilder<SReferenceLink>(new SJavaCompoundTypeImpl(SReferenceLink.class)).name("getTargetLink").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjrrcOr").build();
   public static final SMethod<SNode> getReceiver_id5D4bOjrrgiZ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getReceiver").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjrrgiZ").build();
   public static final SMethod<Boolean> isReceiverExternal_id4bAAzIAVSHE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReceiverExternal").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4bAAzIAVSHE").build();
-  public static final SMethod<SAbstractConcept> getModifierFilter_id5D4bOjruyUS = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getModifierFilter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjruyUS").build();
   public static final SMethod<Iterable<SNode>> getArguments_id1VI7K1jROBX = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1VI7K1jROBX").build();
   public static final SMethod<FunctionDeclaration> getFunctionDescriptor_id26mUjU3xhgD = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunctionDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("26mUjU3xhgD").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(assignableState_idCy8Bus9niD, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, isReceiverExternal_id4bAAzIAVSHE, getModifierFilter_id5D4bOjruyUS, getArguments_id1VI7K1jROBX, getFunctionDescriptor_id26mUjU3xhgD);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(assignableState_idCy8Bus9niD, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, isReceiverExternal_id4bAAzIAVSHE, getArguments_id1VI7K1jROBX, getFunctionDescriptor_id26mUjU3xhgD);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -76,9 +75,6 @@ public final class JavaMethodVariableReference__BehaviorDescriptor extends BaseB
   }
   /*package*/ static boolean isReceiverExternal_id4bAAzIAVSHE(@NotNull SNode __thisNode__) {
     return true;
-  }
-  /*package*/ static SAbstractConcept getModifierFilter_id5D4bOjruyUS(@NotNull SNode __thisNode__) {
-    return null;
   }
   /*package*/ static Iterable<SNode> getArguments_id1VI7K1jROBX(@NotNull SNode __thisNode__) {
     if (((boolean) IStatement__BehaviorDescriptor.isLeftExpressionTarget_id69RFwVHPwd9.invoke(__thisNode__, __thisNode__))) {
@@ -129,10 +125,8 @@ public final class JavaMethodVariableReference__BehaviorDescriptor extends BaseB
       case 4:
         return (T) ((Boolean) isReceiverExternal_id4bAAzIAVSHE(node));
       case 5:
-        return (T) ((SAbstractConcept) getModifierFilter_id5D4bOjruyUS(node));
-      case 6:
         return (T) ((Iterable<SNode>) getArguments_id1VI7K1jROBX(node));
-      case 7:
+      case 6:
         return (T) ((FunctionDeclaration) getFunctionDescriptor_id26mUjU3xhgD(node));
       default:
         throw new BHMethodNotFoundException(this, method);

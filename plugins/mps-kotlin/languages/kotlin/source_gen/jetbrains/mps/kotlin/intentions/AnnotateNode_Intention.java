@@ -54,7 +54,7 @@ public final class AnnotateNode_Intention extends AbstractIntentionDescriptor im
 
     @Override
     public void execute(final SNode node, final EditorContext editorContext) {
-      SLinkOperations.addNewChild(node, LINKS.annotations$bXtr, CONCEPTS.Annotation$je);
+      SLinkOperations.addNewChild(node, LINKS.annotations$bXtr, CONCEPTS.AnnotationList$je);
     }
 
     @Override
@@ -82,6 +82,6 @@ public final class AnnotateNode_Intention extends AbstractIntentionDescriptor im
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Annotation$je = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37fL, "jetbrains.mps.kotlin.structure.Annotation");
+    /*package*/ static final SConcept AnnotationList$je = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37fL, "jetbrains.mps.kotlin.structure.AnnotationList");
   }
 }

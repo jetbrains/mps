@@ -139,7 +139,7 @@ public class ClassVisitor extends KmClassVisitor {
         return new TypeVisitor(context, flags, (SNode type, String id) -> {
           {
             final SNode superClass = type;
-            if (SNodeOperations.isInstanceOf(superClass, CONCEPTS.IInheritanceSpecifier$PQ)) {
+            if (SNodeOperations.isInstanceOf(superClass, CONCEPTS.ISuperTypeSpecifier$PQ)) {
               ListSequence.fromList(SLinkOperations.getChildren(inheriting, LINKS.superclasses$6CkZ)).addElement(superClass);
             }
           }
@@ -147,7 +147,7 @@ public class ClassVisitor extends KmClassVisitor {
           {
             final SNode classType = type;
             if (SNodeOperations.isInstanceOf(classType, CONCEPTS.ClassType$jI)) {
-              SNode superType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310b9b194L, "jetbrains.mps.kotlin.structure.SuperInterfaceSpecifier"));
+              SNode superType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310b9b194L, "jetbrains.mps.kotlin.structure.SuperClassSpecifier"));
               // TODO could a simple superType.target = classType.class work?
               SReference ref = SNodeOperations.getReference(classType, LINKS.class$ExdX);
               SNode target = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
@@ -263,7 +263,7 @@ public class ClassVisitor extends KmClassVisitor {
     /*package*/ static final SConcept PropertyDeclaration$SE = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4a1L, "jetbrains.mps.kotlin.structure.PropertyDeclaration");
     /*package*/ static final SConcept TypeAlias$qF = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4e2L, "jetbrains.mps.kotlin.structure.TypeAlias");
     /*package*/ static final SInterfaceConcept IInheritExplicitly$UG = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6ef8a3cf68294651L, "jetbrains.mps.kotlin.structure.IInheritExplicitly");
-    /*package*/ static final SInterfaceConcept IInheritanceSpecifier$PQ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL, "jetbrains.mps.kotlin.structure.IInheritanceSpecifier");
+    /*package*/ static final SInterfaceConcept ISuperTypeSpecifier$PQ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL, "jetbrains.mps.kotlin.structure.ISuperTypeSpecifier");
     /*package*/ static final SConcept ClassType$jI = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4dfL, "jetbrains.mps.kotlin.structure.ClassType");
     /*package*/ static final SConcept TypeProjection$5e = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3ccL, "jetbrains.mps.kotlin.structure.TypeProjection");
     /*package*/ static final SConcept SecondaryConstructor$Lg = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af393L, "jetbrains.mps.kotlin.structure.SecondaryConstructor");

@@ -111,6 +111,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     Style style = new StyleImpl();
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
     style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.provider$q4XC);
+    style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     UnaryExpression_RemoveFromSuffix.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;

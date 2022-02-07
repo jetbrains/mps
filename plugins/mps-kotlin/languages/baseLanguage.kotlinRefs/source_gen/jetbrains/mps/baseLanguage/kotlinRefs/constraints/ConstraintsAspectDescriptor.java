@@ -21,16 +21,18 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
       case 0:
         return new IKotlinFunctionLikeCall_Constraints();
       case 1:
-        return new KotlinFunctionArgument_Constraints();
+        return new KotlinClassCreator_Constraints();
       case 2:
-        return new KotlinFunctionCall_Constraints();
+        return new KotlinFunctionArgument_Constraints();
       case 3:
-        return new KotlinPropertyGetterCall_Constraints();
+        return new KotlinFunctionCall_Constraints();
       case 4:
+        return new KotlinPropertyGetterCall_Constraints();
+      case 5:
         return new KotlinPropertySetterCall_Constraints();
       default:
     }
     return new BaseConstraintsDescriptor(concept);
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc380f3L), MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddd3d84dL), MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x2196e93e834d57ccL), MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x459f9eebcf0e5fc2L), MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x3569a755572a0ffbL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc380f3L), MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc2e9d2L), MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddd3d84dL), MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x2196e93e834d57ccL), MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x459f9eebcf0e5fc2L), MetaIdFactory.conceptId(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x3569a755572a0ffbL)).seal();
 }

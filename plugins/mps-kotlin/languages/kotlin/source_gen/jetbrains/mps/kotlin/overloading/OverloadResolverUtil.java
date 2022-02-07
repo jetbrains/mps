@@ -7,7 +7,6 @@ import jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration;
 import java.util.List;
 import jetbrains.mps.kotlin.runtime.declaration.ParameterDeclaration;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.kotlin.behavior.IFunctionCallLike__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
@@ -24,8 +23,8 @@ public class OverloadResolverUtil {
    * 
    * @return list of candidates along with the parameters order to be mapped to the call parameters
    */
-  public static Iterable<Tuples._2<FunctionDeclaration, List<ParameterDeclaration>>> filterByArguments(final SNode call, Iterable<FunctionDeclaration> candidates) {
-    final Iterable<SNode> arguments = IFunctionCallLike__BehaviorDescriptor.getArguments_id1VI7K1jROBX.invoke(call);
+  public static Iterable<Tuples._2<FunctionDeclaration, List<ParameterDeclaration>>> filterByArguments(final FunctionCall call, Iterable<FunctionDeclaration> candidates) {
+    final Iterable<SNode> arguments = call.getArguments();
 
     return Sequence.fromIterable(candidates).select(new ISelector<FunctionDeclaration, Tuples._2<FunctionDeclaration, List<ParameterDeclaration>>>() {
       public Tuples._2<FunctionDeclaration, List<ParameterDeclaration>> select(FunctionDeclaration candidate) {
@@ -38,9 +37,9 @@ public class OverloadResolverUtil {
    * Check that arguments match with parameters. If so, returns the ordered list of parameters associated with arguments
    * (as order or parameters is not always equal to order of arguments). If not, returns null.
    */
-  public static Tuples._2<FunctionDeclaration, List<ParameterDeclaration>> mapParameters(SNode call, Iterable<SNode> arguments, FunctionDeclaration candidate) {
+  public static Tuples._2<FunctionDeclaration, List<ParameterDeclaration>> mapParameters(FunctionCall call, Iterable<SNode> arguments, FunctionDeclaration candidate) {
     // 1. check for the modifier
-    if (!(FunctionDeclaration.hasModifier(candidate, IFunctionCallLike__BehaviorDescriptor.getModifierFilter_id5D4bOjruyUS.invoke(call)))) {
+    if (!(FunctionDeclaration.hasModifier(candidate, call.getModifierFilter()))) {
       return null;
     }
 
@@ -48,7 +47,7 @@ public class OverloadResolverUtil {
     List<ParameterDeclaration> mappedParameters;
     try {
       FunctionParamMapper<String, ParamException> mapper = new FunctionParamMapper<>(ParamErrorHandler.THROW, (ParameterDeclaration node) -> SPropertyOperations.getString(node.getNode(), PROPS.name$MnvL), candidate.getParameters());
-      mappedParameters = mapper.checkParameters(arguments);
+      mappedParameters = mapper.checkArguments(arguments);
     } catch (ParamException issue) {
       return null;
     }
@@ -64,9 +63,9 @@ public class OverloadResolverUtil {
    * 
    * @param availableSolver current available solver, if not present and a method is bound, there wont be a better match
    */
-  public static boolean canBeImproved(OverloadResolver availableSolver, SNode call) {
-    FunctionDeclaration functionDescriptor = IFunctionCallLike__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(call);
-    return availableSolver != null || functionDescriptor == null || mapParameters(call, IFunctionCallLike__BehaviorDescriptor.getArguments_id1VI7K1jROBX.invoke(call), functionDescriptor) == null;
+  public static boolean canBeImproved(OverloadResolver availableSolver, FunctionCall call) {
+    FunctionDeclaration functionDescriptor = call.getFunctionDescriptor();
+    return availableSolver != null || functionDescriptor == null || mapParameters(call, call.getArguments(), functionDescriptor) == null;
   }
 
   private static final class PROPS {

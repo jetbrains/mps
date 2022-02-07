@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-dkk360jmbwik68rdferq91y37cbc36v">
-  <files names="ConstraintsAspectDescriptor.java:DefaultConstructorHelper.java:GetterFilter.java:JavaClassInheritanceSpecifier_Constraints.java:JavaDefaultConstructorCall_Constraints.java:JavaDefaultConstructorInheritanceSpecifier_Constraints.java:JavaMemberTarget_Constraints.java:JavaMethodCall_Constraints.java:JavaMethodVariableReference_Constraints.java:JavaVariableReference_Constraints.java" />
+<product version="3" modelHash="6kebyc2bkf71rgorhk5cfdx9xbmka1h">
+  <files names="ConstraintsAspectDescriptor.java:DefaultConstructorHelper.java:GetterFilter.java:JavaConstructorSuperSpecifier_Constraints.java:JavaDefaultConstructorCall_Constraints.java:JavaDefaultConstructorSuperSpecifier_Constraints.java:JavaMemberTarget_Constraints.java:JavaMethodCall_Constraints.java:JavaMethodVariableReference_Constraints.java:JavaVariableReference_Constraints.java" />
 </product>
 

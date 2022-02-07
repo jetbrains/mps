@@ -4,8 +4,6 @@ package jetbrains.mps.kotlin.runtime.declaration;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import java.util.Collections;
 
 /**
  * Abstraction of the receiver of a function. It usually have the semantics of a class supported by the type system
@@ -30,27 +28,4 @@ public interface FunctionReceiver {
    */
   @NotNull
   Iterable<TypeParameterDeclaration> getTypeParameters();
-
-  /**
-   * Default implementation for function with no receivers
-   */
-  FunctionReceiver NONE = new FunctionReceiver() {
-    @Override
-    public SNodeReference getClassifier() {
-      return null;
-    }
-
-    @Override
-    public Iterable<TypeParameterDeclaration> getTypeParameters() {
-      return Sequence.fromIterable(Collections.<TypeParameterDeclaration>emptyList());
-    }
-  };
-
-  static FunctionReceiver getNotNull(FunctionDeclaration decl) {
-    FunctionReceiver receiver = decl.getReceiver();
-    if (receiver == null) {
-      return NONE;
-    }
-    return receiver;
-  }
 }

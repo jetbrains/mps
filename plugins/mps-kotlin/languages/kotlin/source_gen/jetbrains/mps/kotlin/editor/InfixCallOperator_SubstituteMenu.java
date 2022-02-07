@@ -37,7 +37,7 @@ public class InfixCallOperator_SubstituteMenu extends SubstituteMenuBase {
   @Override
   public List<SubstituteMenuItem> createMenuItems(@NotNull SubstituteMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for InfixCallOperator. Generated from implicit smart reference attribute.", new SNodePointer("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)", "1243006380186886598")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default substitute menu for InfixCallOperator. Generated from the smart reference attribute.", new SNodePointer("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)", "489760351880546022")));
     try {
       return super.createMenuItems(context);
     } finally {
@@ -50,7 +50,7 @@ public class InfixCallOperator_SubstituteMenu extends SubstituteMenuBase {
 
     public SMP_ReferenceScope_xssbkj_a() {
       // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051
-      super((SAbstractConcept) CONCEPTS.InfixCallOperator$j$, LINKS.method$i6$W);
+      super((SAbstractConcept) CONCEPTS.InfixCallOperator$j$, LINKS.function$i6$W);
     }
     @NotNull
     @Override
@@ -92,6 +92,6 @@ public class InfixCallOperator_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink method$i6$W = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7909561c6L, 0x11400bb7909561c8L, "method");
+    /*package*/ static final SReferenceLink function$i6$W = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7909561c6L, 0x11400bb7909561c8L, "function");
   }
 }

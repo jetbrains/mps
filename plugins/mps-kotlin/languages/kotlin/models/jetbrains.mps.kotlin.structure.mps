@@ -54,10 +54,8 @@
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
-      <concept id="8842732777748464990" name="jetbrains.mps.lang.structure.structure.RefPresentationTemplate" flags="ng" index="ROjv2" />
       <concept id="8842732777748207592" name="jetbrains.mps.lang.structure.structure.SmartReferenceAttribute" flags="ng" index="RPilO">
         <reference id="8842732777748207597" name="charactersticReference" index="RPilL" />
-        <child id="8842732777748474935" name="refPresentationTemplate" index="ROhUF" />
       </concept>
       <concept id="418049251856799813" name="jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute" flags="ig" index="1AhYRh">
         <property id="418049251856799817" name="comment" index="1AhYRt" />
@@ -218,7 +216,7 @@
       <ref role="PrY4T" node="1502Vugz7Wy" resolve="IWithReceiver" />
     </node>
     <node concept="PrWs8" id="1Izr$$X1Dh2" role="PzmwI">
-      <ref role="PrY4T" node="213J8cgKswc" resolve="IInheritanceSpecifier" />
+      <ref role="PrY4T" node="213J8cgKswc" resolve="ISuperTypeSpecifier" />
     </node>
     <node concept="1TJgyi" id="5ViKESnW4nD" role="1TKVEl">
       <property role="IQ2nx" value="6832737637656184297" />
@@ -228,9 +226,9 @@
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JdZ">
     <property role="EcuMT" value="2936055411798373247" />
-    <property role="TrG5h" value="Annotation" />
+    <property role="TrG5h" value="AnnotationList" />
     <property role="34LRSv" value="@&lt;target&gt;:&lt;annotations&gt;" />
-    <property role="R4oN_" value="annotation" />
+    <property role="R4oN_" value="annotation list" />
     <property role="3GE5qa" value="annotation" />
     <node concept="1TJgyj" id="1Izr$$XM49r" role="1TKVEi">
       <property role="IQ2ns" value="1991556721076093531" />
@@ -243,7 +241,7 @@
       <property role="20kJfa" value="annotations" />
       <property role="20lbJX" value="fLJekj6/_1__n" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <ref role="20lvS9" node="2yYXHtl6JjQ" resolve="ConstructorCall" />
+      <ref role="20lvS9" node="4hE452RoXme" resolve="IAnnotation" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jed">
@@ -277,11 +275,11 @@
       <property role="20kJfa" value="conditions" />
       <property role="20lbJX" value="fLJekj6/_1__n" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <ref role="20lvS9" node="2yYXHtl6Jmq" resolve="IWhenCondition" />
+      <ref role="20lvS9" node="2yYXHtl6Jjg" resolve="IExpression" />
     </node>
     <node concept="1TJgyj" id="2yYXHtl6JoP" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798373941" />
-      <property role="20kJfa" value="body" />
+      <property role="20kJfa" value="body_" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <ref role="20lvS9" node="2yYXHtl6JfB" resolve="FlexibleBlock" />
       <node concept="asaX9" id="6gam351VuNq" role="lGtFl" />
@@ -361,7 +359,7 @@
       <property role="20kJfa" value="annotations" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <ref role="20lvS9" node="2yYXHtl6JjQ" resolve="ConstructorCall" />
+      <ref role="20lvS9" node="2yYXHtl6JjQ" resolve="ConstructorSuperSpecifier" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jez">
@@ -917,9 +915,26 @@
   <node concept="1TIwiD" id="2yYXHtl6Jg_">
     <property role="EcuMT" value="2936055411798373413" />
     <property role="TrG5h" value="ForStatement" />
-    <property role="34LRSv" value="for in" />
+    <property role="34LRSv" value="for" />
     <property role="R4oN_" value="for statement" />
     <property role="3GE5qa" value="statement.loop" />
+    <node concept="1TJgyj" id="7mJe6tmwf4s" role="1TKVEi">
+      <property role="IQ2ns" value="8480058639846011164" />
+      <property role="20kJfa" value="iteratorFunction" />
+      <ref role="20lvS9" node="2Dtd0_QziWF" resolve="IFunctionDeclaration" />
+      <ref role="20ksaX" node="3I4vn5LSeq0" resolve="provider" />
+      <node concept="t5JxF" id="7mJe6tmwfU$" role="lGtFl">
+        <property role="t5JxN" value="function to call on 'in' to get the iterator" />
+      </node>
+    </node>
+    <node concept="1TJgyj" id="7mJe6tmwfET" role="1TKVEi">
+      <property role="IQ2ns" value="8480058639846013625" />
+      <property role="20kJfa" value="nextFunction" />
+      <ref role="20lvS9" node="2Dtd0_QziWF" resolve="IFunctionDeclaration" />
+      <node concept="t5JxF" id="7mJe6tmwgtX" role="lGtFl">
+        <property role="t5JxN" value="function to call on the iterator resolved with 'iteratorFunction' to get the element" />
+      </node>
+    </node>
     <node concept="1TJgyj" id="2yYXHtl6Js7" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798374151" />
       <property role="20kJfa" value="variables" />
@@ -955,6 +970,9 @@
     </node>
     <node concept="PrWs8" id="6IFGHg6hhwj" role="PzmwI">
       <ref role="PrY4T" node="18X2O0Fy6BI" resolve="IStatementHolder" />
+    </node>
+    <node concept="PrWs8" id="7mJe6tmzA2z" role="PzmwI">
+      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JgO">
@@ -1293,6 +1311,9 @@
     <node concept="PrWs8" id="auY8guWZrJ" role="PzmwI">
       <ref role="PrY4T" node="2mD64u3yQho" resolve="IInferencePart" />
     </node>
+    <node concept="PrWs8" id="1$jFvlDFBiJ" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
     <node concept="1TJgyi" id="4gvOB2uP5TE" role="1TKVEl">
       <property role="IQ2nx" value="4908873500000018026" />
       <property role="TrG5h" value="isOverride" />
@@ -1337,9 +1358,6 @@
     <property role="EcuMT" value="2936055411798373584" />
     <property role="TrG5h" value="IExpression" />
     <property role="3GE5qa" value="expression" />
-    <node concept="PrWs8" id="1502VugFRz0" role="PrDN$">
-      <ref role="PrY4T" node="2yYXHtl6Jmq" resolve="IWhenCondition" />
-    </node>
     <node concept="PrWs8" id="4Nah4_Qh57X" role="PrDN$">
       <ref role="PrY4T" node="2yYXHtl6Jcy" resolve="IStatement" />
     </node>
@@ -1474,18 +1492,12 @@
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JjQ">
     <property role="EcuMT" value="2936055411798373622" />
-    <property role="TrG5h" value="ConstructorCall" />
+    <property role="TrG5h" value="ConstructorSuperSpecifier" />
     <property role="34LRSv" value="&lt;superclass&gt;()" />
     <property role="R4oN_" value="superclass specifier" />
-    <property role="3GE5qa" value="declaration.inheritance" />
+    <property role="3GE5qa" value="declaration.inheritance.constructor" />
     <node concept="PrWs8" id="213J8cgKswi" role="PzmwI">
-      <ref role="PrY4T" node="213J8cgKswc" resolve="IInheritanceSpecifier" />
-    </node>
-    <node concept="PrWs8" id="5GtPw5yVkYk" role="PzmwI">
-      <ref role="PrY4T" node="5GtPw5yVf0b" resolve="IArguments" />
-    </node>
-    <node concept="PrWs8" id="2gj5XQXFnDb" role="PzmwI">
-      <ref role="PrY4T" node="2gj5XQXEpsk" resolve="ITypeArguments" />
+      <ref role="PrY4T" node="1$jFvlEU70c" resolve="IConstructorSuperSpecifier" />
     </node>
     <node concept="1TJgyj" id="213J8cgI_DW" role="1TKVEi">
       <property role="IQ2ns" value="2324909103760693884" />
@@ -1495,7 +1507,6 @@
     </node>
     <node concept="RPilO" id="1pD7IS1O6BS" role="lGtFl">
       <ref role="RPilL" node="213J8cgI_DW" resolve="target" />
-      <node concept="ROjv2" id="1pD7IS1O8_N" role="ROhUF" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JjU">
@@ -1546,6 +1557,9 @@
     </node>
     <node concept="PrWs8" id="6gam351Mv6V" role="PzmwI">
       <ref role="PrY4T" node="18X2O0Fy6BI" resolve="IStatementHolder" />
+    </node>
+    <node concept="PrWs8" id="45iC02HuT2v" role="PzmwI">
+      <ref role="PrY4T" node="7Iv8Cw7qLdE" resolve="IDataFlowSource" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jkd">
@@ -1758,6 +1772,9 @@
     </node>
     <node concept="PrWs8" id="4gvOB2uWefH" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
+    </node>
+    <node concept="PrWs8" id="7KgFmkHTMog" role="PzmwI">
+      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JkN">
@@ -2013,7 +2030,7 @@
     <node concept="1TJgyj" id="1502VugHfxV" role="1TKVEi">
       <property role="IQ2ns" value="1243006380188956795" />
       <property role="20kJfa" value="parameter" />
-      <ref role="20lvS9" node="6f3juM$y8Zy" resolve="Parameter" />
+      <ref role="20lvS9" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
     <node concept="PrWs8" id="6cg9X74hA21" role="PzmwI">
       <ref role="PrY4T" node="6TRHYuCB$BU" resolve="IAnnotated" />
@@ -2084,7 +2101,7 @@
     <property role="TrG5h" value="IConstructorDelegationCall" />
     <property role="3GE5qa" value="expression.function.constructor" />
     <node concept="t5JxF" id="6TRHYuCzmKb" role="lGtFl">
-      <property role="t5JxN" value="TODO: use constructor reference instead?" />
+      <property role="t5JxN" value="generic constructor delegation call, to be extended by compatible langagues with their own super constructors" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jmh">
@@ -2093,11 +2110,9 @@
     <property role="34LRSv" value="this" />
     <property role="R4oN_" value="this constructor delegation call" />
     <property role="3GE5qa" value="expression.function.constructor" />
-    <node concept="PrWs8" id="2yYXHtl6JFR" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jmg" resolve="IConstructorDelegationCall" />
-    </node>
-    <node concept="PrWs8" id="5GtPw5yVfOH" role="PzmwI">
-      <ref role="PrY4T" node="5GtPw5yVf0b" resolve="IArguments" />
+    <ref role="1TJDcQ" node="1$jFvlE6lHN" resolve="AbstractConstructorDelegationCall" />
+    <node concept="RPilO" id="1$jFvlE6IUC" role="lGtFl">
+      <ref role="RPilL" node="1$jFvlE6mkn" resolve="constructor" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jmi">
@@ -2106,11 +2121,9 @@
     <property role="34LRSv" value="super" />
     <property role="R4oN_" value="super constructor delegation call" />
     <property role="3GE5qa" value="expression.function.constructor" />
-    <node concept="PrWs8" id="2yYXHtl6JFS" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jmg" resolve="IConstructorDelegationCall" />
-    </node>
-    <node concept="PrWs8" id="5GtPw5yVfOO" role="PzmwI">
-      <ref role="PrY4T" node="5GtPw5yVf0b" resolve="IArguments" />
+    <ref role="1TJDcQ" node="1$jFvlE6lHN" resolve="AbstractConstructorDelegationCall" />
+    <node concept="RPilO" id="1$jFvlEfjfd" role="lGtFl">
+      <ref role="RPilL" node="1$jFvlE6mkn" resolve="constructor" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jml">
@@ -2155,11 +2168,6 @@
       <ref role="PrY4T" node="6563FJLeShn" resolve="IStaticType" />
     </node>
   </node>
-  <node concept="PlHQZ" id="2yYXHtl6Jmq">
-    <property role="EcuMT" value="2936055411798373786" />
-    <property role="TrG5h" value="IWhenCondition" />
-    <property role="3GE5qa" value="expression.control.when" />
-  </node>
   <node concept="Az7Fb" id="2yYXHtl6Jq4">
     <property role="TrG5h" value="hex" />
     <property role="3GE5qa" value="datatypes" />
@@ -2181,7 +2189,7 @@
   <node concept="Az7Fb" id="2yYXHtl6Jqa">
     <property role="TrG5h" value="real" />
     <property role="3GE5qa" value="datatypes" />
-    <property role="FLfZY" value="((((((((([0-9](([0-9]|_))*[0-9])|[0-9]))?\\.(([0-9](([0-9]|_))*[0-9])|[0-9])([eE]([+-])?(([0-9](([0-9]|_))*[0-9])|[0-9]))?)|((([0-9](([0-9]|_))*[0-9])|[0-9])[eE]([+-])?(([0-9](([0-9]|_))*[0-9])|[0-9])))[fF])|((([0-9](([0-9]|_))*[0-9])|[0-9])[fF])))|(((((([0-9](([0-9]|_))*[0-9])|[0-9]))?\\.(([0-9](([0-9]|_))*[0-9])|[0-9])([eE]([+-])?(([0-9](([0-9]|_))*[0-9])|[0-9]))?)|((([0-9](([0-9]|_))*[0-9])|[0-9])[eE]([+-])?(([0-9](([0-9]|_))*[0-9])|[0-9])))))" />
+    <property role="FLfZY" value="([-+]?((\\d+\\.\\d*)|(\\d*\\.\\d+))(?:[eE]([-+]?\\d+))?)|(\\d*[eE][-+]?\\d+)" />
     <property role="3F6X1D" value="2936055411798374026" />
   </node>
   <node concept="Az7Fb" id="2yYXHtl6Jqc">
@@ -2257,6 +2265,19 @@
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="2yYXHtl6Jg7" resolve="EnumClassModifier" />
       <ref role="20ksaX" node="2yYXHtl6Jty" resolve="modifier" />
+      <node concept="t5JxF" id="1$jFvlE$nJx" role="lGtFl">
+        <property role="t5JxN" value="this can only be an enum" />
+      </node>
+    </node>
+    <node concept="1TJgyj" id="1$jFvlE$m1g" role="1TKVEi">
+      <property role="IQ2ns" value="1806979145072205904" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="inheritance" />
+      <ref role="20lvS9" node="2yYXHtl6JjN" resolve="FinalInheritanceModifier" />
+      <ref role="20ksaX" node="5dNsAxXOVNr" resolve="inheritance" />
+      <node concept="t5JxF" id="1$jFvlE$nn6" role="lGtFl">
+        <property role="t5JxN" value="cannot override enum" />
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtli8qZ">
@@ -2433,9 +2454,6 @@
       <property role="TrG5h" value="negation" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
-    <node concept="PrWs8" id="3CHKp3ducU" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jmq" resolve="IWhenCondition" />
-    </node>
   </node>
   <node concept="1TIwiD" id="1502Vug_m75">
     <property role="EcuMT" value="1243006380186886597" />
@@ -2453,9 +2471,15 @@
     <ref role="1TJDcQ" node="1502Vug_kVv" resolve="BinaryExpression" />
     <node concept="1TJgyj" id="1502Vug_m78" role="1TKVEi">
       <property role="IQ2ns" value="1243006380186886600" />
-      <property role="20kJfa" value="method" />
+      <property role="20kJfa" value="function" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="2yYXHtl6JgO" resolve="FunctionDeclaration" />
+    </node>
+    <node concept="RPilO" id="rbYB7QUgrA" role="lGtFl">
+      <ref role="RPilL" node="1502Vug_m78" resolve="function" />
+    </node>
+    <node concept="PrWs8" id="rbYB7R3JjM" role="PzmwI">
+      <ref role="PrY4T" node="5D4bOjrr8CG" resolve="IFunctionCallLike" />
     </node>
   </node>
   <node concept="1TIwiD" id="1502Vug_mWt">
@@ -2605,36 +2629,30 @@
   </node>
   <node concept="1TIwiD" id="213J8cgIr6k">
     <property role="EcuMT" value="2324909103760650644" />
-    <property role="3GE5qa" value="declaration.inheritance" />
-    <property role="TrG5h" value="SuperInterfaceSpecifier" />
-    <property role="R4oN_" value="superinterface specifier" />
+    <property role="3GE5qa" value="declaration.inheritance.regular" />
+    <property role="TrG5h" value="SuperClassSpecifier" />
+    <property role="R4oN_" value="superclass specifier" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyj" id="213J8cgIr6n" role="1TKVEi">
-      <property role="IQ2ns" value="2324909103760650647" />
-      <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="delegate" />
-      <ref role="20lvS9" node="2yYXHtl6Jjg" resolve="IExpression" />
-    </node>
     <node concept="1TJgyj" id="213J8cgIr6l" role="1TKVEi">
       <property role="IQ2ns" value="2324909103760650645" />
       <property role="20kJfa" value="target" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="2yYXHtlhVlH" resolve="IClassDeclaration" />
       <node concept="t5JxF" id="nozGpWM__x" role="lGtFl">
-        <property role="t5JxN" value="IClassDecl is set but should contains InterfaceDecl, other concepts are used for stubs only" />
+        <property role="t5JxN" value="may refer a class (if no primary), or any interface" />
       </node>
     </node>
-    <node concept="PrWs8" id="213J8cgKswo" role="PzmwI">
-      <ref role="PrY4T" node="213J8cgKswc" resolve="IInheritanceSpecifier" />
-    </node>
-    <node concept="PrWs8" id="5q426iHvPS2" role="PzmwI">
-      <ref role="PrY4T" node="2gj5XQXEpsk" resolve="ITypeArguments" />
+    <node concept="PrWs8" id="1$jFvlEWczp" role="PzmwI">
+      <ref role="PrY4T" node="1$jFvlEWaYg" resolve="IClassSuperSpecifier" />
     </node>
   </node>
   <node concept="PlHQZ" id="213J8cgKswc">
     <property role="EcuMT" value="2324909103761180684" />
     <property role="3GE5qa" value="declaration.inheritance" />
-    <property role="TrG5h" value="IInheritanceSpecifier" />
+    <property role="TrG5h" value="ISuperTypeSpecifier" />
+    <node concept="t5JxF" id="1$jFvlEWhuU" role="lGtFl">
+      <property role="t5JxN" value="node that specify super type of a class" />
+    </node>
   </node>
   <node concept="1TIwiD" id="213J8cgR8Cm">
     <property role="EcuMT" value="2324909103762934294" />
@@ -2819,7 +2837,7 @@
       <property role="20kJfa" value="annotations" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <ref role="20lvS9" node="2yYXHtl6JdZ" resolve="Annotation" />
+      <ref role="20lvS9" node="2yYXHtl6JdZ" resolve="AnnotationList" />
     </node>
   </node>
   <node concept="PlHQZ" id="6cg9X74hA$I">
@@ -3412,13 +3430,16 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <ref role="20lvS9" node="2yYXHtl6Jh1" resolve="IType" />
     </node>
-    <node concept="PrWs8" id="2yYXHtl6JG7" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jmq" resolve="IWhenCondition" />
-    </node>
     <node concept="1TJgyi" id="1502VugB9SK" role="1TKVEl">
       <property role="IQ2nx" value="1243006380187360816" />
       <property role="TrG5h" value="negation" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
+    <node concept="PrWs8" id="7KgFmkIk$OV" role="PzmwI">
+      <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
+    </node>
+    <node concept="t5JxF" id="7KgFmkInzIa" role="lGtFl">
+      <property role="t5JxN" value="unlike IsOperator, this uses expression from when as operand" />
     </node>
   </node>
   <node concept="PlHQZ" id="2mD64u3yQho">
@@ -3668,7 +3689,7 @@
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="superclasses" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
-      <ref role="20lvS9" node="213J8cgKswc" resolve="IInheritanceSpecifier" />
+      <ref role="20lvS9" node="213J8cgKswc" resolve="ISuperTypeSpecifier" />
     </node>
   </node>
   <node concept="PlHQZ" id="5D4bOjrr8CG">
@@ -3770,6 +3791,19 @@
     <property role="TrG5h" value="IncompleteDeclaration" />
     <property role="3GE5qa" value="edition" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="1$jFvlCOvOX" role="1TKVEi">
+      <property role="IQ2ns" value="1806979145042885949" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="funModifiers" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="2yYXHtl6JeY" resolve="IFunctionModifier" />
+    </node>
+    <node concept="1TJgyj" id="1$jFvlCUrqs" role="1TKVEi">
+      <property role="IQ2ns" value="1806979145044440732" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="classModifier" />
+      <ref role="20lvS9" node="2yYXHtl6Jg6" resolve="IClassModifier" />
+    </node>
     <node concept="1TJgyi" id="2AtO9a5ybKg" role="1TKVEl">
       <property role="IQ2nx" value="2998782254622751760" />
       <property role="TrG5h" value="isOverride" />
@@ -3849,13 +3883,103 @@
     <property role="EcuMT" value="1781658014498910083" />
     <property role="3GE5qa" value="stubs" />
     <property role="TrG5h" value="CompiledStubStatement" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="1yTI8p9rS6f" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jcy" resolve="IStatement" />
     </node>
     <node concept="PrWs8" id="6Bt5QZR_ayg" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6JdA" resolve="IPropertyAssignment" />
     </node>
+    <node concept="PrWs8" id="13yL0wogtBI" role="PzmwI">
+      <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="2yYXHtl6Jmq">
+    <property role="EcuMT" value="2936055411798373786" />
+    <property role="TrG5h" value="IWhenCondition" />
+    <property role="3GE5qa" value="expression.control.when" />
+  </node>
+  <node concept="1TIwiD" id="1$jFvlE6lHN">
+    <property role="EcuMT" value="1806979145064340339" />
+    <property role="3GE5qa" value="expression.function.constructor" />
+    <property role="TrG5h" value="AbstractConstructorDelegationCall" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="1$jFvlE6mfs" role="PzmwI">
+      <ref role="PrY4T" node="2yYXHtl6Jmg" resolve="IConstructorDelegationCall" />
+    </node>
+    <node concept="PrWs8" id="1$jFvlE6n5A" role="PzmwI">
+      <ref role="PrY4T" node="5GtPw5yVf0b" resolve="IArguments" />
+    </node>
+    <node concept="1TJgyj" id="1$jFvlE6mkn" role="1TKVEi">
+      <property role="IQ2ns" value="1806979145064342807" />
+      <property role="20kJfa" value="constructor" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="71DDynMG2ea" resolve="IConstructorDeclaration" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="1$jFvlEU70c">
+    <property role="EcuMT" value="1806979145077911564" />
+    <property role="3GE5qa" value="declaration.inheritance.constructor" />
+    <property role="TrG5h" value="IConstructorSuperSpecifier" />
+    <node concept="PrWs8" id="1$jFvlEU7BP" role="PrDN$">
+      <ref role="PrY4T" node="213J8cgKswc" resolve="ISuperTypeSpecifier" />
+    </node>
+    <node concept="PrWs8" id="1$jFvlEU7BQ" role="PrDN$">
+      <ref role="PrY4T" node="5GtPw5yVf0b" resolve="IArguments" />
+    </node>
+    <node concept="PrWs8" id="1$jFvlEU7BR" role="PrDN$">
+      <ref role="PrY4T" node="2gj5XQXEpsk" resolve="ITypeArguments" />
+    </node>
+    <node concept="t5JxF" id="1$jFvlEW9v6" role="lGtFl">
+      <property role="t5JxN" value="inheritance specifier that initialize the parent type with a constructor call" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="1$jFvlEWaYg">
+    <property role="EcuMT" value="1806979145078452112" />
+    <property role="3GE5qa" value="declaration.inheritance.regular" />
+    <property role="TrG5h" value="IClassSuperSpecifier" />
+    <node concept="PrWs8" id="1$jFvlEWciT" role="PrDN$">
+      <ref role="PrY4T" node="213J8cgKswc" resolve="ISuperTypeSpecifier" />
+    </node>
+    <node concept="PrWs8" id="1$jFvlEWciU" role="PrDN$">
+      <ref role="PrY4T" node="2gj5XQXEpsk" resolve="ITypeArguments" />
+    </node>
+    <node concept="1TJgyj" id="213J8cgIr6n" role="1TKVEi">
+      <property role="IQ2ns" value="2324909103760650647" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="delegate" />
+      <ref role="20lvS9" node="2yYXHtl6Jjg" resolve="IExpression" />
+    </node>
+    <node concept="t5JxF" id="1$jFvlEWcDG" role="lGtFl">
+      <property role="t5JxN" value="inheritance specifier that either don't initialize type or delegate it" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4hE452RoWMT">
+    <property role="EcuMT" value="4929770680970628281" />
+    <property role="3GE5qa" value="annotation" />
+    <property role="TrG5h" value="Annotation" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="4hE452RsWTh" role="PzmwI">
+      <ref role="PrY4T" node="4hE452RoXme" resolve="IAnnotation" />
+    </node>
+    <node concept="PrWs8" id="4hE452RoZZJ" role="PzmwI">
+      <ref role="PrY4T" node="5GtPw5yVf0b" resolve="IArguments" />
+    </node>
+    <node concept="PrWs8" id="4hE452Rp00A" role="PzmwI">
+      <ref role="PrY4T" node="2gj5XQXEpsk" resolve="ITypeArguments" />
+    </node>
+    <node concept="1TJgyj" id="4hE452Rp0q1" role="1TKVEi">
+      <property role="IQ2ns" value="4929770680970643073" />
+      <property role="20kJfa" value="constructor" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="71DDynMG2ea" resolve="IConstructorDeclaration" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="4hE452RoXme">
+    <property role="EcuMT" value="4929770680970630542" />
+    <property role="3GE5qa" value="annotation" />
+    <property role="TrG5h" value="IAnnotation" />
   </node>
 </model>
 

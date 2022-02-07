@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-cyoxfm6zuqq53t4zekpsrlxa3e9p0yw">
-  <files names="ConstraintsAspectDescriptor.java:IKotlinFunctionLikeCall_Constraints.java:KotlinFunctionArgument_Constraints.java:KotlinFunctionCall_Constraints.java:KotlinInBaseLanguageScopeHelper.java:KotlinPropertyGetterCall_Constraints.java:KotlinPropertySetterCall_Constraints.java" />
+<product version="3" modelHash="bomrbjglsmmg8zo2ptwsfjnkj5rs1c1">
+  <files names="ConstraintsAspectDescriptor.java:IKotlinFunctionLikeCall_Constraints.java:KotlinClassCreator_Constraints.java:KotlinFunctionArgument_Constraints.java:KotlinFunctionCall_Constraints.java:KotlinInBaseLanguageScopeHelper.java:KotlinPropertyGetterCall_Constraints.java:KotlinPropertySetterCall_Constraints.java" />
 </product>
 

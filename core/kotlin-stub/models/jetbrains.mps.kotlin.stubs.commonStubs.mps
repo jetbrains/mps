@@ -4330,7 +4330,7 @@
                     </node>
                     <node concept="3clFbS" id="2Aaqzls7cvH" role="1bW5cS">
                       <node concept="Jncv_" id="2Aaqzls7cvI" role="3cqZAp">
-                        <ref role="JncvD" to="hcm8:213J8cgKswc" resolve="IInheritanceSpecifier" />
+                        <ref role="JncvD" to="hcm8:213J8cgKswc" resolve="ISuperTypeSpecifier" />
                         <node concept="37vLTw" id="2Aaqzls7cvJ" role="JncvB">
                           <ref role="3cqZAo" node="2Aaqzls7cvF" resolve="type" />
                         </node>
@@ -4369,12 +4369,12 @@
                             <node concept="3cpWsn" id="nozGpWWujc" role="3cpWs9">
                               <property role="TrG5h" value="superType" />
                               <node concept="3Tqbb2" id="nozGpWWt02" role="1tU5fm">
-                                <ref role="ehGHo" to="hcm8:213J8cgIr6k" resolve="SuperInterfaceSpecifier" />
+                                <ref role="ehGHo" to="hcm8:213J8cgIr6k" resolve="SuperClassSpecifier" />
                               </node>
                               <node concept="2ShNRf" id="nozGpWW$JI" role="33vP2m">
                                 <node concept="3zrR0B" id="nozGpWWztO" role="2ShVmc">
                                   <node concept="3Tqbb2" id="nozGpWWztR" role="3zrR0E">
-                                    <ref role="ehGHo" to="hcm8:213J8cgIr6k" resolve="SuperInterfaceSpecifier" />
+                                    <ref role="ehGHo" to="hcm8:213J8cgIr6k" resolve="SuperClassSpecifier" />
                                   </node>
                                 </node>
                               </node>
@@ -4450,7 +4450,7 @@
                                   <node concept="liA8E" id="4nzhnY10ziP" role="2OqNvi">
                                     <ref role="37wK5l" to="mhbf:~SNode.setReferenceTarget(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.SNode)" resolve="setReferenceTarget" />
                                     <node concept="359W_D" id="4nzhnY10Bnd" role="37wK5m">
-                                      <ref role="359W_E" to="hcm8:213J8cgIr6k" resolve="SuperInterfaceSpecifier" />
+                                      <ref role="359W_E" to="hcm8:213J8cgIr6k" resolve="SuperClassSpecifier" />
                                       <ref role="359W_F" to="hcm8:213J8cgIr6l" resolve="target" />
                                     </node>
                                     <node concept="37vLTw" id="4nzhnY10Pr_" role="37wK5m">
@@ -4478,7 +4478,7 @@
                                     <node concept="liA8E" id="4nzhnY14Qz5" role="2OqNvi">
                                       <ref role="37wK5l" to="mhbf:~SNode.setReference(org.jetbrains.mps.openapi.language.SReferenceLink,org.jetbrains.mps.openapi.model.ResolveInfo)" resolve="setReference" />
                                       <node concept="359W_D" id="4nzhnY14Qz6" role="37wK5m">
-                                        <ref role="359W_E" to="hcm8:213J8cgIr6k" resolve="SuperInterfaceSpecifier" />
+                                        <ref role="359W_E" to="hcm8:213J8cgIr6k" resolve="SuperClassSpecifier" />
                                         <ref role="359W_F" to="hcm8:213J8cgIr6l" resolve="target" />
                                       </node>
                                       <node concept="2OqwBi" id="13KYllCbF11" role="37wK5m">
@@ -6726,6 +6726,9 @@
             <node concept="37vLTw" id="71DDynMXmYm" role="37wK5m">
               <ref role="3cqZAo" node="7SVeP54xFhE" resolve="context" />
             </node>
+            <node concept="37vLTw" id="13yL0wogocu" role="37wK5m">
+              <ref role="3cqZAo" node="2Aaqzls7gcz" resolve="flags" />
+            </node>
             <node concept="37Ijox" id="71DDynMXqlB" role="37wK5m">
               <ref role="37Ijqf" to="747n:6UEu$_UwY2K" resolve="addArgument" />
               <node concept="37vLTw" id="71DDynMXoDr" role="wWaWy">
@@ -7094,6 +7097,10 @@
           <ref role="3uigEE" node="6ZbwqG7V1gA" resolve="VisitorContext" />
         </node>
       </node>
+      <node concept="37vLTG" id="13yL0wogiW6" role="3clF46">
+        <property role="TrG5h" value="flags" />
+        <node concept="10Oyi0" id="13yL0wogj23" role="1tU5fm" />
+      </node>
       <node concept="37vLTG" id="71DDynMYTaJ" role="3clF46">
         <property role="TrG5h" value="idProvider" />
         <node concept="1ajhzC" id="71DDynMYTaK" role="1tU5fm">
@@ -7121,6 +7128,39 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbH" id="71DDynMYWpX" role="3cqZAp" />
+        <node concept="3clFbJ" id="13yL0wogpfN" role="3cqZAp">
+          <node concept="3clFbS" id="13yL0wogpfP" role="3clFbx">
+            <node concept="3clFbF" id="13yL0wogqy3" role="3cqZAp">
+              <node concept="2OqwBi" id="13yL0wogrDs" role="3clFbG">
+                <node concept="2OqwBi" id="13yL0wogr0h" role="2Oq$k0">
+                  <node concept="37vLTw" id="13yL0wogqy1" role="2Oq$k0">
+                    <ref role="3cqZAo" node="71DDynMYTaF" resolve="param" />
+                  </node>
+                  <node concept="3TrEf2" id="13yL0wogrjC" role="2OqNvi">
+                    <ref role="3Tt5mk" to="hcm8:6f3juM$y8Z$" resolve="defaultValue" />
+                  </node>
+                </node>
+                <node concept="zfrQC" id="13yL0wogsI6" role="2OqNvi">
+                  <ref role="1A9B2P" to="hcm8:1yTI8p9rQY3" resolve="CompiledStubStatement" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="13yL0wogpQx" role="3clFbw">
+            <node concept="10M0yZ" id="13yL0wogpxC" role="2Oq$k0">
+              <ref role="3cqZAo" to="b66x:~Flags.DECLARES_DEFAULT_VALUE" resolve="DECLARES_DEFAULT_VALUE" />
+              <ref role="1PxDUh" to="b66x:~Flags" resolve="Flags" />
+            </node>
+            <node concept="liA8E" id="13yL0wogq8Z" role="2OqNvi">
+              <ref role="37wK5l" to="b66x:~Flags$BooleanFlagField.get(int)" resolve="get" />
+              <node concept="37vLTw" id="13yL0wogqhf" role="37wK5m">
+                <ref role="3cqZAo" node="13yL0wogiW6" resolve="flags" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="13yL0wogqpO" role="3cqZAp" />
         <node concept="3clFbF" id="71DDynMYWpL" role="3cqZAp">
           <node concept="2OqwBi" id="71DDynMYWpM" role="3clFbG">
             <node concept="37vLTw" id="71DDynMYWpN" role="2Oq$k0">
@@ -7137,7 +7177,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbH" id="71DDynMYWpX" role="3cqZAp" />
         <node concept="3cpWs6" id="71DDynMYWpY" role="3cqZAp">
           <node concept="2ShNRf" id="71DDynMYWpZ" role="3cqZAk">
             <node concept="1pGfFk" id="71DDynMYWq0" role="2ShVmc">
@@ -7645,7 +7684,7 @@
               </node>
             </node>
             <node concept="WFELt" id="1yTI8p9sfUX" role="2OqNvi">
-              <ref role="1A0vxQ" to="hcm8:1yTI8p9rQY3" resolve="CompiledCodeStatement" />
+              <ref role="1A0vxQ" to="hcm8:1yTI8p9rQY3" resolve="CompiledStubStatement" />
             </node>
           </node>
         </node>
@@ -8000,6 +8039,9 @@
             </node>
             <node concept="37vLTw" id="71DDynMZ7xf" role="37wK5m">
               <ref role="3cqZAo" node="7SVeP54ibIU" resolve="context" />
+            </node>
+            <node concept="37vLTw" id="13yL0woglqa" role="37wK5m">
+              <ref role="3cqZAo" node="2AaqzlskFha" resolve="flags" />
             </node>
             <node concept="37Ijox" id="71DDynMYhIe" role="37wK5m">
               <ref role="37Ijqf" to="747n:6UEu$_UwY2K" resolve="addArgument" />

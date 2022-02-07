@@ -16,7 +16,6 @@ import jetbrains.mps.kotlin.runtime.declaration.TypeParameterDeclaration;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.kotlin.scopes.SignedDeclarationFilter;
 import jetbrains.mps.kotlin.scopes.ScopeContext;
-import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -61,7 +60,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Iterable<SNode>> getTypeParameters_id6r77ob2URYe = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTypeParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6r77ob2URYe").build();
   public static final SMethod<Iterable<TypeParameterDeclaration>> getTypeParameters_id7an2tsIdpkM = new SMethodBuilder<Iterable<TypeParameterDeclaration>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeParameterDeclaration>>) ((Class) Object.class))).name("getTypeParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7an2tsIdpkM").build();
   public static final SMethod<String> toString_id4nn3FPlZH$r = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("toString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4nn3FPlZH$r").build(SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
-  public static final SMethod<Scope> getTypeScope_id7ubb0gUcNKV = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getTypeScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7ubb0gUcNKV").build(SMethodBuilder.createJavaParameter(SignedDeclarationFilter.class, ""), SMethodBuilder.createJavaParameter(ScopeContext.class, ""), SMethodBuilder.createJavaParameter(SRepository.class, ""));
+  public static final SMethod<Scope> getTypeScope_id7ubb0gUcNKV = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getTypeScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7ubb0gUcNKV").build(SMethodBuilder.createJavaParameter(SignedDeclarationFilter.class, ""), SMethodBuilder.createJavaParameter(ScopeContext.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(visitHierarchy_id5q426iHtYvR, populateTypeSignatures_id5q426iHK5S9, getClassifier_id7an2tsIdpk7, getClassifier_id6r77ob2URY9, getTypeParameters_id6r77ob2URYe, getTypeParameters_id7an2tsIdpkM, toString_id4nn3FPlZH$r, getTypeScope_id7ubb0gUcNKV);
 
@@ -112,7 +111,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
     }
     return pres.toString();
   }
-  /*package*/ static Scope getTypeScope_id7ubb0gUcNKV(@NotNull SNode __thisNode__, SignedDeclarationFilter filter, ScopeContext context, SRepository repository) {
+  /*package*/ static Scope getTypeScope_id7ubb0gUcNKV(@NotNull SNode __thisNode__, SignedDeclarationFilter filter, ScopeContext context) {
     List<SNode> resultingMembers = ListSequence.fromList(new ArrayList<SNode>());
     final JavaToKtEngine javaToKt = TypeConversionService.getInstance().getJavaToKt();
     final Wrappers._T<FilteredSignatureCollector> collector = new Wrappers._T<FilteredSignatureCollector>(null);
@@ -120,7 +119,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
     // Instance members
     if (context.isWithInstanceMembers()) {
       // Actual visitor + wrapper to go into baseLanguage territory
-      ClassMemberVisitor visitor = new ClassMemberVisitor(filter.getSignatureFilter(), repository);
+      ClassMemberVisitor visitor = new ClassMemberVisitor(filter.getSignatureFilter());
 
       IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(__thisNode__, visitor);
 
@@ -156,7 +155,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
     }
 
     // Nested constructors
-    if (context.isWithConstructors()) {
+    if (context.isWithNestedConstructors()) {
       if (collector.value == null) {
         collector.value = new FilteredSignatureCollector(filter.getSignatureFilter());
       }
@@ -226,7 +225,7 @@ public final class JavaClassType__BehaviorDescriptor extends BaseBHDescriptor {
       case 6:
         return (T) ((String) toString_id4nn3FPlZH$r(node, ((boolean) (Boolean) parameters[0])));
       case 7:
-        return (T) ((Scope) getTypeScope_id7ubb0gUcNKV(node, (SignedDeclarationFilter) parameters[0], (ScopeContext) parameters[1], (SRepository) parameters[2]));
+        return (T) ((Scope) getTypeScope_id7ubb0gUcNKV(node, (SignedDeclarationFilter) parameters[0], (ScopeContext) parameters[1]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

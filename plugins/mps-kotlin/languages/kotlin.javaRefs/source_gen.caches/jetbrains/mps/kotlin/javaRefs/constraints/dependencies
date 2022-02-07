@@ -32,9 +32,9 @@
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt+dp" />
   <dependency className="jetbrains.mps.kotlin.javaRefs.constraints.ConstraintsAspectDescriptor">
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassInheritanceSpecifier_Constraints" />
+    <classNode dependClassName="jetbrains.mps.kotlin.javaRefs.constraints.JavaConstructorSuperSpecifier_Constraints" />
     <classNode dependClassName="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorCall_Constraints" />
-    <classNode dependClassName="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorInheritanceSpecifier_Constraints" />
+    <classNode dependClassName="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorSuperSpecifier_Constraints" />
     <classNode dependClassName="jetbrains.mps.kotlin.javaRefs.constraints.JavaMemberTarget_Constraints" />
     <classNode dependClassName="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodCall_Constraints" />
     <classNode dependClassName="jetbrains.mps.kotlin.javaRefs.constraints.JavaMethodVariableReference_Constraints" />
@@ -61,13 +61,12 @@
   <dependency className="jetbrains.mps.kotlin.javaRefs.constraints.GetterFilter">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Objects" />
-    <classNode dependClassName="jetbrains.mps.kotlin.runtime.members.signature.MemberSignature" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.members.signature.PropertyAccessorKind" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.members.signature.PropertyAccessorSignature" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.kotlin.scopes.SignatureFilter" />
   </dependency>
-  <dependency className="jetbrains.mps.kotlin.javaRefs.constraints.JavaClassInheritanceSpecifier_Constraints">
+  <dependency className="jetbrains.mps.kotlin.javaRefs.constraints.JavaConstructorSuperSpecifier_Constraints">
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.HashMap" />
@@ -117,7 +116,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode extendsClassName="jetbrains.mps.smodel.runtime.base.BaseConstraintsDescriptor" />
   </dependency>
-  <dependency className="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorInheritanceSpecifier_Constraints">
+  <dependency className="jetbrains.mps.kotlin.javaRefs.constraints.JavaDefaultConstructorSuperSpecifier_Constraints">
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.Map" />

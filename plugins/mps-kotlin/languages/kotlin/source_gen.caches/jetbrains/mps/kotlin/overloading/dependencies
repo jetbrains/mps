@@ -32,11 +32,45 @@
   <dependency className="jetbrains.mps.kotlin.overloading.AmbiguousException">
     <classNode extendsClassName="java.lang.Exception" />
   </dependency>
+  <dependency className="jetbrains.mps.kotlin.overloading.FunctionCall">
+    <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+  </dependency>
+  <dependency className="jetbrains.mps.kotlin.overloading.FunctionParamHelper">
+    <classNode dependClassName="java.lang.Integer" />
+    <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.lang.UnsupportedOperationException" />
+    <classNode dependClassName="java.util.ArrayList" />
+    <classNode dependClassName="java.util.Iterator" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.Tuples" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.IArgument__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.kotlin.overloading.FunctionParamMapper" />
+    <classNode dependClassName="jetbrains.mps.kotlin.overloading.ParamErrorHandler" />
+    <classNode dependClassName="jetbrains.mps.kotlin.overloading.ParamException" />
+    <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.ParameterDeclaration" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+  </dependency>
   <dependency className="jetbrains.mps.kotlin.overloading.FunctionParamIterator">
     <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.Throwable" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.IArgument__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.kotlin.overloading.FunctionParamHelper" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.FunctionParamMapper" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.ParamErrorHandler" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.ParameterDeclaration" />
@@ -60,6 +94,22 @@
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
+  <dependency className="jetbrains.mps.kotlin.overloading.NodeFunctionCall">
+    <classNode dependClassName="java.lang.Iterable" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.IFunctionCallLike__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingFacade" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SInterfaceConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.kotlin.overloading.FunctionCall" />
+  </dependency>
   <dependency className="jetbrains.mps.kotlin.overloading.OverloadResolutionSolver">
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Iterable" />
@@ -71,11 +121,11 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.NotNullWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="jetbrains.mps.kotlin.behavior.IFunctionCallLike__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.IFunctionDeclaration__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.KotlinFunctionDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.AmbiguousException" />
+    <classNode dependClassName="jetbrains.mps.kotlin.overloading.FunctionCall" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.OverloadResolver" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.OverloadResolverUtil" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.OverloadedSignatureFilter" />
@@ -87,24 +137,21 @@
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.ClassMemberVisitor" />
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.ReceiverTypeScope" />
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.SuperTypesVisitor" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.scope.Scope" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.smodel.structure.ExtensionPoint" />
-    <classNode dependClassName="jetbrains.mps.typechecking.TypecheckingFacade" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SInterfaceConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
   </dependency>
   <dependency className="jetbrains.mps.kotlin.overloading.OverloadResolver">
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.Tuples" />
+    <classNode dependClassName="jetbrains.mps.kotlin.overloading.FunctionCall" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
   <dependency className="jetbrains.mps.kotlin.overloading.OverloadResolverUtil">
@@ -116,7 +163,7 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.NotNullWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="jetbrains.mps.kotlin.behavior.IFunctionCallLike__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.kotlin.overloading.FunctionCall" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.FunctionParamMapper" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.OverloadResolver" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.ParamErrorHandler" />
@@ -134,14 +181,12 @@
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.members.signature.FunctionSignature" />
-    <classNode dependClassName="jetbrains.mps.kotlin.runtime.members.signature.MemberSignature" />
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.ClassMemberVisitor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
     <classNode extendsClassName="jetbrains.mps.kotlin.scopes.SignatureFilter" />
   </dependency>
   <dependency className="jetbrains.mps.kotlin.overloading.ParamErrorHandler">

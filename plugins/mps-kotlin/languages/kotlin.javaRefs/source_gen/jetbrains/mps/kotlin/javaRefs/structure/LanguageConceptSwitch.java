@@ -9,11 +9,11 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 public final class LanguageConceptSwitch {
   private final LanguageConceptIndex myIndex;
-  public static final int JavaClassInheritanceSpecifier = 0;
+  public static final int JavaClassSuperSpecifier = 0;
   public static final int JavaClassType = 1;
-  public static final int JavaDefaultConstructorCall = 2;
-  public static final int JavaDefaultConstructorInheritanceSpecifier = 3;
-  public static final int JavaInterfaceInheritanceSpecifier = 4;
+  public static final int JavaConstructorSuperSpecifier = 2;
+  public static final int JavaDefaultConstructorCall = 3;
+  public static final int JavaDefaultConstructorSuperSpecifier = 4;
   public static final int JavaMemberTarget = 5;
   public static final int JavaMethodCall = 6;
   public static final int JavaMethodVariableReference = 7;
@@ -22,11 +22,11 @@ public final class LanguageConceptSwitch {
 
   public LanguageConceptSwitch() {
     LanguageConceptIndexBuilder builder = new LanguageConceptIndexBuilder(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L);
-    builder.put(0x2196e93e83dbf9feL, JavaClassInheritanceSpecifier);
+    builder.put(0xfd0b6783f85b1faL, JavaClassSuperSpecifier);
     builder.put(0x68fcefc6c20600f5L, JavaClassType);
+    builder.put(0x2196e93e83dbf9feL, JavaConstructorSuperSpecifier);
     builder.put(0x5b64d6b00d61fa7bL, JavaDefaultConstructorCall);
-    builder.put(0x5b64d6b00d756286L, JavaDefaultConstructorInheritanceSpecifier);
-    builder.put(0xfd0b6783f85b1faL, JavaInterfaceInheritanceSpecifier);
+    builder.put(0x5b64d6b00d756286L, JavaDefaultConstructorSuperSpecifier);
     builder.put(0x7206852a8590b5efL, JavaMemberTarget);
     builder.put(0x2196e93e834d57ccL, JavaMethodCall);
     builder.put(0x3569a755572a0ffbL, JavaMethodVariableReference);

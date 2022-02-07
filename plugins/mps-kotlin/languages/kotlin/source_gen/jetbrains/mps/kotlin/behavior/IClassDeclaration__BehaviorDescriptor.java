@@ -62,8 +62,7 @@ public final class IClassDeclaration__BehaviorDescriptor extends BaseBHDescripto
     return ((Scope) ScopeProvider__BehaviorDescriptor.getScope_id52_Geb4QDV$.invoke0(__thisNode__, CONCEPTS.IClassLike$go, kind, child));
   }
   /*package*/ static Set<TypeKey> getSuperClasses_id4gvOB2uSXgW(@NotNull SNode __thisNode__) {
-    // Get the current repository as this node is supposed to be attached (while getThisType wont return an attached type)
-    SuperTypesVisitor visitor = new SuperTypesVisitor(__thisNode__.getModel().getRepository());
+    SuperTypesVisitor visitor = new SuperTypesVisitor();
     IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(__thisNode__, ((boolean) false)), visitor);
     return visitor.superTypes;
   }

@@ -111,7 +111,7 @@ public class IExpression_InsertPrefixUnary_Transform extends TransformationMenuB
       public void execute(@NotNull String pattern) {
         SNode createdNode = getSubstituteItem().createNode(pattern);
         PrecedenceUtil.processUnaryTransform(_context.getNode(), createdNode, true);
-        SelectionUtil.selectCell(_context.getEditorContext(), createdNode, SelectionManager.FIRST_ERROR_CELL);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_CELL, 0);
       }
 
       @Override

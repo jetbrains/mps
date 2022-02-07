@@ -34,6 +34,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new Annotation_TextGen();
       case LanguageConceptSwitch.AnnotationClassModifier:
         return new AnnotationClassModifier_TextGen();
+      case LanguageConceptSwitch.AnnotationList:
+        return new AnnotationList_TextGen();
       case LanguageConceptSwitch.AnonymousFunction:
         return new AnonymousFunction_TextGen();
       case LanguageConceptSwitch.AnonymousInitializer:
@@ -72,8 +74,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new CompanionObject_TextGen();
       case LanguageConceptSwitch.CompiledStubStatement:
         return new CompiledStubStatement_TextGen();
-      case LanguageConceptSwitch.ConstructorCall:
-        return new ConstructorCall_TextGen();
+      case LanguageConceptSwitch.ConstructorSuperSpecifier:
+        return new ConstructorSuperSpecifier_TextGen();
       case LanguageConceptSwitch.ContinueExpression:
         return new ContinueExpression_TextGen();
       case LanguageConceptSwitch.CrossinslineParameterModifier:
@@ -238,12 +240,12 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new StringLiteral_TextGen();
       case LanguageConceptSwitch.StringLiteralRaw:
         return new StringLiteralRaw_TextGen();
+      case LanguageConceptSwitch.SuperClassSpecifier:
+        return new SuperClassSpecifier_TextGen();
       case LanguageConceptSwitch.SuperConstructorDelegationCall:
         return new SuperConstructorDelegationCall_TextGen();
       case LanguageConceptSwitch.SuperExpression:
         return new SuperExpression_TextGen();
-      case LanguageConceptSwitch.SuperInterfaceSpecifier:
-        return new SuperInterfaceSpecifier_TextGen();
       case LanguageConceptSwitch.SuspendFunctionModifier:
         return new SuspendFunctionModifier_TextGen();
       case LanguageConceptSwitch.TailRecFunctionModifier:

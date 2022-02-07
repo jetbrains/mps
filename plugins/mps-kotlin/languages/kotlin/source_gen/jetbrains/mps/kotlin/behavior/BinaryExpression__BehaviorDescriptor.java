@@ -5,8 +5,11 @@ package jetbrains.mps.kotlin.behavior;
 import jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import java.util.List;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
+import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
+import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
+import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -17,12 +20,16 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class BinaryExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, "jetbrains.mps.kotlin.structure.BinaryExpression");
 
+  public static final SMethod<Precedence> getPrecedenceLevel_id666oMY59eOv = new SMethodBuilder<Precedence>(new SJavaCompoundTypeImpl(Precedence.class)).name("getPrecedenceLevel").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("666oMY59eOv").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList();
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPrecedenceLevel_id666oMY59eOv);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  /*package*/ static Precedence getPrecedenceLevel_id666oMY59eOv(@NotNull SNode __thisNode__) {
+    return Precedence.DEFAULT;
+  }
 
   /*package*/ BinaryExpression__BehaviorDescriptor() {
   }
@@ -39,6 +46,8 @@ public final class BinaryExpression__BehaviorDescriptor extends BaseBHDescriptor
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
+      case 0:
+        return (T) ((Precedence) getPrecedenceLevel_id666oMY59eOv(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

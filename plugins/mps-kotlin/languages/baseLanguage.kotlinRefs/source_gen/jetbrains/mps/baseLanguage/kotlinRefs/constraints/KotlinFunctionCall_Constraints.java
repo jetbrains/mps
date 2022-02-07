@@ -39,7 +39,7 @@ public class KotlinFunctionCall_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            return KotlinInBaseLanguageScopeHelper.getScopeForMember(_context.getReferenceNode(), _context.getContextNode(), CONCEPTS.IFunctionDeclaration$ZB, new SignatureFilter(FunctionSignature.class));
+            return KotlinInBaseLanguageScopeHelper.getScopeForMember(_context.getReferenceNode(), _context.getContextNode(), CONCEPTS.IFunctionDeclaration$ZB, new SignatureFilter<FunctionSignature>(FunctionSignature.class));
           }
         };
       }

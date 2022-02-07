@@ -40,7 +40,7 @@ public class ConstructorVisitor extends KmConstructorVisitor {
       param = SLinkOperations.addNewChild(SNodeOperations.cast(myConstructor, CONCEPTS.PrimaryConstructor$QJ), LINKS.parameters$$EEQ, null);
     }
 
-    return ParameterVisitor.create(param, context, (String argumentId) -> functionId.addArgument(argumentId), name);
+    return ParameterVisitor.create(param, context, flags, (String argumentId) -> functionId.addArgument(argumentId), name);
   }
 
   @Override

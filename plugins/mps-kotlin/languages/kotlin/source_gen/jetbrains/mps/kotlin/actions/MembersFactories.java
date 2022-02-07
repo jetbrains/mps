@@ -8,6 +8,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -48,6 +49,17 @@ public class MembersFactories {
         final SNode incomplete = sampleNode;
         if (SNodeOperations.isInstanceOf(incomplete, CONCEPTS.IncompleteDeclaration$r_)) {
           SPropertyOperations.assign(newNode, PROPS.isOverride$Gfqk, SPropertyOperations.getBoolean(incomplete, PROPS.isOverride$3ngh));
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.modifiers$XKtM)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(incomplete, LINKS.funModifiers$vmCQ)));
+        }
+      }
+    }
+  }
+  public static class NodeFactory_1806979145044527064 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
+      {
+        final SNode incomplete = sampleNode;
+        if (SNodeOperations.isInstanceOf(incomplete, CONCEPTS.IncompleteDeclaration$r_)) {
+          SLinkOperations.setTarget(newNode, LINKS.modifier$C$4W, SNodeOperations.copyNode(SLinkOperations.getTarget(incomplete, LINKS.classModifier$gUVP)));
         }
       }
     }
@@ -73,6 +85,10 @@ public class MembersFactories {
     /*package*/ static final SContainmentLink visibility$vnSV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, 0x631027d1c4c4e040L, "visibility");
     /*package*/ static final SContainmentLink inheritance$TFvr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, 0x537372687dd3bcdbL, "inheritance");
     /*package*/ static final SContainmentLink inheritance$Geug = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, 0x441fd2709ecea6b9L, "inheritance");
+    /*package*/ static final SContainmentLink modifiers$XKtM = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, 0x28bef6d75568d1adL, "modifiers");
+    /*package*/ static final SContainmentLink funModifiers$vmCQ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x299dd09284f401caL, 0x1913adf568d1fd3dL, "funModifiers");
+    /*package*/ static final SContainmentLink modifier$C$4W = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, 0x28bef6d7551af762L, "modifier");
+    /*package*/ static final SContainmentLink classModifier$gUVP = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x299dd09284f401caL, 0x1913adf568e9b69cL, "classModifier");
   }
 
   private static final class PROPS {

@@ -165,7 +165,7 @@
   </node>
   <node concept="24kQdi" id="26mUjU3R5S$">
     <property role="3GE5qa" value="extends" />
-    <ref role="1XX52x" to="5m2i:26mUjU3QZBY" resolve="JavaClassInheritanceSpecifier" />
+    <ref role="1XX52x" to="5m2i:26mUjU3QZBY" resolve="JavaConstructorSuperSpecifier" />
     <node concept="3EZMnI" id="2yYXHtl6Kng" role="2wV5jI">
       <node concept="l2Vlx" id="2yYXHtl6Knh" role="2iSdaV" />
       <node concept="1iCGBv" id="213J8cgJw77" role="3EZMnx">
@@ -317,11 +317,11 @@
   </node>
   <node concept="24kQdi" id="ZgHBwZxJmg">
     <property role="3GE5qa" value="extends" />
-    <ref role="1XX52x" to="5m2i:ZgHBwZxr7U" resolve="JavaInterfaceInheritanceSpecifier" />
+    <ref role="1XX52x" to="5m2i:ZgHBwZxr7U" resolve="JavaClassSuperSpecifier" />
     <node concept="3EZMnI" id="ZgHBwZxJmh" role="2wV5jI">
       <node concept="l2Vlx" id="ZgHBwZxJmi" role="2iSdaV" />
       <node concept="1iCGBv" id="ZgHBwZxJmj" role="3EZMnx">
-        <ref role="1NtTu8" to="5m2i:ZgHBwZxuz3" resolve="interface" />
+        <ref role="1NtTu8" to="5m2i:ZgHBwZxuz3" resolve="classifier" />
         <node concept="1sVBvm" id="ZgHBwZxJmk" role="1sWHZn">
           <node concept="3F0A7n" id="ZgHBwZxJml" role="2wV5jI">
             <property role="1Intyy" value="true" />
@@ -331,6 +331,9 @@
       </node>
       <node concept="PMmxH" id="ZgHBwZxJmo" role="3EZMnx">
         <ref role="PMmxG" to="r5qz:2gj5XQXEpCS" resolve="TypeArguments_Component" />
+      </node>
+      <node concept="PMmxH" id="1$jFvlF3ZwT" role="3EZMnx">
+        <ref role="PMmxG" to="r5qz:1$jFvlF3WJ9" resolve="DelegateComponent" />
       </node>
       <node concept="VPM3Z" id="ZgHBwZxJmq" role="3F10Kt" />
     </node>
@@ -381,7 +384,7 @@
   </node>
   <node concept="24kQdi" id="5H$PF0dtoCt">
     <property role="3GE5qa" value="extends" />
-    <ref role="1XX52x" to="5m2i:5H$PF0dtma6" resolve="JavaDefaultConstructorInheritanceSpecifier" />
+    <ref role="1XX52x" to="5m2i:5H$PF0dtma6" resolve="JavaDefaultConstructorSuperSpecifier" />
     <node concept="3EZMnI" id="5H$PF0dtp2E" role="2wV5jI">
       <node concept="l2Vlx" id="5H$PF0dtp2F" role="2iSdaV" />
       <node concept="1iCGBv" id="5H$PF0dtp2G" role="3EZMnx">

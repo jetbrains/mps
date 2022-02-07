@@ -5,6 +5,8 @@ package jetbrains.mps.baseLanguage.kotlinRefs.editor;
 import jetbrains.mps.smodel.action.IReferentPresentationProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.kotlin.behavior.IIdentifier__BehaviorDescriptor;
+import jetbrains.mps.kotlin.behavior.KtEnvironmentConfig;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -14,8 +16,7 @@ public class PresentationProviders {
     @NotNull
     @Override
     public String getPresentation(@NotNull SNode sourceNode, @NotNull SNode targetNode) {
-      // TODO nested names
-      return SPropertyOperations.getString(targetNode, PROPS.name$MnvL);
+      return (String) IIdentifier__BehaviorDescriptor.getNestedName_id1d2BQ0ZyA$g.invoke(targetNode, KtEnvironmentConfig.Jvm);
     }
   };
   public static final IReferentPresentationProvider PRESENTATION_qmmmcv_a0a0a = new IReferentPresentationProvider() {

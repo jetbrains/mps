@@ -17,15 +17,9 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.runtime.declaration.ParameterDeclaration;
 import jetbrains.mps.baseLanguage.kotlinRefs.behavior.IKotlinFunctionLikeCall__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import java.util.List;
-import jetbrains.mps.kotlin.overloading.FunctionParamMapper;
+import java.util.Collections;
+import jetbrains.mps.kotlin.overloading.FunctionParamHelper;
 import jetbrains.mps.kotlin.overloading.ParamException;
-import jetbrains.mps.kotlin.overloading.ParamErrorHandler;
-import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import java.util.ArrayList;
-import java.util.Iterator;
-import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -98,40 +92,18 @@ public abstract class KotlinForBLTextGen extends BaseLanguageTextGen {
       tgs.reportError("expecting a parameter declaration");
     }
 
-    List<ParameterDeclaration> orderedParameters = null;
-    try {
-      FunctionParamMapper<String, ParamException> mapper = new FunctionParamMapper<String, ParamException>(ParamErrorHandler.THROW, (ParameterDeclaration node) -> SPropertyOperations.getString(node.getNode(), PROPS.name$MnvL), functionParameters);
+    Iterable<SNode> arguments = Sequence.fromIterable(Collections.<SNode>emptyList());
 
-      orderedParameters = mapper.checkParameters(SLinkOperations.getChildren(call, LINKS.actualArgument$Q6nt));
+    try {
+      // Reorder parameters (named args not supported in java)
+      arguments = FunctionParamHelper.toOrderedList(functionParameters, SLinkOperations.getChildren(call, LINKS.actualArgument$Q6nt));
     } catch (ParamException error) {
       tgs.reportError(error.getMessage());
     }
 
-    // Zip parameters with their index
-    List<Tuples._2<Integer, SNode>> zipped = ListSequence.fromList(new ArrayList<Tuples._2<Integer, SNode>>());
-    {
-      Iterator<SNode> arg_it = ListSequence.fromList(SLinkOperations.getChildren(call, LINKS.actualArgument$Q6nt)).iterator();
-      Iterator<ParameterDeclaration> param_it = ListSequence.fromList(orderedParameters).iterator();
-      SNode arg_var;
-      ParameterDeclaration param_var;
-      while (arg_it.hasNext() && param_it.hasNext()) {
-        arg_var = arg_it.next();
-        param_var = param_it.next();
-        ListSequence.fromList(zipped).addElement(MultiTuple.<Integer,SNode>from(Sequence.fromIterable(functionParameters).indexOf(param_var), SLinkOperations.getTarget(arg_var, LINKS.expression$hLKM)));
-      }
-    }
-
     tgs.append("(");
     {
-      Iterable<SNode> collection = ListSequence.fromList(zipped).sort(new ISelector<Tuples._2<Integer, SNode>, Integer>() {
-        public Integer select(Tuples._2<Integer, SNode> it) {
-          return (int) it._0();
-        }
-      }, true).select(new ISelector<Tuples._2<Integer, SNode>, SNode>() {
-        public SNode select(Tuples._2<Integer, SNode> it) {
-          return it._1();
-        }
-      });
+      Iterable<SNode> collection = arguments;
       final SNode lastItem = Sequence.fromIterable(collection).last();
       for (SNode item : collection) {
         tgs.appendNode(item);
@@ -153,11 +125,9 @@ public abstract class KotlinForBLTextGen extends BaseLanguageTextGen {
     /*package*/ static final SReferenceLink target$7dy6 = MetaAdapterFactory.getReferenceLink(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc380f3L, 0xf8c78301adL, "target");
     /*package*/ static final SContainmentLink typeArgument$Q6Au = MetaAdapterFactory.getContainmentLink(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc380f3L, 0xeac1f33ddc3b0e0L, "typeArgument");
     /*package*/ static final SContainmentLink actualArgument$Q6nt = MetaAdapterFactory.getContainmentLink(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc380f3L, 0xeac1f33ddc3b0dfL, "actualArgument");
-    /*package*/ static final SContainmentLink expression$hLKM = MetaAdapterFactory.getContainmentLink(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddd3d84dL, 0xeac1f33ddd3f453L, "expression");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty functionName$M4b = MetaAdapterFactory.getProperty(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0xeac1f33ddc380f3L, 0x17400fc2a35501ffL, "functionName");
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }

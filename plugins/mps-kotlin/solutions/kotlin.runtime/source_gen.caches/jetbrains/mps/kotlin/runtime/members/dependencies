@@ -24,11 +24,9 @@
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt" />
   <dependency className="jetbrains.mps.kotlin.runtime.members.SignatureCollector">
     <classNode dependClassName="java.lang.Class" />
-    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="jetbrains.mps.kotlin.runtime.members.SourcedSignature" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.members.signature.MemberSignature" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
@@ -39,7 +37,6 @@
   </dependency>
   <dependency className="jetbrains.mps.kotlin.runtime.members.SuperTypesVisitor">
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.module.SRepository" />
   </dependency>
 </dependenciesRoot>
 

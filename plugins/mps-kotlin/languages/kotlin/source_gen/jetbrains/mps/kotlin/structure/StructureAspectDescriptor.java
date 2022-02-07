@@ -20,6 +20,7 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptAbstractConditionalLoop = createDescriptorForAbstractConditionalLoop();
   /*package*/ final ConceptDescriptor myConceptAbstractConstructorDeclaration = createDescriptorForAbstractConstructorDeclaration();
+  /*package*/ final ConceptDescriptor myConceptAbstractConstructorDelegationCall = createDescriptorForAbstractConstructorDelegationCall();
   /*package*/ final ConceptDescriptor myConceptAbstractEqualityOperation = createDescriptorForAbstractEqualityOperation();
   /*package*/ final ConceptDescriptor myConceptAbstractFunctionCall = createDescriptorForAbstractFunctionCall();
   /*package*/ final ConceptDescriptor myConceptAbstractInheritanceModifier = createDescriptorForAbstractInheritanceModifier();
@@ -27,6 +28,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptActualPlatformModifier = createDescriptorForActualPlatformModifier();
   /*package*/ final ConceptDescriptor myConceptAnnotation = createDescriptorForAnnotation();
   /*package*/ final ConceptDescriptor myConceptAnnotationClassModifier = createDescriptorForAnnotationClassModifier();
+  /*package*/ final ConceptDescriptor myConceptAnnotationList = createDescriptorForAnnotationList();
   /*package*/ final ConceptDescriptor myConceptAnonymousFunction = createDescriptorForAnonymousFunction();
   /*package*/ final ConceptDescriptor myConceptAnonymousInitializer = createDescriptorForAnonymousInitializer();
   /*package*/ final ConceptDescriptor myConceptAsOperation = createDescriptorForAsOperation();
@@ -47,7 +49,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptCompanionObject = createDescriptorForCompanionObject();
   /*package*/ final ConceptDescriptor myConceptCompiledStubStatement = createDescriptorForCompiledStubStatement();
   /*package*/ final ConceptDescriptor myConceptConjunction = createDescriptorForConjunction();
-  /*package*/ final ConceptDescriptor myConceptConstructorCall = createDescriptorForConstructorCall();
+  /*package*/ final ConceptDescriptor myConceptConstructorSuperSpecifier = createDescriptorForConstructorSuperSpecifier();
   /*package*/ final ConceptDescriptor myConceptContainedOperation = createDescriptorForContainedOperation();
   /*package*/ final ConceptDescriptor myConceptContinueExpression = createDescriptorForContinueExpression();
   /*package*/ final ConceptDescriptor myConceptCrossinslineParameterModifier = createDescriptorForCrossinslineParameterModifier();
@@ -88,6 +90,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptGreaterOperation = createDescriptorForGreaterOperation();
   /*package*/ final ConceptDescriptor myConceptHexLiteral = createDescriptorForHexLiteral();
   /*package*/ final ConceptDescriptor myConceptIAnnotated = createDescriptorForIAnnotated();
+  /*package*/ final ConceptDescriptor myConceptIAnnotation = createDescriptorForIAnnotation();
   /*package*/ final ConceptDescriptor myConceptIAnnotationUseSiteTarget = createDescriptorForIAnnotationUseSiteTarget();
   /*package*/ final ConceptDescriptor myConceptIArgument = createDescriptorForIArgument();
   /*package*/ final ConceptDescriptor myConceptIArguments = createDescriptorForIArguments();
@@ -96,10 +99,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptIClassMemberDeclaration = createDescriptorForIClassMemberDeclaration();
   /*package*/ final ConceptDescriptor myConceptIClassModifier = createDescriptorForIClassModifier();
   /*package*/ final ConceptDescriptor myConceptIClassReference = createDescriptorForIClassReference();
+  /*package*/ final ConceptDescriptor myConceptIClassSuperSpecifier = createDescriptorForIClassSuperSpecifier();
   /*package*/ final ConceptDescriptor myConceptIClassType = createDescriptorForIClassType();
   /*package*/ final ConceptDescriptor myConceptIConditionalFlow = createDescriptorForIConditionalFlow();
   /*package*/ final ConceptDescriptor myConceptIConstructorDeclaration = createDescriptorForIConstructorDeclaration();
   /*package*/ final ConceptDescriptor myConceptIConstructorDelegationCall = createDescriptorForIConstructorDelegationCall();
+  /*package*/ final ConceptDescriptor myConceptIConstructorSuperSpecifier = createDescriptorForIConstructorSuperSpecifier();
   /*package*/ final ConceptDescriptor myConceptIDataFlowSource = createDescriptorForIDataFlowSource();
   /*package*/ final ConceptDescriptor myConceptIDataflowPassToChild = createDescriptorForIDataflowPassToChild();
   /*package*/ final ConceptDescriptor myConceptIDataflowPassToChildren = createDescriptorForIDataflowPassToChildren();
@@ -120,7 +125,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptIInheritExplicitly = createDescriptorForIInheritExplicitly();
   /*package*/ final ConceptDescriptor myConceptIInheritable = createDescriptorForIInheritable();
   /*package*/ final ConceptDescriptor myConceptIInheritanceModifier = createDescriptorForIInheritanceModifier();
-  /*package*/ final ConceptDescriptor myConceptIInheritanceSpecifier = createDescriptorForIInheritanceSpecifier();
   /*package*/ final ConceptDescriptor myConceptIKotlinRoot = createDescriptorForIKotlinRoot();
   /*package*/ final ConceptDescriptor myConceptIKotlinRunnable = createDescriptorForIKotlinRunnable();
   /*package*/ final ConceptDescriptor myConceptILabelTarget = createDescriptorForILabelTarget();
@@ -148,6 +152,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptIStaticType = createDescriptorForIStaticType();
   /*package*/ final ConceptDescriptor myConceptIStringLiteral = createDescriptorForIStringLiteral();
   /*package*/ final ConceptDescriptor myConceptIStringLiteralContent = createDescriptorForIStringLiteralContent();
+  /*package*/ final ConceptDescriptor myConceptISuperTypeSpecifier = createDescriptorForISuperTypeSpecifier();
   /*package*/ final ConceptDescriptor myConceptIType = createDescriptorForIType();
   /*package*/ final ConceptDescriptor myConceptITypeArguments = createDescriptorForITypeArguments();
   /*package*/ final ConceptDescriptor myConceptITypeConstrained = createDescriptorForITypeConstrained();
@@ -237,9 +242,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptStringExpressionEvaluation = createDescriptorForStringExpressionEvaluation();
   /*package*/ final ConceptDescriptor myConceptStringLiteral = createDescriptorForStringLiteral();
   /*package*/ final ConceptDescriptor myConceptStringLiteralRaw = createDescriptorForStringLiteralRaw();
+  /*package*/ final ConceptDescriptor myConceptSuperClassSpecifier = createDescriptorForSuperClassSpecifier();
   /*package*/ final ConceptDescriptor myConceptSuperConstructorDelegationCall = createDescriptorForSuperConstructorDelegationCall();
   /*package*/ final ConceptDescriptor myConceptSuperExpression = createDescriptorForSuperExpression();
-  /*package*/ final ConceptDescriptor myConceptSuperInterfaceSpecifier = createDescriptorForSuperInterfaceSpecifier();
   /*package*/ final ConceptDescriptor myConceptSuspendFunctionModifier = createDescriptorForSuspendFunctionModifier();
   /*package*/ final ConceptDescriptor myConceptTailRecFunctionModifier = createDescriptorForTailRecFunctionModifier();
   /*package*/ final ConceptDescriptor myConceptThisConstructorDelegationCall = createDescriptorForThisConstructorDelegationCall();
@@ -274,7 +279,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConstrainedStringDatatypeDescriptor myCSDatatypehex = new ConstrainedStringDatatypeDescriptorImpl(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af684L, "hex", "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798374020", "[0-9a-fA-F_]+");
   /*package*/ final ConstrainedStringDatatypeDescriptor myCSDatatypekotlinString = new ConstrainedStringDatatypeDescriptorImpl(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4e07f19a410086fdL, "kotlinString", "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/5622728304613164797", "[^$]*");
   /*package*/ final ConstrainedStringDatatypeDescriptor myCSDatatypelong = new ConstrainedStringDatatypeDescriptorImpl(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af68cL, "long", "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798374028", "((([1-9](([0-9]|_))*[0-9])|[0-9])|((0[xX][0-9a-fA-F](([0-9a-fA-F]|_))*[0-9a-fA-F])|0[xX][0-9a-fA-F])|((0[bB][01](([01]|_))*[01])|0[bB][01]))[lL]");
-  /*package*/ final ConstrainedStringDatatypeDescriptor myCSDatatypereal = new ConstrainedStringDatatypeDescriptorImpl(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af68aL, "real", "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798374026", "((((((((([0-9](([0-9]|_))*[0-9])|[0-9]))?\\.(([0-9](([0-9]|_))*[0-9])|[0-9])([eE]([+-])?(([0-9](([0-9]|_))*[0-9])|[0-9]))?)|((([0-9](([0-9]|_))*[0-9])|[0-9])[eE]([+-])?(([0-9](([0-9]|_))*[0-9])|[0-9])))[fF])|((([0-9](([0-9]|_))*[0-9])|[0-9])[fF])))|(((((([0-9](([0-9]|_))*[0-9])|[0-9]))?\\.(([0-9](([0-9]|_))*[0-9])|[0-9])([eE]([+-])?(([0-9](([0-9]|_))*[0-9])|[0-9]))?)|((([0-9](([0-9]|_))*[0-9])|[0-9])[eE]([+-])?(([0-9](([0-9]|_))*[0-9])|[0-9])))))");
+  /*package*/ final ConstrainedStringDatatypeDescriptor myCSDatatypereal = new ConstrainedStringDatatypeDescriptorImpl(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af68aL, "real", "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798374026", "([-+]?((\\d+\\.\\d*)|(\\d*\\.\\d+))(?:[eE]([-+]?\\d+))?)|(\\d*[eE][-+]?\\d+)");
   /*package*/ final ConstrainedStringDatatypeDescriptor myCSDatatypeunsigned = new ConstrainedStringDatatypeDescriptorImpl(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af68eL, "unsigned", "r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798374030", "((([1-9](([0-9]|_))*[0-9])|[0-9])|((0[xX][0-9a-fA-F](([0-9a-fA-F]|_))*[0-9a-fA-F])|0[xX][0-9a-fA-F])|((0[bB][01](([01]|_))*[01])|0[bB][01]))[uU]([lL])?");
   private final LanguageConceptSwitch myIndexSwitch;
 
@@ -293,7 +298,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractConditionalLoop, myConceptAbstractConstructorDeclaration, myConceptAbstractEqualityOperation, myConceptAbstractFunctionCall, myConceptAbstractInheritanceModifier, myConceptAbstractPropertyDeclaration, myConceptActualPlatformModifier, myConceptAnnotation, myConceptAnnotationClassModifier, myConceptAnonymousFunction, myConceptAnonymousInitializer, myConceptAsOperation, myConceptAssignment, myConceptBinLiteral, myConceptBinaryExpression, myConceptBooleanLiteral, myConceptBreakExpression, myConceptCallOperation, myConceptCatchBlock, myConceptCharLiteral, myConceptClassDeclaration, myConceptClassMemberTarget, myConceptClassParameter, myConceptClassType, myConceptCollectionLiteral, myConceptComment, myConceptCompanionObject, myConceptCompiledStubStatement, myConceptConjunction, myConceptConstructorCall, myConceptContainedOperation, myConceptContinueExpression, myConceptCrossinslineParameterModifier, myConceptDataClassModifier, myConceptDecOperation, myConceptDelegateUseSiteTarget, myConceptDisjunction, myConceptDivOperation, myConceptDoWhileStatement, myConceptDynamicType, myConceptElvisOperator, myConceptEmptyClassMemberDeclaration, myConceptEmptyDeclaration, myConceptEmptyStatement, myConceptEnumClassDeclaration, myConceptEnumClassModifier, myConceptEnumEntry, myConceptEqualsOperation, myConceptExpectPlatformModifier, myConceptExternalFunctionModifier, myConceptFieldUseSiteTarget, myConceptFileAnnotation, myConceptFinalInheritanceModifier, myConceptFinallyBlock, myConceptFlexibleBlock, myConceptFlippedOverloadedBinaryExpression, myConceptForStatement, myConceptFunctionBody, myConceptFunctionCallExpression, myConceptFunctionCallTarget, myConceptFunctionDeclaration, myConceptFunctionMemberTarget, myConceptFunctionParameter, myConceptFunctionType, myConceptFunctionTypeParameter, myConceptGetUseSiteTarget, myConceptGreaterEqOperation, myConceptGreaterOperation, myConceptHexLiteral, myConceptIAnnotated, myConceptIAnnotationUseSiteTarget, myConceptIArgument, myConceptIArguments, myConceptIClassDeclaration, myConceptIClassLike, myConceptIClassMemberDeclaration, myConceptIClassModifier, myConceptIClassReference, myConceptIClassType, myConceptIConditionalFlow, myConceptIConstructorDeclaration, myConceptIConstructorDelegationCall, myConceptIDataFlowSource, myConceptIDataflowPassToChild, myConceptIDataflowPassToChildren, myConceptIDeclaration, myConceptIDeclarationHolder, myConceptIDeclarationScopePart, myConceptIElseExpression, myConceptIExpression, myConceptIExpressionLike, myConceptIFunctionCallLike, myConceptIFunctionDeclaration, myConceptIFunctionIdentifier, myConceptIFunctionMemberTarget, myConceptIFunctionModifier, myConceptIFunctionParameters, myConceptIIdentifier, myConceptIInferencePart, myConceptIInheritExplicitly, myConceptIInheritable, myConceptIInheritanceModifier, myConceptIInheritanceSpecifier, myConceptIKotlinRoot, myConceptIKotlinRunnable, myConceptILabelTarget, myConceptILabelled, myConceptILambdaAsArgument, myConceptILambdaParameter, myConceptILeftExpression, myConceptIMemberTarget, myConceptINavigationTarget, myConceptINullableType, myConceptIObject, myConceptIOverloadableOperator, myConceptIParameterModifier, myConceptIPlatformModifier, myConceptIProjectedTypeArguments, myConceptIPropertyAssignment, myConceptIRegularFunctionCall, myConceptIResolvable, myConceptIResolvableReference, myConceptIReturnType, myConceptISelfHandledAssignment, myConceptIStatement, myConceptIStatementHolder, myConceptIStatementScopePart, myConceptIStaticType, myConceptIStringLiteral, myConceptIStringLiteralContent, myConceptIType, myConceptITypeArguments, myConceptITypeConstrained, myConceptITypeParameterReference, myConceptITypeParameters, myConceptITypeProjection, myConceptIVariableDeclarationConstraintHolder, myConceptIVariableIdentifier, myConceptIVisible, myConceptIWhenCondition, myConceptIWithClassBody, myConceptIWithReceiver, myConceptIdentityOperator, myConceptIfExpression, myConceptImportHeader, myConceptIncOperation, myConceptIncompleteDeclaration, myConceptIndexOperation, myConceptInfixCallOperator, myConceptInfixFunctionModifier, myConceptInlineFunctionModifier, myConceptInnerClassModifier, myConceptIntegerLiteral, myConceptInterfaceDeclaration, myConceptInternalVisibility, myConceptIntersectionType, myConceptIsOperator, myConceptKotlinFile, myConceptKtScript, myConceptLabel, myConceptLambdaLiteral, myConceptLessEqOperation, myConceptLessOperation, myConceptLocalPropertyDeclaration, myConceptLongLiteral, myConceptMemberNavigationOperation, myConceptMinusOperation, myConceptMultiLambdaParameter, myConceptMultiLineStringLiteral, myConceptNavigationOperation, myConceptNoinlineParameterModifier, myConceptNotContainedOperation, myConceptNotEqualsOperation, myConceptNotOperation, myConceptNullLiteral, myConceptNullSafeOperation, myConceptNumericBaseLiteral, myConceptObjectDeclaration, myConceptObjectLiteral, myConceptOpenInheritanceModifier, myConceptOperatorFunctionModifier, myConceptOverloadedAssignment, myConceptOverloadedBinaryExpression, myConceptOverloadedPostfixUnaryExpression, myConceptOverloadedPrefixUnaryExpression, myConceptPackageHeader, myConceptParamUseSiteTarget, myConceptParameter, myConceptParameterWithOptionalType, myConceptParenthesizedExpression, myConceptPlusOperation, myConceptPostfixDecOperation, myConceptPostfixIncOperation, myConceptPostfixUnaryExpression, myConceptPrefixUnaryExpression, myConceptPrimaryConstructor, myConceptPrivateVisibility, myConceptPropertyDeclaration, myConceptPropertyDefaultAssignement, myConceptPropertyDelegateAssignement, myConceptPropertyGetter, myConceptPropertySetter, myConceptPropertyUseSiteTarget, myConceptProtectedVisibility, myConceptPublicVisibility, myConceptRangeToOperation, myConceptRealLiteral, myConceptReceiverType, myConceptReceiverUseSiteTarget, myConceptRemOperation, myConceptReturnExpression, myConceptSealedInheritanceModifier, myConceptSecondaryConstructor, myConceptSetUseSiteTarget, myConceptSetparamUseSiteTarget, myConceptStarProjection, myConceptStringExpressionEvaluation, myConceptStringLiteral, myConceptStringLiteralRaw, myConceptSuperConstructorDelegationCall, myConceptSuperExpression, myConceptSuperInterfaceSpecifier, myConceptSuspendFunctionModifier, myConceptTailRecFunctionModifier, myConceptThisConstructorDelegationCall, myConceptThisExpression, myConceptThrowExpression, myConceptTimesOperation, myConceptTryExpression, myConceptTypeAlias, myConceptTypeAliasType, myConceptTypeConstraint, myConceptTypeParameter, myConceptTypeParameterReference, myConceptTypePostFixUnaryExpression, myConceptTypeProjection, myConceptTypeTest, myConceptUnaryExpression, myConceptUnaryMinusOperation, myConceptUnaryPlusOperation, myConceptUnresolvedParsedReference, myConceptUnsignedLiteral, myConceptValueArgument, myConceptVariableDeclaration, myConceptVariableRefExpression, myConceptVisibilityModifier, myConceptWhenEntry, myConceptWhenExpression, myConceptWhileStatement);
+    return Arrays.asList(myConceptAbstractConditionalLoop, myConceptAbstractConstructorDeclaration, myConceptAbstractConstructorDelegationCall, myConceptAbstractEqualityOperation, myConceptAbstractFunctionCall, myConceptAbstractInheritanceModifier, myConceptAbstractPropertyDeclaration, myConceptActualPlatformModifier, myConceptAnnotation, myConceptAnnotationClassModifier, myConceptAnnotationList, myConceptAnonymousFunction, myConceptAnonymousInitializer, myConceptAsOperation, myConceptAssignment, myConceptBinLiteral, myConceptBinaryExpression, myConceptBooleanLiteral, myConceptBreakExpression, myConceptCallOperation, myConceptCatchBlock, myConceptCharLiteral, myConceptClassDeclaration, myConceptClassMemberTarget, myConceptClassParameter, myConceptClassType, myConceptCollectionLiteral, myConceptComment, myConceptCompanionObject, myConceptCompiledStubStatement, myConceptConjunction, myConceptConstructorSuperSpecifier, myConceptContainedOperation, myConceptContinueExpression, myConceptCrossinslineParameterModifier, myConceptDataClassModifier, myConceptDecOperation, myConceptDelegateUseSiteTarget, myConceptDisjunction, myConceptDivOperation, myConceptDoWhileStatement, myConceptDynamicType, myConceptElvisOperator, myConceptEmptyClassMemberDeclaration, myConceptEmptyDeclaration, myConceptEmptyStatement, myConceptEnumClassDeclaration, myConceptEnumClassModifier, myConceptEnumEntry, myConceptEqualsOperation, myConceptExpectPlatformModifier, myConceptExternalFunctionModifier, myConceptFieldUseSiteTarget, myConceptFileAnnotation, myConceptFinalInheritanceModifier, myConceptFinallyBlock, myConceptFlexibleBlock, myConceptFlippedOverloadedBinaryExpression, myConceptForStatement, myConceptFunctionBody, myConceptFunctionCallExpression, myConceptFunctionCallTarget, myConceptFunctionDeclaration, myConceptFunctionMemberTarget, myConceptFunctionParameter, myConceptFunctionType, myConceptFunctionTypeParameter, myConceptGetUseSiteTarget, myConceptGreaterEqOperation, myConceptGreaterOperation, myConceptHexLiteral, myConceptIAnnotated, myConceptIAnnotation, myConceptIAnnotationUseSiteTarget, myConceptIArgument, myConceptIArguments, myConceptIClassDeclaration, myConceptIClassLike, myConceptIClassMemberDeclaration, myConceptIClassModifier, myConceptIClassReference, myConceptIClassSuperSpecifier, myConceptIClassType, myConceptIConditionalFlow, myConceptIConstructorDeclaration, myConceptIConstructorDelegationCall, myConceptIConstructorSuperSpecifier, myConceptIDataFlowSource, myConceptIDataflowPassToChild, myConceptIDataflowPassToChildren, myConceptIDeclaration, myConceptIDeclarationHolder, myConceptIDeclarationScopePart, myConceptIElseExpression, myConceptIExpression, myConceptIExpressionLike, myConceptIFunctionCallLike, myConceptIFunctionDeclaration, myConceptIFunctionIdentifier, myConceptIFunctionMemberTarget, myConceptIFunctionModifier, myConceptIFunctionParameters, myConceptIIdentifier, myConceptIInferencePart, myConceptIInheritExplicitly, myConceptIInheritable, myConceptIInheritanceModifier, myConceptIKotlinRoot, myConceptIKotlinRunnable, myConceptILabelTarget, myConceptILabelled, myConceptILambdaAsArgument, myConceptILambdaParameter, myConceptILeftExpression, myConceptIMemberTarget, myConceptINavigationTarget, myConceptINullableType, myConceptIObject, myConceptIOverloadableOperator, myConceptIParameterModifier, myConceptIPlatformModifier, myConceptIProjectedTypeArguments, myConceptIPropertyAssignment, myConceptIRegularFunctionCall, myConceptIResolvable, myConceptIResolvableReference, myConceptIReturnType, myConceptISelfHandledAssignment, myConceptIStatement, myConceptIStatementHolder, myConceptIStatementScopePart, myConceptIStaticType, myConceptIStringLiteral, myConceptIStringLiteralContent, myConceptISuperTypeSpecifier, myConceptIType, myConceptITypeArguments, myConceptITypeConstrained, myConceptITypeParameterReference, myConceptITypeParameters, myConceptITypeProjection, myConceptIVariableDeclarationConstraintHolder, myConceptIVariableIdentifier, myConceptIVisible, myConceptIWhenCondition, myConceptIWithClassBody, myConceptIWithReceiver, myConceptIdentityOperator, myConceptIfExpression, myConceptImportHeader, myConceptIncOperation, myConceptIncompleteDeclaration, myConceptIndexOperation, myConceptInfixCallOperator, myConceptInfixFunctionModifier, myConceptInlineFunctionModifier, myConceptInnerClassModifier, myConceptIntegerLiteral, myConceptInterfaceDeclaration, myConceptInternalVisibility, myConceptIntersectionType, myConceptIsOperator, myConceptKotlinFile, myConceptKtScript, myConceptLabel, myConceptLambdaLiteral, myConceptLessEqOperation, myConceptLessOperation, myConceptLocalPropertyDeclaration, myConceptLongLiteral, myConceptMemberNavigationOperation, myConceptMinusOperation, myConceptMultiLambdaParameter, myConceptMultiLineStringLiteral, myConceptNavigationOperation, myConceptNoinlineParameterModifier, myConceptNotContainedOperation, myConceptNotEqualsOperation, myConceptNotOperation, myConceptNullLiteral, myConceptNullSafeOperation, myConceptNumericBaseLiteral, myConceptObjectDeclaration, myConceptObjectLiteral, myConceptOpenInheritanceModifier, myConceptOperatorFunctionModifier, myConceptOverloadedAssignment, myConceptOverloadedBinaryExpression, myConceptOverloadedPostfixUnaryExpression, myConceptOverloadedPrefixUnaryExpression, myConceptPackageHeader, myConceptParamUseSiteTarget, myConceptParameter, myConceptParameterWithOptionalType, myConceptParenthesizedExpression, myConceptPlusOperation, myConceptPostfixDecOperation, myConceptPostfixIncOperation, myConceptPostfixUnaryExpression, myConceptPrefixUnaryExpression, myConceptPrimaryConstructor, myConceptPrivateVisibility, myConceptPropertyDeclaration, myConceptPropertyDefaultAssignement, myConceptPropertyDelegateAssignement, myConceptPropertyGetter, myConceptPropertySetter, myConceptPropertyUseSiteTarget, myConceptProtectedVisibility, myConceptPublicVisibility, myConceptRangeToOperation, myConceptRealLiteral, myConceptReceiverType, myConceptReceiverUseSiteTarget, myConceptRemOperation, myConceptReturnExpression, myConceptSealedInheritanceModifier, myConceptSecondaryConstructor, myConceptSetUseSiteTarget, myConceptSetparamUseSiteTarget, myConceptStarProjection, myConceptStringExpressionEvaluation, myConceptStringLiteral, myConceptStringLiteralRaw, myConceptSuperClassSpecifier, myConceptSuperConstructorDelegationCall, myConceptSuperExpression, myConceptSuspendFunctionModifier, myConceptTailRecFunctionModifier, myConceptThisConstructorDelegationCall, myConceptThisExpression, myConceptThrowExpression, myConceptTimesOperation, myConceptTryExpression, myConceptTypeAlias, myConceptTypeAliasType, myConceptTypeConstraint, myConceptTypeParameter, myConceptTypeParameterReference, myConceptTypePostFixUnaryExpression, myConceptTypeProjection, myConceptTypeTest, myConceptUnaryExpression, myConceptUnaryMinusOperation, myConceptUnaryPlusOperation, myConceptUnresolvedParsedReference, myConceptUnsignedLiteral, myConceptValueArgument, myConceptVariableDeclaration, myConceptVariableRefExpression, myConceptVisibilityModifier, myConceptWhenEntry, myConceptWhenExpression, myConceptWhileStatement);
   }
 
   @Override
@@ -304,6 +309,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptAbstractConditionalLoop;
       case LanguageConceptSwitch.AbstractConstructorDeclaration:
         return myConceptAbstractConstructorDeclaration;
+      case LanguageConceptSwitch.AbstractConstructorDelegationCall:
+        return myConceptAbstractConstructorDelegationCall;
       case LanguageConceptSwitch.AbstractEqualityOperation:
         return myConceptAbstractEqualityOperation;
       case LanguageConceptSwitch.AbstractFunctionCall:
@@ -318,6 +325,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptAnnotation;
       case LanguageConceptSwitch.AnnotationClassModifier:
         return myConceptAnnotationClassModifier;
+      case LanguageConceptSwitch.AnnotationList:
+        return myConceptAnnotationList;
       case LanguageConceptSwitch.AnonymousFunction:
         return myConceptAnonymousFunction;
       case LanguageConceptSwitch.AnonymousInitializer:
@@ -358,8 +367,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptCompiledStubStatement;
       case LanguageConceptSwitch.Conjunction:
         return myConceptConjunction;
-      case LanguageConceptSwitch.ConstructorCall:
-        return myConceptConstructorCall;
+      case LanguageConceptSwitch.ConstructorSuperSpecifier:
+        return myConceptConstructorSuperSpecifier;
       case LanguageConceptSwitch.ContainedOperation:
         return myConceptContainedOperation;
       case LanguageConceptSwitch.ContinueExpression:
@@ -440,6 +449,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptHexLiteral;
       case LanguageConceptSwitch.IAnnotated:
         return myConceptIAnnotated;
+      case LanguageConceptSwitch.IAnnotation:
+        return myConceptIAnnotation;
       case LanguageConceptSwitch.IAnnotationUseSiteTarget:
         return myConceptIAnnotationUseSiteTarget;
       case LanguageConceptSwitch.IArgument:
@@ -456,6 +467,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptIClassModifier;
       case LanguageConceptSwitch.IClassReference:
         return myConceptIClassReference;
+      case LanguageConceptSwitch.IClassSuperSpecifier:
+        return myConceptIClassSuperSpecifier;
       case LanguageConceptSwitch.IClassType:
         return myConceptIClassType;
       case LanguageConceptSwitch.IConditionalFlow:
@@ -464,6 +477,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptIConstructorDeclaration;
       case LanguageConceptSwitch.IConstructorDelegationCall:
         return myConceptIConstructorDelegationCall;
+      case LanguageConceptSwitch.IConstructorSuperSpecifier:
+        return myConceptIConstructorSuperSpecifier;
       case LanguageConceptSwitch.IDataFlowSource:
         return myConceptIDataFlowSource;
       case LanguageConceptSwitch.IDataflowPassToChild:
@@ -504,8 +519,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptIInheritable;
       case LanguageConceptSwitch.IInheritanceModifier:
         return myConceptIInheritanceModifier;
-      case LanguageConceptSwitch.IInheritanceSpecifier:
-        return myConceptIInheritanceSpecifier;
       case LanguageConceptSwitch.IKotlinRoot:
         return myConceptIKotlinRoot;
       case LanguageConceptSwitch.IKotlinRunnable:
@@ -560,6 +573,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptIStringLiteral;
       case LanguageConceptSwitch.IStringLiteralContent:
         return myConceptIStringLiteralContent;
+      case LanguageConceptSwitch.ISuperTypeSpecifier:
+        return myConceptISuperTypeSpecifier;
       case LanguageConceptSwitch.IType:
         return myConceptIType;
       case LanguageConceptSwitch.ITypeArguments:
@@ -738,12 +753,12 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptStringLiteral;
       case LanguageConceptSwitch.StringLiteralRaw:
         return myConceptStringLiteralRaw;
+      case LanguageConceptSwitch.SuperClassSpecifier:
+        return myConceptSuperClassSpecifier;
       case LanguageConceptSwitch.SuperConstructorDelegationCall:
         return myConceptSuperConstructorDelegationCall;
       case LanguageConceptSwitch.SuperExpression:
         return myConceptSuperExpression;
-      case LanguageConceptSwitch.SuperInterfaceSpecifier:
-        return myConceptSuperInterfaceSpecifier;
       case LanguageConceptSwitch.SuspendFunctionModifier:
         return myConceptSuspendFunctionModifier;
       case LanguageConceptSwitch.TailRecFunctionModifier:
@@ -833,6 +848,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForAbstractConstructorDelegationCall() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "AbstractConstructorDelegationCall", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56a195b73L);
+    b.class_(false, true, false);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af590L);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL);
+    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1806979145064340339");
+    b.version(3);
+    b.associate("constructor", 0x1913adf56a196517L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x7069a625f2b0238aL).optional(false).origin("1806979145064342807").done();
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForAbstractEqualityOperation() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "AbstractEqualityOperation", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x35c828d9d1f9c3dfL);
     b.class_(false, true, false);
@@ -886,13 +911,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForAnnotation() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "Annotation", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37fL);
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "Annotation", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x446a1050b763ccb9L);
     b.class_(false, false, false);
-    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373247");
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x446a1050b763d58eL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L);
+    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/4929770680970628281");
     b.version(3);
-    b.aggregate("target", 0x1ba36e493dc8425bL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f3L).optional(true).ordered(true).multiple(false).origin("1991556721076093531").done();
-    b.aggregate("annotations", 0x1ba36e493dc8425cL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f6L).optional(false).ordered(true).multiple(true).origin("1991556721076093532").done();
-    b.alias("@<target>:<annotations>");
+    b.associate("constructor", 0x446a1050b7640681L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x7069a625f2b0238aL).optional(false).origin("4929770680970643073").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForAnnotationClassModifier() {
@@ -902,6 +928,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373385");
     b.version(3);
     b.alias("annotation");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForAnnotationList() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "AnnotationList", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37fL);
+    b.class_(false, false, false);
+    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373247");
+    b.version(3);
+    b.aggregate("target", 0x1ba36e493dc8425bL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f3L).optional(true).ordered(true).multiple(false).origin("1991556721076093531").done();
+    b.aggregate("annotations", 0x1ba36e493dc8425cL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x446a1050b763d58eL).optional(false).ordered(true).multiple(true).origin("1991556721076093532").done();
+    b.alias("@<target>:<annotations>");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForAnonymousFunction() {
@@ -923,6 +959,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af30fL);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x7b9f2288076b136aL);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373641");
     b.version(3);
     b.aggregate("block_", 0x28bef6d7551af84aL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3e7L).optional(true).ordered(true).multiple(false).origin("2936055411798374474").done();
@@ -1111,6 +1148,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af322L);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af366L);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1781658014498910083");
     b.version(3);
     return b.create();
@@ -1126,12 +1164,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.alias("&&");
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForConstructorCall() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "ConstructorCall", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f6L);
+  private static ConceptDescriptor createDescriptorForConstructorSuperSpecifier() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "ConstructorSuperSpecifier", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f6L);
     b.class_(false, false, false);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56ae8700cL);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373622");
     b.version(3);
     b.associate("target", 0x2043bc8310ba5a7cL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x7069a625f2b0238aL).optional(false).origin("2324909103760693884").done();
@@ -1281,6 +1317,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.aggregate("entries", 0x2043bc8310a23f49L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af533L).optional(true).ordered(true).multiple(true).origin("2324909103759114057").done();
     b.aggregate("modifier", 0x6d8f858263f11c0dL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af407L).optional(false).ordered(true).multiple(false).origin("7894675466872757261").specialize(0x28bef6d7551af469L, 0x28bef6d7551af762L).done();
+    b.aggregate("inheritance", 0x1913adf56a916050L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f3L).optional(true).ordered(true).multiple(false).origin("1806979145072205904").specialize(0x537372687dd3bcdaL, 0x537372687dd3bcdbL).done();
     b.alias("enum class");
     return b.create();
   }
@@ -1399,12 +1436,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c446692eL);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xa2222779c25a386L);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b8869eeL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x45d70ebd55a93439L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373413");
     b.version(3);
+    b.associate("nextFunction", 0x75af38675680fab9L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2a5d3409768d2f2bL).optional(true).origin("8480058639846013625").done();
+    b.associate("iteratorFunction", 0x75af38675680f11cL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2a5d3409768d2f2bL).optional(true).origin("8480058639846011164").specialize(0x45d70ebd55a93439L, 0x3b847d7171e0e680L).done();
     b.aggregate("variables", 0x28bef6d7551af707L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af571L).optional(false).ordered(true).multiple(true).origin("2936055411798374151").done();
     b.aggregate("in", 0x28bef6d7551af708L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L).optional(false).ordered(true).multiple(false).origin("2936055411798374152").done();
     b.aggregate("body_", 0x28bef6d7551af70aL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3e7L).optional(true).ordered(true).multiple(false).origin("2936055411798374154").done();
-    b.alias("for in");
+    b.alias("for");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForFunctionBody() {
@@ -1557,6 +1597,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("annotations", 0x6e77b7e7a89e49fbL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37fL).optional(true).ordered(true).multiple(true).origin("7960033071994915323").done();
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForIAnnotation() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "IAnnotation", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x446a1050b763d58eL);
+    b.interface_();
+    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/4929770680970630542");
+    b.version(3);
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForIAnnotationUseSiteTarget() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "IAnnotationUseSiteTarget", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f3L);
     b.interface_();
@@ -1629,6 +1676,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.associate("class", 0x5c7be90f2440b37bL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x298a6a355c110274L).optional(false).origin("6664176324866782075").done();
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForIClassSuperSpecifier() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "IClassSuperSpecifier", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56af0af90L);
+    b.interface_();
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L);
+    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1806979145078452112");
+    b.version(3);
+    b.aggregate("delegate", 0x2043bc8310b9b197L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L).optional(true).ordered(true).multiple(false).origin("2324909103760650647").done();
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForIClassType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "IClassType", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x729709d72e3594f9L);
     b.interface_();
@@ -1658,6 +1715,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "IConstructorDelegationCall", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af590L);
     b.interface_();
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373776");
+    b.version(3);
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForIConstructorSuperSpecifier() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "IConstructorSuperSpecifier", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56ae8700cL);
+    b.interface_();
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L);
+    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1806979145077911564");
     b.version(3);
     return b.create();
   }
@@ -1716,7 +1783,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForIExpression() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "IExpression", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L);
     b.interface_();
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af59aL);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af322L);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x695a62ae1c28f688L);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xa2222779c25749dL);
@@ -1813,13 +1879,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "IInheritanceModifier", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f1L);
     b.interface_();
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373617");
-    b.version(3);
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForIInheritanceSpecifier() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "IInheritanceSpecifier", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL);
-    b.interface_();
-    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2324909103761180684");
     b.version(3);
     return b.create();
   }
@@ -2040,6 +2099,13 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForISuperTypeSpecifier() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "ISuperTypeSpecifier", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL);
+    b.interface_();
+    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2324909103761180684");
+    b.version(3);
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForIType() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "IType", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af441L);
     b.interface_();
@@ -2188,6 +2254,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2998782254613004746");
     b.version(3);
     b.property("isOverride", 0x299dd0928588bc10L).type(PrimitiveTypeId.BOOLEAN).origin("2998782254622751760").done();
+    b.aggregate("funModifiers", 0x1913adf568d1fd3dL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3beL).optional(true).ordered(true).multiple(true).origin("1806979145042885949").done();
+    b.aggregate("classModifier", 0x1913adf568e9b69cL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af406L).optional(true).ordered(true).multiple(false).origin("1806979145044440732").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForIndexOperation() {
@@ -2206,9 +2274,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     // extends: jetbrains.mps.kotlin.structure.BinaryExpression
     b.super_(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5a442f44db6c8a2cL);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186886598");
     b.version(3);
-    b.associate("method", 0x11400bb7909561c8L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L).optional(false).origin("1243006380186886600").done();
+    b.associate("function", 0x11400bb7909561c8L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L).optional(false).origin("1243006380186886600").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForInfixFunctionModifier() {
@@ -2284,7 +2353,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     // extends: jetbrains.mps.kotlin.structure.TypePostFixUnaryExpression
     b.super_(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6babb2d406575098L);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af59aL);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186882004");
     b.version(3);
     b.property("negation", 0x11400bb790d35184L).type(PrimitiveTypeId.BOOLEAN).origin("1243006380190945668").done();
@@ -2730,6 +2798,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x25a91847838b6458L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373537");
     b.version(3);
     b.property("isOverride", 0x441fd2709ed45e6aL).type(PrimitiveTypeId.BOOLEAN).origin("4908873500000018026").done();
@@ -2960,11 +3029,20 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("content", 0x11400bb790af28deL).type(MetaIdFactory.dataTypeId(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4e07f19a410086fdL)).origin("1243006380188575966").done();
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForSuperClassSpecifier() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "SuperClassSpecifier", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310b9b194L);
+    b.class_(false, false, false);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56af0af90L);
+    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2324909103760650644");
+    b.version(3);
+    b.associate("target", 0x2043bc8310b9b195L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b56dL).optional(false).origin("2324909103760650645").done();
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForSuperConstructorDelegationCall() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "SuperConstructorDelegationCall", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af592L);
     b.class_(false, false, false);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af590L);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL);
+    // extends: jetbrains.mps.kotlin.structure.AbstractConstructorDelegationCall
+    b.super_(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56a195b73L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373778");
     b.version(3);
     b.alias("super");
@@ -2979,17 +3057,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.associate("targetType", 0x441fd2709ed9e88aL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b56dL).optional(true).origin("4908873500000381066").done();
     b.associate("targetLabel", 0x631027d1c4473729L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b56dL).optional(true).origin("7138249191276885801").done();
     b.alias("super");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForSuperInterfaceSpecifier() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "SuperInterfaceSpecifier", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310b9b194L);
-    b.class_(false, false, false);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310c1c80cL);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L);
-    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2324909103760650644");
-    b.version(3);
-    b.associate("target", 0x2043bc8310b9b195L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b56dL).optional(false).origin("2324909103760650645").done();
-    b.aggregate("delegate", 0x2043bc8310b9b197L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L).optional(true).ordered(true).multiple(false).origin("2324909103760650647").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForSuspendFunctionModifier() {
@@ -3013,8 +3080,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForThisConstructorDelegationCall() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "ThisConstructorDelegationCall", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af591L);
     b.class_(false, false, false);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af590L);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL);
+    // extends: jetbrains.mps.kotlin.structure.AbstractConstructorDelegationCall
+    b.super_(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56a195b73L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373777");
     b.version(3);
     b.alias("this");
@@ -3143,7 +3210,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   private static ConceptDescriptor createDescriptorForTypeTest() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "TypeTest", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af41fL);
     b.class_(false, false, false);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af59aL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373407");
     b.version(3);
     b.property("negation", 0x11400bb7909c9e30L).type(PrimitiveTypeId.BOOLEAN).origin("1243006380187360816").done();
@@ -3216,7 +3283,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373753");
     b.version(3);
     b.property("isVararg", 0x11400bb790b4ef7eL).type(PrimitiveTypeId.BOOLEAN).origin("201447423889840381").done();
-    b.associate("parameter", 0x11400bb790b4f87bL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L).optional(true).origin("1243006380188956795").done();
+    b.associate("parameter", 0x11400bb790b4f87bL).target(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L).optional(true).origin("1243006380188956795").done();
     b.aggregate("expression", 0x28bef6d7551af924L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L).optional(false).ordered(true).multiple(false).origin("2936055411798374692").done();
     b.alias("<param> = <value>");
     return b.create();
@@ -3258,8 +3325,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x35c828d9d27f9e83L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373265");
     b.version(3);
-    b.aggregate("conditions", 0x28bef6d7551af630L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af59aL).optional(false).ordered(true).multiple(true).origin("2936055411798373936").done();
-    b.aggregate("body", 0x28bef6d7551af635L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3e7L).optional(true).ordered(true).multiple(false).origin("2936055411798373941").done();
+    b.aggregate("conditions", 0x28bef6d7551af630L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L).optional(false).ordered(true).multiple(true).origin("2936055411798373936").done();
+    b.aggregate("body_", 0x28bef6d7551af635L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3e7L).optional(true).ordered(true).multiple(false).origin("2936055411798373941").done();
     b.alias("->");
     return b.create();
   }
@@ -3267,6 +3334,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "WhenExpression", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af532L);
     b.class_(false, false, false);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x33d23ee961a0cbf3L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373682");
     b.version(3);
     b.aggregate("variableDeclaration", 0x11400bb790af4cf0L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af571L).optional(true).ordered(true).multiple(false).origin("1243006380188585200").done();

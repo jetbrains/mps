@@ -56,6 +56,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     Style style = new StyleImpl();
     style.set(StyleAttributes.PUNCTUATION_RIGHT, true);
     style.set(StyleAttributes.NAVIGATABLE_SREFERENCE, LINKS.provider$q4XC);
+    style.set(StyleAttributes.EDITABLE, false);
     editorCell.getStyle().putAll(style);
     UnaryExpression_RemoveFromSuffix.setCellActions(editorCell, myNode, getEditorContext());
     return editorCell;

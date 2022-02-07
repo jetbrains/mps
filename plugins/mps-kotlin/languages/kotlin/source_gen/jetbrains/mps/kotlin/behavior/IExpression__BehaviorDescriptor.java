@@ -30,7 +30,7 @@ public final class IExpression__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static Precedence getPrecedenceLevel_id666oMY59eOv(@NotNull SNode __thisNode__) {
-    return Precedence.DEFAULT;
+    return Precedence.notApplicable();
   }
   /*package*/ static KotlinParameterDeclaration getNamedTarget_id2PMtXoK3vgE(@NotNull SNode __thisNode__) {
     // Expression is unnamed argument

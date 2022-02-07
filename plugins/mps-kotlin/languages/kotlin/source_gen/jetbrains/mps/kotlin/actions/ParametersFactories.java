@@ -8,8 +8,10 @@ import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
@@ -38,15 +40,39 @@ public class ParametersFactories {
       }
     }
   }
+  public static class NodeFactory_1806979145075646805 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
+      {
+        final SNode withArgs = sampleNode;
+        if (SNodeOperations.isInstanceOf(withArgs, CONCEPTS.ITypeArguments$p9)) {
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.typeArguments$86s6)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(withArgs, LINKS.typeArguments$86s6)));
+        }
+      }
+    }
+  }
+  public static class NodeFactory_4929770680975399214 implements NodeFactory {
+    public void setup(SNode newNode, SNode sampleNode, SNode enclosingNode, int index, SModel model) {
+      {
+        final SNode withArgs = sampleNode;
+        if (SNodeOperations.isInstanceOf(withArgs, CONCEPTS.IArguments$xj)) {
+          ListSequence.fromList(SLinkOperations.getChildren(newNode, LINKS.arguments$zJyV)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(withArgs, LINKS.arguments$zJyV)));
+        }
+      }
+    }
+  }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Parameter$o8 = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L, "jetbrains.mps.kotlin.structure.Parameter");
     /*package*/ static final SConcept ClassParameter$wQ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, "jetbrains.mps.kotlin.structure.ClassParameter");
+    /*package*/ static final SInterfaceConcept ITypeArguments$p9 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L, "jetbrains.mps.kotlin.structure.ITypeArguments");
+    /*package*/ static final SInterfaceConcept IArguments$xj = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL, "jetbrains.mps.kotlin.structure.IArguments");
   }
 
   private static final class LINKS {
     /*package*/ static final SContainmentLink defaultValue$1bcs = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L, 0x63c34deca4888fe4L, "defaultValue");
     /*package*/ static final SContainmentLink type$1aXr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca4888fe2L, 0x63c34deca4888fe3L, "type");
+    /*package*/ static final SContainmentLink typeArguments$86s6 = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L, 0x5b1dd60162c9757cL, "typeArguments");
+    /*package*/ static final SContainmentLink arguments$zJyV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL, 0x5b1dd60162ecf00cL, "arguments");
   }
 
   private static final class PROPS {

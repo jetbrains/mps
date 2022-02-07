@@ -80,7 +80,7 @@ __switch__:
   }
   public static void declareClass(SignatureCollector collector, final SNode method) {
     // TODO if kotlin has equivalent class, ignore?
-    collector.addSimpleDeclaration(method, false, ClassSignature.class, () -> KotlinSignatures.forClassDeclaration(method));
+    collector.addSimpleDeclaration(method, false, ClassSignature.class, () -> new ClassSignature(SPropertyOperations.getString(method, PROPS.name$MnvL)));
   }
 
   public static void declareConstructor(SignatureCollector collector, final JavaToKtEngine converter, final SNode method) {

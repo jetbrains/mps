@@ -13,11 +13,11 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 
 public class FilteredSignatureCollector implements SignatureCollector {
-  private final SignatureFilter myFilter;
+  private final SignatureFilter<?> myFilter;
   private final Set<SNode> sourcesCollected = SetSequence.fromSet(new HashSet<SNode>());
   private final boolean filterBySignature;
 
-  public FilteredSignatureCollector(SignatureFilter filter) {
+  public FilteredSignatureCollector(SignatureFilter<?> filter) {
     myFilter = filter;
     // TODO Hack: default filter do not need to filter on signature
     filterBySignature = filter.getClass() != SignatureFilter.class;
@@ -32,7 +32,7 @@ public class FilteredSignatureCollector implements SignatureCollector {
 
     if (filterBySignature) {
       for (T signature : Sequence.fromIterable(signaturesBuilder.invoke())) {
-        if (!(myFilter.accept(signature, source))) {
+        if (!(myFilter.acceptSignature(signature, source))) {
           continue;
         }
 

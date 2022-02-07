@@ -25,7 +25,6 @@
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
     <import index="5m2i" ref="r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)" implicit="true" />
     <import index="hez" ref="r:b038209d-51a9-4919-b6e5-4fafce96fa00(jetbrains.mps.kotlin.behavior)" implicit="true" />
-    <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" implicit="true" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
@@ -78,10 +77,6 @@
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
-      <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
-        <child id="1070534934091" name="type" index="10QFUM" />
-        <child id="1070534934092" name="expression" index="10QFUP" />
-      </concept>
       <concept id="1068390468198" name="jetbrains.mps.baseLanguage.structure.ClassConcept" flags="ig" index="312cEu">
         <child id="1165602531693" name="superclass" index="1zkMxy" />
       </concept>
@@ -149,6 +144,7 @@
       </concept>
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
+        <child id="1109201940907" name="parameter" index="11_B2D" />
       </concept>
       <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
         <child id="1081773367579" name="rightExpression" index="3uHU7w" />
@@ -220,9 +216,6 @@
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
       <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
-      <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
-        <child id="1145404616321" name="leftExpression" index="2JrQYb" />
-      </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
@@ -386,19 +379,6 @@
                         </node>
                         <node concept="37vLTw" id="2ZbCiJanhAO" role="1LFl5Q">
                           <ref role="3cqZAo" node="3lDDPlndktI" resolve="context" />
-                        </node>
-                      </node>
-                      <node concept="2OqwBi" id="SXWwXPZPH4" role="37wK5m">
-                        <node concept="2OqwBi" id="SXWwXPZOO4" role="2Oq$k0">
-                          <node concept="2JrnkZ" id="SXWwXPZOi4" role="2Oq$k0">
-                            <node concept="2rP1CM" id="SXWwXPZLk1" role="2JrQYb" />
-                          </node>
-                          <node concept="liA8E" id="SXWwXPZPlx" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
-                          </node>
-                        </node>
-                        <node concept="liA8E" id="SXWwXPZSFR" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
                         </node>
                       </node>
                     </node>
@@ -631,7 +611,7 @@
   </node>
   <node concept="1M2fIO" id="26mUjU3R65F">
     <property role="3GE5qa" value="extends" />
-    <ref role="1M2myG" to="5m2i:26mUjU3QZBY" resolve="JavaClassInheritanceSpecifier" />
+    <ref role="1M2myG" to="5m2i:26mUjU3QZBY" resolve="JavaConstructorSuperSpecifier" />
     <node concept="1N5Pfh" id="26mUjU3R99v" role="1Mr941">
       <ref role="1N5Vy1" to="5m2i:26mUjU3R2JX" resolve="constructor" />
       <node concept="3dgokm" id="26mUjU3R9aQ" role="1N6uqs">
@@ -926,19 +906,6 @@
                         <ref role="3cqZAo" node="3lDDPlndY5i" resolve="context" />
                       </node>
                     </node>
-                    <node concept="2OqwBi" id="2ZbCiJanT06" role="37wK5m">
-                      <node concept="2OqwBi" id="2ZbCiJanT07" role="2Oq$k0">
-                        <node concept="2JrnkZ" id="2ZbCiJanT08" role="2Oq$k0">
-                          <node concept="2rP1CM" id="2ZbCiJanT09" role="2JrQYb" />
-                        </node>
-                        <node concept="liA8E" id="2ZbCiJanT0a" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="2ZbCiJanT0b" role="2OqNvi">
-                        <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
-                      </node>
-                    </node>
                   </node>
                 </node>
               </node>
@@ -1136,19 +1103,6 @@
                           <ref role="3cqZAo" node="4mvBIJf3VBx" resolve="context" />
                         </node>
                       </node>
-                      <node concept="2OqwBi" id="4mvBIJf3VCf" role="37wK5m">
-                        <node concept="2OqwBi" id="4mvBIJf3VCg" role="2Oq$k0">
-                          <node concept="2JrnkZ" id="4mvBIJf3VCh" role="2Oq$k0">
-                            <node concept="2rP1CM" id="4mvBIJf3VCi" role="2JrQYb" />
-                          </node>
-                          <node concept="liA8E" id="4mvBIJf3VCj" role="2OqNvi">
-                            <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
-                          </node>
-                        </node>
-                        <node concept="liA8E" id="4mvBIJf3VCk" role="2OqNvi">
-                          <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
-                        </node>
-                      </node>
                     </node>
                     <node concept="37vLTw" id="4mvBIJf3VCl" role="2Oq$k0">
                       <ref role="3cqZAo" node="4mvBIJf3VBM" resolve="type" />
@@ -1276,7 +1230,7 @@
   </node>
   <node concept="1M2fIO" id="5H$PF0dtqkC">
     <property role="3GE5qa" value="extends" />
-    <ref role="1M2myG" to="5m2i:5H$PF0dtma6" resolve="JavaDefaultConstructorInheritanceSpecifier" />
+    <ref role="1M2myG" to="5m2i:5H$PF0dtma6" resolve="JavaDefaultConstructorSuperSpecifier" />
     <node concept="1N5Pfh" id="5H$PF0dtqqF" role="1Mr941">
       <ref role="1N5Vy1" to="5m2i:5H$PF0dtmad" resolve="classifier" />
       <node concept="3dgokm" id="5H$PF0dtqGR" role="1N6uqs">
@@ -1502,13 +1456,16 @@
     <node concept="3Tm1VV" id="2ZbCiJaspKc" role="1B3o_S" />
     <node concept="3uibUv" id="2ZbCiJasq4A" role="1zkMxy">
       <ref role="3uigEE" to="tbhz:2ZbCiJaofwM" resolve="SignatureFilter" />
+      <node concept="3uibUv" id="6qs$OhcxseT" role="11_B2D">
+        <ref role="3uigEE" to="nww:5q426iHsjrS" resolve="PropertyAccessorSignature" />
+      </node>
     </node>
     <node concept="3clFb_" id="2ZbCiJasqfC" role="jymVt">
       <property role="TrG5h" value="accept" />
       <node concept="37vLTG" id="2ZbCiJasqfD" role="3clF46">
         <property role="TrG5h" value="signature" />
         <node concept="3uibUv" id="2ZbCiJasqfE" role="1tU5fm">
-          <ref role="3uigEE" to="nww:18X2O0FJocj" resolve="MemberSignature" />
+          <ref role="3uigEE" to="nww:5q426iHsjrS" resolve="PropertyAccessorSignature" />
         </node>
       </node>
       <node concept="37vLTG" id="2ZbCiJasqfF" role="3clF46">
@@ -1528,15 +1485,8 @@
               <node concept="2S8uIT" id="2ZbCiJastQq" role="2OqNvi">
                 <ref role="2S8YL0" to="nww:5q426iHsDS9" resolve="kind" />
               </node>
-              <node concept="1eOMI4" id="2ZbCiJastQr" role="2Oq$k0">
-                <node concept="10QFUN" id="2ZbCiJastQs" role="1eOMHV">
-                  <node concept="37vLTw" id="2ZbCiJasv8G" role="10QFUP">
-                    <ref role="3cqZAo" node="2ZbCiJasqfD" resolve="signature" />
-                  </node>
-                  <node concept="3uibUv" id="2ZbCiJastQw" role="10QFUM">
-                    <ref role="3uigEE" to="nww:5q426iHsjrS" resolve="PropertyAccessorSignature" />
-                  </node>
-                </node>
+              <node concept="37vLTw" id="6qs$Ohcxsa0" role="2Oq$k0">
+                <ref role="3cqZAo" node="2ZbCiJasqfD" resolve="signature" />
               </node>
             </node>
           </node>
@@ -1723,19 +1673,6 @@
                 <node concept="10M0yZ" id="2ZbCiJabHrG" role="37wK5m">
                   <ref role="1PxDUh" to="tbhz:2ZbCiJaaS2D" resolve="ScopeContext" />
                   <ref role="3cqZAo" to="tbhz:2ZbCiJaaXwX" resolve="REFERENCE" />
-                </node>
-                <node concept="2OqwBi" id="bbFPPu54na" role="37wK5m">
-                  <node concept="2OqwBi" id="bbFPPu54nb" role="2Oq$k0">
-                    <node concept="2JrnkZ" id="bbFPPu54nc" role="2Oq$k0">
-                      <node concept="2rP1CM" id="bbFPPu54nd" role="2JrQYb" />
-                    </node>
-                    <node concept="liA8E" id="bbFPPu54ne" role="2OqNvi">
-                      <ref role="37wK5l" to="mhbf:~SNode.getModel()" resolve="getModel" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="bbFPPu54nf" role="2OqNvi">
-                    <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
-                  </node>
                 </node>
               </node>
               <node concept="37vLTw" id="bbFPPu54ng" role="2Oq$k0">

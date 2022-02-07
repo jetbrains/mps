@@ -19,11 +19,11 @@ public class ConstraintsAspectDescriptor extends BaseConstraintsAspectDescriptor
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return new JavaClassInheritanceSpecifier_Constraints();
+        return new JavaConstructorSuperSpecifier_Constraints();
       case 1:
         return new JavaDefaultConstructorCall_Constraints();
       case 2:
-        return new JavaDefaultConstructorInheritanceSpecifier_Constraints();
+        return new JavaDefaultConstructorSuperSpecifier_Constraints();
       case 3:
         return new JavaMemberTarget_Constraints();
       case 4:

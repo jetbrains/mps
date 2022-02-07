@@ -62,7 +62,7 @@ public class FunctionVisitor extends KmFunctionVisitor {
   @Override
   public KmValueParameterVisitor visitValueParameter(int flags, @NotNull String name) {
     SNode param = SLinkOperations.addNewChild(node, LINKS.parameters$dfEr, null);
-    return ParameterVisitor.create(param, context, (String argumentId) -> functionId.addArgument(argumentId), name);
+    return ParameterVisitor.create(param, context, flags, (String argumentId) -> functionId.addArgument(argumentId), name);
   }
 
   @Nullable

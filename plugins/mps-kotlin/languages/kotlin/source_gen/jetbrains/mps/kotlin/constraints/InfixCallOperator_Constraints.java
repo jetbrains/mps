@@ -14,10 +14,23 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.kotlin.behavior.PrecedenceUtil;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.kotlin.behavior.Precedence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.scope.EmptyScope;
+import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
+import jetbrains.mps.kotlin.scopes.SignedDeclarationFilter;
+import jetbrains.mps.kotlin.scopes.ScopeContext;
+import jetbrains.mps.kotlin.scopes.ReceiverTypeScope;
+import jetbrains.mps.lang.scopes.runtime.HidingByNameScope;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class InfixCallOperator_Constraints extends BaseConstraintsDescriptor {
   public InfixCallOperator_Constraints() {
@@ -26,7 +39,7 @@ public class InfixCallOperator_Constraints extends BaseConstraintsDescriptor {
 
   @Override
   protected Map<SReferenceLink, ReferenceConstraintsDescriptor> getSpecifiedReferences() {
-    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.method$i6$W, this, true, false) {
+    BaseReferenceConstraintsDescriptor d0 = new BaseReferenceConstraintsDescriptor(LINKS.function$i6$W, this, true, false) {
       @Nullable
       @Override
       public ReferenceScopeProvider getScopeProvider() {
@@ -37,8 +50,25 @@ public class InfixCallOperator_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            // TODO with typesystem : get type from left, applicable infix method to right
-            return new EmptyScope();
+            // If node being created, we have to consider target for transformation
+            final SNode context = (((_context.getReferenceNode() == null) ? PrecedenceUtil.getTargetForTransform(SNodeOperations.as(_context.getContextNode(), CONCEPTS.IExpression$2i), Precedence.INFIX, false) : SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.left$yQgK)));
+            SNode type = TypecheckingFacade.getFromContext().computeIsolated(() -> SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(context), CONCEPTS.IType$Ni));
+
+            if ((type == null)) {
+              return new EmptyScope();
+            }
+
+            // instance scope
+            Scope scope = IType__BehaviorDescriptor.getTypeScope_id7ubb0gUcNKV.invoke(type, new SignedDeclarationFilter(CONCEPTS.IFunctionDeclaration$ZB, new InfixSignatureFilter()), ScopeContext.INSTANCE_RECEIVER);
+
+            // + receiver scope
+            ReceiverTypeScope receiverTypeScope = new ReceiverTypeScope(SNodeOperations.getModel(_context.getContextNode()), type, CONCEPTS.IFunctionIdentifier$K$);
+
+            if (scope == null) {
+              return receiverTypeScope;
+            } else {
+              return new HidingByNameScope(CONCEPTS.IFunctionIdentifier$K$, CONCEPTS.IFunctionIdentifier$K$, scope, receiverTypeScope);
+            }
           }
         };
       }
@@ -50,9 +80,14 @@ public class InfixCallOperator_Constraints extends BaseConstraintsDescriptor {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept InfixCallOperator$j$ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7909561c6L, "jetbrains.mps.kotlin.structure.InfixCallOperator");
+    /*package*/ static final SInterfaceConcept IExpression$2i = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L, "jetbrains.mps.kotlin.structure.IExpression");
+    /*package*/ static final SInterfaceConcept IType$Ni = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af441L, "jetbrains.mps.kotlin.structure.IType");
+    /*package*/ static final SInterfaceConcept IFunctionDeclaration$ZB = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2a5d3409768d2f2bL, "jetbrains.mps.kotlin.structure.IFunctionDeclaration");
+    /*package*/ static final SInterfaceConcept IFunctionIdentifier$K$ = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x36c39bccb20f46cfL, "jetbrains.mps.kotlin.structure.IFunctionIdentifier");
   }
 
   private static final class LINKS {
-    /*package*/ static final SReferenceLink method$i6$W = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7909561c6L, 0x11400bb7909561c8L, "method");
+    /*package*/ static final SReferenceLink function$i6$W = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7909561c6L, 0x11400bb7909561c8L, "function");
+    /*package*/ static final SContainmentLink left$yQgK = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL, 0x11400bb790954ee0L, "left");
   }
 }

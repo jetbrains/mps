@@ -53,7 +53,7 @@ public class JavaMemberTarget_Constraints extends BaseConstraintsDescriptor {
 
 
             // Receiver scope is not handle here but on kotlin side (as java has no receiver function)
-            return IType__BehaviorDescriptor.getTypeScope_id7ubb0gUcNKV.invoke(type, new SignedDeclarationFilter(CONCEPTS.GenericDeclaration$bC, FunctionSignature.class), ScopeContext.REFERENCE, _context.getContextNode().getModel().getRepository());
+            return IType__BehaviorDescriptor.getTypeScope_id7ubb0gUcNKV.invoke(type, new SignedDeclarationFilter(CONCEPTS.GenericDeclaration$bC, FunctionSignature.class), ScopeContext.REFERENCE);
           }
         };
       }

@@ -39,25 +39,26 @@
     </file>
   </root>
   <root nodeRef="r:4e06517e-4d8c-476f-9ce6-a7838bcb0544(jetbrains.mps.kotlin.javaRefs.textGen)/1139611333303139741">
-    <file name="JavaInterfaceInheritanceSpecifier_TextGen.java">
+    <file name="JavaClassSuperSpecifier_TextGen.java">
       <node id="1139611333303139741" at="16,54,17,55" concept="4" />
-      <node id="1139611333303140780" at="17,55,18,113" concept="1" />
-      <node id="1139611333303143381" at="18,113,19,113" concept="1" />
-      <node id="1139611333303139741" at="23,0,24,0" concept="7" trace="interface$dpcA" />
-      <node id="1139611333303139741" at="24,0,25,0" concept="7" trace="typeArguments$86s6" />
-      <node id="1139611333303139741" at="15,0,21,0" concept="3" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="1139611333303139741" at="16,54,19,113">
+      <node id="1139611333303140780" at="17,55,18,114" concept="1" />
+      <node id="1139611333303143381" at="18,114,19,113" concept="1" />
+      <node id="1806979145079766771" at="19,113,20,55" concept="1" />
+      <node id="1139611333303139741" at="24,0,25,0" concept="7" trace="classifier$dpcA" />
+      <node id="1139611333303139741" at="25,0,26,0" concept="7" trace="typeArguments$86s6" />
+      <node id="1139611333303139741" at="15,0,22,0" concept="3" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="1139611333303139741" at="16,54,20,55">
         <var name="tgs" id="1139611333303139741" />
       </scope>
-      <scope id="1139611333303139741" at="15,0,21,0">
+      <scope id="1139611333303139741" at="15,0,22,0">
         <var name="ctx" id="1139611333303139741" />
       </scope>
-      <unit id="1139611333303139741" at="22,0,26,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaInterfaceInheritanceSpecifier_TextGen$LINKS" />
-      <unit id="1139611333303139741" at="14,0,27,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaInterfaceInheritanceSpecifier_TextGen" />
+      <unit id="1139611333303139741" at="23,0,27,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaClassSuperSpecifier_TextGen$LINKS" />
+      <unit id="1139611333303139741" at="14,0,28,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaClassSuperSpecifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="1139611333303139741" at="30,67,31,63" concept="5" />
-      <scope id="1139611333303139741" at="30,67,31,63" />
+      <node id="1139611333303139741" at="22,57,23,53" concept="5" />
+      <scope id="1139611333303139741" at="22,57,23,53" />
     </file>
   </root>
   <root nodeRef="r:4e06517e-4d8c-476f-9ce6-a7838bcb0544(jetbrains.mps.kotlin.javaRefs.textGen)/1467822947166691088">
@@ -77,8 +78,8 @@
       <unit id="1467822947166691088" at="13,0,25,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaDefaultConstructorCall_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="1467822947166691088" at="26,60,27,56" concept="5" />
-      <scope id="1467822947166691088" at="26,60,27,56" />
+      <node id="1467822947166691088" at="28,60,29,56" concept="5" />
+      <scope id="1467822947166691088" at="28,60,29,56" />
     </file>
   </root>
   <root nodeRef="r:4e06517e-4d8c-476f-9ce6-a7838bcb0544(jetbrains.mps.kotlin.javaRefs.textGen)/1467822947166706082">
@@ -104,7 +105,7 @@
     </file>
   </root>
   <root nodeRef="r:4e06517e-4d8c-476f-9ce6-a7838bcb0544(jetbrains.mps.kotlin.javaRefs.textGen)/5016903245542858914">
-    <file name="JavaClassInheritanceSpecifier_TextGen.java">
+    <file name="JavaConstructorSuperSpecifier_TextGen.java">
       <node id="5016903245542858914" at="19,54,20,55" concept="4" />
       <node id="6914775006802349794" at="20,55,21,167" concept="4" />
       <node id="6914775006802355881" at="21,167,22,53" concept="1" />
@@ -124,13 +125,13 @@
       <scope id="5016903245542858914" at="18,0,28,0">
         <var name="ctx" id="5016903245542858914" />
       </scope>
-      <unit id="5016903245542858914" at="35,0,38,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaClassInheritanceSpecifier_TextGen$CONCEPTS" />
-      <unit id="5016903245542858914" at="29,0,34,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaClassInheritanceSpecifier_TextGen$LINKS" />
-      <unit id="5016903245542858914" at="17,0,39,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaClassInheritanceSpecifier_TextGen" />
+      <unit id="5016903245542858914" at="35,0,38,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaConstructorSuperSpecifier_TextGen$CONCEPTS" />
+      <unit id="5016903245542858914" at="29,0,34,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaConstructorSuperSpecifier_TextGen$LINKS" />
+      <unit id="5016903245542858914" at="17,0,39,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaConstructorSuperSpecifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="5016903245542858914" at="22,63,23,59" concept="5" />
-      <scope id="5016903245542858914" at="22,63,23,59" />
+      <node id="5016903245542858914" at="26,63,27,59" concept="5" />
+      <scope id="5016903245542858914" at="26,63,27,59" />
     </file>
   </root>
   <root nodeRef="r:4e06517e-4d8c-476f-9ce6-a7838bcb0544(jetbrains.mps.kotlin.javaRefs.textGen)/5016903245542885412">
@@ -138,7 +139,7 @@
       <node id="5016903245542885412" at="19,54,20,55" concept="4" />
       <node id="6914775006802068001" at="21,144,22,183" concept="1" />
       <node id="6914775006801253468" at="23,12,24,134" concept="1" />
-      <node id="1467822947166694400" at="25,5,26,64" concept="1" />
+      <node id="1467822947166694400" at="25,5,26,71" concept="1" />
       <node id="5016903245542885412" at="30,0,31,0" concept="7" trace="method$yYmq" />
       <node id="5016903245542885412" at="34,0,35,0" concept="7" trace="Classifier$Ix" />
       <node id="5016903245542885412" at="35,0,36,0" concept="7" trace="ConstructorDeclaration$yG" />
@@ -148,7 +149,7 @@
       <node id="5016903245542885412" at="18,0,28,0" concept="3" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <scope id="6914775006802019846" at="21,144,22,183" />
       <scope id="6914775006802148824" at="23,12,24,134" />
-      <scope id="5016903245542885412" at="19,54,26,64">
+      <scope id="5016903245542885412" at="19,54,26,71">
         <var name="tgs" id="5016903245542885412" />
       </scope>
       <scope id="5016903245542885412" at="18,0,28,0">
@@ -237,7 +238,7 @@
     </file>
   </root>
   <root nodeRef="r:4e06517e-4d8c-476f-9ce6-a7838bcb0544(jetbrains.mps.kotlin.javaRefs.textGen)/6585624606750956032">
-    <file name="JavaDefaultConstructorInheritanceSpecifier_TextGen.java">
+    <file name="JavaDefaultConstructorSuperSpecifier_TextGen.java">
       <node id="6585624606750956032" at="16,54,17,55" concept="4" />
       <node id="6585624606750960168" at="17,55,18,114" concept="1" />
       <node id="6585624606750960170" at="18,114,19,113" concept="1" />
@@ -251,12 +252,12 @@
       <scope id="6585624606750956032" at="15,0,22,0">
         <var name="ctx" id="6585624606750956032" />
       </scope>
-      <unit id="6585624606750956032" at="23,0,27,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaDefaultConstructorInheritanceSpecifier_TextGen$LINKS" />
-      <unit id="6585624606750956032" at="14,0,28,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaDefaultConstructorInheritanceSpecifier_TextGen" />
+      <unit id="6585624606750956032" at="23,0,27,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaDefaultConstructorSuperSpecifier_TextGen$LINKS" />
+      <unit id="6585624606750956032" at="14,0,28,0" name="jetbrains.mps.kotlin.javaRefs.textGen.JavaDefaultConstructorSuperSpecifier_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6585624606750956032" at="28,76,29,72" concept="5" />
-      <scope id="6585624606750956032" at="28,76,29,72" />
+      <node id="6585624606750956032" at="30,70,31,66" concept="5" />
+      <scope id="6585624606750956032" at="30,70,31,66" />
     </file>
   </root>
 </debug-info>

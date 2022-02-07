@@ -110,7 +110,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x2405a196e75d462cL, 0x938bae8e3fac20aaL, 0x17400fc2a348282eL);
     b.origin("r:c0bc7504-314a-4a6f-850a-c38847b9f916(jetbrains.mps.baseLanguage.kotlinRefs.structure)/1057254320149555666");
     b.version(3);
-    b.associate("constructor", 0x17400fc2a346e48cL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x63c34deca482d827L).optional(false).origin("1675356390019228812").specialize(0x17400fc2a348282eL, 0x17400fc2a3483559L).done();
+    b.associate("constructor", 0x17400fc2a346e48cL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x7069a625f2b0238aL).optional(false).origin("1675356390019228812").specialize(0x17400fc2a348282eL, 0x17400fc2a3483559L).done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForKotlinClassifierType() {
