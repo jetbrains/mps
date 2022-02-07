@@ -61,6 +61,11 @@ public class MigrationStep extends BaseStep {
 
   @Override
   public void _init() {
+    // let PI know actual modality state. Without that, it would answer with NON_MODAL; and yes,->
+    // FIXME I can not do it earlier as both cons and doCreateComponent are invoked without any UI shown,
+    //      it's weird and bad design, but I can't fix it right now. And don't forget to fix this 
+    //      odd "run from ui init" approach. It's bad, too.
+    myProgress.setModalityProgress(null);
     super._init();
     executeToFirstError();
   }

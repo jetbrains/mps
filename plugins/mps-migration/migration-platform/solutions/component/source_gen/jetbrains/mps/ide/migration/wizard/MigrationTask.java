@@ -12,13 +12,14 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.persistence.PersistenceRegistry;
+import jetbrains.mps.project.Project;
+import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.apache.log4j.Level;
 import jetbrains.mps.messages.LogHandler;
-import jetbrains.mps.project.Project;
 import com.intellij.history.LocalHistory;
 import jetbrains.mps.ide.project.ProjectHelper;
 import java.awt.Color;
@@ -28,7 +29,6 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import javax.swing.JComponent;
 import com.intellij.openapi.wm.impl.status.InlineProgressIndicator;
 import com.intellij.openapi.application.ModalityState;
-import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.project.MPSProject;
 import com.intellij.configurationStore.StoreUtil;
@@ -86,8 +86,15 @@ public class MigrationTask {
     } catch (MigrationError me) {
       error(me);
     } finally {
+      final Project project = mySession.getProject();
       mySession.completed();
+      // XXX saveProject() shall follow session.completed() which may alter
+      //     MigrationProperties we need to have saved. Not sure if need EDT or write, but without anything
+      //     it just hangs.
+      // FIXME I hate saveProject(): its argument, invokeAndWait(), the fact it's invoked for each step and uses internal IDEA stuff.
+      ApplicationManager.getApplication().invokeAndWait(() -> saveProject(project));
       myMonitor.done();
+      // yeah, and I hate this enableFFU, too!
       PersistenceRegistry.getInstance().enableFastFindUsages();
     }
   }
@@ -206,7 +213,9 @@ public class MigrationTask {
 
     // todo pass ModalityState to constructor/via session?
     // in tests, we have EmptyProgressIndicator and use NON_MODAL
-    JComponent modalityComponent = check_ajmasp_a0e0eb(as_ajmasp_a0a0e0fb(myMonitor.getIndicator(), InlineProgressIndicator.class));
+    // FIXME with proper modality for an indicator initialized in MigrationStep, likely this code is not needed, as invokeAndWait
+    //      would pick proper modality (the one from PI) for us. But don't want to touch this in 21.3 RC
+    JComponent modalityComponent = check_ajmasp_a0g0eb(as_ajmasp_a0a0g0fb(myMonitor.getIndicator(), InlineProgressIndicator.class));
     ModalityState modalityState = (modalityComponent == null ? ModalityState.NON_MODAL : ModalityState.stateForComponent(modalityComponent));
     ApplicationManager.getApplication().invokeAndWait(() -> {
       if (myCurrentChange == null) {
@@ -444,7 +453,7 @@ public class MigrationTask {
     });
     return res.value;
   }
-  private static JComponent check_ajmasp_a0e0eb(InlineProgressIndicator checkedDotOperand) {
+  private static JComponent check_ajmasp_a0g0eb(InlineProgressIndicator checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getComponent();
     }
@@ -462,7 +471,7 @@ public class MigrationTask {
     }
     return null;
   }
-  private static <T> T as_ajmasp_a0a0e0fb(Object o, Class<T> type) {
+  private static <T> T as_ajmasp_a0a0g0fb(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
   private static <T> T as_ajmasp_a0a0a0b0c0rb(Object o, Class<T> type) {
