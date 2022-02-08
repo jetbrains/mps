@@ -27693,7 +27693,7 @@
                       <node concept="3clFbF" id="7_fAwM$59Xj" role="3cqZAp">
                         <node concept="2OqwBi" id="7_fAwM$71Ib" role="3clFbG">
                           <node concept="37vLTw" id="7_fAwM$7uWl" role="2Oq$k0">
-                            <ref role="3cqZAo" node="7_fAwM$7uWe" resolve="update" />
+                            <ref role="3cqZAo" node="7_fAwM$7uWe" resolve="mdu" />
                           </node>
                           <node concept="liA8E" id="7_fAwM$73LB" role="2OqNvi">
                             <ref role="37wK5l" to="w1kc:~ModelDependencyUpdate.updateImportedModels(org.jetbrains.mps.openapi.module.SRepository)" resolve="updateImportedModels" />
@@ -35021,7 +35021,7 @@
                 <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
               </node>
               <node concept="37vLTw" id="m_plemPrdk" role="2Oq$k0">
-                <ref role="3cqZAo" node="m_plemPrdg" resolve="project" />
+                <ref role="3cqZAo" node="m_plemPrdg" resolve="mpsProject" />
               </node>
             </node>
           </node>
@@ -35159,7 +35159,7 @@
                 <property role="TrG5h" value="problems" />
                 <node concept="A3Dl8" id="m_plemPMY4" role="1tU5fm">
                   <node concept="3uibUv" id="m_plemPMY5" role="A3Ik2">
-                    <ref role="3uigEE" to="mhbf:~SModel$Problem" resolve="Problem" />
+                    <ref role="3uigEE" to="mhbf:~SModel$Problem" resolve="SModel.Problem" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="m_plemPMY6" role="33vP2m">
@@ -35195,7 +35195,7 @@
                       </node>
                       <node concept="A3Dl8" id="m_plemPMYl" role="10QFUM">
                         <node concept="3uibUv" id="m_plemPMYm" role="A3Ik2">
-                          <ref role="3uigEE" to="mhbf:~SModel$Problem" resolve="Problem" />
+                          <ref role="3uigEE" to="mhbf:~SModel$Problem" resolve="SModel.Problem" />
                         </node>
                       </node>
                     </node>
@@ -35630,7 +35630,7 @@
               <node concept="liA8E" id="m_plemNVBP" role="2OqNvi">
                 <ref role="37wK5l" to="ends:~ModelFactoryService.getFactoryByType(org.jetbrains.mps.openapi.persistence.ModelFactoryType)" resolve="getFactoryByType" />
                 <node concept="37vLTw" id="m_plemOHBk" role="37wK5m">
-                  <ref role="3cqZAo" node="m_plemOHBi" resolve="types" />
+                  <ref role="3cqZAo" node="m_plemOHBi" resolve="targetType" />
                 </node>
               </node>
             </node>
@@ -38826,7 +38826,7 @@
                 <property role="TrG5h" value="problems" />
                 <node concept="A3Dl8" id="38LNA6Kbjs6" role="1tU5fm">
                   <node concept="3uibUv" id="38LNA6Kbjs7" role="A3Ik2">
-                    <ref role="3uigEE" to="mhbf:~SModel$Problem" resolve="Problem" />
+                    <ref role="3uigEE" to="mhbf:~SModel$Problem" resolve="SModel.Problem" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="38LNA6Kbjs8" role="33vP2m">
@@ -38862,7 +38862,7 @@
                       </node>
                       <node concept="A3Dl8" id="38LNA6Kbjsn" role="10QFUM">
                         <node concept="3uibUv" id="38LNA6Kbjso" role="A3Ik2">
-                          <ref role="3uigEE" to="mhbf:~SModel$Problem" resolve="Problem" />
+                          <ref role="3uigEE" to="mhbf:~SModel$Problem" resolve="SModel.Problem" />
                         </node>
                       </node>
                     </node>
@@ -39002,7 +39002,7 @@
                               <ref role="3cqZAo" node="20WN9Ovg1Ef" resolve="mr" />
                             </node>
                             <node concept="37vLTw" id="20WN9OvhiaB" role="37wK5m">
-                              <ref role="3cqZAo" node="20WN9Ovhiay" resolve="component" />
+                              <ref role="3cqZAo" node="20WN9Ovhiay" resolve="dsFactoryService" />
                             </node>
                           </node>
                         </node>
@@ -39305,7 +39305,7 @@
               <node concept="liA8E" id="1lS_qvrhno4" role="2OqNvi">
                 <ref role="37wK5l" to="ends:~ModelFactoryService.getFactoryByType(org.jetbrains.mps.openapi.persistence.ModelFactoryType)" resolve="getFactoryByType" />
                 <node concept="37vLTw" id="m_plemORV8" role="37wK5m">
-                  <ref role="3cqZAo" node="m_plemOPh$" resolve="targetTypes" />
+                  <ref role="3cqZAo" node="m_plemOPh$" resolve="targetType" />
                 </node>
               </node>
             </node>
@@ -39505,7 +39505,7 @@
                           </node>
                         </node>
                         <node concept="37vLTw" id="m_plemOU9M" role="3uHU7w">
-                          <ref role="3cqZAo" node="m_plemOPh$" resolve="targetTypes" />
+                          <ref role="3cqZAo" node="m_plemOPh$" resolve="targetType" />
                         </node>
                       </node>
                       <node concept="3clFbC" id="20WN9OveBR1" role="3uHU7B">
@@ -53233,7 +53233,7 @@
           <node concept="3clFbC" id="m_plemQeYq" role="3clFbw">
             <node concept="10Nm6u" id="m_plemQeYr" role="3uHU7w" />
             <node concept="37vLTw" id="m_plemQeYs" role="3uHU7B">
-              <ref role="3cqZAo" node="m_plemQeYf" resolve="binaryFactory" />
+              <ref role="3cqZAo" node="m_plemQeYf" resolve="modelFactory" />
             </node>
           </node>
         </node>
@@ -53292,7 +53292,7 @@
                 <property role="TrG5h" value="problems" />
                 <node concept="A3Dl8" id="m_plemQeYP" role="1tU5fm">
                   <node concept="3uibUv" id="m_plemQeYQ" role="A3Ik2">
-                    <ref role="3uigEE" to="mhbf:~SModel$Problem" resolve="Problem" />
+                    <ref role="3uigEE" to="mhbf:~SModel$Problem" resolve="SModel.Problem" />
                   </node>
                 </node>
                 <node concept="2OqwBi" id="m_plemQeYR" role="33vP2m">
@@ -53328,7 +53328,7 @@
                       </node>
                       <node concept="A3Dl8" id="m_plemQeZ6" role="10QFUM">
                         <node concept="3uibUv" id="m_plemQeZ7" role="A3Ik2">
-                          <ref role="3uigEE" to="mhbf:~SModel$Problem" resolve="Problem" />
+                          <ref role="3uigEE" to="mhbf:~SModel$Problem" resolve="SModel.Problem" />
                         </node>
                       </node>
                     </node>
@@ -53521,7 +53521,7 @@
                       </node>
                     </node>
                     <node concept="37vLTw" id="m_plemQf0j" role="2Oq$k0">
-                      <ref role="3cqZAo" node="m_plemQeYf" resolve="binaryFactory" />
+                      <ref role="3cqZAo" node="m_plemQeYf" resolve="modelFactory" />
                     </node>
                   </node>
                 </node>

@@ -21775,7 +21775,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7_fAwM$aBuV" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
       </node>
     </node>
     <node concept="2YIFZL" id="1oZd4f_KMWC" role="jymVt">
@@ -21802,7 +21802,7 @@
           <node concept="3clFbC" id="7_fAwM$ax57" role="3clFbw">
             <node concept="10Nm6u" id="7_fAwM$axha" role="3uHU7w" />
             <node concept="37vLTw" id="7_fAwM$axUM" role="3uHU7B">
-              <ref role="3cqZAo" node="7_fAwM$axUI" resolve="model" />
+              <ref role="3cqZAo" node="7_fAwM$axUI" resolve="mm" />
             </node>
           </node>
         </node>
@@ -21847,7 +21847,7 @@
         <node concept="3clFbF" id="7_fAwM$attH" role="3cqZAp">
           <node concept="2OqwBi" id="7_fAwM$axCq" role="3clFbG">
             <node concept="37vLTw" id="7_fAwM$azpY" role="2Oq$k0">
-              <ref role="3cqZAo" node="7_fAwM$azpT" resolve="update" />
+              <ref role="3cqZAo" node="7_fAwM$azpT" resolve="mdu" />
             </node>
             <node concept="liA8E" id="7_fAwM$axSp" role="2OqNvi">
               <ref role="37wK5l" to="w1kc:~ModelDependencyUpdate.updateImportedModels(org.jetbrains.mps.openapi.module.SRepository)" resolve="updateImportedModels" />
@@ -21926,7 +21926,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7_fAwM$a4ta" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="7_fAwM$a4wZ" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="7_fAwM$a4V8" role="2B70Vg">
@@ -30261,6 +30261,9 @@
         <node concept="3cpWs8" id="1I0x3vCdZ4w" role="3cqZAp">
           <node concept="3cpWsn" id="1I0x3vCdZ4x" role="3cpWs9">
             <property role="TrG5h" value="variable" />
+            <node concept="3Tqbb2" id="1I0x3vCdZ4y" role="1tU5fm">
+              <ref role="ehGHo" to="tpee:fzcpWvJ" resolve="LocalVariableDeclaration" />
+            </node>
             <node concept="1PxgMI" id="6s5Rg4WoHog" role="33vP2m">
               <property role="1BlNFB" value="true" />
               <node concept="chp4Y" id="6s5Rg4WoIPL" role="3oSUPX">
@@ -30278,9 +30281,6 @@
                 </node>
               </node>
             </node>
-            <node concept="3Tqbb2" id="1I0x3vCdZ4y" role="1tU5fm">
-              <ref role="ehGHo" to="tpee:fzcpWvJ" resolve="LocalVariableDeclaration" />
-            </node>
           </node>
         </node>
         <node concept="3cpWs8" id="1I0x3vCdZ4C" role="3cqZAp">
@@ -30297,11 +30297,11 @@
               <node concept="37vLTI" id="1I0x3vCdZ4I" role="3clFbG">
                 <node concept="2OqwBi" id="1I0x3vCdZ4K" role="37vLTx">
                   <node concept="2OqwBi" id="1I0x3vCdZ4L" role="2Oq$k0">
-                    <node concept="37vLTw" id="6s5Rg4WoM6C" role="2Oq$k0">
-                      <ref role="3cqZAo" node="1I0x3vCdZ4x" resolve="variable" />
-                    </node>
                     <node concept="3TrEf2" id="1I0x3vCdZ4R" role="2OqNvi">
                       <ref role="3Tt5mk" to="tpee:fz3vP1I" resolve="initializer" />
+                    </node>
+                    <node concept="37vLTw" id="6s5Rg4WoM6C" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1I0x3vCdZ4x" resolve="variable" />
                     </node>
                   </node>
                   <node concept="1$rogu" id="1I0x3vCdZ4S" role="2OqNvi" />
@@ -31697,7 +31697,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="7exmRT6z00V" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="7exmRT6z20h" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="7exmRT6z2bX" role="2B70Vg">
