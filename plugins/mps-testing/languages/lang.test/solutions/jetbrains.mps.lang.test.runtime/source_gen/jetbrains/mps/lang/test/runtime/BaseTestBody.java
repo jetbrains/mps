@@ -48,11 +48,11 @@ public class BaseTestBody {
    * access copy of a node given identity from original model; copy is clean 
    */
   public final SNode getNodeById(final String id) {
-    // FIXME this is provisional fix for MPSI-38. In most scenarios, getNodeById is invoked from 
-    // model read. It's just an editor tests that we didn't use TestNodeReference with. 
-    // Alternative would be to grab model read from outside; doing it locally for InvokeIntentionStatement only 
-    // makes templates too complicated, doing it in general (for any TestNodeReference) changes too many templates 
-    // to afford the change in a year-old bugfix (20.3 fix at the moment of 21.3 release) 
+    // FIXME this is provisional fix for MPSI-38. In most scenarios, getNodeById is invoked from
+    // model read. It's just an editor tests that we didn't use TestNodeReference with.
+    // Alternative would be to grab model read from outside; doing it locally for InvokeIntentionStatement only
+    // makes templates too complicated, doing it in general (for any TestNodeReference) changes too many templates
+    // to afford the change in a year-old bugfix (20.3 fix at the moment of 21.3 release)
     return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(new Computable<SNode>() {
       public SNode compute() {
         return MapSequence.fromMap(myMap).get(getRealNodeById(id));
