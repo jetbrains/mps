@@ -1747,7 +1747,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="70GEktGV_HC" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
         <node concept="2B6LJw" id="70GEktGV_Ms" role="2B76xF">
           <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
           <node concept="3clFbT" id="70GEktGVAzX" role="2B70Vg">
@@ -1784,7 +1784,7 @@
       <node concept="3Tm1VV" id="70GEktGV9cf" role="1B3o_S" />
       <node concept="3clFbS" id="70GEktGV9cg" role="3clF47">
         <node concept="XkiVB" id="47QEcUfsm5j" role="3cqZAp">
-          <ref role="37wK5l" to="xygl:~Task$Modal.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,boolean)" resolve="Modal" />
+          <ref role="37wK5l" to="xygl:~Task$Modal.&lt;init&gt;(com.intellij.openapi.project.Project,java.lang.String,boolean)" resolve="Task.Modal" />
           <node concept="2OqwBi" id="70GEktGUSTD" role="37wK5m">
             <node concept="37vLTw" id="2BHiRxgm6t3" role="2Oq$k0">
               <ref role="3cqZAo" node="70GEktGVa7o" resolve="mpsProject" />

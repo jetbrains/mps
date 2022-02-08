@@ -5326,7 +5326,7 @@
                   <node concept="3clFbF" id="1cjXdtLLeYI" role="3cqZAp">
                     <node concept="2OqwBi" id="1cjXdtLLeYJ" role="3clFbG">
                       <node concept="37vLTw" id="50pO7_b44hn" role="2Oq$k0">
-                        <ref role="3cqZAo" node="50pO7_b44hk" resolve="maker" />
+                        <ref role="3cqZAo" node="50pO7_b44hk" resolve="mm" />
                       </node>
                       <node concept="liA8E" id="1cjXdtLLeYM" role="2OqNvi">
                         <ref role="37wK5l" to="vqh0:~ModuleMaker.prepare(java.util.Collection,boolean,org.jetbrains.mps.openapi.util.ProgressMonitor)" resolve="prepare" />

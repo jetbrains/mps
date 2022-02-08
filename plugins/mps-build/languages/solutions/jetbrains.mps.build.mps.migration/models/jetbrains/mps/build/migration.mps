@@ -613,7 +613,7 @@
               <ref role="3cqZAo" node="3vL64Mrye0t" resolve="taskProps" />
             </node>
             <node concept="liA8E" id="3vL64MrBh4U" role="2OqNvi">
-              <ref role="37wK5l" to="asz6:3vL64MrAXHI" resolve="makeDistribModules" />
+              <ref role="37wK5l" to="asz6:3vL64MrAXHI" resolve="getMakeDistribModules" />
             </node>
           </node>
         </node>
@@ -628,7 +628,7 @@
                 <ref role="3cqZAo" node="3vL64Mrye0t" resolve="taskProps" />
               </node>
               <node concept="liA8E" id="3vL64MroHzt" role="2OqNvi">
-                <ref role="37wK5l" to="asz6:3vL64Mrni5x" resolve="isPreCheckFailureHalt" />
+                <ref role="37wK5l" to="asz6:3vL64Mrni5x" resolve="getPreCheckFailureHalt" />
               </node>
             </node>
           </node>
@@ -1547,7 +1547,7 @@
                 <ref role="3cqZAo" node="3vL64Mrye0t" resolve="taskProps" />
               </node>
               <node concept="liA8E" id="3vL64MryuR1" role="2OqNvi">
-                <ref role="37wK5l" to="asz6:3vL64MruvTT" resolve="outputPropertyFile" />
+                <ref role="37wK5l" to="asz6:3vL64MruvTT" resolve="getOutputPropertyFile" />
               </node>
             </node>
           </node>
@@ -1580,7 +1580,7 @@
                       <ref role="3cqZAo" node="3vL64Mrye0t" resolve="taskProps" />
                     </node>
                     <node concept="liA8E" id="3vL64Mrz59c" role="2OqNvi">
-                      <ref role="37wK5l" to="asz6:3vL64MruUv4" resolve="outputPropertyErrorKey" />
+                      <ref role="37wK5l" to="asz6:3vL64MruUv4" resolve="getOutputPropertyErrorKey" />
                     </node>
                   </node>
                   <node concept="3K4zz7" id="3vL64Mr_$OU" role="37wK5m">
@@ -1665,7 +1665,7 @@
                   <ref role="3cqZAo" node="3vL64Mrye0t" resolve="taskProps" />
                 </node>
                 <node concept="liA8E" id="3vL64MryDMZ" role="2OqNvi">
-                  <ref role="37wK5l" to="asz6:3vL64MruUv4" resolve="outputPropertyErrorKey" />
+                  <ref role="37wK5l" to="asz6:3vL64MruUv4" resolve="getOutputPropertyErrorKey" />
                 </node>
               </node>
             </node>

@@ -8919,14 +8919,14 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="3vL64MrnIVY" role="2OqNvi">
-                  <ref role="37wK5l" to="asz6:3vL64MrnfIL" resolve="preCheckFailureHalt" />
+                  <ref role="37wK5l" to="asz6:3vL64MrnfIL" resolve="setPreCheckFailureHalt" />
                   <node concept="3clFbT" id="3vL64MrnJdJ" role="37wK5m">
                     <property role="3clFbU" value="true" />
                   </node>
                 </node>
               </node>
               <node concept="liA8E" id="3vL64MrBJTR" role="2OqNvi">
-                <ref role="37wK5l" to="asz6:3vL64MrATMR" resolve="makeDistribModules" />
+                <ref role="37wK5l" to="asz6:3vL64MrATMR" resolve="setMakeDistribModules" />
                 <node concept="3clFbT" id="3vL64MrBKff" role="37wK5m">
                   <property role="3clFbU" value="true" />
                 </node>
@@ -9289,7 +9289,7 @@
               <ref role="3cqZAo" node="3vL64Mrnq8_" resolve="myProps" />
             </node>
             <node concept="liA8E" id="3vL64MrnMAV" role="2OqNvi">
-              <ref role="37wK5l" to="asz6:3vL64MrnfIL" resolve="preCheckFailureHalt" />
+              <ref role="37wK5l" to="asz6:3vL64MrnfIL" resolve="setPreCheckFailureHalt" />
               <node concept="37vLTw" id="3vL64MrnQwY" role="37wK5m">
                 <ref role="3cqZAo" node="61n5glKlv5N" resolve="haltOnPrecheckFailure" />
               </node>
@@ -9310,7 +9310,7 @@
               <ref role="3cqZAo" node="3vL64Mrnq8_" resolve="myProps" />
             </node>
             <node concept="liA8E" id="3vL64MrBEcp" role="2OqNvi">
-              <ref role="37wK5l" to="asz6:3vL64MrATMR" resolve="makeDistribModules" />
+              <ref role="37wK5l" to="asz6:3vL64MrATMR" resolve="setMakeDistribModules" />
               <node concept="37vLTw" id="3vL64MrBH9E" role="37wK5m">
                 <ref role="3cqZAo" node="3vL64MrBAp2" resolve="makeDistrib" />
               </node>
@@ -9335,9 +9335,9 @@
               <ref role="3cqZAo" node="3vL64Mrnq8_" resolve="myProps" />
             </node>
             <node concept="liA8E" id="3nVsxxCHD17" role="2OqNvi">
-              <ref role="37wK5l" to="asz6:3nVsxxCHJRc" resolve="force" />
+              <ref role="37wK5l" to="asz6:3nVsxxCHJRc" resolve="setForceFlag" />
               <node concept="37vLTw" id="3nVsxxCHD18" role="37wK5m">
-                <ref role="3cqZAo" node="3nVsxxCHD1b" resolve="makeDistrib" />
+                <ref role="3cqZAo" node="3nVsxxCHD1b" resolve="value" />
               </node>
             </node>
           </node>
@@ -9424,14 +9424,14 @@
                 <ref role="3cqZAo" node="3vL64Mrnq8_" resolve="myProps" />
               </node>
               <node concept="liA8E" id="3vL64Mrv4_z" role="2OqNvi">
-                <ref role="37wK5l" to="asz6:3vL64Mruv9h" resolve="outputPropertyFile" />
+                <ref role="37wK5l" to="asz6:3vL64Mruv9h" resolve="setOutputPropertyFile" />
                 <node concept="37vLTw" id="3vL64Mrvkze" role="37wK5m">
                   <ref role="3cqZAo" node="3vL64Mrvkz7" resolve="propFile" />
                 </node>
               </node>
             </node>
             <node concept="liA8E" id="3vL64Mrvu07" role="2OqNvi">
-              <ref role="37wK5l" to="asz6:3vL64MruPjf" resolve="outputPropertyErrorKey" />
+              <ref role="37wK5l" to="asz6:3vL64MruPjf" resolve="setOutputPropertyErrorKey" />
               <node concept="37vLTw" id="3vL64Mrv_qM" role="37wK5m">
                 <ref role="3cqZAo" node="3vL64Mrv_qK" resolve="errCodeKey" />
               </node>

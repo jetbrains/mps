@@ -6292,7 +6292,7 @@
             <node concept="2ShNRf" id="6MfLK$wCVNR" role="2Oq$k0">
               <node concept="1pGfFk" id="6MfLK$wD4ck" role="2ShVmc">
                 <property role="373rjd" value="true" />
-                <ref role="37wK5l" node="6MfLK$wC6zD" resolve="HierarchicalChangesMerger" />
+                <ref role="37wK5l" node="6MfLK$wC6zD" resolve="HierarchicalChangesApplier" />
                 <node concept="Xjq3P" id="6MfLK$wDaLH" role="37wK5m" />
               </node>
             </node>
@@ -14522,7 +14522,7 @@
         </node>
         <node concept="3clFbF" id="6MfLK$w_xEk" role="3cqZAp">
           <node concept="1rXfSq" id="6MfLK$w_xEl" role="3clFbG">
-            <ref role="37wK5l" node="6MfLK$w_xGt" resolve="updateGroups" />
+            <ref role="37wK5l" node="6MfLK$w_xGt" resolve="setSymmetricGroupsApplied" />
             <node concept="37vLTw" id="6MfLK$w_xEm" role="37wK5m">
               <ref role="3cqZAo" node="6MfLK$w_xEw" resolve="change" />
             </node>
@@ -14530,7 +14530,7 @@
         </node>
         <node concept="3clFbF" id="6MfLK$w_xEn" role="3cqZAp">
           <node concept="1rXfSq" id="6MfLK$w_xEo" role="3clFbG">
-            <ref role="37wK5l" node="6MfLK$w_xGZ" resolve="updateInternalGroups" />
+            <ref role="37wK5l" node="6MfLK$w_xGZ" resolve="updateInternalGroupsInWrapChange" />
             <node concept="37vLTw" id="6MfLK$w_xEp" role="37wK5m">
               <ref role="3cqZAo" node="6MfLK$w_xEw" resolve="change" />
             </node>
@@ -14597,7 +14597,7 @@
                   <ref role="37wK5l" to="bfxj:3kRMfhMv9tJ" resolve="getModelChanges" />
                 </node>
                 <node concept="1rXfSq" id="zl0pYnTUSA" role="2Oq$k0">
-                  <ref role="37wK5l" node="zl0pYnTqS2" resolve="getOppositeChangeSet" />
+                  <ref role="37wK5l" node="zl0pYnTqS2" resolve="getChangeOppositeChangeSet" />
                   <node concept="37vLTw" id="zl0pYnTUSB" role="37wK5m">
                     <ref role="3cqZAo" node="6MfLK$w_xE$" resolve="wrapChange" />
                   </node>
@@ -14614,7 +14614,7 @@
                 <node concept="3clFbS" id="6MfLK$w_xF0" role="1bW5cS">
                   <node concept="3clFbF" id="zl0pYnRopS" role="3cqZAp">
                     <node concept="1rXfSq" id="zl0pYnRopQ" role="3clFbG">
-                      <ref role="37wK5l" node="zl0pYnR3u5" resolve="x" />
+                      <ref role="37wK5l" node="zl0pYnR3u5" resolve="tryAddChangeGroupsToWrapChangeInternalGroups" />
                       <node concept="37vLTw" id="zl0pYnRrJ4" role="37wK5m">
                         <ref role="3cqZAo" node="6MfLK$w_xE$" resolve="wrapChange" />
                       </node>
