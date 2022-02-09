@@ -1568,6 +1568,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.aggregate("sources", 0x668c6cfbafacdc62L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92974fcL).optional(true).ordered(true).multiple(true).origin("7389400916848073826").done();
     b.aggregate("dependencies", 0x263ae7d4319896abL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263ae7d431989677L).optional(true).ordered(true).multiple(true).origin("2754769020641646251").done();
     b.aggregate("options", 0x1708d207f21880faL).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1708d207f2178b52L).optional(true).ordered(true).multiple(false).origin("1659807394254323962").done();
+    b.aggregate("outputFolder", 0x3f7149bc5676b9c7L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL).optional(true).ordered(true).multiple(false).origin("4571516170011064775").done();
     b.alias("java module");
     return b.create();
   }
