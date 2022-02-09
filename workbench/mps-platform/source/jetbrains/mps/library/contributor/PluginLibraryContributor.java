@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -65,7 +65,8 @@ public final class PluginLibraryContributor implements LibraryContributor {
       pluginPath = pluginPath.getParent().getParent();
     }
     final File libraryPath = new File(pluginPath.toFile(), library.dir);
-    return new LibDescriptor(myFileSystem.getFile(libraryPath), plugin.getPluginClassLoader(), library.hidden);
+    final String contribName = String.format("%s [%s]", plugin.getName(), pluginId.getIdString());
+    return new LibDescriptor(myFileSystem.getFile(libraryPath), plugin.getPluginClassLoader(), contribName, library.hidden);
   }
 
   @Override

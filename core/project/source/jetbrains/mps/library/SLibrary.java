@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,6 +69,7 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
   private final ClassLoader myPluginClassLoader;
   private final DescriptorIOFacade myDescriptorIO;
   private final boolean myHidden;
+  private final String myContributorName;
   private final ModuleFileTracker myFileTracker;
   private final FileListener myPostNotifyDispatch;
 
@@ -78,6 +79,7 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
     myFile = pathDescriptor.getPath();
     myDescriptorIO = descriptorIO;
     myHidden = hidden;
+    myContributorName = pathDescriptor.getLibraryName();
     // SLibrary listens to all file changes as it needs to react to create events as well as change/delete for existing modules.
     // ModuleFileTracker helps to keep record which module originates from what file
     myFileTracker = new ModuleFileTracker();
@@ -96,6 +98,16 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
   @Nullable
   public ClassLoader getPluginClassLoader() {
     return myPluginClassLoader;
+  }
+
+
+  /**
+   * @since 2021.3
+   * @return human-readable text to describe who or what contributes the library, may be {@code null} if uncertain
+   */
+  @Nullable
+  public String getContributorName() {
+    return myContributorName;
   }
 
   void attach() {

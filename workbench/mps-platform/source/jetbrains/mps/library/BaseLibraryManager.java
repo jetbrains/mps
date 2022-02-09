@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,7 +77,9 @@ public abstract class BaseLibraryManager implements BaseComponent, PersistentSta
       if (path != null) {
         try {
           IFile file = FileSystem.getInstance().getFile(path);
-          result.add(new LibDescriptor(file));
+          // Guess, the idea here is to make project/app contributed modules always visible (hiddenLanguages() == false)
+          // Don't want to contradict at the moment, hence explicit 'false'.
+          result.add(new LibDescriptor(file, null, lib.getName(), false));
         } catch (PathFormatException e) {
           // fixme apyshkin
           Matcher matcher = MacroHelper.MACRO_PATTERN.matcher(e.getProblemPath());
