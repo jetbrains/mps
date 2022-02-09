@@ -125,7 +125,14 @@ public class QueriesGenerated extends QueryProviderBase {
     return String.format(_context.getTemplateValue(), vmoptionsFileName, appFolder, vmoptionsFileName);
   }
   public static Object propertyMacro_GetValue_1_13(final PropertyMacroContext _context) {
-    return _context.getTemplateValue() + "/" + SPropertyOperations.getString(_context.getNode(), PROPS.startupFolder$jtLx);
+    // FIXME shall I completely omit WorkingDirectory key?
+    //     deprecated comment on startupFolder along with '-' default value
+    //     suggests it's not in use
+    if (isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.startupFolder$jtLx))) {
+      return _context.getTemplateValue() + '/' + SPropertyOperations.getString(_context.getNode(), PROPS.startupFolder$jtLx);
+    } else {
+      return _context.getTemplateValue();
+    }
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
     if ((SLinkOperations.getTarget(_context.getNode(), LINKS.branding$Eg1g) == null)) {
@@ -683,6 +690,9 @@ public class QueriesGenerated extends QueryProviderBase {
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
     }
+  }
+  private static boolean isNotEmptyString(String str) {
+    return str != null && str.length() > 0;
   }
 
   private static final class LINKS {
