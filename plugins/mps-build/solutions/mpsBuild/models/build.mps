@@ -38399,6 +38399,9 @@
     <node concept="26Ea6D" id="4z969tcIApt" role="2hID6k">
       <property role="26Ea6C" value="-Didea.invalidate.caches.invalidates.vfs=true" />
     </node>
+    <node concept="26Ea6D" id="17JeiLQwvtJ" role="2hID6k">
+      <property role="26Ea6C" value="-Didea.trust.disabled=true" />
+    </node>
     <node concept="26Ea6D" id="2sJHcZ7KMn9" role="2hID6k">
       <property role="26Ea6C" value="-Dperformance.watcher.freeze.report=false" />
     </node>
@@ -38515,6 +38518,9 @@
     </node>
     <node concept="26Ea6D" id="4z969tcIApT" role="26FZ21">
       <property role="26Ea6C" value="-Didea.invalidate.caches.invalidates.vfs=true" />
+    </node>
+    <node concept="26Ea6D" id="17JeiLQwvuK" role="26FZ21">
+      <property role="26Ea6C" value="-Didea.trust.disabled=true" />
     </node>
     <node concept="26Ea6D" id="2sJHcZ7KMnC" role="26FZ21">
       <property role="26Ea6C" value="-Dperformance.watcher.freeze.report=false" />

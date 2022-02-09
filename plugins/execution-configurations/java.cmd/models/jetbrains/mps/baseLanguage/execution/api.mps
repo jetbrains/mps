@@ -4499,6 +4499,9 @@
               <node concept="Xl_RD" id="4z969tcICUs" role="1r8FgC">
                 <property role="Xl_RC" value="-Didea.invalidate.caches.invalidates.vfs=true" />
               </node>
+              <node concept="Xl_RD" id="17JeiLQCcia" role="1r8FgC">
+                <property role="Xl_RC" value="-Didea.trust.disabled=true" />
+              </node>
             </node>
             <node concept="2TNl2y" id="7jEXsfiO_ji" role="2OqNvi" />
           </node>

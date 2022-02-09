@@ -24,6 +24,7 @@
 -Dapple.awt.graphics.UseQuartz=true
 -Dide.mac.message.dialogs.as.sheets=false
 -Didea.invalidate.caches.invalidates.vfs=true
+-Didea.trust.disabled=true
 -Dperformance.watcher.freeze.report=false
 -Didea.log.config.file=log.xml
 -Didea.indices.psi.dependent.default=false
