@@ -205,6 +205,12 @@ public class KotlinCommonStubModelDescriptor extends LazyEditableSModelBase {
     return false;
   }
 
+  @Override
+  public boolean isChanged() {
+    // This is not really an editable model even though it extends EditableSModel
+    return false;
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept KotlinFile$4h = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af529L, "jetbrains.mps.kotlin.structure.KotlinFile");
   }

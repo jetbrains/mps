@@ -2641,8 +2641,62 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="TySimd$otM" role="jymVt" />
     <node concept="3uibUv" id="bcpd6poyYx" role="1zkMxy">
       <ref role="3uigEE" to="w1kc:~LazyEditableSModelBase" resolve="LazyEditableSModelBase" />
+    </node>
+    <node concept="3clFb_" id="TySimd$NnD" role="jymVt">
+      <property role="TrG5h" value="isChanged" />
+      <node concept="3Tm1VV" id="TySimd$NnE" role="1B3o_S" />
+      <node concept="10P_77" id="TySimd$NnG" role="3clF45" />
+      <node concept="3clFbS" id="TySimd$NnI" role="3clF47">
+        <node concept="3SKdUt" id="TySimd_aCR" role="3cqZAp">
+          <node concept="1PaTwC" id="TySimd_aCS" role="1aUNEU">
+            <node concept="3oM_SD" id="TySimd_dVn" role="1PaTwD">
+              <property role="3oM_SC" value="This" />
+            </node>
+            <node concept="3oM_SD" id="TySimd_dVp" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="TySimd_dVs" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="TySimd_dVw" role="1PaTwD">
+              <property role="3oM_SC" value="really" />
+            </node>
+            <node concept="3oM_SD" id="TySimd_dV_" role="1PaTwD">
+              <property role="3oM_SC" value="an" />
+            </node>
+            <node concept="3oM_SD" id="TySimd_dVF" role="1PaTwD">
+              <property role="3oM_SC" value="editable" />
+            </node>
+            <node concept="3oM_SD" id="TySimd_dVM" role="1PaTwD">
+              <property role="3oM_SC" value="model" />
+            </node>
+            <node concept="3oM_SD" id="TySimd_dWd" role="1PaTwD">
+              <property role="3oM_SC" value="even" />
+            </node>
+            <node concept="3oM_SD" id="TySimd_dWm" role="1PaTwD">
+              <property role="3oM_SC" value="though" />
+            </node>
+            <node concept="3oM_SD" id="TySimd_dWw" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="TySimd_dWF" role="1PaTwD">
+              <property role="3oM_SC" value="extends" />
+            </node>
+            <node concept="3oM_SD" id="TySimd_dWR" role="1PaTwD">
+              <property role="3oM_SC" value="EditableSModel" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="TySimd$Ycb" role="3cqZAp">
+          <node concept="3clFbT" id="TySimd$Yca" role="3clFbG" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="TySimd$NnJ" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
+      </node>
     </node>
   </node>
   <node concept="312cEu" id="2ntakj1pRrA">

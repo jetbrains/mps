@@ -207,8 +207,10 @@
       <node id="2094475544970558005" at="194,0,195,52" concept="5" />
       <node id="201646934709906484" at="199,31,200,16" concept="11" />
       <node id="201646934709135138" at="204,72,205,17" concept="11" />
-      <node id="2728382324535686216" at="209,0,210,0" concept="14" trace="KotlinFile$4h" />
-      <node id="2728382324535686216" at="213,0,214,0" concept="14" trace="name$MnvL" />
+      <node id="1036638415654005303" at="209,30,210,81" concept="12" />
+      <node id="1036638415653954315" at="210,81,211,17" concept="11" />
+      <node id="2728382324535686216" at="215,0,216,0" concept="14" trace="KotlinFile$4h" />
+      <node id="2728382324535686216" at="219,0,220,0" concept="14" trace="name$MnvL" />
       <node id="2728382324535686226" at="57,0,60,0" concept="3" trace="KotlinCommonStubModelDescriptor#(Lorg/jetbrains/mps/openapi/model/SModelReference;Ljetbrains/mps/extapi/persistence/FolderSetDataSource;)V" />
       <node id="2504906858938168225" at="100,45,103,5" concept="7" />
       <node id="201646934709950591" at="104,0,107,5" concept="7" />
@@ -226,6 +228,7 @@
       <node id="201646934709579145" at="61,0,66,0" concept="9" trace="getSource#()Ljetbrains/mps/extapi/persistence/FolderSetDataSource;" />
       <node id="2905740699054374320" at="77,0,82,0" concept="9" trace="importedDevkits#()Ljava/util/List;" />
       <node id="2905740699054523203" at="83,0,88,0" concept="9" trace="getLanguagesEngagedOnGeneration#()Ljava/util/Collection;" />
+      <node id="1036638415653909993" at="208,0,213,0" concept="9" trace="isChanged#()Z" />
       <node id="201646934709199528" at="167,0,173,5" concept="8" />
       <node id="7701598947863267978" at="118,45,125,9" concept="8" />
       <node id="7974320546220442556" at="89,0,97,0" concept="9" trace="createFile#(Ljetbrains/mps/vfs/IFile;)Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -260,6 +263,7 @@
         <var name="e" id="2504906858938308053" />
       </scope>
       <scope id="201646934709549615" at="170,12,172,39" />
+      <scope id="1036638415653909998" at="209,30,211,17" />
       <scope id="2728382324535686226" at="57,0,60,0">
         <var name="modelReference" id="2728382324535686259" />
         <var name="source" id="2728382324535686260" />
@@ -292,6 +296,7 @@
       <scope id="7701598947863267980" at="119,94,124,11">
         <var name="fileVersion" id="7507186091285028306" />
       </scope>
+      <scope id="1036638415653909993" at="208,0,213,0" />
       <scope id="7974320546220442558" at="89,42,95,16">
         <var name="fileName" id="7974320546220442560" />
         <var name="lazy" id="7974320546220442565" />
@@ -342,12 +347,12 @@
       <scope id="2504906858937828946" at="110,0,146,0">
         <var name="model" id="2504906858937828949" />
       </scope>
-      <unit id="2728382324535686216" at="208,0,211,0" name="jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonStubModelDescriptor$CONCEPTS" />
-      <unit id="2728382324535686216" at="212,0,215,0" name="jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonStubModelDescriptor$PROPS" />
+      <unit id="2728382324535686216" at="214,0,217,0" name="jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonStubModelDescriptor$CONCEPTS" />
+      <unit id="2728382324535686216" at="218,0,221,0" name="jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonStubModelDescriptor$PROPS" />
       <unit id="2504906858938359857" at="149,62,153,5" name="jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonStubModelDescriptor$1" />
       <unit id="2504906858938359866" at="153,21,157,5" name="jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonStubModelDescriptor$2" />
       <unit id="2504906858938359875" at="157,17,161,5" name="jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonStubModelDescriptor$3" />
-      <unit id="2728382324535686216" at="52,0,216,0" name="jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonStubModelDescriptor" />
+      <unit id="2728382324535686216" at="52,0,222,0" name="jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonStubModelDescriptor" />
     </file>
   </root>
   <root nodeRef="r:6c6710f1-72ef-4241-9ac5-bafd05beea2c(jetbrains.mps.kotlin.ide.commonStubs)/2728382324535686886">
