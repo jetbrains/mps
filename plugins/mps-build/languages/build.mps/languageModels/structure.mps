@@ -132,6 +132,15 @@
       <property role="IQ2ns" value="5253498789149547704" />
       <ref role="20lvS9" node="4zCbl23d1MR" resolve="BuildMps_ModuleDependency" />
     </node>
+    <node concept="1TJgyj" id="3XLirLmGAHt" role="1TKVEi">
+      <property role="IQ2ns" value="4571516170014976861" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="output" />
+      <ref role="20lvS9" to="3ior:6qcrfIJFdKY" resolve="BuildSourcePath" />
+      <node concept="t5JxF" id="3XLirLmHo3u" role="lGtFl">
+        <property role="t5JxN" value="Experimental functionality, MPSI-36" />
+      </node>
+    </node>
     <node concept="PrWs8" id="2fQZjorSLPQ" role="PzmwI">
       <ref role="PrY4T" to="3ior:2fQZjorRfOB" resolve="BuildSource_CompilablePart" />
     </node>
@@ -243,7 +252,7 @@
       <property role="20lbJX" value="fLJekj5/0..n" />
       <ref role="20lvS9" node="6OtXG9K2II1" resolve="BuildMps_GeneratorRef" />
       <node concept="t5JxF" id="6OtXG9KbD9B" role="lGtFl">
-        <property role="t5JxN" value="unlike generator containment, this one references generators onwed by project itself. Generator modules refererences this way are bundled along with the language." />
+        <property role="t5JxN" value="unlike generator containment, this one references generators owned by project itself. Generator modules references this way are bundled along with the language." />
         <node concept="t5JxR" id="6OtXG9KlQBU" role="t5JxU">
           <ref role="t5JxO" node="7YI57w6gNwB" resolve="generator" />
         </node>
@@ -625,6 +634,14 @@
     <ref role="1TJDcQ" to="3ior:5KZfyKsUo6u" resolve="BuildPlugin" />
     <node concept="PrWs8" id="27eOSzOUT_O" role="PzmwI">
       <ref role="PrY4T" to="3ior:IFRVVI6zqz" resolve="BuildExternalDependency" />
+    </node>
+    <node concept="1TJgyi" id="3XLirLmzCUO" role="1TKVEl">
+      <property role="IQ2nx" value="4571516170012626612" />
+      <property role="TrG5h" value="useMakeTask" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="t5JxF" id="3XLirLmzD72" role="lGtFl">
+        <property role="t5JxN" value="Enable experimental functionality of MPSI-36" />
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="6CY5wCYZA9O">

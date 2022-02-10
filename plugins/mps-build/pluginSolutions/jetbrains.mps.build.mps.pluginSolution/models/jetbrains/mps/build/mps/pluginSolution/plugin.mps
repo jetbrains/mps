@@ -686,7 +686,6 @@
         <property id="3885435385580582154" name="path" index="26EafJ" />
       </concept>
       <concept id="3885435385580582152" name="jetbrains.mps.build.startup.structure.MpsStartupScript" flags="ng" index="26EafH">
-        <property id="3885435385580582155" name="startupFolder" index="26EafI" />
         <property id="3885435385580631186" name="startupClass" index="26FY9R" />
         <child id="3885435385580582696" name="bootClasspath" index="26Ea7d" />
         <child id="3885435385580627556" name="vmOptions" index="26FZ21" />
@@ -15159,7 +15158,6 @@
             </node>
             <node concept="2c44tf" id="2g$3PZUdZIz" role="33vP2m">
               <node concept="26EafH" id="2g$3PZUe23n" role="2c44tc">
-                <property role="26EafI" value="-" />
                 <property role="26FY9R" value="jetbrains.mps.Launcher" />
                 <node concept="26Ea6D" id="5DYAdUAxc_c" role="26FZ21">
                   <property role="26Ea6C" value="Common IntelliJ Platform options:" />
@@ -15364,6 +15362,9 @@
                 </node>
                 <node concept="26EafG" id="BJYGrH08XA" role="26Ea7d">
                   <property role="26EafJ" value="lib/util.jar" />
+                </node>
+                <node concept="26EafG" id="3XLirLp36VX" role="26Ea7d">
+                  <property role="26EafJ" value="lib/3rd-party-rt.jar" />
                 </node>
                 <node concept="26EafG" id="BsOHnjrceI" role="26Ea7d">
                   <property role="26EafJ" value="lib/jna.jar" />

@@ -246,6 +246,7 @@
       <concept id="1381004262292414836" name="jetbrains.mps.lang.editor.structure.ICellStyle" flags="ng" index="1k5N5V">
         <reference id="1381004262292426837" name="parentStyleClass" index="1k5W1q" />
       </concept>
+      <concept id="2906093235281475560" name="jetbrains.mps.lang.editor.structure.SpellCheckStyle" flags="lg" index="1liFee" />
       <concept id="1236262245656" name="jetbrains.mps.lang.editor.structure.MatchingLabelStyleClassItem" flags="ln" index="3mYdg7">
         <property id="1238091709220" name="labelName" index="1413C4" />
       </concept>
@@ -5556,6 +5557,9 @@
           </node>
           <node concept="3$7jql" id="6OtXG9K2KV_" role="3F10Kt">
             <property role="3$6WeP" value="0.0" />
+          </node>
+          <node concept="1liFee" id="3XLirLmzEei" role="3F10Kt">
+            <property role="VOm3f" value="true" />
           </node>
         </node>
         <node concept="2iRfu4" id="6OtXG9K2KW5" role="2iSdaV" />

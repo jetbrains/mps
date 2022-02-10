@@ -45,6 +45,8 @@ import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.project.facets.JavaModuleFacet;
+import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.facets.TestsFacetImpl;
 import java.util.Map;
@@ -772,6 +774,40 @@ public final class ModuleChecker {
     }
 
     if (type.doFullImport) {
+
+      if (SPropertyOperations.getBoolean(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SNodeOperations.as(SNodeOperations.getContainingRoot(myModule), CONCEPTS.BuildProject$ae), LINKS.plugins$AsCR), CONCEPTS.BuildMPSPlugin$YW)).first(), PROPS.useMakeTask$aRFt)) {
+        // XXX shall I take !doNotCompile into account here? Legacy code doesn't check that, is there use for sources
+        //    in case of !doNotCompile
+        SModule loadedModule = getLoadedModule();
+        JavaModuleFacet jmf = loadedModule.getFacet(JavaModuleFacet.class);
+        if (jmf != null) {
+          for (String path : jmf.getAdditionalSourcePaths()) {
+            SNode p = convertPath(path);
+            buildModuleFacade.addJavaSources(p, false);
+          }
+
+          // MPSI-36
+          buildModuleFacade.addOutputPath(convertPath(jmf.getClassesGen()));
+
+          // I hate this condition, but decided to keep it for a while. Seems that its intention was to handle test-only modules
+          //    i.e. to exclude them here, shall check if it's still relevant given JMF use
+          if (!(SNodeOperations.isInstanceOf(myModule, CONCEPTS.BuildMps_Solution$R7)) || ((boolean) BuildMps_Solution__BehaviorDescriptor.hasSources_id6ogfLD6hwDf.invoke(SNodeOperations.cast(myModule, CONCEPTS.BuildMps_Solution$R7)) && hasModels)) {
+            buildModuleFacade.addJavaSources(convertPath(jmf.getOutputRoot()), true);
+          }
+        }
+
+        // replacement for dark magic TestsFacetImpl.getTestsOutputPath, below
+        TestsFacet tf = loadedModule.getFacet(TestsFacet.class);
+        if (tf != null) {
+          IFile testsOutputPath = tf.getTestsOutputPath();
+          if (testsOutputPath != null) {
+            buildModuleFacade.addTestSources(convertPath(testsOutputPath.getPath()), true);
+          }
+        }
+        // use new approach for all sources. I was eager to switch to SModule and JMF for a long time (see comments, below)
+        return;
+      }
+
       for (String path : myModuleDescriptor.getSourcePaths()) {
         SNode p = convertPath(path);
         buildModuleFacade.addJavaSources(p, false);
@@ -1197,6 +1233,13 @@ public final class ModuleChecker {
     }
   }
 
+  private SNode convertPath(@Nullable IFile file) {
+    if (file == null) {
+      return null;
+    }
+    return convertPath(file.getPath());
+  }
+
   private void report(String message) {
     myReporter.handle(Message.createMessage(MessageKind.ERROR, getClass().getName(), message, SNodeOperations.getPointer(myModule)));
   }
@@ -1289,7 +1332,7 @@ public final class ModuleChecker {
       return this;
     }
 
-    public BuildModuleFacade addJavaSources(SNode p, boolean isGeneratedSources) {
+    public BuildModuleFacade addJavaSources(@Nullable SNode p, boolean isGeneratedSources) {
       if (p == null) {
         return this;
       }
@@ -1301,7 +1344,7 @@ public final class ModuleChecker {
       return this;
     }
 
-    public BuildModuleFacade addTestSources(SNode p, boolean isGeneratedSources) {
+    public BuildModuleFacade addTestSources(@Nullable SNode p, boolean isGeneratedSources) {
       if (p == null) {
         return this;
       }
@@ -1310,6 +1353,14 @@ public final class ModuleChecker {
       SLinkOperations.setTarget(SLinkOperations.getTarget(testSource, LINKS.folder$ICh7), LINKS.path$zL7z, p);
       SPropertyOperations.assign(testSource, PROPS.isGenerated$WkmJ, isGeneratedSources);
       ListSequence.fromList(SLinkOperations.getChildren(myModule, LINKS.sources$mT1j)).addElement(testSource);
+      return this;
+    }
+
+    public BuildModuleFacade addOutputPath(@Nullable SNode p) {
+      // not quite useful method, just to keep all path-related operations close to each other
+      if (p != null) {
+        SLinkOperations.setTarget(myModule, LINKS.output$Hskt, p);
+      }
       return this;
     }
   }
@@ -1328,6 +1379,7 @@ public final class ModuleChecker {
     /*package*/ static final SProperty uuid$pC01 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4780308f5d333ebL, 0x4780308f5d3868bL, "uuid");
     /*package*/ static final SProperty doNotCompile$4EF = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x14d3fb6fb84ac614L, "doNotCompile");
     /*package*/ static final SProperty extracted$UUL7 = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, 0x70ece8f91dd584e6L, "extracted");
+    /*package*/ static final SProperty useMakeTask$aRFt = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, 0x3f7149bc568e8eb4L, "useMakeTask");
     /*package*/ static final SProperty reexport$kN5t = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cc1L, "reexport");
     /*package*/ static final SProperty reexport$1qdl = MetaAdapterFactory.getProperty(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, 0x52fab202d8f26228L, "reexport");
     /*package*/ static final SProperty reexport$RnCo = MetaAdapterFactory.getProperty(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x2c4467914643e8fcL, "reexport");
@@ -1356,6 +1408,8 @@ public final class ModuleChecker {
     /*package*/ static final SConcept BuildMps_ModuleDependencyTargetLanguage$oN = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x7c8000c54bad607cL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyTargetLanguage");
     /*package*/ static final SConcept BuildMps_ModuleDependencyOnModule$1C = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnModule");
     /*package*/ static final SConcept BuildMps_ModuleModelRoot$Ie = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c195c50L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleModelRoot");
+    /*package*/ static final SConcept BuildProject$ae = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, "jetbrains.mps.build.structure.BuildProject");
+    /*package*/ static final SConcept BuildMPSPlugin$YW = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0xc0bde9fc71699d9L, "jetbrains.mps.build.mps.structure.BuildMPSPlugin");
     /*package*/ static final SConcept BuildMps_ModuleDependencyOnJavaModule$MK = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyOnJavaModule");
     /*package*/ static final SConcept BuildSource_JavaDependencyLibrary$TO = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x454b730dd9079dceL, "jetbrains.mps.build.structure.BuildSource_JavaDependencyLibrary");
     /*package*/ static final SConcept BuildMps_ModuleDependencyJar$Rm = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3b60c4a45c197e19L, "jetbrains.mps.build.mps.structure.BuildMps_ModuleDependencyJar");
@@ -1384,6 +1438,7 @@ public final class ModuleChecker {
     /*package*/ static final SReferenceLink module$kGi0 = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334b11aL, 0x48e82d5083341cb9L, "module");
     /*package*/ static final SReferenceLink sourceLanguage$A51U = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x4c6db07d2e56a8b4L, 0xc0f2d501dbb734cL, "sourceLanguage");
     /*package*/ static final SContainmentLink sources$mT1j = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x48e82d5083341d31L, "sources");
+    /*package*/ static final SContainmentLink plugins$AsCR = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x4df58c6f18f84a13L, 0x5c3f3e2c1ce9ac70L, "plugins");
     /*package*/ static final SReferenceLink module$RnRp = MetaAdapterFactory.getReferenceLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x2c4467914643e8fdL, "module");
     /*package*/ static final SContainmentLink dependencies$eBQR = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc38L, 0x263ae7d4319896abL, "dependencies");
     /*package*/ static final SContainmentLink javaLibLocation$cmtb = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c4467914643e8fbL, 0x65b9b06022080842L, "javaLibLocation");
@@ -1395,5 +1450,6 @@ public final class ModuleChecker {
     /*package*/ static final SContainmentLink folder$URyp = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508334bdeaL, 0x48e82d508334bdecL, "folder");
     /*package*/ static final SContainmentLink path$zL7z = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, 0x1ff930b22643b100L, "path");
     /*package*/ static final SContainmentLink folder$ICh7 = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x21286cd3b0f27758L, 0x21286cd3b0f28a50L, "folder");
+    /*package*/ static final SContainmentLink output$Hskt = MetaAdapterFactory.getContainmentLink(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x48e82d508331930cL, 0x3f7149bc56b26b5dL, "output");
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -162,7 +161,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     if (path.contains("!")) {
       String[] split = path.split("!");
       if (split.length > 0) {
-        if (!split[1].isEmpty() && !split[1].equals("/")) {
+        if (!split[1].isEmpty() && !"/".equals(split[1])) {
           LOG.warn("Can not transform directory " + path + " to proper classpath while calculating classpath for module " + getModule());
         }
       }
@@ -179,7 +178,8 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       return Collections.emptySet();
     }
 
-    return new HashSet<>(moduleDescriptor.getSourcePaths());
+    // XXX I don't see any reason to make set unique here, but at least keep the ordering
+    return new LinkedHashSet<>(moduleDescriptor.getSourcePaths());
   }
 
   @Override

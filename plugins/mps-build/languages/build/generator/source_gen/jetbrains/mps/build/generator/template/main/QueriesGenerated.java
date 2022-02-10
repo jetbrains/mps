@@ -412,7 +412,12 @@ public class QueriesGenerated extends QueryProviderBase {
     return SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL);
   }
   public static Object propertyMacro_GetValue_0_72(final PropertyMacroContext _context) {
-    return Context.defaultContext(_context).getTempPath(_context.getNode(), SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL), "java", "out");
+    Context cx = Context.defaultContext(_context);
+    if ((SLinkOperations.getTarget(_context.getNode(), LINKS.outputFolder$C1ii) != null)) {
+      return BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.outputFolder$C1ii), LINKS.path$zL7z), cx);
+    } else {
+      return cx.getTempPath(_context.getNode(), SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL), "java", "out");
+    }
   }
   public static Object propertyMacro_GetValue_0_73(final PropertyMacroContext _context) {
     return SPropertyOperations.getString(_context.getNode(), PROPS.folderName$SN9R);
@@ -603,7 +608,14 @@ public class QueriesGenerated extends QueryProviderBase {
     return fileName;
   }
   public static Object propertyMacro_GetValue_2_0(final PropertyMacroContext _context) {
-    return Context.defaultContext(_context).getTempPath(SLinkOperations.getTarget(_context.getNode(), LINKS.module$qsl4), SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.module$qsl4), PROPS.name$MnvL), "java", "out");
+    Context cx = Context.defaultContext(_context);
+    SNode outFolder = SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(_context.getNode(), LINKS.module$qsl4), CONCEPTS.BuildSource_JavaModule$NC), LINKS.outputFolder$C1ii);
+    if ((outFolder != null)) {
+      // copied from BuildInputSingleFolder reduction rule
+      return BuildSourcePath__BehaviorDescriptor.getAntPath_id7ro1ZztyOh5.invoke(SLinkOperations.getTarget(outFolder, LINKS.path$zL7z), cx);
+    } else {
+      return cx.getTempPath(SLinkOperations.getTarget(_context.getNode(), LINKS.module$qsl4), SPropertyOperations.getString(SLinkOperations.getTarget(_context.getNode(), LINKS.module$qsl4), PROPS.name$MnvL), "java", "out");
+    }
   }
   public static Object propertyMacro_GetValue_2_1(final PropertyMacroContext _context) {
     return (String) BuildLayout_CopyProcessor__BehaviorDescriptor.getTempFolder_id19QsrPvjYS$.invoke(SNodeOperations.cast(ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.handlers$AdkY)).last(), CONCEPTS.BuildLayout_CopyProcessor$ty), _context);
@@ -3578,10 +3590,11 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SContainmentLink value$l7$8 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263c91972cd26287L, 0x263c91972cd2628dL, "value");
     /*package*/ static final SContainmentLink fileName$bw7S = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x365f30e12d43ad7L, 0x365f30e12d43ad8L, "fileName");
     /*package*/ static final SContainmentLink fileName$WieA = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x74a438668c1b9d5aL, 0x74a438668c1d66d0L, "fileName");
+    /*package*/ static final SContainmentLink outputFolder$C1ii = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc38L, 0x3f7149bc5676b9c7L, "outputFolder");
+    /*package*/ static final SContainmentLink path$zL7z = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, 0x1ff930b22643b100L, "path");
     /*package*/ static final SContainmentLink dir$e6r$ = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a4L, 0x48d5d03db92245a6L, "dir");
     /*package*/ static final SContainmentLink dir$CgNq = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x6d2aa38ffdbd053fL, 0x6d2aa38ffdbd0542L, "dir");
     /*package*/ static final SContainmentLink path$dYr6 = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db9224596L, 0x48d5d03db922459aL, "path");
-    /*package*/ static final SContainmentLink path$zL7z = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x1ff930b22643b0ffL, 0x1ff930b22643b100L, "path");
     /*package*/ static final SContainmentLink path$M9si = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbcff551aL, 0x3395e884b61c23e2L, "path");
     /*package*/ static final SContainmentLink dir$aQdf = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x11779a1dbd021959L, 0x3395e884b61c2440L, "dir");
     /*package*/ static final SContainmentLink name$IAJz = MetaAdapterFactory.getContainmentLink(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x115d3b22faf20f30L, 0x115d3b22faf20f31L, "name");

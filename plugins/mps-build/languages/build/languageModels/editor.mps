@@ -1871,6 +1871,22 @@
       </node>
       <node concept="l2Vlx" id="6qcrfIJFdKX" role="2iSdaV" />
     </node>
+    <node concept="3EZMnI" id="3XLirLmtJ8H" role="6VMZX">
+      <node concept="3F0ifn" id="3XLirLmtJvO" role="3EZMnx">
+        <property role="3F0ifm" value="Experimental functionality, use with care" />
+        <ref role="1k5W1q" node="7UAfeVQSDww" resolve="comment" />
+      </node>
+      <node concept="2iRkQZ" id="3XLirLmtJ8I" role="2iSdaV" />
+      <node concept="3EZMnI" id="3XLirLmtIZg" role="3EZMnx">
+        <node concept="3F0ifn" id="3XLirLmtK3P" role="3EZMnx">
+          <property role="3F0ifm" value="classes output" />
+        </node>
+        <node concept="3F1sOY" id="3XLirLmtKar" role="3EZMnx">
+          <ref role="1NtTu8" to="3ior:3XLirLmtFB7" resolve="outputFolder" />
+        </node>
+        <node concept="l2Vlx" id="3XLirLmtIZj" role="2iSdaV" />
+      </node>
+    </node>
   </node>
   <node concept="24kQdi" id="6qcrfIJFdL4">
     <property role="3GE5qa" value="SourcePath" />

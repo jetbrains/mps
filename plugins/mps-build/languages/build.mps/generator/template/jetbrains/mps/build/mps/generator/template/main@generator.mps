@@ -590,6 +590,7 @@
       <concept id="7389400916848073784" name="jetbrains.mps.build.structure.BuildSource_JavaModule" flags="ng" index="398b33">
         <child id="2754769020641646251" name="dependencies" index="nCB5Z" />
         <child id="7389400916848073826" name="sources" index="398b2p" />
+        <child id="4571516170011064775" name="outputFolder" index="1D1Z1V" />
       </concept>
       <concept id="7655580649838832276" name="jetbrains.mps.build.structure.BuildLayout_EchoXml" flags="ng" index="1kKnMu">
         <child id="7655580649838832278" name="fileName" index="1kKnMs" />
@@ -2161,6 +2162,41 @@
                     <node concept="3clFbS" id="3XxDNGPlL2a" role="2VODD2">
                       <node concept="3clFbF" id="3XxDNGPlQwZ" role="3cqZAp">
                         <node concept="30H73N" id="3XxDNGPlQwY" role="3clFbG" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="TIC1d" id="3XLirLmHzUr" role="1D1Z1V">
+                <node concept="55IIr" id="3XLirLmHzUs" role="TIC6M">
+                  <node concept="29HgVG" id="3XLirLmHDKA" role="lGtFl">
+                    <node concept="3NFfHV" id="3XLirLmHMS5" role="3NFExx">
+                      <node concept="3clFbS" id="3XLirLmHMS6" role="2VODD2">
+                        <node concept="3clFbF" id="3XLirLmHMUP" role="3cqZAp">
+                          <node concept="2OqwBi" id="3XLirLmHN8y" role="3clFbG">
+                            <node concept="30H73N" id="3XLirLmHMUO" role="2Oq$k0" />
+                            <node concept="3TrEf2" id="3XLirLmHNqe" role="2OqNvi">
+                              <ref role="3Tt5mk" to="kdzh:3XLirLmGAHt" resolve="output" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="1W57fq" id="3XLirLmHE1I" role="lGtFl">
+                  <node concept="3IZrLx" id="3XLirLmHE1J" role="3IZSJc">
+                    <node concept="3clFbS" id="3XLirLmHE1K" role="2VODD2">
+                      <node concept="3clFbF" id="3XLirLmHE90" role="3cqZAp">
+                        <node concept="2OqwBi" id="3XLirLmHMdw" role="3clFbG">
+                          <node concept="2OqwBi" id="3XLirLmHEpS" role="2Oq$k0">
+                            <node concept="30H73N" id="3XLirLmHE8Z" role="2Oq$k0" />
+                            <node concept="3TrEf2" id="3XLirLmHEHy" role="2OqNvi">
+                              <ref role="3Tt5mk" to="kdzh:3XLirLmGAHt" resolve="output" />
+                            </node>
+                          </node>
+                          <node concept="3x8VRR" id="3XLirLmHMwG" role="2OqNvi" />
+                        </node>
                       </node>
                     </node>
                   </node>

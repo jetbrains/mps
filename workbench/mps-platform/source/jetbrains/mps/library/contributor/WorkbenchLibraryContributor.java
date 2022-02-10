@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ public final class WorkbenchLibraryContributor implements LibraryContributor {
 
   @Override
   public Set<LibDescriptor> getPaths() {
-    return Collections.singleton(new LibDescriptor(myFs.getFile(new File(PathManager.getWorkbenchPath())), null));
+    return Collections.singleton(new LibDescriptor(myFs.getFile(new File(PathManager.getWorkbenchPath())), null, "MPS Workbench", false));
   }
 
   @Override

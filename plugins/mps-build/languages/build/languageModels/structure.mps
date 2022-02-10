@@ -332,6 +332,15 @@
       <property role="IQ2ns" value="1659807394254323962" />
       <ref role="20lvS9" node="1s8OwvM5SHi" resolve="BuildSource_JavaModuleOptions" />
     </node>
+    <node concept="1TJgyj" id="3XLirLmtFB7" role="1TKVEi">
+      <property role="IQ2ns" value="4571516170011064775" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="outputFolder" />
+      <ref role="20lvS9" node="1ZTcb8AgV3Z" resolve="BuildInputSingleFolder" />
+      <node concept="t5JxF" id="3XLirLmtG0H" role="lGtFl">
+        <property role="t5JxN" value="Experimental mechanism to address MPSI-36" />
+      </node>
+    </node>
     <node concept="PrWs8" id="6qcrfIJFdLz" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
