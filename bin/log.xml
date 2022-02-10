@@ -131,6 +131,11 @@ In MPS sources some run configurations override this path by setting 'idea.log.p
     <appender-ref ref="FILE-VCS"/>
   </category>
 
+  <!-- Mute annoying error message until there's fix in the platform, see MPS-34210 -->
+  <category name="#com.intellij.openapi.actionSystem.impl.EdtDataContext" additivity="false">
+    <priority value="FATAL"/>
+  </category>
+
   <!--
   Template category for debugging:
   Set required logger prefix (java package) and choose appropriate appender.
