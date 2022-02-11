@@ -61,11 +61,11 @@ public class OverloadResolverUtil {
    * If this method returns false, no more action should be taken (it means no better method will be found with the
    * current state).
    * 
-   * @param availableSolver current available solver, if not present and a method is bound, there wont be a better match
+   * @param availableSolver current available solver
    */
   public static boolean canBeImproved(OverloadResolver availableSolver, FunctionCall call) {
-    FunctionDeclaration functionDescriptor = call.getFunctionDescriptor();
-    return availableSolver != null || functionDescriptor == null || mapParameters(call, call.getArguments(), functionDescriptor) == null;
+    // No overload resolution mechanism available -> no support
+    return availableSolver != null;
   }
 
   private static final class PROPS {

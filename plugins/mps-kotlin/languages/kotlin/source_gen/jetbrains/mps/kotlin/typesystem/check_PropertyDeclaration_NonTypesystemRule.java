@@ -23,16 +23,17 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
   }
   public void applyRule(final SNode decl, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if ((SLinkOperations.getTarget(decl, LINKS.assignment$nl1j) == null) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(decl, LINKS.inheritance$TFvr), CONCEPTS.AbstractInheritanceModifier$GA)) && (SLinkOperations.getTarget(decl, LINKS.getter$C1zs) == null)) {
+      // Warning as it may be irrelevant based on dataflow (could be initialized later), kept for quickfixes
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(decl, "Property must be initialized or be abstract", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "6013275720582756209", null, errorTarget);
+        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(decl, "Property must be initialized or be abstract", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "1389314048067943414", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.AddPropertyInitializer_QuickFix", "6013275720582758997", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.AddPropertyInitializer_QuickFix", "1389314048067943416", false);
           intentionProvider.putArgument("property", decl);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.ChangeInheritanceModifier_QuickFix", "6013275720582968804", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.ChangeInheritanceModifier_QuickFix", "1389314048067943419", false);
           intentionProvider.putArgument("inheritable", decl);
           intentionProvider.putArgument("modifier", CONCEPTS.AbstractInheritanceModifier$GA);
           _reporter_2309309498.addIntentionProvider(intentionProvider);

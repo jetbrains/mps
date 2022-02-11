@@ -51758,28 +51758,51 @@
       </node>
       <node concept="3LEwk6" id="Ye$g8PO912" role="2G$12L">
         <property role="BnDLt" value="true" />
-        <property role="TrG5h" value="jetbrains.mps.kotlin.devkit.jvm" />
-        <property role="3LESm3" value="4866b4b4-6ecd-49f3-ae68-c62248cc4306" />
+        <property role="TrG5h" value="jetbrains.mps.devkit.kotlin" />
+        <property role="3LESm3" value="3605c367-b661-48bf-8131-d9bd75494e4d" />
         <node concept="398BVA" id="Ye$g8PO91H" role="3LF7KH">
           <ref role="398BVh" node="1fy59xXoa5p" resolve="plugin_home" />
           <node concept="2Ry0Ak" id="Ye$g8PO91N" role="iGT6I">
             <property role="2Ry0Am" value="devkits" />
             <node concept="2Ry0Ak" id="Ye$g8PO91S" role="2Ry0An">
-              <property role="2Ry0Am" value="kotlin.devkit.jvm" />
-              <node concept="2Ry0Ak" id="Ye$g8PO91X" role="2Ry0An">
-                <property role="2Ry0Am" value="jetbrains.mps.kotlin.devkit.jvm.devkit" />
+              <property role="2Ry0Am" value="kotlin.devkit" />
+              <node concept="2Ry0Ak" id="67woACzcUjm" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.devkit.kotlin.devkit" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="3LEDTy" id="Ye$g8PO9me" role="3LEDUa">
-          <ref role="3LEDTV" node="7Kfy9QB6KYb" resolve="jetbrains.mps.baseLanguage" />
-        </node>
         <node concept="3LEDTy" id="Ye$g8PO9MG" role="3LEDUa">
           <ref role="3LEDTV" node="Ye$g8PO8Uc" resolve="jetbrains.mps.kotlin" />
         </node>
-        <node concept="3LEDTy" id="Ye$g8PO9MH" role="3LEDUa">
+      </node>
+      <node concept="3LEwk6" id="5I86xgmtLbe" role="2G$12L">
+        <property role="BnDLt" value="true" />
+        <property role="TrG5h" value="jetbrains.mps.devkit.kotlin.jvm" />
+        <property role="3LESm3" value="4866b4b4-6ecd-49f3-ae68-c62248cc4306" />
+        <node concept="398BVA" id="5I86xgmtLbf" role="3LF7KH">
+          <ref role="398BVh" node="1fy59xXoa5p" resolve="plugin_home" />
+          <node concept="2Ry0Ak" id="5I86xgmtLbg" role="iGT6I">
+            <property role="2Ry0Am" value="devkits" />
+            <node concept="2Ry0Ak" id="5I86xgmtLbh" role="2Ry0An">
+              <property role="2Ry0Am" value="kotlin.devkit.jvm" />
+              <node concept="2Ry0Ak" id="67woACzcUjZ" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.devkit.kotlin.jvm.devkit" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3LEDTy" id="5I86xgmtLbl" role="3LEDUa">
           <ref role="3LEDTV" node="Ye$g8PO8TM" resolve="jetbrains.mps.kotlin.javaRefs" />
+        </node>
+        <node concept="3LEz8M" id="67woACzcUmJ" role="3LEz9a">
+          <ref role="3LEz8N" node="7Kfy9QB6KXK" resolve="jetbrains.mps.devkit.general-purpose" />
+        </node>
+        <node concept="3LEDTy" id="67woACzcUmK" role="3LEDUa">
+          <ref role="3LEDTV" node="Ye$g8PO8Uw" resolve="jetbrains.mps.baseLanguage.kotlinRefs" />
+        </node>
+        <node concept="3LEz8M" id="67woACzcUAG" role="3LEz9a">
+          <ref role="3LEz8N" node="Ye$g8PO912" resolve="jetbrains.mps.devkit.kotlin" />
         </node>
       </node>
     </node>

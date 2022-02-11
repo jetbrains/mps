@@ -114,7 +114,6 @@
     <classNode dependClassName="java.lang.Boolean" />
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.tuples.runtime.Tuples" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
@@ -130,7 +129,6 @@
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.OverloadResolverUtil" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.OverloadedSignatureFilter" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.FunctionDeclaration" />
-    <classNode dependClassName="jetbrains.mps.kotlin.runtime.declaration.ParameterDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.members.SourcedSignature" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.members.signature.FunctionSignature" />
     <classNode dependClassName="jetbrains.mps.kotlin.runtime.types.identifiers.TypeKey" />

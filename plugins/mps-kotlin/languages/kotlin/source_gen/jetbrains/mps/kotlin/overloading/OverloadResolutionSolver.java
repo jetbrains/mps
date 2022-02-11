@@ -11,8 +11,6 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.kotlin.behavior.KotlinFunctionDeclaration;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
-import java.util.List;
-import jetbrains.mps.kotlin.runtime.declaration.ParameterDeclaration;
 import jetbrains.mps.kotlin.scopes.ClassMemberVisitor;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -65,10 +63,9 @@ public class OverloadResolutionSolver {
       return null;
     }
 
-    // No overload resolution mechanism, by default we take the first one with compatible arguments
+    // No overload resolution mechanism available -> no support
     if (overloadResolver == null) {
-      Tuples._2<FunctionDeclaration, List<ParameterDeclaration>> result = Sequence.fromIterable(OverloadResolverUtil.filterByArguments(myCall, nodes)).first();
-      return (result == null ? null : result._0());
+      return null;
     }
 
     // Actual resolution

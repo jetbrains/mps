@@ -591,18 +591,31 @@
       <zipfileset file="${plugin_home}/solutions/kotlin.make/jetbrains.mps.kotlin.make.msd" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/solutions-kotlin.make-models" prefix="module/models" />
     </jar>
-    <mkdir dir="${build.tmp}/default/jetbrains.mps.kotlin.devkit.jvm.jar" />
-    <mkdir dir="${build.tmp}/default/jetbrains.mps.kotlin.devkit.jvm.jar/META-INF" />
-    <echoxml file="${build.tmp}/default/jetbrains.mps.kotlin.devkit.jvm.jar/META-INF/module.xml">
-      <module namespace="jetbrains.mps.kotlin.devkit.jvm" type="devkit" uuid="4866b4b4-6ecd-49f3-ae68-c62248cc4306">
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.devkit.kotlin.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.devkit.kotlin.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.devkit.kotlin.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.devkit.kotlin" type="devkit" uuid="3605c367-b661-48bf-8131-d9bd75494e4d">
         <dependencies />
         <uses />
-        <sources jar="." descriptor="jetbrains.mps.kotlin.devkit.jvm.devkit" />
+        <sources jar="." descriptor="jetbrains.mps.devkit.kotlin.devkit" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/mps-kotlin/languages/kotlin/jetbrains.mps.kotlin.devkit.jvm.jar" duplicate="preserve">
-      <zipfileset file="${plugin_home}/devkits/kotlin.devkit.jvm/jetbrains.mps.kotlin.devkit.jvm.devkit" prefix="module" />
-      <fileset dir="${build.tmp}/default/jetbrains.mps.kotlin.devkit.jvm.jar" />
+    <jar destfile="${build.layout}/mps-kotlin/languages/kotlin/jetbrains.mps.devkit.kotlin.jar" duplicate="preserve">
+      <zipfileset file="${plugin_home}/devkits/kotlin.devkit/jetbrains.mps.devkit.kotlin.devkit" prefix="module" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.devkit.kotlin.jar" />
+    </jar>
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.devkit.kotlin.jvm.jar" />
+    <mkdir dir="${build.tmp}/default/jetbrains.mps.devkit.kotlin.jvm.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/jetbrains.mps.devkit.kotlin.jvm.jar/META-INF/module.xml">
+      <module namespace="jetbrains.mps.devkit.kotlin.jvm" type="devkit" uuid="4866b4b4-6ecd-49f3-ae68-c62248cc4306">
+        <dependencies />
+        <uses />
+        <sources jar="." descriptor="jetbrains.mps.devkit.kotlin.jvm.devkit" />
+      </module>
+    </echoxml>
+    <jar destfile="${build.layout}/mps-kotlin/languages/kotlin/jetbrains.mps.devkit.kotlin.jvm.jar" duplicate="preserve">
+      <zipfileset file="${plugin_home}/devkits/kotlin.devkit.jvm/jetbrains.mps.devkit.kotlin.jvm.devkit" prefix="module" />
+      <fileset dir="${build.tmp}/default/jetbrains.mps.devkit.kotlin.jvm.jar" />
     </jar>
     <mkdir dir="${build.layout}/mps-kotlin/lib" />
     <copy todir="${build.layout}/mps-kotlin/lib">
@@ -788,9 +801,10 @@
       <library file="${artifacts.mpsBootstrapCore}/languages/util/jetbrains.mps.runtime.jar" />
       <chunk>
         <module file="${plugin_home}/languages/baseLanguage.kotlinRefs/jetbrains.mps.baseLanguage.kotlinRefs.mpl" />
+        <module file="${plugin_home}/devkits/kotlin.devkit/jetbrains.mps.devkit.kotlin.devkit" />
+        <module file="${plugin_home}/devkits/kotlin.devkit.jvm/jetbrains.mps.devkit.kotlin.jvm.devkit" />
         <module file="${plugin_home}/languages/kotlin/jetbrains.mps.kotlin.mpl" />
         <module file="${plugin_home}/solutions/kotlin.baseLanguage.runtime/jetbrains.mps.kotlin.baseLanguage.runtime.msd" />
-        <module file="${plugin_home}/devkits/kotlin.devkit.jvm/jetbrains.mps.kotlin.devkit.jvm.devkit" />
         <module file="${plugin_home}/languages/kotlin.javaRefs/jetbrains.mps.kotlin.javaRefs.mpl" />
         <module file="${plugin_home}/solutions/kotlin.make/jetbrains.mps.kotlin.make.msd" />
         <module file="${plugin_home}/solutions/kotlin.runtime/jetbrains.mps.kotlin.runtime.msd" />

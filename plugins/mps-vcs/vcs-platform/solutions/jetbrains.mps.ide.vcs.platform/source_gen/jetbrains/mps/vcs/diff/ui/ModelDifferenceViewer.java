@@ -40,6 +40,8 @@ import jetbrains.mps.vcs.diff.ui.common.DiffModelUtil;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.IMapping;
+import org.jetbrains.mps.openapi.module.ModelAccess;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
@@ -59,7 +61,6 @@ import jetbrains.mps.vcs.diff.changes.AddRootChange;
 import jetbrains.mps.vcs.diff.changes.DeleteRootChange;
 import jetbrains.mps.vcs.diff.ui.common.ChangeColors;
 import jetbrains.mps.vcs.changesmanager.CurrentDifferenceAdapter;
-import com.intellij.openapi.application.ApplicationManager;
 
 @GeneratedClass(node = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)/6410246949269566016", model = "r:df1b052a-af27-4b87-80fc-1492fa2192be(jetbrains.mps.vcs.diff.ui)")
 public class ModelDifferenceViewer implements DataProvider {
@@ -223,17 +224,33 @@ public class ModelDifferenceViewer implements DataProvider {
     if (myTree != null) {
       myTree.dispose();
     }
-    myProject.getRepository().getModelAccess().runWriteAction(() -> {
-      if (myRegisteredModels != null) {
-        CollectionSequence.fromCollection(myRegisteredModels).visitAll(new IVisitor<SModel>() {
-          public void visit(SModel it) {
-            DiffModelUtil.unregisterModel(it);
-          }
-        });
-      }
-    });
+
+    // TODO This is a workaround for the bugfix. We should try to avoid write actions here at all. Same should be done with write actions in the constructor. Maybe we should think about using a separate repository for temporary models.
+    ModelAccess modelAccess = myProject.getModelAccess();
+    if (modelAccess.canWrite()) {
+      unregisterModels();
+    } else if (modelAccess.canRead()) {
+      ApplicationManager.getApplication().invokeLater(() -> unregisterModelsInWriteAction());
+    } else {
+      unregisterModelsInWriteAction();
+    }
+
     if (myRootDifferencePane != null) {
       myRootDifferencePane.dispose();
+    }
+  }
+
+  private void unregisterModelsInWriteAction() {
+    myProject.getRepository().getModelAccess().runWriteAction(() -> unregisterModels());
+  }
+
+  private void unregisterModels() {
+    if (myRegisteredModels != null) {
+      CollectionSequence.fromCollection(myRegisteredModels).visitAll(new IVisitor<SModel>() {
+        public void visit(SModel it) {
+          DiffModelUtil.unregisterModel(it);
+        }
+      });
     }
   }
 
@@ -473,10 +490,10 @@ public class ModelDifferenceViewer implements DataProvider {
     }
     private void rehighlight() {
       ApplicationManager.getApplication().invokeLater(() -> syncMetadataChanges());
-      check_b117w_a1a4xc(myRootDifferencePane);
+      check_b117w_a1a4bd(myRootDifferencePane);
     }
   }
-  private static void check_b117w_a1a4xc(RootDifferencePane checkedDotOperand) {
+  private static void check_b117w_a1a4bd(RootDifferencePane checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.rehighlightInReadAction(true);
     }
