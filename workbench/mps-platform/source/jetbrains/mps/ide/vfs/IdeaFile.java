@@ -62,7 +62,7 @@ import java.util.List;
 
 /**
  * NOTE the IdeaFiles' equality now totally depends on the starting string.
- * That means that some IdeaFiles which point to the essentially the same place on fs, might not be equal in the sense
+ * That means that some IdeaFiles which point to essentially the same place on fs, might not be equal in the sense
  * of the current #equals relation
  */
 @Immutable
