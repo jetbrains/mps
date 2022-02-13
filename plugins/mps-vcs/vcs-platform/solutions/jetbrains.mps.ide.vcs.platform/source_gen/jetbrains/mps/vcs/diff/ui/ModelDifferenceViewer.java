@@ -220,28 +220,35 @@ public class ModelDifferenceViewer implements DataProvider {
         removeDifferenceListener(it.key(), it.value());
       }
     });
-    syncMetadataChanges();
     if (myTree != null) {
       myTree.dispose();
     }
 
     // TODO This is a workaround for the bugfix. We should try to avoid write actions here at all. Same should be done with write actions in the constructor. Maybe we should think about using a separate repository for temporary models.
-    ModelAccess modelAccess = myProject.getModelAccess();
-    if (modelAccess.canWrite()) {
+    executeSafeInWriteAction(() -> {
+      syncMetadataChanges();
       unregisterModels();
-    } else if (modelAccess.canRead()) {
-      ApplicationManager.getApplication().invokeLater(() -> unregisterModelsInWriteAction());
-    } else {
-      unregisterModelsInWriteAction();
-    }
+    });
 
     if (myRootDifferencePane != null) {
       myRootDifferencePane.dispose();
     }
   }
 
-  private void unregisterModelsInWriteAction() {
-    myProject.getRepository().getModelAccess().runWriteAction(() -> unregisterModels());
+  private void executeSafeInWriteAction(final Runnable r) {
+    ModelAccess modelAccess = myProject.getModelAccess();
+    if (modelAccess.canWrite()) {
+      r.run();
+    } else if (modelAccess.canRead()) {
+      // invoke later to prevent IllegalModelAccessException
+      ApplicationManager.getApplication().invokeLater(() -> executeInWriteAction(r));
+    } else {
+      executeInWriteAction(r);
+    }
+  }
+
+  private void executeInWriteAction(final Runnable r) {
+    myProject.getRepository().getModelAccess().runWriteAction(() -> r.run());
   }
 
   private void unregisterModels() {
@@ -490,10 +497,10 @@ public class ModelDifferenceViewer implements DataProvider {
     }
     private void rehighlight() {
       ApplicationManager.getApplication().invokeLater(() -> syncMetadataChanges());
-      check_b117w_a1a4bd(myRootDifferencePane);
+      check_b117w_a1a4dd(myRootDifferencePane);
     }
   }
-  private static void check_b117w_a1a4bd(RootDifferencePane checkedDotOperand) {
+  private static void check_b117w_a1a4dd(RootDifferencePane checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.rehighlightInReadAction(true);
     }
