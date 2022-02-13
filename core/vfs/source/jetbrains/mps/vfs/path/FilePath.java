@@ -93,6 +93,10 @@ public class FilePath extends AbstractPath {
   }
 
   private static String trim(String path) {
+    if (path.startsWith(UNIX_SEPARATOR + UNIX_SEPARATOR) || path.startsWith(WIN_SEPARATOR + WIN_SEPARATOR)) {
+      // fixme potentially unc, don't touch for now
+      return path;
+    }
     for (int i = 0; i < path.length(); ++i) {
       if (path.charAt(i) != UNIX_SEPARATOR_CHAR && path.charAt(i) != WIN_SEPARATOR_CHAR) {
         return path.substring(i);

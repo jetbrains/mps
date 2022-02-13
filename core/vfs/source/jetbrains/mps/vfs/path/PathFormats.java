@@ -56,7 +56,12 @@ public class PathFormats {
     @Override
     @Nullable
     public String extractRootPart(@NotNull String path) {
-      if (path.startsWith(Path.WIN_SEPARATOR)) {
+      String sep = Path.WIN_SEPARATOR;
+      String uncRootPart = tryExtractUNC(path, sep);
+      if (uncRootPart != null) {
+        return uncRootPart;
+      }
+      if (path.startsWith(sep)) {
         throw new PathParseException(path, "Cannot parse '" + path + "'; the current drive is " +
                                            "impossible to resolve without addressing the physical file system");
       }
@@ -102,6 +107,26 @@ public class PathFormats {
     }
   }
 
+  @Nullable
+  private static String tryExtractUNC(@NotNull String path, String sep) {
+    var uncPrefix = sep + sep;
+    if (path.startsWith(uncPrefix)) {
+      // probably unc
+      String noUNCPrefix = path.substring(2);
+      int ix = noUNCPrefix.indexOf(sep);
+      if (ix < 0) {
+        throw new PathParseException(path, "broken unc path: no hostname");
+      }
+      String noUNCHostName = noUNCPrefix.substring(ix + 1);
+      int ix2 = noUNCHostName.indexOf(sep);
+      if (ix2 < 0) {
+        throw new PathParseException(path, "broken unc path: no share");
+      }
+      return uncPrefix + noUNCPrefix.substring(ix + 1) + sep + noUNCHostName.substring(ix2 + 1);
+    }
+    return null;
+  }
+
   private static final class UnixPathFormat implements PathFormat {
     @Override
     public char getSeparatorChar() {
@@ -120,10 +145,15 @@ public class PathFormats {
     @Nullable
     @Override
     public String extractRootPart(@NotNull String path) {
-      if (!path.startsWith(Path.UNIX_SEPARATOR)) {
+      String sep = Path.UNIX_SEPARATOR;
+      var uncRoot = PathFormats.tryExtractUNC(path, sep);
+      if (uncRoot != null) {
+        return uncRoot;
+      }
+      if (!path.startsWith(sep)) {
         return null;
       }
-      return Path.UNIX_SEPARATOR;
+      return sep;
     }
 
     @NotNull
