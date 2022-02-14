@@ -175,7 +175,7 @@ public class MpsLoadTask extends Task {
    * 
    * @param whatToDo description of what and how to run
    */
-  protected void finalizeSciptSettings(Script whatToDo) {
+  protected void finalizeScriptSettings(Script whatToDo) {
     if (myUsePropertiesAsMacro) {
       Hashtable properties = getProject().getProperties();
       for (Object name : properties.keySet()) {
@@ -187,7 +187,7 @@ public class MpsLoadTask extends Task {
 
   @Override
   public void execute() throws BuildException {
-    finalizeSciptSettings(myWhatToDo);
+    finalizeScriptSettings(myWhatToDo);
     // By default, we build a classpath that presumably contains all necessary MPS jars (expecting MpsEnvironment or even IdeaEnvironment to fire up)
     // though specific task subclasses have control over what to include there. Unfortunately, there's no yet fine-grained control e.g. to include
     // only jars sufficient for MpsEnvironment (i.e. not to include any IDEA stuff)
