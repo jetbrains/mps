@@ -530,6 +530,10 @@
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/execution-languages/languages/plugin/source_gen" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../plugins/execution-languages/languages/plugin/classes_gen" />
     </content>
+    <content url="file://$MODULE_DIR$/../../plugins/mps-ant-make">
+      <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-ant-make/solutions/tool.make/source_gen" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../plugins/mps-ant-make/solutions/tool.make/classes_gen" />
+    </content>
     <content url="file://$MODULE_DIR$/../../plugins/mps-build">
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-build/languages/build.mps.runner/generator/source_gen" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../plugins/mps-build/languages/build.mps.runner/source_gen" isTestSource="false" />

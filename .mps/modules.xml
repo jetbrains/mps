@@ -56,11 +56,11 @@
       <modulePath path="$PROJECT_DIR$/languages.test/languageDesign/lang.editor.editorTest/jetbrains.mps.lang.editor.editorTest.mpl" folder="core.aspects.editor" />
       <modulePath path="$PROJECT_DIR$/languages.test/languageDesign/lang.editor.ide.tests/module.msd" folder="core.aspects.editor" />
       <modulePath path="$PROJECT_DIR$/languages.test/languageDesign/lang.editor.test.generation/module.mpl" folder="core.aspects.editor" />
-      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage/jetbrains.mps.baseLanguage.mpl" folder="core.baseLanguage" />
-      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage/sandbox/jetbrains.mps.baseLanguage.sandbox.msd" folder="core.baseLanguage" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage.scopes/jetbrains.mps.baseLanguage.scopes.msd" folder="core.baseLanguage" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage.search/jetbrains.mps.baseLanguage.search.msd" folder="core.baseLanguage" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage.util/jetbrains.mps.baseLanguage.util.msd" folder="core.baseLanguage" />
+      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage/jetbrains.mps.baseLanguage.mpl" folder="core.baseLanguage" />
+      <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguage/sandbox/jetbrains.mps.baseLanguage.sandbox.msd" folder="core.baseLanguage" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/baseLanguageInternal/jetbrains.mps.baseLanguageInternal.mpl" folder="core.baseLanguage" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/blTypes/jetbrains.mps.baseLanguage.blTypes.mpl" folder="core.baseLanguage.extensions" />
       <modulePath path="$PROJECT_DIR$/languages/baseLanguage/checkDot/languages/checkedDots/jetbrains.mps.baseLanguage.checkedDots.mpl" folder="core.baseLanguage.checkedDots" />
@@ -245,6 +245,7 @@
       <modulePath path="$PROJECT_DIR$/plugins/execution-languages/languages/library/jetbrains.mps.execution.library.msd" folder="workbench.execution" />
       <modulePath path="$PROJECT_DIR$/plugins/execution-languages/languages/plugin/jetbrains.mps.execution.languages.msd" folder="workbench.execution" />
       <modulePath path="$PROJECT_DIR$/plugins/jetpad/solutions/jetbrains.jetpad/jetbrains.jetpad.msd" folder="core.aspects.editor.diagram" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-ant-make/solutions/tool.make/jetbrains.mps.tool.make.msd" folder="core.tool" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/languages/build.mps.runner/jetbrains.mps.build.mps.runner.mpl" folder="platform.build" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/languages/build.mps.testManifest/jetbrains.mps.build.mps.testManifest.mpl" folder="platform.build" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-build/languages/build.mps.tests/jetbrains.mps.build.mps.tests.mpl" folder="platform.build" />
@@ -319,8 +320,8 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-java/workbench/modules/jetbrains.mps.java.workbench/jetbrains.mps.java.workbench.msd" folder="platform.mpsjava" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.testMaterial/jetbrains.mps.ide.java.testMaterial.msd" folder="platform.mpsjava.test" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-java/workbench/tests/jetbrains.mps.ide.java.tests/jetbrains.mps.ide.java.tests.msd" folder="platform.mpsjava.test" />
-      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/devkits/kotlin.devkit/jetbrains.mps.devkit.kotlin.devkit" folder="core.languages.kotlin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/devkits/kotlin.devkit.jvm/jetbrains.mps.devkit.kotlin.jvm.devkit" folder="core.languages.kotlin" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/devkits/kotlin.devkit/jetbrains.mps.devkit.kotlin.devkit" folder="core.languages.kotlin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/ide/jetbrains.mps.kotlin.idePlugin/jetbrains.mps.kotlin.idePlugin.msd" folder="core.languages.kotlin.ide" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/baseLanguage.kotlinRefs/jetbrains.mps.baseLanguage.kotlinRefs.mpl" folder="core.languages.kotlin.interop" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin.javaRefs/jetbrains.mps.kotlin.javaRefs.mpl" folder="core.languages.kotlin.interop" />

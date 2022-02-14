@@ -35,6 +35,7 @@
   <property name="artifacts.mpsContextActionsTool" location="${build.dir}/artifacts/mpsContextActionsTool" />
   <property name="artifacts.mpsSpellCheckPlugin" location="${build.dir}/artifacts/mpsSpellCheckPlugin" />
   <property name="artifacts.mpsKotlinPlugin" location="${build.dir}/artifacts/mpsKotlinPlugin" />
+  <property name="artifacts.mpsAntToolsPlugin" location="${build.dir}/artifacts/mpsAntToolsPlugin" />
   <property file="${artifacts.mpsBuild}/build.properties" prefix="import.mpsBuild" />
   <property name="mpsBootstrapCore.version.major" value="${import.mpsBuild.mpsBootstrapCore.version.major}" />
   <property name="mpsBootstrapCore.version.minor" value="${import.mpsBuild.mpsBootstrapCore.version.minor}" />
@@ -220,6 +221,10 @@
     <copy todir="${build.layout}/plugins/mps-kotlin">
       <fileset dir="${artifacts.mpsKotlinPlugin}/mps-kotlin" />
     </copy>
+    <mkdir dir="${build.layout}/plugins/mps-ant-make" />
+    <copy todir="${build.layout}/plugins/mps-ant-make">
+      <fileset dir="${artifacts.mpsAntToolsPlugin}/mps-ant-make" />
+    </copy>
     <zip destfile="${build.layout}/samples.zip">
       <zipfileset dir="${basedir}/samples" prefix="MPSSamples">
         <exclude name="**/vcs.xml" />
@@ -286,6 +291,7 @@
     <ant antfile="build/mpsContextActionsTool.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsSpellCheckPlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsKotlinPlugin.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsAntToolsPlugin.xml" inheritAll="false" useNativeBasedir="true" />
   </target>
   
   <target name="fetchDependencies" />
