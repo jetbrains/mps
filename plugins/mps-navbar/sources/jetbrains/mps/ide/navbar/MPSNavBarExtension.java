@@ -1,0 +1,90 @@
+/*
+ * Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ */
+package jetbrains.mps.ide.navbar;
+
+import com.intellij.ide.navigationToolbar.NavBarModelExtension;
+import com.intellij.openapi.actionSystem.DataContext;
+import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiManager;
+import com.intellij.psi.impl.light.LightElement;
+import jetbrains.mps.ide.actions.SModelActionData;
+import jetbrains.mps.ide.actions.SModuleActionData;
+import jetbrains.mps.psi.MPSPsiModel;
+import jetbrains.mps.psi.MPSPsiModule;
+import jetbrains.mps.psi.MPSPsiNode;
+import jetbrains.mps.ide.actions.SNodeActionData;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Collection;
+import java.util.Collections;
+
+/**
+ * adapting the code from idea plugin
+ *
+ * @author apyshkin
+ */
+public class MPSNavBarExtension implements NavBarModelExtension {
+  private static final Logger LOG = LogManager.getLogger(MPSNavBarExtension.class);
+
+  @Nullable
+  @Override
+  public String getPresentableText(Object object) {
+    if (object instanceof Project) {
+      return ((Project)object).getName();
+    }
+    if (object instanceof LightElement) {
+      return ((LightElement) object).getPresentation().getPresentableText();
+    }
+    // fixme
+    return object.toString();
+  }
+
+  @Override
+  public PsiElement getLeafElement(@NotNull DataContext dataContext) {
+    Project p = dataContext.getData(PlatformDataKeys.PROJECT);
+    if (p == null) {
+      LOG.warn("the project is not located");
+      return null;
+    }
+    SNodeActionData data = dataContext.getData(SNodeActionData.KEY);
+    if (data != null) {
+      return new MPSPsiNode(PsiManager.getInstance(p), data.node());
+    }
+    var modelData = dataContext.getData(SModelActionData.KEY);
+    if (modelData != null) {
+      return new MPSPsiModel(PsiManager.getInstance(p), modelData.model());
+    }
+    var moduleData = dataContext.getData(SModuleActionData.KEY);
+    if (moduleData != null) {
+      return new MPSPsiModule(PsiManager.getInstance(p), moduleData.module());
+    }
+    LOG.error("SNode action data was not found");
+    return null;
+  }
+
+  @Nullable
+  @Override
+  public PsiElement getParent(PsiElement psiElement) {
+    return psiElement.getParent();
+  }
+
+  @Nullable
+  @Override
+  public PsiElement adjustElement(@NotNull PsiElement psiElement) {
+    return psiElement;
+  }
+
+  @NotNull
+  @Override
+  public Collection<VirtualFile> additionalRoots(Project project) {
+    return Collections.emptyList();
+  }
+
+}
