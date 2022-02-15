@@ -52018,6 +52018,11 @@
           <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
         </node>
       </node>
+      <node concept="1SiIV0" id="qlXQxl5HOg" role="3bR37C">
+        <node concept="3bR9La" id="qlXQxl5HOh" role="1SiIV1">
+          <ref role="3bR37D" node="1TaHNgiIbIQ" resolve="MPS.Core" />
+        </node>
+      </node>
     </node>
     <node concept="m$_wf" id="1nTn8MoO6oQ" role="3989C9">
       <property role="m$_wk" value="jetbrains.mps.tool.make" />
