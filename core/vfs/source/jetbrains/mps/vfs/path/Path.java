@@ -88,15 +88,16 @@ public interface Path extends /*Comparable<Path>,*/ /*AP: do I want this?*/ Watc
   /**
    * path is a [<root name><root sep>]<name1><sep><name2><sep>...
    * @return a list with the root name, name1, name2, etc.
+   * the root part (the first element in the resulting list) must be equal to null if #isRelative is true
    */
   @NotNull List<String> getAllParts();
 
   @NotNull default List<String> getNonRootParts() {
-    if (!isRelative()) {
-      return getAllParts();
-    } else {
-      return getAllParts().subList(1, getAllParts().size());
+    List<String> allParts = getAllParts();
+    if (getAllParts().isEmpty()) {
+      throw new IllegalStateException("The contract of #getAllParts is broken");
     }
+    return allParts.subList(1, getAllParts().size());
   }
 
   /**

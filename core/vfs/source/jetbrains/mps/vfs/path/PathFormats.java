@@ -16,6 +16,8 @@
 package jetbrains.mps.vfs.path;
 
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,11 +27,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author apyshkin
  */
 public class PathFormats {
+  private static final Logger LOG = LogManager.getLogger(PathFormats.class);
+
   public static final PathFormat UNIX = new UnixPathFormat();
   public static final PathFormat WIN = new WinPathFormat();
 
@@ -43,7 +48,7 @@ public class PathFormats {
       return Path.WIN_SEPARATOR_CHAR;
     }
 
-//    @Override
+    //    @Override
 //    public boolean isCaseSensitive() {
 //      return false;
 //    }
@@ -77,7 +82,7 @@ public class PathFormats {
     public List<String> extractNonRootParts(@NotNull String path) {
       if (extractRootPart(path) != null) {
         int i = path.indexOf(Path.WIN_SEPARATOR_CHAR);
-        assert (i > 0);
+        assert (i >= 0) : path;
         path = path.substring(i);
       }
       return getTrimmedParts(path, getSeparator());
@@ -90,6 +95,9 @@ public class PathFormats {
       if (root == null) {
         return String.join(Path.WIN_SEPARATOR, nonRootParts);
       } else {
+        if (nonRootParts.isEmpty()) {
+          return root;
+        }
         return root + Path.WIN_SEPARATOR + String.join(Path.WIN_SEPARATOR, nonRootParts);
       }
     }
@@ -105,6 +113,26 @@ public class PathFormats {
     public Path fromString(@NotNull String path) {
       return constructFilePathFromString(path, this);
     }
+
+    @Override
+    public void validateRoot(@Nullable String rootPart) {
+      if (rootPart == null) {
+        return;
+      }
+      validate(rootPart);
+    }
+
+    @Override
+    public void validateNonRoot(@NotNull String nonRootPart) {
+      // fixme to become smth more in 22.1
+      validate(nonRootPart);
+    }
+
+    @Override
+    public void validatePath(@NotNull String path) {
+      // fixme to become smth more in 22.1
+      validate(path);
+    }
   }
 
   @Nullable
@@ -112,17 +140,23 @@ public class PathFormats {
     var uncPrefix = sep + sep;
     if (path.startsWith(uncPrefix)) {
       // probably unc
-      String noUNCPrefix = path.substring(2);
-      int ix = noUNCPrefix.indexOf(sep);
+      int ix = path.indexOf(sep, uncPrefix.length());
       if (ix < 0) {
-        throw new PathParseException(path, "broken unc path: no hostname");
+        // we have '//' at the start
+        return null;
+      } else if (ix == uncPrefix.length()) {
+        // we have '///' at the start
+        return null;
       }
-      String noUNCHostName = noUNCPrefix.substring(ix + 1);
-      int ix2 = noUNCHostName.indexOf(sep);
-      if (ix2 < 0) {
-        throw new PathParseException(path, "broken unc path: no share");
+      String hostName = path.substring(uncPrefix.length(), ix);
+      int ix2 = path.indexOf(sep, ix + 1);
+      if (ix2 == ix + 1) { // our volumeName is empty?
+        return null; // not unc then!
       }
-      return uncPrefix + noUNCPrefix.substring(ix + 1) + sep + noUNCHostName.substring(ix2 + 1);
+      if (ix2 >= 0) {
+        return uncPrefix + hostName + sep + path.substring(ix + 1, ix2);
+      }
+      return path;
     }
     return null;
   }
@@ -132,7 +166,8 @@ public class PathFormats {
     public char getSeparatorChar() {
       return Path.UNIX_SEPARATOR_CHAR;
     }
-//    @Override
+
+    //    @Override
 //    public boolean isCaseSensitive() {
 //      return true;
 //    }
@@ -169,10 +204,10 @@ public class PathFormats {
       if (root == null) {
         return String.join(Path.UNIX_SEPARATOR, nonRootParts);
       } else {
-        if (!root.equals(Path.UNIX_SEPARATOR)) {
-          throw new PathParseException(root, "Root on UNIX system is supposed always to be equal to the path separator: " + root);
+        if (root.equals(Path.UNIX_SEPARATOR)) {
+          return root + String.join(Path.UNIX_SEPARATOR, nonRootParts);
         }
-        return Path.UNIX_SEPARATOR + String.join(Path.UNIX_SEPARATOR, nonRootParts);
+        return Stream.concat(Stream.of(root), nonRootParts.stream()).collect(Collectors.joining(Path.UNIX_SEPARATOR));
       }
     }
 
@@ -186,6 +221,31 @@ public class PathFormats {
     @Override
     public Path fromString(@NotNull String path) {
       return constructFilePathFromString(path, this);
+    }
+
+    @Override
+    public void validateRoot(@Nullable String rootPart) {
+      if (rootPart == null) {
+        return;
+      }
+      if (tryExtractUNC(rootPart, Path.UNIX_SEPARATOR) != null) {
+        return;
+      }
+      if (!rootPart.equals(Path.UNIX_SEPARATOR)) {
+        throw new PathParseException(rootPart, "The root part must be slash, unc share or null");
+      }
+    }
+
+    @Override
+    public void validateNonRoot(@NotNull String nonRootPart) {
+      // fixme to become smth more in 22.1
+      validate(nonRootPart);
+    }
+
+    @Override
+    public void validatePath(@NotNull String path) {
+      // fixme to become smth more in 22.1
+      validate(path);
     }
   }
 
@@ -225,6 +285,11 @@ public class PathFormats {
   @NotNull
   private static List<String> getTrimmedParts(@NotNull String path, @NotNull String separator) {
     var result = new ArrayList<String>();
+    String uncPrefix = tryExtractUNC(path, separator);
+    if (uncPrefix != null) {
+      assert (path.startsWith(uncPrefix));
+      path = path.substring(uncPrefix.length());
+    }
     for (String s : path.split(Pattern.quote(separator))) {
       if (!s.isEmpty()) {
         result.add(s);
@@ -232,6 +297,17 @@ public class PathFormats {
     }
     return result;
   }
+
+  private static void validate(@NotNull String path) {
+    if (path.contains(Path.UNIX_SEPARATOR) && path.contains(Path.WIN_SEPARATOR)) {
+      LOG.warn("The path '" + path + "' contains both Unix and Windows separators which is suspicious.");
+    }
+    if (path.contains(Path.ARCHIVE_SEPARATOR)) {
+      throw new PathParseException(path, "NonArchivePath is not allowed to include archive separators." +
+                                         "One would expect FilePath to be used here.");
+    }
+  }
+
 
   @NotNull
   public static List<PathFormat> getDefaultFormats() {

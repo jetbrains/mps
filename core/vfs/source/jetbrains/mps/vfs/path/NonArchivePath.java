@@ -49,19 +49,15 @@ import java.util.stream.Collectors;
 
   private final int myHashCode;
 
-  private NonArchivePath(@NotNull String path, PathFormat format) {
-    this(format.extractRootPart(path), format.extractNonRootParts(path), format);
-    // fixme this is disturbing, I know
-    validate(path);
-  }
-
   private NonArchivePath(@Nullable String rootPart, List<String> nonRootParts, PathFormat format) {
     myRootPart = rootPart;
     myFormat = format;
     if (rootPart != null) {
-      validate(rootPart);
+      format.validateRoot(rootPart);
     }
-    for (var nonRootPart : nonRootParts) validate(nonRootPart);
+    for (var nonRootPart : nonRootParts) {
+      format.validateNonRoot(nonRootPart);
+    }
     nonRootParts = skipEmptyStrings(nonRootParts);
     myNonRootParts = nonRootParts;
     myPathText = myFormat.fromRootAndParts(rootPart, nonRootParts);
@@ -73,16 +69,6 @@ import java.util.stream.Collectors;
     return strings.stream()
                   .filter(x -> !x.isEmpty())
                   .collect(Collectors.toList());
-  }
-
-  private static void validate(@NotNull String path) {
-    if (path.contains(Path.UNIX_SEPARATOR) && path.contains(Path.WIN_SEPARATOR)) {
-      LOG.warn("The path '" + path + "' contains both Unix and Windows separators which is suspicious.");
-    }
-    if (path.contains(Path.ARCHIVE_SEPARATOR)) {
-      throw new PathParseException(path, "NonArchivePath is not allowed to include archive separators." +
-                                         "One would expect FilePath to be used here.");
-    }
   }
 
   @NotNull
@@ -115,7 +101,10 @@ import java.util.stream.Collectors;
   @NotNull
   public static NonArchivePath fromString(@NotNull String path,
                                           @NotNull PathFormat format) {
-    return new NonArchivePath(path, format);
+    format.validatePath(path);
+    var rootPart = format.extractRootPart(path);
+    var nonRootParts = format.extractNonRootParts(path);
+    return new NonArchivePath(rootPart, nonRootParts, format);
   }
 
   @NotNull
