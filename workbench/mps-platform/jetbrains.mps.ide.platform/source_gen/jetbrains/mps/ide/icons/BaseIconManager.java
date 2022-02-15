@@ -82,6 +82,10 @@ public class BaseIconManager {
   }
 
   public Icon getIconFor(@NotNull final SNode node) {
+    return getIconFor1(node, true);
+  }
+
+  public Icon getIconFor1(@NotNull final SNode node, boolean addFeatures) {
     if (!(SNodeOperations.getConcept(node).isValid())) {
       return IdeIcons.UNKNOWN_ICON;
     }
@@ -98,6 +102,9 @@ public class BaseIconManager {
       }
     }
 
+    if (!(addFeatures)) {
+      return mainIcon;
+    }
     return addIconFeatures(mainIcon, node);
   }
 
