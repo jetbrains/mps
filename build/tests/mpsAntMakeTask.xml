@@ -1,0 +1,21 @@
+<project name="mpsAntMakeTask" default="check" basedir="../../" description="Demonstrates how to write MakeTask">
+
+  <!--this will be specified from outside, shall point to unzip of MPS-xxx.yyy.zip produced by Binaries or a regular MPS distribution -->
+  <property name="mps_home" location="build/artifacts/mps"/>
+
+  <path id="path.mps.ant.path">
+    <pathelement location="${mps_home}/lib/ant/lib/ant-mps.jar" />
+    <pathelement location="${mps_home}/lib/util.jar" />
+    <pathelement location="${mps_home}/lib/3rd-party-rt.jar" />
+  </path>
+
+  <taskdef name="mps.make" classname="jetbrains.mps.build.ant.MakeTask" classpathref="path.mps.ant.path"/>
+
+  <target name="check">
+    <echo message="mps.make START"/>
+    <mps.make mpsHome="${mps_home}">
+
+    </mps.make>
+    <echo message="mps.make END"/>
+  </target>
+</project>

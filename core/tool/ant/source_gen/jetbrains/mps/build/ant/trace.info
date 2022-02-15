@@ -161,6 +161,57 @@
       <unit id="108194650710656503" at="20,0,124,0" name="jetbrains.mps.build.ant.MigrationTask" />
     </file>
   </root>
+  <root nodeRef="r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/1583398502928454540">
+    <file name="MakeTask.java">
+      <node id="290922613094524493" at="17,0,18,0" concept="6" trace="mySettings" />
+      <node id="1583398502928466882" at="19,21,20,51" concept="17" />
+      <node id="290922613094800122" at="24,29,25,111" concept="5" />
+      <node id="290922613094759223" at="26,5,27,26" concept="5" />
+      <node id="290922613095028178" at="30,57,31,89" concept="13" />
+      <node id="290922613095049174" at="31,89,32,78" concept="13" />
+      <node id="290922613095034587" at="32,78,33,36" concept="5" />
+      <node id="290922613094609544" at="37,29,38,43" concept="5" />
+      <node id="290922613094637516" at="39,5,40,22" concept="12" />
+      <node id="1583398502928472584" at="45,58,46,43" concept="5" />
+      <node id="290922613094511590" at="46,43,47,63" concept="11" />
+      <node id="290922613094537445" at="47,63,48,31" concept="5" />
+      <node id="1583398502928558728" at="48,31,49,140" concept="5" />
+      <node id="1583398502928784587" at="54,46,55,50" concept="13" />
+      <node id="1583398502928759071" at="55,50,56,86" concept="13" />
+      <node id="1583398502928668664" at="56,86,57,130" concept="12" />
+      <node id="1583398502928465862" at="19,0,22,0" concept="3" trace="MakeTask#()V" />
+      <node id="290922613094789009" at="23,65,26,5" concept="9" />
+      <node id="290922613094592865" at="36,45,39,5" concept="9" />
+      <node id="290922613095014552" at="30,0,35,0" concept="10" trace="addConfigured#(Ljetbrains/mps/build/ant/GeneratorSettings;)V" />
+      <node id="290922613094554791" at="23,0,29,0" concept="10" trace="addConfiguredSettings#(Ljetbrains/mps/build/ant/GeneratorSettings;)V" />
+      <node id="290922613094587533" at="36,0,42,0" concept="10" trace="getSettings#()Ljetbrains/mps/build/ant/GeneratorSettings;" />
+      <node id="1583398502928472529" at="44,0,51,0" concept="10" trace="finalizeScriptSettings#(Ljetbrains/mps/tool/common/Script;)V" />
+      <node id="1583398502928668647" at="52,0,59,0" concept="10" trace="getAdditionalArgs#()Ljava/util/List;" />
+      <scope id="1583398502928465866" at="19,21,20,51" />
+      <scope id="290922613094789011" at="24,29,25,111" />
+      <scope id="290922613094592867" at="37,29,38,43" />
+      <scope id="1583398502928465862" at="19,0,22,0" />
+      <scope id="290922613095014556" at="30,57,33,36" />
+      <scope id="1583398502928668661" at="54,46,57,130" />
+      <scope id="290922613094554794" at="23,65,27,26" />
+      <scope id="290922613094587536" at="36,45,40,22" />
+      <scope id="1583398502928472580" at="45,58,49,140">
+        <var name="gp" id="290922613094511591" />
+      </scope>
+      <scope id="290922613095014552" at="30,0,35,0">
+        <var name="settings" id="290922613095026159" />
+      </scope>
+      <scope id="290922613094554791" at="23,0,29,0">
+        <var name="settings" id="290922613094554900" />
+      </scope>
+      <scope id="290922613094587533" at="36,0,42,0" />
+      <scope id="1583398502928472529" at="44,0,51,0">
+        <var name="whatToDo" id="1583398502928472566" />
+      </scope>
+      <scope id="1583398502928668647" at="52,0,59,0" />
+      <unit id="1583398502928454540" at="15,0,60,0" name="jetbrains.mps.build.ant.MakeTask" />
+    </file>
+  </root>
   <root nodeRef="r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/2194822006344541151">
     <file name="RepositoryDataType.java">
       <node id="7110336455353441003" at="11,0,12,0" concept="6" trace="myDescriptor" />
@@ -747,8 +798,8 @@
       <node id="4003657351907890687" at="179,33,180,58" concept="11" />
       <node id="4003657351907890700" at="181,47,182,44" concept="11" />
       <node id="4003657351907890707" at="182,44,183,57" concept="5" />
-      <node id="290922613094345128" at="189,47,190,38" concept="5" />
-      <node id="4443871836577420369" at="190,38,191,149" concept="13" />
+      <node id="290922613094345128" at="189,47,190,39" concept="5" />
+      <node id="4443871836577420369" at="190,39,191,149" concept="13" />
       <node id="4011976969473448877" at="191,149,192,146" concept="13" />
       <node id="4011976969473503543" at="192,146,193,83" concept="13" />
       <node id="4003657351907890679" at="193,83,194,54" concept="11" />
@@ -968,14 +1019,14 @@
       <node id="4003657351907891653" at="504,15,510,7" concept="9" />
       <node id="4003657351907891837" at="538,50,544,7" concept="19" />
       <node id="4003657351907890627" at="113,0,120,0" concept="10" trace="addConfiguredJvmArg#(Ljetbrains/mps/build/ant/Arg;)V" />
-      <node id="4003657351907890684" at="178,57,185,5" concept="9" />
+      <node id="4003657351907890684" at="178,58,185,5" concept="9" />
       <node id="4003657351907890728" at="251,53,258,7" concept="8" />
       <node id="4003657351907890349" at="522,0,529,0" concept="10" trace="getLevel#()Lorg/apache/log4j/Level;" />
       <node id="4282546355256074784" at="207,32,215,7" concept="8" />
       <node id="4003657351907891009" at="241,78,249,7" concept="19" />
       <node id="449958221362944162" at="282,0,290,0" concept="10" trace="checkHasEAOption#(Ljava/util/List;)V" />
       <node id="4003657351907891700" at="490,9,498,9" concept="9" />
-      <node id="290922613094033016" at="178,0,187,0" concept="10" trace="finalizeSciptSettings#(Ljetbrains/mps/tool/common/Script;)V" />
+      <node id="290922613094033016" at="178,0,187,0" concept="10" trace="finalizeScriptSettings#(Ljetbrains/mps/tool/common/Script;)V" />
       <node id="4003657351907890907" at="215,7,224,7" concept="8" />
       <node id="4443871836577538702" at="309,96,318,5" concept="8" />
       <node id="4443871836577692813" at="319,60,328,5" concept="8" />
@@ -1243,7 +1294,7 @@
       <scope id="4003657351907890627" at="113,0,120,0">
         <var name="jvmArg" id="4003657351907890630" />
       </scope>
-      <scope id="290922613094033019" at="178,57,185,5" />
+      <scope id="290922613094033019" at="178,58,185,5" />
       <scope id="4003657351907890911" at="216,34,223,9">
         <var name="entry" id="4282546355256009938" />
       </scope>

@@ -11,7 +11,6 @@
     <import index="asz6" ref="r:067fd2c9-d009-4506-91db-a69992d65964(jetbrains.mps.tool.common)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
-    <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="gola" ref="847a3235-09f9-403c-b6a9-1c294a212e92/java:org.apache.tools.ant(Ant/)" />
   </imports>
   <registry>
@@ -1159,7 +1158,7 @@
     </node>
     <node concept="2tJIrI" id="g9$9d2BZQm" role="jymVt" />
     <node concept="3clFb_" id="g9$9d2C0X6" role="jymVt">
-      <property role="TrG5h" value="finalizeSciptSettings" />
+      <property role="TrG5h" value="finalizeScriptSettings" />
       <node concept="3Tmbuc" id="g9$9d2C0XD" role="1B3o_S" />
       <node concept="3cqZAl" id="g9$9d2C0XE" role="3clF45" />
       <node concept="37vLTG" id="g9$9d2C0XF" role="3clF46">
@@ -1669,7 +1668,7 @@
     </node>
     <node concept="2tJIrI" id="g9$9d2EHf_" role="jymVt" />
     <node concept="3clFb_" id="g9$9d2EHq7" role="jymVt">
-      <property role="TrG5h" value="finalizeSciptSettings" />
+      <property role="TrG5h" value="finalizeScriptSettings" />
       <node concept="3Tmbuc" id="g9$9d2EHq8" role="1B3o_S" />
       <node concept="3cqZAl" id="g9$9d2EHq9" role="3clF45" />
       <node concept="37vLTG" id="g9$9d2EHqa" role="3clF46">

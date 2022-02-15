@@ -39,8 +39,8 @@
       <node id="290922613094649031" at="70,43,71,123" concept="8" />
       <node id="290922613094657307" at="71,123,72,37" concept="8" />
       <node id="290922613094637516" at="73,5,74,22" concept="7" />
-      <node id="290922613094485885" at="78,57,79,42" concept="2" />
-      <node id="290922613094511590" at="79,42,80,63" concept="6" />
+      <node id="290922613094485885" at="78,58,79,43" concept="2" />
+      <node id="290922613094511590" at="79,43,80,63" concept="6" />
       <node id="290922613094537445" at="80,63,81,31" concept="2" />
       <node id="290922613095181363" at="81,31,82,75" concept="8" />
       <node id="290922613095126165" at="82,75,83,70" concept="6" />
@@ -81,7 +81,7 @@
       <node id="5682549678865142958" at="92,0,99,0" concept="5" trace="setParallelMode#(Z)V" />
       <node id="290922613094587533" at="68,0,76,0" concept="5" trace="getSettings#()Ljetbrains/mps/build/ant/GeneratorSettings;" />
       <node id="3678130852928476003" at="35,85,46,7" concept="10" />
-      <node id="290922613094485830" at="77,0,88,0" concept="5" trace="finalizeSciptSettings#(Ljetbrains/mps/tool/common/Script;)V" />
+      <node id="290922613094485830" at="77,0,88,0" concept="5" trace="finalizeScriptSettings#(Ljetbrains/mps/tool/common/Script;)V" />
       <node id="3535927011724137683" at="32,59,47,5" concept="4" />
       <node id="5682549678865142877" at="32,0,53,0" concept="5" trace="addConfiguredLibrary#(Ljetbrains/mps/build/ant/ModuleJarDataType;)V" />
       <scope id="5682549678865142840" at="29,47,30,66" />
@@ -153,7 +153,7 @@
         <var name="parallelMode" id="5682549678865142959" />
       </scope>
       <scope id="290922613094587533" at="68,0,76,0" />
-      <scope id="290922613094485881" at="78,57,86,5">
+      <scope id="290922613094485881" at="78,58,86,5">
         <var name="gp" id="290922613094511591" />
         <var name="jcp" id="290922613095126166" />
       </scope>
@@ -228,15 +228,15 @@
     <file name="GenTestTask.java">
       <node id="290922613095195375" at="11,0,12,0" concept="3" trace="myIsDiff" />
       <node id="5181927975739206728" at="13,24,14,63" concept="2" />
-      <node id="290922613095192255" at="18,57,19,42" concept="2" />
+      <node id="290922613095192255" at="18,58,19,43" concept="2" />
       <node id="4003657351907891951" at="20,19,21,83" concept="2" />
       <node id="290922613095197187" at="24,59,25,38" concept="2" />
       <node id="1374711517442257732" at="27,59,28,47" concept="2" />
       <node id="5181927975739206074" at="13,0,16,0" concept="1" trace="GenTestTask#()V" />
-      <node id="290922613095200560" at="19,42,22,5" concept="4" />
+      <node id="290922613095200560" at="19,43,22,5" concept="4" />
       <node id="4003657351907891945" at="24,0,27,0" concept="5" trace="setShowDiff#(Z)V" />
       <node id="1374711517442257727" at="27,0,30,0" concept="5" trace="addConfiguredModule#(Ljetbrains/mps/build/ant/generation/ModuleChunkPart;)V" />
-      <node id="290922613095192199" at="17,0,24,0" concept="5" trace="finalizeSciptSettings#(Ljetbrains/mps/tool/common/Script;)V" />
+      <node id="290922613095192199" at="17,0,24,0" concept="5" trace="finalizeScriptSettings#(Ljetbrains/mps/tool/common/Script;)V" />
       <scope id="5181927975739206077" at="13,24,14,63" />
       <scope id="290922613095200562" at="20,19,21,83" />
       <scope id="4003657351907891950" at="24,59,25,38" />
@@ -248,7 +248,7 @@
       <scope id="1374711517442257727" at="27,0,30,0">
         <var name="module" id="1374711517442257728" />
       </scope>
-      <scope id="290922613095192252" at="18,57,22,5" />
+      <scope id="290922613095192252" at="18,58,22,5" />
       <scope id="290922613095192199" at="17,0,24,0">
         <var name="whatToDo" id="290922613095192202" />
       </scope>

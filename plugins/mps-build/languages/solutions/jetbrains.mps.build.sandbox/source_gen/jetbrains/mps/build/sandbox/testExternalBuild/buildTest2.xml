@@ -161,6 +161,7 @@
     <ant antfile="../../../../build/mpsContextActionsTool.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="../../../../build/mpsSpellCheckPlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="../../../../build/mpsKotlinPlugin.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="../../../../build/mpsAntToolsPlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="../../../../build/mps.xml" inheritAll="false" useNativeBasedir="true" />
   </target>
   
@@ -404,6 +405,10 @@
       <target name="assemble" />
     </ant>
     <ant antfile="../../../../build/mpsKotlinPlugin.xml" inheritAll="false" useNativeBasedir="true">
+      <target name="generate" />
+      <target name="assemble" />
+    </ant>
+    <ant antfile="../../../../build/mpsAntToolsPlugin.xml" inheritAll="false" useNativeBasedir="true">
       <target name="generate" />
       <target name="assemble" />
     </ant>

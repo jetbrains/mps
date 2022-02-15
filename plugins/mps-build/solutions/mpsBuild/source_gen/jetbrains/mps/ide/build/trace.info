@@ -15,6 +15,11 @@
       <unit id="1545517825663017278" at="1,0,933,10" name="jetbrains.mps.ide.build.mpsVcs" />
     </file>
   </root>
+  <root nodeRef="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)/1583398502926411284">
+    <file name="mpsAntToolsPlugin.xml">
+      <unit id="1583398502926411284" at="1,0,288,10" name="jetbrains.mps.ide.build.mpsAntToolsPlugin" />
+    </file>
+  </root>
   <root nodeRef="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)/2002671966457711287">
     <file name="mpsContextActionsTool.xml">
       <unit id="2002671966457711287" at="1,0,758,10" name="jetbrains.mps.ide.build.mpsContextActionsTool" />
@@ -42,12 +47,12 @@
   </root>
   <root nodeRef="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)/4301118715654192646">
     <file name="mps.xml">
-      <unit id="4301118715654192646" at="1,0,325,10" name="jetbrains.mps.ide.build.mps" />
+      <unit id="4301118715654192646" at="1,0,331,10" name="jetbrains.mps.ide.build.mps" />
     </file>
   </root>
   <root nodeRef="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)/4301118715654497533">
     <file name="mpsDistribution.xml">
-      <unit id="4301118715654497533" at="1,0,385,10" name="jetbrains.mps.ide.build.mpsDistribution" />
+      <unit id="4301118715654497533" at="1,0,386,10" name="jetbrains.mps.ide.build.mpsDistribution" />
     </file>
   </root>
   <root nodeRef="r:874d959d-e3b4-4d04-b931-ca849af130dd(jetbrains.mps.ide.build)/4301118715654819483">

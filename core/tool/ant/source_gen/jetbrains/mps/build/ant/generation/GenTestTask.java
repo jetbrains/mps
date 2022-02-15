@@ -15,8 +15,8 @@ public class GenTestTask extends GenerateTask {
   }
 
   @Override
-  protected void finalizeSciptSettings(Script whatToDo) {
-    super.finalizeSciptSettings(whatToDo);
+  protected void finalizeScriptSettings(Script whatToDo) {
+    super.finalizeScriptSettings(whatToDo);
     if (myIsDiff) {
       whatToDo.putProperty(ScriptProperties.SHOW_DIFF, Boolean.toString(myIsDiff));
     }

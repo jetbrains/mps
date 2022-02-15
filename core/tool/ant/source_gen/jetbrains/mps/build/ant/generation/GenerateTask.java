@@ -75,8 +75,8 @@ public class GenerateTask extends MpsLoadTask {
   }
 
   @Override
-  protected void finalizeSciptSettings(Script whatToDo) {
-    super.finalizeSciptSettings(whatToDo);
+  protected void finalizeScriptSettings(Script whatToDo) {
+    super.finalizeScriptSettings(whatToDo);
     GeneratorProperties gp = new GeneratorProperties(whatToDo);
     getSettings().feedInto(gp);
     // keep JCP out of if just in case it sets some defaults in constructor
