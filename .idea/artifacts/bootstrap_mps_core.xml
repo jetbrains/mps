@@ -19,7 +19,6 @@
         <element id="module-output" name="dataflow-rt" />
         <element id="module-output" name="kernel-resources" />
         <element id="module-output" name="smodel" />
-        <element id="module-output" name="smodelquery-runtime" />
         <element id="module-output" name="vfs" />
         <element id="module-output" name="platform" />
         <element id="module-output" name="pattern-runtime" />
