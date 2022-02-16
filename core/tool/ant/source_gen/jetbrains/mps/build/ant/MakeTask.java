@@ -4,6 +4,8 @@ package jetbrains.mps.build.ant;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.apache.tools.ant.Project;
+import jetbrains.mps.build.ant.generation.ModuleChunkPart;
+import jetbrains.mps.tool.common.JavaCompilerProperties;
 import jetbrains.mps.tool.common.Script;
 import jetbrains.mps.tool.common.GeneratorProperties;
 import jetbrains.mps.tool.common.PluginData;
@@ -40,6 +42,25 @@ public final class MakeTask extends MpsLoadTask {
     return mySettings;
   }
 
+  public void addConfiguredModule(ModuleChunkPart chunk) {
+    myWhatToDo.addModuleFile(chunk.getFile());
+  }
+
+  public void setTargetJavaVersion(String targetJavaVersion) {
+    // FIXME shall follow GeneratorSettings approach and extract a distinct compile settings typedef
+    if (targetJavaVersion != null) {
+      new JavaCompilerProperties(myWhatToDo).setTargetJavaVersion(targetJavaVersion);
+    }
+  }
+
+  public void addConfiguredLibrary(ModuleJarDataType jar) {
+    // XXX why it's not part of MpsLoadTask?
+    // FIXME decide whether I care to evolve manifest story. With reliable <plugin>s, don't think there's much value in 
+    //      distinct <library> elements (grouped into manifest). Rather shall spend effort to make more plugins?
+    if (jar.getFile() != null) {
+      addLibraryJar(jar.getFile());
+    }
+  }
 
   @Override
   protected void finalizeScriptSettings(Script whatToDo) {
