@@ -172,32 +172,31 @@
       <node id="290922613095034587" at="32,78,33,36" concept="5" />
       <node id="290922613094609544" at="37,29,38,43" concept="5" />
       <node id="290922613094637516" at="39,5,40,22" concept="12" />
-      <node id="1583398502928472584" at="45,58,46,43" concept="5" />
-      <node id="290922613094511590" at="46,43,47,63" concept="11" />
-      <node id="290922613094537445" at="47,63,48,31" concept="5" />
-      <node id="1583398502928558728" at="48,31,49,140" concept="5" />
-      <node id="1583398502928784587" at="54,46,55,50" concept="13" />
-      <node id="1583398502928759071" at="55,50,56,86" concept="13" />
-      <node id="1583398502928668664" at="56,86,57,130" concept="12" />
+      <node id="4035665851932660654" at="45,58,46,18" concept="5" />
+      <node id="1583398502928472584" at="46,18,47,43" concept="5" />
+      <node id="4035665851932659021" at="47,43,48,106" concept="13" />
+      <node id="290922613094511590" at="48,106,49,63" concept="11" />
+      <node id="290922613094537445" at="49,63,50,31" concept="5" />
+      <node id="1583398502928558728" at="50,31,51,140" concept="5" />
+      <node id="1583398502928784587" at="56,46,57,50" concept="13" />
+      <node id="1583398502928759071" at="57,50,58,86" concept="13" />
+      <node id="1583398502928668664" at="58,86,59,130" concept="12" />
       <node id="1583398502928465862" at="19,0,22,0" concept="3" trace="MakeTask#()V" />
       <node id="290922613094789009" at="23,65,26,5" concept="9" />
       <node id="290922613094592865" at="36,45,39,5" concept="9" />
       <node id="290922613095014552" at="30,0,35,0" concept="10" trace="addConfigured#(Ljetbrains/mps/build/ant/GeneratorSettings;)V" />
       <node id="290922613094554791" at="23,0,29,0" concept="10" trace="addConfiguredSettings#(Ljetbrains/mps/build/ant/GeneratorSettings;)V" />
       <node id="290922613094587533" at="36,0,42,0" concept="10" trace="getSettings#()Ljetbrains/mps/build/ant/GeneratorSettings;" />
-      <node id="1583398502928472529" at="44,0,51,0" concept="10" trace="finalizeScriptSettings#(Ljetbrains/mps/tool/common/Script;)V" />
-      <node id="1583398502928668647" at="52,0,59,0" concept="10" trace="getAdditionalArgs#()Ljava/util/List;" />
+      <node id="1583398502928668647" at="54,0,61,0" concept="10" trace="getAdditionalArgs#()Ljava/util/List;" />
+      <node id="1583398502928472529" at="44,0,53,0" concept="10" trace="finalizeScriptSettings#(Ljetbrains/mps/tool/common/Script;)V" />
       <scope id="1583398502928465866" at="19,21,20,51" />
       <scope id="290922613094789011" at="24,29,25,111" />
       <scope id="290922613094592867" at="37,29,38,43" />
       <scope id="1583398502928465862" at="19,0,22,0" />
       <scope id="290922613095014556" at="30,57,33,36" />
-      <scope id="1583398502928668661" at="54,46,57,130" />
+      <scope id="1583398502928668661" at="56,46,59,130" />
       <scope id="290922613094554794" at="23,65,27,26" />
       <scope id="290922613094587536" at="36,45,40,22" />
-      <scope id="1583398502928472580" at="45,58,49,140">
-        <var name="gp" id="290922613094511591" />
-      </scope>
       <scope id="290922613095014552" at="30,0,35,0">
         <var name="settings" id="290922613095026159" />
       </scope>
@@ -205,11 +204,14 @@
         <var name="settings" id="290922613094554900" />
       </scope>
       <scope id="290922613094587533" at="36,0,42,0" />
-      <scope id="1583398502928472529" at="44,0,51,0">
+      <scope id="1583398502928472580" at="45,58,51,140">
+        <var name="gp" id="290922613094511591" />
+      </scope>
+      <scope id="1583398502928668647" at="54,0,61,0" />
+      <scope id="1583398502928472529" at="44,0,53,0">
         <var name="whatToDo" id="1583398502928472566" />
       </scope>
-      <scope id="1583398502928668647" at="52,0,59,0" />
-      <unit id="1583398502928454540" at="15,0,60,0" name="jetbrains.mps.build.ant.MakeTask" />
+      <unit id="1583398502928454540" at="15,0,62,0" name="jetbrains.mps.build.ant.MakeTask" />
     </file>
   </root>
   <root nodeRef="r:7b2ffdb7-2bfc-4488-8c0c-ee8fe93fe3c1(jetbrains.mps.build.ant)/2194822006344541151">

@@ -10,6 +10,8 @@ import jetbrains.mps.tool.run.ModuleClassCode;
 import java.util.Optional;
 import java.lang.reflect.Constructor;
 import jetbrains.mps.core.platform.Platform;
+import java.lang.reflect.Method;
+import jetbrains.mps.messages.IMessageHandler;
 import java.util.concurrent.Callable;
 import java.lang.reflect.InvocationTargetException;
 import java.io.File;
@@ -66,6 +68,12 @@ public class CoreWorker extends WorkerBase {
       } else {
         error("Can't find suitable constructor (prefer the one that takes Script/Platform instances)");
         return;
+      }
+      Optional<Method> setMsgHandler = cc.instanceMethod("directMessagesTo", IMessageHandler.class);
+      if (setMsgHandler.isPresent()) {
+        // XXX likely, a dedicated interface with configuration methods would be better, just need to 
+        //     decide where it shall live (somewhere in MPS.Core I presume)
+        setMsgHandler.get().invoke(newInstance, new WorkerMessageHandler(this));
       }
       if (newInstance instanceof Callable) {
         ((Callable) newInstance).call();

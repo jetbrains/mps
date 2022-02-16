@@ -19,6 +19,7 @@
     <classNode dependClassName="java.lang.reflect.Method" />
     <classNode dependClassName="java.lang.reflect.Modifier" />
     <classNode dependClassName="java.util.Optional" />
+    <classNode dependClassName="java.util.function.IntPredicate" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.classloading.ClassLoaderManager" />
     <classNode dependClassName="jetbrains.mps.core.platform.Platform" />

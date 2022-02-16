@@ -43,7 +43,9 @@ public final class MakeTask extends MpsLoadTask {
 
   @Override
   protected void finalizeScriptSettings(Script whatToDo) {
+    setFork(true);
     super.finalizeScriptSettings(whatToDo);
+    // XXX assert myFork; - I assume default 'true' value, don't want to specify one in the xml explicitly
     GeneratorProperties gp = new GeneratorProperties(whatToDo);
     getSettings().feedInto(gp);
     whatToDo.addPlugin(new PluginData(new File(getMpsHome_Checked(), "plugins/mps-ant-make").getAbsolutePath(), "jetbrains.mps.tool.make"));
