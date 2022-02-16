@@ -38,7 +38,6 @@ import jetbrains.mps.generator.TransientModelsModule;
 import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.build.mps.behavior.BuildMpsLayout_Plugin__BehaviorDescriptor;
 import jetbrains.mps.build.mps.util.MPSModulesPartitioner;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.List;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
@@ -46,6 +45,7 @@ import jetbrains.mps.generator.template.TemplateArgumentContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import jetbrains.mps.build.mps.util.MPSModulesClosure;
 import java.util.ArrayList;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.build.mps.util.RuntimeDependencies;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import java.util.Set;
@@ -1030,17 +1030,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return Sequence.fromIterable(((MPSModulesPartitioner) _context.getVariable("var:closure")).getExternal()).isNotEmpty();
   }
   public static boolean ifMacro_Condition_10_4(final IfMacroContext _context) {
-    return !((SPropertyOperations.getString(_context.getNode(), PROPS.name$MnvL).equals("mpsBootstrapCore") && SModelOperations.getModelName(SNodeOperations.getModel(_context.getNode())).equals("jetbrains.mps.ide.build")));
+    SNode mpsAspect = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.aspects$6r0Q), CONCEPTS.BuildMpsAspect$Ey)).first();
+    return (mpsAspect != null) && SPropertyOperations.getBoolean(mpsAspect, PROPS.testGeneration$xdoj);
   }
   public static boolean ifMacro_Condition_10_5(final IfMacroContext _context) {
-    SNode mpsAspect = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.aspects$6r0Q)).findFirst(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMpsAspect$Ey);
-      }
-    });
-    return (mpsAspect != null) && SPropertyOperations.getBoolean(SNodeOperations.cast(mpsAspect, CONCEPTS.BuildMpsAspect$Ey), PROPS.testGeneration$xdoj);
-  }
-  public static boolean ifMacro_Condition_10_6(final IfMacroContext _context) {
     SNode ba = ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.aspects$6r0Q)).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildMpsAspect$Ey);
@@ -1051,16 +1044,16 @@ public class QueriesGenerated extends QueryProviderBase {
     }
     return isNotEmptyString(SPropertyOperations.getString(SNodeOperations.cast(ba, CONCEPTS.BuildMpsAspect$Ey), PROPS.excludes$mj5k));
   }
-  public static boolean ifMacro_Condition_10_7(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_10_6(final IfMacroContext _context) {
     return Sequence.fromIterable(((MPSModulesPartitioner) _context.getVariable("var:closure")).getExternal()).isNotEmpty();
   }
-  public static boolean ifMacro_Condition_10_8(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_10_7(final IfMacroContext _context) {
     // sort of stupid way to find out if project has 'generate' task;
     // although the previous one, hardcoded check for presence of specific task library node,
     // was not better.
     return Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(SLinkOperations.getTarget(_context.getNode(), LINKS.project$ciHu), LINKS.plugins$AsCR), CONCEPTS.BuildMPSPlugin$YW)).isNotEmpty();
   }
-  public static boolean ifMacro_Condition_10_9(final IfMacroContext _context) {
+  public static boolean ifMacro_Condition_10_8(final IfMacroContext _context) {
     return ListSequence.fromList(((List<SNode>) _context.getVariable("var:dependency"))).isNotEmpty();
   }
   public static boolean ifMacro_Condition_17_0(final IfMacroContext _context) {
@@ -1481,7 +1474,7 @@ public class QueriesGenerated extends QueryProviderBase {
     //    which is to be reduced to path value later.
     return Sequence.fromIterable(Sequence.fromArray(((ModulePlugins) _context.getVariable("var:requiredPlugins")).getPluginPaths(_context))).select(new ISelector<String, SNode>() {
       public SNode select(String it) {
-        return createGeneratorInternal_String_x583g4_a0a0a0e0um(it);
+        return createGeneratorInternal_String_x583g4_a0a0a0e0tm(it);
       }
     });
   }
@@ -1520,16 +1513,12 @@ public class QueriesGenerated extends QueryProviderBase {
     });
   }
   public static Iterable<SNode> sourceNodesQuery_10_5(final SourceSubstituteMacroNodesContext _context) {
-    return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.macros$r8_A)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BuildFolderMacro$mR);
-      }
-    });
+    return SNodeOperations.ofConcept(SLinkOperations.getChildren(_context.getNode(), LINKS.macros$r8_A), CONCEPTS.BuildFolderMacro$mR);
   }
   public static Iterable<SNode> sourceNodesQuery_10_6(final SourceSubstituteMacroNodesContext _context) {
     return Sequence.fromIterable(Sequence.fromArray(((String[]) _context.getVariable("var:requiredPlugins")))).select(new ISelector<String, SNode>() {
       public SNode select(String it) {
-        return createGeneratorInternal_String_x583g4_a0a0a0a0zm(it);
+        return createGeneratorInternal_String_x583g4_a0a0a0a0ym(it);
       }
     });
   }
@@ -1877,7 +1866,7 @@ public class QueriesGenerated extends QueryProviderBase {
     List<Tuples._2<SNode, String>> dependencies = new ProjectDependency(_context, _context.getNode()).collectDependencies().getDependencies();
     return ListSequence.fromList(dependencies).select(new ISelector<Tuples._2<SNode, String>, SNode>() {
       public SNode select(Tuples._2<SNode, String> it) {
-        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a573(it._1(), it._0());
+        return createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a473(it._1(), it._0());
       }
     }).toListSequence();
   }
@@ -2852,7 +2841,6 @@ public class QueriesGenerated extends QueryProviderBase {
     imcMethods.put("8845345751178285143", new IfMC(i++));
     imcMethods.put("5970181360960165169", new IfMC(i++));
     imcMethods.put("398731435601112750", new IfMC(i++));
-    imcMethods.put("6886349771916699397", new IfMC(i++));
     imcMethods.put("1787667533297084980", new IfMC(i++));
     imcMethods.put("5002485985634204064", new IfMC(i++));
     imcMethods.put("3239569521490198040", new IfMC(i++));
@@ -3019,12 +3007,10 @@ public class QueriesGenerated extends QueryProviderBase {
         case 70:
           return QueriesGenerated.ifMacro_Condition_10_8(ctx);
         case 71:
-          return QueriesGenerated.ifMacro_Condition_10_9(ctx);
-        case 72:
           return QueriesGenerated.ifMacro_Condition_17_0(ctx);
-        case 73:
+        case 72:
           return QueriesGenerated.ifMacro_Condition_17_1(ctx);
-        case 74:
+        case 73:
           return QueriesGenerated.ifMacro_Condition_19_0(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
@@ -3353,17 +3339,17 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode createGeneratorInternal_String_x583g4_a0a0a0e0um(String p0) {
+  private static SNode createGeneratorInternal_String_x583g4_a0a0a0e0tm(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$CC);
     n0.setProperty(PROPS.path$oN2q, p0);
     return n0.getResult();
   }
-  private static SNode createGeneratorInternal_String_x583g4_a0a0a0a0zm(String p0) {
+  private static SNode createGeneratorInternal_String_x583g4_a0a0a0a0ym(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_String$CC);
     n0.setProperty(PROPS.path$oN2q, p0);
     return n0.getResult();
   }
-  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a573(String p0, SNode p1) {
+  private static SNode createGeneratorInternal_ProjectDependency_x583g4_a0a0a0a1a473(String p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.GeneratorInternal_ProjectDependency$bb);
     n0.setProperty(PROPS.path$URGX, p0);
     n0.setReferenceTarget(LINKS.project$ciHu, p1);
