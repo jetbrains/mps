@@ -13,6 +13,7 @@ import jetbrains.mps.openapi.editor.descriptor.TransformationMenu;
 import jetbrains.mps.openapi.editor.descriptor.NamedMenuId;
 import java.util.Arrays;
 import jetbrains.mps.openapi.editor.descriptor.SubstituteMenu;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import jetbrains.mps.openapi.editor.cells.KeyMap;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndex;
 import jetbrains.mps.lang.smodel.ConceptSwitchIndexBuilder;
@@ -774,6 +775,11 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
     }
 
     return Collections.<SubstituteMenu>emptyList();
+  }
+  @NotNull
+  @Override
+  public Collection<EditorMenuItemCustomizer> getEditorMenuItemCustomizers() {
+    return Arrays.asList(new EditorMenuItemCustomizer[]{new ColorOrdering()});
   }
   @NotNull
   @Override
