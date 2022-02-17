@@ -96,7 +96,7 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     @Override
     public String toString() {
       if (myValue == null) {
-        return "Default (" + JavaLanguageLevel.getDefault(myCompileInMPS.isSelected()).getCompactDescription() + ")";
+        return "Default (" + JavaLanguageLevel.getDefault(myCompileInMPS.isSelected()).getFullDescription() + ")";
       } else {
         return myValue.getFullDescription();
       }
