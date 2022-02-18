@@ -70,7 +70,7 @@ public class MPSPsiNode extends LightElement {
       if (n == null) {
         return IdeIcons.UNKNOWN_ICON;
       }
-      return GlobalIconManager.getInstance().getIconFor(n);
+      return GlobalIconManager.getInstance().getIconFor1(n, false);
     });
   }
 
