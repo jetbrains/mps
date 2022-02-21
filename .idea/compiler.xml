@@ -461,6 +461,10 @@
       <directory url="file://$PROJECT_DIR$/samples/dslbook_example/solutions/secretCompartmentLanguage.sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/expressions/sandbox/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/expressions/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/financialCalculations/languages/calculator/generator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/financialCalculations/languages/calculator/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/financialCalculations/solutions/jetbrains.mps.samples.fincalculator.sandbox/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/samples/financialCalculations/solutions/jetbrains.mps.samples.fincalculator.support/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/fixedLengthReader/myReaderConfiguration/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/fixedLengthReader/readerConfigLanguage/gen2/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/samples/fixedLengthReader/readerConfigLanguage/generator/source_gen" includeSubdirectories="true" />
@@ -842,3 +846,4 @@
     <option name="MAXIMUM_HEAP_SIZE" value="1024" />
   </component>
 </project>
+
