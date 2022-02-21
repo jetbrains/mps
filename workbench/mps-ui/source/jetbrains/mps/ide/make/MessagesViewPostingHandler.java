@@ -17,34 +17,52 @@ package jetbrains.mps.ide.make;
 
 import jetbrains.mps.ide.messages.MessageListOptions;
 import jetbrains.mps.ide.messages.MessagesViewTool;
-import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
-import jetbrains.mps.messages.LogHandler;
+import jetbrains.mps.messages.IMessageList;
 import jetbrains.mps.project.Project;
-import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 
 /**
  * Message handler to use for all make sessions that
  * has to pipe messages to shared (common) 'Make' view.
  */
-public class DefaultMakeMessageHandler implements IMessageHandler {
-  private final IMessageHandler myDelegate;
+public class MessagesViewPostingHandler implements IMessageHandler {
+  private final IMessageList myMessageList;
 
-  public DefaultMakeMessageHandler(Project mpsProject) {
+  public MessagesViewPostingHandler(Project mpsProject, MessageListOptions... options) {
     MessagesViewTool tool = MessagesViewTool.getInstance(mpsProject);
     if (tool != null) {
-      // I don't dare switch this activation per-message off in bugfix release
-      myDelegate = new MessagesViewPostingHandler(mpsProject, MessageListOptions.ActivateOnMessage);
+      myMessageList = tool.getMessageList("Make", options);
     } else {
-      //it might happen if we haven't opened IDE yet
-      myDelegate = new LogHandler(Logger.getLogger(IMakeService.class));
+      LogManager.getLogger(MessagesViewPostingHandler.class).warn("no messages view tool discovered;" +
+                                                                  "the messages are going to be ignored");
+      myMessageList = new NopMessageList();
     }
+  }
+
+  // some _something_, which brings the messages out to the view
+  public void showMessages() {
+    myMessageList.wake();
   }
 
   @Override
   public void handle(@NotNull IMessage msg) {
-    myDelegate.handle(msg);
+    myMessageList.handle(msg);
+  }
+
+  private static final class NopMessageList implements IMessageList {
+    @Override
+    public void add(@NotNull IMessage message) {
+    }
+
+    @Override
+    public void clear() {
+    }
+
+    @Override
+    public void wake() {
+    }
   }
 }

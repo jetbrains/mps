@@ -186,7 +186,8 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
     if (alwaysNew) {
       list = createList(name);
     } else {
-      list = getAvailableList(name, reuseExisting);
+      boolean createIfNotFound = !reuseExisting;
+      list = getAvailableList(name, createIfNotFound);
     }
     list.setActivateOnMessage(activateOnMessage);
     return list;
