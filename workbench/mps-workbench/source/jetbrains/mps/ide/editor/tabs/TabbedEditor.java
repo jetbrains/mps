@@ -81,7 +81,7 @@ public class TabbedEditor extends BaseNodeEditor {
   private final ShadowAction myNextTabAction, myPrevTabAction;
   // UI container to hold tab UI components plus auxiliary controls like 'Add aspect' action and alike.
   private final JPanel myTabsPanel;
-  private final TabbedEditorsRepoChangeListener myRepoChangeListener;
+  private final TabRootNodesTracker myRepoChangeListener;
   private final FileStatusChangeListener myFileStatusListener;
 
   private final EditorSettingsListener mySettingsListener = new EditorSettingsListener() {
@@ -124,7 +124,7 @@ public class TabbedEditor extends BaseNodeEditor {
     // bloody BaseNodeEditor makes us know about layout used there
     getComponent().add(myTabsPanel, BorderLayout.SOUTH);
 
-    myRepoChangeListener = TabbedEditorsRepoChangeListener.getInstance(mpsProject);
+    myRepoChangeListener = TabRootNodesTracker.getInstance(mpsProject);
     myFileStatusListener = FileStatusChangeListener.getInstance(mpsProject);
 
     installTabsComponent();

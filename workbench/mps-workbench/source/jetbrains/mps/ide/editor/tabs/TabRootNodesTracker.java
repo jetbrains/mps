@@ -48,19 +48,19 @@ import java.util.HashSet;
  *
  * @author Artem Tikhomirov
  */
-class TabbedEditorsRepoChangeListener extends SRepositoryContentAdapter implements Disposable {
+class TabRootNodesTracker extends SRepositoryContentAdapter implements Disposable {
   private final Collection<SNodeReference> myChangedRoots = new HashSet<>();
   private final Collection<TabsComponent> myTabsComponents = new HashSet<>();
 
   private final Project myProject;
 
   @Nullable
-  static TabbedEditorsRepoChangeListener getInstance(jetbrains.mps.project.Project mpsProject) {
+  static TabRootNodesTracker getInstance(jetbrains.mps.project.Project mpsProject) {
     final com.intellij.openapi.project.Project ideaProject = ProjectHelper.toIdeaProject(mpsProject);
-    return ideaProject == null ? null : ideaProject.getService(TabbedEditorsRepoChangeListener.class);
+    return ideaProject == null ? null : ideaProject.getService(TabRootNodesTracker.class);
   }
 
-  public TabbedEditorsRepoChangeListener(com.intellij.openapi.project.Project project) {
+  public TabRootNodesTracker(com.intellij.openapi.project.Project project) {
     myProject = ProjectHelper.fromIdeaProject(project);
     attachRepoListener();
   }
