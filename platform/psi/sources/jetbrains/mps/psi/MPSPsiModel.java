@@ -140,15 +140,6 @@ public class MPSPsiModel extends LightElement {
   }
 
   @Override
-  public <T> T getUserData(@NotNull Key<T> key) {
-    return null;
-  }
-
-  @Override
-  public <T> void putUserData(@NotNull Key<T> key, @Nullable T value) {
-  }
-
-  @Override
   public ItemPresentation getPresentation() {
     return new ItemPresentation() {
       @Override

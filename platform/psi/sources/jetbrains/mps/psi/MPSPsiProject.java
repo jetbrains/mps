@@ -79,15 +79,6 @@ public class MPSPsiProject extends LightElement {
   }
 
   @Override
-  public <T> T getUserData(@NotNull Key<T> key) {
-    return null;
-  }
-
-  @Override
-  public <T> void putUserData(@NotNull Key<T> key, @Nullable T value) {
-  }
-
-  @Override
   @NotNull
   public PsiElement[] getChildren() {
     var repo = ProjectHelper.getProjectRepository(myProject);
