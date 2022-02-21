@@ -92,9 +92,6 @@ public class MPSNavBarExtension implements NavBarModelExtension {
   @Nullable
   @Override
   public PsiElement getParent(PsiElement psiElement) {
-    if (psiElement instanceof MPSPsiModule) {
-      return new MPSPsiProject(psiElement.getManager(), psiElement.getProject());
-    }
     return psiElement.getParent();
   }
 

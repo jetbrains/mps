@@ -67,7 +67,7 @@ public class MPSPsiModule extends LightElement {
 
   @Override
   public PsiElement getParent() {
-    return null;
+    return new MPSPsiProject(myManager, getProject());
   }
 
   @NotNull
