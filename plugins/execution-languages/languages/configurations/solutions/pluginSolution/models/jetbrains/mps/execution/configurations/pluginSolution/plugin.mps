@@ -31,6 +31,7 @@
     <import index="ekwn" ref="r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="ap4t" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator(MPS.Generator/)" />
+    <import index="57ty" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.messages(MPS.Platform/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
     <import index="7bx7" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.action(MPS.Platform/)" implicit="true" />
     <import index="qkt" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)" implicit="true" />
@@ -112,6 +113,10 @@
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
+      </concept>
+      <concept id="1083260308424" name="jetbrains.mps.baseLanguage.structure.EnumConstantReference" flags="nn" index="Rm8GO">
+        <reference id="1083260308426" name="enumConstantDeclaration" index="Rm8GQ" />
+        <reference id="1144432896254" name="enumClass" index="1Px2BO" />
       </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
@@ -746,6 +751,26 @@
           </node>
         </node>
         <node concept="3clFbH" id="7Mz_zRJxt$C" role="3cqZAp" />
+        <node concept="3cpWs8" id="1REAKm2oyhv" role="3cqZAp">
+          <node concept="3cpWsn" id="1REAKm2oyhw" role="3cpWs9">
+            <property role="TrG5h" value="handler" />
+            <node concept="3uibUv" id="1REAKm2owX0" role="1tU5fm">
+              <ref role="3uigEE" to="drpk:~MessagesViewPostingHandler" resolve="MessagesViewPostingHandler" />
+            </node>
+            <node concept="2ShNRf" id="1REAKm2oyhx" role="33vP2m">
+              <node concept="1pGfFk" id="1REAKm2oyhy" role="2ShVmc">
+                <ref role="37wK5l" to="drpk:~MessagesViewPostingHandler.&lt;init&gt;(jetbrains.mps.project.Project,jetbrains.mps.ide.messages.MessageListOptions...)" resolve="MessagesViewPostingHandler" />
+                <node concept="37vLTw" id="1REAKm2oyhz" role="37wK5m">
+                  <ref role="3cqZAo" node="7JDtVAB8xQS" resolve="mpsProject" />
+                </node>
+                <node concept="Rm8GO" id="1REAKm2oU3v" role="37wK5m">
+                  <ref role="Rm8GQ" to="57ty:~MessageListOptions.DeafOnMessage" resolve="DeafOnMessage" />
+                  <ref role="1Px2BO" to="57ty:~MessageListOptions" resolve="MessageListOptions" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="7nsdmC8vnp7" role="3cqZAp">
           <node concept="3cpWsn" id="7nsdmC8vnp8" role="3cpWs9">
             <property role="TrG5h" value="session" />
@@ -758,13 +783,8 @@
                 <node concept="37vLTw" id="7JDtVAB8xQV" role="37wK5m">
                   <ref role="3cqZAo" node="7JDtVAB8xQS" resolve="mpsProject" />
                 </node>
-                <node concept="2ShNRf" id="7JDtVAB8zCx" role="37wK5m">
-                  <node concept="1pGfFk" id="7JDtVAB8$_f" role="2ShVmc">
-                    <ref role="37wK5l" to="drpk:~DefaultMakeMessageHandler.&lt;init&gt;(jetbrains.mps.project.Project)" resolve="DefaultMakeMessageHandler" />
-                    <node concept="37vLTw" id="7JDtVAB8_g8" role="37wK5m">
-                      <ref role="3cqZAo" node="7JDtVAB8xQS" resolve="mpsProject" />
-                    </node>
-                  </node>
+                <node concept="37vLTw" id="1REAKm2oyh$" role="37wK5m">
+                  <ref role="3cqZAo" node="1REAKm2oyhw" resolve="handler" />
                 </node>
                 <node concept="3clFbT" id="7nsdmC8vnpf" role="37wK5m">
                   <property role="3clFbU" value="true" />
@@ -886,6 +906,30 @@
                   </node>
                 </node>
                 <node concept="3clFbS" id="506QX5GcrGA" role="1zc67A" />
+              </node>
+            </node>
+            <node concept="3clFbJ" id="1REAKm2oVIL" role="3cqZAp">
+              <node concept="3clFbS" id="1REAKm2oVIN" role="3clFbx">
+                <node concept="3clFbF" id="1REAKm2oZFr" role="3cqZAp">
+                  <node concept="2OqwBi" id="1REAKm2p0hQ" role="3clFbG">
+                    <node concept="37vLTw" id="1REAKm2oZFp" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1REAKm2oyhw" resolve="handler" />
+                    </node>
+                    <node concept="liA8E" id="1REAKm2p0YV" role="2OqNvi">
+                      <ref role="37wK5l" to="drpk:~MessagesViewPostingHandler.showMessages()" resolve="showMessages" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3fqX7Q" id="1REAKm2oZ9_" role="3clFbw">
+                <node concept="2OqwBi" id="1REAKm2oZ9B" role="3fr31v">
+                  <node concept="37vLTw" id="1REAKm2oZ9C" role="2Oq$k0">
+                    <ref role="3cqZAo" node="506QX5GcrGH" resolve="result" />
+                  </node>
+                  <node concept="liA8E" id="1REAKm2oZ9D" role="2OqNvi">
+                    <ref role="37wK5l" to="i9so:17I1R__cQ6v" resolve="isSucessful" />
+                  </node>
+                </node>
               </node>
             </node>
             <node concept="3cpWs6" id="506QX5GcrGM" role="3cqZAp">

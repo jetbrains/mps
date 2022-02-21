@@ -143,7 +143,8 @@
     <classNode dependClassName="java.util.concurrent.ExecutionException" />
     <classNode dependClassName="java.util.concurrent.Future" />
     <classNode dependClassName="jetbrains.mps.generator.ModelGenerationStatusManager" />
-    <classNode dependClassName="jetbrains.mps.ide.make.DefaultMakeMessageHandler" />
+    <classNode dependClassName="jetbrains.mps.ide.make.MessagesViewPostingHandler" />
+    <classNode dependClassName="jetbrains.mps.ide.messages.MessageListOptions" />
     <classNode dependClassName="jetbrains.mps.ide.project.ProjectHelper" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
