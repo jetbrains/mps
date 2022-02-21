@@ -103,6 +103,14 @@
     <property role="34LRSv" value="task" />
     <property role="EcuMT" value="2769948622284546675" />
     <ref role="1TJDcQ" node="2pKPpytmAa7" resolve="BwfProjectPart" />
+    <node concept="1TJgyj" id="77zDu6tsjOV" role="1TKVEi">
+      <property role="IQ2ns" value="8206585334426844475" />
+      <property role="20kJfa" value="condition" />
+      <ref role="20lvS9" node="77zDu6tsgP2" resolve="BwfTaskMacroCondition" />
+      <node concept="t5JxF" id="77zDu6tsk2p" role="lGtFl">
+        <property role="t5JxN" value="Provisional API to add if/unless condition to a task according to macro value. If necessary, could be generalized into BwfTaskCondition, with macro-specific sub-concept." />
+      </node>
+    </node>
     <node concept="1TJgyj" id="2pKPpytmGTu" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="dependencies" />
@@ -675,6 +683,25 @@
     </node>
     <node concept="t5JxF" id="4H3$xfo$izg" role="lGtFl">
       <property role="t5JxN" value="Analogy to BwfAntStatement, resides up at project level" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="77zDu6tsgP2">
+    <property role="EcuMT" value="8206585334426832194" />
+    <property role="3GE5qa" value="Tasks" />
+    <property role="TrG5h" value="BwfTaskMacroCondition" />
+    <property role="34LRSv" value="condition" />
+    <property role="R4oN_" value="if/unless macro value condition for a task" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="1TJgyj" id="77zDu6tsi$z" role="1TKVEi">
+      <property role="IQ2ns" value="8206585334426839331" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <property role="20kJfa" value="macro" />
+      <ref role="20lvS9" node="5YNybgUC_P8" resolve="BwfMacro" />
+    </node>
+    <node concept="1TJgyi" id="77zDu6tsi0V" role="1TKVEl">
+      <property role="IQ2nx" value="8206585334426837051" />
+      <property role="TrG5h" value="inverted" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
   </node>
 </model>
