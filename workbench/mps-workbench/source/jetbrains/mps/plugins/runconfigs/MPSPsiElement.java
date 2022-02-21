@@ -40,6 +40,7 @@ import java.util.stream.Collectors;
 
 /**
  * FIXME rewrite into several classes instead of this with Object field
+ *       reuse jetbrains.mps.ide.psi package
  */
 public class MPSPsiElement extends FakePsiElement {
   private final MPSProject myMPSProject;
