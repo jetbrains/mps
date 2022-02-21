@@ -15,6 +15,7 @@ import jetbrains.mps.smodel.resources.MResource;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.make.MakeSession;
+import jetbrains.mps.tool.builder.WorkerMessageHandler;
 import jetbrains.mps.internal.make.cfg.JavaCompileFacetInitializer;
 import jetbrains.mps.make.script.IScriptController;
 import java.util.concurrent.Future;
@@ -28,9 +29,6 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.smodel.resources.ModelsToResources;
-import jetbrains.mps.messages.IMessageHandler;
-import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.messages.IMessage;
 
 @GeneratedClass(node = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)/878521226301293996", model = "r:2758abb3-4e9a-4fac-8e72-2fadd8b5c3d7(jetbrains.mps.tool.builder.make)")
 public abstract class BaseGeneratorWorker extends CoreWorker {
@@ -95,7 +93,7 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
     }
 
     myEnvironment.flushAllEvents();
-    final MakeSession session = new MakeSession(project, new MyMessageHandler(), true);
+    final MakeSession session = new MakeSession(project, new WorkerMessageHandler(this), true);
     JavaCompileFacetInitializer jcfi = new JavaCompileFacetInitializer().skipCompilation(mySkipCompilation).setJavaCompileOptions(myJavaCompilerOptions);
     IScriptController controller = new IScriptController.Stub2(session, jcfi);
     Future<IResult> res = new BuildMakeService().make(session, resources, null, controller, new EmptyProgressMonitor());
@@ -134,24 +132,4 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
     return Sequence.fromIterable(new ModelsToResources(models.value).resources()).ofType(MResource.class);
   }
 
-  private class MyMessageHandler implements IMessageHandler {
-    /*package*/ MyMessageHandler() {
-    }
-
-    @Override
-    public void handle(@NotNull IMessage msg) {
-      switch (msg.getKind()) {
-        case ERROR:
-          BaseGeneratorWorker.this.error(msg.getText(), msg.getException());
-          break;
-        case WARNING:
-          BaseGeneratorWorker.this.warning(msg.getText());
-          break;
-        case INFORMATION:
-          BaseGeneratorWorker.this.info(msg.getText());
-          break;
-        default:
-      }
-    }
-  }
 }

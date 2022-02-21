@@ -15,7 +15,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.build.workflow.util.XmlSignature;
 import java.util.List;
 import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.make.dependencies.graph.Graph;
 import jetbrains.mps.make.dependencies.graph.Graphs;
@@ -23,7 +23,7 @@ import java.util.Collections;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import java.util.LinkedHashSet;
-import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.make.dependencies.graph.IVertex;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -56,15 +56,7 @@ public class CycleHelper {
   }
   public void processCycles() {
     List<SNode> modules = new ArrayList<SNode>();
-    ListSequence.fromList(modules).addSequence(ListSequence.fromList(SLinkOperations.getChildren(project, LINKS.parts$$VTL)).where(new IWhereFilter<SNode>() {
-      public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModule$gv);
-      }
-    }).select(new ISelector<SNode, SNode>() {
-      public SNode select(SNode it) {
-        return SNodeOperations.cast(it, CONCEPTS.BwfJavaModule$gv);
-      }
-    }));
+    ListSequence.fromList(modules).addSequence(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(project, LINKS.parts$$VTL), CONCEPTS.BwfJavaModule$gv)));
     for (SNode m : ListSequence.fromList(modules)) {
       optimizeDependencies(m);
     }
@@ -207,12 +199,8 @@ public class CycleHelper {
           targets = Collections.emptySet();
         } else {
           targets = new HashSet<Module>();
-          for (SNode ref : ListSequence.fromList(SLinkOperations.getChildren(module, LINKS.dependencies$_S_Y)).where(new IWhereFilter<SNode>() {
-            public boolean accept(SNode it) {
-              return SNodeOperations.isInstanceOf(it, CONCEPTS.BwfJavaModuleReference$v1);
-            }
-          })) {
-            Module tm = map.get(SLinkOperations.getTarget(SNodeOperations.cast(ref, CONCEPTS.BwfJavaModuleReference$v1), LINKS.target$_Nc8));
+          for (SNode ref : SNodeOperations.ofConcept(SLinkOperations.getChildren(module, LINKS.dependencies$_S_Y), CONCEPTS.BwfJavaModuleReference$v1)) {
+            Module tm = map.get(SLinkOperations.getTarget(ref, LINKS.target$_Nc8));
             if (tm == null) {
               genContext.showErrorMessage(ref, "internal problem: unsatisfied local dependency");
             } else {

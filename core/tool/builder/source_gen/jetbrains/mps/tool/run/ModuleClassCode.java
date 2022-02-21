@@ -11,6 +11,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import java.util.Optional;
 import java.lang.reflect.Method;
+import java.util.function.IntPredicate;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.Constructor;
 
@@ -53,13 +54,34 @@ public final class ModuleClassCode {
     }
   }
 
+  public Optional<Method> instanceMethod(final String methodName, Class<?>... parameterTypes) throws IllegalStateException, SecurityException {
+    IntPredicate p = new IntPredicate() {
+      @Override
+      public boolean test(int modifiers) {
+        return !(Modifier.isStatic(modifiers)) && Modifier.isPublic(modifiers) && !(Modifier.isAbstract(modifiers));
+      }
+    };
+    return findMethod(p, methodName, parameterTypes);
+  }
+
   public Optional<Method> staticMethod(final String methodName, Class<?>... parameterTypes) throws IllegalStateException, SecurityException {
+    // *public* static method
+    IntPredicate p = new IntPredicate() {
+      @Override
+      public boolean test(int modifiers) {
+        return Modifier.isStatic(modifiers) && Modifier.isPublic(modifiers) && !(Modifier.isAbstract(modifiers));
+      }
+    };
+    return findMethod(p, methodName, parameterTypes);
+  }
+
+  private Optional<Method> findMethod(IntPredicate modifiers, final String methodName, Class<?>... parameterTypes) throws IllegalStateException, SecurityException {
     if (myLoadedClass == null) {
       throw new IllegalStateException("load() class first");
     }
-    // takes first *public* static method with matching parameters
+    // takes first method with matching modifiers and parameters
     for (Method m : myLoadedClass.getMethods()) {
-      if (!(Modifier.isStatic(m.getModifiers())) || !(Modifier.isPublic(m.getModifiers()))) {
+      if (!(modifiers.test(m.getModifiers()))) {
         continue;
       }
       if (!(methodName.equals(m.getName()))) {

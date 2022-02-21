@@ -11,6 +11,7 @@
   <uses module="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea(MPS.Core)" kind="dp" />
   <uses module="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="dp" />
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
+  <uses module="77c9a130-703f-4530-bf21-6580757768d0(jetbrains.mps.tool.ant)" kind="dp" />
   <uses module="d9e6c08a-a7b1-4ef6-8c54-57d93e9e0ce0(jetbrains.mps.tool.common)" kind="dp" />
   <dependency className="jetbrains.mps.build.ant.AllModulesDataType">
     <classNode dependClassName="java.lang.Deprecated" />
@@ -79,7 +80,10 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.build.ant.GeneratorSettings" />
+    <classNode dependClassName="jetbrains.mps.build.ant.ModuleJarDataType" />
+    <classNode dependClassName="jetbrains.mps.build.ant.generation.ModuleChunkPart" />
     <classNode dependClassName="jetbrains.mps.tool.common.GeneratorProperties" />
+    <classNode dependClassName="jetbrains.mps.tool.common.JavaCompilerProperties" />
     <classNode dependClassName="jetbrains.mps.tool.common.PluginData" />
     <classNode dependClassName="jetbrains.mps.tool.common.Script" />
     <classNode dependClassName="org.apache.tools.ant.Project" />

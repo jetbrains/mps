@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -164,7 +164,15 @@ public abstract class Project implements MPSModuleOwner, IProject {
     return result;
   }
 
-  // AP todo transfer from Project to ProjectBase
+  /**
+   * @deprecated name suggests result contains all project models, while implementation restricts to models from {@link #getProjectModules()},
+   *             which, unlike {@link #getProjectModulesWithGenerators()}, does not include language-owned generators.
+   *             Use {@link ProjectScope#getModels() getScope().getModels()} as a replacement that gives all models of a project.
+   *             If a replacement operation to be introduced, please don't forget to specify model access restrictions.
+   * @return set of models limited to {@link org.jetbrains.mps.openapi.project.Project#getProjectModules()}, without template
+   *         models from language-owned generators
+   */
+  @Deprecated(since = "2021.3", forRemoval = true)
   public final Iterable<SModel> getProjectModels() {
     List<SModel> result = new ArrayList<>();
 

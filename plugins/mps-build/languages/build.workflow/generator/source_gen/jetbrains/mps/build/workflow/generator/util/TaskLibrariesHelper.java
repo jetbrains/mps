@@ -19,7 +19,6 @@ import java.util.Map;
 import java.util.HashMap;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -61,7 +60,7 @@ public class TaskLibrariesHelper {
       for (SReference ref : n.getReferences()) {
         SNode targetNode = SNodeOperations.getTargetNodeSilently(ref);
         if (map.containsKey(targetNode)) {
-          SNodeAccessUtil.setReferenceTarget(n, ref.getLink(), map.get(targetNode));
+          n.setReferenceTarget(ref.getLink(), map.get(targetNode));
         } else {
           SNode containingRoot = targetNode.getContainingRoot();
           if (jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations.isInstanceOf(containingRoot, CONCEPTS.BwfTaskLibrary$kP)) {

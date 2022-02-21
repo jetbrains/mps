@@ -22,5 +22,7 @@
   <typedef name="module" classname="jetbrains.mps.build.ant.generation.ModuleChunkPart" />
   <typedef name="plugin" classname="jetbrains.mps.build.ant.Plugin" />
 
+  <!-- since 2021.3 -->
   <typedef name="generator-settings" classname="jetbrains.mps.build.ant.GeneratorSettings" />
+  <taskdef name="mps.make" classname="jetbrains.mps.build.ant.MakeTask" />
 </antlib>
