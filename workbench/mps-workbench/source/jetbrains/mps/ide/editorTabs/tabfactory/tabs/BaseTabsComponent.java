@@ -50,7 +50,7 @@ import java.util.stream.Stream;
  * and {@link #removeContent(JComponent)}, not <code>getComponent().add()</code> or <code>getComponent().remove()</code> as this class
  * manages layout constraints of the only child itself. Method {@link #getComponent()} is for external consumers or child unrelated activities.
  */
-public abstract class BaseTabsComponent implements TabsComponent {
+public abstract class BaseTabsComponent<TabImpl extends AbstractEditorTab> implements TabsComponent {
   private static final Logger LOG = LogManager.getLogger(BaseTabsComponent.class);
 
   private final NodeChangeCallback myCallback;
@@ -149,7 +149,15 @@ public abstract class BaseTabsComponent implements TabsComponent {
     return needUpdate;
   }
 
-  protected abstract Stream<? extends AbstractEditorTab> getRealTabs();
+  /**
+   * a little unfortunate naming
+   * Suppose there are multiple aspects for the main node
+   * Then all the tabs can be divided in two groups: the ones with the existing node ('real tabs')
+   *  and the ones without such ('possible tabs')
+   *
+   * @return the tabs for the existing nodes
+   */
+  protected abstract Stream<TabImpl> getRealTabs();
 
   @Override
   public void editNode(SNodeReference node) {

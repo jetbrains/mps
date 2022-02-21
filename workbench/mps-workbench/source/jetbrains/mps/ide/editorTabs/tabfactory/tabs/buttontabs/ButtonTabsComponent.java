@@ -41,7 +41,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Stream;
 
-public class ButtonTabsComponent extends BaseTabsComponent {
+public class ButtonTabsComponent extends BaseTabsComponent<ButtonEditorTab> {
   private final List<ButtonEditorTab> myRealTabs = new ArrayList<>();
   private ActionToolbar myToolbar = null;
 
@@ -94,6 +94,7 @@ public class ButtonTabsComponent extends BaseTabsComponent {
     updateTabs(Collections.singletonList(reference));
   }
 
+  @Override
   @NotNull
   protected Stream<ButtonEditorTab> getRealTabs() {
     return myRealTabs.stream();

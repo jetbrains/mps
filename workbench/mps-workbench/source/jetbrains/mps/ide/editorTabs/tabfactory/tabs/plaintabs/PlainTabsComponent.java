@@ -48,7 +48,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Stream;
 
-public class PlainTabsComponent extends BaseTabsComponent {
+public class PlainTabsComponent extends BaseTabsComponent<PlainEditorTab> {
   private final List<PlainEditorTab> myRealTabs = new ArrayList<>();
   private final JBTabsImpl myTabs;
   private RelationDescriptor myLastEmptyTab = null;
@@ -82,6 +82,7 @@ public class PlainTabsComponent extends BaseTabsComponent {
     });
   }
 
+  @Override
   @NotNull
   protected Stream<PlainEditorTab> getRealTabs() {
     return myRealTabs.stream();
