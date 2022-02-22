@@ -21,6 +21,8 @@
     <import index="tpdd" ref="r:00000000-0000-4000-0000-011c895902ad(jetbrains.mps.lang.typesystem.behavior)" />
     <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
+    <import index="tp3t" ref="r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)" implicit="true" />
+    <import index="tp3r" ref="r:00000000-0000-4000-0000-011c8959034b(jetbrains.mps.lang.quotation.structure)" implicit="true" />
     <import index="tp2b" ref="r:00000000-0000-4000-0000-011c8959033f(jetbrains.mps.lang.pattern.behavior)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
   </imports>
@@ -346,33 +348,45 @@
     <property role="TrG5h" value="typeOf_PatternCondition" />
     <property role="3GE5qa" value="definition.expression" />
     <node concept="3clFbS" id="h6M$2IK" role="18ibNy">
-      <node concept="3cpWs8" id="h6M$7Qr" role="3cqZAp">
-        <node concept="3cpWsn" id="h6M$7Qs" role="3cpWs9">
-          <property role="TrG5h" value="paternCondition" />
-          <node concept="3Tqbb2" id="h6M$7Qt" role="1tU5fm">
-            <ref role="ehGHo" to="tpd4:h5Yb3TC" resolve="PatternCondition" />
-          </node>
-          <node concept="1YBJjd" id="h6M$aVK" role="33vP2m">
-            <ref role="1YBMHb" node="h6M$65o" resolve="pc" />
-          </node>
-        </node>
-      </node>
       <node concept="1Z5TYs" id="hNUXKnl" role="3cqZAp">
         <node concept="mw_s8" id="hNUXKno" role="1ZfhK$">
           <node concept="1Z2H0r" id="hNUXKnq" role="mwGJk">
-            <node concept="37vLTw" id="3GM_nagTydt" role="1Z2MuG">
-              <ref role="3cqZAo" node="h6M$7Qs" resolve="paternCondition" />
+            <node concept="1YBJjd" id="68J$SEgqMtV" role="1Z2MuG">
+              <ref role="1YBMHb" node="h6M$65o" resolve="pc" />
             </node>
           </node>
         </node>
-        <node concept="mw_s8" id="hNUXKns" role="1ZfhKB">
-          <node concept="1Z2H0r" id="h6M$bPG" role="mwGJk">
-            <node concept="2OqwBi" id="hxx_1MB" role="1Z2MuG">
-              <node concept="37vLTw" id="3GM_nagTvsi" role="2Oq$k0">
-                <ref role="3cqZAo" node="h6M$7Qs" resolve="paternCondition" />
-              </node>
-              <node concept="3TrEf2" id="h6M$jpv" role="2OqNvi">
-                <ref role="3Tt5mk" to="tpd4:h5YbcJD" resolve="pattern" />
+        <node concept="mw_s8" id="hNUZEC6" role="1ZfhKB">
+          <node concept="2c44tf" id="hqlQH_Y" role="mwGJk">
+            <node concept="3Tqbb2" id="hqlQH_Z" role="2c44tc">
+              <node concept="2c44tb" id="hqlQHA0" role="lGtFl">
+                <property role="2qtEX8" value="concept" />
+                <property role="P3scX" value="7866978e-a0f0-4cc7-81bc-4d213d9375e1/1138055754698/1138405853777" />
+                <node concept="2YIFZM" id="68J$SEgqLCJ" role="2c44t1">
+                  <ref role="1Pybhc" to="tpeq:h9nq4jh" resolve="RulesUtil" />
+                  <ref role="37wK5l" to="tpeq:EDoXYsb2Yk" resolve="closestConceptNode" />
+                  <node concept="2OqwBi" id="4vXWNHn0oGE" role="37wK5m">
+                    <node concept="2OqwBi" id="4vXWNHn0oqJ" role="2Oq$k0">
+                      <node concept="2OqwBi" id="4vXWNHn0oeh" role="2Oq$k0">
+                        <node concept="2OqwBi" id="68J$SEgqLZd" role="2Oq$k0">
+                          <node concept="1YBJjd" id="68J$SEgqMtW" role="2Oq$k0">
+                            <ref role="1YBMHb" node="h6M$65o" resolve="pc" />
+                          </node>
+                          <node concept="3TrEf2" id="68J$SEgqMjR" role="2OqNvi">
+                            <ref role="3Tt5mk" to="tpd4:h5YbcJD" resolve="pattern" />
+                          </node>
+                        </node>
+                        <node concept="3TrEf2" id="4vXWNHn0ojS" role="2OqNvi">
+                          <ref role="3Tt5mk" to="tp3t:7Qbh0xggLjd" resolve="pattern" />
+                        </node>
+                      </node>
+                      <node concept="3TrEf2" id="4vXWNHn0o_R" role="2OqNvi">
+                        <ref role="3Tt5mk" to="tp3r:hqc44pq" resolve="quotedNode" />
+                      </node>
+                    </node>
+                    <node concept="2yIwOk" id="4L5lkpK3Xk_" role="2OqNvi" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
