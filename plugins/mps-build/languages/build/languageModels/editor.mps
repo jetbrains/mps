@@ -1886,6 +1886,20 @@
         </node>
         <node concept="l2Vlx" id="3XLirLmtIZj" role="2iSdaV" />
       </node>
+      <node concept="3EZMnI" id="77zDu6tvMbK" role="3EZMnx">
+        <node concept="VPM3Z" id="77zDu6tvMbM" role="3F10Kt" />
+        <node concept="3F0ifn" id="77zDu6tvNdF" role="3EZMnx">
+          <property role="3F0ifm" value="compile under condition" />
+        </node>
+        <node concept="3F0A7n" id="77zDu6tvMTG" role="3EZMnx">
+          <ref role="1NtTu8" to="3ior:77zDu6tvKfz" resolve="conditionalCompile" />
+        </node>
+        <node concept="3F0ifn" id="77zDu6tvMkD" role="3EZMnx">
+          <property role="3F0ifm" value="true indicates compilation shall happen under certain circumstance" />
+          <ref role="1k5W1q" node="7UAfeVQSDww" resolve="comment" />
+        </node>
+        <node concept="l2Vlx" id="77zDu6tvMbP" role="2iSdaV" />
+      </node>
     </node>
   </node>
   <node concept="24kQdi" id="6qcrfIJFdL4">

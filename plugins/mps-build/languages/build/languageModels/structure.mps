@@ -312,6 +312,14 @@
     <property role="34LRSv" value="java module" />
     <property role="EcuMT" value="7389400916848073784" />
     <ref role="1TJDcQ" node="6qcrfIJFdK8" resolve="BuildProjectPart" />
+    <node concept="1TJgyi" id="77zDu6tvKfz" role="1TKVEl">
+      <property role="IQ2nx" value="8206585334427747299" />
+      <property role="TrG5h" value="conditionalCompile" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+      <node concept="t5JxF" id="77zDu6tvKtN" role="lGtFl">
+        <property role="t5JxN" value="Experimental mechanism to mark modules that we don't need to compile (compiled by another task, not &lt;javac&gt;); MPSI-36" />
+      </node>
+    </node>
     <node concept="1TJgyj" id="6qcrfIJFdLy" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="sources" />

@@ -41,6 +41,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptBwfTaskDependency = createDescriptorForBwfTaskDependency();
   /*package*/ final ConceptDescriptor myConceptBwfTaskLibrary = createDescriptorForBwfTaskLibrary();
   /*package*/ final ConceptDescriptor myConceptBwfTaskLibraryDependency = createDescriptorForBwfTaskLibraryDependency();
+  /*package*/ final ConceptDescriptor myConceptBwfTaskMacroCondition = createDescriptorForBwfTaskMacroCondition();
   /*package*/ final ConceptDescriptor myConceptBwfTaskPart = createDescriptorForBwfTaskPart();
   /*package*/ final ConceptDescriptor myConceptBwfValueReference = createDescriptorForBwfValueReference();
   /*package*/ final ConceptDescriptor myConceptBwfValueStatement = createDescriptorForBwfValueStatement();
@@ -61,7 +62,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptBwfAntProjectPart, myConceptBwfAntStatement, myConceptBwfAntTaskBundleDeclaration, myConceptBwfAntTaskDeclaration, myConceptBwfCustomMacro, myConceptBwfDependency, myConceptBwfFileSet, myConceptBwfJavaClassPath, myConceptBwfJavaDependency, myConceptBwfJavaDescriptor, myConceptBwfJavaLibrary, myConceptBwfJavaLibraryReference, myConceptBwfJavaModule, myConceptBwfJavaModuleReference, myConceptBwfMacro, myConceptBwfMacroListImport, myConceptBwfPathDeclaration, myConceptBwfPathReference, myConceptBwfProject, myConceptBwfProjectPart, myConceptBwfProjectPartStatement, myConceptBwfStatement, myConceptBwfSubTask, myConceptBwfSubTaskDependency, myConceptBwfTask, myConceptBwfTaskDependency, myConceptBwfTaskLibrary, myConceptBwfTaskLibraryDependency, myConceptBwfTaskPart, myConceptBwfValueReference, myConceptBwfValueStatement, myConceptXmlForeignRefValue);
+    return Arrays.asList(myConceptBwfAntProjectPart, myConceptBwfAntStatement, myConceptBwfAntTaskBundleDeclaration, myConceptBwfAntTaskDeclaration, myConceptBwfCustomMacro, myConceptBwfDependency, myConceptBwfFileSet, myConceptBwfJavaClassPath, myConceptBwfJavaDependency, myConceptBwfJavaDescriptor, myConceptBwfJavaLibrary, myConceptBwfJavaLibraryReference, myConceptBwfJavaModule, myConceptBwfJavaModuleReference, myConceptBwfMacro, myConceptBwfMacroListImport, myConceptBwfPathDeclaration, myConceptBwfPathReference, myConceptBwfProject, myConceptBwfProjectPart, myConceptBwfProjectPartStatement, myConceptBwfStatement, myConceptBwfSubTask, myConceptBwfSubTaskDependency, myConceptBwfTask, myConceptBwfTaskDependency, myConceptBwfTaskLibrary, myConceptBwfTaskLibraryDependency, myConceptBwfTaskMacroCondition, myConceptBwfTaskPart, myConceptBwfValueReference, myConceptBwfValueStatement, myConceptXmlForeignRefValue);
   }
 
   @Override
@@ -124,6 +125,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptBwfTaskLibrary;
       case LanguageConceptSwitch.BwfTaskLibraryDependency:
         return myConceptBwfTaskLibraryDependency;
+      case LanguageConceptSwitch.BwfTaskMacroCondition:
+        return myConceptBwfTaskMacroCondition;
       case LanguageConceptSwitch.BwfTaskPart:
         return myConceptBwfTaskPart;
       case LanguageConceptSwitch.BwfValueReference:
@@ -284,6 +287,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("javaLevelSource", 0x6120f2e858e3ef7cL).type(PrimitiveTypeId.STRING).origin("6998860900671418236").done();
     b.property("javaLevelTarget", 0x6120f2e858e5a64cL).type(PrimitiveTypeId.STRING).origin("6998860900671530572").done();
     b.property("compilerOptions", 0x147ef24d5e272d05L).type(PrimitiveTypeId.STRING).origin("1476884141930130693").done();
+    b.property("conditionalCompile", 0x71e3a5e19d971200L).type(PrimitiveTypeId.BOOLEAN).origin("8206585334429323776").done();
     b.aggregate("sources", 0x6e014d63c07ebd25L).target(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL).optional(false).ordered(true).multiple(false).origin("7926701909975416101").done();
     b.aggregate("resources", 0x1708d207f21b161dL).target(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL).optional(false).ordered(true).multiple(false).origin("1659807394254493213").done();
     b.aggregate("dependencies", 0x41fde5e4adce38c8L).target(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede06eL).optional(true).ordered(true).multiple(true).origin("4755209551904389320").done();
@@ -424,6 +428,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.version(3);
     b.aggregate("dependencies", 0x2670d5989d5ace5eL).target(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5ace56L).optional(true).ordered(true).multiple(true).origin("2769948622284574302").done();
     b.aggregate("subTasks", 0x2670d5989d5a6277L).target(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6275L).optional(true).ordered(true).multiple(true).origin("2769948622284546679").done();
+    b.aggregate("condition", 0x71e3a5e19d713d3bL).target(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x71e3a5e19d710d42L).optional(true).ordered(true).multiple(false).origin("8206585334426844475").done();
     b.alias("task");
     return b.create();
   }
@@ -452,6 +457,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:ed179f4d-7cf2-479d-8348-50c1fc63b96a(jetbrains.mps.build.workflow.structure)/7306485738221471031");
     b.version(3);
     b.associate("target", 0x6565da1147260538L).target(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6565da114724ce92L).optional(false).origin("7306485738221471032").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForBwfTaskMacroCondition() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.build.workflow", "BwfTaskMacroCondition", 0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x71e3a5e19d710d42L);
+    b.class_(false, false, false);
+    b.origin("r:ed179f4d-7cf2-479d-8348-50c1fc63b96a(jetbrains.mps.build.workflow.structure)/8206585334426832194");
+    b.version(3);
+    b.property("inverted", 0x71e3a5e19d71203bL).type(PrimitiveTypeId.BOOLEAN).origin("8206585334426837051").done();
+    b.associate("macro", 0x71e3a5e19d712923L).target(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5fb388b43aa25d48L).optional(false).origin("8206585334426839331").done();
+    b.alias("condition");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForBwfTaskPart() {

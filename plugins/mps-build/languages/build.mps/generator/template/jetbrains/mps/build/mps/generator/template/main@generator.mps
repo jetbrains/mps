@@ -2213,6 +2213,46 @@
                   </node>
                 </node>
               </node>
+              <node concept="17Uvod" id="77zDu6tystT" role="lGtFl">
+                <property role="2qtEX9" value="conditionalCompile" />
+                <property role="P4ACc" value="798100da-4f0a-421a-b991-71f8c50ce5d2/7389400916848073784/8206585334427747299" />
+                <node concept="3zFVjK" id="77zDu6tystU" role="3zH0cK">
+                  <node concept="3clFbS" id="77zDu6tystV" role="2VODD2">
+                    <node concept="3clFbF" id="77zDu6tyEx3" role="3cqZAp">
+                      <node concept="2OqwBi" id="77zDu6tyEx5" role="3clFbG">
+                        <node concept="2OqwBi" id="77zDu6tyEx6" role="2Oq$k0">
+                          <node concept="2OqwBi" id="77zDu6tyEx7" role="2Oq$k0">
+                            <node concept="2OqwBi" id="77zDu6tyEx8" role="2Oq$k0">
+                              <node concept="2OqwBi" id="77zDu6tyF2T" role="2Oq$k0">
+                                <node concept="30H73N" id="77zDu6tyEx9" role="2Oq$k0" />
+                                <node concept="2Xjw5R" id="77zDu6tyFm5" role="2OqNvi">
+                                  <node concept="1xMEDy" id="77zDu6tyFm7" role="1xVPHs">
+                                    <node concept="chp4Y" id="77zDu6tyFtE" role="ri$Ld">
+                                      <ref role="cht4Q" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                              <node concept="3Tsc0h" id="77zDu6tyExa" role="2OqNvi">
+                                <ref role="3TtcxE" to="3ior:5KZfyKsUqLK" resolve="plugins" />
+                              </node>
+                            </node>
+                            <node concept="v3k3i" id="77zDu6tyExb" role="2OqNvi">
+                              <node concept="chp4Y" id="77zDu6tyExc" role="v3oSu">
+                                <ref role="cht4Q" to="kdzh:KbRDZ75DBp" resolve="BuildMPSPlugin" />
+                              </node>
+                            </node>
+                          </node>
+                          <node concept="1uHKPH" id="77zDu6tyExd" role="2OqNvi" />
+                        </node>
+                        <node concept="3TrcHB" id="77zDu6tyExe" role="2OqNvi">
+                          <ref role="3TsBF5" to="kdzh:3XLirLmzCUO" resolve="useMakeTask" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>

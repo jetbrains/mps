@@ -74,6 +74,7 @@ public class CycleHelper {
       graph.add(module);
     }
     List<List<Module>> cycles = Graphs.findStronglyConnectedComponents(graph);
+    // XXX replace with graph.scc()
     Collections.reverse(cycles);
     List<SNode> cyclesToName = new ArrayList<SNode>();
     for (List<Module> cycle : cycles) {
@@ -92,7 +93,16 @@ public class CycleHelper {
       cyclesToName.add(cycleX);
       SNodeOperations.insertPrevSiblingChild(first, cycleX);
       SPropertyOperations.assign(cycleX, PROPS.noWarnings$LEpn, true);
-      SPropertyOperations.assign(cycleX, PROPS.fork$H$9A, cycle.stream().anyMatch((Module mod) -> SPropertyOperations.getBoolean(mod.getModule(), PROPS.fork$H$9A)));
+      SPropertyOperations.assign(cycleX, PROPS.fork$H$9A, Sequence.fromIterable(((Iterable<SNode>) cycleModules)).any(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return SPropertyOperations.getBoolean(it, PROPS.fork$H$9A);
+        }
+      }));
+      SPropertyOperations.assign(cycleX, PROPS.conditionalCompile$z2HS, Sequence.fromIterable(((Iterable<SNode>) cycleModules)).all(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return SPropertyOperations.getBoolean(it, PROPS.conditionalCompile$z2HS);
+        }
+      }));
 
       // build cycle sources & dependencies; trying to avoid duplication (which is not critical)
       Set<String> seenSources = new HashSet<String>();
@@ -243,6 +253,7 @@ public class CycleHelper {
     /*package*/ static final SProperty outputFolder$CFP_ = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x667edfe4171f2fb7L, "outputFolder");
     /*package*/ static final SProperty noWarnings$LEpn = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0xcdff0e1a96ccbeeL, "noWarnings");
     /*package*/ static final SProperty fork$H$9A = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x3d4a6c597112f405L, "fork");
+    /*package*/ static final SProperty conditionalCompile$z2HS = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0x71e3a5e19d971200L, "conditionalCompile");
     /*package*/ static final SProperty heapSize$LySR = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x41fde5e4adce38bbL, 0xcdff0e1a96ccbe3L, "heapSize");
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
     /*package*/ static final SProperty temporaryFolder$kyMK = MetaAdapterFactory.getProperty(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x2670d5989d5a6271L, 0x667edfe41720f53eL, "temporaryFolder");
