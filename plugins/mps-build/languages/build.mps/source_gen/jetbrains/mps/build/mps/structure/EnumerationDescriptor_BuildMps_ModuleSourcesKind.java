@@ -19,9 +19,10 @@ public class EnumerationDescriptor_BuildMps_ModuleSourcesKind extends Enumeratio
   private final EnumerationDescriptor.MemberDescriptor myMember_sources_0 = new EnumerationDescriptor.MemberDescriptor("sources", "sources", 0x3be316509db4552L, "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/4241665505353447973", "sources", "sources");
   private final EnumerationDescriptor.MemberDescriptor myMember_sources_and_tests_0 = new EnumerationDescriptor.MemberDescriptor("sources_and_tests", "sources and tests", 0x3be316509db4553L, "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/4241665505353447974", "sources and tests", "sources and tests");
   private final EnumerationDescriptor.MemberDescriptor myMember_tests_0 = new EnumerationDescriptor.MemberDescriptor("tests", "tests", 0x3be316509db455cL, "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/4241665505353447975", "tests", "tests");
+  private final EnumerationDescriptor.MemberDescriptor myMember_none_0 = new EnumerationDescriptor.MemberDescriptor("none", "no sources", 0x71fcdcb193d299abL, "r:0353b795-df17-4050-9687-ee47eeb7094f(jetbrains.mps.build.mps.structure)/8213682475664316843");
 
-  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, 0x3be316509db4552L, 0x3be316509db4553L, 0x3be316509db455cL);
-  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_sources_0, myMember_sources_and_tests_0, myMember_tests_0);
+  private final EnumerationLiteralsIndex myIndex = EnumerationLiteralsIndex.build(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x3be316509db4513L, 0x3be316509db4552L, 0x3be316509db4553L, 0x3be316509db455cL, 0x71fcdcb193d299abL);
+  private final List<EnumerationDescriptor.MemberDescriptor> myMembers = new EnumerationDescriptorBase.MembersList(myIndex, myMember_sources_0, myMember_sources_and_tests_0, myMember_tests_0, myMember_none_0);
 
   @Nullable
   @Override
@@ -48,6 +49,8 @@ public class EnumerationDescriptor_BuildMps_ModuleSourcesKind extends Enumeratio
         return myMember_sources_and_tests_0;
       case "tests":
         return myMember_tests_0;
+      case "none":
+        return myMember_none_0;
     }
     return null;
   }
