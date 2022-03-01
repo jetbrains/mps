@@ -46,6 +46,10 @@ public class NextFunctionCall implements FunctionCall {
     return myReceiverType;
   }
   @Override
+  public boolean usesReceiver() {
+    return true;
+  }
+  @Override
   public FunctionDeclaration getFunctionDescriptor() {
     return KotlinFunctionDeclaration.of(SLinkOperations.getTarget(myForStatement, LINKS.nextFunction$fFHf));
   }

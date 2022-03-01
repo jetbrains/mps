@@ -60,6 +60,10 @@ public class NodeFunctionCall implements FunctionCall {
     return receiverType;
   }
   @Override
+  public boolean usesReceiver() {
+    return IFunctionCallLike__BehaviorDescriptor.getReceiver_id5D4bOjrrgiZ.invoke(myFunctionCall) != null;
+  }
+  @Override
   public FunctionDeclaration getFunctionDescriptor() {
     return IFunctionCallLike__BehaviorDescriptor.getFunctionDescriptor_id26mUjU3xhgD.invoke(myFunctionCall);
   }

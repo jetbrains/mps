@@ -889,9 +889,10 @@
       <node id="8939835910402428093" at="37,45,38,65" concept="9" />
       <node id="8480058639847816941" at="41,41,42,35" concept="9" />
       <node id="8480058639847821618" at="45,34,46,26" concept="9" />
-      <node id="8480058639847836058" at="49,54,50,108" concept="9" />
-      <node id="8480058639847810714" at="54,0,55,0" concept="12" trace="OperatorFunctionModifier$Pf" />
-      <node id="8480058639847810714" at="58,0,59,0" concept="12" trace="nextFunction$fFHf" />
+      <node id="217340314673870946" at="49,33,50,16" concept="9" />
+      <node id="8480058639847836058" at="53,54,54,108" concept="9" />
+      <node id="8480058639847810714" at="58,0,59,0" concept="12" trace="OperatorFunctionModifier$Pf" />
+      <node id="8480058639847810714" at="62,0,63,0" concept="12" trace="nextFunction$fFHf" />
       <node id="8480058639847819263" at="20,0,24,0" concept="2" trace="NextFunctionCall#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="8480058639847811105" at="24,0,28,0" concept="7" trace="getFunctionName#()Ljava/lang/String;" />
       <node id="8480058639847811113" at="28,0,32,0" concept="7" trace="getModifierFilter#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
@@ -899,14 +900,16 @@
       <node id="8939835910402426029" at="36,0,40,0" concept="7" trace="getTypeArguments#()Ljava/lang/Iterable;" />
       <node id="8480058639847811126" at="40,0,44,0" concept="7" trace="getTargetLink#()Lorg/jetbrains/mps/openapi/language/SReferenceLink;" />
       <node id="8480058639847811134" at="44,0,48,0" concept="7" trace="getReceiverType#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="8480058639847811140" at="48,0,52,0" concept="7" trace="getFunctionDescriptor#()Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
+      <node id="217340314673869394" at="48,0,52,0" concept="7" trace="usesReceiver#()Z" />
+      <node id="8480058639847811140" at="52,0,56,0" concept="7" trace="getFunctionDescriptor#()Ljetbrains/mps/kotlin/runtime/declaration/FunctionDeclaration;" />
       <scope id="8480058639847811109" at="25,35,26,18" />
       <scope id="8480058639847811117" at="29,47,30,48" />
       <scope id="8480058639847811124" at="33,41,34,65" />
       <scope id="8939835910402426034" at="37,45,38,65" />
       <scope id="8480058639847811130" at="41,41,42,35" />
       <scope id="8480058639847811138" at="45,34,46,26" />
-      <scope id="8480058639847811144" at="49,54,50,108" />
+      <scope id="217340314673869398" at="49,33,50,16" />
+      <scope id="8480058639847811144" at="53,54,54,108" />
       <scope id="8480058639847819267" at="20,67,22,34" />
       <scope id="8480058639847819263" at="20,0,24,0">
         <var name="forStatement" id="8480058639847834283" />
@@ -918,10 +921,11 @@
       <scope id="8939835910402426029" at="36,0,40,0" />
       <scope id="8480058639847811126" at="40,0,44,0" />
       <scope id="8480058639847811134" at="44,0,48,0" />
-      <scope id="8480058639847811140" at="48,0,52,0" />
-      <unit id="8480058639847810714" at="53,0,56,0" name="jetbrains.mps.kotlin.typesystem.NextFunctionCall$CONCEPTS" />
-      <unit id="8480058639847810714" at="57,0,60,0" name="jetbrains.mps.kotlin.typesystem.NextFunctionCall$LINKS" />
-      <unit id="8480058639847810714" at="17,0,61,0" name="jetbrains.mps.kotlin.typesystem.NextFunctionCall" />
+      <scope id="217340314673869394" at="48,0,52,0" />
+      <scope id="8480058639847811140" at="52,0,56,0" />
+      <unit id="8480058639847810714" at="57,0,60,0" name="jetbrains.mps.kotlin.typesystem.NextFunctionCall$CONCEPTS" />
+      <unit id="8480058639847810714" at="61,0,64,0" name="jetbrains.mps.kotlin.typesystem.NextFunctionCall$LINKS" />
+      <unit id="8480058639847810714" at="17,0,65,0" name="jetbrains.mps.kotlin.typesystem.NextFunctionCall" />
     </file>
   </root>
 </debug-info>

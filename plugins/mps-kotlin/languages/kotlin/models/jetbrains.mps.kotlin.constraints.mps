@@ -783,8 +783,8 @@
   </node>
   <node concept="1M2fIO" id="4S7WpD150Cs">
     <property role="3GE5qa" value="expression.literal.string" />
-    <ref role="1MND4H" to="hcm8:1502VugFMzt" resolve="StringLiteralRaw" />
     <ref role="1M2myG" to="hcm8:4S7WpD150Cp" resolve="IStringLiteralContent" />
+    <ref role="1MND4H" to="hcm8:1502VugFMzt" resolve="StringLiteralRaw" />
   </node>
   <node concept="1M2fIO" id="4Nah4_QjYGN">
     <property role="3GE5qa" value="expression.reference" />
@@ -2000,13 +2000,7 @@
                   <node concept="2ShNRf" id="auY8gv4$Nx" role="3cqZAk">
                     <node concept="1pGfFk" id="auY8gv4$Ny" role="2ShVmc">
                       <property role="373rjd" value="true" />
-                      <ref role="37wK5l" to="6xgk:6Kqn2fZxA8P" resolve="HidingByNameScope" />
-                      <node concept="35c_gC" id="auY8gv4$Nz" role="37wK5m">
-                        <ref role="35c_gD" to="hcm8:3r3AWMM3Orf" resolve="IFunctionIdentifier" />
-                      </node>
-                      <node concept="35c_gC" id="auY8gv4$N$" role="37wK5m">
-                        <ref role="35c_gD" to="hcm8:3r3AWMM3Orf" resolve="IFunctionIdentifier" />
-                      </node>
+                      <ref role="37wK5l" to="o8zo:7ipADkTevLv" resolve="CompositeScope" />
                       <node concept="37vLTw" id="auY8gv4$N_" role="37wK5m">
                         <ref role="3cqZAo" node="7ubb0gUi92x" resolve="scope" />
                       </node>
@@ -3229,6 +3223,54 @@
                       <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
                     </node>
                   </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="5g3vQLKcmYZ">
+    <property role="3GE5qa" value="declaration.class.enum" />
+    <ref role="1M2myG" to="hcm8:2yYXHtl6JkN" resolve="EnumEntry" />
+    <node concept="1N5Pfh" id="5g3vQLKcn5Y" role="1Mr941">
+      <ref role="1N5Vy1" to="hcm8:5g3vQLKcgVQ" resolve="constructor" />
+      <node concept="3dgokm" id="5g3vQLKcnj8" role="1N6uqs">
+        <node concept="3clFbS" id="5g3vQLKcnja" role="2VODD2">
+          <node concept="3cpWs8" id="5b2DnJ7jwOj" role="3cqZAp">
+            <node concept="3cpWsn" id="5b2DnJ7jwOk" role="3cpWs9">
+              <property role="TrG5h" value="constructors" />
+              <node concept="A3Dl8" id="5b2DnJ7jwIr" role="1tU5fm">
+                <node concept="3Tqbb2" id="5b2DnJ7jwIu" role="A3Ik2">
+                  <ref role="ehGHo" to="hcm8:71DDynMG2ea" resolve="IConstructorDeclaration" />
+                </node>
+              </node>
+              <node concept="2OqwBi" id="5b2DnJ7jwOl" role="33vP2m">
+                <node concept="2OqwBi" id="5g3vQLKcoyC" role="2Oq$k0">
+                  <node concept="2rP1CM" id="5g3vQLKco66" role="2Oq$k0" />
+                  <node concept="2Xjw5R" id="5g3vQLKcoLX" role="2OqNvi">
+                    <node concept="1xMEDy" id="5g3vQLKcoLZ" role="1xVPHs">
+                      <node concept="chp4Y" id="5g3vQLKcpjt" role="ri$Ld">
+                        <ref role="cht4Q" to="hcm8:2yYXHtlhVmE" resolve="EnumClassDeclaration" />
+                      </node>
+                    </node>
+                    <node concept="1xIGOp" id="5g3vQLKcpsw" role="1xVPHs" />
+                  </node>
+                </node>
+                <node concept="2qgKlT" id="5b2DnJ7jwOr" role="2OqNvi">
+                  <ref role="37wK5l" to="hez:2NtWm0y9fFa" resolve="getConstructors" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3cpWs6" id="5b2DnJ7jxkT" role="3cqZAp">
+            <node concept="2ShNRf" id="5b2DnJ7jxn0" role="3cqZAk">
+              <node concept="1pGfFk" id="5b2DnJ7jxJm" role="2ShVmc">
+                <property role="373rjd" value="true" />
+                <ref role="37wK5l" to="6xgk:7lHSllLpTWM" resolve="NamedElementsScope" />
+                <node concept="37vLTw" id="5b2DnJ7jy0H" role="37wK5m">
+                  <ref role="3cqZAo" node="5b2DnJ7jwOk" resolve="constructors" />
                 </node>
               </node>
             </node>

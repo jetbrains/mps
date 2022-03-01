@@ -17,6 +17,11 @@ public interface FunctionCall {
   Iterable<SNode> getTypeArguments();
   SReferenceLink getTargetLink();
   SNode getReceiverType();
+  /**
+   * Returns true if the call has a receiver. Might be true even if receiverType is
+   * null in case of typesystem issues.
+   */
+  boolean usesReceiver();
   FunctionDeclaration getFunctionDescriptor();
 
 }

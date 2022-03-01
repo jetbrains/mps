@@ -1994,6 +1994,14 @@
     <node concept="PrWs8" id="auY8gv0MWK" role="PzmwI">
       <ref role="PrY4T" node="2mD64u3yQho" resolve="IInferencePart" />
     </node>
+    <node concept="PrWs8" id="7iropoGK2pY" role="PzmwI">
+      <ref role="PrY4T" node="5D4bOjrr8CG" resolve="IFunctionCallLike" />
+    </node>
+    <node concept="1TJgyj" id="7iropoGK1tY" role="1TKVEi">
+      <property role="IQ2ns" value="8402416827413567358" />
+      <property role="20kJfa" value="deconstructingOperator" />
+      <ref role="20lvS9" node="2Dtd0_QziWF" resolve="IFunctionDeclaration" />
+    </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JlR">
     <property role="EcuMT" value="2936055411798373751" />
