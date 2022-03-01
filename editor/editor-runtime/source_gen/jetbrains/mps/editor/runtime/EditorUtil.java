@@ -90,11 +90,12 @@ public class EditorUtil {
     button.setAction(new AbstractAction("...") {
       @Override
       public void actionPerformed(ActionEvent e) {
-        final VirtualFile chosenFile = FileChooser.chooseFile(descriptor, ideaProject, oldVFile);
+        VirtualFile chosenFile = FileChooser.chooseFile(descriptor, ideaProject, oldVFile);
         if (chosenFile == null) {
           return;
         }
 
+        // FIXME why do we go from VF to IFile to perform a copy, while we can stick to VF?
         final Wrappers._T<IFile> result = new Wrappers._T<IFile>((mpsProject.getFileSystem().canConvert(chosenFile) ? mpsProject.getFileSystem().fromVirtualFile(chosenFile) : null));
         if (result.value == null) {
           return;
@@ -108,22 +109,15 @@ public class EditorUtil {
             return;
           }
 
-          final Wrappers._boolean success = new Wrappers._boolean(true);
-          context.getRepository().getModelAccess().runWriteAction(() -> {
-            IFile copiedFile = moduleDir[0].findChild("icons").findChild(chosenFile.getName());
-            if (copiedFile.exists()) {
-              String rewriteMessage = String.format("A file named %s already exists in the target folder.%nDo you want to replace it?", chosenFile.getName());
-              if (Messages.showYesNoDialog(button, rewriteMessage, "Warning", Messages.getWarningIcon()) != Messages.YES) {
-                success.value = false;
-                return;
-              }
+          final IFile copiedFile = moduleDir[0].findChild("icons").findChild(chosenFile.getName());
+          if (copiedFile.exists()) {
+            String rewriteMessage = String.format("A file named %s already exists in the target folder.%nDo you want to replace it?", chosenFile.getName());
+            if (Messages.showYesNoDialog(button, rewriteMessage, "Warning", Messages.getWarningIcon()) != Messages.YES) {
+              return;
             }
-            IFileUtil.copyFileContent(result.value, copiedFile);
-            result.value = copiedFile;
-          });
-          if (!(success.value)) {
-            return;
           }
+          context.getRepository().getModelAccess().runWriteAction(() -> IFileUtil.copyFileContent(result.value, copiedFile));
+          result.value = copiedFile;
         }
 
         context.getRepository().getModelAccess().executeCommand(() -> SNodeAccessUtil.setProperty(node, property, shrinkPath.invoke(result.value.getPath())));
