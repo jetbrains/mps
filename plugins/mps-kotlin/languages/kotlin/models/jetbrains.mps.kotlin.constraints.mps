@@ -783,7 +783,7 @@
   </node>
   <node concept="1M2fIO" id="4S7WpD150Cs">
     <property role="3GE5qa" value="expression.literal.string" />
-    <ref role="1M2myG" to="hcm8:4S7WpD150Cp" resolve="IStringLiteralContent" />
+    <ref role="1M2myG" to="hcm8:4S7WpD150Cp" resolve="IStringLiteralPart" />
     <ref role="1MND4H" to="hcm8:1502VugFMzt" resolve="StringLiteralRaw" />
   </node>
   <node concept="1M2fIO" id="4Nah4_QjYGN">
@@ -3283,7 +3283,7 @@
     <property role="3GE5qa" value="expression.function.call.dataclass" />
     <ref role="1M2myG" to="hcm8:5Ms3qK7YHkN" resolve="ComponentFunctionCall" />
     <node concept="1N5Pfh" id="52XfVvNZQmt" role="1Mr941">
-      <ref role="1N5Vy1" to="hcm8:5Ms3qK7YHQa" resolve="constructor" />
+      <ref role="1N5Vy1" to="hcm8:5Ms3qK7YHQa" resolve="classParameter" />
       <node concept="3dgokm" id="52XfVvNZQGW" role="1N6uqs">
         <node concept="3clFbS" id="52XfVvNZQGY" role="2VODD2">
           <node concept="3cpWs8" id="52XfVvNZS2h" role="3cqZAp">

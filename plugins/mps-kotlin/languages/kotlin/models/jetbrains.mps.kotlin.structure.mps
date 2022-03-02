@@ -365,7 +365,7 @@
     <property role="34LRSv" value="${}" />
     <property role="R4oN_" value="string expression" />
     <property role="3GE5qa" value="expression.literal.string" />
-    <ref role="1TJDcQ" node="4S7WpD150Cp" resolve="IStringLiteralContent" />
+    <ref role="1TJDcQ" node="4S7WpD150Cp" resolve="IStringLiteralPart" />
     <node concept="1TJgyj" id="2yYXHtl6Jpu" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798373982" />
       <property role="20kJfa" value="expression" />
@@ -1128,13 +1128,16 @@
       <property role="20kJfa" value="content___" />
       <property role="20lbJX" value="fLJekj6/_1__n" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <ref role="20lvS9" node="4S7WpD150Cp" resolve="IStringLiteralContent" />
+      <ref role="20lvS9" node="4S7WpD150Cp" resolve="IStringLiteralPart" />
     </node>
     <node concept="PrWs8" id="4gvOB2uWefo" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
     </node>
     <node concept="PrWs8" id="3cpjc8KvRML" role="PzmwI">
       <ref role="PrY4T" node="3cpjc8KvMTX" resolve="IStringLiteral" />
+    </node>
+    <node concept="asaX9" id="5yEpxXLJ2jO" role="lGtFl">
+      <property role="YLQ7P" value="merged into StringLiteral" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JhD">
@@ -1524,10 +1527,20 @@
     <property role="R4oN_" value="string literal" />
     <node concept="1TJgyj" id="2yYXHtl6JwN" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798374451" />
-      <property role="20kJfa" value="content" />
-      <property role="20lbJX" value="fLJekj6/_1__n" />
+      <property role="20kJfa" value="_content" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <ref role="20lvS9" node="4S7WpD150Cp" resolve="IStringLiteralContent" />
+      <ref role="20lvS9" node="4S7WpD150Cp" resolve="IStringLiteralPart" />
+      <node concept="asaX9" id="5yEpxXL_wKK" role="lGtFl">
+        <property role="YLQ7P" value="merged into first elements of lines" />
+      </node>
+    </node>
+    <node concept="1TJgyj" id="5yEpxXL_wP1" role="1TKVEi">
+      <property role="IQ2ns" value="6389031306614148417" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="lines" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="5yEpxXL_wWK" resolve="StringLiteralLine" />
     </node>
     <node concept="PrWs8" id="4gvOB2uWefk" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
@@ -2563,7 +2576,7 @@
     <property role="3GE5qa" value="expression.literal.string" />
     <property role="TrG5h" value="StringLiteralRaw" />
     <property role="R4oN_" value="string literal raw" />
-    <ref role="1TJDcQ" node="4S7WpD150Cp" resolve="IStringLiteralContent" />
+    <ref role="1TJDcQ" node="4S7WpD150Cp" resolve="IStringLiteralPart" />
     <node concept="1TJgyi" id="1502VugFMzu" role="1TKVEl">
       <property role="IQ2nx" value="1243006380188575966" />
       <property role="TrG5h" value="content" />
@@ -2594,10 +2607,10 @@
     <property role="3F6X1D" value="5622728304613164797" />
     <property role="3GE5qa" value="expression.literal.string" />
     <property role="TrG5h" value="kotlinString" />
-    <property role="FLfZY" value="[^$]*" />
+    <property role="FLfZY" value="([^$]|\\$)*" />
   </node>
   <node concept="1TIwiD" id="4S7WpD150Cp">
-    <property role="TrG5h" value="IStringLiteralContent" />
+    <property role="TrG5h" value="IStringLiteralPart" />
     <property role="3GE5qa" value="expression.literal.string" />
     <property role="EcuMT" value="2936055411798373494" />
     <property role="R5$K7" value="true" />
@@ -4020,7 +4033,7 @@
     <property role="EcuMT" value="6673223780375647539" />
     <property role="3GE5qa" value="expression.function.call.dataclass" />
     <property role="TrG5h" value="ComponentFunctionCall" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5Ms3qK7YHQa" role="1TKVEi">
       <property role="IQ2ns" value="6673223780375649674" />
       <property role="20kJfa" value="classParameter" />
@@ -4038,7 +4051,7 @@
     <property role="EcuMT" value="5399479805055080300" />
     <property role="3GE5qa" value="expression.function.call.dataclass" />
     <property role="TrG5h" value="CopyFunctionCall" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="4FIN$pCd3r4" role="PzmwI">
       <ref role="PrY4T" node="5H$PF0dZ_iR" resolve="IRegularFunctionCall" />
     </node>
@@ -4053,6 +4066,19 @@
       <property role="20kJfa" value="constructor" />
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="2yYXHtl6Jgo" resolve="PrimaryConstructor" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5yEpxXL_wWK">
+    <property role="EcuMT" value="6389031306614148912" />
+    <property role="3GE5qa" value="expression.literal.string" />
+    <property role="TrG5h" value="StringLiteralLine" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="5yEpxXL_xOP" role="1TKVEi">
+      <property role="IQ2ns" value="6389031306614152501" />
+      <property role="20kJfa" value="parts" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <ref role="20lvS9" node="4S7WpD150Cp" resolve="IStringLiteralPart" />
     </node>
   </node>
 </model>

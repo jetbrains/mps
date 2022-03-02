@@ -2415,7 +2415,7 @@
       </node>
     </node>
     <node concept="2AHcQZ" id="5g3vQLJvg5G" role="2AJF6D">
-      <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
     </node>
   </node>
   <node concept="312cEu" id="3lDDPlnaJYk">
