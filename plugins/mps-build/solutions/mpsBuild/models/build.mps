@@ -51367,6 +51367,11 @@
         <node concept="2EVzJI" id="463LxYcvAik" role="2EVzJD">
           <ref role="2EVzJJ" node="Ye$g8PO9xV" resolve="jetbrains.mps.kotlin.stdlib" />
         </node>
+        <node concept="1SiIV0" id="5yEpxXMya1h" role="3bR37C">
+          <node concept="3bR9La" id="5yEpxXMya1i" role="1SiIV1">
+            <ref role="3bR37D" node="1TaHNgiIbJ$" resolve="jetbrains.mps.ide.editor" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtD" id="Ye$g8PO8TM" role="2G$12L">
         <property role="BnDLt" value="true" />
