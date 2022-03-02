@@ -10554,6 +10554,7 @@
         <ref role="1k5W1q" node="54Gi6NCr21R" resolve="Keyword" />
       </node>
       <node concept="3F0A7n" id="5N0i2C1cib1" role="3EZMnx">
+        <property role="1cu_pB" value="gtguBGO/firstEditableCell" />
         <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
         <node concept="ljvvj" id="5N0i2C1cib2" role="3F10Kt">
           <property role="VOm3f" value="true" />
