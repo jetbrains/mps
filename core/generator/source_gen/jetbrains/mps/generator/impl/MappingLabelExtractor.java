@@ -70,7 +70,7 @@ public class MappingLabelExtractor {
       InputKeyIdentity k1 = identify(SLinkOperations.getTarget(lr, LINKS.input1$dqcC));
       InputKeyIdentity k2 = identify(SLinkOperations.getTarget(lr, LINKS.input2$dvP0));
       for (SNode o : ListSequence.fromList(SLinkOperations.getChildren(lr, LINKS.output$dhZ5))) {
-        rv.addRecord(l, k1, k2, o);
+        rv.addRecord(l, k1, k2, SLinkOperations.getTarget(o, LINKS.node$JBUG));
       }
     }
     return rv;
