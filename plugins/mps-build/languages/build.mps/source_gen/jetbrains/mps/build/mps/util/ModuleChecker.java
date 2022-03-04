@@ -23,12 +23,12 @@ import java.util.ArrayList;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import java.util.Set;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.impl.GenPlanTranslator;
 import jetbrains.mps.generator.impl.plan.DependencyCollectorPlanBuilder;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import java.util.Set;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.project.structure.modules.Dependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
@@ -276,7 +276,8 @@ public final class ModuleChecker {
       }
     }
 
-    for (SModuleReference module : descriptor.getExportedLanguages()) {
+    final Set<SModuleReference> exportedLanguages = descriptor.getExportedLanguages();
+    for (SModuleReference module : exportedLanguages) {
       final SNode resolved = myVisibleModules.resolveLanguage(module);
       if (resolved == null) {
         report("cannot find exported languages in dependencies: " + module.getModuleName());
@@ -360,19 +361,25 @@ public final class ModuleChecker {
           DependencyCollectorPlanBuilder dcpb = new DependencyCollectorPlanBuilder();
           gpt.feed(dcpb);
           for (SLanguage reql : dcpb.getRequiredLanguages()) {
+            if (exportedLanguages.contains(reql.getSourceModuleReference())) {
+              // already handled the language among exported explicitly
+              continue;
+            }
             final SNode resolved = myVisibleModules.resolve(reql);
             if (resolved == null) {
               report(String.format("cannot find language `%s` required by a devkit's associated plan", reql.getQualifiedName()));
               continue;
             }
-            boolean alreadyExported = Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(devKit, LINKS.exports$Qvxv), CONCEPTS.BuildMps_DevKitExportLanguage$EV)).any(new IWhereFilter<SNode>() {
+            SNode ul = Sequence.fromIterable(SNodeOperations.ofConcept(prevExp, CONCEPTS.BuildMps_DevKitExportLanguage$EV)).findFirst(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
                 return SLinkOperations.getTarget(it, LINKS.language$qqxl) == resolved;
               }
             });
-            if (!(alreadyExported)) {
-              SNode expl = SLinkOperations.addNewChild(devKit, LINKS.exports$Qvxv, CONCEPTS.BuildMps_DevKitExportLanguage$EV);
-              SLinkOperations.setTarget(expl, LINKS.language$qqxl, resolved);
+            if (ul == null) {
+              ul = SLinkOperations.addNewChild(devKit, LINKS.exports$Qvxv, CONCEPTS.BuildMps_DevKitExportLanguage$EV);
+              SLinkOperations.setTarget(ul, LINKS.language$qqxl, resolved);
+            } else {
+              ListSequence.fromList(prevExp).removeElement(ul);
             }
           }
           // FIXME dcpb.requiredGenerators are not taken into account, shall address that once merge _AM and _Module and use module.dependencies instead of devkit.exports
