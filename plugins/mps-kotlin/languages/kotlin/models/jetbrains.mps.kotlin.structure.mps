@@ -989,10 +989,11 @@
     <node concept="1TJgyj" id="4gvOB2uNEqT" role="1TKVEi">
       <property role="IQ2ns" value="4908873499999643321" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <property role="20kJfa" value="inheritance" />
+      <property role="20kJfa" value="inheritance_" />
       <ref role="20lvS9" node="2yYXHtl6JjL" resolve="IInheritanceModifier" />
-      <node concept="t5JxF" id="2AtO9a5slV$" role="lGtFl">
-        <property role="t5JxN" value="no use of IInheritable as here this specifier is optional (can be standalone)" />
+      <node concept="t5JxF" id="2AtO9a5slV$" role="lGtFl" />
+      <node concept="asaX9" id="11vq$BtY4kY" role="lGtFl">
+        <property role="YLQ7P" value="replaced with IInheritable" />
       </node>
     </node>
     <node concept="1TJgyj" id="2yYXHtl$9A6" role="1TKVEi">
@@ -1021,6 +1022,9 @@
     </node>
     <node concept="PrWs8" id="2yYXHtl$9Ak" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl$9A0" resolve="IFunctionParameters" />
+    </node>
+    <node concept="PrWs8" id="11vq$BtY1$O" role="PzmwI">
+      <ref role="PrY4T" node="5dNsAxXOVNq" resolve="IInheritable" />
     </node>
     <node concept="PrWs8" id="1502Vugz7Y8" role="PzmwI">
       <ref role="PrY4T" node="1502Vugz7Wy" resolve="IWithReceiver" />

@@ -259,10 +259,6 @@
       </concept>
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS" />
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
-      <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
-        <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
-      </concept>
-      <concept id="6677504323281689838" name="jetbrains.mps.lang.smodel.structure.SConceptType" flags="in" index="3bZ5Sz" />
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
@@ -1839,15 +1835,7 @@
           </node>
           <node concept="1bDJIP" id="5lA_K0zl_v0" role="lcghm">
             <ref role="1rvKf6" node="5lA_K0zkqa3" resolve="inheritance" />
-            <node concept="2OqwBi" id="5lA_K0zl_Nn" role="1ryhcI">
-              <node concept="117lpO" id="5lA_K0zl_vX" role="2Oq$k0" />
-              <node concept="3TrEf2" id="5lA_K0zlAj9" role="2OqNvi">
-                <ref role="3Tt5mk" to="hcm8:4gvOB2uNEqT" resolve="inheritance" />
-              </node>
-            </node>
-            <node concept="35c_gC" id="6ov$ndQU1YK" role="1ryhcI">
-              <ref role="35c_gD" to="hcm8:2yYXHtl6JjN" resolve="FinalInheritanceModifier" />
-            </node>
+            <node concept="117lpO" id="5lA_K0zl_vX" role="1ryhcI" />
           </node>
         </node>
         <node concept="3clFbH" id="5lA_K0zlANe" role="3cqZAp" />
@@ -1942,13 +1930,32 @@
             <node concept="117lpO" id="5lA_K0zlZ_q" role="1ryhcI" />
           </node>
         </node>
-        <node concept="lc7rE" id="1yTI8p9rvpc" role="3cqZAp">
-          <node concept="la8eA" id="1yTI8p9rvpd" role="lcghm">
-            <property role="lacIc" value=" " />
+        <node concept="3clFbJ" id="11vq$BtTCOa" role="3cqZAp">
+          <node concept="3clFbS" id="11vq$BtTCOc" role="3clFbx">
+            <node concept="lc7rE" id="1yTI8p9rvpc" role="3cqZAp">
+              <node concept="la8eA" id="1yTI8p9rvpd" role="lcghm">
+                <property role="lacIc" value=" " />
+              </node>
+              <node concept="1bDJIP" id="1yTI8p9rLEf" role="lcghm">
+                <ref role="1rvKf6" node="1yTI8p9rKNr" resolve="functionStatements" />
+                <node concept="117lpO" id="1yTI8p9rLHQ" role="1ryhcI" />
+              </node>
+            </node>
           </node>
-          <node concept="1bDJIP" id="1yTI8p9rLEf" role="lcghm">
-            <ref role="1rvKf6" node="1yTI8p9rKNr" resolve="functionStatements" />
-            <node concept="117lpO" id="1yTI8p9rLHQ" role="1ryhcI" />
+          <node concept="3fqX7Q" id="11vq$BtTGuz" role="3clFbw">
+            <node concept="2OqwBi" id="11vq$BtTGu_" role="3fr31v">
+              <node concept="2OqwBi" id="11vq$BtTGuA" role="2Oq$k0">
+                <node concept="117lpO" id="11vq$BtTGuB" role="2Oq$k0" />
+                <node concept="3TrEf2" id="11vq$BtTGuC" role="2OqNvi">
+                  <ref role="3Tt5mk" to="hcm8:5dNsAxXOVNr" resolve="inheritance" />
+                </node>
+              </node>
+              <node concept="1mIQ4w" id="11vq$BtTGuD" role="2OqNvi">
+                <node concept="chp4Y" id="11vq$BtTGuE" role="cj9EA">
+                  <ref role="cht4Q" to="hcm8:2yYXHtl6JjM" resolve="AbstractInheritanceModifier" />
+                </node>
+              </node>
+            </node>
           </node>
         </node>
       </node>
@@ -2136,9 +2143,6 @@
           <node concept="1bDJIP" id="5lA_K0zmlI$" role="lcghm">
             <ref role="1rvKf6" node="5lA_K0zkMA5" resolve="classHeader" />
             <node concept="117lpO" id="5N0i2C192NH" role="1ryhcI" />
-            <node concept="35c_gC" id="6ov$ndQU3j8" role="1ryhcI">
-              <ref role="35c_gD" to="hcm8:2yYXHtl6JjM" resolve="AbstractInheritanceModifier" />
-            </node>
           </node>
           <node concept="1bDJIP" id="5N0i2C193bM" role="lcghm">
             <ref role="1rvKf6" node="5N0i2C18Y1k" resolve="classConstraints" />
@@ -4110,9 +4114,6 @@
           <node concept="1bDJIP" id="5lA_K0zkPb3" role="lcghm">
             <ref role="1rvKf6" node="5lA_K0zkMA5" resolve="classHeader" />
             <node concept="117lpO" id="5lA_K0zkPbC" role="1ryhcI" />
-            <node concept="35c_gC" id="6ov$ndQU35r" role="1ryhcI">
-              <ref role="35c_gD" to="hcm8:2yYXHtl6JjN" resolve="FinalInheritanceModifier" />
-            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="5H$PF0dQwKu" role="3cqZAp">
@@ -4418,9 +4419,6 @@
           <node concept="1bDJIP" id="5lA_K0zkDeg" role="lcghm">
             <ref role="1rvKf6" node="5lA_K0zkMA5" resolve="classHeader" />
             <node concept="117lpO" id="5lA_K0zkDeh" role="1ryhcI" />
-            <node concept="35c_gC" id="6ov$ndQU3fm" role="1ryhcI">
-              <ref role="35c_gD" to="hcm8:2yYXHtl6JjN" resolve="FinalInheritanceModifier" />
-            </node>
           </node>
         </node>
         <node concept="3clFbJ" id="11vq$BtKGYs" role="3cqZAp">
@@ -4617,15 +4615,7 @@
           </node>
           <node concept="1bDJIP" id="5lA_K0znp$Q" role="lcghm">
             <ref role="1rvKf6" node="5lA_K0zkqa3" resolve="inheritance" />
-            <node concept="2OqwBi" id="5lA_K0znpN1" role="1ryhcI">
-              <node concept="117lpO" id="5lA_K0znp_N" role="2Oq$k0" />
-              <node concept="3TrEf2" id="5lA_K0znq5X" role="2OqNvi">
-                <ref role="3Tt5mk" to="hcm8:5dNsAxXOVNr" resolve="inheritance" />
-              </node>
-            </node>
-            <node concept="35c_gC" id="6ov$ndQU2Qn" role="1ryhcI">
-              <ref role="35c_gD" to="hcm8:2yYXHtl6JjN" resolve="FinalInheritanceModifier" />
-            </node>
+            <node concept="117lpO" id="5lA_K0znp_N" role="1ryhcI" />
           </node>
         </node>
         <node concept="lc7rE" id="5lA_K0zndtc" role="3cqZAp">
@@ -5337,23 +5327,50 @@
       <property role="TrG5h" value="inheritance" />
       <node concept="3cqZAl" id="5lA_K0zkqa4" role="3clF45" />
       <node concept="3clFbS" id="5lA_K0zkqa5" role="3clF47">
+        <node concept="3cpWs8" id="7iropoGJoAe" role="3cqZAp">
+          <node concept="3cpWsn" id="7iropoGJoAf" role="3cpWs9">
+            <property role="TrG5h" value="inheritance" />
+            <node concept="2OqwBi" id="7iropoGJpkM" role="33vP2m">
+              <node concept="37vLTw" id="7iropoGJoAg" role="2Oq$k0">
+                <ref role="3cqZAo" node="5lA_K0zkqc5" resolve="inheritable" />
+              </node>
+              <node concept="3TrEf2" id="7iropoGJpuo" role="2OqNvi">
+                <ref role="3Tt5mk" to="hcm8:5dNsAxXOVNr" resolve="inheritance" />
+              </node>
+            </node>
+            <node concept="3Tqbb2" id="7iropoGJp_6" role="1tU5fm">
+              <ref role="ehGHo" to="hcm8:2yYXHtl6JjL" resolve="IInheritanceModifier" />
+            </node>
+          </node>
+        </node>
         <node concept="3clFbJ" id="5lA_K0zkqdl" role="3cqZAp">
           <node concept="1Wc70l" id="5lA_K0zkqMD" role="3clFbw">
             <node concept="2OqwBi" id="5lA_K0zkqkM" role="3uHU7B">
-              <node concept="37vLTw" id="5lA_K0zkqdD" role="2Oq$k0">
-                <ref role="3cqZAo" node="5lA_K0zkqc5" resolve="inheritance" />
+              <node concept="37vLTw" id="7iropoGJoAi" role="2Oq$k0">
+                <ref role="3cqZAo" node="7iropoGJoAf" resolve="node" />
               </node>
               <node concept="3x8VRR" id="5lA_K0zkqs2" role="2OqNvi" />
             </node>
             <node concept="3fqX7Q" id="5lA_K0zi5$6" role="3uHU7w">
               <node concept="2OqwBi" id="5lA_K0zi5$7" role="3fr31v">
-                <node concept="37vLTw" id="5lA_K0zkrvU" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5lA_K0zkqc5" resolve="inheritance" />
+                <node concept="37vLTw" id="7iropoGJoAh" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7iropoGJoAf" resolve="inheritance" />
                 </node>
                 <node concept="1mIQ4w" id="5lA_K0zi5$b" role="2OqNvi">
                   <node concept="25Kdxt" id="6ov$ndQU1nv" role="cj9EA">
-                    <node concept="37vLTw" id="6ov$ndQU1oB" role="25KhWn">
-                      <ref role="3cqZAo" node="6ov$ndQU1dC" resolve="defaultConcept" />
+                    <node concept="2OqwBi" id="11vq$Buc15$" role="25KhWn">
+                      <node concept="2OqwBi" id="11vq$Buc0CA" role="2Oq$k0">
+                        <node concept="37vLTw" id="7iropoGJoAj" role="2Oq$k0">
+                          <ref role="3cqZAo" node="5lA_K0zkqc5" resolve="node" />
+                        </node>
+                        <node concept="2yIwOk" id="11vq$Buc0Sn" role="2OqNvi" />
+                      </node>
+                      <node concept="2qgKlT" id="11vq$Buc1Hm" role="2OqNvi">
+                        <ref role="37wK5l" to="hez:7uO8z1Cfao7" resolve="getDefaultInheritance" />
+                        <node concept="37vLTw" id="7iropoGJoAk" role="37wK5m">
+                          <ref role="3cqZAo" node="5lA_K0zkqc5" resolve="node" />
+                        </node>
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -5363,8 +5380,8 @@
           <node concept="3clFbS" id="5lA_K0zkqdn" role="3clFbx">
             <node concept="lc7rE" id="5lA_K0zkqvO" role="3cqZAp">
               <node concept="l9hG8" id="5lA_K0zkqwp" role="lcghm">
-                <node concept="37vLTw" id="5lA_K0zkqx8" role="lb14g">
-                  <ref role="3cqZAo" node="5lA_K0zkqc5" resolve="inheritance" />
+                <node concept="37vLTw" id="7iropoGJoAl" role="lb14g">
+                  <ref role="3cqZAo" node="7iropoGJoAf" resolve="node" />
                 </node>
               </node>
               <node concept="la8eA" id="5lA_K0zkrZS" role="lcghm">
@@ -5375,14 +5392,10 @@
         </node>
       </node>
       <node concept="37vLTG" id="5lA_K0zkqc5" role="3clF46">
-        <property role="TrG5h" value="inheritance" />
+        <property role="TrG5h" value="node" />
         <node concept="3Tqbb2" id="5lA_K0zkqcv" role="1tU5fm">
-          <ref role="ehGHo" to="hcm8:2yYXHtl6JjL" resolve="IInheritanceModifier" />
+          <ref role="ehGHo" to="hcm8:5dNsAxXOVNq" resolve="IInheritable" />
         </node>
-      </node>
-      <node concept="37vLTG" id="6ov$ndQU1dC" role="3clF46">
-        <property role="TrG5h" value="defaultConcept" />
-        <node concept="3bZ5Sz" id="6ov$ndQU1ea" role="1tU5fm" />
       </node>
     </node>
     <node concept="1bwezc" id="5lA_K0zktrr" role="1bwxVq">
@@ -5577,16 +5590,8 @@
           </node>
           <node concept="1bDJIP" id="5lA_K0zksEN" role="lcghm">
             <ref role="1rvKf6" node="5lA_K0zkqa3" resolve="inheritance" />
-            <node concept="2OqwBi" id="5lA_K0zksXc" role="1ryhcI">
-              <node concept="37vLTw" id="5lA_K0zkNrg" role="2Oq$k0">
-                <ref role="3cqZAo" node="5lA_K0zkMSO" resolve="node" />
-              </node>
-              <node concept="3TrEf2" id="5lA_K0zktqO" role="2OqNvi">
-                <ref role="3Tt5mk" to="hcm8:5dNsAxXOVNr" resolve="inheritance" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="6ov$ndQU2cl" role="1ryhcI">
-              <ref role="3cqZAo" node="6ov$ndQU2bx" resolve="defaultInheritanceConcept" />
+            <node concept="37vLTw" id="5lA_K0zkNrg" role="1ryhcI">
+              <ref role="3cqZAo" node="5lA_K0zkMSO" resolve="node" />
             </node>
           </node>
           <node concept="1bDJIP" id="5lA_K0zkumS" role="lcghm">
@@ -5688,10 +5693,6 @@
         <node concept="3Tqbb2" id="5lA_K0zkMSN" role="1tU5fm">
           <ref role="ehGHo" to="hcm8:2yYXHtlhVlH" resolve="IClassDeclaration" />
         </node>
-      </node>
-      <node concept="37vLTG" id="6ov$ndQU2bx" role="3clF46">
-        <property role="TrG5h" value="defaultInheritanceConcept" />
-        <node concept="3bZ5Sz" id="6ov$ndQU2bM" role="1tU5fm" />
       </node>
     </node>
     <node concept="1bwezc" id="5N0i2C18Y1k" role="1bwxVq">

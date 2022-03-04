@@ -1913,23 +1913,8 @@
       <node concept="PMmxH" id="6cg9X755Mc6" role="3EZMnx">
         <ref role="PMmxG" node="6cg9X74Le32" resolve="Visibility_Component" />
       </node>
-      <node concept="3F1sOY" id="4gvOB2uNEzF" role="3EZMnx">
-        <ref role="1NtTu8" to="hcm8:4gvOB2uNEqT" resolve="inheritance" />
-        <node concept="pkWqt" id="4gvOB2uNE_2" role="pqm2j">
-          <node concept="3clFbS" id="4gvOB2uNE_3" role="2VODD2">
-            <node concept="3clFbF" id="4gvOB2uNE_c" role="3cqZAp">
-              <node concept="2OqwBi" id="4gvOB2uNFNj" role="3clFbG">
-                <node concept="2OqwBi" id="4gvOB2uNEZy" role="2Oq$k0">
-                  <node concept="pncrf" id="4gvOB2uNE_b" role="2Oq$k0" />
-                  <node concept="3TrEf2" id="4gvOB2uNFDG" role="2OqNvi">
-                    <ref role="3Tt5mk" to="hcm8:4gvOB2uNEqT" resolve="inheritance" />
-                  </node>
-                </node>
-                <node concept="3x8VRR" id="4gvOB2uNG6b" role="2OqNvi" />
-              </node>
-            </node>
-          </node>
-        </node>
+      <node concept="PMmxH" id="11vq$BtY3CH" role="3EZMnx">
+        <ref role="PMmxG" node="7uO8z1Cf4Ty" resolve="IInheritable_Component" />
       </node>
       <node concept="3F0ifn" id="4gvOB2uNGxd" role="3EZMnx">
         <property role="3F0ifm" value="override" />
@@ -2008,7 +1993,7 @@
                   <node concept="2OqwBi" id="1yTI8p9ro_3" role="2Oq$k0">
                     <node concept="pncrf" id="1yTI8p9ro_4" role="2Oq$k0" />
                     <node concept="3TrEf2" id="1yTI8p9ro_5" role="2OqNvi">
-                      <ref role="3Tt5mk" to="hcm8:4gvOB2uNEqT" resolve="inheritance" />
+                      <ref role="3Tt5mk" to="hcm8:5dNsAxXOVNr" resolve="inheritance" />
                     </node>
                   </node>
                   <node concept="1mIQ4w" id="1yTI8p9ro_6" role="2OqNvi">
@@ -4438,7 +4423,7 @@
       <node concept="3F0A7n" id="1502VugFMzD" role="3EZMnx">
         <property role="1O74Pk" value="true" />
         <property role="39s7Ar" value="true" />
-        <ref role="34QXea" node="4S7WpD10MgN" resolve="InsertExpression" />
+        <ref role="34QXea" node="4S7WpD10MgN" resolve="StringLiteral_InsertExpression" />
         <ref role="1NtTu8" to="hcm8:1502VugFMzu" resolve="content" />
         <node concept="3Xmtl4" id="54Gi6NCCsQq" role="3F10Kt">
           <node concept="1wgc9g" id="54Gi6NCCsQr" role="3XvnJa">
@@ -4468,7 +4453,7 @@
                 <node concept="2OqwBi" id="5yEpxXMApLx" role="3clFbG">
                   <node concept="pncrf" id="5yEpxXMApzR" role="2Oq$k0" />
                   <node concept="2qgKlT" id="5yEpxXMAq3X" role="2OqNvi">
-                    <ref role="37wK5l" to="hez:5yEpxXMAhZ6" resolve="isLeftPunctuation" />
+                    <ref role="37wK5l" to="hez:5yEpxXMAhZ6" resolve="isPunctuationLeft" />
                   </node>
                 </node>
               </node>
@@ -15129,6 +15114,7 @@
                   </node>
                   <node concept="2qgKlT" id="7uO8z1Cffjd" role="2OqNvi">
                     <ref role="37wK5l" to="hez:7uO8z1Cfao7" resolve="getDefaultInheritance" />
+                    <node concept="0IXxy" id="11vq$BtYjNZ" role="37wK5m" />
                   </node>
                 </node>
                 <node concept="LFhST" id="7uO8z1Cfg0I" role="2OqNvi" />
@@ -15199,6 +15185,7 @@
                         </node>
                         <node concept="2qgKlT" id="7uO8z1Cfd2m" role="2OqNvi">
                           <ref role="37wK5l" to="hez:7uO8z1Cfao7" resolve="getDefaultInheritance" />
+                          <node concept="pncrf" id="11vq$BtYjjK" role="37wK5m" />
                         </node>
                       </node>
                     </node>
@@ -17812,7 +17799,7 @@
     <node concept="3EZMnI" id="5yEpxXLIXW1" role="2wV5jI">
       <node concept="3F2HdR" id="5yEpxXLH_e1" role="3EZMnx">
         <ref role="1NtTu8" to="hcm8:5yEpxXL_xOP" resolve="parts" />
-        <ref role="1ERwB7" node="13S4mXuSUbQ" resolve="forbid_Insert" />
+        <ref role="1ERwB7" node="13S4mXuSUbQ" resolve="StringLiteral_InsertLineRatherThanPart" />
         <node concept="l2Vlx" id="5yEpxXLH_e3" role="2czzBx" />
         <node concept="3F0ifn" id="5yEpxXLIWeV" role="2czzBI">
           <node concept="VPxyj" id="5yEpxXLIWsS" role="3F10Kt">

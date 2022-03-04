@@ -1915,7 +1915,7 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="c49tPrwv9n" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" />
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
     <node concept="3clFb_" id="7mJe6tmB6x4" role="jymVt">

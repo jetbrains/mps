@@ -7000,6 +7000,75 @@
         </node>
       </node>
     </node>
+    <node concept="13i0hz" id="11vq$BtTLxN" role="13h7CS">
+      <property role="TrG5h" value="getDefaultInheritance" />
+      <property role="2Ki8OM" value="true" />
+      <ref role="13i0hy" node="7uO8z1Cfao7" resolve="getDefaultInheritance" />
+      <node concept="37vLTG" id="11vq$BtYgtJ" role="3clF46">
+        <property role="TrG5h" value="contextNode" />
+        <node concept="3Tqbb2" id="11vq$BtYgtK" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="11vq$BtTLxQ" role="3clF47">
+        <node concept="3cpWs8" id="11vq$BtTV5V" role="3cqZAp">
+          <node concept="3cpWsn" id="11vq$BtTV5W" role="3cpWs9">
+            <property role="TrG5h" value="containingClass" />
+            <node concept="3Tqbb2" id="11vq$BtTUmg" role="1tU5fm">
+              <ref role="ehGHo" to="hcm8:2Aaqzls4g9O" resolve="IClassLike" />
+            </node>
+            <node concept="2OqwBi" id="11vq$BtTV5X" role="33vP2m">
+              <node concept="37vLTw" id="11vq$BtTV5Y" role="2Oq$k0">
+                <ref role="3cqZAo" node="11vq$BtYgtJ" resolve="contextNode" />
+              </node>
+              <node concept="2Xjw5R" id="11vq$BtTV5Z" role="2OqNvi">
+                <node concept="1xMEDy" id="11vq$BtTV60" role="1xVPHs">
+                  <node concept="chp4Y" id="11vq$BtTV61" role="ri$Ld">
+                    <ref role="cht4Q" to="hcm8:2Aaqzls4g9O" resolve="IClassLike" />
+                  </node>
+                </node>
+                <node concept="1xIGOp" id="11vq$BtTV62" role="1xVPHs" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="Jncv_" id="11vq$BtTVtP" role="3cqZAp">
+          <ref role="JncvD" to="hcm8:5dNsAxXOVNq" resolve="IInheritable" />
+          <node concept="37vLTw" id="11vq$BtTVAn" role="JncvB">
+            <ref role="3cqZAo" node="11vq$BtTV5W" resolve="containingClass" />
+          </node>
+          <node concept="3clFbS" id="11vq$BtTVtT" role="Jncv$">
+            <node concept="3cpWs6" id="11vq$BtTW5R" role="3cqZAp">
+              <node concept="2OqwBi" id="11vq$BtTXWw" role="3cqZAk">
+                <node concept="2OqwBi" id="11vq$BtTWmr" role="2Oq$k0">
+                  <node concept="Jnkvi" id="11vq$BtTWdc" role="2Oq$k0">
+                    <ref role="1M0zk5" node="11vq$BtTVtV" resolve="inheritable" />
+                  </node>
+                  <node concept="2yIwOk" id="11vq$BtTXG3" role="2OqNvi" />
+                </node>
+                <node concept="2qgKlT" id="11vq$BtTYfR" role="2OqNvi">
+                  <ref role="37wK5l" node="7uO8z1Cfao7" resolve="getDefaultInheritance" />
+                  <node concept="Jnkvi" id="11vq$BtYrcM" role="37wK5m">
+                    <ref role="1M0zk5" node="11vq$BtTVtV" resolve="inheritable" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="JncvC" id="11vq$BtTVtV" role="JncvA">
+            <property role="TrG5h" value="inheritable" />
+            <node concept="2jxLKc" id="11vq$BtTVtW" role="1tU5fm" />
+          </node>
+        </node>
+        <node concept="3cpWs6" id="11vq$BtTYIA" role="3cqZAp">
+          <node concept="35c_gC" id="11vq$BtTZJ$" role="3cqZAk">
+            <ref role="35c_gD" to="hcm8:2yYXHtl6JjN" resolve="FinalInheritanceModifier" />
+          </node>
+        </node>
+      </node>
+      <node concept="3bZ5Sz" id="11vq$BtYe_9" role="3clF45">
+        <ref role="3bZ5Sy" to="hcm8:2yYXHtl6JjL" resolve="IInheritanceModifier" />
+      </node>
+      <node concept="3Tm1VV" id="11vq$BtYe_a" role="1B3o_S" />
+    </node>
   </node>
   <node concept="13h7C7" id="6cg9X74s8p5">
     <property role="3GE5qa" value="expression.literal.numeric" />
@@ -18762,6 +18831,10 @@
       <property role="TrG5h" value="getDefaultInheritance" />
       <property role="2Ki8OM" value="true" />
       <ref role="13i0hy" node="7uO8z1Cfao7" resolve="getDefaultInheritance" />
+      <node concept="37vLTG" id="11vq$BtYby1" role="3clF46">
+        <property role="TrG5h" value="contextNode" />
+        <node concept="3Tqbb2" id="11vq$BtYbHX" role="1tU5fm" />
+      </node>
       <node concept="3Tm1VV" id="7uO8z1Cfh25" role="1B3o_S" />
       <node concept="3clFbS" id="7uO8z1Cfh2a" role="3clF47">
         <node concept="3cpWs6" id="7uO8z1Cfhhe" role="3cqZAp">
@@ -18885,7 +18958,7 @@
                                       </node>
                                     </node>
                                     <node concept="3TrEf2" id="4KzeyZN6Hea" role="2OqNvi">
-                                      <ref role="3Tt5mk" to="hcm8:4gvOB2uNEqT" resolve="inheritance" />
+                                      <ref role="3Tt5mk" to="hcm8:5dNsAxXOVNr" resolve="inheritance" />
                                     </node>
                                   </node>
                                   <node concept="1mIQ4w" id="4KzeyZN6Heb" role="2OqNvi">
@@ -25288,6 +25361,10 @@
       <property role="13i0it" value="true" />
       <property role="TrG5h" value="getDefaultInheritance" />
       <property role="2Ki8OM" value="true" />
+      <node concept="37vLTG" id="11vq$BtYh2c" role="3clF46">
+        <property role="TrG5h" value="contextNode" />
+        <node concept="3Tqbb2" id="11vq$BtYh2d" role="1tU5fm" />
+      </node>
       <node concept="3Tm1VV" id="7uO8z1Cfao8" role="1B3o_S" />
       <node concept="3bZ5Sz" id="7uO8z1CfaEH" role="3clF45">
         <ref role="3bZ5Sy" to="hcm8:2yYXHtl6JjL" resolve="IInheritanceModifier" />
@@ -25296,6 +25373,19 @@
         <node concept="3cpWs6" id="7uO8z1Cfba_" role="3cqZAp">
           <node concept="35c_gC" id="7uO8z1Cfbiq" role="3cqZAk">
             <ref role="35c_gD" to="hcm8:2yYXHtl6JjN" resolve="FinalInheritanceModifier" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="11vq$BtYh8I" role="lGtFl">
+        <node concept="TZ5HA" id="11vq$BtYh8J" role="TZ5H$">
+          <node concept="1dT_AC" id="11vq$BtYh8K" role="1dT_Ay">
+            <property role="1dT_AB" value="Returns the default inheritance to apply on the node." />
+          </node>
+        </node>
+        <node concept="TUZQ0" id="11vq$BtYh8L" role="3nqlJM">
+          <property role="TUZQ4" value="node to get inheritance from or parent one" />
+          <node concept="zr_55" id="11vq$BtYh8N" role="zr_5Q">
+            <ref role="zr_51" node="11vq$BtYh2c" resolve="contextNode" />
           </node>
         </node>
       </node>
