@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<language namespace="jetbrains.mps.kotlin" uuid="6b3888c1-9802-44d8-8baf-f8e6c33ed689" languageVersion="3" moduleVersion="0">
+<language namespace="jetbrains.mps.kotlin" uuid="6b3888c1-9802-44d8-8baf-f8e6c33ed689" languageVersion="4" moduleVersion="0">
   <models>
     <modelRoot contentPath="${module}" type="default">
       <sourceRoot location="models" />

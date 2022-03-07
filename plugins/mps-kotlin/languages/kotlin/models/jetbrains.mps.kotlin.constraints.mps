@@ -1453,7 +1453,7 @@
     <ref role="1MND4H" to="hcm8:1Izr$$Xuy8l" resolve="EmptyStatement" />
   </node>
   <node concept="1M2fIO" id="18X2O0FAZxS">
-    <property role="3GE5qa" value="declaration.class.property" />
+    <property role="3GE5qa" value="declaration.property" />
     <ref role="1M2myG" to="hcm8:18X2O0FAD2T" resolve="LocalPropertyDeclaration" />
   </node>
   <node concept="1M2fIO" id="3r3AWMM2u1U">
@@ -1649,7 +1649,7 @@
     </node>
   </node>
   <node concept="1M2fIO" id="2n1mrwy74ef">
-    <property role="3GE5qa" value="declaration.class.property" />
+    <property role="3GE5qa" value="declaration.property" />
     <ref role="1M2myG" to="hcm8:2yYXHtl6JdA" resolve="IPropertyAssignment" />
     <node concept="9S07l" id="2n1mrwy74vk" role="9Vyp8">
       <node concept="3clFbS" id="2n1mrwy74vl" role="2VODD2">
@@ -3717,6 +3717,77 @@
         <node concept="3clFbS" id="11vq$BtulmT" role="2VODD2">
           <node concept="3clFbF" id="11vq$Btul$X" role="3cqZAp">
             <node concept="3clFbT" id="11vq$Btul$W" role="3clFbG">
+              <property role="3clFbU" value="true" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="4FOkRjXx2t_">
+    <property role="3GE5qa" value="declaration.variable" />
+    <ref role="1M2myG" to="hcm8:4FOkRjXx1Po" resolve="ComponentDeclaration" />
+    <node concept="9S07l" id="4FOkRjXx2yM" role="9Vyp8">
+      <node concept="3clFbS" id="4FOkRjXx2yN" role="2VODD2">
+        <node concept="3clFbF" id="4FOkRjXx4co" role="3cqZAp">
+          <node concept="2OqwBi" id="4FOkRjXx4pT" role="3clFbG">
+            <node concept="nLn13" id="4FOkRjXx4cn" role="2Oq$k0" />
+            <node concept="1mIQ4w" id="4FOkRjXx4LW" role="2OqNvi">
+              <node concept="chp4Y" id="4FOkRjXx53F" role="cj9EA">
+                <ref role="cht4Q" to="hcm8:mITNXyOzhh" resolve="IDeconstructingDeclarations" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="1M2fIO" id="4FOkRjXxPuV">
+    <property role="3GE5qa" value="expression.function" />
+    <ref role="1M2myG" to="hcm8:2yYXHtl6JhV" resolve="MultiLambdaParameter" />
+    <node concept="EnEH3" id="4FOkRjXxPB8" role="1MhHOB">
+      <ref role="EomxK" to="hcm8:4FOkRjXxrfj" resolve="forceDeconstructing" />
+      <node concept="Eqf_E" id="4FOkRjXxPLP" role="EtsB7">
+        <node concept="3clFbS" id="4FOkRjXxPLQ" role="2VODD2">
+          <node concept="3SKdUt" id="4FOkRjXxQ2I" role="3cqZAp">
+            <node concept="1PaTwC" id="4FOkRjXxQ2J" role="1aUNEU">
+              <node concept="3oM_SD" id="4FOkRjXxQ4C" role="1PaTwD">
+                <property role="3oM_SC" value="Doesn't" />
+              </node>
+              <node concept="3oM_SD" id="4FOkRjXxQkm" role="1PaTwD">
+                <property role="3oM_SC" value="make" />
+              </node>
+              <node concept="3oM_SD" id="4FOkRjXxQmB" role="1PaTwD">
+                <property role="3oM_SC" value="sense" />
+              </node>
+              <node concept="3oM_SD" id="4FOkRjXxQqC" role="1PaTwD">
+                <property role="3oM_SC" value="to" />
+              </node>
+              <node concept="3oM_SD" id="4FOkRjXxQtq" role="1PaTwD">
+                <property role="3oM_SC" value="allow" />
+              </node>
+              <node concept="3oM_SD" id="4FOkRjXxQwx" role="1PaTwD">
+                <property role="3oM_SC" value="false:" />
+              </node>
+              <node concept="3oM_SD" id="4FOkRjXxQCt" role="1PaTwD">
+                <property role="3oM_SC" value="otherwise" />
+              </node>
+              <node concept="3oM_SD" id="4FOkRjXxQNa" role="1PaTwD">
+                <property role="3oM_SC" value="one" />
+              </node>
+              <node concept="3oM_SD" id="4FOkRjXxQQv" role="1PaTwD">
+                <property role="3oM_SC" value="should" />
+              </node>
+              <node concept="3oM_SD" id="4FOkRjXxQV7" role="1PaTwD">
+                <property role="3oM_SC" value="use" />
+              </node>
+              <node concept="3oM_SD" id="4FOkRjXxQXy" role="1PaTwD">
+                <property role="3oM_SC" value="VariableDeclaration" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbF" id="4FOkRjXxPR5" role="3cqZAp">
+            <node concept="3clFbT" id="4FOkRjXxPR4" role="3clFbG">
               <property role="3clFbU" value="true" />
             </node>
           </node>

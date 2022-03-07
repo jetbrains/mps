@@ -714,7 +714,7 @@
   </node>
   <node concept="18kY7G" id="5dNsAxXObBF">
     <property role="TrG5h" value="check_PropertyDeclaration" />
-    <property role="3GE5qa" value="declaration.class.property" />
+    <property role="3GE5qa" value="declaration.property" />
     <node concept="3clFbS" id="5dNsAxXObBG" role="18ibNy">
       <node concept="3clFbJ" id="5dNsAxXObBP" role="3cqZAp">
         <node concept="3clFbS" id="5dNsAxXObBR" role="3clFbx">
@@ -854,7 +854,7 @@
     </node>
   </node>
   <node concept="Q5z_Y" id="5dNsAxXOggQ">
-    <property role="3GE5qa" value="declaration.class.property" />
+    <property role="3GE5qa" value="declaration.property" />
     <property role="TrG5h" value="AddPropertyInitializer" />
     <node concept="Q6JDH" id="5dNsAxXOgh9" role="Q6Id_">
       <property role="TrG5h" value="property" />
@@ -2503,6 +2503,88 @@
           </node>
         </node>
       </node>
+    </node>
+  </node>
+  <node concept="18kY7G" id="4FOkRjXxRs_">
+    <property role="TrG5h" value="check_IDeconstructingDeclarations_SuperfluousRef" />
+    <property role="3GE5qa" value="declaration.variable" />
+    <node concept="3clFbS" id="4FOkRjXxRsA" role="18ibNy">
+      <node concept="3clFbJ" id="4FOkRjXxRZk" role="3cqZAp">
+        <node concept="3fqX7Q" id="4FOkRjXxS_r" role="3clFbw">
+          <node concept="2OqwBi" id="4FOkRjXxS_t" role="3fr31v">
+            <node concept="1YBJjd" id="4FOkRjXxS_u" role="2Oq$k0">
+              <ref role="1YBMHb" node="4FOkRjXxRsC" resolve="iDeconstructingDeclarations" />
+            </node>
+            <node concept="2qgKlT" id="4FOkRjXxS_v" role="2OqNvi">
+              <ref role="37wK5l" to="hez:4FOkRjXxnrt" resolve="isDeconstructed" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbS" id="4FOkRjXxRZm" role="3clFbx">
+          <node concept="2Gpval" id="4FOkRjXxSJF" role="3cqZAp">
+            <node concept="2GrKxI" id="4FOkRjXxSJG" role="2Gsz3X">
+              <property role="TrG5h" value="var" />
+            </node>
+            <node concept="2OqwBi" id="4FOkRjXxT5o" role="2GsD0m">
+              <node concept="1YBJjd" id="4FOkRjXxSUt" role="2Oq$k0">
+                <ref role="1YBMHb" node="4FOkRjXxRsC" resolve="iDeconstructingDeclarations" />
+              </node>
+              <node concept="3Tsc0h" id="4FOkRjXxTlP" role="2OqNvi">
+                <ref role="3TtcxE" to="hcm8:4FOkRjXx7DL" resolve="variables" />
+              </node>
+            </node>
+            <node concept="3clFbS" id="4FOkRjXxSJI" role="2LFqv$">
+              <node concept="3clFbJ" id="4FOkRjXxTqA" role="3cqZAp">
+                <node concept="2OqwBi" id="4FOkRjXxUzD" role="3clFbw">
+                  <node concept="2OqwBi" id="4FOkRjXxTH9" role="2Oq$k0">
+                    <node concept="2GrUjf" id="4FOkRjXxTt1" role="2Oq$k0">
+                      <ref role="2Gs0qQ" node="4FOkRjXxSJG" resolve="var" />
+                    </node>
+                    <node concept="3TrEf2" id="4FOkRjXxUds" role="2OqNvi">
+                      <ref role="3Tt5mk" to="hcm8:4FOkRjXx6Va" resolve="deconstructingOperator" />
+                    </node>
+                  </node>
+                  <node concept="3x8VRR" id="4FOkRjXxV6w" role="2OqNvi" />
+                </node>
+                <node concept="3clFbS" id="4FOkRjXxTqC" role="3clFbx">
+                  <node concept="a7r0C" id="4FOkRjXxVvq" role="3cqZAp">
+                    <node concept="Xl_RD" id="4FOkRjXxVwz" role="a7wSD">
+                      <property role="Xl_RC" value="superfluous underlying function" />
+                    </node>
+                    <node concept="2GrUjf" id="4FOkRjXxVUY" role="1urrMF">
+                      <ref role="2Gs0qQ" node="4FOkRjXxSJG" resolve="var" />
+                    </node>
+                    <node concept="3Cnw8n" id="4FOkRjXxWyG" role="1urrFz">
+                      <ref role="QpYPw" node="3ulTMGHZ0wK" resolve="FixMethodCallReference" />
+                      <node concept="3CnSsL" id="4FOkRjXxWDc" role="3Coj4f">
+                        <ref role="QkamJ" node="3ulTMGHZ0x3" resolve="call" />
+                        <node concept="2GrUjf" id="4FOkRjXxWFd" role="3CoRuB">
+                          <ref role="2Gs0qQ" node="4FOkRjXxSJG" resolve="var" />
+                        </node>
+                      </node>
+                      <node concept="3CnSsL" id="4FOkRjXxWHo" role="3Coj4f">
+                        <ref role="QkamJ" node="3ulTMGHZ0xg" resolve="newTarget" />
+                        <node concept="10Nm6u" id="4FOkRjXxWM6" role="3CoRuB" />
+                      </node>
+                      <node concept="3CnSsL" id="4FOkRjXxX4I" role="3Coj4f">
+                        <ref role="QkamJ" node="7mJe6tm$Uc3" resolve="targetLink" />
+                        <node concept="359W_D" id="4FOkRjXxXes" role="3CoRuB">
+                          <ref role="359W_E" to="hcm8:4FOkRjXx1Po" resolve="ComponentDeclaration" />
+                          <ref role="359W_F" to="hcm8:4FOkRjXx6Va" resolve="deconstructingOperator" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="1YaCAy" id="4FOkRjXxRsC" role="1YuTPh">
+      <property role="TrG5h" value="iDeconstructingDeclarations" />
+      <ref role="1YaFvo" to="hcm8:mITNXyOzhh" resolve="IDeconstructingDeclarations" />
     </node>
   </node>
 </model>
