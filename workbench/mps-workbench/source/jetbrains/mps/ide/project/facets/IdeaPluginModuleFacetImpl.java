@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,10 +33,6 @@ import org.jetbrains.mps.openapi.persistence.Memento;
 public class IdeaPluginModuleFacetImpl extends ModuleFacetBase implements IdeaPluginModuleFacet {
   private String myClassloadPluginId;
   private String myPersistencePluginId;
-
-  public IdeaPluginModuleFacetImpl() {
-    super(FACET_TYPE);
-  }
 
   public IdeaPluginModuleFacetImpl(SModule module) {
     super(FACET_TYPE, module);

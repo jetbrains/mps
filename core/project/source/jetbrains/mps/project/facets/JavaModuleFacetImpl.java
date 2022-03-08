@@ -63,11 +63,6 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
     super(FACET_TYPE, module);
   }
 
-  @Deprecated(forRemoval = true)
-  public JavaModuleFacetImpl() {
-    super(FACET_TYPE);
-  }
-
   @Override
   public boolean isCompileInMps() {
     AbstractModule module = getAbstractModule();

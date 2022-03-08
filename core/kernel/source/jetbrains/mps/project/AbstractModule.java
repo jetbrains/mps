@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import jetbrains.mps.extapi.model.EditableSModelBase;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.module.EditableSModule;
 import jetbrains.mps.extapi.module.ModelDiscoveryDelta;
-import jetbrains.mps.extapi.module.ModuleFacetBase;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.module.SRepositoryBase;
 import jetbrains.mps.extapi.persistence.ModelRootBase;
@@ -463,9 +462,6 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     if (!facet.isAttached()) {
       assert (facet.getModule() == null);
       facet.attach(this);
-    }
-    if (facet instanceof ModuleFacetBase) {
-      ((ModuleFacetBase) facet).attach(); // legacy, to remove in 203
     }
     facet.load(memento != null ? memento : new MementoImpl());
     return facet;

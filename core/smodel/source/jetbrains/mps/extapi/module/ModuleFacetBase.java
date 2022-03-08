@@ -21,7 +21,6 @@ import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.DetachableFacet;
-import org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
 import org.jetbrains.mps.openapi.persistence.Memento;
@@ -72,39 +71,15 @@ public abstract class ModuleFacetBase implements SModuleFacet, DetachableFacet {
     return myModule.get();
   }
 
-  /**
-   * Returns null if the facet cannot work within the passed module.
-   *
-   * @deprecated use {@link #attach(SModule)}
-   */
-  @Deprecated
-  @ScheduledForRemoval(inVersion = "2020.3")
-  public final boolean setModule(@NotNull SModule module) {
-    throwIfAlreadyAttached();
-    myModule.set(module);
-    if (myOnModuleReset != null) {
-      myOnModuleReset.accept(module);
-    }
-    return true;
-  }
-
-  private void throwIfAlreadyAttached() {
-    if (isAttached()) {
-      throw new IllegalStateException("Already attached");
-    }
-  }
-
-  @ScheduledForRemoval(inVersion = "2020.2")
-  @Deprecated
-  public void attach() {
-  }
-
   public final void attach(@NotNull SModule module) {
     if (myModule.get() != null) {
       LOG.error("Could not attach to the module, already attached to " + myModule.get(), new IllegalStateException());
       return;
     }
-    setModule(module);
+    myModule.set(module);
+    if (myOnModuleReset != null) {
+      myOnModuleReset.accept(module);
+    }
   }
 
   public final void detach() {
