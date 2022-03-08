@@ -22,12 +22,10 @@ public class DataFlowAspectDescriptorImpl extends DataFlowAspectDescriptorBase {
       case 0:
         return Collections.<IDataFlowBuilder>singletonList(new BaseExecuteCommandStatement_DataFlow());
       case 1:
-        return Collections.<IDataFlowBuilder>singletonList(new BaseExecuteCommandStatementSync_DataFlow());
-      case 2:
         return Collections.<IDataFlowBuilder>singletonList(new CommandClosureLiteral_DataFlow());
       default:
     }
     return Collections.<IDataFlowBuilder>emptyList();
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL), MetaIdFactory.conceptId(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20cL), MetaIdFactory.conceptId(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20dL)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20aL), MetaIdFactory.conceptId(0x63650c5916c8498aL, 0x99c8005c7ee9515dL, 0x7c8b08a50a3ea20dL)).seal();
 }
