@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,12 +21,9 @@ import jetbrains.mps.generator.cache.ParseFacility;
 import jetbrains.mps.generator.cache.ParseFacility.Parser;
 import jetbrains.mps.generator.generationTypes.StreamHandler;
 import jetbrains.mps.module.ReloadableModule;
-import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.SModelOperations;
-import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -38,7 +35,6 @@ import org.jetbrains.mps.openapi.module.SModule;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -90,8 +86,9 @@ public final class TraceInfoCache {
       }
     }
 
-    // XXX Could have resorted to workspace location here, if failed. However, not quite sure it's the right approach,
-    //     JavaTraceInfoResourceProvider didn't look elsewhere but module classpath.
+    // Modules in IDEA with MPS Plugin installed, do not have a classloader.
+    // To address https://youtrack.jetbrains.com/issue/MPS-26254 (as well as other issues, see [MM] below),
+    // we have to look into source output.
 
     // [MM] this may help when we want to establish connection between generated code and source nodes. We may
     // not even have compiled classes in this case (or compiled not to /classes_gen, for example, as some parts of MPS project itself)
@@ -127,21 +124,6 @@ public final class TraceInfoCache {
       ClassLoader moduleClassLoader = ((ReloadableModule) module).getClassLoader();
       url = moduleClassLoader == null ? null : moduleClassLoader.getResource(resourcePath);
     }
-    // Modules in IDEA with MPS Plugin installed, do not have a classloader, instead, there's a hack to supply
-    // location of generated classes via custom JavaModuleFacet implementation (see SolutionIdea#setupFacet())
-    // Therefore, here we address https://youtrack.jetbrains.com/issue/MPS-26254 and look into location supplied by the hack
-    if (url == null) {
-      JavaModuleFacet javaModuleFacet = module.getFacet(JavaModuleFacet.class);
-      IFile classesGen = javaModuleFacet == null ? null : javaModuleFacet.getClassesGen();
-      if (classesGen != null) {
-        try {
-          url = IFileUtil.getDescendant(classesGen, resourcePath).getUrl();
-        } catch (MalformedURLException ex) {
-          String msg = "Failed to look up trace.info location for module %s";
-          Logger.getLogger(getClass()).debug(String.format(msg, module.getModuleName()), ex);
-        }
-      }
-    }
     return url;
   }
 
@@ -153,6 +135,8 @@ public final class TraceInfoCache {
   @Nullable
   //todo [MM] why does the return type differ from that of getDeployedLocation?
   private IFile getWorkspaceLocation(@NotNull SModel model) {
+    // FIXME SModelOperations.getOutputLocation deals with TestsFacet and JMF, shall ask any GenerationTargetFacet instead,
+    //       OTOH, trace.info is about Java anyway, seems fine to restrict to Java-specific module facets only
     IFile outputLocation = SModelOperations.getOutputLocation(model);
     if (outputLocation == null) {
       return null;

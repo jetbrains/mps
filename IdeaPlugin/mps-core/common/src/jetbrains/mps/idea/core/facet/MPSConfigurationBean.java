@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -72,6 +72,7 @@ public final class MPSConfigurationBean {
     sd.setId(ModuleId.fromString(myState.UUID));
     sd.setOutputPath(myState.generatorOutputPath);
     sd.setCompileInMPS(false);
+    // XXX there's SingleModuleMPSSupport which constructs SolutionDescriptor for SolutionIdea, too and it doesn't add any module facets?!
     sd.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(IdeaPluginModuleFacet.FACET_TYPE, new MementoImpl()));
     sd.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(JavaModuleFacet.FACET_TYPE, new MementoImpl()));
     Map<SLanguage, Integer> languageVersions = sd.getLanguageVersions();

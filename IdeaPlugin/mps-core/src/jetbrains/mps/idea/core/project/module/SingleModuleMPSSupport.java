@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,6 +73,11 @@ public class SingleModuleMPSSupport extends ModuleMPSSupport {
 
     repository.getModelAccess().runWriteAction(() -> {
       SolutionDescriptor solutionDescriptor = makeDescriptor(mpsProject, singleModule);
+      // XXX solutionDescriptor doesn't define any SModuleFacet (compare to MPSConfigurationBean.newSolutionDescriptor() which adds IdeaPlugin + JMF)
+      //     I don't know if it's intended, overlooked or simply assumed presence of forced-at-the-time JMF.
+      //     This SingleModuleMPSSupport seems to be in use for other IDEs than IDEA, and I assume MPS has to work there pretty much like in
+      //     a regular MPS-as-IDEA-plugin scenario (including output/classes location of JMF). I wonder why we can not go regular MPSFacet way for
+      //     IDEs other than IDEA?
       Solution solution = new SolutionIdea(singleModule, solutionDescriptor);
 
       if (repository.getModule(solution.getModuleId()) != null) {
