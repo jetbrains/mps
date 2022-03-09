@@ -35,8 +35,9 @@ public class FilteredGlobalScope extends FilteredScope {
   /**
    * @deprecated this cons assumes single global repository, which is a non-existent thing. Use {@link #FilteredGlobalScope(SRepository)} instead
    */
-@Deprecated(since = "2019.1", forRemoval = true)
+  @Deprecated(since = "2019.1", forRemoval = true)
   public FilteredGlobalScope() {
+    // still in use both in mps and mbeddr
     this(GlobalScope.getInstance());
   }
 

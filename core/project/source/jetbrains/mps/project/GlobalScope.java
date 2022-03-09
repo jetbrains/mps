@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,8 +37,9 @@ public class GlobalScope extends BaseScope implements CoreComponent {
   /**
    * @deprecated there ain't no such thing as 'global' scope, use {@link #GlobalScope(SRepository)}
    */
-@Deprecated(since = "2019.1", forRemoval = true)
+  @Deprecated(since = "2019.1", forRemoval = true)
   public static GlobalScope getInstance() {
+    // as of 22.1, still 5 uses in mbeddr and 1 in MPS in FilteredGlobalScope(), actively used
     return INSTANCE;
   }
 

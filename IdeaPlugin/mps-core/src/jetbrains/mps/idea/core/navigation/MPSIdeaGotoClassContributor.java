@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,7 +63,7 @@ public class MPSIdeaGotoClassContributor implements GotoClassContributor {
       return NavigationItem.EMPTY_NAVIGATION_ITEM_ARRAY;
     }
 
-    SearchScope scope = includeNonProjectItems ? new ProperModelsGlobalSearchScope() : new ProperModelsProjectSearchScope(project);
+    SearchScope scope = includeNonProjectItems ? new ProperModelsGlobalSearchScope(mpsProject.getRepository()) : new ProperModelsProjectSearchScope(project);
     Condition<NavigationItem> rightName = item -> name.equals(item.getName());
     List<NavigationItem> items = new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(() -> {
       Collection<NavigationTarget> targets = navigationService.getNavigationRoots(scope, new EmptyProgressMonitor());
