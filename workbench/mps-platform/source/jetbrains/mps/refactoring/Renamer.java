@@ -426,18 +426,14 @@ public final class Renamer {
     }
     repository.getModelAccess().runReadAction(() -> {
       final IFile topModuleSourceDir = module.getModuleSourceDir();
-      // XXX why repo.getModules, not myProject.getModules? Do we care to rename bundled modules (project repo exposes all available modules)
-      for (SModule repositoryModule : repository.getModules()) {
-        if (!(repositoryModule instanceof AbstractModule)) {
+      // Do not care to rename bundled modules, check project modules only
+      for (SModule repositoryModule : myProject.getProjectModulesWithGenerators()) {
+        if (!(repositoryModule instanceof AbstractModule) || repositoryModule.isReadOnly() || repositoryModule.equals(module)) {
           continue;
         }
 
         IFile moduleSourceDir = ((AbstractModule) repositoryModule).getModuleSourceDir();
-        if (moduleSourceDir == null || repositoryModule.isReadOnly() || repositoryModule.equals(module)) {
-          continue;
-        }
-
-        if (moduleSourceDir.isDescendant(topModuleSourceDir) && !moduleSourceDir.equals(topModuleSourceDir)) {
+        if (moduleSourceDir != null && moduleSourceDir.isDescendant(topModuleSourceDir) && !moduleSourceDir.equals(topModuleSourceDir)) {
           // could be a Generator, owned by a Language and sharing same module source dir, in this case don't treat it
           // as submodule (renameModuleName() would deal with Language-owned generators). If, however, it's a
           // generator that lives under language dir (e.g. extracted into standalone, but residing under language-dir/generator/),

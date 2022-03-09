@@ -15,13 +15,12 @@ import jetbrains.mps.extapi.persistence.FileDataSource;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
-import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import org.jetbrains.mps.openapi.persistence.ModelFactory;
@@ -72,7 +71,7 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
     if (manager.getAllVersionedRoots().length == 0) {
       return false;
     }
-    VirtualFile file = VirtualFileUtils.getProjectVirtualFile(ReRunMergeFromBackup_Action.this.getModelFile(_params));
+    VirtualFile file = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getFileSystem().asVirtualFile(ReRunMergeFromBackup_Action.this.getModelFile(_params));
     if (file == null) {
       return false;
     }
@@ -130,6 +129,9 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
       return (modelAsBytes == null ? null : new String(modelAsBytes, FileUtil.DEFAULT_CHARSET));
     });
 
+    final VirtualFile file = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getFileSystem().asVirtualFile(ReRunMergeFromBackup_Action.this.getModelFile(_params));
+    assert file != null;
+
     for (File backupFile : Sequence.fromIterable(ReRunMergeFromBackup_Action.this.getBackupFiles(_params))) {
       try {
         String[] modelsAsText = MergeBackupUtil.loadZippedModelsAsText(backupFile, MergeVersion.values());
@@ -146,8 +148,6 @@ public class ReRunMergeFromBackup_Action extends BaseAction {
         if (mine == null) {
           return;
         }
-        VirtualFile file = VirtualFileUtils.getProjectVirtualFile(ReRunMergeFromBackup_Action.this.getModelFile(_params));
-        assert file != null;
         List<String> contents = ListSequence.fromListAndArray(new ArrayList<String>(), mine, base, repository);
         List<String> titles = ListSequence.fromListAndArray(new ArrayList<String>(), "Mine", "Base version", "Repository");
         MergeRequest request = DiffRequestFactory.getInstance().createMergeRequest(((Project) MapSequence.fromMap(_params).get("project")), file.getFileType(), FileDocumentManager.getInstance().getDocument(file), contents, null, titles, null);

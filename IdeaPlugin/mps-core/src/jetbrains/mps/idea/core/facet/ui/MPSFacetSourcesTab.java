@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import com.intellij.openapi.Disposable;
 import com.intellij.openapi.roots.ContentEntry;
 import com.intellij.openapi.roots.ModifiableRootModel;
 import com.intellij.openapi.util.Disposer;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.extapi.persistence.SourceRoot;
@@ -102,7 +103,7 @@ public class MPSFacetSourcesTab implements SModuleConfigurationTab {
             // FIXME shall deal with ModelRootDescriptor here
             if(path instanceof DefaultModelRoot) {
               for(SourceRoot mpsSourceRoot : ((DefaultModelRoot) path).getSourceRoots(SourceRootKinds.SOURCES)) {
-                VirtualFile mpsSourceRootVFile = VirtualFileUtils.getProjectVirtualFile(mpsSourceRoot.getAbsolutePath());
+                VirtualFile mpsSourceRootVFile = LocalFileSystem.getInstance().findFileByPath(mpsSourceRoot.getAbsolutePath().getPath());
                 if (mpsSourceRootVFile == null) {
                   // not in project; strange but why not
                   continue;

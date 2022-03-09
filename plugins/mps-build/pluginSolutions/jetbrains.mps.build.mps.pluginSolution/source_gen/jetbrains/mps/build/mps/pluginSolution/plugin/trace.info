@@ -345,65 +345,56 @@
   </root>
   <root nodeRef="r:f9ed10bf-2cd1-4bab-a5dd-e89f55ef9fd1(jetbrains.mps.build.mps.pluginSolution.plugin)/8722937377469654773">
     <file name="ModuleData.java">
-      <node id="8722937377469654774" at="17,0,18,0" concept="5" trace="myModule" />
-      <node id="8722937377469654777" at="18,0,19,0" concept="5" trace="myParent" />
-      <node id="8722937377469654785" at="19,37,20,27" concept="4" />
-      <node id="8722937377469654798" at="24,27,25,41" concept="11" />
-      <node id="8722937377469654809" at="29,39,30,60" concept="11" />
-      <node id="8722937377469654819" at="35,50,36,72" concept="10" />
-      <node id="8722937377469654829" at="37,25,38,79" concept="10" />
-      <node id="8722937377469654836" at="39,34,40,53" concept="11" />
-      <node id="8722937377469654853" at="43,5,44,34" concept="11" />
-      <node id="8722937377469654860" at="47,30,48,25" concept="11" />
-      <node id="8722937377469654869" at="52,36,53,17" concept="11" />
-      <node id="8722937377469654881" at="61,31,62,25" concept="11" />
-      <node id="8722937377469654891" at="66,42,67,27" concept="4" />
-      <node id="8722937377469654781" at="19,0,22,0" concept="2" trace="ModuleData#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
-      <node id="8722937377469654834" at="38,79,41,9" concept="8" />
-      <node id="8722937377469654857" at="47,0,50,0" concept="9" trace="getModule#()Lorg/jetbrains/mps/openapi/module/SModule;" />
-      <node id="8722937377469654871" at="56,0,59,0" concept="9" trace="addChildren#(Ljetbrains/mps/build/mps/pluginSolution/plugin/NodeData;)V" />
-      <node id="8722937377469654794" at="23,0,27,0" concept="9" trace="getText#()Ljava/lang/String;" />
-      <node id="8722937377469654804" at="28,0,32,0" concept="9" trace="getChildren#()Ljava/util/List;" />
-      <node id="8722937377469654865" at="51,0,55,0" concept="9" trace="canHaveChildren#()Z" />
-      <node id="8722937377469654877" at="60,0,64,0" concept="9" trace="getParent#()Ljetbrains/mps/build/mps/pluginSolution/plugin/NodeData;" />
-      <node id="8722937377469654885" at="65,0,69,0" concept="9" trace="setParent#(Ljetbrains/mps/build/mps/pluginSolution/plugin/NodeData;)V" />
-      <node id="8722937377469654827" at="36,72,42,7" concept="8" />
-      <node id="8722937377469654817" at="34,41,43,5" concept="8" />
-      <node id="8722937377469654813" at="33,0,46,0" concept="9" trace="getIcon#(Z)Ljavax/swing/Icon;" />
-      <scope id="8722937377469654876" at="57,46,57,46" />
-      <scope id="8722937377469654784" at="19,37,20,27" />
-      <scope id="8722937377469654797" at="24,27,25,41" />
-      <scope id="8722937377469654808" at="29,39,30,60" />
-      <scope id="8722937377469654835" at="39,34,40,53" />
-      <scope id="8722937377469654859" at="47,30,48,25" />
-      <scope id="8722937377469654868" at="52,36,53,17" />
-      <scope id="8722937377469654880" at="61,31,62,25" />
-      <scope id="8722937377469654890" at="66,42,67,27" />
-      <scope id="8722937377469654781" at="19,0,22,0">
-        <var name="module" id="8722937377469654791" />
-      </scope>
-      <scope id="8722937377469654857" at="47,0,50,0" />
-      <scope id="8722937377469654871" at="56,0,59,0">
+      <node id="8722937377469654774" at="13,0,14,0" concept="5" trace="myModule" />
+      <node id="853854632288654689" at="14,0,15,0" concept="5" trace="myIcon" />
+      <node id="853854632288669253" at="15,0,16,0" concept="5" trace="myText" />
+      <node id="8722937377469654777" at="16,0,17,0" concept="5" trace="myParent" />
+      <node id="8722937377469654785" at="18,37,19,22" concept="4" />
+      <node id="853854632288686366" at="19,22,20,36" concept="4" />
+      <node id="853854632288704022" at="20,36,21,64" concept="4" />
+      <node id="8722937377469654798" at="25,27,26,18" concept="11" />
+      <node id="8722937377469654809" at="30,39,31,60" concept="11" />
+      <node id="853854632288752059" at="35,41,36,18" concept="11" />
+      <node id="8722937377469654860" at="39,30,40,25" concept="11" />
+      <node id="8722937377469654869" at="44,36,45,17" concept="11" />
+      <node id="8722937377469654881" at="53,31,54,25" concept="11" />
+      <node id="8722937377469654891" at="58,42,59,27" concept="4" />
+      <node id="8722937377469654857" at="39,0,42,0" concept="9" trace="getModule#()Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <node id="8722937377469654871" at="48,0,51,0" concept="9" trace="addChildren#(Ljetbrains/mps/build/mps/pluginSolution/plugin/NodeData;)V" />
+      <node id="8722937377469654794" at="24,0,28,0" concept="9" trace="getText#()Ljava/lang/String;" />
+      <node id="8722937377469654804" at="29,0,33,0" concept="9" trace="getChildren#()Ljava/util/List;" />
+      <node id="8722937377469654813" at="34,0,38,0" concept="9" trace="getIcon#(Z)Ljavax/swing/Icon;" />
+      <node id="8722937377469654865" at="43,0,47,0" concept="9" trace="canHaveChildren#()Z" />
+      <node id="8722937377469654877" at="52,0,56,0" concept="9" trace="getParent#()Ljetbrains/mps/build/mps/pluginSolution/plugin/NodeData;" />
+      <node id="8722937377469654885" at="57,0,61,0" concept="9" trace="setParent#(Ljetbrains/mps/build/mps/pluginSolution/plugin/NodeData;)V" />
+      <node id="8722937377469654781" at="18,0,23,0" concept="2" trace="ModuleData#(Lorg/jetbrains/mps/openapi/module/SModule;)V" />
+      <scope id="8722937377469654876" at="49,46,49,46" />
+      <scope id="8722937377469654797" at="25,27,26,18" />
+      <scope id="8722937377469654808" at="30,39,31,60" />
+      <scope id="8722937377469654816" at="35,41,36,18" />
+      <scope id="8722937377469654859" at="39,30,40,25" />
+      <scope id="8722937377469654868" at="44,36,45,17" />
+      <scope id="8722937377469654880" at="53,31,54,25" />
+      <scope id="8722937377469654890" at="58,42,59,27" />
+      <scope id="8722937377469654784" at="18,37,21,64" />
+      <scope id="8722937377469654857" at="39,0,42,0" />
+      <scope id="8722937377469654871" at="48,0,51,0">
         <var name="nodeData" id="8722937377469654874" />
       </scope>
-      <scope id="8722937377469654794" at="23,0,27,0" />
-      <scope id="8722937377469654804" at="28,0,32,0" />
-      <scope id="8722937377469654828" at="37,25,41,9">
-        <var name="virtualFile" id="8722937377469654830" />
-      </scope>
-      <scope id="8722937377469654865" at="51,0,55,0" />
-      <scope id="8722937377469654877" at="60,0,64,0" />
-      <scope id="8722937377469654885" at="65,0,69,0">
-        <var name="parent" id="8722937377469654888" />
-      </scope>
-      <scope id="8722937377469654818" at="35,50,42,7">
-        <var name="file" id="8722937377469654820" />
-      </scope>
-      <scope id="8722937377469654816" at="34,41,44,34" />
-      <scope id="8722937377469654813" at="33,0,46,0">
+      <scope id="8722937377469654794" at="24,0,28,0" />
+      <scope id="8722937377469654804" at="29,0,33,0" />
+      <scope id="8722937377469654813" at="34,0,38,0">
         <var name="expanded" id="8722937377469654855" />
       </scope>
-      <unit id="8722937377469654773" at="16,0,70,0" name="jetbrains.mps.build.mps.pluginSolution.plugin.ModuleData" />
+      <scope id="8722937377469654865" at="43,0,47,0" />
+      <scope id="8722937377469654877" at="52,0,56,0" />
+      <scope id="8722937377469654885" at="57,0,61,0">
+        <var name="parent" id="8722937377469654888" />
+      </scope>
+      <scope id="8722937377469654781" at="18,0,23,0">
+        <var name="module" id="8722937377469654791" />
+      </scope>
+      <unit id="8722937377469654773" at="12,0,62,0" name="jetbrains.mps.build.mps.pluginSolution.plugin.ModuleData" />
     </file>
   </root>
   <root nodeRef="r:f9ed10bf-2cd1-4bab-a5dd-e89f55ef9fd1(jetbrains.mps.build.mps.pluginSolution.plugin)/8722937377469654897">
