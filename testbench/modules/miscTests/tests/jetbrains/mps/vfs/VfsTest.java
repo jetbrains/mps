@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Collections;
+import java.util.function.Consumer;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -39,8 +40,6 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 /**
- * Added on Oct 12, 2010
- *
  * @author Evgeny Gerashchenko
  */
 public class VfsTest implements EnvironmentAware {
@@ -49,59 +48,32 @@ public class VfsTest implements EnvironmentAware {
   private static final String JAR_NAME = "testjar.zip";
   private static final String JAR_SUFFIX = "!/testjar";
 
-  private static void IO_FS_TEST(Runnable testRunnable) {
-    FileSystem oldFS = FileSystemExtPoint.getFS();
-    try {
-      FileSystemExtPoint.setFS(IoFileSystem.INSTANCE);
-      testRunnable.run();
-    } finally {
-      FileSystemExtPoint.setFS(oldFS);
-    }
+  private static void IO_FS_TEST(final Consumer<FileSystem> testRunnable) {
+    testRunnable.accept(IoFileSystem.INSTANCE);
   }
 
-  private static void IDEA_FS_TEST(final Runnable testRunnable) {
-    FileSystem oldFS = FileSystemExtPoint.getFS();
-    try {
-      // XXX what's the reason to initialize IdeaFileSystem app component this way?
-      //     Isn't it already part of initialized Environment?
-      //     And it does setFS in constructor, why explicit here?
-      FileSystemExtPoint.setFS(new IdeaFileSystem(null, null, null));
-      final Throwable[] ex = new Throwable[1];
-      ApplicationManager.getApplication().invokeAndWait(new Runnable() {
-        @Override
-        public void run() {
-          ApplicationManager.getApplication().runWriteAction(new Runnable() {
-            @Override
-            public void run() {
-              try {
-                testRunnable.run();
-              } catch (Throwable e) {
-                ex[0] = e;
-              }
-            }
-          });
-        }
-      }, ModalityState.defaultModalityState());
-      if (ex[0] != null) {
-        ex[0].printStackTrace();
-        fail();
+  private static void IDEA_FS_TEST(final Consumer<FileSystem> testRunnable) {
+    final Throwable[] ex = new Throwable[1];
+    ApplicationManager.getApplication().invokeAndWait(() -> ApplicationManager.getApplication().runWriteAction(() -> {
+      try {
+        testRunnable.accept(ApplicationManager.getApplication().getComponent(IdeaFileSystem.class));
+      } catch (Throwable e) {
+        ex[0] = e;
       }
-    } finally {
-      FileSystemExtPoint.setFS(oldFS);
+    }), ModalityState.defaultModalityState());
+    if (ex[0] != null) {
+      ex[0].printStackTrace();
+      fail();
     }
   }
-
-  private static final Runnable BASE_TEST_RUNNABLE = VfsTest::doBaseVfsTest;
-
-  private static final Runnable JAR_TEST_RUNNABLE = VfsTest::doJarVfsTest;
 
   @Override
   public void setEnvironment(@NotNull Environment ignored) {
     // Needs IdeaEnvironment, but doesn't utilize it
   }
 
-  private static void doBaseVfsTest() {
-    IFile tmpDir = IFileUtil.createTmpDir();
+  private static void doBaseVfsTest(@NotNull FileSystem fs) {
+    IFile tmpDir = IFileUtil.createTmpDir(fs);
     assertTrue("Temp dir does not exist", tmpDir.exists());
     assertTrue("Created temp directory is not directory", tmpDir.isDirectory());
     assertFalse("Could create file with the same name as the directory", tmpDir.createNewFile());
@@ -115,7 +87,7 @@ public class VfsTest implements EnvironmentAware {
 
     IFile file1 = subSubDir.findChild("file1");
     assertFalse(file1.exists());
-    assertTrue(file1.getParent().equals(subSubDir));
+    assertEquals(file1.getParent(), subSubDir);
     try {
       OutputStream os = file1.openOutputStream();
       for (int i = 0; i < FILE_SIZE; i++) {
@@ -153,14 +125,13 @@ public class VfsTest implements EnvironmentAware {
     file1 = file1.getParent().findChild("file1");
     assertTrue(file1.move(tmpDir));
     assertFalse(file1.getPath().equals(path1Original));
-    assertFalse(FileSystemExtPoint.getFS().getFile(path1Original).exists());
+    assertFalse(fs.getFile(path1Original).exists());
 
     assertTrue(tmpDir.delete());
     assertFalse(tmpDir.exists());
   }
 
-  private static void doJarVfsTest() {
-    FileSystem fileSystem = FileSystem.getInstance();
+  private static void doJarVfsTest(@NotNull FileSystem fileSystem) {
     IFile jarRoot = fileSystem.getFile(VfsTest.class.getResource(JAR_NAME).getFile() + JAR_SUFFIX);
     assertEquals(jarRoot.getChildren().size(), 3);
     assertTrue(jarRoot.isDirectory());
@@ -199,21 +170,21 @@ public class VfsTest implements EnvironmentAware {
 
   @Test
   public void baseIdeaVfsTest() {
-    IDEA_FS_TEST(BASE_TEST_RUNNABLE);
+    IDEA_FS_TEST(VfsTest::doBaseVfsTest);
   }
 
   @Test
   public void baseIoVfsTest() {
-    IO_FS_TEST(BASE_TEST_RUNNABLE);
+    IO_FS_TEST(VfsTest::doBaseVfsTest);
   }
 
   @Test
   public void jarIdeaVfsTest() {
-    IDEA_FS_TEST(JAR_TEST_RUNNABLE);
+    IDEA_FS_TEST(VfsTest::doJarVfsTest);
   }
 
   @Test
   public void jarIoVfsTest() {
-    IO_FS_TEST(JAR_TEST_RUNNABLE);
+    IO_FS_TEST(VfsTest::doJarVfsTest);
   }
 }

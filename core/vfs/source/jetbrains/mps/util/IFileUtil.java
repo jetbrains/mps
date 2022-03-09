@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,10 @@
  */
 package jetbrains.mps.util;
 
-import jetbrains.mps.vfs.IFileSystem;
-import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -125,12 +125,21 @@ public class IFileUtil {
     return file;
   }
 
+  /**
+   * @deprecated relies on a global FS instance we are going to throw away eventually.
+   */
+  @Deprecated(since = "2022.1", forRemoval = true)
   public static IFile createTmpDir() {
-    IFile tmpHome = FileSystem.getInstance().getFile(System.getProperty("java.io.tmpdir"));
+    return createTmpDir(FileSystem.getInstance());
+  }
+
+  public static IFile createTmpDir(FileSystem vfs) {
+    // XXX Files.createTempDirectory + IFileSystem.getFile(java.io.File) would be better, IMO.
+    IFile tmpHome = vfs.getFile(System.getProperty("java.io.tmpdir"));
     // For e.g. Mac, tmpdir might reside under /var/folders, with canonical path /private/var/folders
     // IDEA's VirtualFile seems to be incapable to notice changes done through other location, which may lead to
     // puzzling failures (i.e. U see the file at fs location, but VirtualFile for the same (though, aliased) location doesn't list it).
-    tmpHome = FileSystem.getInstance().getFile(getCanonicalPath(tmpHome));
+    tmpHome = vfs.getFile(getCanonicalPath(tmpHome));
     int i = 1;
     String prefix = "mps-" + new SimpleDateFormat("yyyy-MM-dd-").format(new Date());
     while (tmpHome.findChild(prefix + i).exists()) {
