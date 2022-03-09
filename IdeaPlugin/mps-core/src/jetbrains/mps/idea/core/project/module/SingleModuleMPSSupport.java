@@ -23,6 +23,8 @@ import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.project.SolutionIdea;
 import jetbrains.mps.messages.MessageKind;
@@ -73,12 +75,13 @@ public class SingleModuleMPSSupport extends ModuleMPSSupport {
 
     repository.getModelAccess().runWriteAction(() -> {
       SolutionDescriptor solutionDescriptor = makeDescriptor(mpsProject, singleModule);
+      final FileSystemBridge fsb = mpsProject.getFileSystem();
       // XXX solutionDescriptor doesn't define any SModuleFacet (compare to MPSConfigurationBean.newSolutionDescriptor() which adds IdeaPlugin + JMF)
       //     I don't know if it's intended, overlooked or simply assumed presence of forced-at-the-time JMF.
       //     This SingleModuleMPSSupport seems to be in use for other IDEs than IDEA, and I assume MPS has to work there pretty much like in
       //     a regular MPS-as-IDEA-plugin scenario (including output/classes location of JMF). I wonder why we can not go regular MPSFacet way for
       //     IDEs other than IDEA?
-      Solution solution = new SolutionIdea(singleModule, solutionDescriptor);
+      Solution solution = new SolutionIdea(singleModule, solutionDescriptor, fsb.fromVirtualFile(singleModule.getModuleFile()));
 
       if (repository.getModule(solution.getModuleId()) != null) {
         MessagesViewTool.log(project, MessageKind.ERROR, MPSBundle.message("facet.cannot.load.second.module", solutionDescriptor.getNamespace()));

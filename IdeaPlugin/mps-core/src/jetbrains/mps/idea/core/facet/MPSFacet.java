@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,8 @@ import com.intellij.openapi.project.Project;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
+import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.project.SolutionIdea;
 import jetbrains.mps.messages.MessageKind;
@@ -37,6 +39,7 @@ import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -68,7 +71,9 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
   public void initFacet() {
     myMpsProject.getModelAccess().runWriteAction(() -> {
       SolutionDescriptor solutionDescriptor = getConfiguration().createSolutionDescriptor();
-      Solution solution = new SolutionIdea(getModule(), solutionDescriptor);
+      final FileSystemBridge fsb = myMpsProject.getFileSystem();
+      final IFile df = fsb.fromVirtualFile(getModule().getModuleFile());
+      Solution solution = new SolutionIdea(getModule(), solutionDescriptor, df);
 
       com.intellij.openapi.project.Project project = getModule().getProject();
 

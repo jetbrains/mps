@@ -60,7 +60,7 @@ import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
-import jetbrains.mps.vfs.FileSystemExtPoint;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SDependency;
@@ -91,8 +91,9 @@ public class SolutionIdea extends Solution {
   private final SolutionIdea.MyRootSetChangedListener myRootSetListener = new MyRootSetChangedListener();
   private final SolutionIdea.MyLibrariesListener myLibrariesListener = new MyLibrariesListener();
 
-  public SolutionIdea(@NotNull Module module, SolutionDescriptor descriptor) {
-    super(descriptor, FileSystemExtPoint.getFS().getFile(module.getModuleFilePath()));
+  // FIXME Not sure there's need for descriptor file for this module; supposed to fix MPS-26338.
+  public SolutionIdea(@NotNull Module module, SolutionDescriptor descriptor, IFile descriptorFile) {
+    super(descriptor, descriptorFile);
 
     myModule = module;
     myModelAccess = ProjectHelper.getModelAccess(myModule.getProject());
