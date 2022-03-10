@@ -53,8 +53,8 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import com.intellij.openapi.vcs.FileStatus;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.AbstractModule;
-import java.util.Collections;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
 import jetbrains.mps.nodeEditor.EditorComponent;
@@ -274,33 +274,33 @@ __switch__:
     }.invoke();
   }
 
-  public static Iterable<VirtualFile> getUnversionedFilesForModule(@NotNull Project project, @NotNull SModule module) {
-    IFile descriptorFile = ((AbstractModule) module).getDescriptorFile();
-    if (descriptorFile == null) {
-      return Sequence.fromIterable(Collections.<VirtualFile>emptyList());
-    }
-    IFile moduleDir = descriptorFile.getParent();
-    VcsFileStatusProvider statusProvider = VcsFileStatusProvider.getInstance(project);
-    VirtualFile virtualFile = VirtualFileUtils.getVirtualFile(moduleDir);
-    if (virtualFile == null) {
-      return Sequence.fromIterable(Collections.<VirtualFile>emptyList());
-    }
-    return collectUnversionedFiles(statusProvider, virtualFile);
-  }
-
-  public static List<VirtualFile> getUnversionedFilesForModules(@NotNull final Project project, List<SModule> module) {
-    return ListSequence.fromList(module).translate(new ITranslator2<SModule, VirtualFile>() {
-      public Iterable<VirtualFile> translate(SModule m) {
-        return getUnversionedFilesForModule(project, m);
+  public static Iterable<VirtualFile> getUnversionedFilesForModules(@NotNull MPSProject mpsProject, List<SModule> module) {
+    final VcsFileStatusProvider statusProvider = VcsFileStatusProvider.getInstance(mpsProject.getProject());
+    final FileSystemBridge fsb = mpsProject.getFileSystem();
+    return ListSequence.fromList(module).ofType(AbstractModule.class).select(new ISelector<AbstractModule, IFile>() {
+      public IFile select(AbstractModule this0) {
+        return this0.getDescriptorFile();
       }
-    }).toListSequence();
+    }).where(new NotNullWhereFilter<IFile>()).select(new ISelector<IFile, IFile>() {
+      public IFile select(IFile this0) {
+        return this0.getParent();
+      }
+    }).select(new ISelector<IFile, VirtualFile>() {
+      public VirtualFile select(@NotNull IFile p1) {
+        return fsb.asVirtualFile(p1);
+      }
+    }).where(new NotNullWhereFilter<VirtualFile>()).translate(new ITranslator2<VirtualFile, VirtualFile>() {
+      public Iterable<VirtualFile> translate(VirtualFile vf) {
+        return collectUnversionedFiles(statusProvider, vf);
+      }
+    });
   }
 
   @Nullable
   /*package*/ static AnnotationColumn getAnnotationColumn(EditorComponent editorComponent) {
     for (AbstractLeftColumn column : editorComponent.getLeftEditorHighlighter().getLeftColumns()) {
       if (column instanceof AnnotationColumn) {
-        return as_brpb5o_a0a0a0a0v(column, AnnotationColumn.class);
+        return as_brpb5o_a0a0a0a0t(column, AnnotationColumn.class);
       }
     }
     return null;
@@ -360,7 +360,7 @@ __switch__:
   public static BackgroundableActionLock getAnnotateRootLock(Project project, String taskName) {
     return BackgroundableActionLock.getLock(project, VcsBackgroundableActions.ANNOTATE, taskName);
   }
-  private static <T> T as_brpb5o_a0a0a0a0v(Object o, Class<T> type) {
+  private static <T> T as_brpb5o_a0a0a0a0t(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

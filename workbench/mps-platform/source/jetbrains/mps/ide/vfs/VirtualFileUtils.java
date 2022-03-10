@@ -61,19 +61,6 @@ public final class VirtualFileUtils {
   }
 
   /**
-   * @deprecated please use {@link FileSystemBridge#asVirtualFile(IFile)} or [if absolutely needed] {@link #getOrCreateVirtualFile(IFile)}
-   */
-  @Deprecated
-  @Nullable
-  public static VirtualFile getVirtualFile(IFile file) {
-    if (file instanceof IdeaFile) {
-      return ((IdeaFile) file).getVirtualFile();
-    } else {
-      return null;
-    }
-  }
-
-  /**
    * @deprecated please use {@link FileSystemBridge#asVirtualFile(IFile)} instead.
    *             To get FS associated with the project, use {@link MPSProject#getFileSystem()}.
    */

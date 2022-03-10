@@ -11,10 +11,11 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.actionSystem.Presentation;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.vcs.platform.actions.VcsActionsUtil;
-import com.intellij.openapi.actionSystem.CommonDataKeys;
+import jetbrains.mps.project.MPSProject;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -37,7 +38,7 @@ public class AddModuleToVcs_Action extends BaseAction {
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     Presentation presentation = event.getPresentation();
     presentation.setText(String.format("Add %s to VCS", (event.getData(MPSCommonDataKeys.MODULES).size() == 1 ? "Module" : "Modules")));
-    boolean enabled = ListSequence.fromList(VcsActionsUtil.getUnversionedFilesForModules(event.getData(CommonDataKeys.PROJECT), event.getData(MPSCommonDataKeys.MODULES))).isNotEmpty();
+    boolean enabled = Sequence.fromIterable(VcsActionsUtil.getUnversionedFilesForModules(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.MODULES))).isNotEmpty();
     presentation.setEnabled(enabled);
     presentation.setVisible(enabled);
   }
@@ -45,6 +46,12 @@ public class AddModuleToVcs_Action extends BaseAction {
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
     if (!(super.collectActionData(event, _params))) {
       return false;
+    }
+    {
+      MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
+      if (p == null) {
+        return false;
+      }
     }
     {
       Project p = event.getData(CommonDataKeys.PROJECT);
@@ -65,7 +72,7 @@ public class AddModuleToVcs_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    List<VirtualFile> unversionedFiles = VcsActionsUtil.getUnversionedFilesForModules(event.getData(CommonDataKeys.PROJECT), event.getData(MPSCommonDataKeys.MODULES));
+    List<VirtualFile> unversionedFiles = Sequence.fromIterable(VcsActionsUtil.getUnversionedFilesForModules(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.MODULES))).toListSequence();
     ChangeListManagerImpl changeListManager = ChangeListManagerImpl.getInstanceImpl(event.getData(CommonDataKeys.PROJECT));
     changeListManager.addUnversionedFiles(changeListManager.getDefaultChangeList(), unversionedFiles);
   }
