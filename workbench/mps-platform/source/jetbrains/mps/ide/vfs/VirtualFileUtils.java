@@ -61,7 +61,7 @@ public final class VirtualFileUtils {
   }
 
   /**
-   * @deprecated please use {@link #getProjectVirtualFile(IFile)} or [if absolutely needed] {@link #getOrCreateVirtualFile(IFile)}
+   * @deprecated please use {@link FileSystemBridge#asVirtualFile(IFile)} or [if absolutely needed] {@link #getOrCreateVirtualFile(IFile)}
    */
   @Deprecated
   @Nullable
@@ -74,24 +74,23 @@ public final class VirtualFileUtils {
   }
 
   /**
-   * @deprecated please use {@link IdeaFileSystem#asVirtualFile(IFile)} instead.
+   * @deprecated please use {@link FileSystemBridge#asVirtualFile(IFile)} instead.
    *             To get FS associated with the project, use {@link MPSProject#getFileSystem()}.
    */
   @Deprecated(forRemoval = true, since = "2021.3")
   @Nullable
   public static VirtualFile getProjectVirtualFile(@NotNull IFile file) {
+    // FIXME remove in 22.2. No uses in MPS 21.1, left for one more release just to smooth transition
+    LOG.error("This method will be removed in the next MPS release!", new Throwable());
     if (file instanceof IdeaFile) {
       return ((IdeaFile) file).getVirtualFile();
     } else {
-      if (FileSystemExtPoint.getFS() instanceof IdeaFileSystem) {
-        LOG.warn("File " + file + " is supposed to be in project and tracked by Idea FS");
-      }
-      return null;
+      return LocalFileSystem.getInstance().findFileByPath(file.getPath());
     }
   }
 
   /**
-   * It is hack due to the 3.4 elease coming soon. We have to use idea vfs to comply with
+   * It is hack due to the 3.4 release coming soon. We have to use idea vfs to comply with
    * IDEA subsystems which require VirtualFile (e.g. idea indexing/find usages)
    *
    * AP: I hope that it will go away in the nearest future since we do not need vfs tracking these files' physical changes

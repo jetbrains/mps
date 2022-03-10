@@ -73,7 +73,7 @@ public final class IdeaFileSystem extends BaseIdeaFileSystem implements SafeWrit
   }
 
   /**
-   * Proper alternative to {@link VirtualFileUtils#getProjectVirtualFile(IFile)}, get back from MPS's {@code IFile} to IDEA's {@code VirtualFile}
+   * Proper alternative to {@code VirtualFileUtils#getProjectVirtualFile(IFile)}, get back from MPS's {@code IFile} to IDEA's {@code VirtualFile}
    * @param file MPS file abstraction
    * @return IDEA's VirtualFile, if supplied IFile is tracked under project's file system.
    * @since 2021.1

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,6 @@ import jetbrains.mps.icons.MPSIcons.General;
 import jetbrains.mps.ide.ui.dialogs.properties.MPSPropertiesConfigurable;
 import jetbrains.mps.ide.ui.dialogs.properties.PropertiesBundle;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaLanguageLevel;
@@ -68,7 +67,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 
@@ -228,7 +226,10 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     decorator.setAddAction(anActionButton -> {
       FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createMultipleFoldersDescriptor();
       descriptor.setTitle("Choose Folders with Java Sources");
-      final VirtualFile moduleDir = VirtualFileUtils.getProjectVirtualFile(myJavaModuleFacet.getAbstractModule().getModuleSourceDir());
+      // XXX indeed, sort of undesired assumption that module source dir points to local FS.
+      //     however, as long as I'm going to use FileChooser targeted for local FS, seems perfectly ok to
+      //     pass initial location from local FS, or none if source dir doesn't happen to be local file.
+      final VirtualFile moduleDir = LocalFileSystem.getInstance().findFileByPath(myJavaModuleFacet.getAbstractModule().getModuleSourceDir().getPath());
 
       final VirtualFile[] files = FileChooser.chooseFiles(descriptor, getTabComponent(), null, moduleDir);
       mySourcePathsTableModel.addAll(new ArrayList<>(Arrays.asList(files)));
@@ -268,7 +269,8 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
     decorator.setAddAction(anActionButton -> {
       FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createAllButJarContentsDescriptor();
       descriptor.setTitle("Choose Java Library File or Folder");
-      final VirtualFile moduleDir = VirtualFileUtils.getProjectVirtualFile(myJavaModuleFacet.getAbstractModule().getModuleSourceDir());
+      // for LocalFileSystem justification, see similar code in #getSourcePathsTable(), above.
+      final VirtualFile moduleDir = LocalFileSystem.getInstance().findFileByPath(myJavaModuleFacet.getAbstractModule().getModuleSourceDir().getPath());
       final VirtualFile[] files = FileChooser.chooseFiles(descriptor, getTabComponent(), null, moduleDir);
       myLibrariesTableModel.addAll(Arrays.asList(files));
     }).setRemoveAction(anActionButton -> {

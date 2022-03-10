@@ -56,17 +56,6 @@ import jetbrains.mps.project.AbstractModule;
 import java.util.Collections;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
-import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.extapi.persistence.FileDataSource;
-import jetbrains.mps.persistence.FilePerRootDataSource;
-import java.util.Map;
-import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
-import com.intellij.openapi.vcs.history.VcsCachingHistory;
-import com.intellij.vcsUtil.VcsUtil;
-import com.intellij.openapi.vcs.impl.VcsBackgroundableActions;
-import com.intellij.openapi.vcs.history.VcsHistorySession;
-import jetbrains.mps.vcs.diff.ui.RootHistoryDialog;
 import jetbrains.mps.vcs.annotate.AnnotationColumn;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.leftHighlighter.AbstractLeftColumn;
@@ -85,6 +74,7 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import com.intellij.vcs.log.impl.HashImpl;
 import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
+import com.intellij.openapi.vcs.impl.VcsBackgroundableActions;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/8230098746512809101", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public final class VcsActionsUtil {
@@ -306,56 +296,11 @@ __switch__:
     }).toListSequence();
   }
 
-  public static VirtualFile getFileFromModel(SModel model, List<SNode> nodes) {
-    DataSource ds = model.getSource();
-    if (ds instanceof FileDataSource) {
-      return VirtualFileUtils.getProjectVirtualFile(((FileDataSource) ds).getFile());
-    }
-    if (ds instanceof FilePerRootDataSource) {
-      SNode containingRoot = nodes.iterator().next().getContainingRoot();
-      Map<SNodeId, String> streamNames = FilePerRootFormatUtil.getStreamNames(model.getRootNodes());
-      String rootStream = streamNames.get(containingRoot.getNodeId());
-      if (rootStream == null) {
-        return null;
-      } else {
-        IFile file = ((FilePerRootDataSource) ds).getFile(rootStream);
-        return VirtualFileUtils.getProjectVirtualFile(file);
-      }
-    }
-    return null;
-  }
-
-  public static boolean modelHistoryIsTrackedInVcs(SModel model, MPSProject mpsProject, List<SNode> nodes) {
-    VirtualFile vf = VcsActionsUtil.getFileFromModel(model, nodes);
-    if (vf == null) {
-      return false;
-    }
-    if (ProjectLevelVcsManager.getInstance(mpsProject.getProject()).getVcsFor(vf) == null) {
-      return false;
-    }
-    return AbstractVcs.fileInVcsByFileStatus(mpsProject.getProject(), vf);
-  }
-
-  public static void showNodeHistory(final SModel model, final MPSProject mpsProject, final List<SNode> nodes, final SNodeId nodeId, final String dialogTitle, final boolean compareModels) {
-    final Wrappers._T<VirtualFile> vf = new Wrappers._T<VirtualFile>();
-    mpsProject.getModelAccess().runReadAction(() -> vf.value = VcsActionsUtil.getFileFromModel(model, nodes));
-    final AbstractVcs activeVCS = ProjectLevelVcsManager.getInstance(mpsProject.getProject()).getVcsFor(vf.value);
-    // see RootHistoryDialog.show for explanation why I resort to roots. The reason I do it here, not in show(), as I don't want to care about model read access there (it's likely in background).
-    // copied from IDEA's SelectedBlockHistoryAction
-    VcsCachingHistory.collectInBackground(activeVCS, VcsUtil.getFilePath(vf.value), VcsBackgroundableActions.HISTORY_FOR_SELECTION, (VcsHistorySession vcsSession) -> {
-      if (vcsSession != null) {
-        RootHistoryDialog dlg = new RootHistoryDialog(mpsProject, vf.value, activeVCS, vcsSession, compareModels);
-        dlg.setTitle(dialogTitle);
-        dlg.show(Collections.singleton(nodeId));
-      }
-    });
-  }
-
   @Nullable
   /*package*/ static AnnotationColumn getAnnotationColumn(EditorComponent editorComponent) {
     for (AbstractLeftColumn column : editorComponent.getLeftEditorHighlighter().getLeftColumns()) {
       if (column instanceof AnnotationColumn) {
-        return as_brpb5o_a0a0a0a0bb(column, AnnotationColumn.class);
+        return as_brpb5o_a0a0a0a0v(column, AnnotationColumn.class);
       }
     }
     return null;
@@ -415,7 +360,7 @@ __switch__:
   public static BackgroundableActionLock getAnnotateRootLock(Project project, String taskName) {
     return BackgroundableActionLock.getLock(project, VcsBackgroundableActions.ANNOTATE, taskName);
   }
-  private static <T> T as_brpb5o_a0a0a0a0bb(Object o, Class<T> type) {
+  private static <T> T as_brpb5o_a0a0a0a0v(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }
