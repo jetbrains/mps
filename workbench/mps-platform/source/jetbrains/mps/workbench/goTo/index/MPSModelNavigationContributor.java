@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,14 +18,17 @@ package jetbrains.mps.workbench.goTo.index;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.extapi.persistence.FileDataSource;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.smodel.language.ConceptRegistryUtil;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.base.BasePropertyConstraintsDescriptor;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.workbench.ProjectModelFilter;
 import jetbrains.mps.workbench.index.RootNodeNameIndex;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -53,7 +56,9 @@ public class MPSModelNavigationContributor implements NavigationParticipant {
 
   @Override
   public void findTargets(TargetKind kind, Collection<SModel> scope, Consumer<NavigationTarget> consumer, Consumer<SModel> processedConsumer) {
-    for (SModel sm : scope) {
+    MPSProject mpsProject = ProjectHelper.fromIdeaProjectOrFail(myProject);
+    final FileSystemBridge fsBridge = mpsProject.getFileSystem();
+    for (SModel sm : new ProjectModelFilter(mpsProject).projectModelsOnly(scope)) {
       if (sm instanceof EditableSModel && ((EditableSModel) sm).isChanged()) {
         continue;
       }
@@ -68,7 +73,7 @@ public class MPSModelNavigationContributor implements NavigationParticipant {
       if (ext == null || modelFile.isDirectory() || !(supportedExtensions.contains(ext.toLowerCase()))) {
         continue;
       }
-      VirtualFile vf = VirtualFileUtils.getOrCreateVirtualFile(modelFile);
+      VirtualFile vf = fsBridge.asVirtualFile(modelFile);
 
       if (vf == null) {
         continue; // e.g. model was deleted or we are in headless mode

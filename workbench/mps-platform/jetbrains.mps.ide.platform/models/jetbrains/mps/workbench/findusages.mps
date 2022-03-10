@@ -50,6 +50,7 @@
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
     <import index="ospv" ref="r:54a768d9-9f11-4443-98d8-70ab3a783c52(jetbrains.mps.findUsages)" />
+    <import index="3s15" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench(MPS.Platform/)" />
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
@@ -4173,7 +4174,7 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="5YiFMyhxSRd" role="1B3o_S" />
       <node concept="3uibUv" id="Tjq6kx1tp$" role="1tU5fm">
-        <ref role="3uigEE" to="ria8:~ProjectModelFilter" resolve="ProjectModelFilter" />
+        <ref role="3uigEE" to="3s15:~ProjectModelFilter" resolve="ProjectModelFilter" />
       </node>
     </node>
     <node concept="2tJIrI" id="5YiFMyhwt6j" role="jymVt" />
@@ -4317,7 +4318,7 @@
             </node>
             <node concept="2ShNRf" id="Tjq6kx1tYk" role="37vLTx">
               <node concept="1pGfFk" id="Tjq6kx1UJ$" role="2ShVmc">
-                <ref role="37wK5l" to="ria8:~ProjectModelFilter.&lt;init&gt;(jetbrains.mps.project.MPSProject)" resolve="ProjectModelFilter" />
+                <ref role="37wK5l" to="3s15:~ProjectModelFilter.&lt;init&gt;(jetbrains.mps.project.MPSProject)" resolve="ProjectModelFilter" />
                 <node concept="37vLTw" id="Tjq6kx1UNh" role="37wK5m">
                   <ref role="3cqZAo" node="5YiFMyhxS0V" resolve="mpsProject" />
                 </node>
@@ -4456,7 +4457,7 @@
                 <ref role="3cqZAo" node="5YiFMyhxSRc" resolve="myModelFilter" />
               </node>
               <node concept="liA8E" id="Tjq6kx1YjP" role="2OqNvi">
-                <ref role="37wK5l" to="ria8:~ProjectModelFilter.projectModelsOnly(java.util.Collection)" resolve="projectModelsOnly" />
+                <ref role="37wK5l" to="3s15:~ProjectModelFilter.projectModelsOnly(java.util.Collection)" resolve="projectModelsOnly" />
                 <node concept="37vLTw" id="Tjq6kx1Yo1" role="37wK5m">
                   <ref role="3cqZAo" node="6f4clAdW61b" resolve="models" />
                 </node>
@@ -4994,7 +4995,7 @@
                 <ref role="3cqZAo" node="5YiFMyhxSRc" resolve="myModelFilter" />
               </node>
               <node concept="liA8E" id="Tjq6kx2atl" role="2OqNvi">
-                <ref role="37wK5l" to="ria8:~ProjectModelFilter.projectModelsOnly(java.util.Collection)" resolve="projectModelsOnly" />
+                <ref role="37wK5l" to="3s15:~ProjectModelFilter.projectModelsOnly(java.util.Collection)" resolve="projectModelsOnly" />
                 <node concept="37vLTw" id="Tjq6kx2atm" role="37wK5m">
                   <ref role="3cqZAo" node="6f4clAdW61t" resolve="models" />
                 </node>
@@ -5368,7 +5369,7 @@
                 <ref role="3cqZAo" node="5YiFMyhxSRc" resolve="myModelFilter" />
               </node>
               <node concept="liA8E" id="Tjq6kx2cxP" role="2OqNvi">
-                <ref role="37wK5l" to="ria8:~ProjectModelFilter.projectModelsOnly(java.util.Collection)" resolve="projectModelsOnly" />
+                <ref role="37wK5l" to="3s15:~ProjectModelFilter.projectModelsOnly(java.util.Collection)" resolve="projectModelsOnly" />
                 <node concept="37vLTw" id="Tjq6kx2e1A" role="37wK5m">
                   <ref role="3cqZAo" node="1nBtCnDUQU7" resolve="scope" />
                 </node>
@@ -5708,6 +5709,28 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="4dwvagLxPlu" role="3cqZAp">
+          <node concept="3cpWsn" id="4dwvagLxPlv" role="3cpWs9">
+            <property role="TrG5h" value="fsBridge" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3uibUv" id="4dwvagLxO8a" role="1tU5fm">
+              <ref role="3uigEE" to="4hrd:~FileSystemBridge" resolve="FileSystemBridge" />
+            </node>
+            <node concept="2OqwBi" id="4dwvagLxPlw" role="33vP2m">
+              <node concept="2OqwBi" id="4dwvagLxPlx" role="2Oq$k0">
+                <node concept="37vLTw" id="4dwvagLxPly" role="2Oq$k0">
+                  <ref role="3cqZAo" node="5YiFMyhxSRc" resolve="myModelFilter" />
+                </node>
+                <node concept="liA8E" id="4dwvagLxPlz" role="2OqNvi">
+                  <ref role="37wK5l" to="3s15:~ProjectModelFilter.project()" resolve="project" />
+                </node>
+              </node>
+              <node concept="liA8E" id="4dwvagLxPl$" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~MPSProject.getFileSystem()" resolve="getFileSystem" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbH" id="409DxfutSjU" role="3cqZAp" />
         <node concept="1DcWWT" id="2s2BsXxOy_R" role="3cqZAp">
           <node concept="37vLTw" id="2BHiRxgm$UD" role="1DdaDG">
@@ -5831,6 +5854,37 @@
                 </node>
               </node>
               <node concept="3clFbS" id="409DxfutSkq" role="2LFqv$">
+                <node concept="3SKdUt" id="4dwvagLyxbt" role="3cqZAp">
+                  <node concept="1PaTwC" id="4dwvagLyxbu" role="1aUNEU">
+                    <node concept="3oM_SD" id="4dwvagLyxci" role="1PaTwD">
+                      <property role="3oM_SC" value="FIXME" />
+                    </node>
+                    <node concept="3oM_SD" id="4dwvagLy$a$" role="1PaTwD">
+                      <property role="3oM_SC" value="see" />
+                    </node>
+                    <node concept="3oM_SD" id="4dwvagLy$Ia" role="1PaTwD">
+                      <property role="3oM_SC" value="MPSModelsFastFindSupport.findCandidates," />
+                    </node>
+                    <node concept="3oM_SD" id="4dwvagLy$Ie" role="1PaTwD">
+                      <property role="3oM_SC" value="there's" />
+                    </node>
+                    <node concept="3oM_SD" id="4dwvagLy$Ij" role="1PaTwD">
+                      <property role="3oM_SC" value="need" />
+                    </node>
+                    <node concept="3oM_SD" id="4dwvagLy$Ip" role="1PaTwD">
+                      <property role="3oM_SC" value="for" />
+                    </node>
+                    <node concept="3oM_SD" id="4dwvagLy$JS" role="1PaTwD">
+                      <property role="3oM_SC" value="additional" />
+                    </node>
+                    <node concept="3oM_SD" id="4dwvagLy$PD" role="1PaTwD">
+                      <property role="3oM_SC" value="VF" />
+                    </node>
+                    <node concept="3oM_SD" id="4dwvagLy$O8" role="1PaTwD">
+                      <property role="3oM_SC" value="check" />
+                    </node>
+                  </node>
+                </node>
                 <node concept="3cpWs8" id="409DxfutSkr" role="3cqZAp">
                   <node concept="3cpWsn" id="409DxfutSks" role="3cpWs9">
                     <property role="TrG5h" value="vf" />
@@ -5838,11 +5892,15 @@
                     <node concept="3uibUv" id="409DxfutSkt" role="1tU5fm">
                       <ref role="3uigEE" to="jlff:~VirtualFile" resolve="VirtualFile" />
                     </node>
-                    <node concept="2YIFZM" id="15yHJj8ndys" role="33vP2m">
-                      <ref role="37wK5l" to="4hrd:~VirtualFileUtils.getOrCreateVirtualFile(jetbrains.mps.vfs.IFile)" resolve="getOrCreateVirtualFile" />
-                      <ref role="1Pybhc" to="4hrd:~VirtualFileUtils" resolve="VirtualFileUtils" />
-                      <node concept="37vLTw" id="15yHJj8ndyt" role="37wK5m">
-                        <ref role="3cqZAo" node="409DxfutSko" resolve="path" />
+                    <node concept="2OqwBi" id="4dwvagLykv8" role="33vP2m">
+                      <node concept="37vLTw" id="4dwvagLyin$" role="2Oq$k0">
+                        <ref role="3cqZAo" node="4dwvagLxPlv" resolve="fsBridge" />
+                      </node>
+                      <node concept="liA8E" id="4dwvagLyo7I" role="2OqNvi">
+                        <ref role="37wK5l" to="4hrd:~FileSystemBridge.asVirtualFile(jetbrains.mps.vfs.IFile)" resolve="asVirtualFile" />
+                        <node concept="37vLTw" id="4dwvagLyre5" role="37wK5m">
+                          <ref role="3cqZAo" node="409DxfutSko" resolve="path" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -6253,7 +6311,7 @@
                       <ref role="3cqZAo" node="5YiFMyhxSRc" resolve="myModelFilter" />
                     </node>
                     <node concept="liA8E" id="7J_xuUHUU20" role="2OqNvi">
-                      <ref role="37wK5l" to="ria8:~ProjectModelFilter.project()" resolve="project" />
+                      <ref role="37wK5l" to="3s15:~ProjectModelFilter.project()" resolve="project" />
                     </node>
                   </node>
                   <node concept="liA8E" id="7J_xuUHUV$6" role="2OqNvi">

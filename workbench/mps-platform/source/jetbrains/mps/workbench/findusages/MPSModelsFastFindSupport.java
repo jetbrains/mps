@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ import jetbrains.mps.findUsages.ModelImportLookup;
 import jetbrains.mps.findUsages.NodeUsageLookup;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.progress.EmptyProgressMonitor;
@@ -40,6 +40,7 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.containers.ManyToManyMap;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.workbench.ProjectModelFilter;
 import jetbrains.mps.workbench.findusages.UsageEntry.ConceptInstance;
 import jetbrains.mps.workbench.findusages.UsageEntry.ModelUse;
 import jetbrains.mps.workbench.findusages.UsageEntry.NodeUse;
@@ -183,6 +184,7 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
     // get all files in scope
     final ManyToManyMap<SModel, VirtualFile> scopeFiles = new ManyToManyMap<>();
     final ArrayList<SModel> models2consume = new ArrayList<>(models.size());
+    final FileSystemBridge fsBridge = myModelFilter.project().getFileSystem();
     for (final SModel sm : models) {
       if (sm instanceof EditableSModel && ((EditableSModel) sm).isChanged()) {
         continue;
@@ -214,13 +216,13 @@ public class MPSModelsFastFindSupport implements FindUsagesParticipant, Disposab
           break;
         }
 
-        // FIXME use of getOrCreateVirtualFile() leads to VF creation for models that reside in project libraries
+        // FIXME use of VFU.getOrCreateVirtualFile() or fsBridge.asVirtualFile may lead to VF creation for models that reside in project libraries
         //       e.g. deployed modules. One have to be careful to make sure these files get indexed (i.e. covered
         //       by indexable roots, see MPSIndexableSetContributor & IndexableRootCalculator), otherwise we may
         //       mark model as 'consumed' here while it wasn't indexed at all.
         // FIXME Perhaps, there's an API to find out whether VF is part of index, so that we don't consume its model here
         //       unless it is in the index.
-        VirtualFile vf = VirtualFileUtils.getOrCreateVirtualFile(modelFile);
+        VirtualFile vf = fsBridge.asVirtualFile(modelFile);
         if (vf == null) {
           LogManager.getLogger(MPSModelsFastFindSupport.class).warn(
               String.format("Model %s: virtual file not found for model file. Model file: %s", sm.getName(), modelFile.getPath()));

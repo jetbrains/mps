@@ -8,6 +8,7 @@ import com.intellij.openapi.Disposable;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
 import jetbrains.mps.persistence.PersistenceRegistry;
+import jetbrains.mps.workbench.ProjectModelFilter;
 import com.intellij.openapi.startup.StartupActivity;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.project.Project;
@@ -46,9 +47,9 @@ import jetbrains.mps.util.containers.ManyToManyMap;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.extapi.persistence.FolderSetDataSource;
 import gnu.trove.THashSet;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.vfs.IFile;
 import java.util.ArrayList;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import org.apache.log4j.Level;
 import java.util.Arrays;
 import com.intellij.util.indexing.FileBasedIndex;
@@ -187,6 +188,7 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
     final ManyToManyMap<SModel, VirtualFile> scopeFiles = new ManyToManyMap<SModel, VirtualFile>();
 
     Set<FolderSetDataSource> sources = new THashSet<FolderSetDataSource>();
+    final FileSystemBridge fsBridge = myModelFilter.project().getFileSystem();
 
     for (final SModel sm : models) {
       if (!(sm instanceof JavaClassStubModelDescriptor)) {
@@ -201,7 +203,8 @@ public class StubModelsFastFindSupport implements FindUsagesParticipant, Disposa
       Collection<IFile> files = source.getAffectedFiles();
       ArrayList<VirtualFile> vFiles = new ArrayList<VirtualFile>();
       for (IFile path : files) {
-        final VirtualFile vf = VirtualFileUtils.getOrCreateVirtualFile(path);
+        // FIXME see MPSModelsFastFindSupport.findCandidates, there's need for additional VF check
+        final VirtualFile vf = fsBridge.asVirtualFile(path);
         if (vf == null) {
           if (LOG.isEnabledFor(Level.WARN)) {
             LOG.warn("File " + path + ", which belows to model source of model " + sm.getReference().toString() + ", was not found in VFS. Assuming no usages in this file.");
