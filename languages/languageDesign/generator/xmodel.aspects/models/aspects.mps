@@ -68,6 +68,12 @@
   </node>
   <node concept="2VgMpV" id="2fM90Pxfljd">
     <property role="TrG5h" value="BaseLanguageWithExtensions" />
+    <node concept="2VgMA2" id="65KeyVHkvhO" role="2VgMA7">
+      <node concept="2V$Bhx" id="4_JZp5_yVjQ" role="1t_9vn">
+        <property role="2V$B1T" value="515552c7-fcc0-4ab4-9789-2f3c49344e85" />
+        <property role="2V$B1Q" value="jetbrains.mps.baseLanguage.varVariable" />
+      </node>
+    </node>
     <node concept="2VgMA2" id="44d2vb6Ru$W" role="2VgMA7">
       <node concept="2V$Bhx" id="44d2vb6Ru_8" role="1t_9vn">
         <property role="2V$B1T" value="a247e09e-2435-45ba-b8d2-07e93feba96a" />
