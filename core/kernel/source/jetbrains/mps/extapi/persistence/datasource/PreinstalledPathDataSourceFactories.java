@@ -18,6 +18,7 @@ package jetbrains.mps.extapi.persistence.datasource;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.project.MPSExtentions;
+import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.FileSystemExtPoint;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
@@ -41,7 +42,7 @@ public enum PreinstalledPathDataSourceFactories implements DataSourceFactoryFrom
     // FIXME (a) is there reason for Path, not IFile? Few uses of the method suggest IFile could work
     //       (b) if Path is necessary, can we initialize PreinstalledPathDataSourceFactories with VfsManager or
     //           anything else to avoid using FS singleton?
-    IFile file = FileSystemExtPoint.getFS().getFile(path);
+    IFile file = FileSystem.getInstance().getFile(path);
     return createFromFile(file);
   }
 

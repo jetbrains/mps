@@ -22,11 +22,8 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.util.annotation.Hack;
-import jetbrains.mps.vfs.FileSystemExtPoint;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.QualifiedPath;
-import jetbrains.mps.vfs.impl.IoFileSystem;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -76,28 +73,6 @@ public final class VirtualFileUtils {
     }
   }
 
-  /**
-   * It is hack due to the 3.4 release coming soon. We have to use idea vfs to comply with
-   * IDEA subsystems which require VirtualFile (e.g. idea indexing/find usages)
-   *
-   * AP: I hope that it will go away in the nearest future since we do not need vfs tracking these files' physical changes
-   * (we would rather make them read-only)
-   */
-  @Hack
-  @Deprecated(since = "3.4", forRemoval = true)
-  public static VirtualFile getOrCreateVirtualFile(@NotNull IFile file) {
-    if (file.getFileSystem() instanceof IoFileSystem) {
-      file = FileSystemExtPoint.getFS().getFile(file.getPath());
-      if (file instanceof IdeaFile) {
-        return ((IdeaFile) file).getVirtualFile();
-      }
-    } else if (file instanceof IdeaFile) {
-      return ((IdeaFile) file).getVirtualFile();
-    } else {
-      LOG.warn("Unknown file " + file);
-    }
-    return null;
-  }
 
   public static File toFile(VirtualFile f) {
     if (f.getFileSystem() instanceof LocalFileSystem) {

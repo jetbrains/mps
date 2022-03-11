@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,9 +22,10 @@ import com.intellij.openapi.roots.libraries.ui.OrderRoot;
 import com.intellij.openapi.roots.libraries.ui.OrderRootTypePresentation;
 import com.intellij.openapi.roots.libraries.ui.RootDetector;
 import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import jetbrains.mps.ide.MPSCoreComponents;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
+import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.icons.MPSIcons;
 import jetbrains.mps.library.ModulesMiner;
@@ -32,11 +33,14 @@ import jetbrains.mps.library.ModulesMiner.ModuleHandle;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.util.annotation.Hack;
+import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
@@ -54,8 +58,36 @@ public class ModuleXmlRootDetector extends RootDetector {
    * was, just under a single point of access.
    */
   /*package*/ static OrderRoot asOrderRoot(AbstractModule mpsModule) {
-    return new OrderRoot(VirtualFileUtils.getOrCreateVirtualFile(mpsModule.getDescriptorFile()), ModuleXmlRootDetector.MPS_MODULE_XML, false);
+    return new OrderRoot(getOrCreateVirtualFile(mpsModule.getDescriptorFile()), ModuleXmlRootDetector.MPS_MODULE_XML, false);
   }
+
+  /**
+   * It is hack due to the 3.4 release coming soon. We have to use idea vfs to comply with
+   * IDEA subsystems which require VirtualFile (e.g. idea indexing/find usages)
+   *
+   * AP: I hope that it will go away in the nearest future since we do not need vfs tracking these files' physical changes
+   * (we would rather make them read-only)
+   *
+   * This method used to live in j.m.ide.vfs.VirtualFileUtils, relocated here as it's the only use left.
+   * I don't want to do anything about this method as I feel the proper fix is to get rid of OrderRoot (and, therefore, requirement
+   * to have VirtualFile) altogether. See #asOrderRoot(), above
+   */
+  @Hack
+  @Deprecated(since = "3.4", forRemoval = true)
+  private static VirtualFile getOrCreateVirtualFile(@NotNull IFile file) {
+    if (!(file instanceof IdeaFile)) {
+      // do our best to switch to IdeaFileSystem. Used to be slightly different logic with
+      // explicit check for IoFileSystem, I just don't see a reason to overcomplicate this, FS.getInstance().getFile(String) is
+      // essentially the same.
+      file = FileSystem.getInstance().getFile(file.getPath());
+    }
+    if (file instanceof IdeaFile) {
+      return ((IdeaFile) file).getVirtualFile();
+    }
+    // as a last resort, give IDEA a chance to make a guess
+    return VirtualFileManager.getInstance().findFileByNioPath(Path.of(file.getPath()));
+  }
+
 
   protected ModuleXmlRootDetector() {
     super(MPS_MODULE_XML, false, MPSBundle.message("mps.module.xml.root.type"));
@@ -91,7 +123,7 @@ public class ModuleXmlRootDetector extends RootDetector {
       // we may want loading in the future, but the time has not come yet
       if (handle.getDescriptor() != null && handle.getDescriptor().getModuleReference().resolve(deploymentRepo) != null) {
         // XXX why not fs.findFileByPath(handle.getFile().getPath())?! Why this odd == fs check?
-        VirtualFile ideaFile = VirtualFileUtils.getOrCreateVirtualFile(handle.getFile());
+        VirtualFile ideaFile = getOrCreateVirtualFile(handle.getFile());
         // we compare file system since idea has been very, very bad:( See DetectedRootsChooserDialog.createTreeTable
         // problem in VfsUtilCore.getRelativePath
         if (ideaFile != null && ideaFile.getFileSystem() == fs) {
