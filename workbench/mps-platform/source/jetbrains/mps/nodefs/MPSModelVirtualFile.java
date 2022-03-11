@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.FolderDataSource;
-import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import jetbrains.mps.util.Computable;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -30,7 +28,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -116,9 +113,9 @@ public final class MPSModelVirtualFile extends VirtualFile {
       }
       DataSource ds = model.getSource();
       if (ds instanceof FileDataSource) {
-        return VirtualFileUtils.getOrCreateVirtualFile(((FileDataSource) ds).getFile());
+        return myRepoFiles.asVirtualFile(((FileDataSource) ds).getFile());
       } else if (ds instanceof FolderDataSource) {
-        return VirtualFileUtils.getOrCreateVirtualFile(((FolderDataSource) ds).getFolder());
+        return myRepoFiles.asVirtualFile(((FolderDataSource) ds).getFolder());
       } else {
         return null;
       }
