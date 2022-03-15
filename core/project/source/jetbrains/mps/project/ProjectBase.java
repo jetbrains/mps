@@ -107,28 +107,16 @@ public abstract class ProjectBase extends Project {
     // generally, module is already registered with a repo, as the primary mechanism to create a module instance, ModuleRepositoryFacade#instantiateModule,
     // automatically registers a module as well.
     // FIXME ^^^ this is likely no longer true
-    repository.getModelAccess().runWriteAction(() -> repository.registerModule(module, this));
+    repository.registerModule(module, this);
   }
 
   /*package*/ void dissociateFromProjectRepo(final SModule module, final boolean checkProjectIsOwner) {
     SRepositoryExt repository = (SRepositoryExt) getRepository();
-    repository.getModelAccess().runWriteAction(() -> {
-      if (checkProjectIsOwner && !repository.getOwners(module).contains(this)) {
-        LOG.warn("Module has not been registered in the project: " + module);
-        return;
-      }
-      if (module instanceof Language) {
-        // Project tracks Generator modules by denoting itself as 'owner' of the module in a repository.
-        // E.g. ProjectModulesFiller tells project to addModule(Generator), and it eventually gets down to associateWithProjectRepo().
-        // Though a great deal has been done to let Generator modules to live without their Language module present, I still keep this code
-        // to unregister Language-owned generators along with the language as I'm too afraid to make the change and to dissociate supplied module only.
-        Collection<Generator> ownedGenerators = ((Language) module).getOwnedGenerators();
-        for (Generator g : ownedGenerators) {
-          repository.unregisterModule(g, this);
-        }
-      }
-      repository.unregisterModule(module, this);
-    });
+    if (checkProjectIsOwner && !repository.getOwners(module).contains(this)) {
+      LOG.warn("Module has not been registered in the project: " + module);
+      return;
+    }
+    repository.unregisterModule(module, this);
   }
 
   /**
@@ -188,9 +176,16 @@ public abstract class ProjectBase extends Project {
   /*package*/ final ModulePath removeModule0(@NotNull SModule module) {
     // modulePath could be null for Generator modules sharing mpl descriptor file with their Language
     final ModulePath modulePath = myModuleLoader.unloaded(module.getModuleReference());
-    if (modulePath == null && module instanceof Generator && module.getRepository() == null) {
-      // it's a generator that has been unregistered as part of allLangOwnedGenerators (see write action in dissociateFromProjectRepo) for some project language module
-      return modulePath;
+    if (module instanceof Language) {
+      // Project tracks Generator modules by denoting itself as 'owner' of the module in a repository.
+      // E.g. ProjectModulesFiller tells project to addModule(Generator), and it eventually gets down to associateWithProjectRepo().
+      // Though a great deal has been done to let Generator modules to live without their Language module present, I still keep this code
+      // to unregister Language-owned generators along with the language as I'm too afraid to make the change and to dissociate supplied module only.
+      Collection<Generator> ownedGenerators = ((Language) module).getOwnedGenerators();
+      for (Generator g : ownedGenerators) {
+        myModuleLoader.unloaded(g.getModuleReference());
+        dissociateFromProjectRepo(g, false);
+      }
     }
 
     dissociateFromProjectRepo(module, modulePath == null);
@@ -253,6 +248,7 @@ public abstract class ProjectBase extends Project {
   /**
    * AP todo : this logic must be redone alongside with filling the SLibraries with modules.
    * filling libraries and projects with modules externally seems to me the best solution
+   * Requires model write
    */
   @Hack
   protected final void loadModules(@NotNull Collection<ModulePath> modulePaths) {
