@@ -69,7 +69,7 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   public StandaloneMPSProject(final Project project, ProjectLibraryManager projectLibraryManager,
                               MPSCoreComponents mpsCore, IdeaFileSystem ideaFS) {
     super(project, mpsCore, ideaFS);
-    myProjectDescriptor = new ProjectDescriptor(project.getName());
+    myProjectDescriptor = null;
     myManager = mpsCore.getPlatform().findComponent(VFSManager.class);
   }
 
@@ -126,7 +126,9 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   @NotNull
   @Deprecated(since = "3.3", forRemoval = true)
   public ProjectDescriptor getProjectDescriptor() {
-    return myProjectDescriptor;
+    final ProjectDescriptor pd = new ProjectDescriptor(getName());
+    allModulePaths().forEach(pd::addModulePath);
+    return pd;
   }
 
   // todo remove
@@ -138,6 +140,10 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
 
   // AP fixme : public update exposes the project internals too much (as it looks for me)
   public final void update() {
+    if (myProjectDescriptor == null) {
+      // nothing to update
+      return;
+    }
     ProgressIndicator progressIndicator = ProgressManager.getInstance().getProgressIndicator();
     long beginTime = System.nanoTime();
     LOG.info("Updating " + getName());
@@ -147,6 +153,7 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
       }
       getModelAccess().runWriteAction(() -> {
         loadModules(myProjectDescriptor.getModulePaths());
+        myProjectDescriptor = null; // indicate it's all in RT now.
         fireModulesLoaded();
       });
       if (progressIndicator != null) {
