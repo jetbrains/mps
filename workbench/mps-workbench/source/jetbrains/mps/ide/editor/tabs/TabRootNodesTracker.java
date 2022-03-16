@@ -29,6 +29,7 @@ import org.jetbrains.mps.openapi.event.SReferenceChangeEvent;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
@@ -143,9 +144,13 @@ class TabRootNodesTracker extends SRepositoryContentAdapter implements Disposabl
 
   @Override
   public void referenceChanged(@NotNull SReferenceChangeEvent event) {
-    SNode targetNode = event.getNewValue().getTargetNode();
+    SReference newValue = event.getNewValue();
+    if (newValue == null) {
+      return;
+    }
+    SNode targetNode = newValue.getTargetNode();
     if (targetNode != null && targetNode.getParent() == null) {
-      myChangedRoots.add(event.getNewValue().getTargetNodeReference());
+      myChangedRoots.add(newValue.getTargetNodeReference());
     }
   }
 
