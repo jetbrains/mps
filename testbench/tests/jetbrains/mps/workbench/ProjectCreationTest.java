@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,9 @@ import jetbrains.mps.workbench.dialogs.project.newproject.ProjectFactory.Project
 import jetbrains.mps.workbench.dialogs.project.newproject.ProjectOptions;
 import org.jetbrains.annotations.NotNull;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -57,6 +59,9 @@ import java.util.StringJoiner;
  * @author Evgeny Gerashchenko
  */
 public class ProjectCreationTest implements EnvironmentAware {
+  // FIXME shall decide whether we care to go on with support for file-based projects that IDEA decided to fade away.
+  private static final boolean CARE_TO_SUPPORT_FILE_PROJECT = false;
+
   private static final String PROJECT_NAME = "CreatedTestProject";
   private static final String LANGUAGE_NAMESPACE = "CreatedLanguage";
   private static final String SOLUTION_NAMESPACE = "CreatedSandbox";
@@ -130,6 +135,7 @@ public class ProjectCreationTest implements EnvironmentAware {
 
   @Test
   public void emptyProjectFileBased() {
+    Assume.assumeTrue("Test for .mpr project", CARE_TO_SUPPORT_FILE_PROJECT);
     invokeTest(new EmptyProjectProvider(true), EMPTY_PROJECT_PATH_LIST_FB);
   }
 
@@ -140,6 +146,7 @@ public class ProjectCreationTest implements EnvironmentAware {
 
   @Test
   public void projectWithModulesFileBased() {
+    Assume.assumeTrue("Test for .mpr project", CARE_TO_SUPPORT_FILE_PROJECT);
     invokeTest(new ProjectWithModulesProvider(true), PROJECT_WITH_MODULES_PATH_LIST_FB);
   }
 

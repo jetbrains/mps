@@ -16221,6 +16221,7 @@
           <language id="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
           <language id="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
           <language id="l:760a0a8c-eabb-4521-8bfd-65db761a9ba3:jetbrains.mps.baseLanguage.logging" />
+          <language id="l:acfc188d-d5d6-4598-b370-6f4a983f05b2:jetbrains.mps.baseLanguage.methodReferences" />
           <language id="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
           <language id="l:3a13115c-633c-4c5c-bbcc-75c4219e9555:jetbrains.mps.lang.quotation" />
           <language id="l:7866978e-a0f0-4cc7-81bc-4d213d9375e1:jetbrains.mps.lang.smodel" />
@@ -16463,6 +16464,7 @@
         <module file="${mps_home}/languages/baseLanguage/lightweightdsl/jetbrains.mps.baseLanguage.lightweightdsl.mpl" bootstrap="true" />
         <module file="${mps_home}/languages/baseLanguage/logging/jetbrains.mps.baseLanguage.logging.mpl" bootstrap="true" />
         <module file="${mps_home}/languages/baseLanguage/logging/runtime/jetbrains.mps.baseLanguage.logging.runtime.msd" bootstrap="true" />
+        <module file="${mps_home}/languages/baseLanguage/jdk8/languages/methodReferences/jetbrains.mps.baseLanguage.methodReferences.mpl" bootstrap="true" />
         <module file="${mps_home}/languages/util/regexp/jetbrains.mps.baseLanguage.regexp.mpl" bootstrap="true" />
         <module file="${mps_home}/languages/util/regexp/solutions/jetbrains.mps.baseLanguage.regexp.runtime/jetbrains.mps.baseLanguage.regexp.runtime.msd" bootstrap="true" />
         <module file="${mps_home}/languages/baseLanguage/baseLanguage.scopes/jetbrains.mps.baseLanguage.scopes.msd" bootstrap="true" />
@@ -16569,7 +16571,6 @@
         <module file="${mps_home}/languages/core/stub/Testbench/Testbench.msd" />
         <module file="${mps_home}/languages/baseLanguage/constructors/jetbrains.mps.baseLanguage.constructors.mpl" />
         <module file="${mps_home}/languages/baseLanguage/doubleDispatch/jetbrains.mps.baseLanguage.doubleDispatch.mpl" />
-        <module file="${mps_home}/languages/baseLanguage/jdk8/languages/methodReferences/jetbrains.mps.baseLanguage.methodReferences.mpl" />
         <module file="${mps_home}/languages/baseLanguage/overloadedOperators/languages/overloadedOperators/jetbrains.mps.baseLanguage.overloadedOperators.mpl" />
         <module file="${mps_home}/plugins/mps-build/languages/solutions/jetbrains.mps.build.mps.runner.runtime/jetbrains.mps.build.mps.runner.runtime.msd" />
         <module file="${mps_home}/plugins/mps-core/languages/core.xml/jetbrains.mps.core.xml.mpl" />
