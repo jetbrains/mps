@@ -16,6 +16,7 @@
 package jetbrains.mps.ide.vfs;
 
 import com.intellij.openapi.vfs.JarFileSystem;
+import com.intellij.openapi.vfs.LargeFileWriteRequestor;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.SafeWriteRequestor;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -33,7 +34,9 @@ import org.jetbrains.annotations.Nullable;
 
 @Deprecated
 @ToRemove(version = 2019.1)
-public final class IdeaFileSystem extends BaseIdeaFileSystem implements SafeWriteRequestor, FileSystem, IFileSystem, CachingFileSystem {
+public final class IdeaFileSystem extends BaseIdeaFileSystem implements FileSystem, IFileSystem, CachingFileSystem,
+                                                                        SafeWriteRequestor,
+                                                                        LargeFileWriteRequestor {
   private FileSystem myOldFileSystem;
 
   //all FSes should be registered before this one starts working
@@ -74,6 +77,7 @@ public final class IdeaFileSystem extends BaseIdeaFileSystem implements SafeWrit
 
   /**
    * Proper alternative to {@link VirtualFileUtils#getProjectVirtualFile(IFile)}, get back from MPS's {@code IFile} to IDEA's {@code VirtualFile}
+   *
    * @param file MPS file abstraction
    * @return IDEA's VirtualFile, if supplied IFile is tracked under project's file system.
    * @since 2021.1
