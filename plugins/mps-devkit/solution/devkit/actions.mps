@@ -127,7 +127,7 @@
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
     <import index="tprr" ref="r:00000000-0000-4000-0000-011c895904ab(jetbrains.mps.ide.newSolutionDialog)" />
     <import index="ov6m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.messages(MPS.IDEA/)" implicit="true" />
-    <import index="w827" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs.openapi(MPS.Core/)" implicit="true" />
+    <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" implicit="true" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -10802,32 +10802,14 @@
             <node concept="3uibUv" id="DmFJ5GCWR2" role="1tU5fm">
               <ref role="3uigEE" to="wyt6:~String" resolve="String" />
             </node>
-            <node concept="3K4zz7" id="4XeAu5No1Co" role="33vP2m">
-              <node concept="2OqwBi" id="4XeAu5No26h" role="3K4E3e">
-                <node concept="1eOMI4" id="4XeAu5No1DK" role="2Oq$k0">
-                  <node concept="10QFUN" id="4XeAu5No1DH" role="1eOMHV">
-                    <node concept="3uibUv" id="4XeAu5No1HU" role="10QFUM">
-                      <ref role="3uigEE" to="z1c4:~StandaloneMPSProject" resolve="StandaloneMPSProject" />
-                    </node>
-                    <node concept="37vLTw" id="DmFJ5GD0E3" role="10QFUP">
-                      <ref role="3cqZAo" node="DmFJ5GCU$X" resolve="myProject" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="liA8E" id="4XeAu5No2lV" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c4:~StandaloneMPSProject.getFolderFor(org.jetbrains.mps.openapi.module.SModule)" resolve="getFolderFor" />
-                  <node concept="37vLTw" id="4e2kfWTLqr5" role="37wK5m">
-                    <ref role="3cqZAo" node="4e2kfWTLpE_" resolve="sourceLanguage" />
-                  </node>
-                </node>
+            <node concept="2OqwBi" id="571u0wtGf9D" role="33vP2m">
+              <node concept="37vLTw" id="571u0wtGepl" role="2Oq$k0">
+                <ref role="3cqZAo" node="DmFJ5GCU$X" resolve="myProject" />
               </node>
-              <node concept="10Nm6u" id="4XeAu5No2tg" role="3K4GZi" />
-              <node concept="2ZW3vV" id="4XeAu5No1db" role="3K4Cdx">
-                <node concept="3uibUv" id="4XeAu5No1t6" role="2ZW6by">
-                  <ref role="3uigEE" to="z1c4:~StandaloneMPSProject" resolve="StandaloneMPSProject" />
-                </node>
-                <node concept="37vLTw" id="DmFJ5GD0D7" role="2ZW6bz">
-                  <ref role="3cqZAo" node="DmFJ5GCU$X" resolve="myProject" />
+              <node concept="liA8E" id="571u0wtGg9c" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~ProjectBase.getVirtualFolder(org.jetbrains.mps.openapi.module.SModule)" resolve="getVirtualFolder" />
+                <node concept="37vLTw" id="571u0wtGhCa" role="37wK5m">
+                  <ref role="3cqZAo" node="4e2kfWTLpE_" resolve="sourceLanguage" />
                 </node>
               </node>
             </node>
@@ -10934,14 +10916,14 @@
               <node concept="2OqwBi" id="4e2kfWTMgdt" role="2Oq$k0">
                 <node concept="2OqwBi" id="4e2kfWTMf$d" role="2Oq$k0">
                   <node concept="37vLTw" id="4e2kfWTMepq" role="2Oq$k0">
-                    <ref role="3cqZAo" node="4e2kfWTLpE_" resolve="sourceLanguage" />
+                    <ref role="3cqZAo" node="DmFJ5GCU$X" resolve="myProject" />
                   </node>
                   <node concept="liA8E" id="4e2kfWTMg8A" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:~AbstractModule.getFileSystem()" resolve="getFileSystem" />
+                    <ref role="37wK5l" to="z1c5:~MPSProject.getFileSystem()" resolve="getFileSystem" />
                   </node>
                 </node>
                 <node concept="liA8E" id="4e2kfWTMguW" role="2OqNvi">
-                  <ref role="37wK5l" to="w827:~FileSystem.getFile(java.lang.String)" resolve="getFile" />
+                  <ref role="37wK5l" to="4hrd:~IdeaFileSystem.getFile(java.lang.String)" resolve="getFile" />
                   <node concept="2YIFZM" id="4e2kfWTMa4H" role="37wK5m">
                     <ref role="1Pybhc" to="z1c3:~ProjectPathUtil" resolve="ProjectPathUtil" />
                     <ref role="37wK5l" to="z1c3:~ProjectPathUtil.getGeneratorOutputPath(jetbrains.mps.project.structure.modules.ModuleDescriptor)" resolve="getGeneratorOutputPath" />
@@ -10952,7 +10934,7 @@
                 </node>
               </node>
               <node concept="liA8E" id="4e2kfWTMixj" role="2OqNvi">
-                <ref role="37wK5l" to="3ju5:~IFile.getParent()" resolve="getParent" />
+                <ref role="37wK5l" to="4hrd:~IdeaFile.getParent()" resolve="getParent" />
               </node>
             </node>
           </node>
@@ -11128,45 +11110,18 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbJ" id="15bf9of7Fy7" role="3cqZAp">
-          <node concept="3clFbS" id="15bf9of7Fy9" role="3clFbx">
-            <node concept="3clFbF" id="15bf9of7IDf" role="3cqZAp">
-              <node concept="2OqwBi" id="15bf9of7L_m" role="3clFbG">
-                <node concept="1eOMI4" id="15bf9of7Lrh" role="2Oq$k0">
-                  <node concept="10QFUN" id="15bf9of7KNq" role="1eOMHV">
-                    <node concept="3uibUv" id="15bf9of7L5N" role="10QFUM">
-                      <ref role="3uigEE" to="z1c4:~StandaloneMPSProject" resolve="StandaloneMPSProject" />
-                    </node>
-                    <node concept="37vLTw" id="DmFJ5GCX32" role="10QFUP">
-                      <ref role="3cqZAo" node="DmFJ5GCU$X" resolve="myProject" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="liA8E" id="15bf9of7LVJ" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c4:~StandaloneMPSProject.setFolderFor(org.jetbrains.mps.openapi.module.SModule,java.lang.String)" resolve="setFolderFor" />
-                  <node concept="37vLTw" id="15bf9of7MYN" role="37wK5m">
-                    <ref role="3cqZAo" node="4bjG1FhHJVL" resolve="gm" />
-                  </node>
-                  <node concept="37vLTw" id="DmFJ5GCX86" role="37wK5m">
-                    <ref role="3cqZAo" node="DmFJ5GCWDT" resolve="virtualFolder" />
-                  </node>
-                </node>
-              </node>
+        <node concept="3clFbF" id="15bf9of7IDf" role="3cqZAp">
+          <node concept="2OqwBi" id="15bf9of7L_m" role="3clFbG">
+            <node concept="37vLTw" id="DmFJ5GCX32" role="2Oq$k0">
+              <ref role="3cqZAo" node="DmFJ5GCU$X" resolve="myProject" />
             </node>
-          </node>
-          <node concept="1Wc70l" id="15bf9of7M0X" role="3clFbw">
-            <node concept="3y3z36" id="15bf9of7MB2" role="3uHU7B">
-              <node concept="10Nm6u" id="15bf9of7MLv" role="3uHU7w" />
-              <node concept="37vLTw" id="DmFJ5GCX1c" role="3uHU7B">
+            <node concept="liA8E" id="15bf9of7LVJ" role="2OqNvi">
+              <ref role="37wK5l" to="z1c3:~ProjectBase.setVirtualFolder(org.jetbrains.mps.openapi.module.SModule,java.lang.String)" resolve="setVirtualFolder" />
+              <node concept="37vLTw" id="15bf9of7MYN" role="37wK5m">
+                <ref role="3cqZAo" node="4bjG1FhHJVL" resolve="gm" />
+              </node>
+              <node concept="37vLTw" id="DmFJ5GCX86" role="37wK5m">
                 <ref role="3cqZAo" node="DmFJ5GCWDT" resolve="virtualFolder" />
-              </node>
-            </node>
-            <node concept="2ZW3vV" id="15bf9of7Ihl" role="3uHU7w">
-              <node concept="3uibUv" id="15bf9of7I$u" role="2ZW6by">
-                <ref role="3uigEE" to="z1c4:~StandaloneMPSProject" resolve="StandaloneMPSProject" />
-              </node>
-              <node concept="37vLTw" id="DmFJ5GCX27" role="2ZW6bz">
-                <ref role="3cqZAo" node="DmFJ5GCU$X" resolve="myProject" />
               </node>
             </node>
           </node>

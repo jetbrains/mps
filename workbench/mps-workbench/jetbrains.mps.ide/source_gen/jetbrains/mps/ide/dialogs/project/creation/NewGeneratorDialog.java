@@ -17,7 +17,6 @@ import jetbrains.mps.vfs.IFileSystem;
 import java.awt.HeadlessException;
 import java.awt.GridLayout;
 import java.awt.Dimension;
-import jetbrains.mps.project.StandaloneMPSProject;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
 import com.intellij.ui.components.JBLabel;
@@ -64,7 +63,7 @@ public class NewGeneratorDialog extends DialogWrapper {
     initContentPane();
     init();
     startTrackingValidation();
-    myVirtualFolder = (project instanceof StandaloneMPSProject ? ((StandaloneMPSProject) project).getFolderFor(sourceLanguage) : null);
+    myVirtualFolder = project.getVirtualFolder(sourceLanguage);
   }
 
   @Nullable
@@ -223,9 +222,7 @@ public class NewGeneratorDialog extends DialogWrapper {
       Generator gm = (Generator) repoFacade.instantiate(generatorDescriptor, moduleFile);
       // FIXME why there's no mechanism to add module with path?
       myProject.addModule(gm);
-      if (myVirtualFolder != null && myProject instanceof StandaloneMPSProject) {
-        ((StandaloneMPSProject) myProject).setFolderFor(gm, myVirtualFolder);
-      }
+      myProject.setVirtualFolder(gm, myVirtualFolder);
       new ModuleDependencyVersions(myProject.getComponent(LanguageRegistry.class), myProject.getRepository()).update(gm);
       gm.save();
       return gm;

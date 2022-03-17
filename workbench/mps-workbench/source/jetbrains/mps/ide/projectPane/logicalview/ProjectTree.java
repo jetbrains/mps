@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -157,18 +157,13 @@ public class ProjectTree extends MPSTree implements MPSTreeChildOrder {
 
     @Override
     protected String getNamespace(MPSTreeNode node) {
-      String folder = null;
+      String folder = "";
 
       if (node instanceof ProjectModuleTreeNode) {
         ProjectModuleTreeNode pmtn = (ProjectModuleTreeNode) node;
-        folder = myProject.getFolderFor(pmtn.getModule());
+        folder = myProject.getVirtualFolder(pmtn.getModule());
       }
-
-      if (folder != null) {
-        return folder;
-      }
-
-      return "";
+      return folder;
     }
   }
 }

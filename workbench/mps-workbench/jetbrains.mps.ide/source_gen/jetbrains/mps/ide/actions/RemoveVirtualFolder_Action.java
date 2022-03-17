@@ -9,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.ide.IdeBundle;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
@@ -34,16 +33,19 @@ public class RemoveVirtualFolder_Action extends BaseAction {
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
-    // project.isProjectModule would say true for a generator under a language, and we don't want to set VF for it
+    // project.isProjectModule says true for a generator under a language, and we don't want to set VF for it
+    // however, there's no easy way to tell nested from standalone generator here (don't want to use GD), and
+    // can no longer assume getPath() for nested generator gives null. FIXME either use namespace tree node here
+    // instead of SModule, introduce a method to tell top-level project module from a nested one, or factor 
+    // nested Generator knowledge into getVirtualFolder(), although that one won't help in case of multiple selection!
     boolean isApplicable = !(event.getData(MPSCommonDataKeys.MODULES).isEmpty());
     boolean hasVirtualFolder = false;
     for (SModule module : event.getData(MPSCommonDataKeys.MODULES)) {
-      ModulePath path = event.getData(MPSCommonDataKeys.MPS_PROJECT).getPath(module);
-      if (path == null) {
+      if (!(event.getData(MPSCommonDataKeys.MPS_PROJECT).isProjectModule(module))) {
         isApplicable = false;
         break;
       }
-      if (!(path.getVirtualFolder().isEmpty())) {
+      if (!(event.getData(MPSCommonDataKeys.MPS_PROJECT).getVirtualFolder(module).isEmpty())) {
         hasVirtualFolder = true;
       }
     }

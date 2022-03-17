@@ -923,14 +923,12 @@
       <node id="8722937377469656158" at="166,54,167,37" concept="10" />
       <node id="8722937377469656164" at="167,37,168,28" concept="10" />
       <node id="8722937377469656173" at="169,39,170,50" concept="10" />
-      <node id="8722937377469656179" at="170,50,171,97" concept="4" />
-      <node id="8722937377469656195" at="173,30,174,18" concept="11" />
-      <node id="8722937377469656200" at="175,7,176,23" concept="11" />
+      <node id="8722937377469656179" at="170,50,171,91" concept="4" />
+      <node id="8722937377469656200" at="172,7,173,23" concept="11" />
       <node id="8722937377469656212" at="42,28,45,5" concept="8" />
       <node id="8722937377469656349" at="72,69,75,5" concept="7" />
       <node id="8722937377469656484" at="104,79,107,5" concept="7" />
       <node id="8722937377469656563" at="121,53,124,5" concept="8" />
-      <node id="8722937377469656193" at="172,7,175,7" concept="8" />
       <node id="8722937377469656456" at="96,0,100,0" concept="9" trace="getDescription#()Ljava/lang/String;" />
       <node id="9155551433208669888" at="137,0,141,0" concept="9" trace="doLimitStepPanelHeight#()Z" />
       <node id="8722937377469656093" at="146,0,150,0" concept="9" trace="createNamespaceNode#(Ljava/lang/String;)Ljetbrains/mps/build/mps/pluginSolution/plugin/CheckBoxNamespaceNode;" />
@@ -947,8 +945,8 @@
       <node id="8722937377469656202" at="39,0,48,0" concept="9" trace="_init#()V" />
       <node id="8722937377469656290" at="60,42,69,7" concept="8" />
       <node id="8722937377469656584" at="127,0,136,0" concept="9" trace="createStepPanel#()Ljavax/swing/JPanel;" />
+      <node id="8722937377469656152" at="165,0,175,0" concept="9" trace="getNamespace#(Ljetbrains/mps/build/mps/pluginSolution/plugin/CheckBoxNode;)Ljava/lang/String;" />
       <node id="8722937377469656393" at="84,0,95,0" concept="9" trace="fillChildren#(Ljetbrains/mps/build/mps/pluginSolution/plugin/CheckBoxNode;)V" />
-      <node id="8722937377469656152" at="165,0,178,0" concept="9" trace="getNamespace#(Ljetbrains/mps/build/mps/pluginSolution/plugin/CheckBoxNode;)Ljava/lang/String;" />
       <node id="8722937377469656272" at="57,50,71,13" concept="4" />
       <node id="8722937377469656462" at="101,0,119,0" concept="9" trace="_commit#(Z)V" />
       <node id="8722937377469656088" at="144,46,162,9" concept="16" />
@@ -970,9 +968,8 @@
       <scope id="8722937377469656113" at="151,57,152,30" />
       <scope id="8722937377469656123" at="155,56,156,53" />
       <scope id="8722937377469656135" at="159,66,160,25" />
-      <scope id="8722937377469656194" at="173,30,174,18" />
       <scope id="8722937377469656233" at="50,43,52,28" />
-      <scope id="8722937377469656172" at="169,39,171,97">
+      <scope id="8722937377469656172" at="169,39,171,91">
         <var name="moduleData" id="8722937377469656174" />
       </scope>
       <scope id="8722937377469656676" at="33,98,36,29" />
@@ -1021,6 +1018,10 @@
         <var name="mainComponent" id="8722937377469656621" />
         <var name="stepPanel" id="9155551433208632355" />
       </scope>
+      <scope id="8722937377469656157" at="166,54,173,23">
+        <var name="data" id="8722937377469656159" />
+        <var name="namespace" id="8722937377469656165" />
+      </scope>
       <scope id="8722937377469656403" at="85,42,93,5">
         <var name="i" id="8722937377469656443" />
       </scope>
@@ -1029,9 +1030,8 @@
         <var name="childCount" id="8722937377469656398" />
       </scope>
       <scope id="8722937377469656584" at="127,0,136,0" />
-      <scope id="8722937377469656157" at="166,54,176,23">
-        <var name="data" id="8722937377469656159" />
-        <var name="namespace" id="8722937377469656165" />
+      <scope id="8722937377469656152" at="165,0,175,0">
+        <var name="node" id="8722937377469656155" />
       </scope>
       <scope id="8722937377469656393" at="84,0,95,0">
         <var name="node" id="8722937377469656451" />
@@ -1039,9 +1039,6 @@
       <scope id="8722937377469656277" at="58,82,70,15">
         <var name="module1" id="8722937377469656279" />
         <var name="module2" id="8722937377469656285" />
-      </scope>
-      <scope id="8722937377469656152" at="165,0,178,0">
-        <var name="node" id="8722937377469656155" />
       </scope>
       <scope id="8722937377469656467" at="102,39,117,40">
         <var name="modules" id="8722937377469656478" />
@@ -1064,8 +1061,8 @@
       </scope>
       <scope id="8722937377469656247" at="55,0,83,0" />
       <unit id="8722937377469656091" at="145,16,162,7" name="jetbrains.mps.build.mps.pluginSolution.plugin.LanguagesStep$MyTreeBuilder$1" />
-      <unit id="8722937377469656079" at="142,0,179,0" name="jetbrains.mps.build.mps.pluginSolution.plugin.LanguagesStep$MyTreeBuilder" />
-      <unit id="8722937377469656078" at="27,0,180,0" name="jetbrains.mps.build.mps.pluginSolution.plugin.LanguagesStep" />
+      <unit id="8722937377469656079" at="142,0,176,0" name="jetbrains.mps.build.mps.pluginSolution.plugin.LanguagesStep$MyTreeBuilder" />
+      <unit id="8722937377469656078" at="27,0,177,0" name="jetbrains.mps.build.mps.pluginSolution.plugin.LanguagesStep" />
     </file>
   </root>
   <root nodeRef="r:f9ed10bf-2cd1-4bab-a5dd-e89f55ef9fd1(jetbrains.mps.build.mps.pluginSolution.plugin)/8722937377469656716">

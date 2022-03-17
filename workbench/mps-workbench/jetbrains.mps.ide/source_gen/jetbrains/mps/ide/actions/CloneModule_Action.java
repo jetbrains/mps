@@ -12,7 +12,6 @@ import java.util.Map;
 import jetbrains.mps.util.ModuleNameUtil;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.project.AbstractModule;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -36,7 +35,7 @@ public class CloneModule_Action extends BaseAction {
   public CloneModule_Action() {
     super("Clone Module", "", ICON);
     this.setIsAlwaysVisible(false);
-    this.setActionAccess(ActionAccess.UNDO_PROJECT);
+    this.setActionAccess(ActionAccess.READ_PROJECT);
   }
   @Override
   public boolean isDumbAware() {
@@ -75,8 +74,7 @@ public class CloneModule_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final StandaloneMPSProject project = as_i0xx9i_a0a0a6(event.getData(MPSCommonDataKeys.MPS_PROJECT), StandaloneMPSProject.class);
-    final AbstractModule module = as_i0xx9i_a0a1a6(event.getData(MPSCommonDataKeys.MODULE), AbstractModule.class);
+    final AbstractModule module = as_i0xx9i_a0a0a6(event.getData(MPSCommonDataKeys.MODULE), AbstractModule.class);
 
     Map<ModelRoot, String> nonCloneable = CloneModule_Action.this.collectCloneErrorMessages(module.getModelRoots(), event);
     if (!(MapSequence.fromMap(nonCloneable).isEmpty())) {
@@ -84,8 +82,8 @@ public class CloneModule_Action extends BaseAction {
       return;
     }
 
-    String virtualFolder = project.getFolderFor(module);
-    final AbstractModuleCreationDialog dialog = new CloneModuleDialog(project, virtualFolder, module);
+    String virtualFolder = event.getData(MPSCommonDataKeys.MPS_PROJECT).getVirtualFolder(module);
+    final AbstractModuleCreationDialog dialog = new CloneModuleDialog(event.getData(MPSCommonDataKeys.MPS_PROJECT), virtualFolder, module);
 
     ApplicationManager.getApplication().invokeLater(() -> {
       dialog.show();
@@ -95,7 +93,7 @@ public class CloneModule_Action extends BaseAction {
         return;
       }
 
-      ProjectPane projectPane = ProjectPane.getInstance(project);
+      ProjectPane projectPane = ProjectPane.getInstance(event.getData(MPSCommonDataKeys.MPS_PROJECT));
       projectPane.selectModule(result, false);
     }, ModalityState.current());
   }
@@ -125,12 +123,10 @@ public class CloneModule_Action extends BaseAction {
     return result;
   }
   private boolean supportsClonning(SModule module, final AnActionEvent event) {
+    // XXX why not generators, at least standalone?
     return !(module.isPackaged()) && (module instanceof Solution || module instanceof Language);
   }
   private static <T> T as_i0xx9i_a0a0a6(Object o, Class<T> type) {
-    return (type.isInstance(o) ? (T) o : null);
-  }
-  private static <T> T as_i0xx9i_a0a1a6(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

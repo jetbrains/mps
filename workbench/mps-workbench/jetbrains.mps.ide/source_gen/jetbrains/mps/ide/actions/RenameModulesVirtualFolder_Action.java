@@ -18,7 +18,6 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.ui.Messages;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.module.ModelAccess;
-import jetbrains.mps.project.StandaloneMPSProject;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.projectPane.ProjectPane;
@@ -85,14 +84,14 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
       return;
     }
 
-    final ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
+    final MPSProject mpsProject = ((MPSProject) MapSequence.fromMap(_params).get("project"));
+    final ModelAccess modelAccess = mpsProject.getRepository().getModelAccess();
     modelAccess.executeCommandInEDT(() -> {
-      final StandaloneMPSProject mpsProject = (StandaloneMPSProject) ((MPSProject) MapSequence.fromMap(_params).get("project"));
       for (SModule module : ListSequence.fromList(node.getModulesUnder())) {
-        mpsProject.setFolderFor(module, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getFolderFor(module), originalVFolder, modifiedVFolder));
+        mpsProject.setVirtualFolder(module, NamespaceRenameHelper.withReplacedPrefix(mpsProject.getVirtualFolder(module), originalVFolder, modifiedVFolder));
       }
-      RenameModulesVirtualFolder_Action.this.getProjectPane(_params).rebuild();
     });
+    RenameModulesVirtualFolder_Action.this.getProjectPane(_params).rebuild();
   }
   private ProjectPane getProjectPane(final Map<String, Object> _params) {
     return ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project")));

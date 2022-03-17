@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -78,11 +78,7 @@ public class ProjectTreeNode extends AbstractFileTreeNode {
   private static class MyNamespaceTreeBuilder extends DefaultNamespaceTreeBuilder<MPSTreeNode> {
     @Override
     protected String getNamespace(@NotNull MPSTreeNode node) {
-      String folder = "";
-      if (node instanceof ModuleTreeNode) {
-        folder = ((ModuleTreeNode) node).getProjectFolder();
-      }
-      return folder == null ? "" : folder;
+      return node instanceof ModuleTreeNode ? ((ModuleTreeNode) node).getProjectFolder() : "";
     }
   }
 

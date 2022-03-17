@@ -22,7 +22,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.EmptyBorder;
 import jetbrains.mps.ide.common.LayoutUtil;
 import jetbrains.mps.ide.ui.tree.MPSTreeNode;
-import jetbrains.mps.project.StandaloneMPSProject;
+import jetbrains.mps.project.MPSProject;
 
 public class LanguagesStep extends AbstractStep {
   private final AbstractBuildGenerator myGenerator;
@@ -168,10 +168,7 @@ public class LanguagesStep extends AbstractStep {
       String namespace = "";
       if (data instanceof ModuleData) {
         ModuleData moduleData = (ModuleData) data;
-        namespace = ((StandaloneMPSProject) this.myProject).getFolderFor(moduleData.getModule());
-      }
-      if (namespace == null) {
-        return "";
+        namespace = ((MPSProject) this.myProject).getVirtualFolder(moduleData.getModule());
       }
       return namespace;
     }

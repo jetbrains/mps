@@ -14,7 +14,6 @@ import java.util.Collection;
 import jetbrains.mps.smodel.Generator;
 import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
-import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.util.ReferenceUpdater;
@@ -101,9 +100,7 @@ public final class CopyModuleHelper {
 
   private void addModuleToProject(AbstractModule result) {
     myProject.addModule(result);
-    if (myProject instanceof StandaloneMPSProject) {
-      ((StandaloneMPSProject) myProject).setFolderFor(result, myVirtualFolder);
-    }
+    myProject.setVirtualFolder(result, myVirtualFolder);
   }
 
   /**

@@ -39,7 +39,6 @@
     <import index="kxvg" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.ui.tree.module(MPS.Platform/)" />
     <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
     <import index="qqrq" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui.components(MPS.IDEA/)" />
-    <import index="z1c5" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.project(MPS.Workbench/)" />
     <import index="o2jy" ref="r:5a764b6f-e05f-4050-b22c-cbcad1577f1b(jetbrains.mps.ide.refactoring)" />
     <import index="cttk" ref="r:5ff047e0-2953-4750-806a-bdc16824aa89(jetbrains.mps.smodel)" />
     <import index="vndm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.language(MPS.Core/)" />
@@ -1257,32 +1256,14 @@
             <node concept="37vLTw" id="15bf9of7$5F" role="37vLTJ">
               <ref role="3cqZAo" node="15bf9of7$5y" resolve="myVirtualFolder" />
             </node>
-            <node concept="3K4zz7" id="4XeAu5No1Co" role="37vLTx">
-              <node concept="2OqwBi" id="4XeAu5No26h" role="3K4E3e">
-                <node concept="1eOMI4" id="4XeAu5No1DK" role="2Oq$k0">
-                  <node concept="10QFUN" id="4XeAu5No1DH" role="1eOMHV">
-                    <node concept="3uibUv" id="4XeAu5No1HU" role="10QFUM">
-                      <ref role="3uigEE" to="z1c5:~StandaloneMPSProject" resolve="StandaloneMPSProject" />
-                    </node>
-                    <node concept="37vLTw" id="4XeAu5No1Iu" role="10QFUP">
-                      <ref role="3cqZAo" node="1pyYjDPRajZ" resolve="project" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="liA8E" id="4XeAu5No2lV" role="2OqNvi">
-                  <ref role="37wK5l" to="z1c5:~StandaloneMPSProject.getFolderFor(org.jetbrains.mps.openapi.module.SModule)" resolve="getFolderFor" />
-                  <node concept="37vLTw" id="4XeAu5No2mZ" role="37wK5m">
-                    <ref role="3cqZAo" node="1pyYjDPRak1" resolve="sourceLanguage" />
-                  </node>
-                </node>
+            <node concept="2OqwBi" id="4XeAu5No26h" role="37vLTx">
+              <node concept="37vLTw" id="4XeAu5No1Iu" role="2Oq$k0">
+                <ref role="3cqZAo" node="1pyYjDPRajZ" resolve="project" />
               </node>
-              <node concept="10Nm6u" id="4XeAu5No2tg" role="3K4GZi" />
-              <node concept="2ZW3vV" id="4XeAu5No1db" role="3K4Cdx">
-                <node concept="3uibUv" id="4XeAu5No1t6" role="2ZW6by">
-                  <ref role="3uigEE" to="z1c5:~StandaloneMPSProject" resolve="StandaloneMPSProject" />
-                </node>
-                <node concept="37vLTw" id="4XeAu5No0Oj" role="2ZW6bz">
-                  <ref role="3cqZAo" node="1pyYjDPRajZ" resolve="project" />
+              <node concept="liA8E" id="4XeAu5No2lV" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~ProjectBase.getVirtualFolder(org.jetbrains.mps.openapi.module.SModule)" resolve="getVirtualFolder" />
+                <node concept="37vLTw" id="4XeAu5No2mZ" role="37wK5m">
+                  <ref role="3cqZAo" node="1pyYjDPRak1" resolve="sourceLanguage" />
                 </node>
               </node>
             </node>
@@ -3142,45 +3123,18 @@
                   </node>
                 </node>
               </node>
-              <node concept="3clFbJ" id="15bf9of7Fy7" role="3cqZAp">
-                <node concept="3clFbS" id="15bf9of7Fy9" role="3clFbx">
-                  <node concept="3clFbF" id="15bf9of7IDf" role="3cqZAp">
-                    <node concept="2OqwBi" id="15bf9of7L_m" role="3clFbG">
-                      <node concept="1eOMI4" id="15bf9of7Lrh" role="2Oq$k0">
-                        <node concept="10QFUN" id="15bf9of7KNq" role="1eOMHV">
-                          <node concept="3uibUv" id="15bf9of7L5N" role="10QFUM">
-                            <ref role="3uigEE" to="z1c5:~StandaloneMPSProject" resolve="StandaloneMPSProject" />
-                          </node>
-                          <node concept="37vLTw" id="15bf9of7IDd" role="10QFUP">
-                            <ref role="3cqZAo" node="7vEL9RtbpOb" resolve="myProject" />
-                          </node>
-                        </node>
-                      </node>
-                      <node concept="liA8E" id="15bf9of7LVJ" role="2OqNvi">
-                        <ref role="37wK5l" to="z1c5:~StandaloneMPSProject.setFolderFor(org.jetbrains.mps.openapi.module.SModule,java.lang.String)" resolve="setFolderFor" />
-                        <node concept="37vLTw" id="15bf9of7MYN" role="37wK5m">
-                          <ref role="3cqZAo" node="4bjG1FhHJVL" resolve="gm" />
-                        </node>
-                        <node concept="37vLTw" id="15bf9of7Naq" role="37wK5m">
-                          <ref role="3cqZAo" node="15bf9of7$5y" resolve="myVirtualFolder" />
-                        </node>
-                      </node>
-                    </node>
+              <node concept="3clFbF" id="15bf9of7IDf" role="3cqZAp">
+                <node concept="2OqwBi" id="15bf9of7L_m" role="3clFbG">
+                  <node concept="37vLTw" id="15bf9of7IDd" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7vEL9RtbpOb" resolve="myProject" />
                   </node>
-                </node>
-                <node concept="1Wc70l" id="15bf9of7M0X" role="3clFbw">
-                  <node concept="3y3z36" id="15bf9of7MB2" role="3uHU7B">
-                    <node concept="10Nm6u" id="15bf9of7MLv" role="3uHU7w" />
-                    <node concept="37vLTw" id="15bf9of7MbO" role="3uHU7B">
+                  <node concept="liA8E" id="15bf9of7LVJ" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c3:~ProjectBase.setVirtualFolder(org.jetbrains.mps.openapi.module.SModule,java.lang.String)" resolve="setVirtualFolder" />
+                    <node concept="37vLTw" id="15bf9of7MYN" role="37wK5m">
+                      <ref role="3cqZAo" node="4bjG1FhHJVL" resolve="gm" />
+                    </node>
+                    <node concept="37vLTw" id="15bf9of7Naq" role="37wK5m">
                       <ref role="3cqZAo" node="15bf9of7$5y" resolve="myVirtualFolder" />
-                    </node>
-                  </node>
-                  <node concept="2ZW3vV" id="15bf9of7Ihl" role="3uHU7w">
-                    <node concept="3uibUv" id="15bf9of7I$u" role="2ZW6by">
-                      <ref role="3uigEE" to="z1c5:~StandaloneMPSProject" resolve="StandaloneMPSProject" />
-                    </node>
-                    <node concept="37vLTw" id="15bf9of7HEK" role="2ZW6bz">
-                      <ref role="3cqZAo" node="7vEL9RtbpOb" resolve="myProject" />
                     </node>
                   </node>
                 </node>

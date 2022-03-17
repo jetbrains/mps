@@ -9,7 +9,6 @@ import org.apache.log4j.LogManager;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
-import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.ide.ui.dialogs.modules.NewLanguageSettings;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
@@ -36,12 +35,12 @@ public class NewLanguageDialog extends AbstractModuleCreationDialog<Language> {
     // TODO: reuse runnable in DefaultLanguageProjectTemplate
 
     Language language = NewModuleUtil.createLanguage(mySettings.getModuleName(), mySettings.getModuleLocation(), (MPSProject) myProject, false);
-    ((StandaloneMPSProject) myProject).setFolderFor(language, myVirtualFolder);
+    myProject.setVirtualFolder(language, myVirtualFolder);
 
     try {
       if (as_xpx6i8_a0a0a5a4(mySettings, NewLanguageSettings.class).isRuntimeSolutionNeeded()) {
         Solution runtimeSolution = NewModuleUtil.createRuntimeSolution(language, mySettings.getModuleLocation(), (MPSProject) myProject);
-        ((StandaloneMPSProject) myProject).setFolderFor(runtimeSolution, myVirtualFolder);
+        myProject.setVirtualFolder(runtimeSolution, myVirtualFolder);
         language.getModuleDescriptor().getRuntimeModules().add(runtimeSolution.getModuleReference());
         ModuleDependencyVersions mv = new ModuleDependencyVersions(myProject.getComponent(LanguageRegistry.class), myProject.getRepository());
         mv.update(language);
@@ -53,7 +52,7 @@ public class NewLanguageDialog extends AbstractModuleCreationDialog<Language> {
       }
       if (as_xpx6i8_a0a1a5a4(mySettings, NewLanguageSettings.class).isSandBoxSolutionNeeded()) {
         Solution sandboxSolution = NewModuleUtil.createSandboxSolution(language, mySettings.getModuleLocation(), (MPSProject) myProject);
-        ((StandaloneMPSProject) myProject).setFolderFor(sandboxSolution, myVirtualFolder);
+        myProject.setVirtualFolder(sandboxSolution, myVirtualFolder);
       }
     } catch (IOException e) {
       // todo: !

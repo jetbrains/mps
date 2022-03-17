@@ -302,9 +302,23 @@ public abstract class ProjectBase extends Project {
     return null;
   }
 
-  // Used to live in StandaloneMPSProject. I don't see why it's restricted to that one, provided any
-  // ProjectBase derivative knows about ModulePath and its virtual folder.
-  public void setVirtualFolder(@NotNull SModule module, String newFolder) {
+  /**
+   * Optional operations, project may but not necessarily does grouping of modules.
+   * @return virtual grouping for the module, empty string if none set or module doesn't belong to the project.
+   */
+  @NotNull
+  public String getVirtualFolder(@NotNull SModule module) {
+    final ModulePath mp = getPath(module.getModuleReference());
+    return mp == null ? "" : mp.getVirtualFolder();
+  }
+
+  /**
+   * Optional operation to assign a grouping for a project module. Optional operation, projects may opt to
+   * ignore module grouping
+   */
+  public void setVirtualFolder(@NotNull SModule module, @Nullable String newFolder) {
+    // Used to live in StandaloneMPSProject. I don't see why it's restricted to that one, provided any
+    // ProjectBase derivative knows about ModulePath and its virtual folder.
     final SModuleReference moduleReference = module.getModuleReference();
     ModulePath modulePath = getPath(moduleReference);
     if (modulePath != null) {
