@@ -9,7 +9,6 @@
     <use id="acfc188d-d5d6-4598-b370-6f4a983f05b2" name="jetbrains.mps.baseLanguage.methodReferences" version="0" />
   </languages>
   <imports>
-    <import index="nh3n" ref="r:4cfa2d82-0f6c-496f-bd56-08bca0eb8e02(jetbrains.mps.workbench.dialogs.project.components.parts.renderers)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="dwmc" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.uiDesigner.core(MPS.IDEA/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
@@ -37,6 +36,7 @@
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" />
+    <import index="exr9" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor(MPS.Editor/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" implicit="true" />
   </imports>
   <registry>
@@ -243,10 +243,6 @@
       </concept>
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
-      <concept id="2546654756694997551" name="jetbrains.mps.baseLanguage.javadoc.structure.LinkInlineDocTag" flags="ng" index="92FcH">
-        <child id="2546654756694997556" name="reference" index="92FcQ" />
-        <child id="3106559687488913694" name="line" index="2XjZqd" />
-      </concept>
       <concept id="5858074156537516430" name="jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag" flags="ng" index="x79VA">
         <property id="5858074156537516431" name="text" index="x79VB" />
       </concept>
@@ -269,13 +265,6 @@
       <concept id="6612597108003615641" name="jetbrains.mps.baseLanguage.javadoc.structure.HTMLElement" flags="ng" index="2U$1Ah">
         <property id="6612597108003615642" name="name" index="2U$1Ai" />
         <child id="6612597108003615643" name="line" index="2U$1Aj" />
-      </concept>
-      <concept id="2217234381367188008" name="jetbrains.mps.baseLanguage.javadoc.structure.FieldDocReference" flags="ng" index="VUqz4" />
-      <concept id="5562345046718956738" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseVariableDocReference" flags="ng" index="YTMYr">
-        <reference id="5562345046718956740" name="declaration" index="YTMYt" />
-      </concept>
-      <concept id="8970989240999019145" name="jetbrains.mps.baseLanguage.javadoc.structure.InlineTagCommentLinePart" flags="ng" index="1dT_AA">
-        <child id="6962838954693749192" name="tag" index="qph3F" />
       </concept>
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
@@ -777,61 +766,8 @@
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
       </node>
       <node concept="P$JXv" id="29PqUnrK3I_" role="lGtFl">
-        <node concept="TZ5HA" id="29PqUnrK3IA" role="TZ5H$">
-          <node concept="1dT_AC" id="29PqUnrK3IB" role="1dT_Ay">
-            <property role="1dT_AB" value="Checks if a module path with such file system path is registered in the project." />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="29PqUnrNmzb" role="TZ5H$">
-          <node concept="1dT_AC" id="29PqUnrNmzc" role="1dT_Ay">
-            <property role="1dT_AB" value="&lt;br&gt;" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="29PqUnrK68j" role="TZ5H$">
-          <node concept="1dT_AC" id="29PqUnrK68k" role="1dT_Ay">
-            <property role="1dT_AB" value="This is internal method." />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="29PqUnrL$zA" role="TZ5H$">
-          <node concept="1dT_AC" id="29PqUnrL$zB" role="1dT_Ay">
-            <property role="1dT_AB" value="&lt;br&gt;" />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="29PqUnrLzF0" role="TZ5H$">
-          <node concept="1dT_AC" id="29PqUnrLzF1" role="1dT_Ay">
-            <property role="1dT_AB" value="Depends on maintained " />
-          </node>
-          <node concept="2U$1Ah" id="29PqUnrL$_Z" role="1dT_Ay">
-            <property role="2U$1Ai" value="b" />
-            <node concept="TZ5HA" id="29PqUnrL$A0" role="2U$1Aj">
-              <node concept="1dT_AC" id="29PqUnrL$Ay" role="1dT_Ay">
-                <property role="1dT_AB" value="sorted order" />
-              </node>
-            </node>
-          </node>
-          <node concept="1dT_AC" id="29PqUnrL$_Y" role="1dT_Ay">
-            <property role="1dT_AB" value=" of " />
-          </node>
-          <node concept="1dT_AA" id="29PqUnrLzFj" role="1dT_Ay">
-            <node concept="92FcH" id="29PqUnrLzFx" role="qph3F">
-              <node concept="TZ5HA" id="29PqUnrLzFz" role="2XjZqd" />
-              <node concept="VUqz4" id="29PqUnrLzFM" role="92FcQ">
-                <ref role="YTMYt" node="2LIxlaqyBCR" resolve="myModules" />
-              </node>
-            </node>
-          </node>
-          <node concept="1dT_AC" id="29PqUnrLzFi" role="1dT_Ay">
-            <property role="1dT_AB" value="." />
-          </node>
-        </node>
-        <node concept="TUZQ0" id="29PqUnrK3IC" role="3nqlJM">
-          <property role="TUZQ4" value="is absolute file system path to check" />
-          <node concept="zr_55" id="29PqUnrK3IE" role="zr_5Q">
-            <ref role="zr_51" node="cITrZbOSjV" resolve="fsPath" />
-          </node>
-        </node>
         <node concept="x79VA" id="29PqUnrK3IF" role="3nqlJM">
-          <property role="x79VB" value="{@link ModulePath} of project module or {@code null}" />
+          <property role="x79VB" value="{@code true} if a module with specified file path is tracked by this list model." />
         </node>
       </node>
     </node>
@@ -2000,12 +1936,10 @@
           <node concept="37vLTI" id="4SaZweU_vSl" role="3clFbG">
             <node concept="2ShNRf" id="3b6xVKVT4ov" role="37vLTx">
               <node concept="1pGfFk" id="3b6xVKVT4ow" role="2ShVmc">
+                <property role="373rjd" value="true" />
                 <ref role="37wK5l" to="qqrq:~JBList.&lt;init&gt;(javax.swing.ListModel)" resolve="JBList" />
                 <node concept="37vLTw" id="4Qup9OstcL5" role="37wK5m">
                   <ref role="3cqZAo" node="3b6xVKVVOqq" resolve="myProperties" />
-                </node>
-                <node concept="3uibUv" id="716UvuyjtyO" role="1pMfVU">
-                  <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
                 </node>
               </node>
             </node>
@@ -2024,7 +1958,7 @@
               <ref role="37wK5l" to="qqrq:~JBList.setCellRenderer(javax.swing.ListCellRenderer)" resolve="setCellRenderer" />
               <node concept="2ShNRf" id="3b6xVKVT4oD" role="37wK5m">
                 <node concept="1pGfFk" id="3b6xVKVT4oE" role="2ShVmc">
-                  <ref role="37wK5l" to="nh3n:1mBiRF0LAU4" resolve="PathRenderer" />
+                  <ref role="37wK5l" node="1mBiRF0LAU4" resolve="PathRenderer" />
                 </node>
               </node>
             </node>
@@ -2098,6 +2032,7 @@
               <node concept="YeOm9" id="58T$3SjCsPT" role="2ShVmc">
                 <node concept="1Y3b0j" id="58T$3SjCsPW" role="YeSDq">
                   <property role="2bfB8j" value="true" />
+                  <property role="373rjd" value="true" />
                   <ref role="1Y3XeK" to="82uw:~Consumer" resolve="Consumer" />
                   <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
                   <node concept="3Tm1VV" id="58T$3SjCsPX" role="1B3o_S" />
@@ -2321,12 +2256,6 @@
                           <ref role="zr_51" node="58T$3SjCsQ7" resolve="files" />
                         </node>
                       </node>
-                    </node>
-                  </node>
-                  <node concept="3uibUv" id="58T$3SjCsQf" role="2Ghqu4">
-                    <ref role="3uigEE" to="33ny:~List" resolve="List" />
-                    <node concept="3uibUv" id="58T$3SjCsQg" role="11_B2D">
-                      <ref role="3uigEE" to="jlff:~VirtualFile" resolve="VirtualFile" />
                     </node>
                   </node>
                 </node>
@@ -3888,6 +3817,136 @@
       <node concept="3cqZAl" id="6JcTxuSCvZW" role="3clF45" />
     </node>
     <node concept="3Tm1VV" id="6JcTxuSCw05" role="1B3o_S" />
+  </node>
+  <node concept="312cEu" id="1mBiRF0LAU1">
+    <property role="TrG5h" value="PathRenderer" />
+    <node concept="3uibUv" id="1X_jPewKJen" role="1zkMxy">
+      <ref role="3uigEE" to="qqrq:~JBList$StripedListCellRenderer" resolve="StripedListCellRenderer" />
+    </node>
+    <node concept="3clFbW" id="1mBiRF0LAU4" role="jymVt">
+      <node concept="3Tm1VV" id="1mBiRF0LAU5" role="1B3o_S" />
+      <node concept="3clFbS" id="1mBiRF0LAU6" role="3clF47" />
+      <node concept="3cqZAl" id="EQtaUM29Ln" role="3clF45" />
+    </node>
+    <node concept="3clFb_" id="1mBiRF0LAU7" role="jymVt">
+      <property role="TrG5h" value="getListCellRendererComponent" />
+      <node concept="3Tm1VV" id="1mBiRF0LAU8" role="1B3o_S" />
+      <node concept="3uibUv" id="1mBiRF0LAU9" role="3clF45">
+        <ref role="3uigEE" to="z60i:~Component" resolve="Component" />
+      </node>
+      <node concept="37vLTG" id="1mBiRF0LAUa" role="3clF46">
+        <property role="TrG5h" value="list" />
+        <node concept="3uibUv" id="1mBiRF0LAUb" role="1tU5fm">
+          <ref role="3uigEE" to="dxuu:~JList" resolve="JList" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="1mBiRF0LAUc" role="3clF46">
+        <property role="TrG5h" value="value" />
+        <property role="3TUv4t" value="true" />
+        <node concept="3uibUv" id="1mBiRF0LAUd" role="1tU5fm">
+          <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="1mBiRF0LAUe" role="3clF46">
+        <property role="TrG5h" value="index" />
+        <node concept="10Oyi0" id="1mBiRF0LAUf" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="1mBiRF0LAUg" role="3clF46">
+        <property role="TrG5h" value="isSelected" />
+        <node concept="10P_77" id="1mBiRF0LAUh" role="1tU5fm" />
+      </node>
+      <node concept="37vLTG" id="1mBiRF0LAUi" role="3clF46">
+        <property role="TrG5h" value="cellHasFocus" />
+        <node concept="10P_77" id="1mBiRF0LAUj" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="1mBiRF0LAUk" role="3clF47">
+        <node concept="3cpWs8" id="1mBiRF0LAUt" role="3cqZAp">
+          <node concept="3cpWsn" id="1mBiRF0LAUu" role="3cpWs9">
+            <property role="TrG5h" value="file" />
+            <node concept="3uibUv" id="1mBiRF0LAUv" role="1tU5fm">
+              <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+            </node>
+            <node concept="10QFUN" id="1mBiRF0LAUy" role="33vP2m">
+              <node concept="37vLTw" id="2BHiRxglBCa" role="10QFUP">
+                <ref role="3cqZAo" node="1mBiRF0LAUc" resolve="value" />
+              </node>
+              <node concept="3uibUv" id="XZsBAoR1R8" role="10QFUM">
+                <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="1X_jPewKmw3" role="3cqZAp">
+          <node concept="3cpWsn" id="1X_jPewKmw4" role="3cpWs9">
+            <property role="TrG5h" value="rv" />
+            <node concept="3uibUv" id="1X_jPewKmme" role="1tU5fm">
+              <ref role="3uigEE" to="z60i:~Component" resolve="Component" />
+            </node>
+            <node concept="3nyPlj" id="1X_jPewKmw5" role="33vP2m">
+              <ref role="37wK5l" to="qqrq:~JBList$StripedListCellRenderer.getListCellRendererComponent(javax.swing.JList,java.lang.Object,int,boolean,boolean)" resolve="getListCellRendererComponent" />
+              <node concept="37vLTw" id="1X_jPewKmw6" role="37wK5m">
+                <ref role="3cqZAo" node="1mBiRF0LAUa" resolve="list" />
+              </node>
+              <node concept="2OqwBi" id="1X_jPewMRY1" role="37wK5m">
+                <node concept="37vLTw" id="1X_jPewKmw7" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1mBiRF0LAUu" resolve="file" />
+                </node>
+                <node concept="liA8E" id="1X_jPewMSlj" role="2OqNvi">
+                  <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
+                </node>
+              </node>
+              <node concept="37vLTw" id="1X_jPewKmw8" role="37wK5m">
+                <ref role="3cqZAo" node="1mBiRF0LAUe" resolve="index" />
+              </node>
+              <node concept="37vLTw" id="1X_jPewKmw9" role="37wK5m">
+                <ref role="3cqZAo" node="1mBiRF0LAUg" resolve="isSelected" />
+              </node>
+              <node concept="37vLTw" id="1X_jPewKmwa" role="37wK5m">
+                <ref role="3cqZAo" node="1mBiRF0LAUi" resolve="cellHasFocus" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="1mBiRF0LBJN" role="3cqZAp">
+          <node concept="1Wc70l" id="1X_jPewKoIM" role="3clFbw">
+            <node concept="3fqX7Q" id="1X_jPewKqLK" role="3uHU7B">
+              <node concept="37vLTw" id="1X_jPewKqLM" role="3fr31v">
+                <ref role="3cqZAo" node="1mBiRF0LAUg" resolve="isSelected" />
+              </node>
+            </node>
+            <node concept="3fqX7Q" id="1BCSaZ6$DUz" role="3uHU7w">
+              <node concept="2OqwBi" id="2_MQfvmltry" role="3fr31v">
+                <node concept="37vLTw" id="1X_jPewKyIx" role="2Oq$k0">
+                  <ref role="3cqZAo" node="1mBiRF0LAUu" resolve="path" />
+                </node>
+                <node concept="liA8E" id="2_MQfvmltIC" role="2OqNvi">
+                  <ref role="37wK5l" to="3ju5:~IFile.exists()" resolve="exists" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="1mBiRF0LBJW" role="3clFbx">
+            <node concept="3clFbF" id="1mBiRF0LBJX" role="3cqZAp">
+              <node concept="1rXfSq" id="4hiugqyz8ah" role="3clFbG">
+                <ref role="37wK5l" to="dxuu:~JComponent.setForeground(java.awt.Color)" resolve="setForeground" />
+                <node concept="10M0yZ" id="1mBiRF0LBK1" role="37wK5m">
+                  <ref role="1PxDUh" to="exr9:~MPSColors" resolve="MPSColors" />
+                  <ref role="3cqZAo" to="exr9:~MPSColors.RED" resolve="RED" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="1mBiRF0LAUA" role="3cqZAp">
+          <node concept="37vLTw" id="1X_jPewKmwb" role="3cqZAk">
+            <ref role="3cqZAo" node="1X_jPewKmw4" resolve="listCellRendererComponent" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3tYsUK_S6_i" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
   </node>
 </model>
 

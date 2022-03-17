@@ -70,14 +70,8 @@ import java.util.Comparator;
   }
 
   /**
-   * Checks if a module path with such file system path is registered in the project.
-   * <br>
-   * This is internal method.
-   * <br>
-   * Depends on maintained <b>sorted order</b> of {@link jetbrains.mps.workbench.dialogs.project.properties.project.ProjectFilesModel#myModules }.
    * 
-   * @param fsPath is absolute file system path to check
-   * @return {@link ModulePath} of project module or {@code null}
+   * @return {@code true} if a module with specified file path is tracked by this list model.
    */
   @Nullable
   /*package*/ boolean known(IFile fsPath) {

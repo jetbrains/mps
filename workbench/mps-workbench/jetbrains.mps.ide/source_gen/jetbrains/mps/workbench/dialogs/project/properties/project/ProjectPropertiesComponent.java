@@ -14,7 +14,6 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.uiDesigner.core.GridConstraints;
 import javax.swing.JComponent;
-import jetbrains.mps.workbench.dialogs.project.components.parts.renderers.PathRenderer;
 import javax.swing.ListSelectionModel;
 import com.intellij.ui.TreeUIHelper;
 import java.util.function.Consumer;
@@ -73,7 +72,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
   }
 
   private JComponent createProjectModulesList() {
-    myModulesList = new JBList<IFile>(myModuleFiles);
+    myModulesList = new JBList<>(myModuleFiles);
 
     myModulesList.setCellRenderer(new PathRenderer());
     myModulesList.setEmptyText("No modules");
@@ -81,7 +80,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
 
     TreeUIHelper.getInstance().installListSpeedSearch(myModulesList, IFile::getPath);
 
-    final Consumer<List<VirtualFile>> filesToModulePathsProcessor = new Consumer<List<VirtualFile>>() {
+    final Consumer<List<VirtualFile>> filesToModulePathsProcessor = new Consumer<>() {
       /**
        * Process list of files:<br>
        * <ul>
