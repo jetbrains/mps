@@ -78,6 +78,7 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
     if (getProject().isDefault()) {
       return null;
     }
+    // FIXME Do I truly need to grab model read here?
     return new ModelAccessHelper(getModelAccess()).runReadAction(() -> {
       ProjectDescriptor descriptor = getProjectDescriptor();
 
@@ -139,6 +140,7 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   }
 
   // AP fixme : public update exposes the project internals too much (as it looks for me)
+  @Override
   public final void update() {
     if (myProjectDescriptor == null) {
       // nothing to update

@@ -32,9 +32,9 @@ import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.make.MakeNotification;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.project.DevKit;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModelReadRunnable;
@@ -149,10 +149,10 @@ public class ProjectTree extends MPSTree implements MPSTreeChildOrder {
   }
 
   public static class ModulesNamespaceTreeBuilder extends DefaultNamespaceTreeBuilder {
-    private StandaloneMPSProject myProject;
+    private MPSProject myProject;
 
     public ModulesNamespaceTreeBuilder(Project project) {
-      myProject = (StandaloneMPSProject) project;
+      myProject = (MPSProject) project;
     }
 
     @Override

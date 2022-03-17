@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@ import jetbrains.mps.ide.ui.tree.module.ProjectTreeNode;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.project.validation.MessageCollectProcessor;
 import jetbrains.mps.project.validation.ModelValidator;
 import jetbrains.mps.project.validation.ValidationUtil;
@@ -144,7 +143,7 @@ public class ErrorChecker extends TreeUpdateVisitor implements TreeMessageOwner 
   @Override
   public void visitProjectNode(@NotNull final ProjectTreeNode node) {
     // FIXME stupid code Project.getErrors():String
-    String errors = ((StandaloneMPSProject) node.getProject()).getErrors();
+    String errors = ((MPSProject) node.getProject()).getErrors();
     if (errors.isBlank()) {
       reset(node, Collections.emptyList());
     } else {

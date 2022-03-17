@@ -5,23 +5,23 @@ package jetbrains.mps.workbench.dialogs.project.properties.project;
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.ui.components.JBPanel;
 import org.jetbrains.mps.openapi.ui.Modifiable;
-import jetbrains.mps.project.StandaloneMPSProject;
+import jetbrains.mps.project.MPSProject;
 import com.intellij.ui.components.JBList;
-import jetbrains.mps.project.structure.project.ModulePath;
+import jetbrains.mps.vfs.IFile;
 import java.util.List;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.ide.project.ProjectHelper;
 import com.intellij.uiDesigner.core.GridConstraints;
 import javax.swing.JComponent;
 import jetbrains.mps.workbench.dialogs.project.components.parts.renderers.PathRenderer;
 import javax.swing.ListSelectionModel;
 import com.intellij.ui.TreeUIHelper;
-import java.util.Comparator;
-import com.intellij.openapi.vfs.VirtualFile;
 import java.util.function.Consumer;
-import java.util.ArrayList;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.ide.vfs.FileSystemBridge;
+import java.util.stream.IntStream;
+import java.util.Objects;
 import com.intellij.openapi.util.Condition;
 import java.util.Set;
 import java.util.HashSet;
@@ -34,6 +34,7 @@ import com.intellij.openapi.fileChooser.FileChooserDescriptor;
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.fileChooser.FileChooser;
 import com.intellij.openapi.project.ProjectUtil;
+import java.util.ArrayList;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFileVisitor;
 import com.intellij.ui.ToolbarDecorator;
@@ -43,22 +44,20 @@ import javax.swing.JPanel;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import javax.swing.AbstractListModel;
-import org.jetbrains.annotations.Nullable;
 
 @GeneratedClass(node = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/3201642974933583134", model = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)")
 public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
-  private final StandaloneMPSProject myProject;
-  private final ProjectProperties myProperties = new ProjectProperties();
+  private final MPSProject myProject;
+  private final ProjectProperties myModuleFiles = new ProjectProperties();
 
-  private JBList<ModulePath> myModulesList;
+  private JBList<IFile> myModulesList;
   private final List<ProjectPrefsExtraPanel> myExtraPanels;
 
-  public ProjectPropertiesComponent(Project project, @NotNull List<ProjectPrefsExtraPanel> extraPanels) {
+  public ProjectPropertiesComponent(Project ideaProject, @NotNull List<ProjectPrefsExtraPanel> extraPanels) {
     super(true);
-    myProject = (StandaloneMPSProject) project.getComponent(MPSProject.class);
+    myProject = ProjectHelper.fromIdeaProject(ideaProject);
     myExtraPanels = extraPanels;
-    myProperties.loadFrom(myProject);
+    myModuleFiles.loadFrom(myProject);
     init();
   }
 
@@ -74,20 +73,14 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
   }
 
   private JComponent createProjectModulesList() {
-    myModulesList = new JBList<ModulePath>(new PathsListModel());
+    myModulesList = new JBList<IFile>(myModuleFiles);
 
     myModulesList.setCellRenderer(new PathRenderer());
     myModulesList.setEmptyText("No modules");
     myModulesList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
-    TreeUIHelper.getInstance().installListSpeedSearch(myModulesList, (ModulePath modulePath) -> modulePath.getPath());
+    TreeUIHelper.getInstance().installListSpeedSearch(myModulesList, IFile::getPath);
 
-    final Comparator<VirtualFile> vfPathComparator = new Comparator<VirtualFile>() {
-      @Override
-      public int compare(VirtualFile file1, VirtualFile file2) {
-        return file1.getPath().compareTo(file2.getPath());
-      }
-    };
     final Consumer<List<VirtualFile>> filesToModulePathsProcessor = new Consumer<List<VirtualFile>>() {
       /**
        * Process list of files:<br>
@@ -106,22 +99,10 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
           return;
         }
 
-        files.sort(vfPathComparator);
+        FileSystemBridge fsBridge = myProject.getFileSystem();
 
-        List<Integer> modulePathsToSelect = new ArrayList<Integer>(files.size());
-        for (VirtualFile file : files) {
-          ModulePath path = ((PathsListModel) myModulesList.getModel()).getModulePathByFSPath(file.getPath());
-
-          if (path == null) {
-            path = new ModulePath(file.getPath(), null);
-            modulePathsToSelect.add(((PathsListModel) myModulesList.getModel()).addPath(path));
-          }
-        }
-
-        final int[] indices = new int[modulePathsToSelect.size()];
-        final Wrappers._int counter = new Wrappers._int(0);
-        modulePathsToSelect.forEach((Integer index) -> indices[counter.value++] = index);
-        myModulesList.setSelectedIndices(indices);
+        IntStream added = myModuleFiles.add(files.stream().map(fsBridge::fromVirtualFile).dropWhile(Objects::isNull));
+        myModulesList.setSelectedIndices(added.toArray());
       }
     };
 
@@ -175,20 +156,11 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
       @Override
       public void run(AnActionButton button) {
         int[] selectedIndices = myModulesList.getSelectedIndices();
-        ModulePath[] pathsToRemove = new ModulePath[selectedIndices.length];
-        for (int i = 0; i < selectedIndices.length; i++) {
-          pathsToRemove[i] = myModulesList.getModel().getElementAt(selectedIndices[i]);
-        }
-
         int minSelectedIndex = myModulesList.getMinSelectionIndex();
-        for (ModulePath path : pathsToRemove) {
-          ((PathsListModel) myModulesList.getModel()).removePath(path);
-        }
-
+        myModuleFiles.remove(selectedIndices);
         if (myModulesList.getItemsCount() > 0) {
           myModulesList.setSelectedIndex((minSelectedIndex < myModulesList.getItemsCount() ? minSelectedIndex : myModulesList.getItemsCount() - 1));
         }
-
       }
     }).addExtraAction(importFolder).disableUpDownActions();
     decorator.setPreferredSize(new Dimension(500, 150));
@@ -218,7 +190,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
 
   @Override
   public boolean isModified() {
-    return !(myProperties.isSame(myProject.getProjectDescriptor())) || myExtraPanels.stream().anyMatch((ProjectPrefsExtraPanel extraPanel) -> extraPanel.isModified());
+    return !(myModuleFiles.isSame(myProject)) || myExtraPanels.stream().anyMatch(ProjectPrefsExtraPanel::isModified);
   }
 
   @Override
@@ -226,7 +198,7 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
     myProject.getModelAccess().runWriteAction(new Runnable() {
       @Override
       public void run() {
-        myProperties.saveTo(myProject);
+        myModuleFiles.saveTo(myProject);
       }
     });
     for (ProjectPrefsExtraPanel ep : ListSequence.fromList(myExtraPanels)) {
@@ -235,48 +207,9 @@ public class ProjectPropertiesComponent extends JBPanel implements Modifiable {
   }
 
   public void reset() {
-    myProperties.loadFrom(myProject);
+    myModuleFiles.loadFrom(myProject);
     for (ProjectPrefsExtraPanel ep : ListSequence.fromList(myExtraPanels)) {
       ep.reset();
-    }
-  }
-
-
-  /**
-   * ListModel wrapper over {@link jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties }
-   */
-  private class PathsListModel extends AbstractListModel<ModulePath> {
-    public PathsListModel() {
-    }
-
-    @Override
-    public int getSize() {
-      return myProperties.getModules().size();
-    }
-
-    @Override
-    public ModulePath getElementAt(int i) {
-      return myProperties.getModules().get(i);
-    }
-
-    public List<ModulePath> getPaths() {
-      return myProperties.getModules();
-    }
-
-    @Nullable
-    /*package*/ ModulePath getModulePathByFSPath(String fsPath) {
-      return myProperties.getModulePathByFSPath(fsPath);
-    }
-
-    public int addPath(ModulePath path) {
-      int i = myProperties.add(path);
-      fireIntervalAdded(this, i, i);
-      return i;
-    }
-
-    public void removePath(ModulePath path) {
-      int i = myProperties.remove(path);
-      fireIntervalRemoved(this, i, i);
     }
   }
 }
