@@ -8709,5 +8709,31 @@
     <node concept="2tJIrI" id="2okrWkj3I1_" role="jymVt" />
     <node concept="3Tm1VV" id="4xFfMh6Qxje" role="1B3o_S" />
   </node>
+  <node concept="3_zdsH" id="6n3sfWHKOel">
+    <property role="3GE5qa" value="ext.string.expression" />
+    <ref role="3_znuS" to="tpee:6vzydrFu8hP" resolve="FormatOperation" />
+    <node concept="3__wT9" id="6n3sfWHKOem" role="3_A6iZ">
+      <node concept="3clFbS" id="6n3sfWHKOen" role="2VODD2">
+        <node concept="2Gpval" id="6n3sfWHKWaj" role="3cqZAp">
+          <node concept="2GrKxI" id="6n3sfWHKWal" role="2Gsz3X">
+            <property role="TrG5h" value="a" />
+          </node>
+          <node concept="3clFbS" id="6n3sfWHKWap" role="2LFqv$">
+            <node concept="3AgYrR" id="6n3sfWHKPXH" role="3cqZAp">
+              <node concept="2GrUjf" id="6n3sfWHKWrb" role="3Ah4Yx">
+                <ref role="2Gs0qQ" node="6n3sfWHKWal" resolve="a" />
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="6n3sfWHKQ8R" role="2GsD0m">
+            <node concept="3__QtB" id="6n3sfWHKQ00" role="2Oq$k0" />
+            <node concept="3Tsc0h" id="6n3sfWHKQBI" role="2OqNvi">
+              <ref role="3TtcxE" to="tpee:6vzydrFu8pg" resolve="arguments" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
