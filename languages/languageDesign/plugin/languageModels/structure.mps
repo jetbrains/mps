@@ -42,6 +42,9 @@
         <property id="1225118929411" name="build" index="YLPcu" />
         <property id="1225118933224" name="comment" index="YLQ7P" />
       </concept>
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
       </concept>
@@ -2569,6 +2572,26 @@
       <property role="3tVfz5" value="7458746815261976724" />
       <property role="TrG5h" value="editorCommand" />
       <property role="1L1pqM" value="editor command" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="571u0wtPz$o">
+    <property role="EcuMT" value="5891121763832969496" />
+    <property role="3GE5qa" value="Actions.Action.Parameters.Condition" />
+    <property role="TrG5h" value="IsInstanceCondition" />
+    <property role="34LRSv" value="is" />
+    <property role="R4oN_" value="instance of check" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="1TJgyj" id="571u0wtP$2x" role="1TKVEi">
+      <property role="IQ2ns" value="5891121763832971425" />
+      <property role="20kJfa" value="cls" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:g7pOWCK" resolve="Classifier" />
+    </node>
+    <node concept="PrWs8" id="571u0wtPzQG" role="PzmwI">
+      <ref role="PrY4T" node="4Ns790kXiYG" resolve="ActionParameterCondition" />
+    </node>
+    <node concept="t5JxF" id="571u0wtPHjI" role="lGtFl">
+      <property role="t5JxN" value="allows null or specific instance (use required to forbid null); doesn't handle collection of elements at the moment (future work)" />
     </node>
   </node>
 </model>

@@ -7116,5 +7116,35 @@
       </node>
     </node>
   </node>
+  <node concept="24kQdi" id="571u0wtP_gz">
+    <property role="3GE5qa" value="Actions.Action.Parameters.Condition" />
+    <ref role="1XX52x" to="tp4k:571u0wtPz$o" resolve="IsInstanceCondition" />
+    <node concept="3EZMnI" id="571u0wtP_oH" role="2wV5jI">
+      <node concept="3F0ifn" id="571u0wtP_QN" role="3EZMnx">
+        <property role="3F0ifm" value="is(" />
+        <node concept="11LMrY" id="571u0wtUIaU" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="VPM3Z" id="571u0wtXaSr" role="3F10Kt" />
+      </node>
+      <node concept="1iCGBv" id="571u0wtP_uX" role="3EZMnx">
+        <ref role="1NtTu8" to="tp4k:571u0wtP$2x" resolve="cls" />
+        <node concept="1sVBvm" id="571u0wtP_uZ" role="1sWHZn">
+          <node concept="3F0A7n" id="571u0wtP_yq" role="2wV5jI">
+            <property role="1Intyy" value="true" />
+            <ref role="1NtTu8" to="tpck:h0TrG11" resolve="name" />
+          </node>
+        </node>
+      </node>
+      <node concept="3F0ifn" id="571u0wtP_$_" role="3EZMnx">
+        <property role="3F0ifm" value=")" />
+        <node concept="11L4FC" id="571u0wtUI6p" role="3F10Kt">
+          <property role="VOm3f" value="true" />
+        </node>
+        <node concept="VPM3Z" id="571u0wtXaXq" role="3F10Kt" />
+      </node>
+      <node concept="2iRfu4" id="571u0wtP_oK" role="2iSdaV" />
+    </node>
+  </node>
 </model>
 
