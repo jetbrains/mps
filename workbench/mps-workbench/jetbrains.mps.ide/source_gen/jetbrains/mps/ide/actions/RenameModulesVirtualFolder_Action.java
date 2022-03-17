@@ -8,11 +8,11 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.IdeBundle;
-import javax.swing.tree.TreeNode;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
+import javax.swing.tree.TreeNode;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.ui.Messages;
@@ -38,7 +38,7 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText(IdeBundle.message("actions.virtual.package.rename.on.modules.text"));
-    return ((TreeNode) MapSequence.fromMap(_params).get("treeNode")) instanceof NamespaceTextNode && RenameModulesVirtualFolder_Action.this.getProjectPane(_params) != null && !(((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode"))).isFinalName()) && ((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode"))).hasModulesUnder();
+    return RenameModulesVirtualFolder_Action.this.getProjectPane(_params) != null && !(((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode")).isFinalName()) && ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode")).hasModulesUnder();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -62,6 +62,9 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
       if (p == null) {
         return false;
       }
+      if (p != null && !(p instanceof NamespaceTextNode)) {
+        return false;
+      }
     }
     {
       Project p = event.getData(CommonDataKeys.PROJECT);
@@ -74,7 +77,7 @@ public class RenameModulesVirtualFolder_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final NamespaceTextNode node = ((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode")));
+    final NamespaceTextNode node = ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode"));
     final String originalVFolder = node.getNamespace();
 
     final String modifiedVFolder = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.module.set.virtual.folder.text"), IdeBundle.message("dialogs.virtual.package.rename.on.modules.title"), null, originalVFolder, null);

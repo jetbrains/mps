@@ -324,6 +324,9 @@
       <concept id="6193305307616734266" name="jetbrains.mps.lang.plugin.structure.ParameterizedShortcutChange" flags="in" index="1bYApB">
         <property id="617467876802702218" name="change" index="TASh9" />
       </concept>
+      <concept id="5891121763832969496" name="jetbrains.mps.lang.plugin.structure.IsInstanceCondition" flags="ng" index="1c5O4g">
+        <reference id="5891121763832971425" name="cls" index="1c5NyD" />
+      </concept>
       <concept id="5678361901872075170" name="jetbrains.mps.lang.plugin.structure.EditableModel" flags="ng" index="3dZWAM" />
       <concept id="1206092561075" name="jetbrains.mps.lang.plugin.structure.ActionParameterReferenceOperation" flags="nn" index="3gHZIF" />
       <concept id="5538333046911348654" name="jetbrains.mps.lang.plugin.structure.RequiredCondition" flags="ng" index="1oajcY" />
@@ -10980,6 +10983,9 @@
       <property role="TrG5h" value="treeNode" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.TREE_NODE" resolve="TREE_NODE" />
       <node concept="1oajcY" id="7HZe2EwZDlN" role="1oa70y" />
+      <node concept="1c5O4g" id="571u0wtZe_f" role="1oa70y">
+        <ref role="1c5NyD" to="kxvg:~NamespaceTextNode" resolve="NamespaceTextNode" />
+      </node>
     </node>
     <node concept="1DS2jV" id="5iOAkPG8zMo" role="1NuT2Z">
       <property role="TrG5h" value="ideaProject" />
@@ -10995,17 +11001,10 @@
             <node concept="3uibUv" id="7TSspuy9B6" role="1tU5fm">
               <ref role="3uigEE" to="kxvg:~NamespaceTextNode" resolve="NamespaceTextNode" />
             </node>
-            <node concept="1eOMI4" id="7TSspuy9B7" role="33vP2m">
-              <node concept="10QFUN" id="7TSspuy9B8" role="1eOMHV">
-                <node concept="2OqwBi" id="7TSspuy9B9" role="10QFUP">
-                  <node concept="2WthIp" id="7TSspuy9Ba" role="2Oq$k0" />
-                  <node concept="1DTwFV" id="7TSspuy9Bb" role="2OqNvi">
-                    <ref role="2WH_rO" node="7TSspuy9Av" resolve="treeNode" />
-                  </node>
-                </node>
-                <node concept="3uibUv" id="7TSspuy9Bc" role="10QFUM">
-                  <ref role="3uigEE" to="kxvg:~NamespaceTextNode" resolve="NamespaceTextNode" />
-                </node>
+            <node concept="2OqwBi" id="7TSspuy9B9" role="33vP2m">
+              <node concept="2WthIp" id="7TSspuy9Ba" role="2Oq$k0" />
+              <node concept="1DTwFV" id="7TSspuy9Bb" role="2OqNvi">
+                <ref role="2WH_rO" node="7TSspuy9Av" resolve="treeNode" />
               </node>
             </node>
           </node>
@@ -11270,41 +11269,21 @@
         <node concept="3clFbF" id="7TSspuy9A$" role="3cqZAp">
           <node concept="1Wc70l" id="xeLP1xpBSx" role="3clFbG">
             <node concept="1Wc70l" id="5NJ15g5l6DB" role="3uHU7B">
-              <node concept="1Wc70l" id="7TSspuy9E3" role="3uHU7B">
-                <node concept="2ZW3vV" id="7TSspuy9E6" role="3uHU7B">
-                  <node concept="3uibUv" id="7TSspuy9E7" role="2ZW6by">
-                    <ref role="3uigEE" to="kxvg:~NamespaceTextNode" resolve="NamespaceTextNode" />
-                  </node>
-                  <node concept="2OqwBi" id="7TSspuy9E8" role="2ZW6bz">
-                    <node concept="2WthIp" id="7TSspuy9E9" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="7TSspuy9Ea" role="2OqNvi">
-                      <ref role="2WH_rO" node="7TSspuy9Av" resolve="treeNode" />
-                    </node>
+              <node concept="3y3z36" id="7TSspuy9Ov" role="3uHU7B">
+                <node concept="2OqwBi" id="7TSspuy9OK" role="3uHU7B">
+                  <node concept="2WthIp" id="7TSspuy9OL" role="2Oq$k0" />
+                  <node concept="2XshWL" id="7TSspuy9OM" role="2OqNvi">
+                    <ref role="2WH_rO" node="7TSspuy9O_" resolve="getProjectPane" />
                   </node>
                 </node>
-                <node concept="3y3z36" id="7TSspuy9Ov" role="3uHU7w">
-                  <node concept="2OqwBi" id="7TSspuy9OK" role="3uHU7B">
-                    <node concept="2WthIp" id="7TSspuy9OL" role="2Oq$k0" />
-                    <node concept="2XshWL" id="7TSspuy9OM" role="2OqNvi">
-                      <ref role="2WH_rO" node="7TSspuy9O_" resolve="getProjectPane" />
-                    </node>
-                  </node>
-                  <node concept="10Nm6u" id="7TSspuy9Oz" role="3uHU7w" />
-                </node>
+                <node concept="10Nm6u" id="7TSspuy9Oz" role="3uHU7w" />
               </node>
               <node concept="3fqX7Q" id="5NJ15g5l6EL" role="3uHU7w">
                 <node concept="2OqwBi" id="5NJ15g5l6EM" role="3fr31v">
-                  <node concept="1eOMI4" id="5NJ15g5l6EN" role="2Oq$k0">
-                    <node concept="10QFUN" id="5NJ15g5l6EO" role="1eOMHV">
-                      <node concept="2OqwBi" id="5NJ15g5l6EP" role="10QFUP">
-                        <node concept="2WthIp" id="5NJ15g5l6EQ" role="2Oq$k0" />
-                        <node concept="1DTwFV" id="5NJ15g5l6ER" role="2OqNvi">
-                          <ref role="2WH_rO" node="7TSspuy9Av" resolve="treeNode" />
-                        </node>
-                      </node>
-                      <node concept="3uibUv" id="5NJ15g5l6ES" role="10QFUM">
-                        <ref role="3uigEE" to="kxvg:~NamespaceTextNode" resolve="NamespaceTextNode" />
-                      </node>
+                  <node concept="2OqwBi" id="5NJ15g5l6EP" role="2Oq$k0">
+                    <node concept="2WthIp" id="5NJ15g5l6EQ" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="5NJ15g5l6ER" role="2OqNvi">
+                      <ref role="2WH_rO" node="7TSspuy9Av" resolve="treeNode" />
                     </node>
                   </node>
                   <node concept="liA8E" id="5NJ15g5l6ET" role="2OqNvi">
@@ -11314,17 +11293,10 @@
               </node>
             </node>
             <node concept="2OqwBi" id="xeLP1xpEMz" role="3uHU7w">
-              <node concept="1eOMI4" id="xeLP1xpDlK" role="2Oq$k0">
-                <node concept="10QFUN" id="xeLP1xpDlL" role="1eOMHV">
-                  <node concept="2OqwBi" id="xeLP1xpDlM" role="10QFUP">
-                    <node concept="2WthIp" id="xeLP1xpDlN" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="xeLP1xpDlO" role="2OqNvi">
-                      <ref role="2WH_rO" node="7TSspuy9Av" resolve="treeNode" />
-                    </node>
-                  </node>
-                  <node concept="3uibUv" id="xeLP1xpDlP" role="10QFUM">
-                    <ref role="3uigEE" to="kxvg:~NamespaceTextNode" resolve="NamespaceTextNode" />
-                  </node>
+              <node concept="2OqwBi" id="xeLP1xpDlM" role="2Oq$k0">
+                <node concept="2WthIp" id="xeLP1xpDlN" role="2Oq$k0" />
+                <node concept="1DTwFV" id="xeLP1xpDlO" role="2OqNvi">
+                  <ref role="2WH_rO" node="7TSspuy9Av" resolve="treeNode" />
                 </node>
               </node>
               <node concept="liA8E" id="xeLP1xpG3i" role="2OqNvi">
