@@ -15,17 +15,17 @@ import java.util.Arrays;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
-import jetbrains.mps.project.StandaloneMPSProject;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.project.structure.project.ModulePath;
+import jetbrains.mps.project.StandaloneMPSProject;
 import java.util.HashSet;
 import java.util.Comparator;
 
 @GeneratedClass(node = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)/3201642974933580312", model = "r:74729267-a5fb-4229-a117-335c34e68536(jetbrains.mps.workbench.dialogs.project.properties.project)")
-/*package*/ final class ProjectProperties extends AbstractListModel<IFile> {
+/*package*/ final class ProjectFilesModel extends AbstractListModel<IFile> {
   private final List<IFile> myModules = new ArrayList<>();
 
-  public ProjectProperties() {
+  public ProjectFilesModel() {
   }
 
   @Override
@@ -74,7 +74,7 @@ import java.util.Comparator;
    * <br>
    * This is internal method.
    * <br>
-   * Depends on maintained <b>sorted order</b> of {@link jetbrains.mps.workbench.dialogs.project.properties.project.ProjectProperties#myModules }.
+   * Depends on maintained <b>sorted order</b> of {@link jetbrains.mps.workbench.dialogs.project.properties.project.ProjectFilesModel#myModules }.
    * 
    * @param fsPath is absolute file system path to check
    * @return {@link ModulePath} of project module or {@code null}
@@ -86,13 +86,13 @@ import java.util.Comparator;
   }
 
   public boolean isSame(MPSProject project) {
-    ProjectProperties other = new ProjectProperties();
+    ProjectFilesModel other = new ProjectFilesModel();
     other.loadFrom(project);
     return other.myModules.equals(myModules);
   }
 
   public void loadFrom(MPSProject project) {
-    ProjectDescriptor projectDescriptor = ((StandaloneMPSProject) project).getProjectDescriptor();
+    ProjectDescriptor projectDescriptor = load(project);
     myModules.clear();
     final IFileSystem fs = project.getFileSystem();
     projectDescriptor.getModulePaths().stream().map(ModulePath::getPath).map(fs::getFile).forEach(myModules::add);
@@ -101,8 +101,15 @@ import java.util.Comparator;
     Collections.sort(myModules, PATH_VALID_COMPARATOR);
   }
 
+  private static ProjectDescriptor load(MPSProject project) {
+    // FIXME Could avoid using StandaloneMPSProject directly by instanceof PersistentStateComponent
+    //      and de-serializing from PSC.getState():Element 
+    // Besides, consider if StandaloneMPSProject could use ProjectDescriptor as its state directly.
+    return ((StandaloneMPSProject) project).getProjectDescriptor();
+  }
+
   public void saveTo(MPSProject project) {
-    ProjectDescriptor existingPD = ((StandaloneMPSProject) project).getProjectDescriptor();
+    ProjectDescriptor existingPD = load(project);
     final IFileSystem fs = project.getFileSystem();
 
     HashSet<IFile> matched = new HashSet<>();
@@ -117,12 +124,13 @@ import java.util.Comparator;
     }
     // those we didn't see to match are new, add them. The rest in existingPD are thrown away
     myModules.stream().dropWhile(matched::contains).map((IFile f) -> new ModulePath(f.getPath(), null)).forEach(newPD::addModulePath);
+    // FIXME perhaps, we shall just write the file down and let IDEA pick up the changes?
     ((StandaloneMPSProject) project).setProjectDescriptor(newPD);
   }
 
   private final Comparator<IFile> PATH_COMPARATOR = Comparator.comparing(IFile::getPath);
 
-  private final Comparator<IFile> PATH_VALID_COMPARATOR = Comparator.comparingInt(ProjectProperties::isAvailable).thenComparing(PATH_COMPARATOR);
+  private final Comparator<IFile> PATH_VALID_COMPARATOR = Comparator.comparingInt(ProjectFilesModel::isAvailable).thenComparing(PATH_COMPARATOR);
 
   private static int isAvailable(IFile file) {
     return (file.exists() ? 0 : -1);
