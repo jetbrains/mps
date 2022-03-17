@@ -130,7 +130,7 @@ public abstract class ProjectBase extends Project {
   public final void addModule(@NotNull SModule module) {
     IFile descriptorFile = module instanceof AbstractModule ? ((AbstractModule) module).getDescriptorFile() : null;
     if (descriptorFile != null) {
-      final ModulePath modulePath = new ModulePath(descriptorFile.getPath(), null);
+      final ModulePath modulePath = new ModulePath(descriptorFile, null);
       final ModulePath existing = getPath(module);
       if (existing != null) {
   //      throw new IllegalArgumentException(module + " is already in the " + this); todo enable after MPS-24400

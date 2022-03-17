@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.project.structure.project;
 
 import jetbrains.mps.util.StringUtil;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -37,6 +38,15 @@ public final class ModulePath {
   public ModulePath(@NotNull String path, @Nullable String virtualFolder) {
     myPath = path;
     myVirtualFolder = StringUtil.emptyIfNull(virtualFolder);
+  }
+
+  public ModulePath(@NotNull IFile file, @Nullable String virtualFolder) {
+    this(file.getPath(), virtualFolder);
+  }
+
+  // just a handy cons for ModulePath::new
+  public ModulePath(@NotNull IFile file) {
+    this(file, null);
   }
 
   @NotNull

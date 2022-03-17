@@ -483,7 +483,7 @@ public final class Renamer {
       if (descriptorFile != null) {
         @Nullable ModulePath oldPath = projectWithVFolders.getPath(module);
         if (oldPath != null) {
-          ModulePath newPath = new ModulePath(descriptorFile.getPath(), oldPath.getVirtualFolder());
+          ModulePath newPath = new ModulePath(descriptorFile, oldPath.getVirtualFolder());
           projectWithVFolders.setVirtualFolder(module, newPath.getVirtualFolder());
         }
       }

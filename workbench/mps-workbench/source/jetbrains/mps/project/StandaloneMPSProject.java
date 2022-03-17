@@ -94,6 +94,7 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   public void loadState(@NotNull Element state) {
     LOG.info("Loading the project '" + getName() + "' from disk");
     if (!getProject().isDefault()) {
+      // here, global macro helper is ok, as it's IDEA's responsibility to expand $PROJECT_DIR$ in modules.xml
       myProjectDescriptor = new ElementProjectDataSource(state, getProjectFile()).loadDescriptor();
       if (ProjectManager.getInstance().getOpenedProjects().contains(this)) {
         update();

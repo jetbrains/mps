@@ -1433,30 +1433,11 @@
               </node>
               <node concept="liA8E" id="4Qup9OsSJhW" role="2OqNvi">
                 <ref role="37wK5l" to="1ctc:~Stream.map(java.util.function.Function)" resolve="map" />
-                <node concept="1bVj0M" id="4Qup9OsSOjF" role="37wK5m">
-                  <node concept="37vLTG" id="4Qup9OsSRpE" role="1bW2Oz">
-                    <property role="TrG5h" value="f" />
-                    <node concept="3uibUv" id="4Qup9OsSU3e" role="1tU5fm">
-                      <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
-                    </node>
-                  </node>
-                  <node concept="3clFbS" id="4Qup9OsSOjG" role="1bW5cS">
-                    <node concept="3clFbF" id="4Qup9OsT1dB" role="3cqZAp">
-                      <node concept="2ShNRf" id="4Qup9OsT1d_" role="3clFbG">
-                        <node concept="1pGfFk" id="4Qup9OsTeLV" role="2ShVmc">
-                          <property role="373rjd" value="true" />
-                          <ref role="37wK5l" to="y8s3:~ModulePath.&lt;init&gt;(java.lang.String,java.lang.String)" resolve="ModulePath" />
-                          <node concept="2OqwBi" id="4Qup9OsTlxQ" role="37wK5m">
-                            <node concept="37vLTw" id="4Qup9OsTjSV" role="2Oq$k0">
-                              <ref role="3cqZAo" node="4Qup9OsSRpE" resolve="f" />
-                            </node>
-                            <node concept="liA8E" id="4Qup9OsToy1" role="2OqNvi">
-                              <ref role="37wK5l" to="3ju5:~IFile.getPath()" resolve="getPath" />
-                            </node>
-                          </node>
-                          <node concept="10Nm6u" id="4Qup9OsTt$W" role="37wK5m" />
-                        </node>
-                      </node>
+                <node concept="37Ijox" id="3WnEHxCLmut" role="37wK5m">
+                  <ref role="37Ijqf" to="y8s3:~ModulePath.&lt;init&gt;(jetbrains.mps.vfs.IFile)" resolve="ModulePath" />
+                  <node concept="2FaPjH" id="3WnEHxCLmuv" role="wWaWy">
+                    <node concept="3uibUv" id="3WnEHxCLmuw" role="2FaQuo">
+                      <ref role="3uigEE" to="y8s3:~ModulePath" resolve="ModulePath" />
                     </node>
                   </node>
                 </node>

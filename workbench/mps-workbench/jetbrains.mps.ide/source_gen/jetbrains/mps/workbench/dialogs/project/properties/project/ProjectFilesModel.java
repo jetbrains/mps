@@ -117,7 +117,7 @@ import java.util.Comparator;
       }
     }
     // those we didn't see to match are new, add them. The rest in existingPD are thrown away
-    myModules.stream().dropWhile(matched::contains).map((IFile f) -> new ModulePath(f.getPath(), null)).forEach(newPD::addModulePath);
+    myModules.stream().dropWhile(matched::contains).map(ModulePath::new).forEach(newPD::addModulePath);
     // FIXME perhaps, we shall just write the file down and let IDEA pick up the changes?
     ((StandaloneMPSProject) project).setProjectDescriptor(newPD);
   }
