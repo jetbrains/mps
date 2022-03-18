@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-cuw8l2h92qk28760qf439194u997nng">
-  <files names="AbstractModuleCreationSettings.java:CloneModuleSettings.java:NameLocationPanel.java:NewLanguageSettings.java:NewModuleDialog.java:NewSolutionSettings.java" />
+<product version="3" modelHash="-e2r804h0m0zmm8zyfi7ooceyjmtho7b">
+  <files names="AbstractModuleCreationSettings.java:NameLocationPanel.java:NewLanguageSettings.java:NewModuleDialog.java:NewSolutionSettings.java" />
 </product>
 

@@ -9,6 +9,7 @@ import jetbrains.mps.project.MPSProject;
 import java.util.function.Supplier;
 import org.jetbrains.annotations.Nullable;
 import javax.swing.JComponent;
+import org.jetbrains.annotations.NonNls;
 import java.io.File;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.project.ProjectKt;
@@ -21,11 +22,16 @@ public class NewModuleDialog<T extends SModule> extends DialogWrapper {
   private Supplier<String> myCheckCode;
   private Supplier<T> myCreateCode;
   private T myResult;
+  private String myDimensionKey;
 
   public NewModuleDialog(MPSProject project, NameLocationPanel settings) {
     super(project.getProject());
     myProject = project;
     myValues = settings;
+  }
+
+  public void withDimensionKey(@Nullable String dimensionKey) {
+    myDimensionKey = dimensionKey;
   }
 
   public void withCheck(@Nullable Supplier<String> errorCheck) {
@@ -55,6 +61,14 @@ public class NewModuleDialog<T extends SModule> extends DialogWrapper {
   public JComponent getPreferredFocusedComponent() {
     return myValues.getPreferredFocusedComponent();
   }
+
+  @Nullable
+  @NonNls
+  @Override
+  protected String getDimensionServiceKey() {
+    return (myDimensionKey != null ? myDimensionKey : NewModuleDialog.class.getName());
+  }
+
 
   @Nullable
   @Override
