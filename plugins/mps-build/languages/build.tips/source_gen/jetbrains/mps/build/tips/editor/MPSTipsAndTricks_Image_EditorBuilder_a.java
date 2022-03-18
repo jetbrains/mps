@@ -37,7 +37,6 @@ import jetbrains.mps.build.tips.behavior.MPSTipsAndTricks_Image__BehaviorDescrip
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Image;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
@@ -307,7 +306,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private EditorCell_Image fromImageCellProvider0() {
     String imagePath = (new _FunctionTypes._return_P0_E0<String>() {
       public String invoke() {
-        return MacrosFactory.forModule((SNodeOperations.getModel(myNode).getModule())).expandPath(SPropertyOperations.getString(myNode, PROPS.file$Q7$W));
+        return SPropertyOperations.getString(myNode, PROPS.file$Q7$W);
       }
     }).invoke();
     return EditorCell_Image.createImageCell(getEditorContext(), myNode, imagePath);

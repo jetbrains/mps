@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,8 +20,6 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.nodeEditor.EditorSettings;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.util.MacrosFactory;
-import jetbrains.mps.vfs.FileSystem;
-import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -34,6 +32,7 @@ import javax.swing.ImageIcon;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
@@ -231,15 +230,15 @@ public class EditorCell_Image extends EditorCell_Basic {
       jetbrains.mps.nodeEditor.EditorContext ec = (jetbrains.mps.nodeEditor.EditorContext) context;
       Map<String, Icon> iconCache = ec.getIconCache();
       if (!iconCache.containsKey(fullPath)) {
-        IFile iconFile = FileSystem.getInstance().getFile(fullPath);
+        File iconFile = new File(fullPath);
         if (!iconFile.exists()) {
           LOG.error("image file not found: " + fullPath);
           return null;
         }
 
         try {
-          URL iconUrl = iconFile.getUrl();
-          iconCache.put(fullPath, IconLoader.findIcon(iconUrl, true /* Should be false. IDEA-252868 workaround until fixed. */));
+          URL iconUrl = iconFile.toURI().toURL();
+          iconCache.put(fullPath, IconLoader.findIcon(iconUrl, false));
         } catch (MalformedURLException e) {
           LOG.error("can't convert icon path to url: " + fullPath, e);
         }
