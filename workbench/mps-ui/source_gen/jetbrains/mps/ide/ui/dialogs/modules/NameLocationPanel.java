@@ -41,7 +41,7 @@ public final class NameLocationPanel extends JPanel {
 
   private boolean myLocationDocListenerEnabled = true;
 
-  private final File myProjectPath;
+  private File myProjectPath;
 
   public NameLocationPanel(@NotNull File projectPath, String moduleNameLabel, String moduleLocationLabel) {
     super(new GridBagLayout());
@@ -94,6 +94,14 @@ public final class NameLocationPanel extends JPanel {
     myDefaultGroupLocation = moduleGroupLocation;
   }
 
+  public void withProjectPath(@NotNull File projectPath) {
+    myProjectPath = projectPath;
+    if (mySelectedLocation != null) {
+      mySelectedLocation = null;
+      updateModuleLocationText(getActualLocation());
+    }
+  }
+
   public String getModuleName() {
     return mySelectedModuleName;
   }
@@ -118,6 +126,10 @@ public final class NameLocationPanel extends JPanel {
     myLocationDocListenerEnabled = true;
   }
 
+
+  /**
+   * react on *user* changes (from UI)
+   */
   public void onChange(@Nullable Runnable listener) {
     myOnChange = listener;
   }

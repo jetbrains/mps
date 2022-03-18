@@ -122,18 +122,5 @@
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="jetbrains.mps.ide.newModuleDialogs.AbstractModuleCreationDialog" />
   </dependency>
-  <dependency className="jetbrains.mps.ide.newModuleDialogs.NewSolutionDialog">
-    <classNode dependClassName="java.lang.Deprecated" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.ide.newSolutionDialog.NewModuleUtil" />
-    <classNode dependClassName="jetbrains.mps.ide.ui.dialogs.modules.NewSolutionSettings" />
-    <classNode dependClassName="jetbrains.mps.project.MPSExtentions" />
-    <classNode dependClassName="jetbrains.mps.project.MPSProject" />
-    <classNode dependClassName="jetbrains.mps.project.Solution" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode extendsClassName="jetbrains.mps.ide.newModuleDialogs.AbstractModuleCreationDialog" />
-  </dependency>
 </dependenciesRoot>
 
