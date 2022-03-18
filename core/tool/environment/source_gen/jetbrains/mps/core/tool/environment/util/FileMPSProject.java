@@ -11,13 +11,14 @@ import java.io.File;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.util.MacroHelper;
-import jetbrains.mps.vfs.IFileSystem;
-import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.util.MacrosFactory;
 import java.io.IOException;
 import org.apache.log4j.Level;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.project.persistence.ProjectDescriptorPersistence;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
+import jetbrains.mps.vfs.VFSManager;
 
 @GeneratedClass(node = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)/2546981710035458892", model = "r:a139668a-5a0e-46e2-a802-102190e497e5(jetbrains.mps.core.tool.environment.util)")
 public class FileMPSProject extends ProjectBase implements FileBasedProject {
@@ -33,9 +34,7 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
   @NotNull
   private MacroHelper createMacroHelper() {
     // todo [MM] investigate why it fails when using just path (where those . and .. come from)
-    // XXX here uses to be LocalIoFileSystem.getInstance, therefore I stick to JAVA_IO_FILE_FS, not just FILE_FS, though see no apparent reason to be that specific.
-    IFileSystem fs = getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
-    return MacrosFactory.forProjectFile(fs.getFile(getProjectFile()));
+    return MacrosFactory.forProjectFile(projectHome());
   }
 
   @Override
@@ -57,7 +56,7 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
       MacroHelper helper = createMacroHelper();
       ProjectDescriptor pd = new ProjectDescriptor(getName());
       allModulePaths().forEach(pd::addModulePath);
-      new ProjectDescriptorPersistence(getProjectFile(), helper).saveToFile(pd);
+      new ProjectDescriptorPersistence(projectHome(), helper).saveToFile(pd);
     } catch (IOException ex) {
       // FIXME log or report otherwise
       ex.printStackTrace();
@@ -73,7 +72,7 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
   @Override
   protected void update() {
     getModelAccess().runWriteAction(() -> {
-      ProjectDescriptor pd = new ProjectDescriptorPersistence(getProjectFile(), createMacroHelper()).loadFromFile();
+      ProjectDescriptor pd = new ProjectDescriptorPersistence(projectHome(), createMacroHelper()).loadFromFile();
       loadModules(pd.getModulePaths());
       fireModulesLoaded();
     });
@@ -90,5 +89,11 @@ public class FileMPSProject extends ProjectBase implements FileBasedProject {
   @NotNull
   public final File getProjectFile() {
     return myProjectFile;
+  }
+
+  private IFile projectHome() {
+    // XXX here uses to be LocalIoFileSystem.getInstance, therefore I stick to JAVA_IO_FILE_FS, not just FILE_FS, though see no apparent reason to be that specific.
+    IFileSystem fs = getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
+    return fs.getFile(getProjectFile());
   }
 }
