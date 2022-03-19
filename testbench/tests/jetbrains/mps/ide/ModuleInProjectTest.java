@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,11 +21,11 @@ import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.testFramework.PlatformTestUtil;
-import jetbrains.mps.ide.vfs.IdeaFile;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.Reference;
+import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
@@ -85,7 +85,7 @@ public abstract class ModuleInProjectTest implements EnvironmentAware {
   }
 
   void refreshProjectRecursively() {
-    IdeaFile projectFile = myProject.getFileSystem().getFile(myProject.getProjectFile().toString());
+    IFile projectFile = myProject.getFileSystem().getFile(getProjectRoot());
     projectFile.refresh(new DefaultCachingContext(true, true));
     ApplicationManager.getApplication().invokeAndWait(() -> {
       // needed to trigger refresh on the project folder components in test environment
@@ -94,10 +94,10 @@ public abstract class ModuleInProjectTest implements EnvironmentAware {
   }
 
   @NotNull
-  String createNewDirInProject() {
+  IFile createNewDirInProject() {
     String baseName = "dir";
     String curName = baseName;
-    String result = null;
+    IFile result = null;
     for (int i = 0; i < 2000 && result == null; ++i) {
       result = createNewDirInProject(curName);
       curName = baseName + "_" + i;
@@ -113,14 +113,35 @@ public abstract class ModuleInProjectTest implements EnvironmentAware {
   }
 
   @Nullable
-  String createNewDirInProject(@NotNull String projectDirName) {
-    String projectRoot = myProject.getProjectFile().getAbsolutePath();
-    File file = new File(projectRoot, projectDirName);
+  IFile createNewDirInProject(@NotNull String projectDirName) {
+    File file = new File(getProjectRoot(), projectDirName);
     if (file.exists()) {
       return null;
     }
-    return file.mkdirs() ? file.getAbsolutePath() : null;
+    if (file.mkdirs()) {
+      return myProject.getFileSystem().getFile(file);
+    }
+    return null;
   }
+
+  @NotNull
+  IFile getOrCreateDirInProject(@NotNull String projectDirName) {
+    File file = new File(getProjectRoot(), projectDirName);
+    return myProject.getFileSystem().getFile(file);
+  }
+
+  // see ba276906
+  private File getProjectRoot() {
+    try {
+      // On Mac, "/var/xxx" is "/private/var/xxx" in canonical. Since we use 'startsWith' check,
+      // make sure we start module descriptor loading from canonical file location (module macro performs
+      // canonicalization of file, if we supply non-canonical, paths of model roots would differ)
+      return myProject.getProjectFile().getCanonicalFile();
+    } catch (IOException ex) {
+      throw new IllegalStateException(ex);
+    }
+  }
+
 
   void invokeInCommand(@NotNull Runnable runnable) {
     Reference<Throwable> throwableReference = new Reference<>();

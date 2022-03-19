@@ -18,6 +18,7 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.project.MPSExtentions;
 import java.io.File;
+import jetbrains.mps.project.modules.SolutionProducer;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1229271450720", model = "r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)")
@@ -60,9 +61,10 @@ public class NewSolution_Action extends BaseAction {
     NewModuleDialog<Solution> dialog = new NewModuleDialog<>(mpsProject, cfg);
     dialog.withCheck(() -> NewModuleUtil.check(mpsProject, MPSExtentions.DOT_SOLUTION, cfg.getModuleName(), cfg.getModuleLocation().getAbsolutePath()));
     dialog.withFactory(() -> {
-      String devkitName = cfg.getModuleName();
-      File devkitLocation = cfg.getModuleLocation();
-      Solution result = NewModuleUtil.createSolution(devkitName, devkitLocation.getAbsolutePath(), mpsProject);
+      String moduleName = cfg.getModuleName();
+      File moduleLocation = cfg.getModuleLocation();
+      final SolutionProducer sp = new SolutionProducer(mpsProject);
+      Solution result = sp.create(moduleName, mpsProject.getFileSystem().getFile(moduleLocation));
       mpsProject.setVirtualFolder(result, virtualFolder);
       mpsProject.save();
       return result;

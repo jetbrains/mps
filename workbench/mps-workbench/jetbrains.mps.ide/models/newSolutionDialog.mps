@@ -6,6 +6,7 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
+    <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
   </languages>
   <imports>
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
@@ -232,6 +233,13 @@
         <property id="8970989240999019144" name="text" index="1dT_AB" />
       </concept>
       <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
+    </language>
+    <language id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging">
+      <concept id="2034914114981261497" name="jetbrains.mps.baseLanguage.logging.structure.LogLowLevelStatement" flags="ng" index="RRSsy">
+        <property id="2034914114981261751" name="severity" index="RRSoG" />
+        <child id="2034914114981261755" name="throwable" index="RRSow" />
+        <child id="2034914114981261753" name="message" index="RRSoy" />
+      </concept>
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -1075,6 +1083,18 @@
         <ref role="3uigEE" to="z1c3:~Solution" resolve="Solution" />
       </node>
       <node concept="3clFbS" id="3WcIkZauat5" role="3clF47">
+        <node concept="RRSsy" id="2AzpHdO4zRP" role="3cqZAp">
+          <property role="RRSoG" value="gZ5fksE/warn" />
+          <node concept="Xl_RD" id="2AzpHdO4zRR" role="RRSoy">
+            <property role="Xl_RC" value="NewModuleUtil is scheduled for removal, stop using" />
+          </node>
+          <node concept="2ShNRf" id="2AzpHdO4D4G" role="RRSow">
+            <node concept="1pGfFk" id="2AzpHdO4ERE" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" to="wyt6:~Throwable.&lt;init&gt;()" resolve="Throwable" />
+            </node>
+          </node>
+        </node>
         <node concept="3SKdUt" id="1vFZXjbxljV" role="3cqZAp">
           <node concept="1PaTwC" id="1vFZXjbxljW" role="1aUNEU">
             <node concept="3oM_SD" id="1vFZXjbxlT5" role="1PaTwD">
@@ -1202,9 +1222,30 @@
       <node concept="P$JXv" id="7vEL9Rt8DAf" role="lGtFl">
         <node concept="TZ5HA" id="7vEL9Rt8DAg" role="TZ5H$">
           <node concept="1dT_AC" id="7vEL9Rt8DTC" role="1dT_Ay">
+            <property role="1dT_AB" value="" />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="2AzpHdO4AJl" role="TZ5H$">
+          <node concept="1dT_AC" id="2AzpHdO4AJm" role="1dT_Ay">
             <property role="1dT_AB" value="create new solution module and register it with the project" />
           </node>
           <node concept="1dT_AC" id="7vEL9Rt8DAh" role="1dT_Ay" />
+        </node>
+        <node concept="TZ5HI" id="2AzpHdO4AVy" role="3nqlJM">
+          <node concept="TZ5HA" id="2AzpHdO4AVz" role="3HnX3l">
+            <node concept="1dT_AC" id="2AzpHdO4Bpn" role="1dT_Ay">
+              <property role="1dT_AB" value="use SolutionProducer instead" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="2AzpHdO4AV$" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <node concept="2B6LJw" id="2AzpHdO4Bjs" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="2AzpHdO4Bo8" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
         </node>
       </node>
     </node>

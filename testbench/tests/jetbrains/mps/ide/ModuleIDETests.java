@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,12 +23,13 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.modules.LanguageProducer;
+import jetbrains.mps.project.modules.SolutionProducer;
 import jetbrains.mps.project.structure.GenericDescriptorModelProvider;
 import jetbrains.mps.project.structure.LanguageDescriptorModelProvider.LanguageModelDescriptor;
 import jetbrains.mps.refactoring.Renamer;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.refresh.CachingFile;
@@ -42,9 +43,7 @@ import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -73,7 +72,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
   }
 
   @NotNull
-  private String getNewDirInProject(@NotNull String name) {
+  private IFile getNewDirInProject(@NotNull String name) {
     return myModuleFolderEqualsToModuleName ? createNewDirInProject(name) : createNewDirInProject();
   }
 
@@ -81,7 +80,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
   public void createSolution() {
     String solutionName = getNewModuleName();
     Reference<Solution> solutionRef = new Reference<>();
-    invokeInCommand(() -> solutionRef.set(NewModuleUtil.createSolution(solutionName, getNewDirInProject(solutionName), myProject)));
+    invokeInCommand(() -> solutionRef.set(new SolutionProducer(myProject).create(solutionName, getNewDirInProject(solutionName))));
     invokeInCommand(() -> {
       Solution solution = solutionRef.get();
       Assert.assertNotNull(solution.getRepository());
@@ -94,7 +93,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
   public void createLanguage() {
     String langName = getNewModuleName();
     Reference<Language> langRef = new Reference<>();
-    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(langName, getNewDirInProject(langName), myProject)));
+    invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(langName, getNewDirInProject(langName))));
     invokeInCommand(() -> {
       Language language = langRef.get();
       Assert.assertNotNull(language.getRepository());
@@ -108,7 +107,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
   public void createDevkit() {
     String devkitName = getNewModuleName();
     Reference<DevKit> devkitRef = new Reference<>();
-    invokeInCommand(() -> devkitRef.set(NewModuleUtil.createDevKit(devkitName, getNewDirInProject(devkitName), myProject)));
+    invokeInCommand(() -> devkitRef.set(NewModuleUtil.createDevKit(devkitName, getNewDirInProject(devkitName).getPath(), myProject)));
     invokeInCommand(() -> {
       DevKit devkit = devkitRef.get();
       Assert.assertNotNull(devkit.getRepository());
@@ -120,9 +119,8 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
   @Test
   public void renameLanguage() {
     ModuleSupplier moduleSupplier = (moduleName) -> {
-      File moduleFolder = new File(getProjectRoot(), "languages");
-      moduleFolder = new File(moduleFolder, moduleName);
-      return NewModuleUtil.createLanguage(moduleName, moduleFolder.getAbsolutePath(), myProject);
+      IFile moduleFolder = getOrCreateDirInProject("languages");
+      return new LanguageProducer(myProject).create(moduleName, moduleFolder.findChild(moduleName));
     };
     RenamedModuleChecker moduleChecker = (moduleName, module) -> {
       Assert.assertTrue(module instanceof Language);
@@ -143,15 +141,18 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
     final String someUnexpectedSolutionName = getNewModuleName();
     renameModule(
         (moduleName) -> {
-          File moduleFolder = new File(getProjectRoot(), "languages");
-          moduleFolder = new File(moduleFolder, moduleName);
-          final Language language = NewModuleUtil.createLanguage(moduleName, moduleFolder.getAbsolutePath(), myProject);
+          IFile moduleFolder = getOrCreateDirInProject("languages");
+          moduleFolder = moduleFolder.findChild(moduleName);
+          final Language language = new LanguageProducer(myProject).create(moduleName, moduleFolder);
           try {
-            runtimeSolution[0] = NewModuleUtil.createRuntimeSolution(language, moduleFolder.getAbsolutePath(), myProject);
+            // XXX when refactoring NewModuleUtil uses, pay attention that this test is about nested modules, use proper
+            // location under a parent module
+            runtimeSolution[0] = NewModuleUtil.createRuntimeSolution(language, moduleFolder.getPath(), myProject);
             language.getModuleDescriptor().getRuntimeModules().add(runtimeSolution[0].getModuleReference());
-            sandboxSolution[0] = NewModuleUtil.createSandboxSolution(language, moduleFolder.getAbsolutePath(), myProject);
-            someUnexpectedSolution[0] = NewModuleUtil.createSolution(someUnexpectedSolutionName, moduleFolder.getAbsolutePath() + File.separator+ someUnexpectedSolutionName,
-                                                                     myProject);
+            sandboxSolution[0] = NewModuleUtil.createSandboxSolution(language, moduleFolder.getPath(), myProject);
+
+            IFile unexpSolLocation = moduleFolder.findChild(someUnexpectedSolutionName);
+            someUnexpectedSolution[0] = new SolutionProducer(myProject).create(someUnexpectedSolutionName, unexpSolLocation);
           } catch (IOException e) {
             e.printStackTrace();
           }
@@ -180,9 +181,8 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
   public void renameSolution() {
     renameModule(
         (moduleName) -> {
-          File moduleFolder = new File(getProjectRoot(), "solutions");
-          moduleFolder = new File(moduleFolder, moduleName);
-          return NewModuleUtil.createSolution(moduleName, moduleFolder.getAbsolutePath(), myProject);
+          IFile moduleFolder = getOrCreateDirInProject("solutions");
+          return new SolutionProducer(myProject).create(moduleName, moduleFolder.findChild(moduleName));
         },
         (moduleName, module) -> Assert.assertTrue(module instanceof Solution)
     );
@@ -192,10 +192,10 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
   public void renameSolutionWithSpecialFolder() {
     renameModule(
         (moduleName) -> {
-          File moduleFolder = new File(getProjectRoot(), "solutions");
-          moduleFolder = new File(moduleFolder, moduleName);
+          IFile moduleFolder = getOrCreateDirInProject("solutions");
+          moduleFolder = moduleFolder.findChild(moduleName);
           // Create module with name different from folder name
-          return NewModuleUtil.createSolution(getNewModuleName(), moduleFolder.getAbsolutePath(), myProject);
+          return new SolutionProducer(myProject).create(getNewModuleName(), moduleFolder);
         },
         (moduleName, module) -> Assert.assertTrue(module instanceof Solution)
     );
@@ -205,23 +205,12 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
   public void renameDevkit() {
     renameModule(
         (moduleName) -> {
-          File moduleFolder = new File(getProjectRoot(), "devkits");
-          moduleFolder = new File(moduleFolder, moduleName);
-          return NewModuleUtil.createDevKit(moduleName, moduleFolder.getAbsolutePath(), myProject);
+          IFile moduleFolder = getOrCreateDirInProject("devkits");
+          moduleFolder = moduleFolder.findChild(moduleName);
+          return NewModuleUtil.createDevKit(moduleName, moduleFolder.getPath(), myProject);
         },
         (moduleName, module) -> Assert.assertTrue(module instanceof DevKit)
     );
-  }
-
-  private File getProjectRoot() {
-    try {
-      // On Mac, "/var/xxx" is "/private/var/xxx" in canonical. Since we use 'startsWith' check,
-      // make sure we start module descriptor loading from canonical file location (module macro performs
-      // canonicalization of file, if we supply non-canonical, paths of model roots would differ)
-      return myProject.getProjectFile().getCanonicalFile();
-    } catch (IOException ex) {
-      throw new IllegalStateException(ex);
-    }
   }
 
   private interface ModuleSupplier {
@@ -334,7 +323,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
   public void deleteModule() {
     String moduleName = getNewModuleName();
     Reference<Language> langRef = new Reference<>();
-    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(moduleName, getNewDirInProject(moduleName), myProject)));
+    invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(moduleName, getNewDirInProject(moduleName))));
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       deleteModule(lang, false);
@@ -351,7 +340,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
   public void deleteModuleWithFiles() {
     String moduleName = getNewModuleName();
     Reference<Language> langRef = new Reference<>();
-    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(moduleName, getNewDirInProject(moduleName), myProject)));
+    invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(moduleName, getNewDirInProject(moduleName))));
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       deleteModule(lang, true);
@@ -367,14 +356,14 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
   public void deleteLangFolder() {
     String moduleName = getNewModuleName();
     Reference<Language> langRef = new Reference<>();
-    AtomicReference<String> newDirInProject = new AtomicReference<>();
+    AtomicReference<IFile> newDirInProject = new AtomicReference<>();
     invokeInCommand(() -> {
       newDirInProject.set(getNewDirInProject(moduleName));
-      langRef.set(NewModuleUtil.createLanguage(moduleName, newDirInProject.get(), myProject));
+      langRef.set(new LanguageProducer(myProject).create(moduleName, newDirInProject.get()));
     });
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
-      FileUtil.delete(Paths.get(newDirInProject.get()).toFile());
+      newDirInProject.get().delete();
       CachingFile moduleSourceDir = (CachingFile) lang.getModuleSourceDir();
       Assert.assertNotNull(moduleSourceDir);
       moduleSourceDir.refresh(new DefaultCachingContext(true, true));
@@ -388,14 +377,14 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
   public void deleteSlnFolder() {
     String moduleName = getNewModuleName();
     Reference<Solution> slnRef = new Reference<>();
-    AtomicReference<String> newDirInProject = new AtomicReference<>();
+    AtomicReference<IFile> newDirInProject = new AtomicReference<>();
     invokeInCommand(() -> {
       newDirInProject.set(getNewDirInProject(moduleName));
-      slnRef.set(NewModuleUtil.createSolution(moduleName, newDirInProject.get(), myProject));
+      slnRef.set(new SolutionProducer(myProject).create(moduleName, newDirInProject.get()));
     });
     invokeInCommand(() -> {
       @NotNull Solution sln = slnRef.get();
-      FileUtil.delete(Paths.get(newDirInProject.get()).toFile());
+      newDirInProject.get().delete();
       CachingFile moduleSourceDir = (CachingFile) sln.getModuleSourceDir();
       Assert.assertNotNull(moduleSourceDir);
       moduleSourceDir.refresh(new DefaultCachingContext(true, true));
@@ -419,7 +408,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
     String moduleName = getNewModuleName();
     String newModuleName = getNewModuleName();
     Reference<Language> langRef = new Reference<>();
-    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(moduleName, getNewDirInProject(moduleName), myProject)));
+    invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(moduleName, getNewDirInProject(moduleName))));
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       Language renamedLang = (Language) new Renamer(myProject).renameModule(lang, newModuleName);
@@ -442,7 +431,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
     String newModuleName = getNewModuleName();
     ProjectBackup projectBackup = new ProjectBackup(myProject);
     Reference<Language> langRef = new Reference<>();
-    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(oldModuleName, getNewDirInProject(oldModuleName), myProject)));
+    invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(oldModuleName, getNewDirInProject(oldModuleName))));
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       saveProjectInTest();
@@ -485,7 +474,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
     String moduleName = getNewModuleName();
     ProjectBackup projectBackup = new ProjectBackup(myProject);
     Reference<Language> langRef = new Reference<>();
-    invokeInCommand(() -> langRef.set(NewModuleUtil.createLanguage(moduleName, getNewDirInProject(moduleName), myProject)));
+    invokeInCommand(() -> langRef.set(new LanguageProducer(myProject).create(moduleName, getNewDirInProject(moduleName))));
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
       saveProjectInTest();

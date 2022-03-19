@@ -36,12 +36,14 @@
   <uses module="0cf935df-4699-4e9c-a132-fa109541cba3(jetbrains.mps.build.mps)" kind="dp" />
   <uses module="d5033cee-f632-44b6-b308-89d4fbde34ff(jetbrains.mps.build.startup)" kind="dp" />
   <uses module="698a8d22-a104-47a0-ba8d-10e3ec237f13(jetbrains.mps.build.workflow)" kind="dp" />
+  <uses module="fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)" kind="dp" />
   <uses module="479c7a8c-02f9-43b5-9139-d910cb22f298(jetbrains.mps.core.xml)" kind="dp" />
   <uses module="36c11d2d-1875-4a95-8bdb-70ea1ac63222(jetbrains.mps.execution.api)" kind="rt" />
   <uses module="bfbdd672-7ff5-403f-af4f-16da5226f34c(jetbrains.mps.findUsages.runtime)" kind="dp" />
   <uses module="019b622b-0aef-4dd3-86d0-4eef01f3f6bb(jetbrains.mps.ide)" kind="dp" />
   <uses module="422c2909-59d6-41a9-b318-40e6256b250f(jetbrains.mps.ide.build)" kind="dp" />
   <uses module="5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)" kind="dp" />
+  <uses module="8d29d73f-ed99-4652-ae0a-083cdfe53c34(jetbrains.mps.ide.platform)" kind="dp" />
   <uses module="25092e07-e655-497c-92fb-558a8e3080ed(jetbrains.mps.ide.ui)" kind="dp" />
   <uses module="2d3c70e9-aab2-4870-8d8d-6036800e4103(jetbrains.mps.kernel)" kind="rt" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt+dp" />
@@ -51,6 +53,7 @@
   <uses module="d7eb0a2a-bd50-4576-beae-e4a89db35f20(jetbrains.mps.lang.scopes.runtime)" kind="rt" />
   <uses module="9ded098b-ad6a-4657-bfd9-48636cfe8bc3(jetbrains.mps.lang.traceable)" kind="dp" />
   <uses module="a1250a4d-c090-42c3-ad7c-d298a3357dd4(jetbrains.mps.make.runtime)" kind="dp" />
+  <uses module="8fe4c62a-2020-4ff4-8eda-f322a55bdc9f(jetbrains.mps.refactoring.runtime)" kind="dp" />
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt+dp" />
   <dependency className="jetbrains.mps.build.mps.pluginSolution.plugin.AbstractBuildGenerator">
     <classNode dependClassName="java.lang.String" />
@@ -162,10 +165,10 @@
   </dependency>
   <dependency className="jetbrains.mps.build.mps.pluginSolution.plugin.BuildGeneratorUtil">
     <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="jetbrains.mps.ide.newSolutionDialog.NewModuleUtil" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="jetbrains.mps.project.Solution" />
+    <classNode dependClassName="jetbrains.mps.project.modules.SolutionProducer" />
     <classNode dependClassName="jetbrains.mps.smodel.ModuleRepositoryFacade" />
     <classNode dependClassName="jetbrains.mps.vfs.IFile" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />

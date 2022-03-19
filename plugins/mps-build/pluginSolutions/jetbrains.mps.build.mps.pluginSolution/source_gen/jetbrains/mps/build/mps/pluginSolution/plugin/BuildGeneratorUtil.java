@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
+import jetbrains.mps.project.modules.SolutionProducer;
 
 /*package*/ class BuildGeneratorUtil {
   private BuildGeneratorUtil() {
@@ -47,8 +47,7 @@ import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
     if (!(solutionBaseDirFile.exists())) {
       solutionBaseDirFile.mkdirs();
     }
-    // FIXME NewModuleUtil needs IFile for dir anyway, why do we convert it to string here, just to get converted to IFile back?
-    Solution solution = NewModuleUtil.createSolution(solutionName, solutionBaseDirFile.getPath(), mpsProject);
+    Solution solution = new SolutionProducer(mpsProject).create(solutionName, solutionBaseDirFile);
     mpsProject.save();
     return solution;
   }

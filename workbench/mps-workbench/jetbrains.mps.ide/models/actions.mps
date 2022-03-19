@@ -198,6 +198,7 @@
     <import index="tprr" ref="r:00000000-0000-4000-0000-011c895904ab(jetbrains.mps.ide.newSolutionDialog)" />
     <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
     <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
+    <import index="mqhh" ref="r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)" />
     <import index="22ra" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.update(MPS.Editor/)" implicit="true" />
     <import index="ov6m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.messages(MPS.IDEA/)" implicit="true" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" implicit="true" />
@@ -6635,7 +6636,7 @@
                 <node concept="3clFbS" id="3mo93YU3f4U" role="1bW5cS">
                   <node concept="3cpWs8" id="7o065EtvZeG" role="3cqZAp">
                     <node concept="3cpWsn" id="7o065EtvZeH" role="3cpWs9">
-                      <property role="TrG5h" value="devkitName" />
+                      <property role="TrG5h" value="moduleName" />
                       <node concept="17QB3L" id="7o065EtvZeI" role="1tU5fm" />
                       <node concept="2OqwBi" id="7o065EtvZRj" role="33vP2m">
                         <node concept="37vLTw" id="7o065Etw0qr" role="2Oq$k0">
@@ -6649,7 +6650,7 @@
                   </node>
                   <node concept="3cpWs8" id="7o065EtvZeK" role="3cqZAp">
                     <node concept="3cpWsn" id="7o065EtvZeL" role="3cpWs9">
-                      <property role="TrG5h" value="devkitLocation" />
+                      <property role="TrG5h" value="moduleLocation" />
                       <node concept="3uibUv" id="7G8zgmvOiU4" role="1tU5fm">
                         <ref role="3uigEE" to="guwi:~File" resolve="File" />
                       </node>
@@ -6663,28 +6664,55 @@
                       </node>
                     </node>
                   </node>
+                  <node concept="3cpWs8" id="1vFZXjb$jyT" role="3cqZAp">
+                    <node concept="3cpWsn" id="1vFZXjb$jyU" role="3cpWs9">
+                      <property role="TrG5h" value="sp" />
+                      <property role="3TUv4t" value="true" />
+                      <node concept="3uibUv" id="1vFZXjb$jwO" role="1tU5fm">
+                        <ref role="3uigEE" to="mqhh:1vFZXjbuUer" resolve="SolutionProducer" />
+                      </node>
+                      <node concept="2ShNRf" id="1vFZXjb$jyV" role="33vP2m">
+                        <node concept="1pGfFk" id="1vFZXjb$jyW" role="2ShVmc">
+                          <property role="373rjd" value="true" />
+                          <ref role="37wK5l" to="mqhh:1vFZXjbwKmj" resolve="SolutionProducer" />
+                          <node concept="37vLTw" id="1vFZXjb$jyX" role="37wK5m">
+                            <ref role="3cqZAo" node="3mo93YU3bBR" resolve="mpsProject" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                   <node concept="3cpWs8" id="7G8zgmvNOF9" role="3cqZAp">
                     <node concept="3cpWsn" id="7G8zgmvNOFa" role="3cpWs9">
                       <property role="TrG5h" value="result" />
                       <node concept="3uibUv" id="7G8zgmvNOv6" role="1tU5fm">
                         <ref role="3uigEE" to="z1c3:~Solution" resolve="Solution" />
                       </node>
-                      <node concept="2YIFZM" id="3mo93YU5bmf" role="33vP2m">
-                        <ref role="37wK5l" to="tprr:3WcIkZauat2" resolve="createSolution" />
-                        <ref role="1Pybhc" to="tprr:56Y$nab_bZy" resolve="NewModuleUtil" />
-                        <node concept="37vLTw" id="3mo93YU5bmg" role="37wK5m">
-                          <ref role="3cqZAo" node="7o065EtvZeH" resolve="devkitName" />
+                      <node concept="2OqwBi" id="1vFZXjb$p6J" role="33vP2m">
+                        <node concept="37vLTw" id="1vFZXjb$oPn" role="2Oq$k0">
+                          <ref role="3cqZAo" node="1vFZXjb$jyU" resolve="sp" />
                         </node>
-                        <node concept="2OqwBi" id="3mo93YU5bmh" role="37wK5m">
-                          <node concept="37vLTw" id="3mo93YU5bmi" role="2Oq$k0">
-                            <ref role="3cqZAo" node="7o065EtvZeL" resolve="devkitLocation" />
+                        <node concept="liA8E" id="1vFZXjb$psx" role="2OqNvi">
+                          <ref role="37wK5l" to="mqhh:1vFZXjbwL_e" resolve="create" />
+                          <node concept="37vLTw" id="1vFZXjb$qpc" role="37wK5m">
+                            <ref role="3cqZAo" node="7o065EtvZeH" resolve="moduleName" />
                           </node>
-                          <node concept="liA8E" id="3mo93YU5bmj" role="2OqNvi">
-                            <ref role="37wK5l" to="guwi:~File.getAbsolutePath()" resolve="getAbsolutePath" />
+                          <node concept="2OqwBi" id="1vFZXjb$ts4" role="37wK5m">
+                            <node concept="2OqwBi" id="1vFZXjb$rBS" role="2Oq$k0">
+                              <node concept="37vLTw" id="1vFZXjb$r38" role="2Oq$k0">
+                                <ref role="3cqZAo" node="3mo93YU3bBR" resolve="mpsProject" />
+                              </node>
+                              <node concept="liA8E" id="1vFZXjb$sRO" role="2OqNvi">
+                                <ref role="37wK5l" to="z1c4:~MPSProject.getFileSystem()" resolve="getFileSystem" />
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="1vFZXjb$u62" role="2OqNvi">
+                              <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
+                              <node concept="37vLTw" id="1vFZXjb$ued" role="37wK5m">
+                                <ref role="3cqZAo" node="7o065EtvZeL" resolve="moduleLocation" />
+                              </node>
+                            </node>
                           </node>
-                        </node>
-                        <node concept="37vLTw" id="3mo93YU5bmk" role="37wK5m">
-                          <ref role="3cqZAo" node="3mo93YU3bBR" resolve="mpsProject" />
                         </node>
                       </node>
                     </node>
