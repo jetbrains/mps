@@ -23,10 +23,10 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.GeneralModuleFactory;
 import jetbrains.mps.smodel.SModelInternal;
-import org.apache.log4j.Level;
 import jetbrains.mps.project.modules.LanguageProducer;
 import jetbrains.mps.project.DevKit;
-import jetbrains.mps.project.structure.modules.DevkitDescriptor;
+import jetbrains.mps.project.modules.DevkitProducer;
+import org.apache.log4j.Level;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import com.intellij.openapi.application.ApplicationManager;
@@ -41,7 +41,6 @@ import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.LanguageAspect;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
-import jetbrains.mps.project.ModuleId;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.model.SModelName;
@@ -113,10 +112,7 @@ public class NewModuleUtil {
    */
   @Deprecated(forRemoval = true)
   public static Solution createSolution(String namespace, String rootPath, MPSProject project) {
-    if (LOG.isEnabledFor(Level.WARN)) {
-      LOG.warn("NewModuleUtil is scheduled for removal, stop using", new Throwable());
-    }
-    // FIXME once uses of the method from within NewModuleUtil gone, log a warning that the method will be removed in the next release
+    traceDeprecatedUse();
     return new SolutionProducer(project).create(namespace, project.getFileSystem().getFile(rootPath));
   }
 
@@ -140,14 +136,14 @@ public class NewModuleUtil {
    * create new devkit module and register it with the project
    */
   public static DevKit createDevKit(String namespace, String rootPath, MPSProject project) {
-    IFile descriptorFile = NewModuleUtil.getModuleFile(namespace, project.getFileSystem().getFile(rootPath), MPSExtentions.DOT_DEVKIT);
-    assert !(descriptorFile.exists());
-    DevkitDescriptor descriptor = createNewDevkitDescriptor(namespace);
-    DevKit module = (DevKit) new GeneralModuleFactory().instantiate(descriptor, descriptorFile);
-    project.addModule(module);
-    module.save();
-    project.save();
-    return module;
+    traceDeprecatedUse();
+    return new DevkitProducer(project).create(namespace, project.getFileSystem().getFile(rootPath));
+  }
+
+  private static void traceDeprecatedUse() {
+    if (LOG.isEnabledFor(Level.WARN)) {
+      LOG.warn("NewModuleUtil is scheduled for removal, stop using", new Throwable());
+    }
   }
 
   public static void runModuleCreation(Project p, final _FunctionTypes._void_P0_E0 r) {
@@ -243,13 +239,6 @@ public class NewModuleUtil {
 
   private static IFile getModuleFile(String namespace, IFile rootPath, String extension) {
     return rootPath.findChild(namespace + extension);
-  }
-
-  private static DevkitDescriptor createNewDevkitDescriptor(String namespace) {
-    DevkitDescriptor d = new DevkitDescriptor();
-    d.setNamespace(namespace);
-    d.setId(ModuleId.regular());
-    return d;
   }
 
   private static EditableSModel createModel(SModule module, String modelName) {

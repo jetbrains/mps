@@ -26,7 +26,6 @@ import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ex.ProjectManagerEx;
 import com.intellij.openapi.startup.StartupManager;
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
@@ -36,6 +35,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.StandaloneMPSProject;
+import jetbrains.mps.project.modules.DevkitProducer;
 import jetbrains.mps.project.modules.LanguageProducer;
 import jetbrains.mps.project.modules.SolutionProducer;
 import jetbrains.mps.smodel.Language;
@@ -121,7 +121,8 @@ public class ProjectFactory {
       }
 
       if (myOptions.getCreateNewDevkit()) {
-        myCreatedDevkit = NewModuleUtil.createDevKit(myOptions.getDevkitNamespace(), myOptions.getDevkitPath(), mpsProject);
+        final IFile path = mpsProject.getFileSystem().getFile(new File(myOptions.getDevkitPath()));
+        myCreatedDevkit = new DevkitProducer(mpsProject).create(myOptions.getDevkitNamespace(), path);
       }
 
       if (myCreatedSolution != null && myCreatedLanguage != null) {

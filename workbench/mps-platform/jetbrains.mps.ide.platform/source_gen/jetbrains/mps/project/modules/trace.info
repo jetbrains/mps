@@ -258,5 +258,45 @@
       <unit id="1723752571811374017" at="42,0,193,0" name="jetbrains.mps.project.modules.LanguageProducer" />
     </file>
   </root>
+  <root nodeRef="r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)/4651854782306228045">
+    <file name="DevkitProducer.java">
+      <node id="4651854782306233063" at="17,0,18,0" concept="5" trace="myProject" />
+      <node id="4651854782306233067" at="19,57,20,27" concept="4" />
+      <node id="4651854782306332853" at="23,77,24,85" concept="9" />
+      <node id="4651854782306347701" at="24,85,25,40" concept="11" />
+      <node id="4651854782306312887" at="25,40,26,68" concept="9" />
+      <node id="8640935017362592317" at="26,68,27,96" concept="9" />
+      <node id="8640935017362592326" at="27,96,28,32" concept="4" />
+      <node id="8640935017362592331" at="28,32,29,18" concept="4" />
+      <node id="8640935017362592335" at="29,18,30,18" concept="10" />
+      <node id="2273513587775220670" at="33,76,34,48" concept="9" />
+      <node id="2273513587775220675" at="34,48,35,30" concept="4" />
+      <node id="2273513587775220680" at="35,30,36,32" concept="4" />
+      <node id="2273513587775220685" at="36,32,37,13" concept="10" />
+      <node id="4651854782306228231" at="19,0,22,0" concept="3" trace="DevkitProducer#(Ljetbrains/mps/project/MPSProject;)V" />
+      <node id="2273513587775220664" at="33,0,39,0" concept="14" trace="createDevkitDescriptor#(Ljava/lang/String;)Ljetbrains/mps/project/structure/modules/DevkitDescriptor;" />
+      <node id="4651854782306235183" at="23,0,32,0" concept="8" trace="create#(Ljava/lang/String;Ljetbrains/mps/vfs/IFile;)Ljetbrains/mps/project/DevKit;" />
+      <scope id="4651854782306228235" at="19,57,20,27" />
+      <scope id="4651854782306228231" at="19,0,22,0">
+        <var name="mpsProject" id="4651854782306233028" />
+      </scope>
+      <scope id="2273513587775220669" at="33,76,37,13">
+        <var name="d" id="2273513587775220671" />
+      </scope>
+      <scope id="2273513587775220664" at="33,0,39,0">
+        <var name="namespace" id="2273513587775220667" />
+      </scope>
+      <scope id="4651854782306235186" at="23,77,30,18">
+        <var name="descriptor" id="4651854782306312888" />
+        <var name="descriptorFile" id="4651854782306332854" />
+        <var name="module" id="8640935017362592318" />
+      </scope>
+      <scope id="4651854782306235183" at="23,0,32,0">
+        <var name="moduleDir" id="4651854782306236392" />
+        <var name="namespace" id="4651854782306236389" />
+      </scope>
+      <unit id="4651854782306228045" at="15,0,41,0" name="jetbrains.mps.project.modules.DevkitProducer" />
+    </file>
+  </root>
 </debug-info>
 

@@ -23,6 +23,7 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.modules.DevkitProducer;
 import jetbrains.mps.project.modules.LanguageProducer;
 import jetbrains.mps.project.modules.SolutionProducer;
 import jetbrains.mps.project.structure.GenericDescriptorModelProvider;
@@ -107,7 +108,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
   public void createDevkit() {
     String devkitName = getNewModuleName();
     Reference<DevKit> devkitRef = new Reference<>();
-    invokeInCommand(() -> devkitRef.set(NewModuleUtil.createDevKit(devkitName, getNewDirInProject(devkitName).getPath(), myProject)));
+    invokeInCommand(() -> devkitRef.set(new DevkitProducer(myProject).create(devkitName, getNewDirInProject(devkitName))));
     invokeInCommand(() -> {
       DevKit devkit = devkitRef.get();
       Assert.assertNotNull(devkit.getRepository());
@@ -207,7 +208,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
         (moduleName) -> {
           IFile moduleFolder = getOrCreateDirInProject("devkits");
           moduleFolder = moduleFolder.findChild(moduleName);
-          return NewModuleUtil.createDevKit(moduleName, moduleFolder.getPath(), myProject);
+          return new DevkitProducer(myProject).create(moduleName, moduleFolder);
         },
         (moduleName, module) -> Assert.assertTrue(module instanceof DevKit)
     );

@@ -126,6 +126,7 @@
     <import index="lz1h" ref="r:47803144-d0ed-4800-ae84-e83a292e3adb(jetbrains.mps.ide.ui.dialogs.modules)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
     <import index="tprr" ref="r:00000000-0000-4000-0000-011c895904ab(jetbrains.mps.ide.newSolutionDialog)" />
+    <import index="mqhh" ref="r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)" />
     <import index="ov6m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.messages(MPS.IDEA/)" implicit="true" />
     <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" implicit="true" />
   </imports>
@@ -966,22 +967,37 @@
                       <node concept="3uibUv" id="7G8zgmvNOv6" role="1tU5fm">
                         <ref role="3uigEE" to="z1c3:~DevKit" resolve="DevKit" />
                       </node>
-                      <node concept="2YIFZM" id="7G8zgmvNOFb" role="33vP2m">
-                        <ref role="37wK5l" to="tprr:7BBl3KIzvoe" resolve="createDevKit" />
-                        <ref role="1Pybhc" to="tprr:56Y$nab_bZy" resolve="NewModuleUtil" />
-                        <node concept="37vLTw" id="7G8zgmvNOFc" role="37wK5m">
-                          <ref role="3cqZAo" node="7o065EtvZeH" resolve="devkitName" />
-                        </node>
-                        <node concept="2OqwBi" id="7G8zgmvOYd6" role="37wK5m">
-                          <node concept="37vLTw" id="7G8zgmvNOFd" role="2Oq$k0">
-                            <ref role="3cqZAo" node="7o065EtvZeL" resolve="devkitLocation" />
-                          </node>
-                          <node concept="liA8E" id="7G8zgmvOZ1I" role="2OqNvi">
-                            <ref role="37wK5l" to="guwi:~File.getAbsolutePath()" resolve="getAbsolutePath" />
+                      <node concept="2OqwBi" id="42eHksA6_vM" role="33vP2m">
+                        <node concept="2ShNRf" id="42eHksA62z1" role="2Oq$k0">
+                          <node concept="1pGfFk" id="42eHksA6_6U" role="2ShVmc">
+                            <property role="373rjd" value="true" />
+                            <ref role="37wK5l" to="mqhh:42eHksA49w7" resolve="DevkitProducer" />
+                            <node concept="37vLTw" id="42eHksA6_hl" role="37wK5m">
+                              <ref role="3cqZAo" node="3mo93YU3bBR" resolve="mpsProject" />
+                            </node>
                           </node>
                         </node>
-                        <node concept="37vLTw" id="7G8zgmvNOFe" role="37wK5m">
-                          <ref role="3cqZAo" node="3mo93YU3bBR" resolve="mpsProject" />
+                        <node concept="liA8E" id="42eHksA6_MJ" role="2OqNvi">
+                          <ref role="37wK5l" to="mqhh:42eHksA4bcJ" resolve="create" />
+                          <node concept="37vLTw" id="42eHksA6_TN" role="37wK5m">
+                            <ref role="3cqZAo" node="7o065EtvZeH" resolve="devkitName" />
+                          </node>
+                          <node concept="2OqwBi" id="42eHksA7a_H" role="37wK5m">
+                            <node concept="2OqwBi" id="42eHksA79bU" role="2Oq$k0">
+                              <node concept="37vLTw" id="7G8zgmvNOFd" role="2Oq$k0">
+                                <ref role="3cqZAo" node="3mo93YU3bBR" resolve="mpsProject" />
+                              </node>
+                              <node concept="liA8E" id="42eHksA79ZI" role="2OqNvi">
+                                <ref role="37wK5l" to="z1c5:~MPSProject.getFileSystem()" resolve="getFileSystem" />
+                              </node>
+                            </node>
+                            <node concept="liA8E" id="42eHksA7bp$" role="2OqNvi">
+                              <ref role="37wK5l" to="3ju5:~IFileSystem.getFile(java.io.File)" resolve="getFile" />
+                              <node concept="37vLTw" id="42eHksA7byC" role="37wK5m">
+                                <ref role="3cqZAo" node="7o065EtvZeL" resolve="devkitLocation" />
+                              </node>
+                            </node>
+                          </node>
                         </node>
                       </node>
                     </node>

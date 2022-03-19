@@ -19,6 +19,7 @@ import jetbrains.mps.project.DevKit;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.project.MPSExtentions;
 import java.io.File;
+import jetbrains.mps.project.modules.DevkitProducer;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 
 @GeneratedClass(node = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/5883033498657845915", model = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)")
@@ -63,7 +64,7 @@ public class NewDevKit_Action extends BaseAction {
     dialog.withFactory(() -> {
       String devkitName = cfg.getModuleName();
       File devkitLocation = cfg.getModuleLocation();
-      DevKit result = NewModuleUtil.createDevKit(devkitName, devkitLocation.getAbsolutePath(), mpsProject);
+      DevKit result = new DevkitProducer(mpsProject).create(devkitName, mpsProject.getFileSystem().getFile(devkitLocation));
       mpsProject.setVirtualFolder(result, virtualFolder);
       mpsProject.save();
       return result;
