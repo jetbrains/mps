@@ -7,11 +7,12 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.project.MPSProject;
 import java.io.IOException;
-import java.io.File;
+import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.project.modules.SolutionProducer;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.vfs.IFile;
+import java.io.File;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
 import java.util.Iterator;
@@ -20,10 +21,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.GeneralModuleFactory;
 import jetbrains.mps.smodel.SModelInternal;
-import jetbrains.mps.project.structure.modules.LanguageDescriptor;
-import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
-import jetbrains.mps.smodel.ModuleRepositoryFacade;
-import jetbrains.mps.smodel.Generator;
+import jetbrains.mps.project.modules.LanguageProducer;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.structure.modules.DevkitDescriptor;
 import jetbrains.mps.project.Project;
@@ -34,27 +32,16 @@ import javax.lang.model.SourceVersion;
 import jetbrains.mps.util.NameUtil;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.vfs.util.PathFormatChecker;
-import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.SModelStereotype;
-import jetbrains.mps.project.SModuleOperations;
-import org.jetbrains.mps.openapi.model.SModelName;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.LanguageAspect;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.ModuleId;
-import jetbrains.mps.project.structure.model.ModelRootDescriptor;
-import jetbrains.mps.persistence.DefaultModelRoot;
-import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
-import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.persistence.MementoImpl;
-import jetbrains.mps.project.ProjectPathUtil;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
-import org.jetbrains.mps.openapi.language.SConcept;
-import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.model.SModelName;
 
 /**
  * 
@@ -64,10 +51,12 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @GeneratedClass(node = "r:00000000-0000-4000-0000-011c895904ab(jetbrains.mps.ide.newSolutionDialog)/5890305283801268194", model = "r:00000000-0000-4000-0000-011c895904ab(jetbrains.mps.ide.newSolutionDialog)")
 public class NewModuleUtil {
   public static Solution createRuntimeSolution(Language language, String languageRootPath, MPSProject project) throws IOException {
-    String basePath = languageRootPath + File.separator + "runtime";
+    // FIXME with new code, don't create rt under language, rather a sibling
+    IFile basePath = project.getFileSystem().getFile(languageRootPath).findChild("runtime");
     String namespace = language.getModuleName() + ".runtime";
 
-    Solution runtime = NewModuleUtil.createSolution(namespace, basePath, project);
+    Solution runtime = new SolutionProducer(project).create(namespace, basePath);
+    // XXX perhaps, can configure SolutionProducer with an extra code to create a model, not to perform ModuleDependencyVersions.update twice?
     EditableSModel runtimeModel = createModel(runtime, namespace);
     runtimeModel.save();
 
@@ -83,7 +72,7 @@ public class NewModuleUtil {
 
     IFile descriptorFile = NewModuleUtil.getModuleFile(namespace, project.getFileSystem().getFile(basePath), MPSExtentions.DOT_SOLUTION);
     assert !(descriptorFile.exists());
-    SolutionDescriptor descriptor = createNewSolutionDescriptor(namespace, descriptorFile);
+    SolutionDescriptor descriptor = SolutionProducer.createSolutionDescriptor(namespace, descriptorFile);
 
     // XXX I don't see a reason to use Language.getAllExtendedLanguages, but this is the way it was introduced in 5057107c
     {
@@ -116,54 +105,13 @@ public class NewModuleUtil {
    * create new solution module and register it with the project
    */
   public static Solution createSolution(String namespace, String rootPath, MPSProject project) {
-    IFile descriptorFile = NewModuleUtil.getModuleFile(namespace, project.getFileSystem().getFile(rootPath), MPSExtentions.DOT_SOLUTION);
-    assert !(descriptorFile.exists());
-    SolutionDescriptor descriptor = createNewSolutionDescriptor(namespace, descriptorFile);
-    Solution module = (Solution) new GeneralModuleFactory().instantiate(descriptor, descriptorFile);
-    project.addModule(module);
-    new ModuleDependencyVersions(project.getComponent(LanguageRegistry.class), project.getRepository()).update(module);
-    module.save();
-    return module;
+    // FIXME once uses of the method from within NewModuleUtil gone, log a warning that the method will be removed in the next release
+    return new SolutionProducer(project).create(namespace, project.getFileSystem().getFile(rootPath));
   }
 
   public static Language createLanguage(String namespace, String rootPath, MPSProject project, boolean saveProject) {
-    IFile descriptorFile = NewModuleUtil.getModuleFile(namespace, project.getFileSystem().getFile(rootPath), MPSExtentions.DOT_LANGUAGE);
-
-    if (descriptorFile.exists()) {
-      throw new IllegalArgumentException("Descriptor file " + descriptorFile + " already exists");
-    }
-    LanguageDescriptor languageDescriptor = createNewLanguageDescriptor(namespace, descriptorFile);
-
-    IFile generatorLocation = descriptorFile.getParent().findChild("generator");
-    generatorLocation.mkdirs();
-
-    //  it's the first and only generator in the language, no need to generate some unique long value
-    final GeneratorDescriptor generatorDescriptor = createGeneratorDescriptor(languageDescriptor.getNamespace() + ".generator", generatorLocation, null);
-    generatorDescriptor.setSourceLanguage(languageDescriptor.getModuleReference());
-    languageDescriptor.getGenerators().add(generatorDescriptor);
-
-    ModuleRepositoryFacade projectRepoFacade = new ModuleRepositoryFacade(project);
-    Language language = (Language) projectRepoFacade.instantiate(languageDescriptor, descriptorFile);
-    project.addModule(language);
-    Generator generator = (Generator) projectRepoFacade.instantiate(generatorDescriptor, descriptorFile);
-    // though generator lives under the language, Project respects both nested and standalone generators now,  we have to do project.addModule(generator) to ensure it is properly registered with a repo
-    project.addModule(generator);
-
-    try {
-      createMainLanguageAspects(language);
-    } catch (IOException e) {
-      // todo: ???
-      throw new RuntimeException(e);
-    }
-
-    createTemplateModelIfNoneYet(generator);
-
-    ModuleDependencyVersions mv = new ModuleDependencyVersions(project.getComponent(LanguageRegistry.class), project.getRepository());
-    mv.update(language);
-    mv.update(generator);
-
-    language.save();
-    generator.save();
+    // FIXME log warn about use of a method, deprecated and scheduled for removal
+    Language language = new LanguageProducer(project).create(namespace, project.getFileSystem().getFile(rootPath));
     if (saveProject) {
       project.save();
     }
@@ -253,28 +201,12 @@ public class NewModuleUtil {
   }
 
   public static void createTemplateModelIfNoneYet(Generator newGenerator) {
-    boolean alreadyOwnsTemplateModel = false;
-    for (SModel modelDescriptor : newGenerator.getModels()) {
-      if (SModelStereotype.isGeneratorModel(modelDescriptor)) {
-        alreadyOwnsTemplateModel = true;
-        break;
-      }
-    }
-    if (!(alreadyOwnsTemplateModel)) {
-      String namespace = newGenerator.getModuleName();
-      if (namespace.indexOf('#') > 0) {
-        namespace = namespace.substring(0, namespace.indexOf('#'));
-      }
-      SModel templateModel = SModuleOperations.createModelWithAdjustments(new SModelName(namespace, "templates", SModelStereotype.GENERATOR).getValue(), newGenerator.getModelRoots().iterator().next());
-      SNode mappingConfiguration = SModelOperations.createNewNode(templateModel, null, CONCEPTS.MappingConfiguration$7j);
-      // both model and MC named 'main' was a bit confusing (not to mention 'main' alias of the module itself), therefore the model to hold templates is 'templates' now
-      SPropertyOperations.assign(mappingConfiguration, PROPS.name$MnvL, "main");
-      SModelOperations.addRootNode(templateModel, mappingConfiguration);
-      ((EditableSModel) templateModel).save();
-    }
+    // FIXME remove uses, add warn
+    LanguageProducer.createTemplateModelIfNoneYet(newGenerator);
   }
 
   public static void createMainLanguageAspects(Language language) throws IOException {
+    // FIXME remove or at least warn uses
     assert language.getModelRoots().iterator().hasNext();
     ((EditableSModel) LanguageAspect.STRUCTURE.createNew(language)).save();
     ((EditableSModel) LanguageAspect.EDITOR.createNew(language)).save();
@@ -294,62 +226,12 @@ public class NewModuleUtil {
    */
   @NotNull
   public static GeneratorDescriptor createGeneratorDescriptor(String namespace, @NotNull IFile generatorModuleLocation, @Nullable IFile templateModelsLocation) {
-    final GeneratorDescriptor generatorDescriptor = new GeneratorDescriptor();
-    generatorDescriptor.setNamespace(namespace);
-    generatorDescriptor.setId(ModuleId.regular());
-    // unlike other modules, in outburst of pure antagonism, namespace in generator used to mean alias. Now, it's the way it has to be.
-    generatorDescriptor.setAlias("main");
-    ModelRootDescriptor modelRootDescriptor;
-    // there are 2 possible approaches, contentRoot = moduleRoot + sourceRoot descendant, and the one with both pointing to the same location
-    if (templateModelsLocation == null) {
-      // I use distinct content and source roots here as it looks better in persistence (some values serialized in both tags compared to "." attribute of createSingleFolderDescroptor case
-      modelRootDescriptor = DefaultModelRoot.createDescriptor(generatorModuleLocation, generatorModuleLocation.findChild("templates"));
-    } else {
-      // however, not to bother with templateModelsLocation relative to generatorModuleLocation, I stick to single folder as both content and source root
-      modelRootDescriptor = DefaultModelRoot.createSingleFolderDescriptor(templateModelsLocation);
-    }
-    generatorDescriptor.getModelRootDescriptors().add(modelRootDescriptor);
-    generatorDescriptor.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(JavaModuleFacet.FACET_TYPE, new MementoImpl()));
-    ProjectPathUtil.setGeneratorOutputPath(generatorDescriptor, generatorModuleLocation.findChild("source_gen").getPath());
-    return generatorDescriptor;
+    // FIXME log warn once NewGeneratorDialog cease using the method
+    return LanguageProducer.createGeneratorDescriptor(namespace, generatorModuleLocation, templateModelsLocation);
   }
 
   private static IFile getModuleFile(String namespace, IFile rootPath, String extension) {
     return rootPath.findChild(namespace + extension);
-  }
-
-  private static SolutionDescriptor createNewSolutionDescriptor(String namespace, IFile descriptorFile) {
-    SolutionDescriptor descriptor = new SolutionDescriptor();
-    descriptor.setNamespace(namespace);
-    descriptor.setId(ModuleId.regular());
-    IFile moduleLocation = descriptorFile.getParent();
-    final IFile modelsDir = moduleLocation.findChild(Solution.SOLUTION_MODELS);
-    if (modelsDir.exists() && modelsDir.getChildren().size() != 0) {
-      throw new IllegalStateException("Trying to create a solution in an existing solution's directory: " + moduleLocation);
-    } else {
-      // we assume create happens under proper application write lock, would be odd to manage locks here
-      modelsDir.mkdirs();
-    }
-
-    descriptor.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(modelsDir.getParent(), modelsDir));
-    descriptor.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(JavaModuleFacet.FACET_TYPE, new MementoImpl()));
-    ProjectPathUtil.setGeneratorOutputPath(descriptor, moduleLocation.findChild("source_gen").getPath());
-    return descriptor;
-  }
-
-  private static LanguageDescriptor createNewLanguageDescriptor(String languageNamespace, IFile descriptorFile) {
-    LanguageDescriptor languageDescriptor = new LanguageDescriptor();
-    languageDescriptor.setNamespace(languageNamespace);
-    languageDescriptor.setId(ModuleId.regular());
-    IFile moduleLocation = descriptorFile.getParent();
-    IFile languageModels = moduleLocation.findChild(Language.LANGUAGE_MODELS);
-    if (languageModels.exists()) {
-      throw new IllegalStateException("Trying to create a language in an existing language's directory " + languageModels);
-    }
-    languageDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(languageModels.getParent(), languageModels));
-    languageDescriptor.getModuleFacetDescriptors().add(new ModuleFacetDescriptor(JavaModuleFacet.FACET_TYPE, new MementoImpl()));
-    ProjectPathUtil.setGeneratorOutputPath(languageDescriptor, moduleLocation.findChild("source_gen").getPath());
-    return languageDescriptor;
   }
 
   private static DevkitDescriptor createNewDevkitDescriptor(String namespace) {
@@ -366,13 +248,5 @@ public class NewModuleUtil {
       }
     }
     throw new IllegalStateException("can't create model with " + modelName + " in module " + module.getModuleName());
-  }
-
-  private static final class CONCEPTS {
-    /*package*/ static final SConcept MappingConfiguration$7j = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xff0bea0475L, "jetbrains.mps.lang.generator.structure.MappingConfiguration");
-  }
-
-  private static final class PROPS {
-    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 }
