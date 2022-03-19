@@ -231,10 +231,10 @@ public class EditorCell_Image extends EditorCell_Basic {
       Map<String, Icon> iconCache = ec.getIconCache();
       if (!iconCache.containsKey(fullPath)) {
         File iconFile = new File(fullPath);
-        if (!iconFile.exists()) {
-          LOG.error("image file not found: " + fullPath);
-          return null;
-        }
+//        if (!iconFile.exists()) {
+//          LOG.error("image file not found: " + fullPath);
+//          return null;
+//        }
 
         try {
           URL iconUrl = iconFile.toURI().toURL();
