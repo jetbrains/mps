@@ -31,6 +31,7 @@ import jetbrains.mps.project.structure.LanguageDescriptorModelProvider.LanguageM
 import jetbrains.mps.refactoring.Renamer;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
+import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.refresh.CachingFile;
@@ -44,6 +45,8 @@ import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.File;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -360,7 +363,8 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
     });
     invokeInCommand(() -> {
       @NotNull Language lang = langRef.get();
-      newDirInProject.get().delete();
+      // XXX find out why newDirInProject.get().delete(); doesn't do the trick
+      FileUtil.delete(new File(newDirInProject.get().getPath()));
       CachingFile moduleSourceDir = (CachingFile) lang.getModuleSourceDir();
       Assert.assertNotNull(moduleSourceDir);
       moduleSourceDir.refresh(new DefaultCachingContext(true, true));
@@ -381,7 +385,8 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
     });
     invokeInCommand(() -> {
       @NotNull Solution sln = slnRef.get();
-      newDirInProject.get().delete();
+      // XXX I wonder why newDirInProject.get().delete(); doesn't do the trick.
+      FileUtil.delete(new File(newDirInProject.get().getPath()));
       CachingFile moduleSourceDir = (CachingFile) sln.getModuleSourceDir();
       Assert.assertNotNull(moduleSourceDir);
       moduleSourceDir.refresh(new DefaultCachingContext(true, true));
