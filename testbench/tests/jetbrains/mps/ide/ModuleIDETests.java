@@ -17,13 +17,13 @@ package jetbrains.mps.ide;
 
 import com.intellij.configurationStore.StoreReloadManager;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
-import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.module.ModuleDeleteHelper;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.ProjectPathUtil;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.modules.DevkitProducer;
+import jetbrains.mps.project.modules.LanguageAndSolutionsProducer;
 import jetbrains.mps.project.modules.LanguageProducer;
 import jetbrains.mps.project.modules.SolutionProducer;
 import jetbrains.mps.project.structure.GenericDescriptorModelProvider;
@@ -44,7 +44,6 @@ import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -144,20 +143,17 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
         (moduleName) -> {
           IFile moduleFolder = getOrCreateDirInProject("languages");
           moduleFolder = moduleFolder.findChild(moduleName);
-          final Language language = new LanguageProducer(myProject).create(moduleName, moduleFolder);
-          try {
-            // XXX when refactoring NewModuleUtil uses, pay attention that this test is about nested modules, use proper
-            // location under a parent module
-            runtimeSolution[0] = NewModuleUtil.createRuntimeSolution(language, moduleFolder.getPath(), myProject);
-            language.getModuleDescriptor().getRuntimeModules().add(runtimeSolution[0].getModuleReference());
-            sandboxSolution[0] = NewModuleUtil.createSandboxSolution(language, moduleFolder.getPath(), myProject);
-
-            IFile unexpSolLocation = moduleFolder.findChild(someUnexpectedSolutionName);
-            someUnexpectedSolution[0] = new SolutionProducer(myProject).create(someUnexpectedSolutionName, unexpSolLocation);
-          } catch (IOException e) {
-            e.printStackTrace();
-          }
-          language.save();
+          LanguageAndSolutionsProducer lp = new LanguageAndSolutionsProducer(myProject);
+          // this test is about nested modules, use proper locations under a parent module
+          // I use somewhat unique names just in case default logic in LanguageAndSolutionsProducer changes
+          // and with different names I could blame better.
+          lp.withRuntimeSolution(true, moduleFolder.findChild("runtime_"));
+          lp.withSandboxSolution(true, moduleFolder.findChild("sandbox_"));
+          final Language language = lp.create(moduleName, moduleFolder);
+          runtimeSolution[0] = lp.getRuntimeSolution().get();
+          sandboxSolution[0] = lp.getSandboxSolution().get();
+          IFile unexpSolLocation = moduleFolder.findChild(someUnexpectedSolutionName);
+          someUnexpectedSolution[0] = new SolutionProducer(myProject).create(someUnexpectedSolutionName, unexpSolLocation);
           return language;
         },
         (moduleName, module) -> {

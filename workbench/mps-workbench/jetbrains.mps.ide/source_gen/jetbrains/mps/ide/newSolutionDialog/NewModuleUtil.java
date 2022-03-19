@@ -116,8 +116,14 @@ public class NewModuleUtil {
     return new SolutionProducer(project).create(namespace, project.getFileSystem().getFile(rootPath));
   }
 
+  /**
+   * 
+   * 
+   * @deprecated use LanguageProducer or LanguageAndSolutionsProducer instead
+   */
+  @Deprecated(forRemoval = true)
   public static Language createLanguage(String namespace, String rootPath, MPSProject project, boolean saveProject) {
-    // FIXME log warn about use of a method, deprecated and scheduled for removal
+    traceDeprecatedUse();
     Language language = new LanguageProducer(project).create(namespace, project.getFileSystem().getFile(rootPath));
     if (saveProject) {
       project.save();

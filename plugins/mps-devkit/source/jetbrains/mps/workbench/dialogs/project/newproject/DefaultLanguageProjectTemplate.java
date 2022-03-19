@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,27 +18,41 @@ package jetbrains.mps.workbench.dialogs.project.newproject;
 import com.intellij.openapi.startup.StartupManager;
 import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
-import jetbrains.mps.ide.ui.dialogs.modules.NewLanguageSettings;
+import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
 import jetbrains.mps.project.MPSExtentions;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.smodel.Generator;
-import jetbrains.mps.smodel.Language;
-import jetbrains.mps.smodel.ModuleDependencyVersions;
-import jetbrains.mps.smodel.language.LanguageRegistry;
+import jetbrains.mps.project.modules.LanguageAndSolutionsProducer;
 import jetbrains.mps.workbench.DocumentationHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
-import java.io.IOException;
+import java.io.File;
 
 public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
 
-  private final NewLanguageSettings myLanguageSettings = new NewLanguageSettings();
+  private final NameLocationPanel mySettings;
+  private final JCheckBox myRuntimeSolution;
+  private final JCheckBox mySandboxSolution;
 
   public DefaultLanguageProjectTemplate() {
-    myLanguageSettings.setListener(this::fireSettingsChanged);
+    myRuntimeSolution = new JCheckBox("Create Runtime Solution");
+    mySandboxSolution = new JCheckBox("Create Sandbox Solution");
+    mySettings = new NameLocationPanel(new File("."), "Language name:", "Language file location:") {
+      {
+        // logic derived from NewLanguageSettings, see NewLanguage_Action for further considerations.
+        add(myRuntimeSolution, 4, 0.0);
+        add(mySandboxSolution, 5, 0.0);
+      }
+      @Override
+      public void reset() {
+        super.reset();
+        myRuntimeSolution.setSelected(false);
+        mySandboxSolution.setSelected(false);
+      }
+    };
+    mySettings.onChange(this::fireSettingsChanged);
   }
 
   @Nullable
@@ -65,8 +79,8 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   @Nullable
   @Override
   public JComponent getSettings() {
-    myLanguageSettings.reset();
-    return myLanguageSettings;
+    mySettings.reset();
+    return mySettings;
   }
 
 
@@ -74,37 +88,20 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   @Override
   public TemplateFiller getTemplateFiller() {
     return project -> StartupManager.getInstance(project.getProject()).registerPostStartupActivity(() -> project.getModelAccess().executeCommand(() -> {
-      Language language = NewModuleUtil.createLanguage(myLanguageSettings.getModuleName(), myLanguageSettings.getModuleLocation(),
-                                                       project);
-      try {
-        if (myLanguageSettings.isRuntimeSolutionNeeded()) {
-          Solution runtimeSolution = NewModuleUtil.createRuntimeSolution(language, myLanguageSettings.getModuleLocation(), project);
-          language.getModuleDescriptor().getRuntimeModules().add(runtimeSolution.getModuleReference());
-          final ModuleDependencyVersions mv = new ModuleDependencyVersions(project.getComponent(LanguageRegistry.class), project.getRepository());
-          mv.update(language);
-          // XXX again, do I care to update standalone generators, see NewLanguageDialog
-          for (Generator gen : language.getGenerators()) {
-            mv.update(gen);
-          }
-          language.save();
-        }
-        if (myLanguageSettings.isSandBoxSolutionNeeded()) {
-          NewModuleUtil.createSandboxSolution(language, myLanguageSettings.getModuleLocation(), project);
-        }
-      } catch (IOException e) {
-        // todo: !
-      }
+      final LanguageAndSolutionsProducer lp = new LanguageAndSolutionsProducer(project);
+      lp.withRuntimeSolution(myRuntimeSolution.isSelected()).withSandboxSolution(mySandboxSolution.isSelected());
+      lp.create(mySettings.getModuleName(), project.getFileSystem().getFile(mySettings.getModuleLocation()));
     }));
   }
 
   @Override
   public void setProjectPath(String projectPath) {
-    myLanguageSettings.setProjectPath(projectPath);
+    mySettings.withProjectPath(new File(projectPath));
   }
 
   @Nullable
   @Override
   public String checkSettings() {
-    return NewModuleUtil.check(null, MPSExtentions.DOT_LANGUAGE, myLanguageSettings.getModuleName(), myLanguageSettings.getModuleLocation());
+    return NewModuleUtil.check(null, MPSExtentions.DOT_LANGUAGE, mySettings.getModuleName(), mySettings.getModuleLocation().getAbsolutePath());
   }
 }

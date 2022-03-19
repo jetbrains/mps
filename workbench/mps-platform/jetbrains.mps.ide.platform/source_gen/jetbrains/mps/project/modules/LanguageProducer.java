@@ -48,7 +48,7 @@ public class LanguageProducer {
     myProject = mpsProject;
   }
 
-
+  @NotNull
   public Language create(@NotNull String namespace, @NotNull IFile moduleDir) {
     IFile descriptorFile = moduleDir.findChild(namespace + MPSExtentions.DOT_LANGUAGE);
     // FIXME proper error reporting

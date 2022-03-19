@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-9u3r50q3ylpak2tqrzfbrud593g71x0">
-  <files names="DevkitProducer.java:LanguageProducer.java:SolutionProducer.java" />
+<product version="3" modelHash="-5dg6domm3421y1c8kaybpi3wqmzdcau">
+  <files names="DevkitProducer.java:LanguageAndSolutionsProducer.java:LanguageProducer.java:SolutionProducer.java" />
 </product>
 

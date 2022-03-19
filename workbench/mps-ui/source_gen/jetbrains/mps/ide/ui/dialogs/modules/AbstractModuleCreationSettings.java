@@ -25,6 +25,7 @@ import java.awt.Insets;
 import java.awt.GridBagConstraints;
 
 /**
+ * THERE ARE NO USES IN MPS, THIS CLASS WILL BE REMOVED TOGETHGER WITH AbstractModuleCreationDialog ONCE 2022.1 is OUT
  * 
  * @deprecated use {@code NameLocationPanel} instead. This class requires subclassing, in addition to subclass of AbstractModuleCreationDialog; too much.
  */
