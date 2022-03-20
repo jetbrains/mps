@@ -116,7 +116,7 @@
   </registry>
   <node concept="1l3spW" id="2Wb4ucKlQKe">
     <property role="TrG5h" value="buildPlugin" />
-    <property role="2DA0ip" value="../" />
+    <property role="2DA0ip" value="../../" />
     <node concept="10PD9b" id="2Wb4ucKmaSR" role="10PD9s" />
     <node concept="m$_wf" id="2Wb4ucKlR0y" role="3989C9">
       <property role="m$_wk" value="test" />
@@ -157,9 +157,12 @@
       <property role="3LESm3" value="d029512f-7357-432e-b758-ecdc37cc94f5" />
       <node concept="55IIr" id="2Wb4ucKlQX5" role="3LF7KH">
         <node concept="2Ry0Ak" id="2Wb4ucKlQYi" role="iGT6I">
-          <property role="2Ry0Am" value="jetbrains.mps.build.sandbox" />
-          <node concept="2Ry0Ak" id="2Wb4ucKlQYv" role="2Ry0An">
-            <property role="2Ry0Am" value="jetbrains.mps.build.sandbox.msd" />
+          <property role="2Ry0Am" value="solutions" />
+          <node concept="2Ry0Ak" id="78Xg4jb$car" role="2Ry0An">
+            <property role="2Ry0Am" value="jetbrains.mps.build.sandbox" />
+            <node concept="2Ry0Ak" id="78Xg4jb$cas" role="2Ry0An">
+              <property role="2Ry0Am" value="jetbrains.mps.build.sandbox.msd" />
+            </node>
           </node>
         </node>
       </node>
@@ -194,8 +197,11 @@
             <property role="3qWCbO" value="icons/**, resources/**" />
           </node>
           <node concept="55IIr" id="EpEP7iihCJ" role="3LXTmr">
-            <node concept="2Ry0Ak" id="EpEP7iihCK" role="iGT6I">
-              <property role="2Ry0Am" value="jetbrains.mps.build.sandbox" />
+            <node concept="2Ry0Ak" id="78Xg4jb$caB" role="iGT6I">
+              <property role="2Ry0Am" value="solutions" />
+              <node concept="2Ry0Ak" id="78Xg4jb$caG" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.build.sandbox" />
+              </node>
             </node>
           </node>
         </node>
@@ -207,9 +213,12 @@
         <node concept="3LXTmp" id="1heWa4_XuSB" role="1HemKq">
           <node concept="55IIr" id="1heWa4_XuSz" role="3LXTmr">
             <node concept="2Ry0Ak" id="1heWa4_XuS$" role="iGT6I">
-              <property role="2Ry0Am" value="jetbrains.mps.build.sandbox" />
-              <node concept="2Ry0Ak" id="1heWa4_XuS_" role="2Ry0An">
-                <property role="2Ry0Am" value="models" />
+              <property role="2Ry0Am" value="solutions" />
+              <node concept="2Ry0Ak" id="78Xg4jb$caJ" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.build.sandbox" />
+                <node concept="2Ry0Ak" id="78Xg4jb$caK" role="2Ry0An">
+                  <property role="2Ry0Am" value="models" />
+                </node>
               </node>
             </node>
           </node>
@@ -224,10 +233,13 @@
       <property role="TrG5h" value="jetbrains.mps.build.tests" />
       <property role="3LESm3" value="39742b07-848c-43a7-be0a-845055dd3333" />
       <node concept="55IIr" id="2Wb4ucKmnF$" role="3LF7KH">
-        <node concept="2Ry0Ak" id="2Wb4ucKmnGG" role="iGT6I">
-          <property role="2Ry0Am" value="jetbrains.mps.build.tests" />
-          <node concept="2Ry0Ak" id="2Wb4ucKmnGW" role="2Ry0An">
-            <property role="2Ry0Am" value="jetbrains.mps.build.tests.msd" />
+        <node concept="2Ry0Ak" id="78Xg4jbz3xL" role="iGT6I">
+          <property role="2Ry0Am" value="test" />
+          <node concept="2Ry0Ak" id="78Xg4jbz3Ae" role="2Ry0An">
+            <property role="2Ry0Am" value="jetbrains.mps.build.tests" />
+            <node concept="2Ry0Ak" id="78Xg4jbz3Af" role="2Ry0An">
+              <property role="2Ry0Am" value="jetbrains.mps.build.tests.msd" />
+            </node>
           </node>
         </node>
       </node>
@@ -273,8 +285,11 @@
             <property role="3qWCbO" value="icons/**, resources/**" />
           </node>
           <node concept="55IIr" id="EpEP7iihCD" role="3LXTmr">
-            <node concept="2Ry0Ak" id="EpEP7iihCE" role="iGT6I">
-              <property role="2Ry0Am" value="jetbrains.mps.build.tests" />
+            <node concept="2Ry0Ak" id="78Xg4jbz3Al" role="iGT6I">
+              <property role="2Ry0Am" value="test" />
+              <node concept="2Ry0Ak" id="78Xg4jbz3Aq" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.build.tests" />
+              </node>
             </node>
           </node>
         </node>
@@ -290,10 +305,13 @@
         <property role="1HemKv" value="true" />
         <node concept="3LXTmp" id="1heWa4_XuSJ" role="1HemKq">
           <node concept="55IIr" id="1heWa4_XuSF" role="3LXTmr">
-            <node concept="2Ry0Ak" id="1heWa4_XuSG" role="iGT6I">
-              <property role="2Ry0Am" value="jetbrains.mps.build.tests" />
-              <node concept="2Ry0Ak" id="1heWa4_XuSH" role="2Ry0An">
-                <property role="2Ry0Am" value="models" />
+            <node concept="2Ry0Ak" id="78Xg4jbz3At" role="iGT6I">
+              <property role="2Ry0Am" value="test" />
+              <node concept="2Ry0Ak" id="78Xg4jbz3Ay" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.build.tests" />
+                <node concept="2Ry0Ak" id="78Xg4jbz3Az" role="2Ry0An">
+                  <property role="2Ry0Am" value="models" />
+                </node>
               </node>
             </node>
           </node>
@@ -305,11 +323,14 @@
     </node>
     <node concept="55IIr" id="2Wb4ucKlQKf" role="auvoZ">
       <node concept="2Ry0Ak" id="3ev_qFmA0CM" role="iGT6I">
-        <property role="2Ry0Am" value="jetbrains.mps.build.sandbox" />
-        <node concept="2Ry0Ak" id="3ev_qFmA0CP" role="2Ry0An">
-          <property role="2Ry0Am" value="samples" />
-          <node concept="2Ry0Ak" id="3ev_qFmA0CU" role="2Ry0An">
-            <property role="2Ry0Am" value="stripImpl" />
+        <property role="2Ry0Am" value="solutions" />
+        <node concept="2Ry0Ak" id="26lJ8ldkpR6" role="2Ry0An">
+          <property role="2Ry0Am" value="jetbrains.mps.build.sandbox" />
+          <node concept="2Ry0Ak" id="26lJ8ldkpR7" role="2Ry0An">
+            <property role="2Ry0Am" value="samples" />
+            <node concept="2Ry0Ak" id="26lJ8ldkpR8" role="2Ry0An">
+              <property role="2Ry0Am" value="stripImpl" />
+            </node>
           </node>
         </node>
       </node>

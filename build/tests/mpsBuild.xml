@@ -159,15 +159,15 @@
     </echoxml>
     <jar destfile="${build.layout}/jetbrains.mps.build.tests.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/jetbrains.mps.build.tests" />
-      <fileset dir="${basedir}/plugins/mps-build/languages/solutions/jetbrains.mps.build.tests" includes="icons/**, resources/**" />
+      <fileset dir="${basedir}/plugins/mps-build/test/jetbrains.mps.build.tests" includes="icons/**, resources/**" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.build.tests.jar" />
     </jar>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-solutions-jetbrains.mps.build.tests-models">
-      <fileset dir="${basedir}/plugins/mps-build/languages/solutions/jetbrains.mps.build.tests/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-test-jetbrains.mps.build.tests-models">
+      <fileset dir="${basedir}/plugins/mps-build/test/jetbrains.mps.build.tests/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/jetbrains.mps.build.tests-src.jar" duplicate="preserve">
-      <zipfileset file="${basedir}/plugins/mps-build/languages/solutions/jetbrains.mps.build.tests/jetbrains.mps.build.tests.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-solutions-jetbrains.mps.build.tests-models" prefix="module/models" />
+      <zipfileset file="${basedir}/plugins/mps-build/test/jetbrains.mps.build.tests/jetbrains.mps.build.tests.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-test-jetbrains.mps.build.tests-models" prefix="module/models" />
     </jar>
     <echo file="${build.layout}/build.properties">mps.build.number=${mps.build.number}${line.separator}mps.date=${mps.date}${line.separator}mps.build.vcs.number=${mps.build.vcs.number}${line.separator}mps.teamcity.buildConfName=${mps.teamcity.buildConfName}${line.separator}mps.idea.platform.build.number=${mps.idea.platform.build.number}${line.separator}mps.mps.build.counter=${mps.mps.build.counter}${line.separator}mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
   </target>
@@ -300,7 +300,7 @@
       <library file="${artifacts.mps}/languages/xml/jetbrains.mps.core.xml.jar" />
       <chunk>
         <module file="${basedir}/plugins/mps-build/test/jetbrains.mps.build.mps.runner.test/jetbrains.mps.build.mps.runner.test.msd" />
-        <module file="${basedir}/plugins/mps-build/languages/solutions/jetbrains.mps.build.tests/jetbrains.mps.build.tests.msd" />
+        <module file="${basedir}/plugins/mps-build/test/jetbrains.mps.build.tests/jetbrains.mps.build.tests.msd" />
       </chunk>
       <jvmargs>
         <arg value="-ea" />
@@ -321,7 +321,7 @@
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.tests" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.tests" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
-      <src path="${basedir}/plugins/mps-build/languages/solutions/jetbrains.mps.build.tests/test_gen/" />
+      <src path="${basedir}/plugins/mps-build/test/jetbrains.mps.build.tests/test_gen/" />
       <classpath>
         <fileset file="${artifacts.mps}/lib/mps-core.jar" />
         <fileset file="${artifacts.mps}/lib/mps-platform.jar" />
@@ -372,7 +372,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.build.tests">
-      <fileset dir="${basedir}/plugins/mps-build/languages/solutions/jetbrains.mps.build.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
+      <fileset dir="${basedir}/plugins/mps-build/test/jetbrains.mps.build.tests/test_gen/" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info" />
     </copy>
   </target>
   
@@ -613,6 +613,6 @@
   
   <target name="cleanSources">
     <delete dir="${basedir}/plugins/mps-build/test/jetbrains.mps.build.mps.runner.test/test_gen" />
-    <delete dir="${basedir}/plugins/mps-build/languages/solutions/jetbrains.mps.build.tests/test_gen" />
+    <delete dir="${basedir}/plugins/mps-build/test/jetbrains.mps.build.tests/test_gen" />
   </target>
 </project>

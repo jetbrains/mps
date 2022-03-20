@@ -3738,13 +3738,10 @@
               <property role="2Ry0Am" value="plugins" />
               <node concept="2Ry0Ak" id="EpEP7iiifq" role="2Ry0An">
                 <property role="2Ry0Am" value="mps-build" />
-                <node concept="2Ry0Ak" id="EpEP7iiifr" role="2Ry0An">
-                  <property role="2Ry0Am" value="languages" />
-                  <node concept="2Ry0Ak" id="EpEP7iiifs" role="2Ry0An">
-                    <property role="2Ry0Am" value="solutions" />
-                    <node concept="2Ry0Ak" id="EpEP7iiift" role="2Ry0An">
-                      <property role="2Ry0Am" value="jetbrains.mps.build.tests" />
-                    </node>
+                <node concept="2Ry0Ak" id="EpEP7iiifs" role="2Ry0An">
+                  <property role="2Ry0Am" value="test" />
+                  <node concept="2Ry0Ak" id="EpEP7iiift" role="2Ry0An">
+                    <property role="2Ry0Am" value="jetbrains.mps.build.tests" />
                   </node>
                 </node>
               </node>
@@ -3757,15 +3754,12 @@
           <property role="2Ry0Am" value="plugins" />
           <node concept="2Ry0Ak" id="2LuGVbI_z4x" role="2Ry0An">
             <property role="2Ry0Am" value="mps-build" />
-            <node concept="2Ry0Ak" id="2LuGVbI_z4z" role="2Ry0An">
-              <property role="2Ry0Am" value="languages" />
-              <node concept="2Ry0Ak" id="2LuGVbI_z4_" role="2Ry0An">
-                <property role="2Ry0Am" value="solutions" />
-                <node concept="2Ry0Ak" id="2LuGVbI_z4D" role="2Ry0An">
-                  <property role="2Ry0Am" value="jetbrains.mps.build.tests" />
-                  <node concept="2Ry0Ak" id="2LuGVbI_z4F" role="2Ry0An">
-                    <property role="2Ry0Am" value="jetbrains.mps.build.tests.msd" />
-                  </node>
+            <node concept="2Ry0Ak" id="2LuGVbI_z4_" role="2Ry0An">
+              <property role="2Ry0Am" value="test" />
+              <node concept="2Ry0Ak" id="2LuGVbI_z4D" role="2Ry0An">
+                <property role="2Ry0Am" value="jetbrains.mps.build.tests" />
+                <node concept="2Ry0Ak" id="2LuGVbI_z4F" role="2Ry0An">
+                  <property role="2Ry0Am" value="jetbrains.mps.build.tests.msd" />
                 </node>
               </node>
             </node>
@@ -3818,15 +3812,12 @@
               <property role="2Ry0Am" value="plugins" />
               <node concept="2Ry0Ak" id="73GUf$umR_N" role="2Ry0An">
                 <property role="2Ry0Am" value="mps-build" />
-                <node concept="2Ry0Ak" id="73GUf$umR_O" role="2Ry0An">
-                  <property role="2Ry0Am" value="languages" />
-                  <node concept="2Ry0Ak" id="73GUf$umR_P" role="2Ry0An">
-                    <property role="2Ry0Am" value="solutions" />
-                    <node concept="2Ry0Ak" id="73GUf$umR_Q" role="2Ry0An">
-                      <property role="2Ry0Am" value="jetbrains.mps.build.tests" />
-                      <node concept="2Ry0Ak" id="73GUf$umR_R" role="2Ry0An">
-                        <property role="2Ry0Am" value="models" />
-                      </node>
+                <node concept="2Ry0Ak" id="73GUf$umR_P" role="2Ry0An">
+                  <property role="2Ry0Am" value="test" />
+                  <node concept="2Ry0Ak" id="73GUf$umR_Q" role="2Ry0An">
+                    <property role="2Ry0Am" value="jetbrains.mps.build.tests" />
+                    <node concept="2Ry0Ak" id="73GUf$umR_R" role="2Ry0An">
+                      <property role="2Ry0Am" value="models" />
                     </node>
                   </node>
                 </node>

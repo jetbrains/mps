@@ -16301,12 +16301,12 @@
         <sources jar="." descriptor="jetbrains.mps.build.mps.runner.runtime.msd" />
       </module>
     </echoxml>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-solutions-jetbrains.mps.build.mps.runner.runtime-models">
-      <fileset dir="${mps_home}/plugins/mps-build/languages/solutions/jetbrains.mps.build.mps.runner.runtime/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-solutions-jetbrains.mps.build.mps.runner.runtime-models">
+      <fileset dir="${mps_home}/plugins/mps-build/solutions/jetbrains.mps.build.mps.runner.runtime/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
     <jar destfile="${build.layout}/languages/tools/jetbrains.mps.build.mps.runner.runtime.jar" duplicate="preserve">
-      <zipfileset file="${mps_home}/plugins/mps-build/languages/solutions/jetbrains.mps.build.mps.runner.runtime/jetbrains.mps.build.mps.runner.runtime.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-languages-solutions-jetbrains.mps.build.mps.runner.runtime-models" prefix="module/models" />
+      <zipfileset file="${mps_home}/plugins/mps-build/solutions/jetbrains.mps.build.mps.runner.runtime/jetbrains.mps.build.mps.runner.runtime.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/plugins-mps-build-solutions-jetbrains.mps.build.mps.runner.runtime-models" prefix="module/models" />
       <fileset dir="${build.tmp}/default/jetbrains.mps.build.mps.runner.runtime.jar" />
     </jar>
     <mkdir dir="${build.tmp}/default/jetbrains.mps.tool.builder.jar" />
@@ -16573,7 +16573,7 @@
         <module file="${mps_home}/languages/baseLanguage/constructors/jetbrains.mps.baseLanguage.constructors.mpl" />
         <module file="${mps_home}/languages/baseLanguage/doubleDispatch/jetbrains.mps.baseLanguage.doubleDispatch.mpl" />
         <module file="${mps_home}/languages/baseLanguage/overloadedOperators/languages/overloadedOperators/jetbrains.mps.baseLanguage.overloadedOperators.mpl" />
-        <module file="${mps_home}/plugins/mps-build/languages/solutions/jetbrains.mps.build.mps.runner.runtime/jetbrains.mps.build.mps.runner.runtime.msd" />
+        <module file="${mps_home}/plugins/mps-build/solutions/jetbrains.mps.build.mps.runner.runtime/jetbrains.mps.build.mps.runner.runtime.msd" />
         <module file="${mps_home}/plugins/mps-core/languages/core.xml/jetbrains.mps.core.xml.mpl" />
         <module file="${mps_home}/plugins/mps-core/languages/core.xml.sax/jetbrains.mps.core.xml.sax.mpl" bootstrap="true" />
         <module file="${mps_home}/core/devkits/jetbrains.mps.devkit.templates.devkit" />
@@ -17961,12 +17961,12 @@
   </target>
   
   <target name="java.compile.jetbrains.mps.build.mps.runner.runtime" depends="java.compile.aux-runtimes, java.compile.dataflow-rt, java.compile.idea-platform, java.compile.mps-debuginfo-api, java.compile.mps-debuginfo-impl, java.compile.mps-editing, java.compile.mps-editor-api, java.compile.mps-editorlang-runtime, java.compile.mps-typesystem, java.compile.mps-editor, java.compile.platform, java.compile.mps-environment, java.compile.mps-generator, java.compile.kernel-resources, java.compile.mps-make-rt, java.compile.mps-platform, java.compile.mps-project-check, java.compile.mps-textgen, java.compile.mps-tool, java.compile.mps-ui, java.compile.pattern-runtime, java.compile.psi, java.compile.scripts-runtime, java.compile.vfs-tracking, fetchDependencies">
-    <mkdir dir="${mps_home}/plugins/mps-build/languages/solutions/jetbrains.mps.build.mps.runner.runtime/source_gen" />
+    <mkdir dir="${mps_home}/plugins/mps-build/solutions/jetbrains.mps.build.mps.runner.runtime/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.build.mps.runner.runtime" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.build.mps.runner.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true">
       <compilerarg value="-Xlint:none" />
       <src>
-        <path location="${mps_home}/plugins/mps-build/languages/solutions/jetbrains.mps.build.mps.runner.runtime/source_gen" />
+        <path location="${mps_home}/plugins/mps-build/solutions/jetbrains.mps.build.mps.runner.runtime/source_gen" />
       </src>
       <classpath>
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
@@ -18022,7 +18022,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/jetbrains.mps.build.mps.runner.runtime">
-      <fileset dir="${mps_home}/plugins/mps-build/languages/solutions/jetbrains.mps.build.mps.runner.runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
+      <fileset dir="${mps_home}/plugins/mps-build/solutions/jetbrains.mps.build.mps.runner.runtime/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, META-INF/services/**/*" />
     </copy>
   </target>
   
