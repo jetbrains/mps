@@ -7,14 +7,16 @@ import jetbrains.mps.smodel.language.LanguageAspectDescriptor;
 import jetbrains.mps.smodel.language.LanguageAspectDescriptorBase;
 import jetbrains.mps.aspects.OrderDescriptor;
 import jetbrains.mps.aspects.OrderParticipant;
-import org.jetbrains.annotations.NotNull;
-import java.util.Collection;
-import org.jetbrains.mps.openapi.language.SLanguage;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.runtime.IconResource;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.smodel.ModelImports;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 
 public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspectDescriptor> {
   public LanguageAspectsEP_extension() {
@@ -28,10 +30,8 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       public int compareTo(OrderParticipant<String> other) {
         return myOrderConstraints.compare(this.getId(), other.getId());
       }
-      @NotNull
-      @Override
-      public Collection<SLanguage> getMainLanguages() {
-        return ListSequence.fromListAndArray(new ArrayList<SLanguage>(), MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"));
+      public SModuleReference getDefaultDevkit() {
+        return PersistenceFacade.getInstance().createModuleReference("78434eb8-b0e5-444b-850d-e7c4ad2da9ab(jetbrains.mps.devkit.aspect.structure)");
       }
       @Nullable
       public IconResource getIconResource() {
@@ -40,6 +40,11 @@ public class LanguageAspectsEP_extension extends Extension.Default<LanguageAspec
       @Nullable
       public String getHelpUrl() {
         return HELP_URL;
+      }
+      @Override
+      public void configureDescriptorModel(@NotNull SModule module, @NotNull SModel descriptorModel) {
+        new ModelImports(descriptorModel).addUsedLanguage(MetaAdapterFactory.getLanguage(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, "jetbrains.mps.lang.structure"));
+        SModelOperations.createNewRootNode(descriptorModel, MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x4255a988ca8ae0fcL, "jetbrains.mps.lang.structure.structure.StructureAspectDeputy"));
       }
     };
   }

@@ -9,6 +9,7 @@
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="1oap" ref="r:03d44d4c-3d65-461c-9085-0f48e9569e59(jetbrains.mps.lang.resources.structure)" />
     <import index="tpcc" ref="r:00000000-0000-4000-0000-011c89590290(jetbrains.mps.lang.structure.plugin)" />
+    <import index="yv2q" ref="r:cdf8afc0-fdc6-47ca-b829-7b2226168efa(jetbrains.mps.lang.descriptor.structure)" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -1321,6 +1322,19 @@
     </node>
     <node concept="t5JxF" id="4PXMYyZ6LAb" role="lGtFl">
       <property role="t5JxN" value="Denotes a 'lightweight' interface declaration that doesn'r require 'extends' relation for a language implementing the one." />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="49lEozayI3W">
+    <property role="EcuMT" value="4779912984502395132" />
+    <property role="TrG5h" value="StructureAspectDeputy" />
+    <property role="3GE5qa" value="descriptor" />
+    <property role="19KtqR" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="PrWs8" id="49lEozazjiG" role="PzmwI">
+      <ref role="PrY4T" to="yv2q:5Z6N5M4XbRr" resolve="AspectDescriptor" />
+    </node>
+    <node concept="t5JxF" id="49lEozazjnc" role="lGtFl">
+      <property role="t5JxN" value="represents structure aspect in a @descriptor model" />
     </node>
   </node>
 </model>

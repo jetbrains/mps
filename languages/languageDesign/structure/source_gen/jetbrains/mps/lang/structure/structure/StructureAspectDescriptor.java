@@ -55,6 +55,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptRefPresentationTemplate = createDescriptorForRefPresentationTemplate();
   /*package*/ final ConceptDescriptor myConceptReferenceLinkDeclartionScopeKind = createDescriptorForReferenceLinkDeclartionScopeKind();
   /*package*/ final ConceptDescriptor myConceptSmartReferenceAttribute = createDescriptorForSmartReferenceAttribute();
+  /*package*/ final ConceptDescriptor myConceptStructureAspectDeputy = createDescriptorForStructureAspectDeputy();
   /*package*/ final EnumerationDescriptor myEnumerationCardinality = new EnumerationDescriptor_Cardinality();
   /*package*/ final EnumerationDescriptor myEnumerationChildrenIncomingReferencesPolicy = new EnumerationDescriptor_ChildrenIncomingReferencesPolicy();
   /*package*/ final EnumerationDescriptor myEnumerationEnumCustomMethodReplacementKind = new EnumerationDescriptor_EnumCustomMethodReplacementKind();
@@ -80,7 +81,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractConceptDeclaration, myConceptAggregationLinkDeclarationScopeKind, myConceptAttributeInfo, myConceptAttributeInfo_AttributedConcept, myConceptAttributeInfo_IsMultiple, myConceptConceptDeclaration, myConceptConstrainedDataTypeDeclaration, myConceptDataTypeDeclaration, myConceptDeprecatedNodeAnnotation, myConceptDocumentationObjective, myConceptDocumentationObjectiveRef, myConceptDocumentedNodeAnnotation, myConceptEnumCustomMethodReplacementInfo, myConceptEnumMigrationInfo, myConceptEnumPropertyMigrationInfo, myConceptEnumerationDataTypeDeclaration_Old, myConceptEnumerationDeclaration, myConceptEnumerationMemberDeclaration, myConceptEnumerationMemberDeclaration_Old, myConceptExperimentalAPINodeAttribute, myConceptIConceptAspect, myConceptIEnumeration, myConceptINamedAspect, myConceptINamedStructureElement, myConceptIStructureDeprecatable, myConceptIStructureElement, myConceptInterfaceConceptDeclaration, myConceptInterfaceConceptReference, myConceptLinkDeclaration, myConceptMarkerInterfaceAttribute, myConceptPrimitiveDataTypeDeclaration, myConceptPropertyDeclaration, myConceptRefPresentationTemplate, myConceptReferenceLinkDeclartionScopeKind, myConceptSmartReferenceAttribute);
+    return Arrays.asList(myConceptAbstractConceptDeclaration, myConceptAggregationLinkDeclarationScopeKind, myConceptAttributeInfo, myConceptAttributeInfo_AttributedConcept, myConceptAttributeInfo_IsMultiple, myConceptConceptDeclaration, myConceptConstrainedDataTypeDeclaration, myConceptDataTypeDeclaration, myConceptDeprecatedNodeAnnotation, myConceptDocumentationObjective, myConceptDocumentationObjectiveRef, myConceptDocumentedNodeAnnotation, myConceptEnumCustomMethodReplacementInfo, myConceptEnumMigrationInfo, myConceptEnumPropertyMigrationInfo, myConceptEnumerationDataTypeDeclaration_Old, myConceptEnumerationDeclaration, myConceptEnumerationMemberDeclaration, myConceptEnumerationMemberDeclaration_Old, myConceptExperimentalAPINodeAttribute, myConceptIConceptAspect, myConceptIEnumeration, myConceptINamedAspect, myConceptINamedStructureElement, myConceptIStructureDeprecatable, myConceptIStructureElement, myConceptInterfaceConceptDeclaration, myConceptInterfaceConceptReference, myConceptLinkDeclaration, myConceptMarkerInterfaceAttribute, myConceptPrimitiveDataTypeDeclaration, myConceptPropertyDeclaration, myConceptRefPresentationTemplate, myConceptReferenceLinkDeclartionScopeKind, myConceptSmartReferenceAttribute, myConceptStructureAspectDeputy);
   }
 
   @Override
@@ -157,6 +158,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptReferenceLinkDeclartionScopeKind;
       case LanguageConceptSwitch.SmartReferenceAttribute:
         return myConceptSmartReferenceAttribute;
+      case LanguageConceptSwitch.StructureAspectDeputy:
+        return myConceptStructureAspectDeputy;
       default:
         return null;
     }
@@ -563,6 +566,14 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.associate("charactersticReference", 0x7ab7b29c4d6297edL).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xf979bd086aL).optional(false).origin("8842732777748207597").done();
     b.aggregate("refPresentationTemplate", 0x7ab7b29c4d66ac37L).target(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x7ab7b29c4d66855eL).optional(true).ordered(true).multiple(false).origin("8842732777748474935").done();
     b.alias("@smart reference");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForStructureAspectDeputy() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "StructureAspectDeputy", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x4255a988ca8ae0fcL);
+    b.class_(false, false, true);
+    b.parent(0xf4ad079dbc714ffbL, 0x96009328705cf998L, 0x5fc6cc5c84f4bddbL);
+    b.origin("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)/4779912984502395132");
+    b.version(3);
     return b.create();
   }
 }

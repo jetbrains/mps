@@ -24,6 +24,7 @@
     <import index="h8lr" ref="r:60e7ad77-a9db-453a-a2df-fed6c145c654(jetbrains.mps.lang.textGen.plugin)" />
     <import index="f7uj" ref="r:8ffb9fde-829b-4ee3-ade6-f4eee43e66a8(jetbrains.mps.lang.typesystem.plugin)" />
     <import index="smjb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.help(MPS.Core/)" />
+    <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" implicit="true" />
   </imports>
   <registry>
     <language id="982eb8df-2c96-4bd7-9963-11712ea622e5" name="jetbrains.mps.lang.resources">
@@ -40,7 +41,8 @@
     </language>
     <language id="f159adf4-3c93-40f9-9c5a-1f245a8697af" name="jetbrains.mps.lang.aspect">
       <concept id="3433054418424672374" name="jetbrains.mps.lang.aspect.structure.SimpleLanguageAspectDescriptor" flags="ng" index="3vrhyV">
-        <child id="6106419185511570295" name="mainLanguages" index="QG$2i" />
+        <reference id="8426907848585442521" name="proponent" index="h493j" />
+        <child id="8222125370833980146" name="devkit" index="TkT64" />
         <child id="4726480899534753275" name="helpUrl" index="1fTXyH" />
         <child id="3433054418425083029" name="icon" index="3vqPLo" />
         <child id="2343319097654255233" name="order" index="3F_NFc" />
@@ -99,9 +101,9 @@
       </concept>
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
-      <concept id="3542851458883438784" name="jetbrains.mps.lang.smodel.structure.LanguageId" flags="nn" index="2V$Bhx">
-        <property id="3542851458883439831" name="namespace" index="2V$B1Q" />
-        <property id="3542851458883439832" name="languageId" index="2V$B1T" />
+      <concept id="8222125370833354011" name="jetbrains.mps.lang.smodel.structure.DevkitPointer" flags="ng" index="T9mpH">
+        <property id="8222125370833354012" name="devkitName" index="T9mpE" />
+        <property id="8222125370833354013" name="devkitId" index="T9mpF" />
       </concept>
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2" />
     </language>
@@ -125,12 +127,9 @@
   </node>
   <node concept="3vrhyV" id="2LiUEk8oQ$g">
     <property role="TrG5h" value="structure" />
+    <ref role="h493j" to="tpce:49lEozayI3W" resolve="StructureAspectDeputy" />
     <node concept="1QGGSu" id="P5ZkC6wmh7" role="3vqPLo">
       <property role="1iqoE4" value="${module}/icons/structureModel.png" />
-    </node>
-    <node concept="2V$Bhx" id="5cAnPGmok3c" role="QG$2i">
-      <property role="2V$B1T" value="c72da2b9-7cce-4447-8389-f407dc1158b7" />
-      <property role="2V$B1Q" value="jetbrains.mps.lang.structure" />
     </node>
     <node concept="2vPci8" id="264$spPfZhv" role="3F_NFc">
       <ref role="2vPcib" node="264$spPfYX1" resolve="MPSAspects" />
@@ -138,6 +137,10 @@
     <node concept="1sEMCm" id="46nPloex5BB" role="1fTXyH">
       <property role="1sEMCp" value="/structure.html" />
       <ref role="1fZFei" node="46nPloez0vX" resolve="HelpCenterDocUrl" />
+    </node>
+    <node concept="T9mpH" id="49lEozazm3W" role="TkT64">
+      <property role="T9mpF" value="78434eb8-b0e5-444b-850d-e7c4ad2da9ab" />
+      <property role="T9mpE" value="jetbrains.mps.devkit.aspect.structure" />
     </node>
   </node>
   <node concept="2vPdvu" id="264$spPfYX1">
