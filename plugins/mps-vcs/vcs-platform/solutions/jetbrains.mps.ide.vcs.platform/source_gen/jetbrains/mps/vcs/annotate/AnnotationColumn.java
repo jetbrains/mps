@@ -10,10 +10,15 @@ import java.util.ArrayList;
 import com.intellij.util.messages.MessageBusConnection;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.nodeEditor.leftHighlighter.LeftEditorHighlighter;
-import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
 import org.jetbrains.annotations.Nullable;
-import java.awt.Graphics;
+import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
 import jetbrains.mps.nodeEditor.EditorComponent;
+import jetbrains.mps.ide.editor.util.EditorComponentUtil;
+import com.intellij.openapi.fileEditor.FileEditorManager;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import java.util.Objects;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -31,6 +36,8 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.ILeftCombinator;
 import java.awt.event.MouseEvent;
 import java.awt.Cursor;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.ui.EditorNotifications;
 import javax.swing.JPopupMenu;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.Separator;
@@ -47,7 +54,6 @@ import com.intellij.openapi.ide.CopyPasteManager;
 import com.intellij.util.ui.TextTransferable;
 import jetbrains.mps.workbench.action.BaseGroup;
 import com.intellij.openapi.actionSystem.ToggleAction;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.idea.ActionsBundle;
 import com.intellij.openapi.actionSystem.IdeActions;
 import git4idea.i18n.GitBundle;
@@ -71,9 +77,11 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   private final String SHOW_IN_GIT_LOG_TEXT_KEY = "vcs.history.action.gitlog";
   private final String HIDE_REVISION = "Hide Revision";
   private final String SHOW_HIDDEN_REVISIONS = "Restore Hidden Revisions";
+  private AnnotationColumn myInspectorColumn;
+  private AnnotationColumn myMainEditorColumn;
+  private final Project myProject;
 
-
-  /*package*/ AnnotationColumn(Project project, LeftEditorHighlighter leftEditorHighlighter, EditorAnnotation editorAnnotation) {
+  /*package*/ AnnotationColumn(Project project, LeftEditorHighlighter leftEditorHighlighter, EditorAnnotation editorAnnotation, @Nullable AnnotationColumn mainEditorColumn) {
     super(leftEditorHighlighter);
     myEditorAnnotation = editorAnnotation;
     myEditorAnnotation.setLineAnnotationsUpdateListener(() -> onLineAnnotationsUpdated());
@@ -85,6 +93,8 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     ListSequence.fromList(myAspectSubcolumns).addElement(new HighlightRevisionSubcolumn(myEditorAnnotation));
     myMessageBusConnection = project.getMessageBus().connect();
     myMessageBusConnection.subscribe(EditorComponentCreateListener.EDITOR_COMPONENT_CREATION, new MyEditorComponentCreateListener());
+    myProject = project;
+    myMainEditorColumn = mainEditorColumn;
   }
 
   public void setCloseActionListener(@Nullable Runnable closeActionListener) {
@@ -95,13 +105,40 @@ public final class AnnotationColumn extends AbstractLeftColumn {
     return myEditorAnnotation;
   }
 
+  @Nullable
+  private AnnotationColumn getExistingColumn() {
+    for (AbstractLeftColumn leftColumn : getLeftEditorHighlighter().getLeftColumns()) {
+      if (leftColumn instanceof AnnotationColumn) {
+        return as_5mnya_a0a0a0a0ab(leftColumn, AnnotationColumn.class);
+      }
+    }
+    return null;
+  }
+
   private void onLineAnnotationsUpdated() {
     if (myIsClosed) {
       return;
     }
-    if (!(getLeftEditorHighlighter().getLeftColumns().contains(this))) {
+    AnnotationColumn existingColumn = getExistingColumn();
+    if (existingColumn != null && existingColumn != this) {
+      return;
+    }
+    if (existingColumn == null) {
       getLeftEditorHighlighter().addLeftColumn(this);
       myEditorAnnotation.updateAndRepaint();
+      if (myInspectorColumn == null) {
+        final EditorComponent inspector = EditorComponentUtil.findInspector(FileEditorManager.getInstance(myProject));
+
+        if (inspector != null) {
+          final Wrappers._T<SNodeId> rootId = new Wrappers._T<SNodeId>(null);
+          inspector.getEditorContext().getRepository().getModelAccess().runReadAction(() -> rootId.value = inspector.getEditedNode().getContainingRoot().getNodeId());
+          if (Objects.equals(rootId.value, myEditorAnnotation.getRootId())) {
+            EditorAnnotation editorAnnotation = myEditorAnnotation.createInspectorAnnotation(inspector);
+            myInspectorColumn = new AnnotationColumn(myEditorAnnotation.getProject(), inspector.getLeftEditorHighlighter(), editorAnnotation, this);
+            editorAnnotation.updateAndRepaint();
+          }
+        }
+      }
     } else {
       getLeftEditorHighlighter().relayoutOnLeftColumnChange();
       getLeftEditorHighlighter().repaint();
@@ -289,14 +326,45 @@ public final class AnnotationColumn extends AbstractLeftColumn {
 
   @Override
   public void mouseMoved(MouseEvent event) {
-    CommitsGraphNode graphNode = check_5mnya_a0a0ec(getLineAnnotation(event.getY()), this);
+    CommitsGraphNode graphNode = check_5mnya_a0a0ic(getLineAnnotation(event.getY()), this);
     myEditorAnnotation.setCommitUnderMouse(graphNode);
   }
+
+  public void hideRevision(@NotNull CommitsGraphNode node) {
+    myEditorAnnotation.getRootAnnotation().hideRevision(node);
+    onHiddenRevisionsUpdate();
+  }
+
+  public void showHiddenRevisions() {
+    myEditorAnnotation.getRootAnnotation().showHiddenRevisions();
+    onHiddenRevisionsUpdate();
+  }
+
+  public void showLastHiddenRevision() {
+    myEditorAnnotation.getRootAnnotation().showLastHiddenRevision();
+    onHiddenRevisionsUpdate();
+  }
+
+  private void onHiddenRevisionsUpdate() {
+    myEditorAnnotation.updateAndRepaint();
+    check_5mnya_a1a86(check_5mnya_a0b0qc(myInspectorColumn));
+    check_5mnya_a2a86(check_5mnya_a0c0qc(myMainEditorColumn));
+    EditorNotifications.getInstance(myProject).updateAllNotifications();
+  }
+
+  /*package*/ List<CommitsGraphNode> getHiddenRevisions() {
+    return myEditorAnnotation.getRootAnnotation().getHiddenRevisions();
+  }
+
 
   @Override
   public void dispose() {
     myMessageBusConnection.disconnect();
     myEditorAnnotation.dispose();
+    if (myInspectorColumn != null) {
+      myEditorAnnotation.getRootAnnotation().showHiddenRevisions();
+      EditorNotifications.getInstance(myProject).updateAllNotifications();
+    }
   }
 
   public void close() {
@@ -304,10 +372,11 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       return;
     }
     myIsClosed = true;
-    check_5mnya_a2a06(myCloseActionListener);
+    check_5mnya_a2a57(myCloseActionListener);
     if (getLeftEditorHighlighter().getLeftColumns().contains(this)) {
       getLeftEditorHighlighter().removeLeftColumn(this);
     }
+    check_5mnya_a4a57(myInspectorColumn);
     dispose();
   }
 
@@ -319,7 +388,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   public JPopupMenu getPopupMenu(MouseEvent event) {
     List<AnAction> actions = ListSequence.fromList(new ArrayList<AnAction>());
     final LineAnnotation la = getLineAnnotation(event.getY());
-    final CommitsGraphNode graphNode = check_5mnya_a0c0mc(la);
+    final CommitsGraphNode graphNode = check_5mnya_a0c0bd(la);
     boolean isVcsRevision = graphNode != null && !(graphNode.isLocalRevision());
     ListSequence.fromList(actions).addElement(createCloseAnnotateAction());
     ListSequence.fromList(actions).addElement(Separator.getInstance());
@@ -327,7 +396,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       ListSequence.fromList(actions).addElement(new BaseAction(SHOW_HIDDEN_REVISIONS, SHOW_HIDDEN_REVISIONS, AllIcons.Actions.Rollback) {
         @Override
         protected void doExecute(AnActionEvent p1, Map<String, Object> p2) {
-          myEditorAnnotation.showHiddenRevisions();
+          showHiddenRevisions();
         }
       });
       ListSequence.fromList(actions).addElement(Separator.getInstance());
@@ -346,7 +415,7 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       ListSequence.fromList(actions).addElement(new BaseAction(HIDE_REVISION, HIDE_REVISION, AllIcons.Vcs.Remove) {
         @Override
         protected void doExecute(AnActionEvent p1, Map<String, Object> p2) {
-          myEditorAnnotation.hideRevision(graphNode);
+          hideRevision(graphNode);
         }
       });
     }
@@ -515,6 +584,16 @@ public final class AnnotationColumn extends AbstractLeftColumn {
   private class MyEditorComponentCreateListener implements EditorComponentCreateListener {
     @Override
     public void editorComponentCreated(@NotNull EditorComponent ec) {
+
+      if (myMainEditorColumn != null) {
+        return;
+      }
+
+      if (EditorComponentUtil.isNodeShownInTheComponent(getEditorComponent(), ec.getEditedNode())) {
+        EditorAnnotation editorAnnotation = myEditorAnnotation.createInspectorAnnotation(ec);
+        myInspectorColumn = new AnnotationColumn(myEditorAnnotation.getProject(), ec.getLeftEditorHighlighter(), editorAnnotation, AnnotationColumn.this);
+        editorAnnotation.updateAndRepaint();
+      }
     }
     @Override
     public void editorComponentDisposed(@NotNull EditorComponent ec) {
@@ -523,22 +602,55 @@ public final class AnnotationColumn extends AbstractLeftColumn {
       }
     }
   }
-  private static CommitsGraphNode check_5mnya_a0a0ec(LineAnnotation checkedDotOperand, AnnotationColumn checkedDotThisExpression) {
+  private static CommitsGraphNode check_5mnya_a0a0ic(LineAnnotation checkedDotOperand, AnnotationColumn checkedDotThisExpression) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRevisionsGraphNode();
     }
     return null;
   }
-  private static void check_5mnya_a2a06(Runnable checkedDotOperand) {
+  private static void check_5mnya_a1a86(EditorAnnotation checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.updateAndRepaint();
+    }
+
+  }
+  private static EditorAnnotation check_5mnya_a0b0qc(AnnotationColumn checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getEditorAnnotation();
+    }
+    return null;
+  }
+  private static void check_5mnya_a2a86(EditorAnnotation checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.updateAndRepaint();
+    }
+
+  }
+  private static EditorAnnotation check_5mnya_a0c0qc(AnnotationColumn checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      return checkedDotOperand.getEditorAnnotation();
+    }
+    return null;
+  }
+  private static void check_5mnya_a2a57(Runnable checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.run();
     }
 
   }
-  private static CommitsGraphNode check_5mnya_a0c0mc(LineAnnotation checkedDotOperand) {
+  private static void check_5mnya_a4a57(AnnotationColumn checkedDotOperand) {
+    if (null != checkedDotOperand) {
+      checkedDotOperand.close();
+    }
+
+  }
+  private static CommitsGraphNode check_5mnya_a0c0bd(LineAnnotation checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getRevisionsGraphNode();
     }
     return null;
+  }
+  private static <T> T as_5mnya_a0a0a0a0ab(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
   }
 }

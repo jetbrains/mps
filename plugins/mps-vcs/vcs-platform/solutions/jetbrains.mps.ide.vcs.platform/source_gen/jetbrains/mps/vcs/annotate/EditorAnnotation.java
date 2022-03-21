@@ -51,7 +51,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import git4idea.GitVcs;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.Disposer;
-import com.intellij.ui.EditorNotifications;
 import com.intellij.openapi.editor.colors.EditorColorsScheme;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.vcs.actions.AnnotationsSettings;
@@ -94,7 +93,6 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
   private List<VcsFileRevision> myAllRevisions;
   private LineAnnotationsUpdateListener myLineAnnotationsUpdateListener;
   private CommitsGraphNode myCommitUnderMouse;
-  private final List<CommitsGraphNode> myHiddenRevisions = ListSequence.fromList(new ArrayList<CommitsGraphNode>());
   @Nullable
   private final VcsFileRevision myRevision;
 
@@ -288,7 +286,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
 
   private void addRevisionChangesToResult(RevisionChanges revisionChanges, CommitsGraphNode revisionNode, final Collection<RevisionChanges> result) {
 
-    if (ListSequence.fromList(myHiddenRevisions).contains(revisionChanges.getCommitsGraphNode())) {
+    if (ListSequence.fromList(myRootAnnotation.getHiddenRevisions()).contains(revisionChanges.getCommitsGraphNode())) {
       return;
     }
 
@@ -477,7 +475,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
       }
     });
     myLineAnnotationsRef.set(lineAnnotations);
-    check_coav66_a3a37(myLineAnnotationsUpdateListener);
+    check_coav66_a3a27(myLineAnnotationsUpdateListener);
   }
 
   @NotNull
@@ -521,13 +519,15 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     return myMpsProject.getProject();
   }
 
+  /*package*/ EditorAnnotation createInspectorAnnotation(EditorComponent inspector) {
+    return new EditorAnnotation(inspector, myFile, myVcs, myMpsProject, myRootAnnotation, myAllRevisions, myRevision);
+  }
+
   public void dispose() {
     AnnotationOptions.getInstance().removeUpdateListener(this);
     myRootAnnotation.removeUpdateListener(this);
     myUpdateQueue.cancelAllUpdates();
     Disposer.dispose(myUpdateQueue);
-    ListSequence.fromList(myHiddenRevisions).clear();
-    EditorNotifications.getInstance(myMpsProject.getProject()).updateAllNotifications();
     unhighlightCells();
   }
 
@@ -655,31 +655,12 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     ShowAllAffectedGenericAction.showSubmittedFiles(myMpsProject.getProject(), revision.getRevisionNumber(), myFile, myVcs.getKeyInstanceMethod());
   }
 
-  public void hideRevision(@NotNull CommitsGraphNode node) {
-    ListSequence.fromList(myHiddenRevisions).addElement(node);
-    onHiddenRevisionsUpdate();
-  }
-
-  public void showHiddenRevisions() {
-    ListSequence.fromList(myHiddenRevisions).clear();
-    onHiddenRevisionsUpdate();
-  }
-
-  public void showLastHiddenRevision() {
-    if (ListSequence.fromList(myHiddenRevisions).isEmpty()) {
-      return;
-    }
-    ListSequence.fromList(myHiddenRevisions).removeLastElement();
-    onHiddenRevisionsUpdate();
-  }
-
-  private void onHiddenRevisionsUpdate() {
-    updateAndRepaint();
-    EditorNotifications.getInstance(myMpsProject.getProject()).updateAllNotifications();
+  /*package*/ RootAnnotation getRootAnnotation() {
+    return myRootAnnotation;
   }
 
   /*package*/ List<CommitsGraphNode> getHiddenRevisions() {
-    return myHiddenRevisions;
+    return myRootAnnotation.getHiddenRevisions();
   }
 
   public void showDiff(@NotNull final CommitsGraphNode node) {
@@ -757,7 +738,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
             // Similarly, editors in the Diff dialog window are not highlighted.
             newEditorComponent.getHighlighter().setPaused(true);
             EditorAnnotation revisionEditorAnnotation = new EditorAnnotation(newEditorComponent, myFile, myVcs, myMpsProject, myRootAnnotation, myAllRevisions, revision);
-            AnnotationColumn annotationColumn = new AnnotationColumn(myMpsProject.getProject(), newEditorComponent.getLeftEditorHighlighter(), revisionEditorAnnotation);
+            AnnotationColumn annotationColumn = new AnnotationColumn(myMpsProject.getProject(), newEditorComponent.getLeftEditorHighlighter(), revisionEditorAnnotation, null);
             revisionEditorAnnotation.updateAndRepaint();
           }
         }
@@ -780,7 +761,7 @@ public final class EditorAnnotation implements EditorMessageOwner, AnnotationOpt
     }
     return commitModel;
   }
-  private static void check_coav66_a3a37(LineAnnotationsUpdateListener checkedDotOperand) {
+  private static void check_coav66_a3a27(LineAnnotationsUpdateListener checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.lineAnnotationsUpdated();
     }

@@ -22,6 +22,7 @@
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
   <uses module="d44dab97-aaac-44cb-9745-8a14db674c03(jetbrains.mps.baseLanguage.tuples.runtime)" kind="rt+dp" />
   <uses module="f57286e3-4e19-4d8d-8045-3900761f6530(jetbrains.mps.git4idea.stubs)" kind="dp" />
+  <uses module="5b1f863d-65a0-41a6-a801-33896be24202(jetbrains.mps.ide.editor)" kind="dp" />
   <uses module="85836058-a162-41d7-bb1d-52e99d873f28(jetbrains.mps.ide.vcs.core)" kind="dp" />
   <uses module="6fd1293f-7f65-4ffd-99dc-4719eca7c171(jetbrains.mps.ide.vcs.platform)" kind="dp" />
   <uses module="d936855b-48da-4812-a8a0-2bfddd633ac5(jetbrains.mps.lang.behavior.api)" kind="rt+dp" />
@@ -30,7 +31,9 @@
   <uses module="9a4afe51-f114-4595-b5df-048ce3c596be(jetbrains.mps.runtime)" kind="rt+dp" />
   <dependency className="jetbrains.mps.vcs.annotate.AnnotateBackgroundableTask">
     <classNode dependClassName="com.intellij.openapi.application.ApplicationManager" />
+    <classNode dependClassName="com.intellij.openapi.fileEditor.FileEditorManager" />
     <classNode dependClassName="com.intellij.openapi.progress.ProgressIndicator" />
+    <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.ui.MessageType" />
     <classNode dependClassName="com.intellij.openapi.vcs.AbstractVcs" />
     <classNode dependClassName="com.intellij.openapi.vcs.VcsException" />
@@ -48,11 +51,16 @@
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
+    <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
+    <classNode dependClassName="jetbrains.mps.ide.editor.util.EditorComponentUtil" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorComponent" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.NodeEditorComponent" />
+    <classNode dependClassName="jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent" />
     <classNode dependClassName="jetbrains.mps.project.MPSProject" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotationColumn" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.EditorAnnotation" />
@@ -60,7 +68,6 @@
     <classNode dependClassName="jetbrains.mps.vcs.annotate.RootAnnotation" />
     <classNode dependClassName="jetbrains.mps.vcs.history.CommitsGraph" />
     <classNode dependClassName="jetbrains.mps.vcs.history.RootCommitsGraphTraverser" />
-    <classNode dependClassName="org.jetbrains.annotations.Nls" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.ModelAccess" />
@@ -124,10 +131,12 @@
     <classNode dependClassName="com.intellij.openapi.actionSystem.IdeActions" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.Separator" />
     <classNode dependClassName="com.intellij.openapi.actionSystem.ToggleAction" />
+    <classNode dependClassName="com.intellij.openapi.fileEditor.FileEditorManager" />
     <classNode dependClassName="com.intellij.openapi.ide.CopyPasteManager" />
     <classNode dependClassName="com.intellij.openapi.project.Project" />
     <classNode dependClassName="com.intellij.openapi.vcs.VcsBundle" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
+    <classNode dependClassName="com.intellij.ui.EditorNotifications" />
     <classNode dependClassName="com.intellij.util.messages.MessageBusConnection" />
     <classNode dependClassName="com.intellij.util.ui.TextTransferable" />
     <classNode dependClassName="git4idea.i18n.GitBundle" />
@@ -138,6 +147,7 @@
     <classNode dependClassName="java.awt.Graphics" />
     <classNode dependClassName="java.awt.Graphics2D" />
     <classNode dependClassName="java.awt.event.MouseEvent" />
+    <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
@@ -147,9 +157,12 @@
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Map" />
+    <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="java.util.function.Supplier" />
     <classNode dependClassName="javax.swing.JPopupMenu" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.closures.runtime.Wrappers" />
+    <classNode dependClassName="jetbrains.mps.ide.editor.util.EditorComponentUtil" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ILeftCombinator" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
@@ -179,6 +192,7 @@
     <classNode dependClassName="jetbrains.mps.workbench.action.BaseGroup" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeId" />
     <classNode extendsClassName="jetbrains.mps.nodeEditor.leftHighlighter.AbstractLeftColumn" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.annotate.AnnotationEditorNotificationProvider">
@@ -198,7 +212,6 @@
     <classNode dependClassName="jetbrains.mps.openapi.editor.EditorComponent" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotationColumn" />
     <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotationNotificationPanel" />
-    <classNode dependClassName="jetbrains.mps.vcs.annotate.EditorAnnotation" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="com.intellij.ui.EditorNotifications" />
@@ -209,7 +222,7 @@
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.style.StyleRegistry" />
-    <classNode dependClassName="jetbrains.mps.vcs.annotate.EditorAnnotation" />
+    <classNode dependClassName="jetbrains.mps.vcs.annotate.AnnotationColumn" />
     <classNode extendsClassName="com.intellij.ui.EditorNotificationPanel" />
   </dependency>
   <dependency className="jetbrains.mps.vcs.annotate.AnnotationOptions">
@@ -299,7 +312,6 @@
     <classNode dependClassName="com.intellij.openapi.vcs.annotate.ShowAllAffectedGenericAction" />
     <classNode dependClassName="com.intellij.openapi.vcs.history.VcsFileRevision" />
     <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
-    <classNode dependClassName="com.intellij.ui.EditorNotifications" />
     <classNode dependClassName="com.intellij.util.ui.update.MergingUpdateQueue" />
     <classNode dependClassName="com.intellij.util.ui.update.Update" />
     <classNode dependClassName="git4idea.GitVcs" />

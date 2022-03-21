@@ -12,9 +12,9 @@ import com.intellij.ui.LightColors;
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/1354028796362171854", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
 /*package*/ class AnnotationNotificationPanel extends EditorNotificationPanel {
 
-  public AnnotationNotificationPanel(final EditorAnnotation editorAnnotation) {
+  public AnnotationNotificationPanel(final AnnotationColumn annotationColumn) {
     super(getBackgroundColor());
-    int numExcludedRevisions = ListSequence.fromList(editorAnnotation.getHiddenRevisions()).count();
+    int numExcludedRevisions = ListSequence.fromList(annotationColumn.getHiddenRevisions()).count();
     // Colors are copied from jetbrains.mps.ide.editor.warningPanel.WarningPanel
     myLabel.setForeground((StyleRegistry.getInstance().isDarkTheme() ? Color.DARK_GRAY : StyleRegistry.getInstance().getEditorForeground()));
     if (numExcludedRevisions == 1) {
@@ -23,10 +23,10 @@ import com.intellij.ui.LightColors;
       myLabel.setText(numExcludedRevisions + " revisions are hidden from annotation");
     }
     if (numExcludedRevisions == 1) {
-      createActionLabel("Restore Hidden Revision", () -> editorAnnotation.showHiddenRevisions());
+      createActionLabel("Restore Hidden Revision", () -> annotationColumn.showHiddenRevisions());
     } else {
-      createActionLabel("Restore Hidden Revisions", () -> editorAnnotation.showHiddenRevisions());
-      createActionLabel("Restore Last Hidden Revision", () -> editorAnnotation.showLastHiddenRevision());
+      createActionLabel("Restore Hidden Revisions", () -> annotationColumn.showHiddenRevisions());
+      createActionLabel("Restore Last Hidden Revision", () -> annotationColumn.showLastHiddenRevision());
     }
   }
 

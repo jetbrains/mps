@@ -10,10 +10,10 @@ import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.project.Project;
-import jetbrains.mps.ide.editor.MPSFileNodeEditor;
-import jetbrains.mps.openapi.editor.EditorComponent;
-import jetbrains.mps.nodeEditor.leftHighlighter.AbstractLeftColumn;
+import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.ide.editor.MPSFileNodeEditor;
+import jetbrains.mps.nodeEditor.leftHighlighter.AbstractLeftColumn;
 import jetbrains.mps.openapi.editor.Editor;
 
 @GeneratedClass(node = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)/1354028796368172122", model = "r:f509a650-cbd9-47e7-b2a0-79f49c562c0b(jetbrains.mps.vcs.annotate)")
@@ -30,41 +30,56 @@ public class AnnotationEditorNotificationProvider extends EditorNotifications.Pr
   @Nullable
   @Override
   public AnnotationNotificationPanel createNotificationPanel(@NotNull VirtualFile file, @NotNull FileEditor fileEditor, @NotNull Project project) {
-    if (fileEditor instanceof MPSFileNodeEditor) {
-      MPSFileNodeEditor mpsFileNodeEditor = as_u1t0po_a0a0a0a5(fileEditor, MPSFileNodeEditor.class);
-      EditorComponent editor = check_u1t0po_a0b0a0f(mpsFileNodeEditor.getNodeEditor());
-      if (editor != null && editor instanceof jetbrains.mps.nodeEditor.EditorComponent) {
-        jetbrains.mps.nodeEditor.EditorComponent editorComponent = as_u1t0po_a0a0a2a0a5(editor, jetbrains.mps.nodeEditor.EditorComponent.class);
-        AnnotationColumn annotationColumn = null;
-        for (AbstractLeftColumn column : editorComponent.getLeftEditorHighlighter().getLeftColumns()) {
-          if (column instanceof AnnotationColumn) {
-            annotationColumn = as_u1t0po_a0a0a0a2a2a0a5(column, AnnotationColumn.class);
-            break;
-          }
-        }
-        if (annotationColumn != null) {
-          EditorAnnotation editorAnnotation = annotationColumn.getEditorAnnotation();
-          if (ListSequence.fromList(editorAnnotation.getHiddenRevisions()).isNotEmpty()) {
-            return new AnnotationNotificationPanel(editorAnnotation);
-          }
-        }
+
+    EditorComponent editor = getCurrentEditorComponent(fileEditor);
+
+    AnnotationColumn annotationColumn = getAnnotationColumn(as_u1t0po_a0a0d0f(editor, EditorComponent.class));
+
+    return (annotationColumn != null && ListSequence.fromList(annotationColumn.getHiddenRevisions()).isNotEmpty() ? new AnnotationNotificationPanel(annotationColumn) : null);
+  }
+
+  @Nullable
+  private EditorComponent getCurrentEditorComponent(@NotNull FileEditor fileEditor) {
+
+    if (!((fileEditor instanceof MPSFileNodeEditor))) {
+      return null;
+    }
+
+    jetbrains.mps.openapi.editor.EditorComponent editor = check_u1t0po_a0d0h(as_u1t0po_a0a0a3a7(fileEditor, MPSFileNodeEditor.class).getNodeEditor());
+
+    return (editor instanceof EditorComponent ? as_u1t0po_a0a5a7(editor, EditorComponent.class) : null);
+  }
+
+  @Nullable
+  private static AnnotationColumn getAnnotationColumn(@Nullable EditorComponent editor) {
+
+    if (editor == null) {
+      return null;
+    }
+
+    for (AbstractLeftColumn column : editor.getLeftEditorHighlighter().getLeftColumns()) {
+      if (column instanceof AnnotationColumn) {
+        return as_u1t0po_a0a0a0d0j(column, AnnotationColumn.class);
       }
     }
     return null;
   }
-  private static EditorComponent check_u1t0po_a0b0a0f(Editor checkedDotOperand) {
+  private static jetbrains.mps.openapi.editor.EditorComponent check_u1t0po_a0d0h(Editor checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getCurrentEditorComponent();
     }
     return null;
   }
-  private static <T> T as_u1t0po_a0a0a0a5(Object o, Class<T> type) {
+  private static <T> T as_u1t0po_a0a0d0f(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_u1t0po_a0a0a2a0a5(Object o, Class<T> type) {
+  private static <T> T as_u1t0po_a0a0a3a7(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
-  private static <T> T as_u1t0po_a0a0a0a2a2a0a5(Object o, Class<T> type) {
+  private static <T> T as_u1t0po_a0a5a7(Object o, Class<T> type) {
+    return (type.isInstance(o) ? (T) o : null);
+  }
+  private static <T> T as_u1t0po_a0a0a0d0j(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 }

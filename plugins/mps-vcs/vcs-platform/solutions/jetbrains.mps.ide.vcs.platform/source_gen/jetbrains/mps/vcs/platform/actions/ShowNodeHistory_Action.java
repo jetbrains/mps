@@ -8,13 +8,12 @@ import javax.swing.Icon;
 import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
-import java.util.List;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.model.SNode;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/6771236331600998130", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
 public class ShowNodeHistory_Action extends BaseAction {
@@ -31,7 +30,8 @@ public class ShowNodeHistory_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT)).modelHistoryIsTrackedInVcs(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODES));
+    SNodeId rootId = event.getData(MPSCommonDataKeys.NODE).getContainingRoot().getNodeId();
+    return new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT)).modelHistoryIsTrackedInVcs(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), rootId);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -45,15 +45,6 @@ public class ShowNodeHistory_Action extends BaseAction {
     {
       MPSProject p = event.getData(MPSCommonDataKeys.MPS_PROJECT);
       if (p == null) {
-        return false;
-      }
-    }
-    {
-      List<SNode> p = event.getData(MPSCommonDataKeys.NODES);
-      if (p == null) {
-        return false;
-      }
-      if (p.isEmpty()) {
         return false;
       }
     }
@@ -73,13 +64,14 @@ public class ShowNodeHistory_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    SNode containingRoot = event.getData(MPSCommonDataKeys.NODES).iterator().next().getContainingRoot();
+    SNode containingRoot = event.getData(MPSCommonDataKeys.NODE).getContainingRoot();
     String nodeName = event.getData(MPSCommonDataKeys.NODE).getPresentation();
     SNodeId nodeId = event.getData(MPSCommonDataKeys.NODE).getNodeId();
+    SNodeId rootId = containingRoot.getNodeId();
     String dialogTitle = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName().getLongName() + "/" + containingRoot.getPresentation();
-    if (!(nodeId.equals(containingRoot.getNodeId()))) {
+    if (!(nodeId.equals(rootId))) {
       dialogTitle = dialogTitle + "/" + nodeName;
     }
-    new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT)).showNodeHistory(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODES), nodeId, dialogTitle, true);
+    new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT)).showNodeHistory(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), rootId, nodeId, dialogTitle, true);
   }
 }

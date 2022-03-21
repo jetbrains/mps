@@ -9,14 +9,20 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vcs.AbstractVcs;
 import com.intellij.openapi.vcs.impl.BackgroundableActionLock;
 import jetbrains.mps.project.MPSProject;
-import org.jetbrains.annotations.Nls;
+import com.intellij.openapi.project.Project;
+import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
+import java.util.List;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.ide.editor.util.EditorComponentUtil;
+import com.intellij.openapi.fileEditor.FileEditorManager;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.nodeEditor.NodeEditorComponent;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
-import java.util.List;
 import com.intellij.openapi.vcs.history.VcsFileRevision;
 import com.intellij.openapi.vcs.VcsException;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.vcs.history.CommitsGraph;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -43,22 +49,37 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
   private final MPSProject myMpsProject;
 
 
-  public AnnotateBackgroundableTask(MPSProject mpsProject, @Nls(capitalization = Nls.Capitalization.Sentence) @NotNull String rootName, EditorComponent editor, VirtualFile file, AbstractVcs vcs, BackgroundableActionLock lock) {
-    super(mpsProject.getProject(), getTitle(rootName), true, ALWAYS_BACKGROUND);
+  public AnnotateBackgroundableTask(MPSProject mpsProject, EditorComponent editor, VirtualFile file, AbstractVcs vcs, BackgroundableActionLock lock) {
+    super(mpsProject.getProject(), "Retrieving annotations", true, ALWAYS_BACKGROUND);
     myMpsProject = mpsProject;
-    myEditor = editor;
     myActualFile = file;
     myActiveVcs = vcs;
     myLock = lock;
-    myRootName = rootName;
+    myEditor = getMainEditorComponent(editor, mpsProject.getProject());
+    myRootName = myEditor.getEditedNode().getPresentation();
+    setTitle("Retrieving annotations for " + myRootName);
   }
 
-  private static String getTitle(String rootName) {
-    return "Retrieving annotations for " + rootName;
+  private static EditorComponent getMainEditorComponent(final EditorComponent editorComponent, final Project project) {
+    if (editorComponent instanceof InspectorEditorComponent) {
+      final List<EditorComponent> components = ListSequence.fromList(new ArrayList<EditorComponent>());
+      editorComponent.getEditorContext().getRepository().getModelAccess().runReadAction(() -> ListSequence.fromList(components).addSequence(ListSequence.fromList(EditorComponentUtil.findComponentForNode(editorComponent.getEditedNode().getContainingRoot(), FileEditorManager.getInstance(project)))));
+      return ListSequence.fromList(components).where(new IWhereFilter<EditorComponent>() {
+        public boolean accept(EditorComponent it) {
+          return it instanceof NodeEditorComponent;
+        }
+      }).first();
+    } else {
+      return editorComponent;
+    }
   }
 
   @Override
   public void run(@NotNull final ProgressIndicator indicator) {
+
+    if (myEditor == null) {
+      return;
+    }
 
     final Wrappers._boolean wasCanceled = new Wrappers._boolean(false);
 
@@ -85,7 +106,7 @@ public final class AnnotateBackgroundableTask extends Task.Backgroundable {
     ModelAccess modelAccess = myEditor.getEditorContext().getRepository().getModelAccess();
     final RootAnnotation rootAnnotation = new RootAnnotation(myActualFile, rootId, modelAccess, commitsGraph);
     EditorAnnotation editorAnnotation = new EditorAnnotation(myEditor, myActualFile, myActiveVcs, myMpsProject, rootAnnotation, revisions.value, null);
-    final AnnotationColumn annotationColumn = new AnnotationColumn(myProject, myEditor.getLeftEditorHighlighter(), editorAnnotation);
+    final AnnotationColumn annotationColumn = new AnnotationColumn(myProject, myEditor.getLeftEditorHighlighter(), editorAnnotation, null);
 
     final Wrappers._int processedRevisionsCount = new Wrappers._int(0);
 

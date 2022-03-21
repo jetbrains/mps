@@ -37,6 +37,7 @@ import com.intellij.ui.HyperlinkLabel;
 import com.intellij.ui.LightColors;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.tools.BaseTool;
@@ -232,6 +233,12 @@ public class InspectorTool extends BaseTool implements EditorInspector, ProjectC
       }
       if (PlatformDataKeys.PROJECT.is(dataId)) {
         return getProject();
+      }
+      if (MPSEditorDataKeys.EDITOR_COMPONENT.is(dataId)) {
+        return myInspectorComponent;
+      }
+      if (MPSEditorDataKeys.MPS_PROJECT.is(dataId)) {
+        return ProjectHelper.fromIdeaProject(getProject());
       }
       return super.getData(dataId);
     }

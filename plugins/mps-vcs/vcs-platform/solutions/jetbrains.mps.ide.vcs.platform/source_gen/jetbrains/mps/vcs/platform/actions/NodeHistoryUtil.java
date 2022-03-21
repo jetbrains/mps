@@ -7,14 +7,12 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vfs.VirtualFile;
 import org.jetbrains.mps.openapi.model.SModel;
-import java.util.List;
-import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.persistence.DataSource;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import java.util.Map;
-import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.persistence.def.FilePerRootFormatUtil;
 import jetbrains.mps.vfs.IFile;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
@@ -34,16 +32,15 @@ public final class NodeHistoryUtil {
     myProject = mpsProject;
   }
 
-  public VirtualFile getFileFromModel(SModel model, List<SNode> nodes) {
+  public VirtualFile getFileFromModel(SModel model, SNodeId rootNodeId) {
     DataSource ds = model.getSource();
     FileSystemBridge fileSystem = myProject.getFileSystem();
     if (ds instanceof FileDataSource) {
       return fileSystem.asVirtualFile(((FileDataSource) ds).getFile());
     }
     if (ds instanceof FilePerRootDataSource) {
-      SNode containingRoot = nodes.iterator().next().getContainingRoot();
       Map<SNodeId, String> streamNames = FilePerRootFormatUtil.getStreamNames(model.getRootNodes());
-      String rootStream = streamNames.get(containingRoot.getNodeId());
+      String rootStream = streamNames.get(rootNodeId);
       if (rootStream == null) {
         return null;
       } else {
@@ -54,8 +51,8 @@ public final class NodeHistoryUtil {
     return null;
   }
 
-  public boolean modelHistoryIsTrackedInVcs(SModel model, List<SNode> nodes) {
-    VirtualFile vf = getFileFromModel(model, nodes);
+  public boolean modelHistoryIsTrackedInVcs(SModel model, SNodeId rootNodeId) {
+    VirtualFile vf = getFileFromModel(model, rootNodeId);
     if (vf == null) {
       return false;
     }
@@ -65,8 +62,8 @@ public final class NodeHistoryUtil {
     return AbstractVcs.fileInVcsByFileStatus(myProject.getProject(), vf);
   }
 
-  public void showNodeHistory(SModel model, List<SNode> nodes, final SNodeId nodeId, final String dialogTitle, final boolean compareModels) {
-    final VirtualFile vf = getFileFromModel(model, nodes);
+  public void showNodeHistory(SModel model, SNodeId rootNodeId, final SNodeId nodeId, final String dialogTitle, final boolean compareModels) {
+    final VirtualFile vf = getFileFromModel(model, rootNodeId);
     if (vf == null) {
       // modelHistoryIsTrackedInVcs() == true is precondition for this method, but doesn't hurt to avoid NPE anyway
       return;

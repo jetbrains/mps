@@ -8,14 +8,15 @@ import javax.swing.Icon;
 import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
+import org.jetbrains.mps.openapi.model.SNodeId;
+import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
-import java.util.List;
-import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.nodeEditor.EditorComponent;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
-import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.model.SNode;
 import com.intellij.openapi.util.registry.Registry;
 
 @GeneratedClass(node = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)/6427926084137613936", model = "r:c29f530b-f74d-4627-9da2-61138cfa6722(jetbrains.mps.vcs.platform.actions)")
@@ -33,7 +34,8 @@ public class ShowRootHistory_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT)).modelHistoryIsTrackedInVcs(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODES));
+    SNodeId rootId = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getContainingRoot().getNodeId();
+    return new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT)).modelHistoryIsTrackedInVcs(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), rootId);
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -51,11 +53,11 @@ public class ShowRootHistory_Action extends BaseAction {
       }
     }
     {
-      List<SNode> p = event.getData(MPSCommonDataKeys.NODES);
-      if (p == null) {
-        return false;
+      EditorComponent editorComponent = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT);
+      if (editorComponent != null && editorComponent.isInvalid()) {
+        editorComponent = null;
       }
-      if (p.isEmpty()) {
+      if (editorComponent == null) {
         return false;
       }
     }
@@ -70,10 +72,10 @@ public class ShowRootHistory_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final SModelName modelName = event.getData(MPSCommonDataKeys.CONTEXT_MODEL).getName();
-    SNode containingRoot = event.getData(MPSCommonDataKeys.NODES).iterator().next().getContainingRoot();
+    SNode containingRoot = event.getData(MPSEditorDataKeys.EDITOR_COMPONENT).getEditedNode().getContainingRoot();
     String rootName = containingRoot.getPresentation();
     SNodeId rootId = containingRoot.getNodeId();
     String dialogTitle = modelName.getLongName() + '/' + rootName;
-    new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT)).showNodeHistory(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), event.getData(MPSCommonDataKeys.NODES), rootId, dialogTitle, Registry.is("vcs.show.root.history.compare.models"));
+    new NodeHistoryUtil(event.getData(MPSCommonDataKeys.MPS_PROJECT)).showNodeHistory(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), rootId, rootId, dialogTitle, Registry.is("vcs.show.root.history.compare.models"));
   }
 }

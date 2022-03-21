@@ -63,7 +63,7 @@ public class HideRevision_Action extends BaseAction {
     if (annotationColumn == null || cellMessage == null) {
       return;
     }
-    annotationColumn.getEditorAnnotation().hideRevision(cellMessage.getCommitsGraphNode());
+    annotationColumn.hideRevision(cellMessage.getCommitsGraphNode());
   }
   @Nullable
   private AnnotatedCellMessage getCellMessage(final AnActionEvent event) {

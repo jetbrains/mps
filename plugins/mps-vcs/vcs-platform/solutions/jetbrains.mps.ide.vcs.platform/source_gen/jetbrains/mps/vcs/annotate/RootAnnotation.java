@@ -63,6 +63,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
   private CommitsGraphNode myLocalCommitsGraphNode;
   private final List<CommitsGraphNode> myProcessedCommits = new CopyOnWriteArrayList<CommitsGraphNode>();
   private final CommitsGraph myCommitsGraph;
+  private final List<CommitsGraphNode> myHiddenRevisions = ListSequence.fromList(new ArrayList<CommitsGraphNode>());
 
 
   /*package*/ RootAnnotation(VirtualFile file, SNodeId rootId, ModelAccess modelAccess, @NotNull CommitsGraph commitsGraph) {
@@ -105,7 +106,7 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
   }
 
   /*package*/ void cancelAnnotate() {
-    check_nt8dt4_a0a81(myRevisionsGraphTraverser);
+    check_nt8dt4_a0a91(myRevisionsGraphTraverser);
   }
 
   /*package*/ synchronized Collection<RevisionChanges> getChanges() {
@@ -113,11 +114,15 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
   }
 
   /*package*/ void addUpdateListener(@NotNull RootAnnotationUpdateListener r) {
-    ListSequence.fromList(myUpdateListeners).addElement(r);
+    synchronized (myUpdateListeners) {
+      ListSequence.fromList(myUpdateListeners).addElement(r);
+    }
   }
 
   /*package*/ void removeUpdateListener(RootAnnotationUpdateListener r) {
-    ListSequence.fromList(myUpdateListeners).removeElement(r);
+    synchronized (myUpdateListeners) {
+      ListSequence.fromList(myUpdateListeners).removeElement(r);
+    }
   }
 
   public interface RootAnnotationUpdateListener {
@@ -130,11 +135,13 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
     if (!(node.isLocalRevision()) && changes != null) {
       ListSequence.fromList(myProcessedCommits).addElement(node.getNodeWithLoadedModel());
     }
-    ListSequence.fromList(myUpdateListeners).visitAll(new IVisitor<RootAnnotationUpdateListener>() {
-      public void visit(RootAnnotationUpdateListener it) {
-        it.revisionProcessed(changes);
-      }
-    });
+    synchronized (myUpdateListeners) {
+      ListSequence.fromList(myUpdateListeners).visitAll(new IVisitor<RootAnnotationUpdateListener>() {
+        public void visit(RootAnnotationUpdateListener it) {
+          it.revisionProcessed(changes);
+        }
+      });
+    }
   }
 
   @Override
@@ -284,7 +291,26 @@ import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
   /*package*/ List<CommitsGraphNode> getProcessedCommits() {
     return myProcessedCommits;
   }
-  private static void check_nt8dt4_a0a81(RootCommitsGraphTraverser checkedDotOperand) {
+
+  /*package*/ void hideRevision(@NotNull CommitsGraphNode node) {
+    ListSequence.fromList(myHiddenRevisions).addElement(node);
+  }
+
+  /*package*/ void showHiddenRevisions() {
+    ListSequence.fromList(myHiddenRevisions).clear();
+  }
+
+  /*package*/ void showLastHiddenRevision() {
+    if (ListSequence.fromList(myHiddenRevisions).isEmpty()) {
+      return;
+    }
+    ListSequence.fromList(myHiddenRevisions).removeLastElement();
+  }
+
+  /*package*/ List<CommitsGraphNode> getHiddenRevisions() {
+    return myHiddenRevisions;
+  }
+  private static void check_nt8dt4_a0a91(RootCommitsGraphTraverser checkedDotOperand) {
     if (null != checkedDotOperand) {
       checkedDotOperand.stop();
     }
