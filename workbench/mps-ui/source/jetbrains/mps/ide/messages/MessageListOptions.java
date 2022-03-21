@@ -17,6 +17,7 @@ package jetbrains.mps.ide.messages;
 
 /**
  * Configuration parameters for {@link MessagesViewTool#getMessageList(String, MessageListOptions...)}
+ *
  * @author Artem Tikhomirov
  * @since 2017.3
  */
@@ -26,12 +27,15 @@ public enum MessageListOptions {
    * Overrides {@link #ReuseExisting}
    */
   AlwaysNew,
+
   /**
-   * Tells to use existing message list, if any. New list is created in none exist.
+   * returns existing message list, if any.
+   * New list is created if none exist.
    * If {@link #AlwaysNew} option is present, this option is no-op.
    * XXX might be worth adding an option ReuseIfNotPinned?
    */
   ReuseExisting,
+
   /**
    * Tells that list shall grab attention each time a message comes.
    * This option is opposite to {@link #DeafOnMessage}, and overrides the one if present.

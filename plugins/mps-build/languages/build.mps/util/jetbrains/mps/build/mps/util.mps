@@ -18376,9 +18376,6 @@
           </node>
         </node>
         <node concept="1DcWWT" id="6m8wrPAU3IG" role="3cqZAp">
-          <node concept="37vLTw" id="4xLjrYD0PbZ" role="1DdaDG">
-            <ref role="3cqZAo" node="4xLjrYD0PbV" resolve="exportedLanguages" />
-          </node>
           <node concept="3cpWsn" id="6m8wrPAU3IK" role="1Duv9x">
             <property role="TrG5h" value="module" />
             <node concept="3uibUv" id="6m8wrPAU3IL" role="1tU5fm">
@@ -18650,6 +18647,9 @@
                 </node>
               </node>
             </node>
+          </node>
+          <node concept="37vLTw" id="4xLjrYD0PbZ" role="1DdaDG">
+            <ref role="3cqZAo" node="4xLjrYD0PbV" resolve="exportedLanguages" />
           </node>
         </node>
         <node concept="3clFbH" id="6m8wrPBn9Ch" role="3cqZAp" />
@@ -34176,6 +34176,14 @@
           <ref role="3uigEE" node="16ApZ_poryA" resolve="ModuleChecker.BuildModuleFacade" />
         </node>
       </node>
+      <node concept="3Tm6S6" id="16ApZ_po9k7" role="1B3o_S" />
+      <node concept="3UR2Jj" id="16ApZ_pvzPH" role="lGtFl">
+        <node concept="TZ5HA" id="16ApZ_pvzPI" role="TZ5H$">
+          <node concept="1dT_AC" id="16ApZ_pvzPJ" role="1dT_Ay">
+            <property role="1dT_AB" value="Some auxiliary methods to augment BuildMps_Module instances (to hide the burden of necessary structure creation)" />
+          </node>
+        </node>
+      </node>
       <node concept="2tJIrI" id="3XLirLmK2lI" role="jymVt" />
       <node concept="3clFb_" id="3XLirLmLNH2" role="jymVt">
         <property role="TrG5h" value="addOutputPath" />
@@ -34267,14 +34275,6 @@
         <node concept="3Tm1VV" id="3XLirLmLaIK" role="1B3o_S" />
         <node concept="3uibUv" id="3XLirLmLFo_" role="3clF45">
           <ref role="3uigEE" node="16ApZ_poryA" resolve="BuildModuleFacade" />
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="16ApZ_po9k7" role="1B3o_S" />
-      <node concept="3UR2Jj" id="16ApZ_pvzPH" role="lGtFl">
-        <node concept="TZ5HA" id="16ApZ_pvzPI" role="TZ5H$">
-          <node concept="1dT_AC" id="16ApZ_pvzPJ" role="1dT_Ay">
-            <property role="1dT_AB" value="Some auxiliary methods to augment BuildMps_Module instances (to hide the burden of necessary structure creation)" />
-          </node>
         </node>
       </node>
     </node>

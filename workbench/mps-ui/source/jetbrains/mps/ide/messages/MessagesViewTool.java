@@ -161,22 +161,27 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
    * Creates/retrieves existing named collection of messages, with respect to supplied options.
    *
    * @param name    name of the list. It's up to caller to provide reasonable name in case of {@link MessageListOptions#AlwaysNew} to tell one list from another.
-   * @param options if no options specified, {@link MessageListOptions#ReuseExisting} + {@link MessageListOptions#ActivateOnMessage} is assumed.
-   * @return UI-backed collection of messages.
+   * @param options if no options specified, {@link MessageListOptions#ActivateOnMessage} and {@link MessageListOptions#ReuseExisting} is assumed.
+   * @return UI-backed collection of messages
    */
   @NotNull
   public IMessageList getMessageList(@NotNull final String name, MessageListOptions... options) {
     List<MessageListOptions> optionsList = Arrays.asList(options);
+    if (!optionsList.isEmpty()) {
+      if (!optionsList.contains(MessageListOptions.AlwaysNew) && !optionsList.contains(MessageListOptions.ReuseExisting)) {
+        throw new IllegalArgumentException("One of AlwaysNew, ReuseExisting options must be provided");
+      }
+    }
     boolean alwaysNew = optionsList.contains(MessageListOptions.AlwaysNew);
-    boolean reuseExisting = !alwaysNew && (optionsList.isEmpty() || optionsList.contains(MessageListOptions.ReuseExisting));
-    boolean activateOnMessage = !optionsList.contains(MessageListOptions.DeafOnMessage) || optionsList.contains(MessageListOptions.ActivateOnMessage);
     MessageList list;
     if (alwaysNew) {
       list = createList(name);
     } else {
-      boolean createIfNotFound = !reuseExisting;
-      list = getAvailableList(name, createIfNotFound);
+      list = getAvailableList(name, true);
     }
+
+    boolean activateOnMessage = !optionsList.contains(MessageListOptions.DeafOnMessage) ||
+                                optionsList.contains(MessageListOptions.ActivateOnMessage);
     list.setActivateOnMessage(activateOnMessage);
     return list;
   }

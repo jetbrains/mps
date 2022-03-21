@@ -36,7 +36,7 @@ public class DefaultMakeMessageHandler implements IMessageHandler {
     MessagesViewTool tool = MessagesViewTool.getInstance(mpsProject);
     if (tool != null) {
       // I don't dare switch this activation per-message off in bugfix release
-      myDelegate = new MessagesViewPostingHandler(mpsProject, MessageListOptions.ActivateOnMessage);
+      myDelegate = new MessagesViewPostingHandler(mpsProject, MessageListOptions.ActivateOnMessage, MessageListOptions.ReuseExisting);
     } else {
       //it might happen if we haven't opened IDE yet
       myDelegate = new LogHandler(Logger.getLogger(IMakeService.class));
