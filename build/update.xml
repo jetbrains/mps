@@ -396,8 +396,8 @@
              url="https://www.jetbrains.com/mps/download"
              feedback="http://youtrack.jetbrains.net"
              majorVersion="2021" minorVersoin="2">
-      <build number="212.5284.1340" version="2021.2.4">
-        <message>JetBrains MPS 2021.2.4 is now available.</message>
+      <build number="212.5284.1355" version="2021.2.5">
+        <message>JetBrains MPS 2021.2.5 is now available.</message>
         <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
       </build>
     </channel>
