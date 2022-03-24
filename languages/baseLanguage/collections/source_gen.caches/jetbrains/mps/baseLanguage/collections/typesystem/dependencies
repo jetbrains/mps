@@ -681,6 +681,7 @@
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.collections.typesystem.check_TreeMapCreator_NonTypesystemRule">
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.TypeDerivable__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.collections.typesystem.check_HashMapCreator_NonTypesystemRule" />
     <classNode dependClassName="jetbrains.mps.errors.IErrorReporter" />
     <classNode dependClassName="jetbrains.mps.errors.messageTargets.MessageTarget" />
     <classNode dependClassName="jetbrains.mps.errors.messageTargets.NodeMessageTarget" />

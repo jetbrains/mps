@@ -195,6 +195,9 @@
       <concept id="1207055528241" name="jetbrains.mps.lang.typesystem.structure.WarningStatement" flags="nn" index="a7r0C">
         <child id="1207055552304" name="warningText" index="a7wSD" />
       </concept>
+      <concept id="2329696648445392942" name="jetbrains.mps.lang.typesystem.structure.CheckingRuleReference" flags="ng" index="dlsrG">
+        <reference id="2329696648445392943" name="declaration" index="dlsrH" />
+      </concept>
       <concept id="1174989242422" name="jetbrains.mps.lang.typesystem.structure.PatternVariableReference" flags="nn" index="2iOg4B">
         <reference id="1174989274720" name="patternVarDecl" index="2iOnXL" />
       </concept>
@@ -258,7 +261,9 @@
         <property id="1195213689297" name="overrides" index="18ip37" />
         <child id="1195213635060" name="body" index="18ibNy" />
       </concept>
-      <concept id="1195214364922" name="jetbrains.mps.lang.typesystem.structure.NonTypesystemRule" flags="ig" index="18kY7G" />
+      <concept id="1195214364922" name="jetbrains.mps.lang.typesystem.structure.NonTypesystemRule" flags="ig" index="18kY7G">
+        <child id="2329696648448631592" name="overridenRules" index="dp_RE" />
+      </concept>
       <concept id="1188811367543" name="jetbrains.mps.lang.typesystem.structure.ComparisonRule" flags="ig" index="3aFulz">
         <child id="1188820750135" name="anotherNode" index="3bfgSz" />
       </concept>
@@ -13235,6 +13240,9 @@
   <node concept="18kY7G" id="4lu_6uqrvNC">
     <property role="TrG5h" value="check_TreeMapCreator" />
     <property role="3GE5qa" value="mapType" />
+    <node concept="dlsrG" id="5H9jyhF0a4e" role="dp_RE">
+      <ref role="dlsrH" node="4lu_6uqrt97" resolve="check_HashMapCreator" />
+    </node>
     <node concept="3clFbS" id="4lu_6uqrvND" role="18ibNy">
       <node concept="3cpWs8" id="i4c1$3Q" role="3cqZAp">
         <node concept="3cpWsn" id="i4c1$3R" role="3cpWs9">
@@ -13277,9 +13285,6 @@
         </node>
       </node>
       <node concept="2Mj0R9" id="4lu_6uqrwvb" role="3cqZAp">
-        <node concept="Xl_RD" id="4lu_6uqrw$p" role="2MkJ7o">
-          <property role="Xl_RC" value="not available here" />
-        </node>
         <node concept="22lmx$" id="i4c1$42" role="2MkoU_">
           <node concept="2OqwBi" id="i4c1$43" role="3uHU7B">
             <node concept="37vLTw" id="3GM_nagT$Qz" role="2Oq$k0">
@@ -13303,6 +13308,9 @@
         </node>
         <node concept="1YBJjd" id="4lu_6uqrw_s" role="1urrMF">
           <ref role="1YBMHb" node="4lu_6uqrvNF" resolve="tmc" />
+        </node>
+        <node concept="Xl_RD" id="4lu_6uqrw$p" role="2MkJ7o">
+          <property role="Xl_RC" value="not available here" />
         </node>
       </node>
     </node>

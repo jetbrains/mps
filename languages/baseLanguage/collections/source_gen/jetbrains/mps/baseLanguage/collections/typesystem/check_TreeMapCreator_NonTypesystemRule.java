@@ -21,6 +21,12 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public class check_TreeMapCreator_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
   public check_TreeMapCreator_NonTypesystemRule() {
   }
+  public boolean overrides(NonTypesystemRule_Runtime rule) {
+    if (rule instanceof check_HashMapCreator_NonTypesystemRule) {
+      return true;
+    }
+    return false;
+  }
   public void applyRule(final SNode tmc, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SNode dtype = TypeDerivable__BehaviorDescriptor.deriveType_idhEwIVPz.invoke(SNodeOperations.as(SNodeOperations.getParent(SNodeOperations.getParent(tmc)), CONCEPTS.TypeDerivable$EC), SNodeOperations.as(SNodeOperations.getParent(tmc), CONCEPTS.Expression$mB));
     if (!((dtype == null) || SConceptOperations.isSuperConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(dtype)), CONCEPTS.SortedMapType$AZ))) {
