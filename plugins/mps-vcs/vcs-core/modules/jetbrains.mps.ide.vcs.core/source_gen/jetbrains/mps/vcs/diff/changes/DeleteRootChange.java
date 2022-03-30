@@ -61,6 +61,14 @@ public class DeleteRootChange extends StructureChange {
   }
 
   @Override
+  public boolean conflictsWith(@NotNull ModelChange otherChange) {
+    if (super.conflictsWith(otherChange)) {
+      return true;
+    }
+    return Objects.equals(otherChange.getRootId(), this.getRootId());
+  }
+
+  @Override
   public boolean isSymmetricWith(@NotNull ModelChange otherChange) {
     return otherChange instanceof DeleteRootChange && Objects.equals(getRootId(), otherChange.getRootId());
   }
