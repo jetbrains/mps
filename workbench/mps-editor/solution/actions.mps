@@ -10303,12 +10303,16 @@
         <property role="pLAjc" value="ctrl" />
       </node>
     </node>
-    <node concept="Zd509" id="32_EJN4gfmK" role="Zd508">
+    <node concept="Zd509" id="1pR8FBvUDwe" role="Zd508">
       <ref role="1bYAoF" node="3hypUcHYaIV" resolve="DeleteLine" />
-      <node concept="pLAjd" id="32_EJN4gfmL" role="Zd501">
+      <node concept="pLAjd" id="1pR8FBvUDyn" role="Zd501">
+        <property role="pLAjf" value="VK_BACK_SPACE" />
+        <property role="pLAjc" value="meta" />
+        <property role="3hacHL" value="5SFo3Mf0QpD/replace_all" />
+      </node>
+      <node concept="pLAjd" id="57ibbSRQM4$" role="Zd501">
         <property role="pLAjf" value="VK_BACK_SPACE" />
         <property role="pLAjc" value="ctrl" />
-        <property role="3hacHL" value="5SFo3Mf0QpD/replace all" />
       </node>
     </node>
   </node>
