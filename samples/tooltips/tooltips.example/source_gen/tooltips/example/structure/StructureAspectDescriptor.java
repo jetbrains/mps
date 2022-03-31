@@ -15,6 +15,8 @@ import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptList = createDescriptorForList();
   /*package*/ final ConceptDescriptor myConceptLists = createDescriptorForLists();
+  /*package*/ final ConceptDescriptor myConceptRefSource = createDescriptorForRefSource();
+  /*package*/ final ConceptDescriptor myConceptRefTarget = createDescriptorForRefTarget();
   private final LanguageConceptSwitch myIndexSwitch;
 
   public StructureAspectDescriptor() {
@@ -29,7 +31,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptList, myConceptLists);
+    return Arrays.asList(myConceptList, myConceptLists, myConceptRefSource, myConceptRefTarget);
   }
 
   @Override
@@ -40,6 +42,10 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptList;
       case LanguageConceptSwitch.Lists:
         return myConceptLists;
+      case LanguageConceptSwitch.RefSource:
+        return myConceptRefSource;
+      case LanguageConceptSwitch.RefTarget:
+        return myConceptRefTarget;
       default:
         return null;
     }
@@ -65,6 +71,24 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:785fbfdf-4d16-46ea-8112-f67d04b451d9(tooltips.example.structure)/4766463257084173924");
     b.version(2);
     b.aggregate("ls", 0x4225e11419741e67L).target(0xa8c4631e640d42a1L, 0xba26250ba067c2c2L, 0x2e602a53d6175dbaL).optional(true).ordered(true).multiple(true).origin("4766463257084173927").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForRefSource() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("tooltips.example", "RefSource", 0xa8c4631e640d42a1L, 0xba26250ba067c2c2L, 0x35694cf1dfcc0dffL);
+    b.class_(false, false, true);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:785fbfdf-4d16-46ea-8112-f67d04b451d9(tooltips.example.structure)/3848691958290320895");
+    b.version(2);
+    b.associate("ref", 0x35694cf1dfcc0e00L).target(0xa8c4631e640d42a1L, 0xba26250ba067c2c2L, 0x35694cf1dfcc0dfaL).optional(true).origin("3848691958290320896").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForRefTarget() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("tooltips.example", "RefTarget", 0xa8c4631e640d42a1L, 0xba26250ba067c2c2L, 0x35694cf1dfcc0dfaL);
+    b.class_(false, false, true);
+    b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
+    b.origin("r:785fbfdf-4d16-46ea-8112-f67d04b451d9(tooltips.example.structure)/3848691958290320890");
+    b.version(2);
+    b.property("description", 0x35694cf1dfcc0dfdL).type(PrimitiveTypeId.STRING).origin("3848691958290320893").done();
     return b.create();
   }
 }

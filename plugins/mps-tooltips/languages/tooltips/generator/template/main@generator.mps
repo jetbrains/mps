@@ -229,20 +229,26 @@
       <concept id="1177026924588" name="jetbrains.mps.lang.smodel.structure.RefConcept_Reference" flags="nn" index="chp4Y">
         <reference id="1177026940964" name="conceptDeclaration" index="cht4Q" />
       </concept>
+      <concept id="1138411891628" name="jetbrains.mps.lang.smodel.structure.SNodeOperation" flags="nn" index="eCIE_">
+        <child id="1144104376918" name="parameter" index="1xVPHs" />
+      </concept>
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
-      <concept id="1171310072040" name="jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" flags="nn" index="2Rxl7S" />
       <concept id="1171323947159" name="jetbrains.mps.lang.smodel.structure.Model_NodesOperation" flags="nn" index="2SmgA7">
         <child id="1758937410080001570" name="conceptArgument" index="1dBWTz" />
       </concept>
+      <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
+      <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
+        <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
+      </concept>
       <concept id="1144195091934" name="jetbrains.mps.lang.smodel.structure.Node_IsRoleOperation" flags="nn" index="1BlSNk">
         <reference id="1144195362400" name="conceptOfParent" index="1BmUXE" />
         <reference id="1144195396777" name="linkInParent" index="1Bn3mz" />
@@ -840,17 +846,18 @@
         <node concept="3clFbS" id="5KuTQqLhtjo" role="2VODD2">
           <node concept="3clFbF" id="5KuTQqLhtk3" role="3cqZAp">
             <node concept="2OqwBi" id="5KuTQqLhzgE" role="3clFbG">
-              <node concept="1PxgMI" id="5KuTQqLhz2Q" role="2Oq$k0">
-                <node concept="chp4Y" id="5KuTQqLhz4q" role="3oSUPX">
-                  <ref role="cht4Q" to="tpc2:gXXWOiD" resolve="AbstractComponent" />
-                </node>
-                <node concept="2OqwBi" id="5KuTQqLhty4" role="1m5AlR">
-                  <node concept="30H73N" id="5KuTQqLhtk2" role="2Oq$k0" />
-                  <node concept="2Rxl7S" id="5KuTQqLhyMA" role="2OqNvi" />
+              <node concept="2OqwBi" id="5KuTQqLhty4" role="2Oq$k0">
+                <node concept="30H73N" id="5KuTQqLhtk2" role="2Oq$k0" />
+                <node concept="2Xjw5R" id="3lDjf7vML4H" role="2OqNvi">
+                  <node concept="1xMEDy" id="3lDjf7vML4J" role="1xVPHs">
+                    <node concept="chp4Y" id="3lDjf7vMLe$" role="ri$Ld">
+                      <ref role="cht4Q" to="tpc2:gXXWOiD" resolve="AbstractComponent" />
+                    </node>
+                  </node>
                 </node>
               </node>
-              <node concept="3TrEf2" id="5KuTQqLhzrp" role="2OqNvi">
-                <ref role="3Tt5mk" to="tpc2:gXXX56I" resolve="conceptDeclaration" />
+              <node concept="2qgKlT" id="3lDjf7vNanz" role="2OqNvi">
+                <ref role="37wK5l" to="tpcb:67EYkym$wx3" resolve="getConceptDeclaration" />
               </node>
             </node>
           </node>

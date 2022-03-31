@@ -10,8 +10,19 @@
       <concept id="4766463257084173924" name="tooltips.example.structure.Lists" flags="ng" index="1rkvXK">
         <child id="4766463257084173927" name="ls" index="1rkvXN" />
       </concept>
+      <concept id="3848691958290320890" name="tooltips.example.structure.RefTarget" flags="ng" index="3EDk4b">
+        <property id="3848691958290320893" name="description" index="3EDk4c" />
+      </concept>
+      <concept id="3848691958290320895" name="tooltips.example.structure.RefSource" flags="ng" index="3EDk4e">
+        <reference id="3848691958290320896" name="ref" index="3EDkbL" />
+      </concept>
       <concept id="3341717463071415738" name="tooltips.example.structure.List" flags="ng" index="3StRvD">
         <property id="7004396676586011505" name="a" index="3WSmrr" />
+      </concept>
+    </language>
+    <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
+      <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ng" index="TrEIO">
+        <property id="1169194664001" name="name" index="TrG5h" />
       </concept>
     </language>
   </registry>
@@ -25,6 +36,14 @@
     <node concept="3StRvD" id="48_ShgptqPp" role="1rkvXN">
       <property role="3WSmrr" value="44" />
     </node>
+  </node>
+  <node concept="3EDk4e" id="3lDjf7vN9RB">
+    <property role="TrG5h" value="Ref Source" />
+    <ref role="3EDkbL" node="3lDjf7vNcba" resolve="Ref Target" />
+  </node>
+  <node concept="3EDk4b" id="3lDjf7vNcba">
+    <property role="TrG5h" value="Ref Target" />
+    <property role="3EDk4c" value="Description" />
   </node>
 </model>
 
