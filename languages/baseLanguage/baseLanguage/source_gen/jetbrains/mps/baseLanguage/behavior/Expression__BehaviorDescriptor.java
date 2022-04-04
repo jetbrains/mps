@@ -11,15 +11,17 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.baseLanguage.actions.PrecedenceUtil;
+import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.Objects;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SConcept;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
@@ -34,8 +36,12 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> constant_id1653mnvAgr2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("constant").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1653mnvAgr2").build();
   public static final SMethod<Boolean> singleValue_id1o8Ht9sES3u = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("singleValue").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1o8Ht9sES3u").build();
   public static final SMethod<PrecedenceUtil.Precedence> getPrecedenceLevel_id1O90zDONSxM = new SMethodBuilder<PrecedenceUtil.Precedence>(new SJavaCompoundTypeImpl(PrecedenceUtil.Precedence.class)).name("getPrecedenceLevel").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1O90zDONSxM").build();
+  public static final SMethod<Boolean> isLeftMostExpression_id7q$fTYk8pKO = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLeftMostExpression").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7q$fTYk8pKO").build();
+  public static final SMethod<Boolean> isRightMostExpression_id6bbTzIwEnym = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRightMostExpression").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6bbTzIwEnym").build();
+  public static final SMethod<SNode> getExpressionWhereThisIsTheLeftMost_id7q$fTYjOrRt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpressionWhereThisIsTheLeftMost").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7q$fTYjOrRt").build();
+  public static final SMethod<SNode> getExpressionWhereThisIsTheRightMost_id6bbTzIwEwNG = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExpressionWhereThisIsTheRightMost").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6bbTzIwEwNG").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, isLValue_idhEwJgmE, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, isLegalAsStatement_idi26MfYG, lvalue_id1653mnvAgpj, legalAsStatement_id1653mnvAgqK, constant_id1653mnvAgr2, singleValue_id1o8Ht9sES3u, getPrecedenceLevel_id1O90zDONSxM);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariableExpectedName_idhEwJgm_, isLValue_idhEwJgmE, isCompileTimeConstant_idi1LOPRp, getCompileTimeConstantValue_idi1LP2xI, isLegalAsStatement_idi26MfYG, lvalue_id1653mnvAgpj, legalAsStatement_id1653mnvAgqK, constant_id1653mnvAgr2, singleValue_id1o8Ht9sES3u, getPrecedenceLevel_id1O90zDONSxM, isLeftMostExpression_id7q$fTYk8pKO, isRightMostExpression_id6bbTzIwEnym, getExpressionWhereThisIsTheLeftMost_id7q$fTYjOrRt, getExpressionWhereThisIsTheRightMost_id6bbTzIwEwNG);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -73,6 +79,50 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static PrecedenceUtil.Precedence getPrecedenceLevel_id1O90zDONSxM(@NotNull SAbstractConcept __thisConcept__) {
     return PrecedenceUtil.Precedence.DEFAULT;
   }
+  /*package*/ static boolean isLeftMostExpression_id7q$fTYk8pKO(@NotNull SNode __thisNode__) {
+    SNode current = __thisNode__;
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), CONCEPTS.Expression$mB)) {
+      SNode p = SNodeOperations.as(SNodeOperations.getParent(current), CONCEPTS.Expression$mB);
+      if (Objects.equals(IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(SNodeOperations.as(p, CONCEPTS.IBinaryLike$eU)), current) || SNodeOperations.isInstanceOf(p, CONCEPTS.ParenthesizedExpression$Ws) || (SNodeOperations.isInstanceOf(p, CONCEPTS.NotExpression$Pc) && PrecedenceUtil.needsParensAroundNotExpression(SNodeOperations.as(p, CONCEPTS.NotExpression$Pc)))) {
+        return false;
+      }
+      current = p;
+    }
+    return true;
+  }
+  /*package*/ static boolean isRightMostExpression_id6bbTzIwEnym(@NotNull SNode __thisNode__) {
+    SNode current = __thisNode__;
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), CONCEPTS.Expression$mB)) {
+      SNode p = SNodeOperations.as(SNodeOperations.getParent(current), CONCEPTS.Expression$mB);
+      if (Objects.equals(IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(SNodeOperations.as(p, CONCEPTS.IBinaryLike$eU)), current) || SNodeOperations.isInstanceOf(p, CONCEPTS.ParenthesizedExpression$Ws) || (SNodeOperations.isInstanceOf(p, CONCEPTS.NotExpression$Pc) && PrecedenceUtil.needsParensAroundNotExpression(SNodeOperations.as(p, CONCEPTS.NotExpression$Pc)))) {
+        return false;
+      }
+      current = p;
+    }
+    return true;
+  }
+  /*package*/ static SNode getExpressionWhereThisIsTheLeftMost_id7q$fTYjOrRt(@NotNull SNode __thisNode__) {
+    SNode current = __thisNode__;
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), CONCEPTS.Expression$mB)) {
+      SNode p = SNodeOperations.as(SNodeOperations.getParent(current), CONCEPTS.Expression$mB);
+      if (Objects.equals(IBinaryLike__BehaviorDescriptor.getSyntacticallyRightSideExpression_id1wHCnsn590i.invoke(SNodeOperations.as(p, CONCEPTS.IBinaryLike$eU)), current) || SNodeOperations.isInstanceOf(p, CONCEPTS.ParenthesizedExpression$Ws) || (SNodeOperations.isInstanceOf(p, CONCEPTS.NotExpression$Pc) && PrecedenceUtil.needsParensAroundNotExpression(SNodeOperations.as(p, CONCEPTS.NotExpression$Pc)))) {
+        return current;
+      }
+      current = p;
+    }
+    return current;
+  }
+  /*package*/ static SNode getExpressionWhereThisIsTheRightMost_id6bbTzIwEwNG(@NotNull SNode __thisNode__) {
+    SNode current = __thisNode__;
+    while (SNodeOperations.isInstanceOf(SNodeOperations.getParent(current), CONCEPTS.Expression$mB)) {
+      SNode p = SNodeOperations.as(SNodeOperations.getParent(current), CONCEPTS.Expression$mB);
+      if (Objects.equals(IBinaryLike__BehaviorDescriptor.getSyntacticallyLeftSideExpression_id1wHCnsn590c.invoke(SNodeOperations.as(p, CONCEPTS.IBinaryLike$eU)), current) || SNodeOperations.isInstanceOf(p, CONCEPTS.ParenthesizedExpression$Ws) || (SNodeOperations.isInstanceOf(p, CONCEPTS.NotExpression$Pc) && PrecedenceUtil.needsParensAroundNotExpression(SNodeOperations.as(p, CONCEPTS.NotExpression$Pc)))) {
+        return current;
+      }
+      current = p;
+    }
+    return current;
+  }
 
   /*package*/ Expression__BehaviorDescriptor() {
   }
@@ -99,6 +149,14 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Object) getCompileTimeConstantValue_idi1LP2xI(node, (SModule) parameters[0]));
       case 4:
         return (T) ((Boolean) isLegalAsStatement_idi26MfYG(node));
+      case 10:
+        return (T) ((Boolean) isLeftMostExpression_id7q$fTYk8pKO(node));
+      case 11:
+        return (T) ((Boolean) isRightMostExpression_id6bbTzIwEnym(node));
+      case 12:
+        return (T) ((SNode) getExpressionWhereThisIsTheLeftMost_id7q$fTYjOrRt(node));
+      case 13:
+        return (T) ((SNode) getExpressionWhereThisIsTheRightMost_id6bbTzIwEwNG(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -140,5 +198,9 @@ public final class Expression__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept CommentPart$KZ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart");
+    /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept NotExpression$Pc = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbcf6bd10dL, "jetbrains.mps.baseLanguage.structure.NotExpression");
+    /*package*/ static final SInterfaceConcept IBinaryLike$eU = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x182da1771714863eL, "jetbrains.mps.baseLanguage.structure.IBinaryLike");
+    /*package*/ static final SConcept ParenthesizedExpression$Ws = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfb4ed32b7fL, "jetbrains.mps.baseLanguage.structure.ParenthesizedExpression");
   }
 }

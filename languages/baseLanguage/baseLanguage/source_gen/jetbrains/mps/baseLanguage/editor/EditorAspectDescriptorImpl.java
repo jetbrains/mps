@@ -818,6 +818,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
               return Arrays.asList(new TransformationMenu[]{new Expression_to_type_Cast()});
             case "jetbrains.mps.baseLanguage.editor.Expression_wrapWithPassByRef":
               return Arrays.asList(new TransformationMenu[]{new Expression_wrapWithPassByRef()});
+            case "jetbrains.mps.baseLanguage.editor.PostExpressionFixTransformations":
+              return Arrays.asList(new TransformationMenu[]{new PostExpressionFixTransformations()});
             case "jetbrains.mps.baseLanguage.editor.SubstringExpression_Transform":
               return Arrays.asList(new TransformationMenu[]{new SubstringExpression_Transform()});
             case "jetbrains.mps.baseLanguage.editor.UnaryMinusLeftTransform":
@@ -1493,6 +1495,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase imple
       case 10:
         if (true) {
           switch (menuId.getFqName()) {
+            case "jetbrains.mps.baseLanguage.editor.Prepend_Expr_With_If":
+              return Arrays.asList(new SubstituteMenu[]{new Prepend_Expr_With_If()});
             case "jetbrains.mps.baseLanguage.editor.menuForSubstitutingInIf":
               return Arrays.asList(new SubstituteMenu[]{new menuForSubstitutingInIf()});
             default:

@@ -29,7 +29,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class Expression_TransformationMenu extends TransformationMenuBase {
-  private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE, MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
+  private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.SUBSTITUTE, MenuLocations.RIGHT_SIDE_TRANSFORM, MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
   @Override
   public boolean isApplicableToLocation(@NotNull String location) {
     return SetSequence.fromSet(myLocations).contains(location);
@@ -69,6 +69,9 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
 
       });
     }
+    if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
+      result.add(new TMP_Include_g28b5z_a1());
+    }
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
       result.add(new DefaultConceptMenusTransformationMenuPart(SModelUtil.getDirectSuperConcepts(CONCEPTS.Expression$mB)) {
         @NotNull
@@ -84,26 +87,26 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
         }
 
       });
-      result.add(new TMP_Include_g28b5z_b1());
-      result.add(new TMP_Include_g28b5z_c1());
-      result.add(new TMP_Include_g28b5z_d1());
-      result.add(new TMP_Include_g28b5z_e1());
-      result.add(new TMP_Include_g28b5z_f1());
-      result.add(new TMP_Include_g28b5z_g1());
-      result.add(new TMP_Include_g28b5z_h1());
-      result.add(new TMP_Include_g28b5z_i1());
-      result.add(new TMP_Include_g28b5z_j1());
-      result.add(new TMP_Include_g28b5z_k1());
-      result.add(new TMP_Include_g28b5z_l1());
-      result.add(new TMP_Include_g28b5z_m1());
-      result.add(new TMP_Include_g28b5z_n1());
-      result.add(new TMP_Include_g28b5z_o1());
-      result.add(new TMP_Include_g28b5z_p1());
-      result.add(new TMP_Include_g28b5z_q1());
-      result.add(new TMP_Include_g28b5z_r1());
-      result.add(new TMP_Include_g28b5z_s1());
-      result.add(new TMP_Include_g28b5z_t1());
-      result.add(new TMP_Include_g28b5z_u1());
+      result.add(new TMP_Include_g28b5z_b2());
+      result.add(new TMP_Include_g28b5z_c2());
+      result.add(new TMP_Include_g28b5z_d2());
+      result.add(new TMP_Include_g28b5z_e2());
+      result.add(new TMP_Include_g28b5z_f2());
+      result.add(new TMP_Include_g28b5z_g2());
+      result.add(new TMP_Include_g28b5z_h2());
+      result.add(new TMP_Include_g28b5z_i2());
+      result.add(new TMP_Include_g28b5z_j2());
+      result.add(new TMP_Include_g28b5z_k2());
+      result.add(new TMP_Include_g28b5z_l2());
+      result.add(new TMP_Include_g28b5z_m2());
+      result.add(new TMP_Include_g28b5z_n2());
+      result.add(new TMP_Include_g28b5z_o2());
+      result.add(new TMP_Include_g28b5z_p2());
+      result.add(new TMP_Include_g28b5z_q2());
+      result.add(new TMP_Include_g28b5z_r2());
+      result.add(new TMP_Include_g28b5z_s2());
+      result.add(new TMP_Include_g28b5z_t2());
+      result.add(new TMP_Include_g28b5z_u2());
     }
     return result;
   }
@@ -154,7 +157,30 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_b1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_a1 extends IncludeTransformationMenuTransformationMenuPart {
+    @NotNull
+    @Override
+    public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
+      context.getEditorMenuTrace().pushTraceInfo();
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("include " + "named transformation menu " + "PostExpressionFixTransformations", new SNodePointer("r:00000000-0000-4000-0000-011c895902c3(jetbrains.mps.baseLanguage.editor)", "7119036779765572378")));
+      try {
+        return super.createItems(context);
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+    }
+
+    @Nullable
+    @Override
+    protected TransformationMenuLookup getMenuLookup(TransformationMenuContext _context) {
+      final SNode node = _context.getNode();
+      final EditorContext editorContext = _context.getEditorContext();
+
+      return new NamedTransformationMenuLookup(LanguageRegistry.getInstance(editorContext.getRepository()), CONCEPTS.Expression$mB, "jetbrains.mps.baseLanguage.editor.PostExpressionFixTransformations");
+    }
+
+  }
+  public class TMP_Include_g28b5z_b2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -177,7 +203,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_c1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_c2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -200,7 +226,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_d1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_d2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -223,7 +249,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_e1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_e2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -246,7 +272,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_f1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_f2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -269,7 +295,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_g1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_g2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -292,7 +318,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_h1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_h2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -315,7 +341,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_i1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_i2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -338,7 +364,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_j1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_j2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -361,7 +387,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_k1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_k2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -384,7 +410,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_l1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_l2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -407,7 +433,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_m1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_m2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -430,7 +456,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_n1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_n2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -453,7 +479,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_o1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_o2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -476,7 +502,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_p1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_p2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -499,7 +525,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_q1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_q2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -522,7 +548,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_r1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_r2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -545,7 +571,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_s1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_s2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -568,7 +594,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_t1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_t2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -591,7 +617,7 @@ public class Expression_TransformationMenu extends TransformationMenuBase {
     }
 
   }
-  public class TMP_Include_g28b5z_u1 extends IncludeTransformationMenuTransformationMenuPart {
+  public class TMP_Include_g28b5z_u2 extends IncludeTransformationMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
