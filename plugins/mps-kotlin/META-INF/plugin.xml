@@ -18,8 +18,8 @@
                         className="jetbrains.mps.kotlin.idePlugin.rootEntry.KotlinCommonStubModelRootEntryFactory"/>
   </extensions>
   <extensions defaultExtensionNs="com.intellij">
-    <mps.LanguageLibrary dir="/languages" hide="false"/>
-    <mps.LanguageLibrary dir="/solutions" hide="false"/>
-    <mps.LanguageLibrary dir="/devkits" hide="false"/>
+    <mps.LanguageLibrary dir="/languages" hide="true"/>
+    <mps.LanguageLibrary dir="/solutions" hide="true"/>
+    <mps.LanguageLibrary dir="/devkits" hide="true"/>
   </extensions>
 </idea-plugin>
