@@ -24,7 +24,7 @@ import java.util.List;
  * @author Alex.Pyshkin
  * @since 2/15/22
  */
-public class MPSPsiProject extends LightElement {
+public class MPSPsiProject extends LightElement implements MPSPsiElement {
   private final Project myProject;
 
   public MPSPsiProject(PsiManager manager, Project project) {

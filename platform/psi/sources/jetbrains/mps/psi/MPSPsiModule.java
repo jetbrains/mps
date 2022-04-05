@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import javax.swing.Icon;
 import java.util.stream.StreamSupport;
 
-public class MPSPsiModule extends LightElement {
+public class MPSPsiModule extends LightElement implements MPSPsiElement {
   private final SModuleReference myModuleReference;
   private final SRepository myRepo;
 

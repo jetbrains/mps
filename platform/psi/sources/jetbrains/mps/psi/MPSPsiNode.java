@@ -29,7 +29,7 @@ import javax.swing.Icon;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.StreamSupport;
 
-public class MPSPsiNode extends LightElement {
+public class MPSPsiNode extends LightElement implements MPSPsiElement {
   private static final Logger LOG = LogManager.getLogger(MPSPsiNode.class);
 
   private final SNodeReference myNodeReference;
