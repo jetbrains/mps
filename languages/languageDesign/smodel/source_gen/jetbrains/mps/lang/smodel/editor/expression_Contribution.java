@@ -216,7 +216,7 @@ public class expression_Contribution extends TransformationMenuBase {
           SNode newNode = SNodeFactoryOperations.replaceWithNewChild(_context.getNode(), CONCEPTS.SNodeTypeCastExpression$TK);
           SLinkOperations.setTarget(newNode, LINKS.leftExpression$uiR3, _context.getNode());
           SPropertyOperations.set(newNode, PROPS.asCast$Egst, true);
-          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), newNode, SelectionManager.FIRST_ERROR_CELL + "|" + SelectionManager.FOCUS_POLICY_CELL + "|" + SelectionManager.FIRST_EDITABLE_CELL + "|" + SelectionManager.FIRST_CELL, -1);
+          SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), newNode, SelectionManager.LAST_EDITABLE_CELL, 0);
         }
 
 
