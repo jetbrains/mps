@@ -220,7 +220,7 @@ public abstract class BaseKeymapChanges {
     for (ComplexShortcut cs : s) {
       if (cs.getClass() == BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut.class) {
         // shortcut to add/remove/replace; consume by redirecting to a new code branch of myShortcutTemplates.
-        for (ShortcutWrapper sw : cs.getShortcutWrappersFor(null)) {
+        for (ShortcutWrapper sw : ((BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut) cs).myShortcutWrappers) {
           myShortcutTemplates.add(unwrap(id, sw));
         }
       } else {
@@ -290,7 +290,7 @@ public abstract class BaseKeymapChanges {
      */
     @Deprecated(since = "2022.1", forRemoval = true)
     public static final class ParameterizedSimpleShortcut extends ComplexShortcut {
-      private final List<ShortcutWrapper> myShortcutWrappers;
+      /*package*/ final List<ShortcutWrapper> myShortcutWrappers;
 
       public ParameterizedSimpleShortcut(Shortcut... shortcuts) {
         myShortcutWrappers = Arrays.stream(shortcuts).map(ShortcutWrapper::new).collect(Collectors.toList());
@@ -302,12 +302,12 @@ public abstract class BaseKeymapChanges {
 
       @Override
       public List<Shortcut> getShortcutsFor(Object... params) {
-        return myShortcutWrappers.stream().map(wrapper -> wrapper.myShortcut).collect(Collectors.toList());
+        throw new UnsupportedOperationException();
       }
 
       @Override
       List<ShortcutWrapper> getShortcutWrappersFor(Object... params) {
-        return myShortcutWrappers;
+        throw new UnsupportedOperationException();
       }
     }
 
