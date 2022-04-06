@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,11 @@ import com.intellij.openapi.keymap.Keymap;
 import com.intellij.openapi.keymap.KeymapManager;
 import gnu.trove.THashMap;
 import gnu.trove.THashSet;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -34,12 +34,10 @@ import java.util.stream.Collectors;
  * The basic logic is to replace the default shortcuts with MPS provided during #init, and to revert the changes on #dispose
  */
 public abstract class BaseKeymapChanges {
-  private static final Logger LOG = LogManager.getLogger(BaseKeymapChanges.class);
-
   private static final Map<Keymap, Set<String>> ourClearedActions = new THashMap<>();
   private final Map<String, Set<Shortcut>> myRemovedShortcuts = new THashMap<>();
 
-  private final Map<String, Set<ShortcutWrapper>> mySimpleShortcuts = new THashMap<>();
+  private final List<SW> mySimpleShortcuts = new ArrayList<>();
 
   private final Map<String, Set<ComplexShortcut>> myComplexShortcuts = new THashMap<>();
   private final Map<String, Set<Shortcut>> myAddedComplexShortcuts = new THashMap<>();
@@ -80,11 +78,8 @@ public abstract class BaseKeymapChanges {
       return;
     }
 
-    for (Entry<String, Set<ShortcutWrapper>> e : mySimpleShortcuts.entrySet()) {
-      String key = e.getKey();
-      for (ShortcutWrapper s : e.getValue()) {
-        addShortcutToKeymap(key, keymap, s.myShortcut, s.myRemove, s.myReplaceAll);
-      }
+    for (SW e : mySimpleShortcuts) {
+      e.apply(this);
     }
   }
 
@@ -104,11 +99,8 @@ public abstract class BaseKeymapChanges {
     myAddedComplexShortcuts.clear();
 
     //simple
-    for (Entry<String, Set<ShortcutWrapper>> e : mySimpleShortcuts.entrySet()) {
-      String key = e.getKey();
-      for (ShortcutWrapper s : e.getValue()) {
-        keymap.removeShortcut(key, s.myShortcut);
-      }
+    for (ListIterator<SW> it = mySimpleShortcuts.listIterator(mySimpleShortcuts.size()); it.hasPrevious(); ) {
+      it.previous().revert(this);
     }
     mySimpleShortcuts.clear();
 
@@ -125,20 +117,23 @@ public abstract class BaseKeymapChanges {
   }
 
   protected void addSimpleShortcut(String id, ShortcutWrapper... s) {
-    Set<ShortcutWrapper> shortcuts = mySimpleShortcuts.get(id);
-    if (shortcuts == null) {
-      shortcuts = new THashSet<>();
-      mySimpleShortcuts.put(id, shortcuts);
+    for (ShortcutWrapper w : s) {
+      // Unlike ActionManagerImpl#processRemoveAndReplace(), we pick either remove or replace-all (it's enum in MPS, after all)
+      // Let alone there's no reason to have both remove and replace-all
+      if (w.myRemove) {
+        mySimpleShortcuts.add(new Remove(id, w.myShortcut));
+      } else if (w.myReplaceAll) {
+        mySimpleShortcuts.add(new Replace(id, w.myShortcut));
+      } else {
+        mySimpleShortcuts.add(new Add(id, w.myShortcut));
+      }
     }
-    shortcuts.addAll(Arrays.asList(s));
   }
 
   protected void addSimpleShortcut(String id, Shortcut... s) {
-    ShortcutWrapper[] sw = new ShortcutWrapper[s.length];
-    for (int i = 0; i < s.length; i++) {
-      sw[i] = new ShortcutWrapper(s[i]);
+    for (Shortcut shortcut : s) {
+      mySimpleShortcuts.add(new Add(id, shortcut));
     }
-    addSimpleShortcut(id, sw);
   }
 
   protected void addComplexShortcut(String id, ComplexShortcut... s) {
@@ -150,16 +145,12 @@ public abstract class BaseKeymapChanges {
     shortcuts.addAll(Arrays.asList(s));
   }
 
-  private void addShortcutToKeymap(String longId, Keymap keymap, Shortcut s) {
-    addShortcutToKeymap(longId, keymap, s, false, false);
-  }
-
   private void addShortcutToKeymap(String longId, Keymap keymap, Shortcut s, boolean remove, boolean replaceAll) {
     Shortcut[] oldShortcuts = keymap.getShortcuts(longId);
 
-    boolean isClear = oldShortcuts.length == 0 || ourClearedActions.values().stream().anyMatch(it -> it.contains(longId));
+    boolean notClear = oldShortcuts.length != 0 && ourClearedActions.values().stream().noneMatch(it -> it.contains(longId));
 
-    if (!isClear) {
+    if (notClear) {
       myRemovedShortcuts.put(longId, new THashSet<>(Arrays.asList(oldShortcuts)));
       keymap.removeAllActionShortcuts(longId);
     }
@@ -241,6 +232,10 @@ public abstract class BaseKeymapChanges {
     }
   }
 
+  /**
+   * @deprecated way too verbose, and makes me feel OOP is JAA for MPS team
+   */
+  @Deprecated(since = "2022.1", forRemoval = true)
   protected static class ShortcutWrapper {
     public final Shortcut myShortcut;
     public final boolean myRemove;
@@ -256,4 +251,85 @@ public abstract class BaseKeymapChanges {
       myReplaceAll = replaceAll;
     }
   }
+
+  private static abstract class SW {
+    protected final String myActionId;
+    protected final Shortcut myShortcut;
+
+    /*package*/ SW(String actionId, Shortcut s) {
+      myActionId = actionId;
+      myShortcut = s;
+    }
+
+    abstract void apply(BaseKeymapChanges bkm);
+
+    abstract void revert(BaseKeymapChanges bkm);
+  }
+
+  /**
+   * Corresponds to "remove" attribute of &lt;keyboard-shortcut&gt;
+   * see https://plugins.jetbrains.com/docs/intellij/basic-action-system.html#registering-actions-from-code
+   */
+  private static class Remove extends SW {
+    /*package*/ Remove(String actionId, Shortcut s) {
+      super(actionId, s);
+    }
+
+    void apply(BaseKeymapChanges bkm) {
+      bkm.getKeymap().removeShortcut(myActionId, myShortcut);
+    }
+
+    void revert(BaseKeymapChanges bkm) {
+      bkm.getKeymap().addShortcut(myActionId, myShortcut);
+    }
+  }
+
+  private static class Add extends SW {
+    /*package*/ Add(String actionId, Shortcut s) {
+      super(actionId, s);
+    }
+
+    void apply(BaseKeymapChanges bkm) {
+      bkm.getKeymap().addShortcut(myActionId, myShortcut);
+    }
+
+    void revert(BaseKeymapChanges bkm) {
+      bkm.getKeymap().removeShortcut(myActionId, myShortcut);
+    }
+  }
+
+  /**
+   * Corresponds to "replace-all" attribute of &lt;keyboard-shortcut&gt;
+   */
+  private static class Replace extends SW {
+    private Shortcut[] myOldShortcuts;
+
+    /*package*/ Replace(String actionId, Shortcut s) {
+      super(actionId, s);
+    }
+
+    void apply(BaseKeymapChanges bkm) {
+      myOldShortcuts = bkm.getKeymap().getShortcuts(myActionId);
+      if (myOldShortcuts.length > 0) {
+        bkm.getKeymap().removeAllActionShortcuts(myActionId);
+      }
+      bkm.getKeymap().addShortcut(myActionId, myShortcut);
+    }
+
+    void revert(BaseKeymapChanges bkm) {
+      if (myOldShortcuts == null) {
+        return;
+      }
+      if (myOldShortcuts.length == 0) {
+        bkm.getKeymap().removeShortcut(myActionId, myShortcut);
+      } else {
+        bkm.getKeymap().removeAllActionShortcuts(myActionId);
+        for (Shortcut s : myOldShortcuts) {
+          bkm.getKeymap().addShortcut(myActionId, s);
+        }
+      }
+      myOldShortcuts = null;
+    }
+  }
+
 }
