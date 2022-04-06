@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -39,7 +40,13 @@ public abstract class BaseKeymapChanges {
   private static final Map<Keymap, Set<String>> ourClearedActions = new THashMap<>();
   private final Map<String, Set<Shortcut>> myRemovedShortcuts = new THashMap<>();
 
+  // shortcut assignment for regular actions (no parameters)
   private final List<SW> mySimpleShortcuts = new ArrayList<>();
+  // shortcut assignment for parameterized actions. Parameterized action has unique id, we group them by their class name
+  private final List<SW> myShortcutTemplates = new ArrayList<>();
+
+  // tracks actual shortcut assigned to parameterized actions
+  private final List<SW> myAppliedTemplates = new ArrayList<>();
 
   private final Map<String, Set<ComplexShortcut>> myComplexShortcuts = new THashMap<>();
   private final Map<String, Set<Shortcut>> myAddedComplexShortcuts = new THashMap<>();
@@ -53,6 +60,16 @@ public abstract class BaseKeymapChanges {
     Keymap keymap = getKeymap();
     if (keymap == null) {
       return;
+    }
+
+    for (SW st : myShortcutTemplates) {
+      // linear search doesn't look nice, indeed, but I don't expect this list to grow notably big
+      if (!st.matches(shortId)) {
+        continue;
+      }
+      SW sw = st.withId(longId);
+      sw.apply(this);
+      myAppliedTemplates.add(sw);
     }
 
     Set<ComplexShortcut> complexShortcuts = myComplexShortcuts.get(shortId);
@@ -92,6 +109,11 @@ public abstract class BaseKeymapChanges {
     }
 
     //complex
+    for (ListIterator<SW> it = myAppliedTemplates.listIterator(myAppliedTemplates.size()); it.hasPrevious(); ) {
+      it.previous().revert(this);
+    }
+    myAppliedTemplates.clear();
+
     for (Entry<String, Set<Shortcut>> e : myAddedComplexShortcuts.entrySet()) {
       String key = e.getKey();
       for (Shortcut s : e.getValue()) {
@@ -124,15 +146,19 @@ public abstract class BaseKeymapChanges {
   @Deprecated(since = "2022.1", forRemoval = true)
   protected final void addSimpleShortcut(String id, ShortcutWrapper... s) {
     for (ShortcutWrapper w : s) {
-      // Unlike ActionManagerImpl#processRemoveAndReplace(), we pick either remove or replace-all (it's enum in MPS, after all)
-      // Let alone there's no reason to have both remove and replace-all
-      if (w.myRemove) {
-        mySimpleShortcuts.add(new Remove(id, w.myShortcut));
-      } else if (w.myReplaceAll) {
-        mySimpleShortcuts.add(new Replace(id, w.myShortcut));
-      } else {
-        mySimpleShortcuts.add(new Add(id, w.myShortcut));
-      }
+      mySimpleShortcuts.add(unwrap(id, w));
+    }
+  }
+
+  private static SW unwrap(String id, ShortcutWrapper w) {
+    // Unlike ActionManagerImpl#processRemoveAndReplace(), we pick either remove or replace-all (it's enum in MPS, after all)
+    // Let alone there's no reason to have both remove and replace-all
+    if (w.myRemove) {
+      return new Remove(id, w.myShortcut);
+    } else if (w.myReplaceAll) {
+      return new Replace(id, w.myShortcut);
+    } else {
+      return new Add(id, w.myShortcut);
     }
   }
 
@@ -167,13 +193,50 @@ public abstract class BaseKeymapChanges {
     mySimpleShortcuts.add(new Replace(id, kbShortcut(keystroke)));
   }
 
+  /**
+   * @since 2022.1
+   */
+  protected final void addTemplate(String id, String keystroke) {
+    myShortcutTemplates.add(new Add(id, kbShortcut(keystroke)));
+  }
+
+  /**
+   * @since 2022.1
+   */
+  protected final void removeTemplate(String id, String keystroke) {
+    myShortcutTemplates.add(new Remove(id, kbShortcut(keystroke)));
+  }
+
+  /**
+   * @since 2022.1
+   */
+  protected final void replaceTemplate(String id, String keystroke) {
+    myShortcutTemplates.add(new Replace(id, kbShortcut(keystroke)));
+  }
+
+
   protected final void addComplexShortcut(String id, ComplexShortcut... s) {
+    ArrayList<ComplexShortcut> customProcessing = new ArrayList<>();
+    for (ComplexShortcut cs : s) {
+      if (cs.getClass() == BaseKeymapChanges.ComplexShortcut.ParameterizedSimpleShortcut.class) {
+        // shortcut to add/remove/replace; consume by redirecting to a new code branch of myShortcutTemplates.
+        for (ShortcutWrapper sw : cs.getShortcutWrappersFor(null)) {
+          myShortcutTemplates.add(unwrap(id, sw));
+        }
+      } else {
+        // either ComplexShortcutWrapper or user's subclcass of ComplexShortcut - no idea yet how to convert, leave old code
+        customProcessing.add(cs);
+      }
+    }
+    if (customProcessing.isEmpty()) {
+      return;
+    }
     Set<ComplexShortcut> shortcuts = myComplexShortcuts.get(id);
     if (shortcuts == null) {
       shortcuts = new THashSet<>();
       myComplexShortcuts.put(id, shortcuts);
     }
-    shortcuts.addAll(Arrays.asList(s));
+    shortcuts.addAll(customProcessing);
   }
 
   private void addShortcutToKeymap(String longId, Keymap keymap, Shortcut s, boolean remove, boolean replaceAll) {
@@ -222,6 +285,10 @@ public abstract class BaseKeymapChanges {
       return this.getShortcutsFor(params).stream().map(ShortcutWrapper::new).collect(Collectors.toList());
     }
 
+    /**
+     * @deprecated same applies as to the rest of the class deprecated stuff
+     */
+    @Deprecated(since = "2022.1", forRemoval = true)
     public static final class ParameterizedSimpleShortcut extends ComplexShortcut {
       private final List<ShortcutWrapper> myShortcutWrappers;
 
@@ -297,9 +364,16 @@ public abstract class BaseKeymapChanges {
       myShortcut = s;
     }
 
+    boolean matches(String actionId) {
+      return Objects.equals(myActionId, actionId);
+    }
+
     abstract void apply(BaseKeymapChanges bkm);
 
     abstract void revert(BaseKeymapChanges bkm);
+
+    // factory method to create duplicate with another action id.
+    abstract SW withId(String actionId);
   }
 
   /**
@@ -318,6 +392,10 @@ public abstract class BaseKeymapChanges {
     void revert(BaseKeymapChanges bkm) {
       bkm.getKeymap().addShortcut(myActionId, myShortcut);
     }
+
+    SW withId(String actionId) {
+      return new Remove(actionId, myShortcut);
+    }
   }
 
   private static class Add extends SW {
@@ -331,6 +409,10 @@ public abstract class BaseKeymapChanges {
 
     void revert(BaseKeymapChanges bkm) {
       bkm.getKeymap().removeShortcut(myActionId, myShortcut);
+    }
+
+    SW withId(String actionId) {
+      return new Add(actionId, myShortcut);
     }
   }
 
@@ -366,6 +448,9 @@ public abstract class BaseKeymapChanges {
       }
       myOldShortcuts = null;
     }
-  }
 
+    SW withId(String actionId) {
+      return new Replace(actionId, myShortcut);
+    }
+  }
 }
