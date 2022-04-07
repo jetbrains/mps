@@ -1139,21 +1139,6 @@
       <property role="13i0it" value="true" />
       <node concept="3THzug" id="hEwIosK" role="3clF45" />
       <node concept="3clFbS" id="hEwIosL" role="3clF47">
-        <node concept="3cpWs6" id="1kTmBBnre4K" role="3cqZAp">
-          <node concept="BsUDl" id="1kTmBBnre4Q" role="3cqZAk">
-            <ref role="37wK5l" node="1kTmBBnrdlu" resolve="getPreviousInputNodeType" />
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="hJrm0$X" role="1B3o_S" />
-    </node>
-    <node concept="13i0hz" id="1kTmBBnrdlu" role="13h7CS">
-      <property role="TrG5h" value="getPreviousInputNodeType" />
-      <node concept="3Tm1VV" id="1kTmBBnrdlv" role="1B3o_S" />
-      <node concept="3Tqbb2" id="1kTmBBnre4o" role="3clF45">
-        <ref role="ehGHo" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
-      </node>
-      <node concept="3clFbS" id="1kTmBBnrdlx" role="3clF47">
         <node concept="3cpWs8" id="hEwIosM" role="3cqZAp">
           <node concept="3cpWsn" id="hEwIosN" role="3cpWs9">
             <property role="TrG5h" value="prevNodeMacro" />
@@ -1201,6 +1186,7 @@
           </node>
         </node>
       </node>
+      <node concept="3Tm1VV" id="hJrm0$X" role="1B3o_S" />
     </node>
     <node concept="13i0hz" id="hEwIot7" role="13h7CS">
       <property role="TrG5h" value="getPreviousNodeMacro" />
