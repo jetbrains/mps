@@ -45,6 +45,9 @@
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
       </concept>
+      <concept id="7485977462274819189" name="jetbrains.mps.baseLanguage.structure.FormatOperation" flags="ng" index="2cAKMz">
+        <child id="7485977462274819664" name="arguments" index="2cAKU6" />
+      </concept>
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
@@ -773,7 +776,7 @@
                   <ref role="3cqZAo" node="4BapoMDjgA$" resolve="LOG" />
                 </node>
                 <node concept="liA8E" id="4jSfnmsLt$F" role="2OqNvi">
-                  <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                  <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object,java.lang.Throwable)" resolve="debug" />
                   <node concept="3cpWs3" id="4jSfnmsLt$v" role="37wK5m">
                     <node concept="Xl_RD" id="4jSfnmsLt$w" role="3uHU7B">
                       <property role="Xl_RC" value="unsupported version requested " />
@@ -789,6 +792,9 @@
                   </node>
                 </node>
               </node>
+            </node>
+            <node concept="3cpWs6" id="16WtXIau6Tt" role="3cqZAp">
+              <node concept="10Nm6u" id="16WtXIau8gd" role="3cqZAk" />
             </node>
           </node>
           <node concept="3eOVzh" id="nQaM_ZOL9o" role="3clFbw">
@@ -1054,26 +1060,6 @@
         <ref role="3uigEE" to="5fzo:~ModelReadException" resolve="ModelReadException" />
       </node>
       <node concept="3clFbS" id="4BapoMDjgGc" role="3clF47">
-        <node concept="3cpWs8" id="4BapoMDjgGe" role="3cqZAp">
-          <node concept="3cpWsn" id="4BapoMDjgGd" role="3cpWs9">
-            <property role="3TUv4t" value="false" />
-            <property role="TrG5h" value="mp" />
-            <node concept="3uibUv" id="4BapoMDsRQ6" role="1tU5fm">
-              <ref role="3uigEE" to="5fzo:~IModelPersistence" resolve="IModelPersistence" />
-            </node>
-            <node concept="1rXfSq" id="4BapoMDjgGg" role="33vP2m">
-              <ref role="37wK5l" node="4BapoMDmOc_" resolve="getPersistence" />
-              <node concept="2OqwBi" id="4BapoMDjldb" role="37wK5m">
-                <node concept="37vLTw" id="4BapoMDjlda" role="2Oq$k0">
-                  <ref role="3cqZAo" node="4BapoMDjgG2" resolve="header" />
-                </node>
-                <node concept="liA8E" id="4BapoMDjldc" role="2OqNvi">
-                  <ref role="37wK5l" to="w1kc:~SModelHeader.getPersistenceVersion()" resolve="getPersistenceVersion" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3clFbJ" id="4BapoMDjgGi" role="3cqZAp">
           <node concept="3eOVzh" id="4BapoMDjgGj" role="3clFbw">
             <node concept="2OqwBi" id="4BapoMDjldg" role="3uHU7B">
@@ -1102,6 +1088,26 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="4BapoMDjgGe" role="3cqZAp">
+          <node concept="3cpWsn" id="4BapoMDjgGd" role="3cpWs9">
+            <property role="3TUv4t" value="false" />
+            <property role="TrG5h" value="mp" />
+            <node concept="3uibUv" id="4BapoMDsRQ6" role="1tU5fm">
+              <ref role="3uigEE" to="5fzo:~IModelPersistence" resolve="IModelPersistence" />
+            </node>
+            <node concept="1rXfSq" id="4BapoMDjgGg" role="33vP2m">
+              <ref role="37wK5l" node="4BapoMDmOc_" resolve="getPersistence" />
+              <node concept="2OqwBi" id="4BapoMDjldb" role="37wK5m">
+                <node concept="37vLTw" id="4BapoMDjlda" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4BapoMDjgG2" resolve="header" />
+                </node>
+                <node concept="liA8E" id="4BapoMDjldc" role="2OqNvi">
+                  <ref role="37wK5l" to="w1kc:~SModelHeader.getPersistenceVersion()" resolve="getPersistenceVersion" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbH" id="4BapoMDn9W0" role="3cqZAp" />
         <node concept="3cpWs8" id="4BapoMDjgHi" role="3cqZAp">
           <node concept="3cpWsn" id="4BapoMDjgHh" role="3cpWs9">
@@ -1110,12 +1116,27 @@
             <node concept="3uibUv" id="4BapoMDjgHj" role="1tU5fm">
               <ref role="3uigEE" to="wyt6:~String" resolve="String" />
             </node>
-            <node concept="3cpWs3" id="4BapoMDnbk3" role="33vP2m">
-              <node concept="3cpWs3" id="4BapoMDnc2v" role="3uHU7B">
-                <node concept="Xl_RD" id="4BapoMDnbk9" role="3uHU7B">
-                  <property role="Xl_RC" value="Can not find appropriate persistence version for model " />
-                </node>
-                <node concept="2OqwBi" id="4BapoMDjle0" role="3uHU7w">
+            <node concept="3cpWs3" id="16WtXIauH6q" role="33vP2m">
+              <node concept="Xl_RD" id="16WtXIauHyu" role="3uHU7w">
+                <property role="Xl_RC" value="\n Use other/newer version of JetBrains MPS to load this model." />
+              </node>
+              <node concept="Xl_RD" id="4BapoMDnbk9" role="3uHU7B">
+                <property role="Xl_RC" value="Can not find appropriate persistence version for model %s. Requested version %d." />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="16WtXIauNTD" role="3cqZAp">
+          <node concept="37vLTI" id="16WtXIauOVS" role="3clFbG">
+            <node concept="37vLTw" id="16WtXIauNTB" role="37vLTJ">
+              <ref role="3cqZAo" node="4BapoMDjgHh" resolve="m" />
+            </node>
+            <node concept="2OqwBi" id="16WtXIau_Fa" role="37vLTx">
+              <node concept="37vLTw" id="4BapoMDnchs" role="2Oq$k0">
+                <ref role="3cqZAo" node="4BapoMDjgHh" resolve="m" />
+              </node>
+              <node concept="2cAKMz" id="16WtXIauAGK" role="2OqNvi">
+                <node concept="2OqwBi" id="4BapoMDjle0" role="2cAKU6">
                   <node concept="37vLTw" id="4BapoMDjldZ" role="2Oq$k0">
                     <ref role="3cqZAo" node="4BapoMDjgG2" resolve="header" />
                   </node>
@@ -1123,9 +1144,14 @@
                     <ref role="37wK5l" to="w1kc:~SModelHeader.getModelReference()" resolve="getModelReference" />
                   </node>
                 </node>
-              </node>
-              <node concept="Xl_RD" id="4BapoMDnbkb" role="3uHU7w">
-                <property role="Xl_RC" value="\n Use newer version of JetBrains MPS to load this model." />
+                <node concept="2OqwBi" id="16WtXIauCUF" role="2cAKU6">
+                  <node concept="37vLTw" id="16WtXIauCUG" role="2Oq$k0">
+                    <ref role="3cqZAo" node="4BapoMDjgG2" resolve="header" />
+                  </node>
+                  <node concept="liA8E" id="16WtXIauCUH" role="2OqNvi">
+                    <ref role="37wK5l" to="w1kc:~SModelHeader.getPersistenceVersion()" resolve="getPersistenceVersion" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -1142,7 +1168,7 @@
               <node concept="2ShNRf" id="4BapoMDjldS" role="YScLw">
                 <node concept="1pGfFk" id="4BapoMDjldT" role="2ShVmc">
                   <ref role="37wK5l" to="5fzo:~PersistenceVersionNotFoundException.&lt;init&gt;(java.lang.String)" resolve="PersistenceVersionNotFoundException" />
-                  <node concept="37vLTw" id="4BapoMDnchs" role="37wK5m">
+                  <node concept="37vLTw" id="16WtXIauQfa" role="37wK5m">
                     <ref role="3cqZAo" node="4BapoMDjgHh" resolve="m" />
                   </node>
                 </node>

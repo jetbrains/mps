@@ -98,7 +98,8 @@ public class VCSPersistenceSupport {
     // Actually, these places must be fixed (see e.g. MPS-22503). Still, we
     // leave error here till 3.4 or later to minimize the number of real issues [MM]
     if (version < 4) {
-      LOG.error("unsupported version requested " + version, new Throwable());
+      LOG.debug("unsupported version requested " + version, new Throwable());
+      return null;
     }
 
     if (version == 4) {
@@ -129,12 +130,13 @@ public class VCSPersistenceSupport {
   }
 
   private static ModelLoadResult readModel(@NotNull SModelHeader header, @NotNull InputSource source, ModelLoadingState state) throws IOException, ModelReadException {
-    IModelPersistence mp = getPersistence(header.getPersistenceVersion());
     if (header.getPersistenceVersion() < 0) {
       throw new ModelReadException("Couldn't read model because of unknown persistence version", null);
     }
+    IModelPersistence mp = getPersistence(header.getPersistenceVersion());
 
-    String m = "Can not find appropriate persistence version for model " + header.getModelReference() + "\n Use newer version of JetBrains MPS to load this model.";
+    String m = "Can not find appropriate persistence version for model %s. Requested version %d." + "\n Use other/newer version of JetBrains MPS to load this model.";
+    m = String.format(m, header.getModelReference(), header.getPersistenceVersion());
     if (mp == null) {
       throw new PersistenceVersionNotFoundException(m);
     }
