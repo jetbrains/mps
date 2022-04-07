@@ -31,7 +31,7 @@ with DSStore.open(f"/Volumes/{mountName}/.DS_Store", "w+") as d:
     d[".DS_Store"]["Iloc"] = (610, 170)
     d[".fseventsd"]["Iloc"] = (660, 170)
     d[".Trashes"]["Iloc"] = (710, 170)
-    d["Applications"]["Iloc"] = (340, 167)
+    d["Applications"]["Iloc"] = (335, 167)
 
     byte_stream = struct.pack('>H', 100) + struct.pack('>H', 400) + \
                   struct.pack('>H', 396) + struct.pack('>H', 855) + \

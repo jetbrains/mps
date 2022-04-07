@@ -41,7 +41,7 @@ sleep 10
 echo "Updating disk image styles..."
 rm /Volumes/"$VOLNAME"/DSStorePlaceHolder
 if python3 -c "import ds_store; import mac_alias;" >/dev/null 2>/dev/null; then
-  python3 $1.py "$VOLNAME" "$BG_PIC" "$1"
+  python3 $1.py "$VOLNAME" "$BG_PIC" "$VOLNAME"
   echo "DMG/DS_Store is generated"
 else
   echo "DMG/DS_Store generation is skipped. If you need it please install python3 and ds_store library."
