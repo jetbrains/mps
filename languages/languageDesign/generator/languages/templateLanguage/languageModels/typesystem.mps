@@ -6987,48 +6987,138 @@
                 </node>
               </node>
             </node>
-            <node concept="3cpWs8" id="1jlY2aid6$q" role="3cqZAp">
-              <node concept="3cpWsn" id="1jlY2aid6$r" role="3cpWs9">
-                <property role="TrG5h" value="inputNodeType" />
-                <node concept="3Tqbb2" id="1jlY2aid4S8" role="1tU5fm">
-                  <ref role="ehGHo" to="tp25:gzTqbfa" resolve="SNodeType" />
+            <node concept="3SKdUt" id="5MNWG2NtuYj" role="3cqZAp">
+              <node concept="1PaTwC" id="5MNWG2NtuYk" role="1aUNEU">
+                <node concept="3oM_SD" id="5MNWG2Ntva1" role="1PaTwD">
+                  <property role="3oM_SC" value="inspired" />
                 </node>
-                <node concept="2pJPEk" id="1jlY2aid6$s" role="33vP2m">
-                  <node concept="2pJPED" id="1jlY2aid6$t" role="2pJPEn">
-                    <ref role="2pJxaS" to="tp25:gzTqbfa" resolve="SNodeType" />
-                    <node concept="2pIpSj" id="1jlY2aid6$u" role="2pJxcM">
-                      <ref role="2pIpSl" to="tp25:g$ehGDh" resolve="concept" />
-                      <node concept="36biLy" id="1jlY2aid6$v" role="28nt2d">
-                        <node concept="2OqwBi" id="1kTmBBnriTb" role="36biLW">
-                          <node concept="2OqwBi" id="1MjKMbbX1iF" role="2Oq$k0">
-                            <node concept="1YBJjd" id="1MjKMbbX1iG" role="2Oq$k0">
-                              <ref role="1YBMHb" node="1jlY2aid1yA" resolve="loopMacroNamespace" />
-                            </node>
-                            <node concept="2qgKlT" id="1MjKMbbX1iH" role="2OqNvi">
-                              <ref role="37wK5l" to="tpfh:2vVmcK3imJA" resolve="getTargetMacro" />
-                            </node>
-                          </node>
-                          <node concept="2qgKlT" id="1kTmBBnrjka" role="2OqNvi">
-                            <ref role="37wK5l" to="tpfh:1kTmBBnrdlu" resolve="getPreviousInputNodeType" />
-                          </node>
-                        </node>
+                <node concept="3oM_SD" id="5MNWG2NtveF" role="1PaTwD">
+                  <property role="3oM_SC" value="bt" />
+                </node>
+                <node concept="3oM_SD" id="5MNWG2Ntvly" role="1PaTwD">
+                  <property role="3oM_SC" value="typeof_TemplateFunctionParameter_sourceNode" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="5MNWG2NtxvA" role="3cqZAp">
+              <node concept="3cpWsn" id="5MNWG2NtxvB" role="3cpWs9">
+                <property role="TrG5h" value="targetMacro" />
+                <node concept="3Tqbb2" id="5MNWG2NtxbU" role="1tU5fm">
+                  <ref role="ehGHo" to="tpf8:fP7Vmt2" resolve="NodeMacro" />
+                </node>
+                <node concept="2OqwBi" id="5MNWG2NtxvC" role="33vP2m">
+                  <node concept="1YBJjd" id="5MNWG2NtxvD" role="2Oq$k0">
+                    <ref role="1YBMHb" node="1jlY2aid1yA" resolve="loopMacroNamespace" />
+                  </node>
+                  <node concept="2qgKlT" id="5MNWG2NtxvE" role="2OqNvi">
+                    <ref role="37wK5l" to="tpfh:2vVmcK3imJA" resolve="getTargetMacro" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="5MNWG2NtwpZ" role="3cqZAp">
+              <node concept="3cpWsn" id="5MNWG2Ntwq0" role="3cpWs9">
+                <property role="TrG5h" value="prevSourceSubstituteMacro" />
+                <node concept="2YIFZM" id="5MNWG2Ntwq1" role="33vP2m">
+                  <ref role="1Pybhc" node="h9HYf0$" resolve="QueriesUtil" />
+                  <ref role="37wK5l" node="h9I1Ov9" resolve="getEnclosing_SourceSubstituteMacro" />
+                  <node concept="2OqwBi" id="5MNWG2Ntzh9" role="37wK5m">
+                    <node concept="37vLTw" id="5MNWG2Ntwq2" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5MNWG2NtxvB" resolve="targetMacro" />
+                    </node>
+                    <node concept="1mfA1w" id="5MNWG2NtzW0" role="2OqNvi" />
+                  </node>
+                  <node concept="37vLTw" id="5MNWG2Ntwq3" role="37wK5m">
+                    <ref role="3cqZAo" node="5MNWG2NtxvB" resolve="targetMacro" />
+                  </node>
+                </node>
+                <node concept="3Tqbb2" id="5MNWG2Ntwq4" role="1tU5fm">
+                  <ref role="ehGHo" to="tpf8:gZJkJnJ" resolve="SourceSubstituteMacro" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="5MNWG2Ntwq5" role="3cqZAp">
+              <node concept="3clFbS" id="5MNWG2Ntwq6" role="3clFbx">
+                <node concept="3cpWs8" id="5MNWG2Ntwq7" role="3cqZAp">
+                  <node concept="3cpWsn" id="5MNWG2Ntwq8" role="3cpWs9">
+                    <property role="TrG5h" value="query" />
+                    <node concept="2YIFZM" id="5MNWG2Ntwq9" role="33vP2m">
+                      <ref role="1Pybhc" to="75ov:6DGMsbSrHyP" resolve="QueriesUtil" />
+                      <ref role="37wK5l" to="75ov:h9I5uuw" resolve="getQueryFunction_fromSourceSubstituteMacro" />
+                      <node concept="37vLTw" id="5MNWG2Ntwqa" role="37wK5m">
+                        <ref role="3cqZAo" node="5MNWG2Ntwq0" resolve="prevSourceSubstituteMacro" />
+                      </node>
+                    </node>
+                    <node concept="3Tqbb2" id="5MNWG2Ntwqb" role="1tU5fm">
+                      <ref role="ehGHo" to="tpee:gyVMwX8" resolve="ConceptFunction" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="5MNWG2Ntwqc" role="3cqZAp">
+                  <node concept="2YIFZM" id="5MNWG2Ntwqd" role="3clFbG">
+                    <ref role="1Pybhc" node="h9HYf0$" resolve="QueriesUtil" />
+                    <ref role="37wK5l" node="hfrF22W" resolve="equate_outputNodeType_fromSourceQuery" />
+                    <node concept="37vLTw" id="5MNWG2Ntwqe" role="37wK5m">
+                      <ref role="3cqZAo" node="5MNWG2Ntwq8" resolve="query" />
+                    </node>
+                    <node concept="1Z2H0r" id="5MNWG2NtAbJ" role="37wK5m">
+                      <node concept="1YBJjd" id="5MNWG2NtAtB" role="1Z2MuG">
+                        <ref role="1YBMHb" node="1jlY2aid1yA" resolve="loopMacroNamespace" />
                       </node>
                     </node>
                   </node>
                 </node>
               </node>
-            </node>
-            <node concept="1Z5TYs" id="1jlY2aid3eo" role="3cqZAp">
-              <node concept="mw_s8" id="1jlY2aid3es" role="1ZfhK$">
-                <node concept="1Z2H0r" id="1jlY2aid3et" role="mwGJk">
-                  <node concept="1YBJjd" id="1jlY2aid3eu" role="1Z2MuG">
-                    <ref role="1YBMHb" node="1jlY2aid1yA" resolve="loopMacroNamespace" />
-                  </node>
+              <node concept="3y3z36" id="5MNWG2Ntwqh" role="3clFbw">
+                <node concept="37vLTw" id="5MNWG2Ntwqi" role="3uHU7B">
+                  <ref role="3cqZAo" node="5MNWG2Ntwq0" resolve="prevSourceSubstituteMacro" />
                 </node>
+                <node concept="10Nm6u" id="5MNWG2Ntwqj" role="3uHU7w" />
               </node>
-              <node concept="mw_s8" id="1jlY2aid72A" role="1ZfhKB">
-                <node concept="37vLTw" id="1jlY2aid72$" role="mwGJk">
-                  <ref role="3cqZAo" node="1jlY2aid6$r" resolve="inputNodeType" />
+              <node concept="9aQIb" id="5MNWG2NtAY2" role="9aQIa">
+                <node concept="3clFbS" id="5MNWG2NtAY3" role="9aQI4">
+                  <node concept="3cpWs8" id="5MNWG2NtEVC" role="3cqZAp">
+                    <node concept="3cpWsn" id="5MNWG2NtEVD" role="3cpWs9">
+                      <property role="TrG5h" value="applicableConcept" />
+                      <node concept="3Tqbb2" id="5MNWG2NtEVE" role="1tU5fm">
+                        <ref role="ehGHo" to="tpce:h0PkWnZ" resolve="AbstractConceptDeclaration" />
+                      </node>
+                      <node concept="2YIFZM" id="5MNWG2NtEVF" role="33vP2m">
+                        <ref role="37wK5l" to="75ov:h9IdQSx" resolve="getApplicableConcept_fromEnvironment" />
+                        <ref role="1Pybhc" to="75ov:6DGMsbSrHyP" resolve="QueriesUtil" />
+                        <node concept="2OqwBi" id="5MNWG2NtGhE" role="37wK5m">
+                          <node concept="37vLTw" id="5MNWG2NtEVG" role="2Oq$k0">
+                            <ref role="3cqZAo" node="5MNWG2NtxvB" resolve="targetMacro" />
+                          </node>
+                          <node concept="1mfA1w" id="5MNWG2NtGBl" role="2OqNvi" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="1Z5TYs" id="1jlY2aid3eo" role="3cqZAp">
+                    <node concept="mw_s8" id="1jlY2aid3es" role="1ZfhK$">
+                      <node concept="1Z2H0r" id="1jlY2aid3et" role="mwGJk">
+                        <node concept="1YBJjd" id="1jlY2aid3eu" role="1Z2MuG">
+                          <ref role="1YBMHb" node="1jlY2aid1yA" resolve="loopMacroNamespace" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="mw_s8" id="1jlY2aid72A" role="1ZfhKB">
+                      <node concept="2pJPEk" id="1jlY2aid6$s" role="mwGJk">
+                        <node concept="2pJPED" id="1jlY2aid6$t" role="2pJPEn">
+                          <ref role="2pJxaS" to="tp25:gzTqbfa" resolve="SNodeType" />
+                          <node concept="2pIpSj" id="1jlY2aid6$u" role="2pJxcM">
+                            <ref role="2pIpSl" to="tp25:g$ehGDh" resolve="concept" />
+                            <node concept="36biLy" id="1jlY2aid6$v" role="28nt2d">
+                              <node concept="37vLTw" id="5MNWG2NtI_O" role="36biLW">
+                                <ref role="3cqZAo" node="5MNWG2NtEVD" resolve="applicableConcept" />
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
             </node>

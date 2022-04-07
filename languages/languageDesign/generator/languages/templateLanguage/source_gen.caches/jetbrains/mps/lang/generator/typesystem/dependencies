@@ -591,8 +591,10 @@
   </dependency>
   <dependency className="jetbrains.mps.lang.generator.typesystem.typeof_LoopMacroNamespace_InferenceRule">
     <classNode dependClassName="jetbrains.mps.lang.generator.behavior.AbstractNodeMacroNamespace__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.lang.generator.behavior.NodeMacro__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.lang.generator.helper.QueriesUtil" />
+    <classNode dependClassName="jetbrains.mps.lang.generator.typesystem.QueriesUtil" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
