@@ -324,6 +324,7 @@ public class ModelDifferenceViewer implements DataProvider {
     DefaultActionGroup actionGroup = new DefaultActionGroup();
     actionGroup.addAll(rootDifferencePane.getActions());
     ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar(ActionPlaces.TOOLBAR, actionGroup, true);
+    toolbar.setTargetComponent(myComponent);
     rootDifferencePane.registerShortcuts(myComponent);
     JPanel panel = new JPanel(new BorderLayout());
     panel.add(toolbar.getComponent(), BorderLayout.NORTH);

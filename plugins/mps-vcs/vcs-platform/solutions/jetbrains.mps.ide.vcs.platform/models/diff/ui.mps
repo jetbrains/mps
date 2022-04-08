@@ -10451,6 +10451,19 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="5cTG28smHOJ" role="3cqZAp">
+          <node concept="2OqwBi" id="5cTG28smNpO" role="3clFbG">
+            <node concept="37vLTw" id="5cTG28smHOH" role="2Oq$k0">
+              <ref role="3cqZAo" node="5zPLqcHJBj6" resolve="toolbar" />
+            </node>
+            <node concept="liA8E" id="5cTG28smV7T" role="2OqNvi">
+              <ref role="37wK5l" to="qkt:~ActionToolbar.setTargetComponent(javax.swing.JComponent)" resolve="setTargetComponent" />
+              <node concept="37vLTw" id="5cTG28sn4nr" role="37wK5m">
+                <ref role="3cqZAo" node="5zPLqcHJB9i" resolve="myComponent" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="5zPLqcHJBje" role="3cqZAp">
           <node concept="2OqwBi" id="5zPLqcHJBjf" role="3clFbG">
             <node concept="liA8E" id="5zPLqcHJBjg" role="2OqNvi">
