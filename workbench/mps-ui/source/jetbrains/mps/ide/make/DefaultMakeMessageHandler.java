@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.make.IMakeService;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
+import jetbrains.mps.messages.IMessageList;
 import jetbrains.mps.messages.LogHandler;
 import jetbrains.mps.project.Project;
 import org.apache.log4j.Logger;
@@ -35,8 +36,9 @@ public class DefaultMakeMessageHandler implements IMessageHandler {
   public DefaultMakeMessageHandler(Project mpsProject) {
     MessagesViewTool tool = MessagesViewTool.getInstance(mpsProject);
     if (tool != null) {
-      // I don't dare switch this activation per-message off in bugfix release
-      myDelegate = new MessagesViewPostingHandler(mpsProject, MessageListOptions.ActivateOnMessage, MessageListOptions.ReuseExisting);
+      IMessageList list = tool.getMessageList("Make", MessageListOptions.ActivateOnMessage, MessageListOptions.ReuseExisting);
+      list.clear();
+      myDelegate = list;
     } else {
       //it might happen if we haven't opened IDE yet
       myDelegate = new LogHandler(Logger.getLogger(IMakeService.class));

@@ -191,111 +191,106 @@
       </scope>
     </file>
     <file name="MakeNodePointers_BeforeTask.java">
-      <node id="5487985028841950959" at="35,0,36,0" concept="10" trace="KEY" />
-      <node id="5487985028841950959" at="37,40,38,38" concept="12" />
-      <node id="5487985028841950959" at="41,66,42,53" concept="7" />
-      <node id="5487985028841950959" at="45,59,46,15" concept="7" />
-      <node id="5487985028841950966" at="50,0,51,0" concept="3" trace="myNodePointers" />
-      <node id="5487985028841950959" at="52,50,53,17" concept="12" />
-      <node id="5487985028841950966" at="56,65,57,36" concept="2" />
-      <node id="5487985028841950959" at="57,36,58,18" concept="7" />
-      <node id="8928799375495404983" at="61,79,62,94" concept="6" />
-      <node id="3849002751383162480" at="63,106,64,119" concept="6" />
-      <node id="5336808442711675100" at="66,51,67,61" concept="6" />
-      <node id="5336808442711675109" at="67,61,68,53" concept="7" />
-      <node id="5336808442711675124" at="71,44,72,56" concept="7" />
-      <node id="5336808442711681515" at="75,54,76,22" concept="7" />
-      <node id="5336808442712304940" at="77,9,78,134" concept="6" />
-      <node id="5336808442711707559" at="78,134,79,20" concept="7" />
-      <node id="4253284102553510052" at="80,9,81,0" concept="9" />
-      <node id="5766538065404344192" at="82,55,83,20" concept="7" />
-      <node id="8981187274662598952" at="84,7,85,0" concept="9" />
-      <node id="2155705819614815327" at="85,0,86,120" concept="6" />
-      <node id="8492721726839158343" at="86,120,87,71" concept="6" />
-      <node id="841871950379907804" at="87,71,88,91" concept="6" />
-      <node id="8492721726839207584" at="89,48,90,70" concept="6" />
-      <node id="5766538065404345132" at="90,70,91,30" concept="6" />
-      <node id="5766538065404345140" at="92,13,93,32" concept="2" />
-      <node id="2155705819614935771" at="98,38,99,33" concept="2" />
-      <node id="5766538065404345138" at="100,9,101,54" concept="7" />
-      <node id="8492721726839207602" at="102,7,103,18" concept="7" />
-      <node id="5487985028841950959" at="37,0,40,0" concept="1" trace="MakeNodePointers_BeforeTask#()V" />
-      <node id="5487985028841950959" at="41,0,44,0" concept="5" trace="createTaskImpl#()Ljetbrains/mps/execution/configurations/pluginSolution/plugin/MakeNodePointers_BeforeTask/MakeNodePointers_BeforeTask_RunTask;" />
-      <node id="5487985028841950959" at="45,0,48,0" concept="5" trace="getId#()Lcom/intellij/openapi/util/Key;" />
-      <node id="5487985028841950959" at="52,0,55,0" concept="1" trace="MakeNodePointers_BeforeTask_RunTask#()V" />
-      <node id="5336808442711675122" at="71,0,74,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
-      <node id="5336808442711681513" at="74,11,77,9" concept="4" />
-      <node id="5766538065404344182" at="81,0,84,7" concept="4" />
-      <node id="2155705819614919601" at="97,9,100,9" concept="4" />
-      <node id="5487985028841950959" at="56,0,60,0" concept="5" trace="configure#(Ljava/util/List;)Z" />
-      <node id="5336808442711675098" at="66,0,70,0" concept="5" trace="select#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)Lorg/jetbrains/mps/openapi/model/SModel;" />
-      <node id="5766538065404345103" at="91,30,97,9" concept="13" />
-      <node id="5336808442711675081" at="64,119,74,11" concept="6" />
-      <node id="8492721726839158354" at="88,91,102,7" concept="4" />
-      <node id="4253284102553498213" at="62,94,80,9" concept="6" />
-      <node id="5487985028841950959" at="61,0,105,0" concept="5" trace="execute#(Lcom/intellij/openapi/project/Project;Lcom/intellij/execution/runners/ExecutionEnvironment;)Z" />
-      <scope id="5766538065404345109" at="94,48,94,48" />
-      <scope id="5766538065404345121" at="95,47,95,47" />
-      <scope id="5766538065404345126" at="96,45,96,45" />
-      <scope id="5487985028841950959" at="37,40,38,38" />
-      <scope id="5487985028841950959" at="41,66,42,53" />
-      <scope id="5487985028841950959" at="45,59,46,15" />
-      <scope id="5487985028841950959" at="52,50,53,17" />
-      <scope id="5336808442711675123" at="71,44,72,56" />
-      <scope id="5336808442711681514" at="75,54,76,22" />
-      <scope id="5766538065404344183" at="82,55,83,20" />
-      <scope id="5766538065404345104" at="92,13,93,32" />
-      <scope id="5766538065404345106" at="94,9,95,9">
+      <node id="5487985028841950959" at="36,0,37,0" concept="10" trace="KEY" />
+      <node id="5487985028841950959" at="38,40,39,38" concept="12" />
+      <node id="5487985028841950959" at="42,66,43,53" concept="7" />
+      <node id="5487985028841950959" at="46,59,47,15" concept="7" />
+      <node id="5487985028841950966" at="51,0,52,0" concept="3" trace="myNodePointers" />
+      <node id="5487985028841950959" at="53,50,54,17" concept="12" />
+      <node id="5487985028841950966" at="57,65,58,36" concept="2" />
+      <node id="5487985028841950959" at="58,36,59,18" concept="7" />
+      <node id="8928799375495404983" at="62,79,63,94" concept="6" />
+      <node id="3849002751383162480" at="64,106,65,119" concept="6" />
+      <node id="5336808442711675100" at="67,51,68,61" concept="6" />
+      <node id="5336808442711675109" at="68,61,69,53" concept="7" />
+      <node id="5336808442711675124" at="72,44,73,56" concept="7" />
+      <node id="5336808442711681515" at="76,54,77,22" concept="7" />
+      <node id="5336808442712304940" at="78,9,79,134" concept="6" />
+      <node id="5336808442711707559" at="79,134,80,20" concept="7" />
+      <node id="4253284102553510052" at="81,9,82,0" concept="9" />
+      <node id="5766538065404344192" at="83,55,84,20" concept="7" />
+      <node id="8981187274662598952" at="85,7,86,0" concept="9" />
+      <node id="8113157010358984813" at="86,0,87,70" concept="6" />
+      <node id="2155705819614815327" at="87,70,88,135" concept="6" />
+      <node id="1059285788761538138" at="88,135,89,22" concept="2" />
+      <node id="8492721726839158343" at="89,22,90,71" concept="6" />
+      <node id="841871950379907804" at="90,71,91,91" concept="6" />
+      <node id="8492721726839207584" at="92,48,93,70" concept="6" />
+      <node id="5766538065404345132" at="93,70,94,30" concept="6" />
+      <node id="5766538065404345140" at="95,13,96,32" concept="2" />
+      <node id="2155705819614935771" at="99,56,100,25" concept="2" />
+      <node id="5766538065404345138" at="101,9,102,54" concept="7" />
+      <node id="8492721726839207602" at="103,7,104,18" concept="7" />
+      <node id="5487985028841950959" at="38,0,41,0" concept="1" trace="MakeNodePointers_BeforeTask#()V" />
+      <node id="5487985028841950959" at="42,0,45,0" concept="5" trace="createTaskImpl#()Ljetbrains/mps/execution/configurations/pluginSolution/plugin/MakeNodePointers_BeforeTask/MakeNodePointers_BeforeTask_RunTask;" />
+      <node id="5487985028841950959" at="46,0,49,0" concept="5" trace="getId#()Lcom/intellij/openapi/util/Key;" />
+      <node id="5487985028841950959" at="53,0,56,0" concept="1" trace="MakeNodePointers_BeforeTask_RunTask#()V" />
+      <node id="5336808442711675122" at="72,0,75,0" concept="5" trace="accept#(Lorg/jetbrains/mps/openapi/model/SModel;)Z" />
+      <node id="5336808442711681513" at="75,11,78,9" concept="4" />
+      <node id="5766538065404344182" at="82,0,85,7" concept="4" />
+      <node id="2155705819614919601" at="98,9,101,9" concept="4" />
+      <node id="5487985028841950959" at="57,0,61,0" concept="5" trace="configure#(Ljava/util/List;)Z" />
+      <node id="5336808442711675098" at="67,0,71,0" concept="5" trace="select#(Lorg/jetbrains/mps/openapi/model/SNodeReference;)Lorg/jetbrains/mps/openapi/model/SModel;" />
+      <node id="5766538065404345103" at="94,30,98,9" concept="13" />
+      <node id="5336808442711675081" at="65,119,75,11" concept="6" />
+      <node id="8492721726839158354" at="91,91,103,7" concept="4" />
+      <node id="4253284102553498213" at="63,94,81,9" concept="6" />
+      <node id="5487985028841950959" at="62,0,106,0" concept="5" trace="execute#(Lcom/intellij/openapi/project/Project;Lcom/intellij/execution/runners/ExecutionEnvironment;)Z" />
+      <scope id="5766538065404345109" at="97,92,97,92" />
+      <scope id="5487985028841950959" at="38,40,39,38" />
+      <scope id="5487985028841950959" at="42,66,43,53" />
+      <scope id="5487985028841950959" at="46,59,47,15" />
+      <scope id="5487985028841950959" at="53,50,54,17" />
+      <scope id="5336808442711675123" at="72,44,73,56" />
+      <scope id="5336808442711681514" at="76,54,77,22" />
+      <scope id="5766538065404344183" at="83,55,84,20" />
+      <scope id="5766538065404345104" at="95,13,96,32" />
+      <scope id="5766538065404345106" at="97,9,98,9">
         <var name="ignore" id="5766538065404345107" />
       </scope>
-      <scope id="5766538065404345118" at="95,9,96,9">
-        <var name="ignore" id="5766538065404345119" />
-      </scope>
-      <scope id="5766538065404345123" at="96,9,97,9">
-        <var name="ignore" id="5766538065404345124" />
-      </scope>
-      <scope id="2155705819614919603" at="98,38,99,33" />
-      <scope id="5487985028841950959" at="56,65,58,18" />
-      <scope id="5336808442711675099" at="66,51,68,53">
+      <scope id="2155705819614919603" at="99,56,100,25" />
+      <scope id="5487985028841950959" at="57,65,59,18" />
+      <scope id="5336808442711675099" at="67,51,69,53">
         <var name="n" id="5336808442711675101" />
       </scope>
-      <scope id="5487985028841950959" at="37,0,40,0" />
-      <scope id="5487985028841950959" at="41,0,44,0" />
-      <scope id="5487985028841950959" at="45,0,48,0" />
-      <scope id="5487985028841950959" at="52,0,55,0" />
-      <scope id="5336808442711675122" at="71,0,74,0">
+      <scope id="5487985028841950959" at="38,0,41,0" />
+      <scope id="5487985028841950959" at="42,0,45,0" />
+      <scope id="5487985028841950959" at="46,0,49,0" />
+      <scope id="5487985028841950959" at="53,0,56,0" />
+      <scope id="5336808442711675122" at="72,0,75,0">
         <var name="it" id="5336808442711675122" />
       </scope>
-      <scope id="5487985028841950959" at="56,0,60,0">
+      <scope id="5487985028841950959" at="57,0,61,0">
         <var name="nodePointers" id="5487985028841950966" />
       </scope>
-      <scope id="5336808442711675098" at="66,0,70,0">
+      <scope id="5336808442711675098" at="67,0,71,0">
         <var name="it" id="5336808442711675098" />
       </scope>
-      <scope id="8492721726839158355" at="89,48,101,54">
+      <scope id="8492721726839158355" at="92,48,102,54">
         <var name="future" id="8492721726839207585" />
         <var name="result" id="5766538065404345133" />
       </scope>
-      <scope id="4253284102553498223" at="63,106,79,20">
+      <scope id="4253284102553498223" at="64,106,80,20">
         <var name="list" id="5336808442712304941" />
         <var name="models" id="5336808442711675082" />
         <var name="statusManager" id="3849002751383162481" />
       </scope>
-      <scope id="5487985028841950959" at="61,79,103,18">
+      <scope id="5487985028841950959" at="62,79,104,18">
         <var name="handler" id="2155705819614815328" />
         <var name="makeService" id="841871950379907805" />
         <var name="mpsProject" id="8928799375495404984" />
+        <var name="mvt" id="8113157010358984814" />
         <var name="resources" id="4253284102553498214" />
         <var name="session" id="8492721726839158344" />
       </scope>
-      <scope id="5487985028841950959" at="61,0,105,0">
+      <scope id="5487985028841950959" at="62,0,106,0">
         <var name="environment" id="5487985028841950959" />
         <var name="project" id="5487985028841950959" />
       </scope>
-      <unit id="5336808442711675122" at="70,32,74,9" name="jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask$MakeNodePointers_BeforeTask_RunTask$2" />
-      <unit id="5336808442711675098" at="65,131,70,9" name="jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask$MakeNodePointers_BeforeTask_RunTask$1" />
-      <unit id="5487985028841950959" at="49,0,106,0" name="jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask$MakeNodePointers_BeforeTask_RunTask" />
-      <unit id="5487985028841950959" at="34,0,107,0" name="jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask" />
+      <unit id="5336808442711675122" at="71,32,75,9" name="jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask$MakeNodePointers_BeforeTask_RunTask$2" />
+      <unit id="5336808442711675098" at="66,131,71,9" name="jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask$MakeNodePointers_BeforeTask_RunTask$1" />
+      <unit id="5487985028841950959" at="50,0,107,0" name="jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask$MakeNodePointers_BeforeTask_RunTask" />
+      <unit id="5487985028841950959" at="35,0,108,0" name="jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePointers_BeforeTask" />
     </file>
   </root>
   <root nodeRef="r:a1b1112d-dd34-4046-a6a3-811fd290d232(jetbrains.mps.execution.configurations.pluginSolution.plugin)/6573717177325376385">
