@@ -284,7 +284,7 @@
   <node concept="13MO4I" id="3crTN2Y1D6Y">
     <property role="TrG5h" value="reduce_ClassLikeMethod" />
     <property role="3GE5qa" value="instances" />
-    <ref role="3gUMe" to="oubp:3geGFOI0X5k" resolve="MethodInstance" />
+    <ref role="3gUMe" to="tpee:fzclF8t" resolve="InstanceMethodDeclaration" />
     <node concept="3clFb_" id="3crTN2Y1D8Y" role="13RCb5">
       <property role="TrG5h" value="method" />
       <node concept="37vLTG" id="3crTN2Y1GIK" role="3clF46">

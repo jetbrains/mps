@@ -276,15 +276,16 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Iterable<SNode> sourceNodesQuery_4_2(final SourceSubstituteMacroNodesContext _context) {
     Iterable<SNode> parameterMethod = null;
+    SNode ancestorIntention = SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Intention$zo, true, false);
     if (TypeCalculator.isParametrized(_context.getNode())) {
-      parameterMethod = DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "2697606110805685905"), SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Intention$zo, true, false));
+      parameterMethod = DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "2697606110805685905"), ancestorIntention);
     }
 
-    return Sequence.fromIterable(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(_context.getNode())).where(new IWhereFilter<SNode>() {
+    return SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(_context.getNode()), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.InstanceMethodDeclaration$39) && !((SNodeOperations.isInstanceOf(it, CONCEPTS.MethodInstance$jE)));
+        return !((SNodeOperations.isInstanceOf(it, CONCEPTS.MethodInstance$jE)));
       }
-    }).union(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063981347"), SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Intention$zo, true, false)))).union(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063982514"), SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.Intention$zo, true, false)))).subtract(Sequence.fromIterable(parameterMethod));
+    }).union(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063981347"), ancestorIntention))).union(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063982514"), ancestorIntention))).subtract(Sequence.fromIterable(parameterMethod)), CONCEPTS.InstanceMethodDeclaration$39);
   }
   public static Object varMacro_Value_1_0(final TemplateVarContext _context) {
     return ListSequence.fromList(SModelOperations.roots(_context.getInputModel(), CONCEPTS.BaseIntentionDeclaration$Wx)).where(new IWhereFilter<SNode>() {
