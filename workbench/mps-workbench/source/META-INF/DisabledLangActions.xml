@@ -122,6 +122,14 @@
 
     <!-- Go To -->
     <group id="GoToTargetEx" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
+    <!-- keystroke values taken from platform-impl.jar!/keymaps/Mac OS X 10.5+.xml -->
+    <!-- I didn't find a better way to unregister these shortcuts to avoid conflicts with GoToModule/GoToModel actions-->
+    <action id="GotoSymbol" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true">
+      <keyboard-shortcut keymap="Mac OS X 10.5+" remove="true" first-keystroke="meta alt O"/>
+    </action>
+    <action id="GotoFile" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true">
+      <keyboard-shortcut keymap="Mac OS X 10.5+" remove="true" first-keystroke="meta shift O"/>
+    </action>
 
     <group id="GoToCodeGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
 

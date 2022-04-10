@@ -21,7 +21,8 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.resources.ModelsToResources;
-import jetbrains.mps.ide.make.MessagesViewPostingHandler;
+import jetbrains.mps.ide.messages.MessagesViewTool;
+import jetbrains.mps.messages.IMessageList;
 import jetbrains.mps.ide.messages.MessageListOptions;
 import jetbrains.mps.make.MakeSession;
 import jetbrains.mps.make.IMakeService;
@@ -83,7 +84,9 @@ public class MakeNodePointers_BeforeTask extends BaseMpsBeforeTaskProvider<MakeN
         return true;
       }
 
-      MessagesViewPostingHandler handler = new MessagesViewPostingHandler(mpsProject, MessageListOptions.DeafOnMessage);
+      MessagesViewTool mvt = MessagesViewTool.getInstance(mpsProject);
+      IMessageList handler = mvt.getMessageList("Make before Run", MessageListOptions.DeafOnMessage, MessageListOptions.ReuseExisting);
+      handler.clear();
       MakeSession session = new MakeSession(mpsProject, handler, true);
       IMakeService makeService = mpsProject.getComponent(MakeServiceComponent.class).get();
       if (makeService.openNewSession(session)) {
@@ -91,12 +94,10 @@ public class MakeNodePointers_BeforeTask extends BaseMpsBeforeTaskProvider<MakeN
         IResult result = null;
         try {
           result = future.get();
-        } catch (CancellationException ignore) {
-        } catch (InterruptedException ignore) {
-        } catch (ExecutionException ignore) {
+        } catch (CancellationException | InterruptedException | ExecutionException ignore) {
         }
-        if (!(result.isSucessful())) {
-          handler.showMessages();
+        if (result == null || !(result.isSucessful())) {
+          handler.wake();
         }
         return result != null && result.isSucessful();
       }
