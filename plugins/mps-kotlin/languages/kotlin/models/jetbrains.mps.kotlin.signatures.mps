@@ -15,8 +15,8 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
     <import index="hez" ref="r:b038209d-51a9-4919-b6e5-4fafce96fa00(jetbrains.mps.kotlin.behavior)" />
-    <import index="g9sx" ref="r:966de44c-de72-437f-889f-78347a061f0c(jetbrains.mps.kotlin.api.declaration)" />
-    <import index="zku" ref="r:764c4c95-d567-4a0e-99be-3892becb007f(jetbrains.mps.kotlin.api.members)" />
+    <import index="1p8r" ref="r:966de44c-de72-437f-889f-78347a061f0c(jetbrains.mps.kotlin.api.declaration)" />
+    <import index="2q9i" ref="r:764c4c95-d567-4a0e-99be-3892becb007f(jetbrains.mps.kotlin.api.members)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
   </imports>
   <registry>
@@ -417,7 +417,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="1CCu0CNzvPW" role="2RkE6I">
-        <ref role="3uigEE" to="g9sx:26mUjU3_jTe" resolve="FunctionDeclaration" />
+        <ref role="3uigEE" to="1p8r:26mUjU3_jTe" resolve="FunctionDeclaration" />
       </node>
     </node>
     <node concept="312cEg" id="1xjvXvOQsso" role="jymVt">
@@ -450,13 +450,13 @@
       <node concept="37vLTG" id="6Ijh6DJEucF" role="3clF46">
         <property role="TrG5h" value="declaration" />
         <node concept="3uibUv" id="6Ijh6DJEucG" role="1tU5fm">
-          <ref role="3uigEE" to="g9sx:26mUjU3_jTe" resolve="FunctionDeclaration" />
+          <ref role="3uigEE" to="1p8r:26mUjU3_jTe" resolve="FunctionDeclaration" />
         </node>
       </node>
       <node concept="37vLTG" id="6Ijh6DJEDZD" role="3clF46">
         <property role="TrG5h" value="expander" />
         <node concept="3uibUv" id="6Ijh6DJEE7r" role="1tU5fm">
-          <ref role="3uigEE" to="zku:6Ijh6DJEylY" resolve="TypeExpander" />
+          <ref role="3uigEE" to="2q9i:6Ijh6DJEylY" resolve="TypeExpander" />
         </node>
       </node>
     </node>
@@ -479,7 +479,7 @@
                         <ref role="3cqZAo" node="1CCu0CNzm_l" resolve="declaration" />
                       </node>
                       <node concept="liA8E" id="1xjvXvOQu4x" role="2OqNvi">
-                        <ref role="37wK5l" to="g9sx:7ZZRFA6PmSK" resolve="getName" />
+                        <ref role="37wK5l" to="1p8r:7ZZRFA6PmSK" resolve="getName" />
                       </node>
                     </node>
                     <node concept="Xl_RD" id="1xjvXvOQv7n" role="3uHU7w">
@@ -492,7 +492,7 @@
                         <ref role="3cqZAo" node="1CCu0CNzm_l" resolve="declaration" />
                       </node>
                       <node concept="liA8E" id="1xjvXvOQv$I" role="2OqNvi">
-                        <ref role="37wK5l" to="g9sx:26mUjU3_jXv" resolve="getParameters" />
+                        <ref role="37wK5l" to="1p8r:26mUjU3_jXv" resolve="getParameters" />
                       </node>
                     </node>
                     <node concept="34oBXx" id="1xjvXvOQv$J" role="2OqNvi" />
@@ -522,7 +522,7 @@
       <node concept="37vLTG" id="1CCu0CNzm_l" role="3clF46">
         <property role="TrG5h" value="declaration" />
         <node concept="3uibUv" id="1CCu0CNzm_k" role="1tU5fm">
-          <ref role="3uigEE" to="g9sx:26mUjU3_jTe" resolve="FunctionDeclaration" />
+          <ref role="3uigEE" to="1p8r:26mUjU3_jTe" resolve="FunctionDeclaration" />
         </node>
       </node>
       <node concept="37vLTG" id="1CCu0CNzrBi" role="3clF46">
@@ -542,7 +542,7 @@
               <ref role="338YkT" node="1CCu0CNzvpZ" resolve="functionDeclaration" />
             </node>
             <node concept="liA8E" id="3BHOJ8MbO4a" role="2OqNvi">
-              <ref role="37wK5l" to="g9sx:3BHOJ8MbLhI" resolve="getFunctionPresentation" />
+              <ref role="37wK5l" to="1p8r:3BHOJ8MbLhI" resolve="getFunctionPresentation" />
               <node concept="3clFbT" id="3BHOJ8Mc6Te" role="37wK5m" />
             </node>
           </node>
@@ -659,15 +659,15 @@
                     <ref role="3cqZAo" node="1CCu0CN$IJI" resolve="declaration" />
                   </node>
                   <node concept="liA8E" id="6Ijh6DJEEiX" role="2OqNvi">
-                    <ref role="37wK5l" to="g9sx:26mUjU3_jXv" resolve="getParameters" />
+                    <ref role="37wK5l" to="1p8r:26mUjU3_jXv" resolve="getParameters" />
                   </node>
                 </node>
                 <node concept="3$u5V9" id="6Ijh6DJEEiY" role="2OqNvi">
                   <node concept="37Ijox" id="6Ijh6DJEEiZ" role="23t8la">
-                    <ref role="37Ijqf" to="g9sx:26mUjU3_LfM" resolve="getType" />
+                    <ref role="37Ijqf" to="1p8r:26mUjU3_LfM" resolve="getType" />
                     <node concept="2FaPjH" id="6Ijh6DJEEj0" role="wWaWy">
                       <node concept="3uibUv" id="6Ijh6DJEEj1" role="2FaQuo">
-                        <ref role="3uigEE" to="g9sx:26mUjU3_q_o" resolve="ParameterDeclaration" />
+                        <ref role="3uigEE" to="1p8r:26mUjU3_q_o" resolve="ParameterDeclaration" />
                       </node>
                     </node>
                   </node>
@@ -697,7 +697,7 @@
                               <ref role="3cqZAo" node="6qs$Ohcs$Mg" resolve="expander" />
                             </node>
                             <node concept="liA8E" id="6qs$OhcsApg" role="2OqNvi">
-                              <ref role="37wK5l" to="zku:6Ijh6DJEyzZ" resolve="expandType" />
+                              <ref role="37wK5l" to="2q9i:6Ijh6DJEyzZ" resolve="expandType" />
                               <node concept="37vLTw" id="6qs$OhcsADl" role="37wK5m">
                                 <ref role="3cqZAo" node="1CCu0CN$STe" resolve="it" />
                               </node>
@@ -765,13 +765,13 @@
       <node concept="37vLTG" id="1CCu0CN$IJI" role="3clF46">
         <property role="TrG5h" value="declaration" />
         <node concept="3uibUv" id="6Ijh6DJE$9N" role="1tU5fm">
-          <ref role="3uigEE" to="g9sx:26mUjU3_jTe" resolve="FunctionDeclaration" />
+          <ref role="3uigEE" to="1p8r:26mUjU3_jTe" resolve="FunctionDeclaration" />
         </node>
       </node>
       <node concept="37vLTG" id="6qs$Ohcs$Mg" role="3clF46">
         <property role="TrG5h" value="expander" />
         <node concept="3uibUv" id="6qs$Ohcs$Mh" role="1tU5fm">
-          <ref role="3uigEE" to="zku:6Ijh6DJEylY" resolve="TypeExpander" />
+          <ref role="3uigEE" to="2q9i:6Ijh6DJEylY" resolve="TypeExpander" />
         </node>
       </node>
     </node>
@@ -993,7 +993,7 @@
               <ref role="3cqZAo" node="5$XWI2Qm$9m" resolve="collector" />
             </node>
             <node concept="liA8E" id="5$XWI2QlWgF" role="2OqNvi">
-              <ref role="37wK5l" to="zku:5$XWI2Qdo9G" resolve="addDeclarations" />
+              <ref role="37wK5l" to="2q9i:5$XWI2Qdo9G" resolve="addDeclarations" />
               <node concept="37vLTw" id="5$XWI2Qm_rI" role="37wK5m">
                 <ref role="3cqZAo" node="5$XWI2QmzOd" resolve="named" />
               </node>
@@ -1041,13 +1041,15 @@
         <node concept="10P_77" id="5$XWI2QoXy_" role="1tU5fm" />
       </node>
       <node concept="37vLTG" id="5$XWI2QmEIp" role="3clF46">
-        <property role="TrG5h" value="isInstance" />
-        <node concept="10P_77" id="5$XWI2QmEUS" role="1tU5fm" />
+        <property role="TrG5h" value="receiver" />
+        <node concept="3Tqbb2" id="6nK3tkasr9C" role="1tU5fm">
+          <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
+        </node>
       </node>
       <node concept="37vLTG" id="5$XWI2Qm$9m" role="3clF46">
         <property role="TrG5h" value="collector" />
         <node concept="3uibUv" id="5$XWI2Qm$oR" role="1tU5fm">
-          <ref role="3uigEE" to="zku:27wMicCZj8w" resolve="SignatureCollector" />
+          <ref role="3uigEE" to="2q9i:27wMicCZj8w" resolve="SignatureCollector" />
         </node>
       </node>
     </node>
@@ -1063,7 +1065,7 @@
             </node>
             <node concept="3clFbT" id="5$XWI2QpJf8" role="37wK5m" />
             <node concept="37vLTw" id="5$XWI2QpJSl" role="37wK5m">
-              <ref role="3cqZAo" node="5$XWI2QoQVm" resolve="isInstance" />
+              <ref role="3cqZAo" node="6nK3tkaqwS7" resolve="receiver" />
             </node>
             <node concept="37vLTw" id="5$XWI2QpKXU" role="37wK5m">
               <ref role="3cqZAo" node="5$XWI2QoQVo" resolve="collector" />
@@ -1079,14 +1081,16 @@
           <ref role="ehGHo" to="hcm8:213J8chjiEQ" resolve="IVariableIdentifier" />
         </node>
       </node>
-      <node concept="37vLTG" id="5$XWI2QoQVm" role="3clF46">
-        <property role="TrG5h" value="isInstance" />
-        <node concept="10P_77" id="5$XWI2QoQVn" role="1tU5fm" />
+      <node concept="37vLTG" id="6nK3tkaqwS7" role="3clF46">
+        <property role="TrG5h" value="receiver" />
+        <node concept="3Tqbb2" id="6nK3tkass0D" role="1tU5fm">
+          <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
+        </node>
       </node>
       <node concept="37vLTG" id="5$XWI2QoQVo" role="3clF46">
         <property role="TrG5h" value="collector" />
         <node concept="3uibUv" id="5$XWI2QoQVp" role="1tU5fm">
-          <ref role="3uigEE" to="zku:27wMicCZj8w" resolve="SignatureCollector" />
+          <ref role="3uigEE" to="2q9i:27wMicCZj8w" resolve="SignatureCollector" />
         </node>
       </node>
     </node>
@@ -1103,14 +1107,16 @@
         <property role="TrG5h" value="mutable" />
         <node concept="10P_77" id="5$XWI2QmNQx" role="1tU5fm" />
       </node>
-      <node concept="37vLTG" id="5$XWI2QmNxw" role="3clF46">
-        <property role="TrG5h" value="isInstance" />
-        <node concept="10P_77" id="5$XWI2QmNxx" role="1tU5fm" />
+      <node concept="37vLTG" id="6nK3tkaqxd$" role="3clF46">
+        <property role="TrG5h" value="receiver" />
+        <node concept="3Tqbb2" id="6nK3tkass9i" role="1tU5fm">
+          <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
+        </node>
       </node>
       <node concept="37vLTG" id="5$XWI2QmNxy" role="3clF46">
         <property role="TrG5h" value="collector" />
         <node concept="3uibUv" id="5$XWI2QmNxz" role="1tU5fm">
-          <ref role="3uigEE" to="zku:27wMicCZj8w" resolve="SignatureCollector" />
+          <ref role="3uigEE" to="2q9i:27wMicCZj8w" resolve="SignatureCollector" />
         </node>
       </node>
       <node concept="3clFbS" id="5$XWI2QmMTt" role="3clF47">
@@ -1120,12 +1126,12 @@
               <ref role="3cqZAo" node="5$XWI2QmNxy" resolve="collector" />
             </node>
             <node concept="liA8E" id="5$XWI2QmO1u" role="2OqNvi">
-              <ref role="37wK5l" to="zku:2QFnHPqiIgj" resolve="addDeclaration" />
+              <ref role="37wK5l" to="2q9i:2QFnHPqiIgj" resolve="addDeclaration" />
               <node concept="37vLTw" id="5$XWI2QmO1v" role="37wK5m">
                 <ref role="3cqZAo" node="5$XWI2QmNxu" resolve="named" />
               </node>
               <node concept="37vLTw" id="5$XWI2QmO1w" role="37wK5m">
-                <ref role="3cqZAo" node="5$XWI2QmNxw" resolve="isInstance" />
+                <ref role="3cqZAo" node="6nK3tkaqxd$" resolve="receiver" />
               </node>
               <node concept="3VsKOn" id="5$XWI2QmO1x" role="37wK5m">
                 <ref role="3VsUkX" node="5q426iHsjrS" resolve="PropertySignature" />
@@ -1337,7 +1343,7 @@
           <node concept="2ShNRf" id="6Ijh6DJV_K3" role="3cqZAk">
             <node concept="1pGfFk" id="6Ijh6DJVA$0" role="2ShVmc">
               <property role="373rjd" value="true" />
-              <ref role="37wK5l" to="zku:18X2O0FJJjN" resolve="SourcedSignature" />
+              <ref role="37wK5l" to="2q9i:18X2O0FJJjN" resolve="SourcedSignature" />
               <node concept="37vLTw" id="6Ijh6DJVAD$" role="37wK5m">
                 <ref role="3cqZAo" node="6Ijh6DJV_wv" resolve="source" />
               </node>
@@ -1351,7 +1357,7 @@
       </node>
       <node concept="3Tm1VV" id="6Ijh6DJV_r1" role="1B3o_S" />
       <node concept="3uibUv" id="6Ijh6DJV_kp" role="3clF45">
-        <ref role="3uigEE" to="zku:18X2O0FJIBL" resolve="SourcedSignature" />
+        <ref role="3uigEE" to="2q9i:18X2O0FJIBL" resolve="SourcedSignature" />
       </node>
       <node concept="37vLTG" id="6Ijh6DJV_wv" role="3clF46">
         <property role="TrG5h" value="source" />
@@ -1360,9 +1366,9 @@
         </node>
       </node>
       <node concept="37vLTG" id="5$XWI2Q$k7g" role="3clF46">
-        <property role="TrG5h" value="receiver" />
-        <node concept="3uibUv" id="5$XWI2Q$kcs" role="1tU5fm">
-          <ref role="3uigEE" to="hez:xpyqH1Fxzs" resolve="TypeReference" />
+        <property role="TrG5h" value="externalReceiver" />
+        <node concept="3Tqbb2" id="6nK3tka_NsS" role="1tU5fm">
+          <ref role="ehGHo" to="hcm8:2yYXHtl6Jh1" resolve="IType" />
         </node>
       </node>
       <node concept="2JFqV2" id="6Ijh6DJV_C7" role="2frcjj" />

@@ -37,7 +37,7 @@ public final class IndexOperation__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static String getFunctionName_id4nn3FPlEjh5(@NotNull SNode __thisNode__) {
-    if (((boolean) IStatement__BehaviorDescriptor.isLeftExpressionTarget_id69RFwVHPwd9.invoke(__thisNode__, __thisNode__))) {
+    if (((boolean) IStatement__BehaviorDescriptor.isLeftExpressionTarget_id69RFwVHPwd9.invoke(__thisNode__, null))) {
       return "set";
     } else {
       return "get";
@@ -45,7 +45,7 @@ public final class IndexOperation__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static Iterable<Argument> getArguments_id1VI7K1jROBX(@NotNull SNode __thisNode__) {
     Iterable<Argument> indexes = NodeArgument.ofList(SLinkOperations.getChildren(__thisNode__, LINKS.indexes$QKNQ));
-    if (((boolean) IStatement__BehaviorDescriptor.isLeftExpressionTarget_id69RFwVHPwd9.invoke(__thisNode__, __thisNode__))) {
+    if (((boolean) IStatement__BehaviorDescriptor.isLeftExpressionTarget_id69RFwVHPwd9.invoke(__thisNode__, null))) {
       // TODO find assigned node in a cleaner way?
       return Sequence.fromIterable(indexes).concat(Sequence.fromIterable(NodeArgument.of(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Assignment$zN, false, false), LINKS.right$Uro5))));
     }

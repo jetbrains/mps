@@ -21,7 +21,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.kotlin.behavior.ISuperTypeSpecifier__BehaviorDescriptor;
-import jetbrains.mps.kotlin.behavior.ClassDeclaration__BehaviorDescriptor;
+import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.scope.EmptyScope;
 import java.util.HashMap;
@@ -62,7 +62,7 @@ public class SuperConstructorDelegationCall_Constraints extends BaseConstraintsD
               {
                 final SNode classType = ISuperTypeSpecifier__BehaviorDescriptor.getInheritedType_id5q426iHvzD9.invoke(classSpecifier);
                 if (SNodeOperations.isInstanceOf(classType, CONCEPTS.ClassType$jI)) {
-                  Iterable<SNode> constructors = ClassDeclaration__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SNodeOperations.as(SLinkOperations.getTarget(classType, LINKS.class$ExdX), CONCEPTS.ClassDeclaration$Jm));
+                  Iterable<SNode> constructors = IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SNodeOperations.as(SLinkOperations.getTarget(classType, LINKS.class$ExdX), CONCEPTS.ClassDeclaration$Jm));
                   if (constructors != null) {
                     return new NamedElementsScope(constructors);
                   }

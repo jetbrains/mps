@@ -1336,6 +1336,9 @@
     <node concept="PrWs8" id="1pHfrwYZTY$" role="PzmwI">
       <ref role="PrY4T" node="7DyvjiA1ZY9" resolve="ISignatureScopeProvider" />
     </node>
+    <node concept="PrWs8" id="5p_0HFfGIVp" role="PzmwI">
+      <ref role="PrY4T" node="xpyqH1FtXg" resolve="IThisReceiverProvider" />
+    </node>
     <node concept="1TJgyi" id="4gvOB2uP5TE" role="1TKVEl">
       <property role="IQ2nx" value="4908873500000018026" />
       <property role="TrG5h" value="isOverride" />
@@ -2163,7 +2166,7 @@
     <property role="TrG5h" value="IConstructorDelegationCall" />
     <property role="3GE5qa" value="expression.function.constructor" />
     <node concept="t5JxF" id="6TRHYuCzmKb" role="lGtFl">
-      <property role="t5JxN" value="generic constructor delegation call, to be extended by compatible langagues with their own super constructors" />
+      <property role="t5JxN" value="generic constructor delegation call, to be extended by compatible languages with their own super constructors" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jmh">
@@ -2301,9 +2304,6 @@
     </node>
     <node concept="PrWs8" id="6VSCWXCaksS" role="PrDN$">
       <ref role="PrY4T" node="6VSCWXCakph" resolve="IInheritExplicitly" />
-    </node>
-    <node concept="PrWs8" id="6Ijh6DJyCg_" role="PrDN$">
-      <ref role="PrY4T" node="xpyqH1FtXg" resolve="IThisReceiverProvider" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtlhVmE">
@@ -3641,6 +3641,9 @@
     <node concept="PrWs8" id="2Aaqzls4g9W" role="PrDN$">
       <ref role="PrY4T" node="2yYXHtl6JcK" resolve="IIdentifier" />
     </node>
+    <node concept="PrWs8" id="5p_0HFfCzEj" role="PrDN$">
+      <ref role="PrY4T" node="xpyqH1FtXg" resolve="IThisReceiverProvider" />
+    </node>
   </node>
   <node concept="1TIwiD" id="6ZbwqG7P3q4">
     <property role="EcuMT" value="8055674930053002884" />
@@ -4083,6 +4086,9 @@
     <property role="TrG5h" value="IThisReceiverProvider" />
     <node concept="PrWs8" id="1VgEGDnBxlc" role="PrDN$">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="PrWs8" id="5p_0HFf8ian" role="PrDN$">
+      <ref role="PrY4T" node="7DyvjiA1ZY9" resolve="ISignatureScopeProvider" />
     </node>
   </node>
   <node concept="1TIwiD" id="6Ijh6DJyyh6">

@@ -9675,6 +9675,9 @@
                         <ref role="3cqZAo" node="7SVeP54glFp" resolve="type" />
                       </node>
                       <node concept="2OqwBi" id="7SVeP54gpp2" role="37vLTJ">
+                        <node concept="3TrEf2" id="7SVeP54gpEB" role="2OqNvi">
+                          <ref role="3Tt5mk" to="hcm8:2yYXHtl6J$n" resolve="type" />
+                        </node>
                         <node concept="2OqwBi" id="7SVeP54goki" role="2Oq$k0">
                           <node concept="37vLTw" id="7SVeP54gnQc" role="2Oq$k0">
                             <ref role="3cqZAo" node="2AaqzlsnUA_" resolve="node" />
@@ -9682,9 +9685,6 @@
                           <node concept="3TrEf2" id="7SVeP54gp6s" role="2OqNvi">
                             <ref role="3Tt5mk" to="hcm8:18X2O0FAIfH" resolve="declaration" />
                           </node>
-                        </node>
-                        <node concept="3TrEf2" id="7SVeP54gpEB" role="2OqNvi">
-                          <ref role="3Tt5mk" to="hcm8:2yYXHtl6J$n" resolve="type" />
                         </node>
                       </node>
                     </node>
@@ -9816,6 +9816,9 @@
               <ref role="3cqZAo" node="2AaqzlsnLYZ" resolve="name" />
             </node>
             <node concept="2OqwBi" id="7SVeP54g5CA" role="37vLTJ">
+              <node concept="3TrcHB" id="7SVeP54g5So" role="2OqNvi">
+                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
+              </node>
               <node concept="2OqwBi" id="7SVeP54g4a4" role="2Oq$k0">
                 <node concept="37vLTw" id="7SVeP54g3GT" role="2Oq$k0">
                   <ref role="3cqZAo" node="2AaqzlsnOi$" resolve="decl" />
@@ -9823,9 +9826,6 @@
                 <node concept="3TrEf2" id="7SVeP54g5f2" role="2OqNvi">
                   <ref role="3Tt5mk" to="hcm8:18X2O0FAIfH" resolve="declaration" />
                 </node>
-              </node>
-              <node concept="3TrcHB" id="7SVeP54g5So" role="2OqNvi">
-                <ref role="3TsBF5" to="tpck:h0TrG11" resolve="name" />
               </node>
             </node>
           </node>

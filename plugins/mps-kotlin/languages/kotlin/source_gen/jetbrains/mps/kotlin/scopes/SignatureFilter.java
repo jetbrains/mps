@@ -47,6 +47,17 @@ public class SignatureFilter<T extends MemberSignature> {
     return true;
   }
 
+  /**
+   * Returns whether the given receiver can be accepted for the signature. If the receiver is taken from context (declared
+   * within class or in root), null will be passed to this method.
+   * 
+   * @param type type to test against, or null if the contextual receiver is to be used
+   */
+  public boolean acceptReceiver(SNode type) {
+    // Default: no other receiver than those in context
+    return (type == null);
+  }
+
   public final boolean acceptSignature(MemberSignature signature, SNode source) {
     return accept((T) signature, source);
   }

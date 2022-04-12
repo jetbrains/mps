@@ -24,9 +24,9 @@ public class FilteredSignatureCollector implements SignatureCollector {
   }
 
   @Override
-  public <T extends MemberSignature> void addDeclaration(SNode source, boolean isInstance, Class<T> signatureKind, _FunctionTypes._return_P0_E0<? extends Iterable<T>> signaturesBuilder) {
+  public <T extends MemberSignature> void addDeclaration(SNode source, SNode externalReceiver, Class<T> signatureKind, _FunctionTypes._return_P0_E0<? extends Iterable<T>> signaturesBuilder) {
     // Ignore unused signatures
-    if (!(this.myFilter.acceptKind(signatureKind))) {
+    if (!(this.myFilter.acceptKind(signatureKind)) || !(myFilter.acceptReceiver(externalReceiver))) {
       return;
     }
 

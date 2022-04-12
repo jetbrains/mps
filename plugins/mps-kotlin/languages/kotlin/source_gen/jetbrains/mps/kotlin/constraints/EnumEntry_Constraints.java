@@ -15,7 +15,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.kotlin.behavior.ClassDeclaration__BehaviorDescriptor;
+import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import java.util.HashMap;
@@ -40,7 +40,7 @@ public class EnumEntry_Constraints extends BaseConstraintsDescriptor {
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Iterable<SNode> constructors = ClassDeclaration__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.EnumClassDeclaration$xK, true, false));
+            Iterable<SNode> constructors = IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.EnumClassDeclaration$xK, true, false));
             return new NamedElementsScope(constructors);
           }
         };

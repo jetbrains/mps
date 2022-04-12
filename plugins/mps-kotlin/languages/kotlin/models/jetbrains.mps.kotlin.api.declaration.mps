@@ -13,7 +13,7 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
-    <import index="pkkr" ref="r:63fc91b7-ce2b-43fd-a9e4-94a1182c5fb3(jetbrains.mps.kotlin.api.builtins)" />
+    <import index="wbbs" ref="r:63fc91b7-ce2b-43fd-a9e4-94a1182c5fb3(jetbrains.mps.kotlin.api.builtins)" />
     <import index="hez" ref="r:b038209d-51a9-4919-b6e5-4fafce96fa00(jetbrains.mps.kotlin.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -1173,11 +1173,11 @@
                 </node>
                 <node concept="2OqwBi" id="59BW1QZWWTt" role="33vP2m">
                   <node concept="Rm8GO" id="59BW1QZWWTu" role="2Oq$k0">
-                    <ref role="Rm8GQ" to="pkkr:4XaBo_Yu9DU" resolve="ANY" />
-                    <ref role="1Px2BO" to="pkkr:4XaBo_Yu8Ms" resolve="BuiltIn" />
+                    <ref role="Rm8GQ" to="wbbs:4XaBo_Yu9DU" resolve="ANY" />
+                    <ref role="1Px2BO" to="wbbs:4XaBo_Yu8Ms" resolve="BuiltIn" />
                   </node>
                   <node concept="liA8E" id="59BW1QZWWTv" role="2OqNvi">
-                    <ref role="37wK5l" to="pkkr:4XaBo_YwcqK" resolve="toClassType" />
+                    <ref role="37wK5l" to="wbbs:4XaBo_YwcqK" resolve="toClassType" />
                   </node>
                 </node>
               </node>
@@ -1391,6 +1391,9 @@
             <property role="1dT_AB" value="Returns the types bounding the type parameter, if any." />
           </node>
         </node>
+      </node>
+      <node concept="2AHcQZ" id="6nK3tkaFK3O" role="2AJF6D">
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
     <node concept="2tJIrI" id="bbFPPueLhj" role="jymVt" />

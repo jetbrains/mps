@@ -18,9 +18,11 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.kotlin.runtime.types.BuiltIn;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public final class StarProjection__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3cdL, "jetbrains.mps.kotlin.structure.StarProjection");
@@ -36,11 +38,18 @@ public final class StarProjection__BehaviorDescriptor extends BaseBHDescriptor {
 
   /*package*/ static SNode substituteType_id27wMicCGGe5(@NotNull SNode __thisNode__, SEnumerationLiteral variance, TypeParameterDeclaration parameter) {
     if (SEnumOperations.isMember(variance, 0x21e0c923289a218aL)) {
-      return IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(BuiltIn.NOTHING.getClass(__thisNode__), ((boolean) false));
+      return BuiltIn.NOTHING.toClassType();
     } else {
       // For <out T : bound> and <T : bound> it translates to <out bound> when producing, for the invariant it translates to <in Nothing> when consuming
       List<SNode> upperBounds = parameter.getUpperBounds();
-      return (ListSequence.fromList(upperBounds).isNotEmpty() ? ListSequence.fromList(upperBounds).first() : IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(BuiltIn.ANY.getClass(__thisNode__), ((boolean) true)));
+      if (ListSequence.fromList(upperBounds).isNotEmpty()) {
+        // TODO union type
+        return ListSequence.fromList(upperBounds).first();
+      } else {
+        SNode any = BuiltIn.ANY.toClassType();
+        SPropertyOperations.assign(any, PROPS.isNullable$KWwD, true);
+        return any;
+      }
     }
   }
   /*package*/ static SEnumerationLiteral getVarianceAfterSubstitution_id27wMicCGKaq(@NotNull SNode __thisNode__, SEnumerationLiteral input) {
@@ -104,5 +113,9 @@ public final class StarProjection__BehaviorDescriptor extends BaseBHDescriptor {
   @Override
   public SAbstractConcept getConcept() {
     return CONCEPT;
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty isNullable$KWwD = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af542L, 0x56840864ad823b96L, "isNullable");
   }
 }

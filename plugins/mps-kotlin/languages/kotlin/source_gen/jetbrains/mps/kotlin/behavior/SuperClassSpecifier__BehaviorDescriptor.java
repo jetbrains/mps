@@ -47,7 +47,7 @@ public final class SuperClassSpecifier__BehaviorDescriptor extends BaseBHDescrip
   }
   /*package*/ static SNode convertToConstructor_id1$jFvlEWuyJ(@NotNull SNode __thisNode__) {
     SNode call = SNodeFactoryOperations.createNewNode(CONCEPTS.ConstructorSuperSpecifier$SH, __thisNode__);
-    SLinkOperations.setTarget(call, LINKS.target$VUYb, Sequence.fromIterable(ClassDeclaration__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.target$mYQV), CONCEPTS.ClassDeclaration$Jm))).first());
+    SLinkOperations.setTarget(call, LINKS.target$VUYb, Sequence.fromIterable(IClassLike__BehaviorDescriptor.getConstructors_id2NtWm0y9fFa.invoke(SNodeOperations.as(SLinkOperations.getTarget(__thisNode__, LINKS.target$mYQV), CONCEPTS.ClassDeclaration$Jm))).first());
     return call;
   }
 
