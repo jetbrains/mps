@@ -396,6 +396,41 @@
         </node>
       </node>
     </node>
+    <node concept="37WvkG" id="7HuwokBIkF9" role="37WGs$">
+      <ref role="37XkoT" to="hcm8:666oMY5DOKB" resolve="ILambdaAsArgument" />
+      <node concept="37Y9Zx" id="7HuwokBIkFa" role="37ZfLb">
+        <node concept="3clFbS" id="7HuwokBIkFb" role="2VODD2">
+          <node concept="Jncv_" id="7HuwokBIkWv" role="3cqZAp">
+            <ref role="JncvD" to="hcm8:666oMY5DOKB" resolve="ILambdaAsArgument" />
+            <node concept="1r4N5L" id="7HuwokBIl1p" role="JncvB" />
+            <node concept="3clFbS" id="7HuwokBIkWx" role="Jncv$">
+              <node concept="3clFbF" id="7HuwokBIle2" role="3cqZAp">
+                <node concept="37vLTI" id="7HuwokBImlq" role="3clFbG">
+                  <node concept="2OqwBi" id="7HuwokBImHm" role="37vLTx">
+                    <node concept="Jnkvi" id="7HuwokBImxU" role="2Oq$k0">
+                      <ref role="1M0zk5" node="7HuwokBIkWy" resolve="withArg" />
+                    </node>
+                    <node concept="3TrEf2" id="7HuwokBImQi" role="2OqNvi">
+                      <ref role="3Tt5mk" to="hcm8:2yYXHtl6JtX" resolve="lambda" />
+                    </node>
+                  </node>
+                  <node concept="2OqwBi" id="7HuwokBIllk" role="37vLTJ">
+                    <node concept="1r4Lsj" id="7HuwokBIle1" role="2Oq$k0" />
+                    <node concept="3TrEf2" id="7HuwokBIlu5" role="2OqNvi">
+                      <ref role="3Tt5mk" to="hcm8:2yYXHtl6JtX" resolve="lambda" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="JncvC" id="7HuwokBIkWy" role="JncvA">
+              <property role="TrG5h" value="withArg" />
+              <node concept="2jxLKc" id="7HuwokBIkWz" role="1tU5fm" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="37WguZ" id="2AtO9a4YEVt">
     <property role="TrG5h" value="MembersFactories" />

@@ -1055,6 +1055,9 @@
     <node concept="PrWs8" id="2t3z978jLbL" role="PzmwI">
       <ref role="PrY4T" node="7Iv8Cw7qLdE" resolve="IDataFlowSource" />
     </node>
+    <node concept="PrWs8" id="6Ijh6DJzpLb" role="PzmwI">
+      <ref role="PrY4T" node="xpyqH1FtXg" resolve="IThisReceiverProvider" />
+    </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JgZ">
     <property role="EcuMT" value="2936055411798373439" />
@@ -1330,6 +1333,9 @@
     <node concept="PrWs8" id="1$jFvlDFBiJ" role="PzmwI">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
+    <node concept="PrWs8" id="1pHfrwYZTY$" role="PzmwI">
+      <ref role="PrY4T" node="7DyvjiA1ZY9" resolve="ISignatureScopeProvider" />
+    </node>
     <node concept="1TJgyi" id="4gvOB2uP5TE" role="1TKVEl">
       <property role="IQ2nx" value="4908873500000018026" />
       <property role="TrG5h" value="isOverride" />
@@ -1470,6 +1476,9 @@
     <node concept="PrWs8" id="1yTI8p9sj8N" role="PzmwI">
       <ref role="PrY4T" node="18X2O0Fy6BI" resolve="IStatementHolder" />
     </node>
+    <node concept="PrWs8" id="51pIiWIw7Xq" role="PzmwI">
+      <ref role="PrY4T" node="213J8chjiEQ" resolve="IVariableIdentifier" />
+    </node>
   </node>
   <node concept="PlHQZ" id="2yYXHtl6JjL">
     <property role="EcuMT" value="2936055411798373617" />
@@ -1593,12 +1602,15 @@
     <property role="TrG5h" value="TypeParameter" />
     <property role="34LRSv" value="type parameter" />
     <property role="R4oN_" value="type parameter" />
-    <property role="3GE5qa" value="type.parameter" />
+    <property role="3GE5qa" value="type.parameter.definition" />
     <node concept="1TJgyj" id="2yYXHtl6Jxg" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798374480" />
       <property role="20kJfa" value="bound" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <ref role="20lvS9" node="2yYXHtl6Jh1" resolve="IType" />
+    </node>
+    <node concept="PrWs8" id="28CvMykZZ8_" role="PzmwI">
+      <ref role="PrY4T" node="4QzAmvhcm6x" resolve="ITypeParameter" />
     </node>
     <node concept="PrWs8" id="2yYXHtlhVgu" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6JcK" resolve="IIdentifier" />
@@ -1613,14 +1625,17 @@
     </node>
     <node concept="1TJgyi" id="27wMicCA_z0" role="1TKVEl">
       <property role="IQ2nx" value="2441172150877051072" />
-      <property role="TrG5h" value="variance" />
+      <property role="TrG5h" value="variance_old" />
       <ref role="AX2Wp" node="27wMicCAy69" resolve="VarianceModifier" />
+      <node concept="asaX9" id="28CvMylfSMA" role="lGtFl">
+        <property role="YLQ7P" value="The property was moved to concept &quot;jetbrains.mps.kotlin.structure.ITypeParameter&quot;" />
+      </node>
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jkn">
     <property role="EcuMT" value="2936055411798373655" />
     <property role="TrG5h" value="LambdaLiteral" />
-    <property role="34LRSv" value="{ -&gt; }" />
+    <property role="34LRSv" value="lambda" />
     <property role="R4oN_" value="lambda literal" />
     <property role="3GE5qa" value="expression.function" />
     <node concept="1TJgyj" id="2yYXHtl6Jxt" role="1TKVEi">
@@ -1649,6 +1664,9 @@
     </node>
     <node concept="PrWs8" id="4ioyjZZ_kQZ" role="PzmwI">
       <ref role="PrY4T" node="213J8chjiEQ" resolve="IVariableIdentifier" />
+    </node>
+    <node concept="PrWs8" id="6Ijh6DJzcM2" role="PzmwI">
+      <ref role="PrY4T" node="xpyqH1FtXg" resolve="IThisReceiverProvider" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jks">
@@ -1800,7 +1818,7 @@
       <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
     </node>
     <node concept="PrWs8" id="7KgFmkHTMog" role="PzmwI">
-      <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+      <ref role="PrY4T" node="7DyvjiA1ZY9" resolve="ISignatureScopeProvider" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6JkN">
@@ -1839,6 +1857,7 @@
     <property role="TrG5h" value="ClassParameter" />
     <property role="R4oN_" value="class parameter" />
     <property role="3GE5qa" value="declaration.class.constructor" />
+    <property role="34LRSv" value="class parameter" />
     <ref role="1TJDcQ" node="6f3juM$y8Zy" resolve="Parameter" />
     <node concept="PrWs8" id="213J8chjiJt" role="PzmwI">
       <ref role="PrY4T" node="213J8chjiEQ" resolve="IVariableIdentifier" />
@@ -1907,6 +1926,14 @@
     </node>
     <node concept="PrWs8" id="2yYXHtl6J_L" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6JdA" resolve="IPropertyAssignment" />
+    </node>
+    <node concept="PrWs8" id="ccTy7zPgpq" role="PzmwI">
+      <ref role="PrY4T" node="5D4bOjrr8CG" resolve="IFunctionCall" />
+    </node>
+    <node concept="1TJgyj" id="ccTy7zPiiA" role="1TKVEi">
+      <property role="IQ2ns" value="219803515065017510" />
+      <property role="20kJfa" value="valueFunction" />
+      <ref role="20lvS9" node="2Dtd0_QziWF" resolve="IFunctionDeclaration" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jlm">
@@ -2190,17 +2217,14 @@
     <property role="TrG5h" value="ThisExpression" />
     <property role="34LRSv" value="this" />
     <property role="R4oN_" value="this expression" />
-    <property role="3GE5qa" value="expression" />
+    <property role="3GE5qa" value="expression.this" />
     <node concept="1TJgyj" id="6cg9X74hPTX" role="1TKVEi">
       <property role="IQ2ns" value="7138249191276895869" />
       <property role="20kJfa" value="targetLabel" />
-      <ref role="20lvS9" node="2yYXHtlhVlH" resolve="IClassDeclaration" />
+      <ref role="20lvS9" node="xpyqH1FtXg" resolve="IThisReceiverProvider" />
     </node>
     <node concept="PrWs8" id="4gvOB2uWef_" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
-    </node>
-    <node concept="PrWs8" id="6563FJLf4$E" role="PzmwI">
-      <ref role="PrY4T" node="6563FJLeShn" resolve="IStaticType" />
     </node>
   </node>
   <node concept="Az7Fb" id="2yYXHtl6Jq4">
@@ -2278,6 +2302,9 @@
     <node concept="PrWs8" id="6VSCWXCaksS" role="PrDN$">
       <ref role="PrY4T" node="6VSCWXCakph" resolve="IInheritExplicitly" />
     </node>
+    <node concept="PrWs8" id="6Ijh6DJyCg_" role="PrDN$">
+      <ref role="PrY4T" node="xpyqH1FtXg" resolve="IThisReceiverProvider" />
+    </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtlhVmE">
     <property role="EcuMT" value="2936055411801306538" />
@@ -2351,7 +2378,7 @@
       <property role="20kJfa" value="typeParameters" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20lbJX" value="fLJekj5/_0__n" />
-      <ref role="20lvS9" node="2yYXHtl6Jkd" resolve="TypeParameter" />
+      <ref role="20lvS9" node="4QzAmvhcm6x" resolve="ITypeParameter" />
     </node>
   </node>
   <node concept="PlHQZ" id="2yYXHtl$9A0">
@@ -2513,11 +2540,11 @@
       <property role="20lbJX" value="fLJekj4/_1" />
       <ref role="20lvS9" node="2yYXHtl6JgO" resolve="FunctionDeclaration" />
     </node>
-    <node concept="RPilO" id="rbYB7QUgrA" role="lGtFl">
-      <ref role="RPilL" node="1502Vug_m78" resolve="function" />
-    </node>
     <node concept="PrWs8" id="rbYB7R3JjM" role="PzmwI">
       <ref role="PrY4T" node="5D4bOjrr8CG" resolve="IFunctionCallLike" />
+    </node>
+    <node concept="RPilO" id="rbYB7QUgrA" role="lGtFl">
+      <ref role="RPilL" node="1502Vug_m78" resolve="function" />
     </node>
   </node>
   <node concept="1TIwiD" id="1502Vug_mWt">
@@ -2712,6 +2739,9 @@
     <node concept="PrWs8" id="213J8chg1Hc" role="PrDN$">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
     </node>
+    <node concept="PrWs8" id="1pHfrwYSSr2" role="PrDN$">
+      <ref role="PrY4T" node="7DyvjiA1ZY9" resolve="ISignatureScopeProvider" />
+    </node>
     <node concept="t5JxF" id="1Izr$$XnU2r" role="lGtFl">
       <property role="t5JxN" value="declaration scope provider, within such scope the order of declaration does not matter" />
     </node>
@@ -2794,6 +2824,9 @@
     <property role="TrG5h" value="IStatementHolder" />
     <node concept="PrWs8" id="18X2O0Fy6BJ" role="PrDN$">
       <ref role="PrY4T" to="tpck:3fifI_xCcJN" resolve="ScopeProvider" />
+    </node>
+    <node concept="PrWs8" id="1pHfrwYTfqp" role="PrDN$">
+      <ref role="PrY4T" node="7DyvjiA1ZY9" resolve="ISignatureScopeProvider" />
     </node>
     <node concept="1TJgyj" id="18X2O0Fy6BL" role="1TKVEi">
       <property role="IQ2ns" value="1314219036498225649" />
@@ -3060,7 +3093,7 @@
       <property role="IQ2ns" value="2441172150875731342" />
       <property role="20kJfa" value="parameter" />
       <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="2yYXHtl6Jkd" resolve="TypeParameter" />
+      <ref role="20lvS9" node="4QzAmvhcm6x" resolve="ITypeParameter" />
     </node>
     <node concept="PrWs8" id="15i76vWoEO0" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jl2" resolve="INullableType" />
@@ -3101,9 +3134,6 @@
     <property role="TrG5h" value="RangeToOperation" />
     <property role="34LRSv" value=".." />
     <ref role="1TJDcQ" node="3I4vn5LTHck" resolve="OverloadedBinaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNE6T" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
   </node>
   <node concept="1TIwiD" id="4nn3FPlxLbO">
     <property role="3GE5qa" value="expression.operator.overloaded.binary" />
@@ -3111,9 +3141,6 @@
     <property role="TrG5h" value="PlusOperation" />
     <property role="34LRSv" value="+" />
     <ref role="1TJDcQ" node="3I4vn5LTHck" resolve="OverloadedBinaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNE7e" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
   </node>
   <node concept="1TIwiD" id="4nn3FPlxLc3">
     <property role="3GE5qa" value="expression.operator.overloaded.binary" />
@@ -3121,9 +3148,6 @@
     <property role="TrG5h" value="MinusOperation" />
     <property role="34LRSv" value="-" />
     <ref role="1TJDcQ" node="3I4vn5LTHck" resolve="OverloadedBinaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNE7z" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
   </node>
   <node concept="1TIwiD" id="4nn3FPlxLci">
     <property role="3GE5qa" value="expression.operator.overloaded.binary" />
@@ -3131,9 +3155,6 @@
     <property role="TrG5h" value="TimesOperation" />
     <property role="34LRSv" value="*" />
     <ref role="1TJDcQ" node="3I4vn5LTHck" resolve="OverloadedBinaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNE7S" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
   </node>
   <node concept="1TIwiD" id="4nn3FPlxLcx">
     <property role="3GE5qa" value="expression.operator.overloaded.binary" />
@@ -3141,9 +3162,6 @@
     <property role="TrG5h" value="DivOperation" />
     <property role="34LRSv" value="/" />
     <ref role="1TJDcQ" node="3I4vn5LTHck" resolve="OverloadedBinaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNE8d" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
   </node>
   <node concept="1TIwiD" id="4nn3FPlxLcK">
     <property role="3GE5qa" value="expression.operator.overloaded.binary" />
@@ -3151,61 +3169,34 @@
     <property role="TrG5h" value="RemOperation" />
     <property role="34LRSv" value="%" />
     <ref role="1TJDcQ" node="3I4vn5LTHck" resolve="OverloadedBinaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNE8y" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
   </node>
   <node concept="1TIwiD" id="4nn3FPlxLcZ">
-    <property role="3GE5qa" value="expression.operator.overloaded.binary" />
+    <property role="3GE5qa" value="expression.operator.overloaded.binary.comparison" />
     <property role="EcuMT" value="5032507314956342079" />
     <property role="TrG5h" value="GreaterOperation" />
     <property role="34LRSv" value="&gt;" />
-    <ref role="1TJDcQ" node="3I4vn5LTHck" resolve="OverloadedBinaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNE8R" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
-    <node concept="PrWs8" id="5g3vQLJKA29" role="PzmwI">
-      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
-    </node>
+    <ref role="1TJDcQ" node="4b4fPCtJ84I" resolve="CompareToOperation" />
   </node>
   <node concept="1TIwiD" id="4nn3FPlxLde">
-    <property role="3GE5qa" value="expression.operator.overloaded.binary" />
+    <property role="3GE5qa" value="expression.operator.overloaded.binary.comparison" />
     <property role="EcuMT" value="5032507314956342094" />
     <property role="TrG5h" value="GreaterEqOperation" />
     <property role="34LRSv" value="&gt;=" />
-    <ref role="1TJDcQ" node="3I4vn5LTHck" resolve="OverloadedBinaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNE9c" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
-    <node concept="PrWs8" id="5g3vQLJK__T" role="PzmwI">
-      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
-    </node>
+    <ref role="1TJDcQ" node="4b4fPCtJ84I" resolve="CompareToOperation" />
   </node>
   <node concept="1TIwiD" id="4nn3FPlxLdt">
-    <property role="3GE5qa" value="expression.operator.overloaded.binary" />
+    <property role="3GE5qa" value="expression.operator.overloaded.binary.comparison" />
     <property role="EcuMT" value="5032507314956342109" />
     <property role="TrG5h" value="LessOperation" />
     <property role="34LRSv" value="&lt;" />
-    <ref role="1TJDcQ" node="3I4vn5LTHck" resolve="OverloadedBinaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNE9x" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
-    <node concept="PrWs8" id="5g3vQLJKBmy" role="PzmwI">
-      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
-    </node>
+    <ref role="1TJDcQ" node="4b4fPCtJ84I" resolve="CompareToOperation" />
   </node>
   <node concept="1TIwiD" id="4nn3FPlxLdG">
-    <property role="3GE5qa" value="expression.operator.overloaded.binary" />
+    <property role="3GE5qa" value="expression.operator.overloaded.binary.comparison" />
     <property role="EcuMT" value="5032507314956342124" />
     <property role="TrG5h" value="LessEqOperation" />
     <property role="34LRSv" value="&lt;=" />
-    <ref role="1TJDcQ" node="3I4vn5LTHck" resolve="OverloadedBinaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNE9Q" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
-    <node concept="PrWs8" id="5g3vQLJKAwJ" role="PzmwI">
-      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
-    </node>
+    <ref role="1TJDcQ" node="4b4fPCtJ84I" resolve="CompareToOperation" />
   </node>
   <node concept="1TIwiD" id="4nn3FPlxLdV">
     <property role="3GE5qa" value="expression.operator.overloaded.prefix" />
@@ -3263,9 +3254,6 @@
     <property role="TrG5h" value="PostfixIncOperation" />
     <property role="34LRSv" value="++" />
     <ref role="1TJDcQ" node="1VI7K1jTpUf" resolve="OverloadedPostfixUnaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNEcu" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
   </node>
   <node concept="1TIwiD" id="4nn3FPlxLfl">
     <property role="3GE5qa" value="expression.operator.overloaded.postfix" />
@@ -3273,9 +3261,6 @@
     <property role="TrG5h" value="PostfixDecOperation" />
     <property role="34LRSv" value="--" />
     <ref role="1TJDcQ" node="1VI7K1jTpUf" resolve="OverloadedPostfixUnaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNEcN" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
   </node>
   <node concept="1TIwiD" id="4nn3FPlxLf$">
     <property role="3GE5qa" value="expression.operator.overloaded.binary" />
@@ -3283,9 +3268,6 @@
     <property role="TrG5h" value="ContainedOperation" />
     <property role="34LRSv" value="in" />
     <ref role="1TJDcQ" node="Ad0bnVTz7o" resolve="FlippedOverloadedBinaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNEd8" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
   </node>
   <node concept="1TIwiD" id="4nn3FPlxLfN">
     <property role="3GE5qa" value="expression.operator.overloaded.binary" />
@@ -3293,9 +3275,6 @@
     <property role="TrG5h" value="NotContainedOperation" />
     <property role="34LRSv" value="!in" />
     <ref role="1TJDcQ" node="Ad0bnVTz7o" resolve="FlippedOverloadedBinaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNEdt" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
   </node>
   <node concept="1TIwiD" id="4nn3FPlB5Kz">
     <property role="3GE5qa" value="expression.operator.overloaded.binary.equality" />
@@ -3383,9 +3362,6 @@
     <node concept="t5JxF" id="42OKUkNAAjq" role="lGtFl">
       <property role="t5JxN" value="direct call of a function on instance" />
     </node>
-    <node concept="RPilO" id="59BW1R01OBk" role="lGtFl">
-      <ref role="RPilL" node="1Izr$$XyHjD" resolve="function" />
-    </node>
   </node>
   <node concept="1TIwiD" id="42OKUkNAA_T">
     <property role="EcuMT" value="4662566628538083705" />
@@ -3393,14 +3369,21 @@
     <property role="R4oN_" value="call expression" />
     <property role="3GE5qa" value="expression.function.call.regular" />
     <ref role="1TJDcQ" node="2yYXHtl6JgZ" resolve="AbstractFunctionCall" />
+    <node concept="1TJgyi" id="6Ijh6DJ$6x9" role="1TKVEl">
+      <property role="IQ2nx" value="7751614607563712585" />
+      <property role="TrG5h" value="receiverIndex" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    </node>
+    <node concept="1TJgyj" id="6Ijh6DJ$60I" role="1TKVEi">
+      <property role="IQ2ns" value="7751614607563710510" />
+      <property role="20kJfa" value="receiver" />
+      <ref role="20lvS9" node="xpyqH1FtXg" resolve="IThisReceiverProvider" />
+    </node>
     <node concept="PrWs8" id="42OKUkNAA_U" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
     </node>
     <node concept="t5JxF" id="42OKUkNAAA0" role="lGtFl">
       <property role="t5JxN" value="direct call of a function without receiver" />
-    </node>
-    <node concept="RPilO" id="59BW1R01PoM" role="lGtFl">
-      <ref role="RPilL" node="1Izr$$XyHjD" resolve="function" />
     </node>
   </node>
   <node concept="PlHQZ" id="7Iv8Cw7qLdE">
@@ -3757,7 +3740,7 @@
   <node concept="PlHQZ" id="5D4bOjrr8CG">
     <property role="EcuMT" value="6504375734615444012" />
     <property role="3GE5qa" value="expression.function.call" />
-    <property role="TrG5h" value="IFunctionCallLike" />
+    <property role="TrG5h" value="IFunctionCall" />
   </node>
   <node concept="PlHQZ" id="6_qoESsafq8">
     <property role="EcuMT" value="7591488621822670472" />
@@ -3908,11 +3891,11 @@
     <node concept="PrWs8" id="1VI7K1k1VYj" role="PrDN$">
       <ref role="PrY4T" node="666oMY5DOKB" resolve="ILambdaAsArgument" />
     </node>
-    <node concept="PrWs8" id="7csM7imLWns" role="PrDN$">
-      <ref role="PrY4T" node="5D4bOjrr8CG" resolve="IFunctionCallLike" />
-    </node>
     <node concept="t5JxF" id="5H$PF0dZ_M4" role="lGtFl">
       <property role="t5JxN" value="function call that takes the form of a kotlin function call (type arguments, arguments, lambda as argument)" />
+    </node>
+    <node concept="PrWs8" id="7csM7imLWns" role="PrDN$">
+      <ref role="PrY4T" node="5D4bOjrr8CG" resolve="IFunctionCallLike" />
     </node>
   </node>
   <node concept="PlHQZ" id="2ZbCiJacCSA">
@@ -4034,6 +4017,9 @@
     <node concept="PrWs8" id="4hE452Rp00A" role="PzmwI">
       <ref role="PrY4T" node="2gj5XQXEpsk" resolve="ITypeArguments" />
     </node>
+    <node concept="PrWs8" id="4L9_P6KRAMj" role="PzmwI">
+      <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
+    </node>
     <node concept="1TJgyj" id="4hE452Rp0q1" role="1TKVEi">
       <property role="IQ2ns" value="4929770680970643073" />
       <property role="20kJfa" value="constructor" />
@@ -4045,45 +4031,6 @@
     <property role="EcuMT" value="4929770680970630542" />
     <property role="3GE5qa" value="annotation" />
     <property role="TrG5h" value="IAnnotation" />
-  </node>
-  <node concept="1TIwiD" id="5Ms3qK7YHkN">
-    <property role="EcuMT" value="6673223780375647539" />
-    <property role="3GE5qa" value="expression.function.call.dataclass" />
-    <property role="TrG5h" value="ComponentFunctionCall" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="1TJgyj" id="5Ms3qK7YHQa" role="1TKVEi">
-      <property role="IQ2ns" value="6673223780375649674" />
-      <property role="20kJfa" value="classParameter" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="2yYXHtl6JkU" resolve="ClassParameter" />
-    </node>
-    <node concept="PrWs8" id="5Ms3qK7YJLz" role="PzmwI">
-      <ref role="PrY4T" node="5H$PF0dZ_iR" resolve="IRegularFunctionCall" />
-    </node>
-    <node concept="PrWs8" id="5Ms3qK7YJMO" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6JeQ" resolve="INavigationTarget" />
-    </node>
-  </node>
-  <node concept="1TIwiD" id="4FIN$pCd1tG">
-    <property role="EcuMT" value="5399479805055080300" />
-    <property role="3GE5qa" value="expression.function.call.dataclass" />
-    <property role="TrG5h" value="CopyFunctionCall" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
-    <node concept="PrWs8" id="4FIN$pCd3r4" role="PzmwI">
-      <ref role="PrY4T" node="5H$PF0dZ_iR" resolve="IRegularFunctionCall" />
-    </node>
-    <node concept="PrWs8" id="4FIN$pCd3r5" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6JeQ" resolve="INavigationTarget" />
-    </node>
-    <node concept="t5JxF" id="4FIN$pCd2Nh" role="lGtFl">
-      <property role="t5JxN" value="https://kotlinlang.org/docs/data-classes.html#copying" />
-    </node>
-    <node concept="1TJgyj" id="4FIN$pCd96F" role="1TKVEi">
-      <property role="IQ2ns" value="5399479805055111595" />
-      <property role="20kJfa" value="constructor" />
-      <property role="20lbJX" value="fLJekj4/_1" />
-      <ref role="20lvS9" node="2yYXHtl6Jgo" resolve="PrimaryConstructor" />
-    </node>
   </node>
   <node concept="1TIwiD" id="5yEpxXL_wWK">
     <property role="EcuMT" value="6389031306614148912" />
@@ -4128,6 +4075,121 @@
     </node>
     <node concept="PrWs8" id="4FOkRjXx6C3" role="PzmwI">
       <ref role="PrY4T" node="5D4bOjrr8CG" resolve="IFunctionCallLike" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="xpyqH1FtXg">
+    <property role="EcuMT" value="601663393864998736" />
+    <property role="3GE5qa" value="expression.this" />
+    <property role="TrG5h" value="IThisReceiverProvider" />
+    <node concept="PrWs8" id="1VgEGDnBxlc" role="PrDN$">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="6Ijh6DJyyh6">
+    <property role="EcuMT" value="7751614607563301958" />
+    <property role="3GE5qa" value="reference.type" />
+    <property role="TrG5h" value="TypeReference" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+  </node>
+  <node concept="PlHQZ" id="7DyvjiA1ZY9">
+    <property role="EcuMT" value="8818748685422165897" />
+    <property role="3GE5qa" value="scopes" />
+    <property role="TrG5h" value="ISignatureScopeProvider" />
+  </node>
+  <node concept="1TIwiD" id="4b4fPCtJ84I">
+    <property role="EcuMT" value="4811039958217031982" />
+    <property role="3GE5qa" value="expression.operator.overloaded.binary.comparison" />
+    <property role="TrG5h" value="CompareToOperation" />
+    <property role="R5$K7" value="true" />
+    <ref role="1TJDcQ" node="3I4vn5LTHck" resolve="OverloadedBinaryExpression" />
+    <node concept="PrWs8" id="4b4fPCtJbQY" role="PzmwI">
+      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="75chmMYaCBS">
+    <property role="EcuMT" value="8163976557865110008" />
+    <property role="3GE5qa" value="expression.operator.unary.postfix.navigation.member" />
+    <property role="TrG5h" value="PropertyMemberTarget" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="75chmMYaDbh" role="PzmwI">
+      <ref role="PrY4T" node="2yYXHtl6JkP" resolve="IMemberTarget" />
+    </node>
+    <node concept="1TJgyj" id="ccTy7zBp1M" role="1TKVEi">
+      <property role="IQ2ns" value="219803515061375090" />
+      <property role="20kJfa" value="variable" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="213J8chjiEQ" resolve="IVariableIdentifier" />
+    </node>
+  </node>
+  <node concept="PlHQZ" id="4QzAmvhcm6x">
+    <property role="EcuMT" value="5594483833294643617" />
+    <property role="3GE5qa" value="type.parameter.definition" />
+    <property role="TrG5h" value="ITypeParameter" />
+    <node concept="PrWs8" id="28CvMylfACW" role="PrDN$">
+      <ref role="PrY4T" node="2yYXHtl6JcK" resolve="IIdentifier" />
+    </node>
+    <node concept="1TJgyi" id="28CvMylfSMr" role="1TKVEl">
+      <property role="IQ2nx" value="2461357008637365403" />
+      <property role="TrG5h" value="variance" />
+      <ref role="AX2Wp" node="27wMicCAy69" resolve="VarianceModifier" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="abwK8jcYlP">
+    <property role="EcuMT" value="183384254773978485" />
+    <property role="3GE5qa" value="type.builtin" />
+    <property role="TrG5h" value="NullableType" />
+    <property role="34LRSv" value="?" />
+    <property role="R4oN_" value="nullable type" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="abwK8jcYWk" role="1TKVEi">
+      <property role="IQ2ns" value="183384254773980948" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="type" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="2yYXHtl6Jh1" resolve="IType" />
+    </node>
+    <node concept="PrWs8" id="abwK8jcYJk" role="PzmwI">
+      <ref role="PrY4T" node="2yYXHtl6Jl2" resolve="INullableType" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="5Ms3qK7YHkN">
+    <property role="EcuMT" value="6673223780375647539" />
+    <property role="3GE5qa" value="expression.function.call.dataclass" />
+    <property role="TrG5h" value="ComponentFunctionCall" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="1TJgyj" id="5Ms3qK7YHQa" role="1TKVEi">
+      <property role="IQ2ns" value="6673223780375649674" />
+      <property role="20kJfa" value="classParameter" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="2yYXHtl6JkU" resolve="ClassParameter" />
+    </node>
+    <node concept="PrWs8" id="5Ms3qK7YJLz" role="PzmwI">
+      <ref role="PrY4T" node="5H$PF0dZ_iR" resolve="IRegularFunctionCall" />
+    </node>
+    <node concept="PrWs8" id="5Ms3qK7YJMO" role="PzmwI">
+      <ref role="PrY4T" node="2yYXHtl6JeQ" resolve="INavigationTarget" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="4FIN$pCd1tG">
+    <property role="EcuMT" value="5399479805055080300" />
+    <property role="3GE5qa" value="expression.function.call.dataclass" />
+    <property role="TrG5h" value="CopyFunctionCall" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
+    <node concept="PrWs8" id="4FIN$pCd3r4" role="PzmwI">
+      <ref role="PrY4T" node="5H$PF0dZ_iR" resolve="IRegularFunctionCall" />
+    </node>
+    <node concept="PrWs8" id="4FIN$pCd3r5" role="PzmwI">
+      <ref role="PrY4T" node="2yYXHtl6JeQ" resolve="INavigationTarget" />
+    </node>
+    <node concept="t5JxF" id="4FIN$pCd2Nh" role="lGtFl">
+      <property role="t5JxN" value="https://kotlinlang.org/docs/data-classes.html#copying" />
+    </node>
+    <node concept="1TJgyj" id="4FIN$pCd96F" role="1TKVEi">
+      <property role="IQ2ns" value="5399479805055111595" />
+      <property role="20kJfa" value="constructor" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" node="2yYXHtl6Jgo" resolve="PrimaryConstructor" />
     </node>
   </node>
 </model>
