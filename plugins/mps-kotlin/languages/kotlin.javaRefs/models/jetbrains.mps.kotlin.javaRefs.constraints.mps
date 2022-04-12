@@ -19,12 +19,12 @@
     <import index="fnmy" ref="r:89c0fb70-0977-4113-a076-5906f9d8630f(jetbrains.mps.baseLanguage.scopes)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="tbhz" ref="r:7d051f7f-1a28-4ed6-9de6-95fd49d3fa23(jetbrains.mps.kotlin.scopes)" />
+    <import index="nww" ref="r:f44f82b0-1fd9-4105-a80c-2fa6e5033003(jetbrains.mps.kotlin.runtime.members.signature)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
     <import index="akzu" ref="r:13fdb710-e0ae-40a1-880c-e26a8ee8d411(jetbrains.mps.kotlin.baseLanguage.toKotlin)" />
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
     <import index="sjya" ref="r:8a99441d-539c-493f-b884-7b6b084d024b(jetbrains.mps.kotlin.scopes.signed)" />
-    <import index="nww" ref="r:f44f82b0-1fd9-4105-a80c-2fa6e5033003(jetbrains.mps.kotlin.signatures)" />
     <import index="hez" ref="r:b038209d-51a9-4919-b6e5-4fafce96fa00(jetbrains.mps.kotlin.behavior)" />
     <import index="5m2i" ref="r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)" implicit="true" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" implicit="true" />
@@ -262,6 +262,7 @@
       </concept>
       <concept id="155656958578482948" name="jetbrains.mps.lang.text.structure.Word" flags="nn" index="3oM_SD">
         <property id="155656958578482949" name="value" index="3oM_SC" />
+        <property id="6328114375520539781" name="url" index="1X82VU" />
       </concept>
       <concept id="2535923850359271782" name="jetbrains.mps.lang.text.structure.Line" flags="nn" index="1PaTwC">
         <child id="2535923850359271783" name="elements" index="1PaTwD" />
@@ -1067,7 +1068,7 @@
                   </node>
                 </node>
               </node>
-              <node concept="3cpWs8" id="3HHsmlLG60f" role="3cqZAp">
+              <node concept="3cpWs8" id="4mvBIJf3VC9" role="3cqZAp">
                 <node concept="3cpWsn" id="3HHsmlLG60g" role="3cpWs9">
                   <property role="TrG5h" value="typeScope" />
                   <node concept="3uibUv" id="3HHsmlLG60h" role="1tU5fm">
@@ -1264,7 +1265,6 @@
     </node>
   </node>
   <node concept="1M2fIO" id="5H$PF0dq8vk">
-    <property role="3GE5qa" value="" />
     <ref role="1M2myG" to="5m2i:5H$PF0dovDV" resolve="JavaDefaultConstructorCall" />
     <node concept="1N5Pfh" id="5H$PF0dq8$L" role="1Mr941">
       <ref role="1N5Vy1" to="5m2i:5H$PF0dovE2" resolve="classifier" />
@@ -1421,6 +1421,7 @@
                         </node>
                         <node concept="3oM_SD" id="5H$PF0dtsfv" role="1PaTwD">
                           <property role="3oM_SC" value="http://docs.oracle.com/javase/specs/jls/se5.0/html/classes.html#8.8.9" />
+                          <property role="1X82VU" value="http://docs.oracle.com/javase/specs/jls/se5.0/html/classes.html#8.8.9" />
                         </node>
                       </node>
                     </node>
@@ -1500,7 +1501,7 @@
         <node concept="XkiVB" id="2ZbCiJasqB4" role="3cqZAp">
           <ref role="37wK5l" to="tbhz:2ZbCiJaoirw" resolve="SignatureFilter" />
           <node concept="3VsKOn" id="2ZbCiJasr7q" role="37wK5m">
-            <ref role="3VsUkX" to="nww:5q426iHsjrS" resolve="PropertyAccessorSignature" />
+            <ref role="3VsUkX" to="nww:5q426iHsjrS" resolve="PropertySignature" />
           </node>
         </node>
       </node>
@@ -1510,7 +1511,7 @@
     <node concept="3uibUv" id="2ZbCiJasq4A" role="1zkMxy">
       <ref role="3uigEE" to="tbhz:2ZbCiJaofwM" resolve="SignatureFilter" />
       <node concept="3uibUv" id="6qs$OhcxseT" role="11_B2D">
-        <ref role="3uigEE" to="nww:5q426iHsjrS" resolve="PropertyAccessorSignature" />
+        <ref role="3uigEE" to="nww:5q426iHsjrS" resolve="PropertySignature" />
       </node>
     </node>
     <node concept="3clFb_" id="2ZbCiJasqfC" role="jymVt">
@@ -1518,7 +1519,7 @@
       <node concept="37vLTG" id="2ZbCiJasqfD" role="3clF46">
         <property role="TrG5h" value="signature" />
         <node concept="3uibUv" id="2ZbCiJasqfE" role="1tU5fm">
-          <ref role="3uigEE" to="nww:5q426iHsjrS" resolve="PropertyAccessorSignature" />
+          <ref role="3uigEE" to="nww:5q426iHsjrS" resolve="PropertySignature" />
         </node>
       </node>
       <node concept="37vLTG" id="2ZbCiJasqfF" role="3clF46">
@@ -1532,7 +1533,7 @@
           <node concept="17R0WA" id="2ZbCiJastQn" role="3cqZAk">
             <node concept="Rm8GO" id="2ZbCiJastQo" role="3uHU7w">
               <ref role="Rm8GQ" to="nww:5q426iHsDai" resolve="GETTER" />
-              <ref role="1Px2BO" to="nww:5q426iHsD7S" resolve="PropertyAccessorKind" />
+              <ref role="1Px2BO" to="nww:5q426iHsD7S" resolve="AccessorKind" />
             </node>
             <node concept="2OqwBi" id="2ZbCiJastQp" role="3uHU7B">
               <node concept="2S8uIT" id="2ZbCiJastQq" role="2OqNvi">

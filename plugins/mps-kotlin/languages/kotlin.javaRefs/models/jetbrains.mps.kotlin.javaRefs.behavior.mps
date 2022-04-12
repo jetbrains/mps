@@ -11,6 +11,7 @@
   </languages>
   <imports>
     <import index="hez" ref="r:b038209d-51a9-4919-b6e5-4fafce96fa00(jetbrains.mps.kotlin.behavior)" />
+    <import index="2q9i" ref="r:764c4c95-d567-4a0e-99be-3892becb007f(jetbrains.mps.kotlin.runtime.members)" />
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="5m2i" ref="r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)" />
@@ -21,17 +22,16 @@
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
+    <import index="1p8r" ref="r:966de44c-de72-437f-889f-78347a061f0c(jetbrains.mps.kotlin.runtime.declaration)" />
+    <import index="mx11" ref="r:fa9de6a8-90b7-4d2a-a9a9-a40c05cf603b(jetbrains.mps.kotlin.runtime.types.identifiers)" />
+    <import index="nww" ref="r:f44f82b0-1fd9-4105-a80c-2fa6e5033003(jetbrains.mps.kotlin.runtime.members.signature)" />
+    <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
+    <import index="6xgk" ref="r:6e9ad488-5df2-49e4-8c01-8a7f3812adf7(jetbrains.mps.lang.scopes.runtime)" />
     <import index="tbhz" ref="r:7d051f7f-1a28-4ed6-9de6-95fd49d3fa23(jetbrains.mps.kotlin.scopes)" />
     <import index="d5k6" ref="r:e9005ea6-e4e0-4b7f-8b34-6e6513630cda(jetbrains.mps.kotlin.baseLanguage.typeConversion)" />
     <import index="akzu" ref="r:13fdb710-e0ae-40a1-880c-e26a8ee8d411(jetbrains.mps.kotlin.baseLanguage.toKotlin)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="vciu" ref="r:42fb31e7-122b-4950-aa58-2f5f6e5595ce(jetbrains.mps.kotlin.overloading)" />
-    <import index="nww" ref="r:f44f82b0-1fd9-4105-a80c-2fa6e5033003(jetbrains.mps.kotlin.signatures)" />
-    <import index="2q9i" ref="r:764c4c95-d567-4a0e-99be-3892becb007f(jetbrains.mps.kotlin.api.members)" />
-    <import index="1p8r" ref="r:966de44c-de72-437f-889f-78347a061f0c(jetbrains.mps.kotlin.api.declaration)" />
-    <import index="mx11" ref="r:fa9de6a8-90b7-4d2a-a9a9-a40c05cf603b(jetbrains.mps.kotlin.api.types.identifiers)" />
-    <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
-    <import index="6xgk" ref="r:6e9ad488-5df2-49e4-8c01-8a7f3812adf7(jetbrains.mps.lang.scopes.runtime)" />
     <import index="sjya" ref="r:8a99441d-539c-493f-b884-7b6b084d024b(jetbrains.mps.kotlin.scopes.signed)" implicit="true" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" implicit="true" />
   </imports>
@@ -2225,7 +2225,6 @@
     </node>
   </node>
   <node concept="13h7C7" id="26mUjU3jl$3">
-    <property role="3GE5qa" value="" />
     <ref role="13h7C2" to="5m2i:26mUjU3jlvc" resolve="JavaMethodCall" />
     <node concept="13hLZK" id="26mUjU3jl$4" role="13h7CW">
       <node concept="3clFbS" id="26mUjU3jl$5" role="2VODD2" />
@@ -2899,7 +2898,7 @@
           <node concept="2ShNRf" id="7an2tsI0Rnu" role="3cqZAk">
             <node concept="1pGfFk" id="7an2tsI0Sj6" role="2ShVmc">
               <property role="373rjd" value="true" />
-              <ref role="37wK5l" to="mx11:6GqgvHqjqbD" resolve="ClassType" />
+              <ref role="37wK5l" to="mx11:6GqgvHqjqbD" resolve="ClassTypeKey" />
               <node concept="2OqwBi" id="7an2tsI0TcL" role="37wK5m">
                 <node concept="2OqwBi" id="7an2tsI0S$r" role="2Oq$k0">
                   <node concept="13iPFW" id="7an2tsI0Smq" role="2Oq$k0" />
@@ -3322,7 +3321,7 @@
     </node>
   </node>
   <node concept="13h7C7" id="4mvBIJf3NNp">
-    <ref role="13h7C2" to="5m2i:4mvBIJf3_Z2" resolve="JavaVariableReference" />
+    <ref role="13h7C2" to="5m2i:4mvBIJf3_Z2" resolve="_JavaVariableReference" />
     <node concept="13hLZK" id="4mvBIJf3NNq" role="13h7CW">
       <node concept="3clFbS" id="4mvBIJf3NNr" role="2VODD2" />
     </node>
@@ -3592,7 +3591,6 @@
     </node>
   </node>
   <node concept="13h7C7" id="5H$PF0doyfa">
-    <property role="3GE5qa" value="" />
     <ref role="13h7C2" to="5m2i:5H$PF0dovDV" resolve="JavaDefaultConstructorCall" />
     <node concept="13hLZK" id="5H$PF0doyfb" role="13h7CW">
       <node concept="3clFbS" id="5H$PF0doyfc" role="2VODD2" />
@@ -4518,7 +4516,7 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="1pD7IS3jxBK" role="1B3o_S" />
-    <node concept="3uibUv" id="1pD7IS3jxJe" role="EKbjA">
+    <node concept="3uibUv" id="5exxG3kT3ri" role="EKbjA">
       <ref role="3uigEE" to="2q9i:27wMicCZj8w" resolve="SignatureCollector" />
     </node>
     <node concept="2tJIrI" id="1pD7IS3jywe" role="jymVt" />

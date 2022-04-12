@@ -21,9 +21,9 @@
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="2q9i" ref="r:764c4c95-d567-4a0e-99be-3892becb007f(jetbrains.mps.kotlin.api.members)" />
     <import index="mx11" ref="r:fa9de6a8-90b7-4d2a-a9a9-a40c05cf603b(jetbrains.mps.kotlin.runtime.types.identifiers)" />
-    <import index="fctn" ref="r:3ff775e1-d8a6-494a-9b19-94e1dca7d0e1(jetbrains.mps.kotlin.runtime.generics)" />
     <import index="tbhz" ref="r:7d051f7f-1a28-4ed6-9de6-95fd49d3fa23(jetbrains.mps.kotlin.scopes)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
+    <import index="fctn" ref="r:3ff775e1-d8a6-494a-9b19-94e1dca7d0e1(jetbrains.mps.kotlin.runtime.generics)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -292,7 +292,9 @@
         <child id="1226511765987" name="elementType" index="2hN53Y" />
       </concept>
       <concept id="1226516258405" name="jetbrains.mps.baseLanguage.collections.structure.HashSetCreator" flags="nn" index="2i4dXS" />
-      <concept id="1224414427926" name="jetbrains.mps.baseLanguage.collections.structure.SequenceCreator" flags="nn" index="kMnCb" />
+      <concept id="1224414427926" name="jetbrains.mps.baseLanguage.collections.structure.SequenceCreator" flags="nn" index="kMnCb">
+        <child id="1224414456414" name="elementType" index="kMuH3" />
+      </concept>
       <concept id="1151688443754" name="jetbrains.mps.baseLanguage.collections.structure.ListType" flags="in" index="_YKpA">
         <child id="1151688676805" name="elementType" index="_ZDj9" />
       </concept>
@@ -966,41 +968,6 @@
         </node>
       </node>
     </node>
-    <node concept="13i0hz" id="1t03WazihXH" role="13h7CS">
-      <property role="TrG5h" value="getFunctionTypeParameters" />
-      <ref role="13i0hy" node="1t03WaySlJT" resolve="getFunctionTypeParameters" />
-      <node concept="3Tm1VV" id="1t03WazihXI" role="1B3o_S" />
-      <node concept="3clFbS" id="1t03WazihXO" role="3clF47">
-        <node concept="3SKdUt" id="1t03WazikM3" role="3cqZAp">
-          <node concept="1PaTwC" id="1t03WazikM4" role="1aUNEU">
-            <node concept="3oM_SD" id="1t03WazikO9" role="1PaTwD">
-              <property role="3oM_SC" value="No" />
-            </node>
-            <node concept="3oM_SD" id="1t03WazikRP" role="1PaTwD">
-              <property role="3oM_SC" value="type" />
-            </node>
-            <node concept="3oM_SD" id="1t03WazikTU" role="1PaTwD">
-              <property role="3oM_SC" value="parameter" />
-            </node>
-            <node concept="3oM_SD" id="1t03Wazil04" role="1PaTwD">
-              <property role="3oM_SC" value="either" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="1t03WazijQj" role="3cqZAp">
-          <node concept="2ShNRf" id="1t03WazijTp" role="3cqZAk">
-            <node concept="2T8Vx0" id="1t03Wazikq4" role="2ShVmc">
-              <node concept="2I9FWS" id="1t03Wazikq6" role="2T96Bj">
-                <ref role="2I9WkF" to="hcm8:2yYXHtl6Jkd" resolve="TypeParameter" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2I9FWS" id="1t03WazihXP" role="3clF45">
-        <ref role="2I9WkF" to="hcm8:2yYXHtl6Jkd" resolve="TypeParameter" />
-      </node>
-    </node>
     <node concept="13i0hz" id="1t03WazihXQ" role="13h7CS">
       <property role="TrG5h" value="getFunctionReturnType" />
       <ref role="13i0hy" node="UG7NftRy8a" resolve="getFunctionReturnType" />
@@ -1170,19 +1137,30 @@
       </node>
     </node>
     <node concept="13i0hz" id="1t03WaySlJT" role="13h7CS">
-      <property role="13i0iv" value="true" />
       <property role="13i0it" value="true" />
       <property role="TrG5h" value="getFunctionTypeParameters" />
       <node concept="3Tm1VV" id="1t03WaySlJU" role="1B3o_S" />
-      <node concept="2I9FWS" id="1t03WaySlQS" role="3clF45">
-        <ref role="2I9WkF" to="hcm8:2yYXHtl6Jkd" resolve="TypeParameter" />
+      <node concept="3clFbS" id="1t03WaySlJW" role="3clF47">
+        <node concept="3cpWs6" id="abwK8iHBzN" role="3cqZAp">
+          <node concept="2ShNRf" id="abwK8iHBHZ" role="3cqZAk">
+            <node concept="kMnCb" id="abwK8iHBDR" role="2ShVmc">
+              <node concept="3uibUv" id="abwK8iHBDS" role="kMuH3">
+                <ref role="3uigEE" to="1p8r:26mUjU3_L7_" resolve="TypeParameterDeclaration" />
+              </node>
+            </node>
+          </node>
+        </node>
       </node>
-      <node concept="3clFbS" id="1t03WaySlJW" role="3clF47" />
       <node concept="P$JXv" id="1t03WaySrjZ" role="lGtFl">
         <node concept="TZ5HA" id="1t03WaySrk0" role="TZ5H$">
           <node concept="1dT_AC" id="1t03WaySrk1" role="1dT_Ay">
             <property role="1dT_AB" value="Return kotlin type parameters, if any" />
           </node>
+        </node>
+      </node>
+      <node concept="A3Dl8" id="abwK8iHBiN" role="3clF45">
+        <node concept="3uibUv" id="abwK8iHBsO" role="A3Ik2">
+          <ref role="3uigEE" to="1p8r:26mUjU3_L7_" resolve="TypeParameterDeclaration" />
         </node>
       </node>
     </node>
@@ -1317,8 +1295,10 @@
           </node>
         </node>
       </node>
-      <node concept="2I9FWS" id="1t03WazhJgh" role="3clF45">
-        <ref role="2I9WkF" to="hcm8:2yYXHtl6Jkd" resolve="TypeParameter" />
+      <node concept="A3Dl8" id="abwK8iHtfq" role="3clF45">
+        <node concept="3uibUv" id="abwK8iHtft" role="A3Ik2">
+          <ref role="3uigEE" to="1p8r:26mUjU3_L7_" resolve="TypeParameterDeclaration" />
+        </node>
       </node>
     </node>
     <node concept="13i0hz" id="1t03WazhJgi" role="13h7CS">
@@ -1503,38 +1483,6 @@
         <node concept="3uibUv" id="1t03WazipiH" role="A3Ik2">
           <ref role="3uigEE" to="1p8r:26mUjU3_q_o" resolve="ParameterDeclaration" />
         </node>
-      </node>
-    </node>
-    <node concept="13i0hz" id="1t03WazipiI" role="13h7CS">
-      <property role="TrG5h" value="getFunctionTypeParameters" />
-      <ref role="13i0hy" node="1t03WaySlJT" resolve="getFunctionTypeParameters" />
-      <node concept="3Tm1VV" id="1t03WazipiJ" role="1B3o_S" />
-      <node concept="3clFbS" id="1t03WazipiP" role="3clF47">
-        <node concept="3SKdUt" id="1t03WaziC$b" role="3cqZAp">
-          <node concept="1PaTwC" id="1t03WaziC$c" role="1aUNEU">
-            <node concept="3oM_SD" id="1t03WaziCM8" role="1PaTwD">
-              <property role="3oM_SC" value="No" />
-            </node>
-            <node concept="3oM_SD" id="1t03WaziCRQ" role="1PaTwD">
-              <property role="3oM_SC" value="type" />
-            </node>
-            <node concept="3oM_SD" id="1t03WaziCV9" role="1PaTwD">
-              <property role="3oM_SC" value="parameters" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="1t03WaziBzz" role="3cqZAp">
-          <node concept="2ShNRf" id="1t03WaziBE7" role="3cqZAk">
-            <node concept="2T8Vx0" id="1t03WaziCbG" role="2ShVmc">
-              <node concept="2I9FWS" id="1t03WaziCbI" role="2T96Bj">
-                <ref role="2I9WkF" to="hcm8:2yYXHtl6Jkd" resolve="TypeParameter" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="2I9FWS" id="1t03WazipiQ" role="3clF45">
-        <ref role="2I9WkF" to="hcm8:2yYXHtl6Jkd" resolve="TypeParameter" />
       </node>
     </node>
     <node concept="13i0hz" id="1t03WazipiR" role="13h7CS">
@@ -1840,7 +1788,7 @@
           <node concept="2ShNRf" id="1d2BQ0ZP9B9" role="3clFbG">
             <node concept="1pGfFk" id="1d2BQ0ZPanq" role="2ShVmc">
               <property role="373rjd" value="true" />
-              <ref role="37wK5l" to="mx11:6GqgvHqjqbD" resolve="ClassType" />
+              <ref role="37wK5l" to="mx11:6GqgvHqjqbD" resolve="ClassTypeKey" />
               <node concept="2OqwBi" id="1d2BQ0ZPbQK" role="37wK5m">
                 <node concept="2OqwBi" id="1d2BQ0ZPaFL" role="2Oq$k0">
                   <node concept="13iPFW" id="1d2BQ0ZPatc" role="2Oq$k0" />
@@ -2116,7 +2064,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="3uibUv" id="4L0QGs23BTq" role="EKbjA">
+    <node concept="3uibUv" id="5exxG3kZk2K" role="EKbjA">
       <ref role="3uigEE" to="2q9i:18X2O0FJI_g" resolve="SuperTypesVisitor" />
     </node>
     <node concept="2tJIrI" id="4L0QGs256GX" role="jymVt" />

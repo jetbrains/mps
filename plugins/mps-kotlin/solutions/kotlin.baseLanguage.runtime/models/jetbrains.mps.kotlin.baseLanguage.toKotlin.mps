@@ -17,12 +17,12 @@
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
-    <import index="wbbs" ref="r:63fc91b7-ce2b-43fd-a9e4-94a1182c5fb3(jetbrains.mps.kotlin.runtime.types)" />
     <import index="tpek" ref="r:00000000-0000-4000-0000-011c895902c0(jetbrains.mps.baseLanguage.behavior)" />
-    <import index="1p8r" ref="r:966de44c-de72-437f-889f-78347a061f0c(jetbrains.mps.kotlin.api.declaration)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="d5k6" ref="r:e9005ea6-e4e0-4b7f-8b34-6e6513630cda(jetbrains.mps.kotlin.baseLanguage.typeConversion)" />
     <import index="5m2i" ref="r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)" />
+    <import index="1p8r" ref="r:966de44c-de72-437f-889f-78347a061f0c(jetbrains.mps.kotlin.api.declaration)" />
+    <import index="wbbs" ref="r:63fc91b7-ce2b-43fd-a9e4-94a1182c5fb3(jetbrains.mps.kotlin.api.builtins)" />
     <import index="48vp" ref="r:c0bc7504-314a-4a6f-850a-c38847b9f916(jetbrains.mps.baseLanguage.kotlinRefs.structure)" implicit="true" />
   </imports>
   <registry>
@@ -415,8 +415,8 @@
               <ref role="ehGHo" to="hcm8:2yYXHtl6Jjv" resolve="ClassType" />
             </node>
             <node concept="2YIFZM" id="5n6GrsWll3X" role="33vP2m">
-              <ref role="37wK5l" to="wbbs:6zWVWr2l80_" resolve="classTypeOf" />
               <ref role="1Pybhc" to="wbbs:4XaBo_Yu8Ms" resolve="BuiltIn" />
+              <ref role="37wK5l" to="wbbs:6zWVWr2l80_" resolve="classTypeOf" />
               <node concept="37vLTw" id="5n6GrsWll3Y" role="37wK5m">
                 <ref role="3cqZAo" node="4mCQDm_xcDs" resolve="myTargetClass" />
               </node>
@@ -1624,9 +1624,6 @@
     <property role="3GE5qa" value="declaration" />
     <property role="TrG5h" value="JavaMethodDeclaration" />
     <node concept="3Tm1VV" id="26mUjU3PquT" role="1B3o_S" />
-    <node concept="3uibUv" id="26mUjU3PqvO" role="EKbjA">
-      <ref role="3uigEE" to="1p8r:26mUjU3_jTe" resolve="FunctionDeclaration" />
-    </node>
     <node concept="312cEg" id="26mUjU3PttM" role="jymVt">
       <property role="TrG5h" value="method" />
       <property role="3TUv4t" value="true" />
@@ -2028,6 +2025,9 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
+    <node concept="3uibUv" id="7Fdeft9srQT" role="EKbjA">
+      <ref role="3uigEE" to="1p8r:26mUjU3_jTe" resolve="FunctionDeclaration" />
+    </node>
   </node>
   <node concept="312cEu" id="4W0pdSCM25Y">
     <property role="3GE5qa" value="declaration" />
@@ -2271,7 +2271,7 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="3uibUv" id="6czvyFynm8q" role="1zkMxy">
+    <node concept="3uibUv" id="5exxG3kU1cx" role="1zkMxy">
       <ref role="3uigEE" to="1p8r:6czvyFyngzY" resolve="DefaultTypeParameterDeclaration" />
     </node>
   </node>
@@ -2279,9 +2279,6 @@
     <property role="3GE5qa" value="declaration" />
     <property role="TrG5h" value="JavaClassFunctionReceiver" />
     <node concept="3Tm1VV" id="26mUjU3QSO7" role="1B3o_S" />
-    <node concept="3uibUv" id="26mUjU3QSP2" role="EKbjA">
-      <ref role="3uigEE" to="1p8r:26mUjU3_v7T" resolve="FunctionReceiver" />
-    </node>
     <node concept="312cEg" id="26mUjU3QVvK" role="jymVt">
       <property role="TrG5h" value="myClassifier" />
       <property role="3TUv4t" value="true" />
@@ -2417,6 +2414,9 @@
     <node concept="2AHcQZ" id="5g3vQLJvg5G" role="2AJF6D">
       <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
     </node>
+    <node concept="3uibUv" id="7Fdeft9slWE" role="EKbjA">
+      <ref role="3uigEE" to="1p8r:26mUjU3_v7T" resolve="FunctionReceiver" />
+    </node>
   </node>
   <node concept="312cEu" id="3lDDPlnaJYk">
     <property role="TrG5h" value="JavaVariableHelper" />
@@ -2523,9 +2523,6 @@
     <property role="3GE5qa" value="declaration" />
     <property role="TrG5h" value="JavaDefaultConstructorDeclaration" />
     <node concept="3Tm1VV" id="5H$PF0dpImb" role="1B3o_S" />
-    <node concept="3uibUv" id="5H$PF0dpIF6" role="EKbjA">
-      <ref role="3uigEE" to="1p8r:26mUjU3_jTe" resolve="FunctionDeclaration" />
-    </node>
     <node concept="312cEg" id="5H$PF0dpK7U" role="jymVt">
       <property role="TrG5h" value="classifier" />
       <property role="3TUv4t" value="true" />
@@ -2806,6 +2803,9 @@
       <node concept="2AHcQZ" id="5H$PF0dpKaB" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
+    </node>
+    <node concept="3uibUv" id="7Fdeft9skWr" role="EKbjA">
+      <ref role="3uigEE" to="1p8r:26mUjU3_jTe" resolve="FunctionDeclaration" />
     </node>
   </node>
 </model>

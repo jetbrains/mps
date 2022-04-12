@@ -135,7 +135,6 @@
     </language>
   </registry>
   <node concept="24kQdi" id="26mUjU3lR22">
-    <property role="3GE5qa" value="" />
     <ref role="1XX52x" to="5m2i:26mUjU3jlvc" resolve="JavaMethodCall" />
     <node concept="3EZMnI" id="2yYXHtl6K8v" role="2wV5jI">
       <node concept="l2Vlx" id="2yYXHtl6K8w" role="2iSdaV" />
@@ -218,6 +217,7 @@
   </node>
   <node concept="22mcaB" id="3lDDPlncjm_">
     <ref role="aqKnT" to="5m2i:3lDDPlnawZV" resolve="JavaMethodVariableReference" />
+    <node concept="22hDWj" id="3lDDPlncjrS" role="22hAXT" />
     <node concept="3XHNnq" id="3lDDPlncjBk" role="3ft7WO">
       <ref role="3XGfJA" to="5m2i:3lDDPlnaxtc" resolve="getter" />
       <node concept="1WAQ3h" id="3lDDPlncjML" role="1WZ6D9">
@@ -232,10 +232,9 @@
         </node>
       </node>
     </node>
-    <node concept="22hDWj" id="3lDDPlncjrS" role="22hAXT" />
   </node>
   <node concept="24kQdi" id="4mvBIJf3LL_">
-    <ref role="1XX52x" to="5m2i:4mvBIJf3_Z2" resolve="JavaVariableReference" />
+    <ref role="1XX52x" to="5m2i:4mvBIJf3_Z2" resolve="_JavaVariableReference" />
     <node concept="3EZMnI" id="4mvBIJf3Mdq" role="2wV5jI">
       <node concept="1iCGBv" id="4mvBIJf3Mm3" role="3EZMnx">
         <ref role="1NtTu8" to="5m2i:4mvBIJf3IdV" resolve="variable" />
@@ -251,7 +250,7 @@
     </node>
   </node>
   <node concept="22mcaB" id="4mvBIJf3ZX8">
-    <ref role="aqKnT" to="5m2i:4mvBIJf3_Z2" resolve="JavaVariableReference" />
+    <ref role="aqKnT" to="5m2i:4mvBIJf3_Z2" resolve="_JavaVariableReference" />
     <node concept="22hDWj" id="4mvBIJf402P" role="22hAXT" />
     <node concept="3XHNnq" id="4mvBIJf40f3" role="3ft7WO">
       <ref role="3XGfJA" to="5m2i:4mvBIJf3IdV" resolve="variable" />
@@ -359,7 +358,6 @@
     </node>
   </node>
   <node concept="24kQdi" id="5H$PF0dq5Qa">
-    <property role="3GE5qa" value="" />
     <ref role="1XX52x" to="5m2i:5H$PF0dovDV" resolve="JavaDefaultConstructorCall" />
     <node concept="3EZMnI" id="5H$PF0dq5Tc" role="2wV5jI">
       <node concept="l2Vlx" id="5H$PF0dq5Td" role="2iSdaV" />

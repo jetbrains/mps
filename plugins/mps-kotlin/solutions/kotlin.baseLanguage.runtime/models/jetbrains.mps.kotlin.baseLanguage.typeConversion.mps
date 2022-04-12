@@ -17,9 +17,9 @@
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
-    <import index="wbbs" ref="r:63fc91b7-ce2b-43fd-a9e4-94a1182c5fb3(jetbrains.mps.kotlin.runtime.types)" />
     <import index="akzu" ref="r:13fdb710-e0ae-40a1-880c-e26a8ee8d411(jetbrains.mps.kotlin.baseLanguage.toKotlin)" />
     <import index="3hq4" ref="r:22e37fb0-8cf5-424c-a769-6983cf740d03(jetbrains.mps.kotlin.baseLanguage.toJava)" />
+    <import index="wbbs" ref="r:63fc91b7-ce2b-43fd-a9e4-94a1182c5fb3(jetbrains.mps.kotlin.api.builtins)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
   </imports>
   <registry>
@@ -1746,8 +1746,8 @@
               <ref role="3cqZAo" node="4mCQDm_wYdV" resolve="kotlinPtr" />
             </node>
             <node concept="2YIFZM" id="4I5te4iLi8c" role="37vLTx">
-              <ref role="37wK5l" to="wbbs:6zWVWr2jhR5" resolve="pointerOf" />
               <ref role="1Pybhc" to="wbbs:4XaBo_Yu8Ms" resolve="BuiltIn" />
+              <ref role="37wK5l" to="wbbs:6zWVWr2jhR5" resolve="pointerOf" />
               <node concept="37vLTw" id="4I5te4iLi8d" role="37wK5m">
                 <ref role="3cqZAo" node="7cLK3lPEtYC" resolve="kotlinType" />
               </node>
@@ -2508,8 +2508,8 @@
         <node concept="3clFbF" id="3lDDPln9YOr" role="3cqZAp">
           <node concept="37vLTI" id="3lDDPln9YOs" role="3clFbG">
             <node concept="2YIFZM" id="3lDDPln9YOt" role="37vLTx">
-              <ref role="37wK5l" to="wbbs:6zWVWr2jhR5" resolve="pointerOf" />
               <ref role="1Pybhc" to="wbbs:4XaBo_Yu8Ms" resolve="BuiltIn" />
+              <ref role="37wK5l" to="wbbs:6zWVWr2jhR5" resolve="pointerOf" />
               <node concept="37vLTw" id="3lDDPln9YOu" role="37wK5m">
                 <ref role="3cqZAo" node="3lDDPln9YOn" resolve="kotlinType" />
               </node>
