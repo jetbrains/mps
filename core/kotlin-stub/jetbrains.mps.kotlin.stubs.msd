@@ -8,7 +8,7 @@
     <modelRoot contentPath="${mps_home}/plugins/mps-core/lib/kotlinx-metadata-jvm-0.4.2.jar!/" type="java_classes">
       <sourceRoot location="." />
     </modelRoot>
-    <modelRoot contentPath="${mps_home}/plugins/mps-core/lib/kotlin-stdlib-1.6.0.jar!/" type="java_classes">
+    <modelRoot contentPath="${platform_lib}/kotlin-stdlib-jdk8.jar!/" type="java_classes">
       <sourceRoot location="." />
     </modelRoot>
   </models>

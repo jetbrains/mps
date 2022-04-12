@@ -1,13 +1,11 @@
 <component name="libraryTable">
   <library name="KotlinStdlib">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/plugins/mps-core/lib/kotlin-stdlib-1.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/kotlin-stdlib-jdk8.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/plugins/mps-core/lib/kotlin-stdlib-1.6.0-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/plugins/mps-core/lib/kotlin-stdlib-1.6.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

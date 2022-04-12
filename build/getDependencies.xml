@@ -74,7 +74,11 @@
   <target name="check-kotlinx-metadata" description="Check kotlinx-metadata library availability">
     <condition property="kotlinxmetadata.missing" value="true" else="false">
       <not>
-        <available file="${kotlinx.metadata.lib}"/>
+        <and>
+          <available file="${kotlinx.metadata.lib}/kotlinx-metadata-jvm-0.4.2.jar"/>
+          <available file="${kotlinx.metadata.lib}/kotlinx-metadata-jvm-0.4.2-sources.jar"/>
+          <available file="${kotlinx.metadata.lib}/kotlinx-metadata-jvm-0.4.2-javadoc.jar"/>
+        </and>
       </not>
     </condition>
   </target>
@@ -287,7 +291,7 @@
   </tr>
 <tr valign="top">
     <td class="firstColumn">
-      <span class="name">Kotlin stdlib + embeddable compiler</span>
+      <span class="name">Kotlin embeddable compiler</span>
       <span class="version">1.6.0</span>
     </td>
     <td class="secondColumn">
