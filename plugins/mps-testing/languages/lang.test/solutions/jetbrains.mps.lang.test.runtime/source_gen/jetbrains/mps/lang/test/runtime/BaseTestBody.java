@@ -14,6 +14,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SNodeId;
+import jetbrains.mps.ide.ThreadUtils;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -59,6 +60,17 @@ public class BaseTestBody {
    */
   public final SNode getRealNodeById(String id) {
     return myModel.getNode(SNodeId.fromString(id));
+  }
+
+  protected void runWithinCommand(final Runnable r) {
+    ThreadUtils.runInUIThreadAndWait(() -> {
+      // FIXME drop command, create test repo instead
+      myProject.getModelAccess().executeCommand(r);
+    });
+  }
+
+  protected void runWithinRead(Runnable r) {
+    myProject.getModelAccess().runReadAction(r);
   }
 
   private static final class CONCEPTS {
