@@ -52,8 +52,10 @@ public class ModuleTreeNodeComparator implements Comparator<MPSTreeNode> {
         return 1;
       } else if (module1 instanceof Language) {
         return -1;
-      } else {
+      } else if (module2 instanceof Language){
         return 1;
+      } else {
+        return module1.toString().compareTo(module2.toString());
       }
     } else if(o1 instanceof SModelTreeNode && o2 instanceof SModelTreeNode) {
       return new SModelNameComparator().compare(((SModelTreeNode) o1).getModel(), ((SModelTreeNode) o2).getModel());
