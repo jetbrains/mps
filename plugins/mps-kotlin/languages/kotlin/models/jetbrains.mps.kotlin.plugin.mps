@@ -9,7 +9,7 @@
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
   </languages>
   <imports>
-    <import index="kdsm" ref="r:4d5ec8ef-7006-453c-a8cf-f9897337b08c(jetbrains.mps.kotlin.runtime.typesystem)" />
+    <import index="cds0" ref="r:4d5ec8ef-7006-453c-a8cf-f9897337b08c(jetbrains.mps.kotlin.api.extension)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -91,13 +91,13 @@
   <node concept="vrV6u" id="7VTXQs1r_Bu">
     <property role="TrG5h" value="TypesystemExtension" />
     <node concept="3uibUv" id="7VTXQs1rNjQ" role="luc8K">
-      <ref role="3uigEE" to="kdsm:7VTXQs1r_Rt" resolve="KotlinTypesystem" />
+      <ref role="3uigEE" to="cds0:7VTXQs1r_Rt" resolve="KotlinTypesystem" />
     </node>
   </node>
   <node concept="312cEu" id="7iropoGY2fi">
-    <property role="TrG5h" value="TypesystemHelper" />
+    <property role="TrG5h" value="ExtensionsHelper" />
     <node concept="2YIFZL" id="7iropoGY2Ay" role="jymVt">
-      <property role="TrG5h" value="get" />
+      <property role="TrG5h" value="getTypesystem" />
       <node concept="37vLTG" id="7iropoGYaqn" role="3clF46">
         <property role="TrG5h" value="contextNode" />
         <node concept="3Tqbb2" id="7iropoGYaXI" role="1tU5fm" />
@@ -120,7 +120,7 @@
                         <ref role="3cqZAo" node="7iropoGYbu6" resolve="it" />
                       </node>
                       <node concept="liA8E" id="7iropoGYbu4" role="2OqNvi">
-                        <ref role="37wK5l" to="kdsm:7KVUDZaN2C6" resolve="isAvailable" />
+                        <ref role="37wK5l" to="cds0:7KVUDZaN2C6" resolve="isAvailable" />
                         <node concept="37vLTw" id="7iropoGYbu5" role="37wK5m">
                           <ref role="3cqZAo" node="7iropoGYaqn" resolve="contextNode" />
                         </node>
@@ -139,7 +139,7 @@
       </node>
       <node concept="3Tm1VV" id="7iropoGY2sR" role="1B3o_S" />
       <node concept="3uibUv" id="7iropoGY2zs" role="3clF45">
-        <ref role="3uigEE" to="kdsm:7VTXQs1r_Rt" resolve="KotlinTypesystem" />
+        <ref role="3uigEE" to="cds0:7VTXQs1r_Rt" resolve="KotlinTypesystem" />
       </node>
     </node>
     <node concept="3Tm1VV" id="7iropoGY2fj" role="1B3o_S" />
