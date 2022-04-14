@@ -855,64 +855,13 @@
       <node concept="3Tm1VV" id="213J8cgCCAO" role="1B3o_S" />
       <node concept="3cqZAl" id="213J8cgCCB3" role="3clF45" />
       <node concept="3clFbS" id="213J8cgCCAQ" role="3clF47">
-        <node concept="3SKdUt" id="213J8cgCCDa" role="3cqZAp">
-          <node concept="1PaTwC" id="213J8cgCCDb" role="1aUNEU">
-            <node concept="3oM_SD" id="GDjgUKnF2p" role="1PaTwD">
-              <property role="3oM_SC" value="Default" />
+        <node concept="3SKdUt" id="1TQsu41SlX1" role="3cqZAp">
+          <node concept="1PaTwC" id="1TQsu41SlX2" role="1aUNEU">
+            <node concept="3oM_SD" id="1TQsu41Sm44" role="1PaTwD">
+              <property role="3oM_SC" value="default:" />
             </node>
-            <node concept="3oM_SD" id="GDjgUKnLb6" role="1PaTwD">
-              <property role="3oM_SC" value="behavior:" />
-            </node>
-            <node concept="3oM_SD" id="GDjgUKnLhB" role="1PaTwD">
-              <property role="3oM_SC" value="current" />
-            </node>
-            <node concept="3oM_SD" id="GDjgUKnLl3" role="1PaTwD">
-              <property role="3oM_SC" value="node" />
-            </node>
-            <node concept="3oM_SD" id="GDjgUKnLna" role="1PaTwD">
-              <property role="3oM_SC" value="is" />
-            </node>
-            <node concept="3oM_SD" id="GDjgUKnLpW" role="1PaTwD">
-              <property role="3oM_SC" value="a" />
-            </node>
-            <node concept="3oM_SD" id="2ZbCiJacAeL" role="1PaTwD">
-              <property role="3oM_SC" value="standalone" />
-            </node>
-            <node concept="3oM_SD" id="GDjgUKnLqt" role="1PaTwD">
-              <property role="3oM_SC" value="declaration" />
-            </node>
-          </node>
-        </node>
-        <node concept="1X3_iC" id="6Ijh6DJStKk" role="lGtFl">
-          <property role="3V$3am" value="statement" />
-          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
-          <node concept="3clFbJ" id="2ZbCiJac_kv" role="8Wnug">
-            <node concept="3clFbS" id="2ZbCiJac_kx" role="3clFbx">
-              <node concept="3clFbF" id="GDjgUKnDB8" role="3cqZAp">
-                <node concept="2OqwBi" id="GDjgUKnDJi" role="3clFbG">
-                  <node concept="37vLTw" id="GDjgUKnDB6" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6Ijh6DJSt$R" resolve="collector" />
-                  </node>
-                  <node concept="liA8E" id="GDjgUKnDYn" role="2OqNvi">
-                    <ref role="37wK5l" to="tbhz:2QFnHPqzP7R" resolve="declare" />
-                    <node concept="1PxgMI" id="GDjgUKnGJw" role="37wK5m">
-                      <property role="1BlNFB" value="true" />
-                      <node concept="chp4Y" id="GDjgUKnGRT" role="3oSUPX">
-                        <ref role="cht4Q" to="hcm8:2yYXHtl6JcK" resolve="IIdentifier" />
-                      </node>
-                      <node concept="13iPFW" id="GDjgUKnEdd" role="1m5AlR" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="2OqwBi" id="2ZbCiJac_$$" role="3clFbw">
-              <node concept="37vLTw" id="2ZbCiJac_si" role="2Oq$k0">
-                <ref role="3cqZAo" node="2ZbCiJa6anF" resolve="context" />
-              </node>
-              <node concept="2S8uIT" id="2ZbCiJac_LL" role="2OqNvi">
-                <ref role="2S8YL0" to="tbhz:2ZbCiJaaZgR" resolve="withStandaloneDeclarations" />
-              </node>
+            <node concept="3oM_SD" id="1TQsu41Sm9z" role="1PaTwD">
+              <property role="3oM_SC" value="no-op" />
             </node>
           </node>
         </node>
@@ -1206,27 +1155,6 @@
       <node concept="2hMVRd" id="2_89xr1Kqor" role="3clF45">
         <node concept="3uibUv" id="2_89xr1Kqot" role="2hN53Y">
           <ref role="3uigEE" to="mx11:6GqgvHqhqpA" resolve="TypeKey" />
-        </node>
-      </node>
-    </node>
-    <node concept="13i0hz" id="4gvOB2uQQX3" role="13h7CS">
-      <property role="TrG5h" value="getMemberSignatureKind" />
-      <property role="2Ki8OM" value="true" />
-      <ref role="13i0hy" node="5q426iHFtTk" resolve="getMemberSignatureKind" />
-      <node concept="3Tm1VV" id="4gvOB2uQQX4" role="1B3o_S" />
-      <node concept="3clFbS" id="4gvOB2uQQXm" role="3clF47">
-        <node concept="3clFbF" id="4gvOB2uQRCK" role="3cqZAp">
-          <node concept="3VsKOn" id="4gvOB2uQRDa" role="3clFbG">
-            <ref role="3VsUkX" to="nww:4gvOB2uQvW_" resolve="ClassSignature" />
-          </node>
-        </node>
-      </node>
-      <node concept="3uibUv" id="4gvOB2uQQXn" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~Class" resolve="Class" />
-        <node concept="3qUE_q" id="4gvOB2uQQXo" role="11_B2D">
-          <node concept="3uibUv" id="4gvOB2uQQXp" role="3qUE_r">
-            <ref role="3uigEE" to="nww:18X2O0FJocj" resolve="MemberSignature" />
-          </node>
         </node>
       </node>
     </node>
@@ -6239,6 +6167,16 @@
             <property role="1dT_AB" value="Get the kind of signature to request when asking for this member in a class scope" />
           </node>
         </node>
+        <node concept="TZ5HI" id="1TQsu41SKve" role="3nqlJM">
+          <node concept="TZ5HA" id="1TQsu41SKvf" role="3HnX3l">
+            <node concept="1dT_AC" id="1TQsu41SKGe" role="1dT_Ay">
+              <property role="1dT_AB" value="concept may produce multiple signature, which kinds are now to be explicitly set in scopes" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="1TQsu41SKvg" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
       </node>
     </node>
     <node concept="13hLZK" id="5q426iHFtS$" role="13h7CW">
@@ -6520,27 +6458,6 @@
     <ref role="13h7C2" to="hcm8:213J8chjiEQ" resolve="IVariableIdentifier" />
     <node concept="13hLZK" id="5q426iHFtXi" role="13h7CW">
       <node concept="3clFbS" id="5q426iHFtXj" role="2VODD2" />
-    </node>
-    <node concept="13i0hz" id="5q426iHFtY2" role="13h7CS">
-      <property role="TrG5h" value="getMemberSignatureKind" />
-      <property role="2Ki8OM" value="true" />
-      <ref role="13i0hy" node="5q426iHFtTk" resolve="getMemberSignatureKind" />
-      <node concept="3Tm1VV" id="5q426iHFtY3" role="1B3o_S" />
-      <node concept="3clFbS" id="5q426iHFtY8" role="3clF47">
-        <node concept="3clFbF" id="5q426iHFtYd" role="3cqZAp">
-          <node concept="3VsKOn" id="5q426iHFuqF" role="3clFbG">
-            <ref role="3VsUkX" to="nww:5q426iHsjrS" resolve="PropertySignature" />
-          </node>
-        </node>
-      </node>
-      <node concept="3uibUv" id="5q426iHFtY9" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~Class" resolve="Class" />
-        <node concept="3qUE_q" id="5q426iHFtYa" role="11_B2D">
-          <node concept="3uibUv" id="5q426iHFtYb" role="3qUE_r">
-            <ref role="3uigEE" to="nww:18X2O0FJocj" resolve="MemberSignature" />
-          </node>
-        </node>
-      </node>
     </node>
     <node concept="13i0hz" id="1vYW8S3rTh_" role="13h7CS">
       <property role="13i0iv" value="true" />
@@ -7716,27 +7633,6 @@
     <ref role="13h7C2" to="hcm8:3r3AWMM3Orf" resolve="IFunctionIdentifier" />
     <node concept="13hLZK" id="6f3juM$_PdW" role="13h7CW">
       <node concept="3clFbS" id="6f3juM$_PdX" role="2VODD2" />
-    </node>
-    <node concept="13i0hz" id="6f3juM$_Pe6" role="13h7CS">
-      <property role="TrG5h" value="getMemberSignatureKind" />
-      <property role="2Ki8OM" value="true" />
-      <ref role="13i0hy" node="5q426iHFtTk" resolve="getMemberSignatureKind" />
-      <node concept="3Tm1VV" id="6f3juM$_Pe7" role="1B3o_S" />
-      <node concept="3clFbS" id="6f3juM$_Pep" role="3clF47">
-        <node concept="3clFbF" id="6f3juM$_Po$" role="3cqZAp">
-          <node concept="3VsKOn" id="6f3juM$_Ppi" role="3clFbG">
-            <ref role="3VsUkX" to="nww:5q426iHsmma" resolve="FunctionSignature" />
-          </node>
-        </node>
-      </node>
-      <node concept="3uibUv" id="6f3juM$_Peq" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~Class" resolve="Class" />
-        <node concept="3qUE_q" id="6f3juM$_Per" role="11_B2D">
-          <node concept="3uibUv" id="6f3juM$_Pes" role="3qUE_r">
-            <ref role="3uigEE" to="nww:18X2O0FJocj" resolve="MemberSignature" />
-          </node>
-        </node>
-      </node>
     </node>
     <node concept="13i0hz" id="1VI7K1kLcNv" role="13h7CS">
       <property role="13i0iv" value="true" />

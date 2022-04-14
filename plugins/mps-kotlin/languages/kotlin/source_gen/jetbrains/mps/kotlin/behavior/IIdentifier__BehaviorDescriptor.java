@@ -32,6 +32,7 @@ public final class IIdentifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  @Deprecated
   /*package*/ static Class<? extends MemberSignature> getMemberSignatureKind_id5q426iHFtTk(@NotNull SAbstractConcept __thisConcept__) {
     // Any kind of signature by default
     return MemberSignature.class;

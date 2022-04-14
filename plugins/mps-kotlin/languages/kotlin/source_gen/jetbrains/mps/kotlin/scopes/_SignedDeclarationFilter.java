@@ -5,8 +5,6 @@ package jetbrains.mps.kotlin.scopes;
 import jetbrains.mps.kotlin.runtime.members.signature.MemberSignature;
 import jetbrains.mps.references.Reference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.kotlin.behavior.IIdentifier__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
 /**
  * Allow to filter from both concept and signature kind.
@@ -16,8 +14,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
  * processing (eg. ignore properties if working on functions, or functions whose name is different from some value...)
  * - concept filter is used to filter resulting nodes provided to scope (those could be useful during processing but are
  * omitted afterwards, eg. base language methods when getting scope for kotlin function call)
+ * 
+ * @deprecated unified in signature collector
  */
-public class SignedDeclarationFilter {
+@Deprecated
+public class _SignedDeclarationFilter {
   private SignatureFilter<? extends MemberSignature> mySignatureFilter;
   public SignatureFilter<? extends MemberSignature> getSignatureFilter() {
     return this.mySignatureFilter;
@@ -62,20 +63,23 @@ public class SignedDeclarationFilter {
   }
 
 
-  public SignedDeclarationFilter(SAbstractConcept filterConcept, SignatureFilter<? extends MemberSignature> signatureFilter) {
+  @Deprecated
+  public _SignedDeclarationFilter(SAbstractConcept filterConcept, SignatureFilter<? extends MemberSignature> signatureFilter) {
     this.setConceptFilter(filterConcept);
     this.setSignatureFilter(signatureFilter);
   }
 
-  public SignedDeclarationFilter(SAbstractConcept filterConcept, Class<? extends MemberSignature> signatureKind) {
+  @Deprecated
+  public _SignedDeclarationFilter(SAbstractConcept filterConcept, Class<? extends MemberSignature> signatureKind) {
     this(filterConcept, new SignatureFilter<>(signatureKind));
   }
 
-  public SignedDeclarationFilter(SAbstractConcept filterConcept) {
-    this(filterConcept, IIdentifier__BehaviorDescriptor.getMemberSignatureKind_id5q426iHFtTk.invoke(SNodeOperations.asSConcept(filterConcept)));
+  @Deprecated
+  public _SignedDeclarationFilter(SAbstractConcept filterConcept) {
+    this(filterConcept, (Class<? extends MemberSignature>) null);
   }
 
-  public DeclarationCollector toCollector() {
-    return new DeclarationCollector(this);
+  public _DeclarationCollector toCollector() {
+    return new _DeclarationCollector(this);
   }
 }

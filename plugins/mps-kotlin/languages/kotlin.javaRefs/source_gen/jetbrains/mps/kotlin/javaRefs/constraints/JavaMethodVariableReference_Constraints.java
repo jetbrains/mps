@@ -24,7 +24,7 @@ import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.kotlin.scopes.ScopeContext;
-import jetbrains.mps.kotlin.scopes.ScopeHelper;
+import jetbrains.mps.kotlin.scopes.NavigationScopeHelper;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.kotlin.scopes.SignedDeclarationFilter;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
@@ -64,7 +64,7 @@ public class JavaMethodVariableReference_Constraints extends BaseConstraintsDesc
           }
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
-            Tuples._3<Boolean, SNode, ScopeContext> context = ScopeHelper.navigatableContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink());
+            Tuples._3<Boolean, SNode, ScopeContext> context = NavigationScopeHelper.navigatableContext(_context.getReferenceNode(), _context.getContextNode(), _context.getContainmentLink());
 
             // TODO static methods if context[2]
             if ((boolean) context._0()) {

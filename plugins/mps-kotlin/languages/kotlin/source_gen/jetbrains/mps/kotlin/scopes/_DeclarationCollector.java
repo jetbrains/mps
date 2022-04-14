@@ -10,31 +10,33 @@ import jetbrains.mps.kotlin.runtime.members.signature.MemberSignature;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.kotlin.behavior.IIdentifier__BehaviorDescriptor;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 
 /**
  * Allows to collect declarations that pass filter validations into a list
+ * 
+ * @deprecated unified with signature collector
  */
-public class DeclarationCollector {
-  private SignedDeclarationFilter myFilter;
-  public SignedDeclarationFilter getFilter() {
+@Deprecated
+public class _DeclarationCollector {
+  private _SignedDeclarationFilter myFilter;
+  public _SignedDeclarationFilter getFilter() {
     return this.myFilter;
   }
-  private void _setFilter(SignedDeclarationFilter value) {
+  private void _setFilter(_SignedDeclarationFilter value) {
     this.myFilter = value;
   }
-  private SignedDeclarationFilter setFilter(SignedDeclarationFilter value) {
+  private _SignedDeclarationFilter setFilter(_SignedDeclarationFilter value) {
     _setFilter(value);
     return value;
   }
-  private Reference<SignedDeclarationFilter> refToFilter() {
-    return new Reference<SignedDeclarationFilter>() {
-      public SignedDeclarationFilter get() {
+  private Reference<_SignedDeclarationFilter> refToFilter() {
+    return new Reference<_SignedDeclarationFilter>() {
+      public _SignedDeclarationFilter get() {
         return getFilter();
       }
-      public void set(SignedDeclarationFilter value) {
+      public void set(_SignedDeclarationFilter value) {
         _setFilter(value);
       }
     };
@@ -61,7 +63,8 @@ public class DeclarationCollector {
     };
   }
 
-  public DeclarationCollector(SignedDeclarationFilter filter) {
+  @Deprecated
+  public _DeclarationCollector(_SignedDeclarationFilter filter) {
     this.setFilter(filter);
     this.setCollected(new ArrayList<SNode>());
   }
@@ -80,11 +83,13 @@ public class DeclarationCollector {
     declareAll(Sequence.<SNode>singleton(node), kind);
   }
 
+  /**
+   * 
+   * @deprecated doesn't function anymore
+   */
+  @Deprecated
   public void declare(SNode node) {
-    if ((node == null)) {
-      return;
-    }
-    declareAll(Sequence.<SNode>singleton(node), IIdentifier__BehaviorDescriptor.getMemberSignatureKind_id5q426iHFtTk.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(node))));
+    // no more ways to know kind
   }
 
   public Scope getScope() {

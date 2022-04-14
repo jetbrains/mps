@@ -15,7 +15,7 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import jetbrains.mps.scope.CompositeScope;
-import jetbrains.mps.kotlin.scopes.ClassScope;
+import jetbrains.mps.kotlin.scopes.ClassScopeHelper;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -39,7 +39,7 @@ public class IClassReference_Constraints extends BaseConstraintsDescriptor {
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             // Unit is always included in this scope (it also doesn't make sense outside type system to refer other objects as type as they are unique instance)
-            return new CompositeScope(new UnitScope(_context.getContextNode().getModel().getRepository()), ClassScope.create(_context.getContextNode()));
+            return new CompositeScope(new UnitScope(_context.getContextNode().getModel().getRepository()), ClassScopeHelper.create(_context.getContextNode()));
           }
         };
       }

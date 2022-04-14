@@ -11,7 +11,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 
-public class ClassScope {
+public class ClassScopeHelper {
   /**
    * Returns whether the child node has access to instance scope of given class.
    * 

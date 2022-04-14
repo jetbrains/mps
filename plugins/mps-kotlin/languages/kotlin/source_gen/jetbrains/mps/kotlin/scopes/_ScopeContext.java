@@ -4,6 +4,10 @@ package jetbrains.mps.kotlin.scopes;
 
 import jetbrains.mps.references.Reference;
 
+/**
+ * Defines a set of signature/member kinds. As several concepts use various combinations, this allows to unify all
+ * resolution in a single scoping method which filters required members.
+ */
 public class ScopeContext {
   public static final ScopeContext REFERENCE = new ScopeContext(true, true, false, false);
   public static final ScopeContext INSTANCE_RECEIVER = new ScopeContext(true, false, false, false);

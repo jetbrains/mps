@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model ref="r:8a99441d-539c-493f-b884-7b6b084d024b(jetbrains.mps.kotlin.scopes.signed)">
   <persistence version="9" />
-  <attribute name="doNotGenerate" value="false" />
   <languages>
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
     <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
@@ -448,7 +447,7 @@
     </language>
   </registry>
   <node concept="312cEu" id="6Ijh6DJSIpY">
-    <property role="3GE5qa" value="declarations.new.composed" />
+    <property role="3GE5qa" value="composed" />
     <property role="TrG5h" value="CompositeSignatureScope" />
     <node concept="312cEg" id="6Ijh6DJSKkE" role="jymVt">
       <property role="TrG5h" value="myScopes" />
@@ -608,8 +607,8 @@
                   <node concept="3clFbF" id="6Ijh6DJTgsh" role="3cqZAp">
                     <node concept="3y3z36" id="6Ijh6DJTjJ9" role="3clFbG">
                       <node concept="Rm8GO" id="6Ijh6DJTlhh" role="3uHU7w">
-                        <ref role="1Px2BO" node="6Ijh6DJERfO" resolve="ContainmentStatus" />
                         <ref role="Rm8GQ" node="6Ijh6DJER$Q" />
+                        <ref role="1Px2BO" node="6Ijh6DJERfO" resolve="ContainmentStatus" />
                       </node>
                       <node concept="37vLTw" id="6Ijh6DJTgsg" role="3uHU7B">
                         <ref role="3cqZAo" node="6Ijh6DJTfTr" resolve="it" />
@@ -816,7 +815,7 @@
     </node>
   </node>
   <node concept="312cEu" id="1VgEGDniuUr">
-    <property role="3GE5qa" value="declarations.new.composed" />
+    <property role="3GE5qa" value="composed" />
     <property role="TrG5h" value="DelegatedSignatureScope" />
     <property role="1sVAO0" value="true" />
     <node concept="312cEg" id="1VgEGDniwE5" role="jymVt">
@@ -979,7 +978,7 @@
     </node>
   </node>
   <node concept="312cEu" id="27GSRRvUfpC">
-    <property role="3GE5qa" value="declarations.new.composed" />
+    <property role="3GE5qa" value="composed" />
     <property role="TrG5h" value="FilteringSignatureScope" />
     <property role="1sVAO0" value="true" />
     <node concept="312cEg" id="27GSRRvUhcy" role="jymVt">
@@ -1224,7 +1223,7 @@
     </node>
   </node>
   <node concept="312cEu" id="6Ijh6DJE7jt">
-    <property role="3GE5qa" value="declarations.new.composed" />
+    <property role="3GE5qa" value="composed" />
     <property role="TrG5h" value="HidingBySignatureScope" />
     <node concept="3clFbW" id="1VgEGDn_yAL" role="jymVt">
       <node concept="3cqZAl" id="1VgEGDn_yAM" role="3clF45" />
@@ -1424,7 +1423,7 @@
     </node>
   </node>
   <node concept="312cEu" id="6Ijh6DJP7l6">
-    <property role="3GE5qa" value="declarations.new.composed" />
+    <property role="3GE5qa" value="composed" />
     <property role="TrG5h" value="ListSignatureScope" />
     <node concept="312cEg" id="6Ijh6DJP9Hw" role="jymVt">
       <property role="TrG5h" value="myProducer" />
@@ -1737,7 +1736,7 @@
   </node>
   <node concept="312cEu" id="6Ijh6DJ_fG_">
     <property role="TrG5h" value="ConstructorsScope" />
-    <property role="3GE5qa" value="declarations.new.specific" />
+    <property role="3GE5qa" value="specific" />
     <node concept="312cEg" id="VXQuBhR9w" role="jymVt">
       <property role="TrG5h" value="myModels" />
       <property role="3TUv4t" value="true" />
@@ -2292,13 +2291,13 @@
         </node>
       </node>
     </node>
-    <node concept="3Tm1VV" id="6Ijh6DJ_fHJ" role="1B3o_S" />
+    <node concept="3Tm1VV" id="1TQsu41XcTy" role="1B3o_S" />
     <node concept="3uibUv" id="6Ijh6DJDQMw" role="EKbjA">
       <ref role="3uigEE" node="6Ijh6DJDHpd" />
     </node>
   </node>
   <node concept="312cEu" id="6Ijh6DJDVaA">
-    <property role="3GE5qa" value="declarations.new.specific" />
+    <property role="3GE5qa" value="specific" />
     <property role="TrG5h" value="InstanceSignatureScope" />
     <node concept="312cEg" id="6Ijh6DJE11M" role="jymVt">
       <property role="TrG5h" value="myTypeReference" />
@@ -2891,7 +2890,7 @@
   </node>
   <node concept="312cEu" id="1VgEGDngi_M">
     <property role="TrG5h" value="ReceiverTypeScope" />
-    <property role="3GE5qa" value="declarations.new.specific" />
+    <property role="3GE5qa" value="specific" />
     <node concept="3Tm1VV" id="1VgEGDngi_N" role="1B3o_S" />
     <node concept="Wx3nA" id="6nK3tk9D0P3" role="jymVt">
       <property role="TrG5h" value="WILDCARD" />
@@ -3913,7 +3912,7 @@
     </node>
   </node>
   <node concept="312cEu" id="1VgEGDnfNc1">
-    <property role="3GE5qa" value="declarations.new.util" />
+    <property role="3GE5qa" value="util" />
     <property role="TrG5h" value="SignatureScopeAsScope" />
     <node concept="312cEg" id="ccTy7$6WZA" role="jymVt">
       <property role="TrG5h" value="wrapped" />
@@ -4238,7 +4237,7 @@
     </node>
   </node>
   <node concept="312cEu" id="6Ijh6DJQw89">
-    <property role="3GE5qa" value="declarations.new.util" />
+    <property role="3GE5qa" value="util" />
     <property role="TrG5h" value="FilterSignatureCollector" />
     <node concept="2RhdJD" id="6Ijh6DJQwUL" role="jymVt">
       <property role="2RkwnN" value="filter" />
@@ -4655,7 +4654,6 @@
   <node concept="312cEu" id="6Ijh6DJOXXO">
     <property role="TrG5h" value="EmptySignatureScope" />
     <property role="1EXbeo" value="true" />
-    <property role="3GE5qa" value="declarations.new" />
     <node concept="Wx3nA" id="6nK3tkauT6L" role="jymVt">
       <property role="TrG5h" value="INSTANCE" />
       <property role="3TUv4t" value="true" />
@@ -4751,7 +4749,6 @@
   </node>
   <node concept="3HP615" id="6Ijh6DJDHpd">
     <property role="TrG5h" value="SignatureScope" />
-    <property role="3GE5qa" value="declarations.new" />
     <node concept="3clFb_" id="6Ijh6DJDHKP" role="jymVt">
       <property role="TrG5h" value="getElements" />
       <node concept="3clFbS" id="6Ijh6DJDHKS" role="3clF47" />

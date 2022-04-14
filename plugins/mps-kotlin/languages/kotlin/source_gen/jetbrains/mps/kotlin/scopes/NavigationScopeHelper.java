@@ -13,7 +13,7 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class ScopeHelper {
+public class NavigationScopeHelper {
   /**
    * Return the navigation context if present based on scope request.
    * 

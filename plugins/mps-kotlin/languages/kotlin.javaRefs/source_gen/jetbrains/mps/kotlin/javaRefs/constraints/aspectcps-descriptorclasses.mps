@@ -3201,7 +3201,7 @@
                                       </node>
                                       <node concept="2YIFZM" id="cQ" role="33vP2m">
                                         <ref role="37wK5l" to="tbhz:3lDDPlndeEE" resolve="navigatableContext" />
-                                        <ref role="1Pybhc" to="tbhz:3lDDPlncTbv" resolve="ScopeHelper" />
+                                        <ref role="1Pybhc" to="tbhz:3lDDPlncTbv" resolve="NavigationScopeHelper" />
                                         <uo k="s:originTrace" v="n:3848791341541967727" />
                                         <node concept="1DoJHT" id="cU" role="37wK5m">
                                           <property role="1Dpdpm" value="getReferenceNode" />
@@ -4304,7 +4304,7 @@
                                       </node>
                                       <node concept="2YIFZM" id="hv" role="33vP2m">
                                         <ref role="37wK5l" to="tbhz:3lDDPlndeEE" resolve="navigatableContext" />
-                                        <ref role="1Pybhc" to="tbhz:3lDDPlncTbv" resolve="ScopeHelper" />
+                                        <ref role="1Pybhc" to="tbhz:3lDDPlncTbv" resolve="NavigationScopeHelper" />
                                         <uo k="s:originTrace" v="n:3848791341542138198" />
                                         <node concept="1DoJHT" id="hz" role="37wK5m">
                                           <property role="1Dpdpm" value="getReferenceNode" />
@@ -4929,7 +4929,7 @@
                                       </node>
                                       <node concept="2YIFZM" id="ka" role="33vP2m">
                                         <ref role="37wK5l" to="tbhz:3lDDPlndeEE" resolve="navigatableContext" />
-                                        <ref role="1Pybhc" to="tbhz:3lDDPlncTbv" resolve="ScopeHelper" />
+                                        <ref role="1Pybhc" to="tbhz:3lDDPlncTbv" resolve="NavigationScopeHelper" />
                                         <uo k="s:originTrace" v="n:5016903245542439397" />
                                         <node concept="1DoJHT" id="ke" role="37wK5m">
                                           <property role="1Dpdpm" value="getReferenceNode" />
