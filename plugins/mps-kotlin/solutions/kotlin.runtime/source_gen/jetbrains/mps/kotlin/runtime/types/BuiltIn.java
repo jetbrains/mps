@@ -27,6 +27,7 @@ public enum BuiltIn {
   UNIT("kotlin/Unit"),
   ANY("kotlin/Any"),
   NOTHING("kotlin/Nothing"),
+  CHAR("kotlin/Char"),
   STRING("kotlin/String"),
   BOOLEAN("kotlin/Boolean"),
   FUNCTION("kotlin/Function"),

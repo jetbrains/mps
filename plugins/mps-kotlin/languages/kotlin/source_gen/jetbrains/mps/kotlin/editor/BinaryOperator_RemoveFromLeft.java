@@ -8,6 +8,8 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -16,7 +18,6 @@ import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class BinaryOperator_RemoveFromLeft {
 
@@ -27,6 +28,10 @@ public class BinaryOperator_RemoveFromLeft {
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
         if (DeletionApproverUtil.approve(editorContext, SLinkOperations.getTarget(node, LINKS.left$yQgK))) {
+          return;
+        }
+        if (!(SNodeOperations.getConcept(SLinkOperations.getTarget(node, LINKS.left$yQgK)).isAbstract())) {
+          SLinkOperations.setTarget(node, LINKS.left$yQgK, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L, "jetbrains.mps.kotlin.structure.IExpression"))));
           return;
         }
 

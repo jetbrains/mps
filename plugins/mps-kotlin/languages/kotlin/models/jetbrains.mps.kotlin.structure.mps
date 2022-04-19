@@ -396,6 +396,9 @@
     <node concept="PrWs8" id="1xjvXvNN090" role="PrDN$">
       <ref role="PrY4T" node="1xjvXvNMY47" resolve="IExpressionLike" />
     </node>
+    <node concept="PrWs8" id="llKAJl12jU" role="PrDN$">
+      <ref role="PrY4T" node="2mD64u3yQho" resolve="IInferencePart" />
+    </node>
   </node>
   <node concept="PlHQZ" id="2yYXHtl6JeY">
     <property role="EcuMT" value="2936055411798373310" />
@@ -1242,6 +1245,7 @@
     <property role="34LRSv" value="(a,b,c)" />
     <property role="R4oN_" value="multi lambda parameter" />
     <property role="3GE5qa" value="expression.function" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="2yYXHtl6JtO" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798374260" />
       <property role="20kJfa" value="_variables" />
@@ -1641,6 +1645,7 @@
     <property role="34LRSv" value="lambda" />
     <property role="R4oN_" value="lambda literal" />
     <property role="3GE5qa" value="expression.function" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="2yYXHtl6Jxt" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798374493" />
       <property role="20kJfa" value="statements_" />
@@ -2519,6 +2524,9 @@
       <property role="TrG5h" value="negation" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
+    <node concept="PrWs8" id="6$EaMzztRID" role="PzmwI">
+      <ref role="PrY4T" node="3n8adBivTU3" resolve="IConditionalFlow" />
+    </node>
   </node>
   <node concept="1TIwiD" id="1502Vug_m75">
     <property role="EcuMT" value="1243006380186886597" />
@@ -2656,6 +2664,7 @@
     <property role="3GE5qa" value="expression.reference" />
     <property role="TrG5h" value="VariableRefExpression" />
     <property role="R4oN_" value="variable reference expression" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="4Nah4_QdulM" role="1TKVEi">
       <property role="IQ2ns" value="5533310174484620658" />
       <property role="20kJfa" value="target" />

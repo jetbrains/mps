@@ -5,7 +5,6 @@ package jetbrains.mps.kotlin.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
-import jetbrains.mps.editor.runtime.deletionApprover.DeletionApproverUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.editor.runtime.selection.SelectionUtil;
@@ -26,10 +25,6 @@ public class UnaryExpression_RemoveFromSuffix {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, node)) {
-          return;
-        }
-
         SNode replaced = SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.operand$YS5t));
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, replaced, SelectionManager.LAST_CELL, -1);
       }
@@ -42,10 +37,6 @@ public class UnaryExpression_RemoveFromSuffix {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        if (DeletionApproverUtil.approve(editorContext, node)) {
-          return;
-        }
-
         SNode replaced = SNodeOperations.replaceWithAnother(node, SLinkOperations.getTarget(node, LINKS.operand$YS5t));
         SelectionUtil.selectLabelCellAnSetCaret(editorContext, replaced, SelectionManager.LAST_CELL, -1);
       }

@@ -231,6 +231,13 @@
         <property role="Xl_RC" value="kotlin/Nothing" />
       </node>
     </node>
+    <node concept="QsSxf" id="M_SkmTPDPZ" role="Qtgdg">
+      <property role="TrG5h" value="CHAR" />
+      <ref role="37wK5l" node="4XaBo_Yu8YQ" resolve="BuiltIn" />
+      <node concept="Xl_RD" id="M_SkmTPEk1" role="37wK5m">
+        <property role="Xl_RC" value="kotlin/Char" />
+      </node>
+    </node>
     <node concept="QsSxf" id="4XaBo_Yu9E4" role="Qtgdg">
       <property role="TrG5h" value="STRING" />
       <ref role="37wK5l" node="4XaBo_Yu8YQ" resolve="BuiltIn" />

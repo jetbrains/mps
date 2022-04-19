@@ -2014,6 +2014,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.interface_();
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xa2222779c25749dL);
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x18537fd7f3cbe107L);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x25a91847838b6458L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373302");
     b.version(3);
     return b.create();
@@ -2417,6 +2418,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     // extends: jetbrains.mps.kotlin.structure.TypePostFixUnaryExpression
     b.super_(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6babb2d406575098L);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x35c828d9d27f9e83L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186882004");
     b.version(3);
     b.property("negation", 0x11400bb790d35184L).type(PrimitiveTypeId.BOOLEAN).origin("1243006380190945668").done();
