@@ -20,11 +20,12 @@ import jetbrains.mps.lang.dataFlow.framework.instructions.FinallyInstruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.EndTryInstruction;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.ReachabilityAnalyzer;
 import java.util.HashSet;
+import jetbrains.mps.lang.dataFlow.framework.instructions.RetInstruction;
+import jetbrains.mps.lang.dataFlow.framework.instructions.JumpInstruction;
+import jetbrains.mps.lang.dataFlow.framework.instructions.IfJumpInstruction;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.InitializedVariablesAnalyzer;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.MayBeInitializedVariablesAnalyzer;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.LivenessAnalyzer;
-import jetbrains.mps.lang.dataFlow.framework.instructions.IfJumpInstruction;
-import jetbrains.mps.lang.dataFlow.framework.instructions.JumpInstruction;
 
 @GeneratedClass(node = "r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)/4074113095384029388", model = "r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)")
 public class Program {
@@ -235,6 +236,17 @@ public class Program {
     return result;
   }
   public Set<ReadInstruction> getUninitializedReads() {
+    ArrayList<Instruction> copyOfInstructions = new ArrayList<>();
+    copyOfInstructions.addAll(myInstructions);
+    for (Instruction inst : copyOfInstructions) {
+      TryFinallyInfo enclosingBlock = inst.getEnclosingBlock();
+      if (!(inst instanceof RetInstruction) && !(inst instanceof JumpInstruction) && enclosingBlock != null && inst.isBefore(enclosingBlock.getFinally())) {
+        IfJumpInstruction jump = new IfJumpInstruction();
+        jump.setJumpTo(enclosingBlock.getFinally().getIndex());
+        insert(jump, inst.getIndex(), true, true);
+        jump.updateJumps(0);
+      }
+    }
     AnalysisResult<VarSet> analysisResult = analyze(new InitializedVariablesAnalyzer());
     Set<ReadInstruction> result = new HashSet<>();
     for (Instruction i : myInstructions) {
