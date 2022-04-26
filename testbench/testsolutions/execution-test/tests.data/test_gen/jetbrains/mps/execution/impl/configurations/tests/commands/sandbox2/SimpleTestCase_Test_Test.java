@@ -34,7 +34,7 @@ public class SimpleTestCase_Test_Test extends BaseTransformationTest {
     public void test_test1() throws Exception {
       runWithinCommand(() -> {
       });
-      runWithinCommand(() -> Assert.assertFalse(false));
+      runWithinRead(() -> Assert.assertFalse(false));
     }
 
   }

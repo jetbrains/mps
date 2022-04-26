@@ -11,7 +11,7 @@
       <node id="3879137142820985113" at="20,35,21,25" concept="4" />
       <node id="3879137142820985162" at="25,44,26,35" concept="1" />
       <node id="3879137142820985113" at="31,52,32,19" concept="4" />
-      <node id="3879137142820985751" at="38,30,39,42" concept="1" />
+      <node id="3879137142820985751" at="38,27,39,42" concept="1" />
       <node id="3879137142820985208" at="39,42,40,34" concept="1" />
       <node id="3879137142820985113" at="17,0,19,0" concept="3" trace="ourParamCache" />
       <node id="3879137142820985162" at="35,46,37,9" concept="1" />
@@ -24,7 +24,7 @@
       <scope id="3879137142820985113" at="20,35,21,25" />
       <scope id="3879137142820985162" at="25,44,26,35" />
       <scope id="3879137142820985113" at="31,52,32,19" />
-      <scope id="3879137142820985162" at="38,30,40,34" />
+      <scope id="3879137142820985162" at="38,27,40,34" />
       <scope id="3879137142820985113" at="20,0,23,0" />
       <scope id="3879137142820985113" at="31,0,34,0">
         <var name="owner" id="3879137142820985113" />
@@ -41,7 +41,7 @@
       <node id="4414733712821357918" at="21,46,22,25" concept="4" />
       <node id="4414733712821357919" at="26,45,27,36" concept="1" />
       <node id="4414733712821357918" at="32,52,33,19" concept="4" />
-      <node id="5101378672992592588" at="39,30,40,165" concept="1" />
+      <node id="5101378672992592588" at="39,27,40,165" concept="1" />
       <node id="4414733712821357922" at="40,165,41,34" concept="1" />
       <node id="4414733712821357918" at="18,0,20,0" concept="3" trace="ourParamCache" />
       <node id="4414733712821357919" at="36,47,38,9" concept="1" />
@@ -54,7 +54,7 @@
       <scope id="4414733712821357918" at="21,46,22,25" />
       <scope id="4414733712821357919" at="26,45,27,36" />
       <scope id="4414733712821357918" at="32,52,33,19" />
-      <scope id="4414733712821357919" at="39,30,41,34" />
+      <scope id="4414733712821357919" at="39,27,41,34" />
       <scope id="4414733712821357918" at="21,0,24,0" />
       <scope id="4414733712821357918" at="32,0,35,0">
         <var name="owner" id="4414733712821357918" />
@@ -71,7 +71,7 @@
       <node id="5101378672993280081" at="19,51,20,25" concept="4" />
       <node id="5101378672993280082" at="24,45,25,36" concept="1" />
       <node id="5101378672993280081" at="30,52,31,19" concept="4" />
-      <node id="5101378672993280082" at="36,9,37,88" concept="1" />
+      <node id="5101378672993280082" at="36,9,37,85" concept="1" />
       <node id="5101378672993280081" at="16,0,18,0" concept="3" trace="ourParamCache" />
       <node id="5101378672993280082" at="34,47,36,9" concept="1" />
       <node id="5101378672993280081" at="19,0,22,0" concept="0" trace="PropertyIsAvailaibleInMPSTestCase_Test#()V" />
@@ -86,7 +86,7 @@
       <scope id="5101378672993280081" at="30,0,33,0">
         <var name="owner" id="5101378672993280081" />
       </scope>
-      <scope id="5101378672993280082" at="34,47,37,88" />
+      <scope id="5101378672993280082" at="34,47,37,85" />
       <scope id="5101378672993280082" at="23,0,27,0" />
       <scope id="5101378672993280082" at="34,0,39,0" />
       <unit id="5101378672993280081" at="28,0,41,0" name="jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2.PropertyIsAvailaibleInMPSTestCase_Test$TestBody" />
@@ -98,7 +98,7 @@
       <node id="6339244025082034140" at="19,37,20,25" concept="4" />
       <node id="6339244025082055679" at="24,45,25,36" concept="1" />
       <node id="6339244025082034140" at="30,52,31,19" concept="4" />
-      <node id="6339244025082055679" at="36,9,37,55" concept="1" />
+      <node id="6339244025082055679" at="36,9,37,52" concept="1" />
       <node id="6339244025082034140" at="16,0,18,0" concept="3" trace="ourParamCache" />
       <node id="6339244025082055679" at="34,47,36,9" concept="1" />
       <node id="6339244025082034140" at="19,0,22,0" concept="0" trace="FailedTestCase_Test_Test#()V" />
@@ -113,7 +113,7 @@
       <scope id="6339244025082034140" at="30,0,33,0">
         <var name="owner" id="6339244025082034140" />
       </scope>
-      <scope id="6339244025082055679" at="34,47,37,55" />
+      <scope id="6339244025082055679" at="34,47,37,52" />
       <scope id="6339244025082055679" at="23,0,27,0" />
       <scope id="6339244025082055679" at="34,0,39,0" />
       <unit id="6339244025082034140" at="28,0,41,0" name="jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2.FailedTestCase_Test_Test$TestBody" />
@@ -161,7 +161,7 @@
       <node id="6937584626643047380" at="19,37,20,25" concept="4" />
       <node id="6937584626643053783" at="24,45,25,36" concept="1" />
       <node id="6937584626643047380" at="30,52,31,19" concept="4" />
-      <node id="6937584626643053783" at="36,9,37,56" concept="1" />
+      <node id="6937584626643053783" at="36,9,37,53" concept="1" />
       <node id="6937584626643047380" at="16,0,18,0" concept="3" trace="ourParamCache" />
       <node id="6937584626643053783" at="34,47,36,9" concept="1" />
       <node id="6937584626643047380" at="19,0,22,0" concept="0" trace="SimpleTestCase_Test_Test#()V" />
@@ -176,7 +176,7 @@
       <scope id="6937584626643047380" at="30,0,33,0">
         <var name="owner" id="6937584626643047380" />
       </scope>
-      <scope id="6937584626643053783" at="34,47,37,56" />
+      <scope id="6937584626643053783" at="34,47,37,53" />
       <scope id="6937584626643053783" at="23,0,27,0" />
       <scope id="6937584626643053783" at="34,0,39,0" />
       <unit id="6937584626643047380" at="28,0,41,0" name="jetbrains.mps.execution.impl.configurations.tests.commands.sandbox2.SimpleTestCase_Test_Test$TestBody" />

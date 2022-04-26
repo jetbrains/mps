@@ -34,7 +34,7 @@ public class PropertyIsAvailaibleInMPSTestCase_Test extends BaseTransformationTe
     public void test_test1() throws Exception {
       runWithinCommand(() -> {
       });
-      runWithinCommand(() -> Assert.assertEquals("TRUE", System.getProperty("MyProp")));
+      runWithinRead(() -> Assert.assertEquals("TRUE", System.getProperty("MyProp")));
     }
 
   }

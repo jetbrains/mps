@@ -35,7 +35,7 @@ public class UsingLangTestCase_Test extends BaseTransformationTest {
     public void test_asdf() throws Exception {
       runWithinCommand(() -> {
       });
-      runWithinCommand(() -> {
+      runWithinRead(() -> {
         new SystemOutInvocator().invoke();
         Assert.assertFalse(false);
       });
