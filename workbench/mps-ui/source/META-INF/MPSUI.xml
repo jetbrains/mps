@@ -13,11 +13,6 @@
     <postStartupActivity implementation="jetbrains.mps.ide.messages.MessagesViewTool$MessageViewToolInitialization"/>
   </extensions>
 
-  <applicationListeners>
-    <listener class="jetbrains.mps.ide.messages.MessagesViewTool$MessagesViewProjectListener"
-              topic="com.intellij.openapi.project.ProjectManagerListener"/>
-  </applicationListeners>
-
   <extensionPoints>
     <extensionPoint qualifiedName="com.intellij.mps.modelRootEntry" beanClass="jetbrains.mps.ide.ui.dialogs.properties.persistence.ModelRootEntryEP"/>
     <extensionPoint

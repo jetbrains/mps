@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.ide.messages;
 
@@ -13,7 +13,6 @@ import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.startup.StartupActivity;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.wm.ToolWindow;
@@ -27,7 +26,6 @@ import jetbrains.mps.ide.ThreadUtils.RunInUIRunnable;
 import jetbrains.mps.ide.messages.MessageList.MessageListState;
 import jetbrains.mps.ide.messages.MessagesViewTool.MessageViewToolState;
 import jetbrains.mps.ide.messages.navigation.NavigationManager;
-import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.messages.IMessage;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.IMessageList;
@@ -55,7 +53,6 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
   private final Project myProject;
   private final MyMessageList myDefaultList;
   private final Map<Object, List<MessageList>> myMessageLists = new HashMap<>();
-  private final MessageViewLoggingHandler myMessageViewLoggingHandler;
 
   public MessagesViewTool(Project project) {
     myProject = project;
@@ -67,7 +64,6 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
     myDefaultList.setTitleUpdateFormat(
         "{1,choice,0#--|1#1 error|2#{1} errors}/{2,choice,0#--|1#1 warning|2#{2} warnings}/{3,choice,0#--|1#1 info|2#{3} infos}");
     addList(DEFAULT_LIST, myDefaultList);
-    myMessageViewLoggingHandler = new MessageViewLoggingHandler(this, ProjectHelper.fromIdeaProject(project));
   }
 
   @Nullable
@@ -109,14 +105,6 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
 
   public void add(final IMessage message, String listName) {
     getAvailableList(listName, true).add(message);
-  }
-
-  public void registerLoggingHandler() {
-    myMessageViewLoggingHandler.register();
-  }
-
-  private void unregisterLoggingHandler() {
-    myMessageViewLoggingHandler.unregister();
   }
 
   @Override
@@ -365,22 +353,6 @@ public class MessagesViewTool implements PersistentStateComponent<MessageViewToo
     protected void populateActions(JList list, DefaultActionGroup group) {
       ActionGroup acts = (ActionGroup) ActionManager.getInstance().getAction("MPS.MessagesView");
       group.addAll(acts);
-    }
-  }
-
-  public static final class MessagesViewProjectListener implements ProjectManagerListener {
-    @Override
-    public void projectOpened(@NotNull Project project) {
-      final MessagesViewTool messagesViewTool = project.getService(MessagesViewTool.class);
-      messagesViewTool.registerLoggingHandler();
-    }
-
-    @Override
-    public void projectClosing(@NotNull Project project) {
-      MessagesViewTool messagesViewTool = project.getServiceIfCreated(MessagesViewTool.class);
-      if (messagesViewTool != null) {
-        messagesViewTool.unregisterLoggingHandler();
-      }
     }
   }
 
