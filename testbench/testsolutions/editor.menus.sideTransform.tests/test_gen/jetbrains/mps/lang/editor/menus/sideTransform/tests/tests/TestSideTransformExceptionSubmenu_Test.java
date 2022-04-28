@@ -12,7 +12,6 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.nodeEditor.cellMenu.NodeSubstituteChooser;
 import org.junit.Assert;
 import jetbrains.mps.testbench.util.CachingAppender;
-import org.apache.log4j.Priority;
 
 @MPSLaunch
 public class TestSideTransformExceptionSubmenu_Test extends BaseTransformationTest {
@@ -46,7 +45,7 @@ public class TestSideTransformExceptionSubmenu_Test extends BaseTransformationTe
 
     @Override
     protected void populateExpectedEvents(CachingAppender appender) {
-      appender.expectEvent(Priority.ERROR_INT, null);
+      appender.expectEvent(CachingAppender.Level.ERROR, null);
     }
   }
 }

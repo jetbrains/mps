@@ -10,7 +10,6 @@ import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseEditorTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
 import jetbrains.mps.testbench.util.CachingAppender;
-import org.apache.log4j.Priority;
 
 @MPSLaunch
 public class ChildWithIndirectCycle_card1n_Test extends BaseTransformationTest {
@@ -41,7 +40,7 @@ public class ChildWithIndirectCycle_card1n_Test extends BaseTransformationTest {
 
     @Override
     protected void populateExpectedEvents(CachingAppender appender) {
-      appender.expectEvent(Priority.ERROR_INT, null);
+      appender.expectEvent(CachingAppender.Level.ERROR, null);
     }
   }
 }
