@@ -28,7 +28,7 @@ public class EditorCellCreator {
   }
 
   public static EditorCell createEditorCell(@NotNull final SRepository repository, @NotNull final SNode node, @Nullable final String[] hints) {
-    EditorCell result;
+    EditorCell result = null;
     EditorCellCreator creator = new EditorCellCreator(repository);
     try {
       result = creator.createEditorCell(node, hints);

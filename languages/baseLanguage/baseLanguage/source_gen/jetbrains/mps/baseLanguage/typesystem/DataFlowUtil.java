@@ -73,6 +73,7 @@ public class DataFlowUtil {
       if (checkReturns) {
         checkReturns(typeCheckingContext, program);
       }
+      program.enhanceTryFinallyBlocksWithJumpsForUncaughtExceptions();
       checkUninitializedReads(typeCheckingContext, program);
       checkUnusedAssignments(typeCheckingContext, program);
     } catch (DataflowBuilderException e) {
@@ -156,11 +157,6 @@ public class DataFlowUtil {
   }
 
 
-  /**
-   * Modifies the provided Program. Make sure you pass in a copy of Program, if the original is meant to be reused for some more analysis.
-   * 
-   * @param program The program to analyze
-   */
   @CheckingMethod
   private static void checkUninitializedReads(final TypeCheckingContext typeCheckingContext, Program program) {
     Set<SNode> uninitializedReads = DataFlow.getUninitializedReads(program);

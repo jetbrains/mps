@@ -20,10 +20,11 @@ import jetbrains.mps.lang.dataFlow.framework.instructions.FinallyInstruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.EndTryInstruction;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.ReachabilityAnalyzer;
 import java.util.HashSet;
+import jetbrains.mps.lang.dataFlow.framework.analyzers.InitializedVariablesAnalyzer;
 import jetbrains.mps.lang.dataFlow.framework.instructions.RetInstruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.JumpInstruction;
 import jetbrains.mps.lang.dataFlow.framework.instructions.IfJumpInstruction;
-import jetbrains.mps.lang.dataFlow.framework.analyzers.InitializedVariablesAnalyzer;
+import jetbrains.mps.lang.dataFlow.DataFlow;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.MayBeInitializedVariablesAnalyzer;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.LivenessAnalyzer;
 
@@ -235,23 +236,8 @@ public class Program {
     }
     return result;
   }
-  /**
-   * Modifies the provided Program. Make sure you pass in a copy of Program, if the original is meant to be reused for some more analysis.
-   * 
-   * @return ReadInstructions that may be reading an unitialized variable.
-   */
+
   public Set<ReadInstruction> getUninitializedReads() {
-    ArrayList<Instruction> copyOfInstructions = new ArrayList<>();
-    copyOfInstructions.addAll(myInstructions);
-    for (Instruction inst : copyOfInstructions) {
-      TryFinallyInfo enclosingBlock = inst.getEnclosingBlock();
-      if (!(inst instanceof RetInstruction) && !(inst instanceof JumpInstruction) && enclosingBlock != null && inst.isBefore(enclosingBlock.getFinally())) {
-        IfJumpInstruction jump = new IfJumpInstruction();
-        jump.setJumpTo(enclosingBlock.getFinally().getIndex());
-        insert(jump, inst.getIndex(), true, true);
-        jump.updateJumps(0);
-      }
-    }
     AnalysisResult<VarSet> analysisResult = analyze(new InitializedVariablesAnalyzer());
     Set<ReadInstruction> result = new HashSet<>();
     for (Instruction i : myInstructions) {
@@ -264,6 +250,24 @@ public class Program {
       }
     }
     return result;
+  }
+
+  /**
+   * Modifies the provided Program. Make sure you pass in a copy of Program, if the original is meant to be reused for some more analysis.
+   */
+  public void enhanceTryFinallyBlocksWithJumpsForUncaughtExceptions() {
+    ArrayList<Instruction> copyOfInstructions = new ArrayList<>();
+    copyOfInstructions.addAll(myInstructions);
+    for (Instruction inst : copyOfInstructions) {
+      TryFinallyInfo enclosingBlock = inst.getEnclosingBlock();
+      if (!(inst instanceof RetInstruction) && !(inst instanceof JumpInstruction) && enclosingBlock != null && inst.isBefore(enclosingBlock.getFinally())) {
+        IfJumpInstruction jump = new IfJumpInstruction();
+        jump.setJumpTo(enclosingBlock.getFinally().getIndex());
+        insert(jump, inst.getIndex(), true, true);
+        jump.updateJumps(0);
+        jump.putUserObject(DataFlow.MAY_BE_UNREACHABLE, true);
+      }
+    }
   }
   public boolean isInitializedRewritten(WriteInstruction instruction) {
     AnalysisResult<VarSet> analysisResult = analyze(new MayBeInitializedVariablesAnalyzer(instruction));
