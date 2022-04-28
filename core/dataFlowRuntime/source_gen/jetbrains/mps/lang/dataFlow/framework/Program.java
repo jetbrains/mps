@@ -235,6 +235,11 @@ public class Program {
     }
     return result;
   }
+  /**
+   * Modifies the provided Program. Make sure you pass in a copy of Program, if the original is meant to be reused for some more analysis.
+   * 
+   * @return ReadInstructions that may be reading an unitialized variable.
+   */
   public Set<ReadInstruction> getUninitializedReads() {
     ArrayList<Instruction> copyOfInstructions = new ArrayList<>();
     copyOfInstructions.addAll(myInstructions);

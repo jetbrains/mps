@@ -27,6 +27,13 @@ public class DataFlow {
     }
     return result;
   }
+
+  /**
+   * Modifies the provided Program. Make sure you pass in a copy of Program, if the original is meant to be reused for some more analysis.
+   * 
+   * @param program The program to analyze
+   * @return ReadInstructions that may be reading an unitialized variable.
+   */
   public static Set<SNode> getUninitializedReads(Program program) {
     Set<SNode> reads = new HashSet<SNode>();
     for (ReadInstruction read : program.getUninitializedReads()) {

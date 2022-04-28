@@ -273,8 +273,12 @@
       <concept id="8992394414545679616" name="jetbrains.mps.baseLanguage.closures.structure.ClosureVarType" flags="ig" index="3VYd8j" />
     </language>
     <language id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc">
+      <concept id="5858074156537516430" name="jetbrains.mps.baseLanguage.javadoc.structure.ReturnBlockDocTag" flags="ng" index="x79VA">
+        <property id="5858074156537516431" name="text" index="x79VB" />
+      </concept>
       <concept id="5349172909345501395" name="jetbrains.mps.baseLanguage.javadoc.structure.BaseDocComment" flags="ng" index="P$AiS">
         <child id="8465538089690331502" name="body" index="TZ5H$" />
+        <child id="5383422241790532083" name="tags" index="3nqlJM" />
       </concept>
       <concept id="5349172909345532724" name="jetbrains.mps.baseLanguage.javadoc.structure.MethodDocComment" flags="ng" index="P$JXv" />
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
@@ -6324,6 +6328,16 @@
         <ref role="3uigEE" to="33ny:~Set" resolve="Set" />
         <node concept="3uibUv" id="3yaa4ph8tJU" role="11_B2D">
           <ref role="3uigEE" to="9fia:3yaa4ph8uFE" resolve="ReadInstruction" />
+        </node>
+      </node>
+      <node concept="P$JXv" id="6UD7OLAFSb2" role="lGtFl">
+        <node concept="TZ5HA" id="6UD7OLAFSb3" role="TZ5H$">
+          <node concept="1dT_AC" id="6UD7OLAFSb4" role="1dT_Ay">
+            <property role="1dT_AB" value="Modifies the provided Program. Make sure you pass in a copy of Program, if the original is meant to be reused for some more analysis." />
+          </node>
+        </node>
+        <node concept="x79VA" id="6UD7OLAFSb5" role="3nqlJM">
+          <property role="x79VB" value="ReadInstructions that may be reading an unitialized variable." />
         </node>
       </node>
     </node>
