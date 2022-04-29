@@ -38,10 +38,7 @@ public class CachingAppender implements Output {
 
   }
 
-  /**
-   * public just for transition purposes
-   */
-  public static Level fromLog4jLevel(int log4jLevel) {
+  /*package*/ static Level fromLog4jLevel(int log4jLevel) {
     // ALL as default not to miss any event just in case
     switch (log4jLevel) {
       case org.apache.log4j.Level.TRACE_INT:

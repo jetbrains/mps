@@ -1378,67 +1378,6 @@
       <node concept="3Tm1VV" id="4_TMdeLkPqI" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="d4HXLLqszL" role="jymVt" />
-    <node concept="3clFbW" id="d4HXLLqs6O" role="jymVt">
-      <property role="od$2w" value="false" />
-      <property role="DiZV1" value="false" />
-      <node concept="3cqZAl" id="d4HXLLqs6P" role="3clF45" />
-      <node concept="37vLTG" id="d4HXLLqs6Q" role="3clF46">
-        <property role="TrG5h" value="delegate" />
-        <node concept="3uibUv" id="d4HXLLqs6R" role="1tU5fm">
-          <ref role="3uigEE" to="k76n:~RunNotifier" resolve="RunNotifier" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="d4HXLLqt05" role="3clF46">
-        <property role="TrG5h" value="watchLevel" />
-        <node concept="3uibUv" id="d4HXLLquBf" role="1tU5fm">
-          <ref role="3uigEE" to="q7tw:~Level" resolve="Level" />
-        </node>
-      </node>
-      <node concept="37vLTG" id="d4HXLLqt2r" role="3clF46">
-        <property role="TrG5h" value="ignoreWarnings" />
-        <node concept="10P_77" id="d4HXLLqt3H" role="1tU5fm" />
-      </node>
-      <node concept="3clFbS" id="d4HXLLqs6S" role="3clF47">
-        <node concept="1VxSAg" id="6pLVEngWjWF" role="3cqZAp">
-          <ref role="37wK5l" node="6pLVEngWbC9" resolve="WatchingRunNotifier" />
-          <node concept="37vLTw" id="6pLVEngWkHK" role="37wK5m">
-            <ref role="3cqZAo" node="d4HXLLqs6Q" resolve="delegate" />
-          </node>
-          <node concept="2YIFZM" id="6pLVEngWlnQ" role="37wK5m">
-            <ref role="37wK5l" to="ot0m:6pLVEngNAUi" resolve="fromLog4jLevel" />
-            <ref role="1Pybhc" to="ot0m:4_TMdeLkOXW" resolve="CachingAppender" />
-            <node concept="2OqwBi" id="6pLVEngWm6D" role="37wK5m">
-              <node concept="37vLTw" id="6pLVEngWlGS" role="2Oq$k0">
-                <ref role="3cqZAo" node="d4HXLLqt05" resolve="watchLevel" />
-              </node>
-              <node concept="liA8E" id="6pLVEngWmwN" role="2OqNvi">
-                <ref role="37wK5l" to="q7tw:~Priority.toInt()" resolve="toInt" />
-              </node>
-            </node>
-          </node>
-          <node concept="37vLTw" id="6pLVEngWn8B" role="37wK5m">
-            <ref role="3cqZAo" node="d4HXLLqt2r" resolve="ignoreWarnings" />
-          </node>
-        </node>
-      </node>
-      <node concept="3Tm1VV" id="d4HXLLqs6V" role="1B3o_S" />
-      <node concept="2AHcQZ" id="6pLVEngWdUS" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
-        <node concept="2B6LJw" id="6pLVEngWeBz" role="2B76xF">
-          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
-          <node concept="3clFbT" id="6pLVEngWeDe" role="2B70Vg">
-            <property role="3clFbU" value="true" />
-          </node>
-        </node>
-        <node concept="2B6LJw" id="6pLVEngWeEr" role="2B76xF">
-          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
-          <node concept="Xl_RD" id="6pLVEngWeHo" role="2B70Vg">
-            <property role="Xl_RC" value="2021.3.1" />
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="2tJIrI" id="6pLVEngWeLU" role="jymVt" />
     <node concept="3clFbW" id="6pLVEngWbC9" role="jymVt">
       <property role="od$2w" value="false" />
       <property role="DiZV1" value="false" />

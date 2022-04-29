@@ -10,7 +10,6 @@ import org.junit.runner.Description;
 import java.util.HashMap;
 import jetbrains.mps.testbench.util.ThreadWatcher;
 import org.junit.runner.notification.RunNotifier;
-import org.apache.log4j.Level;
 import java.util.List;
 import java.util.ArrayList;
 import org.junit.runner.notification.StoppedByUserException;
@@ -37,11 +36,6 @@ public class WatchingRunNotifier extends DelegatingRunNotifier {
 
   public WatchingRunNotifier(RunNotifier delegate) {
     this(delegate, DEFAULT_WATCH_LOGGER_LEVEL, true);
-  }
-
-  @Deprecated(forRemoval = true, since = "2021.3.1")
-  public WatchingRunNotifier(RunNotifier delegate, Level watchLevel, boolean ignoreWarnings) {
-    this(delegate, CachingAppender.fromLog4jLevel(watchLevel.toInt()), ignoreWarnings);
   }
 
   public WatchingRunNotifier(RunNotifier delegate, CachingAppender.Level watchLevel, boolean ignoreWarnings) {

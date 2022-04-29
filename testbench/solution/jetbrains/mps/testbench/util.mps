@@ -3322,14 +3322,6 @@
         <property role="TrG5h" value="log4jLevel" />
         <node concept="10Oyi0" id="6pLVEngNKgM" role="1tU5fm" />
       </node>
-      <node concept="3Tm1VV" id="6pLVEngVReQ" role="1B3o_S" />
-      <node concept="P$JXv" id="6pLVEngVZ1O" role="lGtFl">
-        <node concept="TZ5HA" id="6pLVEngVZ1P" role="TZ5H$">
-          <node concept="1dT_AC" id="6pLVEngVZ1Q" role="1dT_Ay">
-            <property role="1dT_AB" value="public just for transition purposes" />
-          </node>
-        </node>
-      </node>
     </node>
     <node concept="312cEu" id="6pLVEngNrUb" role="jymVt">
       <property role="TrG5h" value="EE" />

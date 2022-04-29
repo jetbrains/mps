@@ -3719,7 +3719,7 @@
                 <ref role="3cqZAo" node="4xJw7BvfRgt" resolve="appender" />
               </node>
               <node concept="liA8E" id="4xJw7BvfW7Y" role="2OqNvi">
-                <ref role="37wK5l" to="zu0:~CachingAppender.expectEvent(int,java.lang.String)" resolve="expectEvent" />
+                <ref role="37wK5l" to="zu0:~CachingAppender.expectEvent(jetbrains.mps.testbench.util.CachingAppender$Level,java.lang.String)" resolve="expectEvent" />
                 <node concept="Rm8GO" id="1pQpPQ2kc6C" role="37wK5m">
                   <ref role="Rm8GQ" to="zu0:~CachingAppender$Level.ERROR" resolve="ERROR" />
                   <ref role="1Px2BO" to="zu0:~CachingAppender$Level" resolve="Level" />

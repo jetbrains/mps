@@ -77,7 +77,6 @@
   </dependency>
   <dependency className="jetbrains.mps.testbench.junit.WatchingRunNotifier">
     <classNode dependClassName="java.lang.Boolean" />
-    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
@@ -94,7 +93,6 @@
     <classNode dependClassName="jetbrains.mps.testbench.junit.UncleanTestExecutionException" />
     <classNode dependClassName="jetbrains.mps.testbench.util.CachingAppender" />
     <classNode dependClassName="jetbrains.mps.testbench.util.ThreadWatcher" />
-    <classNode dependClassName="org.apache.log4j.Level" />
     <classNode dependClassName="org.junit.runner.Description" />
     <classNode dependClassName="org.junit.runner.notification.Failure" />
     <classNode dependClassName="org.junit.runner.notification.RunNotifier" />
