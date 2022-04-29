@@ -32,6 +32,7 @@ import jetbrains.mps.lang.test.behavior.DragMouseStatement__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.generator.template.IfMacroContext;
+import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -411,13 +412,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.afterTests$GqQ8) != null);
   }
   public static boolean ifMacro_Condition_6_0(final IfMacroContext _context) {
-    return ((Boolean) _context.getVariable("needsCommand"));
+    return SEnumOperations.isMember(((SEnumerationLiteral) _context.getVariable("mode")), 0x2451232bcdee06bdL);
   }
   public static boolean ifMacro_Condition_6_1(final IfMacroContext _context) {
-    return !(((Boolean) _context.getVariable("needsCommand"))) && ((Boolean) _context.getVariable("needsRead"));
+    return SEnumOperations.isMember(((SEnumerationLiteral) _context.getVariable("mode")), 0x2451232bcdee06baL);
   }
   public static boolean ifMacro_Condition_6_2(final IfMacroContext _context) {
-    return !(((Boolean) _context.getVariable("needsCommand"))) && !(((Boolean) _context.getVariable("needsRead")));
+    return SEnumOperations.isMember(((SEnumerationLiteral) _context.getVariable("mode")), 0x2451232bcdee06b9L);
   }
   public static boolean ifMacro_Condition_7_0(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.parameter$TyS_) != null);
@@ -435,13 +436,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.quickfix$q6rO) != null;
   }
   public static boolean ifMacro_Condition_19_0(final IfMacroContext _context) {
-    return ((Boolean) _context.getVariable("needsCommand"));
+    return SEnumOperations.isMember(((SEnumerationLiteral) _context.getVariable("mode")), 0x2451232bcdee06bdL);
   }
   public static boolean ifMacro_Condition_19_1(final IfMacroContext _context) {
-    return !(((Boolean) _context.getVariable("needsCommand"))) && ((Boolean) _context.getVariable("needsRead"));
+    return SEnumOperations.isMember(((SEnumerationLiteral) _context.getVariable("mode")), 0x2451232bcdee06baL);
   }
   public static boolean ifMacro_Condition_19_2(final IfMacroContext _context) {
-    return !(((Boolean) _context.getVariable("needsCommand"))) && !(((Boolean) _context.getVariable("needsRead")));
+    return SEnumOperations.isMember(((SEnumerationLiteral) _context.getVariable("mode")), 0x2451232bcdee06b9L);
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.nodeToCheck$bx55);
@@ -491,10 +492,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SNodeOperations.getParent(SLinkOperations.getTarget(_context.getNode(), LINKS.declaration$hXIv));
   }
   public static Object templateArgumentQuery_3_0(final TemplateArgumentContext _context) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(((SNode) _context.getVariable("var:nodesTestCase")), PROPS.accessMode$uiyo), 0x2451232bcdee06bdL);
-  }
-  public static Object templateArgumentQuery_3_1(final TemplateArgumentContext _context) {
-    return SEnumOperations.isMember(SPropertyOperations.getEnum(((SNode) _context.getVariable("var:nodesTestCase")), PROPS.accessMode$uiyo), 0x2451232bcdee06baL);
+    return NodesTestCase__BehaviorDescriptor.calcAccessMode_id4wHm_MSTUi_.invoke(((SNode) _context.getVariable("var:nodesTestCase")));
   }
   public static Iterable<SNode> sourceNodesQuery_0_0(final SourceSubstituteMacroNodesContext _context) {
     return SNodeOperations.getNodeDescendants(SNodeOperations.getContainingRoot(_context.getNode()), CONCEPTS.AbstractNodeRuleCheckOperation$eB, false, new SAbstractConcept[]{});
@@ -606,7 +604,7 @@ public class QueriesGenerated extends QueryProviderBase {
     TestsUtil.mapSrcExtract(_context.getOutputNode());
   }
   public static SNode insertMacro_Query_15_0(final InsertMacroContext _context) {
-    return _quotation_createNode_x583g4_a0a751();
+    return _quotation_createNode_x583g4_a0a651();
   }
   public static Object varMacro_Value_3_0(final TemplateVarContext _context) {
     return _context.getNode();
@@ -1266,8 +1264,7 @@ public class QueriesGenerated extends QueryProviderBase {
     caqMethods.put("687702229764180539", new CAQ(1));
     caqMethods.put("6109541130561031805", new CAQ(2));
     caqMethods.put("3426622257418792372", new CAQ(3));
-    caqMethods.put("2616911529525417688", new CAQ(4));
-    caqMethods.put("2616911529525439020", new CAQ(5));
+    caqMethods.put("5200912498968586944", new CAQ(4));
   }
   @NotNull
   @Override
@@ -1293,8 +1290,6 @@ public class QueriesGenerated extends QueryProviderBase {
           return QueriesGenerated.templateArgumentQuery_0_1(ctx);
         case 4:
           return QueriesGenerated.templateArgumentQuery_3_0(ctx);
-        case 5:
-          return QueriesGenerated.templateArgumentQuery_3_1(ctx);
         default:
           throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no method for query %s (key: #%d)", ctx.getTemplateReference(), methodKey));
       }
@@ -1354,7 +1349,7 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private static SNode _quotation_createNode_x583g4_a0a751() {
+  private static SNode _quotation_createNode_x583g4_a0a651() {
     SNode quotedNode_1 = null;
     SNode quotedNode_2 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, "jetbrains.mps.baseLanguageInternal"), 0x111fb5bb1f2L, "InternalVariableReference"));
@@ -1441,6 +1436,5 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SProperty includeSelf$xNXw = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b07d3d54aL, 0x33f30f661f8cdca2L, "includeSelf");
     /*package*/ static final SProperty text$ppyZ = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x9dc8d126017d59cL, 0x9dc8d126017d59dL, "text");
     /*package*/ static final SProperty level$MerT = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x486f8079df2fd630L, 0x486f8079df380e64L, "level");
-    /*package*/ static final SProperty accessMode$uiyo = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x2451232bcdebc33fL, "accessMode");
   }
 }

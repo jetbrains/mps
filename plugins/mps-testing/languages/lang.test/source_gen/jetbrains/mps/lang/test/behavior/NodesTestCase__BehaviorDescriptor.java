@@ -11,6 +11,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.unitTest.behavior.ITestCase__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -36,8 +38,9 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isIntentionApplicable_idhHDM9no = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isIntentionApplicable").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hHDM9no").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<String> getTestBodyName_idhOw0ICJ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTestBodyName").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hOw0ICJ").build();
   public static final SMethod<Boolean> needsWriteAction_id5vTxdEzuQjU = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needsWriteAction").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5vTxdEzuQjU").build();
+  public static final SMethod<SEnumerationLiteral> calcAccessMode_id4wHm_MSTUi_ = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("calcAccessMode").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4wHm_MSTUi_").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, isMpsStartRequired_id2RMg39tmiFh, getTestMethods_id1RfJDyhAUar, isIntentionApplicable_idhHDM9no, getTestBodyName_idhOw0ICJ, needsWriteAction_id5vTxdEzuQjU);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, isMpsStartRequired_id2RMg39tmiFh, getTestMethods_id1RfJDyhAUar, isIntentionApplicable_idhHDM9no, getTestBodyName_idhOw0ICJ, needsWriteAction_id5vTxdEzuQjU, calcAccessMode_id4wHm_MSTUi_);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -68,6 +71,15 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean needsWriteAction_id5vTxdEzuQjU(@NotNull SNode __thisNode__) {
     return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.needsNoWriteAction$Edij));
   }
+  /*package*/ static SEnumerationLiteral calcAccessMode_id4wHm_MSTUi_(@NotNull SNode __thisNode__) {
+    if (SEnumOperations.isMember(SPropertyOperations.getEnum(__thisNode__, PROPS.accessMode$uiyo), 0x2451232bcdee06b9L)) {
+      if (((boolean) NodesTestCase__BehaviorDescriptor.needsWriteAction_id5vTxdEzuQjU.invoke(__thisNode__))) {
+        return SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2451232bcdee06b8L, "jetbrains.mps.lang.test.structure.ExecutionModelAccessMode"), 0x2451232bcdee06bdL, "command");
+      }
+      return SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x2451232bcdee06b8L, "jetbrains.mps.lang.test.structure.ExecutionModelAccessMode"), 0x2451232bcdee06b9L, "none");
+    }
+    return SPropertyOperations.getEnum(__thisNode__, PROPS.accessMode$uiyo);
+  }
 
   /*package*/ NodesTestCase__BehaviorDescriptor() {
   }
@@ -92,6 +104,8 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((List<SNode>) getTestMethods_id1RfJDyhAUar(node));
       case 5:
         return (T) ((Boolean) needsWriteAction_id5vTxdEzuQjU(node));
+      case 6:
+        return (T) ((SEnumerationLiteral) calcAccessMode_id4wHm_MSTUi_(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -136,5 +150,6 @@ public final class NodesTestCase__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class PROPS {
     /*package*/ static final SProperty needsNoWriteAction$Edij = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x57f984daa37add4aL, "needsNoWriteAction");
+    /*package*/ static final SProperty accessMode$uiyo = MetaAdapterFactory.getProperty(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11b55b49e46L, 0x2451232bcdebc33fL, "accessMode");
   }
 }
