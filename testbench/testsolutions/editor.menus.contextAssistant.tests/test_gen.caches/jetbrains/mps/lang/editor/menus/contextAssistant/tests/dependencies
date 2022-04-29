@@ -287,7 +287,6 @@
     <classNode dependClassName="jetbrains.mps.nodeEditor.EditorContext" />
     <classNode dependClassName="jetbrains.mps.openapi.editor.assist.ContextAssistantManager" />
     <classNode dependClassName="jetbrains.mps.testbench.util.CachingAppender" />
-    <classNode dependClassName="org.apache.log4j.Priority" />
     <classNode dependClassName="org.junit.Assert" />
     <classNode dependClassName="org.junit.ClassRule" />
     <classNode dependClassName="org.junit.Test" />

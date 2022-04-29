@@ -36,25 +36,20 @@
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="iwsx" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.fileEditor(MPS.IDEA/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
-    <import index="u78q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem.inference(MPS.Core/)" />
-    <import index="ghoz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.newTypesystem(MPS.Core/)" />
     <import index="tqvn" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.tempmodel(MPS.Core/)" />
     <import index="2gg1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors(MPS.Core/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="91lp" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.intentions(MPS.Editor/)" />
     <import index="1fjm" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework(MPS.Core/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
-    <import index="m77x" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.newTypesystem.test(MPS.Core/)" />
     <import index="b8lf" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.selection(MPS.Editor/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
-    <import index="ovrg" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.newTypesystem.operation(MPS.Core/)" />
     <import index="btn2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.impl(MPS.IDEA/)" />
     <import index="qkt" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.actionSystem(MPS.IDEA/)" />
     <import index="ddhc" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide(MPS.IDEA/)" />
     <import index="autt" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.analyzers(MPS.Core/)" />
     <import index="7bx7" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.action(MPS.Platform/)" />
     <import index="dau9" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.dataFlow.framework.instructions(MPS.Core/)" />
-    <import index="tmra" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.newTypesystem.state(MPS.Core/)" />
     <import index="xgff" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.command.impl(MPS.IDEA/)" />
     <import index="54q7" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.command.undo(MPS.IDEA/)" />
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
@@ -62,7 +57,6 @@
     <import index="79ha" ref="r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)" />
     <import index="y5e1" ref="r:4464540a-9650-433f-b716-ed95bbac5a69(jetbrains.mps.lang.test.matcher)" />
     <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="zu0" ref="920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.testbench.util(Testbench/)" />
     <import index="l9ag" ref="920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.testbench.junit(Testbench/)" />
     <import index="zyr2" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.inspector(MPS.Editor/)" />
@@ -5268,18 +5262,6 @@
       </node>
       <node concept="3Tm6S6" id="8$1$D__DFg" role="1B3o_S" />
       <node concept="3clFbS" id="8$1$D__C$S" role="3clF47">
-        <node concept="3cpWs8" id="8$1$D__UDs" role="3cqZAp">
-          <node concept="3cpWsn" id="8$1$D__UDt" role="3cpWs9">
-            <property role="TrG5h" value="rootLogger" />
-            <node concept="3uibUv" id="8$1$D__UDr" role="1tU5fm">
-              <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
-            </node>
-            <node concept="2YIFZM" id="8$1$D__UG0" role="33vP2m">
-              <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
-              <ref role="37wK5l" to="q7tw:~Logger.getRootLogger()" resolve="getRootLogger" />
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="4Zaa5llGLDy" role="3cqZAp">
           <node concept="3cpWsn" id="4Zaa5llGLDz" role="3cpWs9">
             <property role="TrG5h" value="appender" />
@@ -5288,10 +5270,10 @@
             </node>
             <node concept="2ShNRf" id="4Zaa5llGMXo" role="33vP2m">
               <node concept="1pGfFk" id="4Zaa5llGMXn" role="2ShVmc">
-                <ref role="37wK5l" to="zu0:~CachingAppender.&lt;init&gt;(org.apache.log4j.Level)" resolve="CachingAppender" />
-                <node concept="10M0yZ" id="4Zaa5llGNfa" role="37wK5m">
-                  <ref role="1PxDUh" to="q7tw:~Level" resolve="Level" />
-                  <ref role="3cqZAo" to="q7tw:~Level.ERROR" resolve="ERROR" />
+                <ref role="37wK5l" to="zu0:~CachingAppender.&lt;init&gt;(jetbrains.mps.testbench.util.CachingAppender$Level)" resolve="CachingAppender" />
+                <node concept="Rm8GO" id="5gJ0Wj_T8PR" role="37wK5m">
+                  <ref role="Rm8GQ" to="zu0:~CachingAppender$Level.ERROR" resolve="ERROR" />
+                  <ref role="1Px2BO" to="zu0:~CachingAppender$Level" resolve="Level" />
                 </node>
               </node>
             </node>
@@ -5305,16 +5287,13 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="8$1$D_A_$G" role="3cqZAp">
-          <node concept="2OqwBi" id="8$1$D_A_C_" role="3clFbG">
-            <node concept="37vLTw" id="8$1$D_A_$E" role="2Oq$k0">
-              <ref role="3cqZAo" node="8$1$D__UDt" resolve="rootLogger" />
+        <node concept="3clFbF" id="4lRieqsRu6L" role="3cqZAp">
+          <node concept="2OqwBi" id="4lRieqsRx2V" role="3clFbG">
+            <node concept="37vLTw" id="4lRieqsRu6F" role="2Oq$k0">
+              <ref role="3cqZAo" node="4Zaa5llGLDz" resolve="appender" />
             </node>
-            <node concept="liA8E" id="8$1$D_A_FT" role="2OqNvi">
-              <ref role="37wK5l" to="q7tw:~Category.addAppender(org.apache.log4j.Appender)" resolve="addAppender" />
-              <node concept="37vLTw" id="4Zaa5llGOvi" role="37wK5m">
-                <ref role="3cqZAo" node="4Zaa5llGLDz" resolve="appender" />
-              </node>
+            <node concept="liA8E" id="1pQpPQ2ihz$" role="2OqNvi">
+              <ref role="37wK5l" to="zu0:~CachingAppender.attach()" resolve="attach" />
             </node>
           </node>
         </node>
@@ -5346,17 +5325,13 @@
       <node concept="3cqZAl" id="8$1$D__LNK" role="3clF45" />
       <node concept="3Tm6S6" id="8$1$D__MUf" role="1B3o_S" />
       <node concept="3clFbS" id="8$1$D__LNM" role="3clF47">
-        <node concept="3clFbF" id="8$1$D_AFt1" role="3cqZAp">
-          <node concept="2OqwBi" id="8$1$D_AFtM" role="3clFbG">
-            <node concept="2YIFZM" id="8$1$D_AFt3" role="2Oq$k0">
-              <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
-              <ref role="37wK5l" to="q7tw:~Logger.getRootLogger()" resolve="getRootLogger" />
+        <node concept="3clFbF" id="1pQpPQ2iC3a" role="3cqZAp">
+          <node concept="2OqwBi" id="1pQpPQ2iGAI" role="3clFbG">
+            <node concept="37vLTw" id="1pQpPQ2iC38" role="2Oq$k0">
+              <ref role="3cqZAo" node="8$1$D_AEud" resolve="appender" />
             </node>
-            <node concept="liA8E" id="8$1$D_AFzq" role="2OqNvi">
-              <ref role="37wK5l" to="q7tw:~Category.removeAppender(org.apache.log4j.Appender)" resolve="removeAppender" />
-              <node concept="37vLTw" id="8$1$D_AFDI" role="37wK5m">
-                <ref role="3cqZAo" node="8$1$D_AEud" resolve="appender" />
-              </node>
+            <node concept="liA8E" id="1pQpPQ2iL5R" role="2OqNvi">
+              <ref role="37wK5l" to="zu0:~CachingAppender.detach()" resolve="detach" />
             </node>
           </node>
         </node>

@@ -58,7 +58,6 @@ import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import com.intellij.openapi.fileEditor.impl.CurrentEditorProvider;
 import com.intellij.openapi.fileEditor.FileEditor;
-import org.apache.log4j.Level;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -423,10 +422,9 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   }
 
   private CachingAppender installAppender() {
-    Logger rootLogger = Logger.getRootLogger();
-    CachingAppender appender = new CachingAppender(Level.ERROR);
+    CachingAppender appender = new CachingAppender(CachingAppender.Level.ERROR);
     populateExpectedEvents(appender);
-    rootLogger.addAppender(appender);
+    appender.attach();
     return appender;
   }
 
@@ -435,7 +433,7 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   }
 
   private void uninstallAppender(CachingAppender appender) {
-    Logger.getRootLogger().removeAppender(appender);
+    appender.detach();
   }
 
   private static final class CONCEPTS {

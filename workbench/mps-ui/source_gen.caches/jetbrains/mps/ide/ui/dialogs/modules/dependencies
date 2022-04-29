@@ -66,6 +66,7 @@
     <classNode extendsClassName="javax.swing.JPanel" />
   </dependency>
   <dependency className="jetbrains.mps.ide.ui.dialogs.modules.NewModuleDialog">
+    <classNode dependClassName="com.intellij.openapi.ui.ValidationInfo" />
     <classNode dependClassName="com.intellij.project.ProjectKt" />
     <classNode dependClassName="java.io.File" />
     <classNode dependClassName="java.lang.Override" />
