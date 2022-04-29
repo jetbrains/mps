@@ -57,7 +57,6 @@
     <import index="79ha" ref="r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)" />
     <import index="y5e1" ref="r:4464540a-9650-433f-b716-ed95bbac5a69(jetbrains.mps.lang.test.matcher)" />
     <import index="3a50" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide(MPS.Platform/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="zu0" ref="920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.testbench.util(Testbench/)" />
     <import index="l9ag" ref="920eaa0e-ecca-46bc-bee7-4e5c59213dd6/java:jetbrains.mps.testbench.junit(Testbench/)" />
     <import index="zyr2" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.inspector(MPS.Editor/)" />
@@ -5270,7 +5269,11 @@
             </node>
             <node concept="2ShNRf" id="4Zaa5llGMXo" role="33vP2m">
               <node concept="1pGfFk" id="4Zaa5llGMXn" role="2ShVmc">
-                <ref role="37wK5l" to="zu0:~CachingAppender.&lt;init&gt;()" resolve="CachingAppender" />
+                <ref role="37wK5l" to="zu0:~CachingAppender.&lt;init&gt;(jetbrains.mps.testbench.util.CachingAppender$Level)" resolve="CachingAppender" />
+                <node concept="Rm8GO" id="5gJ0Wj_T8PR" role="37wK5m">
+                  <ref role="Rm8GQ" to="zu0:~CachingAppender$Level.ERROR" resolve="ERROR" />
+                  <ref role="1Px2BO" to="zu0:~CachingAppender$Level" resolve="Level" />
+                </node>
               </node>
             </node>
           </node>
@@ -5289,11 +5292,7 @@
               <ref role="3cqZAo" node="4Zaa5llGLDz" resolve="appender" />
             </node>
             <node concept="liA8E" id="1pQpPQ2ihz$" role="2OqNvi">
-              <ref role="37wK5l" to="zu0:~CachingAppender.attach(org.apache.log4j.Level)" resolve="attach" />
-              <node concept="10M0yZ" id="4Zaa5llGNfa" role="37wK5m">
-                <ref role="1PxDUh" to="q7tw:~Level" resolve="Level" />
-                <ref role="3cqZAo" to="q7tw:~Level.ERROR" resolve="ERROR" />
-              </node>
+              <ref role="37wK5l" to="zu0:~CachingAppender.attach()" resolve="attach" />
             </node>
           </node>
         </node>

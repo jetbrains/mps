@@ -58,7 +58,6 @@ import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.nodeEditor.inspector.InspectorEditorComponent;
 import com.intellij.openapi.fileEditor.impl.CurrentEditorProvider;
 import com.intellij.openapi.fileEditor.FileEditor;
-import org.apache.log4j.Level;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -423,9 +422,9 @@ public abstract class BaseEditorTestBody extends BaseTestBody {
   }
 
   private CachingAppender installAppender() {
-    CachingAppender appender = new CachingAppender();
+    CachingAppender appender = new CachingAppender(CachingAppender.Level.ERROR);
     populateExpectedEvents(appender);
-    appender.attach(Level.ERROR);
+    appender.attach();
     return appender;
   }
 

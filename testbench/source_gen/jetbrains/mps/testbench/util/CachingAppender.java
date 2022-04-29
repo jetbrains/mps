@@ -5,10 +5,8 @@ package jetbrains.mps.testbench.util;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.List;
 import java.util.ArrayList;
-import com.intellij.openapi.util.Pair;
 import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.spi.LoggingEvent;
-import org.apache.log4j.varia.LevelRangeFilter;
 import org.apache.log4j.Logger;
 import java.util.Arrays;
 
@@ -29,22 +27,69 @@ public class CachingAppender implements Output {
     INFO(),
     DEBUG(),
     TRACE(),
-    ALL()
-  }
-  private int myEventCount;
-  private List<String> myMessages = new ArrayList<String>();
-  private List<Pair<Integer, String>> myExpectedEvents = new ArrayList<Pair<Integer, String>>();
-  private List<Pair<Integer, String>> myReceivedExpectedEvents = new ArrayList<Pair<Integer, String>>();
-  private AppenderSkeleton myListener;
+    ALL();
 
-  public CachingAppender() {
+    /**
+     * e.g. DEBUG.lessSevereThan(INFO)
+     */
+    public boolean lessSevereThan(Level other) {
+      return ordinal() > other.ordinal();
+    }
+
   }
 
   /**
-   * 
-   * @param watchLevel FIXME not quite sure I need this, doesn't make much sense together with expectEvent(finer level)
+   * public just for transition purposes
    */
-  public void attach(org.apache.log4j.Level watchLevel) {
+  public static Level fromLog4jLevel(int log4jLevel) {
+    // ALL as default not to miss any event just in case
+    switch (log4jLevel) {
+      case org.apache.log4j.Level.TRACE_INT:
+        return Level.TRACE;
+      case org.apache.log4j.Level.DEBUG_INT:
+        return Level.DEBUG;
+      case org.apache.log4j.Level.INFO_INT:
+        return Level.INFO;
+      case org.apache.log4j.Level.WARN_INT:
+        return Level.WARN;
+      case org.apache.log4j.Level.ERROR_INT:
+        return Level.ERROR;
+      case org.apache.log4j.Level.FATAL_INT:
+        return Level.FATAL;
+      case org.apache.log4j.Level.OFF_INT:
+        return Level.OFF;
+      default:
+        return Level.ALL;
+    }
+  }
+  /*package*/ static class EE {
+    public final Level level;
+    public final String text;
+    /*package*/ EE(Level l, String t) {
+      level = l;
+      text = t;
+    }
+  }
+
+  private final Level myUnexpectedWatchLevel;
+  private int myEventCount;
+  private List<String> myMessages = new ArrayList<String>();
+  private List<EE> myExpectedEvents = new ArrayList<>();
+  private List<EE> myReceivedExpectedEvents = new ArrayList<>();
+  private AppenderSkeleton myListener;
+
+  /**
+   * 
+   * @param watchLevel messages with severity less than specified are not considered as 'unexpected'
+   */
+  public CachingAppender(Level watchLevel) {
+    // note, we shall listen to all events, as we may get configured with whatever expected level
+    // and we need to track/record these expected event. However, those unexpected are filtered out by this level
+    // to avoid complicated configurations listing all events that could happen as expected.
+    myUnexpectedWatchLevel = watchLevel;
+  }
+
+  public void attach() {
     assert myListener == null;
     myListener = new AppenderSkeleton() {
       @Override
@@ -59,11 +104,11 @@ public class CachingAppender implements Output {
         return false;
       }
     };
-    final LevelRangeFilter newFilter = new LevelRangeFilter();
-    newFilter.setLevelMin(watchLevel);
-    myListener.addFilter(newFilter);
+    // intentionally no LevelRangeFilter, see cons
     Logger.getRootLogger().addAppender(myListener);
-
+    myEventCount = 0;
+    myReceivedExpectedEvents.clear();
+    myMessages.clear();
   }
 
   public void detach() {
@@ -74,7 +119,13 @@ public class CachingAppender implements Output {
   }
 
   /*package*/ void process(LoggingEvent loggingEvent) {
-    if (!(isExpected(loggingEvent))) {
+    Level eventLevel = fromLog4jLevel(loggingEvent.getLevel().toInt());
+    EE pr = findExpected(eventLevel, loggingEvent.getRenderedMessage());
+    if (pr == null) {
+      // unexpected, but do we care given initial sensitivity barrier?
+      if (eventLevel.lessSevereThan(myUnexpectedWatchLevel)) {
+        return;
+      }
       myEventCount++;
       myMessages.add(loggingEvent.getRenderedMessage());
       String[] stackTrace = loggingEvent.getThrowableStrRep();
@@ -83,19 +134,21 @@ public class CachingAppender implements Output {
         myMessages.addAll(Arrays.asList(stackTrace));
         myMessages.add("-- =============StackTrace================");
       }
+    } else {
+      myReceivedExpectedEvents.add(pr);
     }
   }
 
-  private boolean isExpected(LoggingEvent event) {
-    for (Pair<Integer, String> pr : myExpectedEvents) {
-      if (event.getLevel().isGreaterOrEqual(org.apache.log4j.Level.toLevel(pr.first))) {
-        if (pr.second == null || pr.second.equals(event.getRenderedMessage())) {
-          myReceivedExpectedEvents.add(pr);
-          return true;
+  private EE findExpected(Level eventLevel, String eventMessage) {
+    for (EE pr : myExpectedEvents) {
+      // intentionally ==, not lessSevereThan, I don't quite understand why expected INFO used to block ERROR
+      if (pr.level == eventLevel) {
+        if (pr.text == null || pr.text.equals(eventMessage)) {
+          return pr;
         }
       }
     }
-    return false;
+    return null;
   }
 
   @Override
@@ -122,45 +175,20 @@ public class CachingAppender implements Output {
   }
 
   public void sealEvents() {
-    List<Pair<Integer, String>> list = new ArrayList<Pair<Integer, String>>(myExpectedEvents);
+    List<EE> list = new ArrayList<>(myExpectedEvents);
     list.removeAll(myReceivedExpectedEvents);
-    for (Pair<Integer, String> pr : list) {
+    for (EE pr : list) {
       myEventCount++;
-      myMessages.add("MISSING: " + pr.second);
+      myMessages.add(String.format("MISSING: [%s] %s", pr.level, pr.text));
     }
   }
 
+  @Deprecated(since = "2021.3.1", forRemoval = true)
   public void expectEvent(int level, String text) {
-    myExpectedEvents.add(new Pair<Integer, String>(level, text));
+    myExpectedEvents.add(new EE(fromLog4jLevel(level), text));
   }
 
   public void expectEvent(Level level, String text) {
-    final int v;
-    switch (level) {
-      case FATAL:
-        v = org.apache.log4j.Level.FATAL_INT;
-        break;
-      case ERROR:
-        v = org.apache.log4j.Level.ERROR_INT;
-        break;
-      case WARN:
-        v = org.apache.log4j.Level.WARN_INT;
-        break;
-      case INFO:
-        v = org.apache.log4j.Level.INFO_INT;
-        break;
-      case DEBUG:
-        v = org.apache.log4j.Level.DEBUG_INT;
-        break;
-      case TRACE:
-        v = org.apache.log4j.Level.TRACE_INT;
-        break;
-      case ALL:
-        v = org.apache.log4j.Level.ALL_INT;
-        break;
-      default:
-        v = org.apache.log4j.Level.OFF_INT;
-    }
-    myExpectedEvents.add(new Pair<Integer, String>(v, text));
+    myExpectedEvents.add(new EE(level, text));
   }
 }

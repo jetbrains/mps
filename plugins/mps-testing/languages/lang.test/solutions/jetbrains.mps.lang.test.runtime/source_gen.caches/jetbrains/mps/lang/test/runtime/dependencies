@@ -114,7 +114,6 @@
     <classNode dependClassName="jetbrains.mps.testbench.junit.UncleanTestExecutionException" />
     <classNode dependClassName="jetbrains.mps.testbench.util.CachingAppender" />
     <classNode dependClassName="jetbrains.mps.workbench.action.ActionUtils" />
-    <classNode dependClassName="org.apache.log4j.Level" />
     <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />

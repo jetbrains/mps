@@ -1145,12 +1145,12 @@
     <node concept="Wx3nA" id="4_TMdeLkPpL" role="jymVt">
       <property role="TrG5h" value="DEFAULT_WATCH_LOGGER_LEVEL" />
       <property role="3TUv4t" value="true" />
-      <node concept="10M0yZ" id="4_TMdeLliGZ" role="33vP2m">
-        <ref role="1PxDUh" to="q7tw:~Level" resolve="Level" />
-        <ref role="3cqZAo" to="q7tw:~Level.ERROR" resolve="ERROR" />
+      <node concept="Rm8GO" id="6pLVEngWxGl" role="33vP2m">
+        <ref role="Rm8GQ" to="ot0m:4lRieqsIgox" resolve="ERROR" />
+        <ref role="1Px2BO" to="ot0m:4lRieqsI9Jy" resolve="Level" />
       </node>
       <node concept="3uibUv" id="4_TMdeLkPpM" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Level" resolve="Level" />
+        <ref role="3uigEE" to="ot0m:4lRieqsI9Jy" resolve="Level" />
       </node>
       <node concept="3Tm6S6" id="4_TMdeLkPpQ" role="1B3o_S" />
     </node>
@@ -1292,17 +1292,6 @@
       </node>
     </node>
     <node concept="2tJIrI" id="d4HXLLrIZr" role="jymVt" />
-    <node concept="312cEg" id="d4HXLLqu1g" role="jymVt">
-      <property role="34CwA1" value="false" />
-      <property role="eg7rD" value="false" />
-      <property role="TrG5h" value="myWatchLevel" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="d4HXLLqtEH" role="1B3o_S" />
-      <node concept="3uibUv" id="d4HXLLqvtK" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Level" resolve="Level" />
-      </node>
-    </node>
-    <node concept="2tJIrI" id="d4HXLLquDB" role="jymVt" />
     <node concept="312cEg" id="4_TMdeLkPqk" role="jymVt">
       <property role="eg7rD" value="false" />
       <property role="TrG5h" value="myErrorCachingStream" />
@@ -1311,14 +1300,14 @@
       <node concept="3uibUv" id="72HFhk0LxuL" role="1tU5fm">
         <ref role="3uigEE" node="72HFhk0LbPx" resolve="IgnoringPatternErrorStream" />
       </node>
-      <node concept="3Tm6S6" id="4_TMdeLkPqn" role="1B3o_S" />
+      <node concept="3Tm6S6" id="6pLVEngWv7H" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="72HFhk0KwwM" role="jymVt" />
     <node concept="312cEg" id="4_TMdeLkPqo" role="jymVt">
       <property role="eg7rD" value="false" />
       <property role="TrG5h" value="myCachingAppender" />
       <property role="34CwA1" value="false" />
-      <property role="3TUv4t" value="false" />
+      <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="4_TMdeLkPqq" role="1tU5fm">
         <ref role="3uigEE" to="ot0m:4_TMdeLkOXW" resolve="CachingAppender" />
       </node>
@@ -1374,7 +1363,7 @@
       </node>
       <node concept="3clFbS" id="4_TMdeLkPqH" role="3clF47">
         <node concept="1VxSAg" id="d4HXLLqt8g" role="3cqZAp">
-          <ref role="37wK5l" node="d4HXLLqs6O" resolve="WatchingRunNotifier" />
+          <ref role="37wK5l" node="6pLVEngWbC9" resolve="WatchingRunNotifier" />
           <node concept="37vLTw" id="d4HXLLqtbB" role="37wK5m">
             <ref role="3cqZAo" node="4_TMdeLkPqF" resolve="delegate" />
           </node>
@@ -1410,42 +1399,108 @@
         <node concept="10P_77" id="d4HXLLqt3H" role="1tU5fm" />
       </node>
       <node concept="3clFbS" id="d4HXLLqs6S" role="3clF47">
-        <node concept="XkiVB" id="d4HXLLqs6T" role="3cqZAp">
-          <ref role="37wK5l" node="4_TMdeLkPjt" resolve="DelegatingRunNotifier" />
-          <node concept="37vLTw" id="d4HXLLqs6U" role="37wK5m">
+        <node concept="1VxSAg" id="6pLVEngWjWF" role="3cqZAp">
+          <ref role="37wK5l" node="6pLVEngWbC9" resolve="WatchingRunNotifier" />
+          <node concept="37vLTw" id="6pLVEngWkHK" role="37wK5m">
             <ref role="3cqZAo" node="d4HXLLqs6Q" resolve="delegate" />
           </node>
-        </node>
-        <node concept="3clFbF" id="d4HXLLqutZ" role="3cqZAp">
-          <node concept="37vLTI" id="d4HXLLquyA" role="3clFbG">
-            <node concept="37vLTw" id="d4HXLLquAN" role="37vLTx">
-              <ref role="3cqZAo" node="d4HXLLqt05" resolve="watchLevel" />
+          <node concept="2YIFZM" id="6pLVEngWlnQ" role="37wK5m">
+            <ref role="37wK5l" to="ot0m:6pLVEngNAUi" resolve="fromLog4jLevel" />
+            <ref role="1Pybhc" to="ot0m:4_TMdeLkOXW" resolve="CachingAppender" />
+            <node concept="2OqwBi" id="6pLVEngWm6D" role="37wK5m">
+              <node concept="37vLTw" id="6pLVEngWlGS" role="2Oq$k0">
+                <ref role="3cqZAo" node="d4HXLLqt05" resolve="watchLevel" />
+              </node>
+              <node concept="liA8E" id="6pLVEngWmwN" role="2OqNvi">
+                <ref role="37wK5l" to="q7tw:~Priority.toInt()" resolve="toInt" />
+              </node>
             </node>
-            <node concept="37vLTw" id="d4HXLLqutX" role="37vLTJ">
-              <ref role="3cqZAo" node="d4HXLLqu1g" resolve="myWatchLevel" />
+          </node>
+          <node concept="37vLTw" id="6pLVEngWn8B" role="37wK5m">
+            <ref role="3cqZAo" node="d4HXLLqt2r" resolve="ignoreWarnings" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="d4HXLLqs6V" role="1B3o_S" />
+      <node concept="2AHcQZ" id="6pLVEngWdUS" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" resolve="Deprecated" />
+        <node concept="2B6LJw" id="6pLVEngWeBz" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="6pLVEngWeDe" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="6pLVEngWeEr" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="6pLVEngWeHo" role="2B70Vg">
+            <property role="Xl_RC" value="2021.3.1" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="6pLVEngWeLU" role="jymVt" />
+    <node concept="3clFbW" id="6pLVEngWbC9" role="jymVt">
+      <property role="od$2w" value="false" />
+      <property role="DiZV1" value="false" />
+      <node concept="3cqZAl" id="6pLVEngWbCa" role="3clF45" />
+      <node concept="37vLTG" id="6pLVEngWbCb" role="3clF46">
+        <property role="TrG5h" value="delegate" />
+        <node concept="3uibUv" id="6pLVEngWbCc" role="1tU5fm">
+          <ref role="3uigEE" to="k76n:~RunNotifier" resolve="RunNotifier" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="6pLVEngWbCd" role="3clF46">
+        <property role="TrG5h" value="watchLevel" />
+        <node concept="3uibUv" id="6pLVEngWbCe" role="1tU5fm">
+          <ref role="3uigEE" to="ot0m:4lRieqsI9Jy" resolve="Level" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="6pLVEngWbCf" role="3clF46">
+        <property role="TrG5h" value="ignoreWarnings" />
+        <node concept="10P_77" id="6pLVEngWbCg" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="6pLVEngWbCh" role="3clF47">
+        <node concept="XkiVB" id="6pLVEngWbCi" role="3cqZAp">
+          <ref role="37wK5l" node="4_TMdeLkPjt" resolve="DelegatingRunNotifier" />
+          <node concept="37vLTw" id="6pLVEngWbCj" role="37wK5m">
+            <ref role="3cqZAo" node="6pLVEngWbCb" resolve="delegate" />
+          </node>
+        </node>
+        <node concept="3clFbF" id="4_TMdeLkPtY" role="3cqZAp">
+          <node concept="37vLTI" id="4_TMdeLkPtZ" role="3clFbG">
+            <node concept="2ShNRf" id="4_TMdeLliX9" role="37vLTx">
+              <node concept="1pGfFk" id="4_TMdeLliXa" role="2ShVmc">
+                <ref role="37wK5l" to="ot0m:4_TMdeLkOYy" resolve="CachingAppender" />
+                <node concept="37vLTw" id="6pLVEngWrCs" role="37wK5m">
+                  <ref role="3cqZAo" node="6pLVEngWbCd" resolve="watchLevel" />
+                </node>
+              </node>
+            </node>
+            <node concept="37vLTw" id="d4HXLLq8be" role="37vLTJ">
+              <ref role="3cqZAo" node="4_TMdeLkPqo" resolve="myCachingAppender" />
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="72HFhk0KD6S" role="3cqZAp">
-          <node concept="37vLTI" id="72HFhk0KDd9" role="3clFbG">
-            <node concept="2ShNRf" id="72HFhk0KDhX" role="37vLTx">
-              <node concept="1pGfFk" id="72HFhk0KDpO" role="2ShVmc">
+        <node concept="3clFbF" id="6pLVEngWbCo" role="3cqZAp">
+          <node concept="37vLTI" id="6pLVEngWbCp" role="3clFbG">
+            <node concept="2ShNRf" id="6pLVEngWbCq" role="37vLTx">
+              <node concept="1pGfFk" id="6pLVEngWbCr" role="2ShVmc">
                 <ref role="37wK5l" node="72HFhk0Lfav" resolve="IgnoringPatternErrorStream" />
-                <node concept="1rXfSq" id="72HFhk0L0km" role="37wK5m">
+                <node concept="1rXfSq" id="6pLVEngWbCs" role="37wK5m">
                   <ref role="37wK5l" node="d4HXLLrDPC" resolve="getPatternsToIgnore" />
-                  <node concept="37vLTw" id="72HFhk0L2FH" role="37wK5m">
-                    <ref role="3cqZAo" node="d4HXLLqt2r" resolve="ignoreWarnings" />
+                  <node concept="37vLTw" id="6pLVEngWbCt" role="37wK5m">
+                    <ref role="3cqZAo" node="6pLVEngWbCf" resolve="ignoreWarnings" />
                   </node>
                 </node>
               </node>
             </node>
-            <node concept="37vLTw" id="72HFhk0KD6Q" role="37vLTJ">
+            <node concept="37vLTw" id="6pLVEngWbCu" role="37vLTJ">
               <ref role="3cqZAo" node="4_TMdeLkPqk" resolve="myErrorCachingStream" />
             </node>
           </node>
         </node>
       </node>
-      <node concept="3Tm1VV" id="d4HXLLqs6V" role="1B3o_S" />
+      <node concept="3Tm1VV" id="6pLVEngWbCv" role="1B3o_S" />
     </node>
     <node concept="2tJIrI" id="d4HXLLrCqj" role="jymVt" />
     <node concept="3clFb_" id="d4HXLLrDPC" role="jymVt">
@@ -1889,18 +1944,6 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="4_TMdeLkPtY" role="3cqZAp">
-          <node concept="37vLTI" id="4_TMdeLkPtZ" role="3clFbG">
-            <node concept="2ShNRf" id="4_TMdeLliX9" role="37vLTx">
-              <node concept="1pGfFk" id="4_TMdeLliXa" role="2ShVmc">
-                <ref role="37wK5l" to="ot0m:4_TMdeLkOYy" resolve="CachingAppender" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="d4HXLLq8be" role="37vLTJ">
-              <ref role="3cqZAo" node="4_TMdeLkPqo" resolve="myCachingAppender" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbF" id="4lRieqsQ6NL" role="3cqZAp">
           <node concept="2OqwBi" id="4lRieqsQ8mh" role="3clFbG">
             <node concept="37vLTw" id="4lRieqsQ6NJ" role="2Oq$k0">
@@ -1908,9 +1951,6 @@
             </node>
             <node concept="liA8E" id="4lRieqsQ9ON" role="2OqNvi">
               <ref role="37wK5l" to="ot0m:4lRieqsMKp3" resolve="attach" />
-              <node concept="37vLTw" id="4lRieqsQbs_" role="37wK5m">
-                <ref role="3cqZAo" node="d4HXLLqu1g" resolve="myWatchLevel" />
-              </node>
             </node>
           </node>
         </node>
