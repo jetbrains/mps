@@ -14,9 +14,9 @@ public interface KotlinTypesystem {
   /**
    * Resolve the best function candidate for the given call according to implementation.
    * 
-   * @return function to apply or null, plus a boolean indicating ambiguity in case of failure
+   * @return function to apply or null, plus two booleans indicating ambiguity and failure respectively
    */
-  Tuples._2<FunctionDeclaration, Boolean> selectOverloadCandidate(FunctionCall call, SNode contextNode, Iterable<FunctionDeclaration> candidates);
+  Tuples._3<FunctionDeclaration, Boolean, Boolean> selectOverloadCandidate(FunctionCall call, SNode contextNode, Iterable<FunctionDeclaration> candidates);
 
   /**
    * Return an intermediate computation of the typesystem on the given node.

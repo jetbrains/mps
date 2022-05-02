@@ -2658,6 +2658,9 @@
     <property role="EcuMT" value="2936055411798373494" />
     <property role="R5$K7" value="true" />
     <property role="R4oN_" value="string literal content" />
+    <node concept="PrWs8" id="oHnUhJkfTh" role="PzmwI">
+      <ref role="PrY4T" node="2mD64u3yQho" resolve="IInferencePart" />
+    </node>
   </node>
   <node concept="1TIwiD" id="4Nah4_QdulL">
     <property role="EcuMT" value="5533310174484620657" />
@@ -4055,6 +4058,9 @@
       <property role="20lbJX" value="fLJekj5/_0__n" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <ref role="20lvS9" node="4S7WpD150Cp" resolve="IStringLiteralPart" />
+    </node>
+    <node concept="PrWs8" id="oHnUhJkggv" role="PzmwI">
+      <ref role="PrY4T" node="2mD64u3yQho" resolve="IInferencePart" />
     </node>
   </node>
   <node concept="PlHQZ" id="mITNXyOzhh">

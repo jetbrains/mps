@@ -18,8 +18,9 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.ListScope;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
-import jetbrains.mps.kotlin.behavior.IClassDeclaration__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.kotlin.scopes.SuperTypesVisitorImpl;
+import jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.kotlin.runtime.types.identifiers.TypeKey;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
@@ -49,7 +50,7 @@ public class SuperExpression_Constraints extends BaseConstraintsDescriptor {
           public Scope createScope(final ReferenceConstraintsContext _context) {
             final SRepository repo = _context.getContextNode().getModel().getRepository();
             SNode target = SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.IClassDeclaration$bQ, true, false);
-            return ListScope.forNamedElements(SetSequence.fromSet(IClassDeclaration__BehaviorDescriptor.getSuperClasses_id4gvOB2uSXgW.invoke(target)).select(new ISelector<TypeKey, SNode>() {
+            return ListScope.forNamedElements(Sequence.fromIterable(SuperTypesVisitorImpl.getSupertypes(IClassLike__BehaviorDescriptor.getThisType_id46gC9M6gB68.invoke(target, ((boolean) false)))).select(new ISelector<TypeKey, SNode>() {
               public SNode select(TypeKey it) {
                 return SPointerOperations.resolveNode(it.getClassifierTarget(), repo);
               }

@@ -2025,10 +2025,15 @@
         </node>
       </node>
       <node concept="2ShNRf" id="4gvOB2uRtjq" role="33vP2m">
-        <node concept="1pGfFk" id="4gvOB2uRtli" role="2ShVmc">
-          <ref role="37wK5l" to="33ny:~HashSet.&lt;init&gt;()" resolve="HashSet" />
-          <node concept="3uibUv" id="2_89xr1Kl3_" role="1pMfVU">
-            <ref role="3uigEE" to="mx11:6GqgvHqhqpA" resolve="TypeKey" />
+        <node concept="1pGfFk" id="4z6StV4sEJZ" role="2ShVmc">
+          <property role="373rjd" value="true" />
+          <ref role="37wK5l" to="33ny:~LinkedHashSet.&lt;init&gt;()" resolve="LinkedHashSet" />
+        </node>
+      </node>
+      <node concept="z59LJ" id="4z6StV4sFlG" role="lGtFl">
+        <node concept="TZ5HA" id="4z6StV4sFlH" role="TZ5H$">
+          <node concept="1dT_AC" id="4z6StV4sFlI" role="1dT_Ay">
+            <property role="1dT_AB" value="Linked hash set is used as it keeps order in supertypes." />
           </node>
         </node>
       </node>

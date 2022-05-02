@@ -11,7 +11,7 @@
   </languages>
   <imports>
     <import index="vciu" ref="r:42fb31e7-122b-4950-aa58-2f5f6e5595ce(jetbrains.mps.kotlin.overloading)" />
-    <import index="g9sx" ref="r:966de44c-de72-437f-889f-78347a061f0c(jetbrains.mps.kotlin.api.declaration)" />
+    <import index="1p8r" ref="r:966de44c-de72-437f-889f-78347a061f0c(jetbrains.mps.kotlin.api.declaration)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -100,7 +100,7 @@
         <property role="TrG5h" value="candidates" />
         <node concept="A3Dl8" id="7VTXQs1rHGW" role="1tU5fm">
           <node concept="3uibUv" id="7VTXQs1rIs8" role="A3Ik2">
-            <ref role="3uigEE" to="g9sx:26mUjU3_jTe" resolve="FunctionDeclaration" />
+            <ref role="3uigEE" to="1p8r:26mUjU3_jTe" resolve="FunctionDeclaration" />
           </node>
         </node>
       </node>
@@ -108,9 +108,10 @@
       <node concept="3Tm1VV" id="7VTXQs1rCSI" role="1B3o_S" />
       <node concept="1LlUBW" id="7VTXQs1rCMU" role="3clF45">
         <node concept="3uibUv" id="7VTXQs1rLAW" role="1Lm7xW">
-          <ref role="3uigEE" to="g9sx:26mUjU3_jTe" resolve="FunctionDeclaration" />
+          <ref role="3uigEE" to="1p8r:26mUjU3_jTe" resolve="FunctionDeclaration" />
         </node>
         <node concept="10P_77" id="7VTXQs1rLX_" role="1Lm7xW" />
+        <node concept="10P_77" id="4z6StV4IlYT" role="1Lm7xW" />
       </node>
       <node concept="P$JXv" id="7KVUDZaBBlt" role="lGtFl">
         <node concept="TZ5HA" id="7KVUDZaBBlu" role="TZ5H$">
@@ -119,7 +120,7 @@
           </node>
         </node>
         <node concept="x79VA" id="7KVUDZaBBlA" role="3nqlJM">
-          <property role="x79VB" value="function to apply or null, plus a boolean indicating ambiguity in case of failure" />
+          <property role="x79VB" value="function to apply or null, plus two booleans indicating ambiguity and failure respectively" />
         </node>
       </node>
     </node>
