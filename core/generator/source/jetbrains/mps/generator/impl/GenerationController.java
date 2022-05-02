@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -128,7 +128,7 @@ public class GenerationController implements ITaskPoolProvider {
 
     monitor.start(inputModel.getName().getValue(), 10);
     try {
-      generationSession.getLoggingHandler().register();
+      generationSession.activateLogTracking();
       if (myLogger.needsInfo()) {
         myLogger.info("");
         myLogger.info("[model " + inputModel.getName() +
@@ -156,7 +156,7 @@ public class GenerationController implements ITaskPoolProvider {
       }
       return currentGenerationOK;
     } finally {
-      generationSession.getLoggingHandler().unregister();
+      generationSession.deactivateLogTracking();
       generationSession.discardTransients();
 
       monitor.done();

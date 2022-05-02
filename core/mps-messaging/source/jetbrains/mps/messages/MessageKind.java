@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -48,6 +48,11 @@ public enum MessageKind {
     return msg.getKind() == this;
   }
 
+  /**
+   * @deprecated Keep while we transit log4j uses; new code shall use {@link java.util.logging.Level}
+   */
+  @SuppressWarnings("UnstableApiUsage")
+  @Deprecated(since = "2022.1", forRemoval = true)
   @NotNull
   public static MessageKind fromPriority(Priority level) {
     if (level.equals(Level.FATAL) || level.equals(Level.ERROR)) {
@@ -58,4 +63,13 @@ public enum MessageKind {
     return MessageKind.INFORMATION;
   }
 
+  @NotNull
+  public static MessageKind fromPriority(java.util.logging.Level level) {
+    if (level.equals(java.util.logging.Level.SEVERE)) {
+      return MessageKind.ERROR;
+    } else if (level.equals(java.util.logging.Level.WARNING)) {
+      return MessageKind.WARNING;
+    }
+    return MessageKind.INFORMATION;
+  }
 }

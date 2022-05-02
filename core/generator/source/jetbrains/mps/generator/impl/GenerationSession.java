@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -47,7 +47,6 @@ import jetbrains.mps.generator.runtime.TemplateMappingConfiguration;
 import jetbrains.mps.generator.runtime.TemplateMappingScript;
 import jetbrains.mps.generator.runtime.TemplateModule;
 import jetbrains.mps.generator.template.ITemplateGenerator;
-import jetbrains.mps.logging.MPSAppenderBase;
 import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.smodel.FastNodeFinderManager;
 import jetbrains.mps.smodel.Generator;
@@ -56,9 +55,7 @@ import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.performance.IPerformanceTracer;
-import org.apache.log4j.Priority;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelName;
@@ -71,6 +68,7 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -78,8 +76,13 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Queue;
 import java.util.function.Function;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
 
 /**
  * Igor Alshannikov
@@ -95,7 +98,7 @@ class GenerationSession {
   private ModelGenerationPlan myGenerationPlan;
 
   private final GenerationTrace myNewTrace;
-  private MPSAppenderBase myLoggingHandler;
+  private TrackHintObjectsInLog myLoggingHandler;
   private final RecordingFactory myLogRecorder;
   private final GenerationSessionLogger myLogger;
 
@@ -817,26 +820,61 @@ class GenerationSession {
     return !RuntimeFlags.isTestMode();
   }
 
-  @SuppressWarnings("WeakerAccess")
-  public MPSAppenderBase getLoggingHandler() {
+  /*package*/ void activateLogTracking() {
     if (myLoggingHandler == null) {
-      myLoggingHandler = new MPSAppenderBase() {
-        @Override
-        protected void append(@NotNull Priority level, @NotNull String categoryName, @NotNull String message, @Nullable Throwable t,
-            @Nullable Object hintObject) {
-          if (hintObject instanceof SNode) {
-            final SModel m = ((SNode) hintObject).getModel();
-            myLogRecorder.record(MessageKind.fromPriority(level), m.getReference());
-          } else if (hintObject instanceof SModelReference) {
-            SModelReference mr = (SModelReference) hintObject;
-            myLogRecorder.record(MessageKind.fromPriority(level), mr);
-          } else if (hintObject instanceof SNodeReference) {
-            myLogRecorder.record(MessageKind.fromPriority(level), ((SNodeReference) hintObject).getModelReference());
-          }
-        }
-      };
+      myLoggingHandler = new TrackHintObjectsInLog(myLogRecorder);
+      Logger.getLogger("").addHandler(myLoggingHandler);
     }
-    return myLoggingHandler;
+  }
+
+  /*package*/ void deactivateLogTracking() {
+    if (myLoggingHandler != null) {
+      Logger.getLogger("").removeHandler(myLoggingHandler);
+      myLoggingHandler = null;
+    }
+  }
+
+  private static final class TrackHintObjectsInLog extends Handler {
+    private final RecordingFactory myLogRecorder;
+
+    /*package*/ TrackHintObjectsInLog(RecordingFactory logRecorder) {
+      // no filter nor formatter
+      myLogRecorder = logRecorder;
+    }
+
+    @Override
+    public void publish(LogRecord record) {
+      final Object[] hintObjects = record.getParameters();
+      if (hintObjects == null) {
+        return;
+      }
+      final Level level = record.getLevel();
+      // Do I care to track anything finer than INFO? What if user debugs his code and would enjoy respective
+      // transient models being kept even for debug messages?
+      //   if (level.intValue() < Level.INFO.intValue())
+
+      Optional<SNode> node = Arrays.stream(hintObjects).filter(SNode.class::isInstance).map(SNode.class::cast).findAny();
+      Optional<SNodeReference> nref = Arrays.stream(hintObjects).filter(SNodeReference.class::isInstance).map(SNodeReference.class::cast).findAny();
+      Optional<SModelReference> mref = Arrays.stream(hintObjects).filter(SModelReference.class::isInstance).map(SModelReference.class::cast).findAny();
+      if (node.isPresent()) {
+        final SModel m = node.get().getModel();
+        myLogRecorder.record(MessageKind.fromPriority(level), m.getReference());
+      } else if (mref.isPresent()) {
+        myLogRecorder.record(MessageKind.fromPriority(level), mref.get());
+      } else if (nref.isPresent()) {
+        myLogRecorder.record(MessageKind.fromPriority(level), nref.get().getModelReference());
+      }
+    }
+
+    @Override
+    public void flush() {
+      // no-op
+    }
+
+    @Override
+    public void close() throws SecurityException {
+      // no-op
+    }
   }
 
   @SuppressWarnings("WeakerAccess")

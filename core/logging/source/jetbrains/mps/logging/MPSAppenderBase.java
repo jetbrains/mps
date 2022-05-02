@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Implement this to have your own appender.
+ * @deprecated With switch to JUL, use {@link java.util.logging.Handler}
  */
+@Deprecated(since = "2022.1", forRemoval = true)
 public abstract class MPSAppenderBase extends AppenderSkeleton {
   private final static AtomicInteger ourCount = new AtomicInteger(0);
 
