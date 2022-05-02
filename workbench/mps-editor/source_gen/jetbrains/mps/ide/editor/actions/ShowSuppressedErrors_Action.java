@@ -27,9 +27,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.errors.item.FlavouredItem;
 import jetbrains.mps.errors.item.RuleIdFlavouredItem;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import com.intellij.openapi.actionSystem.AnAction;
 import jetbrains.mps.icons.MPSIcons;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
 import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
@@ -120,12 +120,14 @@ public class ShowSuppressedErrors_Action extends BaseAction {
         }
         List<RuleIdFlavouredItem.TypesystemRuleId> rules = ListSequence.fromList(new ArrayList<RuleIdFlavouredItem.TypesystemRuleId>());
         String message = SPropertyOperations.getString(suppress, PROPS.message$_mpB);
-        DefaultActionGroup actionGroup = new DefaultActionGroup();
-        actionGroup.add(new AnAction("Stop Suppressing", "Do not suppress error", MPSIcons.Actions.SuppressedError) {
-          public void actionPerformed(@NotNull AnActionEvent event) {
-            ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().executeCommand(() -> SNodeOperations.deleteNode(suppress));
-          }
-        });
+        final DefaultActionGroup actionGroup = new DefaultActionGroup();
+        if (!(SNodeOperations.getModel(suppress).isReadOnly())) {
+          actionGroup.add(new AnAction("Stop Suppressing", "Do not suppress error", MPSIcons.Actions.SuppressedError) {
+            public void actionPerformed(@NotNull AnActionEvent event) {
+              ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().executeCommand(() -> SNodeOperations.deleteNode(suppress));
+            }
+          });
+        }
         if (Objects.equals(predicateFlavours.get(IssueKindReportItem.FLAVOUR_ISSUE_KIND.toString()), IssueKindReportItem.TYPESYSTEM.deriveItemKind().toString()) && predicateFlavours.containsKey(TypesystemReportItemAdapter.FLAVOUR_RULE_ID.toString())) {
           ListSequence.fromList(rules).addSequence(CollectionSequence.fromCollection(TypesystemReportItemAdapter.FLAVOUR_RULE_ID.deserializePredicate(predicateFlavours.get(TypesystemReportItemAdapter.FLAVOUR_RULE_ID.toString())).getValue()));
           if (ListSequence.fromList(rules).isNotEmpty() && message != null) {
@@ -153,15 +155,15 @@ public class ShowSuppressedErrors_Action extends BaseAction {
             }
           }
         }
-        ListPopup createActionGroupPopup = JBPopupFactory.getInstance().createActionGroupPopup(message, actionGroup, event.getDataContext(), JBPopupFactory.ActionSelectionAid.ALPHA_NUMBERING, false);
         CustomizedNavigatable navigatable = new CustomizedNavigatable(null, ((errorSpecialization == null || errorSpecialization.length() == 0) ? "Any error" : ((message == null || message.length() == 0) ? errorSpecialization : message)), "Suppressed", MPSIcons.Actions.SuppressedError) {
           @Override
           public void navigate(boolean requestFocus) {
+            ListPopup createActionGroupPopup = JBPopupFactory.getInstance().createActionGroupPopup(message, actionGroup, event.getDataContext(), JBPopupFactory.ActionSelectionAid.ALPHA_NUMBERING, false);
             createActionGroupPopup.show(relativePoint);
           }
           @Override
           public boolean canNavigate() {
-            return true;
+            return actionGroup.getChildrenCount() > 0;
           }
         };
         ListSequence.fromList(navigatables).addElement(navigatable);
