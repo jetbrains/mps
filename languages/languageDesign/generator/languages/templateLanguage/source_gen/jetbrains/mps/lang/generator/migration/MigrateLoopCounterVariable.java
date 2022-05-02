@@ -11,8 +11,9 @@ import jetbrains.mps.project.EditableFilteringScope;
 import jetbrains.mps.lang.smodel.query.runtime.QueryExecutionContext;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
@@ -23,7 +24,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.generator.behavior.AbstractNodeMacroNamespace__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.generator.generationContext.behavior.GenerationContextOp_ContextVarRef__BehaviorDescriptor;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
@@ -55,6 +55,17 @@ public class MigrateLoopCounterVariable extends MigrationScriptBase {
           return scope_kpkuzo_a0e_0;
         }
       };
+      // there's a defect in this migration initially that cleared the property with "" value
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LoopMacro$1T, false)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return "".equals(SPropertyOperations.getString(it, PROPS.counterVarName$YOXn));
+        }
+      }).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode it) {
+          SPropertyOperations.assign(it, PROPS.counterVarName$YOXn, null);
+        }
+      });
+
       // Loop macros with defined counter variable
       Iterable<SNode> loops = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.LoopMacro$1T, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
@@ -100,7 +111,7 @@ public class MigrateLoopCounterVariable extends MigrationScriptBase {
       // Apply changes
       Sequence.fromIterable(references).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SNodeOperations.replaceWithAnother(SNodeOperations.getParent(it), createLoopMacroNamespaceAccessor_kpkuzo_a0a0a0a0l0a0g(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14d5f8229234079cL, "jetbrains.mps.lang.generator.structure.LoopMacroVariable"), 0x14d5f8229234079eL, "index")));
+          SNodeOperations.replaceWithAnother(SNodeOperations.getParent(it), createLoopMacroNamespaceAccessor_kpkuzo_a0a0a0a0o0a0g(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14d5f8229234079cL, "jetbrains.mps.lang.generator.structure.LoopMacroVariable"), 0x14d5f8229234079eL, "index")));
         }
       });
       Sequence.fromIterable(loops).subtract(SetSequence.fromSet(toNotClear)).visitAll(new IVisitor<SNode>() {
@@ -114,7 +125,7 @@ public class MigrateLoopCounterVariable extends MigrationScriptBase {
     return new MigrationScriptReference(MetaAdapterFactory.getLanguage(0xb401a68083254110L, 0x8fd384331ff25befL, "jetbrains.mps.lang.generator"), 3);
   }
 
-  private static SNode createLoopMacroNamespaceAccessor_kpkuzo_a0a0a0a0l0a0g(SEnumerationLiteral p0) {
+  private static SNode createLoopMacroNamespaceAccessor_kpkuzo_a0a0a0a0o0a0g(SEnumerationLiteral p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LoopMacroNamespaceAccessor$DO);
     n0.setProperty(PROPS.variable$ww9P, SPropertyOperations.serializeEnummember(p0));
     return n0.getResult();
