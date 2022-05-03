@@ -312,11 +312,13 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.ReturnStatement_DataFlow" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleAfterDotExpression" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleAssertNotNull" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleAssertNull" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleCreator" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleEqualsExpression" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleFieldReference" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleInstanceofExpression" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleMethodCall" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleNonNullLiteral" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleNotEqualsExpression" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleNullLiteral" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleTernaryOperation" />
@@ -643,6 +645,17 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
   </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.dataFlow.Pattern_ah97h0_a0">
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.nullInstruction" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.Program" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.instructions.Instruction" />
+    <classNode dependClassName="jetbrains.mps.lang.pattern.NodeMatcher" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.pattern.GeneratedMatcher" />
+  </dependency>
   <dependency className="jetbrains.mps.baseLanguage.dataFlow.PostfixDecrementExpression_DataFlow">
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.DataFlowBuilderContext" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
@@ -719,6 +732,17 @@
   </dependency>
   <dependency className="jetbrains.mps.baseLanguage.dataFlow.RuleAssertNotNull">
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.Pattern_7fbm30_a0" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.Program" />
+    <classNode dependClassName="jetbrains.mps.lang.pattern.GeneratedMatchingPattern" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="jetbrains.mps.smodel.builder.SNodeBuilder" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowConstructor" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.dataFlow.RuleAssertNull">
+    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.Pattern_ah97h0_a0" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.Program" />
     <classNode dependClassName="jetbrains.mps.lang.pattern.GeneratedMatchingPattern" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
@@ -808,6 +832,19 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SInterfaceConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowConstructor" />
+  </dependency>
+  <dependency className="jetbrains.mps.baseLanguage.dataFlow.RuleNonNullLiteral">
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.notNullInstruction" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.Program" />
+    <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.instructions.Instruction" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowConstructor" />
   </dependency>
