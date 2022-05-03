@@ -6,8 +6,6 @@ import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.lang.test.runtime.BaseTransformationTest;
 import org.junit.ClassRule;
 import jetbrains.mps.lang.test.runtime.TestParametersCache;
-import org.junit.Rule;
-import jetbrains.mps.lang.test.runtime.RunWithCommand;
 import org.junit.Test;
 import jetbrains.mps.lang.test.runtime.BaseTestBody;
 import jetbrains.mps.lang.test.runtime.TransformationTest;
@@ -23,8 +21,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 public class IfMacroTraverse_Test extends BaseTransformationTest {
   @ClassRule
   public static final TestParametersCache ourParamCache = new TestParametersCache(IfMacroTraverse_Test.class, "${mps_home}", "r:a8dd08c8-d222-4842-87dd-546039cb1959(jetbrains.mps.generator.impl.tests@tests)", false);
-  @Rule
-  public final RunWithCommand myWithCommandRule = new RunWithCommand(this);
 
   public IfMacroTraverse_Test() {
     super(ourParamCache);
@@ -42,16 +38,18 @@ public class IfMacroTraverse_Test extends BaseTransformationTest {
     }
 
     public void test_properPreviousMacroForCall() throws Exception {
-      addNodeById("2920122809304205881");
-      // MPS-34370, check_TemplateCallMacro
-      SNode inputNodeTypeInsideOfMacro = NodeMacro__BehaviorDescriptor.getInputNodeTypeInsideOfMacro_idhEwIosJ.invoke(getNodeById("2920122809304199339"));
-      SNode previousNodeMacro = NodeMacro__BehaviorDescriptor.getPreviousNodeMacro_idhEwIot7.invoke(getNodeById("2920122809304199339"));
-      // before the fix, parent traversal lead us to parent of IF and eventually COPY-SRC, where its smodelAttribute query 
-      // gives node<Attribute>
-      Assert.assertFalse(SNodeOperations.is(inputNodeTypeInsideOfMacro, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591161")));
-      // while in fact it shall point to template input node (the one of IF)
-      Assert.assertTrue(SNodeOperations.is(inputNodeTypeInsideOfMacro, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1169194658468")));
-      Assert.assertTrue(SNodeOperations.present(previousNodeMacro), SNodeOperations.isInstanceOf(previousNodeMacro, CONCEPTS.IfMacro$Xy));
+      runWithinCommand(() -> addNodeById("2920122809304205881"));
+      runWithinCommand(() -> {
+        // MPS-34370, check_TemplateCallMacro
+        SNode inputNodeTypeInsideOfMacro = NodeMacro__BehaviorDescriptor.getInputNodeTypeInsideOfMacro_idhEwIosJ.invoke(getNodeById("2920122809304199339"));
+        SNode previousNodeMacro = NodeMacro__BehaviorDescriptor.getPreviousNodeMacro_idhEwIot7.invoke(getNodeById("2920122809304199339"));
+        // before the fix, parent traversal lead us to parent of IF and eventually COPY-SRC, where its smodelAttribute query 
+        // gives node<Attribute>
+        Assert.assertFalse(SNodeOperations.is(inputNodeTypeInsideOfMacro, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "5169995583184591161")));
+        // while in fact it shall point to template input node (the one of IF)
+        Assert.assertTrue(SNodeOperations.is(inputNodeTypeInsideOfMacro, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1169194658468")));
+        Assert.assertTrue(SNodeOperations.present(previousNodeMacro), SNodeOperations.isInstanceOf(previousNodeMacro, CONCEPTS.IfMacro$Xy));
+      });
     }
 
   }
