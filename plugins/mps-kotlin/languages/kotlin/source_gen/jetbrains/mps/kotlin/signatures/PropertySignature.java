@@ -6,13 +6,20 @@ import jetbrains.mps.references.Reference;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.api.members.SignatureCollector;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
+import jetbrains.mps.kotlin.behavior.TypeReference;
+import jetbrains.mps.kotlin.behavior.IVariableIdentifier__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ISequenceClosure;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 /**
  * Represent an accessor of a property (either the getter or the setter depending of defined kind).
@@ -87,16 +94,40 @@ public class PropertySignature implements MemberSignature {
     return false;
   }
 
-  public static void declareAllTo(Iterable<SNode> named, final boolean mutable, SNode receiver, SignatureCollector collector) {
+  public static void declareAllTo(Iterable<SNode> named, final boolean mutable, SNode receiver, final SignatureCollector collector) {
     collector.addDeclarations(named, receiver, PropertySignature.class, (SNode it) -> signaturesOf(it, mutable));
+
+    // Enforce null receiver to prevent infinite recursion
+    if (receiver == null) {
+      Sequence.fromIterable(named).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode it) {
+          declaredReceivedFunctionType(it, collector);
+        }
+      });
+    }
   }
 
+  private static void declaredReceivedFunctionType(SNode var, SignatureCollector collector) {
+    TypeReference typeRef = IVariableIdentifier__BehaviorDescriptor.getType_id1TQsu41FTV5.invoke(var);
+    if (typeRef.isTrivial()) {
+      SNode actual = typeRef.compute();
+      if (SNodeOperations.isInstanceOf(actual, CONCEPTS.FunctionType$ig) && (SLinkOperations.getTarget(SNodeOperations.cast(actual, CONCEPTS.FunctionType$ig), LINKS.receiverType$7yLT) != null)) {
+        // Declare as variable for now as it doesn't match with IFunctionDeclaration yet
+        // TODO make property function declaration?
+        declareTo(var, SLinkOperations.getTarget(SNodeOperations.cast(actual, CONCEPTS.FunctionType$ig), LINKS.receiverType$7yLT), collector);
+      }
+    }
+  }
   public static void declareTo(SNode named, SNode receiver, SignatureCollector collector) {
     declareMutableTo(named, false, receiver, collector);
   }
 
   public static void declareMutableTo(final SNode named, final boolean mutable, SNode receiver, SignatureCollector collector) {
     collector.addDeclaration(named, receiver, PropertySignature.class, () -> signaturesOf(named, mutable));
+    if (receiver == null) {
+      declaredReceivedFunctionType(named, collector);
+    }
+
   }
 
   public static Iterable<PropertySignature> signaturesOf(final SNode variable, boolean mutable) {
@@ -142,6 +173,14 @@ __switch__:
     } else {
       return Sequence.<PropertySignature>singleton(getter);
     }
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept FunctionType$ig = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37dL, "jetbrains.mps.kotlin.structure.FunctionType");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink receiverType$7yLT = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L, 0x764202afbfc6bde5L, "receiverType");
   }
 
   private static final class PROPS {

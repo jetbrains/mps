@@ -10,4 +10,11 @@ public interface TypeReference {
    * which should handle each reference differently (to prevent recursive call to typesystem).
    */
   SNode compute();
+
+  /**
+   * Returns true if computation does not require typesystem or complex operations.
+   */
+  default boolean isTrivial() {
+    return true;
+  }
 }

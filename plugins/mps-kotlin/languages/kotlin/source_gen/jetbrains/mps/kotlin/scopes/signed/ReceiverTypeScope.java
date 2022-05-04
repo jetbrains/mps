@@ -15,9 +15,7 @@ import jetbrains.mps.kotlin.behavior.ITypeParameterReference__BehaviorDescriptor
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import jetbrains.mps.internal.collections.runtime.IVisitor;
-import jetbrains.mps.kotlin.behavior.IKotlinRoot__BehaviorDescriptor;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import java.util.Map;
 import jetbrains.mps.kotlin.signatures.MemberSignature;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
@@ -25,11 +23,9 @@ import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class ReceiverTypeScope implements SignatureScope {
   private static final int WILDCARD = -2;
@@ -81,47 +77,37 @@ public class ReceiverTypeScope implements SignatureScope {
     return ListSequence.fromList(myTargetTypes).indexOf(IType__BehaviorDescriptor.shallowId_idJmO2PmZtH5.invoke(type));
   }
 
-  protected Iterable<SourcedSignature> allSignatures() {
-    if (cachedSignatures == null) {
-      final FilterSignatureCollector collector = new FilterSignatureCollector(new ReceiverTypeFilter());
-      ListSequence.fromList(SModelOperations.nodesIncludingImported(SNodeOperations.getModel(myContextNode), CONCEPTS.IKotlinRoot$wS)).visitAll(new IVisitor<SNode>() {
-        public void visit(SNode it) {
-          IKotlinRoot__BehaviorDescriptor.collectReceivedSignatures_id3HHsmlLpzKx.invoke(it, collector);
-        }
-      });
-      cachedSignatures = collector.getCollected();
-    }
-    return cachedSignatures;
-  }
-
   @Override
   public Iterable<SourcedSignature> getElements(final String prefix) {
-    Map<MemberSignature, Tuples._2<SourcedSignature, Integer>> hierarchy = MapSequence.fromMap(new HashMap<MemberSignature, Tuples._2<SourcedSignature, Integer>>());
-    Iterable<SourcedSignature> elements = allSignatures();
-    if ((prefix != null && prefix.length() > 0)) {
-      elements = Sequence.fromIterable(elements).where(new IWhereFilter<SourcedSignature>() {
-        public boolean accept(SourcedSignature it) {
-          return it.getSignature().getDescriptionText().startsWith(prefix);
+    ScopeCollector collector = new ScopeCollector(new ReceiverTypeFilter());
+    SignatureScope.collectHierarchyScopes(myContextNode, myContextNode, collector);
+
+    // Add some hierarchy sense to each scope separately (priority between scope applies first)
+    return ListSequence.fromList(collector.getScopes()).translate(new ITranslator2<SignatureScope, SourcedSignature>() {
+      public Iterable<SourcedSignature> translate(SignatureScope it) {
+        Map<MemberSignature, Tuples._2<SourcedSignature, Integer>> hierarchy = MapSequence.fromMap(new HashMap<MemberSignature, Tuples._2<SourcedSignature, Integer>>());
+
+        Iterable<SourcedSignature> elements = it.getElements(prefix);
+        for (SourcedSignature sig : Sequence.fromIterable(elements)) {
+          int typeIndex = typeIndex(sig.getReceiver());
+
+          // Enforce some kind of hierarchy when signature is the same
+          if (typeIndex != WILDCARD && MapSequence.fromMap(hierarchy).containsKey(sig.getSignature()) && (int) MapSequence.fromMap(hierarchy).get(sig.getSignature())._1() < typeIndex) {
+            continue;
+          }
+
+          MapSequence.fromMap(hierarchy).put(sig.getSignature(), MultiTuple.<SourcedSignature,Integer>from(sig, typeIndex));
         }
-      });
-    }
 
-    for (SourcedSignature it : Sequence.fromIterable(elements)) {
-      int typeIndex = typeIndex(it.getReceiver());
-
-      // Enforce some kind of hierarchy when signature is the same
-      if (typeIndex != WILDCARD && MapSequence.fromMap(hierarchy).containsKey(it.getSignature()) && (int) MapSequence.fromMap(hierarchy).get(it.getSignature())._1() < typeIndex) {
-        continue;
-      }
-
-      MapSequence.fromMap(hierarchy).put(it.getSignature(), MultiTuple.<SourcedSignature,Integer>from(it, typeIndex));
-    }
-
-    return Sequence.fromIterable(MapSequence.fromMap(hierarchy).values()).select(new ISelector<Tuples._2<SourcedSignature, Integer>, SourcedSignature>() {
-      public SourcedSignature select(Tuples._2<SourcedSignature, Integer> it) {
-        return it._0();
+        return Sequence.fromIterable(MapSequence.fromMap(hierarchy).values()).select(new ISelector<Tuples._2<SourcedSignature, Integer>, SourcedSignature>() {
+          public SourcedSignature select(Tuples._2<SourcedSignature, Integer> it) {
+            return it._0();
+          }
+        });
       }
     });
+
+
   }
 
   @Override
@@ -132,13 +118,8 @@ public class ReceiverTypeScope implements SignatureScope {
 
   @Override
   public boolean contains(final SNode source) {
-    if (ListSequence.fromList(myTargetTypes).isEmpty()) {
-      return false;
-    }
-
     // Simplified exclusion
-    SNode ancestor = SNodeOperations.getNodeAncestor(source, CONCEPTS.IWithReceiver$Eg, true, false);
-    if ((ancestor == null) || typeIndex(SLinkOperations.getTarget(ancestor, LINKS.receiverType$7yLT)) == -1) {
+    if (ListSequence.fromList(myTargetTypes).isEmpty()) {
       return false;
     }
 
@@ -168,11 +149,5 @@ public class ReceiverTypeScope implements SignatureScope {
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept ITypeParameterReference$9i = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4f0064de291cef24L, "jetbrains.mps.kotlin.structure.ITypeParameterReference");
-    /*package*/ static final SInterfaceConcept IKotlinRoot$wS = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0xad71950af90e8f8L, "jetbrains.mps.kotlin.structure.IKotlinRoot");
-    /*package*/ static final SInterfaceConcept IWithReceiver$Eg = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L, "jetbrains.mps.kotlin.structure.IWithReceiver");
-  }
-
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink receiverType$7yLT = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908c7f22L, 0x764202afbfc6bde5L, "receiverType");
   }
 }

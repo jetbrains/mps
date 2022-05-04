@@ -46,6 +46,10 @@ public class InferredTypeReference implements TypeReference {
       return SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(host), CONCEPTS.IType$Ni);
     }
   }
+  @Override
+  public boolean isTrivial() {
+    return false;
+  }
 
   private static final class CONCEPTS {
     /*package*/ static final SInterfaceConcept IType$Ni = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af441L, "jetbrains.mps.kotlin.structure.IType");

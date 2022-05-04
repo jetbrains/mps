@@ -263,6 +263,15 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor" />
   </dependency>
+  <dependency className="jetbrains.mps.kotlin.behavior.AnyTypeReference">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.kotlin.api.builtins.BuiltIn" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.kotlin.behavior.TypeReference" />
+  </dependency>
   <dependency className="jetbrains.mps.kotlin.behavior.AsOperation__BehaviorDescriptor">
     <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Object" />
@@ -595,11 +604,15 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.members.SignatureCollector" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.ConcreteTypeReference" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.TypeReference" />
     <classNode dependClassName="jetbrains.mps.kotlin.signatures.PropertySignature" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor" />
   </dependency>
@@ -892,6 +905,9 @@
   </dependency>
   <dependency className="jetbrains.mps.kotlin.behavior.ConcreteTypeReference">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.AnyTypeReference" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.kotlin.behavior.TypeReference" />
   </dependency>
@@ -1214,6 +1230,8 @@
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.IClassLike__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.IFunctionCall__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.KotlinFunctionDeclaration" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.ThisTypeReference" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.TypeReference" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.Argument" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.NodeArgument" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
@@ -1705,10 +1723,10 @@
     <classNode dependClassName="jetbrains.mps.kotlin.api.members.SignatureCollector" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.members.SourcedSignature" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.members.TypeExpander" />
-    <classNode dependClassName="jetbrains.mps.kotlin.behavior.ConcreteTypeReference" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.IDeclarationHolder__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.ISignatureScopeProvider__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.KotlinFunctionDeclaration" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.ThisTypeReference" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.TypeReference" />
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.SignatureFilter" />
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.signed.InstanceSignatureScope" />
@@ -2252,7 +2270,6 @@
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.lang.Void" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.AccessPrivileges" />
@@ -2261,7 +2278,6 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
-    <classNode dependClassName="jetbrains.mps.kotlin.api.members.SignatureCollector" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.KtEnvironmentConfig" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations" />
@@ -2924,7 +2940,6 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
-    <classNode dependClassName="jetbrains.mps.kotlin.behavior.InferredTypeReference" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.TypeReference" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
@@ -3060,6 +3075,7 @@
   </dependency>
   <dependency className="jetbrains.mps.kotlin.behavior.InferredTypeReference">
     <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.extension.KotlinTypesystem" />
     <classNode dependClassName="jetbrains.mps.kotlin.plugin.ExtensionsHelper" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
@@ -3253,12 +3269,11 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
-    <classNode dependClassName="jetbrains.mps.kotlin.api.members.SignatureCollector" />
-    <classNode dependClassName="jetbrains.mps.kotlin.behavior.IDeclarationHolder__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.IKotlinRoot__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.ISignatureScopeProvider__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.KtEnvironmentConfig" />
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.SignatureFilter" />
+    <classNode dependClassName="jetbrains.mps.kotlin.scopes.signed.CompositeSignatureScope" />
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.signed.ScopeCollector" />
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.signed.SignatureScope" />
     <classNode dependClassName="jetbrains.mps.kotlin.signatures.FunctionSignature" />
@@ -3352,6 +3367,7 @@
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.IKotlinRoot__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.KotlinFile__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.KtEnvironmentConfig" />
+    <classNode dependClassName="jetbrains.mps.kotlin.scopes.signed.CompositeSignatureScope" />
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.signed.ScopeCollector" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
@@ -3749,6 +3765,8 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.members.SignatureCollector" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.ThisTypeReference" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.TypeReference" />
     <classNode dependClassName="jetbrains.mps.kotlin.signatures.PropertySignature" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
@@ -3874,10 +3892,14 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.ConcreteTypeReference" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.TypeReference" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor" />
   </dependency>
@@ -3895,7 +3917,9 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.ConcreteTypeReference" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.TypeReference" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
@@ -4183,6 +4207,8 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.members.SignatureCollector" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.InferredTypeReference" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.TypeReference" />
     <classNode dependClassName="jetbrains.mps.kotlin.signatures.AccessorKind" />
     <classNode dependClassName="jetbrains.mps.kotlin.signatures.PropertySignature" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
