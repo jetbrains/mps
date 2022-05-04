@@ -318,7 +318,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleFieldReference" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleInstanceofExpression" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleMethodCall" />
-    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleNonNullLiteral" />
+    <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleNonNullExpression" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleNotEqualsExpression" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleNullLiteral" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.RuleTernaryOperation" />
@@ -835,7 +835,7 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.lang.dataFlow.framework.DataFlowConstructor" />
   </dependency>
-  <dependency className="jetbrains.mps.baseLanguage.dataFlow.RuleNonNullLiteral">
+  <dependency className="jetbrains.mps.baseLanguage.dataFlow.RuleNonNullExpression">
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.behavior.Expression__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.dataFlow.notNullInstruction" />

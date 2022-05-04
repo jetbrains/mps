@@ -12,7 +12,7 @@ import jetbrains.mps.lang.dataFlow.framework.instructions.Instruction;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class RuleNonNullLiteral implements DataFlowConstructor {
+public class RuleNonNullExpression implements DataFlowConstructor {
   public boolean isApplicable(SNode node) {
     SAbstractConcept concept = SNodeOperations.getConcept(node);
     SAbstractConcept applicableConcept = getApplicableConcept();
@@ -22,7 +22,7 @@ public class RuleNonNullLiteral implements DataFlowConstructor {
     return CONCEPTS.Expression$mB;
   }
   public void performActions(Program o, SNode node) {
-    if (SNodeOperations.isInstanceOf(node, CONCEPTS.StringLiteral$xu) || SNodeOperations.isInstanceOf(node, CONCEPTS.IntegerLiteral$73) || SNodeOperations.isInstanceOf(node, CONCEPTS.LongLiteral$y2) || SNodeOperations.isInstanceOf(node, CONCEPTS.FloatingPointConstant$3o) || SNodeOperations.isInstanceOf(node, CONCEPTS.FloatingPointFloatConstant$Qh) || ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(node) && Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(node, SNodeOperations.getModel(node).getModule()) != null)) {
+    if (SNodeOperations.isInstanceOf(node, CONCEPTS.StringLiteral$xu) || SNodeOperations.isInstanceOf(node, CONCEPTS.IntegerLiteral$73) || SNodeOperations.isInstanceOf(node, CONCEPTS.LongLiteral$y2) || SNodeOperations.isInstanceOf(node, CONCEPTS.FloatingPointConstant$3o) || SNodeOperations.isInstanceOf(node, CONCEPTS.FloatingPointFloatConstant$Qh) || ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(node) && Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(node, SNodeOperations.getModel(node).getModule()) != null) || SNodeOperations.isInstanceOf(node, CONCEPTS.BinaryOperation$W1)) {
 
       {
         Object object = node;
@@ -40,6 +40,7 @@ public class RuleNonNullLiteral implements DataFlowConstructor {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept Expression$mB = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c37f506fL, "jetbrains.mps.baseLanguage.structure.Expression");
+    /*package*/ static final SConcept BinaryOperation$W1 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfbdeb6fecfL, "jetbrains.mps.baseLanguage.structure.BinaryOperation");
     /*package*/ static final SConcept StringLiteral$xu = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, "jetbrains.mps.baseLanguage.structure.StringLiteral");
     /*package*/ static final SConcept IntegerLiteral$73 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1129778b846L, "jetbrains.mps.baseLanguage.structure.IntegerLiteral");
     /*package*/ static final SConcept LongLiteral$y2 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b418722717710b4L, "jetbrains.mps.baseLanguage.structure.LongLiteral");
