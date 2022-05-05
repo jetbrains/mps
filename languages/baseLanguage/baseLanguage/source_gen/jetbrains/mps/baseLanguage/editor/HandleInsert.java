@@ -19,7 +19,7 @@ public class HandleInsert {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SingleLineCommentUtil.divideSingleLineCommentText(node, editorContext);
+        SingleAndMultiLineCommentUtil.divideSingleLineCommentText(node, editorContext);
         editorContext.selectWRTFocusPolicy(node);
       }
 
@@ -31,7 +31,7 @@ public class HandleInsert {
         this.execute_internal(editorContext, node);
       }
       public void execute_internal(EditorContext editorContext, SNode node) {
-        SingleLineCommentUtil.divideSingleLineCommentText(node, editorContext);
+        SingleAndMultiLineCommentUtil.divideSingleLineCommentText(node, editorContext);
         editorContext.selectWRTFocusPolicy(node);
       }
 

@@ -5,11 +5,16 @@ package jetbrains.mps.baseLanguage.editor;
 import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.CellAction;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.nodeEditor.cellProviders.AbstractCellListHandler;
 import java.util.Objects;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class SingleLineComment_ExternalCollection_Actions {
 
@@ -26,6 +31,43 @@ public class SingleLineComment_ExternalCollection_Actions {
       }
       public boolean canExecute_internal(EditorContext editorContext, SNode node) {
         return true;
+      }
+
+    };
+  }
+  /*package*/ static AbstractCellAction createAction_COPY(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        SingleAndMultiLineCommentUtil.copySLCIntoClipboard(editorContext, node);
+      }
+      @Override
+      public boolean canExecute(EditorContext editorContext) {
+        return this.canExecute_internal(editorContext, node);
+      }
+      public boolean canExecute_internal(EditorContext editorContext, SNode node) {
+        return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$9eiT), LINKS.elements$_j45)).isNotEmpty();
+      }
+
+    };
+  }
+  /*package*/ static AbstractCellAction createAction_CUT(final SNode node) {
+    return new AbstractCellAction() {
+      public void execute(EditorContext editorContext) {
+        this.execute_internal(editorContext, node);
+      }
+      public void execute_internal(EditorContext editorContext, SNode node) {
+        SingleAndMultiLineCommentUtil.copySLCIntoClipboard(editorContext, node);
+        SNodeOperations.deleteNode(node);
+      }
+      @Override
+      public boolean canExecute(EditorContext editorContext) {
+        return this.canExecute_internal(editorContext, node);
+      }
+      public boolean canExecute_internal(EditorContext editorContext, SNode node) {
+        return ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(node, LINKS.line$9eiT), LINKS.elements$_j45)).isNotEmpty();
       }
 
     };
@@ -60,6 +102,8 @@ public class SingleLineComment_ExternalCollection_Actions {
 
     // set cell actions defined directly in this action map
     editorCell.setAction(CellActionType.COMMENT, createAction_COMMENT(node));
+    editorCell.setAction(CellActionType.COPY, createAction_COPY(node));
+    editorCell.setAction(CellActionType.CUT, createAction_CUT(node));
   }
 
   public static void setDefinedCellActionsOfType(EditorCell editorCell, SNode node, EditorContext context, CellActionType actionType) {
@@ -70,5 +114,16 @@ public class SingleLineComment_ExternalCollection_Actions {
     if (Objects.equals(actionType, CellActionType.COMMENT)) {
       editorCell.setAction(actionType, createAction_COMMENT(node));
     }
+    if (Objects.equals(actionType, CellActionType.COPY)) {
+      editorCell.setAction(actionType, createAction_COPY(node));
+    }
+    if (Objects.equals(actionType, CellActionType.CUT)) {
+      editorCell.setAction(actionType, createAction_CUT(node));
+    }
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink line$9eiT = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, 0x73f69d82391da738L, "line");
+    /*package*/ static final SContainmentLink elements$_j45 = MetaAdapterFactory.getContainmentLink(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e561af166L, 0x2331694e561af167L, "elements");
   }
 }

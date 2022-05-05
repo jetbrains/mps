@@ -236,7 +236,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     }
   }
 
-  private List<SNode> wrapSelectedNodesInNewLines() {
+  public List<SNode> wrapSelectedNodesInNewLines() {
     SNode artificialParent = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2331694e5619f411L, "jetbrains.mps.lang.text.structure.Text"));
 
     final List<SNode> selectedNodes = getSelectedNodes();
@@ -266,7 +266,7 @@ public class WordRangeSelection extends AbstractMultipleSelection {
     return copiesOfLines;
   }
 
-  private String buildTextualRepresentationOfSelectedCells() {
+  public String buildTextualRepresentationOfSelectedCells() {
     StringBuilder builder = new StringBuilder();
 
     SNode currentLine = null;
