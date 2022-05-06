@@ -83,7 +83,7 @@ public class TextBuilderImpl implements TextBuilder {
 
   @Override
   public TextBuilder appendToTheRight(TextBuilder builder, boolean insertSpace) {
-    if (builder.getSize() == 0 || builder.getWidth() == 0) {
+    if (!insertSpace && (builder.getSize() == 0 || builder.getWidth() == 0)) {
       return this;
     }
 
