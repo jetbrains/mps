@@ -1306,6 +1306,11 @@
       <property role="IQ2nx" value="6547237850567462620" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
+    <node concept="1TJgyi" id="2qEJgtcPj2" role="1TKVEl">
+      <property role="IQ2nx" value="43535111852086466" />
+      <property role="TrG5h" value="isAvailableOnStartup" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
     <node concept="1TJgyi" id="5FstybB4cWH" role="1TKVEl">
       <property role="TrG5h" value="number" />
       <property role="IQ2nx" value="6547237850567462701" />

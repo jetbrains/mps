@@ -77,6 +77,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
     editorCell.addEditorCell(createCollection_5());
     editorCell.addEditorCell(createCollection_6());
+    editorCell.addEditorCell(createCollection_7());
     return editorCell;
   }
   private boolean nodeCondition_g0vxcd_a2a() {
@@ -430,6 +431,51 @@ import org.jetbrains.mps.openapi.language.SConcept;
       getCellFactory().popCellContext();
     }
   }
+  private EditorCell createCollection_7() {
+    EditorCell_Collection editorCell = new EditorCell_Collection(getEditorContext(), myNode, new CellLayout_Horizontal());
+    editorCell.setCellId("Collection_g0vxcd_f0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
+    editorCell.addEditorCell(createConstant_8());
+    editorCell.addEditorCell(createProperty_3());
+    return editorCell;
+  }
+  private EditorCell createConstant_8() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "isAvailableOnStartup:");
+    editorCell.setCellId("Constant_g0vxcd_a5a");
+    Style style = new StyleImpl();
+    new KeyWordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    style.set(StyleAttributes.SELECTABLE, false);
+    editorCell.getStyle().putAll(style);
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
+  private EditorCell createProperty_3() {
+    getCellFactory().pushCellContext();
+    try {
+      final SProperty property = PROPS.isAvailableOnStartup$udfK;
+      getCellFactory().setPropertyInfo(new SPropertyInfo(myNode, property));
+      EditorCell_Property editorCell = EditorCell_Property.create(getEditorContext(), new SPropertyAccessor(myNode, property, false, false), myNode);
+      editorCell.setDefaultText("<no isAvailableOnStartup>");
+      editorCell.setCellId("BTDH_property_isAvailableOnStartup");
+      editorCell.setSubstituteInfo(new SPropertySubstituteInfo(editorCell, property));
+      setCellContext(editorCell);
+      Iterable<SNode> propertyAttributes = SNodeOperations.ofConcept(new IAttributeDescriptor.AllAttributes().list(myNode), CONCEPTS.PropertyAttribute$Gb);
+      Iterable<SNode> currentPropertyAttributes = Sequence.fromIterable(propertyAttributes).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return Objects.equals(PropertyAttribute__BehaviorDescriptor.getProperty_id1avfQ4BBzOo.invoke(it), property);
+        }
+      });
+      if (Sequence.fromIterable(currentPropertyAttributes).isNotEmpty()) {
+        EditorManager manager = EditorManager.getInstanceFromContext(getEditorContext());
+        return manager.createNodeRoleAttributeCell(Sequence.fromIterable(currentPropertyAttributes).first(), AttributeKind.PROPERTY, editorCell);
+      } else
+      return editorCell;
+    } finally {
+      getCellFactory().popCellContext();
+    }
+  }
   private static boolean isNotEmptyString(String str) {
     return str != null && str.length() > 0;
   }
@@ -438,6 +484,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     /*package*/ static final SProperty number$DT6H = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cf2dL, "number");
     /*package*/ static final SProperty caption$A_WD = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x5adc7622e710cedcL, "caption");
     /*package*/ static final SProperty position$vm5o = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x22ace24ea9f7487cL, "position");
+    /*package*/ static final SProperty isAvailableOnStartup$udfK = MetaAdapterFactory.getProperty(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x5adc7622e710bddcL, 0x9aaaf41d3354c2L, "isAvailableOnStartup");
   }
 
   private static final class CONCEPTS {

@@ -11362,6 +11362,35 @@
         </node>
       </node>
     </node>
+    <node concept="3clFb_" id="2qEJgtcRnl" role="jymVt">
+      <property role="TrG5h" value="isInitiallyAvailable" />
+      <node concept="3Tmbuc" id="2qEJgtcRnm" role="1B3o_S" />
+      <node concept="10P_77" id="2qEJgtcRno" role="3clF45" />
+      <node concept="3clFbS" id="2qEJgtcRnq" role="3clF47">
+        <node concept="3cpWs6" id="2qEJgtd7LR" role="3cqZAp">
+          <node concept="3clFbT" id="2qEJgtd93B" role="3cqZAk">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="2qEJgtcRnr" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+      <node concept="1W57fq" id="2qEJgtdc1k" role="lGtFl">
+        <node concept="3IZrLx" id="2qEJgtdc1l" role="3IZSJc">
+          <node concept="3clFbS" id="2qEJgtdc1m" role="2VODD2">
+            <node concept="3cpWs6" id="2qEJgtdcxS" role="3cqZAp">
+              <node concept="2OqwBi" id="2qEJgtdcRb" role="3cqZAk">
+                <node concept="30H73N" id="2qEJgtdcBb" role="2Oq$k0" />
+                <node concept="3TrcHB" id="2qEJgtdd5P" role="2OqNvi">
+                  <ref role="3TsBF5" to="tp4k:2qEJgtcPj2" resolve="isAvailableOnStartup" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="3clFb_" id="4LNA5o6dMvl" role="jymVt">
       <property role="TrG5h" value="additionalMethods" />
       <node concept="3Tm1VV" id="4LNA5o6dMvu" role="1B3o_S" />
