@@ -32,6 +32,10 @@ public class TodoViewer_Tool extends GeneratedTool {
     TodoViewer_Tool.this.myComponent = null;
     super.dispose();
   }
+  @Override
+  protected boolean isInitiallyAvailable() {
+    return true;
+  }
   public JComponent getComponent() {
     return TodoViewer_Tool.this.myComponent;
   }

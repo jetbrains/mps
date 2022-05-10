@@ -9639,28 +9639,32 @@
       <node id="5426495936043631391" at="30,5,31,47" concept="6" />
       <node id="5426495936043631397" at="31,47,32,44" concept="6" />
       <node id="5426495936043631345" at="32,44,33,20" concept="6" />
-      <node id="5426495936043631348" at="35,36,36,44" concept="13" />
+      <node id="5426495936043631345" at="36,44,37,16" concept="13" />
+      <node id="5426495936043631348" at="39,36,40,44" concept="13" />
       <node id="5426495936043631345" at="19,0,22,0" concept="3" trace="TodoViewer_Tool#(Lcom/intellij/openapi/project/Project;)V" />
       <node id="5426495936043631379" at="27,71,30,5" concept="10" />
-      <node id="5426495936043631345" at="35,0,38,0" concept="11" trace="getComponent#()Ljavax/swing/JComponent;" />
+      <node id="5426495936043631345" at="39,0,42,0" concept="11" trace="getComponent#()Ljavax/swing/JComponent;" />
       <node id="5426495936043631345" at="22,0,26,0" concept="11" trace="init#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="5426495936043631345" at="35,0,39,0" concept="11" trace="isInitiallyAvailable#()Z" />
       <node id="5426495936043631345" at="26,0,35,0" concept="11" trace="dispose#()V" />
       <scope id="5426495936043631345" at="19,43,20,71" />
       <scope id="5426495936043631380" at="28,28,29,57" />
-      <scope id="5426495936043631347" at="35,36,36,44" />
+      <scope id="5426495936043631345" at="36,44,37,16" />
+      <scope id="5426495936043631347" at="39,36,40,44" />
       <scope id="5426495936043631345" at="22,37,24,116" />
       <scope id="5426495936043631345" at="19,0,22,0">
         <var name="project" id="5426495936043631345" />
       </scope>
-      <scope id="5426495936043631345" at="35,0,38,0" />
+      <scope id="5426495936043631345" at="39,0,42,0" />
       <scope id="5426495936043631345" at="22,0,26,0">
         <var name="project" id="5426495936043631345" />
       </scope>
+      <scope id="5426495936043631345" at="35,0,39,0" />
       <scope id="5426495936043631345" at="26,25,33,20">
         <var name="container" id="5426495936043631372" />
       </scope>
       <scope id="5426495936043631345" at="26,0,35,0" />
-      <unit id="5426495936043631345" at="15,0,39,0" name="jetbrains.mps.ide.actions.TodoViewer_Tool" />
+      <unit id="5426495936043631345" at="15,0,43,0" name="jetbrains.mps.ide.actions.TodoViewer_Tool" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5426495936043638617">
