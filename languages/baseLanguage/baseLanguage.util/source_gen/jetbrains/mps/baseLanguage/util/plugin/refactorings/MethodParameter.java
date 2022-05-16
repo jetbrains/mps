@@ -19,6 +19,7 @@ import java.util.LinkedList;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.smodel.SNodeHashStrategy;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
 import jetbrains.mps.lang.pattern.util.IMatchModifier;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -107,12 +108,12 @@ public class MethodParameter extends MethodParameterModel {
   }
 
   private static class NodeWrapper {
-    private int myHash;
-    private SNode myNode;
+    private final int myHash;
+    private final SNode myNode;
 
     public NodeWrapper(SNode node) {
       this.myNode = node;
-      this.myHash = MatchingUtil.hash(node);
+      this.myHash = SNodeHashStrategy.WholeTreeAndIgnoreAttributes.hash(node);
     }
 
     @Override

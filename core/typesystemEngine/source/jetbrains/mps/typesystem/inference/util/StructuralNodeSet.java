@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +17,16 @@ package jetbrains.mps.typesystem.inference.util;
 
 import jetbrains.mps.lang.pattern.util.IMatchModifier;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeHashStrategy;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
 public class StructuralNodeSet<T> implements Set<SNode> {
   private Set<SNodeWrapper> myWrappers = new LinkedHashSet<>();
@@ -157,13 +163,13 @@ public class StructuralNodeSet<T> implements Set<SNode> {
   }
 
   private static class SNodeWrapper {
-    private SNode myNode;
-    private int myHashCode;
+    private final SNode myNode;
+    private final int myHashCode;
 
 
     private SNodeWrapper(SNode node) {
       myNode = node;
-      myHashCode = MatchingUtil.hash(myNode);
+      myHashCode = SNodeHashStrategy.WholeTreeAndIgnoreAttributes.hash(node);
     }
 
     @Override
@@ -173,7 +179,9 @@ public class StructuralNodeSet<T> implements Set<SNode> {
 
     @Override
     public boolean equals(Object obj) {
-      if (!(obj instanceof SNodeWrapper)) return false;
+      if (!(obj instanceof SNodeWrapper)) {
+        return false;
+      }
       SNodeWrapper wrapper = (SNodeWrapper) obj;
       return MatchingUtil.matchNodes(wrapper.myNode, myNode, IMatchModifier.DEFAULT, false);
     }

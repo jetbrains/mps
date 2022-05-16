@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.lang.pattern.util;
 
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.smodel.SNodeHashStrategy;
 import jetbrains.mps.util.IterableUtil;
 import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -29,7 +29,6 @@ import org.jetbrains.mps.openapi.model.SReference;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -126,27 +125,13 @@ public class MatchingUtil {
     return true;
   }
 
+  /**
+   * @deprecated use some implementation of {@link jetbrains.mps.smodel.SNodeHashStrategy} instead.
+   *             Logic of {@link jetbrains.mps.smodel.SNodeHashStrategy#WholeTreeAndIgnoreAttributes} is practically the same as
+   *             was here in the implementation of this method.
+   */
+  @Deprecated(since = "2022.2", forRemoval = true)
   public static int hash(SNode node) {
-    int result = node.getConcept().hashCode();
-    for (SReference reference : node.getReferences()) {
-      SNode targetNode = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(reference);
-      if (targetNode != null) {
-        result = 31 * result + reference.getLink().hashCode();
-        result = 31 * result + targetNode.hashCode();
-      }
-    }
-    Map<String, String> properties = jetbrains.mps.util.SNodeOperations.getProperties(node);
-    for (String propertyName : properties.keySet()) {
-      result = 31 * result + propertyName.hashCode();
-    }
-    for (String propertyValue : properties.values()) {
-      result = 31 * result + propertyValue.hashCode();
-    }
-    for (SNode child : node.getChildren()) {
-      if (AttributeOperations.isAttribute(child)) continue;
-      result = 31 * result + child.getContainmentLink().hashCode();
-      result = 31 * result + hash(child);
-    }
-    return result;
+    return SNodeHashStrategy.WholeTreeAndIgnoreAttributes.hash(node);
   }
 }
