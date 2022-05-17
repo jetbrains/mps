@@ -81,15 +81,8 @@ public class MethodDuplicatesFinder {
       return false;
     }
     @Override
-    public boolean acceptList(List<SNode> list1, List<SNode> list2) {
-      return false;
-    }
-    @Override
     public void performAction(SNode candidate, SNode original) {
       this.myMatch.putMapping(candidate, MapSequence.fromMap(MethodDuplicatesFinder.this.myMapping).get(original));
-    }
-    @Override
-    public void performGroupAction(List<SNode> list1, List<SNode> list2) {
     }
     public MethodMatch getMatch() {
       return this.myMatch;

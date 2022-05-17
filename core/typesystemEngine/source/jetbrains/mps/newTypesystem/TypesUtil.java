@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,12 +59,7 @@ public class TypesUtil {
         return true;
       }
     }
-    for (SNode referent : getNodeReferents(node)) {
-      if (referent != null && TypesUtil.isVariable(referent)) {
-        return true;
-      }
-    }
-    return false;
+    return getNodeReferents(node).stream().anyMatch(TypesUtil::isVariable);
   }
 
   public static int depth(SNode sNode) {
@@ -210,17 +205,8 @@ public class TypesUtil {
     }
 
     @Override
-    public boolean acceptList(List<SNode> nodes1, List<SNode> nodes2) {
-      return false;
-    }
-
-    @Override
     public void performAction(SNode node1, SNode node2) {
       myMatchingPairs.add(new Pair<>(node1, node2));
-    }
-
-    @Override
-    public void performGroupAction(List<SNode> nodes1, List<SNode> nodes2) {
     }
   }
 }

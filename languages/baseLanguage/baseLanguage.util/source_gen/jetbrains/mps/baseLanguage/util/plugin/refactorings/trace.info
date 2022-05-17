@@ -105,20 +105,17 @@
       <node id="6195342755328034250" at="75,65,76,51" concept="4" />
       <node id="1769066237347633636" at="78,93,79,20" concept="11" />
       <node id="1769066237347633650" at="80,7,81,19" concept="11" />
-      <node id="1769066237347603151" at="84,69,85,19" concept="11" />
-      <node id="1769066237347633667" at="88,64,89,115" concept="4" />
-      <node id="1769066237347672595" at="94,35,95,26" concept="11" />
-      <node id="1769066237347579005" at="100,0,101,0" concept="14" trace="BaseConcept$gP" />
+      <node id="1769066237347633667" at="84,64,85,115" concept="4" />
+      <node id="1769066237347672595" at="87,35,88,26" concept="11" />
+      <node id="1769066237347579005" at="93,0,94,0" concept="14" trace="BaseConcept$gP" />
       <node id="7873969065032828689" at="66,0,68,0" concept="9" trace="matchNodes#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1998477585419362293" at="56,39,59,11" concept="7" />
       <node id="1769066237347603104" at="70,0,73,0" concept="2" trace="MethodMatchModifier#()V" />
       <node id="6195342755328034127" at="74,60,77,7" concept="8" />
       <node id="1769066237347633570" at="77,7,80,7" concept="8" />
-      <node id="1769066237347603165" at="91,0,94,0" concept="9" trace="performGroupAction#(Ljava/util/List;Ljava/util/List;)V" />
-      <node id="1769066237347672580" at="94,0,97,0" concept="9" trace="getMatch#()Ljetbrains/mps/baseLanguage/util/plugin/refactorings/MethodMatch;" />
+      <node id="1769066237347672580" at="87,0,90,0" concept="9" trace="getMatch#()Ljetbrains/mps/baseLanguage/util/plugin/refactorings/MethodMatch;" />
       <node id="8155843501976602800" at="45,47,49,11" concept="8" />
-      <node id="1769066237347603141" at="83,0,87,0" concept="9" trace="acceptList#(Ljava/util/List;Ljava/util/List;)Z" />
-      <node id="1769066237347603155" at="87,0,91,0" concept="9" trace="performAction#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
+      <node id="1769066237347603155" at="83,0,87,0" concept="9" trace="performAction#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1998477585418870646" at="55,40,61,9" concept="8" />
       <node id="1769066237347579007" at="27,0,34,0" concept="2" trace="MethodDuplicatesFinder#(Ljava/util/List;Ljava/util/Map;Ljava/util/List;Ljava/util/Set;)V" />
       <node id="8155843501976602791" at="44,14,51,9" concept="0" />
@@ -129,14 +126,12 @@
       <node id="1998477585418836347" at="35,59,63,5" concept="7" />
       <node id="1769066237347633716" at="34,0,66,0" concept="9" trace="findDuplicates#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/List;" />
       <scope id="7873969065032828692" at="66,55,66,55" />
-      <scope id="1769066237347603174" at="92,74,92,74" />
       <scope id="1998477585419362296" at="57,82,58,73" />
       <scope id="1769066237347603107" at="70,34,71,83" />
       <scope id="6195342755328034128" at="75,65,76,51" />
       <scope id="1769066237347633571" at="78,93,79,20" />
-      <scope id="1769066237347603150" at="84,69,85,19" />
-      <scope id="1769066237347603162" at="88,64,89,115" />
-      <scope id="1769066237347672583" at="94,35,95,26" />
+      <scope id="1769066237347603162" at="84,64,85,115" />
+      <scope id="1769066237347672583" at="87,35,88,26" />
       <scope id="8155843501976602786" at="41,91,43,16" />
       <scope id="8155843501976602801" at="46,162,48,18" />
       <scope id="7873969065032828689" at="66,0,68,0">
@@ -147,17 +142,9 @@
         <var name="resultNode" id="1998477585419362294" />
       </scope>
       <scope id="1769066237347603104" at="70,0,73,0" />
-      <scope id="1769066237347603165" at="91,0,94,0">
-        <var name="list1" id="1769066237347603168" />
-        <var name="list2" id="1769066237347603171" />
-      </scope>
-      <scope id="1769066237347672580" at="94,0,97,0" />
+      <scope id="1769066237347672580" at="87,0,90,0" />
       <scope id="1998477585418870650" at="56,39,60,33" />
-      <scope id="1769066237347603141" at="83,0,87,0">
-        <var name="list1" id="1769066237347603144" />
-        <var name="list2" id="1769066237347603147" />
-      </scope>
-      <scope id="1769066237347603155" at="87,0,91,0">
+      <scope id="1769066237347603155" at="83,0,87,0">
         <var name="candidate" id="1769066237347603158" />
         <var name="original" id="1769066237347603160" />
       </scope>
@@ -195,9 +182,9 @@
       <scope id="1769066237347633716" at="34,0,66,0">
         <var name="root" id="1769066237347633756" />
       </scope>
-      <unit id="1769066237347579005" at="99,0,102,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.MethodDuplicatesFinder$CONCEPTS" />
-      <unit id="1769066237347603102" at="68,0,98,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.MethodDuplicatesFinder$MethodMatchModifier" />
-      <unit id="1769066237347579005" at="21,0,103,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.MethodDuplicatesFinder" />
+      <unit id="1769066237347579005" at="92,0,95,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.MethodDuplicatesFinder$CONCEPTS" />
+      <unit id="1769066237347603102" at="68,0,91,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.MethodDuplicatesFinder$MethodMatchModifier" />
+      <unit id="1769066237347579005" at="21,0,96,0" name="jetbrains.mps.baseLanguage.util.plugin.refactorings.MethodDuplicatesFinder" />
     </file>
   </root>
   <root nodeRef="r:5f19c5cc-325c-485a-b033-20949d89a6f0(jetbrains.mps.baseLanguage.util.plugin.refactorings)/1769066237347603177">

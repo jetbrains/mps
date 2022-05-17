@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,11 +22,22 @@ import java.util.List;
 public interface IMatchModifier {
   boolean accept(SNode node1, SNode node2);
 
-  boolean acceptList(List<SNode> nodes1, List<SNode> nodes2);
+  /**
+   * @deprecated no uses, no reason to keep
+   */
+  @Deprecated(since = "2022.2", forRemoval = true)
+  default boolean acceptList(List<SNode> nodes1, List<SNode> nodes2) {
+    return false;
+  }
 
   void performAction(SNode node1, SNode node2);
 
-  void performGroupAction(List<SNode> nodes1, List<SNode> nodes2);
+  /**
+   * @deprecated no uses, no reason to keep
+   */
+  @Deprecated(since = "2022.2", forRemoval = true)
+  default void performGroupAction(List<SNode> nodes1, List<SNode> nodes2) {
+  }
 
   IMatchModifier DEFAULT = new IMatchModifier() {
     @Override
@@ -35,16 +46,8 @@ public interface IMatchModifier {
     }
 
     @Override
-    public boolean acceptList(List<SNode> nodes1, List<SNode> nodes2) {
-      return false;
-    }
-
-    @Override
     public void performAction(SNode node1, SNode node2) {
     }
 
-    @Override
-    public void performGroupAction(List<SNode> nodes1, List<SNode> nodes2) {
-    }
   };
 }
