@@ -177,7 +177,7 @@ public class InlineMethodRefactoring {
       if ((myOperand != null)) {
         SNode dot = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, "jetbrains.mps.baseLanguage.structure.DotExpression"));
         SLinkOperations.setTarget(dot, LINKS.operation$gs9E, newCall);
-        SLinkOperations.setTarget(dot, LINKS.operand$w6IR, myOperand);
+        SLinkOperations.setTarget(dot, LINKS.operand$w6IR, SNodeOperations.copyNode(myOperand));
         SNodeOperations.replaceWithAnother(localCall, dot);
       }
     }

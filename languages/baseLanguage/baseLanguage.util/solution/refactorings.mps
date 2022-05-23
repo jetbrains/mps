@@ -17729,8 +17729,11 @@
                 </node>
                 <node concept="3clFbF" id="4zdaW4voz4_" role="3cqZAp">
                   <node concept="37vLTI" id="4zdaW4vozu2" role="3clFbG">
-                    <node concept="37vLTw" id="4zdaW4vozBn" role="37vLTx">
-                      <ref role="3cqZAo" node="7nrhK3uHfcs" resolve="myOperand" />
+                    <node concept="2OqwBi" id="3pyR69tVBP9" role="37vLTx">
+                      <node concept="37vLTw" id="4zdaW4vozBn" role="2Oq$k0">
+                        <ref role="3cqZAo" node="7nrhK3uHfcs" resolve="myOperand" />
+                      </node>
+                      <node concept="1$rogu" id="3pyR69tVHbf" role="2OqNvi" />
                     </node>
                     <node concept="2OqwBi" id="4zdaW4vozcA" role="37vLTJ">
                       <node concept="37vLTw" id="4zdaW4voz4z" role="2Oq$k0">
@@ -31702,7 +31705,7 @@
           <node concept="3clFbS" id="3JD6rrJwd1g" role="3clFbx">
             <node concept="3cpWs6" id="3JD6rrJwd1h" role="3cqZAp">
               <node concept="Xl_RD" id="3JD6rrJwd1i" role="3cqZAk">
-                <property role="Xl_RC" value="Return breaks execution flow" />
+                <property role="Xl_RC" value="Inline method refactoring is not supported when the return statement interrupts execution flow" />
               </node>
             </node>
           </node>

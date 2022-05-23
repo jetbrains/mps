@@ -55,7 +55,7 @@ public class InlineMethodModel {
       return "Method is recursive";
     }
     if (isReturnBreaksExecitionFlow()) {
-      return "Return breaks execution flow";
+      return "Inline method refactoring is not supported when the return statement interrupts execution flow";
     }
     return null;
   }
