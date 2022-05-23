@@ -4,10 +4,10 @@ package jetbrains.mps.baseLanguage.util.plugin.refactorings;
 
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.util.Map;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -19,80 +19,89 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class MethodDuplicatesFinder {
-  private List<SNode> myNodesToFind;
-  private final Map<SNode, SNode> myMapping;
+  private final List<SNode> myNodesToFind;
   private final List<SNode> myParameterOrder;
-  private Set<SNode> myOutputRefs;
-  private Set<SNode> myUsedNodes = SetSequence.fromSet(new HashSet<SNode>());
+  private final MatchVisitor myMatchVisitor;
+  private final Set<SNode> myUsedNodes = SetSequence.fromSet(new HashSet<SNode>());
+
   public MethodDuplicatesFinder(List<SNode> nodesToFind, Map<SNode, SNode> mapping, List<SNode> parametersOrder, Set<SNode> outputReferences) {
     this.myNodesToFind = nodesToFind;
-    this.myMapping = mapping;
     this.myParameterOrder = parametersOrder;
-    myOutputRefs = outputReferences;
+    myMatchVisitor = new MatchVisitor(mapping, outputReferences);
+
     SetSequence.fromSet(this.myUsedNodes).addSequence(ListSequence.fromList(this.myNodesToFind));
   }
   public List<MethodMatch> findDuplicates(SNode root) {
     List<MethodMatch> found = new ArrayList<MethodMatch>();
     for (SNode node : ListSequence.fromList(SNodeOperations.getNodeDescendants(root, CONCEPTS.BaseConcept$gP, false, new SAbstractConcept[]{}))) {
       SNode current = node;
-      MethodMatchModifier modifier = new MethodMatchModifier();
+      // We attempt to find a sequence of nodes that match that we extract to refactor all similar code pieces.
+      // duplicateMatch is *potential* match we try to build here, and discard right away if hasNoErrors == true
+      MethodMatch duplicateMatch = new MethodMatch(this.myParameterOrder);
+      myMatchVisitor.withMatchCollector(duplicateMatch);
       boolean hasNoErrors = true;
+
       for (SNode nodeToFind : ListSequence.fromList(this.myNodesToFind)) {
         if ((current == null) || SetSequence.fromSet(this.myUsedNodes).contains(current)) {
           hasNoErrors = false;
           break;
         } else {
-          modifier.getMatch().putNode(current);
-          if (!(ExtractMethodFactory.isRefactoringAvailable(modifier.getMatch().getNodes())) || !(MatchingUtil.matchNodes(current, nodeToFind, modifier, true))) {
+          // record the node that might match original (although chances are not if favour, there're a lot of descendants
+          // under a root node<Classifier>
+          duplicateMatch.putNode(current);
+          if (ExtractMethodFactory.isRefactoringAvailable(duplicateMatch.getNodes()) && matchNodes(current, nodeToFind)) {
+            // Guess, it reads as "while it's still possible to refactor and actual visited node matches the one we extract, try the next sibling"
+            current = SNodeOperations.getNextSibling(current);
+          } else {
             hasNoErrors = false;
             break;
           }
-          current = SNodeOperations.getNextSibling(current);
+          // to prevent visiting same nodes (through descendants iterable), we track myUsedNotes if match found.
         }
       }
       if (hasNoErrors) {
-        MethodMatch resultMatch = modifier.getMatch();
-        resultMatch.createRefactoring();
-        if (resultMatch.checkMatch()) {
-          for (SNode resultNode : ListSequence.fromList(resultMatch.getNodes())) {
-            SetSequence.fromSet(this.myUsedNodes).addElement(resultNode);
-          }
-          found.add(resultMatch);
+        duplicateMatch.createRefactoring();
+        if (duplicateMatch.checkMatch()) {
+          SetSequence.fromSet(this.myUsedNodes).addSequence(ListSequence.fromList(duplicateMatch.getNodes()));
+          found.add(duplicateMatch);
         }
       }
     }
     return found;
   }
-  public void matchNodes(SNode candidate, SNode node) {
+
+  private boolean matchNodes(SNode current, SNode original) {
+    return MatchingUtil.matchNodes(current, original, myMatchVisitor, true);
   }
-  public class MethodMatchModifier implements IMatchModifier {
+
+  private static class MatchVisitor implements IMatchModifier {
+    private final Map<SNode, SNode> myMapping;
+    private final Set<SNode> myOutputRefs;
+
     private MethodMatch myMatch;
-    public MethodMatchModifier() {
-      this.myMatch = new MethodMatch(MethodDuplicatesFinder.this.myParameterOrder);
+
+    public MatchVisitor(Map<SNode, SNode> mapping, Set<SNode> outputReferences) {
+      myMapping = mapping;
+      myOutputRefs = outputReferences;
     }
+
+    /*package*/ void withMatchCollector(MethodMatch matchCollector) {
+      this.myMatch = matchCollector;
+    }
+
     @Override
     public boolean accept(SNode candidate, SNode original) {
       if (SetSequence.fromSet(myOutputRefs).contains(original)) {
-        this.myMatch.putOutputReference(candidate);
+        myMatch.putOutputReference(candidate);
       }
-      if (MapSequence.fromMap(MethodDuplicatesFinder.this.myMapping).containsKey(original)) {
+      if (MapSequence.fromMap(myMapping).containsKey(original)) {
         return true;
       }
       return false;
     }
     @Override
-    public boolean acceptList(List<SNode> list1, List<SNode> list2) {
-      return false;
-    }
-    @Override
     public void performAction(SNode candidate, SNode original) {
-      this.myMatch.putMapping(candidate, MapSequence.fromMap(MethodDuplicatesFinder.this.myMapping).get(original));
-    }
-    @Override
-    public void performGroupAction(List<SNode> list1, List<SNode> list2) {
-    }
-    public MethodMatch getMatch() {
-      return this.myMatch;
+      myMatch.putMapping(candidate, MapSequence.fromMap(myMapping).get(original));
     }
   }
 

@@ -298,6 +298,7 @@
       <concept id="1205681243813" name="jetbrains.mps.lang.plugin.structure.IsApplicableBlock" flags="in" index="2ScWuX" />
       <concept id="1214307303872" name="jetbrains.mps.lang.plugin.structure.GetComponentBlock" flags="in" index="2UmK3q" />
       <concept id="6547237850567458268" name="jetbrains.mps.lang.plugin.structure.BaseToolDeclaration" flags="ng" index="2XNcJY">
+        <property id="43535111852086466" name="isAvailableOnStartup" index="tEvSQ" />
         <property id="6547237850567462620" name="caption" index="2XNbzY" />
         <child id="8096638938275469615" name="toolDisposeBlock" index="uR5co" />
         <child id="8096638938275469614" name="toolInitBlock" index="uR5cp" />
@@ -31346,6 +31347,7 @@
     <property role="TrG5h" value="TodoViewer" />
     <property role="2XNbzY" value="ToDo" />
     <property role="3GE5qa" value="todo" />
+    <property role="tEvSQ" value="true" />
     <node concept="1QGGSu" id="6XsdSpiw0iU" role="1nVCmq">
       <node concept="10M0yZ" id="6XsdSpiw0CW" role="3xaMm5">
         <ref role="1PxDUh" to="z2i8:~AllIcons$Toolwindows" resolve="AllIcons.Toolwindows" />

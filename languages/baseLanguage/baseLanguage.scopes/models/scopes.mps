@@ -11298,11 +11298,13 @@
       <property role="TrG5h" value="NodeWrapper" />
       <node concept="312cEg" id="4w2h6RLv0Gg" role="jymVt">
         <property role="TrG5h" value="myHash" />
+        <property role="3TUv4t" value="true" />
         <node concept="3Tm6S6" id="4w2h6RLv0Ge" role="1B3o_S" />
         <node concept="10Oyi0" id="4w2h6RLv0Gf" role="1tU5fm" />
       </node>
       <node concept="312cEg" id="4w2h6RLv09i" role="jymVt">
         <property role="TrG5h" value="myNode" />
+        <property role="3TUv4t" value="true" />
         <node concept="3Tm6S6" id="4w2h6RLv09j" role="1B3o_S" />
         <node concept="3Tqbb2" id="4w2h6RLv09l" role="1tU5fm" />
       </node>
@@ -11332,11 +11334,16 @@
                   <ref role="2Oxat5" node="4w2h6RLv0Gg" resolve="myHash" />
                 </node>
               </node>
-              <node concept="2YIFZM" id="4w2h6RLv0Gt" role="37vLTx">
-                <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-                <ref role="37wK5l" to="ggp6:~MatchingUtil.hash(org.jetbrains.mps.openapi.model.SNode)" resolve="hash" />
-                <node concept="37vLTw" id="4w2h6RLv0Gu" role="37wK5m">
-                  <ref role="3cqZAo" node="4w2h6RLv00O" resolve="node" />
+              <node concept="2OqwBi" id="4kOxCKuT3mO" role="37vLTx">
+                <node concept="10M0yZ" id="4kOxCKuSYjp" role="2Oq$k0">
+                  <ref role="3cqZAo" to="w1kc:~SNodeHashStrategy.WholeTreeAndIgnoreAttributes" resolve="WholeTreeAndIgnoreAttributes" />
+                  <ref role="1PxDUh" to="w1kc:~SNodeHashStrategy" resolve="SNodeHashStrategy" />
+                </node>
+                <node concept="liA8E" id="4kOxCKuT9XT" role="2OqNvi">
+                  <ref role="37wK5l" to="w1kc:~SNodeHashStrategy.hash(org.jetbrains.mps.openapi.model.SNode)" resolve="hash" />
+                  <node concept="37vLTw" id="4kOxCKuTjAz" role="37wK5m">
+                    <ref role="3cqZAo" node="4w2h6RLv00O" resolve="node" />
+                  </node>
                 </node>
               </node>
             </node>

@@ -150,13 +150,9 @@ public class ClassVisitor extends KmClassVisitor {
               SNode superType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc8310b9b194L, "jetbrains.mps.kotlin.structure.SuperClassSpecifier"));
               // TODO could a simple superType.target = classType.class work?
               SReference ref = SNodeOperations.getReference(classType, LINKS.class$ExdX);
-              SNode target = jetbrains.mps.util.SNodeOperations.getTargetNodeSilently(ref);
-              if (target != null) {
-                superType.setReferenceTarget(LINKS.target$mYQV, target);
-              } else {
-                superType.setReference(LINKS.target$mYQV, SNodeOperations.getReference(classType, LINKS.class$ExdX).describeTarget());
-              }
+              superType.setReference(LINKS.target$mYQV, ref.describeTarget());
 
+              // Note, move of 'type' grandchildren of 'classType' node is intentional as it's disposable
               ListSequence.fromList(SLinkOperations.getChildren(superType, LINKS.typeArguments$86s6)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(classType, LINKS.typeProjections$vhti)).select(new ISelector<SNode, SNode>() {
                 public SNode select(SNode it) {
                   return SLinkOperations.getTarget(SNodeOperations.cast(it, CONCEPTS.TypeProjection$5e), LINKS.type$x3no);
