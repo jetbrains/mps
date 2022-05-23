@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,8 @@
 package jetbrains.mps.lang.typesystem.runtime;
 
 import jetbrains.mps.errors.IRuleConflictWarningProducer;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.typesystem.inference.SubtypingManager;
 import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
@@ -46,7 +46,7 @@ public abstract class OverloadedOperationsTypesProvider implements IOverloadedOp
   @Override
   public boolean isApplicable(SubtypingManager subtypingManager, SNode leftOperandType, SNode rightOperandType) {
     if (myLeftTypeIsExact) {
-      if (!MatchingUtil.matchNodes(leftOperandType, myLeftOperandType)) {
+      if (!new SNodeMatcher().match(leftOperandType, myLeftOperandType)) {
         return false;
       }
     } else {
@@ -55,7 +55,7 @@ public abstract class OverloadedOperationsTypesProvider implements IOverloadedOp
       }
     }
     if (myRightTypeIsExact) {
-      return MatchingUtil.matchNodes(rightOperandType, myRightOperandType);
+      return new SNodeMatcher().match(rightOperandType, myRightOperandType);
     } else {
       return subtypingManager.isSubtype(rightOperandType, myRightOperandType, !myRightIsStrong);
     }
