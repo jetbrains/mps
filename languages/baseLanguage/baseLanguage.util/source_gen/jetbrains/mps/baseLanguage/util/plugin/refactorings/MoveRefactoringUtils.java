@@ -19,7 +19,6 @@ import org.jetbrains.mps.openapi.module.SDependency;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -86,9 +85,6 @@ public class MoveRefactoringUtils {
     if (repo != null && mm.getModule() != null) {
       mdu.updateModuleDependencies(repo);
     }
-  }
-  public static boolean isReference(SNode node) {
-    return ListSequence.fromList(SNodeOperations.getChildren(node)).isEmpty() && ListSequence.fromList(SNodeOperations.getReferences(node)).count() == 1;
   }
 
   private static final class CONCEPTS {

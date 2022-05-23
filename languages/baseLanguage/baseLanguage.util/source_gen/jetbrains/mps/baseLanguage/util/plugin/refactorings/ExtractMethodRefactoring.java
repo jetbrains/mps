@@ -47,7 +47,7 @@ public abstract class ExtractMethodRefactoring {
     SNode body = createMethodBody();
     List<SNode> params = new ArrayList<SNode>();
     Map<SNode, SNode> inputToParams = this.createInputParameters(body, params);
-    Map<SNode, SNode> inputMapping = this.createInputVaryablesMapping(inputToParams, this.myParameters.getNodesToRefactor());
+    Map<SNode, SNode> inputMapping = this.createInputVariablesMapping(inputToParams, this.myParameters.getNodesToRefactor());
     this.myMatches = new MethodDuplicatesFinder(this.myParameters.getNodesToRefactor(), inputMapping, params, this.getOutputReferences()).findDuplicates(SNodeOperations.getNodeAncestor(ListSequence.fromList(this.myParameters.getNodesToRefactor()).first(), CONCEPTS.Classifier$Ix, false, false));
     this.replaceInputVariablesByParameters(SLinkOperations.getChildren(body, LINKS.statement$53DE), inputToParams);
     SNode newMethod = this.createNewMethod(SNodeOperations.copyNode(this.getMethodType()), params, body);
@@ -157,19 +157,20 @@ public abstract class ExtractMethodRefactoring {
     return result;
   }
   public void replaceInputVariablesByParameters(List<SNode> nodes, Map<SNode, SNode> mapping) {
-    Map<SNode, SNode> anotherMap = this.createInputVaryablesMapping(mapping, nodes);
+    Map<SNode, SNode> anotherMap = this.createInputVariablesMapping(mapping, nodes);
     for (SNode node : SetSequence.fromSet(MapSequence.fromMap(anotherMap).keySet())) {
       SNodeOperations.replaceWithAnother(node, _quotation_createNode_jq3ovj_a0a0a1a51(MapSequence.fromMap(anotherMap).get(node)));
     }
   }
-  public Map<SNode, SNode> createInputVaryablesMapping(Map<SNode, SNode> variableDeclarationToParameter, List<SNode> nodes) {
+  /*package*/ Map<SNode, SNode> createInputVariablesMapping(Map<SNode, SNode> variableDeclarationToParameter, List<SNode> nodes) {
     Map<SNode, SNode> mapping = MapSequence.fromMap(new HashMap<SNode, SNode>());
     for (SNode node : ListSequence.fromList(nodes)) {
-      for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.BaseConcept$gP, false, new SAbstractConcept[]{}))) {
-        if (MoveRefactoringUtils.isReference(reference)) {
-          SNode target = ListSequence.fromList(SNodeOperations.getReferences(reference)).first().getTargetNode();
+      for (SNode n : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, null, false, new SAbstractConcept[]{}))) {
+        // FIXME check b3df9aa72, I'm sure all BaseConcept descendants is too much here
+        if (isNodeWithSingleAssociation(n)) {
+          SNode target = ListSequence.fromList(SNodeOperations.getReferences(n)).first().getTargetNode();
           if (MapSequence.fromMap(variableDeclarationToParameter).containsKey(target)) {
-            MapSequence.fromMap(mapping).put(reference, MapSequence.fromMap(variableDeclarationToParameter).get(target));
+            MapSequence.fromMap(mapping).put(n, MapSequence.fromMap(variableDeclarationToParameter).get(target));
           }
         }
       }
@@ -182,6 +183,11 @@ public abstract class ExtractMethodRefactoring {
     }
     return mapping;
   }
+  private boolean isNodeWithSingleAssociation(SNode node) {
+    // original node.children.isEmpty spends time iterating all child nodes to calculate size(), hence downcast
+    return node.getFirstChild() == null && ListSequence.fromList(SNodeOperations.getReferences(node)).count() == 1;
+  }
+
   protected SNode createReference(SNode variable) {
     return VariableDeclaration__BehaviorDescriptor.createReference_idhEwJfME.invoke(variable);
   }
@@ -286,7 +292,6 @@ public abstract class ExtractMethodRefactoring {
     /*package*/ static final SConcept ParameterDeclaration$RG = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e94L, "jetbrains.mps.baseLanguage.structure.ParameterDeclaration");
     /*package*/ static final SConcept VariableReference$TC = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c77f1e98L, "jetbrains.mps.baseLanguage.structure.VariableReference");
     /*package*/ static final SInterfaceConcept IVisible$zu = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, "jetbrains.mps.baseLanguage.structure.IVisible");
-    /*package*/ static final SConcept BaseConcept$gP = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x10802efe25aL, "jetbrains.mps.lang.core.structure.BaseConcept");
     /*package*/ static final SInterfaceConcept IParameter$HE = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11d486a1d9eL, "jetbrains.mps.baseLanguage.structure.IParameter");
     /*package*/ static final SInterfaceConcept IStaticContainerForMethods$n8 = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c8f444674L, "jetbrains.mps.baseLanguage.structure.IStaticContainerForMethods");
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
