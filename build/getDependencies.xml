@@ -208,7 +208,8 @@
 
     <antcall target="update-licence-info"/>
     <antcall target="repackage-java-plugin"/>
-    <antcall target="repackage-platform-impl"/>
+    <antcall target="repackage-app-jar"/>
+    <antcall target="repackage-3rd-party-rt-jar"/>
 
     <!-- Set executable flag to binaries -->
     <chmod file="${basedir}/../bin/mac/fsnotifier" perm="755"/>
@@ -227,7 +228,6 @@
     <chmod file="${basedir}/../bin/win/runnerw.exe" perm="755"/>
     <chmod file="${basedir}/../bin/win/vistalauncher.exe" perm="755"/>
     <chmod file="${basedir}/../bin/win/WinProcessListHelper.exe" perm="755"/>
-    <chmod file="${basedir}/../bin/win/append.bat" perm="755"/>
   </target>
 
   <target name="update-licence-info">
@@ -306,7 +306,6 @@
     <!-- We need this to initialize JRT FS before repository to read JDK solution later.
     It's quite impossible to change loading of modules/models to lazy variant.
     Also a possible solution is to load JRT roots with IO FS -->
-    <copy file="${basedir}/../plugins/java/lib/java-api.jar" todir="${basedir}/../lib/"/>
     <!--In java-impl.jar, we remove META-INF contents for Idea not to try loading plugins from it (see MPS-30538) -->
     <unzip src="${basedir}/../plugins/java/lib/java-impl.jar" dest="${basedir}/../plugins/java/lib/java-impl/"/>
     <delete dir="${basedir}/../plugins/java/lib/java-impl/META-INF"/>
@@ -315,16 +314,28 @@
     <delete dir="${basedir}/../plugins/java/lib/java-impl/"/>
   </target>
 
-  <target name="repackage-platform-impl">
+  <target name="repackage-app-jar">
     <!-- We need this to remove IdeaApplicationInfo.xml and IdeaPlugin.xml from platform-impl.jar.
     MPS declare its own files -->
-    <unzip src="${basedir}/../lib/platform-impl.jar" dest="${basedir}/../lib/platform-impl/"/>
+    <unzip src="${basedir}/../lib/app.jar" dest="${basedir}/../lib/platform-impl/"/>
     <delete file="${basedir}/../lib/platform-impl/idea/IdeaApplicationInfo.xml"/>
     <delete file="${basedir}/../lib/platform-impl/META-INF/IdeaPlugin.xml"/>
-    <jar basedir="${basedir}/../lib/platform-impl/" destfile="${basedir}/../lib/platform-impl.patched.jar"/>
-    <copy file="${basedir}/../lib/platform-impl.patched.jar" tofile="${basedir}/../lib/platform-impl.jar" overwrite="true"/>
+    <jar basedir="${basedir}/../lib/platform-impl/" destfile="${basedir}/../lib/platform-impl.patched.jar" zip64Mode="always"/>
+    <copy file="${basedir}/../lib/platform-impl.patched.jar" tofile="${basedir}/../lib/app.jar" overwrite="true"/>
     <delete file="${basedir}/../lib/platform-impl.patched.jar"/>
     <delete dir="${basedir}/../lib/platform-impl/"/>
+  </target>
+
+  <target name="repackage-3rd-party-rt-jar">
+    <!-- We need this to remove org.apache.log4j classes. They are just stubs and MPS needs full implementation which is provided in a separate jar -->
+    <!-- Remove this step once MPS switches logging to jul -->
+    <unzip src="${basedir}/../lib/3rd-party-rt.jar" dest="${basedir}/../lib/3rd-party-rt/"/>
+    <delete dir="${basedir}/../lib/3rd-party-rt/org/apache/log4j"/>
+    <unzip src="${basedir}/temp/mps-log4j.zip" dest="${basedir}/../lib/3rd-party-rt/"/>
+    <jar basedir="${basedir}/../lib/3rd-party-rt/" destfile="${basedir}/../lib/3rd-party-rt.patched.jar" zip64Mode="always"/>
+    <copy file="${basedir}/../lib/3rd-party-rt.patched.jar" tofile="${basedir}/../lib/3rd-party-rt.jar" overwrite="true"/>
+    <delete file="${basedir}/../lib/3rd-party-rt.patched.jar"/>
+    <delete dir="${basedir}/../lib/3rd-party-rt/"/>
   </target>
 
   <target name="download-diffutils" depends="check-diffutils,install-ivy" if="${difutill.missing}"

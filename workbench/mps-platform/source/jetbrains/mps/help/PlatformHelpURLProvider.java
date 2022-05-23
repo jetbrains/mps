@@ -17,13 +17,14 @@ package jetbrains.mps.help;
 
 import com.intellij.ide.AppLifecycleListener;
 import com.intellij.openapi.application.ApplicationInfo;
-import com.intellij.openapi.project.Project;
-import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class PlatformHelpURLProvider implements AppLifecycleListener {
 
   @Override
-  public void appStarting(@Nullable Project projectFromCommandLine) {
+  public void appFrameCreated(@NotNull List<String> commandLineArgs) {
     HelpURLProvider.setInstance(new HelpURLProvider() {
       @Override
       public String getURL() {

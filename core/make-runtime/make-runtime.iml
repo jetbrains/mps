@@ -25,5 +25,16 @@
     <orderEntry type="module" module-name="environment" scope="TEST" />
     <orderEntry type="library" name="javac2" level="project" />
     <orderEntry type="module" module-name="generator-engine" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../lib/app.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../lib/app.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

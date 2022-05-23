@@ -135,10 +135,10 @@ public abstract class MessageList implements IMessageList, SearchHistoryStorage,
   protected MessageList() {
     myUpdateQueue.setRestartTimerOnAdd(true);
     // Recreate render to update colors after scheme change
-    EditorColorsManager.getInstance().addEditorColorsListener(scheme -> {
+    ApplicationManager.getApplication().getMessageBus().connect(this).subscribe(EditorColorsManager.TOPIC, scheme -> {
       myCellRenderer = new MessagesListCellRenderer();
       myList.setCellRenderer(myCellRenderer);
-    }, this);
+    });
   }
 
   /**

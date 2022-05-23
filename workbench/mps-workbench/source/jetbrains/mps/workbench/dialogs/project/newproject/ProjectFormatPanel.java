@@ -42,7 +42,7 @@ public class ProjectFormatPanel {
   public ProjectFormatPanel() {
     myStorageFormatCombo.insertItemAt(DIR_BASED, 0);
     myStorageFormatCombo.insertItemAt(FILE_BASED, 1);
-    myStorageFormatCombo.setSelectedItem(PropertiesComponent.getInstance().getOrInit(STORAGE_FORMAT_PROPERTY, DIR_BASED));
+    myStorageFormatCombo.setSelectedItem(PropertiesComponent.getInstance().getValue(STORAGE_FORMAT_PROPERTY, DIR_BASED));
   }
 
   public JPanel getPanel() {

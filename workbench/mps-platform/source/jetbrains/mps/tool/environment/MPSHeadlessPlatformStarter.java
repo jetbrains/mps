@@ -3,6 +3,7 @@
  */
 package jetbrains.mps.tool.environment;
 
+import com.intellij.idea.Main;
 import com.intellij.idea.MainImpl;
 import com.intellij.idea.StartupUtil;
 import com.intellij.openapi.application.Application;
@@ -48,6 +49,8 @@ public final class MPSHeadlessPlatformStarter implements ApplicationStarter {
     /*package*/ Application createApp() {
       try {
         StartupUtil.start(MAIN_CLASS.getName(),
+                          Main.isHeadless(),
+                          false,
                           new String[]{MPSHeadlessPlatformStarter.CMD_NAME},
                           new LinkedHashMap<>());
       } catch (Exception e) {

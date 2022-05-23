@@ -33,6 +33,6 @@ class IntelliJReporterReplacer implements AppLifecycleListener {
   public void appStarted() {
     ExtensionPoints.ERROR_HANDLER_EP.getPoint().unregisterExtensions(
         (className, adapter) -> !(className.equals(ITNReporter.class.getCanonicalName()) &&
-                                  adapter.getPluginDescriptor().getPluginId() == PluginId.getId(PluginManagerCore.CORE_PLUGIN_ID)), false);
+                                  adapter.pluginDescriptor.getPluginId() == PluginId.getId(PluginManagerCore.CORE_PLUGIN_ID)), false);
   }
 }

@@ -35,6 +35,8 @@ import com.intellij.openapi.progress.util.ProgressWindow;
 import com.intellij.openapi.progress.util.ProgressIndicatorListener;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.ProcessCanceledException;
+import java.util.concurrent.CompletableFuture;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.EmptyRunnable;
 import jetbrains.mps.debugger.java.runtime.engine.DebugProcessListener;
 import com.sun.jdi.event.EventQueue;
@@ -264,7 +266,9 @@ public class EventsProcessor {
       }
     });
 
-    progress.startBlocking(EmptyRunnable.getInstance());
+    final CompletableFuture<Object> future = new CompletableFuture<Object>();
+    Disposer.register(progress, () -> future.complete(null));
+    progress.startBlocking(EmptyRunnable.getInstance(), future);
 
     return resultReference.get();
   }

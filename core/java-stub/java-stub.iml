@@ -22,11 +22,11 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../lib/3rd-party.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../lib/app.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
-          <root url="jar://$MODULE_DIR$/../../lib/3rd-party.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../lib/app.jar!/" />
         </SOURCES>
       </library>
     </orderEntry>
