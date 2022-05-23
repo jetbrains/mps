@@ -6,7 +6,7 @@ import jetbrains.mps.lang.typesystem.runtime.AbstractInequationReplacementRule_R
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
@@ -20,7 +20,7 @@ public class MeetType_subtypeOf_arguments_InequationReplacementRule extends Abst
   }
   public boolean isApplicableCustom(SNode subtype, SNode supertype, IsApplicable2Status status) {
     for (SNode arg : SLinkOperations.getChildren(subtype, LINKS.argument$r2cT)) {
-      if (MatchingUtil.matchNodes(arg, supertype)) {
+      if (new SNodeMatcher().match(arg, supertype)) {
         return true;
       }
     }

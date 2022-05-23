@@ -18,7 +18,7 @@ import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -73,7 +73,7 @@ public final class ArrayType__BehaviorDescriptor extends BaseBHDescriptor {
         ListSequence.fromList(result).addElement(_quotation_createNode_vm86q7_a0a0a0a2a3(componentTypeSupertype));
       }
       SNode javaType = Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(componentType);
-      if (!((MatchingUtil.matchNodes(componentType, javaType)))) {
+      if (!((new SNodeMatcher().match(componentType, javaType)))) {
         ListSequence.fromList(result).addElement(_quotation_createNode_vm86q7_a0a0a2a2a3(javaType));
       }
     }

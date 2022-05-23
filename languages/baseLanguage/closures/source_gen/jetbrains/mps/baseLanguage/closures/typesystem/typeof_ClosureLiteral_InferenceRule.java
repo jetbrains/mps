@@ -19,7 +19,7 @@ import jetbrains.mps.baseLanguage.behavior.AbstractCatchClause__BehaviorDescript
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.baseLanguage.behavior.IMethodLike__BehaviorDescriptor;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.baseLanguage.behavior.IStatementListContainer__BehaviorDescriptor;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -144,7 +144,7 @@ with_allThrows:
           if (SNodeOperations.isInstanceOf(one, CONCEPTS.ClassifierType$bL) && (SLinkOperations.getTarget(SNodeOperations.cast(one, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr) == SLinkOperations.getTarget(SNodeOperations.cast(another, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr) || (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(SNodeOperations.cast(another, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), SLinkOperations.getTarget(SNodeOperations.cast(one, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr)))) {
             continue with_allThrows;
           }
-          if (MatchingUtil.matchNodes(one, another)) {
+          if (new SNodeMatcher().match(one, another)) {
             continue with_allThrows;
           }
         }
@@ -152,7 +152,7 @@ with_allThrows:
           if (SNodeOperations.isInstanceOf(caught, CONCEPTS.ClassifierType$bL) && (SLinkOperations.getTarget(SNodeOperations.cast(caught, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr) == SLinkOperations.getTarget(SNodeOperations.cast(another, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr) || (boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(SNodeOperations.cast(another, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr), SLinkOperations.getTarget(SNodeOperations.cast(caught, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr)))) {
             continue with_allThrows;
           }
-          if (MatchingUtil.matchNodes(caught, another)) {
+          if (new SNodeMatcher().match(caught, another)) {
             continue with_allThrows;
           }
         }

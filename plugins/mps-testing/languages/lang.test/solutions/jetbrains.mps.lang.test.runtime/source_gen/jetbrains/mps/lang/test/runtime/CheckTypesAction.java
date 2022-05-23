@@ -6,7 +6,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.Collection;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import org.junit.Assert;
 
 public abstract class CheckTypesAction {
@@ -33,7 +33,7 @@ public abstract class CheckTypesAction {
       SNode computedType = computeType();
       boolean hasType = false;
       for (SNode typeToCompare : allowedTypes) {
-        if (MatchingUtil.matchNodes(computedType, typeToCompare)) {
+        if (new SNodeMatcher().match(computedType, typeToCompare)) {
           hasType = true;
           break;
         }

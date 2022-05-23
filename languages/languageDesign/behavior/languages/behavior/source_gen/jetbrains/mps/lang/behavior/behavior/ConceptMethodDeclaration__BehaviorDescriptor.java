@@ -18,7 +18,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -89,7 +89,7 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
       return false;
     }
     for (int i = 0; i < parameterCount; i++) {
-      if (!((MatchingUtil.matchNodes(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).getElement(i), LINKS.type$a1UY), SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$quKH), LINKS.parameter$5xBj)).getElement(i), LINKS.type$a1UY))))) {
+      if (!((new SNodeMatcher().match(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).getElement(i), LINKS.type$a1UY), SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$quKH), LINKS.parameter$5xBj)).getElement(i), LINKS.type$a1UY))))) {
         return false;
       }
     }

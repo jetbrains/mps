@@ -6,7 +6,7 @@ import jetbrains.mps.lang.typesystem.runtime.ComparisonRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicable2Status;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -18,7 +18,7 @@ public class MeetType_comparable_with_arguments_ComparisonRule extends Compariso
   }
   public boolean areComparable(SNode node1, SNode node2, IsApplicable2Status status) {
     for (SNode arg : SLinkOperations.getChildren(node2, LINKS.argument$r2cT)) {
-      if (MatchingUtil.matchNodes(arg, node1)) {
+      if (new SNodeMatcher().match(arg, node1)) {
         return true;
       }
     }

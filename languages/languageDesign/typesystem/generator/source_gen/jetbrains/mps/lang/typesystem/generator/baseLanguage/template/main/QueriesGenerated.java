@@ -14,7 +14,7 @@ import jetbrains.mps.lang.typesystem.behavior.IRuleWithTwoNodes__BehaviorDescrip
 import jetbrains.mps.lang.typesystem.generator.baseLanguage.template.genUtil.TypesystemGenUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.generator.template.PropertyMacroContext;
@@ -225,7 +225,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if ((type == null)) {
       return false;
     }
-    if (MatchingUtil.matchNodes(type, _quotation_createNode_x583g4_a0d0lb())) {
+    if (new SNodeMatcher().match(type, _quotation_createNode_x583g4_a0d0lb())) {
       return true;
     }
     if (SNodeOperations.isInstanceOf(type, CONCEPTS.SNodeType$hR)) {
@@ -1973,7 +1973,7 @@ public class QueriesGenerated extends QueryProviderBase {
       baseMethodDeclaration = oldBMD;
       if ((baseMethodDeclaration != null)) {
         SNode dotExpression = SNodeOperations.cast(SNodeOperations.getParent(instanceMethodCall), CONCEPTS.DotExpression$yW);
-        if (!((MatchingUtil.matchNodes(SLinkOperations.getTarget(dotExpression, LINKS.operand$w6IR), getRTSupportExpression)))) {
+        if (!((new SNodeMatcher().match(SLinkOperations.getTarget(dotExpression, LINKS.operand$w6IR), getRTSupportExpression)))) {
           continue;
         }
 parametersLoop:

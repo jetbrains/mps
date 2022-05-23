@@ -15,7 +15,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Arrays;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -40,7 +40,7 @@ public class subtyping_arrayType_SubtypingRule extends SubtypingRule_Runtime imp
         ListSequence.fromList(result).addElement(_quotation_createNode_ny91lb_a0a0a1a4a1());
       }
       SNode javaType = Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(componentType);
-      if (javaType != null && !((MatchingUtil.matchNodes(componentType, javaType)))) {
+      if (javaType != null && !((new SNodeMatcher().match(componentType, javaType)))) {
         ListSequence.fromList(result).addElement(SNodeOperations.copyNode(javaType));
       }
     }

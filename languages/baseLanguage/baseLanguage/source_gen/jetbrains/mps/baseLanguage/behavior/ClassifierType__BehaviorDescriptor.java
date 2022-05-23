@@ -28,7 +28,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.pattern.GeneratedMatchingPattern;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import java.util.Iterator;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -240,7 +240,7 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
                 return false;
               }
             } else {
-              if (!((MatchingUtil.matchNodes(myParam_var, typeParam_var)))) {
+              if (!((new SNodeMatcher().match(myParam_var, typeParam_var)))) {
                 return false;
               }
             }
@@ -308,7 +308,7 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
                 return false;
               }
             } else {
-              if (!((MatchingUtil.matchNodes(_myParam, _typeParam)))) {
+              if (!((new SNodeMatcher().match(_myParam, _typeParam)))) {
                 return false;
               }
             }

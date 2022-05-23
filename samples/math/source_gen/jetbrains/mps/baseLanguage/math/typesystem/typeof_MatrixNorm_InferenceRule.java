@@ -17,7 +17,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.typesystem.inference.EquationInfo;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -45,10 +45,10 @@ public class typeof_MatrixNorm_InferenceRule extends AbstractInferenceRule_Runti
             if (TypecheckingFacade.getFromContext().isSubtype(t, MathTypeUtil.qBigInteger)) {
               SNode f = null;
               SNode i = null;
-              if (MatchingUtil.matchNodes(t, _quotation_createNode_8pyikg_a0a0c0c0a0a0a0b0a1a0a1_0()) || MatchingUtil.matchNodes(t, _quotation_createNode_8pyikg_a0a0c0c0a0a0a0b0a1a0a1_1()) || MatchingUtil.matchNodes(t, _quotation_createNode_8pyikg_a0a2a2a0a0a0a1a0b0a0b())) {
+              if (new SNodeMatcher().match(t, _quotation_createNode_8pyikg_a0a0c0c0a0a0a0b0a1a0a1_0()) || new SNodeMatcher().match(t, _quotation_createNode_8pyikg_a0a0c0c0a0a0a0b0a1a0a1_1()) || new SNodeMatcher().match(t, _quotation_createNode_8pyikg_a0a2a2a0a0a0a1a0b0a0b())) {
                 i = _quotation_createNode_8pyikg_a0a0c0c0a0a0a0b0a1a0a1();
                 f = _quotation_createNode_8pyikg_a0b0c0c0a0a0a0b0a1a0a1();
-              } else if (MatchingUtil.matchNodes(t, _quotation_createNode_8pyikg_a0a2a2a0a0a0a1a0b0a0b_0())) {
+              } else if (new SNodeMatcher().match(t, _quotation_createNode_8pyikg_a0a2a2a0a0a0a1a0b0a0b_0())) {
                 i = _quotation_createNode_8pyikg_a0a0a2a2a0a0a0a1a0b0a0b();
                 f = _quotation_createNode_8pyikg_a0b0a2a2a0a0a0a1a0b0a0b();
               } else if (SNodeOperations.isInstanceOf(t, CONCEPTS.BigIntegerType$8r)) {

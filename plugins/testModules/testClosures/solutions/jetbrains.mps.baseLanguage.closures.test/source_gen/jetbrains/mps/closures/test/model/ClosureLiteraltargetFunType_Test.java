@@ -18,7 +18,7 @@ import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.project.ProjectBase;
 import jetbrains.mps.baseLanguage.closures.helper.Values;
 import org.junit.Assert;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -74,7 +74,7 @@ public class ClosureLiteraltargetFunType_Test extends BaseTransformationTest {
     public void assertLiteralTarget(TemplateQueryContext gencontext, SNode literal, SNode expected) {
       SNode target = (SNode) Values.LITERAL_TARGET.get(gencontext, literal);
 
-      Assert.assertTrue(MatchingUtil.matchNodes(expected, target));
+      Assert.assertTrue(new SNodeMatcher().match(expected, target));
     }
     private static SNode _quotation_createNode_7325qm_c0a4a0a1a3h() {
       SNode quotedNode_1 = null;

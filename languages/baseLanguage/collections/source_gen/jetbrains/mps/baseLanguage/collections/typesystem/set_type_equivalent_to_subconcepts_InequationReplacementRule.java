@@ -14,7 +14,7 @@ import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.lang.typesystem.runtime.HUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -42,7 +42,7 @@ public class set_type_equivalent_to_subconcepts_InequationReplacementRule extend
     if (!(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(SNodeOperations.getConcept(subtype)), SNodeOperations.asSConcept(SNodeOperations.getConcept(supertype))))) {
       result_14532009 = false;
     }
-    result_14532009 = result_14532009 && MatchingUtil.matchNodes((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$tQrQ), (SNode) SLinkOperations.getTarget(supertype, LINKS.elementType$tQrQ));
+    result_14532009 = result_14532009 && new SNodeMatcher().match((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$tQrQ), (SNode) SLinkOperations.getTarget(supertype, LINKS.elementType$tQrQ));
     return result_14532009;
   }
   public boolean isWeak() {

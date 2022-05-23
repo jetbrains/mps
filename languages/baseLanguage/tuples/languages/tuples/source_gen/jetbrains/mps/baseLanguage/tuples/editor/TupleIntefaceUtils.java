@@ -10,7 +10,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.baseLanguage.behavior.Classifier__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.IEnumerator;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -39,7 +39,7 @@ public class TupleIntefaceUtils {
     for (SNode method : Sequence.fromIterable(Classifier__BehaviorDescriptor.methods_id4_LVZ3pBKCn.invoke(myIntefaceNode))) {
       if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).isEmpty() && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF))) {
         ListSequence.fromList(accessors).addElement(new Property(method));
-      } else if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == 1 && MatchingUtil.matchNodes(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).first())) {
+      } else if (ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == 1 && new SNodeMatcher().match(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).first())) {
         // matchNodes(RETURNTYPE, FIRST PARAMETER) (sic!) we use tuples in a way that we want set(X) to return X for immediate use
         ListSequence.fromList(mutators).addElement(new Property(method));
       } else if ("equals".equals(SPropertyOperations.getString(method, PROPS.name$MnvL)) && ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count() == 1 && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.BooleanType$_u)) {
@@ -68,7 +68,7 @@ public class TupleIntefaceUtils {
         hasMutators = mit.moveNext();
       }
       if (hasMutators && ait.current().name.equals(mit.current().name)) {
-        if (!((MatchingUtil.matchNodes(ait.current().type, mit.current().type)))) {
+        if (!((new SNodeMatcher().match(ait.current().type, mit.current().type)))) {
           return null;
         }
         ait.current().isFinal = false;

@@ -8,7 +8,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.lang.pattern.util.MatchingUtil;
+import jetbrains.mps.smodel.SNodeMatcher;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -49,7 +49,7 @@ public class ChangeMethodSignatureParameters {
     return SNodeOperations.getConcept(SLinkOperations.getTarget(SNodeOperations.cast(this.myMethod, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua)) != SNodeOperations.getConcept(SLinkOperations.getTarget(SNodeOperations.cast(this.myOldMethod, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua));
   }
   public boolean isReturnValueChanged() {
-    return !((MatchingUtil.matchNodes(SLinkOperations.getTarget(this.myMethod, LINKS.returnType$5xoi), SLinkOperations.getTarget(this.myOldMethod, LINKS.returnType$5xoi))));
+    return !((new SNodeMatcher().match(SLinkOperations.getTarget(this.myMethod, LINKS.returnType$5xoi), SLinkOperations.getTarget(this.myOldMethod, LINKS.returnType$5xoi))));
   }
 
   private static final class LINKS {
