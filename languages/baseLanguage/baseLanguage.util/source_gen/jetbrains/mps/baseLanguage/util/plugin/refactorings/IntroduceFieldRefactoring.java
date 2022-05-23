@@ -63,7 +63,12 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
         for (SNode constructor : Sequence.fromIterable(ClassConcept__BehaviorDescriptor.constructors_id4_LVZ3pCvsd.invoke(declaration))) {
           List<SNode> statement = SLinkOperations.getChildren(SLinkOperations.getTarget(constructor, LINKS.body$5xQk), LINKS.statement$53DE);
           if (ListSequence.fromList(statement).isNotEmpty()) {
-            SNodeOperations.insertPrevSiblingChild(ListSequence.fromList(statement).first(), SNodeOperations.copyNode(assignStatement));
+            SNode anchorNode = ListSequence.fromList(statement).first();
+            if (SNodeOperations.isInstanceOf(anchorNode, CONCEPTS.SuperConstructorInvocation$wU)) {
+              SNodeOperations.insertNextSiblingChild(anchorNode, SNodeOperations.copyNode(assignStatement));
+            } else {
+              SNodeOperations.insertPrevSiblingChild(anchorNode, SNodeOperations.copyNode(assignStatement));
+            }
           } else {
             ListSequence.fromList(statement).addElement(SNodeOperations.copyNode(assignStatement));
           }
@@ -182,6 +187,7 @@ public class IntroduceFieldRefactoring extends AbstractIntroduceFieldRefactoring
   private static final class CONCEPTS {
     /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
     /*package*/ static final SConcept Statement$P6 = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b215L, "jetbrains.mps.baseLanguage.structure.Statement");
+    /*package*/ static final SConcept SuperConstructorInvocation$wU = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d512e1eL, "jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation");
   }
 
   private static final class LINKS {
