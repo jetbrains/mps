@@ -24,7 +24,6 @@
     <import index="fctn" ref="r:3ff775e1-d8a6-494a-9b19-94e1dca7d0e1(jetbrains.mps.kotlin.runtime.generics)" />
     <import index="tbhz" ref="r:7d051f7f-1a28-4ed6-9de6-95fd49d3fa23(jetbrains.mps.kotlin.scopes)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
-    <import index="ggp6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern.util(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -241,6 +240,7 @@
       <concept id="1145567426890" name="jetbrains.mps.lang.smodel.structure.SNodeListCreator" flags="nn" index="2T8Vx0">
         <child id="1145567471833" name="createdType" index="2T96Bj" />
       </concept>
+      <concept id="1227264722563" name="jetbrains.mps.lang.smodel.structure.EqualsStructurallyExpression" flags="nn" index="2YFouu" />
       <concept id="1139613262185" name="jetbrains.mps.lang.smodel.structure.Node_GetParentOperation" flags="nn" index="1mfA1w" />
       <concept id="1139621453865" name="jetbrains.mps.lang.smodel.structure.Node_IsInstanceOfOperation" flags="nn" index="1mIQ4w">
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
@@ -2634,13 +2634,11 @@
                   <node concept="1bVj0M" id="3$PgO9fZ5CP" role="23t8la">
                     <node concept="3clFbS" id="3$PgO9fZ5CQ" role="1bW5cS">
                       <node concept="3clFbF" id="3$PgO9fZ5CT" role="3cqZAp">
-                        <node concept="2YIFZM" id="3$PgO9fZ5CU" role="3clFbG">
-                          <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-                          <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-                          <node concept="13iPFW" id="1MubhyvESSP" role="37wK5m" />
-                          <node concept="37vLTw" id="3$PgO9fZ5D1" role="37wK5m">
+                        <node concept="2YFouu" id="49Ui5iH1zZS" role="3clFbG">
+                          <node concept="37vLTw" id="49Ui5iH1$lQ" role="3uHU7w">
                             <ref role="3cqZAo" node="3$PgO9fZ5CR" resolve="it" />
                           </node>
+                          <node concept="13iPFW" id="49Ui5iH1ztn" role="3uHU7B" />
                         </node>
                       </node>
                     </node>

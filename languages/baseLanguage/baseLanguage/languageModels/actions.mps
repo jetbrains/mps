@@ -23,7 +23,6 @@
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
-    <import index="ggp6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern.util(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
@@ -377,6 +376,7 @@
       </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="1143512015885" name="jetbrains.mps.lang.smodel.structure.Node_GetNextSiblingOperation" flags="nn" index="YCak7" />
+      <concept id="1227264722563" name="jetbrains.mps.lang.smodel.structure.EqualsStructurallyExpression" flags="nn" index="2YFouu" />
       <concept id="1180031783296" name="jetbrains.mps.lang.smodel.structure.Concept_IsSubConceptOfOperation" flags="nn" index="2Zo12i">
         <child id="1180031783297" name="conceptArgument" index="2Zo12j" />
       </concept>
@@ -3641,16 +3641,6 @@
           </node>
           <node concept="3clFbS" id="helQ6CI" role="2LFqv$">
             <node concept="3clFbJ" id="helQhi3" role="3cqZAp">
-              <node concept="2YIFZM" id="helS217" role="3clFbw">
-                <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-                <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-                <node concept="37vLTw" id="2BHiRxglnoX" role="37wK5m">
-                  <ref role="3cqZAo" node="helPUzz" resolve="copiedExpression" />
-                </node>
-                <node concept="2GrUjf" id="helS9SQ" role="37wK5m">
-                  <ref role="2Gs0qQ" node="helQ6CG" resolve="child" />
-                </node>
-              </node>
               <node concept="3clFbS" id="helQhi5" role="3clFbx">
                 <node concept="3clFbF" id="helSaOL" role="3cqZAp">
                   <node concept="37vLTI" id="helSb8b" role="3clFbG">
@@ -3666,6 +3656,14 @@
                       <ref role="3cqZAo" node="helQaKw" resolve="originalExpression" />
                     </node>
                   </node>
+                </node>
+              </node>
+              <node concept="2YFouu" id="49Ui5iGJtRG" role="3clFbw">
+                <node concept="2GrUjf" id="49Ui5iGJu1C" role="3uHU7w">
+                  <ref role="2Gs0qQ" node="helQ6CG" resolve="child" />
+                </node>
+                <node concept="37vLTw" id="2BHiRxglnoX" role="3uHU7B">
+                  <ref role="3cqZAo" node="helPUzz" resolve="copiedExpression" />
                 </node>
               </node>
             </node>

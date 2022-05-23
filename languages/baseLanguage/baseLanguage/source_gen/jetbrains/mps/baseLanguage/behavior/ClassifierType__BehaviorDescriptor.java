@@ -240,7 +240,7 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
                 return false;
               }
             } else {
-              if (!(MatchingUtil.matchNodes(myParam_var, typeParam_var))) {
+              if (!((MatchingUtil.matchNodes(myParam_var, typeParam_var)))) {
                 return false;
               }
             }
@@ -308,7 +308,7 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
                 return false;
               }
             } else {
-              if (!(MatchingUtil.matchNodes(_myParam, _typeParam))) {
+              if (!((MatchingUtil.matchNodes(_myParam, _typeParam)))) {
                 return false;
               }
             }

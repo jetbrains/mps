@@ -89,7 +89,7 @@ public final class ConceptMethodDeclaration__BehaviorDescriptor extends BaseBHDe
       return false;
     }
     for (int i = 0; i < parameterCount; i++) {
-      if (!(MatchingUtil.matchNodes(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).getElement(i), LINKS.type$a1UY), SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$quKH), LINKS.parameter$5xBj)).getElement(i), LINKS.type$a1UY)))) {
+      if (!((MatchingUtil.matchNodes(SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).getElement(i), LINKS.type$a1UY), SLinkOperations.getTarget(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.overriddenMethod$quKH), LINKS.parameter$5xBj)).getElement(i), LINKS.type$a1UY))))) {
         return false;
       }
     }

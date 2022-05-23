@@ -23,7 +23,6 @@
     <import index="tp2n" ref="r:00000000-0000-4000-0000-011c89590333(jetbrains.mps.baseLanguage.closures.behavior)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="ggp6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern.util(MPS.Core/)" />
     <import index="qbve" ref="r:35e808a0-0758-4b03-9053-4675a7ced44c(jetbrains.mps.baseLanguage.closures.runtime)" />
     <import index="q1l7" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.template(MPS.Generator/)" />
   </imports>
@@ -250,6 +249,7 @@
     </language>
     <language id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel">
       <concept id="1179409122411" name="jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall" flags="nn" index="2qgKlT" />
+      <concept id="1227264722563" name="jetbrains.mps.lang.smodel.structure.EqualsStructurallyExpression" flags="nn" index="2YFouu" />
       <concept id="1138055754698" name="jetbrains.mps.lang.smodel.structure.SNodeType" flags="in" index="3Tqbb2">
         <reference id="1138405853777" name="concept" index="ehGHo" />
       </concept>
@@ -509,14 +509,12 @@
           </node>
         </node>
         <node concept="3vwNmj" id="6eup$H2Z9Ct" role="3cqZAp">
-          <node concept="2YIFZM" id="6eup$H2Z9Cx" role="3vwVQn">
-            <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-            <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-            <node concept="37vLTw" id="2BHiRxglCz4" role="37wK5m">
-              <ref role="3cqZAo" node="6eup$H2Z9mI" resolve="expected" />
-            </node>
-            <node concept="37vLTw" id="3GM_nagTrCI" role="37wK5m">
+          <node concept="2YFouu" id="49Ui5iH1RUW" role="3vwVQn">
+            <node concept="37vLTw" id="49Ui5iH1RV3" role="3uHU7w">
               <ref role="3cqZAo" node="6eup$H2Z9mN" resolve="target" />
+            </node>
+            <node concept="37vLTw" id="49Ui5iH1RAd" role="3uHU7B">
+              <ref role="3cqZAo" node="6eup$H2Z9mI" resolve="expected" />
             </node>
           </node>
         </node>
@@ -873,14 +871,12 @@
         </node>
         <node concept="3clFbH" id="U7sbC7SZ$U" role="3cqZAp" />
         <node concept="3vwNmj" id="5xREo5PH8yW" role="3cqZAp">
-          <node concept="2YIFZM" id="5xREo5PH8yX" role="3vwVQn">
-            <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-            <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-            <node concept="37vLTw" id="2BHiRxgm6mm" role="37wK5m">
-              <ref role="3cqZAo" node="5xREo5PH8yB" resolve="expected" />
-            </node>
-            <node concept="37vLTw" id="3GM_nagTyda" role="37wK5m">
+          <node concept="2YFouu" id="49Ui5iH1R2a" role="3vwVQn">
+            <node concept="37vLTw" id="49Ui5iH1R5B" role="3uHU7w">
               <ref role="3cqZAo" node="5xREo5PH8yG" resolve="target" />
+            </node>
+            <node concept="37vLTw" id="49Ui5iH1QJ4" role="3uHU7B">
+              <ref role="3cqZAo" node="5xREo5PH8yB" resolve="expected" />
             </node>
           </node>
         </node>

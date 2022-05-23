@@ -11,26 +11,25 @@
     <import index="tp3t" ref="r:00000000-0000-4000-0000-011c89590345(jetbrains.mps.lang.pattern.structure)" />
     <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" />
     <import index="2gg1" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors(MPS.Core/)" />
+    <import index="tpdd" ref="r:00000000-0000-4000-0000-011c895902ad(jetbrains.mps.lang.typesystem.behavior)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="zavc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.errors.messageTargets(MPS.Core/)" />
+    <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
+    <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="tp3r" ref="r:00000000-0000-4000-0000-011c8959034b(jetbrains.mps.lang.quotation.structure)" />
     <import index="tpcn" ref="r:00000000-0000-4000-0000-011c8959028b(jetbrains.mps.lang.structure.behavior)" />
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
+    <import index="tpd5" ref="r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
+    <import index="tpd4" ref="r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)" />
     <import index="qurh" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.typesystem.runtime(MPS.Core/)" />
     <import index="tpce" ref="r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)" />
-    <import index="2obm" ref="r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)" />
-    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
-    <import index="tpdd" ref="r:00000000-0000-4000-0000-011c895902ad(jetbrains.mps.lang.typesystem.behavior)" />
-    <import index="ggp6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern.util(MPS.Core/)" />
-    <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
-    <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
-    <import index="tpd5" ref="r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)" />
-    <import index="tpd4" ref="r:00000000-0000-4000-0000-011c895902b4(jetbrains.mps.lang.typesystem.structure)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="u78q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem.inference(MPS.Core/)" />
     <import index="tp2b" ref="r:00000000-0000-4000-0000-011c8959033f(jetbrains.mps.lang.pattern.behavior)" />
     <import index="tpeq" ref="r:00000000-0000-4000-0000-011c895902fe(jetbrains.mps.lang.smodel.typesystem)" />
+    <import index="2obm" ref="r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)" />
+    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -258,6 +257,7 @@
         <child id="1145567471833" name="createdType" index="2T96Bj" />
       </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
+      <concept id="1227264722563" name="jetbrains.mps.lang.smodel.structure.EqualsStructurallyExpression" flags="nn" index="2YFouu" />
       <concept id="2644386474302386080" name="jetbrains.mps.lang.smodel.structure.PropertyIdRefExpression" flags="nn" index="355D3s">
         <reference id="2644386474302386081" name="conceptDeclaration" index="355D3t" />
         <reference id="2644386474302386082" name="propertyDeclaration" index="355D3u" />
@@ -2868,17 +2868,15 @@
                   </node>
                 </node>
               </node>
-              <node concept="2YIFZM" id="dv" role="3clFbw">
-                <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-                <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-                <uo k="s:originTrace" v="n:176833115774964396" />
-                <node concept="37vLTw" id="dy" role="37wK5m">
-                  <ref role="3cqZAo" node="dr" resolve="arg" />
-                  <uo k="s:originTrace" v="n:176833115774966508" />
-                </node>
-                <node concept="37vLTw" id="dz" role="37wK5m">
+              <node concept="2YFouu" id="dv" role="3clFbw">
+                <uo k="s:originTrace" v="n:4790220682179392189" />
+                <node concept="37vLTw" id="dy" role="3uHU7w">
                   <ref role="3cqZAo" node="ex" resolve="subtype" />
-                  <uo k="s:originTrace" v="n:176833115774969950" />
+                  <uo k="s:originTrace" v="n:4790220682179393234" />
+                </node>
+                <node concept="37vLTw" id="dz" role="3uHU7B">
+                  <ref role="3cqZAo" node="dr" resolve="arg" />
+                  <uo k="s:originTrace" v="n:4790220682179391263" />
                 </node>
               </node>
             </node>
@@ -3279,17 +3277,15 @@
                   <uo k="s:originTrace" v="n:176833115774977722" />
                 </node>
               </node>
-              <node concept="2YIFZM" id="eO" role="3clFbw">
-                <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-                <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-                <uo k="s:originTrace" v="n:176833115774972206" />
-                <node concept="37vLTw" id="fv" role="37wK5m">
-                  <ref role="3cqZAo" node="eK" resolve="arg" />
-                  <uo k="s:originTrace" v="n:176833115774972207" />
-                </node>
-                <node concept="37vLTw" id="fw" role="37wK5m">
+              <node concept="2YFouu" id="eO" role="3clFbw">
+                <uo k="s:originTrace" v="n:4790220682179388954" />
+                <node concept="37vLTw" id="fv" role="3uHU7w">
                   <ref role="3cqZAo" node="ex" resolve="subtype" />
-                  <uo k="s:originTrace" v="n:176833115774972208" />
+                  <uo k="s:originTrace" v="n:4790220682179389674" />
+                </node>
+                <node concept="37vLTw" id="fw" role="3uHU7B">
+                  <ref role="3cqZAo" node="eK" resolve="arg" />
+                  <uo k="s:originTrace" v="n:4790220682179388023" />
                 </node>
               </node>
             </node>
@@ -3988,17 +3984,15 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="2YIFZM" id="iK" role="3clFbw">
-                    <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-                    <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-                    <uo k="s:originTrace" v="n:176833115774972206" />
-                    <node concept="37vLTw" id="j7" role="37wK5m">
-                      <ref role="3cqZAo" node="iG" resolve="arg" />
-                      <uo k="s:originTrace" v="n:176833115774972207" />
-                    </node>
-                    <node concept="37vLTw" id="j8" role="37wK5m">
+                  <node concept="2YFouu" id="iK" role="3clFbw">
+                    <uo k="s:originTrace" v="n:4790220682179388954" />
+                    <node concept="37vLTw" id="j7" role="3uHU7w">
                       <ref role="3cqZAo" node="ip" resolve="subtype" />
-                      <uo k="s:originTrace" v="n:176833115774972208" />
+                      <uo k="s:originTrace" v="n:4790220682179389674" />
+                    </node>
+                    <node concept="37vLTw" id="j8" role="3uHU7B">
+                      <ref role="3cqZAo" node="iG" resolve="arg" />
+                      <uo k="s:originTrace" v="n:4790220682179388023" />
                     </node>
                   </node>
                 </node>
@@ -4667,17 +4661,15 @@
                   </node>
                 </node>
               </node>
-              <node concept="2YIFZM" id="mg" role="3clFbw">
-                <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-                <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-                <uo k="s:originTrace" v="n:7799224375431527624" />
-                <node concept="37vLTw" id="mj" role="37wK5m">
-                  <ref role="3cqZAo" node="mc" resolve="arg" />
-                  <uo k="s:originTrace" v="n:7799224375431527644" />
-                </node>
-                <node concept="37vLTw" id="mk" role="37wK5m">
+              <node concept="2YFouu" id="mg" role="3clFbw">
+                <uo k="s:originTrace" v="n:4790220682179404818" />
+                <node concept="37vLTw" id="mj" role="3uHU7w">
                   <ref role="3cqZAo" node="m6" resolve="node1" />
-                  <uo k="s:originTrace" v="n:7799224375431528805" />
+                  <uo k="s:originTrace" v="n:4790220682179405285" />
+                </node>
+                <node concept="37vLTw" id="mk" role="3uHU7B">
+                  <ref role="3cqZAo" node="mc" resolve="arg" />
+                  <uo k="s:originTrace" v="n:4790220682179403368" />
                 </node>
               </node>
             </node>
@@ -4976,17 +4968,15 @@
                   </node>
                 </node>
               </node>
-              <node concept="2YIFZM" id="nG" role="3clFbw">
-                <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-                <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-                <uo k="s:originTrace" v="n:6303539268843200148" />
-                <node concept="37vLTw" id="nJ" role="37wK5m">
-                  <ref role="3cqZAo" node="nC" resolve="arg" />
-                  <uo k="s:originTrace" v="n:6303539268843204852" />
-                </node>
-                <node concept="37vLTw" id="nK" role="37wK5m">
+              <node concept="2YFouu" id="nG" role="3clFbw">
+                <uo k="s:originTrace" v="n:4790220682179414491" />
+                <node concept="37vLTw" id="nJ" role="3uHU7w">
                   <ref role="3cqZAo" node="nW" resolve="supertype" />
-                  <uo k="s:originTrace" v="n:6303539268843222260" />
+                  <uo k="s:originTrace" v="n:4790220682179415093" />
+                </node>
+                <node concept="37vLTw" id="nK" role="3uHU7B">
+                  <ref role="3cqZAo" node="nC" resolve="arg" />
+                  <uo k="s:originTrace" v="n:4790220682179410819" />
                 </node>
               </node>
             </node>

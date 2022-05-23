@@ -13,7 +13,6 @@
     <import index="tpeh" ref="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="2obm" ref="r:36914d45-fd5c-434f-84d0-429a0b615f32(jetbrains.mps.typesystemEngine.util)" />
-    <import index="ggp6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern.util(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="u78q" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typesystem.inference(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
@@ -270,6 +269,7 @@
         <child id="1145567471833" name="createdType" index="2T96Bj" />
       </concept>
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
+      <concept id="1227264722563" name="jetbrains.mps.lang.smodel.structure.EqualsStructurallyExpression" flags="nn" index="2YFouu" />
       <concept id="2644386474300074836" name="jetbrains.mps.lang.smodel.structure.ConceptIdRefExpression" flags="nn" index="35c_gC">
         <reference id="2644386474300074837" name="conceptDeclaration" index="35c_gD" />
       </concept>
@@ -3671,14 +3671,12 @@
               </node>
               <node concept="3cpWs6" id="9OfcwEiKqU" role="3cqZAp" />
             </node>
-            <node concept="2YIFZM" id="9OfcwEiJ4I" role="3clFbw">
-              <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-              <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-              <node concept="37vLTw" id="9OfcwEiJ4J" role="37wK5m">
-                <ref role="3cqZAo" node="9OfcwEiJ4L" resolve="arg" />
-              </node>
-              <node concept="1YBJjd" id="9OfcwEiJ4K" role="37wK5m">
+            <node concept="2YFouu" id="49Ui5iH22oq" role="3clFbw">
+              <node concept="1YBJjd" id="49Ui5iH22zE" role="3uHU7w">
                 <ref role="1YBMHb" node="6XMm0DLjIpL" resolve="any" />
+              </node>
+              <node concept="37vLTw" id="49Ui5iH229R" role="3uHU7B">
+                <ref role="3cqZAo" node="9OfcwEiJ4L" resolve="arg" />
               </node>
             </node>
           </node>
@@ -3866,14 +3864,12 @@
                   </node>
                 </node>
               </node>
-              <node concept="2YIFZM" id="9OfcwEiHaG" role="3clFbw">
-                <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-                <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-                <node concept="37vLTw" id="9OfcwEiHFG" role="37wK5m">
-                  <ref role="3cqZAo" node="9OfcwEi$tK" resolve="arg" />
-                </node>
-                <node concept="1YBJjd" id="9OfcwEiIxu" role="37wK5m">
+              <node concept="2YFouu" id="49Ui5iH23aX" role="3clFbw">
+                <node concept="1YBJjd" id="49Ui5iH23ri" role="3uHU7w">
                   <ref role="1YBMHb" node="6XMm0DLjIpL" resolve="any" />
+                </node>
+                <node concept="37vLTw" id="49Ui5iH22Wv" role="3uHU7B">
+                  <ref role="3cqZAo" node="9OfcwEi$tK" resolve="arg" />
                 </node>
               </node>
             </node>
@@ -4087,14 +4083,12 @@
                 </node>
               </node>
             </node>
-            <node concept="2YIFZM" id="6KWqjXlavN8" role="3clFbw">
-              <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-              <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-              <node concept="37vLTw" id="6KWqjXlavNs" role="37wK5m">
-                <ref role="3cqZAo" node="6KWqjXlahCW" resolve="arg" />
-              </node>
-              <node concept="1YBJjd" id="6KWqjXlaw5_" role="37wK5m">
+            <node concept="2YFouu" id="49Ui5iH26gi" role="3clFbw">
+              <node concept="1YBJjd" id="49Ui5iH26n_" role="3uHU7w">
                 <ref role="1YBMHb" node="6KWqjXla6ih" resolve="type" />
+              </node>
+              <node concept="37vLTw" id="49Ui5iH25TC" role="3uHU7B">
+                <ref role="3cqZAo" node="6KWqjXlahCW" resolve="arg" />
               </node>
             </node>
           </node>
@@ -4148,14 +4142,12 @@
                   </node>
                 </node>
               </node>
-              <node concept="2YIFZM" id="5tUET537XUk" role="3clFbw">
-                <ref role="37wK5l" to="ggp6:~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)" resolve="matchNodes" />
-                <ref role="1Pybhc" to="ggp6:~MatchingUtil" resolve="MatchingUtil" />
-                <node concept="37vLTw" id="5tUET537Z3O" role="37wK5m">
-                  <ref role="3cqZAo" node="5tUET537S$4" resolve="arg" />
-                </node>
-                <node concept="1YBJjd" id="5tUET5383jO" role="37wK5m">
+              <node concept="2YFouu" id="49Ui5iH28Br" role="3clFbw">
+                <node concept="1YBJjd" id="49Ui5iH28KP" role="3uHU7w">
                   <ref role="1YBMHb" node="5tUET537yt7" resolve="type" />
+                </node>
+                <node concept="37vLTw" id="49Ui5iH27I3" role="3uHU7B">
+                  <ref role="3cqZAo" node="5tUET537S$4" resolve="arg" />
                 </node>
               </node>
             </node>

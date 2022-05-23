@@ -19526,7 +19526,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)/360223900462930831">
     <file name="LowerBoundType_subtypeOf_bound_InequationReplacementRule.java">
       <node id="360223900462930831" at="19,0,20,0" concept="7" trace="myMatchingPattern1" />
-      <node id="360223900462969455" at="22,97,23,91" concept="13" />
+      <node id="4790220682177063908" at="22,97,23,91" concept="13" />
       <node id="360223900463006011" at="25,253,26,17" concept="14" />
       <node id="360223900462930831" at="28,207,29,35" concept="12" />
       <node id="360223900463006011" at="29,35,30,17" concept="14" />
