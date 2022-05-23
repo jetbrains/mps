@@ -19,6 +19,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 
 import java.util.List;
 
+/**
+ * @deprecated replaced with {@link jetbrains.mps.smodel.SNodeMatcher}
+ */
+@Deprecated(since = "2022.2", forRemoval = true)
 public interface IMatchModifier {
   boolean accept(SNode node1, SNode node2);
 
