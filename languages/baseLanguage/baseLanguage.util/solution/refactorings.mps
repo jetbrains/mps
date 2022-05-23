@@ -16605,22 +16605,48 @@
         </node>
         <node concept="3clFbJ" id="7nrhK3uHeWR" role="3cqZAp">
           <node concept="1Wc70l" id="6wfSYlmhE0M" role="3clFbw">
-            <node concept="3y3z36" id="6wfSYlmhEd3" role="3uHU7w">
-              <node concept="37vLTw" id="6wfSYlmhE87" role="3uHU7B">
-                <ref role="3cqZAo" node="6wfSYlmhC4s" resolve="classAncestor" />
-              </node>
-              <node concept="2OqwBi" id="7nrhK3uHeX6" role="3uHU7w">
-                <node concept="2Xjw5R" id="7nrhK3uHeXa" role="2OqNvi">
-                  <node concept="1xMEDy" id="7nrhK3uHeXb" role="1xVPHs">
-                    <node concept="chp4Y" id="6wfSYlmhEj0" role="ri$Ld">
-                      <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+            <node concept="1eOMI4" id="3pyR69tPvWK" role="3uHU7w">
+              <node concept="22lmx$" id="3pyR69tPzSl" role="1eOMHV">
+                <node concept="2OqwBi" id="3pyR69tQ6ZD" role="3uHU7B">
+                  <node concept="2OqwBi" id="3pyR69tPLQL" role="2Oq$k0">
+                    <node concept="2OqwBi" id="3pyR69tPD2o" role="2Oq$k0">
+                      <node concept="Xjq3P" id="3pyR69tPBLn" role="2Oq$k0" />
+                      <node concept="2OwXpG" id="3pyR69tPI6u" role="2OqNvi">
+                        <ref role="2Oxat5" node="7nrhK3uHfcj" resolve="myMethodCall" />
+                      </node>
+                    </node>
+                    <node concept="2Xjw5R" id="3pyR69tPPrR" role="2OqNvi">
+                      <node concept="1xMEDy" id="3pyR69tPPrT" role="1xVPHs">
+                        <node concept="chp4Y" id="3pyR69tQ1KJ" role="ri$Ld">
+                          <ref role="cht4Q" to="tpee:fzclF7W" resolve="BaseMethodDeclaration" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="1mIQ4w" id="3pyR69tQaC_" role="2OqNvi">
+                    <node concept="chp4Y" id="3pyR69tQevH" role="cj9EA">
+                      <ref role="cht4Q" to="tpee:fIYIFWa" resolve="StaticMethodDeclaration" />
                     </node>
                   </node>
                 </node>
-                <node concept="2OqwBi" id="7nrhK3uHeX7" role="2Oq$k0">
-                  <node concept="Xjq3P" id="7nrhK3uHeX9" role="2Oq$k0" />
-                  <node concept="2OwXpG" id="7nrhK3uHeX8" role="2OqNvi">
-                    <ref role="2Oxat5" node="7nrhK3uHfcj" resolve="myMethodCall" />
+                <node concept="3y3z36" id="6wfSYlmhEd3" role="3uHU7w">
+                  <node concept="37vLTw" id="6wfSYlmhE87" role="3uHU7B">
+                    <ref role="3cqZAo" node="6wfSYlmhC4s" resolve="classAncestor" />
+                  </node>
+                  <node concept="2OqwBi" id="7nrhK3uHeX6" role="3uHU7w">
+                    <node concept="2Xjw5R" id="7nrhK3uHeXa" role="2OqNvi">
+                      <node concept="1xMEDy" id="7nrhK3uHeXb" role="1xVPHs">
+                        <node concept="chp4Y" id="6wfSYlmhEj0" role="ri$Ld">
+                          <ref role="cht4Q" to="tpee:fz12cDA" resolve="ClassConcept" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="2OqwBi" id="7nrhK3uHeX7" role="2Oq$k0">
+                      <node concept="Xjq3P" id="7nrhK3uHeX9" role="2Oq$k0" />
+                      <node concept="2OwXpG" id="7nrhK3uHeX8" role="2OqNvi">
+                        <ref role="2Oxat5" node="7nrhK3uHfcj" resolve="myMethodCall" />
+                      </node>
+                    </node>
                   </node>
                 </node>
               </node>
