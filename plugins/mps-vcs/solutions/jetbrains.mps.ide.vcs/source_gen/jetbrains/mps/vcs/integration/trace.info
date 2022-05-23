@@ -14,8 +14,8 @@
   <root nodeRef="r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/3521790172251160903">
     <file name="ProjectCheckoutListener.java">
       <node id="3521790172251160936" at="22,52,23,76" concept="7" />
-      <node id="1964955361598163657" at="26,44,27,94" concept="1" />
-      <node id="3521790172251160982" at="27,94,28,18" concept="7" />
+      <node id="1964955361598163657" at="26,44,27,102" concept="1" />
+      <node id="3521790172251160982" at="27,102,28,18" concept="7" />
       <node id="3521790172251160984" at="29,5,30,17" concept="7" />
       <node id="3521790172251160928" at="21,0,25,0" concept="5" trace="accept#(Ljava/io/File;Ljava/lang/String;)Z" />
       <node id="3521790172251160941" at="25,7,29,5" concept="4" />

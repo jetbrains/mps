@@ -28,6 +28,7 @@
     <import index="ot7" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.progress.util(MPS.IDEA/)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
+    <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -192,7 +193,9 @@
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
       </concept>
-      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk" />
+      <concept id="1212685548494" name="jetbrains.mps.baseLanguage.structure.ClassCreator" flags="nn" index="1pGfFk">
+        <child id="1212687122400" name="typeParameter" index="1pMfVU" />
+      </concept>
       <concept id="1107461130800" name="jetbrains.mps.baseLanguage.structure.Classifier" flags="ng" index="3pOWGL">
         <property id="521412098689998745" name="nonStatic" index="2bfB8j" />
         <child id="5375687026011219971" name="member" index="jymVt" unordered="true" />
@@ -2644,16 +2647,62 @@
           </node>
         </node>
         <node concept="3clFbH" id="6iKTdy44OJs" role="3cqZAp" />
+        <node concept="3cpWs8" id="1w78gokcY2P" role="3cqZAp">
+          <node concept="3cpWsn" id="1w78gokcY2Q" role="3cpWs9">
+            <property role="TrG5h" value="future" />
+            <node concept="3uibUv" id="1w78gokcY2N" role="1tU5fm">
+              <ref role="3uigEE" to="5zyv:~CompletableFuture" resolve="CompletableFuture" />
+              <node concept="3uibUv" id="1w78gokd1lQ" role="11_B2D">
+                <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+              </node>
+            </node>
+            <node concept="2ShNRf" id="1w78gokd9_8" role="33vP2m">
+              <node concept="1pGfFk" id="1w78gokd9$U" role="2ShVmc">
+                <ref role="37wK5l" to="5zyv:~CompletableFuture.&lt;init&gt;()" resolve="CompletableFuture" />
+                <node concept="3uibUv" id="1w78gokd9$V" role="1pMfVU">
+                  <ref role="3uigEE" to="wyt6:~Object" resolve="Object" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1w78gokdlU3" role="3cqZAp">
+          <node concept="2YIFZM" id="1w78gokdp60" role="3clFbG">
+            <ref role="37wK5l" to="zn9m:~Disposer.register(com.intellij.openapi.Disposable,com.intellij.openapi.Disposable)" resolve="register" />
+            <ref role="1Pybhc" to="zn9m:~Disposer" resolve="Disposer" />
+            <node concept="37vLTw" id="1w78gokdx_M" role="37wK5m">
+              <ref role="3cqZAo" node="6iKTdy44w$h" resolve="progress" />
+            </node>
+            <node concept="1bVj0M" id="1w78gokdAAk" role="37wK5m">
+              <node concept="3clFbS" id="1w78gokdAAm" role="1bW5cS">
+                <node concept="3clFbF" id="1w78gokdDUm" role="3cqZAp">
+                  <node concept="2OqwBi" id="1w78gokdGWX" role="3clFbG">
+                    <node concept="37vLTw" id="1w78gokdDUl" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1w78gokcY2Q" resolve="future" />
+                    </node>
+                    <node concept="liA8E" id="1w78gokdL$w" role="2OqNvi">
+                      <ref role="37wK5l" to="5zyv:~CompletableFuture.complete(java.lang.Object)" resolve="complete" />
+                      <node concept="10Nm6u" id="1w78gokdOR0" role="37wK5m" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="6iKTdy456DT" role="3cqZAp">
           <node concept="2OqwBi" id="6iKTdy456Pb" role="3clFbG">
             <node concept="37vLTw" id="6iKTdy456DS" role="2Oq$k0">
               <ref role="3cqZAo" node="6iKTdy44w$h" resolve="progress" />
             </node>
             <node concept="liA8E" id="6iKTdy45bwt" role="2OqNvi">
-              <ref role="37wK5l" to="ot7:~ProgressWindow.startBlocking(java.lang.Runnable)" resolve="startBlocking" />
+              <ref role="37wK5l" to="ot7:~ProgressWindow.startBlocking(java.lang.Runnable,java.util.concurrent.CompletableFuture)" resolve="startBlocking" />
               <node concept="2YIFZM" id="19qkOsND2rU" role="37wK5m">
                 <ref role="37wK5l" to="zn9m:~EmptyRunnable.getInstance()" resolve="getInstance" />
                 <ref role="1Pybhc" to="zn9m:~EmptyRunnable" resolve="EmptyRunnable" />
+              </node>
+              <node concept="37vLTw" id="1w78gokdfyq" role="37wK5m">
+                <ref role="3cqZAo" node="1w78gokcY2Q" resolve="future" />
               </node>
             </node>
           </node>

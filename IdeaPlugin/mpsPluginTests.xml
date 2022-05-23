@@ -191,7 +191,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party.jar" />
+        <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj/eclipse.jar" />
         <path refid="path.java.library.mps-testing-artifacts" />
         <fileset dir="${artifacts.IDEA}/plugins/java/lib" includes="*.jar" />
@@ -243,7 +243,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party.jar" />
+        <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj/eclipse.jar" />
         <path refid="path.java.library.idea-devkit-jps" />
         <path refid="path.java.library.idea-jps-tests" />

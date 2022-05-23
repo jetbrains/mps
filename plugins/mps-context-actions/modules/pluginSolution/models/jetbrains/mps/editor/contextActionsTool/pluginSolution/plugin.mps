@@ -622,7 +622,7 @@
               </node>
             </node>
             <node concept="liA8E" id="7vUP_qcxi0V" role="2OqNvi">
-              <ref role="37wK5l" to="b9kz:~ToolWindowEx.setAdditionalGearActions(com.intellij.openapi.actionSystem.ActionGroup)" resolve="setAdditionalGearActions" />
+              <ref role="37wK5l" to="jkny:~ToolWindow.setAdditionalGearActions(com.intellij.openapi.actionSystem.ActionGroup)" resolve="setAdditionalGearActions" />
               <node concept="2OqwBi" id="3zNPfWNAwBC" role="37wK5m">
                 <node concept="2WthIp" id="3zNPfWNAwBD" role="2Oq$k0" />
                 <node concept="2XshWL" id="3zNPfWNAwBE" role="2OqNvi">

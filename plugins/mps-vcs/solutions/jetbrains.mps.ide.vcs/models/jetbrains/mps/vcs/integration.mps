@@ -355,11 +355,16 @@
                     <ref role="37wK5l" to="guwi:~File.toPath()" resolve="toPath" />
                   </node>
                 </node>
-                <node concept="2YIFZM" id="5bF_UrCy8Dd" role="37wK5m">
-                  <ref role="37wK5l" to="btn2:~OpenProjectTask.withProjectToClose(com.intellij.openapi.project.Project)" resolve="withProjectToClose" />
-                  <ref role="1Pybhc" to="btn2:~OpenProjectTask" resolve="OpenProjectTask" />
-                  <node concept="37vLTw" id="5bF_UrCy8De" role="37wK5m">
-                    <ref role="3cqZAo" node="33vUo2uvw5h" resolve="project" />
+                <node concept="2OqwBi" id="5VhDs5Z1kzR" role="37wK5m">
+                  <node concept="2YIFZM" id="5VhDs5Z1k4q" role="2Oq$k0">
+                    <ref role="37wK5l" to="btn2:~OpenProjectTask.build()" resolve="build" />
+                    <ref role="1Pybhc" to="btn2:~OpenProjectTask" resolve="OpenProjectTask" />
+                  </node>
+                  <node concept="liA8E" id="5VhDs5Z1kZC" role="2OqNvi">
+                    <ref role="37wK5l" to="btn2:~OpenProjectTask.withProjectToClose(com.intellij.openapi.project.Project)" resolve="withProjectToClose" />
+                    <node concept="37vLTw" id="5VhDs5Z1BVJ" role="37wK5m">
+                      <ref role="3cqZAo" node="33vUo2uvw5h" resolve="project" />
+                    </node>
                   </node>
                 </node>
               </node>

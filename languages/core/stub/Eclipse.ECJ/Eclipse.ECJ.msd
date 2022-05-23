@@ -3,7 +3,7 @@
   <readOnlyStubs/>
   <models>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
-      <sourceRoot location="3rd-party.jar" />
+      <sourceRoot location="app.jar" />
       <PackageScope>
         <include prefix="org.eclipse.jdt."/>
       </PackageScope>
@@ -14,7 +14,7 @@
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${platform_lib}/3rd-party.jar" />
+    <stubModelEntry path="${platform_lib}/app.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

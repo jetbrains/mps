@@ -3,20 +3,16 @@
   <readOnlyStubs/>
   <models>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
-      <sourceRoot location="openapi.jar" />
-      <sourceRoot location="platform.jar" />
-      <sourceRoot location="platform-api.jar" />
-      <sourceRoot location="platform-impl.jar" />
+      <sourceRoot location="app.jar" />
       <sourceRoot location="platform-objectSerializer-annotations.jar" />
       <sourceRoot location="platform-statistics-devkit.jar" />
-      <sourceRoot location="java-api.jar" />
       <sourceRoot location="java-impl.jar" />
-      <sourceRoot location="testFramework.core.jar" />
       <sourceRoot location="testFramework.jar" />
-      <sourceRoot location="testFramework-java.jar" />
       <sourceRoot location="tests_bootstrap.jar" />
       <!-- -->
       <sourceRoot location="util.jar" />
+      <sourceRoot location="util_rt.jar" />
+      <sourceRoot location="jps-model.jar" />
       <sourceRoot location="3rd-party-rt.jar" />
       <sourceRoot location="forms_rt.jar" />
     </modelRoot>
@@ -27,20 +23,16 @@
   </facets>
   <stubModelEntries>
     <!-- aka 'repacked idea jars' -->
-    <stubModelEntry path="${platform_lib}/openapi.jar" />
-    <stubModelEntry path="${platform_lib}/platform.jar" />
-    <stubModelEntry path="${platform_lib}/platform-api.jar" />
-    <stubModelEntry path="${platform_lib}/platform-impl.jar" />
+    <stubModelEntry path="${platform_lib}/app.jar" />
     <stubModelEntry path="${platform_lib}/platform-objectSerializer-annotations.jar" />
     <stubModelEntry path="${platform_lib}/platform-statistics-devkit.jar" />
-    <stubModelEntry path="${platform_lib}/java-api.jar" />
     <stubModelEntry path="${platform_lib}/java-impl.jar" />
-    <stubModelEntry path="${platform_lib}/testFramework.core.jar" />
     <stubModelEntry path="${platform_lib}/testFramework.jar" />
-    <stubModelEntry path="${platform_lib}/testFramework-java.jar" />
     <stubModelEntry path="${platform_lib}/tests_bootstrap.jar" />
     <!-- aka 'idea jars' -->
     <stubModelEntry path="${platform_lib}/util.jar" />
+    <stubModelEntry path="${platform_lib}/util_rt.jar" />
+    <stubModelEntry path="${platform_lib}/jps-model.jar" />
     <stubModelEntry path="${platform_lib}/3rd-party-rt.jar" />
     <stubModelEntry path="${platform_lib}/forms_rt.jar" />
   </stubModelEntries>

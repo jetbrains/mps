@@ -4,6 +4,7 @@
   <models>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <sourceRoot location="util.jar" />
+      <sourceRoot location="util_rt.jar" />
       <PackageScope skip-private="false">
         <include prefix="com.intellij.application" />
         <include prefix="com.intellij.util" />
@@ -20,6 +21,7 @@
   </facets>
   <stubModelEntries>
     <stubModelEntry path="${platform_lib}/util.jar" />
+    <stubModelEntry path="${platform_lib}/util_rt.jar" />
     <stubModelEntry path="${mps_home}/lib/mps-boot-util.jar" />
   </stubModelEntries>
   <sourcePath />

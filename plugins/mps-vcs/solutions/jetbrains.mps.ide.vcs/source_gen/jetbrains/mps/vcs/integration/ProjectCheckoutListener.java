@@ -24,7 +24,7 @@ public class ProjectCheckoutListener implements CheckoutListener {
       }
     });
     if (files != null && files.length > 0) {
-      ProjectUtil.openProject(files[0].toPath(), OpenProjectTask.withProjectToClose(project));
+      ProjectUtil.openProject(files[0].toPath(), OpenProjectTask.build().withProjectToClose(project));
       return true;
     }
     return false;

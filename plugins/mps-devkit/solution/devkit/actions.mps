@@ -128,7 +128,6 @@
     <import index="tprr" ref="r:00000000-0000-4000-0000-011c895904ab(jetbrains.mps.ide.newSolutionDialog)" />
     <import index="mqhh" ref="r:7e5abd68-4144-4e78-a2a2-1346b70af9c3(jetbrains.mps.project.modules)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
-    <import index="ov6m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.messages(MPS.IDEA/)" implicit="true" />
     <import index="4hrd" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.vfs(MPS.Platform/)" implicit="true" />
   </imports>
   <registry>
@@ -3988,7 +3987,7 @@
               <ref role="3cqZAo" node="1tuGf38GoK2" resolve="dialog" />
             </node>
             <node concept="liA8E" id="1tuGf38GoKm" role="2OqNvi">
-              <ref role="37wK5l" to="ov6m:~MessageDialog.show()" resolve="show" />
+              <ref role="37wK5l" to="jkm4:~DialogWrapper.show()" resolve="show" />
             </node>
           </node>
         </node>

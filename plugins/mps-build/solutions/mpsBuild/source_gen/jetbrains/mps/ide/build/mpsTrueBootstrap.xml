@@ -40,11 +40,12 @@
   
   <path id="path.java.library.util">
     <fileset file="${artifacts.IDEA}/lib/util.jar" />
+    <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
     <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
   </path>
   
   <path id="path.java.library.3rd-party">
-    <fileset file="${artifacts.IDEA}/lib/3rd-party.jar" />
+    <fileset file="${artifacts.IDEA}/lib/app.jar" />
   </path>
   
   <path id="path.java.library.ecj">

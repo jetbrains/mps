@@ -3,7 +3,7 @@
   <readOnlyStubs/>
   <models>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
-      <sourceRoot location="3rd-party.jar" />
+      <sourceRoot location="app.jar" />
       <PackageScope>
         <!-- javax.activation.jar also included few com.sun.activation classes, do I need these?-->
         <include prefix="javax.activation." />
@@ -19,7 +19,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${platform_lib}/3rd-party.jar" />
+    <stubModelEntry path="${platform_lib}/app.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

@@ -3,10 +3,10 @@
   <property name="build.dir" location="build" />
   <property name="build.tmp" location="${build.dir}/tmp/mpsBootstrapCore" />
   <property name="build.layout" location="${build.dir}/artifacts/mpsBootstrapCore" />
-  <property name="version.major" value="2021" />
-  <property name="version.minor" value="3" />
+  <property name="version.major" value="2022" />
+  <property name="version.minor" value="1" />
   <property name="version.bugfixNr" value="" />
-  <property name="version.eap" value=" EAP" />
+  <property name="version.eap" value="" />
   <property name="version" value="${version.major}.${version.minor}${version.bugfixNr}${version.eap}" />
   <property name="idea_home" location="" />
   <property name="mps_home" location="${basedir}" />
@@ -45,7 +45,7 @@
   </path>
   
   <path id="path.java.library.ecj">
-    <fileset file="${artifacts.IDEA}/lib/3rd-party.jar" />
+    <fileset file="${artifacts.IDEA}/lib/app.jar" />
     <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj/eclipse.jar" />
   </path>
   
@@ -16543,6 +16543,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-kernel.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -16579,6 +16580,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-kernel.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -16615,6 +16617,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-kernel.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -16656,6 +16659,7 @@
         <pathelement path="${build.tmp}/java/out/pattern-runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -16698,6 +16702,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-kernel.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -16741,8 +16746,9 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-kernel.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party.jar" />
+        <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <path refid="path.java.library.javac2" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java/out/mps-generator" />
@@ -16782,8 +16788,9 @@
         <pathelement path="${build.tmp}/java/out/mps-generator" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party.jar" />
+        <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <path refid="path.java.library.javac2" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java.modules.cycle.1" />
@@ -16825,6 +16832,7 @@
         <pathelement path="${build.tmp}/java/out/mps-generator" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java.modules.cycle.1" />
@@ -16850,6 +16858,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-smodel.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -16888,6 +16897,7 @@
         <pathelement path="${build.tmp}/java/out/mps-generator" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -16930,6 +16940,7 @@
         <pathelement path="${build.tmp}/java/out/pattern-runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -16971,6 +16982,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -17084,6 +17096,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-messages-for-legacy-constraints.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -17121,6 +17134,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-kernel.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -17159,6 +17173,7 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -17198,6 +17213,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/to-be-imported/mps-kernel.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -17240,6 +17256,7 @@
         <pathelement path="${build.tmp}/java/out/mps-editor-api" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -17281,6 +17298,7 @@
         <pathelement path="${build.tmp}/java/out/mps-editor-api" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -17326,6 +17344,7 @@
         <pathelement path="${build.tmp}/java/out/mps-generator" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -17373,6 +17392,7 @@
         <pathelement path="${build.tmp}/java/out/mps-generator" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -17426,6 +17446,7 @@
         <pathelement path="${build.tmp}/java/out/feedback-api" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -17477,6 +17498,7 @@
         <pathelement path="${build.tmp}/java/out/mps-editor-api" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -17526,6 +17548,7 @@
         <pathelement path="${build.tmp}/java/out/mps-editor-api" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -17582,18 +17605,15 @@
         <pathelement path="${build.tmp}/java/out/mps-typesystem" />
         <pathelement path="${build.tmp}/java/out/pattern-runtime" />
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
-        <fileset file="${artifacts.IDEA}/lib/platform.jar" />
-        <fileset file="${artifacts.IDEA}/lib/idea.jar" />
-        <fileset file="${artifacts.IDEA}/lib/openapi.jar" />
-        <fileset file="${artifacts.IDEA}/lib/platform-api.jar" />
-        <fileset file="${artifacts.IDEA}/lib/platform-impl.jar" />
+        <fileset file="${artifacts.IDEA}/lib/app.jar" />
+        <fileset file="${artifacts.IDEA}/lib/idea_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/platform-objectSerializer-annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -17652,6 +17672,7 @@
         <pathelement path="${build.tmp}/java/out/aux-runtimes" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -17674,8 +17695,8 @@
       </src>
       <classpath>
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
-        <fileset file="${artifacts.IDEA}/lib/platform-api.jar" />
-        <fileset file="${artifacts.IDEA}/lib/platform-impl.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
+        <fileset file="${artifacts.IDEA}/lib/app.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>
@@ -17731,6 +17752,7 @@
         <pathelement path="${build.tmp}/java/out/mps-debuginfo-impl" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -17794,6 +17816,7 @@
         <pathelement path="${build.tmp}/java/out/mps-project-check" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -17849,6 +17872,7 @@
         <pathelement path="${build.tmp}/java/out/mps-typesystem" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -17916,6 +17940,7 @@
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -18000,6 +18025,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.idea-libraries" />
         <path refid="path.java.library.ecj" />
@@ -18099,6 +18125,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
@@ -18174,6 +18201,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -18252,6 +18280,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -18325,6 +18354,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -18411,6 +18441,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -18484,6 +18515,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -18570,6 +18602,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -18643,6 +18676,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -18722,6 +18756,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -18794,6 +18829,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -18872,6 +18908,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -18948,6 +18985,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -19021,6 +19059,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -19100,6 +19139,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -19178,6 +19218,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -19254,6 +19295,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -19327,6 +19369,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -19402,6 +19445,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -19480,6 +19524,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -19560,6 +19605,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -19640,6 +19686,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -19718,6 +19765,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -19796,6 +19844,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -19875,6 +19924,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -19928,6 +19978,7 @@
         <pathelement path="${build.tmp}/java/out/scripts-runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -20007,6 +20058,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -20084,6 +20136,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -20157,6 +20210,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -20236,6 +20290,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -20309,6 +20364,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -20387,6 +20443,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -20461,6 +20518,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -20541,6 +20599,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -20630,6 +20689,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
@@ -20709,6 +20769,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -20786,6 +20847,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -20867,6 +20929,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -20947,6 +21010,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -21025,6 +21089,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -21102,6 +21167,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -21179,6 +21245,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -21253,6 +21320,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.feedback.skeleton" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -21336,6 +21404,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -21414,6 +21483,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.messages" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -21494,6 +21564,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -21573,6 +21644,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -21653,6 +21725,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -21725,6 +21798,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -21813,6 +21887,7 @@
         <pathelement path="${build.tmp}/java/out/messages-for-structure" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -21891,6 +21966,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel#1139186730696" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -21977,6 +22053,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -22055,6 +22132,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem.failingRule" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -22143,6 +22221,7 @@
         <pathelement path="${build.tmp}/java/out/messages-for-structure" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -22221,6 +22300,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel#1139186730696" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -22301,6 +22381,7 @@
         <pathelement path="${build.tmp}/java/out/messages-for-structure" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -22378,6 +22459,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.feedback.problem.structural" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -22461,6 +22543,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -22541,6 +22624,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -22630,6 +22714,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -22675,6 +22760,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -22797,6 +22883,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -22871,6 +22958,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.core" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -22951,6 +23039,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -22995,6 +23084,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.idea-libraries" />
         <path refid="path.java.library.ecj" />
@@ -23106,6 +23196,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java.modules.cycle.4" />
@@ -23180,6 +23271,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -23224,6 +23316,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -23348,6 +23441,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -23403,6 +23497,7 @@
         <pathelement path="${build.tmp}/java/out/scripts-runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -23476,6 +23571,7 @@
         <pathelement path="${build.tmp}/java/out/vfs-tracking" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -23549,6 +23645,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.core" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -23623,6 +23720,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -23712,6 +23810,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -23785,6 +23884,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -23866,6 +23966,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -23939,6 +24040,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -24027,6 +24129,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -24105,6 +24208,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java.modules.cycle.3" />
@@ -24182,6 +24286,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -24268,6 +24373,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -24351,6 +24457,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java.modules.cycle.4" />
@@ -24437,6 +24544,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -24522,6 +24630,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -24605,6 +24714,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -24688,6 +24798,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -24761,6 +24872,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -24845,6 +24957,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -24920,6 +25033,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -25013,6 +25127,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -25093,6 +25208,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.make.facets" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -25170,6 +25286,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -25259,6 +25376,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -25348,6 +25466,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -25413,6 +25532,7 @@
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -25497,6 +25617,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -25575,6 +25696,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -25648,6 +25770,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -25730,6 +25853,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -25817,6 +25941,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -25898,6 +26023,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -25976,6 +26102,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -26053,6 +26180,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -26126,6 +26254,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -26211,6 +26340,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -26268,6 +26398,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -26394,6 +26525,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -26472,6 +26604,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -26551,6 +26684,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -26629,6 +26763,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -26718,6 +26853,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -26809,6 +26945,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -26892,6 +27029,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -26965,6 +27103,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -27049,6 +27188,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -27122,6 +27262,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -27201,6 +27342,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -27274,6 +27416,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -27366,6 +27509,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -27439,6 +27583,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -27526,6 +27671,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -27600,6 +27746,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -27688,6 +27835,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -27761,6 +27909,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
@@ -27841,6 +27990,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -27920,6 +28070,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -27998,6 +28149,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -28071,6 +28223,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -28156,6 +28309,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -28229,6 +28383,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -28304,6 +28459,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -28389,6 +28545,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -28462,6 +28619,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -28544,6 +28702,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -28617,6 +28776,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.scopes.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -28691,6 +28851,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -28773,6 +28934,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -28846,6 +29008,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -28925,6 +29088,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -28998,6 +29162,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -29083,6 +29248,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -29171,6 +29337,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.util.order" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -29257,6 +29424,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -29331,6 +29499,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -29417,6 +29586,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -29490,6 +29660,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -29577,6 +29748,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -29650,6 +29822,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -29725,6 +29898,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -29815,6 +29989,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -29896,6 +30071,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -29977,6 +30153,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -30047,6 +30224,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
@@ -30121,6 +30299,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -30200,6 +30379,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -30253,6 +30433,7 @@
         <pathelement path="${build.tmp}/java/out/scripts-runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -30326,6 +30507,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -30405,6 +30587,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -30485,6 +30668,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -30562,6 +30746,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -30635,6 +30820,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.smodel.query.runtime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -30679,6 +30865,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-problem.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -30806,6 +30993,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -30850,6 +31038,7 @@
         <fileset file="${artifacts.mpsTrueBootstrap}/mps-persistence.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.idea-libraries" />
         <path refid="path.java.library.ecj" />
@@ -30972,6 +31161,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java.modules.cycle.8" />
@@ -31054,6 +31244,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.lang.traceable" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -31134,6 +31325,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java.modules.cycle.8" />
@@ -31217,6 +31409,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.jdk.classpath" />
@@ -31293,6 +31486,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.make.facets" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -31367,6 +31561,7 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.make.facets" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <path refid="path.java.library.idea-libraries" />
@@ -31438,6 +31633,7 @@
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <path refid="path.java.library.idea-libraries" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
+        <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <path refid="path.java.library.ecj" />
         <pathelement path="${build.tmp}/java.modules.cycle.2" />
