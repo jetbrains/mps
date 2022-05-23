@@ -544,22 +544,41 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      final SNode tnode1 = environment.createOutputNode(myConcepts[2]);
+      final SNode tnode1 = environment.createOutputNode(myConcepts[5]);
       {
-        environment.associate(tnode1, myAssociationLinks[3], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern.util(MPS.Core/)", "~MatchingUtil");
-        environment.associate(tnode1, myAssociationLinks[2], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.lang.pattern.util(MPS.Core/)", "~MatchingUtil.matchNodes(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)");
         TemplateContext context1 = context.subContext();
         {
-          Collection<SNode> tlist2 = null;
-          final SNode copySrcInput2 = QueriesGenerated.sourceNodeQuery_0_16(new SourceSubstituteMacroNodeContext(context1, copySrcMacro7));
-          tlist2 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput2), copySrcMacro7, "tpl/r:00000000-0000-4000-0000-011c89590303/1227265826912", context1);
-          environment.aggregate(tnode1, myAggregationLinks[1], tlist2);
+          final SNode tnode2 = environment.createOutputNode(myConcepts[6]);
+          {
+            TemplateContext context2 = context1.subContext();
+            {
+              final SNode tnode3 = environment.createOutputNode(myConcepts[7]);
+              tnode3.setProperty(myProperties[0], "true");
+              environment.associate(tnode3, myAssociationLinks[2], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~SNodeMatcher.<init>()");
+              environment.aggregate(tnode2, myAggregationLinks[4], tnode3);
+            }
+          }
+          environment.aggregate(tnode1, myAggregationLinks[5], tnode2);
         }
         {
-          Collection<SNode> tlist3 = null;
-          final SNode copySrcInput3 = QueriesGenerated.sourceNodeQuery_0_17(new SourceSubstituteMacroNodeContext(context1, copySrcMacro8));
-          tlist3 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput3), copySrcMacro8, "tpl/r:00000000-0000-4000-0000-011c89590303/1227265828711", context1);
-          environment.aggregate(tnode1, myAggregationLinks[1], tlist3);
+          final SNode tnode4 = environment.createOutputNode(myConcepts[8]);
+          {
+            environment.associate(tnode4, myAssociationLinks[2], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~SNodeMatcher.match(org.jetbrains.mps.openapi.model.SNode,org.jetbrains.mps.openapi.model.SNode)");
+            TemplateContext context3 = context1.subContext();
+            {
+              Collection<SNode> tlist5 = null;
+              final SNode copySrcInput5 = QueriesGenerated.sourceNodeQuery_0_16(new SourceSubstituteMacroNodeContext(context3, copySrcMacro7));
+              tlist5 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput5), copySrcMacro7, "tpl/r:00000000-0000-4000-0000-011c89590303/1227265826912", context3);
+              environment.aggregate(tnode4, myAggregationLinks[1], tlist5);
+            }
+            {
+              Collection<SNode> tlist6 = null;
+              final SNode copySrcInput6 = QueriesGenerated.sourceNodeQuery_0_17(new SourceSubstituteMacroNodeContext(context3, copySrcMacro8));
+              tlist6 = environment.copyNodes(TemplateUtil.singletonList(copySrcInput6), copySrcMacro8, "tpl/r:00000000-0000-4000-0000-011c89590303/1227265828711", context3);
+              environment.aggregate(tnode4, myAggregationLinks[1], tlist6);
+            }
+          }
+          environment.aggregate(tnode1, myAggregationLinks[6], tnode4);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -576,21 +595,21 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      final SNode tnode1 = environment.createOutputNode(myConcepts[5]);
+      final SNode tnode1 = environment.createOutputNode(myConcepts[6]);
       {
         TemplateContext context1 = context.subContext();
         {
-          final SNode tnode2 = environment.createOutputNode(myConcepts[6]);
+          final SNode tnode2 = environment.createOutputNode(myConcepts[7]);
           {
             environment.associate(tnode2, myAssociationLinks[2], "6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)", "~ArrayList.<init>()");
             TemplateContext context2 = context1.subContext();
             {
               final SNode tnode3 = environment.createOutputNode(myConcepts[0]);
               environment.associate(tnode3, myAssociationLinks[0], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)", "~SNode");
-              environment.aggregate(tnode2, myAggregationLinks[4], tnode3);
+              environment.aggregate(tnode2, myAggregationLinks[7], tnode3);
             }
           }
-          environment.aggregate(tnode1, myAggregationLinks[5], tnode2);
+          environment.aggregate(tnode1, myAggregationLinks[4], tnode2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -619,7 +638,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      final SNode tnode1 = environment.createOutputNode(myConcepts[7]);
+      final SNode tnode1 = environment.createOutputNode(myConcepts[5]);
       {
         TemplateContext context1 = context.subContext();
         {
@@ -632,12 +651,12 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
           } else {
             tlist2 = Collections.emptyList();
           }
-          environment.aggregate(tnode1, myAggregationLinks[6], tlist2);
+          environment.aggregate(tnode1, myAggregationLinks[5], tlist2);
         }
         {
           final SNode tnode3 = environment.createOutputNode(myConcepts[8]);
           environment.associate(tnode3, myAssociationLinks[2], "8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)", "~SAbstractConcept.getDeclarationNode()");
-          environment.aggregate(tnode1, myAggregationLinks[7], tnode3);
+          environment.aggregate(tnode1, myAggregationLinks[6], tnode3);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -710,12 +729,12 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
         TemplateContext context1 = context.subContext();
         {
           final SNode tnode2 = environment.createOutputNode(myConcepts[9]);
-          SNodeAccessUtil.setPropertyValue(tnode2, myProperties[0], QueriesGenerated.propertyMacro_GetValue_0_0(new PropertyMacroContext(context1, "modelUID", propertyMacro)));
+          SNodeAccessUtil.setPropertyValue(tnode2, myProperties[1], QueriesGenerated.propertyMacro_GetValue_0_0(new PropertyMacroContext(context1, "modelUID", propertyMacro)));
           environment.aggregate(tnode1, myAggregationLinks[1], tnode2);
         }
         {
           final SNode tnode3 = environment.createOutputNode(myConcepts[9]);
-          SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_0_1(new PropertyMacroContext(context1, "nodeUID", propertyMacro1)));
+          SNodeAccessUtil.setPropertyValue(tnode3, myProperties[1], QueriesGenerated.propertyMacro_GetValue_0_1(new PropertyMacroContext(context1, "nodeUID", propertyMacro1)));
           environment.aggregate(tnode1, myAggregationLinks[1], tnode3);
         }
       }
@@ -729,26 +748,26 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      final SNode tnode1 = environment.createOutputNode(myConcepts[5]);
+      final SNode tnode1 = environment.createOutputNode(myConcepts[6]);
       {
         TemplateContext context1 = context.subContext();
         {
-          final SNode tnode2 = environment.createOutputNode(myConcepts[6]);
+          final SNode tnode2 = environment.createOutputNode(myConcepts[7]);
           {
             environment.associate(tnode2, myAssociationLinks[2], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~SNodePointer.<init>(java.lang.String,java.lang.String)");
             TemplateContext context2 = context1.subContext();
             {
               final SNode tnode3 = environment.createOutputNode(myConcepts[9]);
-              SNodeAccessUtil.setPropertyValue(tnode3, myProperties[0], QueriesGenerated.propertyMacro_GetValue_0_2(new PropertyMacroContext(context2, "modelUID", propertyMacro2)));
+              SNodeAccessUtil.setPropertyValue(tnode3, myProperties[1], QueriesGenerated.propertyMacro_GetValue_0_2(new PropertyMacroContext(context2, "modelUID", propertyMacro2)));
               environment.aggregate(tnode2, myAggregationLinks[1], tnode3);
             }
             {
               final SNode tnode4 = environment.createOutputNode(myConcepts[9]);
-              SNodeAccessUtil.setPropertyValue(tnode4, myProperties[0], QueriesGenerated.propertyMacro_GetValue_0_3(new PropertyMacroContext(context2, "nodeID", propertyMacro3)));
+              SNodeAccessUtil.setPropertyValue(tnode4, myProperties[1], QueriesGenerated.propertyMacro_GetValue_0_3(new PropertyMacroContext(context2, "nodeID", propertyMacro3)));
               environment.aggregate(tnode2, myAggregationLinks[1], tnode4);
             }
           }
-          environment.aggregate(tnode1, myAggregationLinks[5], tnode2);
+          environment.aggregate(tnode1, myAggregationLinks[4], tnode2);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -877,7 +896,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       final SNode tnode1 = environment.createOutputNode(myConcepts[9]);
-      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[0], QueriesGenerated.propertyMacro_GetValue_0_4(new PropertyMacroContext(context, null, propertyMacro4)));
+      SNodeAccessUtil.setPropertyValue(tnode1, myProperties[1], QueriesGenerated.propertyMacro_GetValue_0_4(new PropertyMacroContext(context, null, propertyMacro4)));
       return TemplateUtil.singletonList(tnode1);
     }
   }
@@ -995,7 +1014,7 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
       final TemplateExecutionEnvironment environment = context.getEnvironment();
       final SNode tnode1 = environment.createOutputNode(myConcepts[10]);
       {
-        SNodeAccessUtil.setPropertyValue(tnode1, myProperties[1], QueriesGenerated.propertyMacro_GetValue_0_5(new PropertyMacroContext(context, "var", propertyMacro5)));
+        SNodeAccessUtil.setPropertyValue(tnode1, myProperties[2], QueriesGenerated.propertyMacro_GetValue_0_5(new PropertyMacroContext(context, "var", propertyMacro5)));
         TemplateContext context1 = context.subContext();
         {
           final SNode tnode2 = environment.createOutputNode(myConcepts[0]);
@@ -1039,15 +1058,15 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
     @Override
     public Collection<SNode> apply(@NotNull final TemplateContext context) throws GenerationException {
       final TemplateExecutionEnvironment environment = context.getEnvironment();
-      final SNode tnode1 = environment.createOutputNode(myConcepts[7]);
+      final SNode tnode1 = environment.createOutputNode(myConcepts[5]);
       {
         TemplateContext context1 = context.subContext();
         {
-          final SNode tnode2 = environment.createOutputNode(myConcepts[5]);
+          final SNode tnode2 = environment.createOutputNode(myConcepts[6]);
           {
             TemplateContext context2 = context1.subContext();
             {
-              final SNode tnode3 = environment.createOutputNode(myConcepts[6]);
+              final SNode tnode3 = environment.createOutputNode(myConcepts[7]);
               {
                 environment.associate(tnode3, myAssociationLinks[2], "6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)", "~ModuleRepositoryFacade.<init>(org.jetbrains.mps.openapi.module.SRepository)");
                 TemplateContext context3 = context2.subContext();
@@ -1058,10 +1077,10 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
                   environment.aggregate(tnode3, myAggregationLinks[1], tlist4);
                 }
               }
-              environment.aggregate(tnode2, myAggregationLinks[5], tnode3);
+              environment.aggregate(tnode2, myAggregationLinks[4], tnode3);
             }
           }
-          environment.aggregate(tnode1, myAggregationLinks[6], tnode2);
+          environment.aggregate(tnode1, myAggregationLinks[5], tnode2);
         }
         {
           final SNode tnode5 = environment.createOutputNode(myConcepts[8]);
@@ -1070,11 +1089,11 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
             TemplateContext context4 = context1.subContext();
             {
               final SNode tnode6 = environment.createOutputNode(myConcepts[9]);
-              SNodeAccessUtil.setPropertyValue(tnode6, myProperties[0], QueriesGenerated.propertyMacro_GetValue_0_6(new PropertyMacroContext(context4, "model name", propertyMacro6)));
+              SNodeAccessUtil.setPropertyValue(tnode6, myProperties[1], QueriesGenerated.propertyMacro_GetValue_0_6(new PropertyMacroContext(context4, "model name", propertyMacro6)));
               environment.aggregate(tnode5, myAggregationLinks[1], tnode6);
             }
           }
-          environment.aggregate(tnode1, myAggregationLinks[7], tnode5);
+          environment.aggregate(tnode1, myAggregationLinks[6], tnode5);
         }
       }
       return TemplateUtil.singletonList(tnode1);
@@ -1167,9 +1186,9 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
       rv[2] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xfbbebabf09L, "StaticMethodCall");
       rv[3] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940cd6167L, "NullLiteral");
       rv[4] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf940dabe4aL, "CastExpression");
-      rv[5] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10ab8473cc5L, "GenericNewExpression");
-      rv[6] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11a59b0fbceL, "ClassCreator");
-      rv[7] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression");
+      rv[5] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x116b46a08c4L, "DotExpression");
+      rv[6] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x10ab8473cc5L, "GenericNewExpression");
+      rv[7] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x11a59b0fbceL, "ClassCreator");
       rv[8] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x118154a6332L, "InstanceMethodCallOperation");
       rv[9] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0xf93d565d10L, "StringLiteral");
       rv[10] = MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, "jetbrains.mps.baseLanguageInternal"), 0x111fb5bb1f2L, "InternalVariableReference");
@@ -1178,9 +1197,10 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
 
     @Override
     public SProperty[] properties() {
-      SProperty[] rv = new SProperty[2];
-      rv[0] = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
-      rv[1] = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5dbc49L, "name");
+      SProperty[] rv = new SProperty[3];
+      rv[0] = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x15003fd0d31aebe1L, 0x15003fd0d20d8b1dL, "inferTypeParams");
+      rv[1] = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf93d565d10L, 0xf93d565d11L, "value");
+      rv[2] = MetaAdapterFactory.getProperty(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5dbc49L, "name");
       return rv;
     }
 
@@ -1201,10 +1221,10 @@ public class Mapping_mc_main extends MapConfigBase implements TemplateMappingCon
       rv[1] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11857355952L, 0xf8c78301aeL, "actualArgument");
       rv[2] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4bL, "type");
       rv[3] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940dabe4aL, 0xf940dabe4cL, "expression");
-      rv[4] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
-      rv[5] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
-      rv[6] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
-      rv[7] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+      rv[4] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x10ab8473cc5L, 0x10ab847b486L, "creator");
+      rv[5] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46a4416L, "operand");
+      rv[6] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x116b46a08c4L, 0x116b46b36c4L, "operation");
+      rv[7] = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11a59b0fbceL, 0x11a59c8ffe0L, "typeParameter");
       rv[8] = MetaAdapterFactory.getContainmentLink(0xdf345b11b8c74213L, 0xac6648d2a9b75d88L, 0x111fb5bb1f2L, 0x111fb5c4f4cL, "type");
       return rv;
     }
