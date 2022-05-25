@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,9 +28,15 @@ public abstract class Logger {
     return new Log4jLogger(logger);
   }
 
-  //--------------------------
-  // Logger instance
-  //--------------------------
+  public static Logger getLogger(Class<?> requestor) {
+    return new Log4jLogger(org.apache.log4j.Logger.getLogger(requestor));
+  }
+
+  public abstract boolean isErrorLevel();
+  public abstract boolean isWarningLevel();
+  public abstract boolean isInfoLevel();
+  public abstract boolean isDebugLevel();
+  public abstract boolean isTraceLevel();
 
   public void info(String message) {
     info(message, null);
@@ -117,6 +123,19 @@ public abstract class Logger {
   }
 
   public abstract void fatal(String message, Throwable t, Object hintObject);
+
+
+  public void trace(String message) {
+    trace(message, null);
+  }
+  public void trace(String message, Throwable t) {
+    trace(message, t, null);
+  }
+  public void trace(String message, Object hintObject) {
+    trace(message, null, hintObject);
+  }
+
+  public abstract void trace(String message, Throwable t, Object hintObject);
 
   public void assertLog(boolean condition) {
     assertLog(condition, "Assertion failed");

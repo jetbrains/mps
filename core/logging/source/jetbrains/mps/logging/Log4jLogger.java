@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,43 @@
  */
 package jetbrains.mps.logging;
 
-public class Log4jLogger extends Logger {
+import org.apache.log4j.Level;
+
+/**
+ * {@code j.m.logging.Logger} implementation for use with Log4J library
+ */
+@SuppressWarnings("UnstableApiUsage")
+@Deprecated(since = "2022.2", forRemoval = true)
+/*package*/ final class Log4jLogger extends Logger {
   private final org.apache.log4j.Logger myLogger;
 
   public Log4jLogger(org.apache.log4j.Logger logger) {
     myLogger = logger;
+  }
+
+  @Override
+  public boolean isErrorLevel() {
+    return myLogger.isEnabledFor(Level.ERROR);
+  }
+
+  @Override
+  public boolean isWarningLevel() {
+    return myLogger.isEnabledFor(Level.WARN);
+  }
+
+  @Override
+  public boolean isInfoLevel() {
+    return myLogger.isInfoEnabled();
+  }
+
+  @Override
+  public boolean isDebugLevel() {
+    return myLogger.isDebugEnabled();
+  }
+
+  @Override
+  public boolean isTraceLevel() {
+    return myLogger.isTraceEnabled();
   }
 
   @Override
@@ -45,6 +77,11 @@ public class Log4jLogger extends Logger {
   @Override
   public void fatal(String message, Throwable t, Object hintObject) {
     Log4jUtil.fatal(myLogger, message, t, hintObject);
+  }
+
+  @Override
+  public void trace(String message, Throwable t, Object hintObject) {
+    myLogger.trace(Log4jUtil.createMessageObject(message, hintObject), t);
   }
 
   @Override
