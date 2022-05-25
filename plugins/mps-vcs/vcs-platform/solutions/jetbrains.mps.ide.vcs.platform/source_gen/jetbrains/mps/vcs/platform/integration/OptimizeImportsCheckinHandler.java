@@ -4,9 +4,7 @@ package jetbrains.mps.vcs.platform.integration;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.vcs.checkin.CheckinHandler;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
-import jetbrains.mps.ide.ThreadUtils;
+import jetbrains.mps.logging.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.CheckinProjectPanel;
 import com.intellij.openapi.vcs.VcsConfiguration;
@@ -24,6 +22,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.ArrayList;
+import jetbrains.mps.ide.ThreadUtils;
 import com.intellij.openapi.progress.Task;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.progress.ProgressIndicator;
@@ -39,7 +38,7 @@ import com.intellij.openapi.vcs.changes.CommitContext;
 
 @GeneratedClass(node = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)/5337823064584388635", model = "r:f7252e75-44f2-46f6-9600-c9b291e7dd5f(jetbrains.mps.vcs.platform.integration)")
 public class OptimizeImportsCheckinHandler extends CheckinHandler {
-  private static final Logger LOG = LogManager.getLogger(ThreadUtils.class);
+  private static final Logger LOG = Logger.getLogger(OptimizeImportsCheckinHandler.class);
   private Project myProject;
   private CheckinProjectPanel myPanel;
   public OptimizeImportsCheckinHandler(Project project, CheckinProjectPanel panel) {
@@ -113,7 +112,9 @@ public class OptimizeImportsCheckinHandler extends CheckinHandler {
             monitor.advance(1);
 
           } catch (Throwable e) {
-            LOG.error("Couldn't optimize imports before commit", e);
+            if (LOG.isErrorLevel()) {
+              LOG.error("Couldn't optimize imports before commit", e);
+            }
           } finally {
             monitor.done();
           }

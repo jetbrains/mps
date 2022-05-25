@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.persistence.def;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.smodel.DefaultSModel;
@@ -27,8 +28,6 @@ import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.xml.XMLSAXHandler;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
@@ -51,7 +50,6 @@ import java.util.Set;
  * evgeny, 6/3/13
  */
 public class FilePerRootFormatUtil {
-  private static final Logger LOG = LogManager.getLogger(FilePerRootFormatUtil.class);
 
   public static SModelHeader loadDescriptor(MultiStreamDataSource dataSource) throws ModelReadException {
     InputStream in = null;
@@ -198,7 +196,7 @@ public class FilePerRootFormatUtil {
     }
 
     if (oldVersion != persistenceVersion) {
-      LOG.info("persistence upgraded: " + oldVersion + "->" + persistenceVersion + " " + modelData.getReference());
+      Logger.getLogger(FilePerRootFormatUtil.class).info("persistence upgraded: " + oldVersion + "->" + persistenceVersion + " " + modelData.getReference());
       return true;
     }
     return false;

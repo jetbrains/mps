@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.persistence.java.library;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.java.stub.ClassStubRootConfiguration;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.reloading.CommonPaths;
 import jetbrains.mps.util.ClassType;
@@ -25,7 +26,6 @@ import jetbrains.mps.util.MacroHelper;
 import jetbrains.mps.util.MacroHelper.MacroNoHelper;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.persistence.Memento;
@@ -81,7 +81,7 @@ final class PredefinedRootClassTypeConfig implements ClassStubRootConfiguration 
         rootConfig.createChild(SourceRootKinds.SOURCES.getName()).put("path", path.getPath());
       }
     } else {
-      Logger.getLogger(PredefinedRootClassTypeConfig.class).warn(String.format("Unsupported stub root type '%s' with ClassType identity '%s'", rootKind, ct));
+      Logger.getLogger(PredefinedRootClassTypeConfig.class).warning(String.format("Unsupported stub root type '%s' with ClassType identity '%s'", rootKind, ct));
     }
   }
 }

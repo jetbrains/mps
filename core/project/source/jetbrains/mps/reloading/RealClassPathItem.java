@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,26 +15,22 @@
  */
 package jetbrains.mps.reloading;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.iterable.IterableEnumeration;
 import jetbrains.mps.vfs.Files;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.zip.ZipFile;
 
 public abstract class RealClassPathItem extends AbstractClassPathItem {
-  private static final Logger LOG = LogManager.getLogger(RealClassPathItem.class);
+  private static final Logger LOG = Logger.getLogger(RealClassPathItem.class);
 
   public abstract String getPath();
 

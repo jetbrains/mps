@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.java.index;
 
 import com.intellij.openapi.application.ApplicationManager;
@@ -28,12 +27,12 @@ import com.intellij.util.io.KeyDescriptor;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.SNodeId.Foreign;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
 import jetbrains.mps.workbench.index.RootNodeNameIndex;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModelReference;

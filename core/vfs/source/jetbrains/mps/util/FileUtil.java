@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,11 @@
  */
 package jetbrains.mps.util;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -46,7 +45,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class FileUtil {
-  private static final Logger LOG = LogManager.getLogger(FileUtil.class);
+  private static final Logger LOG = Logger.getLogger(FileUtil.class);
 
   private static final String[] IGNORED_DIRS = new String[]{".svn", ".git", "_svn"};
   public static final String DEFAULT_CHARSET_NAME = "UTF-8";
@@ -218,7 +217,7 @@ public class FileUtil {
         }
       }
       currentPath = currentPath.replaceFirst("/\\.\\./", "/");
-      LOG.warn("Unexpected path: can't get parent: " + path);
+      LOG.warning("Unexpected path: can't get parent: " + path);
     }
 
     if (currentPath.endsWith("/") && !PathUtil.isRoot(currentPath)) {

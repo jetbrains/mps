@@ -16,6 +16,7 @@
 package jetbrains.mps.project.facets;
 
 import jetbrains.mps.extapi.module.ModuleFacetBase;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MementoWithFS;
 import jetbrains.mps.project.ProjectPathUtil;
@@ -24,8 +25,6 @@ import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
@@ -40,7 +39,7 @@ import java.util.Set;
  * todo: divide into two parts: JavaModuleFacetSrcImpl && JavaModuleFacetPackagedImpl
  */
 public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFacet {
-  private static final Logger LOG = LogManager.getLogger(JavaModuleFacetImpl.class);
+  private static final Logger LOG = Logger.getLogger(JavaModuleFacetImpl.class);
   private static final String CLASSES_KEY = "classes";
   // just an indicator this entry describes classes derived from generated source code. Not sure I ever get to other entries,
   // though eventually I'd like to move everything Java-related stuff out of MD to this facet (e.g. Java libraries)
@@ -157,7 +156,7 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       String[] split = path.split("!");
       if (split.length > 0) {
         if (!split[1].isEmpty() && !"/".equals(split[1])) {
-          LOG.warn("Can not transform directory " + path + " to proper classpath while calculating classpath for module " + getModule());
+          LOG.warning("Can not transform directory " + path + " to proper classpath while calculating classpath for module " + getModule());
         }
       }
       return split[0];

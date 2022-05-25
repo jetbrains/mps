@@ -15,13 +15,12 @@
  */
 package jetbrains.mps.util;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.util.PathFormatChecker;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedInputStream;
@@ -35,7 +34,7 @@ import java.util.Date;
 import java.util.List;
 
 public class IFileUtil {
-  private static final Logger LOG = LogManager.getLogger(IFileUtil.class);
+  private static final Logger LOG = Logger.getLogger(IFileUtil.class);
   private static final String JAR_SEPARATOR = Path.ARCHIVE_SEPARATOR;
 
   public static boolean copyFileContent(IFile oldFile, IFile newFile) {

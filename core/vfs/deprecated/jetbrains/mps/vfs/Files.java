@@ -15,8 +15,7 @@
  */
 package jetbrains.mps.vfs;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.DataInputStream;
@@ -25,7 +24,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public final class Files {
-  private static final Logger LOG = LogManager.getLogger(Files.class);
+  private static final Logger LOG = Logger.getLogger(Files.class);
 
   private Files() {
   }
@@ -34,7 +33,7 @@ public final class Files {
     boolean result = isJarOrZipFile0(file);
     String absolutePath = file.getAbsolutePath();
     if (!result && (absolutePath.endsWith(".zip") || absolutePath.endsWith(".jar"))) {
-      LOG.warn(String.format("The path '%s' ends with '.jar' or '.zip' but the contents are not recognized as a zip archive", absolutePath));
+      LOG.warning(String.format("The path '%s' ends with '.jar' or '.zip' but the contents are not recognized as a zip archive", absolutePath));
       printDebugOnSuspiciousArchive(file);
     }
     return result;
@@ -42,20 +41,20 @@ public final class Files {
 
   private static void printDebugOnSuspiciousArchive(@NotNull File file) throws IOException {
     if (!file.exists()) {
-      LOG.warn(" the file does not exist");
+      LOG.warning(" the file does not exist");
       return;
     }
     if (file.isDirectory()) {
-      LOG.warn(" the file is a directory");
+      LOG.warning(" the file is a directory");
       return;
     }
     if (file.length() < 4) { // less than 4 bytes
-      LOG.warn(" the file length is less than 4 bytes");
+      LOG.warning(" the file length is less than 4 bytes");
       return;
     }
     var dis = new DataInputStream(new FileInputStream(file));
     int fileSignature = dis.readInt();
-    LOG.warn(" the file signature is " + fileSignature);
+    LOG.warning(" the file signature is " + fileSignature);
   }
 
   private static boolean isJarOrZipFile0(@NotNull File file) throws IOException {

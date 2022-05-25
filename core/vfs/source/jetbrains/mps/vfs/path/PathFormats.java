@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 package jetbrains.mps.vfs.path;
 
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -33,7 +32,7 @@ import java.util.stream.Stream;
  * @author apyshkin
  */
 public class PathFormats {
-  private static final Logger LOG = LogManager.getLogger(PathFormats.class);
+  private static final Logger LOG = Logger.getLogger(PathFormats.class);
 
   public static final PathFormat UNIX = new UnixPathFormat();
   public static final PathFormat WIN = new WinPathFormat();
@@ -300,7 +299,7 @@ public class PathFormats {
 
   private static void validate(@NotNull String path) {
     if (path.contains(Path.UNIX_SEPARATOR) && path.contains(Path.WIN_SEPARATOR)) {
-      LOG.warn("The path '" + path + "' contains both Unix and Windows separators which is suspicious.");
+      LOG.warning("The path '" + path + "' contains both Unix and Windows separators which is suspicious.");
     }
     if (path.contains(Path.ARCHIVE_SEPARATOR)) {
       throw new PathParseException(path, "NonArchivePath is not allowed to include archive separators." +

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +19,10 @@ import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.migration.MigrationSetup;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.migration.global.ProjectMigration;
 import jetbrains.mps.testbench.junit.suites.BaseProjectsTest;
 import jetbrains.mps.util.IterableUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -32,7 +31,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class NoPendingMigrationsTest extends BaseProjectsTest {
-  private final static Logger LOG = LogManager.getLogger(NoPendingMigrationsTest.class);
+  private final static Logger LOG = Logger.getLogger(NoPendingMigrationsTest.class);
   private static final String MARKER_FILE_NAME = ".allow-pending-migrations";
 
   public NoPendingMigrationsTest(String projectDir) {

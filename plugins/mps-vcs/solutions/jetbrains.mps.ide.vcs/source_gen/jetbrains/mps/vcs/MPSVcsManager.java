@@ -4,8 +4,7 @@ package jetbrains.mps.vcs;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import com.intellij.openapi.components.ProjectComponent;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.FileStatus;
 import com.intellij.util.messages.MessageBusConnection;
@@ -41,7 +40,7 @@ import com.intellij.openapi.vcs.FileStatusListener;
 
 @GeneratedClass(node = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)/3613324658897711340", model = "r:cd7c9d90-25b3-4a54-a510-a0bcc7072c1d(jetbrains.mps.vcs)")
 public class MPSVcsManager implements ProjectComponent {
-  private static final Logger LOG = LogManager.getLogger(MPSVcsManager.class);
+  private static final Logger LOG = Logger.getLogger(MPSVcsManager.class);
   private final Project myProject;
   private FileStatus myLastProjectStatus;
 
@@ -73,7 +72,9 @@ public class MPSVcsManager implements ProjectComponent {
     try {
       changeProvider.getChanges(scope, builder, new EmptyProgressIndicator(), new StubChangeListManagerGate());
     } catch (VcsException e) {
-      LOG.error(null, e);
+      if (LOG.isErrorLevel()) {
+        LOG.error("", e);
+      }
     }
     return builder.isInConflict();
   }

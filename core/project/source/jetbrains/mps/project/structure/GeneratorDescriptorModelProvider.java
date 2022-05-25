@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.project.structure;
 
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.generator.ModelDigestUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.persistence.GeneratorDescriptorPersistence;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.smodel.Generator;
@@ -26,7 +27,6 @@ import jetbrains.mps.smodel.SnapshotModelData;
 import jetbrains.mps.smodel.TrivialModelDescriptor;
 import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.MacrosFactory;
-import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -161,7 +161,7 @@ public class GeneratorDescriptorModelProvider extends DescriptorModelProvider {
       try {
         JDOMUtil.writeDocument(new Document(element), out);
       } catch (IOException ex) {
-        Logger.getLogger(getClass()).warn(ex.getMessage(), ex);
+        Logger.getLogger(getClass()).warning(ex.getMessage(), ex);
       }
       hash = ModelDigestUtil.hashText(out.toString());
       BigInteger modelHash = new BigInteger(hash, Character.MAX_RADIX);

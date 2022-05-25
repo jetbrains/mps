@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.vfs.iofs.file;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.vfs.FileSystem;
@@ -28,8 +29,6 @@ import jetbrains.mps.vfs.path.Path;
 import jetbrains.mps.vfs.path.PathFormats;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import jetbrains.mps.vfs.util.PathUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.annotations.Internal;
@@ -51,7 +50,7 @@ import java.util.List;
  */
 @Immutable
 class LocalFile implements IFile {
-  private static final Logger LOG = LogManager.getLogger(LocalFile.class);
+  private static final Logger LOG = Logger.getLogger(LocalFile.class);
 
   private final IFileSystem myFileSystem;
   private final String myPath;
@@ -115,7 +114,7 @@ class LocalFile implements IFile {
     try {
       return myFile.getCanonicalPath();
     } catch (IOException e) {
-      LOG.warn("Got while accessing the canonical path of " + this, e);
+      LOG.warning("Got while accessing the canonical path of " + this, e);
       return getPath();
     }
   }
@@ -193,7 +192,7 @@ class LocalFile implements IFile {
   @Override
   public IFile copy(@NotNull IFile newParent, @NotNull String newName) {
     if (!(newParent instanceof LocalFile)) {
-      LOG.warn("Copying the file to the new parent '" + newParent + "' which is not an instance of IoFile");
+      LOG.warning("Copying the file to the new parent '" + newParent + "' which is not an instance of IoFile");
     }
     if (!newParent.isDirectory()) {
       throw new IllegalArgumentException("Cannot copy: '" + newParent + " is not a directory");

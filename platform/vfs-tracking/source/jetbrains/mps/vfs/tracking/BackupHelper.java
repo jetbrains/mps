@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,12 +18,11 @@ package jetbrains.mps.vfs.tracking;
 import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.persistence.DataSource;
@@ -35,7 +34,7 @@ import java.io.File;
 import java.io.IOException;
 
 class BackupHelper {
-  private static final Logger LOG = LogManager.getLogger(BackupHelper.class);
+  private static final Logger LOG = Logger.getLogger(BackupHelper.class);
 
   private final SModel myModelToBackup;
   private final PersistenceFacade myPersistenceFacade;

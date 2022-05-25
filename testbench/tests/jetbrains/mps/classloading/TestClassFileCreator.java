@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,7 @@
  */
 package jetbrains.mps.classloading;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 
 import javax.tools.Diagnostic;
 import javax.tools.Diagnostic.Kind;
@@ -35,7 +34,7 @@ import java.util.Collections;
 
 // FIXME Reuse make package, remove duplication
 public class TestClassFileCreator {
-  private static final Logger LOG = LogManager.getLogger(TestClassFileCreator.class);
+  private static final Logger LOG = Logger.getLogger(TestClassFileCreator.class);
   private final File myClassDir;
   private final String myTestClassName;
   private final String myTestSourceCode;

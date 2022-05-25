@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ package jetbrains.mps.testbench;
 
 import jetbrains.mps.core.platform.Platform;
 import jetbrains.mps.extapi.module.SRepositoryExt;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.Solution;
@@ -26,8 +27,6 @@ import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -45,7 +44,7 @@ import org.junit.Before;
  * @see jetbrains.mps.ide.depanalyzer.ModuleDependenciesTest
  */
 public class ModuleMpsTest implements EnvironmentAware {
-  private final static Logger LOG = LogManager.getLogger(ModuleMpsTest.class);
+  private final static Logger LOG = Logger.getLogger(ModuleMpsTest.class);
   private TestModuleFactory myTestModuleFactory;
   private Environment myEnvironment;
 

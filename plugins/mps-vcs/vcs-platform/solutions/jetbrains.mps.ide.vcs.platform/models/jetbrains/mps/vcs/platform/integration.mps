@@ -40,7 +40,6 @@
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="pgpb" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.ide.editor.warningPanel(MPS.Editor/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="bmv6" ref="r:e9c4e128-4808-4224-a92b-dbeed02eb860(jetbrains.mps.vcs.diff.merge)" />
     <import index="pa15" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.persistence(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
@@ -444,21 +443,6 @@
   </registry>
   <node concept="312cEu" id="4CjKsJms80r">
     <property role="TrG5h" value="OptimizeImportsCheckinHandler" />
-    <node concept="Wx3nA" id="4CjKsJms80P" role="jymVt">
-      <property role="TrG5h" value="LOG" />
-      <property role="3TUv4t" value="true" />
-      <node concept="2YIFZM" id="Hn0$MvbYBE" role="33vP2m">
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <node concept="3VsKOn" id="Hn0$MvbYBF" role="37wK5m">
-          <ref role="3VsUkX" to="3a50:~ThreadUtils" resolve="ThreadUtils" />
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="4CjKsJms80R" role="1B3o_S" />
-      <node concept="3uibUv" id="Hn0$MvbYBy" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
-      </node>
-    </node>
     <node concept="312cEg" id="4CjKsJms80U" role="jymVt">
       <property role="TrG5h" value="myProject" />
       <node concept="3uibUv" id="4CjKsJms80V" role="1tU5fm">
@@ -1224,20 +1208,13 @@
                                 </node>
                               </node>
                               <node concept="3clFbS" id="4CjKsJms83r" role="1zc67A">
-                                <node concept="3clFbF" id="4CjKsJms83s" role="3cqZAp">
-                                  <node concept="2OqwBi" id="4CjKsJms83t" role="3clFbG">
-                                    <node concept="liA8E" id="4CjKsJms83v" role="2OqNvi">
-                                      <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                                      <node concept="Xl_RD" id="4CjKsJms83w" role="37wK5m">
-                                        <property role="Xl_RC" value="Couldn't optimize imports before commit" />
-                                      </node>
-                                      <node concept="37vLTw" id="3GM_nagT$iM" role="37wK5m">
-                                        <ref role="3cqZAo" node="4CjKsJms83y" resolve="e" />
-                                      </node>
-                                    </node>
-                                    <node concept="37vLTw" id="2BHiRxeop2c" role="2Oq$k0">
-                                      <ref role="3cqZAo" node="4CjKsJms80P" resolve="LOG" />
-                                    </node>
+                                <node concept="RRSsy" id="6V2p7ItLnqN" role="3cqZAp">
+                                  <property role="RRSoG" value="gZ5fh_4/error" />
+                                  <node concept="Xl_RD" id="4CjKsJms83w" role="RRSoy">
+                                    <property role="Xl_RC" value="Couldn't optimize imports before commit" />
+                                  </node>
+                                  <node concept="37vLTw" id="6V2p7ItLs88" role="RRSow">
+                                    <ref role="3cqZAo" node="4CjKsJms83y" resolve="e" />
                                   </node>
                                 </node>
                               </node>
@@ -7750,21 +7727,6 @@
   </node>
   <node concept="312cEu" id="4qk_0lIkYNV">
     <property role="TrG5h" value="ModelMergeViewer" />
-    <node concept="Wx3nA" id="4qk_0lIxBRi" role="jymVt">
-      <property role="TrG5h" value="LOG" />
-      <property role="3TUv4t" value="true" />
-      <node concept="2YIFZM" id="4qk_0lIxBRj" role="33vP2m">
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <node concept="3VsKOn" id="4qk_0lIxBRk" role="37wK5m">
-          <ref role="3VsUkX" node="4qk_0lIkYNV" resolve="ModelMergeViewer" />
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="4qk_0lIxBRl" role="1B3o_S" />
-      <node concept="3uibUv" id="4qk_0lIxBRm" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
-      </node>
-    </node>
     <node concept="2tJIrI" id="4qk_0lIxB3i" role="jymVt" />
     <node concept="312cEg" id="4qk_0lIs3Li" role="jymVt">
       <property role="34CwA1" value="false" />
@@ -8942,18 +8904,13 @@
               </node>
             </node>
             <node concept="3clFbS" id="4qk_0lIxhnv" role="1zc67A">
-              <node concept="3clFbF" id="4qk_0lIxhnw" role="3cqZAp">
-                <node concept="2OqwBi" id="4qk_0lIxhnx" role="3clFbG">
-                  <node concept="37vLTw" id="4qk_0lIxEll" role="2Oq$k0">
-                    <ref role="3cqZAo" node="4qk_0lIxBRi" resolve="LOG" />
-                  </node>
-                  <node concept="liA8E" id="4qk_0lIxhny" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                    <node concept="10Nm6u" id="4qk_0lIxhnz" role="37wK5m" />
-                    <node concept="37vLTw" id="4qk_0lIxhn$" role="37wK5m">
-                      <ref role="3cqZAo" node="4qk_0lIxhn_" resolve="e" />
-                    </node>
-                  </node>
+              <node concept="RRSsy" id="6V2p7ItLJ_8" role="3cqZAp">
+                <property role="RRSoG" value="gZ5fh_4/error" />
+                <node concept="Xl_RD" id="6V2p7ItLJ_a" role="RRSoy">
+                  <property role="Xl_RC" value="Failed to create merge view" />
+                </node>
+                <node concept="37vLTw" id="6V2p7ItLM4z" role="RRSow">
+                  <ref role="3cqZAo" node="4qk_0lIxhn_" resolve="e" />
                 </node>
               </node>
             </node>

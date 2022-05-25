@@ -5,8 +5,7 @@ package jetbrains.mps.vcs.changesmanager.tree;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.ui.tree.TreeMessageOwner;
 import com.intellij.ide.ui.LafManagerListener;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.util.Map;
 import com.intellij.openapi.vcs.FileStatus;
 import jetbrains.mps.ide.ui.tree.TreeMessage;
@@ -46,7 +45,7 @@ import com.intellij.ide.ui.LafManager;
 
 @GeneratedClass(node = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)/9200516641177001205", model = "r:0fdcfe58-6a3e-4b7d-bea2-685e5d104fd0(jetbrains.mps.vcs.changesmanager.tree)")
 public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
-  private static final Logger LOG = LogManager.getLogger(TreeHighlighter.class);
+  private static final Logger LOG = Logger.getLogger(TreeHighlighter.class);
 
   private final Object myTreeMessagesMapLock = new Object();
   private final Map<FileStatus, TreeMessage> myTreeMessages = new HashMap<FileStatus, TreeMessage>();
@@ -98,7 +97,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   }
 
   public synchronized void dispose() {
-    if (!((myInitialized))) {
+    if (!(myInitialized)) {
       return;
     }
     myInitialized = false;
@@ -142,7 +141,9 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     if (node.getParent() instanceof MPSTreeNode) {
       Collection<FeatureWithParent> featuresByNode = myFeaturesVisibleInTree.getFeaturesByNode((MPSTreeNode) node.getParent());
       if (featuresByNode.size() > 1) {
-        LOG.error("ambiguity for " + node.getParent(), new IllegalStateException());
+        if (LOG.isErrorLevel()) {
+          LOG.error("ambiguity for " + node.getParent(), new IllegalStateException());
+        }
       }
       parentfwp = featuresByNode.stream().findAny().orElse(null);
     }
@@ -268,7 +269,9 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
    * this method uses {@link #myFeaturesVisibleInTree} mappings to invoke {@link #recalcMessagesAndScheduleUpdate(MPSTreeNode, Feature)}
    */
   private void rehighlightFeatures0(@NotNull Collection<Feature> features) {
-    LOG.trace("Rehighlighting " + features.size() + " features");
+    if (LOG.isTraceLevel()) {
+      LOG.trace("Rehighlighting " + features.size() + " features");
+    }
     for (Feature feature : features) {
       // LOG.info("Rehighlighting " + feature);
       List<MPSTreeNode> toUpdate = new ArrayList<MPSTreeNode>();
@@ -448,7 +451,9 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
       case CONFLICTED:
         return getMessage(FileStatus.MERGED_WITH_CONFLICTS);
       default:
-        LOG.error("We should not have removed " + type + " " + feature.getModelReference(), new IllegalStateException());
+        if (LOG.isErrorLevel()) {
+          LOG.error("We should not have removed " + type + " " + feature.getModelReference(), new IllegalStateException());
+        }
         return getMessage(FileStatus.MERGED_WITH_CONFLICTS);
     }
   }
@@ -457,7 +462,9 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     }
     @Override
     public void treeNodeAdded(MPSTreeNode node, MPSTree tree) {
-      LOG.trace("added node");
+      if (LOG.isTraceLevel()) {
+        LOG.trace("added node");
+      }
       registerNode(node);
     }
     @Override
@@ -540,7 +547,9 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
         myFeatureToNodes.putValue(featureWithParent, node);
         myFeatureToNodesBack.putValue(node, featureWithParent);
       } else {
-        LOG.error("please check : " + mpsTreeNodes.get(0) + " ::: " + mpsTreeNodes.get(1));
+        if (LOG.isErrorLevel()) {
+          LOG.error("please check : " + mpsTreeNodes.get(0) + " ::: " + mpsTreeNodes.get(1));
+        }
         throw new IllegalStateException();
       }
     }

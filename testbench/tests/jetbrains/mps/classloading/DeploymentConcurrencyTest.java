@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,12 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.smodel.ExecutorServiceShutdownHelper;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.junit.Assert;
@@ -35,7 +34,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class DeploymentConcurrencyTest implements EnvironmentAware {
-  private final static Logger LOG = LogManager.getLogger(DeploymentConcurrencyTest.class);
+  private final static Logger LOG = Logger.getLogger(DeploymentConcurrencyTest.class);
 
   private final static int nThreads = 10;
   private final static long TIME_OUT_MS = 20000;

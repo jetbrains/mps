@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,6 +30,7 @@ import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.icons.IdeIcons;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.FilePerRootDataSource;
 import jetbrains.mps.persistence.ModelCannotBeCreatedException;
 import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
@@ -37,8 +38,6 @@ import jetbrains.mps.project.LanguageImportHelper;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModelName;
@@ -51,7 +50,6 @@ import org.jetbrains.mps.openapi.persistence.datasource.DataSourceType;
  * Created by danilla on 28/10/15.
  */
 public class MakeDirAModel extends NewModelActionBase {
-  private static Logger LOG = LogManager.getLogger(MakeDirAModel.class);
   public static final DataKey<LanguageImportHelper.Interaction> LANGUAGE_IMPORT_INTERACTION = DataKey.create("languageImportInteraction");
 
   public MakeDirAModel() {
@@ -88,7 +86,7 @@ public class MakeDirAModel extends NewModelActionBase {
         ModelFactory modelFactory = mpsProject.getComponent(ModelFactoryService.class).getFactoryByType(PreinstalledModelFactoryTypes.PER_ROOT_XML);
         model = (EditableSModel) myModelRoot.createModel(newModelName, mySourceRoot, dataSourceFactory, modelFactory);
       } catch (ModelCannotBeCreatedException ex) {
-        LOG.error("", ex);
+        Logger.getLogger(MakeDirAModel.class).error(ex);
         return null;
       }
 

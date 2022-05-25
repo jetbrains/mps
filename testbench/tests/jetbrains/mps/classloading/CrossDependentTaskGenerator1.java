@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,10 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.reloading.FakeClassPathItem;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.module.SDependencyImpl;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.reloading.FakeClassPathItem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 
@@ -37,7 +36,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * @since 31/12/16
  */
 final class CrossDependentTaskGenerator1 extends TaskGenerator {
-  private static final Logger LOG = LogManager.getLogger(CrossDependentTaskGenerator1.class);
+  private static final Logger LOG = Logger.getLogger(CrossDependentTaskGenerator1.class);
   private final static int nThreads = 2;
   private final CyclicBarrier barrier = new CyclicBarrier(2);
   private final AtomicReference<ModuleClassLoader> myFirst = new AtomicReference<>();

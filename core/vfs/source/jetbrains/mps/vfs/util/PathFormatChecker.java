@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,16 +15,15 @@
  */
 package jetbrains.mps.vfs.util;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.vfs.IFileSystem;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 
 //this is an internal class with assertions usable for checking formats of file paths in File/Jar/Jrt FSes
 public final class PathFormatChecker {
-  private static final Logger LOG = LogManager.getLogger(PathFormatChecker.class);
+  private static final Logger LOG = Logger.getLogger(PathFormatChecker.class);
 
   private final String myPath;
 
@@ -38,7 +37,7 @@ public final class PathFormatChecker {
     // obviously it does not do much, still we are not able to work with project file a\b.class on linux,
     // but at least now, when just traversing some tree with such file names, we do not crash
     if (myPath.contains("\\")) {
-      LOG.warn("Possibly not os-independent path: " + myPath, new PathFormatException("", myPath));
+      LOG.warning("Possibly not os-independent path: " + myPath, new PathFormatException("", myPath));
     }
     return this;
   }
@@ -47,7 +46,7 @@ public final class PathFormatChecker {
     String badSeparator = "/".equals(File.separator) ? "\\" : "/";
 
     if (myPath.contains(badSeparator)) {
-      LOG.warn("Possibly not os-dependent path: " + myPath, new PathFormatException("", myPath));
+      LOG.warning("Possibly not os-dependent path: " + myPath, new PathFormatException("", myPath));
     }
     return this;
   }

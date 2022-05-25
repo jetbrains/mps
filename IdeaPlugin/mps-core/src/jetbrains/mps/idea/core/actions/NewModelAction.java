@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.project.module.ModuleMPSSupport;
 import jetbrains.mps.idea.core.ui.CreateFromTemplateDialog;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.ModelCannotBeCreatedException;
 import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.project.MPSExtentions;
@@ -42,8 +43,6 @@ import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -65,7 +64,6 @@ import java.util.Map;
  * Created by danilla on 28/10/15.
  */
 public class NewModelAction extends NewModelActionBase {
-  private static Logger LOG = LogManager.getLogger(NewModelAction.class);
 
   private static final ModelTemplate EMPTY_MODEL = new ModelTemplateBase("EMPTY", MPSBundle.message("new.model.template.empty.presentation"), FileIcons.MODEL_ICON);
 
@@ -101,7 +99,7 @@ public class NewModelAction extends NewModelActionBase {
               SModelName sModelName = new SModelName(modelName);
               model = (EditableSModel) myModelRoot.createModel(sModelName, mySourceRoot, createDataSourceFactory(), modelFactory);
             } catch (ModelCannotBeCreatedException e) {
-              LOG.error("Can't create model " + modelName + " under " + path, e);
+              Logger.getLogger(NewModelAction.class).error("Can't create model " + modelName + " under " + path, e);
               return null;
             }
 

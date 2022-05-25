@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package jetbrains.mps.idea.java.debugger.breakpoints;
 
 import com.intellij.debugger.DebuggerManagerEx;
@@ -38,13 +37,12 @@ import jetbrains.mps.debugger.core.breakpoints.BreakpointsUiComponentEx;
 import jetbrains.mps.ide.editor.util.EditorComponentUtil;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.java.trace.GeneratedSourcePosition;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.AdditionalPainter;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -55,7 +53,6 @@ import java.util.List;
 import java.util.Set;
 
 public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpoint, BreakpointWithHighlighter> implements ProjectComponent {
-  private static final Logger LOG = LogManager.getLogger(IdeaBreakpointsUiComponent.class);
   private DebuggerManagerEx myDebuggerManager;
   private final XBreakpointListener myBreakpointListener = new MyBreakpointListener();
 
@@ -155,7 +152,7 @@ public class IdeaBreakpointsUiComponent extends BreakpointsUiComponentEx<Breakpo
       }
     }
     if (!breakpointWasSet) {
-      LOG.debug("Failed to create a breakpoint at this location");
+      Logger.getLogger(IdeaBreakpointsUiComponent.class).debug("Failed to create a breakpoint at this location");
     }
   }
 

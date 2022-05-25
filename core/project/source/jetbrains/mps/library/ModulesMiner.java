@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.library;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.extapi.persistence.FileBasedModelRoot;
 import jetbrains.mps.generator.fileGenerator.FileGenerationUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.persistence.PersistenceRegistry;
 import jetbrains.mps.project.ProjectPathUtil;
@@ -44,8 +45,6 @@ import jetbrains.mps.util.io.ModelOutputStream;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.path.Path;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -72,7 +71,7 @@ import java.util.Set;
  * NB: we will go inside the jar if it either has a 'modules' folder (with modules (!)) or has a module.xml file in the META-INF folder
  */
 public final class ModulesMiner {
-  private static final Logger LOG = LogManager.getLogger(ModulesMiner.class);
+  private static final Logger LOG = Logger.getLogger(ModulesMiner.class);
   public static final String META_INF = "META-INF";
   private static final String JAR_SEPARATOR = Path.ARCHIVE_SEPARATOR;
   public static final String MODULE_XML = "module.xml";

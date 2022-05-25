@@ -16,6 +16,7 @@
 package jetbrains.mps.project.dependency;
 
 import jetbrains.mps.extapi.module.TransientSModule;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.dependency.GlobalModuleDependenciesManager.ErrorHandler;
 import jetbrains.mps.project.structure.modules.Dependency;
@@ -24,8 +25,6 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.LanguageModuleScanner;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.util.annotation.Hack;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
@@ -46,7 +45,7 @@ import java.util.function.Consumer;
  * Created by apyshkin on 11/12/15.
  */
 class RuntimesOfUsedLanguageCalculator {
-  private static final Logger LOG = LogManager.getLogger(RuntimesOfUsedLanguageCalculator.class);
+  private static final Logger LOG = Logger.getLogger(RuntimesOfUsedLanguageCalculator.class);
 
   private final LanguageModuleScanner myLanguageRuntimesCache;
   private final ErrorHandler myErrorHandler;
@@ -103,7 +102,7 @@ class RuntimesOfUsedLanguageCalculator {
       Set<SModuleReference> result = new HashSet<>();
       ModuleDescriptor moduleDescriptor = ((AbstractModule) module).getModuleDescriptor();
       if (moduleDescriptor == null) {
-        LOG.warn("Module descriptor could not be found for the module " + module + "; falling back to the SourceStrategy.");
+        LOG.warning("Module descriptor could not be found for the module " + module + "; falling back to the SourceStrategy.");
         return myFallback.findRuntimes(module);
       }
       DeploymentDescriptor descriptor = moduleDescriptor.getDeploymentDescriptor();

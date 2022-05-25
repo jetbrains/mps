@@ -21,13 +21,13 @@ import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.testFramework.PlatformTestUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.Reference;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.refresh.DefaultCachingContext;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -39,7 +39,7 @@ import java.io.IOException;
 
 public abstract class ModuleInProjectTest implements EnvironmentAware {
   private final static String MODULE_NAME_PREFIX = "TEST";
-  // By default property is not set and tmp project will not be deleted after test. Use for debug proposes.
+  // By default, property is not set and tmp project will not be deleted after test. Use for debug proposes.
   private static final boolean SAVE_PROJECT =
       Boolean.parseBoolean(System.getProperty("mps.tests.module.in.project.save.test.project"));
   private static int ourModuleCounter = 0;
@@ -105,7 +105,7 @@ public abstract class ModuleInProjectTest implements EnvironmentAware {
     if (result == null) {
       String[] files = myProject.getProjectFile().list();
       for (String file : files) {
-        LogManager.getLogger(ModuleInProjectTest.class).error("list: " + file);
+        Logger.getLogger(ModuleInProjectTest.class).error("list: " + file);
       }
       throw new IllegalStateException("Could not create an available directory '" + curName + "' in the project '" + myProject.getProjectFile().getAbsolutePath() + "'");
     }

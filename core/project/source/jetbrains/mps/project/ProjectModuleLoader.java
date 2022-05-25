@@ -25,7 +25,7 @@ import jetbrains.mps.util.Pair;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
 import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -59,7 +59,7 @@ import java.util.stream.Stream;
  * Created by apyshkin on 11/5/15.
  */
 /*package*/ final class ProjectModuleLoader {
-  private static final Logger LOG = LogManager.getLogger(ProjectModuleLoader.class);
+  private static final Logger LOG = Logger.getLogger(ProjectModuleLoader.class);
 
   private final ProjectBase myProject;
   private final List<ProjectModuleLoadingListener> myListeners = new CopyOnWriteArrayList<>();
@@ -165,7 +165,7 @@ import java.util.stream.Stream;
         // fixme apyshkin
         Matcher matcher = MacroHelper.MACRO_PATTERN.matcher(e.getProblemPath());
         if (matcher.find()) {
-          LOG.warn("Some paths might contain unknown macros, please define them in 'Path variables' and reopen the project");
+          LOG.warning("Some paths might contain unknown macros, please define them in 'Path variables' and reopen the project");
         } else {
           throw e;
         }
@@ -254,7 +254,7 @@ import java.util.stream.Stream;
 
   public void removeListener(@NotNull ProjectModuleLoadingListener listener) {
     if (!myListeners.contains(listener)) {
-      LOG.warn("Listener could not be found : " + listener);
+      LOG.warning("Listener could not be found : " + listener);
     }
     myListeners.remove(listener);
   }

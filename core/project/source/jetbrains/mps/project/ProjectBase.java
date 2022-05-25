@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.project.ModulePath;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
@@ -27,8 +28,6 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.ImmutableReturn;
@@ -61,7 +60,7 @@ import java.util.stream.Stream;
  * @see ProjectDescriptor
  */
 public abstract class ProjectBase extends Project {
-  private static final Logger LOG = LogManager.getLogger(ProjectBase.class);
+  private static final Logger LOG = Logger.getLogger(ProjectBase.class);
   private final ProjectManager myProjectManager = ProjectManager.getInstance();
 
   protected final ComponentHost myPlatform;
@@ -115,7 +114,7 @@ public abstract class ProjectBase extends Project {
   /*package*/ void dissociateFromProjectRepo(final SModule module, final boolean checkProjectIsOwner) {
     SRepositoryExt repository = (SRepositoryExt) getRepository();
     if (checkProjectIsOwner && !repository.getOwners(module).contains(this)) {
-      LOG.warn("Module has not been registered in the project: " + module);
+      LOG.warning("Module has not been registered in the project: " + module);
       return;
     }
     repository.unregisterModule(module, this);
@@ -136,7 +135,7 @@ public abstract class ProjectBase extends Project {
       final ModulePath existing = getPath(module);
       if (existing != null) {
   //      throw new IllegalArgumentException(module + " is already in the " + this); todo enable after MPS-24400
-        LOG.warn(String.format("Project %s already tracks module %s under %s; provided %s ignored", this, module.getModuleReference(), existing, modulePath));
+        LOG.warning(String.format("Project %s already tracks module %s under %s; provided %s ignored", this, module.getModuleReference(), existing, modulePath));
         return;
       }
       // FIXME investigate why MP was not recorded for Language-owned Generators.
@@ -326,7 +325,7 @@ public abstract class ProjectBase extends Project {
     if (modulePath != null) {
       myModuleLoader.setVirtualFolder(moduleReference, newFolder);
     } else {
-      LOG.warn(String.format("Could not set virtual folder for the module %s, module could not be found", module));
+      LOG.warning(String.format("Could not set virtual folder for the module %s, module could not be found", module));
     }
   }
 

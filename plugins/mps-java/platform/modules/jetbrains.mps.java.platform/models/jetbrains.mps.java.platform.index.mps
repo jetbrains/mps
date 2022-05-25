@@ -30,7 +30,6 @@
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="qpn1" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.index(MPS.Platform/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="g3l6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.model(MPS.Core/)" />
     <import index="4o98" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.core.platform(MPS.Core/)" />
     <import index="bd8o" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.application(MPS.IDEA/)" />
@@ -41,12 +40,16 @@
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
     <import index="3s15" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench(MPS.Platform/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
+      </concept>
+      <concept id="7485977462274819189" name="jetbrains.mps.baseLanguage.structure.FormatOperation" flags="ng" index="2cAKMz">
+        <child id="7485977462274819664" name="arguments" index="2cAKU6" />
       </concept>
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
@@ -3810,34 +3813,34 @@
                 <node concept="3clFbF" id="75eNxRwvHVz" role="3cqZAp">
                   <node concept="2OqwBi" id="75eNxRwvKos" role="3clFbG">
                     <node concept="2YIFZM" id="75eNxRwvJJY" role="2Oq$k0">
-                      <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
-                      <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+                      <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+                      <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
                       <node concept="3VsKOn" id="75eNxRwvKbi" role="37wK5m">
                         <ref role="3VsUkX" node="3Cep5Ce5gQK" resolve="ClassifierSuccessorsIndexer" />
                       </node>
                     </node>
                     <node concept="liA8E" id="75eNxRwvKzs" role="2OqNvi">
-                      <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                      <node concept="2YIFZM" id="75eNxRwvLm$" role="37wK5m">
-                        <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
-                        <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
-                        <node concept="Xl_RD" id="75eNxRwvKBM" role="37wK5m">
+                      <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String,java.lang.Throwable)" resolve="error" />
+                      <node concept="2OqwBi" id="5ACEJe$ZUYE" role="37wK5m">
+                        <node concept="Xl_RD" id="75eNxRwvKBM" role="2Oq$k0">
                           <property role="Xl_RC" value="Failed to index model file %s; %s" />
                         </node>
-                        <node concept="2OqwBi" id="75eNxRwvLGJ" role="37wK5m">
-                          <node concept="37vLTw" id="75eNxRwvLAn" role="2Oq$k0">
-                            <ref role="3cqZAo" node="3Cep5Ce5gRr" resolve="inputData" />
+                        <node concept="2cAKMz" id="5ACEJe$ZYbY" role="2OqNvi">
+                          <node concept="2OqwBi" id="75eNxRwvLGJ" role="2cAKU6">
+                            <node concept="37vLTw" id="75eNxRwvLAn" role="2Oq$k0">
+                              <ref role="3cqZAo" node="3Cep5Ce5gRr" resolve="inputData" />
+                            </node>
+                            <node concept="liA8E" id="75eNxRwvLNy" role="2OqNvi">
+                              <ref role="37wK5l" to="8902:~IndexedFile.getFileName()" resolve="getFileName" />
+                            </node>
                           </node>
-                          <node concept="liA8E" id="75eNxRwvLNy" role="2OqNvi">
-                            <ref role="37wK5l" to="8902:~IndexedFile.getFileName()" resolve="getFileName" />
-                          </node>
-                        </node>
-                        <node concept="2OqwBi" id="75eNxRwvM2J" role="37wK5m">
-                          <node concept="37vLTw" id="75eNxRwvLWV" role="2Oq$k0">
-                            <ref role="3cqZAo" node="75eNxRwvHhH" resolve="ex" />
-                          </node>
-                          <node concept="liA8E" id="75eNxRwvMaU" role="2OqNvi">
-                            <ref role="37wK5l" to="wyt6:~Throwable.getMessage()" resolve="getMessage" />
+                          <node concept="2OqwBi" id="75eNxRwvM2J" role="2cAKU6">
+                            <node concept="37vLTw" id="75eNxRwvLWV" role="2Oq$k0">
+                              <ref role="3cqZAo" node="75eNxRwvHhH" resolve="ex" />
+                            </node>
+                            <node concept="liA8E" id="75eNxRwvMaU" role="2OqNvi">
+                              <ref role="37wK5l" to="wyt6:~Throwable.getMessage()" resolve="getMessage" />
+                            </node>
                           </node>
                         </node>
                       </node>

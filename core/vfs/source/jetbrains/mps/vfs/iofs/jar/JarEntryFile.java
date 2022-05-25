@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.vfs.iofs.jar;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.FileSystem;
@@ -164,7 +165,7 @@ public class JarEntryFile implements IFile {
     try {
       return PathUtil.toSystemIndependent(myJarFile.getCanonicalPath()) + "!/" + myEntryPath;
     } catch (IOException e) {
-      LogManager.getLogger(JarEntryFile.class).warn("Got problem while accessing canonical path of " + this, e);
+      Logger.getLogger(JarEntryFile.class).warning("Got problem while accessing canonical path of " + this, e);
       return getPath();
     }
   }

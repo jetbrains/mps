@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.core.tool.environment.util.SetLibraryContributor;
 import jetbrains.mps.library.LibraryInitializer;
 import jetbrains.mps.library.contributor.LibDescriptor;
 import jetbrains.mps.library.contributor.LibraryContributor;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.smodel.MPSModuleRepository;
@@ -29,8 +30,6 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.PathManager;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.VFSManager;
-import jetbrains.mps.vfs.impl.IoFileSystem;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -50,7 +49,7 @@ import java.util.Set;
  * core, workbench and plugin
  */
 public class ProjectMPSFacetCorrectnessTest implements EnvironmentAware {
-  private static final org.apache.log4j.Logger LOG = LogManager.getLogger(ProjectMPSFacetCorrectnessTest.class);
+  private static final Logger LOG = Logger.getLogger(ProjectMPSFacetCorrectnessTest.class);
 
   private List<String> EXCLUDES = Arrays.asList("jetbrains.mps.ide.java.workbench.actions",
                                                 "jetbrains.mps.ide.java.platform.actions",
@@ -101,17 +100,17 @@ public class ProjectMPSFacetCorrectnessTest implements EnvironmentAware {
 
   private Iterable<SModule> getAllModules() {
     final SRepository repo = myEnvironment.getPlatform().findComponent(MPSModuleRepository.class);
-    return new ModelAccessHelper(repo).runReadAction(() -> repo.getModules());
+    return new ModelAccessHelper(repo).runReadAction(repo::getModules);
   }
 
   private Collection<String> getCorePaths() {
-    Collection<String> bootstrapPaths = new ArrayList<String>(PathManager.getBootstrapPaths());
+    Collection<String> bootstrapPaths = new ArrayList<>(PathManager.getBootstrapPaths());
     bootstrapPaths.add(PathManager.getLanguagesPath());
     return Collections.unmodifiableCollection(bootstrapPaths);
   }
 
   private void addContributorWithPaths(Iterable<? extends String> paths) {
-    Set<LibDescriptor> libraryPaths = new LinkedHashSet<LibDescriptor>();
+    Set<LibDescriptor> libraryPaths = new LinkedHashSet<>();
     final IFileSystem fs = myEnvironment.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);
     for (String path : paths) {
       libraryPaths.add(new LibDescriptor(fs.getFile(path)));

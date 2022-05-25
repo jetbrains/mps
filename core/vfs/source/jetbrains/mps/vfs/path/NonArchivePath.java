@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.vfs.path;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -37,7 +35,6 @@ import java.util.stream.Collectors;
  */
 @Immutable
 /*package*/ final class NonArchivePath extends AbstractPath {
-  private static final Logger LOG = LogManager.getLogger(NonArchivePath.class);
 
   private final static String PARENT_DIR_STR = "..";
   private final static String CUR_DIR_STR = ".";
@@ -162,7 +159,7 @@ import java.util.stream.Collectors;
 
   @NotNull
   @Override
-  public final NonArchivePath normalize() {
+  public NonArchivePath normalize() {
     List<String> newParts = new ArrayList<>();
     for (String part : myNonRootParts) {
       if (part.equals(PARENT_DIR_STR)) {

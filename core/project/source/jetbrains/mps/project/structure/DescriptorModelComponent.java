@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,11 @@
 package jetbrains.mps.project.structure;
 
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.smodel.SModelStereotype;
 import jetbrains.mps.util.containers.MultiMap;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelListener;
@@ -198,7 +198,7 @@ public class DescriptorModelComponent implements CoreComponent {
           }
           final String f = "Module [%s] (id:%s), loaded from %s, has no name. No descriptor model created";
           String m = String.format(f, module.getClass().getSimpleName(), module.getModuleReference().getModuleId(), descriptorFile);
-          Logger.getLogger(DescriptorModelComponent.class).warn(m);
+          Logger.getLogger(DescriptorModelComponent.class).warning(m);
         }
       }
     }

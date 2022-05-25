@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,10 +31,9 @@ import com.intellij.ui.UIBundle;
 import jetbrains.mps.extapi.model.StorageMemoryConflictResolver.ConflictResolved;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.vfs.VFSManager;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -66,7 +65,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author apyshkin
  */
 public final class ConflictResolverImpl {
-  private static final Logger LOG = LogManager.getLogger(ConflictResolverImpl.class);
+  private static final Logger LOG = Logger.getLogger(ConflictResolverImpl.class);
 
   private final MPSProject myProject;
   private final PersistenceFacade myPersistenceFacade;

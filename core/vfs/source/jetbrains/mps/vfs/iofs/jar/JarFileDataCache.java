@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,7 @@
  */
 package jetbrains.mps.vfs.iofs.jar;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,7 +39,7 @@ import java.util.zip.ZipFile;
  * namely we close the <code>ZipFile</code> associated with the JarFileData instance.
  */
 final class JarFileDataCache {
-  private static final Logger LOG = LogManager.getLogger(JarFileDataCache.class);
+  private static final Logger LOG = Logger.getLogger(JarFileDataCache.class);
 
   private static final JarFileDataCache ourInstance = new JarFileDataCache();
 

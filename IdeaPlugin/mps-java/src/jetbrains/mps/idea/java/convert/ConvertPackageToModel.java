@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,12 +52,11 @@ import jetbrains.mps.idea.core.refactoring.NodePtr;
 import jetbrains.mps.idea.java.psiStubs.JavaForeignIdBuilder;
 import jetbrains.mps.java.core.newparser.JavaToMpsConverter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.util.SNodeOperations;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.ResolveInfo;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -80,7 +79,7 @@ import java.util.Set;
  */
 public class ConvertPackageToModel extends AnAction {
 
-  private static Logger LOG = Logger.getLogger("Convert java to mps");
+  private static final Logger LOG = Logger.getLogger(ConvertPackageToModel.class);
 
   public ConvertPackageToModel() {
     super("Convert Java to MPS", "", null);

@@ -4,8 +4,7 @@ package jetbrains.mps.baseLanguage.javastub;
 
 import org.jetbrains.mps.annotations.Immutable;
 import jetbrains.mps.annotations.GeneratedClass;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
 import java.util.Collection;
 import jetbrains.mps.vfs.IFile;
@@ -26,7 +25,7 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
 @Immutable
 @GeneratedClass(node = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)/7241381882860001930", model = "r:aa7e8178-3b66-4295-bcce-165c85d78006(jetbrains.mps.baseLanguage.javastub)")
 public final class ASMModelLoader {
-  private static final Logger LOG = LogManager.getLogger(ASMModelLoader.class);
+  private static final Logger LOG = Logger.getLogger(ASMModelLoader.class);
 
   private final AbstractModule myModule;
   private final Collection<IFile> myPaths;
@@ -72,7 +71,9 @@ public final class ASMModelLoader {
       }
       return refFactory.getImports();
     } catch (Throwable e) {
-      LOG.error("Exception for model " + partialModel.getReference(), e);
+      if (LOG.isErrorLevel()) {
+        LOG.error("Exception for model " + partialModel.getReference(), e);
+      }
     }
     return Collections.emptyList();
   }

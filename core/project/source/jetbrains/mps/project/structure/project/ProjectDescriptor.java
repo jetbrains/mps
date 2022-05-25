@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.project.structure.project;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -53,7 +53,7 @@ public final class ProjectDescriptor {
     if (myPaths.stream().map(ModulePath::getFile).anyMatch(candidate::equals)) {
       if (isEmpty(path.getVirtualFolder())) {
         // I don't completely understand the reason for this warning, and what scenario may cause it.
-        LogManager.getLogger(ProjectDescriptor.class).warn("Not adding module path with an empty virtual folder; already have one: " + candidate);
+        Logger.getLogger(ProjectDescriptor.class).warning("Not adding module path with an empty virtual folder; already have one: " + candidate);
       }
       // FIXME Bad smell. We used to get here when project started, and existing ProjectDescriptor serves as an input to populate Project (through ModuleLoader),
       //    which, in turn, in addModule() adds the path to the descriptor again. Shall rather tell 'load' from 'augment' scenario.

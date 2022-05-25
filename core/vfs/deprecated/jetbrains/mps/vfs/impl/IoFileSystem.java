@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,12 @@
  */
 package jetbrains.mps.vfs.impl;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.util.PathFormatChecker.PathFormatException;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -29,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
  */
 @Deprecated(since = "2019.1", forRemoval = true)
 public class IoFileSystem implements FileSystem {
-  private static final Logger LOG = LogManager.getLogger(IoFileSystem.class);
+  private static final Logger LOG = Logger.getLogger(IoFileSystem.class);
 
   // afaik there are no direct uses in mbeddr, only by means of FileSystem.getInstance()
   public static IoFileSystem INSTANCE;
@@ -86,7 +85,7 @@ public class IoFileSystem implements FileSystem {
     try {
       r.run();
     } catch (Exception e) {
-      LOG.error(null, e);
+      LOG.error(e);
       return false;
     }
     return true;

@@ -17,6 +17,7 @@ package jetbrains.mps.smodel.persistence.def;
 
 import jetbrains.mps.extapi.model.PersistenceProblem;
 import jetbrains.mps.extapi.model.SModelData;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.IndexAwareModelFactory.Callback;
 import jetbrains.mps.persistence.MetaModelInfoProvider;
 import jetbrains.mps.persistence.MetaModelInfoProvider.RegularMetaModelInfo;
@@ -34,8 +35,6 @@ import jetbrains.mps.util.JDOMUtil;
 import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.util.xml.BreakParseSAXException;
 import jetbrains.mps.util.xml.XMLSAXHandler;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jdom.Document;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -81,7 +80,7 @@ import java.util.List;
  * See VCSPersistenceSupport for an example.
  */
 public class ModelPersistence {
-  private static final Logger LOG = LogManager.getLogger(ModelPersistence.class);
+  private static final Logger LOG = Logger.getLogger(ModelPersistence.class);
 
   public static final String MODEL = "model";
   public static final String REF = "ref";
@@ -356,7 +355,7 @@ public class ModelPersistence {
       parseAndHandleExceptions(source, new HeaderOnlyHandler(header));
       IModelPersistence mp = getPersistence(header.getPersistenceVersion());
       if (!(mp instanceof XMLPersistence)) {
-        LOG.warn("Can't index old persistence. Please update persistence of old models.\n" +
+        LOG.warning("Can't index old persistence. Please update persistence of old models.\n" +
                  "Persistence version: " + header.getPersistenceVersion() + "\n" +
                  "Model: " + header.getModelReference().getModelName());
         return;
