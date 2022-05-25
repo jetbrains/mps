@@ -804,7 +804,7 @@ public final class TemplateProcessor implements ITemplateProcessor {
       //     However, not sure if it should not be vice versa, or if it makes any difference at all.
       final TemplateContext withArgs = callProcessor.prepareCallContext(templateContext);
       if (callProcessor.needCallSite()) {
-        return templateContext.getEnvironment().withCallSiteNode(getMacroNodeRef(), templateContext, callSiteOutputNodes);
+        return templateContext.getEnvironment().withCallSiteNode(getMacroNodeRef(), withArgs, callSiteOutputNodes);
       } else {
         if (templateContext.getCallSiteNode() != null) {
           // just hide the one available in the current context
