@@ -4,7 +4,6 @@ package jetbrains.mps.execution.lib;
 
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
 import jetbrains.mps.project.structure.modules.Copyable;
-import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
@@ -28,7 +27,6 @@ import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.List;
 
 public final class NodeBySeveralConcepts_Configuration implements IPersistentConfiguration, Copyable<NodeBySeveralConcepts_Configuration> {
-  private static final Logger LOG = Logger.getLogger(NodeBySeveralConcepts_Configuration.class);
   @NotNull
   private MyState myState = new MyState();
 
@@ -66,7 +64,7 @@ public final class NodeBySeveralConcepts_Configuration implements IPersistentCon
     if (element == null) {
       throw new InvalidDataException("Cant read " + this + ": element is null.");
     }
-    XmlSerializer.deserializeInto(myState, (Element) element.getChildren().get(0));
+    XmlSerializer.deserializeInto(myState, element.getChildren().get(0));
   }
 
   @Nullable
@@ -107,17 +105,7 @@ public final class NodeBySeveralConcepts_Configuration implements IPersistentCon
   @Override
   @Deprecated
   public NodeBySeveralConcepts_Configuration clone() {
-    NodeBySeveralConcepts_Configuration clone = createCloneTemplate();
-    try {
-      // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-      // the value of myState, and != clone as regular Java passer-by would expect.
-      clone.myState = (MyState) myState.clone();
-    } catch (CloneNotSupportedException ex) {
-      if (LOG.isErrorLevel()) {
-        LOG.error("", ex);
-      }
-    }
-    return clone;
+    return copy();
   }
 
   @Override
@@ -125,7 +113,7 @@ public final class NodeBySeveralConcepts_Configuration implements IPersistentCon
     NodeBySeveralConcepts_Configuration cloneTemplate = createCloneTemplate();
     // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
     // the value of myState, and != clone as regular Java passer-by would expect.
-    cloneTemplate.myState = (MyState) myState.copy();
+    cloneTemplate.myState = myState.copy();
     return cloneTemplate;
   }
 
@@ -149,23 +137,20 @@ public final class NodeBySeveralConcepts_Configuration implements IPersistentCon
 
     @Deprecated
     @Override
-    public Object clone() throws CloneNotSupportedException {
-      MyState state = (MyState) super.clone();
-      state.myNodePointer = myNodePointer;
-      state.myNodeText = myNodeText;
-      return state;
+    public MyState clone() {
+      try {
+        MyState state = (MyState) super.clone();
+        state.myNodePointer = myNodePointer;
+        state.myNodeText = myNodeText;
+        return state;
+      } catch (CloneNotSupportedException ex) {
+        throw new IllegalStateException("Shall not happen", ex);
+      }
     }
 
     @Override
     public MyState copy() {
-      try {
-        return (MyState) clone();
-      } catch (CloneNotSupportedException e) {
-        if (LOG.isErrorLevel()) {
-          LOG.error("", e);
-        }
-        return null;
-      }
+      return clone();
     }
   }
   public NodeBySeveralConcepts_Configuration(List<NodesDescriptor> targets) {

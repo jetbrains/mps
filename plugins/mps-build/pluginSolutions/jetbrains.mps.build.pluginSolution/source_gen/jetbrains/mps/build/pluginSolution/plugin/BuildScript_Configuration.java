@@ -5,8 +5,6 @@ package jetbrains.mps.build.pluginSolution.plugin;
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
 import jetbrains.mps.project.structure.modules.Copyable;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import jetbrains.mps.execution.lib.NodeByConcept_Configuration;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -44,7 +42,6 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public final class BuildScript_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<BuildScript_Configuration> {
-  private static final Logger LOG = LogManager.getLogger(BuildScript_Configuration.class);
   private NodeByConcept_Configuration myNodePointer = new NodeByConcept_Configuration(CONCEPTS.BuildProject$ae, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
     public Boolean invoke(SNode node) {
       return true;
@@ -88,35 +85,18 @@ public final class BuildScript_Configuration extends BaseMpsRunConfiguration imp
     if (element == null) {
       throw new InvalidDataException("Cant read " + this + ": element is null.");
     }
-    {
-      Element fieldElement = element.getChild("myNodePointer");
-      if (fieldElement != null) {
-        myNodePointer.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugEnabled()) {
-          LOG.debug("Element " + "myNodePointer" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myNodePointer") != null) {
+      myNodePointer.readExternal(element.getChild("myNodePointer"));
     }
-    {
-      Element fieldElement = element.getChild("mySettings");
-      if (fieldElement != null) {
-        mySettings.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugEnabled()) {
-          LOG.debug("Element " + "mySettings" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("mySettings") != null) {
+      mySettings.readExternal(element.getChild("mySettings"));
     }
   }
 
   @Override
   @Deprecated
   public BuildScript_Configuration clone() {
-    BuildScript_Configuration clone = createCloneTemplate();
-    clone.myNodePointer = (NodeByConcept_Configuration) myNodePointer.clone();
-    clone.mySettings = (AntSettings_Configuration) mySettings.clone();
-    return clone;
+    return copy();
   }
 
   @Override

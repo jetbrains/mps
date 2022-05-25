@@ -5,7 +5,6 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
 import jetbrains.mps.project.structure.modules.Copyable;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.execution.lib.NodeBySeveralConcepts_Configuration;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
@@ -55,7 +54,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 public final class Java_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<Java_Configuration> {
-  private static final Logger LOG = Logger.getLogger(Java_Configuration.class);
   private NodeBySeveralConcepts_Configuration myNode = new NodeBySeveralConcepts_Configuration(ListSequence.fromListAndArray(new ArrayList<NodesDescriptor>(), new NodesDescriptor(CONCEPTS.ClassConcept$bK, new _FunctionTypes._return_P1_E0<Boolean, SNode>() {
     public Boolean invoke(SNode node) {
       return (ClassConcept__BehaviorDescriptor.getMainMethod_idhEwIClG.invoke(SNodeOperations.cast(node, CONCEPTS.ClassConcept$bK)) != null);
@@ -102,25 +100,11 @@ public final class Java_Configuration extends BaseMpsRunConfiguration implements
     if (element == null) {
       throw new InvalidDataException("Cant read " + this + ": element is null.");
     }
-    {
-      Element fieldElement = element.getChild("myNode");
-      if (fieldElement != null) {
-        myNode.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugLevel()) {
-          LOG.debug("Element " + "myNode" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myNode") != null) {
+      myNode.readExternal(element.getChild("myNode"));
     }
-    {
-      Element fieldElement = element.getChild("myRunParameters");
-      if (fieldElement != null) {
-        myRunParameters.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugLevel()) {
-          LOG.debug("Element " + "myRunParameters" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myRunParameters") != null) {
+      myRunParameters.readExternal(element.getChild("myRunParameters"));
     }
   }
 
@@ -155,10 +139,7 @@ public final class Java_Configuration extends BaseMpsRunConfiguration implements
   @Override
   @Deprecated
   public Java_Configuration clone() {
-    Java_Configuration clone = createCloneTemplate();
-    clone.myNode = (NodeBySeveralConcepts_Configuration) myNode.clone();
-    clone.myRunParameters = (JavaRunParameters_Configuration) myRunParameters.clone();
-    return clone;
+    return copy();
   }
 
   @Override

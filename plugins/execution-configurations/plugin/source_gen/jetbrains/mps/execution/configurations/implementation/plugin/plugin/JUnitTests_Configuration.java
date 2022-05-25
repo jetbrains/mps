@@ -5,7 +5,6 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
 import jetbrains.mps.project.structure.modules.Copyable;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitSettings_Configuration;
 import jetbrains.mps.baseLanguage.execution.api.JavaRunParameters_Configuration;
 import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
@@ -43,7 +42,6 @@ import jetbrains.mps.execution.configurations.pluginSolution.plugin.MakeNodePoin
 import java.io.File;
 
 public final class JUnitTests_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<JUnitTests_Configuration> {
-  private static final Logger LOG = Logger.getLogger(JUnitTests_Configuration.class);
   private JUnitSettings_Configuration myJUnitSettings = new JUnitSettings_Configuration(this.getProject());
   private JavaRunParameters_Configuration myJavaRunParameters = createJavaRunParameters();
   private DeployPluginsSettings_Configuration myDeploySettings = new DeployPluginsSettings_Configuration(this.getProject());
@@ -78,35 +76,14 @@ public final class JUnitTests_Configuration extends BaseMpsRunConfiguration impl
     if (element == null) {
       throw new InvalidDataException("Cant read " + this + ": element is null.");
     }
-    {
-      Element fieldElement = element.getChild("myJUnitSettings");
-      if (fieldElement != null) {
-        myJUnitSettings.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugLevel()) {
-          LOG.debug("Element " + "myJUnitSettings" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myJUnitSettings") != null) {
+      myJUnitSettings.readExternal(element.getChild("myJUnitSettings"));
     }
-    {
-      Element fieldElement = element.getChild("myJavaRunParameters");
-      if (fieldElement != null) {
-        myJavaRunParameters.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugLevel()) {
-          LOG.debug("Element " + "myJavaRunParameters" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myJavaRunParameters") != null) {
+      myJavaRunParameters.readExternal(element.getChild("myJavaRunParameters"));
     }
-    {
-      Element fieldElement = element.getChild("myDeploySettings");
-      if (fieldElement != null) {
-        myDeploySettings.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugLevel()) {
-          LOG.debug("Element " + "myDeploySettings" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myDeploySettings") != null) {
+      myDeploySettings.readExternal(element.getChild("myDeploySettings"));
     }
   }
 
@@ -135,11 +112,7 @@ public final class JUnitTests_Configuration extends BaseMpsRunConfiguration impl
   @Override
   @Deprecated
   public JUnitTests_Configuration clone() {
-    JUnitTests_Configuration clone = createCloneTemplate();
-    clone.myJUnitSettings = (JUnitSettings_Configuration) myJUnitSettings.clone();
-    clone.myJavaRunParameters = (JavaRunParameters_Configuration) myJavaRunParameters.clone();
-    clone.myDeploySettings = (DeployPluginsSettings_Configuration) myDeploySettings.clone();
-    return clone;
+    return copy();
   }
 
   @Override

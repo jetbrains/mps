@@ -5,7 +5,6 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 import jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration;
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
 import jetbrains.mps.project.structure.modules.Copyable;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
 import org.jdom.Element;
@@ -30,7 +29,6 @@ import com.intellij.execution.BeforeRunTask;
 import java.io.File;
 
 public final class MPSInstance_Configuration extends BaseMpsRunConfiguration implements IPersistentConfiguration, Copyable<MPSInstance_Configuration> {
-  private static final Logger LOG = Logger.getLogger(MPSInstance_Configuration.class);
   private MpsStartupSettings_Configuration myMpsSettings = new MpsStartupSettings_Configuration();
   private DeployPluginsSettings_Configuration myPluginsSettings = new DeployPluginsSettings_Configuration(this.getProject());
 
@@ -58,35 +56,18 @@ public final class MPSInstance_Configuration extends BaseMpsRunConfiguration imp
     if (element == null) {
       throw new InvalidDataException("Cant read " + this + ": element is null.");
     }
-    {
-      Element fieldElement = element.getChild("myMpsSettings");
-      if (fieldElement != null) {
-        myMpsSettings.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugLevel()) {
-          LOG.debug("Element " + "myMpsSettings" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myMpsSettings") != null) {
+      myMpsSettings.readExternal(element.getChild("myMpsSettings"));
     }
-    {
-      Element fieldElement = element.getChild("myPluginsSettings");
-      if (fieldElement != null) {
-        myPluginsSettings.readExternal(fieldElement);
-      } else {
-        if (LOG.isDebugLevel()) {
-          LOG.debug("Element " + "myPluginsSettings" + " in " + this.getClass().getName() + " was null.");
-        }
-      }
+    if (element.getChild("myPluginsSettings") != null) {
+      myPluginsSettings.readExternal(element.getChild("myPluginsSettings"));
     }
   }
 
   @Override
   @Deprecated
   public MPSInstance_Configuration clone() {
-    MPSInstance_Configuration clone = createCloneTemplate();
-    clone.myMpsSettings = (MpsStartupSettings_Configuration) myMpsSettings.clone();
-    clone.myPluginsSettings = (DeployPluginsSettings_Configuration) myPluginsSettings.clone();
-    return clone;
+    return copy();
   }
 
   @Override

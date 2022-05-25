@@ -4,8 +4,6 @@ package jetbrains.mps.baseLanguage.unitTest.execution.settings;
 
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
 import jetbrains.mps.project.structure.modules.Copyable;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
@@ -33,11 +31,9 @@ import jetbrains.mps.util.Reference;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.apache.log4j.Level;
 import jetbrains.mps.execution.lib.ClonableList;
 
 public final class JUnitSettings_Configuration implements IPersistentConfiguration, Copyable<JUnitSettings_Configuration> {
-  private static final Logger LOG = LogManager.getLogger(JUnitSettings_Configuration.class);
   @NotNull
   private MyState myState = new MyState();
 
@@ -62,7 +58,7 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
     if (element == null) {
       throw new InvalidDataException("Cant read " + this + ": element is null.");
     }
-    XmlSerializer.deserializeInto(myState, (Element) element.getChildren().get(0));
+    XmlSerializer.deserializeInto(myState, element.getChildren().get(0));
   }
 
   private String getDefaultPathForSettings() {
@@ -162,17 +158,7 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
   @Override
   @Deprecated
   public JUnitSettings_Configuration clone() {
-    JUnitSettings_Configuration clone = createCloneTemplate();
-    try {
-      // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-      // the value of myState, and != clone as regular Java passer-by would expect.
-      clone.myState = (MyState) myState.clone();
-    } catch (CloneNotSupportedException ex) {
-      if (LOG.isEnabledFor(Level.ERROR)) {
-        LOG.error("", ex);
-      }
-    }
-    return clone;
+    return copy();
   }
 
   @Override
@@ -180,7 +166,7 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
     JUnitSettings_Configuration cloneTemplate = createCloneTemplate();
     // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
     // the value of myState, and != clone as regular Java passer-by would expect.
-    cloneTemplate.myState = (MyState) myState.copy();
+    cloneTemplate.myState = myState.copy();
     return cloneTemplate;
   }
 
@@ -267,38 +253,35 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
 
     @Deprecated
     @Override
-    public Object clone() throws CloneNotSupportedException {
-      MyState state = (MyState) super.clone();
-      state.myModelRef = myModelRef;
-      state.myModuleRef = myModuleRef;
-      state.myInProcess = myInProcess;
-      state.myReuseCaches = myReuseCaches;
-      state.myOverrideCachesLocation = myOverrideCachesLocation;
-      state.myDebug = myDebug;
-      state.myCachesPath = myCachesPath;
-      if (myTestCases != null) {
-        state.myTestCases = myTestCases.copy();
+    public MyState clone() {
+      try {
+        MyState state = (MyState) super.clone();
+        state.myModelRef = myModelRef;
+        state.myModuleRef = myModuleRef;
+        state.myInProcess = myInProcess;
+        state.myReuseCaches = myReuseCaches;
+        state.myOverrideCachesLocation = myOverrideCachesLocation;
+        state.myDebug = myDebug;
+        state.myCachesPath = myCachesPath;
+        if (myTestCases != null) {
+          state.myTestCases = myTestCases.copy();
+        }
+        if (myTestMethods != null) {
+          state.myTestMethods = myTestMethods.copy();
+        }
+        state.myRunType = myRunType;
+        if (myRunType2InProcess != null) {
+          state.myRunType2InProcess = myRunType2InProcess.copy();
+        }
+        return state;
+      } catch (CloneNotSupportedException ex) {
+        throw new IllegalStateException("Shall not happen", ex);
       }
-      if (myTestMethods != null) {
-        state.myTestMethods = myTestMethods.copy();
-      }
-      state.myRunType = myRunType;
-      if (myRunType2InProcess != null) {
-        state.myRunType2InProcess = myRunType2InProcess.copy();
-      }
-      return state;
     }
 
     @Override
     public MyState copy() {
-      try {
-        return (MyState) clone();
-      } catch (CloneNotSupportedException e) {
-        if (LOG.isEnabledFor(Level.ERROR)) {
-          LOG.error("", e);
-        }
-        return null;
-      }
+      return clone();
     }
   }
   public JUnitSettings_Configuration(Project project) {

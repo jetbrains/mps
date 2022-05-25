@@ -4,7 +4,6 @@ package jetbrains.mps.execution.configurations.implementation.plugin.plugin;
 
 import jetbrains.mps.execution.api.settings.IPersistentConfiguration;
 import jetbrains.mps.project.structure.modules.Copyable;
-import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.execution.api.settings.PersistentConfigurationContext;
 import com.intellij.execution.configurations.RuntimeConfigurationException;
@@ -19,7 +18,6 @@ import com.intellij.openapi.application.PathManager;
 import java.io.File;
 
 public final class MpsStartupSettings_Configuration implements IPersistentConfiguration, Copyable<MpsStartupSettings_Configuration> {
-  private static final Logger LOG = Logger.getLogger(MpsStartupSettings_Configuration.class);
   @NotNull
   private MyState myState = new MyState();
 
@@ -39,7 +37,7 @@ public final class MpsStartupSettings_Configuration implements IPersistentConfig
     if (element == null) {
       throw new InvalidDataException("Cant read " + this + ": element is null.");
     }
-    XmlSerializer.deserializeInto(myState, (Element) element.getChildren().get(0));
+    XmlSerializer.deserializeInto(myState, element.getChildren().get(0));
   }
 
   private String expandPath(String path) {
@@ -74,17 +72,7 @@ public final class MpsStartupSettings_Configuration implements IPersistentConfig
   @Override
   @Deprecated
   public MpsStartupSettings_Configuration clone() {
-    MpsStartupSettings_Configuration clone = createCloneTemplate();
-    try {
-      // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
-      // the value of myState, and != clone as regular Java passer-by would expect.
-      clone.myState = (MyState) myState.clone();
-    } catch (CloneNotSupportedException ex) {
-      if (LOG.isErrorLevel()) {
-        LOG.error("", ex);
-      }
-    }
-    return clone;
+    return copy();
   }
 
   @Override
@@ -92,7 +80,7 @@ public final class MpsStartupSettings_Configuration implements IPersistentConfig
     MpsStartupSettings_Configuration cloneTemplate = createCloneTemplate();
     // beware, PersistenceConfiguration.this of newly created MyState instance would be the same as
     // the value of myState, and != clone as regular Java passer-by would expect.
-    cloneTemplate.myState = (MyState) myState.copy();
+    cloneTemplate.myState = myState.copy();
     return cloneTemplate;
   }
 
@@ -123,24 +111,21 @@ public final class MpsStartupSettings_Configuration implements IPersistentConfig
 
     @Deprecated
     @Override
-    public Object clone() throws CloneNotSupportedException {
-      MyState state = (MyState) super.clone();
-      state.myVmOptions = myVmOptions;
-      state.myJrePath = myJrePath;
-      state.mySettingsPath = mySettingsPath;
-      return state;
+    public MyState clone() {
+      try {
+        MyState state = (MyState) super.clone();
+        state.myVmOptions = myVmOptions;
+        state.myJrePath = myJrePath;
+        state.mySettingsPath = mySettingsPath;
+        return state;
+      } catch (CloneNotSupportedException ex) {
+        throw new IllegalStateException("Shall not happen", ex);
+      }
     }
 
     @Override
     public MyState copy() {
-      try {
-        return (MyState) clone();
-      } catch (CloneNotSupportedException e) {
-        if (LOG.isErrorLevel()) {
-          LOG.error("", e);
-        }
-        return null;
-      }
+      return clone();
     }
   }
   public MpsStartupSettings_Configuration() {
