@@ -4,7 +4,6 @@ package jetbrains.mps.lang.dataFlow.framework;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import java.util.List;
 import java.util.LinkedList;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -27,7 +26,7 @@ import java.util.stream.Stream;
  */
 @GeneratedClass(node = "r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)/4074113095384031346", model = "r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)")
 public class AnalyzerRules {
-  private static Logger LOG = Logger.wrap(LogManager.getLogger(AnalyzerRules.class));
+  private static Logger LOG = Logger.getLogger(AnalyzerRules.class);
   private List<DataFlowConstructor> myRules = new LinkedList<>();
   private String myAnalyzerId;
   private final List<SNode> myNodesToApply;

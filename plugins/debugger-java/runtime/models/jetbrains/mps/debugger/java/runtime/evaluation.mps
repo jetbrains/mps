@@ -33,10 +33,10 @@
     <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
     <import index="alof" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.ide.project(MPS.Platform/)" />
     <import index="31cb" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.module(MPS.Core/)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1932,11 +1932,11 @@
       <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="$cSxlNPq5Y" role="1B3o_S" />
       <node concept="3uibUv" id="$cSxlNPOsv" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+        <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
       </node>
       <node concept="2YIFZM" id="$cSxlNPrCu" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
+        <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <node concept="3VsKOn" id="$cSxlNPrF1" role="37wK5m">
           <ref role="3VsUkX" node="2KV5YDxCrRO" resolve="EvaluationUtilsImpl" />
         </node>
@@ -2029,7 +2029,7 @@
               <ref role="3cqZAo" node="$cSxlNPque" resolve="LOG" />
             </node>
             <node concept="liA8E" id="$cSxlNQ9gk" role="2OqNvi">
-              <ref role="37wK5l" to="q7tw:~Category.assertLog(boolean,java.lang.String)" resolve="assertLog" />
+              <ref role="37wK5l" to="wwqx:~Logger.assertLog(boolean,java.lang.String)" resolve="assertLog" />
               <node concept="3fqX7Q" id="5MCUugRdYOo" role="37wK5m">
                 <node concept="2OqwBi" id="5MCUugRdYOG" role="3fr31v">
                   <node concept="2YIFZM" id="5MCUugRdYOr" role="2Oq$k0">
@@ -3712,7 +3712,7 @@
                           <ref role="3cqZAo" node="$cSxlNPque" resolve="LOG" />
                         </node>
                         <node concept="liA8E" id="5j5ipK2hYCf" role="2OqNvi">
-                          <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object)" resolve="error" />
+                          <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.Throwable)" resolve="error" />
                           <node concept="37vLTw" id="5j5ipK2hYCF" role="37wK5m">
                             <ref role="3cqZAo" node="5j5ipK2hQ$T" resolve="e" />
                           </node>

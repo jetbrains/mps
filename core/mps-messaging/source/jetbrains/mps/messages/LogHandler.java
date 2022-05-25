@@ -28,7 +28,7 @@ public class LogHandler implements IMessageHandler {
     myLog = log;
   }
 
-  @Deprecated(since = "2020.2", forRemoval = true)
+  @Deprecated(since = "2022.2", forRemoval = true)
   public LogHandler(@SuppressWarnings("UnstableApiUsage") @NotNull org.apache.log4j.Logger log) {
     myLog = Logger.wrap(log);
   }

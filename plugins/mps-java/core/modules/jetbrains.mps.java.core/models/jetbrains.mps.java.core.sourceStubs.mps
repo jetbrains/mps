@@ -20,7 +20,6 @@
     <import index="g3l6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.model(MPS.Core/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
     <import index="4it6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.loading(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
@@ -413,21 +412,6 @@
       <ref role="3uigEE" to="ends:~CopyableModelRoot" resolve="CopyableModelRoot" />
       <node concept="3uibUv" id="3v68VbmkU3y" role="11_B2D">
         <ref role="3uigEE" node="3PyP5yK7oru" resolve="JavaSourceStubModelRoot" />
-      </node>
-    </node>
-    <node concept="Wx3nA" id="3se2FvxAxve" role="jymVt">
-      <property role="TrG5h" value="LOG" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="3se2FvxAuBj" role="1B3o_S" />
-      <node concept="3uibUv" id="3se2FvxAxnd" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
-      </node>
-      <node concept="2YIFZM" id="3se2FvxAz_I" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
-        <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
-        <node concept="3VsKOn" id="3se2FvxAzTJ" role="37wK5m">
-          <ref role="3VsUkX" node="3PyP5yK7oru" resolve="JavaSourceStubModelRoot" />
-        </node>
       </node>
     </node>
     <node concept="2tJIrI" id="7l6b$Kxeg21" role="jymVt" />
@@ -1027,11 +1011,8 @@
                 <node concept="3clFbS" id="3se2FvxArsU" role="9aQI4">
                   <node concept="3clFbF" id="3se2FvxAAy1" role="3cqZAp">
                     <node concept="2OqwBi" id="3se2FvxAAGY" role="3clFbG">
-                      <node concept="37vLTw" id="3se2FvxAAy0" role="2Oq$k0">
-                        <ref role="3cqZAo" node="3se2FvxAxve" resolve="LOG" />
-                      </node>
                       <node concept="liA8E" id="3se2FvxAB8z" role="2OqNvi">
-                        <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object)" resolve="error" />
+                        <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String)" resolve="error" />
                         <node concept="3cpWs3" id="3se2FvxADOw" role="37wK5m">
                           <node concept="Xl_RD" id="3se2FvxADOF" role="3uHU7w">
                             <property role="Xl_RC" value=" (failed to guess package name)" />
@@ -1049,6 +1030,13 @@
                               </node>
                             </node>
                           </node>
+                        </node>
+                      </node>
+                      <node concept="2YIFZM" id="3se2FvxAz_I" role="2Oq$k0">
+                        <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+                        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+                        <node concept="3VsKOn" id="3se2FvxAzTJ" role="37wK5m">
+                          <ref role="3VsUkX" node="3PyP5yK7oru" resolve="JavaSourceStubModelRoot" />
                         </node>
                       </node>
                     </node>
@@ -1251,15 +1239,11 @@
     </node>
     <node concept="Wx3nA" id="5HlCeYoHvYL" role="jymVt">
       <property role="TrG5h" value="LOG" />
-      <node concept="2YIFZM" id="17QXLl0fvYI" role="33vP2m">
-        <ref role="37wK5l" to="wwqx:~Logger.wrap(org.apache.log4j.Logger)" resolve="wrap" />
+      <node concept="2YIFZM" id="2hdoiXODLMe" role="33vP2m">
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
-        <node concept="2YIFZM" id="17QXLl0fvYJ" role="37wK5m">
-          <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-          <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-          <node concept="3VsKOn" id="17QXLl0fvYK" role="37wK5m">
-            <ref role="3VsUkX" node="3PyP5yK7yol" resolve="JavaSourceStubModelDescriptor" />
-          </node>
+        <node concept="3VsKOn" id="2hdoiXODLMg" role="37wK5m">
+          <ref role="3VsUkX" node="3PyP5yK7yol" resolve="JavaSourceStubModelDescriptor" />
         </node>
       </node>
       <node concept="3uibUv" id="1iIkS8Rm0VG" role="1tU5fm">
@@ -3052,21 +3036,6 @@
   </node>
   <node concept="312cEu" id="3PyP5yK7WkA">
     <property role="TrG5h" value="MPSJavaSrcDataSource" />
-    <node concept="Wx3nA" id="3se2Fvx_xLH" role="jymVt">
-      <property role="TrG5h" value="LOG" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="3se2Fvx_wvZ" role="1B3o_S" />
-      <node concept="2YIFZM" id="3se2Fvx_z7e" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
-        <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
-        <node concept="3VsKOn" id="3se2Fvx_$eh" role="37wK5m">
-          <ref role="3VsUkX" node="3PyP5yK7WkA" resolve="MPSJavaSrcDataSource" />
-        </node>
-      </node>
-      <node concept="3uibUv" id="3se2Fvx_z4P" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
-      </node>
-    </node>
     <node concept="2tJIrI" id="3PyP5yK7X0M" role="jymVt" />
     <node concept="3clFbW" id="3PyP5yK7Wok" role="jymVt">
       <property role="od$2w" value="false" />
@@ -3344,16 +3313,20 @@
                     <node concept="3clFbS" id="3se2Fvx_mgp" role="1zc67A">
                       <node concept="3clFbF" id="3se2Fvx__wg" role="3cqZAp">
                         <node concept="2OqwBi" id="3se2Fvx_A$5" role="3clFbG">
-                          <node concept="37vLTw" id="2KujyEVMZ4u" role="2Oq$k0">
-                            <ref role="3cqZAo" node="3se2Fvx_xLH" resolve="LOG" />
-                          </node>
                           <node concept="liA8E" id="3se2Fvx_ESS" role="2OqNvi">
-                            <ref role="37wK5l" to="q7tw:~Category.warn(java.lang.Object,java.lang.Throwable)" resolve="warn" />
+                            <ref role="37wK5l" to="wwqx:~Logger.warning(java.lang.String,java.lang.Throwable)" resolve="warning" />
                             <node concept="Xl_RD" id="3se2Fvx_FUg" role="37wK5m">
                               <property role="Xl_RC" value="Failed to guess package name for java source stub model" />
                             </node>
                             <node concept="37vLTw" id="3se2Fvx_H2P" role="37wK5m">
                               <ref role="3cqZAo" node="3se2Fvx_mgl" resolve="e" />
+                            </node>
+                          </node>
+                          <node concept="2YIFZM" id="3se2Fvx_z7e" role="2Oq$k0">
+                            <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+                            <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+                            <node concept="3VsKOn" id="3se2Fvx_$eh" role="37wK5m">
+                              <ref role="3VsUkX" node="3PyP5yK7WkA" resolve="MPSJavaSrcDataSource" />
                             </node>
                           </node>
                         </node>

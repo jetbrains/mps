@@ -59,7 +59,6 @@
     <classNode dependClassName="jetbrains.mps.smodel.SModelOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.language.LanguageRegistry" />
     <classNode dependClassName="jetbrains.mps.smodel.language.LanguageRuntime" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SLanguage" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />
@@ -290,7 +289,6 @@
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.instructions.TryInstruction" />
     <classNode dependClassName="jetbrains.mps.lang.dataFlow.framework.instructions.WriteInstruction" />
     <classNode dependClassName="jetbrains.mps.logging.Logger" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
   </dependency>
   <dependency className="jetbrains.mps.lang.dataFlow.framework.VarSet">
     <classNode dependClassName="java.lang.Object" />

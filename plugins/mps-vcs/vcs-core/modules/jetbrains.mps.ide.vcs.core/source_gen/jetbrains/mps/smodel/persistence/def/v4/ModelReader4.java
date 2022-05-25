@@ -4,7 +4,6 @@ package jetbrains.mps.smodel.persistence.def.v4;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import org.jdom.Element;
 import jetbrains.mps.smodel.DefaultSModel;
 import org.jdom.Document;
@@ -28,7 +27,7 @@ import jetbrains.mps.util.SNodeOperations;
 
 @GeneratedClass(node = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)/453110257780704229", model = "r:8276e029-a527-420e-8e0f-72df2934554c(jetbrains.mps.smodel.persistence.def.v4)")
 public class ModelReader4 implements IModelReader {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(ModelReader4.class));
+  private static final Logger LOG = Logger.getLogger(ModelReader4.class);
   protected String getLegacyImportedModelUIDString(Element element) {
     return null;
   }

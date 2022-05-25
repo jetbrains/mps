@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,6 @@ import jetbrains.mps.smodel.runtime.LinkDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceDescriptor;
 import jetbrains.mps.smodel.runtime.StaticScope;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.ModelLoadingOption;
 
@@ -232,7 +231,7 @@ public interface MetaModelInfoProvider {
    * <p/>
    */
   class RegularMetaModelInfo extends BaseMetaModelInfo {
-    private static final Logger LOG = Logger.wrap(LogManager.getLogger(DefaultModelPersistence.class));
+    private static final Logger LOG = Logger.getLogger(DefaultModelPersistence.class);
     private final MetaModelInfoProvider myDebugRegistry;
 
     public RegularMetaModelInfo() {

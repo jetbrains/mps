@@ -26,8 +26,6 @@ import jetbrains.mps.persistence.PersistenceVersionAware;
 import jetbrains.mps.smodel.DefaultSModel.InvalidDefaultSModel;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Priority;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel.Problem.Kind;
@@ -41,7 +39,7 @@ import java.util.function.BiConsumer;
 
 public class DefaultSModelDescriptor extends LazyEditableSModelBase implements GeneratableSModel, PersistenceVersionAware, ModelWithAttributes {
   private static final String MODEL_FOLDER_FOR_GENERATION = "useModelFolderForGeneration";
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(DefaultSModelDescriptor.class));
+  private static final Logger LOG = Logger.getLogger(DefaultSModelDescriptor.class);
   private final LazyLoadFacility myPersistence;
 
   private SModelHeader myHeader;
@@ -230,7 +228,7 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
   @Override
   public void setChanged(boolean changed) {
     if (getRepository() != null && getSource().isReadOnly()) {
-      if (RuntimeFlags.isInternalMode() || LogManager.getLogger(DefaultSModelDescriptor.class).isEnabledFor(Priority.INFO)) {
+      if (RuntimeFlags.isInternalMode() || LOG.isInfoLevel()) {
         LOG.error("Attempt to change a model with read-only data source; subsequent save() would fail!", new Throwable());
       }
     }

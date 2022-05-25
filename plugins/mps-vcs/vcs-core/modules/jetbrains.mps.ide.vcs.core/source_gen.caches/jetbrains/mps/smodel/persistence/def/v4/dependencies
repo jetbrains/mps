@@ -75,7 +75,6 @@
     <classNode dependClassName="jetbrains.mps.vcspersistence.SNodeFactory" />
     <classNode dependClassName="jetbrains.mps.vcspersistence.VCSPersistenceSupport" />
     <classNode dependClassName="jetbrains.mps.vcspersistence.VCSPersistenceUtil" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.jdom.Document" />
     <classNode dependClassName="org.jdom.Element" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
@@ -101,7 +100,6 @@
     <classNode dependClassName="jetbrains.mps.util.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.vcspersistence.VCSPersistenceSupport" />
     <classNode dependClassName="jetbrains.mps.vcspersistence.VCSPersistenceUtil" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.jdom.Element" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelReference" />

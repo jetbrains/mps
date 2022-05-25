@@ -19,7 +19,6 @@
     <import index="gcrp" ref="r:b4441af2-7d93-477f-8f98-ff1136374539(jetbrains.mps.debugger.java.runtime.breakpoints)" />
     <import index="s8jc" ref="r:d716148b-c6f9-495f-b5e7-22263b704aca(jetbrains.mps.debugger.java.runtime.engine.requests)" />
     <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
-    <import index="e8no" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.containers(MPS.IDEA/)" />
     <import index="wpfk" ref="r:4abf334f-133f-4ef7-b458-4b8344e952fb(jetbrains.mps.debugger.java.runtime.engine.concurrent)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" />
     <import index="4nm9" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project(MPS.IDEA/)" />
@@ -39,7 +38,6 @@
     <import index="rpq9" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi.request(JDK-tools/)" />
     <import index="tz6k" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi.connect(JDK-tools/)" />
     <import index="5qx8" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi.event(JDK-tools/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -346,15 +344,11 @@
     <node concept="Wx3nA" id="7Lv9a5UcA5W" role="jymVt">
       <property role="TrG5h" value="LOG" />
       <property role="3TUv4t" value="true" />
-      <node concept="2YIFZM" id="17QXLl0ff_P" role="33vP2m">
-        <ref role="37wK5l" to="wwqx:~Logger.wrap(org.apache.log4j.Logger)" resolve="wrap" />
+      <node concept="2YIFZM" id="2hdoiXOXvyL" role="33vP2m">
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
-        <node concept="2YIFZM" id="17QXLl0ff_Q" role="37wK5m">
-          <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-          <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-          <node concept="3VsKOn" id="17QXLl0ff_R" role="37wK5m">
-            <ref role="3VsUkX" node="7Lv9a5UcA4I" resolve="RequestManager" />
-          </node>
+        <node concept="3VsKOn" id="2hdoiXOXvyM" role="37wK5m">
+          <ref role="3VsUkX" node="7Lv9a5UcA4I" resolve="RequestManager" />
         </node>
       </node>
       <node concept="3uibUv" id="1iIkS8Rkb1X" role="1tU5fm">
@@ -407,7 +401,7 @@
       <node concept="3Tm6S6" id="7Lv9a5UcA6g" role="1B3o_S" />
       <node concept="2ShNRf" id="7Lv9a5UcA6h" role="33vP2m">
         <node concept="1pGfFk" id="7Lv9a5UcA6i" role="2ShVmc">
-          <ref role="37wK5l" to="e8no:~HashMap.&lt;init&gt;()" resolve="HashMap" />
+          <ref role="37wK5l" to="33ny:~HashMap.&lt;init&gt;()" resolve="HashMap" />
           <node concept="3uibUv" id="7Lv9a5UcA6j" role="1pMfVU">
             <ref role="3uigEE" to="s8jc:2wxFklq8Gs9" resolve="Requestor" />
           </node>
@@ -465,7 +459,7 @@
       <node concept="3Tm6S6" id="7Lv9a5UcA6_" role="1B3o_S" />
       <node concept="2ShNRf" id="7Lv9a5UcA6A" role="33vP2m">
         <node concept="1pGfFk" id="7Lv9a5UcA6B" role="2ShVmc">
-          <ref role="37wK5l" to="e8no:~HashMap.&lt;init&gt;()" resolve="HashMap" />
+          <ref role="37wK5l" to="33ny:~HashMap.&lt;init&gt;()" resolve="HashMap" />
           <node concept="3uibUv" id="7Lv9a5UcA6C" role="1pMfVU">
             <ref role="3uigEE" to="s8jc:2wxFklq8Gs9" resolve="Requestor" />
           </node>
@@ -4091,16 +4085,16 @@
     <node concept="Wx3nA" id="7Lv9a5UcAoC" role="jymVt">
       <property role="TrG5h" value="LOG" />
       <property role="3TUv4t" value="false" />
-      <node concept="2YIFZM" id="Hn0$MvbYXL" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <node concept="3VsKOn" id="Hn0$MvbYXM" role="37wK5m">
+      <node concept="2YIFZM" id="2hdoiXOYEQc" role="33vP2m">
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+        <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+        <node concept="3VsKOn" id="2hdoiXOYEQd" role="37wK5m">
           <ref role="3VsUkX" node="7Lv9a5UcAoA" resolve="DebugProcessMulticaster" />
         </node>
       </node>
       <node concept="3Tm6S6" id="7Lv9a5UcAoE" role="1B3o_S" />
       <node concept="3uibUv" id="Hn0$MvbYXD" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+        <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
       </node>
     </node>
     <node concept="312cEg" id="7Lv9a5UcAoH" role="jymVt">
@@ -4304,7 +4298,7 @@
                         <ref role="3cqZAo" node="7Lv9a5UcAoC" resolve="LOG" />
                       </node>
                       <node concept="liA8E" id="7Lv9a5UcApR" role="2OqNvi">
-                        <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                        <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String,java.lang.Throwable)" resolve="error" />
                         <node concept="10Nm6u" id="4t57iE9VLs$" role="37wK5m" />
                         <node concept="37vLTw" id="3GM_nagTwkt" role="37wK5m">
                           <ref role="3cqZAo" node="7Lv9a5UcApT" resolve="t" />
@@ -4381,7 +4375,7 @@
                         <ref role="3cqZAo" node="7Lv9a5UcAoC" resolve="LOG" />
                       </node>
                       <node concept="liA8E" id="7Lv9a5UcAqi" role="2OqNvi">
-                        <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                        <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String,java.lang.Throwable)" resolve="error" />
                         <node concept="10Nm6u" id="4t57iE9VL$J" role="37wK5m" />
                         <node concept="37vLTw" id="3GM_nagTul3" role="37wK5m">
                           <ref role="3cqZAo" node="7Lv9a5UcAqk" resolve="t" />
@@ -4458,7 +4452,7 @@
                         <ref role="3cqZAo" node="7Lv9a5UcAoC" resolve="LOG" />
                       </node>
                       <node concept="liA8E" id="7Lv9a5UcAqI" role="2OqNvi">
-                        <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                        <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String,java.lang.Throwable)" resolve="error" />
                         <node concept="10Nm6u" id="4t57iE9VLGZ" role="37wK5m" />
                         <node concept="37vLTw" id="3GM_nagTzZn" role="37wK5m">
                           <ref role="3cqZAo" node="7Lv9a5UcAqK" resolve="t" />
@@ -4543,7 +4537,7 @@
                         <ref role="3cqZAo" node="7Lv9a5UcAoC" resolve="LOG" />
                       </node>
                       <node concept="liA8E" id="7Lv9a5UcArc" role="2OqNvi">
-                        <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                        <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String,java.lang.Throwable)" resolve="error" />
                         <node concept="10Nm6u" id="4t57iE9VLPj" role="37wK5m" />
                         <node concept="37vLTw" id="3GM_nagTz45" role="37wK5m">
                           <ref role="3cqZAo" node="7Lv9a5UcAre" resolve="t" />
@@ -4620,7 +4614,7 @@
                         <ref role="3cqZAo" node="7Lv9a5UcAoC" resolve="LOG" />
                       </node>
                       <node concept="liA8E" id="7Lv9a5UcArD" role="2OqNvi">
-                        <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                        <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String,java.lang.Throwable)" resolve="error" />
                         <node concept="10Nm6u" id="4t57iE9VLk2" role="37wK5m" />
                         <node concept="37vLTw" id="3GM_nagTyeP" role="37wK5m">
                           <ref role="3cqZAo" node="7Lv9a5UcArF" resolve="t" />
@@ -5376,17 +5370,17 @@
     </node>
     <node concept="Wx3nA" id="3L_P6qKHadD" role="jymVt">
       <property role="TrG5h" value="LOG" />
-      <property role="3TUv4t" value="false" />
+      <property role="3TUv4t" value="true" />
       <node concept="2YIFZM" id="3AvZeSkP3fo" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
+        <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <node concept="3VsKOn" id="3AvZeSkP3fp" role="37wK5m">
           <ref role="3VsUkX" node="3L_P6qKHacR" resolve="VmCreator" />
         </node>
       </node>
       <node concept="3Tm6S6" id="3L_P6qKHadF" role="1B3o_S" />
       <node concept="3uibUv" id="3AvZeSkP3fg" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+        <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
       </node>
     </node>
     <node concept="Wx3nA" id="3L_P6qKHadI" role="jymVt">
@@ -6016,7 +6010,7 @@
         <node concept="3clFbF" id="3L_P6qKHahr" role="3cqZAp">
           <node concept="2OqwBi" id="3AvZeSkP3fx" role="3clFbG">
             <node concept="liA8E" id="3AvZeSkP3fy" role="2OqNvi">
-              <ref role="37wK5l" to="q7tw:~Category.warn(java.lang.Object,java.lang.Throwable)" resolve="warn" />
+              <ref role="37wK5l" to="wwqx:~Logger.warning(java.lang.String,java.lang.Throwable)" resolve="warning" />
               <node concept="Xl_RD" id="3L_P6qKHahv" role="37wK5m">
                 <property role="Xl_RC" value="Create VM failed" />
               </node>
@@ -6899,7 +6893,7 @@
                               <ref role="3cqZAo" node="3L_P6qKHadD" resolve="LOG" />
                             </node>
                             <node concept="liA8E" id="3L_P6qKHajM" role="2OqNvi">
-                              <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object)" resolve="debug" />
+                              <ref role="37wK5l" to="wwqx:~Logger.debug(java.lang.String)" resolve="debug" />
                               <node concept="Xl_RD" id="3L_P6qKHajN" role="37wK5m">
                                 <property role="Xl_RC" value="Connector is ready." />
                               </node>
@@ -7004,7 +6998,7 @@
                                     <ref role="3cqZAo" node="3L_P6qKHadD" resolve="LOG" />
                                   </node>
                                   <node concept="liA8E" id="3L_P6qKHakK" role="2OqNvi">
-                                    <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object)" resolve="debug" />
+                                    <ref role="37wK5l" to="wwqx:~Logger.debug(java.lang.String)" resolve="debug" />
                                     <node concept="3cpWs3" id="3L_P6qKHakL" role="37wK5m">
                                       <node concept="Xl_RD" id="3L_P6qKHakM" role="3uHU7B">
                                         <property role="Xl_RC" value="Created VM " />
@@ -7074,7 +7068,7 @@
                               <ref role="3cqZAo" node="3L_P6qKHadD" resolve="LOG" />
                             </node>
                             <node concept="liA8E" id="3L_P6qKHakY" role="2OqNvi">
-                              <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object)" resolve="debug" />
+                              <ref role="37wK5l" to="wwqx:~Logger.debug(java.lang.String)" resolve="debug" />
                               <node concept="Xl_RD" id="3L_P6qKHakZ" role="37wK5m">
                                 <property role="Xl_RC" value="VM is null." />
                               </node>
@@ -7108,7 +7102,7 @@
                                           <ref role="1PxDUh" node="3L_P6qKHacR" resolve="VmCreator" />
                                         </node>
                                         <node concept="liA8E" id="3L_P6qKHald" role="2OqNvi">
-                                          <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object)" resolve="debug" />
+                                          <ref role="37wK5l" to="wwqx:~Logger.debug(java.lang.String)" resolve="debug" />
                                           <node concept="Xl_RD" id="3L_P6qKHale" role="37wK5m">
                                             <property role="Xl_RC" value="Schedule commit command." />
                                           </node>
@@ -7317,7 +7311,7 @@
                       <ref role="3cqZAo" node="3L_P6qKHadD" resolve="LOG" />
                     </node>
                     <node concept="liA8E" id="3L_P6qKHamK" role="2OqNvi">
-                      <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object)" resolve="debug" />
+                      <ref role="37wK5l" to="wwqx:~Logger.debug(java.lang.String)" resolve="debug" />
                       <node concept="Xl_RD" id="3L_P6qKHamL" role="37wK5m">
                         <property role="Xl_RC" value="Virtual Machine creation: server mode." />
                       </node>
@@ -7371,7 +7365,7 @@
                       <ref role="3cqZAo" node="3L_P6qKHadD" resolve="LOG" />
                     </node>
                     <node concept="liA8E" id="3L_P6qKHan4" role="2OqNvi">
-                      <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object)" resolve="debug" />
+                      <ref role="37wK5l" to="wwqx:~Logger.debug(java.lang.String)" resolve="debug" />
                       <node concept="Xl_RD" id="3L_P6qKHan5" role="37wK5m">
                         <property role="Xl_RC" value="Start listening" />
                       </node>
@@ -7414,7 +7408,7 @@
                           <ref role="3cqZAo" node="3L_P6qKHadD" resolve="LOG" />
                         </node>
                         <node concept="liA8E" id="3L_P6qKHanR" role="2OqNvi">
-                          <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object)" resolve="debug" />
+                          <ref role="37wK5l" to="wwqx:~Logger.debug(java.lang.String)" resolve="debug" />
                           <node concept="Xl_RD" id="3L_P6qKHanS" role="37wK5m">
                             <property role="Xl_RC" value="Start accepting." />
                           </node>

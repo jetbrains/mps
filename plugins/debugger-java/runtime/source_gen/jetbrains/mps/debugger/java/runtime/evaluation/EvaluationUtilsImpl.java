@@ -4,8 +4,7 @@ package jetbrains.mps.debugger.java.runtime.evaluation;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debugger.java.api.evaluation.EvaluationUtils;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import com.intellij.openapi.application.ApplicationManager;
 import com.sun.jdi.Value;
 import com.sun.jdi.ArrayReference;
@@ -52,7 +51,7 @@ import com.sun.jdi.ObjectReference;
 
 @GeneratedClass(node = "r:1f2ecb68-8f37-460f-acb8-866f8f05b15e(jetbrains.mps.debugger.java.runtime.evaluation)/3187167456722533876", model = "r:1f2ecb68-8f37-460f-acb8-866f8f05b15e(jetbrains.mps.debugger.java.runtime.evaluation)")
 public class EvaluationUtilsImpl extends EvaluationUtils {
-  private static final Logger LOG = LogManager.getLogger(EvaluationUtilsImpl.class);
+  private static final Logger LOG = Logger.getLogger(EvaluationUtilsImpl.class);
   public EvaluationUtilsImpl() {
   }
   @Override

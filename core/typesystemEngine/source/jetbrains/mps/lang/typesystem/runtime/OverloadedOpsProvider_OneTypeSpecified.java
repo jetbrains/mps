@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@ import jetbrains.mps.errors.IRuleConflictWarningProducer;
 import jetbrains.mps.lang.pattern.util.MatchingUtil;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.typesystem.inference.SubtypingManager;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -71,6 +70,6 @@ public abstract class OverloadedOpsProvider_OneTypeSpecified implements IOverloa
 
   @Override
   public void reportConflict(IRuleConflictWarningProducer warningProducer) {
-    Logger.wrap(LogManager.getLogger(getApplicableConcept().getQualifiedName())).warning("conflicting rules for overloaded operation type detected " + String.valueOf(myOperandType));
+    Logger.getLogger(warningProducer.getClass()).warning("conflicting rules for overloaded operation type detected " + myOperandType);
   }
 }

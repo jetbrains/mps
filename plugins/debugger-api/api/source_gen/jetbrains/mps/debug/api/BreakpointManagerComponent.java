@@ -10,7 +10,6 @@ import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.components.PersistentStateComponent;
 import org.jdom.Element;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import java.util.Set;
@@ -33,7 +32,7 @@ import org.jetbrains.annotations.Nullable;
 )
 @GeneratedClass(node = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)/4474271214082915303", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
 public class BreakpointManagerComponent implements ProjectComponent, PersistentStateComponent<Element> {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(BreakpointManagerComponent.class));
+  private static final Logger LOG = Logger.getLogger(BreakpointManagerComponent.class);
   private static final String BREAKPOINTS_LIST_ELEMENT = "breakpointsList";
   private static final DummyIO DUMMY_IO = new DummyIO();
   /**

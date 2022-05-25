@@ -5,7 +5,6 @@ package jetbrains.mps.kotlin.ide.commonStubs;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.LazyEditableSModelBase;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import java.util.Collection;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.extapi.persistence.FolderSetDataSource;
@@ -51,7 +50,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 @GeneratedClass(node = "r:6c6710f1-72ef-4241-9ac5-bafd05beea2c(jetbrains.mps.kotlin.ide.commonStubs)/2728382324535686216", model = "r:6c6710f1-72ef-4241-9ac5-bafd05beea2c(jetbrains.mps.kotlin.ide.commonStubs)")
 public class KotlinCommonStubModelDescriptor extends LazyEditableSModelBase {
-  private static Logger LOG = Logger.wrap(LogManager.getLogger(KotlinCommonStubModelDescriptor.class));
+  private static final Logger LOG = Logger.getLogger(KotlinCommonStubModelDescriptor.class);
   private Collection<SModelReference> myImportsToAdd = null;
 
   public KotlinCommonStubModelDescriptor(SModelReference modelReference, FolderSetDataSource source) {

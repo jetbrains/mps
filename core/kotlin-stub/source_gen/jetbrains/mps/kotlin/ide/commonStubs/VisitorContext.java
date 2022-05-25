@@ -4,7 +4,6 @@ package jetbrains.mps.kotlin.ide.commonStubs;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import jetbrains.mps.java.stub.ReferenceFactory;
 import jetbrains.mps.references.Reference;
 import java.util.Map;
@@ -29,7 +28,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 @GeneratedClass(node = "r:6c6710f1-72ef-4241-9ac5-bafd05beea2c(jetbrains.mps.kotlin.ide.commonStubs)/8055674930054566950", model = "r:6c6710f1-72ef-4241-9ac5-bafd05beea2c(jetbrains.mps.kotlin.ide.commonStubs)")
 public class VisitorContext {
-  private static Logger LOG = Logger.wrap(LogManager.getLogger(VisitorContext.class));
+  private static final Logger LOG = Logger.getLogger(VisitorContext.class);
 
   private ReferenceFactory myReferenceFactory;
   public ReferenceFactory getReferenceFactory() {

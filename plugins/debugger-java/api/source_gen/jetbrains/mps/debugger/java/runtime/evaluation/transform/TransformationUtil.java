@@ -4,7 +4,6 @@ package jetbrains.mps.debugger.java.runtime.evaluation.transform;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -34,7 +33,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 @GeneratedClass(node = "r:7f073096-c94d-44be-8c16-e03c412508f0(jetbrains.mps.debugger.java.runtime.evaluation.transform)/2476748692227887190", model = "r:7f073096-c94d-44be-8c16-e03c412508f0(jetbrains.mps.debugger.java.runtime.evaluation.transform)")
 public class TransformationUtil {
-  private static Logger LOG = Logger.wrap(LogManager.getLogger(TransformationUtil.class));
+  private static final Logger LOG = Logger.getLogger(TransformationUtil.class);
   public TransformationUtil() {
   }
   public static void replaceArrayConstructor(SNode newArrayExpression, SNode fqNameNode, SNode size) {

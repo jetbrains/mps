@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ import jetbrains.mps.openapi.navigation.EditorNavigator;
 import jetbrains.mps.openapi.navigation.ProjectPaneNavigator;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.smodel.SNodeUtil;
-import org.apache.log4j.LogManager;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -35,7 +34,7 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import javax.swing.Icon;
 
 public class NodeNodeData extends AbstractResultNodeData {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(NodeNodeData.class));
+  private static final Logger LOG = Logger.getLogger(NodeNodeData.class);
 
   private static final String NODE = "nodePtr";
   private static final String IS_ROOT = "isRoot";

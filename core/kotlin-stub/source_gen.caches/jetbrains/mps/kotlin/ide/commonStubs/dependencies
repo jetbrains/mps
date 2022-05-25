@@ -100,7 +100,6 @@
     <classNode dependClassName="kotlinx.metadata.KmVariance" />
     <classNode dependClassName="kotlinx.metadata.internal.metadata.ProtoBuf" />
     <classNode dependClassName="kotlinx.metadata.internal.metadata.deserialization.Flags" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SEnumerationLiteral" />
@@ -207,7 +206,6 @@
     <classNode dependClassName="kotlinx.metadata.internal.metadata.builtins.BuiltInsBinaryVersion" />
     <classNode dependClassName="kotlinx.metadata.internal.metadata.deserialization.BinaryVersion" />
     <classNode dependClassName="kotlinx.metadata.internal.metadata.deserialization.NameResolverImpl" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
@@ -421,7 +419,6 @@
     <classNode dependClassName="jetbrains.mps.references.Reference" />
     <classNode dependClassName="jetbrains.mps.smodel.SNode" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SInterfaceConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />

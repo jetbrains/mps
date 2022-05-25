@@ -29,7 +29,6 @@
     <import index="frkw" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi(JDK-tools/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
@@ -8537,15 +8536,12 @@
     <node concept="3Tm1VV" id="29vbt0Ia11s" role="1B3o_S" />
     <node concept="Wx3nA" id="29vbt0Ia11n" role="jymVt">
       <property role="TrG5h" value="LOG" />
-      <node concept="2YIFZM" id="17QXLl0f3Fw" role="33vP2m">
-        <ref role="37wK5l" to="wwqx:~Logger.wrap(org.apache.log4j.Logger)" resolve="wrap" />
+      <property role="3TUv4t" value="true" />
+      <node concept="2YIFZM" id="2hdoiXOUmTc" role="33vP2m">
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
-        <node concept="2YIFZM" id="17QXLl0f3Fx" role="37wK5m">
-          <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-          <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-          <node concept="3VsKOn" id="17QXLl0f3Fy" role="37wK5m">
-            <ref role="3VsUkX" node="29vbt0Ia11m" resolve="TransformationUtil" />
-          </node>
+        <node concept="3VsKOn" id="2hdoiXOUmTd" role="37wK5m">
+          <ref role="3VsUkX" node="29vbt0Ia11m" resolve="TransformationUtil" />
         </node>
       </node>
       <node concept="3Tm6S6" id="29vbt0Ia11o" role="1B3o_S" />

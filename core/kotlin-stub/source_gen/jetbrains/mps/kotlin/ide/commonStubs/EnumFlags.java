@@ -4,7 +4,6 @@ package jetbrains.mps.kotlin.ide.commonStubs;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import kotlinx.metadata.internal.metadata.ProtoBuf;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
@@ -19,7 +18,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 @GeneratedClass(node = "r:6c6710f1-72ef-4241-9ac5-bafd05beea2c(jetbrains.mps.kotlin.ide.commonStubs)/6505065053931584762", model = "r:6c6710f1-72ef-4241-9ac5-bafd05beea2c(jetbrains.mps.kotlin.ide.commonStubs)")
 public class EnumFlags {
-  private static Logger LOG = Logger.wrap(LogManager.getLogger(EnumFlags.class));
+  private static final Logger LOG = Logger.getLogger(EnumFlags.class);
 
   public static SNode getVisibility(ProtoBuf.Visibility visibilityFlag) {
     switch (visibilityFlag) {

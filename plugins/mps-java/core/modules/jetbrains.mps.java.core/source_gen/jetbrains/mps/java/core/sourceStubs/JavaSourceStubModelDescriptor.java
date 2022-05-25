@@ -6,7 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.smodel.RegularModelDescriptor;
 import org.jetbrains.mps.openapi.persistence.MultiStreamDataSourceListener;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import java.util.Map;
 import java.util.Set;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -46,7 +45,7 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 
 @GeneratedClass(node = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)/4423331261408224789", model = "r:39747a8f-4d04-48b7-83c5-4b4f5e43330c(jetbrains.mps.java.core.sourceStubs)")
 public class JavaSourceStubModelDescriptor extends RegularModelDescriptor implements MultiStreamDataSourceListener {
-  private static Logger LOG = Logger.wrap(LogManager.getLogger(JavaSourceStubModelDescriptor.class));
+  private static Logger LOG = Logger.getLogger(JavaSourceStubModelDescriptor.class);
   private boolean myIsLoadInProgress = false;
   private Map<String, Set<SNode>> myRootsPerFile = MapSequence.fromMap(new HashMap<String, Set<SNode>>());
   private Map<SNodeId, SNode> myRootsById = MapSequence.fromMap(new HashMap<SNodeId, SNode>());

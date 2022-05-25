@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,7 +45,6 @@ import jetbrains.mps.util.Cancellable;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.WeakSet;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -94,7 +93,7 @@ public class IncrementalTypechecking extends ReportingTypechecking<State, TypeSy
 
   private NonTypeSystemComponent myNonTypeSystemComponent;
 
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(IncrementalTypechecking.class));
+  private static final Logger LOG = Logger.getLogger(IncrementalTypechecking.class);
 
   private NodeTypeAccess myNodeTypeAccess = new NodeTypeAccess();
 

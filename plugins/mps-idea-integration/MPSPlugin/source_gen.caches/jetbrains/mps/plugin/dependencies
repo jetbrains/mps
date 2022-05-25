@@ -159,7 +159,6 @@
     <classNode dependClassName="jetbrains.mps.plugin.IIDEAHandler" />
     <classNode dependClassName="jetbrains.mps.plugin.IMPSPlugin" />
     <classNode dependClassName="jetbrains.mps.plugin.IProjectHandler" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
   </dependency>
   <dependency className="jetbrains.mps.plugin.MPSProjectIDEHandler">
     <classNode dependClassName="com.intellij.execution.rmi.RemoteServer" />
@@ -221,8 +220,6 @@
     <classNode dependClassName="jetbrains.mps.textgen.trace.TraceablePositionInfo" />
     <classNode dependClassName="jetbrains.mps.util.NameUtil" />
     <classNode dependClassName="jetbrains.mps.util.Pair" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jetbrains.annotations.NonNls" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
@@ -271,7 +268,6 @@
     <classNode dependClassName="jetbrains.mps.ide.ThreadUtils" />
     <classNode dependClassName="jetbrains.mps.logging.Logger" />
     <classNode dependClassName="jetbrains.mps.plugin.MPSPlugin" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode extendsClassName="com.intellij.openapi.wm.StatusBarWidget" />

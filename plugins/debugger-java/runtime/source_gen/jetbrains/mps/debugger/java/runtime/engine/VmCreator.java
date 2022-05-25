@@ -4,8 +4,7 @@ package jetbrains.mps.debugger.java.runtime.engine;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debug.api.AbstractDebugSessionCreator;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.util.Map;
 import com.sun.jdi.connect.Connector;
 import jetbrains.mps.debugger.java.api.settings.DebugConnectionSettings;
@@ -44,7 +43,7 @@ import java.util.Iterator;
 
 @GeneratedClass(node = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)/4352118152439833399", model = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)")
 public class VmCreator extends AbstractDebugSessionCreator {
-  private static Logger LOG = LogManager.getLogger(VmCreator.class);
+  private static final Logger LOG = Logger.getLogger(VmCreator.class);
   private static final int LOCAL_START_TIMEOUT = 15000;
   /*package*/ static final String SOCKET_ATTACHING_CONNECTOR_NAME = "com.sun.jdi.SocketAttach";
   /*package*/ static final String SHMEM_ATTACHING_CONNECTOR_NAME = "com.sun.jdi.SharedMemoryAttach";
@@ -107,7 +106,7 @@ public class VmCreator extends AbstractDebugSessionCreator {
   }
   private void createVmFailed(Throwable t) {
     createVmFailed(t.getMessage());
-    LOG.warn("Create VM failed", t);
+    LOG.warning("Create VM failed", t);
   }
   private void createVmFailed(String message) {
     myEventsProcessor.getSystemMessagesReporter().reportError(message);

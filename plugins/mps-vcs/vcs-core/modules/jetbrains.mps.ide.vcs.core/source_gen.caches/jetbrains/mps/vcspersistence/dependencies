@@ -32,6 +32,7 @@
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="javax.xml.parsers.ParserConfigurationException" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
+    <classNode dependClassName="jetbrains.mps.logging.Logger" />
     <classNode dependClassName="jetbrains.mps.smodel.DefaultSModel" />
     <classNode dependClassName="jetbrains.mps.smodel.SModel" />
     <classNode dependClassName="jetbrains.mps.smodel.SModelHeader" />
@@ -53,8 +54,6 @@
     <classNode dependClassName="jetbrains.mps.util.JDOMUtil" />
     <classNode dependClassName="jetbrains.mps.util.xml.BreakParseSAXException" />
     <classNode dependClassName="jetbrains.mps.util.xml.XMLSAXHandler" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jdom.Document" />
     <classNode dependClassName="org.jdom.JDOMException" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
@@ -75,6 +74,7 @@
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.extapi.model.ModelWithAttributes" />
     <classNode dependClassName="jetbrains.mps.extapi.persistence.ModelFactoryService" />
+    <classNode dependClassName="jetbrains.mps.logging.Logger" />
     <classNode dependClassName="jetbrains.mps.persistence.ByteArrayInputSource" />
     <classNode dependClassName="jetbrains.mps.persistence.PersistenceUtil" />
     <classNode dependClassName="jetbrains.mps.persistence.PersistenceVersionAware" />
@@ -92,7 +92,6 @@
     <classNode dependClassName="jetbrains.mps.util.FileUtil" />
     <classNode dependClassName="jetbrains.mps.util.Pair" />
     <classNode dependClassName="jetbrains.mps.vcspersistence.VCSPersistenceSupport" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModel" />

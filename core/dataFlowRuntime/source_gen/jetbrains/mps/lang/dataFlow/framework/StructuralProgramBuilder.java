@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import jetbrains.mps.lang.dataFlow.framework.instructions.InstructionBuilder;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,7 +29,7 @@ public abstract class StructuralProgramBuilder<N> {
   protected final List<Runnable> myInvokeLater;
   protected final Map<N, Map<String, Integer>> myLabels;
   protected final InstructionBuilder instructionBuilder;
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(StructuralProgramBuilder.class));
+  private static final Logger LOG = Logger.getLogger(StructuralProgramBuilder.class);
   private final ProgramBuilderContext myBuilderContext;
   public StructuralProgramBuilder(InstructionBuilder instructionBuilder, ProgramBuilderContext context) {
     this.myLabels = new HashMap<>();

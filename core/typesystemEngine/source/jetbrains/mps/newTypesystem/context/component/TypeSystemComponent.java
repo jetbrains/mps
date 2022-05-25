@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,20 +23,22 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.newTypesystem.context.typechecking.IncrementalTypechecking;
 import jetbrains.mps.newTypesystem.state.State;
-import org.apache.log4j.LogManager;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.smodel.*;
-import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.smodel.NodeReadEventsCaster;
 import jetbrains.mps.util.Pair;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /*
  *   Non-reenterable.
  */
 /*package*/ public class TypeSystemComponent extends IncrementalTypecheckingComponent<State> implements ITypeErrorComponent {
-  protected static final Logger LOG = Logger.wrap(LogManager.getLogger(TypeSystemComponent.class));
+  protected static final Logger LOG = Logger.getLogger(TypeSystemComponent.class);
 
   private Map<SNode, Set<SNode>> myNodesToDependentNodes;
 

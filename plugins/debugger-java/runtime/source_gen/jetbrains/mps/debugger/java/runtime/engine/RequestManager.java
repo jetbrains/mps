@@ -5,12 +5,11 @@ package jetbrains.mps.debugger.java.runtime.engine;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.debugger.java.runtime.engine.requests.IRequestManager;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import java.util.Map;
 import jetbrains.mps.debugger.java.runtime.engine.requests.Requestor;
 import java.util.Set;
 import com.sun.jdi.request.EventRequest;
-import com.intellij.util.containers.HashMap;
+import java.util.HashMap;
 import com.sun.jdi.request.EventRequestManager;
 import jetbrains.mps.debugger.java.runtime.engine.events.EventsProcessor;
 import java.util.List;
@@ -48,7 +47,7 @@ import jetbrains.mps.debug.api.breakpoints.IBreakpoint;
 
 @GeneratedClass(node = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)/8961922059449033006", model = "r:0b933946-5ee4-42ea-9b69-bd1790a8e611(jetbrains.mps.debugger.java.runtime.engine)")
 public class RequestManager implements IRequestManager {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(RequestManager.class));
+  private static final Logger LOG = Logger.getLogger(RequestManager.class);
   private static final Object REQUESTOR = new Object();
   private static final Object CLASS_NAME = new Object();
   private final Map<Requestor, Set<EventRequest>> myRequestorToBelongedRequests = new HashMap<Requestor, Set<EventRequest>>();

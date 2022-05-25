@@ -16,7 +16,7 @@ import jetbrains.mps.persistence.PreinstalledModelFactoryTypes;
 import jetbrains.mps.persistence.PersistenceUtil;
 import org.jetbrains.mps.openapi.persistence.ModelSaveException;
 import java.io.IOException;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.persistence.datasource.FileExtensionDataSourceType;
 import jetbrains.mps.smodel.persistence.def.ModelReadException;
 import jetbrains.mps.smodel.SModelHeader;

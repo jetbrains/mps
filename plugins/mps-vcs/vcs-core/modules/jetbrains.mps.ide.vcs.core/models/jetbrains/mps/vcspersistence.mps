@@ -6,7 +6,6 @@
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
   </languages>
   <imports>
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="5fzo" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.persistence.def(MPS.Core/)" />
     <import index="18ew" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.util(MPS.Core/)" />
     <import index="kart" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:org.xml.sax(JDK/)" />
@@ -38,6 +37,7 @@
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="ends" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.extapi.persistence(MPS.Core/)" />
     <import index="bxo2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence.datasource(MPS.OpenAPI/)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -294,11 +294,11 @@
       <property role="TrG5h" value="LOG" />
       <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="4BapoMDjgA_" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+        <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
       </node>
       <node concept="2YIFZM" id="4BapoMDjjff" role="33vP2m">
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
+        <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <node concept="3VsKOn" id="4BapoMDjgAC" role="37wK5m">
           <ref role="3VsUkX" node="4BapoMDjgzV" resolve="VCSPersistenceSupport" />
         </node>
@@ -776,7 +776,7 @@
                   <ref role="3cqZAo" node="4BapoMDjgA$" resolve="LOG" />
                 </node>
                 <node concept="liA8E" id="4jSfnmsLt$F" role="2OqNvi">
-                  <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object,java.lang.Throwable)" resolve="debug" />
+                  <ref role="37wK5l" to="wwqx:~Logger.debug(java.lang.String,java.lang.Throwable)" resolve="debug" />
                   <node concept="3cpWs3" id="4jSfnmsLt$v" role="37wK5m">
                     <node concept="Xl_RD" id="4jSfnmsLt$w" role="3uHU7B">
                       <property role="Xl_RC" value="unsupported version requested " />
@@ -2165,7 +2165,7 @@
                     <ref role="3cqZAo" node="4BapoMDjgA$" resolve="LOG" />
                   </node>
                   <node concept="liA8E" id="4BapoMDjCy9" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                    <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String,java.lang.Throwable)" resolve="error" />
                     <node concept="2OqwBi" id="4BapoMDjCyd" role="37wK5m">
                       <node concept="37vLTw" id="4BapoMDjCyc" role="2Oq$k0">
                         <ref role="3cqZAo" node="4BapoMDjgR4" resolve="e" />
@@ -3050,15 +3050,15 @@
             <node concept="3clFbS" id="3oQv0AQ8Hhe" role="1zc67A">
               <node concept="3clFbF" id="3oQv0AQ8DLY" role="3cqZAp">
                 <node concept="2OqwBi" id="3oQv0AQ8K5p" role="3clFbG">
-                  <node concept="2YIFZM" id="3oQv0AQ8Jg1" role="2Oq$k0">
-                    <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
-                    <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
-                    <node concept="3VsKOn" id="3oQv0AQ8JFy" role="37wK5m">
+                  <node concept="2YIFZM" id="2hdoiXODyip" role="2Oq$k0">
+                    <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+                    <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+                    <node concept="3VsKOn" id="2hdoiXODyiq" role="37wK5m">
                       <ref role="3VsUkX" node="1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
                     </node>
                   </node>
                   <node concept="liA8E" id="3oQv0AQ8K_L" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                    <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String,java.lang.Throwable)" resolve="error" />
                     <node concept="Xl_RD" id="3oQv0AQ8LxY" role="37wK5m">
                       <property role="Xl_RC" value="savePerRootModel" />
                     </node>
@@ -3205,14 +3205,14 @@
               <node concept="3clFbF" id="3oQv0AQ98r6" role="3cqZAp">
                 <node concept="2OqwBi" id="3oQv0AQ98r7" role="3clFbG">
                   <node concept="2YIFZM" id="3oQv0AQ98r8" role="2Oq$k0">
-                    <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
-                    <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
+                    <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+                    <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
                     <node concept="3VsKOn" id="3oQv0AQ98r9" role="37wK5m">
                       <ref role="3VsUkX" node="1NiMOxiwPcH" resolve="VCSPersistenceUtil" />
                     </node>
                   </node>
                   <node concept="liA8E" id="3oQv0AQ98ra" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                    <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String,java.lang.Throwable)" resolve="error" />
                     <node concept="Xl_RD" id="3oQv0AQ98rb" role="37wK5m">
                       <property role="Xl_RC" value="saveModel" />
                     </node>

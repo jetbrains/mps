@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,18 @@
 package jetbrains.mps.lang.typesystem.runtime;
 
 import jetbrains.mps.errors.IRuleConflictWarningProducer;
-import jetbrains.mps.logging.Logger;
-import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
-import org.apache.log4j.LogManager;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.SubtypingManager;
 import jetbrains.mps.typesystem.inference.TypeChecker;
+import jetbrains.mps.typesystem.inference.TypeCheckerHelper;
 import jetbrains.mps.util.CollectionUtil;
+import org.jetbrains.mps.openapi.model.SNode;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 public class OverloadedOperationsManager {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(OverloadedOperationsManager.class));
-
   private RuleSet<IOverloadedOpsTypesProvider> myOperationsToTypeProviders =
       new RuleSet<>();
 

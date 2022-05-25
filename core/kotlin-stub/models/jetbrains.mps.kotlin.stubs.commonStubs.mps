@@ -30,7 +30,6 @@
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
     <import index="4it6" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.loading(MPS.Core/)" />
     <import index="tzbx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.nodeidmap(MPS.Core/)" />
@@ -1352,15 +1351,12 @@
     <property role="3GE5qa" value="model.descriptor" />
     <node concept="Wx3nA" id="5HlCeYoHvYL" role="jymVt">
       <property role="TrG5h" value="LOG" />
-      <node concept="2YIFZM" id="17QXLl0fvYI" role="33vP2m">
+      <property role="3TUv4t" value="true" />
+      <node concept="2YIFZM" id="2hdoiXOQYb3" role="33vP2m">
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
-        <ref role="37wK5l" to="wwqx:~Logger.wrap(org.apache.log4j.Logger)" resolve="wrap" />
-        <node concept="2YIFZM" id="17QXLl0fvYJ" role="37wK5m">
-          <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-          <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-          <node concept="3VsKOn" id="17QXLl0fvYK" role="37wK5m">
-            <ref role="3VsUkX" node="2ntakj1pRh8" resolve="KotlinCommonStubModelDescriptor" />
-          </node>
+        <node concept="3VsKOn" id="2hdoiXOQYb4" role="37wK5m">
+          <ref role="3VsUkX" node="2ntakj1pRh8" resolve="KotlinCommonStubModelDescriptor" />
         </node>
       </node>
       <node concept="3uibUv" id="1iIkS8Rm0VG" role="1tU5fm">
@@ -2824,15 +2820,12 @@
     <property role="TrG5h" value="EnumFlags" />
     <node concept="Wx3nA" id="2Fzt74RqCWo" role="jymVt">
       <property role="TrG5h" value="LOG" />
-      <node concept="2YIFZM" id="2Fzt74RqCWp" role="33vP2m">
+      <property role="3TUv4t" value="true" />
+      <node concept="2YIFZM" id="2hdoiXOQGlb" role="33vP2m">
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
-        <ref role="37wK5l" to="wwqx:~Logger.wrap(org.apache.log4j.Logger)" resolve="wrap" />
-        <node concept="2YIFZM" id="2Fzt74RqCWq" role="37wK5m">
-          <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-          <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-          <node concept="3VsKOn" id="2Fzt74RqCWr" role="37wK5m">
-            <ref role="3VsUkX" node="5D6Cze4pzNU" resolve="EnumFlags" />
-          </node>
+        <node concept="3VsKOn" id="2hdoiXOQGlc" role="37wK5m">
+          <ref role="3VsUkX" node="5D6Cze4pzNU" resolve="EnumFlags" />
         </node>
       </node>
       <node concept="3uibUv" id="2Fzt74RqCWs" role="1tU5fm">
@@ -9353,15 +9346,12 @@
     <property role="TrG5h" value="VisitorContext" />
     <node concept="Wx3nA" id="2Fzt74Rpra4" role="jymVt">
       <property role="TrG5h" value="LOG" />
-      <node concept="2YIFZM" id="2Fzt74Rpra5" role="33vP2m">
+      <property role="3TUv4t" value="true" />
+      <node concept="2YIFZM" id="2hdoiXOQL2Z" role="33vP2m">
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
-        <ref role="37wK5l" to="wwqx:~Logger.wrap(org.apache.log4j.Logger)" resolve="wrap" />
-        <node concept="2YIFZM" id="2Fzt74Rpra6" role="37wK5m">
-          <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-          <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-          <node concept="3VsKOn" id="2Fzt74Rpra7" role="37wK5m">
-            <ref role="3VsUkX" node="6ZbwqG7V1gA" resolve="VisitorContext" />
-          </node>
+        <node concept="3VsKOn" id="2hdoiXOQL30" role="37wK5m">
+          <ref role="3VsUkX" node="6ZbwqG7V1gA" resolve="VisitorContext" />
         </node>
       </node>
       <node concept="3uibUv" id="2Fzt74Rpra8" role="1tU5fm">

@@ -4,8 +4,7 @@ package jetbrains.mps.debugger.java.runtime.ui.evaluation;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import javax.swing.JPanel;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import com.intellij.openapi.actionSystem.DataKey;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.IEvaluationContainer;
 import jetbrains.mps.debugger.java.runtime.state.DebugSession;
@@ -27,7 +26,7 @@ import jetbrains.mps.debugger.java.api.state.proxy.JavaStackFrame;
 
 @GeneratedClass(node = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)/7406771907178600108", model = "r:b4456070-b665-4c03-b3d3-15a7362ba923(jetbrains.mps.debugger.java.runtime.ui.evaluation)")
 public abstract class EvaluationUi extends JPanel {
-  private static final Logger LOG = LogManager.getLogger(EvaluationUi.class);
+  private static final Logger LOG = Logger.getLogger(EvaluationUi.class);
   public static final DataKey<IEvaluationContainer> EVALUATION_CONTAINER = DataKey.create("Evaluation Container");
   public static final DataKey<DebugSession> DEBUG_SESSION = DataKey.create("Debug Session");
   @NotNull

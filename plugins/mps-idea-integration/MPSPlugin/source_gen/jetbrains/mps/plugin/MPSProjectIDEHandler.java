@@ -6,7 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.rmi.server.UnicastRemoteObject;
 import com.intellij.openapi.components.ProjectComponent;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.execution.rmi.RemoteServer;
 import java.rmi.RemoteException;
@@ -73,7 +72,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 @GeneratedClass(node = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)/8632185942131071134", model = "r:20925211-384c-4c5f-b751-56b79dd3b32e(jetbrains.mps.plugin)")
 public class MPSProjectIDEHandler extends UnicastRemoteObject implements IMPSIDEHandler, ProjectComponent {
   private static final Logger LOG_1373119566 = Logger.getLogger(MPSProjectIDEHandler.class);
-  private static final org.apache.log4j.Logger LOG = LogManager.getLogger(MPSProjectIDEHandler.class);
+  private static final Logger LOG = Logger.getLogger(MPSProjectIDEHandler.class);
   private Project myProject;
 
   static {

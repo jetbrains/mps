@@ -11,7 +11,7 @@
     <import index="5qx8" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi.event(JDK-tools/)" />
     <import index="frkw" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi(JDK-tools/)" />
     <import index="rpq9" ref="b387285c-3448-452c-b3bb-a3f8de8eaf08/java:com.sun.jdi.request(JDK-tools/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
   </imports>
   <registry>
@@ -252,15 +252,15 @@
       <property role="TrG5h" value="LOG" />
       <property role="3TUv4t" value="true" />
       <node concept="2YIFZM" id="Hn0$MvbYv2" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
+        <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <node concept="3VsKOn" id="Hn0$MvbYv3" role="37wK5m">
           <ref role="3VsUkX" node="5ABJGODLc2W" resolve="StepRequestor" />
         </node>
       </node>
       <node concept="3Tm6S6" id="5ABJGODLc35" role="1B3o_S" />
       <node concept="3uibUv" id="Hn0$MvbYuU" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+        <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
       </node>
     </node>
     <node concept="312cEg" id="5ABJGODLc38" role="jymVt">
@@ -481,6 +481,9 @@
                 <node concept="3uibUv" id="5ABJGODLc3P" role="nSUat">
                   <ref role="3uigEE" to="frkw:~IncompatibleThreadStateException" resolve="IncompatibleThreadStateException" />
                 </node>
+                <node concept="3uibUv" id="2hdoiXP0ATL" role="nSUat">
+                  <ref role="3uigEE" to="frkw:~AbsentInformationException" resolve="AbsentInformationException" />
+                </node>
               </node>
             </node>
             <node concept="3clFbS" id="5ABJGODLc3I" role="1zc67A">
@@ -490,37 +493,9 @@
                     <ref role="3cqZAo" node="5ABJGODLc33" resolve="LOG" />
                   </node>
                   <node concept="liA8E" id="5ABJGODLc3M" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                    <node concept="10Nm6u" id="4t57iE9VMZg" role="37wK5m" />
+                    <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.Throwable)" resolve="error" />
                     <node concept="37vLTw" id="3GM_nagTw$z" role="37wK5m">
                       <ref role="3cqZAo" node="5ABJGODLc3O" resolve="e" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3uVAMA" id="5ABJGODLc3Q" role="1zxBo5">
-            <node concept="XOnhg" id="5ABJGODLc3X" role="1zc67B">
-              <property role="3TUv4t" value="false" />
-              <property role="TrG5h" value="e" />
-              <node concept="nSUau" id="xvs04dGZX$" role="1tU5fm">
-                <node concept="3uibUv" id="5ABJGODLc3Y" role="nSUat">
-                  <ref role="3uigEE" to="frkw:~AbsentInformationException" resolve="AbsentInformationException" />
-                </node>
-              </node>
-            </node>
-            <node concept="3clFbS" id="5ABJGODLc3R" role="1zc67A">
-              <node concept="3clFbF" id="5ABJGODLc3S" role="3cqZAp">
-                <node concept="2OqwBi" id="5ABJGODLc3T" role="3clFbG">
-                  <node concept="37vLTw" id="2BHiRxeop2a" role="2Oq$k0">
-                    <ref role="3cqZAo" node="5ABJGODLc33" resolve="LOG" />
-                  </node>
-                  <node concept="liA8E" id="5ABJGODLc3V" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                    <node concept="10Nm6u" id="4t57iE9VNex" role="37wK5m" />
-                    <node concept="37vLTw" id="3GM_nagTt8W" role="37wK5m">
-                      <ref role="3cqZAo" node="5ABJGODLc3X" resolve="e" />
                     </node>
                   </node>
                 </node>
@@ -878,6 +853,9 @@
                     <node concept="3uibUv" id="5ABJGODLc63" role="nSUat">
                       <ref role="3uigEE" to="frkw:~IncompatibleThreadStateException" resolve="IncompatibleThreadStateException" />
                     </node>
+                    <node concept="3uibUv" id="2hdoiXP0HEF" role="nSUat">
+                      <ref role="3uigEE" to="frkw:~AbsentInformationException" resolve="AbsentInformationException" />
+                    </node>
                   </node>
                 </node>
                 <node concept="3clFbS" id="5ABJGODLc5W" role="1zc67A">
@@ -887,37 +865,9 @@
                         <ref role="3cqZAo" node="5ABJGODLc33" resolve="LOG" />
                       </node>
                       <node concept="liA8E" id="5ABJGODLc60" role="2OqNvi">
-                        <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                        <node concept="10Nm6u" id="4t57iE9VNV8" role="37wK5m" />
+                        <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.Throwable)" resolve="error" />
                         <node concept="37vLTw" id="3GM_nagTBat" role="37wK5m">
                           <ref role="3cqZAo" node="5ABJGODLc62" resolve="e" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
-                </node>
-              </node>
-              <node concept="3uVAMA" id="5ABJGODLc64" role="1zxBo5">
-                <node concept="XOnhg" id="5ABJGODLc6b" role="1zc67B">
-                  <property role="3TUv4t" value="false" />
-                  <property role="TrG5h" value="e" />
-                  <node concept="nSUau" id="xvs04dGZWe" role="1tU5fm">
-                    <node concept="3uibUv" id="5ABJGODLc6c" role="nSUat">
-                      <ref role="3uigEE" to="frkw:~AbsentInformationException" resolve="AbsentInformationException" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3clFbS" id="5ABJGODLc65" role="1zc67A">
-                  <node concept="3clFbF" id="5ABJGODLc66" role="3cqZAp">
-                    <node concept="2OqwBi" id="5ABJGODLc67" role="3clFbG">
-                      <node concept="37vLTw" id="2BHiRxeonLK" role="2Oq$k0">
-                        <ref role="3cqZAo" node="5ABJGODLc33" resolve="LOG" />
-                      </node>
-                      <node concept="liA8E" id="5ABJGODLc69" role="2OqNvi">
-                        <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
-                        <node concept="10Nm6u" id="4t57iE9VOob" role="37wK5m" />
-                        <node concept="37vLTw" id="3GM_nagTu5L" role="37wK5m">
-                          <ref role="3cqZAo" node="5ABJGODLc6b" resolve="e" />
                         </node>
                       </node>
                     </node>
