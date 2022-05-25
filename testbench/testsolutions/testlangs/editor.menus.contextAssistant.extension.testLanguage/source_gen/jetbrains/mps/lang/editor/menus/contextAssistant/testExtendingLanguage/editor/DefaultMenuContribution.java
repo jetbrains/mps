@@ -71,7 +71,7 @@ public class DefaultMenuContribution extends TransformationMenuBase {
       try {
         description = "single item: " + item.getLabelText("");
       } catch (Throwable t) {
-        org.apache.log4j.Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
+        Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
         return null;
       }
       context.getEditorMenuTrace().pushTraceInfo();
@@ -122,7 +122,7 @@ public class DefaultMenuContribution extends TransformationMenuBase {
       try {
         description = "single item: " + item.getLabelText("");
       } catch (Throwable t) {
-        org.apache.log4j.Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
+        Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
         return null;
       }
       context.getEditorMenuTrace().pushTraceInfo();
