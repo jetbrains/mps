@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.extapi.model;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.FastNodeFinder;
 import jetbrains.mps.smodel.SModel.ImportElement;
 import jetbrains.mps.smodel.SModelInternal;
@@ -22,8 +23,6 @@ import jetbrains.mps.smodel.event.SModelListener;
 import jetbrains.mps.smodel.event.SModelListener.SModelListenerPriority;
 import jetbrains.mps.smodel.event.SModelRenamedEvent;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -48,7 +47,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public abstract class SModelDescriptorStub implements SModelInternal, SModel, FastNodeFinder.Factory {
 
-  private static final Logger LOG = LogManager.getLogger(SModelDescriptorStub.class);
+  private static final Logger LOG = Logger.getLogger(SModelDescriptorStub.class);
 
   private final List<SModelListener> myModelListeners = new CopyOnWriteArrayList<>();
 
@@ -97,7 +96,7 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
       try {
         sModelListener.beforeModelRenamed(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -108,7 +107,7 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
       try {
         sModelListener.modelRenamed(event);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -123,7 +122,7 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
       try {
         sModelListener.modelLoadingStateChanged(this, newState);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -133,7 +132,7 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
       try {
         sModelListener.beforeModelDisposed(model);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }
@@ -143,7 +142,7 @@ public abstract class SModelDescriptorStub implements SModelInternal, SModel, Fa
       try {
         sModelListener.modelSaved(this);
       } catch (Throwable t) {
-        LOG.error(null, t);
+        LOG.error(t);
       }
     }
   }

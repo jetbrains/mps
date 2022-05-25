@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.ComponentPlugin;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.core.platform.DynamicComponentWarden.Token;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -132,7 +132,7 @@ public class DynamicComponentPlugin extends ComponentPlugin implements Component
         Logger.getLogger(DynamicComponentPlugin.class).info(m);
       } else {
         String m = String.format("Attempt to remove unknown component instance %s", componentInstance);
-        Logger.getLogger(DynamicComponentPlugin.class).warn(m);
+        Logger.getLogger(DynamicComponentPlugin.class).warning(m);
       }
     }
     componentInstance.dispose(); // FIXME guard with try/catch?

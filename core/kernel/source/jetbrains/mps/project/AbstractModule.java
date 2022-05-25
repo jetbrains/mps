@@ -23,6 +23,7 @@ import jetbrains.mps.extapi.module.ModelDiscoveryDelta;
 import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.module.SRepositoryBase;
 import jetbrains.mps.extapi.persistence.ModelRootBase;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.persistence.MementoImpl;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
@@ -34,8 +35,6 @@ import jetbrains.mps.smodel.SModelInternal;
 import jetbrains.mps.util.annotation.Hack;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.openapi.FileSystem;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -98,7 +97,7 @@ import static org.jetbrains.mps.openapi.module.FacetsFacade.FacetFactory;
  */
 @Immutable
 public abstract class AbstractModule extends SModuleBase implements EditableSModule {
-  private static final Logger LOG = LogManager.getLogger(AbstractModule.class);
+  private static final Logger LOG = Logger.getLogger(AbstractModule.class);
 
   public static final String MODULE_DIR = "module";
   public static final String CLASSES_GEN = "classes_gen";
@@ -295,7 +294,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   public void setChanged() {
     assertCanChange();
     if (isReadOnly()) {
-      LOG.warn("Changing read-only module " + this);
+      LOG.warning("Changing read-only module " + this);
     }
     if (!myChanged) {
       myChanged = true;
@@ -499,7 +498,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   }
 
   private void createUnknownFacet(FacetsFacade facetsFacade, String facetType, Memento memento) {
-    LOG.warn(String.format("no registered factory for a facet with type=`%s'", facetType));
+    LOG.warning(String.format("no registered factory for a facet with type=`%s'", facetType));
     SModuleFacet unknownFacet = new UnknownFacet(facetType, this);
     unknownFacet.load(memento);
     myFacets.add(unknownFacet);
@@ -636,7 +635,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   public final void updateModelsSet() {
     for (SModel model : getModels()) {
       if (model instanceof EditableSModel && ((EditableSModel) model).isChanged()) {
-        LOG.warn(
+        LOG.warning(
             "Trying to reload module " + getModuleName() + " which contains a non-saved model '" +
             model.getName() + "'. To prevent data loss, MPS will not update models in this module. " +
             "Please save your work and restart MPS. See MPS-18743 for details."
@@ -850,7 +849,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
     Integer res = moduleDescriptor.getLanguageVersions().get(usedLanguage);
     if (res == null) {
       if (check) {
-        LOG.warn(String.format(
+        LOG.warning(String.format(
             "#getUsedLanguageVersion can't find a version for language %s in module %s, so it is falling back to the current version of the language. " +
             "Probably the language is not imported into this module or #validateLanguageVersions() was not called on this module in appropriate moment." +
             "NB: there might be migrations which must be applied, however they are not going to.",
@@ -896,7 +895,7 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
   @Contract("null -> false")
   private boolean checkDescriptorNotNull(ModuleDescriptor moduleDescriptor) {
     if (moduleDescriptor == null) {
-      LOG.warn("Descriptor is null " + this + "; returning -1");
+      LOG.warning("Descriptor is null " + this + "; returning -1");
       return false;
     }
     return true;

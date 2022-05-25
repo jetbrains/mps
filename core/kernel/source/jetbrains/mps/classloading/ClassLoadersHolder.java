@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,14 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.classloading.MPSClassLoadersRegistry.ModuleClassLoaderDisposer;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.SRepositoryListener;
-import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.Arrays;
@@ -41,12 +39,12 @@ import java.util.Set;
  * @see ClassLoaderManager#myLoadableCondition
  */
 public class ClassLoadersHolder {
-  private static final Logger LOG = LogManager.getLogger(ClassLoadersHolder.class);
+  private static final Logger LOG = Logger.getLogger(ClassLoadersHolder.class);
 
   private static final List<String> INTERNAL_EXCLUDES = Arrays.asList("jetbrains.mps.samples.xmlPersistence", "TestBehaviorReflective");
 
   private final MPSClassLoadersRegistry myCLRegistry;
-  private final SRepositoryListener myRepositoryListener = new SRepositoryListenerBase() {
+  private final SRepositoryListener myRepositoryListener = new SRepositoryListener() {
     @Override
     public void moduleAdded(@NotNull SModule module) {
       checkPluginIsValid(module);
@@ -56,7 +54,7 @@ public class ClassLoadersHolder {
       CustomClassLoadingFacet customClassLoadingFacet = module.getFacet(CustomClassLoadingFacet.class);
       if (customClassLoadingFacet != null) {
         if (!customClassLoadingFacet.isValid() && !INTERNAL_EXCLUDES.contains(module.getModuleName())) {
-          LOG.warn("Facet of the module " + module + " is not valid --" +
+          LOG.warning("Facet of the module " + module + " is not valid --" +
               " possibly the provided idea plugin (in the properties dialog/idea plugin facet tab) cannot be found among the bundled plugins");
         }
       }

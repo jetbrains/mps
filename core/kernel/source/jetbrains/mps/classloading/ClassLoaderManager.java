@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,14 +17,13 @@ package jetbrains.mps.classloading;
 
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.module.ReloadableModule.DeploymentStatus;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.NotCondition;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
@@ -163,7 +162,7 @@ import static jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress
  */
 @SuppressWarnings("unchecked")
 public class ClassLoaderManager implements CoreComponent {
-  private static final Logger LOG = LogManager.getLogger(ClassLoaderManager.class);
+  private static final Logger LOG = Logger.getLogger(ClassLoaderManager.class);
 
   private static ClassLoaderManager INSTANCE;
 
@@ -422,7 +421,7 @@ public class ClassLoaderManager implements CoreComponent {
         LOG.debug("Loading " + modulesToLoad.size() + " modules");
         monitor.advance(1);
         if (!filterModules(modulesToLoad, myUnloadedCondition).isEmpty()) {
-          LOG.warn("Some modules are not preloaded yet : cannot load them");
+          LOG.warning("Some modules are not preloaded yet : cannot load them");
         }
         myClassLoadersHolder.doLoadModules(modulesToLoad);
         return modulesToLoad;

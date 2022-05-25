@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,10 +18,9 @@ package jetbrains.mps.classloading;
 import jetbrains.mps.classloading.DeployListener.ResourceTrackerCallback;
 import jetbrains.mps.classloading.MPSClassLoadersRegistry.ModuleClassLoaderDisposer;
 import jetbrains.mps.classloading.MPSClassLoadersRegistry.ModuleClassLoaderDisposer.DisposeSession;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.module.ReloadableModuleBase;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.TestOnly;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -41,7 +40,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * Guarantees that the listeners are invoked in write action
  */
 public class ClassLoadingBroadCaster {
-  private static final Logger LOG = LogManager.getLogger(ClassLoadingBroadCaster.class);
+  private static final Logger LOG = Logger.getLogger(ClassLoadingBroadCaster.class);
   private static final int MAX_SESSIONS_ALIVE = 100; // fixme to be fixed in 201, PluginLoaderRegistry is not up to the desired CLM model
   private static boolean ourCheckMemLeaks = true;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,10 +18,10 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
 import jetbrains.mps.extapi.persistence.FileSystemBasedDataSource;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ModelComputeRunnable;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -35,7 +35,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
 
 /**
  * Bridge VFS and Model worlds in MPS.
@@ -191,7 +190,7 @@ public class SModelFileTracker {
 
       var ds = (FileSystemBasedDataSource) source;
       for (var file : ds.getAffectedFiles()) {
-        LogManager.getLogger(SModelFileTracker.class).debug("path->model:" + file + md.getReference());
+        Logger.getLogger(SModelFileTracker.class).debug("path->model:" + file + md.getReference());
         myPathsToModels.put(file, md.getReference());
       }
     }

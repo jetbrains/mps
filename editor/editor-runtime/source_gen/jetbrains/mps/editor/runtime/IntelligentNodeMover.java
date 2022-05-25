@@ -9,7 +9,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import java.util.ArrayList;
 import jetbrains.mps.util.ComputeRunnable;
@@ -45,7 +44,7 @@ public class IntelligentNodeMover {
   private SContainmentLink myCommonNodesContainmentLink;
   private SNode myCommonNodesParent;
 
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(IntelligentNodeMover.class));
+  private static final Logger LOG = Logger.getLogger(IntelligentNodeMover.class);
   public IntelligentNodeMover(@NotNull SNode node, @NotNull EditorContext editorContext, boolean forward) {
     this(CollectionSequence.fromCollectionAndArray(new ArrayList<SNode>(), node), editorContext, forward);
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,17 +24,12 @@ import jetbrains.mps.persistence.DataSourceFactoryNotFoundException;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.persistence.NoSourceRootsInModelRootException;
 import jetbrains.mps.persistence.SourceRootDoesNotExistException;
-import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.smodel.event.SModelRenamedEvent;
-import jetbrains.mps.util.SNodeOperations;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeChangeListener;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
 import org.jetbrains.mps.openapi.model.SaveOptions;
 import org.jetbrains.mps.openapi.model.SaveResult;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -55,7 +50,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public abstract class EditableSModelBase extends SModelBase implements EditableSModel {
 
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(EditableSModelBase.class));
+  private static final Logger LOG = Logger.getLogger(EditableSModelBase.class);
   protected final ModelSourceChangeTracker myTimestampTracker;
   @NotNull private volatile StorageMemoryConflictResolver<EditableSModel> myConflictResolver = createDefaultResolver();
   private final AtomicBoolean myResolveConflictInProgress = new AtomicBoolean();

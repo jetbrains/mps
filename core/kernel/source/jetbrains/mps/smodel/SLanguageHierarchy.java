@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,13 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies;
 import jetbrains.mps.util.IterableUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
@@ -45,8 +44,8 @@ import java.util.stream.Collectors;
  * @author Artem Tikhomirov
  */
 public class SLanguageHierarchy {
-  private final static Logger LOG = LogManager.getLogger(SLanguageHierarchy.class);
-  private final static ErrorHandler DEFAULT_HANDLER = language -> LOG.warn(String.format("The language '%s' is not deployed", language));
+  private final static Logger LOG = Logger.getLogger(SLanguageHierarchy.class);
+  private final static ErrorHandler DEFAULT_HANDLER = language -> LOG.warning(String.format("The language '%s' is not deployed", language));
 
   private final LanguageRegistry myRegistry;
   private final Collection<SLanguage> myLanguages;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,10 @@
 package jetbrains.mps.core.aspects.feedback.api;
 
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
 import jetbrains.mps.smodel.language.LanguageRuntime;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -28,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SLanguage;
 import java.util.stream.Stream;
 
 public final class FeedbackAspectRegistry implements CoreComponent {
-  private static final Logger LOG = LogManager.getLogger(FeedbackAspectRegistry.class);
+  private static final Logger LOG = Logger.getLogger(FeedbackAspectRegistry.class);
 
   private final LanguageRegistry myLanguageRegistry;
   private final MyLanguageRegistryListener myListener = new MyLanguageRegistryListener();
@@ -42,7 +41,7 @@ public final class FeedbackAspectRegistry implements CoreComponent {
     Stream<FeedbackPerConceptDescriptor> descriptors = null;
     LanguageRuntime conceptLang = myLanguageRegistry.getLanguage(concept.getLanguage());
     if (conceptLang == null) {
-      LOG.warn("No language for: " + concept + ", while looking for the feedback descriptor.");
+      LOG.warning("No language for: " + concept + ", while looking for the feedback descriptor.");
     } else {
       FeedbackAspect aspect = conceptLang.getAspect(FeedbackAspect.class);
       if (aspect != null) {
@@ -60,7 +59,7 @@ public final class FeedbackAspectRegistry implements CoreComponent {
     Stream<FeedbackDescriptor> descriptors = Stream.empty();
     LanguageRuntime conceptLang = myLanguageRegistry.getLanguage(language);
     if (conceptLang == null) {
-      LOG.warn("No language for: " + language + ", while looking for the feedback descriptor.");
+      LOG.warning("No language for: " + language + ", while looking for the feedback descriptor.");
     } else {
       FeedbackAspect aspect = conceptLang.getAspect(FeedbackAspect.class);
       if (aspect != null) {

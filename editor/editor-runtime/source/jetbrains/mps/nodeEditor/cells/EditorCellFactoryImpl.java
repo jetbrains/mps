@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,7 +52,7 @@ import java.util.stream.Stream;
  * Date: 4/24/13
  */
 public class EditorCellFactoryImpl implements EditorCellFactory {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(EditorCellFactoryImpl.class));
+  private static final Logger LOG = Logger.getLogger(EditorCellFactoryImpl.class);
 
   private static final EditorCellContext DEFAULT_CELL_CONTEXT = Collections::emptySet;
   public static final String BASE_COMMENT_HINT = "jetbrains.mps.lang.core.editor.BaseEditorContextHints.comment";

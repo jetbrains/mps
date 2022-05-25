@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.classloading.ModuleUpdater.SearchError;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.util.annotation.Hack;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
@@ -68,7 +67,7 @@ import static jetbrains.mps.classloading.ModulesWatcher.DefaultStatuses.VALID;
  * @see {@code ClassLoaderManager#myWatchableCondition}
  */
 public class ModulesWatcher {
-  private static final Logger LOG = LogManager.getLogger(ModulesWatcher.class);
+  private static final Logger LOG = Logger.getLogger(ModulesWatcher.class);
 
   private final Object myStatusMapLock = new Object();
 
@@ -104,7 +103,7 @@ public class ModulesWatcher {
     } else {
       synchronized (myStatusMapLock) {
         if (!myStatusMap.containsKey(mRef)) {
-          LOG.warn("No classloading status is found for the module " + mRef);
+          LOG.warning("No classloading status is found for the module " + mRef);
           return INVALID_NO_RECORD;
         } else {
           return myStatusMap.get(mRef);
@@ -167,8 +166,8 @@ public class ModulesWatcher {
         String message = String.format("%d modules are marked as invalid roots for class loading out of %d modules [totally in the repository]:",
                                        invalidModules.size(),
                                        getAllModules().size());
-        LOG.warn(message);
-        printMap(invalidModules, LOG::warn);
+        LOG.warning(message);
+        printMap(invalidModules, LOG::warning);
       }
 
       traceInvalidDeps(invalidModules.keySet(), allInvalidModules);
@@ -184,7 +183,7 @@ public class ModulesWatcher {
 
   private void traceInvalidDeps(Collection<? extends SModuleReference> rootInvalid,
                                 Collection<? extends SModuleReference> allInvalid) {
-    if (LOG.isTraceEnabled()) {
+    if (LOG.isTraceLevel()) {
       for (var module : allInvalid) {
         Collection<SModuleReference> directDependencies = getDirectDependencies(Collections.singleton(module));
         directDependencies.remove(module);
@@ -368,7 +367,7 @@ public class ModulesWatcher {
 
   boolean isModuleWatched(ReloadableModule module) {
     if (isChanged()) {
-      LOG.warn("The class loading status info might be outdated");
+      LOG.warning("The class loading status info might be outdated");
     }
     return getAllModules().contains(module.getModuleReference());
   }

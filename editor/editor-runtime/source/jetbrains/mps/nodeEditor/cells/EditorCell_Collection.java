@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import jetbrains.mps.editor.runtime.cells.AbstractCellAction;
 import jetbrains.mps.editor.runtime.style.Padding;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorCell_WithComponent;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout;
@@ -48,8 +49,6 @@ import jetbrains.mps.openapi.editor.selection.SelectionListener;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.util.ConditionalIterable;
 import jetbrains.mps.util.NameUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SConceptFeature;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -72,7 +71,7 @@ import java.util.List;
  * Created Sep 14, 2003
  */
 public class EditorCell_Collection extends EditorCell_Basic implements jetbrains.mps.openapi.editor.cells.EditorCell_Collection, SynchronizeableEditorCell {
-  private static Logger LOG = LogManager.getLogger(EditorCell_Collection.class);
+  private static Logger LOG = Logger.getLogger(EditorCell_Collection.class);
 
   public static final String FOLDED_TEXT = "...";
 
@@ -195,14 +194,6 @@ public class EditorCell_Collection extends EditorCell_Basic implements jetbrains
 
   public boolean hasCellListHandler() {
     return myCellListHandler != null;
-  }
-
-@Deprecated(since = "2018.3", forRemoval = true)
-  public String getCellNodesRole() {
-    if (myCellListHandler == null) {
-      return null;
-    }
-    return myCellListHandler.getElementRole();
   }
 
   public SConceptFeature getCellNodesSRole() {

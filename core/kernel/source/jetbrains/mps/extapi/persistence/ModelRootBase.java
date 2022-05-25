@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@ package jetbrains.mps.extapi.persistence;
 import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.module.ModelDiscoveryDelta;
 import jetbrains.mps.extapi.module.SModuleBase;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -184,7 +184,7 @@ public abstract class ModelRootBase implements ModelRoot {
     Iterable<SModel> allModels = loadModels();
     for (SModel model : allModels) {
       if (loaded.contains(model.getModelId())) {
-        LOG.warn(String.format("loadModels() returned model `%s' twice; ignore second instance", model));
+        LOG.warning(String.format("loadModels() returned model `%s' twice; ignore second instance", model));
         continue;
       }
       loaded.add(model.getModelId());
@@ -196,9 +196,9 @@ public abstract class ModelRootBase implements ModelRoot {
         //     reloading them? Still, the logic not to reload could be kept separate from 'extract' one.
         if (model.getModelRoot() != null) {
           if (oldModel.getModelRoot() != model.getModelRoot()) {
-            LOG.warn(String.format("Trying to load model `%s' which is already loaded by another model root; new instance ignored", model));
+            LOG.warning(String.format("Trying to load model `%s' which is already loaded by another model root; new instance ignored", model));
           } else if (model.getModelRoot() != ModelRootBase.this) {
-            LOG.warn(String.format("Trying to re-use model `%s' from another model root; ignored", model));
+            LOG.warning(String.format("Trying to re-use model `%s' from another model root; ignored", model));
           } else {
             // case oldModel == model is here as well, no need to check explicitly
             // we are going to re-use oldModel instance just need to make sure listeners get notified about model reloaded
@@ -209,7 +209,7 @@ public abstract class ModelRootBase implements ModelRoot {
         }
         // inv: oldModel.getModelRoot() != null (presumably, ==this); model.getModelRoot() == null; oldModel.modelID == model.modelID
         if (oldModel.getModelRoot() != this) {
-          LOG.warn(String.format("Try loaded model `%s' which has been already contributed by another model root", model));
+          LOG.warning(String.format("Try loaded model `%s' which has been already contributed by another model root", model));
           mdd.unregisterModel(oldModel);
           mdd.registerModel(model, this);
           continue;

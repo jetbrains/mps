@@ -1,12 +1,12 @@
 /*
- * Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.nodeEditor.cellMenu;
 
 import com.intellij.codeInsight.CodeInsightSettings;
 import com.intellij.util.ConcurrencyUtil;
 import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.ide.ThreadUtils;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.IntelligentInputUtil;
 import jetbrains.mps.nodeEditor.SubstituteActionComparator;
@@ -15,8 +15,6 @@ import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.TypecheckingSession;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -30,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 
 public class CompletionHelper {
 
-  private static final Logger LOG = LogManager.getLogger(CompletionHelper.class);
+  private static final Logger LOG = Logger.getLogger(CompletionHelper.class);
 
   // can be shared among all helpers
   private static final ScheduledExecutorService scheduler = ConcurrencyUtil.newSingleScheduledThreadExecutor("CompletionHelper");

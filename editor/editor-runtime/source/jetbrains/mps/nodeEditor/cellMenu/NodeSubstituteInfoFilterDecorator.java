@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,13 +15,12 @@
  */
 package jetbrains.mps.nodeEditor.cellMenu;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.SubstituteAction;
 import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.PatternUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SRepository;
 
@@ -31,7 +30,7 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 public abstract class NodeSubstituteInfoFilterDecorator implements SubstituteInfo {
-  private static final Logger LOG = LogManager.getLogger(NodeSubstituteInfoFilterDecorator.class);
+  private static final Logger LOG = Logger.getLogger(NodeSubstituteInfoFilterDecorator.class);
 
 
   @NotNull

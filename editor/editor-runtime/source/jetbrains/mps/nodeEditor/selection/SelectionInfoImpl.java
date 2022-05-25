@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.nodeEditor.selection;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.nodeEditor.cells.DefaultCellInfo;
 import jetbrains.mps.openapi.editor.EditorComponent;
@@ -23,8 +24,6 @@ import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.openapi.editor.selection.SelectionInfo;
 import jetbrains.mps.openapi.editor.selection.SelectionStoreException;
 import jetbrains.mps.smodel.ModelAccessHelper;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -40,7 +39,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class SelectionInfoImpl implements SelectionInfo {
-  private static final Logger LOG = LogManager.getLogger(SelectionInfoImpl.class);
+  private static final Logger LOG = Logger.getLogger(SelectionInfoImpl.class);
 
   private static final String CLASS_NAME_ATTRIBUTE = "className";
   private static final String MODULE_ID_ATTRIBUTE = "moduleID";
@@ -134,7 +133,7 @@ public class SelectionInfoImpl implements SelectionInfo {
       Constructor<Selection> constructor = ((Class<Selection>) selectionClass).getConstructor(EditorComponent.class, Map.class, CellInfo.class);
       return constructor.newInstance(editorComponent, myProperties, myCellInfo);
     } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InstantiationException e) {
-      LOG.error(null, e);
+      LOG.error(e);
       return null;
     } catch (InvocationTargetException e) {
       if (e.getTargetException() instanceof SelectionRestoreException) {
@@ -146,7 +145,7 @@ public class SelectionInfoImpl implements SelectionInfo {
          */
         return null;
       }
-      LOG.error(null, e);
+      LOG.error(e);
       return null;
     }
   }

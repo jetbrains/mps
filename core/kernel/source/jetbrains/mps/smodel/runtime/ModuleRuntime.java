@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ package jetbrains.mps.smodel.runtime;
 
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.components.ComponentHost;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -71,7 +71,7 @@ public final class ModuleRuntime {
     try {
       final Class<?> activatorClass = myModuleClassLoader.loadClass(cn);
       if (!Activator.class.isAssignableFrom(activatorClass)) {
-        Logger.getLogger(getClass()).warn(String.format("Class %s is not instance of MR.Activator, ignored", cn));
+        Logger.getLogger(getClass()).warning(String.format("Class %s is not instance of MR.Activator, ignored", cn));
         return;
       }
       Constructor<? extends Activator> cc = activatorClass.asSubclass(Activator.class).getConstructor(ComponentHost.class);
@@ -82,9 +82,9 @@ public final class ModuleRuntime {
         Logger.getLogger(getClass()).error(String.format("Module activator %s (%s) failed", cn, myModuleReference.getModuleName()), th);
       }
     } catch (IllegalAccessException | InstantiationException | InvocationTargetException ex) {
-      Logger.getLogger(getClass()).warn(String.format("Failed to instantiate activator %s", cn), ex);
+      Logger.getLogger(getClass()).warning(String.format("Failed to instantiate activator %s", cn), ex);
     } catch (NoSuchMethodException | SecurityException ex) {
-      Logger.getLogger(getClass()).warn(String.format("Constructor of activator class %s is not available:%s", cn, ex.getMessage()));
+      Logger.getLogger(getClass()).warning(String.format("Constructor of activator class %s is not available:%s", cn, ex.getMessage()));
     } catch (ClassNotFoundException ex) {
       // ignore; expected scenario as long as we try to guess name of activator class;
     }

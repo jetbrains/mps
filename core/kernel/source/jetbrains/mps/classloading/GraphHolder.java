@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,7 @@
  */
 package jetbrains.mps.classloading;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -28,7 +27,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class GraphHolder<V> {
-  private static final Logger LOG = LogManager.getLogger(GraphHolder.class);
+  private static final Logger LOG = Logger.getLogger(GraphHolder.class);
   private final Graph<V> myGraph;
   private final Graph<V> myConjugateGraph; // transposed graph
 

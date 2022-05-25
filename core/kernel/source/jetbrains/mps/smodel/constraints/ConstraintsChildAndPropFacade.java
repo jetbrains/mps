@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,11 @@ package jetbrains.mps.smodel.constraints;
 
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintContext;
 import jetbrains.mps.core.aspects.feedback.messages.FailingPropertyConstraintProblem;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.language.ConceptRegistryUtil;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.PropertyConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.impl.CheckingNodeContextImpl;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SDataType;
@@ -32,13 +31,13 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Here we expose API for external constraints invocation
+ * Here we expose API for external constraint invocation
  * See also the legacy counterpart {@link ModelConstraints}
  *
  * @author apyshkin
  */
 public final class ConstraintsChildAndPropFacade {
-  private static final Logger LOG = LogManager.getLogger(ConstraintsChildAndPropFacade.class);
+  private static final Logger LOG = Logger.getLogger(ConstraintsChildAndPropFacade.class);
 
   private ConstraintsChildAndPropFacade() {}
 

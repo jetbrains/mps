@@ -15,10 +15,10 @@
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="gp7a" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.dependency(MPS.Core/)" />
     <import index="t6h5" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang.reflect(JDK/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1264,12 +1264,12 @@
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="log" />
             <node concept="3uibUv" id="7rEOvdELAAc" role="1tU5fm">
-              <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+              <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
             </node>
-            <node concept="2YIFZM" id="7rEOvdELIBZ" role="33vP2m">
-              <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-              <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-              <node concept="3VsKOn" id="7rEOvdELIC0" role="37wK5m">
+            <node concept="2YIFZM" id="53xcdKDHqPc" role="33vP2m">
+              <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+              <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+              <node concept="3VsKOn" id="53xcdKDHqPd" role="37wK5m">
                 <ref role="3VsUkX" node="7rEOvdELAzG" resolve="ModulesScope" />
               </node>
             </node>
@@ -1382,7 +1382,7 @@
                             <ref role="3cqZAo" node="7rEOvdELAAa" resolve="log" />
                           </node>
                           <node concept="liA8E" id="7rEOvdELIDU" role="2OqNvi">
-                            <ref role="37wK5l" to="q7tw:~Category.warn(java.lang.Object)" resolve="warn" />
+                            <ref role="37wK5l" to="wwqx:~Logger.warning(java.lang.String)" resolve="warning" />
                             <node concept="3cpWs3" id="7rEOvdELIDV" role="37wK5m">
                               <node concept="Xl_RD" id="7rEOvdELIDW" role="3uHU7B">
                                 <property role="Xl_RC" value="module not found " />
@@ -1884,12 +1884,12 @@
             <property role="3TUv4t" value="true" />
             <property role="TrG5h" value="log" />
             <node concept="3uibUv" id="7rEOvdELB1$" role="1tU5fm">
-              <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+              <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
             </node>
-            <node concept="2YIFZM" id="7rEOvdELIF8" role="33vP2m">
-              <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-              <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-              <node concept="3VsKOn" id="7rEOvdELIF9" role="37wK5m">
+            <node concept="2YIFZM" id="53xcdKDGl26" role="33vP2m">
+              <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+              <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+              <node concept="3VsKOn" id="53xcdKDGl27" role="37wK5m">
                 <ref role="3VsUkX" node="7rEOvdELB0i" resolve="ModelsScope" />
               </node>
             </node>
@@ -2002,7 +2002,7 @@
                             <ref role="3cqZAo" node="7rEOvdELB1y" resolve="log" />
                           </node>
                           <node concept="liA8E" id="7rEOvdELIFJ" role="2OqNvi">
-                            <ref role="37wK5l" to="q7tw:~Category.warn(java.lang.Object)" resolve="warn" />
+                            <ref role="37wK5l" to="wwqx:~Logger.warning(java.lang.String)" resolve="warning" />
                             <node concept="3cpWs3" id="7rEOvdELIFK" role="37wK5m">
                               <node concept="Xl_RD" id="7rEOvdELIFL" role="3uHU7B">
                                 <property role="Xl_RC" value="model not found " />

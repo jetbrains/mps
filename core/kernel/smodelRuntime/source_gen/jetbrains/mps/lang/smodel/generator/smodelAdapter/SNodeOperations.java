@@ -4,7 +4,6 @@ package jetbrains.mps.lang.smodel.generator.smodelAdapter;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import jetbrains.mps.RuntimeFlags;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -36,7 +35,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6599163591527286941", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public class SNodeOperations {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(SNodeOperations.class));
+  private static final Logger LOG = Logger.getLogger(SNodeOperations.class);
   private static boolean ourCastExceptionsEnabled = RuntimeFlags.isExceptionOnBadCast();
   /**
    * Empty list of nodes that can't be modified helps to detect otherwise hard to catch

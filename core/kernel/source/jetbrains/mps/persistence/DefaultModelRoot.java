@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,12 +29,11 @@ import jetbrains.mps.extapi.persistence.SourceRootKinds;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryFromName;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.extapi.persistence.datasource.PreinstalledDataSourceTypes;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.DataSourceFactoryBridge.DSourceAndOptions;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -87,7 +86,7 @@ import static org.jetbrains.mps.openapi.persistence.MFProblem.NO_PROBLEM;
  */
 @SuppressWarnings("UnstableApiUsage")
 public final class DefaultModelRoot extends FileBasedModelRoot implements CopyableModelRoot<DefaultModelRoot> {
-  private static final Logger LOG = LogManager.getLogger(DefaultModelRoot.class);
+  private static final Logger LOG = Logger.getLogger(DefaultModelRoot.class);
   private final ModelFactoryRegistry myModelFactoryRegistry;
   private final DataSourceFactoryRuleService myDataSourceRegistry;
 
@@ -141,7 +140,7 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
       if (contentDir == null) {
         LOG.error(String.format("Bad model root (no content location nor sources) for module %s", getModule()));
       } else {
-        LOG.warn(String.format("No source roots specified for location %s of module %s, no models were loaded", contentDir, getModule()));
+        LOG.warning(String.format("No source roots specified for location %s of module %s, no models were loaded", contentDir, getModule()));
       }
       return Collections.emptyList();
     }
@@ -165,7 +164,7 @@ public final class DefaultModelRoot extends FileBasedModelRoot implements Copyab
     });
     modelSourceRootWalker.traverse(sourceRoot);
     if (result.isEmpty()) {
-      LOG.warn("Models have not been found within the " + sourceRoot);
+      LOG.warning("Models have not been found within the " + sourceRoot);
     }
     return result;
   }

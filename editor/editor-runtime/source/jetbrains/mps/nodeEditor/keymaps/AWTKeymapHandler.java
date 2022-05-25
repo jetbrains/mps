@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.nodeEditor.keymaps;
 
 import gnu.trove.TIntObjectHashMap;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -23,8 +24,6 @@ import jetbrains.mps.openapi.editor.cells.KeyMap;
 import jetbrains.mps.openapi.editor.cells.KeyMap.ActionKey;
 import jetbrains.mps.openapi.editor.cells.KeyMapAction;
 import jetbrains.mps.util.Pair;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
@@ -45,7 +44,7 @@ import java.util.List;
  * Date: 2/5/13
  */
 public class AWTKeymapHandler extends KeymapHandler<KeyEvent> {
-  private static final Logger LOG = LogManager.getLogger(AWTKeymapHandler.class);
+  private static final Logger LOG = Logger.getLogger(AWTKeymapHandler.class);
   private static final TIntObjectHashMap<String> ourJavaKeyCodesMap = new TIntObjectHashMap<>();
 
   static {
@@ -61,7 +60,7 @@ public class AWTKeymapHandler extends KeymapHandler<KeyEvent> {
           int value = field.getInt(null);
           ourJavaKeyCodesMap.put(value, name);
         } catch (IllegalAccessException e) {
-          LOG.error(null, e);
+          LOG.error(e);
         }
       }
     }

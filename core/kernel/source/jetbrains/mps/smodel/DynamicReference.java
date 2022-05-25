@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,6 @@ import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -46,7 +45,7 @@ import java.util.Set;
  *      to the aforementioned change in superclass
  */
 public final class DynamicReference extends SReferenceBase {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(DynamicReference.class));
+  private static final Logger LOG = Logger.getLogger(DynamicReference.class);
 
   private DynamicReferenceOrigin myOrigin;
 

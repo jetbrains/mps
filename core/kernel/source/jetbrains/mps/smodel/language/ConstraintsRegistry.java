@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,11 @@ package jetbrains.mps.smodel.language;
 
 import jetbrains.mps.core.aspects.behaviour.SConceptC3StarMRO;
 import jetbrains.mps.core.aspects.constraints.rules.RulesConstraintsRegistry;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.runtime.ConstraintsAspectDescriptor;
 import jetbrains.mps.smodel.runtime.ConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.illegal.IllegalConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.interpreted.ConstraintsAspectInterpreted;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
@@ -35,7 +34,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * todo probably, here we will mirror all the methods from {@link RulesConstraintsRegistry}
  */
 public final class ConstraintsRegistry implements CoreAspectRegistry {
-  private static final Logger LOG = LogManager.getLogger(ConstraintsRegistry.class);
+  private static final Logger LOG = Logger.getLogger(ConstraintsRegistry.class);
 
   private final ConceptInLoadingStorage<SAbstractConcept> myStorage = new ConceptInLoadingStorage<>();
   private final Map<SAbstractConcept, ConstraintsDescriptor> myConstraintsDescriptors = new ConcurrentHashMap<>();
@@ -65,7 +64,7 @@ public final class ConstraintsRegistry implements CoreAspectRegistry {
         ConstraintsAspectDescriptor aspectDescriptor = null;
         if (languageRuntime == null) {
           // Then language was just renamed and was not re-generated then it can happen that it has no
-          LOG.warn("No language for: " + concept + ", while looking for constraints descriptor.");
+          LOG.warning("No language for: " + concept + ", while looking for constraints descriptor.");
         } else {
           aspectDescriptor = languageRuntime.getAspect(ConstraintsAspectDescriptor.class);
         }

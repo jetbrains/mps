@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ import jetbrains.mps.smodel.runtime.ModuleRuntime.ModuleRuntimeContext;
 import jetbrains.mps.util.CollectionUtil;
 import jetbrains.mps.util.NameUtil;
 import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -71,7 +71,7 @@ import static java.lang.String.format;
  */
 @SuppressWarnings("UnstableApiUsage")
 public final class LanguageRegistry implements CoreComponent, DeployListener {
-  private static final Logger LOG = LogManager.getLogger(LanguageRegistry.class);
+  private static final Logger LOG = Logger.getLogger(LanguageRegistry.class);
 
   private static LanguageRegistry INSTANCE;
 
@@ -205,7 +205,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
         LOG.debug(String.format("Missing language runtime class for module %s (make failed?); resort to interpreted runtime", l.getModuleName()));
         return new InterpretedLanguageRuntime(l);
       } else {
-        LOG.warn(String.format("Missing language runtime class for module %s (make failed?); returning null", l.getModuleName()));
+        LOG.warning(String.format("Missing language runtime class for module %s (make failed?); returning null", l.getModuleName()));
         return null;
       }
     } catch (InstantiationException | IllegalAccessException e) {
@@ -267,7 +267,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
           // we used to throw exception, yet same considerations as createRuntime(Language), above, shall apply. If Language module misses classes,
           // createRuntime() for it would warn about 'make failed?' and go on gracefully, but its dependent generator fails with exception, which is inapropriate
 //          throw new InstantiationException(m);
-          LOG.warn(m);
+          LOG.warning(m);
           return null;
         }
         Constructor<?>[] allConstructors = aClass.getConstructors();
@@ -306,10 +306,10 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
     } catch (ClassNotFoundException e) {
       String msg = format("Failed to load runtime %s of generator %s", rtClassName, g.getModuleName());
       if (g.generateTemplates()) {
-        if (LOG.isDebugEnabled()) {
-          LOG.warn(msg, e);
+        if (LOG.isDebugLevel()) {
+          LOG.warning(msg, e);
         } else {
-          LOG.warn(msg);
+          LOG.warning(msg);
         }
       } else {
         // FIXME this is compatibility code. Language RT generated prior to 2018.1 included #getGenerators() implementation for interpreted templates,
@@ -480,7 +480,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
       for (Language language : collectLanguageModules(unloadedModules)) {
         SLanguageId sl = MetaIdByDeclaration.getLanguageId(language);
         if (!myLanguagesById.containsKey(sl)) {
-          LOG.warn("No language with id " + sl + " to unload");
+          LOG.warning("No language with id " + sl + " to unload");
         } else {
           languagesToUnload.add(myLanguagesById.get(sl));
         }
@@ -563,7 +563,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
         }
         GeneratorRuntime old = myGeneratorsWithCompiledRuntime.put(generatorRuntime.getModuleReference(), generatorRuntime);
         if (old != null) {
-          LOG.warn(String.format("There is already generator runtime for module '%s'", old.getModuleReference()));
+          LOG.warning(String.format("There is already generator runtime for module '%s'", old.getModuleReference()));
         }
         LanguageRuntime srcLangRuntime = generatorRuntime.getSourceLanguage();
         srcLangRuntime.register(generatorRuntime);
@@ -579,7 +579,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
         }
         ModuleRuntime old = myModuleRuntime.put(moduleRuntime.getSourceModule(), moduleRuntime);
         if (old != null) {
-          LOG.warn(String.format("There's already runtime instance for module '%s'", old.getSourceModule()));
+          LOG.warning(String.format("There's already runtime instance for module '%s'", old.getSourceModule()));
         }
         loadedRuntime2.add(moduleRuntime);
       }
@@ -638,6 +638,6 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
   private static void processLinkageErrorForLanguage(Language language, LinkageError linkageError) {
     LOG.error("Caught a linkage error while creating LanguageRuntime for the `" + language + "` language." +
         "Probably the language sources/classes are outdated, try rebuilding the project.", linkageError);
-    LOG.warn("MPS will attempt running in a inconsistent state.");
+    LOG.warning("MPS will attempt running in a inconsistent state.");
   }
 }

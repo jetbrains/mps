@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,11 +18,9 @@ package jetbrains.mps.module;
 import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.MPSModuleClassLoader;
 import jetbrains.mps.classloading.ModuleClassLoader;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
-import jetbrains.mps.vfs.openapi.FileSystem;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,7 +32,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
  * @author apyshkin
  */
 public class ReloadableModuleBase extends AbstractModule implements ReloadableModule {
-  private final static Logger LOG = LogManager.getLogger(ReloadableModuleBase.class);
+  private final static Logger LOG = Logger.getLogger(ReloadableModuleBase.class);
   private final ClassLoaderManager myManager = ClassLoaderManager.getInstance(); // to remove this I need to insert CLM into constructor and that is not an easy task
   private final List<SModuleDependenciesListener> myListeners = new CopyOnWriteArrayList<>();
 
@@ -90,7 +88,7 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
   @Override
   public final void reload() {
     if (!canLoadClasses()) {
-      LOG.warn(String.format("The module %s can not load classes -- impossible to reload the module", this));
+      LOG.warning(String.format("The module %s can not load classes -- impossible to reload the module", this));
       return;
     }
     LOG.info("Reloading module " + this);

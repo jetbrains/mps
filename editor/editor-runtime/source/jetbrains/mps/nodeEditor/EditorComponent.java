@@ -136,7 +136,6 @@ import jetbrains.mps.util.Reference;
 import jetbrains.mps.workbench.ActionPlace;
 import jetbrains.mps.workbench.action.ActionUtils;
 import jetbrains.mps.workbench.action.BaseAction;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.ApiStatus.ScheduledForRemoval;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -218,7 +217,7 @@ import java.util.stream.Collectors;
 public abstract class EditorComponent extends JComponent implements Scrollable, DataProvider, TooltipComponent,
                                                                     jetbrains.mps.openapi.editor.EditorComponent {
 
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(EditorComponent.class));
+  private static final Logger LOG = Logger.getLogger(EditorComponent.class);
   /**
    * @deprecated use {@link MPSActions#EDITOR_POPUP_GROUP} directly
    */

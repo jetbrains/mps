@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,11 @@
 package jetbrains.mps.persistence;
 
 import jetbrains.mps.extapi.persistence.StreamAsMultiDataSource;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.DataSourceListener;
 import org.jetbrains.mps.openapi.persistence.StreamDataSource;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.stream.Stream;
 
 /**
@@ -55,14 +51,14 @@ public abstract class StreamDataSourceBase implements StreamDataSource, StreamAs
   @Override
   public void addListener(@NotNull DataSourceListener listener) {
     if (isReadOnly()) {
-      LogManager.getLogger(getClass()).warn("Adding " + listener + " to read-only " + this);
+      Logger.getLogger(getClass()).warning("Adding " + listener + " to read-only " + this);
     }
   }
 
   @Override
   public void removeListener(@NotNull DataSourceListener listener) {
     if (isReadOnly()) {
-      LogManager.getLogger(getClass()).warn("Removing " + listener + " from read-only " + this);
+      Logger.getLogger(getClass()).warning("Removing " + listener + " from read-only " + this);
     }
   }
 

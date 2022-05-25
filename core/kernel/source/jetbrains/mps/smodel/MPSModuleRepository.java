@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,12 +22,11 @@ import jetbrains.mps.extapi.module.SModuleBase;
 import jetbrains.mps.extapi.module.SRepositoryBase;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.extapi.module.SRepositoryRegistry;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.EvaluateScopeContext;
 import jetbrains.mps.util.containers.ManyToManyMap;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
@@ -53,7 +52,7 @@ import java.util.function.Function;
 
 @SuppressWarnings("UnstableApiUsage") // just to get rid of errors for log4j.Logger
 public class MPSModuleRepository extends SRepositoryBase implements CoreComponent, SRepositoryExt, ReferenceScopeHelper.Source {
-  private static final Logger LOG = LogManager.getLogger(MPSModuleRepository.class);
+  private static final Logger LOG = Logger.getLogger(MPSModuleRepository.class);
   private static MPSModuleRepository ourInstance;
 
   private final GlobalModelAccess myGlobalModelAccess;
@@ -244,7 +243,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
     }
 
     if (!myModuleToOwners.containsSecond(owner)) {
-      LOG.warn(String.format("Attempt to unlink module %s from unexpected owner %s", module, owner), new Throwable());
+      LOG.warning(String.format("Attempt to unlink module %s from unexpected owner %s", module, owner), new Throwable());
       return false;
     }
 
@@ -349,7 +348,7 @@ public class MPSModuleRepository extends SRepositoryBase implements CoreComponen
       final String fmt = "Saving of the repository took %.3f s";
       if (RuntimeFlags.isInternalMode() || msElapsed > magicLongSaveMS) {
         LOG.info(String.format(fmt, msElapsed / 1e3));
-      } else if (LOG.isDebugEnabled()) {
+      } else if (LOG.isDebugLevel()) {
         LOG.debug(String.format(fmt, msElapsed / 1e3));
       }
     }

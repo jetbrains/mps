@@ -23,7 +23,7 @@ import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.util.IFileUtil;
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -42,7 +42,7 @@ import static jetbrains.mps.extapi.persistence.datasource.PreinstalledPathDataSo
  * Created by apyshkin on 12/19/16.
  */
 final class CopyDefaultModelRootHelper extends CopyFileBasedModelRootHelper<DefaultModelRoot> {
-  private final static Logger LOG = LogManager.getLogger(CopyDefaultModelRootHelper.class);
+  private final static Logger LOG = Logger.getLogger(CopyDefaultModelRootHelper.class);
 
   public CopyDefaultModelRootHelper(@NotNull DefaultModelRoot sourceModelRoot, @NotNull DefaultModelRoot targetModelRoot) {
     super(sourceModelRoot, targetModelRoot);

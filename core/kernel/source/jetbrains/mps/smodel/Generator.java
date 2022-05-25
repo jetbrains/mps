@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.project.ModelsAutoImportsManager.AutoImportsContributor;
@@ -26,8 +27,6 @@ import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -47,7 +46,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Generator extends ReloadableModuleBase {
-  public static final Logger LOG = LogManager.getLogger(Generator.class);
+  public static final Logger LOG = Logger.getLogger(Generator.class);
 
   /**
    * @deprecated have to use SLanguage to facilitate standalone generator modules

@@ -16,6 +16,7 @@
 package jetbrains.mps.reloading;
 
 import com.intellij.openapi.util.text.StringUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.SystemInfo;
 import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.QualifiedPath;
@@ -23,8 +24,6 @@ import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.iofs.jrt.JrtIoFileSystem;
 import jetbrains.mps.vfs.path.PathFormats;
 import jetbrains.mps.vfs.util.PathUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -66,7 +65,7 @@ public class SDKDiscovery {
       url = URLDecoder.decode(url, Charset.defaultCharset().name()).replace('/', File.separatorChar);
       String prefix = "jar:";
       if (!url.startsWith(prefix)) {
-        LOG.warn("Can't extract JDK tools path from " + url);
+        LOG.warning("Can't extract JDK tools path from " + url);
         return null;
       }
 
@@ -75,7 +74,7 @@ public class SDKDiscovery {
       // toUnixPathFormat() is just an attempt to keep QP stable and to replace path conversion through IFile
       return new QualifiedPath(VFSManager.FILE_FS, path.toUnixPathFormat().toText());
     } catch (ClassNotFoundException e) {
-      LOG.warn("jar file for class " + toolsJarClass + " could not be found");
+      LOG.warning("jar file for class " + toolsJarClass + " could not be found");
       return null;
     } catch (UnsupportedEncodingException e) {
       LOG.error("Exception when trying to find tools.jar: ", e);
@@ -85,7 +84,7 @@ public class SDKDiscovery {
 
   //-------------------------------------copied from JavaSdkImpl----------------------------------
 
-  private static final Logger LOG = LogManager.getLogger(SDKDiscovery.class);
+  private static final Logger LOG = Logger.getLogger(SDKDiscovery.class);
 
   @NotNull
   private static List<QualifiedPath> findJavaRuntimeClasses(@NotNull File javaHome) {
@@ -119,7 +118,7 @@ public class SDKDiscovery {
               result.add(new QualifiedPath(VFSManager.JRT_FS, jrtBase + p.getFileName().toString()));
             }
           } catch (IOException e) {
-            LOG.warn(String.format("Can't read %s", jdkRoot), e);
+            LOG.warning(String.format("Can't read %s", jdkRoot), e);
           }
         }
       }
@@ -156,7 +155,7 @@ public class SDKDiscovery {
           return StringUtil.split(StringUtil.unquoteString(modules), " ", true, true);
         }
       } catch (IOException | IllegalArgumentException e) {
-        LOG.info(e);
+        LOG.info("read 'release' file", e);
       }
     }
     return null;

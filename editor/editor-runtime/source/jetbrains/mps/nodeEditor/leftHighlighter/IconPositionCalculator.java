@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,12 +16,11 @@
 package jetbrains.mps.nodeEditor.leftHighlighter;
 
 import gnu.trove.THashMap;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.nodeEditor.EditorMessageIconRenderer;
 import jetbrains.mps.nodeEditor.cells.APICellAdapter;
 import jetbrains.mps.openapi.editor.EditorComponent;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -31,7 +30,7 @@ import java.util.Set;
 import java.util.Stack;
 
 public class IconPositionCalculator {
-  private static final Logger LOG = LogManager.getLogger(IconPositionCalculator.class);
+  private static final Logger LOG = Logger.getLogger(IconPositionCalculator.class);
 
   private static final int MIN_ICON_RENDERERS_WIDTH = 20;
   private static final int GAP_BETWEEN_ICONS = 3;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.smodel;
 
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -27,7 +27,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  */
 /*package*/ final class CancellableReadsManager {
   private final Logger myLog = Logger.getLogger(CancellableReadsManager.class);
-  private final boolean myLogEnabled = myLog.isDebugEnabled();
+  private final boolean myLogEnabled = myLog.isDebugLevel();
 
   private final ConcurrentLinkedQueue<CancellableReadAction> myQueue = new ConcurrentLinkedQueue<>();
 

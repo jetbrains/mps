@@ -23,12 +23,10 @@
     <import index="unno" ref="r:61e3d524-8c49-4491-b5e3-f6d6e9364527(jetbrains.mps.util)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="y49u" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.util(MPS.OpenAPI/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="fyhk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps(MPS.Core/)" />
-    <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
     <import index="pjrh" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter(MPS.Core/)" />
     <import index="2k9e" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" />
@@ -6952,15 +6950,11 @@
     <node concept="Wx3nA" id="5IkW5anFe3h" role="jymVt">
       <property role="TrG5h" value="LOG" />
       <property role="3TUv4t" value="true" />
-      <node concept="2YIFZM" id="17QXLl0fJl5" role="33vP2m">
-        <ref role="37wK5l" to="wwqx:~Logger.wrap(org.apache.log4j.Logger)" resolve="wrap" />
+      <node concept="2YIFZM" id="43wm7wpW1yD" role="33vP2m">
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
-        <node concept="2YIFZM" id="17QXLl0fJl6" role="37wK5m">
-          <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-          <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-          <node concept="3VsKOn" id="17QXLl0fJl7" role="37wK5m">
-            <ref role="3VsUkX" node="5IkW5anFcyt" resolve="SNodeOperations" />
-          </node>
+        <node concept="3VsKOn" id="43wm7wpW1yF" role="37wK5m">
+          <ref role="3VsUkX" node="5IkW5anFcyt" resolve="SNodeOperations" />
         </node>
       </node>
       <node concept="3uibUv" id="5IkW5anFe3i" role="1tU5fm">
@@ -18874,15 +18868,15 @@
                     </node>
                     <node concept="3clFbF" id="32Girb4czWv" role="3cqZAp">
                       <node concept="2OqwBi" id="32Girb4c$N5" role="3clFbG">
-                        <node concept="2YIFZM" id="32Girb4c$1o" role="2Oq$k0">
-                          <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
-                          <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
-                          <node concept="1rXfSq" id="32Girb4c$2r" role="37wK5m">
+                        <node concept="2YIFZM" id="43wm7wpVx2e" role="2Oq$k0">
+                          <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+                          <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+                          <node concept="1rXfSq" id="43wm7wpVx2f" role="37wK5m">
                             <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
                           </node>
                         </node>
                         <node concept="liA8E" id="32Girb4c_yz" role="2OqNvi">
-                          <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object)" resolve="error" />
+                          <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String)" resolve="error" />
                           <node concept="2YIFZM" id="32Girb4aE_B" role="37wK5m">
                             <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
                             <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
@@ -19286,14 +19280,14 @@
               <node concept="3clFbF" id="32Girb4cATx" role="3cqZAp">
                 <node concept="2OqwBi" id="32Girb4cBPL" role="3clFbG">
                   <node concept="2YIFZM" id="32Girb4cB1I" role="2Oq$k0">
-                    <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
-                    <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
+                    <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+                    <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
                     <node concept="1rXfSq" id="32Girb4cB87" role="37wK5m">
                       <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
                     </node>
                   </node>
                   <node concept="liA8E" id="32Girb4cC$6" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object)" resolve="error" />
+                    <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String)" resolve="error" />
                     <node concept="2YIFZM" id="4P7F1YoPniR" role="37wK5m">
                       <ref role="1Pybhc" to="wyt6:~String" resolve="String" />
                       <ref role="37wK5l" to="wyt6:~String.format(java.lang.String,java.lang.Object...)" resolve="format" />
@@ -20049,15 +20043,11 @@
             <node concept="3uibUv" id="E_Nz9ZubQk" role="1tU5fm">
               <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
             </node>
-            <node concept="2YIFZM" id="E_Nz9Zt05M" role="33vP2m">
-              <ref role="37wK5l" to="wwqx:~Logger.wrap(org.apache.log4j.Logger)" resolve="wrap" />
+            <node concept="2YIFZM" id="43wm7wpVAWF" role="33vP2m">
+              <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
               <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
-              <node concept="2YIFZM" id="E_Nz9Zt05N" role="37wK5m">
-                <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-                <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-                <node concept="3VsKOn" id="E_Nz9Zt13B" role="37wK5m">
-                  <ref role="3VsUkX" node="E_Nz9ZsyjP" resolve="EmptyList" />
-                </node>
+              <node concept="3VsKOn" id="43wm7wpVAWH" role="37wK5m">
+                <ref role="3VsUkX" node="E_Nz9ZsyjP" resolve="EmptyList" />
               </node>
             </node>
           </node>

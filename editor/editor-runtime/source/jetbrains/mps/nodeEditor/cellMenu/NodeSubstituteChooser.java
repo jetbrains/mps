@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import com.intellij.ui.CollectionListModel;
 import com.intellij.ui.components.JBList;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.editor.runtime.commands.EditorCommand;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorContext;
 import jetbrains.mps.nodeEditor.IntelligentInputUtil;
@@ -31,8 +32,6 @@ import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.smodel.action.AbstractNodeSubstituteAction;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.typechecking.TypecheckingSession;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -62,7 +61,7 @@ import java.util.stream.Collectors;
  * Created Sep 16, 2003
  */
 public class NodeSubstituteChooser implements KeyboardHandler {
-  private static final Logger LOG = LogManager.getLogger(NodeSubstituteChooser.class);
+  private static final Logger LOG = Logger.getLogger(NodeSubstituteChooser.class);
 
   static final int MAX_LOOKUP_LIST_HEIGHT = 11;
   private boolean myIsVisible = false;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.extapi.module;
 
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -76,7 +76,7 @@ public class SRepositoryEventsDispatcher {
       try {
         listener.moduleAdded(module);
       } catch (Throwable t) {
-        LogManager.getLogger(SRepositoryEventsDispatcher.class).error("on moduleAdded", t);
+        Logger.getLogger(SRepositoryEventsDispatcher.class).error("on moduleAdded", t);
       }
     }
   }
@@ -90,7 +90,7 @@ public class SRepositoryEventsDispatcher {
       try {
         listener.beforeModuleRemoved(module);
       } catch (Throwable t) {
-        LogManager.getLogger(SRepositoryEventsDispatcher.class).error("on moduleRemoved", t);
+        Logger.getLogger(SRepositoryEventsDispatcher.class).error("on moduleRemoved", t);
       }
     }
   }
@@ -101,7 +101,7 @@ public class SRepositoryEventsDispatcher {
       try {
         listener.moduleRemoved(module);
       } catch (Throwable t) {
-        LogManager.getLogger(SRepositoryEventsDispatcher.class).error("on beforeModuleRemoved", t);
+        Logger.getLogger(SRepositoryEventsDispatcher.class).error("on beforeModuleRemoved", t);
       }
     }
   }

@@ -17,7 +17,7 @@ package jetbrains.mps.extapi.module;
 
 import jetbrains.mps.extapi.model.SModelBase;
 import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
@@ -41,7 +41,7 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public abstract class SModuleBase implements SModule, SModuleExt {
-  private static final Logger LOG = LogManager.getLogger(SModuleBase.class);
+  private static final Logger LOG = Logger.getLogger(SModuleBase.class);
   private static final Comparator<SModel> MODEL_BY_NAME_COMPARATOR = Comparator.comparing(m -> m.getName().getValue());
 
   private volatile SRepository myRepository = null;

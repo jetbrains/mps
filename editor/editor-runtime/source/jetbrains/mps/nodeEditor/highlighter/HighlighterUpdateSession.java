@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.nodeEditor.highlighter;
 
 import com.intellij.openapi.project.IndexNotReadyException;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.MakeServiceComponent;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorMessage;
@@ -31,8 +32,6 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.util.Cancellable;
 import jetbrains.mps.util.Pair;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -49,7 +48,7 @@ import java.util.List;
 import java.util.Set;
 
 public class HighlighterUpdateSession {
-  private static final Logger LOG = LogManager.getLogger(HighlighterUpdateSession.class);
+  private static final Logger LOG = Logger.getLogger(HighlighterUpdateSession.class);
 
   private final IHighlighter myHighlighter;
   private final Collection<EditorCheckerWrapper> myCheckers;
@@ -166,7 +165,7 @@ public class HighlighterUpdateSession {
                 }
               }
             } catch (LinkageError error) {
-              LOG.warn("Caught a linkage error presumably from an extension; the checker will be dropped " + error);
+              LOG.warning("Caught a linkage error presumably from an extension; the checker will be dropped " + error);
               iterator.remove();
             }
           }

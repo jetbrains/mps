@@ -13,8 +13,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import java.util.List;
 import org.jetbrains.mps.openapi.module.SRepository;
 import java.util.ArrayList;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.ide.findusages.CantSaveSomethingException;
@@ -45,7 +44,7 @@ public class ModelsScope extends FindUsagesScope {
   }
   private static List<SModel> resolveModels(Element element, SRepository repo) throws CantLoadSomethingException {
     List<SModel> result = new ArrayList<SModel>();
-    final Logger log = LogManager.getLogger(ModelsScope.class);
+    final Logger log = Logger.getLogger(ModelsScope.class);
     for (Element modelXml : element.getChildren(MODEL_TAG)) {
       try {
         final String modelRef = modelXml.getAttributeValue(MODEL_ID);
@@ -57,7 +56,7 @@ public class ModelsScope extends FindUsagesScope {
         if (model != null) {
           result.add(model);
         } else {
-          log.warn("model not found " + modelRef);
+          log.warning("model not found " + modelRef);
         }
       } catch (IllegalArgumentException e) {
         throw new CantLoadSomethingException(e);

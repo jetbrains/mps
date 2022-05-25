@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@ import jetbrains.mps.nodeEditor.LanguageRegistryHelper;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.openapi.editor.descriptor.EditorHintsSpecific;
 import jetbrains.mps.smodel.language.LanguageRegistry;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -43,7 +42,7 @@ import java.util.stream.Stream;
  * @param <T> a class implementing {@link EditorHintsSpecific}
  */
 public abstract class AbstractEditorHintsSpecificRegistry<T extends EditorHintsSpecific> {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(AbstractEditorHintsSpecificRegistry.class));
+  private static final Logger LOG = Logger.getLogger(AbstractEditorHintsSpecificRegistry.class);
 
   private static Comparator<EditorHintsSpecific> ourCompareByHintsSizeDescAndClassName;
   private static Comparator<EditorHintsSpecific> ourCompareByHintsSizeDesc;

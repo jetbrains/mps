@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,7 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.RuntimeFlags;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 
 import java.util.Arrays;
 import java.util.List;
@@ -52,7 +51,7 @@ import java.util.function.Predicate;
  * @since 2017.3
  */
 /*package*/ final class ActionDispatcher<T> {
-  private final Logger LOG = LogManager.getLogger(ActionDispatcher.class);
+  private final Logger LOG = Logger.getLogger(ActionDispatcher.class);
   private final List<T> myListeners = new CopyOnWriteArrayList<>();
   private final Consumer<T> myOnActionStart;
   private final Consumer<T> myOnActionFinish;
@@ -144,10 +143,10 @@ import java.util.function.Predicate;
     if (isControlFlowIDEA(ex)) {
       // don't treat IDEA's control flow exceptions as errors. We can do nothing about IDEA's approach to use RuntimeException implements ControlFlowException
       // but at least shall not log it as an error to avoid perception something's wrong with MPS>
-      if (RuntimeFlags.isInternalMode() || LOG.isDebugEnabled()) {
+      if (RuntimeFlags.isInternalMode() || LOG.isDebugLevel()) {
         final String msg = formatMessageDetails("Action dispatch cancelled with control flow exception");
         if (RuntimeFlags.isInternalMode()) {
-          LOG.warn(msg, ex);
+          LOG.warning(msg, ex);
         } else {
           LOG.debug(msg, ex);
         }

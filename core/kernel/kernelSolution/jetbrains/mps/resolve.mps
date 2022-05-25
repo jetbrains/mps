@@ -19,8 +19,8 @@
     <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -978,16 +978,16 @@
     <node concept="Wx3nA" id="7f7fEWSoLAt" role="jymVt">
       <property role="TrG5h" value="LOG" />
       <property role="3TUv4t" value="true" />
-      <node concept="2YIFZM" id="Hn0$MvbZ53" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <node concept="3VsKOn" id="Hn0$MvbZ54" role="37wK5m">
+      <node concept="2YIFZM" id="53xcdKDHB5d" role="33vP2m">
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+        <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+        <node concept="3VsKOn" id="53xcdKDHB5e" role="37wK5m">
           <ref role="3VsUkX" node="3bMB$t1c_Qi" resolve="ScopeResolver" />
         </node>
       </node>
       <node concept="3Tm6S6" id="7f7fEWSoLAv" role="1B3o_S" />
       <node concept="3uibUv" id="Hn0$MvbZ4V" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+        <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
       </node>
     </node>
     <node concept="3clFbW" id="3bMB$t1c_Qk" role="jymVt">
@@ -1052,7 +1052,7 @@
                   <ref role="3cqZAo" node="7f7fEWSoLAt" resolve="LOG" />
                 </node>
                 <node concept="liA8E" id="7f7fEWSoLCa" role="2OqNvi">
-                  <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object)" resolve="error" />
+                  <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String)" resolve="error" />
                   <node concept="3cpWs3" id="3bMB$t1cEzl" role="37wK5m">
                     <node concept="Xl_RD" id="3bMB$t1cEzm" role="3uHU7B">
                       <property role="Xl_RC" value="Couldn't create referent search scope : " />
@@ -1150,7 +1150,7 @@
                   <node concept="3clFbF" id="4WE3x8L0B9G" role="3cqZAp">
                     <node concept="2OqwBi" id="4WE3x8L0Cfc" role="3clFbG">
                       <node concept="liA8E" id="4WE3x8L0EuI" role="2OqNvi">
-                        <ref role="37wK5l" to="q7tw:~Category.warn(java.lang.Object,java.lang.Throwable)" resolve="warn" />
+                        <ref role="37wK5l" to="wwqx:~Logger.warning(java.lang.String,java.lang.Throwable)" resolve="warning" />
                         <node concept="Xl_RD" id="4WE3x8L0FtT" role="37wK5m">
                           <property role="Xl_RC" value="Exception was thrown during reference resolving" />
                         </node>

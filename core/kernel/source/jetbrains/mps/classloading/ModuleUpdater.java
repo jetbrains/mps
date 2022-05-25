@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,9 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.classloading.GraphHolder.Graph;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.dependency.UsedModulesCollector;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -38,7 +37,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class ModuleUpdater {
-  private static final Logger LOG = LogManager.getLogger(ModuleUpdater.class);
+  private static final Logger LOG = Logger.getLogger(ModuleUpdater.class);
   private static final Object LOCK = new Object();
 
   private volatile boolean myChangedFlag = false;
@@ -199,7 +198,7 @@ public class ModuleUpdater {
           myDepGraphHolder.addEdge(ref, dep.getModuleReference());
         } else {
 //        valid if somebody calls reloadModule in moduleAdded() listener before us
-          LOG.warn("The dependent module " + dep + " of the " + module + " is not registered");
+          LOG.warning("The dependent module " + dep + " of the " + module + " is not registered");
         }
       }
     }

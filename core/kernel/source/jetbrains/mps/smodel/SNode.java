@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,8 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.extapi.model.ResolveInfoExt;
-import jetbrains.mps.logging.Log4jUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.containers.EmptyIterable;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -48,7 +46,7 @@ import static jetbrains.mps.util.SNodeOperations.getDebugText;
  * How come this one is in [kernel], not [smodel]?
  */
 public class SNode implements org.jetbrains.mps.openapi.model.SNode {
-  private static final Logger LOG = LogManager.getLogger(SNode.class);
+  private static final Logger LOG = Logger.getLogger(SNode.class);
   private static final String[] EMPTY_ARRAY = new String[0];
   private static final Object USER_OBJECT_LOCK = new Object();
 
@@ -232,7 +230,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
         s = String.format("(instance of %s)", getConcept().getName());
       }
     } catch (RuntimeException t) {
-      LOG.error(Log4jUtil.createMessageObject("Failed to get string presentation of a node", this), t);
+      LOG.error("Failed to get string presentation of a node", t, this);
     }
     if (s == null) {
       return "???";
@@ -711,10 +709,10 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
       ResolveInfo.PS ri = (ResolveInfo.PS) resolveInfo;
       setReference(role, SReference.create(role, this, ri.getTargetNode(), ri.getValue()));
     } else if (resolveInfo == null) {
-      LOG.warn("Unexpected use of ResolveInfo == null. Reference would be removed, although explicit dropReference() has to be used", new Throwable());
+      LOG.warning("Unexpected use of ResolveInfo == null. Reference would be removed, although explicit dropReference() has to be used", new Throwable());
       dropReference(role);
     } else {
-      LOG.warn(String.format("Unexpected ResolveInfo kind: %s(%s)", resolveInfo, resolveInfo.getClass()), new Throwable());
+      LOG.warning(String.format("Unexpected ResolveInfo kind: %s(%s)", resolveInfo, resolveInfo.getClass()), new Throwable());
     }
   }
 

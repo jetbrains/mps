@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,9 +19,9 @@ import jetbrains.mps.actions.runtime.impl.ActionsUtil;
 import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorManager;
-import jetbrains.mps.nodeEditor.cellMenu.AbstractNodeSubstituteInfo;
 import jetbrains.mps.nodeEditor.cells.CellFinderUtil;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
@@ -35,9 +35,6 @@ import jetbrains.mps.smodel.action.NodeFactoryManager;
 import jetbrains.mps.smodel.presentation.NodePresentationUtil;
 import jetbrains.mps.smodel.runtime.IconResource;
 import jetbrains.mps.smodel.runtime.IconResourceUtil;
-import jetbrains.mps.typechecking.TypecheckingFacade;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -48,7 +45,7 @@ import org.jetbrains.mps.openapi.model.SNode;
  */
 public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
 
-  private static final Logger LOG = LogManager.getLogger(DefaultSubstituteMenuItem.class);
+  private static final Logger LOG = Logger.getLogger(DefaultSubstituteMenuItem.class);
 
   @NotNull
   private SAbstractConcept myConcept;
@@ -99,7 +96,7 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
       return false;
     }
     if (node.getParent() != null) {
-      LOG.warn("Node, created by " + this.getClass() + " action already has parent node.", new Throwable());
+      LOG.warning("Node, created by " + this.getClass() + " action already has parent node.", new Throwable());
     }
 
     if (ActionsUtil.isInstanceOfIType(node)) {
@@ -117,7 +114,7 @@ public class DefaultSubstituteMenuItem implements SubstituteMenuItem {
       return null;
     }
     if (node.getParent() != null) {
-      LOG.warn("Node, created by " + this.getClass() + " action already has parent node.", new Throwable());
+      LOG.warning("Node, created by " + this.getClass() + " action already has parent node.", new Throwable());
     }
 
     if (ActionsUtil.isInstanceOfIType(node)) {

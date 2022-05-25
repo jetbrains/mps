@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.editor.runtime.commands.EditorCommand;
 import jetbrains.mps.editor.runtime.impl.LanguagesKeymapManager;
 import jetbrains.mps.editor.runtime.style.StyleAttributesUtil;
 import jetbrains.mps.ide.MPSCoreComponents;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Label;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.CellTraversalUtil;
@@ -32,8 +33,6 @@ import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 
@@ -50,7 +49,7 @@ import java.util.Set;
  * Date: 2/5/13
  */
 public abstract class KeymapHandler<E> {
-  private static final Logger LOG = LogManager.getLogger(KeymapHandler.class);
+  private static final Logger LOG = Logger.getLogger(KeymapHandler.class);
 
   public Collection<KeyMapAction> getAllRegisteredActions(EditorCell selectedCell, EditorContext context) {
     Set<KeyMapAction> result = new HashSet<>();
@@ -197,7 +196,7 @@ public abstract class KeymapHandler<E> {
           return actionCell;
         }
       } catch (Exception e) {
-        LOG.error(null, e);
+        LOG.error(e);
         return null;
       }
       if (actionCell == keymapOwnerCell) {

@@ -16,7 +16,7 @@
 package jetbrains.mps.util;
 
 import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.util.Consumer;
 
@@ -30,7 +30,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class IconCreationUtil {
-  protected static Logger LOG = LogManager.getLogger(IconCreationUtil.class);
+  protected static Logger LOG = Logger.getLogger(IconCreationUtil.class);
 
   private static final int DEFAULT_ICON_SIZE = 16;
 

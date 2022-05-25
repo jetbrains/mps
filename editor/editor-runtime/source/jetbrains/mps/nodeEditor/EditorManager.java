@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,6 @@ import jetbrains.mps.smodel.NodeReadAccessInEditorListener;
 import jetbrains.mps.smodel.SNodeUtil;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.SNodeOperations;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -57,7 +56,7 @@ import java.util.Queue;
 import java.util.Set;
 
 public class EditorManager {
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(EditorManager.class));
+  private static final Logger LOG = Logger.getLogger(EditorManager.class);
 
   private static final String BIG_CELL_CONTEXT = "big-cell-context";
 

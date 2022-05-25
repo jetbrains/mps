@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.nodeEditor.cells;
 
-import com.intellij.ui.JBColor;
 import com.intellij.util.ui.UIUtil;
 import gnu.trove.TIntObjectHashMap;
 import jetbrains.mps.editor.runtime.TextBuilderImpl;
@@ -49,7 +48,6 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.util.ListMap;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -72,7 +70,7 @@ import java.util.Map;
 import java.util.Set;
 
 public abstract class EditorCell_Basic implements EditorCell, Entry<jetbrains.mps.openapi.editor.cells.EditorCell> {
-  public static final Logger LOG = Logger.wrap(LogManager.getLogger(EditorCell_Basic.class));
+  public static final Logger LOG = Logger.getLogger(EditorCell_Basic.class);
 
   public static final int BRACKET_WIDTH = 7;
 

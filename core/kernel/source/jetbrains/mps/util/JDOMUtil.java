@@ -17,7 +17,7 @@ package jetbrains.mps.util;
 
 import jetbrains.mps.vfs.IFile;
 import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jdom.Document;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
@@ -50,7 +50,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 
 public class JDOMUtil {
-  private static final Logger LOG = LogManager.getLogger(JDOMUtil.class);
+  private static final Logger LOG = Logger.getLogger(JDOMUtil.class);
 
   private static SAXParserFactory factory = null;
 

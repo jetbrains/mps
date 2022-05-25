@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,11 @@
  */
 package jetbrains.mps.nodeEditor.reflectiveEditor;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.EditorComponent;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCellContext;
 import jetbrains.mps.openapi.editor.update.Updater;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
@@ -31,7 +30,7 @@ import java.util.stream.StreamSupport;
 import static jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager.shouldShowReflectiveEditor;
 
 abstract class ReflectiveHintsAction {
-  private static final Logger LOG = LogManager.getLogger(ReflectiveHintsAction.class);
+  private static final Logger LOG = Logger.getLogger(ReflectiveHintsAction.class);
 
 
   private final SNode myAffectedNode;
@@ -77,7 +76,7 @@ abstract class ReflectiveHintsAction {
     }
     EditorCellContext cellContext = nodeCell.getCellContext();
     if (cellContext == null) {
-      LOG.warn("Cell context of the big cell is null. Node : " + nodeCell.getSNode() + ", Concept: " + node.getConcept());
+      LOG.warning("Cell context of the big cell is null. Node : " + nodeCell.getSNode() + ", Concept: " + node.getConcept());
       return false;
     }
     return isReflective() != shouldShowReflectiveEditor(cellContext);

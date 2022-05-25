@@ -5,8 +5,7 @@ package jetbrains.mps.ide.findusages;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.smodel.language.LanguageRegistryListener;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.util.Map;
 import jetbrains.mps.smodel.adapter.ids.SLanguageId;
 import java.util.HashMap;
@@ -37,7 +36,7 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 
 @GeneratedClass(node = "r:78f1dc30-d9c6-41ba-bc9c-1e73f8bda079(jetbrains.mps.ide.findusages)/8568892084424438073", model = "r:78f1dc30-d9c6-41ba-bc9c-1e73f8bda079(jetbrains.mps.ide.findusages)")
 public final class FindersManager implements CoreComponent, LanguageRegistryListener {
-  private static final Logger LOG = LogManager.getLogger(FindersManager.class.getName());
+  private static final Logger LOG = Logger.getLogger(FindersManager.class);
   private static FindersManager INSTANCE;
   public static FindersManager getInstance() {
     return INSTANCE;

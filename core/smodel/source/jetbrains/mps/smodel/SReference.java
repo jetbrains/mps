@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,9 @@
  */
 package jetbrains.mps.smodel;
 
-import jetbrains.mps.logging.Log4jUtil;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.util.InternUtil;
 import jetbrains.mps.util.WeakSet;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -224,8 +222,8 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
       myRef = ref;
     }
 
-    private org.apache.log4j.Logger log() {
-      return LogManager.getLogger(SReference.class);
+    private Logger log() {
+      return Logger.getLogger(SReference.class);
     }
 
     @Override
@@ -235,7 +233,7 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
       }
       // I don't like the design, but would like to change ProblemReporter API anyway, to be more focused on what's going
       // on rather than on exact ways to report a message. Don't want to bother with this at the moment as my goal at the moment is getTargetNodeSilently()
-      log().warn(message);
+      log().warning(message);
     }
 
     private boolean isStubModel(SModel model) {
@@ -277,7 +275,7 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
       log.error(msg);
       if (problems != null) {
         for (ProblemDescription pd : problems) {
-          log.error(Log4jUtil.createMessageObject(pd.getMessage(), pd.getNode()));
+          log.error(pd.getMessage(), pd.getNode());
         }
       }
     }

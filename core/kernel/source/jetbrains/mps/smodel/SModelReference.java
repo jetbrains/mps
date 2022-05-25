@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,7 +23,7 @@ import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.util.StringUtil;
 import jetbrains.mps.util.annotation.Hack;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -43,7 +43,7 @@ import java.util.Objects;
 // FIXME move to [smodel] once dependencies from MPSModuleRepository and SModelRepository are gone
 @Immutable
 public final class SModelReference implements org.jetbrains.mps.openapi.model.SModelReference {
-  private static Logger LOG = Logger.getLogger(SModelReference.class);
+  private static final Logger LOG = Logger.getLogger(SModelReference.class);
 
   @NotNull
   private final SModelId myModelId;
@@ -114,7 +114,7 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
         return module.getModel(myModelId);
       };
       if (!repository.getModelAccess().canRead()) {
-        LOG.warn("Attempt to resolve a model not from read action. What are you going to do with return value? Hint: at least, read. Please ensure proper model access then.", new Throwable());
+        LOG.warning("Attempt to resolve a model not from read action. What are you going to do with return value? Hint: at least, read. Please ensure proper model access then.", new Throwable());
         return new ModelAccessHelper(repository).runReadAction(c);
       } else {
         return c.compute();
@@ -212,7 +212,7 @@ public final class SModelReference implements org.jetbrains.mps.openapi.model.SM
       if (facade == null) {
         // FIXME get rid of facade == null case, if any
         // Besides, shall move the code to PersistenceRegistry, as it's responsible for prefixes and factory pick
-        LOG.warn("Please report stacktrace, which would help us to find out improper MPS initialization sequence", new Throwable());
+        LOG.warning("Please report stacktrace, which would help us to find out improper MPS initialization sequence", new Throwable());
       }
       modelId = facade != null
           ? facade.createModelId(modelIDString)

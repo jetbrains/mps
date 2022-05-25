@@ -6,7 +6,6 @@ import jetbrains.mps.annotations.GeneratedClass;
 import java.util.AbstractList;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 
 /**
  * The list that is always empty, and logs an error on attempt to add anything in there.
@@ -32,7 +31,7 @@ import org.apache.log4j.LogManager;
   }
   @Override
   public void add(int i, T e) {
-    final Logger l = Logger.wrap(LogManager.getLogger(EmptyList.class));
+    final Logger l = Logger.getLogger(EmptyList.class);
     l.error(String.format(myMessage, e));
   }
   @Override

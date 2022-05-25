@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.extapi.model.SModelBase;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.generator.TransientModelsProvider.TransientSwapOwner;
 import jetbrains.mps.generator.TransientModelsProvider.TransientSwapSpace;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.persistence.binary.BareNodeReader;
 import jetbrains.mps.persistence.binary.BareNodeWriter;
 import jetbrains.mps.smodel.ModelDependencyUpdate;
@@ -27,8 +28,6 @@ import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.io.ModelInputStream;
 import jetbrains.mps.util.io.ModelOutputStream;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -48,7 +47,7 @@ import java.util.List;
  */
 public abstract class FileSwapOwner implements TransientSwapOwner {
 
-  private static Logger LOG = LogManager.getLogger(FileSwapOwner.class);
+  private static final Logger LOG = Logger.getLogger(FileSwapOwner.class);
 
   abstract protected File getSwapDir();
 
@@ -135,7 +134,7 @@ public abstract class FileSwapOwner implements TransientSwapOwner {
         saveModel(roots, mos);
       } catch (IOException e) {
         ioex = e;
-        LOG.error(null, e);
+        LOG.error(e);
       }
 
       return ioex == null;
@@ -160,7 +159,7 @@ public abstract class FileSwapOwner implements TransientSwapOwner {
       try (ModelInputStream mis = new ModelInputStream(new FileInputStream(swapFile))) {
         return loadModel(mis, modelData);
       } catch (IOException e) {
-        LOG.error(null, e);
+        LOG.error(e);
         throw new RuntimeException(e);
       } finally {
         if (!swapFile.delete()) {

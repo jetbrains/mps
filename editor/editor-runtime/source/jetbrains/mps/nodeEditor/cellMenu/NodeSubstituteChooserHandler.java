@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ import jetbrains.mps.openapi.editor.cells.SubstituteInfo;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ComputeRunnable;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -37,7 +36,7 @@ import java.util.function.Predicate;
 
 public class NodeSubstituteChooserHandler {
 
-  private static final Logger LOG = Logger.wrap(LogManager.getLogger(NodeSubstituteChooserHandler.class));
+  private static final Logger LOG = Logger.getLogger(NodeSubstituteChooserHandler.class);
 
   static final MatcherFactory CASE_INSENSITIVE_MATCHER_FACTORY = pattern -> NameUtil.buildMatcher("*" + pattern).build();
 

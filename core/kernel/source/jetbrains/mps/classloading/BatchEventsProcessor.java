@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2014 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,9 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.module.ReloadableModuleBase.SModuleDependenciesListener;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModuleBase;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.module.ReloadableModuleBase.SModuleDependenciesListener;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
@@ -40,7 +39,7 @@ import java.util.List;
  * not thread-safe
  */
 public class BatchEventsProcessor {
-  private static Logger LOG = LogManager.getLogger(BatchEventsProcessor.class);
+  private static Logger LOG = Logger.getLogger(BatchEventsProcessor.class);
   private volatile boolean myBatchStarted = false;
 
   private static final Object LOCK = new Object();
@@ -61,7 +60,7 @@ public class BatchEventsProcessor {
       LOG.error("Batching has been already started; Ignoring...", new IllegalStateException());
     }
     if (!myEvents.isEmpty()) {
-      LOG.warn("Events have not been flushed");
+      LOG.warning("Events have not been flushed");
     }
     myBatchStarted = true;
   }

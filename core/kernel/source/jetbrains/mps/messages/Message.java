@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,7 @@
  */
 package jetbrains.mps.messages;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -29,7 +28,7 @@ import java.time.Instant;
  * @author Kostik
  */
 public class Message implements IMessage {
-  private static final Logger LOG = LogManager.getLogger(Message.class);
+  private static final Logger LOG = Logger.getLogger(Message.class);
 
   private final String mySender;
   private final MessageKind myKind;

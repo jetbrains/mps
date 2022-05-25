@@ -1,12 +1,11 @@
 /*
- * Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.extapi.model.ModelWithDisposeInfo;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -145,7 +144,7 @@ public final class StaticReference extends SReferenceBase {
     if (targetModel == null) return null;
 
     if (targetModel instanceof ModelWithDisposeInfo && ((ModelWithDisposeInfo) targetModel).isDisposed()) {
-      Logger log = Logger.wrap(LogManager.getLogger(this.getClass()));
+      Logger log = Logger.getLogger(this.getClass());
       StringBuilder sb = new StringBuilder();
       sb.append("target model ");
       sb.append(targetModel.toString());

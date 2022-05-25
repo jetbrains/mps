@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +19,11 @@ import jetbrains.mps.classloading.ClassLoaderManager;
 import jetbrains.mps.classloading.DeployListener;
 import jetbrains.mps.components.ComponentHost;
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.structure.ExtensionDescriptor;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -39,7 +38,7 @@ import java.util.Set;
  * Registry of extensions populated by classes loaded from compiled and deployed modules
  */
 public class ExtensionRegistry extends BaseExtensionRegistry implements CoreComponent {
-  private static final Logger LOG = LogManager.getLogger(ExtensionRegistry.class);
+  private static final Logger LOG = Logger.getLogger(ExtensionRegistry.class);
 
   private static ExtensionRegistry INSTANCE;
 

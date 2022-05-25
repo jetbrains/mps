@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.library.ModulesMiner.ModuleHandle;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
@@ -25,8 +26,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.util.Computable;
 import jetbrains.mps.util.ComputeRunnable;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -54,7 +53,7 @@ import java.util.stream.StreamSupport;
  * changes made to a repository.
  */
 public final class ModuleRepositoryFacade implements CoreComponent, ModuleInstanceFactory {
-  private static final Logger LOG = LogManager.getLogger(ModuleRepositoryFacade.class);
+  private static final Logger LOG = Logger.getLogger(ModuleRepositoryFacade.class);
   private static ModuleRepositoryFacade INSTANCE;
 
   // never null, use for all SRepository API methods.
@@ -360,7 +359,7 @@ public final class ModuleRepositoryFacade implements CoreComponent, ModuleInstan
       // XXX FWIW, MPSModuleRepository.unregisterModule and unregisterModules keep symmetric knowledge what generator modules to remove along with the language
       //     i.e. here we assume there could be no generator module w/o source language, there we remove all generators with the given source language (not
       //     'directly owned' only).
-      if (LOG.isInfoEnabled()) {
+      if (LOG.isInfoLevel()) {
         String msg =
             String.format("Register generator %s for not yet known language module %s", descriptor.getNamespace(), descriptor.getSourceLanguage());
         LOG.info(msg);

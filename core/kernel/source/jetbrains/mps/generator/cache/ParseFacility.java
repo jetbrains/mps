@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,8 @@
  */
 package jetbrains.mps.generator.cache;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.FileNotFoundException;
@@ -75,7 +74,7 @@ public final class ParseFacility<T> {
     } catch (FileNotFoundException ex) {
       // ok, just ignore
     } catch (IOException ex) {
-      getLog().warn(String.format("Ignored parse error in %s",  myFile == null ? myUrl : myFile));
+      getLog().warning(String.format("Ignored parse error in %s",  myFile == null ? myUrl : myFile));
     }
     return null;
   }
@@ -113,7 +112,7 @@ public final class ParseFacility<T> {
   }
 
   private Logger getLog() {
-    return LogManager.getLogger(myOwner);
+    return Logger.getLogger(myOwner);
   }
 
 

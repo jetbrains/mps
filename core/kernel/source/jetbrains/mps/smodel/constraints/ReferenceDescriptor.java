@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.smodel.constraints;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.FilteringByConceptScope;
 import jetbrains.mps.scope.Scope;
@@ -22,8 +23,6 @@ import jetbrains.mps.smodel.language.ConceptRegistryUtil;
 import jetbrains.mps.smodel.runtime.EvaluateScopeContext;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsDescriptor;
 import jetbrains.mps.smodel.runtime.ReferenceScopeProvider;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -44,7 +43,7 @@ import org.jetbrains.mps.openapi.model.SReference;
  * (e.g. #getReferencePresentation() with booleans)
  */
 public abstract class ReferenceDescriptor {
-  private static final Logger LOG = LogManager.getLogger(ReferenceDescriptor.class);
+  private static final Logger LOG = Logger.getLogger(ReferenceDescriptor.class);
 
   // can be ErrorScope
   @NotNull
