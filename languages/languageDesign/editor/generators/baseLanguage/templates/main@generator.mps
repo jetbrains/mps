@@ -87,7 +87,6 @@
     <import index="twe9" ref="r:28e6d713-c3c3-493e-8d97-e9a2c49f28ce(jetbrains.mps.lang.structure.util)" />
     <import index="nivk" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.editor.runtime.descriptor(MPS.Editor/)" />
     <import index="df4k" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.editor.runtime.deletionApprover(MPS.Editor/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="av1m" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.menus.style(MPS.Editor/)" />
     <import index="fulz" ref="r:6f792c44-2a5d-40e8-9f05-33f7d4ae26ec(jetbrains.mps.editor.runtime.completion)" />
@@ -97,6 +96,7 @@
     <import index="9hsz" ref="r:16d53f5e-7835-4b72-9581-fafeae0db9b1(jetbrains.mps.lang.editor.enumMigration)" />
     <import index="tp26" ref="r:00000000-0000-4000-0000-011c89590302(jetbrains.mps.lang.smodel.generator.baseLanguage.util)" />
     <import index="tp25" ref="r:00000000-0000-4000-0000-011c89590301(jetbrains.mps.lang.smodel.structure)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
     <import index="xlb7" ref="r:cf42fd0a-68d2-493b-8b77-961658617704(jetbrains.mps.lang.modelapi.behavior)" implicit="true" />
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" implicit="true" />
     <import index="dvox" ref="r:9dfd3567-3b1f-4edb-85a0-3981ca2bfd8c(jetbrains.mps.lang.modelapi.structure)" implicit="true" />
@@ -37532,15 +37532,15 @@
                 <node concept="3clFbS" id="4TGwyKDzcsu" role="1zc67A">
                   <node concept="3clFbF" id="4TGwyKDzr4$" role="3cqZAp">
                     <node concept="2OqwBi" id="4TGwyKDzr4_" role="3clFbG">
-                      <node concept="2YIFZM" id="4TGwyKDzr4A" role="2Oq$k0">
-                        <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
-                        <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
-                        <node concept="1rXfSq" id="4TGwyKDzr4B" role="37wK5m">
+                      <node concept="2YIFZM" id="43wm7woOdBg" role="2Oq$k0">
+                        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+                        <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+                        <node concept="1rXfSq" id="43wm7woOdBh" role="37wK5m">
                           <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
                         </node>
                       </node>
                       <node concept="liA8E" id="4TGwyKDzr4C" role="2OqNvi">
-                        <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                        <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String,java.lang.Throwable)" resolve="error" />
                         <node concept="3cpWs3" id="4TGwyKDzr4D" role="37wK5m">
                           <node concept="Xl_RD" id="4TGwyKDzr4E" role="3uHU7B">
                             <property role="Xl_RC" value="Exception while executing getText of the item " />
@@ -44060,15 +44060,15 @@
                 <node concept="3clFbS" id="3c5h9FPziCy" role="1zc67A">
                   <node concept="3clFbF" id="7L8dRFxU57i" role="3cqZAp">
                     <node concept="2OqwBi" id="7L8dRFxU9zv" role="3clFbG">
-                      <node concept="2YIFZM" id="7L8dRFxU6K5" role="2Oq$k0">
-                        <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
-                        <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
-                        <node concept="1rXfSq" id="7L8dRFxU88g" role="37wK5m">
+                      <node concept="2YIFZM" id="43wm7woOoAK" role="2Oq$k0">
+                        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+                        <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+                        <node concept="1rXfSq" id="43wm7woOoAL" role="37wK5m">
                           <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
                         </node>
                       </node>
                       <node concept="liA8E" id="7L8dRFxUbyD" role="2OqNvi">
-                        <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                        <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String,java.lang.Throwable)" resolve="error" />
                         <node concept="3cpWs3" id="7L8dRFxUcJP" role="37wK5m">
                           <node concept="Xl_RD" id="7L8dRFxUcJQ" role="3uHU7B">
                             <property role="Xl_RC" value="Exception while executing getMatchingText() of the item " />
