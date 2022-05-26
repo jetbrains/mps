@@ -15,17 +15,17 @@ import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
+import java.util.List;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.util.IterableUtil;
+import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.apache.log4j.Level;
+import jetbrains.mps.baseLanguage.logging.rt.LogContext;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
-import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import java.util.Set;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
@@ -38,8 +38,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
-import jetbrains.mps.logging.MessageObject;
-import org.apache.log4j.LogManager;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -82,14 +80,14 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
       public void run(@NotNull ProgressIndicator indicator) {
         final ProgressMonitorAdapter progress = new ProgressMonitorAdapter(indicator);
         ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(() -> {
-          Iterable<? extends SModule> modules = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModulesWithGenerators();
-          progress.start("Modules...", Sequence.fromIterable(modules).count());
-          for (SModule module : Sequence.fromIterable(modules)) {
+          List<SModule> modules = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getProjectModulesWithGenerators();
+          progress.start("Modules...", ListSequence.fromList(modules).count());
+          for (SModule module : ListSequence.fromList(modules)) {
             ProgressMonitor subTask = progress.subTask(1);
             Iterable<SModel> models = module.getModels();
             subTask.start(module.getModuleName(), IterableUtil.asCollection(models).size());
             for (SModel m : Sequence.fromIterable(models)) {
-              subTask.step(m.getModelName());
+              subTask.step(m.getName().getSimpleName());
               for (SNode node : Sequence.fromIterable(m.getRootNodes())) {
                 rootsCount.value++;
                 membersOverallTime.value += CalcClassifiersInRootsStatistic_Action.this.analyzeClassifiersInRoot(node, _params);
@@ -102,8 +100,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
         });
       }
     });
-
-    CalcClassifiersInRootsStatistic_Action.this.message(Level.INFO, "Members average time: " + membersOverallTime.value * 0.001 / rootsCount.value, null, _params);
+    LogContext.with(CalcClassifiersInRootsStatistic_Action.class, null, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).info(String.format("Members average time: %.3f", membersOverallTime.value * 0.001 / rootsCount.value));
   }
   /*package*/ long analyzeClassifiersInRoot(final SNode node, final Map<String, Object> _params) {
     String nodeName = SNodeOperations.present(node) + "@" + SModelOperations.getModelName(SNodeOperations.getModel(node));
@@ -142,7 +139,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
       sb.append(String.format("%s: members calc time = %.3f%n", nodeName, membersCalcTime * 0.001));
     }
     if (sb.length() > 0) {
-      CalcClassifiersInRootsStatistic_Action.this.message(Level.INFO, sb.toString(), null, _params);
+      LogContext.with(CalcClassifiersInRootsStatistic_Action.class, null, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).info(sb.toString());
     }
     return membersCalcTime;
   }
@@ -170,7 +167,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
       try {
         ListSequence.fromList(result).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(((SNode) BHReflection.invoke0(classifier, CONCEPTS.IClassifier$MF, SMethodTrimmedId.create("getThisType", null, "6r77ob2UWbY"))), CONCEPTS.IClassifierType$B1, SMethodTrimmedId.create("getMembers", CONCEPTS.IClassifierType$B1, "6r77ob2V1Fr")))));
       } catch (Exception e) {
-        CalcClassifiersInRootsStatistic_Action.this.message(Level.ERROR, "Error calculating type", e, _params);
+        LogContext.with(CalcClassifiersInRootsStatistic_Action.class, e, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).error("Error calculating type");
       }
     }
 
@@ -181,14 +178,10 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
     try {
       toRun.invoke();
     } catch (Exception e) {
-      CalcClassifiersInRootsStatistic_Action.this.message(Level.ERROR, "Error calculating time", e, _params);
+      LogContext.with(CalcClassifiersInRootsStatistic_Action.class, e, ((MPSProject) MapSequence.fromMap(_params).get("mpsProject"))).error("Error calculating time");
     } finally {
       return System.currentTimeMillis() - startTime;
     }
-  }
-  private void message(Level level, String message, Throwable e, final Map<String, Object> _params) {
-    MessageObject msgObject = new MessageObject(message, null, "CalcClassifiersInRootsStatistic", ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
-    LogManager.getLogger("###MESSAGES_VIEW_TOKEN###").log(level, msgObject, e);
   }
 
   private static final class LINKS {
