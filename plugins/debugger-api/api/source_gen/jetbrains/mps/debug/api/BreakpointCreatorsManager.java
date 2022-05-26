@@ -47,15 +47,22 @@ public class BreakpointCreatorsManager {
   }
   private ILocationBreakpoint createBreakpoint(SAbstractConcept concept, SNode node, Project project) {
     for (BreakpointCreator creator : SetSequence.fromSet(myCreators)) {
-      if (creator._0().invoke(concept, node)) {
-        _FunctionTypes._return_P2_E0<? extends ILocationBreakpoint, ? super SNode, ? super Project> function = creator._1();
+      if (creator.canCreate().invoke(concept, node)) {
+        _FunctionTypes._return_P2_E1<? extends ILocationBreakpoint, ? super SNode, ? super Project, ? extends Exception> function = creator.create();
         if (function == null) {
           if (LOG.isWarningLevel()) {
-            LOG.warning("Could not create breakpoint for node " + SNodeOperations.present(node));
+            LOG.warning(String.format("Could not create breakpoint for node %s, no 'create' function", SNodeOperations.present(node)));
           }
           return null;
         }
-        return function.invoke(node, project);
+        try {
+          // FIXME no idea why there's subtype error
+          return function.invoke(node, project);
+        } catch (Exception ex) {
+          if (LOG.isWarningLevel()) {
+            LOG.warning(String.format("Exception while creating breakpoint for node %s", SNodeOperations.present(node)), ex);
+          }
+        }
       }
     }
     return null;
