@@ -42,6 +42,10 @@ public abstract class EnvironmentBase implements Environment {
     }
   }
 
+  public static void initializeLog() {
+    initializeLog4j();
+  }
+
   public EnvironmentBase(@NotNull EnvironmentConfig config) {
     myConfig = config;
     if (myConfig.isTestMode()) {

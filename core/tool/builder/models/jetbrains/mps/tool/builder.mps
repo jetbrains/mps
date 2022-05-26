@@ -1221,23 +1221,10 @@
       <node concept="3clFbS" id="KL8Aqlj5n7" role="3clF47">
         <node concept="3J1_TO" id="KL8Aqlj5n8" role="3cqZAp">
           <node concept="3clFbS" id="KL8Aqlj5nj" role="1zxBo7">
-            <node concept="3clFbF" id="5kpQnuAvYWO" role="3cqZAp">
-              <node concept="2OqwBi" id="5kpQnuAEPu6" role="3clFbG">
-                <node concept="2YIFZM" id="5kpQnuAEPu7" role="2Oq$k0">
-                  <ref role="37wK5l" to="q7tw:~Logger.getRootLogger()" resolve="getRootLogger" />
-                  <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
-                </node>
-                <node concept="liA8E" id="5kpQnuAEPu8" role="2OqNvi">
-                  <ref role="37wK5l" to="q7tw:~Category.setLevel(org.apache.log4j.Level)" resolve="setLevel" />
-                  <node concept="2OqwBi" id="5kpQnuAwmmm" role="37wK5m">
-                    <node concept="liA8E" id="5kpQnuAwoc0" role="2OqNvi">
-                      <ref role="37wK5l" to="asz6:KL8Aql8evO" resolve="getLogLevel" />
-                    </node>
-                    <node concept="37vLTw" id="5kpQnuAwlf$" role="2Oq$k0">
-                      <ref role="3cqZAo" node="KL8Aqlj5lG" resolve="myWhatToDo" />
-                    </node>
-                  </node>
-                </node>
+            <node concept="3clFbF" id="4Plof0GEkHU" role="3cqZAp">
+              <node concept="2YIFZM" id="4Plof0GEr85" role="3clFbG">
+                <ref role="37wK5l" to="79ha:4Plof0GDw7T" resolve="initializeLog" />
+                <ref role="1Pybhc" to="79ha:3eUNqOk4feo" resolve="EnvironmentBase" />
               </node>
             </node>
             <node concept="3clFbF" id="5A5jZrz0A2h" role="3cqZAp">

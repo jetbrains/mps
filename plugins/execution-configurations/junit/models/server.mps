@@ -1375,7 +1375,12 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="1_D5Bk1Sx1z" role="3clF47">
-        <node concept="3clFbH" id="jPm8AZjtyX" role="3cqZAp" />
+        <node concept="3clFbF" id="4Plof0GEzL9" role="3cqZAp">
+          <node concept="2YIFZM" id="4Plof0GE_c6" role="3clFbG">
+            <ref role="37wK5l" to="79ha:4Plof0GDw7T" resolve="initializeLog" />
+            <ref role="1Pybhc" to="79ha:3eUNqOk4feo" resolve="EnvironmentBase" />
+          </node>
+        </node>
         <node concept="3SKdUt" id="1_D5Bk1SzbV" role="3cqZAp">
           <node concept="1PaTwC" id="ATZLwXoepI" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXoepJ" role="1PaTwD">
@@ -1577,25 +1582,6 @@
             </node>
             <node concept="3oM_SD" id="ATZLwXoeqG" role="1PaTwD">
               <property role="3oM_SC" value="there." />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="5kpQnuAvYWO" role="3cqZAp">
-          <node concept="2OqwBi" id="5kpQnuAEPu6" role="3clFbG">
-            <node concept="2YIFZM" id="5kpQnuAEPu7" role="2Oq$k0">
-              <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
-              <ref role="37wK5l" to="q7tw:~Logger.getRootLogger()" resolve="getRootLogger" />
-            </node>
-            <node concept="liA8E" id="5kpQnuAEPu8" role="2OqNvi">
-              <ref role="37wK5l" to="q7tw:~Category.setLevel(org.apache.log4j.Level)" resolve="setLevel" />
-              <node concept="2OqwBi" id="5kpQnuAwmmm" role="37wK5m">
-                <node concept="liA8E" id="5kpQnuAwoc0" role="2OqNvi">
-                  <ref role="37wK5l" to="asz6:KL8Aql8eMv" resolve="getLogLevel" />
-                </node>
-                <node concept="37vLTw" id="6fYV1N68PA2" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1lYY8Nv7NGc" resolve="startupArguments" />
-                </node>
-              </node>
             </node>
           </node>
         </node>

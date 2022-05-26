@@ -3656,6 +3656,22 @@
       <node concept="3Tm1VV" id="2VDNdDcdMHZ" role="1B3o_S" />
       <node concept="3cqZAl" id="2VDNdDcdNNp" role="3clF45" />
     </node>
+    <node concept="2tJIrI" id="4Plof0GDxEi" role="jymVt" />
+    <node concept="2YIFZL" id="4Plof0GDw7T" role="jymVt">
+      <property role="TrG5h" value="initializeLog" />
+      <property role="od$2w" value="false" />
+      <property role="DiZV1" value="false" />
+      <property role="2aFKle" value="false" />
+      <node concept="3clFbS" id="4Plof0GDw7U" role="3clF47">
+        <node concept="3clFbF" id="4Plof0GDA9B" role="3cqZAp">
+          <node concept="1rXfSq" id="4Plof0GDA9_" role="3clFbG">
+            <ref role="37wK5l" node="2VDNdDcdNbx" resolve="initializeLog4j" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="4Plof0GDw8e" role="1B3o_S" />
+      <node concept="3cqZAl" id="4Plof0GDw8f" role="3clF45" />
+    </node>
     <node concept="2tJIrI" id="2HmhDwzk30X" role="jymVt" />
     <node concept="3clFbW" id="3eUNqOk4feY" role="jymVt">
       <node concept="3cqZAl" id="3eUNqOk4feZ" role="3clF45" />

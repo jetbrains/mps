@@ -8,8 +8,8 @@ import java.io.File;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
 import jetbrains.mps.tool.common.ScriptData;
+import jetbrains.mps.tool.environment.EnvironmentBase;
 import jetbrains.mps.tool.environment.EnvironmentConfig;
-import org.apache.log4j.Logger;
 import jetbrains.mps.tool.common.RepositoryDescriptor;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -53,12 +53,11 @@ public class WithPlatformTestExecutor extends DefaultTestExecutor {
   }
 
   /*package*/ static IdeaEnvironment startIdea(ScriptData startupArguments) {
-
+    EnvironmentBase.initializeLog();
     // XXX would be great to have this code as part of init() method, but it's too much of refactoring now. Shall drop init/dispose of TestExecutor.
     EnvironmentConfig cfg = EnvironmentConfig.defaultConfigWithAutoDiscoveryPluginsMode();
     // Same code is in MpsWorker, we'd better share it
     // FIXME Though technically dependency to MpsWorker (j.m.tool.builder) is possible here, I don't want it yet as I plan to split Ant/JUnit stuff from environment-related stuff there.
-    Logger.getRootLogger().setLevel(startupArguments.getLogLevel());
     RepositoryDescriptor rd = startupArguments.getRepo();
     if (rd != null) {
       for (String f : rd.folders) {

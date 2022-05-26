@@ -18,7 +18,7 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.tool.common.PluginData;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import org.apache.log4j.Logger;
+import jetbrains.mps.tool.environment.EnvironmentBase;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.components.ComponentHost;
 import java.util.Set;
@@ -127,7 +127,7 @@ public abstract class WorkerBase {
 
   public void workFromMain() {
     try {
-      Logger.getRootLogger().setLevel(myWhatToDo.getLogLevel());
+      EnvironmentBase.initializeLog();
       myEnvironment = createEnvironment();
       work();
       myEnvironment.flushAllEvents();
