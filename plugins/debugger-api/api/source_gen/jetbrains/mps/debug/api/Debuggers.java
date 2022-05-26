@@ -62,6 +62,6 @@ public class Debuggers {
 
 
   public static Debuggers getInstance() {
-    return ApplicationManager.getApplication().getComponent(Debuggers.class);
+    return ApplicationManager.getApplication().getService(Debuggers.class);
   }
 }
