@@ -6,7 +6,7 @@ import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.components.StoragePathMacros;
 import jetbrains.mps.annotations.GeneratedClass;
-import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.components.PersistentStateComponent;
 import org.jdom.Element;
 import jetbrains.mps.logging.Logger;
@@ -31,7 +31,7 @@ import org.jetbrains.annotations.Nullable;
 @State(name = "BreakpointManager", storages = @Storage(value = StoragePathMacros.WORKSPACE_FILE)
 )
 @GeneratedClass(node = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)/4474271214082915303", model = "r:c02662c0-67c5-4c3a-8d3a-cd7ffe189340(jetbrains.mps.debug.api)")
-public class BreakpointManagerComponent implements ProjectComponent, PersistentStateComponent<Element> {
+public class BreakpointManagerComponent implements Disposable, PersistentStateComponent<Element> {
   private static final Logger LOG = Logger.getLogger(BreakpointManagerComponent.class);
   private static final String BREAKPOINTS_LIST_ELEMENT = "breakpointsList";
   private static final DummyIO DUMMY_IO = new DummyIO();
@@ -44,24 +44,12 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
   private final List<Element> myUnreadBreakpoints = new ArrayList<Element>();
   private IBreakpointsIO myBreakpointsIO = DUMMY_IO;
   private final List<IBreakpointManagerListener> myListeners = new ArrayList<IBreakpointManagerListener>();
+
   public BreakpointManagerComponent() {
-  }
-  @NotNull
-  @Override
-  public String getComponentName() {
-    return "Breakpoint Manager";
+    // XXX odd project component/service that doesn't need project instance
   }
   @Override
-  public void projectOpened() {
-  }
-  @Override
-  public void projectClosed() {
-  }
-  @Override
-  public void initComponent() {
-  }
-  @Override
-  public void disposeComponent() {
+  public void dispose() {
     myBreakpointsIO = null;
     //  dispose
   }
@@ -256,7 +244,7 @@ public class BreakpointManagerComponent implements ProjectComponent, PersistentS
     }
   }
   public static BreakpointManagerComponent getInstance(@NotNull Project project) {
-    return project.getComponent(BreakpointManagerComponent.class);
+    return project.getService(BreakpointManagerComponent.class);
   }
   public interface IBreakpointManagerListener {
     void breakpointAdded(@NotNull IBreakpoint breakpoint);

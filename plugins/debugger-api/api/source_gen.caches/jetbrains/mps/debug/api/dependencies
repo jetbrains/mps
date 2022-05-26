@@ -151,8 +151,8 @@
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SModelReference" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
+    <classNode extendsClassName="com.intellij.openapi.Disposable" />
     <classNode extendsClassName="com.intellij.openapi.components.PersistentStateComponent" />
-    <classNode extendsClassName="com.intellij.openapi.components.ProjectComponent" />
   </dependency>
   <dependency className="jetbrains.mps.debug.api.DebugSessionManagerComponent">
     <classNode dependClassName="com.intellij.execution.Executor" />
