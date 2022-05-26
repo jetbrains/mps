@@ -10,11 +10,6 @@
   <depends>com.intellij.modules.mps</depends>
 
   <project-components>
-    <!--api-->
-    <component>
-      <implementation-class>jetbrains.mps.debug.api.DebugSessionManagerComponent</implementation-class>
-    </component>
-
     <!--runtime-->
     <component>
       <implementation-class>jetbrains.mps.debugger.api.ui.breakpoints.BreakpointsUiComponent</implementation-class>
@@ -59,6 +54,7 @@
     <applicationService serviceImplementation="jetbrains.mps.debug.api.breakpoints.BreakpointProvidersManager"/>
     <applicationService serviceImplementation="jetbrains.mps.debug.api.Debuggers"/>
     <projectService serviceImplementation="jetbrains.mps.debug.api.BreakpointManagerComponent"/>
+    <projectService serviceImplementation="jetbrains.mps.debug.api.DebugSessionManagerComponent"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">
