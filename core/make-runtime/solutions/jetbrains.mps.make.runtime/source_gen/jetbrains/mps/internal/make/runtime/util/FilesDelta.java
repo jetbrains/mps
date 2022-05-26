@@ -4,8 +4,7 @@ package jetbrains.mps.internal.make.runtime.util;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.make.delta.IDelta;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import java.util.Map;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -19,7 +18,7 @@ import java.util.HashSet;
 
 @GeneratedClass(node = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)/505174985642693148", model = "r:f8580193-afc4-4673-a635-d4757ca591cf(jetbrains.mps.internal.make.runtime.util)")
 public class FilesDelta implements IDelta {
-  private static Logger LOG = LogManager.getLogger(FilesDelta.class);
+  private static Logger LOG = Logger.getLogger(FilesDelta.class);
   private Map<IFile, Status> files = MapSequence.fromMap(new HashMap<IFile, Status>());
   private final DeltaKey key;
 

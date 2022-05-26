@@ -15,10 +15,8 @@
  */
 package jetbrains.mps.make;
 
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
-import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.io.Serializable;
@@ -95,13 +93,6 @@ public final class MPSCompilationResult implements Serializable, CompilationResu
   @Override
   public Set<SModuleReference> getAffectedModules() {
     return myChangedModules;
-  }
-
-  @Override
-  @NotNull
-  public Set<SModule> getChangedModules() {
-    Logger.getLogger(getClass()).error("CompilationResult.getChangedModules() is deprecated and scheduled for removal; always returns empty set", new Throwable());
-    return Collections.emptySet();
   }
 
   @Override

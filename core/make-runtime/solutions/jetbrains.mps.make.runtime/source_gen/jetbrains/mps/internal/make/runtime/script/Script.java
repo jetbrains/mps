@@ -4,8 +4,7 @@ package jetbrains.mps.internal.make.runtime.script;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.make.script.IScript;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.make.facet.ITarget;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -48,7 +47,7 @@ import jetbrains.mps.make.resources.IResourceWithProperties;
 
 @GeneratedClass(node = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)/6168415856807657480", model = "r:8e0d2787-667a-41b8-9f98-9bb45c087fba(jetbrains.mps.internal.make.runtime.script)")
 public class Script implements IScript {
-  private static Logger LOG = LogManager.getLogger(Script.class);
+  private static Logger LOG = Logger.getLogger(Script.class);
   public static final ITarget.Name TIME_STATISTIC_RESULT_NAME = new ITarget.Name("TIME_STATISTIC");
   private ITarget.Name startingTarget;
   private ITarget.Name finalTarget;

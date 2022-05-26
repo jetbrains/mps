@@ -42,12 +42,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
     <classNode extendsClassName="jetbrains.mps.make.script.IScript" />
   </dependency>
-  <dependency className="jetbrains.mps.internal.make.runtime.script.LoggingFeedbackStrategy">
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.make.script.IFeedback" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
-  </dependency>
   <dependency className="jetbrains.mps.internal.make.runtime.script.MessageFeedbackStrategy">
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
     <classNode dependClassName="jetbrains.mps.make.script.IFeedback" />
@@ -92,6 +86,7 @@
     <classNode dependClassName="jetbrains.mps.internal.make.runtime.script.TargetRange" />
     <classNode dependClassName="jetbrains.mps.internal.make.runtime.script.TimeStatisticResource" />
     <classNode dependClassName="jetbrains.mps.internal.make.runtime.script.ValidationError" />
+    <classNode dependClassName="jetbrains.mps.logging.Logger" />
     <classNode dependClassName="jetbrains.mps.make.facet.FacetRegistry" />
     <classNode dependClassName="jetbrains.mps.make.facet.IFacet" />
     <classNode dependClassName="jetbrains.mps.make.facet.ITarget" />
@@ -112,8 +107,6 @@
     <classNode dependClassName="jetbrains.mps.make.script.IScriptController" />
     <classNode dependClassName="jetbrains.mps.messages.IMessage" />
     <classNode dependClassName="jetbrains.mps.smodel.TimeOutRuntimeException" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jetbrains.mps.openapi.util.ProgressMonitor" />
     <classNode extendsClassName="jetbrains.mps.make.script.IScript" />
   </dependency>

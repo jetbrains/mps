@@ -15,12 +15,11 @@
     <import index="5zyv" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent(JDK/)" />
     <import index="hfuk" ref="r:b25dd364-bc3f-4a66-97d1-262009610c5e(jetbrains.mps.make)" />
     <import index="3ju5" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.vfs(MPS.Core/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="ni5j" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.regex(JDK/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="lhc4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.annotations(MPS.OpenAPI/)" />
-    <import index="811b" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.info(MPS.Generator/)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -3466,15 +3465,15 @@
     <node concept="Wx3nA" id="2Nc2qaI_GdD" role="jymVt">
       <property role="TrG5h" value="LOG" />
       <node concept="2YIFZM" id="Hn0$MvbZ32" role="33vP2m">
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
+        <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <node concept="3VsKOn" id="Hn0$MvbZ33" role="37wK5m">
           <ref role="3VsUkX" node="s2Jv$gDl8s" resolve="FilesDelta" />
         </node>
       </node>
       <node concept="3Tm6S6" id="2Nc2qaI_GdE" role="1B3o_S" />
       <node concept="3uibUv" id="Hn0$MvbZ2U" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+        <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
       </node>
     </node>
     <node concept="312cEg" id="s2Jv$gDwDs" role="jymVt">
@@ -3810,7 +3809,7 @@
                             <ref role="3cqZAo" node="2Nc2qaI_GdD" resolve="LOG" />
                           </node>
                           <node concept="liA8E" id="6uL$bP9UKfI" role="2OqNvi">
-                            <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object)" resolve="debug" />
+                            <ref role="37wK5l" to="wwqx:~Logger.debug(java.lang.String)" resolve="debug" />
                             <node concept="3cpWs3" id="6uL$bP9UKfJ" role="37wK5m">
                               <node concept="37vLTw" id="2BHiRxglKYI" role="3uHU7w">
                                 <ref role="3cqZAo" node="6uL$bP9UKfy" resolve="file" />
@@ -3853,7 +3852,7 @@
                                   <ref role="1PxDUh" node="s2Jv$gDl8s" resolve="FilesDelta" />
                                 </node>
                                 <node concept="liA8E" id="IXrbys5QOp" role="2OqNvi">
-                                  <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                                  <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String,java.lang.Throwable)" resolve="error" />
                                   <node concept="3cpWs3" id="IXrbys5QOw" role="37wK5m">
                                     <node concept="37vLTw" id="2BHiRxgm8NH" role="3uHU7w">
                                       <ref role="3cqZAo" node="6uL$bP9UKfy" resolve="file" />

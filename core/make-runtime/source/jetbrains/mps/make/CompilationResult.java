@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.make;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import java.util.Set;
@@ -46,11 +44,4 @@ public interface CompilationResult {
   * @return never null
   */
  Set<SModuleReference> getAffectedModules();
-
- /**
-  * @deprecated use {@link #getAffectedModules()} instead. Compilation of java files may happen outside of
-  *             model read, don't need to carry objects that may get stale.
-  */
- @Deprecated(since = "2021.2", forRemoval = true)
- @NotNull Set<SModule> getChangedModules();
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2011 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
 package jetbrains.mps.make.dependencies.graph;
 
 import jetbrains.mps.util.GraphUtil;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -36,7 +34,6 @@ import java.util.stream.Stream;
  * @param <V> -- vertex class
  */
 public final class Graph<V extends IVertex> {
-  private static final Logger LOG = LogManager.getLogger(Graph.class);
 
   private final Set<V> myVertices = new LinkedHashSet<>();
 
@@ -47,7 +44,7 @@ public final class Graph<V extends IVertex> {
     myVertices.add(vertex);
     for (IVertex next : vertex.getNexts()) {
       if (next == null) {
-        LOG.error("Next of vertex " + vertex + " is null.");
+        throw new IllegalArgumentException("Next of vertex " + vertex + " is null.");
       } else if (!myVertices.contains(next)) {
         add((V) next);
       }
