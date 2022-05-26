@@ -4031,11 +4031,9 @@
     <property role="1sVAO0" value="false" />
     <property role="1EXbeo" value="false" />
     <node concept="3Tm1VV" id="3SnNvqCaJDy" role="1B3o_S" />
-    <node concept="3uibUv" id="3oTAX9lRJHY" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ApplicationComponent" resolve="ApplicationComponent" />
-    </node>
     <node concept="312cEg" id="74nKSDp1YGc" role="jymVt">
       <property role="TrG5h" value="myCreators" />
+      <property role="3TUv4t" value="true" />
       <node concept="3Tm6S6" id="74nKSDp1YGd" role="1B3o_S" />
       <node concept="2hMVRd" id="74nKSDp1YGh" role="1tU5fm">
         <node concept="2pR195" id="2wPTxHz4bOf" role="2hN53Y">
@@ -4055,26 +4053,6 @@
       <node concept="3Tm1VV" id="3SnNvqCaJDT" role="1B3o_S" />
       <node concept="3cqZAl" id="3SnNvqCaJDU" role="3clF45" />
       <node concept="3clFbS" id="3SnNvqCaJDV" role="3clF47" />
-    </node>
-    <node concept="3clFb_" id="3SnNvqCaJE5" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getComponentName" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCaJE6" role="1B3o_S" />
-      <node concept="17QB3L" id="74nKSDp0zeX" role="3clF45" />
-      <node concept="3clFbS" id="3SnNvqCaJE8" role="3clF47">
-        <node concept="3cpWs6" id="3SnNvqCaJE9" role="3cqZAp">
-          <node concept="Xl_RD" id="3SnNvqCaJEa" role="3cqZAk">
-            <property role="Xl_RC" value="Debug Info Manager" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3SnNvqCaJEb" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_S4kH" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
     </node>
     <node concept="2tJIrI" id="2wPTxHz4SLS" role="jymVt" />
     <node concept="3clFb_" id="2wPTxHz75mm" role="jymVt">
@@ -4502,28 +4480,6 @@
         <ref role="2AI5Lk" to="mhfm:~Nullable" resolve="Nullable" />
       </node>
     </node>
-    <node concept="3clFb_" id="3SnNvqCaJHk" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="initComponent" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCaJHl" role="1B3o_S" />
-      <node concept="3cqZAl" id="3SnNvqCaJHm" role="3clF45" />
-      <node concept="3clFbS" id="3SnNvqCaJHn" role="3clF47" />
-      <node concept="2AHcQZ" id="3tYsUK_S4k_" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="3SnNvqCaJHo" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="disposeComponent" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCaJHp" role="1B3o_S" />
-      <node concept="3cqZAl" id="3SnNvqCaJHq" role="3clF45" />
-      <node concept="3clFbS" id="3SnNvqCaJHr" role="3clF47" />
-      <node concept="2AHcQZ" id="3tYsUK_S4kF" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
     <node concept="2YIFZL" id="3SnNvqCaJDW" role="jymVt">
       <property role="TrG5h" value="getInstance" />
       <property role="DiZV1" value="false" />
@@ -4539,7 +4495,7 @@
               <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
             </node>
             <node concept="liA8E" id="3SnNvqCaJE3" role="2OqNvi">
-              <ref role="37wK5l" to="1m72:~ComponentManager.getComponent(java.lang.Class)" resolve="getComponent" />
+              <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
               <node concept="3VsKOn" id="3SnNvqCaJE4" role="37wK5m">
                 <ref role="3VsUkX" node="3SnNvqCaJDx" resolve="BreakpointCreatorsManager" />
               </node>
