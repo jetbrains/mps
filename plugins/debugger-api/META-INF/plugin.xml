@@ -12,10 +12,6 @@
   <application-components>
     <!--api-->
     <component>
-      <implementation-class>jetbrains.mps.debug.api.breakpoints.BreakpointProvidersManager</implementation-class>
-    </component>
-
-    <component>
       <implementation-class>jetbrains.mps.debug.api.Debuggers</implementation-class>
     </component>
 
@@ -69,9 +65,10 @@
     <programRunner id="defaultDebugRunner" implementation="jetbrains.mps.debugger.api.runner.MPSDebugRunner"
                    order="last"/>
     <errorHandler implementation="jetbrains.mps.ide.blame.CharismaReporter"/>
-    <mps.LanguageLibrary dir="" hide="true"/>
+    <mps.LanguageLibrary dir="/" hide="true"/>
     <mps.PluginComponentContributor application="jetbrains.mps.debugger.api.ui.actions.Runtime_ApplicationPlugin" />
     <applicationService serviceImplementation="jetbrains.mps.debug.api.BreakpointCreatorsManager"/>
+    <applicationService serviceImplementation="jetbrains.mps.debug.api.breakpoints.BreakpointProvidersManager"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">
