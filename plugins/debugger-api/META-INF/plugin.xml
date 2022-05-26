@@ -15,9 +15,6 @@
       <implementation-class>jetbrains.mps.debugger.api.ui.breakpoints.BreakpointsUiComponent</implementation-class>
     </component>
     <component>
-      <implementation-class>jetbrains.mps.debugger.api.ui.breakpoints.BreakpointViewSettingsComponent</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.debugger.api.ui.executionPoint.CurrentLinePositionComponent</implementation-class>
     </component>
     <component>
@@ -55,6 +52,7 @@
     <applicationService serviceImplementation="jetbrains.mps.debug.api.Debuggers"/>
     <projectService serviceImplementation="jetbrains.mps.debug.api.BreakpointManagerComponent"/>
     <projectService serviceImplementation="jetbrains.mps.debug.api.DebugSessionManagerComponent"/>
+    <projectService serviceImplementation="jetbrains.mps.debugger.api.ui.breakpoints.BreakpointViewSettingsComponent"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">

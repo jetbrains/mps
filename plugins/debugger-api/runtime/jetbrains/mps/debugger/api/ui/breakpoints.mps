@@ -11702,9 +11702,6 @@
         <ref role="3uigEE" node="3SnNvqCbzpf" resolve="BreakpointViewSettingsComponent.MyState" />
       </node>
     </node>
-    <node concept="3uibUv" id="3oTAX9lRKo2" role="EKbjA">
-      <ref role="3uigEE" to="1m72:~ProjectComponent" resolve="ProjectComponent" />
-    </node>
     <node concept="2AHcQZ" id="3SnNvqCbzs9" role="2AJF6D">
       <ref role="2AI5Lk" to="1m72:~State" resolve="State" />
       <node concept="2B6LJw" id="3SnNvqCbzsa" role="2B76xF">
@@ -11747,11 +11744,13 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="6b6ZfOFAtNa" role="jymVt" />
     <node concept="3clFbW" id="3SnNvqCbzpC" role="jymVt">
       <node concept="3Tm1VV" id="3SnNvqCbzpD" role="1B3o_S" />
       <node concept="3cqZAl" id="3SnNvqCbzpE" role="3clF45" />
       <node concept="3clFbS" id="3SnNvqCbzpF" role="3clF47" />
     </node>
+    <node concept="2tJIrI" id="6b6ZfOFAubs" role="jymVt" />
     <node concept="3clFb_" id="3SnNvqCbzpR" role="jymVt">
       <property role="1EzhhJ" value="false" />
       <property role="TrG5h" value="getState" />
@@ -11797,72 +11796,6 @@
         </node>
       </node>
       <node concept="2AHcQZ" id="3SnNvqCbzq8" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="3SnNvqCbzq9" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="projectOpened" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCbzqa" role="1B3o_S" />
-      <node concept="3cqZAl" id="3SnNvqCbzqb" role="3clF45" />
-      <node concept="3clFbS" id="3SnNvqCbzqc" role="3clF47" />
-      <node concept="2AHcQZ" id="3SnNvqCbzqd" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="3SnNvqCbzqe" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="projectClosed" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCbzqf" role="1B3o_S" />
-      <node concept="3cqZAl" id="3SnNvqCbzqg" role="3clF45" />
-      <node concept="3clFbS" id="3SnNvqCbzqh" role="3clF47" />
-      <node concept="2AHcQZ" id="3SnNvqCbzqi" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="3SnNvqCbzqj" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="getComponentName" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCbzqk" role="1B3o_S" />
-      <node concept="3uibUv" id="3SnNvqCbzql" role="3clF45">
-        <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-      </node>
-      <node concept="3clFbS" id="3SnNvqCbzqm" role="3clF47">
-        <node concept="3cpWs6" id="3SnNvqCbzqn" role="3cqZAp">
-          <node concept="Xl_RD" id="3SnNvqCbzqo" role="3cqZAk">
-            <property role="Xl_RC" value="Breakpoints Settings" />
-          </node>
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3SnNvqCbzqp" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-      <node concept="2AHcQZ" id="3SnNvqCbzqq" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="3SnNvqCbzqr" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="initComponent" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCbzqs" role="1B3o_S" />
-      <node concept="3cqZAl" id="3SnNvqCbzqt" role="3clF45" />
-      <node concept="3clFbS" id="3SnNvqCbzqu" role="3clF47" />
-      <node concept="2AHcQZ" id="3SnNvqCbzqv" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="3SnNvqCbzqw" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="disposeComponent" />
-      <property role="DiZV1" value="false" />
-      <node concept="3Tm1VV" id="3SnNvqCbzqx" role="1B3o_S" />
-      <node concept="3cqZAl" id="3SnNvqCbzqy" role="3clF45" />
-      <node concept="3clFbS" id="3SnNvqCbzqz" role="3clF47" />
-      <node concept="2AHcQZ" id="3SnNvqCbzq$" role="2AJF6D">
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
@@ -12110,6 +12043,7 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="6b6ZfOFB7GY" role="jymVt" />
     <node concept="2YIFZL" id="3SnNvqCbzpG" role="jymVt">
       <property role="TrG5h" value="getInstance" />
       <property role="DiZV1" value="false" />
@@ -12127,19 +12061,24 @@
       <node concept="3clFbS" id="3SnNvqCbzpL" role="3clF47">
         <node concept="3cpWs6" id="3SnNvqCbzpM" role="3cqZAp">
           <node concept="2OqwBi" id="3SnNvqCbzpN" role="3cqZAk">
-            <node concept="37vLTw" id="2BHiRxglf7n" role="2Oq$k0">
-              <ref role="3cqZAo" node="3SnNvqCbzpJ" resolve="project" />
-            </node>
             <node concept="liA8E" id="3SnNvqCbzpP" role="2OqNvi">
-              <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+              <ref role="37wK5l" to="1m72:~ComponentManager.getService(java.lang.Class)" resolve="getService" />
               <node concept="3VsKOn" id="3SnNvqCbzpQ" role="37wK5m">
                 <ref role="3VsUkX" node="3SnNvqCbxoC" resolve="BreakpointViewSettingsComponent" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="6b6ZfOFB4Jy" role="2Oq$k0">
+              <ref role="1Pybhc" to="alof:~ProjectHelper" resolve="ProjectHelper" />
+              <ref role="37wK5l" to="alof:~ProjectHelper.toIdeaProject(jetbrains.mps.project.Project)" resolve="toIdeaProject" />
+              <node concept="37vLTw" id="6b6ZfOFB5Pb" role="37wK5m">
+                <ref role="3cqZAo" node="3SnNvqCbzpJ" resolve="project" />
               </node>
             </node>
           </node>
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="6b6ZfOFB7kg" role="jymVt" />
     <node concept="312cEu" id="3SnNvqCbzpf" role="jymVt">
       <property role="TrG5h" value="MyState" />
       <property role="2bfB8j" value="false" />
