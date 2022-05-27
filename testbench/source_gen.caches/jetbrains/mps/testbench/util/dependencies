@@ -9,18 +9,23 @@
   <uses module="8865b7a8-5271-43d3-884c-6fd1d9cfdd34(MPS.OpenAPI)" kind="dp" />
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
   <dependency className="jetbrains.mps.testbench.util.CachingAppender">
+    <classNode dependClassName="java.io.PrintWriter" />
+    <classNode dependClassName="java.io.StringWriter" />
     <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.SecurityException" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.lang.StringBuilder" />
+    <classNode dependClassName="java.lang.SuppressWarnings" />
+    <classNode dependClassName="java.lang.Throwable" />
     <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="java.util.logging.Handler" />
+    <classNode dependClassName="java.util.logging.Level" />
+    <classNode dependClassName="java.util.logging.LogRecord" />
+    <classNode dependClassName="java.util.logging.Logger" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="org.apache.log4j.AppenderSkeleton" />
     <classNode dependClassName="org.apache.log4j.Level" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
-    <classNode dependClassName="org.apache.log4j.spi.LoggingEvent" />
     <classNode extendsClassName="jetbrains.mps.testbench.util.Output" />
   </dependency>
   <dependency className="jetbrains.mps.testbench.util.CachingPrintStream">

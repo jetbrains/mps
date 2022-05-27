@@ -5,13 +5,14 @@ package jetbrains.mps.testbench.util;
 import jetbrains.mps.annotations.GeneratedClass;
 import java.util.List;
 import java.util.ArrayList;
-import org.apache.log4j.AppenderSkeleton;
-import org.apache.log4j.spi.LoggingEvent;
-import org.apache.log4j.Logger;
-import java.util.Arrays;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
+import java.io.StringWriter;
+import java.io.PrintWriter;
 
 /**
- * fyodor, Aug 18, 2010
+ * Mechanism to treat certain log error messages as 'expected'
  */
 @GeneratedClass(node = "r:36bec8f9-6cb9-42f4-a517-ea58c11993b3(jetbrains.mps.testbench.util)/5294483648489410428", model = "r:36bec8f9-6cb9-42f4-a517-ea58c11993b3(jetbrains.mps.testbench.util)")
 public class CachingAppender implements Output {
@@ -38,6 +39,7 @@ public class CachingAppender implements Output {
 
   }
 
+  @SuppressWarnings("UnstableApiUsage")
   /*package*/ static Level fromLog4jLevel(int log4jLevel) {
     // ALL as default not to miss any event just in case
     switch (log4jLevel) {
@@ -59,6 +61,28 @@ public class CachingAppender implements Output {
         return Level.ALL;
     }
   }
+  /*package*/ static Level fromJUL(java.util.logging.Level julLevel) {
+    // ALL as default not to miss any event just in case
+    if (java.util.logging.Level.ALL == julLevel || java.util.logging.Level.FINEST == julLevel || java.util.logging.Level.FINER == julLevel) {
+      return Level.TRACE;
+    }
+    if (java.util.logging.Level.FINE == julLevel || java.util.logging.Level.CONFIG == julLevel) {
+      return Level.DEBUG;
+    }
+    if (java.util.logging.Level.INFO == julLevel) {
+      return Level.INFO;
+    }
+    if (java.util.logging.Level.WARNING == julLevel) {
+      return Level.WARN;
+    }
+    if (java.util.logging.Level.SEVERE == julLevel) {
+      return Level.ERROR;
+    }
+    if (java.util.logging.Level.OFF == julLevel) {
+      return Level.OFF;
+    }
+    return Level.ALL;
+  }
   /*package*/ static class EE {
     public final Level level;
     public final String text;
@@ -73,7 +97,7 @@ public class CachingAppender implements Output {
   private List<String> myMessages = new ArrayList<String>();
   private List<EE> myExpectedEvents = new ArrayList<>();
   private List<EE> myReceivedExpectedEvents = new ArrayList<>();
-  private AppenderSkeleton myListener;
+  private Handler myListener;
 
   /**
    * 
@@ -88,21 +112,20 @@ public class CachingAppender implements Output {
 
   public void attach() {
     assert myListener == null;
-    myListener = new AppenderSkeleton() {
+    myListener = new Handler() {
       @Override
-      protected void append(LoggingEvent e) {
-        process(e);
+      public void publish(LogRecord record) {
+        process(record);
       }
       @Override
-      public void close() {
+      public void flush() {
       }
       @Override
-      public boolean requiresLayout() {
-        return false;
+      public void close() throws SecurityException {
       }
     };
-    // intentionally no LevelRangeFilter, see cons
-    Logger.getRootLogger().addAppender(myListener);
+    // intentionally no filter, see cons
+    Logger.getLogger("").addHandler(myListener);
     myEventCount = 0;
     myReceivedExpectedEvents.clear();
     myMessages.clear();
@@ -110,26 +133,29 @@ public class CachingAppender implements Output {
 
   public void detach() {
     if (myListener != null) {
-      Logger.getRootLogger().removeAppender(myListener);
+      Logger.getLogger("").removeHandler(myListener);
       myListener = null;
     }
   }
 
-  /*package*/ void process(LoggingEvent loggingEvent) {
-    Level eventLevel = fromLog4jLevel(loggingEvent.getLevel().toInt());
-    EE pr = findExpected(eventLevel, loggingEvent.getRenderedMessage());
+  /*package*/ void process(LogRecord loggingEvent) {
+    Level eventLevel = fromJUL(loggingEvent.getLevel());
+    EE pr = findExpected(eventLevel, loggingEvent.getMessage());
     if (pr == null) {
       // unexpected, but do we care given initial sensitivity barrier?
       if (eventLevel.lessSevereThan(myUnexpectedWatchLevel)) {
         return;
       }
       myEventCount++;
-      myMessages.add(loggingEvent.getRenderedMessage());
-      String[] stackTrace = loggingEvent.getThrowableStrRep();
+      myMessages.add(loggingEvent.getMessage());
+      Throwable stackTrace = loggingEvent.getThrown();
       if (stackTrace != null) {
-        myMessages.add("++ =============StackTrace================");
-        myMessages.addAll(Arrays.asList(stackTrace));
-        myMessages.add("-- =============StackTrace================");
+        StringWriter sw = new StringWriter(500);
+        PrintWriter pw = new PrintWriter(sw);
+        pw.println("++ =============StackTrace================");
+        stackTrace.printStackTrace(pw);
+        pw.println("-- =============StackTrace================");
+        myMessages.add(sw.getBuffer().toString());
       }
     } else {
       myReceivedExpectedEvents.add(pr);
