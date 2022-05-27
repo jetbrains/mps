@@ -5,7 +5,6 @@ package jetbrains.mps.ide.findusages.findalgorithm.resultproviders.treenodes;
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.logging.Logger;
-import org.apache.log4j.LogManager;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;

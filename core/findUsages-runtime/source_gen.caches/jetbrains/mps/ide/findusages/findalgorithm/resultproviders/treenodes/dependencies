@@ -33,10 +33,9 @@
     <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchQuery" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchResult" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchResults" />
+    <classNode dependClassName="jetbrains.mps.logging.Logger" />
     <classNode dependClassName="jetbrains.mps.progress.EmptyProgressMonitor" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jdom.Element" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
@@ -56,9 +55,8 @@
     <classNode dependClassName="jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.findalgorithm.finders.ReloadableFinder" />
     <classNode dependClassName="jetbrains.mps.ide.findusages.model.SearchQuery" />
+    <classNode dependClassName="jetbrains.mps.logging.Logger" />
     <classNode dependClassName="jetbrains.mps.project.Project" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
     <classNode dependClassName="org.jdom.Element" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.mps.openapi.module.SearchScope" />

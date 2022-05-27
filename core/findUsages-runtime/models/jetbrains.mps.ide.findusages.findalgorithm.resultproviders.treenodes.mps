@@ -12,12 +12,12 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="mmaq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.jdom(MPS.Core/)" />
     <import index="b2d5" ref="r:1a2b3027-99d2-4946-917b-f185130ac75d(jetbrains.mps.ide.findusages.findalgorithm.finders)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -353,11 +353,11 @@
       <property role="TrG5h" value="LOG" />
       <property role="3TUv4t" value="true" />
       <node concept="3uibUv" id="7rEOvdELARS" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
+        <ref role="3uigEE" to="wwqx:~Logger" resolve="Logger" />
       </node>
       <node concept="2YIFZM" id="7rEOvdELJiV" role="33vP2m">
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
+        <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+        <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
         <node concept="3VsKOn" id="7rEOvdELJiW" role="37wK5m">
           <ref role="3VsUkX" node="7rEOvdELARO" resolve="BaseNode" />
         </node>
@@ -713,7 +713,7 @@
                                 <ref role="3cqZAo" node="7rEOvdELARR" resolve="LOG" />
                               </node>
                               <node concept="liA8E" id="7rEOvdELJoS" role="2OqNvi">
-                                <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object)" resolve="error" />
+                                <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String)" resolve="error" />
                                 <node concept="Xl_RD" id="7rEOvdELJoT" role="37wK5m">
                                   <property role="Xl_RC" value="#getSearchResults returned results containing null, which means that some of your filters and finders is incorrect" />
                                 </node>
@@ -777,7 +777,7 @@
                                 <ref role="3cqZAo" node="7rEOvdELARR" resolve="LOG" />
                               </node>
                               <node concept="liA8E" id="7rEOvdELJpj" role="2OqNvi">
-                                <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object)" resolve="error" />
+                                <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String)" resolve="error" />
                                 <node concept="Xl_RD" id="7rEOvdELJpk" role="37wK5m">
                                   <property role="Xl_RC" value="#getSearchedObjects returned nodes containing null, which means that some of your filters and finders is incorrect" />
                                 </node>
@@ -1395,21 +1395,6 @@
     <node concept="3uibUv" id="7rEOvdELAv_" role="1zkMxy">
       <ref role="3uigEE" node="7rEOvdELB4a" resolve="BaseLeaf" />
     </node>
-    <node concept="Wx3nA" id="7rEOvdELAvA" role="jymVt">
-      <property role="TrG5h" value="LOG" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="7rEOvdELAvB" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
-      </node>
-      <node concept="2YIFZM" id="7rEOvdELJwe" role="33vP2m">
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <node concept="3VsKOn" id="7rEOvdELJwf" role="37wK5m">
-          <ref role="3VsUkX" node="7rEOvdELAvz" resolve="FinderNode" />
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="7rEOvdELAvF" role="1B3o_S" />
-    </node>
     <node concept="Wx3nA" id="7rEOvdELAvG" role="jymVt">
       <property role="TrG5h" value="FINDER" />
       <property role="3TUv4t" value="true" />
@@ -1638,14 +1623,14 @@
               <node concept="3clFbF" id="7rEOvdELAwJ" role="3cqZAp">
                 <node concept="2OqwBi" id="7rEOvdELAwK" role="3clFbG">
                   <node concept="2YIFZM" id="7rEOvdELJwn" role="2Oq$k0">
-                    <ref role="1Pybhc" to="q7tw:~Logger" resolve="Logger" />
-                    <ref role="37wK5l" to="q7tw:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+                    <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+                    <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
                     <node concept="1rXfSq" id="7rEOvdELJwo" role="37wK5m">
                       <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
                     </node>
                   </node>
                   <node concept="liA8E" id="7rEOvdELAwN" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.error(java.lang.Object,java.lang.Throwable)" resolve="error" />
+                    <ref role="37wK5l" to="wwqx:~Logger.error(java.lang.String,java.lang.Throwable)" resolve="error" />
                     <node concept="2OqwBi" id="7rEOvdELJwx" role="37wK5m">
                       <node concept="37vLTw" id="7rEOvdELJww" role="2Oq$k0">
                         <ref role="3cqZAo" node="7rEOvdELAwA" resolve="t" />

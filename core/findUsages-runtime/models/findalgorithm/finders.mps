@@ -14,15 +14,14 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
     <import index="g4jo" ref="r:d98d04fb-4a60-4106-81cf-6cb40b67de4d(jetbrains.mps.ide.findusages.model)" />
     <import index="mhfm" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:org.jetbrains.annotations(Annotations/)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="9erk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.ide.findusages.model(MPS.Core/)" />
-    <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
     <import index="lhc4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.annotations(MPS.OpenAPI/)" />
+    <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -31,6 +30,9 @@
       </concept>
       <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
         <child id="1082485599096" name="statements" index="9aQI4" />
+      </concept>
+      <concept id="7485977462274819189" name="jetbrains.mps.baseLanguage.structure.FormatOperation" flags="ng" index="2cAKMz">
+        <child id="7485977462274819664" name="arguments" index="2cAKU6" />
       </concept>
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
@@ -66,7 +68,6 @@
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
       </concept>
-      <concept id="1070462154015" name="jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" flags="ig" index="Wx3nA" />
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
       </concept>
@@ -142,7 +143,6 @@
       <concept id="1068580320020" name="jetbrains.mps.baseLanguage.structure.IntegerConstant" flags="nn" index="3cmrfG">
         <property id="1068580320021" name="value" index="3cmrfH" />
       </concept>
-      <concept id="1068581242875" name="jetbrains.mps.baseLanguage.structure.PlusExpression" flags="nn" index="3cpWs3" />
       <concept id="1068581242878" name="jetbrains.mps.baseLanguage.structure.ReturnStatement" flags="nn" index="3cpWs6">
         <child id="1068581517676" name="expression" index="3cqZAk" />
       </concept>
@@ -535,21 +535,6 @@
     <property role="TrG5h" value="GeneratedFinder" />
     <property role="1sVAO0" value="true" />
     <property role="1EXbeo" value="false" />
-    <node concept="Wx3nA" id="6hZLf2YqOWr" role="jymVt">
-      <property role="TrG5h" value="LOG" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="6hZLf2YqOWs" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Logger" resolve="Logger" />
-      </node>
-      <node concept="2YIFZM" id="6hZLf2YqQgI" role="33vP2m">
-        <ref role="1Pybhc" to="q7tw:~LogManager" resolve="LogManager" />
-        <ref role="37wK5l" to="q7tw:~LogManager.getLogger(java.lang.Class)" resolve="getLogger" />
-        <node concept="3VsKOn" id="6hZLf2YqQgJ" role="37wK5m">
-          <ref role="3VsUkX" node="7aWSXuXO6ad" resolve="GeneratedFinder" />
-        </node>
-      </node>
-      <node concept="3Tm6S6" id="6hZLf2YqOWw" role="1B3o_S" />
-    </node>
     <node concept="2tJIrI" id="6hZLf2YqNC$" role="jymVt" />
     <node concept="3clFbW" id="6hZLf2Yqwii" role="jymVt">
       <property role="DiZV1" value="false" />
@@ -1498,34 +1483,28 @@
           </node>
           <node concept="9aQIb" id="6hZLf2YqwmR" role="9aQIa">
             <node concept="3clFbS" id="6hZLf2YqwmS" role="9aQI4">
+              <node concept="3cpWs8" id="6anhmP$biu3" role="3cqZAp">
+                <node concept="3cpWsn" id="6anhmP$biu4" role="3cpWs9">
+                  <property role="TrG5h" value="m" />
+                  <node concept="17QB3L" id="6anhmP$bi6G" role="1tU5fm" />
+                  <node concept="Xl_RD" id="6anhmP$biu5" role="33vP2m">
+                    <property role="Xl_RC" value="Trying to use finder that is not applicable to the concept. Returning empty results.[finder: '%s'; concept: %s" />
+                  </node>
+                </node>
+              </node>
               <node concept="3clFbF" id="6hZLf2YqwmT" role="3cqZAp">
                 <node concept="2OqwBi" id="6hZLf2YqQlP" role="3clFbG">
-                  <node concept="37vLTw" id="6hZLf2YqQlO" role="2Oq$k0">
-                    <ref role="3cqZAo" node="6hZLf2YqOWr" resolve="LOG" />
-                  </node>
                   <node concept="liA8E" id="6hZLf2YqQlQ" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Category.debug(java.lang.Object)" resolve="debug" />
-                    <node concept="3cpWs3" id="6hZLf2YqQlR" role="37wK5m">
-                      <node concept="3cpWs3" id="6hZLf2YqQlS" role="3uHU7B">
-                        <node concept="3cpWs3" id="6hZLf2YqQlT" role="3uHU7B">
-                          <node concept="3cpWs3" id="6hZLf2YqQlU" role="3uHU7B">
-                            <node concept="Xl_RD" id="6hZLf2YqQlV" role="3uHU7B">
-                              <property role="Xl_RC" value="Trying to use finder that is not applicable to the concept. Returning empty results.[finder: \&quot;" />
-                            </node>
-                            <node concept="1rXfSq" id="6hZLf2YqQlW" role="3uHU7w">
-                              <ref role="37wK5l" node="1Fz6CCoeqQf" resolve="getDescription" />
-                            </node>
-                          </node>
-                          <node concept="Xl_RD" id="6hZLf2YqQlX" role="3uHU7w">
-                            <property role="Xl_RC" value="\&quot;; " />
-                          </node>
-                        </node>
-                        <node concept="Xl_RD" id="6hZLf2YqQlY" role="3uHU7w">
-                          <property role="Xl_RC" value="concept: " />
-                        </node>
+                    <ref role="37wK5l" to="wwqx:~Logger.debug(java.lang.String)" resolve="debug" />
+                    <node concept="2OqwBi" id="6anhmP$bsEc" role="37wK5m">
+                      <node concept="37vLTw" id="6anhmP$biu6" role="2Oq$k0">
+                        <ref role="3cqZAo" node="6anhmP$biu4" resolve="m" />
                       </node>
-                      <node concept="2OqwBi" id="6hZLf2YqQlZ" role="3uHU7w">
-                        <node concept="2OqwBi" id="6hZLf2YqQm0" role="2Oq$k0">
+                      <node concept="2cAKMz" id="6anhmP$btNm" role="2OqNvi">
+                        <node concept="1rXfSq" id="6hZLf2YqQlW" role="2cAKU6">
+                          <ref role="37wK5l" node="1Fz6CCoeqQf" resolve="getDescription" />
+                        </node>
+                        <node concept="2OqwBi" id="6hZLf2YqQm0" role="2cAKU6">
                           <node concept="37vLTw" id="6hZLf2YqQm1" role="2Oq$k0">
                             <ref role="3cqZAo" node="6hZLf2YqwlR" resolve="node" />
                           </node>
@@ -1533,10 +1512,14 @@
                             <ref role="37wK5l" to="mhbf:~SNode.getConcept()" resolve="getConcept" />
                           </node>
                         </node>
-                        <node concept="liA8E" id="6hZLf2YqQm3" role="2OqNvi">
-                          <ref role="37wK5l" to="c17a:~SAbstractConcept.getQualifiedName()" resolve="getQualifiedName" />
-                        </node>
                       </node>
+                    </node>
+                  </node>
+                  <node concept="2YIFZM" id="6hZLf2YqQgI" role="2Oq$k0">
+                    <ref role="1Pybhc" to="wwqx:~Logger" resolve="Logger" />
+                    <ref role="37wK5l" to="wwqx:~Logger.getLogger(java.lang.Class)" resolve="getLogger" />
+                    <node concept="3VsKOn" id="6hZLf2YqQgJ" role="37wK5m">
+                      <ref role="3VsUkX" node="7aWSXuXO6ad" resolve="GeneratedFinder" />
                     </node>
                   </node>
                 </node>
