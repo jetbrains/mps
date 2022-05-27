@@ -7,6 +7,7 @@ import com.intellij.idea.Main;
 import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.util.SystemInfo;
 import jetbrains.mps.util.ClassPathReader;
+import jetbrains.mps.util.LogInitializer;
 
 import java.io.File;
 import java.nio.file.DirectoryStream;
@@ -29,6 +30,7 @@ public class Launcher {
         System.setProperty(fsNotifierKey, PathManager.getBinPath() + File.separatorChar + getFsNotifierDir() + File.separatorChar + getFsNotifierName());
       }
     }
+    LogInitializer.init(); // getAdditionalMPSClasspathString() might log something
     System.setProperty("ide.slow.operations.assertion.mps.find-usage", Boolean.toString(false));
     System.setProperty("idea.additional.classpath", getAdditionalMPSClasspathString());
     System.setProperty("idea.platform.prefix", "Idea");

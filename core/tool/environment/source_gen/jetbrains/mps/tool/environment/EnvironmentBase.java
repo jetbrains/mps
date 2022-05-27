@@ -4,6 +4,7 @@ package jetbrains.mps.tool.environment;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.util.LogInitializer;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.TestMode;
@@ -34,6 +35,7 @@ public abstract class EnvironmentBase implements Environment {
   private ClassLoader myRootClassLoader = null;
 
   public static void initializeLog4j() {
+    System.err.println("Stop using EnvironmentBase.initializeLog4j. MPS has switched to JUL.");
     try {
       Log4jInitializer.init();
     } catch (Exception e) {
@@ -43,7 +45,12 @@ public abstract class EnvironmentBase implements Environment {
   }
 
   public static void initializeLog() {
-    initializeLog4j();
+    try {
+      LogInitializer.init();
+    } catch (Exception e) {
+      System.err.println("Could not initialize log");
+      e.printStackTrace(System.err);
+    }
   }
 
   public EnvironmentBase(@NotNull EnvironmentConfig config) {

@@ -61,7 +61,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
 
   static {
     // initialize before ij
-    EnvironmentBase.initializeLog4j();
+    EnvironmentBase.initializeLog();
   }
 
   public IdeaEnvironment(@NotNull EnvironmentConfig config) {
@@ -77,7 +77,7 @@ public final class IdeaEnvironment extends EnvironmentBase {
     addRequiredPlugins(myConfig);
     createIdeaApplication();
     // fixme IJ must allow to use our own logging initialization
-    EnvironmentBase.initializeLog4j();
+    // FIXME why do I care to initialize again once IDEA did its own log configuration?
 
     MPSCoreComponents coreComponents = getMPSCoreComponents();
     super.init(coreComponents.getPlatform());

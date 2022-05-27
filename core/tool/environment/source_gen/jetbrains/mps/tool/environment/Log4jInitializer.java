@@ -28,13 +28,17 @@ import org.apache.log4j.varia.LevelRangeFilter;
  * I want everything to be consistent.
  * Ideally though we have many different ways of running MPS, we could have only one way of customizing the logging
  * this stuff is copied from IJ since we are unable to extend IJ in a proper way
+ * 
+ * @deprecated left for binary compatibility, not in use with 22.1 platform; to be removed once MPS 2022.2 is out
  */
+@Deprecated(forRemoval = true, since = "2022.2")
 @GeneratedClass(node = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)/6450649963068439693", model = "r:2876f1ee-0b45-4db5-8c09-0682cdee5c67(jetbrains.mps.tool.environment)")
 public final class Log4jInitializer {
   private static final String SYSTEM_MACRO = "$SYSTEM_DIR$";
   private static final String APPLICATION_MACRO = "$APPLICATION_DIR$";
   private static final String LOG_DIR_MACRO = "$LOG_DIR$";
 
+  @Deprecated
   private Log4jInitializer() {
   }
 

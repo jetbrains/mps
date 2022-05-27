@@ -45,6 +45,7 @@
     <import index="et5u" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.messages(MPS.Core/)" />
     <import index="smlj" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:jetbrains.mps.string(MPS.Boot/)" />
     <import index="bd8o" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:com.intellij.openapi.application(MPS.Boot/)" />
+    <import index="18ex" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:jetbrains.mps.util(MPS.Boot/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -69,9 +70,14 @@
       <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -317,6 +323,9 @@
       </concept>
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
+      </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
       </concept>
       <concept id="2217234381367190443" name="jetbrains.mps.baseLanguage.javadoc.structure.SeeBlockDocTag" flags="ng" index="VUp57">
         <child id="2217234381367190458" name="reference" index="VUp5m" />
@@ -1975,13 +1984,12 @@
       </node>
     </node>
     <node concept="2tJIrI" id="1ROuiHZhEc" role="jymVt" />
-    <node concept="2tJIrI" id="5mza6Qqm4lm" role="jymVt" />
     <node concept="1Pe0a1" id="2VDNdDcdQaX" role="jymVt">
       <node concept="3clFbS" id="2VDNdDcdQaY" role="1Pe0a2">
         <node concept="3clFbF" id="2VDNdDcdQsw" role="3cqZAp">
-          <node concept="2YIFZM" id="2VDNdDcdQxK" role="3clFbG">
+          <node concept="2YIFZM" id="1lYeGr01i49" role="3clFbG">
+            <ref role="37wK5l" node="4Plof0GDw7T" resolve="initializeLog" />
             <ref role="1Pybhc" node="3eUNqOk4feo" resolve="EnvironmentBase" />
-            <ref role="37wK5l" node="2VDNdDcdNbx" resolve="initializeLog4j" />
           </node>
         </node>
       </node>
@@ -3602,6 +3610,20 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="2VDNdDcdNb$" role="3clF47">
+        <node concept="3clFbF" id="1lYeGr02$Sr" role="3cqZAp">
+          <node concept="2OqwBi" id="1lYeGr02$Ss" role="3clFbG">
+            <node concept="10M0yZ" id="1lYeGr02$St" role="2Oq$k0">
+              <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+              <ref role="3cqZAo" to="wyt6:~System.err" resolve="err" />
+            </node>
+            <node concept="liA8E" id="1lYeGr02$Su" role="2OqNvi">
+              <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
+              <node concept="Xl_RD" id="1lYeGr02$Sv" role="37wK5m">
+                <property role="Xl_RC" value="Stop using EnvironmentBase.initializeLog4j. MPS has switched to JUL." />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3J1_TO" id="2519QBqdDLK" role="3cqZAp">
           <node concept="3uVAMA" id="2519QBqdDN7" role="1zxBo5">
             <node concept="XOnhg" id="2519QBqdDN8" role="1zc67B">
@@ -3663,9 +3685,54 @@
       <property role="DiZV1" value="false" />
       <property role="2aFKle" value="false" />
       <node concept="3clFbS" id="4Plof0GDw7U" role="3clF47">
-        <node concept="3clFbF" id="4Plof0GDA9B" role="3cqZAp">
-          <node concept="1rXfSq" id="4Plof0GDA9_" role="3clFbG">
-            <ref role="37wK5l" node="2VDNdDcdNbx" resolve="initializeLog4j" />
+        <node concept="3J1_TO" id="7o_691ts_nD" role="3cqZAp">
+          <node concept="3uVAMA" id="7o_691ts_nE" role="1zxBo5">
+            <node concept="XOnhg" id="7o_691ts_nF" role="1zc67B">
+              <property role="TrG5h" value="e" />
+              <node concept="nSUau" id="7o_691ts_nG" role="1tU5fm">
+                <node concept="3uibUv" id="7o_691ts_nH" role="nSUat">
+                  <ref role="3uigEE" to="wyt6:~Exception" resolve="Exception" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbS" id="7o_691ts_nI" role="1zc67A">
+              <node concept="3clFbF" id="7o_691ts_nJ" role="3cqZAp">
+                <node concept="2OqwBi" id="7o_691ts_nK" role="3clFbG">
+                  <node concept="10M0yZ" id="7o_691ts_nL" role="2Oq$k0">
+                    <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                    <ref role="3cqZAo" to="wyt6:~System.err" resolve="err" />
+                  </node>
+                  <node concept="liA8E" id="7o_691ts_nM" role="2OqNvi">
+                    <ref role="37wK5l" to="guwi:~PrintStream.println(java.lang.String)" resolve="println" />
+                    <node concept="Xl_RD" id="7o_691ts_nN" role="37wK5m">
+                      <property role="Xl_RC" value="Could not initialize log" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbF" id="7o_691ts_nO" role="3cqZAp">
+                <node concept="2OqwBi" id="7o_691ts_nP" role="3clFbG">
+                  <node concept="37vLTw" id="7o_691ts_nQ" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7o_691ts_nF" resolve="e" />
+                  </node>
+                  <node concept="liA8E" id="7o_691ts_nR" role="2OqNvi">
+                    <ref role="37wK5l" to="wyt6:~Throwable.printStackTrace(java.io.PrintStream)" resolve="printStackTrace" />
+                    <node concept="10M0yZ" id="7o_691ts_nS" role="37wK5m">
+                      <ref role="3cqZAo" to="wyt6:~System.err" resolve="err" />
+                      <ref role="1PxDUh" to="wyt6:~System" resolve="System" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="7o_691ts_nT" role="1zxBo7">
+            <node concept="3clFbF" id="2MkJkJgf$so" role="3cqZAp">
+              <node concept="2YIFZM" id="2MkJkJgfCHK" role="3clFbG">
+                <ref role="37wK5l" to="18ex:~LogInitializer.init()" resolve="init" />
+                <ref role="1Pybhc" to="18ex:~LogInitializer" resolve="LogInitializer" />
+              </node>
+            </node>
           </node>
         </node>
       </node>
@@ -5501,6 +5568,13 @@
           <property role="1dT_AB" value="this stuff is copied from IJ since we are unable to extend IJ in a proper way" />
         </node>
       </node>
+      <node concept="TZ5HI" id="1lYeGr02gf0" role="3nqlJM">
+        <node concept="TZ5HA" id="1lYeGr02gf1" role="3HnX3l">
+          <node concept="1dT_AC" id="1lYeGr02hjO" role="1dT_Ay">
+            <property role="1dT_AB" value="left for binary compatibility, not in use with 22.1 platform; to be removed once MPS 2022.2 is out" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3clFbW" id="2519QBqd1ns" role="jymVt">
       <node concept="3cqZAl" id="2519QBqd1nt" role="3clF45" />
@@ -6394,6 +6468,21 @@
           <node concept="37vLTw" id="7cu6GNHVLrR" role="3cqZAk">
             <ref role="3cqZAo" node="7cu6GNHVLrx" resolve="consoleInfo" />
           </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2AHcQZ" id="1lYeGr02gf2" role="2AJF6D">
+      <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+      <node concept="2B6LJw" id="1lYeGr02gS8" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+        <node concept="3clFbT" id="1lYeGr02heG" role="2B70Vg">
+          <property role="3clFbU" value="true" />
+        </node>
+      </node>
+      <node concept="2B6LJw" id="1lYeGr02heN" role="2B76xF">
+        <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+        <node concept="Xl_RD" id="1lYeGr02hjt" role="2B70Vg">
+          <property role="Xl_RC" value="2022.2" />
         </node>
       </node>
     </node>

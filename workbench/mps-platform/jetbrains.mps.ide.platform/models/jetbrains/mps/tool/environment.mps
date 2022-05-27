@@ -373,9 +373,9 @@
           </node>
         </node>
         <node concept="3clFbF" id="2VDNdDcdQsw" role="3cqZAp">
-          <node concept="2YIFZM" id="2VDNdDcdQxK" role="3clFbG">
+          <node concept="2YIFZM" id="1lYeGr01Pos" role="3clFbG">
+            <ref role="37wK5l" to="79ha:4Plof0GDw7T" resolve="initializeLog" />
             <ref role="1Pybhc" to="79ha:3eUNqOk4feo" resolve="EnvironmentBase" />
-            <ref role="37wK5l" to="79ha:2VDNdDcdNbx" resolve="initializeLog4j" />
           </node>
         </node>
       </node>
@@ -470,10 +470,63 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="61n5glKft6J" role="3cqZAp">
-          <node concept="2YIFZM" id="61n5glKft6K" role="3clFbG">
-            <ref role="1Pybhc" to="79ha:3eUNqOk4feo" resolve="EnvironmentBase" />
-            <ref role="37wK5l" to="79ha:2VDNdDcdNbx" resolve="initializeLog4j" />
+        <node concept="3SKdUt" id="1lYeGr01VGE" role="3cqZAp">
+          <node concept="1PaTwC" id="1lYeGr01VGF" role="1aUNEU">
+            <node concept="3oM_SD" id="1lYeGr01VHh" role="1PaTwD">
+              <property role="3oM_SC" value="FIXME" />
+            </node>
+            <node concept="3oM_SD" id="1lYeGr01XmL" role="1PaTwD">
+              <property role="3oM_SC" value="why" />
+            </node>
+            <node concept="3oM_SD" id="1lYeGr01XmO" role="1PaTwD">
+              <property role="3oM_SC" value="do" />
+            </node>
+            <node concept="3oM_SD" id="1lYeGr01XmS" role="1PaTwD">
+              <property role="3oM_SC" value="I" />
+            </node>
+            <node concept="3oM_SD" id="1lYeGr01Xnx" role="1PaTwD">
+              <property role="3oM_SC" value="care" />
+            </node>
+            <node concept="3oM_SD" id="1lYeGr01XnB" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="1lYeGr01XnI" role="1PaTwD">
+              <property role="3oM_SC" value="initialize" />
+            </node>
+            <node concept="3oM_SD" id="1lYeGr01XnQ" role="1PaTwD">
+              <property role="3oM_SC" value="again" />
+            </node>
+            <node concept="3oM_SD" id="1lYeGr01XnZ" role="1PaTwD">
+              <property role="3oM_SC" value="once" />
+            </node>
+            <node concept="3oM_SD" id="1lYeGr01Xo9" role="1PaTwD">
+              <property role="3oM_SC" value="IDEA" />
+            </node>
+            <node concept="3oM_SD" id="1lYeGr01Xok" role="1PaTwD">
+              <property role="3oM_SC" value="did" />
+            </node>
+            <node concept="3oM_SD" id="1lYeGr01Xow" role="1PaTwD">
+              <property role="3oM_SC" value="its" />
+            </node>
+            <node concept="3oM_SD" id="1lYeGr01XoH" role="1PaTwD">
+              <property role="3oM_SC" value="own" />
+            </node>
+            <node concept="3oM_SD" id="1lYeGr01XoV" role="1PaTwD">
+              <property role="3oM_SC" value="log" />
+            </node>
+            <node concept="3oM_SD" id="1lYeGr01Xpa" role="1PaTwD">
+              <property role="3oM_SC" value="configuration?" />
+            </node>
+          </node>
+        </node>
+        <node concept="1X3_iC" id="1lYeGr01Tfe" role="lGtFl">
+          <property role="3V$3am" value="statement" />
+          <property role="3V$3ak" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123136/1068581517665" />
+          <node concept="3clFbF" id="61n5glKft6J" role="8Wnug">
+            <node concept="2YIFZM" id="1lYeGr01PJu" role="3clFbG">
+              <ref role="37wK5l" to="79ha:4Plof0GDw7T" resolve="initializeLog" />
+              <ref role="1Pybhc" to="79ha:3eUNqOk4feo" resolve="EnvironmentBase" />
+            </node>
           </node>
         </node>
         <node concept="3clFbH" id="2KZwJXNrjan" role="3cqZAp" />

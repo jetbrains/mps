@@ -32,9 +32,8 @@ public final class MpsEnvironment extends EnvironmentBase {
   private Platform myPlatform;
   private PlatformPlugins myPlugins;
 
-
   static {
-    EnvironmentBase.initializeLog4j();
+    EnvironmentBase.initializeLog();
   }
 
   public MpsEnvironment(@NotNull EnvironmentConfig config) {
