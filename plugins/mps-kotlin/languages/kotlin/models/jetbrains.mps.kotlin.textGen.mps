@@ -1176,9 +1176,24 @@
           <node concept="l9hG8" id="5lA_K0zi29L" role="lcghm">
             <node concept="2OqwBi" id="5lA_K0zi29K" role="lb14g">
               <node concept="3TrcHB" id="5lA_K0zi29J" role="2OqNvi">
-                <ref role="3TsBF5" to="hcm8:2yYXHtl6Jqb" resolve="real" />
+                <ref role="3TsBF5" to="hcm8:2yYXHtl6Jqb" resolve="value" />
               </node>
               <node concept="117lpO" id="5lA_K0zi29I" role="2Oq$k0" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="7_V53yH6egl" role="3cqZAp">
+          <node concept="3clFbS" id="7_V53yH6egn" role="3clFbx">
+            <node concept="lc7rE" id="7_V53yH6eVf" role="3cqZAp">
+              <node concept="la8eA" id="7_V53yH6eXl" role="lcghm">
+                <property role="lacIc" value="F" />
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="7_V53yH6etG" role="3clFbw">
+            <node concept="117lpO" id="7_V53yH6eho" role="2Oq$k0" />
+            <node concept="3TrcHB" id="7_V53yH6eOz" role="2OqNvi">
+              <ref role="3TsBF5" to="hcm8:7_V53yH6bEO" resolve="float" />
             </node>
           </node>
         </node>

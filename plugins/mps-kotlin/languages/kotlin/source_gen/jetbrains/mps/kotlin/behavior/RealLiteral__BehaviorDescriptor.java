@@ -31,7 +31,7 @@ public final class RealLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   /*package*/ static SNode getType_id6563FJLeSWZ(@NotNull SNode __thisNode__) {
-    if (SPropertyOperations.getString(__thisNode__, PROPS.real$xbkW).toLowerCase().contains("f")) {
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.float$nAmb)) {
       return BuiltIn.FLOAT.toClassType();
     } else {
       return BuiltIn.DOUBLE.toClassType();
@@ -85,6 +85,6 @@ public final class RealLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty real$xbkW = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d4L, 0x28bef6d7551af68bL, "real");
+    /*package*/ static final SProperty float$nAmb = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d4L, 0x797b1438ad18bab4L, "float");
   }
 }

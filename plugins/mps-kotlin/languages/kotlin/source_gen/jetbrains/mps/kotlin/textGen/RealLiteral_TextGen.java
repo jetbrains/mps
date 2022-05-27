@@ -13,10 +13,14 @@ public class RealLiteral_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.real$xbkW));
+    tgs.append(SPropertyOperations.getString(ctx.getPrimaryInput(), PROPS.value$xbkW));
+    if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.float$nAmb)) {
+      tgs.append("F");
+    }
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty real$xbkW = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d4L, 0x28bef6d7551af68bL, "real");
+    /*package*/ static final SProperty value$xbkW = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d4L, 0x28bef6d7551af68bL, "value");
+    /*package*/ static final SProperty float$nAmb = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d4L, 0x797b1438ad18bab4L, "float");
   }
 }

@@ -66,10 +66,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
     return editorCell;
   }
   private boolean nodeCondition_x98wky_a2a() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.long$1NZg);
+    return SPropertyOperations.getBoolean(myNode, PROPS.unsigned$iUpc);
   }
   private boolean nodeCondition_x98wky_a3a() {
-    return SPropertyOperations.getBoolean(myNode, PROPS.unsigned$iUpc);
+    return SPropertyOperations.getBoolean(myNode, PROPS.long$1NZg);
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "0b");
@@ -107,19 +107,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private EditorCell createConstant_1() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "L");
-    editorCell.setCellId("Constant_x98wky_c0");
-    Style style = new StyleImpl();
-    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
-    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
-    editorCell.getStyle().putAll(style);
-    NumericBaseLiteral_UnsetLong.setCellActions(editorCell, myNode, getEditorContext());
-    editorCell.setDefaultText("");
-    return editorCell;
-  }
-  private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "u");
-    editorCell.setCellId("Constant_x98wky_d0");
+    editorCell.setCellId("Constant_x98wky_c0");
     Style style = new StyleImpl();
     style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
     style.set(StyleAttributes.PUNCTUATION_LEFT, true);
@@ -128,10 +117,21 @@ import org.jetbrains.mps.openapi.language.SConcept;
     editorCell.setDefaultText("");
     return editorCell;
   }
+  private EditorCell createConstant_2() {
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "L");
+    editorCell.setCellId("Constant_x98wky_d0");
+    Style style = new StyleImpl();
+    style.set(StyleAttributes.FONT_STYLE, MPSFonts.PLAIN);
+    style.set(StyleAttributes.PUNCTUATION_LEFT, true);
+    editorCell.getStyle().putAll(style);
+    NumericBaseLiteral_UnsetLong.setCellActions(editorCell, myNode, getEditorContext());
+    editorCell.setDefaultText("");
+    return editorCell;
+  }
 
   private static final class PROPS {
-    /*package*/ static final SProperty long$1NZg = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4708606L, 0x4a002b656d67aa05L, "long");
     /*package*/ static final SProperty unsigned$iUpc = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4708606L, 0x4a002b656d675c88L, "unsigned");
+    /*package*/ static final SProperty long$1NZg = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4708606L, 0x4a002b656d67aa05L, "long");
     /*package*/ static final SProperty value$xanU = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d2L, 0x28bef6d7551af687L, "value");
   }
 

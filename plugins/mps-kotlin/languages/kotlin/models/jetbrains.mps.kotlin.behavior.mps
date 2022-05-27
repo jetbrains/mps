@@ -30,7 +30,6 @@
     <import index="if8w" ref="r:95397225-9080-48bc-b1aa-0ce7c4f3d2ce(jetbrains.mps.lang.traceable.behavior)" />
     <import index="vciu" ref="r:42fb31e7-122b-4950-aa58-2f5f6e5595ce(jetbrains.mps.kotlin.overloading)" />
     <import index="jyou" ref="r:ca03e632-3f02-43dd-8ea4-ad134e38a5a2(jetbrains.mps.kotlin.plugin)" />
-    <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
     <import index="sjya" ref="r:8a99441d-539c-493f-b884-7b6b084d024b(jetbrains.mps.kotlin.scopes.signed)" />
     <import index="mx11" ref="r:fa9de6a8-90b7-4d2a-a9a9-a40c05cf603b(jetbrains.mps.kotlin.api.types.identifiers)" />
     <import index="nww" ref="r:f44f82b0-1fd9-4105-a80c-2fa6e5033003(jetbrains.mps.kotlin.signatures)" />
@@ -18292,23 +18291,10 @@
       <node concept="3Tm1VV" id="5G5goncbIqi" role="1B3o_S" />
       <node concept="3clFbS" id="5G5goncbIql" role="3clF47">
         <node concept="3clFbJ" id="5G5goncbIwV" role="3cqZAp">
-          <node concept="2OqwBi" id="5G5goncbKOB" role="3clFbw">
-            <node concept="2OqwBi" id="5G5goncbK78" role="2Oq$k0">
-              <node concept="2OqwBi" id="5G5goncbITr" role="2Oq$k0">
-                <node concept="13iPFW" id="5G5goncbICN" role="2Oq$k0" />
-                <node concept="3TrcHB" id="5G5goncbJoe" role="2OqNvi">
-                  <ref role="3TsBF5" to="hcm8:2yYXHtl6Jqb" resolve="real" />
-                </node>
-              </node>
-              <node concept="liA8E" id="5G5goncbKvo" role="2OqNvi">
-                <ref role="37wK5l" to="wyt6:~String.toLowerCase()" resolve="toLowerCase" />
-              </node>
-            </node>
-            <node concept="liA8E" id="5G5goncbLze" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.contains(java.lang.CharSequence)" resolve="contains" />
-              <node concept="Xl_RD" id="5G5goncbLBf" role="37wK5m">
-                <property role="Xl_RC" value="f" />
-              </node>
+          <node concept="2OqwBi" id="5G5goncbITr" role="3clFbw">
+            <node concept="13iPFW" id="5G5goncbICN" role="2Oq$k0" />
+            <node concept="3TrcHB" id="7_V53yH6ga5" role="2OqNvi">
+              <ref role="3TsBF5" to="hcm8:7_V53yH6bEO" resolve="float" />
             </node>
           </node>
           <node concept="3clFbS" id="5G5goncbIwX" role="3clFbx">

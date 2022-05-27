@@ -595,8 +595,13 @@
     <property role="3GE5qa" value="expression.literal.numeric" />
     <node concept="1TJgyi" id="2yYXHtl6Jqb" role="1TKVEl">
       <property role="IQ2nx" value="2936055411798374027" />
-      <property role="TrG5h" value="real" />
+      <property role="TrG5h" value="value" />
       <ref role="AX2Wp" node="2yYXHtl6Jqa" resolve="real" />
+    </node>
+    <node concept="1TJgyi" id="7_V53yH6bEO" role="1TKVEl">
+      <property role="IQ2nx" value="8753612534379494068" />
+      <property role="TrG5h" value="float" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
     </node>
     <node concept="PrWs8" id="4gvOB2uWefx" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />

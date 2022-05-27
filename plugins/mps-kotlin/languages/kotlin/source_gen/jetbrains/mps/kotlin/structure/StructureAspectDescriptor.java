@@ -3046,7 +3046,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x61460ebbf13b8457L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373332");
     b.version(3);
-    b.property("real", 0x28bef6d7551af68bL).type(MetaIdFactory.dataTypeId(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af68aL)).origin("2936055411798374027").done();
+    b.property("value", 0x28bef6d7551af68bL).type(MetaIdFactory.dataTypeId(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af68aL)).origin("2936055411798374027").done();
+    b.property("float", 0x797b1438ad18bab4L).type(PrimitiveTypeId.BOOLEAN).origin("8753612534379494068").done();
     b.alias("0.0");
     return b.create();
   }

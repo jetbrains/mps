@@ -87,7 +87,12 @@ public class RealLiteral_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode lit = SNodeFactoryOperations.createNewNode(CONCEPTS.RealLiteral$jh, null);
-        SPropertyOperations.assign(lit, PROPS.real$xbkW, pattern);
+        if (pattern.toLowerCase().endsWith("f")) {
+          SPropertyOperations.assign(lit, PROPS.value$xbkW, pattern.substring(0, pattern.length() - 2));
+          SPropertyOperations.assign(lit, PROPS.float$nAmb, true);
+        } else {
+          SPropertyOperations.assign(lit, PROPS.value$xbkW, pattern);
+        }
         return lit;
       }
 
@@ -98,7 +103,7 @@ public class RealLiteral_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public String getMatchingText(@NotNull String pattern) {
-        return (Pattern.matches("^([-+]?((\\d+\\.\\d*)|(\\d*\\.\\d+))(?:[eE]([-+]?\\d+))?)|(\\d*[eE][-+]?\\d+)$", pattern) ? pattern : null);
+        return (Pattern.matches("^([-+]?((\\d+\\.\\d*)|(\\d*\\.\\d+))(?:[eE]([-+]?\\d+))?)|(\\d*[eE][-+]?\\d+)[fF]?$", pattern) ? pattern : null);
       }
     }
   }
@@ -108,6 +113,7 @@ public class RealLiteral_SubstituteMenu extends SubstituteMenuBase {
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty real$xbkW = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d4L, 0x28bef6d7551af68bL, "real");
+    /*package*/ static final SProperty value$xbkW = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d4L, 0x28bef6d7551af68bL, "value");
+    /*package*/ static final SProperty float$nAmb = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d4L, 0x797b1438ad18bab4L, "float");
   }
 }
