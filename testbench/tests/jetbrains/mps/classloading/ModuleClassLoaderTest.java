@@ -16,7 +16,6 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.logging.Logger;
-import jetbrains.mps.tool.environment.Log4jInitializer;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -39,14 +38,6 @@ public final class ModuleClassLoaderTest {
   private static final long TIME_OUT_MS = 1000;
   private static final int DELAY_MS_TO_CHECK_DEADLOCK = 500;
   private static final int NUMBER_OF_CHECKS = 0x1000;
-
-  static {
-    try {
-      Log4jInitializer.init();
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
-  }
 
   @Test
   public void moduleClassLoaderIsThreadSafe() {
