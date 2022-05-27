@@ -21,8 +21,6 @@ import jetbrains.mps.make.ModuleAnalyzer.ModuleAnalyzerResult;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.performance.IPerformanceTracer.NullPerformanceTracer;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.TestOnly;
@@ -49,6 +47,8 @@ import java.util.List;
 import java.util.ServiceLoader;
 import java.util.ServiceLoader.Provider;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -201,7 +201,7 @@ final class JavaCompilerImpl implements AutoCloseable {
    */
   @TestOnly
   public CompositeTracer tracerForTests(IMessageHandler mh) {
-    final MessageSender ms = new MessageSender(mh, Logger.getLogger(getClass()), "", Level.ERROR);
+    final MessageSender ms = new MessageSender(mh, Logger.getLogger(getClass().getName()), "", Level.SEVERE);
     return new CompositeTracer(new NullPerformanceTracer(), ms);
   }
 

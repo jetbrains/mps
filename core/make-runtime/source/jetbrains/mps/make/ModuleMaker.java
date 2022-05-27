@@ -36,9 +36,6 @@ import jetbrains.mps.util.performance.IPerformanceTracer.NullPerformanceTracer;
 import jetbrains.mps.util.performance.PerformanceTracer;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.vfs.IFile;
-import org.apache.log4j.Level;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -64,6 +61,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -107,10 +106,10 @@ public final class ModuleMaker {
    * The empty constructor delegates only error messages to the apache's logger and traces nothing
    */
   public ModuleMaker() {
-    Logger logger = LogManager.getLogger(ModuleMaker.class);
+    Logger logger = Logger.getLogger(ModuleMaker.class.getName());
     // if there's logging level explicitly specified for this class, use it, otherwise just errors
     final Level explicitLevel = logger.getLevel();
-    MessageSender sender = new MessageSender(IMessageHandler.NULL_HANDLER, logger, this, explicitLevel == null ? Level.ERROR : explicitLevel);
+    MessageSender sender = new MessageSender(IMessageHandler.NULL_HANDLER, logger, this, explicitLevel == null ? Level.SEVERE : explicitLevel);
     myTracer = new CompositeTracer(performanceTrace(logger), sender);
   }
 
@@ -121,7 +120,7 @@ public final class ModuleMaker {
    */
   public ModuleMaker(@NotNull IMessageHandler handler) {
     // End-user messages piped through supplied handler, trace and debug messages go to log according to external configuration
-    Logger logger = LogManager.getLogger(ModuleMaker.class);
+    Logger logger = Logger.getLogger(ModuleMaker.class.getName());
     String mmName = ModuleMaker.class.getName();
     MessageSender sender = new MessageSender(handler, logger, mmName, Level.ALL);
     myTracer = new CompositeTracer(performanceTrace(logger), sender);
@@ -129,7 +128,7 @@ public final class ModuleMaker {
 
   private static IPerformanceTracer performanceTrace(Logger logger) {
     // PerformanceTracer.printReport sends it with info level, but it doesn't seem reasonable to collect performance data unless we debug MM.
-    return logger.isDebugEnabled() ? new PerformanceTracer(ModuleMaker.class.getName()) : new NullPerformanceTracer();
+    return logger.isLoggable(Level.FINE) ? new PerformanceTracer(ModuleMaker.class.getName()) : new NullPerformanceTracer();
   }
 
   /**

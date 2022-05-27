@@ -31,6 +31,10 @@ public abstract class Logger {
     return new Log4jLogger(logger);
   }
 
+  public static Logger wrap(java.util.logging.Logger juLogger) {
+    return new JULogger(juLogger);
+  }
+
   public static Logger getLogger(Class<?> requestor) {
     return new JULogger(java.util.logging.Logger.getLogger(requestor.getName()));
   }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,8 +25,6 @@ import jetbrains.mps.project.Solution;
 import jetbrains.mps.tool.environment.Environment;
 import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.Reference;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.junit.After;
@@ -37,6 +35,8 @@ import org.junit.Test;
 import java.io.File;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class EclipseJavaCompilerTest implements EnvironmentAware {
   @NotNull private Project myProject;
@@ -65,14 +65,14 @@ public class EclipseJavaCompilerTest implements EnvironmentAware {
 
   @Test
   public void testOldVersion() throws Exception {
-    Logger mmLogger = Logger.getLogger(ModuleMaker.class);
+    Logger mmLogger = Logger.getLogger(ModuleMaker.class.getName());
     Level oldLevel = mmLogger.getLevel();
     try {
-      // ModuleMaker uses both IMessageHandler and log4j logger to report its messages.
-      // Those reported through IMessageHandler go to end-user, log4j's are subject to external configuration (usually, bin/log.xml).
+      // ModuleMaker uses both IMessageHandler and JUL logger to report its messages.
+      // Those reported through IMessageHandler go to end-user, low-level log4 messages are subject to external configuration (used to be bin/log.xml for log4j).
       // In this test we expect to get some compilation errors (hence assertFalse), but don't want the test to fail due to compilation errors
       // reported through log ('unclean test execution failure' due to console output). Therefore, we temporarily disable log of all error messages.
-      mmLogger.setLevel(Level.FATAL);
+      mmLogger.setLevel(Level.SEVERE);
       Assert.assertFalse(testRecompileClasses(JavaVersion.VERSION_1_6));
     } finally {
       mmLogger.setLevel(oldLevel);

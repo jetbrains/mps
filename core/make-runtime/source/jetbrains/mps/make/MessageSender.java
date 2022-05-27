@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,14 @@
  */
 package jetbrains.mps.make;
 
-import jetbrains.mps.logging.Log4jUtil;
 import jetbrains.mps.messages.IMessageHandler;
 import jetbrains.mps.messages.Message;
 import jetbrains.mps.messages.MessageKind;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Satisfies needs of a code that reports both end-user tailored messages and low-level debug messages.
@@ -73,47 +73,52 @@ public class MessageSender {
   }
 
   public void error(@NotNull String msg, @Nullable Throwable ex) {
-    if (isLevelEnabled(Level.ERROR)) {
+    if (isLevelEnabled(Level.SEVERE)) {
       myHandler.handle(Message.createMessage(MessageKind.ERROR, mySender, msg, ex));
-      Log4jUtil.error(myTraceHandler, msg, ex, null);
+      jetbrains.mps.logging.Logger.wrap(myTraceHandler).error(msg, ex);
     }
   }
 
   public void error(@NotNull String msg, @Nullable Object hintObject) {
-    if (isLevelEnabled(Level.ERROR)) {
+    if (isLevelEnabled(Level.SEVERE)) {
       myHandler.handle(Message.createMessage(MessageKind.ERROR, mySender, msg, hintObject));
-      Log4jUtil.error(myTraceHandler, msg, null, hintObject);
+      jetbrains.mps.logging.Logger.wrap(myTraceHandler).error(msg, hintObject);
     }
   }
 
   public void warn(@NotNull String msg, @Nullable Object hintObject) {
-    if (isLevelEnabled(Level.WARN)) {
+    if (isLevelEnabled(Level.WARNING)) {
       myHandler.handle(Message.createMessage(MessageKind.WARNING, mySender, msg, hintObject));
-      Log4jUtil.warning(myTraceHandler, msg, null, hintObject);
+      if (hintObject == null) {
+        myTraceHandler.warning(msg);
+      } else {
+        jetbrains.mps.logging.Logger.wrap(myTraceHandler).warning(msg, hintObject);
+      }
     }
   }
 
   public void info(@NotNull String msg) {
     if (isLevelEnabled(Level.INFO)) {
       myHandler.handle(Message.createMessage(MessageKind.INFORMATION, mySender, msg));
-      Log4jUtil.info(myTraceHandler, msg, null, null);
+      myTraceHandler.info(msg);
     }
   }
 
   public void debug(@NotNull String msg) {
-    if (isLevelEnabled(Level.DEBUG)) {
-      myTraceHandler.debug(msg);
+    if (isLevelEnabled(Level.FINE)) {
+      myTraceHandler.fine(msg);
     }
   }
 
   public void trace(@NotNull String msg) {
-    if (isLevelEnabled(Level.TRACE)) {
-      myTraceHandler.trace(msg);
+    if (isLevelEnabled(Level.FINEST)) {
+      myTraceHandler.finest(msg);
     }
   }
 
-
   private boolean isLevelEnabled(Level level) {
-    return level.isGreaterOrEqual(myLevel);
+    // Logger.isLoggable(Level)
+    final int mine = myLevel.intValue();
+    return level.intValue() >= mine && mine != Level.OFF.intValue();
   }
 }
