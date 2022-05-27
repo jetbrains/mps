@@ -26,7 +26,6 @@ public class Ide_ApplicationPlugin extends BaseApplicationPlugin {
   public void createGroups() {
     // actions w/o parameters
     addAction(new AnalyzeModuleDependencies_Action());
-    addAction(new CalcClassifiersInRootsStatistic_Action());
     addAction(new CalcSNodeStatistic_Action());
     addAction(new CloneModel_Action());
     addAction(new CloneModule_Action());

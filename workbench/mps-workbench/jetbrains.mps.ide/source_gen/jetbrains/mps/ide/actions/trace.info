@@ -25,7 +25,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1076505808687:jetbrains.mps.baseLanguage.structure.WhileStatement" />
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991215587">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1204991215587" at="155,56,156,48" concept="6" />
+      <node id="1204991215587" at="154,56,155,48" concept="6" />
     </file>
     <file name="NodeActions_ActionGroup.java">
       <node id="1204991215587" at="12,0,13,0" concept="16" trace="ID" />
@@ -89,7 +89,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991218714">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1204991218714" at="148,56,149,49" concept="6" />
+      <node id="1204991218714" at="147,56,148,49" concept="6" />
     </file>
     <file name="ModelActions_ActionGroup.java">
       <node id="1204991218714" at="12,0,13,0" concept="16" trace="ID" />
@@ -155,8 +155,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991220529">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1395757071246456318" at="160,63,161,73" concept="6" />
-      <node id="1204991220529" at="161,73,162,51" concept="6" />
+      <node id="1395757071246456318" at="159,63,160,73" concept="6" />
+      <node id="1204991220529" at="160,73,161,51" concept="6" />
     </file>
     <file name="ProjectActionsRenameProjectContainer_ActionGroup.java">
       <node id="1395757071246456318" at="13,0,14,0" concept="16" trace="ID" />
@@ -219,8 +219,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991221264">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1204991221264" at="162,51,163,54" concept="6" />
-      <node id="1204998357770" at="211,94,212,140" concept="6" />
+      <node id="1204991221264" at="161,51,162,54" concept="6" />
+      <node id="1204998357770" at="210,94,211,140" concept="6" />
     </file>
     <file name="ProjectNewActions_ActionGroup.java">
       <node id="1204991221264" at="12,0,13,0" concept="16" trace="ID" />
@@ -241,7 +241,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991224874">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1204991224874" at="145,59,146,52" concept="6" />
+      <node id="1204991224874" at="144,59,145,52" concept="6" />
     </file>
     <file name="LanguageActions_ActionGroup.java">
       <node id="1204991224874" at="12,0,13,0" concept="16" trace="ID" />
@@ -273,7 +273,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991226689">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1204991226689" at="167,43,168,52" concept="6" />
+      <node id="1204991226689" at="166,43,167,52" concept="6" />
     </file>
     <file name="SolutionActions_ActionGroup.java">
       <node id="1204991226689" at="12,0,13,0" concept="16" trace="ID" />
@@ -301,8 +301,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991227487">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1204991227487" at="168,52,169,55" concept="6" />
-      <node id="1204998497279" at="212,140,213,144" concept="6" />
+      <node id="1204991227487" at="167,52,168,55" concept="6" />
+      <node id="1204998497279" at="211,140,212,144" concept="6" />
     </file>
     <file name="SolutionNewActions_ActionGroup.java">
       <node id="1204991227487" at="12,0,13,0" concept="16" trace="ID" />
@@ -357,7 +357,7 @@
       <unit id="1204991228238" at="10,0,43,0" name="jetbrains.mps.ide.actions.DevkitActions_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1204991228238" at="127,49,128,50" concept="6" />
+      <node id="1204991228238" at="126,49,127,50" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991229896">
@@ -383,12 +383,12 @@
       <unit id="1204991229896" at="10,0,29,0" name="jetbrains.mps.ide.actions.GeneratorActions_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1204991229896" at="139,50,140,53" concept="6" />
+      <node id="1204991229896" at="138,50,139,53" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991230694">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1204991230694" at="178,58,179,60" concept="6" />
+      <node id="1204991230694" at="177,58,178,60" concept="6" />
     </file>
     <file name="TransientModulesActions_ActionGroup.java">
       <node id="1204991230694" at="12,0,13,0" concept="16" trace="ID" />
@@ -418,8 +418,8 @@
       <unit id="1204991232446" at="10,0,20,0" name="jetbrains.mps.ide.actions.EditorInternal_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1204991232446" at="130,58,131,51" concept="6" />
-      <node id="1204998642876" at="207,106,208,124" concept="6" />
+      <node id="1204991232446" at="129,58,130,51" concept="6" />
+      <node id="1204998642876" at="206,106,207,124" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991235731">
@@ -441,8 +441,8 @@
       <unit id="1204991235731" at="10,0,25,0" name="jetbrains.mps.ide.actions.Edit_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1204991235731" at="128,50,129,41" concept="6" />
-      <node id="1205007875051" at="204,68,205,86" concept="6" />
+      <node id="1204991235731" at="127,50,128,41" concept="6" />
+      <node id="1205007875051" at="203,68,204,86" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991237264">
@@ -471,14 +471,14 @@
       <unit id="1204991237264" at="12,0,34,0" name="jetbrains.mps.ide.actions.Goto_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1204991237264" at="142,50,143,41" concept="6" />
-      <node id="1205007901663" at="205,86,206,66" concept="6" />
+      <node id="1204991237264" at="141,50,142,41" concept="6" />
+      <node id="1205007901663" at="204,86,205,66" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1204991238062">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1204991238062" at="172,50,173,42" concept="6" />
-      <node id="1205007918257" at="221,141,222,68" concept="6" />
+      <node id="1204991238062" at="171,50,172,42" concept="6" />
+      <node id="1205007918257" at="220,141,221,68" concept="6" />
     </file>
     <file name="Tools_ActionGroup.java">
       <node id="1204991238062" at="12,0,13,0" concept="16" trace="ID" />
@@ -505,10 +505,10 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215012343709">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1217431296591" at="182,39,183,130" concept="6" />
-      <node id="1234535880027" at="183,130,184,134" concept="6" />
-      <node id="1216225319668" at="184,134,185,120" concept="6" />
-      <node id="1221752224444" at="185,120,186,84" concept="6" />
+      <node id="1217431296591" at="181,39,182,130" concept="6" />
+      <node id="1234535880027" at="182,130,183,134" concept="6" />
+      <node id="1216225319668" at="183,134,184,120" concept="6" />
+      <node id="1221752224444" at="184,120,185,84" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215013255981">
@@ -533,8 +533,8 @@
       <unit id="1215013255981" at="10,0,28,0" name="jetbrains.mps.ide.actions.Build_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1215013255981" at="122,46,123,42" concept="6" />
-      <node id="1215013272108" at="203,71,204,68" concept="6" />
+      <node id="1215013255981" at="121,46,122,42" concept="6" />
+      <node id="1215013272108" at="202,71,203,68" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215867986486">
@@ -578,7 +578,7 @@
       <unit id="1215867986486" at="15,0,46,0" name="jetbrains.mps.ide.actions.FixModuleImports_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1215867986486" at="55,54,56,45" concept="6" />
+      <node id="1215867986486" at="54,54,55,45" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215874656794">
@@ -673,7 +673,7 @@
       <unit id="1215874656794" at="21,0,89,0" name="jetbrains.mps.ide.actions.CloneModel_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1215874656794" at="30,47,31,39" concept="6" />
+      <node id="1215874656794" at="29,47,30,39" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215874930420">
@@ -743,7 +743,7 @@
       <unit id="1215874930420" at="21,0,70,0" name="jetbrains.mps.ide.actions.CloneRoot_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1215874930420" at="32,40,33,38" concept="6" />
+      <node id="1215874930420" at="31,40,32,38" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215884802964">
@@ -800,12 +800,12 @@
       <unit id="1215884802964" at="17,0,57,0" name="jetbrains.mps.ide.actions.ExpandNode_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1215884802964" at="46,50,47,39" concept="6" />
+      <node id="1215884802964" at="45,50,46,39" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215889139721">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1215889139721" at="79,50,80,51" concept="6" />
+      <node id="1215889139721" at="78,50,79,51" concept="6" />
     </file>
     <file name="OptimizeProjectImports_Action.java">
       <node id="1215889139721" at="30,0,31,0" concept="16" trace="ICON" />
@@ -896,7 +896,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215890512584">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1215890512584" at="84,55,85,50" concept="6" />
+      <node id="1215890512584" at="83,55,84,50" concept="6" />
     </file>
     <file name="RemoveTransientModels_Action.java">
       <node id="1215890512584" at="18,0,19,0" concept="16" trace="ICON" />
@@ -946,7 +946,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215903504454">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1215903504454" at="73,36,74,37" concept="6" />
+      <node id="1215903504454" at="72,36,73,37" concept="6" />
     </file>
     <file name="NewModel_Action.java">
       <node id="1215903504454" at="24,0,25,0" concept="16" trace="ICON" />
@@ -1041,7 +1041,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1215907579103">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1215907579103" at="106,53,107,45" concept="6" />
+      <node id="1215907579103" at="105,53,106,45" concept="6" />
     </file>
     <file name="ShowErrorMessage_Action.java">
       <node id="1215907579103" at="15,0,16,0" concept="16" trace="ICON" />
@@ -1080,7 +1080,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1216119398364">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1216119398364" at="101,42,102,49" concept="6" />
+      <node id="1216119398364" at="100,42,101,49" concept="6" />
     </file>
     <file name="ShowClassInHierarchy_Action.java">
       <node id="1216119398364" at="26,0,27,0" concept="16" trace="ICON" />
@@ -1189,7 +1189,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1216120033386">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1216120033386" at="102,49,103,51" concept="6" />
+      <node id="1216120033386" at="101,49,102,51" concept="6" />
     </file>
     <file name="ShowConceptInHierarchy_Action.java">
       <node id="1216120033386" at="30,0,31,0" concept="16" trace="ICON" />
@@ -1325,7 +1325,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1216120752903">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1216120752903" at="92,42,93,48" concept="6" />
+      <node id="1216120752903" at="91,42,92,48" concept="6" />
     </file>
     <file name="RevertMemoryChanges_Action.java">
       <node id="1216120752903" at="18,0,19,0" concept="16" trace="ICON" />
@@ -1387,7 +1387,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1216124527478">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1216124527478" at="108,53,109,46" concept="6" />
+      <node id="1216124527478" at="107,53,108,46" concept="6" />
     </file>
     <file name="ShowInLogicalView_Action.java">
       <node id="1216124527478" at="24,0,25,0" concept="16" trace="ICON" />
@@ -1484,7 +1484,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1216125431295">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1216125431295" at="109,46,110,48" concept="6" />
+      <node id="1216125431295" at="108,46,109,48" concept="6" />
     </file>
     <file name="ShowNodeInInspector_Action.java">
       <node id="1216125431295" at="19,0,20,0" concept="16" trace="ICON" />
@@ -1551,7 +1551,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1216126715578">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1216126715578" at="68,44,69,45" concept="6" />
+      <node id="1216126715578" at="67,44,68,45" concept="6" />
     </file>
     <file name="ModuleProperties_Action.java">
       <node id="1216126715578" at="29,0,30,0" concept="16" trace="ICON" />
@@ -1643,7 +1643,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1216128015035">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1216128015035" at="98,62,99,45" concept="6" />
+      <node id="1216128015035" at="97,62,98,45" concept="6" />
     </file>
     <file name="SetVirtualFolder_Action.java">
       <node id="1216128015035" at="26,0,27,0" concept="16" trace="ICON" />
@@ -1802,10 +1802,10 @@
       <unit id="1217254654927" at="11,0,34,0" name="jetbrains.mps.ide.actions.AbstractFileActions_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1217254654927" at="117,13,118,56" concept="6" />
-      <node id="1217431725536" at="222,68,223,145" concept="6" />
-      <node id="1217431785312" at="223,145,224,149" concept="6" />
-      <node id="1217431797707" at="224,149,225,149" concept="6" />
+      <node id="1217254654927" at="116,13,117,56" concept="6" />
+      <node id="1217431725536" at="221,68,222,145" concept="6" />
+      <node id="1217431785312" at="222,145,223,149" concept="6" />
+      <node id="1217431797707" at="223,149,224,149" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1217431545216">
@@ -1824,7 +1824,7 @@
       <unit id="1217431545216" at="10,0,22,0" name="jetbrains.mps.ide.actions.FileActions_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1217431545216" at="134,46,135,48" concept="6" />
+      <node id="1217431545216" at="133,46,134,48" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1217431613318">
@@ -1843,12 +1843,12 @@
       <unit id="1217431613318" at="10,0,22,0" name="jetbrains.mps.ide.actions.FolderActions_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1217431613318" at="138,47,139,50" concept="6" />
+      <node id="1217431613318" at="137,47,138,50" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1217431643713">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1217431643713" at="150,52,151,50" concept="6" />
+      <node id="1217431643713" at="149,52,150,50" concept="6" />
     </file>
     <file name="ModuleActions_ActionGroup.java">
       <node id="1217431643713" at="12,0,13,0" concept="16" trace="ID" />
@@ -1868,7 +1868,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1222856130125">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1222856130125" at="66,44,67,44" concept="6" />
+      <node id="1222856130125" at="65,44,66,44" concept="6" />
     </file>
     <file name="MPSProjectPaths_Action.java">
       <node id="1222856130125" at="18,0,19,0" concept="16" trace="ICON" />
@@ -1916,8 +1916,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1223018726868">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1223018726868" at="169,55,170,56" concept="6" />
-      <node id="1223018944449" at="219,131,220,153" concept="6" />
+      <node id="1223018726868" at="168,55,169,56" concept="6" />
+      <node id="1223018944449" at="218,131,219,153" concept="6" />
     </file>
     <file name="SolutionRefactoring_ActionGroup.java">
       <node id="1223018726868" at="12,0,13,0" concept="16" trace="ID" />
@@ -1936,7 +1936,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1226495932324">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1226495932324" at="157,51,158,51" concept="6" />
+      <node id="1226495932324" at="156,51,157,51" concept="6" />
     </file>
     <file name="PackageActions_ActionGroup.java">
       <node id="1226495932324" at="12,0,13,0" concept="16" trace="ID" />
@@ -1960,7 +1960,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1226499076725">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1226499076725" at="151,50,152,53" concept="6" />
+      <node id="1226499076725" at="150,50,151,53" concept="6" />
     </file>
     <file name="NamespaceActions_ActionGroup.java">
       <node id="1226499076725" at="12,0,13,0" concept="16" trace="ID" />
@@ -1982,8 +1982,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1226502116289">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1226502116289" at="152,53,153,61" concept="6" />
-      <node id="1226502154349" at="225,149,226,158" concept="6" />
+      <node id="1226502116289" at="151,53,152,61" concept="6" />
+      <node id="1226502154349" at="224,149,225,158" concept="6" />
     </file>
     <file name="NamespaceInternalActions_ActionGroup.java">
       <node id="1226502116289" at="28,0,29,0" concept="16" trace="ID" />
@@ -2056,7 +2056,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1229263993115">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1229263993115" at="164,56,165,57" concept="6" />
+      <node id="1229263993115" at="163,56,164,57" concept="6" />
     </file>
     <file name="ReferenceNodeActions_ActionGroup.java">
       <node id="1229263993115" at="12,0,13,0" concept="16" trace="ID" />
@@ -2141,7 +2141,7 @@
       <unit id="1229264031275" at="17,0,64,0" name="jetbrains.mps.ide.actions.DeleteReferenceAction_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1229264031275" at="45,49,46,50" concept="6" />
+      <node id="1229264031275" at="44,49,45,50" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1229265515319">
@@ -2213,12 +2213,12 @@
       <unit id="1229265515319" at="18,0,65,0" name="jetbrains.mps.ide.actions.DeletePropertyAction_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1229265515319" at="44,39,45,49" concept="6" />
+      <node id="1229265515319" at="43,39,44,49" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1229265613066">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1229265613066" at="163,54,164,56" concept="6" />
+      <node id="1229265613066" at="162,54,163,56" concept="6" />
     </file>
     <file name="PropertyNodeActions_ActionGroup.java">
       <node id="1229265613066" at="12,0,13,0" concept="16" trace="ID" />
@@ -2391,12 +2391,12 @@
       <unit id="1229266351427" at="34,0,141,0" name="jetbrains.mps.ide.actions.DeleteNode_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1229266351427" at="43,42,44,39" concept="6" />
+      <node id="1229266351427" at="42,42,43,39" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1229271450720">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1229271450720" at="74,37,75,40" concept="6" />
+      <node id="1229271450720" at="73,37,74,40" concept="6" />
     </file>
     <file name="NewSolution_Action.java">
       <node id="1229271450720" at="26,0,27,0" concept="16" trace="ICON" />
@@ -2517,8 +2517,8 @@
       <unit id="1234013859987" at="10,0,31,0" name="jetbrains.mps.ide.actions.Bookmarks_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1234013859987" at="121,51,122,46" concept="6" />
-      <node id="1234013984501" at="202,143,203,71" concept="6" />
+      <node id="1234013859987" at="120,51,121,46" concept="6" />
+      <node id="1234013984501" at="201,143,202,71" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1234018313905">
@@ -2588,7 +2588,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1234180771821">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1234180771821" at="82,46,83,47" concept="6" />
+      <node id="1234180771821" at="81,46,82,47" concept="6" />
     </file>
     <file name="RemoveAllBookmarks_Action.java">
       <node id="1234180771821" at="19,0,20,0" concept="16" trace="ICON" />
@@ -2633,7 +2633,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1234190163902">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1234190163902" at="100,48,101,42" concept="6" />
+      <node id="1234190163902" at="99,48,100,42" concept="6" />
     </file>
     <file name="ShowBookmarks_Action.java">
       <node id="1234190163902" at="19,0,20,0" concept="16" trace="ICON" />
@@ -2678,7 +2678,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1235219887263">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1235219887263" at="67,44,68,44" concept="6" />
+      <node id="1235219887263" at="66,44,67,44" concept="6" />
     </file>
     <file name="ModelProperties_Action.java">
       <node id="1235219887263" at="29,0,30,0" concept="16" trace="ICON" />
@@ -2830,7 +2830,7 @@
       <unit id="1236183891533" at="18,0,54,0" name="jetbrains.mps.ide.actions.CopyModelName_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1236183891533" at="36,60,37,42" concept="6" />
+      <node id="1236183891533" at="35,60,36,42" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236184251962">
@@ -2875,7 +2875,7 @@
       <unit id="1236184251962" at="16,0,48,0" name="jetbrains.mps.ide.actions.CopyModuleName_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1236184251962" at="37,42,38,43" concept="6" />
+      <node id="1236184251962" at="36,42,37,43" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236184638750">
@@ -2944,12 +2944,12 @@
       <unit id="1236184638750" at="17,0,63,0" name="jetbrains.mps.ide.actions.CopyNodeName_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1236184638750" at="38,43,39,41" concept="6" />
+      <node id="1236184638750" at="37,43,38,41" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236342883095">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1236342883095" at="95,39,96,48" concept="6" />
+      <node id="1236342883095" at="94,39,95,48" concept="6" />
     </file>
     <file name="SetBookmarkNoNumber_Action.java">
       <node id="1236342883095" at="22,0,23,0" concept="16" trace="ICON" />
@@ -3015,7 +3015,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236348386008">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1236348386008" at="77,44,78,49" concept="6" />
+      <node id="1236348386008" at="76,44,77,49" concept="6" />
     </file>
     <file name="OptimizeModelImports_Action.java">
       <node id="1236348386008" at="34,0,35,0" concept="16" trace="ICON" />
@@ -3148,7 +3148,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236349476737">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1236349476737" at="78,49,79,50" concept="6" />
+      <node id="1236349476737" at="77,49,78,50" concept="6" />
     </file>
     <file name="OptimizeModuleImports_Action.java">
       <node id="1236349476737" at="34,0,35,0" concept="16" trace="ICON" />
@@ -3265,7 +3265,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1236354516255">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1236354516255" at="99,45,100,48" concept="6" />
+      <node id="1236354516255" at="98,45,99,48" concept="6" />
     </file>
     <file name="ShowBookmarksDialog_Action.java">
       <node id="1236354516255" at="19,0,20,0" concept="16" trace="ICON" />
@@ -3456,12 +3456,12 @@
       <unit id="1241020613337" at="30,0,133,0" name="jetbrains.mps.ide.actions.DeleteModules_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1241020613337" at="42,36,43,42" concept="6" />
+      <node id="1241020613337" at="41,36,42,42" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1298565956308924830">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1298565956308924830" at="107,45,108,53" concept="6" />
+      <node id="1298565956308924830" at="106,45,107,53" concept="6" />
     </file>
     <file name="ShowInDependenciesViewer_Action.java">
       <node id="1298565956308924830" at="25,0,26,0" concept="16" trace="ICON" />
@@ -3580,7 +3580,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1341091614641347434">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1341091614641347434" at="143,41,144,57" concept="6" />
+      <node id="1341091614641347434" at="142,41,143,57" concept="6" />
     </file>
     <file name="JUnitTestCaseActions_ActionGroup.java">
       <node id="1341091614641347434" at="12,0,13,0" concept="16" trace="ID" />
@@ -3597,7 +3597,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1341091614641347436">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1341091614641347436" at="144,57,145,59" concept="6" />
+      <node id="1341091614641347436" at="143,57,144,59" concept="6" />
     </file>
     <file name="JUnitTestMethodActions_ActionGroup.java">
       <node id="1341091614641347436" at="12,0,13,0" concept="16" trace="ID" />
@@ -3610,240 +3610,6 @@
         <var name="plugin" id="1341091614641347436" />
       </scope>
       <unit id="1341091614641347436" at="10,0,20,0" name="jetbrains.mps.ide.actions.JUnitTestMethodActions_ActionGroup" />
-    </file>
-  </root>
-  <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1366167984387690229">
-    <file name="CalcClassifiersInRootsStatistic_Action.java">
-      <node id="1366167984387690229" at="48,0,49,0" concept="16" trace="ICON" />
-      <node id="1366167984387690229" at="50,51,51,59" concept="18" />
-      <node id="1366167984387690229" at="51,59,52,35" concept="6" />
-      <node id="1366167984387690229" at="52,35,53,40" concept="6" />
-      <node id="1366167984387690229" at="56,32,57,16" concept="13" />
-      <node id="1366167984387690229" at="61,53,62,19" concept="13" />
-      <node id="9054606037493570920" at="64,5,65,66" concept="12" />
-      <node id="9054606037493570920" at="65,66,66,56" concept="6" />
-      <node id="9054606037493570921" at="67,22,68,21" concept="13" />
-      <node id="1366167984387690229" at="70,5,71,16" concept="13" />
-      <node id="1366167984387694191" at="74,96,75,58" concept="12" />
-      <node id="2689425074099081677" at="75,58,76,68" concept="12" />
-      <node id="2689425074099081642" at="76,68,77,0" concept="15" />
-      <node id="9054606037493534600" at="80,61,81,86" concept="12" />
-      <node id="9054606037493534616" at="82,108,83,130" concept="12" />
-      <node id="9054606037493725584" at="83,130,84,79" concept="6" />
-      <node id="9054606037493857870" at="85,65,86,58" concept="12" />
-      <node id="9054606037493878555" at="86,58,87,57" concept="12" />
-      <node id="9054606037493864627" at="87,57,88,92" concept="6" />
-      <node id="9054606037493900810" at="89,60,90,56" concept="6" />
-      <node id="1366167984387695200" at="91,74,92,35" concept="6" />
-      <node id="2689425074099081684" at="92,35,93,128" concept="6" />
-      <node id="9054606037493920503" at="94,15,95,33" concept="6" />
-      <node id="9054606037493911436" at="96,13,97,27" concept="6" />
-      <node id="9054606037493534773" at="98,11,99,26" concept="6" />
-      <node id="2166892372537032436" at="102,7,103,238" concept="6" />
-      <node id="9054606037493939099" at="105,98,106,122" concept="12" />
-      <node id="9054606037494002996" at="106,122,107,0" concept="15" />
-      <node id="9054606037493972711" at="107,0,108,43" concept="12" />
-      <node id="9054606037493939114" at="108,43,109,0" concept="15" />
-      <node id="9054606037493939115" at="109,0,110,119" concept="12" />
-      <node id="9054606037493939121" at="110,119,111,208" concept="12" />
-      <node id="9054606037493939136" at="111,208,112,0" concept="15" />
-      <node id="9054606037493983234" at="113,31,114,95" concept="6" />
-      <node id="9054606037493939155" at="115,5,116,0" concept="15" />
-      <node id="9054606037493939156" at="116,0,117,77" concept="12" />
-      <node id="9054606037493939173" at="119,37,120,68" concept="13" />
-      <node id="9054606037493939182" at="123,39,124,28" concept="13" />
-      <node id="9054606037493986071" at="127,56,128,176" concept="6" />
-      <node id="9054606037493939211" at="129,5,130,0" concept="15" />
-      <node id="9054606037493939212" at="130,0,131,121" concept="12" />
-      <node id="9054606037493939218" at="131,121,132,218" concept="12" />
-      <node id="9054606037493939233" at="132,218,133,0" concept="15" />
-      <node id="9054606037493988941" at="134,62,135,115" concept="6" />
-      <node id="9054606037493939254" at="136,5,137,0" concept="15" />
-      <node id="9054606037493990802" at="138,32,139,100" concept="6" />
-      <node id="2166892372537259803" at="141,26,142,157" concept="6" />
-      <node id="9054606037493943049" at="143,5,144,27" concept="13" />
-      <node id="1293684422392481164" at="146,113,147,0" concept="15" />
-      <node id="4270454500247937538" at="148,84,149,71" concept="12" />
-      <node id="1293684422392427498" at="149,71,150,0" concept="15" />
-      <node id="1366167984387696992" at="151,128,152,73" concept="12" />
-      <node id="1366167984387700528" at="153,77,154,105" concept="6" />
-      <node id="1293684422392461254" at="156,7,157,0" concept="15" />
-      <node id="1293684422393107487" at="157,0,158,18" concept="13" />
-      <node id="1293684422392478227" at="159,7,160,0" concept="15" />
-      <node id="1366167984387700561" at="160,0,161,18" concept="13" />
-      <node id="8774856961496010248" at="163,119,164,71" concept="12" />
-      <node id="8774856961496010257" at="164,71,165,0" concept="15" />
-      <node id="8774856961496010363" at="167,11,168,357" concept="6" />
-      <node id="2166892372537360675" at="169,29,170,168" concept="6" />
-      <node id="8774856961496010258" at="172,5,173,0" concept="15" />
-      <node id="8774856961496010260" at="173,0,174,18" concept="13" />
-      <node id="8774856961496010488" at="176,110,177,48" concept="12" />
-      <node id="8774856961496010559" at="178,9,179,21" concept="6" />
-      <node id="2166892372537467236" at="180,27,181,166" concept="6" />
-      <node id="8774856961496010531" at="182,15,183,52" concept="13" />
-      <node id="1366167984387690229" at="188,0,189,0" concept="16" trace="classifier$cxMr" />
-      <node id="1366167984387690229" at="192,0,193,0" concept="16" trace="ClassifierType$bL" />
-      <node id="1366167984387690229" at="193,0,194,0" concept="16" trace="BaseConcept$gP" />
-      <node id="1366167984387690229" at="194,0,195,0" concept="16" trace="IClassifier$MF" />
-      <node id="1366167984387690229" at="195,0,196,0" concept="16" trace="IClassifierType$B1" />
-      <node id="1366167984387690229" at="60,95,63,5" concept="10" />
-      <node id="9054606037493570921" at="66,56,69,7" concept="10" />
-      <node id="9054606037493939137" at="112,0,115,5" concept="10" />
-      <node id="9054606037493939171" at="119,0,122,0" concept="11" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <node id="9054606037493939180" at="123,0,126,0" concept="11" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
-      <node id="9054606037493939188" at="126,8,129,5" concept="10" />
-      <node id="9054606037493939234" at="133,0,136,5" concept="10" />
-      <node id="9054606037493939255" at="137,0,140,5" concept="10" />
-      <node id="9054606037493994721" at="140,5,143,5" concept="10" />
-      <node id="1366167984387700483" at="152,73,155,9" concept="10" />
-      <node id="1366167984387690229" at="55,0,59,0" concept="11" trace="isDumbAware#()Z" />
-      <node id="9054606037493534672" at="90,56,94,15" concept="9" />
-      <node id="1366167984387690229" at="50,0,55,0" concept="3" trace="CalcClassifiersInRootsStatistic_Action#()V" />
-      <node id="8774856961496010305" at="166,42,171,7" concept="21" />
-      <node id="1366167984387696950" at="150,0,156,7" concept="9" />
-      <node id="9054606037493570920" at="63,5,70,5" concept="1" />
-      <node id="8774856961496010263" at="165,0,172,5" concept="9" />
-      <node id="8774856961496010480" at="177,48,184,5" concept="21" />
-      <node id="9054606037493534662" at="88,92,96,13" concept="9" />
-      <node id="9054606037493939163" at="117,77,126,8" concept="6" />
-      <node id="8774856961496010471" at="176,0,186,0" concept="11" trace="calculateElapsedTime#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P0_E0;Ljava/util/Map;)J" />
-      <node id="1366167984387700518" at="147,0,159,7" concept="12" />
-      <node id="8774856961496010234" at="163,0,176,0" concept="11" trace="calcAllMembersOfClassifiers#(Ljava/lang/Iterable;Ljava/util/Map;)Ljava/util/List;" />
-      <node id="1366167984387690229" at="59,0,73,0" concept="11" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
-      <node id="9054606037493657712" at="84,79,98,11" concept="9" />
-      <node id="1366167984387695269" at="146,0,163,0" concept="11" trace="calcAllClassifierTypesInRoot#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/Map;)Ljava/util/List;" />
-      <node id="9054606037493534606" at="81,86,100,11" concept="6" />
-      <node id="9054606037493534593" at="79,0,102,0" concept="11" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
-      <node id="9054606037493534579" at="77,0,102,7" concept="6" />
-      <node id="1366167984387690229" at="73,0,105,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="9054606037493930429" at="105,0,146,0" concept="11" trace="analyzeClassifiersInRoot#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/Map;)J" />
-      <scope id="1366167984387690229" at="56,32,57,16" />
-      <scope id="1366167984387690229" at="61,53,62,19" />
-      <scope id="9054606037493570921" at="67,22,68,21" />
-      <scope id="9054606037493939138" at="113,31,114,95" />
-      <scope id="9054606037493939172" at="119,37,120,68" />
-      <scope id="9054606037493939181" at="123,39,124,28" />
-      <scope id="9054606037493939189" at="127,56,128,176" />
-      <scope id="9054606037493939235" at="134,62,135,115" />
-      <scope id="9054606037493939256" at="138,32,139,100" />
-      <scope id="9054606037493994723" at="141,26,142,157" />
-      <scope id="1366167984387700484" at="153,77,154,105" />
-      <scope id="8774856961496010306" at="167,11,168,357" />
-      <scope id="8774856961496010310" at="169,29,170,168" />
-      <scope id="8774856961496010481" at="178,9,179,21" />
-      <scope id="8774856961496010495" at="180,27,181,166" />
-      <scope id="8774856961496010482" at="182,15,183,52" />
-      <scope id="9054606037493534674" at="91,74,93,128" />
-      <scope id="8774856961496010307" at="169,7,171,7">
-        <var name="e" id="8774856961496010308" />
-      </scope>
-      <scope id="8774856961496010492" at="180,5,182,5">
-        <var name="e" id="8774856961496010493" />
-      </scope>
-      <scope id="1366167984387690229" at="50,51,53,40" />
-      <scope id="9054606037493939171" at="119,0,122,0">
-        <var name="it" id="9054606037493939171" />
-      </scope>
-      <scope id="9054606037493939180" at="123,0,126,0">
-        <var name="it" id="9054606037493939180" />
-      </scope>
-      <scope id="1366167984387690229" at="55,0,59,0" />
-      <scope id="9054606037493534672" at="90,56,94,15">
-        <var name="node" id="9054606037493534673" />
-      </scope>
-      <scope id="1366167984387696951" at="151,128,155,9">
-        <var name="type" id="1366167984387696993" />
-      </scope>
-      <scope id="1366167984387690229" at="50,0,55,0" />
-      <scope id="9054606037493570920" at="64,5,69,7">
-        <var name="p" id="9054606037493570920" />
-      </scope>
-      <scope id="8774856961496010264" at="166,42,171,7" />
-      <scope id="9054606037493534664" at="89,60,95,33" />
-      <scope id="1366167984387696950" at="150,0,156,7">
-        <var name="node" id="1366167984387696953" />
-      </scope>
-      <scope id="8774856961496010263" at="165,0,172,5">
-        <var name="classifier" id="8774856961496010266" />
-      </scope>
-      <scope id="9054606037493534662" at="88,92,96,13">
-        <var name="m" id="9054606037493534663" />
-      </scope>
-      <scope id="8774856961496010473" at="176,110,184,5">
-        <var name="startTime" id="8774856961496010489" />
-      </scope>
-      <scope id="1293684422392460981" at="148,84,158,18">
-        <var name="list" id="4270454500247937539" />
-      </scope>
-      <scope id="8774856961496010471" at="176,0,186,0">
-        <var name="_params" id="8774856961496010471" />
-        <var name="toRun" id="8774856961496010475" />
-      </scope>
-      <scope id="1366167984387690229" at="60,95,71,16" />
-      <scope id="8774856961496010236" at="163,119,174,18">
-        <var name="result" id="8774856961496010249" />
-      </scope>
-      <scope id="9054606037493657716" at="85,65,97,27">
-        <var name="models" id="9054606037493878556" />
-        <var name="subTask" id="9054606037493857871" />
-      </scope>
-      <scope id="8774856961496010234" at="163,0,176,0">
-        <var name="_params" id="8774856961496010234" />
-        <var name="classifiers" id="8774856961496010239" />
-      </scope>
-      <scope id="1366167984387690229" at="59,0,73,0">
-        <var name="_params" id="1366167984387690229" />
-        <var name="event" id="1366167984387690229" />
-      </scope>
-      <scope id="9054606037493657712" at="84,79,98,11">
-        <var name="module" id="9054606037493657714" />
-      </scope>
-      <scope id="1366167984387695271" at="146,113,161,18">
-        <var name="result" id="1366167984387700519" />
-      </scope>
-      <scope id="9054606037493534615" at="82,108,99,26">
-        <var name="modules" id="9054606037493534617" />
-      </scope>
-      <scope id="1366167984387695269" at="146,0,163,0">
-        <var name="_params" id="1366167984387695269" />
-        <var name="rootNode" id="1366167984387695275" />
-      </scope>
-      <scope id="9054606037493534599" at="80,61,100,11">
-        <var name="progress" id="9054606037493534601" />
-      </scope>
-      <scope id="9054606037493534593" at="79,0,102,0">
-        <var name="indicator" id="9054606037493534596" />
-      </scope>
-      <scope id="1366167984387690229" at="74,96,103,238">
-        <var name="membersOverallTime" id="2689425074099081678" />
-        <var name="rootsCount" id="1366167984387694192" />
-      </scope>
-      <scope id="1366167984387690229" at="73,0,105,0">
-        <var name="_params" id="1366167984387690229" />
-        <var name="event" id="1366167984387690229" />
-      </scope>
-      <scope id="9054606037493930431" at="105,98,144,27">
-        <var name="classifiers" id="9054606037493939157" />
-        <var name="members" id="9054606037493939213" />
-        <var name="membersCalcTime" id="9054606037493939219" />
-        <var name="nodeName" id="9054606037493939100" />
-        <var name="sb" id="9054606037493972712" />
-        <var name="types" id="9054606037493939116" />
-        <var name="typesCalcTime" id="9054606037493939122" />
-      </scope>
-      <scope id="9054606037493930429" at="105,0,146,0">
-        <var name="_params" id="9054606037493930429" />
-        <var name="node" id="9054606037493938242" />
-      </scope>
-      <unit id="1366167984387690229" at="187,0,190,0" name="jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action$LINKS" />
-      <unit id="9054606037493939171" at="118,95,122,5" name="jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action$2" />
-      <unit id="9054606037493939180" at="122,17,126,5" name="jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action$3" />
-      <unit id="1366167984387690229" at="191,0,197,0" name="jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action$CONCEPTS" />
-      <unit id="9054606037493534585" at="78,42,102,5" name="jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action$1" />
-      <unit id="1366167984387690229" at="46,0,198,0" name="jetbrains.mps.ide.actions.CalcClassifiersInRootsStatistic_Action" />
-    </file>
-    <file name="Ide_ApplicationPlugin.java">
-      <node id="1366167984387690229" at="28,54,29,60" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1366781238034273682">
@@ -3863,14 +3629,14 @@
       <unit id="1366781238034273682" at="10,0,23,0" name="jetbrains.mps.ide.actions.GeneratorNewActions_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1366781238034273682" at="140,53,141,56" concept="6" />
-      <node id="1366781238034273683" at="213,144,214,148" concept="6" />
+      <node id="1366781238034273682" at="139,53,140,56" concept="6" />
+      <node id="1366781238034273683" at="212,144,213,148" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1366781238034273687">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1366781238034273687" at="146,52,147,55" concept="6" />
-      <node id="1366781238034273688" at="214,148,215,141" concept="6" />
+      <node id="1366781238034273687" at="145,52,146,55" concept="6" />
+      <node id="1366781238034273688" at="213,148,214,141" concept="6" />
     </file>
     <file name="LanguageNewActions_ActionGroup.java">
       <node id="1366781238034273687" at="12,0,13,0" concept="16" trace="ID" />
@@ -3943,7 +3709,7 @@
       <unit id="1382572689121738513" at="17,0,54,0" name="jetbrains.mps.ide.actions.GoToNode_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1382572689121738513" at="61,39,62,37" concept="6" />
+      <node id="1382572689121738513" at="60,39,61,37" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1382572689121738536">
@@ -4000,12 +3766,12 @@
       <unit id="1382572689121738536" at="20,0,60,0" name="jetbrains.mps.ide.actions.GoToRule_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1382572689121738536" at="62,37,63,37" concept="6" />
+      <node id="1382572689121738536" at="61,37,62,37" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1382572689121738550">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1382572689121738550" at="262,67,263,76" concept="6" />
+      <node id="1382572689121738550" at="261,67,262,76" concept="6" />
     </file>
     <file name="TraceActions_KeymapChanges.java">
       <node id="1382572689121738552" at="10,39,11,60" concept="6" />
@@ -4048,7 +3814,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1420252515663895912">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1420252515663895912" at="75,40,76,40" concept="6" />
+      <node id="1420252515663895912" at="74,40,75,40" concept="6" />
     </file>
     <file name="NewSubModel_Action.java">
       <node id="1420252515663895912" at="22,0,23,0" concept="16" trace="ICON" />
@@ -4135,8 +3901,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1420252515663985887">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1420252515663985887" at="149,49,150,52" concept="6" />
-      <node id="1420252515663985888" at="215,141,216,134" concept="6" />
+      <node id="1420252515663985887" at="148,49,149,52" concept="6" />
+      <node id="1420252515663985888" at="214,141,215,134" concept="6" />
     </file>
     <file name="ModelNewActions_ActionGroup.java">
       <node id="1420252515663985887" at="12,0,13,0" concept="16" trace="ID" />
@@ -4158,7 +3924,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/142393105344666009">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="142393105344666009" at="90,41,91,55" concept="6" />
+      <node id="142393105344666009" at="89,41,90,55" concept="6" />
     </file>
     <file name="RenameModulesVirtualFolder_Action.java">
       <node id="142393105344666009" at="27,0,28,0" concept="16" trace="ICON" />
@@ -4305,9 +4071,9 @@
       <unit id="1587195459761469116" at="10,0,25,0" name="jetbrains.mps.ide.actions.FindUsages_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1587195459761469116" at="137,52,138,47" concept="6" />
-      <node id="1587195459761470374" at="226,158,227,121" concept="6" />
-      <node id="1587195459761470375" at="227,121,228,91" concept="6" />
+      <node id="1587195459761469116" at="136,52,137,47" concept="6" />
+      <node id="1587195459761470374" at="225,158,226,121" concept="6" />
+      <node id="1587195459761470375" at="226,121,227,91" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1596727503333709178">
@@ -4326,8 +4092,8 @@
       <unit id="1596727503333709178" at="10,0,22,0" name="jetbrains.mps.ide.actions.BehaviourPopup_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1596727503333709178" at="120,44,121,51" concept="6" />
-      <node id="1596727503333709181" at="228,91,229,108" concept="6" />
+      <node id="1596727503333709178" at="119,44,120,51" concept="6" />
+      <node id="1596727503333709181" at="227,91,228,108" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1596727503333709182">
@@ -4446,7 +4212,7 @@
       <unit id="1596727503333709182" at="32,0,113,0" name="jetbrains.mps.ide.actions.GoToImplementationBehaviorMethod_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1596727503333709182" at="58,51,59,61" concept="6" />
+      <node id="1596727503333709182" at="57,51,58,61" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1743877180110185815">
@@ -4467,10 +4233,10 @@
       <unit id="1743877180110185815" at="10,0,24,0" name="jetbrains.mps.ide.actions.CreateRootNode_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1743877180110185815" at="125,58,126,51" concept="6" />
-      <node id="1743877180110193156" at="229,108,230,136" concept="6" />
-      <node id="8417012233958647558" at="230,136,231,134" concept="6" />
-      <node id="1743877180110226903" at="231,134,232,98" concept="6" />
+      <node id="1743877180110185815" at="124,58,125,51" concept="6" />
+      <node id="1743877180110193156" at="228,108,229,136" concept="6" />
+      <node id="8417012233958647558" at="229,136,230,134" concept="6" />
+      <node id="1743877180110226903" at="230,134,231,98" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1755502566255660776">
@@ -4493,8 +4259,8 @@
       <unit id="1755502566255660776" at="10,0,26,0" name="jetbrains.mps.ide.actions.EditorPopup_Show_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1755502566255660776" at="132,50,133,53" concept="6" />
-      <node id="1755502566255660779" at="232,98,233,99" concept="6" />
+      <node id="1755502566255660776" at="131,50,132,53" concept="6" />
+      <node id="1755502566255660779" at="231,98,232,99" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1818770337282866379">
@@ -5114,7 +4880,7 @@
       <unit id="1846532096126341800" at="18,0,61,0" name="jetbrains.mps.ide.actions.FindTextInProject_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1846532096126341800" at="52,51,53,46" concept="6" />
+      <node id="1846532096126341800" at="51,51,52,46" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/1951613054411714136">
@@ -5144,9 +4910,9 @@
       <unit id="1951613054411714136" at="10,0,33,0" name="jetbrains.mps.ide.actions.DebugActions_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="1951613054411714136" at="126,51,127,49" concept="6" />
-      <node id="3464435412756462060" at="209,75,210,124" concept="6" />
-      <node id="3464435412756462059" at="210,124,211,94" concept="6" />
+      <node id="1951613054411714136" at="125,51,126,49" concept="6" />
+      <node id="3464435412756462060" at="208,75,209,124" concept="6" />
+      <node id="3464435412756462059" at="209,124,210,94" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2003512433031648168">
@@ -5164,8 +4930,8 @@
       <unit id="2003512433031648168" at="10,0,21,0" name="jetbrains.mps.ide.actions.EditorPopupEx_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="2003512433031648168" at="131,51,132,50" concept="6" />
-      <node id="2003512433031648171" at="233,99,234,93" concept="6" />
+      <node id="2003512433031648168" at="130,51,131,50" concept="6" />
+      <node id="2003512433031648171" at="232,99,233,93" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2010440180771532928">
@@ -5437,8 +5203,8 @@
       <unit id="2214103008221911161" at="10,0,21,0" name="jetbrains.mps.ide.actions.FindModelUsages_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="2214103008221911161" at="136,57,137,52" concept="6" />
-      <node id="2214103008221911162" at="234,93,235,135" concept="6" />
+      <node id="2214103008221911161" at="135,57,136,52" concept="6" />
+      <node id="2214103008221911162" at="233,93,234,135" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2214103008221911165">
@@ -5501,13 +5267,13 @@
       <unit id="2214103008221911165" at="23,0,66,0" name="jetbrains.mps.ide.actions.FindModelUsages_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="2214103008221911165" at="49,49,50,44" concept="6" />
+      <node id="2214103008221911165" at="48,49,49,44" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2215380050391415288">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="2215380050391415288" at="165,57,166,49" concept="6" />
-      <node id="2215380050391415328" at="235,135,236,85" concept="6" />
+      <node id="2215380050391415288" at="164,57,165,49" concept="6" />
+      <node id="2215380050391415328" at="234,135,235,85" concept="6" />
     </file>
     <file name="SearchUsages_ActionGroup.java">
       <node id="2215380050391415288" at="12,0,13,0" concept="16" trace="ID" />
@@ -5657,7 +5423,7 @@
       <unit id="227146524086812204" at="27,0,86,0" name="jetbrains.mps.ide.actions.HighlightInstances_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="227146524086812204" at="64,52,65,47" concept="6" />
+      <node id="227146524086812204" at="63,52,64,47" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2443880313834662249">
@@ -5759,7 +5525,7 @@
       <unit id="2443880313834662249" at="8,0,107,0" name="jetbrains.mps.ide.actions.Default_KeymapChanges" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="2443880313834662249" at="257,92,258,71" concept="6" />
+      <node id="2443880313834662249" at="256,92,257,71" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2533953941693774358">
@@ -5867,7 +5633,7 @@
       <unit id="2533953941693774358" at="30,0,105,0" name="jetbrains.mps.ide.actions.ForceSaveAll_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="2533953941693774358" at="56,45,57,41" concept="6" />
+      <node id="2533953941693774358" at="55,45,56,41" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2557058267217516060">
@@ -5956,7 +5722,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2589658255268083871">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="2589658255268083871" at="86,48,87,50" concept="6" />
+      <node id="2589658255268083871" at="85,48,86,50" concept="6" />
     </file>
     <file name="RenameFileOrDirectory_Action.java">
       <node id="2589658255268083871" at="24,0,25,0" concept="16" trace="ICON" />
@@ -6069,7 +5835,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2589658255268083877">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="2589658255268083877" at="69,45,70,48" concept="6" />
+      <node id="2589658255268083877" at="68,45,69,48" concept="6" />
     </file>
     <file name="MoveFileOrDirectory_Action.java">
       <node id="2589658255268083877" at="26,0,27,0" concept="16" trace="ICON" />
@@ -6173,14 +5939,14 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2591756096343771066">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="2591756096343871639" at="186,84,187,147" concept="6" />
-      <node id="2591756096343888125" at="187,147,188,147" concept="6" />
-      <node id="2591756096343871305" at="188,147,189,133" concept="6" />
+      <node id="2591756096343871639" at="185,84,186,147" concept="6" />
+      <node id="2591756096343888125" at="186,147,187,147" concept="6" />
+      <node id="2591756096343871305" at="187,147,188,133" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2721881173282450312">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="2721881173282450312" at="76,40,77,44" concept="6" />
+      <node id="2721881173282450312" at="75,40,76,44" concept="6" />
     </file>
     <file name="NewSubTestModel_Action.java">
       <node id="2721881173282450312" at="32,0,33,0" concept="16" trace="LOG" />
@@ -6379,14 +6145,14 @@
       <unit id="2841218117793383532" at="24,0,54,0" name="jetbrains.mps.ide.actions.CreateRootNodeAdapter_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="2841218117793383532" at="124,56,125,58" concept="6" />
-      <node id="2490685849537330649" at="220,153,221,141" concept="6" />
+      <node id="2841218117793383532" at="123,56,124,58" concept="6" />
+      <node id="2490685849537330649" at="219,153,220,141" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/2899596005954254197">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="2899596005954254197" at="171,51,172,50" concept="6" />
-      <node id="2899596005954254200" at="208,124,209,75" concept="6" />
+      <node id="2899596005954254197" at="170,51,171,50" concept="6" />
+      <node id="2899596005954254200" at="207,124,208,75" concept="6" />
     </file>
     <file name="ToolsInternal_ActionGroup.java">
       <node id="2899596005954254197" at="12,0,13,0" concept="16" trace="ID" />
@@ -6400,18 +6166,17 @@
       <node id="4998818250317603960" at="21,50,22,114" concept="6" />
       <node id="8671835029167076507" at="22,114,23,100" concept="6" />
       <node id="5891226107409302137" at="23,100,24,113" concept="6" />
-      <node id="7892193783544722784" at="24,113,25,113" concept="6" />
-      <node id="2899596005954254197" at="14,0,27,0" concept="3" trace="ToolsInternal_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
-      <scope id="2899596005954254197" at="14,71,25,113" />
-      <scope id="2899596005954254197" at="14,0,27,0">
+      <node id="2899596005954254197" at="14,0,26,0" concept="3" trace="ToolsInternal_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
+      <scope id="2899596005954254197" at="14,71,24,113" />
+      <scope id="2899596005954254197" at="14,0,26,0">
         <var name="plugin" id="2899596005954254197" />
       </scope>
-      <unit id="2899596005954254197" at="10,0,28,0" name="jetbrains.mps.ide.actions.ToolsInternal_ActionGroup" />
+      <unit id="2899596005954254197" at="10,0,27,0" name="jetbrains.mps.ide.actions.ToolsInternal_ActionGroup" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3090090913825241429">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3090090913825241429" at="105,43,106,53" concept="6" />
+      <node id="3090090913825241429" at="104,43,105,53" concept="6" />
     </file>
     <file name="ShowDependenciesInViewer_Action.java">
       <node id="3090090913825241429" at="23,0,24,0" concept="16" trace="ICON" />
@@ -6500,7 +6265,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3121818631993911011">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3121818631993911011" at="260,82,261,72" concept="6" />
+      <node id="3121818631993911011" at="259,82,260,72" concept="6" />
     </file>
     <file name="Mac_10_5_KeymapChanges.java">
       <node id="3121818631993938959" at="10,35,11,65" concept="6" />
@@ -6789,13 +6554,13 @@
       <unit id="3138904107381036995" at="46,0,200,0" name="jetbrains.mps.ide.actions.CloneModule_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3138904107381036995" at="31,39,32,40" concept="6" />
+      <node id="3138904107381036995" at="30,39,31,40" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3201523885427942371">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3201523885427942371" at="174,50,175,56" concept="6" />
-      <node id="3201523885428122475" at="236,85,237,92" concept="6" />
+      <node id="3201523885427942371" at="173,50,174,56" concept="6" />
+      <node id="3201523885428122475" at="235,85,236,92" concept="6" />
     </file>
     <file name="TouchBarDefault_alt_ActionGroup.java">
       <node id="3201523885427942371" at="12,0,13,0" concept="16" trace="ID" />
@@ -6813,8 +6578,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3201523885428154203">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3201523885428154203" at="175,56,176,56" concept="6" />
-      <node id="3201523885428154771" at="237,92,238,92" concept="6" />
+      <node id="3201523885428154203" at="174,56,175,56" concept="6" />
+      <node id="3201523885428154771" at="236,92,237,92" concept="6" />
     </file>
     <file name="TouchBarDefault_cmd_ActionGroup.java">
       <node id="3201523885428154203" at="12,0,13,0" concept="16" trace="ID" />
@@ -6832,8 +6597,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3201523885428157953">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3201523885428157953" at="176,56,177,60" concept="6" />
-      <node id="3201523885428157960" at="238,92,239,100" concept="6" />
+      <node id="3201523885428157953" at="175,56,176,60" concept="6" />
+      <node id="3201523885428157960" at="237,92,238,100" concept="6" />
     </file>
     <file name="TouchBarDefault_cmd_alt_ActionGroup.java">
       <node id="3201523885428157953" at="12,0,13,0" concept="16" trace="ID" />
@@ -6851,8 +6616,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3201523885428165775">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3201523885428165775" at="177,60,178,58" concept="6" />
-      <node id="3201523885428165828" at="239,100,240,96" concept="6" />
+      <node id="3201523885428165775" at="176,60,177,58" concept="6" />
+      <node id="3201523885428165828" at="238,100,239,96" concept="6" />
     </file>
     <file name="TouchBarDefault_shift_ActionGroup.java">
       <node id="3201523885428165775" at="12,0,13,0" concept="16" trace="ID" />
@@ -6881,8 +6646,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3201523885428189497">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3201523885428189497" at="173,42,174,50" concept="6" />
-      <node id="3201523885428263148" at="240,96,241,80" concept="6" />
+      <node id="3201523885428189497" at="172,42,173,50" concept="6" />
+      <node id="3201523885428263148" at="239,96,240,80" concept="6" />
     </file>
     <file name="TouchBarDebug_ActionGroup.java">
       <node id="3201523885428189497" at="12,0,13,0" concept="16" trace="ID" />
@@ -6949,7 +6714,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3562010829150991006">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3562010829151161772" at="189,133,190,145" concept="6" />
+      <node id="3562010829151161772" at="188,133,189,145" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3575273646046443826">
@@ -7277,12 +7042,12 @@
       <unit id="3616898894718121639" at="40,0,171,0" name="jetbrains.mps.ide.actions.ConvertToFilePerRootPersistence_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3616898894718121639" at="35,56,36,60" concept="6" />
+      <node id="3616898894718121639" at="34,56,35,60" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3734045384532066586">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3734045384532066586" at="89,50,90,41" concept="6" />
+      <node id="3734045384532066586" at="88,50,89,41" concept="6" />
     </file>
     <file name="RenameModule_Action.java">
       <node id="3734045384532066586" at="24,0,25,0" concept="16" trace="ICON" />
@@ -7367,7 +7132,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3734045384533036331">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3734045384533036331" at="261,72,262,67" concept="6" />
+      <node id="3734045384533036331" at="260,72,261,67" concept="6" />
     </file>
     <file name="Mac_KeymapChanges.java">
       <node id="7918601149636320837" at="10,30,11,65" concept="6" />
@@ -7409,7 +7174,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3858094006307618579">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3858094006307618579" at="72,39,73,36" concept="6" />
+      <node id="3858094006307618579" at="71,39,72,36" concept="6" />
     </file>
     <file name="NewFile_Action.java">
       <node id="3858094006307618579" at="26,0,27,0" concept="16" trace="ICON" />
@@ -7503,7 +7268,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3858094006307618582">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3858094006307618582" at="70,48,71,41" concept="6" />
+      <node id="3858094006307618582" at="69,48,70,41" concept="6" />
     </file>
     <file name="NewDirectory_Action.java">
       <node id="3858094006307618582" at="26,0,27,0" concept="16" trace="ICON" />
@@ -7618,8 +7383,8 @@
       <unit id="3858094006307660254" at="10,0,22,0" name="jetbrains.mps.ide.actions.FileSystemNewActions_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3858094006307660254" at="135,48,136,57" concept="6" />
-      <node id="3858094006307874183" at="216,134,217,146" concept="6" />
+      <node id="3858094006307660254" at="134,48,135,57" concept="6" />
+      <node id="3858094006307874183" at="215,134,216,146" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3906874221886742260">
@@ -7908,7 +7673,7 @@
       <unit id="3906874221886742388" at="27,0,77,0" name="jetbrains.mps.ide.actions.GoToModel_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3906874221886742388" at="59,61,60,38" concept="6" />
+      <node id="3906874221886742388" at="58,61,59,38" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3906874221886742454">
@@ -7982,7 +7747,7 @@
       <unit id="3906874221886742454" at="34,0,85,0" name="jetbrains.mps.ide.actions.GoToModule_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3906874221886742454" at="60,38,61,39" concept="6" />
+      <node id="3906874221886742454" at="59,38,60,39" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/3906874221886749855">
@@ -8081,8 +7846,8 @@
       <unit id="3996994949102148663" at="10,0,23,0" name="jetbrains.mps.ide.actions.Analyze_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="3996994949102148663" at="119,50,120,44" concept="6" />
-      <node id="3996994949102184144" at="241,80,242,93" concept="6" />
+      <node id="3996994949102148663" at="118,50,119,44" concept="6" />
+      <node id="3996994949102184144" at="240,80,241,93" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/4006758004392312921">
@@ -8293,7 +8058,7 @@
       <unit id="4006758004392312921" at="54,0,194,0" name="jetbrains.mps.ide.actions.FindUnusedAndDeprecatedConcepts_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="4006758004392312921" at="53,46,54,60" concept="6" />
+      <node id="4006758004392312921" at="52,46,53,60" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/401659284115173011">
@@ -8350,15 +8115,15 @@
       <unit id="401659284115173011" at="10,0,60,0" name="jetbrains.mps.ide.actions.CommonModuleActions_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="401659284115173011" at="123,42,124,56" concept="6" />
-      <node id="2850002904480316696" at="242,93,243,148" concept="6" />
-      <node id="401659284115231188" at="243,148,244,146" concept="6" />
-      <node id="401659284115231187" at="244,146,245,146" concept="6" />
+      <node id="401659284115173011" at="122,42,123,56" concept="6" />
+      <node id="2850002904480316696" at="241,93,242,148" concept="6" />
+      <node id="401659284115231188" at="242,148,243,146" concept="6" />
+      <node id="401659284115231187" at="243,146,244,146" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/4032646381570858340">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="4032646381570858340" at="154,57,155,56" concept="6" />
+      <node id="4032646381570858340" at="153,57,154,56" concept="6" />
     </file>
     <file name="NamespaceNewActions_ActionGroup.java">
       <node id="4032646381570858340" at="12,0,13,0" concept="16" trace="ID" />
@@ -8563,12 +8328,12 @@
       <unit id="406842751034388332" at="41,0,173,0" name="jetbrains.mps.ide.actions.ConvertToDefaultPersistence_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="406842751034388332" at="34,55,35,56" concept="6" />
+      <node id="406842751034388332" at="33,55,34,56" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/4193578441192323616">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="2872212824181502642" at="190,145,191,170" concept="6" />
+      <node id="2872212824181502642" at="189,145,190,170" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/4221956679900513437">
@@ -8666,7 +8431,7 @@
       <unit id="4221956679900513437" at="20,0,90,0" name="jetbrains.mps.ide.actions.AnalyzeStacktrace_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="4221956679900513437" at="115,60,116,50" concept="6" />
+      <node id="4221956679900513437" at="114,60,115,50" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/4221956679900513516">
@@ -8938,8 +8703,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/484385057887943926">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="484385057887943926" at="147,55,148,56" concept="6" />
-      <node id="484385057887944139" at="245,146,246,89" concept="6" />
+      <node id="484385057887943926" at="146,55,147,56" concept="6" />
+      <node id="484385057887944139" at="244,146,245,89" concept="6" />
     </file>
     <file name="MessagesViewActions_ActionGroup.java">
       <node id="484385057887943926" at="12,0,13,0" concept="16" trace="ID" />
@@ -8969,7 +8734,7 @@
       <unit id="4944905275592622082" at="8,0,19,0" name="jetbrains.mps.ide.actions.DependenciesKeyMap_KeymapChanges" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="4944905275592622082" at="258,71,259,82" concept="6" />
+      <node id="4944905275592622082" at="257,71,258,82" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/4998818250317603956">
@@ -9072,7 +8837,7 @@
       <unit id="4998818250317603956" at="40,0,118,0" name="jetbrains.mps.ide.actions.FindRootableConceptsWithoutIcons_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="4998818250317603956" at="50,44,51,61" concept="6" />
+      <node id="4998818250317603956" at="49,44,50,61" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5014390439885403930">
@@ -9215,7 +8980,7 @@
       <unit id="5033107305426668800" at="21,0,76,0" name="jetbrains.mps.ide.actions.CopyNodeReference_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="5033107305426668800" at="39,41,40,46" concept="6" />
+      <node id="5033107305426668800" at="38,41,39,46" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5033107305426684804">
@@ -9291,7 +9056,7 @@
       <unit id="5033107305426684804" at="21,0,74,0" name="jetbrains.mps.ide.actions.CopyNode_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="5033107305426684804" at="40,46,41,37" concept="6" />
+      <node id="5033107305426684804" at="39,46,40,37" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5033107305426722313">
@@ -9409,7 +9174,7 @@
       <unit id="5033107305426722313" at="24,0,106,0" name="jetbrains.mps.ide.actions.CutNode_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="5033107305426722313" at="41,37,42,36" concept="6" />
+      <node id="5033107305426722313" at="40,37,41,36" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5033107305426734988">
@@ -9484,7 +9249,7 @@
       <unit id="5033107305426734988" at="18,0,70,0" name="jetbrains.mps.ide.actions.FastFindNodeUsages_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="5033107305426734988" at="47,39,48,47" concept="6" />
+      <node id="5033107305426734988" at="46,39,47,47" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5033107305426766812">
@@ -9563,12 +9328,12 @@
       <unit id="5033107305426766812" at="20,0,74,0" name="jetbrains.mps.ide.actions.FindSpecificNodeUsages_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="5033107305426766812" at="51,61,52,51" concept="6" />
+      <node id="5033107305426766812" at="50,61,51,51" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5426495936043631331">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="5426495936043631331" at="112,43,113,43" concept="6" />
+      <node id="5426495936043631331" at="111,43,112,43" concept="6" />
     </file>
     <file name="ShowTodoViewer_Action.java">
       <node id="5426495936043631331" at="19,0,20,0" concept="16" trace="ICON" />
@@ -10003,12 +9768,12 @@
       <unit id="5533671870987003804" at="33,0,117,0" name="jetbrains.mps.ide.actions.HighlightUsages_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="5533671870987003804" at="65,47,66,44" concept="6" />
+      <node id="5533671870987003804" at="64,47,65,44" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5533671870987188872">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="5533671870987188872" at="80,51,81,38" concept="6" />
+      <node id="5533671870987188872" at="79,51,80,38" concept="6" />
     </file>
     <file name="PasteNode_Action.java">
       <node id="5533671870987188872" at="40,0,41,0" concept="16" trace="ICON" />
@@ -10187,7 +9952,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5535460359399556383">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="5535460359399556383" at="110,48,111,41" concept="6" />
+      <node id="5535460359399556383" at="109,48,110,41" concept="6" />
     </file>
     <file name="ShowNodeInfo_Action.java">
       <node id="5535460359399556383" at="25,0,26,0" concept="16" trace="ICON" />
@@ -10278,7 +10043,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/5542140910050886364">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="5542140910050886364" at="113,43,114,44" concept="6" />
+      <node id="5542140910050886364" at="112,43,113,44" concept="6" />
     </file>
     <file name="SubmitToTracker_Action.java">
       <node id="5542140910050886364" at="27,0,28,0" concept="16" trace="ICON" />
@@ -10590,19 +10355,19 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6267318242960657894">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="2594916007743946175" at="191,170,192,137" concept="6" />
-      <node id="1341091614641347438" at="192,137,193,98" concept="6" />
-      <node id="1341091614641347439" at="193,98,194,100" concept="6" />
-      <node id="6462695515358244108" at="194,100,195,123" concept="6" />
-      <node id="1177638545603697297" at="195,123,196,89" concept="6" />
-      <node id="7084337574345901885" at="196,89,197,133" concept="6" />
-      <node id="6267318242960707992" at="197,133,198,121" concept="6" />
+      <node id="2594916007743946175" at="190,170,191,137" concept="6" />
+      <node id="1341091614641347438" at="191,137,192,98" concept="6" />
+      <node id="1341091614641347439" at="192,98,193,100" concept="6" />
+      <node id="6462695515358244108" at="193,100,194,123" concept="6" />
+      <node id="1177638545603697297" at="194,123,195,89" concept="6" />
+      <node id="7084337574345901885" at="195,89,196,133" concept="6" />
+      <node id="6267318242960707992" at="196,133,197,121" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6290562762037774100">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="6290562762037774100" at="158,51,159,54" concept="6" />
-      <node id="8156186656774134773" at="217,146,218,140" concept="6" />
+      <node id="6290562762037774100" at="157,51,158,54" concept="6" />
+      <node id="8156186656774134773" at="216,146,217,140" concept="6" />
     </file>
     <file name="PackageNewActions_ActionGroup.java">
       <node id="6290562762037774100" at="12,0,13,0" concept="16" trace="ID" />
@@ -10619,7 +10384,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/629814680568915653">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="629814680568915653" at="93,48,94,55" concept="6" />
+      <node id="629814680568915653" at="92,48,93,55" concept="6" />
     </file>
     <file name="SafeDeleteModuleDependency_Action.java">
       <node id="629814680568915653" at="37,0,38,0" concept="16" trace="ICON" />
@@ -10811,7 +10576,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6460492932224949527">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="6460492932224949527" at="97,43,98,62" concept="6" />
+      <node id="6460492932224949527" at="96,43,97,62" concept="6" />
     </file>
     <file name="SetPluginIdToCompileInIdeaModules_Action.java">
       <node id="6460492932224949527" at="24,0,25,0" concept="16" trace="ICON" />
@@ -10911,7 +10676,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6595589484395587263">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="6595589484395587263" at="88,40,89,50" concept="6" />
+      <node id="6595589484395587263" at="87,40,88,50" concept="6" />
     </file>
     <file name="RenameModelsNamespace_Action.java">
       <node id="6595589484395587263" at="32,0,33,0" concept="16" trace="ICON" />
@@ -11119,7 +10884,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6595589484397007419">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="6595589484397007419" at="83,47,84,55" concept="6" />
+      <node id="6595589484397007419" at="82,47,83,55" concept="6" />
     </file>
     <file name="RemoveModulesVirtualFolder_Action.java">
       <node id="6595589484397007419" at="25,0,26,0" concept="16" trace="ICON" />
@@ -11218,7 +10983,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6661528628553884549">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="6661528628553884549" at="153,61,154,57" concept="6" />
+      <node id="6661528628553884549" at="152,61,153,57" concept="6" />
     </file>
     <file name="NamespaceMakeActions_ActionGroup.java">
       <node id="6661528628553884549" at="12,0,13,0" concept="16" trace="ID" />
@@ -11522,12 +11287,12 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6714826334259420987">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="6714826334259436925" at="198,121,199,176" concept="6" />
+      <node id="6714826334259436925" at="197,121,198,176" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6840593892233915864">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="6840593892233915864" at="87,50,88,40" concept="6" />
+      <node id="6840593892233915864" at="86,50,87,40" concept="6" />
     </file>
     <file name="RenameModel_Action.java">
       <node id="6840593892233915864" at="21,0,22,0" concept="16" trace="ICON" />
@@ -11594,7 +11359,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6840593892233919195">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="6840593892233919195" at="91,55,92,42" concept="6" />
+      <node id="6840593892233919195" at="90,55,91,42" concept="6" />
     </file>
     <file name="RenamePackage_Action.java">
       <node id="6840593892233919195" at="31,0,32,0" concept="16" trace="ICON" />
@@ -11838,7 +11603,7 @@
       <unit id="6842131548104407467" at="33,0,110,0" name="jetbrains.mps.ide.actions.GoToConceptDescendants_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="6842131548104407467" at="57,41,58,51" concept="6" />
+      <node id="6842131548104407467" at="56,41,57,51" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6869265041613223036">
@@ -11938,7 +11703,7 @@
       <unit id="6874470910152579882" at="8,0,23,0" name="jetbrains.mps.ide.actions.GnomeActionsKeymap_KeymapChanges" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="6874470910152579882" at="259,82,260,82" concept="6" />
+      <node id="6874470910152579882" at="258,82,259,82" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/6981599660810253824">
@@ -12129,7 +11894,7 @@
       <unit id="6981599660810253824" at="41,0,172,0" name="jetbrains.mps.ide.actions.ConvertToBinaryPersistence_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="6981599660810253824" at="33,38,34,55" concept="6" />
+      <node id="6981599660810253824" at="32,38,33,55" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7054831363147542055">
@@ -12582,31 +12347,31 @@
       <node id="7162597690968192621" at="16,0,17,0" concept="7" trace="myId" />
       <node id="7162597690968192621" at="22,27,23,16" concept="13" />
       <node id="7162597690968192621" at="26,30,27,29" concept="14" />
-      <node id="7162597690968192621" at="114,44,115,60" concept="14" />
-      <node id="7162597690968192621" at="116,50,117,13" concept="14" />
-      <node id="7162597690968192621" at="256,48,257,92" concept="12" />
-      <node id="7162597690968192621" at="263,76,264,15" concept="13" />
+      <node id="7162597690968192621" at="113,44,114,60" concept="14" />
+      <node id="7162597690968192621" at="115,50,116,13" concept="14" />
+      <node id="7162597690968192621" at="255,48,256,92" concept="12" />
+      <node id="7162597690968192621" at="262,76,263,15" concept="13" />
       <node id="7162597690968192621" at="18,0,20,0" concept="3" trace="Ide_ApplicationPlugin#()V" />
       <node id="7162597690968192621" at="21,0,25,0" concept="11" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
-      <node id="7162597690968192621" at="256,0,266,0" concept="11" trace="initKeymaps#()Ljava/util/List;" />
-      <node id="7162597690968192621" at="182,0,201,0" concept="11" trace="adjustInterfaceGroups#()V" />
-      <node id="7162597690968192621" at="201,0,256,0" concept="11" trace="adjustRegularGroups#()V" />
-      <node id="7162597690968192621" at="26,0,182,0" concept="11" trace="createGroups#()V" />
+      <node id="7162597690968192621" at="255,0,265,0" concept="11" trace="initKeymaps#()Ljava/util/List;" />
+      <node id="7162597690968192621" at="181,0,200,0" concept="11" trace="adjustInterfaceGroups#()V" />
+      <node id="7162597690968192621" at="200,0,255,0" concept="11" trace="adjustRegularGroups#()V" />
+      <node id="7162597690968192621" at="26,0,181,0" concept="11" trace="createGroups#()V" />
       <scope id="7162597690968192621" at="18,34,18,34" />
       <scope id="7162597690968192621" at="22,27,23,16" />
       <scope id="7162597690968192621" at="18,0,20,0" />
       <scope id="7162597690968192621" at="21,0,25,0" />
-      <scope id="7162597690968192621" at="256,48,264,15">
+      <scope id="7162597690968192621" at="255,48,263,15">
         <var name="res" id="7162597690968192621" />
       </scope>
-      <scope id="7162597690968192621" at="256,0,266,0" />
-      <scope id="7162597690968192621" at="182,39,199,176" />
-      <scope id="7162597690968192621" at="182,0,201,0" />
-      <scope id="7162597690968192621" at="201,37,254,133" />
-      <scope id="7162597690968192621" at="201,0,256,0" />
-      <scope id="7162597690968192621" at="26,30,180,41" />
-      <scope id="7162597690968192621" at="26,0,182,0" />
-      <unit id="7162597690968192621" at="14,0,267,0" name="jetbrains.mps.ide.actions.Ide_ApplicationPlugin" />
+      <scope id="7162597690968192621" at="255,0,265,0" />
+      <scope id="7162597690968192621" at="181,39,198,176" />
+      <scope id="7162597690968192621" at="181,0,200,0" />
+      <scope id="7162597690968192621" at="200,37,253,133" />
+      <scope id="7162597690968192621" at="200,0,255,0" />
+      <scope id="7162597690968192621" at="26,30,179,41" />
+      <scope id="7162597690968192621" at="26,0,181,0" />
+      <unit id="7162597690968192621" at="14,0,266,0" name="jetbrains.mps.ide.actions.Ide_ApplicationPlugin" />
     </file>
     <file name="Ide_ProjectPlugin.java">
       <node id="7162597690968192621" at="19,56,20,76" concept="12" />
@@ -12757,12 +12522,12 @@
       <unit id="7335624801804239524" at="33,0,115,0" name="jetbrains.mps.ide.actions.GoToSuperBehaviorMethod_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="7335624801804239524" at="63,37,64,52" concept="6" />
+      <node id="7335624801804239524" at="62,37,63,52" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/738639550409927657">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="738639550409927657" at="81,38,82,46" concept="6" />
+      <node id="738639550409927657" at="80,38,81,46" concept="6" />
     </file>
     <file name="PrintNodePosition_Action.java">
       <node id="738639550409927657" at="17,0,18,0" concept="16" trace="ICON" />
@@ -12814,8 +12579,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/738639550409927701">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="738639550409927701" at="159,54,160,63" concept="6" />
-      <node id="738639550409927704" at="246,89,247,107" concept="6" />
+      <node id="738639550409927701" at="158,54,159,63" concept="6" />
+      <node id="738639550409927704" at="245,89,246,107" concept="6" />
     </file>
     <file name="PrintNodePosition_Addition_ActionGroup.java">
       <node id="738639550409927701" at="12,0,13,0" concept="16" trace="ID" />
@@ -12833,7 +12598,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7397015581138491059">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="7397015581138491059" at="104,49,105,43" concept="6" />
+      <node id="7397015581138491059" at="103,49,104,43" concept="6" />
     </file>
     <file name="ShowDefinition_Action.java">
       <node id="7397015581138491059" at="37,0,38,0" concept="16" trace="ICON" />
@@ -13029,8 +12794,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7612244991328876743">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="7612244991328876743" at="156,48,157,51" concept="6" />
-      <node id="7612244991329188686" at="218,140,219,131" concept="6" />
+      <node id="7612244991328876743" at="155,48,156,51" concept="6" />
+      <node id="7612244991329188686" at="217,140,218,131" concept="6" />
     </file>
     <file name="NodeNewActions_ActionGroup.java">
       <node id="7612244991328876743" at="12,0,13,0" concept="16" trace="ID" />
@@ -13049,7 +12814,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7889360268649425705">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="7889360268649425705" at="96,48,97,43" concept="6" />
+      <node id="7889360268649425705" at="95,48,96,43" concept="6" />
     </file>
     <file name="SetNodePackage_Action.java">
       <node id="7889360268649425705" at="41,0,42,0" concept="16" trace="LOG" />
@@ -13285,7 +13050,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7889360268649608396">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="7889360268649608396" at="111,41,112,43" concept="6" />
+      <node id="7889360268649608396" at="110,41,111,43" concept="6" />
     </file>
     <file name="ShowParameters_Action.java">
       <node id="7889360268649608396" at="46,0,47,0" concept="16" trace="ICON" />
@@ -13482,7 +13247,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7918601149636191506">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="7918601149636191506" at="71,41,72,39" concept="6" />
+      <node id="7918601149636191506" at="70,41,71,39" concept="6" />
     </file>
     <file name="NewElement_Action.java">
       <node id="7918601149636191506" at="28,0,29,0" concept="16" trace="ICON" />
@@ -13575,8 +13340,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/7921481111246565812">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="7921481111246565812" at="166,49,167,43" concept="6" />
-      <node id="4212975129344577735" at="247,107,248,73" concept="6" />
+      <node id="7921481111246565812" at="165,49,166,43" concept="6" />
+      <node id="4212975129344577735" at="246,107,247,73" concept="6" />
     </file>
     <file name="Search_ActionGroup.java">
       <node id="7921481111246565812" at="12,0,13,0" concept="16" trace="ID" />
@@ -13614,8 +13379,8 @@
       <unit id="8033185057371911844" at="10,0,24,0" name="jetbrains.mps.ide.actions.AnalyzeModule_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="8033185057371911844" at="118,56,119,50" concept="6" />
-      <node id="8033185057371911846" at="201,37,202,143" concept="6" />
+      <node id="8033185057371911844" at="117,56,118,50" concept="6" />
+      <node id="8033185057371911846" at="200,37,201,143" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/8131292300541727034">
@@ -13706,10 +13471,10 @@
       <unit id="8243555296290550439" at="11,0,22,0" name="jetbrains.mps.ide.actions.Favorites_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="8243555296290550439" at="133,53,134,46" concept="6" />
-      <node id="8243555296290550450" at="248,73,249,141" concept="6" />
-      <node id="8243555296290550453" at="249,141,250,127" concept="6" />
-      <node id="8243555296290550449" at="250,127,251,125" concept="6" />
+      <node id="8243555296290550439" at="132,53,133,46" concept="6" />
+      <node id="8243555296290550450" at="247,73,248,141" concept="6" />
+      <node id="8243555296290550453" at="248,141,249,127" concept="6" />
+      <node id="8243555296290550449" at="249,127,250,125" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/8321617901826003055">
@@ -13957,7 +13722,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/8348041782507834008">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="8348041782507834008" at="103,51,104,49" concept="6" />
+      <node id="8348041782507834008" at="102,51,103,49" concept="6" />
     </file>
     <file name="ShowDefinitionInMenu_Action.java">
       <node id="8348041782507834008" at="28,0,29,0" concept="16" trace="ICON" />
@@ -14129,7 +13894,7 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/8444506158696382826">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="8444506158696382826" at="85,50,86,48" concept="6" />
+      <node id="8444506158696382826" at="84,50,85,48" concept="6" />
     </file>
     <file name="RemoveVirtualFolder_Action.java">
       <node id="8444506158696382826" at="25,0,26,0" concept="16" trace="ICON" />
@@ -14365,12 +14130,12 @@
       <unit id="8671835029167053045" at="28,0,118,0" name="jetbrains.mps.ide.actions.CalcSNodeStatistic_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="8671835029167053045" at="29,60,30,47" concept="6" />
+      <node id="8671835029167053045" at="28,54,29,47" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/8784230320738944314">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="8784230320738944314" at="94,55,95,39" concept="6" />
+      <node id="8784230320738944314" at="93,55,94,39" concept="6" />
     </file>
     <file name="SafeDelete_Action.java">
       <node id="8784230320738944314" at="20,0,21,0" concept="16" trace="ICON" />
@@ -14433,8 +14198,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/885275291024029562">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="885275291024029562" at="179,60,180,41" concept="6" />
-      <node id="885275291024029564" at="251,125,252,66" concept="6" />
+      <node id="885275291024029562" at="178,60,179,41" concept="6" />
+      <node id="885275291024029564" at="250,125,251,66" concept="6" />
     </file>
     <file name="View_ActionGroup.java">
       <node id="885275291024029562" at="12,0,13,0" concept="16" trace="ID" />
@@ -14454,8 +14219,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/8870103444913327725">
     <file name="Ide_ApplicationPlugin.java">
-      <node id="8870103444913327725" at="170,56,171,51" concept="6" />
-      <node id="8870103444913327729" at="252,66,253,108" concept="6" />
+      <node id="8870103444913327725" at="169,56,170,51" concept="6" />
+      <node id="8870103444913327729" at="251,66,252,108" concept="6" />
     </file>
     <file name="StructurePopup_ActionGroup.java">
       <node id="8870103444913327725" at="12,0,13,0" concept="16" trace="ID" />
@@ -14608,7 +14373,7 @@
       <unit id="901628894098107140" at="28,0,128,0" name="jetbrains.mps.ide.actions.FindConceptInstances_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="901628894098107140" at="48,47,49,49" concept="6" />
+      <node id="901628894098107140" at="47,47,48,49" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/9164503229271455483">
@@ -14672,7 +14437,7 @@
       <unit id="9164503229271455483" at="21,0,66,0" name="jetbrains.mps.ide.actions.FixModuleImportsInProject_Action" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="9164503229271455483" at="54,60,55,54" concept="6" />
+      <node id="9164503229271455483" at="53,60,54,54" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/965654005418338549">
@@ -14777,8 +14542,8 @@
       <unit id="965654005418338549" at="26,0,97,0" name="jetbrains.mps.ide.actions.GoByReference_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="965654005418338549" at="141,56,142,50" concept="6" />
-      <node id="965654005418405438" at="206,66,207,106" concept="6" />
+      <node id="965654005418338549" at="140,56,141,50" concept="6" />
+      <node id="965654005418405438" at="205,66,206,106" concept="6" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)/971821636814863479">
@@ -14796,8 +14561,8 @@
       <unit id="971821636814863479" at="10,0,21,0" name="jetbrains.mps.ide.actions.EditorActionsAddition_ActionGroup" />
     </file>
     <file name="Ide_ApplicationPlugin.java">
-      <node id="971821636814863479" at="129,41,130,58" concept="6" />
-      <node id="971821636814863807" at="253,108,254,133" concept="6" />
+      <node id="971821636814863479" at="128,41,129,58" concept="6" />
+      <node id="971821636814863807" at="252,108,253,133" concept="6" />
     </file>
   </root>
 </debug-info>

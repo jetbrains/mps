@@ -6,6 +6,7 @@ import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import com.intellij.openapi.extensions.PluginId;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.ide.actions.SolutionActions_ActionGroup;
+import jetbrains.mps.ide.actions.ToolsInternal_ActionGroup;
 import jetbrains.mps.ide.actions.AnalyzeModule_ActionGroup;
 import jetbrains.mps.ide.actions.DevkitActions_ActionGroup;
 import jetbrains.mps.ide.actions.GeneratorNewActions_ActionGroup;
@@ -30,10 +31,12 @@ public class Workbench_ApplicationPlugin extends BaseApplicationPlugin {
   public void createGroups() {
     // actions w/o parameters
     addAction(new AnalyzeClasspath_Action());
+    addAction(new CalcClassifiersInRootsStatistic_Action());
     addAction(new ChangeMethodSignature_Action());
     addAction(new MigrateSourcesToMPS_Action());
     addAction(new NewModelFromSource_Action());
     // groups
+    addGroup(new AddToToolsInternal_ActionGroup(this));
     addGroup(new AnalyzeJavaActions_ActionGroup(this));
     addGroup(new ModelNewActions_ActionGroup(this));
     addGroup(new RefactoringAdditions_ActionGroup(this));
@@ -42,6 +45,7 @@ public class Workbench_ApplicationPlugin extends BaseApplicationPlugin {
   }
   public void adjustRegularGroups() {
     insertGroupIntoAnother(SolutionActionsEx_ActionGroup.ID, SolutionActions_ActionGroup.ID, SolutionActions_ActionGroup.LABEL_ID_contents);
+    insertGroupIntoAnother(AddToToolsInternal_ActionGroup.ID, ToolsInternal_ActionGroup.ID, null);
     insertGroupIntoAnother(TouchBarDefault_shift_ActionGroup.ID, jetbrains.mps.ide.actions.TouchBarDefault_shift_ActionGroup.ID, jetbrains.mps.ide.actions.TouchBarDefault_shift_ActionGroup.LABEL_ID_refactoring);
     insertGroupIntoAnother(AnalyzeJavaActions_ActionGroup.ID, AnalyzeModule_ActionGroup.ID, AnalyzeModule_ActionGroup.LABEL_ID_analyze);
     insertGroupIntoAnother(AnalyzeJavaActions_ActionGroup.ID, DevkitActions_ActionGroup.ID, DevkitActions_ActionGroup.LABEL_ID_analyze);

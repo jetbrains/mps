@@ -14,6 +14,239 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
+  <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/1366167984387690229">
+    <file name="CalcClassifiersInRootsStatistic_Action.java">
+      <node id="1366167984387690229" at="46,0,47,0" concept="11" trace="ICON" />
+      <node id="1366167984387690229" at="48,51,49,59" concept="13" />
+      <node id="1366167984387690229" at="49,59,50,35" concept="2" />
+      <node id="1366167984387690229" at="50,35,51,40" concept="2" />
+      <node id="1366167984387690229" at="54,32,55,16" concept="8" />
+      <node id="1366167984387690229" at="59,53,60,19" concept="8" />
+      <node id="9054606037493570920" at="62,5,63,66" concept="7" />
+      <node id="9054606037493570920" at="63,66,64,56" concept="2" />
+      <node id="9054606037493570921" at="65,22,66,21" concept="8" />
+      <node id="1366167984387690229" at="68,5,69,16" concept="8" />
+      <node id="1366167984387694191" at="72,96,73,58" concept="7" />
+      <node id="2689425074099081677" at="73,58,74,68" concept="7" />
+      <node id="2689425074099081642" at="74,68,75,0" concept="10" />
+      <node id="9054606037493534600" at="78,61,79,86" concept="7" />
+      <node id="9054606037493534616" at="80,108,81,130" concept="7" />
+      <node id="9054606037493725584" at="81,130,82,79" concept="2" />
+      <node id="9054606037493857870" at="83,65,84,58" concept="7" />
+      <node id="9054606037493878555" at="84,58,85,57" concept="7" />
+      <node id="9054606037493864627" at="85,57,86,92" concept="2" />
+      <node id="9054606037493900810" at="87,60,88,56" concept="2" />
+      <node id="1366167984387695200" at="89,74,90,35" concept="2" />
+      <node id="2689425074099081684" at="90,35,91,128" concept="2" />
+      <node id="9054606037493920503" at="92,15,93,33" concept="2" />
+      <node id="9054606037493911436" at="94,13,95,27" concept="2" />
+      <node id="9054606037493534773" at="96,11,97,26" concept="2" />
+      <node id="2166892372537032436" at="100,7,101,238" concept="2" />
+      <node id="9054606037493939099" at="103,98,104,122" concept="7" />
+      <node id="9054606037494002996" at="104,122,105,0" concept="10" />
+      <node id="9054606037493972711" at="105,0,106,43" concept="7" />
+      <node id="9054606037493939114" at="106,43,107,0" concept="10" />
+      <node id="9054606037493939115" at="107,0,108,119" concept="7" />
+      <node id="9054606037493939121" at="108,119,109,208" concept="7" />
+      <node id="9054606037493939136" at="109,208,110,0" concept="10" />
+      <node id="9054606037493983234" at="111,31,112,95" concept="2" />
+      <node id="9054606037493939155" at="113,5,114,0" concept="10" />
+      <node id="9054606037493939156" at="114,0,115,77" concept="7" />
+      <node id="9054606037493939173" at="117,37,118,68" concept="8" />
+      <node id="9054606037493939182" at="121,39,122,28" concept="8" />
+      <node id="9054606037493986071" at="125,56,126,176" concept="2" />
+      <node id="9054606037493939211" at="127,5,128,0" concept="10" />
+      <node id="9054606037493939212" at="128,0,129,121" concept="7" />
+      <node id="9054606037493939218" at="129,121,130,218" concept="7" />
+      <node id="9054606037493939233" at="130,218,131,0" concept="10" />
+      <node id="9054606037493988941" at="132,62,133,115" concept="2" />
+      <node id="9054606037493939254" at="134,5,135,0" concept="10" />
+      <node id="9054606037493990802" at="136,32,137,100" concept="2" />
+      <node id="2166892372537259803" at="139,26,140,157" concept="2" />
+      <node id="9054606037493943049" at="141,5,142,27" concept="8" />
+      <node id="1293684422392481164" at="144,113,145,0" concept="10" />
+      <node id="4270454500247937538" at="146,84,147,71" concept="7" />
+      <node id="1293684422392427498" at="147,71,148,0" concept="10" />
+      <node id="1366167984387696992" at="149,128,150,73" concept="7" />
+      <node id="1366167984387700528" at="151,77,152,105" concept="2" />
+      <node id="1293684422392461254" at="154,7,155,0" concept="10" />
+      <node id="1293684422393107487" at="155,0,156,18" concept="8" />
+      <node id="1293684422392478227" at="157,7,158,0" concept="10" />
+      <node id="1366167984387700561" at="158,0,159,18" concept="8" />
+      <node id="8774856961496010248" at="161,119,162,71" concept="7" />
+      <node id="8774856961496010257" at="162,71,163,0" concept="10" />
+      <node id="8774856961496010363" at="165,11,166,220" concept="2" />
+      <node id="2166892372537360675" at="167,29,168,168" concept="2" />
+      <node id="8774856961496010258" at="170,5,171,0" concept="10" />
+      <node id="8774856961496010260" at="171,0,172,18" concept="8" />
+      <node id="8774856961496010488" at="174,110,175,48" concept="7" />
+      <node id="8774856961496010559" at="176,9,177,21" concept="2" />
+      <node id="2166892372537467236" at="178,27,179,166" concept="2" />
+      <node id="8774856961496010531" at="180,15,181,52" concept="8" />
+      <node id="1366167984387690229" at="186,0,187,0" concept="11" trace="classifier$cxMr" />
+      <node id="1366167984387690229" at="190,0,191,0" concept="11" trace="ClassifierType$bL" />
+      <node id="1366167984387690229" at="191,0,192,0" concept="11" trace="BaseConcept$gP" />
+      <node id="1366167984387690229" at="58,95,61,5" concept="5" />
+      <node id="9054606037493570921" at="64,56,67,7" concept="5" />
+      <node id="9054606037493939137" at="110,0,113,5" concept="5" />
+      <node id="9054606037493939171" at="117,0,120,0" concept="6" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="9054606037493939180" at="121,0,124,0" concept="6" trace="accept#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
+      <node id="9054606037493939188" at="124,8,127,5" concept="5" />
+      <node id="9054606037493939234" at="131,0,134,5" concept="5" />
+      <node id="9054606037493939255" at="135,0,138,5" concept="5" />
+      <node id="9054606037493994721" at="138,5,141,5" concept="5" />
+      <node id="1366167984387700483" at="150,73,153,9" concept="5" />
+      <node id="1366167984387690229" at="53,0,57,0" concept="6" trace="isDumbAware#()Z" />
+      <node id="9054606037493534672" at="88,56,92,15" concept="4" />
+      <node id="1366167984387690229" at="48,0,53,0" concept="1" trace="CalcClassifiersInRootsStatistic_Action#()V" />
+      <node id="8774856961496010305" at="164,42,169,7" concept="14" />
+      <node id="1366167984387696950" at="148,0,154,7" concept="4" />
+      <node id="9054606037493570920" at="61,5,68,5" concept="0" />
+      <node id="8774856961496010263" at="163,0,170,5" concept="4" />
+      <node id="8774856961496010480" at="175,48,182,5" concept="14" />
+      <node id="9054606037493534662" at="86,92,94,13" concept="4" />
+      <node id="9054606037493939163" at="115,77,124,8" concept="2" />
+      <node id="8774856961496010471" at="174,0,184,0" concept="6" trace="calculateElapsedTime#(Ljetbrains/mps/baseLanguage/closures/runtime/_FunctionTypes/_void_P0_E0;Ljava/util/Map;)J" />
+      <node id="1366167984387700518" at="145,0,157,7" concept="7" />
+      <node id="8774856961496010234" at="161,0,174,0" concept="6" trace="calcAllMembersOfClassifiers#(Ljava/lang/Iterable;Ljava/util/Map;)Ljava/util/List;" />
+      <node id="1366167984387690229" at="57,0,71,0" concept="6" trace="collectActionData#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)Z" />
+      <node id="9054606037493657712" at="82,79,96,11" concept="4" />
+      <node id="1366167984387695269" at="144,0,161,0" concept="6" trace="calcAllClassifierTypesInRoot#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/Map;)Ljava/util/List;" />
+      <node id="9054606037493534606" at="79,86,98,11" concept="2" />
+      <node id="9054606037493534593" at="77,0,100,0" concept="6" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
+      <node id="9054606037493534579" at="75,0,100,7" concept="2" />
+      <node id="1366167984387690229" at="71,0,103,0" concept="6" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="9054606037493930429" at="103,0,144,0" concept="6" trace="analyzeClassifiersInRoot#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/Map;)J" />
+      <scope id="1366167984387690229" at="54,32,55,16" />
+      <scope id="1366167984387690229" at="59,53,60,19" />
+      <scope id="9054606037493570921" at="65,22,66,21" />
+      <scope id="9054606037493939138" at="111,31,112,95" />
+      <scope id="9054606037493939172" at="117,37,118,68" />
+      <scope id="9054606037493939181" at="121,39,122,28" />
+      <scope id="9054606037493939189" at="125,56,126,176" />
+      <scope id="9054606037493939235" at="132,62,133,115" />
+      <scope id="9054606037493939256" at="136,32,137,100" />
+      <scope id="9054606037493994723" at="139,26,140,157" />
+      <scope id="1366167984387700484" at="151,77,152,105" />
+      <scope id="8774856961496010306" at="165,11,166,220" />
+      <scope id="8774856961496010310" at="167,29,168,168" />
+      <scope id="8774856961496010481" at="176,9,177,21" />
+      <scope id="8774856961496010495" at="178,27,179,166" />
+      <scope id="8774856961496010482" at="180,15,181,52" />
+      <scope id="9054606037493534674" at="89,74,91,128" />
+      <scope id="8774856961496010307" at="167,7,169,7">
+        <var name="e" id="8774856961496010308" />
+      </scope>
+      <scope id="8774856961496010492" at="178,5,180,5">
+        <var name="e" id="8774856961496010493" />
+      </scope>
+      <scope id="1366167984387690229" at="48,51,51,40" />
+      <scope id="9054606037493939171" at="117,0,120,0">
+        <var name="it" id="9054606037493939171" />
+      </scope>
+      <scope id="9054606037493939180" at="121,0,124,0">
+        <var name="it" id="9054606037493939180" />
+      </scope>
+      <scope id="1366167984387690229" at="53,0,57,0" />
+      <scope id="9054606037493534672" at="88,56,92,15">
+        <var name="node" id="9054606037493534673" />
+      </scope>
+      <scope id="1366167984387696951" at="149,128,153,9">
+        <var name="type" id="1366167984387696993" />
+      </scope>
+      <scope id="1366167984387690229" at="48,0,53,0" />
+      <scope id="9054606037493570920" at="62,5,67,7">
+        <var name="p" id="9054606037493570920" />
+      </scope>
+      <scope id="8774856961496010264" at="164,42,169,7" />
+      <scope id="9054606037493534664" at="87,60,93,33" />
+      <scope id="1366167984387696950" at="148,0,154,7">
+        <var name="node" id="1366167984387696953" />
+      </scope>
+      <scope id="8774856961496010263" at="163,0,170,5">
+        <var name="classifier" id="8774856961496010266" />
+      </scope>
+      <scope id="9054606037493534662" at="86,92,94,13">
+        <var name="m" id="9054606037493534663" />
+      </scope>
+      <scope id="8774856961496010473" at="174,110,182,5">
+        <var name="startTime" id="8774856961496010489" />
+      </scope>
+      <scope id="1293684422392460981" at="146,84,156,18">
+        <var name="list" id="4270454500247937539" />
+      </scope>
+      <scope id="8774856961496010471" at="174,0,184,0">
+        <var name="_params" id="8774856961496010471" />
+        <var name="toRun" id="8774856961496010475" />
+      </scope>
+      <scope id="1366167984387690229" at="58,95,69,16" />
+      <scope id="8774856961496010236" at="161,119,172,18">
+        <var name="result" id="8774856961496010249" />
+      </scope>
+      <scope id="9054606037493657716" at="83,65,95,27">
+        <var name="models" id="9054606037493878556" />
+        <var name="subTask" id="9054606037493857871" />
+      </scope>
+      <scope id="8774856961496010234" at="161,0,174,0">
+        <var name="_params" id="8774856961496010234" />
+        <var name="classifiers" id="8774856961496010239" />
+      </scope>
+      <scope id="1366167984387690229" at="57,0,71,0">
+        <var name="_params" id="1366167984387690229" />
+        <var name="event" id="1366167984387690229" />
+      </scope>
+      <scope id="9054606037493657712" at="82,79,96,11">
+        <var name="module" id="9054606037493657714" />
+      </scope>
+      <scope id="1366167984387695271" at="144,113,159,18">
+        <var name="result" id="1366167984387700519" />
+      </scope>
+      <scope id="9054606037493534615" at="80,108,97,26">
+        <var name="modules" id="9054606037493534617" />
+      </scope>
+      <scope id="1366167984387695269" at="144,0,161,0">
+        <var name="_params" id="1366167984387695269" />
+        <var name="rootNode" id="1366167984387695275" />
+      </scope>
+      <scope id="9054606037493534599" at="78,61,98,11">
+        <var name="progress" id="9054606037493534601" />
+      </scope>
+      <scope id="9054606037493534593" at="77,0,100,0">
+        <var name="indicator" id="9054606037493534596" />
+      </scope>
+      <scope id="1366167984387690229" at="72,96,101,238">
+        <var name="membersOverallTime" id="2689425074099081678" />
+        <var name="rootsCount" id="1366167984387694192" />
+      </scope>
+      <scope id="1366167984387690229" at="71,0,103,0">
+        <var name="_params" id="1366167984387690229" />
+        <var name="event" id="1366167984387690229" />
+      </scope>
+      <scope id="9054606037493930431" at="103,98,142,27">
+        <var name="classifiers" id="9054606037493939157" />
+        <var name="members" id="9054606037493939213" />
+        <var name="membersCalcTime" id="9054606037493939219" />
+        <var name="nodeName" id="9054606037493939100" />
+        <var name="sb" id="9054606037493972712" />
+        <var name="types" id="9054606037493939116" />
+        <var name="typesCalcTime" id="9054606037493939122" />
+      </scope>
+      <scope id="9054606037493930429" at="103,0,144,0">
+        <var name="_params" id="9054606037493930429" />
+        <var name="node" id="9054606037493938242" />
+      </scope>
+      <unit id="1366167984387690229" at="185,0,188,0" name="jetbrains.mps.java.workbench.actions.CalcClassifiersInRootsStatistic_Action$LINKS" />
+      <unit id="9054606037493939171" at="116,95,120,5" name="jetbrains.mps.java.workbench.actions.CalcClassifiersInRootsStatistic_Action$2" />
+      <unit id="9054606037493939180" at="120,17,124,5" name="jetbrains.mps.java.workbench.actions.CalcClassifiersInRootsStatistic_Action$3" />
+      <unit id="1366167984387690229" at="189,0,193,0" name="jetbrains.mps.java.workbench.actions.CalcClassifiersInRootsStatistic_Action$CONCEPTS" />
+      <unit id="9054606037493534585" at="76,42,100,5" name="jetbrains.mps.java.workbench.actions.CalcClassifiersInRootsStatistic_Action$1" />
+      <unit id="1366167984387690229" at="45,0,194,0" name="jetbrains.mps.java.workbench.actions.CalcClassifiersInRootsStatistic_Action" />
+    </file>
+    <file name="Workbench_ApplicationPlugin.java">
+      <node id="1366167984387690229" at="33,45,34,60" concept="2" />
+    </file>
+  </root>
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/1366781238034254898">
     <file name="SolutionActionsEx_ActionGroup.java">
       <node id="1366781238034254898" at="10,0,11,0" concept="11" trace="ID" />
@@ -29,8 +262,27 @@
       <unit id="1366781238034254898" at="9,0,19,0" name="jetbrains.mps.java.workbench.actions.SolutionActionsEx_ActionGroup" />
     </file>
     <file name="Workbench_ApplicationPlugin.java">
-      <node id="1366781238034254898" at="39,57,40,54" concept="2" />
-      <node id="1366781238034254901" at="43,37,44,140" concept="2" />
+      <node id="1366781238034254898" at="42,57,43,54" concept="2" />
+      <node id="1366781238034254901" at="46,37,47,140" concept="2" />
+    </file>
+  </root>
+  <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/2166892372538532042">
+    <file name="AddToToolsInternal_ActionGroup.java">
+      <node id="2166892372538532042" at="10,0,11,0" concept="11" trace="ID" />
+      <node id="2166892372538532042" at="12,76,13,44" concept="13" />
+      <node id="2166892372538532042" at="13,44,14,25" concept="2" />
+      <node id="2166892372538532042" at="14,25,15,20" concept="2" />
+      <node id="2166892372538532049" at="15,20,16,129" concept="2" />
+      <node id="2166892372538532042" at="12,0,18,0" concept="1" trace="AddToToolsInternal_ActionGroup#(Ljetbrains/mps/workbench/action/ApplicationPlugin;)V" />
+      <scope id="2166892372538532042" at="12,76,16,129" />
+      <scope id="2166892372538532042" at="12,0,18,0">
+        <var name="plugin" id="2166892372538532042" />
+      </scope>
+      <unit id="2166892372538532042" at="9,0,19,0" name="jetbrains.mps.java.workbench.actions.AddToToolsInternal_ActionGroup" />
+    </file>
+    <file name="Workbench_ApplicationPlugin.java">
+      <node id="2166892372538532042" at="38,13,39,55" concept="2" />
+      <node id="2166892372538532051" at="47,140,48,98" concept="2" />
     </file>
   </root>
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/3201523885428184061">
@@ -48,8 +300,8 @@
       <unit id="3201523885428184061" at="9,0,19,0" name="jetbrains.mps.java.workbench.actions.TouchBarDefault_shift_ActionGroup" />
     </file>
     <file name="Workbench_ApplicationPlugin.java">
-      <node id="3201523885428184061" at="40,54,41,58" concept="2" />
-      <node id="3201523885428184063" at="44,140,45,211" concept="2" />
+      <node id="3201523885428184061" at="43,54,44,58" concept="2" />
+      <node id="3201523885428184063" at="48,98,49,211" concept="2" />
     </file>
   </root>
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/3425276961666029085">
@@ -67,9 +319,9 @@
       <unit id="3425276961666029085" at="9,0,19,0" name="jetbrains.mps.java.workbench.actions.AnalyzeJavaActions_ActionGroup" />
     </file>
     <file name="Workbench_ApplicationPlugin.java">
-      <node id="3425276961666029085" at="36,13,37,55" concept="2" />
-      <node id="6447892490729371780" at="45,211,46,136" concept="2" />
-      <node id="7336160197133174331" at="46,136,47,136" concept="2" />
+      <node id="3425276961666029085" at="39,55,40,55" concept="2" />
+      <node id="6447892490729371780" at="49,211,50,136" concept="2" />
+      <node id="7336160197133174331" at="50,136,51,136" concept="2" />
     </file>
   </root>
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/4326588611400156604">
@@ -182,7 +434,7 @@
       <unit id="4326588611400156604" at="33,0,109,0" name="jetbrains.mps.java.workbench.actions.MigrateSourcesToMPS_Action" />
     </file>
     <file name="Workbench_ApplicationPlugin.java">
-      <node id="4326588611400156604" at="33,50,34,48" concept="2" />
+      <node id="4326588611400156604" at="35,50,36,48" concept="2" />
     </file>
   </root>
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/4344673790103579342">
@@ -375,8 +627,8 @@
       <unit id="6812098398776640295" at="9,0,19,0" name="jetbrains.mps.java.workbench.actions.RefactoringAdditions_ActionGroup" />
     </file>
     <file name="Workbench_ApplicationPlugin.java">
-      <node id="6812098398776640295" at="38,52,39,57" concept="2" />
-      <node id="6812098398776640296" at="47,136,48,136" concept="2" />
+      <node id="6812098398776640295" at="41,52,42,57" concept="2" />
+      <node id="6812098398776640296" at="51,136,52,136" concept="2" />
     </file>
   </root>
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/6812098398776640299">
@@ -506,7 +758,7 @@
       <unit id="6812098398776640299" at="33,0,134,0" name="jetbrains.mps.java.workbench.actions.ChangeMethodSignature_Action" />
     </file>
     <file name="Workbench_ApplicationPlugin.java">
-      <node id="6812098398776640299" at="32,45,33,50" concept="2" />
+      <node id="6812098398776640299" at="34,60,35,50" concept="2" />
     </file>
   </root>
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/6812098398776640439">
@@ -731,7 +983,7 @@
       <unit id="6812098398776640802" at="7,0,17,0" name="jetbrains.mps.java.workbench.actions.Default_KeymapChanges" />
     </file>
     <file name="Workbench_ApplicationPlugin.java">
-      <node id="6812098398776640802" at="54,92,55,71" concept="2" />
+      <node id="6812098398776640802" at="58,92,59,71" concept="2" />
     </file>
   </root>
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/6930463558351181264">
@@ -952,7 +1204,7 @@
       <unit id="6930463558351181264" at="48,0,201,0" name="jetbrains.mps.java.workbench.actions.NewModelFromSource_Action" />
     </file>
     <file name="Workbench_ApplicationPlugin.java">
-      <node id="6930463558351181264" at="34,48,35,47" concept="2" />
+      <node id="6930463558351181264" at="36,48,37,47" concept="2" />
     </file>
   </root>
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/6930463558351181815">
@@ -970,10 +1222,10 @@
       <unit id="6930463558351181815" at="9,0,19,0" name="jetbrains.mps.java.workbench.actions.ModelNewActions_ActionGroup" />
     </file>
     <file name="Workbench_ApplicationPlugin.java">
-      <node id="6930463558351181815" at="37,55,38,52" concept="2" />
-      <node id="1366781238034273714" at="48,136,49,146" concept="2" />
-      <node id="1366781238034273716" at="49,146,50,144" concept="2" />
-      <node id="1366781238034273717" at="50,144,51,144" concept="2" />
+      <node id="6930463558351181815" at="40,55,41,52" concept="2" />
+      <node id="1366781238034273714" at="52,136,53,146" concept="2" />
+      <node id="1366781238034273716" at="53,146,54,144" concept="2" />
+      <node id="1366781238034273717" at="54,144,55,144" concept="2" />
     </file>
   </root>
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/7450207211691129644">
@@ -1151,30 +1403,30 @@
   </root>
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/7964063261668877367">
     <file name="Workbench_ApplicationPlugin.java">
-      <node id="7964063261668877367" at="20,0,21,0" concept="3" trace="myId" />
-      <node id="7964063261668877367" at="26,27,27,16" concept="8" />
-      <node id="7964063261668877367" at="30,30,31,29" concept="9" />
-      <node id="7964063261668877367" at="35,47,36,13" concept="9" />
-      <node id="7964063261668877367" at="53,48,54,92" concept="7" />
-      <node id="7964063261668877367" at="55,71,56,15" concept="8" />
-      <node id="7964063261668877367" at="22,0,24,0" concept="1" trace="Workbench_ApplicationPlugin#()V" />
-      <node id="7964063261668877367" at="25,0,29,0" concept="6" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
-      <node id="7964063261668877367" at="53,0,58,0" concept="6" trace="initKeymaps#()Ljava/util/List;" />
-      <node id="7964063261668877367" at="43,0,53,0" concept="6" trace="adjustRegularGroups#()V" />
-      <node id="7964063261668877367" at="30,0,43,0" concept="6" trace="createGroups#()V" />
-      <scope id="7964063261668877367" at="22,40,22,40" />
-      <scope id="7964063261668877367" at="26,27,27,16" />
-      <scope id="7964063261668877367" at="22,0,24,0" />
-      <scope id="7964063261668877367" at="53,48,56,15">
+      <node id="7964063261668877367" at="21,0,22,0" concept="3" trace="myId" />
+      <node id="7964063261668877367" at="27,27,28,16" concept="8" />
+      <node id="7964063261668877367" at="31,30,32,29" concept="9" />
+      <node id="7964063261668877367" at="37,47,38,13" concept="9" />
+      <node id="7964063261668877367" at="57,48,58,92" concept="7" />
+      <node id="7964063261668877367" at="59,71,60,15" concept="8" />
+      <node id="7964063261668877367" at="23,0,25,0" concept="1" trace="Workbench_ApplicationPlugin#()V" />
+      <node id="7964063261668877367" at="26,0,30,0" concept="6" trace="getId#()Lcom/intellij/openapi/extensions/PluginId;" />
+      <node id="7964063261668877367" at="57,0,62,0" concept="6" trace="initKeymaps#()Ljava/util/List;" />
+      <node id="7964063261668877367" at="46,0,57,0" concept="6" trace="adjustRegularGroups#()V" />
+      <node id="7964063261668877367" at="31,0,46,0" concept="6" trace="createGroups#()V" />
+      <scope id="7964063261668877367" at="23,40,23,40" />
+      <scope id="7964063261668877367" at="27,27,28,16" />
+      <scope id="7964063261668877367" at="23,0,25,0" />
+      <scope id="7964063261668877367" at="57,48,60,15">
         <var name="res" id="7964063261668877367" />
       </scope>
-      <scope id="7964063261668877367" at="25,0,29,0" />
-      <scope id="7964063261668877367" at="53,0,58,0" />
-      <scope id="7964063261668877367" at="43,37,51,144" />
-      <scope id="7964063261668877367" at="43,0,53,0" />
-      <scope id="7964063261668877367" at="30,30,41,58" />
-      <scope id="7964063261668877367" at="30,0,43,0" />
-      <unit id="7964063261668877367" at="19,0,59,0" name="jetbrains.mps.java.workbench.actions.Workbench_ApplicationPlugin" />
+      <scope id="7964063261668877367" at="26,0,30,0" />
+      <scope id="7964063261668877367" at="57,0,62,0" />
+      <scope id="7964063261668877367" at="46,37,55,144" />
+      <scope id="7964063261668877367" at="46,0,57,0" />
+      <scope id="7964063261668877367" at="31,30,44,58" />
+      <scope id="7964063261668877367" at="31,0,46,0" />
+      <unit id="7964063261668877367" at="20,0,63,0" name="jetbrains.mps.java.workbench.actions.Workbench_ApplicationPlugin" />
     </file>
     <file name="startup.properties">
       <unit id="7964063261668877367" at="1,0,5,0" name="jetbrains.mps.java.workbench.actions.startup" />
@@ -1235,7 +1487,7 @@
       <unit id="8847793363053922247" at="17,0,57,0" name="jetbrains.mps.java.workbench.actions.AnalyzeClasspath_Action" />
     </file>
     <file name="Workbench_ApplicationPlugin.java">
-      <node id="8847793363053922247" at="31,29,32,45" concept="2" />
+      <node id="8847793363053922247" at="32,29,33,45" concept="2" />
     </file>
   </root>
 </debug-info>
