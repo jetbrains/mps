@@ -36,7 +36,7 @@ public class InternalTestSuite extends OutputWatchingTestSuite {
   private static IdeaEnvironment ourEnvironment;
 
   static {
-    ourEnvironment = new IdeaEnvironment(EnvironmentConfig.defaultConfig().withVcsPlugin().withBuildPlugin().withTestModeOn());
+    ourEnvironment = new IdeaEnvironment(EnvironmentConfig.defaultConfig().withAutomaticPluginDiscovery()/*.withVcsPlugin().withBuildPlugin()*/.withTestModeOn());
     ourEnvironment.init();
   }
 

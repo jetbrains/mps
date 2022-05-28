@@ -17,7 +17,6 @@ package jetbrains.mps.smodel;
 
 import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.application.ModalityInvokator;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.TransactionGuard;
 import com.intellij.openapi.application.TransactionGuardImpl;
@@ -155,25 +154,35 @@ final class EDTExecutorInternal implements Disposable {
       LOG.trace("flushing the queue: " + callersString() + " : context transaction " + TransactionGuard.getInstance().getContextTransaction());
     }
     // here we are tricking IJ modality policy
+    // Application.invokeLater() does 2 basic steps: myTransactionGuard.wrapLaterInvocation() and LaterInvocator.invokeLater,
+    // both with the same modality. Runnable wrap of LI.invokeLater grabs write (well, write intent), but wrap of transaction guard
+    // doesn't set myWritingAllowed unless it already had 'write' mode when active modality started (see TGI.enterModality).
+    // Implementation of TGI suggests that NON_MODAL facilitates myWritingAllowed, therefore we tick it to think our runnable code
+    // always goes as NON-MODAL for myWritingAllowed, but force LI to run it regardless of actual modality state with MS.any()
+    // (i.e. to run it in EDT ASAP)
+    // XXX I wonder if I could use TransactionGuard.submitTransaction or directly
+    //     AppUiExecutor.onUiThread().later().expireWith(myExpiredCondition).execute(wrapped);
     TransactionGuardImpl guard = (TransactionGuardImpl) TransactionGuard.getInstance();
     Runnable wrapped = guaranteeWriteSafetyViaHack(guard);
-    ModalityInvokator invokator = ApplicationManager.getApplication().getInvokator();
-    invokator.invokeLater(wrapped, ModalityState.any(), myExpiredCondition)
-             .doWhenRejected(() -> LOG.error("Execution has been rejected"))
-             .doWhenProcessed(() -> {
-               LOG.trace("doing when processed");
-               if (myDisposed) return;
-               try (CloseableLock ignored = myLock.lock()) {
-                 if (myTaskQueue.isEmpty()) {
-                   LOG.debug("FlushIsScheduled is OFF");
-                   myFlushIsScheduled = false;
-                   signalQueueWasEmpty();
-                   return;
-                 }
-               }
-               LOG.trace("flushing the queue again");
-               scheduleFlushInEDT(); // because the flag is still on
-             });
+    Runnable edtRunnable = () -> {
+      wrapped.run();
+      LOG.trace("doing when processed");
+      if (myDisposed) return;
+      try (CloseableLock ignored = myLock.lock()) {
+        if (myTaskQueue.isEmpty()) {
+          LOG.debug("FlushIsScheduled is OFF");
+          myFlushIsScheduled = false;
+          signalQueueWasEmpty();
+          return;
+        }
+      }
+      LOG.trace("flushing the queue again");
+      scheduleFlushInEDT(); // because the flag is still on
+    };
+    ApplicationManager.getApplication().invokeLater(edtRunnable, ModalityState.any(), myExpiredCondition);
+//             .doWhenRejected(() -> LOG.error("Execution has been rejected"))
+//             .doWhenProcessed(() -> {
+//             });
   }
 
   /**
