@@ -59,6 +59,7 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<Boolean> isReturnsVoid_idhX_$1pM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isReturnsVoid").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hX_$1pM").build();
   public static final SMethod<String> getParametersPresentation_idhEwIAYw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getParametersPresentation").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIAYw").build();
   public static final SMethod<String> getPresentation_idhEwIMiw = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIMiw").build();
+  public static final SMethod<SNode> getBaseOrSelf_idpWw8KNYVCx = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBaseOrSelf").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("pWw8KNYVCx").build();
   public static final SMethod<SNode> getBaseMethod_id4mmymf_0z7l = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getBaseMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4mmymf_0z7l").build();
   public static final SMethod<SNode> getNearestOverriddenMethod_id4DuBHEkPTzU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNearestOverriddenMethod").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4DuBHEkPTzU").build();
   public static final SMethod<SNode> getMethodToImplement_id3RE744JWbF = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMethodToImplement").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3RE744JWbF").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
@@ -84,7 +85,7 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<Void> markLoadedNodeAsDeprecated_id5H8W9_EDFVg = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("markLoadedNodeAsDeprecated").modifiers(1, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5H8W9_EDFVg").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> canProvideInferenceContext_idJiVENj$Z0y = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canProvideInferenceContext").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("JiVENj$Z0y").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, isDataFlowChecked_idhRptrfk, canBeAnnotated_idhWp4PwP, getExpectedRetType_idi2fhBNC, isImplementation_id19gBtYEvixA, getBody_idi2fhZ_m, getChildrenToDisplayIntention_id3vsDNFqJVhw, isReturnsVoid_idhX_$1pM, getParametersPresentation_idhEwIAYw, getPresentation_idhEwIMiw, getBaseMethod_id4mmymf_0z7l, getNearestOverriddenMethod_id4DuBHEkPTzU, getMethodToImplement_id3RE744JWbF, hasSameParameters_idJuSt8W4$Q2, hasSameSignature_idhEwIB0z, getErasureSignature_id2t8d$bukubq, isAbstract_idhWjv7RO, hasBody_id10BRnhak8m8, hasVisibility_id1X7GQqyPHmE, isAnAbstractMethod_id28P2dHxCoRl, getTypeAnnotation_idhXbqSv6, jniSignature_id7F81Cd2CcPY, getThrowableTypes_id5op8ooRkkc7, hasAnnotation_id4LgT5De$Kd_, hasAnnotation_id3WDGf12DPy8, getTraceableProperty_id4pl5GY7LKmH, getScopeVariables_id4pl5GY7LKmA, getScope_id52_Geb4QDV$, getTypeApplicationParameters_id7bu6bIyR2DR, getInferrableTypeVars_id5W9RYt5baxk, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, markLoadedNodeAsDeprecated_id5H8W9_EDFVg, canProvideInferenceContext_idJiVENj$Z0y);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIconMarks_id6TtJ6IUkhQJ, isDataFlowChecked_idhRptrfk, canBeAnnotated_idhWp4PwP, getExpectedRetType_idi2fhBNC, isImplementation_id19gBtYEvixA, getBody_idi2fhZ_m, getChildrenToDisplayIntention_id3vsDNFqJVhw, isReturnsVoid_idhX_$1pM, getParametersPresentation_idhEwIAYw, getPresentation_idhEwIMiw, getBaseOrSelf_idpWw8KNYVCx, getBaseMethod_id4mmymf_0z7l, getNearestOverriddenMethod_id4DuBHEkPTzU, getMethodToImplement_id3RE744JWbF, hasSameParameters_idJuSt8W4$Q2, hasSameSignature_idhEwIB0z, getErasureSignature_id2t8d$bukubq, isAbstract_idhWjv7RO, hasBody_id10BRnhak8m8, hasVisibility_id1X7GQqyPHmE, isAnAbstractMethod_id28P2dHxCoRl, getTypeAnnotation_idhXbqSv6, jniSignature_id7F81Cd2CcPY, getThrowableTypes_id5op8ooRkkc7, hasAnnotation_id4LgT5De$Kd_, hasAnnotation_id3WDGf12DPy8, getTraceableProperty_id4pl5GY7LKmH, getScopeVariables_id4pl5GY7LKmA, getScope_id52_Geb4QDV$, getTypeApplicationParameters_id7bu6bIyR2DR, getInferrableTypeVars_id5W9RYt5baxk, markDeprecated_id6Va_BJexupi, unmarkDeprecated_id6Va_BJex$aE, markLoadedNodeAsDeprecated_id5H8W9_EDFVg, canProvideInferenceContext_idJiVENj$Z0y);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -159,6 +160,13 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
     }
     return result.toString();
   }
+  /*package*/ static SNode getBaseOrSelf_idpWw8KNYVCx(@NotNull SNode __thisNode__) {
+    SNode baseMethod = BaseMethodDeclaration__BehaviorDescriptor.getBaseMethod_id4mmymf_0z7l.invoke(__thisNode__);
+    if (baseMethod != null) {
+      return baseMethod;
+    }
+    return __thisNode__;
+  }
   /*package*/ static SNode getBaseMethod_id4mmymf_0z7l(@NotNull SNode __thisNode__) {
     SNode result = BaseMethodDeclaration__BehaviorDescriptor.getNearestOverriddenMethod_id4DuBHEkPTzU.invoke(__thisNode__);
     if ((result == null)) {
@@ -182,8 +190,8 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
       return false;
     }
     for (int i = 0; i < ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).count(); i++) {
-      String searchedParamType = check_tq0gdw_a0a0b0n(check_tq0gdw_a0a0a1a31(ListSequence.fromList(SLinkOperations.getChildren(checked, LINKS.parameter$5xBj)).getElement(i)));
-      String foundParamType = check_tq0gdw_a0b0b0n(check_tq0gdw_a0a1a1a31(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).getElement(i)));
+      String searchedParamType = check_tq0gdw_a0a0b0o(check_tq0gdw_a0a0a1a41(ListSequence.fromList(SLinkOperations.getChildren(checked, LINKS.parameter$5xBj)).getElement(i)));
+      String foundParamType = check_tq0gdw_a0b0b0o(check_tq0gdw_a0a1a1a41(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$5xBj)).getElement(i)));
       if (searchedParamType == null || foundParamType == null) {
         return false;
       }
@@ -303,7 +311,7 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
         }
       } else if (actualArgs == formalParams) {
         // array may be passed as value for vararg
-        ListSequence.fromList(result).addElement(_quotation_createNode_tq0gdw_a0a1a0d0d0cb(SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(last, CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi)), SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(last, CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi))));
+        ListSequence.fromList(result).addElement(_quotation_createNode_tq0gdw_a0a1a0d0d0db(SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(last, CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi)), SNodeOperations.copyNode(SLinkOperations.getTarget(SNodeOperations.cast(last, CONCEPTS.VariableArityType$KF), LINKS.componentType$ypmi))));
       }
     }
 
@@ -399,52 +407,54 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
       case 9:
         return (T) ((String) getPresentation_idhEwIMiw(node));
       case 10:
-        return (T) ((SNode) getBaseMethod_id4mmymf_0z7l(node));
+        return (T) ((SNode) getBaseOrSelf_idpWw8KNYVCx(node));
       case 11:
-        return (T) ((SNode) getNearestOverriddenMethod_id4DuBHEkPTzU(node));
+        return (T) ((SNode) getBaseMethod_id4mmymf_0z7l(node));
       case 12:
-        return (T) ((SNode) getMethodToImplement_id3RE744JWbF(node, (SNode) parameters[0]));
+        return (T) ((SNode) getNearestOverriddenMethod_id4DuBHEkPTzU(node));
       case 13:
-        return (T) ((Boolean) hasSameParameters_idJuSt8W4$Q2(node, (SNode) parameters[0]));
+        return (T) ((SNode) getMethodToImplement_id3RE744JWbF(node, (SNode) parameters[0]));
       case 14:
-        return (T) ((Boolean) hasSameSignature_idhEwIB0z(node, (SNode) parameters[0]));
+        return (T) ((Boolean) hasSameParameters_idJuSt8W4$Q2(node, (SNode) parameters[0]));
       case 15:
-        return (T) ((String) getErasureSignature_id2t8d$bukubq(node));
+        return (T) ((Boolean) hasSameSignature_idhEwIB0z(node, (SNode) parameters[0]));
       case 16:
-        return (T) ((Boolean) isAbstract_idhWjv7RO(node));
+        return (T) ((String) getErasureSignature_id2t8d$bukubq(node));
       case 17:
-        return (T) ((Boolean) hasBody_id10BRnhak8m8(node));
+        return (T) ((Boolean) isAbstract_idhWjv7RO(node));
       case 18:
-        return (T) ((Boolean) hasVisibility_id1X7GQqyPHmE(node));
+        return (T) ((Boolean) hasBody_id10BRnhak8m8(node));
       case 19:
-        return (T) ((Boolean) isAnAbstractMethod_id28P2dHxCoRl(node));
+        return (T) ((Boolean) hasVisibility_id1X7GQqyPHmE(node));
       case 20:
-        return (T) ((SNode) getTypeAnnotation_idhXbqSv6(node));
+        return (T) ((Boolean) isAnAbstractMethod_id28P2dHxCoRl(node));
       case 21:
-        return (T) ((String) jniSignature_id7F81Cd2CcPY(node));
+        return (T) ((SNode) getTypeAnnotation_idhXbqSv6(node));
       case 22:
-        return (T) ((List<SNode>) getThrowableTypes_id5op8ooRkkc7(node));
+        return (T) ((String) jniSignature_id7F81Cd2CcPY(node));
       case 23:
-        return (T) ((Boolean) hasAnnotation_id4LgT5De$Kd_(node, (SNode) parameters[0]));
+        return (T) ((List<SNode>) getThrowableTypes_id5op8ooRkkc7(node));
       case 24:
-        return (T) ((Boolean) hasAnnotation_id3WDGf12DPy8(node, (SNodeReference) parameters[0]));
+        return (T) ((Boolean) hasAnnotation_id4LgT5De$Kd_(node, (SNode) parameters[0]));
       case 25:
-        return (T) ((String) getTraceableProperty_id4pl5GY7LKmH(node));
+        return (T) ((Boolean) hasAnnotation_id3WDGf12DPy8(node, (SNodeReference) parameters[0]));
       case 26:
-        return (T) ((List<SNode>) getScopeVariables_id4pl5GY7LKmA(node));
+        return (T) ((String) getTraceableProperty_id4pl5GY7LKmH(node));
       case 27:
-        return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
+        return (T) ((List<SNode>) getScopeVariables_id4pl5GY7LKmA(node));
       case 28:
-        return (T) ((List<SNode>) getTypeApplicationParameters_id7bu6bIyR2DR(node, ((int) (Integer) parameters[0])));
+        return (T) ((Scope) getScope_id52_Geb4QDV$(node, (SAbstractConcept) parameters[0], (SNode) parameters[1]));
       case 29:
-        return (T) ((List<SNode>) getInferrableTypeVars_id5W9RYt5baxk(node));
+        return (T) ((List<SNode>) getTypeApplicationParameters_id7bu6bIyR2DR(node, ((int) (Integer) parameters[0])));
       case 30:
+        return (T) ((List<SNode>) getInferrableTypeVars_id5W9RYt5baxk(node));
+      case 31:
         markDeprecated_id6Va_BJexupi(node);
         return null;
-      case 31:
+      case 32:
         unmarkDeprecated_id6Va_BJex$aE(node);
         return null;
-      case 33:
+      case 34:
         return (T) ((Boolean) canProvideInferenceContext_idJiVENj$Z0y(node, (SNode) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
@@ -458,7 +468,7 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
       throw new BHMethodNotFoundException(this, method);
     }
     switch (methodIndex) {
-      case 32:
+      case 33:
         markLoadedNodeAsDeprecated_id5H8W9_EDFVg(concept, (SNode) parameters[0]);
         return null;
       default:
@@ -477,31 +487,31 @@ public final class BaseMethodDeclaration__BehaviorDescriptor extends BaseBHDescr
   public SAbstractConcept getConcept() {
     return CONCEPT;
   }
-  private static String check_tq0gdw_a0a0b0n(SNode checkedDotOperand) {
+  private static String check_tq0gdw_a0a0b0o(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return Type__BehaviorDescriptor.getErasureSignature_idhEwIzNx.invoke(checkedDotOperand);
     }
     return null;
   }
-  private static SNode check_tq0gdw_a0a0a1a31(SNode checkedDotOperand) {
+  private static SNode check_tq0gdw_a0a0a1a41(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SLinkOperations.getTarget(checkedDotOperand, LINKS.type$a1UY);
     }
     return null;
   }
-  private static String check_tq0gdw_a0b0b0n(SNode checkedDotOperand) {
+  private static String check_tq0gdw_a0b0b0o(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return Type__BehaviorDescriptor.getErasureSignature_idhEwIzNx.invoke(checkedDotOperand);
     }
     return null;
   }
-  private static SNode check_tq0gdw_a0a1a1a31(SNode checkedDotOperand) {
+  private static SNode check_tq0gdw_a0a1a1a41(SNode checkedDotOperand) {
     if (null != checkedDotOperand) {
       return SLinkOperations.getTarget(checkedDotOperand, LINKS.type$a1UY);
     }
     return null;
   }
-  private static SNode _quotation_createNode_tq0gdw_a0a1a0d0d0cb(Object parameter_1, Object parameter_2) {
+  private static SNode _quotation_createNode_tq0gdw_a0a1a0d0d0db(Object parameter_1, Object parameter_2) {
     SNode quotedNode_3 = null;
     SNode quotedNode_4 = null;
     SNode quotedNode_5 = null;
