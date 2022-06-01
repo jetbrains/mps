@@ -4,8 +4,6 @@ package jetbrains.mps.lang.smodel.generator.smodelAdapter;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
-import java.util.List;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -13,55 +11,18 @@ import java.util.Objects;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.List;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 @GeneratedClass(node = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)/6407023681582958584", model = "r:c3548bac-30eb-4a2a-937c-0111d5697309(jetbrains.mps.lang.smodel.generator.smodelAdapter)")
 public class AttributeOperations {
   private AttributeOperations() {
   }
-  /**
-   * 
-   * @deprecated  use {@code  IAttributeDescriptor} 
-   */
-  @Deprecated
-  public static SNode getAttribute(SNode node, IAttributeDescriptor descriptor) {
-    return descriptor.get(node);
-  }
-  /**
-   * 
-   * @deprecated  use {@code  IAttributeDescriptor.set()} instead
-   */
-  @Deprecated(forRemoval = true, since = "2020.3")
-  public static SNode setAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
-    return descriptor.set(node, value);
-  }
-  /**
-   * 
-   * @deprecated  use {@code  IAttributeDescriptor}
-   */
-  @Deprecated
-  public static List<SNode> getAttributeList(SNode node, IAttributeDescriptor descriptor) {
-    return descriptor.list(node);
-  }
-  /**
-   * 
-   * @deprecated  use {@code  IAttributeDescriptor.setNew()} instead
-   */
-  @Deprecated(forRemoval = true, since = "2020.3")
-  public static SNode createAndSetAttrbiute(SNode node, IAttributeDescriptor descriptor, SConcept newConcept) {
-    return descriptor.setNew(node, newConcept);
-  }
-  /**
-   * 
-   * @deprecated  use {@code  IAttributeDescriptor.addNew} instead
-   */
-  @Deprecated(forRemoval = true, since = "2020.3")
-  public static SNode createAndAddAttribute(SNode node, IAttributeDescriptor descriptor, SConcept newConcept) {
-    return descriptor.addNew(node, newConcept);
-  }
+
   public static Iterable<SNode> getChildNodesAndAttributes(SNode parent, final SContainmentLink link) {
     Iterable<? extends SNode> children = parent.getChildren();
     return Sequence.fromIterable(children).where(new IWhereFilter<SNode>() {
@@ -80,16 +41,7 @@ public class AttributeOperations {
   }
 
 
-  /**
-   * 
-   * @deprecated use {@code IAttributeDescriptor.add()}
-   */
-  @Deprecated(forRemoval = true, since = "2020.3")
-  public static SNode addAttribute(SNode node, IAttributeDescriptor descriptor, SNode value) {
-    ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.smodelAttribute$KJ43)).addElement(value);
-    descriptor.update(value);
-    return value;
-  }
+
   public static boolean isAttribute(SNode node) {
     if (node == null) {
       return false;
