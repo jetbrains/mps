@@ -181,6 +181,25 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor" />
   </dependency>
+  <dependency className="jetbrains.mps.kotlin.behavior.AndExpression__BehaviorDescriptor">
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.AccessPrivileges" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodBuilder" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.Precedence" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor" />
+  </dependency>
   <dependency className="jetbrains.mps.kotlin.behavior.Annotation__BehaviorDescriptor">
     <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Iterable" />
@@ -284,23 +303,17 @@
     <classNode extendsClassName="jetbrains.mps.kotlin.behavior.TypeReference" />
   </dependency>
   <dependency className="jetbrains.mps.kotlin.behavior.AsOperation__BehaviorDescriptor">
-    <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.AccessPrivileges" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodBuilder" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
-    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor" />
   </dependency>
@@ -335,6 +348,7 @@
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.AbstractEqualityOperation__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.AbstractFunctionCall__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.AbstractPropertyDeclaration__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.AndExpression__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.Annotation__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.AnonymousFunction__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.AnonymousInitializer__BehaviorDescriptor" />
@@ -351,12 +365,10 @@
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.CompareToOperation__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.ComponentDeclaration__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.ComponentFunctionCall__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.kotlin.behavior.Conjunction__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.ConstructorSuperSpecifier__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.ContainedOperation__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.CopyFunctionCall__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.DecOperation__BehaviorDescriptor" />
-    <classNode dependClassName="jetbrains.mps.kotlin.behavior.Disjunction__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.DivOperation__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.DoWhileStatement__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.DynamicType__BehaviorDescriptor" />
@@ -458,6 +470,7 @@
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.NullableType__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.NumericBaseLiteral__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.ObjectDeclaration__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.OrExpression__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.OverloadedAssignment__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.OverloadedBinaryExpression__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.OverloadedPostfixUnaryExpression__BehaviorDescriptor" />
@@ -922,25 +935,6 @@
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.kotlin.behavior.TypeReference" />
   </dependency>
-  <dependency className="jetbrains.mps.kotlin.behavior.Conjunction__BehaviorDescriptor">
-    <classNode dependClassName="java.lang.Object" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.util.Arrays" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.AccessPrivileges" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodBuilder" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
-    <classNode dependClassName="jetbrains.mps.kotlin.behavior.Precedence" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor" />
-  </dependency>
   <dependency className="jetbrains.mps.kotlin.behavior.ConstructorSuperSpecifier__BehaviorDescriptor">
     <classNode dependClassName="java.lang.Class" />
     <classNode dependClassName="java.lang.Iterable" />
@@ -1048,25 +1042,6 @@
     <classNode dependClassName="java.lang.Object" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.Arrays" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.AccessPrivileges" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodBuilder" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
-    <classNode dependClassName="jetbrains.mps.kotlin.behavior.Precedence" />
-    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
-    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
-    <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor" />
-  </dependency>
-  <dependency className="jetbrains.mps.kotlin.behavior.Disjunction__BehaviorDescriptor">
-    <classNode dependClassName="java.lang.Object" />
-    <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.util.Arrays" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.AccessPrivileges" />
@@ -3334,6 +3309,7 @@
   <dependency className="jetbrains.mps.kotlin.behavior.KotlinTypeParameterDeclaration">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
@@ -3341,12 +3317,14 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SEnumerationLiteral" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SProperty" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNodeReference" />
     <classNode extendsClassName="jetbrains.mps.kotlin.api.declaration.DefaultTypeParameterDeclaration" />
   </dependency>
   <dependency className="jetbrains.mps.kotlin.behavior.KtEnvironmentConfig">
@@ -3733,10 +3711,12 @@
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.signed.SignatureScope" />
     <classNode dependClassName="jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor" />
@@ -3783,6 +3763,25 @@
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.ThisTypeReference" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.TypeReference" />
     <classNode dependClassName="jetbrains.mps.kotlin.signatures.PropertySignature" />
+    <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
+    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
+    <classNode dependClassName="org.jetbrains.annotations.Nullable" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor" />
+  </dependency>
+  <dependency className="jetbrains.mps.kotlin.behavior.OrExpression__BehaviorDescriptor">
+    <classNode dependClassName="java.lang.Object" />
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="java.util.Arrays" />
+    <classNode dependClassName="java.util.List" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.AccessPrivileges" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodBuilder" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.Precedence" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
@@ -3884,14 +3883,23 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
+    <classNode dependClassName="jetbrains.mps.kotlin.api.declaration.FunctionDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.CallReceiver" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.IFunctionCall__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.Argument" />
+    <classNode dependClassName="jetbrains.mps.kotlin.scopes.SignatureFilter" />
+    <classNode dependClassName="jetbrains.mps.kotlin.scopes.signed.SignatureScope" />
+    <classNode dependClassName="jetbrains.mps.kotlin.scopes.signed.SignatureScopeHelper" />
+    <classNode dependClassName="jetbrains.mps.kotlin.signatures.FunctionSignature" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
+    <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.annotations.NotNull" />
     <classNode dependClassName="org.jetbrains.annotations.Nullable" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SContainmentLink" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.language.SInterfaceConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.core.aspects.behaviour.BaseBHDescriptor" />
   </dependency>

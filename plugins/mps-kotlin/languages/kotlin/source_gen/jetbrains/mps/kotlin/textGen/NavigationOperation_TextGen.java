@@ -6,6 +6,7 @@ import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.kotlin.behavior.NavigationOperation__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -15,7 +16,7 @@ public class NavigationOperation_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.operand$YS5t));
+    KotlinTextGen.optionalParenthesized(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.operand$YS5t), (boolean) NavigationOperation__BehaviorDescriptor.showParenthesis_id3PNJzGvypf4.invoke(ctx.getPrimaryInput()), ctx);
     if (SPropertyOperations.getBoolean(ctx.getPrimaryInput(), PROPS.nullSafe$Kx0o)) {
       tgs.append("?");
     }

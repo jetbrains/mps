@@ -13,9 +13,7 @@ public class ParenthesizedExpression_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append("(");
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.nested$xoIL));
-    tgs.append(")");
+    KotlinTextGen.parenthesized(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.nested$xoIL), ctx);
   }
 
   private static final class LINKS {

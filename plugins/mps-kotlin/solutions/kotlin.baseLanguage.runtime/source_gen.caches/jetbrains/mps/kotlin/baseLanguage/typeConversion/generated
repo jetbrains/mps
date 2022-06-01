@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-42t598133a45lkdi88dkxseefe9zspm">
+<product version="3" modelHash="-atpgbudiugt0cyja868bwf5alqtqwd1">
   <files names="ClassToClassEnum.java:ClassToConceptEnum.java:ConceptBuilder.java:ConverterRegistration.java:Priority.java:TypeConversionService.java:TypeConverter.java:TypeConverterEngine.java:TypeConverterEngineWithClass.java" />
 </product>
 

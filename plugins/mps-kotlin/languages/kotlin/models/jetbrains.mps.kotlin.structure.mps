@@ -2473,7 +2473,7 @@
   <node concept="1TIwiD" id="1502Vug_kV4">
     <property role="EcuMT" value="1243006380186881732" />
     <property role="3GE5qa" value="expression.operator.binary.logical" />
-    <property role="TrG5h" value="Disjunction" />
+    <property role="TrG5h" value="OrExpression" />
     <property role="34LRSv" value="||" />
     <property role="R4oN_" value="disjunction" />
     <ref role="1TJDcQ" node="1502Vug_kVv" resolve="BinaryExpression" />
@@ -2508,7 +2508,7 @@
   <node concept="1TIwiD" id="1502Vug_kWi">
     <property role="EcuMT" value="1243006380186881810" />
     <property role="3GE5qa" value="expression.operator.binary.logical" />
-    <property role="TrG5h" value="Conjunction" />
+    <property role="TrG5h" value="AndExpression" />
     <property role="34LRSv" value="&amp;&amp;" />
     <property role="R4oN_" value="conjunction" />
     <ref role="1TJDcQ" node="1502Vug_kVv" resolve="BinaryExpression" />
@@ -3266,9 +3266,6 @@
     <property role="TrG5h" value="NotOperation" />
     <property role="34LRSv" value="!" />
     <ref role="1TJDcQ" node="1VI7K1jTqMZ" resolve="OverloadedPrefixUnaryExpression" />
-    <node concept="PrWs8" id="4nn3FPlNEbv" role="PzmwI">
-      <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />
-    </node>
   </node>
   <node concept="1TIwiD" id="4nn3FPlxLeC">
     <property role="3GE5qa" value="expression.operator.overloaded.prefix" />
@@ -3872,9 +3869,6 @@
     <property role="34LRSv" value="as" />
     <property role="R4oN_" value="cast an expression" />
     <ref role="1TJDcQ" node="6IFGHg6lP2o" resolve="TypePostFixUnaryExpression" />
-    <node concept="PrWs8" id="6IFGHg6lUv5" role="PzmwI">
-      <ref role="PrY4T" node="6563FJLeShn" resolve="IStaticType" />
-    </node>
   </node>
   <node concept="1TIwiD" id="2AtO9a4X07a">
     <property role="EcuMT" value="2998782254613004746" />

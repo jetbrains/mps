@@ -5,6 +5,6 @@ package jetbrains.mps.kotlin.structure;
 import jetbrains.mps.smodel.runtime.IconResource;
 
 public class IconContainer {
-  protected static IconResource RESOURCE_a0a3a0a071b0hk = new IconResource("kotlin_file.png", IconContainer.class);
-  protected static IconResource RESOURCE_a0a3a0a171b0hk = new IconResource("kotlin_script.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a961b0hk = new IconResource("kotlin_file.png", IconContainer.class);
+  protected static IconResource RESOURCE_a0a3a0a071b0hk = new IconResource("kotlin_script.png", IconContainer.class);
 }

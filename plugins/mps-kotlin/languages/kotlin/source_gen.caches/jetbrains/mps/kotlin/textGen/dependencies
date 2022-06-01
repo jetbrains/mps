@@ -805,6 +805,8 @@
   </dependency>
   <dependency className="jetbrains.mps.kotlin.textGen.NavigationOperation_TextGen">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.NavigationOperation__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
@@ -828,6 +830,8 @@
   </dependency>
   <dependency className="jetbrains.mps.kotlin.textGen.NullableType_TextGen">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.kotlin.behavior.NullableType__BehaviorDescriptor" />
+    <classNode dependClassName="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.text.impl.TextGenSupport" />
@@ -906,6 +910,7 @@
   </dependency>
   <dependency className="jetbrains.mps.kotlin.textGen.ParenthesizedExpression_TextGen">
     <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.kotlin.textGen.KotlinTextGen" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="jetbrains.mps.text.impl.TextGenSupport" />

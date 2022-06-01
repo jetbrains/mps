@@ -4,6 +4,9 @@ package jetbrains.mps.kotlin.baseLanguage.toKotlin;
 
 import jetbrains.mps.kotlin.api.declaration.DefaultTypeParameterDeclaration;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -11,6 +14,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class JavaTypeParameterDeclaration extends DefaultTypeParameterDeclaration {
@@ -21,8 +25,12 @@ public class JavaTypeParameterDeclaration extends DefaultTypeParameterDeclaratio
     myConverter = converter;
   }
   @Override
-  public SNode getNode() {
-    return myTypeVariableDeclaration;
+  public SNodeReference getNode() {
+    return SNodeOperations.getPointer(myTypeVariableDeclaration);
+  }
+  @Override
+  public String getName() {
+    return SPropertyOperations.getString(myTypeVariableDeclaration, PROPS.name$MnvL);
   }
   @Override
   public List<SNode> getUpperBounds() {
@@ -41,6 +49,10 @@ public class JavaTypeParameterDeclaration extends DefaultTypeParameterDeclaratio
       return SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x21e0c923289a2189L, "jetbrains.mps.kotlin.structure.VarianceModifier"), 0x21e0c923289a221fL, "out");
     }
     return SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x21e0c923289a2189L, "jetbrains.mps.kotlin.structure.VarianceModifier"), 0x21e0c923289a2222L, "inv");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {

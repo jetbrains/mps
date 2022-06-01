@@ -26,6 +26,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptAbstractInheritanceModifier = createDescriptorForAbstractInheritanceModifier();
   /*package*/ final ConceptDescriptor myConceptAbstractPropertyDeclaration = createDescriptorForAbstractPropertyDeclaration();
   /*package*/ final ConceptDescriptor myConceptActualPlatformModifier = createDescriptorForActualPlatformModifier();
+  /*package*/ final ConceptDescriptor myConceptAndExpression = createDescriptorForAndExpression();
   /*package*/ final ConceptDescriptor myConceptAnnotation = createDescriptorForAnnotation();
   /*package*/ final ConceptDescriptor myConceptAnnotationClassModifier = createDescriptorForAnnotationClassModifier();
   /*package*/ final ConceptDescriptor myConceptAnnotationList = createDescriptorForAnnotationList();
@@ -51,7 +52,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptCompiledStubStatement = createDescriptorForCompiledStubStatement();
   /*package*/ final ConceptDescriptor myConceptComponentDeclaration = createDescriptorForComponentDeclaration();
   /*package*/ final ConceptDescriptor myConceptComponentFunctionCall = createDescriptorForComponentFunctionCall();
-  /*package*/ final ConceptDescriptor myConceptConjunction = createDescriptorForConjunction();
   /*package*/ final ConceptDescriptor myConceptConstructorSuperSpecifier = createDescriptorForConstructorSuperSpecifier();
   /*package*/ final ConceptDescriptor myConceptContainedOperation = createDescriptorForContainedOperation();
   /*package*/ final ConceptDescriptor myConceptContinueExpression = createDescriptorForContinueExpression();
@@ -60,7 +60,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptDataClassModifier = createDescriptorForDataClassModifier();
   /*package*/ final ConceptDescriptor myConceptDecOperation = createDescriptorForDecOperation();
   /*package*/ final ConceptDescriptor myConceptDelegateUseSiteTarget = createDescriptorForDelegateUseSiteTarget();
-  /*package*/ final ConceptDescriptor myConceptDisjunction = createDescriptorForDisjunction();
   /*package*/ final ConceptDescriptor myConceptDivOperation = createDescriptorForDivOperation();
   /*package*/ final ConceptDescriptor myConceptDoWhileStatement = createDescriptorForDoWhileStatement();
   /*package*/ final ConceptDescriptor myConceptDynamicType = createDescriptorForDynamicType();
@@ -213,6 +212,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   /*package*/ final ConceptDescriptor myConceptObjectLiteral = createDescriptorForObjectLiteral();
   /*package*/ final ConceptDescriptor myConceptOpenInheritanceModifier = createDescriptorForOpenInheritanceModifier();
   /*package*/ final ConceptDescriptor myConceptOperatorFunctionModifier = createDescriptorForOperatorFunctionModifier();
+  /*package*/ final ConceptDescriptor myConceptOrExpression = createDescriptorForOrExpression();
   /*package*/ final ConceptDescriptor myConceptOverloadedAssignment = createDescriptorForOverloadedAssignment();
   /*package*/ final ConceptDescriptor myConceptOverloadedBinaryExpression = createDescriptorForOverloadedBinaryExpression();
   /*package*/ final ConceptDescriptor myConceptOverloadedPostfixUnaryExpression = createDescriptorForOverloadedPostfixUnaryExpression();
@@ -310,7 +310,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptAbstractConditionalLoop, myConceptAbstractConstructorDeclaration, myConceptAbstractConstructorDelegationCall, myConceptAbstractEqualityOperation, myConceptAbstractFunctionCall, myConceptAbstractInheritanceModifier, myConceptAbstractPropertyDeclaration, myConceptActualPlatformModifier, myConceptAnnotation, myConceptAnnotationClassModifier, myConceptAnnotationList, myConceptAnonymousFunction, myConceptAnonymousInitializer, myConceptAsOperation, myConceptAssignment, myConceptBinLiteral, myConceptBinaryExpression, myConceptBooleanLiteral, myConceptBreakExpression, myConceptCallOperation, myConceptCatchBlock, myConceptCharLiteral, myConceptClassDeclaration, myConceptClassMemberTarget, myConceptClassParameter, myConceptClassType, myConceptCollectionLiteral, myConceptComment, myConceptCompanionObject, myConceptCompareToOperation, myConceptCompiledStubStatement, myConceptComponentDeclaration, myConceptComponentFunctionCall, myConceptConjunction, myConceptConstructorSuperSpecifier, myConceptContainedOperation, myConceptContinueExpression, myConceptCopyFunctionCall, myConceptCrossinslineParameterModifier, myConceptDataClassModifier, myConceptDecOperation, myConceptDelegateUseSiteTarget, myConceptDisjunction, myConceptDivOperation, myConceptDoWhileStatement, myConceptDynamicType, myConceptElvisOperator, myConceptEmptyClassMemberDeclaration, myConceptEmptyDeclaration, myConceptEmptyStatement, myConceptEnumClassDeclaration, myConceptEnumClassModifier, myConceptEnumEntry, myConceptEqualsOperation, myConceptExpectPlatformModifier, myConceptExternalFunctionModifier, myConceptFieldUseSiteTarget, myConceptFileAnnotation, myConceptFinalInheritanceModifier, myConceptFinallyBlock, myConceptFlexibleBlock, myConceptFlippedOverloadedBinaryExpression, myConceptForStatement, myConceptFunctionBody, myConceptFunctionCallExpression, myConceptFunctionCallTarget, myConceptFunctionDeclaration, myConceptFunctionMemberTarget, myConceptFunctionParameter, myConceptFunctionType, myConceptFunctionTypeParameter, myConceptGetUseSiteTarget, myConceptGreaterEqOperation, myConceptGreaterOperation, myConceptHexLiteral, myConceptIAnnotated, myConceptIAnnotation, myConceptIAnnotationUseSiteTarget, myConceptIArgument, myConceptIArguments, myConceptIClassDeclaration, myConceptIClassLike, myConceptIClassMemberDeclaration, myConceptIClassModifier, myConceptIClassReference, myConceptIClassSuperSpecifier, myConceptIClassType, myConceptIConditionalFlow, myConceptIConstructorDeclaration, myConceptIConstructorDelegationCall, myConceptIConstructorSuperSpecifier, myConceptIDataFlowSource, myConceptIDataflowPassToChild, myConceptIDataflowPassToChildren, myConceptIDeclaration, myConceptIDeclarationHolder, myConceptIDeclarationScopePart, myConceptIDeconstructingDeclarations, myConceptIElseExpression, myConceptIExpression, myConceptIExpressionLike, myConceptIFunctionCall, myConceptIFunctionDeclaration, myConceptIFunctionIdentifier, myConceptIFunctionMemberTarget, myConceptIFunctionModifier, myConceptIFunctionParameters, myConceptIIdentifier, myConceptIInferencePart, myConceptIInheritExplicitly, myConceptIInheritable, myConceptIInheritanceModifier, myConceptIKotlinRoot, myConceptIKotlinRunnable, myConceptILabelTarget, myConceptILabelled, myConceptILambdaAsArgument, myConceptILambdaParameter, myConceptILeftExpression, myConceptIMemberTarget, myConceptINavigationTarget, myConceptINullableType, myConceptIObject, myConceptIOverloadableOperator, myConceptIParameterModifier, myConceptIPlatformModifier, myConceptIProjectedTypeArguments, myConceptIPropertyAssignment, myConceptIRegularFunctionCall, myConceptIResolvable, myConceptIResolvableReference, myConceptIReturnType, myConceptISelfHandledAssignment, myConceptISignatureScopeProvider, myConceptIStatement, myConceptIStatementHolder, myConceptIStatementScopePart, myConceptIStaticType, myConceptIStringLiteral, myConceptIStringLiteralPart, myConceptISuperTypeSpecifier, myConceptIThisReceiverProvider, myConceptIType, myConceptITypeArguments, myConceptITypeConstrained, myConceptITypeParameter, myConceptITypeParameterReference, myConceptITypeParameters, myConceptITypeProjection, myConceptIVariableConstraintHolder, myConceptIVariableIdentifier, myConceptIVisible, myConceptIWhenCondition, myConceptIWithClassBody, myConceptIWithReceiver, myConceptIdentityOperator, myConceptIfExpression, myConceptImportHeader, myConceptIncOperation, myConceptIncompleteDeclaration, myConceptIndexOperation, myConceptInfixCallOperator, myConceptInfixFunctionModifier, myConceptInlineFunctionModifier, myConceptInnerClassModifier, myConceptIntegerLiteral, myConceptInterfaceDeclaration, myConceptInternalVisibility, myConceptIntersectionType, myConceptIsOperator, myConceptKotlinFile, myConceptKtScript, myConceptLabel, myConceptLambdaLiteral, myConceptLessEqOperation, myConceptLessOperation, myConceptLocalPropertyDeclaration, myConceptLongLiteral, myConceptMemberNavigationOperation, myConceptMinusOperation, myConceptMultiLambdaParameter, myConceptMultiLineStringLiteral, myConceptNavigationOperation, myConceptNoinlineParameterModifier, myConceptNotContainedOperation, myConceptNotEqualsOperation, myConceptNotOperation, myConceptNullLiteral, myConceptNullSafeOperation, myConceptNullableType, myConceptNumericBaseLiteral, myConceptObjectDeclaration, myConceptObjectLiteral, myConceptOpenInheritanceModifier, myConceptOperatorFunctionModifier, myConceptOverloadedAssignment, myConceptOverloadedBinaryExpression, myConceptOverloadedPostfixUnaryExpression, myConceptOverloadedPrefixUnaryExpression, myConceptPackageHeader, myConceptParamUseSiteTarget, myConceptParameter, myConceptParameterWithOptionalType, myConceptParenthesizedExpression, myConceptPlusOperation, myConceptPostfixDecOperation, myConceptPostfixIncOperation, myConceptPostfixUnaryExpression, myConceptPrefixUnaryExpression, myConceptPrimaryConstructor, myConceptPrivateVisibility, myConceptPropertyDeclaration, myConceptPropertyDefaultAssignement, myConceptPropertyDelegateAssignement, myConceptPropertyGetter, myConceptPropertyMemberTarget, myConceptPropertySetter, myConceptPropertyUseSiteTarget, myConceptProtectedVisibility, myConceptPublicVisibility, myConceptRangeToOperation, myConceptRealLiteral, myConceptReceiverType, myConceptReceiverUseSiteTarget, myConceptRemOperation, myConceptReturnExpression, myConceptSealedInheritanceModifier, myConceptSecondaryConstructor, myConceptSetUseSiteTarget, myConceptSetparamUseSiteTarget, myConceptStarProjection, myConceptStringExpressionEvaluation, myConceptStringLiteral, myConceptStringLiteralLine, myConceptStringLiteralRaw, myConceptSuperClassSpecifier, myConceptSuperConstructorDelegationCall, myConceptSuperExpression, myConceptSuspendFunctionModifier, myConceptTailRecFunctionModifier, myConceptThisConstructorDelegationCall, myConceptThisExpression, myConceptThrowExpression, myConceptTimesOperation, myConceptTryExpression, myConceptTypeAlias, myConceptTypeAliasType, myConceptTypeConstraint, myConceptTypeParameter, myConceptTypeParameterReference, myConceptTypePostFixUnaryExpression, myConceptTypeProjection, myConceptTypeReference, myConceptTypeTest, myConceptUnaryExpression, myConceptUnaryMinusOperation, myConceptUnaryPlusOperation, myConceptUnresolvedParsedReference, myConceptUnsignedLiteral, myConceptValueArgument, myConceptVariableDeclaration, myConceptVariableRefExpression, myConceptVisibilityModifier, myConceptWhenEntry, myConceptWhenExpression, myConceptWhileStatement);
+    return Arrays.asList(myConceptAbstractConditionalLoop, myConceptAbstractConstructorDeclaration, myConceptAbstractConstructorDelegationCall, myConceptAbstractEqualityOperation, myConceptAbstractFunctionCall, myConceptAbstractInheritanceModifier, myConceptAbstractPropertyDeclaration, myConceptActualPlatformModifier, myConceptAndExpression, myConceptAnnotation, myConceptAnnotationClassModifier, myConceptAnnotationList, myConceptAnonymousFunction, myConceptAnonymousInitializer, myConceptAsOperation, myConceptAssignment, myConceptBinLiteral, myConceptBinaryExpression, myConceptBooleanLiteral, myConceptBreakExpression, myConceptCallOperation, myConceptCatchBlock, myConceptCharLiteral, myConceptClassDeclaration, myConceptClassMemberTarget, myConceptClassParameter, myConceptClassType, myConceptCollectionLiteral, myConceptComment, myConceptCompanionObject, myConceptCompareToOperation, myConceptCompiledStubStatement, myConceptComponentDeclaration, myConceptComponentFunctionCall, myConceptConstructorSuperSpecifier, myConceptContainedOperation, myConceptContinueExpression, myConceptCopyFunctionCall, myConceptCrossinslineParameterModifier, myConceptDataClassModifier, myConceptDecOperation, myConceptDelegateUseSiteTarget, myConceptDivOperation, myConceptDoWhileStatement, myConceptDynamicType, myConceptElvisOperator, myConceptEmptyClassMemberDeclaration, myConceptEmptyDeclaration, myConceptEmptyStatement, myConceptEnumClassDeclaration, myConceptEnumClassModifier, myConceptEnumEntry, myConceptEqualsOperation, myConceptExpectPlatformModifier, myConceptExternalFunctionModifier, myConceptFieldUseSiteTarget, myConceptFileAnnotation, myConceptFinalInheritanceModifier, myConceptFinallyBlock, myConceptFlexibleBlock, myConceptFlippedOverloadedBinaryExpression, myConceptForStatement, myConceptFunctionBody, myConceptFunctionCallExpression, myConceptFunctionCallTarget, myConceptFunctionDeclaration, myConceptFunctionMemberTarget, myConceptFunctionParameter, myConceptFunctionType, myConceptFunctionTypeParameter, myConceptGetUseSiteTarget, myConceptGreaterEqOperation, myConceptGreaterOperation, myConceptHexLiteral, myConceptIAnnotated, myConceptIAnnotation, myConceptIAnnotationUseSiteTarget, myConceptIArgument, myConceptIArguments, myConceptIClassDeclaration, myConceptIClassLike, myConceptIClassMemberDeclaration, myConceptIClassModifier, myConceptIClassReference, myConceptIClassSuperSpecifier, myConceptIClassType, myConceptIConditionalFlow, myConceptIConstructorDeclaration, myConceptIConstructorDelegationCall, myConceptIConstructorSuperSpecifier, myConceptIDataFlowSource, myConceptIDataflowPassToChild, myConceptIDataflowPassToChildren, myConceptIDeclaration, myConceptIDeclarationHolder, myConceptIDeclarationScopePart, myConceptIDeconstructingDeclarations, myConceptIElseExpression, myConceptIExpression, myConceptIExpressionLike, myConceptIFunctionCall, myConceptIFunctionDeclaration, myConceptIFunctionIdentifier, myConceptIFunctionMemberTarget, myConceptIFunctionModifier, myConceptIFunctionParameters, myConceptIIdentifier, myConceptIInferencePart, myConceptIInheritExplicitly, myConceptIInheritable, myConceptIInheritanceModifier, myConceptIKotlinRoot, myConceptIKotlinRunnable, myConceptILabelTarget, myConceptILabelled, myConceptILambdaAsArgument, myConceptILambdaParameter, myConceptILeftExpression, myConceptIMemberTarget, myConceptINavigationTarget, myConceptINullableType, myConceptIObject, myConceptIOverloadableOperator, myConceptIParameterModifier, myConceptIPlatformModifier, myConceptIProjectedTypeArguments, myConceptIPropertyAssignment, myConceptIRegularFunctionCall, myConceptIResolvable, myConceptIResolvableReference, myConceptIReturnType, myConceptISelfHandledAssignment, myConceptISignatureScopeProvider, myConceptIStatement, myConceptIStatementHolder, myConceptIStatementScopePart, myConceptIStaticType, myConceptIStringLiteral, myConceptIStringLiteralPart, myConceptISuperTypeSpecifier, myConceptIThisReceiverProvider, myConceptIType, myConceptITypeArguments, myConceptITypeConstrained, myConceptITypeParameter, myConceptITypeParameterReference, myConceptITypeParameters, myConceptITypeProjection, myConceptIVariableConstraintHolder, myConceptIVariableIdentifier, myConceptIVisible, myConceptIWhenCondition, myConceptIWithClassBody, myConceptIWithReceiver, myConceptIdentityOperator, myConceptIfExpression, myConceptImportHeader, myConceptIncOperation, myConceptIncompleteDeclaration, myConceptIndexOperation, myConceptInfixCallOperator, myConceptInfixFunctionModifier, myConceptInlineFunctionModifier, myConceptInnerClassModifier, myConceptIntegerLiteral, myConceptInterfaceDeclaration, myConceptInternalVisibility, myConceptIntersectionType, myConceptIsOperator, myConceptKotlinFile, myConceptKtScript, myConceptLabel, myConceptLambdaLiteral, myConceptLessEqOperation, myConceptLessOperation, myConceptLocalPropertyDeclaration, myConceptLongLiteral, myConceptMemberNavigationOperation, myConceptMinusOperation, myConceptMultiLambdaParameter, myConceptMultiLineStringLiteral, myConceptNavigationOperation, myConceptNoinlineParameterModifier, myConceptNotContainedOperation, myConceptNotEqualsOperation, myConceptNotOperation, myConceptNullLiteral, myConceptNullSafeOperation, myConceptNullableType, myConceptNumericBaseLiteral, myConceptObjectDeclaration, myConceptObjectLiteral, myConceptOpenInheritanceModifier, myConceptOperatorFunctionModifier, myConceptOrExpression, myConceptOverloadedAssignment, myConceptOverloadedBinaryExpression, myConceptOverloadedPostfixUnaryExpression, myConceptOverloadedPrefixUnaryExpression, myConceptPackageHeader, myConceptParamUseSiteTarget, myConceptParameter, myConceptParameterWithOptionalType, myConceptParenthesizedExpression, myConceptPlusOperation, myConceptPostfixDecOperation, myConceptPostfixIncOperation, myConceptPostfixUnaryExpression, myConceptPrefixUnaryExpression, myConceptPrimaryConstructor, myConceptPrivateVisibility, myConceptPropertyDeclaration, myConceptPropertyDefaultAssignement, myConceptPropertyDelegateAssignement, myConceptPropertyGetter, myConceptPropertyMemberTarget, myConceptPropertySetter, myConceptPropertyUseSiteTarget, myConceptProtectedVisibility, myConceptPublicVisibility, myConceptRangeToOperation, myConceptRealLiteral, myConceptReceiverType, myConceptReceiverUseSiteTarget, myConceptRemOperation, myConceptReturnExpression, myConceptSealedInheritanceModifier, myConceptSecondaryConstructor, myConceptSetUseSiteTarget, myConceptSetparamUseSiteTarget, myConceptStarProjection, myConceptStringExpressionEvaluation, myConceptStringLiteral, myConceptStringLiteralLine, myConceptStringLiteralRaw, myConceptSuperClassSpecifier, myConceptSuperConstructorDelegationCall, myConceptSuperExpression, myConceptSuspendFunctionModifier, myConceptTailRecFunctionModifier, myConceptThisConstructorDelegationCall, myConceptThisExpression, myConceptThrowExpression, myConceptTimesOperation, myConceptTryExpression, myConceptTypeAlias, myConceptTypeAliasType, myConceptTypeConstraint, myConceptTypeParameter, myConceptTypeParameterReference, myConceptTypePostFixUnaryExpression, myConceptTypeProjection, myConceptTypeReference, myConceptTypeTest, myConceptUnaryExpression, myConceptUnaryMinusOperation, myConceptUnaryPlusOperation, myConceptUnresolvedParsedReference, myConceptUnsignedLiteral, myConceptValueArgument, myConceptVariableDeclaration, myConceptVariableRefExpression, myConceptVisibilityModifier, myConceptWhenEntry, myConceptWhenExpression, myConceptWhileStatement);
   }
 
   @Override
@@ -333,6 +333,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptAbstractPropertyDeclaration;
       case LanguageConceptSwitch.ActualPlatformModifier:
         return myConceptActualPlatformModifier;
+      case LanguageConceptSwitch.AndExpression:
+        return myConceptAndExpression;
       case LanguageConceptSwitch.Annotation:
         return myConceptAnnotation;
       case LanguageConceptSwitch.AnnotationClassModifier:
@@ -383,8 +385,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptComponentDeclaration;
       case LanguageConceptSwitch.ComponentFunctionCall:
         return myConceptComponentFunctionCall;
-      case LanguageConceptSwitch.Conjunction:
-        return myConceptConjunction;
       case LanguageConceptSwitch.ConstructorSuperSpecifier:
         return myConceptConstructorSuperSpecifier;
       case LanguageConceptSwitch.ContainedOperation:
@@ -401,8 +401,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptDecOperation;
       case LanguageConceptSwitch.DelegateUseSiteTarget:
         return myConceptDelegateUseSiteTarget;
-      case LanguageConceptSwitch.Disjunction:
-        return myConceptDisjunction;
       case LanguageConceptSwitch.DivOperation:
         return myConceptDivOperation;
       case LanguageConceptSwitch.DoWhileStatement:
@@ -707,6 +705,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptOpenInheritanceModifier;
       case LanguageConceptSwitch.OperatorFunctionModifier:
         return myConceptOperatorFunctionModifier;
+      case LanguageConceptSwitch.OrExpression:
+        return myConceptOrExpression;
       case LanguageConceptSwitch.OverloadedAssignment:
         return myConceptOverloadedAssignment;
       case LanguageConceptSwitch.OverloadedBinaryExpression:
@@ -946,6 +946,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.alias("actual");
     return b.create();
   }
+  private static ConceptDescriptor createDescriptorForAndExpression() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "AndExpression", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954f12L);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.kotlin.structure.BinaryExpression
+    b.super_(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x35c828d9d27f9e83L);
+    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186881810");
+    b.version(3);
+    b.alias("&&");
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForAnnotation() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "Annotation", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x446a1050b763ccb9L);
     b.class_(false, false, false);
@@ -1008,7 +1019,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     // extends: jetbrains.mps.kotlin.structure.TypePostFixUnaryExpression
     b.super_(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x6babb2d406575098L);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x61460ebbf13b8457L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/7758491406785018539");
     b.version(3);
     b.alias("as");
@@ -1222,17 +1232,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.associate("classParameter", 0x5c9c0dac07fadd8aL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL).optional(false).origin("6673223780375649674").done();
     return b.create();
   }
-  private static ConceptDescriptor createDescriptorForConjunction() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "Conjunction", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954f12L);
-    b.class_(false, false, false);
-    // extends: jetbrains.mps.kotlin.structure.BinaryExpression
-    b.super_(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x35c828d9d27f9e83L);
-    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186881810");
-    b.version(3);
-    b.alias("&&");
-    return b.create();
-  }
   private static ConceptDescriptor createDescriptorForConstructorSuperSpecifier() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "ConstructorSuperSpecifier", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f6L);
     b.class_(false, false, false);
@@ -1309,17 +1308,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373371");
     b.version(3);
     b.alias("delegate");
-    return b.create();
-  }
-  private static ConceptDescriptor createDescriptorForDisjunction() {
-    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "Disjunction", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954ec4L);
-    b.class_(false, false, false);
-    // extends: jetbrains.mps.kotlin.structure.BinaryExpression
-    b.super_(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x35c828d9d27f9e83L);
-    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186881732");
-    b.version(3);
-    b.alias("||");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForDivOperation() {
@@ -2668,7 +2656,6 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.class_(false, false, false);
     // extends: jetbrains.mps.kotlin.structure.OverloadedPrefixUnaryExpression
     b.super_(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1eee1f0053e5acbfL);
-    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x45d70ebd55a93439L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/5032507314956342169");
     b.version(3);
     b.alias("!");
@@ -2754,6 +2741,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373312");
     b.version(3);
     b.alias("operator");
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForOrExpression() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin", "OrExpression", 0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954ec4L);
+    b.class_(false, false, false);
+    // extends: jetbrains.mps.kotlin.structure.BinaryExpression
+    b.super_(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790954edfL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x35c828d9d27f9e83L);
+    b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/1243006380186881732");
+    b.version(3);
+    b.alias("||");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForOverloadedAssignment() {

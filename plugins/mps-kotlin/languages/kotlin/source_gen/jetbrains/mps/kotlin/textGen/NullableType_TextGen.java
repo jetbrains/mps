@@ -6,6 +6,7 @@ import jetbrains.mps.text.rt.TextGenDescriptorBase;
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.kotlin.behavior.NullableType__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -13,9 +14,8 @@ public class NullableType_TextGen extends TextGenDescriptorBase {
   @Override
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.append("(");
-    tgs.appendNode(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$Tm0J));
-    tgs.append(")?");
+    KotlinTextGen.optionalParenthesized(SLinkOperations.getTarget(ctx.getPrimaryInput(), LINKS.type$Tm0J), (boolean) NullableType__BehaviorDescriptor.showParenthesis_id3PNJzGvtdRU.invoke(ctx.getPrimaryInput()), ctx);
+    tgs.append("?");
   }
 
   private static final class LINKS {

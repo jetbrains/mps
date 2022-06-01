@@ -321,13 +321,13 @@
     <file name="ClassToConceptEnum.java">
       <node id="5019502120966522138" at="30,0,31,0" concept="3" trace="kotlinPtr" />
       <node id="5019502120966533513" at="31,0,32,0" concept="3" trace="javaConcept" />
-      <node id="6180822939161900542" at="32,0,33,0" concept="3" trace="myToKotlinNullable" />
-      <node id="3848791341541092635" at="34,93,35,46" concept="2" />
+      <node id="6180822939161900542" at="32,0,33,0" concept="3" trace="toKotlinNullable" />
+      <node id="3848791341541092635" at="34,91,35,46" concept="2" />
       <node id="3848791341541092640" at="35,46,36,26" concept="2" />
-      <node id="6180822939161900546" at="36,26,37,42" concept="2" />
+      <node id="6180822939161900546" at="36,26,37,38" concept="2" />
       <node id="6180822939161883812" at="40,67,41,37" concept="13" />
-      <node id="5019502120966510817" at="45,66,46,120" concept="2" />
-      <node id="5019502120966510845" at="46,120,47,86" concept="2" />
+      <node id="5019502120966510817" at="45,66,46,118" concept="2" />
+      <node id="5019502120966510845" at="46,118,47,86" concept="2" />
       <node id="5019502120965533383" at="52,0,53,0" concept="11" trace="ByteType$Ms" />
       <node id="5019502120965533383" at="53,0,54,0" concept="11" trace="ShortType$ro" />
       <node id="5019502120965533383" at="54,0,55,0" concept="11" trace="IntegerType$7a" />
@@ -345,7 +345,7 @@
       <node id="5019502120966510832" at="44,0,50,0" concept="12" trace="populate#(Ljetbrains/mps/kotlin/baseLanguage/toKotlin/JavaToKtEngine;Ljetbrains/mps/kotlin/baseLanguage/toJava/KtToJavaEngine;)V" />
       <scope id="6180822939161869491" at="40,67,41,37" />
       <scope id="5019502120966510839" at="45,66,47,86" />
-      <scope id="3848791341541092634" at="34,93,37,42" />
+      <scope id="3848791341541092634" at="34,91,37,38" />
       <scope id="6180822939161869485" at="40,0,43,0">
         <var name="concept" id="6180822939161869486" />
         <var name="kotlinType" id="6180822939161869488" />
@@ -356,8 +356,8 @@
       </scope>
       <scope id="3848791341541092628" at="34,0,39,0">
         <var name="concept" id="3848791341541092629" />
+        <var name="kotlinNullable" id="6180822939161895357" />
         <var name="kotlinType" id="3848791341541092631" />
-        <var name="toKotlinNullable" id="6180822939161895357" />
       </scope>
       <scope id="5019502120966510832" at="44,0,50,0">
         <var name="fromJava" id="5019502120967521700" />

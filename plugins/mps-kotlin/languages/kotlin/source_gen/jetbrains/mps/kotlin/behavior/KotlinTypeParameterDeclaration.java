@@ -4,18 +4,20 @@ package jetbrains.mps.kotlin.behavior;
 
 import jetbrains.mps.kotlin.api.declaration.DefaultTypeParameterDeclaration;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeReference;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class KotlinTypeParameterDeclaration extends DefaultTypeParameterDeclaration {
   private final SNode myParameter;
@@ -24,10 +26,14 @@ public class KotlinTypeParameterDeclaration extends DefaultTypeParameterDeclarat
   }
 
   @Override
-  public SNode getNode() {
-    return myParameter;
+  public SNodeReference getNode() {
+    return SNodeOperations.getPointer(myParameter);
   }
 
+  @Override
+  public String getName() {
+    return SPropertyOperations.getString(myParameter, PROPS.name$MnvL);
+  }
   @Override
   public List<SNode> getUpperBounds() {
     List<SNode> bounds = new ArrayList<SNode>();
@@ -50,11 +56,12 @@ public class KotlinTypeParameterDeclaration extends DefaultTypeParameterDeclarat
     });
   }
 
-  private static final class LINKS {
-    /*package*/ static final SContainmentLink bound$KhhI = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, 0x28bef6d7551af850L, "bound");
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty variance$xP5D = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4da39967d13161a1L, 0x22287f28953f8c9bL, "variance");
   }
 
-  private static final class PROPS {
-    /*package*/ static final SProperty variance$xP5D = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4da39967d13161a1L, 0x22287f28953f8c9bL, "variance");
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink bound$KhhI = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af50dL, 0x28bef6d7551af850L, "bound");
   }
 }

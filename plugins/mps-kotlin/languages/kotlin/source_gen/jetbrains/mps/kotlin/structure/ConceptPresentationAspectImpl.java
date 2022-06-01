@@ -17,6 +17,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_AbstractInheritanceModifier;
   private ConceptPresentation props_AbstractPropertyDeclaration;
   private ConceptPresentation props_ActualPlatformModifier;
+  private ConceptPresentation props_AndExpression;
   private ConceptPresentation props_Annotation;
   private ConceptPresentation props_AnnotationClassModifier;
   private ConceptPresentation props_AnnotationList;
@@ -42,7 +43,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_CompiledStubStatement;
   private ConceptPresentation props_ComponentDeclaration;
   private ConceptPresentation props_ComponentFunctionCall;
-  private ConceptPresentation props_Conjunction;
   private ConceptPresentation props_ConstructorSuperSpecifier;
   private ConceptPresentation props_ContainedOperation;
   private ConceptPresentation props_ContinueExpression;
@@ -51,7 +51,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_DataClassModifier;
   private ConceptPresentation props_DecOperation;
   private ConceptPresentation props_DelegateUseSiteTarget;
-  private ConceptPresentation props_Disjunction;
   private ConceptPresentation props_DivOperation;
   private ConceptPresentation props_DoWhileStatement;
   private ConceptPresentation props_DynamicType;
@@ -204,6 +203,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ObjectLiteral;
   private ConceptPresentation props_OpenInheritanceModifier;
   private ConceptPresentation props_OperatorFunctionModifier;
+  private ConceptPresentation props_OrExpression;
   private ConceptPresentation props_OverloadedAssignment;
   private ConceptPresentation props_OverloadedBinaryExpression;
   private ConceptPresentation props_OverloadedPostfixUnaryExpression;
@@ -336,6 +336,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ActualPlatformModifier = cpb.create();
         }
         return props_ActualPlatformModifier;
+      case LanguageConceptSwitch.AndExpression:
+        if (props_AndExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("conjunction");
+          cpb.rawPresentation("&&");
+          props_AndExpression = cpb.create();
+        }
+        return props_AndExpression;
       case LanguageConceptSwitch.Annotation:
         if (props_Annotation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -532,14 +540,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_ComponentFunctionCall = cpb.create();
         }
         return props_ComponentFunctionCall;
-      case LanguageConceptSwitch.Conjunction:
-        if (props_Conjunction == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.shortDesc("conjunction");
-          cpb.rawPresentation("&&");
-          props_Conjunction = cpb.create();
-        }
-        return props_Conjunction;
       case LanguageConceptSwitch.ConstructorSuperSpecifier:
         if (props_ConstructorSuperSpecifier == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -601,14 +601,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_DelegateUseSiteTarget = cpb.create();
         }
         return props_DelegateUseSiteTarget;
-      case LanguageConceptSwitch.Disjunction:
-        if (props_Disjunction == null) {
-          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.shortDesc("disjunction");
-          cpb.rawPresentation("||");
-          props_Disjunction = cpb.create();
-        }
-        return props_Disjunction;
       case LanguageConceptSwitch.DivOperation:
         if (props_DivOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -1472,7 +1464,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("kotlin file");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a071b0hk);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a961b0hk);
           props_KotlinFile = cpb.create();
         }
         return props_KotlinFile;
@@ -1481,7 +1473,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("script");
           cpb.presentationByName();
-          cpb.icon(IconContainer.RESOURCE_a0a3a0a171b0hk);
+          cpb.icon(IconContainer.RESOURCE_a0a3a0a071b0hk);
           props_KtScript = cpb.create();
         }
         return props_KtScript;
@@ -1667,6 +1659,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_OperatorFunctionModifier = cpb.create();
         }
         return props_OperatorFunctionModifier;
+      case LanguageConceptSwitch.OrExpression:
+        if (props_OrExpression == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("disjunction");
+          cpb.rawPresentation("||");
+          props_OrExpression = cpb.create();
+        }
+        return props_OrExpression;
       case LanguageConceptSwitch.OverloadedAssignment:
         if (props_OverloadedAssignment == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

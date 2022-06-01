@@ -4,8 +4,8 @@ package jetbrains.mps.kotlin.textGen;
 
 import jetbrains.mps.text.rt.TextGenContext;
 import jetbrains.mps.text.impl.TextGenSupport;
-import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
+import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -37,6 +37,20 @@ public abstract class KotlinTextGen {
       tgs.append(name);
       tgs.append(" ");
     }
+  }
+  public static void optionalParenthesized(SNode content, boolean parens, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    if (parens) {
+      KotlinTextGen.parenthesized(content, ctx);
+    } else {
+      tgs.appendNode(content);
+    }
+  }
+  public static void parenthesized(SNode content, final TextGenContext ctx) {
+    final TextGenSupport tgs = new TextGenSupport(ctx);
+    tgs.append("(");
+    tgs.appendNode(content);
+    tgs.append(")");
   }
   public static void projections(List<SNode> projections, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);

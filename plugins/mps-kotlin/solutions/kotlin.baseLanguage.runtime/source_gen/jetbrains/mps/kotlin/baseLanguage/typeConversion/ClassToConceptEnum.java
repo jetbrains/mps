@@ -27,14 +27,14 @@ public enum ClassToConceptEnum {
   NOTHING(CONCEPTS.NullType$Ea, "kotlin/Nothing", true),
   STRING(CONCEPTS.StringType$uX, "kotlin/String");
 
-  private SNodeReference kotlinPtr;
-  private final SAbstractConcept javaConcept;
-  private final boolean myToKotlinNullable;
+  public final SNodeReference kotlinPtr;
+  public final SAbstractConcept javaConcept;
+  public final boolean toKotlinNullable;
 
-  ClassToConceptEnum(SAbstractConcept concept, String kotlinType, boolean toKotlinNullable) {
+  ClassToConceptEnum(SAbstractConcept concept, String kotlinType, boolean kotlinNullable) {
     kotlinPtr = BuiltIn.pointerOf(kotlinType);
     javaConcept = concept;
-    myToKotlinNullable = toKotlinNullable;
+    toKotlinNullable = kotlinNullable;
   }
 
   ClassToConceptEnum(SAbstractConcept concept, String kotlinType) {
@@ -43,7 +43,7 @@ public enum ClassToConceptEnum {
 
   public static void populate(JavaToKtEngine fromJava, KtToJavaEngine fromKt) {
     for (ClassToConceptEnum entry : ClassToConceptEnum.values()) {
-      fromJava.declareMapping(entry.javaConcept, new KotlinClassTypeBuilder(entry.kotlinPtr, entry.myToKotlinNullable));
+      fromJava.declareMapping(entry.javaConcept, new KotlinClassTypeBuilder(entry.kotlinPtr, entry.toKotlinNullable));
       fromKt.declareMapping(entry.kotlinPtr, new ConceptBuilder<>(entry.javaConcept));
     }
   }

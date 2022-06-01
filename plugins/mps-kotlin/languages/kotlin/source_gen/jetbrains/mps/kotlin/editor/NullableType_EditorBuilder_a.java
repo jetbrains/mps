@@ -9,6 +9,7 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
+import jetbrains.mps.kotlin.behavior.NullableType__BehaviorDescriptor;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
@@ -49,11 +50,21 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
     editorCell.setCellId("Collection_57stmg_a");
     editorCell.setBig(true);
     setCellContext(editorCell);
-    editorCell.addEditorCell(createConstant_0());
+    if (nodeCondition_57stmg_a0a()) {
+      editorCell.addEditorCell(createConstant_0());
+    }
     editorCell.addEditorCell(createRefNode_0());
-    editorCell.addEditorCell(createConstant_1());
+    if (nodeCondition_57stmg_a2a()) {
+      editorCell.addEditorCell(createConstant_1());
+    }
     editorCell.addEditorCell(createConstant_2());
     return editorCell;
+  }
+  private boolean nodeCondition_57stmg_a0a() {
+    return (boolean) NullableType__BehaviorDescriptor.showParenthesis_id3PNJzGvtdRU.invoke(myNode);
+  }
+  private boolean nodeCondition_57stmg_a2a() {
+    return (boolean) NullableType__BehaviorDescriptor.showParenthesis_id3PNJzGvtdRU.invoke(myNode);
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "(");
