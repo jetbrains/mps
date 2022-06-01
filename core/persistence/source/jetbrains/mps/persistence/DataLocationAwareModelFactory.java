@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.persistence;
 
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -95,7 +95,7 @@ public interface DataLocationAwareModelFactory extends ModelFactory {
       if (model instanceof LoadedStrategyAware) {
         ModelFactory nominalMF = ((LoadedStrategyAware) model).getModelFactory();
         if (nominalMF != null && !Objects.equals(myMF, nominalMF)) {
-          LogManager.getLogger(getClass()).warn("This factory does not coincide with the model declared mf " + myMF + " vs " + nominalMF);
+          Logger.getLogger(getClass()).warning(String.format("This factory does not coincide with the model declared mf %s vs %s", myMF, nominalMF));
         }
       }
     }
