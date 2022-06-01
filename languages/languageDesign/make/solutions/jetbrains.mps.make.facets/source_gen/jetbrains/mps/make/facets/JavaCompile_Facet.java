@@ -25,10 +25,6 @@ import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.project.SModuleOperations;
-import jetbrains.mps.messages.IMessageHandler;
-import jetbrains.mps.messages.LogHandler;
-import org.apache.log4j.LogManager;
-import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.make.ModuleMaker;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.lang.core.plugin.TextGen_Facet.Target_textGen;
@@ -102,10 +98,7 @@ public class JavaCompile_Facet extends IFacet.Stub {
                 return new IResult.SUCCESS(_output_wf1ya0_a0a);
               }
               progressMonitor.start("Compiling Java", 100);
-              // XXX it's odd to use dedicated ErrorsLoggingHandler provided ModuleMaker reports errors to log itself (in addition to IMessageHandler, see MessageSender). Do I need ELH here?
-              // The only reason I could imagine is to make sure errors got logged and could get easily detected in the log.
-              IMessageHandler msgHandler = new LogHandler(LogManager.getLogger(new IFacet.Name("jetbrains.mps.make.facets.JavaCompile").getName())).restrict(MessageKind.ERROR).compose(monitor.getSession().getMessageHandler());
-              final ModuleMaker mm = new ModuleMaker(msgHandler);
+              final ModuleMaker mm = new ModuleMaker(monitor.getSession().getMessageHandler());
               mm.options(vars(pa.global()).options());
               new ModelAccessHelper(monitor.getSession().getProject().getModelAccess()).runReadAction(() -> {
                 // re-use dependencies known to textGen facet (freshly built, in fact)
