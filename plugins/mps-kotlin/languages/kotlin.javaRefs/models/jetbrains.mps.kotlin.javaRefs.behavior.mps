@@ -279,14 +279,10 @@
       <concept id="4693937538533521280" name="jetbrains.mps.lang.smodel.structure.OfConceptOperation" flags="ng" index="v3k3i">
         <child id="4693937538533538124" name="requestedConcept" index="v3oSu" />
       </concept>
-      <concept id="4065387505485742749" name="jetbrains.mps.lang.smodel.structure.AbstractPointerResolveOperation" flags="ng" index="2yCiFS">
-        <child id="3648723375513868575" name="repositoryArg" index="Vysub" />
-      </concept>
       <concept id="2396822768958367367" name="jetbrains.mps.lang.smodel.structure.AbstractTypeCastExpression" flags="nn" index="$5XWr">
         <child id="6733348108486823193" name="leftExpression" index="1m5AlR" />
         <child id="3906496115198199033" name="conceptArgument" index="3oSUPX" />
       </concept>
-      <concept id="1143234257716" name="jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" flags="nn" index="I4A8Y" />
       <concept id="1883223317721008708" name="jetbrains.mps.lang.smodel.structure.IfInstanceOfStatement" flags="nn" index="Jncv_">
         <reference id="1883223317721008712" name="nodeConcept" index="JncvD" />
         <child id="1883223317721008709" name="body" index="Jncv$" />
@@ -298,7 +294,6 @@
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
-      <concept id="3648723375513868532" name="jetbrains.mps.lang.smodel.structure.NodePointer_ResolveOperation" flags="ng" index="Vyspw" />
       <concept id="1171407110247" name="jetbrains.mps.lang.smodel.structure.Node_GetAncestorOperation" flags="nn" index="2Xjw5R" />
       <concept id="2644386474301421077" name="jetbrains.mps.lang.smodel.structure.LinkIdRefExpression" flags="nn" index="359W_D">
         <reference id="2644386474301421078" name="conceptDeclaration" index="359W_E" />
@@ -681,33 +676,13 @@
           </node>
         </node>
         <node concept="3cpWs6" id="6G1hViX$Gjk" role="3cqZAp">
-          <node concept="2OqwBi" id="4QXfFb9QI7o" role="3cqZAk">
-            <node concept="2YIFZM" id="6G1hViX$H6l" role="2Oq$k0">
-              <ref role="37wK5l" to="d5k6:6G1hViX$oB3" resolve="getKotlinUsedClassifier" />
-              <ref role="1Pybhc" to="d5k6:4mCQDm_wmRX" resolve="ClassToClassEnum" />
-              <node concept="2OqwBi" id="6G1hViX$HIQ" role="37wK5m">
-                <node concept="13iPFW" id="6G1hViX$HmZ" role="2Oq$k0" />
-                <node concept="3TrEf2" id="6G1hViX$Ip3" role="2OqNvi">
-                  <ref role="3Tt5mk" to="5m2i:6zWVWr21w5T" resolve="javaClass" />
-                </node>
-              </node>
-            </node>
-            <node concept="Vyspw" id="4QXfFb9QIAY" role="2OqNvi">
-              <node concept="2OqwBi" id="4QXfFb9QLmt" role="Vysub">
-                <node concept="2JrnkZ" id="4QXfFb9QKQe" role="2Oq$k0">
-                  <node concept="2OqwBi" id="4QXfFb9QK42" role="2JrQYb">
-                    <node concept="2OqwBi" id="4QXfFb9QISq" role="2Oq$k0">
-                      <node concept="13iPFW" id="4QXfFb9QIEy" role="2Oq$k0" />
-                      <node concept="3TrEf2" id="4QXfFb9QJdK" role="2OqNvi">
-                        <ref role="3Tt5mk" to="5m2i:6zWVWr21w5T" resolve="javaClass" />
-                      </node>
-                    </node>
-                    <node concept="I4A8Y" id="4QXfFb9QKgD" role="2OqNvi" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="4QXfFb9QLFe" role="2OqNvi">
-                  <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
-                </node>
+          <node concept="2YIFZM" id="6G1hViX$H6l" role="3cqZAk">
+            <ref role="37wK5l" to="d5k6:6G1hViX$oB3" resolve="getKotlinUsedClassifier" />
+            <ref role="1Pybhc" to="d5k6:4mCQDm_wmRX" resolve="ClassToClassEnum" />
+            <node concept="2OqwBi" id="6G1hViX$HIQ" role="37wK5m">
+              <node concept="13iPFW" id="6G1hViX$HmZ" role="2Oq$k0" />
+              <node concept="3TrEf2" id="6G1hViX$Ip3" role="2OqNvi">
+                <ref role="3Tt5mk" to="5m2i:6zWVWr21w5T" resolve="javaClass" />
               </node>
             </node>
           </node>

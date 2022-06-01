@@ -6428,7 +6428,6 @@
     </node>
     <node concept="2tJIrI" id="LTtTkxK4mP" role="jymVt" />
     <node concept="3HP615" id="LTtTkxK5e0" role="jymVt">
-      <property role="2bfB8j" value="true" />
       <property role="TrG5h" value="StubSignatureProducer" />
       <node concept="Wx3nA" id="LTtTkxKaVr" role="jymVt">
         <property role="TrG5h" value="DEFAULT" />

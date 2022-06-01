@@ -539,7 +539,7 @@
     <node concept="1TJgyi" id="2yYXHtl6Jq3" role="1TKVEl">
       <property role="IQ2nx" value="2936055411798374019" />
       <property role="TrG5h" value="value" />
-      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+      <ref role="AX2Wp" node="2yYXHtl6Jqc" resolve="long" />
     </node>
     <node concept="PrWs8" id="4gvOB2uWeff" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
@@ -2273,7 +2273,7 @@
   <node concept="Az7Fb" id="2yYXHtl6Jqc">
     <property role="TrG5h" value="long" />
     <property role="3GE5qa" value="datatypes" />
-    <property role="FLfZY" value="((([1-9](([0-9]|_))*[0-9])|[0-9])|((0[xX][0-9a-fA-F](([0-9a-fA-F]|_))*[0-9a-fA-F])|0[xX][0-9a-fA-F])|((0[bB][01](([01]|_))*[01])|0[bB][01]))[lL]" />
+    <property role="FLfZY" value="([1-9]([0-9]|_)*)|0" />
     <property role="3F6X1D" value="2936055411798374028" />
   </node>
   <node concept="Az7Fb" id="2yYXHtl6Jqe">
@@ -3255,6 +3255,7 @@
     <property role="EcuMT" value="5032507314956342154" />
     <property role="TrG5h" value="UnaryMinusOperation" />
     <property role="34LRSv" value="-" />
+    <property role="R4oN_" value="unary minus" />
     <ref role="1TJDcQ" node="1VI7K1jTqMZ" resolve="OverloadedPrefixUnaryExpression" />
     <node concept="PrWs8" id="4nn3FPlNEba" role="PzmwI">
       <ref role="PrY4T" node="4nn3FPlEjgT" resolve="IOverloadableOperator" />

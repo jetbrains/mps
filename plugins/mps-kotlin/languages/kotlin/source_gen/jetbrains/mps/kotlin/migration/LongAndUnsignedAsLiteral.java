@@ -13,13 +13,17 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class LongAndUnsignedAsLiteral extends MigrationScriptBase {
   private final String description = "Migrate long and unsigned literal to integer literals";
@@ -62,6 +66,19 @@ public class LongAndUnsignedAsLiteral extends MigrationScriptBase {
           }
         }
       });
+
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.IntegerLiteral$7a, false)).where(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return SPropertyOperations.getString(it, PROPS.value$x4lo).startsWith("-");
+        }
+      }).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode it) {
+          SNode minus = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x45d70ebd5587138aL, "jetbrains.mps.kotlin.structure.UnaryMinusOperation"));
+          SNodeOperations.replaceWithAnother(it, minus);
+          SLinkOperations.setTarget(minus, LINKS.operand$YS5t, it);
+          SPropertyOperations.assign(it, PROPS.value$x4lo, SPropertyOperations.getString(it, PROPS.value$x4lo).substring(1));
+        }
+      });
     }
   }
   public MigrationScriptReference getReference() {
@@ -69,7 +86,7 @@ public class LongAndUnsignedAsLiteral extends MigrationScriptBase {
   }
   /*package*/ final Pattern hexPattern = Pattern.compile("^0[xX]([0-9a-fA-F]+)[uU]?[lL]?$");
   /*package*/ final Pattern binPattern = Pattern.compile("^0[bB]([0-1]+)[uU]?[lL]?$");
-  /*package*/ final Pattern decPattern = Pattern.compile("^([0-9]+)[uU]?[lL]?$");
+  /*package*/ final Pattern decPattern = Pattern.compile("^([0-9_]+)[uU]?[lL]?$");
 
   /*package*/ SNode convert(String value) {
     // Hex
@@ -81,7 +98,7 @@ public class LongAndUnsignedAsLiteral extends MigrationScriptBase {
     // Decimal
     matcher = decPattern.matcher(value);
     if (matcher.find()) {
-      return withTags(createIntegerLiteral_pga33a_a0a0g0h(Integer.parseInt(matcher.group(1))), value);
+      return withTags(createIntegerLiteral_pga33a_a0a0g0h(matcher.group(1)), value);
     }
 
     // Decimal
@@ -110,9 +127,9 @@ public class LongAndUnsignedAsLiteral extends MigrationScriptBase {
     n0.setProperty(PROPS.value$x9Je, p0);
     return n0.getResult();
   }
-  private static SNode createIntegerLiteral_pga33a_a0a0g0h(int p0) {
+  private static SNode createIntegerLiteral_pga33a_a0a0g0h(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerLiteral$7a);
-    n0.setProperty(PROPS.value$x4lo, "" + (p0));
+    n0.setProperty(PROPS.value$x4lo, p0);
     return n0.getResult();
   }
   private static SNode createBinLiteral_pga33a_a0a0k0h(String p0) {
@@ -124,8 +141,8 @@ public class LongAndUnsignedAsLiteral extends MigrationScriptBase {
   private static final class CONCEPTS {
     /*package*/ static final SConcept UnsignedLiteral$kI = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d7L, "jetbrains.mps.kotlin.structure.UnsignedLiteral");
     /*package*/ static final SConcept LongLiteral$kf = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d6L, "jetbrains.mps.kotlin.structure.LongLiteral");
-    /*package*/ static final SConcept HexLiteral$7D = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d1L, "jetbrains.mps.kotlin.structure.HexLiteral");
     /*package*/ static final SConcept IntegerLiteral$7a = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d0L, "jetbrains.mps.kotlin.structure.IntegerLiteral");
+    /*package*/ static final SConcept HexLiteral$7D = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d1L, "jetbrains.mps.kotlin.structure.HexLiteral");
     /*package*/ static final SConcept BinLiteral$ij = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d2L, "jetbrains.mps.kotlin.structure.BinLiteral");
   }
 
@@ -134,8 +151,12 @@ public class LongAndUnsignedAsLiteral extends MigrationScriptBase {
     /*package*/ static final SProperty unsigned$iUpc = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4708606L, 0x4a002b656d675c88L, "unsigned");
     /*package*/ static final SProperty value$xbNW = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d6L, 0x28bef6d7551af68dL, "value");
     /*package*/ static final SProperty long$1NZg = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4708606L, 0x4a002b656d67aa05L, "long");
-    /*package*/ static final SProperty value$x9Je = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d1L, 0x28bef6d7551af685L, "value");
     /*package*/ static final SProperty value$x4lo = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d0L, 0x28bef6d7551af683L, "value");
+    /*package*/ static final SProperty value$x9Je = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d1L, 0x28bef6d7551af685L, "value");
     /*package*/ static final SProperty value$xanU = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d2L, 0x28bef6d7551af687L, "value");
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SContainmentLink operand$YS5t = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790956f20L, 0x11400bb790956f23L, "operand");
   }
 }

@@ -799,8 +799,8 @@
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085450">
     <file name="IntegerLiteral_TextGen.java">
       <node id="6153771967696085450" at="14,54,15,55" concept="8" />
-      <node id="6153771967696085459" at="15,55,16,106" concept="3" />
-      <node id="5332309673441079601" at="16,106,17,58" concept="3" />
+      <node id="6153771967696085459" at="15,55,16,87" concept="3" />
+      <node id="5332309673441079601" at="16,87,17,58" concept="3" />
       <node id="6153771967696085450" at="21,0,22,0" concept="12" trace="value$x4lo" />
       <node id="6153771967696085450" at="13,0,19,0" concept="7" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
       <scope id="6153771967696085450" at="14,54,17,58">

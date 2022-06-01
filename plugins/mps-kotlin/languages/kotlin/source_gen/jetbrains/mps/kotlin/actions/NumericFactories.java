@@ -18,7 +18,7 @@ public class NumericFactories {
       {
         final SNode numeric = sampleNode;
         if (SNodeOperations.isInstanceOf(numeric, CONCEPTS.NumericBaseLiteral$6e)) {
-          NumericBaseLiteral__BehaviorDescriptor.setValue_id6cg9X74saKl.invoke(newNode, ((int) (int) NumericBaseLiteral__BehaviorDescriptor.getValue_id6cg9X74s8pg.invoke(numeric)));
+          NumericBaseLiteral__BehaviorDescriptor.setValue_id6cg9X74saKl.invoke(newNode, NumericBaseLiteral__BehaviorDescriptor.getValue_id6cg9X74s8pg.invoke(numeric));
           SPropertyOperations.assign(newNode, PROPS.long$1NZg, SPropertyOperations.getBoolean(numeric, PROPS.long$1NZg));
           SPropertyOperations.assign(newNode, PROPS.unsigned$iUpc, SPropertyOperations.getBoolean(numeric, PROPS.unsigned$iUpc));
         }

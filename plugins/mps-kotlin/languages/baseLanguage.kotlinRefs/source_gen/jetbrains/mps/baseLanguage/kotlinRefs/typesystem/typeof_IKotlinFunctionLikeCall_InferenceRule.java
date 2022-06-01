@@ -18,8 +18,10 @@ import jetbrains.mps.typesystem.inference.EquationInfo;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.behavior.IGenericType__BehaviorDescriptor;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
+import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import java.util.Iterator;
 import java.util.List;
 import jetbrains.mps.kotlin.overloading.FunctionParamMapper;
@@ -91,11 +93,13 @@ public class typeof_IKotlinFunctionLikeCall_InferenceRule extends AbstractInfere
           // check the inference context
           // TODO implement for kotlin?
           Iterable<TypeParameterDeclaration> typeVariableDeclaration = IKotlinFunctionLikeCall__BehaviorDescriptor.getFunctionTypeParameters_id1t03WaySlJT.invoke(fCall);
+          SRepository repository = SNodeOperations.getModel(fCall).getRepository();
           if (ListSequence.fromList(SLinkOperations.getChildren(fCall, LINKS.typeArgument$Q6Au)).isEmpty() && Sequence.fromIterable(typeVariableDeclaration).isNotEmpty()) {
             for (TypeParameterDeclaration tvd : Sequence.fromIterable(typeVariableDeclaration)) {
-              if (!(MapSequence.fromMap(subs).containsKey(tvd.getNode()))) {
+              SNode node = SPointerOperations.resolveNode(tvd.getNode(), repository);
+              if (!(MapSequence.fromMap(subs).containsKey(node))) {
                 final SNode T_typevar_4695112407844173847 = typeCheckingContext.createNewRuntimeTypesVariable();
-                MapSequence.fromMap(subs).put(tvd.getNode(), typeCheckingContext.getRepresentative(T_typevar_4695112407844173847));
+                MapSequence.fromMap(subs).put(node, typeCheckingContext.getRepresentative(T_typevar_4695112407844173847));
               }
             }
             for (TypeParameterDeclaration tvd : Sequence.fromIterable(typeVariableDeclaration)) {
@@ -104,10 +108,11 @@ public class typeof_IKotlinFunctionLikeCall_InferenceRule extends AbstractInfere
                 final SNode generic = bound;
                 if (SNodeOperations.isInstanceOf(generic, CONCEPTS.IGenericType$13)) {
                   IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(generic, subs);
+                  SNode node = SPointerOperations.resolveNode(tvd.getNode(), repository);
                   {
                     SNode _nodeToCheck_1029348928467 = fCall;
                     EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "5302270944911972807", 0, null);
-                    typeCheckingContext.createLessThanInequality((SNode) MapSequence.fromMap(subs).get(tvd.getNode()), (SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.copyNode(generic), subs), false, false, _info_12389875345);
+                    typeCheckingContext.createLessThanInequality((SNode) MapSequence.fromMap(subs).get(node), (SNode) IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.copyNode(generic), subs), false, false, _info_12389875345);
                   }
                 }
               }
@@ -122,7 +127,8 @@ public class typeof_IKotlinFunctionLikeCall_InferenceRule extends AbstractInfere
               while (tvd_it.hasNext() && targ_it.hasNext()) {
                 tvd_var = tvd_it.next();
                 targ_var = targ_it.next();
-                MapSequence.fromMap(subs).put(tvd_var.getNode(), targ_var);
+                SNode node = SPointerOperations.resolveNode(tvd_var.getNode(), repository);
+                MapSequence.fromMap(subs).put(node, targ_var);
                 if (SNodeOperations.isInstanceOf(targ_var, CONCEPTS.IGenericType$13)) {
                   IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(targ_var, CONCEPTS.IGenericType$13), subs);
                 }

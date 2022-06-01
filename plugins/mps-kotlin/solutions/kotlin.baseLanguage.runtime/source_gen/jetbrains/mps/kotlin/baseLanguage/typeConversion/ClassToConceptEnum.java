@@ -25,7 +25,7 @@ public enum ClassToConceptEnum {
   DOUBLE(CONCEPTS.DoubleType$x0, "kotlin/Double"),
   BOOLEAN(CONCEPTS.BooleanType$_u, "kotlin/Boolean"),
   NOTHING(CONCEPTS.NullType$Ea, "kotlin/Nothing", true),
-  STRING(CONCEPTS.StringType$uX, "kotlin/String");
+  STRING(CONCEPTS.StringType$uX, "kotlin/String", true);
 
   public final SNodeReference kotlinPtr;
   public final SAbstractConcept javaConcept;

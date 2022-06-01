@@ -87,7 +87,7 @@ public class IntegerLiteral_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode lit = SNodeFactoryOperations.createNewNode(CONCEPTS.IntegerLiteral$7a, null);
-        SPropertyOperations.assign(lit, PROPS.value$x4lo, Integer.parseInt(pattern));
+        SPropertyOperations.assign(lit, PROPS.value$x4lo, pattern);
         return lit;
       }
 
@@ -98,7 +98,7 @@ public class IntegerLiteral_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public String getMatchingText(@NotNull String pattern) {
-        return (Pattern.matches("^[0-9]+$", pattern) ? pattern : null);
+        return (Pattern.matches("^(([1-9]([0-9]|_)*)|0)$", pattern) ? pattern : null);
       }
     }
   }

@@ -144,7 +144,7 @@ public class NumericBaseLiteral_TransformationMenu extends TransformationMenuBas
         SNodeOperations.replaceWithAnother(_context.getNode(), createdNode);
         SPropertyOperations.assign(createdNode, PROPS.long$1NZg, SPropertyOperations.getBoolean(_context.getNode(), PROPS.long$1NZg));
         SPropertyOperations.assign(createdNode, PROPS.unsigned$iUpc, SPropertyOperations.getBoolean(_context.getNode(), PROPS.unsigned$iUpc));
-        NumericBaseLiteral__BehaviorDescriptor.setValue_id6cg9X74saKl.invoke(createdNode, ((int) (int) NumericBaseLiteral__BehaviorDescriptor.getValue_id6cg9X74s8pg.invoke(_context.getNode())));
+        NumericBaseLiteral__BehaviorDescriptor.setValue_id6cg9X74saKl.invoke(createdNode, NumericBaseLiteral__BehaviorDescriptor.getValue_id6cg9X74s8pg.invoke(_context.getNode()));
         SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), createdNode, SelectionManager.FIRST_EDITABLE_CELL, -1);
       }
 

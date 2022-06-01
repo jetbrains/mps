@@ -61,6 +61,9 @@
       <concept id="1106270571710" name="jetbrains.mps.lang.editor.structure.CellLayout_Vertical" flags="nn" index="2iRkQZ" />
       <concept id="8954657570917870539" name="jetbrains.mps.lang.editor.structure.TransformationLocation_ContextAssistant" flags="ng" index="2j_NTm" />
       <concept id="8954657570916342474" name="jetbrains.mps.lang.editor.structure.QueryFunction_TransformationMenu_Node" flags="ig" index="2jZ$Xn" />
+      <concept id="6089045305654894367" name="jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Named" flags="ng" index="2kknPI">
+        <reference id="6089045305654944382" name="menu" index="2kkw0f" />
+      </concept>
       <concept id="6089045305654894366" name="jetbrains.mps.lang.editor.structure.SubstituteMenuReference_Default" flags="ng" index="2kknPJ" />
       <concept id="1237303669825" name="jetbrains.mps.lang.editor.structure.CellLayout_Indent" flags="nn" index="l2Vlx" />
       <concept id="1237307900041" name="jetbrains.mps.lang.editor.structure.IndentLayoutIndentStyleClassItem" flags="ln" index="lj46D" />
@@ -157,6 +160,7 @@
         <property id="1186403771423" name="style" index="Vbekb" />
       </concept>
       <concept id="1186404549998" name="jetbrains.mps.lang.editor.structure.ForegroundColorStyleClassItem" flags="ln" index="VechU" />
+      <concept id="615427434521884870" name="jetbrains.mps.lang.editor.structure.SubstituteMenuPart_Subconcepts" flags="ng" index="2VfDsV" />
       <concept id="1186414536763" name="jetbrains.mps.lang.editor.structure.BooleanStyleSheetItem" flags="ln" index="VOi$J">
         <property id="1186414551515" name="flag" index="VOm3f" />
         <child id="1223387335081" name="query" index="3n$kyP" />
@@ -5556,9 +5560,6 @@
         </node>
       </node>
       <node concept="3c8P5G" id="4Nah4_Q8wdC" role="1Qtc8A">
-        <node concept="2kknPJ" id="4Nah4_Q8wdD" role="3c8P5H">
-          <ref role="2ZyFGn" to="hcm8:1502Vug_kVv" resolve="BinaryExpression" />
-        </node>
         <node concept="3c8PGw" id="4Nah4_Q8wdE" role="3c8PHt">
           <node concept="3clFbS" id="4Nah4_Q8wdF" role="2VODD2">
             <node concept="3clFbF" id="666oMY5H6yx" role="3cqZAp">
@@ -5582,6 +5583,9 @@
             </node>
           </node>
         </node>
+        <node concept="2kknPI" id="77yS8CrFGY1" role="3c8P5H">
+          <ref role="2kkw0f" node="77yS8CrFEsA" resolve="BinaryExpression_AllSubconcepts" />
+        </node>
       </node>
     </node>
     <node concept="1Qtc8_" id="4Nah4_Q8nu7" role="IW6Ez">
@@ -5591,9 +5595,6 @@
         </node>
       </node>
       <node concept="3c8P5G" id="4Nah4_Q8qG6" role="1Qtc8A">
-        <node concept="2kknPJ" id="4Nah4_Q8qGm" role="3c8P5H">
-          <ref role="2ZyFGn" to="hcm8:1502Vug_kVv" resolve="BinaryExpression" />
-        </node>
         <node concept="3c8PGw" id="4Nah4_Q8qG8" role="3c8PHt">
           <node concept="3clFbS" id="4Nah4_Q8qG9" role="2VODD2">
             <node concept="3clFbF" id="666oMY5H7Y1" role="3cqZAp">
@@ -5614,6 +5615,9 @@
               </node>
             </node>
           </node>
+        </node>
+        <node concept="2kknPI" id="77yS8CrFHaK" role="3c8P5H">
+          <ref role="2kkw0f" node="77yS8CrFEsA" resolve="BinaryExpression_AllSubconcepts" />
         </node>
       </node>
     </node>
@@ -7146,11 +7150,7 @@
           </node>
           <node concept="3clFbF" id="213J8chlJvS" role="3cqZAp">
             <node concept="37vLTI" id="213J8chlLfB" role="3clFbG">
-              <node concept="2YIFZM" id="213J8chlLNf" role="37vLTx">
-                <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String)" resolve="parseInt" />
-                <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
-                <node concept="ub8z3" id="213J8chlLPp" role="37wK5m" />
-              </node>
+              <node concept="ub8z3" id="6$rQJ8GI7uI" role="37vLTx" />
               <node concept="2OqwBi" id="213J8chlJJq" role="37vLTJ">
                 <node concept="37vLTw" id="213J8chlJvQ" role="2Oq$k0">
                   <ref role="3cqZAo" node="213J8chlJtT" resolve="lit" />
@@ -7179,7 +7179,7 @@
                   <ref role="37wK5l" to="ni5j:~Pattern.matches(java.lang.String,java.lang.CharSequence)" resolve="matches" />
                   <ref role="1Pybhc" to="ni5j:~Pattern" resolve="Pattern" />
                   <node concept="Xl_RD" id="213J8chlIw1" role="37wK5m">
-                    <property role="Xl_RC" value="^[0-9]+$" />
+                    <property role="Xl_RC" value="^(([1-9]([0-9]|_)*)|0)$" />
                   </node>
                   <node concept="ub8z3" id="213J8chlIH3" role="37wK5m" />
                 </node>
@@ -18709,8 +18709,8 @@
     </node>
     <node concept="1Qtc8_" id="1oDhglvlerl" role="IW6Ez">
       <node concept="3c8P5G" id="1oDhglvleQE" role="1Qtc8A">
-        <node concept="2kknPJ" id="1oDhglvleXh" role="3c8P5H">
-          <ref role="2ZyFGn" to="hcm8:1502Vug_kVv" resolve="BinaryExpression" />
+        <node concept="2kknPI" id="77yS8CrFGjb" role="3c8P5H">
+          <ref role="2kkw0f" node="77yS8CrFEsA" resolve="BinaryExpression_AllSubconcepts" />
         </node>
         <node concept="3c8PGw" id="1oDhglvleQH" role="3c8PHt">
           <node concept="3clFbS" id="1oDhglvleQJ" role="2VODD2">
@@ -19069,6 +19069,19 @@
         </node>
       </node>
     </node>
+  </node>
+  <node concept="22mcaB" id="77yS8CrFEsA">
+    <property role="3GE5qa" value="expression.operator.binary" />
+    <ref role="aqKnT" to="hcm8:1502Vug_kVv" resolve="BinaryExpression" />
+    <node concept="22hDWg" id="77yS8CrFEzh" role="22hAXT">
+      <property role="TrG5h" value="BinaryExpression_AllSubconcepts" />
+    </node>
+    <node concept="2VfDsV" id="77yS8CrFFIC" role="3ft7WO" />
+  </node>
+  <node concept="22mcaB" id="77yS8CrFFP5">
+    <property role="3GE5qa" value="expression.operator.binary" />
+    <ref role="aqKnT" to="hcm8:1502Vug_kVv" resolve="BinaryExpression" />
+    <node concept="22hDWj" id="77yS8CrFFV6" role="22hAXT" />
   </node>
 </model>
 

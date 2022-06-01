@@ -20,8 +20,11 @@ import jetbrains.mps.kotlin.scopes.SuperTypesGenericVisitor;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService;
 import jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine;
+import org.jetbrains.mps.openapi.module.SRepository;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -54,8 +57,9 @@ public final class KotlinClassifierType__BehaviorDescriptor extends BaseBHDescri
 
     // Then we convert it back to BL
     KtToJavaEngine converter = TypeConversionService.getInstance().getKtToJava();
+    SRepository repository = SNodeOperations.getModel(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$5Cta)).getRepository();
     for (IMapping<TypeParameterDeclaration, SNode> entry : MapSequence.fromMap(visitor.getSubstitutions().getMap())) {
-      SNode key = entry.key().getNode();
+      SNode key = SPointerOperations.resolveNode(entry.key().getNode(), repository);
       if (!(MapSequence.fromMap(subs).containsKey(key))) {
         MapSequence.fromMap(subs).put(key, KtToJavaEngine.convertProjection(entry.value(), converter));
       }

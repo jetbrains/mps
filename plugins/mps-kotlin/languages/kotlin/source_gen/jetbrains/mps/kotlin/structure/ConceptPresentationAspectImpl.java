@@ -2132,6 +2132,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.UnaryMinusOperation:
         if (props_UnaryMinusOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("unary minus");
           cpb.rawPresentation("-");
           props_UnaryMinusOperation = cpb.create();
         }
