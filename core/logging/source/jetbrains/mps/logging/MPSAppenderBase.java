@@ -15,12 +15,10 @@
  */
 package jetbrains.mps.logging;
 
-
 import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.Logger;
 import org.apache.log4j.Priority;
 import org.apache.log4j.spi.LoggingEvent;
-import org.apache.log4j.spi.ThrowableInformation;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.project.Project;
@@ -31,6 +29,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Implement this to have your own appender.
  * @deprecated With switch to JUL, use {@link java.util.logging.Handler}
  */
+@SuppressWarnings("UnstableApiUsage")
 @Deprecated(since = "2022.1", forRemoval = true)
 public abstract class MPSAppenderBase extends AppenderSkeleton {
   private final static AtomicInteger ourCount = new AtomicInteger(0);
@@ -81,35 +80,7 @@ public abstract class MPSAppenderBase extends AppenderSkeleton {
 
   @Override
   protected void append(LoggingEvent event) {
-    ThrowableInformation throwableInformation = event.getThrowableInformation();
-    String renderedMessage = event.getRenderedMessage();
-    Object message = event.getMessage();
-    String categoryName = event.getLoggerName();
-    Project project = null;
-    if (renderedMessage != null && renderedMessage.equals(message)) {
-      message = null;
-    } else if (message instanceof MessageObject) {
-      MessageObject messageObject = (MessageObject) message;
-      renderedMessage = messageObject.getMessage();
-      message = messageObject.getHintObject();
-      if (messageObject.getSender() != null) {
-        categoryName = messageObject.getSender();
-      }
-      if (messageObject.getProject() != null) {
-        project = messageObject.getProject();
-      }
-    }
-    if (renderedMessage == null) {
-      renderedMessage = "";
-    }
-    Throwable throwable = null;
-    if (throwableInformation != null) {
-      throwable = throwableInformation.getThrowable();
-    } else if (message instanceof Throwable) {
-      throwable = (Throwable) message;
-    }
-
-    append(project, event.getLevel(), categoryName, renderedMessage, throwable, message);
+    System.err.println("MPSAppenderBase is deprecated, stop using this class. MPS uses JUL now, switch to j.u.l.Handler");
   }
 
   @Override
