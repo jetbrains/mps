@@ -21,7 +21,6 @@
     <import index="33ny" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util(JDK/)" />
     <import index="5wnq" ref="83f155ff-422c-4b5a-a2f2-b459302dd215/java:org.jmock.api(jetbrains.mps.baseLanguage.unitTest.libs/)" />
     <import index="mk8z" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.progress(MPS.Core/)" />
-    <import index="q7tw" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:org.apache.log4j(MPS.Core/)" />
     <import index="yyf4" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.util(MPS.OpenAPI/)" />
     <import index="rjhg" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit(JUnit/)" />
     <import index="cvlm" ref="49808fad-9d41-4b96-83fa-9231640f6b2b/java:org.junit.runner(JUnit/)" />
@@ -42,6 +41,7 @@
       </concept>
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
+      <concept id="1465982738277781862" name="jetbrains.mps.baseLanguage.structure.PlaceholderMember" flags="nn" index="2tJIrI" />
       <concept id="1076505808687" name="jetbrains.mps.baseLanguage.structure.WhileStatement" flags="nn" index="2$JKZl">
         <child id="1076505808688" name="condition" index="2$JKZa" />
       </concept>
@@ -51,14 +51,9 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
-        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
-      </concept>
-      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
-        <reference id="1188214555875" name="key" index="2B6OnR" />
-        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1154032098014" name="jetbrains.mps.baseLanguage.structure.AbstractLoopStatement" flags="nn" index="2LF5Ji">
         <child id="1154032183016" name="body" index="2LFqv$" />
@@ -224,16 +219,11 @@
       <concept id="1206629501431" name="jetbrains.mps.baseLanguage.structure.InstanceInitializer" flags="lg" index="3KIgzJ">
         <child id="1206629521979" name="statementList" index="3KIlGz" />
       </concept>
-      <concept id="1221737317277" name="jetbrains.mps.baseLanguage.structure.StaticInitializer" flags="lg" index="1Pe0a1">
-        <child id="1221737317278" name="statementList" index="1Pe0a2" />
-      </concept>
       <concept id="6329021646629104954" name="jetbrains.mps.baseLanguage.structure.SingleLineComment" flags="nn" index="3SKdUt">
         <child id="8356039341262087992" name="line" index="1aUNEU" />
       </concept>
-      <concept id="2580416627845338977" name="jetbrains.mps.baseLanguage.structure.ImplicitAnnotationInstanceValue" flags="ng" index="1SXeKx" />
       <concept id="1146644602865" name="jetbrains.mps.baseLanguage.structure.PublicVisibility" flags="nn" index="3Tm1VV" />
       <concept id="1146644623116" name="jetbrains.mps.baseLanguage.structure.PrivateVisibility" flags="nn" index="3Tm6S6" />
-      <concept id="1146644641414" name="jetbrains.mps.baseLanguage.structure.ProtectedVisibility" flags="nn" index="3Tmbuc" />
       <concept id="1116615150612" name="jetbrains.mps.baseLanguage.structure.ClassifierClassExpression" flags="nn" index="3VsKOn">
         <reference id="1116615189566" name="classifier" index="3VsUkX" />
       </concept>
@@ -4066,15 +4056,6 @@
       </node>
       <node concept="2AHcQZ" id="24lCXWIKXDU" role="2AJF6D">
         <ref role="2AI5Lk" to="rjhg:~Before" resolve="Before" />
-      </node>
-    </node>
-    <node concept="2AHcQZ" id="24lCXWIKWPV" role="2AJF6D">
-      <ref role="2AI5Lk" to="cvlm:~RunWith" resolve="RunWith" />
-      <node concept="1SXeKx" id="24lCXWIKWZJ" role="2B76xF">
-        <ref role="2B6OnR" to="cvlm:~RunWith.value()" resolve="value" />
-        <node concept="3VsKOn" id="24lCXWIKX1x" role="2B70Vg">
-          <ref role="3VsUkX" to="9r38:~JMock" resolve="JMock" />
-        </node>
       </node>
     </node>
     <node concept="3uibUv" id="24lCXWIKYAQ" role="1zkMxy">
@@ -10061,15 +10042,6 @@
     <node concept="3uibUv" id="1MpPVq5jPcp" role="1zkMxy">
       <ref role="3uigEE" node="1MpPVq5jPbU" resolve="MockTestCase" />
     </node>
-    <node concept="2AHcQZ" id="24lCXWIKYQp" role="2AJF6D">
-      <ref role="2AI5Lk" to="cvlm:~RunWith" resolve="RunWith" />
-      <node concept="1SXeKx" id="24lCXWIKYQq" role="2B76xF">
-        <ref role="2B6OnR" to="cvlm:~RunWith.value()" resolve="value" />
-        <node concept="3VsKOn" id="24lCXWIKYQs" role="2B70Vg">
-          <ref role="3VsUkX" to="9r38:~JMock" resolve="JMock" />
-        </node>
-      </node>
-    </node>
   </node>
   <node concept="312cEu" id="1MpPVq5jPbU">
     <property role="TrG5h" value="MockTestCase" />
@@ -10077,30 +10049,25 @@
     <node concept="3Tm1VV" id="1MpPVq5jPbV" role="1B3o_S" />
     <node concept="312cEg" id="1MpPVq5jPc9" role="jymVt">
       <property role="TrG5h" value="context" />
-      <node concept="3Tmbuc" id="1MpPVq5jPcc" role="1B3o_S" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm1VV" id="3Y3i7n6LUCf" role="1B3o_S" />
       <node concept="3uibUv" id="1MpPVq5jPcb" role="1tU5fm">
-        <ref role="3uigEE" to="mg6i:~Mockery" resolve="Mockery" />
+        <ref role="3uigEE" to="9r38:~JUnitRuleMockery" resolve="JUnitRuleMockery" />
       </node>
       <node concept="2ShNRf" id="1MpPVq5jPce" role="33vP2m">
         <node concept="1pGfFk" id="1MpPVq5jPcg" role="2ShVmc">
-          <ref role="37wK5l" to="9r38:~JUnit4Mockery.&lt;init&gt;()" resolve="JUnit4Mockery" />
+          <ref role="37wK5l" to="9r38:~JUnitRuleMockery.&lt;init&gt;()" resolve="JUnitRuleMockery" />
         </node>
       </node>
+      <node concept="2AHcQZ" id="3Y3i7n6LVSJ" role="2AJF6D">
+        <ref role="2AI5Lk" to="rjhg:~Rule" resolve="Rule" />
+      </node>
     </node>
+    <node concept="2tJIrI" id="3Y3i7n6LVTZ" role="jymVt" />
     <node concept="3clFbW" id="1MpPVq5jPbW" role="jymVt">
       <node concept="3cqZAl" id="1MpPVq5jPbX" role="3clF45" />
       <node concept="3Tm1VV" id="1MpPVq5jPbY" role="1B3o_S" />
       <node concept="3clFbS" id="1MpPVq5jPbZ" role="3clF47" />
-    </node>
-    <node concept="1Pe0a1" id="3SVf9h63dIh" role="jymVt">
-      <node concept="3clFbS" id="3SVf9h63dIi" role="1Pe0a2">
-        <node concept="3clFbF" id="3SVf9h63e9O" role="3cqZAp">
-          <node concept="2YIFZM" id="3SVf9h63e9Q" role="3clFbG">
-            <ref role="37wK5l" to="q7tw:~BasicConfigurator.configure()" resolve="configure" />
-            <ref role="1Pybhc" to="q7tw:~BasicConfigurator" resolve="BasicConfigurator" />
-          </node>
-        </node>
-      </node>
     </node>
   </node>
   <node concept="312cEu" id="Xix98UO8YJ">
@@ -15612,15 +15579,6 @@
     </node>
     <node concept="3uibUv" id="3vZ67aZykNN" role="1zkMxy">
       <ref role="3uigEE" node="1MpPVq5jPbU" resolve="MockTestCase" />
-    </node>
-    <node concept="2AHcQZ" id="24lCXWIKYQ0" role="2AJF6D">
-      <ref role="2AI5Lk" to="cvlm:~RunWith" resolve="RunWith" />
-      <node concept="1SXeKx" id="24lCXWIKYQ1" role="2B76xF">
-        <ref role="2B6OnR" to="cvlm:~RunWith.value()" resolve="value" />
-        <node concept="3VsKOn" id="24lCXWIKYQ3" role="2B70Vg">
-          <ref role="3VsUkX" to="9r38:~JMock" resolve="JMock" />
-        </node>
-      </node>
     </node>
   </node>
   <node concept="312cEu" id="24lCXWIKMai">

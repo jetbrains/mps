@@ -65,10 +65,8 @@
     <classNode dependClassName="org.jmock.Expectations" />
     <classNode dependClassName="org.jmock.api.Action" />
     <classNode dependClassName="org.jmock.api.Invocation" />
-    <classNode dependClassName="org.jmock.integration.junit4.JMock" />
     <classNode dependClassName="org.junit.Assert" />
     <classNode dependClassName="org.junit.Test" />
-    <classNode dependClassName="org.junit.runner.RunWith" />
     <classNode extendsClassName="jetbrains.mps.make.unittest.MockTestCase" />
   </dependency>
   <dependency className="jetbrains.mps.make.unittest.FacetRegistry_Test">
@@ -98,9 +96,8 @@
     <classNode dependClassName="jetbrains.mps.internal.make.runtime.util.GraphAnalyzer" />
   </dependency>
   <dependency className="jetbrains.mps.make.unittest.MockTestCase">
-    <classNode dependClassName="org.apache.log4j.BasicConfigurator" />
-    <classNode dependClassName="org.jmock.Mockery" />
-    <classNode dependClassName="org.jmock.integration.junit4.JUnit4Mockery" />
+    <classNode dependClassName="org.jmock.integration.junit4.JUnitRuleMockery" />
+    <classNode dependClassName="org.junit.Rule" />
   </dependency>
   <dependency className="jetbrains.mps.make.unittest.Mockups">
     <classNode dependClassName="java.lang.Class" />
@@ -148,12 +145,10 @@
     <classNode dependClassName="jetbrains.mps.make.unittest.Mockups" />
     <classNode dependClassName="jetbrains.mps.make.unittest.Utils" />
     <classNode dependClassName="org.jmock.Expectations" />
-    <classNode dependClassName="org.jmock.integration.junit4.JMock" />
     <classNode dependClassName="org.junit.After" />
     <classNode dependClassName="org.junit.Assert" />
     <classNode dependClassName="org.junit.Before" />
     <classNode dependClassName="org.junit.Test" />
-    <classNode dependClassName="org.junit.runner.RunWith" />
     <classNode extendsClassName="jetbrains.mps.make.unittest.MockTestCase" />
   </dependency>
   <dependency className="jetbrains.mps.make.unittest.Targets_Test">
@@ -166,10 +161,8 @@
     <classNode dependClassName="jetbrains.mps.make.unittest.Mockups" />
     <classNode dependClassName="jetbrains.mps.make.unittest.Utils" />
     <classNode dependClassName="org.jmock.Expectations" />
-    <classNode dependClassName="org.jmock.integration.junit4.JMock" />
     <classNode dependClassName="org.junit.Assert" />
     <classNode dependClassName="org.junit.Test" />
-    <classNode dependClassName="org.junit.runner.RunWith" />
     <classNode extendsClassName="jetbrains.mps.make.unittest.MockTestCase" />
   </dependency>
   <dependency className="jetbrains.mps.make.unittest.Utils">

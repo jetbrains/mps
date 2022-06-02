@@ -80,12 +80,10 @@
     <classNode dependClassName="org.jmock.Expectations" />
     <classNode dependClassName="org.jmock.api.Action" />
     <classNode dependClassName="org.jmock.api.Invocation" />
-    <classNode dependClassName="org.jmock.integration.junit4.JMock" />
     <classNode dependClassName="org.junit.After" />
     <classNode dependClassName="org.junit.Assert" />
     <classNode dependClassName="org.junit.Before" />
     <classNode dependClassName="org.junit.Test" />
-    <classNode dependClassName="org.junit.runner.RunWith" />
     <classNode extendsClassName="jetbrains.mps.make.unittest.MockTestCase" />
   </dependency>
   <dependency className="jetbrains.mps.make.generator.Generator__Facet">
