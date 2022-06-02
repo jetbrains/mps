@@ -19,8 +19,10 @@ import jetbrains.mps.util.FileUtil;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.extapi.persistence.ModelFactoryService;
-import java.util.Properties;
-import org.apache.log4j.PropertyConfigurator;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import java.util.logging.FileHandler;
+import java.util.logging.SimpleFormatter;
 
 @GeneratedClass(node = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)/3342666646761693517", model = "r:a178d3c3-970e-4352-b61c-4e55abc3bc24(jetbrains.mps.vcs.core.mergedriver)")
 public class MergeDriverMain {
@@ -33,7 +35,7 @@ public class MergeDriverMain {
   public static final String NO_FILETYPE = "undefined";
   private MergeDriverMain() {
   }
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
     byte[] conflictStart = CONFLICT_START.getBytes();
     byte[] conflictEnd = CONFLICT_END.getBytes();
     byte[] conflictSeparator = CONFLICT_SEPARATOR.getBytes();
@@ -60,7 +62,7 @@ public class MergeDriverMain {
       System.exit(2);
       return;
     }
-    configureLog4j();
+    configureLog();
     Platform platform = PlatformFactory.initPlatform(PlatformOptionsBuilder.PERSISTENCE);
 
     String systemPath = new File(System.getProperty(LOG_PROPERTY)).getParentFile().getParentFile().getAbsolutePath();
@@ -81,7 +83,7 @@ public class MergeDriverMain {
     System.exit(status);
   }
   public static boolean hasCRLF(File f) {
-    // getting directlry from the file, but can get from git core.autcrlf + core.eol
+    // getting directly from the file, but can get from git core.autcrlf + core.eol
     Reader r = null;
     try {
       r = new BufferedReader(new FileReader(f));
@@ -133,20 +135,19 @@ public class MergeDriverMain {
         return new TextMerger();
     }
   }
-  private static void configureLog4j() {
+  private static void configureLog() throws IOException {
     String logPath = System.getProperty(LOG_PROPERTY);
     if ((logPath == null || logPath.length() == 0)) {
       return;
     }
-    Properties p = new Properties();
-    p.setProperty("log4j.rootLogger", "info, file");
-    p.setProperty("log4j.appender.file", "org.apache.log4j.RollingFileAppender");
-    p.setProperty("log4j.appender.file.File", logPath);
-    p.setProperty("log4j.appender.file.Append", "true");
-    p.setProperty("log4j.appender.file.MaxFileSize", "2MB");
-    p.setProperty("log4j.appender.file.MaxBackupIndex", "2");
-    p.setProperty("log4j.appender.file.layout", "org.apache.log4j.PatternLayout");
-    p.setProperty("log4j.appender.file.layout.conversionPattern", "%d{DATE} %5p %t %c{1}:%M:%L - %m%n");
-    PropertyConfigurator.configure(p);
+    Logger rootLogger = Logger.getLogger("");
+    rootLogger.setLevel(Level.INFO);
+    FileHandler fh = new FileHandler(logPath, 2l * 1024 * 1024, 2, true);
+    fh.setFormatter(new SimpleFormatter());
+    // for log4j, format string was "%d{DATE} %5p %t %c{1}:%M:%L - %m%n".
+    // I find it tedious to configure SimpleFormatter (no cons argument, need system property) or 
+    // to write custom formatter, and decided to stick to default log format. If anyone complains, 
+    // there's always a workaround to have system property "java.util.logging.SimpleFormatter.format" specified.
+    rootLogger.addHandler(fh);
   }
 }

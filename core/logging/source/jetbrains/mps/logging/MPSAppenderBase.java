@@ -16,8 +16,9 @@
 package jetbrains.mps.logging;
 
 
-import org.apache.log4j.*;
+import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.Logger;
+import org.apache.log4j.Priority;
 import org.apache.log4j.spi.LoggingEvent;
 import org.apache.log4j.spi.ThrowableInformation;
 import org.jetbrains.annotations.NotNull;
