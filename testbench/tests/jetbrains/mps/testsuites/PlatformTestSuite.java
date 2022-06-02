@@ -65,11 +65,10 @@ public class PlatformTestSuite extends OutputWatchingTestSuite {
     // MigrationsTest needs "migration" plugin
     // modules loading tests need kotlin plugin (kotlin stubs loading)
     EnvironmentConfig cfg = EnvironmentConfig.defaultConfig()
-                                             .withAutomaticPluginDiscovery()
-//                                             .withVcsPlugin()
-//                                             .withBuildPlugin()
-//                                             .withMigrationPlugin()
-//                                             .withKotlinPlugin()
+                                             .withVcsPlugin()
+                                             .withBuildPlugin()
+                                             .withMigrationPlugin()
+                                             .withKotlinPlugin()
                                              .withTestModeOn();
     ourEnvironment = new IdeaEnvironment(cfg);
     ourEnvironment.init();

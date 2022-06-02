@@ -56,10 +56,9 @@ public class ModuleTestSuite extends BaseMpsSuite {
   static {
     // build and vcs plugin are derived from ModuleSymbolicSuite
     EnvironmentConfig cfg = EnvironmentConfig.defaultConfig()
-                                              .withAutomaticPluginDiscovery()
-//                                             .withBuildPlugin()
-//                                             .withVcsPlugin()
-//                                             .withDebuggerPlugin()
+                                             .withBuildPlugin()
+                                             .withVcsPlugin()
+                                             .withDebuggerPlugin()
                                              .withTestModeOn();
     ourEnvironment = new IdeaEnvironment(cfg);
     ourEnvironment.init();
