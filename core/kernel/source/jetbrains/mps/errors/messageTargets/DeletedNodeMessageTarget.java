@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.errors.messageTargets;
 
-import jetbrains.mps.util.EqualUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -25,32 +24,11 @@ import java.util.Objects;
 @Immutable
 public final class DeletedNodeMessageTarget implements MessageTarget {
   private final SContainmentLink myLink;
-  @Deprecated(since = "2019.2", forRemoval = true)
-  private String myRole;
   private int myNextChildIndex = -1; // -1 for deleted in single role
-
-  /**
-   * @deprecated use alternative with S-metaobject
-   */
-@Deprecated(since = "2019.2", forRemoval = true)
-  public DeletedNodeMessageTarget(@NotNull String role, int nextChildIndex) {
-    myRole = role;
-    myNextChildIndex = nextChildIndex;
-    myLink = null;
-  }
 
   public DeletedNodeMessageTarget(@NotNull SContainmentLink link, int nextChildIndex) {
     myLink = link;
     myNextChildIndex = nextChildIndex;
-  }
-
-  /**
-   * @deprecated use alternative with S-metaobject
-   */
-@Deprecated(since = "2019.2", forRemoval = true)
-  public DeletedNodeMessageTarget(String role) {
-    myRole = role;
-    myLink = null;
   }
 
   public SContainmentLink getLink() {
@@ -64,7 +42,7 @@ public final class DeletedNodeMessageTarget implements MessageTarget {
 
   @Override
   public String getRole() {
-    return myLink == null ? myRole : myLink.getName();
+    return myLink.getName();
   }
 
   public int getNextChildIndex() {
@@ -73,7 +51,7 @@ public final class DeletedNodeMessageTarget implements MessageTarget {
 
   @Override
   public boolean sameAs(@NotNull MessageTarget errorTarget) {
-    return errorTarget instanceof DeletedNodeMessageTarget && Objects.equals(errorTarget.getRole(), getRole())
+    return errorTarget instanceof DeletedNodeMessageTarget && Objects.equals(((DeletedNodeMessageTarget) errorTarget).myLink, myLink)
            && myNextChildIndex == ((DeletedNodeMessageTarget) errorTarget).myNextChildIndex;
   }
 }
