@@ -4,15 +4,17 @@ package jetbrains.mps.lang.quotation.dataFlow;
 
 import jetbrains.mps.lang.dataFlow.DataFlowBuilder;
 import jetbrains.mps.lang.dataFlow.DataFlowBuilderContext;
-import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.quotation.behavior.NodeBuilderNode__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class NodeBuilder_DataFlow extends DataFlowBuilder {
   public void build(final DataFlowBuilderContext _context) {
-    _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$AyVT));
+    if (SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$AyVT) != null) {
+      _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.modelToCreate$AyVT));
+    }
     SNode quotedNode = SLinkOperations.getTarget(_context.getNode(), LINKS.quotedNode$cF64);
     if (quotedNode != null) {
       for (SNode expr : NodeBuilderNode__BehaviorDescriptor.getExternalExpressions_idRRzwLnBxZy.invoke(quotedNode)) {
