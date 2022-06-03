@@ -1745,13 +1745,14 @@
   <node concept="1TIwiD" id="d_WKSiP3Fn">
     <property role="TrG5h" value="BuildVariableMacroInitWithValueFromFile" />
     <property role="3GE5qa" value="Macro" />
-    <property role="34LRSv" value="load from file" />
+    <property role="34LRSv" value="load property file" />
     <property role="EcuMT" value="244868996532550359" />
     <ref role="1TJDcQ" node="2oW$psGOu6E" resolve="BuildVariableMacroInitValue" />
     <node concept="1TJgyi" id="d_WKSiP3Fq" role="1TKVEl">
-      <property role="TrG5h" value="propertyName" />
+      <property role="TrG5h" value="unused" />
       <property role="IQ2nx" value="244868996532550362" />
       <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
+      <node concept="asaX9" id="1zevWKaY0ZV" role="lGtFl" />
     </node>
     <node concept="1TJgyj" id="d_WKSiP3Fo" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />

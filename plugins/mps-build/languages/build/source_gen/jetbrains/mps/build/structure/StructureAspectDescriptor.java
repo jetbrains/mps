@@ -1745,9 +1745,9 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.super_(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x263c91972cd1e1aaL);
     b.origin("r:e9081cad-d8c3-45f2-b4ad-1dabd5ff82af(jetbrains.mps.build.structure)/244868996532550359");
     b.version(3);
-    b.property("propertyName", 0x365f30e12d43adaL).type(PrimitiveTypeId.STRING).origin("244868996532550362").done();
+    b.property("unused", 0x365f30e12d43adaL).type(PrimitiveTypeId.STRING).origin("244868996532550362").done();
     b.aggregate("fileName", 0x365f30e12d43ad8L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x668c6cfbafacdc3eL).optional(false).ordered(true).multiple(false).origin("244868996532550360").done();
-    b.alias("load from file");
+    b.alias("load property file");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForGeneratorInternal_BuildSource_Folder() {

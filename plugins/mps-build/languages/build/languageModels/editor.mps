@@ -6404,14 +6404,7 @@
     <ref role="1XX52x" to="3ior:d_WKSiP3Fn" resolve="BuildVariableMacroInitWithValueFromFile" />
     <node concept="3EZMnI" id="d_WKSiP3Ft" role="2wV5jI">
       <node concept="3F0ifn" id="d_WKSiP3Fw" role="3EZMnx">
-        <property role="3F0ifm" value="load" />
-        <ref role="1k5W1q" node="hwW5xkg" resolve="keyword" />
-      </node>
-      <node concept="3F0A7n" id="d_WKSiP3Fy" role="3EZMnx">
-        <ref role="1NtTu8" to="3ior:d_WKSiP3Fq" resolve="propertyName" />
-      </node>
-      <node concept="3F0ifn" id="d_WKSiP3F_" role="3EZMnx">
-        <property role="3F0ifm" value="from" />
+        <property role="3F0ifm" value="load from property file" />
         <ref role="1k5W1q" node="hwW5xkg" resolve="keyword" />
       </node>
       <node concept="3F1sOY" id="d_WKSiP3FB" role="3EZMnx">
@@ -7859,7 +7852,7 @@
     <ref role="1XX52x" to="3ior:7i$e6qc6TPq" resolve="BuildVariableMacroInitWithFileContent" />
     <node concept="3EZMnI" id="7i$e6qc7mrH" role="2wV5jI">
       <node concept="3F0ifn" id="7i$e6qc7mrI" role="3EZMnx">
-        <property role="3F0ifm" value="load from file" />
+        <property role="3F0ifm" value="load file" />
         <ref role="1k5W1q" to="ot6o:hwW5xkg" resolve="keyword" />
       </node>
       <node concept="3F1sOY" id="7i$e6qc7ms2" role="3EZMnx">
