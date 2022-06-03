@@ -4,7 +4,9 @@ package jetbrains.mps.ide.make.actions;
 
 import jetbrains.mps.plugins.part.ProjectPluginPart;
 import jetbrains.mps.project.MPSProject;
-import jetbrains.mps.ide.ThreadUtils;
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.startup.StartupManager;
+import com.intellij.openapi.project.DumbAwareRunnable;
 
 public class TransientModels_ProjectPluginPart extends ProjectPluginPart {
   private TransientModelsNotification myNotifier;
@@ -12,8 +14,14 @@ public class TransientModels_ProjectPluginPart extends ProjectPluginPart {
   }
   @Override
   public void init(MPSProject project) {
+    if (ApplicationManager.getApplication().isHeadlessEnvironment()) {
+      return;
+    }
     TransientModels_ProjectPluginPart.this.myNotifier = new TransientModelsNotification(project);
-    ThreadUtils.runInUIThreadNoWait(new Runnable() {
+    // DumbAwareRunnable, not Runnable as there's nothing about indexes in myNotifier.projectOpened()
+    // and either gives EDT access (at least that's in the method's javadoc)
+    StartupManager.getInstance(project.getProject()).runWhenProjectIsInitialized(new DumbAwareRunnable() {
+      @Override
       public void run() {
         TransientModels_ProjectPluginPart.this.myNotifier.projectOpened();
       }
@@ -21,6 +29,9 @@ public class TransientModels_ProjectPluginPart extends ProjectPluginPart {
   }
   @Override
   public void dispose(MPSProject project) {
+    if (ApplicationManager.getApplication().isHeadlessEnvironment()) {
+      return;
+    }
     TransientModels_ProjectPluginPart.this.myNotifier.projectClosed();
     TransientModels_ProjectPluginPart.this.myNotifier = null;
   }
