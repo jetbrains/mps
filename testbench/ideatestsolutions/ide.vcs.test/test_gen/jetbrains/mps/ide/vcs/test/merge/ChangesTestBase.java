@@ -53,6 +53,7 @@ import com.intellij.openapi.vcs.rollback.RollbackEnvironment;
 import java.util.Collections;
 import com.intellij.openapi.vcs.rollback.RollbackProgressListener;
 import com.intellij.openapi.vfs.LocalFileSystem;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import jetbrains.mps.ide.vfs.FileSystemBridge;
 import jetbrains.mps.extapi.persistence.FileDataSource;
@@ -266,7 +267,7 @@ public abstract class ChangesTestBase implements EnvironmentAware {
   }
 
   protected EditableSModel getTestModel() {
-    return (EditableSModel) PersistenceFacade.getInstance().createModelReference("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)").resolve(ourProject.getRepository());
+    return new ModelAccessHelper(ourProject.getModelAccess()).runReadAction(() -> (EditableSModel) PersistenceFacade.getInstance().createModelReference("r:296ba97d-4b26-4d06-be61-297d86180cce(jetbrains.mps.ide.vcs.test.testModel)").resolve(ourProject.getRepository()));
   }
 
   protected final VirtualFile getTestModelFile() {

@@ -164,7 +164,7 @@ public class DiskMemoryConflictTest implements EnvironmentAware {
                                           vfsManager,
                                           diskMemoryDialogExposer);
 
-    ((EditableSModelBase) getModel()).setConflictResolver(myResolver::resolve);
+    myModelAccess.runReadAction(() -> ((EditableSModelBase) getModel()).setConflictResolver(myResolver::resolve));
     myConflictListener = new ConflictResolverListener();
     myResolver.addListener(myConflictListener);
   }

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.EditableSModel;
+import jetbrains.mps.smodel.ModelAccessHelper;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Objects;
@@ -83,7 +84,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
   @Override
   protected EditableSModel getTestModel() {
-    return (EditableSModel) PersistenceFacade.getInstance().createModelReference("r:02adfdae-0de7-4b5a-8431-9a21fafdcd9a(jetbrains.mps.ide.vcs.test.testMerge)").resolve(ourProject.getRepository());
+    return new ModelAccessHelper(ourProject.getModelAccess()).runReadAction(() -> (EditableSModel) PersistenceFacade.getInstance().createModelReference("r:02adfdae-0de7-4b5a-8431-9a21fafdcd9a(jetbrains.mps.ide.vcs.test.testMerge)").resolve(ourProject.getRepository()));
   }
 
   protected SModel getBaseModel() {
