@@ -35,10 +35,16 @@ import java.util.List;
 public final class EmptyBHDescriptor extends BaseBHDescriptor {
   // XXX seems that the reason for this class to extend BaseBHD, not implementing BHDescriptor only
   //     is that we get behaviors of super-concepts through default logic of BaseBHD.
+  // YYY yes
   private final SAbstractConcept myConcept;
 
   public EmptyBHDescriptor(@NotNull SAbstractConcept concept) {
     myConcept = concept;
+  }
+
+  @Override
+  public String toString() {
+    return getConcept() + " EmptyBHDescriptor";
   }
 
   @NotNull
