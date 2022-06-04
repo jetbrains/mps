@@ -576,7 +576,7 @@ public class IdeaFile implements IFile, CachingFile {
   public boolean isZipArchive() {
     var virtualFile = findVirtualFile();
     if (virtualFile == null) {
-      LOG.warn("could not find the virtual find for " + this);
+      LOG.warn("could not find the virtual file for " + this);
     }
     return virtualFile != null && virtualFile.exists() && virtualFile.getFileType() == FileTypes.ARCHIVE;
   }
