@@ -23,6 +23,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BehaviorRegistry;
 import jetbrains.mps.core.aspects.behaviour.api.SAbstractType;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import jetbrains.mps.core.aspects.behaviour.api.SMethod;
+import jetbrains.mps.core.aspects.behaviour.api.SMethodId;
 import jetbrains.mps.core.aspects.behaviour.api.SParameter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.annotations.NotNull;
@@ -34,8 +35,10 @@ import org.jetbrains.mps.openapi.model.SNode;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
@@ -59,7 +62,7 @@ import static jetbrains.mps.core.aspects.behaviour.BehaviorChecker.checkStatic;
 public abstract class BaseBHDescriptor implements BHDescriptor {
   private final SMethodVirtualTable mySuperVTable = new SMethodVirtualTable();
   private BehaviorRegistry myBehaviorRegistry;
-  private final AtomicReference<List<SMethod<?>>> myCachedMethods = new AtomicReference<>(); // optimization by ashatalin
+  private final AtomicReference<Map<SMethodId, SMethod<?>>> myCachedMethods = new AtomicReference<>(); // optimization by ashatalin
 
   private SAbstractConcept myConcept;
   private boolean myInitialized = false;
@@ -359,30 +362,45 @@ public abstract class BaseBHDescriptor implements BHDescriptor {
     return invokeSpecial0(operand, method, parametersArray);
   }
 
-  @NotNull
-  @Override
-  public List<SMethod<?>> getMethods() {
-    List<SMethod<?>> currentMethods = myCachedMethods.get();
+  private Map<SMethodId, SMethod<?>> initMethods() {
+    Map<SMethodId, SMethod<?>> currentMethods = myCachedMethods.get();
     if (currentMethods == null) {
-      Set<SMethod<?>> result = new HashSet<>();
+      Map<SMethodId, SMethod<?>> result = new HashMap<>();
       for (SAbstractConcept concept : myAncestorCache.getAncestorsConstructionOrder()) {
-        BHDescriptor bhDescriptor = getBHDescriptor(concept);
+        var bhDescriptor = getBHDescriptor(concept);
         List<SMethod<?>> conceptMethods = bhDescriptor.getDeclaredMethods();
-        for (SMethod<?> method : conceptMethods) {
+        for (var method : conceptMethods) {
           if (method.getModifiers().isPublic() && !method.getModifiers().isVirtual()) {
-            result.add(method);
+            result.put(method.getId(), method);
           }
         }
       }
-      result.addAll(myVTable.getMethods());
-      currentMethods = new ArrayList<>(result);
-      if (myCachedMethods.compareAndSet(null, currentMethods)) {
-        return currentMethods;
+      for (var method : myVTable.getMethods()) {
+        result.put(method.getId(), method);
+      }
+      if (myCachedMethods.compareAndSet(null, Collections.unmodifiableMap(result))) {
+        return result;
       } else {
         return myCachedMethods.get();
       }
     }
     return currentMethods;
+  }
+
+  @Nullable
+  @Override
+  public SMethod<?> getMethod(@NotNull SMethodId methodId) {
+    var id2Method = initMethods();
+    return id2Method.get(methodId);
+  }
+
+  @NotNull
+  @Override
+  public List<SMethod<?>> getMethods() {
+    Map<SMethodId, SMethod<?>> id2Method = initMethods();
+    List<SMethod<?>> result = new ArrayList<>(id2Method.size());
+    id2Method.forEach((id, method) -> result.add(method));
+    return result;
   }
 
   /**
