@@ -38,10 +38,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class FacetDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c13L, "jetbrains.mps.make.facet.structure.FacetDeclaration");
 
-  public static final SMethod<Iterable<SNode>> allExtends_id6O0kUTrsU9c = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("allExtends").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6O0kUTrsU9c").build();
-  public static final SMethod<Iterable<SNode>> allRelated_id7fB872uckWE = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("allRelated").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7fB872uckWE").build();
-  public static final SMethod<String> classifierName_id3ZSHU3pg$b_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("classifierName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3ZSHU3pg$b_").build();
-  public static final SMethod<String> getFacetFqName_id1ExXGqkc_QX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFacetFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1ExXGqkc_QX").build();
+  public static final SMethod<Iterable<SNode>> allExtends_id6O0kUTrsU9c = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("allExtends").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7854369758457864780L).languageId(0xbc5d902caab85dd0L, 0x696c11654a59463bL).build2();
+  public static final SMethod<Iterable<SNode>> allRelated_id7fB872uckWE = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("allRelated").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8351679702044331818L).languageId(0xbc5d902caab85dd0L, 0x696c11654a59463bL).build2();
+  public static final SMethod<String> classifierName_id3ZSHU3pg$b_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("classifierName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4609636120081351397L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<String> getFacetFqName_id1ExXGqkc_QX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFacetFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1919086248986828221L).languageId(0xbc5d902caab85dd0L, 0x696c11654a59463bL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(allExtends_id6O0kUTrsU9c, allRelated_id7fB872uckWE, classifierName_id3ZSHU3pg$b_, getFacetFqName_id1ExXGqkc_QX);
 

@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IWorkflowParticipant__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x546bf9ab92fe0b3fL, "jetbrains.mps.build.structure.IWorkflowParticipant");
 
-  public static final SMethod<SNode> getTargetTask_id5Wv1_bQ1rcK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetTask").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5Wv1_bQ1rcK").build();
+  public static final SMethod<SNode> getTargetTask_id5Wv1_bQ1rcK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetTask").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6854204111265837872L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTargetTask_id5Wv1_bQ1rcK);
 

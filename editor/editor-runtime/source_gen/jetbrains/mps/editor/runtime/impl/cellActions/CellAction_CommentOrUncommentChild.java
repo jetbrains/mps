@@ -12,7 +12,7 @@ import jetbrains.mps.openapi.editor.selection.Selection;
 import jetbrains.mps.nodeEditor.selection.EditorCellLabelSelection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -52,7 +52,7 @@ public class CellAction_CommentOrUncommentChild extends CellAction_CommentOrUnco
     SNode currentNode = editorContext.getSelectedNode();
     while (currentNode != null) {
       if (Objects.equals(SNodeOperations.getParent(currentNode), myNode)) {
-        SContainmentLink link = (SNodeOperations.isInstanceOf(currentNode, CONCEPTS.BaseCommentAttribute$nv) ? ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(currentNode, CONCEPTS.BaseCommentAttribute$nv), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf"))) : currentNode.getContainmentLink());
+        SContainmentLink link = (SNodeOperations.isInstanceOf(currentNode, CONCEPTS.BaseCommentAttribute$nv) ? ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(currentNode, CONCEPTS.BaseCommentAttribute$nv), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL))) : currentNode.getContainmentLink());
         return (Objects.equals(link, myLink) ? currentNode : null);
       }
       currentNode = SNodeOperations.getParent(currentNode);

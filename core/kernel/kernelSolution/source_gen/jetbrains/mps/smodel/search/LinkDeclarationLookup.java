@@ -10,7 +10,7 @@ import org.jetbrains.mps.openapi.language.SAbstractLink;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.List;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Objects;
@@ -50,7 +50,7 @@ public final class LinkDeclarationLookup {
     }
     final String linkName = link.getName();
     // with findOverride() we have checked links with specializedLink!=null, only plain LD left to check
-    return ListSequence.fromList(((List<SNode>) BHReflection.invoke0(myConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getLinkDeclarations", CONCEPTS.AbstractConceptDeclaration$KA, "hEwILKK")))).findFirst(new IWhereFilter<SNode>() {
+    return ListSequence.fromList(((List<SNode>) BHReflection.invoke0(myConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("getLinkDeclarations", 1213877394480L, 0x44a456bea0df1cf0L)))).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return (SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN) == null) && Objects.equals(SPropertyOperations.getString(it, PROPS.name$MnvL), linkName);
       }
@@ -88,7 +88,7 @@ public final class LinkDeclarationLookup {
     // SAbstractLink is always the "base"/persistence one; the one that could be specialized in a subconcept
     // getLinkDeclarations gives most specific LD instance if there are few specialization, that's why the first one to match is fine (assuming no unrelated links with the same name)
     final String linkName = link.getName();
-    for (SNode ld : ListSequence.fromList(((List<SNode>) BHReflection.invoke0(myConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getLinkDeclarations", CONCEPTS.AbstractConceptDeclaration$KA, "hEwILKK")))).where(new IWhereFilter<SNode>() {
+    for (SNode ld : ListSequence.fromList(((List<SNode>) BHReflection.invoke0(myConcept, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("getLinkDeclarations", 1213877394480L, 0x44a456bea0df1cf0L)))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return SLinkOperations.getTarget(it, LINKS.specializedLink$7ZCN) != null;
       }

@@ -21,7 +21,7 @@ import jetbrains.mps.editor.runtime.commands.EditorCommandAdapter;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.cells.EditorCell_Collection;
 import java.util.Iterator;
@@ -179,7 +179,7 @@ public class IntelligentNodeMover {
       getNodesCommonParent().removeChild(node);
       SContainmentLink link = (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$m8) ? LINKS.smodelAttribute$KJ43 : place.myLink);
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$m8)) {
-        BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("setLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzM"), place.myLink);
+        BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("setLink", 709746936026609906L, 0x553941aeb020c32eL), place.myLink);
       }
       if (place.myIsAfter) {
         place.myParent.insertChildAfter(link, node, nextAnchor);
@@ -324,7 +324,7 @@ public class IntelligentNodeMover {
   }
   private static SContainmentLink getNodesContainmentLink(@NotNull SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.ChildAttribute$m8)) {
-      return ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf")));
+      return ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL)));
     }
     return node.getContainmentLink();
   }

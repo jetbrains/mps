@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -20,14 +20,14 @@ public final class SmartReferentUtil {
 
   public static String getPresentation(SNode reference, SNode referent) {
     if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ISmartReferent$57)) {
-      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$57)), CONCEPTS.ISmartReferent$57, SMethodTrimmedId.create("getPresentation", null, "69Qfsw3IoJg"), reference));
+      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$57)), CONCEPTS.ISmartReferent$57, SMethodIdV2.create("getPresentation", 7094926192234040272L, 0x553941aeb020c32eL), reference));
     }
     return null;
   }
 
   public static String getMatchingText(SNode reference, SNode referent) {
     if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ISmartReferent$57)) {
-      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$57)), CONCEPTS.ISmartReferent$57, SMethodTrimmedId.create("getMatchingText", null, "69Qfsw3InJX"), reference));
+      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$57)), CONCEPTS.ISmartReferent$57, SMethodIdV2.create("getMatchingText", 7094926192234036221L, 0x553941aeb020c32eL), reference));
     }
     // IResolveInfo now uses to distinct matchingText and visibleMatchingText
     if (SNodeOperations.isInstanceOf(referent, CONCEPTS.IResolveInfo$$k)) {
@@ -38,7 +38,7 @@ public final class SmartReferentUtil {
 
   public static String getVisibleMatchingText(SNode reference, SNode referent) {
     if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ISmartReferent$57)) {
-      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$57)), CONCEPTS.ISmartReferent$57, SMethodTrimmedId.create("getVisibleMatchingText", null, "69Qfsw3Ipre"), reference));
+      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$57)), CONCEPTS.ISmartReferent$57, SMethodIdV2.create("getVisibleMatchingText", 7094926192234043086L, 0x553941aeb020c32eL), reference));
     }
     return null;
   }
@@ -53,7 +53,7 @@ public final class SmartReferentUtil {
 
   public static String getDescriptionText(SNode reference, SNode referent) {
     if (SNodeOperations.isInstanceOf(referent, CONCEPTS.ISmartReferent$57)) {
-      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$57)), CONCEPTS.ISmartReferent$57, SMethodTrimmedId.create("getDescriptionText", null, "69Qfsw3IqwE"), reference));
+      return ((String) BHReflection.invoke0((SNodeOperations.cast(referent, CONCEPTS.ISmartReferent$57)), CONCEPTS.ISmartReferent$57, SMethodIdV2.create("getDescriptionText", 7094926192234047530L, 0x553941aeb020c32eL), reference));
     }
     // compatiblity with legacy. after 3.5 -> "return null"
     return SPropertyOperations.getString(referent, PROPS.shortDescription$Yd4v);

@@ -71,7 +71,7 @@ public class Template_reduce_reflectiveInvokeThis extends TemplateDeclarationBas
         TemplateContext context3 = context1;
         context3 = context3.subContext(null, callInputNode4);
         if (callInputNode4 != null) {
-          tlist4 = environment.callSite(new Template_createSMethodId(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "467389800997084170")).apply(context3);
+          tlist4 = environment.callSite(new Template_createSMethodId(), new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6138025383583034579")).apply(context3);
         } else {
           tlist4 = Collections.emptyList();
         }
@@ -121,5 +121,5 @@ public class Template_reduce_reflectiveInvokeThis extends TemplateDeclarationBas
     }
   }
   private static final SNodePointer callMacro = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "467389800997084139");
-  private static final SNodePointer callMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "467389800997084170");
+  private static final SNodePointer callMacro1 = new SNodePointer("r:00000000-0000-4000-0000-011c89590303(jetbrains.mps.lang.smodel.generator.baseLanguage.template.main@generator)", "6138025383583034579");
 }

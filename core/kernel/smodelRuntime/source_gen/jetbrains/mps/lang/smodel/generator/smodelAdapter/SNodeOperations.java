@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.SNodePointer;
@@ -466,7 +466,7 @@ public class SNodeOperations {
     final SContainmentLink smodelAttr = LINKS.smodelAttribute$KJ43;
     for (SNode attribute : AttributeOperations.getAllAttributes(oldChild)) {
       if (SNodeOperations.isInstanceOf(attribute, SNodeOperations.asSConcept(attrProperty))) {
-        SProperty property = ((SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, SNodeOperations.asSConcept(attrProperty)), CONCEPTS.PropertyAttribute$Gb, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$Gb, "1avfQ4BBzOo")));
+        SProperty property = ((SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, SNodeOperations.asSConcept(attrProperty)), CONCEPTS.PropertyAttribute$Gb, SMethodIdV2.create("getProperty", 1341860900488756504L, 0x553941aeb020c32eL)));
         if (!(newChild.getConcept().getProperties().contains(property))) {
           // no such property in new child : don't copy the attribute
           String m = "couldn't copy attribute %s for property '%s': no such property in concept %s";
@@ -475,7 +475,7 @@ public class SNodeOperations {
         }
       }
       if (SNodeOperations.isInstanceOf(attribute, SNodeOperations.asSConcept(attrLink))) {
-        SReferenceLink link = ((SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, SNodeOperations.asSConcept(attrLink)), CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$v_, "1avfQ4BEFo6")));
+        SReferenceLink link = ((SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, SNodeOperations.asSConcept(attrLink)), CONCEPTS.LinkAttribute$v_, SMethodIdV2.create("getLink", 1341860900489573894L, 0x553941aeb020c32eL)));
         if (!(newChild.getConcept().getReferenceLinks().contains(link))) {
           // no such link in new child : don't copy the attribute
           String m = "couldn't copy attribute %s for link '%s': no such link in concept %s";
@@ -636,7 +636,7 @@ public class SNodeOperations {
   }
   public static SContainmentLink getContainingLinkInChildrenAndChildAttributesCollection(SNode childNode) {
     if (childNode.isInstanceOfConcept(CONCEPTS.ChildAttribute$m8)) {
-      return ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(childNode, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf")));
+      return ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(childNode, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL)));
     } else {
       return getContainingLink(childNode);
     }
@@ -704,7 +704,7 @@ public class SNodeOperations {
     //   available from SNode API
     // Indeed clients can invoke getPresentation() behavior directly, this RT methods just
     // gives extra layer to control for node<>.presentation operation, in case we need one later.
-    return ((String) BHReflection.invoke0(((SNode) node), CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+    return ((String) BHReflection.invoke0(((SNode) node), CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
   }
 
   private static final class CONCEPTS {

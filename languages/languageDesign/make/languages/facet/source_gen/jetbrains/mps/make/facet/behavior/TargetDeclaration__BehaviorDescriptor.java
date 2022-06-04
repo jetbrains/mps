@@ -26,9 +26,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class TargetDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x696c11654a59463bL, 0xbc5d902caab85dd0L, 0x5912a2ab1cd24c3dL, "jetbrains.mps.make.facet.structure.TargetDeclaration");
 
-  public static final SMethod<SNode> facetDeclaration_id6O0kUTrtki6 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("facetDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6O0kUTrtki6").build();
-  public static final SMethod<String> getTargetFqName_idLXloLaM9s9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTargetFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("LXloLaM9s9").build();
-  public static final SMethod<String> classifierName_id3ZSHU3pg$b_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("classifierName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3ZSHU3pg$b_").build();
+  public static final SMethod<SNode> facetDeclaration_id6O0kUTrtki6 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("facetDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7854369758457971846L).languageId(0xbc5d902caab85dd0L, 0x696c11654a59463bL).build2();
+  public static final SMethod<String> getTargetFqName_idLXloLaM9s9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTargetFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(899969561582409481L).languageId(0xbc5d902caab85dd0L, 0x696c11654a59463bL).build2();
+  public static final SMethod<String> classifierName_id3ZSHU3pg$b_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("classifierName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4609636120081351397L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(facetDeclaration_id6O0kUTrtki6, getTargetFqName_idLXloLaM9s9, classifierName_id3ZSHU3pg$b_);
 

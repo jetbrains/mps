@@ -40,7 +40,7 @@ import jetbrains.mps.ide.navigation.NodeNavigatable;
 import com.intellij.openapi.ui.popup.ListPopup;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.ide.editor.util.GoToContextMenuHelperBase;
 import jetbrains.mps.ide.editor.util.CustomizedNavigatableRenderer;
 import java.util.Comparator;
@@ -168,7 +168,7 @@ public class ShowSuppressedErrors_Action extends BaseAction {
         };
         ListSequence.fromList(navigatables).addElement(navigatable);
       }
-      title.value = "Errors suppressed for " + ((String) BHReflection.invoke0(suppressedPair._0(), CONCEPTS.ICanSuppressErrors$q8, SMethodTrimmedId.create("nodeDescription", null, "4oS1ku9jIXr")));
+      title.value = "Errors suppressed for " + ((String) BHReflection.invoke0(suppressedPair._0(), CONCEPTS.ICanSuppressErrors$q8, SMethodIdV2.create("nodeDescription", 5059799986155220827L, 0x553941aeb020c32eL)));
     });
     GoToContextMenuHelperBase<CustomizedNavigatable> helper = new GoToContextMenuHelperBase<CustomizedNavigatable>(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")), (int count, boolean finished) -> title.value, new CustomizedNavigatableRenderer(), new Comparator<CustomizedNavigatable>() {
       @Override

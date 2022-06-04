@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class AbstractConditionalLoop__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x47de42ea4e1d0294L, "jetbrains.mps.kotlin.structure.AbstractConditionalLoop");
 
-  public static final SMethod<Boolean> isRunOnce_id4vugIDe7jmg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRunOnce").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4vugIDe7jmg").build();
+  public static final SMethod<Boolean> isRunOnce_id4vugIDe7jmg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRunOnce").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5178650195622966672L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRunOnce_id4vugIDe7jmg);
 

@@ -23,8 +23,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class FunctionMemberTarget__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x47de42ea4e4162c9L, "jetbrains.mps.kotlin.structure.FunctionMemberTarget");
 
-  public static final SMethod<FunctionDeclaration> getFunction_id4vugIDegoqT = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunction").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4vugIDegoqT").build();
-  public static final SMethod<Boolean> isResolved_id4MvRlgZCbFz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isResolved").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4MvRlgZCbFz").build();
+  public static final SMethod<FunctionDeclaration> getFunction_id4vugIDegoqT = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getFunction").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5178650195625346745L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isResolved_id4MvRlgZCbFz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isResolved").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5521375022094007011L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFunction_id4vugIDegoqT, isResolved_id4MvRlgZCbFz);
 

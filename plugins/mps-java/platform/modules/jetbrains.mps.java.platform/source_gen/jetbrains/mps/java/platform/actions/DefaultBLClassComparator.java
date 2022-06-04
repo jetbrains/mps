@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -33,7 +33,7 @@ public class DefaultBLClassComparator implements Comparator<SNodeReference> {
   private String getText(SNodeReference ptr) {
     SNode node = SPointerOperations.resolveNode(ptr, myRepo);
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$Ix)) {
-      return NameUtil.shortNameFromLongName(((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y"))));
+      return NameUtil.shortNameFromLongName(((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL))));
     }
     return ptr + "";
   }

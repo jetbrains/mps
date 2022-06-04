@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class IRootWithUniqueName__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x2b7651d49ee9d72L, "jetbrains.mps.lang.extension.structure.IRootWithUniqueName");
 
-  public static final SMethod<String> getId_id3vRuGRRXlj = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getId").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3vRuGRRXlj").build();
+  public static final SMethod<String> getId_id3vRuGRRXlj = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getId").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(63012922130945363L).languageId(0xbee99ae18e690549L, 0xc0080a477e374558L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getId_id3vRuGRRXlj);
 

@@ -21,7 +21,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IMenuPartParameterized__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x169efbc9a9002d0fL, "jetbrains.mps.lang.editor.structure.IMenuPartParameterized");
 
-  public static final SMethod<SContainmentLink> getLinkNodeOfParameterizedPart_id1quYWAD03b2 = new SMethodBuilder<SContainmentLink>(new SJavaCompoundTypeImpl(SContainmentLink.class)).name("getLinkNodeOfParameterizedPart").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1quYWAD03b2").build();
+  public static final SMethod<SContainmentLink> getLinkNodeOfParameterizedPart_id1quYWAD03b2 = new SMethodBuilder<SContainmentLink>(new SJavaCompoundTypeImpl(SContainmentLink.class)).name("getLinkNodeOfParameterizedPart").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1630016958697059010L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLinkNodeOfParameterizedPart_id1quYWAD03b2);
 

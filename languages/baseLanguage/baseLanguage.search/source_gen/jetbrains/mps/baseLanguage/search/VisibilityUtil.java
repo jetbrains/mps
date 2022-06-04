@@ -10,7 +10,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
@@ -49,7 +49,7 @@ public final class VisibilityUtil {
           if (SNodeOperations.isInstanceOf(name, CONCEPTS.FieldDeclaration$ie) && SNodeOperations.isInstanceOf(context, CONCEPTS.FieldReferenceOperation$fU) || SNodeOperations.isInstanceOf(name, CONCEPTS.InstanceMethodDeclaration$39) && SNodeOperations.isInstanceOf(context, CONCEPTS.InstanceMethodCallOperation$uu)) {
             // check ExpressionName or PrimaryExpression is subclass of cls, works only with right context
             //  will not work in the case: otherClass.method(protectedMethod()) with enclosed node as context
-            if (TypecheckingFacade.getFromContext().isSubtype(((SNode) BHReflection.invoke0(SNodeOperations.cast(SNodeOperations.getParent(context), CONCEPTS.DotExpression$yW), CONCEPTS.DotExpression$yW, SMethodTrimmedId.create("getOperandType", CONCEPTS.DotExpression$yW, "7GulAc9z0dN"))), _quotation_createNode_v8uv56_b0a2a0a0a2a7a1(cls))) {
+            if (TypecheckingFacade.getFromContext().isSubtype(((SNode) BHReflection.invoke0(SNodeOperations.cast(SNodeOperations.getParent(context), CONCEPTS.DotExpression$yW), CONCEPTS.DotExpression$yW, SMethodIdV2.create("getOperandType", 8871623299328377715L, 0x5745e3015c8914d3L))), _quotation_createNode_v8uv56_b0a2a0a0a2a7a1(cls))) {
               return true;
             }
           } else if (SNodeOperations.isInstanceOf(name, CONCEPTS.ConstructorDeclaration$yG)) {

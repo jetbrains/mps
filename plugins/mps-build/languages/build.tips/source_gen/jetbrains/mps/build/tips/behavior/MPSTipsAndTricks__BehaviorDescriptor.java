@@ -20,8 +20,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class MPSTipsAndTricks__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xfeee615f9f2b486fL, 0x804f8987b652fceaL, 0x5ea1926fdf2f93c6L, "jetbrains.mps.build.tips.structure.MPSTipsAndTricks");
 
-  public static final SMethod<String> getPath_id4Y6KxqQL3ag = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4Y6KxqQL3ag").build();
-  public static final SMethod<String> getLocatedDirectory_id4Y6KxqQN2O7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLocatedDirectory").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4Y6KxqQN2O7").build(SMethodBuilder.createJavaParameter(String.class, ""));
+  public static final SMethod<String> getPath_id4Y6KxqQL3ag = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPath").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5730480978686915216L).languageId(0x804f8987b652fceaL, 0xfeee615f9f2b486fL).build2();
+  public static final SMethod<String> getLocatedDirectory_id4Y6KxqQN2O7 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getLocatedDirectory").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5730480978687438087L).languageId(0x804f8987b652fceaL, 0xfeee615f9f2b486fL).build2(SMethodBuilder.createJavaParameter(String.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPath_id4Y6KxqQL3ag, getLocatedDirectory_id4Y6KxqQN2O7);
 

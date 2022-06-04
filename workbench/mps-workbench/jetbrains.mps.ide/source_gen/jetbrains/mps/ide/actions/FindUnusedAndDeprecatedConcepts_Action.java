@@ -39,7 +39,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import com.intellij.openapi.progress.ProgressManager;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.ide.findusages.findalgorithm.finders.IFinder;
@@ -140,7 +140,7 @@ public class FindUnusedAndDeprecatedConcepts_Action extends BaseAction {
           }).ofType(SNode.class), CONCEPTS.AbstractConceptDeclaration$KA);
           List<SNodeReference> rv = Sequence.fromIterable(allConcepts).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode concept) {
-              return ((boolean) (Boolean) BHReflection.invoke0(concept, CONCEPTS.IDeprecatable$2W, SMethodTrimmedId.create("isDeprecated", null, "hOwoPtR"))) || !(conceptsInUse.contains(NameUtil.nodeFQName(concept)));
+              return ((boolean) (Boolean) BHReflection.invoke0(concept, CONCEPTS.IDeprecatable$2W, SMethodIdV2.create("isDeprecated", 1224609060727L, 0x553941aeb020c32eL))) || !(conceptsInUse.contains(NameUtil.nodeFQName(concept)));
             }
           }).select(new ISelector<SNode, SNodeReference>() {
             public SNodeReference select(SNode it) {

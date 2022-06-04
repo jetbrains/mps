@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class PlaceholderModifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7d5b9dda05f4be2L, 0xbc73f2e16994cc67L, 0x72b255a044804f29L, "jetbrains.mps.baseLanguage.lightweightdsl.structure.PlaceholderModifier");
 
-  public static final SMethod<SNode> create_id7T23sO8tTvX = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7T23sO8tTvX").build();
+  public static final SMethod<SNode> create_id7T23sO8tTvX = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("create").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9097849371503335421L).languageId(0xbc73f2e16994cc67L, 0xc7d5b9dda05f4be2L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(create_id7T23sO8tTvX);
 

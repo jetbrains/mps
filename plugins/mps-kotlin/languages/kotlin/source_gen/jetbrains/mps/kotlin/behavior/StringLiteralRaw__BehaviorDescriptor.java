@@ -21,7 +21,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class StringLiteralRaw__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790af28ddL, "jetbrains.mps.kotlin.structure.StringLiteralRaw");
 
-  public static final SMethod<Boolean> isPunctuationLeft_id5yEpxXMAhZ6 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPunctuationLeft").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5yEpxXMAhZ6").build();
+  public static final SMethod<Boolean> isPunctuationLeft_id5yEpxXMAhZ6 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isPunctuationLeft").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6389031306631126982L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isPunctuationLeft_id5yEpxXMAhZ6);
 

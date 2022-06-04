@@ -22,8 +22,8 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class VariableRefExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4cca44497635e571L, "jetbrains.mps.kotlin.structure.VariableRefExpression");
 
-  public static final SMethod<SNode> getLocalTarget_id7Iv8Cw7qtkn = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLocalTarget").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7Iv8Cw7qtkn").build();
-  public static final SMethod<Assignable> assignableState_idCy8Bus9niD = new SMethodBuilder<Assignable>(new SJavaCompoundTypeImpl(Assignable.class)).name("assignableState").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("Cy8Bus9niD").build();
+  public static final SMethod<SNode> getLocalTarget_id7Iv8Cw7qtkn = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLocalTarget").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8907876555597403415L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Assignable> assignableState_idCy8Bus9niD = new SMethodBuilder<Assignable>(new SJavaCompoundTypeImpl(Assignable.class)).name("assignableState").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(730183986703594665L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLocalTarget_id7Iv8Cw7qtkn, assignableState_idCy8Bus9niD);
 

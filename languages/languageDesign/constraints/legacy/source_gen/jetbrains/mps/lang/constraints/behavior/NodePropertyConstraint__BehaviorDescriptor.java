@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class NodePropertyConstraint__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3f4bc5f5c6c14a28L, 0x8b10c83066ffa4a1L, 0x10b2a5eaa48L, "jetbrains.mps.lang.constraints.structure.NodePropertyConstraint");
 
-  public static final SMethod<SNode> getApplicableConcept_idhEwIoOT = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getApplicableConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIoOT").build();
+  public static final SMethod<SNode> getApplicableConcept_idhEwIoOT = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getApplicableConcept").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877292345L).languageId(0x8b10c83066ffa4a1L, 0x3f4bc5f5c6c14a28L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getApplicableConcept_idhEwIoOT);
 

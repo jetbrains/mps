@@ -19,7 +19,7 @@ import com.intellij.openapi.fileEditor.FileEditor;
 import com.intellij.openapi.actionSystem.PlatformCoreDataKeys;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import com.intellij.ide.structureView.StructureView;
 import javax.swing.JComponent;
 import com.intellij.ide.structureView.StructureViewModel;
@@ -92,7 +92,7 @@ public class ShowMembers_Action extends BaseAction {
 
     ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess().runReadAction(() -> {
       SNode container = SNodeOperations.getNodeAncestor(((SNode) MapSequence.fromMap(_params).get("node")), CONCEPTS.IMemberContainer$yM, true, false);
-      title.value = (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.INamedConcept$Kd) ? ((String) BHReflection.invoke0(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) : container.getPresentation());
+      title.value = (SNodeOperations.isInstanceOf(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.INamedConcept$Kd) ? ((String) BHReflection.invoke0(SNodeOperations.getContainingRoot(((SNode) MapSequence.fromMap(_params).get("node"))), CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL))) : container.getPresentation());
       model[0] = new MemberContainerStructureModel(((MPSProject) MapSequence.fromMap(_params).get("project")), container);
     });
 

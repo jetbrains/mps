@@ -24,8 +24,8 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class IInferredType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x6f392ce92f8c71c7L, "jetbrains.mps.baseLanguage.structure.IInferredType");
 
-  public static final SMethod<SNode> getTypeToInfer_id6WTbe$Jz7ah = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTypeToInfer").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6WTbe$Jz7ah").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<SNode> getTypeToInferRecursively_idnSboOd3Ft4 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTypeToInferRecursively").modifiers(9, AccessPrivileges.PROTECTED).concept(CONCEPT).id("nSboOd3Ft4").build(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getTypeToInfer_id6WTbe$Jz7ah = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTypeToInfer").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8014486391919243921L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
+  public static final SMethod<SNode> getTypeToInferRecursively_idnSboOd3Ft4 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTypeToInferRecursively").modifiers(9, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(430143848246589252L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTypeToInfer_id6WTbe$Jz7ah, getTypeToInferRecursively_idnSboOd3Ft4);
 

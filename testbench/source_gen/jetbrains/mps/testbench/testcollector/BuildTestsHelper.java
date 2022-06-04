@@ -15,7 +15,7 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.project.structure.modules.ModuleReference;
@@ -42,34 +42,34 @@ public class BuildTestsHelper {
       }
     }).translate(new ITranslator2<SNode, SNode>() {
       public Iterable<SNode> translate(SNode it) {
-        return ((Iterable<SNode>) (Iterable<SNode>) BHReflection.invoke0(it, CONCEPTS.BuildMps_TestModules_Content$ot, SMethodTrimmedId.create("getModules", null, "3X9rC2XzJij")));
+        return ((Iterable<SNode>) (Iterable<SNode>) BHReflection.invoke0(it, CONCEPTS.BuildMps_TestModules_Content$ot, SMethodIdV2.create("getModules", 4560297596904469651L, 0xaf68e99800db0bc5L)));
       }
     }), CONCEPTS.BuildMps_Solution$R7);
     buildTestModulesWithTests.value = Sequence.fromIterable(buildSolutions).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BuildMps_Solution$R7, SMethodTrimmedId.create("hasTestsSources", CONCEPTS.BuildMps_Solution$R7, "6ogfLD6evrW")));
+        return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BuildMps_Solution$R7, SMethodIdV2.create("hasTestsSources", 7354447573575923452L, 0xadcbcfcfd3d8853fL)));
       }
     }).select(new ISelector<SNode, SModuleReference>() {
       public SModuleReference select(SNode it) {
-        return ModuleReference.parseReference(((String) BHReflection.invoke0(it, CONCEPTS.BuildMps_AbstractModule$FZ, SMethodTrimmedId.create("getModuleReference", CONCEPTS.BuildMps_AbstractModule$FZ, "41K1b4v5ZCB"))));
+        return ModuleReference.parseReference(((String) BHReflection.invoke0(it, CONCEPTS.BuildMps_AbstractModule$FZ, SMethodIdV2.create("getModuleReference", 4643216374596368935L, 0xadcbcfcfd3d8853fL))));
       }
     }).toListSequence();
     buildTestModulesWithSources.value = Sequence.fromIterable(buildSolutions).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BuildMps_Solution$R7, SMethodTrimmedId.create("hasSources", CONCEPTS.BuildMps_Solution$R7, "6ogfLD6hwDf")));
+        return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BuildMps_Solution$R7, SMethodIdV2.create("hasSources", 7354447573576714831L, 0xadcbcfcfd3d8853fL)));
       }
     }).select(new ISelector<SNode, SModuleReference>() {
       public SModuleReference select(SNode it) {
-        return ModuleReference.parseReference(((String) BHReflection.invoke0(it, CONCEPTS.BuildMps_AbstractModule$FZ, SMethodTrimmedId.create("getModuleReference", CONCEPTS.BuildMps_AbstractModule$FZ, "41K1b4v5ZCB"))));
+        return ModuleReference.parseReference(((String) BHReflection.invoke0(it, CONCEPTS.BuildMps_AbstractModule$FZ, SMethodIdV2.create("getModuleReference", 4643216374596368935L, 0xadcbcfcfd3d8853fL))));
       }
     }).toListSequence();
     return ListSequence.fromList(collectTests(testsScope)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode testRef) {
-        return (SModelStereotype.isTestModel(SNodeOperations.getModel(((SNode) BHReflection.invoke0(testRef, CONCEPTS.ITestRef$zt, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR"))))) ? ListSequence.fromList(buildTestModulesWithTests.value).contains(SNodeOperations.getModel(((SNode) BHReflection.invoke0(testRef, CONCEPTS.ITestRef$zt, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR")))).getModule().getModuleReference()) : ListSequence.fromList(buildTestModulesWithSources.value).contains(SNodeOperations.getModel(((SNode) BHReflection.invoke0(testRef, CONCEPTS.ITestRef$zt, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR")))).getModule().getModuleReference()));
+        return (SModelStereotype.isTestModel(SNodeOperations.getModel(((SNode) BHReflection.invoke0(testRef, CONCEPTS.ITestRef$zt, SMethodIdV2.create("getTargetTest", 8789333569555872183L, 0x7ecf94d7495e678eL))))) ? ListSequence.fromList(buildTestModulesWithTests.value).contains(SNodeOperations.getModel(((SNode) BHReflection.invoke0(testRef, CONCEPTS.ITestRef$zt, SMethodIdV2.create("getTargetTest", 8789333569555872183L, 0x7ecf94d7495e678eL)))).getModule().getModuleReference()) : ListSequence.fromList(buildTestModulesWithSources.value).contains(SNodeOperations.getModel(((SNode) BHReflection.invoke0(testRef, CONCEPTS.ITestRef$zt, SMethodIdV2.create("getTargetTest", 8789333569555872183L, 0x7ecf94d7495e678eL)))).getModule().getModuleReference()));
       }
     }).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return ((SNode) (SNode) BHReflection.invoke0(it, CONCEPTS.ITestRef$zt, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR")));
+        return ((SNode) (SNode) BHReflection.invoke0(it, CONCEPTS.ITestRef$zt, SMethodIdV2.create("getTargetTest", 8789333569555872183L, 0x7ecf94d7495e678eL)));
       }
     }).toListSequence();
   }
@@ -83,13 +83,13 @@ public class BuildTestsHelper {
       public boolean accept(final SNode test) {
         return ListSequence.fromList(suiteTests).where(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.ITestRef$zt, SMethodTrimmedId.create("isSame", null, "1ouvi_ymQH"), test));
+            return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.ITestRef$zt, SMethodIdV2.create("isSame", 24903889606765997L, 0x7ecf94d7495e678eL), test));
           }
         }).isNotEmpty();
       }
     }).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return ((SNode) (SNode) BHReflection.invoke0(it, CONCEPTS.ITestRef$zt, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR")));
+        return ((SNode) (SNode) BHReflection.invoke0(it, CONCEPTS.ITestRef$zt, SMethodIdV2.create("getTargetTest", 8789333569555872183L, 0x7ecf94d7495e678eL)));
       }
     }).toListSequence();
   }

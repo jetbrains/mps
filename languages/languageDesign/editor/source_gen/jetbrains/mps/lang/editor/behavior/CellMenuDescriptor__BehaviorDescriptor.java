@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class CellMenuDescriptor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f34f6aaacL, "jetbrains.mps.lang.editor.structure.CellMenuDescriptor");
 
-  public static final SMethod<SNode> getEditedFeature_idhKy3mrJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEditedFeature").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hKy3mrJ").build();
+  public static final SMethod<SNode> getEditedFeature_idhKy3mrJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getEditedFeature").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1220342015727L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getEditedFeature_idhKy3mrJ);
 

@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class PullUpMethod__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0xbc887f0950c99c4L, "jetbrains.mps.lang.script.structure.PullUpMethod");
 
-  public static final SMethod<SNode> getMigration_id4uOLjaPRkIU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMigration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4uOLjaPRkIU").build();
+  public static final SMethod<SNode> getMigration_id4uOLjaPRkIU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMigration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5166971494091017146L).languageId(0xbc2cde50fd4ce470L, 0xeddeefac2d64437L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMigration_id4uOLjaPRkIU);
 

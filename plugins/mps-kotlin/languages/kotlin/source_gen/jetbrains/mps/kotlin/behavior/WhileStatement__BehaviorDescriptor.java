@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class WhileStatement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af525L, "jetbrains.mps.kotlin.structure.WhileStatement");
 
-  public static final SMethod<Boolean> isRunOnce_id4vugIDe7jmg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRunOnce").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4vugIDe7jmg").build();
+  public static final SMethod<Boolean> isRunOnce_id4vugIDe7jmg = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isRunOnce").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5178650195622966672L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isRunOnce_id4vugIDe7jmg);
 

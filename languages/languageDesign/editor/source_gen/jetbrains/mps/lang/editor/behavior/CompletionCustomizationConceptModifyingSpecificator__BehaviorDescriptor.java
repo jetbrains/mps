@@ -23,8 +23,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class CompletionCustomizationConceptModifyingSpecificator__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x64a01fa8546d02fdL, "jetbrains.mps.lang.editor.structure.CompletionCustomizationConceptModifyingSpecificator");
 
-  public static final SMethod<Boolean> isModifying_id7U0pk79eiXG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isModifying").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7U0pk79eiXG").build();
-  public static final SMethod<List<SConcept>> getAdditionalParameters_idETPn3v9Kre = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getAdditionalParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("ETPn3v9Kre").build();
+  public static final SMethod<Boolean> isModifying_id7U0pk79eiXG = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isModifying").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9115396979021131628L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<List<SConcept>> getAdditionalParameters_idETPn3v9Kre = new SMethodBuilder<List<SConcept>>(new SJavaCompoundTypeImpl((Class<List<SConcept>>) ((Class) Object.class))).name("getAdditionalParameters").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(772883491827680974L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isModifying_id7U0pk79eiXG, getAdditionalParameters_idETPn3v9Kre);
 

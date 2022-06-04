@@ -17,7 +17,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.event.SModelPropertyEvent;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -33,18 +33,18 @@ public class ToDoHighlighter extends BaseEventProcessingEditorChecker {
     Set<EditorMessage> messages = SetSequence.fromSet(new LinkedHashSet<EditorMessage>());
     SNode node = editorComponent.getEditedNode();
     for (SNode remark : SNodeOperations.getNodeDescendants(node, CONCEPTS.RemarkStatement$l_, false, new SAbstractConcept[]{})) {
-      if (((boolean) (Boolean) BHReflection.invoke0(remark, CONCEPTS.RemarkStatement$l_, SMethodTrimmedId.create("isTodo", CONCEPTS.RemarkStatement$l_, "hEwITPs")))) {
+      if (((boolean) (Boolean) BHReflection.invoke0(remark, CONCEPTS.RemarkStatement$l_, SMethodIdV2.create("isTodo", 1213877427548L, 0x5745e3015c8914d3L)))) {
         SetSequence.fromSet(messages).addElement(new ToDoMessage(remark, SPropertyOperations.getString(remark, PROPS.value$x6Yx), this));
       }
     }
     for (SNode textCommentPart : SNodeOperations.getNodeDescendants(node, CONCEPTS.TextCommentPart$LX, false, new SAbstractConcept[]{})) {
-      if (((boolean) (Boolean) BHReflection.invoke0(textCommentPart, CONCEPTS.CommentPart$KZ, SMethodTrimmedId.create("isToDo", null, "6hHyb3YSGHZ")))) {
+      if (((boolean) (Boolean) BHReflection.invoke0(textCommentPart, CONCEPTS.CommentPart$KZ, SMethodIdV2.create("isToDo", 7236590470026152831L, 0x5745e3015c8914d3L)))) {
         SetSequence.fromSet(messages).addElement(new ToDoMessage(textCommentPart, SPropertyOperations.getString(textCommentPart, PROPS.text$ag2i), this));
       }
     }
     for (SNode textComment : SNodeOperations.getNodeDescendants(node, CONCEPTS.IComment$KY, false, new SAbstractConcept[]{})) {
-      if (((boolean) (Boolean) BHReflection.invoke0(textComment, CONCEPTS.IComment$KY, SMethodTrimmedId.create("isTODOComment", CONCEPTS.IComment$KY, "fB3l7ZufMD")))) {
-        SetSequence.fromSet(messages).addElement(new ToDoMessage(textComment, ((String) BHReflection.invoke0(textComment, CONCEPTS.IComment$KY, SMethodTrimmedId.create("getTextualRepresentation", null, "fB3l80ylIb"))), this));
+      if (((boolean) (Boolean) BHReflection.invoke0(textComment, CONCEPTS.IComment$KY, SMethodIdV2.create("isTODOComment", 281208147563576489L, 0x5745e3015c8914d3L)))) {
+        SetSequence.fromSet(messages).addElement(new ToDoMessage(textComment, ((String) BHReflection.invoke0(textComment, CONCEPTS.IComment$KY, SMethodIdV2.create("getTextualRepresentation", 281208147581426571L, 0x5745e3015c8914d3L))), this));
       }
     }
     return new UpdateResult.Completed(true, messages);

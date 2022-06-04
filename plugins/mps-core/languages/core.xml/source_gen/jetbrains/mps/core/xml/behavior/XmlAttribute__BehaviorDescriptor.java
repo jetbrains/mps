@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class XmlAttribute__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x479c7a8c02f943b5L, 0x9139d910cb22f298L, 0x5c842a42c54b8df3L, "jetbrains.mps.core.xml.structure.XmlAttribute");
 
-  public static final SMethod<Boolean> isMultiline_id2EZ251fZScc = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMultiline").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2EZ251fZScc").build();
+  public static final SMethod<Boolean> isMultiline_id2EZ251fZScc = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMultiline").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3080189811177259788L).languageId(0x9139d910cb22f298L, 0x479c7a8c02f943b5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isMultiline_id2EZ251fZScc);
 

@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ParenthesizedExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3e2L, "jetbrains.mps.kotlin.structure.ParenthesizedExpression");
 
-  public static final SMethod<SNode> getDataFlowChild_id6563FJLePC_ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDataFlowChild").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6563FJLePC_").build();
+  public static final SMethod<SNode> getDataFlowChild_id6563FJLePC_ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getDataFlowChild").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7009306070417627685L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDataFlowChild_id6563FJLePC_);
 

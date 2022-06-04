@@ -24,7 +24,7 @@ import java.util.HashSet;
 import com.intellij.openapi.project.IndexNotReadyException;
 import jetbrains.mps.baseLanguage.util.OverridingMethodsCalculator;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
 import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -104,9 +104,9 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       StringBuilder tooltip = new StringBuilder();
       int messageCounter = 0;
       Set<SNode> baseMethods = finder.getBaseMethods(overridingMethod);
-      boolean overrides = ((boolean) (Boolean) BHReflection.invoke0(overridingMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl"))) || SetSequence.fromSet(baseMethods).where(new IWhereFilter<SNode>() {
+      boolean overrides = ((boolean) (Boolean) BHReflection.invoke0(overridingMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L))) || SetSequence.fromSet(baseMethods).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl"))));
+          return !(((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L))));
         }
       }).isNotEmpty();
       for (SNode baseMethod : SetSequence.fromSet(baseMethods)) {
@@ -153,7 +153,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
     SetSequence.fromSet(messages).addElement(new SubclassedClassifierEditorMessage(container, this, superClassifierTooltip.toString(), isInterface));
 
     Map<String, Set<SNode>> nameToMethodsMap = MapSequence.fromMap(new HashMap<String, Set<SNode>>());
-    for (SNode method : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(container, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
+    for (SNode method : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(container, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return OverridingMethodsCalculator.canBeOverridden(it);
       }
@@ -168,7 +168,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       if (SPropertyOperations.getBoolean(overridenMethod, PROPS.isFinal$eVPk)) {
         continue;
       }
-      boolean overriden = !(((boolean) (Boolean) BHReflection.invoke0(overridenMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("isAnAbstractMethod", null, "28P2dHxCoRl"))));
+      boolean overriden = !(((boolean) (Boolean) BHReflection.invoke0(overridenMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L))));
       StringBuffer tooltip = new StringBuffer("Is ");
       tooltip.append((overriden ? "overridden" : "implemented"));
       tooltip.append(" in");
@@ -201,7 +201,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
         }
         SNode overridenMethod = SetSequence.fromSet(similarMethods).findFirst(new IWhereFilter<SNode>() {
           public boolean accept(SNode it) {
-            return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("hasSameSignature", CONCEPTS.BaseMethodDeclaration$kD, "hEwIB0z"), derivedClassifierMethod));
+            return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("hasSameSignature", 1213877350435L, 0x5745e3015c8914d3L), derivedClassifierMethod));
           }
         });
         if (overridenMethod != null) {
@@ -292,15 +292,15 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.EnumConstantDeclaration$MW)) {
       return getEnumConstantPresentation(SNodeOperations.cast(node, CONCEPTS.EnumConstantDeclaration$MW));
     }
-    return ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+    return ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
   }
 
   private String getClassifierPresentation(SNode classifier) {
-    return ((String) (String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    return ((String) (String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
   }
 
   private String getEnumConstantPresentation(SNode enumConstantDeclaration) {
-    return ((String) (String) BHReflection.invoke0(enumConstantDeclaration, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+    return ((String) (String) BHReflection.invoke0(enumConstantDeclaration, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
   }
 
   private static boolean isParameterType(SNode type) {

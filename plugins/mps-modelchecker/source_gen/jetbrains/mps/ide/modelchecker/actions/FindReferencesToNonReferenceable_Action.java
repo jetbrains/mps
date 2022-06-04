@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Arrays;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -107,7 +107,7 @@ public class FindReferencesToNonReferenceable_Action extends BaseAction {
                 total.value++;
                 if (!(SEnumOperations.isMember(SPropertyOperations.getEnum(ccp, PROPS.staticScope$PjQk), 0x4b014033eedc8becL))) {
                   referenceable.value++;
-                  String cname = ((String) BHReflection.invoke0(ccp, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+                  String cname = ((String) BHReflection.invoke0(ccp, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
                   if (MapSequence.fromMap(used).containsKey(cname)) {
                     MapSequence.fromMap(used).put(cname, MapSequence.fromMap(used).get(cname) + 1);
                   } else {

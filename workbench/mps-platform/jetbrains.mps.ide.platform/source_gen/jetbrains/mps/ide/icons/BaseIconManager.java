@@ -33,7 +33,7 @@ import com.intellij.ui.LayeredIcon;
 import com.intellij.util.PlatformIcons;
 import com.intellij.ui.RowIcon;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -172,8 +172,8 @@ public class BaseIconManager {
     }
     RowIcon result = new RowIcon(2);
     result.setIcon(mainIcon, 0);
-    result.setIcon(getIconForResource(((IconResource) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getSideIcon", null, "6TtJ6IUjtJX")))), 1);
-    List<Icon> markIcons = ListSequence.fromList(((List<IconResource>) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getIconMarks", null, "6TtJ6IUkhQJ")))).select(new ISelector<IconResource, Icon>() {
+    result.setIcon(getIconForResource(((IconResource) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getSideIcon", 7952719687879351293L, 0x553941aeb020c32eL)))), 1);
+    List<Icon> markIcons = ListSequence.fromList(((List<IconResource>) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getIconMarks", 7952719687879564719L, 0x553941aeb020c32eL)))).select(new ISelector<IconResource, Icon>() {
       public Icon select(IconResource it) {
         return getIconForResource(it);
       }

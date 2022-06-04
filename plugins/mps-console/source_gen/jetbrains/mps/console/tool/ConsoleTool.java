@@ -28,7 +28,7 @@ import com.intellij.util.xmlb.annotations.Tag;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import com.intellij.ui.content.Content;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -146,7 +146,7 @@ public class ConsoleTool extends BaseTabbedProjectTool implements PersistentStat
 
   public void executeCommand(final SNode command) {
     final TabState tabState = new TabState();
-    myProject.getRepository().getModelAccess().runReadAction(() -> tabState.title = ((String) BHReflection.invoke0(command, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))));
+    myProject.getRepository().getModelAccess().runReadAction(() -> tabState.title = ((String) BHReflection.invoke0(command, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL))));
     tabState.isHistoryTab = true;
     final BaseConsoleTab tab = addConsoleTab(tabState, null, true);
     myProject.getRepository().getModelAccess().executeCommand(() -> tab.execute(command, null, null));

@@ -18,7 +18,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.internal.collections.runtime.Sequence;
@@ -195,7 +195,7 @@ public class TransformationUtil {
     if (ListSequence.fromList(SModelOperations.nodes(model, CONCEPTS.Classifier$Ix)).contains(classConcept)) {
       fqNameNode = _quotation_createNode_crriw5_a0a0c0w();
     } else {
-      fqNameNode = createStringLiteral(((String) BHReflection.invoke0(classConcept, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y"))));
+      fqNameNode = createStringLiteral(((String) BHReflection.invoke0(classConcept, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL))));
     }
     return fqNameNode;
   }
@@ -279,20 +279,20 @@ public class TransformationUtil {
       // we have to deal with the fact that inners in stubs are not inners
       String realFqName;
       if (SPropertyOperations.getString(classifier, PROPS.name$MnvL).contains(".")) {
-        String fqName = ((String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+        String fqName = ((String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
         realFqName = fqName.substring(0, fqName.length() - SPropertyOperations.getString(classifier, PROPS.name$MnvL).length()) + SPropertyOperations.getString(classifier, PROPS.name$MnvL).replace(".", "$");
       } else {
         SNode rootClassifier = classifier;
         String suffix = "";
-        while (((boolean) (Boolean) BHReflection.invoke0(rootClassifier, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("isInner", CONCEPTS.Classifier$Ix, "sWroEc0xXl")))) {
+        while (((boolean) (Boolean) BHReflection.invoke0(rootClassifier, CONCEPTS.Classifier$Ix, SMethodIdV2.create("isInner", 521412098689998677L, 0x5745e3015c8914d3L)))) {
           suffix = "$" + SPropertyOperations.getString(rootClassifier, PROPS.name$MnvL);
           rootClassifier = SNodeOperations.cast(SNodeOperations.getParent(rootClassifier), CONCEPTS.Classifier$Ix);
         }
-        realFqName = (((String) BHReflection.invoke0(rootClassifier, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y"))).replace(".", "/")) + suffix;
+        realFqName = (((String) BHReflection.invoke0(rootClassifier, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL))).replace(".", "/")) + suffix;
       }
       return "L" + realFqName + ";";
     } else if (SNodeOperations.isInstanceOf(type, CONCEPTS.TypeVariableReference$WL)) {
-      return getJniSignatureFromType(((SNode) BHReflection.invoke0(SNodeOperations.cast(type, CONCEPTS.TypeVariableReference$WL), CONCEPTS.Type$bu, SMethodTrimmedId.create("getJavaType", null, "hEwIzO1"))));
+      return getJniSignatureFromType(((SNode) BHReflection.invoke0(SNodeOperations.cast(type, CONCEPTS.TypeVariableReference$WL), CONCEPTS.Type$bu, SMethodIdV2.create("getJavaType", 1213877337345L, 0x5745e3015c8914d3L))));
     } else {
       LOG.error("Unknown type, assuming it's void", type);
     }
@@ -387,7 +387,7 @@ public class TransformationUtil {
     } else
     if (SNodeOperations.isInstanceOf(parent, CONCEPTS.ConceptFunction$mf)) {
       SNode conceptFunction = SNodeOperations.cast(parent, CONCEPTS.ConceptFunction$mf);
-      returnType = ((SNode) BHReflection.invoke0(conceptFunction, CONCEPTS.ConceptFunction$mf, SMethodTrimmedId.create("getExpectedReturnType", null, "hEwIGRD")));
+      returnType = ((SNode) BHReflection.invoke0(conceptFunction, CONCEPTS.ConceptFunction$mf, SMethodIdV2.create("getExpectedReturnType", 1213877374441L, 0x5745e3015c8914d3L)));
     } else if (SNodeOperations.isInstanceOf(parent, CONCEPTS.ClosureLiteral$rp)) {
       SNode closure = SNodeOperations.cast(parent, CONCEPTS.ClosureLiteral$rp);
       returnType = SLinkOperations.getTarget(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(closure), CONCEPTS.FunctionType$9U), LINKS.resultType$2oOC);

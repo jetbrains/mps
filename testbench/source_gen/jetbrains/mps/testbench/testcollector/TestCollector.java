@@ -19,7 +19,7 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -90,7 +90,7 @@ public class TestCollector {
             public boolean accept(SNode cann) {
               return SLinkOperations.getTarget(cann, LINKS.annotation$12Ek) == ignoreAnn;
             }
-          })) && Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(cls, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).translate(new ITranslator2<SNode, SNode>() {
+          })) && Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(cls, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).translate(new ITranslator2<SNode, SNode>() {
             public Iterable<SNode> translate(SNode m) {
               return SLinkOperations.getChildren(m, LINKS.annotation$K49I);
             }
@@ -141,7 +141,7 @@ public class TestCollector {
             public boolean accept(SNode cann) {
               return SLinkOperations.getTarget(cann, LINKS.annotation$12Ek) == ignoreAnn;
             }
-          })) && ((boolean) (Boolean) BHReflection.invoke0(cls, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("isDescendant", null, "6dL7A1DpKo1"), SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a0a0a0a0a0e0b4(), LINKS.classifier$cxMr)));
+          })) && ((boolean) (Boolean) BHReflection.invoke0(cls, CONCEPTS.Classifier$Ix, SMethodIdV2.create("isDescendant", 7165541881557222913L, 0x5745e3015c8914d3L), SLinkOperations.getTarget(_quotation_createNode_rpw6il_a0a0a0a0a0a0e0b4(), LINKS.classifier$cxMr)));
         }
       }).toListSequence();
       ListSequence.fromList(nodes).visitAll(new IVisitor<SNode>() {

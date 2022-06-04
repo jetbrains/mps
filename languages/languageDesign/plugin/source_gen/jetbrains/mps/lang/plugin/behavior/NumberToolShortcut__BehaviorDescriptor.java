@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class NumberToolShortcut__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x68b8d4843b76107L, "jetbrains.mps.lang.plugin.structure.NumberToolShortcut");
 
-  public static final SMethod<Integer> getNumber_idqbzkx46jl9 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getNumber").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("qbzkx46jl9").build();
+  public static final SMethod<Integer> getNumber_idqbzkx46jl9 = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getNumber").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(471625927510013257L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNumber_idqbzkx46jl9);
 

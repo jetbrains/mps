@@ -194,7 +194,7 @@
     <classNode dependClassName="java.util.Iterator" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodIdV2" />
     <classNode dependClassName="jetbrains.mps.editor.runtime.commands.EditorCommandAdapter" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.CollectionSequence" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />

@@ -16,7 +16,7 @@ import org.jetbrains.mps.openapi.module.FindUsagesFacade;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.ide.findusages.model.SearchResult;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -36,14 +36,14 @@ public class TodoFinder implements IFinder {
     Set<SNode> textCommentParts = FindUsagesFacade.getInstance().findInstances(query.getScope(), s, false, new EmptyProgressMonitor());
     SearchResults<SNode> results = new SearchResults<SNode>();
     for (SNode node : SNodeOperations.ofConcept(textCommentParts, CONCEPTS.TextCommentPart$LX)) {
-      if (((boolean) (Boolean) BHReflection.invoke0(node, CONCEPTS.CommentPart$KZ, SMethodTrimmedId.create("isToDo", null, "6hHyb3YSGHZ")))) {
+      if (((boolean) (Boolean) BHReflection.invoke0(node, CONCEPTS.CommentPart$KZ, SMethodIdV2.create("isToDo", 7236590470026152831L, 0x5745e3015c8914d3L)))) {
         results.getSearchResults().add(new SearchResult<SNode>(node, "TODO items"));
       }
     }
 
     Set<SNode> comments = FindUsagesFacade.getInstance().findInstances(query.getScope(), Collections.singleton(CONCEPTS.IComment$KY), false, new EmptyProgressMonitor());
     for (SNode node : SNodeOperations.ofConcept(comments, CONCEPTS.IComment$KY)) {
-      if (((boolean) (Boolean) BHReflection.invoke0(node, CONCEPTS.IComment$KY, SMethodTrimmedId.create("isTODOComment", CONCEPTS.IComment$KY, "fB3l7ZufMD")))) {
+      if (((boolean) (Boolean) BHReflection.invoke0(node, CONCEPTS.IComment$KY, SMethodIdV2.create("isTODOComment", 281208147563576489L, 0x5745e3015c8914d3L)))) {
         results.getSearchResults().add(new SearchResult<SNode>(node, "TODO items"));
       }
     }

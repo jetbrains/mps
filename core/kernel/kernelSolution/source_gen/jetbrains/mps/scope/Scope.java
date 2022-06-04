@@ -14,7 +14,7 @@ import java.util.Arrays;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -106,7 +106,7 @@ public abstract class Scope {
     SNode prev = fromChild;
     while (curr != null) {
       if (SNodeOperations.isInstanceOf(curr, CONCEPTS.ScopeProvider$aq)) {
-        Scope scope = ((Scope) BHReflection.invoke0(SNodeOperations.cast(curr, CONCEPTS.ScopeProvider$aq), CONCEPTS.ScopeProvider$aq, SMethodTrimmedId.create("getScope", null, "52_Geb4QDV$"), kind, prev));
+        Scope scope = ((Scope) BHReflection.invoke0(SNodeOperations.cast(curr, CONCEPTS.ScopeProvider$aq), CONCEPTS.ScopeProvider$aq, SMethodIdV2.create("getScope", 5811245382203252452L, 0x553941aeb020c32eL), kind, prev));
         if (scope != null) {
           return scope.withAdditionalDependencies(Collections.singleton(curr));
         }
@@ -121,7 +121,7 @@ public abstract class Scope {
    */
   public static Scope getScope(SNode node, SContainmentLink link, int index, SAbstractConcept kind) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.ScopeProvider$aq)) {
-      Scope scope = ((Scope) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ScopeProvider$aq), CONCEPTS.ScopeProvider$aq, SMethodTrimmedId.create("getScope", null, "52_Geb4QFgX"), kind, link, ((int) index)));
+      Scope scope = ((Scope) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.ScopeProvider$aq), CONCEPTS.ScopeProvider$aq, SMethodIdV2.create("getScope", 5811245382203257917L, 0x553941aeb020c32eL), kind, link, ((int) index)));
       if (scope != null) {
         return scope.withAdditionalDependencies(Collections.singleton(node));
       }

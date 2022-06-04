@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IClassSuperSpecifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x1913adf56af0af90L, "jetbrains.mps.kotlin.structure.IClassSuperSpecifier");
 
-  public static final SMethod<SNode> convertToConstructor_id1$jFvlEWuyJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("convertToConstructor").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1$jFvlEWuyJ").build();
+  public static final SMethod<SNode> convertToConstructor_id1$jFvlEWuyJ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("convertToConstructor").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145078532271L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(convertToConstructor_id1$jFvlEWuyJ);
 

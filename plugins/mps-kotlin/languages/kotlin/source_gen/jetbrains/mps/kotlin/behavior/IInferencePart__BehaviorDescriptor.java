@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class IInferencePart__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x25a91847838b6458L, "jetbrains.mps.kotlin.structure.IInferencePart");
 
-  public static final SMethod<SNode> inferenceRoot_id463y4lqnr1l = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("inferenceRoot").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("463y4lqnr1l").build();
+  public static final SMethod<SNode> inferenceRoot_id463y4lqnr1l = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("inferenceRoot").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4720766665864622165L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(inferenceRoot_id463y4lqnr1l);
 

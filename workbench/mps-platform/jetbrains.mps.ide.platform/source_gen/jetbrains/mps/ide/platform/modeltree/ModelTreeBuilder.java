@@ -16,7 +16,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.Enumeration;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -62,7 +62,7 @@ public abstract class ModelTreeBuilder implements TreeExpansionListener {
   public static Iterable<SNode> sortChildNodes(Iterable<SNode> nodes) {
     return Sequence.fromIterable(nodes).sort(new ISelector<SNode, String>() {
       public String select(SNode node) {
-        return SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl) + "|" + ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+        return SPropertyOperations.getString(node, PROPS.virtualPackage$EkXl) + "|" + ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
       }
     }, true);
   }

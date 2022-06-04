@@ -18,7 +18,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.Map;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -65,7 +65,7 @@ public class ErrorReportHelper {
       public boolean accept(SNode attr) {
         boolean res = false;
         try {
-          res = ((boolean) (Boolean) BHReflection.invoke0(attr, CONCEPTS.ISuppressErrors$qB, SMethodTrimmedId.create("suppress", null, "3612de_vrfV"), reportItem));
+          res = ((boolean) (Boolean) BHReflection.invoke0(attr, CONCEPTS.ISuppressErrors$qB, SMethodIdV2.create("suppress", 3567142084961743867L, 0x553941aeb020c32eL), reportItem));
         } catch (Throwable t) {
           if (LOG.isEnabledFor(Level.ERROR)) {
             LOG.error("Exception while invoking #suppress() on node " + SNodeOperations.present(node), t);

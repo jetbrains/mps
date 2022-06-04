@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.ide.project.ProjectHelper;
 import java.util.ArrayList;
@@ -67,9 +67,9 @@ public class OverrideImplementMethodAction {
     final SNodeReference[] methods = mah.runReadAction(new Computable<SNodeReference[]>() {
       @Override
       public SNodeReference[] compute() {
-        List<SNode> methodsToImplementAndOverride = ((List<SNode>) BHReflection.invoke0(contextClassifier, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToImplement", null, "4GM03FJm5q2")));
+        List<SNode> methodsToImplementAndOverride = ((List<SNode>) BHReflection.invoke0(contextClassifier, CONCEPTS.IMemberContainer$yM, SMethodIdV2.create("getMethodsToImplement", 5418393554803775106L, 0x5745e3015c8914d3L)));
         if (myIsOverride) {
-          ListSequence.fromList(methodsToImplementAndOverride).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(contextClassifier, CONCEPTS.IMemberContainer$yM, SMethodTrimmedId.create("getMethodsToOverride", null, "4GM03FJm3zL")))));
+          ListSequence.fromList(methodsToImplementAndOverride).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(contextClassifier, CONCEPTS.IMemberContainer$yM, SMethodIdV2.create("getMethodsToOverride", 5418393554803767537L, 0x5745e3015c8914d3L)))));
         }
         return OverrideImplementMethodsDialog.toNodePointers(OverrideImplementMethodsDialog.sortMethods(contextClassifier, methodsToImplementAndOverride));
       }

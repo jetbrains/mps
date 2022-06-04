@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IContextNodeAccessQualifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x6a829fc5694f1ebcL, "jetbrains.mps.lang.editor.structure.IContextNodeAccessQualifier");
 
-  public static final SMethod<Boolean> useNodeGetter_id6E2BWlDjMQu = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useNodeGetter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6E2BWlDjMQu").build();
+  public static final SMethod<Boolean> useNodeGetter_id6E2BWlDjMQu = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useNodeGetter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7674872385216916894L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(useNodeGetter_id6E2BWlDjMQu);
 

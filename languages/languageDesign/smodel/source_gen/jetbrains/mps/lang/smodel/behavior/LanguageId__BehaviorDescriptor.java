@@ -27,9 +27,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class LanguageId__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x312abca18ab8c8c0L, "jetbrains.mps.lang.smodel.structure.LanguageId");
 
-  public static final SMethod<SLanguage> getLanguage_id34EJa6aIcyj = new SMethodBuilder<SLanguage>(new SJavaCompoundTypeImpl(SLanguage.class)).name("getLanguage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("34EJa6aIcyj").build();
-  public static final SMethod<Void> setLanguage_id34EJa6aIcyw = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLanguage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("34EJa6aIcyw").build(SMethodBuilder.createJavaParameter(SLanguage.class, ""));
-  public static final SMethod<Void> setLanguage_id5e7X3XCKW4J = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLanguage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5e7X3XCKW4J").build(SMethodBuilder.createJavaParameter(Language.class, ""));
+  public static final SMethod<SLanguage> getLanguage_id34EJa6aIcyj = new SMethodBuilder<SLanguage>(new SJavaCompoundTypeImpl(SLanguage.class)).name("getLanguage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3542851458883438739L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<Void> setLanguage_id34EJa6aIcyw = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLanguage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3542851458883438752L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(SLanguage.class, ""));
+  public static final SMethod<Void> setLanguage_id5e7X3XCKW4J = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setLanguage").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6019047980181733679L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2(SMethodBuilder.createJavaParameter(Language.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLanguage_id34EJa6aIcyj, setLanguage_id34EJa6aIcyw, setLanguage_id5e7X3XCKW4J);
 

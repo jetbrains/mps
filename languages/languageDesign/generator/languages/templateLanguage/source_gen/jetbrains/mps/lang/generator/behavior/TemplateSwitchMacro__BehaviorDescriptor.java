@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class TemplateSwitchMacro__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xda3dc6e51747593L, "jetbrains.mps.lang.generator.structure.TemplateSwitchMacro");
 
-  public static final SMethod<SNode> getTemplateSwitch_idQzR6Ththuv = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTemplateSwitch").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("QzR6Ththuv").build();
+  public static final SMethod<SNode> getTemplateSwitch_idQzR6Ththuv = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTemplateSwitch").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(982871510068041631L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTemplateSwitch_idQzR6Ththuv);
 

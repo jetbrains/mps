@@ -32,10 +32,10 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ExternalViewFigureParameter__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd7722d504b934c3aL, 0xae061903d05f95a7L, 0x1e3b9cbb9f749406L, "jetbrains.mps.lang.editor.figures.structure.ExternalViewFigureParameter");
 
-  public static final SMethod<SNode> getParameterMethod_id4H19mAx5nwL = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4H19mAx5nwL").build();
-  public static final SMethod<String> getGetterName_id3g73hQq7brf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGetterName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3g73hQq7brf").build();
-  /*package*/ static final SMethod<String> getSuffix_id3g73hQq82yQ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSuffix").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("3g73hQq82yQ").build();
-  public static final SMethod<SNode> getParameterType_idiZqVFYvBew = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("iZqVFYvBew").build();
+  public static final SMethod<SNode> getParameterMethod_id4H19mAx5nwL = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5422656561935120433L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
+  public static final SMethod<String> getGetterName_id3g73hQq7brf = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGetterName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3748979635600013007L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
+  /*package*/ static final SMethod<String> getSuffix_id3g73hQq82yQ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSuffix").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(3748979635600238774L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
+  public static final SMethod<SNode> getParameterType_idiZqVFYvBew = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getParameterType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(342110547581236128L).languageId(0xae061903d05f95a7L, 0xd7722d504b934c3aL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getParameterMethod_id4H19mAx5nwL, getGetterName_id3g73hQq7brf, getSuffix_id3g73hQq82yQ, getParameterType_idiZqVFYvBew);
 

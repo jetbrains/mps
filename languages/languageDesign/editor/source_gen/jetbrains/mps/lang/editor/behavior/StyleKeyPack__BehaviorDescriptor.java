@@ -24,8 +24,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class StyleKeyPack__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x399cb6c68aa9af02L, "jetbrains.mps.lang.editor.structure.StyleKeyPack");
 
-  public static final SMethod<String> getClassName_id3w77Jl_h9LF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3w77Jl_h9LF").build();
-  public static final SMethod<String> getClassFqName_id3w77Jl_kWGD = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3w77Jl_kWGD").build();
+  public static final SMethod<String> getClassName_id3w77Jl_h9LF = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4037229630275755115L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<String> getClassFqName_id3w77Jl_kWGD = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassFqName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4037229630276750121L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassName_id3w77Jl_h9LF, getClassFqName_id3w77Jl_kWGD);
 

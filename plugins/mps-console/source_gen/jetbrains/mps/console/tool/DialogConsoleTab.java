@@ -21,7 +21,7 @@ import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.model.SModel;
 import java.util.List;
 import java.util.ArrayList;
@@ -144,7 +144,7 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
     }
     setCommandCursor(newCursor);
     SLinkOperations.setNewChild(myRoot, LINKS.commandHolder$LTfs, CONCEPTS.CommandHolder$K4);
-    SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil, SNodeOperations.copyNode(((SNode) BHReflection.invoke0(getCommandCursor(), CONCEPTS.CommandHolder$K4, SMethodTrimmedId.create("getCommandToEdit", null, "ApbqR6U7je")))));
+    SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil, SNodeOperations.copyNode(((SNode) BHReflection.invoke0(getCommandCursor(), CONCEPTS.CommandHolder$K4, SMethodIdV2.create("getCommandToEdit", 691634242167796942L, 0x6d1c0cbc11348977L)))));
     scrollToBottom();
   }
 
@@ -163,7 +163,7 @@ public class DialogConsoleTab extends BaseConsoleTab implements DataProvider {
     SLinkOperations.setNewChild(myRoot, LINKS.commandHolder$LTfs, CONCEPTS.CommandHolder$K4);
     if (!((newCursor == null))) {
       setCommandCursor(newCursor);
-      SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil, SNodeOperations.copyNode(((SNode) BHReflection.invoke0(getCommandCursor(), CONCEPTS.CommandHolder$K4, SMethodTrimmedId.create("getCommandToEdit", null, "ApbqR6U7je")))));
+      SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil, SNodeOperations.copyNode(((SNode) BHReflection.invoke0(getCommandCursor(), CONCEPTS.CommandHolder$K4, SMethodIdV2.create("getCommandToEdit", 691634242167796942L, 0x6d1c0cbc11348977L)))));
     } else {
       setCommandCursor(null);
       SLinkOperations.setTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil, SNodeOperations.copyNode(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.hiddenCommand$i8Sk), LINKS.command$RGil)));

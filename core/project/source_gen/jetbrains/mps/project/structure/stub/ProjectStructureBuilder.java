@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.project.structure.model.ModelRootDescriptor;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
@@ -135,7 +135,7 @@ public class ProjectStructureBuilder {
 
   private SNode convert(SModelReference source) {
     SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.ModelReference$Gh);
-    BHReflection.invoke0(result, CONCEPTS.ModelReference$Gh, SMethodTrimmedId.create("populateFrom", CONCEPTS.ModelReference$Gh, "2BHFktfniCd"), source);
+    BHReflection.invoke0(result, CONCEPTS.ModelReference$Gh, SMethodIdV2.create("populateFrom", 3021261446821259789L, 0x12908ba79a492f0eL), source);
     return result;
   }
 
@@ -242,7 +242,7 @@ public class ProjectStructureBuilder {
       return null;
     }
     SNode result = SModelOperations.createNewNode(myModel, null, CONCEPTS.ModuleReference$L8);
-    BHReflection.invoke0(result, CONCEPTS.ModuleReference$L8, SMethodTrimmedId.create("populateFrom", CONCEPTS.ModuleReference$L8, "2BHFktfnlSL"), ref);
+    BHReflection.invoke0(result, CONCEPTS.ModuleReference$L8, SMethodIdV2.create("populateFrom", 3021261446821273137L, 0x12908ba79a492f0eL), ref);
     return result;
   }
 

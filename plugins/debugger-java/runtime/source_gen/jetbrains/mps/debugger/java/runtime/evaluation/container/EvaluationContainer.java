@@ -24,7 +24,7 @@ import jetbrains.mps.util.Computable;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -76,7 +76,7 @@ public abstract class EvaluationContainer implements IEvaluationContainer {
     return new ModelAccessHelper(myDebuggerRepository).runReadAction(new Computable<String>() {
       @Override
       public String compute() {
-        return PresentationUtil.getPresentation(((SNode) BHReflection.invoke0(SNodeOperations.cast(getNode(), CONCEPTS.IEvaluatorConcept$E8), CONCEPTS.IEvaluatorConcept$E8, SMethodTrimmedId.create("getCode", null, "hASWOEj0jB"))));
+        return PresentationUtil.getPresentation(((SNode) BHReflection.invoke0(SNodeOperations.cast(getNode(), CONCEPTS.IEvaluatorConcept$E8), CONCEPTS.IEvaluatorConcept$E8, SMethodIdV2.create("getCode", 317191294093624551L, 0xfcc609a70ba2c576L))));
       }
     });
   }

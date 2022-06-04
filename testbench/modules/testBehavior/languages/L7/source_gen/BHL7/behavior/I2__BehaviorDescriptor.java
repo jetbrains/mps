@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class I2__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x549fa4aa12af528cL, "BHL7.structure.I2");
 
-  public static final SMethod<Integer> foo_id5ivDaCiFPaC = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("foo").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5ivDaCiFPaC").build();
+  public static final SMethod<Integer> foo_id5ivDaCiFPaC = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("foo").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6097773470847816360L).languageId(0xb1e014d3f948db39L, 0x4239359f64574d2aL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(foo_id5ivDaCiFPaC);
 

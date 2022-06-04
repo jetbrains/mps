@@ -15,7 +15,7 @@ import jetbrains.mps.smodel.adapter.ids.SConceptId;
 import jetbrains.mps.smodel.adapter.ids.MetaIdHelper;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -79,13 +79,13 @@ public final class SNodeUtil {
   }
   public static String getPresentation(SNode node) {
     try {
-      return ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw")));
+      return ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL)));
     } catch (Throwable t) {
       return node.getName();
     }
   }
   public static String getDetailedPresentation(SNode node) {
-    return ((String) (String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getDetailedPresentation", null, "22G2W3WJ92t")));
+    return ((String) (String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getDetailedPresentation", 2354269628709769373L, 0x553941aeb020c32eL)));
   }
   /**
    * 
@@ -97,7 +97,7 @@ public final class SNodeUtil {
     return !(concept.isAbstract()) && !(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(concept), CONCEPTS.IDontSubstituteByDefault$GY));
   }
   public static int getMetaLevel(SNode node) {
-    return ((int) (Integer) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getMetaLevel", null, "3t0v3yFOD1A")));
+    return ((int) (Integer) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getMetaLevel", 3981318653438234726L, 0x553941aeb020c32eL)));
   }
   public static boolean isInstanceOfConceptDeclaration(SNode node) {
     if (node == null) {
@@ -106,10 +106,10 @@ public final class SNodeUtil {
     return SNodeOperations.getConcept(node).equals(CONCEPTS.ConceptDeclaration$gH);
   }
   public static SContainmentLink getChildLink(SNode attribute) {
-    return ((SContainmentLink) (SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf")));
+    return ((SContainmentLink) (SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL)));
   }
   public static SProperty getProperty(SNode attribute) {
-    return ((SProperty) (SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.PropertyAttribute$Gb), CONCEPTS.PropertyAttribute$Gb, SMethodTrimmedId.create("getProperty", CONCEPTS.PropertyAttribute$Gb, "1avfQ4BBzOo")));
+    return ((SProperty) (SProperty) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.PropertyAttribute$Gb), CONCEPTS.PropertyAttribute$Gb, SMethodIdV2.create("getProperty", 1341860900488756504L, 0x553941aeb020c32eL)));
   }
   public static SNode getLinkTarget(SNode link) {
     return SLinkOperations.getTarget(link, LINKS.target$m40F);
@@ -177,7 +177,7 @@ public final class SNodeUtil {
     return SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c4L, "_1")).equals(cardinality) || SEnumOperations.getMemberPresentation(SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality"), 0xfc6f3944c3L, "_0__1")).equals(cardinality);
   }
   public static SReferenceLink getLink(SNode attribute) {
-    return ((SReferenceLink) (SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.LinkAttribute$v_), CONCEPTS.LinkAttribute$v_, SMethodTrimmedId.create("getLink", CONCEPTS.LinkAttribute$v_, "1avfQ4BEFo6")));
+    return ((SReferenceLink) (SReferenceLink) BHReflection.invoke0(SNodeOperations.cast(attribute, CONCEPTS.LinkAttribute$v_), CONCEPTS.LinkAttribute$v_, SMethodIdV2.create("getLink", 1341860900489573894L, 0x553941aeb020c32eL)));
   }
   /**
    * 

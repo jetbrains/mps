@@ -18,7 +18,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -189,7 +189,7 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
     }
 
     // last statement might become return statement during generation
-    SNode statement = ((SNode) BHReflection.invoke0(evaluateMethod, CONCEPTS.IMethodLike$L7, SMethodTrimmedId.create("getLastStatement", null, "i2fhS7A")));
+    SNode statement = ((SNode) BHReflection.invoke0(evaluateMethod, CONCEPTS.IMethodLike$L7, SMethodIdV2.create("getLastStatement", 1239354409446L, 0x5745e3015c8914d3L)));
     if (TransformationUtil.canMakeReturnStatement(statement)) {
       TransformationUtil.replaceReturnedExpressionIfNeeded(SLinkOperations.getTarget(SNodeOperations.cast(statement, CONCEPTS.ExpressionStatement$O8), LINKS.expression$5L7M));
     }

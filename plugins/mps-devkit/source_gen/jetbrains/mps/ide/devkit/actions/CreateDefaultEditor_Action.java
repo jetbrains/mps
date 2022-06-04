@@ -17,7 +17,7 @@ import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
 import java.util.List;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.smodel.LanguageAspect;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -57,7 +57,7 @@ public class CreateDefaultEditor_Action extends BaseAction {
     QueueSequence.fromQueue(toCheck).addLastElement(conceptDeclaration);
     while (QueueSequence.fromQueue(toCheck).isNotEmpty()) {
       SNode acd = QueueSequence.fromQueue(toCheck).removeFirstElement();
-      List<SNode> aspects = ((List<SNode>) BHReflection.invoke0(acd, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("findConceptAspectCollection", CONCEPTS.AbstractConceptDeclaration$KA, "1n18fON7w20"), LanguageAspect.EDITOR));
+      List<SNode> aspects = ((List<SNode>) BHReflection.invoke0(acd, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("findConceptAspectCollection", 1567570417158062208L, 0x44a456bea0df1cf0L), LanguageAspect.EDITOR));
       if (!(SConceptOperations.isExactly(SNodeOperations.asSConcept(acd), CONCEPTS.BaseConcept$gP)) && ListSequence.fromList(aspects).any(new IWhereFilter<SNode>() {
         public boolean accept(SNode a) {
           return SNodeOperations.isInstanceOf(a, CONCEPTS.ConceptEditorDeclaration$BH);
@@ -65,7 +65,7 @@ public class CreateDefaultEditor_Action extends BaseAction {
       })) {
         return false;
       }
-      QueueSequence.fromQueue(toCheck).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(acd, CONCEPTS.AbstractConceptDeclaration$KA, SMethodTrimmedId.create("getImmediateSuperconcepts", null, "hMuxyK2")))));
+      QueueSequence.fromQueue(toCheck).addSequence(ListSequence.fromList(((List<SNode>) BHReflection.invoke0(acd, CONCEPTS.AbstractConceptDeclaration$KA, SMethodIdV2.create("getImmediateSuperconcepts", 1222430305282L, 0x44a456bea0df1cf0L)))));
     }
     return true;
   }
@@ -98,9 +98,9 @@ public class CreateDefaultEditor_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     SNode conceptDeclaration = SNodeOperations.as(((SNode) MapSequence.fromMap(_params).get("selectedNode")), CONCEPTS.ConceptDeclaration$gH);
     SNode editorDeclaration = ConceptAspectsHelper.attachNewConceptAspect(LanguageAspect.EDITOR, conceptDeclaration, SNodeFactoryOperations.createNewNode(CONCEPTS.ConceptEditorDeclaration$BH, null));
-    assert ((SNode) BHReflection.invoke0(editorDeclaration, CONCEPTS.AbstractComponent$YR, SMethodTrimmedId.create("getConceptDeclaration", null, "67EYkym$wx3"))) != null;
-    assert Objects.equals(((SNode) BHReflection.invoke0(editorDeclaration, CONCEPTS.AbstractComponent$YR, SMethodTrimmedId.create("getConceptDeclaration", null, "67EYkym$wx3"))), conceptDeclaration);
-    BHReflection.invoke0(editorDeclaration, CONCEPTS.ConceptEditorDeclaration$BH, SMethodTrimmedId.create("createDefaultEditor", CONCEPTS.ConceptEditorDeclaration$BH, "2$SWsiCt8Y$"), ((boolean) false));
+    assert ((SNode) BHReflection.invoke0(editorDeclaration, CONCEPTS.AbstractComponent$YR, SMethodIdV2.create("getConceptDeclaration", 7055725856388417603L, 0xb0861a6038785d93L))) != null;
+    assert Objects.equals(((SNode) BHReflection.invoke0(editorDeclaration, CONCEPTS.AbstractComponent$YR, SMethodIdV2.create("getConceptDeclaration", 7055725856388417603L, 0xb0861a6038785d93L))), conceptDeclaration);
+    BHReflection.invoke0(editorDeclaration, CONCEPTS.ConceptEditorDeclaration$BH, SMethodIdV2.create("createDefaultEditor", 2970389781192937380L, 0xb0861a6038785d93L), ((boolean) false));
     if (((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorPanelManager() != null) {
       ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorPanelManager().openEditor(editorDeclaration);
     } else {

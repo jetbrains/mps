@@ -80,7 +80,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.vcs.diff.changes.SetReferenceChange;
 import jetbrains.mps.smodel.event.SModelChildEvent;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.smodel.CopyUtil;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import jetbrains.mps.util.IterableUtil;
@@ -610,7 +610,7 @@ public final class ChangesTracking {
         return;
       }
       SNode child = event.getChild();
-      final SContainmentLink childRole = (SNodeOperations.isInstanceOf(child, CONCEPTS.ChildAttribute$m8) ? ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(child, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodTrimmedId.create("getLink", CONCEPTS.ChildAttribute$m8, "BpxLfMirzf"))) : event.getAggregationLink());
+      final SContainmentLink childRole = (SNodeOperations.isInstanceOf(child, CONCEPTS.ChildAttribute$m8) ? ((SContainmentLink) BHReflection.invoke0(SNodeOperations.cast(child, CONCEPTS.ChildAttribute$m8), CONCEPTS.ChildAttribute$m8, SMethodIdV2.create("getLink", 709746936026609871L, 0x553941aeb020c32eL))) : event.getAggregationLink());
 
       // trying to avoid update task execution for the same child role twice
       Set<SContainmentLink> changedChildRoles = MapSequence.fromMap(childChanged).get(parent);

@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class BuildMps_Language__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f8L, "jetbrains.mps.build.mps.structure.BuildMps_Language");
 
-  public static final SMethod<SNode> getGenerator_id1kfMLj5Jhus = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getGenerator").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1kfMLj5Jhus").build();
+  public static final SMethod<SNode> getGenerator_id1kfMLj5Jhus = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getGenerator").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1517654889524434844L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGenerator_id1kfMLj5Jhus);
 

@@ -24,8 +24,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class ThisExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af598L, "jetbrains.mps.kotlin.structure.ThisExpression");
 
-  public static final SMethod<SNode> getTargetClass_id788DB8wFp3j = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetClass").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("788DB8wFp3j").build();
-  public static final SMethod<SNode> getType_id6563FJLeSWZ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6563FJLeSWZ").build();
+  public static final SMethod<SNode> getTargetClass_id788DB8wFp3j = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getTargetClass").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8217000529242198227L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<SNode> getType_id6563FJLeSWZ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7009306070417641279L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTargetClass_id788DB8wFp3j, getType_id6563FJLeSWZ);
 

@@ -22,8 +22,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class FQNameClassifierSpecification__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xeddeefac2d64437L, 0xbc2cde50fd4ce470L, 0x4b6b6d7b2a638ddbL, "jetbrains.mps.lang.script.structure.FQNameClassifierSpecification");
 
-  public static final SMethod<String> getClassifierFqName_id4HFrnGErDob = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassifierFqName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4HFrnGErDob").build();
-  public static final SMethod<String> getSModelReference_id4HFrnGEt_VQ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSModelReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4HFrnGEt_VQ").build();
+  public static final SMethod<String> getClassifierFqName_id4HFrnGErDob = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassifierFqName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5434557751112930827L).languageId(0xbc2cde50fd4ce470L, 0xeddeefac2d64437L).build2();
+  public static final SMethod<String> getSModelReference_id4HFrnGEt_VQ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSModelReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5434557751113441014L).languageId(0xbc2cde50fd4ce470L, 0xeddeefac2d64437L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassifierFqName_id4HFrnGErDob, getSModelReference_id4HFrnGEt_VQ);
 

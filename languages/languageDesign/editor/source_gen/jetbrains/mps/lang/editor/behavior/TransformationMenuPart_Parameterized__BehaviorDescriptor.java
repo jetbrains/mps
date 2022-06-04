@@ -24,8 +24,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class TransformationMenuPart_Parameterized__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x3abfebf456f8ad25L, "jetbrains.mps.lang.editor.structure.TransformationMenuPart_Parameterized");
 
-  public static final SMethod<SContainmentLink> getLinkNodeOfParameterizedPart_id1quYWAD03b2 = new SMethodBuilder<SContainmentLink>(new SJavaCompoundTypeImpl(SContainmentLink.class)).name("getLinkNodeOfParameterizedPart").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1quYWAD03b2").build();
-  public static final SMethod<SNode> getOutputConcept_id3mnwiBI8ZE2 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOutputConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3mnwiBI8ZE2").build();
+  public static final SMethod<SContainmentLink> getLinkNodeOfParameterizedPart_id1quYWAD03b2 = new SMethodBuilder<SContainmentLink>(new SJavaCompoundTypeImpl(SContainmentLink.class)).name("getLinkNodeOfParameterizedPart").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1630016958697059010L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
+  public static final SMethod<SNode> getOutputConcept_id3mnwiBI8ZE2 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOutputConcept").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3861697222582467202L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getLinkNodeOfParameterizedPart_id1quYWAD03b2, getOutputConcept_id3mnwiBI8ZE2);
 

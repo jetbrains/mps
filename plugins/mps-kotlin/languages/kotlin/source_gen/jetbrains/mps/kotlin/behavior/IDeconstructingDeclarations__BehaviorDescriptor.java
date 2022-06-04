@@ -25,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class IDeconstructingDeclarations__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5aee73f62d23451L, "jetbrains.mps.kotlin.structure.IDeconstructingDeclarations");
 
-  public static final SMethod<CallReceiver> getVariablesReceiver_id4FOkRjXx8jV = new SMethodBuilder<CallReceiver>(new SJavaCompoundTypeImpl(CallReceiver.class)).name("getVariablesReceiver").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4FOkRjXx8jV").build();
-  public static final SMethod<Boolean> isDeconstructed_id4FOkRjXxnrt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDeconstructed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4FOkRjXxnrt").build();
+  public static final SMethod<CallReceiver> getVariablesReceiver_id4FOkRjXx8jV = new SMethodBuilder<CallReceiver>(new SJavaCompoundTypeImpl(CallReceiver.class)).name("getVariablesReceiver").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5401033615058699515L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isDeconstructed_id4FOkRjXxnrt = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDeconstructed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5401033615058761437L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getVariablesReceiver_id4FOkRjXx8jV, isDeconstructed_id4FOkRjXxnrt);
 

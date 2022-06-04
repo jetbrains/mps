@@ -28,7 +28,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.eclipse.jdt.internal.compiler.ast.ImportReference;
 import org.jetbrains.annotations.Nullable;
 import java.util.Set;
@@ -220,10 +220,10 @@ public class JavaParser {
           }
           if (ListSequence.fromList(commentsToProcess).count() == 1) {
             SNode commentLine = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3aL, "jetbrains.mps.baseLanguage.structure.SingleLineComment"));
-            BHReflection.invoke0(commentLine, CONCEPTS.SingleLineComment$Kw, SMethodTrimmedId.create("parseAndAddWords", CONCEPTS.SingleLineComment$Kw, "13gAna0o0W6"), line_);
+            BHReflection.invoke0(commentLine, CONCEPTS.SingleLineComment$Kw, SMethodIdV2.create("parseAndAddWords", 1211637016821763846L, 0x5745e3015c8914d3L), line_);
             ListSequence.fromList(SLinkOperations.getChildren(block, LINKS.statement$53DE)).insertElement(pos++, commentLine);
           } else {
-            BHReflection.invoke0(multiLineComment, CONCEPTS.MultiLineComment$_e, SMethodTrimmedId.create("parseAndAddWordsAsNewLine", CONCEPTS.MultiLineComment$_e, "uLx1zLqth8"), line_);
+            BHReflection.invoke0(multiLineComment, CONCEPTS.MultiLineComment$_e, SMethodIdV2.create("parseAndAddWordsAsNewLine", 554369471807607880L, 0x5745e3015c8914d3L), line_);
           }
         }
         if (ListSequence.fromList(commentsToProcess).count() > 1) {

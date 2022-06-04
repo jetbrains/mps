@@ -34,9 +34,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class OperationParm_LinkQualifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x47bb2de70d00ff8cL, "jetbrains.mps.lang.smodel.structure.OperationParm_LinkQualifier");
 
-  public static final SMethod<SNode> getOperation_id52QkhOxfj6w = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOperation").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("52QkhOxfj6w").build();
-  public static final SMethod<SEnumerationLiteral> getLinkMetaclass_id2LDtYz_plxI = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("getLinkMetaclass").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2LDtYz_plxI").build();
-  public static final SMethod<Iterable<SNode>> getLinkAccessScope_id2xk$X1Ld2Yi = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getLinkAccessScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2xk$X1Ld2Yi").build();
+  public static final SMethod<SNode> getOperation_id52QkhOxfj6w = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getOperation").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5815925154349134240L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<SEnumerationLiteral> getLinkMetaclass_id2LDtYz_plxI = new SMethodBuilder<SEnumerationLiteral>(new SJavaCompoundTypeImpl((Class<SEnumerationLiteral>) ((Class) Object.class))).name("getLinkMetaclass").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3200220852388190318L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
+  public static final SMethod<Iterable<SNode>> getLinkAccessScope_id2xk$X1Ld2Yi = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getLinkAccessScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2906110183022538642L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getOperation_id52QkhOxfj6w, getLinkMetaclass_id2LDtYz_plxI, getLinkAccessScope_id2xk$X1Ld2Yi);
 

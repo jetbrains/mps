@@ -15,7 +15,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.generator.plan.CheckpointIdentity;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
@@ -70,16 +70,16 @@ public final class GenPlanTranslator {
           // any structure model get some files generated.
           ArrayList<SLanguage> ll = new ArrayList<SLanguage>();
           for (SNode lid : SLinkOperations.getChildren(stepTransform, LINKS.languages$AUhz)) {
-            ll.add(((SLanguage) BHReflection.invoke0(lid, CONCEPTS.LanguageIdentity$cN, SMethodTrimmedId.create("getLanguage", null, "34EJa6aIcyj"))));
+            ll.add(((SLanguage) BHReflection.invoke0(lid, CONCEPTS.LanguageIdentity$cN, SMethodIdV2.create("getLanguage", 3542851458883438739L, 0xf9dadaaf9d633926L))));
           }
           planBuilder.transformLanguage(ll.toArray(new SLanguage[0]));
         } else {
           GenerationPlanBuilder.TransformStepBuilder stepBuilder = planBuilder.transform(SPropertyOperations.getBoolean(stepTransform, PROPS.individualStepPerGenerator$EG46));
           for (SNode lid : SLinkOperations.getChildren(stepTransform, LINKS.languages$AUhz)) {
-            stepBuilder.include(((SLanguage) BHReflection.invoke0(lid, CONCEPTS.LanguageIdentity$cN, SMethodTrimmedId.create("getLanguage", null, "34EJa6aIcyj"))), GenerationPlanBuilder.BuilderOption.None);
+            stepBuilder.include(((SLanguage) BHReflection.invoke0(lid, CONCEPTS.LanguageIdentity$cN, SMethodIdV2.create("getLanguage", 3542851458883438739L, 0xf9dadaaf9d633926L))), GenerationPlanBuilder.BuilderOption.None);
           }
           for (SNode le : SLinkOperations.getChildren(stepTransform, LINKS.entries$T03u)) {
-            stepBuilder.include(((SLanguage) BHReflection.invoke0(SLinkOperations.getTarget(le, LINKS.language$pqOb), CONCEPTS.LanguageIdentity$cN, SMethodTrimmedId.create("getLanguage", null, "34EJa6aIcyj"))), option(le));
+            stepBuilder.include(((SLanguage) BHReflection.invoke0(SLinkOperations.getTarget(le, LINKS.language$pqOb), CONCEPTS.LanguageIdentity$cN, SMethodIdV2.create("getLanguage", 3542851458883438739L, 0xf9dadaaf9d633926L))), option(le));
           }
           stepBuilder.complete();
         }
@@ -87,7 +87,7 @@ public final class GenPlanTranslator {
         SNode applyGeneratorsStep = SNodeOperations.as(stepNode, CONCEPTS.ApplyGenerators$PQ);
         final boolean withExtended = SPropertyOperations.getBoolean(applyGeneratorsStep, PROPS.withExtended$Vq9q);
         for (SNode generator : Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(applyGeneratorsStep, LINKS.generator$bWty), CONCEPTS.GeneratorModulePointer$49))) {
-          SModuleReference mr = ((SModuleReference) BHReflection.invoke0(SLinkOperations.getTarget(generator, LINKS.module$u1do), CONCEPTS.ModuleIdentity$U1, SMethodTrimmedId.create("getModuleReference", null, "nJmxU5cSSU")));
+          SModuleReference mr = ((SModuleReference) BHReflection.invoke0(SLinkOperations.getTarget(generator, LINKS.module$u1do), CONCEPTS.ModuleIdentity$U1, SMethodIdV2.create("getModuleReference", 427659576753753658L, 0xf9dadaaf9d633926L)));
           if (mr == null) {
             continue;
           }

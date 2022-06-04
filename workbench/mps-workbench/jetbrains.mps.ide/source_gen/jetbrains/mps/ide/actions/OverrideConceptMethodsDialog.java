@@ -13,7 +13,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
@@ -58,7 +58,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.ConceptBehavior$2)) {
       SNode concept = SLinkOperations.getTarget(SNodeOperations.cast(node, CONCEPTS.ConceptBehavior$2), LINKS.concept$u6dL);
       if ((concept != null)) {
-        return ((String) BHReflection.invoke0(concept, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+        return ((String) BHReflection.invoke0(concept, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
       }
     }
     return super.getText(node);
@@ -85,7 +85,7 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
   public static Iterable<SNode> sortMethods(SNode baseClass, Iterable<SNode> methods) {
     final Map<SNode, Integer> containerIndex = MapSequence.fromMap(new HashMap<SNode, Integer>());
     int i = 1;
-    for (SNode c : ((List<SNode>) BHReflection.invoke0(baseClass, CONCEPTS.ConceptBehavior$2, SMethodTrimmedId.create("getAllSuperBehaviors", CONCEPTS.ConceptBehavior$2, "1$X$vL9L8i8")))) {
+    for (SNode c : ((List<SNode>) BHReflection.invoke0(baseClass, CONCEPTS.ConceptBehavior$2, SMethodIdV2.create("getAllSuperBehaviors", 1818770337282950280L, 0x28bccc7daff7d4f3L)))) {
       MapSequence.fromMap(containerIndex).put(c, i++);
     }
     return Sequence.fromIterable(methods).sort((SNode a, SNode b) -> {

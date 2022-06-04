@@ -19,7 +19,7 @@ import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.module.SRepository;
@@ -97,7 +97,7 @@ public class AddConstructorParameter_Action extends BaseAction {
 
     final AddConstructorParameterRefactoring refactoring = new AddConstructorParameterRefactoring();
     refactoring.isApplicable(field);
-    Iterable<SNode> constructors = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(clazz, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd")))).where(new IWhereFilter<SNode>() {
+    Iterable<SNode> constructors = Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(clazz, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         return refactoring.doesNotContainFieldInitialization(it);
       }
@@ -108,7 +108,7 @@ public class AddConstructorParameter_Action extends BaseAction {
 
     if (Sequence.fromIterable(constructors).isEmpty()) {
       SNode c = SNodeFactoryOperations.createNewNode(event.getData(MPSCommonDataKeys.CONTEXT_MODEL), CONCEPTS.ConstructorDeclaration$yG, null);
-      BHReflection.invoke0(clazz, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("insertInBestPlace", null, "7exmRT6rEUA"), c);
+      BHReflection.invoke0(clazz, CONCEPTS.Classifier$Ix, SMethodIdV2.create("insertInBestPlace", 8332041383517793958L, 0x5745e3015c8914d3L), c);
       selectedConstructors = new SNodeReference[]{SNodeOperations.getPointer(c)};
     } else if (Sequence.fromIterable(constructors).count() == 1) {
       selectedConstructors = new SNodeReference[]{SNodeOperations.getPointer(Sequence.fromIterable(constructors).first())};

@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class ConfigurationFromExecutorReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x22e72e4c0f6946ceL, 0x84036750153aa615L, 0x6c55c13f5bcac62fL, "jetbrains.mps.execution.configurations.structure.ConfigurationFromExecutorReference");
 
-  public static final SMethod<SNode> getExecutor_id6LlKjXrML19 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExecutor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6LlKjXrML19").build();
+  public static final SMethod<SNode> getExecutor_id6LlKjXrML19 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getExecutor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7806358006983757897L).languageId(0x84036750153aa615L, 0x22e72e4c0f6946ceL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getExecutor_id6LlKjXrML19);
 

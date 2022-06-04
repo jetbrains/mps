@@ -54,7 +54,7 @@ import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.scope.Scope;
 import java.util.Deque;
@@ -666,13 +666,13 @@ public class JavaToMpsConverter {
       return null;
     }
 
-    for (SNode singleNameImport : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(javaImports, CONCEPTS.JavaImports$b_, SMethodTrimmedId.create("staticSingleName", CONCEPTS.JavaImports$b_, "4ykJ8Y6iJRa"))))) {
-      if (!(enumConstName.equals(((String) BHReflection.invoke0(singleNameImport, CONCEPTS.Tokens$ej, SMethodTrimmedId.create("lastToken", CONCEPTS.Tokens$ej, "17WpDCYLyrY")))))) {
+    for (SNode singleNameImport : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(javaImports, CONCEPTS.JavaImports$b_, SMethodIdV2.create("staticSingleName", 5230012391903395274L, 0x5745e3015c8914d3L))))) {
+      if (!(enumConstName.equals(((String) BHReflection.invoke0(singleNameImport, CONCEPTS.Tokens$ej, SMethodIdV2.create("lastToken", 1296023605440030462L, 0x5745e3015c8914d3L)))))) {
         continue;
       }
 
-      String enumClassCandidateName = ((String) BHReflection.invoke0(singleNameImport, CONCEPTS.Tokens$ej, SMethodTrimmedId.create("withoutLastToken", CONCEPTS.Tokens$ej, "5ll4uk6512$")));
-      SNode enumClassCandidate = ((SNode) BHReflection.invoke0(gateway, CONCEPTS.IYetUnresolved$h4, SMethodTrimmedId.create("findClass", CONCEPTS.IYetUnresolved$h4, "4ykJ8Y83bdr"), varRef, enumClassCandidateName));
+      String enumClassCandidateName = ((String) BHReflection.invoke0(singleNameImport, CONCEPTS.Tokens$ej, SMethodIdV2.create("withoutLastToken", 6148840541591441572L, 0x5745e3015c8914d3L)));
+      SNode enumClassCandidate = ((SNode) BHReflection.invoke0(gateway, CONCEPTS.IYetUnresolved$h4, SMethodIdV2.create("findClass", 5230012391932867419L, 0x5745e3015c8914d3L), varRef, enumClassCandidateName));
       if ((enumClassCandidate == null)) {
         // seems like there is no need to continue
         // we had import of the form: import static <class>.<ourName>
@@ -688,8 +688,8 @@ public class JavaToMpsConverter {
       }
     }
 
-    for (SNode onDemandImport : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(javaImports, CONCEPTS.JavaImports$b_, SMethodTrimmedId.create("staticOnDemand", CONCEPTS.JavaImports$b_, "4ykJ8Y6iCVz"))))) {
-      SNode claz = ((SNode) BHReflection.invoke0(gateway, CONCEPTS.IYetUnresolved$h4, SMethodTrimmedId.create("findClass", CONCEPTS.IYetUnresolved$h4, "4ykJ8Y83bdr"), varRef, SPropertyOperations.getString(onDemandImport, PROPS.tokens$J1uk)));
+    for (SNode onDemandImport : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(javaImports, CONCEPTS.JavaImports$b_, SMethodIdV2.create("staticOnDemand", 5230012391903366883L, 0x5745e3015c8914d3L))))) {
+      SNode claz = ((SNode) BHReflection.invoke0(gateway, CONCEPTS.IYetUnresolved$h4, SMethodIdV2.create("findClass", 5230012391932867419L, 0x5745e3015c8914d3L), varRef, SPropertyOperations.getString(onDemandImport, PROPS.tokens$J1uk)));
       if ((claz == null)) {
         continue;
       }
@@ -837,7 +837,7 @@ public class JavaToMpsConverter {
       }
     }).visitAll(new IVisitor<SNode>() {
       public void visit(SNode it) {
-        MapSequence.fromMap(importsByName).put(((String) BHReflection.invoke0(it, CONCEPTS.Tokens$ej, SMethodTrimmedId.create("lastToken", CONCEPTS.Tokens$ej, "17WpDCYLyrY"))), it);
+        MapSequence.fromMap(importsByName).put(((String) BHReflection.invoke0(it, CONCEPTS.Tokens$ej, SMethodIdV2.create("lastToken", 1296023605440030462L, 0x5745e3015c8914d3L))), it);
 
       }
     });

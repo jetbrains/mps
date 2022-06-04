@@ -38,7 +38,7 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.util.JavaNameUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -152,7 +152,7 @@ public class MpsTestsSuite extends BaseMpsSuite {
         }
         for (SModel model : Sequence.fromIterable(module.getModels())) {
           for (SNode testCase : ListSequence.fromList(SModelOperations.roots(((SModel) model), CONCEPTS.ITestCase$Fp))) {
-            String testClassName = ((String) BHReflection.invoke0(testCase, CONCEPTS.ITestCase$Fp, SMethodTrimmedId.create("getClassName", null, "hGBnqtL")));
+            String testClassName = ((String) BHReflection.invoke0(testCase, CONCEPTS.ITestCase$Fp, SMethodIdV2.create("getClassName", 1216136193905L, 0x4f991fba9b1d8000L)));
             try {
               Class<?> testClass = moduleCL.loadClass(testClassName);
               result.add(builder.safeRunnerForClass(testClass));

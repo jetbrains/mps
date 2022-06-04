@@ -13,7 +13,7 @@ import jetbrains.mps.stubs.javastub.classpath.ClassifierKind;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.javastub.asm.ASMTypeVariable;
@@ -107,7 +107,7 @@ public class ClassifierUpdater {
     SPropertyOperations.assign(cls, PROPS.abstractClass$Ta1X, myParsedClass.isAbstract());
     updateAnnotations(cls);
     if (myParsedClass.isDeprecated()) {
-      BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(cls)), CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("markLoadedNodeAsDeprecated", CONCEPTS.ClassConcept$bK, "5H8W9_EDlcn"), cls);
+      BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(cls)), CONCEPTS.ClassConcept$bK, SMethodIdV2.create("markLoadedNodeAsDeprecated", 6577771797484491543L, 0x5745e3015c8914d3L), cls);
     }
 
     SPropertyOperations.assign(cls, PROPS.isFinal$f7C_, myParsedClass.isFinal());
@@ -125,7 +125,7 @@ public class ClassifierUpdater {
   private void initInterface(SNode intfc) {
     updateAnnotations(intfc);
     if (myParsedClass.isDeprecated()) {
-      BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(intfc)), CONCEPTS.Interface$db, SMethodTrimmedId.create("markLoadedNodeAsDeprecated", CONCEPTS.Interface$db, "5H8W9_EDv7w"), intfc);
+      BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(intfc)), CONCEPTS.Interface$db, SMethodIdV2.create("markLoadedNodeAsDeprecated", 6577771797484532192L, 0x5745e3015c8914d3L), intfc);
     }
 
     updateTypeVariables(intfc);
@@ -254,7 +254,7 @@ public class ClassifierUpdater {
         ListSequence.fromList(SLinkOperations.getChildren(decl, LINKS.annotation$K49I)).addElement(createAnnotation(annotation));
       }
       if (field.isDeprecated()) {
-        BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(decl)), CONCEPTS.FieldDeclaration$ie, SMethodTrimmedId.create("markLoadedNodeAsDeprecated", CONCEPTS.FieldDeclaration$ie, "5H8W9_ECA0g"), decl);
+        BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(decl)), CONCEPTS.FieldDeclaration$ie, SMethodIdV2.create("markLoadedNodeAsDeprecated", 6577771797484298256L, 0x5745e3015c8914d3L), decl);
       }
       if (field.isFinal()) {
         SPropertyOperations.assign(decl, PROPS.isFinal$gvTP, true);
@@ -289,7 +289,7 @@ public class ClassifierUpdater {
           ListSequence.fromList(SLinkOperations.getChildren(decl, LINKS.annotation$K49I)).addElement(createAnnotation(annotation));
         }
         if (field.isDeprecated()) {
-          BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(decl)), CONCEPTS.StaticFieldDeclaration$jR, SMethodTrimmedId.create("markLoadedNodeAsDeprecated", CONCEPTS.StaticFieldDeclaration$jR, "5H8W9_ECCQE"), decl);
+          BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(decl)), CONCEPTS.StaticFieldDeclaration$jR, SMethodIdV2.create("markLoadedNodeAsDeprecated", 6577771797484309930L, 0x5745e3015c8914d3L), decl);
         }
 
         if (field.isFinal()) {
@@ -356,7 +356,7 @@ public class ClassifierUpdater {
       }
 
       if (c.isDeprecated()) {
-        BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(constructor)), CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("markLoadedNodeAsDeprecated", CONCEPTS.BaseMethodDeclaration$kD, "5H8W9_EDFVg"), constructor);
+        BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(constructor)), CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("markLoadedNodeAsDeprecated", 6577771797484584656L, 0x5745e3015c8914d3L), constructor);
       }
       for (ASMTypeVariable tv : c.getTypeParameters()) {
         ListSequence.fromList(SLinkOperations.getChildren(constructor, LINKS.typeVariableDeclaration$Lipp)).addElement(_quotation_createNode_ol94f8_a0a0a8a0a33(tv.getName()));
@@ -459,7 +459,7 @@ public class ClassifierUpdater {
     }
 
     if (m.isDeprecated()) {
-      BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(md)), CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("markLoadedNodeAsDeprecated", CONCEPTS.BaseMethodDeclaration$kD, "5H8W9_EDFVg"), md);
+      BHReflection.invoke0(SNodeOperations.asSConcept(SNodeOperations.getConcept(md)), CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("markLoadedNodeAsDeprecated", 6577771797484584656L, 0x5745e3015c8914d3L), md);
     }
     SPropertyOperations.assign(md, PROPS.isSynchronized$58UL, m.isSynchronized());
     updateTypeVariables(m, md, cls);

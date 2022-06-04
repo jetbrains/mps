@@ -9,7 +9,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import javax.swing.SwingUtilities;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -50,13 +50,13 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     assert isClassifier || isConstructor || isMethod || isField;
 
     if (isClassifier) {
-      final String fqName = ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+      final String fqName = ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
       return open((IProjectHandler h) -> h.openClass(fqName), p);
     } else {
       SNode classifier = SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.Classifier$Ix);
       assert classifier != null;
 
-      final String classifierName = ((String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+      final String classifierName = ((String) BHReflection.invoke0(classifier, CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
       if (isMethod) {
         SNode method = SNodeOperations.cast(node, CONCEPTS.BaseMethodDeclaration$kD);
         final String methodName = SPropertyOperations.getString(method, PROPS.name$MnvL);

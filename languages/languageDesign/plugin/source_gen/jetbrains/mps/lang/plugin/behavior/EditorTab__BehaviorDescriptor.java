@@ -24,8 +24,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class EditorTab__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x33f4c34299ff0d2fL, "jetbrains.mps.lang.plugin.structure.EditorTab");
 
-  public static final SMethod<String> getGeneratedName_id3fOKOapZKP0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3fOKOapZKP0").build();
-  public static final SMethod<String> getGeneratedClassFQName_id3fOKOapZKPb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassFQName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3fOKOapZKPb").build();
+  public static final SMethod<String> getGeneratedName_id3fOKOapZKP0 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3743831881070611776L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<String> getGeneratedClassFQName_id3fOKOapZKPb = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getGeneratedClassFQName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3743831881070611787L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getGeneratedName_id3fOKOapZKP0, getGeneratedClassFQName_id3fOKOapZKPb);
 

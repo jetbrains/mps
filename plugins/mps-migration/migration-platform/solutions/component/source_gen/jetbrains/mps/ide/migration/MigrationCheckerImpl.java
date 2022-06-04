@@ -44,7 +44,7 @@ import jetbrains.mps.lang.migration.runtime.base.MigrationScriptReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.migration.runtime.base.MigrateManually;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -208,7 +208,7 @@ public class MigrationCheckerImpl implements MigrationChecker {
           }
           for (SNode ann : ListSequence.fromList(SModelOperations.nodes(mm, CONCEPTS.MigrationAnnotation_old$2i)).where(new IWhereFilter<SNode>() {
             public boolean accept(SNode it) {
-              return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.MigrationAnnotation_old$2i, SMethodTrimmedId.create("showInResults", null, "29O0pTxWdmG")));
+              return ((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.MigrationAnnotation_old$2i, SMethodIdV2.create("showInResults", 2482611074347619756L, 0x553941aeb020c32eL)));
             }
           })) {
             if (!(processor.process(MigrateManually.fromAnnotation(ann)))) {

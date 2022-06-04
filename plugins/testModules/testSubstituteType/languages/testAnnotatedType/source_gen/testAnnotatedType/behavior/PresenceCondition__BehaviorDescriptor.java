@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class PresenceCondition__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x2f74e72e3e3d480eL, 0xbae1cc709d588366L, 0x58e32a0782beb1c7L, "testAnnotatedType.structure.PresenceCondition");
 
-  public static final SMethod<Boolean> isSatisfied_id5zzawu2JLe0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSatisfied").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5zzawu2JLe0").build();
+  public static final SMethod<Boolean> isSatisfied_id5zzawu2JLe0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSatisfied").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6405009306797675392L).languageId(0xbae1cc709d588366L, 0x2f74e72e3e3d480eL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isSatisfied_id5zzawu2JLe0);
 

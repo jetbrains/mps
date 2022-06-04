@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class CustomSetterPropertyImplementation__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x3b7a2005a14cfe5eL, "jetbrains.mps.baseLanguage.structure.CustomSetterPropertyImplementation");
 
-  public static final SMethod<Boolean> hasSetter_idhEwIUA2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasSetter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIUA2").build();
+  public static final SMethod<Boolean> hasSetter_idhEwIUA2 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasSetter").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877430658L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasSetter_idhEwIUA2);
 

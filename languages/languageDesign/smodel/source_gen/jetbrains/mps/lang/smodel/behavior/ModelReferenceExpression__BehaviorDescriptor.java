@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ModelReferenceExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x7c3f2da20e92b62L, "jetbrains.mps.lang.smodel.structure.ModelReferenceExpression");
 
-  public static final SMethod<String> getFQName_id7K4mn_BeEzv = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFQName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7K4mn_BeEzv").build();
+  public static final SMethod<String> getFQName_id7K4mn_BeEzv = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFQName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8936365938567719135L).languageId(0x81bc4d213d9375e1L, 0x7866978ea0f04cc7L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getFQName_id7K4mn_BeEzv);
 

@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ComponentSet__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x3066bc0924384300L, 0xa9365bd59917ae9bL, 0x565e19763814242bL, "jetbrains.mps.samples.componentDependencies.structure.ComponentSet");
 
-  public static final SMethod<Iterable<SNode>> retrieveDependencies_id7SUlOxgz$bp = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("retrieveDependencies").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7SUlOxgz$bp").build();
+  public static final SMethod<Iterable<SNode>> retrieveDependencies_id7SUlOxgz$bp = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("retrieveDependencies").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(9095678365528900313L).languageId(0xa9365bd59917ae9bL, 0x3066bc0924384300L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(retrieveDependencies_id7SUlOxgz$bp);
 

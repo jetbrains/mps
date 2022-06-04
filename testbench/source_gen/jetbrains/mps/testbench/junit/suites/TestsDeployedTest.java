@@ -29,7 +29,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.testbench.testcollector.BuildTestsHelper;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
@@ -111,7 +111,7 @@ public class TestsDeployedTest {
       List<SNode> includedInSuiteTests = ListSequence.fromList(BuildTestsHelper.findIncludedInSuiteTests(ourProject.getScope(), new ModuleScope(PersistenceFacade.getInstance().createModuleReference("79f9d103-4ff6-4def-9c1a-27070f9ba255(jetbrains.mps.testbench.make)").resolve(ourProject.getRepository())))).distinct().toListSequence();
       List<SNode> allTests = ListSequence.fromList(BuildTestsHelper.collectTests(ourProject.getScope())).select(new ISelector<SNode, SNode>() {
         public SNode select(SNode it) {
-          return ((SNode) (SNode) BHReflection.invoke0(it, CONCEPTS.ITestRef$zt, SMethodTrimmedId.create("getTargetTest", null, "7BTZ519MNAR")));
+          return ((SNode) (SNode) BHReflection.invoke0(it, CONCEPTS.ITestRef$zt, SMethodIdV2.create("getTargetTest", 8789333569555872183L, 0x7ecf94d7495e678eL)));
         }
       }).distinct().toListSequence();
       List<SNode> forgottenTests = ListSequence.fromList(allTests).subtract(ListSequence.fromList(includedInSuiteTests)).subtract(ListSequence.fromList(includedInBuildTests)).where(new IWhereFilter<SNode>() {

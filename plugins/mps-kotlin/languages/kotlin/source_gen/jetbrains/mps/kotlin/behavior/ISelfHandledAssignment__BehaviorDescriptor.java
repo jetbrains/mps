@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class ISelfHandledAssignment__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x78253bb2d1912593L, "jetbrains.mps.kotlin.structure.ISelfHandledAssignment");
 
-  public static final SMethod<Boolean> overridesAssignment_id7w_eVbh$k7m = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("overridesAssignment").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7w_eVbh$k7m").build();
+  public static final SMethod<Boolean> overridesAssignment_id7w_eVbh$k7m = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("overridesAssignment").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8657391497895821782L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(overridesAssignment_id7w_eVbh$k7m);
 

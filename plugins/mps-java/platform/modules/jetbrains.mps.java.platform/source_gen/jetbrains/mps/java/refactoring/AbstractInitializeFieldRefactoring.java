@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
@@ -42,9 +42,9 @@ public abstract class AbstractInitializeFieldRefactoring {
     boolean initializedInInitializer = false;
 
     List<SNode> mayInitialize = new ArrayList<SNode>();
-    ListSequence.fromList(mayInitialize).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classifier, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("instanceInitializers", CONCEPTS.ClassConcept$bK, "6Fz0RL3y9UD")))));
-    ListSequence.fromList(mayInitialize).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classifier, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd")))));
-    ListSequence.fromList(doNotInitialize).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classifier, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd")))));
+    ListSequence.fromList(mayInitialize).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classifier, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("instanceInitializers", 7702003619977535145L, 0x5745e3015c8914d3L)))));
+    ListSequence.fromList(mayInitialize).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classifier, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))));
+    ListSequence.fromList(doNotInitialize).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(classifier, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)))));
     for (SNode member : ListSequence.fromList(mayInitialize).where(new NotNullWhereFilter<SNode>())) {
       if (ListSequence.fromList(SNodeOperations.getNodeDescendants(SNodeOperations.as(member, CONCEPTS.ConceptDeclaration$gH), CONCEPTS.ThisConstructorInvocation$q$, false, new SAbstractConcept[]{})).isNotEmpty()) {
         ListSequence.fromList(doNotInitialize).removeElement(member);

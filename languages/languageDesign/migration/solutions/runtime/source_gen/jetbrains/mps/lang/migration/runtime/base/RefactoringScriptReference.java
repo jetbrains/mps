@@ -28,7 +28,7 @@ import java.util.List;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.Objects;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -115,7 +115,7 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
         });
         List<RefactoringScriptReference> executeAfter = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(log, LINKS.executeAfter$clBg), LINKS.refactoring$cu5K)).select(new ISelector<SNode, RefactoringScriptReference>() {
           public RefactoringScriptReference select(SNode it) {
-            return ((RefactoringScriptReference) (RefactoringScriptReference) BHReflection.invoke0(it, CONCEPTS.RefactoringLog$xp, SMethodTrimmedId.create("getDescriptor", CONCEPTS.RefactoringLog$xp, "4uVwhQyPQ_Z")));
+            return ((RefactoringScriptReference) (RefactoringScriptReference) BHReflection.invoke0(it, CONCEPTS.RefactoringLog$xp, SMethodIdV2.create("getDescriptor", 5168866961623837055L, 0x7a1d72ee255558fL)));
           }
         }).toListSequence();
         List<RefactoringPartImpl> parts = Sequence.fromIterable(participants).select(new ISelector<RefactoringParticipant.PersistentRefactoringParticipant<?, ?, ?, ?>, RefactoringPartImpl>() {
@@ -128,7 +128,7 @@ public class RefactoringScriptReference implements BaseScriptReference<Refactori
             return new RefactoringPartImpl(SLinkOperations.getTarget(log, LINKS.options$KIbw), participantParts, participant);
           }
         }).toListSequence();
-        implementation.value = new BaseRefactoringScript(SPropertyOperations.getString(log, PROPS.name$MnvL), ((RefactoringScriptReference) BHReflection.invoke0(log, CONCEPTS.RefactoringLog$xp, SMethodTrimmedId.create("getDescriptor", CONCEPTS.RefactoringLog$xp, "4uVwhQyPQ_Z"))), executeAfter, parts);
+        implementation.value = new BaseRefactoringScript(SPropertyOperations.getString(log, PROPS.name$MnvL), ((RefactoringScriptReference) BHReflection.invoke0(log, CONCEPTS.RefactoringLog$xp, SMethodIdV2.create("getDescriptor", 5168866961623837055L, 0x7a1d72ee255558fL))), executeAfter, parts);
       }
     });
     return implementation.value;

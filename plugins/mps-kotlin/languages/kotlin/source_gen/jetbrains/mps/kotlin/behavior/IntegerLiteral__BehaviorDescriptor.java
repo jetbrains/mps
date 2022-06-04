@@ -22,8 +22,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class IntegerLiteral__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d0L, "jetbrains.mps.kotlin.structure.IntegerLiteral");
 
-  public static final SMethod<Integer> getValue_id6cg9X74s8pg = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6cg9X74s8pg").build();
-  public static final SMethod<Void> setValue_id6cg9X74saKl = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6cg9X74saKl").build(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
+  public static final SMethod<Integer> getValue_id6cg9X74s8pg = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7138249191279593040L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Void> setValue_id6cg9X74saKl = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("setValue").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7138249191279602709L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(Integer.TYPE, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getValue_id6cg9X74s8pg, setValue_id6cg9X74saKl);
 

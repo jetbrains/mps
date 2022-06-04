@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class VarDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0xe8e73f957fc2b86L, "jetbrains.mps.lang.generator.structure.VarDeclaration");
 
-  public static final SMethod<String> getImplName_idUesZ_nZXee = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getImplName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("UesZ_nZXee").build();
+  public static final SMethod<String> getImplName_idUesZ_nZXee = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getImplName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1048903277984338830L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getImplName_idUesZ_nZXee);
 

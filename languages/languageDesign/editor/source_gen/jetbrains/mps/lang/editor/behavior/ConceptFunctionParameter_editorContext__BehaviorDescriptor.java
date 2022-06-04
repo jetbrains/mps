@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class ConceptFunctionParameter_editorContext__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10e76200a6fL, "jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_editorContext");
 
-  public static final SMethod<Boolean> useGenericAccessor_id1PvcgmUaIFz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useGenericAccessor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1PvcgmUaIFz").build();
+  public static final SMethod<Boolean> useGenericAccessor_id1PvcgmUaIFz = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useGenericAccessor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2116464250555394787L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(useGenericAccessor_id1PvcgmUaIFz);
 

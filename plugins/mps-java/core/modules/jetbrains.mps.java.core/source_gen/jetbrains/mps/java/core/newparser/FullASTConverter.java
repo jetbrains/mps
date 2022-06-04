@@ -72,7 +72,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import org.eclipse.jdt.internal.compiler.ast.SingleTypeReference;
 import java.util.Objects;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.eclipse.jdt.internal.compiler.ast.TypeReference;
 import org.eclipse.jdt.internal.compiler.ast.QualifiedTypeReference;
@@ -669,7 +669,7 @@ public class FullASTConverter extends ASTConverterWithExpressions {
 
   private SNode findConstructor(SNode claz, Expression[] args) {
     SNode result;
-    Iterable<SNode> conss = ((Iterable<SNode>) BHReflection.invoke0(claz, CONCEPTS.ClassConcept$bK, SMethodTrimmedId.create("constructors", CONCEPTS.ClassConcept$bK, "4_LVZ3pCvsd")));
+    Iterable<SNode> conss = ((Iterable<SNode>) BHReflection.invoke0(claz, CONCEPTS.ClassConcept$bK, SMethodIdV2.create("constructors", 5292274854859503373L, 0x5745e3015c8914d3L)));
     if (Sequence.fromIterable(conss).isEmpty()) {
       result = null;
     } else if (Sequence.fromIterable(conss).count() == 1) {

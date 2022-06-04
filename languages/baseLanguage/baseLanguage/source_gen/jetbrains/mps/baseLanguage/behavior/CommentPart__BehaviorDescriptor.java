@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class CommentPart__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x57d533a7af15ed3bL, "jetbrains.mps.baseLanguage.structure.CommentPart");
 
-  public static final SMethod<Boolean> isToDo_id6hHyb3YSGHZ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isToDo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6hHyb3YSGHZ").build();
+  public static final SMethod<Boolean> isToDo_id6hHyb3YSGHZ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isToDo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7236590470026152831L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isToDo_id6hHyb3YSGHZ);
 

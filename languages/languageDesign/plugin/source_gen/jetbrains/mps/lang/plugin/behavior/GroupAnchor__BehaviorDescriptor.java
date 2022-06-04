@@ -25,8 +25,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class GroupAnchor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x28f9e4973b424291L, 0xaeba0a1039153ab1L, 0x11840f36089L, "jetbrains.mps.lang.plugin.structure.GroupAnchor");
 
-  public static final SMethod<String> getId_idhEwIkYn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getId").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwIkYn").build();
-  public static final SMethod<String> getActionId_id4L4tRTddLSL = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getActionId").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4L4tRTddLSL").build();
+  public static final SMethod<String> getId_idhEwIkYn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getId").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877276567L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
+  public static final SMethod<String> getActionId_id4L4tRTddLSL = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getActionId").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5495648829643890225L).languageId(0xaeba0a1039153ab1L, 0x28f9e4973b424291L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getId_idhEwIkYn, getActionId_id4L4tRTddLSL);
 

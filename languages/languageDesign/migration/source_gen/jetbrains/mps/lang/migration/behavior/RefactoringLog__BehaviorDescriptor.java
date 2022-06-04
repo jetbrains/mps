@@ -24,7 +24,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class RefactoringLog__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x9074634404fd4286L, 0x97d5b46ae6a81709L, 0x1bf9eb43276b6d8fL, "jetbrains.mps.lang.migration.structure.RefactoringLog");
 
-  public static final SMethod<RefactoringScriptReference> getDescriptor_id4uVwhQyPQ_Z = new SMethodBuilder<RefactoringScriptReference>(new SJavaCompoundTypeImpl(RefactoringScriptReference.class)).name("getDescriptor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4uVwhQyPQ_Z").build();
+  public static final SMethod<RefactoringScriptReference> getDescriptor_id4uVwhQyPQ_Z = new SMethodBuilder<RefactoringScriptReference>(new SJavaCompoundTypeImpl(RefactoringScriptReference.class)).name("getDescriptor").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5168866961623837055L).languageId(0x97d5b46ae6a81709L, 0x9074634404fd4286L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDescriptor_id4uVwhQyPQ_Z);
 

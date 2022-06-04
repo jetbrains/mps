@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class IConstructorDelegationCall__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af590L, "jetbrains.mps.kotlin.structure.IConstructorDelegationCall");
 
-  public static final SMethod<SNode> getClassDeclaration_id1$jFvlEiCr_ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1$jFvlEiCr_").build();
+  public static final SMethod<SNode> getClassDeclaration_id1$jFvlEiCr_ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getClassDeclaration").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145067562725L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassDeclaration_id1$jFvlEiCr_);
 

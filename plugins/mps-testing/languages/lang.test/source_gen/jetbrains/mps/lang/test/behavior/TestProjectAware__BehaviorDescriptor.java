@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class TestProjectAware__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x1fcc39b6d68cb962L, "jetbrains.mps.lang.test.structure.TestProjectAware");
 
-  public static final SMethod<Boolean> requiresTestInfo_id1Zcerrmz81D = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresTestInfo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Zcerrmz81D").build();
+  public static final SMethod<Boolean> requiresTestInfo_id1Zcerrmz81D = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("requiresTestInfo").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2291269767871103081L).languageId(0x98deb16074f1d86cL, 0x8585453e6bfb4d80L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(requiresTestInfo_id1Zcerrmz81D);
 

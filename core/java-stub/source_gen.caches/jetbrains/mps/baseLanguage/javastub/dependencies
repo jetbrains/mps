@@ -154,7 +154,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.javastub.asm.ASMTypeVariable" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javastub.asm.ASMUnboundedType" />
     <classNode dependClassName="jetbrains.mps.baseLanguage.javastub.asm.ASMVarArgType" />
-    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId" />
+    <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.SMethodIdV2" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ArrayUtils" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.IWhereFilter" />

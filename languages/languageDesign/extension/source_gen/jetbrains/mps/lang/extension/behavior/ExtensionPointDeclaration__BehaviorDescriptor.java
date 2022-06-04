@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class ExtensionPointDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc0080a477e374558L, 0xbee99ae18e690549L, 0x33c018482cafa9d6L, "jetbrains.mps.lang.extension.structure.ExtensionPointDeclaration");
 
-  public static final SMethod<SNode> getObjectClassifierType_id5Sg$D5FMgdu = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getObjectClassifierType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5Sg$D5FMgdu").build();
+  public static final SMethod<SNode> getObjectClassifierType_id5Sg$D5FMgdu = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getObjectClassifierType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6778078592468845406L).languageId(0xbee99ae18e690549L, 0xc0080a477e374558L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getObjectClassifierType_id5Sg$D5FMgdu);
 

@@ -36,7 +36,7 @@ import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.logging.MessageObject;
 import org.apache.log4j.LogManager;
@@ -168,7 +168,7 @@ public class CalcClassifiersInRootsStatistic_Action extends BaseAction {
 
     for (SNode classifier : classifiers) {
       try {
-        ListSequence.fromList(result).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(((SNode) BHReflection.invoke0(classifier, CONCEPTS.IClassifier$MF, SMethodTrimmedId.create("getThisType", null, "6r77ob2UWbY"))), CONCEPTS.IClassifierType$B1, SMethodTrimmedId.create("getMembers", CONCEPTS.IClassifierType$B1, "6r77ob2V1Fr")))));
+        ListSequence.fromList(result).addSequence(Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(((SNode) BHReflection.invoke0(classifier, CONCEPTS.IClassifier$MF, SMethodIdV2.create("getThisType", 7405920559687254782L, 0x5745e3015c8914d3L))), CONCEPTS.IClassifierType$B1, SMethodIdV2.create("getMembers", 7405920559687277275L, 0x5745e3015c8914d3L)))));
       } catch (Exception e) {
         CalcClassifiersInRootsStatistic_Action.this.message(Level.ERROR, "Error calculating type", e, _params);
       }

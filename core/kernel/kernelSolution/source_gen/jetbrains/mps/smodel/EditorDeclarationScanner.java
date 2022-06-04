@@ -12,7 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.Collections;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -44,7 +44,7 @@ public class EditorDeclarationScanner {
       }
     }
     for (SNode menuRef : SModelOperations.nodes(m, CONCEPTS.IMenuReference$GI)) {
-      SNode cd = ((SNode) BHReflection.invoke0(menuRef, CONCEPTS.IMenuReference$GI, SMethodTrimmedId.create("getApplicableConcept", null, "1quYWAD4TFX")));
+      SNode cd = ((SNode) BHReflection.invoke0(menuRef, CONCEPTS.IMenuReference$GI, SMethodIdV2.create("getApplicableConcept", 1630016958698330877L, 0xb0861a6038785d93L)));
       if (cd != null && SNodeOperations.getModel(cd).getModule() != owner) {
         myExternalConcepts.add(cd);
         myExtendedModels.add(SNodeOperations.getModel(cd));

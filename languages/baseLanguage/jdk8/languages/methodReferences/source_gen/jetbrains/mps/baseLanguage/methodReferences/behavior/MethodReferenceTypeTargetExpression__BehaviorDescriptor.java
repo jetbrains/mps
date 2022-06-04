@@ -28,8 +28,8 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 public final class MethodReferenceTypeTargetExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xacfc188dd5d64598L, 0xb3706f4a983f05b2L, 0x6dd7c320c6fc97cdL, "jetbrains.mps.baseLanguage.methodReferences.structure.MethodReferenceTypeTargetExpression");
 
-  public static final SMethod<String> getDetailedPresentation_id22G2W3WJ92t = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDetailedPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("22G2W3WJ92t").build();
-  public static final SMethod<SNode> getSubstituteNode_id2Yg2DIzFJuK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSubstituteNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2Yg2DIzFJuK").build();
+  public static final SMethod<String> getDetailedPresentation_id22G2W3WJ92t = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getDetailedPresentation").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2354269628709769373L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
+  public static final SMethod<SNode> getSubstituteNode_id2Yg2DIzFJuK = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSubstituteNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3427250980011308976L).languageId(0xb3706f4a983f05b2L, 0xacfc188dd5d64598L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getDetailedPresentation_id22G2W3WJ92t, getSubstituteNode_id2Yg2DIzFJuK);
 

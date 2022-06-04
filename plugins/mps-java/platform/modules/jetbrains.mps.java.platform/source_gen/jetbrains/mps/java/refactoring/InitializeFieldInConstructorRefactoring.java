@@ -9,7 +9,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -23,7 +23,7 @@ public class InitializeFieldInConstructorRefactoring extends AbstractInitializeF
   public void performRefactoring(SNode field, SNodeReference[] selectedConstructors, SRepository repository) {
     for (SNodeReference ref : selectedConstructors) {
       SNode c = SNodeOperations.cast(ref.resolve(repository), CONCEPTS.ConstructorDeclaration$yG);
-      SNode init = ((SNode) BHReflection.invoke0(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.Type$bu, SMethodTrimmedId.create("createDefaultTypeExpression", null, "2UvJdVpqUA4")));
+      SNode init = ((SNode) BHReflection.invoke0(SLinkOperations.getTarget(field, LINKS.type$a1UY), CONCEPTS.Type$bu, SMethodIdV2.create("createDefaultTypeExpression", 3359611512358152580L, 0x5745e3015c8914d3L)));
       SNode stmt = createExpressionStatement_liqiui_a0c0a0b(field, init);
       ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(c, LINKS.body$5xQk), LINKS.statement$53DE)).addElement(stmt);
     }

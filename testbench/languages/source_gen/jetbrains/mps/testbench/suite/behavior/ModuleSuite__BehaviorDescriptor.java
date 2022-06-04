@@ -30,9 +30,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class ModuleSuite__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xd3c5a46fb8c247dbL, 0xad0a30b8f19c2055L, 0x3e81ed1e2be77cb5L, "jetbrains.mps.testbench.suite.structure.ModuleSuite");
 
-  public static final SMethod<Iterable<SModel>> models_id173Z5qAOyPn = new SMethodBuilder<Iterable<SModel>>(new SJavaCompoundTypeImpl((Class<Iterable<SModel>>) ((Class) Object.class))).name("models").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("173Z5qAOyPn").build();
-  public static final SMethod<SModule> module_id7A48itizp2R = new SMethodBuilder<SModule>(new SJavaCompoundTypeImpl(SModule.class)).name("module").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7A48itizp2R").build();
-  public static final SMethod<Iterable<SNode>> getNotMutedTests_id7tF7F0nXrAX = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getNotMutedTests").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("7tF7F0nXrAX").build();
+  public static final SMethod<Iterable<SModel>> models_id173Z5qAOyPn = new SMethodBuilder<Iterable<SModel>>(new SJavaCompoundTypeImpl((Class<Iterable<SModel>>) ((Class) Object.class))).name("models").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1280144168199531863L).languageId(0xad0a30b8f19c2055L, 0xd3c5a46fb8c247dbL).build2();
+  public static final SMethod<SModule> module_id7A48itizp2R = new SMethodBuilder<SModule>(new SJavaCompoundTypeImpl(SModule.class)).name("module").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8756160028287537335L).languageId(0xad0a30b8f19c2055L, 0xd3c5a46fb8c247dbL).build2();
+  public static final SMethod<Iterable<SNode>> getNotMutedTests_id7tF7F0nXrAX = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getNotMutedTests").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8605005254686521789L).languageId(0xad0a30b8f19c2055L, 0xd3c5a46fb8c247dbL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(models_id173Z5qAOyPn, module_id7A48itizp2R, getNotMutedTests_id7tF7F0nXrAX);
 

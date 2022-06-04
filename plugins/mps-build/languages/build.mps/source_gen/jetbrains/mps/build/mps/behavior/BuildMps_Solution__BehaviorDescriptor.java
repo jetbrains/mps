@@ -23,8 +23,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BuildMps_Solution__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xcf935df46994e9cL, 0xa132fa109541cba3L, 0x2c446791464290f7L, "jetbrains.mps.build.mps.structure.BuildMps_Solution");
 
-  public static final SMethod<Boolean> hasTestsSources_id6ogfLD6evrW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasTestsSources").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6ogfLD6evrW").build();
-  public static final SMethod<Boolean> hasSources_id6ogfLD6hwDf = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasSources").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("6ogfLD6hwDf").build();
+  public static final SMethod<Boolean> hasTestsSources_id6ogfLD6evrW = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasTestsSources").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7354447573575923452L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
+  public static final SMethod<Boolean> hasSources_id6ogfLD6hwDf = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasSources").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7354447573576714831L).languageId(0xa132fa109541cba3L, 0xcf935df46994e9cL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(hasTestsSources_id6ogfLD6evrW, hasSources_id6ogfLD6hwDf);
 

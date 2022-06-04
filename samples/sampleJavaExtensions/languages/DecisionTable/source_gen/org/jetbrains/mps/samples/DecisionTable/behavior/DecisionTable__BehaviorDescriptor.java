@@ -31,8 +31,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class DecisionTable__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x65c13e6709b64695L, 0xaf8852024b7d2027L, 0x1b942309931b1581L, "org.jetbrains.mps.samples.DecisionTable.structure.DecisionTable");
 
-  public static final SMethod<Set<SNode>> referencedLVDs_id3mtcPBWFCmw = new SMethodBuilder<Set<SNode>>(new SJavaCompoundTypeImpl((Class<Set<SNode>>) ((Class) Object.class))).name("referencedLVDs").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3mtcPBWFCmw").build();
-  public static final SMethod<Set<SNode>> referencedParams_id3mtcPBWFDo3 = new SMethodBuilder<Set<SNode>>(new SJavaCompoundTypeImpl((Class<Set<SNode>>) ((Class) Object.class))).name("referencedParams").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3mtcPBWFDo3").build();
+  public static final SMethod<Set<SNode>> referencedLVDs_id3mtcPBWFCmw = new SMethodBuilder<Set<SNode>>(new SJavaCompoundTypeImpl((Class<Set<SNode>>) ((Class) Object.class))).name("referencedLVDs").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3863300516938155424L).languageId(0xaf8852024b7d2027L, 0x65c13e6709b64695L).build2();
+  public static final SMethod<Set<SNode>> referencedParams_id3mtcPBWFDo3 = new SMethodBuilder<Set<SNode>>(new SJavaCompoundTypeImpl((Class<Set<SNode>>) ((Class) Object.class))).name("referencedParams").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3863300516938159619L).languageId(0xaf8852024b7d2027L, 0x65c13e6709b64695L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(referencedLVDs_id3mtcPBWFCmw, referencedParams_id3mtcPBWFDo3);
 

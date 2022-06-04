@@ -19,7 +19,7 @@ import java.util.HashSet;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.search.VisibilityUtil;
@@ -116,7 +116,7 @@ public final class OverridingMethodsCalculator {
 
   private void collectOverridingMethods(final SNode classifier, final SNode superClassifier, Map<String, Set<SNode>> nameToMethodsMap, Set<SNode> visitedClassifiers) {
     Map<String, Set<SNode>> methodNameToMethodMapCopy = copyMap(nameToMethodsMap);
-    for (final SNode superClassifierMethod : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superClassifier, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")))).where(new IWhereFilter<SNode>() {
+    for (final SNode superClassifierMethod : Sequence.fromIterable(((Iterable<SNode>) BHReflection.invoke0(superClassifier, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)))).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         // not very comprehensible condition (it is a dummy anonymous stub for enum constant) AP
         boolean enumConstant = SNodeOperations.isInstanceOf(classifier, CONCEPTS.AnonymousClass$Bt) && SNodeOperations.getModel(classifier) == null;
@@ -129,7 +129,7 @@ public final class OverridingMethodsCalculator {
       }
       List<SNode> overridingMethods = SetSequence.fromSet(methodsWithNameOfSuperMethod).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return ((boolean) (Boolean) BHReflection.invoke0(superClassifierMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodTrimmedId.create("hasSameSignature", CONCEPTS.BaseMethodDeclaration$kD, "hEwIB0z"), it));
+          return ((boolean) (Boolean) BHReflection.invoke0(superClassifierMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("hasSameSignature", 1213877350435L, 0x5745e3015c8914d3L), it));
         }
       }).toListSequence();
       for (SNode overridingMethod : ListSequence.fromList(overridingMethods)) {
@@ -158,7 +158,7 @@ public final class OverridingMethodsCalculator {
   }
 
   public static Iterable<SNode> getInstanceMethods(SNode containingClassifier) {
-    Iterable<SNode> result = ((Iterable<SNode>) BHReflection.invoke0(containingClassifier, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("methods", CONCEPTS.Classifier$Ix, "4_LVZ3pBKCn")));
+    Iterable<SNode> result = ((Iterable<SNode>) BHReflection.invoke0(containingClassifier, CONCEPTS.Classifier$Ix, SMethodIdV2.create("methods", 5292274854859311639L, 0x5745e3015c8914d3L)));
     if (SNodeOperations.isInstanceOf(containingClassifier, CONCEPTS.EnumClass$Vk)) {
       for (SNode enumConstant : ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(containingClassifier, CONCEPTS.EnumClass$Vk), LINKS.enumConstant$qtgW))) {
         result = Sequence.fromIterable(result).concat(ListSequence.fromList(SLinkOperations.getChildren(enumConstant, LINKS.method$pGvv)));

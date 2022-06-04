@@ -27,8 +27,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class INavigationTarget__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3b6L, "jetbrains.mps.kotlin.structure.INavigationTarget");
 
-  public static final SMethod<SNode> getNavigationOperand_id2gj5XQXMv4y = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNavigationOperand").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2gj5XQXMv4y").build();
-  public static final SMethod<Boolean> acceptNullable_id5D4bOjqGpyn = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("acceptNullable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5D4bOjqGpyn").build();
+  public static final SMethod<SNode> getNavigationOperand_id2gj5XQXMv4y = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getNavigationOperand").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2599447651062247714L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> acceptNullable_id5D4bOjqGpyn = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("acceptNullable").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6504375734603192471L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getNavigationOperand_id2gj5XQXMv4y, acceptNullable_id5D4bOjqGpyn);
 

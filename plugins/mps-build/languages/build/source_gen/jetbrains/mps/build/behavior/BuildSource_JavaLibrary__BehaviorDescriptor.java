@@ -26,7 +26,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class BuildSource_JavaLibrary__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x540febaa6144b873L, "jetbrains.mps.build.structure.BuildSource_JavaLibrary");
 
-  public static final SMethod<Boolean> canExportByParts_id4RsV8qJGJnM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canExportByParts").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4RsV8qJGJnM").build();
+  public static final SMethod<Boolean> canExportByParts_id4RsV8qJGJnM = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canExportByParts").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5610619299014309362L).languageId(0xb99171f8c50ce5d2L, 0x798100da4f0a421aL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(canExportByParts_id4RsV8qJGJnM);
 

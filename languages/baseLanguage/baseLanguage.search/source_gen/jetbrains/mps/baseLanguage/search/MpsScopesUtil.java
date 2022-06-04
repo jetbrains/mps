@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -23,7 +23,7 @@ public class MpsScopesUtil {
   public MpsScopesUtil() {
   }
   public static String getSignature(SNode classifierMember, SNode classifier) {
-    String classifierPrefix = ((String) BHReflection.invoke0(SNodeOperations.cast(SNodeOperations.getParent(classifierMember), CONCEPTS.Classifier$Ix), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y"))) + ":";
+    String classifierPrefix = ((String) BHReflection.invoke0(SNodeOperations.cast(SNodeOperations.getParent(classifierMember), CONCEPTS.Classifier$Ix), CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL))) + ":";
     if (SNodeOperations.isInstanceOf(classifierMember, CONCEPTS.EnumConstantDeclaration$MW)) {
       return classifierPrefix + SPropertyOperations.getString(SNodeOperations.cast(classifierMember, CONCEPTS.EnumConstantDeclaration$MW), PROPS.name$MnvL);
     }
@@ -39,11 +39,11 @@ public class MpsScopesUtil {
   }
   public static List<String> getMembersSignatures(SNode classifier) {
     List<String> result = ListSequence.fromList(new ArrayList<String>());
-    for (SNode member : ((Iterable<SNode>) BHReflection.invoke0(((SNode) BHReflection.invoke0(classifier, CONCEPTS.IClassifier$MF, SMethodTrimmedId.create("getThisType", null, "6r77ob2UWbY"))), CONCEPTS.IClassifierType$B1, SMethodTrimmedId.create("getMembers", CONCEPTS.IClassifierType$B1, "6r77ob2V1Fr")))) {
+    for (SNode member : ((Iterable<SNode>) BHReflection.invoke0(((SNode) BHReflection.invoke0(classifier, CONCEPTS.IClassifier$MF, SMethodIdV2.create("getThisType", 7405920559687254782L, 0x5745e3015c8914d3L))), CONCEPTS.IClassifierType$B1, SMethodIdV2.create("getMembers", 7405920559687277275L, 0x5745e3015c8914d3L)))) {
       if (!(SNodeOperations.isInstanceOf(member, CONCEPTS.ClassifierMember$At))) {
         ListSequence.fromList(result).addElement("Not ClassifierMember member: " + SNodeOperations.present(member));
       } else {
-        ListSequence.fromList(result).addElement(((((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(member, CONCEPTS.ClassifierMember$At), CONCEPTS.ClassifierMember$At, SMethodTrimmedId.create("isStaticClassifierMember", null, "7MS72Gc8avw"))) ? "static " : "")) + getSignature(member, classifier));
+        ListSequence.fromList(result).addElement(((((boolean) (Boolean) BHReflection.invoke0(SNodeOperations.cast(member, CONCEPTS.ClassifierMember$At), CONCEPTS.ClassifierMember$At, SMethodIdV2.create("isStaticClassifierMember", 8986964027630462944L, 0x5745e3015c8914d3L))) ? "static " : "")) + getSignature(member, classifier));
       }
     }
     return result;

@@ -24,8 +24,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class DebuggedType__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x7da4580f9d754603L, 0x816251a896d78375L, 0x3f11b1341fa25ed8L, "jetbrains.mps.debugger.java.evaluation.structure.DebuggedType");
 
-  public static final SMethod<SNode> getHighClassifierType_id3WhGjgvCHCA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getHighClassifierType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3WhGjgvCHCA").build();
-  public static final SMethod<SNode> getLowClassifierType_id3WhGjgvCHDA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLowClassifierType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3WhGjgvCHDA").build();
+  public static final SMethod<SNode> getHighClassifierType_id3WhGjgvCHCA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getHighClassifierType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4544608336420723238L).languageId(0x816251a896d78375L, 0x7da4580f9d754603L).build2();
+  public static final SMethod<SNode> getLowClassifierType_id3WhGjgvCHDA = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getLowClassifierType").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4544608336420723302L).languageId(0x816251a896d78375L, 0x7da4580f9d754603L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getHighClassifierType_id3WhGjgvCHCA, getLowClassifierType_id3WhGjgvCHDA);
 

@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class NodeAppendPart__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb83431fe5c8f40bcL, 0x8a3665e25f4dd253L, 0x12015251a28L, "jetbrains.mps.lang.textGen.structure.NodeAppendPart");
 
-  public static final SMethod<Boolean> withIndent_idi0uJgJ6 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("withIndent").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("i0uJgJ6").build();
+  public static final SMethod<Boolean> withIndent_idi0uJgJ6 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("withIndent").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1237466287046L).languageId(0x8a3665e25f4dd253L, 0xb83431fe5c8f40bcL).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(withIndent_idi0uJgJ6);
 

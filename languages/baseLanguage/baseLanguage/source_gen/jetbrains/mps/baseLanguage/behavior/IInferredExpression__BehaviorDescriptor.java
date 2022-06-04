@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IInferredExpression__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x59c8a97078e469d6L, "jetbrains.mps.baseLanguage.structure.IInferredExpression");
 
-  public static final SMethod<Boolean> needInference_idQ$FjPqwIoN = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needInference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("Q$FjPqwIoN").build();
+  public static final SMethod<Boolean> needInference_idQ$FjPqwIoN = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("needInference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(983101097696749107L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(needInference_idQ$FjPqwIoN);
 

@@ -5,7 +5,7 @@ package jetbrains.mps.generator.impl;
 import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @GeneratedClass(node = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)/894226751621690778", model = "r:ab837574-aa54-4b18-9762-b783ef089263(jetbrains.mps.generator.impl)")
 public final class GeneratorUtilEx {
   public static String getPatternVariableName(SNode ref) {
-    return ((String) BHReflection.invoke0(ref, CONCEPTS.TemplateArgumentPatternRef$dA, SMethodTrimmedId.create("getVariableName", null, "2x5YKzmc1bX")));
+    return ((String) BHReflection.invoke0(ref, CONCEPTS.TemplateArgumentPatternRef$dA, SMethodIdV2.create("getVariableName", 2902001550281937661L, 0x3bd222b39cd71affL)));
   }
   public static List<SNode> getTemplateFragments(@NotNull SNode template) {
     List<SNode> templateFragments = new ArrayList<SNode>();

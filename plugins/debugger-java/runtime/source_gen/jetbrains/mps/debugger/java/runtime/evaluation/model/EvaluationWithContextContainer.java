@@ -24,7 +24,7 @@ import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.debugger.java.runtime.evaluation.container.BaseLanguagesImportHelper;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -116,7 +116,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
   }
   private void tryToImport(final SNode evaluatorNode, List<SNodeReference> nodesToImport) {
     BaseLanguagesImportHelper helper = new MyBaseLanguagesImportHelper(evaluatorNode);
-    helper.tryToImport(((SNode) BHReflection.invoke0(evaluatorNode, CONCEPTS.IEvaluatorConcept$E8, SMethodTrimmedId.create("getCode", null, "hASWOEj0jB"))), nodesToImport);
+    helper.tryToImport(((SNode) BHReflection.invoke0(evaluatorNode, CONCEPTS.IEvaluatorConcept$E8, SMethodIdV2.create("getCode", 317191294093624551L, 0xfcc609a70ba2c576L))), nodesToImport);
   }
 
   protected SNode createEvaluatorNode() {
@@ -215,7 +215,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     for (SModel stub : repoFacade.getModelsByName(new SModelName(new JavaPackageNameStub(qualifiedModelName).asModelId().getModelName()))) {
       SNode node = ListSequence.fromList(SModelOperations.nodes(stub, CONCEPTS.UnitConcept$1g)).findFirst(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return Objects.equals(((String) BHReflection.invoke0(it, CONCEPTS.UnitConcept$1g, SMethodTrimmedId.create("getUnitName", null, "4pl5GY7LKmR"))), unitName) && SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix);
+          return Objects.equals(((String) BHReflection.invoke0(it, CONCEPTS.UnitConcept$1g, SMethodIdV2.create("getUnitName", 5067982036267369911L, 0x223441e8c194cd94L))), unitName) && SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix);
         }
       });
       if (node != null) {
@@ -238,7 +238,7 @@ public class EvaluationWithContextContainer extends EvaluationContainer {
     Set<SNode> instances = findUsages.findInstances(scope, Collections.singleton(concept), false, new EmptyProgressMonitor());
     return SNodeOperations.cast(SetSequence.fromSet(instances).findFirst(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix) && ((String) BHReflection.invoke0(SNodeOperations.cast(it, CONCEPTS.UnitConcept$1g), CONCEPTS.UnitConcept$1g, SMethodTrimmedId.create("getUnitName", null, "4pl5GY7LKmR"))).equals(unitName);
+        return SNodeOperations.isInstanceOf(it, CONCEPTS.Classifier$Ix) && ((String) BHReflection.invoke0(SNodeOperations.cast(it, CONCEPTS.UnitConcept$1g), CONCEPTS.UnitConcept$1g, SMethodIdV2.create("getUnitName", 5067982036267369911L, 0x223441e8c194cd94L))).equals(unitName);
       }
     }), CONCEPTS.UnitConcept$1g);
   }

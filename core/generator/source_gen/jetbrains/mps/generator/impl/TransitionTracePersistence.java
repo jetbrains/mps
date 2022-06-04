@@ -9,7 +9,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.smodel.behaviour.BHReflection;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.extapi.model.ModelWithAttributes;
@@ -67,7 +67,7 @@ public final class TransitionTracePersistence {
         continue;
       }
       SNodeId origin = originTrace.getOrigin(n);
-      SNode nid = ((SNode) BHReflection.invoke0(SNodeOperations.asSConcept(CONCEPTS.ElementaryNodeId$Yd), CONCEPTS.ElementaryNodeId$Yd, SMethodTrimmedId.create("create", CONCEPTS.ElementaryNodeId$Yd, "6UZRahyzeh3"), myCheckpointModel, origin));
+      SNode nid = ((SNode) BHReflection.invoke0(SNodeOperations.asSConcept(CONCEPTS.ElementaryNodeId$Yd), CONCEPTS.ElementaryNodeId$Yd, SMethodIdV2.create("create", 7980339663309956163L, 0x3bd222b39cd71affL), myCheckpointModel, origin));
       SNode ot = new IAttributeDescriptor.NodeAttribute(CONCEPTS.OriginTrace$kG).setNew(n);
       SLinkOperations.setTarget(ot, LINKS.origin$MM7K, nid);
     }
@@ -82,7 +82,7 @@ public final class TransitionTracePersistence {
       if ((originTrace == null)) {
         continue;
       }
-      SNodeId value = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(originTrace, LINKS.origin$MM7K), CONCEPTS.NodeIdentity$rN, SMethodTrimmedId.create("getNodeId", null, "39TODbGsIdf")));
+      SNodeId value = ((SNodeId) BHReflection.invoke0(SLinkOperations.getTarget(originTrace, LINKS.origin$MM7K), CONCEPTS.NodeIdentity$rN, SMethodIdV2.create("getNodeId", 3637169702552396623L, 0x3bd222b39cd71affL)));
       into.setOrigin(n, value);
       // I'd love to save some memory by not keeping attribute, however, present pattern to use TTP is NOT the moment model is about to get serialized or just accessed from a storage.
       // ModelTransitions.loadTransition is invoked once trace is needed for a model that might have been loaded and published long ago, and could not be modified without proper model access

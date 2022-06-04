@@ -6,7 +6,7 @@ import jetbrains.mps.annotations.GeneratedClass;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.smodel.LanguageAspect;
@@ -25,7 +25,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 @GeneratedClass(node = "r:cb40950c-9102-4caf-8d31-b0388f359313(jetbrains.mps.kernel.language)/616772488614529103", model = "r:cb40950c-9102-4caf-8d31-b0388f359313(jetbrains.mps.kernel.language)")
 public class ConceptAspectsHelper {
   public static SNode attachNewConceptAspect(SNode conceptNode, SNode aspectNode, SModel aspectModel) {
-    BHReflection.invoke0(aspectNode, CONCEPTS.IConceptAspect$Z3, SMethodTrimmedId.create("setBaseConcept", null, "5r_35Ihc58c"), conceptNode);
+    BHReflection.invoke0(aspectNode, CONCEPTS.IConceptAspect$Z3, SMethodIdV2.create("setBaseConcept", 6261424444345963020L, 0x44a456bea0df1cf0L), conceptNode);
     if (SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$EkXl) != null) {
       SPropertyOperations.assign(aspectNode, PROPS.virtualPackage$EkXl, SPropertyOperations.getString(conceptNode, PROPS.virtualPackage$EkXl));
     }

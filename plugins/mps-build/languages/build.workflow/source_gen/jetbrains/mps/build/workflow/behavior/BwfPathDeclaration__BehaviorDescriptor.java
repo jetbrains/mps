@@ -22,8 +22,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class BwfPathDeclaration__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cef4c10L, "jetbrains.mps.build.workflow.structure.BwfPathDeclaration");
 
-  public static final SMethod<String> getPathId_id5KZfyKsWnkn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPathId").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5KZfyKsWnkn").build();
-  public static final SMethod<Integer> getPriority_id1Mjrj7j4T5I = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getPriority").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1Mjrj7j4T5I").build();
+  public static final SMethod<String> getPathId_id5KZfyKsWnkn = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getPathId").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6647099934207210775L).languageId(0xba8d10e3ec237f13L, 0x698a8d22a10447a0L).build2();
+  public static final SMethod<Integer> getPriority_id1Mjrj7j4T5I = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getPriority").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2059109515400548718L).languageId(0xba8d10e3ec237f13L, 0x698a8d22a10447a0L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getPathId_id5KZfyKsWnkn, getPriority_id1Mjrj7j4T5I);
 

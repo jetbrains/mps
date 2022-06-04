@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 public final class ConsoleScript__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf26691d20def4c06L, 0xaec62cb90c4af0a4L, 0x1811ccc46ac3f6deL, "jetbrains.mps.console.scripts.structure.ConsoleScript");
 
-  public static final SMethod<Iterable<SNode>> getCommands_id1whNchEKZry = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getCommands").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1whNchEKZry").build();
+  public static final SMethod<Iterable<SNode>> getCommands_id1whNchEKZry = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getCommands").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1734392475491235554L).languageId(0xaec62cb90c4af0a4L, 0xf26691d20def4c06L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getCommands_id1whNchEKZry);
 

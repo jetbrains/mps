@@ -13862,6 +13862,16 @@
               </node>
             </node>
           </node>
+          <node concept="1SiIV0" id="1Pzwefdg$Ss" role="3bR37C">
+            <node concept="3bR9La" id="1Pzwefdg$St" role="1SiIV1">
+              <ref role="3bR37D" node="1H905DlDUSw" resolve="MPS.OpenAPI" />
+            </node>
+          </node>
+          <node concept="1SiIV0" id="1Pzwefdg$Su" role="3bR37C">
+            <node concept="3bR9La" id="1Pzwefdg$Sv" role="1SiIV1">
+              <ref role="3bR37D" node="7Kfy9QB6LaO" resolve="jetbrains.mps.lang.structure" />
+            </node>
+          </node>
         </node>
         <node concept="1SiIV0" id="2a9bszgruDq" role="3bR37C">
           <node concept="3bR9La" id="2a9bszgruDp" role="1SiIV1">

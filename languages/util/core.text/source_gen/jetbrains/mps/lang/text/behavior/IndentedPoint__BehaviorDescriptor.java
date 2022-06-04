@@ -22,7 +22,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class IndentedPoint__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x46ded40cf13ae6c4L, "jetbrains.mps.lang.text.structure.IndentedPoint");
 
-  public static final SMethod<String> getIndentString_idfcFkhVQ0er = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getIndentString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("fcFkhVQ0er").build();
+  public static final SMethod<String> getIndentString_idfcFkhVQ0er = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getIndentString").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(273784187009893275L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getIndentString_idfcFkhVQ0er);
 

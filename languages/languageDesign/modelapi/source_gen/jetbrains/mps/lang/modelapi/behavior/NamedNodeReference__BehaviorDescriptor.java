@@ -26,9 +26,9 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 public final class NamedNodeReference__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x41af228e7e0d7f3eL, "jetbrains.mps.lang.modelapi.structure.NamedNodeReference");
 
-  /*package*/ static final SMethod<SNode> findTarget_id4nxIQVLmGTU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findTarget").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).id("4nxIQVLmGTU").build();
-  public static final SMethod<SNodeReference> toNodeReference_id4nxIQVLmsc4 = new SMethodBuilder<SNodeReference>(new SJavaCompoundTypeImpl(SNodeReference.class)).name("toNodeReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4nxIQVLmsc4").build();
-  public static final SMethod<SNode> toNode_id46J8CTY3sAt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl(SNode.class)).name("toNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("46J8CTY3sAt").build(SMethodBuilder.createJavaParameter(SRepository.class, ""));
+  /*package*/ static final SMethod<SNode> findTarget_id4nxIQVLmGTU = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findTarget").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(5035511943546982010L).languageId(0x9b35f83fa582753eL, 0x446c26eb2b7b4bf0L).build2();
+  public static final SMethod<SNodeReference> toNodeReference_id4nxIQVLmsc4 = new SMethodBuilder<SNodeReference>(new SJavaCompoundTypeImpl(SNodeReference.class)).name("toNodeReference").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5035511943546913540L).languageId(0x9b35f83fa582753eL, 0x446c26eb2b7b4bf0L).build2();
+  public static final SMethod<SNode> toNode_id46J8CTY3sAt = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl(SNode.class)).name("toNode").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4733039728785213853L).languageId(0x9b35f83fa582753eL, 0x446c26eb2b7b4bf0L).build2(SMethodBuilder.createJavaParameter(SRepository.class, ""));
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(findTarget_id4nxIQVLmGTU, toNodeReference_id4nxIQVLmsc4, toNode_id46J8CTY3sAt);
 

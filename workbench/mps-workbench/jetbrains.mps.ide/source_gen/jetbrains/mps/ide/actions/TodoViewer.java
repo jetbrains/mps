@@ -35,7 +35,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.ide.findusages.view.treeholder.tree.TextOptions;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.ide.icons.IdeIcons;
@@ -115,7 +115,7 @@ public class TodoViewer extends JPanel {
       if (SNodeOperations.isInstanceOf(n, CONCEPTS.TextCommentPart$LX)) {
         return SPropertyOperations.getString(SNodeOperations.as(node, CONCEPTS.TextCommentPart$LX), PROPS.text$ag2i);
       }
-      return ((String) BHReflection.invoke0(SNodeOperations.as(node, CONCEPTS.IComment$KY), CONCEPTS.IComment$KY, SMethodTrimmedId.create("getTextualRepresentation", null, "fB3l80ylIb")));
+      return ((String) BHReflection.invoke0(SNodeOperations.as(node, CONCEPTS.IComment$KY), CONCEPTS.IComment$KY, SMethodIdV2.create("getTextualRepresentation", 281208147581426571L, 0x5745e3015c8914d3L)));
     }
     @Override
     public String getResultsText(TextOptions options) {

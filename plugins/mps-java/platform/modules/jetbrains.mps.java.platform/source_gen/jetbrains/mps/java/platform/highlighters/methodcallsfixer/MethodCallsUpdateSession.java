@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -41,7 +41,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     SNode baseMethodDeclaration = SLinkOperations.getTarget(methodCallNode, LINKS.baseMethodDeclaration$pyYw);
     String methodName = getMethodName(methodCallNode);
 
-    Tuples._2<SNode, Boolean> resolveResult = ((Tuples._2<SNode, Boolean>) BHReflection.invoke0(methodCallNode, CONCEPTS.IMethodCall$M9, SMethodTrimmedId.create("resolveMethod", CONCEPTS.IMethodCall$M9, "28$D10lLyGj")));
+    Tuples._2<SNode, Boolean> resolveResult = ((Tuples._2<SNode, Boolean>) BHReflection.invoke0(methodCallNode, CONCEPTS.IMethodCall$M9, SMethodIdV2.create("resolveMethod", 2460271685442874131L, 0x5745e3015c8914d3L)));
     SNode newTarget = resolveResult._0();
     boolean good = (boolean) resolveResult._1();
 

@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -33,7 +33,7 @@ public class CommentUtil {
   public static SNode commentOut(@NotNull SNode node) {
     SNode parent = SNodeOperations.getParent(node);
     if (parent == null) {
-      throw new IllegalArgumentException("Node to comment has no parent. Node: " + ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + " Node id: " + node.getNodeId());
+      throw new IllegalArgumentException("Node to comment has no parent. Node: " + ((String) BHReflection.invoke0(node, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL))) + " Node id: " + node.getNodeId());
     }
     SContainmentLink containmentLink = node.getContainmentLink();
     assert containmentLink != null;
@@ -52,7 +52,7 @@ public class CommentUtil {
   public static SNode uncomment(@NotNull SNode attribute) {
     SNode parent = SNodeOperations.getParent(attribute);
     if (parent == null) {
-      throw new IllegalArgumentException("Node to uncomment has no parent. Node: " + ((String) BHReflection.invoke0(attribute, CONCEPTS.BaseConcept$gP, SMethodTrimmedId.create("getPresentation", null, "hEwIMiw"))) + " Node id: " + attribute.getNodeId());
+      throw new IllegalArgumentException("Node to uncomment has no parent. Node: " + ((String) BHReflection.invoke0(attribute, CONCEPTS.BaseConcept$gP, SMethodIdV2.create("getPresentation", 1213877396640L, 0x553941aeb020c32eL))) + " Node id: " + attribute.getNodeId());
     }
     return new NodeUncommenter(attribute).uncomment();
   }

@@ -82,7 +82,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -513,7 +513,7 @@ public abstract class BaseConsoleTab extends SimpleToolWindowPanel implements Di
         check_6q36mf_a1a0b0a0f0uc(executeAfter);
       });
     };
-    BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil), CONCEPTS.Command$6M, SMethodTrimmedId.create("execute", null, "5WvH$QO9bva"), getConsoleContext(), consoleStream, beforeCommandClosure, afterCommandClosure);
+    BHReflection.invoke0(SLinkOperations.getTarget(SLinkOperations.getTarget(myRoot, LINKS.commandHolder$LTfs), LINKS.command$RGil), CONCEPTS.Command$6M, SMethodIdV2.create("execute", 6854397602732226506L, 0x6d1c0cbc11348977L), getConsoleContext(), consoleStream, beforeCommandClosure, afterCommandClosure);
   }
 
   private static void check_6q36mf_a41a43(Highlighter checkedDotOperand, UIEditorComponent myEditor) {

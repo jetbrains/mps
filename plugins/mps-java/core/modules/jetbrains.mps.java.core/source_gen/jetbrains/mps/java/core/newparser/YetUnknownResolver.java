@@ -23,7 +23,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.internal.collections.runtime.IMapping;
@@ -116,7 +116,7 @@ public class YetUnknownResolver {
   }
 
   private SNode collectYetUnresolved(SNode unk) {
-    final _FunctionTypes._return_P0_E0<? extends SNode> subst = ((_FunctionTypes._return_P0_E0<? extends SNode>) BHReflection.invoke0(unk, CONCEPTS.IYetUnresolved$h4, SMethodTrimmedId.create("evaluateSubst", null, "73E7sj5sxxG")));
+    final _FunctionTypes._return_P0_E0<? extends SNode> subst = ((_FunctionTypes._return_P0_E0<? extends SNode>) BHReflection.invoke0(unk, CONCEPTS.IYetUnresolved$h4, SMethodIdV2.create("evaluateSubst", 8136348407761606764L, 0x5745e3015c8914d3L)));
     if (subst == null) {
       // Try to solve strict descendants if any (and still report this node to be solved later)
       for (SNode it : ListSequence.fromList(SNodeOperations.getNodeDescendants(unk, CONCEPTS.IYetUnresolved$h4, false, new SAbstractConcept[]{CONCEPTS.IYetUnresolved$h4}))) {

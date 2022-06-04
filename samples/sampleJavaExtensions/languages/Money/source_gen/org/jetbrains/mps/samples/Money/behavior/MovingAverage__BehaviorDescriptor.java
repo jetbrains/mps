@@ -21,7 +21,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class MovingAverage__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x662a9f2b58024d16L, 0x955872c65c7a681eL, 0x3786e3f480b1c19aL, "org.jetbrains.mps.samples.Money.structure.MovingAverage");
 
-  public static final SMethod<Iterable<BigDecimal>> calculate_id3u6SZi0GsCg = new SMethodBuilder<Iterable<BigDecimal>>(new SJavaCompoundTypeImpl((Class<Iterable<BigDecimal>>) ((Class) Object.class))).name("calculate").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3u6SZi0GsCg").build();
+  public static final SMethod<Iterable<BigDecimal>> calculate_id3u6SZi0GsCg = new SMethodBuilder<Iterable<BigDecimal>>(new SJavaCompoundTypeImpl((Class<Iterable<BigDecimal>>) ((Class) Object.class))).name("calculate").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4001135958235925008L).languageId(0x955872c65c7a681eL, 0x662a9f2b58024d16L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(calculate_id3u6SZi0GsCg);
 

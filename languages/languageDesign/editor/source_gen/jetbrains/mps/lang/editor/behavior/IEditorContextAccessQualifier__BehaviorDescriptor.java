@@ -20,7 +20,7 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class IEditorContextAccessQualifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getInterfaceConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x1d5f3105ba2b044bL, "jetbrains.mps.lang.editor.structure.IEditorContextAccessQualifier");
 
-  public static final SMethod<Boolean> useDefaultAccessor_id1PvcgmUaKhn = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useDefaultAccessor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1PvcgmUaKhn").build();
+  public static final SMethod<Boolean> useDefaultAccessor_id1PvcgmUaKhn = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("useDefaultAccessor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2116464250555401303L).languageId(0xa83a7ff23bde13baL, 0x18bc659203a64e29L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(useDefaultAccessor_id1PvcgmUaKhn);
 

@@ -1766,7 +1766,7 @@
       <node id="5797068448049414461" at="44,76,45,16" concept="16" />
       <node id="2299985075419915065" at="45,16,46,42" concept="5" />
       <node id="5797068448049414485" at="50,33,51,79" concept="18" />
-      <node id="5200543944415363027" at="52,5,53,218" concept="12" />
+      <node id="5200543944415363027" at="52,5,53,233" concept="12" />
       <node id="5797068448049414543" at="57,77,58,81" concept="11" />
       <node id="5797068448049414550" at="58,81,59,84" concept="11" />
       <node id="5797068448049414568" at="60,181,61,143" concept="5" />
@@ -1782,7 +1782,7 @@
       <node id="5200543944415472757" at="88,49,89,107" concept="11" />
       <node id="5200543944415564185" at="91,41,92,60" concept="12" />
       <node id="5200543944415608130" at="96,51,97,82" concept="12" />
-      <node id="5637778898984597338" at="101,44,102,187" concept="11" />
+      <node id="5637778898984597338" at="101,44,102,202" concept="11" />
       <node id="4565282503346041331" at="104,43,105,79" concept="11" />
       <node id="4565282503346062814" at="106,31,107,63" concept="5" />
       <node id="4565282503346072928" at="107,63,108,69" concept="5" />
@@ -1806,7 +1806,7 @@
       <node id="5797068448049414577" at="68,0,76,0" concept="10" trace="getDescendants#(Lorg/jetbrains/mps/openapi/model/SNode;Ljava/util/Set;)Ljava/util/Set;" />
       <node id="4565282503346013543" at="104,0,112,0" concept="10" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="5797068448049414534" at="56,41,66,5" concept="9" />
-      <node id="4565282503345986612" at="102,187,112,11" concept="5" />
+      <node id="4565282503345986612" at="102,202,112,11" concept="5" />
       <node id="5797068448049414528" at="55,0,68,0" concept="10" trace="getParent#(Lorg/jetbrains/mps/openapi/model/SNode;)Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="4565282503345986527" at="101,0,114,0" concept="10" trace="visit#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4565282503345980573" at="99,7,114,7" concept="5" />
@@ -1831,7 +1831,7 @@
         <var name="isParentHierarchy" id="5797068448049414458" />
         <var name="repo" id="5797068448049414455" />
       </scope>
-      <scope id="5797068448049414478" at="49,101,53,218" />
+      <scope id="5797068448049414478" at="49,101,53,233" />
       <scope id="5797068448049414631" at="76,0,80,0" />
       <scope id="5797068448049414586" at="69,112,74,69">
         <var name="result" id="5637778898984789275" />

@@ -20,8 +20,8 @@ import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 public final class DefaultModifier__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x40ed0df0ef40a332L, "jetbrains.mps.baseLanguage.structure.DefaultModifier");
 
-  public static final SMethod<Boolean> allowsBody_id10BRnhafkFC = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("allowsBody").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("10BRnhafkFC").build();
-  public static final SMethod<Boolean> makesMethodNotAbstract_id4c$BrPwobKA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("makesMethodNotAbstract").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("4c$BrPwobKA").build();
+  public static final SMethod<Boolean> allowsBody_id10BRnhafkFC = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("allowsBody").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1164142520230038248L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<Boolean> makesMethodNotAbstract_id4c$BrPwobKA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("makesMethodNotAbstract").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4838165336394087462L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(allowsBody_id10BRnhafkFC, makesMethodNotAbstract_id4c$BrPwobKA);
 

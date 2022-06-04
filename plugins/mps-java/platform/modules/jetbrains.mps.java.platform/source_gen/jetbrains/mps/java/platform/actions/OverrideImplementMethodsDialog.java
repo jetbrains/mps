@@ -11,7 +11,7 @@ import com.intellij.ui.NonFocusableCheckBox;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -51,7 +51,7 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
   @Override
   protected String getText(SNode node) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$Ix)) {
-      return ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), CONCEPTS.INamedConcept$Kd, SMethodTrimmedId.create("getFqName", null, "hEwIO9y")));
+      return ((String) BHReflection.invoke0(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), CONCEPTS.INamedConcept$Kd, SMethodIdV2.create("getFqName", 1213877404258L, 0x553941aeb020c32eL)));
     }
     return super.getText(node);
   }
@@ -110,7 +110,7 @@ public class OverrideImplementMethodsDialog extends GroupedNodesChooser {
   }
 
   public static Iterable<SNode> sortMethods(SNode baseClassifier, Iterable<SNode> methods) {
-    return sortMethods(((List<SNode>) BHReflection.invoke0(baseClassifier, CONCEPTS.Classifier$Ix, SMethodTrimmedId.create("getAllSuperClassifiers", CONCEPTS.Classifier$Ix, "59G_UM6ah0X"))), methods);
+    return sortMethods(((List<SNode>) BHReflection.invoke0(baseClassifier, CONCEPTS.Classifier$Ix, SMethodIdV2.create("getAllSuperClassifiers", 5939288775835848765L, 0x5745e3015c8914d3L))), methods);
   }
 
   public static SNodeReference[] toNodePointers(Iterable<SNode> methods) {

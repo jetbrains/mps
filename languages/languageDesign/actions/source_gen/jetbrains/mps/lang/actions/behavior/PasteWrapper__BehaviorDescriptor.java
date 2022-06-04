@@ -23,7 +23,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class PasteWrapper__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xaee9cad2acd44608L, 0xaef20004f6a1cdbdL, 0x11c51563250L, "jetbrains.mps.lang.actions.structure.PasteWrapper");
 
-  public static final SMethod<String> getClassName_id5CTPYn2wJN2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5CTPYn2wJN2").build();
+  public static final SMethod<String> getClassName_id5CTPYn2wJN2 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6501464918896868546L).languageId(0xaef20004f6a1cdbdL, 0xaee9cad2acd44608L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getClassName_id5CTPYn2wJN2);
 

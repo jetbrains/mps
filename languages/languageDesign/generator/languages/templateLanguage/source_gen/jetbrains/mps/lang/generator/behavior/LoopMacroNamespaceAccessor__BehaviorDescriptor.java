@@ -21,7 +21,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 public final class LoopMacroNamespaceAccessor__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xb401a68083254110L, 0x8fd384331ff25befL, 0x27fb58cc0349292cL, "jetbrains.mps.lang.generator.structure.LoopMacroNamespaceAccessor");
 
-  public static final SMethod<SAbstractConcept> getMacroConcept_id2vVmcK3iiCI = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getMacroConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2vVmcK3iiCI").build();
+  public static final SMethod<SAbstractConcept> getMacroConcept_id2vVmcK3iiCI = new SMethodBuilder<SAbstractConcept>(new SJavaCompoundTypeImpl((Class<SAbstractConcept>) ((Class) Object.class))).name("getMacroConcept").modifiers(9, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2880994019885263406L).languageId(0x8fd384331ff25befL, 0xb401a68083254110L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getMacroConcept_id2vVmcK3iiCI);
 

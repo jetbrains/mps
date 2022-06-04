@@ -17,7 +17,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.behaviour.BHReflection;
-import jetbrains.mps.core.aspects.behaviour.SMethodTrimmedId;
+import jetbrains.mps.core.aspects.behaviour.SMethodIdV2;
 import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
@@ -307,7 +307,7 @@ public final class RuleUtil {
     return null;
   }
   public static SAbstractConcept getPatternReductionRulePatternNodeConcept(SNode reductionRule) {
-    return ((SAbstractConcept) (SAbstractConcept) BHReflection.invoke0(SLinkOperations.getTarget(reductionRule, LINKS.pattern$ThnR), CONCEPTS.PatternExpression$YJ, SMethodTrimmedId.create("getQuotedNodeConcept", CONCEPTS.PatternExpression$YJ, "4vXWNHn1_L$")));
+    return ((SAbstractConcept) (SAbstractConcept) BHReflection.invoke0(SLinkOperations.getTarget(reductionRule, LINKS.pattern$ThnR), CONCEPTS.PatternExpression$YJ, SMethodIdV2.create("getQuotedNodeConcept", 5187569781989334116L, 0x7b607543e0ea400eL)));
   }
   public static String[] getTemplateDeclarationParameterNames(SNode template) {
     List<SNode> params = SLinkOperations.getChildren(template, LINKS.parameter$5PGb);
@@ -472,7 +472,7 @@ public final class RuleUtil {
     return SLinkOperations.getChildren(macro, LINKS.variables$Eqmf);
   }
   public static String getVarDecl_Name(SNode varDecl) {
-    return ((String) (String) BHReflection.invoke0(varDecl, CONCEPTS.VarDeclaration$$D, SMethodTrimmedId.create("getImplName", CONCEPTS.VarDeclaration$$D, "UesZ_nZXee")));
+    return ((String) (String) BHReflection.invoke0(varDecl, CONCEPTS.VarDeclaration$$D, SMethodIdV2.create("getImplName", 1048903277984338830L, 0x3bd222b39cd71affL)));
   }
   public static SNode getVarDecl_Query(SNode varDecl) {
     return SLinkOperations.getTarget(varDecl, LINKS.value$EuM$);
@@ -497,10 +497,10 @@ public final class RuleUtil {
     return SPropertyOperations.getString(loopMacro, PROPS.counterVarName$YOXn);
   }
   public static boolean isLoopMacroCounterVarUsed(SNode loopMacro) {
-    return ((boolean) (Boolean) BHReflection.invoke0(loopMacro, CONCEPTS.LoopMacro$1T, SMethodTrimmedId.create("isLoopVariableUsed", CONCEPTS.LoopMacro$1T, "5UJTmNZqi81"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14d5f8229234079cL, "jetbrains.mps.lang.generator.structure.LoopMacroVariable"), 0x14d5f8229234079eL, "index")));
+    return ((boolean) (Boolean) BHReflection.invoke0(loopMacro, CONCEPTS.LoopMacro$1T, SMethodIdV2.create("isLoopVariableUsed", 6822924216793899521L, 0x3bd222b39cd71affL), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14d5f8229234079cL, "jetbrains.mps.lang.generator.structure.LoopMacroVariable"), 0x14d5f8229234079eL, "index")));
   }
   public static boolean isLoopMacroInputNodeVarUsed(SNode loopMacro) {
-    return ((boolean) (Boolean) BHReflection.invoke0(loopMacro, CONCEPTS.LoopMacro$1T, SMethodTrimmedId.create("isLoopVariableUsed", CONCEPTS.LoopMacro$1T, "5UJTmNZqi81"), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14d5f8229234079cL, "jetbrains.mps.lang.generator.structure.LoopMacroVariable"), 0x14d5f8229234079dL, "inputNode")));
+    return ((boolean) (Boolean) BHReflection.invoke0(loopMacro, CONCEPTS.LoopMacro$1T, SMethodIdV2.create("isLoopVariableUsed", 6822924216793899521L, 0x3bd222b39cd71affL), SEnumOperations.getMember(MetaAdapterFactory.getEnumeration(0xb401a68083254110L, 0x8fd384331ff25befL, 0x14d5f8229234079cL, "jetbrains.mps.lang.generator.structure.LoopMacroVariable"), 0x14d5f8229234079dL, "inputNode")));
   }
   public static Iterable<SConcept> getModelChangeOperations() {
     return ModelChangeOperations;

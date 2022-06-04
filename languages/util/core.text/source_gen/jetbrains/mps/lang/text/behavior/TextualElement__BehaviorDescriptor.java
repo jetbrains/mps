@@ -28,9 +28,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 public final class TextualElement__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xc7fb639fbe784307L, 0x89b0b5959c3fa8c8L, 0x2c99af34e20d9cfbL, "jetbrains.mps.lang.text.structure.TextualElement");
 
-  public static final SMethod<String> getTextualRepresentation_id69wk_bF5sg9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).id("69wk_bF5sg9").build();
-  public static final SMethod<SNode> findPreviousWordStart_id3VJiP1sDlYQ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findPreviousWordStart").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3VJiP1sDlYQ").build();
-  public static final SMethod<SNode> findNextWordEnd_id3VJiP1sDz5g = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findNextWordEnd").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).id("3VJiP1sDz5g").build();
+  public static final SMethod<String> getTextualRepresentation_id69wk_bF5sg9 = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getTextualRepresentation").modifiers(12, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7088756329566028809L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<SNode> findPreviousWordStart_id3VJiP1sDlYQ = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findPreviousWordStart").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4534926158309187510L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
+  public static final SMethod<SNode> findNextWordEnd_id3VJiP1sDz5g = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("findNextWordEnd").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4534926158309241168L).languageId(0x89b0b5959c3fa8c8L, 0xc7fb639fbe784307L).build2();
 
   private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTextualRepresentation_id69wk_bF5sg9, findPreviousWordStart_id3VJiP1sDlYQ, findNextWordEnd_id3VJiP1sDz5g);
 
