@@ -58,6 +58,10 @@ public final class SMethodBuilder<T> {
     return SMethodImpl.create(myName, myModifiers, myReturnType, myConcept, methodId, registry, paramTypes);
   }
 
+  public SMethod<T> build2(SParameter... paramTypes) {
+    return build2(Arrays.asList(paramTypes));
+  }
+
   public SMethod<T> build2(List<SParameter> paramTypes) {
     var methodId = SMethodIdV2.create("", myBaseMethodId, myLangIdHi ^ myLangIdLo);
     final BehaviorRegistry registry = myRegistry != null ? myRegistry : ConceptRegistry.getInstance().getBehaviorRegistry();
