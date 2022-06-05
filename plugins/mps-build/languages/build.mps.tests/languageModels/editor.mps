@@ -238,7 +238,7 @@
           </node>
         </node>
         <node concept="3F0ifn" id="1tJmw8EAXUS" role="3EZMnx">
-          <property role="3F0ifm" value="compress args (experimental)" />
+          <property role="3F0ifm" value="compress args" />
           <ref role="1k5W1q" to="o2va:hwW5xkg" resolve="keyword" />
         </node>
         <node concept="3F1sOY" id="1tJmw8EAXV3" role="3EZMnx">

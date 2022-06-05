@@ -153,7 +153,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     }
   }
   private EditorCell createConstant_2() {
-    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "compress args (experimental)");
+    EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "compress args");
     editorCell.setCellId("Constant_tu51wq_c1a");
     Style style = new StyleImpl();
     new keywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
