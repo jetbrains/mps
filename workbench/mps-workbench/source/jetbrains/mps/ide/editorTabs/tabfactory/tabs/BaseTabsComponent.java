@@ -134,13 +134,13 @@ public abstract class BaseTabsComponent<TabImpl extends AbstractEditorTab> imple
 
     Set<SNode> changedRoots = changedRootRefs.stream()
                                              .map(nref -> nref.resolve(repository))
-                                             .dropWhile(Objects::isNull)
+                                             .filter(Objects::nonNull)
                                              .collect(Collectors.toSet());
     if (myBaseNodeRef != null) {
       boolean changedRootsRefersToOurBaseNode = myPossibleTabs.stream()
                                                               .anyMatch(it -> changedRoots.stream()
                                                                                           .map(it::getBaseNode)
-                                                                                          .dropWhile(Objects::isNull)
+                                                                                          .filter(Objects::nonNull)
                                                                                           .map(SNode::getReference)
                                                                                           .anyMatch(myBaseNodeRef::equals));
       needUpdate |= changedRootsRefersToOurBaseNode;
