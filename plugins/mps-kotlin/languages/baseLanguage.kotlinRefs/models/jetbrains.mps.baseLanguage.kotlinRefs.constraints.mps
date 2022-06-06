@@ -18,7 +18,6 @@
     <import index="3hq4" ref="r:22e37fb0-8cf5-424c-a769-6983cf740d03(jetbrains.mps.kotlin.baseLanguage.toJava)" />
     <import index="o8zo" ref="r:314576fc-3aee-4386-a0a5-a38348ac317d(jetbrains.mps.scope)" />
     <import index="1ka" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.typechecking(MPS.Core/)" />
-    <import index="d5k6" ref="r:e9005ea6-e4e0-4b7f-8b34-6e6513630cda(jetbrains.mps.kotlin.baseLanguage.typeConversion)" />
     <import index="hcm8" ref="r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)" />
     <import index="tbhz" ref="r:7d051f7f-1a28-4ed6-9de6-95fd49d3fa23(jetbrains.mps.kotlin.scopes)" />
     <import index="hez" ref="r:b038209d-51a9-4919-b6e5-4fafce96fa00(jetbrains.mps.kotlin.behavior)" />
@@ -673,23 +672,6 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="1d2BQ0Zrkru" role="3cqZAp">
-          <node concept="3cpWsn" id="1d2BQ0Zrkrv" role="3cpWs9">
-            <property role="TrG5h" value="converter" />
-            <node concept="3uibUv" id="1d2BQ0Zrkrw" role="1tU5fm">
-              <ref role="3uigEE" to="akzu:6zWVWr2aCAr" resolve="JavaToKtEngine" />
-            </node>
-            <node concept="2OqwBi" id="1d2BQ0Zrkrx" role="33vP2m">
-              <node concept="2YIFZM" id="1d2BQ0Zrkry" role="2Oq$k0">
-                <ref role="37wK5l" to="d5k6:4mCQDm_CkK3" resolve="getInstance" />
-                <ref role="1Pybhc" to="d5k6:4mCQDm_yPpU" resolve="TypeConversionService" />
-              </node>
-              <node concept="2S8uIT" id="1d2BQ0Zrkrz" role="2OqNvi">
-                <ref role="2S8YL0" to="d5k6:4mCQDm__ai2" resolve="javaToKt" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="1d2BQ0Zrks1" role="3cqZAp">
           <node concept="3cpWsn" id="1d2BQ0Zrks2" role="3cpWs9">
             <property role="TrG5h" value="visitor" />
@@ -720,27 +702,23 @@
         </node>
         <node concept="3clFbF" id="1d2BQ0Zrkse" role="3cqZAp">
           <node concept="2OqwBi" id="1d2BQ0Zrksf" role="3clFbG">
-            <node concept="2OqwBi" id="1d2BQ0Zrksg" role="2Oq$k0">
-              <node concept="37vLTw" id="1d2BQ0Zrksh" role="2Oq$k0">
-                <ref role="3cqZAo" node="1d2BQ0Zrkrv" resolve="converter" />
-              </node>
-              <node concept="liA8E" id="1d2BQ0Zrksi" role="2OqNvi">
-                <ref role="37wK5l" to="d5k6:4mCQDm_nsqr" resolve="convert" />
-                <node concept="1PxgMI" id="1d2BQ0Zrksj" role="37wK5m">
-                  <property role="1BlNFB" value="true" />
-                  <node concept="chp4Y" id="1d2BQ0Zrksk" role="3oSUPX">
-                    <ref role="cht4Q" to="tpee:fz3vP1H" resolve="Type" />
-                  </node>
-                  <node concept="37vLTw" id="1d2BQ0Zrksl" role="1m5AlR">
-                    <ref role="3cqZAo" node="1d2BQ0ZrkqS" resolve="instanceType" />
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="2qgKlT" id="1d2BQ0Zrksm" role="2OqNvi">
               <ref role="37wK5l" to="hez:5q426iHtYvR" resolve="visitHierarchy" />
               <node concept="37vLTw" id="1d2BQ0Zrksn" role="37wK5m">
                 <ref role="3cqZAo" node="1d2BQ0Zrks2" resolve="visitor" />
+              </node>
+            </node>
+            <node concept="2YIFZM" id="117xv0QtkcN" role="2Oq$k0">
+              <ref role="37wK5l" to="akzu:77yS8CrUKRi" resolve="convert" />
+              <ref role="1Pybhc" to="akzu:77yS8CrUJ$d" resolve="JavaToKtConversion" />
+              <node concept="1PxgMI" id="117xv0Queiq" role="37wK5m">
+                <property role="1BlNFB" value="true" />
+                <node concept="chp4Y" id="117xv0QugOG" role="3oSUPX">
+                  <ref role="cht4Q" to="tpee:fz3vP1H" resolve="Type" />
+                </node>
+                <node concept="37vLTw" id="117xv0QucaD" role="1m5AlR">
+                  <ref role="3cqZAo" node="1d2BQ0ZrkqS" resolve="instanceType" />
+                </node>
               </node>
             </node>
           </node>
@@ -833,15 +811,11 @@
                 </node>
                 <node concept="3clFbF" id="1d2BQ0ZrksU" role="3cqZAp">
                   <node concept="2OqwBi" id="1d2BQ0ZrksV" role="3clFbG">
-                    <node concept="2OqwBi" id="1d2BQ0ZrksW" role="2Oq$k0">
-                      <node concept="37vLTw" id="1d2BQ0ZrksX" role="2Oq$k0">
-                        <ref role="3cqZAo" node="1d2BQ0Zrkrv" resolve="converter" />
-                      </node>
-                      <node concept="liA8E" id="1d2BQ0ZrksY" role="2OqNvi">
-                        <ref role="37wK5l" to="d5k6:4mCQDm_nsqr" resolve="convert" />
-                        <node concept="37vLTw" id="1d2BQ0ZrksZ" role="37wK5m">
-                          <ref role="3cqZAo" node="1d2BQ0Zrkt2" resolve="t" />
-                        </node>
+                    <node concept="2YIFZM" id="117xv0Q_Fe7" role="2Oq$k0">
+                      <ref role="37wK5l" to="akzu:77yS8CrUKRi" resolve="convert" />
+                      <ref role="1Pybhc" to="akzu:77yS8CrUJ$d" resolve="JavaToKtConversion" />
+                      <node concept="37vLTw" id="117xv0Q_HCY" role="37wK5m">
+                        <ref role="3cqZAo" node="1d2BQ0Zrkt2" resolve="t" />
                       </node>
                     </node>
                     <node concept="2qgKlT" id="1d2BQ0Zrkt0" role="2OqNvi">

@@ -22,7 +22,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.behavior.ITypeArguments__BehaviorDescriptor;
 import java.util.Collections;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration;
-import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -54,7 +53,7 @@ public final class JavaConstructorSuperSpecifier__BehaviorDescriptor extends Bas
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.constructor$5yLG) == null)) {
       return Sequence.fromIterable(Collections.<ParameterDeclaration>emptyList());
     }
-    return new JavaMethodDeclaration(SLinkOperations.getTarget(__thisNode__, LINKS.constructor$5yLG), TypeConversionService.getInstance().getJavaToKt()).getParameters();
+    return new JavaMethodDeclaration(SLinkOperations.getTarget(__thisNode__, LINKS.constructor$5yLG)).getParameters();
   }
   /*package*/ static SNode convertToNonConstructor_id1$jFvlEUFDL(@NotNull SNode __thisNode__) {
     SNode node = SNodeFactoryOperations.createNewNode(CONCEPTS.JavaClassSuperSpecifier$BW, __thisNode__);

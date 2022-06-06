@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine;
-import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration;
@@ -37,18 +35,17 @@ public final class JavaMemberTarget__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static FunctionDeclaration getFunction_id4vugIDegoqT(@NotNull SNode __thisNode__) {
-    JavaToKtEngine javaToKt = TypeConversionService.getInstance().getJavaToKt();
     {
       final SNode baseMethod = SLinkOperations.getTarget(__thisNode__, LINKS.member$UnLg);
       if (SNodeOperations.isInstanceOf(baseMethod, CONCEPTS.BaseMethodDeclaration$kD)) {
-        return new JavaMethodDeclaration(baseMethod, javaToKt);
+        return new JavaMethodDeclaration(baseMethod);
       }
     }
 
     {
       final SNode someClass = SLinkOperations.getTarget(__thisNode__, LINKS.member$UnLg);
       if (SNodeOperations.isInstanceOf(someClass, CONCEPTS.ClassConcept$bK)) {
-        return new JavaDefaultConstructorDeclaration(someClass, javaToKt);
+        return new JavaDefaultConstructorDeclaration(someClass);
       }
     }
 

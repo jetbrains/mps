@@ -4,6 +4,7 @@ package jetbrains.mps.kotlin.baseLanguage.toKotlin;
 
 import jetbrains.mps.kotlin.api.declaration.DefaultTypeParameterDeclaration;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SEnumOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -19,12 +21,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class JavaTypeParameterDeclaration extends DefaultTypeParameterDeclaration {
   private final SNode myTypeVariableDeclaration;
-  private final JavaToKtEngine myConverter;
-  public JavaTypeParameterDeclaration(SNode typeVariableDeclaration, JavaToKtEngine converter) {
+  public JavaTypeParameterDeclaration(@NotNull SNode typeVariableDeclaration) {
     myTypeVariableDeclaration = typeVariableDeclaration;
-    myConverter = converter;
   }
   @Override
+  @NotNull
   public SNodeReference getNode() {
     return SNodeOperations.getPointer(myTypeVariableDeclaration);
   }
@@ -33,14 +34,17 @@ public class JavaTypeParameterDeclaration extends DefaultTypeParameterDeclaratio
     return SPropertyOperations.getString(myTypeVariableDeclaration, PROPS.name$MnvL);
   }
   @Override
+  @NotNull
   public List<SNode> getUpperBounds() {
     List<SNode> bounds = new ArrayList<SNode>();
     if ((SLinkOperations.getTarget(myTypeVariableDeclaration, LINKS.bound$aZCB) != null)) {
-      ListSequence.fromList(bounds).addElement(myConverter.convert(SLinkOperations.getTarget(myTypeVariableDeclaration, LINKS.bound$aZCB)));
+      ListSequence.fromList(bounds).addElement(JavaToKtConversion.convert(SLinkOperations.getTarget(myTypeVariableDeclaration, LINKS.bound$aZCB)));
     }
-    for (SNode aux : ListSequence.fromList(SLinkOperations.getChildren(myTypeVariableDeclaration, LINKS.auxBounds$jgLr))) {
-      ListSequence.fromList(bounds).addElement(myConverter.convert(aux));
-    }
+    ListSequence.fromList(bounds).addSequence(ListSequence.fromList(SLinkOperations.getChildren(myTypeVariableDeclaration, LINKS.auxBounds$jgLr)).select(new ISelector<SNode, SNode>() {
+      public SNode select(SNode type) {
+        return JavaToKtConversion.convert(type);
+      }
+    }));
     return bounds;
   }
   @Override

@@ -25,10 +25,8 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class JavaMethodDeclaration implements FunctionDeclaration {
   private final SNode method;
-  private final JavaToKtEngine converter;
-  public JavaMethodDeclaration(SNode baseMethod, JavaToKtEngine converter) {
+  public JavaMethodDeclaration(SNode baseMethod) {
     this.method = baseMethod;
-    this.converter = converter;
   }
   @Override
   public SNode getNode() {
@@ -38,7 +36,7 @@ public class JavaMethodDeclaration implements FunctionDeclaration {
   public Iterable<ParameterDeclaration> getParameters() {
     return ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).select(new ISelector<SNode, JavaParameterDeclaration>() {
       public JavaParameterDeclaration select(SNode it) {
-        return new JavaParameterDeclaration(it, converter);
+        return new JavaParameterDeclaration(it);
       }
     });
   }
@@ -46,7 +44,7 @@ public class JavaMethodDeclaration implements FunctionDeclaration {
   public Iterable<TypeParameterDeclaration> getTypeParameters() {
     return ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.typeVariableDeclaration$Lipp)).select(new ISelector<SNode, JavaTypeParameterDeclaration>() {
       public JavaTypeParameterDeclaration select(SNode it) {
-        return new JavaTypeParameterDeclaration(it, converter);
+        return new JavaTypeParameterDeclaration(it);
       }
     });
   }
@@ -54,7 +52,7 @@ public class JavaMethodDeclaration implements FunctionDeclaration {
   public SNode getReturnType() {
     boolean isConstructor = SNodeOperations.isInstanceOf(method, CONCEPTS.ConstructorDeclaration$yG);
     SNode returnType = (isConstructor ? SNodeOperations.as(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(SNodeOperations.getNodeAncestor(method, CONCEPTS.IClassifier$MF, false, false)), CONCEPTS.Type$bu) : SLinkOperations.getTarget(method, LINKS.returnType$5xoi));
-    SNode result = converter.convert(returnType);
+    SNode result = JavaToKtConversion.convert(returnType);
 
     // TODO make a clear nullable API call
     boolean nullable = isReturnTypeNullable(returnType, isConstructor);
@@ -83,7 +81,7 @@ public class JavaMethodDeclaration implements FunctionDeclaration {
     {
       final SNode instanceMethod = method;
       if (SNodeOperations.isInstanceOf(instanceMethod, CONCEPTS.InstanceMethodDeclaration$39)) {
-        return converter.convert(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(SNodeOperations.getNodeAncestor(instanceMethod, CONCEPTS.Classifier$Ix, false, false)));
+        return JavaToKtConversion.convert(Classifier__BehaviorDescriptor.getThisType_id2RtWPFZ12w7.invoke(SNodeOperations.getNodeAncestor(instanceMethod, CONCEPTS.Classifier$Ix, false, false)));
       }
     }
 

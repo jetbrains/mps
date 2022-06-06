@@ -7,8 +7,7 @@ import jetbrains.mps.kotlin.api.members.SignatureCollector;
 import jetbrains.mps.kotlin.api.members.SuperTypesVisitor;
 import java.util.Stack;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine;
-import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService;
+import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtConversion;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.baseLanguage.scopes.Signature;
 import jetbrains.mps.baseLanguage.behavior.IClassifierMember__BehaviorDescriptor;
@@ -27,14 +26,8 @@ public class MembersPopulatingContextWrapper extends MembersPopulatingContext {
   private final SignatureCollector signatureDelegate;
   private final SuperTypesVisitor superTypesDelegate;
   private final Stack<SNode> converted = new Stack<>();
-  private final JavaToKtEngine javaToKt;
 
   public MembersPopulatingContextWrapper(SuperTypesVisitor superTypes) {
-    this(superTypes, TypeConversionService.getInstance().getJavaToKt());
-  }
-
-  public MembersPopulatingContextWrapper(SuperTypesVisitor superTypes, JavaToKtEngine javaToKtEngine) {
-    javaToKt = javaToKtEngine;
     superTypesDelegate = superTypes;
     if (superTypes instanceof SignatureCollector) {
       signatureDelegate = (SignatureCollector) superTypes;
@@ -45,7 +38,7 @@ public class MembersPopulatingContextWrapper extends MembersPopulatingContext {
 
   @Override
   public boolean enterClassifierInternal(SNode classifierType) {
-    SNode ktEquivalent = javaToKt.convert(SNodeOperations.as(classifierType, CONCEPTS.Type$bu));
+    SNode ktEquivalent = JavaToKtConversion.convert(SNodeOperations.as(classifierType, CONCEPTS.Type$bu));
 
     // Will take care of the logic from there
     if (superTypesDelegate.enterType(ktEquivalent)) {
@@ -80,7 +73,7 @@ public class MembersPopulatingContextWrapper extends MembersPopulatingContext {
     } else if (signature instanceof FieldSignature) {
       JavaSignatures.declareField(signatureDelegate, SNodeOperations.as(named, CONCEPTS.VariableDeclaration$Y0));
     } else if (signature instanceof MethodSignature && SNodeOperations.isInstanceOf(named, CONCEPTS.BaseMethodDeclaration$kD)) {
-      JavaSignatures.declareMethod(signatureDelegate, javaToKt, SNodeOperations.cast(named, CONCEPTS.BaseMethodDeclaration$kD));
+      JavaSignatures.declareMethod(signatureDelegate, SNodeOperations.cast(named, CONCEPTS.BaseMethodDeclaration$kD));
     }
   }
 

@@ -8,7 +8,12 @@ import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine;
 
 /**
  * Service holding type conversion engine from and to kotlin and baseLanguage.
+ * 
+ * @see jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtConversion 
+ * @see jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaConversion 
+ * @deprecated replace by specific classes
  */
+@Deprecated
 public class TypeConversionService {
   private static TypeConversionService INSTANCE;
 
@@ -55,6 +60,7 @@ public class TypeConversionService {
     };
   }
 
+  @Deprecated
   protected TypeConversionService() {
     setup();
   }
@@ -62,12 +68,6 @@ public class TypeConversionService {
   protected void setup() {
     setKtToJava(new KtToJavaEngine());
     setJavaToKt(new JavaToKtEngine());
-
-    // Most simple types that are mapped to kotlin
-    ClassToConceptEnum.populate(getJavaToKt(), getKtToJava());
-    ClassToClassEnum.populate(getJavaToKt(), getKtToJava());
-
-    // Can be extended using module activators
   }
 
   /**

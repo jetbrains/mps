@@ -10,8 +10,12 @@ import jetbrains.mps.references.Reference;
 import java.util.ArrayList;
 import java.util.ListIterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import java.util.concurrent.atomic.AtomicInteger;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 
 public class TypeConverterEngine<S extends SNode, R extends SNode> {
   private HashMap<SAbstractConcept, List<TypeConverter<S, R>>> myConverters;
@@ -40,11 +44,11 @@ public class TypeConverterEngine<S extends SNode, R extends SNode> {
     setConverters(new HashMap<>());
   }
 
-  public ConverterRegistration declareMapping(SAbstractConcept sourceConcept, TypeConverter<S, R> converter) {
-    return declareMappingGeneric(getConverters(), sourceConcept, converter);
+  public void declareMapping(SAbstractConcept sourceConcept, TypeConverter<S, R> converter) {
+    declareMappingGeneric(getConverters(), sourceConcept, converter);
   }
 
-  protected <T> ConverterRegistration declareMappingGeneric(HashMap<T, List<TypeConverter<S, R>>> map, T key, TypeConverter<S, R> converter) {
+  protected <T> void declareMappingGeneric(HashMap<T, List<TypeConverter<S, R>>> map, T key, TypeConverter<S, R> converter) {
     if (!(map.containsKey(key))) {
       // ArrayList as insertion only occur at initialization, most of the processing will require iterating
       ArrayList<TypeConverter<S, R>> list = new ArrayList<>();
@@ -57,22 +61,13 @@ public class TypeConverterEngine<S extends SNode, R extends SNode> {
       }
       listIterator.add(converter);
     }
-
-    return new ConverterRegistration(key, converter);
   }
 
-  public void unregister(ConverterRegistration registration) {
-    if (registration != null && registration.key instanceof SAbstractConcept) {
-      List<TypeConverter<S, R>> list = getConverters().get(registration.key);
-      list.remove(registration.converter);
-    }
-  }
-
-  public R convert(S sourceNode) {
+  public ConversionResult<R> convert(S sourceNode) {
     if (sourceNode == null) {
       return null;
     }
-    return convert(SNodeOperations.getConcept(sourceNode), sourceNode);
+    return convert(SNodeOperations.getConcept(sourceNode), sourceNode, new AtomicInteger(0));
   }
 
   /**
@@ -80,14 +75,15 @@ public class TypeConverterEngine<S extends SNode, R extends SNode> {
    * 
    * Used internally to find matches to superconcepts.
    */
-  public R convert(SAbstractConcept concept, S sourceNode) {
-    R res = convert(concept, sourceNode, getConverters().get(concept));
+  protected ConversionResult<R> convert(SAbstractConcept concept, S sourceNode, AtomicInteger conceptIndex) {
+    ConversionResult<R> res = convert(concept, sourceNode, getConverters().get(concept), conceptIndex);
     if (res != null) {
       return res;
     }
 
     for (SAbstractConcept superconcept : ListSequence.fromList(SConceptOperations.getDirectSuperConcepts(concept, false))) {
-      res = convert(superconcept, sourceNode);
+      conceptIndex.incrementAndGet();
+      res = convert(superconcept, sourceNode, conceptIndex);
       if (res != null) {
         return res;
       }
@@ -96,16 +92,39 @@ public class TypeConverterEngine<S extends SNode, R extends SNode> {
     return null;
   }
 
-  protected R convert(SAbstractConcept concept, S sourceNode, List<TypeConverter<S, R>> list) {
+  protected ConversionResult<R> convert(SAbstractConcept concept, S sourceNode, List<TypeConverter<S, R>> list, AtomicInteger conceptIndex) {
     if (list == null) {
       return null;
     }
     for (TypeConverter<S, R> converter : ListSequence.fromList(list)) {
-      R result = converter.convert(sourceNode, this);
+      R result = converter.convert(sourceNode);
       if (result != null) {
-        return result;
+        return new ConversionResult<>(conceptIndex.get(), converter.getPriority(), result);
       }
     }
     return null;
+  }
+
+  public static <I extends SNode, O extends SNode> O convertFromList(final I input, Iterable<TypeConverterEngine<I, O>> converters) {
+    // Try all converters
+    Iterable<ConversionResult<O>> results = Sequence.fromIterable(converters).select(new ISelector<TypeConverterEngine<I, O>, ConversionResult<O>>() {
+      public ConversionResult<O> select(TypeConverterEngine<I, O> it) {
+        return it.convert(input);
+      }
+    }).where(new NotNullWhereFilter<ConversionResult<O>>());
+
+    // Select the fittest result (closest concept or if same higher priority)
+    ConversionResult<O> result = null;
+    for (ConversionResult<O> next : Sequence.fromIterable(results)) {
+      if (next.isMoreAccurateThan(result)) {
+        result = next;
+      }
+    }
+
+    // Return it
+    if (result == null) {
+      return null;
+    }
+    return result.getResult();
   }
 }

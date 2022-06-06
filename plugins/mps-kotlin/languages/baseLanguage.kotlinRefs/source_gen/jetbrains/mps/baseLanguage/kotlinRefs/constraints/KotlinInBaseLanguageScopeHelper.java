@@ -13,10 +13,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.scope.EmptyScope;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine;
-import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService;
 import jetbrains.mps.kotlin.scopes.TypeMembersVisitor;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
+import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtConversion;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.scopes.runtime.NamedElementsScope;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -51,18 +50,17 @@ public class KotlinInBaseLanguageScopeHelper {
     SNode instanceType = TypecheckingFacade.getFromContext().computeIsolated(() -> TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(enclosingNode, CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)));
 
     // We go through kotlin types as they are aware of their properties members (we don't care about java variables here)
-    JavaToKtEngine converter = TypeConversionService.getInstance().getJavaToKt();
     TypeMembersVisitor visitor = new TypeMembersVisitor(signatureFilter);
 
     // Main type
-    IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(converter.convert(SNodeOperations.as(instanceType, CONCEPTS.Type$bu)), visitor);
+    IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(JavaToKtConversion.convert(SNodeOperations.as(instanceType, CONCEPTS.Type$bu)), visitor);
 
     // Scopes from bounds
     // TODO is that going to be handled by the converted type of TypeVariableReference?
     if (ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.as(instanceType, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I), LINKS.auxBounds$jgLr)).isNotEmpty()) {
       for (SNode t : SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.as(instanceType, CONCEPTS.TypeVariableReference$WL), LINKS.typeVariableDeclaration$Lz1I), LINKS.auxBounds$jgLr)) {
         // Reusing same visitor (should be ok, right?)
-        IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(converter.convert(t), visitor);
+        IType__BehaviorDescriptor.visitHierarchy_id5q426iHtYvR.invoke(JavaToKtConversion.convert(t), visitor);
       }
     }
 

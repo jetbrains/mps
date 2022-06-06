@@ -10,7 +10,6 @@ import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.signatures.AccessorKind;
-import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaDefaultConstructorDeclaration;
 import jetbrains.mps.kotlin.api.members.TypeExpander;
@@ -77,14 +76,14 @@ __switch__:
     });
   }
 
-  public static void declareConstructor(SignatureCollector collector, final JavaToKtEngine converter, final SNode method) {
-    collector.addSimpleDeclaration(method, null, FunctionSignature.class, () -> new FunctionSignature(new JavaDefaultConstructorDeclaration(method, converter), (TypeExpander) null));
+  public static void declareConstructor(SignatureCollector collector, final SNode method) {
+    collector.addSimpleDeclaration(method, null, FunctionSignature.class, () -> new FunctionSignature(new JavaDefaultConstructorDeclaration(method), (TypeExpander) null));
   }
 
-  public static void declareMethod(final SignatureCollector collector, final JavaToKtEngine converter, final SNode method) {
+  public static void declareMethod(final SignatureCollector collector, final SNode method) {
     int paramCount = ListSequence.fromList(SLinkOperations.getChildren(method, LINKS.parameter$5xBj)).count();
 
-    collector.addSimpleDeclaration(method, null, FunctionSignature.class, () -> new FunctionSignature(new JavaMethodDeclaration(method, converter), collector));
+    collector.addSimpleDeclaration(method, null, FunctionSignature.class, () -> new FunctionSignature(new JavaMethodDeclaration(method), collector));
 
     // Method accessed as properties
     final boolean hasGetter = paramCount == 0 && SPropertyOperations.getString(method, PROPS.name$MnvL).startsWith("get") && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), CONCEPTS.VoidType$BF));

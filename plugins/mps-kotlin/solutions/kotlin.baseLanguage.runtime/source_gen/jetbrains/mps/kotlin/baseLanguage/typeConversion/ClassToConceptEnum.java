@@ -5,9 +5,6 @@ package jetbrains.mps.kotlin.baseLanguage.typeConversion;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.kotlin.api.builtins.BuiltIn;
-import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine;
-import jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine;
-import jetbrains.mps.kotlin.baseLanguage.toKotlin.KotlinClassTypeBuilder;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -39,13 +36,6 @@ public enum ClassToConceptEnum {
 
   ClassToConceptEnum(SAbstractConcept concept, String kotlinType) {
     this(concept, kotlinType, false);
-  }
-
-  public static void populate(JavaToKtEngine fromJava, KtToJavaEngine fromKt) {
-    for (ClassToConceptEnum entry : ClassToConceptEnum.values()) {
-      fromJava.declareMapping(entry.javaConcept, new KotlinClassTypeBuilder(entry.kotlinPtr, entry.toKotlinNullable));
-      fromKt.declareMapping(entry.kotlinPtr, new ConceptBuilder<>(entry.javaConcept));
-    }
   }
 
   private static final class CONCEPTS {

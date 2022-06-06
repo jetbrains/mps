@@ -16,7 +16,7 @@ public interface TypeConverter<S extends SNode, R extends SNode> {
    * 
    * @return converted type or null if not applicable
    */
-  R convert(S source, TypeConverterEngine<S, R> conversionEngine);
+  R convert(S source);
 
   default int getPriority() {
     return 0;

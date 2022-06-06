@@ -22,11 +22,9 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class JavaDefaultConstructorDeclaration implements FunctionDeclaration {
   private final SNode classifier;
-  private final JavaToKtEngine converter;
 
-  public JavaDefaultConstructorDeclaration(SNode classifier, JavaToKtEngine converter) {
+  public JavaDefaultConstructorDeclaration(SNode classifier) {
     this.classifier = classifier;
-    this.converter = converter;
   }
   @Override
   public SNode getNode() {
@@ -40,13 +38,13 @@ public class JavaDefaultConstructorDeclaration implements FunctionDeclaration {
   public Iterable<TypeParameterDeclaration> getTypeParameters() {
     return ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp)).select(new ISelector<SNode, JavaTypeParameterDeclaration>() {
       public JavaTypeParameterDeclaration select(SNode it) {
-        return new JavaTypeParameterDeclaration(it, converter);
+        return new JavaTypeParameterDeclaration(it);
       }
     });
   }
   @Override
   public SNode getReturnType() {
-    SNode result = converter.convert(SNodeOperations.as(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classifier), CONCEPTS.Type$bu));
+    SNode result = JavaToKtConversion.convert(SNodeOperations.as(IClassifier__BehaviorDescriptor.getThisType_id6r77ob2UWbY.invoke(classifier), CONCEPTS.Type$bu));
 
     if (SNodeOperations.isInstanceOf(result, CONCEPTS.INullableType$$I)) {
       // Rare exception where the result is not nullable for sure

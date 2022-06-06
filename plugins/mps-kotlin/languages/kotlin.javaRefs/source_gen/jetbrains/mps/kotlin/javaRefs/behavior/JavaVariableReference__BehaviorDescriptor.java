@@ -13,7 +13,7 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService;
+import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtConversion;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -32,7 +32,7 @@ public final class JavaVariableReference__BehaviorDescriptor extends BaseBHDescr
   }
 
   /*package*/ static SNode getType_id6563FJLeSWZ(@NotNull SNode __thisNode__) {
-    return TypeConversionService.getInstance().getJavaToKt().convert(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.variable$GDHR), LINKS.type$a1UY));
+    return JavaToKtConversion.convert(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.variable$GDHR), LINKS.type$a1UY));
   }
 
   /*package*/ JavaVariableReference__BehaviorDescriptor() {

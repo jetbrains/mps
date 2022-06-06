@@ -115,8 +115,7 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.members.SourcedSignature" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService" />
+    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtConversion" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.SignatureFilter" />
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.TypeMembersVisitor" />

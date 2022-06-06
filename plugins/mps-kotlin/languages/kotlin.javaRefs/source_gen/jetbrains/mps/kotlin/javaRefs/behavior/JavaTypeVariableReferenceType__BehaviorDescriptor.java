@@ -16,9 +16,8 @@ import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaTypeParameterDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService;
+import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaTypeParameterDeclaration;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.api.types.identifiers.ClassTypeKey;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -41,7 +40,10 @@ public final class JavaTypeVariableReferenceType__BehaviorDescriptor extends Bas
   }
 
   /*package*/ static TypeParameterDeclaration getParameter_id4W0pdSD7eWM(@NotNull SNode __thisNode__) {
-    return new JavaTypeParameterDeclaration(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariable$LHQO), TypeConversionService.getInstance().getJavaToKt());
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.typeVariable$LHQO) == null)) {
+      return null;
+    }
+    return new JavaTypeParameterDeclaration(SLinkOperations.getTarget(__thisNode__, LINKS.typeVariable$LHQO));
   }
   /*package*/ static void populateTypeSignatures_id5q426iHK5S9(@NotNull SNode __thisNode__, SignatureCollector visitor) {
   }

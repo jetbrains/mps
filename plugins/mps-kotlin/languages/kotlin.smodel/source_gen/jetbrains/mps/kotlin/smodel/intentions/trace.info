@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debug-info version="2">
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095:jetbrains.mps.baseLanguage.structure.BlockStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123140:jetbrains.mps.baseLanguage.structure.ConstructorDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123155:jetbrains.mps.baseLanguage.structure.ExpressionStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068390468200:jetbrains.mps.baseLanguage.structure.FieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123159:jetbrains.mps.baseLanguage.structure.IfStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123165:jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242864:jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068581242878:jetbrains.mps.baseLanguage.structure.ReturnStatement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1068580123157:jetbrains.mps.baseLanguage.structure.Statement" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070462154015:jetbrains.mps.baseLanguage.structure.StaticFieldDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
+  <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
+  <root>
+    <file name="IntentionsDescriptor.java">
+      <unit at="18,0,56,0" name="jetbrains.mps.kotlin.smodel.intentions.IntentionsDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:abe50503-6554-42ae-ba11-630d90931972(jetbrains.mps.kotlin.smodel.intentions)/7647285342488892723">
+    <file name="IntentionsDescriptor.java">
+      <node id="7647285342488892723" at="37,47,38,65" concept="2" />
+      <node id="7647285342488892723" at="50,52,51,51" concept="2" />
+    </file>
+    <file name="NodeType_ToConceptType_Intention.java">
+      <node id="7647285342488892723" at="28,0,29,0" concept="3" trace="myCachedExecutable" />
+      <node id="7647285342488892723" at="30,45,31,153" concept="11" />
+      <node id="7647285342488892723" at="35,35,36,36" concept="7" />
+      <node id="7647285342488892723" at="40,35,41,17" concept="7" />
+      <node id="7647285342488892723" at="45,37,46,105" concept="2" />
+      <node id="7647285342488892723" at="47,5,48,30" concept="7" />
+      <node id="7647285342488894785" at="55,87,56,39" concept="7" />
+      <node id="7647285342488912659" at="60,78,61,24" concept="6" />
+      <node id="7647285342488913057" at="62,125,63,213" concept="2" />
+      <node id="7647285342488906794" at="64,14,65,102" concept="2" />
+      <node id="7647285342488936488" at="66,7,67,0" concept="8" />
+      <node id="7647285342488936751" at="67,0,68,115" concept="2" />
+      <node id="7647285342488892723" at="72,86,73,18" concept="7" />
+      <node id="7647285342488892723" at="79,48,80,51" concept="7" />
+      <node id="7647285342488909137" at="84,62,85,63" concept="6" />
+      <node id="7647285342488909137" at="85,63,86,71" concept="6" />
+      <node id="7647285342488909137" at="86,71,87,202" concept="2" />
+      <node id="7647285342488909137" at="87,202,88,26" concept="7" />
+      <node id="7647285342488892723" at="92,0,93,0" concept="9" trace="projection$qG3G" />
+      <node id="7647285342488892723" at="93,0,94,0" concept="9" trace="type$x3no" />
+      <node id="7647285342488892723" at="94,0,95,0" concept="9" trace="concept$PItp" />
+      <node id="7647285342488892723" at="98,0,99,0" concept="9" trace="TypeProjection$5e" />
+      <node id="7647285342488892723" at="99,0,100,0" concept="9" trace="ConceptType$Jb" />
+      <node id="7647285342488892723" at="51,0,53,0" concept="1" trace="IntentionImplementation#()V" />
+      <node id="7647285342488910875" at="64,12,66,7" concept="0" />
+      <node id="7647285342488892723" at="30,0,33,0" concept="1" trace="NodeType_ToConceptType_Intention#()V" />
+      <node id="7647285342488892723" at="44,99,47,5" concept="4" />
+      <node id="7647285342488892723" at="34,0,38,0" concept="5" trace="getPresentation#()Ljava/lang/String;" />
+      <node id="7647285342488892723" at="39,0,43,0" concept="5" trace="isSurroundWith#()Z" />
+      <node id="7647285342488892723" at="54,0,58,0" concept="5" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />
+      <node id="7647285342488892723" at="71,0,75,0" concept="5" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
+      <node id="7647285342488892723" at="78,0,82,0" concept="5" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
+      <node id="7647285342488902896" at="61,24,66,7" concept="4" />
+      <node id="7647285342488892723" at="44,0,50,0" concept="5" trace="instances#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/Collection;" />
+      <node id="7647285342488909137" at="84,0,90,0" concept="10" trace="createConceptType_nl9z2q_a0a0a0a1a0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="7647285342488892723" at="59,0,70,0" concept="5" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
+      <scope id="7647285342488892723" at="51,38,51,38" />
+      <scope id="7647285342488892723" at="30,45,31,153" />
+      <scope id="7647285342488892723" at="35,35,36,36" />
+      <scope id="7647285342488892723" at="40,35,41,17" />
+      <scope id="7647285342488892723" at="45,37,46,105" />
+      <scope id="7647285342488892725" at="55,87,56,39" />
+      <scope id="7647285342488902898" at="62,125,63,213" />
+      <scope id="7647285342488910876" at="64,14,65,102" />
+      <scope id="7647285342488892723" at="72,86,73,18" />
+      <scope id="7647285342488892723" at="79,48,80,51" />
+      <scope id="7647285342488892723" at="51,0,53,0" />
+      <scope id="7647285342488892723" at="30,0,33,0" />
+      <scope id="7647285342488892723" at="34,0,38,0" />
+      <scope id="7647285342488892723" at="39,0,43,0" />
+      <scope id="7647285342488892723" at="44,99,48,30" />
+      <scope id="7647285342488892723" at="54,0,58,0">
+        <var name="editorContext" id="7647285342488892723" />
+        <var name="node" id="7647285342488892723" />
+      </scope>
+      <scope id="7647285342488892723" at="71,0,75,0">
+        <var name="editorContext" id="7647285342488892723" />
+        <var name="node" id="7647285342488892723" />
+      </scope>
+      <scope id="7647285342488892723" at="78,0,82,0" />
+      <scope id="7647285342488909137" at="84,62,88,26">
+        <var name="facade" id="7647285342488909137" />
+        <var name="n0" id="7647285342488909137" />
+      </scope>
+      <scope id="7647285342488892723" at="44,0,50,0">
+        <var name="context" id="7647285342488892723" />
+        <var name="node" id="7647285342488892723" />
+      </scope>
+      <scope id="7647285342488909137" at="84,0,90,0" />
+      <scope id="7647285342488892727" at="60,78,68,115">
+        <var name="replacement" id="7647285342488912660" />
+      </scope>
+      <scope id="7647285342488892723" at="59,0,70,0">
+        <var name="editorContext" id="7647285342488892723" />
+        <var name="node" id="7647285342488892723" />
+      </scope>
+      <unit id="7647285342488892723" at="97,0,101,0" name="jetbrains.mps.kotlin.smodel.intentions.NodeType_ToConceptType_Intention$CONCEPTS" />
+      <unit id="7647285342488892723" at="91,0,96,0" name="jetbrains.mps.kotlin.smodel.intentions.NodeType_ToConceptType_Intention$LINKS" />
+      <unit id="7647285342488892723" at="50,0,84,0" name="jetbrains.mps.kotlin.smodel.intentions.NodeType_ToConceptType_Intention$IntentionImplementation" />
+      <unit id="7647285342488892723" at="27,0,102,0" name="jetbrains.mps.kotlin.smodel.intentions.NodeType_ToConceptType_Intention" />
+    </file>
+  </root>
+</debug-info>
+

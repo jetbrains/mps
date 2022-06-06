@@ -86,8 +86,7 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.declaration.ParameterDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService" />
+    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaConversion" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.FunctionParamMapper" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.NodeArgument" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.ParamErrorHandler" />

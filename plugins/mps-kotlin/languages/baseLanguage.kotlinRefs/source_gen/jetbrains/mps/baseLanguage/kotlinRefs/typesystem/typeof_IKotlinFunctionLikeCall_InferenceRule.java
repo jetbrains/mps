@@ -7,8 +7,6 @@ import jetbrains.mps.lang.typesystem.runtime.InferenceRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
-import jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine;
-import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
@@ -22,6 +20,7 @@ import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
+import jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaConversion;
 import java.util.Iterator;
 import java.util.List;
 import jetbrains.mps.kotlin.overloading.FunctionParamMapper;
@@ -56,7 +55,6 @@ public class typeof_IKotlinFunctionLikeCall_InferenceRule extends AbstractInfere
 
     */
 
-    final KtToJavaEngine converter = TypeConversionService.getInstance().getKtToJava();
     if (SLinkOperations.getTarget(fCall, LINKS.target$7dy6) == null) {
       return;
     }
@@ -75,7 +73,7 @@ public class typeof_IKotlinFunctionLikeCall_InferenceRule extends AbstractInfere
       {
         SNode _nodeToCheck_1029348928467 = fCall;
         EquationInfo _info_12389875345 = new EquationInfo(_nodeToCheck_1029348928467, null, "r:6b6fe053-7210-4624-8790-609860b309f1(jetbrains.mps.baseLanguage.kotlinRefs.typesystem)", "5494632093666928332", 0, null);
-        typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(expectedReceiverType_typevar_5494632093666910775), (SNode) createNullType_kfaybj_a1a0c0a0a8a1(), _info_12389875345);
+        typeCheckingContext.createEquation((SNode) typeCheckingContext.getRepresentative(expectedReceiverType_typevar_5494632093666910775), (SNode) createNullType_kfaybj_a1a0c0a0a7a1(), _info_12389875345);
       }
     }
 
@@ -103,7 +101,7 @@ public class typeof_IKotlinFunctionLikeCall_InferenceRule extends AbstractInfere
               }
             }
             for (TypeParameterDeclaration tvd : Sequence.fromIterable(typeVariableDeclaration)) {
-              SNode bound = converter.convert(ListSequence.fromList(tvd.getUpperBounds()).first());
+              SNode bound = KtToJavaConversion.convert(ListSequence.fromList(tvd.getUpperBounds()).first());
               {
                 final SNode generic = bound;
                 if (SNodeOperations.isInstanceOf(generic, CONCEPTS.IGenericType$13)) {
@@ -150,7 +148,7 @@ public class typeof_IKotlinFunctionLikeCall_InferenceRule extends AbstractInfere
             }
           }, (ParameterDeclaration node) -> SPropertyOperations.getString(node.getNode(), PROPS.name$MnvL), IKotlinFunctionLikeCall__BehaviorDescriptor.getFunctionParameters_idUG7NftR_2Q.invoke(fCall));
 
-          List<SNode> typel = ListSequence.fromList(mapper.checkArguments(NodeArgument.ofList(SLinkOperations.getChildren(fCall, LINKS.actualArgument$Q6nt)))).select(ParameterDeclaration::typeOf).select(converter::convert).toListSequence();
+          List<SNode> typel = ListSequence.fromList(mapper.checkArguments(NodeArgument.ofList(SLinkOperations.getChildren(fCall, LINKS.actualArgument$Q6nt)))).select(ParameterDeclaration::typeOf).select(KtToJavaConversion::convert).toListSequence();
 
           for (SNode type : ListSequence.fromList(typel)) {
             if (SNodeOperations.isInstanceOf(type, CONCEPTS.IGenericType$13)) {
@@ -158,7 +156,7 @@ public class typeof_IKotlinFunctionLikeCall_InferenceRule extends AbstractInfere
             }
           }
 
-          SNode retType = IKotlinFunctionLikeCall__BehaviorDescriptor.getFunctionReturnType_idUG7NftRy8a.invoke(fCall, converter);
+          SNode retType = IKotlinFunctionLikeCall__BehaviorDescriptor.getFunctionReturnType_idUG7NftRy8a.invoke(fCall);
           if (SNodeOperations.isInstanceOf(retType, CONCEPTS.IGenericType$13)) {
             IGenericType__BehaviorDescriptor.collectGenericSubstitutions_id3zZky3wF74h.invoke(SNodeOperations.cast(retType, CONCEPTS.IGenericType$13), subs);
             retType = IGenericType__BehaviorDescriptor.expandGenerics_id3zZky3wFPhu.invoke(SNodeOperations.cast(retType, CONCEPTS.IGenericType$13), subs);
@@ -233,7 +231,7 @@ public class typeof_IKotlinFunctionLikeCall_InferenceRule extends AbstractInfere
   public boolean overrides() {
     return false;
   }
-  private static SNode createNullType_kfaybj_a1a0c0a0a8a1() {
+  private static SNode createNullType_kfaybj_a1a0c0a0a7a1() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NullType$Ea);
     return n0.getResult();
   }

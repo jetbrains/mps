@@ -4,7 +4,6 @@ package jetbrains.mps.kotlin.baseLanguage.toJava;
 
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConverterEngine;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
@@ -20,11 +19,11 @@ public class JavaGenericClassTypeBuilder extends JavaClassTypeBuilder {
 
 
   @Override
-  public SNode convert(SNode source, final TypeConverterEngine<SNode, SNode> engine) {
-    SNode converted = super.convert(source, engine);
+  public SNode convert(SNode source) {
+    SNode converted = super.convert(source);
     ListSequence.fromList(SLinkOperations.getChildren(converted, LINKS.parameter$oqG$)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(source, CONCEPTS.ClassType$jI), LINKS.typeProjections$vhti)).select(new ISelector<SNode, SNode>() {
       public SNode select(SNode it) {
-        return KtToJavaEngine.convertProjection(it, engine);
+        return KtToJavaConversion.convertProjection(it);
       }
     }));
     return converted;

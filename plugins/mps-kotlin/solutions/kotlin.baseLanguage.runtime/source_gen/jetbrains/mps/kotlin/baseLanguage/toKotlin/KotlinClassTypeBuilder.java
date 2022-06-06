@@ -5,7 +5,6 @@ package jetbrains.mps.kotlin.baseLanguage.toKotlin;
 import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConverter;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConverterEngine;
 import jetbrains.mps.kotlin.api.builtins.BuiltIn;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -21,7 +20,7 @@ public class KotlinClassTypeBuilder implements TypeConverter<SNode, SNode> {
   }
 
   @Override
-  public SNode convert(SNode source, TypeConverterEngine<SNode, SNode> conversionEngine) {
+  public SNode convert(SNode source) {
     SNode classTypeOf = BuiltIn.classTypeOf(myTargetClass);
     SPropertyOperations.assign(classTypeOf, PROPS.isNullable$KWwD, myToKotlinNullable);
     return classTypeOf;

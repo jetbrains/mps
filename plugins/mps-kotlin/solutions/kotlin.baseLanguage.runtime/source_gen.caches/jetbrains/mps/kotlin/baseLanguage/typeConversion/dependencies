@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dependenciesRoot>
   <uses language="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+  <uses language="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
   <uses language="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
   <uses language="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
   <uses language="l:df345b11-b8c7-4213-ac66-48d2a9b75d88:jetbrains.mps.baseLanguageInternal" />
@@ -30,12 +31,6 @@
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="java.util.Objects" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.builtins.BuiltIn" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toJava.JavaClassTypeBuilder" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toJava.JavaGenericClassTypeBuilder" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.KotlinClassTypeBuilder" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.KotlinGenericClassBuilder" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.SNodePointer" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
@@ -46,10 +41,6 @@
   <dependency className="jetbrains.mps.kotlin.baseLanguage.typeConversion.ClassToConceptEnum">
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.builtins.BuiltIn" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.KotlinClassTypeBuilder" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.ConceptBuilder" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SConcept" />
@@ -57,41 +48,36 @@
   </dependency>
   <dependency className="jetbrains.mps.kotlin.baseLanguage.typeConversion.ConceptBuilder">
     <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConverterEngine" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
     <classNode extendsClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConverter" />
   </dependency>
-  <dependency className="jetbrains.mps.kotlin.baseLanguage.typeConversion.ConverterRegistration">
-    <classNode dependClassName="java.lang.Object" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConverter" />
-  </dependency>
-  <dependency className="jetbrains.mps.kotlin.baseLanguage.typeConversion.Priority">
-    <classNode dependClassName="java.util.ArrayList" />
-    <classNode dependClassName="java.util.List" />
-    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.references.Reference" />
+  <dependency className="jetbrains.mps.kotlin.baseLanguage.typeConversion.ConversionResult">
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
   <dependency className="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService">
+    <classNode dependClassName="java.lang.Deprecated" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.ClassToClassEnum" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.ClassToConceptEnum" />
     <classNode dependClassName="jetbrains.mps.references.Reference" />
   </dependency>
   <dependency className="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConverter">
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConverterEngine" />
     <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
   </dependency>
   <dependency className="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConverterEngine">
+    <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.util.ArrayList" />
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.ListIterator" />
+    <classNode dependClassName="java.util.concurrent.atomic.AtomicInteger" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ISelector" />
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.ListSequence" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.ConverterRegistration" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.NotNullWhereFilter" />
+    <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
+    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.ConversionResult" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConverter" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
@@ -104,7 +90,8 @@
     <classNode dependClassName="java.util.HashMap" />
     <classNode dependClassName="java.util.List" />
     <classNode dependClassName="java.util.Objects" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.ConverterRegistration" />
+    <classNode dependClassName="java.util.concurrent.atomic.AtomicInteger" />
+    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.ConversionResult" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConverter" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SAbstractConcept" />
     <classNode dependClassName="org.jetbrains.mps.openapi.language.SReferenceLink" />

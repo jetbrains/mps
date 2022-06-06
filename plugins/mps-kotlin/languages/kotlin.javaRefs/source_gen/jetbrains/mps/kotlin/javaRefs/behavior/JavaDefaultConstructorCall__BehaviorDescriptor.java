@@ -20,7 +20,6 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaDefaultConstructorDeclaration;
-import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -56,7 +55,7 @@ public final class JavaDefaultConstructorCall__BehaviorDescriptor extends BaseBH
     if ((SLinkOperations.getTarget(__thisNode__, LINKS.classifier$yYTH) == null)) {
       return null;
     }
-    return new JavaDefaultConstructorDeclaration(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$yYTH), TypeConversionService.getInstance().getJavaToKt());
+    return new JavaDefaultConstructorDeclaration(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$yYTH));
   }
 
   /*package*/ JavaDefaultConstructorCall__BehaviorDescriptor() {

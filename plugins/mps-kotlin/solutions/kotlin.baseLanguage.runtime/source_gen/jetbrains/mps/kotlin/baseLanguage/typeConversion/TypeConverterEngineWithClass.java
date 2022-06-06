@@ -8,10 +8,11 @@ import org.jetbrains.mps.openapi.language.SReferenceLink;
 import java.util.HashMap;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.Objects;
 
 /**
- * Same as TypeConverterEngine but with native filter on classes.
+ * Same as TypeConverterEngine but with native filter on classes for a given concept.
  */
 public class TypeConverterEngineWithClass<S extends SNode, R extends SNode> extends TypeConverterEngine<S, R> {
   private final SAbstractConcept myClassConcept;
@@ -24,31 +25,21 @@ public class TypeConverterEngineWithClass<S extends SNode, R extends SNode> exte
     myRefLink = refLink;
   }
 
-  public <T extends R> ConverterRegistration declareMapping(SNodeReference classRef, TypeConverter<S, T> converter) {
-    return declareMappingGeneric(classMapping, classRef, ((TypeConverter<S, R>) converter));
-  }
-
-  public void unregister(ConverterRegistration registration) {
-    if (registration != null && registration.key instanceof SNodeReference) {
-      List<TypeConverter<S, R>> list = classMapping.get(registration.key);
-      list.remove(registration.converter);
-      return;
-    }
-
-    super.unregister(registration);
+  public <T extends R> void declareMapping(SNodeReference classRef, TypeConverter<S, T> converter) {
+    declareMappingGeneric(classMapping, classRef, ((TypeConverter<S, R>) converter));
   }
 
   @Override
-  public R convert(SAbstractConcept concept, S sourceNode) {
+  protected ConversionResult<R> convert(SAbstractConcept concept, S sourceNode, AtomicInteger conceptIndex) {
     // Exception if the node is of class concept: matching occur with ref pointer instead of just concept
     if (Objects.equals(concept, myClassConcept)) {
       SNodeReference ref = ((SNode) sourceNode).getReference(myRefLink).getTargetNodeReference();
-      R res = convert(concept, sourceNode, classMapping.get(ref));
+      ConversionResult<R> res = convert(concept, sourceNode, classMapping.get(ref), conceptIndex);
       if (res != null) {
         return res;
       }
     }
 
-    return super.convert(concept, sourceNode);
+    return super.convert(concept, sourceNode, conceptIndex);
   }
 }

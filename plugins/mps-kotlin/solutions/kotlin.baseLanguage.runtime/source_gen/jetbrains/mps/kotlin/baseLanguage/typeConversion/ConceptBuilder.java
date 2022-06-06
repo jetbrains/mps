@@ -7,6 +7,9 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 
+/**
+ * Converter than creates a node of the provided concept.
+ */
 public class ConceptBuilder<S extends SNode, T extends SNode> implements TypeConverter<S, T> {
   private final SAbstractConcept myConceptToBuild;
 
@@ -15,7 +18,7 @@ public class ConceptBuilder<S extends SNode, T extends SNode> implements TypeCon
   }
 
   @Override
-  public T convert(S source, TypeConverterEngine<S, T> conversionEngine) {
+  public T convert(S source) {
     return (T) SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(myConceptToBuild));
   }
 }

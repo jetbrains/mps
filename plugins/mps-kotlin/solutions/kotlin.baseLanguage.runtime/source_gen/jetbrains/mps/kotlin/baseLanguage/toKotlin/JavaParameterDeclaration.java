@@ -12,10 +12,8 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class JavaParameterDeclaration implements ParameterDeclaration {
   private final SNode myParam;
-  private final JavaToKtEngine myConverter;
-  public JavaParameterDeclaration(SNode param, JavaToKtEngine converter) {
+  public JavaParameterDeclaration(SNode param) {
     myParam = param;
-    myConverter = converter;
   }
   @Override
   public SNode getNode() {
@@ -31,7 +29,7 @@ public class JavaParameterDeclaration implements ParameterDeclaration {
         type = SLinkOperations.getTarget(arity, LINKS.componentType$ypmi);
       }
     }
-    return myConverter.convert(type);
+    return JavaToKtConversion.convert(type);
   }
   @Override
   public boolean isVararg() {

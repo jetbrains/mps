@@ -9,7 +9,6 @@
   <imports>
     <import index="tpee" ref="r:00000000-0000-4000-0000-011c895902ca(jetbrains.mps.baseLanguage.structure)" />
     <import index="3hq4" ref="r:22e37fb0-8cf5-424c-a769-6983cf740d03(jetbrains.mps.kotlin.baseLanguage.toJava)" />
-    <import index="d5k6" ref="r:e9005ea6-e4e0-4b7f-8b34-6e6513630cda(jetbrains.mps.kotlin.baseLanguage.typeConversion)" />
     <import index="vciu" ref="r:42fb31e7-122b-4950-aa58-2f5f6e5595ce(jetbrains.mps.kotlin.overloading)" />
     <import index="48vp" ref="r:c0bc7504-314a-4a6f-850a-c38847b9f916(jetbrains.mps.baseLanguage.kotlinRefs.structure)" />
     <import index="tpeh" ref="r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)" />
@@ -47,9 +46,6 @@
       <concept id="1197027756228" name="jetbrains.mps.baseLanguage.structure.DotExpression" flags="nn" index="2OqwBi">
         <child id="1197027771414" name="operand" index="2Oq$k0" />
         <child id="1197027833540" name="operation" index="2OqNvi" />
-      </concept>
-      <concept id="1201385106094" name="jetbrains.mps.baseLanguage.structure.PropertyReference" flags="nn" index="2S8uIT">
-        <reference id="1201385237847" name="property" index="2S8YL0" />
       </concept>
       <concept id="1145552977093" name="jetbrains.mps.baseLanguage.structure.GenericNewExpression" flags="nn" index="2ShNRf">
         <child id="1145553007750" name="creator" index="2ShVmc" />
@@ -612,24 +608,6 @@
           </node>
         </node>
       </node>
-      <node concept="3cpWs8" id="UG7NftNApb" role="3cqZAp">
-        <node concept="3cpWsn" id="UG7NftNApc" role="3cpWs9">
-          <property role="TrG5h" value="converter" />
-          <property role="3TUv4t" value="true" />
-          <node concept="3uibUv" id="UG7NftNApd" role="1tU5fm">
-            <ref role="3uigEE" to="3hq4:4mCQDm_xBe4" resolve="KtToJavaEngine" />
-          </node>
-          <node concept="2OqwBi" id="UG7NftNBQR" role="33vP2m">
-            <node concept="2YIFZM" id="UG7NftNBKa" role="2Oq$k0">
-              <ref role="37wK5l" to="d5k6:4mCQDm_CkK3" resolve="getInstance" />
-              <ref role="1Pybhc" to="d5k6:4mCQDm_yPpU" resolve="TypeConversionService" />
-            </node>
-            <node concept="2S8uIT" id="UG7NftNC2S" role="2OqNvi">
-              <ref role="2S8YL0" to="d5k6:4mCQDm__arN" resolve="ktToJava" />
-            </node>
-          </node>
-        </node>
-      </node>
       <node concept="3clFbJ" id="hDpTC2h" role="3cqZAp">
         <node concept="3clFbS" id="hDpTC2i" role="3clFbx">
           <node concept="3cpWs6" id="hDpTC2j" role="3cqZAp" />
@@ -924,23 +902,19 @@
                       <node concept="3Tqbb2" id="UG7NftNJAH" role="1tU5fm">
                         <ref role="ehGHo" to="tpee:fz3vP1H" resolve="Type" />
                       </node>
-                      <node concept="2OqwBi" id="UG7NftNJVd" role="33vP2m">
-                        <node concept="37vLTw" id="UG7NftNJVe" role="2Oq$k0">
-                          <ref role="3cqZAo" node="UG7NftNApc" resolve="converter" />
-                        </node>
-                        <node concept="liA8E" id="UG7NftNJVf" role="2OqNvi">
-                          <ref role="37wK5l" to="d5k6:4mCQDm_nsqr" resolve="convert" />
-                          <node concept="2OqwBi" id="41naeX0wbDT" role="37wK5m">
-                            <node concept="2OqwBi" id="UG7NftNJVg" role="2Oq$k0">
-                              <node concept="2GrUjf" id="UG7NftNJVh" role="2Oq$k0">
-                                <ref role="2Gs0qQ" node="4AlsPjIm_AS" resolve="tvd" />
-                              </node>
-                              <node concept="liA8E" id="41naeX0w9V5" role="2OqNvi">
-                                <ref role="37wK5l" to="1p8r:4W0pdSCLAuW" resolve="getUpperBounds" />
-                              </node>
+                      <node concept="2YIFZM" id="117xv0QumXD" role="33vP2m">
+                        <ref role="37wK5l" to="3hq4:77yS8CrUKRi" resolve="convert" />
+                        <ref role="1Pybhc" to="3hq4:117xv0Qrpm9" resolve="KtToJavaConversion" />
+                        <node concept="2OqwBi" id="41naeX0wbDT" role="37wK5m">
+                          <node concept="2OqwBi" id="UG7NftNJVg" role="2Oq$k0">
+                            <node concept="2GrUjf" id="UG7NftNJVh" role="2Oq$k0">
+                              <ref role="2Gs0qQ" node="4AlsPjIm_AS" resolve="tvd" />
                             </node>
-                            <node concept="1uHKPH" id="41naeX0we9N" role="2OqNvi" />
+                            <node concept="liA8E" id="41naeX0w9V5" role="2OqNvi">
+                              <ref role="37wK5l" to="1p8r:4W0pdSCLAuW" resolve="getUpperBounds" />
+                            </node>
                           </node>
+                          <node concept="1uHKPH" id="41naeX0we9N" role="2OqNvi" />
                         </node>
                       </node>
                     </node>
@@ -1339,9 +1313,11 @@
                   </node>
                   <node concept="3$u5V9" id="59BW1QZXn3O" role="2OqNvi">
                     <node concept="37Ijox" id="59BW1QZXn3P" role="23t8la">
-                      <ref role="37Ijqf" to="d5k6:4mCQDm_nsqr" resolve="convert" />
-                      <node concept="37vLTw" id="59BW1QZXpGb" role="wWaWy">
-                        <ref role="3cqZAo" node="UG7NftNApc" resolve="converter" />
+                      <ref role="37Ijqf" to="3hq4:77yS8CrUKRi" resolve="convert" />
+                      <node concept="2FaPjH" id="117xv0Quocd" role="wWaWy">
+                        <node concept="3uibUv" id="117xv0Quocb" role="2FaQuo">
+                          <ref role="3uigEE" to="3hq4:117xv0Qrpm9" resolve="KtToJavaConversion" />
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -1404,9 +1380,6 @@
                 </node>
                 <node concept="2qgKlT" id="UG7NftQFED" role="2OqNvi">
                   <ref role="37wK5l" to="w8y0:UG7NftRy8a" resolve="getFunctionReturnType" />
-                  <node concept="37vLTw" id="1t03WayRSXj" role="37wK5m">
-                    <ref role="3cqZAo" node="UG7NftNApc" resolve="converter" />
-                  </node>
                 </node>
               </node>
             </node>

@@ -19,12 +19,10 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 @Deprecated
 public class JavaClassFunctionReceiver implements FunctionReceiver {
   private final SNode myClassifier;
-  private final JavaToKtEngine myJavaToKt;
 
   @Deprecated
-  public JavaClassFunctionReceiver(SNode classifier, JavaToKtEngine javaToKt) {
+  public JavaClassFunctionReceiver(SNode classifier) {
     myClassifier = classifier;
-    myJavaToKt = javaToKt;
   }
   @Override
   public SNodeReference getClassifier() {
@@ -34,7 +32,7 @@ public class JavaClassFunctionReceiver implements FunctionReceiver {
   public Iterable<TypeParameterDeclaration> getTypeParameters() {
     return Sequence.fromIterable(IClassifier__BehaviorDescriptor.getTypeVariables_id6r77ob2URXZ.invoke(myClassifier)).select(new ISelector<SNode, JavaTypeParameterDeclaration>() {
       public JavaTypeParameterDeclaration select(SNode it) {
-        return new JavaTypeParameterDeclaration(it, myJavaToKt);
+        return new JavaTypeParameterDeclaration(it);
       }
     });
   }

@@ -4,6 +4,7 @@
   <uses language="l:fd392034-7849-419d-9071-12563d152375:jetbrains.mps.baseLanguage.closures" />
   <uses language="l:83888646-71ce-4f1c-9c53-c54016f6ad4f:jetbrains.mps.baseLanguage.collections" />
   <uses language="l:f2801650-65d5-424e-bb1b-463a8781b786:jetbrains.mps.baseLanguage.javadoc" />
+  <uses language="l:acfc188d-d5d6-4598-b370-6f4a983f05b2:jetbrains.mps.baseLanguage.methodReferences" />
   <uses language="l:a247e09e-2435-45ba-b8d2-07e93feba96a:jetbrains.mps.baseLanguage.tuples" />
   <uses language="l:df345b11-b8c7-4213-ac66-48d2a9b75d88:jetbrains.mps.baseLanguageInternal" />
   <uses language="l:aee9cad2-acd4-4608-aef2-0004f6a1cdbd:jetbrains.mps.lang.actions" />
@@ -134,10 +135,8 @@
     <classNode dependClassName="jetbrains.mps.kotlin.api.members.TypeExpander" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaDefaultConstructorDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaTypeParameterDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.ClassToClassEnum" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService" />
     <classNode dependClassName="jetbrains.mps.kotlin.javaRefs.behavior.JavaSignatures" />
     <classNode dependClassName="jetbrains.mps.kotlin.javaRefs.behavior.MembersPopulatingContextWrapper" />
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.SignatureFilter" />
@@ -179,7 +178,6 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.declaration.ParameterDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.ITypeArguments__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
@@ -211,7 +209,6 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.declaration.FunctionDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaDefaultConstructorDeclaration" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.CallReceiver" />
     <classNode dependClassName="jetbrains.mps.kotlin.overloading.Argument" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
@@ -267,8 +264,6 @@
     <classNode dependClassName="jetbrains.mps.kotlin.api.declaration.FunctionDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaDefaultConstructorDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
@@ -299,7 +294,6 @@
     <classNode dependClassName="jetbrains.mps.internal.collections.runtime.Sequence" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.declaration.FunctionDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.CallReceiver" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor" />
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.SignatureFilter" />
@@ -335,8 +329,6 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.declaration.FunctionDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.Assignable" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.CallReceiver" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.IFunctionCall__BehaviorDescriptor" />
@@ -369,7 +361,6 @@
     <classNode dependClassName="jetbrains.mps.kotlin.api.members.TypeExpander" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaDefaultConstructorDeclaration" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaMethodDeclaration" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaVariableHelper" />
     <classNode dependClassName="jetbrains.mps.kotlin.signatures.AccessorKind" />
     <classNode dependClassName="jetbrains.mps.kotlin.signatures.FunctionSignature" />
@@ -402,7 +393,6 @@
     <classNode dependClassName="jetbrains.mps.kotlin.api.types.identifiers.ClassTypeKey" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.types.identifiers.TypeKey" />
     <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaTypeParameterDeclaration" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />
@@ -426,7 +416,7 @@
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SConstructor" />
     <classNode dependClassName="jetbrains.mps.core.aspects.behaviour.api.SMethod" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService" />
+    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtConversion" />
     <classNode dependClassName="jetbrains.mps.kotlin.behavior.Assignable" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations" />
@@ -450,8 +440,7 @@
     <classNode dependClassName="jetbrains.mps.baseLanguage.scopes.Signature" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.members.SignatureCollector" />
     <classNode dependClassName="jetbrains.mps.kotlin.api.members.SuperTypesVisitor" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine" />
-    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService" />
+    <classNode dependClassName="jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtConversion" />
     <classNode dependClassName="jetbrains.mps.kotlin.javaRefs.behavior.JavaSignatures" />
     <classNode dependClassName="jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations" />
     <classNode dependClassName="jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory" />

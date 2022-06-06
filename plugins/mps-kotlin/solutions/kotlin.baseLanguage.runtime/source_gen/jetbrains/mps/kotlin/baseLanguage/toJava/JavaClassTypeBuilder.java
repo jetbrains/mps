@@ -5,7 +5,6 @@ package jetbrains.mps.kotlin.baseLanguage.toJava;
 import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConverter;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
-import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConverterEngine;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -17,7 +16,7 @@ public class JavaClassTypeBuilder implements TypeConverter<SNode, SNode> {
   }
 
   @Override
-  public SNode convert(SNode source, TypeConverterEngine<SNode, SNode> conversionEngine) {
+  public SNode convert(SNode source) {
     SNode clType = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"));
     clType.setReference(LINKS.classifier$cxMr, myTargetClass);
     return clType;

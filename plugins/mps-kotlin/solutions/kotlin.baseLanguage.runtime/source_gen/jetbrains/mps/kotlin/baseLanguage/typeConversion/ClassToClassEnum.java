@@ -5,12 +5,6 @@ package jetbrains.mps.kotlin.baseLanguage.typeConversion;
 import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.kotlin.api.builtins.BuiltIn;
-import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaToKtEngine;
-import jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaEngine;
-import jetbrains.mps.kotlin.baseLanguage.toKotlin.KotlinGenericClassBuilder;
-import jetbrains.mps.kotlin.baseLanguage.toJava.JavaGenericClassTypeBuilder;
-import jetbrains.mps.kotlin.baseLanguage.toKotlin.KotlinClassTypeBuilder;
-import jetbrains.mps.kotlin.baseLanguage.toJava.JavaClassTypeBuilder;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import java.util.Objects;
@@ -48,24 +42,12 @@ public enum ClassToClassEnum {
 
   public final SNodeReference kotlinPtr;
   public final SNodeReference javaPtr;
-  private boolean withGenerics;
+  public final boolean withGenerics;
 
   ClassToClassEnum(SNodeReference javaPointer, String kotlinType, boolean handleGenerics) {
     javaPtr = javaPointer;
     withGenerics = handleGenerics;
     kotlinPtr = BuiltIn.pointerOf(kotlinType);
-  }
-
-  public static void populate(JavaToKtEngine fromJava, KtToJavaEngine fromKt) {
-    for (ClassToClassEnum entry : ClassToClassEnum.values()) {
-      if (entry.withGenerics) {
-        fromJava.declareMapping(entry.javaPtr, new KotlinGenericClassBuilder(entry.kotlinPtr, false));
-        fromKt.declareMapping(entry.kotlinPtr, new JavaGenericClassTypeBuilder(entry.javaPtr));
-      } else {
-        fromJava.declareMapping(entry.javaPtr, new KotlinClassTypeBuilder(entry.kotlinPtr, false));
-        fromKt.declareMapping(entry.kotlinPtr, new JavaClassTypeBuilder(entry.javaPtr));
-      }
-    }
   }
 
   /**

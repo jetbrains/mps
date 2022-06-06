@@ -15,7 +15,7 @@ import java.util.Set;
 import java.util.Map;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.kotlin.baseLanguage.typeConversion.TypeConversionService;
+import jetbrains.mps.kotlin.baseLanguage.toJava.KtToJavaConversion;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import java.util.ArrayList;
@@ -52,7 +52,7 @@ public final class KotlinTypeParameterReference__BehaviorDescriptor extends Base
   }
 
   /*package*/ static SNode getConvertedBoundType_id4L0QGs2qXZf(@NotNull SNode __thisNode__) {
-    return TypeConversionService.getInstance().getKtToJava().convert(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeParameter$U125), LINKS.bound$KhhI));
+    return KtToJavaConversion.convert(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeParameter$U125), LINKS.bound$KhhI));
   }
   /*package*/ static SNode getErasure_idB1mAlA38Mq(@NotNull SNode __thisNode__) {
     if ((SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeParameter$U125), LINKS.bound$KhhI) != null)) {
