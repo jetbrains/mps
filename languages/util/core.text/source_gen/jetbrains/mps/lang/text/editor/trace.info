@@ -1693,8 +1693,8 @@
       <node id="6681408443911652802" at="98,0,102,0" concept="3" trace="AddNewLineAndSplitWordStrategy#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;Z)V" />
       <node id="6681408443911040070" at="109,0,113,0" concept="10" trace="createNewElement#()Lorg/jetbrains/mps/openapi/model/SNode;" />
       <node id="6681408443912114588" at="147,0,151,0" concept="3" trace="SplitWordStrategy#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;Z)V" />
-      <node id="6681408443910829228" at="28,146,33,5" concept="9" />
-      <node id="6681408443912274319" at="35,126,40,5" concept="9" />
+      <node id="6681408443910829228" at="28,141,33,5" concept="9" />
+      <node id="6681408443912274319" at="35,121,40,5" concept="9" />
       <node id="6681408443911501356" at="66,112,71,9" concept="22" />
       <node id="6681408443911520159" at="84,40,89,7" concept="9" />
       <node id="6681408443910774812" at="102,0,107,0" concept="10" trace="execute#()V" />
@@ -1776,8 +1776,8 @@
         <var name="editorContext" id="6681408443912114603" />
         <var name="word" id="6681408443912114601" />
       </scope>
-      <scope id="6681408443910824237" at="28,146,33,5" />
-      <scope id="6681408443912274318" at="35,126,40,5" />
+      <scope id="6681408443910824237" at="28,141,33,5" />
+      <scope id="6681408443912274318" at="35,121,40,5" />
       <scope id="6681408443911509055" at="84,40,89,7" />
       <scope id="6681408443910774812" at="102,0,107,0" />
       <scope id="6681408443910881591" at="119,0,124,0">

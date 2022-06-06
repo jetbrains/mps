@@ -20,19 +20,19 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 
-/*package*/ class NewElementStrategyFactory {
+public class NewElementStrategyFactory {
 
   private NewElementStrategyFactory() {
   }
 
-  /*package*/ static TextStrategy createNewLineStrategy(SNode node, EditorContext editorContext, boolean selectNewLine, boolean isFirstPosition) {
+  public static TextStrategy createNewLineStrategy(SNode node, EditorContext editorContext, boolean selectNewLine, boolean isFirstPosition) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.Word$Dn)) {
       return new AddNewLineAndSplitWordStrategy(SNodeOperations.cast(node, CONCEPTS.Word$Dn), editorContext, selectNewLine);
     } else {
       return new AddNewLineStrategy(node, editorContext, selectNewLine, isFirstPosition);
     }
   }
-  /*package*/ static TextStrategy createNewElementStrategy(SNode node, EditorContext editorContext, boolean isFirstPosition) {
+  public static TextStrategy createNewElementStrategy(SNode node, EditorContext editorContext, boolean isFirstPosition) {
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.Word$Dn)) {
       return new SplitWordStrategy(SNodeOperations.cast(node, CONCEPTS.Word$Dn), editorContext, !(isFirstPosition));
     } else {
