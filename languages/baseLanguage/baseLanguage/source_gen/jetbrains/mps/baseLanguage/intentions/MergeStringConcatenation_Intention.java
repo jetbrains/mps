@@ -53,7 +53,7 @@ public final class MergeStringConcatenation_Intention extends AbstractIntentionD
 
     @Override
     public String getDescription(final SNode node, final EditorContext editorContext) {
-      return "Merge String Concatination";
+      return "Merge String Constants";
     }
 
     @Override
