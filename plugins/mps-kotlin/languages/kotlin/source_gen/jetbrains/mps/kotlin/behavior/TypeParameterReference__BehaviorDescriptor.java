@@ -60,6 +60,9 @@ public final class TypeParameterReference__BehaviorDescriptor extends BaseBHDesc
     return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.parameter$ofYr), PROPS.name$MnvL);
   }
   /*package*/ static TypeParameterDeclaration getParameter_id4W0pdSD7eWM(@NotNull SNode __thisNode__) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.parameter$ofYr) == null)) {
+      return null;
+    }
     return ITypeParameter__BehaviorDescriptor.getDescriptor_id28CvMylflrH.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.parameter$ofYr));
   }
   /*package*/ static TypeKey shallowId_idJmO2PmZtH5(@NotNull SNode __thisNode__) {

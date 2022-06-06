@@ -42,7 +42,6 @@
   </dependency>
   <dependency className="jetbrains.mps.kotlin.ide.commonStubs.AnnotationVisitorImpl">
     <classNode dependClassName="java.lang.Boolean" />
-    <classNode dependClassName="java.lang.Integer" />
     <classNode dependClassName="java.lang.Override" />
     <classNode dependClassName="java.lang.String" />
     <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />

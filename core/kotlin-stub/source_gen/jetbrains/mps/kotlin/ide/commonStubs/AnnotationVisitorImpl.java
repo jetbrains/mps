@@ -66,11 +66,13 @@ public class AnnotationVisitorImpl implements AnnotationVisitor {
         return createCharLiteral_l27wj3_a0a1c0a0k(lit.getValue().toString());
       } else if (lit instanceof KmAnnotationArgument.DoubleValue || lit instanceof KmAnnotationArgument.FloatValue) {
         return createRealLiteral_l27wj3_a0a2c0a0k(lit.getValue().toString());
-      } else if (lit instanceof KmAnnotationArgument.LongValue || lit instanceof KmAnnotationArgument.ULongValue) {
-        return createLongLiteral_l27wj3_a0a3c0a0k(lit.getValue().toString());
       } else {
-        // short, int, byte, ushort, uint, ubyte
-        return createIntegerLiteral_l27wj3_a1a0c0a0k((Integer) lit.getValue());
+        // short, int, byte, long, ushort, uint, ubyte, ulong
+        boolean uLong = lit instanceof KmAnnotationArgument.ULongValue;
+        boolean unsigned = lit instanceof KmAnnotationArgument.UShortValue || lit instanceof KmAnnotationArgument.UIntValue || lit instanceof KmAnnotationArgument.UByteValue || uLong;
+
+        // TODO is "u" and "L" included in string? that could simplify conditions
+        return createIntegerLiteral_l27wj3_a5a0c0a0k(lit.getValue().toString(), uLong || lit instanceof KmAnnotationArgument.LongValue, unsigned);
       }
     } else if (arg instanceof KmAnnotationArgument.KClassValue) {
       KmAnnotationArgument.KClassValue value = (KmAnnotationArgument.KClassValue) arg;
@@ -152,17 +154,14 @@ public class AnnotationVisitorImpl implements AnnotationVisitor {
   }
   private static SNode createRealLiteral_l27wj3_a0a2c0a0k(String p0) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.RealLiteral$jh);
-    n0.setProperty(PROPS.real$xbkW, p0);
+    n0.setProperty(PROPS.value$xbkW, p0);
     return n0.getResult();
   }
-  private static SNode createLongLiteral_l27wj3_a0a3c0a0k(String p0) {
-    SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.LongLiteral$kf);
-    n0.setProperty(PROPS.value$xbNW, p0);
-    return n0.getResult();
-  }
-  private static SNode createIntegerLiteral_l27wj3_a1a0c0a0k(int p0) {
+  private static SNode createIntegerLiteral_l27wj3_a5a0c0a0k(String p0, boolean p1, boolean p2) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.IntegerLiteral$7a);
-    n0.setProperty(PROPS.value$x4lo, "" + (p0));
+    n0.setProperty(PROPS.value$x4lo, p0);
+    n0.setProperty(PROPS.long$1NZg, "" + (p1));
+    n0.setProperty(PROPS.unsigned$iUpc, "" + (p2));
     return n0.getResult();
   }
   private static SNode createMemberNavigationOperation_l27wj3_a2a0a0k(SNode p0) {
@@ -211,7 +210,6 @@ public class AnnotationVisitorImpl implements AnnotationVisitor {
     /*package*/ static final SConcept StringLiteralRaw$ar = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790af28ddL, "jetbrains.mps.kotlin.structure.StringLiteralRaw");
     /*package*/ static final SConcept CharLiteral$iM = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d3L, "jetbrains.mps.kotlin.structure.CharLiteral");
     /*package*/ static final SConcept RealLiteral$jh = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d4L, "jetbrains.mps.kotlin.structure.RealLiteral");
-    /*package*/ static final SConcept LongLiteral$kf = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d6L, "jetbrains.mps.kotlin.structure.LongLiteral");
     /*package*/ static final SConcept IntegerLiteral$7a = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d0L, "jetbrains.mps.kotlin.structure.IntegerLiteral");
     /*package*/ static final SConcept MemberNavigationOperation$7I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, "jetbrains.mps.kotlin.structure.MemberNavigationOperation");
     /*package*/ static final SConcept ReceiverType$$f = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af541L, "jetbrains.mps.kotlin.structure.ReceiverType");
@@ -224,8 +222,9 @@ public class AnnotationVisitorImpl implements AnnotationVisitor {
     /*package*/ static final SProperty value$x3QR = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3cfL, 0x28bef6d7551af681L, "value");
     /*package*/ static final SProperty content$3$6V = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790af28ddL, 0x11400bb790af28deL, "content");
     /*package*/ static final SProperty value$xaQr = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d3L, 0x28bef6d7551af689L, "value");
-    /*package*/ static final SProperty real$xbkW = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d4L, 0x28bef6d7551af68bL, "real");
-    /*package*/ static final SProperty value$xbNW = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d6L, 0x28bef6d7551af68dL, "value");
+    /*package*/ static final SProperty value$xbkW = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d4L, 0x28bef6d7551af68bL, "value");
     /*package*/ static final SProperty value$x4lo = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3d0L, 0x28bef6d7551af683L, "value");
+    /*package*/ static final SProperty long$1NZg = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4708606L, 0x4a002b656d67aa05L, "long");
+    /*package*/ static final SProperty unsigned$iUpc = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4708606L, 0x4a002b656d675c88L, "unsigned");
   }
 }

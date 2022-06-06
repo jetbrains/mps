@@ -133,6 +133,12 @@
     <classNode dependClassName="jetbrains.mps.kotlin.scopes.signed.SignatureScope" />
     <classNode extendsClassName="jetbrains.mps.kotlin.scopes.signed.CompositeSignatureScope" />
   </dependency>
+  <dependency className="jetbrains.mps.kotlin.scopes.signed.ImplicitReceiverSignatureScope">
+    <classNode dependClassName="java.lang.Override" />
+    <classNode dependClassName="jetbrains.mps.kotlin.scopes.signed.SignatureScope" />
+    <classNode dependClassName="org.jetbrains.mps.openapi.model.SNode" />
+    <classNode extendsClassName="jetbrains.mps.kotlin.scopes.signed.DelegatedSignatureScope" />
+  </dependency>
   <dependency className="jetbrains.mps.kotlin.scopes.signed.InstanceSignatureScope">
     <classNode dependClassName="java.lang.Iterable" />
     <classNode dependClassName="java.lang.Override" />

@@ -43,7 +43,7 @@ public final class StarProjection__BehaviorDescriptor extends BaseBHDescriptor {
       // For <out T : bound> and <T : bound> it translates to <out bound> when producing, for the invariant it translates to <in Nothing> when consuming
       List<SNode> upperBounds = parameter.getUpperBounds();
       if (ListSequence.fromList(upperBounds).isNotEmpty()) {
-        // TODO union type
+        // TODO union type?
         return ListSequence.fromList(upperBounds).first();
       } else {
         SNode any = BuiltIn.ANY.toClassType();

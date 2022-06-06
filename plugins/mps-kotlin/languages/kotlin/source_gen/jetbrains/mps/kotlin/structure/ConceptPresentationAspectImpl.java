@@ -1383,7 +1383,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
         if (props_IndexOperation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("indexing suffix");
-          cpb.rawPresentation("[]");
+          cpb.rawPresentation("[");
           props_IndexOperation = cpb.create();
         }
         return props_IndexOperation;

@@ -1958,7 +1958,7 @@
   <node concept="1TIwiD" id="2yYXHtl6Jlm">
     <property role="EcuMT" value="2936055411798373718" />
     <property role="TrG5h" value="IndexOperation" />
-    <property role="34LRSv" value="[]" />
+    <property role="34LRSv" value="[" />
     <property role="R4oN_" value="indexing suffix" />
     <property role="3GE5qa" value="expression.operator.overloaded.postfix" />
     <ref role="1TJDcQ" node="1VI7K1jTpUf" resolve="OverloadedPostfixUnaryExpression" />
@@ -2079,7 +2079,7 @@
     <node concept="1TJgyj" id="4gvOB2uQuya" role="1TKVEi">
       <property role="IQ2ns" value="4908873500000381066" />
       <property role="20kJfa" value="targetType" />
-      <ref role="20lvS9" node="2yYXHtlhVlH" resolve="IClassDeclaration" />
+      <ref role="20lvS9" node="xpyqH1FtXg" resolve="IThisReceiverProvider" />
     </node>
     <node concept="1TJgyj" id="6cg9X74hNsD" role="1TKVEi">
       <property role="IQ2ns" value="7138249191276885801" />
@@ -3409,21 +3409,21 @@
     <property role="R4oN_" value="call expression" />
     <property role="3GE5qa" value="expression.function.call.regular" />
     <ref role="1TJDcQ" node="2yYXHtl6JgZ" resolve="AbstractFunctionCall" />
-    <node concept="1TJgyi" id="6Ijh6DJ$6x9" role="1TKVEl">
-      <property role="IQ2nx" value="7751614607563712585" />
-      <property role="TrG5h" value="receiverIndex" />
-      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
+    <node concept="PrWs8" id="42OKUkNAA_U" role="PzmwI">
+      <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
+    </node>
+    <node concept="t5JxF" id="42OKUkNAAA0" role="lGtFl">
+      <property role="t5JxN" value="direct call of a function without receiver" />
     </node>
     <node concept="1TJgyj" id="6Ijh6DJ$60I" role="1TKVEi">
       <property role="IQ2ns" value="7751614607563710510" />
       <property role="20kJfa" value="receiver" />
       <ref role="20lvS9" node="xpyqH1FtXg" resolve="IThisReceiverProvider" />
     </node>
-    <node concept="PrWs8" id="42OKUkNAA_U" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
-    </node>
-    <node concept="t5JxF" id="42OKUkNAAA0" role="lGtFl">
-      <property role="t5JxN" value="direct call of a function without receiver" />
+    <node concept="1TJgyi" id="6Ijh6DJ$6x9" role="1TKVEl">
+      <property role="IQ2nx" value="7751614607563712585" />
+      <property role="TrG5h" value="receiverIndex" />
+      <ref role="AX2Wp" to="tpck:fKAQMTA" resolve="integer" />
     </node>
   </node>
   <node concept="PlHQZ" id="7Iv8Cw7qLdE">
@@ -3693,9 +3693,6 @@
     <node concept="PrWs8" id="6ZbwqG7P3q7" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jl2" resolve="INullableType" />
     </node>
-    <node concept="PrWs8" id="6ZbwqG7P3qe" role="PzmwI">
-      <ref role="PrY4T" node="5GtPw5yMnlT" resolve="IProjectedTypeArguments" />
-    </node>
     <node concept="1TJgyj" id="6ZbwqG7RoSx" role="1TKVEi">
       <property role="IQ2ns" value="8055674930053615137" />
       <property role="20kJfa" value="typeAlias" />
@@ -3704,6 +3701,9 @@
     </node>
     <node concept="RPilO" id="5L2mPNELWUV" role="lGtFl">
       <ref role="RPilL" node="6ZbwqG7RoSx" resolve="typeAlias" />
+    </node>
+    <node concept="PrWs8" id="6ZbwqG7P3qe" role="PzmwI">
+      <ref role="PrY4T" node="5GtPw5yMnlT" resolve="IProjectedTypeArguments" />
     </node>
   </node>
   <node concept="1TIwiD" id="4f4W8JpN2Yc">

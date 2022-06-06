@@ -12,22 +12,44 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.editor.menus.substitute.ConstraintsFilteringSubstituteMenuPartDecorator;
 import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuPart;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
-import jetbrains.mps.lang.editor.menus.substitute.ReferenceScopeSubstituteMenuItem;
+import jetbrains.mps.lang.editor.menus.ParameterizedMenuPart;
+import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.kotlin.scopes.signed.ImplicitReceiverSignatureScope;
+import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.kotlin.behavior.IFunctionCall__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
+import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
+import jetbrains.mps.internal.collections.runtime.ITranslator2;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import jetbrains.mps.kotlin.api.members.SourcedSignature;
+import jetbrains.mps.lang.editor.menus.substitute.SingleItemSubstituteMenuPart;
+import org.apache.log4j.Logger;
+import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
-import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
 import jetbrains.mps.kotlin.behavior.IFunctionDeclaration__BehaviorDescriptor;
+import jetbrains.mps.smodel.presentation.NodePresentationUtil;
+import jetbrains.mps.smodel.runtime.IconResource;
+import jetbrains.mps.smodel.runtime.IconResourceUtil;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 
 public class FunctionCallExpression_SubstituteMenu extends SubstituteMenuBase {
   @NotNull
   @Override
   protected List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> getParts(final SubstituteMenuContext _context) {
     List<MenuPart<SubstituteMenuItem, SubstituteMenuContext>> result = new ArrayList<MenuPart<SubstituteMenuItem, SubstituteMenuContext>>();
-    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_ReferenceScope_lm8z5h_a(), CONCEPTS.FunctionCallExpression$EQ));
+    result.add(new ConstraintsFilteringSubstituteMenuPartDecorator(new SMP_Param_lm8z5h_a(), CONCEPTS.FunctionCallExpression$EQ));
     return result;
   }
 
@@ -44,61 +66,140 @@ public class FunctionCallExpression_SubstituteMenu extends SubstituteMenuBase {
   }
 
 
-  public class SMP_ReferenceScope_lm8z5h_a extends ReferenceScopeSubstituteMenuPart {
-
-    public SMP_ReferenceScope_lm8z5h_a() {
-      // that cast is needed for prevent the users from https://youtrack.jetbrains.com/issue/MPS-29051
-      super((SAbstractConcept) CONCEPTS.FunctionCallExpression$EQ, LINKS.function$Weyv);
+  private class SMP_Param_lm8z5h_a extends ParameterizedMenuPart<Tuples._2<SNode, ImplicitReceiverSignatureScope>, SubstituteMenuItem, SubstituteMenuContext> {
+    @NotNull
+    @Override
+    protected List<SubstituteMenuItem> createItems(Tuples._2<SNode, ImplicitReceiverSignatureScope> parameter, SubstituteMenuContext context) {
+      return new SMP_Action_lm8z5h_a0(parameter).createItems(context);
     }
     @NotNull
     @Override
-    public List<SubstituteMenuItem> createItems(SubstituteMenuContext context) {
+    public List<SubstituteMenuItem> createItems(@NotNull SubstituteMenuContext context) {
       context.getEditorMenuTrace().pushTraceInfo();
-      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("reference scope substitute menu part", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "8625556777609171210")));
+      context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("parameterized substitute menu part", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1472658291507489989")));
       try {
         return super.createItems(context);
       } finally {
         context.getEditorMenuTrace().popTraceInfo();
       }
     }
-
+    @Nullable
     @Override
-    @NotNull
-    protected ReferenceScopeSubstituteMenuItem createItem(SubstituteMenuContext context, SNode referencedNode) {
-      return new Item(context, referencedNode, getSConcept(), getReferenceLink());
-    }
-    private class Item extends ReferenceScopeSubstituteMenuItem {
-      private final SubstituteMenuContext _context;
-      private final SNode referencedNode;
-      private EditorMenuTraceInfo myTraceInfo;
+    protected Iterable<? extends Tuples._2<SNode, ImplicitReceiverSignatureScope>> getParameters(SubstituteMenuContext _context) {
+      // Only parent node used
+      return Sequence.fromIterable(IFunctionCall__BehaviorDescriptor.getFunctionScopeParts_id6dAo8EmAhT7.invoke(SNodeOperations.asSConcept(CONCEPTS.FunctionCallExpression$EQ), null, _context.getParentNode(), null)).select(new ISelector<SignatureScope, Tuples._2<SignatureScope, ImplicitReceiverSignatureScope>>() {
+        public Tuples._2<SignatureScope, ImplicitReceiverSignatureScope> select(SignatureScope it) {
+          ImplicitReceiverSignatureScope scope = (it instanceof ImplicitReceiverSignatureScope ? ((ImplicitReceiverSignatureScope) it) : null);
 
-      private Item(SubstituteMenuContext context, SNode refNode, SAbstractConcept concept, SReferenceLink referenceLink) {
-        super(concept, context, refNode, referenceLink);
-        _context = context;
-        referencedNode = refNode;
-        myTraceInfo = context.getEditorMenuTrace().getTraceInfo();
-      }
-      @Override
-      public String getMatchingText(String pattern) {
-        return (String) IFunctionDeclaration__BehaviorDescriptor.getFunctionPresentation_id7uO8z1BmwrX.invoke(referencedNode, ((boolean) false));
-      }
-      @Override
-      public String getVisibleMatchingText(String pattern) {
-        return getMatchingText(pattern);
+          return MultiTuple.<SignatureScope,ImplicitReceiverSignatureScope>from(it, scope);
+        }
+      }).translate(new ITranslator2<Tuples._2<SignatureScope, ImplicitReceiverSignatureScope>, Tuples._2<SNode, ImplicitReceiverSignatureScope>>() {
+        public Iterable<Tuples._2<SNode, ImplicitReceiverSignatureScope>> translate(final Tuples._2<SignatureScope, ImplicitReceiverSignatureScope> it) {
+          return Sequence.fromIterable(it._0().getElements(null)).where(new IWhereFilter<SourcedSignature>() {
+            public boolean accept(SourcedSignature it) {
+              return SNodeOperations.isInstanceOf(it.getSource(), CONCEPTS.IFunctionDeclaration$ZB);
+            }
+          }).select(new ISelector<SourcedSignature, Tuples._2<SNode, ImplicitReceiverSignatureScope>>() {
+            public Tuples._2<SNode, ImplicitReceiverSignatureScope> select(SourcedSignature sig) {
+              return MultiTuple.<SNode,ImplicitReceiverSignatureScope>from(SNodeOperations.as(sig.getSource(), CONCEPTS.IFunctionDeclaration$ZB), it._1());
+            }
+          });
+        }
+      });
+    }
+    private class SMP_Action_lm8z5h_a0 extends SingleItemSubstituteMenuPart {
+      private final Tuples._2<SNode, ImplicitReceiverSignatureScope> myParameterObject;
+      public SMP_Action_lm8z5h_a0(Tuples._2<SNode, ImplicitReceiverSignatureScope> parameterObject) {
+        myParameterObject = parameterObject;
       }
 
+      @Nullable
       @Override
-      public EditorMenuTraceInfo getTraceInfo() {
-        return myTraceInfo;
+      protected SubstituteMenuItem createItem(SubstituteMenuContext _context) {
+        Item item = new Item(_context);
+        String description;
+        try {
+          description = "Substitute item: " + item.getMatchingText("");
+          description += ". Parameter object: " + myParameterObject;
+        } catch (Throwable t) {
+          Logger.getLogger(getClass()).error("Exception while executing getMatchingText() of the item " + item, t);
+          return null;
+        }
+
+        _context.getEditorMenuTrace().pushTraceInfo();
+        try {
+          _context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "1472658291507546026")));
+          item.setTraceInfo(_context.getEditorMenuTrace().getTraceInfo());
+        } finally {
+          _context.getEditorMenuTrace().popTraceInfo();
+        }
+
+        return item;
+      }
+      private class Item extends DefaultSubstituteMenuItem {
+        private final SubstituteMenuContext _context;
+        private EditorMenuTraceInfo myTraceInfo;
+        public Item(SubstituteMenuContext context) {
+          super(CONCEPTS.FunctionCallExpression$EQ, context);
+          _context = context;
+        }
+
+        private void setTraceInfo(EditorMenuTraceInfo traceInfo) {
+          myTraceInfo = traceInfo;
+        }
+
+        @Nullable
+        @Override
+        public SNode createNode(@NotNull String pattern) {
+          SNode call = SNodeFactoryOperations.createNewNode(CONCEPTS.FunctionCallExpression$EQ, _context.getCurrentTargetNode());
+          SLinkOperations.setTarget(call, LINKS.function$Weyv, myParameterObject._0());
+          ImplicitReceiverSignatureScope receiver = myParameterObject._1();
+          if (receiver != null) {
+            SLinkOperations.setTarget(call, LINKS.receiver$fya4, receiver.getProvider());
+            SPropertyOperations.assign(call, PROPS.receiverIndex$ELkw, receiver.getProviderReceiverIndex());
+          }
+          return call;
+        }
+
+        @Override
+        public EditorMenuTraceInfo getTraceInfo() {
+          return myTraceInfo;
+        }
+        @NotNull
+        protected CompletionItemInformation createInformation(String pattern) {
+          return new CompletionItemInformation(myParameterObject, CONCEPTS.FunctionCallExpression$EQ, getMatchingText(pattern), getDescriptionText(pattern));
+        }
+        @Nullable
+        @Override
+        public String getMatchingText(@NotNull String pattern) {
+          return (String) IFunctionDeclaration__BehaviorDescriptor.getFunctionPresentation_id7uO8z1BmwrX.invoke(myParameterObject._0(), ((boolean) false));
+        }
+        @Nullable
+        @Override
+        public String getDescriptionText(@NotNull String pattern) {
+          return "^" + NodePresentationUtil.descriptionText(myParameterObject._0());
+        }
+        @Nullable
+        @Override
+        public IconResource getIcon(@NotNull String pattern) {
+          return IconResourceUtil.getIconResourceForNode(myParameterObject._0());
+        }
       }
     }
+
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept FunctionCallExpression$EQ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x40b4c3a5339a6979L, "jetbrains.mps.kotlin.structure.FunctionCallExpression");
+    /*package*/ static final SInterfaceConcept IFunctionDeclaration$ZB = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2a5d3409768d2f2bL, "jetbrains.mps.kotlin.structure.IFunctionDeclaration");
   }
 
   private static final class LINKS {
     /*package*/ static final SReferenceLink function$Weyv = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af43fL, 0x1ba36e493d8ad4e9L, "function");
+    /*package*/ static final SReferenceLink receiver$fya4 = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x40b4c3a5339a6979L, 0x6b93446a6f90602eL, "receiver");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty receiverIndex$ELkw = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x40b4c3a5339a6979L, 0x6b93446a6f906849L, "receiverIndex");
   }
 }

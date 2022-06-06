@@ -16,6 +16,36 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081236700938:jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1178893518978:jetbrains.mps.baseLanguage.structure.ThisConstructorInvocation" />
+  <root nodeRef="r:8a99441d-539c-493f-b884-7b6b084d024b(jetbrains.mps.kotlin.scopes.signed)/1472658291507935929">
+    <file name="ImplicitReceiverSignatureScope.java">
+      <node id="1472658291507941033" at="8,0,9,0" concept="4" trace="myActualScope" />
+      <node id="1472658291507941541" at="9,0,10,0" concept="4" trace="myProvider" />
+      <node id="1472658291507942018" at="10,0,11,0" concept="4" trace="myProviderReceiverIndex" />
+      <node id="1472658291507941037" at="12,112,13,32" concept="3" />
+      <node id="1472658291507941545" at="13,32,14,26" concept="3" />
+      <node id="1472658291507942022" at="14,26,15,52" concept="3" />
+      <node id="1472658291507944953" at="19,41,20,25" concept="9" />
+      <node id="1472658291507946615" at="23,30,24,27" concept="9" />
+      <node id="1472658291507946623" at="27,41,28,40" concept="9" />
+      <node id="1472658291507946611" at="23,0,26,0" concept="7" trace="getProvider#()Lorg/jetbrains/mps/openapi/model/SNode;" />
+      <node id="1472658291507946619" at="27,0,30,0" concept="7" trace="getProviderReceiverIndex#()I" />
+      <node id="1472658291507938104" at="18,0,22,0" concept="7" trace="buildScope#()Ljetbrains/mps/kotlin/scopes/signed/SignatureScope;" />
+      <node id="1472658291507938674" at="12,0,17,0" concept="1" trace="ImplicitReceiverSignatureScope#(Ljetbrains/mps/kotlin/scopes/signed/SignatureScope;Lorg/jetbrains/mps/openapi/model/SNode;I)V" />
+      <scope id="1472658291507938111" at="19,41,20,25" />
+      <scope id="1472658291507946614" at="23,30,24,27" />
+      <scope id="1472658291507946622" at="27,41,28,40" />
+      <scope id="1472658291507938678" at="12,112,15,52" />
+      <scope id="1472658291507946611" at="23,0,26,0" />
+      <scope id="1472658291507946619" at="27,0,30,0" />
+      <scope id="1472658291507938104" at="18,0,22,0" />
+      <scope id="1472658291507938674" at="12,0,17,0">
+        <var name="actualScope" id="1472658291507939092" />
+        <var name="provider" id="1472658291507939425" />
+        <var name="providerReceiverIndex" id="1472658291507939936" />
+      </scope>
+      <unit id="1472658291507935929" at="7,0,31,0" name="jetbrains.mps.kotlin.scopes.signed.ImplicitReceiverSignatureScope" />
+    </file>
+  </root>
   <root nodeRef="r:8a99441d-539c-493f-b884-7b6b084d024b(jetbrains.mps.kotlin.scopes.signed)/1596883432265778521">
     <file name="KindPriorityPropertyScope.java">
       <node id="1596883432265806132" at="29,0,30,0" concept="4" trace="nestedScope" />

@@ -2379,7 +2379,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373718");
     b.version(3);
     b.aggregate("indexes", 0x28bef6d7551af8e3L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L).optional(false).ordered(true).multiple(true).origin("2936055411798374627").done();
-    b.alias("[]");
+    b.alias("[");
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForInfixCallOperator() {
@@ -3208,7 +3208,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4d0L);
     b.origin("r:72a7bf00-0175-42ca-b99b-fe8519b6a16f(jetbrains.mps.kotlin.structure)/2936055411798373751");
     b.version(3);
-    b.associate("targetType", 0x441fd2709ed9e88aL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b56dL).optional(true).origin("4908873500000381066").done();
+    b.associate("targetType", 0x441fd2709ed9e88aL).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x85989ab41addf50L).optional(true).origin("4908873500000381066").done();
     b.associate("targetLabel", 0x631027d1c4473729L).target(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b56dL).optional(true).origin("7138249191276885801").done();
     b.alias("super");
     return b.create();

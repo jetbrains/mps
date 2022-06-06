@@ -17,6 +17,12 @@ import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageKeyPack_KeyPack.DOT_StyleKey;
 import jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.KeyWordStyleClass;
 import jetbrains.mps.kotlin.editor.KotlinKeyPack_KeyPack.DEFAULT_INSTANCE_FIELD_StyleKey;
+import jetbrains.mps.kotlin.editor.KotlinKeyPack_KeyPack.LINE_COMMENT_StyleKey;
+import jetbrains.mps.kotlin.editor.KotlinKeyPack_KeyPack.TODO_StyleKey;
+import jetbrains.mps.kotlin.behavior.Comment__BehaviorDescriptor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SConcept;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 public class KotlinStyles_StyleSheet {
   /**
@@ -168,6 +174,16 @@ public class KotlinStyles_StyleSheet {
     SNode node = (editorCell == null ? null : editorCell.getSNode());
     EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
     new CommentStyleClass(editorContext, node).apply(style, editorCell);
+  }
+  /**
+   * 
+   * @deprecated Since MPS 3.5 use generated StyleClass
+   */
+  @Deprecated
+  public static void apply_TODO(Style style, EditorCell editorCell) {
+    SNode node = (editorCell == null ? null : editorCell.getSNode());
+    EditorContext editorContext = (editorCell == null ? null : editorCell.getContext());
+    new TODOStyleClass(editorContext, node).apply(style, editorCell);
   }
   /**
    * 
@@ -345,9 +361,25 @@ public class KotlinStyles_StyleSheet {
 
     @Override
     public void apply(Style style, EditorCell editorCell) {
-      new jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.CommentStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+      new LINE_COMMENT_StyleKey(1).apply(style);
     }
 
+  }
+  public static class TODOStyleClass extends AbstractStyleClass {
+    public TODOStyleClass(EditorContext editorContext, SNode node) {
+      super(editorContext, node);
+    }
+
+    @Override
+    public void apply(Style style, EditorCell editorCell) {
+      if (_StyleParameter_QueryFunction_yizz5d_a0p()) {
+        new TODO_StyleKey(2).apply(style);
+      }
+    }
+
+    private boolean _StyleParameter_QueryFunction_yizz5d_a0p() {
+      return (boolean) Comment__BehaviorDescriptor.isTodo_id6CwBo1Z9RMC.invoke(SNodeOperations.as(getNode(), CONCEPTS.Comment$hf));
+    }
   }
   public static class AnnotationStyleClass extends AbstractStyleClass {
     public AnnotationStyleClass(EditorContext editorContext, SNode node) {
@@ -359,5 +391,9 @@ public class KotlinStyles_StyleSheet {
       new jetbrains.mps.baseLanguage.editor.BaseLanguageStyle_StyleSheet.AnnotationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     }
 
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept Comment$hf = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x661f917376e93866L, "jetbrains.mps.kotlin.structure.Comment");
   }
 }

@@ -210,9 +210,6 @@
       <concept id="2329696648445392942" name="jetbrains.mps.lang.typesystem.structure.CheckingRuleReference" flags="ng" index="dlsrG">
         <reference id="2329696648445392943" name="declaration" index="dlsrH" />
       </concept>
-      <concept id="1185788614172" name="jetbrains.mps.lang.typesystem.structure.NormalTypeClause" flags="ng" index="mw_s8">
-        <child id="1185788644032" name="normalType" index="mwGJk" />
-      </concept>
       <concept id="1175517767210" name="jetbrains.mps.lang.typesystem.structure.ReportErrorStatement" flags="nn" index="2MkqsV">
         <child id="1175517851849" name="errorString" index="2MkJ7o" />
       </concept>
@@ -251,20 +248,11 @@
       <concept id="1174642788531" name="jetbrains.mps.lang.typesystem.structure.ConceptReference" flags="ig" index="1YaCAy">
         <reference id="1174642800329" name="concept" index="1YaFvo" />
       </concept>
-      <concept id="1174643105530" name="jetbrains.mps.lang.typesystem.structure.InferenceRule" flags="ig" index="1YbPZF" />
       <concept id="1174648085619" name="jetbrains.mps.lang.typesystem.structure.AbstractRule" flags="ng" index="1YuPPy">
         <child id="1174648101952" name="applicableNode" index="1YuTPh" />
       </concept>
       <concept id="1174650418652" name="jetbrains.mps.lang.typesystem.structure.ApplicableNodeReference" flags="nn" index="1YBJjd">
         <reference id="1174650432090" name="applicableNode" index="1YBMHb" />
-      </concept>
-      <concept id="1174657487114" name="jetbrains.mps.lang.typesystem.structure.TypeOfExpression" flags="nn" index="1Z2H0r">
-        <child id="1174657509053" name="term" index="1Z2MuG" />
-      </concept>
-      <concept id="1174658326157" name="jetbrains.mps.lang.typesystem.structure.CreateEquationStatement" flags="nn" index="1Z5TYs" />
-      <concept id="1174660718586" name="jetbrains.mps.lang.typesystem.structure.AbstractEquationStatement" flags="nn" index="1Zf1VF">
-        <child id="1174660783413" name="leftExpression" index="1ZfhK$" />
-        <child id="1174660783414" name="rightExpression" index="1ZfhKB" />
       </concept>
     </language>
     <language id="aee9cad2-acd4-4608-aef2-0004f6a1cdbd" name="jetbrains.mps.lang.actions">
@@ -2784,45 +2772,6 @@
     <node concept="1YaCAy" id="2J12cYie11$" role="1YuTPh">
       <property role="TrG5h" value="receiverType" />
       <ref role="1YaFvo" to="hcm8:2yYXHtl6Jl1" resolve="ReceiverType" />
-    </node>
-  </node>
-  <node concept="1YbPZF" id="34xW2QYFVxH">
-    <property role="TrG5h" value="typeof_IStaticType" />
-    <property role="3GE5qa" value="expression.dataflow" />
-    <node concept="3clFbS" id="34xW2QYFVxI" role="18ibNy">
-      <node concept="3SKdUt" id="34xW2QYFWGY" role="3cqZAp">
-        <node concept="1PaTwC" id="34xW2QYFWGZ" role="1aUNEU">
-          <node concept="3oM_SD" id="34xW2QYFWID" role="1PaTwD">
-            <property role="3oM_SC" value="TODO" />
-          </node>
-          <node concept="3oM_SD" id="34xW2QYFWM5" role="1PaTwD">
-            <property role="3oM_SC" value="cleanup" />
-          </node>
-        </node>
-      </node>
-      <node concept="1Z5TYs" id="34xW2QYFW2I" role="3cqZAp">
-        <node concept="mw_s8" id="34xW2QYFWau" role="1ZfhKB">
-          <node concept="2OqwBi" id="34xW2QYFWiR" role="mwGJk">
-            <node concept="1YBJjd" id="34xW2QYFWas" role="2Oq$k0">
-              <ref role="1YBMHb" node="34xW2QYFVxK" resolve="iStaticType" />
-            </node>
-            <node concept="2qgKlT" id="34xW2QYFWvg" role="2OqNvi">
-              <ref role="37wK5l" to="hez:6563FJLeSWZ" resolve="getType" />
-            </node>
-          </node>
-        </node>
-        <node concept="mw_s8" id="34xW2QYFW2L" role="1ZfhK$">
-          <node concept="1Z2H0r" id="34xW2QYFVBO" role="mwGJk">
-            <node concept="1YBJjd" id="34xW2QYFVLG" role="1Z2MuG">
-              <ref role="1YBMHb" node="34xW2QYFVxK" resolve="iStaticType" />
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="1YaCAy" id="34xW2QYFVxK" role="1YuTPh">
-      <property role="TrG5h" value="iStaticType" />
-      <ref role="1YaFvo" to="hcm8:6563FJLeShn" resolve="IStaticType" />
     </node>
   </node>
 </model>

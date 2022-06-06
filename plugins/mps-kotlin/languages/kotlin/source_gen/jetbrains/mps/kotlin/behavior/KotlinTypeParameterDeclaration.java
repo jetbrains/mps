@@ -4,6 +4,7 @@ package jetbrains.mps.kotlin.behavior;
 
 import jetbrains.mps.kotlin.api.declaration.DefaultTypeParameterDeclaration;
 import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
@@ -12,20 +13,18 @@ import java.util.ArrayList;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.language.SEnumerationLiteral;
-import jetbrains.mps.kotlin.api.declaration.TypeParameterDeclaration;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class KotlinTypeParameterDeclaration extends DefaultTypeParameterDeclaration {
   private final SNode myParameter;
-  public KotlinTypeParameterDeclaration(SNode parameter) {
+  public KotlinTypeParameterDeclaration(@NotNull SNode parameter) {
     myParameter = parameter;
   }
 
   @Override
+  @NotNull
   public SNodeReference getNode() {
     return SNodeOperations.getPointer(myParameter);
   }
@@ -35,6 +34,7 @@ public class KotlinTypeParameterDeclaration extends DefaultTypeParameterDeclarat
     return SPropertyOperations.getString(myParameter, PROPS.name$MnvL);
   }
   @Override
+  @NotNull
   public List<SNode> getUpperBounds() {
     List<SNode> bounds = new ArrayList<SNode>();
     // TODO add constraints in where clause
@@ -46,14 +46,6 @@ public class KotlinTypeParameterDeclaration extends DefaultTypeParameterDeclarat
   @Override
   public SEnumerationLiteral getVariance() {
     return SPropertyOperations.getEnum(myParameter, PROPS.variance$xP5D);
-  }
-
-  public static Iterable<TypeParameterDeclaration> of(Iterable<SNode> params) {
-    return Sequence.fromIterable(params).select(new ISelector<SNode, KotlinTypeParameterDeclaration>() {
-      public KotlinTypeParameterDeclaration select(SNode parameter) {
-        return new KotlinTypeParameterDeclaration(parameter);
-      }
-    });
   }
 
   private static final class PROPS {

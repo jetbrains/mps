@@ -7848,5 +7848,139 @@
       </node>
     </node>
   </node>
+  <node concept="312cEu" id="1hJVIB$RjET">
+    <property role="TrG5h" value="ImplicitReceiverSignatureScope" />
+    <node concept="3Tm1VV" id="1hJVIB$RjEU" role="1B3o_S" />
+    <node concept="3uibUv" id="1hJVIB$Rk17" role="1zkMxy">
+      <ref role="3uigEE" node="1VgEGDniuUr" resolve="DelegatedSignatureScope" />
+    </node>
+    <node concept="312cEg" id="1hJVIB$RkUD" role="jymVt">
+      <property role="TrG5h" value="myActualScope" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="1hJVIB$RkUE" role="1B3o_S" />
+      <node concept="3uibUv" id="1hJVIB$RkUG" role="1tU5fm">
+        <ref role="3uigEE" node="6Ijh6DJDHpd" resolve="SignatureScope" />
+      </node>
+    </node>
+    <node concept="312cEg" id="1hJVIB$Rl2_" role="jymVt">
+      <property role="TrG5h" value="myProvider" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="1hJVIB$Rl2A" role="1B3o_S" />
+      <node concept="3Tqbb2" id="1hJVIB$Rl2C" role="1tU5fm">
+        <ref role="ehGHo" to="hcm8:xpyqH1FtXg" resolve="IThisReceiverProvider" />
+      </node>
+    </node>
+    <node concept="312cEg" id="1hJVIB$Rla2" role="jymVt">
+      <property role="TrG5h" value="myProviderReceiverIndex" />
+      <property role="3TUv4t" value="true" />
+      <node concept="3Tm6S6" id="1hJVIB$Rla3" role="1B3o_S" />
+      <node concept="10Oyi0" id="1hJVIB$Rla5" role="1tU5fm" />
+    </node>
+    <node concept="2tJIrI" id="1hJVIB$Rkic" role="jymVt" />
+    <node concept="3clFbW" id="1hJVIB$RklM" role="jymVt">
+      <node concept="3cqZAl" id="1hJVIB$RklO" role="3clF45" />
+      <node concept="3Tm1VV" id="1hJVIB$RklP" role="1B3o_S" />
+      <node concept="3clFbS" id="1hJVIB$RklQ" role="3clF47">
+        <node concept="3clFbF" id="1hJVIB$RkUH" role="3cqZAp">
+          <node concept="37vLTI" id="1hJVIB$RkUJ" role="3clFbG">
+            <node concept="37vLTw" id="1hJVIB$RkUM" role="37vLTJ">
+              <ref role="3cqZAo" node="1hJVIB$RkUD" resolve="myActualScope" />
+            </node>
+            <node concept="37vLTw" id="1hJVIB$RkUN" role="37vLTx">
+              <ref role="3cqZAo" node="1hJVIB$Rksk" resolve="actualScope" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1hJVIB$Rl2D" role="3cqZAp">
+          <node concept="37vLTI" id="1hJVIB$Rl2F" role="3clFbG">
+            <node concept="37vLTw" id="1hJVIB$Rl2I" role="37vLTJ">
+              <ref role="3cqZAo" node="1hJVIB$Rl2_" resolve="myProvider" />
+            </node>
+            <node concept="37vLTw" id="1hJVIB$Rl2J" role="37vLTx">
+              <ref role="3cqZAo" node="1hJVIB$Rkxx" resolve="provider" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="1hJVIB$Rla6" role="3cqZAp">
+          <node concept="37vLTI" id="1hJVIB$Rla8" role="3clFbG">
+            <node concept="37vLTw" id="1hJVIB$Rlab" role="37vLTJ">
+              <ref role="3cqZAo" node="1hJVIB$Rla2" resolve="myProviderReceiverIndex" />
+            </node>
+            <node concept="37vLTw" id="1hJVIB$Rlac" role="37vLTx">
+              <ref role="3cqZAo" node="1hJVIB$RkDw" resolve="providerReceiverIndex" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="37vLTG" id="1hJVIB$Rksk" role="3clF46">
+        <property role="TrG5h" value="actualScope" />
+        <node concept="3uibUv" id="1hJVIB$Rksj" role="1tU5fm">
+          <ref role="3uigEE" node="6Ijh6DJDHpd" resolve="SignatureScope" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="1hJVIB$Rkxx" role="3clF46">
+        <property role="TrG5h" value="provider" />
+        <node concept="3Tqbb2" id="1hJVIB$Rk$J" role="1tU5fm">
+          <ref role="ehGHo" to="hcm8:xpyqH1FtXg" resolve="IThisReceiverProvider" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="1hJVIB$RkDw" role="3clF46">
+        <property role="TrG5h" value="providerReceiverIndex" />
+        <node concept="10Oyi0" id="1hJVIB$RkFO" role="1tU5fm" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="1hJVIB$RlEa" role="jymVt" />
+    <node concept="3clFb_" id="1hJVIB$RkcS" role="jymVt">
+      <property role="TrG5h" value="buildScope" />
+      <node concept="3uibUv" id="1hJVIB$RkcU" role="3clF45">
+        <ref role="3uigEE" node="6Ijh6DJDHpd" resolve="SignatureScope" />
+      </node>
+      <node concept="3Tmbuc" id="1hJVIB$RkcY" role="1B3o_S" />
+      <node concept="3clFbS" id="1hJVIB$RkcZ" role="3clF47">
+        <node concept="3cpWs6" id="1hJVIB$RlRT" role="3cqZAp">
+          <node concept="37vLTw" id="1hJVIB$Rm3Q" role="3cqZAk">
+            <ref role="3cqZAo" node="1hJVIB$RkUD" resolve="myActualScope" />
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="1hJVIB$Rkd0" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="1hJVIB$Rm7p" role="jymVt" />
+    <node concept="3clFb_" id="1hJVIB$RmhN" role="jymVt">
+      <property role="TrG5h" value="getProvider" />
+      <node concept="3Tqbb2" id="1hJVIB$RmhO" role="3clF45">
+        <ref role="ehGHo" to="hcm8:xpyqH1FtXg" resolve="IThisReceiverProvider" />
+      </node>
+      <node concept="3Tm1VV" id="1hJVIB$RmhP" role="1B3o_S" />
+      <node concept="3clFbS" id="1hJVIB$RmhQ" role="3clF47">
+        <node concept="3clFbF" id="1hJVIB$RmhR" role="3cqZAp">
+          <node concept="2OqwBi" id="1hJVIB$RmhK" role="3clFbG">
+            <node concept="Xjq3P" id="1hJVIB$RmhL" role="2Oq$k0" />
+            <node concept="2OwXpG" id="1hJVIB$RmhM" role="2OqNvi">
+              <ref role="2Oxat5" node="1hJVIB$Rl2_" resolve="myProvider" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="1hJVIB$RmRM" role="jymVt" />
+    <node concept="3clFb_" id="1hJVIB$RmhV" role="jymVt">
+      <property role="TrG5h" value="getProviderReceiverIndex" />
+      <node concept="10Oyi0" id="1hJVIB$RmhW" role="3clF45" />
+      <node concept="3Tm1VV" id="1hJVIB$RmhX" role="1B3o_S" />
+      <node concept="3clFbS" id="1hJVIB$RmhY" role="3clF47">
+        <node concept="3clFbF" id="1hJVIB$RmhZ" role="3cqZAp">
+          <node concept="2OqwBi" id="1hJVIB$RmhS" role="3clFbG">
+            <node concept="Xjq3P" id="1hJVIB$RmhT" role="2Oq$k0" />
+            <node concept="2OwXpG" id="1hJVIB$RmhU" role="2OqNvi">
+              <ref role="2Oxat5" node="1hJVIB$Rla2" resolve="myProviderReceiverIndex" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
 </model>
 
