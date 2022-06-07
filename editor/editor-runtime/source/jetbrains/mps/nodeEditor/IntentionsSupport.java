@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.extensions.Extensions;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.openapi.ui.popup.ListPopup;
 import com.intellij.ui.awt.RelativePoint;
@@ -44,11 +43,13 @@ import jetbrains.mps.openapi.intentions.IntentionExecutable;
 import jetbrains.mps.openapi.intentions.Kind;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SModelOperations;
+import jetbrains.mps.smodel.UndoRunnable;
 import jetbrains.mps.typechecking.TypecheckingFacade;
 import jetbrains.mps.util.Pair;
 import jetbrains.mps.workbench.action.BaseAction;
 import jetbrains.mps.workbench.action.BaseGroup;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.module.ModelAccess;
@@ -229,21 +230,14 @@ public class IntentionsSupport {
     return getInsertedPosition(viewRect, myLightBulb.getPreferredSize(), new Point(x, y));
   }
 
-  private void executeIntention(final IntentionExecutable intention, final SNode node) {
-    getModelAccess().executeCommandInEDT(new EditorCommand(myEditor) {
-      @Override
-      public void doExecute() {
-        intention.execute(node, myEditor.getEditorContext());
-      }
-    });
-  }
-
   private AnAction getIntentionGroup(final IntentionExecutable intention, final SNode node) {
     Icon icon = new IntentionIconProvider(intention.getDescriptor().getKind()).getIcon();
     String text = intention.getDescription(node, myEditor.getEditorContext());
 
+    final IntentionCommand ic = new IntentionCommand(text, intention, node);
+
     List<AnAction> intentionActions = new ArrayList<>();
-    for (IntentionActionsProvider provider : Extensions.getExtensions(IntentionActionsProvider.EP_NAME)) {
+    for (IntentionActionsProvider provider : IntentionActionsProvider.EP_NAME.getExtensionList()) {
       intentionActions.addAll(Arrays.asList(provider.getIntentionActions(intention)));
     }
 
@@ -251,7 +245,7 @@ public class IntentionsSupport {
       return new BaseAction(text, null, icon) {
         @Override
         protected void doExecute(AnActionEvent e, Map<String, Object> params) {
-          executeIntention(intention, node);
+          IntentionsSupport.this.getModelAccess().executeCommandInEDT(ic);
         }
       };
     } else {
@@ -263,7 +257,7 @@ public class IntentionsSupport {
 
         @Override
         public void actionPerformed(AnActionEvent e) {
-          executeIntention(intention, node);
+          IntentionsSupport.this.getModelAccess().executeCommandInEDT(ic);
         }
       };
       intentionActionGroup.addAll(intentionActions);
@@ -362,6 +356,31 @@ public class IntentionsSupport {
 
   private ModelAccess getModelAccess() {
     return myEditor.getRepository().getModelAccess();
+  }
+
+  // UndoRunnable to make sure Edit->Undo shows name of the intention. No idea if could use group id.
+  private class IntentionCommand extends EditorCommand implements UndoRunnable {
+    private String myText;
+    private IntentionExecutable myIntention;
+    private SNode myNode;
+
+    /*package*/ IntentionCommand(String text, IntentionExecutable intention, SNode node) {
+      super(myEditor.getCommandContext());
+      myText = text;
+      myIntention = intention;
+      myNode = node;
+    }
+
+    @Nullable
+    @Override
+    public String getName() {
+      return myText;
+    }
+
+    @Override
+    protected void doExecute() {
+      myIntention.execute(myNode, myEditor.getEditorContext());
+    }
   }
 
   private class IntentionsThread extends Thread {
