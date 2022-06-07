@@ -3705,6 +3705,46 @@
         <ref role="ehGHo" to="hcm8:213J8cgKswc" resolve="ISuperTypeSpecifier" />
       </node>
     </node>
+    <node concept="13i0hz" id="398EB8$DbiE" role="13h7CS">
+      <property role="TrG5h" value="getConstructorDescriptor" />
+      <ref role="13i0hy" to="hez:nhyiqudFLy" resolve="getConstructorDescriptor" />
+      <node concept="3Tm1VV" id="398EB8$DbiF" role="1B3o_S" />
+      <node concept="3clFbS" id="398EB8$DbiI" role="3clF47">
+        <node concept="3clFbJ" id="398EB8$DgzN" role="3cqZAp">
+          <node concept="3clFbS" id="398EB8$DgzP" role="3clFbx">
+            <node concept="3cpWs6" id="398EB8$Djm8" role="3cqZAp">
+              <node concept="10Nm6u" id="398EB8$Dj_0" role="3cqZAk" />
+            </node>
+          </node>
+          <node concept="2OqwBi" id="398EB8$Di_r" role="3clFbw">
+            <node concept="2OqwBi" id="398EB8$DgMQ" role="2Oq$k0">
+              <node concept="13iPFW" id="398EB8$Dg_g" role="2Oq$k0" />
+              <node concept="3TrEf2" id="398EB8$DhjD" role="2OqNvi">
+                <ref role="3Tt5mk" to="5m2i:5H$PF0dtmad" resolve="classifier" />
+              </node>
+            </node>
+            <node concept="3w_OXm" id="398EB8$DjaT" role="2OqNvi" />
+          </node>
+        </node>
+        <node concept="3cpWs6" id="398EB8$Dd6Y" role="3cqZAp">
+          <node concept="2ShNRf" id="398EB8$Dddb" role="3cqZAk">
+            <node concept="1pGfFk" id="398EB8$Dfz4" role="2ShVmc">
+              <property role="373rjd" value="true" />
+              <ref role="37wK5l" to="akzu:5H$PF0dpK80" resolve="JavaDefaultConstructorDeclaration" />
+              <node concept="2OqwBi" id="398EB8$DfR8" role="37wK5m">
+                <node concept="13iPFW" id="398EB8$DfAQ" role="2Oq$k0" />
+                <node concept="3TrEf2" id="398EB8$Dgni" role="2OqNvi">
+                  <ref role="3Tt5mk" to="5m2i:5H$PF0dtmad" resolve="classifier" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="398EB8$DbiJ" role="3clF45">
+        <ref role="3uigEE" to="1p8r:26mUjU3_jTe" resolve="FunctionDeclaration" />
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="1pD7IS3j1j2">
     <property role="TrG5h" value="JavaSignatures" />

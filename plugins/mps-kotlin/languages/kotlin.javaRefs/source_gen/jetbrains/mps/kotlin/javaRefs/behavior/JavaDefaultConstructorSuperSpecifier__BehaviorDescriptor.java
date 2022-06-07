@@ -10,6 +10,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.core.aspects.behaviour.SMethodBuilder;
 import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
+import jetbrains.mps.kotlin.api.declaration.FunctionDeclaration;
 import java.util.List;
 import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
@@ -19,6 +20,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.kotlin.behavior.ITypeArguments__BehaviorDescriptor;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
+import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaDefaultConstructorDeclaration;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -31,8 +33,9 @@ public final class JavaDefaultConstructorSuperSpecifier__BehaviorDescriptor exte
 
   public static final SMethod<SNode> getInheritedType_id5q426iHvzD9 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getInheritedType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6234117012688091721L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<SNode> convertToNonConstructor_id1$jFvlEUFDL = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("convertToNonConstructor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1806979145078061681L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<FunctionDeclaration> getConstructorDescriptor_idnhyiqudFLy = new SMethodBuilder<FunctionDeclaration>(new SJavaCompoundTypeImpl(FunctionDeclaration.class)).name("getConstructorDescriptor").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(419267039278316642L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInheritedType_id5q426iHvzD9, convertToNonConstructor_id1$jFvlEUFDL);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getInheritedType_id5q426iHvzD9, convertToNonConstructor_id1$jFvlEUFDL, getConstructorDescriptor_idnhyiqudFLy);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -47,6 +50,12 @@ public final class JavaDefaultConstructorSuperSpecifier__BehaviorDescriptor exte
     SNode specifier = SNodeFactoryOperations.createNewNode(CONCEPTS.JavaClassSuperSpecifier$BW, __thisNode__);
     SLinkOperations.setTarget(specifier, LINKS.classifier$dpcA, SLinkOperations.getTarget(__thisNode__, LINKS.classifier$ZmfH));
     return specifier;
+  }
+  /*package*/ static FunctionDeclaration getConstructorDescriptor_idnhyiqudFLy(@NotNull SNode __thisNode__) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.classifier$ZmfH) == null)) {
+      return null;
+    }
+    return new JavaDefaultConstructorDeclaration(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$ZmfH));
   }
 
   /*package*/ JavaDefaultConstructorSuperSpecifier__BehaviorDescriptor() {
@@ -68,6 +77,8 @@ public final class JavaDefaultConstructorSuperSpecifier__BehaviorDescriptor exte
         return (T) ((SNode) getInheritedType_id5q426iHvzD9(node));
       case 1:
         return (T) ((SNode) convertToNonConstructor_id1$jFvlEUFDL(node));
+      case 2:
+        return (T) ((FunctionDeclaration) getConstructorDescriptor_idnhyiqudFLy(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

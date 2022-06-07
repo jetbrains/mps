@@ -324,9 +324,12 @@
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/devkits/kotlin.devkit/jetbrains.mps.devkit.kotlin.devkit" folder="core.languages.kotlin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/ide/jetbrains.mps.kotlin.idePlugin/jetbrains.mps.kotlin.idePlugin.msd" folder="core.languages.kotlin.ide" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/baseLanguage.kotlinRefs/jetbrains.mps.baseLanguage.kotlinRefs.mpl" folder="core.languages.kotlin.interop" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin.internal/jetbrains.mps.kotlin.internal.mpl" folder="core.languages.kotlin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin.javaRefs/jetbrains.mps.kotlin.javaRefs.mpl" folder="core.languages.kotlin.interop" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin.smodel/jetbrains.mps.kotlin.smodel.mpl" folder="core.languages.kotlin.smodel" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/languages/kotlin/jetbrains.mps.kotlin.mpl" folder="core.languages.kotlin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.baseLanguage.runtime/jetbrains.mps.kotlin.baseLanguage.runtime.msd" folder="core.languages.kotlin.interop" />
+      <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.smodel.runtime/jetbrains.mps.kotlin.smodel.runtime.msd" folder="core.languages.kotlin.smodel" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-kotlin/solutions/kotlin.stdlib/jetbrains.mps.kotlin.stdlib.msd" folder="core.languages.kotlin" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-make/jetbrains.mps.ide.make.msd" folder="platform" />
       <modulePath path="$PROJECT_DIR$/plugins/mps-migration/migration-platform/solutions/component/jetbrains.mps.migration.component.msd" folder="platform.migration" />
