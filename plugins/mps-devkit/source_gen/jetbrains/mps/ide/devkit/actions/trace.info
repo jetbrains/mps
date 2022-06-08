@@ -3365,66 +3365,63 @@
       <node id="8513716958726547050" at="19,76,20,73" concept="3" />
     </file>
     <file name="TraceTool_Tool.java">
-      <node id="8513716958726547050" at="25,0,26,0" concept="12" trace="ICON" />
-      <node id="8513716958726547076" at="26,0,27,0" concept="4" trace="myPanel" />
-      <node id="7101531348286808721" at="27,0,28,0" concept="4" trace="myBusConnection" />
-      <node id="7101531348286833449" at="28,0,29,0" concept="4" trace="myEditorComponent" />
-      <node id="8513716958726547050" at="29,42,30,109" concept="14" />
-      <node id="8513716958726547050" at="32,37,33,24" concept="3" />
-      <node id="8513716958726547087" at="33,24,34,80" concept="3" />
-      <node id="7908256008493503834" at="34,80,35,0" concept="11" />
-      <node id="7908256008493505155" at="35,0,36,64" concept="8" />
-      <node id="7637569480321161769" at="36,64,37,37" concept="10" />
-      <node id="7908256008493581880" at="37,37,38,0" concept="11" />
-      <node id="7101531348286819843" at="38,0,39,76" concept="3" />
-      <node id="7101531348286867120" at="44,61,45,48" concept="3" />
-      <node id="1909057804859669464" at="45,48,46,55" concept="3" />
-      <node id="7812713049443707378" at="51,25,52,50" concept="3" />
-      <node id="7101531348286826702" at="52,50,53,53" concept="3" />
-      <node id="8513716958726547050" at="53,53,54,20" concept="3" />
-      <node id="7101531348286849356" at="56,94,57,60" concept="3" />
-      <node id="1651673317506003745" at="57,60,58,84" concept="3" />
-      <node id="8513716958726547081" at="60,36,61,39" concept="9" />
-      <node id="7101531348286858979" at="41,0,43,0" concept="7" trace="editorComponentCreated#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
-      <node id="8513716958726547050" at="29,0,32,0" concept="2" trace="TraceTool_Tool#(Lcom/intellij/openapi/project/Project;)V" />
-      <node id="8513716958726547050" at="60,0,63,0" concept="7" trace="getComponent#()Ljavax/swing/JComponent;" />
-      <node id="7101531348286860638" at="43,75,47,9" concept="6" />
-      <node id="1651673317506003734" at="56,0,60,0" concept="7" trace="buildTrace#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
-      <node id="8513716958726547050" at="51,0,56,0" concept="7" trace="dispose#()V" />
-      <node id="7101531348286858986" at="43,0,49,0" concept="7" trace="editorComponentDisposed#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
-      <node id="7101531348286857530" at="39,76,49,7" concept="3" />
-      <node id="8513716958726547050" at="32,0,51,0" concept="7" trace="init#(Lcom/intellij/openapi/project/Project;)V" />
-      <scope id="7101531348286858985" at="41,74,41,74" />
-      <scope id="8513716958726547050" at="29,42,30,109" />
-      <scope id="8513716958726547080" at="60,36,61,39" />
-      <scope id="7101531348286858979" at="41,0,43,0">
+      <node id="8513716958726547050" at="24,0,25,0" concept="12" trace="ICON" />
+      <node id="8513716958726547076" at="25,0,26,0" concept="4" trace="myPanel" />
+      <node id="7101531348286808721" at="26,0,27,0" concept="4" trace="myBusConnection" />
+      <node id="7101531348286833449" at="27,0,28,0" concept="4" trace="myEditorComponent" />
+      <node id="8513716958726547050" at="28,42,29,109" concept="14" />
+      <node id="8513716958726547050" at="31,37,32,24" concept="3" />
+      <node id="8513716958726547087" at="32,24,33,80" concept="3" />
+      <node id="7908256008493503834" at="33,80,34,0" concept="11" />
+      <node id="7637569480321161769" at="34,0,35,37" concept="10" />
+      <node id="7908256008493581880" at="35,37,36,0" concept="11" />
+      <node id="7101531348286819843" at="36,0,37,76" concept="3" />
+      <node id="7101531348286867120" at="42,61,43,48" concept="3" />
+      <node id="1909057804859669464" at="43,48,44,55" concept="3" />
+      <node id="7812713049443707378" at="49,25,50,50" concept="3" />
+      <node id="7101531348286826702" at="50,50,51,53" concept="3" />
+      <node id="8513716958726547050" at="51,53,52,20" concept="3" />
+      <node id="7101531348286849356" at="54,94,55,60" concept="3" />
+      <node id="1651673317506003745" at="55,60,56,84" concept="3" />
+      <node id="8513716958726547081" at="58,36,59,39" concept="9" />
+      <node id="7101531348286858979" at="39,0,41,0" concept="7" trace="editorComponentCreated#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
+      <node id="8513716958726547050" at="28,0,31,0" concept="2" trace="TraceTool_Tool#(Lcom/intellij/openapi/project/Project;)V" />
+      <node id="8513716958726547050" at="58,0,61,0" concept="7" trace="getComponent#()Ljavax/swing/JComponent;" />
+      <node id="7101531348286860638" at="41,75,45,9" concept="6" />
+      <node id="1651673317506003734" at="54,0,58,0" concept="7" trace="buildTrace#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
+      <node id="8513716958726547050" at="49,0,54,0" concept="7" trace="dispose#()V" />
+      <node id="7101531348286858986" at="41,0,47,0" concept="7" trace="editorComponentDisposed#(Ljetbrains/mps/nodeEditor/EditorComponent;)V" />
+      <node id="7101531348286857530" at="37,76,47,7" concept="3" />
+      <node id="8513716958726547050" at="31,0,49,0" concept="7" trace="init#(Lcom/intellij/openapi/project/Project;)V" />
+      <scope id="7101531348286858985" at="39,74,39,74" />
+      <scope id="8513716958726547050" at="28,42,29,109" />
+      <scope id="8513716958726547080" at="58,36,59,39" />
+      <scope id="7101531348286858979" at="39,0,41,0">
         <var name="ecomp" id="7101531348286858982" />
       </scope>
-      <scope id="7101531348286860639" at="44,61,46,55" />
-      <scope id="1651673317506003744" at="56,94,58,84" />
-      <scope id="8513716958726547050" at="29,0,32,0">
+      <scope id="7101531348286860639" at="42,61,44,55" />
+      <scope id="1651673317506003744" at="54,94,56,84" />
+      <scope id="8513716958726547050" at="28,0,31,0">
         <var name="project" id="8513716958726547050" />
       </scope>
-      <scope id="8513716958726547050" at="51,25,54,20" />
-      <scope id="8513716958726547050" at="60,0,63,0" />
-      <scope id="7101531348286858992" at="43,75,47,9" />
-      <scope id="1651673317506003734" at="56,0,60,0">
+      <scope id="8513716958726547050" at="49,25,52,20" />
+      <scope id="8513716958726547050" at="58,0,61,0" />
+      <scope id="7101531348286858992" at="41,75,45,9" />
+      <scope id="1651673317506003734" at="54,0,58,0">
         <var name="editorComponent" id="1651673317506003739" />
         <var name="mpsProject" id="1651673317506005089" />
         <var name="node" id="1651673317506003737" />
       </scope>
-      <scope id="8513716958726547050" at="51,0,56,0" />
-      <scope id="7101531348286858986" at="43,0,49,0">
+      <scope id="8513716958726547050" at="49,0,54,0" />
+      <scope id="7101531348286858986" at="41,0,47,0">
         <var name="ecomp" id="7101531348286858989" />
       </scope>
-      <scope id="8513716958726547050" at="32,37,49,7">
-        <var name="toolWindow" id="7908256008493505156" />
-      </scope>
-      <scope id="8513716958726547050" at="32,0,51,0">
+      <scope id="8513716958726547050" at="31,37,47,7" />
+      <scope id="8513716958726547050" at="31,0,49,0">
         <var name="project" id="8513716958726547050" />
       </scope>
-      <unit id="7101531348286858977" at="40,111,49,5" name="jetbrains.mps.ide.devkit.actions.TraceTool_Tool$1" />
-      <unit id="8513716958726547050" at="23,0,64,0" name="jetbrains.mps.ide.devkit.actions.TraceTool_Tool" />
+      <unit id="7101531348286858977" at="38,111,47,5" name="jetbrains.mps.ide.devkit.actions.TraceTool_Tool$1" />
+      <unit id="8513716958726547050" at="22,0,62,0" name="jetbrains.mps.ide.devkit.actions.TraceTool_Tool" />
     </file>
   </root>
   <root nodeRef="r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/8513716958726547154">

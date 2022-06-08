@@ -493,6 +493,25 @@
     </node>
     <node concept="2UmK3q" id="5tr7YH$U35D" role="2Um5zG">
       <node concept="3clFbS" id="5tr7YH$U35E" role="2VODD2">
+        <node concept="3clFbF" id="5Ji6nXNXUhN" role="3cqZAp">
+          <node concept="2OqwBi" id="5Ji6nXNXUuX" role="3clFbG">
+            <node concept="2OqwBi" id="5Ji6nXNXUhP" role="2Oq$k0">
+              <node concept="2WthIp" id="5Ji6nXNXUhQ" role="2Oq$k0" />
+              <node concept="liA8E" id="5Ji6nXNXUhR" role="2OqNvi">
+                <ref role="37wK5l" to="71xd:~BaseTool.getToolWindow()" resolve="getToolWindow" />
+              </node>
+            </node>
+            <node concept="liA8E" id="5Ji6nXNXVds" role="2OqNvi">
+              <ref role="37wK5l" to="jkny:~ToolWindow.setAdditionalGearActions(com.intellij.openapi.actionSystem.ActionGroup)" resolve="setAdditionalGearActions" />
+              <node concept="2OqwBi" id="5Ji6nXNXVt2" role="37wK5m">
+                <node concept="2WthIp" id="5Ji6nXNXVt5" role="2Oq$k0" />
+                <node concept="2XshWL" id="5Ji6nXNXVt7" role="2OqNvi">
+                  <ref role="2WH_rO" node="3zNPfWNAwau" resolve="createGearActionGroup" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs6" id="5tr7YH$Ug8u" role="3cqZAp">
           <node concept="2OqwBi" id="7D_l88gKtMi" role="3cqZAk">
             <node concept="2WthIp" id="7D_l88gKtMl" role="2Oq$k0" />
@@ -606,33 +625,6 @@
           </node>
         </node>
         <node concept="3clFbH" id="7vUP_qcxoIy" role="3cqZAp" />
-        <node concept="3clFbF" id="7vUP_qcxcA4" role="3cqZAp">
-          <node concept="2OqwBi" id="7vUP_qcxdvH" role="3clFbG">
-            <node concept="1eOMI4" id="7vUP_qcxfPy" role="2Oq$k0">
-              <node concept="10QFUN" id="7vUP_qcxfPz" role="1eOMHV">
-                <node concept="2OqwBi" id="7vUP_qcxfPv" role="10QFUP">
-                  <node concept="2WthIp" id="6YRAqpTgjXt" role="2Oq$k0" />
-                  <node concept="liA8E" id="7vUP_qcxfPx" role="2OqNvi">
-                    <ref role="37wK5l" to="71xd:~BaseTool.getToolWindow()" resolve="getToolWindow" />
-                  </node>
-                </node>
-                <node concept="3uibUv" id="7vUP_qcxggA" role="10QFUM">
-                  <ref role="3uigEE" to="b9kz:~ToolWindowEx" resolve="ToolWindowEx" />
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="7vUP_qcxi0V" role="2OqNvi">
-              <ref role="37wK5l" to="jkny:~ToolWindow.setAdditionalGearActions(com.intellij.openapi.actionSystem.ActionGroup)" resolve="setAdditionalGearActions" />
-              <node concept="2OqwBi" id="3zNPfWNAwBC" role="37wK5m">
-                <node concept="2WthIp" id="3zNPfWNAwBD" role="2Oq$k0" />
-                <node concept="2XshWL" id="3zNPfWNAwBE" role="2OqNvi">
-                  <ref role="2WH_rO" node="3zNPfWNAwau" resolve="createGearActionGroup" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="7D_l88gK_wi" role="3cqZAp" />
         <node concept="3clFbF" id="QmW6bqNB94" role="3cqZAp">
           <node concept="2YIFZM" id="QmW6bqNB9U" role="3clFbG">
             <ref role="37wK5l" to="3a50:~ThreadUtils.runInUIThreadNoWait(java.lang.Runnable)" resolve="runInUIThreadNoWait" />

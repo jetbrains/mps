@@ -128,7 +128,7 @@ public abstract class BaseProjectPlugin implements PersistentStateComponent<Plug
     for (BaseTool tool : toolsToInit) {
       try {
         tool.init(myIJProject);
-        tool.register();
+        tool.registerLater();
       } catch (Throwable t) {
         LOG.error("Exception on a tool init: " + tool, t);
       }

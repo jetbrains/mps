@@ -12,7 +12,6 @@ import jetbrains.mps.nodeEditor.EditorComponent;
 import com.intellij.openapi.project.Project;
 import jetbrains.mps.ide.tools.BaseTool;
 import com.intellij.openapi.wm.ToolWindowAnchor;
-import com.intellij.openapi.wm.ToolWindow;
 import jetbrains.mps.nodeEditor.highlighter.EditorComponentCreateListener;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.util.Disposer;
@@ -33,7 +32,6 @@ public class TraceTool_Tool extends GeneratedTool {
     super.init(project);
     TraceTool_Tool.this.myPanel = new TypeSystemTracePanel(TraceTool_Tool.this);
 
-    ToolWindow toolWindow = TraceTool_Tool.this.getToolWindow();
     // TODO: find way to rewrite this
 
     TraceTool_Tool.this.myBusConnection = project.getMessageBus().connect();

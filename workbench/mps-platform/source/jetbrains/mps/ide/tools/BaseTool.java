@@ -31,6 +31,7 @@ import com.intellij.ui.content.Content;
 import com.intellij.ui.content.ContentManager;
 import com.intellij.util.ui.update.UiNotifyConnector;
 import jetbrains.mps.ide.ThreadUtils;
+import kotlin.Unit;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -258,13 +259,14 @@ public abstract class BaseTool {
     //if we create a new project, tool windows are created for it automatically
     ToolWindow toolWindow = myWindowManager.getToolWindow(myId);
     if (toolWindow == null) {
-      toolWindow = myWindowManager.registerToolWindow(myId, myCanCloseContent, myAnchor, getProject(), true, mySideTool);
+      toolWindow = myWindowManager.registerToolWindow(myId, builder -> {
+        builder.icon = myIcon;
+        builder.canCloseContent = myCanCloseContent;
+        builder.anchor = myAnchor;
+        builder.sideTool = mySideTool;
+        return Unit.INSTANCE;
+      });
     }
-    if (myIcon != null) {
-      toolWindow.setIcon(myIcon);
-    }
-
-    toolWindow.setToHideOnEmptyContent(true);
     toolWindow.installWatcher(toolWindow.getContentManager());
     setAvailable(isInitiallyAvailable());
 

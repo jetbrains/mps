@@ -10,7 +10,6 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.nodeEditor.assist.SelectionMenuProviderByCellAndConcept;
 import jetbrains.mps.editor.contextActionsTool.lang.menus.runtime.MenuLocations;
-import com.intellij.openapi.wm.ex.ToolWindowEx;
 import jetbrains.mps.ide.ThreadUtils;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import javax.swing.JComponent;
@@ -32,8 +31,6 @@ public class ContextActionsTool_Tool extends GeneratedTool {
     ContextActionsTool_Tool.this.myComponent = new ToolComponent(ContextActionsTool_Tool.this);
     ContextActionsTool_Tool.this.myController = new ToolController(mpsProject, ContextActionsTool_Tool.this.myComponent, new SelectionMenuProviderByCellAndConcept(MenuLocations.CONTEXT_ACTIONS_TOOL));
 
-    ((ToolWindowEx) ContextActionsTool_Tool.this.getToolWindow()).setAdditionalGearActions(ContextActionsTool_Tool.this.createGearActionGroup());
-
     ThreadUtils.runInUIThreadNoWait(() -> ContextActionsTool_Tool.this.makeAvailableLater());
   }
   public void dispose() {
@@ -48,6 +45,7 @@ public class ContextActionsTool_Tool extends GeneratedTool {
     return gearActionGroup;
   }
   public JComponent getComponent() {
+    ContextActionsTool_Tool.this.getToolWindow().setAdditionalGearActions(ContextActionsTool_Tool.this.createGearActionGroup());
     return ContextActionsTool_Tool.this.myComponent;
   }
 }
