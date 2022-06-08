@@ -117,13 +117,13 @@ IF NOT "%USER_VM_OPTIONS_FILE%" == "" (
 )
 IF NOT "%VM_OPTIONS_FILE%" == "" (
   IF "%USER_GC%" == "" (
-    FOR /F "eol=# usebackq delims=" %%i IN ("%VM_OPTIONS_FILE%") DO CALL "%IDE_BIN_DIR%\append.bat" "%%i"
+    FOR /F "eol=# usebackq delims=" %%i IN ("%VM_OPTIONS_FILE%") DO CALL SET "ACC=%%ACC%% %%i"
   ) ELSE (
-    FOR /F "eol=# usebackq delims=" %%i IN (`FINDSTR /R /V /C:"-XX:\+Use.*GC" "%VM_OPTIONS_FILE%"`) DO CALL "%IDE_BIN_DIR%\append.bat" "%%i"
+    FOR /F "eol=# usebackq delims=" %%i IN (`FINDSTR /R /V /C:"-XX:\+Use.*GC" "%VM_OPTIONS_FILE%"`) DO CALL SET "ACC=%%ACC%% %%i"
   )
 )
 IF NOT "%USER_VM_OPTIONS_FILE%" == "" (
-  FOR /F "eol=# usebackq delims=" %%i IN ("%USER_VM_OPTIONS_FILE%") DO CALL "%IDE_BIN_DIR%\append.bat" "%%i"
+  FOR /F "eol=# usebackq delims=" %%i IN ("%USER_VM_OPTIONS_FILE%") DO CALL SET "ACC=%%ACC%% %%i"
 )
 IF "%VM_OPTIONS_FILE%%USER_VM_OPTIONS_FILE%" == "" (
   ECHO ERROR: cannot find a VM options file.
@@ -140,6 +140,7 @@ SET CLASS_PATH=%CLASS_PATH%;%IDE_HOME%\lib\mps-boot-util.jar
 SET CLASS_PATH=%CLASS_PATH%;%IDE_HOME%\lib\bootstrap.jar
 SET CLASS_PATH=%CLASS_PATH%;%IDE_HOME%\lib\extensions.jar
 SET CLASS_PATH=%CLASS_PATH%;%IDE_HOME%\lib\util.jar
+SET CLASS_PATH=%CLASS_PATH%;%IDE_HOME%\lib\util_rt.jar
 SET CLASS_PATH=%CLASS_PATH%;%IDE_HOME%\lib\3rd-party-rt.jar
 SET CLASS_PATH=%CLASS_PATH%;%IDE_HOME%\lib\jna.jar
 SET CLASS_PATH=%CLASS_PATH%;%JDK%\lib\tools.jar

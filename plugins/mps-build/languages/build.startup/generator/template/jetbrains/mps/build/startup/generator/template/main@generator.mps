@@ -3103,13 +3103,13 @@
       <property role="2DPR8u" value="  IF &quot;%USER_GC%&quot; == &quot;&quot; (" />
     </node>
     <node concept="2DRAP_" id="3MPxqbC7P1h" role="2DRAPQ">
-      <property role="2DPR8u" value="    FOR /F &quot;eol=# usebackq delims=&quot; %%i IN (&quot;%VM_OPTIONS_FILE%&quot;) DO CALL &quot;%IDE_BIN_DIR%\append.bat&quot; &quot;%%i&quot;" />
+      <property role="2DPR8u" value="    FOR /F &quot;eol=# usebackq delims=&quot; %%i IN (&quot;%VM_OPTIONS_FILE%&quot;) DO CALL SET &quot;ACC=%%ACC%% %%i&quot;" />
     </node>
     <node concept="2DRAP_" id="3MPxqbC7M1H" role="2DRAPQ">
       <property role="2DPR8u" value="  ) ELSE (" />
     </node>
     <node concept="2DRAP_" id="3MPxqbC7T1R" role="2DRAPQ">
-      <property role="2DPR8u" value="    FOR /F &quot;eol=# usebackq delims=&quot; %%i IN (`FINDSTR /R /V /C:&quot;-XX:\+Use.*GC&quot; &quot;%VM_OPTIONS_FILE%&quot;`) DO CALL &quot;%IDE_BIN_DIR%\append.bat&quot; &quot;%%i&quot;" />
+      <property role="2DPR8u" value="    FOR /F &quot;eol=# usebackq delims=&quot; %%i IN (`FINDSTR /R /V /C:&quot;-XX:\+Use.*GC&quot; &quot;%VM_OPTIONS_FILE%&quot;`) DO CALL SET &quot;ACC=%%ACC%% %%i&quot;" />
     </node>
     <node concept="2DRAP_" id="3MPxqbC7UTu" role="2DRAPQ">
       <property role="2DPR8u" value="  )" />
@@ -3121,7 +3121,7 @@
       <property role="2DPR8u" value="IF NOT &quot;%USER_VM_OPTIONS_FILE%&quot; == &quot;&quot; (" />
     </node>
     <node concept="2DRAP_" id="3MPxqbC7ZTc" role="2DRAPQ">
-      <property role="2DPR8u" value="  FOR /F &quot;eol=# usebackq delims=&quot; %%i IN (&quot;%USER_VM_OPTIONS_FILE%&quot;) DO CALL &quot;%IDE_BIN_DIR%\append.bat&quot; &quot;%%i&quot;" />
+      <property role="2DPR8u" value="  FOR /F &quot;eol=# usebackq delims=&quot; %%i IN (&quot;%USER_VM_OPTIONS_FILE%&quot;) DO CALL SET &quot;ACC=%%ACC%% %%i&quot;" />
     </node>
     <node concept="2DRAP_" id="3MPxqbC81xI" role="2DRAPQ">
       <property role="2DPR8u" value=")" />
