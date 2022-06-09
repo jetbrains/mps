@@ -30,6 +30,8 @@ import java.util.logging.SimpleFormatter;
  */
 public final class LogInitializer {
 
+  // FIXME perhaps, shall use java {@code -Djava.util.logging.config.class} or {@code java -Djava.util.logging.config.file)
+  // instead of explicit LogInitializer.init() call?
   public static void init() throws Exception {
     // next is similar to Log4jInitializer, except that we don't provide default log configuration (as long as
     // IDEA does not). We used to resort to default bin/log.xml; if IDEA comes with .properties with defaults,
@@ -38,7 +40,7 @@ public final class LogInitializer {
     if (logCfgPathStr != null) {
       Path logCfgPath = Paths.get(logCfgPathStr);
       if (!logCfgPath.isAbsolute()) {
-        // <user.home> seems more reasobnable than bin unless there's a default one under bin/ (if I provide custom log cfg,
+        // <user.home> seems more reasonable than bin unless there's a default one under bin/ (if I provide custom log cfg,
         // it's likely to be at the folder I start MPS from, rather than <installation>/bin/
         logCfgPath = Path.of(System.getProperty("user.home"), logCfgPathStr);
         // look from the 'bin/' directory where log.xml used to be
