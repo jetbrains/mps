@@ -911,11 +911,10 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-persistence.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-environment.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-project-check.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-textgen.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -964,11 +963,10 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-persistence.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-environment.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-project-check.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-textgen.jar" />
         <pathelement path="${build.tmp}/java/out/org.jetbrains.mps.samples.Constants" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
@@ -1016,11 +1014,10 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-persistence.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-environment.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-project-check.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-textgen.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -1070,11 +1067,10 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-persistence.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-environment.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-project-check.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-textgen.jar" />
         <pathelement path="${build.tmp}/java/out/org.jetbrains.mps.samples.IfAndUnless" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
@@ -1104,7 +1100,6 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-closures.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-collections.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-tuples.jar" />
@@ -1117,7 +1112,6 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-persistence.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-project-check.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-textgen.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
@@ -1156,7 +1150,6 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-closures.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-collections.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-openapi.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-tuples.jar" />
@@ -1169,7 +1162,6 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-persistence.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-project-check.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-textgen.jar" />
         <pathelement path="${build.tmp}/java/out/org.jetbrains.mps.samples.MoneyRuntime" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-problem.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-feedback-api.jar" />
@@ -1179,6 +1171,7 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-runtime.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-environment.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -1228,11 +1221,10 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-persistence.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-environment.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-project-check.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-textgen.jar" />
         <pathelement path="${build.tmp}/java/out/org.jetbrains.mps.samples.Money" />
         <pathelement path="${build.tmp}/java/out/org.jetbrains.mps.samples.MoneyRuntime" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
@@ -1282,11 +1274,10 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-persistence.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-environment.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-project-check.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-textgen.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
@@ -1336,11 +1327,10 @@
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-editor-runtime.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-persistence.jar" />
+        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-generator.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-environment.jar" />
         <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-project-check.jar" />
-        <fileset file="${artifacts.mpsPlugin}/mps-core/lib/mps-textgen.jar" />
         <pathelement path="${build.tmp}/java/out/org.jetbrains.mps.samples.ParallelFor" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />

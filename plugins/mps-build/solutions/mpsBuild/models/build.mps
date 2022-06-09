@@ -3827,29 +3827,9 @@
             </node>
           </node>
         </node>
-        <node concept="1E1SXE" id="5g8Dzn7kxL3" role="3bR37C">
-          <property role="1E1SXH" value="true" />
-          <ref role="1E1SXG" node="6g0vjebAkhc" resolve="mps-textgen" />
-          <node concept="398BVA" id="79RLYYOj47k" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="79RLYYOj4Dg" role="iGT6I">
-              <property role="2Ry0Am" value="mps-textgen.jar" />
-            </node>
-          </node>
-        </node>
         <node concept="1E1SXE" id="5g8Dzn7kxiK" role="3bR37C">
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="6C2IEmQCfZN" resolve="mps-make-rt" />
-        </node>
-        <node concept="1E1SXE" id="5g8Dzn7kzDZ" role="3bR37C">
-          <property role="1E1SXH" value="true" />
-          <ref role="1E1SXG" node="75RBgxKm6HY" resolve="mps-generator" />
-          <node concept="398BVA" id="79RLYYOj52H" role="17Grwy">
-            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
-            <node concept="2Ry0Ak" id="79RLYYOj5H3" role="iGT6I">
-              <property role="2Ry0Am" value="mps-generator.jar" />
-            </node>
-          </node>
         </node>
         <node concept="1E1SXE" id="2gLJqH2X4rP" role="3bR37C">
           <property role="1E1SXH" value="true" />
