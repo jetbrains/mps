@@ -8,11 +8,7 @@
       <sourceRoot location="mps-messaging.jar" />
       <sourceRoot location="mps-project-check.jar" />
 
-      <sourceRoot location="mps-generator.jar" />
-      <sourceRoot location="mps-textgen.jar" />
       <sourceRoot location="mps-persistence.jar" />
-      <!-- FIXME make sure nobody references these runtimes through MPS.Core. These are regular solutions, clients shall reference source nodes, not stubs-->
-      <sourceRoot location="mps-constraints-runtime.jar" />
       <Sources zipPath="${mps_home}/lib/MPS-src.zip"/>
     </modelRoot>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
@@ -38,14 +34,11 @@
     <stubModelEntry path="${mps_home}/lib/mps-project-check.jar" />
 
     <!-- shall extract next out of MPS.Core -->
-    <stubModelEntry path="${mps_home}/lib/mps-generator.jar" />
-    <stubModelEntry path="${mps_home}/lib/mps-textgen.jar" />
     <stubModelEntry path="${mps_home}/lib/mps-persistence.jar" />
     <!-- moreover, next are exposed through respective solutions, do we need them in MPS.Core? mps-core code does depend from runtime classes, but do we need to manifest this as java libs of MPS.Core-->
     <stubModelEntry path="${mps_home}/lib/mps-closures.jar" />
     <stubModelEntry path="${mps_home}/lib/mps-collections.jar" />
     <stubModelEntry path="${mps_home}/lib/mps-tuples.jar" />
-    <stubModelEntry path="${mps_home}/lib/mps-constraints-runtime.jar" />
     <!-- Some code expects MPS.Core to provide next libraries as classpath. Don't want to add guava, xstream, asm-all unless have to do so-->
     <stubModelEntry path="${platform_lib}/util.jar" />
     <stubModelEntry path="${platform_lib}/3rd-party-rt.jar" />
