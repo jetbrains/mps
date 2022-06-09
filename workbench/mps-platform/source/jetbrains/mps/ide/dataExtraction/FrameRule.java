@@ -21,6 +21,7 @@ import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.wm.IdeFrame;
 import com.intellij.openapi.wm.WindowManager;
+import com.intellij.openapi.wm.ex.WindowManagerEx;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
@@ -38,23 +39,32 @@ public class FrameRule implements GetDataRule {
   public JFrame getData(@NotNull DataProvider dataProvider) {
     Project project = determineProject(dataProvider);
     if (project == null) {
-      // XXX this part could be quite dangerous, if anyone uses JFrame for anything but JFrame
-      //     e.g. LocationRule used to obtain MPSProject from JFrame, and ruined concept behind
-      //     IDEA's DataProvider hierarchy poll, by letting an incapable dataProvider to answer inquiries  it
-      //     wasn't supposed to cover.
-      // fixme this branch in 202/203 leads to not currently active frame and I do not know of the correct api
-      //       #deduceFromActive window is the correct approach but there is no Frame there so I am lost
-      LOG.warn("incorrect frame might be returned");
-      return WindowManager.getInstance().findVisibleFrame();
+      LOG.debug("could not determine the current project");
+      return null;
     }
     return WindowManager.getInstance().getFrame(project);
   }
 
   @Nullable
+  private Project deduceFromFrameHelper() {
+    var frameHelper = WindowManagerEx.getInstanceEx().findFirstVisibleFrameHelper();
+    if (frameHelper != null) {
+      return frameHelper.getProject();
+    }
+    return null;
+  }
+
+  @Nullable
   private Project determineProject(@NotNull DataProvider dataProvider) {
     Project project = CommonDataKeys.PROJECT.getData(dataProvider);
-    return project != null ? project
-                           : deduceFromActiveWindow();
+    if (project != null) {
+      return project;
+    }
+    project = deduceFromActiveWindow();
+    if (project != null) {
+      return project;
+    }
+    return deduceFromFrameHelper();
   }
 
   @Nullable
@@ -63,8 +73,6 @@ public class FrameRule implements GetDataRule {
     Window activeWindow = FocusManager.getCurrentManager().getActiveWindow();
     if (activeWindow instanceof IdeFrame) {
       project = ((IdeFrame) activeWindow).getProject();
-    } else {
-      LOG.debug("Active frames have not been found");
     }
     return project;
   }
