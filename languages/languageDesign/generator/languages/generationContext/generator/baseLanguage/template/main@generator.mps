@@ -17,7 +17,6 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="fwk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.textgen.trace(MPS.Core/)" />
     <import index="q1l7" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.template(MPS.Generator/)" />
-    <import index="q1l8" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.generator.template(MPS.Core/)" implicit="true" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -914,7 +913,7 @@
             <node concept="10QFUN" id="2nOWYLLMBiE" role="1eOMHV">
               <node concept="10Nm6u" id="2nOWYLLMBiF" role="10QFUP" />
               <node concept="3uibUv" id="2nOWYLLMBiG" role="10QFUM">
-                <ref role="3uigEE" to="q1l8:~TemplateQueryContext" resolve="TemplateQueryContext" />
+                <ref role="3uigEE" to="q1l7:~TemplateQueryContext" resolve="TemplateQueryContext" />
               </node>
             </node>
             <node concept="29HgVG" id="2nOWYLLMBiH" role="lGtFl">
@@ -941,7 +940,7 @@
             </node>
           </node>
           <node concept="liA8E" id="2nOWYLLMBiS" role="2OqNvi">
-            <ref role="37wK5l" to="q1l8:~TemplateQueryContext.getOutputListForInputAndLabel(java.lang.String,java.lang.Object,java.lang.Object)" resolve="getOutputListForInputAndLabel" />
+            <ref role="37wK5l" to="q1l7:~TemplateQueryContext.getOutputListForInputAndLabel(java.lang.String,java.lang.Object,java.lang.Object)" resolve="getOutputListForInputAndLabel" />
             <node concept="Xl_RD" id="2nOWYLLMBj1" role="37wK5m">
               <property role="Xl_RC" value="label" />
               <node concept="17Uvod" id="2nOWYLLMBj2" role="lGtFl">
