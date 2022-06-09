@@ -20942,6 +20942,9 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.textGen" />
         <property role="3LESm3" value="b83431fe-5c8f-40bc-8a36-65e25f4dd253" />
+        <node concept="1E0d5M" id="Osu1DbMRno" role="1E1XAP">
+          <ref role="1E0d5P" node="rD7wKO5Iy" resolve="MPS.TextGen" />
+        </node>
         <node concept="3rtmxn" id="EpEP7iiikt" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iiiku" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iiikv" role="3LXTna">
