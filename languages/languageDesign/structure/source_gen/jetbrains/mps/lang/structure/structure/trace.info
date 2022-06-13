@@ -248,8 +248,8 @@
       <node id="1082978164219" at="38,0,39,0" concept="2" trace="myConceptEnumerationDataTypeDeclaration_Old" />
       <node id="1082978164219" at="121,68,122,59" concept="6" />
       <node id="1082978164219" at="352,92,353,191" concept="5" />
-      <node id="1082978164219" at="353,191,354,33" concept="1" />
-      <node id="1082978164219" at="354,33,355,74" concept="7" />
+      <node id="1082978164219" at="353,191,354,34" concept="1" />
+      <node id="1082978164219" at="354,34,355,74" concept="7" />
       <node id="1082978164219" at="355,74,356,70" concept="1" />
       <node id="1082978164219" at="357,75,358,109" concept="1" />
       <node id="1082978164219" at="358,109,359,17" concept="1" />

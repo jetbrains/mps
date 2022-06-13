@@ -637,7 +637,6 @@
     </node>
   </node>
   <node concept="1TIwiD" id="fKAxPRV">
-    <property role="19KtqR" value="true" />
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
     <property role="TrG5h" value="EnumerationDataTypeDeclaration_Old" />

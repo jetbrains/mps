@@ -351,7 +351,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   }
   private static ConceptDescriptor createDescriptorForEnumerationDataTypeDeclaration_Old() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.lang.structure", "EnumerationDataTypeDeclaration_Old", 0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfbL);
-    b.class_(false, false, true);
+    b.class_(false, false, false);
     // extends: jetbrains.mps.lang.structure.structure.DataTypeDeclaration
     b.super_(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xfc26875dfaL);
     b.parent(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0xeeb344f64a629e5L);
