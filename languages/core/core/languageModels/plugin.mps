@@ -9137,6 +9137,124 @@
                       </node>
                     </node>
                   </node>
+                  <node concept="9aQIb" id="1JUGCoW0FbZ" role="9aQIa">
+                    <node concept="3clFbS" id="1JUGCoW0Fc0" role="9aQI4">
+                      <node concept="3SKdUt" id="1JUGCoW0Twd" role="3cqZAp">
+                        <node concept="1PaTwC" id="1JUGCoW0Twe" role="1aUNEU">
+                          <node concept="3oM_SD" id="1JUGCoW0VP0" role="1PaTwD">
+                            <property role="3oM_SC" value="directory" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW0VPf" role="1PaTwD">
+                            <property role="3oM_SC" value="itself" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW0VPi" role="1PaTwD">
+                            <property role="3oM_SC" value="is" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW0VPm" role="1PaTwD">
+                            <property role="3oM_SC" value="retained," />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW0VPr" role="1PaTwD">
+                            <property role="3oM_SC" value="don't" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW0VPx" role="1PaTwD">
+                            <property role="3oM_SC" value="report" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW0VPC" role="1PaTwD">
+                            <property role="3oM_SC" value="its" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW0VPK" role="1PaTwD">
+                            <property role="3oM_SC" value="files," />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW0VPT" role="1PaTwD">
+                            <property role="3oM_SC" value="but" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW0VQ3" role="1PaTwD">
+                            <property role="3oM_SC" value="nested" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW0VQe" role="1PaTwD">
+                            <property role="3oM_SC" value="directories" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW11yq" role="1PaTwD">
+                            <property role="3oM_SC" value="still" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="3SKdUt" id="1JUGCoW0Ynp" role="3cqZAp">
+                        <node concept="1PaTwC" id="1JUGCoW0Ynq" role="1aUNEU">
+                          <node concept="3oM_SD" id="1JUGCoW0YnN" role="1PaTwD">
+                            <property role="3oM_SC" value="may" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW11yR" role="1PaTwD">
+                            <property role="3oM_SC" value="contain" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW11wf" role="1PaTwD">
+                            <property role="3oM_SC" value="stale" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW1LPa" role="1PaTwD">
+                            <property role="3oM_SC" value="files," />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW1LPv" role="1PaTwD">
+                            <property role="3oM_SC" value="add" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW1LP_" role="1PaTwD">
+                            <property role="3oM_SC" value="these" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW1LPG" role="1PaTwD">
+                            <property role="3oM_SC" value="for" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW1LPO" role="1PaTwD">
+                            <property role="3oM_SC" value="further" />
+                          </node>
+                          <node concept="3oM_SD" id="1JUGCoW1LQt" role="1PaTwD">
+                            <property role="3oM_SC" value="consideration" />
+                          </node>
+                        </node>
+                      </node>
+                      <node concept="1DcWWT" id="1JUGCoW1hZH" role="3cqZAp">
+                        <node concept="3clFbS" id="1JUGCoW1hZK" role="2LFqv$">
+                          <node concept="3clFbJ" id="1JUGCoW1nlF" role="3cqZAp">
+                            <node concept="2OqwBi" id="1JUGCoW1t3G" role="3clFbw">
+                              <node concept="37vLTw" id="1JUGCoW1qLA" role="2Oq$k0">
+                                <ref role="3cqZAo" node="1JUGCoW1hZL" resolve="ch" />
+                              </node>
+                              <node concept="liA8E" id="1JUGCoW1weK" role="2OqNvi">
+                                <ref role="37wK5l" to="3ju5:~IFile.isDirectory()" resolve="isDirectory" />
+                              </node>
+                            </node>
+                            <node concept="3clFbS" id="1JUGCoW1nlH" role="3clFbx">
+                              <node concept="3clFbF" id="1JUGCoW1zew" role="3cqZAp">
+                                <node concept="2OqwBi" id="1JUGCoW1BS$" role="3clFbG">
+                                  <node concept="37vLTw" id="1JUGCoW1zev" role="2Oq$k0">
+                                    <ref role="3cqZAo" node="6SL1vERvj8U" resolve="fqueue" />
+                                  </node>
+                                  <node concept="liA8E" id="1JUGCoW1Gp0" role="2OqNvi">
+                                    <ref role="37wK5l" to="33ny:~ArrayDeque.add(java.lang.Object)" resolve="add" />
+                                    <node concept="37vLTw" id="1JUGCoW1IHu" role="37wK5m">
+                                      <ref role="3cqZAo" node="1JUGCoW1hZL" resolve="ch" />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                        <node concept="3cpWsn" id="1JUGCoW1hZL" role="1Duv9x">
+                          <property role="TrG5h" value="ch" />
+                          <node concept="3uibUv" id="1JUGCoW1hZP" role="1tU5fm">
+                            <ref role="3uigEE" to="3ju5:~IFile" resolve="IFile" />
+                          </node>
+                        </node>
+                        <node concept="2OqwBi" id="1JUGCoW1hZQ" role="1DdaDG">
+                          <node concept="37vLTw" id="1JUGCoW1hZR" role="2Oq$k0">
+                            <ref role="3cqZAo" node="6SL1vERvoD9" resolve="f" />
+                          </node>
+                          <node concept="liA8E" id="1JUGCoW1hZS" role="2OqNvi">
+                            <ref role="37wK5l" to="3ju5:~IFile.getChildren()" resolve="getChildren" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
                 </node>
               </node>
               <node concept="2OqwBi" id="6SL1vERvp0y" role="3clFbw">

@@ -182,6 +182,14 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
       if (f.isDirectory()) {
         if (folderVisitPredicate.test(f)) {
           fqueue.addAll(f.getChildren());
+        } else {
+          // directory itself is retained, don't report its files, but nested directories still
+          // may contain stale files, add these for further consideration
+          for (IFile ch : f.getChildren()) {
+            if (ch.isDirectory()) {
+              fqueue.add(ch);
+            }
+          }
         }
       } else {
         visitor.accept(f);
