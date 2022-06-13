@@ -12,13 +12,14 @@ import jetbrains.mps.lang.test.runtime.TransformationTest;
 import java.util.List;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.internal.collections.runtime.Sequence;
-import jetbrains.mps.internal.collections.runtime.ISelector;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
+import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.junit.Assert;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.behavior.SNodeOperation__BehaviorDescriptor;
-import org.junit.Assert;
 import java.util.ArrayList;
 import java.util.Set;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -26,7 +27,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 
 @MPSLaunch
 public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
@@ -55,21 +56,27 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
     public void test_testApplicableSetsDoNotIntersect() throws Exception {
       runWithinCommand(() -> addNodeById("6410670351275222996"));
       runWithinCommand(() -> {
-        List<SConcept> allConcepts = Sequence.fromIterable(TestBody.this.getAllNodeOperations()).select(new ISelector<SAbstractConcept, SConcept>() {
-          public SConcept select(SAbstractConcept it) {
-            return SNodeOperations.castConcept(it, CONCEPTS.SNodeOperation$pA);
-          }
-        }).toListSequence();
+        List<SConcept> allConcepts = Sequence.fromIterable(TestBody.this.getAllNodeOperations()).toListSequence();
+        final SNode dtString = SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983041843"), SNodeOperations.getModel(getNodeById("6410670351275225853")).getRepository());
+        final SNode dtLinkMetclass = SPointerOperations.resolveNode(new SNodePointer("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "4241665505353447573"), SNodeOperations.getModel(getNodeById("6410670351275225853")).getRepository());
+        Assert.assertNotNull(dtString);
+        Assert.assertNotNull(dtLinkMetclass);
         for (SConcept c : ListSequence.fromList(allConcepts)) {
           if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.SNodeOperation$pA)) {
             continue;
           }
-          boolean toProperty = (boolean) SNodeOperation__BehaviorDescriptor.applicableToProperty_id45eRmv019Ae.invoke(SNodeOperations.asSConcept(c), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1082983041843")) || (boolean) SNodeOperation__BehaviorDescriptor.applicableToProperty_id45eRmv019Ae.invoke(SNodeOperations.asSConcept(c), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "4241665505353447573")) || (boolean) SNodeOperation__BehaviorDescriptor.applicableToProperty_id45eRmv019Ae.invoke(SNodeOperations.asSConcept(c), SNodeOperations.getNode("r:00000000-0000-4000-0000-011c89590292(jetbrains.mps.lang.structure.structure)", "1084199179703"));
+          if (SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.Property_HasValue_Enum$dn)) {
+            // to check this op, we'd need an instance of old enum declaration. I don't see a point to test operation
+            // we are going to throw away, at expense of keeping more deprecated instances.
+            continue;
+          }
+
+          boolean toProperty = (boolean) SNodeOperation__BehaviorDescriptor.applicableToProperty_id45eRmv019Ae.invoke(SNodeOperations.asSConcept(c), dtString) || (boolean) SNodeOperation__BehaviorDescriptor.applicableToProperty_id45eRmv019Ae.invoke(SNodeOperations.asSConcept(c), dtLinkMetclass);
           boolean toModel = (boolean) SNodeOperation__BehaviorDescriptor.applicableToModel_id1653mnvAf1y.invoke(SNodeOperations.asSConcept(c));
           boolean toLinkList = (boolean) SNodeOperation__BehaviorDescriptor.applicableToLinkList_id1653mnvAgwe.invoke(SNodeOperations.asSConcept(c));
           boolean toSingleLink = (boolean) SNodeOperation__BehaviorDescriptor.applicableToLink_id1653mnvAgvK.invoke(SNodeOperations.asSConcept(c));
           boolean toConceptOrNode = (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(c)) || (boolean) SNodeOperation__BehaviorDescriptor.applicableToNode_id1653mnvAgrs.invoke(SNodeOperations.asSConcept(c));
-          Assert.assertTrue(c.getQualifiedName(), TestBody.this.countFlags(ListSequence.fromListAndArray(new ArrayList<Boolean>(), toProperty, toModel, toSingleLink, toLinkList, toConceptOrNode)) == 1);
+          Assert.assertEquals(String.format("Wrong applicableTo for %s", c.getName()), 1, TestBody.this.countFlags(ListSequence.fromListAndArray(new ArrayList<Boolean>(), toProperty, toModel, toSingleLink, toLinkList, toConceptOrNode)));
           Assert.assertTrue(c.getQualifiedName(), SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.AsSConcept$qr) || SConceptOperations.isExactly(SNodeOperations.asSConcept(c), CONCEPTS.Node_ConceptMethodCall$mz) || TestBody.this.countFlags(ListSequence.fromListAndArray(new ArrayList<Boolean>(), (boolean) SNodeOperation__BehaviorDescriptor.applicableToSConcept_id7E3Sw0HhwkZ.invoke(SNodeOperations.asSConcept(c)), (boolean) SNodeOperation__BehaviorDescriptor.applicableToNode_id1653mnvAgrs.invoke(SNodeOperations.asSConcept(c)))) <= 1);
         }
       });
@@ -86,10 +93,11 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
       });
     }
 
-    public Iterable<SAbstractConcept> getAllNodeOperations() {
+    public Iterable<SConcept> getAllNodeOperations() {
       SNode var6410670351275231787 = getNodeById("6410670351275225853");
       Set<SLanguage> allLanguages = SetSequence.fromSetWithValues(new HashSet<SLanguage>(), LanguageRegistry.getInstance(SNodeOperations.getModel(getNodeById("6410670351275225853")).getRepository()).getAllLanguages());
-      return SConceptOperations.getAllSubConcepts(CONCEPTS.SNodeOperation$pA, allLanguages);
+      Iterable<SAbstractConcept> allSubConcepts = SConceptOperations.getAllSubConcepts(CONCEPTS.SNodeOperation$pA, allLanguages);
+      return Sequence.fromIterable(allSubConcepts).ofType(SConcept.class);
     }
     public int countFlags(List<Boolean> flags) {
       int result = 0;
@@ -104,6 +112,7 @@ public class NodeOperationsApplicableFlags_Test extends BaseTransformationTest {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept SNodeOperation$pA = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1090ea2ebacL, "jetbrains.mps.lang.smodel.structure.SNodeOperation");
+    /*package*/ static final SConcept Property_HasValue_Enum$dn = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x10add1ded2bL, "jetbrains.mps.lang.smodel.structure.Property_HasValue_Enum");
     /*package*/ static final SConcept Node_ConceptMethodCall$mz = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x1129a43046bL, "jetbrains.mps.lang.smodel.structure.Node_ConceptMethodCall");
     /*package*/ static final SConcept AsSConcept$qr = MetaAdapterFactory.getConcept(0x7866978ea0f04cc7L, 0x81bc4d213d9375e1L, 0x4a4d7215f163131L, "jetbrains.mps.lang.smodel.structure.AsSConcept");
   }
