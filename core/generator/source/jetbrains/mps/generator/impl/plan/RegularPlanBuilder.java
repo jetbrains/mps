@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -200,9 +200,6 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
     HashSet<TemplateModule> explicitlyMentioned = new HashSet<>();
     mySteps.forEach(s -> s.reportInvolvedGenerators(explicitlyMentioned));
     HashSet<TemplateModule> availableAsExt = new HashSet<>(myEngagedGenerators);
-    // FIXME quite ineffective way to deal with LanguageRuntime.getGenerators producing new instance of TemplateModule each time asked.
-    // XXX with no interpreted generators instantiated from LR.getGenerators, can get rid of this code.
-    availableAsExt.removeIf(tm -> explicitlyMentioned.stream().anyMatch(m -> m.getModuleReference().equals(tm.getModuleReference())));
     class S implements Comparable<S> {
       public final TemplateModule generator;
       private final Collection<TemplateModule> directlyExtendedGenerators;
@@ -288,6 +285,18 @@ public class RegularPlanBuilder implements GenerationPlanBuilder {
      * For E: G, F
      */
     for (S s : topoOrder) {
+      final SModuleReference tmr = s.generator.getModuleReference();
+      // FIXME quite ineffective way to deal with LanguageRuntime.getGenerators producing new instance of TemplateModule each time asked.
+      // XXX with no interpreted generators instantiated from LR.getGenerators, can get rid of this code.
+      if (explicitlyMentioned.stream().anyMatch(em -> em.getModuleReference().equals(tmr))) {
+        // we can't exclude explicitly mentioned generators before we build topo order (as it used to be)
+        // as it might break transitive dependencies: X, Y -> Z, Z from 'explicitly mentioned'; Q -> Y;
+        // X.compareTo(Y) == 0, and Q.compareTo(X) == 0, but Q.compareTo(Y) != 0. Therefore, I try to keep
+        // "base" generators in the list to help with sorting (though this doesn't mean it would help always,
+        // there could be scenario when "base" is still not enough. Need to write a custom sorting algorithm
+        // that treats compareTo() == 0 as 'irrelevant' instead of 'equal'.
+        continue;
+      }
       Collection<SModuleReference> directlyExtendedGenerators = s.directlyExtendedGenerators();
       for (StepEntry se : mySteps) {
         if (!se.registerIfIntersects(directlyExtendedGenerators, s.generator)) {
