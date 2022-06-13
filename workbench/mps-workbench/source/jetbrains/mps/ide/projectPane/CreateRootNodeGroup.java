@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
+import jetbrains.mps.project.DevKit;
 import jetbrains.mps.smodel.BootstrapLanguages;
 import jetbrains.mps.smodel.SModelOperations;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -37,6 +38,8 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
+import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 
 import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
@@ -105,12 +108,23 @@ public class CreateRootNodeGroup extends BaseGroup {
     enable(event.getPresentation());
 
 
-    ArrayList<SLanguage> mainLanguages = new ArrayList<>();
+    LinkedHashSet<SLanguage> mainLanguages = new LinkedHashSet<>();
     if (SModelStereotype.isGeneratorModel(targetModel)) {
       // hardcoded case for generator model isn't nice, but still better than these values hidden somewhere among unrelated languages
       mainLanguages.add(BootstrapLanguages.getGeneratorLang());
     }
     mainLanguages.addAll(LanguageAspectSupport.getMainLanguages(targetModel));
+    final SModuleReference defaultDevkit = LanguageAspectSupport.getDefaultDevkit(targetModel);
+    if (defaultDevkit != null) {
+      final SModule dk = defaultDevkit.resolve(targetModel.getRepository());
+      if (dk instanceof DevKit) {
+        // I care about languages exported by DK itself, not transitive set of all languages
+        // from all extended DKs. I assume 'default' DK has to mention its 'native' languages
+        // while extended DK are to bring in some common/shared functionality.
+        mainLanguages.addAll(((DevKit) dk).getExportedLanguageIds());
+      }
+    }
+
     for (SLanguage mainLang : mainLanguages) {
       addActionsForRoots(mainLang, targetModel, this);
     }

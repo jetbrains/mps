@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,10 +30,12 @@ import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class DevKit extends AbstractModule {
   private DevkitDescriptor myDescriptor;
@@ -60,6 +62,7 @@ public class DevKit extends AbstractModule {
     }
   }
 
+  // XXX perhaps, deprecate and replace with {@link #getExportedLanguageIds())?
   public List<Language> getExportedLanguages() {
     SRepository repo = getRepository();
     if (repo == null) {
@@ -96,6 +99,10 @@ public class DevKit extends AbstractModule {
       }
     }
     return result;
+  }
+
+  public Collection<SLanguage> getExportedLanguageIds() {
+    return myDescriptor.getExportedLanguages().stream().map(MetaAdapterFactory::getLanguage).collect(Collectors.toList());
   }
 
   public Iterable<SLanguage> getAllExportedLanguageIds() {

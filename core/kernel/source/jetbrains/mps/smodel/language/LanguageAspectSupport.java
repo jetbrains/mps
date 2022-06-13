@@ -120,6 +120,10 @@ public class LanguageAspectSupport {
     return IterableUtil.asCollection(d.getAllExportedLanguageIds());
   }
 
+  /**
+   * @deprecated respective SimpleLanguageAspectDescriptor.mainLanguages has been deprecated since 2018.1
+   */
+  @Deprecated(since = "2022.2", forRemoval = true)
   public static Collection<SLanguage> getMainLanguages(SModel model) {
     LanguageAspectDescriptor newAspect = getNewAspect(model);
     if (newAspect != null) return newAspect.getMainLanguages();
