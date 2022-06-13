@@ -16811,6 +16811,9 @@
         <property role="BnDLt" value="true" />
         <property role="TrG5h" value="jetbrains.mps.lang.generator.generationContext" />
         <property role="3LESm3" value="d7706f63-9be2-479c-a3da-ae92af1e64d5" />
+        <node concept="1E0d5M" id="3PkAse59rqV" role="1E1XAP">
+          <ref role="1E0d5P" node="rD7wKO6k$" resolve="MPS.Generator" />
+        </node>
         <node concept="3rtmxn" id="EpEP7iiign" role="3bR31x">
           <node concept="3LXTmp" id="EpEP7iiigo" role="3rtmxm">
             <node concept="3qWCbU" id="EpEP7iiigp" role="3LXTna">
