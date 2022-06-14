@@ -42,6 +42,7 @@
     <import index="av9" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.impl.cache(MPS.Generator/)" />
     <import index="ao3" ref="7124e466-fc92-4803-a656-d7a6b7eb3910/java:jetbrains.mps.text(MPS.TextGen/)" />
     <import index="w8cm" ref="215c4c45-ba99-49f5-9ab7-4b6901a63cfd/java:jetbrains.mps.generator.impl.dependencies(MPS.Generator/)" />
+    <import index="28m1" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.time(JDK/)" implicit="true" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -75,6 +76,7 @@
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
       <concept id="1215695189714" name="jetbrains.mps.baseLanguage.structure.PlusAssignmentExpression" flags="nn" index="d57v9" />
+      <concept id="1153422305557" name="jetbrains.mps.baseLanguage.structure.LessThanOrEqualsExpression" flags="nn" index="2dkUwp" />
       <concept id="4836112446988635817" name="jetbrains.mps.baseLanguage.structure.UndefinedType" flags="in" index="2jxLKc" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
@@ -190,6 +192,7 @@
       <concept id="1068581242864" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclarationStatement" flags="nn" index="3cpWs8">
         <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
       </concept>
+      <concept id="1068581242867" name="jetbrains.mps.baseLanguage.structure.LongType" flags="in" index="3cpWsb" />
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
       <concept id="1068581517677" name="jetbrains.mps.baseLanguage.structure.VoidType" flags="in" index="3cqZAl" />
       <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
@@ -1246,26 +1249,77 @@
                 </node>
               </node>
             </node>
+            <node concept="3cpWs8" id="5sdTN4veC$_" role="3cqZAp">
+              <node concept="3cpWsn" id="5sdTN4veC$A" role="3cpWs9">
+                <property role="TrG5h" value="tgs" />
+                <node concept="3uibUv" id="5sdTN4veC$B" role="1tU5fm">
+                  <ref role="3uigEE" to="ao3:~TextGenSettings" resolve="TextGenSettings" />
+                </node>
+                <node concept="2OqwBi" id="5sdTN4veIov" role="33vP2m">
+                  <node concept="37vLTw" id="5sdTN4veHYO" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7A08csWclcg" resolve="mpsProject" />
+                  </node>
+                  <node concept="liA8E" id="5sdTN4veIWL" role="2OqNvi">
+                    <ref role="37wK5l" to="z1c3:~Project.getComponent(java.lang.Class)" resolve="getComponent" />
+                    <node concept="3VsKOn" id="5sdTN4veJs8" role="37wK5m">
+                      <ref role="3VsUkX" to="ao3:~TextGenSettings" resolve="TextGenSettings" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
             <node concept="3cpWs8" id="5L5h3brvDK9" role="3cqZAp">
               <node concept="3cpWsn" id="5L5h3brvDKa" role="3cpWs9">
                 <property role="TrG5h" value="_generateDebugInfo" />
                 <property role="3TUv4t" value="true" />
                 <node concept="10P_77" id="5L5h3brvDKb" role="1tU5fm" />
                 <node concept="22lmx$" id="5L5h3brvDKc" role="33vP2m">
-                  <node concept="3clFbC" id="5L5h3brvDKd" role="3uHU7B">
-                    <node concept="1aIXbY" id="5L5h3brvDKe" role="3uHU7B">
-                      <node concept="1aIXbZ" id="5L5h3brvDKf" role="2Oq$k0" />
-                      <node concept="2sxana" id="5L5h3brvDKg" role="2OqNvi">
-                        <ref role="2sxfKC" node="5L5h3brvDMS" resolve="generateDebugInfo" />
-                      </node>
-                    </node>
-                    <node concept="10Nm6u" id="5L5h3brvDKh" role="3uHU7w" />
-                  </node>
                   <node concept="1aIXbY" id="5L5h3brvDKi" role="3uHU7w">
                     <node concept="1aIXbZ" id="5L5h3brvDKj" role="2Oq$k0" />
                     <node concept="2sxana" id="5L5h3brvDKk" role="2OqNvi">
                       <ref role="2sxfKC" node="5L5h3brvDMS" resolve="generateDebugInfo" />
                     </node>
+                  </node>
+                  <node concept="1eOMI4" id="5sdTN4veZCO" role="3uHU7B">
+                    <node concept="1Wc70l" id="5sdTN4vf3Pc" role="1eOMHV">
+                      <node concept="2OqwBi" id="5sdTN4vf6EO" role="3uHU7w">
+                        <node concept="37vLTw" id="5sdTN4vf5yn" role="2Oq$k0">
+                          <ref role="3cqZAo" node="5sdTN4veC$A" resolve="tgs" />
+                        </node>
+                        <node concept="liA8E" id="5sdTN4vf8zS" role="2OqNvi">
+                          <ref role="37wK5l" to="ao3:~TextGenSettings.isGenerateDebugInfo()" resolve="isGenerateDebugInfo" />
+                        </node>
+                      </node>
+                      <node concept="3clFbC" id="5L5h3brvDKd" role="3uHU7B">
+                        <node concept="1aIXbY" id="5L5h3brvDKe" role="3uHU7B">
+                          <node concept="1aIXbZ" id="5L5h3brvDKf" role="2Oq$k0" />
+                          <node concept="2sxana" id="5L5h3brvDKg" role="2OqNvi">
+                            <ref role="2sxfKC" node="5L5h3brvDMS" resolve="generateDebugInfo" />
+                          </node>
+                        </node>
+                        <node concept="10Nm6u" id="5L5h3brvDKh" role="3uHU7w" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="5sdTN4vffdJ" role="3cqZAp">
+              <node concept="3cpWsn" id="5sdTN4vffdH" role="3cpWs9">
+                <property role="3TUv4t" value="true" />
+                <property role="TrG5h" value="timeoutSeconds" />
+                <node concept="3cpWsb" id="5sdTN4vfknm" role="1tU5fm" />
+                <node concept="2OqwBi" id="5sdTN4vfnQn" role="33vP2m">
+                  <node concept="2OqwBi" id="5sdTN4vflTF" role="2Oq$k0">
+                    <node concept="37vLTw" id="5sdTN4vflL2" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5sdTN4veC$A" resolve="tgs" />
+                    </node>
+                    <node concept="liA8E" id="5sdTN4vfmeq" role="2OqNvi">
+                      <ref role="37wK5l" to="ao3:~TextGenSettings.getPerModelTimeout()" resolve="getPerModelTimeout" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="5sdTN4vfolH" role="2OqNvi">
+                    <ref role="37wK5l" to="28m1:~Duration.toSeconds()" resolve="toSeconds" />
                   </node>
                 </node>
               </node>
@@ -2130,18 +2184,36 @@
                         <node concept="3uibUv" id="7A08csWcIKq" role="1tU5fm">
                           <ref role="3uigEE" to="ao3:~TextGenResult" resolve="TextGenResult" />
                         </node>
-                        <node concept="2OqwBi" id="7A08csWcILI" role="33vP2m">
-                          <node concept="37vLTw" id="7A08csWcILJ" role="2Oq$k0">
-                            <ref role="3cqZAo" node="7A08csWc1Yj" resolve="resultQueue" />
-                          </node>
-                          <node concept="liA8E" id="7A08csWcILK" role="2OqNvi">
-                            <ref role="37wK5l" to="5zyv:~ArrayBlockingQueue.poll(long,java.util.concurrent.TimeUnit)" resolve="poll" />
-                            <node concept="3cmrfG" id="7A08csWcILL" role="37wK5m">
-                              <property role="3cmrfH" value="3" />
+                        <node concept="3K4zz7" id="5sdTN4vf_AL" role="33vP2m">
+                          <node concept="2dkUwp" id="5sdTN4vfyPR" role="3K4Cdx">
+                            <node concept="37vLTw" id="5sdTN4vft5C" role="3uHU7B">
+                              <ref role="3cqZAo" node="5sdTN4vffdH" resolve="timeoutSeconds" />
                             </node>
-                            <node concept="Rm8GO" id="7A08csWcILM" role="37wK5m">
-                              <ref role="Rm8GQ" to="5zyv:~TimeUnit.MINUTES" resolve="MINUTES" />
-                              <ref role="1Px2BO" to="5zyv:~TimeUnit" resolve="TimeUnit" />
+                            <node concept="3cmrfG" id="5sdTN4vfwie" role="3uHU7w">
+                              <property role="3cmrfH" value="0" />
+                            </node>
+                          </node>
+                          <node concept="2OqwBi" id="7A08csWcILI" role="3K4E3e">
+                            <node concept="37vLTw" id="7A08csWcILJ" role="2Oq$k0">
+                              <ref role="3cqZAo" node="7A08csWc1Yj" resolve="resultQueue" />
+                            </node>
+                            <node concept="liA8E" id="7A08csWcILK" role="2OqNvi">
+                              <ref role="37wK5l" to="5zyv:~ArrayBlockingQueue.take()" resolve="take" />
+                            </node>
+                          </node>
+                          <node concept="2OqwBi" id="5sdTN4vfE$z" role="3K4GZi">
+                            <node concept="37vLTw" id="5sdTN4vfE$$" role="2Oq$k0">
+                              <ref role="3cqZAo" node="7A08csWc1Yj" resolve="resultQueue" />
+                            </node>
+                            <node concept="liA8E" id="5sdTN4vfE$_" role="2OqNvi">
+                              <ref role="37wK5l" to="5zyv:~ArrayBlockingQueue.poll(long,java.util.concurrent.TimeUnit)" resolve="poll" />
+                              <node concept="37vLTw" id="5sdTN4vfW7P" role="37wK5m">
+                                <ref role="3cqZAo" node="5sdTN4vffdH" resolve="timeoutSeconds" />
+                              </node>
+                              <node concept="Rm8GO" id="5sdTN4vfYJN" role="37wK5m">
+                                <ref role="Rm8GQ" to="5zyv:~TimeUnit.SECONDS" resolve="SECONDS" />
+                                <ref role="1Px2BO" to="5zyv:~TimeUnit" resolve="TimeUnit" />
+                              </node>
                             </node>
                           </node>
                         </node>

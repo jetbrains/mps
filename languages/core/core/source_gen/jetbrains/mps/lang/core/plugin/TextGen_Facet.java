@@ -34,6 +34,7 @@ import jetbrains.mps.make.facets.Make_Facet.Target_make;
 import jetbrains.mps.generator.GenerationFacade;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.text.TextGeneratorEngine;
+import jetbrains.mps.text.TextGenSettings;
 import java.util.concurrent.ArrayBlockingQueue;
 import jetbrains.mps.text.TextGenResult;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
@@ -222,10 +223,12 @@ public class TextGen_Facet extends IFacet.Stub {
               }
 
               // configure
-              final boolean _generateDebugInfo = vars(pa.global()).generateDebugInfo() == null || vars(pa.global()).generateDebugInfo();
+              TextGenSettings tgs = mpsProject.getComponent(TextGenSettings.class);
+              final boolean _generateDebugInfo = (vars(pa.global()).generateDebugInfo() == null && tgs.isGenerateDebugInfo()) || vars(pa.global()).generateDebugInfo();
+              final long timeoutSeconds = tgs.getPerModelTimeout().toSeconds();
 
-              final ProgressMonitor subProgress_q0a0b = progressMonitor.subTask(1000);
-              subProgress_q0a0b.start("Writing", modelsCount + 3);
+              final ProgressMonitor subProgress_s0a0b = progressMonitor.subTask(1000);
+              subProgress_s0a0b.start("Writing", modelsCount + 3);
 
               try {
                 final ArrayBlockingQueue<TextGenResult> resultQueue = new ArrayBlockingQueue<TextGenResult>(modelsCount);
@@ -243,7 +246,7 @@ public class TextGen_Facet extends IFacet.Stub {
                   }
                 });
 
-                subProgress_q0a0b.advance(3);
+                subProgress_s0a0b.advance(3);
 
                 final Map<GResource, ResourceDeltaCollector> deltas2 = new HashMap<GResource, ResourceDeltaCollector>();
                 // there's no really any use of the cached bl dependencies, provided each model from the set of resources is generated once and the cache is only populated, not read.
@@ -255,7 +258,7 @@ public class TextGen_Facet extends IFacet.Stub {
                 // we don't care about cached values of 'generated', but we need a way to read values, if any (e.g. StaleFilesCollector),
                 // and the cache instance doesn't hurt
                 while (modelsCount-- > 0) {
-                  final TextGenResult tgr = resultQueue.poll(3, TimeUnit.MINUTES);
+                  final TextGenResult tgr = (timeoutSeconds <= 0 ? resultQueue.take() : resultQueue.poll(timeoutSeconds, TimeUnit.SECONDS));
 
                   if (tgr == null) {
                     monitor.reportFeedback(new IFeedback.ERROR(String.valueOf("Timeout while waiting for model text outcome, model skipped")));
@@ -268,8 +271,8 @@ public class TextGen_Facet extends IFacet.Stub {
                     }
                   }
 
-                  subProgress_q0a0b.advance(1);
-                  subProgress_q0a0b.step(tgr.getModel().getReference().getModelName());
+                  subProgress_s0a0b.advance(1);
+                  subProgress_s0a0b.step(tgr.getModel().getReference().getModelName());
                   final GResource inputResource = textGenInput2Resource.get(tgr.getModel());
 
                   _output_21gswx_a0b = Sequence.fromIterable(_output_21gswx_a0b).concat(Sequence.fromIterable(Sequence.<IResource>singleton(new TextGenOutcomeResource(inputResource.model(), inputResource.module(), tgr))));
@@ -386,7 +389,7 @@ public class TextGen_Facet extends IFacet.Stub {
                 return new IResult.FAILURE(_output_21gswx_a0b);
               } finally {
                 tgEngine.shutdown();
-                subProgress_q0a0b.done();
+                subProgress_s0a0b.done();
               }
             default:
               progressMonitor.done();
