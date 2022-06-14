@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,6 +45,10 @@ public interface IModifiableGenerationSettings extends IGenerationSettings {
 
   void setKeepModelsWithWarnings(boolean keepModelsWithWarnings);
 
+  /**
+   * @deprecated see {@link IGenerationSettings#isGenerateDebugInfo()}
+   */
+  @Deprecated(forRemoval = true, since = "2022.2")
   void setGenerateDebugInfo(boolean generateDebugInfo);
 
   void setShowBadChildWarning(boolean showBadChildWarning);

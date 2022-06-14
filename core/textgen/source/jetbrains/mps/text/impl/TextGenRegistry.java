@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,8 +41,6 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Excerpt from ConceptRegistry related to TextGenDescriptor.
  * It's artifact of refactoring to break [textgen] and [kernel] cycle dependency.
- * FIXME For the time being, it's initialized together with ConceptRegistry from MPSCore, though shall be separate ComponentPlugin,
- * like MPSGenerator, and initialized from MPSCoreComponents and alike.
  * @author Artem Tikhomirov
  * @since 3.3
  */

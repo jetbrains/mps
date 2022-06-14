@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,11 @@ public interface IGenerationSettings {
 
   boolean isKeepModelsWithWarnings();
 
-  // FIXME this is TextGen option, has nothing to do with generation
+  /**
+   * @deprecated this is TextGen option, has nothing to do with generation, moved to {@code TextGenSettings}.
+   *             Keep for a year and then remove
+   */
+  @Deprecated(forRemoval = true, since = "2022.2")
   boolean isGenerateDebugInfo();
 
   boolean isShowBadChildWarning();
