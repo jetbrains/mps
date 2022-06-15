@@ -209,7 +209,12 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
         return it.isDirectory();
       }
     })) {
-      String pack = ((prefix.length() == 0 ? subdir.getName() : prefix + '.' + subdir.getName()));
+      String dirName = subdir.getName();
+      if (prefix.length() == 0 && "META-INF".equals(dirName)) {
+        // we know for sure no packages under META-INF/ folder
+        continue;
+      }
+      String pack = ((prefix.length() == 0 ? dirName : prefix + '.' + dirName));
       if (psc != null && !(psc.isIncluded(pack))) {
         if (psc.isAnyChildIncluded(pack)) {
           getModelDescriptors_(result, subdir, pack, module, psc, mr);
