@@ -820,7 +820,7 @@ public final class ModuleMaker {
           break;
         }
         ++cycleNumber;
-        CompositeTracer cycleTracer = tracer.subTracer(1);
+        CompositeTracer cycleTracer = tracer.subTracer(1, SubProgressKind.REPLACING);
         tracer.getSender().info(String.format(CYCLE_FORMAT_MSG, cycleNumber, cc.stream().map(JM::name).collect(Collectors.joining(","))));
         cycleTracer.start(getCycleString(cycleNumber, cc), 1);
         BaseModuleContainer<JM> modulesContainer = new BMC(cc, externalOutputToKeep);
