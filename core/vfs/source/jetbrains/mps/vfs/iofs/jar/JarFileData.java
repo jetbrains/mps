@@ -109,6 +109,7 @@ class JarFileData extends AbstractJarFileData {
     ensureInitialized();
 
     ZipEntry entry = myEntries.get(path);
+    // XXX I wonder why not to count InputStream open()/close() to assess when zipFile might be ready to go/close().
     return new MyInputStream(entry);
   }
 
