@@ -53,12 +53,15 @@ import jetbrains.mps.text.impl.BLDependenciesBuilder;
 import jetbrains.mps.text.impl.DebugInfoBuilder;
 import jetbrains.mps.generator.impl.plan.CrossModelEnvironment;
 import jetbrains.mps.util.IStatus;
+import jetbrains.mps.internal.collections.runtime.SetSequence;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.language.SLanguage;
+import jetbrains.mps.make.java.ModelDependencies;
 import jetbrains.mps.make.delta.IDelta;
 import jetbrains.mps.smodel.resources.DResource;
 import jetbrains.mps.vfs.FileSystem;
 import jetbrains.mps.generator.ModelGenerationStatusManager;
 import jetbrains.mps.internal.collections.runtime.ISelector;
-import jetbrains.mps.internal.collections.runtime.SetSequence;
 import jetbrains.mps.smodel.resources.TResource;
 import jetbrains.mps.baseLanguage.tuples.runtime.Tuples;
 import jetbrains.mps.make.script.IPropertiesPool;
@@ -350,6 +353,33 @@ public class TextGen_Facet extends IFacet.Stub {
                     }
                   });
                 }
+                // PROVISIONAL CODE. Here we collect all known ModelDependencies for each model of a module
+                // (irrespective of canGenerate, just ignore if there's no MD for a model). Imply module dependencies
+                // are that of all its generated models (iow, code it produces). Seems to be fair if we talk about classloading
+                // dependencies, hence the name "deps.cp" that indicates we target classpath/CLM and keep it cached along with source_gen.
+                // For other scenarios where module dependencies are necessary, this set is not necessarily right.
+                mpsProject.getModelAccess().runReadAction(() -> {
+                  for (SModule changedModule : SetSequence.fromSet(moduleStaleFilesMap.keySet())) {
+                    HashSet<SModuleReference> moduleDeps = new HashSet<>();
+                    HashSet<SModuleReference> lrtDeps = new HashSet<>();
+                    HashSet<SLanguage> ulDeps = new HashSet<>();
+                    for (SModel m : Sequence.fromIterable(changedModule.getModels())) {
+                      ModelDependencies md = blDepsCache.get(m);
+                      if (md == null) {
+                        continue;
+                      }
+                      moduleDeps.addAll(md.getModuleDependencies());
+                      lrtDeps.addAll(md.getLanguageRuntimeModules());
+                      ulDeps.addAll(md.getLanguages());
+                    }
+                    ModelDependencies md = new ModelDependencies();
+                    md.setModuleDependencies(moduleDeps);
+                    md.setLanguageRuntimeModules(lrtDeps);
+                    md.setLanguages(ulDeps);
+                    ModuleStaleFileManager msfm = moduleStaleFilesMap.get(changedModule);
+                    msfm.getCacheStreamHanderForModule().saveStream("deps.cp", md.toXml());
+                  }
+                });
                 List<IDelta> moduleWideStaleFiles = ListSequence.fromList(new ArrayList<IDelta>());
                 for (ModuleStaleFileManager sfm : CollectionSequence.fromCollection(moduleStaleFilesMap.values())) {
                   // Though we no longer walk FS when completing the delta, let it do the job prior to flushing anything to disk not to get confused with new files just in case.

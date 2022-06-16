@@ -252,6 +252,22 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
     return rv;
   }
 
+  /**
+   * PROVISIONAL CODE, DON'T USE
+   */
+  /*package*/ FileDeltaCollector getCacheStreamHanderForModule() {
+    JavaModuleFacet gtf = myModule.getFacet(JavaModuleFacet.class);
+    if (gtf == null) {
+      throw new IllegalStateException();
+    }
+    IFile outputCacheRoot = gtf.getOutputCacheRoot();
+    // XXX decided not to cache, assume it's only 1 usage
+    DeltaKey dk = new DeltaKey(myModule);
+    FileDeltaCollector rv = new FileDeltaCollector(new FilesDelta(dk), myPath2File.invoke(outputCacheRoot), myFileStorage);
+    myModelLocationStreams.put(outputCacheRoot, rv);
+    return rv;
+  }
+
   /*package*/ List<IDelta> completeDelta() {
     // pretty much the same code is in getModuleWideStaleFiles, the difference is that this method is to work in conjunction
     // with getStreamHandler(), so that updateWith(newStreamHandler()) is not necessary (it's what foreach below does).
