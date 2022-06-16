@@ -11,15 +11,17 @@ import jetbrains.mps.project.dependency.UsedModulesCollector;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.smodel.Language;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.module.SRepository;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -54,7 +56,7 @@ public class CLDependencies {
     final Collection<SModule> rv;
     DeploymentDescriptor dd = ddIfPresent(module);
     if (dd != null) {
-      rv = new ArrayList<>(20);
+      rv = new LinkedHashSet<>(20);
       // process all dependencies, irrespective of "rt"/"cl" (RUNTIME/DEFAULT) scope
       for (Dependency dependency : dd.getDependencies()) {
         final SModule target = dependency.getModuleRef().resolve(myRepository);
@@ -66,6 +68,20 @@ public class CLDependencies {
           errorContainer.depCannotBeResolved(module, new SDependencyImpl(dependency.getModuleRef(), null, dependency.getScope(), false));
         } else {
           rv.add(target);
+        }
+      }
+      // hack to deal with defect in RuntimeDependencies in mps.build.mps.util, where I forgot to iterate over
+      // 'extends' dependency. Remove once defect has been fixed and at least one release was there.
+      // doesn't hurt to keep this longer than utterly necessary.
+      if (module instanceof Language) {
+        for (SModuleReference extLanRef : ((Language) module).getExtendedLanguageRefs()) {
+          final SModule extLang = extLanRef.resolve(myRepository);
+          if (extLang != null) {
+            rv.add(extLang);
+          } else {
+            // errorContainer.langSourceModuleCannotBeResolved();
+            errorContainer.depCannotBeResolved(module, new SDependencyImpl(extLanRef, null, SDependencyScope.EXTENDS, true));
+          }
         }
       }
     } else {
