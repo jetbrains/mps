@@ -5,10 +5,18 @@ package jetbrains.mps.classloading;
 
 import jetbrains.mps.classloading.ErrorContainer.SearchError;
 import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.module.SDependencyImpl;
+import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.dependency.UsedModulesCollector;
+import jetbrains.mps.project.structure.modules.Dependency;
+import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
+import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -36,14 +44,46 @@ public class CLDependencies {
     myRepository = repository;
   }
 
+  /**
+   * assumes model read over repository
+   *
+   * FIXME consider switching to SModuleReference
+   */
   public Collection<SModule> directlyUsedModules(ReloadableModule module) {
     ErrorContainer errorContainer = new ErrorContainer();
-    final Collection<SModule> rv = myModulesCollector.directlyUsedModules(module, errorContainer, true, true);
+    final Collection<SModule> rv;
+    DeploymentDescriptor dd = ddIfPresent(module);
+    if (dd != null) {
+      rv = new ArrayList<>(20);
+      // process all dependencies, irrespective of "rt"/"cl" (RUNTIME/DEFAULT) scope
+      for (Dependency dependency : dd.getDependencies()) {
+        final SModule target = dependency.getModuleRef().resolve(myRepository);
+        if (target == null) {
+          if (dependency.getScope() == SDependencyScope.RUNTIME) {
+            // no reason for this code, really. Just to show we can go on with ErrorHandler paradigm here
+            errorContainer.runtimeDependencyCannotBeFound(dependency.getModuleRef());
+          }
+          errorContainer.depCannotBeResolved(module, new SDependencyImpl(dependency.getModuleRef(), null, dependency.getScope(), false));
+        } else {
+          rv.add(target);
+        }
+      }
+    } else {
+      rv = myModulesCollector.directlyUsedModules(module, errorContainer, true, true);
+    }
     if (errorContainer.hasErrors()) {
-      // FIXME account for 'assert' scenario of ModuleUpdater.updateReloadedEdges()
       myModulesWithAbsentDeps.put(module, errorContainer.getErrors());
     }
     return rv;
+  }
+
+  @Nullable
+  private DeploymentDescriptor ddIfPresent(SModule module) {
+    if (module.isPackaged() && module instanceof AbstractModule) {
+      final ModuleDescriptor md = ((AbstractModule) module).getModuleDescriptor();
+      return md == null ? null : md.getDeploymentDescriptor();
+    }
+    return null;
   }
 
   public Map<ReloadableModule, List<SearchError>> getModulesWithAbsentDeps() {
