@@ -481,12 +481,14 @@ public final class CreateProjectWizard extends DialogWrapper {
   protected void doOKAction() {
     super.doOKAction();
 
+    int exitCode = GeneralSettings.OPEN_PROJECT_NEW_WINDOW;
     if (myCurrentProject != null) {
-      int exitCode = ProjectUtil.confirmOpenNewProject(true);
+      exitCode = ProjectUtil.confirmOpenNewProject(true);
       if (exitCode == GeneralSettings.OPEN_PROJECT_SAME_WINDOW) {
         ProjectUtil.closeAndDispose(myCurrentProject);
       }
     }
+    boolean openInNewFrame = exitCode == GeneralSettings.OPEN_PROJECT_NEW_WINDOW;
 
     final ProjectOptions myOptions = new ProjectOptions();
     myOptions.setProjectName(myProjectName.getText());
@@ -504,7 +506,12 @@ public final class CreateProjectWizard extends DialogWrapper {
         ProjectFactory factory = new ProjectFactory(myOptions);
         Project project = factory.createProject();
         myCurrentTemplateItem.fillProjectWithModules(project.getComponent(MPSProject.class));
-        ApplicationManager.getApplication().executeOnPooledThread(factory::activate);
+        ApplicationManager.getApplication().executeOnPooledThread(new Runnable() {
+          @Override
+          public void run() {
+            factory.activate(openInNewFrame);
+          }
+        });
       } catch (ProjectNotCreatedException e) {
         final String message = e.getMessage() != null ? e.getMessage() : "No message was provided by exception";
         Messages.showErrorDialog(message, "Project Creation Failed");

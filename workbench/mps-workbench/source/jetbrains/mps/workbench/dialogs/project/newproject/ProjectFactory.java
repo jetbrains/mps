@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.workbench.dialogs.project.newproject;
 
+import com.intellij.ide.impl.OpenProjectTask;
 import com.intellij.ide.startup.StartupManagerEx;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
@@ -47,6 +48,7 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 
 import java.io.File;
+import java.nio.file.Path;
 
 public class ProjectFactory {
   private ProjectOptions myOptions;
@@ -142,16 +144,20 @@ public class ProjectFactory {
     return myCreatedProject;
   }
 
-  public void activate() {
+  public void activate(boolean openInNewFrame) {
     if (myCreatedProject == null) {
       return;
     }
     ProjectMigrationsRegistry.getInstance().applyMigrationsToNewProject(ProjectHelper.fromIdeaProject(myCreatedProject));
 
     ProjectManagerEx projectManager = ProjectManagerEx.getInstanceEx();
-    boolean opened = projectManager.openProject(myCreatedProject);
 
-    if (opened) {
+    @Nullable Project project = projectManager.openProject(
+        Path.of(myCreatedProject.getBasePath()),
+        OpenProjectTask.build()
+                       .withForceOpenInNewFrame(openInNewFrame)
+                       .withProject(myCreatedProject));
+    if (project != null) {
       StartupManagerEx startupManager = StartupManagerEx.getInstanceEx(myCreatedProject);
       // extra .invokeLater() was added here (copied from IDEA platform) see: https://youtrack.jetbrains.com/issue/IDEA-158859
       Runnable projectPaneActivator =

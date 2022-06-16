@@ -163,7 +163,7 @@ public class ProjectCreationTest implements EnvironmentAware {
         try {
           ProjectFactory factory = new ProjectFactory(projectOptionsProvider.getProjectOptions(myTmpDir));
           myProject = factory.createProject();
-          factory.activate();
+          factory.activate(false);
           myProject.save();
         } catch (ProjectNotCreatedException e) {
           Assert.fail();
