@@ -29,12 +29,9 @@ import org.jetbrains.mps.util.Condition;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public class ModuleUpdater {
@@ -49,12 +46,13 @@ public class ModuleUpdater {
   private final GraphHolder<SModuleReference> myDepGraphHolder = new GraphHolder<>();
   private final ReferenceStorage<ReloadableModule> myRefStorage;
   private final SRepository myRepository;
-  private final Map<ReloadableModule, List<SearchError>> myModulesWithAbsentDeps = new HashMap<>();
+  private final CLDependencies usedModulesCollector;
 
   public ModuleUpdater(SRepository repository, Condition<ReloadableModule> watchableCondition, ReferenceStorage<ReloadableModule> refStorage) {
     myRepository = repository;
     myWatchableCondition = watchableCondition;
     myRefStorage = refStorage;
+    usedModulesCollector= new CLDependencies(repository);
   }
 
   public void updateModules(@NotNull Collection<? extends ReloadableModule> modules) {
@@ -122,21 +120,20 @@ public class ModuleUpdater {
           myModulesToRemove.size(), myModulesToReload.size()));
       try {
         myChangedFlag = false;
-        UsedModulesCollector usedModulesCollector = new UsedModulesCollector(myRepository);
+        usedModulesCollector.reset();
         myDepGraphHolder.checkGraphsCorrectness();
         int wasEdges = myDepGraphHolder.getEdgesCount();
         int wasVertices = myDepGraphHolder.getVerticesCount();
 
-        myModulesWithAbsentDeps.clear();
         boolean updated = !myModulesToAdd.isEmpty() || !myModulesToRemove.isEmpty();
         updateRemoved(myModulesToRemove);
         updateAddedVertices(myModulesToAdd);
-        updateAllEdges(usedModulesCollector);
+        updateAllEdges();
         if (!myModulesToReload.isEmpty()) {
           updated |= updateReloadedVertices(myModulesToReload);
           // XXX seems that updateReloadedEdges has to be invoked regardless of updateReloadedVertices() result
           //     if not, could combine with && to avoid second call if first gives false
-          updated |= updateReloadedEdges(myModulesToReload, usedModulesCollector);
+          updated |= updateReloadedEdges(myModulesToReload);
         }
         myModulesToRemove.clear();
         myModulesToAdd.clear();
@@ -151,8 +148,8 @@ public class ModuleUpdater {
     }
   }
 
-  public Map<ReloadableModule, List<SearchError>> getModulesWithAbsentDeps() {
-    return Collections.unmodifiableMap(myModulesWithAbsentDeps);
+  /*package*/ CLDependencies getClassLoadingDeps() {
+    return usedModulesCollector;
   }
 
   private void updateRemoved(Set<? extends SModuleReference> modulesToRemove) {
@@ -176,9 +173,9 @@ public class ModuleUpdater {
    * Here we are updating references from all the existing modules
    * Also we are going through all the modules in the repository and checking that their dependencies do exist.
    * It checks every module in the current graph and tracks whether it has some unresolved dependencies.
-   * If so it puts it to the map {@link #myModulesWithAbsentDeps}.
+   * If so it puts it to the errors map of {@link CLDependencies}.
    */
-  private void updateAllEdges(UsedModulesCollector usedModulesCollector) {
+  private void updateAllEdges() {
     myRepository.getModelAccess().checkReadAccess();
     Collection<? extends SModuleReference> allRefs = myDepGraphHolder.getVertices();
     for (SModuleReference ref : allRefs) {
@@ -187,11 +184,9 @@ public class ModuleUpdater {
         continue;
       }
       assert module != null;
-      Collection<? extends ReloadableModule> deps;
-      DepsWithErrors depsWithErrors = getDepsWithErrors(module, usedModulesCollector);
-      deps = depsWithErrors.deps;
-      if (!depsWithErrors.errors.isEmpty()) {
-        myModulesWithAbsentDeps.put(module, depsWithErrors.errors);
+      Collection<ReloadableModule> deps = getDepsWithErrors(module);
+      if (deps.isEmpty()) {
+        // indeed, useless if, kept for the record there's different logic prior to my change
         continue;
       }
       for (ReloadableModule dep : deps) {
@@ -209,7 +204,7 @@ public class ModuleUpdater {
     var facet = module.getFacet(IdeaPluginModuleFacet.class);
     if (facet != null && !facet.isValid()) {
       SearchError error = ErrorContainer.SearchError.of("The module '" + module.getModuleReference() + "' comes with invalid idea plugin facet '" + facet.getPluginId() + "'");
-      myModulesWithAbsentDeps.put(module, Collections.singletonList(error));
+      usedModulesCollector.addError(module, Collections.singletonList(error));
       return true;
     }
     return false;
@@ -233,19 +228,28 @@ public class ModuleUpdater {
   /**
    * calculates difference in the outgoing edges for each given module
    */
-  private boolean updateReloadedEdges(Set<? extends ReloadableModule> modulesToReload, UsedModulesCollector usedModulesCollector) {
+  private boolean updateReloadedEdges(Set<? extends ReloadableModule> modulesToReload) {
     boolean updated = false;
     myRepository.getModelAccess().checkReadAccess();
     Collection<? extends SModuleReference> allRefs = myDepGraphHolder.getVertices();
     for (ReloadableModule module : modulesToReload) {
       SModuleReference mRef = module.getModuleReference();
-      Collection<? extends SModuleReference> currentDeps = new HashSet<SModuleReference>(myDepGraphHolder.getOutgoingEdges(mRef));
-      DepsWithErrors depsWithErrors = getDepsWithErrors(module, usedModulesCollector);
-      if (!depsWithErrors.errors.isEmpty()) {
-        assert myModulesWithAbsentDeps.containsKey(module);
+      // XXX not sure next assert makes any sense, just try to mimic
+      // assumptions imposed by refactored logic -  to be sure module with dependency
+      // errors has been reported into myModulesWithAbsentDeps, one have to be sure the module
+      // went through updateAllEdges() (iteration over all vertices).
+      // I didn't find any code that ensured modulesToReload are indeed part of the graph
+      // and take logic that used to be here as a way to make sure we don't face such scenario.
+      assert myDepGraphHolder.contains(mRef);
+      Collection<SModuleReference> currentDeps = new HashSet<>(myDepGraphHolder.getOutgoingEdges(mRef));
+      if (usedModulesCollector.getModulesWithAbsentDeps().containsKey(module)) {
+        // XXX why we ignore update of other modulesToReload?
+        // why not updated=true; continue;?
         return true;
       }
-      Collection<? extends ReloadableModule> newModuleDeps = depsWithErrors.deps;
+      Collection<ReloadableModule> newModuleDeps = getDepsWithErrors(module);
+      // XXX do I need to skip if there are no newModuleDeps (assuming this means error) - not to remove existing edges.
+      // if (newModuleDeps.isEmpty()) { continue; }
       for (ReloadableModule moduleDep : newModuleDeps) {
         SModuleReference depRef = moduleDep.getModuleReference();
         if (!currentDeps.contains(depRef)) {
@@ -265,15 +269,15 @@ public class ModuleUpdater {
     return updated;
   }
 
+  // XXX might want to convert to Stream<>
   @NotNull
-  private DepsWithErrors getDepsWithErrors(@NotNull ReloadableModule module, UsedModulesCollector usedModulesCollector) {
+  private Collection<ReloadableModule> getDepsWithErrors(@NotNull ReloadableModule module) {
     myRepository.getModelAccess().checkReadAccess();
     if (module.getRepository() == null) {
-      return DepsWithErrors.EMPTY;
+      return Collections.emptyList();
     }
 
-    ErrorContainer errorContainer = new ErrorContainer();
-    Collection<SModule> directlyUsedModules = usedModulesCollector.directlyUsedModules(module, errorContainer, true, true);
+    Collection<SModule> directlyUsedModules = usedModulesCollector.directlyUsedModules(module);
     Set<ReloadableModule> deps = new LinkedHashSet<>();
     for (SModule dep : directlyUsedModules) {
       if (dep instanceof ReloadableModule) {
@@ -283,8 +287,7 @@ public class ModuleUpdater {
         }
       }
     }
-    List<SearchError> errors = new ArrayList<>(errorContainer.getErrors());
-    return new DepsWithErrors(deps, errors);
+    return deps;
   }
 
   public Collection<SModuleReference> getDirectDeps(Iterable<SModuleReference> mRefs) {
@@ -323,17 +326,5 @@ public class ModuleUpdater {
     synchronized (LOCK) {
       return myDepGraphHolder.contains(mRef);
     }
-  }
-
-  private final static class DepsWithErrors {
-    public final Collection<ReloadableModule> deps;
-    public final List<SearchError> errors;
-
-    private DepsWithErrors(@NotNull Collection<ReloadableModule> deps, @NotNull List<SearchError> errors) {
-      this.deps = deps;
-      this.errors = errors;
-    }
-
-    public final static DepsWithErrors EMPTY = new DepsWithErrors(Collections.emptySet(), Collections.emptyList());
   }
 }

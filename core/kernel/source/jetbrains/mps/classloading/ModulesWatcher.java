@@ -245,7 +245,7 @@ public class ModulesWatcher {
   private Map<SModuleReference, String> findInvalidModules(boolean printErrors) {
     myRepository.getModelAccess().checkReadAccess();
 
-    Map<ReloadableModule, List<SearchError>> modulesWithAbsentDeps = myModuleUpdater.getModulesWithAbsentDeps();
+    Map<ReloadableModule, List<SearchError>> modulesWithAbsentDeps = myModuleUpdater.getClassLoadingDeps().getModulesWithAbsentDeps();
     Map<SModuleReference, String> mRefToProblem = new HashMap<>();
     Collection<? extends SModuleReference> allModuleRefs = getAllModules();
     for (SModuleReference mRef : allModuleRefs) {
