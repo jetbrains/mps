@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.classloading.ErrorContainer.SearchError;
 import jetbrains.mps.classloading.GraphHolder.Graph;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
@@ -207,7 +208,7 @@ public class ModuleUpdater {
   private boolean comesWithInvalidIdeaPluginFacet(ReloadableModule module) {
     var facet = module.getFacet(IdeaPluginModuleFacet.class);
     if (facet != null && !facet.isValid()) {
-      SearchError error = SearchError.of("The module '" + module.getModuleReference() + "' comes with invalid idea plugin facet '" + facet.getPluginId() + "'");
+      SearchError error = ErrorContainer.SearchError.of("The module '" + module.getModuleReference() + "' comes with invalid idea plugin facet '" + facet.getPluginId() + "'");
       myModulesWithAbsentDeps.put(module, Collections.singletonList(error));
       return true;
     }
@@ -334,27 +335,5 @@ public class ModuleUpdater {
     }
 
     public final static DepsWithErrors EMPTY = new DepsWithErrors(Collections.emptySet(), Collections.emptyList());
-  }
-
-  static class SearchError {
-    private final String myMsg;
-
-    private SearchError(String msg) {
-      myMsg = msg;
-    }
-
-    @NotNull
-    public String getMsg() {
-      return myMsg;
-    }
-
-    public static SearchError of(@NotNull String msg) {
-      return new SearchError(msg);
-    }
-
-    @Override
-    public String toString() {
-      return "SearchError " + myMsg;
-    }
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.classloading.ModuleUpdater.SearchError;
 import jetbrains.mps.project.dependency.PostingWarningsErrorHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
@@ -70,5 +69,27 @@ class ErrorContainer extends PostingWarningsErrorHandler {
   @Override
   public String toString() {
     return String.format("Errors %d", myErrors.size());
+  }
+
+  static class SearchError {
+    private final String myMsg;
+
+    private SearchError(String msg) {
+      myMsg = msg;
+    }
+
+    @NotNull
+    public String getMsg() {
+      return myMsg;
+    }
+
+    public static SearchError of(@NotNull String msg) {
+      return new SearchError(msg);
+    }
+
+    @Override
+    public String toString() {
+      return "SearchError " + myMsg;
+    }
   }
 }

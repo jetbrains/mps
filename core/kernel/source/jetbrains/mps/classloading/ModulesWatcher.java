@@ -15,7 +15,7 @@
  */
 package jetbrains.mps.classloading;
 
-import jetbrains.mps.classloading.ModuleUpdater.SearchError;
+import jetbrains.mps.classloading.ErrorContainer.SearchError;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.util.annotation.Hack;
