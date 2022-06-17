@@ -37594,6 +37594,34 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="47KNR38PkK5" role="3cqZAp">
+          <node concept="3cpWsn" id="47KNR38PkK6" role="3cpWs9">
+            <property role="TrG5h" value="targetLanguages" />
+            <node concept="A3Dl8" id="47KNR38PjXH" role="1tU5fm">
+              <node concept="3Tqbb2" id="47KNR38PjXK" role="A3Ik2">
+                <ref role="ehGHo" to="kdzh:2L4pT56gD3S" resolve="BuildMps_Language" />
+              </node>
+            </node>
+            <node concept="2OqwBi" id="47KNR38PkK7" role="33vP2m">
+              <node concept="2OqwBi" id="47KNR38PkK8" role="2Oq$k0">
+                <node concept="1rXfSq" id="47KNR38PkK9" role="2Oq$k0">
+                  <ref role="37wK5l" node="76sgnDokrX3" resolve="declaredDependencies" />
+                  <node concept="37vLTw" id="47KNR38PkKa" role="37wK5m">
+                    <ref role="3cqZAo" node="76sgnDoh9Nv" resolve="module" />
+                  </node>
+                </node>
+                <node concept="v3k3i" id="47KNR38PkKb" role="2OqNvi">
+                  <node concept="chp4Y" id="47KNR38PkKc" role="v3oSu">
+                    <ref role="cht4Q" to="kdzh:7M00clbFm1W" resolve="BuildMps_ModuleDependencyTargetLanguage" />
+                  </node>
+                </node>
+              </node>
+              <node concept="13MTOL" id="47KNR38PkKd" role="2OqNvi">
+                <ref role="13MTZf" to="kdzh:7M00clbFm1X" resolve="language" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3SKdUt" id="1bDwrio3vbD" role="3cqZAp">
           <node concept="1PaTwC" id="ATZLwXo11T" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXo11U" role="1PaTwD">
@@ -37747,8 +37775,15 @@
                 <node concept="2OqwBi" id="76sgnDoRSCm" role="2Oq$k0">
                   <node concept="1rXfSq" id="1bDwrio3fbG" role="2Oq$k0">
                     <ref role="37wK5l" node="76sgnDpdJkr" resolve="includingExtendedLanguages" />
-                    <node concept="37vLTw" id="1bDwrio3hdk" role="37wK5m">
-                      <ref role="3cqZAo" node="76sgnDphAVY" resolve="allUsedLang" />
+                    <node concept="2OqwBi" id="47KNR38P_Cr" role="37wK5m">
+                      <node concept="37vLTw" id="1bDwrio3hdk" role="2Oq$k0">
+                        <ref role="3cqZAo" node="76sgnDphAVY" resolve="allUsedLang" />
+                      </node>
+                      <node concept="3QWeyG" id="47KNR38PID8" role="2OqNvi">
+                        <node concept="37vLTw" id="47KNR38PKzl" role="576Qk">
+                          <ref role="3cqZAo" node="47KNR38PkK6" resolve="targetLanguages" />
+                        </node>
+                      </node>
                     </node>
                   </node>
                   <node concept="13MTOL" id="76sgnDoRSCo" role="2OqNvi">
@@ -37834,6 +37869,47 @@
               </node>
             </node>
             <node concept="1KnU$U" id="1bDwrio8wa1" role="2OqNvi" />
+          </node>
+        </node>
+        <node concept="2Gpval" id="47KNR38P0JP" role="3cqZAp">
+          <node concept="2GrKxI" id="47KNR38P0JQ" role="2Gsz3X">
+            <property role="TrG5h" value="m" />
+          </node>
+          <node concept="3clFbS" id="47KNR38P0JR" role="2LFqv$">
+            <node concept="3clFbF" id="47KNR38P0JS" role="3cqZAp">
+              <node concept="2OqwBi" id="47KNR38P0JT" role="3clFbG">
+                <node concept="37vLTw" id="47KNR38P0JU" role="2Oq$k0">
+                  <ref role="3cqZAo" node="76sgnDoKsTg" resolve="myCompileDeps" />
+                </node>
+                <node concept="liA8E" id="47KNR38P0JV" role="2OqNvi">
+                  <ref role="37wK5l" to="33ny:~Set.add(java.lang.Object)" resolve="add" />
+                  <node concept="2GrUjf" id="47KNR38P0JW" role="37wK5m">
+                    <ref role="2Gs0qQ" node="47KNR38P0JQ" resolve="m" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="2OqwBi" id="47KNR38P0JX" role="2GsD0m">
+            <node concept="2OqwBi" id="47KNR38P0JY" role="2Oq$k0">
+              <node concept="2OqwBi" id="47KNR38P0JZ" role="2Oq$k0">
+                <node concept="1rXfSq" id="47KNR38P0K0" role="2Oq$k0">
+                  <ref role="37wK5l" node="76sgnDokrX3" resolve="declaredDependencies" />
+                  <node concept="37vLTw" id="47KNR38P0K1" role="37wK5m">
+                    <ref role="3cqZAo" node="76sgnDoh9Nv" resolve="module" />
+                  </node>
+                </node>
+                <node concept="v3k3i" id="47KNR38P0K2" role="2OqNvi">
+                  <node concept="chp4Y" id="47KNR38P0K3" role="v3oSu">
+                    <ref role="cht4Q" to="kdzh:3HwLahs6gcI" resolve="BuildMps_ModuleDependencyExtendLanguage" />
+                  </node>
+                </node>
+              </node>
+              <node concept="13MTOL" id="47KNR38P0K4" role="2OqNvi">
+                <ref role="13MTZf" to="kdzh:3HwLahs6gcK" resolve="language" />
+              </node>
+            </node>
+            <node concept="1KnU$U" id="47KNR38P0K5" role="2OqNvi" />
           </node>
         </node>
       </node>
