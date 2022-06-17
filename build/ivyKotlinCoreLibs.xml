@@ -6,5 +6,10 @@
       <artifact name="kotlinx-metadata-jvm" m:classifier="sources" ext="jar"/>
       <artifact name="kotlinx-metadata-jvm" m:classifier="javadoc" ext="jar"/>
     </dependency>
+    <dependency org="org.jetbrains.kotlin" name="kotlin-stdlib" rev="${kotlin.version}">
+      <artifact name="kotlin-stdlib" ext="jar"/>
+      <artifact name="kotlin-stdlib" m:classifier="sources" ext="jar"/>
+      <artifact name="kotlin-stdlib" m:classifier="javadoc" ext="jar"/>
+    </dependency>
   </dependencies>
 </ivy-module>

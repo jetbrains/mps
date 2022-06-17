@@ -584,27 +584,22 @@
           </node>
         </node>
         <node concept="3clFbF" id="5heFtF6a0Q0" role="3cqZAp">
-          <node concept="2OqwBi" id="5heFtF6a6yr" role="3clFbG">
-            <node concept="10M0yZ" id="5heFtF6a2wG" role="2Oq$k0">
-              <ref role="1PxDUh" to="tsn9:~KotlinToJVMBytecodeCompiler" resolve="KotlinToJVMBytecodeCompiler" />
-              <ref role="3cqZAo" to="tsn9:~KotlinToJVMBytecodeCompiler.INSTANCE" resolve="INSTANCE" />
+          <node concept="2YIFZM" id="2a4T6D6NRuO" role="3clFbG">
+            <ref role="37wK5l" to="tsn9:~KotlinToJVMBytecodeCompilerKt.configureSourceRoots(org.jetbrains.kotlin.config.CompilerConfiguration,java.util.List,java.io.File)" resolve="configureSourceRoots" />
+            <ref role="1Pybhc" to="tsn9:~KotlinToJVMBytecodeCompilerKt" resolve="KotlinToJVMBytecodeCompilerKt" />
+            <node concept="37vLTw" id="5heFtF6a6yt" role="37wK5m">
+              <ref role="3cqZAo" node="5heFtF6a0PD" resolve="cfg" />
             </node>
-            <node concept="liA8E" id="5heFtF6a6ys" role="2OqNvi">
-              <ref role="37wK5l" to="tsn9:~KotlinToJVMBytecodeCompiler.configureSourceRoots$cli(org.jetbrains.kotlin.config.CompilerConfiguration,java.util.List,java.io.File)" resolve="configureSourceRoots$cli" />
-              <node concept="37vLTw" id="5heFtF6a6yt" role="37wK5m">
-                <ref role="3cqZAo" node="5heFtF6a0PD" resolve="cfg" />
+            <node concept="2OqwBi" id="5heFtF6a6yu" role="37wK5m">
+              <node concept="37vLTw" id="5heFtF6a6yv" role="2Oq$k0">
+                <ref role="3cqZAo" node="5heFtF6a0Py" resolve="modules" />
               </node>
-              <node concept="2OqwBi" id="5heFtF6a6yu" role="37wK5m">
-                <node concept="37vLTw" id="5heFtF6a6yv" role="2Oq$k0">
-                  <ref role="3cqZAo" node="5heFtF6a0Py" resolve="modules" />
-                </node>
-                <node concept="liA8E" id="5heFtF6a6yw" role="2OqNvi">
-                  <ref role="37wK5l" to="eou5:~ModuleChunk.getModules()" resolve="getModules" />
-                </node>
+              <node concept="liA8E" id="5heFtF6a6yw" role="2OqNvi">
+                <ref role="37wK5l" to="eou5:~ModuleChunk.getModules()" resolve="getModules" />
               </node>
-              <node concept="37vLTw" id="5heFtF6a6yx" role="37wK5m">
-                <ref role="3cqZAo" node="5heFtF6a0PA" resolve="buildFile" />
-              </node>
+            </node>
+            <node concept="37vLTw" id="5heFtF6a6yx" role="37wK5m">
+              <ref role="3cqZAo" node="5heFtF6a0PA" resolve="buildFile" />
             </node>
           </node>
         </node>

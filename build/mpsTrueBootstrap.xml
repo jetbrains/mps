@@ -48,10 +48,6 @@
     <fileset file="${artifacts.IDEA}/lib/app.jar" />
   </path>
   
-  <path id="path.java.library.kotlin-stdlib">
-    <fileset file="${artifacts.IDEA}/lib/kotlin-stdlib-jdk8.jar" />
-  </path>
-  
   <path id="path.java.library.ecj">
     <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj/eclipse.jar" />
   </path>
@@ -115,6 +111,9 @@
       <fileset dir="${build.tmp}/java/out/platform-persistence-only" />
       <fileset dir="${build.tmp}/java/out/mps-tool-convertModels" />
     </jar>
+    <copy todir="${build.layout}">
+      <fileset file="${projectHome}/plugins/mps-core/lib/kotlin-stdlib-1.7.0.jar" />
+    </copy>
     <copy todir="${build.layout}">
       <fileset file="${projectHome}/plugins/mps-core/lib/kotlinx-metadata-jvm-0.4.2.jar" />
     </copy>
@@ -675,12 +674,12 @@
         <pathelement path="${build.tmp}/java/out/feeback-context" />
         <pathelement path="${build.tmp}/java/out/constraints-runtime" />
         <pathelement path="${build.tmp}/java/out/mps-kernel" />
+        <fileset file="${projectHome}/plugins/mps-core/lib/kotlin-stdlib-1.7.0.jar" />
         <fileset file="${projectHome}/plugins/mps-core/lib/kotlinx-metadata-jvm-0.4.2.jar" />
         <path refid="path.java.library.annotations-lib" />
         <path refid="path.java.library.util" />
         <path refid="path.java.library.3rd-party" />
         <path refid="path.java.library.ecj" />
-        <path refid="path.java.library.kotlin-stdlib" />
         <path refid="path.jdk.classpath" />
       </classpath>
     </javac2>

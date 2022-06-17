@@ -5,7 +5,7 @@
       <sourceRoot location="models" />
     </modelRoot>
     <modelRoot contentPath="${mps_home}/plugins/mps-kotlin/lib" type="java_classes">
-      <sourceRoot location="kotlin-compiler-embeddable-1.6.0.jar" />
+      <sourceRoot location="kotlin-compiler-embeddable-1.7.0.jar" />
     </modelRoot>
   </models>
   <facets>
@@ -14,7 +14,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${mps_home}/plugins/mps-kotlin/lib/kotlin-compiler-embeddable-1.6.0.jar" />
+    <stubModelEntry path="${mps_home}/plugins/mps-kotlin/lib/kotlin-compiler-embeddable-1.7.0.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

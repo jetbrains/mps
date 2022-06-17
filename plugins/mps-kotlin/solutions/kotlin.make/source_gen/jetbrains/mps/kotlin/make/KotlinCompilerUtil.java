@@ -16,13 +16,14 @@ import org.jetbrains.kotlin.metadata.jvm.deserialization.JvmProtoBufUtil;
 import org.jetbrains.kotlin.config.LanguageVersionSettingsImpl;
 import org.jetbrains.kotlin.config.ApiVersion;
 import org.jetbrains.kotlin.cli.common.CLIConfigurationKeys;
-import org.jetbrains.kotlin.cli.jvm.compiler.KotlinToJVMBytecodeCompiler;
+import org.jetbrains.kotlin.cli.jvm.compiler.KotlinToJVMBytecodeCompilerKt;
 import org.jetbrains.kotlin.modules.Module;
 import jetbrains.mps.make.ModuleMaker;
 import org.jetbrains.kotlin.cli.common.modules.ModuleBuilder;
 import org.jetbrains.kotlin.modules.JavaRootPath;
 import java.util.Collections;
 import java.util.List;
+import org.jetbrains.kotlin.cli.jvm.compiler.KotlinToJVMBytecodeCompiler;
 import java.util.Collection;
 import java.util.Set;
 
@@ -41,7 +42,7 @@ public class KotlinCompilerUtil {
     cfg.put(CLIConfigurationKeys.MESSAGE_COLLECTOR_KEY, messages);
 
     // Declare modules
-    KotlinToJVMBytecodeCompiler.INSTANCE.configureSourceRoots$cli(cfg, modules.getModules(), buildFile);
+    KotlinToJVMBytecodeCompilerKt.configureSourceRoots(cfg, modules.getModules(), buildFile);
 
     // TODO populate this cache somehow (store some anterior result? lookup file changes?)
     // map<TargetId, IncrementalCache> cache = new hashmap<TargetId, IncrementalCache>;

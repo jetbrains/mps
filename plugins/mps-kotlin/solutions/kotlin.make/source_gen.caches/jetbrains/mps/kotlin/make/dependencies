@@ -64,6 +64,7 @@
     <classNode dependClassName="org.jetbrains.kotlin.cli.jvm.compiler.EnvironmentConfigFiles" />
     <classNode dependClassName="org.jetbrains.kotlin.cli.jvm.compiler.KotlinCoreEnvironment" />
     <classNode dependClassName="org.jetbrains.kotlin.cli.jvm.compiler.KotlinToJVMBytecodeCompiler" />
+    <classNode dependClassName="org.jetbrains.kotlin.cli.jvm.compiler.KotlinToJVMBytecodeCompilerKt" />
     <classNode dependClassName="org.jetbrains.kotlin.com.intellij.openapi.Disposable" />
     <classNode dependClassName="org.jetbrains.kotlin.com.intellij.openapi.util.Disposer" />
     <classNode dependClassName="org.jetbrains.kotlin.config.ApiVersion" />

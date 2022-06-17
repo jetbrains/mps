@@ -6,7 +6,6 @@
   <property name="idea_home" location="" />
   <property name="mps_home" location="${basedir}" />
   <property name="plugin_home" location="${mps_home}/plugins/mps-kotlin" />
-  <property name="platform_lib" location="${mps_home}/lib" />
   <property name="artifacts.mpsJava" location="${build.dir}/artifacts/mpsJava" />
   <property name="artifacts.mpsBootstrapCore" location="${build.dir}/artifacts/mpsBootstrapCore" />
   <property name="artifacts.mpsWorkbench" location="${build.dir}/artifacts/mpsWorkbench" />
@@ -510,7 +509,7 @@
           <language id="l:696c1165-4a59-463b-bc5d-902caab85dd0:jetbrains.mps.make.facet" />
           <language id="l:95f8a3e6-f994-4ca0-a65e-763c9bae2d3b:jetbrains.mps.make.script" />
         </uses>
-        <library jar="../../lib/kotlin-compiler-embeddable-1.6.0.jar" />
+        <library jar="../../lib/kotlin-compiler-embeddable-1.7.0.jar" />
         <classpath>
           <entry path="." />
         </classpath>
@@ -570,10 +569,10 @@
       <fileset file="${plugin_home}/lib/kotlin-builtins.jar" />
     </copy>
     <copy todir="${build.layout}/mps-kotlin/lib">
-      <fileset file="${plugin_home}/lib/kotlin-stdlib-common-1.6.0.jar" />
+      <fileset file="${plugin_home}/lib/kotlin-stdlib-common-1.7.0.jar" />
     </copy>
     <copy todir="${build.layout}/mps-kotlin/lib">
-      <fileset file="${plugin_home}/lib/kotlin-compiler-embeddable-1.6.0.jar" />
+      <fileset file="${plugin_home}/lib/kotlin-compiler-embeddable-1.7.0.jar" />
     </copy>
     <jar destfile="${build.layout}/mps-kotlin/lib/kotlin-ide.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/kotlinIde" />
@@ -765,7 +764,6 @@
       <macro name="idea_home" path="${idea_home}" />
       <macro name="mps_home" path="${mps_home}" />
       <macro name="plugin_home" path="${plugin_home}" />
-      <macro name="platform_lib" path="${platform_lib}" />
     </generate>
   </target>
   
@@ -1184,7 +1182,7 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-persistence.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-project-check.jar" />
-        <fileset file="${plugin_home}/lib/kotlin-compiler-embeddable-1.6.0.jar" />
+        <fileset file="${plugin_home}/lib/kotlin-compiler-embeddable-1.7.0.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />

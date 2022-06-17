@@ -17,8 +17,7 @@
     <orderEntry type="module" module-name="collections-runtime" />
     <orderEntry type="module" module-name="kernel" />
     <orderEntry type="module" module-name="java-stub" />
-    <orderEntry type="library" name="KotlinxMetadataJvm" level="project" />
+    <orderEntry type="library" name="KotlinCoreLibs" level="project" />
     <orderEntry type="module" module-name="persistence" />
-    <orderEntry type="library" name="KotlinStdlib" level="project" />
   </component>
 </module>

@@ -71,22 +71,25 @@
     </condition>
   </target>
 
-  <target name="check-kotlinx-metadata" description="Check kotlinx-metadata library availability">
-    <condition property="kotlinxmetadata.missing" value="true" else="false">
+  <target name="check-kotlin-core-libs" description="Check kotlin core library availability">
+    <condition property="kotlincorelibs.missing" value="true" else="false">
       <not>
         <and>
-          <available file="${kotlinx.metadata.lib}/kotlinx-metadata-jvm-0.4.2.jar"/>
-          <available file="${kotlinx.metadata.lib}/kotlinx-metadata-jvm-0.4.2-sources.jar"/>
-          <available file="${kotlinx.metadata.lib}/kotlinx-metadata-jvm-0.4.2-javadoc.jar"/>
+          <!-- Assumes the presence of javadoc and such if the version is correct -->
+          <available file="${kotlin.core.libs}/kotlinx-metadata-jvm-0.4.2.jar"/>
+          <available file="${kotlin.core.libs}/kotlin-stdlib-${kotlin.version}.jar"/>
         </and>
       </not>
     </condition>
   </target>
 
-  <target name="check-kotlin-libraries" description="Check kotlin libraries availability">
-    <condition property="kotlinlib.missing" value="true" else="false">
+  <target name="check-kotlin-plugin-libs" description="Check kotlin plugin libraries availability">
+    <condition property="kotlinpluginlibs.missing" value="true" else="false">
       <not>
-        <available file="${kotlin.lib}"/>
+        <and>
+          <available file="${kotlin.lib}/kotlin-stdlib-common-${kotlin.version}.jar"/>
+          <available file="${kotlin.lib}/kotlin-compiler-embeddable-${kotlin.version}.jar"/>
+        </and>
       </not>
     </condition>
   </target>
@@ -347,8 +350,8 @@
     <ivy:retrieve pattern="${basedir}/../plugins/jetpad/lib/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
   </target>
 
-  <target name="download-kotlin-libs" depends="check-kotlin-libraries,install-ivy" if="${kotlinlib.missing}"
-          description="Download Kotlin libraries">
+  <target name="download-kotlin-plugin-libs" depends="download-kotlin-core-libs,check-kotlin-plugin-libs,install-ivy" if="${kotlinpluginlibs.missing}"
+          description="Download MPS Kotlin plugins libraries">
     <echo message="Kotlin libraries are missing. Downloading..."/>
     <ivy:resolve file="./ivyKotlinLibs.xml" validate="false" showprogress="true"/>
     <ivy:retrieve pattern="${basedir}/../plugins/mps-kotlin/lib/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
@@ -369,14 +372,14 @@
     <delete dir="${basedir}/../plugins/mps-kotlin/lib/kotlin-builtins"/>
   </target>
 
-  <target name="download-kotlinx-metadata" depends="check-kotlinx-metadata,install-ivy" if="${kotlinxmetadata.missing}"
-          description="Download KotlinX metadata library">
-    <echo message="Kotlin metadata library is missing. Downloading..."/>
-    <ivy:resolve file="./ivyKotlinxMetadata.xml" validate="false" showprogress="true"/>
+  <target name="download-kotlin-core-libs" depends="check-kotlin-core-libs,install-ivy" if="${kotlincorelibs.missing}"
+          description="Download Kotlin metadata and compiler libraries">
+    <echo message="Kotlin core libraries are missing. Downloading..."/>
+    <ivy:resolve file="./ivyKotlinCoreLibs.xml" validate="false" showprogress="true"/>
     <ivy:retrieve pattern="${basedir}/../plugins/mps-core/lib/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
   </target>
 
-  <target name="download-3rd-party" depends="download-diffutils,download-testlib,download-jetpad,download-kotlin-libs,download-kotlinx-metadata"
+  <target name="download-3rd-party" depends="download-diffutils,download-testlib,download-jetpad,download-kotlin-plugin-libs,download-kotlin-core-libs"
           description="Download all non platform related libs"/>
 
   <!-- ===================================================== -->
@@ -448,9 +451,7 @@
 
   <target name="clean-kotlin">
     <delete dir="${kotlin.lib}" includeemptydirs="true" failonerror="false"/>
-    <delete file="${kotlinx.metadata}" failonerror="false"/>
-    <delete file="${kotlinx.metadata.src}" failonerror="false"/>
-    <delete file="${kotlinx.metadata.javadoc}" failonerror="false"/>
+    <delete dir="${kotlin.core.libs}" includeemptydirs="true" failonerror="false"/>
   </target>
 
   <target name="clean-3rd-party" depends="clean-diffutils,clean-testlib,clean-jetpad,clean-kotlin" description="Delete 3rd party libraries"/>
