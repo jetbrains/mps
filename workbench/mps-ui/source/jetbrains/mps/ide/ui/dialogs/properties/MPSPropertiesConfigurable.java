@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.util.Disposer;
 import com.intellij.ui.AnActionButton;
 import com.intellij.ui.AnActionButtonRunnable;
+import com.intellij.ui.AnActionButtonUpdater;
 import com.intellij.ui.BooleanTableCellRenderer;
 import com.intellij.ui.ErrorLabel;
 import com.intellij.ui.IdeBorderFactory;
@@ -100,6 +101,8 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
   protected final Project myMPSProject;
   private DialogWrapper myParentForCallBack = null;
 
+  protected boolean myIsReadOnly;
+
   public MPSPropertiesConfigurable(Project project) {
     myMPSProject = project;
   }
@@ -113,6 +116,10 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
       return;
     }
     ThreadUtils.runInUIThreadNoWait(() -> myParentForCallBack.doCancelAction());
+  }
+
+  protected final void setReadOnly(boolean isReadOnly) {
+    myIsReadOnly = isReadOnly;
   }
 
   @Override
@@ -426,6 +433,11 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
       FindActionButton findActionButton = getFindAnAction(myDependenciesTable);
       if (findActionButton != null) {
         decorator.addExtraAction(findActionButton);
+      }
+      if (myIsReadOnly) {
+        final AnActionButtonUpdater disableEdit = (u) -> false;
+        decorator.setAddActionUpdater(disableEdit);
+        decorator.setRemoveActionUpdater(disableEdit);
       }
 
       decorator.setPreferredSize(new Dimension(500, 300));

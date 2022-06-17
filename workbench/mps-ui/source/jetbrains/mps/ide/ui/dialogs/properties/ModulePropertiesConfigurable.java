@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +35,7 @@ import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.util.EmptyRunnable;
 import com.intellij.refactoring.RefactoringBundle;
 import com.intellij.ui.AnActionButtonRunnable;
+import com.intellij.ui.AnActionButtonUpdater;
 import com.intellij.ui.CheckboxTree;
 import com.intellij.ui.CheckboxTreeBase.CheckPolicy;
 import com.intellij.ui.CheckedTreeNode;
@@ -211,6 +212,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     myModule = (AbstractModule) module;
     myModuleDescriptor = myModule.getModuleDescriptor();
     myFacetTabsPersistence = new FacetTabsPersistence(project).initFromEP();
+
+    setReadOnly(module.isReadOnly());
 
     registerTabs(new ModuleCommonTab());
 
@@ -807,6 +810,11 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
           findModuleUsages(modules);
         }
       });
+      if (myIsReadOnly) {
+        final AnActionButtonUpdater disableEdit = (u) -> false;
+        decorator.setAddActionUpdater(disableEdit);
+        decorator.setRemoveActionUpdater(disableEdit);
+      }
       decorator.setPreferredSize(new Dimension(500, 150));
 
       JPanel table = decorator.createPanel();
@@ -857,6 +865,12 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
           findModelUsages(models);
         }
       });
+      if (myIsReadOnly) {
+        final AnActionButtonUpdater disableEdit = (u) -> false;
+        decoratorForAccessories.setAddActionUpdater(disableEdit);
+        decoratorForAccessories.setRemoveActionUpdater(disableEdit);
+      }
+
       decoratorForAccessories.setPreferredSize(new Dimension(500, 150));
 
       table = decoratorForAccessories.createPanel();

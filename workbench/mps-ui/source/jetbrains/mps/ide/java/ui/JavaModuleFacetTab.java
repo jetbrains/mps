@@ -23,6 +23,7 @@ import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.testFramework.LightVirtualFile;
+import com.intellij.ui.AnActionButtonUpdater;
 import com.intellij.ui.ColoredTableCellRenderer;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.SimpleTextAttributes;
@@ -237,6 +238,11 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       TableUtil.removeSelectedItems(sourcePathTable);
       mySourcePathsTableModel.fireTableDataChanged();
     });
+    if (myJavaModuleFacet.getModule().isReadOnly()) {
+      final AnActionButtonUpdater disableEdit = (u) -> false;
+      decorator.setAddActionUpdater(disableEdit);
+      decorator.setRemoveActionUpdater(disableEdit);
+    }
     decorator.setToolbarBorder(IdeBorderFactory.createBorder());
     decorator.setPreferredSize(new Dimension(500, 100));
 
@@ -277,6 +283,11 @@ public class JavaModuleFacetTab extends BaseTab implements FacetTab {
       TableUtil.removeSelectedItems(librariesTable);
       myLibrariesTableModel.fireTableDataChanged();
     });
+    if (myJavaModuleFacet.getModule().isReadOnly()) {
+      final AnActionButtonUpdater disableEdit = (u) -> false;
+      decorator.setAddActionUpdater(disableEdit);
+      decorator.setRemoveActionUpdater(disableEdit);
+    }
     decorator.setToolbarBorder(IdeBorderFactory.createBorder());
     decorator.setPreferredSize(new Dimension(500, 100));
 

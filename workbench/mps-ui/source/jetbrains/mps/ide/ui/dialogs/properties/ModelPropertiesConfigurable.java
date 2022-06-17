@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ package jetbrains.mps.ide.ui.dialogs.properties;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.ui.AnActionButton;
+import com.intellij.ui.AnActionButtonUpdater;
 import com.intellij.ui.IdeBorderFactory;
 import com.intellij.ui.SpeedSearchComparator;
 import com.intellij.ui.ToolbarDecorator;
@@ -121,6 +122,8 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
     // readAction here is a hack, rather action shall do read. Alas, there are few places to get fixed, can't do it right now.
     myModelProperties = new ModelAccessHelper(project.getModelAccess()).runReadAction(() -> new ModelProperties(modelDescriptor));
     myInPlugin = inPlugin;
+
+    setReadOnly(modelDescriptor.isReadOnly());
 
     registerTabs(/*new ModelCommonTab(),*/ new ModelDependenciesComponent(), new ModelUsedLanguagesTab(), new InfoTab());
   }
@@ -427,6 +430,12 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
         }
       });
 
+      if (myIsReadOnly) {
+        final AnActionButtonUpdater disableEdit = (u) -> false;
+        decorator.setAddActionUpdater(disableEdit);
+        decorator.setRemoveActionUpdater(disableEdit);
+      }
+
       decorator.addExtraAction(new FindActionButton(usedLangsTable) {
         @Override
         public void actionPerformed(AnActionEvent e) {
@@ -436,6 +445,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
 
       decorator.addExtraAction(new AnActionButton() {
         {
+          getTemplatePresentation().setEnabled(myIsReadOnly);
           getTemplatePresentation().setIcon(MPSIcons.General.ModelChecker);
           getTemplatePresentation().setText(PropertiesBundle.message("model.usedlanugages.unused"));
         }
