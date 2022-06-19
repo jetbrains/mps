@@ -2476,20 +2476,28 @@
   </root>
   <root nodeRef="r:c6eeedda-084d-4659-9c4d-80b7768f2bb2(jetbrains.mps.baseLanguage.textGen)/1235130548876">
     <file name="NotExpression_TextGen.java">
-      <node id="1235130548876" at="14,54,15,55" concept="11" />
-      <node id="1237463993136" at="15,55,16,21" concept="5" />
-      <node id="1237463993137" at="16,21,17,92" concept="5" />
-      <node id="1237463993138" at="17,92,18,20" concept="5" />
-      <node id="1235130548876" at="22,0,23,0" concept="15" trace="expression$sv_H" />
-      <node id="1235130548876" at="13,0,20,0" concept="10" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="1235130548876" at="14,54,18,20">
+      <node id="1235130548876" at="16,54,17,55" concept="11" />
+      <node id="3705114034150633890" at="18,149,19,22" concept="5" />
+      <node id="3705114034150633891" at="19,22,20,94" concept="5" />
+      <node id="1237463993136" at="21,12,22,23" concept="5" />
+      <node id="1237463993137" at="22,23,23,94" concept="5" />
+      <node id="1237463993138" at="23,94,24,22" concept="5" />
+      <node id="1235130548876" at="29,0,30,0" concept="15" trace="expression$sv_H" />
+      <node id="1235130548876" at="33,0,34,0" concept="15" trace="ParenthesizedExpression$Ws" />
+      <node id="3705114034150633445" at="21,10,25,5" concept="1" />
+      <node id="3705114034150628022" at="17,55,25,5" concept="9" />
+      <node id="1235130548876" at="15,0,27,0" concept="10" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="3705114034150628024" at="18,149,20,94" />
+      <scope id="3705114034150633446" at="21,12,24,22" />
+      <scope id="1235130548876" at="16,54,25,5">
         <var name="tgs" id="1235130548876" />
       </scope>
-      <scope id="1235130548876" at="13,0,20,0">
+      <scope id="1235130548876" at="15,0,27,0">
         <var name="ctx" id="1235130548876" />
       </scope>
-      <unit id="1235130548876" at="21,0,24,0" name="jetbrains.mps.baseLanguage.textGen.NotExpression_TextGen$LINKS" />
-      <unit id="1235130548876" at="12,0,25,0" name="jetbrains.mps.baseLanguage.textGen.NotExpression_TextGen" />
+      <unit id="1235130548876" at="28,0,31,0" name="jetbrains.mps.baseLanguage.textGen.NotExpression_TextGen$LINKS" />
+      <unit id="1235130548876" at="32,0,35,0" name="jetbrains.mps.baseLanguage.textGen.NotExpression_TextGen$CONCEPTS" />
+      <unit id="1235130548876" at="14,0,36,0" name="jetbrains.mps.baseLanguage.textGen.NotExpression_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
       <node id="1235130548876" at="215,47,216,43" concept="12" />
