@@ -21,6 +21,20 @@ import java.util.stream.Stream;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Arrays;
 
+/**
+ * Tracks dependencies of a model, namely referenced models and used languages.
+ * Unlike dependencies of the model recorded as imports, this class is tailored to cover dependencies
+ * of a M2M/M2T transformation outcome. With different languages/templates involved, ultimate set of model
+ * dependencies could not be properly devised from its imports. Instead, we keep actual dependencies recorded along
+ * with generated files under source_gen.caches
+ * 
+ * FWIW, we used to keep per-root/per-class dependencies as FQ Java class names. This approach helps to detect set of
+ * classes one needs to rebuild when any given class changes, indeed. However, it didn't prove itself, as we compile
+ * whole model and processing per-class dependencies takes more time than it saves. First, we need to collect them during 
+ * textgen phase. Next, we had to proceed them when building classpath (to detect 'dirty' modules and which dependants need
+ * to be rebuild). Besides, it used to work for modules with sources only (present approach uses 'dependencies' for sources, too
+ * but at least these dependencies are expressed in uniform 'module' way, not a unique 'class fqn' way).
+ */
 @GeneratedClass(node = "r:3bdd1bf2-b80f-4e87-b351-0ad08e9e4dc5(jetbrains.mps.make.java)/757342313568265361", model = "r:3bdd1bf2-b80f-4e87-b351-0ad08e9e4dc5(jetbrains.mps.make.java)")
 public class ModelDependencies {
   private static final String DEPENDENCY = "dependency";
@@ -33,15 +47,35 @@ public class ModelDependencies {
 
   public ModelDependencies() {
   }
+  /**
+   * 
+   * @deprecated MPS doesn't produce nor keep per-root/per-class dependencies any more
+   */
+  @Deprecated(forRemoval = true, since = "2022.2")
   public void addDependencies(RootDependencies newDependency) {
     MapSequence.fromMap(myDependencies).put(newDependency.getClassName(), newDependency);
   }
+  /**
+   * 
+   * @deprecated MPS doesn't produce nor keep per-root/per-class dependencies any more
+   */
+  @Deprecated(forRemoval = true, since = "2022.2")
   public Iterable<RootDependencies> getDependencies() {
     return MapSequence.fromMap(myDependencies).values();
   }
+  /**
+   * 
+   * @deprecated MPS doesn't produce nor keep per-root/per-class dependencies any more
+   */
+  @Deprecated(forRemoval = true, since = "2022.2")
   public RootDependencies getDependency(String className) {
     return MapSequence.fromMap(myDependencies).get(className);
   }
+  /**
+   * 
+   * @deprecated 
+   */
+  @Deprecated(forRemoval = true, since = "2022.2")
   public void replaceRoot(RootDependencies rootDependencies) {
     MapSequence.fromMap(myDependencies).put(rootDependencies.getClassName(), rootDependencies);
   }

@@ -131,7 +131,6 @@ public abstract class BaseLanguageTextGen {
   }
   public static void fileHeader(SNode cls, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    tgs.getContextObject("ctx", ClassifierUnitContext.class).registerDependenciesOf(cls);
     boolean topClassifier = !((boolean) Classifier__BehaviorDescriptor.isInner_idsWroEc0xXl.invoke(cls));
     if (topClassifier) {
       tgs.pushTextArea("HEADER");

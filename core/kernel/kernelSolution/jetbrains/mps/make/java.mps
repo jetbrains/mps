@@ -36,9 +36,14 @@
       </concept>
       <concept id="1188207840427" name="jetbrains.mps.baseLanguage.structure.AnnotationInstance" flags="nn" index="2AHcQZ">
         <reference id="1188208074048" name="annotation" index="2AI5Lk" />
+        <child id="1188214630783" name="value" index="2B76xF" />
       </concept>
       <concept id="1188208481402" name="jetbrains.mps.baseLanguage.structure.HasAnnotation" flags="ng" index="2AJDlI">
         <child id="1188208488637" name="annotation" index="2AJF6D" />
+      </concept>
+      <concept id="1188214545140" name="jetbrains.mps.baseLanguage.structure.AnnotationInstanceValue" flags="ng" index="2B6LJw">
+        <reference id="1188214555875" name="key" index="2B6OnR" />
+        <child id="1188214607812" name="value" index="2B70Vg" />
       </concept>
       <concept id="1188220165133" name="jetbrains.mps.baseLanguage.structure.ArrayLiteral" flags="nn" index="2BsdOp">
         <child id="1188220173759" name="item" index="2BsfMF" />
@@ -204,6 +209,7 @@
       <concept id="8970989240999019143" name="jetbrains.mps.baseLanguage.javadoc.structure.TextCommentLinePart" flags="ng" index="1dT_AC">
         <property id="8970989240999019144" name="text" index="1dT_AB" />
       </concept>
+      <concept id="2068944020170241612" name="jetbrains.mps.baseLanguage.javadoc.structure.ClassifierDocComment" flags="ng" index="3UR2Jj" />
     </language>
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
@@ -377,6 +383,30 @@
           <ref role="3uigEE" node="E2BH9lAYkA" resolve="RootDependencies" />
         </node>
       </node>
+      <node concept="P$JXv" id="3dFdplxLzIY" role="lGtFl">
+        <node concept="TZ5HI" id="3dFdplxLzIZ" role="3nqlJM">
+          <node concept="TZ5HA" id="3dFdplxLzJ0" role="3HnX3l">
+            <node concept="1dT_AC" id="3dFdplxLC7z" role="1dT_Ay">
+              <property role="1dT_AB" value="MPS doesn't produce nor keep per-root/per-class dependencies any more" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3dFdplxLzJ1" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <node concept="2B6LJw" id="3dFdplxMR7N" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="3dFdplxMR9r" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="3dFdplxMR9M" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="3dFdplxMRbK" role="2B70Vg">
+            <property role="Xl_RC" value="2022.2" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3clFb_" id="E2BH9lAYj4" role="jymVt">
       <property role="TrG5h" value="getDependencies" />
@@ -394,6 +424,30 @@
               <ref role="3cqZAo" node="E2BH9lAYkt" resolve="myDependencies" />
             </node>
             <node concept="T8wYR" id="E2BH9lAYjc" role="2OqNvi" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="3dFdplxMRcv" role="lGtFl">
+        <node concept="TZ5HI" id="3dFdplxMRcw" role="3nqlJM">
+          <node concept="TZ5HA" id="3dFdplxMRcx" role="3HnX3l">
+            <node concept="1dT_AC" id="3dFdplxMVLq" role="1dT_Ay">
+              <property role="1dT_AB" value="MPS doesn't produce nor keep per-root/per-class dependencies any more" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3dFdplxMRcy" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <node concept="2B6LJw" id="3dFdplxMVLs" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="3dFdplxMVMO" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="3dFdplxMVMQ" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="3dFdplxMVOp" role="2B70Vg">
+            <property role="Xl_RC" value="2022.2" />
           </node>
         </node>
       </node>
@@ -420,6 +474,30 @@
         <ref role="3uigEE" node="E2BH9lAYkA" resolve="RootDependencies" />
       </node>
       <node concept="3Tm1VV" id="E2BH9lAYjf" role="1B3o_S" />
+      <node concept="P$JXv" id="3dFdplxMVPt" role="lGtFl">
+        <node concept="TZ5HI" id="3dFdplxMVPu" role="3nqlJM">
+          <node concept="TZ5HA" id="3dFdplxMVPv" role="3HnX3l">
+            <node concept="1dT_AC" id="3dFdplxN0ka" role="1dT_Ay">
+              <property role="1dT_AB" value="MPS doesn't produce nor keep per-root/per-class dependencies any more" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3dFdplxMVPw" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <node concept="2B6LJw" id="3dFdplxN0kc" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="3dFdplxN0l$" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="3dFdplxN0lV" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="3dFdplxN0q2" role="2B70Vg">
+            <property role="Xl_RC" value="2022.2" />
+          </node>
+        </node>
+      </node>
     </node>
     <node concept="3clFb_" id="E2BH9lAYjn" role="jymVt">
       <property role="TrG5h" value="replaceRoot" />
@@ -450,6 +528,26 @@
                 </node>
               </node>
             </node>
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="3dFdplxN0qL" role="lGtFl">
+        <node concept="TZ5HI" id="3dFdplxN0qM" role="3nqlJM">
+          <node concept="TZ5HA" id="3dFdplxN0qN" role="3HnX3l" />
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="3dFdplxN0qO" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+        <node concept="2B6LJw" id="3dFdplxN4XV" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.forRemoval()" resolve="forRemoval" />
+          <node concept="3clFbT" id="3dFdplxN4Zj" role="2B70Vg">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+        <node concept="2B6LJw" id="3dFdplxN4ZE" role="2B76xF">
+          <ref role="2B6OnR" to="wyt6:~Deprecated.since()" resolve="since" />
+          <node concept="Xl_RD" id="3dFdplxN5nU" role="2B70Vg">
+            <property role="Xl_RC" value="2022.2" />
           </node>
         </node>
       </node>
@@ -1606,6 +1704,68 @@
       </node>
     </node>
     <node concept="3Tm1VV" id="E2BH9lAYks" role="1B3o_S" />
+    <node concept="3UR2Jj" id="3dFdplxLC7P" role="lGtFl">
+      <node concept="TZ5HA" id="3dFdplxLC7Q" role="TZ5H$">
+        <node concept="1dT_AC" id="3dFdplxLC7R" role="1dT_Ay">
+          <property role="1dT_AB" value="Tracks dependencies of a model, namely referenced models and used languages." />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3dFdplxLGA8" role="TZ5H$">
+        <node concept="1dT_AC" id="3dFdplxLGA9" role="1dT_Ay">
+          <property role="1dT_AB" value="Unlike dependencies of the model recorded as imports, this class is tailored to cover dependencies" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3dFdplxLLbm" role="TZ5H$">
+        <node concept="1dT_AC" id="3dFdplxLLbn" role="1dT_Ay">
+          <property role="1dT_AB" value="of a M2M/M2T transformation outcome. With different languages/templates involved, ultimate set of model" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3dFdplxLPyu" role="TZ5H$">
+        <node concept="1dT_AC" id="3dFdplxLPyv" role="1dT_Ay">
+          <property role="1dT_AB" value="dependencies could not be properly devised from its imports. Instead, we keep actual dependencies recorded along" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3dFdplxLYvU" role="TZ5H$">
+        <node concept="1dT_AC" id="3dFdplxLYvV" role="1dT_Ay">
+          <property role="1dT_AB" value="with generated files under source_gen.caches" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3dFdplxM2PE" role="TZ5H$">
+        <node concept="1dT_AC" id="3dFdplxM2PF" role="1dT_Ay">
+          <property role="1dT_AB" value="" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3dFdplxM2PS" role="TZ5H$">
+        <node concept="1dT_AC" id="3dFdplxM2PT" role="1dT_Ay">
+          <property role="1dT_AB" value="FWIW, we used to keep per-root/per-class dependencies as FQ Java class names. This approach helps to detect set of" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3dFdplxM6DC" role="TZ5H$">
+        <node concept="1dT_AC" id="3dFdplxM6DD" role="1dT_Ay">
+          <property role="1dT_AB" value="classes one needs to rebuild when any given class changes, indeed. However, it didn't prove itself, as we compile" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3dFdplxMbeU" role="TZ5H$">
+        <node concept="1dT_AC" id="3dFdplxMbeV" role="1dT_Ay">
+          <property role="1dT_AB" value="whole model and processing per-class dependencies takes more time than it saves. First, we need to collect them during " />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3dFdplxMfAe" role="TZ5H$">
+        <node concept="1dT_AC" id="3dFdplxMfAf" role="1dT_Ay">
+          <property role="1dT_AB" value="textgen phase. Next, we had to proceed them when building classpath (to detect 'dirty' modules and which dependants need" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3dFdplxMtiE" role="TZ5H$">
+        <node concept="1dT_AC" id="3dFdplxMtiF" role="1dT_Ay">
+          <property role="1dT_AB" value="to be rebuild). Besides, it used to work for modules with sources only (present approach uses 'dependencies' for sources, too" />
+        </node>
+      </node>
+      <node concept="TZ5HA" id="3dFdplxMMJy" role="TZ5H$">
+        <node concept="1dT_AC" id="3dFdplxMMJz" role="1dT_Ay">
+          <property role="1dT_AB" value="but at least these dependencies are expressed in uniform 'module' way, not a unique 'class fqn' way)." />
+        </node>
+      </node>
+    </node>
   </node>
   <node concept="312cEu" id="E2BH9lAYkA">
     <property role="TrG5h" value="RootDependencies" />
