@@ -60,7 +60,7 @@ public final class BuildLayout_NamedContainer__BehaviorDescriptor extends BaseBH
     return (String) BuildString__BehaviorDescriptor.getText_id3NagsOfTioI.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.containerName$ES_Y), null);
   }
   /*package*/ static boolean isValidPart_id7XQqoCTkVIS(@NotNull SNode __thisNode__, String propertyValue, SContainmentLink role) {
-    return !((propertyValue.contains("$") || propertyValue.contains("/") || propertyValue.contains("\\")));
+    return !(propertyValue.contains("$") || propertyValue.contains("/") || propertyValue.contains("\\"));
   }
 
   /*package*/ BuildLayout_NamedContainer__BehaviorDescriptor() {

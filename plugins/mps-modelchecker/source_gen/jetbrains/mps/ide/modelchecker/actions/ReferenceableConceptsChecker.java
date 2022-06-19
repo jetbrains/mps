@@ -116,7 +116,7 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
 
   private void checkNode(List<NodeReportItem> results, SNode node, SNode refNode, boolean isAncestor, SNode anchor) {
     SConcept cncpt = node.getConcept();
-    if (!((cncpt.isValid()))) {
+    if (!(cncpt.isValid())) {
       ListSequence.fromList(results).addElement(new ConceptMissingError(node, cncpt));
       return;
     }
@@ -137,7 +137,7 @@ public class ReferenceableConceptsChecker extends SpecificChecker {
       ConceptDescriptor cd = ((SAbstractConceptAdapter) cncpt).getConceptDescriptor();
       if (cd.getStaticScope() == StaticScope.NONE) {
         ListSequence.fromList(results).addElement(NodeReportItemBase.error("Reference to a non-referenceable node found: " + cncpt.getName(), SNodeOperations.getPointer(anchor), itemKind));
-      } else if (cd.getStaticScope() == StaticScope.ROOT && !((SNodeOperations.getContainingRoot(node) == SNodeOperations.getContainingRoot(refNode)))) {
+      } else if (cd.getStaticScope() == StaticScope.ROOT && !(SNodeOperations.getContainingRoot(node) == SNodeOperations.getContainingRoot(refNode))) {
         ListSequence.fromList(results).addElement(NodeReportItemBase.error("Cross-root reference to a locally referenceable node found: " + cncpt.getName(), SNodeOperations.getPointer(anchor), itemKind));
       }
     }

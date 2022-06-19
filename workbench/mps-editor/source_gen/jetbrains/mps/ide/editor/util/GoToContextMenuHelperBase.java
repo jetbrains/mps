@@ -107,7 +107,7 @@ public class GoToContextMenuHelperBase<T extends Navigatable> {
   }
 
   private static void checkClassLoader() {
-    assert !((GoToContextMenuHelperBase.class.getClassLoader() instanceof ModuleClassLoader)) : "if this class is loaded by a reloadable classloader, this will cause memleaks. See MPS-13481";
+    assert !(GoToContextMenuHelperBase.class.getClassLoader() instanceof ModuleClassLoader) : "if this class is loaded by a reloadable classloader, this will cause memleaks. See MPS-13481";
   }
 
 }

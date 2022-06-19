@@ -91,7 +91,7 @@ public class QueriesGenerated extends QueryProviderBase {
       // see PluginUtils for reasons why have to resort to originalModel here
       //  Perhaps, needInitConfig is a bit way too much here (parts loaded by ".plugin." convention don't need
       // extension as well, I'd like to move forward gradually.
-      return !((SPropertyOperations.getBoolean(SModelOperations.getModuleStub(_context.getOriginalInputModel()), PROPS.compileInMPS$2Q_X) && SPropertyOperations.getBoolean(optionalStandaloneMarker, PROPS.needInitConfig$W9CN)));
+      return !(SPropertyOperations.getBoolean(SModelOperations.getModuleStub(_context.getOriginalInputModel()), PROPS.compileInMPS$2Q_X) && SPropertyOperations.getBoolean(optionalStandaloneMarker, PROPS.needInitConfig$W9CN));
     }
     return false;
   }

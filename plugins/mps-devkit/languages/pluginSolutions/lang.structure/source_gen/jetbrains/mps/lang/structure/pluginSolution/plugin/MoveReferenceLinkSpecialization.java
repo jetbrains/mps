@@ -37,7 +37,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
 
 public class MoveReferenceLinkSpecialization extends MoveConceptMemberSpecialization<SReferenceLink> {
   public Tuples._2<SReferenceLink, SNodeReference> fetchState(SNode movingNode, boolean filterOutInvalid) {
-    if (!((SNodeOperations.isInstanceOf(movingNode, CONCEPTS.LinkDeclaration$1p) && SNodeOperations.hasRole(movingNode, LINKS.linkDeclaration$YU1f) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), PROPS.metaClass$PeKc), 0xfc6f4e95b8L) && (SLinkOperations.getTarget(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), LINKS.specializedLink$7ZCN) == null) && SNodeOperations.getModel(movingNode).getModule() instanceof Language))) {
+    if (!(SNodeOperations.isInstanceOf(movingNode, CONCEPTS.LinkDeclaration$1p) && SNodeOperations.hasRole(movingNode, LINKS.linkDeclaration$YU1f) && SEnumOperations.isMember(SPropertyOperations.getEnum(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), PROPS.metaClass$PeKc), 0xfc6f4e95b8L) && (SLinkOperations.getTarget(SNodeOperations.cast(movingNode, CONCEPTS.LinkDeclaration$1p), LINKS.specializedLink$7ZCN) == null) && SNodeOperations.getModel(movingNode).getModule() instanceof Language)) {
       return null;
     }
     SReferenceLink deployedReferenceLink = MetaAdapterByDeclaration.getReferenceLink(movingNode);

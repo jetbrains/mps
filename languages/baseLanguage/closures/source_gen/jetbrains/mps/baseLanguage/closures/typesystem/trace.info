@@ -359,7 +359,7 @@
     </file>
     <file name="typeof_InvokeExpression_InferenceRule.java">
       <node id="1199711574725" at="28,119,29,103" concept="9" />
-      <node id="1199711581032" at="30,26,31,64" concept="9" />
+      <node id="1199711581032" at="30,24,31,64" concept="9" />
       <node id="1199711581032" at="31,64,32,247" concept="9" />
       <node id="1225469510771" at="33,5,34,71" concept="9" />
       <node id="7073484723012007681" at="35,79,36,123" concept="9" />
@@ -408,7 +408,7 @@
       <scope id="1199711537847" at="68,68,69,102" />
       <scope id="1199711537847" at="71,30,72,17" />
       <scope id="1199711537847" at="26,0,28,0" />
-      <scope id="1199711581032" at="30,26,32,247">
+      <scope id="1199711581032" at="30,24,32,247">
         <var name="_reporter_2309309498" id="1199711581032" />
         <var name="errorTarget" id="1199711581032" />
       </scope>

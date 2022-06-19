@@ -38,7 +38,7 @@ public class IncompleteMemberHelper {
       }
     });
 
-    return JavaNameUtil.isJavaReserved(pattern) && !(Sequence.fromIterable(aliases).contains(pattern)) && !((pattern.equals("abstract") && (boolean) IncompleteMemberDeclaration__BehaviorDescriptor.canBeMadeAbstract_id5py1MO2Oyuj.invoke(member) || pattern.equals("transient") && !(SPropertyOperations.getBoolean(member, PROPS.transient$OE_x)) || pattern.equals("final") && !(SPropertyOperations.getBoolean(member, PROPS.final$G76J)) || pattern.equals("public") && (SLinkOperations.getTarget(member, LINKS.visibility$Yyua) == null) || pattern.equals("private") && (SLinkOperations.getTarget(member, LINKS.visibility$Yyua) == null) || pattern.equals("protected") && (SLinkOperations.getTarget(member, LINKS.visibility$Yyua) == null) || pattern.equals("synchronized") && !(SPropertyOperations.getBoolean(member, PROPS.synchronized$HFI0)) || pattern.equals("static") && !(SPropertyOperations.getBoolean(member, PROPS.static$G1Ho))));
+    return JavaNameUtil.isJavaReserved(pattern) && !(Sequence.fromIterable(aliases).contains(pattern)) && !(pattern.equals("abstract") && (boolean) IncompleteMemberDeclaration__BehaviorDescriptor.canBeMadeAbstract_id5py1MO2Oyuj.invoke(member) || pattern.equals("transient") && !(SPropertyOperations.getBoolean(member, PROPS.transient$OE_x)) || pattern.equals("final") && !(SPropertyOperations.getBoolean(member, PROPS.final$G76J)) || pattern.equals("public") && (SLinkOperations.getTarget(member, LINKS.visibility$Yyua) == null) || pattern.equals("private") && (SLinkOperations.getTarget(member, LINKS.visibility$Yyua) == null) || pattern.equals("protected") && (SLinkOperations.getTarget(member, LINKS.visibility$Yyua) == null) || pattern.equals("synchronized") && !(SPropertyOperations.getBoolean(member, PROPS.synchronized$HFI0)) || pattern.equals("static") && !(SPropertyOperations.getBoolean(member, PROPS.static$G1Ho)));
   }
 
   public static boolean isKnownTypeName(SNode member, final String pattern) {
@@ -56,27 +56,27 @@ public class IncompleteMemberHelper {
   }
 
   public static boolean canBeField(SNode member) {
-    return !((SPropertyOperations.getBoolean(member, PROPS.abstract$G7NM) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(member, LINKS.type$dTtN), CONCEPTS.VoidType$BF) || SPropertyOperations.getBoolean(member, PROPS.synchronized$HFI0) || SPropertyOperations.getBoolean(member, PROPS.native$At9O) || ListSequence.fromList(SLinkOperations.getChildren(member, LINKS.modifiers$F5MM)).isNotEmpty()));
+    return !(SPropertyOperations.getBoolean(member, PROPS.abstract$G7NM) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(member, LINKS.type$dTtN), CONCEPTS.VoidType$BF) || SPropertyOperations.getBoolean(member, PROPS.synchronized$HFI0) || SPropertyOperations.getBoolean(member, PROPS.native$At9O) || ListSequence.fromList(SLinkOperations.getChildren(member, LINKS.modifiers$F5MM)).isNotEmpty());
   }
 
   public static boolean canBeMethod(SNode member) {
-    return !((SPropertyOperations.getBoolean(member, PROPS.volatile$sSPl) || SPropertyOperations.getBoolean(member, PROPS.transient$OE_x) || (SPropertyOperations.getBoolean(member, PROPS.abstract$G7NM) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(member), CONCEPTS.Interface$db))));
+    return !(SPropertyOperations.getBoolean(member, PROPS.volatile$sSPl) || SPropertyOperations.getBoolean(member, PROPS.transient$OE_x) || (SPropertyOperations.getBoolean(member, PROPS.abstract$G7NM) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(member), CONCEPTS.Interface$db)));
   }
 
   public static boolean canBeConstructor(SNode member) {
-    return !((member != null && (SPropertyOperations.getBoolean(member, PROPS.volatile$sSPl) || SPropertyOperations.getBoolean(member, PROPS.final$G76J) || SPropertyOperations.getBoolean(member, PROPS.transient$OE_x) || SPropertyOperations.getBoolean(member, PROPS.abstract$G7NM) || SPropertyOperations.getBoolean(member, PROPS.synchronized$HFI0) || SPropertyOperations.getBoolean(member, PROPS.static$G1Ho) || (SLinkOperations.getTarget(member, LINKS.type$dTtN) != null) || (SNodeOperations.isInstanceOf(SNodeOperations.getParent(member), CONCEPTS.EnumClass$Vk) && (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(member, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(member, LINKS.visibility$Yyua), CONCEPTS.ProtectedVisibility$hr))))));
+    return !(member != null && (SPropertyOperations.getBoolean(member, PROPS.volatile$sSPl) || SPropertyOperations.getBoolean(member, PROPS.final$G76J) || SPropertyOperations.getBoolean(member, PROPS.transient$OE_x) || SPropertyOperations.getBoolean(member, PROPS.abstract$G7NM) || SPropertyOperations.getBoolean(member, PROPS.synchronized$HFI0) || SPropertyOperations.getBoolean(member, PROPS.static$G1Ho) || (SLinkOperations.getTarget(member, LINKS.type$dTtN) != null) || (SNodeOperations.isInstanceOf(SNodeOperations.getParent(member), CONCEPTS.EnumClass$Vk) && (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(member, LINKS.visibility$Yyua), CONCEPTS.PublicVisibility$R0) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(member, LINKS.visibility$Yyua), CONCEPTS.ProtectedVisibility$hr)))));
   }
 
   public static boolean canBeClass(SNode member) {
-    return !((SPropertyOperations.getBoolean(member, PROPS.synchronized$HFI0) || SPropertyOperations.getBoolean(member, PROPS.transient$OE_x) || SPropertyOperations.getBoolean(member, PROPS.volatile$sSPl) || SLinkOperations.getTarget(member, LINKS.type$dTtN) != null || ListSequence.fromList(SLinkOperations.getChildren(member, LINKS.modifiers$F5MM)).isNotEmpty()));
+    return !(SPropertyOperations.getBoolean(member, PROPS.synchronized$HFI0) || SPropertyOperations.getBoolean(member, PROPS.transient$OE_x) || SPropertyOperations.getBoolean(member, PROPS.volatile$sSPl) || SLinkOperations.getTarget(member, LINKS.type$dTtN) != null || ListSequence.fromList(SLinkOperations.getChildren(member, LINKS.modifiers$F5MM)).isNotEmpty());
   }
 
   public static boolean canBeEnum(SNode member) {
-    return !((SPropertyOperations.getBoolean(member, PROPS.abstract$G7NM) || SPropertyOperations.getBoolean(member, PROPS.synchronized$HFI0) || SPropertyOperations.getBoolean(member, PROPS.final$G76J) || SPropertyOperations.getBoolean(member, PROPS.volatile$sSPl) || SPropertyOperations.getBoolean(member, PROPS.transient$OE_x) || SLinkOperations.getTarget(member, LINKS.type$dTtN) != null || ListSequence.fromList(SLinkOperations.getChildren(member, LINKS.modifiers$F5MM)).isNotEmpty()));
+    return !(SPropertyOperations.getBoolean(member, PROPS.abstract$G7NM) || SPropertyOperations.getBoolean(member, PROPS.synchronized$HFI0) || SPropertyOperations.getBoolean(member, PROPS.final$G76J) || SPropertyOperations.getBoolean(member, PROPS.volatile$sSPl) || SPropertyOperations.getBoolean(member, PROPS.transient$OE_x) || SLinkOperations.getTarget(member, LINKS.type$dTtN) != null || ListSequence.fromList(SLinkOperations.getChildren(member, LINKS.modifiers$F5MM)).isNotEmpty());
   }
 
   public static boolean canBeInterface(SNode member) {
-    return !((SPropertyOperations.getBoolean(member, PROPS.abstract$G7NM) || SPropertyOperations.getBoolean(member, PROPS.synchronized$HFI0) || SPropertyOperations.getBoolean(member, PROPS.final$G76J) || SPropertyOperations.getBoolean(member, PROPS.volatile$sSPl) || SPropertyOperations.getBoolean(member, PROPS.transient$OE_x) || SLinkOperations.getTarget(member, LINKS.type$dTtN) != null || ListSequence.fromList(SLinkOperations.getChildren(member, LINKS.modifiers$F5MM)).isNotEmpty()));
+    return !(SPropertyOperations.getBoolean(member, PROPS.abstract$G7NM) || SPropertyOperations.getBoolean(member, PROPS.synchronized$HFI0) || SPropertyOperations.getBoolean(member, PROPS.final$G76J) || SPropertyOperations.getBoolean(member, PROPS.volatile$sSPl) || SPropertyOperations.getBoolean(member, PROPS.transient$OE_x) || SLinkOperations.getTarget(member, LINKS.type$dTtN) != null || ListSequence.fromList(SLinkOperations.getChildren(member, LINKS.modifiers$F5MM)).isNotEmpty());
   }
 
   public static String buildFieldName(final String pattern) {
@@ -101,7 +101,7 @@ public class IncompleteMemberHelper {
   public static boolean isValidCandidateFieldName(SNode member, String memberName) {
     // Visible types and classifiers should not be offered as potential member names,
     // if the type is still null (user convenience)
-    return !(((SLinkOperations.getTarget(member, LINKS.type$dTtN) == null) && IncompleteMemberHelper.isKnownTypeName(member, memberName)));
+    return !((SLinkOperations.getTarget(member, LINKS.type$dTtN) == null) && IncompleteMemberHelper.isKnownTypeName(member, memberName));
   }
 
   public static String getNameOfConstructor(SNode member) {

@@ -222,7 +222,7 @@ outer:
     for (SNode concept : SModelOperations.roots(structureModel, CONCEPTS.ConceptDeclaration$gH)) {
       SNode parentConcept = concept;
       ConceptContainer prevConceptContainer = null;
-      while (parentConcept != null && !(SNodeOperations.is(parentConcept, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"))) && !((mySkipAncestors && SNodeOperations.getModel(parentConcept) != structureModel))) {
+      while (parentConcept != null && !(SNodeOperations.is(parentConcept, new SNodePointer("r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)", "1133920641626"))) && !(mySkipAncestors && SNodeOperations.getModel(parentConcept) != structureModel)) {
         ConceptContainer newConceptContainer = processed.get(parentConcept);
         if (newConceptContainer == null) {
           newConceptContainer = new ConceptContainer(parentConcept, this, SNodeOperations.getModel(parentConcept) != structureModel);

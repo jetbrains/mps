@@ -18,7 +18,7 @@ public class MethodCallAdapter {
   @NotNull
   private SNode myMethodCall;
   public MethodCallAdapter(@NotNull SNode methodCall) {
-    if (!((SNodeOperations.isInstanceOf(methodCall, CONCEPTS.IMethodCall$M9) || SNodeOperations.isInstanceOf(methodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9$)))) {
+    if (!(SNodeOperations.isInstanceOf(methodCall, CONCEPTS.IMethodCall$M9) || SNodeOperations.isInstanceOf(methodCall, CONCEPTS.DefaultClassifierMethodCallOperation$9$))) {
       throw new IllegalArgumentException();
     }
     this.myMethodCall = methodCall;

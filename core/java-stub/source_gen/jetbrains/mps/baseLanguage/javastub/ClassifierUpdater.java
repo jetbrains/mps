@@ -737,10 +737,10 @@ public class ClassifierUpdater {
     myHandler.create(sourceNode, pack, nodeId, role, resolve, getTopClassifierNodeId(classType));
   }
   private boolean shallSkip(ASMField f) {
-    return mySkipPrivate && !((f.isPublic() || f.isProtected()));
+    return mySkipPrivate && !(f.isPublic() || f.isProtected());
   }
   private boolean shallSkip(ASMMethod m) {
-    return mySkipPrivate && !((m.isPublic() || m.isProtected()));
+    return mySkipPrivate && !(m.isPublic() || m.isProtected());
   }
 
   /**

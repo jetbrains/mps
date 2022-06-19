@@ -78,7 +78,7 @@ public class ContextClassifiersInRoot {
         } else if (SNodeOperations.isInstanceOf(current, CONCEPTS.Interface$db)) {
           processNestedClassifiers = !(LINKS.extendedInterface$PDVO.equals(sourceChildRole));
         } else if (SNodeOperations.isInstanceOf(current, CONCEPTS.ClassConcept$bK)) {
-          processNestedClassifiers = !((LINKS.superclass$Mp9$.equals(sourceChildRole) || LINKS.implementedInterface$rujG.equals(sourceChildRole)));
+          processNestedClassifiers = !(LINKS.superclass$Mp9$.equals(sourceChildRole) || LINKS.implementedInterface$rujG.equals(sourceChildRole));
         } else {
           if (LOG.isWarningLevel()) {
             LOG.warning("Illegal classifier node in bl textgen: " + SNodeOperations.present(current));

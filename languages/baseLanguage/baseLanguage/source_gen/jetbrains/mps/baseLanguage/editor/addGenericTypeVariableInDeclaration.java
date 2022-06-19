@@ -76,7 +76,7 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
   public class TMP_Group_gsk890_a0 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$Lipp)).isEmpty() && !((SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.Annotation$he) || SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptMethodDeclaration$N0)));
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$Lipp)).isEmpty() && !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.Annotation$he) || SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptMethodDeclaration$N0));
     }
 
     @NotNull
@@ -163,7 +163,7 @@ public class addGenericTypeVariableInDeclaration extends TransformationMenuBase 
   public class TMP_Group_gsk890_a1 extends GroupMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Override
     protected boolean isApplicable(TransformationMenuContext _context) {
-      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$Lipp)).isEmpty() && !((SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.Annotation$he) || SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptMethodDeclaration$N0)));
+      return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.typeVariableDeclaration$Lipp)).isEmpty() && !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.Annotation$he) || SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ConceptMethodDeclaration$N0));
     }
 
     @NotNull

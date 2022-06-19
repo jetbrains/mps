@@ -51,7 +51,7 @@ public class ReturnBlockDocTag_Constraints extends BaseConstraintsDescriptor {
       }
     })) {
       SNode returnType = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(parentNode, CONCEPTS.BaseMethodDeclaration$kD, false, false), LINKS.returnType$5xoi);
-      return !(((returnType != null) && SNodeOperations.isInstanceOf(returnType, CONCEPTS.VoidType$BF)));
+      return !((returnType != null) && SNodeOperations.isInstanceOf(returnType, CONCEPTS.VoidType$BF));
     }
     return false;
   }

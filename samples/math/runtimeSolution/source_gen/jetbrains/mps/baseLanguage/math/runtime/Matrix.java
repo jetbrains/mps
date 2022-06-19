@@ -680,7 +680,7 @@ public class Matrix<T> {
       if ((result.get(i, i).equals(zero))) {
         boolean flag = false;
         for (int j = i + 1; j < myRows; j++) {
-          if (!((result.get(j, i).equals(zero)))) {
+          if (!(result.get(j, i).equals(zero))) {
             if (aux != null) {
               aux.addRow(j, i, unit);
             }

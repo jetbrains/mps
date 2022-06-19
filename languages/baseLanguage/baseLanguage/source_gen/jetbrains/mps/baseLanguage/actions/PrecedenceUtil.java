@@ -88,12 +88,12 @@ public class PrecedenceUtil {
 
   public static boolean needsParensInsideCastExpression(SNode castExpression) {
     SNode targetExpr = SLinkOperations.getTarget(castExpression, LINKS.expression$XDmN);
-    return !(((targetExpr == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(targetExpr))) || SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.GenericNewExpression$Fh) || (!(SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.TernaryOperatorExpression$aq)) && !(SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.BinaryOperation$W1))) || PrecedenceUtil.isHigherPriority(targetExpr, castExpression)));
+    return !((targetExpr == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(targetExpr))) || SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.GenericNewExpression$Fh) || (!(SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.TernaryOperatorExpression$aq)) && !(SNodeOperations.isInstanceOf(targetExpr, CONCEPTS.BinaryOperation$W1))) || PrecedenceUtil.isHigherPriority(targetExpr, castExpression));
 
   }
 
   public static boolean needsParensAroundNotExpression(SNode notExpression) {
-    return !(((SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H) == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H)))) || (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), CONCEPTS.TernaryOperatorExpression$aq)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), CONCEPTS.BinaryOperation$W1))) || PrecedenceUtil.isHigherPriority(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), notExpression)));
+    return !((SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H) == null) || (boolean) Expression__BehaviorDescriptor.constant_id1653mnvAgr2.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H)))) || (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), CONCEPTS.TernaryOperatorExpression$aq)) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), CONCEPTS.BinaryOperation$W1))) || PrecedenceUtil.isHigherPriority(SLinkOperations.getTarget(notExpression, LINKS.expression$sv_H), notExpression));
 
   }
 

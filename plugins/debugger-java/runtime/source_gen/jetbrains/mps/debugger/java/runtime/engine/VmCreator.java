@@ -113,7 +113,7 @@ public class VmCreator extends AbstractDebugSessionCreator {
     fail();
   }
   private void fixStopBugUnderLinux(final ProcessHandler processHandler, final DebugSession session) {
-    if (!((processHandler instanceof RemoteProcessHandler))) {
+    if (!(processHandler instanceof RemoteProcessHandler)) {
       //  add listener only to non-remote process handler:
       //  on Unix systems destroying process does not cause VMDeathEvent to be generated,
       //  so we need to call debugProcess.stop() explicitly for graceful termination.

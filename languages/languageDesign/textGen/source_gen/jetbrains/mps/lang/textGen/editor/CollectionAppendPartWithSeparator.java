@@ -117,7 +117,7 @@ public class CollectionAppendPartWithSeparator extends TransformationMenuBase {
       public boolean canExecute(@NotNull String pattern) {
         if (SNodeOperations.isInstanceOf(SNodeOperations.getParent(_context.getNode()), CONCEPTS.CollectionAppendPart$I2)) {
           SNode part = SNodeOperations.cast(SNodeOperations.getParent(_context.getNode()), CONCEPTS.CollectionAppendPart$I2);
-          return !((SPropertyOperations.getBoolean(part, PROPS.withSeparator$Pdf8) || isNotEmptyString(SPropertyOperations.getString(part, PROPS.separator$jRB0))));
+          return !(SPropertyOperations.getBoolean(part, PROPS.withSeparator$Pdf8) || isNotEmptyString(SPropertyOperations.getString(part, PROPS.separator$jRB0)));
         }
         return false;
       }

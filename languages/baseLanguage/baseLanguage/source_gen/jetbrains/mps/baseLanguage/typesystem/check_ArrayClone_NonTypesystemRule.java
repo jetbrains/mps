@@ -30,7 +30,7 @@ public class check_ArrayClone_NonTypesystemRule extends AbstractNonTypesystemRul
   public void applyRule(final SNode instanceMethodCallOperation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // FIXME: almost duplicate code with JavaToMpsConverter
     SReference methodRef = SNodeOperations.getReference(instanceMethodCallOperation, LINKS.baseMethodDeclaration$pyYw);
-    if (!((SLinkOperations.isDynamic(methodRef) && "clone".equals(SLinkOperations.getResolveInfo(methodRef))))) {
+    if (!(SLinkOperations.isDynamic(methodRef) && "clone".equals(SLinkOperations.getResolveInfo(methodRef)))) {
       return;
     }
 

@@ -65,7 +65,7 @@ public final class PatternExpression__BehaviorDescriptor extends BaseBHDescripto
     List<SNode> variables = PatternExpression__BehaviorDescriptor.getVariables_id4dzCQkRGUKX.invoke(__thisNode__);
     List<SNode> result = new ArrayList<SNode>();
     for (SNode var : variables) {
-      if (!((SNodeOperations.isInstanceOf(SNodeOperations.getParent(var), CONCEPTS.OrPattern$Lk) && SNodeOperations.getParent(var) != __thisNode__))) {
+      if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(var), CONCEPTS.OrPattern$Lk) && SNodeOperations.getParent(var) != __thisNode__)) {
         ListSequence.fromList(result).addElement(var);
       }
     }

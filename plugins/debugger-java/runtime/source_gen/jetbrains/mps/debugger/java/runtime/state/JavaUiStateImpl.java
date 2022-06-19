@@ -74,7 +74,7 @@ public abstract class JavaUiStateImpl extends JavaUiState {
     if (thread == null) {
       return null;
     }
-    if (newContext == null || !((Objects.equals(newContext.getThread(), thread)))) {
+    if (newContext == null || !(Objects.equals(newContext.getThread(), thread))) {
       return getEventProcessor().getContextManager().findContextForThread(thread.getThread());
     }
     return newContext;

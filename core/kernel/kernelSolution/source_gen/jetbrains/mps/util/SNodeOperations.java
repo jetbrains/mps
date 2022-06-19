@@ -183,7 +183,7 @@ public class SNodeOperations {
   public static Set<SContainmentLink> getChildRoles(SNode n, boolean includeAttributeRoles) {
     final Set<SContainmentLink> augend = new HashSet<SContainmentLink>();
     for (SNode child : n.getChildren()) {
-      if (includeAttributeRoles || !((AttributeOperations.isAttribute(child)))) {
+      if (includeAttributeRoles || !(AttributeOperations.isAttribute(child))) {
         augend.add(child.getContainmentLink());
       }
     }

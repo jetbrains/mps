@@ -15,7 +15,7 @@ public class _QueriesUtil {
   public _QueriesUtil() {
   }
   public static Iterable<SNode> getList_ContextOwner_ifMethod_ParmsUsedInClosure(SNode inputNode, TemplateQueryContext genContext) {
-    if (!((SNodeOperations.isInstanceOf(inputNode, CONCEPTS.BaseMethodDeclaration$kD)))) {
+    if (!(SNodeOperations.isInstanceOf(inputNode, CONCEPTS.BaseMethodDeclaration$kD))) {
       return Sequence.fromIterable(Collections.<SNode>emptyList());
     }
     List<SNode> variablesUsedInClosure = ClosuresUtil.getVariablesUsedInClosure(inputNode, genContext);

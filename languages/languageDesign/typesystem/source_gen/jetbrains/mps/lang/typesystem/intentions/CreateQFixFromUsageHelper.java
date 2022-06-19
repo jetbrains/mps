@@ -59,7 +59,7 @@ public class CreateQFixFromUsageHelper {
 
     // check err cell
     EditorCell cell = myEditorContext.getContextCell();
-    if (!((cell instanceof EditorCell_Label))) {
+    if (!(cell instanceof EditorCell_Label)) {
       return false;
     }
 

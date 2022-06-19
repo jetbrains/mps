@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 
 public class MovePropertySpecialization extends MoveConceptMemberSpecialization<SProperty> {
   public Tuples._2<SProperty, SNodeReference> fetchState(SNode movingNode, boolean filterOutInvalid) {
-    if (!((SNodeOperations.isInstanceOf(movingNode, CONCEPTS.PropertyDeclaration$1S) && SNodeOperations.hasRole(movingNode, LINKS.propertyDeclaration$YUgg) && SNodeOperations.getModel(movingNode).getModule() instanceof Language))) {
+    if (!(SNodeOperations.isInstanceOf(movingNode, CONCEPTS.PropertyDeclaration$1S) && SNodeOperations.hasRole(movingNode, LINKS.propertyDeclaration$YUgg) && SNodeOperations.getModel(movingNode).getModule() instanceof Language)) {
       return null;
     }
     SProperty deployedProperty = MetaAdapterByDeclaration.getProperty(movingNode);

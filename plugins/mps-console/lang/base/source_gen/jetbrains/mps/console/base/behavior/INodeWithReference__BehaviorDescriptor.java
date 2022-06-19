@@ -48,7 +48,7 @@ public final class INodeWithReference__BehaviorDescriptor extends BaseBHDescript
     return () -> new EditorNavigator(project).shallFocus(true).selectIfChild().open(targetNode);
   }
   /*package*/ static boolean canExecute_id2QdC0h7dh1h(@NotNull SNode __thisNode__) {
-    return !(((boolean) INodeWithReference__BehaviorDescriptor.isBroken_id7m$hACyVN2F.invoke(__thisNode__)));
+    return !((boolean) INodeWithReference__BehaviorDescriptor.isBroken_id7m$hACyVN2F.invoke(__thisNode__));
   }
   /*package*/ static String getText_id5E451QuvdoB(@NotNull SNode __thisNode__) {
     return BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.target$CsE));

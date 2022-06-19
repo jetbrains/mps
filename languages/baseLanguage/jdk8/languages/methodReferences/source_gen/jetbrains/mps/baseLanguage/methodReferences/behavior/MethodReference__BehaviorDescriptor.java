@@ -55,7 +55,7 @@ public final class MethodReference__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static boolean isOperandTypeFirstParameter_id4aYRP41Um04(@NotNull SNode __thisNode__) {
     // Method reference of an instance method from a static context (type, classifier) -> first arg will be instance
-    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.target$Woec), CONCEPTS.MethodReferenceTypeTargetExpression$a3) && !((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.method$8Sfb), CONCEPTS.ConstructorDeclaration$yG) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.method$8Sfb), CONCEPTS.StaticMethodDeclaration$FJ)));
+    return SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.target$Woec), CONCEPTS.MethodReferenceTypeTargetExpression$a3) && !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.method$8Sfb), CONCEPTS.ConstructorDeclaration$yG) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.method$8Sfb), CONCEPTS.StaticMethodDeclaration$FJ));
   }
   /*package*/ static List<SNode> getReferencedMethodActualArguments_id4GHzns1UXdE(@NotNull SNode __thisNode__) {
     List<SNode> list = Sequence.fromIterable(SLinkOperations.collect(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.method$8Sfb), LINKS.parameter$5xBj), LINKS.type$a1UY)).toListSequence();

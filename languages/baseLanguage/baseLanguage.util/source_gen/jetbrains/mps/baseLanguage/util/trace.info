@@ -14,7 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/5351203823916750322:jetbrains.mps.baseLanguage.structure.TryUniversalStatement" />
   <root nodeRef="r:2a308ea0-c7e3-4fa5-a624-ad74ee5cfab5(jetbrains.mps.baseLanguage.util)/1870381088643884519">
     <file name="ReflectionUtil.java">
-      <node id="1870381088643957886" at="23,50,24,91" concept="10" />
+      <node id="1870381088643957886" at="23,48,24,91" concept="10" />
       <node id="1870381088643957888" at="25,5,26,87" concept="5" />
       <node id="1870381088643957913" at="27,36,28,147" concept="10" />
       <node id="1870381088646052827" at="29,5,30,27" concept="5" />
@@ -41,7 +41,7 @@
       <node id="1870381088643903211" at="45,0,57,0" concept="9" trace="getConstantValue#(Lorg/jetbrains/mps/openapi/module/SModule;Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;)Ljava/lang/Object;" />
       <node id="1870381088643957178" at="22,0,44,0" concept="9" trace="findClass#(Lorg/jetbrains/mps/openapi/module/SModule;Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/Class;" />
       <scope id="1870381088643884729" at="19,28,19,28" />
-      <scope id="1870381088643957881" at="23,50,24,91" />
+      <scope id="1870381088643957881" at="23,48,24,91" />
       <scope id="1870381088643957900" at="27,36,28,147" />
       <scope id="1870381088645978969" at="31,75,32,141" />
       <scope id="1870381088643957941" at="38,9,39,61" />

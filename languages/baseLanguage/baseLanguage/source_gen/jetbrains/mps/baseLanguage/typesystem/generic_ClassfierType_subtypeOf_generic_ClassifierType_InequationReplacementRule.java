@@ -43,7 +43,7 @@ public class generic_ClassfierType_subtypeOf_generic_ClassifierType_InequationRe
     {
       SNode coercedNode_e5spwb_c0a = TypecheckingFacade.getFromContext().coerceType(subtype, CONCEPTS.ClassifierType$bL);
       if (coercedNode_e5spwb_c0a != null) {
-        if (!(((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(coercedNode_e5spwb_c0a, LINKS.classifier$cxMr), SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr))))) {
+        if (!((boolean) Classifier__BehaviorDescriptor.isDescendant_id6dL7A1DpKo1.invoke(SLinkOperations.getTarget(coercedNode_e5spwb_c0a, LINKS.classifier$cxMr), SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr)))) {
           return false;
         }
         if (SLinkOperations.getTarget(coercedNode_e5spwb_c0a, LINKS.classifier$cxMr) == SLinkOperations.getTarget(supertype, LINKS.classifier$cxMr)) {

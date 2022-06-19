@@ -34,7 +34,7 @@ public class CreateRootNodeAdapter_ActionGroup extends GeneratedActionGroup {
   public void doUpdate(AnActionEvent event) {
     removeAll();
     List<SModel> models = MPSCommonDataKeys.MODELS.getData(event.getDataContext());
-    if (ListSequence.fromList(models).count() == 1 && !((ListSequence.fromList(models).first() instanceof EditableSModel && !(ListSequence.fromList(models).first().isReadOnly())))) {
+    if (ListSequence.fromList(models).count() == 1 && !(ListSequence.fromList(models).first() instanceof EditableSModel && !(ListSequence.fromList(models).first().isReadOnly()))) {
       event.getPresentation().setVisible(false);
       return;
     }

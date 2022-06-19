@@ -70,7 +70,7 @@ public final class BuildLayout_Folder__BehaviorDescriptor extends BaseBHDescript
     return true;
   }
   /*package*/ static boolean isValidPart_id7XQqoCTkVIS(@NotNull SNode __thisNode__, String propertyValue, SContainmentLink role) {
-    return !((propertyValue.contains("$") || propertyValue.contains("\\")));
+    return !(propertyValue.contains("$") || propertyValue.contains("\\"));
   }
   /*package*/ static boolean exports_id5FtnUVJQES1(@NotNull SNode __thisNode__, Object object) {
     if (object instanceof SNode) {

@@ -58,7 +58,7 @@ public class ExtensionMethodDeclaration_Constraints extends BaseConstraintsDescr
     return Objects.equals(link, LINKS.methods$7wWM);
   }
   private static boolean staticCanBeAParent(SNode node, SNode childNode, SAbstractConcept childConcept, SContainmentLink link) {
-    if (!((SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.PublicVisibility$R0) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.PrivateVisibility$l0))) && link == LINKS.visibility$Yyua) {
+    if (!(SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.PublicVisibility$R0) || SConceptOperations.isSubConceptOf(SNodeOperations.asSConcept(childConcept), CONCEPTS.PrivateVisibility$l0)) && link == LINKS.visibility$Yyua) {
       return false;
     }
     return true;

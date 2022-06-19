@@ -74,7 +74,7 @@ public class ParameterInitializer_Constraints extends BaseConstraintsDescriptor 
                   public boolean accept(SNode it) {
                     return check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0a0a0a0a3(SLinkOperations.getTarget(it, LINKS.parameter$DxS8), node);
                   }
-                }) != null && !((SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.parameter$DxS8) != null));
+                }) != null && !(SLinkOperations.getTarget(_context.getReferenceNode(), LINKS.parameter$DxS8) != null);
               }
             };
           }

@@ -160,7 +160,7 @@ public class MathTypeUtil {
     if (SNodeOperations.isInstanceOf(narrower, CONCEPTS.NullType$Ea)) {
       return 0;
     }
-    if (TypecheckingFacade.getFromContext().isSubtype(wider, qBCMatrix) && TypecheckingFacade.getFromContext().isSubtype(narrower, qBCMatrix) && !((new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(wider)), Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(narrower)))))) {
+    if (TypecheckingFacade.getFromContext().isSubtype(wider, qBCMatrix) && TypecheckingFacade.getFromContext().isSubtype(narrower, qBCMatrix) && !(new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(wider)), Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(narrower))))) {
       if (new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(getElementType(wider)), bInt)) {
         return 9;
       }
@@ -299,16 +299,16 @@ public class MathTypeUtil {
     return true;
   }
   public static SNode typeCast(SNode type, SNode parentType) {
-    if (new SNodeMatcher().match(parentType, bDouble) && !((new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bDouble)))) {
+    if (new SNodeMatcher().match(parentType, bDouble) && !(new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bDouble))) {
       return _quotation_createNode_i9t80i_a0a0a82();
     }
-    if (new SNodeMatcher().match(parentType, bFloat) && !((new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bFloat)))) {
+    if (new SNodeMatcher().match(parentType, bFloat) && !(new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bFloat))) {
       return _quotation_createNode_i9t80i_a0a1a82();
     }
-    if (new SNodeMatcher().match(parentType, bInt) && !((new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bInt)))) {
+    if (new SNodeMatcher().match(parentType, bInt) && !(new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bInt))) {
       return _quotation_createNode_i9t80i_a0a2a82();
     }
-    if (new SNodeMatcher().match(parentType, bLong) && !((new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bLong)))) {
+    if (new SNodeMatcher().match(parentType, bLong) && !(new SNodeMatcher().match(Type__BehaviorDescriptor.getBoxedType_idhEwIzNC.invoke(type), bLong))) {
       return _quotation_createNode_i9t80i_a0a3a82();
     }
     return null;

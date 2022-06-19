@@ -43,7 +43,7 @@ public class FilteringSequence<U> extends AbstractChainedSequence<U, U> implemen
       if (hasNext.unknown()) {
         moveToNext();
       }
-      if (!((hasNext.hasNext()))) {
+      if (!(hasNext.hasNext())) {
         throw new NoSuchElementException();
       }
       return clearNext();

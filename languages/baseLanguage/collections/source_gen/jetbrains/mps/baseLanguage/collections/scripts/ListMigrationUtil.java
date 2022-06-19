@@ -26,7 +26,7 @@ public class ListMigrationUtil {
       return false;
     }
     SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR));
-    if (!((SNodeOperations.isInstanceOf(type, CONCEPTS.ListType$LR) || SNodeOperations.isInstanceOf(type, CONCEPTS.SNodeListType$Qe)))) {
+    if (!(SNodeOperations.isInstanceOf(type, CONCEPTS.ListType$LR) || SNodeOperations.isInstanceOf(type, CONCEPTS.SNodeListType$Qe))) {
       return false;
     }
     return ListMigrationUtil.isApplicableMethod(node, name, params);
@@ -56,7 +56,7 @@ public class ListMigrationUtil {
       return false;
     }
     SNode type = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(node), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR));
-    if (!((SNodeOperations.isInstanceOf(type, CONCEPTS.ListType$LR) || SNodeOperations.isInstanceOf(type, CONCEPTS.SNodeListType$Qe) || SNodeOperations.isInstanceOf(type, CONCEPTS.SetType$g6)))) {
+    if (!(SNodeOperations.isInstanceOf(type, CONCEPTS.ListType$LR) || SNodeOperations.isInstanceOf(type, CONCEPTS.SNodeListType$Qe) || SNodeOperations.isInstanceOf(type, CONCEPTS.SetType$g6))) {
       return false;
     }
     return ListMigrationUtil.isApplicableMethod(node, name, params);
@@ -76,7 +76,7 @@ public class ListMigrationUtil {
     if (!(Objects.equals(SPropertyOperations.getString(declaration, PROPS.name$MnvL), name))) {
       return false;
     }
-    if (!((Objects.equals(SModelOperations.getModelName(SNodeOperations.getModel(declaration)), "java.util")))) {
+    if (!(Objects.equals(SModelOperations.getModelName(SNodeOperations.getModel(declaration)), "java.util"))) {
       return false;
     }
     if (ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.actualArgument$pzdx)).count() != ListSequence.fromList(params).count()) {

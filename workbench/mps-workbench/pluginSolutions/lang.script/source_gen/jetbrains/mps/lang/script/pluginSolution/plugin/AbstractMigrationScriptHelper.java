@@ -106,7 +106,7 @@ public abstract class AbstractMigrationScriptHelper {
     return new ModelsScope(result);
   }
   private static boolean includeModel(SModel model) {
-    if (!((model instanceof EditableSModel))) {
+    if (!(model instanceof EditableSModel)) {
       return false;
     }
     if (model.isReadOnly()) {

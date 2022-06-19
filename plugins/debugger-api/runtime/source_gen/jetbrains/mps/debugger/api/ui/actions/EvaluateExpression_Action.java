@@ -76,7 +76,7 @@ public class EvaluateExpression_Action extends BaseAction {
       final List<SNodeReference> nodePointers = ListSequence.fromList(new ArrayList<SNodeReference>());
       if (((EditorComponent) MapSequence.fromMap(_params).get("component")) != null) {
         final Selection selection = ((EditorComponent) MapSequence.fromMap(_params).get("component")).getSelectionManager().getSelection();
-        if ((selection instanceof EditorCellLabelSelection && ((EditorCellLabelSelection) selection).hasNonTrivialSelection()) || (selection instanceof EditorCellSelection && !((selection instanceof EditorCellLabelSelection))) || (selection instanceof MultipleSelection)) {
+        if ((selection instanceof EditorCellLabelSelection && ((EditorCellLabelSelection) selection).hasNonTrivialSelection()) || (selection instanceof EditorCellSelection && !(selection instanceof EditorCellLabelSelection)) || (selection instanceof MultipleSelection)) {
           ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getModelAccess().runReadAction(() -> {
             ListSequence.fromList(nodePointers).addSequence(Sequence.fromIterable(Sequence.fromClosure(new ISequenceClosure<SNode>() {
               public Iterable<SNode> iterable() {

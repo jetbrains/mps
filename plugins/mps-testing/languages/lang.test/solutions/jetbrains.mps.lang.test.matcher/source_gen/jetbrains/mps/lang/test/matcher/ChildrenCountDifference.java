@@ -30,7 +30,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
     if (obj == null) {
       return false;
     }
-    if (!((obj instanceof ChildrenCountDifference))) {
+    if (!(obj instanceof ChildrenCountDifference)) {
       return false;
     }
     ChildrenCountDifference diff = (ChildrenCountDifference) obj;

@@ -29,7 +29,7 @@ public class check_RequiredAnnotationDataDeclaration_NonTypesystemRule extends A
       if (SLinkOperations.getTarget(dep, LINKS.script$3s$K) == null) {
         continue;
       }
-      if (!((IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SLinkOperations.getTarget(dep, LINKS.script$3s$K)) != null))) {
+      if (!(IMigrationUnit__BehaviorDescriptor.getProducedAnnotationData_id5TUCQr2CN0$.invoke(SLinkOperations.getTarget(dep, LINKS.script$3s$K)) != null)) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(dep, "Script " + SPropertyOperations.getString(SLinkOperations.getTarget(dep, LINKS.script$3s$K), PROPS.name$MnvL) + " does not produce any data", "r:47a77104-3b09-4998-a2bd-ada4655c0c77(jetbrains.mps.lang.migration.typesystem)", "6807933448472413406", null, errorTarget);
       }

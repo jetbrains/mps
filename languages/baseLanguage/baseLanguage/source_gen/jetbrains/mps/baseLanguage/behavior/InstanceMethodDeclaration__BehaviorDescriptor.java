@@ -146,7 +146,7 @@ public final class InstanceMethodDeclaration__BehaviorDescriptor extends BaseBHD
     return null;
   }
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifier) {
-    if (!((context.isElementVisible(__thisNode__)))) {
+    if (!(context.isElementVisible(__thisNode__))) {
       return;
     }
     MethodSignature signature = new MethodSignature(__thisNode__, context.getTypeByTypeVariableMapping());

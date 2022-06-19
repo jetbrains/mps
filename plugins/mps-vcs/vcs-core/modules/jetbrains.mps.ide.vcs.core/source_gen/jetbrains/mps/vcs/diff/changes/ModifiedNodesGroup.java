@@ -174,7 +174,7 @@ public class ModifiedNodesGroup {
   }
 
   public boolean isInsertOrDelete() {
-    return !(isMove()) && !((this instanceof WrappingNodesGroup)) && !((this instanceof IdChangeGroup));
+    return !(isMove()) && !(this instanceof WrappingNodesGroup) && !(this instanceof IdChangeGroup);
   }
 
   public boolean isNew() {

@@ -24,7 +24,7 @@ public class check_ScopesTest_NonTypesystemRule extends AbstractNonTypesystemRul
   }
   public void applyRule(final SNode scopesTest, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (!((boolean) ScopesTest__BehaviorDescriptor.isSimple_id4IvydoGvpbr.invoke(SNodeOperations.asSConcept(SNodeOperations.getConcept(scopesTest)), INodesTestMethod__BehaviorDescriptor.getAnnotatedNode_id38gbJV0XvZR.invoke(scopesTest)))) {
-      if (!((SLinkOperations.getTarget(scopesTest, LINKS.checkingReference$LcK9) != null))) {
+      if (!(SLinkOperations.getTarget(scopesTest, LINKS.checkingReference$LcK9) != null)) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(scopesTest, "should specify reference link to check", "r:00000000-0000-4000-0000-011c89590385(jetbrains.mps.lang.test.typesystem)", "9018216227566657445", null, errorTarget);
       }

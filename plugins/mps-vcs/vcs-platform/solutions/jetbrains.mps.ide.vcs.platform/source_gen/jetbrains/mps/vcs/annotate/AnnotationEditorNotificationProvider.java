@@ -41,7 +41,7 @@ public class AnnotationEditorNotificationProvider extends EditorNotifications.Pr
   @Nullable
   private EditorComponent getCurrentEditorComponent(@NotNull FileEditor fileEditor) {
 
-    if (!((fileEditor instanceof MPSFileNodeEditor))) {
+    if (!(fileEditor instanceof MPSFileNodeEditor)) {
       return null;
     }
 

@@ -51,7 +51,7 @@ public class Refactorings_TabDescriptor extends RelationDescriptor {
   }
   public List<SNode> getNodes(SNode node) {
     SModule module = SNodeOperations.getModel(node).getModule();
-    if (!((module instanceof Language))) {
+    if (!(module instanceof Language)) {
       return new ArrayList<SNode>();
     }
 

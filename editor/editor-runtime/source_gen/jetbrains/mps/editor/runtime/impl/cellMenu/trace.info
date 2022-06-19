@@ -15,7 +15,7 @@
   <root nodeRef="r:e7d06f33-351b-4c9c-b848-ef96eff562e1(jetbrains.mps.editor.runtime.impl.cellMenu)/2816844678677465131">
     <file name="EnumSPropertyTransformationItemFactory.java">
       <node id="5290983204020987175" at="24,131,25,40" concept="6" />
-      <node id="5290983204020987183" at="26,44,27,61" concept="7" />
+      <node id="5290983204020987183" at="26,42,27,61" concept="7" />
       <node id="5290983204020987191" at="28,5,29,68" concept="6" />
       <node id="5290983204020987197" at="29,68,30,130" concept="6" />
       <node id="6675021528997550731" at="32,107,33,71" concept="1" />
@@ -35,7 +35,7 @@
       <node id="2816844678677717820" at="30,130,43,5" concept="3" />
       <node id="2816844678677717791" at="24,0,47,0" concept="9" trace="createItems#(Lorg/jetbrains/mps/openapi/language/SProperty;Ljetbrains/mps/openapi/editor/menus/transformation/TransformationMenuContext;)Ljava/util/List;" />
       <scope id="2816844678677715516" at="22,52,22,52" />
-      <scope id="5290983204020987182" at="26,44,27,61" />
+      <scope id="5290983204020987182" at="26,42,27,61" />
       <scope id="6675021528997610466" at="39,19,40,72" />
       <scope id="5290983204020987194" at="47,66,48,47" />
       <scope id="2816844678677715512" at="22,0,24,0" />
@@ -71,7 +71,7 @@
       <node id="5675225388174907350" at="29,25,30,18" concept="1" />
       <node id="7279038390441828547" at="30,18,31,26" concept="1" />
       <node id="9121817262412749013" at="34,52,35,42" concept="6" />
-      <node id="5290983204020726296" at="36,44,37,55" concept="7" />
+      <node id="5290983204020726296" at="36,42,37,55" concept="7" />
       <node id="5290983204020739471" at="38,5,39,68" concept="6" />
       <node id="7279038390441828564" at="39,68,40,120" concept="6" />
       <node id="5372747896007737672" at="44,61,45,71" concept="6" />
@@ -86,7 +86,7 @@
       <node id="7279038390441828578" at="41,67,49,9" concept="1" />
       <node id="7279038390441828576" at="40,120,50,5" concept="3" />
       <node id="7279038390441828551" at="33,0,53,0" concept="5" trace="createActions#()Ljava/util/List;" />
-      <scope id="5290983204020715416" at="36,44,37,55" />
+      <scope id="5290983204020715416" at="36,42,37,55" />
       <scope id="5290983204020747238" at="53,66,54,47" />
       <scope id="7279038390441828540" at="28,99,31,26" />
       <scope id="5372747896007737671" at="44,61,47,22">

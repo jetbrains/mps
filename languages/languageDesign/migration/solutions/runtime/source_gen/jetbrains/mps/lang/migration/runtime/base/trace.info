@@ -897,8 +897,8 @@
     <file name="MigrationModuleUtil.java">
       <node id="4508017205454606767" at="26,79,27,68" concept="7" />
       <node id="4508017205454606782" at="29,41,30,39" concept="8" />
-      <node id="6031086584918548803" at="35,56,36,89" concept="8" />
-      <node id="6031086584918548765" at="39,68,40,68" concept="8" />
+      <node id="6031086584918548803" at="35,56,36,87" concept="8" />
+      <node id="6031086584918548765" at="39,68,40,64" concept="8" />
       <node id="4508017205454607012" at="43,68,44,191" concept="7" />
       <node id="4508017205454607025" at="44,191,45,57" concept="2" />
       <node id="4508017205454607030" at="45,57,46,24" concept="8" />
@@ -932,8 +932,8 @@
       <node id="5464540062512720132" at="67,0,75,0" concept="12" trace="setDepVersion#(Lorg/jetbrains/mps/openapi/module/SModule;Lorg/jetbrains/mps/openapi/module/SModuleReference;I)V" />
       <node id="7222086642610085261" at="76,0,86,0" concept="12" trace="allDependenciesActual#(Lorg/jetbrains/mps/openapi/module/SModule;)Z" />
       <scope id="4508017205454606781" at="29,41,30,39" />
-      <scope id="4508017205454606800" at="35,56,36,89" />
-      <scope id="6031086584918548764" at="39,68,40,68" />
+      <scope id="4508017205454606800" at="35,56,36,87" />
+      <scope id="6031086584918548764" at="39,68,40,64" />
       <scope id="8242050224583623247" at="49,74,50,129" />
       <scope id="4648272478814203368" at="54,43,55,79" />
       <scope id="3308027490968338456" at="61,43,62,79" />

@@ -50,7 +50,7 @@ public final class XmlTextValue__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean hasNewLineAfter_id2EZ251g0bSd(@NotNull SNode __thisNode__) {
     if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.text$_LaO)) && (SNodeOperations.getNextSibling(__thisNode__) != null)) {
-      return !(((boolean) XmlValuePart__BehaviorDescriptor.onNewLine_id2EZ251g0bS6.invoke(__thisNode__)));
+      return !((boolean) XmlValuePart__BehaviorDescriptor.onNewLine_id2EZ251g0bS6.invoke(__thisNode__));
     }
     return false;
   }

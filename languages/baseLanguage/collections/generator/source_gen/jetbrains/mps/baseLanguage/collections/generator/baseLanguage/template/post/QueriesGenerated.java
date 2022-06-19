@@ -134,7 +134,7 @@ public class QueriesGenerated extends QueryProviderBase {
           return SLinkOperations.getTarget(coercedNode_x583g4_a0q, LINKS.elementType$KpjL);
         }
         SNode ct = ClassifierTypeUtil.clearBounds(ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(coercedNode_x583g4_a0q, LINKS.elementType$KpjL)));
-        if (!((SNodeOperations.isInstanceOf(ct, CONCEPTS.ClassifierType$bL) || SNodeOperations.isInstanceOf(ct, CONCEPTS.TypeVariableReference$WL)))) {
+        if (!(SNodeOperations.isInstanceOf(ct, CONCEPTS.ClassifierType$bL) || SNodeOperations.isInstanceOf(ct, CONCEPTS.TypeVariableReference$WL))) {
           for (SNode supt : Type__BehaviorDescriptor.getSupertypes_id4w2h6RLlygH.invoke(ct)) {
             ct = ClassifierTypeUtil.getTypeCoercedToClassifierType((SNode) supt);
             if (SNodeOperations.isInstanceOf(ct, CONCEPTS.ClassifierType$bL) || SNodeOperations.isInstanceOf(ct, CONCEPTS.TypeVariableReference$WL)) {
@@ -195,7 +195,7 @@ public class QueriesGenerated extends QueryProviderBase {
           return SLinkOperations.getTarget(coercedNode_x583g4_a0eb, LINKS.elementType$KpjL);
         }
         SNode ct = ClassifierTypeUtil.clearBounds(ClassifierTypeUtil.getTypeCoercedToClassifierType(SLinkOperations.getTarget(coercedNode_x583g4_a0eb, LINKS.elementType$KpjL)));
-        if (!((SNodeOperations.isInstanceOf(ct, CONCEPTS.ClassifierType$bL) || SNodeOperations.isInstanceOf(ct, CONCEPTS.TypeVariableReference$WL)))) {
+        if (!(SNodeOperations.isInstanceOf(ct, CONCEPTS.ClassifierType$bL) || SNodeOperations.isInstanceOf(ct, CONCEPTS.TypeVariableReference$WL))) {
           for (SNode supt : Type__BehaviorDescriptor.getSupertypes_id4w2h6RLlygH.invoke(ct)) {
             ct = ClassifierTypeUtil.getTypeCoercedToClassifierType((SNode) supt);
             if (SNodeOperations.isInstanceOf(ct, CONCEPTS.ClassifierType$bL) || SNodeOperations.isInstanceOf(ct, CONCEPTS.TypeVariableReference$WL)) {

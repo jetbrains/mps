@@ -48,7 +48,7 @@ public class RelatedFacetReference_Constraints extends BaseConstraintsDescriptor
               }
             }).where(new IWhereFilter<SNode>() {
               public boolean accept(SNode it) {
-                return !((it == (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode())))));
+                return !(it == (((_context.getReferenceNode() == null) ? _context.getContextNode() : SNodeOperations.getParent(_context.getReferenceNode()))));
               }
             }));
           }

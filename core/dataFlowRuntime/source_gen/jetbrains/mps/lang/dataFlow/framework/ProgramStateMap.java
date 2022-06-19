@@ -21,7 +21,7 @@ public class ProgramStateMap<V> extends AbstractMap<ProgramState, V> {
   }
   @Override
   public V get(Object key) {
-    if (!((key instanceof ProgramState))) {
+    if (!(key instanceof ProgramState)) {
       throw new IllegalArgumentException();
     }
     ProgramState ps = (ProgramState) key;

@@ -23,7 +23,7 @@ public class MPSProgramRunner extends DefaultProgramRunner {
   @Override
   public boolean canRun(@NotNull String executorId, @NotNull RunProfile profile) {
     try {
-      return executorId.equals(DefaultRunExecutor.EXECUTOR_ID) && (!((profile instanceof BaseMpsRunConfiguration)) || ((BaseMpsRunConfiguration) profile).canExecute(executorId));
+      return executorId.equals(DefaultRunExecutor.EXECUTOR_ID) && (!(profile instanceof BaseMpsRunConfiguration) || ((BaseMpsRunConfiguration) profile).canExecute(executorId));
     } catch (Throwable throwable) {
       if (LOG.isErrorLevel()) {
         LOG.error("Run configuration " + profile + " is broken.", throwable);

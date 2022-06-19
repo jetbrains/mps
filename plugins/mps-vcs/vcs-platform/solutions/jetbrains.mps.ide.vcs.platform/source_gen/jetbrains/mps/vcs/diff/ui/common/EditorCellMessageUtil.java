@@ -161,7 +161,7 @@ public final class EditorCellMessageUtil {
     if (messageTarget instanceof NodeMessageTarget) {
       return node == cell.getSNode();
     } else {
-      return !((cell instanceof EditorCell_Collection)) && isNameCell(cell) == (messageTarget instanceof PropertyMessageTarget && NAME_PROPERTY.equals(messageTarget.getRole()));
+      return !(cell instanceof EditorCell_Collection) && isNameCell(cell) == (messageTarget instanceof PropertyMessageTarget && NAME_PROPERTY.equals(messageTarget.getRole()));
     }
   }
 

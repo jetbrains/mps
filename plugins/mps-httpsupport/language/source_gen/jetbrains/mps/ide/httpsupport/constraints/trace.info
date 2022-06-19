@@ -117,7 +117,7 @@
       <node id="4622937352052264811" at="88,0,91,0" concept="8" trace="staticCanBeAChild#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/language/SAbstractConcept;Lorg/jetbrains/mps/openapi/language/SContainmentLink;)Z" />
       <node id="6836281137582837002" at="91,107,94,5" concept="2" />
       <node id="4622937352052268798" at="61,0,65,0" concept="3" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
-      <node id="6836281137582836989" at="72,59,77,120" concept="5" />
+      <node id="6836281137582836989" at="72,59,77,118" concept="5" />
       <node id="6836281137582837002" at="91,0,97,0" concept="8" trace="check_9zeh4o_a0a0a0a0a0b0a0c0b0a0a0a0a0a0a3#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="6836281137582836983" at="71,0,79,0" concept="3" trace="isExcluded#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="4622937352052264811" at="42,0,52,0" concept="3" trace="invoke#(Ljetbrains/mps/smodel/runtime/ConstraintContext_CanBeChild;Ljetbrains/mps/smodel/runtime/CheckingNodeContext;)Ljava/lang/Boolean;" />
@@ -147,7 +147,7 @@
       </scope>
       <scope id="4622937352052268798" at="61,0,65,0" />
       <scope id="6836281137582837002" at="91,107,95,17" />
-      <scope id="6836281137582836988" at="72,59,77,120" />
+      <scope id="6836281137582836988" at="72,59,77,118" />
       <scope id="6836281137582837002" at="91,0,97,0">
         <var name="checkedDotOperand" id="6836281137582837002" />
         <var name="node" id="6836281137582837008" />

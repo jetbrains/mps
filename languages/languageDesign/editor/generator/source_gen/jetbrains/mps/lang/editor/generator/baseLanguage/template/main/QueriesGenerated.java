@@ -1895,10 +1895,10 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((Boolean) _context.getVariable("var:customizeEmptyCell"));
   }
   public static boolean ifMacro_Condition_30_10(final IfMacroContext _context) {
-    return !(((Boolean) _context.getVariable("var:customizeEmptyCell")));
+    return !((Boolean) _context.getVariable("var:customizeEmptyCell"));
   }
   public static boolean ifMacro_Condition_30_11(final IfMacroContext _context) {
-    return !(((Boolean) _context.getVariable("var:customizeEmptyCell")));
+    return !((Boolean) _context.getVariable("var:customizeEmptyCell"));
   }
   public static boolean ifMacro_Condition_30_12(final IfMacroContext _context) {
     return ((Boolean) _context.getVariable("var:customizeEmptyCell"));

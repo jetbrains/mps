@@ -68,7 +68,7 @@ public class TupleIntefaceUtils {
         hasMutators = mit.moveNext();
       }
       if (hasMutators && ait.current().name.equals(mit.current().name)) {
-        if (!((new SNodeMatcher().match(ait.current().type, mit.current().type)))) {
+        if (!(new SNodeMatcher().match(ait.current().type, mit.current().type))) {
           return null;
         }
         ait.current().isFinal = false;

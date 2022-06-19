@@ -282,7 +282,7 @@ outer:
     Iterable<SProperty> n1Properties = n1.getProperties();
     Iterable<SProperty> n2Properties = n2.getProperties();
     for (SProperty prop : Sequence.fromIterable(n1Properties).union(Sequence.fromIterable(n2Properties))) {
-      if (!((equalsProperty(n1, n2, prop)))) {
+      if (!(equalsProperty(n1, n2, prop))) {
         return false;
       }
     }

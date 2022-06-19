@@ -31,7 +31,7 @@ public class typeof_VariableDeclaration_InferenceRule extends AbstractInferenceR
         // needed for MPS-20925
         return;
       } else {
-        if (!((CheckingUtil.isValidByteOrShortExpression(SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY), initializer)))) {
+        if (!(CheckingUtil.isValidByteOrShortExpression(SLinkOperations.getTarget(variableDeclaration, LINKS.type$a1UY), initializer))) {
           {
             final SNode initType = typeCheckingContext.typeOf(initializer, "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "4371905702104105830", true);
             typeCheckingContext.whenConcrete(initType, new Runnable() {

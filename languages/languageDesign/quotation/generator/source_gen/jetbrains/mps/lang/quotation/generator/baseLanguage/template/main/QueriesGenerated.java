@@ -300,7 +300,7 @@ public class QueriesGenerated {
   public static boolean ifMacro_Condition_0_0(final IfMacroContext _context) {
     return ListSequence.fromList(SNodeOperations.getChildren(_context.getNode())).all(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !((SNodeOperations.isInstanceOf(it, CONCEPTS.Antiquotation$UQ) || SNodeOperations.isInstanceOf(it, CONCEPTS.ListAntiquotation$XK)));
+        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.Antiquotation$UQ) || SNodeOperations.isInstanceOf(it, CONCEPTS.ListAntiquotation$XK));
       }
     });
   }
@@ -343,10 +343,10 @@ public class QueriesGenerated {
     return ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.as(NodeBuilderInitLink__BehaviorDescriptor.getInitValue_id1o$2SUuvJqx.invoke(_context.getNode()), CONCEPTS.NodeBuilderNode$Sn), LINKS.values$JgAV)).isNotEmpty();
   }
   public static boolean ifMacro_Condition_5_0(final IfMacroContext _context) {
-    return !(((Boolean) _context.getVariable("sibling")));
+    return !((Boolean) _context.getVariable("sibling"));
   }
   public static boolean ifMacro_Condition_5_1(final IfMacroContext _context) {
-    return !(((Boolean) _context.getVariable("sibling")));
+    return !((Boolean) _context.getVariable("sibling"));
   }
   public static boolean ifMacro_Condition_9_0(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(((SNode) _context.getVariable("quotation")), LINKS.modelToCreate_old$iC5) == null) && (SLinkOperations.getTarget(((SNode) _context.getVariable("quotation")), LINKS.modelToCreate$$LCB) == null);

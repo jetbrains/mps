@@ -138,10 +138,10 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
           // todo: seems to be rather messy
           SNode group = SNodeOperations.as(container, CONCEPTS.BuildMps_IdeaPluginGroup$_R);
           if ((SLinkOperations.getTarget(__thisNode__, LINKS.packagingType$WOvS) != null)) {
-            if ((group != null) && !(((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invokeSpecial(__thisNode__)))) {
+            if ((group != null) && !((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invokeSpecial(__thisNode__))) {
               return null;
             }
-            if (SNodeOperations.isInstanceOf(container, CONCEPTS.BuildMps_IdeaPluginModule$rY) && !(((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invokeSpecial(__thisNode__)))) {
+            if (SNodeOperations.isInstanceOf(container, CONCEPTS.BuildMps_IdeaPluginModule$rY) && !((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invokeSpecial(__thisNode__))) {
               return null;
             }
           }
@@ -186,10 +186,10 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
         });
         SNode group = SNodeOperations.as(container, CONCEPTS.BuildMps_IdeaPluginGroup$_R);
         if ((SLinkOperations.getTarget(__thisNode__, LINKS.packagingType$WOvS) != null)) {
-          if ((group != null) && !(((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invokeSpecial(__thisNode__)))) {
+          if ((group != null) && !((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invokeSpecial(__thisNode__))) {
             return false;
           }
-          if (SNodeOperations.isInstanceOf(container, CONCEPTS.BuildMps_IdeaPluginModule$rY) && !(((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invokeSpecial(__thisNode__)))) {
+          if (SNodeOperations.isInstanceOf(container, CONCEPTS.BuildMps_IdeaPluginModule$rY) && !((boolean) BuildMpsLayout_Plugin__BehaviorDescriptor.isPackagedAutomatically_id36cV00CxaOW.invokeSpecial(__thisNode__))) {
             return false;
           }
         }
@@ -294,7 +294,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
     })) {
       return false;
     }
-    return !((Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(metaInfFolder, LINKS.children$aMRO), CONCEPTS.BuildLayout_File$Kk)).any(new IWhereFilter<SNode>() {
+    return !(Sequence.fromIterable(SNodeOperations.ofConcept(SLinkOperations.getChildren(metaInfFolder, LINKS.children$aMRO), CONCEPTS.BuildLayout_File$Kk)).any(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
         String lastSegment = BuildSourcePath__BehaviorDescriptor.getRelativePath_id4Kip2_918YF.invoke(SLinkOperations.getTarget(it, LINKS.path$xmoo));
         return (lastSegment != null && lastSegment.length() > 0) && (lastSegment.toLowerCase().endsWith(".xml"));
@@ -303,7 +303,7 @@ public final class BuildMpsLayout_Plugin__BehaviorDescriptor extends BaseBHDescr
       public boolean accept(SNode it) {
         return "META-INF".equals(BuildSourcePath__BehaviorDescriptor.getLastSegment_id5dwDdJ8yckN.invoke(it));
       }
-    })));
+    }));
   }
   @Nullable
   /*package*/ static SNode conflictingJar_id1RsDREvPMQ$(@NotNull final SNode __thisNode__, @Nullable final MacroHelper macros) {

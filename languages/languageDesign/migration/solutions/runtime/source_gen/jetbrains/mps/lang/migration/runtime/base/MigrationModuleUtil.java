@@ -33,11 +33,11 @@ public class MigrationModuleUtil {
   }
 
   public static boolean isModuleMigrateable(SModule m) {
-    return !((m.isReadOnly())) && MigrationModuleUtil.wouldBeMigrateableWhenNotPacked(m);
+    return !(m.isReadOnly()) && MigrationModuleUtil.wouldBeMigrateableWhenNotPacked(m);
   }
 
   public static boolean wouldBeMigrateableWhenNotPacked(SModule m) {
-    return !((m instanceof DevKit)) && !((m instanceof TempModule));
+    return !(m instanceof DevKit) && !(m instanceof TempModule);
   }
 
   public static Set<SModule> getModuleDependencies(SModule module) {

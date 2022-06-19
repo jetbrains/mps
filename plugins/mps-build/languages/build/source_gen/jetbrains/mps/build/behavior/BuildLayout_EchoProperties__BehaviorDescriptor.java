@@ -34,7 +34,7 @@ public final class BuildLayout_EchoProperties__BehaviorDescriptor extends BaseBH
   }
 
   /*package*/ static boolean isValidPart_id7XQqoCTkVIS(@NotNull SNode __thisNode__, String propertyValue, SContainmentLink role) {
-    return !((propertyValue.contains("$") || propertyValue.contains("/") || propertyValue.contains("\\")));
+    return !(propertyValue.contains("$") || propertyValue.contains("/") || propertyValue.contains("\\"));
   }
   /*package*/ static String getOutputPath_WithMacro_idbgY2XVZG2p(@NotNull SNode __thisNode__, Context context) {
     if ((SNodeOperations.getParent(__thisNode__) != null) && SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.BuildLayout_Container$vv)) {

@@ -40,7 +40,7 @@ public class ClassLikeMethodChecker {
         visitor.visitReturnType(method, () -> (SNode) DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(retType, CONCEPTS.DependentTypeDescriptor$ny), method));
       }
     } else {
-      if (!((new SNodeMatcher().match(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), retType)))) {
+      if (!(new SNodeMatcher().match(SLinkOperations.getTarget(method, LINKS.returnType$5xoi), retType))) {
         visitor.visitReturnType(method, () -> SNodeOperations.copyNode(retType));
       }
     }
@@ -88,7 +88,7 @@ public class ClassLikeMethodChecker {
           visitor.visitParamType(actualPar, () -> (SNode) DependentTypeDescriptor__BehaviorDescriptor.create_id2h59CdJp8nr.invoke(SNodeOperations.cast(SLinkOperations.getTarget(formalPar, LINKS.type$HBuM), CONCEPTS.DependentTypeDescriptor$ny), method));
         }
       } else {
-        if (!((new SNodeMatcher().match(SLinkOperations.getTarget(actualPar, LINKS.type$a1UY), SLinkOperations.getTarget(formalPar, LINKS.type$HBuM))))) {
+        if (!(new SNodeMatcher().match(SLinkOperations.getTarget(actualPar, LINKS.type$a1UY), SLinkOperations.getTarget(formalPar, LINKS.type$HBuM)))) {
           visitor.visitParamType(actualPar, () -> SNodeOperations.copyNode(SLinkOperations.getTarget(formalPar, LINKS.type$HBuM)));
         }
       }

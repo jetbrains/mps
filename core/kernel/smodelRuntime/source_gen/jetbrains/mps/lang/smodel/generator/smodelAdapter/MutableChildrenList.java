@@ -28,7 +28,7 @@ import org.jetbrains.annotations.NotNull;
 
   @Override
   public boolean remove(Object o) {
-    if (!((o instanceof SNode))) {
+    if (!(o instanceof SNode)) {
       return false;
     }
     SNode n = (SNode) o;

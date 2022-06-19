@@ -137,14 +137,14 @@ public class AttributeOperations {
 
     @Override
     public boolean remove(Object o) {
-      if (!((o instanceof SNode))) {
+      if (!(o instanceof SNode)) {
         return false;
       }
       SNode n = (SNode) o;
       if (n.getParent() != myNode) {
         return false;
       }
-      if (!((SNodeOperations.isInstanceOf(n, CONCEPTS.Attribute$g1)))) {
+      if (!(SNodeOperations.isInstanceOf(n, CONCEPTS.Attribute$g1))) {
         return false;
       }
 

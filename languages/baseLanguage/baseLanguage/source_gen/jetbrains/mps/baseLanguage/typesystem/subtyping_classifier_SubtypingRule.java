@@ -29,7 +29,7 @@ public class subtyping_classifier_SubtypingRule extends SubtypingRule_Runtime im
     List<SNode> supertypes = ListSequence.fromList(new ArrayList<SNode>());
     if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK)) {
       SNode classConcept = SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK);
-      if (!((SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$) == null))) {
+      if (!(SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$) == null)) {
         ListSequence.fromList(supertypes).addElement(SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$));
       }
       ListSequence.fromList(supertypes).addSequence(ListSequence.fromList(SLinkOperations.getChildren(classConcept, LINKS.implementedInterface$rujG)));

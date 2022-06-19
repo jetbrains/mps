@@ -60,7 +60,7 @@ public class CurrentLinePainter extends DebuggerCellPainter<SNodeReference> {
     if (myInvisible) {
       return null;
     }
-    if (!((MapSequence.fromMap(myCachedCoverageAreas).containsKey(editorComponent)))) {
+    if (!(MapSequence.fromMap(myCachedCoverageAreas).containsKey(editorComponent))) {
       MapSequence.fromMap(myCachedCoverageAreas).put(editorComponent, calculateCoverageArea(editorComponent));
     }
     return MapSequence.fromMap(myCachedCoverageAreas).get(editorComponent);

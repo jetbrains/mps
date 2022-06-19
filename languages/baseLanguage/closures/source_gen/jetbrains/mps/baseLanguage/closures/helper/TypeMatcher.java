@@ -73,7 +73,7 @@ public class TypeMatcher {
             ListSequence.fromList(queue).addElement(superType);
           }
           SNode javaType = Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(SNodeOperations.as(candidate, CONCEPTS.Type$bu));
-          if (!((new SNodeMatcher().match(candidate, javaType)))) {
+          if (!(new SNodeMatcher().match(candidate, javaType))) {
             ListSequence.fromList(queue).addElement(javaType);
           }
         }

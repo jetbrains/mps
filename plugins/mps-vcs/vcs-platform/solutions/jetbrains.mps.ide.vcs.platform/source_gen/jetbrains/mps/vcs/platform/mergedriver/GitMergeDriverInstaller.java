@@ -128,7 +128,7 @@ import jetbrains.mps.vcs.core.mergedriver.MergeDriverMain;
       if ((currentDriver == null || currentDriver.length() == 0) && dryRun) {
         return AbstractInstaller.State.NOT_INSTALLED;
       }
-      if (!((mpsMergeDriver.equals(currentDriver))) && dryRun) {
+      if (!(mpsMergeDriver.equals(currentDriver)) && dryRun) {
         return AbstractInstaller.State.OUTDATED;
       }
     } catch (VcsException e) {

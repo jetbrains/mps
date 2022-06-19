@@ -46,7 +46,7 @@ public class DeleteModules_Action extends BaseAction {
 
     boolean isApplicable = !(Sequence.fromIterable(((Iterable<SModule>) ((List<SModule>) MapSequence.fromMap(_params).get("modules")))).any(new IWhereFilter<SModule>() {
       public boolean accept(SModule it) {
-        return it.isReadOnly() || !((it instanceof Solution || it instanceof Language || it instanceof DevKit));
+        return it.isReadOnly() || !(it instanceof Solution || it instanceof Language || it instanceof DevKit);
       }
     }));
     presentation.setEnabledAndVisible(isApplicable);

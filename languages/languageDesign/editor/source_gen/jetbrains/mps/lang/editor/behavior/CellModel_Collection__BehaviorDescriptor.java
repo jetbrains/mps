@@ -83,7 +83,7 @@ public final class CellModel_Collection__BehaviorDescriptor extends BaseBHDescri
     return SPropertyOperations.getBoolean(__thisNode__, PROPS.usesFolding$P9Na) || (SLinkOperations.getTarget(__thisNode__, LINKS.usesFoldingCondition$v3yC) != null);
   }
   /*package*/ static boolean isVerticalIndent_idi0tOX1j(@NotNull SNode __thisNode__) {
-    if (!(((boolean) CellModel_Collection__BehaviorDescriptor.isIndentLayout_idi0pB9jQ.invoke(__thisNode__)))) {
+    if (!((boolean) CellModel_Collection__BehaviorDescriptor.isIndentLayout_idi0pB9jQ.invoke(__thisNode__))) {
       return false;
     }
     if (((boolean) EditorCellModel__BehaviorDescriptor.isNewLineChildren_idi0pNGlC.invoke(__thisNode__))) {

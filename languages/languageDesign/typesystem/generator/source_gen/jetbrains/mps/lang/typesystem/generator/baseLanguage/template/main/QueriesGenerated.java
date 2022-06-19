@@ -87,7 +87,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SModuleOperations.isAspect(_context.getOriginalInputModel(), "typesystem");
   }
   public static boolean rule_Condition_0_0(final BaseMappingRuleContext _context) {
-    return !((SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ComparisonRule$sZ) || SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.InequationReplacementRule$m3)));
+    return !(SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.ComparisonRule$sZ) || SNodeOperations.isInstanceOf(_context.getNode(), CONCEPTS.InequationReplacementRule$m3));
   }
   public static boolean rule_Condition_0_1(final BaseMappingRuleContext _context) {
     return false;
@@ -287,7 +287,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return !(TypesystemGenUtil.isInCheckEquation(_context.getNode()));
   }
   public static boolean rule_Condition_46_14(final BaseMappingRuleContext _context) {
-    return !((SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.AssignmentExpression$SE), LINKS.lValue$splI) == _context.getNode()));
+    return !(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.AssignmentExpression$SE), LINKS.lValue$splI) == _context.getNode());
   }
   public static boolean rule_Condition_46_15(final BaseMappingRuleContext _context) {
     return SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(_context.getNode()), CONCEPTS.AssignmentExpression$SE), LINKS.lValue$splI) == _context.getNode();
@@ -1916,7 +1916,7 @@ public class QueriesGenerated extends QueryProviderBase {
     // The right way to accomplish would be refactoring of main and Inequations map configurations, to
     // split generation of TS definition from TS use (i.e. everything related to rules including this script
     // goes to former, while .type, coerce() and others go to latter)
-    if (!((SModuleOperations.isAspect(_context.getOriginalInputModel(), "typesystem")))) {
+    if (!(SModuleOperations.isAspect(_context.getOriginalInputModel(), "typesystem"))) {
       return;
     }
     final SNode csInferenceMethod = SLinkOperations.getTarget(_quotation_createNode_x583g4_a0a6a074(), LINKS.classifier$cxMr);
@@ -1973,7 +1973,7 @@ public class QueriesGenerated extends QueryProviderBase {
       baseMethodDeclaration = oldBMD;
       if ((baseMethodDeclaration != null)) {
         SNode dotExpression = SNodeOperations.cast(SNodeOperations.getParent(instanceMethodCall), CONCEPTS.DotExpression$yW);
-        if (!((new SNodeMatcher().match(SLinkOperations.getTarget(dotExpression, LINKS.operand$w6IR), getRTSupportExpression)))) {
+        if (!(new SNodeMatcher().match(SLinkOperations.getTarget(dotExpression, LINKS.operand$w6IR), getRTSupportExpression))) {
           continue;
         }
 parametersLoop:

@@ -98,7 +98,7 @@ public class MigrationExecutorImpl implements MigrationExecutor {
       if (model.isReadOnly()) {
         continue;
       }
-      if (!((model instanceof SModelInternal))) {
+      if (!(model instanceof SModelInternal)) {
         continue;
       }
       if (!(((SModelInternal) model).importedLanguageIds().contains(fromLanguage))) {

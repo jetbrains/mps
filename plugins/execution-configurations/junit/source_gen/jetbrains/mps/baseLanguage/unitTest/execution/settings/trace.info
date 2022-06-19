@@ -1212,7 +1212,7 @@
       <node id="3605230134779723230" at="43,69,44,32" concept="12" />
       <node id="5740494279799452455" at="44,32,45,67" concept="12" />
       <node id="5740494279801222195" at="45,67,46,33" concept="6" />
-      <node id="5740494279801128787" at="47,72,48,24" concept="6" />
+      <node id="5740494279801128787" at="47,70,48,24" concept="6" />
       <node id="6062668769034854986" at="52,76,53,57" concept="6" />
       <node id="6062668769034854986" at="58,26,59,81" concept="20" />
       <node id="6062668769034854986" at="60,5,61,73" concept="6" />
@@ -1378,7 +1378,7 @@
       <node id="6062668769034854986" at="40,0,51,0" concept="11" trace="checkConfiguration#(Ljetbrains/mps/execution/api/settings/PersistentConfigurationContext;)V" />
       <node id="6062668769034854986" at="256,28,279,7" concept="21" />
       <node id="6062668769034854986" at="254,0,281,0" concept="11" trace="clone#()Ljetbrains/mps/baseLanguage/unitTest/execution/settings/JUnitSettings_Configuration/MyState;" />
-      <scope id="2339934328872410775" at="47,72,48,24" />
+      <scope id="2339934328872410775" at="47,70,48,24" />
       <scope id="6062668769034854986" at="52,76,53,57" />
       <scope id="6062668769034854986" at="58,26,59,81" />
       <scope id="6001962652596699475" at="69,43,70,34" />

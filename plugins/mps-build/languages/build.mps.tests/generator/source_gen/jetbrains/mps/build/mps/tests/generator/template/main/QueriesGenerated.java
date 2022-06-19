@@ -119,13 +119,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((Boolean) _context.getVariable("var:compressArgs"));
   }
   public static boolean ifMacro_Condition_0_2(final IfMacroContext _context) {
-    return !(((Boolean) _context.getVariable("var:compressArgs")));
+    return !((Boolean) _context.getVariable("var:compressArgs"));
   }
   public static boolean ifMacro_Condition_0_3(final IfMacroContext _context) {
-    return !(((Boolean) _context.getVariable("var:compressArgs")));
+    return !((Boolean) _context.getVariable("var:compressArgs"));
   }
   public static boolean ifMacro_Condition_0_4(final IfMacroContext _context) {
-    return !(((Boolean) _context.getVariable("var:compressArgs")));
+    return !((Boolean) _context.getVariable("var:compressArgs"));
   }
   public static boolean ifMacro_Condition_0_5(final IfMacroContext _context) {
     return ListSequence.fromList(SLinkOperations.getChildren(_context.getNode(), LINKS.modules$V7vE)).isNotEmpty();

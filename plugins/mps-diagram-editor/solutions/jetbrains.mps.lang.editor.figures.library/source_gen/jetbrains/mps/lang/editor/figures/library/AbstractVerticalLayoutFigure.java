@@ -66,7 +66,7 @@ public abstract class AbstractVerticalLayoutFigure extends RectView implements R
     }
   }
   protected boolean isExcludedFromLayout(View childView) {
-    return !((childView.visible().get()));
+    return !(childView.visible().get());
   }
   protected Insets getInsets() {
     return Insets.EMPTY_INSETS;

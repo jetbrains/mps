@@ -165,7 +165,7 @@ public class BaseIconManager {
     if (model == null) {
       return mainIcon;
     }
-    if ((!((model instanceof EditableSModel))) || ((EditableSModel) model).isReadOnly()) {
+    if ((!(model instanceof EditableSModel)) || ((EditableSModel) model).isReadOnly()) {
       mainIcon = new LayeredIcon(mainIcon, PlatformIcons.LOCKED_ICON);
     }
     RowIcon result = new RowIcon(2);

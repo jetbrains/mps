@@ -99,7 +99,7 @@ public final class ClassifierSuccessorsFinder implements ClassifierSuccessors.Fi
     List<SNode> modifiedClasses = ListSequence.fromList(new ArrayList<SNode>());
     List<SNode> modifiedInterfaces = ListSequence.fromList(new ArrayList<SNode>());
     for (SModel md : new ProjectModelFilter(myProject).projectModelsOnly(IterableUtil.asCollection(scope.getModels()))) {
-      if (!((md instanceof EditableSModel))) {
+      if (!(md instanceof EditableSModel)) {
         continue;
       }
       EditableSModel emd = (EditableSModel) md;

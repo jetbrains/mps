@@ -195,7 +195,7 @@ public final class BuildProject__BehaviorDescriptor extends BaseBHDescriptor {
       }
       if ((definedMacro.value != null)) {
         // we can only see what was strictly before us
-        rootScope = ScopeUtil.where(rootScope, (SNode visibleNode) -> !(ListSequence.fromList(SNodeOperations.getNextSiblings(definedMacro.value, false)).contains(visibleNode)) && !((Objects.equals(definedMacro.value, visibleNode))));
+        rootScope = ScopeUtil.where(rootScope, (SNode visibleNode) -> !(ListSequence.fromList(SNodeOperations.getNextSiblings(definedMacro.value, false)).contains(visibleNode)) && !(Objects.equals(definedMacro.value, visibleNode)));
       }
     }
 

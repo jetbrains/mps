@@ -44,7 +44,7 @@ public final class TransformStatement__BehaviorDescriptor extends BaseBHDescript
     return (SNode) SNodeOperations.asNode(PatternExpression__BehaviorDescriptor.getQuotedNodeConcept_id4vXWNHn1_L$.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.pattern$W39N)));
   }
   /*package*/ static SNode getQuotationConcept_id4SSaNAQlbzK(@NotNull SNode __thisNode__) {
-    if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.consequence$W3BP), CONCEPTS.QuotationConsequence$jg)))) {
+    if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.consequence$W3BP), CONCEPTS.QuotationConsequence$jg))) {
       return null;
     }
     return SNodeOperations.asNode(SNodeOperations.getConcept(SLinkOperations.getTarget(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(__thisNode__, LINKS.consequence$W3BP), CONCEPTS.QuotationConsequence$jg), LINKS.quotation$Fkf), LINKS.quotedNode$ip4)));

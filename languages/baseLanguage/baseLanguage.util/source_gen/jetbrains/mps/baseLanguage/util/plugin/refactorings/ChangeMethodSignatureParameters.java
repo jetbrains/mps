@@ -49,7 +49,7 @@ public class ChangeMethodSignatureParameters {
     return SNodeOperations.getConcept(SLinkOperations.getTarget(SNodeOperations.cast(this.myMethod, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua)) != SNodeOperations.getConcept(SLinkOperations.getTarget(SNodeOperations.cast(this.myOldMethod, CONCEPTS.IVisible$zu), LINKS.visibility$Yyua));
   }
   public boolean isReturnValueChanged() {
-    return !((new SNodeMatcher().match(SLinkOperations.getTarget(this.myMethod, LINKS.returnType$5xoi), SLinkOperations.getTarget(this.myOldMethod, LINKS.returnType$5xoi))));
+    return !(new SNodeMatcher().match(SLinkOperations.getTarget(this.myMethod, LINKS.returnType$5xoi), SLinkOperations.getTarget(this.myOldMethod, LINKS.returnType$5xoi)));
   }
 
   private static final class LINKS {

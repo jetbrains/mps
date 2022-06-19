@@ -121,7 +121,7 @@ public class MigrationTask {
     }
 
     if (checkAndIncStage(1)) {
-      if (!((runCleanupMigrations(myMonitor.subTask(10))))) {
+      if (!(runCleanupMigrations(myMonitor.subTask(10)))) {
         throw new MigrationExceptionError();
       }
     }
@@ -163,10 +163,10 @@ public class MigrationTask {
 
     // from here, we don't ignore errors
     addGlobalLabel(mySession.getProject(), STARTED);
-    if (!((runProjectMigrations(myMonitor.subTask(5))))) {
+    if (!(runProjectMigrations(myMonitor.subTask(5)))) {
       throw new MigrationExceptionError();
     }
-    if (!((runLanguageMigrations(myMonitor.subTask(30))))) {
+    if (!(runLanguageMigrations(myMonitor.subTask(30)))) {
       throw new MigrationExceptionError();
     }
     addGlobalLabel(mySession.getProject(), FINISHED);

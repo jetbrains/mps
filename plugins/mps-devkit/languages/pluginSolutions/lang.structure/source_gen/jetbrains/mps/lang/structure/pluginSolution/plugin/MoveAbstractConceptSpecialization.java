@@ -45,7 +45,7 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class MoveAbstractConceptSpecialization extends StructureSpecializationBase<SAbstractConcept> {
   public Tuples._2<SAbstractConcept, SNodeReference> fetchState(SNode movingNode, boolean filterOutInvalid) {
-    if (!((SNodeOperations.isInstanceOf(movingNode, CONCEPTS.AbstractConceptDeclaration$KA) && SNodeOperations.getModel(movingNode).getModule() instanceof Language))) {
+    if (!(SNodeOperations.isInstanceOf(movingNode, CONCEPTS.AbstractConceptDeclaration$KA) && SNodeOperations.getModel(movingNode).getModule() instanceof Language)) {
       return null;
     }
     SAbstractConcept deployedConcept = MetaAdapterByDeclaration.getConcept(movingNode);

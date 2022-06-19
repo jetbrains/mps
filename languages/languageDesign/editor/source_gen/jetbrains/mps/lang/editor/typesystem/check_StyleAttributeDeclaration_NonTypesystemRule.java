@@ -28,7 +28,7 @@ public class check_StyleAttributeDeclaration_NonTypesystemRule extends AbstractN
   }
   public void applyRule(final SNode declaration, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(declaration, LINKS.valueType$y6zA), CONCEPTS.PrimitiveType$sR)) {
-      if (!((SLinkOperations.getTarget(declaration, LINKS.defaultValue$FcNo) != null))) {
+      if (!(SLinkOperations.getTarget(declaration, LINKS.defaultValue$FcNo) != null)) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(declaration, "Attribute of primitive type should have default value", "r:00000000-0000-4000-0000-011c8959029a(jetbrains.mps.lang.editor.typesystem)", "8307535009119141639", null, errorTarget);
       }

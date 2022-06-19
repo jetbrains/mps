@@ -108,7 +108,7 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
       @Override
       public SNode createNode(@NotNull String pattern) {
         SNode pd = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.PropertiesDeclaration$8A, null);
-        if (!((pattern == null || pattern.length() == 0))) {
+        if (!(pattern == null || pattern.length() == 0)) {
           String name = pattern;
           if (pattern.endsWith("=")) {
             name = name.substring(0, name.length() - 1);
@@ -125,7 +125,7 @@ public class PropertiesLine_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public String getMatchingText(@NotNull String pattern) {
-        if (!((pattern == null || pattern.length() == 0)) && !(pattern.equals("#"))) {
+        if (!(pattern == null || pattern.length() == 0) && !(pattern.equals("#"))) {
           String name = pattern;
           if (pattern.endsWith("=")) {
             name = name.substring(0, name.length() - 1);

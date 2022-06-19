@@ -73,7 +73,7 @@ public final class ArrayType__BehaviorDescriptor extends BaseBHDescriptor {
         ListSequence.fromList(result).addElement(_quotation_createNode_vm86q7_a0a0a0a2a3(componentTypeSupertype));
       }
       SNode javaType = Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(componentType);
-      if (!((new SNodeMatcher().match(componentType, javaType)))) {
+      if (!(new SNodeMatcher().match(componentType, javaType))) {
         ListSequence.fromList(result).addElement(_quotation_createNode_vm86q7_a0a0a2a2a3(javaType));
       }
     }

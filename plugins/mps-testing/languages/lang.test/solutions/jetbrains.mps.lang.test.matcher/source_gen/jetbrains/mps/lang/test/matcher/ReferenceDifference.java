@@ -34,7 +34,7 @@ import org.jetbrains.mps.openapi.model.SNode;
     if (obj == null) {
       return false;
     }
-    if (!((obj instanceof ReferenceDifference))) {
+    if (!(obj instanceof ReferenceDifference)) {
       return false;
     }
     ReferenceDifference diff = (ReferenceDifference) obj;

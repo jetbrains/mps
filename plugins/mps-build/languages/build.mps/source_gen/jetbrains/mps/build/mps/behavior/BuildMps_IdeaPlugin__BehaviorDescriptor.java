@@ -36,7 +36,7 @@ public final class BuildMps_IdeaPlugin__BehaviorDescriptor extends BaseBHDescrip
     // BuildLayout_NC.containerName wasn't expected here
     assert !(LINKS.containerName$ES_Y.equals(role)) : "If this exception happens, change BuildMps_IdeaPlugin.isValidPart()-considered concepts";
     if (LINKS.containerName$xQbG.equals(role)) {
-      return !((propertyValue.contains("$") || propertyValue.contains("/") || propertyValue.contains("\\")));
+      return !(propertyValue.contains("$") || propertyValue.contains("/") || propertyValue.contains("\\"));
     }
     return !(propertyValue.contains("$"));
   }

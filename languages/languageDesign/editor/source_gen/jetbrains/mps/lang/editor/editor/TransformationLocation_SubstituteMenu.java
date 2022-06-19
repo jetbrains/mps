@@ -143,7 +143,7 @@ public class TransformationLocation_SubstituteMenu extends SubstituteMenuBase {
     public class SMP_Group_fvfxl9_b0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
       protected boolean isApplicable(SubstituteMenuContext _context) {
-        return !((condition));
+        return !(condition);
       }
       @NotNull
       @Override

@@ -29,7 +29,7 @@ public class ClassifierType_ParameterDeclarationQuery implements ParametersInfor
   public void getStyledMethodPresentation(SNode node, EditorContext editorContext, SNode parameterObject, StyledTextPrinter styledText) {
     if (ListSequence.fromList(SLinkOperations.getChildren(parameterObject, LINKS.typeVariableDeclaration$Lipp)).isNotEmpty()) {
       SNode argument = editorContext.getSelectedNode();
-      while (argument != null && !((SNodeOperations.isInstanceOf(argument, CONCEPTS.Type$bu) && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$oqG$)).contains(SNodeOperations.cast(argument, CONCEPTS.Type$bu))))) {
+      while (argument != null && !(SNodeOperations.isInstanceOf(argument, CONCEPTS.Type$bu) && ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.parameter$oqG$)).contains(SNodeOperations.cast(argument, CONCEPTS.Type$bu)))) {
         argument = SNodeOperations.getParent(argument);
       }
       for (SNode param : SLinkOperations.getChildren(parameterObject, LINKS.typeVariableDeclaration$Lipp)) {

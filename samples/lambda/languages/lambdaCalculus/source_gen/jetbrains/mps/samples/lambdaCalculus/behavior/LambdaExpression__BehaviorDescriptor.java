@@ -39,7 +39,7 @@ public final class LambdaExpression__BehaviorDescriptor extends BaseBHDescriptor
   }
 
   /*package*/ static SNode getOuterApplication_id18EhrW3IG0h(@NotNull SNode __thisNode__) {
-    if (!((SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.LambdaApplication$Mv) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.LambdaApplication$Mv), LINKS.function$pPIV) == __thisNode__)) && SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.LambdaApplication$Mv)) {
+    if (!(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.LambdaApplication$Mv) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.LambdaApplication$Mv), LINKS.function$pPIV) == __thisNode__) && SNodeOperations.isInstanceOf(__thisNode__, CONCEPTS.LambdaApplication$Mv)) {
       return SNodeOperations.cast(__thisNode__, CONCEPTS.LambdaApplication$Mv);
 
     } else if (SNodeOperations.getParent(__thisNode__) != null && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.LetExpression$k5)) && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.Program$Hh))) {
@@ -50,7 +50,7 @@ public final class LambdaExpression__BehaviorDescriptor extends BaseBHDescriptor
   /*package*/ static boolean hasParameterRefs_id6qD99pUaonP(@NotNull SNode __thisNode__) {
     SNode node = __thisNode__;
     node = SNodeOperations.getParent(node);
-    while (node != null && !((SNodeOperations.isInstanceOf(node, CONCEPTS.VariableOwner$q4) && !(ListSequence.fromList(VariableOwner__BehaviorDescriptor.getVariables_id7M_MU5__$7C.invoke(SNodeOperations.cast(node, CONCEPTS.VariableOwner$q4))).contains(SNodeOperations.as(__thisNode__, CONCEPTS.Variable$UB)))))) {
+    while (node != null && !(SNodeOperations.isInstanceOf(node, CONCEPTS.VariableOwner$q4) && !(ListSequence.fromList(VariableOwner__BehaviorDescriptor.getVariables_id7M_MU5__$7C.invoke(SNodeOperations.cast(node, CONCEPTS.VariableOwner$q4))).contains(SNodeOperations.as(__thisNode__, CONCEPTS.Variable$UB))))) {
       node = SNodeOperations.getParent(node);
     }
     if (SNodeOperations.isInstanceOf(node, CONCEPTS.LetExpression$k5)) {

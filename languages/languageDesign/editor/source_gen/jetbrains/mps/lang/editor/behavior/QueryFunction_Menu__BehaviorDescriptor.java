@@ -40,7 +40,7 @@ public final class QueryFunction_Menu__BehaviorDescriptor extends BaseBHDescript
     return (parameterizable != null) && (boolean) IParameterizableMenuPart__BehaviorDescriptor.isParameterized_id1quYWAD0Tfz.invoke(parameterizable);
   }
   /*package*/ static boolean usesParameterObjectFor_idhEwIGRw(@NotNull SNode __thisNode__, SNode parameter) {
-    return !((SNodeOperations.getConcept(parameter).equals(CONCEPTS.QueryFunctionParameter_pattern$tA) || SNodeOperations.getConcept(parameter).equals(CONCEPTS.QueryFunctionParameter_SubstituteMenu_WrappedItem$1m)));
+    return !(SNodeOperations.getConcept(parameter).equals(CONCEPTS.QueryFunctionParameter_pattern$tA) || SNodeOperations.getConcept(parameter).equals(CONCEPTS.QueryFunctionParameter_SubstituteMenu_WrappedItem$1m));
   }
   /*package*/ static List<SConcept> getParameterConcepts_id2xELmDxyi2v(@NotNull SNode __thisNode__) {
     ConceptFunction__BehaviorDescriptor.getParameterConcepts_id2xELmDxyi2v.invokeSuper(__thisNode__, CONCEPTS.QueryFunction_Menu$OP);

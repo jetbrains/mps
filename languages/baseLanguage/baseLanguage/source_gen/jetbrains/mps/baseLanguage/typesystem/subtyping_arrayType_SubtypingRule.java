@@ -40,7 +40,7 @@ public class subtyping_arrayType_SubtypingRule extends SubtypingRule_Runtime imp
         ListSequence.fromList(result).addElement(_quotation_createNode_ny91lb_a0a0a1a4a1());
       }
       SNode javaType = Type__BehaviorDescriptor.getJavaType_idhEwIzO1.invoke(componentType);
-      if (javaType != null && !((new SNodeMatcher().match(componentType, javaType)))) {
+      if (javaType != null && !(new SNodeMatcher().match(componentType, javaType))) {
         ListSequence.fromList(result).addElement(SNodeOperations.copyNode(javaType));
       }
     }

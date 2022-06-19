@@ -164,7 +164,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
   }
 
   private void unhighlightNode(@NotNull MPSTreeNode node) {
-    if (!((node.removeTreeMessages(this).isEmpty()))) {
+    if (!(node.removeTreeMessages(this).isEmpty())) {
       myQueue.queue(new UpdatePresentation(node, this));
     }
   }
@@ -399,7 +399,7 @@ public class TreeHighlighter implements TreeMessageOwner, LafManagerListener {
     }
   }
   private void rehighlightAllFeaturesLater() {
-    assert !((myQueue.isPassThrough())) : "You are about to face StackOverflowException";
+    assert !(myQueue.isPassThrough()) : "You are about to face StackOverflowException";
     myQueue.queue(new HighlightAll());
   }
 

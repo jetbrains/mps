@@ -69,7 +69,7 @@ public class JarHelper {
         }
       })) {
         String pack = (prefix.length() == 0 ? subdir.getName() : prefix + '.' + subdir.getName());
-        if (psc != null && !((psc.isIncluded(pack)))) {
+        if (psc != null && !(psc.isIncluded(pack))) {
           if (psc.isAnyChildIncluded(pack)) {
             getModelDescriptors(result, subdir, pack, module, psc, mr);
           }

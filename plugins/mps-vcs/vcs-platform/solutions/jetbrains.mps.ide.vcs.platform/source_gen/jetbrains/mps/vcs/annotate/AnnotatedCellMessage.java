@@ -131,7 +131,7 @@ public final class AnnotatedCellMessage extends EditorMessageWithTarget {
       List<DefaultEditorMessage> messages = CellMessagesUtil.getMessages(parent, DefaultEditorMessage.class);
       if (ListSequence.fromList(messages).where(new IWhereFilter<DefaultEditorMessage>() {
         public boolean accept(DefaultEditorMessage it) {
-          return it.isBackground() && !((it instanceof AnnotatedCellMessage || (it instanceof ChangeEditorMessage && !(((ChangeEditorMessage) it).showInEditor()))));
+          return it.isBackground() && !(it instanceof AnnotatedCellMessage || (it instanceof ChangeEditorMessage && !(((ChangeEditorMessage) it).showInEditor())));
         }
       }).isNotEmpty()) {
         return true;

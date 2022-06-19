@@ -22,7 +22,7 @@ public class check_RemoveOperation_NonTypesystemRule extends AbstractNonTypesyst
   public check_RemoveOperation_NonTypesystemRule() {
   }
   public void applyRule(final SNode ro, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(ro), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.ContainerIteratorType$g7) != null))) {
+    if (!(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(ro), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.ContainerIteratorType$g7) != null)) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(ro, "not available here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809121308159", null, errorTarget);
     }

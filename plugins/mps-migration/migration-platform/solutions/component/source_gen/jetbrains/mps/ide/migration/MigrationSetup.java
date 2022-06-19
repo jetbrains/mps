@@ -117,7 +117,7 @@ public class MigrationSetup {
     if (!(mv.dependenciesPresent(module))) {
       return;
     }
-    if (!((module instanceof AbstractModule))) {
+    if (!(module instanceof AbstractModule)) {
       return;
     }
     ModuleDescriptor descriptor = ((AbstractModule) module).getModuleDescriptor();

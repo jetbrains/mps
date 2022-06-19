@@ -81,7 +81,7 @@ public final class FieldReferenceOperation__BehaviorDescriptor extends BaseBHDes
     }
     SNode classifier = ClassConcept__BehaviorDescriptor.getContextClass_id6WzWPTX2$6q.invoke(SNodeOperations.asSConcept(CONCEPTS.ClassConcept$bK), __thisNode__);
     SNode declarationClassifier = SNodeOperations.getNodeAncestor(field, CONCEPTS.Classifier$Ix, false, false);
-    if (!((classifier == declarationClassifier || ListSequence.fromList(SNodeOperations.getNodeAncestors(classifier, null, false)).contains(declarationClassifier)))) {
+    if (!(classifier == declarationClassifier || ListSequence.fromList(SNodeOperations.getNodeAncestors(classifier, null, false)).contains(declarationClassifier))) {
       return false;
     }
     while (classifier != declarationClassifier) {

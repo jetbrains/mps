@@ -96,7 +96,7 @@ public class RefScopeCheckerInEditor extends RefScopeChecker {
       if (modelToImport == null || Objects.equals(sourceModel, modelToImport)) {
         return false;
       }
-      if (!((sourceModel instanceof SModelInternal)) || ((SModelInternal) sourceModel).getModelImports().contains(modelToImport.getReference())) {
+      if (!(sourceModel instanceof SModelInternal) || ((SModelInternal) sourceModel).getModelImports().contains(modelToImport.getReference())) {
         return false;
       }
       return !(ModelConstraints.getScope(reference).contains(reference.getTargetNode()));

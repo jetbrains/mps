@@ -22,7 +22,7 @@ public class check_SortedSetOperation_NonTypesystemRule extends AbstractNonTypes
   public check_SortedSetOperation_NonTypesystemRule() {
   }
   public void applyRule(final SNode sso, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(sso), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.SortedSetType$7K) != null))) {
+    if (!(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(sso), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.SortedSetType$7K) != null)) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(sso, "not available here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809121281478", null, errorTarget);
     }

@@ -118,7 +118,7 @@ public class MethodBreakpoint extends JavaBreakpoint implements ILocationBreakpo
     if (event instanceof MethodExitEvent) {
       method = ((MethodExitEvent) event).method();
     }
-    return !((method == null || !(accept(method))));
+    return !(method == null || !(accept(method)));
   }
   private boolean accept(Method method) {
     return method.name().equals(myMethodName) && method.signature().equals(myJniSignature);

@@ -33,7 +33,7 @@ public class RunMigration extends BaseAction {
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
-    if (!((super.collectActionData(event, _params)))) {
+    if (!(super.collectActionData(event, _params))) {
       return false;
     }
     myProject = event.getData(MPSCommonDataKeys.MPS_PROJECT);

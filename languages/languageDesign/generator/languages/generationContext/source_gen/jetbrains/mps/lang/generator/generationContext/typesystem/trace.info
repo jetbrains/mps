@@ -731,7 +731,7 @@
       </scope>
     </file>
     <file name="check_op_inside_refMacro_NonTypesystemRule.java">
-      <node id="1221220343089" at="22,101,23,64" concept="5" />
+      <node id="1221220343089" at="22,99,23,64" concept="5" />
       <node id="1221220343089" at="23,64,24,276" concept="5" />
       <node id="1221220308822" at="27,50,28,85" concept="6" />
       <node id="1221220308822" at="30,68,31,102" concept="6" />
@@ -749,7 +749,7 @@
       <scope id="1221220308822" at="30,68,31,102" />
       <scope id="1221220308822" at="33,30,34,17" />
       <scope id="1221220308822" at="19,0,21,0" />
-      <scope id="1221220343089" at="22,101,24,276">
+      <scope id="1221220343089" at="22,99,24,276">
         <var name="_reporter_2309309498" id="1221220343089" />
         <var name="errorTarget" id="1221220343089" />
       </scope>

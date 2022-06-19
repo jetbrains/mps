@@ -120,11 +120,11 @@ public class TransformatorImpl extends TransformatorBuilder.Transformator {
   }
 
   private static void addLanguageImport(SModel model, SLanguage language) {
-    if (!((model instanceof SModelInternal))) {
+    if (!(model instanceof SModelInternal)) {
       return;
     }
     SModelInternal modelInternal = (SModelInternal) model;
-    if (!((modelInternal.importedLanguageIds().contains(language)))) {
+    if (!(modelInternal.importedLanguageIds().contains(language))) {
       modelInternal.addLanguage(language);
     }
   }

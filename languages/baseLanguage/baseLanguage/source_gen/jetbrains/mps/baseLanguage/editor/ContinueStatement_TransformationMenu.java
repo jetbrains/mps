@@ -116,7 +116,7 @@ __switch__:
                         assert false : "Internal error";
                         return false;
                       case 2:
-                        if (!((SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV) == null))) {
+                        if (!(SLinkOperations.getTarget(it, LINKS.loopLabel$sgvV) == null)) {
                           this.__CP__ = 3;
                           break;
                         }

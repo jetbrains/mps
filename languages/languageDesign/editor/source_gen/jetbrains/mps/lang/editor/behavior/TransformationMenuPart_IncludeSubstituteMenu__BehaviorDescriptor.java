@@ -51,7 +51,7 @@ public final class TransformationMenuPart_IncludeSubstituteMenu__BehaviorDescrip
       @Override
       public boolean isExcluded(SNode node) {
         if (SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA)) {
-          return !(((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), targetConcept)));
+          return !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), targetConcept));
         } else if (SNodeOperations.isInstanceOf(node, CONCEPTS.SubstituteMenu_Named$cm)) {
           return !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id73yVtVlWOga.invoke(IMenu__BehaviorDescriptor.getApplicableConcept_id1quYWAD18xk.invoke(SNodeOperations.cast(node, CONCEPTS.SubstituteMenu_Named$cm)), targetConcept));
         }

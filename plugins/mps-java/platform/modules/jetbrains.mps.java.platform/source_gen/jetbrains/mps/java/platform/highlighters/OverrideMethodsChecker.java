@@ -106,7 +106,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       Set<SNode> baseMethods = finder.getBaseMethods(overridingMethod);
       boolean overrides = ((boolean) (Boolean) BHReflection.invoke0(overridingMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L))) || SetSequence.fromSet(baseMethods).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !(((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L))));
+          return !((boolean) (Boolean) BHReflection.invoke0(it, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)));
         }
       }).isNotEmpty();
       for (SNode baseMethod : SetSequence.fromSet(baseMethods)) {
@@ -168,7 +168,7 @@ public class OverrideMethodsChecker extends BaseEventProcessingEditorChecker {
       if (SPropertyOperations.getBoolean(overridenMethod, PROPS.isFinal$eVPk)) {
         continue;
       }
-      boolean overriden = !(((boolean) (Boolean) BHReflection.invoke0(overridenMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L))));
+      boolean overriden = !((boolean) (Boolean) BHReflection.invoke0(overridenMethod, CONCEPTS.BaseMethodDeclaration$kD, SMethodIdV2.create("isAnAbstractMethod", 2464886109384052181L, 0x5745e3015c8914d3L)));
       StringBuffer tooltip = new StringBuffer("Is ");
       tooltip.append((overriden ? "overridden" : "implemented"));
       tooltip.append(" in");

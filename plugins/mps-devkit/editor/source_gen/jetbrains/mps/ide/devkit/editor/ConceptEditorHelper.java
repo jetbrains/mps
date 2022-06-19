@@ -26,7 +26,7 @@ public class ConceptEditorHelper {
       if (c.isAbstract()) {
         continue;
       }
-      if (!((c instanceof SConcept))) {
+      if (!(c instanceof SConcept)) {
         continue;
       }
       if (!(((SConcept) c).isRootable())) {

@@ -128,7 +128,7 @@ import jetbrains.mps.migration.global.ProjectMigrationsRegistry;
     }
 
     // expire old, show new to get the balloon again
-    if (myLastDeployWarning != null && !((myLastDeployWarning.isExpired()))) {
+    if (myLastDeployWarning != null && !(myLastDeployWarning.isExpired())) {
       myLastDeployWarning.expire();
     }
 

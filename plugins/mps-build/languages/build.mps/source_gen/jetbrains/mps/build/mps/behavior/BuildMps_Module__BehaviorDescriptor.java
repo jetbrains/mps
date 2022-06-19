@@ -102,7 +102,7 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
       if (javaDeps.isReexported(javaModule)) {
         JavaExportUtil.requireModule(artifacts, javaModule, __thisNode__, builder);
       } else {
-        if (!(((boolean) BuildMps_Module__BehaviorDescriptor.areLocatedInTheSameRoot_id3ZROizBPX9c.invokeSpecial(__thisNode__.getConcept(), __thisNode__, javaModule)))) {
+        if (!((boolean) BuildMps_Module__BehaviorDescriptor.areLocatedInTheSameRoot_id3ZROizBPX9c.invokeSpecial(__thisNode__.getConcept(), __thisNode__, javaModule))) {
           SNode artifact = SNodeOperations.as(artifacts.findArtifact(javaModule), CONCEPTS.BuildLayout_Node$Rb);
           if (artifact != null) {
             needsFetch = true;
@@ -123,7 +123,7 @@ public final class BuildMps_Module__BehaviorDescriptor extends BaseBHDescriptor 
   }
   /*package*/ static boolean fetchMPSDep_id3WZD5LHqWXL(@NotNull SNode __thisNode__, SNode dependency, VisibleArtifacts artifacts, RequiredDependenciesBuilder builder) {
     boolean needsFetch = false;
-    final boolean dependencyComesFromAnotherRoot = !(((boolean) BuildMps_Module__BehaviorDescriptor.areLocatedInTheSameRoot_id3ZROizBPX9c.invokeSpecial(__thisNode__.getConcept(), __thisNode__, dependency)));
+    final boolean dependencyComesFromAnotherRoot = !((boolean) BuildMps_Module__BehaviorDescriptor.areLocatedInTheSameRoot_id3ZROizBPX9c.invokeSpecial(__thisNode__.getConcept(), __thisNode__, dependency));
     if (dependencyComesFromAnotherRoot && (boolean) BuildMps_Module__BehaviorDescriptor.isCompilable_id6tOCIA6_7jg.invoke(dependency)) {
       SNode artifact = SNodeOperations.as(artifacts.findArtifact(dependency), CONCEPTS.BuildLayout_Node$Rb);
       if (artifact != null) {

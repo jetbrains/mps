@@ -20,7 +20,7 @@ public final class ReflectionUtil {
   }
 
   private static Class<?> findClass(SModule module, SNode classNode) throws RuntimeException {
-    if (!((module instanceof ReloadableModule))) {
+    if (!(module instanceof ReloadableModule)) {
       throw new IllegalStateException("It is not possible to load classes from " + module);
     }
     ReloadableModule.DeploymentStatus status = ((ReloadableModule) module).getStatus();

@@ -83,7 +83,7 @@ public class MakeFieldStatic extends BaseRefactoring {
     SNodeOperations.deleteNode(((SNode) refactoringContext.getParameter("declaration")));
   }
   public SearchResults getAffectedNodes(final RefactoringContext refactoringContext) {
-    if (!(((Boolean) refactoringContext.getParameter("hasExternalUsages")))) {
+    if (!((Boolean) refactoringContext.getParameter("hasExternalUsages"))) {
       return null;
     }
     return ((SearchResults<SNode>) refactoringContext.getParameter("usages"));

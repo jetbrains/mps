@@ -91,7 +91,7 @@ public final class VcsActionsUtil {
   public VirtualFile detectVirtualFile() {
     final Wrappers._T<DataSource> source = new Wrappers._T<DataSource>();
     myProject.getModelAccess().runReadAction(() -> source.value = DataLocationAwareModelFactory.nodeLocation(myNodeRef.resolve(myProject.getRepository())));
-    if (!((source.value instanceof FileSystemBasedDataSource))) {
+    if (!(source.value instanceof FileSystemBasedDataSource)) {
       return null;
     }
     FileSystemBasedDataSource fbds = (FileSystemBasedDataSource) source.value;

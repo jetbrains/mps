@@ -96,7 +96,7 @@ public class XmlBaseAttribute_SubstituteMenu extends SubstituteMenuBase {
       public SNode createNode(@NotNull String pattern) {
         SNode attr = SNodeFactoryOperations.createNewNode(_context.getModel(), CONCEPTS.XmlAttribute$ll, null);
         String attrName = "name";
-        if (!((pattern == null || pattern.length() == 0))) {
+        if (!(pattern == null || pattern.length() == 0)) {
           String name = pattern;
           if (pattern.endsWith("=")) {
             name = name.substring(0, name.length() - 1);
@@ -117,7 +117,7 @@ public class XmlBaseAttribute_SubstituteMenu extends SubstituteMenuBase {
       @Nullable
       @Override
       public String getMatchingText(@NotNull String pattern) {
-        if (!((pattern == null || pattern.length() == 0))) {
+        if (!(pattern == null || pattern.length() == 0)) {
           String name = pattern;
           if (pattern.endsWith("=")) {
             name = name.substring(0, name.length() - 1);

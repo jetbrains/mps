@@ -47,7 +47,7 @@ public abstract class ChangeGroupLayout {
   public abstract EditorComponent getRightComponent();
 
   public boolean isValid() {
-    return !((getLeftComponent().isDisposed() || getRightComponent().isDisposed()));
+    return !(getLeftComponent().isDisposed() || getRightComponent().isDisposed());
   }
 
   protected abstract List<ChangeEditorMessage> getLeftMessages(ModelChange change);

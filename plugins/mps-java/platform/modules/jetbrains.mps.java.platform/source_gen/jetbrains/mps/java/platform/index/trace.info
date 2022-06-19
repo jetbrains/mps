@@ -47,7 +47,7 @@
       <node id="4183391441819863873" at="97,91,98,92" concept="8" />
       <node id="4183391441819863880" at="98,92,99,80" concept="8" />
       <node id="4183391441819863887" at="99,80,100,83" concept="8" />
-      <node id="4183391441819863908" at="102,46,103,17" concept="2" />
+      <node id="4183391441819863908" at="102,44,103,17" concept="2" />
       <node id="4183391441819863909" at="104,7,105,47" concept="8" />
       <node id="6673009040135107701" at="105,47,106,42" concept="8" />
       <node id="4183391441819863915" at="106,42,107,104" concept="8" />
@@ -178,7 +178,7 @@
       <node id="4183391441819864113" at="160,0,181,0" concept="7" trace="process#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="4183391441819863866" at="87,0,134,0" concept="7" trace="getDerivedClassifiers#(Lorg/jetbrains/mps/openapi/model/SNode;Lorg/jetbrains/mps/openapi/module/SearchScope;)Ljava/util/List;" />
       <scope id="4183391441819863858" at="83,33,84,71" />
-      <scope id="4183391441819863907" at="102,46,103,17" />
+      <scope id="4183391441819863907" at="102,44,103,17" />
       <scope id="4183391441819863925" at="108,30,109,17" />
       <scope id="4855017442956447526" at="116,25,117,67" />
       <scope id="149206345651618930" at="138,21,139,39" />

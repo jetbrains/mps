@@ -283,7 +283,7 @@ public class QueriesGenerated extends QueryProviderBase {
 
     return SNodeOperations.ofConcept(Sequence.fromIterable(SNodeOperations.ofConcept(Classifier__BehaviorDescriptor.members_id1hodSy8nQmC.invoke(_context.getNode()), CONCEPTS.InstanceMethodDeclaration$39)).where(new IWhereFilter<SNode>() {
       public boolean accept(SNode it) {
-        return !((SNodeOperations.isInstanceOf(it, CONCEPTS.MethodInstance$jE)));
+        return !(SNodeOperations.isInstanceOf(it, CONCEPTS.MethodInstance$jE));
       }
     }).union(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063981347"), ancestorIntention))).union(Sequence.fromIterable(DSLClassMember__BehaviorDescriptor.find_id2gzehMfi1$l.invoke(SNodeOperations.getNode("r:d3905048-7598-4a84-931a-cbbcbcda146d(jetbrains.mps.lang.intentions.methods)", "7538218632063982514"), ancestorIntention))).subtract(Sequence.fromIterable(parameterMethod)), CONCEPTS.InstanceMethodDeclaration$39);
   }

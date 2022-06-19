@@ -55,7 +55,7 @@ public final class JavaMethodVariableReference__BehaviorDescriptor extends BaseB
     return ((SLinkOperations.getTarget(__thisNode__, LINKS.setter$pcqc) != null) ? Assignable.CUSTOM_TRUE : Assignable.FALSE);
   }
   /*package*/ static String getFunctionName_id4nn3FPlEjh5(@NotNull SNode __thisNode__) {
-    if (!(((boolean) IStatement__BehaviorDescriptor.isLeftExpressionTarget_id69RFwVHPwd9.invoke(__thisNode__, null)))) {
+    if (!((boolean) IStatement__BehaviorDescriptor.isLeftExpressionTarget_id69RFwVHPwd9.invoke(__thisNode__, null))) {
       return SPropertyOperations.getString(SLinkOperations.getTarget(__thisNode__, LINKS.getter$1vvk), PROPS.name$MnvL);
     } else if ((SLinkOperations.getTarget(__thisNode__, LINKS.setter$pcqc) == null)) {
       String ending = SPropertyOperations.getString(__thisNode__, PROPS.visibleName$9XYg).substring(1);
@@ -65,7 +65,7 @@ public final class JavaMethodVariableReference__BehaviorDescriptor extends BaseB
     }
   }
   /*package*/ static SReferenceLink getTargetLink_id5D4bOjrrcOr(@NotNull SNode __thisNode__) {
-    if (!(((boolean) IStatement__BehaviorDescriptor.isLeftExpressionTarget_id69RFwVHPwd9.invoke(__thisNode__, null)))) {
+    if (!((boolean) IStatement__BehaviorDescriptor.isLeftExpressionTarget_id69RFwVHPwd9.invoke(__thisNode__, null))) {
       return LINKS.getter$1vvk;
     } else {
       return LINKS.setter$pcqc;

@@ -58,7 +58,7 @@ public class IdeaJavaCompilerImpl implements ProjectComponent, IdeaJavaCompiler 
 
   @Override
   public boolean isValid() {
-    return !((RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment())) && myIdeaProjectHandler != null;
+    return !(RuntimeFlags.isTestMode() || ApplicationManager.getApplication().isHeadlessEnvironment()) && myIdeaProjectHandler != null;
   }
 
   @Override

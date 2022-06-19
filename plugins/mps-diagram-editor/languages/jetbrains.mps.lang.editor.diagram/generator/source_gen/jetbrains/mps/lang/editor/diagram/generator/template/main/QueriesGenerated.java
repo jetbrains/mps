@@ -317,7 +317,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((Boolean) _context.getVariable("isInput"));
   }
   public static boolean ifMacro_Condition_11_1(final IfMacroContext _context) {
-    return !(((Boolean) _context.getVariable("isInput")));
+    return !((Boolean) _context.getVariable("isInput"));
   }
   public static boolean ifMacro_Condition_23_0(final IfMacroContext _context) {
     return ((Boolean) _context.getVariable("isInput"));
@@ -326,7 +326,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return ((Boolean) _context.getVariable("isInput"));
   }
   public static boolean ifMacro_Condition_23_2(final IfMacroContext _context) {
-    return !(((Boolean) _context.getVariable("isInput")));
+    return !((Boolean) _context.getVariable("isInput"));
   }
   public static boolean ifMacro_Condition_23_3(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.pointID$NRrP) != null);

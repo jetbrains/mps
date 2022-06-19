@@ -47,7 +47,7 @@ public final class XmlWhitespace__BehaviorDescriptor extends BaseBHDescriptor {
   }
   /*package*/ static boolean hasNewLineAfter_id1Qs9WekVZ9E(@NotNull SNode __thisNode__) {
     if (isEmptyString(SPropertyOperations.getString(__thisNode__, PROPS.value$bSFr)) && (SNodeOperations.getNextSibling(__thisNode__) != null)) {
-      return !(((boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(__thisNode__)));
+      return !((boolean) XmlPart__BehaviorDescriptor.onNewLine_id1Qs9WekVZ9$.invoke(__thisNode__));
     }
     return false;
   }

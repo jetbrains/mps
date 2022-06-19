@@ -101,7 +101,7 @@ public abstract class ExtractMethodRefactoring {
     Map<SNode, List<SNode>> mapping = MapSequence.fromMap(new HashMap<SNode, List<SNode>>());
     for (SNode reference : ListSequence.fromList(SNodeOperations.getNodeDescendants(method, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{}))) {
       SNode declaration = SLinkOperations.getTarget(reference, LINKS.variableDeclaration$N1XG);
-      if (!((SNodeOperations.isInstanceOf(declaration, CONCEPTS.ParameterDeclaration$RG) || SNodeOperations.isInstanceOf(declaration, CONCEPTS.LocalVariableDeclaration$41)))) {
+      if (!(SNodeOperations.isInstanceOf(declaration, CONCEPTS.ParameterDeclaration$RG) || SNodeOperations.isInstanceOf(declaration, CONCEPTS.LocalVariableDeclaration$41))) {
         continue;
       }
 

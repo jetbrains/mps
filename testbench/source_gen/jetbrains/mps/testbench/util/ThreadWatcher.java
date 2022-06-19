@@ -169,7 +169,7 @@ public class ThreadWatcher implements Output {
       ThreadState newDiff = new ThreadState();
       ThreadState oldDiff = new ThreadState();
       for (long id : this.myAllThreads.keys()) {
-        if (!((baseLine.myAllThreads.containsKey(id)))) {
+        if (!(baseLine.myAllThreads.containsKey(id))) {
           newDiff.myAllThreads.put(id, this.myAllThreads.get(id));
           if (this.myRunningThreads.containsKey(id)) {
             newDiff.myRunningThreads.put(id, myRunningThreads.get(id));
@@ -177,7 +177,7 @@ public class ThreadWatcher implements Output {
         }
       }
       for (long id : baseLine.myAllThreads.keys()) {
-        if (!((this.myAllThreads.containsKey(id)))) {
+        if (!(this.myAllThreads.containsKey(id))) {
           oldDiff.myAllThreads.put(id, baseLine.myAllThreads.get(id));
           if (baseLine.myRunningThreads.containsKey(id)) {
             oldDiff.myRunningThreads.put(id, baseLine.myRunningThreads.get(id));
@@ -185,13 +185,13 @@ public class ThreadWatcher implements Output {
         }
       }
       for (long id : this.myRunningThreads.keys()) {
-        if (!((baseLine.myRunningThreads.containsKey(id)))) {
+        if (!(baseLine.myRunningThreads.containsKey(id))) {
           newDiff.myRunningThreads.put(id, this.myRunningThreads.get(id));
           newDiff.myAllThreads.put(id, this.myAllThreads.get(id));
         }
       }
       for (long id : baseLine.myRunningThreads.keys()) {
-        if (!((this.myRunningThreads.containsKey(id)))) {
+        if (!(this.myRunningThreads.containsKey(id))) {
           oldDiff.myRunningThreads.put(id, baseLine.myRunningThreads.get(id));
           oldDiff.myAllThreads.put(id, baseLine.myAllThreads.get(id));
         }

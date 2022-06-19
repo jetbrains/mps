@@ -88,7 +88,7 @@ public final class PopupSettingsBuilder {
   private static boolean isMouseEventNotfromContextMenu(InputEvent event) {
     if (event instanceof MouseEvent) {
       MouseEvent mouseEvent = (MouseEvent) event;
-      return !((mouseEvent.getSource() instanceof ActionMenuItem));
+      return !(mouseEvent.getSource() instanceof ActionMenuItem);
     }
     return false;
   }

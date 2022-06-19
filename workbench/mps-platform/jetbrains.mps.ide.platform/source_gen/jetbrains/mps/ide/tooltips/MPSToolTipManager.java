@@ -78,7 +78,7 @@ public class MPSToolTipManager {
 
   private void mouseMoved(MouseEvent event, boolean rightAlined) {
     Component c = event.getComponent();
-    if (!((c instanceof JComponent && c instanceof TooltipComponent))) {
+    if (!(c instanceof JComponent && c instanceof TooltipComponent)) {
       return;
     }
     JComponent component = (JComponent) c;

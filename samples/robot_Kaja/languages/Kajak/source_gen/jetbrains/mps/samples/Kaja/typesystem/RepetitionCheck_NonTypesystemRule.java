@@ -23,7 +23,7 @@ public class RepetitionCheck_NonTypesystemRule extends AbstractNonTypesystemRule
   public RepetitionCheck_NonTypesystemRule() {
   }
   public void applyRule(final SNode command, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((SNodeOperations.isInstanceOf(command, CONCEPTS.RoutineCall$mS) || SNodeOperations.isInstanceOf(command, CONCEPTS.Step$dM) || SNodeOperations.isInstanceOf(command, CONCEPTS.LeftTurn$bh) || SNodeOperations.isInstanceOf(command, CONCEPTS.Drop$AZ) || SNodeOperations.isInstanceOf(command, CONCEPTS.Pick$Iq)))) {
+    if (!(SNodeOperations.isInstanceOf(command, CONCEPTS.RoutineCall$mS) || SNodeOperations.isInstanceOf(command, CONCEPTS.Step$dM) || SNodeOperations.isInstanceOf(command, CONCEPTS.LeftTurn$bh) || SNodeOperations.isInstanceOf(command, CONCEPTS.Drop$AZ) || SNodeOperations.isInstanceOf(command, CONCEPTS.Pick$Iq))) {
       return;
     }
     if (Objects.equals(SNodeOperations.getConcept(command), SNodeOperations.getConcept(SNodeOperations.getNextSibling(command)))) {

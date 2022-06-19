@@ -47,7 +47,7 @@ import org.jetbrains.mps.openapi.util.SubProgressKind;
           return;
         }
         participant.findUsages(current, nodes, consumer, (SModel sModel) -> {
-          assert !((sModel instanceof EditableSModel && ((EditableSModel) sModel).isChanged()));
+          assert !(sModel instanceof EditableSModel && ((EditableSModel) sModel).isChanged());
           next.remove(sModel);
         }, monitor.subTask(1));
         current = next;

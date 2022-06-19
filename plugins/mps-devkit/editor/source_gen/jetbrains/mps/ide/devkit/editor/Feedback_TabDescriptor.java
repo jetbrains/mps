@@ -63,7 +63,7 @@ public class Feedback_TabDescriptor extends RelationDescriptor {
   }
   public SNode getNode(SNode node) {
     SModule module = SNodeOperations.getModel(node).getModule();
-    if (!((module instanceof Language))) {
+    if (!(module instanceof Language)) {
       return null;
     }
 

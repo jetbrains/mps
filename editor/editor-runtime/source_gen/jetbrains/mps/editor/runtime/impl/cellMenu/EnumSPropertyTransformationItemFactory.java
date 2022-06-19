@@ -23,7 +23,7 @@ public class EnumSPropertyTransformationItemFactory {
   }
   public static List<TransformationMenuItem> createItems(SProperty property, TransformationMenuContext transformationMenuContext) {
     SDataType type = property.getType();
-    if (!((type instanceof SEnumeration))) {
+    if (!(type instanceof SEnumeration)) {
       return Collections.<TransformationMenuItem>emptyList();
     }
     SEnumeration enumm = as_7biv4j_a0a2a1(type, SEnumeration.class);

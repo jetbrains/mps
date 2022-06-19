@@ -31,7 +31,7 @@ public class TurnUnderlined_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     Selection selection = ((EditorComponent) MapSequence.fromMap(_params).get("editorComponent")).getSelectionManager().getSelection();
-    if (selection == null || !((selection instanceof LetterRangeSelection || selection instanceof WordRangeSelection))) {
+    if (selection == null || !(selection instanceof LetterRangeSelection || selection instanceof WordRangeSelection)) {
       return false;
     }
     return true;

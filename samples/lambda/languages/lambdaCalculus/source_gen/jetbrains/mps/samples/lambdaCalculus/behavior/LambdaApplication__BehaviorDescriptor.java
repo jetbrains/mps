@@ -58,7 +58,7 @@ public final class LambdaApplication__BehaviorDescriptor extends BaseBHDescripto
     return SNodeOperations.isInstanceOf(SNodeOperations.getParent(__thisNode__), CONCEPTS.LambdaApplication$Mv) && SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(__thisNode__), CONCEPTS.LambdaApplication$Mv), LINKS.function$pPIV) == __thisNode__;
   }
   /*package*/ static boolean isFullApplication_id18EhrW3IFXQ(@NotNull SNode __thisNode__) {
-    return !(((boolean) LambdaApplication__BehaviorDescriptor.isInner_id18EhrW3IE$z.invoke(__thisNode__))) && (ListSequence.fromList(LambdaApplication__BehaviorDescriptor.getArguments_id4pfsEnSNDeV.invoke(__thisNode__)).count() == ListSequence.fromList(LambdaAbstraction__BehaviorDescriptor.getAllVariables_id4pfsEnSNEj7.invoke(LambdaApplication__BehaviorDescriptor.getLambdaAbstraction_id4khEFTQ$3U7.invoke(__thisNode__))).count());
+    return !((boolean) LambdaApplication__BehaviorDescriptor.isInner_id18EhrW3IE$z.invoke(__thisNode__)) && (ListSequence.fromList(LambdaApplication__BehaviorDescriptor.getArguments_id4pfsEnSNDeV.invoke(__thisNode__)).count() == ListSequence.fromList(LambdaAbstraction__BehaviorDescriptor.getAllVariables_id4pfsEnSNEj7.invoke(LambdaApplication__BehaviorDescriptor.getLambdaAbstraction_id4khEFTQ$3U7.invoke(__thisNode__))).count());
   }
 
   /*package*/ LambdaApplication__BehaviorDescriptor() {

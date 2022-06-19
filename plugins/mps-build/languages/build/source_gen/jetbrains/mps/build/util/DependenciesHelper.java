@@ -202,7 +202,7 @@ public class DependenciesHelper {
     // RequiredPlugins records transient nodes and getArtifact(node<>) needs to find out original node of that node.
     // If generation doesn't keep transient models (or uses in-place transformation), check for node.model==null here
     // would effectively prevent from using getArtifacts(recordedTransientNode).
-    if (SNodeOperations.getModel(node) != null && !((SNodeOperations.getModel(node) instanceof TransientSModel))) {
+    if (SNodeOperations.getModel(node) != null && !(SNodeOperations.getModel(node) instanceof TransientSModel)) {
       return node;
     }
 

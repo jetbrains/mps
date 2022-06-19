@@ -337,7 +337,7 @@ __switch__:
     if (a == null || b == null) {
       return a == b;
     }
-    if (!((Objects.equals(a.getConcept(), b.getConcept())))) {
+    if (!(Objects.equals(a.getConcept(), b.getConcept()))) {
       return false;
     }
     if (!(conceptHasStaticScopeNone(a.getConcept(), a.getModel())) && !(Objects.equals(a.getNodeId(), b.getNodeId()))) {

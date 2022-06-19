@@ -217,13 +217,13 @@ public class EvaluationUtilsImpl extends EvaluationUtils {
       @Override
       public Boolean invoke() throws InvocationException, InvalidTypeException, ClassNotLoadedException, IncompatibleThreadStateException, EvaluationException {
         if (jniSignature.startsWith("[")) {
-          if (!((what instanceof ArrayType))) {
+          if (!(what instanceof ArrayType)) {
             return false;
           }
           return EvaluationUtilsImpl.this.instanceOf(((ArrayType) what).componentType(), jniSignature.substring(1), machine);
         } else
         if (jniSignature.startsWith("L")) {
-          if (!((what instanceof ClassType))) {
+          if (!(what instanceof ClassType)) {
             return false;
           }
           ReferenceType type = findClassTypeSilently(jniSignature.substring(1, jniSignature.length() - 1), machine);

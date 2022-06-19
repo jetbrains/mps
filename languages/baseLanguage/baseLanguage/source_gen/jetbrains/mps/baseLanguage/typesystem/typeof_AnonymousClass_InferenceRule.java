@@ -50,7 +50,7 @@ public class typeof_AnonymousClass_InferenceRule extends AbstractInferenceRule_R
       return;
     }
 
-    if (!((ListSequence.fromList(SLinkOperations.getChildren(anonymousClass, LINKS.typeParameter$F9H8)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(anonymousClass, LINKS.typeParameter$F9H8)).count() == ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp)).count()))) {
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(anonymousClass, LINKS.typeParameter$F9H8)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(anonymousClass, LINKS.typeParameter$F9H8)).count() == ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp)).count())) {
       {
         final MessageTarget errorTarget = new ReferenceMessageTarget(LINKS.classifier$q_Y$);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(anonymousClass, "wrong number of type parameters", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "2925336694746296749", null, errorTarget);

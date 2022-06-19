@@ -478,7 +478,7 @@ public class JavaToMpsConverter {
         for (SNode fieldRefOp : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.FieldReferenceOperation$fU, false, new SAbstractConcept[]{}))) {
 
           SReference fieldRef = SNodeOperations.getReference(fieldRefOp, LINKS.fieldDeclaration$H7Ag);
-          if (!((SLinkOperations.isDynamic(fieldRef) && "length".equals(SLinkOperations.getResolveInfo(fieldRef))))) {
+          if (!(SLinkOperations.isDynamic(fieldRef) && "length".equals(SLinkOperations.getResolveInfo(fieldRef)))) {
             continue;
           }
 
@@ -504,7 +504,7 @@ public class JavaToMpsConverter {
         for (SNode imco : ListSequence.fromList(SNodeOperations.getNodeDescendants(node, CONCEPTS.InstanceMethodCallOperation$uu, false, new SAbstractConcept[]{}))) {
 
           SReference fieldRef = SNodeOperations.getReference(imco, LINKS.baseMethodDeclaration$pyYw);
-          if (!((SLinkOperations.isDynamic(fieldRef) && "clone".equals(SLinkOperations.getResolveInfo(fieldRef))))) {
+          if (!(SLinkOperations.isDynamic(fieldRef) && "clone".equals(SLinkOperations.getResolveInfo(fieldRef)))) {
             continue;
           }
 

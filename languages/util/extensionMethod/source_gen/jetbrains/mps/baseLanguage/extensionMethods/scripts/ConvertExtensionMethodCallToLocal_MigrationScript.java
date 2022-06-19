@@ -50,7 +50,7 @@ public final class ConvertExtensionMethodCallToLocal_MigrationScript extends Bas
           return false;
         }
         SNode declarationClassifier = SNodeOperations.getNodeAncestor(declaration, CONCEPTS.Classifier$Ix, false, false);
-        if (!((classifier == declarationClassifier || ListSequence.fromList(SNodeOperations.getNodeAncestors(classifier, null, false)).contains(declarationClassifier)))) {
+        if (!(classifier == declarationClassifier || ListSequence.fromList(SNodeOperations.getNodeAncestors(classifier, null, false)).contains(declarationClassifier))) {
           return false;
         }
         while (classifier != declarationClassifier) {

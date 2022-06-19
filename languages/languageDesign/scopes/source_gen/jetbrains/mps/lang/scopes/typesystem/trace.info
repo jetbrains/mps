@@ -278,7 +278,7 @@
       <node id="8077936094962969207" at="44,0,47,0" concept="4" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="8077936094962969207" at="47,0,50,0" concept="4" trace="overrides#()Z" />
       <node id="8077936094962969214" at="27,170,31,7" concept="0" />
-      <node id="8077936094962969415" at="34,307,38,7" concept="0" />
+      <node id="8077936094962969415" at="34,305,38,7" concept="0" />
       <node id="8077936094962969212" at="26,31,32,5" concept="3" />
       <node id="8077936094962969241" at="33,69,39,5" concept="3" />
       <node id="8077936094962969373" at="67,0,73,0" concept="9" trace="_quotation_createNode_f3933j_b0a0a0a3a1_0#()Lorg/jetbrains/mps/openapi/model/SNode;" />
@@ -304,7 +304,7 @@
       </scope>
       <scope id="8077936094962969207" at="47,0,50,0" />
       <scope id="8077936094962969213" at="27,170,31,7" />
-      <scope id="8077936094962969242" at="34,307,38,7" />
+      <scope id="8077936094962969242" at="34,305,38,7" />
       <scope id="8077936094962969373" at="67,68,71,24">
         <var name="nb" id="8077936094962969373" />
         <var name="quotedNode_1" id="8077936094962969373" />

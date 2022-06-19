@@ -38,7 +38,7 @@ public final class BaseLanguageEnhancements_MigrationScript extends BaseMigratio
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.lValue$splI), CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$splI), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)))) {
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.lValue$splI), CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$splI), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41))) {
           return false;
         }
         SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$splI), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
@@ -46,7 +46,7 @@ public final class BaseLanguageEnhancements_MigrationScript extends BaseMigratio
           return false;
         }
         SNode plusExpr = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.rValue$spNK), CONCEPTS.PlusExpression$k0);
-        if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(plusExpr, LINKS.leftExpression$sEj), CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(plusExpr, LINKS.leftExpression$sEj), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)))) {
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(plusExpr, LINKS.leftExpression$sEj), CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(plusExpr, LINKS.leftExpression$sEj), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41))) {
           return false;
         }
         if (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(plusExpr, LINKS.leftExpression$sEj), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG) != declaration) {
@@ -89,7 +89,7 @@ public final class BaseLanguageEnhancements_MigrationScript extends BaseMigratio
       }
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
-        if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.lValue$splI), CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$splI), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)))) {
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(node, LINKS.lValue$splI), CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$splI), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41))) {
           return false;
         }
         SNode declaration = SNodeOperations.cast(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.lValue$splI), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41);
@@ -97,7 +97,7 @@ public final class BaseLanguageEnhancements_MigrationScript extends BaseMigratio
           return false;
         }
         SNode minusExpr = SNodeOperations.cast(SLinkOperations.getTarget(node, LINKS.rValue$spNK), CONCEPTS.MinusExpression$6V);
-        if (!((SNodeOperations.isInstanceOf(SLinkOperations.getTarget(minusExpr, LINKS.leftExpression$sEj), CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(minusExpr, LINKS.leftExpression$sEj), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41)))) {
+        if (!(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(minusExpr, LINKS.leftExpression$sEj), CONCEPTS.VariableReference$TC) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(minusExpr, LINKS.leftExpression$sEj), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG), CONCEPTS.LocalVariableDeclaration$41))) {
           return false;
         }
         if (SLinkOperations.getTarget(SNodeOperations.cast(SLinkOperations.getTarget(minusExpr, LINKS.leftExpression$sEj), CONCEPTS.VariableReference$TC), LINKS.variableDeclaration$N1XG) != declaration) {

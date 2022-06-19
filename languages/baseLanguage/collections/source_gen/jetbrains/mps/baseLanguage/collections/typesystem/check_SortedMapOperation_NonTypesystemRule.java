@@ -22,7 +22,7 @@ public class check_SortedMapOperation_NonTypesystemRule extends AbstractNonTypes
   public check_SortedMapOperation_NonTypesystemRule() {
   }
   public void applyRule(final SNode smo, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(smo), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.SortedMapType$AZ) != null))) {
+    if (!(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(smo), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.SortedMapType$AZ) != null)) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(smo, "not available her", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809121269482", null, errorTarget);
     }

@@ -248,7 +248,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return isNotEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.compiler$_$9C)) && SPropertyOperations.getString(_context.getNode(), PROPS.compiler$_$9C).equals("IntelliJ");
   }
   public static boolean ifMacro_Condition_3_2(final IfMacroContext _context) {
-    return isEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.compilerOptions$rUpp)) || !((SPropertyOperations.getString(_context.getNode(), PROPS.compilerOptions$rUpp).contains("-encoding")));
+    return isEmptyString(SPropertyOperations.getString(_context.getNode(), PROPS.compilerOptions$rUpp)) || !(SPropertyOperations.getString(_context.getNode(), PROPS.compilerOptions$rUpp).contains("-encoding"));
   }
   public static boolean ifMacro_Condition_3_3(final IfMacroContext _context) {
     return (boolean) BwfJavaModule__BehaviorDescriptor.needsFork_id3Par5_LaArg.invoke(_context.getNode()) && SPropertyOperations.getInteger(_context.getNode(), PROPS.heapSize$LySR) >= 4;

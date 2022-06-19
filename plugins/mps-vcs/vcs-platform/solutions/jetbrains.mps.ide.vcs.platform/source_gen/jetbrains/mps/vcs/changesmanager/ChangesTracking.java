@@ -282,7 +282,7 @@ public final class ChangesTracking {
 
   private boolean isAdded() {
     DataSource ds = DataLocationAwareModelFactory.metaInfoLocation(myModelDescriptor);
-    if (!((ds instanceof FileSystemBasedDataSource))) {
+    if (!(ds instanceof FileSystemBasedDataSource)) {
       return false;
     }
     return ((FileSystemBasedDataSource) ds).getAffectedFilesWithDirsExtracted().allMatch(new Predicate<IFile>() {
@@ -305,7 +305,7 @@ public final class ChangesTracking {
 
   private FileStatus getStatusOfMetaDescriptor() {
     DataSource ds = DataLocationAwareModelFactory.metaInfoLocation(myModelDescriptor);
-    if (!((ds instanceof FileSystemBasedDataSource))) {
+    if (!(ds instanceof FileSystemBasedDataSource)) {
       return FileStatus.UNKNOWN;
     }
     return ((FileSystemBasedDataSource) ds).getAffectedFilesWithDirsExtracted().map(new Function<IFile, FileStatus>() {

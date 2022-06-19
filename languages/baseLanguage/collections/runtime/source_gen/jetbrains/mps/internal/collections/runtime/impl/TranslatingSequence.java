@@ -46,7 +46,7 @@ public class TranslatingSequence<U, V> extends AbstractChainedSequence<U, V> imp
       if (hasNext.unknown()) {
         moveToNext();
       }
-      if (!((hasNext.hasNext()))) {
+      if (!(hasNext.hasNext())) {
         throw new NoSuchElementException();
       }
       return clearNext();

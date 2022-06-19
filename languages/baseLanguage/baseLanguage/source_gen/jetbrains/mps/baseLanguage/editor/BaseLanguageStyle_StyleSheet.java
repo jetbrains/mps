@@ -986,7 +986,7 @@ public class BaseLanguageStyle_StyleSheet {
     private boolean _StyleParameter_QueryFunction_the604_a1jb() {
       if (SNodeOperations.isInstanceOf(getNode(), CONCEPTS.ClassifierMember$At)) {
         if ((boolean) IClassifierMember__BehaviorDescriptor.isStatic_id6r77ob2USS8.invoke(SNodeOperations.cast(getNode(), CONCEPTS.ClassifierMember$At))) {
-          if (!((SNodeOperations.isInstanceOf(getNode(), CONCEPTS.VariableDeclaration$Y0) && SPropertyOperations.getBoolean(SNodeOperations.cast(getNode(), CONCEPTS.VariableDeclaration$Y0), PROPS.isFinal$gvTP)))) {
+          if (!(SNodeOperations.isInstanceOf(getNode(), CONCEPTS.VariableDeclaration$Y0) && SPropertyOperations.getBoolean(SNodeOperations.cast(getNode(), CONCEPTS.VariableDeclaration$Y0), PROPS.isFinal$gvTP))) {
             return true;
           }
         }

@@ -75,7 +75,7 @@ public class ComparingSequence<U> extends Sequence<U> implements Iterable<U> {
       if (hasNext.unknown()) {
         moveToNext();
       }
-      if (!((hasNext.hasNext()))) {
+      if (!(hasNext.hasNext())) {
         throw new NoSuchElementException();
       }
       return clearNext();
@@ -183,7 +183,7 @@ loop:
             break;
         }
       } while (true);
-      if (!((hasNext.hasNext()))) {
+      if (!(hasNext.hasNext())) {
         destroy();
       }
     }

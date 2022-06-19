@@ -107,7 +107,7 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
     List<SNode> declaredSupertypes = ListSequence.fromList(new ArrayList<SNode>());
     if (SNodeOperations.isInstanceOf(classifier, CONCEPTS.ClassConcept$bK)) {
       SNode classConcept = SNodeOperations.cast(classifier, CONCEPTS.ClassConcept$bK);
-      if (!((SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$) == null))) {
+      if (!(SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$) == null)) {
         ListSequence.fromList(declaredSupertypes).addElement(SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$));
       }
       ListSequence.fromList(declaredSupertypes).addSequence(ListSequence.fromList(SLinkOperations.getChildren(classConcept, LINKS.implementedInterface$rujG)));
@@ -240,7 +240,7 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
                 return false;
               }
             } else {
-              if (!((new SNodeMatcher().match(myParam_var, typeParam_var)))) {
+              if (!(new SNodeMatcher().match(myParam_var, typeParam_var))) {
                 return false;
               }
             }
@@ -304,17 +304,17 @@ public final class ClassifierType__BehaviorDescriptor extends BaseBHDescriptor {
             } else if (SNodeOperations.isInstanceOf(t, CONCEPTS.UpperBoundType$RS) || SNodeOperations.isInstanceOf(t, CONCEPTS.LowerBoundType$nl)) {
               return false;
             } else if (SNodeOperations.isInstanceOf(_myParam, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(_myParam, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).isNotEmpty()) {
-              if (!((SNodeOperations.isInstanceOf(_typeParam, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(_typeParam, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).isNotEmpty() && (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(_myParam, _typeParam, substitutions) && (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(_typeParam, _myParam, substitutions)))) {
+              if (!(SNodeOperations.isInstanceOf(_typeParam, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(_typeParam, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).isNotEmpty() && (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(_myParam, _typeParam, substitutions) && (boolean) Type__BehaviorDescriptor.isSupersetOf_id7PgshREdQKp.invoke(_typeParam, _myParam, substitutions))) {
                 return false;
               }
             } else {
-              if (!((new SNodeMatcher().match(_myParam, _typeParam)))) {
+              if (!(new SNodeMatcher().match(_myParam, _typeParam))) {
                 return false;
               }
             }
           }
         }
-        if (SNodeOperations.isInstanceOf(t, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$oqG$)).count() != ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(t, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).count() && !((SNodeOperations.isInstanceOf(coercedNode_hz3823_b0l, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$oqG$)).count() == ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(coercedNode_hz3823_b0l, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).count()))) {
+        if (SNodeOperations.isInstanceOf(t, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$oqG$)).count() != ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(t, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).count() && !(SNodeOperations.isInstanceOf(coercedNode_hz3823_b0l, CONCEPTS.ClassifierType$bL) && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameter$oqG$)).count() == ListSequence.fromList(SLinkOperations.getChildren(SNodeOperations.cast(coercedNode_hz3823_b0l, CONCEPTS.ClassifierType$bL), LINKS.parameter$oqG$)).count())) {
           return false;
         }
         return true;

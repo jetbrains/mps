@@ -1554,7 +1554,7 @@
       </scope>
     </file>
     <file name="check_ErrorInfoExpression_NonTypesystemRule.java">
-      <node id="1201618438931" at="22,129,23,64" concept="7" />
+      <node id="1201618438931" at="22,127,23,64" concept="7" />
       <node id="1201618438931" at="23,64,24,284" concept="7" />
       <node id="1201618417551" at="27,50,28,43" concept="8" />
       <node id="1201618417551" at="30,68,31,102" concept="8" />
@@ -1572,7 +1572,7 @@
       <scope id="1201618417551" at="30,68,31,102" />
       <scope id="1201618417551" at="33,30,34,17" />
       <scope id="1201618417551" at="19,0,21,0" />
-      <scope id="1201618438931" at="22,129,24,284">
+      <scope id="1201618438931" at="22,127,24,284">
         <var name="_reporter_2309309498" id="1201618438931" />
         <var name="errorTarget" id="1201618438931" />
       </scope>

@@ -732,20 +732,20 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean ifMacro_Condition_7_0(final IfMacroContext _context) {
     List<SNode> stmts = (List<SNode>) Values.CHUNK_OF_STATEMENTS.get(_context, _context.getNode());
-    return ListSequence.fromList(stmts).isEmpty() || !((SNodeOperations.isInstanceOf(ListSequence.fromList(stmts).getElement(ListSequence.fromList(stmts).count() - 1), CONCEPTS.BreakStatement$WM) || SNodeOperations.isInstanceOf(ListSequence.fromList(stmts).getElement(ListSequence.fromList(stmts).count() - 1), CONCEPTS.ContinueStatement$JY) || SNodeOperations.isInstanceOf(ListSequence.fromList(stmts).getElement(ListSequence.fromList(stmts).count() - 1), CONCEPTS.ThrowStatement$Zy)));
+    return ListSequence.fromList(stmts).isEmpty() || !(SNodeOperations.isInstanceOf(ListSequence.fromList(stmts).getElement(ListSequence.fromList(stmts).count() - 1), CONCEPTS.BreakStatement$WM) || SNodeOperations.isInstanceOf(ListSequence.fromList(stmts).getElement(ListSequence.fromList(stmts).count() - 1), CONCEPTS.ContinueStatement$JY) || SNodeOperations.isInstanceOf(ListSequence.fromList(stmts).getElement(ListSequence.fromList(stmts).count() - 1), CONCEPTS.ThrowStatement$Zy));
   }
   public static boolean ifMacro_Condition_7_1(final IfMacroContext _context) {
     List<SNode> stmts = (List<SNode>) Values.CHUNK_OF_STATEMENTS.get(_context, _context.getNode());
-    return ListSequence.fromList(stmts).isEmpty() || !((SNodeOperations.isInstanceOf(ListSequence.fromList(stmts).getElement(ListSequence.fromList(stmts).count() - 1), CONCEPTS.BreakStatement$WM) || SNodeOperations.isInstanceOf(ListSequence.fromList(stmts).getElement(ListSequence.fromList(stmts).count() - 1), CONCEPTS.ContinueStatement$JY) || SNodeOperations.isInstanceOf(ListSequence.fromList(stmts).getElement(ListSequence.fromList(stmts).count() - 1), CONCEPTS.ThrowStatement$Zy)));
+    return ListSequence.fromList(stmts).isEmpty() || !(SNodeOperations.isInstanceOf(ListSequence.fromList(stmts).getElement(ListSequence.fromList(stmts).count() - 1), CONCEPTS.BreakStatement$WM) || SNodeOperations.isInstanceOf(ListSequence.fromList(stmts).getElement(ListSequence.fromList(stmts).count() - 1), CONCEPTS.ContinueStatement$JY) || SNodeOperations.isInstanceOf(ListSequence.fromList(stmts).getElement(ListSequence.fromList(stmts).count() - 1), CONCEPTS.ThrowStatement$Zy));
   }
   public static boolean ifMacro_Condition_8_0(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK) != null) && !((StatementListUtil.isControlStatement(SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK)) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4)));
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK) != null) && !(StatementListUtil.isControlStatement(SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK)) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4));
   }
   public static boolean ifMacro_Condition_8_1(final IfMacroContext _context) {
-    return !(((SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK) != null) && !((StatementListUtil.isControlStatement(SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK)) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4)))));
+    return !((SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK) != null) && !(StatementListUtil.isControlStatement(SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK)) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4)));
   }
   public static boolean ifMacro_Condition_8_2(final IfMacroContext _context) {
-    return !(((SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK) != null) && !((StatementListUtil.isControlStatement(SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK)) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4)))));
+    return !((SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK) != null) && !(StatementListUtil.isControlStatement(SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK)) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(_context.getNode(), LINKS.ifFalseStatement$psZK), CONCEPTS.BlockStatement$u4)));
   }
   public static boolean ifMacro_Condition_13_0(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.defaultBlock$QOu8) != null);
@@ -1700,7 +1700,7 @@ public class QueriesGenerated extends QueryProviderBase {
           SNode sl = SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(vd, CONCEPTS.BaseMethodDeclaration$kD, false, false), LINKS.body$5xQk);
           Flags.WRAPPING_LOCAL_VARIABLE.flag(_context, sl);
           for (SNode varRef : SNodeOperations.getNodeDescendants(sl, CONCEPTS.VariableReference$TC, false, new SAbstractConcept[]{})) {
-            if (SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$N1XG) == vd && !((SNodeOperations.isInstanceOf(SNodeOperations.getParent(varRef), CONCEPTS.ClassCreator$ZG) && INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(varRef), CONCEPTS.ClassCreator$ZG), LINKS.baseMethodDeclaration$pyYw)), CONCEPTS.INamedConcept$Kd)).startsWith("jetbrains.mps.baseLanguage.closures.runtime.Wrappers")))) {
+            if (SLinkOperations.getTarget(varRef, LINKS.variableDeclaration$N1XG) == vd && !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(varRef), CONCEPTS.ClassCreator$ZG) && INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SNodeOperations.cast(SNodeOperations.getParent(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(varRef), CONCEPTS.ClassCreator$ZG), LINKS.baseMethodDeclaration$pyYw)), CONCEPTS.INamedConcept$Kd)).startsWith("jetbrains.mps.baseLanguage.closures.runtime.Wrappers"))) {
               SNode argRef = SNodeOperations.replaceWithNewChild(varRef, CONCEPTS.ClosureArgReference$7X);
               SLinkOperations.setTarget(argRef, LINKS.original$UBy7, varRef);
             }
@@ -1736,7 +1736,7 @@ public class QueriesGenerated extends QueryProviderBase {
         SNode anc = SNodeOperations.getNodeAncestorWhereConceptInList(rs, new SAbstractConcept[]{CONCEPTS.BaseMethodDeclaration$kD, CONCEPTS.ClosureLiteral$rp}, false, false);
         if (SNodeOperations.isInstanceOf(anc, CONCEPTS.BaseMethodDeclaration$kD)) {
           SNode rt = SLinkOperations.getTarget(SNodeOperations.cast(anc, CONCEPTS.BaseMethodDeclaration$kD), LINKS.returnType$5xoi);
-          if (!(((rt != null) && SNodeOperations.isInstanceOf(rt, CONCEPTS.VoidType$BF)))) {
+          if (!((rt != null) && SNodeOperations.isInstanceOf(rt, CONCEPTS.VoidType$BF))) {
             FunctionTypeUtil.prepAdaptations(_context, rt, SLinkOperations.getTarget(rs, LINKS.expression$eJ92));
           }
         } else if (SNodeOperations.isInstanceOf(anc, CONCEPTS.ClosureLiteral$rp)) {
@@ -1792,7 +1792,7 @@ public class QueriesGenerated extends QueryProviderBase {
         SNode anc = SNodeOperations.getNodeAncestorWhereConceptInList(es, new SAbstractConcept[]{CONCEPTS.BaseMethodDeclaration$kD, CONCEPTS.ClosureLiteral$rp}, false, false);
         if (SNodeOperations.isInstanceOf(anc, CONCEPTS.BaseMethodDeclaration$kD)) {
           SNode rt = SLinkOperations.getTarget(SNodeOperations.cast(anc, CONCEPTS.BaseMethodDeclaration$kD), LINKS.returnType$5xoi);
-          if (!(((rt != null) && SNodeOperations.isInstanceOf(rt, CONCEPTS.VoidType$BF)))) {
+          if (!((rt != null) && SNodeOperations.isInstanceOf(rt, CONCEPTS.VoidType$BF))) {
             FunctionTypeUtil.prepAdaptations(_context, rt, SLinkOperations.getTarget(es, LINKS.expression$5L7M));
           }
         } else if (SNodeOperations.isInstanceOf(anc, CONCEPTS.ClosureLiteral$rp)) {

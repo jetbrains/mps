@@ -53,7 +53,7 @@ public class Editor_TabDescriptor extends RelationDescriptor {
   public List<SNode> getNodes(SNode node) {
     List<SNode> nodes = new ArrayList<SNode>();
     SModule module = SNodeOperations.getModel(node).getModule();
-    if (!((module instanceof Language))) {
+    if (!(module instanceof Language)) {
       return nodes;
     }
 

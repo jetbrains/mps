@@ -42,7 +42,7 @@ import jetbrains.mps.nodeEditor.reflectiveEditor.ReflectiveHintsManager;
   }
   /*package*/ void update(AnActionEvent event) {
     boolean multipleNodes = myActions.size() > 1;
-    boolean canMake = myActions.stream().anyMatch((ReflectiveHintsAction action) -> action.isApplicable()) && !((multipleNodes && !(myIsForSubtree)));
+    boolean canMake = myActions.stream().anyMatch((ReflectiveHintsAction action) -> action.isApplicable()) && !(multipleNodes && !(myIsForSubtree));
     if (canMake) {
       String caption = String.format("Show %s Editor", (myIsReflective ? "Reflective" : "Regular"));
       if (multipleNodes) {

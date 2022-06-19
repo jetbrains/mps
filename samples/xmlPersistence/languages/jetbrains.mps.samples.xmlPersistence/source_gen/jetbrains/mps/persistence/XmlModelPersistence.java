@@ -74,7 +74,7 @@ public class XmlModelPersistence implements ModelFactory {
   @Override
   public SModel load(@NotNull DataSource dataSource, @NotNull ModelLoadingOption... options) throws ModelLoadException, UnsupportedDataSourceException {
     // TODO calling support may not be needed
-    if (!((supports(dataSource)))) {
+    if (!(supports(dataSource))) {
       throw new UnsupportedDataSourceException(dataSource);
     }
     // Create a path-based id
@@ -95,7 +95,7 @@ public class XmlModelPersistence implements ModelFactory {
   @Override
   public SModel create(@NotNull DataSource dataSource, @NotNull SModelName modelName, @NotNull ModelLoadingOption... options) throws UnsupportedDataSourceException, ModelCreationException {
     // TODO calling support may not be needed
-    if (!((supports(dataSource)))) {
+    if (!(supports(dataSource))) {
       throw new UnsupportedDataSourceException(dataSource);
     }
     // Create a path-based id
@@ -122,7 +122,7 @@ public class XmlModelPersistence implements ModelFactory {
   @Override
   public void save(@NotNull SModel model, @NotNull DataSource dataSource) throws ModelSaveException, IOException {
     // TODO calling support may not be needed
-    if (!((supports(dataSource)))) {
+    if (!(supports(dataSource))) {
       throw new UnsupportedDataSourceException(dataSource);
     }
     ((XmlPersistenceModelDescriptor) model).save();

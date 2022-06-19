@@ -70,7 +70,7 @@ public class MigrateConceptNodeParameter extends MigrationScriptBase {
       };
       nodes = CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.ConceptFunctionParameter_Concept$RF, false)).where(new IWhereFilter<SNode>() {
         public boolean accept(SNode it) {
-          return !((SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.DotExpression$yW) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(it), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.AsNodeOperation$Uq)));
+          return !(SNodeOperations.isInstanceOf(SNodeOperations.getParent(it), CONCEPTS.DotExpression$yW) && SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SNodeOperations.cast(SNodeOperations.getParent(it), CONCEPTS.DotExpression$yW), LINKS.operation$gs9E), CONCEPTS.AsNodeOperation$Uq));
         }
       });
     }

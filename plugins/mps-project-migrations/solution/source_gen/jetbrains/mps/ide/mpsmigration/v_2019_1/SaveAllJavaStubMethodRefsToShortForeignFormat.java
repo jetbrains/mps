@@ -44,7 +44,7 @@ public class SaveAllJavaStubMethodRefsToShortForeignFormat extends BaseProjectMi
             if (it instanceof AbstractModule) {
               AbstractModule module = (AbstractModule) it;
               module.updateExternalReferences();
-              if (!((module instanceof Generator))) {
+              if (!(module instanceof Generator)) {
                 // generators are saved as part of owning Language's save, no need to do it twice
                 module.save();
               }
@@ -68,7 +68,7 @@ public class SaveAllJavaStubMethodRefsToShortForeignFormat extends BaseProjectMi
         });
         Sequence.fromIterable(CommandUtil.models(CommandUtil.selectScope(null, context))).where(new IWhereFilter<SModel>() {
           public boolean accept(SModel it) {
-            return !((SModelStereotype.isStubModel(it))) && it instanceof EditableSModel;
+            return !(SModelStereotype.isStubModel(it)) && it instanceof EditableSModel;
           }
         }).where(new IWhereFilter<SModel>() {
           public boolean accept(SModel it) {

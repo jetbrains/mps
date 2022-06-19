@@ -120,7 +120,7 @@ public class InlineMethodRefactoring {
     }
   }
   private void replaceThisByOperand(SNode body) {
-    if (!((SNodeOperations.isInstanceOf(this.myOperand, CONCEPTS.IThisExpression$8h) || SNodeOperations.isInstanceOf(this.myOperand, CONCEPTS.VariableReference$TC) || SNodeOperations.isInstanceOf(this.myOperand, CONCEPTS.StringLiteral$xu)))) {
+    if (!(SNodeOperations.isInstanceOf(this.myOperand, CONCEPTS.IThisExpression$8h) || SNodeOperations.isInstanceOf(this.myOperand, CONCEPTS.VariableReference$TC) || SNodeOperations.isInstanceOf(this.myOperand, CONCEPTS.StringLiteral$xu))) {
       SNode statement = SNodeOperations.getNodeAncestor(this.myMethodCall, CONCEPTS.Statement$P6, false, false);
       SNode typeForMethodCall = getTypeForMethodCall(myMethodCall);
       SNode type = (typeForMethodCall != null ? typeForMethodCall : SNodeOperations.cast(TypecheckingFacade.getFromContext().getTypeOf(myOperand), CONCEPTS.Type$bu));

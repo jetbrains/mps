@@ -25,7 +25,7 @@ public class typeof_AbstractContainerCreator_InferenceRule extends AbstractInfer
   public typeof_AbstractContainerCreator_InferenceRule() {
   }
   public void applyRule(final SNode creator, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!(!((ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.initValue$Wx_W)).isNotEmpty() && (SLinkOperations.getTarget(creator, LINKS.copyFrom$DKAJ) != null))))) {
+    if (!(!(ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.initValue$Wx_W)).isNotEmpty() && (SLinkOperations.getTarget(creator, LINKS.copyFrom$DKAJ) != null)))) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(creator, "Either initial values or the copy from expression can be specified, not both", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "1240320852912", null, errorTarget);
     }

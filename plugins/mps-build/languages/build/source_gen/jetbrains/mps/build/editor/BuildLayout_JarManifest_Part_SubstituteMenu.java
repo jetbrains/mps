@@ -278,7 +278,7 @@ public class BuildLayout_JarManifest_Part_SubstituteMenu extends SubstituteMenuB
     public class SMP_Group_aabwkk_c0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
       protected boolean isApplicable(SubstituteMenuContext _context) {
-        return !((condition || condition_1));
+        return !(condition || condition_1);
       }
       @NotNull
       @Override

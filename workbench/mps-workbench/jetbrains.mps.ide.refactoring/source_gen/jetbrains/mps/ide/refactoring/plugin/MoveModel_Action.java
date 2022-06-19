@@ -33,7 +33,7 @@ public class MoveModel_Action extends BaseAction {
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     Presentation presentation = event.getPresentation();
 
-    presentation.setEnabledAndVisible(((Integer) MapSequence.fromMap(_params).get("selSize")) == 1 && !((((SModel) MapSequence.fromMap(_params).get("model")) instanceof TransientSModel)) && !(LanguageAspectSupport.isAspectModel(((SModel) MapSequence.fromMap(_params).get("model")))));
+    presentation.setEnabledAndVisible(((Integer) MapSequence.fromMap(_params).get("selSize")) == 1 && !(((SModel) MapSequence.fromMap(_params).get("model")) instanceof TransientSModel) && !(LanguageAspectSupport.isAspectModel(((SModel) MapSequence.fromMap(_params).get("model")))));
 
     presentation.setText(IdeBundle.message("actions.model.move.title"));
   }

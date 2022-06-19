@@ -343,7 +343,7 @@ public final class JUnitTests_Producer {
         return false;
       }
       for (Object obj : (List) source) {
-        if (!((obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), CONCEPTS.ITestCase$Fp)))) {
+        if (!(obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), CONCEPTS.ITestCase$Fp))) {
           return false;
         }
       }
@@ -393,7 +393,7 @@ public final class JUnitTests_Producer {
         return false;
       }
       for (Object obj : (List) source) {
-        if (!((obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), CONCEPTS.ITestMethod$em)))) {
+        if (!(obj instanceof SNode && SNodeOperations.isInstanceOf(((SNode) obj), CONCEPTS.ITestMethod$em))) {
           return false;
         }
       }

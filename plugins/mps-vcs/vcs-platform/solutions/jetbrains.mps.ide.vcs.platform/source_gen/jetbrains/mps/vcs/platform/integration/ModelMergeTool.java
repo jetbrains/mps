@@ -25,12 +25,12 @@ public class ModelMergeTool implements MergeTool {
   public boolean canShow(@NotNull MergeContext context, @NotNull MergeRequest request) {
     // all SUPPORTED_TYPES are text files, so we can work with text requests ony.
     // this will also allow us to fallback to default text merge tool
-    if (!((request instanceof TextMergeRequest))) {
+    if (!(request instanceof TextMergeRequest)) {
       return false;
     }
     TextMergeRequest textRequest = (TextMergeRequest) request;
     // required to save model
-    if (!((textRequest.getOutputContent() instanceof FileContent))) {
+    if (!(textRequest.getOutputContent() instanceof FileContent)) {
       return false;
     }
     FileType commonType = textRequest.getOutputContent().getContentType();

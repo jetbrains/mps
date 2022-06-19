@@ -81,7 +81,7 @@ public final class StaticMethodDeclaration__BehaviorDescriptor extends BaseBHDes
     return ((IconResource) IVisible__BehaviorDescriptor.getVisibilityIcon_id4mxbjAOAG0d.invoke(__thisNode__));
   }
   /*package*/ static void populateMember_id6r77ob2UW9O(@NotNull SNode __thisNode__, MembersPopulatingContext context, SNode classifier) {
-    if (!((context.isElementVisible(__thisNode__)))) {
+    if (!(context.isElementVisible(__thisNode__))) {
       return;
     }
     Signature signature = new MethodSignature(__thisNode__, context.getTypeByTypeVariableMapping());

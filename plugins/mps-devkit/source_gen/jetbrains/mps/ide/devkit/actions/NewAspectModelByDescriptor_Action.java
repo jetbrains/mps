@@ -42,7 +42,7 @@ public class NewAspectModelByDescriptor_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     LanguageAspectDescriptor ad = NewAspectModelActionHelper.getAspectById(NewAspectModelByDescriptor_Action.this.aspectId);
-    if (ad == null || !((((SModule) MapSequence.fromMap(_params).get("module")) instanceof Language))) {
+    if (ad == null || !(((SModule) MapSequence.fromMap(_params).get("module")) instanceof Language)) {
       disable(event.getPresentation());
       return;
     }

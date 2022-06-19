@@ -62,7 +62,7 @@ public class PolygonContentView extends PolygonView implements ResizableContentV
     int width = prefSize.x;
     int height = FOLDING_SIZE;
     for (View nextChild : ListSequence.fromList(children())) {
-      if (nextChild == myPolyLine || !((nextChild.visible().get()))) {
+      if (nextChild == myPolyLine || !(nextChild.visible().get())) {
         continue;
       }
       Rectangle childBounds = nextChild.bounds().get();
@@ -75,7 +75,7 @@ public class PolygonContentView extends PolygonView implements ResizableContentV
     int yOffset = bounds().get().origin.y + FOLDING_SIZE / 2;
     int xOrigin = bounds().get().origin.x;
     for (View nextChild : ListSequence.fromList(children())) {
-      if (nextChild == myPolyLine || !((nextChild.visible().get()))) {
+      if (nextChild == myPolyLine || !(nextChild.visible().get())) {
         continue;
       }
       Rectangle childBounds = nextChild.bounds().get();

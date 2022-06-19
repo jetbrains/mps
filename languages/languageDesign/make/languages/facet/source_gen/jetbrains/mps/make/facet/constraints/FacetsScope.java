@@ -36,7 +36,7 @@ public class FacetsScope extends SimpleScope {
    */
   private static boolean hackCondition(SModule module) {
     if (module instanceof ReloadableModule) {
-      if (!((module instanceof Solution))) {
+      if (!(module instanceof Solution)) {
         return true;
       }
       return ((Solution) module).getKind() != SolutionKind.NONE;

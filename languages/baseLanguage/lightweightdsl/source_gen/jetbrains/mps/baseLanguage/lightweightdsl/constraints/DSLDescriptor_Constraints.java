@@ -70,7 +70,7 @@ public class DSLDescriptor_Constraints extends BaseConstraintsDescriptor {
                 if (!(SNodeOperations.isInstanceOf(node, CONCEPTS.AbstractConceptDeclaration$KA))) {
                   return false;
                 }
-                return !(((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), CONCEPTS.ClassConcept$bK)));
+                return !((boolean) AbstractConceptDeclaration__BehaviorDescriptor.isSubconceptOf_id4UTtJHK9fEJ.invoke(SNodeOperations.cast(node, CONCEPTS.AbstractConceptDeclaration$KA), CONCEPTS.ClassConcept$bK));
               }
             };
           }

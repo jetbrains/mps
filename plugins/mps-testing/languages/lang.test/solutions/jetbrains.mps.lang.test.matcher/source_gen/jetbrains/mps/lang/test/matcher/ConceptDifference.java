@@ -27,7 +27,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     if (obj == null) {
       return false;
     }
-    if (!((obj instanceof ConceptDifference))) {
+    if (!(obj instanceof ConceptDifference)) {
       return false;
     }
     ConceptDifference diff = (ConceptDifference) obj;

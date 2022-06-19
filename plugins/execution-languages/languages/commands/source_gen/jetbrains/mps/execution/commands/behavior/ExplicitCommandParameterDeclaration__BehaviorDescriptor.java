@@ -35,10 +35,10 @@ public final class ExplicitCommandParameterDeclaration__BehaviorDescriptor exten
     return SPropertyOperations.getBoolean(__thisNode__, PROPS.isRequired$ZhGc);
   }
   /*package*/ static boolean generateField_id7mEQKPeolUk(@NotNull SNode __thisNode__) {
-    return !(((boolean) CommandParameterDeclaration__BehaviorDescriptor.isRequired_id7c4O8d8q0tV.invoke(__thisNode__)));
+    return !((boolean) CommandParameterDeclaration__BehaviorDescriptor.isRequired_id7c4O8d8q0tV.invoke(__thisNode__));
   }
   /*package*/ static boolean isInitializable_idhEwJfMK(@NotNull SNode __thisNode__) {
-    return !(((boolean) CommandParameterDeclaration__BehaviorDescriptor.isRequired_id7c4O8d8q0tV.invoke(__thisNode__)));
+    return !((boolean) CommandParameterDeclaration__BehaviorDescriptor.isRequired_id7c4O8d8q0tV.invoke(__thisNode__));
   }
 
   /*package*/ ExplicitCommandParameterDeclaration__BehaviorDescriptor() {

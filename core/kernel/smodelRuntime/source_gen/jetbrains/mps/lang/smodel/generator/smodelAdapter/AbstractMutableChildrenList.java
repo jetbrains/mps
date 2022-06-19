@@ -142,7 +142,7 @@ public abstract class AbstractMutableChildrenList extends AbstractList<SNode> {
 
   @Override
   public int lastIndexOf(Object o) {
-    if (!((o instanceof SNode))) {
+    if (!(o instanceof SNode)) {
       return -1;
     }
     SNode n = (SNode) o;

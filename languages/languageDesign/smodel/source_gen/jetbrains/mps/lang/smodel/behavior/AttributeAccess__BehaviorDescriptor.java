@@ -45,7 +45,7 @@ public final class AttributeAccess__BehaviorDescriptor extends BaseBHDescriptor 
     return true;
   }
   /*package*/ static boolean isSingularCardinality_id3vpu_siOTrf(@NotNull SNode __thisNode__) {
-    return !((AttributeDesignTimeOperations.isMultipleAttribute(AttributeQualifier__BehaviorDescriptor.getTargetConcept_id5zEkxuKhyRq.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.qualifier$eL3m))) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.qualifier$eL3m), CONCEPTS.AllAttributeQualifier$la)));
+    return !(AttributeDesignTimeOperations.isMultipleAttribute(AttributeQualifier__BehaviorDescriptor.getTargetConcept_id5zEkxuKhyRq.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.qualifier$eL3m))) || SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.qualifier$eL3m), CONCEPTS.AllAttributeQualifier$la));
   }
   /*package*/ static boolean isAggregation_id3vpu_siOTrm(@NotNull SNode __thisNode__) {
     return true;

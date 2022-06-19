@@ -502,7 +502,7 @@ public class ClassifierType_SubstituteMenu extends SubstituteMenuBase {
     public class SMP_Group_6wdawe_d0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
       protected boolean isApplicable(SubstituteMenuContext _context) {
-        return !((superclass || implement || superinterface)) && (_context.getLink() != null || !(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.StatementList$m_)));
+        return !(superclass || implement || superinterface) && (_context.getLink() != null || !(SNodeOperations.isInstanceOf(_context.getParentNode(), CONCEPTS.StatementList$m_)));
       }
       @NotNull
       @Override

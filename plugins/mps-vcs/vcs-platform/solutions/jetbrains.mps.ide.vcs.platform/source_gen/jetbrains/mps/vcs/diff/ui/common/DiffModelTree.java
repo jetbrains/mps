@@ -225,7 +225,7 @@ public abstract class DiffModelTree extends SimpleTree implements DataProvider {
           return isNotEmptyString(SModelOperations.getModelName(it));
         }
       }));
-      if (!((modelName == null || modelName.length() == 0))) {
+      if (!(modelName == null || modelName.length() == 0)) {
         setText(modelName);
       }
       setIcon(IdeIcons.MODEL_ICON);

@@ -65,7 +65,7 @@ public final class FSChangesWatcher implements BulkFileListener {
   }
 
   private void processAfterEvent(VFileEvent event, FileProcessor processor) {
-    if (!((event.getFileSystem() instanceof LocalFileSystem))) {
+    if (!(event.getFileSystem() instanceof LocalFileSystem)) {
       return;
     }
 

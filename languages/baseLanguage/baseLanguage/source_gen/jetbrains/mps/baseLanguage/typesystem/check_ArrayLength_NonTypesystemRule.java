@@ -30,7 +30,7 @@ public class check_ArrayLength_NonTypesystemRule extends AbstractNonTypesystemRu
   public void applyRule(final SNode fieldRefOperation, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     // FIXME: almost duplicate code with MultipleFilesParser
     SReference fieldRef = SNodeOperations.getReference(fieldRefOperation, LINKS.fieldDeclaration$H7Ag);
-    if (!((SLinkOperations.isDynamic(fieldRef) && "length".equals(SLinkOperations.getResolveInfo(fieldRef))))) {
+    if (!(SLinkOperations.isDynamic(fieldRef) && "length".equals(SLinkOperations.getResolveInfo(fieldRef)))) {
       return;
     }
 

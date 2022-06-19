@@ -38,7 +38,7 @@ public final class DeleteUndeclaredLinksAndProperties_MigrationScript extends Ba
       @Override
       public boolean isApplicableInstanceNode(SNode node) {
         for (SProperty prop : Sequence.fromIterable(node.getProperties())) {
-          if (!((prop.isValid()))) {
+          if (!(prop.isValid())) {
             return true;
           }
         }

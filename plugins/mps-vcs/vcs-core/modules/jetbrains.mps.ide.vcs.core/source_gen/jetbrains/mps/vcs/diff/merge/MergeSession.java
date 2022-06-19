@@ -270,7 +270,7 @@ public final class MergeSession {
 
     List<ModelChange> conflictedChanges = Sequence.fromIterable(getConflictedWith(change)).where(new IWhereFilter<ModelChange>() {
       public boolean accept(ModelChange ch) {
-        return !((SetSequence.fromSet(myResolvedChanges).contains(ch)));
+        return !(SetSequence.fromSet(myResolvedChanges).contains(ch));
       }
     }).toListSequence();
     if (change instanceof NodeGroupChange && ((NodeGroupChange) change).getRoleLink().isMultiple()) {

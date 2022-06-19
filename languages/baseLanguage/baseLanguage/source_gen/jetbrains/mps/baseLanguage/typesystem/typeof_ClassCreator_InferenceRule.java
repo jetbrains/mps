@@ -54,7 +54,7 @@ public class typeof_ClassCreator_InferenceRule extends AbstractInferenceRule_Run
       return;
     }
 
-    if (!((ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$uYiw)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$uYiw)).count() == ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp)).count()))) {
+    if (!(ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$uYiw)).isEmpty() || ListSequence.fromList(SLinkOperations.getChildren(creator, LINKS.typeParameter$uYiw)).count() == ListSequence.fromList(SLinkOperations.getChildren(classifier, LINKS.typeVariableDeclaration$Lipp)).count())) {
       {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(creator, "wrong number of type parameters", "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "1216200944338", null, errorTarget);

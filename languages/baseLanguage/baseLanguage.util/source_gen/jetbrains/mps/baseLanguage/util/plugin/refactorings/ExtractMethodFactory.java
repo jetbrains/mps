@@ -56,7 +56,7 @@ public class ExtractMethodFactory {
       if (ListSequence.fromList(analyzer.getOutputVariables()).isNotEmpty()) {
         return "Too many output variables.";
       }
-      if (!((analyzer.isReturnExpressionsNotChangedInStatements() || analyzer.isAlwaysReturns()))) {
+      if (!(analyzer.isReturnExpressionsNotChangedInStatements() || analyzer.isAlwaysReturns())) {
         return "Too many output variables.";
       }
     }

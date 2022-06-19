@@ -2236,7 +2236,7 @@
       <unit id="3358009230509159539" at="8,0,16,0" name="jetbrains.mps.baseLanguage.collections.generator.baseLanguage.template.main.Pattern_x583g4_b0a0a0pc" />
     </file>
     <file name="QueriesGenerated.java">
-      <node id="3358009230509159508" at="328,272,329,19" concept="8" />
+      <node id="3358009230509159508" at="328,270,329,19" concept="8" />
       <node id="3444116434174553629" at="330,5,331,262" concept="8" />
       <node id="3358009230509159535" at="333,84,334,184" concept="8" />
       <node id="3444116434174553648" at="336,84,337,262" concept="8" />
@@ -2260,7 +2260,7 @@
       <node id="3358009230509159573" at="339,0,342,0" concept="11" trace="rule_Condition_15_3#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
       <node id="3358009230509159504" at="327,0,333,0" concept="11" trace="rule_Condition_15_0#(Ljetbrains/mps/generator/template/BaseMappingRuleContext;)Z" />
       <node id="8519118779653927294" at="3249,0,3256,0" concept="11" trace="_quotation_createNode_x583g4_a0b0a0a0pc#()Lorg/jetbrains/mps/openapi/model/SNode;" />
-      <scope id="3358009230509159507" at="328,272,329,19" />
+      <scope id="3358009230509159507" at="328,270,329,19" />
       <scope id="3358009230509159534" at="333,84,334,184" />
       <scope id="3358009230509159555" at="336,84,337,262" />
       <scope id="3358009230509159574" at="339,84,340,138" />

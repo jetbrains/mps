@@ -49,7 +49,7 @@ public final class XmlContent__BehaviorDescriptor extends BaseBHDescriptor {
       if (SNodeOperations.isInstanceOf(left, CONCEPTS.XmlWhitespace$9F)) {
         return (boolean) XmlPart__BehaviorDescriptor.hasNewLineAfter_id1Qs9WekVZ9E.invoke(SNodeOperations.cast(left, CONCEPTS.XmlWhitespace$9F));
       }
-      return !(((boolean) XmlPart__BehaviorDescriptor.isTextLike_id1Qs9WekVZ9O.invoke(left) || (boolean) XmlPart__BehaviorDescriptor.isOneLineBlock_id1Qs9WekVZ7e.invoke(left)));
+      return !((boolean) XmlPart__BehaviorDescriptor.isTextLike_id1Qs9WekVZ9O.invoke(left) || (boolean) XmlPart__BehaviorDescriptor.isOneLineBlock_id1Qs9WekVZ7e.invoke(left));
     }
     return true;
   }

@@ -44,7 +44,7 @@ public final class JUnitSettings_Configuration implements IPersistentConfigurati
     Project project = myProject;
     MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
     checkCachesDirIsFreeToLock();
-    if (!((Objects.equals(getJUnitRunType(), JUnitRunTypes.PROJECT)))) {
+    if (!(Objects.equals(getJUnitRunType(), JUnitRunTypes.PROJECT))) {
       check(mpsProject);
     }
   }

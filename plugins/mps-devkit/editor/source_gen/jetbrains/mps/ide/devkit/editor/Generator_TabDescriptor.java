@@ -94,7 +94,7 @@ public class Generator_TabDescriptor extends RelationDescriptor {
             if (importedConcept.isAbstract()) {
               continue;
             }
-            if (!((importedConcept instanceof SConcept))) {
+            if (!(importedConcept instanceof SConcept)) {
               continue;
             }
             if (((SConcept) importedConcept).isRootable()) {

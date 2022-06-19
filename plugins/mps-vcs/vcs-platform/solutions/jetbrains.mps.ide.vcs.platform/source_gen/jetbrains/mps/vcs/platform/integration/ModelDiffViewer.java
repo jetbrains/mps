@@ -95,7 +95,7 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
   }
 
   public static boolean canShow(@NotNull DiffContext context, @NotNull DiffRequest request) {
-    if (!((request instanceof ContentDiffRequest))) {
+    if (!(request instanceof ContentDiffRequest)) {
       return false;
     }
     List<DiffContent> contents = ((ContentDiffRequest) request).getContents();
@@ -108,7 +108,7 @@ public class ModelDiffViewer implements FrameDiffTool.DiffViewer {
       if (!(canShowContent(content))) {
         return false;
       }
-      if (!((content instanceof EmptyContent))) {
+      if (!(content instanceof EmptyContent)) {
         allEmpty = false;
       }
       if (content instanceof ModelDiffContent) {

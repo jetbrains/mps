@@ -59,7 +59,7 @@ import java.io.OutputStream;
   @Nullable
   public SModel getBaseVersionModel(SModel model) {
     DataSource ds = model.getSource();
-    if (!((ds instanceof MultiStreamDataSource))) {
+    if (!(ds instanceof MultiStreamDataSource)) {
       return null;
     }
     final ComponentHost mpsPlatform = ProjectHelper.fromIdeaProject(myProject).getPlatform();

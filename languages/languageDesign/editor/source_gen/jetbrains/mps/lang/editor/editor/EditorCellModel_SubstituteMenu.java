@@ -1194,7 +1194,7 @@ public class EditorCellModel_SubstituteMenu extends SubstituteMenuBase {
         return canExecute_internal(pattern, true);
       }
       public boolean canExecute_internal(@NotNull String pattern, boolean strictly) {
-        return !((pattern.equals("[-") || pattern.equals("[/") || pattern.equals("[>") || pattern.startsWith("\"") || pattern.startsWith("<choose cell model>")));
+        return !(pattern.equals("[-") || pattern.equals("[/") || pattern.equals("[>") || pattern.startsWith("\"") || pattern.startsWith("<choose cell model>"));
       }
     }
   }

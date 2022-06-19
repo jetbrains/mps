@@ -185,7 +185,7 @@ import java.util.Collections;
   public ProjectMigration nextStepProject() {
     final ProjectMigration next = CollectionSequence.fromCollection(getProjectMigrations()).where(new IWhereFilter<ProjectMigration>() {
       public boolean accept(ProjectMigration it) {
-        return !((it instanceof CleanupProjectMigration));
+        return !(it instanceof CleanupProjectMigration);
       }
     }).findFirst(new IWhereFilter<ProjectMigration>() {
       public boolean accept(ProjectMigration it) {

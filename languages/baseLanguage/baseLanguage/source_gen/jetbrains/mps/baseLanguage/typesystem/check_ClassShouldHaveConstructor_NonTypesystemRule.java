@@ -26,7 +26,7 @@ public class check_ClassShouldHaveConstructor_NonTypesystemRule extends Abstract
   public check_ClassShouldHaveConstructor_NonTypesystemRule() {
   }
   public void applyRule(final SNode classConcept, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((SNodeOperations.isInstanceOf(classConcept, CONCEPTS.IAnonymousClass$IC) || SNodeOperations.isInstanceOf(classConcept, CONCEPTS.EnumClass$Vk)))) {
+    if (!(SNodeOperations.isInstanceOf(classConcept, CONCEPTS.IAnonymousClass$IC) || SNodeOperations.isInstanceOf(classConcept, CONCEPTS.EnumClass$Vk))) {
       if (!(!(DefaultConstructorUtils.missesDefaultConstructor(classConcept)))) {
         final MessageTarget errorTarget = new PropertyMessageTarget(PROPS.name$MnvL);
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(classConcept, "There is no default constructor available in super class " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(classConcept, LINKS.superclass$Mp9$), LINKS.classifier$cxMr)), "r:00000000-0000-4000-0000-011c895902c5(jetbrains.mps.baseLanguage.typesystem)", "8974945326827961340", null, errorTarget);

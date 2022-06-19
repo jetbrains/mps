@@ -31,7 +31,7 @@ import org.jetbrains.mps.openapi.language.SProperty;
     if (obj == null) {
       return false;
     }
-    if (!((obj instanceof PropertyDifference))) {
+    if (!(obj instanceof PropertyDifference)) {
       return false;
     }
     PropertyDifference diff = (PropertyDifference) obj;

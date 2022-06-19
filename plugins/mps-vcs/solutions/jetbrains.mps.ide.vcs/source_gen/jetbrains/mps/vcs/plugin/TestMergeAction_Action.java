@@ -64,7 +64,7 @@ public class TestMergeAction_Action extends BaseAction {
     final FileChooserDescriptor descriptor = new FileChooserDescriptor(true, true, true, true, false, false) {
       @Override
       public boolean isFileSelectable(VirtualFile file) {
-        return !((file.isDirectory())) && file.getName().toLowerCase().endsWith(".zip");
+        return !(file.isDirectory()) && file.getName().toLowerCase().endsWith(".zip");
       }
     };
 

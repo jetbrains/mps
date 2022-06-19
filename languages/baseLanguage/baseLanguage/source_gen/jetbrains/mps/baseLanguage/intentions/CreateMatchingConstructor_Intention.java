@@ -127,7 +127,7 @@ public final class CreateMatchingConstructor_Intention extends AbstractIntention
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      return !((SNodeOperations.isInstanceOf(node, CONCEPTS.IAnonymousClass$IC) || SNodeOperations.isInstanceOf(node, CONCEPTS.EnumClass$Vk))) && DefaultConstructorUtils.missesDefaultConstructor(node);
+      return !(SNodeOperations.isInstanceOf(node, CONCEPTS.IAnonymousClass$IC) || SNodeOperations.isInstanceOf(node, CONCEPTS.EnumClass$Vk)) && DefaultConstructorUtils.missesDefaultConstructor(node);
     }
 
 

@@ -67,7 +67,7 @@ public final class AddTypeParameters_Intention extends AbstractIntentionDescript
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeArgument$jaIN)).isEmpty() && !((SNodeOperations.isInstanceOf(node, CONCEPTS.LocalMethodCall$zT)));
+      return ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.typeArgument$jaIN)).isEmpty() && !(SNodeOperations.isInstanceOf(node, CONCEPTS.LocalMethodCall$zT));
     }
 
 

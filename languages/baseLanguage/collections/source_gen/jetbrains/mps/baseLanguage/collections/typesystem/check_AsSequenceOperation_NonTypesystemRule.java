@@ -22,7 +22,7 @@ public class check_AsSequenceOperation_NonTypesystemRule extends AbstractNonType
   public check_AsSequenceOperation_NonTypesystemRule() {
   }
   public void applyRule(final SNode aso, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
-    if (!((TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(aso), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.ArrayType$rh) != null))) {
+    if (!(TypecheckingFacade.getFromContext().strongCoerceType(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(aso), CONCEPTS.DotExpression$yW), LINKS.operand$w6IR)), CONCEPTS.ArrayType$rh) != null)) {
       final MessageTarget errorTarget = new NodeMessageTarget();
       IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(aso, "not available here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809121295883", null, errorTarget);
     }

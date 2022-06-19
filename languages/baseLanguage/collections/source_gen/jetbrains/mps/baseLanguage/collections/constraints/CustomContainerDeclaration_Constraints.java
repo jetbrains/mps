@@ -36,7 +36,7 @@ public class CustomContainerDeclaration_Constraints extends BaseConstraintsDescr
     private static boolean staticValidateProperty(SNode node, String propertyValue) {
       for (int i = 0; i < propertyValue.length(); i++) {
         char c = propertyValue.charAt(i);
-        if (!(((i == 0 && Character.isJavaIdentifierStart(c)) || (i > 0 && Character.isJavaIdentifierPart(c))))) {
+        if (!((i == 0 && Character.isJavaIdentifierStart(c)) || (i > 0 && Character.isJavaIdentifierPart(c)))) {
           return false;
         }
       }

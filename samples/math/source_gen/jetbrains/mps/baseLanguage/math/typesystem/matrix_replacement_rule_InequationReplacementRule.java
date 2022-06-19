@@ -32,7 +32,7 @@ public class matrix_replacement_rule_InequationReplacementRule extends AbstractI
       typeCheckingContext.createLessThanInequality((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$ikFV), (SNode) SLinkOperations.getTarget(supertype, LINKS.elementType$ikFV), false, true, _info_12389875345);
     }
     if (SPropertyOperations.getInteger(subtype, PROPS.columns$STq2) != 0 && SPropertyOperations.getInteger(supertype, PROPS.columns$STq2) != 0) {
-      if (!((SPropertyOperations.getInteger(subtype, PROPS.columns$STq2) == SPropertyOperations.getInteger(supertype, PROPS.columns$STq2)))) {
+      if (!(SPropertyOperations.getInteger(subtype, PROPS.columns$STq2) == SPropertyOperations.getInteger(supertype, PROPS.columns$STq2))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(equationInfo.getNodeWithError(), " invalid matrix dimensions", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "7676695779583848932", null, errorTarget);
@@ -41,7 +41,7 @@ public class matrix_replacement_rule_InequationReplacementRule extends AbstractI
       }
     }
     if (SPropertyOperations.getInteger(subtype, PROPS.rows$STb1) != 0 && SPropertyOperations.getInteger(supertype, PROPS.rows$STb1) != 0) {
-      if (!((SPropertyOperations.getInteger(subtype, PROPS.rows$STb1) == SPropertyOperations.getInteger(supertype, PROPS.rows$STb1)))) {
+      if (!(SPropertyOperations.getInteger(subtype, PROPS.rows$STb1) == SPropertyOperations.getInteger(supertype, PROPS.rows$STb1))) {
         {
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(equationInfo.getNodeWithError(), " invalid matrix dimensions", "r:47d0f24b-df34-4ea0-aa7e-7c2eb0f88f31(jetbrains.mps.baseLanguage.math.typesystem)", "7676695779583848960", null, errorTarget);
@@ -54,12 +54,12 @@ public class matrix_replacement_rule_InequationReplacementRule extends AbstractI
     boolean result_14532009 = true;
     result_14532009 = result_14532009 && TypecheckingFacade.getFromContext().isSubtype((SNode) SLinkOperations.getTarget(subtype, LINKS.elementType$ikFV), (SNode) SLinkOperations.getTarget(supertype, LINKS.elementType$ikFV));
     if (SPropertyOperations.getInteger(subtype, PROPS.columns$STq2) != 0 && SPropertyOperations.getInteger(supertype, PROPS.columns$STq2) != 0) {
-      if (!((SPropertyOperations.getInteger(subtype, PROPS.columns$STq2) == SPropertyOperations.getInteger(supertype, PROPS.columns$STq2)))) {
+      if (!(SPropertyOperations.getInteger(subtype, PROPS.columns$STq2) == SPropertyOperations.getInteger(supertype, PROPS.columns$STq2))) {
         result_14532009 = false;
       }
     }
     if (SPropertyOperations.getInteger(subtype, PROPS.rows$STb1) != 0 && SPropertyOperations.getInteger(supertype, PROPS.rows$STb1) != 0) {
-      if (!((SPropertyOperations.getInteger(subtype, PROPS.rows$STb1) == SPropertyOperations.getInteger(supertype, PROPS.rows$STb1)))) {
+      if (!(SPropertyOperations.getInteger(subtype, PROPS.rows$STb1) == SPropertyOperations.getInteger(supertype, PROPS.rows$STb1))) {
         result_14532009 = false;
       }
     }

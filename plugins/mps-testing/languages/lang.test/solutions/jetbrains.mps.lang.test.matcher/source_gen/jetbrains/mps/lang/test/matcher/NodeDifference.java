@@ -43,7 +43,7 @@ public final class NodeDifference extends DifferenceItem {
     if (obj == null) {
       return false;
     }
-    if (!((obj instanceof NodeDifference))) {
+    if (!(obj instanceof NodeDifference)) {
       return false;
     }
     NodeDifference diff = (NodeDifference) obj;

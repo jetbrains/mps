@@ -37,7 +37,7 @@ public class StaticFieldRefactoringParticipant extends StaticMemberRefactoringPa
 
   @Override
   protected void doUpdateReference(List<RefactoringParticipant.Option> selectedOptions, SRepository repository, final SNode containingNode, final SReferenceLink role, UpdateReferencesParticipantBase.NodeData<UpdateReferencesParticipantBase.NamedNodeReference> newTarget, final String resolveInfo) {
-    if (!((SNodeOperations.isInstanceOf(containingNode, CONCEPTS.VariableReference$TC) || SNodeOperations.isInstanceOf(containingNode, CONCEPTS.StaticFieldReference$cU))) || newTarget.other() == null) {
+    if (!(SNodeOperations.isInstanceOf(containingNode, CONCEPTS.VariableReference$TC) || SNodeOperations.isInstanceOf(containingNode, CONCEPTS.StaticFieldReference$cU)) || newTarget.other() == null) {
       super.doUpdateReference(selectedOptions, repository, containingNode, role, newTarget, resolveInfo);
     } else {
       @Nullable SNode tryToResolveNewTarget = newTarget.baseData().reference().resolve(repository);

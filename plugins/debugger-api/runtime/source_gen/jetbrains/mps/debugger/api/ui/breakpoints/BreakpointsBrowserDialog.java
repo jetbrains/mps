@@ -329,7 +329,7 @@ public class BreakpointsBrowserDialog extends DialogWrapper implements DataProvi
     return new AnActionEvent(null, DataManager.getInstance().getDataContext(this.getContentPane()), ActionPlaces.UNKNOWN, action.getTemplatePresentation(), ActionManager.getInstance(), 0);
   }
   private void openNode(IBreakpoint breakpoint, boolean focus, boolean select) {
-    if (!((breakpoint instanceof ILocationBreakpoint))) {
+    if (!(breakpoint instanceof ILocationBreakpoint)) {
       return;
     }
     new EditorNavigator(myProject).shallFocus(focus).shallSelect(select).open(((ILocationBreakpoint) breakpoint).getLocation().getNodePointer());

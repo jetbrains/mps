@@ -133,7 +133,7 @@ public class VCSPersistenceUtil {
       return false;
     }
     model.load();
-    return model.isLoaded() && !((model.getProblems().iterator().hasNext()));
+    return model.isLoaded() && !(model.getProblems().iterator().hasNext());
   }
 
   @Nullable
@@ -193,7 +193,7 @@ public class VCSPersistenceUtil {
     SModelId modelId = parseResult.o2.o1;
     String modelName = parseResult.o2.o2;
     SModuleReference moduleRef = (moduleId != null || moduleName != null ? new ModuleReference(moduleName, moduleId) : null);
-    if (moduleRef == null && !((modelId.isGloballyUnique()))) {
+    if (moduleRef == null && !(modelId.isGloballyUnique())) {
       // make globally unique anyway to avoid exception for old models without modules
       modelId = new SModelIdProxy(modelId);
     }

@@ -166,7 +166,7 @@ public class ActionTestDefaultAbstractChild_SubstituteMenu extends SubstituteMen
     public class SMP_Group_c1nwm3_d0 extends GroupMenuPart<SubstituteMenuItem, SubstituteMenuContext> {
       @Override
       protected boolean isApplicable(SubstituteMenuContext _context) {
-        return !((condition || condition1 || condition2));
+        return !(condition || condition1 || condition2);
       }
       @NotNull
       @Override

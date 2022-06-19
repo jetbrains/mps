@@ -39,7 +39,7 @@ public class check_SequenceOperation_NonTypesystemRule extends AbstractNonTypesy
       }
 
     } else {
-      if (!((TypecheckingFacade.getFromContext().strongCoerceType(opType, CONCEPTS.SequenceType$_s) != null))) {
+      if (!(TypecheckingFacade.getFromContext().strongCoerceType(opType, CONCEPTS.SequenceType$_s) != null)) {
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(so, "not available here", "r:00000000-0000-4000-0000-011c8959032b(jetbrains.mps.baseLanguage.collections.typesystem)", "4998595809122243464", null, errorTarget);
       }

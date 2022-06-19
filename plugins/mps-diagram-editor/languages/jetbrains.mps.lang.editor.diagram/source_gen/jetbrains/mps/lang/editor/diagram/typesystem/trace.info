@@ -725,7 +725,7 @@
       <node id="8570854907291318065" at="42,0,45,0" concept="5" trace="getApplicableConcept#()Lorg/jetbrains/mps/openapi/language/SAbstractConcept;" />
       <node id="8570854907291318065" at="45,0,48,0" concept="5" trace="isApplicableAndPattern#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/lang/typesystem/runtime/IsApplicableStatus;" />
       <node id="8570854907291318065" at="48,0,51,0" concept="5" trace="overrides#()Z" />
-      <node id="8570854907291359968" at="27,370,31,7" concept="0" />
+      <node id="8570854907291359968" at="27,368,31,7" concept="0" />
       <node id="1301388602725875172" at="34,398,38,9" concept="0" />
       <node id="1301388602725859776" at="33,292,39,7" concept="4" />
       <node id="1301388602725844909" at="32,10,40,5" concept="0" />
@@ -749,7 +749,7 @@
         <var name="argument" id="8570854907291318065" />
       </scope>
       <scope id="8570854907291318065" at="48,0,51,0" />
-      <scope id="8570854907291318240" at="27,370,31,7" />
+      <scope id="8570854907291318240" at="27,368,31,7" />
       <scope id="1301388602725859779" at="34,398,38,9" />
       <scope id="1301388602725844910" at="32,12,39,7">
         <var name="containmentLink" id="1301388602725859230" />

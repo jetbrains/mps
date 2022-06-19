@@ -59,7 +59,7 @@ public class BinaryOperationUtil {
     return result;
   }
   private static boolean isOverloading(SNode node, SNode leftType, SNode rightType, SNode operator) {
-    if (!((TypecheckingFacade.getFromContext().isSubtype(leftType, SLinkOperations.getTarget(operator, LINKS.leftType$aTVX)) && TypecheckingFacade.getFromContext().isSubtype(rightType, SLinkOperations.getTarget(operator, LINKS.rightType$aUaY))))) {
+    if (!(TypecheckingFacade.getFromContext().isSubtype(leftType, SLinkOperations.getTarget(operator, LINKS.leftType$aTVX)) && TypecheckingFacade.getFromContext().isSubtype(rightType, SLinkOperations.getTarget(operator, LINKS.rightType$aUaY)))) {
       return false;
     }
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(operator, LINKS.operator$XXCg), CONCEPTS.BinaryOperationReference$wm)) {

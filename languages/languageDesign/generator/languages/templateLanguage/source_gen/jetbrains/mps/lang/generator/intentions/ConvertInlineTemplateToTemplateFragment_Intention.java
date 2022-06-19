@@ -81,7 +81,7 @@ public final class ConvertInlineTemplateToTemplateFragment_Intention extends Abs
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
       SNode ruleNode = SNodeOperations.getNodeAncestor(node, CONCEPTS.BaseMappingRule$O5, false, false);
-      if (!((SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.Root_MappingRule$NH) || SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.Weaving_MappingRule$qb) || SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.Reduction_MappingRule$9X)))) {
+      if (!(SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.Root_MappingRule$NH) || SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.Weaving_MappingRule$qb) || SNodeOperations.isInstanceOf(ruleNode, CONCEPTS.Reduction_MappingRule$9X))) {
         return false;
       }
       return true;

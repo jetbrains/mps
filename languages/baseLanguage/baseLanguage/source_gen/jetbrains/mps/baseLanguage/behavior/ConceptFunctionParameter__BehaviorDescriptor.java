@@ -40,7 +40,7 @@ public final class ConceptFunctionParameter__BehaviorDescriptor extends BaseBHDe
   }
 
   /*package*/ static boolean getFromParameterObject_idhEwJh7s(@NotNull SNode __thisNode__) {
-    if (!(((boolean) ConceptFunctionParameter__BehaviorDescriptor.isParameterObjectUsed_idhEwJh7I.invoke(__thisNode__)))) {
+    if (!((boolean) ConceptFunctionParameter__BehaviorDescriptor.isParameterObjectUsed_idhEwJh7I.invoke(__thisNode__))) {
       return false;
     }
     return (boolean) ConceptFunction__BehaviorDescriptor.usesParameterObjectFor_idhEwIGRw.invoke(ConceptFunctionParameter__BehaviorDescriptor.findConceptFunction_idhEwJh7Q.invoke(__thisNode__), __thisNode__);

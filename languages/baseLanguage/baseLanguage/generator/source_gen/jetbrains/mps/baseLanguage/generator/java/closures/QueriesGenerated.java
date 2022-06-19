@@ -77,7 +77,7 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static boolean rule_Condition_0_4(final BaseMappingRuleContext _context) {
     SNode var = SLinkOperations.getTarget(_context.getNode(), LINKS.variableDeclaration$N1XG);
-    if (!((SNodeOperations.isInstanceOf(var, CONCEPTS.LocalVariableDeclaration$41) || SNodeOperations.isInstanceOf(var, CONCEPTS.ParameterDeclaration$RG)))) {
+    if (!(SNodeOperations.isInstanceOf(var, CONCEPTS.LocalVariableDeclaration$41) || SNodeOperations.isInstanceOf(var, CONCEPTS.ParameterDeclaration$RG))) {
       return false;
     }
     SNode contextOwner = ClosuresUtil.findEnclosingClosureContextOwner(var);

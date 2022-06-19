@@ -248,7 +248,7 @@ public class JavaClassStubsModelRoot extends FileBasedModelRoot implements Copya
           assert modelDescriptor instanceof JavaClassStubModelDescriptor;
           smd = (JavaClassStubModelDescriptor) modelDescriptor;
         } else {
-          FolderSetDataSource ds = (!((mr instanceof JDKStubsModelRoot)) ? new FolderSetDataSource() : new JDKFolderSetDataSource());
+          FolderSetDataSource ds = (!(mr instanceof JDKStubsModelRoot) ? new FolderSetDataSource() : new JDKFolderSetDataSource());
           smd = new JavaClassStubModelDescriptor(modelReference, ds);
           smd.setModelRoot(mr);
           if (psc != null) {

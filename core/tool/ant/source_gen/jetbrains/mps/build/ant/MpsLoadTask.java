@@ -537,7 +537,7 @@ public class MpsLoadTask extends Task {
     public void run() {
       Scanner s = new Scanner(this.myInputStream);
       try {
-        while (!((this.isInterrupted())) && s.hasNextLine()) {
+        while (!(this.isInterrupted()) && s.hasNextLine()) {
           this.addMessage(s.nextLine());
         }
       } catch (Exception e) {

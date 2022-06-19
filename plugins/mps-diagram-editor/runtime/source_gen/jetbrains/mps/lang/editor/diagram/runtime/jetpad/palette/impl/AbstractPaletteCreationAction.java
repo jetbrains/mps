@@ -35,7 +35,7 @@ public abstract class AbstractPaletteCreationAction implements PaletteToggleActi
       // todo should pass concept here, not concept node
       // FIXME the moment there's SConcept, not SNode, #init() down here doesn't need model read any more
       SAbstractConcept concept = SNodeOperations.asSConcept(((SNode) iconNode));
-      icon = ((SNodeOperations.isInstanceOf(iconNode, CONCEPTS.AbstractConceptDeclaration$KA) && !((mySubstituteAction.isReferentPresentation()))) ? GlobalIconManager.getInstance().getIconFor(concept) : GlobalIconManager.getInstance().getIconFor(iconNode));
+      icon = ((SNodeOperations.isInstanceOf(iconNode, CONCEPTS.AbstractConceptDeclaration$KA) && !(mySubstituteAction.isReferentPresentation())) ? GlobalIconManager.getInstance().getIconFor(concept) : GlobalIconManager.getInstance().getIconFor(iconNode));
     } else {
       icon = IdeIcons.DEFAULT_ICON;
     }

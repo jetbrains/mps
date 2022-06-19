@@ -19,7 +19,7 @@ public class SModuleOperations {
    * Still, it is better if user does not write this by-name stuff explicitly - it will be changed later by regenerating, not by manually changing code
    */
   public static SModel getAspect(SModule module, final String name) {
-    if (!((module instanceof Language))) {
+    if (!(module instanceof Language)) {
       return null;
     }
     List<SModel> models = ((Language) module).getModels();
@@ -31,7 +31,7 @@ public class SModuleOperations {
   }
 
   public static boolean isAspect(SModel model, String name) {
-    if (!((model.getModule() instanceof Language))) {
+    if (!(model.getModule() instanceof Language)) {
       return false;
     }
     SModelName mn = model.getName();

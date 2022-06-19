@@ -20,7 +20,7 @@ public class SimplifyNotExpression_QuickFix extends QuickFix_Runtime {
   }
   public void execute(SNode node) {
     SNode constant = SNodeFactoryOperations.replaceWithNewChild(node, CONCEPTS.BooleanConstant$n4);
-    SPropertyOperations.assign(constant, PROPS.value$5y_M, !(((Boolean) SimplifyNotExpression_QuickFix.this.getField("value")[0])));
+    SPropertyOperations.assign(constant, PROPS.value$5y_M, !((Boolean) SimplifyNotExpression_QuickFix.this.getField("value")[0]));
   }
 
   private static final class CONCEPTS {

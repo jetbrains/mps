@@ -319,7 +319,7 @@ public final class ChangeSetBuilder {
     // added & changed
     for (SLanguage lang : SetSequence.fromSet(newLanguages)) {
       int newVersion = newModel.getLanguageImportVersion(lang);
-      if (!((SetSequence.fromSet(oldLanguages).contains(lang)))) {
+      if (!(SetSequence.fromSet(oldLanguages).contains(lang))) {
         UsedLanguageChange change = new UsedLanguageChange(myChangeSet, lang, newVersion, ChangeType.ADD);
         ListSequence.fromList(myNewChanges).addElement(change);
       } else if (oldModel.getLanguageImportVersion(lang) != newVersion) {

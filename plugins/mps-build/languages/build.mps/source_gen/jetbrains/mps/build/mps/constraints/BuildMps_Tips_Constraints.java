@@ -34,7 +34,7 @@ public class BuildMps_Tips_Constraints extends BaseConstraintsDescriptor {
       return result;
     }
     private static boolean staticValidateProperty(SNode node, String propertyValue) {
-      return !((propertyValue.contains(" ") || propertyValue.contains("/") || propertyValue.contains("\\")));
+      return !(propertyValue.contains(" ") || propertyValue.contains("/") || propertyValue.contains("\\"));
     }
   }
   @Override
