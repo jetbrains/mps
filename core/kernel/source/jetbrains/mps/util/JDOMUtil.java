@@ -61,15 +61,11 @@ public class JDOMUtil {
 
   public static Document loadDocument(IFile file) throws JDOMException, IOException {
     SAXBuilder saxBuilder = createBuilder();
-    InputStream in = null;
-    try {
-      in = file.openInputStream();
+    try (InputStream in = file.openInputStream()) {
       return saxBuilder.build(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
     } catch (JDOMException | IOException e) {
       LOG.error("FAILED TO LOAD FILE : " + file.getPath(), e);
       throw e;
-    } finally {
-      FileUtil.closeFileSafe(in);
     }
   }
 
@@ -85,14 +81,11 @@ public class JDOMUtil {
 
   public static Document loadDocument(File file) throws JDOMException, IOException {
     SAXBuilder saxBuilder = createBuilder();
-    FileInputStream in = new FileInputStream(file);
-    try {
+    try (FileInputStream in = new FileInputStream(file)) {
       return saxBuilder.build(new InputStreamReader(in, FileUtil.DEFAULT_CHARSET));
     } catch (JDOMException | IOException e) {
       LOG.error("FAILED TO LOAD FILE : " + file.getAbsolutePath());
       throw e;
-    } finally {
-      in.close();
     }
   }
 
@@ -156,11 +149,8 @@ public class JDOMUtil {
       file.createNewFile();
     }
 
-    OutputStream stream = new BufferedOutputStream(new FileOutputStream(file));
-    try {
+    try (OutputStream stream = new BufferedOutputStream(new FileOutputStream(file))) {
       writeDocument(document, stream);
-    } finally {
-      stream.close();
     }
   }
 

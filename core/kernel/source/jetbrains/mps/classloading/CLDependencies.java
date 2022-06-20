@@ -4,15 +4,19 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.classloading.ErrorContainer.SearchError;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.make.java.ModelDependencies;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.module.SDependencyImpl;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.dependency.UsedModulesCollector;
+import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.structure.modules.Dependency;
 import jetbrains.mps.project.structure.modules.DeploymentDescriptor;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
 import jetbrains.mps.smodel.Language;
-import kotlinx.serialization.descriptors.PrimitiveKind.BOOLEAN;
+import jetbrains.mps.util.JDOMUtil;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -56,7 +60,7 @@ public class CLDependencies {
    */
   public Collection<SModule> directlyUsedModules(ReloadableModule module) {
     ErrorContainer errorContainer = new ErrorContainer();
-    final Collection<SModule> rv;
+    Collection<SModule> rv;
     DeploymentDescriptor dd = ddIfPresent(module);
     if (USE_DD && dd != null) {
       rv = new LinkedHashSet<>(20);
@@ -88,6 +92,48 @@ public class CLDependencies {
         }
       }
     } else {
+      rv = new LinkedHashSet<>(20);
+      // sources or no DD use
+      final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
+      // FIXME assumed jmf != null as it's odd to load a module (ask for CL deps) without one
+      //       however, faced NPE, as ModuleUpdated/ModulesWatcher are fine with any ReloadableSModule,
+      //       see CLM.myWatchableCondition. Find out if it's right or just a legacy artefact.
+      // Mimics logic of ModuleStaleFileManager.getCacheStreamHanderForModule()
+      final IFile cr = jmf == null ? null : jmf.getOutputCacheRoot();
+      if (cr != null && cr.findChild("deps.cp").exists()) {
+        try {
+          // XXX getRootElement throws ISE when there are no elements
+          final ModelDependencies md = ModelDependencies.fromXml(JDOMUtil.loadDocument(cr.findChild("deps.cp")).getRootElement());
+          if (md.hasRuntimeDeps()) {
+            for (SModuleReference mr : md.getModuleDependencies()) {
+              final SModule target = mr.resolve(myRepository);
+              if (target == null) {
+                errorContainer.depCannotBeResolved(module, new SDependencyImpl(mr, null, SDependencyScope.DEFAULT, false));
+              } else {
+                rv.add(target);
+              }
+            }
+            for (SModuleReference mr : md.getLanguageRuntimeModules()) {
+              final SModule target = mr.resolve(myRepository);
+              if (target == null) {
+                // again, no reason to follow ErrorHandler contract if nobody cares, see same method use, above
+                errorContainer.runtimeDependencyCannotBeFound(mr);
+                errorContainer.depCannotBeResolved(module, new SDependencyImpl(mr, null, SDependencyScope.RUNTIME, false));
+              } else {
+                rv.add(target);
+              }
+            }
+            return rv;
+          }
+          Logger.getLogger(CLDependencies.class).info(String.format("No cached dependencies for %s; resort to legacy mode", module.getModuleName()));
+          // fall through
+        } catch (Exception ex) {
+          final String msg = "Failed to load cached classpath dependencies for module %s; resort to legacy dependency calculation";
+          Logger.getLogger(CLDependencies.class).info(String.format(msg, module.getModuleName()), ex);
+          // fall through
+        }
+      }
+      // legacy
       rv = myModulesCollector.directlyUsedModules(module, errorContainer, true, true);
     }
     if (errorContainer.hasErrors()) {
