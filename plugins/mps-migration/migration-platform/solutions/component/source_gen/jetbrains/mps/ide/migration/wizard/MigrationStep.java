@@ -141,7 +141,7 @@ public class MigrationStep extends BaseStep {
 
   @Override
   public String nextButtonLabel() {
-    return (getNextStepId() == null ? super.nextButtonLabel() : "Ignore and Continue");
+    return (getNextStepId() == null ? "Finish" : "Ignore and Continue");
   }
 
   @Override

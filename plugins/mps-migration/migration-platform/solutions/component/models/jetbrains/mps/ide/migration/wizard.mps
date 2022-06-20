@@ -1603,8 +1603,8 @@
                 <ref role="37wK5l" node="5SsFeroaazB" resolve="getNextStepId" />
               </node>
             </node>
-            <node concept="3nyPlj" id="301Q3qjl7If" role="3K4E3e">
-              <ref role="37wK5l" node="44NRCut1oF9" resolve="nextButtonLabel" />
+            <node concept="Xl_RD" id="1amtroEv05X" role="3K4E3e">
+              <property role="Xl_RC" value="Finish" />
             </node>
           </node>
         </node>
@@ -8809,15 +8809,47 @@
         </node>
         <node concept="3clFbJ" id="44NRCut1zml" role="3cqZAp">
           <node concept="3clFbS" id="44NRCut1zmn" role="3clFbx">
+            <node concept="3cpWs8" id="6s82YNFSscV" role="3cqZAp">
+              <node concept="3cpWsn" id="6s82YNFSscW" role="3cpWs9">
+                <property role="TrG5h" value="nextButton" />
+                <node concept="3uibUv" id="6s82YNFSfFe" role="1tU5fm">
+                  <ref role="3uigEE" to="dxuu:~JButton" resolve="JButton" />
+                </node>
+                <node concept="1rXfSq" id="6s82YNFSscX" role="33vP2m">
+                  <ref role="37wK5l" to="uxeh:~AbstractWizard.getNextButton()" resolve="getNextButton" />
+                </node>
+              </node>
+            </node>
             <node concept="3clFbF" id="44NRCut1wiT" role="3cqZAp">
               <node concept="2OqwBi" id="44NRCut1wPB" role="3clFbG">
-                <node concept="1rXfSq" id="44NRCut1wiR" role="2Oq$k0">
-                  <ref role="37wK5l" to="uxeh:~AbstractWizard.getNextButton()" resolve="getNextButton" />
+                <node concept="37vLTw" id="6s82YNFSscY" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6s82YNFSscW" resolve="nextButton" />
                 </node>
                 <node concept="liA8E" id="44NRCut1yPI" role="2OqNvi">
                   <ref role="37wK5l" to="dxuu:~AbstractButton.setText(java.lang.String)" resolve="setText" />
                   <node concept="37vLTw" id="44NRCut1z54" role="37wK5m">
                     <ref role="3cqZAo" node="44NRCut1z4X" resolve="nextLabel" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="6s82YNFSOR$" role="3cqZAp">
+              <node concept="2OqwBi" id="6s82YNFSPBZ" role="3clFbG">
+                <node concept="37vLTw" id="6s82YNFSORy" role="2Oq$k0">
+                  <ref role="3cqZAo" node="6s82YNFSscW" resolve="nextButton" />
+                </node>
+                <node concept="liA8E" id="6s82YNFSRZk" role="2OqNvi">
+                  <ref role="37wK5l" to="dxuu:~AbstractButton.setMnemonic(char)" resolve="setMnemonic" />
+                  <node concept="2OqwBi" id="6s82YNFSU3e" role="37wK5m">
+                    <node concept="37vLTw" id="6s82YNFSSMi" role="2Oq$k0">
+                      <ref role="3cqZAo" node="44NRCut1z4X" resolve="nextLabel" />
+                    </node>
+                    <node concept="liA8E" id="6s82YNFSVcU" role="2OqNvi">
+                      <ref role="37wK5l" to="wyt6:~String.charAt(int)" resolve="charAt" />
+                      <node concept="3cmrfG" id="6s82YNFSW0p" role="37wK5m">
+                        <property role="3cmrfH" value="0" />
+                      </node>
+                    </node>
                   </node>
                 </node>
               </node>

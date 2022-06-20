@@ -13,6 +13,7 @@ import jetbrains.mps.internal.collections.runtime.ITranslator2;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
+import javax.swing.JButton;
 
 @GeneratedClass(node = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)/6781485246382122883", model = "a5b1c28d-abeb-49a6-a58c-559039616d64/r:49062720-8530-4489-916a-fdd3a02a7b82(jetbrains.mps.migration.component/jetbrains.mps.ide.migration.wizard)")
 public class MigrationWizard extends AbstractWizardEx {
@@ -49,7 +50,9 @@ public class MigrationWizard extends AbstractWizardEx {
 
     String nextLabel = (getStep()).nextButtonLabel();
     if (nextLabel != null) {
-      getNextButton().setText(nextLabel);
+      JButton nextButton = getNextButton();
+      nextButton.setText(nextLabel);
+      nextButton.setMnemonic(nextLabel.charAt(0));
     }
     String cancelLabel = (getStep()).cancelButtonLabel();
     if (cancelLabel != null) {
