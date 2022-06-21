@@ -221,6 +221,8 @@ public class JavaModuleFacetImpl extends ModuleFacetBase implements JavaModuleFa
       FileSystem fs = memento instanceof MementoWithFS ? ((MementoWithFS) memento).getFileSystem() : getAbstractModule().getFileSystem();
       boolean hasClassesGenSerialized = false;
       // JFTR, intentionally pretty much the same logic is below in classGenPath
+      // FIXME what about pure stub modules that claim to be 'java' but don't have any generated classes
+      //       seems odd to keep <classes generated=true> there.
       for (Memento m : memento.getChildren(CLASSES_KEY)) {
         if (Boolean.parseBoolean(m.get(GENERATED_KEY))) {
           hasClassesGenSerialized = true;
