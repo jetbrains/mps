@@ -12,22 +12,5 @@
   <uses module="a3e4657f-a76c-45bb-bbda-c764596ecc65(jetbrains.mps.baseLanguage.logging.runtime)" kind="rt" />
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
   <uses module="f57286e3-4e19-4d8d-8045-3900761f6530(jetbrains.mps.git4idea.stubs)" kind="dp" />
-  <dependency className="jetbrains.mps.vcs.fs.ExternalVcsRepoSynchronization">
-    <classNode dependClassName="com.intellij.dvcs.DvcsUtil" />
-    <classNode dependClassName="com.intellij.openapi.project.Project" />
-    <classNode dependClassName="com.intellij.openapi.util.io.FileUtil" />
-    <classNode dependClassName="com.intellij.openapi.util.registry.Registry" />
-    <classNode dependClassName="com.intellij.openapi.vfs.VirtualFile" />
-    <classNode dependClassName="git4idea.repo.GitRepository" />
-    <classNode dependClassName="java.lang.Override" />
-    <classNode dependClassName="java.lang.String" />
-    <classNode dependClassName="java.util.HashSet" />
-    <classNode dependClassName="java.util.Set" />
-    <classNode dependClassName="jetbrains.mps.annotations.GeneratedClass" />
-    <classNode dependClassName="org.apache.log4j.LogManager" />
-    <classNode dependClassName="org.apache.log4j.Logger" />
-    <classNode dependClassName="org.jetbrains.annotations.NotNull" />
-    <classNode extendsClassName="git4idea.repo.GitRepositoryChangeListener" />
-  </dependency>
 </dependenciesRoot>
 

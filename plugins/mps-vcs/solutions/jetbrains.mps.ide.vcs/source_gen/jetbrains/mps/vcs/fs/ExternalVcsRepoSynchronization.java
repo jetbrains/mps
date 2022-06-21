@@ -4,8 +4,7 @@ package jetbrains.mps.vcs.fs;
 
 import jetbrains.mps.annotations.GeneratedClass;
 import git4idea.repo.GitRepositoryChangeListener;
-import org.apache.log4j.Logger;
-import org.apache.log4j.LogManager;
+import jetbrains.mps.logging.Logger;
 import com.intellij.openapi.project.Project;
 import java.util.Set;
 import java.util.HashSet;
@@ -26,7 +25,7 @@ import com.intellij.openapi.util.io.FileUtil;
  */
 @GeneratedClass(node = "r:c481ad16-14f9-48de-9f34-59089869d64f(jetbrains.mps.vcs.fs)/2383629893871162926", model = "r:c481ad16-14f9-48de-9f34-59089869d64f(jetbrains.mps.vcs.fs)")
 public final class ExternalVcsRepoSynchronization implements GitRepositoryChangeListener {
-  private static final Logger LOG = LogManager.getLogger(ExternalVcsRepoSynchronization.class);
+  private static final Logger LOG = Logger.getLogger(ExternalVcsRepoSynchronization.class);
   private final Project myIJProject;
   private final Set<String> myKnownRepoPaths = new HashSet<>();
 
@@ -43,19 +42,19 @@ public final class ExternalVcsRepoSynchronization implements GitRepositoryChange
     if (!(isFeatureEnabled())) {
       return;
     }
-    if (LOG.isDebugEnabled()) {
+    if (LOG.isDebugLevel()) {
       LOG.debug("the repository" + repository.toLogString() + " has changed");
     }
     VirtualFile root = repository.getRoot();
     if (isRepoUnderProject(root)) {
-      if (LOG.isDebugEnabled()) {
+      if (LOG.isDebugLevel()) {
         LOG.debug("the repository " + repository.toLogString() + " is ignored since it is under the project " + myIJProject);
       }
       return;
     }
     if (myKnownRepoPaths.add(root.getCanonicalPath())) {
       // the set is never cleaned, but vfs itself cannot be unloaded
-      if (LOG.isDebugEnabled()) {
+      if (LOG.isDebugLevel()) {
         LOG.debug("adding the git repository at " + root.getCanonicalPath() + " to vfs snapshot");
       }
       DvcsUtil.ensureAllChildrenInVfs(root);

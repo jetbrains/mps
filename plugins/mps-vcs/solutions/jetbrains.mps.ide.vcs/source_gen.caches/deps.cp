@@ -30,6 +30,7 @@
   <uses module="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
   <uses module="fdaaf35f-8ee3-4c37-b09d-9efaeaaa7a41(jetbrains.mps.core.tool.environment)" kind="dp" />
   <uses module="bfbdd672-7ff5-403f-af4f-16da5226f34c(jetbrains.mps.findUsages.runtime)" kind="dp" />
+  <uses module="f57286e3-4e19-4d8d-8045-3900761f6530(jetbrains.mps.git4idea.stubs)" kind="dp" />
   <uses module="019b622b-0aef-4dd3-86d0-4eef01f3f6bb(jetbrains.mps.ide)" kind="dp" />
   <uses module="8d29d73f-ed99-4652-ae0a-083cdfe53c34(jetbrains.mps.ide.platform)" kind="dp" />
   <uses module="25092e07-e655-497c-92fb-558a8e3080ed(jetbrains.mps.ide.ui)" kind="dp" />
