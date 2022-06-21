@@ -48907,6 +48907,9 @@
       <node concept="nCB5N" id="6ob18N89Hv8" role="nCB5Z">
         <ref role="nCB5Y" node="1QfYSWzYzGS" resolve="vcs-platform" />
       </node>
+      <node concept="2sjeV3" id="1tYCIjhEkSI" role="nCB5Z">
+        <ref role="2sjeV2" node="7TqXBxc99Im" resolve="idea-vcs" />
+      </node>
     </node>
     <node concept="398rNT" id="6ob18N89Hxk" role="1l3spd">
       <property role="TrG5h" value="idea_home" />
