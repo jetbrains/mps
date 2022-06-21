@@ -17,6 +17,7 @@ package jetbrains.mps.project.structure;
 
 import jetbrains.mps.extapi.model.GeneratableSModel;
 import jetbrains.mps.extapi.module.SModuleBase;
+import jetbrains.mps.extapi.module.SModuleExt;
 import jetbrains.mps.generator.ModelDigestUtil;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.persistence.LanguageDescriptorPersistence;
@@ -58,6 +59,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Consumer;
 
 /**
  * Contributes '@descriptor' model to Language modules.
@@ -72,21 +74,33 @@ public class LanguageDescriptorModelProvider extends DescriptorModelProvider {
   private class RootChangeListener extends SNodeChangeListenerAdapter {
     private final Set<SModelReference> myListenedModels = new HashSet<>();
 
+    // FIXME bad approach, needs to know about SModuleExt.
+    //       better is to listen to individual models come and go; need to revisit single #refresh() approach
     public void attach(SModule module) {
-      for (SModel model : module.getModels()) {
+      Consumer<SModel> mlattach = (model -> {
         if (model instanceof EditableSModel && LanguageAspectSupport.isAspectModel(model)) {
           if (myListenedModels.add(model.getReference())) {
             model.addChangeListener(this);
           }
         }
+      });
+      if (module instanceof SModuleExt) {
+        ((SModuleExt) module).forEachRegisteredModel(mlattach);
+      } else {
+        module.getModels().forEach(mlattach);
       }
     }
 
     public void detach(SModule module) {
-      // doesn't hurt to remove a listener even if we didn't add it
-      for (SModel m : module.getModels()) {
+      Consumer<SModel> mldetach = (m -> {
         myListenedModels.remove(m.getReference());
         m.removeChangeListener(this);
+      });
+      if (module instanceof SModuleExt) {
+        ((SModuleExt) module).forEachRegisteredModel(mldetach);
+      } else {
+        // doesn't hurt to remove a listener even if we didn't add it
+        module.getModels().forEach(mldetach);
       }
     }
 

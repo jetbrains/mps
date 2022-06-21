@@ -88,7 +88,7 @@ public class GeneratorDescriptorModelProvider extends DescriptorModelProvider {
     GeneratorDescriptorModel dm = myModels.get(modelReference);
     if (dm != null) {
       Generator generator = (Generator) module;
-      assert dm.getModule() == generator;
+      assert dm.getModule() == generator : String.format("Descriptor model owned by module %s while associated with %s", dm.getModule(), generator);
       generator.unregisterModel(dm);
       myModels.remove(modelReference);
     }

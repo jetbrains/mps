@@ -527,7 +527,10 @@ public abstract class AbstractModule extends SModuleBase implements EditableSMod
 
   public void onModuleLoad() {
     // FIXME any reason to update references for read-only (deployed) modules?
-    updateExternalReferences();
+    // FIXME any reason to update references on module load at all?
+    //       if any, has to be part of migration and explicit action, rather than silent
+    //       update on startup (triggers loading of all models due to update of priority rules in generators)
+    // updateExternalReferences();
   }
 
   @Override

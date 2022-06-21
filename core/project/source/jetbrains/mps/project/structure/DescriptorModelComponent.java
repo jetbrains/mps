@@ -16,6 +16,7 @@
 package jetbrains.mps.project.structure;
 
 import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.extapi.module.SModuleExt;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.smodel.SModelStereotype;
@@ -215,17 +216,31 @@ public class DescriptorModelComponent implements CoreComponent {
     // module is of interest to one of providers
     private void attachListeners(SModule module) {
       // FIXME would benefit from SModuleAttachListener, like SRepositoryAttachListener, to get the code to attach to each model in a single place
-      for (SModel m : module.getModels()) {
-        attachListeners(m);
+      if (module instanceof SModuleExt) {
+        ((SModuleExt) module).forEachRegisteredModel(this::attachListeners);
+      } else {
+        // FIXME I don't like if/else; need a MODULE LISTENER mechanism to find out about MODEL changes
+        //       to avoid adding listeners to model instances
+        for (SModel m : module.getModels()) {
+          attachListeners(m);
+        }
       }
       module.addModuleListener(myModuleListener);
     }
 
     private void detachListeners(SModule module) {
-      for (SModel m : module.getModels()) {
-        detachListeners(m);
-      }
       module.removeModuleListener(myModuleListener);
+      // XXX it's important not to do getModels() here as it might trigger model loading,
+      //     event dispatching and resurrection of descriptor model (or some internal state of this component)
+      //     that may eventually lead to cryptic failures (beforeModuleRemoved facing disposed/detached
+      //     descriptor model, dm.getModule()==null)
+      if (module instanceof SModuleExt) {
+        ((SModuleExt) module).forEachRegisteredModel(this::detachListeners);
+      } else {
+        for (SModel m : module.getModels()) {
+          detachListeners(m);
+        }
+      }
     }
 
     // model comes from a module of interest to one of providers
