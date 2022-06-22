@@ -23,6 +23,8 @@ import jetbrains.mps.components.CoreComponent;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.Solution;
+import jetbrains.mps.project.structure.modules.Dependency;
+import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.smodel.Generator;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration;
@@ -527,14 +529,7 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
           loadedRuntimes.add(langRuntime);
           // perhaps, has to be part of loadedRuntimes cycle, below, but this is the place I've got Language instance,
           // don't want to bother recording Pairs
-          langRuntime.setLanguageRuntimeModules(language.getRuntimeModulesReferences());
-          ArrayList<SModuleReference> generatesInto = new ArrayList<>(4);
-          for (SDependency dd : language.getDeclaredDependencies()) {
-            if (dd.getScope() == SDependencyScope.GENERATES_INTO) {
-              generatesInto.add(dd.getTargetModule());
-            }
-          }
-          langRuntime.setGeneratesIntoTargets(generatesInto);
+          fixupLanguageRuntime(language, langRuntime);
         } catch (LinkageError le) {
           processLinkageErrorForLanguage(language, le);
         }
@@ -627,6 +622,33 @@ public final class LanguageRegistry implements CoreComponent, DeployListener {
         extTargetRT.languageExtensionsChanged();
       }
     }
+  }
+
+  private void fixupLanguageRuntime(Language sourceModule, LanguageRuntime langRuntime) {
+    final Collection<SModuleReference> runtimeModulesReferences;
+    ArrayList<SModuleReference> generatesInto = new ArrayList<>(4);
+    final LanguageDescriptor md = sourceModule.getModuleDescriptor();
+    if (md != null) {
+      // AM.getDeclaredDependencies() doesn't really stick to 'declared' only, it also
+      // goes an extra mile to collect dependencies I don't care about (at least here)
+      runtimeModulesReferences = md.getRuntimeModules();
+      for (Dependency dependency : md.getDependencies()) {
+        if (dependency.getScope() == SDependencyScope.GENERATES_INTO) {
+          generatesInto.add(dependency.getModuleRef());
+        }
+      }
+    } else {
+      // not that I think it's essential to keep this 'else', there are hardly Language modules
+      // w/o MD, but this code shows we can handle this scenario as well.
+      runtimeModulesReferences = sourceModule.getRuntimeModulesReferences();
+      for (SDependency dd : sourceModule.getDeclaredDependencies()) {
+        if (dd.getScope() == SDependencyScope.GENERATES_INTO) {
+          generatesInto.add(dd.getTargetModule());
+        }
+      }
+    }
+    langRuntime.setLanguageRuntimeModules(runtimeModulesReferences);
+    langRuntime.setGeneratesIntoTargets(generatesInto);
   }
 
   /*package*/ final LanguageExtensionRegistry getExtensionRegistry() {
