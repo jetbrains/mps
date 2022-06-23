@@ -23,6 +23,7 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import org.junit.Test;
+import org.junit.Ignore;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -105,6 +106,7 @@ public class TestsDeployedTest {
   }
 
   @Test
+  @Ignore
   public void everyTestIsDeployed() {
     ourProject.getRepository().getModelAccess().runReadAction(() -> {
       List<SNode> includedInBuildTests = ListSequence.fromList(BuildTestsHelper.findIncludedInBuildTests(ourProject.getScope(), new ModuleScope(PersistenceFacade.getInstance().createModuleReference("422c2909-59d6-41a9-b318-40e6256b250f(jetbrains.mps.ide.build)").resolve(ourProject.getRepository())))).distinct().toListSequence();
