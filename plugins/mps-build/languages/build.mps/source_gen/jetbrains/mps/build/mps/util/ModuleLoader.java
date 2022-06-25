@@ -67,7 +67,13 @@ public final class ModuleLoader {
   private ModuleRepositoryFacade myRepository = null;
 
 
-  public ModuleLoader(@NotNull SNode buildProject, @Nullable TemplateQueryContext genContext, IMessageHandler msgHandler) {
+  public ModuleLoader(@NotNull SNode buildProject, @NotNull IMessageHandler msgHandler) {
+    this(buildProject, null, msgHandler);
+    // the only purpose of this constructor is to hide 'gencontext' use of j.m.lang.generator.generationContext
+    // which causes Java compilation issues for classes that merely instantiate ModuleLoader with null gencontext
+  }
+
+  public ModuleLoader(@NotNull SNode buildProject, @Nullable TemplateQueryContext genContext, @NotNull IMessageHandler msgHandler) {
     myBuildProject = buildProject;
     myBuildContext = (genContext != null ? Context.defaultContext(genContext) : Context.defaultContext());
     myPathConverter = new PathConverter(myBuildContext, buildProject);

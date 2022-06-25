@@ -149,7 +149,7 @@ public class RefreshTestProject_Action extends BaseAction {
           SModelOperations.addRootNode(target, bproj);
         }
 
-        ModuleLoader ml = new ModuleLoader(bproj, null, new DefaultMessageHandler(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()));
+        ModuleLoader ml = new ModuleLoader(bproj, new DefaultMessageHandler(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject()));
         ml.checkAllModules(ModuleChecker.CheckType.LOAD_IMPORTANT_PART);
       });
     });

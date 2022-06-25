@@ -1272,14 +1272,13 @@
                       </node>
                       <node concept="2ShNRf" id="6cqWk79GDHZ" role="33vP2m">
                         <node concept="1pGfFk" id="6cqWk79GFh5" role="2ShVmc">
-                          <ref role="37wK5l" to="tken:6cqWk79z1ZM" resolve="ModuleLoader" />
+                          <ref role="37wK5l" to="tken:66fh_bYhvl$" resolve="ModuleLoader" />
                           <node concept="2OqwBi" id="6cqWk79GFzu" role="37wK5m">
                             <node concept="2WthIp" id="6cqWk79GFzx" role="2Oq$k0" />
                             <node concept="3gHZIF" id="6cqWk79GFzz" role="2OqNvi">
                               <ref role="2WH_rO" node="6182LeIwyBK" resolve="node" />
                             </node>
                           </node>
-                          <node concept="10Nm6u" id="6cqWk79GFQN" role="37wK5m" />
                           <node concept="37vLTw" id="6cqWk79IcKn" role="37wK5m">
                             <ref role="3cqZAo" node="6cqWk79IcKf" resolve="msgHandler" />
                           </node>
@@ -13463,11 +13462,10 @@
             </node>
             <node concept="2ShNRf" id="6cqWk79EPIu" role="33vP2m">
               <node concept="1pGfFk" id="6cqWk79F2NW" role="2ShVmc">
-                <ref role="37wK5l" to="tken:6cqWk79z1ZM" resolve="ModuleLoader" />
+                <ref role="37wK5l" to="tken:66fh_bYhvl$" resolve="ModuleLoader" />
                 <node concept="37vLTw" id="6cqWk79F3$9" role="37wK5m">
                   <ref role="3cqZAo" node="7$e6lgA3BvE" resolve="buildProject" />
                 </node>
-                <node concept="10Nm6u" id="6cqWk79F3Ok" role="37wK5m" />
                 <node concept="2ShNRf" id="6cqWk79F429" role="37wK5m">
                   <node concept="1pGfFk" id="6cqWk79F6s8" role="2ShVmc">
                     <ref role="37wK5l" to="et5u:~LogHandler.&lt;init&gt;(jetbrains.mps.logging.Logger)" resolve="LogHandler" />

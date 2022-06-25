@@ -341,7 +341,7 @@ public class BuildGeneratorImpl extends AbstractBuildGenerator {
     // add mps layout to the target model
     SModelOperations.addRootNode(targetModelDescriptor, buildProject);
 
-    ModuleLoader ml = new ModuleLoader(buildProject, null, new LogHandler(Logger.getLogger(ModuleLoader.class)));
+    ModuleLoader ml = new ModuleLoader(buildProject, new LogHandler(Logger.getLogger(ModuleLoader.class)));
     ml.checkAllModules(ModuleChecker.CheckType.LOAD_IMPORTANT_PART);
 
     if (Objects.equals(getDependencyKind(), DependencyStep.DependencyKind.STANDALONE)) {

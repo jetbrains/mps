@@ -842,11 +842,10 @@
                           </node>
                           <node concept="2ShNRf" id="6cqWk79Bqjn" role="33vP2m">
                             <node concept="1pGfFk" id="6cqWk79BFtc" role="2ShVmc">
-                              <ref role="37wK5l" to="tken:6cqWk79z1ZM" resolve="ModuleLoader" />
+                              <ref role="37wK5l" to="tken:66fh_bYhvl$" resolve="ModuleLoader" />
                               <node concept="37vLTw" id="6cqWk79BGzk" role="37wK5m">
                                 <ref role="3cqZAo" node="vgcurbAul$" resolve="bproj" />
                               </node>
-                              <node concept="10Nm6u" id="6cqWk79BIK7" role="37wK5m" />
                               <node concept="2ShNRf" id="6cqWk79BJQC" role="37wK5m">
                                 <node concept="1pGfFk" id="6cqWk79BLU2" role="2ShVmc">
                                   <ref role="37wK5l" to="57ty:~DefaultMessageHandler.&lt;init&gt;(com.intellij.openapi.project.Project)" resolve="DefaultMessageHandler" />

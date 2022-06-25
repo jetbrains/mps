@@ -106,7 +106,7 @@ public class ImportAllModulesFromFolder_Action extends BaseAction {
         }
       }
 
-      ModuleLoader ml = new ModuleLoader(((SNode) MapSequence.fromMap(_params).get("node")), null, msgHandler);
+      ModuleLoader ml = new ModuleLoader(((SNode) MapSequence.fromMap(_params).get("node")), msgHandler);
       for (ImportModuleHelper helper : helpers) {
         helper.update(ml);
       }

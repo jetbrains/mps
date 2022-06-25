@@ -725,6 +725,130 @@
     </node>
     <node concept="2tJIrI" id="5IzazlwNoRK" role="jymVt" />
     <node concept="2tJIrI" id="6cqWk79zVnh" role="jymVt" />
+    <node concept="3clFbW" id="66fh_bYhvl$" role="jymVt">
+      <node concept="37vLTG" id="66fh_bYhCg5" role="3clF46">
+        <property role="TrG5h" value="buildProject" />
+        <node concept="3Tqbb2" id="66fh_bYhCg6" role="1tU5fm">
+          <ref role="ehGHo" to="3ior:4RPz6WoY4Cj" resolve="BuildProject" />
+        </node>
+        <node concept="2AHcQZ" id="66fh_bYhCg7" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="66fh_bYhCgb" role="3clF46">
+        <property role="TrG5h" value="msgHandler" />
+        <node concept="3uibUv" id="66fh_bYhCgc" role="1tU5fm">
+          <ref role="3uigEE" to="et5u:~IMessageHandler" resolve="IMessageHandler" />
+        </node>
+        <node concept="2AHcQZ" id="66fh_bYhDhd" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3cqZAl" id="66fh_bYhvlA" role="3clF45" />
+      <node concept="3Tm1VV" id="66fh_bYhvlB" role="1B3o_S" />
+      <node concept="3clFbS" id="66fh_bYhvlC" role="3clF47">
+        <node concept="1VxSAg" id="66fh_bYhCJM" role="3cqZAp">
+          <ref role="37wK5l" node="6cqWk79z1ZM" resolve="ModuleLoader" />
+          <node concept="37vLTw" id="66fh_bYhCR8" role="37wK5m">
+            <ref role="3cqZAo" node="66fh_bYhCg5" resolve="buildProject" />
+          </node>
+          <node concept="10Nm6u" id="66fh_bYhD2f" role="37wK5m" />
+          <node concept="37vLTw" id="66fh_bYhDb8" role="37wK5m">
+            <ref role="3cqZAo" node="66fh_bYhCgb" resolve="msgHandler" />
+          </node>
+        </node>
+        <node concept="3SKdUt" id="66fh_bYhE4K" role="3cqZAp">
+          <node concept="1PaTwC" id="66fh_bYhE4L" role="1aUNEU">
+            <node concept="3oM_SD" id="66fh_bYhE7O" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhE7Q" role="1PaTwD">
+              <property role="3oM_SC" value="only" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhE7T" role="1PaTwD">
+              <property role="3oM_SC" value="purpose" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhE7X" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhE82" role="1PaTwD">
+              <property role="3oM_SC" value="this" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhE88" role="1PaTwD">
+              <property role="3oM_SC" value="constructor" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhE8f" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhE8n" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhE8w" role="1PaTwD">
+              <property role="3oM_SC" value="hide" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhE8E" role="1PaTwD">
+              <property role="3oM_SC" value="'gencontext'" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhE8P" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhE91" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhE9e" role="1PaTwD">
+              <property role="3oM_SC" value="j.m.lang.generator.generationContext" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="66fh_bYhEb0" role="3cqZAp">
+          <node concept="1PaTwC" id="66fh_bYhEb1" role="1aUNEU">
+            <node concept="3oM_SD" id="66fh_bYhEbp" role="1PaTwD">
+              <property role="3oM_SC" value="which" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhEek" role="1PaTwD">
+              <property role="3oM_SC" value="causes" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhEeS" role="1PaTwD">
+              <property role="3oM_SC" value="Java" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhEfc" role="1PaTwD">
+              <property role="3oM_SC" value="compilation" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhEfh" role="1PaTwD">
+              <property role="3oM_SC" value="issues" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhEfn" role="1PaTwD">
+              <property role="3oM_SC" value="for" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhEfu" role="1PaTwD">
+              <property role="3oM_SC" value="classes" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhEfA" role="1PaTwD">
+              <property role="3oM_SC" value="that" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhEgf" role="1PaTwD">
+              <property role="3oM_SC" value="merely" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhEgT" role="1PaTwD">
+              <property role="3oM_SC" value="instantiate" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhEhk" role="1PaTwD">
+              <property role="3oM_SC" value="ModuleLoader" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhEiw" role="1PaTwD">
+              <property role="3oM_SC" value="with" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhEiX" role="1PaTwD">
+              <property role="3oM_SC" value="null" />
+            </node>
+            <node concept="3oM_SD" id="66fh_bYhEjF" role="1PaTwD">
+              <property role="3oM_SC" value="gencontext" />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="66fh_bYhzKq" role="jymVt" />
     <node concept="3clFbW" id="6cqWk79z1ZM" role="jymVt">
       <node concept="37vLTG" id="6cqWk79z27Y" role="3clF46">
         <property role="TrG5h" value="buildProject" />
@@ -746,6 +870,9 @@
         <property role="TrG5h" value="msgHandler" />
         <node concept="3uibUv" id="6cqWk79zVmg" role="1tU5fm">
           <ref role="3uigEE" to="et5u:~IMessageHandler" resolve="IMessageHandler" />
+        </node>
+        <node concept="2AHcQZ" id="66fh_bYhDuB" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
       </node>
       <node concept="3cqZAl" id="6cqWk79z1ZN" role="3clF45" />
