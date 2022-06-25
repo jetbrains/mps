@@ -4,8 +4,11 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
+import jetbrains.mps.util.Pair;
+import jetbrains.mps.util.SNodePresentationComparator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -14,11 +17,17 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.model.SReference;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -237,6 +246,92 @@ public class SNodeMatcher implements BiPredicate<SNode, SNode> {
         }
       }
       return true;
+    }
+  }
+
+  public static class AnyOrderChildMatch implements AggregationMatchStrategy {
+
+    private final boolean myFailFast;
+
+    public AnyOrderChildMatch() {
+      myFailFast = true;
+    }
+
+    public AnyOrderChildMatch(boolean failFast) {
+      myFailFast = failFast;
+    }
+
+    private static Map<SConcept, List<SNode>> byConceptAndSorted(Iterable<? extends SNode> nodes, Comparator<SNode> npc) {
+      LinkedHashMap<SConcept, List<SNode>> rv = new LinkedHashMap<>();
+      for (SNode n : nodes) {
+        rv.computeIfAbsent(n.getConcept(), (c) -> new ArrayList<>()).add(n);
+      }
+      rv.values().forEach(l -> l.sort(npc));
+      return rv;
+    }
+
+    public static List<Pair<SNode,SNode>> arrangeSameConceptAndName(Iterable<? extends SNode> first, Iterable<? extends SNode> second) {
+      final Comparator<SNode> npc = new SNodePresentationComparator();
+      final Map<SConcept, List<SNode>> m1 = byConceptAndSorted(first, npc);
+      final Map<SConcept, List<SNode>> m2 = byConceptAndSorted(second, npc);
+      List<Pair<SNode,SNode>> rv = new ArrayList<>();
+      for (SNode n : first) {
+        final boolean removed = m1.get(n.getConcept()).remove(n);
+        if (!removed) {
+          throw new IllegalStateException();
+        }
+        final List<SNode> counterpart = m2.get(n.getConcept());
+        if (counterpart == null) {
+          // shall I indicate it's a different scenario to 'nodes of this concept present, but none with same name)?
+          rv.add(new Pair<>(n, null));
+        } else {
+          final int i = Collections.binarySearch(counterpart, n, npc);
+          if (i >= 0) {
+            final SNode cn = counterpart.remove(i);
+            rv.add(new Pair<>(n, cn));
+          } else {
+            rv.add(new Pair<>(n, null));
+          }
+        }
+      }
+      for (SNode n : second) {
+        final boolean removed = m2.get(n.getConcept()).remove(n);
+        if (!removed) {
+          // already matched with some m1 node
+          continue;
+        }
+        final List<SNode> counterpart = m1.get(n.getConcept());
+        if (counterpart == null) {
+          rv.add(new Pair<>(null, n));
+        } else {
+          final int i = Collections.binarySearch(counterpart, n, npc);
+          if (i >= 0) {
+            assert false : "How come we iterated over all nodes in 'first' but there are still some left?!";
+            final SNode cn = counterpart.remove(i);
+            rv.add(new Pair<>(cn, n));
+          } else {
+            rv.add(new Pair<>(null, n));
+          }
+        }
+      }
+      final Predicate<List<SNode>> isNotEmpty = ((Predicate<List<SNode>>) List::isEmpty).negate();
+      if (m1.values().stream().anyMatch(isNotEmpty) || m2.values().stream().anyMatch(isNotEmpty)) {
+        throw new IllegalStateException();
+      }
+      return rv;
+    }
+
+    @Override
+    public boolean match(@NotNull SNode node1, @NotNull SNode node2, @NotNull SContainmentLink link, @NotNull BiPredicate<SNode, SNode> childMatcher) {
+      final List<Pair<SNode, SNode>> pairs = arrangeSameConceptAndName(node1.getChildren(link), node2.getChildren(link));
+      boolean match = true;
+      for (Pair<SNode, SNode> p : pairs) {
+        match &= childMatcher.test(p.o1, p.o2);
+        if (myFailFast && !match) {
+          return false;
+        }
+      }
+      return match;
     }
   }
 
