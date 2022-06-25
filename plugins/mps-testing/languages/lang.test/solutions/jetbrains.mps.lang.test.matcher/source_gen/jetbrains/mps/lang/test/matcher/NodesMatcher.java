@@ -5,9 +5,9 @@ package jetbrains.mps.lang.test.matcher;
 import java.util.Map;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.List;
-import java.util.HashMap;
 import java.util.Collections;
 import org.jetbrains.annotations.NotNull;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -20,6 +20,7 @@ import java.util.Objects;
 
 /**
  * XXX could add options to parameterize instance prior to diff. E.g. dumpDiff()/debugDiff to use in scenarios where diff().isEmpty() is used but it's handy to see true diff in case anything goes wrong
+ * FIXME quite similar to {@code jetbrains.mps.smodel.SNodeMatcher}
  */
 public final class NodesMatcher {
   /**
@@ -34,29 +35,6 @@ public final class NodesMatcher {
   private final Map<SNode, SNode> myMap;
   private final List<SNode> myFirst;
   private final List<SNode> mySecond;
-
-  /**
-   * 
-   * @deprecated use cons that takes matched nodes
-   */
-  @Deprecated
-  public NodesMatcher() {
-    myMap = new HashMap<SNode, SNode>();
-    myFirst = Collections.emptyList();
-    mySecond = Collections.emptyList();
-    // FIXME refactor to use instances instead of static method
-  }
-
-  /**
-   * 
-   * @deprecated use cons that takes matched nodes
-   */
-  @Deprecated
-  public NodesMatcher(Map<SNode, SNode> map) {
-    this.myMap = map;
-    myFirst = Collections.emptyList();
-    mySecond = Collections.emptyList();
-  }
 
   public NodesMatcher(SNode a, SNode b) {
     this(Collections.singletonList(a), Collections.singletonList(b));
@@ -122,48 +100,6 @@ public final class NodesMatcher {
     return ret;
   }
 
-  /**
-   * 
-   * @deprecated use instance method
-   */
-  @Deprecated
-  public static NodeDifference matchNodes(SNode a, SNode b) {
-    List<NodeDifference> diffs = new NodesMatcher(a, b).diff();
-    if (!(diffs.isEmpty())) {
-      return diffs.get(0);
-    } else {
-      return null;
-    }
-  }
-
-  /**
-   * 
-   * @deprecated use instance method
-   */
-  @Deprecated
-  public static ArrayList<NodeDifference> matchNodes(List<SNode> a, List<SNode> b) {
-    return new ArrayList<NodeDifference>(new NodesMatcher(a, b).diff(new HashMap<SNode, SNode>()));
-  }
-
-  /**
-   * 
-   * @deprecated use {@link jetbrains.mps.lang.test.matcher.NodesMatcher#diff() } instead
-   */
-  @Deprecated
-  public List<NodeDifference> match(List<SNode> a, List<SNode> b) {
-    List<NodeDifference> ret = new NodesMatcher(a, b).diff();
-    return (ret.isEmpty() ? null : ret);
-  }
-
-  /**
-   * 
-   * @deprecated use instance method instead
-   */
-  @Deprecated
-  public static ArrayList<NodeDifference> matchNodes(List<SNode> a, List<SNode> b, Map<SNode, SNode> map) {
-    return new ArrayList<NodeDifference>(new NodesMatcher(a, b).diff(map));
-  }
-
   private static void populateMap(SNode a, SNode b, Map<SNode, SNode> map) {
     if (!(a.getConcept().equals(b.getConcept()))) {
       return;
@@ -194,15 +130,6 @@ public final class NodesMatcher {
     MatcherImpl mi = new MatcherImpl(myMap);
     mi.match(a, b);
     return (mi.myDifferences.isEmpty() ? null : ((NodeDifference) mi.myDifferences.get(0)));
-  }
-
-  /**
-   * 
-   * @deprecated use instance method instead
-   */
-  @Deprecated
-  public static NodeDifference matchNodes(SNode a, SNode b, Map<SNode, SNode> map) {
-    return new NodesMatcher(map).match(a, b);
   }
 
   /*package*/ static class MatcherImpl {
