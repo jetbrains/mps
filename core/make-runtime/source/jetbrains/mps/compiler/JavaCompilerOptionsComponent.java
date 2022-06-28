@@ -16,7 +16,6 @@
 package jetbrains.mps.compiler;
 
 import jetbrains.mps.project.Project;
-import org.eclipse.jdt.internal.compiler.impl.CompilerOptions;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -68,12 +67,13 @@ public class JavaCompilerOptionsComponent {
   }
 
   public enum JavaVersion {
-    VERSION_1_6(CompilerOptions.VERSION_1_6),
-    VERSION_1_7(CompilerOptions.VERSION_1_7),
-    VERSION_1_8(CompilerOptions.VERSION_1_8),
-    VERSION_9(CompilerOptions.VERSION_9),
-    VERSION_10(CompilerOptions.VERSION_10),
-    VERSION_11(CompilerOptions.VERSION_11);
+    // arguments are inlined values of org.eclipse.jdt.internal.compiler.impl.CompilerOptions.VERSION_XXX
+    VERSION_1_6("1.6"),
+    VERSION_1_7("1.7"),
+    VERSION_1_8("1.8"),
+    VERSION_9("9"),
+    VERSION_10("10"),
+    VERSION_11("11");
 
     private final String myCompilerVersion;
 
