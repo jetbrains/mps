@@ -30,13 +30,15 @@ import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.SModelId.IntegerSModelId;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
-import jetbrains.mps.smodel.references.ImmatureReferencesTracker;
 import jetbrains.mps.util.containers.ConcurrentHashSet;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelReference;
+import org.jetbrains.mps.openapi.model.SNode;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
+import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -307,12 +309,10 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
     // to fire any events at all. It's not true now - we respect canFireEvents() for few SModelListener events only,
     // perhaps, worth respecting the flag for all modification events, in which case IRT here would make no sense.
 
-    private ImmatureReferencesTracker myRefsTracker = new ImmatureReferencesTracker();
     private int myBranchSerial = 0;
 
     private TransientSModelDescriptor(@NotNull SModelReference modelRef) {
       super(modelRef, new NullDataSource());
-      myRefsTracker.attach(this, false);
     }
 
     /*package*/ void setBranchSerial(int v) {
@@ -416,7 +416,6 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
 
     // unlike unload, doesn't not swap out model data
     private void dropModel() {
-      myRefsTracker.detach();
       if (mySModel != null) {
         LOG.debug("Dropped " + getReference());
         mySModel.dispose();
@@ -452,7 +451,17 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
     }
 
     public void makeRefsMature() {
-      myRefsTracker.makeMature();
+      for ( SNode n : SNodeUtil.getDescendants(getRootNodes())) {
+        for (SReference r : n.getReferences()) {
+          // don't want instanceof StaticReference to avoid mentioning exact class;
+          // OTOH, odd to have instanceof j.m.smodel.SReference as it's base implementation class for all references anyway.
+          // Perhaps, could move the method into API or get rid of this explicit stuff altogether.
+          ((jetbrains.mps.smodel.SReference) r).makeIndirect();
+          // XXX makeIndirect() doesn't force 'maturing' of references to hanging nodes (from models not in repository)
+          //     I wonder if transient model happen to have a reference to a checkpoint model, does it mean we fail to
+          //     serialize these? Is it an issue?
+        }
+      }
     }
 
     private SModelHeader getModelHeader() {

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,14 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.Consumer;
 
+/**
+ * @deprecated No uses in MPS; dubious approach overall.
+ *             Assumes detached models (not in a repo) unconditionally fire node change events (which is although true now,
+ *             but I'd like to change this).
+ *             FWIW, if tracking references during model modification is necessary, I'd rather focus on CommandContext
+ *             being available for transient models (M2M/Generation process).
+ */
+@Deprecated(since = "2022.2")
 public class ImmatureReferencesTracker {
   private SModel myModel = null;
   private SNodeChangeListenerAdapter myNodeListener = new MySNodeChangeListenerAdapter();
