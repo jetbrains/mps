@@ -12,6 +12,7 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
+import jetbrains.mps.baseLanguage.util.StubClassDiscovery;
 import jetbrains.mps.scope.Scope;
 import java.util.List;
 import jetbrains.mps.baseLanguage.scopes.MembersPopulatingContext;
@@ -50,7 +51,7 @@ public final class Interface__BehaviorDescriptor extends BaseBHDescriptor {
   private static final Logger LOG = Logger.getLogger(Interface__BehaviorDescriptor.class);
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
 
-  public static final SMethod<Boolean> isDescendant_checkLoops_id6dL7A1DpKoA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDescendant_checkLoops").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(7165541881557222950L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isDescendant_checkLoops_id6dL7A1DpKoA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDescendant_checkLoops").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(7165541881557222950L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(StubClassDiscovery.class, ""));
   public static final SMethod<Boolean> checkLoops_id3sXyOQUqKq5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("checkLoops").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(3980490811621705349L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
   public static final SMethod<String> getUnitName_id4pl5GY7LKmR = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getUnitName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5067982036267369911L).languageId(0xbfd948636cfe8bc3L, 0x9ded098bad6a4657L).build2();
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
@@ -66,20 +67,20 @@ public final class Interface__BehaviorDescriptor extends BaseBHDescriptor {
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
-  /*package*/ static boolean isDescendant_checkLoops_id6dL7A1DpKoA(@NotNull SNode __thisNode__, SNode nodeToCompare, Set<SNode> visited) {
+  /*package*/ static boolean isDescendant_checkLoops_id6dL7A1DpKoA(@NotNull SNode __thisNode__, SNode nodeToCompare, Set<SNode> visited, StubClassDiscovery scd) {
     if (SetSequence.fromSet(visited).contains(__thisNode__)) {
       if (LOG.isErrorLevel()) {
         LOG.error("circular hierarchy in interface " + INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(__thisNode__));
       }
       return false;
     }
-    if (((boolean) Classifier__BehaviorDescriptor.isSame_id4dzXPK1BpyE.invoke(__thisNode__, nodeToCompare))) {
+    if (scd.areTheSame(__thisNode__, nodeToCompare)) {
       return true;
     }
     SetSequence.fromSet(visited).addElement(__thisNode__);
     for (SNode extended : ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.extendedInterface$PDVO))) {
       Set<SNode> classifiers = SetSequence.fromSetWithValues(new HashSet<SNode>(), visited);
-      if ((boolean) Classifier__BehaviorDescriptor.isDescendant_checkLoops_id6dL7A1DpKoA.invoke(SLinkOperations.getTarget(extended, LINKS.classifier$cxMr), nodeToCompare, classifiers)) {
+      if ((boolean) Classifier__BehaviorDescriptor.isDescendant_checkLoops_id6dL7A1DpKoA.invoke(SLinkOperations.getTarget(extended, LINKS.classifier$cxMr), nodeToCompare, classifiers, scd)) {
         return true;
       }
     }
@@ -187,7 +188,7 @@ public final class Interface__BehaviorDescriptor extends BaseBHDescriptor {
     }
     switch (methodIndex) {
       case 0:
-        return (T) ((Boolean) isDescendant_checkLoops_id6dL7A1DpKoA(node, (SNode) parameters[0], (Set<SNode>) parameters[1]));
+        return (T) ((Boolean) isDescendant_checkLoops_id6dL7A1DpKoA(node, (SNode) parameters[0], (Set<SNode>) parameters[1], (StubClassDiscovery) parameters[2]));
       case 1:
         return (T) ((Boolean) checkLoops_id3sXyOQUqKq5(node, (Set<SNode>) parameters[0]));
       case 2:

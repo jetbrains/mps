@@ -182,7 +182,21 @@ public final class StubClassDiscovery {
     return result;
   }
 
-
+  public boolean areTheSame(SNode c1, SNode c2) {
+    if (c1 == c2) {
+      return true;
+    }
+    if (!(Objects.equals(SNodeOperations.getConcept(c1), SNodeOperations.getConcept(c2)))) {
+      // this also rules out either is null
+      return false;
+    }
+    // Classifier.isSame() logic which is StubClassDiscovery-related
+    // XXX might be worth refactoring as we can check where c1 and c2 come from, and do not collect 
+    //    Node/Stub classifiers unless necessary. For now, just copied as is.
+    List<SNode> firstMirrors = findCompatibleClassifiers(c1);
+    List<SNode> secondMirrors = findCompatibleClassifiers(c2);
+    return ListSequence.fromList(firstMirrors).contains(c2) || ListSequence.fromList(secondMirrors).contains(c1);
+  }
 
   private static JavaModuleFacet check_h9urwj_a0a0j(SModule checkedDotOperand) {
     if (null != checkedDotOperand) {

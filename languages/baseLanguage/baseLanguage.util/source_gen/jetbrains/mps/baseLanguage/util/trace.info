@@ -142,52 +142,46 @@
   </root>
   <root nodeRef="r:2a308ea0-c7e3-4fa5-a624-ad74ee5cfab5(jetbrains.mps.baseLanguage.util)/8733037826900131627">
     <file name="BaseLanguageEnvironmentHelper.java">
-      <node id="551979864671269496" at="15,64,16,67" concept="6" />
-      <node id="551979864671247930" at="18,66,19,84" concept="6" />
-      <node id="7125496988223412372" at="27,66,28,74" concept="6" />
-      <node id="551979864671247919" at="32,36,33,50" concept="6" />
-      <node id="551979864671247919" at="34,5,35,16" concept="6" />
-      <node id="551979864671247920" at="38,36,39,63" concept="6" />
-      <node id="551979864671247920" at="40,5,41,16" concept="6" />
-      <node id="551979864671247921" at="44,36,45,43" concept="6" />
-      <node id="551979864671247921" at="46,5,47,16" concept="6" />
-      <node id="348420060660484875" at="15,0,18,0" concept="4" trace="getLanguageLevel#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/project/facets/JavaLanguageLevel;" />
-      <node id="551979864671247912" at="18,0,21,0" concept="4" trace="getLanguageLevel#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/project/facets/JavaLanguageLevel;" />
-      <node id="551979864671247919" at="31,89,34,5" concept="3" />
-      <node id="551979864671247920" at="37,80,40,5" concept="3" />
-      <node id="551979864671247921" at="43,72,46,5" concept="3" />
-      <node id="3266045160146017298" at="26,0,30,0" concept="4" trace="findCompatibleClassifiers#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/util/List;" />
-      <node id="551979864671247919" at="31,0,37,0" concept="9" trace="check_sif9ng_a0a2#(Ljetbrains/mps/project/facets/JavaModuleFacet;)Ljetbrains/mps/project/facets/JavaLanguageLevel;" />
-      <node id="551979864671247920" at="37,0,43,0" concept="9" trace="check_sif9ng_a0a0c#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljetbrains/mps/project/facets/JavaModuleFacet;" />
-      <node id="551979864671247921" at="43,0,49,0" concept="9" trace="check_sif9ng_a0a0a2#(Lorg/jetbrains/mps/openapi/model/SModel;)Lorg/jetbrains/mps/openapi/module/SModule;" />
-      <scope id="348420060660484879" at="15,64,16,67" />
-      <scope id="551979864671247915" at="18,66,19,84" />
-      <scope id="3266045160146017303" at="27,66,28,74" />
-      <scope id="551979864671247919" at="32,36,33,50" />
-      <scope id="551979864671247920" at="38,36,39,63" />
-      <scope id="551979864671247921" at="44,36,45,43" />
-      <scope id="348420060660484875" at="15,0,18,0">
+      <node id="551979864671269496" at="14,64,15,67" concept="6" />
+      <node id="551979864671247930" at="17,66,18,84" concept="6" />
+      <node id="551979864671247919" at="21,36,22,50" concept="6" />
+      <node id="551979864671247919" at="23,5,24,16" concept="6" />
+      <node id="551979864671247920" at="27,36,28,63" concept="6" />
+      <node id="551979864671247920" at="29,5,30,16" concept="6" />
+      <node id="551979864671247921" at="33,36,34,43" concept="6" />
+      <node id="551979864671247921" at="35,5,36,16" concept="6" />
+      <node id="348420060660484875" at="14,0,17,0" concept="4" trace="getLanguageLevel#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/project/facets/JavaLanguageLevel;" />
+      <node id="551979864671247912" at="17,0,20,0" concept="4" trace="getLanguageLevel#(Lorg/jetbrains/mps/openapi/model/SModel;)Ljetbrains/mps/project/facets/JavaLanguageLevel;" />
+      <node id="551979864671247919" at="20,89,23,5" concept="3" />
+      <node id="551979864671247920" at="26,80,29,5" concept="3" />
+      <node id="551979864671247921" at="32,72,35,5" concept="3" />
+      <node id="551979864671247919" at="20,0,26,0" concept="9" trace="check_sif9ng_a0a2#(Ljetbrains/mps/project/facets/JavaModuleFacet;)Ljetbrains/mps/project/facets/JavaLanguageLevel;" />
+      <node id="551979864671247920" at="26,0,32,0" concept="9" trace="check_sif9ng_a0a0c#(Lorg/jetbrains/mps/openapi/module/SModule;)Ljetbrains/mps/project/facets/JavaModuleFacet;" />
+      <node id="551979864671247921" at="32,0,38,0" concept="9" trace="check_sif9ng_a0a0a2#(Lorg/jetbrains/mps/openapi/model/SModel;)Lorg/jetbrains/mps/openapi/module/SModule;" />
+      <scope id="348420060660484879" at="14,64,15,67" />
+      <scope id="551979864671247915" at="17,66,18,84" />
+      <scope id="551979864671247919" at="21,36,22,50" />
+      <scope id="551979864671247920" at="27,36,28,63" />
+      <scope id="551979864671247921" at="33,36,34,43" />
+      <scope id="348420060660484875" at="14,0,17,0">
         <var name="contextNode" id="348420060660526960" />
       </scope>
-      <scope id="551979864671247912" at="18,0,21,0">
+      <scope id="551979864671247912" at="17,0,20,0">
         <var name="contextModel" id="551979864671247937" />
       </scope>
-      <scope id="3266045160146017298" at="26,0,30,0">
-        <var name="classifier" id="3266045160146017299" />
-      </scope>
-      <scope id="551979864671247919" at="31,89,35,16" />
-      <scope id="551979864671247920" at="37,80,41,16" />
-      <scope id="551979864671247921" at="43,72,47,16" />
-      <scope id="551979864671247919" at="31,0,37,0">
+      <scope id="551979864671247919" at="20,89,24,16" />
+      <scope id="551979864671247920" at="26,80,30,16" />
+      <scope id="551979864671247921" at="32,72,36,16" />
+      <scope id="551979864671247919" at="20,0,26,0">
         <var name="checkedDotOperand" id="551979864671247919" />
       </scope>
-      <scope id="551979864671247920" at="37,0,43,0">
+      <scope id="551979864671247920" at="26,0,32,0">
         <var name="checkedDotOperand" id="551979864671247920" />
       </scope>
-      <scope id="551979864671247921" at="43,0,49,0">
+      <scope id="551979864671247921" at="32,0,38,0">
         <var name="checkedDotOperand" id="551979864671247921" />
       </scope>
-      <unit id="8733037826900131627" at="13,0,50,0" name="jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper" />
+      <unit id="8733037826900131627" at="12,0,39,0" name="jetbrains.mps.baseLanguage.util.BaseLanguageEnvironmentHelper" />
     </file>
   </root>
 </debug-info>

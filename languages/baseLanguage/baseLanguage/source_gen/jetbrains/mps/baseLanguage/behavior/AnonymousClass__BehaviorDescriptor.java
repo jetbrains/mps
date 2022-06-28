@@ -13,6 +13,7 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
+import jetbrains.mps.baseLanguage.util.StubClassDiscovery;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.baseLanguage.scopes.MembersPopulatingContext;
 import java.util.Map;
@@ -56,7 +57,7 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<SNode> getSuperclass_idi3H_lLu = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getSuperclass").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1240936569950L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Iterable<SNode>> getAvailableMethodDeclarations_id50EF2fWdwEN = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getAvailableMethodDeclarations").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5776618742611315379L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter(String.class, ""));
   /*package*/ static final SMethod<Integer> getIndexInContainingClass_id3BacVlMg8ub = new SMethodBuilder<Integer>(new SJavaCompoundTypeImpl(Integer.TYPE)).name("getIndexInContainingClass").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(4164197659856373643L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
-  public static final SMethod<Boolean> isDescendant_checkLoops_id6dL7A1DpKoA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDescendant_checkLoops").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(7165541881557222950L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isDescendant_checkLoops_id6dL7A1DpKoA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDescendant_checkLoops").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(7165541881557222950L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(StubClassDiscovery.class, ""));
   public static final SMethod<String> getNestedName_id7q4lzBFjvIX = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getNestedName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8540045600162184125L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<String> getFqName_idhEwIO9y = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getFqName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877404258L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
   /*package*/ static final SMethod<String> getAnonymousClassPresentation_id6xEo7wt3U0_ = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getAnonymousClassPresentation").modifiers(0, AccessPrivileges.PRIVATE).concept(CONCEPT).baseMethodId(7523932196475740197L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
@@ -123,7 +124,7 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
       }
     }).indexOf(__thisNode__) + 1;
   }
-  /*package*/ static boolean isDescendant_checkLoops_id6dL7A1DpKoA(@NotNull SNode __thisNode__, SNode nodeToCompare, Set<SNode> visited) {
+  /*package*/ static boolean isDescendant_checkLoops_id6dL7A1DpKoA(@NotNull SNode __thisNode__, SNode nodeToCompare, Set<SNode> visited, StubClassDiscovery scd) {
     if (SNodeOperations.is(nodeToCompare, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))) {
       return true;
     }
@@ -133,10 +134,10 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
       }
       return false;
     }
-    if (((boolean) Classifier__BehaviorDescriptor.isSame_id4dzXPK1BpyE.invoke(__thisNode__, nodeToCompare))) {
+    if (scd.areTheSame(__thisNode__, nodeToCompare)) {
       return true;
     }
-    return (boolean) Classifier__BehaviorDescriptor.isDescendant_checkLoops_id6dL7A1DpKoA.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$q_Y$), nodeToCompare, visited);
+    return (boolean) Classifier__BehaviorDescriptor.isDescendant_checkLoops_id6dL7A1DpKoA.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.classifier$q_Y$), nodeToCompare, visited, scd);
   }
   /*package*/ static String getNestedName_id7q4lzBFjvIX(@NotNull SNode __thisNode__) {
     SNode containingClassifier = SNodeOperations.getNodeAncestor(__thisNode__, CONCEPTS.Classifier$Ix, false, false);
@@ -267,7 +268,7 @@ public final class AnonymousClass__BehaviorDescriptor extends BaseBHDescriptor {
       case 5:
         return (T) ((Integer) getIndexInContainingClass_id3BacVlMg8ub(node));
       case 6:
-        return (T) ((Boolean) isDescendant_checkLoops_id6dL7A1DpKoA(node, (SNode) parameters[0], (Set<SNode>) parameters[1]));
+        return (T) ((Boolean) isDescendant_checkLoops_id6dL7A1DpKoA(node, (SNode) parameters[0], (Set<SNode>) parameters[1], (StubClassDiscovery) parameters[2]));
       case 7:
         return (T) ((String) getNestedName_id7q4lzBFjvIX(node));
       case 8:

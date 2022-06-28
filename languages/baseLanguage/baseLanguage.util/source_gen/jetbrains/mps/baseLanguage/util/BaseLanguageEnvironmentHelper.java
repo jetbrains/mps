@@ -6,7 +6,6 @@ import jetbrains.mps.project.facets.JavaLanguageLevel;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.model.SModel;
-import java.util.List;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import org.jetbrains.mps.openapi.module.SModule;
 
@@ -18,16 +17,6 @@ public final class BaseLanguageEnvironmentHelper {
   public JavaLanguageLevel getLanguageLevel(SModel contextModel) {
     return check_sif9ng_a0a2(check_sif9ng_a0a0c(check_sif9ng_a0a0a2(contextModel)));
   }
-
-  /**
-   * 
-   * @deprecated use StubClassDiscovery
-   */
-  @Deprecated(forRemoval = true, since = "2021.1")
-  public List<SNode> findCompatibleClassifiers(SNode classifier) {
-    return new StubClassDiscovery().findCompatibleClassifiers(classifier);
-  }
-
   private static JavaLanguageLevel check_sif9ng_a0a2(JavaModuleFacet checkedDotOperand) {
     if (null != checkedDotOperand) {
       return checkedDotOperand.getLanguageLevel();

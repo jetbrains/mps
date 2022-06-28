@@ -14,6 +14,7 @@ import jetbrains.mps.core.aspects.behaviour.SJavaCompoundTypeImpl;
 import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.smodel.runtime.IconResource;
 import java.util.Set;
+import jetbrains.mps.baseLanguage.util.StubClassDiscovery;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.baseLanguage.scopes.MembersPopulatingContext;
 import java.util.Arrays;
@@ -56,7 +57,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
 
   public static final SMethod<List<SNode>> getExtendedClassifierTypes_id1UeCwxlWKny = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getExtendedClassifierTypes").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2201875424516179426L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<List<IconResource>> getIconMarks_id6TtJ6IUkhQJ = new SMethodBuilder<List<IconResource>>(new SJavaCompoundTypeImpl((Class<List<IconResource>>) ((Class) Object.class))).name("getIconMarks").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7952719687879564719L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2();
-  public static final SMethod<Boolean> isDescendant_checkLoops_id6dL7A1DpKoA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDescendant_checkLoops").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(7165541881557222950L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isDescendant_checkLoops_id6dL7A1DpKoA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDescendant_checkLoops").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(7165541881557222950L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(StubClassDiscovery.class, ""));
   public static final SMethod<Boolean> checkLoops_id3sXyOQUqKq5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("checkLoops").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(3980490811621705349L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
   public static final SMethod<SNode> getMainMethod_idhEwIClG = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getMainMethod").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1213877355884L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> hasStaticMemebers_idhFq8xqE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("hasStaticMemebers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1214840444586L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
@@ -110,7 +111,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
     }
     return markIcons;
   }
-  /*package*/ static boolean isDescendant_checkLoops_id6dL7A1DpKoA(@NotNull SNode __thisNode__, final SNode nodeToCompare, Set<SNode> visited) {
+  /*package*/ static boolean isDescendant_checkLoops_id6dL7A1DpKoA(@NotNull SNode __thisNode__, final SNode nodeToCompare, Set<SNode> visited, StubClassDiscovery scd) {
     if (SNodeOperations.is(nodeToCompare, new SNodePointer("6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)", "~Object"))) {
       return true;
     }
@@ -120,14 +121,14 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
       }
       return false;
     }
-    if (((boolean) Classifier__BehaviorDescriptor.isSame_id4dzXPK1BpyE.invoke(__thisNode__, nodeToCompare))) {
+    if (scd.areTheSame(__thisNode__, nodeToCompare)) {
       return true;
     }
     if (SLinkOperations.getTarget(__thisNode__, LINKS.superclass$Mp9$) == null && ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.implementedInterface$rujG)).isEmpty()) {
       return false;
     }
     SetSequence.fromSet(visited).addElement(__thisNode__);
-    if ((boolean) Classifier__BehaviorDescriptor.isDescendant_checkLoops_id6dL7A1DpKoA.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), nodeToCompare, visited)) {
+    if ((boolean) Classifier__BehaviorDescriptor.isDescendant_checkLoops_id6dL7A1DpKoA.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), nodeToCompare, visited, scd)) {
       return true;
     }
     if (SNodeOperations.isInstanceOf(nodeToCompare, CONCEPTS.Interface$db)) {
@@ -357,7 +358,7 @@ public final class ClassConcept__BehaviorDescriptor extends BaseBHDescriptor {
       case 1:
         return (T) ((List<IconResource>) getIconMarks_id6TtJ6IUkhQJ(node));
       case 2:
-        return (T) ((Boolean) isDescendant_checkLoops_id6dL7A1DpKoA(node, (SNode) parameters[0], (Set<SNode>) parameters[1]));
+        return (T) ((Boolean) isDescendant_checkLoops_id6dL7A1DpKoA(node, (SNode) parameters[0], (Set<SNode>) parameters[1], (StubClassDiscovery) parameters[2]));
       case 3:
         return (T) ((Boolean) checkLoops_id3sXyOQUqKq5(node, (Set<SNode>) parameters[0]));
       case 4:

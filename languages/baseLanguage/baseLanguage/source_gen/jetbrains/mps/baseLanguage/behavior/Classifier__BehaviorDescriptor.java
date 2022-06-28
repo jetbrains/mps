@@ -14,6 +14,7 @@ import jetbrains.mps.core.aspects.behaviour.AccessPrivileges;
 import jetbrains.mps.scope.Scope;
 import org.jetbrains.mps.openapi.model.SNode;
 import java.util.Set;
+import jetbrains.mps.baseLanguage.util.StubClassDiscovery;
 import jetbrains.mps.baseLanguage.scopes.MembersPopulatingContext;
 import java.util.Map;
 import java.util.Arrays;
@@ -43,7 +44,6 @@ import jetbrains.mps.internal.collections.runtime.QueueSequence;
 import java.util.LinkedList;
 import java.util.Objects;
 import jetbrains.mps.typechecking.TypecheckingFacade;
-import jetbrains.mps.baseLanguage.util.StubClassDiscovery;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor;
 import jetbrains.mps.baseLanguage.scopes.ClassifierResolveUtils;
@@ -96,7 +96,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Boolean> isInner_idsWroEc0xXl = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isInner").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(521412098689998677L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> checkLoops_id3sXyOQUqKq0 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("checkLoops").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3980490811621705344L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
   public static final SMethod<Boolean> isDescendant_id6dL7A1DpKo1 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDescendant").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7165541881557222913L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
-  public static final SMethod<Boolean> isDescendant_checkLoops_id6dL7A1DpKoA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDescendant_checkLoops").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(7165541881557222950L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
+  public static final SMethod<Boolean> isDescendant_checkLoops_id6dL7A1DpKoA = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isDescendant_checkLoops").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(7165541881557222950L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(StubClassDiscovery.class, ""));
   public static final SMethod<Boolean> isSame_id4dzXPK1BpyE = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isSame").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(4855996797771684010L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> checkLoops_id3sXyOQUqKq5 = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("checkLoops").modifiers(8, AccessPrivileges.PROTECTED).concept(CONCEPT).baseMethodId(3980490811621705349L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""));
   public static final SMethod<Boolean> canInstantiateIn_id610WLfjPjne = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canInstantiateIn").modifiers(0, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6935810692634457550L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
@@ -453,9 +453,9 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     return ((boolean) Classifier__BehaviorDescriptor.checkLoops_id3sXyOQUqKq5.invoke(__thisNode__, SetSequence.fromSet(new HashSet<SNode>())));
   }
   /*package*/ static boolean isDescendant_id6dL7A1DpKo1(@NotNull SNode __thisNode__, SNode nodeToCompare) {
-    return ((boolean) Classifier__BehaviorDescriptor.isDescendant_checkLoops_id6dL7A1DpKoA.invoke(__thisNode__, nodeToCompare, SetSequence.fromSet(new HashSet<SNode>())));
+    return ((boolean) Classifier__BehaviorDescriptor.isDescendant_checkLoops_id6dL7A1DpKoA.invoke(__thisNode__, nodeToCompare, SetSequence.fromSet(new HashSet<SNode>()), new StubClassDiscovery()));
   }
-  /*package*/ static boolean isDescendant_checkLoops_id6dL7A1DpKoA(@NotNull SNode __thisNode__, SNode nodeToCompare, Set<SNode> visited) {
+  /*package*/ static boolean isDescendant_checkLoops_id6dL7A1DpKoA(@NotNull SNode __thisNode__, SNode nodeToCompare, Set<SNode> visited, StubClassDiscovery scd) {
     return false;
   }
   /*package*/ static boolean isSame_id4dzXPK1BpyE(@NotNull SNode __thisNode__, SNode that) {
@@ -465,10 +465,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
     if (!(Objects.equals(SNodeOperations.getConcept(__thisNode__), SNodeOperations.getConcept(that)))) {
       return false;
     }
-    StubClassDiscovery scd = new StubClassDiscovery();
-    List<SNode> thisMirrors = scd.findCompatibleClassifiers(__thisNode__);
-    List<SNode> thatMirrors = scd.findCompatibleClassifiers(that);
-    return ListSequence.fromList(thisMirrors).contains(that) || ListSequence.fromList(thatMirrors).contains(__thisNode__) || Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(__thisNode__), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(that));
+    return Objects.equals(INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(__thisNode__), INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(that)) || new StubClassDiscovery().areTheSame(__thisNode__, that);
   }
   /*package*/ static boolean checkLoops_id3sXyOQUqKq5(@NotNull SNode __thisNode__, Set<SNode> visited) {
     return false;
@@ -855,7 +852,7 @@ public final class Classifier__BehaviorDescriptor extends BaseBHDescriptor {
       case 25:
         return (T) ((Boolean) isDescendant_id6dL7A1DpKo1(node, (SNode) parameters[0]));
       case 26:
-        return (T) ((Boolean) isDescendant_checkLoops_id6dL7A1DpKoA(node, (SNode) parameters[0], (Set<SNode>) parameters[1]));
+        return (T) ((Boolean) isDescendant_checkLoops_id6dL7A1DpKoA(node, (SNode) parameters[0], (Set<SNode>) parameters[1], (StubClassDiscovery) parameters[2]));
       case 27:
         return (T) ((Boolean) isSame_id4dzXPK1BpyE(node, (SNode) parameters[0]));
       case 28:
