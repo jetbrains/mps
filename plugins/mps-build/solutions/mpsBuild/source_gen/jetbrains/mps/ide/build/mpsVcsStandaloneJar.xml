@@ -122,9 +122,9 @@
         <fileset file="${artifacts.mpsVcsPlatform}/lib/vcs-core.jar" />
         <fileset file="${artifacts.mpsVcsPlatform}/lib/vcs-platform.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset dir="${artifacts.IDEA}/plugins/git4idea/lib" includes="*.jar" />
         <fileset dir="${artifacts.IDEA}/plugins/svn4idea/lib" includes="*.jar" />

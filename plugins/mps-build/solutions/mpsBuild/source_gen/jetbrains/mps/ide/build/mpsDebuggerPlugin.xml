@@ -1657,9 +1657,9 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-icons.jar" />
         <fileset file="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -1704,9 +1704,9 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-icons.jar" />
         <fileset file="${artifacts.mpsWorkbench}/lib/mps-workbench.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -1756,9 +1756,9 @@
         <pathelement path="${build.tmp}/java/out/debugger-api" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-persistence.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <path refid="path.jdk.classpath" />
       </classpath>
@@ -1791,13 +1791,13 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-messages-for-rules.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-closures.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-collections.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-tuples.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-references.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-messaging.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-runtime.jar" />
@@ -1861,13 +1861,13 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-messages-for-rules.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-closures.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-collections.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-tuples.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-references.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-messaging.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-runtime.jar" />
@@ -1922,13 +1922,13 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-messages-for-rules.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-closures.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-collections.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-tuples.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-references.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-messaging.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-runtime.jar" />
@@ -2000,9 +2000,9 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-persistence.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-project-check.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.analyzers.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
@@ -2067,9 +2067,9 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-project-check.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.debugger.api.lang" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
@@ -2106,13 +2106,13 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-messages-for-rules.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-behavior-runtime.jar" />
+        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-closures.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-collections.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-logging.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-tuples.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-references.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-messaging.jar" />
-        <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-api.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-editor-runtime.jar" />
@@ -2185,9 +2185,9 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-textgen.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.debugger.java.evaluation" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.analyzers.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
@@ -2250,9 +2250,9 @@
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.debugger.java.customViewers" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.debugger.java.evaluation" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />
@@ -2310,9 +2310,9 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-project-check.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-textgen.jar" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/runtimes/jetbrains.mps.analyzers.runtime.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
@@ -2374,9 +2374,9 @@
         <fileset file="${artifacts.mpsBootstrapCore}/lib/mps-textgen.jar" />
         <pathelement path="${build.tmp}/java/out/jetbrains.mps.debugger.java.evaluation" />
         <fileset file="${artifacts.IDEA}/lib/annotations.jar" />
+        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
         <fileset dir="${artifacts.IDEA}/lib" includes="*.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mpsBootstrapCore}/languages/baseLanguage/jetbrains.mps.baseLanguage.logging.runtime.jar" />

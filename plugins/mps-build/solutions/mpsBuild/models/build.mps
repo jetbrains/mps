@@ -1215,6 +1215,9 @@
         <property role="1Sh$E4" value="true" />
         <ref role="nCB5Y" node="1FaKCGJSzEy" resolve="mps-kernel" />
       </node>
+      <node concept="2sjeV3" id="5k$na7$gE8f" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbePt8" resolve="org.jdom" />
+      </node>
     </node>
     <node concept="398b33" id="4LD16aJPe8Y" role="3989C9">
       <property role="TrG5h" value="mps-editorlang-runtime" />
@@ -1280,6 +1283,9 @@
       </node>
       <node concept="nCB5N" id="7G8F81M63Rs" role="nCB5Z">
         <ref role="nCB5Y" node="3cAdGiIRUkj" resolve="mps-editor-api" />
+      </node>
+      <node concept="2sjeV3" id="5k$na7$gEA8" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbePt8" resolve="org.jdom" />
       </node>
     </node>
     <node concept="398b33" id="1nB28rXacP" role="3989C9">
@@ -3770,6 +3776,10 @@
               </node>
             </node>
           </node>
+        </node>
+        <node concept="1E1SXE" id="6Fsijxbfdct" role="3bR37C">
+          <property role="1E1SXH" value="true" />
+          <ref role="1E1SXG" node="5d$B_bnZPNh" resolve="mps-boot-util" />
         </node>
         <node concept="1E1SXE" id="6iXh2SsYGtr" role="3bR37C">
           <property role="1E1SXH" value="true" />
@@ -49536,6 +49546,12 @@
       <node concept="2sjeV3" id="6NgXkpBaBt9" role="nCB5Z">
         <property role="2a2d0E" value="false" />
         <ref role="2sjeV2" node="1FaKCGJSzMS" resolve="idea-ant" />
+      </node>
+      <node concept="2sjeV3" id="5k$na7$gDKb" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbeQ5U" resolve="org.apache.log4j" />
+      </node>
+      <node concept="2sjeV3" id="5k$na7$gDKn" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbePt8" resolve="org.jdom" />
       </node>
     </node>
     <node concept="398b33" id="5Lo0z0qFWkX" role="3989C9">

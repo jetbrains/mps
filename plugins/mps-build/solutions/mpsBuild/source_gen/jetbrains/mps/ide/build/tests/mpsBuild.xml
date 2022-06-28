@@ -328,6 +328,7 @@
         <fileset file="${artifacts.mps}/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mps}/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mps}/lib/mps-behavior-runtime.jar" />
+        <fileset file="${artifacts.mps}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mps}/lib/mps-closures.jar" />
         <fileset file="${artifacts.mps}/lib/mps-collections.jar" />
         <fileset file="${artifacts.mps}/lib/mps-openapi.jar" />
@@ -335,7 +336,6 @@
         <fileset file="${artifacts.mps}/lib/mps-tuples.jar" />
         <fileset file="${artifacts.mps}/lib/mps-references.jar" />
         <fileset file="${artifacts.mps}/lib/mps-messaging.jar" />
-        <fileset file="${artifacts.mps}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mps}/lib/mps-context.jar" />
         <fileset file="${artifacts.mps}/lib/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mps}/lib/mps-editor.jar" />
@@ -353,8 +353,6 @@
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/app.jar" />
-        <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj/eclipse.jar" />
         <fileset file="${artifacts.mps}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mps}/languages/baseLanguage/jetbrains.mps.baseLanguage.classifiers.jar" />
         <fileset file="${artifacts.mps}/languages/baseLanguage/jetbrains.mps.baseLanguage.scopes.jar" />
@@ -388,6 +386,7 @@
         <fileset file="${artifacts.mps}/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mps}/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mps}/lib/mps-behavior-runtime.jar" />
+        <fileset file="${artifacts.mps}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mps}/lib/mps-closures.jar" />
         <fileset file="${artifacts.mps}/lib/mps-collections.jar" />
         <fileset file="${artifacts.mps}/lib/mps-openapi.jar" />
@@ -395,7 +394,6 @@
         <fileset file="${artifacts.mps}/lib/mps-tuples.jar" />
         <fileset file="${artifacts.mps}/lib/mps-references.jar" />
         <fileset file="${artifacts.mps}/lib/mps-messaging.jar" />
-        <fileset file="${artifacts.mps}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mps}/lib/mps-context.jar" />
         <fileset file="${artifacts.mps}/lib/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mps}/lib/mps-editor.jar" />
@@ -413,8 +411,6 @@
         <fileset file="${artifacts.IDEA}/lib/util.jar" />
         <fileset file="${artifacts.IDEA}/lib/util_rt.jar" />
         <fileset file="${artifacts.IDEA}/lib/3rd-party-rt.jar" />
-        <fileset file="${artifacts.IDEA}/lib/app.jar" />
-        <fileset file="${artifacts.IDEA}/plugins/java/lib/ecj/eclipse.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-execution-configurations/languages/mps-execution-configurations/jetbrains.mps.ant.execution.jar" />
         <fileset file="${artifacts.mps}/languages/baseLanguage/jetbrains.mps.baseLanguage.jar" />
         <fileset file="${artifacts.mps}/languages/baseLanguage/jetbrains.mps.baseLanguage.classifiers.jar" />

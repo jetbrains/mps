@@ -289,6 +289,7 @@
         <fileset file="${artifacts.mps}/lib/mps-annotations.jar" />
         <fileset file="${artifacts.mps}/lib/mps-behavior-api.jar" />
         <fileset file="${artifacts.mps}/lib/mps-behavior-runtime.jar" />
+        <fileset file="${artifacts.mps}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mps}/lib/mps-closures.jar" />
         <fileset file="${artifacts.mps}/lib/mps-collections.jar" />
         <fileset file="${artifacts.mps}/lib/mps-environment.jar" />
@@ -296,7 +297,6 @@
         <fileset file="${artifacts.mps}/lib/mps-logging.jar" />
         <fileset file="${artifacts.mps}/lib/mps-tuples.jar" />
         <fileset file="${artifacts.mps}/lib/mps-messaging.jar" />
-        <fileset file="${artifacts.mps}/lib/mps-boot-util.jar" />
         <fileset file="${artifacts.mps}/lib/mps-context.jar" />
         <fileset file="${artifacts.mps}/lib/mps-constraints-runtime.jar" />
         <fileset file="${artifacts.mps}/lib/mps-persistence.jar" />
@@ -306,8 +306,6 @@
         <fileset file="${artifacts.mps}/lib/util.jar" />
         <fileset file="${artifacts.mps}/lib/util_rt.jar" />
         <fileset file="${artifacts.mps}/lib/3rd-party-rt.jar" />
-        <fileset file="${artifacts.mps}/lib/app.jar" />
-        <fileset file="${artifacts.mps}/lib/eclipse.jar" />
       </classpath>
     </javac>
   </target>
