@@ -73,7 +73,7 @@ public class DataFlowUtil {
       if (checkReturns) {
         checkReturns(typeCheckingContext, program);
       }
-      program.enhanceTryFinallyBlocksWithJumpsForUncaughtExceptions();
+      // TODO remove the call
       checkUninitializedReads(typeCheckingContext, program);
       checkUnusedAssignments(typeCheckingContext, program);
     } catch (DataflowBuilderException e) {

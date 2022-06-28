@@ -41,8 +41,9 @@ public final class TryUniversalStatement__BehaviorDescriptor extends BaseBHDescr
   public static final SMethod<Scope> getScope_id52_Geb4QDV$ = new SMethodBuilder<Scope>(new SJavaCompoundTypeImpl(Scope.class)).name("getScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5811245382203252452L).languageId(0x9b92103b95ca8c0cL, 0xceab519525ea4f22L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Void> collectUncaughtMethodThrowables_id4Gt7ANIVH8f = new SMethodBuilder<Void>(new SJavaCompoundTypeImpl(Void.class)).name("collectUncaughtMethodThrowables").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(5412515780383134223L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2(SMethodBuilder.createJavaParameter((Class<Set<SNode>>) ((Class) Object.class), ""), SMethodBuilder.createJavaParameter(Boolean.TYPE, ""));
   public static final SMethod<List<SNode>> getCatchClauses_id3eptmOG0XgA = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getCatchClauses").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(3718132079121388582L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
+  public static final SMethod<SNode> getFinallyClause_id7LX8cXzsyj1 = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getFinallyClause").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8970362107890640065L).languageId(0xa443f952ceaf5816L, 0xf3061a5392264cc5L).build2();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getCatchClauses_id3eptmOG0XgA);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getScope_id52_Geb4QDV$, collectUncaughtMethodThrowables_id4Gt7ANIVH8f, getCatchClauses_id3eptmOG0XgA, getFinallyClause_id7LX8cXzsyj1);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -91,6 +92,9 @@ public final class TryUniversalStatement__BehaviorDescriptor extends BaseBHDescr
   /*package*/ static List<SNode> getCatchClauses_id3eptmOG0XgA(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.catchClause$Q4F);
   }
+  /*package*/ static SNode getFinallyClause_id7LX8cXzsyj1(@NotNull SNode __thisNode__) {
+    return SLinkOperations.getTarget(__thisNode__, LINKS.finallyClause$KUl);
+  }
 
   /*package*/ TryUniversalStatement__BehaviorDescriptor() {
   }
@@ -114,6 +118,8 @@ public final class TryUniversalStatement__BehaviorDescriptor extends BaseBHDescr
         return null;
       case 2:
         return (T) ((List<SNode>) getCatchClauses_id3eptmOG0XgA(node));
+      case 3:
+        return (T) ((SNode) getFinallyClause_id7LX8cXzsyj1(node));
       default:
         throw new BHMethodNotFoundException(this, method);
     }

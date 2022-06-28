@@ -22,6 +22,13 @@ public class TryUniversalStatement_DataFlow extends DataFlowBuilder {
       for (SNode c : SLinkOperations.getChildren(_context.getNode(), LINKS.catchClause$Q4F)) {
         _context.getBuilder().emitIfJump(_context.getBuilder().before(c), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/5252852921988984471");
       }
+      if ((SLinkOperations.getTarget(_context.getNode(), LINKS.finallyClause$KUl) != null)) {
+        _context.getBuilder().emitMayBeUnreachable(new Runnable() {
+          public void run() {
+            _context.getBuilder().emitIfJump(_context.getBuilder().label(_context.getNode(), "afterCatches"), "r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)/8970362107895603566");
+          }
+        });
+      }
       _context.getBuilder().build((SNode) SLinkOperations.getTarget(_context.getNode(), LINKS.body$KFk));
       for (final Instruction instruction : _context.getBuilder().getInstructionsFor(SLinkOperations.getTarget(_context.getNode(), LINKS.body$KFk))) {
         if (InstructionUtil.isRet(instruction) || InstructionUtil.isJump(instruction) || InstructionUtil.isNop(instruction)) {
@@ -64,7 +71,7 @@ public class TryUniversalStatement_DataFlow extends DataFlowBuilder {
   private static final class LINKS {
     /*package*/ static final SContainmentLink resource$hgXi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x4a434b86a54515feL, "resource");
     /*package*/ static final SContainmentLink catchClause$Q4F = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb116L, "catchClause");
-    /*package*/ static final SContainmentLink body$KFk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
     /*package*/ static final SContainmentLink finallyClause$KUl = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb115L, "finallyClause");
+    /*package*/ static final SContainmentLink body$KFk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x4a434b86a54515f2L, 0x72ddc713115bb114L, "body");
   }
 }
