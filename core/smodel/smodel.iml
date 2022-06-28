@@ -10,10 +10,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="openapi" exported="" />
-    <orderEntry type="library" name="3rd-party" level="project" />
-    <orderEntry type="library" name="Util" level="project" />
     <orderEntry type="module" module-name="logging" exported="" />
     <orderEntry type="module" module-name="mps-annotations" exported="" />
     <orderEntry type="module" module-name="util-core" exported="" />
+    <orderEntry type="library" name="gnu.trove" level="project" />
   </component>
 </module>

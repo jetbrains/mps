@@ -17,7 +17,6 @@
     <orderEntry type="module" module-name="closures-runtime" />
     <orderEntry type="module" module-name="tuples-runtime" />
     <orderEntry type="module" module-name="persistence" />
-    <orderEntry type="library" name="3rd-party" level="project" />
     <orderEntry type="module" module-name="testbench" scope="TEST" />
     <orderEntry type="module" module-name="mps-platform" scope="TEST" />
     <orderEntry type="module" module-name="mps-workbench" scope="TEST" />
@@ -27,5 +26,6 @@
     <orderEntry type="library" scope="TEST" name="Idea-platform" level="project" />
     <orderEntry type="module" module-name="typechecking" />
     <orderEntry type="module" module-name="pattern-runtime" />
+    <orderEntry type="library" name="gnu.trove" level="project" />
   </component>
 </module>

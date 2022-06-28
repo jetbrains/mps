@@ -17,14 +17,14 @@
     <orderEntry type="module" module-name="tuples-runtime" exported="" />
     <orderEntry type="module" module-name="closures-runtime" exported="" />
     <orderEntry type="module" module-name="collections-runtime" exported="" />
-    <orderEntry type="library" exported="" name="3rd-party" level="project" />
-    <orderEntry type="library" name="Util" level="project" />
     <orderEntry type="module" module-name="project" exported="" />
     <orderEntry type="module" module-name="components" exported="" />
     <orderEntry type="module" module-name="behavior-api" exported="" />
     <orderEntry type="module" module-name="behavior-runtime" exported="" />
     <orderEntry type="module" module-name="mps-messaging" exported="" />
     <orderEntry type="module" module-name="boot-util" />
+    <orderEntry type="library" name="org.jdom" level="project" />
+    <orderEntry type="library" name="gnu.trove" level="project" />
     <orderEntry type="module" module-name="baseLanguage-runtime" exported="" />
     <orderEntry type="module" module-name="constraints-runtime" exported="" />
     <orderEntry type="module" module-name="context" exported="" />
