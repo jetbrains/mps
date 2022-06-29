@@ -21,13 +21,10 @@ import jetbrains.mps.lang.dataFlow.framework.instructions.EndTryInstruction;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.ReachabilityAnalyzer;
 import java.util.HashSet;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.InitializedVariablesAnalyzer;
-import jetbrains.mps.lang.dataFlow.framework.instructions.RetInstruction;
-import jetbrains.mps.lang.dataFlow.framework.instructions.JumpInstruction;
-import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.dataFlow.framework.instructions.IfJumpInstruction;
-import jetbrains.mps.lang.dataFlow.DataFlow;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.MayBeInitializedVariablesAnalyzer;
 import jetbrains.mps.lang.dataFlow.framework.analyzers.LivenessAnalyzer;
+import jetbrains.mps.lang.dataFlow.framework.instructions.IfJumpInstruction;
+import jetbrains.mps.lang.dataFlow.framework.instructions.JumpInstruction;
 
 @GeneratedClass(node = "r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)/4074113095384029388", model = "r:3dddb2c7-b2ba-4381-896a-2e702ca1fb6e(jetbrains.mps.lang.dataFlow.framework)")
 public class Program {
@@ -253,36 +250,6 @@ public class Program {
     return result;
   }
 
-  /**
-   * Modifies the provided Program. Make sure you pass in a copy of Program, if the original is meant to be reused for some more analysis.
-   */
-  public void enhanceTryFinallyBlocksWithJumpsForUncaughtExceptions() {
-    ArrayList<Instruction> copyOfInstructions = new ArrayList<>();
-    copyOfInstructions.addAll(myInstructions);
-    for (Instruction inst : copyOfInstructions) {
-      TryFinallyInfo enclosingBlock = inst.getEnclosingBlock();
-      if (!(inst instanceof RetInstruction) && !(inst instanceof JumpInstruction) && enclosingBlock != null && inst.isBefore(enclosingBlock.getFinally())) {
-
-        SNode sourceNode = (SNode) inst.getSource();
-        if (sourceNode == null) {
-          continue;
-        }
-        final Object trySourceNode = enclosingBlock.getTry().getSource();
-        while (sourceNode.getParent() != null && sourceNode.getParent().getParent() != trySourceNode) {
-          sourceNode = sourceNode.getParent();
-        }
-        if (sourceNode == null || sourceNode.getPrevSibling() == null) {
-          continue;
-        }
-
-        IfJumpInstruction jump = new IfJumpInstruction();
-        jump.setJumpTo(enclosingBlock.getFinally().getIndex());
-        insert(jump, inst.getIndex(), true, true);
-        jump.updateJumps(0);
-        jump.putUserObject(DataFlow.MAY_BE_UNREACHABLE, true);
-      }
-    }
-  }
   public boolean isInitializedRewritten(WriteInstruction instruction) {
     AnalysisResult<VarSet> analysisResult = analyze(new MayBeInitializedVariablesAnalyzer(instruction));
     VarSet initializedVars = analysisResult.get(instruction);
