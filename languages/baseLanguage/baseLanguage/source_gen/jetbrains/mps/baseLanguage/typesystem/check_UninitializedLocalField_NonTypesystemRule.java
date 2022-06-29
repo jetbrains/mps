@@ -56,7 +56,6 @@ public class check_UninitializedLocalField_NonTypesystemRule extends AbstractNon
       }
       if ((SLinkOperations.getTarget(field, LINKS.initializer$2twD) == null) && Objects.equals(SNodeOperations.getNodeAncestor(body, CONCEPTS.Classifier$Ix, false, false), SNodeOperations.getParent(field))) {
         Program program = new MPSProgramBuilder().buildProgram(body);
-        program.enhanceTryFinallyBlocksWithJumpsForUncaughtExceptions();
         Set<SNode> uninitializedReads = DataFlow.getUninitializedReads(program);
         if (uninitializedReads.contains(variableReference)) {
           SNode myInitializer = SNodeOperations.getNodeAncestor(body, CONCEPTS.StaticInitializer$Ev, false, false);

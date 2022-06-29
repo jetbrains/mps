@@ -117,7 +117,6 @@ public class VariableReferenceUtil {
   public static void checkPrecedingWriteInstructions(final TypeCheckingContext typeCheckingContext, SNode contextReference, SNode currentBody, SNode field) {
 
     Program program = new MPSProgramBuilder().buildProgram(currentBody);
-    program.enhanceTryFinallyBlocksWithJumpsForUncaughtExceptions();
     Set<SNode> uninitializedReads = DataFlow.getUninitializedReads(program);
     if (uninitializedReads.contains(contextReference)) {
       final boolean onlyInstanceInitializers = VariableReferenceUtil.isReferredFromThisInvocation(currentBody, contextReference);
