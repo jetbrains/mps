@@ -48974,6 +48974,9 @@
       <node concept="nCB5N" id="3oXfwtWTNmv" role="nCB5Z">
         <ref role="nCB5Y" node="3dkXFAFkSFA" resolve="mps-persistence" />
       </node>
+      <node concept="2sjeV3" id="2gOEC237v1$" role="nCB5Z">
+        <ref role="2sjeV2" node="6FsijxbeNCO" resolve="eclipse.ecj" />
+      </node>
     </node>
     <node concept="2sgV4H" id="2ucthr8W_1s" role="1l3spa">
       <ref role="1l3spb" node="6S1jmf0xDFC" resolve="mpsBootstrapCore" />
