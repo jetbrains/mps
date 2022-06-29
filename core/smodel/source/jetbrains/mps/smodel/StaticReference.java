@@ -6,6 +6,7 @@ package jetbrains.mps.smodel;
 import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.extapi.model.ModelWithDisposeInfo;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.util.InternUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
@@ -17,13 +18,17 @@ import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 
-//final used by find usages
-// afaiu, the code that was added along with the comment above, StaticReferenceInfo, didn't really assume 'final' for the class.
-//        and it's long gone, anyway. Both comments could be removed.
+import java.util.Objects;
+
 public final class StaticReference extends SReferenceBase {
-  private SNodeId myTargetNodeId;    // mature
-  private volatile SModelReference myTargetModelReference;  // mature
-  private volatile SNode myImmatureTargetNode;              // young
+
+  /**
+   * Either DirectNode (including subclasses) or IndirectNodePtr, never null.
+   * Note, this is provisional approach, eventually SNode impl would store RefData instead of SReference instances;
+   *  just for now I test this code as implementation detail of the reference itself.
+   * FTR, 'volatile' here is tribute to legacy code, I don't think it's necessary here (much like synchronized methods)
+   */
+  private volatile RefData myData;
 
   /**
    * create 'young' reference
@@ -33,11 +38,8 @@ public final class StaticReference extends SReferenceBase {
   @Deprecated(since = "2021.2", forRemoval = true)
   public StaticReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @NotNull SNode immatureTargetNode) {
     super(role, sourceNode);
-    myImmatureTargetNode = immatureTargetNode;
-    myTargetModelReference = null;
-    // 'young' reference
+    myData = new DirectNode(immatureTargetNode);
     // reference is registered to ImmatureReferences the moment it's part of attached model. Otherwise, we don't care to 'mature' it
-//    ImmatureReferences.getInstance().add(this);
   }
 
   /**
@@ -53,16 +55,16 @@ public final class StaticReference extends SReferenceBase {
                          @Nullable String resolveInfo) {
     // 'targetModelReference' can be null only if it is broken external reference
     super(role, sourceNode);
-    myImmatureTargetNode = null;
+    myData = new IndirectNodePtr(targetModelReference, nodeId, resolveInfo);
     // if ref is 'mature' then 'targetModelReference' is either NOT NULL, or it is broken external reference, or it is dynamic reference
-    myTargetModelReference = targetModelReference;
-    setResolveInfo(resolveInfo);
-    myTargetNodeId = nodeId;
   }
 
   @Override
   public SModelReference getTargetSModelReference() {
-    SNode immatureNode = myImmatureTargetNode;
+    if (myData instanceof IndirectNodePtr) {
+      return ((IndirectNodePtr) myData).myTargetModelReference;
+    }
+    final SNode immatureNode = ((DirectNode)myData).myImmatureTargetNode;
     // Here, we expect 3 major cases: one when reference is 'mature' and got model ref+node id already (I), and
     // two cases when reference has not been 'matured' yet, i.e. we have direct link to a target node. This happens when a reference
     // is created and nobody requested 'become mature' yet (usually MA.commandFinished() together with ImmatureReferences, II), or when
@@ -74,29 +76,28 @@ public final class StaticReference extends SReferenceBase {
     // as the outcome is essentially the same as with immatureNode.getModel(), except for the moment reference become 'mature' (end of command or first access)
     // I don't see any strong reason to be in a hurry with that. The change dates back to commit 5ac3704, with a comment that doesn't indicate any
     // specific issue being addressed.
-    if (immatureNode == null) {
-      return myTargetModelReference;
-    }
-    SModel model = immatureNode.getModel();
+    SModel model = immatureNode == null ? null : immatureNode.getModel();
     // node.getModel() contract is still imperfect, for a node removed from a model it's generally null,
     // nevertheless, for a node from disposed model it's still an original model (model disposal doesn't change AttachedNodeOwner->DetachedNodeOwner)
-    return model != null ? model.getReference() : myTargetModelReference; // resort to earlier value, if any
+    if (model != null) {
+      return model.getReference();
+    } else {
+      // resort to earlier value, if any
+      return myData instanceof ConvertedDirectNode ? ((ConvertedDirectNode) myData).myTargetModelReference : null;
+    }
   }
 
   @Override
   @Nullable
   public SNodeId getTargetNodeId() {
-    SNode immatureNode = myImmatureTargetNode;
     // see #getTargetSModelReference(), above for detailed description of expected scenarios here.
     // As long as there's 'young' node, use it. If it's already in a model (makeIndirect() that used to be here succeeds), node.getNodeId() would
     // give proper value (well, theoretically, if we 'adopt' node instances the moment they are attached to a model with another SNode impl, they
     // could be different, but this scenario is not supported now as well); if not in a model, makeIndirect() won't help us a bit.
-    if (immatureNode == null) {
-      return myTargetNodeId;
-    }
+    //
     // unlike #getTargetSModelReference(), III, node id unlikely to change for a detached node, hence we don't check for nodeId == null here, neither
     // resort to myTargetNodeId value.
-    return immatureNode.getNodeId();
+    return myData.getNodeId();
   }
 
   @Override
@@ -111,14 +112,18 @@ public final class StaticReference extends SReferenceBase {
            "]";
   }
 
+  // XXX why synchronized, not assertCanWrite?
+  //     OTOH, if I move towards SReference class being just a mediator to actual ref storage, synchronized might not be the worst
+  //     way to guard against using the mediator in different threads.
   public synchronized void setTargetSModelReference(@NotNull SModelReference modelReference) {
     makeMature(); // preserve node id and resolve info value of 'young' target, if any
-    myTargetModelReference = modelReference;
+    // FIXME makeMature to create proper IndirectNodePtr right away
+    myData = new IndirectNodePtr(modelReference, getTargetNodeId(), getResolveInfo());
   }
 
   public synchronized void setTargetNodeId(SNodeId nodeId) {
     makeMature(); // preserve model reference and resolve info value of 'young' target, if any
-    myTargetNodeId = nodeId;
+    myData = new IndirectNodePtr(getTargetSModelReference(), nodeId, getResolveInfo());
   }
 
   @Override
@@ -128,7 +133,7 @@ public final class StaticReference extends SReferenceBase {
       NodeReadAccessCasterInEditor.fireReferenceTargetReadAccessed(getSourceNode(), mr, getTargetNodeId());
     }
 
-    final SNode immatureTargetNode = myImmatureTargetNode;
+    final SNode immatureTargetNode = myData instanceof DirectNode ? ((DirectNode)myData).myImmatureTargetNode : null;
     if (immatureTargetNode != null) {
       return immatureTargetNode;
     }
@@ -182,12 +187,13 @@ public final class StaticReference extends SReferenceBase {
   }
 
   /**
-   * @deprecated (1) Implementation detail, shall be private. Now, with ClassCreator that no longer casts to StaticReference to access this method, can be
-   *                 made private. LEAVE as public till the end of 2018.3 release cycle to give clients time to update, just in case, make private once 2018.3 is out
-   *             (2) Is flawed with respect to global repository assumption, references are resolved with null repository
+   * @deprecated Is flawed with respect to global repository assumption, references are resolved with null repository
    *             To be replaced with #getTargetModel_Fair
+   *             However, it's quite common pattern to use quotation to create a reference and navigate it to obtain node instance.
+   *             E.g. {@code node<Classifier> jlObj = <ClassifierType: Object>.classifier}
+   *             Until this practice is over, we have to deal with global repository
    */
-@Deprecated(since = "2018.3", forRemoval = true)
+  @Deprecated(since = "2018.3", forRemoval = true)
   private SModel getTargetSModel() {
     SModel current = getSourceNode().getModel();
     if (current != null && current.getReference().equals(getTargetSModelReference())) return current;
@@ -271,10 +277,11 @@ public final class StaticReference extends SReferenceBase {
 
   @Override
   public void makeDirect() {
-    if (myImmatureTargetNode != null) {
+    if (myData instanceof DirectNode) {
       return;
     }
-    final SNodeId targetNodeId = myTargetNodeId;
+    IndirectNodePtr d = (IndirectNodePtr) myData;
+    final SNodeId targetNodeId = d.myTargetNodeId;
     if (targetNodeId == null) {
       return;
     }
@@ -286,30 +293,29 @@ public final class StaticReference extends SReferenceBase {
     if (targetNode == null) {
       targetNode = commandContext(targetModel).resolveUnregistered(targetNodeId);
     }
-    myImmatureTargetNode = targetNode;
-//    if (myImmatureTargetNode != null) {
-//      ImmatureReferences.getInstance().add(this);
-//    }
-    // we intentionally leave old value in myTargetModelReference (and myTargetNodeId, too, although it's not in use at the moment) to address
-    // scenario (III) outlined in #getTargetSModelReference(), above.
+    // we intentionally leave old value in myTargetModelReference (and could leave myTargetNodeId, too, but it's not in use at the moment)
+    // to address scenario (III) outlined in #getTargetSModelReference(), above.
+    myData = new ConvertedDirectNode(targetNode, d.myResolveInfo, d.myTargetModelReference);
+    // myData.myImmatureTargetNode could be null, which is different from old code, where myImmatureTargetNode == null
+    // would let makeDirect() to attempt again and again. I doubt, however, that we use this scenario, at least
+    // deliberately. If we do, however, need to create different RefData (or keep old, indirect?), instead.
   }
 
   // in fact, counterpart to #makeDirect(), above, to be named makeIndirect() then.
   private synchronized void makeMature() {
-    if (myImmatureTargetNode == null) {
+    if (myData instanceof IndirectNodePtr) {
       return;
     }
-//    ImmatureReferences.getInstance().remove(this);
-    final SNode immatureNode = myImmatureTargetNode;
-    myImmatureTargetNode = null;
-    myTargetNodeId = immatureNode.getNodeId();
+    final SNode immatureNode = ((DirectNode)myData).myImmatureTargetNode;
+    SNodeId targetNodeId = immatureNode.getNodeId();
     final SModel targetModel = immatureNode.getModel();
-    myTargetModelReference = targetModel == null ? null : targetModel.getReference();
-    setResolveInfo(getResolveInfo(immatureNode));
+    SModelReference targetModelReference = targetModel == null ? null : targetModel.getReference();
+    final String resolveInfo = getResolveInfo(immatureNode);
+    myData = new IndirectNodePtr(targetModelReference, targetNodeId, resolveInfo);
   }
 
   @Nullable
-  private String getResolveInfo(SNode immatureNode) {
+  private static String getResolveInfo(SNode immatureNode) {
     // FIXME need a better approach to keep names of predefined attributes;
     // however, a dependency to generated kernel module is an overkill for the sake of few strings
     // XXX move both smodel.SNode and SNodeLegacy to [smodel], why it's in [kernel]?
@@ -322,7 +328,7 @@ public final class StaticReference extends SReferenceBase {
 
 
   public boolean isDirect() {
-    return myImmatureTargetNode != null;
+    return myData instanceof DirectNode;
   }
 
   // aka makeMature
@@ -336,8 +342,8 @@ public final class StaticReference extends SReferenceBase {
    * It's not clear what if these models are not attached to a repository, why would we care to make reference 'indirect' in this case.
    * @return {@code true} when/if reference became 'mature' (i.e. doesn't have target node object but its identity)
    */
-  public synchronized final boolean makeIndirect(boolean force) {
-    if (myImmatureTargetNode == null) {
+  public synchronized boolean makeIndirect(boolean force) {
+    if (myData instanceof IndirectNodePtr) {
       return true;
     }
 
@@ -347,12 +353,14 @@ public final class StaticReference extends SReferenceBase {
       return false /*myImmatureTargetNode == null*/;
     }
 
-    if (myImmatureTargetNode.getModel() != null) {
+    final SNode immatureTargetNode = myData instanceof DirectNode ? ((DirectNode)myData).myImmatureTargetNode : null;
+
+    if (immatureTargetNode != null && immatureTargetNode.getModel() != null) {
       // Generally, there's little sense to 'mature' reference to a model not available in a repository, as we might
       // later face troubles resolving the reference (especially once getTargetModel_Fair is in the game). On the other hand,
       // not quite sure what could possibly happen if I do not 'mature' references eagerly as it used to be. There are some
       // hard-to-reveal assumptions in transient models/generator, use of swap and general model unload.
-      if (!force && myImmatureTargetNode.getModel().getRepository() == null) {
+      if (!force && immatureTargetNode.getModel().getRepository() == null) {
         // XXX It's unclear whether I need to respect 'force' in this case or not. Tests are fine if I don't, however,
         //     it seems that with MPS-32709 it's more important to guard node-model attachment moment.
         //     Once command is over, and we get here with force==true (see ImmatureReferences), I feel it's worth
@@ -368,17 +376,22 @@ public final class StaticReference extends SReferenceBase {
       // convert 'young' reference to 'mature'
       makeMature();
       // FWIW, myImmatureTargetNode == null here
+    } else {
+      if (force && immatureTargetNode != null) {
+        // assert sourceModel != null;
+        final boolean targetNodeIsInModel = immatureTargetNode.getModel() != null;
+        final String m =
+            String.format("ImmatureTargetNode(modelID: %s, nodeID: %s): isRegistered = %b", immatureTargetNode.getModel(), immatureTargetNode.getNodeId(),
+                          targetNodeIsInModel);
+        // XXX makeIndirect() generally was not guarded by SReference.disableLogging() (it was getTargetNode() that has been guarded in most scenarios), that's why
+        //     I don't bother passing ProblemReporter instance here at the moment
+        error("Impossible to resolve immature reference", new ProblemDescription(immatureTargetNode.getReference(), m));
+        // FIXME used to clear myImmatureTargetNode. Not sure use of broken IndirectNodePtr is right here; contract of this
+        //       method is not well-defined. Perhaps, shall leave DirectNode as is?
+        myData = new IndirectNodePtr(null, immatureTargetNode.getNodeId(), getResolveInfo(immatureTargetNode));
+      }
     }
-    if (force && myImmatureTargetNode != null) {
-      // assert sourceModel != null;
-      final boolean targetNodeIsInModel = myImmatureTargetNode.getModel() != null;
-      final String m = String.format("ImmatureTargetNode(modelID: %s, nodeID: %s): isRegistered = %b", myImmatureTargetNode.getModel(), myImmatureTargetNode.getNodeId(), targetNodeIsInModel);
-      // XXX makeIndirect() generally was not guarded by SReference.disableLogging() (it was getTargetNode() that has been guarded in most scenarios), that's why
-      //     I don't bother passing ProblemReporter instance here at the moment
-      error("Impossible to resolve immature reference", new ProblemDescription(myImmatureTargetNode.getReference(), m));
-      myImmatureTargetNode = null;
-    }
-    return myImmatureTargetNode == null;
+    return myData instanceof IndirectNodePtr;
   }
 
   @NotNull
@@ -386,6 +399,15 @@ public final class StaticReference extends SReferenceBase {
   public ResolveInfo describeTarget() {
     return ResolveInfo.of(new SNodePointer(getTargetSModelReference(), getTargetNodeId()), getResolveInfo());
   }
+
+  public String getResolveInfo() {
+    return myData.getResolveInfo();
+  }
+
+  public void setResolveInfo(String info) {
+    myData = myData.withRI(InternUtil.intern(info));
+  }
+
 
   private ModelCommandContext commandContext(SModel targetModel) {
     // took repo from target model, assume MA is the same as the one for source's repo.
@@ -400,5 +422,106 @@ public final class StaticReference extends SReferenceBase {
       // fall-through
     }
     return ModelCommandContext.EMPTY;
+  }
+
+  private interface RefData {
+    default String getResolveInfo() {
+      return null;
+    }
+    RefData withRI(String resolveInfo);
+    SNodeId getNodeId();
+  }
+
+  // young
+  private static class DirectNode implements RefData {
+    public final SNode myImmatureTargetNode;
+
+    /*package*/ DirectNode(SNode target) {
+      myImmatureTargetNode = target;
+    }
+
+    @Override
+    public RefData withRI(String resolveInfo) {
+      return new DirectNodeWithResolveInfo(myImmatureTargetNode, resolveInfo);
+    }
+
+    @Override
+    public SNodeId getNodeId() {
+      return myImmatureTargetNode == null ? null : myImmatureTargetNode.getNodeId();
+    }
+  }
+
+  // XXX not certain this is legal scenario, but uses of SReference.setResolveInfo suggest we may
+  //     face reference to immature node and attempt to set its resolve info
+  private static class DirectNodeWithResolveInfo extends DirectNode {
+    public final String myResolveInfo;
+
+    DirectNodeWithResolveInfo(SNode target, String resolveInfo) {
+      super(target);
+      myResolveInfo = resolveInfo;
+    }
+
+    @Override
+    public String getResolveInfo() {
+      return myResolveInfo;
+    }
+
+    @Override
+    public RefData withRI(String resolveInfo) {
+      if (Objects.equals(myResolveInfo, resolveInfo)) {
+        return this;
+      }
+      return new DirectNodeWithResolveInfo(myImmatureTargetNode, resolveInfo);
+    }
+
+  }
+
+  // for a special case when we used to have 'mature' reference, but made it back direct/young/immature
+  // Introduced the class for the transition purposes. Shall re-consider if it's necessary to keep
+  // old target model ref value
+  private static class ConvertedDirectNode extends DirectNodeWithResolveInfo {
+    public final SModelReference myTargetModelReference;
+    // If I decide to keep 'old' node id, need to override getNodeId()
+
+    /*package*/ConvertedDirectNode(SNode target, String resolveInfo, SModelReference targetModelReference) {
+      super(target, resolveInfo);
+      myTargetModelReference = targetModelReference;
+    }
+
+    public RefData withRI(String resolveInfo) {
+      // XXX is it legal to set RI for a reference that has been converted back to young?
+      return new ConvertedDirectNode(myImmatureTargetNode, resolveInfo, myTargetModelReference);
+    }
+  }
+
+  // mature
+  private static class IndirectNodePtr implements RefData {
+    public final SModelReference myTargetModelReference;
+    public final SNodeId myTargetNodeId;
+    public final String myResolveInfo;
+
+    /*package*/ IndirectNodePtr(SModelReference targetModelReference, SNodeId targetNodeId, String resolveInfo) {
+      myTargetModelReference = targetModelReference;
+      myTargetNodeId = targetNodeId;
+      myResolveInfo = resolveInfo;
+    }
+
+    @Override
+    public String getResolveInfo() {
+      return myResolveInfo;
+    }
+
+    @Override
+    public IndirectNodePtr withRI(String resolveInfo) {
+      if (Objects.equals(myResolveInfo, resolveInfo)) {
+        return this;
+      }
+      return new IndirectNodePtr(myTargetModelReference, myTargetNodeId, resolveInfo);
+    }
+
+    @Override
+    public SNodeId getNodeId() {
+      return myTargetNodeId;
+    }
   }
 }

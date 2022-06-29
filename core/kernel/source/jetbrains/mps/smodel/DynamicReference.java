@@ -21,6 +21,7 @@ import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
+import jetbrains.mps.util.InternUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Immutable;
@@ -46,6 +47,8 @@ import java.util.Set;
  */
 public final class DynamicReference extends SReferenceBase {
   private static final Logger LOG = Logger.getLogger(DynamicReference.class);
+
+  private volatile String myResolveInfo;
 
   private DynamicReferenceOrigin myOrigin;
 
@@ -203,6 +206,14 @@ public final class DynamicReference extends SReferenceBase {
     } finally {
       refs.remove(this);
     }
+  }
+
+  public String getResolveInfo() {
+    return myResolveInfo;
+  }
+
+  public void setResolveInfo(String info) {
+    myResolveInfo = InternUtil.intern(info);
   }
 
   @NotNull

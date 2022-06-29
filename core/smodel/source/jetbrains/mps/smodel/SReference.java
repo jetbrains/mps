@@ -36,7 +36,6 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
 
   protected final SNode mySourceNode; // made protected only for assert in DynamicReference
   private final SReferenceLink myRoleId;
-  private volatile String myResolveInfo;
 
   protected SReference(@NotNull SReferenceLink role, SNode sourceNode) {
     myRoleId = role;
@@ -142,11 +141,11 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
   }
 
   public String getResolveInfo() {
-    return myResolveInfo;
+    return null;
   }
 
   public void setResolveInfo(String info) {
-    myResolveInfo = InternUtil.intern(info);
+    // no-op
   }
 
   protected abstract SNode getTargetNode_internal(/*not null*/ ProblemReporter reporter);
