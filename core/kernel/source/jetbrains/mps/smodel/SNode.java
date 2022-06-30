@@ -30,7 +30,6 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -61,6 +60,10 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
   @NotNull
   private SNodeOwner myOwner = FreeFloatNodeOwner.INSTANCE;
   private SContainmentLink myRoleInParent;
+
+  // field is never null; but individual elements may be null. References are unordered!
+  // Note, when switch to keeping ref data only, may introduce a placeholder that would
+  // simplify makeReferencesDirect() implementation (empty methods instead of != null check)
   private jetbrains.mps.smodel.SReference[] myReferences = jetbrains.mps.smodel.SReference.EMPTY_ARRAY;
   private Object[] myProperties = null;
   private org.jetbrains.mps.openapi.model.SNodeId myId;
@@ -316,7 +319,15 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
 
     myOwner.fireNodeRead(this, true);
 
-    return Arrays.asList(myReferences);
+    ArrayList<jetbrains.mps.smodel.SReference> rv = new ArrayList<>(myReferences.length);
+    for (SReference r : myReferences) {
+      if (r != null) {
+        rv.add(r);
+      }
+    }
+    // XXX there's override of the method in mps-extensions that doesn't allow me to use openapi.SReference at the moment
+    //     (without simultaneous change in MPS-extensions as well)
+    return rv;
   }
 
   @Override
@@ -436,7 +447,9 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
    */
   final void makeReferencesIndirect() {
     for (SReference ref : myReferences) {
-      ref.makeIndirect();
+      if (ref != null) {
+        ref.makeIndirect();
+      }
     }
 
     for (SNode child = firstChild(); child != null; child = child.treeNext()) {
@@ -451,7 +464,9 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
    */
   final void makeReferencesDirect() {
     for (SReference ref : myReferences) {
-      ref.makeDirect();
+      if (ref != null) {
+        ref.makeDirect();
+      }
     }
     for (SNode child = firstChild(); child != null; child = child.treeNext()) {
       child.makeReferencesDirect();
@@ -476,42 +491,6 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
 
   /*package*/ void setNodeOwner(/*NotNull*/ SNodeOwner owner) {
     myOwner = owner;
-  }
-
-  //--------private-------
-
-  // perform inner structures update, doesn't dispatch any events
-  private void addReferenceInternal(final SReference reference) {
-    int oldLen = myReferences.length;
-    jetbrains.mps.smodel.SReference[] newArray = new jetbrains.mps.smodel.SReference[oldLen + 1];
-    System.arraycopy(myReferences, 0, newArray, 0, oldLen);
-    newArray[oldLen] = reference;
-    myReferences = newArray;
-
-    myOwner.performUndoableAction(new InsertReferenceAtUndoableAction(this, reference));
-  }
-
-  // perform inner structures update, doesn't dispatch any events
-  private void removeReferenceInternal(final SReference ref) {
-    int index = -1;
-    for (int i = 0; i < myReferences.length; i++) {
-      if (myReferences[i] == ref) {
-        index = i;
-        break;
-      }
-    }
-
-    if (index == -1) {
-      LOG.error("ref not found " + ref, new Throwable());
-      return;
-    }
-
-    jetbrains.mps.smodel.SReference[] newArray = new jetbrains.mps.smodel.SReference[myReferences.length - 1];
-    System.arraycopy(myReferences, 0, newArray, 0, index);
-    System.arraycopy(myReferences, index + 1, newArray, index, myReferences.length - index - 1);
-    myReferences = newArray;
-
-    myOwner.performUndoableAction(new RemoveReferenceAtUndoableAction(this, ref));
   }
 
   protected SNode firstChild() {
@@ -672,30 +651,8 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
   @Override
   public void setReferenceTarget(@NotNull SReferenceLink role, @Nullable org.jetbrains.mps.openapi.model.SNode target) {
     assertCanChange();
-
-    SReference toDelete = null;
-    if (myReferences != null) {
-      for (SReference reference : myReferences) {
-        if (!reference.getLink().equals(role)) continue;
-        toDelete = reference;
-        break;
-      }
-    }
-    if (toDelete == null && target == null) {
-      return;
-    }
-
-    if (toDelete != null) {
-      removeReferenceInternal(toDelete);
-    }
-    SReference newValue = null;
-    if (target != null) {
-      // XXX removeReferenceInternal, above, just re-allocated array in case of a replacement. Do I care to optimize this scenario?
-      newValue = SReference.create(role, this, target);
-      addReferenceInternal(newValue);
-    }
-
-    myOwner.fireReferenceChange(this, role, toDelete, newValue);
+    final SReference newValue = target == null ? null : SReference.create(role, this, target);
+    doSetAssociation(role, newValue);
   }
 
   @Override
@@ -719,24 +676,7 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
   @Override
   public void setReference(@NotNull SReferenceLink role, @NotNull SNodeReference target) {
     assertCanChange();
-
-    SReference toDelete = null;
-    if (myReferences != null) {
-      for (SReference reference : myReferences) {
-        if (reference.getLink().equals(role)) {
-          toDelete = reference;
-          break;
-        }
-      }
-    }
-
-    if (toDelete != null) {
-      removeReferenceInternal(toDelete);
-    }
-    SReference newValue = SReference.create(role, this, target, null);
-    addReferenceInternal(newValue);
-
-    myOwner.fireReferenceChange(this, role, toDelete, newValue);
+    doSetAssociation(role, SReference.create(role, this, target, null));
   }
 
   @Override
@@ -763,43 +703,87 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
    */
   private SReference findReference(@NotNull SReferenceLink role) {
     for (SReference reference : myReferences) {
-      if (role.equals(reference.getLink())) {
+      if (reference != null && role.equals(reference.getLink())) {
         return reference;
       }
     }
     return null;
   }
 
+  // clear or replace an SReference
+  private void doSetAssociation(/*not null*/ SReferenceLink role, /*nullable*/ SReference newValue) {
+    SReference oldValue = null;
+    int i = 0, x = myReferences.length, empty = x;
+    for (; i < x; i++) {
+      SReference r = myReferences[i];
+      if (r == null) {
+        empty = i; // fine to take the latest empty, but if not, may add (&& empty == x) into condition
+        continue;
+      }
+      if (r.getLink().equals(role)) {
+        oldValue = r; // don't assign oldValue unless matched
+        break;
+      }
+    }
+    if (i >= x && newValue == null) {
+      // none found and nothing to add/replace with. no referenceChanged event.
+      return;
+    }
+    if (i < x) {
+      // found existing, just replace
+      myOwner.performUndoableAction(new RemoveReferenceAtUndoableAction(this, oldValue));
+      myReferences[i] = newValue; // newValue == null is fine, just drop
+      if (newValue != null) {
+        myOwner.performUndoableAction(new InsertReferenceAtUndoableAction(this, newValue));
+      } else {
+        // check if we just replaced the last existing reference with null
+        boolean allNulls = true;
+        for (SReference r : myReferences) {
+          if (r != null) {
+            allNulls = false;
+            break;
+          }
+        }
+        if (allNulls) {
+          myReferences = SReference.EMPTY_ARRAY;
+        }
+      }
+      myOwner.fireReferenceChange(this, role, oldValue, newValue);
+      return;
+    }
+    assert i == x && newValue != null;
+    if (empty < x) {
+      // there's available slot
+      myReferences[empty] = newValue; // newValue == null is fine, just drop
+    } else {
+      // no space available, storage have to grow. Allocate 2 slots right away
+      jetbrains.mps.smodel.SReference[] newArray = new jetbrains.mps.smodel.SReference[x + 2];
+      System.arraycopy(myReferences, 0, newArray, 0, x);
+      newArray[x] = newValue;
+      myReferences = newArray;
+    }
+    myOwner.performUndoableAction(new InsertReferenceAtUndoableAction(this, newValue));
+    myOwner.fireReferenceChange(this, role, null, newValue);
+  }
+
   // FIXME odd to have role parameter, while SReference.getLink gives exactly what's needed (and doesn't violate consistency)
   // to clear reference, one could use setReferenceTarget(). Alternatively, SReference shall not keep
   // the meta-object, and query its source node for role instead (as a free-floating Reference shall not answer its SReferenceLink).
+  //
+  // XXX besides, unlike setReference(role, (SNode) null), used to send out referenceChanged event even if no respective link was found.
   @Override
   public void setReference(@NotNull SReferenceLink role, org.jetbrains.mps.openapi.model.SReference toAdd) {
+    // FIXME why assert, not RuntimeException?! OTOH, as I retire uses of the method, shall I care?
+    assert toAdd == null || toAdd.getSourceNode() == this;
+    assert toAdd == null || role.equals(toAdd.getLink());
     assertCanChange();
-
-    SReference toRemove = null;
-    for (SReference r : myReferences) {
-      if (!r.getLink().equals(role)) continue;
-      toRemove = r;
-      break;
-    }
-
-    if (toRemove != null) {
-      removeReferenceInternal(toRemove);
-    }
-
-    if (toAdd != null) {
-      assert toAdd.getSourceNode() == this;
-      assert role.equals(toAdd.getLink());
-      addReferenceInternal((SReference) toAdd);
-    }
-
-    myOwner.fireReferenceChange(this, role, toRemove, toAdd);
+    doSetAssociation(role, (SReference) toAdd);
   }
 
   @Override
   public void dropReference(@NotNull SReferenceLink role) {
-    setReference(role, (org.jetbrains.mps.openapi.model.SReference) null);
+    assertCanChange();
+    doSetAssociation(role, null);
   }
 
   public void insertChildBefore(@NotNull final SContainmentLink role, @NotNull org.jetbrains.mps.openapi.model.SNode child,
