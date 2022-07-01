@@ -39,6 +39,7 @@ import org.jetbrains.jps.util.JpsPathUtil;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -144,7 +145,7 @@ public abstract class MpsJpsBuildTestCase extends JpsBuildTestCase {
       allPathVariables.putAll(pathVariables);
       allPathVariables.put(PathMacroUtil.APPLICATION_HOME_DIR, PathManager.getHomePathFor(PathManager.class));
       allPathVariables.putAll(getAdditionalPathVariables());
-      JpsProjectLoader.loadProject(myProject, allPathVariables, fullProjectPath);
+      JpsProjectLoader.loadProject(myProject, allPathVariables, Path.of(fullProjectPath));
     } catch (IOException e) {
       throw new RuntimeException(e);
     }

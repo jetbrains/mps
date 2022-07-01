@@ -116,8 +116,8 @@
 
     <!-- Tools -->
     <!--    <group id="ToolsMenu" popup="true" compact="true" class="com.intellij.ide.IdeDependentActionGroup">-->
-    <action id="PsiViewer" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
-    <action id="PsiViewerForContext" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
+<!--    <action id="PsiViewer" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>-->
+<!--    <action id="PsiViewerForContext" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>-->
     <!--    </group>-->
 
     <action id="ActivateFindToolWindow" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
