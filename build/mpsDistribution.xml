@@ -371,6 +371,14 @@
   <target name="fetchDependencies">
     <mkdir dir="${build.tmp}/deps/jbr-windows-x64.tar.gz1" />
     <untar src="${artifacts.resources}/openJDK/jbr-windows-x64.tar.gz" dest="${build.tmp}/deps/jbr-windows-x64.tar.gz1" compression="gzip" />
+    <!-- Rename jbr_jcef-XXXXXXXX to jbr -->
+    <path id="jbr.version.path">
+      <dirset dir="${build.tmp}/deps/jbr-windows-x64.tar.gz1">
+        <include name="jbr_jcef-*"/>
+      </dirset>
+    </path>
+    <property name="jbr.version.file" refid="jbr.version.path"/>
+    <move file="${jbr.version.file}" tofile="${build.tmp}/deps/jbr-windows-x64.tar.gz1/jbr"/>
   </target>
   
   <target name="build" depends="assemble" />
