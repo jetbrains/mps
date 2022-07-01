@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.junit.Before;
 import org.junit.Test;
 import jetbrains.mps.lang.test.generator.rt.TransformHelper;
+import jetbrains.mps.lang.test.generator.rt.ModelAssert;
 
 public class GenTest_TransformBLReferences extends BaseGeneratorTest {
 
@@ -30,7 +31,8 @@ public class GenTest_TransformBLReferences extends BaseGeneratorTest {
     t.setInput(i);
     t.transform();
     SModel rm = myArg_output;
-    assertMatch(t.getOutputModel(), rm);
+    ModelAssert ma = new ModelAssert(t.getResult().getOutputRepository());
+    ma.assertMatch(t.getOutputModel(), rm);
   }
   @Test
   public void testTransformAndMatch1() {
@@ -40,7 +42,8 @@ public class GenTest_TransformBLReferences extends BaseGeneratorTest {
     t.setPlanProvider(planProviderFromModel(myArg_gp));
     t.transform();
     SModel rm = myArg_output;
-    assertMatch(t.getOutputModel(), rm);
+    ModelAssert ma = new ModelAssert(t.getResult().getOutputRepository());
+    ma.assertMatch(t.getOutputModel(), rm);
   }
 
 }

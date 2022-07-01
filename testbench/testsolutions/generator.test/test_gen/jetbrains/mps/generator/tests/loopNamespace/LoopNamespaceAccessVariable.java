@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.junit.Before;
 import org.junit.Test;
 import jetbrains.mps.lang.test.generator.rt.TransformHelper;
+import jetbrains.mps.lang.test.generator.rt.ModelAssert;
 
 public class LoopNamespaceAccessVariable extends BaseGeneratorTest {
 
@@ -33,7 +34,8 @@ public class LoopNamespaceAccessVariable extends BaseGeneratorTest {
     t.setPlanProvider(planProviderFromModel(myArg_interpreted));
     t.transform();
     SModel rm = myArg_output;
-    assertMatch(t.getOutputModel(), rm);
+    ModelAssert ma = new ModelAssert(t.getResult().getOutputRepository());
+    ma.assertMatch(t.getOutputModel(), rm);
   }
   @Test
   public void testTransformAndMatch1() {
@@ -43,7 +45,8 @@ public class LoopNamespaceAccessVariable extends BaseGeneratorTest {
     t.setPlanProvider(planProviderFromModel(myArg_compiled));
     t.transform();
     SModel rm = myArg_output;
-    assertMatch(t.getOutputModel(), rm);
+    ModelAssert ma = new ModelAssert(t.getResult().getOutputRepository());
+    ma.assertMatch(t.getOutputModel(), rm);
   }
 
 }

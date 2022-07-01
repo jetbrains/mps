@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.junit.Before;
 import org.junit.Test;
 import jetbrains.mps.lang.test.generator.rt.TransformHelper;
+import jetbrains.mps.lang.test.generator.rt.ModelAssert;
 
 public class CallSiteNodeForTemplateCall extends BaseGeneratorTest {
 
@@ -33,7 +34,8 @@ public class CallSiteNodeForTemplateCall extends BaseGeneratorTest {
     t.setPlanProvider(planProviderFromModel(myArg_GP_Compiled));
     t.transform();
     SModel rm = myArg_OUTPUT;
-    assertMatch(t.getOutputModel(), rm);
+    ModelAssert ma = new ModelAssert(t.getResult().getOutputRepository());
+    ma.assertMatch(t.getOutputModel(), rm);
   }
   @Test
   public void testTransformAndMatch1() {
@@ -43,7 +45,8 @@ public class CallSiteNodeForTemplateCall extends BaseGeneratorTest {
     t.setPlanProvider(planProviderFromModel(myArg_GP_Interpreted));
     t.transform();
     SModel rm = myArg_OUTPUT;
-    assertMatch(t.getOutputModel(), rm);
+    ModelAssert ma = new ModelAssert(t.getResult().getOutputRepository());
+    ma.assertMatch(t.getOutputModel(), rm);
   }
 
 }

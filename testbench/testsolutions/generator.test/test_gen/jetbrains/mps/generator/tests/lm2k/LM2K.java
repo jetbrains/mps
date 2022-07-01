@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.junit.Before;
 import org.junit.Test;
 import jetbrains.mps.lang.test.generator.rt.TransformHelper;
+import jetbrains.mps.lang.test.generator.rt.ModelAssert;
 
 public class LM2K extends BaseGeneratorTest {
 
@@ -31,7 +32,8 @@ public class LM2K extends BaseGeneratorTest {
     t.setPlanProvider(planProviderFromModel(myArg_GP_Interpreted));
     t.transform();
     SModel rm = myArg_OUT;
-    assertMatch(t.getOutputModel(), rm);
+    ModelAssert ma = new ModelAssert(t.getResult().getOutputRepository());
+    ma.assertMatch(t.getOutputModel(), rm);
   }
 
 }
