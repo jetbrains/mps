@@ -41493,6 +41493,11 @@
               <ref role="3bR37D" node="ymnOULAU1u" resolve="jetbrains.mps.lang.test.runtime" />
             </node>
           </node>
+          <node concept="1SiIV0" id="4gPSAL9G_El" role="3bR37C">
+            <node concept="3bR9La" id="4gPSAL9G_Em" role="1SiIV1">
+              <ref role="3bR37D" node="rD7wKO6k$" resolve="MPS.Generator" />
+            </node>
+          </node>
           <node concept="1BupzO" id="73GUf$umM0c" role="3bR31x">
             <property role="3ZfqAx" value="generator/template" />
             <property role="1Hdu6h" value="true" />
