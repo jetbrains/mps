@@ -275,7 +275,8 @@
     <action id="NewFromTemplate" class="com.intellij.openapi.actionSystem.EmptyAction" overrides="true"/>
     <!--    </group>-->
 
-    <group id="WeighingNewGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/>
+    <!-- PROVISIONAL HACK TO ADDRESS MPS-34610; the override was commented out, no idea why did we need it in the first place -->
+    <!-- group id="WeighingNewGroup" class="com.intellij.openapi.actionSystem.EmptyActionGroup" overrides="true"/ -->
 
 
     <!-- Toolbar -->
