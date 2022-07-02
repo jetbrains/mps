@@ -293,12 +293,33 @@ public final class StaticReference extends SReferenceBase {
     if (targetNode == null) {
       targetNode = commandContext(targetModel).resolveUnregistered(targetNodeId);
     }
-    // we intentionally leave old value in myTargetModelReference (and could leave myTargetNodeId, too, but it's not in use at the moment)
-    // to address scenario (III) outlined in #getTargetSModelReference(), above.
-    myData = new ConvertedDirectNode(targetNode, d.myResolveInfo, d.myTargetModelReference);
-    // myData.myImmatureTargetNode could be null, which is different from old code, where myImmatureTargetNode == null
-    // would let makeDirect() to attempt again and again. I doubt, however, that we use this scenario, at least
-    // deliberately. If we do, however, need to create different RefData (or keep old, indirect?), instead.
+    if (targetNode != null) {
+      // we intentionally leave old value in myTargetModelReference (and could leave myTargetNodeId, too, but it's not in use at the moment)
+      // to address scenario (III) outlined in #getTargetSModelReference(), above.
+      myData = new ConvertedDirectNode(targetNode, d.myResolveInfo, d.myTargetModelReference);
+    }
+    // ELSE LEAVE IndirectNodePtr AS IS!
+    // Explanation:
+    // I don't want to create ConvertedDirectNode with cdn.myImmatureTargetNode == null
+    // Old code did `myImmatureTargetNode = targetNode` (==null), but left all other fields intact, which left the whole SReference instance in a state
+    // as if it was 'mature' (immature was conditioned myImmatureTargetNode == null; with no fields reset no way to tell the difference).
+    // I thought that no code relied on that behavior, at least deliberately. However,
+    // there are scenarios where this is vital. E.g. TransientModel, detached from a repository (during generation), and something like
+    // mbeddr/modules.gen/sortContent post-processing script:
+    // nlist<> copy = node.children;
+    // sort(copy);
+    // node.children.clear;
+    // node.children.addAll(copy);
+    // The moment we makeDirect a reference that points to a node already removed (comes earlier in 'children'), targetModel.getNode(targetNodeId) == null,
+    // commandContext is EMPTY (remember, transient generator model), and ConvertedDirectNode(null,,) has no chance to resolve back to re-arranged node.
+    // I wonder if I'd better keep different RefData (e.g. both with model prt and node id). FWIW, I feel makeDirect()/makeIndirect() activities
+    // for transient models is not right, and perhaps should be avoided. But now
+    //    (a) there's no mechanism to control reference handling in transient models (it's SNode#makeReferencesDirect()
+    //        while I've got custom SModel impl only);
+    //    (b) need to fix CloneUtil to clone all nodes first, keep map and then update local reference targets from the map;
+    //    (c) need to account for transientModel.unload() scenario, where 'immature' references may break (see MPS-23902)
+    // Another alternative is not to avoid direct/indirect transition, but to do it 'right', with proper commandContext and tracked removed/unregistered nodes
+    //   (although this might be expensive performance-wise)
   }
 
   // in fact, counterpart to #makeDirect(), above, to be named makeIndirect() then.
