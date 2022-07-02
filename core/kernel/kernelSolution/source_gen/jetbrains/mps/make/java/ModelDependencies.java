@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Tracks dependencies of a model, namely referenced models and used languages.
@@ -43,7 +44,7 @@ public class ModelDependencies {
   private final Collection<SLanguage> myLanguages = new ArrayList<>();
   private final Collection<SModuleReference> myModuleDeps = new ArrayList<>();
   private final Collection<SModuleReference> myLangRT = new ArrayList<>();
-  private boolean myHasRuntimeDeps = false;
+  private boolean myHasRuntimeDeps = true;
 
   public ModelDependencies() {
   }
@@ -177,11 +178,11 @@ public class ModelDependencies {
   public static ModelDependencies fromXml(Element root) {
     ModelDependencies result = new ModelDependencies();
     final PersistenceFacade pf = PersistenceFacade.getInstance();
-    for (Element e : root.getChildren("uses")) {
+    List<Element> wholeModelNewDeps = root.getChildren("uses");
+    for (Element e : wholeModelNewDeps) {
       String lv = e.getAttributeValue("language");
       if (lv != null) {
         result.myLanguages.add(pf.createLanguage(lv));
-        result.myHasRuntimeDeps = true;
         continue;
       }
       String mv = e.getAttributeValue("module");
@@ -194,10 +195,16 @@ public class ModelDependencies {
         if (flags.contains("rt")) {
           result.myLangRT.add(mref);
         }
-        result.myHasRuntimeDeps = true;
       }
     }
-    for (Element e : root.getChildren(DEPENDENCY)) {
+    List<Element> legacyPerRootDependencies = root.getChildren(DEPENDENCY);
+    if (!(legacyPerRootDependencies.isEmpty()) && wholeModelNewDeps.isEmpty()) {
+      // just in case we happen to read some old file, although generally cache files are not supposed
+      // to live too long for us to care. Default 'true' helps to address empty model scenario, when 
+      // 'dependencies' file got nothing but root element, and we don't want this case to be deemed as 'no rt deps'.
+      result.myHasRuntimeDeps = false;
+    }
+    for (Element e : legacyPerRootDependencies) {
       result.addDependencies(new RootDependencies(e));
     }
     return result;
