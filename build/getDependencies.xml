@@ -217,7 +217,7 @@
     <!-- Set executable flag to binaries -->
     <chmod file="${basedir}/../bin/mac/fsnotifier" perm="755"/>
     <chmod file="${basedir}/../bin/mac/restarter" perm="755"/>
-    <chmod file="${basedir}/../bin/mac/printenv.py" perm="755"/>
+    <chmod file="${basedir}/../bin/mac/printenv" perm="755"/>
     <chmod file="${basedir}/../build/resources/mps" perm="755"/>
 
     <chmod file="${basedir}/../bin/linux/fsnotifier" perm="755"/>
