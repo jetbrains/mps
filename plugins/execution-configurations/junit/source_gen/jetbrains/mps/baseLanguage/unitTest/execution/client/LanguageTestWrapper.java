@@ -32,7 +32,7 @@ public class LanguageTestWrapper extends AbstractTestWrapper<SNode> {
     // With that, indeed, we loose extensibility of TNWF, but I don't care too much as it's MPS-controlled factory anyway (let alone I doubt there's ever need to
     // have anything else under a wrapper for ITestCase).
     //  Proper fix would be to introduce tryToWrap(ITestNodeWrapper container, node<>) method, that would respect owner testcase explicitly.
-    myMethods = ListSequence.fromList(ITestCase__BehaviorDescriptor.getTestMethods_id1RfJDyhAUar.invoke(test)).select(new ISelector<SNode, LanguageTestWrapper>() {
+    myMethods = ListSequence.fromList(ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(test)).select(new ISelector<SNode, LanguageTestWrapper>() {
       public LanguageTestWrapper select(SNode it) {
         return new LanguageTestWrapper(LanguageTestWrapper.this, it);
       }
