@@ -31,8 +31,8 @@ import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.ResolveInfo;
-import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.util.Pair;
+import jetbrains.mps.smodel.SNodePointer;
 
 @GeneratedClass(node = "r:469db833-fce3-4137-9319-1d2a980eddc8(jetbrains.mps.smodel.persistence.def.v9)/5480414999147803697", model = "r:469db833-fce3-4137-9319-1d2a980eddc8(jetbrains.mps.smodel.persistence.def.v9)")
 public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
@@ -601,18 +601,9 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
     }
     private void handleChild_4968492044127349726(Object resultObject, Object value) throws SAXException {
       Tuples._2<SNode, SContainmentLink> result = (Tuples._2<SNode, SContainmentLink>) resultObject;
-      Tuples._4<SReferenceLink, SModelReference, SNodeId, String> child = (Tuples._4<SReferenceLink, SModelReference, SNodeId, String>) value;
-      SModelReference targetModel = child._1();
-      SNodeId nodeId = child._2();
+      Tuples._2<SReferenceLink, ResolveInfo> child = (Tuples._2<SReferenceLink, ResolveInfo>) value;
       SReferenceLink link = child._0();
-      String resolveInfo = child._3();
-      final ResolveInfo ri;
-      if (targetModel == null && nodeId == null) {
-        // account for serialized dynamic references
-        ri = ResolveInfo.of(resolveInfo);
-      } else {
-        ri = ResolveInfo.of(new SNodePointer(targetModel, nodeId), resolveInfo);
-      }
+      ResolveInfo ri = child._1();
       result._0().setReference(link, ri);
     }
     private void handleChild_5480414999147804300(Object resultObject, Object value) throws SAXException {
@@ -662,15 +653,30 @@ public class ModelReader9Handler extends XMLSAXHandler<ModelLoadResult> {
       setRequiredAttributes("role");
     }
     @Override
-    protected Tuples._4<SReferenceLink, SModelReference, SNodeId, String> createObject(Attributes attrs) throws SAXException {
+    protected Tuples._2<SReferenceLink, ResolveInfo> createObject(Attributes attrs) throws SAXException {
       SReferenceLink association = my_readHelperParam.readAssociation(attrs.getValue("role"));
       if (attrs.getValue("node") != null) {
         // local reference
+        // FIXME introduce dedicated RI for local references or any other mechanism to avoid need for local SModelReference 
         SNodeId targetNode = my_readHelperParam.readLocalRefTarget(attrs.getValue("node"));
-        return MultiTuple.<SReferenceLink,SModelReference,SNodeId,String>from(association, my_modelField.getReference(), targetNode, attrs.getValue("resolve"));
+        final ResolveInfo ri;
+        if (targetNode == null) {
+          // account for serialized dynamic references
+          ri = ResolveInfo.of(attrs.getValue("resolve"));
+        } else {
+          ri = ResolveInfo.of(new SNodePointer(my_modelField.getReference(), targetNode), attrs.getValue("resolve"));
+        }
+        return MultiTuple.<SReferenceLink,ResolveInfo>from(association, ri);
       } else {
         Pair<SModelReference, SNodeId> r = my_idEncoderField.parseExternalNodeReference(my_importHelperField, attrs.getValue("to"));
-        return MultiTuple.<SReferenceLink,SModelReference,SNodeId,String>from(association, r.o1, r.o2, attrs.getValue("resolve"));
+        final ResolveInfo ri;
+        if (r.o1 == null && r.o2 == null) {
+          // account for serialized dynamic references
+          ri = ResolveInfo.of(attrs.getValue("resolve"));
+        } else {
+          ri = ResolveInfo.of(new SNodePointer(r.o1, r.o2), attrs.getValue("resolve"));
+        }
+        return MultiTuple.<SReferenceLink,ResolveInfo>from(association, ri);
       }
     }
   }
