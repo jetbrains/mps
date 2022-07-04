@@ -69,9 +69,6 @@ public final class DynamicReference extends SReferenceBase {
     }
   };
 
-  private boolean myHasBeenResolve;
-  private SNode myCachedTargetNode;
-
   /**
    * @deprecated Use {@link SNode#setReference(SReferenceLink, ResolveInfo)} instead, or {@link #createDynamicReference(SReferenceLink, SNode, String, String)}
    *             if DynamicReferenceOrigin is necessary
@@ -109,12 +106,13 @@ public final class DynamicReference extends SReferenceBase {
   protected SNode getTargetNode_internal(ProblemReporter report) {
     // seems like getTargetNode() doesn't make sense if source node is detached
     if (mySourceNode.getModel() == null) {
-      assert myHasBeenResolve : "Taking target node of dynamic reference whose source node is not in a model";
-      return myCachedTargetNode;
+      LOG.error("Taking target node of dynamic reference whose source node is not in a model");
+      return null;
     }
 
     final SRepository owner = mySourceNode.getModel().getRepository();
-
+    // XXX perhaps, shall return null right away if owner == null. No point to resolve
+    //     a reference from a model that is not yet part of a repository
 
     final Set<DynamicReference> currentRefs = currentlyResolved.get();
     final Set<DynamicReference> loggedRefs = currentlySourceNodeLogged.get();
@@ -159,8 +157,6 @@ public final class DynamicReference extends SReferenceBase {
         reportErrorWithOrigin("cannot resolve reference by string: '" + getResolveInfo() + "'", report);
       }
 
-      myHasBeenResolve = true;
-      myCachedTargetNode = targetNode;
       return targetNode;
 
     } finally {
