@@ -49,6 +49,12 @@ public class DefaultGenerationParametersProvider implements GenerationParameters
     addParameter(null, key, value);
   }
 
+  public void addAllParameters(Map<String, Object> paramsMap) {
+    for (Map.Entry<String, Object> e: paramsMap.entrySet()) {
+      addParameter(null, e.getKey(), e.getValue());
+    }
+  }
+
   public void addParameter (SModel descriptor, String key, Object value) {
     if (descriptor == null) {
       defaultParams.put(key, value);
