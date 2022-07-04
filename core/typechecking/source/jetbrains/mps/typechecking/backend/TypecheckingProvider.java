@@ -51,8 +51,10 @@ public interface TypecheckingProvider<Queries extends TypecheckingQueries> {
    * 
    * @deprecated use the variant with the addiitonal flags parameter
    */
-  @Deprecated
-  boolean isRelevant(@NotNull SNode src, SNode trg, SConcept trgConcept);
+  @Deprecated(forRemoval = true)
+  default boolean isRelevant(@NotNull SNode src, SNode trg, SConcept trgConcept) {
+    throw new UnsupportedOperationException("method not overridden by subclass");
+  }
   
   default boolean isRelevant(@NotNull SNode src, SNode trg, SConcept trgConcept, Flags flags) {
     return isRelevant(src, trg, trgConcept);

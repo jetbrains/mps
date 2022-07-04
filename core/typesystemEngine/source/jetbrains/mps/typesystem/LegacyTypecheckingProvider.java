@@ -93,7 +93,7 @@ public class LegacyTypecheckingProvider implements TypecheckingProvider<LegacyTy
   }
 
   @Override
-  public boolean isRelevant(@NotNull SNode src, SNode trg, SConcept trgConcept) {
+  public boolean isRelevant(@NotNull SNode src, SNode trg, SConcept trgConcept, Flags flags) {
     return true;
   }
 
