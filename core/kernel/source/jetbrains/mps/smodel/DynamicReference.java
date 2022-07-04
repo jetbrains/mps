@@ -20,7 +20,6 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
-import jetbrains.mps.smodel.legacy.ConceptMetaInfoConverter;
 import jetbrains.mps.util.InternUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -74,16 +73,10 @@ public final class DynamicReference extends SReferenceBase {
   private SNode myCachedTargetNode;
 
   /**
-   * create 'mature' reference
-   * Left for compatibility with legacy persistence code
-   * @deprecated use {@link SNodeLegacy#setReference(String, SModelReference, String)} instead.
-   *             There are no uses in MPS code, the cons will be removed in the future versions
+   * @deprecated Use {@link SNode#setReference(SReferenceLink, ResolveInfo)} instead, or {@link #createDynamicReference(SReferenceLink, SNode, String, String)}
+   *             if DynamicReferenceOrigin is necessary
    */
-@Deprecated(since = "2020.2", forRemoval = true)
-  public DynamicReference(@NotNull String role, @NotNull SNode sourceNode, @Nullable SModelReference targetModelReference, String resolveInfo) {
-    this(((ConceptMetaInfoConverter) sourceNode.getConcept()).convertAssociation(role), sourceNode, resolveInfo);
-  }
-
+  @Deprecated(forRemoval = true, since = "2022.2")
   public DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @Nullable SModelReference targetModelReference, String resolveInfo) {
     this(role, sourceNode, resolveInfo);
   }

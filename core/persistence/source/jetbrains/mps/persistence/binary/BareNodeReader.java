@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,11 +15,11 @@
  */
 package jetbrains.mps.persistence.binary;
 
+import jetbrains.mps.extapi.model.ResolveInfoExt;
 import jetbrains.mps.extapi.model.SModelData;
 import jetbrains.mps.smodel.DynamicReference;
 import jetbrains.mps.smodel.DynamicReference.DynamicReferenceOrigin;
 import jetbrains.mps.smodel.SNodePointer;
-import jetbrains.mps.smodel.StaticReference;
 import jetbrains.mps.util.io.ModelInputStream;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -159,16 +159,18 @@ public class BareNodeReader {
     if (kind == 1) {
       node.setReference(sref, ResolveInfo.of(new SNodePointer(modelRef, targetNodeId), resolveInfo));
     } else //noinspection ConstantConditions
-      if (kind == 2 || kind == 3) {
-      DynamicReference reference = new DynamicReference(
-          sref,
-          node,
-          modelRef,
-          resolveInfo);
-      if (origin != null) {
-        reference.setOrigin(origin);
-      }
-      node.setReference(sref, reference);
+      if (kind == 2) {
+        node.setReference(sref, ResolveInfo.of(resolveInfo));
+      } else if (kind == 3) {
+        assert origin != null;
+        node.setReference(sref, new ResolveInfoExt() {
+          @Override
+          public SReference create(@NotNull SNode source, @NotNull SReferenceLink link) {
+            DynamicReference reference = DynamicReference.createDynamicReference(sref, node, null, resolveInfo);
+            reference.setOrigin(origin);
+            return reference;
+          }
+        });
     } else {
       throw new IOException("unknown reference type");
     }

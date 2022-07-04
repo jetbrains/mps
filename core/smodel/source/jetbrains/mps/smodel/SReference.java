@@ -16,6 +16,8 @@
 package jetbrains.mps.smodel;
 
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.smodel.AssociationData.DirectNode;
+import jetbrains.mps.smodel.AssociationData.IndirectNodePtr;
 import jetbrains.mps.util.InternUtil;
 import jetbrains.mps.util.WeakSet;
 import org.jetbrains.annotations.NotNull;
@@ -54,9 +56,10 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
     // XXX 1 use in SNode impl
     if (sourceNode.getModel() != null && targetNode.getModel() != null) {
       // 'mature' reference
-      return new StaticReference(id, sourceNode, targetNode.getModel().getReference(), targetNode.getNodeId(), targetNode.getName());
+      final IndirectNodePtr ad = new IndirectNodePtr(targetNode.getModel().getReference(), targetNode.getNodeId(), targetNode.getName());
+      return new StaticReference(id, sourceNode, ad);
     }
-    return new StaticReference(id, sourceNode, targetNode);
+    return new StaticReference(id, sourceNode, new DirectNode(targetNode));
   }
 
   /**
@@ -68,12 +71,13 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
     return create(role, sourceNode, targetModelReference, targetNodeId, null);
   }
   /**
+   * create 'mature' reference
    * @deprecated see {@link #create(SReferenceLink, SNode, SNode)}, above, for explanation
    */
   @Deprecated(since = "2021.2")
   public static SReference create(SReferenceLink role, SNode sourceNode, SModelReference targetModelReference, SNodeId targetNodeId, String resolveInfo) {
     // XXX no uses of the method in MPS outside of this class
-    return new StaticReference(role, sourceNode, targetModelReference, targetNodeId, resolveInfo);
+    return new StaticReference(role, sourceNode, new IndirectNodePtr(targetModelReference, targetNodeId, resolveInfo));
   }
   /**
    * @deprecated see {@link #create(SReferenceLink, SNode, SNode)}, above, for explanation
