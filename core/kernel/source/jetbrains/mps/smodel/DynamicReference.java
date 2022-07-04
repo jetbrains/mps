@@ -19,6 +19,8 @@ import jetbrains.mps.extapi.model.ResolveInfoExt;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.Scope;
+import jetbrains.mps.smodel.AssociationData.DynamicPtr;
+import jetbrains.mps.smodel.AssociationData.DynamicPtrWithOrigin;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.util.InternUtil;
 import org.jetbrains.annotations.NotNull;
@@ -43,13 +45,12 @@ import java.util.Set;
  *       (a) confusing with openapi counterpart; (b) duplicates {@code SReferenceBase}
  * JFI, there's code that filters node references based on {@code SReferenceBase} e.g. to setTargetSModelReference, shall decide if it's correct with respect
  *      to the aforementioned change in superclass
+ * XXX what makes it live in [kernel]? Is it only ModelConstraints or anything else? Can I refactor it to keep the class in [smodel]?
  */
 public final class DynamicReference extends SReferenceBase {
   private static final Logger LOG = Logger.getLogger(DynamicReference.class);
 
-  private volatile String myResolveInfo;
-
-  private DynamicReferenceOrigin myOrigin;
+  private DynamicPtr myData;
 
   // this is for tracking loops in dynref resolving, typically arising from interaction
   // between type system rules and scopes
@@ -75,16 +76,16 @@ public final class DynamicReference extends SReferenceBase {
    */
   @Deprecated(forRemoval = true, since = "2022.2")
   public DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @Nullable SModelReference targetModelReference, String resolveInfo) {
-    this(role, sourceNode, resolveInfo);
+    this(role, sourceNode, new DynamicPtr(resolveInfo));
   }
 
   public static DynamicReference createDynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @Nullable String modelName, String resolveInfo) {
-    return new DynamicReference(role, sourceNode, resolveInfo);
+    return new DynamicReference(role, sourceNode, new DynamicPtr(resolveInfo));
   }
 
-  private DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, String resolveInfo) {
+  private DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @NotNull DynamicPtr data) {
     super(role, sourceNode);
-    setResolveInfo(resolveInfo);
+    myData = data;
   }
 
   @Override
@@ -178,13 +179,14 @@ public final class DynamicReference extends SReferenceBase {
     Set<DynamicReference> refs = currentlySourceNodeLogged.get();
     try {
       refs.add(this);
-      if (myOrigin != null) {
+      if (myData instanceof DynamicPtrWithOrigin) {
+        final DynamicPtrWithOrigin dpo = (DynamicPtrWithOrigin) myData;
         List<ProblemDescription> result = new ArrayList<>(2);
-        if (myOrigin.getInputNode() != null) {
-          result.add(new ProblemDescription(myOrigin.getInputNode(), " -- was input: " + myOrigin.getInputNode().toString()));
+        if (dpo.getOriginInput() != null) {
+          result.add(new ProblemDescription(dpo.getOriginInput(), " -- was input: " + dpo.getOriginInput()));
         }
-        if (myOrigin.getTemplate() != null) {
-          result.add(new ProblemDescription(myOrigin.getTemplate(), " -- was template: " + myOrigin.getTemplate().toString()));
+        if (dpo.getOriginTemplate() != null) {
+          result.add(new ProblemDescription(dpo.getOriginTemplate(), " -- was template: " + dpo.getOriginTemplate()));
         }
         if (result.size() > 0) {
           report.error(message, result.toArray(new ProblemDescription[0]));
@@ -198,26 +200,38 @@ public final class DynamicReference extends SReferenceBase {
   }
 
   public String getResolveInfo() {
-    return myResolveInfo;
+    return myData.getRI();
   }
 
   public void setResolveInfo(String info) {
-    myResolveInfo = InternUtil.intern(info);
+    myData = myData.withRI(InternUtil.intern(info));
   }
 
   @NotNull
   @Override
   public ResolveInfo describeTarget() {
-    return new DRI(myOrigin, getResolveInfo());
+    // myData is immutable
+    return new DRI(myData);
   }
 
   @Nullable
   public DynamicReferenceOrigin getOrigin() {
-    return myOrigin;
+    DynamicReferenceOrigin origin = null;
+    if (myData instanceof DynamicPtrWithOrigin) {
+      final DynamicPtrWithOrigin dpo = (DynamicPtrWithOrigin) myData;
+      origin = new DynamicReferenceOrigin(dpo.getOriginTemplate(), dpo.getOriginInput());
+    }
+    return origin;
   }
 
   public void setOrigin(@Nullable DynamicReferenceOrigin origin) {
-    myOrigin = origin;
+    if (origin == null) {
+      if (myData instanceof DynamicPtrWithOrigin) {
+        myData = new DynamicPtr(myData.getRI());
+      } // else no reason to do anything
+    } else {
+      myData = new DynamicPtrWithOrigin(myData.getRI(), origin.getTemplate(), origin.getInputNode());
+    }
   }
 
   @Immutable
@@ -240,19 +254,15 @@ public final class DynamicReference extends SReferenceBase {
   }
 
   private static class DRI implements ResolveInfo, ResolveInfoExt {
-    private final DynamicReferenceOrigin myOrigin;
-    private final String myResolveInfo;
+    private final DynamicPtr myResolveInfo;
 
-    private DRI(@Nullable DynamicReferenceOrigin origin, String resolveInfo) {
-      myOrigin = origin;
+    private DRI(DynamicPtr resolveInfo) {
       myResolveInfo = resolveInfo;
     }
 
     @Override
     public SReference create(@NotNull SNode source, @NotNull SReferenceLink link) {
-      final DynamicReference dr = new DynamicReference(link, source, myResolveInfo);
-      dr.setOrigin(myOrigin);
-      return dr;
+      return new DynamicReference(link, source, myResolveInfo);
     }
   }
 }

@@ -3,10 +3,12 @@
  */
 package jetbrains.mps.smodel;
 
+import org.jetbrains.mps.annotations.Immutable;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
+import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.util.Objects;
 
@@ -16,6 +18,7 @@ import java.util.Objects;
  * @author Artem Tikhomirov
  * @since 2022.2
  */
+@Immutable
 /*package*/ interface AssociationData {
   // FIXME need to decide how to represent 'broken' data and if isDirectNode() mandates immature myImmatureTargetNode != null
   //       perhaps, shall go with isIndirect() instead, but need to be careful not to treat !isIndirect() as myImmatureTargetNode != null
@@ -172,6 +175,70 @@ import java.util.Objects;
     @Override
     public SModelReference getTargetModel() {
       return myTargetModelReference;
+    }
+  }
+
+  class DynamicPtr implements AssociationData {
+    private final String myResolveInfo;
+
+    DynamicPtr(String resolveInfo) {
+      myResolveInfo = resolveInfo;
+    }
+
+    @Override
+    public final boolean isDirectNode() {
+      return false;
+    }
+
+    @Override
+    public DynamicPtr withRI(String resolveInfo) {
+      if (Objects.equals(myResolveInfo, resolveInfo)) {
+        return this;
+      }
+      return new DynamicPtr(resolveInfo);
+    }
+
+    @Override
+    public String getRI() {
+      return myResolveInfo;
+    }
+
+    @Override
+    public SNodeId getTargetNode() {
+      return null;
+    }
+
+    @Override
+    public SModelReference getTargetModel() {
+      return null;
+    }
+  }
+
+  final class DynamicPtrWithOrigin extends DynamicPtr {
+    private SNodeReference myTemplate;
+    private SNodeReference myInputNode;
+
+    // can't use DynamicReference.DynamicReferenceOrigin here ([smodel]AssociationData vs [kernel]DynamicReference)
+    DynamicPtrWithOrigin(String resolveInfo, SNodeReference template, SNodeReference inputNode) {
+      super(resolveInfo);
+      myTemplate = template;
+      myInputNode = inputNode;
+    }
+
+    SNodeReference getOriginTemplate() {
+      return myTemplate;
+    }
+
+    SNodeReference getOriginInput() {
+      return myInputNode;
+    }
+
+    @Override
+    public DynamicPtr withRI(String resolveInfo) {
+      if (Objects.equals(getRI(),resolveInfo)) {
+        return this;
+      }
+      return new DynamicPtrWithOrigin(resolveInfo, myTemplate, myInputNode);
     }
   }
 }
