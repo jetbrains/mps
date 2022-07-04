@@ -456,7 +456,17 @@ public class SNode implements org.jetbrains.mps.openapi.model.SNode {
       child.makeReferencesIndirect();
     }
   }
-
+/*
+  /*package* / final __makeReferencesIndirect(SReferenceLink link) {
+    for (int i = 1, x = myReferences.length; i < x; i+=2) {
+      AssociationData d = myReferences[i];
+      if (d == null || !d.isDirectNode() || (link != null && !link.equals(myReferences[i-1]))) {
+        continue;
+      }
+      myReferences[i] = d.makeIndirect();
+    }
+  }
+*/
   /**
    * for a subtree starting at this node, ask all references to point to an actual target node object instead of by-name/by-id value.
    * This operation usually precedes detachment of a node/subtree. Direct object pointer then facilitates reference access operations from

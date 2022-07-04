@@ -9,8 +9,11 @@ import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.module.SRepository;
 
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * internal data that describes association relation between nodes
@@ -239,6 +242,89 @@ import java.util.Objects;
         return this;
       }
       return new DynamicPtrWithOrigin(resolveInfo, myTemplate, myInputNode);
+    }
+  }
+
+  /*package*/ final class Transition {
+    Transition() {
+      // FIXME takes command context? but it might not be effective to mandate its instance?
+    }
+
+    // aka makeMature
+    // all arguments are not null
+    AssociationData makeIndirect(AssociationData data, Function<SNode, String> getResolveInfo) {
+      if (!data.isDirectNode()) {
+        return data;
+      }
+      final SNode immatureNode = ((DirectNode)data).myImmatureTargetNode;
+      SNodeId targetNodeId = immatureNode.getNodeId();
+      final SModel targetModel = immatureNode.getModel();
+      SModelReference targetModelReference = targetModel == null ? null : targetModel.getReference();
+      final String resolveInfo = getResolveInfo.apply(immatureNode);
+      return new IndirectNodePtr(targetModelReference, targetNodeId, resolveInfo);
+    }
+
+    // all arguments are not null
+    AssociationData makeDirect(AssociationData data, Supplier<SModel> fairTargetModel) {
+      if (data.isDirectNode()) {
+        return data;
+      }
+      final SNodeId targetNodeId = data.getTargetNode();
+      if (targetNodeId == null) {
+        return data; // keep as is
+      }
+      final SModel targetModel = fairTargetModel.get();
+      if (targetModel == null) {
+        return data; // keep as is
+      }
+      SNode targetNode = targetModel.getNode(targetNodeId);
+      if (targetNode == null) {
+        targetNode = commandContext(targetModel).resolveUnregistered(targetNodeId);
+      }
+      if (targetNode != null) {
+        // we intentionally leave old value in myTargetModelReference (and could leave myTargetNodeId, too, but it's not in use at the moment)
+        // to address scenario (III) outlined in #getTargetSModelReference(), above.
+        return new ConvertedDirectNode(targetNode, data.getRI(), data.getTargetModel());
+      }
+      // ELSE LEAVE IndirectNodePtr AS IS!
+      // Explanation:
+      // I don't want to create ConvertedDirectNode with cdn.myImmatureTargetNode == null
+      // Old code did `myImmatureTargetNode = targetNode` (==null), but left all other fields intact, which left the whole SReference instance in a state
+      // as if it was 'mature' (immature was conditioned myImmatureTargetNode == null; with no fields reset no way to tell the difference).
+      // I thought that no code relied on that behavior, at least deliberately. However,
+      // there are scenarios where this is vital. E.g. TransientModel, detached from a repository (during generation), and something like
+      // mbeddr/modules.gen/sortContent post-processing script:
+      // nlist<> copy = node.children;
+      // sort(copy);
+      // node.children.clear;
+      // node.children.addAll(copy);
+      // The moment we makeDirect a reference that points to a node already removed (comes earlier in 'children'), targetModel.getNode(targetNodeId) == null,
+      // commandContext is EMPTY (remember, transient generator model), and ConvertedDirectNode(null,,) has no chance to resolve back to re-arranged node.
+      // I wonder if I'd better keep different RefData (e.g. both with model prt and node id). FWIW, I feel makeDirect()/makeIndirect() activities
+      // for transient models is not right, and perhaps should be avoided. But now
+      //    (a) there's no mechanism to control reference handling in transient models (it's SNode#makeReferencesDirect()
+      //        while I've got custom SModel impl only);
+      //    (b) need to fix CloneUtil to clone all nodes first, keep map and then update local reference targets from the map;
+      //    (c) need to account for transientModel.unload() scenario, where 'immature' references may break (see MPS-23902)
+      // Another alternative is not to avoid direct/indirect transition, but to do it 'right', with proper commandContext and tracked removed/unregistered nodes
+      //   (although this might be expensive performance-wise)
+
+      return data; // keep as is
+    }
+
+    private static ModelCommandContext commandContext(SModel targetModel) {
+      // took repo from target model, assume MA is the same as the one for source's repo.
+      // Indeed, need to have clear contract what happens if source node is inside a repo, while target is not.
+      // I assume getTargetModel[_Fair] is not supposed to give target model in that case, therefore would have failed sooner than get to this method
+      final SRepository repo = targetModel.getRepository();
+      if (repo != null && repo.getModelAccess() instanceof ModelCommandContext.Provider) {
+        final ModelCommandContext cc = ((ModelCommandContext.Provider) repo.getModelAccess()).getCommandContext(targetModel);
+        if (cc != null) {
+          return cc;
+        }
+        // fall-through
+      }
+      return ModelCommandContext.EMPTY;
     }
   }
 }

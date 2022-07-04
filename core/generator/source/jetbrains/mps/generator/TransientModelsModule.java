@@ -29,6 +29,7 @@ import jetbrains.mps.smodel.ModelDependencyUpdate;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.smodel.SModelHeader;
 import jetbrains.mps.smodel.SModelId.IntegerSModelId;
+import jetbrains.mps.smodel.SNodeImplAccess;
 import jetbrains.mps.smodel.loading.ModelLoadingState;
 import jetbrains.mps.util.containers.ConcurrentHashSet;
 import org.jetbrains.annotations.NotNull;
@@ -37,8 +38,6 @@ import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelId;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
-import org.jetbrains.mps.openapi.model.SReference;
 import org.jetbrains.mps.openapi.module.SDependency;
 import org.jetbrains.mps.openapi.module.SDependencyScope;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -59,7 +58,7 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
 
   private final TransientModelsProvider myComponent;
 
-  private Set<SModel> myPublished = new ConcurrentHashSet<>();
+  private final Set<SModel> myPublished = new ConcurrentHashSet<>();
   private final ModelVault<TransientSModelDescriptor> myModelVault = new ModelVault<>();
 
   private final Map<String, GenerationTrace> myTraces = new HashMap<>();
@@ -451,16 +450,11 @@ public class TransientModelsModule extends AbstractModule implements TransientSM
     }
 
     public void makeRefsMature() {
-      for ( SNode n : SNodeUtil.getDescendants(getRootNodes())) {
-        for (SReference r : n.getReferences()) {
-          // don't want instanceof StaticReference to avoid mentioning exact class;
-          // OTOH, odd to have instanceof j.m.smodel.SReference as it's base implementation class for all references anyway.
-          // Perhaps, could move the method into API or get rid of this explicit stuff altogether.
-          ((jetbrains.mps.smodel.SReference) r).makeIndirect();
-          // XXX makeIndirect() doesn't force 'maturing' of references to hanging nodes (from models not in repository)
-          //     I wonder if transient model happen to have a reference to a checkpoint model, does it mean we fail to
-          //     serialize these? Is it an issue?
-        }
+      for ( SNode n : getRootNodes()) {
+        new SNodeImplAccess(n).makeReferencesIndirect();
+        // XXX makeIndirect() doesn't force 'maturing' of references to hanging nodes (from models not in repository)
+        //     I wonder if transient model happen to have a reference to a checkpoint model, does it mean we fail to
+        //     serialize these? Is it an issue?
       }
     }
 
