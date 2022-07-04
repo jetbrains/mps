@@ -8,6 +8,7 @@ import jetbrains.mps.extapi.model.ModelWithDisposeInfo;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.AssociationData.DirectNode;
 import jetbrains.mps.smodel.AssociationData.IndirectNodePtr;
+import jetbrains.mps.smodel.AssociationData.SNodeAssociationUpdate;
 import jetbrains.mps.smodel.AssociationData.Transition;
 import jetbrains.mps.util.InternUtil;
 import org.jetbrains.annotations.NotNull;
@@ -35,7 +36,7 @@ public final class StaticReference extends SReferenceBase {
    * Clients shall not instantiate SReference or its subclass directly, use {@link SNode#setReference(SReferenceLink, ResolveInfo)} instead.
    * This constructor is for transitional access from SReference.create() methods
    */
-  StaticReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @NotNull AssociationData data) {
+  /*package*/ StaticReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @NotNull AssociationData data) {
     super(role, sourceNode);
     assert data instanceof DirectNode || data instanceof IndirectNodePtr; // i.e. !DynamicPtr
     myData = data;
@@ -227,6 +228,10 @@ public final class StaticReference extends SReferenceBase {
       return null;
     }
     final SModel current = getSourceNode().getModel();
+    return getTargetModel_Fair_ProvisionalStatic(targetModelReference, current);
+  }
+
+  /*package*/ static SModel getTargetModel_Fair_ProvisionalStatic(SModelReference targetModelReference, SModel current) {
     // target points to the same model
     if (current != null && current.getReference().equals(targetModelReference)) {
       return current;
@@ -254,14 +259,16 @@ public final class StaticReference extends SReferenceBase {
     if (d.isDirectNode()) {
       return;
     }
+    // FIXME basically, getTargetModel_Fair accesses d.getTargetModel, could be done inside makeDirect()
     setData(new Transition().makeDirect(d, this::getTargetModel_Fair));
   }
 
   @Nullable
-  private static String getResolveInfo(SNode immatureNode) {
+  /*package*/ static String getResolveInfo(SNode immatureNode) {
     // FIXME need a better approach to keep names of predefined attributes;
     // however, a dependency to generated kernel module is an overkill for the sake of few strings
     // XXX move both smodel.SNode and SNodeLegacy to [smodel], why it's in [kernel]?
+    // If all uses of this method happen to be part of [kernel] impl classes, may want to use SNodeUtil-generated property constant here
     String value = immatureNode.getProperty("resolveInfo");
     if (value != null) {
       return value;
@@ -353,11 +360,14 @@ public final class StaticReference extends SReferenceBase {
     setData(getData().withRI(InternUtil.intern(info)));
   }
 
-  private AssociationData getData() {
+  @Override
+  /*package*/ AssociationData getData() {
+    // FIXME do I want to keep a copy or would I like to go to SNode impl each time to pick up actual AssociationData?
     return myData;
   }
 
   private void setData(AssociationData data) {
+    ((SNodeAssociationUpdate) mySourceNode).updateAssociation(getLink(), myData, data);
     myData = data;
   }
 

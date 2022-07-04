@@ -3,11 +3,12 @@
  */
 package jetbrains.mps.smodel;
 
+import jetbrains.mps.smodel.AssociationData.DynamicPtr;
+import jetbrains.mps.smodel.AssociationData.Transition;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.annotations.Internal;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
-import org.jetbrains.mps.openapi.model.SReference;
 
 /**
  * INTERNAL CODE, DO NOT USE OUTSIDE OF MPS. DON'T EVEN USE IN MPS UNLESS YOU 146% SURE YOU KNOW WHAT YOU'RE DOING
@@ -30,23 +31,26 @@ public final class SNodeImplAccess {
 
   // for a subtree starting with initial node
   public void makeReferencesDirect() {
-    myNode.makeReferencesDirect();
+    Transition transition = new Transition();
+    final SModel current = myNode.getModel();
+    myNode.forEachAssociationDeep(data -> transition.makeDirect(data, () -> StaticReference.getTargetModel_Fair_ProvisionalStatic(data.getTargetModel(), current)));
   }
 
   // for a subtree starting with initial node; but only references that point to given model
-  public void makeReferencesDirectWhen(@NotNull SModelReference target) {
-    // FIXME ineffective impl, the only benefit it hides StaticReference.makeDirect from outside world. Would be great to get into smodel.SNode impl
-    for (org.jetbrains.mps.openapi.model.SNode n : SNodeUtil.getDescendants(myNode)) {
-      for (SReference r : n.getReferences()) {
-        if (r instanceof StaticReference && target.equals(r.getTargetSModelReference())) {
-          ((StaticReference) r).makeDirect();
-        }
+  public void makeReferencesDirectWhen(@NotNull final SModelReference target) {
+    Transition transition = new Transition();
+    final SModel current = myNode.getModel();
+    myNode.forEachAssociationDeep(data -> {
+      if (data.isDirectNode() || data instanceof DynamicPtr || !target.equals(data.getTargetModel())) {
+        return data;
       }
-    }
+      return transition.makeDirect(data, () -> StaticReference.getTargetModel_Fair_ProvisionalStatic(data.getTargetModel(), current));
+    });
   }
 
   // for a subtree starting with initial node
   public void makeReferencesIndirect() {
-    myNode.makeReferencesIndirect();
+    final Transition transition = new Transition();
+    myNode.forEachAssociationDeep(data -> transition.makeIndirect(data, StaticReference::getResolveInfo));
   }
 }

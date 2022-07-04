@@ -4,6 +4,7 @@
 package jetbrains.mps.smodel;
 
 import org.jetbrains.mps.annotations.Immutable;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -254,6 +255,7 @@ import java.util.function.Supplier;
     // all arguments are not null
     AssociationData makeIndirect(AssociationData data, Function<SNode, String> getResolveInfo) {
       if (!data.isDirectNode()) {
+        // also covers DynamicPtr condition
         return data;
       }
       final SNode immatureNode = ((DirectNode)data).myImmatureTargetNode;
@@ -266,7 +268,7 @@ import java.util.function.Supplier;
 
     // all arguments are not null
     AssociationData makeDirect(AssociationData data, Supplier<SModel> fairTargetModel) {
-      if (data.isDirectNode()) {
+      if (data.isDirectNode() || data instanceof DynamicPtr) {
         return data;
       }
       final SNodeId targetNodeId = data.getTargetNode();
@@ -326,5 +328,10 @@ import java.util.function.Supplier;
       }
       return ModelCommandContext.EMPTY;
     }
+  }
+
+  // provisional mechanism to access [kernel]SNode from [smodel]StaticReference
+  /*package*/ interface SNodeAssociationUpdate {
+    void updateAssociation(SReferenceLink link, AssociationData oldRef, AssociationData newRef);
   }
 }

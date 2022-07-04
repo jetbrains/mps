@@ -152,6 +152,11 @@ public abstract class SReference implements org.jetbrains.mps.openapi.model.SRef
     // no-op
   }
 
+  /*package*/ AssociationData getData() {
+    // FIXME shall be abstract but might require change in MPS-extensions or mbeddr
+    return null;
+  }
+
   protected abstract SNode getTargetNode_internal(/*not null*/ ProblemReporter reporter);
 
   //-------- error logging -----------

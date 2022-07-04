@@ -21,6 +21,7 @@ import jetbrains.mps.scope.ErrorScope;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.AssociationData.DynamicPtr;
 import jetbrains.mps.smodel.AssociationData.DynamicPtrWithOrigin;
+import jetbrains.mps.smodel.AssociationData.SNodeAssociationUpdate;
 import jetbrains.mps.smodel.constraints.ModelConstraints;
 import jetbrains.mps.util.InternUtil;
 import org.jetbrains.annotations.NotNull;
@@ -83,7 +84,7 @@ public final class DynamicReference extends SReferenceBase {
     return new DynamicReference(role, sourceNode, new DynamicPtr(resolveInfo));
   }
 
-  private DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @NotNull DynamicPtr data) {
+  /*package*/ DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @NotNull DynamicPtr data) {
     super(role, sourceNode);
     myData = data;
   }
@@ -204,7 +205,7 @@ public final class DynamicReference extends SReferenceBase {
   }
 
   public void setResolveInfo(String info) {
-    myData = myData.withRI(InternUtil.intern(info));
+    setData(myData.withRI(InternUtil.intern(info)));
   }
 
   @NotNull
@@ -227,11 +228,21 @@ public final class DynamicReference extends SReferenceBase {
   public void setOrigin(@Nullable DynamicReferenceOrigin origin) {
     if (origin == null) {
       if (myData instanceof DynamicPtrWithOrigin) {
-        myData = new DynamicPtr(myData.getRI());
+        setData(new DynamicPtr(myData.getRI()));
       } // else no reason to do anything
     } else {
-      myData = new DynamicPtrWithOrigin(myData.getRI(), origin.getTemplate(), origin.getInputNode());
+      setData(new DynamicPtrWithOrigin(myData.getRI(), origin.getTemplate(), origin.getInputNode()));
     }
+  }
+
+  @Override
+  /*package*/ AssociationData getData() {
+    return myData;
+  }
+
+  private void setData(DynamicPtr data) {
+    ((SNodeAssociationUpdate) mySourceNode).updateAssociation(getLink(), myData, data);
+    myData = data;
   }
 
   @Immutable
