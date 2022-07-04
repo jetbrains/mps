@@ -17,6 +17,7 @@ package jetbrains.mps.generator.impl;
 
 import jetbrains.mps.generator.GenerationCanceledException;
 import jetbrains.mps.generator.GenerationOptions;
+import jetbrains.mps.generator.GenerationParametersProvider;
 import jetbrains.mps.generator.GenerationStatus;
 import jetbrains.mps.generator.GenerationTrace;
 import jetbrains.mps.generator.GeneratorTask;
@@ -115,9 +116,13 @@ public class GenerationController implements ITaskPoolProvider {
       : new NullPerformanceTracer();
 
     boolean traceTypes = myOptions.getTracingMode() == GenerationOptions.TRACE_TYPES;
-    Flags flags = Flags.generator().withParameters(myOptions.getParametersProvider().getDefaultParameters());
+    Flags flags = Flags.generator();
     if (traceTypes) {
       flags = flags.withTracer(ttrace);
+    }
+    GenerationParametersProvider parametersProvider = myOptions.getParametersProvider();
+    if (parametersProvider != null) {
+      flags = flags.withParameters(parametersProvider.getDefaultParameters());
     }
     Handle typecheckingSessionToken = TypecheckingFacade.getFromContext().requestNewSession(flags);
 
