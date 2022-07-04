@@ -40,6 +40,11 @@ public class DefaultGenerationParametersProvider implements GenerationParameters
     return new DelegatingMapWithDefaults<>(params, defaultParams);
   }
 
+  @Override
+  public Map<String, Object> getDefaultParameters() {
+    return Collections.unmodifiableMap(defaultParams);
+  }
+
   public void addParameter (String key, Object value) {
     addParameter(null, key, value);
   }
