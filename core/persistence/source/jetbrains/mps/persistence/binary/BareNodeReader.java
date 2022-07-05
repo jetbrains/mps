@@ -163,14 +163,7 @@ public class BareNodeReader {
         node.setReference(sref, ResolveInfo.of(resolveInfo));
       } else if (kind == 3) {
         assert origin != null;
-        node.setReference(sref, new ResolveInfoExt() {
-          @Override
-          public SReference create(@NotNull SNode source, @NotNull SReferenceLink link) {
-            DynamicReference reference = DynamicReference.createDynamicReference(sref, node, null, resolveInfo);
-            reference.setOrigin(origin);
-            return reference;
-          }
-        });
+        node.setReference(sref, (ResolveInfoExt) (source, link) -> DynamicReference.create(sref, node, resolveInfo, origin));
     } else {
       throw new IOException("unknown reference type");
     }

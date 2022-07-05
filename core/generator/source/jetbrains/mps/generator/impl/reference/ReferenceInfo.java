@@ -99,9 +99,11 @@ public abstract class ReferenceInfo {
 
     @Override
     public SReference create(@NotNull SNode source, @NotNull SReferenceLink link) {
-      final DynamicReference dr = DynamicReference.createDynamicReference(link, source, null, myResolveInfo);
-      dr.setOrigin(myOrigin);
-      return dr;
+      if (myOrigin != null) {
+        return DynamicReference.create(link, source, myResolveInfo, myOrigin);
+      } else {
+        return DynamicReference.create(link, source, null, myResolveInfo);
+      }
     }
   }
 }

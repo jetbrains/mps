@@ -84,6 +84,15 @@ public final class DynamicReference extends SReferenceBase {
     return new DynamicReference(role, sourceNode, new DynamicPtr(resolveInfo));
   }
 
+  /**
+   * Use this factory method to create a link with {@code DynamicReferenceOrigin} instead of combination
+   * {@code create()} + {@code setOrigin()}.
+   * @since 2022.2
+   */
+  public static DynamicReference create(@NotNull SReferenceLink role, @NotNull SNode sourceNode, String resolveInfo, @NotNull DynamicReferenceOrigin origin) {
+    return new DynamicReference(role, sourceNode, new DynamicPtrWithOrigin(resolveInfo, origin.getTemplate(), origin.getInputNode()));
+  }
+
   /*package*/ DynamicReference(@NotNull SReferenceLink role, @NotNull SNode sourceNode, @NotNull DynamicPtr data) {
     super(role, sourceNode);
     myData = data;
@@ -225,6 +234,10 @@ public final class DynamicReference extends SReferenceBase {
     return origin;
   }
 
+  /**
+   * XXX change in logic: now could use this method for a reference already associated with a node,
+   *     not for a newly created reference. FIXME perhaps, could change setData() to account for this case
+   */
   public void setOrigin(@Nullable DynamicReferenceOrigin origin) {
     if (origin == null) {
       if (myData instanceof DynamicPtrWithOrigin) {
