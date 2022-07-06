@@ -45,7 +45,7 @@ public final class SubtreeStatisticsTarget__BehaviorDescriptor extends BaseBHDes
     int properties = 0;
     for (SNode node : subNodes) {
       references += IterableUtil.asCollection(node.getReferences()).size();
-      properties += jetbrains.mps.util.SNodeOperations.getProperties(node).keySet().size();
+      properties += IterableUtil.asCollection(node.getProperties()).size();
     }
     List<Tuples._2<String, Integer>> result = ListSequence.fromList(new ArrayList<Tuples._2<String, Integer>>());
     ListSequence.fromList(result).addElement(MultiTuple.<String,Integer>from("Nodes", ListSequence.fromList(subNodes).count()));

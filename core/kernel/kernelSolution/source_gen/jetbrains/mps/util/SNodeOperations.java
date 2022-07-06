@@ -43,6 +43,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static boolean isAncestor(SNode ancestor, SNode node) {
+    // uses in mbeddr
     do {
       if (ancestor == node) {
         return true;
@@ -134,6 +135,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static boolean isRoot(SNode n) {
+    // uses in mbeddt
     return n.getModel() != null && n.getParent() == null;
   }
   /**
@@ -143,6 +145,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static String getDebugText(SNode node) {
+    // a lot of uses
     String roleText = "";
     if (node.getModel() != null) {
       SNode parent = node.getParent();
@@ -181,6 +184,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static Set<SContainmentLink> getChildRoles(SNode n, boolean includeAttributeRoles) {
+    // uses in mbeddr
     final Set<SContainmentLink> augend = new HashSet<SContainmentLink>();
     for (SNode child : n.getChildren()) {
       if (includeAttributeRoles || !(AttributeOperations.isAttribute(child))) {
@@ -272,6 +276,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static String getModelLongName(SModel model) {
+    // uses in mbeddr
     // replaced NameUtil.getModelLongName didn't expect null and returned a qualified name w/o stereotype
     return model.getName().getLongName();
   }
@@ -309,6 +314,7 @@ public class SNodeOperations {
    */
   @Deprecated
   public static boolean isGeneratable(SModel model) {
+    // uses in mbeddr
     // I wonder why this method doesn't reside in SModelOperations
     return model instanceof GeneratableSModel && ((GeneratableSModel) model).isGeneratable();
   }

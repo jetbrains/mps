@@ -1839,21 +1839,21 @@
                 <node concept="37vLTw" id="1NRmRaKH2bH" role="37vLTJ">
                   <ref role="3cqZAo" node="1NRmRaKH2br" resolve="properties" />
                 </node>
-                <node concept="2OqwBi" id="1NRmRaKH2bI" role="37vLTx">
-                  <node concept="2OqwBi" id="1NRmRaKH2bJ" role="2Oq$k0">
-                    <node concept="2YIFZM" id="1NRmRaKH2bK" role="2Oq$k0">
-                      <ref role="1Pybhc" to="18ew:~SNodeOperations" resolve="SNodeOperations" />
-                      <ref role="37wK5l" to="18ew:~SNodeOperations.getProperties(org.jetbrains.mps.openapi.model.SNode)" resolve="getProperties" />
-                      <node concept="37vLTw" id="1NRmRaKH2bL" role="37wK5m">
+                <node concept="2OqwBi" id="48aAfqzsD$0" role="37vLTx">
+                  <node concept="2YIFZM" id="48aAfqzsz3q" role="2Oq$k0">
+                    <ref role="1Pybhc" to="18ew:~IterableUtil" resolve="IterableUtil" />
+                    <ref role="37wK5l" to="18ew:~IterableUtil.asCollection(java.lang.Iterable)" resolve="asCollection" />
+                    <node concept="2OqwBi" id="48aAfqzsAfW" role="37wK5m">
+                      <node concept="37vLTw" id="48aAfqzs$un" role="2Oq$k0">
                         <ref role="3cqZAo" node="1NRmRaKH2bv" resolve="node" />
                       </node>
-                    </node>
-                    <node concept="liA8E" id="1NRmRaKH2bM" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~Map.keySet()" resolve="keySet" />
+                      <node concept="liA8E" id="48aAfqzsBFS" role="2OqNvi">
+                        <ref role="37wK5l" to="mhbf:~SNode.getProperties()" resolve="getProperties" />
+                      </node>
                     </node>
                   </node>
-                  <node concept="liA8E" id="1NRmRaKH2bN" role="2OqNvi">
-                    <ref role="37wK5l" to="33ny:~Set.size()" resolve="size" />
+                  <node concept="liA8E" id="48aAfqzsG34" role="2OqNvi">
+                    <ref role="37wK5l" to="33ny:~Collection.size()" resolve="size" />
                   </node>
                 </node>
               </node>
