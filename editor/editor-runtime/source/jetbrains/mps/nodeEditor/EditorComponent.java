@@ -281,7 +281,10 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     if (isDisposed()) {
       return;
     }
+    releaseTypecheckingSession(true);
+    requestTypecheckingSession();
     rebuildEditorContent();
+    refreshContentHighlighter();
     refreshHighlighter();
   });
 
