@@ -4125,7 +4125,7 @@
     <property role="3GE5qa" value="expression.this" />
     <property role="TrG5h" value="IThisReceiverProvider" />
     <node concept="PrWs8" id="1VgEGDnBxlc" role="PrDN$">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+      <ref role="PrY4T" node="2yYXHtl6JcK" resolve="IIdentifier" />
     </node>
     <node concept="PrWs8" id="5p_0HFf8ian" role="PrDN$">
       <ref role="PrY4T" node="7DyvjiA1ZY9" resolve="ISignatureScopeProvider" />
