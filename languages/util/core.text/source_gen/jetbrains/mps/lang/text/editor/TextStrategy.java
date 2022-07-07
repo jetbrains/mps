@@ -54,8 +54,11 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
         return !(SNodeOperations.getContainingLink(it).isMultiple());
       }
     });
-    assert Sequence.fromIterable(lines).count() <= 1;
-    return Sequence.fromIterable(lines).first();
+    if (Sequence.fromIterable(lines).count() <= 1) {
+      return Sequence.fromIterable(lines).first();
+    } else {
+      return null;
+    }
   }
 
   /**
