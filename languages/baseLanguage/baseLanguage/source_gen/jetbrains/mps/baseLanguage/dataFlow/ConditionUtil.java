@@ -46,7 +46,7 @@ public class ConditionUtil {
       return null;
     }
     Object compileTimeConstantValue = Expression__BehaviorDescriptor.getCompileTimeConstantValue_idi1LP2xI.invoke(expr, SNodeOperations.getModel(expr).getModule());
-    if ((compileTimeConstantValue instanceof Boolean)) {
+    if ((boolean) Expression__BehaviorDescriptor.isCompileTimeConstant_idi1LOPRp.invoke(expr) && (compileTimeConstantValue instanceof Boolean)) {
       return (Boolean) compileTimeConstantValue;
     } else {
       // Handle effectively final boolean variables

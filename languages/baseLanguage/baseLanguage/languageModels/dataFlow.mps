@@ -8760,13 +8760,23 @@
               </node>
             </node>
           </node>
-          <node concept="1eOMI4" id="2okrWkj3I7K" role="3clFbw">
-            <node concept="2ZW3vV" id="2okrWkj3I7L" role="1eOMHV">
-              <node concept="3uibUv" id="2okrWkj3I7M" role="2ZW6by">
-                <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
+          <node concept="1Wc70l" id="7mWwX6RTkDC" role="3clFbw">
+            <node concept="2OqwBi" id="7mWwX6RTm95" role="3uHU7B">
+              <node concept="37vLTw" id="7mWwX6RTlvZ" role="2Oq$k0">
+                <ref role="3cqZAo" node="2okrWkj3I7O" resolve="expr" />
               </node>
-              <node concept="37vLTw" id="2okrWkj3I7N" role="2ZW6bz">
-                <ref role="3cqZAo" node="2okrWkj3I5B" resolve="compileTimeConstantValue" />
+              <node concept="2qgKlT" id="7mWwX6RTmQ1" role="2OqNvi">
+                <ref role="37wK5l" to="tpek:i1LOPRp" resolve="isCompileTimeConstant" />
+              </node>
+            </node>
+            <node concept="1eOMI4" id="2okrWkj3I7K" role="3uHU7w">
+              <node concept="2ZW3vV" id="2okrWkj3I7L" role="1eOMHV">
+                <node concept="3uibUv" id="2okrWkj3I7M" role="2ZW6by">
+                  <ref role="3uigEE" to="wyt6:~Boolean" resolve="Boolean" />
+                </node>
+                <node concept="37vLTw" id="2okrWkj3I7N" role="2ZW6bz">
+                  <ref role="3cqZAo" node="2okrWkj3I5B" resolve="compileTimeConstantValue" />
+                </node>
               </node>
             </node>
           </node>
