@@ -32,6 +32,11 @@ public final class ModuleActivator implements ModuleRuntime.Activator {
       myFacetRegistry.register(langBL, javaCompileFacet);
       myFacetRegistry.register(langBL, reloadClassesFacet);
       myFacetRegistry.register(langCore, makeFacet);
+
+      // Also register kotlin
+      SLanguage langKotlin = MetaAdapterFactory.getLanguage(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, "jetbrains.mps.kotlin");
+      myFacetRegistry.register(langKotlin, javaCompileFacet);
+      myFacetRegistry.register(langKotlin, reloadClassesFacet);
     } catch (Throwable t) {
       throw new RuntimeException(t);
     }

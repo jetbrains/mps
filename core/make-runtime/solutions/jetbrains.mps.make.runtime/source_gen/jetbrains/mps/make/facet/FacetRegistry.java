@@ -57,7 +57,9 @@ public final class FacetRegistry implements CoreComponent {
   @Deprecated(forRemoval = true)
   public void register(IFacet facet) {
     if (MapSequence.fromMap(facetMap).containsKey(facet.getName())) {
-      throw new IllegalArgumentException("already registered");
+      // Allow multiple registrations
+      // TODO actually remove that if?
+      return;
     }
     MapSequence.fromMap(facetMap).put(facet.getName(), facet);
   }

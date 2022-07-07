@@ -2313,6 +2313,66 @@
                 </node>
               </node>
             </node>
+            <node concept="3clFbH" id="2NAkxyrkGKP" role="3cqZAp" />
+            <node concept="3SKdUt" id="2NAkxyrkHQI" role="3cqZAp">
+              <node concept="1PaTwC" id="2NAkxyrkHQJ" role="1aUNEU">
+                <node concept="3oM_SD" id="2NAkxyrkHRK" role="1PaTwD">
+                  <property role="3oM_SC" value="Also" />
+                </node>
+                <node concept="3oM_SD" id="2NAkxyrkIi5" role="1PaTwD">
+                  <property role="3oM_SC" value="register" />
+                </node>
+                <node concept="3oM_SD" id="2NAkxyrkIj6" role="1PaTwD">
+                  <property role="3oM_SC" value="kotlin" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="2NAkxyrkIlc" role="3cqZAp">
+              <node concept="3cpWsn" id="2NAkxyrkIld" role="3cpWs9">
+                <property role="TrG5h" value="langKotlin" />
+                <node concept="3uibUv" id="2NAkxyrkIle" role="1tU5fm">
+                  <ref role="3uigEE" to="c17a:~SLanguage" resolve="SLanguage" />
+                </node>
+                <node concept="pHN19" id="2NAkxyrkIlf" role="33vP2m">
+                  <node concept="2V$Bhx" id="2NAkxyrkKBV" role="2V$M_3">
+                    <property role="2V$B1T" value="6b3888c1-9802-44d8-8baf-f8e6c33ed689" />
+                    <property role="2V$B1Q" value="jetbrains.mps.kotlin" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="2NAkxyrkIlh" role="3cqZAp">
+              <node concept="2OqwBi" id="2NAkxyrkIli" role="3clFbG">
+                <node concept="liA8E" id="2NAkxyrkIlj" role="2OqNvi">
+                  <ref role="37wK5l" to="ud0o:3Ch7xrc0mSJ" resolve="register" />
+                  <node concept="37vLTw" id="2NAkxyrkIlk" role="37wK5m">
+                    <ref role="3cqZAo" node="2NAkxyrkIld" resolve="langBL" />
+                  </node>
+                  <node concept="37vLTw" id="2NAkxyrkIll" role="37wK5m">
+                    <ref role="3cqZAo" node="3Ch7xrckpNt" resolve="javaCompileFacet" />
+                  </node>
+                </node>
+                <node concept="37vLTw" id="2NAkxyrkIlm" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3Ch7xrckpNq" resolve="myFacetRegistry" />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="2NAkxyrkIln" role="3cqZAp">
+              <node concept="2OqwBi" id="2NAkxyrkIlo" role="3clFbG">
+                <node concept="liA8E" id="2NAkxyrkIlp" role="2OqNvi">
+                  <ref role="37wK5l" to="ud0o:3Ch7xrc0mSJ" resolve="register" />
+                  <node concept="37vLTw" id="2NAkxyrkIlq" role="37wK5m">
+                    <ref role="3cqZAo" node="2NAkxyrkIld" resolve="langBL" />
+                  </node>
+                  <node concept="37vLTw" id="2NAkxyrkIlr" role="37wK5m">
+                    <ref role="3cqZAo" node="3Ch7xrckpNw" resolve="reloadClassesFacet" />
+                  </node>
+                </node>
+                <node concept="37vLTw" id="2NAkxyrkIls" role="2Oq$k0">
+                  <ref role="3cqZAo" node="3Ch7xrckpNq" resolve="myFacetRegistry" />
+                </node>
+              </node>
+            </node>
           </node>
           <node concept="3uVAMA" id="2O12xy3V5LK" role="1zxBo5">
             <node concept="XOnhg" id="2O12xy3V5LM" role="1zc67B">
