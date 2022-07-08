@@ -10,6 +10,9 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import java.util.ArrayList;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
+import java.util.Objects;
+import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import java.util.Set;
@@ -110,7 +113,18 @@ public class ResolveUtil {
   public static SNode processMethodToImplement(SNode enclosingClassifier, SNode method) {
     SNode declaringClassifier = SNodeOperations.getNodeAncestor(method, CONCEPTS.Classifier$Ix, false, false);
     SNode result = SNodeOperations.copyNode(method);
+
     ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.modifiers$F5MM)).clear();
+    ListSequence.fromList(SLinkOperations.getChildren(result, LINKS.annotation$K49I)).where(new IWhereFilter<SNode>() {
+      public boolean accept(SNode it) {
+        return (SLinkOperations.getTarget(it, LINKS.annotation$12Ek) == null) && Objects.equals((SLinkOperations.getResolveInfo(SNodeOperations.getReference(it, LINKS.annotation$12Ek))), "HotSpotIntrinsicCandidate");
+      }
+    }).visitAll(new IVisitor<SNode>() {
+      public void visit(SNode it) {
+        SNodeOperations.deleteNode(it);
+      }
+    });
+
     List<SNode> initialClassifierTypes = ListSequence.fromList(new ArrayList<SNode>());
     if (SNodeOperations.isInstanceOf(enclosingClassifier, CONCEPTS.ClassConcept$bK)) {
       SNode classConcept = SNodeOperations.cast(enclosingClassifier, CONCEPTS.ClassConcept$bK);
@@ -152,7 +166,7 @@ public class ResolveUtil {
           if (0 <= index && index < ListSequence.fromList(params).count()) {
             SNodeOperations.replaceWithAnother(varRef, SNodeOperations.copyNode(ListSequence.fromList(params).getElement(index)));
           } else {
-            SNodeOperations.replaceWithAnother(varRef, _quotation_createNode_txu8l3_a0a0a0b0c0a0k0i());
+            SNodeOperations.replaceWithAnother(varRef, _quotation_createNode_txu8l3_a0a0a0b0c0a0n0i());
           }
         }
       }
@@ -219,7 +233,7 @@ public class ResolveUtil {
       return false;
     }
   }
-  private static SNode _quotation_createNode_txu8l3_a0a0a0b0c0a0k0i() {
+  private static SNode _quotation_createNode_txu8l3_a0a0a0b0c0a0n0i() {
     SNode quotedNode_1 = null;
     SNodeBuilder nb = new SNodeBuilder(null, null).init(MetaAdapterFactory.getConcept(MetaAdapterFactory.getLanguage(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, "jetbrains.mps.baseLanguage"), 0x101de48bf9eL, "ClassifierType"));
     quotedNode_1 = nb.getResult();
@@ -237,6 +251,8 @@ public class ResolveUtil {
     /*package*/ static final SContainmentLink implementedInterface$rujG = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xff2ac0b419L, "implementedInterface");
     /*package*/ static final SContainmentLink extendedInterface$PDVO = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, 0x101eddadad7L, "extendedInterface");
     /*package*/ static final SContainmentLink modifiers$F5MM = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x203eeb62af522fa5L, 0x203eeb62af522fb1L, "modifiers");
+    /*package*/ static final SContainmentLink annotation$K49I = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6be947aL, 0x114a6beb0bdL, "annotation");
+    /*package*/ static final SReferenceLink annotation$12Ek = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a6b4ccabL, 0x114a6b85d40L, "annotation");
     /*package*/ static final SReferenceLink classifier$q_Y$ = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier");
     /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
     /*package*/ static final SContainmentLink componentType$ypmi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x11c08f42e7bL, 0x11c08f5f38cL, "componentType");
