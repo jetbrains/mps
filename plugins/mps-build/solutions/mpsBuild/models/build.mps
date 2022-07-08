@@ -39163,6 +39163,31 @@
             </node>
           </node>
         </node>
+        <node concept="1SiIV0" id="6yChgC1AklJ" role="3bR37C">
+          <node concept="3bR9La" id="6yChgC1AklK" role="1SiIV1">
+            <ref role="3bR37D" node="mXGwHwhVPj" resolve="JDK" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="6yChgC1AklL" role="3bR37C">
+          <node concept="3bR9La" id="6yChgC1AklM" role="1SiIV1">
+            <ref role="3bR37D" node="44LXwdzyvTi" resolve="Annotations" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="6yChgC1AklN" role="3bR37C">
+          <node concept="3bR9La" id="6yChgC1AklO" role="1SiIV1">
+            <ref role="3bR37D" node="l1L199LeP5" resolve="jetbrains.mps.ide.refactoring" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="6yChgC1AklP" role="3bR37C">
+          <node concept="3bR9La" id="6yChgC1AklQ" role="1SiIV1">
+            <ref role="3bR37D" node="2eDSGe9d1qi" resolve="jetbrains.mps.ide" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="6yChgC1AklR" role="3bR37C">
+          <node concept="3bR9La" id="6yChgC1AklS" role="1SiIV1">
+            <ref role="3bR37D" node="1TaHNgiIbJt" resolve="jetbrains.mps.ide.platform" />
+          </node>
+        </node>
       </node>
       <node concept="1E1JtA" id="6zEiAnm2Tr5" role="2G$12L">
         <property role="BnDLt" value="true" />
