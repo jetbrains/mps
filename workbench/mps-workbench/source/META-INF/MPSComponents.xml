@@ -64,6 +64,9 @@
       <implementation-class>jetbrains.mps.ide.vfs.ProjectRootListenerComponent</implementation-class>
     </component>
     <component>
+      <implementation-class>jetbrains.mps.ide.vfs.ProjectStoreDirAddToVFSSnapshot</implementation-class>
+    </component>
+    <component>
       <interface-class>jetbrains.mps.generator.TransientModelsProvider</interface-class>
       <implementation-class>jetbrains.mps.ide.generator.TransientModelsComponent</implementation-class>
     </component>
