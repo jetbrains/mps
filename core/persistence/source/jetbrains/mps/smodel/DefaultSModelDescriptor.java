@@ -227,7 +227,7 @@ public class DefaultSModelDescriptor extends LazyEditableSModelBase implements G
 
   @Override
   public void setChanged(boolean changed) {
-    if (getRepository() != null && getSource().isReadOnly()) {
+    if (changed && getRepository() != null && getSource().isReadOnly()) {
       if (RuntimeFlags.isInternalMode() || LOG.isInfoLevel()) {
         LOG.error("Attempt to change a model with read-only data source; subsequent save() would fail!", new Throwable());
       }
