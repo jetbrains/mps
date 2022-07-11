@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-7h80iy7vscjjm2418nn8owywaklby9o">
-  <files names="ActionIDs_extension.java:EditorInternalAddition_ActionGroup.java:ExtensionDescriptor.java:PluginSolution_ApplicationPlugin.java" />
+<product version="3" modelHash="5o1n65i6s7w031n6x9gibxmgtfvmod1">
+  <files names="ActionIDs_extension.java:ContributeToModelRefactorings_ActionGroup.java:EditorInternalAddition_ActionGroup.java:ExtensionDescriptor.java:LM.java:NV.java:PluginSolution_ApplicationPlugin.java:ReorderElementsDialog.java:ReorderModelRoots_Action.java" />
 </product>
 
