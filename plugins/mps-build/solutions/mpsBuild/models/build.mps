@@ -32215,64 +32215,6 @@
       <node concept="m$_wl" id="RJsmGEig2V" role="39821P">
         <ref role="m_rDy" node="RJsmGEieyQ" resolve="jetbrains.mps.vcs" />
         <node concept="pUk6w" id="5peYeZGo8Wz" role="pUk7w" />
-        <node concept="398223" id="37WaGF4oiw9" role="39821P">
-          <node concept="28jJK3" id="37WaGF4oiwd" role="39821P">
-            <node concept="398BVA" id="37WaGF4oiwe" role="28jJRO">
-              <ref role="398BVh" node="1lMM4owFq61" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="37WaGF4oiwf" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="37WaGF4oiwg" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-vcs" />
-                  <node concept="2Ry0Ak" id="37WaGF4oiwh" role="2Ry0An">
-                    <property role="2Ry0Am" value="META-INF" />
-                    <node concept="2Ry0Ak" id="37WaGF4oiwi" role="2Ry0An">
-                      <property role="2Ry0Am" value="MPSVcs.xml" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="28jJK3" id="37WaGF4oiwj" role="39821P">
-            <node concept="398BVA" id="37WaGF4oiwk" role="28jJRO">
-              <ref role="398BVh" node="1lMM4owFq61" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="37WaGF4oiwl" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="37WaGF4oiwm" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-vcs" />
-                  <node concept="2Ry0Ak" id="37WaGF4oiwn" role="2Ry0An">
-                    <property role="2Ry0Am" value="META-INF" />
-                    <node concept="2Ry0Ak" id="37WaGF4oiwo" role="2Ry0An">
-                      <property role="2Ry0Am" value="MPSVcsGit.xml" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="28jJK3" id="37WaGF4oiwp" role="39821P">
-            <node concept="398BVA" id="37WaGF4oiwq" role="28jJRO">
-              <ref role="398BVh" node="1lMM4owFq61" resolve="mps_home" />
-              <node concept="2Ry0Ak" id="37WaGF4oiwr" role="iGT6I">
-                <property role="2Ry0Am" value="plugins" />
-                <node concept="2Ry0Ak" id="37WaGF4oiws" role="2Ry0An">
-                  <property role="2Ry0Am" value="mps-vcs" />
-                  <node concept="2Ry0Ak" id="37WaGF4oiwt" role="2Ry0An">
-                    <property role="2Ry0Am" value="META-INF" />
-                    <node concept="2Ry0Ak" id="37WaGF4oiwu" role="2Ry0An">
-                      <property role="2Ry0Am" value="langDesignOptional.xml" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3_J27D" id="37WaGF4oiwb" role="Nbhlr">
-            <node concept="3Mxwew" id="37WaGF4oiwc" role="3MwsjC">
-              <property role="3MwjfP" value="META-INF" />
-            </node>
-          </node>
-        </node>
         <node concept="398223" id="79dnIA70i5s" role="39821P">
           <node concept="L2wRC" id="79dnIA7838v" role="39821P">
             <ref role="L2wRA" node="6ifcnI8$2j3" resolve="jetbrains.mps.vcs.mergehints" />
@@ -32285,12 +32227,19 @@
               <property role="3MwjfP" value="languages" />
             </node>
           </node>
-          <node concept="L2wRC" id="4rN0KgDgJ_k" role="39821P">
-            <ref role="L2wRA" node="4rN0KgDgJoZ" resolve="jetbrains.mps.vcs.mergehints.plugin" />
-          </node>
         </node>
         <node concept="3_I8Xc" id="306QkZP3gYA" role="39821P">
           <ref role="3_I8Xa" node="306QkZP3gt9" resolve="languages" />
+        </node>
+        <node concept="398223" id="2LOhBds6jJa" role="39821P">
+          <node concept="L2wRC" id="4rN0KgDgJ_k" role="39821P">
+            <ref role="L2wRA" node="4rN0KgDgJoZ" resolve="jetbrains.mps.vcs.mergehints.plugin" />
+          </node>
+          <node concept="3_J27D" id="2LOhBds6jJc" role="Nbhlr">
+            <node concept="3Mxwew" id="2LOhBds6jK6" role="3MwsjC">
+              <property role="3MwjfP" value="languages-devkit" />
+            </node>
+          </node>
         </node>
         <node concept="398223" id="I6XuqGYf2C" role="39821P">
           <node concept="3981dx" id="6NgN$9NmeOu" role="39821P">
