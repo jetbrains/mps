@@ -1254,9 +1254,12 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       SNode nodeForTypechecking = getNodeForTypechecking();
       if (nodeForTypechecking != null) {
         Flags flags = Flags.forRoot(nodeForTypechecking).incremental();
-        jetbrains.mps.project.Project project = getCurrentProject();
-        if (project != null) {
-          flags = flags.withParameters(TypecheckingFacade.getFromContext().configure(project));
+        // paranoid check: DataManager fails if no Application instance is set
+        if (ApplicationManager.getApplication() != null) {
+          jetbrains.mps.project.Project project = getCurrentProject();
+          if (project != null) {
+            flags = flags.withParameters(TypecheckingFacade.getFromContext().configure(project));
+          }
         }
         myTypecheckingSessionHandle = TypecheckingFacade
             .getFromContext()
