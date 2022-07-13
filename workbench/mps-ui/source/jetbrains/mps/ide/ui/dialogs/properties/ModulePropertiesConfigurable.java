@@ -50,7 +50,6 @@ import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.table.JBTable;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import com.intellij.util.WaitForProgressToShow;
 import com.intellij.util.ui.AbstractTableCellEditor;
 import com.intellij.util.ui.ItemRemovable;
 import com.intellij.util.ui.JBUI;
@@ -547,26 +546,27 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
         myEntriesEditor.apply();
       }
       if (renameTo != null) {
-        String finalRenameTo = renameTo;
-        ApplicationManager.getApplication().invokeLater(() -> {
-          String renameTitle = RefactoringBundle.message("rename.title");
-          int dialogResult = Messages.showOkCancelDialog(myIdeaProject, Renamer.getSubmodulesInfoHtml(myMPSProject, myModule),
-                                                         renameTitle, renameTitle, Messages.CANCEL_BUTTON, UIUtil.getInformationIcon());
-          if (Messages.OK == dialogResult) {
-            ProgressManager.getInstance().run(new Task.Modal(myIdeaProject, "Renaming...", false) {
-              @Override
-              public void run(@NotNull ProgressIndicator indicator) {
-                WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> {
-                  myMPSProject.getModelAccess().executeCommand(() -> {
-                    new Renamer(myMPSProject).renameModule(myModule, finalRenameTo);
-                  });
-                });
-              }
-            });
-          } else {
-            myTextFieldName.setText(myModule.getModuleName());
-          }
-        });
+        final String finalRenameTo = renameTo;
+        Renamer r = new Renamer(myMPSProject, myModule, null);
+        myMPSProject.getModelAccess().runReadAction(() -> r.collectRenames(finalRenameTo));
+        if (r.hasPrimaryRename() || r.hasDependantRenames()) {
+          final Task.Modal renameTask = new Task.Modal(myIdeaProject, "Renaming...", false) {
+            @Override
+            public void run(@NotNull ProgressIndicator indicator) {
+              ApplicationManager.getApplication().invokeAndWait(r::runRenameCommand);
+            }
+          };
+          ApplicationManager.getApplication().invokeLater(() -> {
+            String renameTitle = RefactoringBundle.message("rename.title");
+            int dialogResult = Messages.showOkCancelDialog(myIdeaProject, r.getDependantRenamesHTML(),
+                                                           renameTitle, renameTitle, Messages.getCancelButton(), UIUtil.getInformationIcon());
+            if (Messages.OK == dialogResult) {
+              ProgressManager.getInstance().run(renameTask);
+            } else {
+              myTextFieldName.setText(myModule.getModuleName());
+            }
+          });
+        }
       }
     }
   }

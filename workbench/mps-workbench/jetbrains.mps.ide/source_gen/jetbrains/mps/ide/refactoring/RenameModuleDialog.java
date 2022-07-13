@@ -7,19 +7,15 @@ import jetbrains.mps.ide.platform.refactoring.RenameDialog;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSProject;
 import javax.swing.JPanel;
-import java.util.List;
 import java.awt.HeadlessException;
 import jetbrains.mps.ide.IdeBundle;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.smodel.UndoRunnable;
-import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.refactoring.Renamer;
 import javax.swing.JComponent;
 import com.intellij.ui.components.JBPanel;
 import java.awt.BorderLayout;
-import java.util.Collections;
 import javax.swing.JLabel;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.util.ui.JBUI;
@@ -29,7 +25,6 @@ public class RenameModuleDialog extends RenameDialog {
   private final AbstractModule myModule;
   private final MPSProject myProject;
   private JPanel myOptionsPanel;
-  private List<AbstractModule> mySubModules;
 
   public RenameModuleDialog(MPSProject project, AbstractModule module) throws HeadlessException {
     super(project.getProject(), module.getModuleName(), "module");
@@ -65,36 +60,36 @@ public class RenameModuleDialog extends RenameDialog {
   @Override
   protected void doRefactoringAction() {
     final String newModuleName = getCurrentValue();
-    myProject.getModelAccess().executeCommand(new UndoRunnable.Base(String.format("Rename module %s", NameUtil.compactNamespace(myModule.getModuleName())), null) {
-      @Override
-      public void run() {
-        new Renamer(myProject).renameModule(myModule, newModuleName);
-        RenameModuleDialog.super.doRefactoringAction();
-      }
-    });
+    final Renamer rr = new Renamer(myProject, myModule, null);
+    myProject.getModelAccess().runReadAction(() -> rr.collectRenames(newModuleName));
+    if (rr.hasPrimaryRename() || rr.hasDependantRenames()) {
+      rr.runRenameCommand();
+    }
+    RenameModuleDialog.super.doRefactoringAction();
   }
 
 
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
-    myOptionsPanel = new JBPanel(new BorderLayout());
+    myOptionsPanel = new JBPanel<JBPanel>(new BorderLayout());
     return myOptionsPanel;
   }
 
 
   /**
    * Have to update info panel after initialization in {@link jetbrains.mps.ide.refactoring.RenameModuleDialog#createCenterPanel() }, because last one happens in super constructor before {@link jetbrains.mps.ide.refactoring.RenameModuleDialog#myModule } is set.
+   * i.e. infamous init() in cons call design defect. Perhaps, shall not use RenameDialog superclass?
    */
   private void updateCentralPanel() {
     if (!(Renamer.needToRenameSubmodules(myModule))) {
-      mySubModules = Collections.emptyList();
       return;
     }
-    mySubModules = new Renamer(myProject).getSubModules(myModule);
+    final Renamer r = new Renamer(myProject, myModule, null);
+    myProject.getModelAccess().runReadAction(() -> r.collectRenames(myModule.getModuleName()));
 
-    if (!(mySubModules.isEmpty())) {
-      JLabel label = new JBLabel(Renamer.getSubmodulesInfoHtml(myProject, myModule), JBLabel.LEFT);
+    if (r.hasDependantRenames()) {
+      JLabel label = new JBLabel(r.getDependantRenamesHTML(), JBLabel.LEFT);
       label.setBorder(JBUI.Borders.emptyLeft(2));
       myOptionsPanel.add(label, BorderLayout.NORTH);
     }

@@ -15,8 +15,6 @@
  */
 package jetbrains.mps.refactoring;
 
-import com.intellij.openapi.util.io.FileUtil;
-import com.intellij.openapi.util.io.FileUtilRt;
 import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.ide.IdeBundle;
 import jetbrains.mps.library.ModulesMiner;
@@ -36,6 +34,9 @@ import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.ModuleInstanceFactory;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.SModelInternal;
+import jetbrains.mps.smodel.UndoRunnable;
+import jetbrains.mps.util.FileUtil;
+import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -69,16 +70,25 @@ public final class Renamer {
   private final Consumer<RenameProblem> myHandler;
   private final Project myProject;
 
+  private final AbstractModule myModule;
+
+  private ModuleRenameInfo myPrimaryRename;
+  private List<ModuleRenameInfo> myDependantRenames;
+
+  @Deprecated
   public Renamer(@NotNull Project project) {
-    this(project, DEFAULT_PROBLEM_HANDLER);
-  }
-
-  public Renamer(@NotNull Project project, @NotNull Consumer<RenameProblem> handler) {
-    myHandler = handler;
+    myHandler = DEFAULT_PROBLEM_HANDLER;
     myProject = project;
+    myModule = null;
   }
 
-  private void handleProblem(@NotNull RenameProblem problem) {
+  public Renamer(@NotNull Project project, @NotNull AbstractModule module, @Nullable Consumer<RenameProblem> handler) {
+    myProject = project;
+    myModule = module;
+    myHandler = handler == null ? DEFAULT_PROBLEM_HANDLER : handler;
+  }
+
+    private void handleProblem(@NotNull RenameProblem problem) {
     myHandler.accept(problem);
   }
 
@@ -122,8 +132,8 @@ public final class Renamer {
   }
 
   @NotNull
-  private String getNewDescriptorName(@NotNull String newModuleName, IFile descriptorFile) {
-    return newModuleName + DOT + FileUtilRt.getExtension(descriptorFile.getName());
+  private static String getNewDescriptorName(@NotNull String newModuleName, IFile descriptorFile) {
+    return newModuleName + DOT + FileUtil.getExtension(descriptorFile.getName());
   }
 
   /**
@@ -389,21 +399,46 @@ public final class Renamer {
     }
   }
 
-  /**
-   * TODO: remove after MPS will state that project layout forbid submodules and migration will be applied.
-   * If module name equals to module folder - both must be renamed.
-   * This method handles update of modules, which folders are situated under renaming module folder
-   *
-   * @param module        to rename, containing folder also will be renamed if matches module name
-   * @param newModuleName to be renamed to
-   */
-  @Internal
-  @Deprecated
-  public static void renameModuleWithSubModules(@NotNull AbstractModule module,
-                                                @NotNull String newModuleName,
-                                                @NotNull Project project) {
-    renameModule(module, newModuleName, project);
+  public boolean hasPrimaryRename() {
+    return myPrimaryRename != null /*&& myPrimaryRename.newNameIsDifferentThanOld()*/;
   }
+
+  public boolean hasDependantRenames() {
+    return myDependantRenames != null && !myDependantRenames.isEmpty();
+  }
+
+
+  // FIXME now needs model read; review and align approach to model read/write once stabilized.
+  //       Consider scenario when few methods are invoked one by one - to avoid loosing the lock
+  // Document: can be invoked several times with different newName, each time reset primary and dependantRenames
+  public void collectRenames(@NotNull String newName) {
+    final IFile descriptorFile = myModule.getDescriptorFile();
+    if (descriptorFile == null) {
+      return;
+    }
+    myPrimaryRename = ModuleRenameInfo.provision_A(myModule, descriptorFile, newName);
+    myDependantRenames = new ArrayList<>();
+    final IFile topModuleSourceDir = myModule.getModuleSourceDir();
+    // Do not care to rename bundled modules, check project modules only
+    for (SModule repositoryModule : myProject.getProjectModulesWithGenerators()) {
+      if (!(repositoryModule instanceof AbstractModule) || repositoryModule.isReadOnly() || repositoryModule.equals(myModule)) {
+        continue;
+      }
+
+      final AbstractModule am = (AbstractModule) repositoryModule;
+      IFile moduleSourceDir = am.getModuleSourceDir();
+      if (moduleSourceDir != null && moduleSourceDir.isDescendant(topModuleSourceDir) && !moduleSourceDir.equals(topModuleSourceDir)) {
+        // could be a Generator, owned by a Language and sharing same module source dir, in this case don't treat it
+        // as submodule (renameModuleName() would deal with Language-owned generators). If, however, it's a
+        // generator that lives under language dir (e.g. extracted into standalone, but residing under language-dir/generator/),
+        // we have to treat it as a submodule to get renamed as well.
+        myDependantRenames.add(ModuleRenameInfo.provision_A(am, am.getDescriptorFile(), newName));
+      }
+    }
+    myDependantRenames.sort(Comparator.comparingInt(ri -> ri.module.getModuleSourceDir().getPath().length()));
+  }
+
+
 
   /**
    * Search list of given repository modules for ones,
@@ -417,33 +452,20 @@ public final class Renamer {
   public List<AbstractModule> getSubModules(@NotNull AbstractModule module) {
     // Expect maximum of two submodules for language: sandbox and runtime.
     // There is no way to create other submodules from MPS UI, so other cases are rare.
-    final List<AbstractModule> subModules = new ArrayList<>();
 
     SRepository repository = myProject.getRepository();
     if (!needToRenameSubmodules(module)) {
       return Collections.emptyList();
     }
+    final Renamer renamer = new Renamer(myProject, module, myHandler);
     repository.getModelAccess().runReadAction(() -> {
-      final IFile topModuleSourceDir = module.getModuleSourceDir();
-      // Do not care to rename bundled modules, check project modules only
-      for (SModule repositoryModule : myProject.getProjectModulesWithGenerators()) {
-        if (!(repositoryModule instanceof AbstractModule) || repositoryModule.isReadOnly() || repositoryModule.equals(module)) {
-          continue;
-        }
-
-        IFile moduleSourceDir = ((AbstractModule) repositoryModule).getModuleSourceDir();
-        if (moduleSourceDir != null && moduleSourceDir.isDescendant(topModuleSourceDir) && !moduleSourceDir.equals(topModuleSourceDir)) {
-          // could be a Generator, owned by a Language and sharing same module source dir, in this case don't treat it
-          // as submodule (renameModuleName() would deal with Language-owned generators). If, however, it's a
-          // generator that lives under language dir (e.g. extracted into standalone, but residing under language-dir/generator/),
-          // we have to treat it as a submodule to get renamed as well.
-          subModules.add((AbstractModule) repositoryModule);
-        }
-      }
+      renamer.collectRenames(module.getModuleName());
     });
 
-    subModules.sort(Comparator.comparingInt(moduleToCompare -> moduleToCompare.getModuleSourceDir().getPath().length()));
-    return subModules;
+    if (!renamer.hasDependantRenames()) {
+      return Collections.emptyList();
+    }
+    return renamer.myDependantRenames.stream().map(r -> r.module).collect(Collectors.toList());
   }
 
   /**
@@ -487,6 +509,17 @@ public final class Renamer {
         }
       }
     }
+  }
+
+  public void runRenameCommand(/*FIXME ProgressMonitor?*/) {
+    final String cmdName = String.format("Rename module %s", NameUtil.compactNamespace(myModule.getModuleName()));
+    myProject.getModelAccess().executeCommand(new UndoRunnable.Base(cmdName, null) {
+      @Override
+      public void run() {
+        // FIXME
+        renameModule(myPrimaryRename.module, myPrimaryRename.newModuleName);
+      }
+    });
   }
 
 
@@ -534,39 +567,23 @@ public final class Renamer {
   };
 
   /**
-   * @deprecated use the one with return type
-   */
-  @Deprecated
-  @NotNull
-  public static void renameModule(@NotNull AbstractModule module,
-                                  @NotNull String newModuleName,
-                                  @NotNull Project project) {
-    Consumer<RenameProblem> problemConsumer = (RenameProblem p) -> {
-      if (p.getSeverity() == Severity.CRITICAL) {
-        throw new IllegalStateException("Received illegal problem during rename");
-      }
-    };
-    new Renamer(project, problemConsumer).renameModule(module, newModuleName);
-  }
-
-
-  /**
    * todo here is not the place to compose html I suppose
+   * perhaps, has to become forEachDependant(Consumer&lt;AbstractModule&gt;)?
    */
   @NotNull
-  public static String getSubmodulesInfoHtml(@NotNull jetbrains.mps.project.Project project, @NotNull AbstractModule moduleToRename) {
+  public String getDependantRenamesHTML() {
+    if (!hasDependantRenames()) {
+      return "";
+    }
     final StringBuilder builder = new StringBuilder();
     builder.append("<ul>");
-    for (AbstractModule subModule : new Renamer(project).getSubModules(moduleToRename)) {
+    for (ModuleRenameInfo m : myDependantRenames) {
       builder.append("<li>");
-      builder.append(subModule.getModuleName());
-      if (subModule.getModuleName().contains(moduleToRename.getModuleName())) {
-        builder.append(" (will be renamed)");
-      }
+      builder.append(m.module.getModuleName());
+      builder.append(" (will be renamed)");
       builder.append("</li>");
     }
     builder.append("</ul>");
     return "<html><p>" + IdeBundle.message("actions.module.rename.contains.submodules") + builder.toString() + "</p></html>";
   }
-
 }
