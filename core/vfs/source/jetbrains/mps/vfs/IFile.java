@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -325,6 +325,17 @@ public interface IFile {
 
   //this is provisional API. We need to think how to compare files from different FSes
   default boolean isDescendant(IFile file){
-    return getPath().startsWith(file.getPath());
+    final String p1 = getPath();
+    final String p2 = file.getPath();
+    if (!p1.startsWith(p2)) {
+      return false;
+    }
+    // "/a/b/cba".isDescendant("/a/b/c") has to be false, just startsWith() is not enough
+    try {
+      return java.nio.file.Path.of(p1).startsWith(java.nio.file.Path.of(p2));
+    } catch (Exception ex) {
+      // ignore. no idea if any exception happens, just in case there's some, get ready
+      return true;
+    }
   }
 }
