@@ -2946,7 +2946,7 @@
                   <ref role="3cqZAo" node="hFY8lEv" resolve="e" />
                 </node>
                 <node concept="liA8E" id="hFY8lEL" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Throwable.getMessage()" resolve="getMessage" />
+                  <ref role="37wK5l" to="wyt6:~NullPointerException.getMessage()" resolve="getMessage" />
                 </node>
               </node>
             </node>

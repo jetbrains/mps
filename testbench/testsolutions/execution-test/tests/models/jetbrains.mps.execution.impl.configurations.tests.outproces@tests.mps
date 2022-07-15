@@ -76,6 +76,7 @@
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
       </concept>
+      <concept id="1215695189714" name="jetbrains.mps.baseLanguage.structure.PlusAssignmentExpression" flags="nn" index="d57v9" />
       <concept id="1202948039474" name="jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation" flags="nn" index="liA8E" />
       <concept id="8118189177080264853" name="jetbrains.mps.baseLanguage.structure.AlternativeType" flags="ig" index="nSUau">
         <child id="8118189177080264854" name="alternative" index="nSUat" />
@@ -1635,6 +1636,345 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="4wdtanl3Srq" role="3cqZAp">
+          <node concept="3cpWsn" id="4wdtanl3Srt" role="3cpWs9">
+            <property role="TrG5h" value="params" />
+            <node concept="17QB3L" id="4wdtanl3Sro" role="1tU5fm" />
+            <node concept="Xl_RD" id="4wdtanl3ToK" role="33vP2m">
+              <property role="Xl_RC" value="-Djava.awt.headless=true" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3Upk" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3VoG" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3V$$" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/java.io=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3Upi" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3W1j" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3W1k" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3W1l" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/java.lang=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3W1m" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3WUy" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3WUz" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3WU$" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/java.lang.reflect=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3WU_" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3WXk" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3WXl" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3WXm" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/java.net=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3WXn" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3X0a" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3X0b" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3X0c" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/java.nio=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3X0d" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3Xsr" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3Xss" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3Xst" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/java.nio.charset=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3Xsu" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3Xvp" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3Xvq" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3Xvr" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/java.text=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3Xvs" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3Xyr" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3Xys" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3Xyt" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/java.time=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3Xyu" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3X_x" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3X_y" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3X_z" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/java.util=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3X_$" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3XCF" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3XCG" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3XCH" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/java.util.concurrent=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3XCI" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3XFT" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3XFU" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3XFV" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3XFW" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3XJb" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3XJc" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3XJd" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/jdk.internal.vm=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3XJe" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3XMx" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3XMy" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3XMz" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/sun.nio.ch=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3XM$" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3XPV" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3XPW" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3XPX" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/sun.security.ssl=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3XPY" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3XTp" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3XTq" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3XTr" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.base/sun.security.util=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3XTs" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3XWV" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3XWW" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3XWX" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.desktop/java.awt=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3XWY" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3Y0x" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3Y0y" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3Y0z" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3Y0$" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3Y4b" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3Y4c" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3Y4d" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.desktop/java.awt.event=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3Y4e" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3Y7T" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3Y7U" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3Y7V" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.desktop/java.awt.image=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3Y7W" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3YbF" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3YbG" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3YbH" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.desktop/java.awt.peer=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3YbI" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3Yfx" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3Yfy" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3Yfz" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.desktop/javax.swing=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3Yf$" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3Yjr" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3Yjs" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3Yjt" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3Yju" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3Ynp" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3Ynq" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3Ynr" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3Yns" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3Yrr" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3Yrs" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3Yrt" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3Yru" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3Yvx" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3Yvy" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3Yvz" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.desktop/sun.awt.image=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3Yv$" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3YzF" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3YzG" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3YzH" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.desktop/sun.awt=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3YzI" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3YBT" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3YBU" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3YBV" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.desktop/sun.font=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3YBW" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3YGb" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3YGc" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3YGd" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.desktop/sun.java2d=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3YGe" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3YKx" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3YKy" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3YKz" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=java.desktop/sun.swing=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3YK$" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3YOV" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3YOW" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3YOX" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3YOY" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3YTp" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3YTq" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3YTr" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3YTs" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3YXV" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3YXW" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3YXX" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3YXY" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="4wdtanl3Z2x" role="3cqZAp">
+          <node concept="d57v9" id="4wdtanl3Z2y" role="3clFbG">
+            <node concept="Xl_RD" id="4wdtanl3Z2z" role="37vLTx">
+              <property role="Xl_RC" value=" --add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
+            </node>
+            <node concept="37vLTw" id="4wdtanl3Z2$" role="37vLTJ">
+              <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="9n1CQGpy49" role="3cqZAp">
           <node concept="3cpWsn" id="9n1CQGpy4a" role="3cpWs9">
             <property role="TrG5h" value="process" />
@@ -1649,8 +1989,8 @@
               </node>
               <node concept="2LYoGL" id="9n1CQGpy4f" role="2LYoGw">
                 <ref role="2LYoGK" to="ic9i:5gyVhZ18bp_" resolve="virtualMachineParameters" />
-                <node concept="Xl_RD" id="9n1CQGpy4h" role="2LYoGN">
-                  <property role="Xl_RC" value="-Djava.awt.headless=true" />
+                <node concept="37vLTw" id="4wdtanl3TKo" role="2LYoGN">
+                  <ref role="3cqZAo" node="4wdtanl3Srt" resolve="params" />
                 </node>
               </node>
             </node>

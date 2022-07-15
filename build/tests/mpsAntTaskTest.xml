@@ -44,7 +44,7 @@
 
   <target name="compileTestClasses">
     <mkdir dir="${test_classes}"/>
-    <javac destdir="${test_classes}" fork="false" includeantruntime="false" source="1.6" target="1.6">
+    <javac destdir="${test_classes}" fork="false" includeantruntime="false" source="1.7" target="1.7">
       <compilerarg value="-Xlint:none"/>
       <classpath refid="test_classpath"/>
       <src>

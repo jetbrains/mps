@@ -45,7 +45,41 @@ public class MPSInstance_Test extends BaseTransformationTest {
         // in this test we expect the run configruation MPSInstance to start
         // as for 191 we just pass headless flag to the system, which is not tolerated by IDEA platform, so
         // the launch of MPS Instance rc is actually all we test here (for now)
-        ProcessHandler process = new Mps_Command().setVirtualMachineParameters_String("-Djava.awt.headless=true").createProcess("./tmpsettings");
+        String params = "-Djava.awt.headless=true";
+        params += " --add-opens=java.base/java.io=ALL-UNNAMED";
+        params += " --add-opens=java.base/java.lang=ALL-UNNAMED";
+        params += " --add-opens=java.base/java.lang.reflect=ALL-UNNAMED";
+        params += " --add-opens=java.base/java.net=ALL-UNNAMED";
+        params += " --add-opens=java.base/java.nio=ALL-UNNAMED";
+        params += " --add-opens=java.base/java.nio.charset=ALL-UNNAMED";
+        params += " --add-opens=java.base/java.text=ALL-UNNAMED";
+        params += " --add-opens=java.base/java.time=ALL-UNNAMED";
+        params += " --add-opens=java.base/java.util=ALL-UNNAMED";
+        params += " --add-opens=java.base/java.util.concurrent=ALL-UNNAMED";
+        params += " --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED";
+        params += " --add-opens=java.base/jdk.internal.vm=ALL-UNNAMED";
+        params += " --add-opens=java.base/sun.nio.ch=ALL-UNNAMED";
+        params += " --add-opens=java.base/sun.security.ssl=ALL-UNNAMED";
+        params += " --add-opens=java.base/sun.security.util=ALL-UNNAMED";
+        params += " --add-opens=java.desktop/java.awt=ALL-UNNAMED";
+        params += " --add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED";
+        params += " --add-opens=java.desktop/java.awt.event=ALL-UNNAMED";
+        params += " --add-opens=java.desktop/java.awt.image=ALL-UNNAMED";
+        params += " --add-opens=java.desktop/java.awt.peer=ALL-UNNAMED";
+        params += " --add-opens=java.desktop/javax.swing=ALL-UNNAMED";
+        params += " --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED";
+        params += " --add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED";
+        params += " --add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED";
+        params += " --add-opens=java.desktop/sun.awt.image=ALL-UNNAMED";
+        params += " --add-opens=java.desktop/sun.awt=ALL-UNNAMED";
+        params += " --add-opens=java.desktop/sun.font=ALL-UNNAMED";
+        params += " --add-opens=java.desktop/sun.java2d=ALL-UNNAMED";
+        params += " --add-opens=java.desktop/sun.swing=ALL-UNNAMED";
+        params += " --add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED";
+        params += " --add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED";
+        params += " --add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED";
+        params += " --add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED";
+        ProcessHandler process = new Mps_Command().setVirtualMachineParameters_String(params).createProcess("./tmpsettings");
         List<Pattern> patternsWeExpect = Collections.singletonList(Pattern.compile(".*INFO.*com.intellij.idea.Main.*IDE SHUTDOWN.*\n"));
 
         // fixme filter BindException (the only exception in std-err which stops us from filtering errors)

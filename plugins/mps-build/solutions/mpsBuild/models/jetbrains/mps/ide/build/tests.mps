@@ -1919,7 +1919,7 @@
       <node concept="24cAiW" id="5I1s5NvQ4SW" role="24cAkG">
         <node concept="NbPM2" id="372aBDf0kSG" role="1psgkv">
           <node concept="3Mxwew" id="372aBDf0kSH" role="3MwsjC">
-            <property role="3MwjfP" value="-Xmx2048m" />
+            <property role="3MwjfP" value="-Xmx2048m --add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED" />
           </node>
         </node>
       </node>

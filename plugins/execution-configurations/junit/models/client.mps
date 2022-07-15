@@ -11327,8 +11327,392 @@
                   <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
                 </node>
                 <node concept="TSZUe" id="3Fszdttq9rx" role="2OqNvi">
-                  <node concept="Xl_RD" id="3Fszdttq9zE" role="25WWJ7">
-                    <property role="Xl_RC" value="-Djdk.module.illegalAccess.silent=true" />
+                  <node concept="Xl_RD" id="39EhqqoHt8$" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/java.io=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHrt9" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHrta" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHrtb" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHrtc" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHtS4" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHrtt" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHrtu" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHrtv" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHrtw" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHuBc" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHrtQ" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHrtR" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHrtS" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHrtT" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHvl0" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/java.net=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHruk" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHrul" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHrum" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHrun" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHw4K" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/java.nio=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHruR" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHruS" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHruT" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHruU" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHwOE" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/java.nio.charset=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHrvv" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHrvw" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHrvx" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHrvy" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHxz9" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/java.text=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHrwB" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHrwC" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHrwD" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHrwE" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHyif" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/java.time=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHrxp" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHrxq" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHrxr" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHrxs" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHz2i" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/java.util=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHryg" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHryh" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHryi" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHryj" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHzMy" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHrzc" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHrzd" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHrze" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHrzf" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoH$y9" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHr$d" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHr$e" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHr$f" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHr$g" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoH_g2" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHr_I" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHr_J" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHr_K" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHr_L" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoH_Zk" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHrAT" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHrAU" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHrAV" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHrAW" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHAJF" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/sun.security.ssl=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHrC$" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHrC_" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHrCA" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHrCB" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHBst" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.base/sun.security.util=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHrDT" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHrDU" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHrDV" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHrDW" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHCcZ" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/java.awt=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHrFI" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHrFJ" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHrFK" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHrFL" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHCW0" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHrHd" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHrHe" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHrHf" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHrHg" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHDDC" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/java.awt.event=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHrIL" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHrIM" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHrIN" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHrIO" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHEuF" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/java.awt.image=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHsh3" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHsh4" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHsh5" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHsh6" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHFgF" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHsiL" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHsiM" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHsiN" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHsiO" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHG04" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHsk$" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHsk_" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHskA" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHskB" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHJIQ" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHGJ5" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHGJ6" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHGJ7" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHGJ8" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHKHN" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHHzG" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHHzH" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHHzI" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHHzJ" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHLFX" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHH_I" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHH_J" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHH_K" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHH_L" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHMDH" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHHBP" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHHBQ" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHHBR" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHHBS" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHNCK" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/sun.awt=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHHE1" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHHE2" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHHE3" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHHE4" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHOCG" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/sun.font=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHHGH" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHHGI" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHHGJ" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHHGK" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHPAZ" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/sun.java2d=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHHJ3" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHHJ4" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHHJ5" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHHJ6" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHQBi" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=java.desktop/sun.swing=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHHLT" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHHLU" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHHLV" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHHLW" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHR_w" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHHOp" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHHOq" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHHOr" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHHOs" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHSAD" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHHRp" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHHRq" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHHRr" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHHRs" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHTAY" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbF" id="39EhqqoHIFQ" role="3cqZAp">
+              <node concept="2OqwBi" id="39EhqqoHIFR" role="3clFbG">
+                <node concept="37vLTw" id="39EhqqoHIFS" role="2Oq$k0">
+                  <ref role="3cqZAo" node="46IpDBbXRUx" resolve="myAdditionalJvmArgs" />
+                </node>
+                <node concept="TSZUe" id="39EhqqoHIFT" role="2OqNvi">
+                  <node concept="Xl_RD" id="39EhqqoHUCg" role="25WWJ7">
+                    <property role="Xl_RC" value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
                   </node>
                 </node>
               </node>

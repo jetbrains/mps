@@ -50,7 +50,39 @@ public final class TestParameters {
     myNeedsMPS = mpsRequired;
     if (myNeedsMPS) {
       ListSequence.fromList(myAdditionalJvmArgs).addElement("-DNO_FS_ROOTS_ACCESS_CHECK=true");
-      ListSequence.fromList(myAdditionalJvmArgs).addElement("-Djdk.module.illegalAccess.silent=true");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.io=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.lang=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.lang.reflect=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.net=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.nio=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.nio.charset=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.text=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.time=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.util=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.util.concurrent=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/sun.nio.ch=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/sun.security.ssl=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.base/sun.security.util=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/java.awt=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/java.awt.event=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/java.awt.image=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/javax.swing=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/sun.awt=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/sun.font=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/sun.java2d=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=java.desktop/sun.swing=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED");
+      ListSequence.fromList(myAdditionalJvmArgs).addElement("--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED");
     }
   }
 

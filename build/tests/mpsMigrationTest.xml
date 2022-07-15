@@ -34,7 +34,7 @@
 
   <target name="compileTestClasses">
     <mkdir dir="${test_classes}"/>
-    <javac destdir="${test_classes}" fork="false" includeantruntime="false" source="1.6" target="1.6">
+    <javac destdir="${test_classes}" fork="false" includeantruntime="false" source="1.7" target="1.7">
       <compilerarg value="-Xlint:none"/>
       <classpath refid="test_classpath"/>
       <src>
@@ -47,11 +47,81 @@
     <arg value="-ea" />
   </jvmargs>
 
+  <jvmargs id="illegal-access-override">
+    <arg value="-ea" />
+    <arg value="--add-opens=java.base/java.io=ALL-UNNAMED" />
+    <arg value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
+    <arg value="--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" />
+    <arg value="--add-opens=java.base/java.net=ALL-UNNAMED" />
+    <arg value="--add-opens=java.base/java.nio=ALL-UNNAMED" />
+    <arg value="--add-opens=java.base/java.nio.charset=ALL-UNNAMED" />
+    <arg value="--add-opens=java.base/java.text=ALL-UNNAMED" />
+    <arg value="--add-opens=java.base/java.time=ALL-UNNAMED" />
+    <arg value="--add-opens=java.base/java.util=ALL-UNNAMED" />
+    <arg value="--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" />
+    <arg value="--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+    <arg value="--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED" />
+    <arg value="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" />
+    <arg value="--add-opens=java.base/sun.security.ssl=ALL-UNNAMED" />
+    <arg value="--add-opens=java.base/sun.security.util=ALL-UNNAMED" />
+    <arg value="--add-opens=java.desktop/java.awt=ALL-UNNAMED" />
+    <arg value="--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED" />
+    <arg value="--add-opens=java.desktop/java.awt.event=ALL-UNNAMED" />
+    <arg value="--add-opens=java.desktop/java.awt.image=ALL-UNNAMED" />
+    <arg value="--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED" />
+    <arg value="--add-opens=java.desktop/javax.swing=ALL-UNNAMED" />
+    <arg value="--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED" />
+    <arg value="--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED" />
+    <arg value="--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED" />
+    <arg value="--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED" />
+    <arg value="--add-opens=java.desktop/sun.awt=ALL-UNNAMED" />
+    <arg value="--add-opens=java.desktop/sun.font=ALL-UNNAMED" />
+    <arg value="--add-opens=java.desktop/sun.java2d=ALL-UNNAMED" />
+    <arg value="--add-opens=java.desktop/sun.swing=ALL-UNNAMED" />
+    <arg value="--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED" />
+    <arg value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
+    <arg value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
+    <arg value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
+  </jvmargs>
+
   <target name="checkAll" depends="compileTestClasses">
     <migrate project="${project.simpleMigration}" mpsHome="${mps_home}" makeDistribModules="false" force="true">
       <jvmargs>
-        <arg value="-Didea.log.config.file=log.xml"/> 
+        <arg value="-Didea.log.config.file=log.xml"/>
         <!--<arg value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5071" />-->
+        <arg value="--add-opens=java.base/java.io=ALL-UNNAMED" />
+        <arg value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
+        <arg value="--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" />
+        <arg value="--add-opens=java.base/java.net=ALL-UNNAMED" />
+        <arg value="--add-opens=java.base/java.nio=ALL-UNNAMED" />
+        <arg value="--add-opens=java.base/java.nio.charset=ALL-UNNAMED" />
+        <arg value="--add-opens=java.base/java.text=ALL-UNNAMED" />
+        <arg value="--add-opens=java.base/java.time=ALL-UNNAMED" />
+        <arg value="--add-opens=java.base/java.util=ALL-UNNAMED" />
+        <arg value="--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" />
+        <arg value="--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+        <arg value="--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED" />
+        <arg value="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" />
+        <arg value="--add-opens=java.base/sun.security.ssl=ALL-UNNAMED" />
+        <arg value="--add-opens=java.base/sun.security.util=ALL-UNNAMED" />
+        <arg value="--add-opens=java.desktop/java.awt=ALL-UNNAMED" />
+        <arg value="--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED" />
+        <arg value="--add-opens=java.desktop/java.awt.event=ALL-UNNAMED" />
+        <arg value="--add-opens=java.desktop/java.awt.image=ALL-UNNAMED" />
+        <arg value="--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED" />
+        <arg value="--add-opens=java.desktop/javax.swing=ALL-UNNAMED" />
+        <arg value="--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED" />
+        <arg value="--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED" />
+        <arg value="--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED" />
+        <arg value="--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED" />
+        <arg value="--add-opens=java.desktop/sun.awt=ALL-UNNAMED" />
+        <arg value="--add-opens=java.desktop/sun.font=ALL-UNNAMED" />
+        <arg value="--add-opens=java.desktop/sun.java2d=ALL-UNNAMED" />
+        <arg value="--add-opens=java.desktop/sun.swing=ALL-UNNAMED" />
+        <arg value="--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED" />
+        <arg value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
+        <arg value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
+        <arg value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
       </jvmargs>
     </migrate>
 
@@ -64,7 +134,7 @@
 
     <migrate makeDistribModules="false" force="true"> <!-- implicit mpsHome through artifacts.mps value-->
       <project path="${project.consMigrations}"/>
-      <jvmargs refid="just-assert"/>
+      <jvmargs refid="illegal-access-override"/>
     </migrate>
 
     <junit fork="true" dir="${mps_home}" showoutput="true">
@@ -76,7 +146,7 @@
 
     <migrate project="${project.migrationTaskPlugin}" makeDistribModules="false" force="true"> <!-- implicit mpsHome through artifacts.mps value-->
       <plugin path="${mps_home}/plugins/mps-httpsupport/" id="jetbrains.mps.ide.httpsupport"/>
-      <jvmargs refid="just-assert"/>
+      <jvmargs refid="illegal-access-override"/>
     </migrate>
 
     <junit fork="true" dir="${mps_home}" showoutput="true">
