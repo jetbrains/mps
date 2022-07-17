@@ -101,13 +101,6 @@
       </filterchain>
     </copy>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip/MPS ${mpsBootstrapCore.version}/bin/mac" />
-    <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7552" />
-    <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7552">
-      <fileset file="${basedir}/bin/mac/printenv.py" />
-      <filterchain>
-        <fixcrlf eol="lf" eof="remove" />
-      </filterchain>
-    </copy>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip/MPS ${mpsBootstrapCore.version}/bin/mac/Contents" />
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip/MPS ${mpsBootstrapCore.version}/bin/mac/Contents">
       <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/Info.plist.xml" />
@@ -141,27 +134,24 @@
         <exclude name="**/*.bat" />
       </zipfileset>
       <zipfileset file="${basedir}/bin/win/fsnotifier.exe" prefix="MPS ${mpsBootstrapCore.version}/bin/win" filemode="755" />
-      <zipfileset file="${basedir}/bin/win/fsnotifier64.exe" prefix="MPS ${mpsBootstrapCore.version}/bin/win" filemode="755" />
       <zipfileset file="${basedir}/bin/win/restarter.exe" prefix="MPS ${mpsBootstrapCore.version}/bin/win" filemode="755" />
       <zipfileset file="${basedir}/bin/win/runnerw.exe" prefix="MPS ${mpsBootstrapCore.version}/bin/win" filemode="755" />
       <zipfileset file="${basedir}/bin/win/WinProcessListHelper.exe" prefix="MPS ${mpsBootstrapCore.version}/bin/win" filemode="755" />
       <zipfileset file="${basedir}/bin/win/append.bat" prefix="MPS ${mpsBootstrapCore.version}/bin/win" filemode="755" />
       <zipfileset file="${basedir}/bin/linux/libdbm64.so" prefix="MPS ${mpsBootstrapCore.version}/bin/linux" />
       <zipfileset file="${basedir}/bin/linux/fsnotifier" prefix="MPS ${mpsBootstrapCore.version}/bin/linux" filemode="755" />
-      <zipfileset file="${basedir}/bin/linux/fsnotifier64" prefix="MPS ${mpsBootstrapCore.version}/bin/linux" filemode="755" />
       <zipfileset file="${basedir}/bin/linux/restart.py" prefix="MPS ${mpsBootstrapCore.version}/bin/linux" filemode="755" />
       <zipfileset file="${basedir}/bin/linux/printenv.py" prefix="MPS ${mpsBootstrapCore.version}/bin/linux" filemode="755" />
-      <zipfileset file="${basedir}/bin/mac/libMacNativeKit64.dylib" prefix="MPS ${mpsBootstrapCore.version}/bin/mac" />
       <zipfileset file="${basedir}/bin/mac/libnst64.dylib" prefix="MPS ${mpsBootstrapCore.version}/bin/mac" />
       <zipfileset file="${basedir}/bin/mac/restarter" prefix="MPS ${mpsBootstrapCore.version}/bin/mac" filemode="755" />
       <zipfileset file="${basedir}/bin/mac/fsnotifier" prefix="MPS ${mpsBootstrapCore.version}/bin/mac" filemode="755" />
+      <zipfileset file="${basedir}/bin/mac/printenv" prefix="MPS ${mpsBootstrapCore.version}/bin/mac" filemode="755" />
       <zipfileset file="${basedir}/build/resources/mps.icns" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/Resources" />
       <zipfileset file="${basedir}/build/resources/mps" prefix="MPS ${mpsBootstrapCore.version}/bin/mac/Contents/MacOS" filemode="755" />
       <zipfileset dir="${basedir}/plugins/laf-macos" prefix="MPS ${mpsBootstrapCore.version}/plugins/laf-macos" />
       <zipfileset dir="${basedir}/plugins/laf-win10" prefix="MPS ${mpsBootstrapCore.version}/plugins/laf-win10" />
       <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f755" filemode="755" prefix="MPS ${mpsBootstrapCore.version}/bin" />
       <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7551" filemode="755" prefix="MPS ${mpsBootstrapCore.version}/bin/win" />
-      <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip_f7552" filemode="755" prefix="MPS ${mpsBootstrapCore.version}/bin/mac" />
       <fileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_.zip" />
     </zip>
     <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-linux.tar.gz" />
@@ -208,7 +198,6 @@
       <tarfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}" />
       <tarfileset file="${basedir}/bin/linux/libdbm64.so" prefix="MPS ${mpsBootstrapCore.version}/bin" />
       <tarfileset file="${basedir}/bin/linux/fsnotifier" prefix="MPS ${mpsBootstrapCore.version}/bin" filemode="755" />
-      <tarfileset file="${basedir}/bin/linux/fsnotifier64" prefix="MPS ${mpsBootstrapCore.version}/bin" filemode="755" />
       <tarfileset file="${basedir}/bin/linux/restart.py" prefix="MPS ${mpsBootstrapCore.version}/bin" filemode="755" />
       <tarfileset file="${basedir}/bin/linux/printenv.py" prefix="MPS ${mpsBootstrapCore.version}/bin" filemode="755" />
       <tarfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-linux.tar.gz_f755" filemode="755" prefix="MPS ${mpsBootstrapCore.version}/bin" />
@@ -264,7 +253,6 @@
       </zipfileset>
       <zipfileset file="${basedir}/build/resources/mps.ico" prefix="MPS ${mpsBootstrapCore.version}/bin" />
       <zipfileset file="${basedir}/bin/win/fsnotifier.exe" prefix="MPS ${mpsBootstrapCore.version}/bin" filemode="755" />
-      <zipfileset file="${basedir}/bin/win/fsnotifier64.exe" prefix="MPS ${mpsBootstrapCore.version}/bin" filemode="755" />
       <zipfileset file="${basedir}/bin/win/restarter.exe" prefix="MPS ${mpsBootstrapCore.version}/bin" filemode="755" />
       <zipfileset file="${basedir}/bin/win/runnerw.exe" prefix="MPS ${mpsBootstrapCore.version}/bin" filemode="755" />
       <zipfileset file="${basedir}/bin/win/WinProcessListHelper.exe" prefix="MPS ${mpsBootstrapCore.version}/bin" filemode="755" />
@@ -284,13 +272,6 @@
         <fixcrlf eol="lf" eof="remove" />
       </filterchain>
       <regexpmapper from="mps64.vmoptions" to="mps.vmoptions" />
-    </copy>
-    <mkdir dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip_f755" />
-    <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip_f755">
-      <fileset file="${basedir}/bin/mac/printenv.py" />
-      <filterchain>
-        <fixcrlf eol="lf" eof="remove" />
-      </filterchain>
     </copy>
     <copy todir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip/MPS ${mpsBootstrapCore.version}.app/Contents">
       <fileset file="${basedir}/plugins/mps-build/solutions/mpsBuild/source_gen/jetbrains/mps/ide/build/Info.plist.xml" />
@@ -321,12 +302,11 @@
       <zipfileset dir="${artifacts.mps}" prefix="MPS ${mpsBootstrapCore.version}.app/Contents" />
       <zipfileset file="${basedir}/build/resources/mps.icns" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/Resources" />
       <zipfileset file="${basedir}/build/resources/mps" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/MacOS" filemode="755" />
-      <zipfileset file="${basedir}/bin/mac/libMacNativeKit64.dylib" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" />
       <zipfileset file="${basedir}/bin/mac/libnst64.dylib" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" />
       <zipfileset file="${basedir}/bin/mac/restarter" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" filemode="755" />
       <zipfileset file="${basedir}/bin/mac/fsnotifier" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" filemode="755" />
+      <zipfileset file="${basedir}/bin/mac/printenv" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" filemode="755" />
       <zipfileset dir="${basedir}/plugins/laf-macos" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/plugins/laf-macos" />
-      <zipfileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip_f755" filemode="755" prefix="MPS ${mpsBootstrapCore.version}.app/Contents/bin" />
       <fileset dir="${build.tmp}/default/_dl__lbrace_build.number_rbrace_-macos.zip" />
     </zip>
     <echo file="${build.layout}/build.properties">mps.build.number=${mps.build.number}${line.separator}mps.date=${mps.date}${line.separator}mps.build.vcs.number=${mps.build.vcs.number}${line.separator}mps.teamcity.buildConfName=${mps.teamcity.buildConfName}${line.separator}mps.idea.platform.build.number=${mps.idea.platform.build.number}${line.separator}mps.mps.build.counter=${mps.mps.build.counter}${line.separator}mpsBootstrapCore.version.major=${mpsBootstrapCore.version.major}${line.separator}mpsBootstrapCore.version.minor=${mpsBootstrapCore.version.minor}${line.separator}mpsBootstrapCore.version.bugfixNr=${mpsBootstrapCore.version.bugfixNr}${line.separator}mpsBootstrapCore.version.eap=${mpsBootstrapCore.version.eap}${line.separator}mpsBootstrapCore.version=${mpsBootstrapCore.version}</echo>
