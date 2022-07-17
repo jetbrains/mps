@@ -12,8 +12,6 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/plugins/mps-core/lib/kotlin-compiler-client-embeddable-1.7.0-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/plugins/mps-core/lib/kotlin-compiler-client-embeddable-1.7.0-sources.jar!/" />
-      <root url="jar://$PROJECT_DIR$/plugins/mps-core/lib/kotlin-stdlib-1.7.0-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/plugins/mps-core/lib/kotlin-stdlib-1.7.0-sources.jar!/" />
       <root url="jar://$PROJECT_DIR$/plugins/mps-core/lib/kotlinx-metadata-jvm-0.4.2-sources.jar!/" />
     </SOURCES>

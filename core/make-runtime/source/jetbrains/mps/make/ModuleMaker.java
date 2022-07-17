@@ -946,15 +946,15 @@ public final class ModuleMaker {
     );
 
     // Do the actual compilation
-    final KotlinCompilationOutput collector = runner.doCompile(modules, moduleByInputFile);
+    final KotlinCompilationOutput compilationOutput = runner.doCompile(modules, moduleByInputFile);
 
     // Get the inputs-per-output mapping per module
-    final HashMap<JM, Map<File, List<File>>> outputFiles = collector.getOutputFiles();
+    final Map<JM, Map<File, List<File>>> outputFiles = compilationOutput.getOutputFiles();
 
     modules.forEach(module -> {
       if (outputFiles.containsKey(module)) {
         // Existing .class file before compilation
-        final HashSet<File> previous = new HashSet<>(module.mySources.myKotlinCompiledFiles);
+        final Set<File> previous = new HashSet<>(module.mySources.myKotlinCompiledFiles);
         // Map of new .class files -> list of input files
         final Map<File, List<File>> current = outputFiles.get(module);
 
@@ -966,14 +966,14 @@ public final class ModuleMaker {
         if (myKotlinCacheHandler != null) {
           myKotlinCacheHandler.addOutput(module, current);
         }
-      } else if (collector.getCompilationResult().isOk()) {
+      } else if (compilationOutput.getCompilationResult().isOk()) {
         // No output files on successful compilation -> all existing kotlin output files must be removed
         // TODO can that actually happens? (those files are marked as to compile)
         module.mySources.myKotlinCompiledFiles.forEach(File::delete);
       }
     });
 
-    return collector.getCompilationResult();
+    return compilationOutput.getCompilationResult();
   }
 
 

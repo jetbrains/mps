@@ -11,7 +11,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Provide interface for ModuleMaker to handle kotlin cache.
+ * Provide interface for ModuleMaker to handle kotlin cache. It can provide kotlin cache per module
+ * (see {@link KotlinModuleCache}), and receives from ModuleMaker the list of source files per output file
+ * after compilation.<br/>
+ * <br/>
+ * In a make process, cache is read during analysis, then compilation occur and output is provided, cache
+ * handler should persist data between compilations (see {@link KotlinCompileCacheHandlerImpl} that uses files
+ * for that purpose).
  */
 public interface KotlinCompileCacheHandler {
   /**

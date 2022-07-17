@@ -19,8 +19,15 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * <p>Kotlin compiler cache handler that saves and load compilation cache from an xml file located in source_gen.cache.</p>
+ *
+ * <p>This implementation handles creation, reading and updating of this file.</p>
+ *
+ * <p>This file does not get automatically removed, but is rather ignored when kotlin source are missing.</p>
+ */
 public class KotlinCompileCacheHandlerImpl implements KotlinCompileCacheHandler {
-  private IMessageHandler myMessageHandler;
+  private final IMessageHandler myMessageHandler;
 
   public KotlinCompileCacheHandlerImpl(IMessageHandler messageHandler) {
     myMessageHandler = messageHandler;
@@ -39,7 +46,7 @@ public class KotlinCompileCacheHandlerImpl implements KotlinCompileCacheHandler 
       final Document document = JDOMUtil.loadDocument(cacheFile);
       return KotlinCompileCacheUtil.deserialize(document.getRootElement());
     } catch (JDOMException | IOException e) {
-      Message msg = new Message(MessageKind.ERROR, FileProcessor.class, (e.getMessage() == null ? e.getClass().getName() : e.getMessage()));
+      Message msg = new Message(MessageKind.ERROR, KotlinCompileCacheHandlerImpl.class, (e.getMessage() == null ? e.getClass().getName() : e.getMessage()));
       msg.setException(e);
       msg.setHintObject(cacheFile);
       myMessageHandler.handle(msg);
@@ -57,7 +64,7 @@ public class KotlinCompileCacheHandlerImpl implements KotlinCompileCacheHandler 
     try {
       JDOMUtil.writeDocument(document, cacheFile);
     } catch (IOException ex) {
-      Message msg = new Message(MessageKind.ERROR, FileProcessor.class, (ex.getMessage() == null ? ex.getClass().getName() : ex.getMessage()));
+      Message msg = new Message(MessageKind.ERROR, KotlinCompileCacheHandlerImpl.class, (ex.getMessage() == null ? ex.getClass().getName() : ex.getMessage()));
       msg.setException(ex);
       msg.setHintObject(cacheFile);
       myMessageHandler.handle(msg);

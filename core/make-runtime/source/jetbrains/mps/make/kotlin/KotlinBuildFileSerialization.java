@@ -21,10 +21,14 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Class responsible for converting a list of modules from ModuleMaker to a xml files containing
- * all necessary information for kotlin compiler.
+ * <p>Class responsible for converting a list of modules from ModuleMaker to a xml files containing
+ * all necessary information for kotlin compiler. The file path is to be provided to kotlinc using argument
+ * {@code -Xbuild-file=<path to xml file>}.</p>
  *
- * This seems to be undocumented and unstable API, will probably be changed on future (> 1.7) versions of Kotlin
+ * <p>The created file is created by {@link KotlinCompilerRunner} as a way to pass data to the kotlin compiler daemon as it cannot pass through command line
+ * and will be discarded later on (deleteOnExit is used, but it could be done anytime after compilation). It can also be used by a custom kotlin compiler client.</p>
+ *
+ * <p>This seems to be undocumented and unstable API, it will probably be changed on future (> 1.7) versions of Kotlin</p>
  */
 public class KotlinBuildFileSerialization {
   @NotNull
@@ -64,7 +68,6 @@ public class KotlinBuildFileSerialization {
       sourceElement.setAttribute(ModuleXmlParser.PATH, it);
       moduleXml.addContent(sourceElement);
 
-      // TODO make it optional? we only need that when there actually are java source files
       sourceElement = new Element(ModuleXmlParser.JAVA_SOURCE_ROOTS);
       sourceElement.setAttribute(ModuleXmlParser.PATH, it);
       moduleXml.addContent(sourceElement);

@@ -58,7 +58,6 @@ public final class FacetRegistry implements CoreComponent {
   public void register(IFacet facet) {
     if (MapSequence.fromMap(facetMap).containsKey(facet.getName())) {
       // Allow multiple registrations
-      // TODO actually remove that if?
       return;
     }
     MapSequence.fromMap(facetMap).put(facet.getName(), facet);

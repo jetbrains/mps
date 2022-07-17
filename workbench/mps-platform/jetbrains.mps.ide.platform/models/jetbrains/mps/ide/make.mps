@@ -453,7 +453,7 @@
       <node concept="z59LJ" id="4DiVYcGjH9c" role="lGtFl">
         <node concept="TZ5HA" id="4DiVYcGjH9d" role="TZ5H$">
           <node concept="1dT_AC" id="4DiVYcGjH9e" role="1dT_Ay">
-            <property role="1dT_AB" value="File that indicates the service to be up, will get deleted on dispose." />
+            <property role="1dT_AB" value="File that indicates the service to be up, will get deleted on dispose. Used for kotlin compiler options." />
           </node>
         </node>
       </node>

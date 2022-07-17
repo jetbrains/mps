@@ -106,11 +106,6 @@ final class JavaCompilerImpl implements AutoCloseable {
     myFileManagerListener = new FileManagerDiagnostics();
   }
 
-  // TODO review: this allows to run kotlin compilation AFTER files have been cleaned. Possible alternatives:
-  //  - providing a lambda to the previously existing compile function: will introduce kotlin specific code here and make returned result ugly
-  //  - call compiler from here: doesn't feel like the right place
-  //  - keep the previous logic of providing BMC the list of files not to delete. this way the analysis will not remove them, but that's extra
-  //  computation (probably wont impact compile time though). Kotlin compilation will occur before any cycle then
   @NotNull
   public MPSCompilationResult compile(BaseModuleContainer<? extends JavaModule> modules, CompositeTracer tracer) {
     final ModuleAnalyzerResult analysisResult = analyze(modules, tracer);

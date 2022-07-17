@@ -16,8 +16,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Class managing serialization of the cache file for kotlin compilation. This file contains for each output files, a list
- * of mapped input files, it allows compilation avoidance during ModuleMaker analysis.
+ * Class managing serialization to xml of the cache file for kotlin compilation.
+ *
+ * @see KotlinCompileCacheHandlerImpl
  */
 public class KotlinCompileCacheUtil {
   public static final String CACHE_FILE_NAME = "kotlin_compiled_cache.xml";
@@ -66,14 +67,13 @@ public class KotlinCompileCacheUtil {
              .add(inputPath);
         }
 
-        // Keep all input files
+        // Keep all input files (so we don't need to iterate over map and convert strings to files again)
         if (inputPath != null) {
           inputFiles.add(new File(inputPath));
         }
       }
     }
 
-    // No pre-computed output files
     return new KotlinModuleCache(map, inputFiles);
   }
 }

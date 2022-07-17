@@ -7,8 +7,6 @@ import jetbrains.mps.make.CompositeTracer;
 import jetbrains.mps.make.FileWithPosition;
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.make.ModuleMaker.JM;
-import jetbrains.mps.messages.Message;
-import jetbrains.mps.messages.MessageKind;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function2;
 import org.jetbrains.annotations.NotNull;
@@ -28,19 +26,27 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * Implementation of kotlin compiler message collector, forwarding messages to an MPS IMessageHandler
- * and handling output files locations.
+ * Implementation of kotlin compiler message collector, forwarding messages to an MPS tracer
+ * and handling output files locations for a compilation cycle.<br/>
+ *
+ * It was designed to be used along with {@link org.jetbrains.kotlin.daemon.client.BasicCompilerServicesWithResultsFacadeServer},
+ * which forwards regular message to {@link MessageCollector} functions, and collect outputs that are then provided to {@link Function2}.
+ * While two separate classes could be used, having the state of output files helps to get the "affected modules" state for the compilation result.
  */
 public class KotlinCompilationOutputCollector implements MessageCollector, Function2<File, List<? extends File>, Unit> {
-  private final CompositeTracer myMessageHandler;
+  private final CompositeTracer myTracer;
   private final HashMap<File, JM> myModuleByInputFile;
   private int errorCount = 0;
   private int warningCount = 0;
   private boolean hasOutput = false;
   private final HashMap<JM, Map<File, List<File>>> myOutputFiles = new HashMap<>();
 
-  public KotlinCompilationOutputCollector(@NotNull CompositeTracer messageHandler, @NotNull HashMap<File, JM> moduleByInputFile) {
-    myMessageHandler = messageHandler;
+  /**
+   * Creates a new collector for kotlin compilation output (messages and files).
+   * @param moduleByInputFile map of module per source files (mandatory to trace back output to their module properly)
+   */
+  public KotlinCompilationOutputCollector(@NotNull CompositeTracer tracer, @NotNull HashMap<File, JM> moduleByInputFile) {
+    myTracer = tracer;
     myModuleByInputFile = moduleByInputFile;
   }
 
@@ -65,15 +71,15 @@ public class KotlinCompilationOutputCollector implements MessageCollector, Funct
     switch (severity) {
       case ERROR:
       case EXCEPTION:
-        myMessageHandler.getSender().error(text, hint);
+        myTracer.getSender().error(text, hint);
         break;
       case STRONG_WARNING:
       case WARNING:
-        myMessageHandler.getSender().warn(text, hint);
+        myTracer.getSender().warn(text, hint);
         break;
       default:
         // No hint for this one :(
-        myMessageHandler.getSender().info(text);
+        myTracer.getSender().info(text);
         break;
     }
   }

@@ -17,14 +17,19 @@ public class KotlinCompilerOptions {
   }
 
   /**
-   * @return file indicating to kotlin compiler that the client is still alive
+   * Returns a file used to indicate that MPS is still alive. This file should get deleted on exit to let
+   * kotlin compiler daemon that MPS is finished.
+   * <br/>
+   * The same file should ideally be reused for subsequent compilations.
+   *
+   * @return file indicating to kotlin compiler that the client (MPS) is still alive
    */
   public File getClientFile() {
     return myClientFile;
   }
 
   /**
-   * Creates a client file that will get erased on exit. This file should ideally be reused for subsequent compilations.
+   * Creates a client file that will get erased on exit.
    */
   @NotNull
   public static File createClientFile() {

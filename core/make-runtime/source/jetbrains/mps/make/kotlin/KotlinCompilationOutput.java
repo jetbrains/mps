@@ -5,28 +5,35 @@ package jetbrains.mps.make.kotlin;
 
 import jetbrains.mps.make.MPSCompilationResult;
 import jetbrains.mps.make.ModuleMaker.JM;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Result of kotlin compilation, containing the MPSCompilationResult and the list of source files per output files.
+ *
+ * @see KotlinCompilerRunner
+ */
 public class KotlinCompilationOutput {
-  public final static KotlinCompilationOutput ABORTED = new KotlinCompilationOutput(new HashMap<>(), new MPSCompilationResult(1, 0, true,
-                                                                                                                              Collections.emptySet()));
-  private final HashMap<JM, Map<File, List<File>>> myOutputFiles;
+  public final static KotlinCompilationOutput ABORTED = new KotlinCompilationOutput(Collections.emptyMap(), new MPSCompilationResult(1, 0, true,
+                                                                                                                         Collections.emptySet()));
+  private final Map<JM, Map<File, List<File>>> myOutputFiles;
   private final MPSCompilationResult myCompilationResult;
 
-  public KotlinCompilationOutput(HashMap<JM, Map<File, List<File>>> outputFiles, MPSCompilationResult compilationResult) {
+  public KotlinCompilationOutput(@NotNull Map<JM, Map<File, List<File>>> outputFiles, @NotNull MPSCompilationResult compilationResult) {
     myOutputFiles = outputFiles;
     myCompilationResult = compilationResult;
   }
 
-  public HashMap<JM, Map<File, List<File>>> getOutputFiles() {
+  @NotNull
+  public Map<JM, Map<File, List<File>>> getOutputFiles() {
     return myOutputFiles;
   }
 
+  @NotNull
   public MPSCompilationResult getCompilationResult() {
     return myCompilationResult;
   }

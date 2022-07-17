@@ -75,7 +75,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
   private final Platform myPlatform;
 
   /**
-   * File that indicates the service to be up, will get deleted on dispose.
+   * File that indicates the service to be up, will get deleted on dispose. Used for kotlin compiler options.
    */
   private File myAliveFile;
 

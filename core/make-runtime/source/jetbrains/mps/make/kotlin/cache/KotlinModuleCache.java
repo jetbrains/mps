@@ -11,6 +11,8 @@ import java.util.Set;
 /**
  * Kotlin output cache for a single module. It contains the list of all inputs for each
  * output file.
+ * <br>
+ * This data is used for compilation avoidance (not compiling modules that are up to date)
  */
 public class KotlinModuleCache {
   private final Map<String, List<String>> myOutputToSourceFiles;
@@ -32,7 +34,8 @@ public class KotlinModuleCache {
 
   /**
    * Returns a list of source file used in previous compilation to create the output file, or null if
-   * the entry is not found
+   * the entry is not found (which means the output file was either not compiled from kotlin or that
+   * cache does not include it).
    */
   public List<String> getSourcesFor(String outputFilePath) {
     return myOutputToSourceFiles.get(outputFilePath);
