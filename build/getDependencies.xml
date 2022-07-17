@@ -221,12 +221,10 @@
     <chmod file="${basedir}/../build/resources/mps" perm="755"/>
 
     <chmod file="${basedir}/../bin/linux/fsnotifier" perm="755"/>
-    <chmod file="${basedir}/../bin/linux/fsnotifier64" perm="755"/>
     <chmod file="${basedir}/../bin/linux/printenv.py" perm="755"/>
     <chmod file="${basedir}/../bin/linux/restart.py" perm="755"/>
 
     <chmod file="${basedir}/../bin/win/fsnotifier.exe" perm="755"/>
-    <chmod file="${basedir}/../bin/win/fsnotifier64.exe" perm="755"/>
     <chmod file="${basedir}/../bin/win/restarter.exe" perm="755"/>
     <chmod file="${basedir}/../bin/win/runnerw.exe" perm="755"/>
     <chmod file="${basedir}/../bin/win/vistalauncher.exe" perm="755"/>
