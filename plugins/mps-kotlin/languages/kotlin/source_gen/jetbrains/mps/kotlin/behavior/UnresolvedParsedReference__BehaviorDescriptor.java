@@ -17,6 +17,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.kotlin.api.types.identifiers.UnmatchableType;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -56,6 +57,7 @@ public final class UnresolvedParsedReference__BehaviorDescriptor extends BaseBHD
     }
     return "";
   }
+  @NotNull
   /*package*/ static TypeKey shallowId_idJmO2PmZtH5(@NotNull SNode __thisNode__) {
     {
       final SNode type = SLinkOperations.getTarget(__thisNode__, LINKS.nested$3t_j);
@@ -63,7 +65,7 @@ public final class UnresolvedParsedReference__BehaviorDescriptor extends BaseBHD
         return IType__BehaviorDescriptor.shallowId_idJmO2PmZtH5.invoke(type);
       }
     }
-    return null;
+    return new UnmatchableType();
   }
   /*package*/ static boolean isResolved_id4MvRlgZCbFz(@NotNull SNode __thisNode__) {
     // This expression is the definition of unresolved business

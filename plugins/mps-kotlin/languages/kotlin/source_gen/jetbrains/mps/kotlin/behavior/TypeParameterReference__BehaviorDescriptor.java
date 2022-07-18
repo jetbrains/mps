@@ -65,6 +65,7 @@ public final class TypeParameterReference__BehaviorDescriptor extends BaseBHDesc
     }
     return ITypeParameter__BehaviorDescriptor.getDescriptor_id28CvMylflrH.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.parameter$ofYr));
   }
+  @NotNull
   /*package*/ static TypeKey shallowId_idJmO2PmZtH5(@NotNull SNode __thisNode__) {
     return new ClassTypeKey(SLinkOperations.getPointer(__thisNode__, LINKS.parameter$ofYr));
   }

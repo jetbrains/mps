@@ -113,6 +113,7 @@ public final class IType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SignatureScope getCompanionInstanceScope_id1ODRHGtugRP(@NotNull SNode __thisNode__, SignatureFilter<?> filter, SNode contextNode) {
     return null;
   }
+  @NotNull
   /*package*/ static TypeKey shallowId_idJmO2PmZtH5(@NotNull SNode __thisNode__) {
     return new UnmatchableType();
   }

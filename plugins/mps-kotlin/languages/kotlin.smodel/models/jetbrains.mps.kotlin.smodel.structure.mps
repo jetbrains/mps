@@ -216,7 +216,7 @@
     <property role="3GE5qa" value="type.node" />
     <property role="TrG5h" value="NodeReferenceType" />
     <property role="34LRSv" value="node-ref" />
-    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="398EB8$lmJh" role="PzmwI">
       <ref role="PrY4T" node="Aa0Z14eY4v" resolve="ProjectedConceptParameterizedType" />
     </node>

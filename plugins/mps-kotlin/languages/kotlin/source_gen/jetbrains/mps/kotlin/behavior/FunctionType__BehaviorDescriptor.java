@@ -105,6 +105,7 @@ public final class FunctionType__BehaviorDescriptor extends BaseBHDescriptor {
     // No type parameter for function type
     return Sequence.fromIterable(Collections.<TypeParameterDeclaration>emptyList());
   }
+  @NotNull
   /*package*/ static TypeKey shallowId_idJmO2PmZtH5(@NotNull SNode __thisNode__) {
     return new FunctionType(ListSequence.fromList(SLinkOperations.getChildren(__thisNode__, LINKS.parameters$jkhy)).count());
   }

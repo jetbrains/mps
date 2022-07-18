@@ -50,6 +50,7 @@ public final class IntersectionType__BehaviorDescriptor extends BaseBHDescriptor
       }
     }), " & ");
   }
+  @NotNull
   /*package*/ static TypeKey shallowId_idJmO2PmZtH5(@NotNull SNode __thisNode__) {
     return new UnmatchableType();
   }

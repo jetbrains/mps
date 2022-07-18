@@ -22,6 +22,7 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.kotlin.api.types.identifiers.UnmatchableType;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
@@ -77,7 +78,11 @@ public final class NullableType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static SignatureScope getCompanionInstanceScope_id1ODRHGtugRP(@NotNull SNode __thisNode__, SignatureFilter<?> filter, SNode contextNode) {
     return ((SignatureScope) IType__BehaviorDescriptor.getCompanionInstanceScope_id1ODRHGtugRP.invoke(__thisNode__, filter, contextNode));
   }
+  @NotNull
   /*package*/ static TypeKey shallowId_idJmO2PmZtH5(@NotNull SNode __thisNode__) {
+    if ((SLinkOperations.getTarget(__thisNode__, LINKS.type$Tm0J) == null)) {
+      return new UnmatchableType();
+    }
     return (TypeKey) IType__BehaviorDescriptor.shallowId_idJmO2PmZtH5.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.type$Tm0J));
   }
   /*package*/ static boolean showParenthesis_id3PNJzGvtdRU(@NotNull SNode __thisNode__) {

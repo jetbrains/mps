@@ -18,15 +18,28 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.editor.menus.transformation.DefaultConceptMenusTransformationMenuPart;
 import jetbrains.mps.kernel.model.SModelUtil;
-import jetbrains.mps.lang.editor.menus.transformation.WrapSubstituteMenuTransformationMenuPart;
+import jetbrains.mps.lang.editor.menus.SingleItemMenuPart;
 import org.jetbrains.annotations.Nullable;
+import jetbrains.mps.logging.Logger;
+import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
+import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
+import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
+import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
+import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
+import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
+import jetbrains.mps.lang.editor.menus.transformation.WrapSubstituteMenuTransformationMenuPart;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuLookup;
 import jetbrains.mps.openapi.editor.EditorContext;
-import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.lang.editor.menus.substitute.DefaultSubstituteMenuLookup;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.lang.editor.menus.transformation.SubstituteMenuItemAsActionItem;
-import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.editor.runtime.menus.SubstituteItemProxy;
 import jetbrains.mps.openapi.editor.menus.substitute.SubstituteMenuItem;
@@ -34,17 +47,11 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.openapi.editor.selection.SelectionManager;
-import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
-import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
-import jetbrains.mps.editor.runtime.completion.CompletionItemInformation;
-import jetbrains.mps.editor.runtime.menus.EditorMenuItemCompositeCustomizationContext;
-import jetbrains.mps.editor.runtime.completion.CompletionMenuItemCustomizationContext;
-import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemCustomizer;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
+import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
 public class FunctionDeclaration_TransformationMenu extends TransformationMenuBase {
@@ -85,12 +92,74 @@ public class FunctionDeclaration_TransformationMenu extends TransformationMenuBa
         }
 
       });
-      result.add(new TMP_WrapSM_ygp9jm_b0());
+      result.add(new TMP_Action_ygp9jm_b0());
+      result.add(new TMP_WrapSM_ygp9jm_c0());
     }
     return result;
   }
 
-  public class TMP_WrapSM_ygp9jm_b0 extends WrapSubstituteMenuTransformationMenuPart {
+  private class TMP_Action_ygp9jm_b0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+    @Nullable
+    protected TransformationMenuItem createItem(TransformationMenuContext context) {
+      Item item = new Item(context);
+      String description;
+      try {
+        description = "single item: " + item.getLabelText("");
+      } catch (Throwable t) {
+        Logger.getLogger(getClass()).error("Exception while executing getText of the item " + item, t);
+        return null;
+      }
+      context.getEditorMenuTrace().pushTraceInfo();
+      try {
+        context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase(description, new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "3035803082350945584")));
+        item.setTraceInfo(context.getEditorMenuTrace().getTraceInfo());
+      } finally {
+        context.getEditorMenuTrace().popTraceInfo();
+      }
+      return item;
+    }
+
+    private class Item extends ActionItemBase implements SideTransformCompletionActionItem {
+      private final TransformationMenuContext _context;
+      private EditorMenuTraceInfo myEditorMenuTraceInfo;
+      private Item(TransformationMenuContext context) {
+        _context = context;
+      }
+      private void setTraceInfo(EditorMenuTraceInfo info) {
+        myEditorMenuTraceInfo = info;
+      }
+      @Nullable
+      @Override
+      public String getLabelText(String pattern) {
+        return "override";
+      }
+
+      @Override
+      public void execute(@NotNull String pattern) {
+        SPropertyOperations.assign(_context.getNode(), PROPS.isOverride$Gfqk, true);
+        SelectionUtil.selectLabelCellAnSetCaret(_context.getEditorContext(), _context.getNode(), "override", -1);
+      }
+
+
+
+
+      @Override
+      public EditorMenuTraceInfo getTraceInfo() {
+        return myEditorMenuTraceInfo;
+      }
+
+      public void customize(String pattern, EditorMenuItemStyle style) {
+        EditorMenuItemModifyingCustomizationContext modifyingContext = new EditorMenuItemModifyingCustomizationContext(_context.getNode(), null, null, null);
+        SAbstractConcept outputConcept = null;
+        EditorMenuItemCompositeCustomizationContext compositeContext = new EditorMenuItemCompositeCustomizationContext(modifyingContext, new CompletionMenuItemCustomizationContext(new CompletionItemInformation(null, outputConcept, getLabelText(pattern), getShortDescriptionText(pattern))));
+        for (EditorMenuItemCustomizer customizer : CollectionSequence.fromCollection(_context.getCustomizers())) {
+          customizer.customize(style, compositeContext);
+        }
+      }
+    }
+
+  }
+  public class TMP_WrapSM_ygp9jm_c0 extends WrapSubstituteMenuTransformationMenuPart {
     @NotNull
     @Override
     public List<TransformationMenuItem> createItems(@NotNull TransformationMenuContext context) {
@@ -169,6 +238,10 @@ public class FunctionDeclaration_TransformationMenu extends TransformationMenuBa
   private static final class CONCEPTS {
     /*package*/ static final SConcept FunctionDeclaration$oD = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, "jetbrains.mps.kotlin.structure.FunctionDeclaration");
     /*package*/ static final SInterfaceConcept IFunctionModifier$Oh = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3beL, "jetbrains.mps.kotlin.structure.IFunctionModifier");
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty isOverride$Gfqk = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, 0x441fd2709ecea6bdL, "isOverride");
   }
 
   private static final class LINKS {

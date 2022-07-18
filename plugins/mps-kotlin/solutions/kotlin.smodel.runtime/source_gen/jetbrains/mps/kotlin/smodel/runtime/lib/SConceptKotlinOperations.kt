@@ -1,6 +1,6 @@
 package jetbrains.mps.kotlin.smodel.runtime.lib
-import kotlin.Unit
 import kotlin.collections.List
+import kotlin.Unit
 import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.model.SNode
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations

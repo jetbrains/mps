@@ -42,6 +42,7 @@ public final class IClassType__BehaviorDescriptor extends BaseBHDescriptor {
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
 
+  @NotNull
   /*package*/ static TypeKey shallowId_idJmO2PmZtH5(@NotNull SNode __thisNode__) {
     return new ClassTypeKey(SNodeOperations.getPointer(IClassType__BehaviorDescriptor.getClassifier_id7an2tsIdpk7.invoke(__thisNode__)));
   }

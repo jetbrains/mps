@@ -10,7 +10,6 @@
   </languages>
   <imports>
     <import index="vzxy" ref="r:e4815086-4c30-49cb-8870-1731d8a054ca(jetbrains.mps.kotlin.smodel.structure)" />
-    <import index="tbhz" ref="r:7d051f7f-1a28-4ed6-9de6-95fd49d3fa23(jetbrains.mps.kotlin.scopes)" />
     <import index="5m2i" ref="r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" />
@@ -22,7 +21,6 @@
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="1p8r" ref="r:966de44c-de72-437f-889f-78347a061f0c(jetbrains.mps.kotlin.api.declaration)" />
     <import index="2q9i" ref="r:764c4c95-d567-4a0e-99be-3892becb007f(jetbrains.mps.kotlin.api.members)" />
-    <import index="sjya" ref="r:8a99441d-539c-493f-b884-7b6b084d024b(jetbrains.mps.kotlin.scopes.signed)" />
     <import index="nww" ref="r:f44f82b0-1fd9-4105-a80c-2fa6e5033003(jetbrains.mps.kotlin.signatures)" />
     <import index="mx11" ref="r:fa9de6a8-90b7-4d2a-a9a9-a40c05cf603b(jetbrains.mps.kotlin.api.types.identifiers)" />
     <import index="w1kc" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel(MPS.Core/)" />
@@ -2052,7 +2050,7 @@
         <node concept="3cpWs6" id="abwK8kfGrE" role="3cqZAp">
           <node concept="2ZW3vV" id="abwK8kfHRY" role="3cqZAk">
             <node concept="3uibUv" id="abwK8kfIfl" role="2ZW6by">
-              <ref role="3uigEE" node="abwK8kflCP" resolve="NodeTypeTypeParameter" />
+              <ref role="3uigEE" node="abwK8kflCP" resolve="SingleConceptTypeParameter" />
             </node>
             <node concept="37vLTw" id="abwK8kfH5W" role="2ZW6bz">
               <ref role="3cqZAo" node="abwK8kfEN5" resolve="obj" />
@@ -3398,7 +3396,7 @@
               <node concept="2ShNRf" id="66iE5cCy102" role="37wK5m">
                 <node concept="HV5vD" id="66iE5cCy103" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="HV5vE" node="abwK8kflCP" resolve="NodeTypeTypeParameter" />
+                  <ref role="HV5vE" node="abwK8kflCP" resolve="SingleConceptTypeParameter" />
                 </node>
               </node>
               <node concept="2OqwBi" id="66iE5cCy2qw" role="37wK5m">
@@ -3546,7 +3544,7 @@
               <node concept="2ShNRf" id="Aa0Z14etj5" role="2HTEbv">
                 <node concept="HV5vD" id="Aa0Z14etj6" role="2ShVmc">
                   <property role="373rjd" value="true" />
-                  <ref role="HV5vE" node="abwK8kflCP" resolve="NodeTypeTypeParameter" />
+                  <ref role="HV5vE" node="abwK8kflCP" resolve="SingleConceptTypeParameter" />
                 </node>
               </node>
             </node>

@@ -1759,7 +1759,7 @@
         <ref role="3uigEE" to="mx11:6GqgvHqhqpA" resolve="TypeKey" />
       </node>
       <node concept="2AHcQZ" id="2CxlH6FCXj1" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" />
+        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
       </node>
     </node>
   </node>

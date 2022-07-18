@@ -26,6 +26,7 @@ import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IterableUtils;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
+import jetbrains.mps.kotlin.api.types.identifiers.UnmatchableType;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -82,7 +83,12 @@ public final class TypeAliasType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static void populateSubstitutions_id4f4W8JpwgWV(@NotNull SNode __thisNode__, TypeVarSubs<SNode> subs) {
     subs.populate(IType__BehaviorDescriptor.getTypeParameters_id7an2tsIdpkM.invoke(__thisNode__), SLinkOperations.getChildren(__thisNode__, LINKS.typeProjections$vhti));
   }
+  @NotNull
   /*package*/ static TypeKey shallowId_idJmO2PmZtH5(@NotNull SNode __thisNode__) {
+    if ((SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeAlias$NsaN), LINKS.type$JuNU) == null)) {
+      return new UnmatchableType();
+    }
+
     // Same type roughly
     return IType__BehaviorDescriptor.shallowId_idJmO2PmZtH5.invoke(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.typeAlias$NsaN), LINKS.type$JuNU));
   }

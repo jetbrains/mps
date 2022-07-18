@@ -537,7 +537,7 @@
     </node>
     <node concept="3aamgX" id="398EB8$nt$9" role="3acgRq">
       <property role="36QftV" value="true" />
-      <ref role="30HIoZ" to="vzxy:Aa0Z14eHbK" resolve="NodeParameterizedType" />
+      <ref role="30HIoZ" to="vzxy:Aa0Z14eHbK" resolve="ConceptParameterizedType" />
       <node concept="gft3U" id="398EB8$nt$a" role="1lVwrX">
         <node concept="2EYIWN" id="398EB8$nt$b" role="gfFT$">
           <ref role="2EYIUZ" to="mhbf:~SNodeReference" resolve="SNodeReference" />

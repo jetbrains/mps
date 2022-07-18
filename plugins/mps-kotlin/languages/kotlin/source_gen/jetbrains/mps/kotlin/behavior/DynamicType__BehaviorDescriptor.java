@@ -41,6 +41,7 @@ public final class DynamicType__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String toString_id4nn3FPlZH$r(@NotNull SNode __thisNode__, boolean erased) {
     return "dynamic";
   }
+  @NotNull
   /*package*/ static TypeKey shallowId_idJmO2PmZtH5(@NotNull SNode __thisNode__) {
     return new UnmatchableType();
   }
