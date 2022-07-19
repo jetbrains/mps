@@ -298,8 +298,6 @@
       </chunk>
       <jvmargs>
         <arg value="-ea" />
-        <arg value="--add-opens=java.desktop/sun.font=ALL-UNNAMED" />
-        <arg value="--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED" />
         <arg value="-Xmx512m" />
       </jvmargs>
       <macro name="mps_home" path="${mps_home}" />

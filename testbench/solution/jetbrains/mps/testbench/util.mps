@@ -5464,7 +5464,7 @@
         </node>
         <node concept="3clFbF" id="4_TMdeLkP63" role="3cqZAp">
           <node concept="3nyPlj" id="4_TMdeLkP64" role="3clFbG">
-            <ref role="37wK5l" to="guwi:~FilterOutputStream.write(byte[])" resolve="write" />
+            <ref role="37wK5l" to="guwi:~PrintStream.write(byte[])" resolve="write" />
             <node concept="37vLTw" id="4_TMdeLkP65" role="37wK5m">
               <ref role="3cqZAo" node="4_TMdeLkP5L" resolve="buf" />
             </node>
