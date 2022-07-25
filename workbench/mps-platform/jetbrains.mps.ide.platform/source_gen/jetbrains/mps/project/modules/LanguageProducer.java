@@ -9,6 +9,8 @@ import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.project.MPSExtentions;
+import com.intellij.openapi.ui.Messages;
+import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
@@ -53,8 +55,11 @@ public class LanguageProducer {
   @NotNull
   public Language create(@NotNull String namespace, @NotNull IFile moduleDir) {
     IFile descriptorFile = moduleDir.findChild(namespace + MPSExtentions.DOT_LANGUAGE);
-    // FIXME proper error reporting
     if (descriptorFile.exists()) {
+      Messages.showMessageDialog("The language descriptor file " + descriptorFile.getName() + " already exists", "Language already exists", MPSIcons.Nodes.Language);
+      if (LOG.isErrorLevel()) {
+        LOG.error("Descriptor file " + descriptorFile + " already exists");
+      }
       throw new IllegalArgumentException("Descriptor file " + descriptorFile + " already exists");
     }
 
@@ -65,7 +70,13 @@ public class LanguageProducer {
     }
 
     IFile generatorLocation = moduleDir.findChild("generator");
-    // if exists, throw exception?
+    if (generatorLocation.exists()) {
+      Messages.showMessageDialog("The generator for the language " + descriptorFile.getName() + " already exists", "Generator already exists", MPSIcons.Nodes.Language);
+      if (LOG.isErrorLevel()) {
+        LOG.error("Generator file for " + descriptorFile + " already exists");
+      }
+      throw new IllegalArgumentException("Generator file for " + descriptorFile + " already exists");
+    }
     generatorLocation.mkdirs();
 
     //  it's the first and only generator in the language, no need to generate some unique long value
@@ -99,8 +110,11 @@ public class LanguageProducer {
     languageDescriptor.setNamespace(languageNamespace);
     languageDescriptor.setId(ModuleId.regular());
     IFile languageModels = moduleLocation.findChild(Language.LANGUAGE_MODELS);
-    // FIXME need proper error reporting
     if (languageModels.exists()) {
+      Messages.showMessageDialog("The language models for " + languageNamespace + " already exist", "Language models already exist", MPSIcons.Nodes.Language);
+      if (LOG.isErrorLevel()) {
+        LOG.error("Trying to create a language in an existing language's directory " + languageModels);
+      }
       throw new IllegalStateException("Trying to create a language in an existing language's directory " + languageModels);
     }
     languageDescriptor.getModelRootDescriptors().add(DefaultModelRoot.createDescriptor(moduleLocation, languageModels));

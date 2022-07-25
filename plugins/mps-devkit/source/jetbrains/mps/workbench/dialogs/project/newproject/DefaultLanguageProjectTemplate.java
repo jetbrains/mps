@@ -28,6 +28,8 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.Icon;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 
 public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
@@ -38,7 +40,19 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
 
   public DefaultLanguageProjectTemplate() {
     myRuntimeSolution = new JCheckBox("Create Runtime Solution");
+    myRuntimeSolution.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent actionEvent) {
+        fireSettingsChanged();
+      }
+    });
     mySandboxSolution = new JCheckBox("Create Sandbox Solution");
+    mySandboxSolution.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent actionEvent) {
+        fireSettingsChanged();
+      }
+    });
     mySettings = new NameLocationPanel(new File("."), "Language name:", "Language file location:") {
       {
         // logic derived from NewLanguageSettings, see NewLanguage_Action for further considerations.
@@ -103,6 +117,22 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   @Nullable
   @Override
   public String checkSettings() {
-    return NewModuleUtil.check(null, MPSExtentions.DOT_LANGUAGE, mySettings.getModuleName(), mySettings.getModuleLocation().getAbsolutePath());
+    String checkResult = NewModuleUtil.check(null, MPSExtentions.DOT_LANGUAGE, mySettings.getModuleName(), mySettings.getModuleLocation().getAbsolutePath());
+    if (checkResult != null && !checkResult.isEmpty()) {
+      return checkResult;
+    }
+    if (myRuntimeSolution.isSelected()) {
+      checkResult = NewModuleUtil.check(null, MPSExtentions.DOT_SOLUTION, mySettings.getModuleName() + ".runtime", mySettings.getModuleLocation().getAbsolutePath() + ".runtime");
+      if (checkResult != null && !checkResult.isEmpty()) {
+        return checkResult;
+      }
+    }
+    if (mySandboxSolution.isSelected()) {
+      checkResult = NewModuleUtil.check(null, MPSExtentions.DOT_SOLUTION, mySettings.getModuleName() + ".sandbox", mySettings.getModuleLocation().getAbsolutePath() + ".sandbox");
+      if (checkResult != null && !checkResult.isEmpty()) {
+        return checkResult;
+      }
+    }
+    return checkResult;
   }
 }

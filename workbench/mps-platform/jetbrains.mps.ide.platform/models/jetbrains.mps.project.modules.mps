@@ -6,6 +6,8 @@
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="2" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="760a0a8c-eabb-4521-8bfd-65db761a9ba3" name="jetbrains.mps.baseLanguage.logging" version="0" />
+    <use id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections" version="1" />
+    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
   </languages>
   <imports>
     <import index="z1c3" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.project(MPS.Platform/)" />
@@ -28,7 +30,9 @@
     <import index="dush" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.persistence(MPS.OpenAPI/)" />
     <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
     <import index="2k9e" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.smodel.adapter.structure(MPS.Core/)" />
-    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
+    <import index="jkm4" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui(MPS.IDEA/)" />
+    <import index="l7us" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.icons(MPS.Platform/)" />
+    <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -725,6 +729,48 @@
             </node>
           </node>
           <node concept="3clFbS" id="68VQjhjTNx_" role="3clFbx">
+            <node concept="3clFbF" id="6TlwaX7EBlm" role="3cqZAp">
+              <node concept="2YIFZM" id="6TlwaX7EBln" role="3clFbG">
+                <ref role="37wK5l" to="jkm4:~Messages.showMessageDialog(java.lang.String,java.lang.String,javax.swing.Icon)" resolve="showMessageDialog" />
+                <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
+                <node concept="3cpWs3" id="6TlwaX7EBlo" role="37wK5m">
+                  <node concept="3cpWs3" id="6TlwaX7EBlp" role="3uHU7B">
+                    <node concept="2OqwBi" id="6TlwaX7EBlq" role="3uHU7w">
+                      <node concept="37vLTw" id="6TlwaX7EBlr" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1Yd98ZZnqGb" resolve="descriptorFile" />
+                      </node>
+                      <node concept="liA8E" id="6TlwaX7EBls" role="2OqNvi">
+                        <ref role="37wK5l" to="3ju5:~IFile.getName()" resolve="getName" />
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="6TlwaX7EBlt" role="3uHU7B">
+                      <property role="Xl_RC" value="The solution descriptor file " />
+                    </node>
+                  </node>
+                  <node concept="Xl_RD" id="6TlwaX7EBlu" role="3uHU7w">
+                    <property role="Xl_RC" value=" already exists" />
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="6TlwaX7EBlv" role="37wK5m">
+                  <property role="Xl_RC" value="Solution already exists" />
+                </node>
+                <node concept="10M0yZ" id="6TlwaX7EBlw" role="37wK5m">
+                  <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="Nodes" />
+                  <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Language" resolve="Language" />
+                </node>
+              </node>
+            </node>
+            <node concept="RRSsy" id="7D538gneotT" role="3cqZAp">
+              <property role="RRSoG" value="gZ5fh_4/error" />
+              <node concept="3cpWs3" id="7D538gnepPk" role="RRSoy">
+                <node concept="37vLTw" id="7D538gnepPl" role="3uHU7w">
+                  <ref role="3cqZAo" node="eb0uW_pWVL" resolve="moduleLocation" />
+                </node>
+                <node concept="Xl_RD" id="7D538gnepPm" role="3uHU7B">
+                  <property role="Xl_RC" value="Trying to create a solution in an existing solution's directory: " />
+                </node>
+              </node>
+            </node>
             <node concept="YS8fn" id="68VQjhjTNxA" role="3cqZAp">
               <node concept="2ShNRf" id="68VQjhjTNxB" role="YScLw">
                 <node concept="1pGfFk" id="68VQjhjTNxC" role="2ShVmc">
@@ -914,38 +960,69 @@
             </node>
           </node>
         </node>
-        <node concept="3SKdUt" id="1vFZXjbvfWT" role="3cqZAp">
-          <node concept="1PaTwC" id="1vFZXjbvfWU" role="1aUNEU">
-            <node concept="3oM_SD" id="1vFZXjbvgll" role="1PaTwD">
-              <property role="3oM_SC" value="FIXME" />
+        <node concept="3clFbJ" id="7rZR_kTgFkA" role="3cqZAp">
+          <node concept="3clFbS" id="7rZR_kTgFkm" role="3clFbx">
+            <node concept="3clFbF" id="7_aauv58_7J" role="3cqZAp">
+              <node concept="2YIFZM" id="7_aauv58BDq" role="3clFbG">
+                <ref role="37wK5l" to="jkm4:~Messages.showMessageDialog(java.lang.String,java.lang.String,javax.swing.Icon)" resolve="showMessageDialog" />
+                <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
+                <node concept="3cpWs3" id="7_aauv58Dyj" role="37wK5m">
+                  <node concept="3cpWs3" id="7_aauv58Dyk" role="3uHU7B">
+                    <node concept="2OqwBi" id="7_aauv58Dyl" role="3uHU7w">
+                      <node concept="37vLTw" id="7_aauv58Dym" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1vFZXjbv2Z6" resolve="descriptorFile" />
+                      </node>
+                      <node concept="liA8E" id="7_aauv58Dyn" role="2OqNvi">
+                        <ref role="37wK5l" to="3ju5:~IFile.getName()" resolve="getName" />
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="7_aauv58Dyo" role="3uHU7B">
+                      <property role="Xl_RC" value="The language descriptor file " />
+                    </node>
+                  </node>
+                  <node concept="Xl_RD" id="7_aauv58Dyp" role="3uHU7w">
+                    <property role="Xl_RC" value=" already exists" />
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="7_aauv58FXJ" role="37wK5m">
+                  <property role="Xl_RC" value="Language already exists" />
+                </node>
+                <node concept="10M0yZ" id="7_aauv58Iz2" role="37wK5m">
+                  <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Language" resolve="Language" />
+                  <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="Nodes" />
+                </node>
+              </node>
             </node>
-            <node concept="3oM_SD" id="1vFZXjbvglm" role="1PaTwD">
-              <property role="3oM_SC" value="proper" />
+            <node concept="RRSsy" id="7D538gnekeb" role="3cqZAp">
+              <property role="RRSoG" value="gZ5fh_4/error" />
+              <node concept="3cpWs3" id="7D538gnelTp" role="RRSoy">
+                <node concept="3cpWs3" id="7D538gnelTq" role="3uHU7B">
+                  <node concept="Xl_RD" id="7D538gnelTr" role="3uHU7B">
+                    <property role="Xl_RC" value="Descriptor file " />
+                  </node>
+                  <node concept="37vLTw" id="7D538gnelTs" role="3uHU7w">
+                    <ref role="3cqZAo" node="1vFZXjbv2Z6" resolve="descriptorFile" />
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="7D538gnelTt" role="3uHU7w">
+                  <property role="Xl_RC" value=" already exists" />
+                </node>
+              </node>
             </node>
-            <node concept="3oM_SD" id="1vFZXjbvgln" role="1PaTwD">
-              <property role="3oM_SC" value="error" />
-            </node>
-            <node concept="3oM_SD" id="1vFZXjbvglo" role="1PaTwD">
-              <property role="3oM_SC" value="reporting" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="6Hfjuo1zddZ" role="3cqZAp">
-          <node concept="3clFbS" id="6Hfjuo1zde0" role="3clFbx">
-            <node concept="YS8fn" id="6Hfjuo1zde1" role="3cqZAp">
-              <node concept="2ShNRf" id="6Hfjuo1zde2" role="YScLw">
-                <node concept="1pGfFk" id="6Hfjuo1zde3" role="2ShVmc">
+            <node concept="YS8fn" id="7rZR_kTgFkk" role="3cqZAp">
+              <node concept="2ShNRf" id="7rZR_kTgFkq" role="YScLw">
+                <node concept="1pGfFk" id="7rZR_kTgFko" role="2ShVmc">
                   <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.String)" resolve="IllegalArgumentException" />
-                  <node concept="3cpWs3" id="6Hfjuo1zde4" role="37wK5m">
-                    <node concept="3cpWs3" id="6Hfjuo1zde5" role="3uHU7B">
-                      <node concept="Xl_RD" id="6Hfjuo1zde6" role="3uHU7B">
+                  <node concept="3cpWs3" id="7rZR_kTgFkc" role="37wK5m">
+                    <node concept="3cpWs3" id="7rZR_kTgFka" role="3uHU7B">
+                      <node concept="Xl_RD" id="7rZR_kTgFkg" role="3uHU7B">
                         <property role="Xl_RC" value="Descriptor file " />
                       </node>
-                      <node concept="37vLTw" id="6Hfjuo1zde7" role="3uHU7w">
+                      <node concept="37vLTw" id="7rZR_kTgFke" role="3uHU7w">
                         <ref role="3cqZAo" node="1vFZXjbv2Z6" resolve="descriptorFile" />
                       </node>
                     </node>
-                    <node concept="Xl_RD" id="6Hfjuo1zde8" role="3uHU7w">
+                    <node concept="Xl_RD" id="7rZR_kTgFku" role="3uHU7w">
                       <property role="Xl_RC" value=" already exists" />
                     </node>
                   </node>
@@ -953,11 +1030,11 @@
               </node>
             </node>
           </node>
-          <node concept="2OqwBi" id="6Hfjuo1zde9" role="3clFbw">
-            <node concept="37vLTw" id="6Hfjuo1zdea" role="2Oq$k0">
+          <node concept="2OqwBi" id="7rZR_kTgFks" role="3clFbw">
+            <node concept="37vLTw" id="7rZR_kTgFky" role="2Oq$k0">
               <ref role="3cqZAo" node="1vFZXjbv2Z6" resolve="descriptorFile" />
             </node>
-            <node concept="liA8E" id="6Hfjuo1zdeb" role="2OqNvi">
+            <node concept="liA8E" id="7rZR_kTgFkw" role="2OqNvi">
               <ref role="37wK5l" to="3ju5:~IFile.exists()" resolve="exists" />
             </node>
           </node>
@@ -1021,19 +1098,82 @@
             </node>
           </node>
         </node>
-        <node concept="3SKdUt" id="1vFZXjbvv8N" role="3cqZAp">
-          <node concept="1PaTwC" id="1vFZXjbvv8O" role="1aUNEU">
-            <node concept="3oM_SD" id="1vFZXjbvvtE" role="1PaTwD">
-              <property role="3oM_SC" value="if" />
+        <node concept="3clFbJ" id="7_aauv59bzj" role="3cqZAp">
+          <node concept="3clFbS" id="7_aauv59bzl" role="3clFbx">
+            <node concept="3clFbF" id="7_aauv59fRa" role="3cqZAp">
+              <node concept="2YIFZM" id="7_aauv59fRb" role="3clFbG">
+                <ref role="37wK5l" to="jkm4:~Messages.showMessageDialog(java.lang.String,java.lang.String,javax.swing.Icon)" resolve="showMessageDialog" />
+                <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
+                <node concept="3cpWs3" id="7_aauv59fRc" role="37wK5m">
+                  <node concept="3cpWs3" id="7_aauv59fRd" role="3uHU7B">
+                    <node concept="2OqwBi" id="7_aauv59fRe" role="3uHU7w">
+                      <node concept="37vLTw" id="7_aauv59fRf" role="2Oq$k0">
+                        <ref role="3cqZAo" node="1vFZXjbv2Z6" resolve="descriptorFile" />
+                      </node>
+                      <node concept="liA8E" id="7_aauv59fRg" role="2OqNvi">
+                        <ref role="37wK5l" to="3ju5:~IFile.getName()" resolve="getName" />
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="7_aauv59fRh" role="3uHU7B">
+                      <property role="Xl_RC" value="The generator for the language " />
+                    </node>
+                  </node>
+                  <node concept="Xl_RD" id="7_aauv59fRi" role="3uHU7w">
+                    <property role="Xl_RC" value=" already exists" />
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="7_aauv59fRj" role="37wK5m">
+                  <property role="Xl_RC" value="Generator already exists" />
+                </node>
+                <node concept="10M0yZ" id="7_aauv59fRk" role="37wK5m">
+                  <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Language" resolve="Language" />
+                  <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="Nodes" />
+                </node>
+              </node>
             </node>
-            <node concept="3oM_SD" id="1vFZXjbvvtF" role="1PaTwD">
-              <property role="3oM_SC" value="exists," />
+            <node concept="RRSsy" id="7D538gneeAO" role="3cqZAp">
+              <property role="RRSoG" value="gZ5fh_4/error" />
+              <node concept="3cpWs3" id="7D538gnegnh" role="RRSoy">
+                <node concept="3cpWs3" id="7D538gnegni" role="3uHU7B">
+                  <node concept="Xl_RD" id="7D538gnegnj" role="3uHU7B">
+                    <property role="Xl_RC" value="Generator file for " />
+                  </node>
+                  <node concept="37vLTw" id="7D538gnegnk" role="3uHU7w">
+                    <ref role="3cqZAo" node="1vFZXjbv2Z6" resolve="descriptorFile" />
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="7D538gnegnl" role="3uHU7w">
+                  <property role="Xl_RC" value=" already exists" />
+                </node>
+              </node>
             </node>
-            <node concept="3oM_SD" id="1vFZXjbvvtG" role="1PaTwD">
-              <property role="3oM_SC" value="throw" />
+            <node concept="YS8fn" id="7_aauv59fRq" role="3cqZAp">
+              <node concept="2ShNRf" id="7_aauv59fRr" role="YScLw">
+                <node concept="1pGfFk" id="7_aauv59fRs" role="2ShVmc">
+                  <ref role="37wK5l" to="wyt6:~IllegalArgumentException.&lt;init&gt;(java.lang.String)" resolve="IllegalArgumentException" />
+                  <node concept="3cpWs3" id="7_aauv59fRt" role="37wK5m">
+                    <node concept="3cpWs3" id="7_aauv59fRu" role="3uHU7B">
+                      <node concept="Xl_RD" id="7_aauv59fRv" role="3uHU7B">
+                        <property role="Xl_RC" value="Generator file for " />
+                      </node>
+                      <node concept="37vLTw" id="7_aauv59fRw" role="3uHU7w">
+                        <ref role="3cqZAo" node="1vFZXjbv2Z6" resolve="descriptorFile" />
+                      </node>
+                    </node>
+                    <node concept="Xl_RD" id="7_aauv59fRx" role="3uHU7w">
+                      <property role="Xl_RC" value=" already exists" />
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
-            <node concept="3oM_SD" id="1vFZXjbvvtH" role="1PaTwD">
-              <property role="3oM_SC" value="exception?" />
+          </node>
+          <node concept="2OqwBi" id="7_aauv59dNB" role="3clFbw">
+            <node concept="37vLTw" id="7_aauv59cIk" role="2Oq$k0">
+              <ref role="3cqZAo" node="6Hfjuo1zkgz" resolve="generatorLocation" />
+            </node>
+            <node concept="liA8E" id="7_aauv59eVd" role="2OqNvi">
+              <ref role="37wK5l" to="3ju5:~IFile.exists()" resolve="exists" />
             </node>
           </node>
         </node>
@@ -1591,25 +1731,6 @@
             </node>
           </node>
         </node>
-        <node concept="3SKdUt" id="1vFZXjbvaWP" role="3cqZAp">
-          <node concept="1PaTwC" id="1vFZXjbvaWQ" role="1aUNEU">
-            <node concept="3oM_SD" id="1vFZXjbvaWT" role="1PaTwD">
-              <property role="3oM_SC" value="FIXME" />
-            </node>
-            <node concept="3oM_SD" id="1vFZXjbvbeZ" role="1PaTwD">
-              <property role="3oM_SC" value="need" />
-            </node>
-            <node concept="3oM_SD" id="1vFZXjbvbl8" role="1PaTwD">
-              <property role="3oM_SC" value="proper" />
-            </node>
-            <node concept="3oM_SD" id="1vFZXjbvbl9" role="1PaTwD">
-              <property role="3oM_SC" value="error" />
-            </node>
-            <node concept="3oM_SD" id="1vFZXjbvbkB" role="1PaTwD">
-              <property role="3oM_SC" value="reporting" />
-            </node>
-          </node>
-        </node>
         <node concept="3clFbJ" id="1Yd98ZZnqIo" role="3cqZAp">
           <node concept="2OqwBi" id="1Yd98ZZnqIp" role="3clFbw">
             <node concept="37vLTw" id="3GM_nagTyho" role="2Oq$k0">
@@ -1620,6 +1741,43 @@
             </node>
           </node>
           <node concept="3clFbS" id="1Yd98ZZnqIs" role="3clFbx">
+            <node concept="3clFbF" id="7_aauv59_MW" role="3cqZAp">
+              <node concept="2YIFZM" id="7_aauv59_MX" role="3clFbG">
+                <ref role="37wK5l" to="jkm4:~Messages.showMessageDialog(java.lang.String,java.lang.String,javax.swing.Icon)" resolve="showMessageDialog" />
+                <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
+                <node concept="3cpWs3" id="7_aauv59_MY" role="37wK5m">
+                  <node concept="3cpWs3" id="7_aauv59_MZ" role="3uHU7B">
+                    <node concept="37vLTw" id="7_aauv59_N1" role="3uHU7w">
+                      <ref role="3cqZAo" node="1Yd98ZZnqHV" resolve="languageNamespace" />
+                    </node>
+                    <node concept="Xl_RD" id="7_aauv59_N3" role="3uHU7B">
+                      <property role="Xl_RC" value="The language models for " />
+                    </node>
+                  </node>
+                  <node concept="Xl_RD" id="7_aauv59_N4" role="3uHU7w">
+                    <property role="Xl_RC" value=" already exist" />
+                  </node>
+                </node>
+                <node concept="Xl_RD" id="7_aauv59_N5" role="37wK5m">
+                  <property role="Xl_RC" value="Language models already exist" />
+                </node>
+                <node concept="10M0yZ" id="7_aauv59_N6" role="37wK5m">
+                  <ref role="3cqZAo" to="l7us:~MPSIcons$Nodes.Language" resolve="Language" />
+                  <ref role="1PxDUh" to="l7us:~MPSIcons$Nodes" resolve="Nodes" />
+                </node>
+              </node>
+            </node>
+            <node concept="RRSsy" id="7D538gne8zO" role="3cqZAp">
+              <property role="RRSoG" value="gZ5fh_4/error" />
+              <node concept="3cpWs3" id="7D538gneafi" role="RRSoy">
+                <node concept="37vLTw" id="7D538gneafj" role="3uHU7w">
+                  <ref role="3cqZAo" node="1Yd98ZZnqIg" resolve="languageModels" />
+                </node>
+                <node concept="Xl_RD" id="7D538gneafk" role="3uHU7B">
+                  <property role="Xl_RC" value="Trying to create a language in an existing language's directory " />
+                </node>
+              </node>
+            </node>
             <node concept="YS8fn" id="1Yd98ZZnqIt" role="3cqZAp">
               <node concept="2ShNRf" id="1Yd98ZZnqIu" role="YScLw">
                 <node concept="1pGfFk" id="1Yd98ZZnqIv" role="2ShVmc">

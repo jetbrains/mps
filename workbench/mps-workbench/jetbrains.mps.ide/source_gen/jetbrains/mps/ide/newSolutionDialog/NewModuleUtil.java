@@ -31,6 +31,9 @@ import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.annotations.Nullable;
 import javax.lang.model.SourceVersion;
 import jetbrains.mps.util.NameUtil;
+import com.intellij.openapi.vfs.LocalFileSystem;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.VFileProperty;
 import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
@@ -159,7 +162,7 @@ public class NewModuleUtil {
 
   public static String check(@Nullable MPSProject mpsProject, String extension, final String namespace, String rootPath) {
     if (MPSExtentions.DOT_LANGUAGE.equals(extension) && !(SourceVersion.isName(namespace))) {
-      return "Language namespace should be valid Java package";
+      return "Language namespace should be a valid Java package";
     }
     if (rootPath.length() == 0) {
       return "Path should be specified";
@@ -170,6 +173,30 @@ public class NewModuleUtil {
     if (NameUtil.shortNameFromLongName(namespace).length() == 0) {
       return "Enter valid namespace";
     }
+
+    LocalFileSystem fs = LocalFileSystem.getInstance();
+    fs.refresh(false);
+    VirtualFile moduleF = fs.findFileByIoFile(new File(rootPath, namespace + extension));
+    if (moduleF != null && moduleF.exists()) {
+      return "The module file " + namespace + extension + " already exists";
+    }
+
+    VirtualFile moduleD = fs.findFileByIoFile(new File(rootPath));
+    if (moduleD != null && moduleD.exists()) {
+      VirtualFile[] files = moduleD.getChildren();
+      int count = 0;
+      for (VirtualFile f : files) {
+        if (!(f.is(VFileProperty.HIDDEN))) {
+          count += 1;
+        }
+      }
+      if (count > 0) {
+        return "The module folder " + rootPath + " is not empty";
+      }
+    }
+
+    // TODO io-based approach is more reliable so not sure which one to use
+
     if (mpsProject == null) {
       return null;
     }
