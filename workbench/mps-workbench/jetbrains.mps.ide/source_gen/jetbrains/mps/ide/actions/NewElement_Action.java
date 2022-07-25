@@ -13,6 +13,7 @@ import com.intellij.openapi.actionSystem.ActionGroup;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
+import com.intellij.openapi.application.ApplicationManager;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import com.intellij.openapi.ui.popup.ListPopup;
 import jetbrains.mps.ide.projectPane.ProjectPaneActionGroups;
@@ -69,20 +70,25 @@ public class NewElement_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final Wrappers._T<ListPopup> popup = new Wrappers._T<ListPopup>(null);
-    ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().runReadAction(() -> {
-      ActionGroup group = (((TreeNode) MapSequence.fromMap(_params).get("node")) != null ? ProjectPaneActionGroups.getQuickCreateGroup((MPSTreeNode) ((TreeNode) MapSequence.fromMap(_params).get("node"))) : ((ActionGroup) MapSequence.fromMap(_params).get("group")));
+    ApplicationManager.getApplication().invokeAndWait(new Runnable() {
+      @Override
+      public void run() {
+        final Wrappers._T<ListPopup> popup = new Wrappers._T<ListPopup>(null);
+        ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository().getModelAccess().runReadAction(() -> {
+          ActionGroup group = (((TreeNode) MapSequence.fromMap(_params).get("node")) != null ? ProjectPaneActionGroups.getQuickCreateGroup((MPSTreeNode) ((TreeNode) MapSequence.fromMap(_params).get("node"))) : ((ActionGroup) MapSequence.fromMap(_params).get("group")));
 
-      if (group != null) {
-        Presentation pres = new Presentation();
-        AnActionEvent e = new AnActionEvent(event.getInputEvent(), event.getDataContext(), ActionPlaces.UNKNOWN, pres, ActionManager.getInstance(), 0);
-        ActionUtils.updateGroup(group, e);
-        popup.value = JBPopupFactory.getInstance().createActionGroupPopup("New", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.SPEEDSEARCH, false);
+          if (group != null) {
+            Presentation pres = new Presentation();
+            AnActionEvent e = new AnActionEvent(event.getInputEvent(), event.getDataContext(), ActionPlaces.UNKNOWN, pres, ActionManager.getInstance(), 0);
+            ActionUtils.updateGroup(group, e);
+            popup.value = JBPopupFactory.getInstance().createActionGroupPopup("New", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.SPEEDSEARCH, false);
+          }
+        });
+        if (popup.value == null) {
+          return;
+        }
+        popup.value.showInBestPositionFor(event.getDataContext());
       }
     });
-    if (popup.value == null) {
-      return;
-    }
-    popup.value.showInBestPositionFor(event.getDataContext());
   }
 }
