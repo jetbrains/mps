@@ -12,6 +12,7 @@ import java.util.Collections;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import jetbrains.mps.kotlin.api.members.SourcedSignature;
+import jetbrains.mps.kotlin.plugin.ExtensionsHelper;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
@@ -56,6 +57,13 @@ public class SignatureScopeAsScope extends Scope {
 
   @Override
   public boolean contains(SNode node) {
+    // Signature scopes only function with a full type checking system (eg. coderules), otherwise,
+    // there is no way to tell if the node is contained. This makes this scope more permissive on
+    // checking that it is on editing (getAvailableElements return less items).
+    if (!(ExtensionsHelper.isCheckingEnabled(node))) {
+      return true;
+    }
+
     if (wrapped == null) {
       return false;
     }

@@ -11,19 +11,25 @@
   <root nodeRef="r:ca03e632-3f02-43dd-8ea4-ad134e38a5a2(jetbrains.mps.kotlin.plugin)/8402416827417240530">
     <file name="ExtensionsHelper.java">
       <node id="8402416827417278337" at="14,50,15,43" concept="1" />
+      <node id="4612903091934530712" at="20,62,21,46" concept="1" />
       <node id="8402416827417278335" at="14,0,17,0" concept="0" trace="accept#(Ljetbrains/mps/kotlin/api/extension/KotlinTypesystem;)Z" />
+      <node id="4612903091934530088" at="20,0,23,0" concept="2" trace="isCheckingEnabled#(Lorg/jetbrains/mps/openapi/model/SNode;)Z" />
       <node id="8402416827417278329" at="12,73,17,7" concept="1" />
       <node id="8402416827417242018" at="12,0,19,0" concept="2" trace="getTypesystem#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljetbrains/mps/kotlin/api/extension/KotlinTypesystem;" />
       <scope id="8402416827417278336" at="14,50,15,43" />
+      <scope id="4612903091934530091" at="20,62,21,46" />
       <scope id="8402416827417278335" at="14,0,17,0">
         <var name="it" id="8402416827417278335" />
+      </scope>
+      <scope id="4612903091934530088" at="20,0,23,0">
+        <var name="contextNode" id="4612903091934531321" />
       </scope>
       <scope id="8402416827417242021" at="12,73,17,7" />
       <scope id="8402416827417242018" at="12,0,19,0">
         <var name="contextNode" id="8402416827417274007" />
       </scope>
       <unit id="8402416827417278335" at="13,142,17,5" name="jetbrains.mps.kotlin.plugin.ExtensionsHelper$1" />
-      <unit id="8402416827417240530" at="11,0,20,0" name="jetbrains.mps.kotlin.plugin.ExtensionsHelper" />
+      <unit id="8402416827417240530" at="11,0,24,0" name="jetbrains.mps.kotlin.plugin.ExtensionsHelper" />
     </file>
   </root>
 </debug-info>

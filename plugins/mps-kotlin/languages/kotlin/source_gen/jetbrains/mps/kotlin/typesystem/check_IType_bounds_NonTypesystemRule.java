@@ -7,6 +7,7 @@ import jetbrains.mps.lang.typesystem.runtime.NonTypesystemRule_Runtime;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
+import jetbrains.mps.kotlin.plugin.ExtensionsHelper;
 import jetbrains.mps.kotlin.behavior.NodeTypeVarSubs;
 import jetbrains.mps.kotlin.behavior.IType__BehaviorDescriptor;
 import jetbrains.mps.internal.collections.runtime.IMapping;
@@ -29,6 +30,11 @@ public class check_IType_bounds_NonTypesystemRule extends AbstractNonTypesystemR
   public check_IType_bounds_NonTypesystemRule() {
   }
   public void applyRule(final SNode type, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
+    // Rule enabled when coderules enabled
+    if (!(ExtensionsHelper.isCheckingEnabled(type))) {
+      return;
+    }
+
     NodeTypeVarSubs subs = new NodeTypeVarSubs();
     IType__BehaviorDescriptor.populateSubstitutions_id4f4W8JpwgWV.invoke(type, subs);
 

@@ -15,9 +15,9 @@ import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.scope.Scope;
 import jetbrains.mps.smodel.runtime.ReferenceConstraintsContext;
 import org.jetbrains.mps.openapi.model.SNode;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.kotlin.behavior.InferredTypeReference;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.kotlin.scopes.SignatureFilter;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.kotlin.scopes.signed.SignatureScope;
@@ -51,7 +51,7 @@ public class PropertyMemberTarget_Constraints extends BaseConstraintsDescriptor 
           @Override
           public Scope createScope(final ReferenceConstraintsContext _context) {
             // Compute type in isolation, otherwise type may be null
-            SNode type = SNodeOperations.as(TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.MemberNavigationOperation$7I, true, false), LINKS.operand$YS5t)), CONCEPTS.IType$Ni);
+            SNode type = new InferredTypeReference(SLinkOperations.getTarget(SNodeOperations.getNodeAncestor(_context.getContextNode(), CONCEPTS.MemberNavigationOperation$7I, true, false), LINKS.operand$YS5t), null).compute();
 
             SignatureFilter<PropertySignature> filter = new SignatureFilter<PropertySignature>(PropertySignature.class);
 
@@ -71,7 +71,6 @@ public class PropertyMemberTarget_Constraints extends BaseConstraintsDescriptor 
   private static final class CONCEPTS {
     /*package*/ static final SConcept PropertyMemberTarget$nM = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x714c456cbe2a89f8L, "jetbrains.mps.kotlin.structure.PropertyMemberTarget");
     /*package*/ static final SConcept MemberNavigationOperation$7I = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790a3792dL, "jetbrains.mps.kotlin.structure.MemberNavigationOperation");
-    /*package*/ static final SInterfaceConcept IType$Ni = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af441L, "jetbrains.mps.kotlin.structure.IType");
     /*package*/ static final SInterfaceConcept IVariableIdentifier$v2 = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x2043bc83114d2ab6L, "jetbrains.mps.kotlin.structure.IVariableIdentifier");
   }
 

@@ -16,4 +16,8 @@ public class ExtensionsHelper {
       }
     });
   }
+
+  public static boolean isCheckingEnabled(SNode contextNode) {
+    return getTypesystem(contextNode) != null;
+  }
 }

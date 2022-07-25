@@ -20,6 +20,7 @@
     <import index="tpd5" ref="r:00000000-0000-4000-0000-011c895902b5(jetbrains.mps.lang.typesystem.dependencies)" />
     <import index="1p8r" ref="r:966de44c-de72-437f-889f-78347a061f0c(jetbrains.mps.kotlin.api.declaration)" />
     <import index="sjya" ref="r:8a99441d-539c-493f-b884-7b6b084d024b(jetbrains.mps.kotlin.scopes.signed)" />
+    <import index="jyou" ref="r:ca03e632-3f02-43dd-8ea4-ad134e38a5a2(jetbrains.mps.kotlin.plugin)" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" implicit="true" />
     <import index="tpck" ref="r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)" implicit="true" />
@@ -2789,6 +2790,40 @@
     <property role="TrG5h" value="check_IType_bounds" />
     <property role="3GE5qa" value="type" />
     <node concept="3clFbS" id="2ul4aX8XbyT" role="18ibNy">
+      <node concept="3SKdUt" id="404kIK231e9" role="3cqZAp">
+        <node concept="1PaTwC" id="404kIK231ea" role="1aUNEU">
+          <node concept="3oM_SD" id="404kIK231TQ" role="1PaTwD">
+            <property role="3oM_SC" value="Rule" />
+          </node>
+          <node concept="3oM_SD" id="404kIK2325P" role="1PaTwD">
+            <property role="3oM_SC" value="enabled" />
+          </node>
+          <node concept="3oM_SD" id="404kIK2326I" role="1PaTwD">
+            <property role="3oM_SC" value="when" />
+          </node>
+          <node concept="3oM_SD" id="404kIK232ri" role="1PaTwD">
+            <property role="3oM_SC" value="coderules" />
+          </node>
+          <node concept="3oM_SD" id="404kIK232f0" role="1PaTwD">
+            <property role="3oM_SC" value="enabled" />
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbJ" id="404kIK22Ym_" role="3cqZAp">
+        <node concept="3clFbS" id="404kIK22YmB" role="3clFbx">
+          <node concept="3cpWs6" id="404kIK23ovP" role="3cqZAp" />
+        </node>
+        <node concept="3fqX7Q" id="404kIK23O86" role="3clFbw">
+          <node concept="2YIFZM" id="404kIK23O88" role="3fr31v">
+            <ref role="37wK5l" to="jyou:404kIK23KCC" resolve="isCheckingEnabled" />
+            <ref role="1Pybhc" to="jyou:7iropoGY2fi" resolve="ExtensionsHelper" />
+            <node concept="1YBJjd" id="404kIK23Oju" role="37wK5m">
+              <ref role="1YBMHb" node="2ul4aX8XbyV" resolve="type" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="3clFbH" id="404kIK23ngx" role="3cqZAp" />
       <node concept="3cpWs8" id="2ul4aX8XefU" role="3cqZAp">
         <node concept="3cpWsn" id="2ul4aX8XefV" role="3cpWs9">
           <property role="TrG5h" value="subs" />
