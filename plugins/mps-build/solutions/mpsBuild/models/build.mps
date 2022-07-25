@@ -38167,6 +38167,112 @@
     <node concept="26Ea6D" id="6KekG3Hebkn" role="2hID6k">
       <property role="26Ea6C" value="-Dsun.tools.attach.tmp.only=true" />
     </node>
+    <node concept="26Ea6D" id="mJdekHydqe" role="2hID6k">
+      <property role="26Ea6C" value="Overrides for Java 17" />
+      <property role="2eq24a" value="true" />
+    </node>
+    <node concept="26Ea6D" id="mJdekHy_IW" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/java.io=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekHz3EP" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekHziNu" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekHzlxY" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/java.net=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekHzU6A" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/java.nio=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$1o$" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/java.nio.charset=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$5xk" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/java.text=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8rs" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/java.time=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8s5" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/java.util=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8sJ" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8tq" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8u6" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8uN" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8vx" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/sun.security.ssl=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8wg" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.base/sun.security.util=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8x0" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/java.awt=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8xL" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8yz" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/java.awt.event=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8zm" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/java.awt.image=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8$a" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8$Z" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/javax.swing=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8_P" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8AG" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8B$" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8Ct" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8Dn" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/sun.awt.windows=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8Ei" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/sun.awt=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8Fe" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/sun.font=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8Gb" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/sun.java2d=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8H9" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=java.desktop/sun.swing=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8I8" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8J8" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8K9" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="mJdekH$8Lb" role="2hID6k">
+      <property role="26Ea6C" value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
+    </node>
     <node concept="26Ea6D" id="6KekG3H$kHH" role="2hID6k">
       <property role="26Ea6C" value="Additional MPS options:" />
       <property role="2eq24a" value="true" />
@@ -38289,6 +38395,112 @@
     </node>
     <node concept="26Ea6D" id="6KekG3Heblg" role="26FZ21">
       <property role="26Ea6C" value="-Dsun.tools.attach.tmp.only=true" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdb" role="26FZ21">
+      <property role="26Ea6C" value="Overrides for Java 17" />
+      <property role="2eq24a" value="true" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdc" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/java.io=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdd" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPde" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdf" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/java.net=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdg" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/java.nio=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdh" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/java.nio.charset=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdi" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/java.text=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdj" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/java.time=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdk" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/java.util=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdl" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdm" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdn" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdo" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdp" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/sun.security.ssl=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdq" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.base/sun.security.util=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdr" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/java.awt=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPds" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdt" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/java.awt.event=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdu" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/java.awt.image=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdv" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdw" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/javax.swing=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdx" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdy" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdz" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPd$" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPd_" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/sun.awt.windows=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdA" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/sun.awt=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdB" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/sun.font=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdC" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/sun.java2d=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdD" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=java.desktop/sun.swing=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdE" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdF" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdG" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
+    </node>
+    <node concept="26Ea6D" id="46OUAJ5nPdH" role="26FZ21">
+      <property role="26Ea6C" value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
     </node>
     <node concept="26Ea6D" id="6KekG3H$kL$" role="26FZ21">
       <property role="26Ea6C" value="Additional MPS options:" />
