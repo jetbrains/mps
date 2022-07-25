@@ -41,6 +41,8 @@ kotlin_compiled_cache.xml
 teamcity-info.xml
 *.hprof
 *.class
+# Generated dependencies for kotlin compiler
+/build/ivyKotlinCompiler-*.xml
 
 # Plugins related excludes:
 # Downloadable plugin libraries

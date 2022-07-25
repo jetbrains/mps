@@ -1,9 +1,0 @@
-<ivy-module version="2.0">
-  <info organisation="org.jetbrains.mps" module="kotlin-compiler"/>
-  <dependencies>
-    <dependency org="org" name="Kotlin_KotlinPublic_Artifacts" rev=".lastSuccessful">
-      <!-- We need the latest successful build of the branch related to kotlin version (other are not kept) -->
-      <artifact name="kotlin-compiler-{build.number}" ext="zip?branch=${kotlin.version}"/>
-    </dependency>
-  </dependencies>
-</ivy-module>
