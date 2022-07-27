@@ -60,13 +60,15 @@ public class KotlinCompilationOutputCollector implements MessageCollector, Funct
     errorCount += (severity.isError() ? 1 : 0);
     warningCount += (severity.isWarning() ? 1 : 0);
 
+    FileWithPosition hint = null;
+
     if (sourceLocation != null) {
       String path = sourceLocation.getPath();
       text = path.substring(path.lastIndexOf("/") + 1) + ":" + sourceLocation.getLine() + ":" + sourceLocation.getColumn() + ": " + text;
+
+      hint = new FileWithPosition(new File(sourceLocation.getPath()), -1, sourceLocation.getLine() - 1, sourceLocation.getColumn() > 0 ? sourceLocation.getColumn() - 1 : -1);
     }
 
-    final FileWithPosition hint =
-        new FileWithPosition(new File(sourceLocation.getPath()), -1, sourceLocation.getLine() - 1, sourceLocation.getColumn() > 0 ? sourceLocation.getColumn() - 1 : -1);
 
     switch (severity) {
       case ERROR:
