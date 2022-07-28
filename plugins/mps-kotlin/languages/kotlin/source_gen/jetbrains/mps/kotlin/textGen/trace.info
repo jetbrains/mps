@@ -4416,28 +4416,34 @@
       <node id="419267039270886701" at="50,319,51,0" concept="11" />
       <node id="279284423591450743" at="52,65,53,22" concept="9" />
       <node id="279284423591467218" at="54,9,55,40" concept="9" />
-      <node id="8174299105127451862" at="61,0,62,0" concept="12" trace="IKotlinRoot$wS" />
-      <node id="8174299105127451862" at="62,0,63,0" concept="12" trace="IIdentifier$wg" />
-      <node id="8174299105127451862" at="66,0,67,0" concept="12" trace="name$MnvL" />
+      <node id="5152589826367232719" at="58,39,59,18" concept="9" />
+      <node id="8174299105127451862" at="65,0,66,0" concept="12" trace="IKotlinRoot$wS" />
+      <node id="8174299105127451862" at="66,0,67,0" concept="12" trace="IIdentifier$wg" />
+      <node id="8174299105127451862" at="70,0,71,0" concept="12" trace="name$MnvL" />
       <node id="8174299105127456545" at="25,0,28,0" concept="1" trace="ImportContext#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
       <node id="1387846870917176967" at="30,38,33,5" concept="6" />
       <node id="1387846870917122466" at="36,162,39,5" concept="6" />
       <node id="5016903245542930316" at="42,0,45,0" concept="7" trace="add#(Ljava/lang/String;)V" />
       <node id="279284423591438697" at="51,0,54,9" concept="6" />
+      <node id="5152589826367223822" at="58,0,61,0" concept="7" trace="select#(Ljava/lang/String;)Ljava/lang/String;" />
       <node id="279284423591357358" at="48,0,57,0" concept="7" trace="select#(Lorg/jetbrains/mps/openapi/model/SNode;)Ljava/lang/String;" />
-      <node id="8174299105127484729" at="46,40,57,52" concept="9" />
       <node id="8174299105127455003" at="29,0,41,0" concept="7" trace="add#(Lorg/jetbrains/mps/openapi/model/SNode;)V" />
-      <node id="8174299105127482436" at="46,0,59,0" concept="7" trace="getImports#()Ljava/lang/Iterable;" />
+      <node id="8174299105127484729" at="46,40,61,13" concept="9" />
+      <node id="8174299105127482436" at="46,0,63,0" concept="7" trace="getImports#()Ljava/lang/Iterable;" />
       <scope id="8174299105127456549" at="25,36,26,90" />
       <scope id="1387846870917176969" at="31,182,32,13" />
       <scope id="1387846870917122468" at="37,25,38,57" />
       <scope id="5016903245542930319" at="42,40,43,67" />
       <scope id="279284423591438699" at="52,65,53,22" />
+      <scope id="5152589826367223825" at="58,39,59,18" />
       <scope id="8174299105127456545" at="25,0,28,0">
         <var name="root" id="8174299105127456598" />
       </scope>
       <scope id="5016903245542930316" at="42,0,45,0">
         <var name="importString" id="5016903245542932462" />
+      </scope>
+      <scope id="5152589826367223822" at="58,0,61,0">
+        <var name="it" id="5152589826367223822" />
       </scope>
       <scope id="279284423591357359" at="48,38,55,40">
         <var name="name" id="419267039270867644" />
@@ -4449,15 +4455,16 @@
       <scope id="8174299105127455006" at="29,30,39,5">
         <var name="root" id="1387846870917100291" />
       </scope>
-      <scope id="8174299105127482439" at="46,40,57,52" />
       <scope id="8174299105127455003" at="29,0,41,0">
         <var name="ref" id="8174299105127455035" />
       </scope>
-      <scope id="8174299105127482436" at="46,0,59,0" />
-      <unit id="8174299105127451862" at="65,0,68,0" name="jetbrains.mps.kotlin.textGen.ImportContext$PROPS" />
-      <unit id="8174299105127451862" at="60,0,64,0" name="jetbrains.mps.kotlin.textGen.ImportContext$CONCEPTS" />
+      <scope id="8174299105127482439" at="46,40,61,13" />
+      <scope id="8174299105127482436" at="46,0,63,0" />
+      <unit id="8174299105127451862" at="69,0,72,0" name="jetbrains.mps.kotlin.textGen.ImportContext$PROPS" />
+      <unit id="5152589826367223822" at="57,61,61,5" name="jetbrains.mps.kotlin.textGen.ImportContext$2" />
+      <unit id="8174299105127451862" at="64,0,68,0" name="jetbrains.mps.kotlin.textGen.ImportContext$CONCEPTS" />
       <unit id="279284423591357358" at="47,56,57,5" name="jetbrains.mps.kotlin.textGen.ImportContext$1" />
-      <unit id="8174299105127451862" at="20,0,69,0" name="jetbrains.mps.kotlin.textGen.ImportContext" />
+      <unit id="8174299105127451862" at="20,0,73,0" name="jetbrains.mps.kotlin.textGen.ImportContext" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/8217000529247469068">

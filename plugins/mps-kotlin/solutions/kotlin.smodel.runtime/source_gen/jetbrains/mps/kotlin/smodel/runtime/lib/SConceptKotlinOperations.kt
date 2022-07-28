@@ -1,11 +1,11 @@
 package jetbrains.mps.kotlin.smodel.runtime.lib
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations
 import kotlin.Unit
 import kotlin.collections.List
 import org.jetbrains.mps.openapi.language.SAbstractConcept
-import org.jetbrains.mps.openapi.model.SNode
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations
 import org.jetbrains.mps.openapi.language.SConcept
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations
+import org.jetbrains.mps.openapi.model.SNode
 inline fun asInstanceConcept(concept:SAbstractConcept): SConcept = SNodeOperations.asInstanceConcept(concept)
 
 // Node constructor for any concept

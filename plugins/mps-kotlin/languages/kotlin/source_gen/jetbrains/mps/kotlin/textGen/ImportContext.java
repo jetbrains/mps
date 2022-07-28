@@ -54,7 +54,11 @@ public class ImportContext {
         }
         return packageName + "." + name;
       }
-    }).union(SetSequence.fromSet(arbitraryImports));
+    }).union(SetSequence.fromSet(arbitraryImports)).sort(new ISelector<String, String>() {
+      public String select(String it) {
+        return it;
+      }
+    }, true);
   }
 
   private static final class CONCEPTS {

@@ -1,11 +1,11 @@
 package jetbrains.mps.kotlin.smodel.runtime.lib
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations
 import kotlin.Array
-import kotlin.collections.List
 import kotlin.Boolean
+import kotlin.collections.List
 import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.model.SNodeReference
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations
 // Rather than setting up new concepts, we can make use of receiver types to set new functions
 inline fun SNode.copy(): SNode = SNodeOperations.copyNode(this) as SNode
 
