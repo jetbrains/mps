@@ -74980,5 +74980,17 @@
       </node>
     </node>
   </node>
+  <node concept="24kQdi" id="2a3y$Oijw7D">
+    <property role="3GE5qa" value="type" />
+    <ref role="1XX52x" to="tpee:2a3y$OijuPV" resolve="IntersectionType" />
+    <node concept="3EZMnI" id="2a3y$Oijx3R" role="2wV5jI">
+      <node concept="3F2HdR" id="hLGfONH" role="3EZMnx">
+        <property role="2czwfO" value=" &amp;" />
+        <ref role="1NtTu8" to="tpee:2a3y$Oijxpa" resolve="bounds" />
+        <node concept="2iRfu4" id="i2ICyku" role="2czzBx" />
+      </node>
+      <node concept="2iRfu4" id="2a3y$Oijx3U" role="2iSdaV" />
+    </node>
+  </node>
 </model>
 

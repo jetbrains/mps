@@ -4961,5 +4961,20 @@
       </node>
     </node>
   </node>
+  <node concept="1TIwiD" id="2a3y$OijuPV">
+    <property role="EcuMT" value="2486983482862857595" />
+    <property role="3GE5qa" value="type" />
+    <property role="TrG5h" value="IntersectionType" />
+    <property role="34LRSv" value="intersection" />
+    <property role="R4oN_" value="type representing an intersection" />
+    <ref role="1TJDcQ" node="fz3vP1H" resolve="Type" />
+    <node concept="1TJgyj" id="2a3y$Oijxpa" role="1TKVEi">
+      <property role="IQ2ns" value="2486983482862868042" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="bounds" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="fz3vP1H" resolve="Type" />
+    </node>
+  </node>
 </model>
 
