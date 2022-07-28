@@ -37,6 +37,16 @@ public class HttpRequest {
     this.referrerHost = getReferrerHost(request);
   }
 
+  public QueryStringDecoder getDecoder() {
+    return decoder;
+  }
+  public io.netty.handler.codec.http.HttpRequest getRequest() {
+    return request;
+  }
+  public Channel getChannel() {
+    return channel;
+  }
+
   public List<String> getParameterValue(String key) {
     return decoder.parameters().get(key);
   }

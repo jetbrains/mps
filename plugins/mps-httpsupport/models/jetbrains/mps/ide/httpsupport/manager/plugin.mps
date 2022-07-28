@@ -1171,6 +1171,49 @@
         <ref role="3uigEE" to="zf81:~URISyntaxException" resolve="URISyntaxException" />
       </node>
     </node>
+    <node concept="2tJIrI" id="Pe9eKZK0lC" role="jymVt" />
+    <node concept="3clFb_" id="Pe9eKZK7VI" role="jymVt">
+      <property role="TrG5h" value="getDecoder" />
+      <node concept="3clFbS" id="Pe9eKZK7VL" role="3clF47">
+        <node concept="3cpWs6" id="Pe9eKZKae$" role="3cqZAp">
+          <node concept="37vLTw" id="Pe9eKZKbhc" role="3cqZAk">
+            <ref role="3cqZAo" node="6GArDv5I3px" resolve="decoder" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="Pe9eKZK6Hi" role="1B3o_S" />
+      <node concept="3uibUv" id="Pe9eKZK99l" role="3clF45">
+        <ref role="3uigEE" to="9xw8:~QueryStringDecoder" resolve="QueryStringDecoder" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="Pe9eKZKeOd" role="jymVt">
+      <property role="TrG5h" value="getRequest" />
+      <node concept="3clFbS" id="Pe9eKZKeOg" role="3clF47">
+        <node concept="3cpWs6" id="Pe9eKZKg55" role="3cqZAp">
+          <node concept="37vLTw" id="Pe9eKZKh80" role="3cqZAk">
+            <ref role="3cqZAo" node="6GArDv5I22B" resolve="request" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="Pe9eKZKdwq" role="1B3o_S" />
+      <node concept="3uibUv" id="Pe9eKZKeIZ" role="3clF45">
+        <ref role="3uigEE" to="9xw8:~HttpRequest" resolve="HttpRequest" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="Pe9eKZKz68" role="jymVt">
+      <property role="TrG5h" value="getChannel" />
+      <node concept="3clFbS" id="Pe9eKZKz6b" role="3clF47">
+        <node concept="3cpWs6" id="Pe9eKZK$n_" role="3cqZAp">
+          <node concept="37vLTw" id="Pe9eKZKAqv" role="3cqZAk">
+            <ref role="3cqZAo" node="5dkEk59WCkE" resolve="channel" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm1VV" id="Pe9eKZKjnd" role="1B3o_S" />
+      <node concept="3uibUv" id="Pe9eKZKz12" role="3clF45">
+        <ref role="3uigEE" to="lqgf:~Channel" resolve="Channel" />
+      </node>
+    </node>
     <node concept="2tJIrI" id="6GArDv5I3wo" role="jymVt" />
     <node concept="3clFb_" id="6GArDv5I6qD" role="jymVt">
       <property role="1EzhhJ" value="false" />

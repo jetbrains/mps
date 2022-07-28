@@ -212,74 +212,86 @@
       <node id="6004610301070322649" at="34,27,35,27" concept="1" />
       <node id="1969513467361694807" at="35,27,36,46" concept="1" />
       <node id="6550075386186592424" at="36,46,37,49" concept="1" />
-      <node id="7720980209309668178" at="40,53,41,41" concept="8" />
-      <node id="7720980209309707169" at="44,27,45,26" concept="8" />
-      <node id="1969513467361945175" at="48,37,49,20" concept="8" />
-      <node id="7720980209309681098" at="52,35,53,24" concept="8" />
-      <node id="3520791039919926069" at="56,29,57,35" concept="8" />
-      <node id="6550075386185662923" at="60,91,61,72" concept="7" />
-      <node id="6550075386185665689" at="61,72,62,31" concept="1" />
-      <node id="6550075386185673185" at="62,31,63,47" concept="1" />
-      <node id="6886330673565094182" at="66,67,67,95" concept="1" />
-      <node id="6886330673565155742" at="70,93,71,84" concept="1" />
-      <node id="6040064942662675858" at="75,31,76,31" concept="1" />
-      <node id="1969513467361738728" at="77,5,78,87" concept="8" />
-      <node id="6550075386186527484" at="81,116,82,49" concept="7" />
-      <node id="6550075386186543792" at="83,27,84,46" concept="1" />
-      <node id="6550075386186548530" at="85,5,86,0" concept="10" />
-      <node id="6550075386186613167" at="86,0,87,87" concept="8" />
-      <node id="7720980209309607593" at="40,0,43,0" concept="6" trace="getParameterValue#(Ljava/lang/String;)Ljava/util/List;" />
-      <node id="7720980209309706246" at="44,0,47,0" concept="6" trace="getPath#()Ljava/lang/String;" />
-      <node id="1969513467361940712" at="48,0,51,0" concept="6" trace="getSegments#()Ljava/util/List;" />
-      <node id="7720980209309679379" at="52,0,55,0" concept="6" trace="getReferrerHost#()Ljava/lang/String;" />
-      <node id="3520791039919922162" at="56,0,59,0" concept="6" trace="getMethod#()Ljava/lang/String;" />
-      <node id="6886330673565138395" at="66,0,69,0" concept="6" trace="sendText#(Lio/netty/handler/codec/http/HttpResponseStatus;Ljava/lang/String;)V" />
-      <node id="6886330673565083010" at="70,0,73,0" concept="6" trace="sendErrorResponse#(Lio/netty/handler/codec/http/HttpResponseStatus;Ljava/lang/String;Ljava/lang/Throwable;)V" />
-      <node id="6040064942662672192" at="74,58,77,5" concept="5" />
-      <node id="6550075386186537548" at="82,49,85,5" concept="5" />
-      <node id="6550075386185636075" at="60,0,65,0" concept="6" trace="sendResponse#(Lio/netty/handler/codec/http/HttpResponseStatus;Ljava/lang/String;Lio/netty/buffer/ByteBuf;)V" />
-      <node id="3975441000527018457" at="74,0,80,0" concept="12" trace="getSegmentsFor#(Ljava/lang/String;)Ljava/util/List;" />
+      <node id="958744367776965540" at="40,42,41,19" concept="8" />
+      <node id="958744367776989509" at="43,63,44,19" concept="8" />
+      <node id="958744367777072613" at="46,31,47,19" concept="8" />
+      <node id="7720980209309668178" at="50,53,51,41" concept="8" />
+      <node id="7720980209309707169" at="54,27,55,26" concept="8" />
+      <node id="1969513467361945175" at="58,37,59,20" concept="8" />
+      <node id="7720980209309681098" at="62,35,63,24" concept="8" />
+      <node id="3520791039919926069" at="66,29,67,35" concept="8" />
+      <node id="6550075386185662923" at="70,91,71,72" concept="7" />
+      <node id="6550075386185665689" at="71,72,72,31" concept="1" />
+      <node id="6550075386185673185" at="72,31,73,47" concept="1" />
+      <node id="6886330673565094182" at="76,67,77,95" concept="1" />
+      <node id="6886330673565155742" at="80,93,81,84" concept="1" />
+      <node id="6040064942662675858" at="85,31,86,31" concept="1" />
+      <node id="1969513467361738728" at="87,5,88,87" concept="8" />
+      <node id="6550075386186527484" at="91,116,92,49" concept="7" />
+      <node id="6550075386186543792" at="93,27,94,46" concept="1" />
+      <node id="6550075386186548530" at="95,5,96,0" concept="10" />
+      <node id="6550075386186613167" at="96,0,97,87" concept="8" />
+      <node id="958744367776956142" at="40,0,43,0" concept="6" trace="getDecoder#()Lio/netty/handler/codec/http/QueryStringDecoder;" />
+      <node id="958744367776984333" at="43,0,46,0" concept="6" trace="getRequest#()Lio/netty/handler/codec/http/HttpRequest;" />
+      <node id="958744367777067400" at="46,0,49,0" concept="6" trace="getChannel#()Lio/netty/channel/Channel;" />
+      <node id="7720980209309607593" at="50,0,53,0" concept="6" trace="getParameterValue#(Ljava/lang/String;)Ljava/util/List;" />
+      <node id="7720980209309706246" at="54,0,57,0" concept="6" trace="getPath#()Ljava/lang/String;" />
+      <node id="1969513467361940712" at="58,0,61,0" concept="6" trace="getSegments#()Ljava/util/List;" />
+      <node id="7720980209309679379" at="62,0,65,0" concept="6" trace="getReferrerHost#()Ljava/lang/String;" />
+      <node id="3520791039919922162" at="66,0,69,0" concept="6" trace="getMethod#()Ljava/lang/String;" />
+      <node id="6886330673565138395" at="76,0,79,0" concept="6" trace="sendText#(Lio/netty/handler/codec/http/HttpResponseStatus;Ljava/lang/String;)V" />
+      <node id="6886330673565083010" at="80,0,83,0" concept="6" trace="sendErrorResponse#(Lio/netty/handler/codec/http/HttpResponseStatus;Ljava/lang/String;Ljava/lang/Throwable;)V" />
+      <node id="6040064942662672192" at="84,58,87,5" concept="5" />
+      <node id="6550075386186537548" at="92,49,95,5" concept="5" />
+      <node id="6550075386185636075" at="70,0,75,0" concept="6" trace="sendResponse#(Lio/netty/handler/codec/http/HttpResponseStatus;Ljava/lang/String;Lio/netty/buffer/ByteBuf;)V" />
+      <node id="3975441000527018457" at="84,0,90,0" concept="12" trace="getSegmentsFor#(Ljava/lang/String;)Ljava/util/List;" />
       <node id="7720980209309595304" at="32,0,39,0" concept="0" trace="HttpRequest#(Lio/netty/handler/codec/http/HttpRequest;Lio/netty/handler/codec/http/QueryStringDecoder;Lio/netty/channel/Channel;)V" />
-      <node id="6550075386186605348" at="81,0,89,0" concept="12" trace="getReferrerHost#(Lio/netty/handler/codec/http/HttpRequest;)Ljava/lang/String;" />
-      <scope id="7720980209309607596" at="40,53,41,41" />
-      <scope id="7720980209309706249" at="44,27,45,26" />
-      <scope id="1969513467361940715" at="48,37,49,20" />
-      <scope id="7720980209309679382" at="52,35,53,24" />
-      <scope id="3520791039919922165" at="56,29,57,35" />
-      <scope id="6886330673565138398" at="66,67,67,95" />
-      <scope id="6886330673565083013" at="70,93,71,84" />
-      <scope id="6040064942662672194" at="75,31,76,31" />
-      <scope id="6550075386186537550" at="83,27,84,46" />
-      <scope id="7720980209309607593" at="40,0,43,0">
+      <node id="6550075386186605348" at="91,0,99,0" concept="12" trace="getReferrerHost#(Lio/netty/handler/codec/http/HttpRequest;)Ljava/lang/String;" />
+      <scope id="958744367776956145" at="40,42,41,19" />
+      <scope id="958744367776984336" at="43,63,44,19" />
+      <scope id="958744367777067403" at="46,31,47,19" />
+      <scope id="7720980209309607596" at="50,53,51,41" />
+      <scope id="7720980209309706249" at="54,27,55,26" />
+      <scope id="1969513467361940715" at="58,37,59,20" />
+      <scope id="7720980209309679382" at="62,35,63,24" />
+      <scope id="3520791039919922165" at="66,29,67,35" />
+      <scope id="6886330673565138398" at="76,67,77,95" />
+      <scope id="6886330673565083013" at="80,93,81,84" />
+      <scope id="6040064942662672194" at="85,31,86,31" />
+      <scope id="6550075386186537550" at="93,27,94,46" />
+      <scope id="958744367776956142" at="40,0,43,0" />
+      <scope id="958744367776984333" at="43,0,46,0" />
+      <scope id="958744367777067400" at="46,0,49,0" />
+      <scope id="7720980209309607593" at="50,0,53,0">
         <var name="key" id="7720980209309610181" />
       </scope>
-      <scope id="7720980209309706246" at="44,0,47,0" />
-      <scope id="1969513467361940712" at="48,0,51,0" />
-      <scope id="7720980209309679379" at="52,0,55,0" />
-      <scope id="3520791039919922162" at="56,0,59,0" />
-      <scope id="6550075386185636078" at="60,91,63,47">
+      <scope id="7720980209309706246" at="54,0,57,0" />
+      <scope id="1969513467361940712" at="58,0,61,0" />
+      <scope id="7720980209309679379" at="62,0,65,0" />
+      <scope id="3520791039919922162" at="66,0,69,0" />
+      <scope id="6550075386185636078" at="70,91,73,47">
         <var name="response" id="6550075386185662924" />
       </scope>
-      <scope id="6886330673565138395" at="66,0,69,0">
+      <scope id="6886330673565138395" at="76,0,79,0">
         <var name="message" id="6886330673565143070" />
         <var name="status" id="6886330673565141006" />
       </scope>
-      <scope id="6886330673565083010" at="70,0,73,0">
+      <scope id="6886330673565083010" at="80,0,83,0">
         <var name="error" id="6886330673565086355" />
         <var name="message" id="6886330673565084815" />
         <var name="status" id="6886330673565097261" />
       </scope>
-      <scope id="3975441000527018460" at="74,58,78,87" />
+      <scope id="3975441000527018460" at="84,58,88,87" />
       <scope id="7720980209309595308" at="32,169,37,49" />
-      <scope id="6550075386185636075" at="60,0,65,0">
+      <scope id="6550075386185636075" at="70,0,75,0">
         <var name="buffer" id="6550075386185639899" />
         <var name="contentType" id="6550075386185638130" />
         <var name="status" id="6550075386185658525" />
       </scope>
-      <scope id="3975441000527018457" at="74,0,80,0">
+      <scope id="3975441000527018457" at="84,0,90,0">
         <var name="path" id="3975441000527019318" />
       </scope>
-      <scope id="6550075386186605351" at="81,116,87,87">
+      <scope id="6550075386186605351" at="91,116,97,87">
         <var name="refferer" id="6550075386186527487" />
       </scope>
       <scope id="7720980209309595304" at="32,0,39,0">
@@ -287,10 +299,10 @@
         <var name="decoder" id="7720980209309595321" />
         <var name="request" id="7720980209309595311" />
       </scope>
-      <scope id="6550075386186605348" at="81,0,89,0">
+      <scope id="6550075386186605348" at="91,0,99,0">
         <var name="request" id="6550075386186607340" />
       </scope>
-      <unit id="7720980209309576946" at="23,0,90,0" name="jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest" />
+      <unit id="7720980209309576946" at="23,0,100,0" name="jetbrains.mps.ide.httpsupport.manager.plugin.HttpRequest" />
     </file>
   </root>
   <root nodeRef="r:05ff02e5-9836-4ae9-a454-eab43fa58c8f(jetbrains.mps.ide.httpsupport.manager.plugin)/802768723527085987">
