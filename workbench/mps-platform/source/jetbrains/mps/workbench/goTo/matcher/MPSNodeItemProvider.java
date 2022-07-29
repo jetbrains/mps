@@ -270,7 +270,7 @@ public class MPSNodeItemProvider implements ChooseByNameItemProvider {
     final MinusculeMatcher matcher = buildPatternMatcher(pattern, caseSensitivity);
 
     final String finalPattern = pattern;
-    JobLauncher.getInstance().invokeConcurrentlyUnderProgress(names, indicator, false, name -> {
+    JobLauncher.getInstance().invokeConcurrentlyUnderProgress(names, indicator, name -> {
       if (matches(chooseByNameViewModel, finalPattern, matcher, name)) {
         synchronized (list) {
           list.add(name);
