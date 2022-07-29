@@ -4688,7 +4688,7 @@
                       <ref role="3cqZAo" node="339vUuzOvxS" resolve="mySandboxModule" />
                     </node>
                     <node concept="37vLTw" id="339vUuzS65D" role="37wK5m">
-                      <ref role="3cqZAo" node="339vUuzOtkf" resolve="namespace" />
+                      <ref role="3cqZAo" node="339vUuzPHa5" resolve="moduleName" />
                     </node>
                   </node>
                 </node>

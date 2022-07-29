@@ -120,7 +120,7 @@ public class LanguageAndSolutionsProducer {
       myProject.addModule(mySandboxModule);
       mySandboxModule.save();
 
-      SModelInternal sandboxModel = (SModelInternal) createModel(mySandboxModule, namespace);
+      SModelInternal sandboxModel = (SModelInternal) createModel(mySandboxModule, moduleName);
       SLanguage ll = MetaAdapterFactory.getLanguage(l.getModuleReference());
       sandboxModel.addLanguage(ll);
       sandboxModel.setLanguageImportVersion(ll, l.getLanguageVersion());
