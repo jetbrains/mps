@@ -4976,5 +4976,20 @@
       <ref role="20lvS9" node="fz3vP1H" resolve="Type" />
     </node>
   </node>
+  <node concept="1TIwiD" id="6k75V4adRJc">
+    <property role="EcuMT" value="7279813371815754700" />
+    <property role="3GE5qa" value="type" />
+    <property role="TrG5h" value="UnionType" />
+    <property role="34LRSv" value="union" />
+    <property role="R4oN_" value="type representing a union" />
+    <ref role="1TJDcQ" node="fz3vP1H" resolve="Type" />
+    <node concept="1TJgyj" id="6k75V4adSNW" role="1TKVEi">
+      <property role="IQ2ns" value="7279813371815759100" />
+      <property role="20lmBu" value="fLJjDmT/aggregation" />
+      <property role="20kJfa" value="alternatives" />
+      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <ref role="20lvS9" node="fz3vP1H" resolve="Type" />
+    </node>
+  </node>
 </model>
 

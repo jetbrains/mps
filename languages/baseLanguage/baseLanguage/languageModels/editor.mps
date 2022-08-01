@@ -74985,12 +74985,34 @@
     <ref role="1XX52x" to="tpee:2a3y$OijuPV" resolve="IntersectionType" />
     <node concept="3EZMnI" id="2a3y$Oijx3R" role="2wV5jI">
       <node concept="3F2HdR" id="hLGfONH" role="3EZMnx">
-        <property role="2czwfO" value=" &amp;" />
+        <property role="2czwfO" value="&amp;" />
         <ref role="1NtTu8" to="tpee:2a3y$Oijxpa" resolve="bounds" />
         <node concept="2iRfu4" id="i2ICyku" role="2czzBx" />
       </node>
       <node concept="2iRfu4" id="2a3y$Oijx3U" role="2iSdaV" />
     </node>
+  </node>
+  <node concept="22mcaB" id="6k75V4a9yHc">
+    <property role="3GE5qa" value="type" />
+    <ref role="aqKnT" to="tpee:2a3y$OijuPV" resolve="IntersectionType" />
+    <node concept="22hDWj" id="6k75V4a9yNR" role="22hAXT" />
+  </node>
+  <node concept="24kQdi" id="6k75V4adSsS">
+    <property role="3GE5qa" value="type" />
+    <ref role="1XX52x" to="tpee:6k75V4adRJc" resolve="UnionType" />
+    <node concept="3EZMnI" id="6k75V4adSBe" role="2wV5jI">
+      <node concept="3F2HdR" id="6k75V4adSBf" role="3EZMnx">
+        <property role="2czwfO" value="|" />
+        <ref role="1NtTu8" to="tpee:6k75V4adSNW" resolve="alternatives" />
+        <node concept="2iRfu4" id="6k75V4adSBg" role="2czzBx" />
+      </node>
+      <node concept="2iRfu4" id="6k75V4adSBh" role="2iSdaV" />
+    </node>
+  </node>
+  <node concept="22mcaB" id="6k75V4adTDl">
+    <property role="3GE5qa" value="type" />
+    <ref role="aqKnT" to="tpee:6k75V4adRJc" resolve="UnionType" />
+    <node concept="22hDWj" id="6k75V4adTH$" role="22hAXT" />
   </node>
 </model>
 
