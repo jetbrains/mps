@@ -288,6 +288,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("javaLevelTarget", 0x6120f2e858e5a64cL).type(PrimitiveTypeId.STRING).origin("6998860900671530572").done();
     b.property("compilerOptions", 0x147ef24d5e272d05L).type(PrimitiveTypeId.STRING).origin("1476884141930130693").done();
     b.property("conditionalCompile", 0x71e3a5e19d971200L).type(PrimitiveTypeId.BOOLEAN).origin("8206585334429323776").done();
+    b.property("withKotlin", 0x6ab0965855d6fac1L).type(PrimitiveTypeId.BOOLEAN).origin("7687809870062877377").done();
     b.aggregate("sources", 0x6e014d63c07ebd25L).target(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL).optional(false).ordered(true).multiple(false).origin("7926701909975416101").done();
     b.aggregate("resources", 0x1708d207f21b161dL).target(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x6e014d63c07ebd1bL).optional(false).ordered(true).multiple(false).origin("1659807394254493213").done();
     b.aggregate("dependencies", 0x41fde5e4adce38c8L).target(0x698a8d22a10447a0L, 0xba8d10e3ec237f13L, 0x5c3f3e2c1cede06eL).optional(true).ordered(true).multiple(true).origin("4755209551904389320").done();

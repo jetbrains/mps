@@ -203,6 +203,8 @@ public class EditorAspectDescriptorImpl extends EditorAspectDescriptorBase {
           switch (menuId.getFqName()) {
             case "jetbrains.mps.build.mps.editor.add_moduleLocationAndFlags_BuildMps_Module_ext_4":
               return Arrays.asList(new TransformationMenu[]{new add_moduleLocationAndFlags_BuildMps_Module_ext_4()});
+            case "jetbrains.mps.build.mps.editor.add_moduleLocationAndFlags_withkotlin":
+              return Arrays.asList(new TransformationMenu[]{new add_moduleLocationAndFlags_withkotlin()});
             default:
           }
         }

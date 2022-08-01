@@ -56,6 +56,8 @@
   
   <taskdef resource="jetbrains/mps/build/ant/antlib.xml" classpathref="path.mps.ant.path" />
   
+  <typedef resource="org/jetbrains/kotlin/ant/antlib.xml" classpath="${mps_home}/plugins/mps-kotlin/kotlinc/lib/kotlin-ant.jar"></typedef>
+  
   <generator-settings id="m2m-defaults" strictMode="true" parallelThreads="8" inplaceTransform="false" warnWrongChild="true" createStaticRefs="true" skipUnmodifiedModels="${mps.generator.skipUnmodifiedModels}" />
   
   <target name="assemble" depends="classes, declare-mps-tasks">
@@ -1704,6 +1706,7 @@
     <mkdir dir="${plugin_home}/solutions/kotlin.smodel.runtime/source_gen" />
     <mkdir dir="${build.tmp}/java/out/jetbrains.mps.kotlin.smodel.runtime" />
     <javac2 destdir="${build.tmp}/java/out/jetbrains.mps.kotlin.smodel.runtime" fork="false" encoding="utf8" includeantruntime="false" debug="true">
+      <withKotlin moduleName="jetbrains.mps.kotlin.smodel.runtime" />
       <compilerarg value="-Xlint:none" />
       <src>
         <path location="${plugin_home}/solutions/kotlin.smodel.runtime/source_gen" />

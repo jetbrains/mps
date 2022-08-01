@@ -303,6 +303,11 @@
         <property role="t5JxN" value="Experimental mechanism to mark modules that we don't need to compile (compiled by another task, not &lt;javac&gt;); MPSI-36" />
       </node>
     </node>
+    <node concept="1TJgyi" id="6EK__xlPv4N" role="1TKVEl">
+      <property role="IQ2nx" value="7687809870062809395" />
+      <property role="TrG5h" value="withKotlin" />
+      <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
+    </node>
     <node concept="1TJgyj" id="6qcrfIJFdLy" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
       <property role="20kJfa" value="sources" />

@@ -83,23 +83,11 @@
     </condition>
   </target>
 
-  <target name="check-kotlin-compiler-repository">
-    <condition property="kotlin-repository.missing" value="true" else="false">
-      <not>
-        <available file="ivyKotlinCompiler-${kotlin.version}.xml"/>
-      </not>
-    </condition>
-  </target>
-
-  <target name="check-kotlin-compiler" depends="check-kotlin-compiler-repository" description="Check kotlin compiler availability">
+  <target name="check-kotlin-compiler" description="Check kotlin compiler availability">
     <condition property="kotlincompiler.missing" value="true" else="false">
-      <or>
-        <not>
-          <available file="${kotlin.compiler}"/>
-        </not>
-        <!-- Scripts updated -> need to download again -->
-        <istrue value="${kotlin-repository.missing}" />
-      </or>
+      <not>
+        <available file="${kotlin.compiler}/lib"/>
+      </not>
     </condition>
   </target>
 
@@ -392,36 +380,13 @@
     <delete file="${basedir}/../plugins/mps-kotlin/lib/kotlin-compiler-embeddable-${kotlin.version}.jar" />
   </target>
 
-  <!-- Bundled kotlin compiler do not have clean publication place (only available on github releases), but dependencies
-       can be build from kotlin-dist-for-jps-meta.pom dependencies. This script allow to get that pom, convert it to ivy so
-       the download-kotlin-compiler task knows which jar to get. -->
-  <target name="update-kotlin-compiler-repository" depends="check-kotlin-compiler-repository,install-ivy" if="kotlin-repository.missing"
-          description="Download and convert kotlin compiler dependency repository">
-    <ivy:resolve file="./ivyKotlinCompilerDependencies.xml" validate="false" showprogress="true"/>
-    <ivy:retrieve pattern="kotlin-dist-for-jps-meta.pom" overwritemode="different" />
-
-    <!-- Kt 1.7.0: the pom contains a reference to a parent pom, located in "../..", which we obviously do not have -->
-    <replaceregexp file="kotlin-dist-for-jps-meta.pom" match="&lt;parent\&gt;(.*)&lt;/parent&gt;" replace="" flags="gis" byline="false" />
-
-    <!-- Actual conversion -->
-    <ivy:convertpom pomfile="kotlin-dist-for-jps-meta.pom" ivyfile="ivyKotlinCompiler-${kotlin.version}.xml" />
-    <delete file="kotlin-dist-for-jps-meta.pom" />
-
-    <!-- convertpom will generate some ${project.groupId} and ${project.version} that should be mapped before use -->
-    <replace file="ivyKotlinCompiler-${kotlin.version}.xml" token="$${project.groupId}" value="org.jetbrains.kotlin" />
-    <replace file="ivyKotlinCompiler-${kotlin.version}.xml" token="$${project.version}" value="$${kotlin.version}" />
-  </target>
-
-  <target name="download-kotlin-compiler" depends="check-kotlin-compiler,update-kotlin-compiler-repository,install-ivy" if="${kotlincompiler.missing}"
+  <target name="download-kotlin-compiler" depends="check-kotlin-compiler,install-ivy" if="${kotlincompiler.missing}"
           description="Download Kotlin metadata and compiler libraries">
     <echo message="Kotlin compiler is missing. Downloading..."/>
-    <ivy:resolve file="./ivyKotlinCompiler-${kotlin.version}.xml" validate="false" showprogress="true"/>
-
-    <!-- Kt 1.7.0: structure matters, those jar must be placed in a lib/ folder for the compiler to function -->
-    <ivy:retrieve pattern="${kotlin.compiler}/lib/[artifact](-[classifier]).[ext]" type="jar" conf="default"  overwritemode="different" />
-
-    <!-- Kt 1.7.0: version number is included in annotations.jar -->
-    <rename src="${kotlin.compiler}/lib/annotations.jar" dest="${kotlin.compiler}/lib/annotations-13.0.jar" />
+    <ivy:resolve file="./ivyKotlinCompiler.xml" validate="false" showprogress="true"/>
+    <ivy:retrieve pattern="${kotlin.compiler}/compiler.zip" overwritemode="different" />
+    <unzip src="${kotlin.compiler}/compiler.zip" dest="${kotlin.compiler}/.."/>
+    <delete file="${kotlin.compiler}/compiler.zip" />
   </target>
 
   <target name="download-kotlin-core-libs" depends="check-kotlin-core-libs,install-ivy" if="${kotlincorelibs.missing}"

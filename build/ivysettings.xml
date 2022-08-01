@@ -23,6 +23,12 @@
         <artifact pattern="https://repository.jetbrains.com/all/[organization]/[module]/[revision]/[module]-[revision](-[classifier]).[ext]" />
       </url>
     </chain>
+    <url name="kotlin-compiler-releases">
+      <artifact pattern="https://github.com/JetBrains/kotlin/releases/download/v[revision]/[artifact]-[revision].[ext]" />
+    </url>
   </resolvers>
-
+  <modules>
+    <!-- Kotlin compiler is the only artifact from github, it has its own url resolver (not in main chain) -->
+    <module organisation="org.jetbrains.kotlin" name="kotlin-compiler-standalone-zip" resolver="kotlin-compiler-releases" />
+  </modules>
 </ivy-settings>

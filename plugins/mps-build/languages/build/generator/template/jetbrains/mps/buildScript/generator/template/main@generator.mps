@@ -8938,6 +8938,22 @@
               </node>
             </node>
           </node>
+          <node concept="17Uvod" id="6EK__xlR9_E" role="lGtFl">
+            <property role="2qtEX9" value="containsKotlin" />
+            <property role="P4ACc" value="698a8d22-a104-47a0-ba8d-10e3ec237f13/4755209551904389307/7687809870062877377" />
+            <node concept="3zFVjK" id="6EK__xlR9_F" role="3zH0cK">
+              <node concept="3clFbS" id="6EK__xlR9_G" role="2VODD2">
+                <node concept="3clFbF" id="6EK__xlRf6N" role="3cqZAp">
+                  <node concept="2OqwBi" id="6EK__xlRh1n" role="3clFbG">
+                    <node concept="30H73N" id="6EK__xlRf6M" role="2Oq$k0" />
+                    <node concept="3TrcHB" id="6EK__xlRiUn" role="2OqNvi">
+                      <ref role="3TsBF5" to="3ior:6EK__xlPv4N" resolve="containsKotlin" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
       </node>
     </node>

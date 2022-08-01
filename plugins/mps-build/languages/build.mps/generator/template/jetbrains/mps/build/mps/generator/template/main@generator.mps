@@ -2252,6 +2252,22 @@
                   </node>
                 </node>
               </node>
+              <node concept="17Uvod" id="6EK__xlUZxU" role="lGtFl">
+                <property role="2qtEX9" value="containsKotlin" />
+                <property role="P4ACc" value="798100da-4f0a-421a-b991-71f8c50ce5d2/7389400916848073784/7687809870062809395" />
+                <node concept="3zFVjK" id="6EK__xlUZxV" role="3zH0cK">
+                  <node concept="3clFbS" id="6EK__xlUZxW" role="2VODD2">
+                    <node concept="3clFbF" id="6EK__xlVoAU" role="3cqZAp">
+                      <node concept="2OqwBi" id="6EK__xlVoUd" role="3clFbG">
+                        <node concept="30H73N" id="6EK__xlVoAT" role="2Oq$k0" />
+                        <node concept="3TrcHB" id="6EK__xlVpeA" role="2OqNvi">
+                          <ref role="3TsBF5" to="kdzh:6EK__xlV9np" resolve="withKotlin" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
             </node>
           </node>
         </node>
