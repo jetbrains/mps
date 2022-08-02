@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-8g768w9pbzaw37j3byjjn3qhg3bqouz">
+<product version="3" modelHash="-8g768w9pbzaw37j3byjjn3qhg3bqouz" parametersHash="-9jt5cmfjo71zru1hpgkmei5gbozo9p0">
   <files names="DefaultTypeParameterDeclaration.java:DelegatedFunctionDeclaration.java:FunctionDeclaration.java:FunctionReceiver.java:InferrableFunctionDeclaration.java:ParameterDeclaration.java:TypeParameterDeclaration.java" />
 </product>
 

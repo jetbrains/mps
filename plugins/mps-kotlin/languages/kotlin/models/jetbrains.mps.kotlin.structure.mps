@@ -96,6 +96,9 @@
     <node concept="PrWs8" id="213J8cgCCDH" role="PrDN$">
       <ref role="PrY4T" node="213J8cgCCAA" resolve="IDeclarationScopePart" />
     </node>
+    <node concept="PrWs8" id="69K7DDmqYKM" role="PrDN$">
+      <ref role="PrY4T" to="tpck:2WmWrdnSpX2" resolve="ICanSuppressErrors" />
+    </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jcw">
     <property role="EcuMT" value="2936055411798373152" />
@@ -2289,6 +2292,9 @@
     <node concept="PrWs8" id="auY8guWXgG" role="PrDN$">
       <ref role="PrY4T" node="2mD64u3yQho" resolve="IInferencePart" />
     </node>
+    <node concept="PrWs8" id="69K7DDmmd0I" role="PrDN$">
+      <ref role="PrY4T" to="tpck:2WmWrdnSpX2" resolve="ICanSuppressErrors" />
+    </node>
   </node>
   <node concept="PlHQZ" id="2yYXHtlhVlH">
     <property role="EcuMT" value="2936055411801306477" />
@@ -3766,6 +3772,9 @@
     </node>
     <node concept="PrWs8" id="6ov$ndQYe57" role="PzmwI">
       <ref role="PrY4T" node="2yYXHtl6Jjj" resolve="IDeclaration" />
+    </node>
+    <node concept="PrWs8" id="69K7DDmqP2x" role="PzmwI">
+      <ref role="PrY4T" to="tpck:2WmWrdnSpX3" resolve="ISuppressErrors" />
     </node>
   </node>
   <node concept="PlHQZ" id="6VSCWXCakph">
