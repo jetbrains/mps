@@ -1121,7 +1121,7 @@
           <node concept="2pNNFK" id="7d8Y7G7OY0_" role="3o6s8t">
             <property role="2pNNFO" value="string" />
             <node concept="3o6iSG" id="7d8Y7G7OYuW" role="3o6s8t">
-              <property role="3o6i5n" value="10.6" />
+              <property role="3o6i5n" value="10.8" />
             </node>
           </node>
           <node concept="2pNNFK" id="1VQSNE2Hi" role="3o6s8t">
@@ -1331,7 +1331,7 @@
             <node concept="2pNNFK" id="7Muxx6JTrCm" role="3o6s8t">
               <property role="2pNNFO" value="string" />
               <node concept="3o6iSG" id="7Muxx6JTrCn" role="3o6s8t">
-                <property role="3o6i5n" value="11*" />
+                <property role="3o6i5n" value="1.8+" />
               </node>
             </node>
             <node concept="2pNNFK" id="7Muxx6JTrCe" role="3o6s8t">
