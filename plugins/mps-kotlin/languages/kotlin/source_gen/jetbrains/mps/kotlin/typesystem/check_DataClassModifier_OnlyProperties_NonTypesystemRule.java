@@ -21,8 +21,8 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 
-public class check_DataClassModifier_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
-  public check_DataClassModifier_NonTypesystemRule() {
+public class check_DataClassModifier_OnlyProperties_NonTypesystemRule extends AbstractNonTypesystemRule_Runtime implements NonTypesystemRule_Runtime {
+  public check_DataClassModifier_OnlyProperties_NonTypesystemRule() {
   }
   public void applyRule(final SNode dataClassModifier, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     for (SNode param : ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(SNodeOperations.as(SNodeOperations.getParent(dataClassModifier), CONCEPTS.ClassDeclaration$Jm), LINKS.primaryConstructor$QvZc), LINKS.parameters$$EEQ))) {
@@ -31,7 +31,7 @@ public class check_DataClassModifier_NonTypesystemRule extends AbstractNonTypesy
           final MessageTarget errorTarget = new NodeMessageTarget();
           IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(param, "Data class primary constructor must only have property (val / var) parameters", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "9223335450290638906", null, errorTarget);
           {
-            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.AddVarVarToParameter_QuickFix", "9223335450290646880", false);
+            BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.ClassParameter_SetProperty_QuickFix", "9223335450290646880", false);
             intentionProvider.putArgument("classParameter", param);
             _reporter_2309309498.addIntentionProvider(intentionProvider);
           }

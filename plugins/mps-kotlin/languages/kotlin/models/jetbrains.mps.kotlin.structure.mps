@@ -3617,7 +3617,7 @@
       <ref role="PrY4T" node="2yYXHtl6JeQ" resolve="INavigationTarget" />
     </node>
     <node concept="1AhYRh" id="bbFPPtLQ7Y" role="lGtFl">
-      <property role="1AhYRt" value="could be used for a future parsing of kotlin code" />
+      <property role="1AhYRt" value="could be used for a future parsing from source of kotlin code" />
     </node>
   </node>
   <node concept="PlHQZ" id="4ZsNJbI6N2K">

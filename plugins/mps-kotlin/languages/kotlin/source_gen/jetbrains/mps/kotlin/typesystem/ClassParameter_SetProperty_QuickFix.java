@@ -9,15 +9,15 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class AddVarVarToParameter_QuickFix extends QuickFix_Runtime {
-  public AddVarVarToParameter_QuickFix() {
+public class ClassParameter_SetProperty_QuickFix extends QuickFix_Runtime {
+  public ClassParameter_SetProperty_QuickFix() {
     super(new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "9223335450290641619"));
   }
   public String getDescription(SNode node) {
-    return "Add 'var'/'val' to parameter '" + SPropertyOperations.getString(((SNode) AddVarVarToParameter_QuickFix.this.getField("classParameter")[0]), PROPS.name$MnvL) + "'";
+    return "Add 'var'/'val' to parameter '" + SPropertyOperations.getString(((SNode) ClassParameter_SetProperty_QuickFix.this.getField("classParameter")[0]), PROPS.name$MnvL) + "'";
   }
   public void execute(SNode node) {
-    SPropertyOperations.assign(((SNode) AddVarVarToParameter_QuickFix.this.getField("classParameter")[0]), PROPS.isProperty$MCKN, true);
+    SPropertyOperations.assign(((SNode) ClassParameter_SetProperty_QuickFix.this.getField("classParameter")[0]), PROPS.isProperty$MCKN, true);
   }
 
   private static final class PROPS {

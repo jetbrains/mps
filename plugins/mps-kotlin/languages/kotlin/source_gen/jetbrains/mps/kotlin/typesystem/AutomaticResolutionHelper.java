@@ -52,7 +52,7 @@ public class AutomaticResolutionHelper {
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(functionHolder, "wrong overload target", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "219803515060660834", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.FixMethodCallReference_QuickFix", "219803515060660835", true);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.FunctionCall_FixReference_QuickFix", "219803515060660835", true);
               intentionProvider.putArgument("call", functionHolder);
               intentionProvider.putArgument("newTarget", resolved.getNode());
               intentionProvider.putArgument("targetLink", functionLink);

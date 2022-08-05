@@ -28,12 +28,12 @@ public class check_PropertyDeclaration_NonTypesystemRule extends AbstractNonType
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(decl, "Property must be initialized or be abstract", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "1389314048067943414", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.AddPropertyInitializer_QuickFix", "1389314048067943416", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.PropertyDeclaration_AddInitializer_QuickFix", "1389314048067943416", false);
           intentionProvider.putArgument("property", decl);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.ChangeInheritanceModifier_QuickFix", "1389314048067943419", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.IInheritable_ChangeInheritanceModifier_QuickFix", "1389314048067943419", false);
           intentionProvider.putArgument("inheritable", decl);
           intentionProvider.putArgument("modifier", CONCEPTS.AbstractInheritanceModifier$GA);
           _reporter_2309309498.addIntentionProvider(intentionProvider);

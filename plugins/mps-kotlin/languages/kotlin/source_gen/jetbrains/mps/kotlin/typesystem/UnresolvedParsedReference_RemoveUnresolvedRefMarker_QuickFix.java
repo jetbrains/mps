@@ -10,15 +10,15 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class RemoveUnresolvedRefMarker_QuickFix extends QuickFix_Runtime {
-  public RemoveUnresolvedRefMarker_QuickFix() {
+public class UnresolvedParsedReference_RemoveUnresolvedRefMarker_QuickFix extends QuickFix_Runtime {
+  public UnresolvedParsedReference_RemoveUnresolvedRefMarker_QuickFix() {
     super(new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "4830899889142326915"));
   }
   public String getDescription(SNode node) {
     return "Remove Unresolved Block";
   }
   public void execute(SNode node) {
-    SNodeOperations.replaceWithAnother(((SNode) RemoveUnresolvedRefMarker_QuickFix.this.getField("ref")[0]), SLinkOperations.getTarget(((SNode) RemoveUnresolvedRefMarker_QuickFix.this.getField("ref")[0]), LINKS.nested$3t_j));
+    SNodeOperations.replaceWithAnother(((SNode) UnresolvedParsedReference_RemoveUnresolvedRefMarker_QuickFix.this.getField("ref")[0]), SLinkOperations.getTarget(((SNode) UnresolvedParsedReference_RemoveUnresolvedRefMarker_QuickFix.this.getField("ref")[0]), LINKS.nested$3t_j));
   }
 
   private static final class LINKS {

@@ -30,7 +30,7 @@ public class check_ConstructorCall_OpenSuperType_NonTypesystemRule extends Abstr
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(constructorCall, "This type is final, so it cannot be inherited from", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "730183986703521249", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.ChangeInheritanceModifier_QuickFix", "730183986703553660", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.IInheritable_ChangeInheritanceModifier_QuickFix", "730183986703553660", false);
           intentionProvider.putArgument("inheritable", klass);
           intentionProvider.putArgument("modifier", CONCEPTS.OpenInheritanceModifier$RJ);
           _reporter_2309309498.addIntentionProvider(intentionProvider);

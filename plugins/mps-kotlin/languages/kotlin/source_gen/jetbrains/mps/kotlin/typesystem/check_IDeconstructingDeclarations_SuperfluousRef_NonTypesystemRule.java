@@ -31,7 +31,7 @@ public class check_IDeconstructingDeclarations_SuperfluousRef_NonTypesystemRule 
             final MessageTarget errorTarget = new NodeMessageTarget();
             IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(var, "superfluous underlying function", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "5401033615058909146", null, errorTarget);
             {
-              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.FixMethodCallReference_QuickFix", "5401033615058913452", false);
+              BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.FunctionCall_FixReference_QuickFix", "5401033615058913452", false);
               intentionProvider.putArgument("call", var);
               intentionProvider.putArgument("newTarget", null);
               intentionProvider.putArgument("targetLink", LINKS.deconstructingOperator$ZV8Z);

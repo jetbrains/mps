@@ -27,7 +27,7 @@ public class check_UnresolvedParsedReference_NonTypesystemRule extends AbstractN
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(unresolved, "reference is resolved", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "4830899889142284586", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.RemoveUnresolvedRefMarker_QuickFix", "5754701966643044760", false);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.UnresolvedParsedReference_RemoveUnresolvedRefMarker_QuickFix", "5754701966643044760", false);
           intentionProvider.putArgument("ref", unresolved);
           _reporter_2309309498.addIntentionProvider(intentionProvider);
         }

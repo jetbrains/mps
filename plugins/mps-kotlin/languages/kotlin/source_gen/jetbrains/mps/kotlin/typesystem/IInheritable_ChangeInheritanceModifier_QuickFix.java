@@ -13,15 +13,15 @@ import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class ChangeInheritanceModifier_QuickFix extends QuickFix_Runtime {
-  public ChangeInheritanceModifier_QuickFix() {
+public class IInheritable_ChangeInheritanceModifier_QuickFix extends QuickFix_Runtime {
+  public IInheritable_ChangeInheritanceModifier_QuickFix() {
     super(new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "730183986703524184"));
   }
   public String getDescription(SNode node) {
-    return "Make '" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(((SNode) ChangeInheritanceModifier_QuickFix.this.getField("inheritable")[0])) + "' '" + SConceptOperations.conceptAlias(((SAbstractConcept) ChangeInheritanceModifier_QuickFix.this.getField("modifier")[0])) + "'";
+    return "Make '" + BaseConcept__BehaviorDescriptor.getPresentation_idhEwIMiw.invoke(((SNode) IInheritable_ChangeInheritanceModifier_QuickFix.this.getField("inheritable")[0])) + "' '" + SConceptOperations.conceptAlias(((SAbstractConcept) IInheritable_ChangeInheritanceModifier_QuickFix.this.getField("modifier")[0])) + "'";
   }
   public void execute(SNode node) {
-    SLinkOperations.setTarget(((SNode) ChangeInheritanceModifier_QuickFix.this.getField("inheritable")[0]), LINKS.inheritance$TFvr, SNodeFactoryOperations.createNewNode(((SAbstractConcept) ChangeInheritanceModifier_QuickFix.this.getField("modifier")[0]), null));
+    SLinkOperations.setTarget(((SNode) IInheritable_ChangeInheritanceModifier_QuickFix.this.getField("inheritable")[0]), LINKS.inheritance$TFvr, SNodeFactoryOperations.createNewNode(((SAbstractConcept) IInheritable_ChangeInheritanceModifier_QuickFix.this.getField("modifier")[0]), null));
   }
 
   private static final class LINKS {

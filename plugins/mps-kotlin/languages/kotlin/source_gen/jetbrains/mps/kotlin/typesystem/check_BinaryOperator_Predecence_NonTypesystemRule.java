@@ -31,7 +31,7 @@ public class check_BinaryOperator_Predecence_NonTypesystemRule extends AbstractN
         final MessageTarget errorTarget = new NodeMessageTarget();
         IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(binaryOperator, "bad operator priority", "r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "1597769365387859865", null, errorTarget);
         {
-          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.quickfix_BinaryOperator_Predecence_QuickFix", "1597769365388246438", true);
+          BaseQuickFixProvider intentionProvider = new BaseQuickFixProvider("jetbrains.mps.kotlin.typesystem.BinaryExpression_FixPriority_QuickFix", "1597769365388246438", true);
           intentionProvider.putArgument("child", binaryOperator);
           intentionProvider.putArgument("parent", parent);
           intentionProvider.putArgument("isLeftChild", isLeftChild);

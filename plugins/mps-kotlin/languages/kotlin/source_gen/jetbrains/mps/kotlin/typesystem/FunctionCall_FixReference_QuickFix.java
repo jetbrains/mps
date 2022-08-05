@@ -12,17 +12,17 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class FixMethodCallReference_QuickFix extends QuickFix_Runtime {
-  public FixMethodCallReference_QuickFix() {
+public class FunctionCall_FixReference_QuickFix extends QuickFix_Runtime {
+  public FunctionCall_FixReference_QuickFix() {
     super(new SNodePointer("r:aff09eac-afd3-4057-bdd8-e02a572d1436(jetbrains.mps.kotlin.typesystem)", "4005361616257026096"));
   }
   public String getDescription(SNode node) {
-    return "Refer to '" + BaseConcept__BehaviorDescriptor.getDetailedPresentation_id22G2W3WJ92t.invoke(((SNode) FixMethodCallReference_QuickFix.this.getField("newTarget")[0])) + "' instead";
+    return "Refer to '" + BaseConcept__BehaviorDescriptor.getDetailedPresentation_id22G2W3WJ92t.invoke(((SNode) FunctionCall_FixReference_QuickFix.this.getField("newTarget")[0])) + "' instead";
   }
   public void execute(SNode node) {
-    SReferenceLink link = (((SReferenceLink) FixMethodCallReference_QuickFix.this.getField("targetLink")[0]) != null ? ((SReferenceLink) FixMethodCallReference_QuickFix.this.getField("targetLink")[0]) : IFunctionCall__BehaviorDescriptor.getTargetLink_id5D4bOjrrcOr.invoke(SNodeOperations.as(((SNode) FixMethodCallReference_QuickFix.this.getField("call")[0]), CONCEPTS.IFunctionCall$Sf)));
+    SReferenceLink link = (((SReferenceLink) FunctionCall_FixReference_QuickFix.this.getField("targetLink")[0]) != null ? ((SReferenceLink) FunctionCall_FixReference_QuickFix.this.getField("targetLink")[0]) : IFunctionCall__BehaviorDescriptor.getTargetLink_id5D4bOjrrcOr.invoke(SNodeOperations.as(((SNode) FunctionCall_FixReference_QuickFix.this.getField("call")[0]), CONCEPTS.IFunctionCall$Sf)));
     if (link != null) {
-      ((SNode) FixMethodCallReference_QuickFix.this.getField("call")[0]).setReferenceTarget(link, ((SNode) FixMethodCallReference_QuickFix.this.getField("newTarget")[0]));
+      ((SNode) FunctionCall_FixReference_QuickFix.this.getField("call")[0]).setReferenceTarget(link, ((SNode) FunctionCall_FixReference_QuickFix.this.getField("newTarget")[0]));
     }
   }
 
