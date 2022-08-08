@@ -8,12 +8,12 @@ import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import jetbrains.mps.ide.IdeBundle;
-import javax.swing.tree.TreeNode;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.ide.ui.tree.module.NamespaceTextNode;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.ide.projectPane.ProjectPane;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
+import javax.swing.tree.TreeNode;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.ui.InputValidatorEx;
@@ -43,7 +43,8 @@ public class RenameModelsNamespace_Action extends BaseAction {
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
     event.getPresentation().setText(IdeBundle.message("actions.virtual.package.rename.on.models.text"));
-    return ((TreeNode) MapSequence.fromMap(_params).get("treeNode")) instanceof NamespaceTextNode && ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))) != null && !(((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode"))).isFinalName()) && !(((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode"))).hasModulesUnder()) && ((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode"))).hasModelsUnder();
+    NamespaceTextNode ntn = (NamespaceTextNode) ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode"));
+    return ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("project"))) != null && !(ntn.isFinalName()) && !(ntn.hasModulesUnder()) && ntn.hasModelsUnder();
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -67,6 +68,9 @@ public class RenameModelsNamespace_Action extends BaseAction {
       if (p == null) {
         return false;
       }
+      if (p != null && !(p instanceof NamespaceTextNode)) {
+        return false;
+      }
     }
     {
       Project p = event.getData(CommonDataKeys.PROJECT);
@@ -79,10 +83,10 @@ public class RenameModelsNamespace_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    final NamespaceTextNode node = ((NamespaceTextNode) ((TreeNode) MapSequence.fromMap(_params).get("treeNode")));
-    final String originalNamespacePrefix = node.getNamespace();
+    final NamespaceTextNode ntn = ((NamespaceTextNode) ((NamespaceTextNode) MapSequence.fromMap(_params).get("treeNode")));
+    final String originalNamespacePrefix = ntn.getNamespace();
 
-    InputValidatorEx inputValidator = new ModelNamespaceInputValidator(node, originalNamespacePrefix);
+    InputValidatorEx inputValidator = new ModelNamespaceInputValidator(ntn, originalNamespacePrefix);
     final String modifiedNamespacePrefix = Messages.showInputDialog(((Project) MapSequence.fromMap(_params).get("ideaProject")), IdeBundle.message("dialogs.virtual.package.rename.on.models.text"), IdeBundle.message("dialogs.virtual.package.rename.on.models.title"), null, originalNamespacePrefix, inputValidator);
 
     // Allow passing of an empty string which will result in virtual folder removal
@@ -93,7 +97,7 @@ public class RenameModelsNamespace_Action extends BaseAction {
     final ModelAccess modelAccess = ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().getModelAccess();
     modelAccess.executeCommandInEDT(() -> {
       ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
-      for (SModel model : ListSequence.fromList(node.getModelsUnder())) {
+      for (SModel model : ListSequence.fromList(ntn.getModelsUnder())) {
         if (model instanceof EditableSModel) {
           SModelName originalModelName = model.getName();
           SModelName modifiedModelName = new SModelName(NamespaceRenameHelper.withReplacedPrefix(originalModelName.getNamespace(), originalNamespacePrefix, modifiedNamespacePrefix), originalModelName.getSimpleName(), originalModelName.getStereotype());
