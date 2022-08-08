@@ -16303,43 +16303,33 @@
       <property role="TrG5h" value="ppNode" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.TREE_NODE" resolve="TREE_NODE" />
       <node concept="1oajcY" id="7HZe2EwZDgV" role="1oa70y" />
+      <node concept="1c5O4g" id="4XmgthrZ2jO" role="1oa70y">
+        <ref role="1c5NyD" to="xr52:~PackageNode" resolve="PackageNode" />
+      </node>
     </node>
     <node concept="2ScWuX" id="5VIEYrBjNF$" role="tmbBb">
       <node concept="3clFbS" id="5VIEYrBjNF_" role="2VODD2">
         <node concept="3clFbF" id="5VIEYrBjNFA" role="3cqZAp">
-          <node concept="1Wc70l" id="2iKjTfCVc$T" role="3clFbG">
-            <node concept="2ZW3vV" id="5VIEYrBjNFE" role="3uHU7B">
-              <node concept="3uibUv" id="5VIEYrBjNFH" role="2ZW6by">
-                <ref role="3uigEE" to="xr52:~PackageNode" resolve="PackageNode" />
-              </node>
-              <node concept="2OqwBi" id="5VIEYrBjNFB" role="2ZW6bz">
-                <node concept="2WthIp" id="5VIEYrBjNFC" role="2Oq$k0" />
-                <node concept="1DTwFV" id="5VIEYrBjNFD" role="2OqNvi">
-                  <ref role="2WH_rO" node="5VIEYrBjNFz" resolve="ppNode" />
-                </node>
-              </node>
-            </node>
-            <node concept="3y3z36" id="2iKjTfCVeie" role="3uHU7w">
-              <node concept="10Nm6u" id="2iKjTfCVeiG" role="3uHU7w" />
-              <node concept="2OqwBi" id="2iKjTfCVdCL" role="3uHU7B">
-                <node concept="1eOMI4" id="2iKjTfCVgl$" role="2Oq$k0">
-                  <node concept="10QFUN" id="2iKjTfCVhqO" role="1eOMHV">
-                    <node concept="3uibUv" id="2iKjTfCViE9" role="10QFUM">
-                      <ref role="3uigEE" to="xr52:~PackageNode" resolve="PackageNode" />
-                    </node>
-                    <node concept="2OqwBi" id="2iKjTfCVexg" role="10QFUP">
-                      <node concept="2WthIp" id="2iKjTfCVexj" role="2Oq$k0" />
-                      <node concept="1DTwFV" id="2iKjTfCVexl" role="2OqNvi">
-                        <ref role="2WH_rO" node="5VIEYrBjNFz" resolve="ppNode" />
-                      </node>
+          <node concept="3y3z36" id="2iKjTfCVeie" role="3clFbG">
+            <node concept="10Nm6u" id="2iKjTfCVeiG" role="3uHU7w" />
+            <node concept="2OqwBi" id="2iKjTfCVdCL" role="3uHU7B">
+              <node concept="1eOMI4" id="2iKjTfCVgl$" role="2Oq$k0">
+                <node concept="10QFUN" id="2iKjTfCVhqO" role="1eOMHV">
+                  <node concept="3uibUv" id="2iKjTfCViE9" role="10QFUM">
+                    <ref role="3uigEE" to="xr52:~PackageNode" resolve="PackageNode" />
+                  </node>
+                  <node concept="2OqwBi" id="2iKjTfCVexg" role="10QFUP">
+                    <node concept="2WthIp" id="2iKjTfCVexj" role="2Oq$k0" />
+                    <node concept="1DTwFV" id="2iKjTfCVexl" role="2OqNvi">
+                      <ref role="2WH_rO" node="5VIEYrBjNFz" resolve="ppNode" />
                     </node>
                   </node>
                 </node>
-                <node concept="liA8E" id="2iKjTfCVdCN" role="2OqNvi">
-                  <ref role="37wK5l" to="7e8u:~MPSTreeNode.getAncestor(java.lang.Class)" resolve="getAncestor" />
-                  <node concept="3VsKOn" id="2iKjTfCVdCO" role="37wK5m">
-                    <ref role="3VsUkX" to="xr52:~SModelTreeNode" resolve="SModelTreeNode" />
-                  </node>
+              </node>
+              <node concept="liA8E" id="2iKjTfCVdCN" role="2OqNvi">
+                <ref role="37wK5l" to="7e8u:~MPSTreeNode.getAncestor(java.lang.Class)" resolve="getAncestor" />
+                <node concept="3VsKOn" id="2iKjTfCVdCO" role="37wK5m">
+                  <ref role="3VsUkX" to="xr52:~SModelTreeNode" resolve="SModelTreeNode" />
                 </node>
               </node>
             </node>

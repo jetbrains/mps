@@ -7,13 +7,13 @@ import jetbrains.mps.workbench.action.BaseAction;
 import javax.swing.Icon;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import javax.swing.tree.TreeNode;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.ide.ui.tree.smodel.PackageNode;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.ide.ui.tree.smodel.SModelTreeNode;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.project.MPSProject;
 import java.awt.Frame;
+import javax.swing.tree.TreeNode;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import javax.swing.JOptionPane;
@@ -41,7 +41,7 @@ public class RenamePackage_Action extends BaseAction {
   }
   @Override
   public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
-    return ((TreeNode) MapSequence.fromMap(_params).get("ppNode")) instanceof PackageNode && ((PackageNode) ((TreeNode) MapSequence.fromMap(_params).get("ppNode"))).getAncestor(SModelTreeNode.class) != null;
+    return ((PackageNode) ((PackageNode) MapSequence.fromMap(_params).get("ppNode"))).getAncestor(SModelTreeNode.class) != null;
   }
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
@@ -72,12 +72,15 @@ public class RenamePackage_Action extends BaseAction {
       if (p == null) {
         return false;
       }
+      if (p != null && !(p instanceof PackageNode)) {
+        return false;
+      }
     }
     return true;
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    PackageNode treeNode = (PackageNode) ((TreeNode) MapSequence.fromMap(_params).get("ppNode"));
+    PackageNode treeNode = (PackageNode) ((PackageNode) MapSequence.fromMap(_params).get("ppNode"));
     final SModel model = treeNode.getAncestor(SModelTreeNode.class).getModel();
     if (model == null) {
       return;
