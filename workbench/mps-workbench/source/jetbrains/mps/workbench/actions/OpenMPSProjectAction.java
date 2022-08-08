@@ -19,10 +19,12 @@ import com.intellij.CommonBundle;
 import com.intellij.DynamicBundle;
 import com.intellij.icons.AllIcons;
 import com.intellij.ide.IdeBundle;
+import com.intellij.ide.impl.OpenUntrustedProjectChoice;
 import com.intellij.ide.impl.ProjectUtil;
 import com.intellij.ide.impl.TrustedPaths;
 import com.intellij.ide.impl.TrustedPathsSettings;
 import com.intellij.ide.impl.TrustedProjects;
+import com.intellij.ide.impl.TrustedProjectsStatistics;
 import com.intellij.idea.ActionsBundle;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
@@ -96,7 +98,6 @@ public class OpenMPSProjectAction extends BaseAction {
       return;
     }
 
-
     final Path file = Path.of(virtualFile.getPath());
 
     // A simplified check inspired by ProjectUtil.openProject() for file existence before we show a trust project dialog
@@ -126,7 +127,7 @@ public class OpenMPSProjectAction extends BaseAction {
                                                                         @Override
                                                                         public void rememberChoice(boolean isSelected, int exitCode) {
                                                                           if (isSelected && exitCode == Messages.YES) {
-//                                TrustedProjectsStatistics.TRUST_LOCATION_CHECKBOX_SELECTED.log()
+                                                                            TrustedProjectsStatistics.Companion.getTRUST_LOCATION_CHECKBOX_SELECTED().log();
                                                                             ApplicationManager.getApplication()
                                                                                               .getService(TrustedPathsSettings.class)
                                                                                               .addTrustedPath(projectLocationPath);
@@ -144,11 +145,12 @@ public class OpenMPSProjectAction extends BaseAction {
                                                                       .asWarning()
                                                                       .help(TrustedProjects.TRUSTED_PROJECTS_HELP_TOPIC)
                                                                       .show(currentProject, null);
-      //TrustedProjectsStatistics.Companion.NEW_PROJECT_OPEN_OR_IMPORT_CHOICE.log(openChoice)
 
       if (choice.equals(trustButtonText)) {
         tp.setProjectPathTrusted(file, true);
+        TrustedProjectsStatistics.Companion.getNEW_PROJECT_OPEN_OR_IMPORT_CHOICE().log(OpenUntrustedProjectChoice.TRUST_AND_OPEN);
       } else {
+        TrustedProjectsStatistics.Companion.getNEW_PROJECT_OPEN_OR_IMPORT_CHOICE().log(OpenUntrustedProjectChoice.CANCEL);
         return;
       }
     }
