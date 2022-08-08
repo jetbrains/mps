@@ -1362,6 +1362,243 @@
                 </node>
               </node>
             </node>
+            <node concept="2pNNFK" id="2Y7_ei6iJUU" role="3o6s8t">
+              <property role="2pNNFO" value="key" />
+              <node concept="3o6iSG" id="2Y7_ei6iKk2" role="3o6s8t">
+                <property role="3o6i5n" value="Options" />
+              </node>
+            </node>
+            <node concept="2pNNFK" id="2Y7_ei6iLpr" role="3o6s8t">
+              <property role="2pNNFO" value="array" />
+              <node concept="2pNNFK" id="2Y7_ei6iLPu" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iLWv" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/java.io=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iM4R" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iM4S" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/java.lang=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMf4" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMf5" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/java.lang.reflect=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMhp" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMhq" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/java.net=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMk$" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMk_" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/java.nio=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMu5" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMu6" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/java.nio.charset=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMvW" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMvX" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/java.text=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMzL" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMzM" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/java.time=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iM_G" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iM_H" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/java.util=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMCB" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMCC" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/java.util.concurrent=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMXO" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMXP" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMXQ" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMXR" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/jdk.internal.vm=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMXS" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMXT" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMXU" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMXV" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/sun.security.ssl=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMXW" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMXX" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.base/sun.security.util=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMXY" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMXZ" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMY0" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMY1" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/com.apple.eawt.event=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMY2" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMY3" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/com.apple.laf=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMY4" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMY5" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/java.awt=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iMY6" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iMY7" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/java.awt.dnd.peer=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN1L" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN1M" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/java.awt.event=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN1N" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN1O" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/java.awt.image=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN1P" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN1Q" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/java.awt.peer=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN1R" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN1S" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/javax.swing=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN1T" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN1U" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN1V" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN1W" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/javax.swing.text.html=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN1X" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN1Y" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/sun.awt.datatransfer=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN1Z" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN20" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/sun.awt.image=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN21" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN22" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/sun.awt=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN23" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN24" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/sun.font=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN5C" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN5D" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/sun.java2d=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN5E" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN5F" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/sun.lwawt=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN5G" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN5H" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/sun.lwawt.macosx=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN5I" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN5J" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=java.desktop/sun.swing=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN5K" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN5L" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=jdk.attach/sun.tools.attach=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN5M" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN5N" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN5O" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN5P" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
+                </node>
+              </node>
+              <node concept="2pNNFK" id="2Y7_ei6iN5Q" role="3o6s8t">
+                <property role="2pNNFO" value="string" />
+                <node concept="3o6iSG" id="2Y7_ei6iN5R" role="3o6s8t">
+                  <property role="3o6i5n" value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
+                </node>
+              </node>
+            </node>
             <node concept="2pNNFK" id="7Muxx6JTrCk" role="3o6s8t">
               <property role="2pNNFO" value="key" />
               <node concept="3o6iSG" id="7Muxx6JTrCl" role="3o6s8t">
