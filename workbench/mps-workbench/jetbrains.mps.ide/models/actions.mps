@@ -26528,7 +26528,7 @@
       </node>
       <node concept="3clFbS" id="14KV4bgTJ$M" role="3clF47">
         <node concept="3clFbF" id="14KV4bgTLTa" role="3cqZAp">
-          <node concept="2EnYce" id="14KV4bgTLTe" role="3clFbG">
+          <node concept="2OqwBi" id="4Xmgths29VN" role="3clFbG">
             <node concept="0kSF2" id="14KV4bgTLTf" role="2Oq$k0">
               <node concept="3uibUv" id="14KV4bgTLTg" role="0kSFW">
                 <ref role="3uigEE" to="g6cj:2HP68CXWGD6" resolve="DependencyTreeNode" />
@@ -26541,7 +26541,7 @@
                   </node>
                 </node>
                 <node concept="liA8E" id="14KV4bgTLTl" role="2OqNvi">
-                  <ref role="37wK5l" to="rgfa:~TreeNode.getParent()" resolve="getParent" />
+                  <ref role="37wK5l" to="rgfa:~DefaultMutableTreeNode.getParent()" resolve="getParent" />
                 </node>
               </node>
             </node>
@@ -26562,7 +26562,7 @@
       </node>
       <node concept="3clFbS" id="14KV4bgTK_8" role="3clF47">
         <node concept="3cpWs6" id="14KV4bgTLDj" role="3cqZAp">
-          <node concept="2EnYce" id="14KV4bgTL2i" role="3cqZAk">
+          <node concept="2OqwBi" id="4Xmgths2bBM" role="3cqZAk">
             <node concept="0kSF2" id="14KV4bgTL2j" role="2Oq$k0">
               <node concept="3uibUv" id="14KV4bgTL2k" role="0kSFW">
                 <ref role="3uigEE" to="g6cj:2HP68CXWGD6" resolve="DependencyTreeNode" />
@@ -26588,6 +26588,9 @@
       <property role="TrG5h" value="node" />
       <ref role="1DUlNI" to="qq03:~MPSCommonDataKeys.TREE_NODE" resolve="TREE_NODE" />
       <node concept="1oajcY" id="44sVLhmXetX" role="1oa70y" />
+      <node concept="1c5O4g" id="4Xmgths1U2f" role="1oa70y">
+        <ref role="1c5NyD" to="g6cj:2HP68CXWGD6" resolve="DependencyTreeNode" />
+      </node>
     </node>
     <node concept="1DS2jV" id="2GH7fa3Patj" role="1NuT2Z">
       <property role="TrG5h" value="project" />
@@ -27028,7 +27031,7 @@
             </node>
             <node concept="3clFbC" id="3YX357bjruX" role="3uHU7w">
               <node concept="2OqwBi" id="3YX357bjruY" role="3uHU7B">
-                <node concept="2EnYce" id="3YX357bjruZ" role="2Oq$k0">
+                <node concept="2OqwBi" id="4Xmgths29vp" role="2Oq$k0">
                   <node concept="0kSF2" id="3YX357bjrv0" role="2Oq$k0">
                     <node concept="3uibUv" id="3YX357bjrv1" role="0kSFW">
                       <ref role="3uigEE" to="g6cj:2HP68CXWGD6" resolve="DependencyTreeNode" />
