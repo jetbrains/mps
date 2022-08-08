@@ -16,7 +16,6 @@
 package jetbrains.mps.typechecking.backend;
 
 import jetbrains.mps.typechecking.TypecheckingQueries;
-import jetbrains.mps.typechecking.TypecheckingSession;
 import jetbrains.mps.typechecking.TypecheckingSession.Flags;
 import jetbrains.mps.typechecking.TypecheckingSession.*;
 import jetbrains.mps.typechecking.backend.TypecheckingProvider.AuxDataContainer;
@@ -63,7 +62,7 @@ public class SharedSessionTypecheckingController extends TypecheckingController 
 
   @Override
   public Map<String, ?> discoverParameters(SNode anchor) {
-    return mySharedSession.discoverParameters(anchor);
+    return mySharedSession.flags().getParamsMap();
   }
 
   @NotNull
@@ -75,13 +74,7 @@ public class SharedSessionTypecheckingController extends TypecheckingController 
   @NotNull
   @Override
   protected TypecheckingQueries getQueries(@NotNull SNode src, SNode trg, SConcept trgConcept) {
-    SNode containingRoot = src.getContainingRoot();
-    if (mySharedSession.flags().getRoot() == containingRoot) {
-      return mySharedSession.getQueries(src, trg, trgConcept);
-      
-    } else {
-      return myDelegate.getQueries(src, trg, trgConcept);
-    }
+    return mySharedSession.getQueries(src, trg, trgConcept);
   }
 
   @Nullable

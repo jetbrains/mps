@@ -31,7 +31,7 @@ import java.util.Map.Entry;
  * This object corresponds to a session, which may contain several instances of {@link TypecheckingQueries}
  * coming from different providers.
  */
-public abstract class TypecheckingSessionImpl implements TypecheckingSession, ParametersDiscoverable {
+public abstract class TypecheckingSessionImpl implements TypecheckingSession {
 
   private boolean myDisposed = false;
   
@@ -48,11 +48,6 @@ public abstract class TypecheckingSessionImpl implements TypecheckingSession, Pa
   protected TypecheckingSessionImpl(TypecheckingController controller, Flags flags) {
     myController = controller;
     myFlags = new InternalFlags(flags); // defensive copying of a mutable parameter
-  }
-
-  @Override
-  public Map<String, ?> discoverParameters(SNode anchor) {
-    return myController.discoverParameters(anchor);
   }
 
   @Override
@@ -82,6 +77,10 @@ public abstract class TypecheckingSessionImpl implements TypecheckingSession, Pa
 
   @Override
   public abstract <C> C getData(Class<? extends C> dataClass);
+
+  protected TypecheckingController getController() {
+    return myController;
+  }
 
   protected void disown() {
     this.myOrphaned = true;
