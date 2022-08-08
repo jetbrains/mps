@@ -11,14 +11,13 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
 import com.intellij.openapi.actionSystem.Presentation;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
-import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.ide.ui.tree.module.ProjectModuleTreeNode;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.smodel.Language;
 import javax.swing.tree.TreeNode;
 import jetbrains.mps.ide.actions.NewModelActionExecutor;
 import org.jetbrains.mps.openapi.model.SModel;
-import jetbrains.mps.smodel.Language;
 import jetbrains.mps.project.structure.modules.LanguageDescriptor;
 
 @GeneratedClass(node = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)/3465865320786305631", model = "r:90fa2771-55a5-4174-b12a-f5413c5a876c(jetbrains.mps.ide.devkit.actions)")
@@ -37,9 +36,7 @@ public class NewAccessoryModel_Action extends BaseAction {
   @Override
   public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
     Presentation presentation = event.getPresentation();
-
-    presentation.setEnabledAndVisible(event.getData(MPSCommonDataKeys.CONTEXT_MODULE) instanceof AbstractModule);
-
+    presentation.setEnabledAndVisible(true);
     presentation.setText(((event.getData(MPSCommonDataKeys.TREE_NODE) instanceof ProjectModuleTreeNode ? "" : "New ")) + "Accessory Model");
   }
   @Override
@@ -58,7 +55,7 @@ public class NewAccessoryModel_Action extends BaseAction {
       if (p == null) {
         return false;
       }
-      if (!(moduleCondition(p))) {
+      if (p != null && !(p instanceof Language)) {
         return false;
       }
     }
@@ -78,6 +75,9 @@ public class NewAccessoryModel_Action extends BaseAction {
     return new NewModelActionExecutor(event.getData(MPSCommonDataKeys.MPS_PROJECT), event.getData(MPSCommonDataKeys.CONTEXT_MODULE), event.getData(MPSCommonDataKeys.TREE_NODE)) {
       @Override
       protected void onModelCreated(final SModel model) {
+        // FIXME bad design. onModelCreated runs command to create a model and attach it to a module,
+        //  here separate command registers it with a language. What's the point to have these executors, what does
+        //  we gain by re-using actions?
         myProject.getModelAccess().executeCommand(() -> {
           Language language = (Language) model.getModule();
           LanguageDescriptor descriptor = language.getModuleDescriptor();
@@ -87,8 +87,5 @@ public class NewAccessoryModel_Action extends BaseAction {
         super.onModelCreated(model);
       }
     };
-  }
-  public boolean moduleCondition(SModule parameter) {
-    return parameter instanceof Language;
   }
 }
