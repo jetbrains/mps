@@ -6,8 +6,8 @@ package jetbrains.mps.intellij.integration;
 import com.intellij.ide.RecentProjectsManagerBase;
 import com.intellij.ide.impl.OpenProjectTask;
 import com.intellij.openapi.project.Project;
+import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelper;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
@@ -30,6 +30,12 @@ class MPSRecentProjectsManagerBase extends RecentProjectsManagerBase {
       // Blindly assume that this came from ReopenProjectAction
       openProjectOptions = OpenProjectTask.withProjectToClose(openProjectOptions.getProjectToClose(), openProjectOptions.getForceOpenInNewFrame());
     }
-    return super.openProject(projectFile, openProjectOptions);
+
+    if (OpenMPSProjectTrustProjectHelper.checkTrust(projectFile, null)) {
+      return super.openProject(projectFile, openProjectOptions);
+    } else {
+      return CompletableFuture.completedFuture(null);
+    }
+
   }
 }

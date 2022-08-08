@@ -21,6 +21,7 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.projectImport.ProjectOpenProcessor;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.workbench.actions.OpenMPSProjectFileChooserDescriptor;
+import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelper;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.Icon;
@@ -49,6 +50,10 @@ public class MpsProjectOpenProcessor extends ProjectOpenProcessor {
   @Override
   public Project doOpenProject(@NotNull VirtualFile virtualFile, Project projectToClose, boolean forceOpenInNewFrame) {
     String filePath = virtualFile.getPath();
-    return ProjectUtil.openProject(filePath, projectToClose, forceOpenInNewFrame);
+    if (OpenMPSProjectTrustProjectHelper.checkTrust(virtualFile, projectToClose)) {
+      return ProjectUtil.openProject(filePath, projectToClose, forceOpenInNewFrame);
+    } else {
+      return null;
+    }
   }
 }

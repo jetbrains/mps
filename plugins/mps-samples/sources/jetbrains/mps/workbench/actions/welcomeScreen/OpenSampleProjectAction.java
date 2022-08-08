@@ -26,6 +26,7 @@ import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.samples.SamplesInfo;
 import jetbrains.mps.workbench.actions.OpenMPSProjectFileChooserDescriptor;
+import jetbrains.mps.workbench.actions.OpenMPSProjectTrustProjectHelper;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
@@ -56,7 +57,9 @@ public class OpenSampleProjectAction extends AnAction {
 
     VirtualFile result = FileChooser.chooseFile(descriptor, currentProject, samplesFolder);
     if (result != null) {
-      ProjectUtil.openProject(result.getPath(), currentProject, false);
+      if (OpenMPSProjectTrustProjectHelper.checkTrust(result, currentProject)) {
+        ProjectUtil.openProject(result.getPath(), currentProject, false);
+      }
     }
   }
 }
