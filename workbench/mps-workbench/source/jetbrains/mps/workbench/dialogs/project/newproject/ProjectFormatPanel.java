@@ -34,14 +34,12 @@ public class ProjectFormatPanel {
 
   private static final String STORAGE_FORMAT_PROPERTY = "default.storage.format";
   public static final String DIR_BASED = ".mps (directory based)";
-  private static final String FILE_BASED = ".mpr (file based)";
 
   private JComboBox myStorageFormatCombo;
   private JPanel myWholePanel;
 
   public ProjectFormatPanel() {
     myStorageFormatCombo.insertItemAt(DIR_BASED, 0);
-    myStorageFormatCombo.insertItemAt(FILE_BASED, 1);
     myStorageFormatCombo.setSelectedItem(PropertiesComponent.getInstance().getValue(STORAGE_FORMAT_PROPERTY, DIR_BASED));
   }
 
@@ -58,7 +56,7 @@ public class ProjectFormatPanel {
   }
 
   public boolean isDefault() {
-    return FILE_BASED.equals(myStorageFormatCombo.getSelectedItem());
+    return DIR_BASED.equals(myStorageFormatCombo.getSelectedItem());
   }
 
   {
