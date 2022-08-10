@@ -8385,24 +8385,6 @@
               </node>
               <node concept="9aQIb" id="6ESy0uAuweL" role="9aQIa">
                 <node concept="3clFbS" id="6ESy0uAuweM" role="9aQI4">
-                  <node concept="3clFbJ" id="6ESy0uAuWm_" role="3cqZAp">
-                    <node concept="3clFbS" id="6ESy0uAuWmB" role="3clFbx">
-                      <node concept="3cpWs6" id="6ESy0uAv0zb" role="3cqZAp">
-                        <node concept="10M0yZ" id="6ESy0uAv0$c" role="3cqZAk">
-                          <ref role="3cqZAo" to="z2i8:~AllIcons$RunConfigurations.TestError" resolve="TestError" />
-                          <ref role="1PxDUh" to="z2i8:~AllIcons$RunConfigurations" resolve="AllIcons.RunConfigurations" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="3y3z36" id="6ESy0uAuYC4" role="3clFbw">
-                      <node concept="37vLTw" id="6ESy0uAuZb1" role="3uHU7w">
-                        <ref role="3cqZAo" node="5kPsWkSfsz5" resolve="total" />
-                      </node>
-                      <node concept="37vLTw" id="6ESy0uAuWTV" role="3uHU7B">
-                        <ref role="3cqZAo" node="5kPsWkSfsz7" resolve="completed" />
-                      </node>
-                    </node>
-                  </node>
                   <node concept="3clFbJ" id="6ESy0uAuHQf" role="3cqZAp">
                     <node concept="3eOSWO" id="6ESy0uAuK5g" role="3clFbw">
                       <node concept="3cmrfG" id="6ESy0uAuKCd" role="3uHU7w">
@@ -8454,6 +8436,24 @@
                       </node>
                       <node concept="37vLTw" id="6ESy0uAuSkG" role="3uHU7B">
                         <ref role="3cqZAo" node="5kPsWkSfszf" resolve="ignored" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbJ" id="6ESy0uAuWm_" role="3cqZAp">
+                    <node concept="3clFbS" id="6ESy0uAuWmB" role="3clFbx">
+                      <node concept="3cpWs6" id="6ESy0uAv0zb" role="3cqZAp">
+                        <node concept="10M0yZ" id="6ESy0uAv0$c" role="3cqZAk">
+                          <ref role="3cqZAo" to="z2i8:~AllIcons$RunConfigurations.TestError" resolve="TestError" />
+                          <ref role="1PxDUh" to="z2i8:~AllIcons$RunConfigurations" resolve="RunConfigurations" />
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3y3z36" id="6ESy0uAuYC4" role="3clFbw">
+                      <node concept="37vLTw" id="6ESy0uAuZb1" role="3uHU7w">
+                        <ref role="3cqZAo" node="5kPsWkSfsz5" resolve="total" />
+                      </node>
+                      <node concept="37vLTw" id="6ESy0uAuWTV" role="3uHU7B">
+                        <ref role="3cqZAo" node="5kPsWkSfsz7" resolve="completed" />
                       </node>
                     </node>
                   </node>
