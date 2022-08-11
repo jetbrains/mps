@@ -1,17 +1,14 @@
 /*
- * Copyright 2000-2021 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
+ * Copyright 2000-2022 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
  */
 package jetbrains.mps.smodel.language;
 
-import jetbrains.mps.extapi.model.SModelBase;
-import jetbrains.mps.project.DevKit;
 import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.smodel.Language;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 import java.util.ArrayList;
@@ -61,7 +58,7 @@ public abstract class LanguageAspectDescriptorBase extends LanguageAspectDescrip
   }
 
   public boolean canCreate(SModule language) {
-    return language instanceof Language && getAspectModels(language).isEmpty();
+    return language instanceof Language && !language.isReadOnly() && getAspectModels(language).isEmpty();
   }
 
   public void create(SModule language) {

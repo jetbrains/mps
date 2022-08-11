@@ -10047,16 +10047,31 @@
                   <ref role="37wK5l" to="qkt:~AnActionEvent.getPresentation()" resolve="getPresentation" />
                 </node>
               </node>
-              <node concept="2OqwBi" id="7IH442cRjKm" role="37wK5m">
-                <node concept="37vLTw" id="7IH442cRYP$" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7IH442cRUc4" resolve="ad" />
+              <node concept="1Wc70l" id="2ryZaqdAk6f" role="37wK5m">
+                <node concept="3fqX7Q" id="2ryZaqdAoun" role="3uHU7B">
+                  <node concept="2OqwBi" id="2ryZaqdAoup" role="3fr31v">
+                    <node concept="2OqwBi" id="2ryZaqdAouq" role="2Oq$k0">
+                      <node concept="2WthIp" id="2ryZaqdAour" role="2Oq$k0" />
+                      <node concept="1DTwFV" id="2ryZaqdAous" role="2OqNvi">
+                        <ref role="2WH_rO" node="7IH442cRjJ7" resolve="module" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="2ryZaqdAout" role="2OqNvi">
+                      <ref role="37wK5l" to="lui2:~SModule.isReadOnly()" resolve="isReadOnly" />
+                    </node>
+                  </node>
                 </node>
-                <node concept="liA8E" id="7IH442cRjKq" role="2OqNvi">
-                  <ref role="37wK5l" to="vndm:~LanguageAspectDescriptor.canCreate(org.jetbrains.mps.openapi.module.SModule)" resolve="canCreate" />
-                  <node concept="2OqwBi" id="7IH442cRjKt" role="37wK5m">
-                    <node concept="2WthIp" id="7IH442cRjKu" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="7IH442cRjKv" role="2OqNvi">
-                      <ref role="2WH_rO" node="7IH442cRjJ7" resolve="module" />
+                <node concept="2OqwBi" id="7IH442cRjKm" role="3uHU7w">
+                  <node concept="37vLTw" id="7IH442cRYP$" role="2Oq$k0">
+                    <ref role="3cqZAo" node="7IH442cRUc4" resolve="ad" />
+                  </node>
+                  <node concept="liA8E" id="7IH442cRjKq" role="2OqNvi">
+                    <ref role="37wK5l" to="vndm:~LanguageAspectDescriptor.canCreate(org.jetbrains.mps.openapi.module.SModule)" resolve="canCreate" />
+                    <node concept="2OqwBi" id="7IH442cRjKt" role="37wK5m">
+                      <node concept="2WthIp" id="7IH442cRjKu" role="2Oq$k0" />
+                      <node concept="1DTwFV" id="7IH442cRjKv" role="2OqNvi">
+                        <ref role="2WH_rO" node="7IH442cRjJ7" resolve="module" />
+                      </node>
                     </node>
                   </node>
                 </node>

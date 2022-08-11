@@ -52,7 +52,7 @@ public class NewAspectModelByDescriptor_Action extends BaseAction {
     Icon icon = GlobalIconManager.getInstance().getIconForResource(ad.getIconResource());
     event.getPresentation().setIcon((icon != null ? icon : IdeIcons.MODEL_ICON));
 
-    NewAspectModelByDescriptor_Action.this.setEnabledState(event.getPresentation(), ad.canCreate(((SModule) MapSequence.fromMap(_params).get("module"))));
+    NewAspectModelByDescriptor_Action.this.setEnabledState(event.getPresentation(), !(((SModule) MapSequence.fromMap(_params).get("module")).isReadOnly()) && ad.canCreate(((SModule) MapSequence.fromMap(_params).get("module"))));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
