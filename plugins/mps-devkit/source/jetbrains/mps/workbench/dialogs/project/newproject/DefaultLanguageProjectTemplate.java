@@ -15,7 +15,9 @@
  */
 package jetbrains.mps.workbench.dialogs.project.newproject;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.startup.StartupManager;
+import com.intellij.openapi.ui.Messages;
 import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.ide.newSolutionDialog.NewModuleUtil;
 import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
@@ -105,7 +107,14 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
     return project -> StartupManager.getInstance(project.getProject()).registerPostStartupActivity(() -> project.getModelAccess().executeCommand(() -> {
       final LanguageAndSolutionsProducer lp = new LanguageAndSolutionsProducer(project);
       lp.withRuntimeSolution(myRuntimeSolution.isSelected()).withSandboxSolution(mySandboxSolution.isSelected());
-      lp.create(mySettings.getModuleName(), project.getFileSystem().getFile(mySettings.getModuleLocation()));
+      try {
+        lp.create(mySettings.getModuleName(), project.getFileSystem().getFile(mySettings.getModuleLocation()));
+      } catch (IllegalStateException | IllegalArgumentException e) {
+        // This is really just a fallback check if the producer raises an exception despite all the checks made by NewModuleUtil.check()
+        final String message = e.getMessage() != null ? e.getMessage() : "No message was provided by exception";
+        ApplicationManager.getApplication().invokeLater(() -> Messages.showErrorDialog(message, "Project Creation Failed"));
+        throw e;
+      }
     }));
   }
 

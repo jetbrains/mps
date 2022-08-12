@@ -14,8 +14,6 @@ import jetbrains.mps.smodel.GeneralModuleFactory;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.project.ModuleId;
-import com.intellij.openapi.ui.Messages;
-import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.persistence.DefaultModelRoot;
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor;
 import jetbrains.mps.project.facets.JavaModuleFacet;
@@ -52,7 +50,6 @@ public class SolutionProducer {
     // FIXME error reporting
     final IFile modelsDir = moduleLocation.findChild(Solution.SOLUTION_MODELS);
     if (modelsDir.exists() && modelsDir.getChildren().size() != 0) {
-      Messages.showMessageDialog("The solution descriptor file " + descriptorFile.getName() + " already exists", "Solution already exists", MPSIcons.Nodes.Language);
       if (LOG.isErrorLevel()) {
         LOG.error("Trying to create a solution in an existing solution's directory: " + moduleLocation);
       }
