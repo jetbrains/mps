@@ -47,8 +47,9 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
   public static final SMethod<SNode> getVariablesReceiverType_id75chmMYhcwP = new SMethodBuilder<SNode>(new SJavaCompoundTypeImpl((Class<SNode>) ((Class) Object.class))).name("getVariablesReceiverType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8163976557866829877L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Boolean> collectScope_id7DyvjiA20yV = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("collectScope").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(8818748685422168251L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter(ScopeCollector.class, ""), SMethodBuilder.createJavaParameter((Class<SNode>) ((Class) Object.class), ""));
   public static final SMethod<Iterable<TypeReference>> getThisTypeReferences_idxpyqH1FuA0 = new SMethodBuilder<Iterable<TypeReference>>(new SJavaCompoundTypeImpl((Class<Iterable<TypeReference>>) ((Class) Object.class))).name("getThisTypeReferences").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(601663393865001344L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isAnnotationTargetAllowed_id6nA1THM505G = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAnnotationTargetAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7342564606689411436L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateDeclarations_id213J8cgCCAN, populateSignatures_id18X2O0FJBER, getDeclarations_id7RZWrHVaXCH, getScope_id52_Geb4QDV$, getPresentation_idhEwIMiw, getVariablesReceiverType_id75chmMYhcwP, collectScope_id7DyvjiA20yV, getThisTypeReferences_idxpyqH1FuA0);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(populateDeclarations_id213J8cgCCAN, populateSignatures_id18X2O0FJBER, getDeclarations_id7RZWrHVaXCH, getScope_id52_Geb4QDV$, getPresentation_idhEwIMiw, getVariablesReceiverType_id75chmMYhcwP, collectScope_id7DyvjiA20yV, getThisTypeReferences_idxpyqH1FuA0, isAnnotationTargetAllowed_id6nA1THM505G);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -101,6 +102,18 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
     }
     return Sequence.fromIterable(Collections.<TypeReference>emptyList());
   }
+  /*package*/ static boolean isAnnotationTargetAllowed_id6nA1THM505G(@NotNull SNode __thisNode__, SAbstractConcept target) {
+    // TODO field depends on the usage of the field variable in the setter / getter (overridden + no usage of field => no field)
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.FieldUseSiteTarget$1i) || SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.PropertyUseSiteTarget$1L) || SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.GetUseSiteTarget$2g)) {
+      return true;
+    }
+
+    if (!(SPropertyOperations.getBoolean(__thisNode__, PROPS.isReadonly$jzqd)) && (SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.SetUseSiteTarget$2J) || SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.SetparamUseSiteTarget$en))) {
+      return true;
+    }
+
+    return false;
+  }
 
   /*package*/ PropertyDeclaration__BehaviorDescriptor() {
   }
@@ -135,6 +148,8 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
         return (T) ((Boolean) collectScope_id7DyvjiA20yV(node, (ScopeCollector) parameters[0], (SNode) parameters[1]));
       case 7:
         return (T) ((Iterable<TypeReference>) getThisTypeReferences_idxpyqH1FuA0(node));
+      case 8:
+        return (T) ((Boolean) isAnnotationTargetAllowed_id6nA1THM505G(node, (SAbstractConcept) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -176,9 +191,15 @@ public final class PropertyDeclaration__BehaviorDescriptor extends BaseBHDescrip
     /*package*/ static final SInterfaceConcept ITypeParameter$fG = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4da39967d13161a1L, "jetbrains.mps.kotlin.structure.ITypeParameter");
     /*package*/ static final SConcept ClassDeclaration$Jm = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af469L, "jetbrains.mps.kotlin.structure.ClassDeclaration");
     /*package*/ static final SInterfaceConcept IThisReceiverProvider$mP = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x85989ab41addf50L, "jetbrains.mps.kotlin.structure.IThisReceiverProvider");
+    /*package*/ static final SConcept PropertyUseSiteTarget$1L = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f5L, "jetbrains.mps.kotlin.structure.PropertyUseSiteTarget");
+    /*package*/ static final SConcept FieldUseSiteTarget$1i = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f4L, "jetbrains.mps.kotlin.structure.FieldUseSiteTarget");
+    /*package*/ static final SConcept GetUseSiteTarget$2g = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f6L, "jetbrains.mps.kotlin.structure.GetUseSiteTarget");
+    /*package*/ static final SConcept SetparamUseSiteTarget$en = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3faL, "jetbrains.mps.kotlin.structure.SetparamUseSiteTarget");
+    /*package*/ static final SConcept SetUseSiteTarget$2J = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f7L, "jetbrains.mps.kotlin.structure.SetUseSiteTarget");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty isReadonly$jzqd = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b9a90aaL, 0x28bef6d75590b319L, "isReadonly");
   }
 }

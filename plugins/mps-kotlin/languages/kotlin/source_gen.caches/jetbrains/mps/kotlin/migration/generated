@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="-8lqt6bkpqbj7nsn0due49c9zjstddup" parametersHash="-89v1oko0brmrlg1we5j1z5anrw72mmz">
+<product version="3" modelHash="-88aglj2u3gh0es6ah97tn1f1x578xt2" parametersHash="-9wpyoa5wfrkj37rorf3zwgarvrnzuwg">
   <files names="DeconstructingVariables.java:FunctionInheritance.java:LambdaLiteralStructure.java:LongAndUnsignedAsLiteral.java:MigrateReceiverTypes.java:Migrate_MovePropertyUp_4.java:MigrationDescriptor.java:MoveControlStructureStatements.java:StringLiteralNewStructure.java" />
 </product>
 

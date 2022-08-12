@@ -40,6 +40,7 @@ public final class Parameter__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static String getPresentation_idhEwIMiw(@NotNull SNode __thisNode__) {
     return SPropertyOperations.getString(__thisNode__, PROPS.name$MnvL);
   }
+  @NotNull
   /*package*/ static TypeReference getType_id1TQsu41FTV5(@NotNull SNode __thisNode__) {
     TypeReference thisType = ConcreteTypeReference.nullSafeOf(SLinkOperations.getTarget(__thisNode__, LINKS.type$1aXr));
     if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isVararg$GaYv)) {

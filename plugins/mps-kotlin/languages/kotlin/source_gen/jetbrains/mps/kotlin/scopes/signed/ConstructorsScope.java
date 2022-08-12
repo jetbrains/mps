@@ -75,6 +75,9 @@ public class ConstructorsScope implements SignatureScope {
 
   @Override
   public boolean contains(SNode source) {
+    if (isExcluded(source)) {
+      return false;
+    }
     return SNodeOperations.isInstanceOf(source, CONCEPTS.IConstructorDeclaration$rR) && SetSequence.fromSet(myModels).contains(source.getModel());
   }
 

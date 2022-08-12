@@ -289,7 +289,6 @@
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
       <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
-      <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1144100932627" name="jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion" flags="ng" index="1xIGOp" />
       <concept id="1144101972840" name="jetbrains.mps.lang.smodel.structure.OperationParm_Concept" flags="ng" index="1xMEDy">
         <child id="1207343664468" name="conceptArgument" index="ri$Ld" />
@@ -2621,36 +2620,6 @@
                 </node>
                 <node concept="35c_gC" id="27GSRRvUFM2" role="37wK5m">
                   <ref role="35c_gD" to="hcm8:71DDynMG2ea" resolve="IConstructorDeclaration" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-    </node>
-    <node concept="9S07l" id="4L9_P6KRBLQ" role="9Vyp8">
-      <node concept="3clFbS" id="4L9_P6KRBLR" role="2VODD2">
-        <node concept="3clFbF" id="4L9_P6KRCh3" role="3cqZAp">
-          <node concept="22lmx$" id="4L9_P6KRF2i" role="3clFbG">
-            <node concept="2OqwBi" id="4L9_P6KRGxw" role="3uHU7w">
-              <node concept="2OqwBi" id="4L9_P6KRFpl" role="2Oq$k0">
-                <node concept="nLn13" id="4L9_P6KRF9Q" role="2Oq$k0" />
-                <node concept="2Xjw5R" id="4L9_P6KRFFF" role="2OqNvi">
-                  <node concept="1xMEDy" id="4L9_P6KRFFH" role="1xVPHs">
-                    <node concept="chp4Y" id="4L9_P6KRFWP" role="ri$Ld">
-                      <ref role="cht4Q" to="hcm8:4hE452RoWMT" resolve="Annotation" />
-                    </node>
-                  </node>
-                  <node concept="1xIGOp" id="4L9_P6KRGh7" role="1xVPHs" />
-                </node>
-              </node>
-              <node concept="3x8VRR" id="4L9_P6KRHbU" role="2OqNvi" />
-            </node>
-            <node concept="2OqwBi" id="4L9_P6KRCu0" role="3uHU7B">
-              <node concept="nLn13" id="4L9_P6KRCh2" role="2Oq$k0" />
-              <node concept="1mIQ4w" id="4L9_P6KRCLL" role="2OqNvi">
-                <node concept="chp4Y" id="4L9_P6KRCZG" role="cj9EA">
-                  <ref role="cht4Q" to="hcm8:2yYXHtl6JdZ" resolve="AnnotationList" />
                 </node>
               </node>
             </node>

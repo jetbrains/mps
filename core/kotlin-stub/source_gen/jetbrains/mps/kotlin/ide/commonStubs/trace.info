@@ -1902,10 +1902,10 @@
       <node id="5497091197297797599" at="99,101,100,62" concept="10" />
       <node id="5497091197297772998" at="100,62,101,0" concept="13" />
       <node id="5497091197297954790" at="101,0,102,181" concept="12" />
-      <node id="5497091197297780532" at="102,181,103,194" concept="10" />
-      <node id="5497091197297780538" at="103,194,104,54" concept="10" />
-      <node id="5497091197297780544" at="104,54,105,74" concept="5" />
-      <node id="5497091197297780551" at="105,74,106,0" concept="13" />
+      <node id="5497091197297780532" at="102,181,103,206" concept="10" />
+      <node id="5497091197297780538" at="103,206,104,54" concept="10" />
+      <node id="5497091197297780544" at="104,54,105,71" concept="5" />
+      <node id="5497091197297780551" at="105,71,106,0" concept="13" />
       <node id="5497091197297780558" at="107,111,108,79" concept="5" />
       <node id="5497091197297780569" at="109,7,110,0" concept="13" />
       <node id="5497091197297875848" at="110,0,111,21" concept="11" />
@@ -1956,34 +1956,35 @@
       <node id="4636646692093260007" at="192,0,193,0" concept="14" trace="parameter$8rO1" />
       <node id="4636646692093260007" at="193,0,194,0" concept="14" trace="target$xQFr" />
       <node id="4636646692093260007" at="194,0,195,0" concept="14" trace="expressions$_AIQ" />
-      <node id="4636646692093260007" at="195,0,196,0" concept="14" trace="class$ExdX" />
-      <node id="4636646692093260007" at="196,0,197,0" concept="14" trace="typeProjections$vhti" />
-      <node id="4636646692093260007" at="197,0,198,0" concept="14" trace="lines$FNV" />
-      <node id="4636646692093260007" at="198,0,199,0" concept="14" trace="parts$AoNt" />
-      <node id="4636646692093260007" at="199,0,200,0" concept="14" trace="operand$YS5t" />
-      <node id="4636646692093260007" at="200,0,201,0" concept="14" trace="type$NVFj" />
-      <node id="4636646692093260007" at="201,0,202,0" concept="14" trace="target$aBAp" />
-      <node id="4636646692093260007" at="202,0,203,0" concept="14" trace="target$C6zp" />
-      <node id="4636646692093260007" at="206,0,207,0" concept="14" trace="IType$Ni" />
-      <node id="4636646692093260007" at="207,0,208,0" concept="14" trace="BooleanLiteral$6F" />
-      <node id="4636646692093260007" at="208,0,209,0" concept="14" trace="StringLiteral$V8" />
-      <node id="4636646692093260007" at="209,0,210,0" concept="14" trace="StringLiteralLine$E7" />
-      <node id="4636646692093260007" at="210,0,211,0" concept="14" trace="StringLiteralRaw$ar" />
-      <node id="4636646692093260007" at="211,0,212,0" concept="14" trace="CharLiteral$iM" />
-      <node id="4636646692093260007" at="212,0,213,0" concept="14" trace="RealLiteral$jh" />
-      <node id="4636646692093260007" at="213,0,214,0" concept="14" trace="IntegerLiteral$7a" />
-      <node id="4636646692093260007" at="214,0,215,0" concept="14" trace="MemberNavigationOperation$7I" />
-      <node id="4636646692093260007" at="215,0,216,0" concept="14" trace="ReceiverType$$f" />
-      <node id="4636646692093260007" at="216,0,217,0" concept="14" trace="ClassMemberTarget$le" />
-      <node id="4636646692093260007" at="217,0,218,0" concept="14" trace="NavigationOperation$4I" />
-      <node id="4636646692093260007" at="218,0,219,0" concept="14" trace="INavigationTarget$Ae" />
-      <node id="4636646692093260007" at="222,0,223,0" concept="14" trace="value$x3QR" />
-      <node id="4636646692093260007" at="223,0,224,0" concept="14" trace="content$3$6V" />
-      <node id="4636646692093260007" at="224,0,225,0" concept="14" trace="value$xaQr" />
-      <node id="4636646692093260007" at="225,0,226,0" concept="14" trace="value$xbkW" />
-      <node id="4636646692093260007" at="226,0,227,0" concept="14" trace="value$x4lo" />
-      <node id="4636646692093260007" at="227,0,228,0" concept="14" trace="long$1NZg" />
-      <node id="4636646692093260007" at="228,0,229,0" concept="14" trace="unsigned$iUpc" />
+      <node id="4636646692093260007" at="195,0,196,0" concept="14" trace="function$Weyv" />
+      <node id="4636646692093260007" at="196,0,197,0" concept="14" trace="class$ExdX" />
+      <node id="4636646692093260007" at="197,0,198,0" concept="14" trace="typeProjections$vhti" />
+      <node id="4636646692093260007" at="198,0,199,0" concept="14" trace="lines$FNV" />
+      <node id="4636646692093260007" at="199,0,200,0" concept="14" trace="parts$AoNt" />
+      <node id="4636646692093260007" at="200,0,201,0" concept="14" trace="operand$YS5t" />
+      <node id="4636646692093260007" at="201,0,202,0" concept="14" trace="type$NVFj" />
+      <node id="4636646692093260007" at="202,0,203,0" concept="14" trace="target$aBAp" />
+      <node id="4636646692093260007" at="203,0,204,0" concept="14" trace="target$C6zp" />
+      <node id="4636646692093260007" at="207,0,208,0" concept="14" trace="IType$Ni" />
+      <node id="4636646692093260007" at="208,0,209,0" concept="14" trace="BooleanLiteral$6F" />
+      <node id="4636646692093260007" at="209,0,210,0" concept="14" trace="StringLiteral$V8" />
+      <node id="4636646692093260007" at="210,0,211,0" concept="14" trace="StringLiteralLine$E7" />
+      <node id="4636646692093260007" at="211,0,212,0" concept="14" trace="StringLiteralRaw$ar" />
+      <node id="4636646692093260007" at="212,0,213,0" concept="14" trace="CharLiteral$iM" />
+      <node id="4636646692093260007" at="213,0,214,0" concept="14" trace="RealLiteral$jh" />
+      <node id="4636646692093260007" at="214,0,215,0" concept="14" trace="IntegerLiteral$7a" />
+      <node id="4636646692093260007" at="215,0,216,0" concept="14" trace="MemberNavigationOperation$7I" />
+      <node id="4636646692093260007" at="216,0,217,0" concept="14" trace="ReceiverType$$f" />
+      <node id="4636646692093260007" at="217,0,218,0" concept="14" trace="ClassMemberTarget$le" />
+      <node id="4636646692093260007" at="218,0,219,0" concept="14" trace="NavigationOperation$4I" />
+      <node id="4636646692093260007" at="219,0,220,0" concept="14" trace="INavigationTarget$Ae" />
+      <node id="4636646692093260007" at="223,0,224,0" concept="14" trace="value$x3QR" />
+      <node id="4636646692093260007" at="224,0,225,0" concept="14" trace="content$3$6V" />
+      <node id="4636646692093260007" at="225,0,226,0" concept="14" trace="value$xaQr" />
+      <node id="4636646692093260007" at="226,0,227,0" concept="14" trace="value$xbkW" />
+      <node id="4636646692093260007" at="227,0,228,0" concept="14" trace="value$x4lo" />
+      <node id="4636646692093260007" at="228,0,229,0" concept="14" trace="long$1NZg" />
+      <node id="4636646692093260007" at="229,0,230,0" concept="14" trace="unsigned$iUpc" />
       <node id="4636646692093282294" at="40,0,43,5" concept="7" />
       <node id="4636646692093306591" at="92,18,95,7" concept="7" />
       <node id="5497091197297780552" at="106,0,109,7" concept="7" />
@@ -2152,10 +2153,10 @@
         <var name="arg" id="4636646692093306624" />
         <var name="context" id="4636646692093306626" />
       </scope>
-      <unit id="4636646692093260007" at="221,0,230,0" name="jetbrains.mps.kotlin.ide.commonStubs.AnnotationVisitorImpl$PROPS" />
-      <unit id="4636646692093260007" at="205,0,220,0" name="jetbrains.mps.kotlin.ide.commonStubs.AnnotationVisitorImpl$CONCEPTS" />
-      <unit id="4636646692093260007" at="186,0,204,0" name="jetbrains.mps.kotlin.ide.commonStubs.AnnotationVisitorImpl$LINKS" />
-      <unit id="4636646692093260007" at="25,0,231,0" name="jetbrains.mps.kotlin.ide.commonStubs.AnnotationVisitorImpl" />
+      <unit id="4636646692093260007" at="222,0,231,0" name="jetbrains.mps.kotlin.ide.commonStubs.AnnotationVisitorImpl$PROPS" />
+      <unit id="4636646692093260007" at="206,0,221,0" name="jetbrains.mps.kotlin.ide.commonStubs.AnnotationVisitorImpl$CONCEPTS" />
+      <unit id="4636646692093260007" at="186,0,205,0" name="jetbrains.mps.kotlin.ide.commonStubs.AnnotationVisitorImpl$LINKS" />
+      <unit id="4636646692093260007" at="25,0,232,0" name="jetbrains.mps.kotlin.ide.commonStubs.AnnotationVisitorImpl" />
     </file>
   </root>
   <root nodeRef="r:6c6710f1-72ef-4241-9ac5-bafd05beea2c(jetbrains.mps.kotlin.ide.commonStubs)/6505065053931584762">

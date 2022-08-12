@@ -65,7 +65,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   private ConceptPresentation props_ExpectPlatformModifier;
   private ConceptPresentation props_ExternalFunctionModifier;
   private ConceptPresentation props_FieldUseSiteTarget;
-  private ConceptPresentation props_FileAnnotation;
+  private ConceptPresentation props_FileAnnotationList;
   private ConceptPresentation props_FinalInheritanceModifier;
   private ConceptPresentation props_FinallyBlock;
   private ConceptPresentation props_FlexibleBlock;
@@ -712,14 +712,14 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_FieldUseSiteTarget = cpb.create();
         }
         return props_FieldUseSiteTarget;
-      case LanguageConceptSwitch.FileAnnotation:
-        if (props_FileAnnotation == null) {
+      case LanguageConceptSwitch.FileAnnotationList:
+        if (props_FileAnnotationList == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
           cpb.shortDesc("file annotation");
           cpb.rawPresentation("@file:<annotation>");
-          props_FileAnnotation = cpb.create();
+          props_FileAnnotationList = cpb.create();
         }
-        return props_FileAnnotation;
+        return props_FileAnnotationList;
       case LanguageConceptSwitch.FinalInheritanceModifier:
         if (props_FinalInheritanceModifier == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

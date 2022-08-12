@@ -110,8 +110,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new ExternalFunctionModifier_TextGen();
       case LanguageConceptSwitch.FieldUseSiteTarget:
         return new FieldUseSiteTarget_TextGen();
-      case LanguageConceptSwitch.FileAnnotation:
-        return new FileAnnotation_TextGen();
+      case LanguageConceptSwitch.FileAnnotationList:
+        return new FileAnnotationList_TextGen();
       case LanguageConceptSwitch.FinalInheritanceModifier:
         return new FinalInheritanceModifier_TextGen();
       case LanguageConceptSwitch.FinallyBlock:

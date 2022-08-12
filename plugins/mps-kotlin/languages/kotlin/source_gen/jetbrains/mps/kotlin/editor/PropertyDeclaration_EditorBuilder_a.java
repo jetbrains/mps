@@ -26,6 +26,23 @@ import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.KeywordStyleClass;
+import jetbrains.mps.nodeEditor.cellMenu.CompositeSubstituteInfo;
+import jetbrains.mps.nodeEditor.cellMenu.BasicCellContext;
+import jetbrains.mps.nodeEditor.cellMenu.SubstituteInfoPartExt;
+import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfoPartEx;
+import jetbrains.mps.lang.editor.generator.internal.AbstractCellMenuPart_Generic_Item;
+import java.util.List;
+import jetbrains.mps.openapi.editor.cells.SubstituteAction;
+import jetbrains.mps.nodeEditor.cellMenu.CellContext;
+import java.util.function.Function;
+import jetbrains.mps.smodel.action.NodeSubstituteActionWrapper;
+import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import jetbrains.mps.nodeEditor.menus.EditorMenuTraceInfoImpl;
+import jetbrains.mps.lang.editor.menus.EditorMenuDescriptorBase;
+import jetbrains.mps.smodel.SNodePointer;
+import java.util.stream.Collectors;
+import org.jetbrains.mps.openapi.model.SModel;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -199,21 +216,83 @@ import org.jetbrains.mps.openapi.language.SProperty;
   }
   private EditorCell createConstant_2() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "var");
-    editorCell.setCellId("Constant_lnae77_f0");
+    editorCell.setCellId("var");
     Style style = new StyleImpl();
     new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new PropertyDeclaration_generic_cellMenu_lnae77_a0f0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
+  }
+  public static class PropertyDeclaration_generic_cellMenu_lnae77_a0f0 extends AbstractCellMenuPart_Generic_Item {
+    public PropertyDeclaration_generic_cellMenu_lnae77_a0f0() {
+    }
+    @Override
+    public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
+      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
+      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
+        public SubstituteAction apply(SubstituteAction action) {
+          return new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "7342564606703962129")));
+              return result;
+            }
+          };
+        }
+      };
+      return actions.stream().map(mapper).collect(Collectors.toList());
+    }
+
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
+      SPropertyOperations.assign(node, PROPS.isReadonly$jzqd, true);
+      SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "val", -1);
+    }
+    public String getMatchingText() {
+      return "val";
+    }
   }
   private EditorCell createConstant_3() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "val");
-    editorCell.setCellId("Constant_lnae77_g0");
+    editorCell.setCellId("val");
     Style style = new StyleImpl();
     new KeywordStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
+    style.set(StyleAttributes.EDITABLE, true);
     editorCell.getStyle().putAll(style);
     editorCell.setDefaultText("");
+    editorCell.setSubstituteInfo(new CompositeSubstituteInfo(getEditorContext(), new BasicCellContext(myNode), new SubstituteInfoPartExt[]{new PropertyDeclaration_generic_cellMenu_lnae77_a0g0(), new SChildSubstituteInfoPartEx(editorCell)}));
     return editorCell;
+  }
+  public static class PropertyDeclaration_generic_cellMenu_lnae77_a0g0 extends AbstractCellMenuPart_Generic_Item {
+    public PropertyDeclaration_generic_cellMenu_lnae77_a0g0() {
+    }
+    @Override
+    public List<SubstituteAction> createActions(CellContext cellContext, EditorContext editorContext) {
+      List<SubstituteAction> actions = super.createActions(cellContext, editorContext);
+      Function<SubstituteAction, SubstituteAction> mapper = new Function<SubstituteAction, SubstituteAction>() {
+        public SubstituteAction apply(SubstituteAction action) {
+          return new NodeSubstituteActionWrapper(action) {
+            @Override
+            public EditorMenuTraceInfo getEditorMenuTraceInfo() {
+              EditorMenuTraceInfoImpl result = new EditorMenuTraceInfoImpl();
+              result.setDescriptor(new EditorMenuDescriptorBase("generic item", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "7342564606703970699")));
+              return result;
+            }
+          };
+        }
+      };
+      return actions.stream().map(mapper).collect(Collectors.toList());
+    }
+
+    protected void handleAction(SNode node, SModel model, EditorContext editorContext) {
+      SPropertyOperations.assign(node, PROPS.isReadonly$jzqd, false);
+      SelectionUtil.selectLabelCellAnSetCaret(editorContext, node, "var", -1);
+    }
+    public String getMatchingText() {
+      return "var";
+    }
   }
   private EditorCell createComponent_2() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.kotlin.editor.TypeParameters_Component");

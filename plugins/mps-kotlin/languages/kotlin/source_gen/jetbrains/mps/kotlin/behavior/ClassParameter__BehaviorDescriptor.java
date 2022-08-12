@@ -14,17 +14,21 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
 import org.jetbrains.mps.openapi.language.SProperty;
+import org.jetbrains.mps.openapi.language.SConcept;
 
 public final class ClassParameter__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, "jetbrains.mps.kotlin.structure.ClassParameter");
 
   public static final SMethod<Boolean> isLocal_id1vYW8S3rTh_ = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isLocal").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(1729083799690515557L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isAnnotationTargetAllowed_id6nA1THM505G = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAnnotationTargetAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7342564606689411436L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, isAnnotationTargetAllowed_id6nA1THM505G);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -32,6 +36,22 @@ public final class ClassParameter__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static boolean isLocal_id1vYW8S3rTh_(@NotNull SNode __thisNode__) {
     // Or true in the context of the constructor?
     return !(SPropertyOperations.getBoolean(__thisNode__, PROPS.isProperty$MCKN));
+  }
+  /*package*/ static boolean isAnnotationTargetAllowed_id6nA1THM505G(@NotNull SNode __thisNode__, SAbstractConcept target) {
+    if (SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.ParamUseSiteTarget$3H)) {
+      return true;
+    }
+    if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isProperty$MCKN)) {
+      if (SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.FieldUseSiteTarget$1i) || SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.PropertyUseSiteTarget$1L) || SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.GetUseSiteTarget$2g)) {
+        return true;
+      }
+
+      if (SPropertyOperations.getBoolean(__thisNode__, PROPS.isReadOnly$MDeP) && (SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.SetUseSiteTarget$2J) || SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.SetparamUseSiteTarget$en))) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   /*package*/ ClassParameter__BehaviorDescriptor() {
@@ -51,6 +71,8 @@ public final class ClassParameter__BehaviorDescriptor extends BaseBHDescriptor {
     switch (methodIndex) {
       case 0:
         return (T) ((Boolean) isLocal_id1vYW8S3rTh_(node));
+      case 1:
+        return (T) ((Boolean) isAnnotationTargetAllowed_id6nA1THM505G(node, (SAbstractConcept) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -82,5 +104,15 @@ public final class ClassParameter__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class PROPS {
     /*package*/ static final SProperty isProperty$MCKN = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x11400bb790af7d08L, "isProperty");
+    /*package*/ static final SProperty isReadOnly$MDeP = MetaAdapterFactory.getProperty(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af53aL, 0x11400bb790af7d0aL, "isReadOnly");
+  }
+
+  private static final class CONCEPTS {
+    /*package*/ static final SConcept ParamUseSiteTarget$3H = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f9L, "jetbrains.mps.kotlin.structure.ParamUseSiteTarget");
+    /*package*/ static final SConcept PropertyUseSiteTarget$1L = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f5L, "jetbrains.mps.kotlin.structure.PropertyUseSiteTarget");
+    /*package*/ static final SConcept FieldUseSiteTarget$1i = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f4L, "jetbrains.mps.kotlin.structure.FieldUseSiteTarget");
+    /*package*/ static final SConcept GetUseSiteTarget$2g = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f6L, "jetbrains.mps.kotlin.structure.GetUseSiteTarget");
+    /*package*/ static final SConcept SetparamUseSiteTarget$en = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3faL, "jetbrains.mps.kotlin.structure.SetparamUseSiteTarget");
+    /*package*/ static final SConcept SetUseSiteTarget$2J = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f7L, "jetbrains.mps.kotlin.structure.SetUseSiteTarget");
   }
 }

@@ -22,6 +22,9 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.openapi.editor.menus.transformation.ActionItemBase;
 import jetbrains.mps.nodeEditor.cellMenu.SideTransformCompletionActionItem;
 import jetbrains.mps.openapi.editor.menus.EditorMenuTraceInfo;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.editor.runtime.selection.SelectionUtil;
+import jetbrains.mps.openapi.editor.selection.SelectionManager;
 import jetbrains.mps.smodel.action.SNodeFactoryOperations;
 import jetbrains.mps.openapi.editor.menus.style.EditorMenuItemStyle;
 import jetbrains.mps.editor.runtime.menus.EditorMenuItemModifyingCustomizationContext;
@@ -34,7 +37,7 @@ import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
-public class Annotation_AddTarget_Transform extends TransformationMenuBase {
+public class AnnotationList_TransformationMenu extends TransformationMenuBase {
   private final Set<String> myLocations = SetSequence.fromSetAndArray(new HashSet<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM);
   @Override
   public boolean isApplicableToLocation(@NotNull String location) {
@@ -45,7 +48,7 @@ public class Annotation_AddTarget_Transform extends TransformationMenuBase {
   @Override
   public List<TransformationMenuItem> createMenuItems(@NotNull TransformationMenuContext context) {
     context.getEditorMenuTrace().pushTraceInfo();
-    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("named transformation menu " + "Annotation_AddTarget_Transform", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "7138249191275600685")));
+    context.getEditorMenuTrace().setDescriptor(new EditorMenuDescriptorBase("default transformation menu for " + "AnnotationList", new SNodePointer("r:5e60d3fe-71b1-4c17-b38e-424792223875(jetbrains.mps.kotlin.editor)", "7138249191275600685")));
     try {
       return super.createMenuItems(context);
     } finally {
@@ -58,12 +61,12 @@ public class Annotation_AddTarget_Transform extends TransformationMenuBase {
   protected List<MenuPart<TransformationMenuItem, TransformationMenuContext>> getParts(TransformationMenuContext _context) {
     List<MenuPart<TransformationMenuItem, TransformationMenuContext>> result = new ArrayList<MenuPart<TransformationMenuItem, TransformationMenuContext>>();
     if (ListSequence.fromListAndArray(new ArrayList<String>(), MenuLocations.LEFT_SIDE_TRANSFORM, MenuLocations.RIGHT_SIDE_TRANSFORM).contains(_context.getMenuLocation())) {
-      result.add(new TMP_Action_h75otj_a0());
+      result.add(new TMP_Action_jb3a19_a0());
     }
     return result;
   }
 
-  private class TMP_Action_h75otj_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
+  private class TMP_Action_jb3a19_a0 extends SingleItemMenuPart<TransformationMenuItem, TransformationMenuContext> {
     @Nullable
     protected TransformationMenuItem createItem(TransformationMenuContext context) {
       Item item = new Item(context);
@@ -101,7 +104,11 @@ public class Annotation_AddTarget_Transform extends TransformationMenuBase {
 
       @Override
       public void execute(@NotNull String pattern) {
-        SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.target$HTD$, null);
+        if ((SLinkOperations.getTarget(_context.getNode(), LINKS.target$HTD$) != null)) {
+          SelectionUtil.selectLabelCellWithSelection(_context.getEditorContext(), SLinkOperations.getTarget(_context.getNode(), LINKS.target$HTD$), SelectionManager.FIRST_CELL, 0, -1);
+        } else {
+          SNodeFactoryOperations.setNewChild(_context.getNode(), LINKS.target$HTD$, null);
+        }
       }
 
 

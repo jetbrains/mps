@@ -117,6 +117,7 @@
         <child id="1177027386292" name="conceptArgument" index="cj9EA" />
       </concept>
       <concept id="6870613620390542976" name="jetbrains.mps.lang.smodel.structure.ConceptAliasOperation" flags="ng" index="3n3YKJ" />
+      <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
       <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1139867745658" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithNewOperation" flags="nn" index="1_qnLN">
         <reference id="1139867957129" name="concept" index="1_rbq0" />
@@ -547,6 +548,58 @@
                 <ref role="cht4Q" to="hcm8:2yYXHtl6Jkn" resolve="LambdaLiteral" />
               </node>
             </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <node concept="2S6QgY" id="6nA1THMkjeN">
+    <property role="3GE5qa" value="annotation" />
+    <property role="TrG5h" value="AnnotateFile" />
+    <ref role="2ZfgGC" to="hcm8:Fn6l2J$ezS" resolve="IKotlinRoot" />
+    <node concept="2S6ZIM" id="6nA1THMkjeO" role="2ZfVej">
+      <node concept="3clFbS" id="6nA1THMkjeP" role="2VODD2">
+        <node concept="3clFbF" id="6nA1THMkjeQ" role="3cqZAp">
+          <node concept="3cpWs3" id="6nA1THMkjeR" role="3clFbG">
+            <node concept="2OqwBi" id="6nA1THMkjeS" role="3uHU7w">
+              <node concept="2Sf5sV" id="6nA1THMkjeT" role="2Oq$k0" />
+              <node concept="2qgKlT" id="6nA1THMkjeU" role="2OqNvi">
+                <ref role="37wK5l" to="tpcu:hEwIMiw" resolve="getPresentation" />
+              </node>
+            </node>
+            <node concept="Xl_RD" id="6nA1THMkjeV" role="3uHU7B">
+              <property role="Xl_RC" value="Annotate " />
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2Sbjvc" id="6nA1THMkjeW" role="2ZfgGD">
+      <node concept="3clFbS" id="6nA1THMkjeX" role="2VODD2">
+        <node concept="3clFbF" id="6nA1THMkjeY" role="3cqZAp">
+          <node concept="2OqwBi" id="6nA1THMkjeZ" role="3clFbG">
+            <node concept="2OqwBi" id="6nA1THMkjf0" role="2Oq$k0">
+              <node concept="2Sf5sV" id="6nA1THMkjf1" role="2Oq$k0" />
+              <node concept="3TrEf2" id="6nA1THNeXQ_" role="2OqNvi">
+                <ref role="3Tt5mk" to="hcm8:5N0i2C1hH3l" resolve="fileAnnotations" />
+              </node>
+            </node>
+            <node concept="zfrQC" id="6nA1THNeYgM" role="2OqNvi" />
+          </node>
+        </node>
+      </node>
+    </node>
+    <node concept="2SaL7w" id="6nA1THMkjf4" role="2ZfVeh">
+      <node concept="3clFbS" id="6nA1THMkjf5" role="2VODD2">
+        <node concept="3clFbF" id="6nA1THMkjf6" role="3cqZAp">
+          <node concept="2OqwBi" id="6nA1THMkjf7" role="3clFbG">
+            <node concept="2OqwBi" id="6nA1THMkjf8" role="2Oq$k0">
+              <node concept="2Sf5sV" id="6nA1THMkjf9" role="2Oq$k0" />
+              <node concept="3TrEf2" id="6nA1THNeXLV" role="2OqNvi">
+                <ref role="3Tt5mk" to="hcm8:5N0i2C1hH3l" resolve="fileAnnotations" />
+              </node>
+            </node>
+            <node concept="3w_OXm" id="6nA1THNeY4I" role="2OqNvi" />
           </node>
         </node>
       </node>

@@ -100,9 +100,9 @@ public class AnnotationVisitorImpl implements AnnotationVisitor {
       KmAnnotation subAnnotation = annotation.getAnnotation();
 
       // Use annotation as function call will not handle referencing to default constructor with dynamic reference of arguments (see Annotation's getAvailableParameters in behavior)
-      SNode subNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x446a1050b763ccb9L, "jetbrains.mps.kotlin.structure.Annotation"));
+      SNode subNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x40b4c3a5339a6979L, "jetbrains.mps.kotlin.structure.FunctionCallExpression"));
       String className = subAnnotation.getClassName();
-      context.createReference(className, subNode, LINKS.constructor$F_F2);
+      context.createReference(className, subNode, LINKS.function$Weyv);
 
       for (IMapping<String, KmAnnotationArgument> subarg : MapSequence.fromMap(subAnnotation.getArguments())) {
         addArgument(className, subarg.key(), subarg.value(), subNode, context);
@@ -192,6 +192,7 @@ public class AnnotationVisitorImpl implements AnnotationVisitor {
     /*package*/ static final SReferenceLink parameter$8rO1 = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af579L, 0x11400bb790b4f87bL, "parameter");
     /*package*/ static final SReferenceLink target$xQFr = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4cca44497635e571L, 0x4cca44497635e572L, "target");
     /*package*/ static final SContainmentLink expressions$_AIQ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af44aL, 0x28bef6d7551af732L, "expressions");
+    /*package*/ static final SReferenceLink function$Weyv = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af43fL, 0x1ba36e493d8ad4e9L, "function");
     /*package*/ static final SReferenceLink class$ExdX = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5c7be90f2440b378L, 0x5c7be90f2440b37bL, "class");
     /*package*/ static final SContainmentLink typeProjections$vhti = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162c97579L, 0x5b1dd60162c9757cL, "typeProjections");
     /*package*/ static final SContainmentLink lines$FNV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4fbL, 0x58aa661f71960d41L, "lines");

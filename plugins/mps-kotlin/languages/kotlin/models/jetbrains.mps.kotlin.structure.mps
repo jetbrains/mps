@@ -350,16 +350,19 @@
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jet">
     <property role="EcuMT" value="2936055411798373277" />
-    <property role="TrG5h" value="FileAnnotation" />
+    <property role="TrG5h" value="FileAnnotationList" />
     <property role="34LRSv" value="@file:&lt;annotation&gt;" />
     <property role="R4oN_" value="file annotation" />
     <property role="3GE5qa" value="annotation.file" />
     <node concept="1TJgyj" id="5LVUgW$oVo2" role="1TKVEi">
       <property role="IQ2ns" value="6664176324869076482" />
       <property role="20kJfa" value="annotations" />
-      <property role="20lbJX" value="fLJekj5/_0__n" />
+      <property role="20lbJX" value="fLJekj6/_1__n" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <ref role="20lvS9" node="2yYXHtl6JjQ" resolve="ConstructorSuperSpecifier" />
+      <ref role="20lvS9" node="4hE452RoXme" resolve="IAnnotation" />
+    </node>
+    <node concept="t5JxF" id="6nA1THM7QYt" role="lGtFl">
+      <property role="t5JxN" value="unlike annotation list, this enforces file target (and only usage place)" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jez">
@@ -1913,9 +1916,6 @@
       <property role="IQ2nx" value="1243006380188597514" />
       <property role="TrG5h" value="isReadOnly" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
-    </node>
-    <node concept="PrWs8" id="6TRHYuCE24G" role="PzmwI">
-      <ref role="PrY4T" node="6TRHYuCB$BU" resolve="IAnnotated" />
     </node>
   </node>
   <node concept="1TIwiD" id="2yYXHtl6Jl1">
@@ -3669,9 +3669,8 @@
     <node concept="1TJgyj" id="5N0i2C1hH3l" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798374534" />
       <property role="20kJfa" value="fileAnnotations" />
-      <property role="20lbJX" value="fLJekj5/_0__n" />
       <property role="20lmBu" value="fLJjDmT/aggregation" />
-      <ref role="20lvS9" node="2yYXHtl6Jet" resolve="FileAnnotation" />
+      <ref role="20lvS9" node="2yYXHtl6Jet" resolve="FileAnnotationList" />
     </node>
     <node concept="1TJgyj" id="5N0i2C1hH3j" role="1TKVEi">
       <property role="IQ2ns" value="2936055411798374535" />
@@ -4088,9 +4087,6 @@
     </node>
     <node concept="PrWs8" id="4hE452Rp00A" role="PzmwI">
       <ref role="PrY4T" node="2gj5XQXEpsk" resolve="ITypeArguments" />
-    </node>
-    <node concept="PrWs8" id="4L9_P6KRAMj" role="PzmwI">
-      <ref role="PrY4T" node="2yYXHtl6Jjg" resolve="IExpression" />
     </node>
     <node concept="1TJgyj" id="4hE452Rp0q1" role="1TKVEi">
       <property role="IQ2ns" value="4929770680970643073" />

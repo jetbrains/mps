@@ -513,7 +513,7 @@
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696084676">
-    <file name="FileAnnotation_TextGen.java">
+    <file name="FileAnnotationList_TextGen.java">
       <node id="6153771967696084676" at="17,54,18,55" concept="8" />
       <node id="6153771967696084713" at="18,55,19,25" concept="3" />
       <node id="6153771967696084729" at="20,120,21,22" concept="3" />
@@ -548,12 +548,12 @@
       <scope id="6153771967696084676" at="16,0,39,0">
         <var name="ctx" id="6153771967696084676" />
       </scope>
-      <unit id="6153771967696084676" at="40,0,43,0" name="jetbrains.mps.kotlin.textGen.FileAnnotation_TextGen$LINKS" />
-      <unit id="6153771967696084676" at="15,0,44,0" name="jetbrains.mps.kotlin.textGen.FileAnnotation_TextGen" />
+      <unit id="6153771967696084676" at="40,0,43,0" name="jetbrains.mps.kotlin.textGen.FileAnnotationList_TextGen$LINKS" />
+      <unit id="6153771967696084676" at="15,0,44,0" name="jetbrains.mps.kotlin.textGen.FileAnnotationList_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
-      <node id="6153771967696084676" at="113,48,114,44" concept="9" />
-      <scope id="6153771967696084676" at="113,48,114,44" />
+      <node id="6153771967696084676" at="113,52,114,48" concept="9" />
+      <scope id="6153771967696084676" at="113,52,114,48" />
     </file>
   </root>
   <root nodeRef="r:1188d1a1-e4db-411a-9d6e-3f5b239b5272(jetbrains.mps.kotlin.textGen)/6153771967696085003">
@@ -3681,10 +3681,10 @@
       <node id="8174299105127584084" at="389,30,390,23" concept="3" />
       <node id="8174299105127586427" at="390,23,391,22" concept="3" />
       <node id="445544999164195884" at="395,71,396,55" concept="8" />
-      <node id="445544999164196626" at="397,115,398,33" concept="3" />
-      <node id="445544999164196628" at="398,33,399,33" concept="3" />
-      <node id="445544999164196630" at="399,33,400,20" concept="3" />
-      <node id="445544999164196626" at="400,20,401,24" concept="3" />
+      <node id="7342564606708819356" at="397,80,398,33" concept="3" />
+      <node id="445544999164196628" at="398,33,399,82" concept="3" />
+      <node id="445544999164196630" at="399,82,400,20" concept="3" />
+      <node id="7342564606708819356" at="400,20,401,24" concept="3" />
       <node id="445544999164196631" at="402,5,403,0" concept="11" />
       <node id="445544999164196633" at="404,71,405,33" concept="3" />
       <node id="445544999164196635" at="405,33,406,73" concept="3" />
@@ -3783,7 +3783,7 @@
       <node id="6153771967696542793" at="202,72,208,9" concept="5" />
       <node id="6153771967696746961" at="228,72,234,9" concept="5" />
       <node id="6153771967696574435" at="339,72,345,9" concept="5" />
-      <node id="445544999164196621" at="396,55,402,5" concept="5" />
+      <node id="7342564606708819354" at="396,55,402,5" concept="6" />
       <node id="9190485325099913245" at="408,10,414,5" concept="0" />
       <node id="445544999164196645" at="415,0,421,5" concept="5" />
       <node id="6153771967697168675" at="35,0,42,0" concept="13" trace="modifier#(ZLjava/lang/String;Ljetbrains/mps/text/rt/TextGenContext;)V" />
@@ -3929,7 +3929,7 @@
         <var name="node" id="1781658014498885869" />
       </scope>
       <scope id="6153771967696574435" at="340,39,344,11" />
-      <scope id="445544999164196626" at="397,115,401,24" />
+      <scope id="7342564606708819356" at="397,80,401,24" />
       <scope id="445544999164196650" at="416,108,420,24" />
       <scope id="5016903245542973720" at="423,0,427,0">
         <var name="ctx" id="5016903245542973720" />
@@ -4031,9 +4031,6 @@
       </scope>
       <scope id="7339268448243425129" at="373,80,379,5">
         <var name="tgs" id="7339268448243425129" />
-      </scope>
-      <scope id="445544999164196621" at="396,55,402,5">
-        <var name="annotation" id="445544999164196622" />
       </scope>
       <scope id="445544999164196645" at="415,0,421,5">
         <var name="importEntry" id="445544999164196646" />

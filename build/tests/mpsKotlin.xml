@@ -293,6 +293,7 @@
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.matcher.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-testing/languages/languageDesign/jetbrains.mps.lang.test.runtime.jar" />
+        <fileset file="${artifacts.mps}/languages/text/jetbrains.mps.lang.text.jar" />
         <fileset file="${artifacts.mps}/languages/languageDesign/jetbrains.mps.lang.traceable.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-kotlin/lib/kotlin-stdlib-common-1.7.0.jar" />
         <fileset file="${artifacts.mps}/plugins/mps-kotlin/lib/kotlin-stdlib-1.7.0.jar" />

@@ -23,6 +23,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import java.util.Collections;
 import jetbrains.mps.kotlin.overloading.NodeArgument;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.core.aspects.behaviour.api.BHMethodNotFoundException;
@@ -43,8 +44,9 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
   public static final SMethod<Iterable<Argument>> getArguments_id1VI7K1jROBX = new SMethodBuilder<Iterable<Argument>>(new SJavaCompoundTypeImpl((Class<Iterable<Argument>>) ((Class) Object.class))).name("getArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2228752951862577661L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<Iterable<SNode>> getTypeArguments_id5JfKd21NW9H = new SMethodBuilder<Iterable<SNode>>(new SJavaCompoundTypeImpl((Class<Iterable<SNode>>) ((Class) Object.class))).name("getTypeArguments").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(6615718379394155117L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
   public static final SMethod<TypeReference> getType_id1TQsu41FTV5 = new SMethodBuilder<TypeReference>(new SJavaCompoundTypeImpl(TypeReference.class)).name("getType").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(2195067079599562437L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2();
+  public static final SMethod<Boolean> isAnnotationTargetAllowed_id6nA1THM505G = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isAnnotationTargetAllowed").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).baseMethodId(7342564606689411436L).languageId(0x8baff8e6c33ed689L, 0x6b3888c1980244d8L).build2(SMethodBuilder.createJavaParameter((Class<SAbstractConcept>) ((Class) Object.class), ""));
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, getThisType_id46gC9M6gB68, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, getFunctionDescriptor_id26mUjU3xhgD, getAvailableParameters_id1$jFvlD0xqw, getArguments_id1VI7K1jROBX, getTypeArguments_id5JfKd21NW9H, getType_id1TQsu41FTV5);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(isLocal_id1vYW8S3rTh_, getThisType_id46gC9M6gB68, getFunctionName_id4nn3FPlEjh5, getTargetLink_id5D4bOjrrcOr, getReceiver_id5D4bOjrrgiZ, getFunctionDescriptor_id26mUjU3xhgD, getAvailableParameters_id1$jFvlD0xqw, getArguments_id1VI7K1jROBX, getTypeArguments_id5JfKd21NW9H, getType_id1TQsu41FTV5, isAnnotationTargetAllowed_id6nA1THM505G);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -84,8 +86,12 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static Iterable<SNode> getTypeArguments_id5JfKd21NW9H(@NotNull SNode __thisNode__) {
     return SLinkOperations.getChildren(__thisNode__, LINKS.typeArguments$86s6);
   }
+  @NotNull
   /*package*/ static TypeReference getType_id1TQsu41FTV5(@NotNull SNode __thisNode__) {
     return new ThisTypeReference(SNodeOperations.as(SNodeOperations.getParent(__thisNode__), CONCEPTS.EnumClassDeclaration$xK));
+  }
+  /*package*/ static boolean isAnnotationTargetAllowed_id6nA1THM505G(@NotNull SNode __thisNode__, SAbstractConcept target) {
+    return SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.FieldUseSiteTarget$1i) || SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.PropertyUseSiteTarget$1L) || SConceptOperations.isExactly(SNodeOperations.asSConcept(target), CONCEPTS.DelegateUseSiteTarget$eQ);
   }
 
   /*package*/ EnumEntry__BehaviorDescriptor() {
@@ -123,6 +129,8 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
         return (T) ((Iterable<SNode>) getTypeArguments_id5JfKd21NW9H(node));
       case 9:
         return (T) ((TypeReference) getType_id1TQsu41FTV5(node));
+      case 10:
+        return (T) ((Boolean) isAnnotationTargetAllowed_id6nA1THM505G(node, (SAbstractConcept) parameters[0]));
       default:
         throw new BHMethodNotFoundException(this, method);
     }
@@ -154,6 +162,9 @@ public final class EnumEntry__BehaviorDescriptor extends BaseBHDescriptor {
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept EnumClassDeclaration$xK = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d75547b5aaL, "jetbrains.mps.kotlin.structure.EnumClassDeclaration");
+    /*package*/ static final SConcept DelegateUseSiteTarget$eQ = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3fbL, "jetbrains.mps.kotlin.structure.DelegateUseSiteTarget");
+    /*package*/ static final SConcept FieldUseSiteTarget$1i = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f4L, "jetbrains.mps.kotlin.structure.FieldUseSiteTarget");
+    /*package*/ static final SConcept PropertyUseSiteTarget$1L = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3f5L, "jetbrains.mps.kotlin.structure.PropertyUseSiteTarget");
   }
 
   private static final class PROPS {

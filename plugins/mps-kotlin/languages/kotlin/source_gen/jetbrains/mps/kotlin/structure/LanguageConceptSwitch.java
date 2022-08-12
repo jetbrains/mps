@@ -65,7 +65,7 @@ public final class LanguageConceptSwitch {
   public static final int ExpectPlatformModifier = 53;
   public static final int ExternalFunctionModifier = 54;
   public static final int FieldUseSiteTarget = 55;
-  public static final int FileAnnotation = 56;
+  public static final int FileAnnotationList = 56;
   public static final int FinalInheritanceModifier = 57;
   public static final int FinallyBlock = 58;
   public static final int FlexibleBlock = 59;
@@ -334,7 +334,7 @@ public final class LanguageConceptSwitch {
     builder.put(0x28bef6d7551af474L, ExpectPlatformModifier);
     builder.put(0x28bef6d7551af3c3L, ExternalFunctionModifier);
     builder.put(0x28bef6d7551af3f4L, FieldUseSiteTarget);
-    builder.put(0x28bef6d7551af39dL, FileAnnotation);
+    builder.put(0x28bef6d7551af39dL, FileAnnotationList);
     builder.put(0x28bef6d7551af4f3L, FinalInheritanceModifier);
     builder.put(0x28bef6d7551af4a8L, FinallyBlock);
     builder.put(0x28bef6d7551af3e7L, FlexibleBlock);

@@ -394,9 +394,9 @@ public abstract class KotlinTextGen {
   }
   public static void fileHeader(SNode node, final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
-    for (SNode annotation : ListSequence.fromList(SLinkOperations.getChildren(node, LINKS.fileAnnotations$Q2t4))) {
+    if ((SLinkOperations.getTarget(node, LINKS.fileAnnotations$Q2t4) != null)) {
       tgs.pushTextArea("header");
-      tgs.appendNode(annotation);
+      tgs.appendNode(SLinkOperations.getTarget(node, LINKS.fileAnnotations$Q2t4));
       tgs.newLine();
       tgs.popTextArea();
     }

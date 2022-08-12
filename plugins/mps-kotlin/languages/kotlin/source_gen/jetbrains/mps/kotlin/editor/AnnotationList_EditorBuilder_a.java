@@ -16,15 +16,13 @@ import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.editor.runtime.style.StyleAttributes;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.AnnotationStyleClass;
-import jetbrains.mps.lang.editor.menus.transformation.NamedTransformationMenuLookup;
-import jetbrains.mps.smodel.language.LanguageRegistry;
-import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.lang.editor.cellProviders.SingleRoleCellProvider;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.openapi.editor.cells.CellActionType;
 import jetbrains.mps.editor.runtime.impl.cellActions.CellAction_DeleteSmart;
 import jetbrains.mps.openapi.editor.cells.DefaultSubstituteInfo;
 import jetbrains.mps.nodeEditor.cellMenu.SEmptyContainmentSubstituteInfo;
+import jetbrains.mps.nodeEditor.cellMenu.SChildSubstituteInfo;
 import jetbrains.mps.openapi.editor.menus.transformation.SNodeLocation;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.ColonStyleClass;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.LBracketStyleClass;
@@ -34,7 +32,6 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.nodeEditor.cellActions.CellAction_DeleteNode;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.RBracketStyleClass;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
-import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
 /*package*/ class AnnotationList_EditorBuilder_a extends AbstractEditorBuilder {
@@ -92,9 +89,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       new AnnotationStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     }
     editorCell.getStyle().putAll(style);
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.AnnotationList$je, "jetbrains.mps.kotlin.editor.Annotation_AddTarget_Transform"));
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
   private boolean _StyleParameter_QueryFunction_lyjlq7_a1a0() {
@@ -188,9 +183,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     Style style = new StyleImpl();
     new LBracketStyleClass(getEditorContext(), getNode()).apply(style, editorCell);
     editorCell.getStyle().putAll(style);
-    editorCell.setTransformationMenuLookup(new NamedTransformationMenuLookup(LanguageRegistry.getInstance(getEditorContext().getRepository()), CONCEPTS.AnnotationList$je, "jetbrains.mps.kotlin.editor.Annotation_AddTarget_Transform"));
     editorCell.setDefaultText("");
-    editorCell.setSubstituteInfo(new SChildSubstituteInfo(editorCell));
     return editorCell;
   }
   private EditorCell createRefNodeList_0() {
@@ -283,7 +276,6 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept AnnotationList$je = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37fL, "jetbrains.mps.kotlin.structure.AnnotationList");
     /*package*/ static final SInterfaceConcept IAnnotation$5k = MetaAdapterFactory.getInterfaceConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x446a1050b763d58eL, "jetbrains.mps.kotlin.structure.IAnnotation");
   }
 }

@@ -100,10 +100,16 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
         }
       }).visitAll(new IVisitor<SNode>() {
         public void visit(SNode it) {
-          SNode newAnnotation = SNodeOperations.replaceWithNewChild(it, CONCEPTS.Annotation$q5);
-          SLinkOperations.setTarget(newAnnotation, LINKS.constructor$F_F2, SLinkOperations.getTarget(it, LINKS.target$VUYb));
-          ListSequence.fromList(SLinkOperations.getChildren(newAnnotation, LINKS.arguments$zJyV)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.arguments$zJyV)));
-          ListSequence.fromList(SLinkOperations.getChildren(newAnnotation, LINKS.typeArguments$86s6)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.typeArguments$86s6)));
+          migrateAnnotation(it);
+        }
+      });
+      CollectionSequence.fromCollection(CommandUtil.instances(CommandUtil.selectScope(null, context), CONCEPTS.FileAnnotationList$h, false)).translate(new ITranslator2<SNode, SNode>() {
+        public Iterable<SNode> translate(SNode it) {
+          return SNodeOperations.ofConcept(SLinkOperations.getChildren(it, LINKS.annotations$zNfA), CONCEPTS.ConstructorSuperSpecifier$SH);
+        }
+      }).visitAll(new IVisitor<SNode>() {
+        public void visit(SNode it) {
+          migrateAnnotation(it);
         }
       });
     }
@@ -146,6 +152,13 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
     });
   }
 
+  public static void migrateAnnotation(SNode it) {
+    SNode newAnnotation = SNodeOperations.replaceWithNewChild(it, CONCEPTS.Annotation$q5);
+    SLinkOperations.setTarget(newAnnotation, LINKS.constructor$F_F2, SLinkOperations.getTarget(it, LINKS.target$VUYb));
+    ListSequence.fromList(SLinkOperations.getChildren(newAnnotation, LINKS.arguments$zJyV)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.arguments$zJyV)));
+    ListSequence.fromList(SLinkOperations.getChildren(newAnnotation, LINKS.typeArguments$86s6)).addSequence(ListSequence.fromList(SLinkOperations.getChildren(it, LINKS.typeArguments$86s6)));
+  }
+
   private static final class CONCEPTS {
     /*package*/ static final SConcept IfExpression$TD = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af41eL, "jetbrains.mps.kotlin.structure.IfExpression");
     /*package*/ static final SConcept AbstractConditionalLoop$w2 = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x47de42ea4e1d0294L, "jetbrains.mps.kotlin.structure.AbstractConditionalLoop");
@@ -167,8 +180,9 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
     /*package*/ static final SConcept EmptyDeclaration$V = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x4e07f19a40c4182bL, "jetbrains.mps.kotlin.structure.EmptyDeclaration");
     /*package*/ static final SConcept AnnotationList$je = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37fL, "jetbrains.mps.kotlin.structure.AnnotationList");
     /*package*/ static final SConcept ConstructorSuperSpecifier$SH = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f6L, "jetbrains.mps.kotlin.structure.ConstructorSuperSpecifier");
-    /*package*/ static final SConcept Annotation$q5 = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x446a1050b763ccb9L, "jetbrains.mps.kotlin.structure.Annotation");
+    /*package*/ static final SConcept FileAnnotationList$h = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af39dL, "jetbrains.mps.kotlin.structure.FileAnnotationList");
     /*package*/ static final SConcept FunctionBody$7Q = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x123d0b402b7f03b2L, "jetbrains.mps.kotlin.structure.FunctionBody");
+    /*package*/ static final SConcept Annotation$q5 = MetaAdapterFactory.getConcept(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x446a1050b763ccb9L, "jetbrains.mps.kotlin.structure.Annotation");
   }
 
   private static final class LINKS {
@@ -189,6 +203,7 @@ public class MoveControlStructureStatements extends MigrationScriptBase {
     /*package*/ static final SContainmentLink statements_$Kpvh = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af517L, 0x28bef6d7551af85dL, "statements_");
     /*package*/ static final SContainmentLink else$$UEO = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af41eL, 0x28bef6d7551af6f9L, "else");
     /*package*/ static final SContainmentLink annotations$HTS_ = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af37fL, 0x1ba36e493dc8425cL, "annotations");
+    /*package*/ static final SContainmentLink annotations$zNfA = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af39dL, 0x5c7be90f2463b602L, "annotations");
     /*package*/ static final SReferenceLink constructor$F_F2 = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x446a1050b763ccb9L, 0x446a1050b7640681L, "constructor");
     /*package*/ static final SReferenceLink target$VUYb = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af4f6L, 0x2043bc8310ba5a7cL, "target");
     /*package*/ static final SContainmentLink arguments$zJyV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL, 0x5b1dd60162ecf00cL, "arguments");
