@@ -56,7 +56,8 @@ public class ProjectFormatPanel {
   }
 
   public boolean isDefault() {
-    return DIR_BASED.equals(myStorageFormatCombo.getSelectedItem());
+    //Default scheme is not supported
+    return false;
   }
 
   {
