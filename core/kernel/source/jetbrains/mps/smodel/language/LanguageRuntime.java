@@ -318,11 +318,26 @@ public abstract class LanguageRuntime {
   public Collection<SModuleReference> getRuntimeModules() {
     assert myRuntimeModules != null;
     assert myGeneratesIntoTargets != null;
-    LinkedHashSet<SModuleReference> rv = new LinkedHashSet<>(myRuntimeModules);
-    myExtendedLanguages.stream().map(lr -> lr.myRuntimeModules).forEach(rv::addAll);
-    // FIXME need to account for possible cycles, L1 generates into L2, L2 generates into L1
-    myLanguageRegistry.withAvailableLanguages(lr -> rv.addAll(lr.getRuntimeModules()), myGeneratesIntoTargets.stream());
+    LinkedHashSet<SModuleReference> rv = new LinkedHashSet<>();
+    rtModulesFromExtendsHierarchy(rv);
+    // need to account for possible cycles, L1 generates into L2, L2 generates into L3, L3 generates into L1,
+    //   there are such scenarios, see SOE in MPS-34452
+    final HashSet<LanguageRuntime> seen = new HashSet<>(myExtendedLanguages);
+    seen.add(this);
+    myLanguageRegistry.withAvailableLanguages(lr -> lr.rtModulesOfGenTarget(rv, seen), myGeneratesIntoTargets.stream());
     return rv;
+  }
+
+  private void rtModulesFromExtendsHierarchy(Set<SModuleReference> dest) {
+    dest.addAll(myRuntimeModules);
+    myExtendedLanguages.stream().map(lr -> lr.myRuntimeModules).forEach(dest::addAll);
+  }
+
+  private void rtModulesOfGenTarget(Set<SModuleReference> dest, HashSet<LanguageRuntime> seen) {
+    if (seen.add(this)) {
+      rtModulesFromExtendsHierarchy(dest);
+      myLanguageRegistry.withAvailableLanguages(lr -> lr.rtModulesOfGenTarget(dest, seen), myGeneratesIntoTargets.stream());
+    }
   }
 
   /**
