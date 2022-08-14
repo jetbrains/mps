@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model ref="r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)">
   <persistence version="9" />
-  <attribute name="doNotGenerate" value="false" />
   <languages>
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="0" />
     <use id="fd392034-7849-419d-9071-12563d152375" name="jetbrains.mps.baseLanguage.closures" version="0" />
@@ -91,8 +90,8 @@
     <import index="i5cy" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.concurrent.atomic(JDK/)" />
     <import index="jmi8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.util(MPS.IDEA/)" />
     <import index="a3j8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.editor.ex.util(MPS.IDEA/)" />
-    <import index="phib" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff.requests(MPS.IDEA/)" />
     <import index="yt4f" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff(MPS.IDEA/)" />
+    <import index="phib" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.diff.requests(MPS.IDEA/)" />
     <import index="439w" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.codeInsight.hint(MPS.IDEA/)" />
     <import index="gspm" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.ui.popup(MPS.IDEA/)" />
     <import index="1m72" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.components(MPS.IDEA/)" implicit="true" />
@@ -7103,13 +7102,22 @@
     </node>
     <node concept="312cEg" id="42hl10VHanV" role="jymVt">
       <property role="TrG5h" value="myChangeGroups" />
-      <node concept="10Nm6u" id="42hl10VHanZ" role="33vP2m" />
-      <node concept="_YKpA" id="42hl10VHanX" role="1tU5fm">
-        <node concept="3uibUv" id="42hl10VHanY" role="_ZDj9">
-          <ref role="3uigEE" node="42hl10VHaeV" resolve="ChangeGroup" />
+      <property role="3TUv4t" value="true" />
+      <node concept="2ShNRf" id="6I8tQNTBLPU" role="33vP2m">
+        <node concept="1pGfFk" id="6I8tQNTCm0P" role="2ShVmc">
+          <property role="373rjd" value="true" />
+          <ref role="37wK5l" to="i5cy:~AtomicReference.&lt;init&gt;()" resolve="AtomicReference" />
         </node>
       </node>
-      <node concept="3Tmbuc" id="4zHWnbLWWL2" role="1B3o_S" />
+      <node concept="3uibUv" id="6I8tQNTBEeJ" role="1tU5fm">
+        <ref role="3uigEE" to="i5cy:~AtomicReference" resolve="AtomicReference" />
+        <node concept="_YKpA" id="42hl10VHanX" role="11_B2D">
+          <node concept="3uibUv" id="42hl10VHanY" role="_ZDj9">
+            <ref role="3uigEE" node="42hl10VHaeV" resolve="ChangeGroup" />
+          </node>
+        </node>
+      </node>
+      <node concept="3Tm6S6" id="6I8tQNTFE0K" role="1B3o_S" />
     </node>
     <node concept="312cEg" id="42hl10VHao0" role="jymVt">
       <property role="TrG5h" value="myInvalidateListeners" />
@@ -7332,7 +7340,6 @@
     <node concept="2tJIrI" id="2U2d8lsJHBV" role="jymVt" />
     <node concept="3clFb_" id="42hl10VHaiB" role="jymVt">
       <property role="TrG5h" value="calculateChangeGroups" />
-      <node concept="3cqZAl" id="42hl10VHaiC" role="3clF45" />
       <node concept="3clFbS" id="42hl10VHaiE" role="3clF47">
         <node concept="3cpWs8" id="42hl10VHaiF" role="3cqZAp">
           <node concept="3cpWsn" id="42hl10VHaiG" role="3cpWs9">
@@ -7724,17 +7731,20 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="42hl10VHalg" role="3cqZAp">
-          <node concept="37vLTI" id="42hl10VHalh" role="3clFbG">
-            <node concept="2ShNRf" id="42hl10VHali" role="37vLTx">
-              <node concept="Tc6Ow" id="42hl10VHalj" role="2ShVmc">
-                <node concept="3uibUv" id="42hl10VHalk" role="HW$YZ">
+        <node concept="3cpWs8" id="6I8tQNTB9YV" role="3cqZAp">
+          <node concept="3cpWsn" id="6I8tQNTB9YW" role="3cpWs9">
+            <property role="TrG5h" value="list" />
+            <node concept="_YKpA" id="6I8tQNTB8Yk" role="1tU5fm">
+              <node concept="3uibUv" id="6I8tQNTB8Yn" role="_ZDj9">
+                <ref role="3uigEE" node="42hl10VHaeV" resolve="ChangeGroup" />
+              </node>
+            </node>
+            <node concept="2ShNRf" id="6I8tQNTB9YX" role="33vP2m">
+              <node concept="Tc6Ow" id="6I8tQNTB9YY" role="2ShVmc">
+                <node concept="3uibUv" id="6I8tQNTB9YZ" role="HW$YZ">
                   <ref role="3uigEE" node="42hl10VHaeV" resolve="ChangeGroup" />
                 </node>
               </node>
-            </node>
-            <node concept="37vLTw" id="2BHiRxeuzQK" role="37vLTJ">
-              <ref role="3cqZAo" node="42hl10VHanV" resolve="myChangeGroups" />
             </node>
           </node>
         </node>
@@ -7954,7 +7964,7 @@
             <node concept="3clFbF" id="42hl10VHamf" role="3cqZAp">
               <node concept="2OqwBi" id="42hl10VHamg" role="3clFbG">
                 <node concept="37vLTw" id="2BHiRxeuKl4" role="2Oq$k0">
-                  <ref role="3cqZAo" node="42hl10VHanV" resolve="myChangeGroups" />
+                  <ref role="3cqZAo" node="6I8tQNTB9YW" resolve="list" />
                 </node>
                 <node concept="TSZUe" id="42hl10VHami" role="2OqNvi">
                   <node concept="2ShNRf" id="42hl10VHamj" role="25WWJ7">
@@ -7979,51 +7989,51 @@
             </node>
           </node>
         </node>
-        <node concept="3clFbF" id="42hl10VHamu" role="3cqZAp">
-          <node concept="37vLTI" id="42hl10VHamv" role="3clFbG">
-            <node concept="2OqwBi" id="42hl10VHamx" role="37vLTx">
-              <node concept="2OqwBi" id="42hl10VHamy" role="2Oq$k0">
-                <node concept="2S7cBI" id="42hl10VHam$" role="2OqNvi">
-                  <node concept="1nlBCl" id="42hl10VHamJ" role="2S7zOq">
-                    <property role="3clFbU" value="true" />
+        <node concept="3cpWs6" id="6I8tQNTDuD6" role="3cqZAp">
+          <node concept="2OqwBi" id="42hl10VHamx" role="3cqZAk">
+            <node concept="2OqwBi" id="42hl10VHamy" role="2Oq$k0">
+              <node concept="2S7cBI" id="42hl10VHam$" role="2OqNvi">
+                <node concept="1nlBCl" id="42hl10VHamJ" role="2S7zOq">
+                  <property role="3clFbU" value="true" />
+                </node>
+                <node concept="1bVj0M" id="42hl10VHam_" role="23t8la">
+                  <node concept="Rh6nW" id="42hl10VHamH" role="1bW2Oz">
+                    <property role="TrG5h" value="g" />
+                    <node concept="2jxLKc" id="42hl10VHamI" role="1tU5fm" />
                   </node>
-                  <node concept="1bVj0M" id="42hl10VHam_" role="23t8la">
-                    <node concept="Rh6nW" id="42hl10VHamH" role="1bW2Oz">
-                      <property role="TrG5h" value="g" />
-                      <node concept="2jxLKc" id="42hl10VHamI" role="1tU5fm" />
-                    </node>
-                    <node concept="3clFbS" id="42hl10VHamA" role="1bW5cS">
-                      <node concept="3clFbF" id="42hl10VHamB" role="3cqZAp">
-                        <node concept="2OqwBi" id="42hl10VHamC" role="3clFbG">
-                          <node concept="2sxana" id="42hl10VHamG" role="2OqNvi">
-                            <ref role="2sxfKC" node="42hl10VH9Ix" resolve="start" />
+                  <node concept="3clFbS" id="42hl10VHamA" role="1bW5cS">
+                    <node concept="3clFbF" id="42hl10VHamB" role="3cqZAp">
+                      <node concept="2OqwBi" id="42hl10VHamC" role="3clFbG">
+                        <node concept="2sxana" id="42hl10VHamG" role="2OqNvi">
+                          <ref role="2sxfKC" node="42hl10VH9Ix" resolve="start" />
+                        </node>
+                        <node concept="2OqwBi" id="42hl10VHamD" role="2Oq$k0">
+                          <node concept="liA8E" id="42hl10VHamF" role="2OqNvi">
+                            <ref role="37wK5l" node="42hl10VHagp" resolve="getLeftBounds" />
                           </node>
-                          <node concept="2OqwBi" id="42hl10VHamD" role="2Oq$k0">
-                            <node concept="liA8E" id="42hl10VHamF" role="2OqNvi">
-                              <ref role="37wK5l" node="42hl10VHagp" resolve="getLeftBounds" />
-                            </node>
-                            <node concept="37vLTw" id="2BHiRxgmJfE" role="2Oq$k0">
-                              <ref role="3cqZAo" node="42hl10VHamH" resolve="g" />
-                            </node>
+                          <node concept="37vLTw" id="2BHiRxgmJfE" role="2Oq$k0">
+                            <ref role="3cqZAo" node="42hl10VHamH" resolve="g" />
                           </node>
                         </node>
                       </node>
                     </node>
                   </node>
                 </node>
-                <node concept="37vLTw" id="2BHiRxeumvL" role="2Oq$k0">
-                  <ref role="3cqZAo" node="42hl10VHanV" resolve="myChangeGroups" />
-                </node>
               </node>
-              <node concept="ANE8D" id="42hl10VHamK" role="2OqNvi" />
+              <node concept="37vLTw" id="2BHiRxeumvL" role="2Oq$k0">
+                <ref role="3cqZAo" node="6I8tQNTB9YW" resolve="list" />
+              </node>
             </node>
-            <node concept="37vLTw" id="2BHiRxeufS8" role="37vLTJ">
-              <ref role="3cqZAo" node="42hl10VHanV" resolve="myChangeGroups" />
-            </node>
+            <node concept="ANE8D" id="42hl10VHamK" role="2OqNvi" />
           </node>
         </node>
       </node>
-      <node concept="3Tmbuc" id="2R19yH3UcCO" role="1B3o_S" />
+      <node concept="3Tm6S6" id="6I8tQNTDNku" role="1B3o_S" />
+      <node concept="_YKpA" id="6I8tQNTDFd2" role="3clF45">
+        <node concept="3uibUv" id="6I8tQNTDKYJ" role="_ZDj9">
+          <ref role="3uigEE" node="42hl10VHaeV" resolve="ChangeGroup" />
+        </node>
+      </node>
     </node>
     <node concept="2tJIrI" id="2U2d8lsutaa" role="jymVt" />
     <node concept="3clFb_" id="42hl10VHamL" role="jymVt">
@@ -8095,32 +8105,84 @@
         </node>
       </node>
       <node concept="3clFbS" id="42hl10VHand" role="3clF47">
-        <node concept="3clFbJ" id="42hl10VHane" role="3cqZAp">
-          <node concept="3clFbC" id="42hl10VHanf" role="3clFbw">
-            <node concept="10Nm6u" id="42hl10VHang" role="3uHU7w" />
-            <node concept="37vLTw" id="2BHiRxeuW2D" role="3uHU7B">
-              <ref role="3cqZAo" node="42hl10VHanV" resolve="myChangeGroups" />
+        <node concept="3cpWs8" id="6I8tQNTDkPy" role="3cqZAp">
+          <node concept="3cpWsn" id="6I8tQNTDkPz" role="3cpWs9">
+            <property role="TrG5h" value="result" />
+            <node concept="_YKpA" id="6I8tQNTDjtP" role="1tU5fm">
+              <node concept="3uibUv" id="6I8tQNTDjtS" role="_ZDj9">
+                <ref role="3uigEE" node="42hl10VHaeV" resolve="ChangeGroup" />
+              </node>
             </node>
-          </node>
-          <node concept="3clFbS" id="42hl10VHani" role="3clFbx">
-            <node concept="3clFbF" id="42hl10VHanj" role="3cqZAp">
-              <node concept="1rXfSq" id="4hiugqyyI7D" role="3clFbG">
-                <ref role="37wK5l" node="42hl10VHaiB" resolve="calculateChangeGroups" />
+            <node concept="2OqwBi" id="6I8tQNTDkP$" role="33vP2m">
+              <node concept="37vLTw" id="6I8tQNTDkP_" role="2Oq$k0">
+                <ref role="3cqZAo" node="42hl10VHanV" resolve="myChangeGroups" />
+              </node>
+              <node concept="liA8E" id="6I8tQNTDkPA" role="2OqNvi">
+                <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
               </node>
             </node>
           </node>
         </node>
-        <node concept="1gVbGN" id="29gu5uHWtnR" role="3cqZAp">
-          <node concept="3y3z36" id="29gu5uHWtnU" role="1gVkn0">
-            <node concept="37vLTw" id="2BHiRxeudfD" role="3uHU7B">
-              <ref role="3cqZAo" node="42hl10VHanV" resolve="myChangeGroups" />
+        <node concept="3clFbJ" id="6I8tQNTCQhQ" role="3cqZAp">
+          <node concept="3clFbC" id="6I8tQNTD1zD" role="3clFbw">
+            <node concept="10Nm6u" id="6I8tQNTD4Cw" role="3uHU7w" />
+            <node concept="37vLTw" id="6I8tQNTDkPB" role="3uHU7B">
+              <ref role="3cqZAo" node="6I8tQNTDkPz" resolve="plain" />
             </node>
-            <node concept="10Nm6u" id="29gu5uHWtnX" role="3uHU7w" />
+          </node>
+          <node concept="3clFbS" id="6I8tQNTCQhS" role="3clFbx">
+            <node concept="3clFbF" id="6I8tQNTE$lm" role="3cqZAp">
+              <node concept="37vLTI" id="6I8tQNTEAjD" role="3clFbG">
+                <node concept="37vLTw" id="6I8tQNTE$lh" role="37vLTJ">
+                  <ref role="3cqZAo" node="6I8tQNTDkPz" resolve="result" />
+                </node>
+                <node concept="1rXfSq" id="6I8tQNTDPR1" role="37vLTx">
+                  <ref role="37wK5l" node="42hl10VHaiB" resolve="calculateChangeGroups" />
+                </node>
+              </node>
+            </node>
+            <node concept="3cpWs8" id="6I8tQNTE6wV" role="3cqZAp">
+              <node concept="3cpWsn" id="6I8tQNTE6wW" role="3cpWs9">
+                <property role="TrG5h" value="success" />
+                <node concept="10P_77" id="6I8tQNTE4TP" role="1tU5fm" />
+                <node concept="2OqwBi" id="6I8tQNTE6wX" role="33vP2m">
+                  <node concept="37vLTw" id="6I8tQNTE6wY" role="2Oq$k0">
+                    <ref role="3cqZAo" node="42hl10VHanV" resolve="myChangeGroups" />
+                  </node>
+                  <node concept="liA8E" id="6I8tQNTE6wZ" role="2OqNvi">
+                    <ref role="37wK5l" to="i5cy:~AtomicReference.compareAndSet(java.lang.Object,java.lang.Object)" resolve="compareAndSet" />
+                    <node concept="10Nm6u" id="6I8tQNTE6x0" role="37wK5m" />
+                    <node concept="37vLTw" id="6I8tQNTE6x1" role="37wK5m">
+                      <ref role="3cqZAo" node="6I8tQNTDkPz" resolve="result" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="6I8tQNTEb40" role="3cqZAp">
+              <node concept="3clFbS" id="6I8tQNTEb42" role="3clFbx">
+                <node concept="3cpWs6" id="6I8tQNTEj0J" role="3cqZAp">
+                  <node concept="2OqwBi" id="6I8tQNTEq7h" role="3cqZAk">
+                    <node concept="37vLTw" id="6I8tQNTEo7b" role="2Oq$k0">
+                      <ref role="3cqZAo" node="42hl10VHanV" resolve="myChangeGroups" />
+                    </node>
+                    <node concept="liA8E" id="6I8tQNTEt5c" role="2OqNvi">
+                      <ref role="37wK5l" to="i5cy:~AtomicReference.get()" resolve="get" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+              <node concept="3fqX7Q" id="6I8tQNTEdNZ" role="3clFbw">
+                <node concept="37vLTw" id="6I8tQNTEg_e" role="3fr31v">
+                  <ref role="3cqZAo" node="6I8tQNTE6wW" resolve="success" />
+                </node>
+              </node>
+            </node>
           </node>
         </node>
         <node concept="3cpWs6" id="42hl10VHanl" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeus8$" role="3cqZAk">
-            <ref role="3cqZAo" node="42hl10VHanV" resolve="myChangeGroups" />
+          <node concept="37vLTw" id="6I8tQNTDpUQ" role="3cqZAk">
+            <ref role="3cqZAo" node="6I8tQNTDkPz" resolve="result" />
           </node>
         </node>
       </node>
@@ -8133,10 +8195,13 @@
       <node concept="3Tm1VV" id="42hl10VHanp" role="1B3o_S" />
       <node concept="3clFbS" id="42hl10VHanq" role="3clF47">
         <node concept="3clFbF" id="42hl10VHanr" role="3cqZAp">
-          <node concept="37vLTI" id="42hl10VHans" role="3clFbG">
-            <node concept="10Nm6u" id="42hl10VHant" role="37vLTx" />
-            <node concept="37vLTw" id="2BHiRxeuoUZ" role="37vLTJ">
+          <node concept="2OqwBi" id="6I8tQNTENKA" role="3clFbG">
+            <node concept="37vLTw" id="2BHiRxeuoUZ" role="2Oq$k0">
               <ref role="3cqZAo" node="42hl10VHanV" resolve="myChangeGroups" />
+            </node>
+            <node concept="liA8E" id="6I8tQNTEPI_" role="2OqNvi">
+              <ref role="37wK5l" to="i5cy:~AtomicReference.set(java.lang.Object)" resolve="set" />
+              <node concept="10Nm6u" id="6I8tQNTESQr" role="37wK5m" />
             </node>
           </node>
         </node>

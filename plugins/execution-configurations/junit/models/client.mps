@@ -60,8 +60,8 @@
     <import index="b0pz" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.facets(MPS.Core/)" />
     <import index="zdap" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.text(MPS.IDEA/)" />
     <import index="ncw5" ref="3f233e7f-b8a6-46d2-a57f-795d56775243/java:jetbrains.mps.util.annotation(Annotations/)" />
-    <import index="18ex" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:jetbrains.mps.util(MPS.Boot/)" />
     <import index="smlj" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:jetbrains.mps.string(MPS.Boot/)" />
+    <import index="18ex" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:jetbrains.mps.util(MPS.Boot/)" />
     <import index="hypd" ref="r:aa31e43e-9240-4f4d-b6db-5c1c9a86c59e(jetbrains.mps.lang.project.structure)" implicit="true" />
   </imports>
   <registry>
@@ -7135,7 +7135,7 @@
                       <ref role="3cqZAo" node="1KnTQt4Oil3" resolve="test" />
                     </node>
                     <node concept="2qgKlT" id="4r77x76M$3D" role="2OqNvi">
-                      <ref role="37wK5l" to="tpe5:1RfJDyhAUar" resolve="getTestMethods" />
+                      <ref role="37wK5l" to="tpe5:6I8tQNTvi0f" resolve="getUncommentedTestMethods" />
                     </node>
                   </node>
                   <node concept="3$u5V9" id="4r77x76MF4o" role="2OqNvi">
@@ -7760,7 +7760,7 @@
                   <ref role="3cqZAo" node="1KnTQt4Oipm" resolve="node" />
                 </node>
                 <node concept="2qgKlT" id="7faRP9cLYyi" role="2OqNvi">
-                  <ref role="37wK5l" to="tpe5:1RfJDyhAUar" resolve="getTestMethods" />
+                  <ref role="37wK5l" to="tpe5:6I8tQNTvi0f" resolve="getUncommentedTestMethods" />
                 </node>
               </node>
               <node concept="1v1jN8" id="4YEli8eBYye" role="2OqNvi" />

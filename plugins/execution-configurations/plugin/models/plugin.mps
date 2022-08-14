@@ -2364,8 +2364,8 @@
     <property role="3GE5qa" value="junit" />
     <node concept="1QGGSu" id="4rA9Dd$P7z0" role="1bitO_">
       <node concept="10M0yZ" id="4rA9Dd$Pgjt" role="3xaMm5">
-        <ref role="3cqZAo" to="z2i8:~AllIcons$RunConfigurations.Junit" resolve="Junit" />
         <ref role="1PxDUh" to="z2i8:~AllIcons$RunConfigurations" resolve="RunConfigurations" />
+        <ref role="3cqZAo" to="z2i8:~AllIcons$RunConfigurations.Junit" resolve="Junit" />
       </node>
     </node>
   </node>
@@ -5117,7 +5117,7 @@
                       <ref role="3cqZAo" node="5gyVhZ188am" resolve="testCase" />
                     </node>
                     <node concept="2qgKlT" id="5gyVhZ188aj" role="2OqNvi">
-                      <ref role="37wK5l" to="tpe5:1RfJDyhAUar" resolve="getTestMethods" />
+                      <ref role="37wK5l" to="tpe5:6I8tQNTvi0f" resolve="getUncommentedTestMethods" />
                     </node>
                   </node>
                   <node concept="3GX2aA" id="5gyVhZ188ak" role="2OqNvi" />

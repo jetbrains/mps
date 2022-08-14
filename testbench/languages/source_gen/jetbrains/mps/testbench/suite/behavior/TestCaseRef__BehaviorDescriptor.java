@@ -50,9 +50,9 @@ public final class TestCaseRef__BehaviorDescriptor extends BaseBHDescriptor {
   /*package*/ static Iterable<String> testNames_id3z1mdFUF$j3(@NotNull SNode __thisNode__) {
     List<SNode> testMethods;
     if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(__thisNode__, LINKS.testCase$R3Mf), CONCEPTS.NodesTestCase$nd)) {
-      testMethods = ITestCase__BehaviorDescriptor.getTestSet_idhGB2z8L.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.testCase$R3Mf));
+      testMethods = ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.testCase$R3Mf));
     } else {
-      testMethods = ITestCase__BehaviorDescriptor.getTestMethods_id1RfJDyhAUar.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.testCase$R3Mf));
+      testMethods = ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(SLinkOperations.getTarget(__thisNode__, LINKS.testCase$R3Mf));
     }
     return ListSequence.fromList(testMethods).select(new ISelector<SNode, String>() {
       public String select(SNode m) {

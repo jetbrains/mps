@@ -35,7 +35,7 @@ public enum TestNodeWrapperFactory {
       if (SNodeOperations.isInstanceOf(node, CONCEPTS.BTestCase$_a) && SPropertyOperations.getBoolean(SNodeOperations.cast(node, CONCEPTS.BTestCase$_a), PROPS.abstractClass$Ta1X)) {
         return null;
       }
-      if (ListSequence.fromList(ITestCase__BehaviorDescriptor.getTestMethods_id1RfJDyhAUar.invoke(node)).isEmpty()) {
+      if (ListSequence.fromList(ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(node)).isEmpty()) {
         return null;
       }
       return new LanguageTestWrapper(node);

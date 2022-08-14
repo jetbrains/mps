@@ -19,10 +19,10 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.core.behavior.INamedConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 import java.util.Objects;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.baseLanguage.behavior.IMemberContainer__BehaviorDescriptor;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.core.aspects.behaviour.api.SConstructor;
@@ -38,14 +38,14 @@ public final class BTestCase__BehaviorDescriptor extends BaseBHDescriptor {
   private static final SAbstractConcept CONCEPT = MetaAdapterFactory.getConcept(0xf61473f9130f42f6L, 0xb98d6c438812c2f6L, 0x110dc94e923L, "jetbrains.mps.baseLanguage.unitTest.structure.BTestCase");
 
   public static final SMethod<List<SNode>> getTestSet_idhGB2z8L = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTestSet").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hGB2z8L").build();
+  public static final SMethod<List<SNode>> getTestMethods_id1RfJDyhAUar = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTestMethods").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1RfJDyhAUar").build();
   public static final SMethod<String> getClassName_idhGBnqtL = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hGBnqtL").build();
   public static final SMethod<Boolean> isMpsStartRequired_id2RMg39tmiFh = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("isMpsStartRequired").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("2RMg39tmiFh").build();
-  public static final SMethod<List<SNode>> getTestMethods_id1RfJDyhAUar = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getTestMethods").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("1RfJDyhAUar").build();
   public static final SMethod<List<SNode>> getMembers_idhEwJjl2 = new SMethodBuilder<List<SNode>>(new SJavaCompoundTypeImpl((Class<List<SNode>>) ((Class) Object.class))).name("getMembers").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hEwJjl2").build();
   public static final SMethod<String> getSimpleClassName_idhSQIE8p = new SMethodBuilder<String>(new SJavaCompoundTypeImpl(String.class)).name("getSimpleClassName").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("hSQIE8p").build();
   public static final SMethod<Boolean> canRunInProcess_id5_jSk8paieB = new SMethodBuilder<Boolean>(new SJavaCompoundTypeImpl(Boolean.TYPE)).name("canRunInProcess").modifiers(8, AccessPrivileges.PUBLIC).concept(CONCEPT).id("5_jSk8paieB").build();
 
-  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, getClassName_idhGBnqtL, isMpsStartRequired_id2RMg39tmiFh, getTestMethods_id1RfJDyhAUar, getMembers_idhEwJjl2, getSimpleClassName_idhSQIE8p, canRunInProcess_id5_jSk8paieB);
+  private static final List<SMethod<?>> BH_METHODS = Arrays.<SMethod<?>>asList(getTestSet_idhGB2z8L, getTestMethods_id1RfJDyhAUar, getClassName_idhGBnqtL, isMpsStartRequired_id2RMg39tmiFh, getMembers_idhEwJjl2, getSimpleClassName_idhSQIE8p, canRunInProcess_id5_jSk8paieB);
 
   private static void ___init___(@NotNull SNode __thisNode__) {
   }
@@ -68,6 +68,16 @@ public final class BTestCase__BehaviorDescriptor extends BaseBHDescriptor {
     }));
     return methods;
   }
+  /*package*/ static List<SNode> getTestMethods_id1RfJDyhAUar(@NotNull SNode __thisNode__) {
+    List<SNode> result = new ArrayList<SNode>();
+    if (!(SPropertyOperations.getBoolean(__thisNode__, PROPS.abstractClass$Ta1X))) {
+      ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.testMethodList$EShx), LINKS.testMethod$eMP1)));
+      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ITestCase$Fp)) {
+        ListSequence.fromList(result).addSequence(ListSequence.fromList(ITestCase__BehaviorDescriptor.getTestMethods_id1RfJDyhAUar.invoke(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ITestCase$Fp))));
+      }
+    }
+    return result;
+  }
   /*package*/ static String getClassName_idhGBnqtL(@NotNull SNode __thisNode__) {
     return ((String) INamedConcept__BehaviorDescriptor.getFqName_idhEwIO9y.invoke(__thisNode__));
   }
@@ -86,16 +96,6 @@ public final class BTestCase__BehaviorDescriptor extends BaseBHDescriptor {
       }
     }
     return false;
-  }
-  /*package*/ static List<SNode> getTestMethods_id1RfJDyhAUar(@NotNull SNode __thisNode__) {
-    List<SNode> result = new ArrayList<SNode>();
-    if (!(SPropertyOperations.getBoolean(__thisNode__, PROPS.abstractClass$Ta1X))) {
-      ListSequence.fromList(result).addSequence(ListSequence.fromList(SLinkOperations.getChildren(SLinkOperations.getTarget(__thisNode__, LINKS.testMethodList$EShx), LINKS.testMethod$eMP1)));
-      if (SNodeOperations.isInstanceOf(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ITestCase$Fp)) {
-        ListSequence.fromList(result).addSequence(ListSequence.fromList(ITestCase__BehaviorDescriptor.getTestMethods_id1RfJDyhAUar.invoke(SNodeOperations.cast(SLinkOperations.getTarget(SLinkOperations.getTarget(__thisNode__, LINKS.superclass$Mp9$), LINKS.classifier$cxMr), CONCEPTS.ITestCase$Fp))));
-      }
-    }
-    return result;
   }
   /*package*/ static List<SNode> getMembers_idhEwJjl2(@NotNull SNode __thisNode__) {
     List<SNode> members = IMemberContainer__BehaviorDescriptor.getMembers_idhEwJjl2.invokeSuper(__thisNode__, CONCEPTS.BTestCase$_a);
@@ -127,11 +127,11 @@ public final class BTestCase__BehaviorDescriptor extends BaseBHDescriptor {
       case 0:
         return (T) ((List<SNode>) getTestSet_idhGB2z8L(node));
       case 1:
-        return (T) ((String) getClassName_idhGBnqtL(node));
-      case 2:
-        return (T) ((Boolean) isMpsStartRequired_id2RMg39tmiFh(node));
-      case 3:
         return (T) ((List<SNode>) getTestMethods_id1RfJDyhAUar(node));
+      case 2:
+        return (T) ((String) getClassName_idhGBnqtL(node));
+      case 3:
+        return (T) ((Boolean) isMpsStartRequired_id2RMg39tmiFh(node));
       case 4:
         return (T) ((List<SNode>) getMembers_idhEwJjl2(node));
       case 5:
