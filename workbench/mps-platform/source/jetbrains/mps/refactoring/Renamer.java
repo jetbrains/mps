@@ -37,6 +37,7 @@ import jetbrains.mps.smodel.UndoRunnable;
 import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.NameUtil;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.annotations.Internal;
@@ -232,10 +233,12 @@ public final class Renamer {
     renameModuleDirs(Collections.singleton(myPrimaryRename)); // changes path to descriptor file for all nested modules
     // for modules under folder of myPrimaryRename needs to update MRI fields to reflect the change:
     primaryModuleDirPath = Path.of(myPrimaryRename.moduleDir.getPath());
+    final IFileSystem fs = myPrimaryRename.moduleDir.getFS();
     for (ModuleRenameInfo ri : myNestedRenames) {
-      ri.moduleDir = myPrimaryRename.moduleDir;
       final File newDescriptorFileName = primaryModuleDirPath.resolve(ri.relativeToPrimaryModuleDir).toFile();
-      ri.descriptorFile = ri.moduleDir.getFS().getFile(newDescriptorFileName);
+      ri.descriptorFile = fs.getFile(newDescriptorFileName);
+      // although this is sort of unnecessary assumption, seems that I don't really need moduleDir value from no on.
+      ri.moduleDir = ri.descriptorFile.getParent();
     }
     //
     discoverModulesBack(renameInfos); // need descriptorFile:IFile, new; updates ModuleDescriptor info (namespace) and MRI.module, moduleReference
@@ -372,7 +375,10 @@ public final class Renamer {
         continue;
       }
       // FIXME where do we handle generator case (name#whatever), here or in prepareRename?
-      handle.getDescriptor().setNamespace(renameInfo.newModuleName);
+      if (renameInfo.moduleNameMatch != NameMatch.NONE) {
+        // alternatively, may assign newModuleName == oldModuleName in MRI.withNewName()
+        handle.getDescriptor().setNamespace(renameInfo.newModuleName);
+      }
       assert renameInfo.descriptorFile.equals(handle.getFile());
       AbstractModule module = (AbstractModule) moduleFactory.instantiate(handle.getDescriptor(), handle.getFile());
       renameInfo.module = module;

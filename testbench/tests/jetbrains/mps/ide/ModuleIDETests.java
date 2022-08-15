@@ -141,6 +141,9 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
     final Solution[] runtimeSolution = new Solution[1];
     final Solution[] sandboxSolution = new Solution[1];
     final Solution[] someUnexpectedSolution = new Solution[1];
+    // new Renamer logic matches modules by prefix. All modules in test share same prefix, but as long as
+    // getNewModuleName() gives unique number in the name of the 'primary' module, I don't expect someUnexpectedSolutionName
+    // to fall into 'STARTS_WITH' match.
     final String someUnexpectedSolutionName = getNewModuleName();
     renameModule(
         (moduleName) -> {
@@ -155,6 +158,7 @@ public abstract class ModuleIDETests extends ModuleInProjectTest {
           final Language language = lp.create(moduleName, moduleFolder);
           runtimeSolution[0] = lp.getRuntimeSolution().get();
           sandboxSolution[0] = lp.getSandboxSolution().get();
+          // NOTE, solution is another nested module, which would get its file moved to another folder, but its name shall remain intact.
           IFile unexpSolLocation = moduleFolder.findChild(someUnexpectedSolutionName);
           someUnexpectedSolution[0] = new SolutionProducer(myProject).create(someUnexpectedSolutionName, unexpSolLocation);
           return language;
