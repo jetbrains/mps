@@ -114,7 +114,7 @@ public class Binaries_Facet extends IFacet.Stub {
                         public Iterable<Tuples._2<IFile, byte[]>> translate(SNode it) {
                           return (List<Tuples._2<IFile, byte[]>>) Resource__BehaviorDescriptor.generate_id7Mb2akaesv8.invoke(it, outputDir);
                         }
-                      }).where(new NotNullWhereFilter<Tuples._2<IFile, byte[]>>());
+                      }).where(new NotNullWhereFilter<Tuples._2<IFile, byte[]>>()).toListSequence();
                     } catch (ResourceGenerationException rge) {
                       monitor.reportFeedback(new IFeedback.ERROR(String.valueOf(rge.getMessage())));
                       if (LOG.isErrorLevel()) {
