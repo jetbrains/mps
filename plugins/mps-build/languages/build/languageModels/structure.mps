@@ -1076,13 +1076,13 @@
     <property role="TrG5h" value="BuildSource_CompilablePart" />
     <property role="3GE5qa" value="Project.Java" />
     <property role="EcuMT" value="2591537044435828007" />
+    <node concept="PrWs8" id="2fQZjorRPWA" role="PrDN$">
+      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
     <node concept="1TJgyi" id="6EK__xlPv4N" role="1TKVEl">
       <property role="IQ2nx" value="7687809870062809395" />
       <property role="TrG5h" value="withKotlin" />
       <ref role="AX2Wp" to="tpck:fKAQMTB" resolve="boolean" />
-    </node>
-    <node concept="PrWs8" id="2fQZjorRPWA" role="PrDN$">
-      <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
   </node>
   <node concept="1TIwiD" id="5WMFzVNtKRk">
@@ -1330,6 +1330,11 @@
     </node>
     <node concept="1QGGSu" id="4Q8sAA5iJQO" role="rwd14">
       <property role="1iqoE4" value="${module}/icons/javaOptions.png" />
+    </node>
+    <node concept="1TJgyi" id="1FkcQH_$3_5" role="1TKVEl">
+      <property role="IQ2nx" value="1933226676407253317" />
+      <property role="TrG5h" value="generatorJvmOptions" />
+      <ref role="AX2Wp" to="tpck:fKAOsGN" resolve="string" />
     </node>
   </node>
   <node concept="1TIwiD" id="1s8OwvM5SHi">

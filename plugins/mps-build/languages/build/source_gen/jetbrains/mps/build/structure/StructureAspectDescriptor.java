@@ -1599,6 +1599,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.property("fork", 0x3d4a6c59711a0304L).type(PrimitiveTypeId.BOOLEAN).origin("4416461515995611908").done();
     b.property("javaLevel", 0x6120f2e858dfcfdcL).type(PrimitiveTypeId.STRING).origin("6998860900671147996").done();
     b.property("compilerOptions", 0x147ef24d5e249317L).type(PrimitiveTypeId.STRING).origin("1476884141929960215").done();
+    b.property("generatorJvmOptions", 0x1ad4336b65903945L).type(PrimitiveTypeId.STRING).origin("1933226676407253317").done();
     b.aggregate("resourceSelectors", 0xcdff0e1a96739c7L).target(0x798100da4f0a421aL, 0xb99171f8c50ce5d2L, 0x48d5d03db92245a7L).optional(true).ordered(true).multiple(true).origin("927724900262033863").done();
     b.alias("java options");
     return b.create();

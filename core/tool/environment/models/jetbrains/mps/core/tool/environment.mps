@@ -8592,7 +8592,7 @@
                   <ref role="3cqZAo" node="2wx9Czvxe$O" resolve="reader" />
                 </node>
                 <node concept="liA8E" id="2wx9CzvxkFW" role="2OqNvi">
-                  <ref role="37wK5l" to="guwi:~Reader.read(java.nio.CharBuffer)" resolve="read" />
+                  <ref role="37wK5l" to="guwi:~InputStreamReader.read(java.nio.CharBuffer)" resolve="read" />
                   <node concept="37vLTw" id="2wx9CzvxqUs" role="37wK5m">
                     <ref role="3cqZAo" node="2wx9Czvxq9f" resolve="cb" />
                   </node>

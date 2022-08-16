@@ -22,21 +22,55 @@
       <node id="168610716602212615" at="44,102,45,76" concept="6" />
       <node id="168610716602222864" at="45,76,46,107" concept="6" />
       <node id="168610716602226628" at="46,107,47,79" concept="6" />
-      <node id="168610716602212617" at="47,79,48,145" concept="4" />
-      <node id="168610716602212629" at="48,145,49,136" concept="4" />
-      <node id="168610716602212636" at="49,136,50,0" concept="7" />
-      <node id="168610716602212637" at="50,0,51,106" concept="6" />
-      <node id="168610716602212639" at="51,106,52,60" concept="4" />
-      <node id="4979570861452558246" at="52,60,53,57" concept="4" />
-      <node id="168610716602212645" at="53,57,54,57" concept="4" />
-      <node id="168610716602212653" at="54,57,55,266" concept="4" />
-      <node id="168610716602212676" at="55,266,56,45" concept="1" />
+      <node id="5191934201021040346" at="47,79,48,51" concept="4" />
+      <node id="5191934201021048404" at="48,51,49,63" concept="1" />
+      <node id="5191934201021055059" at="49,63,50,65" concept="1" />
+      <node id="5191934201021058722" at="50,65,51,73" concept="1" />
+      <node id="5191934201021058900" at="51,73,52,64" concept="1" />
+      <node id="5191934201021059082" at="52,64,53,64" concept="1" />
+      <node id="5191934201021060891" at="53,64,54,72" concept="1" />
+      <node id="5191934201021061081" at="54,72,55,65" concept="1" />
+      <node id="5191934201021061275" at="55,65,56,65" concept="1" />
+      <node id="5191934201021061473" at="56,65,57,65" concept="1" />
+      <node id="5191934201021061675" at="57,65,58,76" concept="1" />
+      <node id="5191934201021061881" at="58,76,59,83" concept="1" />
+      <node id="5191934201021062091" at="59,83,60,71" concept="1" />
+      <node id="5191934201021062305" at="60,71,61,66" concept="1" />
+      <node id="5191934201021062523" at="61,66,62,72" concept="1" />
+      <node id="5191934201021062745" at="62,72,63,73" concept="1" />
+      <node id="5191934201021062971" at="63,73,64,67" concept="1" />
+      <node id="5191934201021063201" at="64,67,65,76" concept="1" />
+      <node id="5191934201021063435" at="65,76,66,73" concept="1" />
+      <node id="5191934201021063673" at="66,73,67,73" concept="1" />
+      <node id="5191934201021063915" at="67,73,68,72" concept="1" />
+      <node id="5191934201021064161" at="68,72,69,70" concept="1" />
+      <node id="5191934201021064411" at="69,70,70,81" concept="1" />
+      <node id="5191934201021064665" at="70,81,71,80" concept="1" />
+      <node id="5191934201021064923" at="71,80,72,79" concept="1" />
+      <node id="5191934201021065185" at="72,79,73,72" concept="1" />
+      <node id="5191934201021065451" at="73,72,74,66" concept="1" />
+      <node id="5191934201021065721" at="74,66,75,67" concept="1" />
+      <node id="5191934201021065995" at="75,67,76,69" concept="1" />
+      <node id="5191934201021066273" at="76,69,77,68" concept="1" />
+      <node id="5191934201021066555" at="77,68,78,73" concept="1" />
+      <node id="5191934201021066841" at="78,73,79,82" concept="1" />
+      <node id="5191934201021067131" at="79,82,80,86" concept="1" />
+      <node id="5191934201021067425" at="80,86,81,71" concept="1" />
+      <node id="168610716602212617" at="81,71,82,125" concept="4" />
+      <node id="168610716602212629" at="82,125,83,136" concept="4" />
+      <node id="168610716602212636" at="83,136,84,0" concept="7" />
+      <node id="168610716602212637" at="84,0,85,106" concept="6" />
+      <node id="168610716602212639" at="85,106,86,60" concept="4" />
+      <node id="4979570861452558246" at="86,60,87,57" concept="4" />
+      <node id="168610716602212645" at="87,57,88,57" concept="4" />
+      <node id="168610716602212653" at="88,57,89,266" concept="4" />
+      <node id="168610716602212676" at="89,266,90,45" concept="1" />
       <node id="3604131957890398125" at="23,0,25,0" concept="8" trace="ourParamCache" />
       <node id="3604131957890398125" at="26,0,29,0" concept="0" trace="MPSInstance_Test#()V" />
       <node id="3604131957890398125" at="37,0,40,0" concept="0" trace="TestBody#(Ljetbrains/mps/lang/test/runtime/TransformationTest;)V" />
       <node id="3604131957890398256" at="30,0,34,0" concept="3" trace="test_simpleConfigurationIsRunnable#()V" />
-      <node id="3604131957890398256" at="41,71,57,9" concept="1" />
-      <node id="3604131957890398256" at="41,0,59,0" concept="3" trace="test_simpleConfigurationIsRunnable#()V" />
+      <node id="3604131957890398256" at="41,71,91,9" concept="1" />
+      <node id="3604131957890398256" at="41,0,93,0" concept="3" trace="test_simpleConfigurationIsRunnable#()V" />
       <scope id="3604131957890398125" at="26,29,27,25" />
       <scope id="3604131957890398256" at="31,69,32,60" />
       <scope id="3604131957890398125" at="37,52,38,19" />
@@ -45,18 +79,19 @@
         <var name="owner" id="3604131957890398125" />
       </scope>
       <scope id="3604131957890398256" at="30,0,34,0" />
-      <scope id="3604131957890398256" at="42,30,56,45">
+      <scope id="3604131957890398256" at="42,30,90,45">
         <var name="allowedErrors" id="168610716602212646" />
         <var name="any" id="168610716602212640" />
+        <var name="params" id="5191934201021040349" />
         <var name="patternsWeExpect" id="168610716602212630" />
         <var name="process" id="168610716602212618" />
         <var name="processRunner" id="168610716602212654" />
         <var name="warnings" id="4979570861452558247" />
       </scope>
-      <scope id="3604131957890398256" at="41,71,57,9" />
-      <scope id="3604131957890398256" at="41,0,59,0" />
-      <unit id="3604131957890398125" at="35,0,61,0" name="jetbrains.mps.execution.impl.configurations.tests.outproces.MPSInstance_Test$TestBody" />
-      <unit id="3604131957890398125" at="21,0,62,0" name="jetbrains.mps.execution.impl.configurations.tests.outproces.MPSInstance_Test" />
+      <scope id="3604131957890398256" at="41,71,91,9" />
+      <scope id="3604131957890398256" at="41,0,93,0" />
+      <unit id="3604131957890398125" at="35,0,95,0" name="jetbrains.mps.execution.impl.configurations.tests.outproces.MPSInstance_Test$TestBody" />
+      <unit id="3604131957890398125" at="21,0,96,0" name="jetbrains.mps.execution.impl.configurations.tests.outproces.MPSInstance_Test" />
     </file>
   </root>
   <root nodeRef="r:70ba7cf7-d705-4776-9784-5a0abc3ae48a(jetbrains.mps.execution.impl.configurations.tests.outproces@tests)/8128243960970298224">

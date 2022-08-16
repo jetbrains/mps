@@ -5596,6 +5596,18 @@
             <property role="VOm3f" value="true" />
           </node>
         </node>
+        <node concept="3F0ifn" id="1FkcQH_$4DP" role="3EZMnx">
+          <property role="3F0ifm" value="generator jvm options" />
+          <ref role="1k5W1q" node="hwW5xkg" resolve="keyword" />
+        </node>
+        <node concept="3F0A7n" id="1FkcQH_$4RD" role="3EZMnx">
+          <property role="1O74Pk" value="true" />
+          <property role="1$x2rV" value="&lt;no additional options&gt;" />
+          <ref role="1NtTu8" to="3ior:1FkcQH_$3_5" resolve="generatorJvmOptions" />
+          <node concept="ljvvj" id="1FkcQH_$5sK" role="3F10Kt">
+            <property role="VOm3f" value="true" />
+          </node>
+        </node>
         <node concept="3F0ifn" id="NvWe6DqhoS" role="3EZMnx">
           <property role="3F0ifm" value="copy resources" />
           <ref role="1k5W1q" node="hwW5xkg" resolve="keyword" />

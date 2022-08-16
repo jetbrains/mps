@@ -56,6 +56,7 @@
         <property id="927724900262033862" name="copyResources" index="2_Ic$B" />
         <property id="6998860900671147996" name="javaLevel" index="TZNOO" />
         <property id="2059109515400425365" name="compiler" index="3fwGa$" />
+        <property id="1933226676407253317" name="generatorJvmOptions" index="1Zh0CI" />
         <child id="927724900262033863" name="resourceSelectors" index="2_Ic$A" />
       </concept>
       <concept id="2750015747481074431" name="jetbrains.mps.build.structure.BuildLayout_Files" flags="ng" index="2HvfSZ">
@@ -1919,7 +1920,7 @@
       <node concept="24cAiW" id="5I1s5NvQ4SW" role="24cAkG">
         <node concept="NbPM2" id="372aBDf0kSG" role="1psgkv">
           <node concept="3Mxwew" id="372aBDf0kSH" role="3MwsjC">
-            <property role="3MwjfP" value="-Xmx2048m" />
+            <property role="3MwjfP" value="-Xmx2048m --add-opens=java.desktop/sun.awt.X11=ALL-UNNAMED" />
           </node>
         </node>
       </node>
@@ -9241,6 +9242,7 @@
       <property role="3fwGa$" value="IntelliJ" />
       <property role="2_GNG2" value="1024" />
       <property role="TZNOO" value="" />
+      <property role="1Zh0CI" value="--add-opens=java.desktop/sun.font=ALL-UNNAMED" />
       <node concept="3qWCbU" id="7d2DnzDyiWm" role="2_Ic$A">
         <property role="3qWCbO" value="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.gif" />
       </node>

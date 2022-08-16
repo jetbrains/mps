@@ -3347,24 +3347,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return myInputMethodRequests;
   }
 
-  /**
-   * This is a copy of com.intellij.openapi.editor.impl.EditorImpl.MyScrollBar classwith some additional code
-   */
-  private static final Field decrButtonField;
-  private static final Field incrButtonField;
-
-  static {
-    try {
-      decrButtonField = BasicScrollBarUI.class.getDeclaredField("decrButton");
-      decrButtonField.setAccessible(true);
-
-      incrButtonField = BasicScrollBarUI.class.getDeclaredField("incrButton");
-      incrButtonField.setAccessible(true);
-    } catch (NoSuchFieldException e) {
-      throw new IllegalStateException(e);
-    }
-  }
-
   class MyScrollBar extends JBScrollBar implements IdeGlassPane.TopComponent, TooltipComponent {
     @NonNls
     private static final String APPLE_LAF_AQUA_SCROLL_BAR_UI_CLASS = "apple.laf.AquaScrollBarUI";
@@ -3391,56 +3373,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
       }
       super.setUI(myPersistentUI);
       setOpaque(false);
-    }
-
-    /**
-     * This is helper method. It returns height of the top (decrease) scroll bar
-     * button. Please note, that it's possible to return real height only if scroll bar
-     * is instance of BasicScrollBarUI. Otherwise it returns fake (but good enough :) )
-     * value.
-     */
-    int getDecScrollButtonHeight() {
-      ScrollBarUI barUI = getUI();
-      Insets insets = getInsets();
-      if (barUI instanceof ButtonlessScrollBarUI) {
-        return insets.top + ((ButtonlessScrollBarUI) barUI).getDecrementButtonHeight();
-      } else if (barUI instanceof BasicScrollBarUI) {
-        try {
-          JButton decrButtonValue = (JButton) decrButtonField.get(barUI);
-          LOG.assertLog(decrButtonValue != null);
-          return insets.top + decrButtonValue.getHeight();
-        } catch (Exception exc) {
-          throw new IllegalStateException(exc);
-        }
-      } else {
-        return insets.top + 15;
-      }
-    }
-
-    /**
-     * This is helper method. It returns height of the bottom (increase) scroll bar
-     * button. Please note, that it's possible to return real height only if scroll bar
-     * is instance of BasicScrollBarUI. Otherwise it returns fake (but good enough :) )
-     * value.
-     */
-    int getIncScrollButtonHeight() {
-      ScrollBarUI barUI = getUI();
-      Insets insets = getInsets();
-      if (barUI instanceof ButtonlessScrollBarUI) {
-        return insets.top + ((ButtonlessScrollBarUI) barUI).getIncrementButtonHeight();
-      } else if (barUI instanceof BasicScrollBarUI) {
-        try {
-          JButton incrButtonValue = (JButton) incrButtonField.get(barUI);
-          LOG.assertLog(incrButtonValue != null);
-          return insets.bottom + incrButtonValue.getHeight();
-        } catch (Exception exc) {
-          throw new IllegalStateException(exc.getMessage());
-        }
-      } else if (APPLE_LAF_AQUA_SCROLL_BAR_UI_CLASS.equals(barUI.getClass().getName())) {
-        return insets.bottom + 30;
-      } else {
-        return insets.bottom + 15;
-      }
     }
 
     @Override
