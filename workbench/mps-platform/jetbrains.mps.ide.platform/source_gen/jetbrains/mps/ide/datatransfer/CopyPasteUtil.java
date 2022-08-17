@@ -15,17 +15,20 @@ import java.util.List;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
 import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
+import jetbrains.mps.datatransfer.AssociationLink;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
+import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.datatransfer.DataTransferManager;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
+import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.language.SProperty;
-import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -76,19 +79,49 @@ public final class CopyPasteUtil {
     }
 
     SModel model = SNodeOperations.getModel(ListSequence.fromList(sourceNodes).first());
-    Map<SNode, SNode> sourceNodesToNewNodes = MapSequence.fromMap(new HashMap<SNode, SNode>());
+    Map<SNode, SNode> sourceNodesToNewNodes = new HashMap<>();
     List<SNode> targetNodes = ListSequence.fromList(new ArrayList<SNode>());
-    Set<SReference> allReferences = SetSequence.fromSet(new HashSet<SReference>());
 
     for (SNode sourceNode : ListSequence.fromList(sourceNodes)) {
       assert SNodeOperations.getModel(sourceNode) == model;
-      ListSequence.fromList(targetNodes).addElement(CopyPasteUtil.copyNode_internal(sourceNode, sourceNodesAndAttributes, sourceNodesToNewNodes, allReferences));
+      ListSequence.fromList(targetNodes).addElement(CopyPasteUtil.copyNode_internal(sourceNode, sourceNodesAndAttributes, sourceNodesToNewNodes));
     }
 
     Set<SModelReference> necessaryModels = SetSequence.fromSet(new HashSet<SModelReference>());
     Set<SLanguage> necessaryLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
-    CopyPasteUtil.processImportsAndLanguages(necessaryModels, necessaryLanguages, sourceNodesToNewNodes, allReferences);
-    CopyPasteUtil.processReferencesIn(sourceNodesToNewNodes, allReferences);
+    ArrayList<AssociationLink> copiedLinks = new ArrayList<>();
+
+    // processImportsAndLanguages + processReferencesIn in a single loop, with less resolutions of association link targets
+    for (SNode sourceNode : Sequence.fromIterable(SNodeUtil.getDescendants(sourceNodes))) {
+      SetSequence.fromSet(necessaryLanguages).addElement(sourceNode.getConcept().getLanguage());
+      SNode newSourceNode = sourceNodesToNewNodes.get(sourceNode);
+      assert newSourceNode != null : "copyNode_internal has to create a copy for each source node";
+      for (SReference assoc : Sequence.fromIterable(sourceNode.getReferences())) {
+        SNode targetNode = assoc.getTargetNode();
+        final SModelReference targetModel;
+        if (targetNode == null) {
+          targetModel = assoc.getTargetSModelReference();
+          copiedLinks.add(AssociationLink.create(assoc.getLink(), newSourceNode, assoc.describeTarget()));
+        } else {
+          SNode newTargetNode = sourceNodesToNewNodes.get(targetNode);
+          if (newTargetNode != null) {
+            // link within copied node hierarchy
+            copiedLinks.add(AssociationLink.create(assoc.getLink(), newSourceNode, newTargetNode));
+            targetModel = null;
+          } else {
+            // outside of copied hierarchy
+            // Next comment comes from the original code (is it still relevant):
+            // XXX oldTargetNode.model can be null in case it comes from generation process, see MPS-24188; this may be fixed when MPS-23902 is fixed
+            copiedLinks.add(AssociationLink.create(assoc.getLink(), newSourceNode, assoc.describeTarget()));
+            targetModel = targetNode.getReference().getModelReference();
+          }
+        }
+        if (targetModel != null) {
+          //  && !targetModel.equals(model.pointer), perhaps? although this might be more suited for 'paste' check
+          SetSequence.fromSet(necessaryModels).addElement(targetModel);
+        }
+      }
+    }
 
     Map<SNode, SNode> newNodesToSourceNodes = MapSequence.fromMap(new HashMap<SNode, SNode>());
     for (IMapping<SNode, SNode> mapping : MapSequence.fromMap(sourceNodesToNewNodes)) {
@@ -99,33 +132,74 @@ public final class CopyPasteUtil {
       DataTransferManager.getInstance().preProcessNode(target, newNodesToSourceNodes);
     }
 
-    return new PasteNodeData(targetNodes, null, SModelOperations.getPointer(model), necessaryLanguages, necessaryModels);
+    return new PasteNodeData(SModelOperations.getPointer(model), targetNodes, copiedLinks, necessaryLanguages, necessaryModels);
   }
+  /**
+   * 
+   * @deprecated use {@link jetbrains.mps.ide.datatransfer.CopyPasteUtil#createNodeDataOut(PasteNodeData) } instead.
+   */
+  @Deprecated(forRemoval = true, since = "2022.2")
   public static PasteNodeData createNodeDataOut(List<SNode> sourceNodes, SModelReference sourceModel, Set<SLanguage> necessaryLanguages, Set<SModelReference> necessaryModels) {
     if (sourceNodes.isEmpty()) {
       return PasteNodeData.emptyPasteNodeData(null);
     }
     List<SNode> result = new ArrayList<SNode>();
     Map<SNode, SNode> sourceNodesToNewNodes = new HashMap<SNode, SNode>();
-    Set<SReference> allReferences = new HashSet<SReference>();
+    // FIXME sourceNodes are generally detached (copies of the original model) - what's the point to 
+    //      assert originalModel?!
     SModel originalModel = sourceNodes.get(0).getModel();
     for (SNode sourceNode : sourceNodes) {
       assert sourceNode.getModel() == originalModel;
-      SNode nodeToPaste = CopyPasteUtil.copyNode_internal(sourceNode, null, sourceNodesToNewNodes, allReferences);
+      SNode nodeToPaste = CopyPasteUtil.copyNode_internal(sourceNode, null, sourceNodesToNewNodes);
       result.add(nodeToPaste);
+    }
+    // just a poor fallback in case old code uses this method and doesn't use createNodeDataIn (which currrently
+    // doesn't add SReference instance to copied nodes, but keep association data separately
+    Set<SReference> allReferences = new HashSet<SReference>();
+    for (SNode sn : Sequence.fromIterable(SNodeUtil.getDescendants(sourceNodes))) {
+      for (SReference al : Sequence.fromIterable(sn.getReferences())) {
+        allReferences.add(al);
+      }
     }
     Set<SReference> referencesRequireResolve = CopyPasteUtil.processReferencesOut(sourceNodesToNewNodes, allReferences);
     return new PasteNodeData(result, referencesRequireResolve, sourceModel, necessaryLanguages, necessaryModels);
   }
-  private static SNode copyNode_internal(SNode sourceNode, @Nullable Map<SNode, Set<SNode>> nodesAndAttributes, Map<SNode, SNode> sourceNodesToNewNodes, Set<SReference> allReferences) {
+
+  public static PasteNodeData createNodeDataOut(PasteNodeData in) {
+    if (in.getNodes().isEmpty()) {
+      // it's immutable, not point to make a copy
+      return in;
+    }
+    List<SNode> result = new ArrayList<>();
+    Map<SNode, SNode> sourceNodesToNewNodes = new HashMap<>();
+    for (SNode sourceNode : in.getNodes()) {
+      SNode nodeToPaste = CopyPasteUtil.copyNode_internal(sourceNode, null, sourceNodesToNewNodes);
+      result.add(nodeToPaste);
+    }
+
+    // what processReferencesOut used to do
+    for (AssociationLink al : CollectionSequence.fromCollection(in.getCopiedLinks())) {
+      al.establish(sourceNodesToNewNodes);
+    }
+    // Old code used to requireResolve references outside of copied hierarchy (and under some additional conditions,
+    // see processReferencesOut(). However, I don't see why it would hurt to try resolving any newly created reference.
+    // FWIW, I'd like to get rid of moving SReference instances around at all.
+    Set<SReference> referencesRequireResolve = new HashSet<>();
+    for (SNode sn : Sequence.fromIterable(SNodeUtil.getDescendants(result))) {
+      for (SReference al : Sequence.fromIterable(sn.getReferences())) {
+        referencesRequireResolve.add(al);
+      }
+    }
+
+    return new PasteNodeData(in, result, referencesRequireResolve);
+  }
+
+  private static SNode copyNode_internal(SNode sourceNode, @Nullable Map<SNode, Set<SNode>> nodesAndAttributes, Map<SNode, SNode> sourceNodesToNewNodes) {
     SNode targetNode = new jetbrains.mps.smodel.SNode(sourceNode.getConcept(), sourceNode.getNodeId());
     for (SProperty name : Sequence.fromIterable(sourceNode.getProperties())) {
       targetNode.setProperty(name, sourceNode.getProperty(name));
     }
     sourceNodesToNewNodes.put(sourceNode, targetNode);
-    for (SReference reference : sourceNode.getReferences()) {
-      allReferences.add(reference);
-    }
     for (SNode sourceChild : sourceNode.getChildren()) {
       if (nodesAndAttributes != null) {
         if (AttributeOperations.isAttribute(sourceChild)) {
@@ -135,31 +209,12 @@ public final class CopyPasteUtil {
           }
         }
       }
-      SNode targetChild = CopyPasteUtil.copyNode_internal(sourceChild, nodesAndAttributes, sourceNodesToNewNodes, allReferences);
+      SNode targetChild = CopyPasteUtil.copyNode_internal(sourceChild, nodesAndAttributes, sourceNodesToNewNodes);
       SContainmentLink role = sourceChild.getContainmentLink();
       assert role != null;
       targetNode.addChild(role, targetChild);
     }
     return targetNode;
-  }
-  private static void processReferencesIn(Map<SNode, SNode> sourceNodesToNewNodes, Set<SReference> allReferences) {
-    for (SReference sourceReference : allReferences) {
-      SNode oldSourceNode = sourceReference.getSourceNode();
-      SNode newSourceNode = sourceNodesToNewNodes.get(oldSourceNode);
-      SNode oldTargetNode = sourceReference.getTargetNode();
-      SNode newTargetNode = sourceNodesToNewNodes.get(oldTargetNode);
-      if (newTargetNode != null) {
-        newSourceNode.setReferenceTarget(sourceReference.getLink(), newTargetNode);
-      } else {
-        if (oldTargetNode != null) {
-          // XXX oldTargetNode.model can be null in case it comes from generation process, see MPS-24188; this may be fixed when MPS-23902 is fixed
-          newSourceNode.setReference(sourceReference.getLink(), oldTargetNode.getReference());
-        } else
-        if (SLinkOperations.getResolveInfo(sourceReference) != null) {
-          newSourceNode.setReference(sourceReference.getLink(), ResolveInfo.of(SLinkOperations.getResolveInfo(sourceReference)));
-        }
-      }
-    }
   }
   private static Set<SReference> processReferencesOut(Map<SNode, SNode> sourceNodesToNewNodes, Set<SReference> allReferences) {
     Set<SReference> referencesRequireResolve = new HashSet<SReference>();
