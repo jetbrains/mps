@@ -30,14 +30,22 @@ public abstract class AssociationLink {
     myLink = l;
   }
 
-  public abstract void establish(Map<SNode, SNode> sourceNodesToNewNodes);
+  /**
+   * @param sourceNodesToNewNodes maps nodes links originate from to nodes that constitute actual copy being inserted. Generally, link sources (recorded
+   *                              in source() present in the map, except for rare scenarios when e.g. CopyPreProcessor replaced a node we've got
+   *                              AssociationLink recorded for (CopyPasteUtil first creates set of nodes, then records their associations, then let
+   *                              CopyPreProcessor to mangle node hierarchy, potentially replacing some link sources. BL_CopyPasteHandlers_CopyPreProcessor_0
+   *                              for VariableReference does this)
+   * @return {@code true} to indicate reference might need re-resolve according to scopes
+   */
+  public abstract boolean establish(Map<SNode, SNode> sourceNodesToNewNodes);
 
   public static AssociationLink create(SReferenceLink link, SNode source, SNode target) {
     return new AssociationLink(source, link) {
       final SNode myTarget = target;
 
       @Override
-      public void establish(Map<SNode, SNode> sourceNodesToNewNodes) {
+      public boolean establish(Map<SNode, SNode> sourceNodesToNewNodes) {
         final SNode newSourceNode = sourceNodesToNewNodes.get(source());
         final SNode newTargetNode = sourceNodesToNewNodes.get(myTarget);
         if (newTargetNode != null) {
@@ -45,6 +53,7 @@ public abstract class AssociationLink {
         } else {
           newSourceNode.setReferenceTarget(link, myTarget);
         }
+        return false;
       }
     };
   }
@@ -54,9 +63,10 @@ public abstract class AssociationLink {
       final ResolveInfo myTarget = target;
 
       @Override
-      public void establish(Map<SNode, SNode> sourceNodesToNewNodes) {
+      public boolean establish(Map<SNode, SNode> sourceNodesToNewNodes) {
         final SNode newSourceNode = sourceNodesToNewNodes.get(source());
         newSourceNode.setReference(link(), myTarget);
+        return true;
       }
     };
   }

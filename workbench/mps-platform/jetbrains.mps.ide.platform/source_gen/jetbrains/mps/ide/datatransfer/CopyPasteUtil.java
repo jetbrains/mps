@@ -134,6 +134,7 @@ public final class CopyPasteUtil {
       MapSequence.fromMap(newNodesToSourceNodes).put(mapping.value(), mapping.key());
     }
 
+    // JFTR preProcessNode may replace some nodes in a node hierarchy of values in newNodesToSourceNodes
     for (SNode target : ListSequence.fromList(targetNodes)) {
       DataTransferManager.getInstance().preProcessNode(target, newNodesToSourceNodes);
     }
@@ -159,7 +160,7 @@ public final class CopyPasteUtil {
       SNode nodeToPaste = CopyPasteUtil.copyNode_internal(sourceNode, null, sourceNodesToNewNodes);
       result.add(nodeToPaste);
     }
-    // just a poor fallback in case old code uses this method and doesn't use createNodeDataIn (which currrently
+    // just a poor fallback in case old code uses this method and doesn't use createNodeDataIn (which currently
     // doesn't add SReference instance to copied nodes, but keep association data separately
     Set<SReference> allReferences = new HashSet<SReference>();
     for (SNode sn : Sequence.fromIterable(SNodeUtil.getDescendants(sourceNodes))) {
@@ -183,18 +184,30 @@ public final class CopyPasteUtil {
       result.add(nodeToPaste);
     }
 
+    Set<SReference> referencesRequireResolve = new HashSet<>();
     // what processReferencesOut used to do
     for (AssociationLink al : CollectionSequence.fromCollection(in.getCopiedLinks())) {
-      al.establish(sourceNodesToNewNodes);
-    }
-    // Old code used to requireResolve references outside of copied hierarchy (and under some additional conditions,
-    // see processReferencesOut(). However, I don't see why it would hurt to try resolving any newly created reference.
-    // FWIW, I'd like to get rid of moving SReference instances around at all.
-    Set<SReference> referencesRequireResolve = new HashSet<>();
-    for (SNode sn : Sequence.fromIterable(SNodeUtil.getDescendants(result))) {
-      for (SReference al : Sequence.fromIterable(sn.getReferences())) {
-        referencesRequireResolve.add(al);
+      SNode newSourceNode = sourceNodesToNewNodes.get(al.source());
+      if (newSourceNode == null) {
+        // sort of hack, I guess. Although we do create AssociationData for nodes we copy, CopyPreProcessor
+        // has a chance to replace node known to this class with another one, and there's no mechanism to figure this out
+        // and update recorded AssociationData. I assume CopyPreProcessor that does that would not expect SReference
+        // resolution mechanism to handle references of replaced node as well. If it does, however, we'd need to 
+        // add processing of SNode.getReferences() in addition to AD processing.
+        continue;
       }
+      boolean requireResolve = al.establish(sourceNodesToNewNodes);
+      // Old code used to requireResolve references outside of copied hierarchy (and under some additional conditions,
+      // see processReferencesOut(). Although I don't see why it would hurt to resolve any newly created reference,
+      // I need to stick to this odd logic to make TestAutoresolve_Variable pass as expected
+      if (requireResolve) {
+        SReference rrr = newSourceNode.getReference(al.link());
+        if (rrr != null) {
+          // generally, I'd expect al.establish to ensure rrr != null, but 'if' got more grace than 'assert'
+          referencesRequireResolve.add(rrr);
+        }
+      }
+      // FWIW, I'd like to get rid of moving SReference instances around at all.
     }
 
     return new PasteNodeData(in, result, referencesRequireResolve);

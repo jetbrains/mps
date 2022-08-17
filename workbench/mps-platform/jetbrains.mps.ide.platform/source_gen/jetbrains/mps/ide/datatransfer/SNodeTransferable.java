@@ -56,7 +56,15 @@ public class SNodeTransferable implements Transferable {
   }
 
   public SNodeTransferable(String text, SNode node) {
-    this(Collections.singletonList(node), text);
+    // XXX beware, here comes important hidden knowledge.
+    // saveText here comes first to make sure CopyPasteUtil.isStringOnTopOfClipboard 
+    // gives true when one copies a text from a reference to get inserted/pasted as text,
+    // not as reference (as I would expect). See TestAutoresolve_Variable test for sample code.
+    saveText(text);
+    myPasteData = saveNodes(Collections.singletonList(node), null);
+    mySupportedDataFlavors.add(SModelDataFlavor.sNode);
+    mySNodeReference = node.getReference();
+    mySupportedDataFlavors.add(SModelDataFlavor.sNodeReference);
   }
 
   @Override
