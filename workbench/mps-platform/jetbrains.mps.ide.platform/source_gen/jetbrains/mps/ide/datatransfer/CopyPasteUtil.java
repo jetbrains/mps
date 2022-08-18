@@ -20,11 +20,11 @@ import java.util.ArrayList;
 import jetbrains.mps.internal.collections.runtime.SetSequence;
 import java.util.HashSet;
 import jetbrains.mps.datatransfer.AssociationLink;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.datatransfer.DataTransferManager;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import org.jetbrains.mps.openapi.model.SNodeUtil;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations;
 import jetbrains.mps.internal.collections.runtime.CollectionSequence;
 import org.jetbrains.annotations.Nullable;
@@ -79,6 +79,7 @@ public final class CopyPasteUtil {
       }
     }
   }
+
   public static PasteNodeData createNodeDataIn(List<SNode> sourceNodes, Map<SNode, Set<SNode>> sourceNodesAndAttributes) {
     if (ListSequence.fromList(sourceNodes).isEmpty()) {
       return PasteNodeData.emptyPasteNodeData(null);
@@ -97,38 +98,6 @@ public final class CopyPasteUtil {
     Set<SLanguage> necessaryLanguages = SetSequence.fromSet(new HashSet<SLanguage>());
     ArrayList<AssociationLink> copiedLinks = new ArrayList<>();
 
-    // processImportsAndLanguages + processReferencesIn in a single loop, with less resolutions of association link targets
-    for (SNode sourceNode : Sequence.fromIterable(SNodeUtil.getDescendants(sourceNodes))) {
-      SetSequence.fromSet(necessaryLanguages).addElement(sourceNode.getConcept().getLanguage());
-      SNode newSourceNode = sourceNodesToNewNodes.get(sourceNode);
-      assert newSourceNode != null : "copyNode_internal has to create a copy for each source node";
-      for (SReference assoc : Sequence.fromIterable(sourceNode.getReferences())) {
-        SNode targetNode = assoc.getTargetNode();
-        final SModelReference targetModel;
-        if (targetNode == null) {
-          targetModel = assoc.getTargetSModelReference();
-          copiedLinks.add(AssociationLink.create(assoc.getLink(), newSourceNode, assoc.describeTarget()));
-        } else {
-          SNode newTargetNode = sourceNodesToNewNodes.get(targetNode);
-          if (newTargetNode != null) {
-            // link within copied node hierarchy
-            copiedLinks.add(AssociationLink.create(assoc.getLink(), newSourceNode, newTargetNode));
-            targetModel = null;
-          } else {
-            // outside of copied hierarchy
-            // Next comment comes from the original code (is it still relevant):
-            // XXX oldTargetNode.model can be null in case it comes from generation process, see MPS-24188; this may be fixed when MPS-23902 is fixed
-            copiedLinks.add(AssociationLink.create(assoc.getLink(), newSourceNode, assoc.describeTarget()));
-            targetModel = targetNode.getReference().getModelReference();
-          }
-        }
-        if (targetModel != null) {
-          //  && !targetModel.equals(model.pointer), perhaps? although this might be more suited for 'paste' check
-          SetSequence.fromSet(necessaryModels).addElement(targetModel);
-        }
-      }
-    }
-
     Map<SNode, SNode> newNodesToSourceNodes = MapSequence.fromMap(new HashMap<SNode, SNode>());
     for (IMapping<SNode, SNode> mapping : MapSequence.fromMap(sourceNodesToNewNodes)) {
       MapSequence.fromMap(newNodesToSourceNodes).put(mapping.value(), mapping.key());
@@ -137,6 +106,53 @@ public final class CopyPasteUtil {
     // JFTR preProcessNode may replace some nodes in a node hierarchy of values in newNodesToSourceNodes
     for (SNode target : ListSequence.fromList(targetNodes)) {
       DataTransferManager.getInstance().preProcessNode(target, newNodesToSourceNodes);
+    }
+
+    // processImportsAndLanguages + processReferencesIn in a single loop, with less resolutions of association link targets
+    // Note, provided preProcessNode may replace some of the new nodes, we walk targets to collect actual associations,
+    // although use original (source) nodes to obtain targets. And yes, we assume topmost target nodes don't get replaced.
+    for (SNode copiedSourceNode : Sequence.fromIterable(SNodeUtil.getDescendants(targetNodes))) {
+      SetSequence.fromSet(necessaryLanguages).addElement(copiedSourceNode.getConcept().getLanguage());
+      SNode originalSourceNode = MapSequence.fromMap(newNodesToSourceNodes).get(copiedSourceNode);
+      final SNode sourceNode;
+      if (originalSourceNode == null) {
+        // although copyNode_internal has to create a copy for each source node, here were likely hit a case
+        // when preProcessNode() replaced some target node. Walk references of this new target, instead.
+        // I don't expect preProcessNode to introduce references within the scope of copied nodes (rather outside),
+        // but it looks like we could still handle this scenario (if it uses non-mature reference for us to get proper 
+        // targetNode, below)
+        sourceNode = copiedSourceNode;
+      } else {
+        // take associations from the original one
+        sourceNode = originalSourceNode;
+      }
+      // copiedSourceNode is the one to serve as a source for new associations
+      // sourceNode serves to walk actual associations (generally it's the one copiedSourceNode was copied from, except for pre-processing case)
+      for (SReference assoc : Sequence.fromIterable(sourceNode.getReferences())) {
+        SNode targetNode = assoc.getTargetNode();
+        final SModelReference targetModel;
+        if (targetNode == null) {
+          targetModel = assoc.getTargetSModelReference();
+          copiedLinks.add(AssociationLink.create(assoc.getLink(), copiedSourceNode, assoc.describeTarget()));
+        } else {
+          SNode newTargetNode = sourceNodesToNewNodes.get(targetNode);
+          if (newTargetNode != null) {
+            // link within copied node hierarchy
+            copiedLinks.add(AssociationLink.create(assoc.getLink(), copiedSourceNode, newTargetNode));
+            targetModel = null;
+          } else {
+            // outside of copied hierarchy
+            // Next comment comes from the original code (is it still relevant):
+            // XXX oldTargetNode.model can be null in case it comes from generation process, see MPS-24188; this may be fixed when MPS-23902 is fixed
+            copiedLinks.add(AssociationLink.create(assoc.getLink(), copiedSourceNode, assoc.describeTarget()));
+            targetModel = targetNode.getReference().getModelReference();
+          }
+        }
+        if (targetModel != null) {
+          //  && !targetModel.equals(model.pointer), perhaps? although this might be more suited for 'paste' check
+          SetSequence.fromSet(necessaryModels).addElement(targetModel);
+        }
+      }
     }
 
     return new PasteNodeData(SModelOperations.getPointer(model), targetNodes, copiedLinks, necessaryLanguages, necessaryModels);
