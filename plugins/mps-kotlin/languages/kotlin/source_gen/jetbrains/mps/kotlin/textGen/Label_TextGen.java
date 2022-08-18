@@ -11,5 +11,6 @@ public class Label_TextGen extends TextGenDescriptorBase {
   public void generateText(final TextGenContext ctx) {
     final TextGenSupport tgs = new TextGenSupport(ctx);
     KotlinTextGen.identifier(ctx.getPrimaryInput(), ctx);
+    tgs.append("@");
   }
 }

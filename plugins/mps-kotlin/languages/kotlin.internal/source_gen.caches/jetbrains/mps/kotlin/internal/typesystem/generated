@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<product version="3" modelHash="9ot580ja2900lm6kq14bcgv8yxja8uh" parametersHash="-41ltrwj0nqxsjaty8zxe523b17jus4m">
+<product version="3" modelHash="9ot580ja2900lm6kq14bcgv8yxja8uh">
   <files names="TypesystemDescriptor.java:typeof_TextReference_InferenceRule.java" />
 </product>
 

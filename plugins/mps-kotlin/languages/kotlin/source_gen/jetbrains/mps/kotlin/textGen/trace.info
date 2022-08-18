@@ -711,14 +711,15 @@
     <file name="Label_TextGen.java">
       <node id="6153771967696085249" at="11,54,12,55" concept="8" />
       <node id="419267039270912258" at="12,55,13,57" concept="3" />
-      <node id="6153771967696085249" at="10,0,15,0" concept="7" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
-      <scope id="6153771967696085249" at="11,54,13,57">
+      <node id="7397702209168206901" at="13,57,14,20" concept="3" />
+      <node id="6153771967696085249" at="10,0,16,0" concept="7" trace="generateText#(Ljetbrains/mps/text/rt/TextGenContext;)V" />
+      <scope id="6153771967696085249" at="11,54,14,20">
         <var name="tgs" id="6153771967696085249" />
       </scope>
-      <scope id="6153771967696085249" at="10,0,15,0">
+      <scope id="6153771967696085249" at="10,0,16,0">
         <var name="ctx" id="6153771967696085249" />
       </scope>
-      <unit id="6153771967696085249" at="9,0,16,0" name="jetbrains.mps.kotlin.textGen.Label_TextGen" />
+      <unit id="6153771967696085249" at="9,0,17,0" name="jetbrains.mps.kotlin.textGen.Label_TextGen" />
     </file>
     <file name="TextGenAspectDescriptor.java">
       <node id="6153771967696085249" at="169,39,170,35" concept="9" />

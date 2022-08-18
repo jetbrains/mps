@@ -9,10 +9,13 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Collection;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Indent;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.nodeEditor.cells.EditorCell_Constant;
 import jetbrains.mps.openapi.editor.style.Style;
 import jetbrains.mps.editor.runtime.style.StyleImpl;
 import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.KeywordStyleClass;
+import org.jetbrains.mps.openapi.language.SReferenceLink;
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 
 /*package*/ class BreakExpression_EditorBuilder_a extends AbstractEditorBuilder {
   @NotNull
@@ -39,8 +42,13 @@ import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.KeywordStyleClass;
     editorCell.setBig(true);
     setCellContext(editorCell);
     editorCell.addEditorCell(createConstant_0());
-    editorCell.addEditorCell(createComponent_0());
+    if (nodeCondition_sslhbu_a1a()) {
+      editorCell.addEditorCell(createComponent_0());
+    }
     return editorCell;
+  }
+  private boolean nodeCondition_sslhbu_a1a() {
+    return (SLinkOperations.getTarget(myNode, LINKS.targetLabel$iS7r) != null);
   }
   private EditorCell createConstant_0() {
     EditorCell_Constant editorCell = new EditorCell_Constant(getEditorContext(), myNode, "break");
@@ -54,5 +62,9 @@ import jetbrains.mps.kotlin.editor.KotlinStyles_StyleSheet.KeywordStyleClass;
   private EditorCell createComponent_0() {
     EditorCell editorCell = getCellFactory().createEditorComponentCell(myNode, "jetbrains.mps.kotlin.editor.LabelTarget_Component");
     return editorCell;
+  }
+
+  private static final class LINKS {
+    /*package*/ static final SReferenceLink targetLabel$iS7r = MetaAdapterFactory.getReferenceLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb790af2908L, 0x11400bb790af2909L, "targetLabel");
   }
 }

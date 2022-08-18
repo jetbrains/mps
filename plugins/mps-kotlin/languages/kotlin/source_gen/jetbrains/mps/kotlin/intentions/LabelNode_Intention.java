@@ -65,7 +65,7 @@ public final class LabelNode_Intention extends AbstractIntentionDescriptor imple
     }
 
     private boolean isApplicableToNode(final SNode node, final EditorContext editorContext) {
-      return (SLinkOperations.getTarget(node, LINKS.label$EneV) != null);
+      return (SLinkOperations.getTarget(node, LINKS.label$EneV) == null);
     }
 
 

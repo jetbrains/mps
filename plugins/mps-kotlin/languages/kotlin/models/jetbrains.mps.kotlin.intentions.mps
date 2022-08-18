@@ -118,7 +118,6 @@
       </concept>
       <concept id="6870613620390542976" name="jetbrains.mps.lang.smodel.structure.ConceptAliasOperation" flags="ng" index="3n3YKJ" />
       <concept id="1171999116870" name="jetbrains.mps.lang.smodel.structure.Node_IsNullOperation" flags="nn" index="3w_OXm" />
-      <concept id="1172008320231" name="jetbrains.mps.lang.smodel.structure.Node_IsNotNullOperation" flags="nn" index="3x8VRR" />
       <concept id="1139867745658" name="jetbrains.mps.lang.smodel.structure.Node_ReplaceWithNewOperation" flags="nn" index="1_qnLN">
         <reference id="1139867957129" name="concept" index="1_rbq0" />
       </concept>
@@ -251,7 +250,7 @@
                 <ref role="3Tt5mk" to="hcm8:6cg9X74hA$J" resolve="label" />
               </node>
             </node>
-            <node concept="3x8VRR" id="6cg9X74hDQf" role="2OqNvi" />
+            <node concept="3w_OXm" id="6qDUJrF$pU5" role="2OqNvi" />
           </node>
         </node>
       </node>
