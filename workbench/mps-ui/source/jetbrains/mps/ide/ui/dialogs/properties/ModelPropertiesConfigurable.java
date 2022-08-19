@@ -295,11 +295,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
           showUsageImpl(query, provider);
           forceCancelCloseDialog();
         }
-      }).addExtraAction(new AnActionButton() {
-        {
-          getTemplatePresentation().setIcon(MPSIcons.General.ModelChecker);
-          getTemplatePresentation().setText(PropertiesBundle.message("model.dependencies.unused"));
-        }
+      }).addExtraAction(new AnActionButton(PropertiesBundle.message("model.dependencies.unused"), MPSIcons.General.ModelChecker) {
 
         @Override
         public boolean isEnabled() {
@@ -443,12 +439,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
         }
       });
 
-      decorator.addExtraAction(new AnActionButton() {
-        {
-          getTemplatePresentation().setEnabled(myIsReadOnly);
-          getTemplatePresentation().setIcon(MPSIcons.General.ModelChecker);
-          getTemplatePresentation().setText(PropertiesBundle.message("model.usedlanugages.unused"));
-        }
+      final AnActionButton removeUnusedLang = new AnActionButton(PropertiesBundle.message("model.usedlanugages.unused"), General.ModelChecker) {
 
         @Override
         public void actionPerformed(AnActionEvent e) {
@@ -466,7 +457,9 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
             }
           });
         }
-      });
+      };
+      removeUnusedLang.setEnabled(!myIsReadOnly);
+      decorator.addExtraAction(removeUnusedLang);
       return decorator;
     }
   }
