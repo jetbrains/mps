@@ -38,9 +38,20 @@ public class RenameModuleDialog extends RenameDialog {
   @Nullable
   @Override
   protected String checkValue() {
+    final String fqName = getCurrentValue();
+    if (fqName.isBlank()) {
+      return "Invalid namespace";
+    }
+    // don't want to force 'java package' semantics on module name
+    // but demand reasonable first and last character at least (prevent names like '.')
+    if (!(Character.isJavaIdentifierStart(fqName.charAt(0)))) {
+      return String.format("Namespace can't start with '%c'", fqName.charAt(0));
+    }
+    if (!(Character.isJavaIdentifierPart(fqName.charAt(fqName.length() - 1)))) {
+      return String.format("Namespace can't end with '%c'", fqName.charAt(fqName.length() - 1));
+    }
     final Wrappers._T<String> checkResult = new Wrappers._T<String>(null);
     myProject.getRepository().getModelAccess().runReadAction(() -> {
-      final String fqName = getCurrentValue();
       for (final SModule module : myProject.getRepository().getModules()) {
         if (module.equals(myModule)) {
           continue;
