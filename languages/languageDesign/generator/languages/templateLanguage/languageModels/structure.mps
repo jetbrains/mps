@@ -738,13 +738,6 @@
       <property role="TrG5h" value="keepSourceRoot" />
       <property role="IQ2nx" value="1177959072138" />
       <ref role="AX2Wp" to="tpcw:3Ftr4R6BFwW" resolve="Options_DefaultTrue" />
-      <node concept="3l_iC" id="3Ftr4R6BH5W" role="lGtFl">
-        <node concept="1TJgyi" id="h93Pg6a" role="3l_iP">
-          <property role="TrG5h" value="keepSourceRoot" />
-          <property role="IQ2nx" value="1177959072138" />
-          <ref role="AX2Wp" to="tpcw:3Ftr4R6BFwW" resolve="Options_DefaultTrue" />
-        </node>
-      </node>
     </node>
     <node concept="1TJgyj" id="gZlhOrt" role="1TKVEi">
       <property role="20kJfa" value="template" />

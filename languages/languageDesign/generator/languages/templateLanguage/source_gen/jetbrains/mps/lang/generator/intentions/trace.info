@@ -16,7 +16,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="IntentionsDescriptor.java">
-      <unit at="18,0,218,0" name="jetbrains.mps.lang.generator.intentions.IntentionsDescriptor" />
+      <unit at="18,0,202,0" name="jetbrains.mps.lang.generator.intentions.IntentionsDescriptor" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1203775431223">
@@ -122,8 +122,8 @@
       <unit id="1203775431223" at="27,0,120,0" name="jetbrains.mps.lang.generator.intentions.ConvertInlineTemplateToTemplateFragment_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1203775431223" at="97,47,98,82" concept="2" />
-      <node id="1203775431223" at="182,53,183,68" concept="2" />
+      <node id="1203775431223" at="90,47,91,82" concept="2" />
+      <node id="1203775431223" at="168,53,169,68" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1205436780371">
@@ -222,8 +222,8 @@
       <unit id="1205436780371" at="31,0,113,0" name="jetbrains.mps.lang.generator.intentions.ConvertTemplateDeclRefToInlineTemplate_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="1205436780371" at="148,47,149,81" concept="2" />
-      <node id="1205436780371" at="183,68,184,67" concept="2" />
+      <node id="1205436780371" at="134,47,135,81" concept="2" />
+      <node id="1205436780371" at="169,68,170,67" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1207152859258">
@@ -301,7 +301,7 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1207152859258" at="44,48,45,55" concept="2" />
-      <node id="1207152859258" at="184,67,185,41" concept="2" />
+      <node id="1207152859258" at="170,67,171,41" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1207154194671">
@@ -380,7 +380,7 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1207154194671" at="45,55,46,59" concept="2" />
-      <node id="1207154194671" at="185,41,186,45" concept="2" />
+      <node id="1207154194671" at="171,41,172,45" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1207154220489">
@@ -459,13 +459,13 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1207154220489" at="46,59,47,60" concept="2" />
-      <node id="1207154220489" at="186,45,187,46" concept="2" />
+      <node id="1207154220489" at="172,45,173,46" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1210374656847760938">
     <file name="IntentionsDescriptor.java">
       <node id="1210374656847760938" at="55,68,56,73" concept="2" />
-      <node id="1210374656847760938" at="206,58,207,59" concept="2" />
+      <node id="1210374656847760938" at="190,58,191,59" concept="2" />
     </file>
     <file name="ReplaceWithConcreteSubconcept_Intention.java">
       <node id="1210374656847760938" at="27,52,28,154" concept="13" />
@@ -576,8 +576,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1216319039419">
     <file name="IntentionsDescriptor.java">
-      <node id="1216319039419" at="162,47,163,65" concept="2" />
-      <node id="1216319039419" at="187,46,188,51" concept="2" />
+      <node id="1216319039419" at="148,47,149,65" concept="2" />
+      <node id="1216319039419" at="173,46,174,51" concept="2" />
     </file>
     <file name="NewTemplateInWeaveEach_Intention.java">
       <node id="1216319039419" at="31,0,32,0" concept="3" trace="myCachedExecutable" />
@@ -696,8 +696,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1216320260188">
     <file name="IntentionsDescriptor.java">
-      <node id="1216320260188" at="126,47,127,69" concept="2" />
-      <node id="1216320260188" at="188,51,189,55" concept="2" />
+      <node id="1216320260188" at="119,47,120,69" concept="2" />
+      <node id="1216320260188" at="174,51,175,55" concept="2" />
     </file>
     <file name="NewTemplateInReductionRule_Intention.java">
       <node id="1216320260188" at="32,0,33,0" concept="3" trace="myCachedExecutable" />
@@ -808,8 +808,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1216323872536">
     <file name="IntentionsDescriptor.java">
-      <node id="1216323872536" at="155,47,156,69" concept="2" />
-      <node id="1216323872536" at="189,55,190,55" concept="2" />
+      <node id="1216323872536" at="141,47,142,69" concept="2" />
+      <node id="1216323872536" at="175,55,176,55" concept="2" />
     </file>
     <file name="NewTemplateInSwitchDefault_Intention.java">
       <node id="1216323872536" at="30,0,31,0" concept="3" trace="myCachedExecutable" />
@@ -898,233 +898,6 @@
       <unit id="1216323872536" at="106,0,110,0" name="jetbrains.mps.lang.generator.intentions.NewTemplateInSwitchDefault_Intention$LINKS" />
       <unit id="1216323872536" at="52,0,96,0" name="jetbrains.mps.lang.generator.intentions.NewTemplateInSwitchDefault_Intention$IntentionImplementation" />
       <unit id="1216323872536" at="29,0,111,0" name="jetbrains.mps.lang.generator.intentions.NewTemplateInSwitchDefault_Intention" />
-    </file>
-  </root>
-  <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1216334426557">
-    <file name="IntentionsDescriptor.java">
-      <node id="1216334426557" at="134,47,135,71" concept="2" />
-      <node id="1216334426557" at="190,55,191,57" concept="2" />
-    </file>
-    <file name="NewTemplateInRootMappingRule_Intention.java">
-      <node id="1216334426557" at="32,0,33,0" concept="3" trace="myCachedExecutable" />
-      <node id="1216334426557" at="34,51,35,148" concept="13" />
-      <node id="1216334426557" at="39,35,40,42" concept="8" />
-      <node id="1216334426557" at="44,35,45,17" concept="8" />
-      <node id="1216334426557" at="49,37,50,105" concept="2" />
-      <node id="1216334426557" at="51,5,52,30" concept="8" />
-      <node id="1216334426560" at="59,87,60,33" concept="8" />
-      <node id="1216334426564" at="64,78,65,107" concept="7" />
-      <node id="1216334426571" at="66,59,67,140" concept="2" />
-      <node id="1216335853053" at="68,7,69,30" concept="7" />
-      <node id="9080025156919276879" at="71,76,72,118" concept="2" />
-      <node id="7668726104733251107" at="73,9,74,59" concept="2" />
-      <node id="325325099010820385" at="74,59,75,165" concept="2" />
-      <node id="9080025156919276899" at="75,165,76,213" concept="2" />
-      <node id="9080025156919276911" at="76,213,77,67" concept="2" />
-      <node id="6925838366768086446" at="77,67,78,70" concept="2" />
-      <node id="9080025156919276835" at="80,102,81,23" concept="8" />
-      <node id="9080025156919276843" at="83,108,84,23" concept="8" />
-      <node id="9080025156919276851" at="86,107,87,23" concept="8" />
-      <node id="9080025156919276859" at="89,101,90,23" concept="8" />
-      <node id="9080025156919276865" at="91,9,92,20" concept="8" />
-      <node id="1216334426557" at="98,55,99,21" concept="8" />
-      <node id="1216334426557" at="100,7,101,18" concept="8" />
-      <node id="1216334426623" at="104,93,105,74" concept="8" />
-      <node id="1216334426557" at="110,48,111,57" concept="8" />
-      <node id="1216334426557" at="117,0,118,0" concept="11" trace="applicableConcept$Hpnk" />
-      <node id="1216334426557" at="118,0,119,0" concept="11" trace="applicableConcept$LAIX" />
-      <node id="1216334426557" at="119,0,120,0" concept="11" trace="template$n_Qy" />
-      <node id="1216334426557" at="123,0,124,0" concept="11" trace="name$MnvL" />
-      <node id="1216334426557" at="127,0,128,0" concept="11" trace="INamedConcept$Kd" />
-      <node id="1216334426557" at="128,0,129,0" concept="11" trace="RootTemplateAnnotation$9O" />
-      <node id="1216334426557" at="129,0,130,0" concept="11" trace="TemplateSwitch$j_" />
-      <node id="1216334426557" at="130,0,131,0" concept="11" trace="MappingConfiguration$7j" />
-      <node id="1216334426557" at="131,0,132,0" concept="11" trace="TemplateDeclaration$5G" />
-      <node id="1216334426557" at="132,0,133,0" concept="11" trace="MappingScript$kP" />
-      <node id="1216334426557" at="55,0,57,0" concept="1" trace="IntentionImplementation#()V" />
-      <node id="1216334426557" at="34,0,37,0" concept="1" trace="NewTemplateInRootMappingRule_Intention#()V" />
-      <node id="1216334426557" at="48,99,51,5" concept="5" />
-      <node id="1216334426569" at="65,107,68,7" concept="5" />
-      <node id="9080025156919276871" at="70,80,73,9" concept="5" />
-      <node id="9080025156919276833" at="79,26,82,9" concept="5" />
-      <node id="9080025156919276841" at="82,9,85,9" concept="5" />
-      <node id="9080025156919276849" at="85,9,88,9" concept="5" />
-      <node id="9080025156919276857" at="88,9,91,9" concept="5" />
-      <node id="1216334426557" at="97,86,100,7" concept="5" />
-      <node id="1216334426557" at="104,0,107,0" concept="6" trace="isApplicableToNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
-      <node id="1216334426557" at="38,0,42,0" concept="6" trace="getPresentation#()Ljava/lang/String;" />
-      <node id="1216334426557" at="43,0,47,0" concept="6" trace="isSurroundWith#()Z" />
-      <node id="1216334426557" at="58,0,62,0" concept="6" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />
-      <node id="1216334426557" at="109,0,113,0" concept="6" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
-      <node id="1216334426557" at="48,0,54,0" concept="6" trace="instances#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/Collection;" />
-      <node id="1216334426557" at="96,0,103,0" concept="6" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
-      <node id="1216334648943" at="69,30,93,9" concept="2" />
-      <node id="1216334426557" at="63,0,95,0" concept="6" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
-      <scope id="1216334426557" at="55,38,55,38" />
-      <scope id="1216334426557" at="34,51,35,148" />
-      <scope id="1216334426557" at="39,35,40,42" />
-      <scope id="1216334426557" at="44,35,45,17" />
-      <scope id="1216334426557" at="49,37,50,105" />
-      <scope id="1216334426559" at="59,87,60,33" />
-      <scope id="1216334426570" at="66,59,67,140" />
-      <scope id="9080025156919276872" at="71,76,72,118" />
-      <scope id="9080025156919276834" at="80,102,81,23" />
-      <scope id="9080025156919276842" at="83,108,84,23" />
-      <scope id="9080025156919276850" at="86,107,87,23" />
-      <scope id="9080025156919276858" at="89,101,90,23" />
-      <scope id="1216334426557" at="98,55,99,21" />
-      <scope id="1216334426622" at="104,93,105,74" />
-      <scope id="1216334426557" at="110,48,111,57" />
-      <scope id="1216334426557" at="55,0,57,0" />
-      <scope id="1216334426557" at="34,0,37,0" />
-      <scope id="1216334426557" at="104,0,107,0">
-        <var name="editorContext" id="1216334426557" />
-        <var name="node" id="1216334426557" />
-      </scope>
-      <scope id="1216334426557" at="38,0,42,0" />
-      <scope id="1216334426557" at="43,0,47,0" />
-      <scope id="1216334426557" at="48,99,52,30" />
-      <scope id="1216334426557" at="58,0,62,0">
-        <var name="editorContext" id="1216334426557" />
-        <var name="node" id="1216334426557" />
-      </scope>
-      <scope id="1216334426557" at="97,86,101,18" />
-      <scope id="1216334426557" at="109,0,113,0" />
-      <scope id="1216334426557" at="48,0,54,0">
-        <var name="context" id="1216334426557" />
-        <var name="node" id="1216334426557" />
-      </scope>
-      <scope id="1216334426557" at="96,0,103,0">
-        <var name="editorContext" id="1216334426557" />
-        <var name="node" id="1216334426557" />
-      </scope>
-      <scope id="9080025156919276870" at="70,80,78,70" />
-      <scope id="9080025156919276832" at="79,26,92,20" />
-      <scope id="1216334426563" at="64,78,93,9">
-        <var name="name" id="1216334426565" />
-        <var name="rule" id="1216335853054" />
-      </scope>
-      <scope id="1216334426557" at="63,0,95,0">
-        <var name="editorContext" id="1216334426557" />
-        <var name="node" id="1216334426557" />
-      </scope>
-      <unit id="1216334426557" at="122,0,125,0" name="jetbrains.mps.lang.generator.intentions.NewTemplateInRootMappingRule_Intention$PROPS" />
-      <unit id="1216334426557" at="116,0,121,0" name="jetbrains.mps.lang.generator.intentions.NewTemplateInRootMappingRule_Intention$LINKS" />
-      <unit id="1216334426557" at="126,0,134,0" name="jetbrains.mps.lang.generator.intentions.NewTemplateInRootMappingRule_Intention$CONCEPTS" />
-      <unit id="1216334426557" at="54,0,115,0" name="jetbrains.mps.lang.generator.intentions.NewTemplateInRootMappingRule_Intention$IntentionImplementation" />
-      <unit id="1216334426557" at="31,0,135,0" name="jetbrains.mps.lang.generator.intentions.NewTemplateInRootMappingRule_Intention" />
-    </file>
-  </root>
-  <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1216337594117">
-    <file name="IntentionsDescriptor.java">
-      <node id="1216337594117" at="69,47,70,70" concept="2" />
-      <node id="1216337594117" at="191,57,192,56" concept="2" />
-    </file>
-    <file name="NewTemplateInCreateRootRule_Intention.java">
-      <node id="1216337594117" at="32,0,33,0" concept="3" trace="myCachedExecutable" />
-      <node id="1216337594117" at="34,50,35,148" concept="13" />
-      <node id="1216337594117" at="39,35,40,41" concept="8" />
-      <node id="1216337594117" at="44,35,45,17" concept="8" />
-      <node id="1216337594117" at="49,37,50,105" concept="2" />
-      <node id="1216337594117" at="51,5,52,30" concept="8" />
-      <node id="1216337594120" at="59,87,60,33" concept="8" />
-      <node id="1216337594124" at="64,78,65,107" concept="7" />
-      <node id="1216337594131" at="66,59,67,30" concept="2" />
-      <node id="1216337594150" at="68,7,69,30" concept="7" />
-      <node id="6727473024018749779" at="71,76,72,118" concept="2" />
-      <node id="6727473024018749787" at="73,9,74,59" concept="2" />
-      <node id="6727473024018766499" at="74,59,75,165" concept="2" />
-      <node id="6727473024018749791" at="75,165,76,71" concept="2" />
-      <node id="6727473024018749799" at="76,71,77,70" concept="2" />
-      <node id="6727473024018749735" at="79,102,80,23" concept="8" />
-      <node id="6727473024018749743" at="82,108,83,23" concept="8" />
-      <node id="6727473024018749751" at="85,107,86,23" concept="8" />
-      <node id="6727473024018749759" at="88,101,89,23" concept="8" />
-      <node id="6727473024018749765" at="90,9,91,20" concept="8" />
-      <node id="1216337594117" at="97,55,98,21" concept="8" />
-      <node id="1216337594117" at="99,7,100,18" concept="8" />
-      <node id="1216337594234" at="103,93,104,78" concept="8" />
-      <node id="1216337594117" at="109,48,110,56" concept="8" />
-      <node id="1216337594117" at="116,0,117,0" concept="11" trace="INamedConcept$Kd" />
-      <node id="1216337594117" at="117,0,118,0" concept="11" trace="RootTemplateAnnotation$9O" />
-      <node id="1216337594117" at="118,0,119,0" concept="11" trace="TemplateSwitch$j_" />
-      <node id="1216337594117" at="119,0,120,0" concept="11" trace="MappingConfiguration$7j" />
-      <node id="1216337594117" at="120,0,121,0" concept="11" trace="TemplateDeclaration$5G" />
-      <node id="1216337594117" at="121,0,122,0" concept="11" trace="MappingScript$kP" />
-      <node id="1216337594117" at="125,0,126,0" concept="11" trace="name$MnvL" />
-      <node id="1216337594117" at="129,0,130,0" concept="11" trace="templateNode$vPtI" />
-      <node id="1216337594117" at="55,0,57,0" concept="1" trace="IntentionImplementation#()V" />
-      <node id="1216337594117" at="34,0,37,0" concept="1" trace="NewTemplateInCreateRootRule_Intention#()V" />
-      <node id="1216337594117" at="48,99,51,5" concept="5" />
-      <node id="1216337594129" at="65,107,68,7" concept="5" />
-      <node id="6727473024018749771" at="70,80,73,9" concept="5" />
-      <node id="6727473024018749733" at="78,26,81,9" concept="5" />
-      <node id="6727473024018749741" at="81,9,84,9" concept="5" />
-      <node id="6727473024018749749" at="84,9,87,9" concept="5" />
-      <node id="6727473024018749757" at="87,9,90,9" concept="5" />
-      <node id="1216337594117" at="96,86,99,7" concept="5" />
-      <node id="1216337594117" at="103,0,106,0" concept="6" trace="isApplicableToNode#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
-      <node id="1216337594117" at="38,0,42,0" concept="6" trace="getPresentation#()Ljava/lang/String;" />
-      <node id="1216337594117" at="43,0,47,0" concept="6" trace="isSurroundWith#()Z" />
-      <node id="1216337594117" at="58,0,62,0" concept="6" trace="getDescription#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/lang/String;" />
-      <node id="1216337594117" at="108,0,112,0" concept="6" trace="getDescriptor#()Ljetbrains/mps/openapi/intentions/IntentionDescriptor;" />
-      <node id="1216337594117" at="48,0,54,0" concept="6" trace="instances#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Ljava/util/Collection;" />
-      <node id="1216337594117" at="95,0,102,0" concept="6" trace="isApplicable#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)Z" />
-      <node id="1216337594154" at="69,30,92,9" concept="2" />
-      <node id="1216337594117" at="63,0,94,0" concept="6" trace="execute#(Lorg/jetbrains/mps/openapi/model/SNode;Ljetbrains/mps/openapi/editor/EditorContext;)V" />
-      <scope id="1216337594117" at="55,38,55,38" />
-      <scope id="1216337594117" at="34,50,35,148" />
-      <scope id="1216337594117" at="39,35,40,41" />
-      <scope id="1216337594117" at="44,35,45,17" />
-      <scope id="1216337594117" at="49,37,50,105" />
-      <scope id="1216337594119" at="59,87,60,33" />
-      <scope id="1216337594130" at="66,59,67,30" />
-      <scope id="6727473024018749772" at="71,76,72,118" />
-      <scope id="6727473024018749734" at="79,102,80,23" />
-      <scope id="6727473024018749742" at="82,108,83,23" />
-      <scope id="6727473024018749750" at="85,107,86,23" />
-      <scope id="6727473024018749758" at="88,101,89,23" />
-      <scope id="1216337594117" at="97,55,98,21" />
-      <scope id="1216337594233" at="103,93,104,78" />
-      <scope id="1216337594117" at="109,48,110,56" />
-      <scope id="1216337594117" at="55,0,57,0" />
-      <scope id="1216337594117" at="34,0,37,0" />
-      <scope id="1216337594117" at="103,0,106,0">
-        <var name="editorContext" id="1216337594117" />
-        <var name="node" id="1216337594117" />
-      </scope>
-      <scope id="1216337594117" at="38,0,42,0" />
-      <scope id="1216337594117" at="43,0,47,0" />
-      <scope id="1216337594117" at="48,99,52,30" />
-      <scope id="1216337594117" at="58,0,62,0">
-        <var name="editorContext" id="1216337594117" />
-        <var name="node" id="1216337594117" />
-      </scope>
-      <scope id="1216337594117" at="96,86,100,18" />
-      <scope id="1216337594117" at="108,0,112,0" />
-      <scope id="1216337594117" at="48,0,54,0">
-        <var name="context" id="1216337594117" />
-        <var name="node" id="1216337594117" />
-      </scope>
-      <scope id="6727473024018749770" at="70,80,77,70" />
-      <scope id="1216337594117" at="95,0,102,0">
-        <var name="editorContext" id="1216337594117" />
-        <var name="node" id="1216337594117" />
-      </scope>
-      <scope id="6727473024018749726" at="78,26,91,20" />
-      <scope id="1216337594123" at="64,78,92,9">
-        <var name="name" id="1216337594125" />
-        <var name="rule" id="1216337594151" />
-      </scope>
-      <scope id="1216337594117" at="63,0,94,0">
-        <var name="editorContext" id="1216337594117" />
-        <var name="node" id="1216337594117" />
-      </scope>
-      <unit id="1216337594117" at="124,0,127,0" name="jetbrains.mps.lang.generator.intentions.NewTemplateInCreateRootRule_Intention$PROPS" />
-      <unit id="1216337594117" at="128,0,131,0" name="jetbrains.mps.lang.generator.intentions.NewTemplateInCreateRootRule_Intention$LINKS" />
-      <unit id="1216337594117" at="115,0,123,0" name="jetbrains.mps.lang.generator.intentions.NewTemplateInCreateRootRule_Intention$CONCEPTS" />
-      <unit id="1216337594117" at="54,0,114,0" name="jetbrains.mps.lang.generator.intentions.NewTemplateInCreateRootRule_Intention$IntentionImplementation" />
-      <unit id="1216337594117" at="31,0,132,0" name="jetbrains.mps.lang.generator.intentions.NewTemplateInCreateRootRule_Intention" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1240572960649">
@@ -1272,7 +1045,7 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1240572960649" at="47,60,48,68" concept="2" />
-      <node id="1240572960649" at="192,56,193,55" concept="2" />
+      <node id="1240572960649" at="176,55,177,54" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1240573470307">
@@ -1424,7 +1197,7 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1240573470307" at="48,68,49,70" concept="2" />
-      <node id="1240573470307" at="193,55,194,57" concept="2" />
+      <node id="1240573470307" at="177,54,178,56" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1240595522621">
@@ -1593,7 +1366,7 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1240595522621" at="49,70,50,73" concept="2" />
-      <node id="1240595522621" at="194,57,195,60" concept="2" />
+      <node id="1240595522621" at="178,56,179,60" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1240595838065">
@@ -1730,7 +1503,7 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1240595838065" at="50,73,51,73" concept="2" />
-      <node id="1240595838065" at="195,60,196,60" concept="2" />
+      <node id="1240595838065" at="179,60,180,60" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1240595864245">
@@ -1867,7 +1640,7 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1240595864245" at="51,73,52,74" concept="2" />
-      <node id="1240595864245" at="196,60,197,61" concept="2" />
+      <node id="1240595864245" at="180,60,181,61" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1240595919493">
@@ -2004,7 +1777,7 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1240595919493" at="52,74,53,70" concept="2" />
-      <node id="1240595919493" at="197,61,198,57" concept="2" />
+      <node id="1240595919493" at="181,61,182,57" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1749435289063221050">
@@ -2065,7 +1838,7 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="1749435289063221050" at="37,47,38,62" concept="2" />
-      <node id="1749435289063221050" at="209,52,210,49" concept="2" />
+      <node id="1749435289063221050" at="193,52,194,49" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/1980960612890491907">
@@ -2341,8 +2114,8 @@
       <unit id="2357139912674486242" at="26,0,102,0" name="jetbrains.mps.lang.generator.intentions.CreateScript_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="2357139912674486242" at="119,47,120,55" concept="2" />
-      <node id="2357139912674486242" at="200,54,201,42" concept="2" />
+      <node id="2357139912674486242" at="112,47,113,55" concept="2" />
+      <node id="2357139912674486242" at="184,54,185,42" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/34229510189607557">
@@ -2449,7 +2222,7 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="34229510189607557" at="62,47,63,71" concept="2" />
-      <node id="34229510189607557" at="205,54,206,58" concept="2" />
+      <node id="34229510189607557" at="189,54,190,58" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/3462145372628250475">
@@ -2557,8 +2330,8 @@
       <unit id="3462145372628250475" at="24,0,112,0" name="jetbrains.mps.lang.generator.intentions.AddContext_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="3462145372628250475" at="98,82,99,53" concept="2" />
-      <node id="3462145372628250475" at="207,59,208,40" concept="2" />
+      <node id="3462145372628250475" at="91,82,92,53" concept="2" />
+      <node id="3462145372628250475" at="191,59,192,40" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/3644457381597319727">
@@ -2669,13 +2442,13 @@
     </file>
     <file name="IntentionsDescriptor.java">
       <node id="3644457381597319727" at="54,62,55,68" concept="2" />
-      <node id="3644457381597319727" at="204,59,205,54" concept="2" />
+      <node id="3644457381597319727" at="188,59,189,54" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/3657407729746493394">
     <file name="IntentionsDescriptor.java">
-      <node id="3657407729746493394" at="141,47,142,64" concept="2" />
-      <node id="3657407729746493394" at="210,49,211,51" concept="2" />
+      <node id="3657407729746493394" at="127,47,128,64" concept="2" />
+      <node id="3657407729746493394" at="194,49,195,51" concept="2" />
     </file>
     <file name="UnwrapQueryExpression_Intention.java">
       <node id="3657407729746493394" at="27,0,28,0" concept="3" trace="myCachedExecutable" />
@@ -2787,8 +2560,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/5324767449429709001">
     <file name="IntentionsDescriptor.java">
-      <node id="5324767449429709001" at="76,47,77,61" concept="2" />
-      <node id="5324767449429709001" at="212,52,213,48" concept="2" />
+      <node id="5324767449429709001" at="69,47,70,61" concept="2" />
+      <node id="5324767449429709001" at="196,52,197,48" concept="2" />
     </file>
     <file name="ToggleNeedCallSite_Intention.java">
       <node id="5324767449429709001" at="25,0,26,0" concept="3" trace="myCachedExecutable" />
@@ -3016,8 +2789,8 @@
       <unit id="6420301932290385125" at="35,0,158,0" name="jetbrains.mps.lang.generator.intentions.ConvertToReferenceCall_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="6420301932290385125" at="105,47,106,65" concept="2" />
-      <node id="6420301932290385125" at="211,51,212,52" concept="2" />
+      <node id="6420301932290385125" at="98,47,99,65" concept="2" />
+      <node id="6420301932290385125" at="195,51,196,52" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/7834938100936599479">
@@ -3147,14 +2920,14 @@
       <unit id="7834938100936599479" at="24,0,129,0" name="jetbrains.mps.lang.generator.intentions.ConvertLoopWithCopySrc_Intention" />
     </file>
     <file name="IntentionsDescriptor.java">
-      <node id="7834938100936599479" at="112,47,113,65" concept="2" />
-      <node id="7834938100936599479" at="208,40,209,52" concept="2" />
+      <node id="7834938100936599479" at="105,47,106,65" concept="2" />
+      <node id="7834938100936599479" at="192,40,193,52" concept="2" />
     </file>
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/8004199436029426156">
     <file name="IntentionsDescriptor.java">
-      <node id="8004199436029426156" at="127,69,128,66" concept="2" />
-      <node id="8004199436029426156" at="201,42,202,53" concept="2" />
+      <node id="8004199436029426156" at="120,69,121,66" concept="2" />
+      <node id="8004199436029426156" at="185,42,186,53" concept="2" />
     </file>
     <file name="NewTemplateInSwitchCase_Intention.java">
       <node id="8004199436029426156" at="32,0,33,0" concept="3" trace="myCachedExecutable" />
@@ -3265,8 +3038,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/8004199436029429270">
     <file name="IntentionsDescriptor.java">
-      <node id="8004199436029429270" at="90,47,91,75" concept="2" />
-      <node id="8004199436029429270" at="202,53,203,62" concept="2" />
+      <node id="8004199436029429270" at="83,47,84,75" concept="2" />
+      <node id="8004199436029429270" at="186,53,187,62" concept="2" />
     </file>
     <file name="NewTemplateInInlineSwitchDefault_Intention.java">
       <node id="8004199436029429270" at="30,0,31,0" concept="3" trace="myCachedExecutable" />
@@ -3365,8 +3138,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/8004199436029429362">
     <file name="IntentionsDescriptor.java">
-      <node id="8004199436029429362" at="83,47,84,72" concept="2" />
-      <node id="8004199436029429362" at="203,62,204,59" concept="2" />
+      <node id="8004199436029429362" at="76,47,77,72" concept="2" />
+      <node id="8004199436029429362" at="187,62,188,59" concept="2" />
     </file>
     <file name="NewTemplateInInlineSwitchCase_Intention.java">
       <node id="8004199436029429362" at="32,0,33,0" concept="3" trace="myCachedExecutable" />
@@ -3472,8 +3245,8 @@
   </root>
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/8699312839322230162">
     <file name="IntentionsDescriptor.java">
-      <node id="8699312839322230162" at="169,47,170,67" concept="2" />
-      <node id="8699312839322230162" at="199,49,200,54" concept="2" />
+      <node id="8699312839322230162" at="155,47,156,67" concept="2" />
+      <node id="8699312839322230162" at="183,49,184,54" concept="2" />
     </file>
     <file name="NewTemplateInWeavingRule_Intention.java">
       <node id="8699312839322230162" at="33,0,34,0" concept="3" trace="myCachedExecutable" />
@@ -3600,7 +3373,7 @@
   <root nodeRef="r:00000000-0000-4000-0000-011c895902e5(jetbrains.mps.lang.generator.intentions)/9092065972411421046">
     <file name="IntentionsDescriptor.java">
       <node id="9092065972411421046" at="53,70,54,62" concept="2" />
-      <node id="9092065972411421046" at="198,57,199,49" concept="2" />
+      <node id="9092065972411421046" at="182,57,183,49" concept="2" />
     </file>
     <file name="NewTemplateFragment_Intention.java">
       <node id="9092065972411421046" at="25,0,26,0" concept="3" trace="myCachedExecutable" />

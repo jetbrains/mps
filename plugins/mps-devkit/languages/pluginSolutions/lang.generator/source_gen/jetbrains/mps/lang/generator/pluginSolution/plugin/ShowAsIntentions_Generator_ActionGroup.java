@@ -17,5 +17,7 @@ public class ShowAsIntentions_Generator_ActionGroup extends GeneratedActionGroup
     ShowAsIntentions_Generator_ActionGroup.this.addAction("jetbrains.mps.lang.generator.pluginSolution.plugin.NewCreateRootRule_Action");
     ShowAsIntentions_Generator_ActionGroup.this.addAction("jetbrains.mps.lang.generator.pluginSolution.plugin.NewRootMappingRule_Action");
     ShowAsIntentions_Generator_ActionGroup.this.addAction("jetbrains.mps.lang.generator.pluginSolution.plugin.DeriveGenPlanModel_Action");
+    ShowAsIntentions_Generator_ActionGroup.this.addAction("jetbrains.mps.lang.generator.pluginSolution.plugin.NewTemplateInCreateRootRule_Action");
+    ShowAsIntentions_Generator_ActionGroup.this.addAction("jetbrains.mps.lang.generator.pluginSolution.plugin.NewTemplateInRootMappingRoot_Action");
   }
 }
