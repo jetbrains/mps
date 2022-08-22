@@ -96,8 +96,6 @@ public final class CreateProjectWizard extends DialogWrapper {
   private TemplateItem myCurrentTemplateItem = null;
   private final MPSProjectTemplate.MPSProjectTemplateListener myTemplateListener = this::checkSettings;
 
-  private final ProjectFormatPanel myProjectFormatPanel = new ProjectFormatPanel();
-
   public CreateProjectWizard(@Nullable Project project) {
     super(project);
     myCurrentProject = project;
@@ -459,10 +457,6 @@ public final class CreateProjectWizard extends DialogWrapper {
                              new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_BOTH,
                                                  GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
                                                  GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null));
-      myTemplateSettings.add(myProjectFormatPanel.getPanel(),
-                             new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_NORTHWEST, GridConstraints.FILL_HORIZONTAL,
-                                                 GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED,
-                                                 null, null, null, 1));
     }
     if (myCurrentTemplateItem != null) {
       myCurrentTemplateItem.setNewProjectPath(myProjectPath.getPath());
@@ -499,7 +493,7 @@ public final class CreateProjectWizard extends DialogWrapper {
     myOptions.setProjectPath(myProjectPath.getPath());
     myOptions.setCreateNewLanguage(false);
     myOptions.setCreateNewSolution(false);
-    myOptions.setStorageScheme(myProjectFormatPanel.isDefault());
+    myOptions.setStorageScheme(false);
 
     // Copy/paste from com.intellij.ide.impl.NewProjectUtil#createNewProject(AbstractProjectWizard)
     String title = JavaUiBundle.message("project.new.wizard.progress.title");
