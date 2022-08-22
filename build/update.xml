@@ -419,5 +419,16 @@
         <button name="Download" url="https://www.jetbrains.com/mps/download" download="true"/>
       </build>
     </channel>
+
+    <channel id="MPS222" name="MPS 2022.2" status="release"
+             url="https://www.jetbrains.com/mps/download"
+             feedback="http://youtrack.jetbrains.net"
+             majorVersion="2022" minorVersoin="2">
+      <build number="222.3345.848" version="2022.2 EAP1">
+        <message>JetBrains MPS 2022.2 EAP1 is now available.</message>
+        <button name="Download" url="https://www.jetbrains.com/mps/nextversion/" download="true"/>
+      </build>
+    </channel>
+
   </product>
 </products>
