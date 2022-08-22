@@ -100,7 +100,7 @@ public class MultipleSdkProblemNotifier implements ProjectComponent {
       @Override
       public void afterWriteActionFinished(@NotNull Object action) {
         if (!myBadJdks.isEmpty()) {
-          String title = "Modules with MPS facet only support JDK 11 and later";
+          String title = "Modules with MPS facet only support JDK 17 and later";
           new Notification("MPS facet", title, getBadJdksMessage(myBadJdks), NotificationType.WARNING).notify(myProject);
           myBadJdks.clear();
         }

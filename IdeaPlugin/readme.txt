@@ -39,8 +39,8 @@ How to develop MPS plugin for IntelliJ IDEA
     - configure project settings
             - open IdeaPlugin project from the MPS sources
             - open "Project Structure" dialog
-                - inside "Project Settings/Project" page ensure that project SDK ("JB JDK 11") is configured. If not, configure
-                  new java SDK named "JB JDK 11" & pointing to JetBrains JDK 11 by pressing on "New" button
+                - inside "Project Settings/Project" page ensure that project SDK ("JB JDK 17") is configured. If not, configure
+                  new java SDK named "JB JDK 17" & pointing to JetBrains JDK 17 by pressing on "New" button
                 - inside "Platform Settings/SDKs" create new IntelliJ Platform Plugin SDK named "IDEA IC" & base on
                   project SDK created above
 
