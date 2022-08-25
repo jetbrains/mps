@@ -104,7 +104,7 @@ public class RenameModelsNamespace_Action extends BaseAction {
           ((EditableSModel) model).rename(modifiedModelName.getValue(), model.getSource() instanceof FileDataSource);
         }
       }
-      Renamer.updateModelAndModuleReferences(((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository());
+      Renamer.updateModelAndModuleReferences(((MPSProject) MapSequence.fromMap(_params).get("project")));
       ((MPSProject) MapSequence.fromMap(_params).get("project")).getRepository().saveAll();
     });
   }

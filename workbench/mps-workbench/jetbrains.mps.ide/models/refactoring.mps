@@ -2380,6 +2380,9 @@
                 <node concept="2YIFZM" id="4FkYMYI0tre" role="3clFbG">
                   <ref role="1Pybhc" node="29N7xYwTG4h" resolve="RenameModelDialog" />
                   <ref role="37wK5l" node="769yZq7hMSH" resolve="renameModel" />
+                  <node concept="37vLTw" id="66tCjltenuf" role="37wK5m">
+                    <ref role="3cqZAo" node="3_F3cCDBnK" resolve="myProject" />
+                  </node>
                   <node concept="37vLTw" id="4FkYMYI0trf" role="37wK5m">
                     <ref role="3cqZAo" node="29N7xYwTG4w" resolve="myModelDescriptor" />
                   </node>
@@ -2417,6 +2420,15 @@
     <node concept="2tJIrI" id="769yZq7hMqL" role="jymVt" />
     <node concept="2YIFZL" id="769yZq7hMSH" role="jymVt">
       <property role="TrG5h" value="renameModel" />
+      <node concept="37vLTG" id="66tCjlteka_" role="3clF46">
+        <property role="TrG5h" value="project" />
+        <node concept="3uibUv" id="66tCjltekyT" role="1tU5fm">
+          <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
+        </node>
+        <node concept="2AHcQZ" id="66tCjltemeg" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
       <node concept="37vLTG" id="769yZq7hMSI" role="3clF46">
         <property role="TrG5h" value="model" />
         <node concept="2AHcQZ" id="769yZq7hMSJ" role="2AJF6D">
@@ -2440,10 +2452,10 @@
           <node concept="2OqwBi" id="769yZq7hMSQ" role="3clFbG">
             <node concept="2OqwBi" id="769yZq7hNx2" role="2Oq$k0">
               <node concept="37vLTw" id="769yZq7hNx1" role="2Oq$k0">
-                <ref role="3cqZAo" node="769yZq7hMSI" resolve="model" />
+                <ref role="3cqZAo" node="66tCjlteka_" resolve="project" />
               </node>
               <node concept="liA8E" id="769yZq7hNx3" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
+                <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="769yZq7hNIg" role="2OqNvi">
@@ -2479,15 +2491,10 @@
         </node>
         <node concept="3clFbF" id="769yZq7hMSZ" role="3cqZAp">
           <node concept="2YIFZM" id="769yZq7hOf5" role="3clFbG">
-            <ref role="37wK5l" to="smoa:~Renamer.updateModelAndModuleReferences(org.jetbrains.mps.openapi.module.SRepository)" resolve="updateModelAndModuleReferences" />
+            <ref role="37wK5l" to="smoa:~Renamer.updateModelAndModuleReferences(jetbrains.mps.project.Project)" resolve="updateModelAndModuleReferences" />
             <ref role="1Pybhc" to="smoa:~Renamer" resolve="Renamer" />
-            <node concept="2OqwBi" id="769yZq7hNvz" role="37wK5m">
-              <node concept="37vLTw" id="769yZq7hNvy" role="2Oq$k0">
-                <ref role="3cqZAo" node="769yZq7hMSI" resolve="model" />
-              </node>
-              <node concept="liA8E" id="769yZq7hNv$" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
-              </node>
+            <node concept="37vLTw" id="66tCjlteqNd" role="37wK5m">
+              <ref role="3cqZAo" node="66tCjlteka_" resolve="project" />
             </node>
           </node>
         </node>
@@ -2495,10 +2502,10 @@
           <node concept="2OqwBi" id="769yZq7hMT3" role="3clFbG">
             <node concept="2OqwBi" id="769yZq7hNsY" role="2Oq$k0">
               <node concept="37vLTw" id="769yZq7hNsX" role="2Oq$k0">
-                <ref role="3cqZAo" node="769yZq7hMSI" resolve="model" />
+                <ref role="3cqZAo" node="66tCjlteka_" resolve="project" />
               </node>
               <node concept="liA8E" id="769yZq7hNsZ" role="2OqNvi">
-                <ref role="37wK5l" to="mhbf:~SModel.getRepository()" resolve="getRepository" />
+                <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
               </node>
             </node>
             <node concept="liA8E" id="769yZq7hNKy" role="2OqNvi">

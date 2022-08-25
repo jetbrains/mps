@@ -46,14 +46,14 @@ public class RenameModelDialog extends RenameDialog {
   @Override
   protected void doRefactoringAction() {
     final SModelName newModelName = new SModelName(getCurrentValue());
-    myProject.getRepository().getModelAccess().executeCommand(() -> RenameModelDialog.renameModel(myModelDescriptor, newModelName.getValue()));
+    myProject.getRepository().getModelAccess().executeCommand(() -> RenameModelDialog.renameModel(myProject, myModelDescriptor, newModelName.getValue()));
     super.doRefactoringAction();
   }
 
-  private static void renameModel(@NotNull EditableSModel model, @NotNull String newName) {
-    model.getRepository().saveAll();
+  private static void renameModel(@NotNull MPSProject project, @NotNull EditableSModel model, @NotNull String newName) {
+    project.getRepository().saveAll();
     model.rename(newName, model.getSource() instanceof FileDataSource);
-    Renamer.updateModelAndModuleReferences(model.getRepository());
-    model.getRepository().saveAll();
+    Renamer.updateModelAndModuleReferences(project);
+    project.getRepository().saveAll();
   }
 }

@@ -295,22 +295,22 @@
       <node id="1114145801597405375" at="41,5,42,0" concept="12" />
       <node id="1114145801597408516" at="42,0,43,30" concept="10" />
       <node id="2325849581576430453" at="47,40,48,70" concept="9" />
-      <node id="8474866949349192961" at="48,70,49,143" concept="4" />
-      <node id="2325849581576430445" at="49,143,50,32" concept="4" />
-      <node id="8181224089043021365" at="53,91,54,36" concept="4" />
-      <node id="8181224089043021369" at="54,36,55,71" concept="4" />
-      <node id="8181224089043021375" at="55,71,56,66" concept="4" />
-      <node id="8181224089043021378" at="56,66,57,36" concept="4" />
+      <node id="8474866949349192961" at="48,70,49,154" concept="4" />
+      <node id="2325849581576430445" at="49,154,50,32" concept="4" />
+      <node id="8181224089043021365" at="53,120,54,38" concept="4" />
+      <node id="8181224089043021369" at="54,38,55,71" concept="4" />
+      <node id="8181224089043021375" at="55,71,56,52" concept="4" />
+      <node id="8181224089043021378" at="56,52,57,38" concept="4" />
       <node id="7250929142958574068" at="38,70,41,5" concept="7" />
       <node id="2325849581576430440" at="46,0,52,0" concept="8" trace="doRefactoringAction#()V" />
-      <node id="8181224089043021357" at="53,0,59,0" concept="14" trace="renameModel#(Lorg/jetbrains/mps/openapi/model/EditableSModel;Ljava/lang/String;)V" />
+      <node id="8181224089043021357" at="53,0,59,0" concept="14" trace="renameModel#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/EditableSModel;Ljava/lang/String;)V" />
       <node id="2482360940803572006" at="25,0,34,0" concept="2" trace="RenameModelDialog#(Ljetbrains/mps/project/MPSProject;Lorg/jetbrains/mps/openapi/model/EditableSModel;)V" />
       <node id="1114145801597395681" at="35,0,45,0" concept="8" trace="checkValue#()Ljava/lang/String;" />
       <scope id="7250929142958574070" at="39,35,40,30" />
       <scope id="2325849581576430443" at="47,40,50,32">
         <var name="newModelName" id="2325849581576430454" />
       </scope>
-      <scope id="8181224089043021364" at="53,91,57,36" />
+      <scope id="8181224089043021364" at="53,120,57,38" />
       <scope id="1114145801597395726" at="37,33,43,30">
         <var name="validationResult" id="7250929142958499565" />
       </scope>
@@ -318,6 +318,7 @@
       <scope id="8181224089043021357" at="53,0,59,0">
         <var name="model" id="8181224089043021358" />
         <var name="newName" id="8181224089043021361" />
+        <var name="project" id="7033955443591955109" />
       </scope>
       <scope id="2482360940803572017" at="25,95,32,62">
         <var name="modelRoot" id="7250929142958472174" />

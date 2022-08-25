@@ -245,7 +245,7 @@ public final class Renamer {
     discoverModulesBack(renameInfos); // need descriptorFile:IFile, new; updates ModuleDescriptor info (namespace) and MRI.module, moduleReference
     assignBackToProject(renameInfos); // need SModule instance, new
     renameModels(renameInfos); // need attached SModule instance
-    updateModelAndModuleReferences(myProject.getRepository());
+    updateModelAndModuleReferences(myProject);
     myProject.getRepository().saveAll();
   }
 
@@ -557,6 +557,13 @@ public final class Renamer {
     return module.getModuleName() != null && module.getModuleName().equals(module.getModuleSourceDir().getName());
   }
 
+  /**
+   * @deprecated updates all modules in a repository, which is not the desired provided MPS got all modules (both
+   *             deployed and in source form inside single repository (project repository at the moment is not limited
+   *             to project modules). Either fix this old story (project.getRepository().getModules() to give project modules
+   *             only) or use alternative that takes project and limits its activities to project modules only
+   */
+  @Deprecated(since = "2022.2", forRemoval = true)
   public static void updateModelAndModuleReferences(@NotNull SRepository repo) {
     repo.getModelAccess().checkWriteAccess();
 
@@ -569,6 +576,27 @@ public final class Renamer {
           if (!sm.isReadOnly()) {
             final SModelInternal model = (SModelInternal) sm;
             if ((sm instanceof EditableSModel) && model.updateExternalReferences(repo)) {
+              // FIXME why SModelInternal.updateExternalReferences can't setChanged(true) itself?
+              ((EditableSModel) sm).setChanged(true);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  public static void updateModelAndModuleReferences(@NotNull Project mpsProject) {
+    mpsProject.getModelAccess().checkWriteAccess();
+
+    for (SModule m : mpsProject.getProjectModulesWithGenerators()) {
+      if (m instanceof AbstractModule && !m.isReadOnly()) {
+        AbstractModule module = (AbstractModule) m;
+        module.updateExternalReferences();
+
+        for (SModel sm : m.getModels()) {
+          if (!sm.isReadOnly()) {
+            final SModelInternal model = (SModelInternal) sm;
+            if ((sm instanceof EditableSModel) && model.updateExternalReferences(mpsProject.getRepository())) {
               // FIXME why SModelInternal.updateExternalReferences can't setChanged(true) itself?
               ((EditableSModel) sm).setChanged(true);
             }

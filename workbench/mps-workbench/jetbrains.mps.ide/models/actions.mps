@@ -51998,18 +51998,13 @@
                     </node>
                   </node>
                   <node concept="3clFbF" id="5I8fr3HKVZF" role="3cqZAp">
-                    <node concept="2YIFZM" id="5I8fr3HKVZG" role="3clFbG">
+                    <node concept="2YIFZM" id="66tCjltaRau" role="3clFbG">
+                      <ref role="37wK5l" to="smoa:~Renamer.updateModelAndModuleReferences(jetbrains.mps.project.Project)" resolve="updateModelAndModuleReferences" />
                       <ref role="1Pybhc" to="smoa:~Renamer" resolve="Renamer" />
-                      <ref role="37wK5l" to="smoa:~Renamer.updateModelAndModuleReferences(org.jetbrains.mps.openapi.module.SRepository)" resolve="updateModelAndModuleReferences" />
-                      <node concept="2OqwBi" id="5I8fr3HKVZH" role="37wK5m">
-                        <node concept="2OqwBi" id="5I8fr3HKVZI" role="2Oq$k0">
-                          <node concept="2WthIp" id="5I8fr3HKVZJ" role="2Oq$k0" />
-                          <node concept="1DTwFV" id="5I8fr3HKVZK" role="2OqNvi">
-                            <ref role="2WH_rO" node="5I8fr3HGRpQ" resolve="project" />
-                          </node>
-                        </node>
-                        <node concept="liA8E" id="5I8fr3HKVZL" role="2OqNvi">
-                          <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+                      <node concept="2OqwBi" id="66tCjltaRav" role="37wK5m">
+                        <node concept="2WthIp" id="66tCjltaRaw" role="2Oq$k0" />
+                        <node concept="1DTwFV" id="66tCjltaRax" role="2OqNvi">
+                          <ref role="2WH_rO" node="5I8fr3HGRpQ" resolve="project" />
                         </node>
                       </node>
                     </node>
