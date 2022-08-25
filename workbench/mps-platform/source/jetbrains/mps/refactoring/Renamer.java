@@ -386,6 +386,7 @@ public final class Renamer {
       }
       assert renameInfo.descriptorFile.equals(handle.getFile());
       AbstractModule module = (AbstractModule) moduleFactory.instantiate(handle.getDescriptor(), handle.getFile());
+      module.setChanged(); // make sure modules get saved even if it doesn't get any model renamed (or has no models, like devkit)
       renameInfo.module = module;
       renameInfo.moduleReference = module.getModuleReference();
     }
