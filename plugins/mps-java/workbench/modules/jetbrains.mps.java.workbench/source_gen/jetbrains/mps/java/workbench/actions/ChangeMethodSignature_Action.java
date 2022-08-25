@@ -18,7 +18,11 @@ import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.module.ModelAccess;
 import jetbrains.mps.baseLanguage.behavior.BaseMethodDeclaration__BehaviorDescriptor;
+import com.intellij.openapi.util.text.HtmlBuilder;
+import com.intellij.java.JavaBundle;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import com.intellij.openapi.util.text.HtmlChunk;
+import com.intellij.refactoring.RefactoringBundle;
 import com.intellij.openapi.ui.Messages;
 import java.util.List;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureRefactoring;
@@ -28,6 +32,7 @@ import jetbrains.mps.refactoring.framework.RefactoringContext;
 import java.util.Arrays;
 import org.jetbrains.mps.openapi.language.SConcept;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
 
 public class ChangeMethodSignature_Action extends BaseAction {
@@ -92,19 +97,34 @@ public class ChangeMethodSignature_Action extends BaseAction {
       repo.saveAll();
       baseMethod.value = BaseMethodDeclaration__BehaviorDescriptor.getBaseMethod_id4mmymf_0z7l.invoke(((SNode) MapSequence.fromMap(_params).get("method")));
       if (baseMethod.value != null) {
-        message.value = "Method " + ((SNode) MapSequence.fromMap(_params).get("method")).getPresentation() + " overrides method from " + SPropertyOperations.getString(SNodeOperations.cast(SNodeOperations.getParent(baseMethod.value), CONCEPTS.Classifier$Ix), PROPS.name$MnvL) + ".\n";
-        message.value += "Do you want to change signature of this method instead?";
+        SNode baseClass = SNodeOperations.getParent(baseMethod.value);
+        SNode methodClass = SNodeOperations.getParent(((SNode) MapSequence.fromMap(_params).get("method")));
+
+        // Based on com.intellij.ide.util.SuperMethodWarningUtil
+        HtmlBuilder labelText = new HtmlBuilder();
+        int classType = (SNodeOperations.isInstanceOf(baseClass, CONCEPTS.Interface$db) ? 0 : 1);
+        labelText.append(JavaBundle.message("label.method", SNodeOperations.present(((SNode) MapSequence.fromMap(_params).get("method"))) + " of class " + SNodeOperations.present(methodClass))).br();
+        final String className = SPropertyOperations.getString(SNodeOperations.as(baseClass, CONCEPTS.INamedConcept$Kd), PROPS.name$MnvL);
+        labelText.append((SNodeOperations.isInstanceOf(methodClass, CONCEPTS.Interface$db) || !(SPropertyOperations.getBoolean(SNodeOperations.as(methodClass, CONCEPTS.ClassConcept$bK), PROPS.abstractClass$Ta1X)) ? JavaBundle.message("label.overrides.method.of_class_or_interface.name", classType, className) : JavaBundle.message("label.implements.method.of_class_or_interface.name", classType, className)));
+        labelText.br().br();
+        labelText.append(HtmlChunk.text(JavaBundle.message("prompt.do.you.want.to.action_verb.the.method.from_class", 1, RefactoringBundle.message("to.refactor"))));
+        message.value = labelText.wrapWithHtmlBody().toString();
       }
     });
 
-    final SNode methodToRefactor;
-    if (baseMethod.value != null && Messages.showYesNoDialog(((Frame) MapSequence.fromMap(_params).get("frame")), message.value, "Warinig", null) == 0) {
-      methodToRefactor = baseMethod.value;
-    } else {
-      methodToRefactor = ((SNode) MapSequence.fromMap(_params).get("method"));
+    final Wrappers._T<SNode> methodToRefactor = new Wrappers._T<SNode>(((SNode) MapSequence.fromMap(_params).get("method")));
+
+    if (baseMethod.value != null) {
+      int dialog = Messages.showYesNoCancelDialog(((Frame) MapSequence.fromMap(_params).get("frame")), message.value, JavaBundle.message("dialog.title.super.method.found"), JavaBundle.message("button.base.method"), JavaBundle.message("button.current.method"), Messages.getCancelButton(), Messages.getQuestionIcon());
+
+      if (dialog == Messages.CANCEL) {
+        return;
+      } else if (dialog == Messages.OK) {
+        methodToRefactor.value = baseMethod.value;
+      }
     }
 
-    ChangeMethodSignatureDialog dialog = new ChangeMethodSignatureDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), methodToRefactor);
+    ChangeMethodSignatureDialog dialog = new ChangeMethodSignatureDialog(((MPSProject) MapSequence.fromMap(_params).get("project")), methodToRefactor.value);
     dialog.show();
     final List<ChangeMethodSignatureRefactoring> myRefactorings = dialog.getAllRefactorings();
     if (ListSequence.fromList(myRefactorings).isEmpty()) {
@@ -114,20 +134,23 @@ public class ChangeMethodSignature_Action extends BaseAction {
       if (!(SNodeUtil.isAccessible(((SNode) MapSequence.fromMap(_params).get("method")), repo))) {
         return;
       }
-      if (!(SNodeUtil.isAccessible(methodToRefactor, repo))) {
+      if (!(SNodeUtil.isAccessible(methodToRefactor.value, repo))) {
         return;
       }
 
-      RefactoringAccess.getInstance().getRefactoringFacade().execute(RefactoringContext.createRefactoringContextByName("jetbrains.mps.baseLanguage.refactorings.ChangeMethodSignature", Arrays.asList("myRefactorings"), Arrays.asList(myRefactorings), methodToRefactor, ((MPSProject) MapSequence.fromMap(_params).get("project"))));
+      RefactoringAccess.getInstance().getRefactoringFacade().execute(RefactoringContext.createRefactoringContextByName("jetbrains.mps.baseLanguage.refactorings.ChangeMethodSignature", Arrays.asList("myRefactorings"), Arrays.asList(myRefactorings), methodToRefactor.value, ((MPSProject) MapSequence.fromMap(_params).get("project"))));
     });
   }
 
   private static final class CONCEPTS {
     /*package*/ static final SConcept BaseMethodDeclaration$kD = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration");
-    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept Interface$db = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101edd46144L, "jetbrains.mps.baseLanguage.structure.Interface");
+    /*package*/ static final SInterfaceConcept INamedConcept$Kd = MetaAdapterFactory.getInterfaceConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, "jetbrains.mps.lang.core.structure.INamedConcept");
+    /*package*/ static final SConcept ClassConcept$bK = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, "jetbrains.mps.baseLanguage.structure.ClassConcept");
   }
 
   private static final class PROPS {
     /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
+    /*package*/ static final SProperty abstractClass$Ta1X = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8c108ca66L, 0xfa5cee6dfaL, "abstractClass");
   }
 }
