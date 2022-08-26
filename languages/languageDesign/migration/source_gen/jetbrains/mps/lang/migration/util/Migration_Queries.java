@@ -9,6 +9,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPointerOperations;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.ModelImports;
 import jetbrains.mps.project.AbstractModule;
@@ -37,7 +38,8 @@ public class Migration_Queries {
     // Migration classes get generated with extends to MigrationScriptBase (which has own getReference() method, unrelated to one in HasMigrationScriptReference)
     // Therefore, it's ok to keep this class in accessory model with no code generated for it.
     //  OTOH, no idea why not honest MigrationScriptBase as superclass here
-    SLinkOperations.setPointer(SLinkOperations.setNewChild(c, LINKS.superclass$Mp9$, CONCEPTS.ClassifierType$bL), LINKS.classifier$cxMr, new SNodePointer("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "6807933448469658100"));
+    SNode setNew = SLinkOperations.setNewChild(c, LINKS.superclass$Mp9$, CONCEPTS.ClassifierType$bL);
+    SLinkOperations.setTarget(setNew, LINKS.classifier$cxMr, SPointerOperations.resolveNode(new SNodePointer("90746344-04fd-4286-97d5-b46ae6a81709/r:52a3d974-bd4f-4651-ba6e-a2de5e336d95(jetbrains.mps.lang.migration/jetbrains.mps.lang.migration.methods)", "6807933448469658100"), futureModel.getRepository()));
 
     ModelImports m = new ModelImports(futureModel);
     AbstractModule mod = (AbstractModule) module;

@@ -41,6 +41,8 @@ public class EditorTabTitleProviderImpl implements EditorTabTitleProvider {
     }
     return new ModelAccessHelper(modelAccess).runReadAction(() -> {
       SNode node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, (MPSNodeVirtualFile) file);
+      if (node != null) return node.getPresentation();
+      node = ((MPSNodeVirtualFile) file).getNode();
       return node == null ? null : node.getPresentation();
     });
   }

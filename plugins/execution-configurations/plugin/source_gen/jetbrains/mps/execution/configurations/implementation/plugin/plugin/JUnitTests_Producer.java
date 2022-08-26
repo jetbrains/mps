@@ -356,7 +356,7 @@ public final class JUnitTests_Producer {
       boolean containsTest = false;
       boolean canRunInProcess = true;
       for (SNode testCase : source) {
-        if (ListSequence.fromList(ITestCase__BehaviorDescriptor.getTestMethods_id1RfJDyhAUar.invoke(testCase)).isNotEmpty()) {
+        if (ListSequence.fromList(ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(testCase)).isNotEmpty()) {
           containsTest = true;
         }
         if (!((boolean) ITestCase__BehaviorDescriptor.canRunInProcess_id5_jSk8paieB.invoke(testCase))) {

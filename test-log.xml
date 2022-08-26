@@ -16,8 +16,8 @@ Appenders CONSOLE-* can be used to debug purposes to get application output to t
 CONTINUOUS_FILE appender can also be used for debugging.
 It does not interfere with console output and idea.log, but uses separate continuous.log file.
 
-All file appenders use $LOG_DIR$ folder for store files.
-In MPS sources some run configurations override this path by setting 'idea.log.path' variable to '$PROJECT_DIR$/log'.
+All file appenders use LOG_DIR folder for store files.
+In MPS sources some run configurations override this path by setting 'idea.log.path' variable to 'PROJECT_DIR/log'.
 -->
 
 <!-- Parameter 'follow = true' in appenders with class 'ConsoleAppender' is required for proper test light execution -->

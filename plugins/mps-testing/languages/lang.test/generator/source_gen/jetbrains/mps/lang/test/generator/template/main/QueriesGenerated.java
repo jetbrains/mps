@@ -393,13 +393,13 @@ public class QueriesGenerated extends QueryProviderBase {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.message$SzPZ) == null);
   }
   public static boolean ifMacro_Condition_3_0(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.beforeTests$Geqj) != null);
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.beforeTests$Geqj) != null) && (SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(_context.getNode(), LINKS.beforeTests$Geqj), CONCEPTS.BaseCommentAttribute$nv, false, false) == null);
   }
   public static boolean ifMacro_Condition_3_1(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.beforeTests$Geqj) != null);
   }
   public static boolean ifMacro_Condition_3_2(final IfMacroContext _context) {
-    return (SLinkOperations.getTarget(_context.getNode(), LINKS.afterTests$GqQ8) != null);
+    return (SLinkOperations.getTarget(_context.getNode(), LINKS.afterTests$GqQ8) != null) && (SNodeOperations.getNodeAncestor(SLinkOperations.getTarget(_context.getNode(), LINKS.afterTests$GqQ8), CONCEPTS.BaseCommentAttribute$nv, false, false) == null);
   }
   public static boolean ifMacro_Condition_3_3(final IfMacroContext _context) {
     return (SLinkOperations.getTarget(_context.getNode(), LINKS.afterTests$GqQ8) != null);
@@ -506,7 +506,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.after$4ir);
   }
   public static Iterable<SNode> sourceNodesQuery_3_0(final SourceSubstituteMacroNodesContext _context) {
-    return ITestCase__BehaviorDescriptor.getTestSet_idhGB2z8L.invoke(_context.getNode());
+    return ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(_context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_3_1(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.beforeTests$Geqj), LINKS.body$e68K), LINKS.statement$53DE);
@@ -515,7 +515,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.afterTests$GqQ8), LINKS.body$e68K), LINKS.statement$53DE);
   }
   public static Iterable<SNode> sourceNodesQuery_3_3(final SourceSubstituteMacroNodesContext _context) {
-    return ITestCase__BehaviorDescriptor.getTestSet_idhGB2z8L.invoke(_context.getNode());
+    return ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(_context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_3_4(final SourceSubstituteMacroNodesContext _context) {
     Set<SNode> set = SetSequence.fromSet(new LinkedHashSet<SNode>());
@@ -558,7 +558,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.logEvents$XchQ);
   }
   public static Iterable<SNode> sourceNodesQuery_13_0(final SourceSubstituteMacroNodesContext _context) {
-    return ITestCase__BehaviorDescriptor.getTestSet_idhGB2z8L.invoke(_context.getNode());
+    return ITestCase__BehaviorDescriptor.getUncommentedTestMethods_id6I8tQNTvi0f.invoke(_context.getNode());
   }
   public static Iterable<SNode> sourceNodesQuery_13_1(final SourceSubstituteMacroNodesContext _context) {
     return SLinkOperations.getChildren(_context.getNode(), LINKS.inputNodes$aDmk);
@@ -1357,6 +1357,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept EditorOperation$OD = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11daf16c21cL, "jetbrains.mps.lang.test.structure.EditorOperation");
     /*package*/ static final SConcept TestInfo$9q = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x46bca02bfb6e730aL, "jetbrains.mps.lang.test.structure.TestInfo");
     /*package*/ static final SConcept AnonymousCellAnnotation$hB = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x11e31babe12L, "jetbrains.mps.lang.test.structure.AnonymousCellAnnotation");
+    /*package*/ static final SConcept BaseCommentAttribute$nv = MetaAdapterFactory.getConcept(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x3dcc194340c24debL, "jetbrains.mps.lang.core.structure.BaseCommentAttribute");
     /*package*/ static final SConcept NodePointer$6k = MetaAdapterFactory.getConcept(0x446c26eb2b7b4bf0L, 0x9b35f83fa582753eL, 0x502fe7548a0e35fL, "jetbrains.mps.lang.modelapi.structure.NodePointer");
     /*package*/ static final SConcept AbstractNodeRuleCheckOperation$eB = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x6cbc57bb7a42d28aL, "jetbrains.mps.lang.test.structure.AbstractNodeRuleCheckOperation");
     /*package*/ static final SConcept TestNodeReference$hm = MetaAdapterFactory.getConcept(0x8585453e6bfb4d80L, 0x98deb16074f1d86cL, 0x119e1d33213L, "jetbrains.mps.lang.test.structure.TestNodeReference");

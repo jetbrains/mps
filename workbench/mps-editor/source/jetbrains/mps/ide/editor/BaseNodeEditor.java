@@ -18,24 +18,32 @@ package jetbrains.mps.ide.editor;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.editor.Document;
+import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.IdeFocusManager;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.util.ui.JBUI;
+import jetbrains.mps.classloading.ClassLoaderManager;
+import jetbrains.mps.classloading.DeployListener;
 import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorPanelManagerImpl;
 import jetbrains.mps.nodeEditor.InspectorTool;
 import jetbrains.mps.nodeEditor.MementoPersistence;
 import jetbrains.mps.nodeEditor.NodeEditorComponent;
 import jetbrains.mps.nodeEditor.configuration.EditorConfigurationBuilder;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
+import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.openapi.editor.Editor;
 import jetbrains.mps.openapi.editor.EditorComponentState;
 import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.openapi.editor.EditorState;
 import jetbrains.mps.openapi.editor.extensions.EditorExtensionUtil;
+import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Project;
 import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
@@ -43,6 +51,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -52,25 +61,42 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 public abstract class BaseNodeEditor implements Editor {
   private static final Logger LOG = Logger.getLogger(BaseNodeEditor.class);
 
+  private final DeployListener myDeployListener = new MyDeployListener();
   private NodeEditorComponent myEditorComponent;
   private final JComponent myComponent = new EditorPanel();
   private final JComponent myEditorPanel = new JPanel();
   protected final Project myProject;
   private JComponent myReplace = null;
+  private final MPSNodeVirtualFile myNodeVirtualFile;
   private SNodeReference myCurrentlyEditedNode = null;
   protected final Map<TaskType, PrioritizedTask> myType2TaskMap = new HashMap<>();
   private boolean mySelected;
 
-  public BaseNodeEditor(@NotNull Project mpsProject) {
+  public BaseNodeEditor(@NotNull Project mpsProject, @Nullable MPSNodeVirtualFile vFile) {
     myProject = mpsProject;
+    myNodeVirtualFile = vFile;
     myEditorPanel.setLayout(new BorderLayout());
     myEditorPanel.setBorder(new EmptyBorder(JBUI.emptyInsets()));
     myComponent.add(myEditorPanel, BorderLayout.CENTER);
     showEditor();
+    mpsProject.getComponent(ClassLoaderManager.class).addListener(myDeployListener);
+  }
+
+  public BaseNodeEditor(@NotNull Project mpsProject, @Nullable SNodeReference nodeRef) {
+    this(mpsProject, NodeVirtualFileSystem.getInstance().getFileFor(mpsProject.getRepository(), nodeRef));
+  }
+
+  /**
+   * @deprecated please pass the node
+   */
+  @Deprecated
+  public BaseNodeEditor(@NotNull Project mpsProject) {
+    this(mpsProject, (SNodeReference) null);
   }
 
   public abstract List<Document> getAllEditedDocuments();
@@ -98,7 +124,7 @@ public abstract class BaseNodeEditor implements Editor {
     return myCurrentlyEditedNode;
   }
 
-  protected void editNode(@NotNull final SNodeReference nodeToEdit, @Nullable final SNodeReference nodeToSelect) {
+  protected final void editNode(@NotNull final SNodeReference nodeToEdit, @Nullable final SNodeReference nodeToSelect) {
     assert myEditorComponent != null;
     executeInEDT(new PrioritizedTask(TaskType.EDIT_NODE, myType2TaskMap) {
       @Override
@@ -130,6 +156,7 @@ public abstract class BaseNodeEditor implements Editor {
 
   @Override
   public void dispose() {
+    myProject.getComponent(ClassLoaderManager.class).removeListener(myDeployListener);
     setEditorComponent(null);
   }
 
@@ -170,7 +197,7 @@ public abstract class BaseNodeEditor implements Editor {
     }
   }
 
-  protected void showEditor() {
+  protected final void showEditor() {
     if (myReplace != null) {
       myEditorPanel.remove(myReplace);
       myReplace = null;
@@ -446,5 +473,29 @@ public abstract class BaseNodeEditor implements Editor {
       return Objects.equals(that.memento, memento) && Objects.equals(that.inspectorMemento, inspectorMemento) &&
              that.isEditorFocused == isEditorFocused && that.isInspectorFocused == isInspectorFocused;
     }
+  }
+
+  private final class MyDeployListener implements DeployListener {
+    @Override
+    public void onLoaded(@NotNull Set<ReloadableModule> loadedModules, @NotNull ProgressMonitor monitor) {
+      myProject.getModelAccess().runReadInEDT(() -> {
+        MPSNodeVirtualFile virtualFile = getVirtualFile();
+        if (virtualFile != null) {
+          final com.intellij.openapi.project.Project project = ((MPSProject) myProject).getProject();
+          FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
+          manager.updateFilePresentation(virtualFile);
+        }
+      });
+    }
+  }
+
+  /**
+   * AP: no understanding how is this coherent with getCurrentEditorComponent#getVirtualFile()
+   */
+  @Nullable
+  protected final MPSNodeVirtualFile getVirtualFile() {
+    if (myNodeVirtualFile != null) return myNodeVirtualFile;
+    if (myCurrentlyEditedNode == null) return null;
+    return NodeVirtualFileSystem.getInstance().getFileFor(myProject.getRepository(), myCurrentlyEditedNode);
   }
 }
