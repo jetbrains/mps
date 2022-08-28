@@ -16,7 +16,6 @@ import jetbrains.mps.openapi.editor.EditorContext;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.openapi.editor.cells.EditorCell;
-import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import com.intellij.openapi.ui.popup.ListPopup;
 import com.intellij.openapi.ui.popup.JBPopupFactory;
 import com.intellij.ui.awt.RelativePoint;
@@ -71,20 +70,14 @@ public class ShowGenerationActions_Action extends BaseAction implements UpdateIn
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     int x = ((EditorCell) MapSequence.fromMap(_params).get("selectedCell")).getX();
     int y = ((EditorCell) MapSequence.fromMap(_params).get("selectedCell")).getY() + ((EditorCell) MapSequence.fromMap(_params).get("selectedCell")).getHeight();
-    final Wrappers._T<ListPopup> popup = new Wrappers._T<ListPopup>(null);
-    ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getRepository().getModelAccess().runReadAction(() -> {
-      ActionGroup group = ((ActionGroup) ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.GenerationActions_ActionGroup"));
-      group.update(event);
-      if (group.getChildren(event).length == 0) {
-        return;
-      }
-      popup.value = JBPopupFactory.getInstance().createActionGroupPopup("Generate", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.NUMBERING, false);
-    });
-    if (popup.value == null) {
+    ListPopup popup = null;
+    ActionGroup group = ((ActionGroup) ActionManager.getInstance().getAction("jetbrains.mps.ide.editor.actions.GenerationActions_ActionGroup"));
+    group.update(event);
+    if (group.getChildren(event).length == 0) {
       return;
     }
-
+    popup = JBPopupFactory.getInstance().createActionGroupPopup("Generate", group, event.getDataContext(), JBPopupFactory.ActionSelectionAid.NUMBERING, false);
     RelativePoint relativePoint = new RelativePoint((EditorComponent) ((EditorContext) MapSequence.fromMap(_params).get("editorContext")).getEditorComponent(), new Point(x, y));
-    popup.value.show(relativePoint);
+    popup.show(relativePoint);
   }
 }
