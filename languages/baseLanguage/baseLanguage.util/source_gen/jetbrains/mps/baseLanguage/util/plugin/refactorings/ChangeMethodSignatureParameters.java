@@ -12,7 +12,9 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.SNodeMatcher;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
+import java.util.function.BiPredicate;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
@@ -98,6 +100,17 @@ public class ChangeMethodSignatureParameters {
     boolean isPackagePrivate = currentVisibility == null;
     return isPackagePrivate || isPrivate || isProtected;
   }
+
+  public boolean hasChanges() {
+    return !(new SNodeMatcher().with(new SNodeMatcher.SameOrderChildMatch() {
+      @Override
+      public boolean match(@NotNull SNode node1, @NotNull SNode node2, @NotNull SContainmentLink link, @NotNull BiPredicate<SNode, SNode> childMatcher) {
+        // Ignores body
+        return Objects.equals(link, LINKS.body$5xQk) || super.match(node1, node2, link, childMatcher);
+      }
+    }).test(this.myMethod, this.myOldMethod));
+  }
+
   public boolean isReturnValueChanged() {
     return !(new SNodeMatcher().match(SLinkOperations.getTarget(this.myMethod, LINKS.returnType$5xoi), SLinkOperations.getTarget(this.myOldMethod, LINKS.returnType$5xoi)));
   }
@@ -105,6 +118,7 @@ public class ChangeMethodSignatureParameters {
   private static final class LINKS {
     /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
     /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
     /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }
 

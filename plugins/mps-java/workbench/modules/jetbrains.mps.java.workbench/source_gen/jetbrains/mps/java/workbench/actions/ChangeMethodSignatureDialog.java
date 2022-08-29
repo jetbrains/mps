@@ -11,8 +11,10 @@ import jetbrains.mps.ide.embeddableEditor.EmbeddableEditor;
 import jetbrains.mps.project.MPSProject;
 import java.util.List;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.ChangeMethodSignatureRefactoring;
-import javax.swing.JLabel;
+import jetbrains.mps.checkers.IChecker;
+import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.annotations.NotNull;
+import jetbrains.mps.checkers.ConstraintsChecker;
 import javax.swing.JComponent;
 import com.intellij.openapi.ui.DialogPanel;
 import javax.swing.JPanel;
@@ -23,22 +25,26 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
 import javax.swing.border.TitledBorder;
+import com.intellij.openapi.ui.ValidationInfo;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import java.util.ArrayList;
+import jetbrains.mps.errors.item.IssueKindReportItem;
+import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
+import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import org.jetbrains.annotations.Nullable;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import jetbrains.mps.ide.messages.Icons;
-import java.util.ArrayList;
 import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import org.jetbrains.mps.openapi.language.SConcept;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.progress.ProgressIndicator;
 import org.jetbrains.mps.openapi.module.ModelAccess;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.baseLanguage.util.plugin.refactorings.MethodRefactoringUtils;
 import jetbrains.mps.progress.ProgressMonitorAdapter;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import com.intellij.java.refactoring.JavaRefactoringBundle;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.refactoring.RefactoringBundle;
@@ -61,19 +67,26 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
   private EmbeddableEditor myEditor;
   private MPSProject myProject;
   private List<ChangeMethodSignatureRefactoring> myRefactorings = null;
+  private IChecker.AbstractRootChecker<NodeReportItem> myConstraintChecker = null;
 
-  private JLabel myStaticWarningLabel = null;
+  private boolean myTriedStatic;
 
   public ParamDefautValueSectionPanel myDefaultValuePanel;
 
   public ChangeMethodSignatureDialog(@NotNull MPSProject project, SNode node) {
     super(project.getProject(), true);
     setTitle("Change Method Signature");
+    setValidationDelay(500);
     this.myProject = project;
     this.myDeclaration = node;
-    // TODO: call this constructor inside read action?
+    this.myConstraintChecker = new ConstraintsChecker(null).asRootChecker();
+
+    // TODO call this constructor inside read action?
     myProject.getModelAccess().runReadAction(() -> ChangeMethodSignatureDialog.this.myParameters = new ChangeMethodSignatureParameters(myDeclaration));
     init();
+
+    // Initially disable (no change)
+    initValidation();
   }
 
   /**
@@ -100,7 +113,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
       // Set focus on the editor
       if (myEditor.getEditor().getCurrentEditorComponent() instanceof JComponent) {
-        parentPanel.setPreferredFocusedComponent(as_vatimf_a0a0a0n0a0a1a31(myEditor.getEditor().getCurrentEditorComponent(), JComponent.class));
+        parentPanel.setPreferredFocusedComponent(as_vatimf_a0a0a0n0a0a1a41(myEditor.getEditor().getCurrentEditorComponent(), JComponent.class));
       }
     });
     panel.setBorder(new TitledBorder("Method signature"));
@@ -117,11 +130,54 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     return myRefactorings;
   }
 
+  @NotNull
+  @Override
+  protected List<ValidationInfo> doValidateAll() {
+    final List<ValidationInfo> issues = ListSequence.fromList(new ArrayList<ValidationInfo>());
+
+    // TODO this manual checking occur because it is quite difficult to suppress errors if validation is enabled. One option is to suppress with the node attribute but it would leave an unwanted visible info
+    myProject.getRepository().getModelAccess().runReadAction(() -> {
+      if (!(myParameters.hasChanges())) {
+        ListSequence.fromList(issues).addElement(new ValidationInfo("no changes", myEditor));
+      }
+
+      // Check constraints
+      ChangeMethodSignatureDialog.this.myConstraintChecker.check(myParameters.getDeclaration(), myProject.getRepository(), (NodeReportItem it) -> {
+        // Ignore not rootable error
+        if (!(IssueKindReportItem.CONSTRAINTS.deriveItemKind("not rootable").equals(it.getIssueKind()))) {
+          ListSequence.fromList(issues).addElement(new ValidationInfo(it.getMessage()));
+        }
+      }, new EmptyProgressMonitor());
+
+      // No abstract concept
+      if (ListSequence.fromList(SNodeOperations.getNodeDescendants(myParameters.getDeclaration(), null, false, new SAbstractConcept[]{})).any(new IWhereFilter<SNode>() {
+        public boolean accept(SNode it) {
+          return SNodeOperations.getConcept(it).isAbstract();
+        }
+      })) {
+        ListSequence.fromList(issues).addElement(new ValidationInfo("Abstract concept instance detected. Use one of sub-concepts instead."));
+      }
+
+      // Type of default values
+      myDefaultValuePanel.validate(issues);
+    });
+
+    if (myTriedStatic) {
+      ListSequence.fromList(issues).addElement(new ValidationInfo("Static/non static transformation not allowed in this refactoring.").asWarning().withOKEnabled());
+    }
+
+    return issues;
+  }
+
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
     // Create default panel first because createSignaturePanel below requires it
-    myDefaultValuePanel = new ParamDefautValueSectionPanel(myProject, this.myParameters.getDeclaration());
+    myDefaultValuePanel = new ParamDefautValueSectionPanel(myProject, this.myParameters.getDeclaration(), () -> {
+      // Revalidate when children panel updates
+      // TODO only revalidate children?
+      ChangeMethodSignatureDialog.this.initValidation();
+    });
 
     DialogPanel panel = new DialogPanel(new GridBagLayout());
     GridBagConstraints c = new GridBagConstraints();
@@ -135,17 +191,9 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
     c.weighty = 1;
     panel.add(this.createSignaturePanel(panel), c);
 
-    // Warning label
-    myStaticWarningLabel = new JLabel("Static/non static transformation not allowed in this refactoring.", Icons.WARNING_ICON, JLabel.LEFT);
-    myStaticWarningLabel.setVisible(false);
-    c.fill = GridBagConstraints.HORIZONTAL;
-    c.gridy = 1;
-    c.weighty = 0;
-    panel.add(myStaticWarningLabel, c);
-
     // Default values
     c.fill = GridBagConstraints.HORIZONTAL;
-    c.gridy = 2;
+    c.gridy = 1;
     c.weighty = 0;
     panel.add(myDefaultValuePanel, c);
 
@@ -161,7 +209,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
    * @see jetbrains.mps.java.workbench.actions.ChangeMethodSignatureDialog#getAllRefactorings() 
    */
   @Override
-  protected void doRefactoringAction() {
+  protected void doOKAction() {
     final List<SNode> methodsToRefactor = new ArrayList<SNode>();
     final Wrappers._T<SConcept> changeVisibilityFor = new Wrappers._T<SConcept>(null);
     final Wrappers._boolean isChangeMandatory = new Wrappers._boolean(false);
@@ -208,8 +256,7 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       ListSequence.fromList(myRefactorings).addElement(new ChangeMethodSignatureRefactoring(this.myParameters, method, defaultValues.value, changeVisibility || Objects.equals(method, myDeclaration)));
     }
 
-
-    super.doRefactoringAction();
+    super.doOKAction();
   }
 
   @Override
@@ -234,12 +281,15 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 
   @Override
   public void propertyChanged(@NotNull SPropertyChangeEvent event) {
+    initValidation();
   }
   @Override
   public void referenceChanged(@NotNull SReferenceChangeEvent event) {
+    initValidation();
   }
   @Override
   public void nodeAdded(@NotNull SNodeAddEvent event) {
+    initValidation();
   }
   @Override
   public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
@@ -251,21 +301,22 @@ import org.jetbrains.mps.openapi.language.SInterfaceConcept;
       myTempModel.addRootNode(declaration);
 
       // Display warning
-      myStaticWarningLabel.setVisible(true);
-      myStaticWarningLabel.revalidate();
-
+      myTriedStatic = true;
     }
 
     // Ensure the body is a stub statement list
     if ((SLinkOperations.getTarget(declaration, LINKS.body$5xQk) == null) || !(SNodeOperations.isInstanceOf(SLinkOperations.getTarget(declaration, LINKS.body$5xQk), CONCEPTS.StubStatementList$v6))) {
-      SLinkOperations.setTarget(declaration, LINKS.body$5xQk, createStubStatementList_vatimf_a0a0g0ab());
+      SLinkOperations.setTarget(declaration, LINKS.body$5xQk, createStubStatementList_vatimf_a0a0g0db());
     }
+
+    // Revalidate
+    initValidation();
   }
-  private static SNode createStubStatementList_vatimf_a0a0g0ab() {
+  private static SNode createStubStatementList_vatimf_a0a0g0db() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.StubStatementList$v6);
     return n0.getResult();
   }
-  private static <T> T as_vatimf_a0a0a0n0a0a1a31(Object o, Class<T> type) {
+  private static <T> T as_vatimf_a0a0a0n0a0a1a41(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 

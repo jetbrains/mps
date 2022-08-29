@@ -7,6 +7,7 @@ import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.project.MPSProject;
 import javax.swing.JPanel;
 import jetbrains.mps.ide.embeddableEditor.EmbeddableEditor;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
@@ -14,6 +15,8 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.smodel.tempmodel.TempModuleOptions;
+import jetbrains.mps.typechecking.TypecheckingFacade;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.event.SPropertyChangeEvent;
 import org.jetbrains.mps.openapi.event.SReferenceChangeEvent;
@@ -33,6 +36,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private final MPSProject project;
   private final JPanel myParentPanel;
   private EmbeddableEditor myEditor;
+  private final _FunctionTypes._void_P0_E0 myUpdatedCallback;
 
   private SModel model;
 
@@ -42,14 +46,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
    */
   private boolean touched = false;
 
-  public ParamDefaultValueEditor(SNode newParameter, MPSProject project, JPanel parentPanel) {
+  public ParamDefaultValueEditor(SNode newParameter, MPSProject project, JPanel parentPanel, _FunctionTypes._void_P0_E0 updatedCallback) {
     this.newParameter = newParameter;
     myParentPanel = parentPanel;
+    myUpdatedCallback = updatedCallback;
 
     SNode defaultValue = Type__BehaviorDescriptor.createDefaultTypeExpression_id2UvJdVpqUA4.invoke(SLinkOperations.getTarget(newParameter, LINKS.type$a1UY));
 
     // Set a parent to host the value
-    this.parentExpression = createAssignmentExpression_crlydh_a0g0k(newParameter, ((defaultValue != null) ? defaultValue : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral"))));
+    this.parentExpression = createAssignmentExpression_crlydh_a0h0l(newParameter, ((defaultValue != null) ? defaultValue : SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf940cd6167L, "jetbrains.mps.baseLanguage.structure.NullLiteral"))));
 
     this.project = project;
 
@@ -107,10 +112,18 @@ import org.jetbrains.mps.openapi.language.SConcept;
    */
   public void setDefaultValue(SNode value) {
     if ((value == null)) {
-      SLinkOperations.setTarget(this.parentExpression, LINKS.rValue$spNK, createNullLiteral_crlydh_a0a0a0u());
+      SLinkOperations.setTarget(this.parentExpression, LINKS.rValue$spNK, createNullLiteral_crlydh_a0a0a0v());
     } else {
       SLinkOperations.setTarget(this.parentExpression, LINKS.rValue$spNK, value);
     }
+  }
+
+  public String validate() {
+    SNode right = TypecheckingFacade.getFromContext().getTypeOf(SLinkOperations.getTarget(parentExpression, LINKS.rValue$spNK));
+    if (!(TypecheckingFacade.getFromContext().isSubtype(right, SLinkOperations.getTarget(newParameter, LINKS.type$a1UY)))) {
+      return SNodeOperations.present(right) + " is not a subtype of " + SNodeOperations.present(SLinkOperations.getTarget(newParameter, LINKS.type$a1UY));
+    }
+    return null;
   }
 
   public boolean isTouched() {
@@ -124,19 +137,28 @@ import org.jetbrains.mps.openapi.language.SConcept;
   @Override
   public void propertyChanged(@NotNull SPropertyChangeEvent event) {
     touched = true;
+    myUpdatedCallback.invoke();
   }
   @Override
   public void referenceChanged(@NotNull SReferenceChangeEvent event) {
     touched = true;
+    myUpdatedCallback.invoke();
   }
   @Override
   public void nodeAdded(@NotNull SNodeAddEvent event) {
     touched = true;
+    myUpdatedCallback.invoke();
   }
   @Override
   public void nodeRemoved(@NotNull SNodeRemoveEvent event) {
+    myUpdatedCallback.invoke();
+    // If the node we were editing was removed
+    if (event.getChild() == parentExpression) {
+      // Add it back
+      model.addRootNode(parentExpression);
+    }
   }
-  private static SNode createAssignmentExpression_crlydh_a0g0k(SNode p0, SNode p1) {
+  private static SNode createAssignmentExpression_crlydh_a0h0l(SNode p0, SNode p1) {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.AssignmentExpression$SE);
     {
       SNodeBuilder n1 = n0.forChild(LINKS.lValue$splI).init(CONCEPTS.VariableReference$TC);
@@ -145,7 +167,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
     n0.forChild(LINKS.rValue$spNK).initNode(p1, CONCEPTS.Expression$mB, true);
     return n0.getResult();
   }
-  private static SNode createNullLiteral_crlydh_a0a0a0u() {
+  private static SNode createNullLiteral_crlydh_a0a0a0v() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.NullLiteral$QQ);
     return n0.getResult();
   }

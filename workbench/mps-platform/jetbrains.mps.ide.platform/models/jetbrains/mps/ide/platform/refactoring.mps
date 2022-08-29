@@ -7,6 +7,7 @@
     <use id="f2801650-65d5-424e-bb1b-463a8781b786" name="jetbrains.mps.baseLanguage.javadoc" version="-1" />
     <use id="7866978e-a0f0-4cc7-81bc-4d213d9375e1" name="jetbrains.mps.lang.smodel" version="19" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
+    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
   </languages>
   <imports>
     <import index="ge2m" ref="r:bd8551c6-e2e3-4499-a261-45b0c886d1d1(jetbrains.mps.refactoring.framework)" />
@@ -53,7 +54,9 @@
     <import index="1l1f" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ide.util.gotoByName(MPS.IDEA/)" />
     <import index="yha4" ref="742f6602-5a2f-4313-aa6e-ae1cd4ffdc61/java:jetbrains.mps.workbench.choose(MPS.Platform/)" />
     <import index="wwqx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.logging(MPS.Core/)" />
-    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" implicit="true" />
+    <import index="wyuk" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.components(MPS.Core/)" />
+    <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
+    <import index="e8no" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.containers(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -113,9 +116,6 @@
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
-      <concept id="1070534760951" name="jetbrains.mps.baseLanguage.structure.ArrayType" flags="in" index="10Q1$e">
-        <child id="1070534760952" name="componentType" index="10Q1$1" />
-      </concept>
       <concept id="1070534934090" name="jetbrains.mps.baseLanguage.structure.CastExpression" flags="nn" index="10QFUN">
         <child id="1070534934091" name="type" index="10QFUM" />
         <child id="1070534934092" name="expression" index="10QFUP" />
@@ -282,6 +282,9 @@
       <concept id="8465538089690331500" name="jetbrains.mps.baseLanguage.javadoc.structure.CommentLine" flags="ng" index="TZ5HA">
         <child id="8970989240999019149" name="part" index="1dT_Ay" />
       </concept>
+      <concept id="8465538089690331492" name="jetbrains.mps.baseLanguage.javadoc.structure.DeprecatedBlockDocTag" flags="ng" index="TZ5HI">
+        <child id="2667874559098216723" name="text" index="3HnX3l" />
+      </concept>
       <concept id="6612597108003615641" name="jetbrains.mps.baseLanguage.javadoc.structure.HTMLElement" flags="ng" index="2U$1Ah">
         <property id="6612597108003615642" name="name" index="2U$1Ai" />
         <child id="6612597108003615643" name="line" index="2U$1Aj" />
@@ -343,23 +346,9 @@
       </concept>
     </language>
     <language id="83888646-71ce-4f1c-9c53-c54016f6ad4f" name="jetbrains.mps.baseLanguage.collections">
-      <concept id="540871147943773365" name="jetbrains.mps.baseLanguage.collections.structure.SingleArgumentSequenceOperation" flags="nn" index="25WWJ4">
-        <child id="540871147943773366" name="argument" index="25WWJ7" />
-      </concept>
-      <concept id="1151688443754" name="jetbrains.mps.baseLanguage.collections.structure.ListType" flags="in" index="_YKpA">
-        <child id="1151688676805" name="elementType" index="_ZDj9" />
-      </concept>
       <concept id="1151689724996" name="jetbrains.mps.baseLanguage.collections.structure.SequenceType" flags="in" index="A3Dl8">
         <child id="1151689745422" name="elementType" index="A3Ik2" />
       </concept>
-      <concept id="1237721394592" name="jetbrains.mps.baseLanguage.collections.structure.AbstractContainerCreator" flags="nn" index="HWqM0">
-        <child id="1237721435807" name="elementType" index="HW$YZ" />
-      </concept>
-      <concept id="1160600644654" name="jetbrains.mps.baseLanguage.collections.structure.ListCreatorWithInit" flags="nn" index="Tc6Ow" />
-      <concept id="1160612413312" name="jetbrains.mps.baseLanguage.collections.structure.AddElementOperation" flags="nn" index="TSZUe" />
-      <concept id="1240325842691" name="jetbrains.mps.baseLanguage.collections.structure.AsSequenceOperation" flags="nn" index="39bAoz" />
-      <concept id="1184963466173" name="jetbrains.mps.baseLanguage.collections.structure.ToArrayOperation" flags="nn" index="3_kTaI" />
-      <concept id="1172254888721" name="jetbrains.mps.baseLanguage.collections.structure.ContainsOperation" flags="nn" index="3JPx81" />
     </language>
   </registry>
   <node concept="312cEu" id="1TclyuNTOmp">
@@ -1624,129 +1613,7 @@
         </node>
       </node>
     </node>
-    <node concept="3clFb_" id="1t_LRy89k45" role="jymVt">
-      <property role="TrG5h" value="getRefactorAction" />
-      <property role="DiZV1" value="true" />
-      <node concept="3Tmbuc" id="3g3N8kb40MZ" role="1B3o_S" />
-      <node concept="3clFbS" id="1t_LRy89k47" role="3clF47">
-        <node concept="3cpWs6" id="1t_LRy89k48" role="3cqZAp">
-          <node concept="37vLTw" id="2BHiRxeuG$7" role="3cqZAk">
-            <ref role="3cqZAo" node="1t_LRy89k3n" resolve="myRefactorAction" />
-          </node>
-        </node>
-      </node>
-      <node concept="3uibUv" id="1t_LRy89k4a" role="3clF45">
-        <ref role="3uigEE" to="dxuu:~Action" resolve="Action" />
-      </node>
-    </node>
-    <node concept="3clFb_" id="1t_LRy89k4i" role="jymVt">
-      <property role="TrG5h" value="createActions" />
-      <node concept="3Tmbuc" id="1t_LRy89k4j" role="1B3o_S" />
-      <node concept="3clFbS" id="1t_LRy89k4k" role="3clF47">
-        <node concept="3cpWs8" id="1t_LRy89k4l" role="3cqZAp">
-          <node concept="3cpWsn" id="1t_LRy89k4m" role="3cpWs9">
-            <property role="TrG5h" value="actions" />
-            <node concept="_YKpA" id="1t_LRy89k4n" role="1tU5fm">
-              <node concept="3uibUv" id="1t_LRy89k4o" role="_ZDj9">
-                <ref role="3uigEE" to="dxuu:~Action" resolve="Action" />
-              </node>
-            </node>
-            <node concept="2ShNRf" id="1t_LRy89k4p" role="33vP2m">
-              <node concept="Tc6Ow" id="1t_LRy89k4q" role="2ShVmc">
-                <node concept="3uibUv" id="1t_LRy89k4r" role="HW$YZ">
-                  <ref role="3uigEE" to="dxuu:~Action" resolve="Action" />
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="1t_LRy89k4s" role="3cqZAp">
-          <node concept="2OqwBi" id="1t_LRy89k4t" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTtvl" role="2Oq$k0">
-              <ref role="3cqZAo" node="1t_LRy89k4m" resolve="actions" />
-            </node>
-            <node concept="TSZUe" id="1t_LRy89k4v" role="2OqNvi">
-              <node concept="1rXfSq" id="4hiugqyz5G7" role="25WWJ7">
-                <ref role="37wK5l" node="1t_LRy89k45" resolve="getRefactorAction" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="1t_LRy89k4x" role="3cqZAp">
-          <node concept="2OqwBi" id="1t_LRy89k4y" role="3clFbG">
-            <node concept="37vLTw" id="3GM_nagTyEE" role="2Oq$k0">
-              <ref role="3cqZAo" node="1t_LRy89k4m" resolve="actions" />
-            </node>
-            <node concept="TSZUe" id="1t_LRy89k4$" role="2OqNvi">
-              <node concept="1rXfSq" id="4hiugqyz5Ig" role="25WWJ7">
-                <ref role="37wK5l" to="jkm4:~DialogWrapper.getCancelAction()" resolve="getCancelAction" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="3u6nf1jlchQ" role="3cqZAp">
-          <node concept="3cpWsn" id="3u6nf1jlchR" role="3cpWs9">
-            <property role="TrG5h" value="superActions" />
-            <node concept="10Q1$e" id="3u6nf1jlcev" role="1tU5fm">
-              <node concept="3uibUv" id="3u6nf1jlcey" role="10Q1$1">
-                <ref role="3uigEE" to="dxuu:~Action" resolve="Action" />
-              </node>
-            </node>
-            <node concept="3nyPlj" id="3u6nf1jlchS" role="33vP2m">
-              <ref role="37wK5l" to="jkm4:~DialogWrapper.createActions()" resolve="createActions" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="3u6nf1jlbMI" role="3cqZAp">
-          <node concept="3clFbS" id="3u6nf1jlbMK" role="3clFbx">
-            <node concept="3clFbF" id="3u6nf1jleX9" role="3cqZAp">
-              <node concept="2OqwBi" id="3u6nf1jleXb" role="3clFbG">
-                <node concept="37vLTw" id="3u6nf1jleXc" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1t_LRy89k4m" resolve="actions" />
-                </node>
-                <node concept="TSZUe" id="3u6nf1jleXd" role="2OqNvi">
-                  <node concept="1rXfSq" id="3u6nf1jlf4w" role="25WWJ7">
-                    <ref role="37wK5l" to="jkm4:~DialogWrapper.getHelpAction()" resolve="getHelpAction" />
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="3u6nf1jleji" role="3clFbw">
-            <node concept="2OqwBi" id="3u6nf1jldin" role="2Oq$k0">
-              <node concept="37vLTw" id="3u6nf1jlchT" role="2Oq$k0">
-                <ref role="3cqZAo" node="3u6nf1jlchR" resolve="superActions" />
-              </node>
-              <node concept="39bAoz" id="3u6nf1jle4Z" role="2OqNvi" />
-            </node>
-            <node concept="3JPx81" id="3u6nf1jlewY" role="2OqNvi">
-              <node concept="1rXfSq" id="3u6nf1jlexJ" role="25WWJ7">
-                <ref role="37wK5l" to="jkm4:~DialogWrapper.getHelpAction()" resolve="getHelpAction" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs6" id="1t_LRy89k4A" role="3cqZAp">
-          <node concept="2OqwBi" id="1t_LRy89k4B" role="3cqZAk">
-            <node concept="37vLTw" id="3GM_nagTBeU" role="2Oq$k0">
-              <ref role="3cqZAo" node="1t_LRy89k4m" resolve="actions" />
-            </node>
-            <node concept="3_kTaI" id="1t_LRy89k4D" role="2OqNvi" />
-          </node>
-        </node>
-      </node>
-      <node concept="10Q1$e" id="1t_LRy89k4E" role="3clF45">
-        <node concept="3uibUv" id="1t_LRy89k4F" role="10Q1$1">
-          <ref role="3uigEE" to="dxuu:~Action" resolve="Action" />
-        </node>
-      </node>
-      <node concept="2AHcQZ" id="3tYsUK_SkRy" role="2AJF6D">
-        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-      </node>
-      <node concept="2AHcQZ" id="5wEedBrKKMx" role="2AJF6D">
-        <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
-      </node>
-    </node>
+    <node concept="2tJIrI" id="3Ka6WCt7ds7" role="jymVt" />
     <node concept="3clFb_" id="1t_LRy89k4G" role="jymVt">
       <property role="TrG5h" value="createDefaultActions" />
       <node concept="3cqZAl" id="1t_LRy89k4H" role="3clF45" />
@@ -1757,14 +1624,23 @@
             <ref role="37wK5l" to="jkm4:~DialogWrapper.createDefaultActions()" resolve="createDefaultActions" />
           </node>
         </node>
-        <node concept="3clFbF" id="1t_LRy89k4M" role="3cqZAp">
-          <node concept="37vLTI" id="1t_LRy89k4N" role="3clFbG">
-            <node concept="37vLTw" id="2BHiRxeuqRp" role="37vLTJ">
-              <ref role="3cqZAo" node="1t_LRy89k3n" resolve="myRefactorAction" />
+        <node concept="3clFbF" id="3Ka6WCt5PRD" role="3cqZAp">
+          <node concept="2OqwBi" id="3Ka6WCt5QDh" role="3clFbG">
+            <node concept="1rXfSq" id="3Ka6WCt5PRB" role="2Oq$k0">
+              <ref role="37wK5l" to="jkm4:~DialogWrapper.getOKAction()" resolve="getOKAction" />
             </node>
-            <node concept="2ShNRf" id="1t_LRy89k4P" role="37vLTx">
-              <node concept="1pGfFk" id="1t_LRy89k4Q" role="2ShVmc">
-                <ref role="37wK5l" node="1t_LRy89k3v" resolve="RefactoringDialog.RefactorAction" />
+            <node concept="liA8E" id="3Ka6WCt5Sag" role="2OqNvi">
+              <ref role="37wK5l" to="dxuu:~Action.putValue(java.lang.String,java.lang.Object)" resolve="putValue" />
+              <node concept="10M0yZ" id="3Ka6WCt5UDI" role="37wK5m">
+                <ref role="3cqZAo" to="dxuu:~Action.NAME" resolve="NAME" />
+                <ref role="1PxDUh" to="dxuu:~Action" resolve="Action" />
+              </node>
+              <node concept="2YIFZM" id="3Ka6WCt5UDK" role="37wK5m">
+                <ref role="37wK5l" to="vn06:~RefactoringBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
+                <ref role="1Pybhc" to="vn06:~RefactoringBundle" resolve="RefactoringBundle" />
+                <node concept="Xl_RD" id="3Ka6WCt5UDL" role="37wK5m">
+                  <property role="Xl_RC" value="refactor.button" />
+                </node>
               </node>
             </node>
           </node>
@@ -1774,97 +1650,120 @@
         <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="3clFb_" id="1t_LRy89k4S" role="jymVt">
-      <property role="1EzhhJ" value="false" />
-      <property role="TrG5h" value="doRefactoringAction" />
-      <node concept="3cqZAl" id="58ylZeUN7p9" role="3clF45" />
-      <node concept="3Tmbuc" id="1t_LRy89k4U" role="1B3o_S" />
-      <node concept="3clFbS" id="1t_LRy89k4V" role="3clF47">
-        <node concept="3clFbF" id="1kyekhEkCQr" role="3cqZAp">
-          <node concept="1rXfSq" id="4hiugqyzhAJ" role="3clFbG">
-            <ref role="37wK5l" to="jkm4:~DialogWrapper.close(int)" resolve="close" />
-            <node concept="37vLTw" id="2BHiRxeosol" role="37wK5m">
-              <ref role="3cqZAo" to="jkm4:~DialogWrapper.OK_EXIT_CODE" resolve="OK_EXIT_CODE" />
+    <node concept="2tJIrI" id="4osL9SmU1XM" role="jymVt" />
+    <node concept="3clFb_" id="4osL9SmSEyL" role="jymVt">
+      <property role="TrG5h" value="continuousValidation" />
+      <node concept="3Tmbuc" id="4osL9SmSEyM" role="1B3o_S" />
+      <node concept="10P_77" id="4osL9SmSEyO" role="3clF45" />
+      <node concept="3clFbS" id="4osL9SmSEyQ" role="3clF47">
+        <node concept="3SKdUt" id="4osL9SmUe2N" role="3cqZAp">
+          <node concept="1PaTwC" id="4osL9SmUe2O" role="1aUNEU">
+            <node concept="3oM_SD" id="4osL9SmUef2" role="1PaTwD">
+              <property role="3oM_SC" value="Validation" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUef4" role="1PaTwD">
+              <property role="3oM_SC" value="was" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUef7" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUefb" role="1PaTwD">
+              <property role="3oM_SC" value="supported" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUefg" role="1PaTwD">
+              <property role="3oM_SC" value="by" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUefm" role="1PaTwD">
+              <property role="3oM_SC" value="previous" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUeft" role="1PaTwD">
+              <property role="3oM_SC" value="refactoring" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUef_" role="1PaTwD">
+              <property role="3oM_SC" value="action," />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUefI" role="1PaTwD">
+              <property role="3oM_SC" value="there" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUefS" role="1PaTwD">
+              <property role="3oM_SC" value="is" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUeg3" role="1PaTwD">
+              <property role="3oM_SC" value="no" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUegf" role="1PaTwD">
+              <property role="3oM_SC" value="need" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUegs" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUegE" role="1PaTwD">
+              <property role="3oM_SC" value="push" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUegT" role="1PaTwD">
+              <property role="3oM_SC" value="it" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmUeh9" role="1PaTwD">
+              <property role="3oM_SC" value="further" />
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="4osL9SmT5jo" role="3cqZAp">
+          <node concept="3clFbT" id="4osL9SmT5jn" role="3clFbG" />
+        </node>
       </node>
-      <node concept="P$JXv" id="2UtcIRuQAUx" role="lGtFl">
-        <node concept="TZ5HA" id="2UtcIRuQAUy" role="TZ5H$">
-          <node concept="1dT_AC" id="2UtcIRuQAUz" role="1dT_Ay">
-            <property role="1dT_AB" value="This method will be called on pressing &quot;Refactor&quot; button in dialog." />
-          </node>
-        </node>
-        <node concept="TZ5HA" id="2UtcIRuQAU_" role="TZ5H$">
-          <node concept="1dT_AC" id="2UtcIRuQAUA" role="1dT_Ay" />
-        </node>
+      <node concept="2AHcQZ" id="4osL9SmSEyR" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
       </node>
     </node>
-    <node concept="312cEu" id="1t_LRy89k3t" role="jymVt">
-      <property role="TrG5h" value="RefactorAction" />
-      <property role="2bfB8j" value="true" />
-      <node concept="3Tm6S6" id="1t_LRy89k3u" role="1B3o_S" />
-      <node concept="3uibUv" id="1t_LRy89k3G" role="1zkMxy">
-        <ref role="3uigEE" to="dxuu:~AbstractAction" resolve="AbstractAction" />
+    <node concept="2tJIrI" id="4osL9SmPTOI" role="jymVt" />
+    <node concept="3clFb_" id="3Ka6WCt5Z6b" role="jymVt">
+      <property role="TrG5h" value="doOKAction" />
+      <node concept="3Tmbuc" id="3Ka6WCt5Z6c" role="1B3o_S" />
+      <node concept="3cqZAl" id="3Ka6WCt5Z6e" role="3clF45" />
+      <node concept="3clFbS" id="3Ka6WCt5Z6f" role="3clF47">
+        <node concept="3SKdUt" id="4osL9SmPXRL" role="3cqZAp">
+          <node concept="1PaTwC" id="4osL9SmPXRM" role="1aUNEU">
+            <node concept="3oM_SD" id="4osL9SmPXRT" role="1PaTwD">
+              <property role="3oM_SC" value="TODO" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmPXRV" role="1PaTwD">
+              <property role="3oM_SC" value="we" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmPY2O" role="1PaTwD">
+              <property role="3oM_SC" value="can" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmPY2S" role="1PaTwD">
+              <property role="3oM_SC" value="just" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmPY3d" role="1PaTwD">
+              <property role="3oM_SC" value="refer" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmPY3z" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmPY3U" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmPY42" role="1PaTwD">
+              <property role="3oM_SC" value="OK" />
+            </node>
+            <node concept="3oM_SD" id="4osL9SmPY4V" role="1PaTwD">
+              <property role="3oM_SC" value="action" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3Ka6WCt62IE" role="3cqZAp">
+          <node concept="1rXfSq" id="3Ka6WCt62IB" role="3clFbG">
+            <ref role="37wK5l" node="1t_LRy89k4S" resolve="doRefactoringAction" />
+          </node>
+        </node>
       </node>
-      <node concept="3clFbW" id="1t_LRy89k3v" role="jymVt">
-        <node concept="3cqZAl" id="1t_LRy89k3w" role="3clF45" />
-        <node concept="3Tm1VV" id="1t_LRy89k3x" role="1B3o_S" />
-        <node concept="3clFbS" id="1t_LRy89k3y" role="3clF47">
-          <node concept="3clFbF" id="1t_LRy89k3z" role="3cqZAp">
-            <node concept="1rXfSq" id="4hiugqyyZdB" role="3clFbG">
-              <ref role="37wK5l" to="dxuu:~AbstractAction.putValue(java.lang.String,java.lang.Object)" resolve="putValue" />
-              <node concept="37vLTw" id="2BHiRxeoeqp" role="37wK5m">
-                <ref role="3cqZAo" to="dxuu:~Action.NAME" resolve="NAME" />
-              </node>
-              <node concept="2YIFZM" id="1t_LRy89k3A" role="37wK5m">
-                <ref role="37wK5l" to="vn06:~RefactoringBundle.message(java.lang.String,java.lang.Object...)" resolve="message" />
-                <ref role="1Pybhc" to="vn06:~RefactoringBundle" resolve="RefactoringBundle" />
-                <node concept="Xl_RD" id="1t_LRy89k3B" role="37wK5m">
-                  <property role="Xl_RC" value="refactor.button" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3clFbF" id="1t_LRy89k3C" role="3cqZAp">
-            <node concept="1rXfSq" id="4hiugqyz9mC" role="3clFbG">
-              <ref role="37wK5l" to="dxuu:~AbstractAction.putValue(java.lang.String,java.lang.Object)" resolve="putValue" />
-              <node concept="10M0yZ" id="1t_LRy89k3E" role="37wK5m">
-                <ref role="3cqZAo" to="jkm4:~DialogWrapper.DEFAULT_ACTION" resolve="DEFAULT_ACTION" />
-                <ref role="1PxDUh" to="jkm4:~DialogWrapper" resolve="DialogWrapper" />
-              </node>
-              <node concept="10M0yZ" id="1t_LRy89k3F" role="37wK5m">
-                <ref role="1PxDUh" to="wyt6:~Boolean" resolve="Boolean" />
-                <ref role="3cqZAo" to="wyt6:~Boolean.TRUE" resolve="TRUE" />
-              </node>
-            </node>
-          </node>
-        </node>
-      </node>
-      <node concept="3clFb_" id="1t_LRy89k3H" role="jymVt">
-        <property role="1EzhhJ" value="false" />
-        <property role="TrG5h" value="actionPerformed" />
-        <property role="DiZV1" value="false" />
-        <node concept="3Tm1VV" id="1t_LRy89k3I" role="1B3o_S" />
-        <node concept="3cqZAl" id="1t_LRy89k3J" role="3clF45" />
-        <node concept="37vLTG" id="1t_LRy89k3K" role="3clF46">
-          <property role="TrG5h" value="event" />
-          <node concept="3uibUv" id="1t_LRy89k3L" role="1tU5fm">
-            <ref role="3uigEE" to="hyam:~ActionEvent" resolve="ActionEvent" />
-          </node>
-        </node>
-        <node concept="3clFbS" id="1t_LRy89k3M" role="3clF47">
-          <node concept="3clFbF" id="58ylZeUN7pa" role="3cqZAp">
-            <node concept="1rXfSq" id="4hiugqyzexW" role="3clFbG">
-              <ref role="37wK5l" node="1t_LRy89k4S" resolve="doRefactoringAction" />
-            </node>
-          </node>
-        </node>
-        <node concept="2AHcQZ" id="3tYsUK_S6kU" role="2AJF6D">
-          <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
-        </node>
+      <node concept="2AHcQZ" id="3Ka6WCt5Z6g" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
+    <node concept="2tJIrI" id="4osL9SmPXJl" role="jymVt" />
     <node concept="3clFb_" id="5wEedBrKLQY" role="jymVt">
       <property role="TrG5h" value="getProject" />
       <node concept="3uibUv" id="5wEedBrKLQZ" role="3clF45">
@@ -1879,6 +1778,67 @@
         </node>
       </node>
     </node>
+    <node concept="3clFb_" id="1t_LRy89k45" role="jymVt">
+      <property role="TrG5h" value="getRefactorAction" />
+      <property role="DiZV1" value="true" />
+      <node concept="3Tmbuc" id="3g3N8kb40MZ" role="1B3o_S" />
+      <node concept="3clFbS" id="1t_LRy89k47" role="3clF47">
+        <node concept="3cpWs6" id="1t_LRy89k48" role="3cqZAp">
+          <node concept="1rXfSq" id="4osL9SmORjP" role="3cqZAk">
+            <ref role="37wK5l" to="jkm4:~DialogWrapper.getOKAction()" resolve="getOKAction" />
+          </node>
+        </node>
+      </node>
+      <node concept="3uibUv" id="1t_LRy89k4a" role="3clF45">
+        <ref role="3uigEE" to="dxuu:~Action" resolve="Action" />
+      </node>
+      <node concept="P$JXv" id="4osL9SmPT1E" role="lGtFl">
+        <node concept="TZ5HI" id="4osL9SmPT1F" role="3nqlJM">
+          <node concept="TZ5HA" id="4osL9SmPT1G" role="3HnX3l">
+            <node concept="1dT_AC" id="4osL9SmPTe1" role="1dT_Ay">
+              <property role="1dT_AB" value="use getOKAction instead" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="4osL9SmPT1H" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+      </node>
+    </node>
+    <node concept="3clFb_" id="1t_LRy89k4S" role="jymVt">
+      <property role="1EzhhJ" value="false" />
+      <property role="TrG5h" value="doRefactoringAction" />
+      <node concept="3cqZAl" id="58ylZeUN7p9" role="3clF45" />
+      <node concept="3Tmbuc" id="1t_LRy89k4U" role="1B3o_S" />
+      <node concept="3clFbS" id="1t_LRy89k4V" role="3clF47">
+        <node concept="3clFbF" id="4osL9SmPToN" role="3cqZAp">
+          <node concept="3nyPlj" id="4osL9SmPToM" role="3clFbG">
+            <ref role="37wK5l" to="jkm4:~DialogWrapper.doOKAction()" resolve="doOKAction" />
+          </node>
+        </node>
+      </node>
+      <node concept="P$JXv" id="2UtcIRuQAUx" role="lGtFl">
+        <node concept="TZ5HA" id="2UtcIRuQAUy" role="TZ5H$">
+          <node concept="1dT_AC" id="2UtcIRuQAUz" role="1dT_Ay">
+            <property role="1dT_AB" value="This method will be called on pressing &quot;Refactor&quot; button in dialog." />
+          </node>
+        </node>
+        <node concept="TZ5HA" id="2UtcIRuQAU_" role="TZ5H$">
+          <node concept="1dT_AC" id="2UtcIRuQAUA" role="1dT_Ay" />
+        </node>
+        <node concept="TZ5HI" id="4osL9SmPTDG" role="3nqlJM">
+          <node concept="TZ5HA" id="4osL9SmPTDH" role="3HnX3l">
+            <node concept="1dT_AC" id="4osL9SmPTOG" role="1dT_Ay">
+              <property role="1dT_AB" value="extend doOKAction instead" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="4osL9SmPTDI" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Deprecated" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="3Ka6WCt69fr" role="jymVt" />
   </node>
   <node concept="312cEu" id="1t_LRy89$1R">
     <property role="TrG5h" value="StringChooserDialog" />

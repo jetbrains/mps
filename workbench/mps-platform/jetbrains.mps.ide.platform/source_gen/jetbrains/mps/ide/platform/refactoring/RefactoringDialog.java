@@ -7,13 +7,7 @@ import com.intellij.openapi.ui.DialogWrapper;
 import javax.swing.Action;
 import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.NotNull;
-import java.util.List;
-import jetbrains.mps.internal.collections.runtime.ListSequence;
-import java.util.ArrayList;
-import jetbrains.mps.internal.collections.runtime.Sequence;
-import javax.swing.AbstractAction;
 import com.intellij.refactoring.RefactoringBundle;
-import java.awt.event.ActionEvent;
 
 @GeneratedClass(node = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/1685972956014264534", model = "r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)")
 public abstract class RefactoringDialog extends DialogWrapper {
@@ -23,44 +17,45 @@ public abstract class RefactoringDialog extends DialogWrapper {
     super(project, canBeParent);
     myProject = project;
   }
-  protected final Action getRefactorAction() {
-    return myRefactorAction;
-  }
-  @Override
-  @NotNull
-  protected Action[] createActions() {
-    List<Action> actions = ListSequence.fromList(new ArrayList<Action>());
-    ListSequence.fromList(actions).addElement(getRefactorAction());
-    ListSequence.fromList(actions).addElement(getCancelAction());
-    Action[] superActions = super.createActions();
-    if (Sequence.fromIterable(Sequence.fromArray(superActions)).contains(getHelpAction())) {
-      ListSequence.fromList(actions).addElement(getHelpAction());
-    }
-    return ListSequence.fromList(actions).toGenericArray(Action.class);
-  }
+
   @Override
   protected void createDefaultActions() {
     super.createDefaultActions();
-    myRefactorAction = new RefactorAction();
+    getOKAction().putValue(Action.NAME, RefactoringBundle.message("refactor.button"));
+  }
+
+  @Override
+  protected boolean continuousValidation() {
+    // Validation was not supported by previous refactoring action, there is no need to push it further
+    return false;
+  }
+
+  @Override
+  protected void doOKAction() {
+    // TODO we can just refer to the OK action
+    doRefactoringAction();
+  }
+
+  public Project getProject() {
+    return myProject;
+  }
+  /**
+   * 
+   * @deprecated use getOKAction instead
+   */
+  @Deprecated
+  protected final Action getRefactorAction() {
+    return getOKAction();
   }
   /**
    * This method will be called on pressing "Refactor" button in dialog.
    * 
+   * 
+   * @deprecated extend doOKAction instead
    */
+  @Deprecated
   protected void doRefactoringAction() {
-    close(OK_EXIT_CODE);
+    super.doOKAction();
   }
-  private class RefactorAction extends AbstractAction {
-    public RefactorAction() {
-      putValue(NAME, RefactoringBundle.message("refactor.button"));
-      putValue(DialogWrapper.DEFAULT_ACTION, Boolean.TRUE);
-    }
-    @Override
-    public void actionPerformed(ActionEvent event) {
-      doRefactoringAction();
-    }
-  }
-  public Project getProject() {
-    return myProject;
-  }
+
 }

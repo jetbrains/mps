@@ -110,60 +110,44 @@
   </root>
   <root nodeRef="r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/1685972956014264534">
     <file name="RefactoringDialog.java">
-      <node id="1685972956014264535" at="20,0,21,0" concept="3" trace="myRefactorAction" />
-      <node id="1685972956014264538" at="21,0,22,0" concept="3" trace="myProject" />
-      <node id="1685972956014264574" at="22,75,23,32" concept="13" />
-      <node id="1685972956014264577" at="23,32,24,24" concept="2" />
-      <node id="1685972956014264584" at="26,46,27,28" concept="8" />
-      <node id="1685972956014264597" at="31,38,32,74" concept="7" />
-      <node id="1685972956014264604" at="32,74,33,67" concept="2" />
-      <node id="1685972956014264609" at="33,67,34,65" concept="2" />
-      <node id="4000987506225235062" at="34,65,35,50" concept="7" />
-      <node id="4000987506225246025" at="36,92,37,65" concept="2" />
-      <node id="1685972956014264614" at="38,5,39,71" concept="8" />
-      <node id="1685972956014264624" at="42,41,43,33" concept="2" />
-      <node id="1685972956014264626" at="43,33,44,44" concept="2" />
-      <node id="1522842590009003419" at="50,40,51,24" concept="2" />
-      <node id="1685972956014264547" at="54,29,55,67" concept="2" />
-      <node id="1685972956014264552" at="55,67,56,59" concept="2" />
-      <node id="5918389564640884298" at="59,52,60,28" concept="2" />
-      <node id="6352952732705562050" at="63,31,64,21" concept="8" />
-      <node id="1685972956014264581" at="26,0,29,0" concept="6" trace="getRefactorAction#()Ljavax/swing/Action;" />
-      <node id="4000987506225233070" at="35,50,38,5" concept="5" />
-      <node id="1685972956014264632" at="50,0,53,0" concept="6" trace="doRefactoringAction#()V" />
-      <node id="6352952732705562046" at="63,0,66,0" concept="6" trace="getProject#()Lcom/intellij/openapi/project/Project;" />
-      <node id="1685972956014264565" at="22,0,26,0" concept="1" trace="RefactoringDialog#(Lcom/intellij/openapi/project/Project;Z)V" />
-      <node id="1685972956014264543" at="54,0,58,0" concept="1" trace="RefactorAction#()V" />
-      <node id="1685972956014264557" at="58,0,62,0" concept="6" trace="actionPerformed#(Ljava/awt/event/ActionEvent;)V" />
-      <node id="1685972956014264620" at="41,0,46,0" concept="6" trace="createDefaultActions#()V" />
-      <node id="1685972956014264594" at="29,0,41,0" concept="6" trace="createActions#()[Ljavax/swing/Action;" />
-      <scope id="1685972956014264583" at="26,46,27,28" />
-      <scope id="4000987506225233072" at="36,92,37,65" />
-      <scope id="1685972956014264635" at="50,40,51,24" />
-      <scope id="1685972956014264562" at="59,52,60,28" />
-      <scope id="6352952732705562049" at="63,31,64,21" />
-      <scope id="1685972956014264573" at="22,75,24,24" />
-      <scope id="1685972956014264623" at="42,41,44,44" />
-      <scope id="1685972956014264546" at="54,29,56,59" />
-      <scope id="1685972956014264581" at="26,0,29,0" />
-      <scope id="1685972956014264632" at="50,0,53,0" />
-      <scope id="6352952732705562046" at="63,0,66,0" />
-      <scope id="1685972956014264565" at="22,0,26,0">
+      <node id="1685972956014264535" at="14,0,15,0" concept="3" trace="myRefactorAction" />
+      <node id="1685972956014264538" at="15,0,16,0" concept="3" trace="myProject" />
+      <node id="1685972956014264574" at="16,75,17,32" concept="13" />
+      <node id="1685972956014264577" at="17,32,18,24" concept="2" />
+      <node id="1685972956014264624" at="22,41,23,33" concept="2" />
+      <node id="4326300946928197097" at="23,33,24,86" concept="2" />
+      <node id="5052129065271091379" at="28,44,29,103" concept="9" />
+      <node id="5052129065270793432" at="29,103,30,17" concept="8" />
+      <node id="5052129065269976561" at="34,31,35,46" concept="9" />
+      <node id="4326300946928249770" at="35,46,36,26" concept="2" />
+      <node id="6352952732705562050" at="39,31,40,21" concept="8" />
+      <node id="1685972956014264584" at="47,46,48,25" concept="8" />
+      <node id="5052129065269958195" at="57,40,58,23" concept="2" />
+      <node id="6352952732705562046" at="39,0,42,0" concept="6" trace="getProject#()Lcom/intellij/openapi/project/Project;" />
+      <node id="1685972956014264565" at="16,0,20,0" concept="1" trace="RefactoringDialog#(Lcom/intellij/openapi/project/Project;Z)V" />
+      <node id="1685972956014264581" at="46,0,50,0" concept="6" trace="getRefactorAction#()Ljavax/swing/Action;" />
+      <node id="1685972956014264632" at="56,0,60,0" concept="6" trace="doRefactoringAction#()V" />
+      <node id="1685972956014264620" at="21,0,26,0" concept="6" trace="createDefaultActions#()V" />
+      <node id="5052129065270683825" at="27,0,32,0" concept="6" trace="continuousValidation#()Z" />
+      <node id="4326300946928234891" at="33,0,38,0" concept="6" trace="doOKAction#()V" />
+      <scope id="6352952732705562049" at="39,31,40,21" />
+      <scope id="1685972956014264583" at="47,46,48,25" />
+      <scope id="1685972956014264635" at="57,40,58,23" />
+      <scope id="1685972956014264573" at="16,75,18,24" />
+      <scope id="1685972956014264623" at="22,41,24,86" />
+      <scope id="5052129065270683830" at="28,44,30,17" />
+      <scope id="4326300946928234895" at="34,31,36,26" />
+      <scope id="6352952732705562046" at="39,0,42,0" />
+      <scope id="1685972956014264565" at="16,0,20,0">
         <var name="canBeParent" id="1685972956014264569" />
         <var name="project" id="1685972956014264566" />
       </scope>
-      <scope id="1685972956014264543" at="54,0,58,0" />
-      <scope id="1685972956014264557" at="58,0,62,0">
-        <var name="event" id="1685972956014264560" />
-      </scope>
-      <scope id="1685972956014264620" at="41,0,46,0" />
-      <scope id="1685972956014264596" at="31,38,39,71">
-        <var name="actions" id="1685972956014264598" />
-        <var name="superActions" id="4000987506225235063" />
-      </scope>
-      <scope id="1685972956014264594" at="29,0,41,0" />
-      <unit id="1685972956014264541" at="53,0,63,0" name="jetbrains.mps.ide.platform.refactoring.RefactoringDialog$RefactorAction" />
-      <unit id="1685972956014264534" at="18,0,67,0" name="jetbrains.mps.ide.platform.refactoring.RefactoringDialog" />
+      <scope id="1685972956014264581" at="46,0,50,0" />
+      <scope id="1685972956014264632" at="56,0,60,0" />
+      <scope id="1685972956014264620" at="21,0,26,0" />
+      <scope id="5052129065270683825" at="27,0,32,0" />
+      <scope id="4326300946928234891" at="33,0,38,0" />
+      <unit id="1685972956014264534" at="12,0,62,0" name="jetbrains.mps.ide.platform.refactoring.RefactoringDialog" />
     </file>
   </root>
   <root nodeRef="r:986938bb-bdb1-4307-b062-e4647a4db0f9(jetbrains.mps.ide.platform.refactoring)/1685972956014329975">

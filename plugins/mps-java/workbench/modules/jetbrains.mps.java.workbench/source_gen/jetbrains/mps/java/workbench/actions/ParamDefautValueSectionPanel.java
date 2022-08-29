@@ -7,12 +7,15 @@ import org.jetbrains.mps.openapi.model.SNodeChangeListener;
 import java.util.List;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import java.util.ArrayList;
 import javax.swing.BoxLayout;
 import javax.swing.border.TitledBorder;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
+import com.intellij.openapi.ui.ValidationInfo;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import java.util.Map;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import java.util.HashMap;
@@ -24,8 +27,9 @@ import org.jetbrains.mps.openapi.event.SNodeAddEvent;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
 import jetbrains.mps.baseLanguage.behavior.Type__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
-import org.jetbrains.mps.openapi.language.SContainmentLink;
+import org.jetbrains.mps.openapi.language.SProperty;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
+import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 /**
@@ -39,9 +43,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
   private final MPSProject myProject;
   private final SNode myBaseMethod;
 
-  public ParamDefautValueSectionPanel(@NotNull MPSProject project, SNode baseMethod) {
+  /**
+   * Will be called by children panel when the model is updated
+   */
+  private final _FunctionTypes._void_P0_E0 myUpdatedCallback;
+
+  public ParamDefautValueSectionPanel(@NotNull MPSProject project, SNode baseMethod, _FunctionTypes._void_P0_E0 updatedCallback) {
     parameters = ListSequence.fromList(new ArrayList<ParamDefaultValueEditor>());
     myProject = project;
+    myUpdatedCallback = updatedCallback;
 
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     setBorder(new TitledBorder("Default values"));
@@ -57,6 +67,15 @@ import org.jetbrains.mps.openapi.language.SConcept;
         it.dispose();
       }
     });
+  }
+
+  public void validate(List<ValidationInfo> reports) {
+    for (ParamDefaultValueEditor editor : parameters) {
+      String res = editor.validate();
+      if (res != null) {
+        ListSequence.fromList(reports).addElement(new ValidationInfo("Default value for '" + SPropertyOperations.getString(editor.getParameter(), PROPS.name$MnvL) + "': " + res));
+      }
+    }
   }
 
   /**
@@ -96,7 +115,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
       return;
     }
 
-    ListSequence.fromList(parameters).addElement(new ParamDefaultValueEditor(parameter, myProject, this));
+    ListSequence.fromList(parameters).addElement(new ParamDefaultValueEditor(parameter, myProject, this, myUpdatedCallback));
     this.updateVisibility();
   }
 
@@ -174,6 +193,10 @@ import org.jetbrains.mps.openapi.language.SConcept;
         updateVisibility();
       }
     }
+  }
+
+  private static final class PROPS {
+    /*package*/ static final SProperty name$MnvL = MetaAdapterFactory.getProperty(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L, 0x110396ec041L, "name");
   }
 
   private static final class LINKS {
