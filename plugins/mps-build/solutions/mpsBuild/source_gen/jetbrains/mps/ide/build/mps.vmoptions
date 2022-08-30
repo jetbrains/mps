@@ -60,7 +60,6 @@
 -Dide.mac.message.dialogs.as.sheets=false
 -Didea.invalidate.caches.invalidates.vfs=true
 -Didea.trust.disabled=false
--Dperformance.watcher.freeze.report=false
--Didea.log.config.file=log.xml
+-Dfreeze.reporter.enabled=false
 -Didea.indices.psi.dependent.default=false
 #-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071

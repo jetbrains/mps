@@ -15307,10 +15307,7 @@
                   <property role="26Ea6C" value="-Didea.invalidate.caches.invalidates.vfs=true" />
                 </node>
                 <node concept="26Ea6D" id="2sJHcZ7KMnC" role="26FZ21">
-                  <property role="26Ea6C" value="-Dperformance.watcher.freeze.report=false" />
-                </node>
-                <node concept="26Ea6D" id="6KekG3HebMF" role="26FZ21">
-                  <property role="26Ea6C" value="-Didea.log.config.file=log.xml" />
+                  <property role="26Ea6C" value="-Dfreeze.reporter.enabled=false" />
                 </node>
                 <node concept="26Ea6D" id="2i$hHP5eiQ4" role="26FZ21">
                   <property role="26Ea6C" value="-Didea.indices.psi.dependent.default=false" />
@@ -15505,11 +15502,8 @@
                 <node concept="26Ea6D" id="4z969tcIApt" role="2hID6k">
                   <property role="26Ea6C" value="-Didea.invalidate.caches.invalidates.vfs=true" />
                 </node>
-                <node concept="26Ea6D" id="2sJHcZ7KMn9" role="2hID6k">
-                  <property role="26Ea6C" value="-Dperformance.watcher.freeze.report=false" />
-                </node>
-                <node concept="26Ea6D" id="6KekG3HebLK" role="2hID6k">
-                  <property role="26Ea6C" value="-Didea.log.config.file=log.xml" />
+                <node concept="26Ea6D" id="1eJDhc3u3iL" role="2hID6k">
+                  <property role="26Ea6C" value="-Dfreeze.reporter.enabled=false" />
                 </node>
                 <node concept="26Ea6D" id="2i$hHP5eiOY" role="2hID6k">
                   <property role="26Ea6C" value="-Didea.indices.psi.dependent.default=false" />
