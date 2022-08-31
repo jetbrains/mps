@@ -498,6 +498,7 @@
         <child id="1722980698497626405" name="actualArgument" index="v9R3O" />
       </concept>
       <concept id="1167087469898" name="jetbrains.mps.lang.generator.structure.CreateRootRule" flags="lg" index="2VPoh5">
+        <reference id="1200923511980" name="label" index="2sBCQV" />
         <reference id="1167087469901" name="templateNode" index="2VPoh2" />
         <child id="1167087469900" name="conditionFunction" index="2VPoh3" />
       </concept>
@@ -662,6 +663,9 @@
       <concept id="1216860049627" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputByLabelAndInput" flags="nn" index="1iwH70">
         <reference id="1216860049628" name="label" index="1iwH77" />
         <child id="1216860049632" name="inputNode" index="1iwH7V" />
+      </concept>
+      <concept id="1216860049622" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_GetOutputByLabel" flags="nn" index="1iwH7d">
+        <reference id="1216860049623" name="label" index="1iwH7c" />
       </concept>
       <concept id="1216860049635" name="jetbrains.mps.lang.generator.generationContext.structure.TemplateFunctionParameter_generationContext" flags="nn" index="1iwH7S" />
       <concept id="1048903277984174662" name="jetbrains.mps.lang.generator.generationContext.structure.GenerationContextOp_VarRef2" flags="nn" index="1psM6Z">
@@ -11323,6 +11327,22 @@
                     </node>
                   </node>
                 </node>
+                <node concept="1ZhdrF" id="55a6vVkRjEP" role="lGtFl">
+                  <property role="2qtEX8" value="classifier" />
+                  <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070533707846/1144433057691" />
+                  <node concept="3$xsQk" id="55a6vVkRjEQ" role="3$ytzL">
+                    <node concept="3clFbS" id="55a6vVkRjER" role="2VODD2">
+                      <node concept="3clFbF" id="55a6vVkRlRL" role="3cqZAp">
+                        <node concept="2OqwBi" id="55a6vVkRmim" role="3clFbG">
+                          <node concept="1iwH7S" id="55a6vVkRlRK" role="2Oq$k0" />
+                          <node concept="1iwH7d" id="55a6vVkRmrm" role="2OqNvi">
+                            <ref role="1iwH7c" node="55a6vVkQXf$" resolve="PresentationProviderClass" />
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -11380,6 +11400,22 @@
                                 <ref role="37wK5l" to="tpcb:5KYS0pi3wd5" resolve="getVisibleMatchingTextFunction" />
                               </node>
                             </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="1ZhdrF" id="55a6vVkRmCf" role="lGtFl">
+                  <property role="2qtEX8" value="classifier" />
+                  <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070533707846/1144433057691" />
+                  <node concept="3$xsQk" id="55a6vVkRmCg" role="3$ytzL">
+                    <node concept="3clFbS" id="55a6vVkRmCh" role="2VODD2">
+                      <node concept="3clFbF" id="55a6vVkRo9N" role="3cqZAp">
+                        <node concept="2OqwBi" id="55a6vVkRowj" role="3clFbG">
+                          <node concept="1iwH7S" id="55a6vVkRo9M" role="2Oq$k0" />
+                          <node concept="1iwH7d" id="55a6vVkRoDj" role="2OqNvi">
+                            <ref role="1iwH7c" node="55a6vVkQXf$" resolve="PresentationProviderClass" />
                           </node>
                         </node>
                       </node>
@@ -20260,6 +20296,22 @@
                             </node>
                           </node>
                         </node>
+                        <node concept="1ZhdrF" id="55a6vVkRqrm" role="lGtFl">
+                          <property role="2qtEX8" value="classifier" />
+                          <property role="P3scX" value="f3061a53-9226-4cc5-a443-f952ceaf5816/1070533707846/1144433057691" />
+                          <node concept="3$xsQk" id="55a6vVkRqrn" role="3$ytzL">
+                            <node concept="3clFbS" id="55a6vVkRqro" role="2VODD2">
+                              <node concept="3clFbF" id="55a6vVkRs7z" role="3cqZAp">
+                                <node concept="2OqwBi" id="55a6vVkRsLH" role="3clFbG">
+                                  <node concept="1iwH7S" id="55a6vVkRs7y" role="2Oq$k0" />
+                                  <node concept="1iwH7d" id="55a6vVkRt_l" role="2OqNvi">
+                                    <ref role="1iwH7c" node="55a6vVkQXf$" resolve="PresentationProviderClass" />
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
                       </node>
                     </node>
                   </node>
@@ -20893,6 +20945,7 @@
     </node>
     <node concept="2VPoh5" id="4y7B6YcjOUL" role="2VS0gm">
       <ref role="2VPoh2" node="4y7B6Yck29q" resolve="PresentationProviders" />
+      <ref role="2sBCQV" node="55a6vVkQXf$" resolve="PresentationProviderClass" />
       <node concept="2VP$b9" id="4y7B6YcjPru" role="2VPoh3">
         <node concept="3clFbS" id="4y7B6YcjPrv" role="2VODD2">
           <node concept="3clFbF" id="4y7B6YcjQWf" role="3cqZAp">
@@ -22073,6 +22126,10 @@
       <property role="TrG5h" value="cellActionMap.actionForItem" />
       <ref role="2rTdP9" to="tpc2:g_hA7BD" resolve="CellActionMapItem" />
       <ref role="2rZz_L" to="tpee:fIYIFWa" resolve="StaticMethodDeclaration" />
+    </node>
+    <node concept="2rT7sh" id="55a6vVkQXf$" role="2rTMjI">
+      <property role="TrG5h" value="PresentationProviderClass" />
+      <ref role="2rZz_L" to="tpee:fz12cDA" resolve="ClassConcept" />
     </node>
     <node concept="3lhOvk" id="2Ij5G2ppGvK" role="3lj3bC">
       <ref role="2sgKRv" node="hG00Hig" resolve="generatedClass" />
