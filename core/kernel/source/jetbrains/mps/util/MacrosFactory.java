@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2019 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@ import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.vfs.IFile;
+import jetbrains.mps.vfs.IFileSystem;
 import jetbrains.mps.vfs.util.PathFormatChecker;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -129,11 +130,28 @@ public final class MacrosFactory implements MacroHelper.Source {
     protected String shrink(String absolutePath, IFile anchorFile) {
       new PathFormatChecker(absolutePath).osIndependentPath().noDots().absolute();
 
-      String prefix = getAnchorFolder(anchorFile).getPath();
+      final IFile anchorFolder = getAnchorFolder(anchorFile);
+      String prefix = anchorFolder.getPath();
       if (pathStartsWith(absolutePath, prefix)) {
         return MODULE + shrink(absolutePath, prefix);
       }
-      return super.shrink(absolutePath, anchorFile);
+      final String tryPathVars = super.shrink(absolutePath, anchorFile);
+      if (MacrosFactory.containsMacro(tryPathVars)) {
+        // HomeMacros superclass found some global path var to substitute, go on then
+        return tryPathVars;
+      }
+      // try ${module}/../
+      final String parentPrefix = anchorFolder.getParent().getPath();
+      if (pathStartsWith(absolutePath, parentPrefix)) {
+        // FWIW, shrink() always starts with IFileSystem.SEPARATOR
+        return MODULE + IFileSystem.SEPARATOR + ".." + shrink(absolutePath, parentPrefix);
+      }
+      // don't care to account for modules at the root, like c:/mymodule/
+      final String grandParentPrefix = anchorFolder.getParent().getParent().getPath();
+      if (pathStartsWith(absolutePath, parentPrefix)) {
+        return MODULE + "/../.." + shrink(absolutePath, grandParentPrefix);
+      }
+      return tryPathVars;
     }
 
     private IFile getAnchorFolder(IFile anchorFile) {
