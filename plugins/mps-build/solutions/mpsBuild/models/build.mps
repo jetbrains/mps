@@ -38112,7 +38112,7 @@
       <property role="26Ea6C" value="-Xmx2048m" />
     </node>
     <node concept="26Ea6D" id="4A8SxGHvPcJ" role="2hID6k">
-      <property role="26Ea6C" value="-XX:ReservedCodeCacheSize=240m" />
+      <property role="26Ea6C" value="-XX:ReservedCodeCacheSize=512m" />
     </node>
     <node concept="26Ea6D" id="4A8SxGHvP8x" role="2hID6k">
       <property role="26Ea6C" value="-XX:+UseConcMarkSweepGC" />

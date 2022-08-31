@@ -1,6 +1,6 @@
 #Common IntelliJ Platform options:
 -Xmx2048m
--XX:ReservedCodeCacheSize=240m
+-XX:ReservedCodeCacheSize=512m
 -XX:+UseConcMarkSweepGC
 -XX:SoftRefLRUPolicyMSPerMB=50
 -ea
