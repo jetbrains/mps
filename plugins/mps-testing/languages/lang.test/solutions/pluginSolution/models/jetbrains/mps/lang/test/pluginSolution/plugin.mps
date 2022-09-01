@@ -403,8 +403,8 @@
   </node>
   <node concept="sE7Ow" id="1NpV1yX0Em2">
     <property role="TrG5h" value="ReorderModelRoots" />
-    <property role="2uzpH1" value="Re-arrange Model Roots" />
-    <property role="1WHSii" value="Change order or root nodes in a model" />
+    <property role="2uzpH1" value="Reorder Root Nodes" />
+    <property role="1WHSii" value="Change order of root nodes in a model" />
     <property role="2YLI8m" value="6u2MFnph2wS/none" />
     <node concept="1DS2jV" id="1NpV1yX0FE2" role="1NuT2Z">
       <property role="TrG5h" value="selectedModel" />
@@ -591,7 +591,7 @@
             <node concept="liA8E" id="6yChgC1ymRE" role="2OqNvi">
               <ref role="37wK5l" to="jkm4:~DialogWrapper.setTitle(java.lang.String)" resolve="setTitle" />
               <node concept="Xl_RD" id="6yChgC1yn23" role="37wK5m">
-                <property role="Xl_RC" value="Reorder model roots" />
+                <property role="Xl_RC" value="Reorder Root Nodes" />
               </node>
             </node>
           </node>

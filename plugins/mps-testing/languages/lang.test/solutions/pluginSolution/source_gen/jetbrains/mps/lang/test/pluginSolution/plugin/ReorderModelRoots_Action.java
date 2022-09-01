@@ -27,7 +27,7 @@ public class ReorderModelRoots_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public ReorderModelRoots_Action() {
-    super("Re-arrange Model Roots", "Change order or root nodes in a model", ICON);
+    super("Reorder Root Nodes", "Change order of root nodes in a model", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.NONE);
   }
@@ -71,7 +71,7 @@ public class ReorderModelRoots_Action extends BaseAction {
       }
     });
     ReorderElementsDialog<NV> dlg = new ReorderElementsDialog<>(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), roots, NV::getText);
-    dlg.setTitle("Reorder model roots");
+    dlg.setTitle("Reorder Root Nodes");
     dlg.setNorthPanelText(String.format("<html><b>%s</b></html>", NameUtil.compactModelName(model.getReference())));
     dlg.setNorthPanelIcon(GlobalIconManager.getInstance().getIconFor(model));
     if (dlg.showAndGet()) {
