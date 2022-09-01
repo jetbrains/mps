@@ -38064,6 +38064,9 @@
       <property role="26Ea6C" value="Common IntelliJ Platform options:" />
       <property role="2eq24a" value="true" />
     </node>
+    <node concept="26Ea6D" id="42bTzlzwZ1K" role="2hID6k">
+      <property role="26Ea6C" value="-Xms256m" />
+    </node>
     <node concept="26Ea6D" id="7TY3xOwW$Yp" role="2hID6k">
       <property role="26Ea6C" value="-Xmx2048m" />
     </node>
@@ -38071,25 +38074,13 @@
       <property role="26Ea6C" value="-XX:ReservedCodeCacheSize=512m" />
     </node>
     <node concept="26Ea6D" id="4A8SxGHvP8x" role="2hID6k">
-      <property role="26Ea6C" value="-XX:+UseConcMarkSweepGC" />
+      <property role="26Ea6C" value="-XX:+UseG1GC" />
     </node>
     <node concept="26Ea6D" id="4A8SxGHvP94" role="2hID6k">
       <property role="26Ea6C" value="-XX:SoftRefLRUPolicyMSPerMB=50" />
     </node>
-    <node concept="26Ea6D" id="7TY3xOwW$Y3" role="2hID6k">
-      <property role="26Ea6C" value="-ea" />
-    </node>
     <node concept="26Ea6D" id="6KekG3HeaJu" role="2hID6k">
       <property role="26Ea6C" value="-XX:CICompilerCount=2" />
-    </node>
-    <node concept="26Ea6D" id="4A8SxGHvP9F" role="2hID6k">
-      <property role="26Ea6C" value="-Dsun.io.useCanonPrefixCache=false" />
-    </node>
-    <node concept="26Ea6D" id="4A8SxGHvPam" role="2hID6k">
-      <property role="26Ea6C" value="-Djava.net.preferIPv4Stack=true" />
-    </node>
-    <node concept="26Ea6D" id="6KekG3Heb6B" role="2hID6k">
-      <property role="26Ea6C" value="-Djdk.http.auth.tunneling.disabledSchemes=" />
     </node>
     <node concept="26Ea6D" id="7TY3xOwW$Z5" role="2hID6k">
       <property role="26Ea6C" value="-XX:+HeapDumpOnOutOfMemoryError" />
@@ -38097,20 +38088,29 @@
     <node concept="26Ea6D" id="4A8SxGHvPb5" role="2hID6k">
       <property role="26Ea6C" value="-XX:-OmitStackTraceInFastThrow" />
     </node>
-    <node concept="26Ea6D" id="6KekG3Hebfm" role="2hID6k">
-      <property role="26Ea6C" value="-Djdk.attach.allowAttachSelf" />
+    <node concept="26Ea6D" id="42bTzlzwWQa" role="2hID6k">
+      <property role="26Ea6C" value="-XX:+IgnoreUnrecognizedVMOptions" />
     </node>
-    <node concept="26Ea6D" id="3Fszdtt6Zx9" role="2hID6k">
-      <property role="26Ea6C" value="-Dkotlinx.coroutines.debug=off" />
+    <node concept="26Ea6D" id="7TY3xOwW$Y3" role="2hID6k">
+      <property role="26Ea6C" value="-ea" />
+    </node>
+    <node concept="26Ea6D" id="4A8SxGHvP9F" role="2hID6k">
+      <property role="26Ea6C" value="-Dsun.io.useCanonCaches=false" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3HebiC" role="2hID6k">
+      <property role="26Ea6C" value="-Dsun.java2d.metal=true" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3Heb6B" role="2hID6k">
+      <property role="26Ea6C" value="-Djdk.http.auth.tunneling.disabledSchemes=&quot;&quot;" />
+    </node>
+    <node concept="26Ea6D" id="6KekG3Hebfm" role="2hID6k">
+      <property role="26Ea6C" value="-Djdk.attach.allowAttachSelf=true" />
     </node>
     <node concept="26Ea6D" id="3Fszdtt6Zt4" role="2hID6k">
       <property role="26Ea6C" value="-Djdk.module.illegalAccess.silent=true" />
     </node>
-    <node concept="26Ea6D" id="6KekG3HebgX" role="2hID6k">
-      <property role="26Ea6C" value="-Dawt.useSystemAAFontSettings=lcd" />
-    </node>
-    <node concept="26Ea6D" id="6KekG3HebiC" role="2hID6k">
-      <property role="26Ea6C" value="-Dsun.java2d.renderer=sun.java2d.marlin.MarlinRenderingEngine" />
+    <node concept="26Ea6D" id="3Fszdtt6Zx9" role="2hID6k">
+      <property role="26Ea6C" value="-Dkotlinx.coroutines.debug=off" />
     </node>
     <node concept="26Ea6D" id="6KekG3Hebkn" role="2hID6k">
       <property role="26Ea6C" value="-Dsun.tools.attach.tmp.only=true" />
