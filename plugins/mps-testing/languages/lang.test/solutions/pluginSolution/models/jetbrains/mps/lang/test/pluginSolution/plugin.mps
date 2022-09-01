@@ -434,6 +434,28 @@
             </node>
           </node>
         </node>
+        <node concept="3cpWs8" id="ylrE0Pyf3l" role="3cqZAp">
+          <node concept="3cpWsn" id="ylrE0Pyf3m" role="3cpWs9">
+            <property role="TrG5h" value="modelIcon" />
+            <node concept="10Q1$e" id="ylrE0PytOU" role="1tU5fm">
+              <node concept="3uibUv" id="ylrE0Py1QW" role="10Q1$1">
+                <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
+              </node>
+            </node>
+            <node concept="2ShNRf" id="ylrE0PyugN" role="33vP2m">
+              <node concept="3$_iS1" id="ylrE0PyVeB" role="2ShVmc">
+                <node concept="3$GHV9" id="ylrE0PyVeD" role="3$GQph">
+                  <node concept="3cmrfG" id="ylrE0PyVkD" role="3$I4v7">
+                    <property role="3cmrfH" value="1" />
+                  </node>
+                </node>
+                <node concept="3uibUv" id="ylrE0PyV05" role="3$_nBY">
+                  <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="1NpV1yXtkMx" role="3cqZAp">
           <node concept="3cpWsn" id="1NpV1yXtkMy" role="3cpWs9">
             <property role="TrG5h" value="roots" />
@@ -465,6 +487,30 @@
                 <ref role="37wK5l" to="w1kc:~ModelAccessHelper.runReadAction(jetbrains.mps.util.Computable)" resolve="runReadAction" />
                 <node concept="1bVj0M" id="1NpV1yXtkME" role="37wK5m">
                   <node concept="3clFbS" id="1NpV1yXtkMF" role="1bW5cS">
+                    <node concept="3clFbF" id="ylrE0PzcR_" role="3cqZAp">
+                      <node concept="37vLTI" id="ylrE0PzqpC" role="3clFbG">
+                        <node concept="AH0OO" id="ylrE0PzhK5" role="37vLTJ">
+                          <node concept="3cmrfG" id="ylrE0PziYc" role="AHEQo">
+                            <property role="3cmrfH" value="0" />
+                          </node>
+                          <node concept="37vLTw" id="ylrE0PzcRz" role="AHHXb">
+                            <ref role="3cqZAo" node="ylrE0Pyf3m" resolve="modelIcon" />
+                          </node>
+                        </node>
+                        <node concept="2OqwBi" id="ylrE0PzrRX" role="37vLTx">
+                          <node concept="2YIFZM" id="ylrE0PzrRY" role="2Oq$k0">
+                            <ref role="37wK5l" to="sn11:5UC$YgehaLf" resolve="getInstance" />
+                            <ref role="1Pybhc" to="sn11:192HKKPMXeL" resolve="GlobalIconManager" />
+                          </node>
+                          <node concept="liA8E" id="ylrE0PzrRZ" role="2OqNvi">
+                            <ref role="37wK5l" to="sn11:192HKKPOd$O" resolve="getIconFor" />
+                            <node concept="37vLTw" id="ylrE0PzrS0" role="37wK5m">
+                              <ref role="3cqZAo" node="1NpV1yXv07L" resolve="model" />
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
                     <node concept="3cpWs8" id="1NpV1yXtkMG" role="3cqZAp">
                       <node concept="3cpWsn" id="1NpV1yXtkMH" role="3cpWs9">
                         <property role="TrG5h" value="rv" />
@@ -632,16 +678,12 @@
             </node>
             <node concept="liA8E" id="6yChgC1Aavs" role="2OqNvi">
               <ref role="37wK5l" node="6yChgC1zFoA" resolve="setNorthPanelIcon" />
-              <node concept="2OqwBi" id="6yChgC1Ad4A" role="37wK5m">
-                <node concept="2YIFZM" id="6yChgC1AcOA" role="2Oq$k0">
-                  <ref role="37wK5l" to="sn11:5UC$YgehaLf" resolve="getInstance" />
-                  <ref role="1Pybhc" to="sn11:192HKKPMXeL" resolve="GlobalIconManager" />
+              <node concept="AH0OO" id="ylrE0Pz_x_" role="37wK5m">
+                <node concept="3cmrfG" id="ylrE0Pz_AH" role="AHEQo">
+                  <property role="3cmrfH" value="0" />
                 </node>
-                <node concept="liA8E" id="6yChgC1AdnG" role="2OqNvi">
-                  <ref role="37wK5l" to="sn11:192HKKPOd$O" resolve="getIconFor" />
-                  <node concept="37vLTw" id="6yChgC1AdqX" role="37wK5m">
-                    <ref role="3cqZAo" node="1NpV1yXv07L" resolve="model" />
-                  </node>
+                <node concept="37vLTw" id="ylrE0Pyf3r" role="AHHXb">
+                  <ref role="3cqZAo" node="ylrE0Pyf3m" resolve="modelIcon" />
                 </node>
               </node>
             </node>

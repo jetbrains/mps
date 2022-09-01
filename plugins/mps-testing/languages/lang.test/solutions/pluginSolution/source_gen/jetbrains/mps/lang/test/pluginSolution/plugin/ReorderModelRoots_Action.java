@@ -15,9 +15,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.util.Computable;
+import jetbrains.mps.ide.icons.GlobalIconManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.ide.icons.GlobalIconManager;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -60,8 +60,10 @@ public class ReorderModelRoots_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final SModel model = event.getData(MPSCommonDataKeys.MODEL);
+    final Icon[] modelIcon = new Icon[1];
     ArrayList<NV> roots = new ModelAccessHelper(event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess()).runReadAction(new Computable<ArrayList<NV>>() {
       public ArrayList<NV> compute() {
+        modelIcon[0] = GlobalIconManager.getInstance().getIconFor(model);
         ArrayList<NV> rv = new ArrayList<>();
         int i = 1;
         for (SNode root : model.getRootNodes()) {
@@ -73,7 +75,7 @@ public class ReorderModelRoots_Action extends BaseAction {
     ReorderElementsDialog<NV> dlg = new ReorderElementsDialog<>(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), roots, NV::getText);
     dlg.setTitle("Reorder Root Nodes");
     dlg.setNorthPanelText(String.format("<html><b>%s</b></html>", NameUtil.compactModelName(model.getReference())));
-    dlg.setNorthPanelIcon(GlobalIconManager.getInstance().getIconFor(model));
+    dlg.setNorthPanelIcon(modelIcon[0]);
     if (dlg.showAndGet()) {
       final List<SNodeId> result = new ArrayList<>();
       int i = 1;
