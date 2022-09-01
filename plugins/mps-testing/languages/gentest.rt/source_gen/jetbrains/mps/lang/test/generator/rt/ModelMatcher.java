@@ -54,7 +54,7 @@ public final class ModelMatcher {
     } else {
       toMatch = new ArrayList<>();
       Iterator<SNode> it1 = ListSequence.fromList(SModelOperations.roots(m1, null)).iterator();
-      Iterator<SNode> it2 = ListSequence.fromList(SModelOperations.roots(m1, null)).iterator();
+      Iterator<SNode> it2 = ListSequence.fromList(SModelOperations.roots(m2, null)).iterator();
       while (it1.hasNext() && it2.hasNext()) {
         toMatch.add(new Pair<>(it1.next(), it2.next()));
       }
@@ -82,7 +82,8 @@ public final class ModelMatcher {
         if (after != before) {
           assert after > before;
           String n = String.format("%s vs %s", (node1 == null ? "null" : node1.getPresentation()), (node2 == null ? "null" : node2.getPresentation()));
-          NodeDifference nd = new NodeDifference(n, result.subList(before, after));
+          // need a copy to avoid ConcurrentModificationException accessing list later
+          NodeDifference nd = new NodeDifference(n, new ArrayList<>(result.subList(before, after)));
           // i>before, not >=, as we replace element @before with nd afterwards
           for (int i = after - 1; i > before; i--) {
             result.remove(i);
