@@ -33,7 +33,7 @@ import java.io.InputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import org.apache.tools.ant.types.EnumeratedAttribute;
-import org.apache.log4j.Level;
+import java.util.logging.Level;
 import java.util.Scanner;
 
 /**
@@ -517,14 +517,20 @@ public class MpsLoadTask extends Task {
     }
     @Override
     public String[] getValues() {
-      return new String[]{"error", "warn", "warning", "info", "debug"};
+      // if new values added, please update getLevel() impl
+      return new String[]{"off", "error", "warn", "warning", "info", "debug", "all"};
     }
     public Level getLevel() {
-      String val = getValue();
-      if ("warning".equalsIgnoreCase(val)) {
-        val = "warn";
+      final Level[] rv = new Level[]{Level.OFF, Level.SEVERE, Level.WARNING, Level.WARNING, Level.INFO, Level.FINE, Level.ALL};
+      String[] stringValues = getValues();
+      assert stringValues.length == rv.length;
+      final String val = getValue();
+      for (int i = 0; i < stringValues.length; i++) {
+        if (stringValues[i].equalsIgnoreCase(val)) {
+          return rv[i];
+        }
       }
-      return Level.toLevel(val);
+      return Level.ALL;
     }
   }
 

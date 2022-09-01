@@ -18,7 +18,7 @@ import jetbrains.mps.internal.collections.runtime.IMapping;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import jetbrains.mps.tool.common.PluginData;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.tool.environment.EnvironmentBase;
+import java.util.logging.Logger;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.components.ComponentHost;
 import java.util.Set;
@@ -127,7 +127,10 @@ public abstract class WorkerBase {
 
   public void workFromMain() {
     try {
-      EnvironmentBase.initializeLog();
+      // FIXME I don't like the way log initialization happens (from static{} blocks in MpsEnv/IdeaEnv)
+      //      I'd rather have it initialized here explicitly. However, seems too much to change now
+      //      to make sure log is ready before any code in EnvBase or Launcher uses it.
+      Logger.getLogger("").setLevel(myWhatToDo.getLogLevel());
       myEnvironment = createEnvironment();
       work();
       myEnvironment.flushAllEvents();
@@ -217,7 +220,11 @@ public abstract class WorkerBase {
   }
 
   private void log(String text, Level level) {
-    // FIXME once ScriptData comes with proper Level value, get this code bacl
+    // see jul.Logger.isLoggable(Level)
+    final int globalLevel = myWhatToDo.getLogLevel().intValue();
+    if (level.intValue() < globalLevel || globalLevel == Level.OFF.intValue()) {
+      return;
+    }
 
     if (level == Level.SEVERE) {
       System.err.println(text);

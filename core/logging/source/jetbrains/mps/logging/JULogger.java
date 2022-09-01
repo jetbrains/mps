@@ -137,6 +137,8 @@ import java.util.logging.LogRecord;
     if (hintObject != null) {
       lr.setParameters(new Object[] {hintObject});
     }
+    // XXX consider using setSourceClassName(categoryName.compact) and %2$s in SimpleFormatter, although
+    //     can't access category name here, and overriding LogRecord seems too messy. Not now.
     return lr;
   }
 

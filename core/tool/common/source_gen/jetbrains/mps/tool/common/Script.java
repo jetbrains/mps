@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.LinkedHashMap;
 import java.util.Collections;
-import org.apache.log4j.Level;
+import java.util.logging.Level;
 import org.jdom.Element;
 import java.io.FileNotFoundException;
 import org.jdom.Document;
@@ -174,7 +174,6 @@ public class Script {
   }
 
   public Level getLogLevel() {
-    // FIXME WorkerBase.log needs update
     return myStartupData.getLogLevel();
   }
 

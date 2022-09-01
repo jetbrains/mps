@@ -20,6 +20,7 @@
     <import index="wyt6" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.lang(JDK/)" />
     <import index="eoo2" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.nio.file(JDK/)" />
     <import index="bd8o" ref="3a8d80d2-32d9-f1f2-4443-6a1111e12ef3/java:com.intellij.openapi.application(MPS.Boot/)" />
+    <import index="dr5r" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.logging(JDK/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -1530,7 +1531,7 @@
         <property role="TrG5h" value="level" />
         <property role="3TUv4t" value="false" />
         <node concept="3uibUv" id="KL8Aql8evI" role="1tU5fm">
-          <ref role="3uigEE" to="q7tw:~Level" resolve="Level" />
+          <ref role="3uigEE" to="dr5r:~Level" resolve="Level" />
         </node>
       </node>
       <node concept="3clFbS" id="KL8Aql8evJ" role="3clF47">
@@ -1556,22 +1557,6 @@
       <property role="DiZV1" value="false" />
       <node concept="3Tm1VV" id="KL8Aql8evP" role="1B3o_S" />
       <node concept="3clFbS" id="KL8Aql8evQ" role="3clF47">
-        <node concept="3SKdUt" id="4ms$LpNUoAd" role="3cqZAp">
-          <node concept="1PaTwC" id="4ms$LpNUoAe" role="1aUNEU">
-            <node concept="3oM_SD" id="4ms$LpNUoAn" role="1PaTwD">
-              <property role="3oM_SC" value="FIXME" />
-            </node>
-            <node concept="3oM_SD" id="4ms$LpNUu_c" role="1PaTwD">
-              <property role="3oM_SC" value="WorkerBase.log" />
-            </node>
-            <node concept="3oM_SD" id="4ms$LpNUu_Z" role="1PaTwD">
-              <property role="3oM_SC" value="needs" />
-            </node>
-            <node concept="3oM_SD" id="4ms$LpNUuA3" role="1PaTwD">
-              <property role="3oM_SC" value="update" />
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs6" id="KL8Aql8evR" role="3cqZAp">
           <node concept="2OqwBi" id="1288c6EesGn" role="3cqZAk">
             <node concept="37vLTw" id="1288c6EenrP" role="2Oq$k0">
@@ -1584,7 +1569,7 @@
         </node>
       </node>
       <node concept="3uibUv" id="KL8Aql8evT" role="3clF45">
-        <ref role="3uigEE" to="q7tw:~Level" resolve="Level" />
+        <ref role="3uigEE" to="dr5r:~Level" resolve="Level" />
       </node>
     </node>
     <node concept="2tJIrI" id="6tzA4yIn2La" role="jymVt" />
@@ -3213,12 +3198,12 @@
     </node>
     <node concept="312cEg" id="KL8Aql8eFV" role="jymVt">
       <property role="TrG5h" value="myLogLevel" />
-      <node concept="10M0yZ" id="KL8Aql8eFW" role="33vP2m">
-        <ref role="1PxDUh" to="q7tw:~Level" resolve="Level" />
-        <ref role="3cqZAo" to="q7tw:~Level.INFO" resolve="INFO" />
+      <node concept="10M0yZ" id="5awNCDyAhLp" role="33vP2m">
+        <ref role="3cqZAo" to="dr5r:~Level.INFO" resolve="INFO" />
+        <ref role="1PxDUh" to="dr5r:~Level" resolve="Level" />
       </node>
       <node concept="3uibUv" id="KL8Aql8eFX" role="1tU5fm">
-        <ref role="3uigEE" to="q7tw:~Level" resolve="Level" />
+        <ref role="3uigEE" to="dr5r:~Level" resolve="Level" />
       </node>
       <node concept="3Tm6S6" id="KL8Aql8eFY" role="1B3o_S" />
     </node>
@@ -3426,16 +3411,12 @@
               <node concept="37vLTw" id="1288c6E7IYX" role="37wK5m">
                 <ref role="3cqZAo" node="KL8Aql8eFd" resolve="PROP_LOGLEVEL" />
               </node>
-              <node concept="2YIFZM" id="1288c6E7ZaA" role="37wK5m">
-                <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
-                <ref role="37wK5l" to="wyt6:~Integer.toString(int)" resolve="toString" />
-                <node concept="2OqwBi" id="KL8Aql8eHe" role="37wK5m">
-                  <node concept="37vLTw" id="2BHiRxeuft8" role="2Oq$k0">
-                    <ref role="3cqZAo" node="KL8Aql8eFV" resolve="myLogLevel" />
-                  </node>
-                  <node concept="liA8E" id="KL8Aql8eHg" role="2OqNvi">
-                    <ref role="37wK5l" to="q7tw:~Priority.toInt()" resolve="toInt" />
-                  </node>
+              <node concept="2OqwBi" id="KL8Aql8eHe" role="37wK5m">
+                <node concept="37vLTw" id="2BHiRxeuft8" role="2Oq$k0">
+                  <ref role="3cqZAo" node="KL8Aql8eFV" resolve="myLogLevel" />
+                </node>
+                <node concept="liA8E" id="KL8Aql8eHg" role="2OqNvi">
+                  <ref role="37wK5l" to="dr5r:~Level.getName()" resolve="getName" />
                 </node>
               </node>
             </node>
@@ -4226,42 +4207,52 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="1288c6E82cZ" role="3cqZAp">
-          <node concept="3cpWsn" id="1288c6E82d0" role="3cpWs9">
-            <property role="TrG5h" value="logLevelInt" />
-            <node concept="10Oyi0" id="1288c6E82d1" role="1tU5fm" />
-            <node concept="2YIFZM" id="1288c6E82d2" role="33vP2m">
-              <ref role="1Pybhc" to="wyt6:~Integer" resolve="Integer" />
-              <ref role="37wK5l" to="wyt6:~Integer.parseInt(java.lang.String)" resolve="parseInt" />
-              <node concept="2OqwBi" id="1288c6E82d3" role="37wK5m">
-                <node concept="37vLTw" id="1288c6E82d4" role="2Oq$k0">
-                  <ref role="3cqZAo" node="1288c6E81VG" resolve="misc" />
+        <node concept="3J1_TO" id="5awNCDyCMX$" role="3cqZAp">
+          <node concept="3uVAMA" id="5awNCDyDdoi" role="1zxBo5">
+            <node concept="XOnhg" id="5awNCDyDdoj" role="1zc67B">
+              <property role="TrG5h" value="ignore" />
+              <node concept="nSUau" id="5awNCDyDdok" role="1tU5fm">
+                <node concept="3uibUv" id="5awNCDyDlLZ" role="nSUat">
+                  <ref role="3uigEE" to="wyt6:~IllegalArgumentException" resolve="IllegalArgumentException" />
                 </node>
-                <node concept="liA8E" id="1288c6E82d5" role="2OqNvi">
-                  <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String)" resolve="getAttributeValue" />
-                  <node concept="37vLTw" id="1288c6E82dg" role="37wK5m">
-                    <ref role="3cqZAo" node="KL8Aql8eFd" resolve="PROP_LOGLEVEL" />
+              </node>
+            </node>
+            <node concept="3clFbS" id="5awNCDyDdol" role="1zc67A">
+              <node concept="3clFbF" id="5awNCDyDNSj" role="3cqZAp">
+                <node concept="37vLTI" id="5awNCDyDWT1" role="3clFbG">
+                  <node concept="10M0yZ" id="5awNCDyEmzq" role="37vLTx">
+                    <ref role="3cqZAo" to="dr5r:~Level.INFO" resolve="INFO" />
+                    <ref role="1PxDUh" to="dr5r:~Level" resolve="Level" />
+                  </node>
+                  <node concept="37vLTw" id="5awNCDyDNSi" role="37vLTJ">
+                    <ref role="3cqZAo" node="KL8Aql8eFV" resolve="myLogLevel" />
                   </node>
                 </node>
               </node>
             </node>
           </node>
-        </node>
-        <node concept="3clFbF" id="1288c6E82di" role="3cqZAp">
-          <node concept="37vLTI" id="1288c6E82dj" role="3clFbG">
-            <node concept="2YIFZM" id="1288c6E82dk" role="37vLTx">
-              <ref role="1Pybhc" to="q7tw:~Level" resolve="Level" />
-              <ref role="37wK5l" to="q7tw:~Level.toLevel(int,org.apache.log4j.Level)" resolve="toLevel" />
-              <node concept="37vLTw" id="1288c6E82dl" role="37wK5m">
-                <ref role="3cqZAo" node="1288c6E82d0" resolve="logLevelInt" />
+          <node concept="3clFbS" id="5awNCDyCMXA" role="1zxBo7">
+            <node concept="3clFbF" id="1288c6E82di" role="3cqZAp">
+              <node concept="37vLTI" id="1288c6E82dj" role="3clFbG">
+                <node concept="2YIFZM" id="5awNCDyC7t5" role="37vLTx">
+                  <ref role="37wK5l" to="dr5r:~Level.parse(java.lang.String)" resolve="parse" />
+                  <ref role="1Pybhc" to="dr5r:~Level" resolve="Level" />
+                  <node concept="2OqwBi" id="1288c6E82d3" role="37wK5m">
+                    <node concept="37vLTw" id="1288c6E82d4" role="2Oq$k0">
+                      <ref role="3cqZAo" node="1288c6E81VG" resolve="misc" />
+                    </node>
+                    <node concept="liA8E" id="1288c6E82d5" role="2OqNvi">
+                      <ref role="37wK5l" to="mmaq:~Element.getAttributeValue(java.lang.String)" resolve="getAttributeValue" />
+                      <node concept="37vLTw" id="5awNCDyCfYU" role="37wK5m">
+                        <ref role="3cqZAo" node="KL8Aql8eFd" resolve="PROP_LOGLEVEL" />
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="37vLTw" id="1288c6E82dn" role="37vLTJ">
+                  <ref role="3cqZAo" node="KL8Aql8eFV" resolve="myLogLevel" />
+                </node>
               </node>
-              <node concept="10M0yZ" id="1288c6E82dm" role="37wK5m">
-                <ref role="1PxDUh" to="q7tw:~Level" resolve="Level" />
-                <ref role="3cqZAo" to="q7tw:~Level.INFO" resolve="INFO" />
-              </node>
-            </node>
-            <node concept="37vLTw" id="1288c6E82dn" role="37vLTJ">
-              <ref role="3cqZAo" node="KL8Aql8eFV" resolve="myLogLevel" />
             </node>
           </node>
         </node>
@@ -4868,7 +4859,7 @@
       <node concept="37vLTG" id="KL8Aql8eMt" role="3clF46">
         <property role="TrG5h" value="logLevel" />
         <node concept="3uibUv" id="KL8Aql8eMu" role="1tU5fm">
-          <ref role="3uigEE" to="q7tw:~Level" resolve="Level" />
+          <ref role="3uigEE" to="dr5r:~Level" resolve="Level" />
         </node>
       </node>
     </node>
@@ -4876,7 +4867,7 @@
     <node concept="3clFb_" id="KL8Aql8eMv" role="jymVt">
       <property role="TrG5h" value="getLogLevel" />
       <node concept="3uibUv" id="KL8Aql8eMw" role="3clF45">
-        <ref role="3uigEE" to="q7tw:~Level" resolve="Level" />
+        <ref role="3uigEE" to="dr5r:~Level" resolve="Level" />
       </node>
       <node concept="3Tm1VV" id="KL8Aql8eMx" role="1B3o_S" />
       <node concept="3clFbS" id="KL8Aql8eMy" role="3clF47">

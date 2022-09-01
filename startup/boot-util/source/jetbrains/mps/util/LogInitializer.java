@@ -5,6 +5,7 @@ package jetbrains.mps.util;
 
 import com.intellij.openapi.application.PathManager;
 
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -60,7 +61,24 @@ public final class LogInitializer {
     // @see com.intellij.openapi.diagnostic.JulLogger#configureLogFileAndConsole
     final Path logFilePath = Path.of(PathManager.getLogPath(), "idea.log");
     java.util.logging.Logger rootLogger = java.util.logging.Logger.getLogger("");
-    rootLogger.setLevel(Level.INFO);
+    if (rootLogger.getLevel() == null) {
+      // odd way to demonstrate we care about WorkerBase.workFromMain scenario, when it set root logger's level prior to
+      // log initialization.
+      rootLogger.setLevel(Level.INFO);
+    }
+    if (LogManager.getLogManager().getProperty("java.util.logging.SimpleFormatter.format") == null) {
+      // let user override format with <arg value/> in <generate>, for example. Use our default, unless explicitly supplied.
+      // this is the only mechanism to initialize private 'format' field of java.util.logging.SimpleFormatter I found:
+      final String sfPropValue = "java.util.logging.SimpleFormatter.format=%1$tF %1$tT,%1$tL %4$-7s - %3$30.60s - %5$s%6$s%n";
+      // XXX why not to read complete log from the {home}/bin/log.properties then, and avoid configuration from code? IDEA
+      //     needs code as it provides custom FileHandler, if we stick to native, then there's no reason to keep code
+      try (final InputStream in = new ByteArrayInputStream(sfPropValue.getBytes())) {
+        // perhaps, LM#updateConfiguration(in, null) is safer, but IDEA seems to assume (in similar scenario) that
+        // there's no reason to care about any default log configuration (e.g. from java home). I'm not certain it's correct,
+        // but don't see a reason to fight with IDEA's vision right now
+        LogManager.getLogManager().readConfiguration(in);
+      }
+    }
     logFilePath.toFile().getParentFile().mkdirs(); // XXX not sure I need this, but doesn't hurt, I guess
     // FileHandler.generate() does Path.of(pattern), therefore logFilePath.toString shall be fine to get Path back properly.
     FileHandler handler1 = new FileHandler(logFilePath.toString(), true);
