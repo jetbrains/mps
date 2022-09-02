@@ -33,6 +33,7 @@
     <import index="zn9m" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util(MPS.IDEA/)" />
     <import index="lzb2" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.ui(MPS.IDEA/)" />
     <import index="rfhd" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.util.registry(MPS.IDEA/)" />
+    <import index="c17a" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.language(MPS.OpenAPI/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -869,6 +870,64 @@
         <node concept="2AHcQZ" id="1a$Yn_2SKk7" role="2AJF6D">
           <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
         </node>
+      </node>
+    </node>
+    <node concept="2tJIrI" id="7mMp_dFefQp" role="jymVt" />
+    <node concept="3clFb_" id="7mMp_dFeibJ" role="jymVt">
+      <property role="TrG5h" value="setReferenceCell" />
+      <node concept="3Tm1VV" id="7mMp_dFeibK" role="1B3o_S" />
+      <node concept="3cqZAl" id="7mMp_dFeibM" role="3clF45" />
+      <node concept="37vLTG" id="7mMp_dFeibN" role="3clF46">
+        <property role="TrG5h" value="isReference" />
+        <node concept="10P_77" id="7mMp_dFeibO" role="1tU5fm" />
+      </node>
+      <node concept="3clFbS" id="7mMp_dFeibS" role="3clF47">
+        <node concept="3clFbF" id="7mMp_dFenci" role="3cqZAp">
+          <node concept="2OqwBi" id="7mMp_dFepJD" role="3clFbG">
+            <node concept="37vLTw" id="7mMp_dFench" role="2Oq$k0">
+              <ref role="3cqZAo" node="7XU1fOGntcu" resolve="myVisibleCell" />
+            </node>
+            <node concept="liA8E" id="7mMp_dFeruK" role="2OqNvi">
+              <ref role="37wK5l" to="f4zo:~EditorCell.setReferenceCell(boolean)" resolve="setReferenceCell" />
+              <node concept="37vLTw" id="7mMp_dFetLp" role="37wK5m">
+                <ref role="3cqZAo" node="7mMp_dFeibN" resolve="isReference" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7mMp_dFeibT" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
+      </node>
+    </node>
+    <node concept="2tJIrI" id="7mMp_dFefVw" role="jymVt" />
+    <node concept="3clFb_" id="7mMp_dFdVkP" role="jymVt">
+      <property role="TrG5h" value="setSRole" />
+      <node concept="3Tm1VV" id="7mMp_dFdVkQ" role="1B3o_S" />
+      <node concept="3cqZAl" id="7mMp_dFdVkS" role="3clF45" />
+      <node concept="37vLTG" id="7mMp_dFdVkT" role="3clF46">
+        <property role="TrG5h" value="role" />
+        <node concept="3uibUv" id="7mMp_dFdVkU" role="1tU5fm">
+          <ref role="3uigEE" to="c17a:~SConceptFeature" resolve="SConceptFeature" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="7mMp_dFdVkY" role="3clF47">
+        <node concept="3clFbF" id="7mMp_dFe73Y" role="3cqZAp">
+          <node concept="2OqwBi" id="7mMp_dFe9jw" role="3clFbG">
+            <node concept="37vLTw" id="7mMp_dFe73X" role="2Oq$k0">
+              <ref role="3cqZAo" node="7XU1fOGntcu" resolve="myVisibleCell" />
+            </node>
+            <node concept="liA8E" id="7mMp_dFeaRr" role="2OqNvi">
+              <ref role="37wK5l" to="f4zo:~EditorCell.setSRole(org.jetbrains.mps.openapi.language.SConceptFeature)" resolve="setSRole" />
+              <node concept="37vLTw" id="7mMp_dFedv8" role="37wK5m">
+                <ref role="3cqZAo" node="7mMp_dFdVkT" resolve="role" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node concept="2AHcQZ" id="7mMp_dFdVkZ" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
     <node concept="2tJIrI" id="30c83lNaoBb" role="jymVt" />

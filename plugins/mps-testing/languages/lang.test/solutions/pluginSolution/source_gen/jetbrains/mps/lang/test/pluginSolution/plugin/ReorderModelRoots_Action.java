@@ -13,9 +13,9 @@ import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.project.MPSProject;
 import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
+import jetbrains.mps.ide.icons.GlobalIconManager;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.util.NameUtil;
-import jetbrains.mps.ide.icons.GlobalIconManager;
 import java.util.List;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
@@ -25,7 +25,7 @@ public class ReorderModelRoots_Action extends BaseAction {
   private static final Icon ICON = null;
 
   public ReorderModelRoots_Action() {
-    super("Re-arrange Model Roots", "Change order or root nodes in a model", ICON);
+    super("Reorder Root Nodes", "Change order of root nodes in a model", ICON);
     this.setIsAlwaysVisible(false);
     this.setActionAccess(ActionAccess.NONE);
   }
@@ -58,7 +58,9 @@ public class ReorderModelRoots_Action extends BaseAction {
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     final SModel model = event.getData(MPSCommonDataKeys.MODEL);
+    final Icon[] modelIcon = new Icon[1];
     ArrayList<NV> roots = event.getData(MPSCommonDataKeys.MPS_PROJECT).getModelAccess().computeReadAction(() -> {
+      modelIcon[0] = GlobalIconManager.getInstance().getIconFor(model);
       ArrayList<NV> rv = new ArrayList<>();
       int i = 1;
       for (SNode root : model.getRootNodes()) {
@@ -67,9 +69,9 @@ public class ReorderModelRoots_Action extends BaseAction {
       return rv;
     });
     ReorderElementsDialog<NV> dlg = new ReorderElementsDialog<>(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject(), roots, NV::getText);
-    dlg.setTitle("Reorder model roots");
+    dlg.setTitle("Reorder Root Nodes");
     dlg.setNorthPanelText(String.format("<html><b>%s</b></html>", NameUtil.compactModelName(model.getReference())));
-    dlg.setNorthPanelIcon(GlobalIconManager.getInstance().getIconFor(model));
+    dlg.setNorthPanelIcon(modelIcon[0]);
     if (dlg.showAndGet()) {
       final List<SNodeId> result = new ArrayList<>();
       int i = 1;

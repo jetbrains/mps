@@ -8,6 +8,7 @@ import jetbrains.mps.openapi.editor.cells.EditorCell;
 import jetbrains.mps.openapi.editor.EditorContext;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.nodeEditor.cellLayout.CellLayout_Horizontal;
+import org.jetbrains.mps.openapi.language.SConceptFeature;
 import java.awt.Point;
 import java.awt.Graphics;
 import jetbrains.mps.nodeEditor.cells.ParentSettings;
@@ -36,6 +37,16 @@ public class TooltipWrapper extends EditorCell_Collection implements Tooltip {
     myTiming = timing;
 
     addEditorCell(visibleCell);
+  }
+
+  @Override
+  public void setReferenceCell(boolean isReference) {
+    myVisibleCell.setReferenceCell(isReference);
+  }
+
+  @Override
+  public void setSRole(SConceptFeature role) {
+    myVisibleCell.setSRole(role);
   }
 
   @NotNull
