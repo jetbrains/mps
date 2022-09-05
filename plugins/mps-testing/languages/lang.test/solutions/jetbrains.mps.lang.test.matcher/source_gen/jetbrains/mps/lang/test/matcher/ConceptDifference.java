@@ -4,7 +4,7 @@ package jetbrains.mps.lang.test.matcher;
 
 import org.jetbrains.mps.openapi.language.SConcept;
 
-/*package*/ class ConceptDifference extends DifferenceItem {
+public final class ConceptDifference extends DifferenceItem {
   public final SConcept myActualConcept;
   public final SConcept myExpectedConcept;
 

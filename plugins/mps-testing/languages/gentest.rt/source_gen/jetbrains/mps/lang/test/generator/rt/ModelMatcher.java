@@ -16,6 +16,8 @@ import java.util.Iterator;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.lang.test.matcher.NodeDifference;
+import jetbrains.mps.lang.test.matcher.UnmatchedNode;
+import jetbrains.mps.lang.test.matcher.ConceptDifference;
 import java.util.function.Consumer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -91,6 +93,20 @@ public final class ModelMatcher {
           }
           result.set(before, nd);
 
+        }
+        return match;
+      }
+
+      @Override
+      protected boolean matchNodePrim(@Nullable SNode node1, @Nullable SNode node2) {
+        final boolean match = super.matchNodePrim(node1, node2);
+        if (!(match)) {
+          if (node1 == null || node2 == null) {
+            result.add(new UnmatchedNode());
+          } else {
+            // FIXME implied knowledge of super.matchNodePrim implementation
+            result.add(new ConceptDifference(node1.getConcept(), node2.getConcept()));
+          }
         }
         return match;
       }
