@@ -310,6 +310,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.StructureAspectDeputy:
         if (props_StructureAspectDeputy == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.experimental(true);
           cpb.rawPresentation("StructureAspectDeputy");
           props_StructureAspectDeputy = cpb.create();
         }

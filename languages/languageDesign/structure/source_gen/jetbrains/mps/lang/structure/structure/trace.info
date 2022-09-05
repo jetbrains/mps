@@ -14,7 +14,7 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1163670490218:jetbrains.mps.baseLanguage.structure.SwitchStatement" />
   <root>
     <file name="ConceptPresentationAspectImpl.java">
-      <unit at="12,0,326,0" name="jetbrains.mps.lang.structure.structure.ConceptPresentationAspectImpl" />
+      <unit at="12,0,327,0" name="jetbrains.mps.lang.structure.structure.ConceptPresentationAspectImpl" />
     </file>
     <file name="IconContainer.java">
       <unit at="7,0,17,0" name="jetbrains.mps.lang.structure.structure.IconContainer" />
@@ -36,7 +36,7 @@
       <node id="1071489090640" at="95,32,96,56" concept="1" />
       <node id="1071489090640" at="96,56,97,50" concept="1" />
       <node id="1071489090640" at="98,9,99,40" concept="6" />
-      <node id="1181761116875817936" at="320,0,321,0" concept="8" trace="HELP_URL" />
+      <node id="1181761116875817936" at="321,0,322,0" concept="8" trace="HELP_URL" />
       <node id="1071489090640" at="90,52,98,9" concept="3" />
       <scope id="1071489090640" at="91,47,97,50">
         <var name="cpb" id="1071489090640" />
@@ -278,7 +278,7 @@
       <node id="1082978499127" at="104,33,105,56" concept="1" />
       <node id="1082978499127" at="105,56,106,62" concept="1" />
       <node id="1082978499127" at="107,9,108,52" concept="6" />
-      <node id="6615282340041216528" at="321,0,322,0" concept="8" trace="HELP_URL1" />
+      <node id="6615282340041216528" at="322,0,323,0" concept="8" trace="HELP_URL1" />
       <node id="1082978499127" at="100,64,107,9" concept="3" />
       <scope id="1082978499127" at="101,59,106,62">
         <var name="cpb" id="1082978499127" />
@@ -357,7 +357,7 @@
       <node id="1083243159079" at="277,33,278,57" concept="1" />
       <node id="1083243159079" at="278,57,279,60" concept="1" />
       <node id="1083243159079" at="280,9,281,50" concept="6" />
-      <node id="6615282340041216592" at="324,0,325,0" concept="8" trace="HELP_URL4" />
+      <node id="6615282340041216592" at="325,0,326,0" concept="8" trace="HELP_URL4" />
       <node id="1083243159079" at="273,62,280,9" concept="3" />
       <scope id="1083243159079" at="274,57,279,60">
         <var name="cpb" id="1083243159079" />
@@ -444,7 +444,7 @@
       <node id="1169125989551" at="246,33,247,57" concept="1" />
       <node id="1169125989551" at="247,57,248,59" concept="1" />
       <node id="1169125989551" at="249,9,250,49" concept="6" />
-      <node id="6615282340041216589" at="323,0,324,0" concept="8" trace="HELP_URL3" />
+      <node id="6615282340041216589" at="324,0,325,0" concept="8" trace="HELP_URL3" />
       <node id="1169125989551" at="242,61,249,9" concept="3" />
       <scope id="1169125989551" at="243,56,248,59">
         <var name="cpb" id="1169125989551" />
@@ -779,7 +779,7 @@
       <node id="3348158742936976479" at="177,33,178,57" concept="1" />
       <node id="3348158742936976479" at="178,57,179,54" concept="1" />
       <node id="3348158742936976479" at="180,9,181,44" concept="6" />
-      <node id="6615282340041216532" at="322,0,323,0" concept="8" trace="HELP_URL2" />
+      <node id="6615282340041216532" at="323,0,324,0" concept="8" trace="HELP_URL2" />
       <node id="3348158742936976479" at="173,56,180,9" concept="3" />
       <scope id="3348158742936976479" at="174,51,179,54">
         <var name="cpb" id="3348158742936976479" />
@@ -1309,14 +1309,15 @@
     <file name="ConceptPresentationAspectImpl.java">
       <node id="4779912984502395132" at="48,0,49,0" concept="2" trace="props_StructureAspectDeputy" />
       <node id="4779912984502395132" at="311,50,312,76" concept="5" />
-      <node id="4779912984502395132" at="312,76,313,55" concept="1" />
-      <node id="4779912984502395132" at="313,55,314,53" concept="1" />
-      <node id="4779912984502395132" at="315,9,316,43" concept="6" />
-      <node id="4779912984502395132" at="310,55,315,9" concept="3" />
-      <scope id="4779912984502395132" at="311,50,314,53">
+      <node id="4779912984502395132" at="312,76,313,33" concept="1" />
+      <node id="4779912984502395132" at="313,33,314,55" concept="1" />
+      <node id="4779912984502395132" at="314,55,315,53" concept="1" />
+      <node id="4779912984502395132" at="316,9,317,43" concept="6" />
+      <node id="4779912984502395132" at="310,55,316,9" concept="3" />
+      <scope id="4779912984502395132" at="311,50,315,53">
         <var name="cpb" id="4779912984502395132" />
       </scope>
-      <scope id="4779912984502395132" at="310,55,316,43" />
+      <scope id="4779912984502395132" at="310,55,317,43" />
     </file>
     <file name="LanguageConceptSwitch.java">
       <node id="4779912984502395132" at="47,0,48,0" concept="8" trace="StructureAspectDeputy" />

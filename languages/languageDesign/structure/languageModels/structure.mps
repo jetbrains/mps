@@ -73,6 +73,7 @@
       <concept id="1169127622168" name="jetbrains.mps.lang.structure.structure.InterfaceConceptReference" flags="ig" index="PrWs8">
         <reference id="1169127628841" name="intfc" index="PrY4T" />
       </concept>
+      <concept id="418049251856799813" name="jetbrains.mps.lang.structure.structure.ExperimentalAPINodeAttribute" flags="ig" index="1AhYRh" />
       <concept id="5583843313507852240" name="jetbrains.mps.lang.structure.structure.MarkerInterfaceAttribute" flags="ng" index="3MrDgS" />
       <concept id="1071489090640" name="jetbrains.mps.lang.structure.structure.ConceptDeclaration" flags="ig" index="1TIwiD">
         <property id="1096454100552" name="rootable" index="19KtqR" />
@@ -1116,7 +1117,7 @@
       </node>
     </node>
     <node concept="t5JxF" id="6WJr2NngPmT" role="lGtFl">
-      <property role="t5JxN" value="Use this attribtue with those concept declarations which offer some non-stable or early-access functionality" />
+      <property role="t5JxN" value="Use this attribute with those concept declarations which offer some non-stable or early-access functionality" />
     </node>
   </node>
   <node concept="PlHQZ" id="6TyNL3imAnw">
@@ -1158,6 +1159,7 @@
     <node concept="t5JxF" id="49lEozazjnc" role="lGtFl">
       <property role="t5JxN" value="represents structure aspect in a @descriptor model" />
     </node>
+    <node concept="1AhYRh" id="5roO0AoGqED" role="lGtFl" />
   </node>
 </model>
 
