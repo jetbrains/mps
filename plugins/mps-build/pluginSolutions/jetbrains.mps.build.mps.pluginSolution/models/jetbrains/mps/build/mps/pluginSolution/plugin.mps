@@ -15480,6 +15480,15 @@
                 <node concept="26Ea6D" id="mJdekH$8Lb" role="2hID6k">
                   <property role="26Ea6C" value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
                 </node>
+                <node concept="26Ea6D" id="7XbK1YcZvA6" role="2hID6k">
+                  <property role="26Ea6C" value="--add-opens=java.desktop/com.apple.laf=ALL-UNNAMED" />
+                </node>
+                <node concept="26Ea6D" id="7XbK1YcZNz2" role="2hID6k">
+                  <property role="26Ea6C" value="--add-opens=java.desktop/com.apple.eawt=ALL-UNNAMED" />
+                </node>
+                <node concept="26Ea6D" id="7XbK1Yd03ts" role="2hID6k">
+                  <property role="26Ea6C" value="--add-opens=java.desktop/com.apple.eawt.event=ALL-UNNAMED" />
+                </node>
                 <node concept="26Ea6D" id="5DYAdUAwud5" role="2hID6k">
                   <property role="26Ea6C" value="Additional MPS options:" />
                   <property role="2eq24a" value="true" />
