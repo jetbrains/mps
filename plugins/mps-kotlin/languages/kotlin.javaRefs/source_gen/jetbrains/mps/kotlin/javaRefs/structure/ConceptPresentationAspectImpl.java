@@ -9,11 +9,13 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import jetbrains.mps.smodel.runtime.ConceptPresentationBuilder;
 
 public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase {
+  private ConceptPresentation props_JavaAnnotation;
   private ConceptPresentation props_JavaClassSuperSpecifier;
   private ConceptPresentation props_JavaClassType;
   private ConceptPresentation props_JavaConstructorSuperSpecifier;
   private ConceptPresentation props_JavaDefaultConstructorCall;
   private ConceptPresentation props_JavaDefaultConstructorSuperSpecifier;
+  private ConceptPresentation props_JavaEnumConstantReference;
   private ConceptPresentation props_JavaMemberTarget;
   private ConceptPresentation props_JavaMethodCall;
   private ConceptPresentation props_JavaMethodVariableReference;
@@ -25,6 +27,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
   public ConceptPresentation getDescriptor(SAbstractConcept c) {
     StructureAspectDescriptor structureDescriptor = (StructureAspectDescriptor) myLanguageRuntime.getAspect(jetbrains.mps.smodel.runtime.StructureAspectDescriptor.class);
     switch (structureDescriptor.internalIndex(c)) {
+      case LanguageConceptSwitch.JavaAnnotation:
+        if (props_JavaAnnotation == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x5b67e0c00f1749d5L, 0x5b67e0c00f1a3bc3L, "annotation", "", "");
+          props_JavaAnnotation = cpb.create();
+        }
+        return props_JavaAnnotation;
       case LanguageConceptSwitch.JavaClassSuperSpecifier:
         if (props_JavaClassSuperSpecifier == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
@@ -60,6 +69,13 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
           props_JavaDefaultConstructorSuperSpecifier = cpb.create();
         }
         return props_JavaDefaultConstructorSuperSpecifier;
+      case LanguageConceptSwitch.JavaEnumConstantReference:
+        if (props_JavaEnumConstantReference == null) {
+          ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.presentationByReference(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x1e912910d1a1491fL, 0x1e912910d1a43a6cL, "constant", "", "");
+          props_JavaEnumConstantReference = cpb.create();
+        }
+        return props_JavaEnumConstantReference;
       case LanguageConceptSwitch.JavaMemberTarget:
         if (props_JavaMemberTarget == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();

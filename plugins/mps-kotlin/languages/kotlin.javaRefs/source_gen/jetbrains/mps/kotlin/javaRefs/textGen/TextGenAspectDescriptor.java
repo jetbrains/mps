@@ -19,6 +19,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
   @Override
   public TextGenDescriptor getDescriptor(@NotNull SAbstractConcept concept) {
     switch (myIndex.index(concept)) {
+      case LanguageConceptSwitch.JavaAnnotation:
+        return new JavaAnnotation_TextGen();
       case LanguageConceptSwitch.JavaClassSuperSpecifier:
         return new JavaClassSuperSpecifier_TextGen();
       case LanguageConceptSwitch.JavaClassType:
@@ -29,6 +31,8 @@ public class TextGenAspectDescriptor extends TextGenAspectBase {
         return new JavaDefaultConstructorCall_TextGen();
       case LanguageConceptSwitch.JavaDefaultConstructorSuperSpecifier:
         return new JavaDefaultConstructorSuperSpecifier_TextGen();
+      case LanguageConceptSwitch.JavaEnumConstantReference:
+        return new JavaEnumConstantReference_TextGen();
       case LanguageConceptSwitch.JavaMemberTarget:
         return new JavaMemberTarget_TextGen();
       case LanguageConceptSwitch.JavaMethodCall:

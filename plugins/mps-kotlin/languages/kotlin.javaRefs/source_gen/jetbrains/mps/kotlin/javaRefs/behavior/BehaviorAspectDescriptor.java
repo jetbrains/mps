@@ -13,12 +13,14 @@ import jetbrains.mps.smodel.adapter.ids.MetaIdFactory;
 
 public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor {
   private final BHDescriptor myJavaClassSuperSpecifier__BehaviorDescriptor = new JavaClassSuperSpecifier__BehaviorDescriptor();
+  private final BHDescriptor myJavaEnumConstantReference__BehaviorDescriptor = new JavaEnumConstantReference__BehaviorDescriptor();
   private final BHDescriptor myJavaMethodCall__BehaviorDescriptor = new JavaMethodCall__BehaviorDescriptor();
   private final BHDescriptor myJavaConstructorSuperSpecifier__BehaviorDescriptor = new JavaConstructorSuperSpecifier__BehaviorDescriptor();
   private final BHDescriptor myJavaMethodVariableReference__BehaviorDescriptor = new JavaMethodVariableReference__BehaviorDescriptor();
   private final BHDescriptor myJavaVariableReference__BehaviorDescriptor = new JavaVariableReference__BehaviorDescriptor();
   private final BHDescriptor myJavaDefaultConstructorCall__BehaviorDescriptor = new JavaDefaultConstructorCall__BehaviorDescriptor();
   private final BHDescriptor myJavaDefaultConstructorSuperSpecifier__BehaviorDescriptor = new JavaDefaultConstructorSuperSpecifier__BehaviorDescriptor();
+  private final BHDescriptor myJavaAnnotation__BehaviorDescriptor = new JavaAnnotation__BehaviorDescriptor();
   private final BHDescriptor myJavaClassType__BehaviorDescriptor = new JavaClassType__BehaviorDescriptor();
   private final BHDescriptor myJavaMemberTarget__BehaviorDescriptor = new JavaMemberTarget__BehaviorDescriptor();
   private final BHDescriptor myJavaTypeVariableReferenceType__BehaviorDescriptor = new JavaTypeVariableReferenceType__BehaviorDescriptor();
@@ -31,28 +33,32 @@ public final class BehaviorAspectDescriptor extends BaseBehaviorAspectDescriptor
     SAbstractConcept cncpt = concept;
     switch (conceptIndex.index(cncpt)) {
       case 0:
-        return myJavaClassSuperSpecifier__BehaviorDescriptor;
+        return myJavaAnnotation__BehaviorDescriptor;
       case 1:
-        return myJavaClassType__BehaviorDescriptor;
+        return myJavaClassSuperSpecifier__BehaviorDescriptor;
       case 2:
-        return myJavaConstructorSuperSpecifier__BehaviorDescriptor;
+        return myJavaClassType__BehaviorDescriptor;
       case 3:
-        return myJavaDefaultConstructorCall__BehaviorDescriptor;
+        return myJavaConstructorSuperSpecifier__BehaviorDescriptor;
       case 4:
-        return myJavaDefaultConstructorSuperSpecifier__BehaviorDescriptor;
+        return myJavaDefaultConstructorCall__BehaviorDescriptor;
       case 5:
-        return myJavaMemberTarget__BehaviorDescriptor;
+        return myJavaDefaultConstructorSuperSpecifier__BehaviorDescriptor;
       case 6:
-        return myJavaMethodCall__BehaviorDescriptor;
+        return myJavaEnumConstantReference__BehaviorDescriptor;
       case 7:
-        return myJavaMethodVariableReference__BehaviorDescriptor;
+        return myJavaMemberTarget__BehaviorDescriptor;
       case 8:
-        return myJavaTypeVariableReferenceType__BehaviorDescriptor;
+        return myJavaMethodCall__BehaviorDescriptor;
       case 9:
+        return myJavaMethodVariableReference__BehaviorDescriptor;
+      case 10:
+        return myJavaTypeVariableReferenceType__BehaviorDescriptor;
+      case 11:
         return myJavaVariableReference__BehaviorDescriptor;
       default:
     }
     return null;
   }
-  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0xfd0b6783f85b1faL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x68fcefc6c20600f5L), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x2196e93e83dbf9feL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x5b64d6b00d61fa7bL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x5b64d6b00d756286L), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x7206852a8590b5efL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x2196e93e834d57ccL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x3569a755572a0ffbL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x729709d72e03236aL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x459f9eebcf0e5fc2L)).seal();
+  private static final ConceptSwitchIndex conceptIndex = new ConceptSwitchIndexBuilder().put(MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x5b67e0c00f1749d5L), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0xfd0b6783f85b1faL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x68fcefc6c20600f5L), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x2196e93e83dbf9feL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x5b64d6b00d61fa7bL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x5b64d6b00d756286L), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x1e912910d1a1491fL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x7206852a8590b5efL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x2196e93e834d57ccL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x3569a755572a0ffbL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x729709d72e03236aL), MetaIdFactory.conceptId(0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x459f9eebcf0e5fc2L)).seal();
 }

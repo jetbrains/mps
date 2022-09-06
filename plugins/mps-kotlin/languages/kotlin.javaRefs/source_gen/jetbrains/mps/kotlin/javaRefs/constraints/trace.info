@@ -14,7 +14,78 @@
   <concept fqn="c:f3061a53-9226-4cc5-a443-f952ceaf5816/1070475587102:jetbrains.mps.baseLanguage.structure.SuperConstructorInvocation" />
   <root>
     <file name="ConstraintsAspectDescriptor.java">
-      <unit at="13,0,41,0" name="jetbrains.mps.kotlin.javaRefs.constraints.ConstraintsAspectDescriptor" />
+      <unit at="13,0,43,0" name="jetbrains.mps.kotlin.javaRefs.constraints.ConstraintsAspectDescriptor" />
+    </file>
+  </root>
+  <root nodeRef="r:a8be947e-2401-458d-a5e8-7789d9a23eaf(jetbrains.mps.kotlin.javaRefs.constraints)/2202586844974805688">
+    <file name="JavaEnumConstantReference_Constraints.java">
+      <node id="2202586844974805688" at="33,50,34,49" concept="11" />
+      <node id="2202586844974952771" at="45,63,46,144" concept="6" />
+      <node id="2202586844974954491" at="49,80,50,175" concept="5" />
+      <node id="2202586844974954500" at="50,175,51,0" concept="8" />
+      <node id="2202586844974954503" at="52,34,53,40" concept="5" />
+      <node id="2202586844974954511" at="54,33,55,40" concept="6" />
+      <node id="2202586844974954517" at="56,15,57,0" concept="8" />
+      <node id="2202586844974954518" at="57,0,58,67" concept="7" />
+      <node id="2202586844974954528" at="58,67,59,105" concept="5" />
+      <node id="2202586844974954535" at="59,105,60,39" concept="5" />
+      <node id="2202586844974954540" at="61,43,62,274" concept="2" />
+      <node id="2202586844974954559" at="63,22,64,180" concept="2" />
+      <node id="2202586844974954569" at="65,15,66,0" concept="8" />
+      <node id="2202586844974954570" at="66,0,67,95" concept="6" />
+      <node id="2202586844974954578" at="68,13,69,0" concept="8" />
+      <node id="2202586844974954579" at="69,0,70,0" concept="8" />
+      <node id="2202586844974954580" at="70,0,71,39" concept="7" />
+      <node id="2202586844974954587" at="71,39,72,103" concept="7" />
+      <node id="2202586844974954600" at="72,103,73,36" concept="6" />
+      <node id="2202586844974954603" at="73,36,74,0" concept="8" />
+      <node id="2202586844974805688" at="78,6,79,131" concept="5" />
+      <node id="2202586844974952771" at="79,131,80,42" concept="2" />
+      <node id="2202586844974805688" at="80,42,81,22" concept="6" />
+      <node id="2202586844974805688" at="85,0,86,0" concept="9" trace="JavaEnumConstantReference$42" />
+      <node id="2202586844974805688" at="86,0,87,0" concept="9" trace="EnumConstantDeclaration$MW" />
+      <node id="2202586844974805688" at="90,0,91,0" concept="9" trace="constant$7EjP" />
+      <node id="2202586844974954557" at="63,20,65,15" concept="0" />
+      <node id="2202586844974805688" at="33,0,36,0" concept="1" trace="JavaEnumConstantReference_Constraints#()V" />
+      <node id="2202586844974954509" at="53,40,56,15" concept="3" />
+      <node id="2202586844974952771" at="44,0,48,0" concept="4" trace="getSearchScopeValidatorNode#()Lorg/jetbrains/mps/openapi/model/SNodeReference;" />
+      <node id="2202586844974954538" at="60,39,65,15" concept="3" />
+      <node id="2202586844974954501" at="51,0,68,13" concept="3" />
+      <node id="2202586844974952771" at="48,0,76,0" concept="4" trace="createScope#(Ljetbrains/mps/smodel/runtime/ReferenceConstraintsContext;)Ljetbrains/mps/scope/Scope;" />
+      <node id="2202586844974952771" at="42,56,76,10" concept="6" />
+      <node id="2202586844974952771" at="40,0,78,0" concept="4" trace="getScopeProvider#()Ljetbrains/mps/smodel/runtime/ReferenceScopeProvider;" />
+      <node id="2202586844974952771" at="38,90,78,6" concept="5" />
+      <node id="2202586844974805688" at="37,0,83,0" concept="4" trace="getSpecifiedReferences#()Ljava/util/Map;" />
+      <scope id="2202586844974805688" at="33,50,34,49" />
+      <scope id="2202586844974952771" at="45,63,46,144" />
+      <scope id="2202586844974954510" at="54,33,55,40" />
+      <scope id="2202586844974954539" at="61,43,62,274" />
+      <scope id="2202586844974954558" at="63,22,64,180" />
+      <scope id="2202586844974805688" at="33,0,36,0" />
+      <scope id="2202586844974952771" at="44,0,48,0" />
+      <scope id="2202586844974954502" at="52,34,67,95">
+        <var name="filter" id="2202586844974954529" />
+        <var name="type" id="2202586844974954504" />
+        <var name="typeScope" id="2202586844974954536" />
+      </scope>
+      <scope id="2202586844974952771" at="49,80,74,0">
+        <var name="context" id="2202586844974954492" />
+      </scope>
+      <scope id="2202586844974952771" at="48,0,76,0">
+        <var name="_context" id="2202586844974952771" />
+      </scope>
+      <scope id="2202586844974952771" at="42,56,76,10" />
+      <scope id="2202586844974952771" at="40,0,78,0" />
+      <scope id="2202586844974805688" at="38,90,81,22">
+        <var name="d0" id="2202586844974952771" />
+        <var name="references" id="2202586844974805688" />
+      </scope>
+      <scope id="2202586844974805688" at="37,0,83,0" />
+      <unit id="2202586844974805688" at="89,0,92,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaEnumConstantReference_Constraints$LINKS" />
+      <unit id="2202586844974805688" at="84,0,88,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaEnumConstantReference_Constraints$CONCEPTS" />
+      <unit id="2202586844974952771" at="43,19,76,9" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaEnumConstantReference_Constraints$1$1" />
+      <unit id="2202586844974952771" at="39,48,78,5" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaEnumConstantReference_Constraints$1" />
+      <unit id="2202586844974805688" at="32,0,93,0" name="jetbrains.mps.kotlin.javaRefs.constraints.JavaEnumConstantReference_Constraints" />
     </file>
   </root>
   <root nodeRef="r:a8be947e-2401-458d-a5e8-7789d9a23eaf(jetbrains.mps.kotlin.javaRefs.constraints)/2420378304458731290">

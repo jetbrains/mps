@@ -13,11 +13,13 @@ import jetbrains.mps.smodel.runtime.impl.ConceptDescriptorBuilder2;
 import jetbrains.mps.smodel.adapter.ids.PrimitiveTypeId;
 
 public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
+  /*package*/ final ConceptDescriptor myConceptJavaAnnotation = createDescriptorForJavaAnnotation();
   /*package*/ final ConceptDescriptor myConceptJavaClassSuperSpecifier = createDescriptorForJavaClassSuperSpecifier();
   /*package*/ final ConceptDescriptor myConceptJavaClassType = createDescriptorForJavaClassType();
   /*package*/ final ConceptDescriptor myConceptJavaConstructorSuperSpecifier = createDescriptorForJavaConstructorSuperSpecifier();
   /*package*/ final ConceptDescriptor myConceptJavaDefaultConstructorCall = createDescriptorForJavaDefaultConstructorCall();
   /*package*/ final ConceptDescriptor myConceptJavaDefaultConstructorSuperSpecifier = createDescriptorForJavaDefaultConstructorSuperSpecifier();
+  /*package*/ final ConceptDescriptor myConceptJavaEnumConstantReference = createDescriptorForJavaEnumConstantReference();
   /*package*/ final ConceptDescriptor myConceptJavaMemberTarget = createDescriptorForJavaMemberTarget();
   /*package*/ final ConceptDescriptor myConceptJavaMethodCall = createDescriptorForJavaMethodCall();
   /*package*/ final ConceptDescriptor myConceptJavaMethodVariableReference = createDescriptorForJavaMethodVariableReference();
@@ -37,13 +39,15 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
 
   @Override
   public Collection<ConceptDescriptor> getDescriptors() {
-    return Arrays.asList(myConceptJavaClassSuperSpecifier, myConceptJavaClassType, myConceptJavaConstructorSuperSpecifier, myConceptJavaDefaultConstructorCall, myConceptJavaDefaultConstructorSuperSpecifier, myConceptJavaMemberTarget, myConceptJavaMethodCall, myConceptJavaMethodVariableReference, myConceptJavaTypeVariableReferenceType, myConceptJavaVariableReference);
+    return Arrays.asList(myConceptJavaAnnotation, myConceptJavaClassSuperSpecifier, myConceptJavaClassType, myConceptJavaConstructorSuperSpecifier, myConceptJavaDefaultConstructorCall, myConceptJavaDefaultConstructorSuperSpecifier, myConceptJavaEnumConstantReference, myConceptJavaMemberTarget, myConceptJavaMethodCall, myConceptJavaMethodVariableReference, myConceptJavaTypeVariableReferenceType, myConceptJavaVariableReference);
   }
 
   @Override
   @Nullable
   public ConceptDescriptor getDescriptor(SConceptId id) {
     switch (myIndexSwitch.index(id)) {
+      case LanguageConceptSwitch.JavaAnnotation:
+        return myConceptJavaAnnotation;
       case LanguageConceptSwitch.JavaClassSuperSpecifier:
         return myConceptJavaClassSuperSpecifier;
       case LanguageConceptSwitch.JavaClassType:
@@ -54,6 +58,8 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
         return myConceptJavaDefaultConstructorCall;
       case LanguageConceptSwitch.JavaDefaultConstructorSuperSpecifier:
         return myConceptJavaDefaultConstructorSuperSpecifier;
+      case LanguageConceptSwitch.JavaEnumConstantReference:
+        return myConceptJavaEnumConstantReference;
       case LanguageConceptSwitch.JavaMemberTarget:
         return myConceptJavaMemberTarget;
       case LanguageConceptSwitch.JavaMethodCall:
@@ -74,6 +80,17 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     return myIndexSwitch.index(c);
   }
 
+  private static ConceptDescriptor createDescriptorForJavaAnnotation() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin.javaRefs", "JavaAnnotation", 0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x5b67e0c00f1749d5L);
+    b.class_(false, false, false);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x446a1050b763d58eL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x5b1dd60162ecf00bL);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x241317ddbda99714L);
+    b.origin("r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)/6586480095544166869");
+    b.version(3);
+    b.associate("annotation", 0x5b67e0c00f1a3bc3L).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x114a69dc80cL).optional(false).origin("6586480095544359875").done();
+    return b.create();
+  }
   private static ConceptDescriptor createDescriptorForJavaClassSuperSpecifier() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin.javaRefs", "JavaClassSuperSpecifier", 0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0xfd0b6783f85b1faL);
     b.class_(false, false, false);
@@ -119,6 +136,16 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
     b.origin("r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)/6585624606750892678");
     b.version(3);
     b.associate("classifier", 0x5b64d6b00d75628dL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L).optional(false).origin("6585624606750892685").done();
+    return b.create();
+  }
+  private static ConceptDescriptor createDescriptorForJavaEnumConstantReference() {
+    ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.kotlin.javaRefs", "JavaEnumConstantReference", 0x9e4ff22b60f143efL, 0xa50bf9f0fcec22e0L, 0x1e912910d1a1491fL);
+    b.class_(false, false, false);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x61460ebbf13b8457L);
+    b.parent(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af3b6L);
+    b.origin("r:13d34207-1d05-4df8-92a6-7cde496142db(jetbrains.mps.kotlin.javaRefs.structure)/2202586844974106911");
+    b.version(3);
+    b.associate("constant", 0x1e912910d1a43a6cL).target(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xfc367388b3L).optional(false).origin("2202586844974299756").done();
     return b.create();
   }
   private static ConceptDescriptor createDescriptorForJavaMemberTarget() {

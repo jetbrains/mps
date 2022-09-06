@@ -4,11 +4,11 @@ package jetbrains.mps.kotlin.javaRefs.behavior;
 
 import jetbrains.mps.kotlin.api.members.SignatureCollector;
 import org.jetbrains.mps.openapi.model.SNode;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.signatures.PropertySignature;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import java.util.Iterator;
 import jetbrains.mps.baseLanguage.closures.runtime.YieldingIterator;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.signatures.AccessorKind;
 import jetbrains.mps.kotlin.signatures.FunctionSignature;
 import jetbrains.mps.kotlin.baseLanguage.toKotlin.JavaDefaultConstructorDeclaration;
@@ -24,7 +24,11 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 import org.jetbrains.mps.openapi.language.SConcept;
 
 public class JavaSignatures {
-  public static void declareField(SignatureCollector collector, final SNode field) {
+  public static void declareField(SignatureCollector collector, SNode field) {
+    declareField(collector, field, SPropertyOperations.getBoolean(field, PROPS.isFinal$gvTP));
+  }
+
+  public static void declareField(SignatureCollector collector, final SNode field, final boolean isFinal) {
     if (field == null) {
       return;
     }
@@ -43,7 +47,7 @@ __switch__:
                       assert false : "Internal error";
                       return false;
                     case 3:
-                      if (!(SPropertyOperations.getBoolean(field, PROPS.isFinal$gvTP))) {
+                      if (!(isFinal)) {
                         this.__CP__ = 4;
                         break;
                       }

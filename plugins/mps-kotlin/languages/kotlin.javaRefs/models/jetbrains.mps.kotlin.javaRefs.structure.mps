@@ -269,5 +269,48 @@
       <ref role="RPilL" node="786xiE5$bNJ" resolve="member" />
     </node>
   </node>
+  <node concept="1TIwiD" id="5HBSc0f5OBl">
+    <property role="EcuMT" value="6586480095544166869" />
+    <property role="TrG5h" value="JavaAnnotation" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="PrWs8" id="4hE452RsWTh" role="PzmwI">
+      <ref role="PrY4T" to="hcm8:4hE452RoXme" resolve="IAnnotation" />
+    </node>
+    <node concept="PrWs8" id="4hE452RoZZJ" role="PzmwI">
+      <ref role="PrY4T" to="hcm8:5GtPw5yVf0b" resolve="IArguments" />
+    </node>
+    <node concept="PrWs8" id="4hE452Rp00A" role="PzmwI">
+      <ref role="PrY4T" to="hcm8:2gj5XQXEpsk" resolve="ITypeArguments" />
+    </node>
+    <node concept="1TJgyj" id="5HBSc0f6zJ3" role="1TKVEi">
+      <property role="IQ2ns" value="6586480095544359875" />
+      <property role="20kJfa" value="annotation" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:hiABswc" resolve="Annotation" />
+    </node>
+    <node concept="RPilO" id="5HBSc0f9VPW" role="lGtFl">
+      <ref role="RPilL" node="5HBSc0f6zJ3" resolve="annotation" />
+    </node>
+  </node>
+  <node concept="1TIwiD" id="1Uhah3hCk$v">
+    <property role="EcuMT" value="2202586844974106911" />
+    <property role="TrG5h" value="JavaEnumConstantReference" />
+    <ref role="1TJDcQ" to="tpck:gw2VY9q" />
+    <node concept="PrWs8" id="1Uhah3hD0Ru" role="PzmwI">
+      <ref role="PrY4T" to="hcm8:6563FJLeShn" resolve="IStaticType" />
+    </node>
+    <node concept="PrWs8" id="1Uhah3hD0Rw" role="PzmwI">
+      <ref role="PrY4T" to="hcm8:2yYXHtl6JeQ" resolve="INavigationTarget" />
+    </node>
+    <node concept="1TJgyj" id="1Uhah3hD3DG" role="1TKVEi">
+      <property role="IQ2ns" value="2202586844974299756" />
+      <property role="20kJfa" value="constant" />
+      <property role="20lbJX" value="fLJekj4/_1" />
+      <ref role="20lvS9" to="tpee:fKQsSyN" resolve="EnumConstantDeclaration" />
+    </node>
+    <node concept="RPilO" id="1Uhah3hDeYQ" role="lGtFl">
+      <ref role="RPilL" node="1Uhah3hD3DG" resolve="constant" />
+    </node>
+  </node>
 </model>
 
