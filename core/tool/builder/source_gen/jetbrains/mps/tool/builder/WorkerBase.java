@@ -75,7 +75,7 @@ public abstract class WorkerBase {
   protected abstract Environment createEnvironment();
 
   protected EnvironmentConfig initEnvironmentConfig() {
-    EnvironmentConfig res = EnvironmentConfig.emptyConfig().withDefaultSamples().withBootstrapLibraries().withWorkbenchPath();
+    EnvironmentConfig res = EnvironmentConfig.emptyConfig().withBootstrapLibraries().withWorkbenchPath();
     if (myWhatToDo.getAutomaticPluginDiscoveryMode()) {
       res = res.withAutomaticPluginDiscovery();
     } else {

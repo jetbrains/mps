@@ -555,14 +555,9 @@
             </node>
             <node concept="2OqwBi" id="5P325eDw8Kz" role="33vP2m">
               <node concept="2OqwBi" id="5P325eDw8K$" role="2Oq$k0">
-                <node concept="2OqwBi" id="5P325eDw8KB" role="2Oq$k0">
-                  <node concept="liA8E" id="5P325eDw8KC" role="2OqNvi">
-                    <ref role="37wK5l" to="79ha:6rx4kZDkOYs" resolve="withDefaultSamples" />
-                  </node>
-                  <node concept="2YIFZM" id="5P325eDw8KD" role="2Oq$k0">
-                    <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
-                    <ref role="37wK5l" to="79ha:3YQ3dO9lg_M" resolve="emptyConfig" />
-                  </node>
+                <node concept="2YIFZM" id="5P325eDw8KD" role="2Oq$k0">
+                  <ref role="1Pybhc" to="79ha:6rx4kZDk5A9" resolve="EnvironmentConfig" />
+                  <ref role="37wK5l" to="79ha:3YQ3dO9lg_M" resolve="emptyConfig" />
                 </node>
                 <node concept="liA8E" id="5P325eDw8KE" role="2OqNvi">
                   <ref role="37wK5l" to="79ha:5mza6QqhjgL" resolve="withBootstrapLibraries" />

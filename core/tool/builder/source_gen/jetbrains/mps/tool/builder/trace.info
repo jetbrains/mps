@@ -231,7 +231,7 @@
       <node id="6183000554725946165" at="70,5,71,0" concept="13" />
       <node id="6183000554725943323" at="71,0,72,54" concept="11" />
       <node id="6132171475560143380" at="75,0,76,0" concept="9" trace="createEnvironment#()Ljetbrains/mps/tool/environment/Environment;" />
-      <node id="6720224224385993761" at="77,55,78,126" concept="10" />
+      <node id="6720224224385993761" at="77,55,78,105" concept="10" />
       <node id="6720224224386230117" at="79,55,80,47" concept="4" />
       <node id="6720224224386284460" at="81,12,82,37" concept="4" />
       <node id="6720224224386166090" at="83,5,84,15" concept="11" />
@@ -338,7 +338,7 @@
       <node id="878521226300774277" at="203,44,207,7" concept="8" />
       <node id="878521226300774639" at="244,0,248,0" concept="9" trace="error#(Ljava/lang/String;)V" />
       <node id="4451025160314682128" at="248,47,252,5" concept="8" />
-      <node id="6720224224384620768" at="78,126,83,5" concept="8" />
+      <node id="6720224224384620768" at="78,105,83,5" concept="8" />
       <node id="878521226300774075" at="179,0,184,0" concept="9" trace="failBuild#(Ljava/lang/String;)V" />
       <node id="878521226300774922" at="228,0,233,5" concept="8" />
       <node id="878521226300774771" at="255,0,260,0" concept="14" trace="extractStackTrace#(Ljava/lang/Throwable;)Ljava/lang/StringBuffer;" />
