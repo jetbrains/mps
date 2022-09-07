@@ -390,8 +390,8 @@
                                 <node concept="30H73N" id="7mMp_dFfBrY" role="2Oq$k0" />
                                 <node concept="2Xjw5R" id="7mMp_dFfCJs" role="2OqNvi">
                                   <node concept="1xMEDy" id="7mMp_dFfCJu" role="1xVPHs">
-                                    <node concept="chp4Y" id="7mMp_dFfGc_" role="ri$Ld">
-                                      <ref role="cht4Q" to="tpc2:fPsVBsF" resolve="InlineEditorComponent" />
+                                    <node concept="chp4Y" id="14gq9ydYWO6" role="ri$Ld">
+                                      <ref role="cht4Q" to="tpc2:fPiCG$y" resolve="CellModel_RefCell" />
                                     </node>
                                   </node>
                                 </node>
