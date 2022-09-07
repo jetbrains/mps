@@ -96,7 +96,7 @@ public class QueriesGenerated extends QueryProviderBase {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.hint$gLJA);
   }
   public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
-    return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.InlineEditorComponent$Op, false, false) == null;
+    return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.CellModel_RefCell$7g, false, false) == null;
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.visibleCell$VE5n);
@@ -357,7 +357,7 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept CellModel_Tooltip$vF = MetaAdapterFactory.getConcept(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L, "jetbrains.mps.lang.editor.tooltips.structure.CellModel_Tooltip");
     /*package*/ static final SConcept AuxEditorCellWithRefToGeneratedHint$Aw = MetaAdapterFactory.getConcept(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x35cfce3215b739b5L, "jetbrains.mps.lang.editor.tooltips.structure.AuxEditorCellWithRefToGeneratedHint");
     /*package*/ static final SConcept AbstractComponent$YR = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, "jetbrains.mps.lang.editor.structure.AbstractComponent");
-    /*package*/ static final SConcept InlineEditorComponent$Op = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd5cee772bL, "jetbrains.mps.lang.editor.structure.InlineEditorComponent");
+    /*package*/ static final SConcept CellModel_RefCell$7g = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell");
   }
 
   private static final class LINKS {
