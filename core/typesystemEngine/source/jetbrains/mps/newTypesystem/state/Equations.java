@@ -18,7 +18,9 @@ package jetbrains.mps.newTypesystem.state;
 import gnu.trove.THashMap;
 import gnu.trove.THashSet;
 import jetbrains.mps.errors.SimpleErrorReporter;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.newTypesystem.TypesUtil;
+import jetbrains.mps.newTypesystem.context.ReportingTypecheckingContext;
 import jetbrains.mps.newTypesystem.operation.equation.AddEquationOperation;
 import jetbrains.mps.newTypesystem.operation.equation.SubstituteEquationOperation;
 import jetbrains.mps.smodel.CopyUtil;
@@ -28,7 +30,9 @@ import jetbrains.mps.typesystem.inference.TypeChecker;
 import jetbrains.mps.typesystemEngine.util.LatticeUtil;
 import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.util.Pair;
+import jetbrains.mps.util.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SReferenceLink;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil;
 import org.jetbrains.mps.openapi.model.SNodeUtil;
@@ -43,6 +47,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class Equations {
+
+  private static Logger LOG = Logger.getLogger(Equations.class);
+
   @StateObject
   private final Map<SNode, SNode> myRepresentatives = new THashMap<>();
 
@@ -239,9 +246,19 @@ public class Equations {
     return converter.convert(sourceNode, role, variable, false);
   }
 
-  void reportRecursiveType(SNode node, EquationInfo info) {  //todo
-    SimpleErrorReporter errorReporter = new SimpleErrorReporter(node, "Recursive types not allowed", info.getRuleNode());
-    myState.getTypeCheckingContext().reportMessage(errorReporter);
+  void reportRecursiveType(SNode node, EquationInfo info) {
+    // TODO merge with ReportingTypecheckingContext
+    String ruleId = info.getRuleNode() != null ? info.getRuleNode().getNodeId().toString() : "<unknown>";
+    if (node == null) {
+      LOG.debug("Node used to report an error is null. Error will be ignored. Reported  by rule " + ruleId + ".", new Throwable());
+
+    } else if (node.getModel() == null) {
+      LOG.debug("Node used to report an error is not in a model. Error will be ignored. Node=" + SNodeOperations.getDebugText(node) + ". Reported from by rule " + ruleId + ".", new Throwable());
+    }
+    if(node != null) {
+      SimpleErrorReporter errorReporter = new SimpleErrorReporter(node, "Recursive types not allowed", info.getRuleNode());
+      myState.getTypeCheckingContext().reportMessage(errorReporter);
+    }
   }
 
   public void addEquations(Set<Pair<SNode, SNode>> childEqs, EquationInfo errorInfo) {
