@@ -22,6 +22,7 @@ import jetbrains.mps.smodel.language.LanguageRuntime;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor;
 import jetbrains.mps.smodel.runtime.StructureAspectDescriptor.Dependencies;
 import jetbrains.mps.util.IterableUtil;
+import jetbrains.mps.util.NameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SLanguage;
 
@@ -45,7 +46,21 @@ import java.util.stream.Collectors;
  */
 public class SLanguageHierarchy {
   private final static Logger LOG = Logger.getLogger(SLanguageHierarchy.class);
-  private final static ErrorHandler DEFAULT_HANDLER = language -> LOG.warning(String.format("The language '%s' is not deployed", language));
+  private final static class DefaultErrorHandler implements ErrorHandler {
+    private final String mySource;
+    private final HashSet<SLanguage> myReported = new HashSet<>();
+
+    private DefaultErrorHandler(Collection<SLanguage> languages) {
+      mySource = languages.stream().map(SLanguage::getQualifiedName).map(NameUtil::compactNamespace).collect(Collectors.joining(",", "[", "]"));
+    }
+
+    @Override
+    public void handleLanguageIsNotDeployed(SLanguage language) {
+      if (myReported.add(language)) {
+        LOG.warning(String.format("The language '%s' is not deployed when analyzing %s", language, mySource));
+      }
+    }
+  };
 
   private final LanguageRegistry myRegistry;
   private final Collection<SLanguage> myLanguages;
@@ -73,7 +88,7 @@ public class SLanguageHierarchy {
    */
   @NotNull
   public Set<SLanguage> getExtended() {
-    return getExtendedLangs(DEFAULT_HANDLER);
+    return getExtendedLangs(new DefaultErrorHandler(getInitial()));
   }
 
   @NotNull
