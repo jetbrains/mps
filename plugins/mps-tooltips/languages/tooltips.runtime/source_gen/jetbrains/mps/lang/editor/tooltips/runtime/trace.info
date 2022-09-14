@@ -40,62 +40,56 @@
   </root>
   <root nodeRef="r:3458bb8b-fecd-4f7c-841e-325717a43789(jetbrains.mps.lang.editor.tooltips.runtime)/2486308366048800755">
     <file name="LazyTooltipCellEvaluator.java">
-      <node id="3032850531553805036" at="27,142,28,24" concept="2" />
-      <node id="3032850531553808340" at="28,24,29,18" concept="2" />
-      <node id="3032850531553812034" at="29,18,30,18" concept="2" />
-      <node id="3032850531553818472" at="31,18,32,20" concept="2" />
-      <node id="3032850531553733137" at="37,68,38,83" concept="8" />
-      <node id="3032850531553733145" at="38,83,39,98" concept="8" />
-      <node id="3032850531553733155" at="39,98,40,24" concept="2" />
-      <node id="3032850531553733160" at="40,24,41,77" concept="2" />
-      <node id="3032850531553733168" at="41,77,42,90" concept="2" />
-      <node id="3032850531553767687" at="44,50,45,20" concept="2" />
-      <node id="3189537843192395650" at="53,77,54,93" concept="9" />
-      <node id="3032850531553788918" at="59,38,60,20" concept="2" />
-      <node id="3032850531553793692" at="61,5,62,18" concept="9" />
-      <node id="813197526536493314" at="66,38,67,36" concept="2" />
-      <node id="813197526536491416" at="68,5,69,31" concept="2" />
-      <node id="813197526536481219" at="16,0,18,0" concept="3" trace="myEditorCellCreator" />
-      <node id="3032850531553729880" at="18,0,20,0" concept="3" trace="myCell" />
-      <node id="3032850531553687791" at="20,0,22,0" concept="3" trace="myContext" />
-      <node id="3032850531553695805" at="22,0,24,0" concept="3" trace="myNode" />
-      <node id="3032850531553701840" at="24,0,26,0" concept="3" trace="myHint" />
-      <node id="8799695660252693518" at="30,18,33,5" concept="6" />
-      <node id="3032850531553762652" at="43,7,46,5" concept="6" />
-      <node id="3189537843192395662" at="53,0,56,0" concept="7" trace="hackIfRenderingConditionIsEmpty#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Z" />
-      <node id="3032850531553782694" at="58,38,61,5" concept="6" />
-      <node id="813197526536608450" at="65,25,68,5" concept="6" />
-      <node id="813197526536460382" at="65,0,71,0" concept="7" trace="dispose#()V" />
-      <node id="3032850531553733134" at="36,30,43,7" concept="2" />
-      <node id="2486308366048801748" at="57,0,64,0" concept="7" trace="getTooltipCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
-      <node id="2486308366048811418" at="27,0,35,0" concept="1" trace="LazyTooltipCellEvaluator#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;Z)V" />
-      <node id="3032850531553723291" at="36,0,48,0" concept="7" trace="computeCell#()V" />
-      <scope id="8799695660252693520" at="31,18,32,20" />
-      <scope id="3032850531553762654" at="44,50,45,20" />
-      <scope id="3189537843192395649" at="53,77,54,93" />
-      <scope id="3032850531553782696" at="59,38,60,20" />
-      <scope id="813197526536608452" at="66,38,67,36" />
-      <scope id="3189537843192395662" at="53,0,56,0">
+      <node id="3032850531553805036" at="24,142,25,24" concept="2" />
+      <node id="3032850531553808340" at="25,24,26,18" concept="2" />
+      <node id="3032850531553812034" at="26,18,27,18" concept="2" />
+      <node id="3032850531553818472" at="28,18,29,20" concept="2" />
+      <node id="3032850531553733160" at="34,68,35,77" concept="2" />
+      <node id="3032850531553733168" at="35,77,36,82" concept="2" />
+      <node id="3032850531553767687" at="38,50,39,20" concept="2" />
+      <node id="3189537843192395650" at="47,77,48,93" concept="9" />
+      <node id="3032850531553788918" at="53,38,54,20" concept="2" />
+      <node id="3032850531553793692" at="55,5,56,18" concept="9" />
+      <node id="813197526536493314" at="60,38,61,36" concept="2" />
+      <node id="813197526536491416" at="62,5,63,31" concept="2" />
+      <node id="813197526536481219" at="13,0,15,0" concept="3" trace="myEditorCellCreator" />
+      <node id="3032850531553729880" at="15,0,17,0" concept="3" trace="myCell" />
+      <node id="3032850531553687791" at="17,0,19,0" concept="3" trace="myContext" />
+      <node id="3032850531553695805" at="19,0,21,0" concept="3" trace="myNode" />
+      <node id="3032850531553701840" at="21,0,23,0" concept="3" trace="myHint" />
+      <node id="8799695660252693518" at="27,18,30,5" concept="6" />
+      <node id="3032850531553762652" at="37,7,40,5" concept="6" />
+      <node id="3189537843192395662" at="47,0,50,0" concept="7" trace="hackIfRenderingConditionIsEmpty#(Ljetbrains/mps/openapi/editor/cells/EditorCell;)Z" />
+      <node id="3032850531553782694" at="52,38,55,5" concept="6" />
+      <node id="813197526536608450" at="59,25,62,5" concept="6" />
+      <node id="3032850531553733134" at="33,30,37,7" concept="2" />
+      <node id="813197526536460382" at="59,0,65,0" concept="7" trace="dispose#()V" />
+      <node id="2486308366048801748" at="51,0,58,0" concept="7" trace="getTooltipCell#()Ljetbrains/mps/openapi/editor/cells/EditorCell;" />
+      <node id="2486308366048811418" at="24,0,32,0" concept="1" trace="LazyTooltipCellEvaluator#(Ljetbrains/mps/openapi/editor/EditorContext;Lorg/jetbrains/mps/openapi/model/SNode;Ljava/lang/String;Z)V" />
+      <node id="3032850531553723291" at="33,0,42,0" concept="7" trace="computeCell#()V" />
+      <scope id="8799695660252693520" at="28,18,29,20" />
+      <scope id="3032850531553762654" at="38,50,39,20" />
+      <scope id="3189537843192395649" at="47,77,48,93" />
+      <scope id="3032850531553782696" at="53,38,54,20" />
+      <scope id="813197526536608452" at="60,38,61,36" />
+      <scope id="3032850531553733136" at="34,68,36,82" />
+      <scope id="3189537843192395662" at="47,0,50,0">
         <var name="cell" id="3189537843192396955" />
       </scope>
-      <scope id="2486308366048801752" at="58,38,62,18" />
-      <scope id="813197526536460386" at="65,25,69,31" />
-      <scope id="3032850531553733136" at="37,68,42,90">
-        <var name="component" id="3032850531553733138" />
-        <var name="hints" id="3032850531553733146" />
-      </scope>
-      <scope id="2486308366048811422" at="27,142,33,5" />
-      <scope id="813197526536460382" at="65,0,71,0" />
-      <scope id="2486308366048801748" at="57,0,64,0" />
-      <scope id="2486308366048811418" at="27,0,35,0">
+      <scope id="2486308366048801752" at="52,38,56,18" />
+      <scope id="813197526536460386" at="59,25,63,31" />
+      <scope id="2486308366048811422" at="24,142,30,5" />
+      <scope id="813197526536460382" at="59,0,65,0" />
+      <scope id="3032850531553723294" at="33,30,40,5" />
+      <scope id="2486308366048801748" at="51,0,58,0" />
+      <scope id="2486308366048811418" at="24,0,32,0">
         <var name="context" id="2486308366048811642" />
         <var name="hint" id="6637997329037910713" />
         <var name="lazy" id="4804083432920641342" />
         <var name="node" id="5701463299927893764" />
       </scope>
-      <scope id="3032850531553723294" at="36,30,46,5" />
-      <scope id="3032850531553723291" at="36,0,48,0" />
-      <unit id="2486308366048800755" at="15,0,72,0" name="jetbrains.mps.lang.editor.tooltips.runtime.LazyTooltipCellEvaluator" />
+      <scope id="3032850531553723291" at="33,0,42,0" />
+      <unit id="2486308366048800755" at="12,0,66,0" name="jetbrains.mps.lang.editor.tooltips.runtime.LazyTooltipCellEvaluator" />
     </file>
   </root>
   <root nodeRef="r:3458bb8b-fecd-4f7c-841e-325717a43789(jetbrains.mps.lang.editor.tooltips.runtime)/3818242615180342075">

@@ -16,7 +16,6 @@ import jetbrains.mps.lang.editor.behavior.ConceptEditorHintDeclaration__Behavior
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.lang.editor.behavior.EditorCellModel__BehaviorDescriptor;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
-import jetbrains.mps.generator.template.IfMacroContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodeContext;
 import jetbrains.mps.generator.template.SourceSubstituteMacroNodesContext;
 import java.util.Map;
@@ -37,7 +36,6 @@ import jetbrains.mps.util.IterableUtil;
 import jetbrains.mps.generator.impl.query.PropertyValueQuery;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SProperty;
-import jetbrains.mps.generator.impl.query.IfMacroCondition;
 import jetbrains.mps.generator.impl.query.ReferenceTargetQuery;
 import org.jetbrains.mps.openapi.language.SConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -94,9 +92,6 @@ public class QueriesGenerated extends QueryProviderBase {
   }
   public static Object referenceMacro_GetReferent_4_2(final ReferenceMacroContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.hint$gLJA);
-  }
-  public static boolean ifMacro_Condition_1_0(final IfMacroContext _context) {
-    return SNodeOperations.getNodeAncestor(_context.getNode(), CONCEPTS.CellModel_RefCell$7g, false, false) == null;
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(_context.getNode(), LINKS.visibleCell$VE5n);
@@ -285,32 +280,6 @@ public class QueriesGenerated extends QueryProviderBase {
       }
     }
   }
-  private final Map<String, IfMacroCondition> imcMethods = new HashMap<String, IfMacroCondition>();
-  {
-    int i = 0;
-    imcMethods.put("8480953556759635817", new IfMC(i++));
-  }
-  @NotNull
-  @Override
-  public IfMacroCondition getIfMacroCondition(@NotNull QueryKey identity) {
-    IfMacroCondition query = identity.forTemplateNode(imcMethods);
-    return (query != null ? query : super.getIfMacroCondition(identity));
-  }
-  private static class IfMC implements IfMacroCondition {
-    private final int methodKey;
-    public IfMC(int methodKey) {
-      this.methodKey = methodKey;
-    }
-    @Override
-    public boolean check(@NotNull IfMacroContext ctx) throws GenerationFailureException {
-      switch (methodKey) {
-        case 0:
-          return QueriesGenerated.ifMacro_Condition_1_0(ctx);
-        default:
-          throw new GenerationFailureException(String.format("Inconsistent QueriesGenerated: there's no condition method for if macro %s (key: #%d)", ctx.getTemplateReference(), methodKey));
-      }
-    }
-  }
   private final Map<String, ReferenceTargetQuery> rtqMethods = new HashMap<String, ReferenceTargetQuery>();
   {
     rtqMethods.put("9185659875393648822", new RTQ(0, "cellFactory"));
@@ -357,7 +326,6 @@ public class QueriesGenerated extends QueryProviderBase {
     /*package*/ static final SConcept CellModel_Tooltip$vF = MetaAdapterFactory.getConcept(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x11d794d84ece7c48L, "jetbrains.mps.lang.editor.tooltips.structure.CellModel_Tooltip");
     /*package*/ static final SConcept AuxEditorCellWithRefToGeneratedHint$Aw = MetaAdapterFactory.getConcept(0xb1ab8c10c1184755L, 0xbf2acebab35cf533L, 0x35cfce3215b739b5L, "jetbrains.mps.lang.editor.tooltips.structure.AuxEditorCellWithRefToGeneratedHint");
     /*package*/ static final SConcept AbstractComponent$YR = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0x10f7df344a9L, "jetbrains.mps.lang.editor.structure.AbstractComponent");
-    /*package*/ static final SConcept CellModel_RefCell$7g = MetaAdapterFactory.getConcept(0x18bc659203a64e29L, 0xa83a7ff23bde13baL, 0xfd52a2c922L, "jetbrains.mps.lang.editor.structure.CellModel_RefCell");
   }
 
   private static final class LINKS {
