@@ -152,7 +152,11 @@ import java.nio.file.Path;
   // String.startsWith with respect to '.' separator. IOW, pretender.startsWith(namespace + '.' + something) Not elegant solution but to
   // address most outrageous issues with rename of related modules. Use of '.' as sole namespace separator is a tribute to present state.
   static boolean isNamespacePrefix(String pretender, String namespace) {
-    return pretender.startsWith(namespace) && pretender.length() > namespace.length() && pretender.charAt(namespace.length()) == '.';
+    if (pretender.startsWith(namespace) && pretender.length() > namespace.length()) {
+      final char ch = pretender.charAt(namespace.length());
+      return ch == '.' || ch == '#'; // '#' - owned generator module with a name in old format
+    }
+    return false;
   }
 
 }

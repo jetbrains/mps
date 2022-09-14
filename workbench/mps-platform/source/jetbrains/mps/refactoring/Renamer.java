@@ -260,8 +260,11 @@ public final class Renamer {
     if (!checkDescriptorFileExists(myModule)) {
       return;
     }
-    // XXX if name of a legacy generator's "aaa#bbb" - use its base to find out related modules.
-    final String baseName = nameUpToSharp(myModule.getModuleName());
+    // ALT: if name of a legacy generator's "aaa#bbb" - use its base (up to '#') to find out related modules.
+    //      however, seems that most users expect to get generator module only renamed in this case, therefore stick to
+    //      whole module name and rename owned generator only in this case (MPS-34741)
+    // final String baseName = nameUpToSharp(myModule.getModuleName());
+    final String baseName = myModule.getModuleName();
     myPrimaryRename = ModuleRenameInfo.primary(myModule, descriptorFile, baseName);
     // distinguish nested modules vs siblings/related
     myNestedRenames = new ArrayList<>();
