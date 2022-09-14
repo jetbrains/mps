@@ -29,6 +29,7 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.actionSystem.Separator;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.colors.EditorColors;
+import com.intellij.openapi.editor.colors.EditorColorsListener;
 import com.intellij.openapi.editor.colors.EditorColorsManager;
 import com.intellij.openapi.editor.ex.EditorSettingsExternalizable;
 import com.intellij.openapi.editor.ex.util.EditorUtil;
@@ -66,7 +67,6 @@ import jetbrains.mps.ide.actions.SNodeActionData;
 import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.ide.projectView.ProjectViewSelectInProvider;
-import jetbrains.mps.ide.tooltips.TooltipComponent;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.AttributeOperations;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.messages.IMessageHandler;
@@ -151,7 +151,6 @@ import org.jetbrains.mps.openapi.util.ProgressMonitor;
 import org.jetbrains.mps.util.Condition;
 
 import javax.swing.AbstractAction;
-import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
@@ -165,7 +164,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.plaf.ScrollBarUI;
-import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.text.DefaultEditorKit;
 import java.awt.Adjustable;
 import java.awt.BorderLayout;
@@ -180,7 +178,6 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.KeyboardFocusManager;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -197,7 +194,6 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.im.InputMethodRequests;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -214,7 +210,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
-public abstract class EditorComponent extends JComponent implements Scrollable, DataProvider, TooltipComponent,
+public abstract class EditorComponent extends JComponent implements Scrollable, DataProvider,
                                                                     jetbrains.mps.openapi.editor.EditorComponent {
 
   private static final Logger LOG = Logger.getLogger(EditorComponent.class);
@@ -570,7 +566,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     if (ApplicationManager.getApplication() != null) {
       myMessageBusConnection = ApplicationManager.getApplication().getMessageBus().connect();
       myMessageBusConnection.subscribe(
-          EditorColorsManager.TOPIC, scheme -> {
+          EditorColorsManager.TOPIC, (EditorColorsListener) scheme -> {
             EditorComponent.this.update();
             EditorComponent.this.setBackground(StyleRegistry.getInstance().getEditorBackground());
           }
@@ -1018,11 +1014,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   }
 
   @Override
-  public String getMPSTooltipText(MouseEvent event) {
-    return getToolTipText(event);
-  }
-
-  @Override
   public String getToolTipText(MouseEvent event) {
     if (getTooltipProvider() != null) {
       return null;
@@ -1180,16 +1171,6 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
   public Collection<IssueKindReportItem> getReportItemsForCell(jetbrains.mps.openapi.editor.cells.EditorCell cell) {
     List<HighlighterMessage> messages = getHighlighterMessagesFor(cell);
     return messages.stream().map(HighlighterMessage::getReportItem).collect(Collectors.toList());
-  }
-
-  @Deprecated
-  @ScheduledForRemoval(inVersion = "2020.1")
-  public void showMessageTooltip() {
-  }
-
-  @Deprecated
-  @ScheduledForRemoval(inVersion = "2020.1")
-  public void hideMessageToolTip() {
   }
 
   protected boolean notifiesCreation() {
@@ -3347,9 +3328,7 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     return myInputMethodRequests;
   }
 
-  class MyScrollBar extends JBScrollBar implements IdeGlassPane.TopComponent, TooltipComponent {
-    @NonNls
-    private static final String APPLE_LAF_AQUA_SCROLL_BAR_UI_CLASS = "apple.laf.AquaScrollBarUI";
+  class MyScrollBar extends JBScrollBar implements IdeGlassPane.TopComponent {
     private ScrollBarUI myPersistentUI;
 
     MyScrollBar(int orientation) {
@@ -3392,13 +3371,11 @@ public abstract class EditorComponent extends JComponent implements Scrollable, 
     }
 
     @Override
-    public String getMPSTooltipText(MouseEvent event) {
-      return getToolTipText(event);
-    }
-
-    @Override
     public String getToolTipText(MouseEvent mouseEvent) {
       if (getUI() instanceof MessagesGutter) {
+        // FIXME odd direct use of MessagesGutter; need to get rid of in ScrollBarUI subclass(es?), too.
+        //       I'm not sure ScrollBarUI is the one to report tooltips, we'd rather stick to JComponent
+        //       and use ScrollBarUI just to find out editor location.
         return ((MessagesGutter) getUI()).getMPSTooltipText(mouseEvent);
       }
       return null;
