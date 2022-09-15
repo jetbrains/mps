@@ -12,19 +12,32 @@ import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
-import java.util.List;
-import org.jetbrains.mps.openapi.model.SModel;
-import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
+import java.util.List;
+import org.jetbrains.mps.openapi.model.SModel;
+import com.intellij.openapi.util.registry.Registry;
+import java.util.ArrayList;
+import jetbrains.mps.smodel.ModelReadRunnable;
+import org.jetbrains.mps.openapi.model.SModelReference;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import com.intellij.openapi.progress.ProgressIndicator;
+import com.intellij.openapi.progress.ProgressManager;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
+import jetbrains.mps.progress.EmptyProgressMonitor;
+import jetbrains.mps.progress.ProgressMonitorAdapter;
+import java.util.Collection;
+import jetbrains.mps.util.IterableUtil;
+import jetbrains.mps.findUsages.ModelImportLookup;
+import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.smodel.SModelFileTracker;
 import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.IWhereFilter;
-import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.annotations.NotNull;
 import jetbrains.mps.internal.collections.runtime.NotNullWhereFilter;
 import com.intellij.openapi.vcs.checkin.CheckinHandlerFactory;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.vcs.changes.CommitContext;
 
 @GeneratedClass(node = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)/3719390199793465778", model = "r:5754bb7d-f802-4a0f-bd3d-0764f0d71413(jetbrains.mps.ide.modelchecker.platform.actions)")
@@ -54,9 +67,6 @@ public class ModelCheckerCheckinHandler extends CheckinHandler {
       public void saveState() {
         ModelCheckerSettings.getInstance().setCheckBeforeCommit(checkModelCheckBox.isSelected());
       }
-      @Override
-      public void refresh() {
-      }
     };
   }
   @Override
@@ -65,15 +75,41 @@ public class ModelCheckerCheckinHandler extends CheckinHandler {
       return CheckinHandler.ReturnResult.COMMIT;
     }
 
-    return ModelCheckerTool.getInstance(myProject).checkModelsBeforeCommit(getModelsByFiles(myPanel.getVirtualFiles()));
-  }
-  private List<SModel> getModelsByFiles(Iterable<VirtualFile> files) {
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(myProject);
+    final List<SModel> modelsToCommit = getModelsByFiles(mpsProject, myPanel.getVirtualFiles());
+    final List<SModel> modelsToCheck;
+    if (Registry.is("mps.vcs.commit.check.models.all", true)) {
+      modelsToCheck = new ArrayList<>(modelsToCommit);
+      final String title = "Look up affected models";
+      ModelReadRunnable r = new ModelReadRunnable(mpsProject.getModelAccess(), () -> {
+        List<SModelReference> mrl = ListSequence.fromList(modelsToCommit).select(new ISelector<SModel, SModelReference>() {
+          public SModelReference select(SModel this0) {
+            return this0.getReference();
+          }
+        }).toListSequence();
+        ProgressIndicator pi = ProgressManager.getInstance().getProgressIndicator();
+        ProgressMonitor pm = (pi == null ? new EmptyProgressMonitor() : new ProgressMonitorAdapter(pi));
+
+        pm.start(title, 10);
+        // FIXME would be nice to limit model lookup to modules that depend from those modified
+        //      to avoid forcing model load from unrelated modules
+        Collection<SModel> projectModels = IterableUtil.asCollection(mpsProject.getScope().getModels());
+        pm.advance(1);
+        new ModelImportLookup(mrl, modelsToCheck::add).withImports(projectModels, pm.subTask(9));
+        pm.done();
+      });
+      ProgressManager.getInstance().runProcessWithProgressSynchronously(r, title, true, myProject, myPanel.getComponent());
+    } else {
+      modelsToCheck = modelsToCommit;
+    }
+    return ModelCheckerTool.getInstance(myProject).checkModelsBeforeCommit(modelsToCheck);
+  }
+  private static List<SModel> getModelsByFiles(MPSProject mpsProject, Iterable<VirtualFile> files) {
     final IdeaFileSystem fs = mpsProject.getFileSystem();
     final SModelFileTracker ft = SModelFileTracker.getInstance(mpsProject.getRepository());
     return Sequence.fromIterable(files).where(new IWhereFilter<VirtualFile>() {
-      public boolean accept(VirtualFile it) {
-        return fs.canConvert(it);
+      public boolean accept(@NotNull VirtualFile virtualFile) {
+        return fs.canConvert(virtualFile);
       }
     }).select(new ISelector<VirtualFile, SModel>() {
       public SModel select(VirtualFile file) {

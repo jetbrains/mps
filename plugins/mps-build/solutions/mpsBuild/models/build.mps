@@ -29186,6 +29186,11 @@
           <ref role="3bR37D" node="rD7wKO6k$" resolve="MPS.Generator" />
         </node>
       </node>
+      <node concept="1SiIV0" id="uUE4_IpBYq" role="3bR37C">
+        <node concept="3bR9La" id="uUE4_IpBYr" role="1SiIV1">
+          <ref role="3bR37D" node="7Kfy9QB6Lfd" resolve="jetbrains.mps.findUsages.runtime" />
+        </node>
+      </node>
     </node>
     <node concept="1E1JtA" id="1_7hqbu4mXQ" role="3989C9">
       <property role="BnDLt" value="true" />
