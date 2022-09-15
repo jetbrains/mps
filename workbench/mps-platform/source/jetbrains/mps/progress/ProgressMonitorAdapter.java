@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,6 +17,8 @@ package jetbrains.mps.progress;
 
 import com.intellij.openapi.progress.ProgressIndicator;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.util.Objects;
 
@@ -25,6 +27,11 @@ import java.util.Objects;
  */
 public class ProgressMonitorAdapter extends ProgressMonitorBase {
   private final ProgressIndicator myIndicator;
+
+  @NotNull
+  public static ProgressMonitor wrap(@Nullable ProgressIndicator progressIndicator) {
+    return progressIndicator == null ? new EmptyProgressMonitor() : new ProgressMonitorAdapter(progressIndicator);
+  }
 
   public ProgressMonitorAdapter(@NotNull ProgressIndicator indicator) {
     myIndicator = indicator;
