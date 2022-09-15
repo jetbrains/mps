@@ -990,15 +990,21 @@
   </root>
   <root nodeRef="a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/5351393548967582699">
     <file name="IStartupMigrationExecutor.java">
-      <node id="7675258827864617059" at="11,0,12,0" concept="11" trace="setProblemHandler#(Ljetbrains/mps/ide/migration/MigrationProblemHandler;)V" />
-      <node id="597733350169680734" at="12,0,13,0" concept="11" trace="setRebuildHandler#(Ljava/util/function/Consumer;)V" />
-      <scope id="7675258827864617059" at="11,0,12,0">
+      <node id="7675258827864617059" at="12,0,13,0" concept="11" trace="setProblemHandler#(Ljetbrains/mps/ide/migration/MigrationProblemHandler;)V" />
+      <node id="597733350169680734" at="13,0,14,0" concept="11" trace="setRebuildHandler#(Ljava/util/function/Consumer;)V" />
+      <node id="4372340199932397960" at="15,71,16,68" concept="13" />
+      <node id="4372340199932394421" at="15,0,18,0" concept="17" trace="getInstance#(Ljetbrains/mps/project/MPSProject;)Ljetbrains/mps/ide/migration/IStartupMigrationExecutor;" />
+      <scope id="7675258827864617059" at="12,0,13,0">
         <var name="problemHandler" id="7675258827864617125" />
       </scope>
-      <scope id="597733350169680734" at="12,0,13,0">
+      <scope id="597733350169680734" at="13,0,14,0">
         <var name="rebuildHandler" id="597733350169680742" />
       </scope>
-      <unit id="5351393548967582699" at="9,0,14,0" name="jetbrains.mps.ide.migration.IStartupMigrationExecutor" />
+      <scope id="4372340199932394425" at="15,71,16,68" />
+      <scope id="4372340199932394421" at="15,0,18,0">
+        <var name="mpsProject" id="4372340199932394828" />
+      </scope>
+      <unit id="5351393548967582699" at="10,0,19,0" name="jetbrains.mps.ide.migration.IStartupMigrationExecutor" />
     </file>
   </root>
   <root nodeRef="a5b1c28d-abeb-49a6-a58c-559039616d64/r:a9597bdf-0806-4a79-8ace-88240c6b9878(jetbrains.mps.migration.component/jetbrains.mps.ide.migration)/5351393548967765630">

@@ -36,7 +36,7 @@ public class RebuildHandler_ProjectPluginPart extends ProjectPluginPart {
   }
   @Override
   public void init(MPSProject project) {
-    RebuildHandler_ProjectPluginPart.this.migrationTrigger = project.getComponent(IStartupMigrationExecutor.class);
+    RebuildHandler_ProjectPluginPart.this.migrationTrigger = IStartupMigrationExecutor.getInstance(project);
     if (RebuildHandler_ProjectPluginPart.this.migrationTrigger == null) {
       return;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ import jetbrains.mps.errors.item.IssueKindReportItem;
 import jetbrains.mps.errors.item.NodeFlavouredItem;
 import jetbrains.mps.ide.migration.IStartupMigrationExecutor;
 import jetbrains.mps.ide.migration.MigrationProblemHandler;
+import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.idea.core.usages.NodeNavigatable;
 import org.jetbrains.annotations.NotNull;
 
@@ -43,7 +44,7 @@ public class PluginMigrationProblemHandler implements MigrationProblemHandler {
   public static final class Plug implements StartupActivity.Background {
     @Override
     public void runActivity(@NotNull Project project) {
-      final IStartupMigrationExecutor migrationTrigger = project.getComponent(IStartupMigrationExecutor.class);
+      final IStartupMigrationExecutor migrationTrigger = IStartupMigrationExecutor.getInstance(ProjectHelper.fromIdeaProject(project));
       if (migrationTrigger == null) {
         return;
       }

@@ -867,14 +867,14 @@
       <node id="3366942412399973392" at="45,5,46,56" concept="11" />
       <node id="8898893144448210490" at="47,22,48,21" concept="12" />
       <node id="6423044698579330206" at="50,5,51,16" concept="12" />
-      <node id="7675258827864173637" at="54,96,55,144" concept="11" />
+      <node id="7675258827864173637" at="54,96,55,135" concept="11" />
       <node id="7675258827864195203" at="57,69,58,87" concept="5" />
       <node id="6423044698579330206" at="35,95,38,5" concept="9" />
       <node id="6423044698581782619" at="40,66,43,7" concept="9" />
       <node id="8898893144448210490" at="46,56,49,7" concept="9" />
       <node id="8331819490991709111" at="57,0,60,0" concept="10" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
       <node id="6423044698579330206" at="30,0,34,0" concept="10" trace="isDumbAware#()Z" />
-      <node id="8331819490991709103" at="55,144,60,7" concept="5" />
+      <node id="8331819490991709103" at="55,135,60,7" concept="5" />
       <node id="6423044698579330206" at="24,0,30,0" concept="3" trace="RunPreUpdateCheck_Action#()V" />
       <node id="6423044698581782618" at="38,5,44,5" concept="1" />
       <node id="3366942412399973392" at="44,5,50,5" concept="1" />
@@ -1138,7 +1138,7 @@
   <root nodeRef="r:e303f5e6-4651-4e3c-b105-2f02e438900c(jetbrains.mps.migration.workbench.plugin)/6550156053360177531">
     <file name="RebuildHandler_ProjectPluginPart.java">
       <node id="6550156053360181262" at="34,0,35,0" concept="6" trace="migrationTrigger" />
-      <node id="6550156053360209027" at="38,40,39,115" concept="5" />
+      <node id="6550156053360209027" at="38,40,39,108" concept="5" />
       <node id="6550156053360218085" at="40,73,41,13" concept="12" />
       <node id="6550156053360265419" at="42,5,43,42" concept="11" />
       <node id="1880847875687512381" at="44,124,45,58" concept="11" />
@@ -1172,7 +1172,7 @@
       <node id="6550156053360207170" at="115,83,116,66" concept="5" />
       <node id="6550156053360177531" at="35,0,37,0" concept="3" trace="RebuildHandler_ProjectPluginPart#()V" />
       <node id="5510448103905251793" at="102,18,104,13" concept="1" />
-      <node id="6550156053360215899" at="39,115,42,5" concept="9" />
+      <node id="6550156053360215899" at="39,108,42,5" concept="9" />
       <node id="4682389101767729392" at="49,46,52,13" concept="9" />
       <node id="4682389101767826197" at="53,0,56,13" concept="9" />
       <node id="4682389101768188097" at="61,0,64,0" concept="10" trace="translate#(Ljetbrains/mps/smodel/Generator;)Ljava/lang/Iterable;" />
@@ -1825,14 +1825,14 @@
   <root nodeRef="r:e303f5e6-4651-4e3c-b105-2f02e438900c(jetbrains.mps.migration.workbench.plugin)/7675258827864908995">
     <file name="MigrationIssueHandler_ProjectPluginPart.java">
       <node id="7675258827864909532" at="11,0,12,0" concept="6" trace="migrationTrigger" />
-      <node id="7675258827864910064" at="15,40,16,122" concept="5" />
+      <node id="7675258827864910064" at="15,40,16,115" concept="5" />
       <node id="7675258827864910075" at="17,80,18,13" concept="12" />
       <node id="7675258827864910816" at="19,5,20,131" concept="5" />
       <node id="7675258827864963184" at="24,80,25,13" concept="12" />
       <node id="7675258827864963190" at="26,5,27,90" concept="5" />
       <node id="7675258827864963197" at="27,90,28,73" concept="5" />
       <node id="7675258827864908995" at="12,0,14,0" concept="3" trace="MigrationIssueHandler_ProjectPluginPart#()V" />
-      <node id="7675258827864910073" at="16,122,19,5" concept="9" />
+      <node id="7675258827864910073" at="16,115,19,5" concept="9" />
       <node id="7675258827864963182" at="23,43,26,5" concept="9" />
       <node id="7675258827864908995" at="14,0,22,0" concept="10" trace="init#(Ljetbrains/mps/project/MPSProject;)V" />
       <node id="7675258827864908995" at="22,0,30,0" concept="10" trace="dispose#(Ljetbrains/mps/project/MPSProject;)V" />
@@ -1867,8 +1867,8 @@
       <node id="8858983028917802988" at="35,66,36,56" concept="5" />
       <node id="8858983028917802989" at="37,22,38,21" concept="12" />
       <node id="7834630562321988558" at="40,5,41,16" concept="12" />
-      <node id="8459882741667947568" at="44,96,45,155" concept="11" />
-      <node id="8459882741667976922" at="45,155,46,31" concept="5" />
+      <node id="8459882741667947568" at="44,96,45,146" concept="11" />
+      <node id="8459882741667976922" at="45,146,46,31" concept="5" />
       <node id="7834630562321988558" at="30,95,33,5" concept="9" />
       <node id="8858983028917802989" at="36,56,39,7" concept="9" />
       <node id="7834630562321988558" at="25,0,29,0" concept="10" trace="isDumbAware#()Z" />

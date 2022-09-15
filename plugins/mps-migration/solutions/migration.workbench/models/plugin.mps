@@ -5420,24 +5420,18 @@
             <node concept="3uibUv" id="6E3ZNOq1AL7" role="1tU5fm">
               <ref role="3uigEE" to="bim2:5SsFeroaajZ" resolve="MigrationTrigger" />
             </node>
-            <node concept="1eOMI4" id="6E3ZNOq1AL8" role="33vP2m">
-              <node concept="10QFUN" id="6E3ZNOq1AL9" role="1eOMHV">
-                <node concept="2OqwBi" id="6E3ZNOq1ALa" role="10QFUP">
-                  <node concept="2OqwBi" id="6E3ZNOq1Dsl" role="2Oq$k0">
-                    <node concept="2WthIp" id="6E3ZNOq1Dso" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="6E3ZNOq1Dsq" role="2OqNvi">
-                      <ref role="2WH_rO" node="5$zfhXzr51q" resolve="mpsProject" />
-                    </node>
+            <node concept="10QFUN" id="6E3ZNOq1AL9" role="33vP2m">
+              <node concept="3uibUv" id="6E3ZNOq1ALg" role="10QFUM">
+                <ref role="3uigEE" to="bim2:5SsFeroaajZ" resolve="MigrationTrigger" />
+              </node>
+              <node concept="2YIFZM" id="3MHF3W69BEq" role="10QFUP">
+                <ref role="37wK5l" to="bim2:3MHF3W68nIP" resolve="getInstance" />
+                <ref role="1Pybhc" to="bim2:4D3Y1hNxTJF" resolve="IStartupMigrationExecutor" />
+                <node concept="2OqwBi" id="3MHF3W69BEr" role="37wK5m">
+                  <node concept="2WthIp" id="3MHF3W69BEs" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="3MHF3W69BEt" role="2OqNvi">
+                    <ref role="2WH_rO" node="5$zfhXzr51q" resolve="mpsProject" />
                   </node>
-                  <node concept="liA8E" id="6E3ZNOq1ALe" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
-                    <node concept="3VsKOn" id="6E3ZNOq1ALf" role="37wK5m">
-                      <ref role="3VsUkX" to="bim2:4D3Y1hNxTJF" resolve="IStartupMigrationExecutor" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3uibUv" id="6E3ZNOq1ALg" role="10QFUM">
-                  <ref role="3uigEE" to="bim2:5SsFeroaajZ" resolve="MigrationTrigger" />
                 </node>
               </node>
             </node>
@@ -5570,24 +5564,18 @@
             <node concept="3uibUv" id="7lByCvU$QgB" role="1tU5fm">
               <ref role="3uigEE" to="bim2:5SsFeroaajZ" resolve="MigrationTrigger" />
             </node>
-            <node concept="1eOMI4" id="7lByCvU$QgM" role="33vP2m">
-              <node concept="10QFUN" id="7lByCvU$QgN" role="1eOMHV">
-                <node concept="2OqwBi" id="7lByCvU$QgO" role="10QFUP">
-                  <node concept="2OqwBi" id="6E3ZNOq1KAX" role="2Oq$k0">
-                    <node concept="2WthIp" id="6E3ZNOq1KB0" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="6E3ZNOq1KB2" role="2OqNvi">
-                      <ref role="2WH_rO" node="7FLry2XR1vG" resolve="mpsProject" />
-                    </node>
+            <node concept="10QFUN" id="7lByCvU$QgN" role="33vP2m">
+              <node concept="3uibUv" id="7lByCvU$QgU" role="10QFUM">
+                <ref role="3uigEE" to="bim2:5SsFeroaajZ" resolve="MigrationTrigger" />
+              </node>
+              <node concept="2YIFZM" id="3MHF3W69A$D" role="10QFUP">
+                <ref role="37wK5l" to="bim2:3MHF3W68nIP" resolve="getInstance" />
+                <ref role="1Pybhc" to="bim2:4D3Y1hNxTJF" resolve="IStartupMigrationExecutor" />
+                <node concept="2OqwBi" id="3MHF3W69ABi" role="37wK5m">
+                  <node concept="2WthIp" id="3MHF3W69ABl" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="3MHF3W69ABn" role="2OqNvi">
+                    <ref role="2WH_rO" node="7FLry2XR1vG" resolve="mpsProject" />
                   </node>
-                  <node concept="liA8E" id="7lByCvU$QgS" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
-                    <node concept="3VsKOn" id="7lByCvU$QgT" role="37wK5m">
-                      <ref role="3VsUkX" to="bim2:4D3Y1hNxTJF" resolve="IStartupMigrationExecutor" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="3uibUv" id="7lByCvU$QgU" role="10QFUM">
-                  <ref role="3uigEE" to="bim2:5SsFeroaajZ" resolve="MigrationTrigger" />
                 </node>
               </node>
             </node>
@@ -9477,20 +9465,16 @@
       <node concept="3clFbS" id="5FAP3BJU7yF" role="2VODD2">
         <node concept="3clFbF" id="5FAP3BJUeM3" role="3cqZAp">
           <node concept="37vLTI" id="5FAP3BJUeOO" role="3clFbG">
-            <node concept="2OqwBi" id="5FAP3BJUfep" role="37vLTx">
-              <node concept="1KvdUw" id="5FAP3BJUeQS" role="2Oq$k0" />
-              <node concept="liA8E" id="5FAP3BJUfQy" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="5Tk6RUmEv$m" role="37wK5m">
-                  <ref role="3VsUkX" to="bim2:4D3Y1hNxTJF" resolve="IStartupMigrationExecutor" />
-                </node>
-              </node>
-            </node>
             <node concept="2OqwBi" id="5FAP3BJUeLX" role="37vLTJ">
               <node concept="2WthIp" id="5FAP3BJUeM0" role="2Oq$k0" />
               <node concept="2BZ7hE" id="5FAP3BJUeM2" role="2OqNvi">
                 <ref role="2WH_rO" node="5FAP3BJU80e" resolve="migrationTrigger" />
               </node>
+            </node>
+            <node concept="2YIFZM" id="3MHF3W69AjD" role="37vLTx">
+              <ref role="37wK5l" to="bim2:3MHF3W68nIP" resolve="getInstance" />
+              <ref role="1Pybhc" to="bim2:4D3Y1hNxTJF" resolve="IStartupMigrationExecutor" />
+              <node concept="1KvdUw" id="3MHF3W69Akr" role="37wK5m" />
             </node>
           </node>
         </node>
@@ -10421,14 +10405,10 @@
       <node concept="3clFbS" id="6E3ZNOq4qj5" role="2VODD2">
         <node concept="3clFbF" id="6E3ZNOq4qzK" role="3cqZAp">
           <node concept="37vLTI" id="6E3ZNOq4qzL" role="3clFbG">
-            <node concept="2OqwBi" id="6E3ZNOq4qzM" role="37vLTx">
-              <node concept="1KvdUw" id="6E3ZNOq4qzN" role="2Oq$k0" />
-              <node concept="liA8E" id="6E3ZNOq4qzO" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
-                <node concept="3VsKOn" id="6E3ZNOq4qzP" role="37wK5m">
-                  <ref role="3VsUkX" to="bim2:4D3Y1hNxTJF" resolve="IStartupMigrationExecutor" />
-                </node>
-              </node>
+            <node concept="2YIFZM" id="3MHF3W69565" role="37vLTx">
+              <ref role="37wK5l" to="bim2:3MHF3W68nIP" resolve="getInstance" />
+              <ref role="1Pybhc" to="bim2:4D3Y1hNxTJF" resolve="IStartupMigrationExecutor" />
+              <node concept="1KvdUw" id="3MHF3W69580" role="37wK5m" />
             </node>
             <node concept="2OqwBi" id="6E3ZNOq4qzQ" role="37vLTJ">
               <node concept="2WthIp" id="6E3ZNOq4qzR" role="2Oq$k0" />

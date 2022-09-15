@@ -4684,6 +4684,35 @@
         </node>
       </node>
     </node>
+    <node concept="2tJIrI" id="3MHF3W67UIv" role="jymVt" />
+    <node concept="2YIFZL" id="3MHF3W68nIP" role="jymVt">
+      <property role="TrG5h" value="getInstance" />
+      <node concept="37vLTG" id="3MHF3W68nPc" role="3clF46">
+        <property role="TrG5h" value="mpsProject" />
+        <node concept="3uibUv" id="3MHF3W68owI" role="1tU5fm">
+          <ref role="3uigEE" to="z1c4:~MPSProject" resolve="MPSProject" />
+        </node>
+      </node>
+      <node concept="3uibUv" id="3MHF3W68nLS" role="3clF45">
+        <ref role="3uigEE" node="4D3Y1hNxTJF" resolve="IStartupMigrationExecutor" />
+      </node>
+      <node concept="3Tm1VV" id="3MHF3W68nIS" role="1B3o_S" />
+      <node concept="3clFbS" id="3MHF3W68nIT" role="3clF47">
+        <node concept="3cpWs6" id="3MHF3W68oA8" role="3cqZAp">
+          <node concept="2OqwBi" id="3MHF3W68syw" role="3cqZAk">
+            <node concept="37vLTw" id="3MHF3W68oJ5" role="2Oq$k0">
+              <ref role="3cqZAo" node="3MHF3W68nPc" resolve="ideaProject" />
+            </node>
+            <node concept="liA8E" id="3MHF3W68sO3" role="2OqNvi">
+              <ref role="37wK5l" to="z1c4:~MPSProject.getComponent(java.lang.Class)" resolve="getComponent" />
+              <node concept="3VsKOn" id="3MHF3W68xdu" role="37wK5m">
+                <ref role="3VsUkX" node="4D3Y1hNxTJF" resolve="IStartupMigrationExecutor" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
     <node concept="3Tm1VV" id="4D3Y1hNxTJG" role="1B3o_S" />
   </node>
   <node concept="312cEu" id="75eqTYkpEpV">

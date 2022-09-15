@@ -13,7 +13,7 @@ public class MigrationIssueHandler_ProjectPluginPart extends ProjectPluginPart {
   }
   @Override
   public void init(MPSProject project) {
-    MigrationIssueHandler_ProjectPluginPart.this.migrationTrigger = project.getComponent(IStartupMigrationExecutor.class);
+    MigrationIssueHandler_ProjectPluginPart.this.migrationTrigger = IStartupMigrationExecutor.getInstance(project);
     if (MigrationIssueHandler_ProjectPluginPart.this.migrationTrigger == null) {
       return;
     }

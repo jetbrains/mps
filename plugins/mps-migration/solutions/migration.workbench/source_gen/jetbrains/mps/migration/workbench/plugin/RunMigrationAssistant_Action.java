@@ -42,7 +42,7 @@ public class RunMigrationAssistant_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
-    MigrationTrigger mt = ((MigrationTrigger) ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getComponent(IStartupMigrationExecutor.class));
+    MigrationTrigger mt = (MigrationTrigger) IStartupMigrationExecutor.getInstance(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
     mt.scheduleMigration(true);
   }
 }
