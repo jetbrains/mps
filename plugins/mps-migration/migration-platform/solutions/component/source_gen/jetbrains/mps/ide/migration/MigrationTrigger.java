@@ -65,7 +65,6 @@ import jetbrains.mps.ide.migration.wizard.MigrationWizard;
 import jetbrains.mps.baseLanguage.tuples.runtime.MultiTuple;
 import org.jetbrains.mps.openapi.model.SModel;
 import com.intellij.openapi.application.Application;
-import com.intellij.util.WaitForProgressToShow;
 import jetbrains.mps.ide.vfs.VirtualFileUtils;
 import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.ide.platform.watching.ReloadListener;
@@ -500,9 +499,10 @@ __switch__:
 
   private void syncRefresh() {
     final Application application = ApplicationManager.getApplication();
-    WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> application.saveAll());
+    // used to be deprecated WaitForProgressToShow.runOrInvokeAndWaitAboveProgress, replaced with impl
+    application.invokeAndWait(application::saveAll);
     VirtualFileUtils.refreshSynchronouslyRecursively(myProject.getBaseDir(), new EmptyProgressMonitor());
-    WaitForProgressToShow.runOrInvokeAndWaitAboveProgress(() -> myReloadManager.flush());
+    application.invokeAndWait(myReloadManager::flush);
   }
 
   private void checkNotDeployedLanguages() {
@@ -541,8 +541,8 @@ __switch__:
     public void afterLanguagesLoaded(Iterable<LanguageRuntime> loaded) {
       checkNotDeployedLanguages();
       checkMigrationNeededOnLanguageReload(Sequence.fromIterable(loaded).select(new ISelector<LanguageRuntime, SLanguage>() {
-        public SLanguage select(LanguageRuntime it) {
-          return it.getIdentity();
+        public SLanguage select(LanguageRuntime this0) {
+          return this0.getIdentity();
         }
       }).toListSequence());
     }
