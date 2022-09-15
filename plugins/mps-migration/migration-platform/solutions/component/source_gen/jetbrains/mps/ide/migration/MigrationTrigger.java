@@ -178,7 +178,7 @@ public class MigrationTrigger extends AbstractProjectComponent implements IStart
       addListeners();
       checkNotDeployedLanguages();
       checkMigrationNeeded();
-    }));
+    }, myProject.getDisposed()));
   }
 
   public void projectClosed() {

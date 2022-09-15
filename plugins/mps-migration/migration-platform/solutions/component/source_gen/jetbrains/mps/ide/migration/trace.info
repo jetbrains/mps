@@ -1578,7 +1578,7 @@
       <node id="5755153299693643161" at="510,0,514,0" concept="11" trace="reloadFinished#()V" />
       <node id="3248948557065573003" at="520,0,524,0" concept="11" trace="onReload#()V" />
       <node id="6239628552901625962" at="135,0,140,0" concept="11" trace="runAssistant#()V" />
-      <node id="4663056605399667820" at="176,116,181,8" concept="6" />
+      <node id="4663056605399667820" at="176,116,181,33" concept="6" />
       <node id="1847435758021682544" at="209,0,214,0" concept="11" trace="getComponentName#()Ljava/lang/String;" />
       <node id="6239628552900065701" at="247,107,252,10" concept="6" />
       <node id="1244156871959641017" at="289,0,294,0" concept="11" trace="run#(Lcom/intellij/openapi/progress/ProgressIndicator;)V" />
@@ -1795,7 +1795,7 @@
       </scope>
       <scope id="8459882741667451244" at="197,0,208,0" />
       <scope id="4046973992927173687" at="304,79,315,26" />
-      <scope id="1847435758021682526" at="169,31,181,8" />
+      <scope id="1847435758021682526" at="169,31,181,33" />
       <scope id="4046973992927411732" at="475,0,487,0" />
       <scope id="1847435758021682522" at="169,0,183,0" />
       <scope id="1847435758022034197" at="223,91,237,54">
