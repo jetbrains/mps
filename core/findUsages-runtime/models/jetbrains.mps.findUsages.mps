@@ -3546,7 +3546,7 @@
               <ref role="3cqZAo" node="7rEOvdELBfn" resolve="LOG" />
             </node>
             <node concept="liA8E" id="7rEOvdELKxY" role="2OqNvi">
-              <ref role="37wK5l" to="wwqx:~Logger.warning(java.lang.String)" resolve="warning" />
+              <ref role="37wK5l" to="wwqx:~Logger.info(java.lang.String)" resolve="info" />
               <node concept="3cpWs3" id="7rEOvdELKxZ" role="37wK5m">
                 <node concept="3cpWs3" id="7rEOvdELKy0" role="3uHU7B">
                   <node concept="3cpWs3" id="7rEOvdELKy1" role="3uHU7B">

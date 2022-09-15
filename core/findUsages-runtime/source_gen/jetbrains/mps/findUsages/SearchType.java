@@ -50,6 +50,6 @@ public abstract class SearchType<T, R> {
     }
     int othersSize = notEmptyNoFastFindModels.size() - 1;
     String others = (othersSize == 0 ? "" : " and " + othersSize + " others");
-    LOG.warning("Fast usages search is not supported for model " + notEmptyNoFastFindModels.iterator().next().getName() + others + ". " + "Usages search may be slow.");
+    LOG.info("Fast usages search is not supported for model " + notEmptyNoFastFindModels.iterator().next().getName() + others + ". " + "Usages search may be slow.");
   }
 }
