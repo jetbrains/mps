@@ -229,7 +229,7 @@ public class FileUtil {
   // poor version of normalization
   // does not consider '..'; will be provided in the future release within new vfs API
   private static String normalize0(@NotNull String path, @NotNull String separator) {
-    boolean isUNCPath = com.intellij.openapi.util.io.OSAgnosticPathUtil.isUncPath(path);
+    boolean isUNCPath = isUncPath(path);
     path = path.replaceAll("/+", "/").replaceAll("\\\\+", "\\\\");
     if (path.endsWith(separator + DOT)) {
       path = path.substring(0, path.length() - 1);
@@ -249,6 +249,17 @@ public class FileUtil {
       path = oldPath.replace("\\.\\", "\\").replace("/./", "/");
     } while (oldPath.length() != path.length());
     return path;
+  }
+
+  /*
+   * Copied from {@code com.intellij.openapi.util.io.OSAgnosticPathUtil#isUncPath(String)} along with {@code isSlash(char)}
+   */
+  private static boolean isUncPath(@NotNull String path) {
+    return path.length() > 1 && isSlash(path.charAt(0)) && path.charAt(1) == path.charAt(0);
+  }
+
+  private static boolean isSlash(char c) {
+    return c == '/' || c == '\\';
   }
 
   public static boolean delete(File root) {
