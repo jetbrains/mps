@@ -10,6 +10,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Idea-platform" level="project" />
+    <orderEntry type="library" name="Annotations" level="project" />
     <orderEntry type="module" module-name="mps-platform" />
     <orderEntry type="module" module-name="tuples-runtime" />
     <orderEntry type="module" module-name="editor-runtime" />
@@ -25,11 +27,8 @@
     <orderEntry type="module" module-name="mps-editor" />
     <orderEntry type="module" module-name="mps-workbench" />
     <orderEntry type="module" module-name="actions-runtime" />
-    <orderEntry type="library" name="Idea-platform" level="project" />
-    <orderEntry type="library" name="Annotations" level="project" />
     <orderEntry type="module" module-name="mps-ui" />
     <orderEntry type="module" module-name="mps-icons" />
-    <orderEntry type="library" name="Util" level="project" />
     <orderEntry type="module" module-name="components" />
     <orderEntry type="module" module-name="behavior-api" />
     <orderEntry type="module" module-name="behavior-runtime" />

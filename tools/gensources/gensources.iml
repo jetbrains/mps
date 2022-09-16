@@ -1588,7 +1588,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Annotations" level="project" />
     <orderEntry type="library" name="Ant" level="project" />
-    <orderEntry type="library" name="Util" level="project" />
     <orderEntry type="library" name="JMock" level="project" />
     <orderEntry type="library" name="Diff-utils" level="project" />
     <orderEntry type="library" name="io.netty" level="project" />
@@ -1596,6 +1595,7 @@
     <orderEntry type="library" name="JUnit4" level="project" />
     <orderEntry type="library" name="Idea-platform" level="project" />
     <orderEntry type="library" name="kotlin_builtins" level="project" />
+    <orderEntry type="library" name="gnu.trove" level="project" />
     <orderEntry type="library" name="org.apache.log4j" level="project" />
     <orderEntry type="module" module-name="debugger-api-api" />
     <orderEntry type="module" module-name="mps-icons" />

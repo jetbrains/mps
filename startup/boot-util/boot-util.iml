@@ -10,6 +10,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="Annotations" level="project" />
-    <orderEntry type="library" exported="" name="Util" level="project" />
+    <orderEntry type="library" exported="" name="com.intellij.openapi" level="project" />
   </component>
 </module>
