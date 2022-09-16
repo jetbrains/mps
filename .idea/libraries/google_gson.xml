@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="3rd-party">
+  <library name="google.gson">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/3rd-party-rt.jar!/" />
     </CLASSES>

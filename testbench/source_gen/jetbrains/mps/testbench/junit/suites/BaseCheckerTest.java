@@ -19,8 +19,9 @@ import jetbrains.mps.progress.EmptyProgressMonitor;
 import jetbrains.mps.errors.MessageStatus;
 import jetbrains.mps.errors.item.NodeReportItem;
 import org.jetbrains.mps.openapi.model.SNode;
-import io.netty.handler.codec.http.QueryStringEncoder;
+import java.net.URLEncoder;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
+import java.nio.charset.StandardCharsets;
 import jetbrains.mps.errors.item.ModelReportItem;
 import org.jetbrains.mps.openapi.model.SModel;
 
@@ -54,9 +55,8 @@ public abstract class BaseCheckerTest extends BaseCheckModulesTest {
         statistic.reportError();
         if (NodeReportItem.FLAVOUR_NODE.canGet(reportItem)) {
           SNode node = NodeReportItem.FLAVOUR_NODE.tryToGet(reportItem).resolve(module.getRepository());
-          QueryStringEncoder encoder = new QueryStringEncoder("http://127.0.0.1:63320/node");
-          encoder.addParam("ref", PersistenceFacade.getInstance().asString(node.getReference()));
-          errors.add("Error message: " + reportItem.getMessage() + "   model: " + node.getModel().getName().getValue() + " root: " + node.getContainingRoot() + " node: " + encoder.toString());
+          String nodeURL = "http://127.0.0.1:63320/node?ref=" + URLEncoder.encode(PersistenceFacade.getInstance().asString(node.getReference()), StandardCharsets.UTF_8);
+          errors.add(String.format("Error message: %s   model: %s root: %s node: %s", reportItem.getMessage(), node.getModel().getName(), node.getContainingRoot(), nodeURL));
         } else if (ModelReportItem.FLAVOUR_MODEL.canGet(reportItem)) {
           SModel model = ModelReportItem.FLAVOUR_MODEL.tryToGet(reportItem).resolve(module.getRepository());
           errors.add("Error message: " + reportItem.getMessage() + "   model: " + model);

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
 import org.apache.commons.httpclient.methods.multipart.Part;
 import org.apache.commons.httpclient.methods.multipart.StringPart;
 import org.apache.commons.httpclient.params.HttpClientParams;
-import org.apache.http.protocol.HTTP;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -43,7 +42,7 @@ public class Reporter {
 
   private static final String AUTHORIZATION_HEADER = "Authorization";
   private static final String ACCEPT_HEADER = "Accept";
-  private static final String CONTENTTYPE_HEADER = "Content-Type";
+  private static final String CONTENT_TYPE_HEADER = "Content-Type";
   private static final String JSON_TYPE = "application/json";
 
   private static final String MPS_PROJECT = "MPS";
@@ -98,7 +97,7 @@ public class Reporter {
   private void addHeadersAndExecute(HttpMethod method) throws IOException {
     method.addRequestHeader(AUTHORIZATION_HEADER, "Bearer " + myAuthorizationToken);
     method.addRequestHeader(ACCEPT_HEADER, JSON_TYPE);
-    method.addRequestHeader(HTTP.CONTENT_TYPE, JSON_TYPE);
+    method.addRequestHeader(CONTENT_TYPE_HEADER, JSON_TYPE);
     myHttpClient.executeMethod(method);
   }
 
