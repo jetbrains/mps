@@ -2,9 +2,6 @@
 <solution name="jetbrains.mps.lang.feedback.problem.rt" uuid="3f98f4e2-decf-4e97-bf80-9109e8b759ab" moduleVersion="0" compileInMPS="false">
   <compileInIDEA />
   <models>
-    <modelRoot contentPath="${module}/problem/classes" type="java_classes">
-      <sourceRoot location="." />
-    </modelRoot>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <sourceRoot location="mps-problem.jar" />
     </modelRoot>
@@ -16,7 +13,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/problem/classes" />
+    <stubModelEntry path="${platform_lib}/mps-problem.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

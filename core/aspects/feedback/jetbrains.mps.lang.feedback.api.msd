@@ -5,9 +5,6 @@
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <sourceRoot location="mps-feedback-api.jar" />
     </modelRoot>
-    <modelRoot contentPath="${module}/feedback-api/classes" type="java_classes">
-      <sourceRoot location="." />
-    </modelRoot>
   </models>
   <facets>
     <facet pluginId="com.intellij" type="ideaPlugin" />
@@ -16,7 +13,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/feedback-api/classes" />
+    <stubModelEntry path="${platform_lib}/mps-feedback-api.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

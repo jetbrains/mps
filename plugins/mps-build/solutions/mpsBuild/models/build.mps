@@ -2770,21 +2770,9 @@
             <node concept="3yLZsm" id="3ost_8TyZFJ" role="3yL2VB">
               <property role="3yLZsk" value="/lib/mps-messages-api.jar" />
               <node concept="398BVA" id="3ost_8TyZFN" role="3yLZsn">
-                <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-                <node concept="2Ry0Ak" id="3ost_8TyZFR" role="iGT6I">
-                  <property role="2Ry0Am" value="core" />
-                  <node concept="2Ry0Ak" id="3ost_8TyZHT" role="2Ry0An">
-                    <property role="2Ry0Am" value="aspects" />
-                    <node concept="2Ry0Ak" id="3ost_8TyZHW" role="2Ry0An">
-                      <property role="2Ry0Am" value="feedback" />
-                      <node concept="2Ry0Ak" id="SaxjPBkkpR" role="2Ry0An">
-                        <property role="2Ry0Am" value="messages-api" />
-                        <node concept="2Ry0Ak" id="SaxjPBkkpS" role="2Ry0An">
-                          <property role="2Ry0Am" value="classes" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
+                <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+                <node concept="2Ry0Ak" id="5axXwrxdRuL" role="iGT6I">
+                  <property role="2Ry0Am" value="mps-messages-api.jar" />
                 </node>
               </node>
             </node>
@@ -2794,21 +2782,9 @@
             <node concept="3yLZsm" id="3ost_8Tz0gd" role="3yL2VB">
               <property role="3yLZsk" value="/lib/mps-context.jar" />
               <node concept="398BVA" id="3ost_8Tz0ge" role="3yLZsn">
-                <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-                <node concept="2Ry0Ak" id="3ost_8Tz0gf" role="iGT6I">
-                  <property role="2Ry0Am" value="core" />
-                  <node concept="2Ry0Ak" id="3ost_8Tz0gg" role="2Ry0An">
-                    <property role="2Ry0Am" value="aspects" />
-                    <node concept="2Ry0Ak" id="3ost_8Tz0gh" role="2Ry0An">
-                      <property role="2Ry0Am" value="feedback" />
-                      <node concept="2Ry0Ak" id="SaxjPBkkKi" role="2Ry0An">
-                        <property role="2Ry0Am" value="context" />
-                        <node concept="2Ry0Ak" id="SaxjPBkkKj" role="2Ry0An">
-                          <property role="2Ry0Am" value="classes" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
+                <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+                <node concept="2Ry0Ak" id="5axXwrxdS4M" role="iGT6I">
+                  <property role="2Ry0Am" value="mps-context.jar" />
                 </node>
               </node>
             </node>
@@ -2818,21 +2794,9 @@
             <node concept="3yLZsm" id="3ost_8T_TjQ" role="3yL2VB">
               <property role="3yLZsk" value="/lib/mps-feedback-api.jar" />
               <node concept="398BVA" id="3ost_8T_TjR" role="3yLZsn">
-                <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-                <node concept="2Ry0Ak" id="3ost_8T_TjS" role="iGT6I">
-                  <property role="2Ry0Am" value="core" />
-                  <node concept="2Ry0Ak" id="3ost_8T_TjT" role="2Ry0An">
-                    <property role="2Ry0Am" value="aspects" />
-                    <node concept="2Ry0Ak" id="3ost_8T_TjU" role="2Ry0An">
-                      <property role="2Ry0Am" value="feedback" />
-                      <node concept="2Ry0Ak" id="SaxjPBkkVz" role="2Ry0An">
-                        <property role="2Ry0Am" value="feedback-api" />
-                        <node concept="2Ry0Ak" id="SaxjPBkkV$" role="2Ry0An">
-                          <property role="2Ry0Am" value="classes" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
+                <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+                <node concept="2Ry0Ak" id="5axXwrxdSXL" role="iGT6I">
+                  <property role="2Ry0Am" value="mps-feedback-api.jar" />
                 </node>
               </node>
             </node>
@@ -2842,21 +2806,9 @@
             <node concept="3yLZsm" id="3ost_8T_TtZ" role="3yL2VB">
               <property role="3yLZsk" value="/lib/mps-messages-for-legacy-constraints.jar" />
               <node concept="398BVA" id="3ost_8T_Tu0" role="3yLZsn">
-                <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-                <node concept="2Ry0Ak" id="3ost_8T_Tu1" role="iGT6I">
-                  <property role="2Ry0Am" value="core" />
-                  <node concept="2Ry0Ak" id="3ost_8T_Tu2" role="2Ry0An">
-                    <property role="2Ry0Am" value="aspects" />
-                    <node concept="2Ry0Ak" id="3ost_8T_Tu3" role="2Ry0An">
-                      <property role="2Ry0Am" value="feedback" />
-                      <node concept="2Ry0Ak" id="SaxjPBklt8" role="2Ry0An">
-                        <property role="2Ry0Am" value="messages-for-legacy-constraints" />
-                        <node concept="2Ry0Ak" id="SaxjPBklt9" role="2Ry0An">
-                          <property role="2Ry0Am" value="classes" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
+                <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+                <node concept="2Ry0Ak" id="5axXwrxdUTt" role="iGT6I">
+                  <property role="2Ry0Am" value="mps-messages-for-legacy-constraints.jar" />
                 </node>
               </node>
             </node>
@@ -2866,21 +2818,9 @@
             <node concept="3yLZsm" id="3ost_8T_Twc" role="3yL2VB">
               <property role="3yLZsk" value="/lib/mps-messages-for-rules.jar" />
               <node concept="398BVA" id="3ost_8T_Twd" role="3yLZsn">
-                <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-                <node concept="2Ry0Ak" id="3ost_8T_Twe" role="iGT6I">
-                  <property role="2Ry0Am" value="core" />
-                  <node concept="2Ry0Ak" id="3ost_8T_Twf" role="2Ry0An">
-                    <property role="2Ry0Am" value="aspects" />
-                    <node concept="2Ry0Ak" id="3ost_8T_Twg" role="2Ry0An">
-                      <property role="2Ry0Am" value="feedback" />
-                      <node concept="2Ry0Ak" id="SaxjPBklNx" role="2Ry0An">
-                        <property role="2Ry0Am" value="messages-for-rules" />
-                        <node concept="2Ry0Ak" id="SaxjPBklNy" role="2Ry0An">
-                          <property role="2Ry0Am" value="classes" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
+                <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+                <node concept="2Ry0Ak" id="5axXwrxdVVV" role="iGT6I">
+                  <property role="2Ry0Am" value="mps-messages-for-rules.jar" />
                 </node>
               </node>
             </node>
@@ -2890,21 +2830,9 @@
             <node concept="3yLZsm" id="3ost_8T_Typ" role="3yL2VB">
               <property role="3yLZsk" value="/lib/mps-messages-for-structure.jar" />
               <node concept="398BVA" id="3ost_8T_Tyq" role="3yLZsn">
-                <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-                <node concept="2Ry0Ak" id="3ost_8T_Tyr" role="iGT6I">
-                  <property role="2Ry0Am" value="core" />
-                  <node concept="2Ry0Ak" id="3ost_8T_Tys" role="2Ry0An">
-                    <property role="2Ry0Am" value="aspects" />
-                    <node concept="2Ry0Ak" id="3ost_8T_Tyt" role="2Ry0An">
-                      <property role="2Ry0Am" value="feedback" />
-                      <node concept="2Ry0Ak" id="SaxjPBkm4l" role="2Ry0An">
-                        <property role="2Ry0Am" value="messages-for-structure" />
-                        <node concept="2Ry0Ak" id="SaxjPBkm4m" role="2Ry0An">
-                          <property role="2Ry0Am" value="classes" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
+                <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+                <node concept="2Ry0Ak" id="5axXwrxdWxW" role="iGT6I">
+                  <property role="2Ry0Am" value="mps-messages-for-structure.jar" />
                 </node>
               </node>
             </node>
@@ -2914,21 +2842,9 @@
             <node concept="3yLZsm" id="3ost_8T_TA_" role="3yL2VB">
               <property role="3yLZsk" value="/lib/mps-problem.jar" />
               <node concept="398BVA" id="3ost_8T_TAA" role="3yLZsn">
-                <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-                <node concept="2Ry0Ak" id="3ost_8T_TAB" role="iGT6I">
-                  <property role="2Ry0Am" value="core" />
-                  <node concept="2Ry0Ak" id="3ost_8T_TAC" role="2Ry0An">
-                    <property role="2Ry0Am" value="aspects" />
-                    <node concept="2Ry0Ak" id="3ost_8T_TAD" role="2Ry0An">
-                      <property role="2Ry0Am" value="feedback" />
-                      <node concept="2Ry0Ak" id="SaxjPBkmf$" role="2Ry0An">
-                        <property role="2Ry0Am" value="problem" />
-                        <node concept="2Ry0Ak" id="SaxjPBkmf_" role="2Ry0An">
-                          <property role="2Ry0Am" value="classes" />
-                        </node>
-                      </node>
-                    </node>
-                  </node>
+                <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+                <node concept="2Ry0Ak" id="5axXwrxdXqV" role="iGT6I">
+                  <property role="2Ry0Am" value="mps-problem.jar" />
                 </node>
               </node>
             </node>
@@ -11053,21 +10969,9 @@
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="5RhptgddDKp" resolve="feeback-context" />
           <node concept="398BVA" id="SaxjPBkduX" role="17Grwy">
-            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="SaxjPBkd$A" role="iGT6I">
-              <property role="2Ry0Am" value="core" />
-              <node concept="2Ry0Ak" id="SaxjPBkdEg" role="2Ry0An">
-                <property role="2Ry0Am" value="aspects" />
-                <node concept="2Ry0Ak" id="SaxjPBkdEl" role="2Ry0An">
-                  <property role="2Ry0Am" value="feedback" />
-                  <node concept="2Ry0Ak" id="SaxjPBkdP$" role="2Ry0An">
-                    <property role="2Ry0Am" value="context" />
-                    <node concept="2Ry0Ak" id="SaxjPBkebX" role="2Ry0An">
-                      <property role="2Ry0Am" value="classes" />
-                    </node>
-                  </node>
-                </node>
-              </node>
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="5axXwrxdKWZ" role="iGT6I">
+              <property role="2Ry0Am" value="mps-context.jar" />
             </node>
           </node>
         </node>
@@ -11120,21 +11024,9 @@
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="SHPhCCYnUi" resolve="messages-api" />
           <node concept="398BVA" id="SaxjPBkeCI" role="17Grwy">
-            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="SaxjPBkeCM" role="iGT6I">
-              <property role="2Ry0Am" value="core" />
-              <node concept="2Ry0Ak" id="SaxjPBkeTA" role="2Ry0An">
-                <property role="2Ry0Am" value="aspects" />
-                <node concept="2Ry0Ak" id="SaxjPBkf4P" role="2Ry0An">
-                  <property role="2Ry0Am" value="feedback" />
-                  <node concept="2Ry0Ak" id="SaxjPBkfg4" role="2Ry0An">
-                    <property role="2Ry0Am" value="messages-api" />
-                    <node concept="2Ry0Ak" id="SaxjPBkfg7" role="2Ry0An">
-                      <property role="2Ry0Am" value="classes" />
-                    </node>
-                  </node>
-                </node>
-              </node>
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="5axXwrxdMSk" role="iGT6I">
+              <property role="2Ry0Am" value="mps-messages-api.jar" />
             </node>
           </node>
         </node>
@@ -11178,21 +11070,9 @@
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="SHPhCCYuJN" resolve="messages-for-legacy-constraints" />
           <node concept="398BVA" id="SaxjPBkfYn" role="17Grwy">
-            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="SaxjPBkfYo" role="iGT6I">
-              <property role="2Ry0Am" value="core" />
-              <node concept="2Ry0Ak" id="SaxjPBkfYp" role="2Ry0An">
-                <property role="2Ry0Am" value="aspects" />
-                <node concept="2Ry0Ak" id="SaxjPBkfYq" role="2Ry0An">
-                  <property role="2Ry0Am" value="feedback" />
-                  <node concept="2Ry0Ak" id="SaxjPBkgkR" role="2Ry0An">
-                    <property role="2Ry0Am" value="messages-for-legacy-constraints" />
-                    <node concept="2Ry0Ak" id="SaxjPBkgqv" role="2Ry0An">
-                      <property role="2Ry0Am" value="classes" />
-                    </node>
-                  </node>
-                </node>
-              </node>
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="5axXwrxdNLj" role="iGT6I">
+              <property role="2Ry0Am" value="mps-messages-for-legacy-constraints.jar" />
             </node>
           </node>
         </node>
@@ -11251,21 +11131,9 @@
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="SHPhCCYnZA" resolve="messages-for-rules" />
           <node concept="398BVA" id="SaxjPBkgWT" role="17Grwy">
-            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="SaxjPBkgWU" role="iGT6I">
-              <property role="2Ry0Am" value="core" />
-              <node concept="2Ry0Ak" id="SaxjPBkgWV" role="2Ry0An">
-                <property role="2Ry0Am" value="aspects" />
-                <node concept="2Ry0Ak" id="SaxjPBkgWW" role="2Ry0An">
-                  <property role="2Ry0Am" value="feedback" />
-                  <node concept="2Ry0Ak" id="SaxjPBkh8f" role="2Ry0An">
-                    <property role="2Ry0Am" value="messages-for-rules" />
-                    <node concept="2Ry0Ak" id="SaxjPBkhdR" role="2Ry0An">
-                      <property role="2Ry0Am" value="classes" />
-                    </node>
-                  </node>
-                </node>
-              </node>
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="5axXwrxdOEi" role="iGT6I">
+              <property role="2Ry0Am" value="mps-messages-for-rules.jar" />
             </node>
           </node>
         </node>
@@ -11322,21 +11190,9 @@
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="SHPhCCYo5m" resolve="messages-for-structure" />
           <node concept="398BVA" id="SaxjPBkhEK" role="17Grwy">
-            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="SaxjPBkhEL" role="iGT6I">
-              <property role="2Ry0Am" value="core" />
-              <node concept="2Ry0Ak" id="SaxjPBkhEM" role="2Ry0An">
-                <property role="2Ry0Am" value="aspects" />
-                <node concept="2Ry0Ak" id="SaxjPBkhEN" role="2Ry0An">
-                  <property role="2Ry0Am" value="feedback" />
-                  <node concept="2Ry0Ak" id="SaxjPBki1g" role="2Ry0An">
-                    <property role="2Ry0Am" value="messages-for-structure" />
-                    <node concept="2Ry0Ak" id="SaxjPBki1j" role="2Ry0An">
-                      <property role="2Ry0Am" value="classes" />
-                    </node>
-                  </node>
-                </node>
-              </node>
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="5axXwrxdPgj" role="iGT6I">
+              <property role="2Ry0Am" value="mps-messages-for-structure.jar" />
             </node>
           </node>
         </node>
@@ -11389,21 +11245,9 @@
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="SHPhCCYob1" resolve="feedback-problem" />
           <node concept="398BVA" id="SaxjPBkiu8" role="17Grwy">
-            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="SaxjPBkiu9" role="iGT6I">
-              <property role="2Ry0Am" value="core" />
-              <node concept="2Ry0Ak" id="SaxjPBkiua" role="2Ry0An">
-                <property role="2Ry0Am" value="aspects" />
-                <node concept="2Ry0Ak" id="SaxjPBkiub" role="2Ry0An">
-                  <property role="2Ry0Am" value="feedback" />
-                  <node concept="2Ry0Ak" id="SaxjPBkj03" role="2Ry0An">
-                    <property role="2Ry0Am" value="problem" />
-                    <node concept="2Ry0Ak" id="SaxjPBkjAt" role="2Ry0An">
-                      <property role="2Ry0Am" value="classes" />
-                    </node>
-                  </node>
-                </node>
-              </node>
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="5axXwrxdQ9i" role="iGT6I">
+              <property role="2Ry0Am" value="mps-problem.jar" />
             </node>
           </node>
         </node>
@@ -12721,21 +12565,9 @@
           <property role="1E1SXH" value="true" />
           <ref role="1E1SXG" node="5RhptgddDxG" resolve="feedback-api" />
           <node concept="398BVA" id="SaxjPBkjXw" role="17Grwy">
-            <ref role="398BVh" node="16Vg0jOco3V" resolve="mps_home" />
-            <node concept="2Ry0Ak" id="SaxjPBkjXx" role="iGT6I">
-              <property role="2Ry0Am" value="core" />
-              <node concept="2Ry0Ak" id="SaxjPBkjXy" role="2Ry0An">
-                <property role="2Ry0Am" value="aspects" />
-                <node concept="2Ry0Ak" id="SaxjPBkjXz" role="2Ry0An">
-                  <property role="2Ry0Am" value="feedback" />
-                  <node concept="2Ry0Ak" id="SaxjPBkjX$" role="2Ry0An">
-                    <property role="2Ry0Am" value="feedback-api" />
-                    <node concept="2Ry0Ak" id="SaxjPBkjX_" role="2Ry0An">
-                      <property role="2Ry0Am" value="classes" />
-                    </node>
-                  </node>
-                </node>
-              </node>
+            <ref role="398BVh" node="3CewbsuA8IN" resolve="platform_lib" />
+            <node concept="2Ry0Ak" id="5axXwrxdRbK" role="iGT6I">
+              <property role="2Ry0Am" value="mps-feedback-api.jar" />
             </node>
           </node>
         </node>

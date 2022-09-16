@@ -5,9 +5,6 @@
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <sourceRoot location="mps-messages-for-structure.jar" />
     </modelRoot>
-    <modelRoot contentPath="${module}/messages-for-structure/classes" type="java_classes">
-      <sourceRoot location="." />
-    </modelRoot>
   </models>
   <facets>
     <facet pluginId="com.intellij" type="ideaPlugin" />
@@ -16,7 +13,7 @@
     </facet>
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${module}/messages-for-structure/classes" />
+    <stubModelEntry path="${platform_lib}/mps-messages-for-structure.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

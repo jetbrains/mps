@@ -20,6 +20,7 @@
     <method v="2">
       <option name="Make" enabled="true" />
       <option name="BuildArtifacts" enabled="true">
+        <artifact name="bootstrap:aspects-feedback" />
         <artifact name="bootstrap:mps-annotations" />
         <artifact name="bootstrap:mps-core" />
         <artifact name="bootstrap:mps-editor" />
