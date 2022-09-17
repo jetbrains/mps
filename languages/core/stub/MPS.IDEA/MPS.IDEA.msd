@@ -15,6 +15,14 @@
       <sourceRoot location="jps-model.jar" />
       <sourceRoot location="3rd-party-rt.jar" />
       <sourceRoot location="forms_rt.jar" />
+      <PackageScope>
+        <include prefix="com.intellij."/>
+        <include prefix="com.jetbrains."/>
+        <include prefix="org.intellij."/>
+        <include prefix="org.jetbrains."/>
+        <include prefix="io.netty."/> <!-- some IDEA api reference Netty classes directly, expose for now -->
+        <include prefix="com.google.common.collect"/> <!-- 3 uses in mps-extensions I don't want to fix now -->
+      </PackageScope>
     </modelRoot>
   </models>
   <facets>
