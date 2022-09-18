@@ -17,7 +17,7 @@
         <include prefix="com.jetbrains."/>
         <include prefix="org.intellij."/>
         <include prefix="org.jetbrains."/>
-        <include prefix="io.netty."/> <!-- some IDEA api reference Netty classes directly, expose for now -->
+        <include prefix="io.netty."/> <!-- although there's io.netty import, keep until migration is in place -->
         <include prefix="com.google.common.collect"/> <!-- 3 uses in mps-extensions I don't want to fix now -->
       </PackageScope>
     </modelRoot>
@@ -42,6 +42,7 @@
     <dependency reexport="true">6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)</dependency>
     <dependency reexport="true">3f233e7f-b8a6-46d2-a57f-795d56775243(Annotations)</dependency>
     <dependency reexport="false">f647e48e-4568-4f4c-b48a-1546492c6a2e(org.jdom)</dependency>
+    <dependency reexport="false">6c563085-e123-4aaf-be88-fb88e02f8282(io.netty)</dependency>
   </dependencies>
 </solution>
 
