@@ -56,8 +56,6 @@
 --add-opens=java.desktop/com.apple.eawt.event=ALL-UNNAMED
 #Additional MPS options:
 -client
--Xss1024k
--XX:NewSize=256m
 -Dfile.encoding=UTF-8
 -Dapple.awt.graphics.UseQuartz=true
 -Dide.mac.message.dialogs.as.sheets=false
