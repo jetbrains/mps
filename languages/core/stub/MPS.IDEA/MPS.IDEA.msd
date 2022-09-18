@@ -4,17 +4,14 @@
   <models>
     <modelRoot contentPath="${platform_lib}" type="java_classes">
       <sourceRoot location="app.jar" />
-      <sourceRoot location="platform-objectSerializer-annotations.jar" />
-      <sourceRoot location="platform-statistics-devkit.jar" />
       <sourceRoot location="java-impl.jar" />
       <sourceRoot location="testFramework.jar" />
-      <sourceRoot location="tests_bootstrap.jar" />
-      <!-- -->
       <sourceRoot location="util.jar" />
       <sourceRoot location="util_rt.jar" />
       <sourceRoot location="jps-model.jar" />
       <sourceRoot location="3rd-party-rt.jar" />
       <sourceRoot location="forms_rt.jar" />
+      <!-- intentionally no stats.jar as we don't have any direct dependencies -->
       <PackageScope>
         <include prefix="com.intellij."/>
         <include prefix="com.jetbrains."/>
@@ -30,14 +27,10 @@
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <!-- aka 'repacked idea jars' -->
     <stubModelEntry path="${platform_lib}/app.jar" />
-    <stubModelEntry path="${platform_lib}/platform-objectSerializer-annotations.jar" />
-    <stubModelEntry path="${platform_lib}/platform-statistics-devkit.jar" />
     <stubModelEntry path="${platform_lib}/java-impl.jar" />
-    <stubModelEntry path="${platform_lib}/testFramework.jar" />
-    <stubModelEntry path="${platform_lib}/tests_bootstrap.jar" />
-    <!-- aka 'idea jars' -->
+    <stubModelEntry path="${platform_lib}/testFramework.jar" /> <!-- c.i.testFramework.TestApplicationManager in IdeaEnvironment -->
+    <stubModelEntry path="${platform_lib}/stats.jar" /> <!-- to satisfy dependencies of com.intellij.ide.impl.TrustedPathsSettings -->
     <stubModelEntry path="${platform_lib}/util.jar" />
     <stubModelEntry path="${platform_lib}/util_rt.jar" />
     <stubModelEntry path="${platform_lib}/jps-model.jar" />
