@@ -13259,7 +13259,7 @@
         </node>
       </node>
       <node concept="22LTRF" id="1CUeZUoS3fN" role="22LTRK">
-        <ref role="22LTRG" node="1CUeZUoS3fO" resolve="java-tests" />
+        <ref role="22LTRG" node="1CUeZUoS3fO" resolve="kotlin-tests" />
       </node>
     </node>
     <node concept="2G$12M" id="1CUeZUoS3fO" role="3989C9">
@@ -13359,7 +13359,7 @@
     </node>
     <node concept="1l3spV" id="1CUeZUoS3hk" role="1l3spN">
       <node concept="L2wRC" id="1CUeZUoS3hl" role="39821P">
-        <ref role="L2wRA" node="1CUeZUoS3fP" resolve="jetbrains.mps.ide.java.tests" />
+        <ref role="L2wRA" node="1CUeZUoS3fP" resolve="jetbrains.mps.kotlin.tests.editor" />
       </node>
     </node>
     <node concept="10PD9b" id="1CUeZUoS3hz" role="10PD9s" />

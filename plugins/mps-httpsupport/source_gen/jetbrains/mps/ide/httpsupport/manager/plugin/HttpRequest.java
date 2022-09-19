@@ -58,6 +58,8 @@ public class HttpRequest {
   }
 
   public void sendResponse(HttpResponseStatus status, String contentType, ByteBuf buffer) {
+    // as long as MPS.IDEA exposes io.netty, have to reference FullHttpResponse here through MPS.IDEA
+    // to satisfy Responses.send call
     FullHttpResponse response = Responses.response(contentType, buffer);
     response.setStatus(status);
     Responses.send(response, channel, request);

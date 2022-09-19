@@ -45842,6 +45842,7 @@
         </node>
         <node concept="1SiIV0" id="6pse5qHNhU8" role="3bR37C">
           <node concept="3bR9La" id="6pse5qHNhU9" role="1SiIV1">
+            <property role="3bR36h" value="true" />
             <ref role="3bR37D" node="1ia2VB5guYy" resolve="MPS.IDEA" />
           </node>
         </node>
@@ -49514,7 +49515,7 @@
         <ref role="nCB5Y" node="1s0vtrwUPV$" resolve="mps-logging" />
       </node>
       <node concept="2sjeV3" id="nj7QLbJXPm" role="nCB5Z">
-        <ref role="2sjeV2" node="4YmhUESdVsA" resolve="util" />
+        <ref role="2sjeV2" node="4YmhUESdVsA" resolve="com.intellij.openapi" />
       </node>
     </node>
     <node concept="398b33" id="5StVQ8qcIGg" role="3989C9">
@@ -50140,7 +50141,7 @@
         <ref role="2sjeV2" node="6FsijxbeNOG" resolve="objectweb.asm" />
       </node>
       <node concept="2sjeV3" id="2FD4j7hQCh8" role="nCB5Z">
-        <ref role="2sjeV2" node="2FD4j7hQCb6" resolve="KotlinCoreLibs" />
+        <ref role="2sjeV2" node="2FD4j7hQCb6" resolve="kotlin-metadata" />
       </node>
     </node>
     <node concept="398b33" id="4Iy92RV1r6j" role="3989C9">
