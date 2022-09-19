@@ -19,6 +19,23 @@
         <include prefix="org.jetbrains."/>
         <include prefix="io.netty."/> <!-- although there's io.netty import, keep until migration is in place -->
         <include prefix="com.google.common.collect"/> <!-- 3 uses in mps-extensions I don't want to fix now -->
+        <!-- kotlin annotations from 3rd-party-rt.jar, like JvmOverloads -->
+        <include prefix="kotlin." />
+        <include prefix="kotlin.annotation" />
+        <include prefix="kotlin.jvm" />
+        <exclude prefix="kotlin.c" />  <!-- don't need sub-packages except listed explicitly. first letter is enough to match -->
+        <exclude prefix="kotlin.e" />
+        <exclude prefix="kotlin.i" />
+        <exclude prefix="kotlin.js" />
+        <exclude prefix="kotlin.jdk7" />
+        <exclude prefix="kotlin.m" />
+        <exclude prefix="kotlin.p" />
+        <exclude prefix="kotlin.r" />
+        <exclude prefix="kotlin.s" />
+        <exclude prefix="kotlin.t" />
+        <exclude prefix="kotlin.jvm.f" />
+        <exclude prefix="kotlin.jvm.i" />
+        <exclude prefix="kotlin.jvm.j" />
       </PackageScope>
     </modelRoot>
   </models>
