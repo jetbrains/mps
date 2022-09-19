@@ -37,7 +37,7 @@ public class FromProjectPathProjectStrategy extends ProjectStrategyBase {
         return construct(env.getPlatform(), newProject);
       }
     } catch (Exception ex) {
-      th = null;
+      th = ex;
     }
     throw new IllegalStateException("Strategy is not applicable -- cannot create project", th);
   }
