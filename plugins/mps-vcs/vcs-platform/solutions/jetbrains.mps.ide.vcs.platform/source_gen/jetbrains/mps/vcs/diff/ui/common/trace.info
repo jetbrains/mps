@@ -4685,91 +4685,89 @@
   </root>
   <root nodeRef="r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748340352">
     <file name="GoToNeighbourRootActions.java">
-      <node id="4652592318748340441" at="20,0,21,0" concept="16" trace="PREVIOUS_ROOT_ICON" />
-      <node id="4652592318748340447" at="21,0,22,0" concept="16" trace="NEXT_ROOT_ICON" />
-      <node id="7209139230532944800" at="22,0,23,0" concept="16" trace="PREV_ROOT_SHORTCUT" />
-      <node id="7209139230532917809" at="23,0,24,0" concept="16" trace="NEXT_ROOT_SHORTCUT" />
-      <node id="3570124878565652472" at="24,0,25,0" concept="7" trace="myActions" />
-      <node id="3570124878565656002" at="25,37,26,76" concept="6" />
-      <node id="8508325714721625205" at="28,0,29,0" concept="11" trace="hasNeighbour#(Z)Z" />
-      <node id="8508325714721765903" at="29,0,30,0" concept="11" trace="goToNeighbour#(Z)V" />
-      <node id="4652592318748340476" at="30,38,31,24" concept="13" />
-      <node id="4652592318748340484" at="33,34,34,24" concept="13" />
-      <node id="2027145024769446522" at="36,36,37,21" concept="13" />
-      <node id="4652592318748340354" at="40,0,41,0" concept="7" trace="myNext" />
-      <node id="4652592318748340362" at="41,36,42,167" concept="18" />
-      <node id="4652592318748340377" at="42,167,43,35" concept="6" />
-      <node id="4652592318748340380" at="43,35,44,37" concept="6" />
-      <node id="4652592318748340383" at="44,37,45,20" concept="6" />
-      <node id="8508325714721899751" at="48,76,49,28" concept="6" />
-      <node id="8508325714721881489" at="52,75,53,69" concept="6" />
-      <node id="8600692914398543746" at="57,0,58,0" concept="7" trace="myTree" />
-      <node id="8600692914398543863" at="58,52,59,20" concept="6" />
-      <node id="8600692914398605953" at="63,0,64,0" concept="11" trace="setCurrentNodeId#(Lorg/jetbrains/mps/openapi/model/SNodeId;)V" />
-      <node id="8600692914398564711" at="65,50,66,59" concept="13" />
-      <node id="8600692914398663251" at="69,48,70,73" concept="12" />
-      <node id="8600692914398624358" at="70,73,71,31" concept="6" />
-      <node id="8600692914398646323" at="71,31,72,33" concept="6" />
-      <node id="8600692914398585115" at="61,0,63,0" concept="11" trace="getCurrentNodeId#()Lorg/jetbrains/mps/openapi/model/SNodeId;" />
-      <node id="4652592318748340454" at="25,0,28,0" concept="3" trace="GoToNeighbourRootActions#()V" />
-      <node id="4652592318748340472" at="30,0,33,0" concept="11" trace="previous#()Ljetbrains/mps/workbench/action/BaseAction;" />
-      <node id="4652592318748340480" at="33,0,36,0" concept="11" trace="next#()Ljetbrains/mps/workbench/action/BaseAction;" />
-      <node id="2027145024769434204" at="36,0,39,0" concept="11" trace="getActions#()[Ljetbrains/mps/workbench/action/BaseAction;" />
-      <node id="8600692914398512586" at="58,0,61,0" concept="3" trace="GoToByTree#(Ljetbrains/mps/vcs/diff/ui/common/DiffModelTree;)V" />
-      <node id="4652592318748340390" at="47,0,51,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="4652592318748340413" at="51,0,55,0" concept="11" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
-      <node id="8600692914398562726" at="64,0,68,0" concept="11" trace="hasNeighbour#(Z)Z" />
-      <node id="4652592318748340358" at="41,0,47,0" concept="3" trace="TheAction#(Z)V" />
-      <node id="8600692914398562742" at="68,0,74,0" concept="11" trace="goToNeighbour#(Z)V" />
-      <scope id="4652592318748340457" at="25,37,26,76" />
-      <scope id="8508325714721625205" at="28,0,29,0">
+      <node id="7209139230532944800" at="19,0,20,0" concept="16" trace="PREV_ROOT_SHORTCUT" />
+      <node id="7209139230532917809" at="20,0,21,0" concept="16" trace="NEXT_ROOT_SHORTCUT" />
+      <node id="3570124878565652472" at="21,0,22,0" concept="7" trace="myActions" />
+      <node id="3570124878565656002" at="22,37,23,76" concept="6" />
+      <node id="8508325714721625205" at="25,0,26,0" concept="11" trace="hasNeighbour#(Z)Z" />
+      <node id="8508325714721765903" at="26,0,27,0" concept="11" trace="goToNeighbour#(Z)V" />
+      <node id="4652592318748340476" at="27,38,28,24" concept="13" />
+      <node id="4652592318748340484" at="30,34,31,24" concept="13" />
+      <node id="2027145024769446522" at="33,36,34,21" concept="13" />
+      <node id="4652592318748340354" at="37,0,38,0" concept="7" trace="myNext" />
+      <node id="4652592318748340362" at="38,36,39,130" concept="18" />
+      <node id="4652592318748340377" at="39,130,40,35" concept="6" />
+      <node id="4652592318748340380" at="40,35,41,37" concept="6" />
+      <node id="4652592318748340383" at="41,37,42,20" concept="6" />
+      <node id="8508325714721899751" at="45,76,46,28" concept="6" />
+      <node id="8508325714721881489" at="49,75,50,69" concept="6" />
+      <node id="8600692914398543746" at="54,0,55,0" concept="7" trace="myTree" />
+      <node id="8600692914398543863" at="55,52,56,20" concept="6" />
+      <node id="8600692914398605953" at="60,0,61,0" concept="11" trace="setCurrentNodeId#(Lorg/jetbrains/mps/openapi/model/SNodeId;)V" />
+      <node id="8600692914398564711" at="62,50,63,59" concept="13" />
+      <node id="8600692914398663251" at="66,48,67,73" concept="12" />
+      <node id="8600692914398624358" at="67,73,68,31" concept="6" />
+      <node id="8600692914398646323" at="68,31,69,33" concept="6" />
+      <node id="8600692914398585115" at="58,0,60,0" concept="11" trace="getCurrentNodeId#()Lorg/jetbrains/mps/openapi/model/SNodeId;" />
+      <node id="4652592318748340454" at="22,0,25,0" concept="3" trace="GoToNeighbourRootActions#()V" />
+      <node id="4652592318748340472" at="27,0,30,0" concept="11" trace="previous#()Ljetbrains/mps/workbench/action/BaseAction;" />
+      <node id="4652592318748340480" at="30,0,33,0" concept="11" trace="next#()Ljetbrains/mps/workbench/action/BaseAction;" />
+      <node id="2027145024769434204" at="33,0,36,0" concept="11" trace="getActions#()[Ljetbrains/mps/workbench/action/BaseAction;" />
+      <node id="8600692914398512586" at="55,0,58,0" concept="3" trace="GoToByTree#(Ljetbrains/mps/vcs/diff/ui/common/DiffModelTree;)V" />
+      <node id="4652592318748340390" at="44,0,48,0" concept="11" trace="doExecute#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="4652592318748340413" at="48,0,52,0" concept="11" trace="doUpdate#(Lcom/intellij/openapi/actionSystem/AnActionEvent;Ljava/util/Map;)V" />
+      <node id="8600692914398562726" at="61,0,65,0" concept="11" trace="hasNeighbour#(Z)Z" />
+      <node id="4652592318748340358" at="38,0,44,0" concept="3" trace="TheAction#(Z)V" />
+      <node id="8600692914398562742" at="65,0,71,0" concept="11" trace="goToNeighbour#(Z)V" />
+      <scope id="4652592318748340457" at="22,37,23,76" />
+      <scope id="8508325714721625205" at="25,0,26,0">
         <var name="next" id="8508325714721751725" />
       </scope>
-      <scope id="8508325714721765903" at="29,0,30,0">
+      <scope id="8508325714721765903" at="26,0,27,0">
         <var name="next" id="8508325714721785196" />
       </scope>
-      <scope id="4652592318748340475" at="30,38,31,24" />
-      <scope id="4652592318748340483" at="33,34,34,24" />
-      <scope id="2027145024769434207" at="36,36,37,21" />
-      <scope id="4652592318748340399" at="48,76,49,28" />
-      <scope id="4652592318748340423" at="52,75,53,69" />
-      <scope id="8600692914398512589" at="58,52,59,20" />
-      <scope id="8600692914398605953" at="63,0,64,0">
+      <scope id="4652592318748340475" at="27,38,28,24" />
+      <scope id="4652592318748340483" at="30,34,31,24" />
+      <scope id="2027145024769434207" at="33,36,34,21" />
+      <scope id="4652592318748340399" at="45,76,46,28" />
+      <scope id="4652592318748340423" at="49,75,50,69" />
+      <scope id="8600692914398512589" at="55,52,56,20" />
+      <scope id="8600692914398605953" at="60,0,61,0">
         <var name="nodeId" id="8600692914398616368" />
       </scope>
-      <scope id="8600692914398562737" at="65,50,66,59" />
-      <scope id="8600692914398585115" at="61,0,63,0" />
-      <scope id="4652592318748340454" at="25,0,28,0" />
-      <scope id="4652592318748340472" at="30,0,33,0" />
-      <scope id="4652592318748340480" at="33,0,36,0" />
-      <scope id="2027145024769434204" at="36,0,39,0" />
-      <scope id="8600692914398512586" at="58,0,61,0">
+      <scope id="8600692914398562737" at="62,50,63,59" />
+      <scope id="8600692914398585115" at="58,0,60,0" />
+      <scope id="4652592318748340454" at="22,0,25,0" />
+      <scope id="4652592318748340472" at="27,0,30,0" />
+      <scope id="4652592318748340480" at="30,0,33,0" />
+      <scope id="2027145024769434204" at="33,0,36,0" />
+      <scope id="8600692914398512586" at="55,0,58,0">
         <var name="tree" id="8600692914398543771" />
       </scope>
-      <scope id="8600692914398562752" at="69,48,72,33">
+      <scope id="8600692914398562752" at="66,48,69,33">
         <var name="nodeId" id="8600692914398663252" />
       </scope>
-      <scope id="4652592318748340361" at="41,36,45,20" />
-      <scope id="4652592318748340390" at="47,0,51,0">
+      <scope id="4652592318748340361" at="38,36,42,20" />
+      <scope id="4652592318748340390" at="44,0,48,0">
         <var name="event" id="4652592318748340393" />
         <var name="map" id="4652592318748340395" />
       </scope>
-      <scope id="4652592318748340413" at="51,0,55,0">
+      <scope id="4652592318748340413" at="48,0,52,0">
         <var name="event" id="4652592318748340417" />
         <var name="map" id="4652592318748340419" />
       </scope>
-      <scope id="8600692914398562726" at="64,0,68,0">
+      <scope id="8600692914398562726" at="61,0,65,0">
         <var name="next" id="8600692914398562727" />
       </scope>
-      <scope id="4652592318748340358" at="41,0,47,0">
+      <scope id="4652592318748340358" at="38,0,44,0">
         <var name="next" id="4652592318748340387" />
       </scope>
-      <scope id="8600692914398562742" at="68,0,74,0">
+      <scope id="8600692914398562742" at="65,0,71,0">
         <var name="next" id="8600692914398562743" />
       </scope>
-      <unit id="4652592318748340353" at="39,0,56,0" name="jetbrains.mps.vcs.diff.ui.common.GoToNeighbourRootActions$TheAction" />
-      <unit id="8600692914398512582" at="56,0,75,0" name="jetbrains.mps.vcs.diff.ui.common.GoToNeighbourRootActions$GoToByTree" />
-      <unit id="4652592318748340352" at="18,0,76,0" name="jetbrains.mps.vcs.diff.ui.common.GoToNeighbourRootActions" />
+      <unit id="4652592318748340353" at="36,0,53,0" name="jetbrains.mps.vcs.diff.ui.common.GoToNeighbourRootActions$TheAction" />
+      <unit id="8600692914398512582" at="53,0,72,0" name="jetbrains.mps.vcs.diff.ui.common.GoToNeighbourRootActions$GoToByTree" />
+      <unit id="4652592318748340352" at="17,0,73,0" name="jetbrains.mps.vcs.diff.ui.common.GoToNeighbourRootActions" />
     </file>
   </root>
   <root nodeRef="r:07568eb8-30c0-4bb3-9dcb-50ee4b8de59a(jetbrains.mps.vcs.diff.ui.common)/4652592318748340561">

@@ -81,6 +81,7 @@
     <import index="jkny" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.wm(MPS.IDEA/)" />
     <import index="cyi7" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vcs.changes.ui(MPS.IDEA/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
+    <import index="z2i8" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.icons(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="a247e09e-2435-45ba-b8d2-07e93feba96a" name="jetbrains.mps.baseLanguage.tuples">
@@ -580,12 +581,9 @@
             </node>
           </node>
           <node concept="10Nm6u" id="7$NO6fvW1RF" role="37wK5m" />
-          <node concept="2YIFZM" id="7$NO6fvW1RG" role="37wK5m">
-            <ref role="1Pybhc" to="zn9m:~IconLoader" resolve="IconLoader" />
-            <ref role="37wK5l" to="zn9m:~IconLoader.getIcon(java.lang.String)" resolve="getIcon" />
-            <node concept="Xl_RD" id="7$NO6fvW1RH" role="37wK5m">
-              <property role="Xl_RC" value="/actions/rollback.png" />
-            </node>
+          <node concept="10M0yZ" id="4mp1052uZXX" role="37wK5m">
+            <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Rollback" resolve="Rollback" />
+            <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="Actions" />
           </node>
         </node>
         <node concept="3clFbF" id="3AEFUta0IoD" role="3cqZAp">

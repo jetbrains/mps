@@ -19977,36 +19977,6 @@
   <node concept="312cEu" id="42hl10VHb20">
     <property role="TrG5h" value="GoToNeighbourRootActions" />
     <property role="1sVAO0" value="true" />
-    <node concept="Wx3nA" id="42hl10VHb3p" role="jymVt">
-      <property role="TrG5h" value="PREVIOUS_ROOT_ICON" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3uibUv" id="42hl10VHb3r" role="1tU5fm">
-        <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
-      </node>
-      <node concept="3Tm6S6" id="42hl10VHb3q" role="1B3o_S" />
-      <node concept="2YIFZM" id="42hl10VHb3s" role="33vP2m">
-        <ref role="37wK5l" to="zn9m:~IconLoader.getIcon(java.lang.String)" resolve="getIcon" />
-        <ref role="1Pybhc" to="zn9m:~IconLoader" resolve="IconLoader" />
-        <node concept="Xl_RD" id="42hl10VHb3t" role="37wK5m">
-          <property role="Xl_RC" value="/actions/prevfile.png" />
-        </node>
-      </node>
-    </node>
-    <node concept="Wx3nA" id="42hl10VHb3v" role="jymVt">
-      <property role="TrG5h" value="NEXT_ROOT_ICON" />
-      <property role="3TUv4t" value="true" />
-      <node concept="3Tm6S6" id="42hl10VHb3w" role="1B3o_S" />
-      <node concept="3uibUv" id="42hl10VHb3x" role="1tU5fm">
-        <ref role="3uigEE" to="dxuu:~Icon" resolve="Icon" />
-      </node>
-      <node concept="2YIFZM" id="42hl10VHb3y" role="33vP2m">
-        <ref role="37wK5l" to="zn9m:~IconLoader.getIcon(java.lang.String)" resolve="getIcon" />
-        <ref role="1Pybhc" to="zn9m:~IconLoader" resolve="IconLoader" />
-        <node concept="Xl_RD" id="42hl10VHb3z" role="37wK5m">
-          <property role="Xl_RC" value="/actions/nextfile.png" />
-        </node>
-      </node>
-    </node>
     <node concept="Wx3nA" id="6gc0uWWfWew" role="jymVt">
       <property role="TrG5h" value="PREV_ROOT_SHORTCUT" />
       <property role="3TUv4t" value="true" />
@@ -20210,16 +20180,16 @@
             </node>
             <node concept="10Nm6u" id="42hl10VHb2k" role="37wK5m" />
             <node concept="3K4zz7" id="42hl10VHb2l" role="37wK5m">
-              <node concept="10M0yZ" id="42hl10VHb2n" role="3K4GZi">
-                <ref role="1PxDUh" node="42hl10VHb20" resolve="GoToNeighbourRootActions" />
-                <ref role="3cqZAo" node="42hl10VHb3p" resolve="PREVIOUS_ROOT_ICON" />
-              </node>
-              <node concept="10M0yZ" id="42hl10VHb2m" role="3K4E3e">
-                <ref role="1PxDUh" node="42hl10VHb20" resolve="GoToNeighbourRootActions" />
-                <ref role="3cqZAo" node="42hl10VHb3v" resolve="NEXT_ROOT_ICON" />
+              <node concept="10M0yZ" id="4mp1052s4qN" role="3K4E3e">
+                <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Forward" resolve="Forward" />
+                <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="Actions" />
               </node>
               <node concept="37vLTw" id="2BHiRxgmC4w" role="3K4Cdx">
                 <ref role="3cqZAo" node="42hl10VHb2z" resolve="next" />
+              </node>
+              <node concept="10M0yZ" id="4mp1052s4Zu" role="3K4GZi">
+                <ref role="3cqZAo" to="z2i8:~AllIcons$Actions.Back" resolve="Back" />
+                <ref role="1PxDUh" to="z2i8:~AllIcons$Actions" resolve="Actions" />
               </node>
             </node>
           </node>

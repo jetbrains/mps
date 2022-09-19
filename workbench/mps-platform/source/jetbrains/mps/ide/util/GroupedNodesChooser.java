@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -664,8 +664,9 @@ public class GroupedNodesChooser extends DialogWrapper {
 
   private class SortEmAction extends ToggleAction {
     public SortEmAction() {
+      // 'action.sort.alphabetically' comes from app.jar!/messages/IdeDeprecatedMessagesBundle.properties
       super(IdeBundle.message("action.sort.alphabetically"),
-        IdeBundle.message("action.sort.alphabetically"), IconLoader.getIcon("/objectBrowser/sorted.png"));
+        IdeBundle.message("action.sort.alphabetically"), IconLoader.getIcon("/objectBrowser/sorted.png", GroupedNodesChooser.class));
     }
 
     @Override
@@ -709,7 +710,7 @@ public class GroupedNodesChooser extends DialogWrapper {
   private class ExpandAllAction extends AnAction {
     public ExpandAllAction() {
       super(IdeBundle.message("action.expand.all"), IdeBundle.message("action.expand.all"),
-        IconLoader.getIcon("/actions/expandall.png"));
+        IconLoader.getIcon("/actions/expandall.png", GroupedNodesChooser.class));
     }
 
     @Override
@@ -721,7 +722,7 @@ public class GroupedNodesChooser extends DialogWrapper {
   private class CollapseAllAction extends AnAction {
     public CollapseAllAction() {
       super(IdeBundle.message("action.collapse.all"), IdeBundle.message("action.collapse.all"),
-        IconLoader.getIcon("/actions/collapseall.png"));
+        IconLoader.getIcon("/actions/collapseall.png", GroupedNodesChooser.class));
     }
 
     @Override
