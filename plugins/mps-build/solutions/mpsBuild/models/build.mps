@@ -51544,11 +51544,6 @@
             <ref role="3bR37D" node="Ye$g8PO8XA" resolve="jetbrains.mps.kotlin.baseLanguage.runtime" />
           </node>
         </node>
-        <node concept="1SiIV0" id="1G33vFC9dnC" role="3bR37C">
-          <node concept="3bR9La" id="1G33vFC9dnD" role="1SiIV1">
-            <ref role="3bR37D" node="Ye$g8PO8TM" resolve="jetbrains.mps.kotlin.javaRefs" />
-          </node>
-        </node>
         <node concept="1SiIV0" id="1G33vFC9dnE" role="3bR37C">
           <node concept="3bR9La" id="1G33vFC9dnF" role="1SiIV1">
             <ref role="3bR37D" node="7Kfy9QB6L9O" resolve="jetbrains.mps.lang.smodel" />
@@ -51675,6 +51670,11 @@
                 <property role="3qWCbO" value="**/*.mps, **/*.mpsr, **/.model" />
               </node>
             </node>
+          </node>
+        </node>
+        <node concept="1SiIV0" id="1X$n7cxRqLs" role="3bR37C">
+          <node concept="1Busua" id="1X$n7cxRqLt" role="1SiIV1">
+            <ref role="1Busuk" node="Ye$g8PO8TM" resolve="jetbrains.mps.kotlin.javaRefs" />
           </node>
         </node>
       </node>

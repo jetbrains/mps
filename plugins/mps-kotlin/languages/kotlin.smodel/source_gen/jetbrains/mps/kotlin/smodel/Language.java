@@ -45,6 +45,7 @@ public class Language extends LanguageRuntime {
 
   @Override
   protected void fillExtendedLanguages(Collection<SLanguage> extendedLanguages) {
+    extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("9e4ff22b-60f1-43ef-a50b-f9f0fcec22e0"), "jetbrains.mps.kotlin.javaRefs"));
     extendedLanguages.add(MetaAdapterFactory.getLanguage(SLanguageId.deserialize("6b3888c1-9802-44d8-8baf-f8e6c33ed689"), "jetbrains.mps.kotlin"));
   }
 
