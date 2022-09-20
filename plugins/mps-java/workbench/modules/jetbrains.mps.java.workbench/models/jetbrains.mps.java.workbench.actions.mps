@@ -208,7 +208,6 @@
       </concept>
       <concept id="1070534058343" name="jetbrains.mps.baseLanguage.structure.NullLiteral" flags="nn" index="10Nm6u" />
       <concept id="1070534370425" name="jetbrains.mps.baseLanguage.structure.IntegerType" flags="in" index="10Oyi0" />
-      <concept id="1070534513062" name="jetbrains.mps.baseLanguage.structure.DoubleType" flags="in" index="10P55v" />
       <concept id="1070534644030" name="jetbrains.mps.baseLanguage.structure.BooleanType" flags="in" index="10P_77" />
       <concept id="1070534760951" name="jetbrains.mps.baseLanguage.structure.ArrayType" flags="in" index="10Q1$e">
         <child id="1070534760952" name="componentType" index="10Q1$1" />
@@ -295,7 +294,6 @@
         <child id="1079359253376" name="expression" index="1eOMHV" />
       </concept>
       <concept id="1081506762703" name="jetbrains.mps.baseLanguage.structure.GreaterThanExpression" flags="nn" index="3eOSWO" />
-      <concept id="1081506773034" name="jetbrains.mps.baseLanguage.structure.LessThanExpression" flags="nn" index="3eOVzh" />
       <concept id="1081516740877" name="jetbrains.mps.baseLanguage.structure.NotExpression" flags="nn" index="3fqX7Q">
         <child id="1081516765348" name="expression" index="3fr31v" />
       </concept>
@@ -1719,7 +1717,7 @@
                           <node concept="3clFbT" id="3IDCGxN0srM" role="37wK5m">
                             <property role="3clFbU" value="true" />
                           </node>
-                          <node concept="3cmrfG" id="3rh$6$MDXpP" role="37wK5m">
+                          <node concept="3cmrfG" id="2LySi8SucGM" role="37wK5m">
                             <property role="3cmrfH" value="300" />
                           </node>
                         </node>
@@ -7250,7 +7248,7 @@
                           <node concept="3clFbT" id="P1dOYJFuUF" role="37wK5m">
                             <property role="3clFbU" value="true" />
                           </node>
-                          <node concept="3cmrfG" id="3rh$6$MDYsD" role="37wK5m">
+                          <node concept="3cmrfG" id="2LySi8SujIq" role="37wK5m">
                             <property role="3cmrfH" value="100" />
                           </node>
                         </node>
@@ -7932,6 +7930,67 @@
         <ref role="3uigEE" to="z60i:~Dimension" resolve="Dimension" />
       </node>
       <node concept="3clFbS" id="5MpgiBqoX5_" role="3clF47">
+        <node concept="3SKdUt" id="2LySi8SxgVp" role="3cqZAp">
+          <node concept="1PaTwC" id="2LySi8SxgVq" role="1aUNEU">
+            <node concept="3oM_SD" id="2LySi8SxhzW" role="1PaTwD">
+              <property role="3oM_SC" value="Max" />
+            </node>
+            <node concept="3oM_SD" id="2LySi8SxhzY" role="1PaTwD">
+              <property role="3oM_SC" value="x" />
+            </node>
+            <node concept="3oM_SD" id="2LySi8Sxh$1" role="1PaTwD">
+              <property role="3oM_SC" value="of" />
+            </node>
+            <node concept="3oM_SD" id="2LySi8Sxh$5" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="2LySi8Sxh$a" role="1PaTwD">
+              <property role="3oM_SC" value="editor" />
+            </node>
+            <node concept="3oM_SD" id="2LySi8Sxh$g" role="1PaTwD">
+              <property role="3oM_SC" value="+" />
+            </node>
+            <node concept="3oM_SD" id="2LySi8Sxh$n" role="1PaTwD">
+              <property role="3oM_SC" value="small" />
+            </node>
+            <node concept="3oM_SD" id="2LySi8Sxh$v" role="1PaTwD">
+              <property role="3oM_SC" value="margin" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="2LySi8Swq8z" role="3cqZAp">
+          <node concept="3cpWsn" id="2LySi8Swq8$" role="3cpWs9">
+            <property role="TrG5h" value="rightMargin" />
+            <node concept="10Oyi0" id="2LySi8SwpbH" role="1tU5fm" />
+            <node concept="3cpWs3" id="2LySi8SxdZr" role="33vP2m">
+              <node concept="3cmrfG" id="2LySi8Sxenp" role="3uHU7w">
+                <property role="3cmrfH" value="100" />
+              </node>
+              <node concept="2OqwBi" id="2LySi8Swq8_" role="3uHU7B">
+                <node concept="2OqwBi" id="2LySi8Swq8A" role="2Oq$k0">
+                  <node concept="2OqwBi" id="2LySi8Swq8B" role="2Oq$k0">
+                    <node concept="2OqwBi" id="2LySi8Swq8C" role="2Oq$k0">
+                      <node concept="Xjq3P" id="2LySi8Swq8D" role="2Oq$k0" />
+                      <node concept="liA8E" id="2LySi8Swq8E" role="2OqNvi">
+                        <ref role="37wK5l" to="tpru:1xyr94TevBc" resolve="getEditor" />
+                      </node>
+                    </node>
+                    <node concept="liA8E" id="2LySi8Swq8F" role="2OqNvi">
+                      <ref role="37wK5l" to="cj4x:~Editor.getCurrentEditorComponent()" resolve="getCurrentEditorComponent" />
+                    </node>
+                  </node>
+                  <node concept="liA8E" id="2LySi8Swq8G" role="2OqNvi">
+                    <ref role="37wK5l" to="cj4x:~EditorComponent.getEditorComponentSettings()" resolve="getEditorComponentSettings" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="2LySi8Swq8H" role="2OqNvi">
+                  <ref role="37wK5l" to="cj4x:~EditorComponentSettings.getRightMargin()" resolve="getRightMargin" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="2LySi8Sxh$C" role="3cqZAp" />
         <node concept="3SKdUt" id="5MpgiBqpfgQ" role="3cqZAp">
           <node concept="1PaTwC" id="5MpgiBqpfgR" role="1aUNEU">
             <node concept="3oM_SD" id="5MpgiBqpfgS" role="1PaTwD">
@@ -7946,11 +8005,8 @@
             <node concept="3oM_SD" id="5MpgiBqpfA9" role="1PaTwD">
               <property role="3oM_SC" value="the" />
             </node>
-            <node concept="3oM_SD" id="5MpgiBqpfAe" role="1PaTwD">
+            <node concept="3oM_SD" id="2LySi8Stsun" role="1PaTwD">
               <property role="3oM_SC" value="preferred" />
-            </node>
-            <node concept="3oM_SD" id="3rh$6$MCIf$" role="1PaTwD">
-              <property role="3oM_SC" value="height" />
             </node>
             <node concept="3oM_SD" id="5MpgiBqpfA$" role="1PaTwD">
               <property role="3oM_SC" value="size," />
@@ -8001,62 +8057,45 @@
             </node>
           </node>
         </node>
-        <node concept="3cpWs8" id="5MpgiBqoPX7" role="3cqZAp">
-          <node concept="3cpWsn" id="5MpgiBqoPX8" role="3cpWs9">
-            <property role="TrG5h" value="height" />
-            <node concept="10P55v" id="5MpgiBqoPX9" role="1tU5fm" />
-            <node concept="2OqwBi" id="5MpgiBqoPXa" role="33vP2m">
-              <node concept="37vLTw" id="5MpgiBqoPXb" role="2Oq$k0">
-                <ref role="3cqZAo" node="5MpgiBqozMh" resolve="prefered" />
-              </node>
-              <node concept="liA8E" id="30LveRDtBLY" role="2OqNvi">
-                <ref role="37wK5l" to="z60i:~Dimension.getHeight()" resolve="getHeight" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="5MpgiBqoP4t" role="3cqZAp">
-          <node concept="3clFbS" id="5MpgiBqoP4u" role="3clFbx">
-            <node concept="3clFbF" id="5MpgiBqoP4v" role="3cqZAp">
-              <node concept="37vLTI" id="5MpgiBqoP4w" role="3clFbG">
-                <node concept="37vLTw" id="5MpgiBqoP4y" role="37vLTx">
-                  <ref role="3cqZAo" node="5MpgiBqoCB6" resolve="myMaxMinimumHeight" />
-                </node>
-                <node concept="37vLTw" id="5MpgiBqoReo" role="37vLTJ">
-                  <ref role="3cqZAo" node="5MpgiBqoPX8" resolve="height" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="3eOVzh" id="5MpgiBqoP4_" role="3clFbw">
-            <node concept="37vLTw" id="5MpgiBqoP4B" role="3uHU7B">
-              <ref role="3cqZAo" node="5MpgiBqoCB6" resolve="myMaxMinimumHeight" />
-            </node>
-            <node concept="37vLTw" id="5MpgiBqoQwZ" role="3uHU7w">
-              <ref role="3cqZAo" node="5MpgiBqoPX8" resolve="height" />
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs6" id="5MpgiBqoRG$" role="3cqZAp">
           <node concept="2ShNRf" id="5MpgiBqoS61" role="3cqZAk">
             <node concept="1pGfFk" id="5MpgiBqoV1M" role="2ShVmc">
               <ref role="37wK5l" to="z60i:~Dimension.&lt;init&gt;(int,int)" resolve="Dimension" />
-              <node concept="10QFUN" id="3rh$6$MCWar" role="37wK5m">
-                <node concept="2OqwBi" id="3rh$6$MCT2d" role="10QFUP">
-                  <node concept="3nyPlj" id="3rh$6$MCUSF" role="2Oq$k0">
-                    <ref role="37wK5l" to="dxuu:~JComponent.getMinimumSize()" resolve="getMinimumSize" />
-                  </node>
-                  <node concept="liA8E" id="3rh$6$MCTK4" role="2OqNvi">
-                    <ref role="37wK5l" to="z60i:~Dimension.getWidth()" resolve="getWidth" />
+              <node concept="2YIFZM" id="2LySi8StC2A" role="37wK5m">
+                <ref role="37wK5l" to="wyt6:~Math.min(int,int)" resolve="min" />
+                <ref role="1Pybhc" to="wyt6:~Math" resolve="Math" />
+                <node concept="37vLTw" id="2LySi8Swq8I" role="37wK5m">
+                  <ref role="3cqZAo" node="2LySi8Swq8$" resolve="rightMargin" />
+                </node>
+                <node concept="10QFUN" id="2LySi8StHnJ" role="37wK5m">
+                  <node concept="10Oyi0" id="2LySi8StJB8" role="10QFUM" />
+                  <node concept="2OqwBi" id="2LySi8StC2C" role="10QFUP">
+                    <node concept="37vLTw" id="2LySi8StC2D" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5MpgiBqozMh" resolve="prefered" />
+                    </node>
+                    <node concept="liA8E" id="2LySi8StC2E" role="2OqNvi">
+                      <ref role="37wK5l" to="z60i:~Dimension.getWidth()" resolve="getWidth" />
+                    </node>
                   </node>
                 </node>
-                <node concept="10Oyi0" id="3rh$6$MCWas" role="10QFUM" />
               </node>
-              <node concept="10QFUN" id="5MpgiBqpekd" role="37wK5m">
-                <node concept="37vLTw" id="5MpgiBqoWJf" role="10QFUP">
-                  <ref role="3cqZAo" node="5MpgiBqoPX8" resolve="height" />
+              <node concept="2YIFZM" id="2LySi8StBiz" role="37wK5m">
+                <ref role="37wK5l" to="wyt6:~Math.min(int,int)" resolve="min" />
+                <ref role="1Pybhc" to="wyt6:~Math" resolve="Math" />
+                <node concept="37vLTw" id="2LySi8StBi$" role="37wK5m">
+                  <ref role="3cqZAo" node="5MpgiBqoCB6" resolve="myMaxMinimumHeight" />
                 </node>
-                <node concept="10Oyi0" id="5MpgiBqpeke" role="10QFUM" />
+                <node concept="10QFUN" id="2LySi8StMo4" role="37wK5m">
+                  <node concept="10Oyi0" id="2LySi8StO06" role="10QFUM" />
+                  <node concept="2OqwBi" id="2LySi8StBi_" role="10QFUP">
+                    <node concept="37vLTw" id="2LySi8StBiA" role="2Oq$k0">
+                      <ref role="3cqZAo" node="5MpgiBqozMh" resolve="prefered" />
+                    </node>
+                    <node concept="liA8E" id="2LySi8StBiB" role="2OqNvi">
+                      <ref role="37wK5l" to="z60i:~Dimension.getHeight()" resolve="getHeight" />
+                    </node>
+                  </node>
+                </node>
               </node>
             </node>
           </node>
@@ -8070,7 +8109,7 @@
     <node concept="3UR2Jj" id="7svtApWmyxb" role="lGtFl">
       <node concept="TZ5HA" id="7svtApWmyxc" role="TZ5H$">
         <node concept="1dT_AC" id="7svtApWmyxd" role="1dT_Ay">
-          <property role="1dT_AB" value="Embeddable editor with a minimal height correponding to the preferred height of the component." />
+          <property role="1dT_AB" value="Embeddable editor with a minimal size corresponding to the preferred size of the component." />
         </node>
       </node>
       <node concept="TZ5HA" id="7svtApWmyxk" role="TZ5H$">
@@ -8080,12 +8119,12 @@
       </node>
       <node concept="TZ5HA" id="7svtApWmyxq" role="TZ5H$">
         <node concept="1dT_AC" id="7svtApWmyxr" role="1dT_Ay">
-          <property role="1dT_AB" value="A maximal minimum height is provided so when the prefered height is above that value, the minimum height" />
+          <property role="1dT_AB" value="A maximal minimum height is provided so when the preferred height is above that value, the minimum height" />
         </node>
       </node>
       <node concept="TZ5HA" id="7svtApWmyxy" role="TZ5H$">
         <node concept="1dT_AC" id="7svtApWmyxz" role="1dT_Ay">
-          <property role="1dT_AB" value="does not exceed it." />
+          <property role="1dT_AB" value="does not exceed it. Same principle is applied for width, except the default max size for code is used instead." />
         </node>
       </node>
     </node>

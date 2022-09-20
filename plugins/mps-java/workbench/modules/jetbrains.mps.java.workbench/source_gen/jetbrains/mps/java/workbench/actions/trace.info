@@ -596,27 +596,26 @@
       <node id="6672435970939455942" at="17,0,18,0" concept="3" trace="myMaxMinimumHeight" />
       <node id="6672435970939431098" at="19,89,20,29" concept="13" />
       <node id="6672435970939455946" at="20,29,21,42" concept="2" />
-      <node id="6672435970939614262" at="26,37,27,94" concept="9" />
-      <node id="6672435970939436176" at="27,94,28,49" concept="7" />
-      <node id="6672435970939510599" at="28,49,29,41" concept="7" />
-      <node id="6672435970939506975" at="30,38,31,34" concept="2" />
-      <node id="6672435970939517732" at="32,5,33,80" concept="8" />
-      <node id="6672435970939506973" at="29,41,32,5" concept="5" />
+      <node id="3198366222479855321" at="26,37,27,41" concept="9" />
+      <node id="3198366222479630883" at="27,41,28,119" concept="7" />
+      <node id="3198366222479857960" at="28,119,29,0" concept="10" />
+      <node id="6672435970939614262" at="29,0,30,87" concept="9" />
+      <node id="6672435970939436176" at="30,87,31,49" concept="7" />
+      <node id="6672435970939517732" at="31,49,32,133" concept="8" />
       <node id="6672435970939431059" at="19,0,23,0" concept="1" trace="SizedEmbeddableEditor#(Ljetbrains/mps/project/Project;ZI)V" />
-      <node id="6672435970939539804" at="24,0,35,0" concept="6" trace="getMinimumSize#()Ljava/awt/Dimension;" />
-      <scope id="6672435970939506974" at="30,38,31,34" />
+      <node id="6672435970939539804" at="24,0,34,0" concept="6" trace="getMinimumSize#()Ljava/awt/Dimension;" />
       <scope id="6672435970939431097" at="19,89,21,42" />
       <scope id="6672435970939431059" at="19,0,23,0">
         <var name="editable" id="6672435970939431095" />
         <var name="maxMinimumHeight" id="6672435970939446553" />
         <var name="project" id="6672435970939431093" />
       </scope>
-      <scope id="6672435970939539813" at="26,37,33,80">
-        <var name="height" id="6672435970939510600" />
+      <scope id="6672435970939539813" at="26,37,32,133">
         <var name="prefered" id="6672435970939436177" />
+        <var name="rightMargin" id="3198366222479630884" />
       </scope>
-      <scope id="6672435970939539804" at="24,0,35,0" />
-      <unit id="6672435970939430649" at="16,0,37,0" name="jetbrains.mps.java.workbench.actions.SizedEmbeddableEditor" />
+      <scope id="6672435970939539804" at="24,0,34,0" />
+      <unit id="6672435970939430649" at="16,0,36,0" name="jetbrains.mps.java.workbench.actions.SizedEmbeddableEditor" />
     </file>
   </root>
   <root nodeRef="r:147fb550-8026-46fe-830c-81449036a4c3(jetbrains.mps.java.workbench.actions)/6812098398776640295">
