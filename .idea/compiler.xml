@@ -331,7 +331,6 @@
       <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.plugin/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.quotation/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.structure/source_gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.text/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-devkit/languages/pluginSolutions/lang.typesystem.devkit/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-diagram-editor/languages/jetbrains.mps.lang.editor.diagram/generator/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/plugins/mps-diagram-editor/languages/jetbrains.mps.lang.editor.diagram/source_gen" includeSubdirectories="true" />
@@ -819,6 +818,7 @@
       <directory url="file://$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/baseLanguage.lightweightdsl/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/lang.core/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/lang.script/source_gen" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/lang.text/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/workbench/mps-workbench/pluginSolutions/lang.typesystem/source_gen" includeSubdirectories="true" />
       <directory url="file://$PROJECT_DIR$/IdeaPlugin" includeSubdirectories="true" />
     </excludeFromCompile>
