@@ -12,6 +12,7 @@ import org.jetbrains.mps.openapi.language.SConcept;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.SNodeMatcher;
+import java.util.Iterator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import java.util.function.BiPredicate;
@@ -101,6 +102,27 @@ public class ChangeMethodSignatureParameters {
     return isPackagePrivate || isPrivate || isProtected;
   }
 
+  public boolean areThrowsUpdated() {
+    if (ListSequence.fromList(SLinkOperations.getChildren(myMethod, LINKS.throwsItem$CdW$)).count() != ListSequence.fromList(SLinkOperations.getChildren(myOldMethod, LINKS.throwsItem$CdW$)).count()) {
+      return true;
+    }
+    SNodeMatcher matcher = new SNodeMatcher();
+    {
+      Iterator<SNode> left_it = ListSequence.fromList(SLinkOperations.getChildren(myMethod, LINKS.throwsItem$CdW$)).iterator();
+      Iterator<SNode> right_it = ListSequence.fromList(SLinkOperations.getChildren(myOldMethod, LINKS.throwsItem$CdW$)).iterator();
+      SNode left_var;
+      SNode right_var;
+      while (left_it.hasNext() && right_it.hasNext()) {
+        left_var = left_it.next();
+        right_var = right_it.next();
+        if (!(matcher.test(left_var, right_var))) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   public boolean hasChanges() {
     return !(new SNodeMatcher().with(new SNodeMatcher.SameOrderChildMatch() {
       @Override
@@ -118,6 +140,7 @@ public class ChangeMethodSignatureParameters {
   private static final class LINKS {
     /*package*/ static final SContainmentLink parameter$5xBj = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter");
     /*package*/ static final SContainmentLink visibility$Yyua = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x112670d273fL, 0x112670d886aL, "visibility");
+    /*package*/ static final SContainmentLink throwsItem$CdW$ = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0x10f383d6949L, "throwsItem");
     /*package*/ static final SContainmentLink body$5xQk = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1ffL, "body");
     /*package*/ static final SContainmentLink returnType$5xoi = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0xf8cc56b1fcL, 0xf8cc56b1fdL, "returnType");
   }

@@ -69,10 +69,13 @@ public class ChangeMethodSignatureRefactoring {
     this.introduceParameterSubstitute();
     this.changeParameters();
 
-    ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.throwsItem$CdW$)).clear();
-    for (SNode throwItem : ListSequence.fromList(SLinkOperations.getChildren(this.myParameters.getDeclaration(), LINKS.throwsItem$CdW$))) {
-      ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.throwsItem$CdW$)).addElement(SNodeOperations.copyNode(throwItem));
+    if (myParameters.areThrowsUpdated()) {
+      ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.throwsItem$CdW$)).clear();
+      for (SNode throwItem : ListSequence.fromList(SLinkOperations.getChildren(this.myParameters.getDeclaration(), LINKS.throwsItem$CdW$))) {
+        ListSequence.fromList(SLinkOperations.getChildren(this.myDeclaration, LINKS.throwsItem$CdW$)).addElement(SNodeOperations.copyNode(throwItem));
+      }
     }
+
     for (SNode node : ListSequence.fromList(this.myUsages)) {
       MethodCallAdapter call = new MethodCallAdapter(node);
       List<SNode> oldArgs = ListSequence.fromListWithValues(new ArrayList<SNode>(), call.getMethodArguments());
