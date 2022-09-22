@@ -198,6 +198,7 @@
       <zipfileset file="${mps_home}/languages/core/stub/MPS.TextGen/MPS.TextGen.msd" prefix="modules/MPS.TextGen" />
       <zipfileset file="${mps_home}/languages/core/stub/jdom/org.jdom.msd" prefix="modules/org.jdom" />
       <zipfileset file="${mps_home}/languages/core/stub/netty/io.netty.msd" prefix="modules/io.netty" />
+      <zipfileset file="${mps_home}/languages/core/stub/trove/gnu.trove.msd" prefix="modules/gnu.trove" />
     </jar>
     <mkdir dir="${build.layout}/languages/devkits" />
     <mkdir dir="${build.tmp}/default/jetbrains.mps.devkit.bootstrap-languages.jar" />
@@ -16528,6 +16529,7 @@
         <module file="${mps_home}/languages/core/stub/MPS.OpenAPI/MPS.OpenAPI.msd" />
         <module file="${mps_home}/languages/core/stub/MPS.Platform/MPS.Platform.msd" />
         <module file="${mps_home}/languages/core/stub/MPS.TextGen/MPS.TextGen.msd" />
+        <module file="${mps_home}/languages/core/stub/trove/gnu.trove.msd" />
         <module file="${mps_home}/languages/core/stub/netty/io.netty.msd" />
         <module file="${mps_home}/languages/baseLanguage/references/runtime/jetbrains.mps.baseLanguage.references.runtime.msd" />
         <module file="${mps_home}/core/aspects/behavior/behavior-api/jetbrains.mps.lang.behavior.api.msd" />
