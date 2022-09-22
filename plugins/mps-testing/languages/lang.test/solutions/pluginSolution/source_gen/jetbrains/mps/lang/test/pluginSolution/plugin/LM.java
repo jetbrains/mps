@@ -55,4 +55,13 @@ import java.util.ArrayList;
     }
     return rv;
   }
+
+  public boolean isOrderChanged() {
+    for (int i = 0; i < myIndex.length; i++) {
+      if (myIndex[i] != i) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
