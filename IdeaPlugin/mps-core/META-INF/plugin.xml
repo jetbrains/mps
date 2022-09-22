@@ -101,9 +101,6 @@
     <component>
       <implementation-class>jetbrains.mps.idea.core.project.module.ModuleMPSSupportInit</implementation-class>
     </component>
-    <component>
-      <implementation-class>jetbrains.mps.idea.core.project.stubs.MultipleSdkProblemNotifier</implementation-class>
-    </component>
   </project-components>
 
   <extensionPoints>
@@ -171,6 +168,8 @@
     <projectService serviceImplementation="jetbrains.mps.ide.make.MakeServiceConfiguration"/>
     <applicationService serviceImplementation="jetbrains.mps.ide.projectView.ProjectViewSelectInProvider"/>
     <applicationService serviceImplementation="jetbrains.mps.ide.platform.watching.FileSystemListenersContainer"/>
+    <projectService serviceImplementation="jetbrains.mps.idea.core.project.stubs.MultipleSdkProblemNotifier" />
+    <notificationGroup id="MPS facet" displayType="BALLOON" isLogByDefault="false"/>
   </extensions>
 
   <extensions defaultExtensionNs="jetbrains.mps">

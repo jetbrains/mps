@@ -150,13 +150,13 @@ public class SolutionIdea extends Solution {
     String versionString = sdk.getVersionString();
     JavaSdkVersion sdkVersion = JavaSdkVersion.fromVersionString(versionString);
     if (sdkVersion == null || !sdkVersion.isAtLeast(JavaSdkVersion.JDK_11)) {
-      myModule.getProject().getComponent(MultipleSdkProblemNotifier.class).reportIncorrectJDK(myModule, versionString);
+      MultipleSdkProblemNotifier.getInstance(myModule.getProject()).reportIncorrectJDK(myModule, versionString);
     }
 
     try {
       ApplicationManager.getApplication().getComponent(JdkStubSolutionManager.class).claimSdk(myModule);
     } catch (final DifferentSdkException e) {
-      myModule.getProject().getComponent(MultipleSdkProblemNotifier.class).reportSdkProblem(myModule, e);
+      MultipleSdkProblemNotifier.getInstance(myModule.getProject()).reportSdkProblem(myModule, e);
     }
   }
 
