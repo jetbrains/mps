@@ -32,6 +32,7 @@ import com.intellij.ui.AnActionButton;
     myNorthLabel = new JBLabel("");
     myNorthLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
     init();
+    setOKActionEnabled(false);
   }
 
   public void setNorthPanelIcon(Icon icon) {
@@ -79,6 +80,7 @@ import com.intellij.ui.AnActionButton;
           }
           selectionModel.addSelectionInterval(index1 + 1, index2 + 1);
         }
+        setOKActionEnabled(myDataModel.isOrderChanged());
       }
     });
     decorator.setMoveUpActionName("Mode Up");
@@ -100,6 +102,7 @@ import com.intellij.ui.AnActionButton;
           }
           selectionModel.addSelectionInterval(index1 - 1, index2 - 1);
         }
+        setOKActionEnabled(myDataModel.isOrderChanged());
       }
     });
     return decorator.createPanel();

@@ -7,11 +7,12 @@ import javax.swing.Icon;
 import jetbrains.mps.workbench.action.ActionAccess;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import java.util.Map;
-import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
+import jetbrains.mps.persistence.FilePerRootDataSource;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.mps.openapi.model.SModel;
 import org.jetbrains.mps.openapi.model.EditableSModel;
 import jetbrains.mps.project.MPSProject;
-import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import jetbrains.mps.ide.icons.GlobalIconManager;
 import org.jetbrains.mps.openapi.model.SNode;
@@ -20,6 +21,8 @@ import java.util.List;
 import org.jetbrains.mps.openapi.model.SNodeId;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.extapi.model.SModelDescriptorStub;
+import com.intellij.notification.Notification;
+import com.intellij.notification.NotificationType;
 
 public class ReorderModelRoots_Action extends BaseAction {
   private static final Icon ICON = null;
@@ -32,6 +35,14 @@ public class ReorderModelRoots_Action extends BaseAction {
   @Override
   public boolean isDumbAware() {
     return true;
+  }
+  @Override
+  public boolean isApplicable(AnActionEvent event, final Map<String, Object> _params) {
+    return !(event.getData(MPSCommonDataKeys.MODEL).getSource() instanceof FilePerRootDataSource);
+  }
+  @Override
+  public void doUpdate(@NotNull AnActionEvent event, final Map<String, Object> _params) {
+    this.setEnabledState(event.getPresentation(), this.isApplicable(event, _params));
   }
   @Override
   protected boolean collectActionData(AnActionEvent event, final Map<String, Object> _params) {
@@ -101,6 +112,11 @@ public class ReorderModelRoots_Action extends BaseAction {
         modelImpl.leaveUpdateMode();
         ((EditableSModel) model).save();
       });
+      String content = "The order of the root nodes in the model file was changed.\nOrder of nodes as seen in Logical View not necessarily reflects that in model file";
+      // I know I'd rather have group registered in XML, but it's MPS-managed code, can't do it here.
+      // There's no generic group I could use (didn't find any), nor there's any MPS mechanism to use.
+      Notification n = new Notification("", event.getPresentation().getText(), content, NotificationType.INFORMATION);
+      n.notify(event.getData(MPSCommonDataKeys.MPS_PROJECT).getProject());
     }
   }
 }
