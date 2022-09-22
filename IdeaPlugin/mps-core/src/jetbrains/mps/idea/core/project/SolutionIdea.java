@@ -101,7 +101,7 @@ public class SolutionIdea extends Solution {
 
     // having it before call to setModuleDescriptor() (which should be removed by the way) because it leads to
     // updateModelSet() which sends modelAdded events
-    addModuleListener(myModule.getProject().getComponent(PsiModelReloadListener.class).getModuleListener());
+    addModuleListener(PsiModelReloadListener.getInstance(myModule.getProject()).getModuleListener());
 
     // TODO: simply set solution descriptor local variable?
     setModuleDescriptor(descriptor);

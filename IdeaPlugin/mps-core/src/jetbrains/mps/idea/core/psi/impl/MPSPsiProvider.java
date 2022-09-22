@@ -263,7 +263,8 @@ public class MPSPsiProvider extends AbstractProjectComponent {
         // I.e. those root nodes cannot be added as children to a model when they are already children of another
         result.reload(model);
         models.put(modelRef, result);
-        model.addModelListener(myProject.getComponent(PsiModelReloadListener.class).getModelListener());
+        // bad smell: odd cycle, where PsiModelReloadListener access MPSPsiProvider, and MPSPsiProvider needs PsiModelReloadListener
+        model.addModelListener(PsiModelReloadListener.getInstance(myProject).getModelListener());
       }
       return result;
     }
