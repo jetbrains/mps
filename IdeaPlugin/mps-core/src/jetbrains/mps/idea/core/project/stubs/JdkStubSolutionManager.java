@@ -29,11 +29,10 @@ import com.intellij.openapi.projectRoots.impl.MockSdk;
 import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.roots.OrderRootType;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.util.messages.MessageBusConnection;
-import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.project.ProjectHelper;
+import jetbrains.mps.idea.core.MPSBundle;
 import jetbrains.mps.idea.core.project.StubSolutionIdea;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.ModuleId;
@@ -63,13 +62,10 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
 
   public static final String JAVA_SDK_TYPE = "JavaSDK";
   private static final String IDEA_SDK_TYPE = "IDEA JDK";
-  private final MPSCoreComponents myComponents;
-
-  private ProjectJdkTable myTable;
 
   // idea modules that need stubs for their java or idea SDKs
   // (only jdk or idea sdk, since we track them specifically)
-  private Set<Module> myModules = new HashSet<Module>();
+  private final Set<Module> myModules = new HashSet<Module>();
   private Sdk myJavaSdk;
   private Solution myJavaSdkSolution;
   private Sdk myIdeaSdk;
@@ -81,10 +77,7 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
     return false;
   }
 
-  @SuppressWarnings("UnusedParameters")
-  public JdkStubSolutionManager(MPSCoreComponents core, ProjectJdkTable table) {
-    myTable = table;
-    myComponents = core;
+  public JdkStubSolutionManager() {
   }
 
   public Solution getModuleSdkSolution(Module module) {
@@ -166,7 +159,7 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
   }
 
   private VFSManager getVFSManager() {
-    return myComponents.getPlatform().findComponent(VFSManager.class);
+    return MPSCoreComponents.getInstance().getPlatform().findComponent(VFSManager.class);
   }
 
   public void releaseSdk(Module module) {
@@ -283,7 +276,7 @@ public class JdkStubSolutionManager extends AbstractJavaStubSolutionManager impl
     VirtualFile[] roots = sdk.getRootProvider().getFiles(OrderRootType.CLASSES);
     SdkTypeId jdkTypeId = JavaSdk.getInstance();
 
-    for (Sdk jdk : myTable.getSdksOfType(jdkTypeId)) {
+    for (Sdk jdk : ProjectJdkTable.getInstance().getSdksOfType(jdkTypeId)) {
       String homePath = jdk.getHomePath();
       for (VirtualFile root : roots) {
         if (root.getPath().startsWith(homePath)) return jdk;
