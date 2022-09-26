@@ -15,15 +15,11 @@
  */
 package jetbrains.mps.idea.core.facet;
 
-import com.intellij.ProjectTopics;
 import com.intellij.facet.Facet;
 import com.intellij.facet.FacetType;
-import com.intellij.ide.plugins.IdeaPluginDescriptor;
-import com.intellij.ide.plugins.PluginManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.Module;
-import com.intellij.openapi.project.ModuleListener;
-import com.intellij.openapi.project.Project;
+import com.intellij.openapi.startup.StartupManager;
 import com.intellij.util.messages.MessageBusConnection;
 import jetbrains.mps.ide.messages.MessagesViewTool;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -34,6 +30,7 @@ import jetbrains.mps.messages.MessageKind;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.project.structure.modules.SolutionDescriptor;
+import jetbrains.mps.smodel.ModelWriteRunnable;
 import jetbrains.mps.smodel.ModuleDependencyVersions;
 import jetbrains.mps.smodel.ModuleRepositoryFacade;
 import jetbrains.mps.smodel.language.LanguageRegistry;
@@ -69,7 +66,7 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
 
   @Override
   public void initFacet() {
-    myMpsProject.getModelAccess().runWriteAction(() -> {
+    StartupManager.getInstance(getModule().getProject()).runWhenProjectIsInitialized(new ModelWriteRunnable(myMpsProject.getModelAccess(), () -> {
       SolutionDescriptor solutionDescriptor = getConfiguration().createSolutionDescriptor();
       final FileSystemBridge fsb = myMpsProject.getFileSystem();
       final IFile df = fsb.fromVirtualFile(getModule().getModuleFile());
@@ -80,9 +77,9 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
       solutionDescriptor.setNamespace(getModule().getName());
       Solution solution = new SolutionIdea(getModule(), solutionDescriptor, df);
 
-      com.intellij.openapi.project.Project project = getModule().getProject();
+      final com.intellij.openapi.project.Project project = getModule().getProject();
 
-      SRepository repository = myMpsProject.getRepository();
+      final SRepository repository = myMpsProject.getRepository();
       ModuleRepositoryFacade facade = new ModuleRepositoryFacade(repository);
       SModule previousModule = facade.getModule(solutionDescriptor.getModuleReference());
       if (previousModule != null) {
@@ -101,10 +98,11 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
 
       myMpsProject.addModule(mySolution = solution);
 
-      new ModuleDependencyVersions(myMpsProject.getComponent(LanguageRegistry.class), myMpsProject.getRepository()).update(mySolution);
+      // ModuleDependencyVersions.update triggers model loading, which may access directory index.
+      new ModuleDependencyVersions(myMpsProject.getComponent(LanguageRegistry.class), repository).update(mySolution);
 
       LOG.info(MPSBundle.message("facet.module.loaded", MPSFacet.this.mySolution.getModuleName()));
-    });
+    }));
   }
 
   @Override
