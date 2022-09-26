@@ -54,14 +54,14 @@ public class MPSFacet extends Facet<MPSFacetConfiguration> {
     MessageBusConnection busConnection = module.getProject().getMessageBus().connect(this);
     // FIXME bad smell: according to MPS-34809 stacktrace, IDEA does initFacet() without the need
     //       for this hack!
-    busConnection.subscribe(ProjectTopics.MODULES, new ModuleListener() {
-      @Override
-      public void moduleAdded(@NotNull Project project, @NotNull Module module) {
-        if (!wasInitialized()) {
-          initFacet();
-        }
-      }
-    });
+//    busConnection.subscribe(ProjectTopics.MODULES, new ModuleListener() {
+//      @Override
+//      public void moduleAdded(@NotNull Project project, @NotNull Module module) {
+//        if (!wasInitialized()) {
+//          initFacet();
+//        }
+//      }
+//    });
   }
 
   @Override
