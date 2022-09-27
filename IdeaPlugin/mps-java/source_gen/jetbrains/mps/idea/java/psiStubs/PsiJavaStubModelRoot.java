@@ -63,14 +63,14 @@ public class PsiJavaStubModelRoot extends ModelRootBase implements JavaPsiListen
   }
   @Override
   public SModel getModel(SModelId id) {
-    // TODO 
+    // TODO
     return null;
   }
   @Override
   public void attach() {
     super.attach();
 
-    //  start to listen 
+    //  start to listen
     PsiChangesWatcher w = myIdeaModule.getProject().getComponent(PsiChangesWatcher.class);
     w.addListener(this);
   }
@@ -89,7 +89,7 @@ public class PsiJavaStubModelRoot extends ModelRootBase implements JavaPsiListen
 
     for (VirtualFile root : sourceRoots) {
       PsiDirectory dir = psiMgr.findDirectory(root);
-      // judging by RootModelBase.getSourceRoots() only valid source roots will be returned, but we'll be paranoid 
+      // judging by RootModelBase.getSourceRoots() only valid source roots will be returned, but we'll be paranoid
       if (dir == null) {
         continue;
       }
@@ -150,9 +150,9 @@ public class PsiJavaStubModelRoot extends ModelRootBase implements JavaPsiListen
   @Override
   public void psiChanged(JavaPsiListener.PsiEvent event) {
 
-    // TODO re-write to sequences and any 
+    // TODO re-write to sequences and any
 
-    // here we simply decide if we have to update 
+    // here we simply decide if we have to update
     for (PsiFileSystemItem fsItem : event.getCreated()) {
       if (importantFsItem(fsItem)) {
         update();

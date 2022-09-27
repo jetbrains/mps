@@ -48,7 +48,7 @@ public class JavaForeignIdBuilder {
     }
     String prefix;
     if (parent instanceof PsiFile) {
-      // element is root 
+      // element is root
       prefix = SNodeId.Foreign.ID_PREFIX;
     } else {
       org.jetbrains.mps.openapi.model.SNodeId parentId = computeNodeId(parent);
@@ -58,7 +58,7 @@ public class JavaForeignIdBuilder {
       prefix = parentId.toString() + ".";
     }
 
-    // e.g. this was an anonymous class and we don't compute nodeId for parent 
+    // e.g. this was an anonymous class and we don't compute nodeId for parent
     if (prefix == null) {
       return null;
     }
@@ -73,12 +73,12 @@ public class JavaForeignIdBuilder {
     }
     String packageName = ((PsiJavaFile) file).getPackageName();
 
-    // we want to know mps module id 
+    // we want to know mps module id
     SModule mpsModule = null;
     Project project = element.getProject();
     VirtualFile vfile = file.getVirtualFile();
-    // MPS-17704: there was situation when an element with null virtual file came from MPSReferenceSearch 
-    // element was the target of search 
+    // MPS-17704: there was situation when an element with null virtual file came from MPSReferenceSearch
+    // element was the target of search
     if (vfile == null) {
       return null;
     }
@@ -98,11 +98,11 @@ public class JavaForeignIdBuilder {
     }
     JavaPackageNameStub pnStub = new JavaPackageNameStub(packageName);
     if (pnStub.isDefaultPackage()) {
-      // MPS doesn't deal with nodes in default package as it's impossible to create a model 
-      // that corresponds to empty package (model has non-empty name), hence null. 
-      // In an unlikely case we still need to reference Java classes from default package, perhaps we could do it with 
-      // an approach computeModelReference(string,string) used to suggest (but seemed have never used) 
-      // (check initial version of this class). 
+      // MPS doesn't deal with nodes in default package as it's impossible to create a model
+      // that corresponds to empty package (model has non-empty name), hence null.
+      // In an unlikely case we still need to reference Java classes from default package, perhaps we could do it with
+      // an approach computeModelReference(string,string) used to suggest (but seemed have never used)
+      // (check initial version of this class).
       return null;
     }
     return pnStub.asModelReference(mpsModule.getModuleReference());
@@ -112,7 +112,7 @@ public class JavaForeignIdBuilder {
     StringBuilder sb = new StringBuilder(prefix);
 
     if (element instanceof PsiClass || element instanceof PsiField) {
-      // simply take the name 
+      // simply take the name
       String name = ((PsiNamedElement) element).getName();
       if (name == null) {
         return null;
@@ -133,9 +133,9 @@ public class JavaForeignIdBuilder {
       sb.append('(');
 
       for (PsiParameter param : method.getParameterList().getParameters()) {
-        // for classess we want their name exactly how it is written in the source file 
-        // (either short name, partially qualified or fully qualified) 
-        // to make it equal to what we have in eclipse stubs 
+        // for classess we want their name exactly how it is written in the source file
+        // (either short name, partially qualified or fully qualified)
+        // to make it equal to what we have in eclipse stubs
 
         PsiTypeElement psiTypeElem = param.getTypeElement();
         PsiType psiType = param.getType();

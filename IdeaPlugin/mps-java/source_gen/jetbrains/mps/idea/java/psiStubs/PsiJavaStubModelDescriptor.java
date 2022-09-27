@@ -109,11 +109,11 @@ public class PsiJavaStubModelDescriptor extends RegularModelDescriptor implement
 
             for (PsiClass cls : jf.getClasses()) {
               SNode node = converter.convertClass(cls);
-              if (SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$hJ) && (javaImports != null)) {
-                new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$IN).set(SNodeOperations.cast(node, CONCEPTS.Classifier$hJ), javaImports);
+              if (SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$Ix) && (javaImports != null)) {
+                new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).set(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), javaImports);
               }
-              // TODO check for duplicate ids (in java sources there may be 2 classes with the same name 
-              //  which is an error but none the less) 
+              // TODO check for duplicate ids (in java sources there may be 2 classes with the same name
+              //  which is an error but none the less)
               into.addRootNode(node);
               SetSequence.fromSet(roots).addElement(node.getNodeId());
             }
@@ -132,15 +132,15 @@ public class PsiJavaStubModelDescriptor extends RegularModelDescriptor implement
   }
   @Override
   public void changed(DataSource source) {
-    // ignore, we should never receive this one 
-    // always the more detailed changed(source, psiEvent) 
+    // ignore, we should never receive this one
+    // always the more detailed changed(source, psiEvent)
   }
   @Override
   public synchronized void changed(DataSource source, final PsiJavaStubEvent event) {
 
-    // locking could possibly be made more fine-grained 
+    // locking could possibly be made more fine-grained
 
-    // already attached, but not createModel'd yet? 
+    // already attached, but not createModel'd yet?
     final SModel actualModel = getCurrentModelInternal();
     if (actualModel == null) {
       return;
@@ -159,8 +159,8 @@ public class PsiJavaStubModelDescriptor extends RegularModelDescriptor implement
 
     for (PsiJavaFile file : event.needReparse()) {
       if (!(file.isValid())) {
-        // going upwards and trying to find the valid file with this filename... 
-        // it should probably be removed, looks like a hack 
+        // going upwards and trying to find the valid file with this filename...
+        // it should probably be removed, looks like a hack
         String name = file.getName();
         for (PsiFile f : file.getParent().getFiles()) {
           if (name.equals(f.getName()) && f instanceof PsiJavaFile) {
@@ -169,7 +169,7 @@ public class PsiJavaStubModelDescriptor extends RegularModelDescriptor implement
           }
         }
       }
-      // it's still not valid 
+      // it's still not valid
       if (!(file.isValid())) {
         continue;
       }
@@ -183,8 +183,8 @@ public class PsiJavaStubModelDescriptor extends RegularModelDescriptor implement
 
       for (PsiClass cls : file.getClasses()) {
         SNode node = converter.convertClass(cls);
-        if (SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$hJ) && (javaImports != null)) {
-          new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$IN).set(SNodeOperations.cast(node, CONCEPTS.Classifier$hJ), javaImports);
+        if (SNodeOperations.isInstanceOf(node, CONCEPTS.Classifier$Ix) && (javaImports != null)) {
+          new IAttributeDescriptor.NodeAttribute(CONCEPTS.JavaImports$b_).set(SNodeOperations.cast(node, CONCEPTS.Classifier$Ix), javaImports);
         }
 
         modelCopy.addRootNode(node);
@@ -213,12 +213,12 @@ public class PsiJavaStubModelDescriptor extends RegularModelDescriptor implement
       }
 
       SNode javaImport = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, "jetbrains.mps.baseLanguage.structure.JavaImport"));
-      SPropertyOperations.assign(javaImport, PROPS.onDemand$6eZw, imp.isOnDemand());
-      SPropertyOperations.assign(javaImport, PROPS.static$TWVW, imp instanceof PsiImportStaticStatement);
+      SPropertyOperations.assign(javaImport, PROPS.onDemand$Gmdi, imp.isOnDemand());
+      SPropertyOperations.assign(javaImport, PROPS.static$JAuQ, imp instanceof PsiImportStaticStatement);
       String qName = ref.getQualifiedName();
-      SPropertyOperations.assign(javaImport, PROPS.tokens$DqHu, qName);
+      SPropertyOperations.assign(javaImport, PROPS.tokens$J1uk, qName);
 
-      ListSequence.fromList(SLinkOperations.getChildren(javaImports, LINKS.entries$9FEq)).addElement(javaImport);
+      ListSequence.fromList(SLinkOperations.getChildren(javaImports, LINKS.entries$neZo)).addElement(javaImport);
     }
     return javaImports;
   }
@@ -267,17 +267,17 @@ public class PsiJavaStubModelDescriptor extends RegularModelDescriptor implement
   }
 
   private static final class CONCEPTS {
-    /*package*/ static final SConcept Classifier$hJ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
-    /*package*/ static final SConcept JavaImports$IN = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, "jetbrains.mps.baseLanguage.structure.JavaImports");
+    /*package*/ static final SConcept Classifier$Ix = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier");
+    /*package*/ static final SConcept JavaImports$b_ = MetaAdapterFactory.getConcept(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, "jetbrains.mps.baseLanguage.structure.JavaImports");
   }
 
   private static final class PROPS {
-    /*package*/ static final SProperty onDemand$6eZw = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x64c0181e603bd0L, "onDemand");
-    /*package*/ static final SProperty static$TWVW = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x4d5c30eb30af1572L, "static");
-    /*package*/ static final SProperty tokens$DqHu = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
+    /*package*/ static final SProperty onDemand$Gmdi = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x64c0181e603bd0L, "onDemand");
+    /*package*/ static final SProperty static$JAuQ = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x64c0181e603bcfL, 0x4d5c30eb30af1572L, "static");
+    /*package*/ static final SProperty tokens$J1uk = MetaAdapterFactory.getProperty(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x5a98df4004080866L, 0x1996ec29712bdd92L, "tokens");
   }
 
   private static final class LINKS {
-    /*package*/ static final SContainmentLink entries$9FEq = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries");
+    /*package*/ static final SContainmentLink entries$neZo = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5L, 0xa443f952ceaf5816L, 0x53f7c33f069862f2L, 0x64c0181e6020a7L, "entries");
   }
 }
