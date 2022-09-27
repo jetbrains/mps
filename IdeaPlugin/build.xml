@@ -102,6 +102,11 @@
         <include name="**/*.jar"/>
       </fileset>
     </copy>
+    <copy todir="${base_dir}/IdeaPlugin/mps-java/">
+      <zipfileset src="${base_dir}/IdeaPlugin/build/artifacts/mpsJavaPlatform/lib/java-platform.jar">
+        <include name="META-INF/*.xml"/>
+      </zipfileset>
+    </copy>
     <mkdir dir="${base_dir}/IdeaPlugin/mps-vcs/languages"/>
     <copy todir="${base_dir}/IdeaPlugin/mps-vcs/languages">
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsIdeaVcs/mps-vcs/languages"/>
