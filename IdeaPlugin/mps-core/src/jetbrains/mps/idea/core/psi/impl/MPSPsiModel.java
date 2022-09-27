@@ -18,7 +18,7 @@ package jetbrains.mps.idea.core.psi.impl;
 import com.intellij.ide.impl.ProjectViewSelectInTarget;
 import com.intellij.ide.projectView.impl.ProjectViewPane;
 import com.intellij.lang.FileASTNode;
-import com.intellij.openapi.util.Ref;
+import com.intellij.openapi.util.TextRange;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
@@ -135,14 +135,10 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
   public boolean isValid() {
     if (myPsiDirectory == null || !(myPsiDirectory.isValid())) return false;
     final SRepository repository = getProjectRepository();
-    final Ref<Boolean> result = new Ref<>(false);
 
-    repository.getModelAccess().runReadAction(() -> {
-      SModel model = myModelReference.resolve(repository);
-      result.set(model != null);
+    return repository.getModelAccess().computeReadAction(() -> {
+      return myModelReference.resolve(repository) != null;
     });
-
-    return result.get();
   }
 
   @Override
@@ -157,6 +153,10 @@ public class MPSPsiModel extends MPSPsiNodeBase implements PsiDirectory {
     return false;
   }
 
+  @Override
+  public TextRange getTextRange() {
+    return null;
+  }
 
   @Override
   public String toString() {

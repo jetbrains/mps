@@ -17,6 +17,7 @@ package jetbrains.mps.idea.java.psi.impl;
 
 import com.intellij.codeInsight.completion.scope.JavaCompletionHints;
 import com.intellij.openapi.util.Condition;
+import com.intellij.openapi.util.TextRange;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.JavaPsiFacade;
 import com.intellij.psi.PsiClass;
@@ -67,6 +68,11 @@ public class MPSPackage extends MPSPsiNodeBase implements PsiPackage {
   @Override
   public PsiManager getManager() {
     return myPsiModel.getManager();
+  }
+
+  @Override
+  public TextRange getTextRange() {
+    return null;
   }
 
   @Override
