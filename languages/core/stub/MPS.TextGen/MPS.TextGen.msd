@@ -2,7 +2,7 @@
 <solution name="MPS.TextGen" uuid="7124e466-fc92-4803-a656-d7a6b7eb3910" moduleVersion="0" compileInMPS="false">
   <readOnlyStubs/>
   <models>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib" type="java_classes">
       <sourceRoot location="mps-textgen.jar" />
     </modelRoot>
   </models>
@@ -11,7 +11,7 @@
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${platform_lib}/mps-textgen.jar" />
+    <stubModelEntry path="${mps_home}/lib/mps-textgen.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>

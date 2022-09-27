@@ -2,7 +2,7 @@
 <solution name="MPS.Generator" uuid="215c4c45-ba99-49f5-9ab7-4b6901a63cfd" moduleVersion="0" compileInMPS="false">
   <readOnlyStubs/>
   <models>
-    <modelRoot contentPath="${platform_lib}" type="java_classes">
+    <modelRoot contentPath="${mps_home}/lib" type="java_classes">
       <sourceRoot location="mps-generator.jar" />
     </modelRoot>
   </models>
@@ -11,7 +11,7 @@
     <facet pluginId="com.intellij" type="ideaPlugin" />
   </facets>
   <stubModelEntries>
-    <stubModelEntry path="${platform_lib}/mps-generator.jar" />
+    <stubModelEntry path="${mps_home}/lib/mps-generator.jar" />
   </stubModelEntries>
   <sourcePath />
   <dependencies>
