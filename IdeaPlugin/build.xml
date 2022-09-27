@@ -77,10 +77,10 @@
   </target>
 
   <target name="buildLibs" depends="checkLibs" unless="core.libs.found">
-    <antcall target="copyLibsFromLocalBuild"/>
+    <antcall target="buildLocalAndCopy"/>
   </target>
 
-  <target name="copyLibsFromLocalBuild" depends="buildCore, buildTests, loadIdeaPathVar">
+  <target name="buildLocalAndCopy" depends="buildCore, buildTests, loadIdeaPathVar">
     <mkdir dir="${base_dir}/IdeaPlugin/mps-core/lib"/>
     <copy todir="${base_dir}/IdeaPlugin/mps-core/lib">
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsBootstrapCore/lib"/>
@@ -128,8 +128,18 @@
     <copy todir="${base_dir}/IdeaPlugin/mps.editor.tests">
       <fileset dir="${base_dir}/IdeaPlugin/build/artifacts/mpsEditorTestsPlugin/mps.editor.tests"/>
     </copy>
+    <!--
+      Developers with IDEA for macOS have build.txt under <app>/Contents/Resources/, whereas
+      Linux and Windows keep this file as a sibling to bin/, lib/ and plugins/
+    -->
+    <condition property="idea-build-txt-location" value="${ideaPath}/Resources/build.txt" else="${ideaPath}/build.txt">
+      <and>
+        <os family="mac"/>
+        <os family="unix"/>
+      </and>
+    </condition>
     <copy todir="${base_dir}/IdeaPlugin/idea_home" failonerror="false" overwrite="true">
-      <file file="${ideaPath}/build.txt"/>
+      <file file="${idea-build-txt-location}"/>
     </copy>
   </target>
 
@@ -149,13 +159,14 @@
     <copy todir="${base_dir}/IdeaPlugin/mps-vcs/lib">
       <fileset dir="${ideaPlugins}/mps-vcs/lib"/>
     </copy>
+    <!-- XXX why there's no copy for mps-migration libraries?! -->
   </target>
 
-  <target name="clean" depends="cleanLibs, cleanSendbox">
+  <target name="clean" depends="cleanLibs, cleanSandbox">
     <delete dir="${build.home}"/>
   </target>
 
-  <target name="cleanSendbox">
+  <target name="cleanSandbox">
     <delete dir="${sandbox.dir}"/>
   </target>
 
