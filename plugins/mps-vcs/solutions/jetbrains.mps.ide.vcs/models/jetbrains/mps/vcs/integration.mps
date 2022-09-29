@@ -4,6 +4,7 @@
   <languages>
     <use id="774bf8a0-62e5-41e1-af63-f4812e60e48b" name="jetbrains.mps.baseLanguage.checkedDots" version="-1" />
     <use id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage" version="12" />
+    <use id="c7fb639f-be78-4307-89b0-b5959c3fa8c8" name="jetbrains.mps.lang.text" version="0" />
   </languages>
   <imports>
     <import index="guwi" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.io(JDK/)" />
@@ -31,10 +32,15 @@
     <import index="p3o1" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs.newvfs.events(MPS.IDEA/)" />
     <import index="1ctc" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.stream(JDK/)" />
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
+    <import index="2ny0" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.workbench.actions(MPS.Workbench/)" />
+    <import index="nos0" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project.ex(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
       <concept id="1080223426719" name="jetbrains.mps.baseLanguage.structure.OrExpression" flags="nn" index="22lmx$" />
+      <concept id="1082485599095" name="jetbrains.mps.baseLanguage.structure.BlockStatement" flags="nn" index="9aQIb">
+        <child id="1082485599096" name="statements" index="9aQI4" />
+      </concept>
       <concept id="1215693861676" name="jetbrains.mps.baseLanguage.structure.BaseAssignmentExpression" flags="nn" index="d038R">
         <child id="1068498886297" name="rValue" index="37vLTx" />
         <child id="1068498886295" name="lValue" index="37vLTJ" />
@@ -120,6 +126,7 @@
       </concept>
       <concept id="1068580123157" name="jetbrains.mps.baseLanguage.structure.Statement" flags="nn" index="3clFbH" />
       <concept id="1068580123159" name="jetbrains.mps.baseLanguage.structure.IfStatement" flags="nn" index="3clFbJ">
+        <child id="1082485599094" name="ifFalseStatement" index="9aQIa" />
         <child id="1068580123160" name="condition" index="3clFbw" />
         <child id="1068580123161" name="ifTrue" index="3clFbx" />
       </concept>
@@ -338,34 +345,61 @@
             </node>
           </node>
           <node concept="3clFbS" id="33vUo2uvw5R" role="3clFbx">
-            <node concept="3clFbF" id="1H4V7QnzGF9" role="3cqZAp">
-              <node concept="2YIFZM" id="5bF_UrCy8D7" role="3clFbG">
-                <ref role="37wK5l" to="btn2:~ProjectUtil.openProject(java.nio.file.Path,com.intellij.ide.impl.OpenProjectTask)" resolve="openProject" />
-                <ref role="1Pybhc" to="btn2:~ProjectUtil" resolve="ProjectUtil" />
-                <node concept="2OqwBi" id="5bF_UrCy8D8" role="37wK5m">
-                  <node concept="AH0OO" id="5bF_UrCy8D9" role="2Oq$k0">
-                    <node concept="37vLTw" id="5bF_UrCy8Da" role="AHHXb">
+            <node concept="3cpWs8" id="4Z7jVP8Lcvr" role="3cqZAp">
+              <node concept="3cpWsn" id="4Z7jVP8Lcvq" role="3cpWs9">
+                <property role="3TUv4t" value="true" />
+                <property role="TrG5h" value="virtualFile" />
+                <node concept="3uibUv" id="4Z7jVP8Lcvs" role="1tU5fm">
+                  <ref role="3uigEE" to="eoo2:~Path" resolve="Path" />
+                </node>
+                <node concept="2OqwBi" id="4Z7jVP8LcUZ" role="33vP2m">
+                  <node concept="AH0OO" id="4Z7jVP8Lcvu" role="2Oq$k0">
+                    <node concept="37vLTw" id="4Z7jVP8Lcvv" role="AHHXb">
                       <ref role="3cqZAo" node="33vUo2uvw5n" resolve="files" />
                     </node>
-                    <node concept="3cmrfG" id="5bF_UrCy8Db" role="AHEQo">
+                    <node concept="3cmrfG" id="4Z7jVP8Lcvw" role="AHEQo">
                       <property role="3cmrfH" value="0" />
                     </node>
                   </node>
-                  <node concept="liA8E" id="5bF_UrCy8Dc" role="2OqNvi">
+                  <node concept="liA8E" id="4Z7jVP8LdM$" role="2OqNvi">
                     <ref role="37wK5l" to="guwi:~File.toPath()" resolve="toPath" />
                   </node>
                 </node>
-                <node concept="2OqwBi" id="5VhDs5Z1kzR" role="37wK5m">
-                  <node concept="2YIFZM" id="5VhDs5Z1k4q" role="2Oq$k0">
-                    <ref role="37wK5l" to="btn2:~OpenProjectTask.build()" resolve="build" />
-                    <ref role="1Pybhc" to="btn2:~OpenProjectTask" resolve="OpenProjectTask" />
-                  </node>
-                  <node concept="liA8E" id="5VhDs5Z1kZC" role="2OqNvi">
-                    <ref role="37wK5l" to="btn2:~OpenProjectTask.withProjectToClose(com.intellij.openapi.project.Project)" resolve="withProjectToClose" />
-                    <node concept="37vLTw" id="5VhDs5Z1BVJ" role="37wK5m">
-                      <ref role="3cqZAo" node="33vUo2uvw5h" resolve="project" />
+              </node>
+            </node>
+            <node concept="3clFbJ" id="4Z7jVP8Lf3M" role="3cqZAp">
+              <node concept="3clFbS" id="4Z7jVP8Lf3O" role="3clFbx">
+                <node concept="3clFbF" id="4Z7jVP8LhvX" role="3cqZAp">
+                  <node concept="2YIFZM" id="4Z7jVP8LhNH" role="3clFbG">
+                    <ref role="37wK5l" to="btn2:~ProjectUtil.openProject(java.nio.file.Path,com.intellij.ide.impl.OpenProjectTask)" resolve="openProject" />
+                    <ref role="1Pybhc" to="btn2:~ProjectUtil" resolve="ProjectUtil" />
+                    <node concept="37vLTw" id="4Z7jVP8Lijg" role="37wK5m">
+                      <ref role="3cqZAo" node="4Z7jVP8Lcvq" resolve="virtualFile" />
+                    </node>
+                    <node concept="2OqwBi" id="4Z7jVP8LiMR" role="37wK5m">
+                      <node concept="2YIFZM" id="4Z7jVP8LiMS" role="2Oq$k0">
+                        <ref role="1Pybhc" to="btn2:~OpenProjectTask" resolve="OpenProjectTask" />
+                        <ref role="37wK5l" to="btn2:~OpenProjectTask.build()" resolve="build" />
+                      </node>
+                      <node concept="liA8E" id="4Z7jVP8LiMT" role="2OqNvi">
+                        <ref role="37wK5l" to="btn2:~OpenProjectTask.withProjectToClose(com.intellij.openapi.project.Project)" resolve="withProjectToClose" />
+                        <node concept="37vLTw" id="4Z7jVP8LiMU" role="37wK5m">
+                          <ref role="3cqZAo" node="33vUo2uvw5h" resolve="project" />
+                        </node>
+                      </node>
                     </node>
                   </node>
+                </node>
+                <node concept="3clFbH" id="4Z7jVP8Lf3N" role="3cqZAp" />
+              </node>
+              <node concept="2YIFZM" id="4Z7jVP8Lg8F" role="3clFbw">
+                <ref role="37wK5l" to="2ny0:~OpenMPSProjectTrustProjectHelper.checkTrust(java.nio.file.Path,com.intellij.openapi.project.Project)" resolve="checkTrust" />
+                <ref role="1Pybhc" to="2ny0:~OpenMPSProjectTrustProjectHelper" resolve="OpenMPSProjectTrustProjectHelper" />
+                <node concept="37vLTw" id="4Z7jVP8Lglr" role="37wK5m">
+                  <ref role="3cqZAo" node="4Z7jVP8Lcvq" resolve="virtualFile" />
+                </node>
+                <node concept="37vLTw" id="4Z7jVP8LgGU" role="37wK5m">
+                  <ref role="3cqZAo" node="33vUo2uvw5h" resolve="project" />
                 </node>
               </node>
             </node>
@@ -1546,6 +1580,204 @@
       </node>
       <node concept="3uibUv" id="57iyDtTeYqo" role="EKbjA">
         <ref role="3uigEE" to="uvcm:~BulkFileListener" resolve="BulkFileListener" />
+      </node>
+    </node>
+  </node>
+  <node concept="312cEu" id="4Z7jVP8LjLL">
+    <property role="TrG5h" value="ProjectDirMPSChekoutListener" />
+    <node concept="3Tm1VV" id="4Z7jVP8LjLM" role="1B3o_S" />
+    <node concept="3uibUv" id="4Z7jVP8LjQl" role="EKbjA">
+      <ref role="3uigEE" to="2lau:~CheckoutListener" resolve="CheckoutListener" />
+    </node>
+    <node concept="3clFb_" id="4Z7jVP8LjQL" role="jymVt">
+      <property role="TrG5h" value="processCheckedOutDirectory" />
+      <node concept="3Tm1VV" id="4Z7jVP8LjQM" role="1B3o_S" />
+      <node concept="10P_77" id="4Z7jVP8LjQO" role="3clF45" />
+      <node concept="37vLTG" id="4Z7jVP8LjQP" role="3clF46">
+        <property role="TrG5h" value="project" />
+        <property role="3TUv4t" value="true" />
+        <node concept="3uibUv" id="4Z7jVP8LjQQ" role="1tU5fm">
+          <ref role="3uigEE" to="4nm9:~Project" resolve="Project" />
+        </node>
+        <node concept="2AHcQZ" id="4Z7jVP8LjQR" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="37vLTG" id="4Z7jVP8LjQS" role="3clF46">
+        <property role="TrG5h" value="directory" />
+        <property role="3TUv4t" value="true" />
+        <node concept="3uibUv" id="4Z7jVP8LjQT" role="1tU5fm">
+          <ref role="3uigEE" to="eoo2:~Path" resolve="Path" />
+        </node>
+        <node concept="2AHcQZ" id="4Z7jVP8LjQU" role="2AJF6D">
+          <ref role="2AI5Lk" to="mhfm:~NotNull" resolve="NotNull" />
+        </node>
+      </node>
+      <node concept="3clFbS" id="4Z7jVP8LjQV" role="3clF47">
+        <node concept="3cpWs8" id="4Z7jVP8Lkyc" role="3cqZAp">
+          <node concept="3cpWsn" id="4Z7jVP8Lkyb" role="3cpWs9">
+            <property role="TrG5h" value="dotIdea" />
+            <node concept="3uibUv" id="4Z7jVP8Lkyd" role="1tU5fm">
+              <ref role="3uigEE" to="eoo2:~Path" resolve="Path" />
+            </node>
+            <node concept="2OqwBi" id="4Z7jVP8Lm12" role="33vP2m">
+              <node concept="37vLTw" id="4Z7jVP8LlQI" role="2Oq$k0">
+                <ref role="3cqZAo" node="4Z7jVP8LjQS" resolve="directory" />
+              </node>
+              <node concept="liA8E" id="4Z7jVP8Lm13" role="2OqNvi">
+                <ref role="37wK5l" to="eoo2:~Path.resolve(java.lang.String)" resolve="resolve" />
+                <node concept="10M0yZ" id="4Z7jVP8Lo_v" role="37wK5m">
+                  <ref role="3cqZAo" to="4nm9:~Project.DIRECTORY_STORE_FOLDER" resolve="DIRECTORY_STORE_FOLDER" />
+                  <ref role="1PxDUh" to="4nm9:~Project" resolve="Project" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="4Z7jVP8Lkyg" role="3cqZAp">
+          <node concept="3fqX7Q" id="4Z7jVP8Lkyh" role="3clFbw">
+            <node concept="2YIFZM" id="4Z7jVP8LkDY" role="3fr31v">
+              <ref role="1Pybhc" to="eoo2:~Files" resolve="Files" />
+              <ref role="37wK5l" to="eoo2:~Files.exists(java.nio.file.Path,java.nio.file.LinkOption...)" resolve="exists" />
+              <node concept="37vLTw" id="4Z7jVP8LkDZ" role="37wK5m">
+                <ref role="3cqZAo" node="4Z7jVP8Lkyb" resolve="dotIdea" />
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="4Z7jVP8Lkyl" role="3clFbx">
+            <node concept="3cpWs6" id="4Z7jVP8Lkym" role="3cqZAp">
+              <node concept="3clFbT" id="4Z7jVP8Lkyn" role="3cqZAk" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="4Z7jVP8Lkyp" role="3cqZAp">
+          <node concept="3cpWsn" id="4Z7jVP8Lkyo" role="3cpWs9">
+            <property role="3TUv4t" value="true" />
+            <property role="TrG5h" value="runnable" />
+            <node concept="3uibUv" id="4Z7jVP8Lkyq" role="1tU5fm">
+              <ref role="3uigEE" to="wyt6:~Runnable" resolve="Runnable" />
+            </node>
+            <node concept="2ShNRf" id="4Z7jVP8Lkyr" role="33vP2m">
+              <node concept="YeOm9" id="4Z7jVP8Lkys" role="2ShVmc">
+                <node concept="1Y3b0j" id="4Z7jVP8Lkyt" role="YeSDq">
+                  <ref role="1Y3XeK" to="wyt6:~Runnable" resolve="Runnable" />
+                  <ref role="37wK5l" to="wyt6:~Object.&lt;init&gt;()" resolve="Object" />
+                  <node concept="3clFb_" id="4Z7jVP8Lkyu" role="jymVt">
+                    <property role="TrG5h" value="run" />
+                    <node concept="2AHcQZ" id="4Z7jVP8Lkyv" role="2AJF6D">
+                      <ref role="2AI5Lk" to="wyt6:~Override" resolve="Override" />
+                    </node>
+                    <node concept="3clFbS" id="4Z7jVP8Lkyw" role="3clF47">
+                      <node concept="3clFbJ" id="4Z7jVP8Lkyx" role="3cqZAp">
+                        <node concept="2YIFZM" id="4Z7jVP8LkEZ" role="3clFbw">
+                          <ref role="1Pybhc" to="2ny0:~OpenMPSProjectTrustProjectHelper" resolve="OpenMPSProjectTrustProjectHelper" />
+                          <ref role="37wK5l" to="2ny0:~OpenMPSProjectTrustProjectHelper.checkTrust(java.nio.file.Path,com.intellij.openapi.project.Project)" resolve="checkTrust" />
+                          <node concept="37vLTw" id="4Z7jVP8LkF0" role="37wK5m">
+                            <ref role="3cqZAo" node="4Z7jVP8LjQS" resolve="directory" />
+                          </node>
+                          <node concept="37vLTw" id="4Z7jVP8LkF5" role="37wK5m">
+                            <ref role="3cqZAo" node="4Z7jVP8LjQP" resolve="project" />
+                          </node>
+                        </node>
+                        <node concept="3clFbS" id="4Z7jVP8LkyA" role="3clFbx">
+                          <node concept="3clFbF" id="4Z7jVP8LkyB" role="3cqZAp">
+                            <node concept="2OqwBi" id="4Z7jVP8LmGu" role="3clFbG">
+                              <node concept="2YIFZM" id="4Z7jVP8Lm$C" role="2Oq$k0">
+                                <ref role="1Pybhc" to="nos0:~ProjectManagerEx" resolve="ProjectManagerEx" />
+                                <ref role="37wK5l" to="nos0:~ProjectManagerEx.getInstanceEx()" resolve="getInstanceEx" />
+                              </node>
+                              <node concept="liA8E" id="4Z7jVP8LmGv" role="2OqNvi">
+                                <ref role="37wK5l" to="nos0:~ProjectManagerEx.openProject(java.nio.file.Path,com.intellij.ide.impl.OpenProjectTask)" resolve="openProject" />
+                                <node concept="37vLTw" id="4Z7jVP8LmGw" role="37wK5m">
+                                  <ref role="3cqZAo" node="4Z7jVP8LjQS" resolve="directory" />
+                                </node>
+                                <node concept="2OqwBi" id="4Z7jVP8LmGx" role="37wK5m">
+                                  <node concept="2YIFZM" id="4Z7jVP8LmGy" role="2Oq$k0">
+                                    <ref role="1Pybhc" to="btn2:~OpenProjectTask" resolve="OpenProjectTask" />
+                                    <ref role="37wK5l" to="btn2:~OpenProjectTask.build()" resolve="build" />
+                                  </node>
+                                  <node concept="liA8E" id="4Z7jVP8LmGz" role="2OqNvi">
+                                    <ref role="37wK5l" to="btn2:~OpenProjectTask.withProjectToClose(com.intellij.openapi.project.Project)" resolve="withProjectToClose" />
+                                    <node concept="37vLTw" id="4Z7jVP8LmG$" role="37wK5m">
+                                      <ref role="3cqZAo" node="4Z7jVP8LjQP" resolve="project" />
+                                    </node>
+                                  </node>
+                                </node>
+                              </node>
+                            </node>
+                          </node>
+                        </node>
+                      </node>
+                    </node>
+                    <node concept="3Tm1VV" id="4Z7jVP8LkyI" role="1B3o_S" />
+                    <node concept="3cqZAl" id="4Z7jVP8LkyJ" role="3clF45" />
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="4Z7jVP8LkyL" role="3cqZAp">
+          <node concept="3cpWsn" id="4Z7jVP8LkyK" role="3cpWs9">
+            <property role="3TUv4t" value="true" />
+            <property role="TrG5h" value="application" />
+            <node concept="3uibUv" id="4Z7jVP8LkyM" role="1tU5fm">
+              <ref role="3uigEE" to="bd8o:~Application" resolve="Application" />
+            </node>
+            <node concept="2YIFZM" id="4Z7jVP8LkEI" role="33vP2m">
+              <ref role="1Pybhc" to="bd8o:~ApplicationManager" resolve="ApplicationManager" />
+              <ref role="37wK5l" to="bd8o:~ApplicationManager.getApplication()" resolve="getApplication" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbJ" id="4Z7jVP8LkyO" role="3cqZAp">
+          <node concept="2OqwBi" id="4Z7jVP8LkXS" role="3clFbw">
+            <node concept="37vLTw" id="4Z7jVP8LkER" role="2Oq$k0">
+              <ref role="3cqZAo" node="4Z7jVP8LkyK" resolve="application" />
+            </node>
+            <node concept="liA8E" id="4Z7jVP8LkXT" role="2OqNvi">
+              <ref role="37wK5l" to="bd8o:~Application.isDispatchThread()" resolve="isDispatchThread" />
+            </node>
+          </node>
+          <node concept="9aQIb" id="4Z7jVP8LkyU" role="9aQIa">
+            <node concept="3clFbS" id="4Z7jVP8LkyV" role="9aQI4">
+              <node concept="3clFbF" id="4Z7jVP8LkyW" role="3cqZAp">
+                <node concept="2OqwBi" id="4Z7jVP8LkVs" role="3clFbG">
+                  <node concept="37vLTw" id="4Z7jVP8LkEh" role="2Oq$k0">
+                    <ref role="3cqZAo" node="4Z7jVP8LkyK" resolve="application" />
+                  </node>
+                  <node concept="liA8E" id="4Z7jVP8LkVt" role="2OqNvi">
+                    <ref role="37wK5l" to="bd8o:~Application.invokeAndWait(java.lang.Runnable)" resolve="invokeAndWait" />
+                    <node concept="37vLTw" id="4Z7jVP8LkVu" role="37wK5m">
+                      <ref role="3cqZAo" node="4Z7jVP8Lkyo" resolve="runnable" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node concept="3clFbS" id="4Z7jVP8LkyR" role="3clFbx">
+            <node concept="3clFbF" id="4Z7jVP8LkyS" role="3cqZAp">
+              <node concept="2OqwBi" id="4Z7jVP8LkTe" role="3clFbG">
+                <node concept="37vLTw" id="4Z7jVP8LkDS" role="2Oq$k0">
+                  <ref role="3cqZAo" node="4Z7jVP8Lkyo" resolve="runnable" />
+                </node>
+                <node concept="liA8E" id="4Z7jVP8LkTf" role="2OqNvi">
+                  <ref role="37wK5l" to="wyt6:~Runnable.run()" resolve="run" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs6" id="4Z7jVP8LkyZ" role="3cqZAp">
+          <node concept="3clFbT" id="4Z7jVP8Lkz0" role="3cqZAk">
+            <property role="3clFbU" value="true" />
+          </node>
+        </node>
+        <node concept="3clFbH" id="4Z7jVP8Lkos" role="3cqZAp" />
+      </node>
+      <node concept="2AHcQZ" id="4Z7jVP8LjQW" role="2AJF6D">
+        <ref role="2AI5Lk" to="wyt6:~Override" />
       </node>
     </node>
   </node>
