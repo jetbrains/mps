@@ -64,6 +64,7 @@ public class TestToolbarPanel extends JPanel {
     actionGroup.addSeparator();
     actionGroup.addAction(createExportTestResultsAction());
     ActionToolbar toolbarActions = ActionManager.getInstance().createActionToolbar(ActionPlaces.TESTTREE_VIEW_TOOLBAR, actionGroup, true);
+    toolbarActions.setTargetComponent(myTree);
     add(toolbarActions.getComponent(), BorderLayout.CENTER);
   }
 

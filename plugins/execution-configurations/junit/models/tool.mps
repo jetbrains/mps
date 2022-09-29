@@ -3564,6 +3564,19 @@
             </node>
           </node>
         </node>
+        <node concept="3clFbF" id="3gxcr3EGNcX" role="3cqZAp">
+          <node concept="2OqwBi" id="3gxcr3EGPWi" role="3clFbG">
+            <node concept="37vLTw" id="3gxcr3EGNcV" role="2Oq$k0">
+              <ref role="3cqZAo" node="4LTxumxZycQ" resolve="toolbarActions" />
+            </node>
+            <node concept="liA8E" id="3gxcr3EGW9Y" role="2OqNvi">
+              <ref role="37wK5l" to="qkt:~ActionToolbar.setTargetComponent(javax.swing.JComponent)" resolve="setTargetComponent" />
+              <node concept="37vLTw" id="3gxcr3EH4EJ" role="37wK5m">
+                <ref role="3cqZAo" node="4LTxumxZybi" resolve="myTree" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3clFbF" id="4LTxumxZycZ" role="3cqZAp">
           <node concept="1rXfSq" id="4LTxumxZyd0" role="3clFbG">
             <ref role="37wK5l" to="z60i:~Container.add(java.awt.Component,java.lang.Object)" resolve="add" />
