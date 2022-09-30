@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import jetbrains.mps.extapi.persistence.ModelFactoryService;
 import jetbrains.mps.extapi.persistence.datasource.DataSourceFactoryRuleService;
 import jetbrains.mps.library.LibraryInitializer;
 import jetbrains.mps.persistence.PersistenceRegistry;
-import jetbrains.mps.project.GlobalScope;
 import jetbrains.mps.project.ModelsAutoImportsManager;
 import jetbrains.mps.project.PathMacros;
 import jetbrains.mps.project.io.DescriptorIOFacade;
@@ -130,7 +129,6 @@ public final class MPSCore extends ComponentPlugin implements ComponentHost {
     myPathMacros = init(new PathMacros());
     init(myModuleDescriptorFacade = new DescriptorIOFacade());
     myLibraryInitializer = init(new LibraryInitializer(myModuleRepository, myModuleDescriptorFacade));
-    init(new GlobalScope(myModuleRepository));
 
     // XXX. Sort of hack. There are LanguageRegistry listeners that expect extensions loaded (LDMP accesses LanguageAspectEP).
     //      Therefore, it's necessary for ExtensionRegistry to get notified by CLM about loaded classes prior to LanguageRegistry,

@@ -15,8 +15,9 @@
  */
 package jetbrains.mps.project;
 
-import jetbrains.mps.components.CoreComponent;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.BaseScope;
+import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.util.iterable.CollectManyIterator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -31,36 +32,25 @@ import java.util.Iterator;
 /**
  * Global in a sense 'global for a given repository'. Since we used to have single repository, deemed 'global'.
  */
-public class GlobalScope extends BaseScope implements CoreComponent {
-  private static GlobalScope INSTANCE;
+public class GlobalScope extends BaseScope {
 
   /**
    * @deprecated there ain't no such thing as 'global' scope, use {@link #GlobalScope(SRepository)}
+   *             the method is not in use and will be removed in 22.3
    */
   @Deprecated(since = "2019.1", forRemoval = true)
   public static GlobalScope getInstance() {
-    // as of 22.1, still 5 uses in mbeddr and 1 in MPS in FilteredGlobalScope(), actively used
-    return INSTANCE;
+    if (Logger.getLogger(GlobalScope.class).isWarningLevel()) {
+      Logger.getLogger(GlobalScope.class).warning("GlobalScope.getInstance() is scheduled for removal, stop using", new Throwable());
+    }
+    // as of 22.2, no uses in mbeddr and 1 in MPS in FilteredGlobalScope(), which is not in use, too
+    return new GlobalScope(MPSModuleRepository.getInstance());
   }
 
   protected final SRepository myRepository;
 
   public GlobalScope(SRepository moduleRepository) {
     myRepository = moduleRepository;
-  }
-
-  @Override
-  public void init() {
-    if (INSTANCE != null) {
-      throw new IllegalStateException("double initialization");
-    }
-
-    INSTANCE = this;
-  }
-
-  @Override
-  public void dispose() {
-    INSTANCE = null;
   }
 
   public String toString() {
@@ -76,7 +66,7 @@ public class GlobalScope extends BaseScope implements CoreComponent {
   @NotNull
   @Override
   public Iterable<SModel> getModels() {
-    return () -> new CollectManyIterator<SModule, SModel>(getModules()) {
+    return () -> new CollectManyIterator<>(getModules()) {
       @Nullable
       @Override
       protected Iterator<SModel> translate(SModule module) {

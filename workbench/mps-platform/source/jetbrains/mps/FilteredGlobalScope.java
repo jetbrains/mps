@@ -35,11 +35,10 @@ public class FilteredGlobalScope extends FilteredScope {
   private final Condition<SModule> myCondition;
   /**
    * @deprecated this cons assumes single global repository, which is a non-existent thing. Use {@link #FilteredGlobalScope(SRepository)} instead
-   *             there are no uses in MPS, and few in mbeddr
+   *             There are no uses neither in MPS, not in mbeddr, will be removed in 2022.3
    */
   @Deprecated(since = "2019.1", forRemoval = true)
   public FilteredGlobalScope() {
-    // still in use both in mps and mbeddr
     this(GlobalScope.getInstance());
     if (Logger.getLogger(FilteredGlobalScope.class).isWarningLevel()) {
       Logger.getLogger(FilteredGlobalScope.class).warning("FilteredGlobalScope() no-arg cons is scheduled for removal, stop using", new Throwable());
