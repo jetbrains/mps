@@ -17803,62 +17803,6 @@
           </node>
         </node>
         <node concept="3clFbH" id="4Fl7$ohDDky" role="3cqZAp" />
-        <node concept="3SKdUt" id="6IHSVKeLb1_" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXorPH" role="1aUNEU">
-            <node concept="3oM_SD" id="ATZLwXorPI" role="1PaTwD">
-              <property role="3oM_SC" value="PsiDocumentManager.getInstance(project).commitAllDocuments();" />
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="1NZuKSSDP56" role="3cqZAp">
-          <node concept="3cpWsn" id="1NZuKSSDP57" role="3cpWs9">
-            <property role="TrG5h" value="localScope" />
-            <property role="3TUv4t" value="true" />
-            <node concept="3uibUv" id="1NZuKSSDP54" role="1tU5fm">
-              <ref role="3uigEE" to="35tq:~ConditionalScope" resolve="ConditionalScope" />
-            </node>
-            <node concept="2ShNRf" id="1NZuKSSDP58" role="33vP2m">
-              <node concept="1pGfFk" id="1NZuKSSDP59" role="2ShVmc">
-                <ref role="37wK5l" to="35tq:~ConditionalScope.&lt;init&gt;(org.jetbrains.mps.openapi.module.SearchScope,org.jetbrains.mps.util.Condition,org.jetbrains.mps.util.Condition)" resolve="ConditionalScope" />
-                <node concept="2OqwBi" id="1NZuKSSDP5a" role="37wK5m">
-                  <node concept="2OqwBi" id="4Fl7$ohDBOq" role="2Oq$k0">
-                    <node concept="2WthIp" id="4Fl7$ohDBOt" role="2Oq$k0" />
-                    <node concept="1DTwFV" id="4Fl7$ohDBOv" role="2OqNvi">
-                      <ref role="2WH_rO" node="5dIyUY5btyd" resolve="mpsProject" />
-                    </node>
-                  </node>
-                  <node concept="liA8E" id="1NZuKSSDP5c" role="2OqNvi">
-                    <ref role="37wK5l" to="z1c3:~Project.getScope()" resolve="getScope" />
-                  </node>
-                </node>
-                <node concept="10Nm6u" id="1NZuKSSDP5d" role="37wK5m" />
-                <node concept="10Nm6u" id="4SuBGeCjD81" role="37wK5m" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3cpWs8" id="1NZuKSSDQrF" role="3cqZAp">
-          <node concept="3cpWsn" id="1NZuKSSDQrG" role="3cpWs9">
-            <property role="TrG5h" value="globalScope" />
-            <property role="3TUv4t" value="true" />
-            <node concept="3uibUv" id="1NZuKSSDQr$" role="1tU5fm">
-              <ref role="3uigEE" to="35tq:~ConditionalScope" resolve="ConditionalScope" />
-            </node>
-            <node concept="2ShNRf" id="1NZuKSSDQrH" role="33vP2m">
-              <node concept="1pGfFk" id="1NZuKSSDQrI" role="2ShVmc">
-                <ref role="37wK5l" to="35tq:~ConditionalScope.&lt;init&gt;(org.jetbrains.mps.openapi.module.SearchScope,org.jetbrains.mps.util.Condition,org.jetbrains.mps.util.Condition)" resolve="ConditionalScope" />
-                <node concept="2ShNRf" id="1NZuKSSDQrJ" role="37wK5m">
-                  <node concept="1pGfFk" id="1NZuKSSDQrK" role="2ShVmc">
-                    <ref role="37wK5l" to="fyhk:~FilteredGlobalScope.&lt;init&gt;()" resolve="FilteredGlobalScope" />
-                  </node>
-                </node>
-                <node concept="10Nm6u" id="1NZuKSSDQrL" role="37wK5m" />
-                <node concept="10Nm6u" id="4SuBGeCjDkb" role="37wK5m" />
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbH" id="4Fl7$ohCLo2" role="3cqZAp" />
         <node concept="3cpWs8" id="1NZuKSSEG0w" role="3cqZAp">
           <node concept="3cpWsn" id="1NZuKSSEG0x" role="3cpWs9">
             <property role="TrG5h" value="repo" />
@@ -17879,6 +17823,51 @@
             </node>
           </node>
         </node>
+        <node concept="3SKdUt" id="6IHSVKeLb1_" role="3cqZAp">
+          <node concept="1PaTwC" id="ATZLwXorPH" role="1aUNEU">
+            <node concept="3oM_SD" id="ATZLwXorPI" role="1PaTwD">
+              <property role="3oM_SC" value="PsiDocumentManager.getInstance(project).commitAllDocuments();" />
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="1NZuKSSDP56" role="3cqZAp">
+          <node concept="3cpWsn" id="1NZuKSSDP57" role="3cpWs9">
+            <property role="TrG5h" value="localScope" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3uibUv" id="1NZuKSSDP54" role="1tU5fm">
+              <ref role="3uigEE" to="lui2:~SearchScope" resolve="SearchScope" />
+            </node>
+            <node concept="2OqwBi" id="1NZuKSSDP5a" role="33vP2m">
+              <node concept="2OqwBi" id="4Fl7$ohDBOq" role="2Oq$k0">
+                <node concept="2WthIp" id="4Fl7$ohDBOt" role="2Oq$k0" />
+                <node concept="1DTwFV" id="4Fl7$ohDBOv" role="2OqNvi">
+                  <ref role="2WH_rO" node="5dIyUY5btyd" resolve="mpsProject" />
+                </node>
+              </node>
+              <node concept="liA8E" id="1NZuKSSDP5c" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~Project.getScope()" resolve="getScope" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3cpWs8" id="1NZuKSSDQrF" role="3cqZAp">
+          <node concept="3cpWsn" id="1NZuKSSDQrG" role="3cpWs9">
+            <property role="TrG5h" value="globalScope" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3uibUv" id="1NZuKSSDQr$" role="1tU5fm">
+              <ref role="3uigEE" to="lui2:~SearchScope" resolve="SearchScope" />
+            </node>
+            <node concept="2ShNRf" id="1NZuKSSDQrJ" role="33vP2m">
+              <node concept="1pGfFk" id="1NZuKSSDQrK" role="2ShVmc">
+                <ref role="37wK5l" to="fyhk:~FilteredGlobalScope.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository)" resolve="FilteredGlobalScope" />
+                <node concept="37vLTw" id="5S_QMJQCBH9" role="37wK5m">
+                  <ref role="3cqZAo" node="1NZuKSSEG0x" resolve="repo" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbH" id="4Fl7$ohCLo2" role="3cqZAp" />
         <node concept="3cpWs8" id="1NZuKSSEcj6" role="3cqZAp">
           <node concept="3cpWsn" id="1NZuKSSEcj7" role="3cpWs9">
             <property role="TrG5h" value="gotoData" />
@@ -18097,6 +18086,26 @@
           </node>
         </node>
         <node concept="3clFbH" id="4Fl7$ohDI8s" role="3cqZAp" />
+        <node concept="3cpWs8" id="3JyrSD6gPc9" role="3cqZAp">
+          <node concept="3cpWsn" id="3JyrSD6gPca" role="3cpWs9">
+            <property role="TrG5h" value="repo" />
+            <property role="3TUv4t" value="true" />
+            <node concept="3uibUv" id="3JyrSD6gPc6" role="1tU5fm">
+              <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
+            </node>
+            <node concept="2OqwBi" id="3JyrSD6gPcb" role="33vP2m">
+              <node concept="2OqwBi" id="4Fl7$ohDKwv" role="2Oq$k0">
+                <node concept="2WthIp" id="4Fl7$ohDKwy" role="2Oq$k0" />
+                <node concept="1DTwFV" id="4Fl7$ohDKw$" role="2OqNvi">
+                  <ref role="2WH_rO" node="fwenio2lfn" resolve="mpsProject" />
+                </node>
+              </node>
+              <node concept="liA8E" id="3JyrSD6gPcd" role="2OqNvi">
+                <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
+              </node>
+            </node>
+          </node>
+        </node>
         <node concept="3SKdUt" id="6IHSVKeLNjq" role="3cqZAp">
           <node concept="1PaTwC" id="ATZLwXorPJ" role="1aUNEU">
             <node concept="3oM_SD" id="ATZLwXorPK" role="1PaTwD">
@@ -18171,7 +18180,10 @@
                 <ref role="37wK5l" to="35tq:~ConditionalScope.&lt;init&gt;(org.jetbrains.mps.openapi.module.SearchScope,org.jetbrains.mps.util.Condition,org.jetbrains.mps.util.Condition)" resolve="ConditionalScope" />
                 <node concept="2ShNRf" id="3e89mUjBag7" role="37wK5m">
                   <node concept="1pGfFk" id="3e89mUjBag8" role="2ShVmc">
-                    <ref role="37wK5l" to="fyhk:~FilteredGlobalScope.&lt;init&gt;()" resolve="FilteredGlobalScope" />
+                    <ref role="37wK5l" to="fyhk:~FilteredGlobalScope.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository)" resolve="FilteredGlobalScope" />
+                    <node concept="37vLTw" id="5S_QMJQFFpz" role="37wK5m">
+                      <ref role="3cqZAo" node="3JyrSD6gPca" resolve="repo" />
+                    </node>
                   </node>
                 </node>
                 <node concept="37vLTw" id="3e89mUjBag9" role="37wK5m">
@@ -18183,26 +18195,6 @@
           </node>
         </node>
         <node concept="3clFbH" id="3JyrSD6f1Va" role="3cqZAp" />
-        <node concept="3cpWs8" id="3JyrSD6gPc9" role="3cqZAp">
-          <node concept="3cpWsn" id="3JyrSD6gPca" role="3cpWs9">
-            <property role="TrG5h" value="repo" />
-            <property role="3TUv4t" value="true" />
-            <node concept="3uibUv" id="3JyrSD6gPc6" role="1tU5fm">
-              <ref role="3uigEE" to="lui2:~SRepository" resolve="SRepository" />
-            </node>
-            <node concept="2OqwBi" id="3JyrSD6gPcb" role="33vP2m">
-              <node concept="2OqwBi" id="4Fl7$ohDKwv" role="2Oq$k0">
-                <node concept="2WthIp" id="4Fl7$ohDKwy" role="2Oq$k0" />
-                <node concept="1DTwFV" id="4Fl7$ohDKw$" role="2OqNvi">
-                  <ref role="2WH_rO" node="fwenio2lfn" resolve="mpsProject" />
-                </node>
-              </node>
-              <node concept="liA8E" id="3JyrSD6gPcd" role="2OqNvi">
-                <ref role="37wK5l" to="z1c3:~Project.getRepository()" resolve="getRepository" />
-              </node>
-            </node>
-          </node>
-        </node>
         <node concept="3cpWs8" id="3JyrSD6fYly" role="3cqZAp">
           <node concept="3cpWsn" id="3JyrSD6fYlz" role="3cpWs9">
             <property role="TrG5h" value="gotoData" />

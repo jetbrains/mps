@@ -101,7 +101,7 @@ public class NewRuntimeModule_Action extends BaseAction {
 
     ModuleInstanceCondition solutionOnly = new ModuleInstanceCondition(Solution.class);
     ModuleScopeIterable localScope = new ModuleScopeIterable(new ConditionalScope(((MPSProject) MapSequence.fromMap(_params).get("project")).getScope(), solutionOnly, null), repo);
-    ModuleScopeIterable globalScope = new ModuleScopeIterable(new ConditionalScope(new FilteredGlobalScope(), solutionOnly, null), repo);
+    ModuleScopeIterable globalScope = new ModuleScopeIterable(new ConditionalScope(new FilteredGlobalScope(repo), solutionOnly, null), repo);
 
     ChooseByNameData<SModuleReference> gotoData = new ChooseByNameData<SModuleReference>(new ModulesPresentation(repo));
     gotoData.derivePrompts("runtime module").setScope(localScope, globalScope);

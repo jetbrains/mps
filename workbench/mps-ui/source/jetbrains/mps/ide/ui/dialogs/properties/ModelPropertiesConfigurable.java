@@ -41,9 +41,7 @@ import jetbrains.mps.icons.MPSIcons.General;
 import jetbrains.mps.ide.findusages.model.IResultProvider;
 import jetbrains.mps.ide.findusages.model.SearchQuery;
 import jetbrains.mps.ide.findusages.model.holders.GenericHolder;
-import jetbrains.mps.ide.findusages.model.holders.LanguageHolder;
 import jetbrains.mps.ide.findusages.model.holders.ModelsHolder;
-import jetbrains.mps.ide.findusages.model.holders.ModuleRefHolder;
 import jetbrains.mps.ide.findusages.model.scopes.ModelsScope;
 import jetbrains.mps.ide.findusages.view.FindUtils;
 import jetbrains.mps.ide.project.ProjectHelper;
@@ -269,7 +267,7 @@ public class ModelPropertiesConfigurable extends MPSPropertiesConfigurable {
         // XXX much like ModelImportHelper#addImport (scope-wise), might be worth a refactoring
         ArrayList<SModelReference> models = new ArrayList<>(200);
         Condition<SModel> notTransient = m -> !(m instanceof TransientSModel);
-        SearchScope globalScope = new ConditionalScope(new FilteredGlobalScope(), null, notTransient);
+        SearchScope globalScope = new ConditionalScope(new FilteredGlobalScope(myMPSProject.getRepository()), null, notTransient);
         new ModelScopeIterable(globalScope, myMPSProject.getRepository()).forEach(models::add);
         List<SModelReference> list = CommonChoosers.showDialogModelCollectionChooser(ProjectHelper.toIdeaProject(myMPSProject), models, null);
         for (SModelReference reference : list) {

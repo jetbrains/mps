@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
  */
 package jetbrains.mps;
 
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.FilteredScope;
 import jetbrains.mps.project.GlobalScope;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -34,11 +35,15 @@ public class FilteredGlobalScope extends FilteredScope {
   private final Condition<SModule> myCondition;
   /**
    * @deprecated this cons assumes single global repository, which is a non-existent thing. Use {@link #FilteredGlobalScope(SRepository)} instead
+   *             there are no uses in MPS, and few in mbeddr
    */
   @Deprecated(since = "2019.1", forRemoval = true)
   public FilteredGlobalScope() {
     // still in use both in mps and mbeddr
     this(GlobalScope.getInstance());
+    if (Logger.getLogger(FilteredGlobalScope.class).isWarningLevel()) {
+      Logger.getLogger(FilteredGlobalScope.class).warning("FilteredGlobalScope() no-arg cons is scheduled for removal, stop using", new Throwable());
+    }
   }
 
   public FilteredGlobalScope(SRepository repository) {

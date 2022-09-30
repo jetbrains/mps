@@ -106,7 +106,7 @@ import java.awt.event.ActionEvent;
     Condition<SModel> filter = new AndCondition<SModel>(NotCondition.negate(isStub), NotCondition.negate(isDescriptor));
 
     ConditionalScope localScope = new ConditionalScope(myProject.getScope(), null, filter);
-    ConditionalScope globalScope = new ConditionalScope(new FilteredGlobalScope(), null, filter);
+    ConditionalScope globalScope = new ConditionalScope(new FilteredGlobalScope(myProject.getRepository()), null, filter);
     SRepository repo = myProject.getRepository();
     ChooseByNameData<SModelReference> gotoData = new ChooseByNameData<SModelReference>(new ModelsPresentation(repo));
     gotoData.derivePrompts("model").setScope(new ModelScopeIterable(localScope, repo), new ModelScopeIterable(globalScope, repo));

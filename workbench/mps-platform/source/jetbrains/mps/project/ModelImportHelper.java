@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -103,7 +103,7 @@ public class ModelImportHelper {
     SearchScope localScope = myProject.getScope();
     // XXX identical scope is in ModelPropertiesConfigurable to add imports from model properties dialog
     Condition<SModel> notTransient = m -> !(m instanceof TransientSModel);
-    SearchScope globalScope = new ConditionalScope(new FilteredGlobalScope(), null, notTransient);
+    SearchScope globalScope = new ConditionalScope(new FilteredGlobalScope(myProject.getRepository()), null, notTransient);
     SRepository repo = myProject.getRepository();
     ChooseByNameData<SModelReference> gotoData = new ChooseByNameData<>(new ModelsPresentation(repo));
     gotoData.derivePrompts("model").setPrompts("Import model:", gotoData.getNotFoundMessage(), gotoData.getNotInMessage());

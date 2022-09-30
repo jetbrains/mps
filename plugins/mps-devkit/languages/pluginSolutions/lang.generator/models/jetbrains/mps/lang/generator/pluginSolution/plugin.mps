@@ -4330,7 +4330,15 @@
                 <ref role="37wK5l" to="35tq:~ConditionalScope.&lt;init&gt;(org.jetbrains.mps.openapi.module.SearchScope,org.jetbrains.mps.util.Condition,org.jetbrains.mps.util.Condition)" resolve="ConditionalScope" />
                 <node concept="2ShNRf" id="1NZuKSSCuYO" role="37wK5m">
                   <node concept="1pGfFk" id="1NZuKSSCuYP" role="2ShVmc">
-                    <ref role="37wK5l" to="fyhk:~FilteredGlobalScope.&lt;init&gt;()" resolve="FilteredGlobalScope" />
+                    <ref role="37wK5l" to="fyhk:~FilteredGlobalScope.&lt;init&gt;(org.jetbrains.mps.openapi.module.SRepository)" resolve="FilteredGlobalScope" />
+                    <node concept="2OqwBi" id="5S_QMJQAtdn" role="37wK5m">
+                      <node concept="37vLTw" id="5S_QMJQAp5M" role="2Oq$k0">
+                        <ref role="3cqZAo" node="13VSvAcKrNR" resolve="myProject" />
+                      </node>
+                      <node concept="liA8E" id="5S_QMJQAwYD" role="2OqNvi">
+                        <ref role="37wK5l" to="z1c4:~Project.getRepository()" resolve="getRepository" />
+                      </node>
+                    </node>
                   </node>
                 </node>
                 <node concept="10Nm6u" id="1NZuKSSCuYQ" role="37wK5m" />

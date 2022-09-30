@@ -11,6 +11,7 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.featureStatistics.FeatureUsageTracker;
+import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.util.Condition;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.project.ModuleInstanceCondition;
@@ -20,7 +21,6 @@ import jetbrains.mps.project.DevKit;
 import org.jetbrains.mps.openapi.module.SearchScope;
 import jetbrains.mps.scope.ConditionalScope;
 import jetbrains.mps.FilteredGlobalScope;
-import org.jetbrains.mps.openapi.module.SRepository;
 import jetbrains.mps.workbench.choose.ChooseByNameData;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import jetbrains.mps.workbench.choose.ModulesPresentation;
@@ -62,12 +62,12 @@ public class GoToModule_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.module");
 
+    final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
     // PsiDocumentManager.getInstance(project).commitAllDocuments();
     final Condition<SModule> knownModules = new ModuleInstanceCondition(Solution.class, Language.class, DevKit.class);
     final SearchScope localScope = new ConditionalScope(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getScope(), knownModules, null);
-    final SearchScope globalScope = new ConditionalScope(new FilteredGlobalScope(), knownModules, null);
+    final SearchScope globalScope = new ConditionalScope(new FilteredGlobalScope(repo), knownModules, null);
 
-    final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
     final ChooseByNameData<SModuleReference> gotoData = new ChooseByNameData<SModuleReference>(new ModulesPresentation(repo));
     gotoData.derivePrompts("module").setScope(new ModuleScopeIterable(localScope, repo), new ModuleScopeIterable(globalScope, repo));
 

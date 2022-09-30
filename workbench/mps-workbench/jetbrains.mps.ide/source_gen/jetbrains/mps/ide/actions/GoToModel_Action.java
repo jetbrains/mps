@@ -11,9 +11,9 @@ import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.internal.collections.runtime.MapSequence;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.featureStatistics.FeatureUsageTracker;
-import jetbrains.mps.scope.ConditionalScope;
-import jetbrains.mps.FilteredGlobalScope;
 import org.jetbrains.mps.openapi.module.SRepository;
+import org.jetbrains.mps.openapi.module.SearchScope;
+import jetbrains.mps.FilteredGlobalScope;
 import jetbrains.mps.workbench.choose.ChooseByNameData;
 import org.jetbrains.mps.openapi.model.SModelReference;
 import jetbrains.mps.workbench.choose.ModelsPresentation;
@@ -55,11 +55,11 @@ public class GoToModel_Action extends BaseAction {
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
     FeatureUsageTracker.getInstance().triggerFeatureUsed("navigation.goto.model");
 
-    // PsiDocumentManager.getInstance(project).commitAllDocuments();
-    final ConditionalScope localScope = new ConditionalScope(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getScope(), null, null);
-    final ConditionalScope globalScope = new ConditionalScope(new FilteredGlobalScope(), null, null);
-
     final SRepository repo = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getRepository();
+    // PsiDocumentManager.getInstance(project).commitAllDocuments();
+    final SearchScope localScope = ((MPSProject) MapSequence.fromMap(_params).get("mpsProject")).getScope();
+    final SearchScope globalScope = new FilteredGlobalScope(repo);
+
     final ChooseByNameData<SModelReference> gotoData = new ChooseByNameData<SModelReference>(new ModelsPresentation(repo));
     gotoData.derivePrompts("model").setScope(new ModelScopeIterable(localScope, repo), new ModelScopeIterable(globalScope, repo));
 
