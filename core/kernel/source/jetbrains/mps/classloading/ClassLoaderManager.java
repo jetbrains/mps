@@ -559,17 +559,22 @@ public class ClassLoaderManager implements CoreComponent {
     }
   }
 
+  /**
+   * @deprecated Use instance methods of this class
+   */
+  @Deprecated(forRemoval = true, since = "2022.2")
   public static void reload(@NotNull List<SModule> modules) {
+    LOG.warnDeprecatedUse("CLM.reload() has been deprecated and will be removed in the next release");
     List<ReloadableModule> reloadableModules = new ArrayList<>();
     for (SModule module : modules) {
       if (module instanceof ReloadableModule) {
         reloadableModules.add((ReloadableModule) module);
       }
     }
-    if (reloadableModules.isEmpty()) return;
-    ReloadableModule reloadableModule = reloadableModules.get(0);
-    ClassLoaderManager clm = reloadableModule.getCLM();
-    clm.reloadModules(reloadableModules);
+    if (reloadableModules.isEmpty()) {
+      return;
+    }
+    ClassLoaderManager.getInstance().reloadModules(reloadableModules);
   }
 
   /**

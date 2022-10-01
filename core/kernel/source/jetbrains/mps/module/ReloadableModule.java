@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -109,8 +109,12 @@ public interface ReloadableModule extends SModule {
   }
 
   /**
+   * @deprecated to be removed without a direct substitute. If necessary, access CLM instance through
+   *             CoreComponent mechanism.
+   *             No uses in MPS
    * @return the hosting CLM, which offers a control over modules deployment
    */
+  @Deprecated(forRemoval = true, since = "2022.2")
   @NotNull ClassLoaderManager getCLM();
 
   /**
@@ -127,27 +131,24 @@ public interface ReloadableModule extends SModule {
   void reload();
 
   /**
-   * @return true if it will load classes.
    * For some subclasses it is possible to disable class loading for <code>ReloadableModule</code>.
    * E.g. solution without idea/mps facet cannot load classes
    * @see jetbrains.mps.project.Solution
-   * @deprecated bad naming, use #canLoadClasses or sometimes it is more convenient to use getStatus#isDeployed
+   * @return true if it will load classes.
    */
-@Deprecated(since = "191", forRemoval = true)
-  default boolean willLoad() {
+  default boolean canLoadClasses() {
     return true;
   }
 
   /**
-   * For some subclasses it is possible to disable class loading for <code>ReloadableModule</code>.
-   * E.g. solution without idea/mps facet cannot load classes
-   * @see jetbrains.mps.project.Solution
+   * @deprecated Use {@link ClassLoaderManager#getStatus(ReloadableModule)}
+   *             I'd prefer to keep ReloadableModule hierarchy separate from SModule one, as it's confusing to see
+   *             any Solution as ReloadableModule. To me, it has to be CLM to keep RM counterparts for SModules available in a
+   *             repository, so that we don't have to bother with classloading when building an AbstractModule subclass (keep
+   *             module and its classloading separate)
    */
-  default boolean canLoadClasses() {
-    return willLoad();
-  }
-
   @NotNull
+  @Deprecated(forRemoval = true, since = "2022.2")
   DeploymentStatus getStatus();
 
   interface DeploymentStatus {

@@ -131,7 +131,7 @@ public class PluginLoaderRegistry implements Disposable {
     return ApplicationManager.getApplication().getExtensionArea().getExtensionPoint("com.intellij.applicationInitializedListener");
   }
 
-  private static Set<PluginContributor> createPluginContributors(Collection<ReloadableModule> modules) {
+  private Set<PluginContributor> createPluginContributors(Collection<ReloadableModule> modules) {
     List<ReloadableModule> sortedModules = new PluginSorter(modules).sortByDependencies();
 
     List<PluginContributor> contributors = new ArrayList<>();
@@ -174,8 +174,8 @@ public class PluginLoaderRegistry implements Disposable {
 
 
   @Nullable
-  private static PluginContributor createPluginContributor(@NotNull ReloadableModule module) {
-    if (module.getStatus().isDeployed()) {
+  private PluginContributor createPluginContributor(@NotNull ReloadableModule module) {
+    if (myClassLoaderManager.getStatus(module).isDeployed()) {
       LOG.trace("Creating plugin contributor from " + module);
       return new ModulePluginContributor(module);
     }

@@ -155,6 +155,15 @@ public abstract class Logger {
   }
 
   /**
+   * Use it when it's high time to get rid of the deprecated code as it's going to be dead soon
+   */
+  public void warnDeprecatedUse(String message) {
+    if (isWarningLevel()) {
+      warning(message, new Throwable());
+    }
+  }
+
+  /**
    * Provisionally allow verbose logging to testing purposes. Invocations of {@link #enableTrace()}
    * and {@link #disableTrace()} shall go in pairs.
    */

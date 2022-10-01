@@ -33,6 +33,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
  */
 public class ReloadableModuleBase extends AbstractModule implements ReloadableModule {
   private final static Logger LOG = Logger.getLogger(ReloadableModuleBase.class);
+  // the plan is to drop myManager field altogether, once ReloadableModule is reduced to a slim,
+  // independent of SModule, interface for use solely in CLM's own hierarchy
   private final ClassLoaderManager myManager = ClassLoaderManager.getInstance(); // to remove this I need to insert CLM into constructor and that is not an easy task
   private final List<SModuleDependenciesListener> myListeners = new CopyOnWriteArrayList<>();
 
@@ -59,6 +61,7 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
   @NotNull
   @Override
   public ClassLoaderManager getCLM() {
+    LOG.warnDeprecatedUse("ReloadableModule.getCLM() is deprecated, do not use");
     return myManager;
   }
 

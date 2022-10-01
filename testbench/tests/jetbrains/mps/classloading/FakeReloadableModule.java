@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2017 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,7 +68,10 @@ public class FakeReloadableModule implements ReloadableModule {
   @NotNull
   @Override
   public ClassLoaderManager getCLM() {
-    return ClassLoaderManager.getInstance();
+    // XXX test code, e.g. CrossDependentTaskGenerator1.firstCLTask, use external fields to keep ModuleClassLoader instances
+    //     I wonder why not ReloadableModule (or even SModule) would allow get/set CL operations, instead of odd direct and
+    //     indirect CLM access?
+    throw new UnsupportedOperationException("Not implemented");
   }
 
   @NotNull
@@ -140,14 +143,16 @@ public class FakeReloadableModule implements ReloadableModule {
     return null;
   }
 
+  @NotNull
   @Override
   public Iterable<SModel> getModels() {
     return Collections.emptyList();
   }
 
+  @NotNull
   @Override
   public Iterable<SModuleFacet> getFacets() {
-    return null;
+    return Collections.emptyList();
   }
 
   @Nullable
