@@ -32,7 +32,8 @@ public final class RuntimeFlags {
   private static Boolean ourCastException = null;
   private static Boolean ourEclipseJavaCompiler = null;
   private static Boolean ourModuleActivators = null;
-  private static Boolean ourLegacyLoadModels = null; // has to become false by default if my testing proves it ok
+  private static Boolean ourLegacyLoadModels = null;
+  private static Boolean ourLegacyIdeaFacetCL = null;
 
   private RuntimeFlags() {
   }
@@ -144,5 +145,17 @@ public final class RuntimeFlags {
       // ourLegacyLoadModels = val == null || Boolean.parseBoolean(val);
     }
     return ourLegacyLoadModels;
+  }
+
+  /**
+   * Provision to replace IdeaPluginModuleFacet with a code to detect parent CL from module contributor
+   * @return true to rely on CL detection rather than the CL instance provided by IdeaPluginModuleFacet
+   */
+  public static boolean useDeploymentCL() {
+    if (ourLegacyIdeaFacetCL == null) {
+      ourLegacyIdeaFacetCL = Boolean.getBoolean("mps.classloading.ideafacet");
+    }
+    return !ourLegacyIdeaFacetCL;
+
   }
 }

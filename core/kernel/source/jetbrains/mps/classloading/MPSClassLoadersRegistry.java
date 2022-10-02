@@ -15,6 +15,7 @@
  */
 package jetbrains.mps.classloading;
 
+import jetbrains.mps.RuntimeFlags;
 import jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress;
 import jetbrains.mps.classloading.DeployListener.ResourceTrackerCallback;
 import jetbrains.mps.logging.Logger;
@@ -170,7 +171,18 @@ class MPSClassLoadersRegistry {
     CustomClassLoadingFacet customClassLoadingFacet = module.getFacet(CustomClassLoadingFacet.class);
     if (customClassLoadingFacet != null) {
       if (customClassLoadingFacet.isValid()) {
-        return new IDEADelegatingModuleClassLoader(customClassLoadingFacet.getClassLoader());
+        final ClassLoader classLoader;
+        if (RuntimeFlags.useDeploymentCL()) {
+          classLoader =  new RootClassloaderLookup(module).get();
+        } else {
+          classLoader = customClassLoadingFacet.getClassLoader();
+        }
+//        if (classLoader == derivedCL) {
+//          System.out.printf("SAME CL detected with RCL as from idea's facet of %s\n", module.getModuleName());
+//        } else {
+//          System.out.printf("DIFFERENT CL detected with RCL from idea's facet of %s\nfacet: %s\nlookup:%s\n", module.getModuleName(), classLoader, derivedCL);
+//        }
+        return new IDEADelegatingModuleClassLoader(classLoader);
       }
     }
     return null;

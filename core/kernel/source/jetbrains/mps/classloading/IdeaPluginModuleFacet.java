@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2015 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package jetbrains.mps.classloading;
 
 /**
+ * Likely cease to exist in a coming version of MPS, see {@link jetbrains.mps.RuntimeFlags#useDeploymentCL()}
  * evgeny, 2/28/13
  */
 public interface IdeaPluginModuleFacet extends CustomClassLoadingFacet {
