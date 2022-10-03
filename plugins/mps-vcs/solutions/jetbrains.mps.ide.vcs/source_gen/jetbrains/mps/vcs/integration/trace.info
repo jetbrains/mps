@@ -101,7 +101,7 @@
     </file>
   </root>
   <root nodeRef="r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/5748651123750026353">
-    <file name="ProjectDirMPSChekoutListener.java">
+    <file name="ProjectDirMPSCheckoutListener.java">
       <node id="5748651123750029452" at="20,108,21,69" concept="7" />
       <node id="5748651123750029462" at="22,35,23,19" concept="8" />
       <node id="5748651123750029479" at="28,78,29,119" concept="2" />
@@ -132,8 +132,8 @@
         <var name="directory" id="5748651123750026680" />
         <var name="project" id="5748651123750026677" />
       </scope>
-      <unit id="5748651123750029469" at="25,34,32,5" name="jetbrains.mps.vcs.integration.ProjectDirMPSChekoutListener$1" />
-      <unit id="5748651123750026353" at="17,0,43,0" name="jetbrains.mps.vcs.integration.ProjectDirMPSChekoutListener" />
+      <unit id="5748651123750029469" at="25,34,32,5" name="jetbrains.mps.vcs.integration.ProjectDirMPSCheckoutListener$1" />
+      <unit id="5748651123750026353" at="17,0,43,0" name="jetbrains.mps.vcs.integration.ProjectDirMPSCheckoutListener" />
     </file>
   </root>
   <root nodeRef="r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/6203974263416579308">

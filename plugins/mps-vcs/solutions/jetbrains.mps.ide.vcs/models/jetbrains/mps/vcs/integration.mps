@@ -1584,7 +1584,7 @@
     </node>
   </node>
   <node concept="312cEu" id="4Z7jVP8LjLL">
-    <property role="TrG5h" value="ProjectDirMPSChekoutListener" />
+    <property role="TrG5h" value="ProjectDirMPSCheckoutListener" />
     <node concept="3Tm1VV" id="4Z7jVP8LjLM" role="1B3o_S" />
     <node concept="3uibUv" id="4Z7jVP8LjQl" role="EKbjA">
       <ref role="3uigEE" to="2lau:~CheckoutListener" resolve="CheckoutListener" />

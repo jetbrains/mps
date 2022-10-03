@@ -15,7 +15,7 @@ import com.intellij.openapi.application.Application;
 import com.intellij.openapi.application.ApplicationManager;
 
 @GeneratedClass(node = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)/5748651123750026353", model = "r:eec25685-8f1e-47c9-a9de-4a7ef6b504ec(jetbrains.mps.vcs.integration)")
-public class ProjectDirMPSChekoutListener implements CheckoutListener {
+public class ProjectDirMPSCheckoutListener implements CheckoutListener {
   @Override
   public boolean processCheckedOutDirectory(@NotNull final Project project, @NotNull final Path directory) {
     Path dotIdea = directory.resolve(Project.DIRECTORY_STORE_FOLDER);
