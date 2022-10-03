@@ -393,7 +393,7 @@
           description="Download Kotlin metadata and compiler libraries">
     <echo message="Kotlin core libraries are missing. Downloading..."/>
     <ivy:resolve file="./ivyKotlinCoreLibs.xml" validate="false" showprogress="true"/>
-    <ivy:retrieve pattern="${basedir}/../plugins/mps-core/lib/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
+    <ivy:retrieve pattern="${kotlin.core.libs}/[artifact]-[revision](-[classifier]).[ext]" overwritemode="different"/>
   </target>
 
   <target name="download-3rd-party" depends="download-diffutils,download-testlib,download-jetpad,download-kotlin-plugin-libs,download-kotlin-core-libs,download-kotlin-compiler"
@@ -467,8 +467,14 @@
   </target>
 
   <target name="clean-kotlin">
+    <delete failonerror="false">
+      <fileset dir="${kotlin.core.libs}">
+        <!-- Versions not included so it can clear up previous version -->
+        <include name="kotlinx-metadata-jvm-*.jar" />
+        <include name="kotlin-compiler-client-embeddable-*.jar" />
+      </fileset>
+    </delete>
     <delete dir="${kotlin.lib}" includeemptydirs="true" failonerror="false"/>
-    <delete dir="${kotlin.core.libs}" includeemptydirs="true" failonerror="false"/>
     <delete dir="${kotlin.compiler}" includeemptydirs="true" failonerror="false"/>
   </target>
 
