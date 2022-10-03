@@ -19,7 +19,6 @@ import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.actionSystem.DataProvider;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.ex.FileEditorManagerEx;
-import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.wm.IdeFocusManager;
 import com.intellij.ui.components.JBScrollPane;
 import com.intellij.util.ui.JBUI;
@@ -482,6 +481,12 @@ public abstract class BaseNodeEditor implements Editor {
         MPSNodeVirtualFile virtualFile = getVirtualFile();
         if (virtualFile != null) {
           final com.intellij.openapi.project.Project project = ((MPSProject) myProject).getProject();
+          // FIXME first, it has to me WorkbenchModelAccess not to start read/write for disposed project
+          //       second, I don't think DeployListener is the right way to address editor title update, too low-level, imo.
+          //       Besides, DeployListener per editor is an overkill anyway.
+          if (project.isDisposed()) {
+            return;
+          }
           FileEditorManagerEx manager = FileEditorManagerEx.getInstanceEx(project);
           manager.updateFilePresentation(virtualFile);
         }
