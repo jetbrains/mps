@@ -224,6 +224,9 @@
         <property id="1176718929932" name="isFinal" index="3TUv4t" />
         <child id="1068431790190" name="initializer" index="33vP2m" />
       </concept>
+      <concept id="1513279640923991009" name="jetbrains.mps.baseLanguage.structure.IGenericClassCreator" flags="ng" index="366HgL">
+        <property id="1513279640906337053" name="inferTypeParams" index="373rjd" />
+      </concept>
       <concept id="1109279763828" name="jetbrains.mps.baseLanguage.structure.TypeVariableDeclaration" flags="ng" index="16euLQ">
         <child id="1214996921760" name="bound" index="3ztrMU" />
       </concept>
@@ -15176,6 +15179,126 @@
               </node>
               <node concept="liA8E" id="$24$8T4cP" role="2OqNvi">
                 <ref role="37wK5l" node="$24$8RIMp" resolve="calculate" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="3JoT2ufOIPr" role="3cqZAp">
+          <node concept="1PaTwC" id="3JoT2ufOIPs" role="1aUNEU">
+            <node concept="3oM_SD" id="3JoT2ufOLmQ" role="1PaTwD">
+              <property role="3oM_SC" value="This" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLmS" role="1PaTwD">
+              <property role="3oM_SC" value="plugin" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLnT" role="1PaTwD">
+              <property role="3oM_SC" value="contains" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLoV" role="1PaTwD">
+              <property role="3oM_SC" value="libraries" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLsS" role="1PaTwD">
+              <property role="3oM_SC" value="specific" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLtW" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLvZ" role="1PaTwD">
+              <property role="3oM_SC" value="kotlin" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLw7" role="1PaTwD">
+              <property role="3oM_SC" value="stub" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLyx" role="1PaTwD">
+              <property role="3oM_SC" value="loading," />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLzD" role="1PaTwD">
+              <property role="3oM_SC" value="and" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLzO" role="1PaTwD">
+              <property role="3oM_SC" value="should" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLAU" role="1PaTwD">
+              <property role="3oM_SC" value="be" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLB7" role="1PaTwD">
+              <property role="3oM_SC" value="loaded" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLCj" role="1PaTwD">
+              <property role="3oM_SC" value="to" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLCy" role="1PaTwD">
+              <property role="3oM_SC" value="prevent" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOLEI" role="1PaTwD">
+              <property role="3oM_SC" value="ClassNotFoundErrors" />
+            </node>
+          </node>
+        </node>
+        <node concept="3SKdUt" id="3JoT2ufOLQk" role="3cqZAp">
+          <node concept="1PaTwC" id="3JoT2ufOLQl" role="1aUNEU">
+            <node concept="3oM_SD" id="3JoT2ufOO0M" role="1PaTwD">
+              <property role="3oM_SC" value="TODO" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOO1M" role="1PaTwD">
+              <property role="3oM_SC" value="clear" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOO2N" role="1PaTwD">
+              <property role="3oM_SC" value="once" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOOcc" role="1PaTwD">
+              <property role="3oM_SC" value="those" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOOed" role="1PaTwD">
+              <property role="3oM_SC" value="libraries" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOOfh" role="1PaTwD">
+              <property role="3oM_SC" value="are" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOOfo" role="1PaTwD">
+              <property role="3oM_SC" value="not" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOOgu" role="1PaTwD">
+              <property role="3oM_SC" value="needed" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOOjQ" role="1PaTwD">
+              <property role="3oM_SC" value="from" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOOkY" role="1PaTwD">
+              <property role="3oM_SC" value="the" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOOl9" role="1PaTwD">
+              <property role="3oM_SC" value="core" />
+            </node>
+            <node concept="3oM_SD" id="3JoT2ufOOll" role="1PaTwD">
+              <property role="3oM_SC" value="anymore" />
+            </node>
+          </node>
+        </node>
+        <node concept="3clFbF" id="3JoT2ufHAOB" role="3cqZAp">
+          <node concept="2OqwBi" id="3JoT2ufHCCw" role="3clFbG">
+            <node concept="37vLTw" id="3JoT2ufHAOy" role="2Oq$k0">
+              <ref role="3cqZAo" node="58KCQIwi0rr" resolve="startupArgs" />
+            </node>
+            <node concept="liA8E" id="3JoT2ufHEZK" role="2OqNvi">
+              <ref role="37wK5l" to="asz6:r$A3E5sNES" resolve="addPlugin" />
+              <node concept="2ShNRf" id="3JoT2ufHH3x" role="37wK5m">
+                <node concept="1pGfFk" id="3JoT2ufHSDr" role="2ShVmc">
+                  <property role="373rjd" value="true" />
+                  <ref role="37wK5l" to="asz6:4OPNMy23eT$" resolve="PluginData" />
+                  <node concept="3cpWs3" id="3JoT2ufI$zz" role="37wK5m">
+                    <node concept="Xl_RD" id="3JoT2ufIAsF" role="3uHU7w">
+                      <property role="Xl_RC" value="/mps-core" />
+                    </node>
+                    <node concept="2YIFZM" id="3JoT2ufKJuM" role="3uHU7B">
+                      <ref role="37wK5l" to="18ew:~PathManager.getPreInstalledPluginsPath()" resolve="getPreInstalledPluginsPath" />
+                      <ref role="1Pybhc" to="18ew:~PathManager" resolve="PathManager" />
+                    </node>
+                  </node>
+                  <node concept="Xl_RD" id="3JoT2ufIED5" role="37wK5m">
+                    <property role="Xl_RC" value="jetbrains.mps.core" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>

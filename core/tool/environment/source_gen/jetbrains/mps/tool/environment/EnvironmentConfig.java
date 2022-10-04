@@ -72,7 +72,7 @@ public class EnvironmentConfig {
   public EnvironmentConfig addPlugin(String path, String id) {
     if (myAutomaticPluginsDiscoveryMode) {
       if (LOG.isWarningLevel()) {
-        LOG.warning(String.format("Not adding the plugin=%s; path=%s, since the automatic mode is on", path));
+        LOG.warning(String.format("Not adding the plugin=%s; path=%s, since the automatic mode is on", id, path));
       }
     }
     File pluginLocation = new File(path);

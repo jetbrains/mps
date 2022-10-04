@@ -915,6 +915,9 @@
                 <node concept="Xl_RD" id="5P325eDo_RY" role="37wK5m">
                   <property role="Xl_RC" value="Not adding the plugin=%s; path=%s, since the automatic mode is on" />
                 </node>
+                <node concept="37vLTw" id="1kADmUn6XqX" role="37wK5m">
+                  <ref role="3cqZAo" node="3FVfMMI0_S2" resolve="id" />
+                </node>
                 <node concept="37vLTw" id="5P325eDo_RZ" role="37wK5m">
                   <ref role="3cqZAo" node="7lKcB_1uNEu" resolve="path" />
                 </node>

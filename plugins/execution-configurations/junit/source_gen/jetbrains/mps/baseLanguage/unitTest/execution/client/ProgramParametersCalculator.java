@@ -19,6 +19,7 @@ import org.jdom.Document;
 import java.io.IOException;
 import org.jetbrains.mps.annotations.Mutable;
 import jetbrains.mps.tool.common.PluginData;
+import jetbrains.mps.util.PathManager;
 import jetbrains.mps.internal.collections.runtime.IVisitor;
 import jetbrains.mps.tool.common.RepositoryDescriptor;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -102,6 +103,9 @@ import jetbrains.mps.project.PathMacros;
 
   private void addPluginsToStartupArgs(@Mutable final ScriptData startupArgs) {
     List<PluginData> plugins = new UserProvidedPluginsCalculator(mySettings).calculate();
+    // This plugin contains libraries specific to kotlin stub loading, and should be loaded to prevent ClassNotFoundErrors
+    // TODO clear once those libraries are not needed from the core anymore
+    startupArgs.addPlugin(new PluginData(PathManager.getPreInstalledPluginsPath() + "/mps-core", "jetbrains.mps.core"));
     ListSequence.fromList(plugins).visitAll(new IVisitor<PluginData>() {
       public void visit(PluginData it) {
         startupArgs.addPlugin(it);
