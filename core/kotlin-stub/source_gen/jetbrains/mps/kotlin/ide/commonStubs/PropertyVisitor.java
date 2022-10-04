@@ -17,6 +17,7 @@ import kotlinx.metadata.KmExtensionType;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import kotlinx.metadata.internal.metadata.deserialization.Flags;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
@@ -71,8 +72,8 @@ public class PropertyVisitor extends KmPropertyVisitor {
     ctx.setId(SLinkOperations.getTarget(decl, LINKS.declaration$IdZv), receiverName + "." + name);
 
     // Parameters
-    SLinkOperations.setTarget(decl, LINKS.visibility$vnSV, EnumFlags.getVisibility(Flags.VISIBILITY.get(flags)));
-    SLinkOperations.setTarget(decl, LINKS.inheritance$TFvr, EnumFlags.getModality(Flags.MODALITY.get(flags)));
+    SLinkOperations.setTarget(decl, LINKS.visibility$vnSV, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(EnumFlags.getVisibility(Flags.VISIBILITY.get(flags)))));
+    SLinkOperations.setTarget(decl, LINKS.inheritance$TFvr, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(EnumFlags.getModality(Flags.MODALITY.get(flags)))));
     // TODO member kind?
     SPropertyOperations.assign(decl, PROPS.isConstant$zvIz, Flags.IS_CONST.get(flags));
     SPropertyOperations.assign(decl, PROPS.isReadonly$jzqd, !(Flags.IS_VAR.get(flags)));

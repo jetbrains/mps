@@ -51313,6 +51313,9 @@
       <node concept="nCB5N" id="3JGpBe97Edy" role="nCB5Z">
         <ref role="nCB5Y" node="3dkXFAFkSFA" resolve="mps-persistence" />
       </node>
+      <node concept="2sjeV3" id="13B1jmVzaEU" role="nCB5Z">
+        <ref role="2sjeV2" node="2FD4j7hQCb6" resolve="kotlin-metadata" />
+      </node>
     </node>
     <node concept="2G$12M" id="Ye$g8PO8TD" role="3989C9">
       <property role="TrG5h" value="kotlin" />
@@ -51469,6 +51472,11 @@
         <node concept="1SiIV0" id="$KlcZjOdbd" role="3bR37C">
           <node concept="1Busua" id="$KlcZjOdbe" role="1SiIV1">
             <ref role="1Busuk" node="3HV74$ebibC" resolve="jetbrains.mps.lang.text" />
+          </node>
+        </node>
+        <node concept="1SiIV0" id="13B1jmVzaAP" role="3bR37C">
+          <node concept="3bR9La" id="13B1jmVzaAQ" role="1SiIV1">
+            <ref role="3bR37D" node="3qkjbZn4_1I" resolve="jetbrains.mps.lang.constraints.rules.kinds" />
           </node>
         </node>
       </node>

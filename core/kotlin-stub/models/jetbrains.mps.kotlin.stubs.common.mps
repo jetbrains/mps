@@ -568,11 +568,11 @@
                 <ref role="3cqZAo" node="6UEu$_UxljC" resolve="node" />
               </node>
               <node concept="2OqwBi" id="6UEu$_Ux6h9" role="37wK5m">
-                <node concept="37vLTw" id="7VmbditL_dq" role="2Oq$k0">
-                  <ref role="3cqZAo" node="7VmbditL_dl" resolve="builder" />
-                </node>
                 <node concept="liA8E" id="6UEu$_Ux72T" role="2OqNvi">
                   <ref role="37wK5l" to="wyt6:~StringBuilder.toString()" resolve="toString" />
+                </node>
+                <node concept="37vLTw" id="7VmbditL_dq" role="2Oq$k0">
+                  <ref role="3cqZAo" node="7VmbditL_dl" resolve="builder" />
                 </node>
               </node>
             </node>

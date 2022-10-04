@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import kotlinx.metadata.internal.metadata.deserialization.Flags;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations;
 import jetbrains.mps.kotlin.stubs.common.KotlinId;
 import org.jetbrains.annotations.Nullable;
@@ -21,7 +22,6 @@ import kotlinx.metadata.KmPropertyVisitor;
 import kotlinx.metadata.KmTypeAliasVisitor;
 import kotlinx.metadata.KmTypeVisitor;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.model.SReference;
 import jetbrains.mps.internal.collections.runtime.ISelector;
@@ -73,14 +73,14 @@ public class ClassVisitor extends KmClassVisitor {
     {
       final SNode visible = getNode();
       if (SNodeOperations.isInstanceOf(visible, CONCEPTS.IVisible$LZ)) {
-        SLinkOperations.setTarget(visible, LINKS.visibility$vnSV, EnumFlags.getVisibility(Flags.VISIBILITY.get(flags)));
+        SLinkOperations.setTarget(visible, LINKS.visibility$vnSV, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(EnumFlags.getVisibility(Flags.VISIBILITY.get(flags)))));
       }
     }
 
     {
       final SNode iClass = getNode();
       if (SNodeOperations.isInstanceOf(iClass, CONCEPTS.IClassDeclaration$bQ)) {
-        SLinkOperations.setTarget(iClass, LINKS.inheritance$TFvr, EnumFlags.getModality(Flags.MODALITY.get(flags)));
+        SLinkOperations.setTarget(iClass, LINKS.inheritance$TFvr, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(EnumFlags.getModality(Flags.MODALITY.get(flags)))));
 
         {
           final SNode actualClass = getNode();

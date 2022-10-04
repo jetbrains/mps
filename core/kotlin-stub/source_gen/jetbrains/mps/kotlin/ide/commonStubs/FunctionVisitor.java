@@ -18,7 +18,12 @@ import kotlinx.metadata.KmFunctionExtensionVisitor;
 import kotlinx.metadata.KmExtensionType;
 import java.util.Objects;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
 import kotlinx.metadata.internal.metadata.deserialization.Flags;
+import jetbrains.mps.internal.collections.runtime.ListSequence;
+import jetbrains.mps.internal.collections.runtime.Sequence;
+import jetbrains.mps.internal.collections.runtime.ISelector;
+import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import org.jetbrains.mps.openapi.language.SConcept;
@@ -87,9 +92,13 @@ public class FunctionVisitor extends KmFunctionVisitor {
 
   public static KmFunctionVisitor create(SNode func, VisitorContext ctx, int flags, String name, String receiverName) {
     SPropertyOperations.assign(func, PROPS.name$MnvL, name);
-    SLinkOperations.setTarget(func, LINKS.visibility$vnSV, EnumFlags.getVisibility(Flags.VISIBILITY.get(flags)));
-    SLinkOperations.setTarget(func, LINKS.inheritance$TFvr, EnumFlags.getModality(Flags.MODALITY.get(flags)));
-    EnumFlags.populateModifiers(func, flags);
+    SLinkOperations.setTarget(func, LINKS.visibility$vnSV, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(EnumFlags.getVisibility(Flags.VISIBILITY.get(flags)))));
+    SLinkOperations.setTarget(func, LINKS.inheritance$TFvr, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(EnumFlags.getModality(Flags.MODALITY.get(flags)))));
+    ListSequence.fromList(SLinkOperations.getChildren(func, LINKS.modifiers$XKtM)).addSequence(Sequence.fromIterable(EnumFlags.getFunctionModifiers(flags)).select(new ISelector<SAbstractConcept, SNode>() {
+      public SNode select(SAbstractConcept it) {
+        return SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(it));
+      }
+    }));
     return new FunctionVisitor(func, receiverName, ctx);
   }
 
@@ -101,6 +110,7 @@ public class FunctionVisitor extends KmFunctionVisitor {
     /*package*/ static final SContainmentLink returnType$fGYV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x11400bb7908cd887L, 0x11400bb7908cd888L, "returnType");
     /*package*/ static final SContainmentLink visibility$vnSV = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x631027d1c4c4e03fL, 0x631027d1c4c4e040L, "visibility");
     /*package*/ static final SContainmentLink inheritance$TFvr = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x537372687dd3bcdaL, 0x537372687dd3bcdbL, "inheritance");
+    /*package*/ static final SContainmentLink modifiers$XKtM = MetaAdapterFactory.getContainmentLink(0x6b3888c1980244d8L, 0x8baff8e6c33ed689L, 0x28bef6d7551af434L, 0x28bef6d75568d1adL, "modifiers");
   }
 
   private static final class CONCEPTS {

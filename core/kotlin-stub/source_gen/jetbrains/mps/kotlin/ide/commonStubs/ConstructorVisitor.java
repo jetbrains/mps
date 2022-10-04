@@ -7,11 +7,12 @@ import kotlinx.metadata.KmConstructorVisitor;
 import org.jetbrains.mps.openapi.model.SNode;
 import jetbrains.mps.kotlin.stubs.common.FunctionIdBuilder;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations;
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import kotlinx.metadata.internal.metadata.deserialization.Flags;
 import org.jetbrains.annotations.Nullable;
 import kotlinx.metadata.KmValueParameterVisitor;
 import org.jetbrains.annotations.NotNull;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import kotlinx.metadata.KmConstructorExtensionVisitor;
 import kotlinx.metadata.KmExtensionType;
 import java.util.Objects;
@@ -28,7 +29,7 @@ public class ConstructorVisitor extends KmConstructorVisitor {
 
   public ConstructorVisitor(SNode constructor, String receiver, int flags, VisitorContext ctx) {
     myConstructor = constructor;
-    SLinkOperations.setTarget(myConstructor, LINKS.visibility$vnSV, EnumFlags.getVisibility(Flags.VISIBILITY.get(flags)));
+    SLinkOperations.setTarget(myConstructor, LINKS.visibility$vnSV, SConceptOperations.createNewNode(SNodeOperations.asInstanceConcept(EnumFlags.getVisibility(Flags.VISIBILITY.get(flags)))));
     context = ctx;
     functionId = new FunctionIdBuilder(ctx, FunctionIdBuilder.CONSTRUCTOR_ID_PREFIX, receiver);
   }
