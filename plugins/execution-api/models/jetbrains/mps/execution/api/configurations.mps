@@ -3682,13 +3682,53 @@
                     </node>
                   </node>
                 </node>
-                <node concept="3clFbF" id="CZHNfv$uvo" role="3cqZAp">
-                  <node concept="2OqwBi" id="CZHNfv$uxV" role="3clFbG">
-                    <node concept="37vLTw" id="CZHNfv$uvm" role="2Oq$k0">
-                      <ref role="3cqZAo" node="CZHNfv$oyf" resolve="it" />
+                <node concept="3SKdUt" id="5B4jDgKyGGs" role="3cqZAp">
+                  <node concept="1PaTwC" id="5B4jDgKyGGt" role="1aUNEU">
+                    <node concept="3oM_SD" id="5B4jDgKyH92" role="1PaTwD">
+                      <property role="3oM_SC" value="iterator" />
                     </node>
-                    <node concept="liA8E" id="CZHNfv$uF3" role="2OqNvi">
-                      <ref role="37wK5l" to="33ny:~Iterator.remove()" resolve="remove" />
+                    <node concept="3oM_SD" id="5B4jDgKyH9R" role="1PaTwD">
+                      <property role="3oM_SC" value="of" />
+                    </node>
+                    <node concept="3oM_SD" id="5B4jDgKyH9Y" role="1PaTwD">
+                      <property role="3oM_SC" value="CopyOnWriteArrayList" />
+                    </node>
+                    <node concept="3oM_SD" id="5B4jDgKyHaq" role="1PaTwD">
+                      <property role="3oM_SC" value="is" />
+                    </node>
+                    <node concept="3oM_SD" id="5B4jDgKyHav" role="1PaTwD">
+                      <property role="3oM_SC" value="immutable," />
+                    </node>
+                    <node concept="3oM_SD" id="5B4jDgKyHaG" role="1PaTwD">
+                      <property role="3oM_SC" value="and" />
+                    </node>
+                    <node concept="3oM_SD" id="5B4jDgKyHaO" role="1PaTwD">
+                      <property role="3oM_SC" value="walks" />
+                    </node>
+                    <node concept="3oM_SD" id="5B4jDgKyHaX" role="1PaTwD">
+                      <property role="3oM_SC" value="over" />
+                    </node>
+                    <node concept="3oM_SD" id="5B4jDgKyHb7" role="1PaTwD">
+                      <property role="3oM_SC" value="a" />
+                    </node>
+                    <node concept="3oM_SD" id="5B4jDgKyHbF" role="1PaTwD">
+                      <property role="3oM_SC" value="copy," />
+                    </node>
+                    <node concept="3oM_SD" id="5B4jDgKyHa_" role="1PaTwD">
+                      <property role="3oM_SC" value="surprise!" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbF" id="5B4jDgKyJk9" role="3cqZAp">
+                  <node concept="2OqwBi" id="5B4jDgKyLhu" role="3clFbG">
+                    <node concept="37vLTw" id="5B4jDgKyJk7" role="2Oq$k0">
+                      <ref role="3cqZAo" node="6Frip1cf36M" resolve="myFactories" />
+                    </node>
+                    <node concept="liA8E" id="5B4jDgKyN9J" role="2OqNvi">
+                      <ref role="37wK5l" to="5zyv:~CopyOnWriteArrayList.remove(java.lang.Object)" resolve="remove" />
+                      <node concept="37vLTw" id="5B4jDgKyO20" role="37wK5m">
+                        <ref role="3cqZAo" node="CZHNfv$oyf" resolve="it" />
+                      </node>
                     </node>
                   </node>
                 </node>
@@ -3810,7 +3850,7 @@
         </node>
         <node concept="TZ5HA" id="6Frip1cf$$f" role="TZ5H$">
           <node concept="1dT_AC" id="6Frip1cf$$g" role="1dT_Ay">
-            <property role="1dT_AB" value="Unregister a previosul registerd factory with the configuration type" />
+            <property role="1dT_AB" value="Unregister a previously registered factory with the configuration type" />
           </node>
         </node>
       </node>

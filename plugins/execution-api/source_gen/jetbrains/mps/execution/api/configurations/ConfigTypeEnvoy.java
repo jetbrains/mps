@@ -94,14 +94,15 @@ public final class ConfigTypeEnvoy implements ConfigurationType {
   /**
    * MPS INTERNAL API, DO NOT USE OUTSIDE OF MPS OR MPS-GENERATED CODE
    * 
-   * Unregister a previosul registerd factory with the configuration type
+   * Unregister a previously registered factory with the configuration type
    */
   public void removeFactoryFor(@NotNull Class<? extends BaseMpsRunConfiguration> runCfg) {
     for (Iterator<ConfigFactoryEnvoy> it = myFactories.iterator(); it.hasNext();) {
       ConfigFactoryEnvoy next = it.next();
       if (next.getRunConfigClass() == runCfg) {
         next.invalidate();
-        it.remove();
+        // iterator of CopyOnWriteArrayList is immutable, and walks over a copy, surprise!
+        myFactories.remove(it);
         // intentionally do not break as there's no check to ensure no duplicated addFactoryFor(sameClass) calls.
       }
     }

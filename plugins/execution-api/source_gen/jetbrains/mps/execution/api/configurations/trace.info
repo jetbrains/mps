@@ -364,8 +364,9 @@
       <node id="8990324920604762329" at="90,26,91,71" concept="3" />
       <node id="738510297334137286" at="100,83,101,42" concept="9" />
       <node id="738510297334148714" at="102,47,103,26" concept="3" />
-      <node id="738510297334147032" at="103,26,104,20" concept="3" />
-      <node id="738510297334152214" at="104,20,105,113" concept="11" />
+      <node id="6468381363187403548" at="103,26,104,90" concept="11" />
+      <node id="6468381363187414281" at="104,90,105,31" concept="3" />
+      <node id="738510297334152214" at="105,31,106,113" concept="11" />
       <node id="738510297334247988" at="78,23,81,5" concept="6" />
       <node id="7699828872023051848" at="45,0,49,0" concept="8" trace="getDisplayName#()Ljava/lang/String;" />
       <node id="7699828872023052048" at="50,0,54,0" concept="8" trace="getConfigurationTypeDescription#()Ljava/lang/String;" />
@@ -374,11 +375,11 @@
       <node id="7699828872023052065" at="39,0,44,0" concept="8" trace="getId#()Ljava/lang/String;" />
       <node id="7699828872023052075" at="60,0,65,0" concept="8" trace="getConfigurationFactories#()[Lcom/intellij/execution/configurations/ConfigurationFactory;" />
       <node id="7699828872023052082" at="66,0,71,0" concept="8" trace="isDumbAware#()Z" />
-      <node id="738510297334145031" at="101,42,106,7" concept="7" />
       <node id="7699828872023062111" at="32,0,38,0" concept="2" trace="ConfigTypeEnvoy#(Ljava/lang/String;Ljavax/swing/Icon;Ljava/lang/String;Ljava/lang/String;)V" />
       <node id="7699828872023297078" at="77,0,83,0" concept="8" trace="invalidate#()V" />
-      <node id="738510297334122636" at="99,90,107,5" concept="5" />
-      <node id="7699828872023087821" at="99,0,109,0" concept="8" trace="removeFactoryFor#(Ljava/lang/Class;)V" />
+      <node id="738510297334145031" at="101,42,107,7" concept="7" />
+      <node id="738510297334122636" at="99,90,108,5" concept="5" />
+      <node id="7699828872023087821" at="99,0,110,0" concept="8" trace="removeFactoryFor#(Ljava/lang/Class;)V" />
       <scope id="7699828872023052071" at="41,25,42,16" />
       <scope id="7699828872023051853" at="46,34,47,25" />
       <scope id="7699828872023052053" at="51,51,52,25" />
@@ -392,7 +393,6 @@
       <scope id="738510297334247988" at="78,23,81,5">
         <var name="f" id="738510297334247990" />
       </scope>
-      <scope id="738510297334145033" at="102,47,105,113" />
       <scope id="7699828872023062116" at="32,97,36,32" />
       <scope id="7699828872023051848" at="45,0,49,0" />
       <scope id="7699828872023052048" at="50,0,54,0" />
@@ -402,6 +402,7 @@
         <var name="runCfg" id="8990324920604762342" />
         <var name="runConfigId" id="8990324920604767396" />
       </scope>
+      <scope id="738510297334145033" at="102,47,106,113" />
       <scope id="7699828872023052065" at="39,0,44,0" />
       <scope id="7699828872023052075" at="60,0,65,0" />
       <scope id="7699828872023052082" at="66,0,71,0" />
@@ -412,17 +413,17 @@
         <var name="id" id="7699828872023062735" />
       </scope>
       <scope id="7699828872023297078" at="77,0,83,0" />
-      <scope id="738510297334122638" at="100,83,106,7">
+      <scope id="738510297334122638" at="100,83,107,7">
         <var name="next" id="738510297334137287" />
       </scope>
-      <scope id="738510297334122636" at="99,90,107,5">
+      <scope id="738510297334122636" at="99,90,108,5">
         <var name="it" id="738510297334122639" />
       </scope>
-      <scope id="7699828872023087822" at="99,90,107,5" />
-      <scope id="7699828872023087821" at="99,0,109,0">
+      <scope id="7699828872023087822" at="99,90,108,5" />
+      <scope id="7699828872023087821" at="99,0,110,0">
         <var name="runCfg" id="738510297334030640" />
       </scope>
-      <unit id="7699828872023021372" at="23,0,110,0" name="jetbrains.mps.execution.api.configurations.ConfigTypeEnvoy" />
+      <unit id="7699828872023021372" at="23,0,111,0" name="jetbrains.mps.execution.api.configurations.ConfigTypeEnvoy" />
     </file>
   </root>
   <root nodeRef="r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)/8536479618435048503">
