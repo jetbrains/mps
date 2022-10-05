@@ -52,9 +52,15 @@ public class CreateGroupsBuilder {
     myCallback = callback;
   }
 
+  @NotNull
   public List<DefaultActionGroup> getCreateGroups(final Collection<RelationDescriptor> possibleTabs, @Nullable final RelationDescriptor currentAspect) {
     return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> {
       List<DefaultActionGroup> groups = new ArrayList<>();
+
+      SNode baseNode = myBaseNode.resolve(myProject.getRepository());
+      if (baseNode == null) {
+        return groups;
+      }
 
       List<RelationDescriptor> tabs = new ArrayList<>(possibleTabs);
       tabs.sort(new RelationComparator());
@@ -67,7 +73,7 @@ public class CreateGroupsBuilder {
       for (final RelationDescriptor d : tabs) {
         List<SNode> nodes;
         try {
-          nodes = d.getNodes(myBaseNode.resolve(myProject.getRepository()));
+          nodes = d.getNodes(baseNode);
         } catch (Throwable t) {
           Logger.getLogger(CreateGroupsBuilder.class).error("Exception in extension: ", t);
           continue;
@@ -76,7 +82,7 @@ public class CreateGroupsBuilder {
           continue;
         }
 
-        DefaultActionGroup group = doGetCreateGroup(d);
+        DefaultActionGroup group = doGetCreateGroup(d, baseNode);
 
         if (tabs.indexOf(d) == 0) {
           group.setPopup(false);
@@ -90,11 +96,17 @@ public class CreateGroupsBuilder {
 
   @NotNull
   public DefaultActionGroup getCreateGroup(final RelationDescriptor d) {
-    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> doGetCreateGroup(d));
+    return new ModelAccessHelper(myProject.getModelAccess()).runReadAction(() -> {
+      SNode baseNode = myBaseNode.resolve(myProject.getRepository());
+      if (baseNode == null) {
+        return new DefaultActionGroup();
+      } else {
+        return doGetCreateGroup(d, baseNode);
+      }
+    });
   }
 
-  private DefaultActionGroup doGetCreateGroup(RelationDescriptor d) {
-    final SNode baseNode = myBaseNode.resolve(myProject.getRepository());
+  private DefaultActionGroup doGetCreateGroup(RelationDescriptor d, @NotNull SNode baseNode) {
     Iterable<SConcept> concepts = d.getAspectConcepts(baseNode);
     if (!concepts.iterator().hasNext()) {
       return new DefaultActionGroup();
