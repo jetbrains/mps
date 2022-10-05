@@ -28,6 +28,7 @@ import jetbrains.mps.errors.item.IssueKindReportItem.PathObject;
 import jetbrains.mps.errors.item.IssueKindReportItem.PathObject.NodePathObject;
 import jetbrains.mps.errors.item.NodeReportItem;
 import jetbrains.mps.errors.item.TypesystemReportItemAdapter;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.nodeEditor.EditorComponent;
 import jetbrains.mps.nodeEditor.EditorMessage;
 import jetbrains.mps.nodeEditor.HighlighterMessage;
@@ -70,6 +71,8 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
   private boolean myHasEvents = false;
   private final SRepository myRepository;
   private final Collection<ICheckingPostprocessor<NodeReportItem>> myPostprocessors;
+
+  private static Logger LOG = Logger.getLogger(AbstractTypesystemEditorChecker.class);
 
   public AbstractTypesystemEditorChecker(SRepository repository, Collection<ICheckingPostprocessor<NodeReportItem>> postprocessors) {
     myRepository = repository;
@@ -138,7 +141,16 @@ public abstract class AbstractTypesystemEditorChecker extends BaseEditorChecker 
       postprocessMap.get(nodeReportItem.getNode()).add(nodeReportItem);
     };
     for (Pair<SNodeReference, List<NodeReportItem>> nodeErrors : nodeErrorPairs) {
-      List<ApprovableError> nodeErrorList = nodeErrors.o2.stream().map(nri -> new ApprovableError(nri, true)).collect(Collectors.toList());
+      // FIXME: this only hides the problem, must find out why the node has been removed
+      List<ApprovableError> nodeErrorList = nodeErrors.o2.stream()
+                                              .filter(nri -> nri.getNode().resolve(myRepository) != null) 
+                                              .map(nri -> new ApprovableError(nri, true)).collect(Collectors.toList());
+      nodeErrors.o2.stream()
+                   .filter(nri -> nri.getNode().resolve(myRepository) == null)
+                   .forEach(nri ->
+                                LOG.debug("Node used to report an error cannot be resolved. Error will be ignored. "+
+                                          nri.getNode() + " " + nri.toPredicate(nri.getIdFlavours()).serialize(), new Throwable()));
+      
       errorMap.put(new NodePathObject(nodeErrors.o1), nodeErrorList);
     }
     for (ICheckingPostprocessor<NodeReportItem> postprocessor : myPostprocessors) {
