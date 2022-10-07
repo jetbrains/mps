@@ -601,23 +601,18 @@
       <pathelement location="${artifacts.mps}/languages/util/jetbrains.mps.runtime.jar" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing/languages/baseLanguage/jetbrains.mps.baseLanguage.unitTest.jar" />
     </path>
-    <pathconvert pathsep="${path.separator}" property="mps.libraries.path.string" refid="mps.libraries.path" />
+    <pathconvert property="mps.libraries.path.string" refid="mps.libraries.path" />
     <path id="mps.plugins.path">
       <pathelement location="${artifacts.mps}/plugins/mps-core" />
       <pathelement location="${artifacts.mps}/plugins/mps-testing" />
     </path>
-    <pathconvert pathsep="${path.separator}" property="mps.plugins.path.string" refid="mps.plugins.path" />
+    <pathconvert property="mps.plugins.path.string" refid="mps.plugins.path" />
     <path id="mps.tests.path">
       <pathelement location="${build.layout}/testPackagedLanguage.test.jar" />
       <pathelement location="${build.layout}/testPackagedLanguage.jar" />
       <pathelement location="${build.layout}/testPackagedLanguage.test.jar" />
     </path>
-    <pathconvert pathsep="${path.separator}" property="mps.tests.path.string" refid="mps.tests.path" />
-    <patternset id="plugin.deployed.jars">
-      <include name="lib/**/*.jar" />
-      <include name="languages/**/*.jar" />
-      <exclude name="**/*-src.jar" />
-    </patternset>
+    <pathconvert property="mps.tests.path.string" refid="mps.tests.path" />
     <path id="long.class.path">
       <fileset dir="${artifacts.mps}/lib">
         <include name="**/*.jar" />
@@ -678,11 +673,7 @@
       <jvmarg value="--add-opens=jdk.internal.jvmstat/sun.jvmstat.monitor=ALL-UNNAMED" />
       <jvmarg value="--add-opens=jdk.jdi/com.sun.tools.jdi=ALL-UNNAMED" />
       
-      <classpath>
-        <fileset dir="${build.tmp}">
-          <include name="mps.class.path.jar" />
-        </fileset>
-      </classpath>
+      <classpath location="${build.tmp}/mps.class.path.jar" />
       
       <env key="NO_FS_ROOTS_ACCESS_CHECK" value="true" />
       
