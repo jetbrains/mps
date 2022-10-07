@@ -112,9 +112,13 @@ How to develop MPS plugin for IntelliJ IDEA
     - To debug JPS build process, turn on Debug Build Process (Cmd-Shift-A, find Action), then Build/Make project
       (with Cmd-F9). JSP will stop and show port number to connect to.
       Use separate IDEA instance (could be the one with Big MPS sources) to connect and debug.
-      FWIW, -Dcompiler.process.debug.port= (as per Intellij Platform Plugin SDK,
-      https://plugins.jetbrains.com/docs/intellij/external-builder-api.html) didn't work for running instance
-      (IDEA with MPS plugin installed, when I want to debug JPS build issues with the project itself).
+    - To have fixed debug port, look for compiler.process.debug.port value in the Registry.
+      Intellij Platform Plugin SDK (https://plugins.jetbrains.com/docs/intellij/external-builder-api.html)
+      suggests you should use -Dcompiler.process.debug.port=, but it doesn't work
+    - Another useful tip to debug JPS build process is to set JUL log levels in "build-log-jul.properties" file located
+      next to "build.log" (which is quite useful itself, regardless of extra log details). For macOS, it's located
+      under ~/Library/Logs/JetBrains/IdeaIC2022.2/build-log/ folder (next to idea.log. Use Show Log in Finder action to
+      navigate quickly)
 
 4. Project structure
     Short introduction into MPS4IDEA plugin project structure
