@@ -20,8 +20,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory;
 import jetbrains.mps.baseLanguage.closures.runtime._FunctionTypes;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.junit.Before;
-import java.io.File;
-import jetbrains.mps.testbench.junit.suites.TestMakeUtil;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
 import org.jetbrains.mps.openapi.language.SProperty;
@@ -516,9 +514,7 @@ public class BHTestRef_Test extends EnvironmentAwareTestCase {
   @Before
   public void setUp() {
     // MpsEnvironment suffice
-    myProject = myEnvironment.openProject(new File(BHTestRef_Test.PROJECT_PATH));
-    // see BHTest for detailed explanation why we make project here
-    new TestMakeUtil(myEnvironment.getPlatform()).make(myProject);
+    myProject = myEnvironment.createEmptyProject();
   }
   private static SNode createA_cc8y9n_a0a0a0() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$jy);

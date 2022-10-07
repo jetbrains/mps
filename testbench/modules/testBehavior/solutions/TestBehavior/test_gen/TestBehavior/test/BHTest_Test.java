@@ -33,8 +33,6 @@ import jetbrains.mps.internal.collections.runtime.ISelector;
 import BHL7.behavior.L__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import org.junit.Before;
-import java.io.File;
-import jetbrains.mps.testbench.junit.suites.TestMakeUtil;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -543,20 +541,7 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
   }
   @Before
   public void setUp() {
-    myProject = myEnvironment.openProject(new File(PROJECT_PATH));
-    // Piece of knowledge:
-    // MPSProject loads its modules and injects them into repository with classloading event dispatch paused (uses runNonReloadableTransaction)
-    // The reason for this is assumption there's StartupModuleMaker that would compile dirty modules and then brand new and shiny languages can get loaded.
-    // However, in test app, there's DummyStartupModuleMakerImpl, which is no-op. Without languages properly registered, tests issue
-    // a warning "No language for: BHL1.structure.A, while looking for the behavior descriptor" and eventually fail.
-    // Nevertheless, it seems right NOT to compile project modules during test mode automatically. Instead, we can explicitly
-    // make target projects in a test like this one (which knows it gonna use languages from the target project).
-    // As for module-added events not being dispatched on project init, once we switch to distinct project and classloading repositories, there would be no need for
-    // runNonReloadableTransaction, events from project repository won't trigger classloading anyway.
-    //  
-    myProject.getModelAccess().runWriteAction(() -> {
-    });
-    new TestMakeUtil(myEnvironment.getPlatform()).make(myProject);
+    myProject = myEnvironment.createEmptyProject();
   }
   private static SNode createA_a2wy8c_a0a0a0() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$jy);

@@ -4321,74 +4321,8 @@
               <node concept="37vLTw" id="1D4tfYtguhN" role="2Oq$k0">
                 <ref role="3cqZAo" to="83ig:~EnvironmentAwareTestCase.myEnvironment" resolve="myEnvironment" />
               </node>
-              <node concept="liA8E" id="4uPaNIY9iFw" role="2OqNvi">
-                <ref role="37wK5l" to="ew0j:~Environment.openProject(java.io.File)" resolve="openProject" />
-                <node concept="2ShNRf" id="4uPaNIY9iFx" role="37wK5m">
-                  <node concept="1pGfFk" id="4uPaNIY9iFy" role="2ShVmc">
-                    <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
-                    <node concept="10M0yZ" id="3Y5aAvD53B5" role="37wK5m">
-                      <ref role="3cqZAo" node="74sHQpDbWx3" resolve="PROJECT_PATH" />
-                      <ref role="1PxDUh" node="6EMTxOPT2R6" resolve="BHTestRef_Test" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
-          </node>
-        </node>
-        <node concept="3SKdUt" id="7TV6gXQfGgQ" role="3cqZAp">
-          <node concept="1PaTwC" id="ATZLwXopnt" role="1aUNEU">
-            <node concept="3oM_SD" id="ATZLwXopnu" role="1PaTwD">
-              <property role="3oM_SC" value="see" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXopnv" role="1PaTwD">
-              <property role="3oM_SC" value="BHTest" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXopnw" role="1PaTwD">
-              <property role="3oM_SC" value="for" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXopnx" role="1PaTwD">
-              <property role="3oM_SC" value="detailed" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXopny" role="1PaTwD">
-              <property role="3oM_SC" value="explanation" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXopnz" role="1PaTwD">
-              <property role="3oM_SC" value="why" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXopn$" role="1PaTwD">
-              <property role="3oM_SC" value="we" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXopn_" role="1PaTwD">
-              <property role="3oM_SC" value="make" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXopnA" role="1PaTwD">
-              <property role="3oM_SC" value="project" />
-            </node>
-            <node concept="3oM_SD" id="ATZLwXopnB" role="1PaTwD">
-              <property role="3oM_SC" value="here" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="7TV6gXQfF58" role="3cqZAp">
-          <node concept="2OqwBi" id="7TV6gXQfFKn" role="3clFbG">
-            <node concept="2ShNRf" id="7TV6gXQfF54" role="2Oq$k0">
-              <node concept="1pGfFk" id="7TV6gXQfFjc" role="2ShVmc">
-                <ref role="37wK5l" to="ymld:~TestMakeUtil.&lt;init&gt;(jetbrains.mps.core.platform.Platform)" resolve="TestMakeUtil" />
-                <node concept="2OqwBi" id="7TV6gXQfFsw" role="37wK5m">
-                  <node concept="37vLTw" id="7TV6gXQfFkd" role="2Oq$k0">
-                    <ref role="3cqZAo" to="83ig:~EnvironmentAwareTestCase.myEnvironment" resolve="myEnvironment" />
-                  </node>
-                  <node concept="liA8E" id="7TV6gXQfFBp" role="2OqNvi">
-                    <ref role="37wK5l" to="ew0j:~Environment.getPlatform()" resolve="getPlatform" />
-                  </node>
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="7TV6gXQfFXz" role="2OqNvi">
-              <ref role="37wK5l" to="ymld:~TestMakeUtil.make(jetbrains.mps.project.Project)" resolve="make" />
-              <node concept="37vLTw" id="7TV6gXQfG3U" role="37wK5m">
-                <ref role="3cqZAo" node="4uPaNIY9iLm" resolve="myProject" />
+              <node concept="liA8E" id="7zJ_LB7bZoP" role="2OqNvi">
+                <ref role="37wK5l" to="ew0j:~Environment.createEmptyProject()" resolve="createEmptyProject" />
               </node>
             </node>
           </node>
