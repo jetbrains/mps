@@ -1514,47 +1514,6 @@
                 </node>
               </node>
             </node>
-            <node concept="2Vbh7Z" id="4DmI4ODz8mg" role="2VaTZU">
-              <node concept="2pNNFK" id="4DmI4ODzdz9" role="2Vbh7K">
-                <property role="2pNNFO" value="patternset" />
-                <node concept="2pNUuL" id="4DmI4ODzdzf" role="2pNNFR">
-                  <property role="2pNUuO" value="id" />
-                  <node concept="2pMdtt" id="4DmI4ODzdzg" role="2pMdts">
-                    <property role="2pMdty" value="plugin.deployed.jars" />
-                  </node>
-                </node>
-                <node concept="2pNNFK" id="4DmI4ODzdzr" role="3o6s8t">
-                  <property role="qg3DV" value="true" />
-                  <property role="2pNNFO" value="include" />
-                  <node concept="2pNUuL" id="4DmI4ODzdzs" role="2pNNFR">
-                    <property role="2pNUuO" value="name" />
-                    <node concept="2pMdtt" id="4DmI4ODzdzt" role="2pMdts">
-                      <property role="2pMdty" value="lib/**/*.jar" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="2pNNFK" id="4DmI4ODzdzu" role="3o6s8t">
-                  <property role="qg3DV" value="true" />
-                  <property role="2pNNFO" value="include" />
-                  <node concept="2pNUuL" id="4DmI4ODzdzv" role="2pNNFR">
-                    <property role="2pNUuO" value="name" />
-                    <node concept="2pMdtt" id="4DmI4ODzdzw" role="2pMdts">
-                      <property role="2pMdty" value="languages/**/*.jar" />
-                    </node>
-                  </node>
-                </node>
-                <node concept="2pNNFK" id="4DmI4ODzdzY" role="3o6s8t">
-                  <property role="2pNNFO" value="exclude" />
-                  <property role="qg3DV" value="true" />
-                  <node concept="2pNUuL" id="4DmI4ODzd$c" role="2pNNFR">
-                    <property role="2pNUuO" value="name" />
-                    <node concept="2pMdtt" id="4DmI4ODzd$d" role="2pMdts">
-                      <property role="2pMdty" value="**/*-src.jar" />
-                    </node>
-                  </node>
-                </node>
-              </node>
-            </node>
             <node concept="2Vbh7Z" id="2qD8WtnEBsM" role="2VaTZU">
               <node concept="2pNNFK" id="2qD8WtnEC4W" role="2Vbh7K">
                 <property role="2pNNFO" value="path" />
