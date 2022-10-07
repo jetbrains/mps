@@ -98,31 +98,8 @@
       <fileset dir="${build.tmp}/default/test.behavior.plugin.jar" />
     </jar>
     <mkdir dir="${build.layout}/behavior-tests/test.behavior.plugin/lib" />
-    <mkdir dir="${build.tmp}/default/UtilSolution.jar" />
-    <mkdir dir="${build.tmp}/default/UtilSolution.jar/META-INF" />
-    <echoxml file="${build.tmp}/default/UtilSolution.jar/META-INF/module.xml">
-      <module namespace="UtilSolution" type="solution" uuid="6be63454-b482-4f5d-b8b7-d3f627e961a7">
-        <dependencies>
-          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
-          <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
-        </dependencies>
-        <uses>
-          <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
-        </uses>
-        <classpath>
-          <entry path="." />
-        </classpath>
-        <sources jar="." descriptor="UtilSolution.msd" />
-      </module>
-    </echoxml>
-    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-modules-testBehavior-solutions-UtilSolution-models">
-      <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/UtilSolution/models" includes="**/*.mps, **/*.mpsr, **/.model" />
-    </copyModels>
     <jar destfile="${build.layout}/behavior-tests/test.behavior.plugin/lib/UtilSolution.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/UtilSolution" />
-      <zipfileset file="${basedir}/testbench/modules/testBehavior/solutions/UtilSolution/UtilSolution.msd" prefix="module" />
-      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-modules-testBehavior-solutions-UtilSolution-models" prefix="module/models" />
-      <fileset dir="${build.tmp}/default/UtilSolution.jar" />
     </jar>
     <jar destfile="${build.layout}/behavior-tests/test.behavior.plugin/lib/TestBehaviorReflective.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/TestBehaviorReflective" />
@@ -558,7 +535,32 @@
       <zipfileset file="${basedir}/testbench/modules/testBehavior/languages/L7/BHL7.mpl" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-modules-testBehavior-languages-L7-models" prefix="module/models" />
     </jar>
-    <mkdir dir="${build.layout}/behavior-tests/nonReflectiveTest" />
+    <mkdir dir="${build.tmp}/default/UtilSolution.jar" />
+    <mkdir dir="${build.tmp}/default/UtilSolution.jar/META-INF" />
+    <echoxml file="${build.tmp}/default/UtilSolution.jar/META-INF/module.xml">
+      <module namespace="UtilSolution" type="solution" uuid="6be63454-b482-4f5d-b8b7-d3f627e961a7">
+        <dependencies>
+          <module ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" kind="rt" />
+          <module ref="52b81ac7-93fd-4e9e-b972-4995882da6d4(jetbrains.mps.baseLanguage.references.runtime)" kind="rt" />
+        </dependencies>
+        <uses>
+          <language id="l:f3061a53-9226-4cc5-a443-f952ceaf5816:jetbrains.mps.baseLanguage" />
+        </uses>
+        <classpath>
+          <entry path="../lib/UtilSolution.jar" />
+        </classpath>
+        <sources jar="." descriptor="UtilSolution.msd" />
+      </module>
+    </echoxml>
+    <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-modules-testBehavior-solutions-UtilSolution-models">
+      <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/UtilSolution/models" includes="**/*.mps, **/*.mpsr, **/.model" />
+    </copyModels>
+    <jar destfile="${build.layout}/behavior-tests/test.behavior.plugin/languages/UtilSolution.jar" duplicate="preserve">
+      <zipfileset file="${basedir}/testbench/modules/testBehavior/solutions/UtilSolution/UtilSolution.msd" prefix="module" />
+      <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-modules-testBehavior-solutions-UtilSolution-models" prefix="module/models" />
+      <fileset dir="${build.tmp}/default/UtilSolution.jar" />
+    </jar>
+    <mkdir dir="${build.layout}/behavior-tests/test.behavior.plugin/languages/nonReflectiveTest" />
     <mkdir dir="${build.tmp}/default/TestBehavior.jar" />
     <mkdir dir="${build.tmp}/default/TestBehavior.jar/META-INF" />
     <echoxml file="${build.tmp}/default/TestBehavior.jar/META-INF/module.xml">
@@ -605,7 +607,7 @@
         <sources jar="TestBehavior-src.jar" descriptor="TestBehavior.msd" />
       </module>
     </echoxml>
-    <jar destfile="${build.layout}/behavior-tests/nonReflectiveTest/TestBehavior.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/behavior-tests/test.behavior.plugin/languages/nonReflectiveTest/TestBehavior.jar" duplicate="preserve">
       <fileset dir="${build.tmp}/java/out/TestBehavior" />
       <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/TestBehavior" includes="icons/**, resources/**" />
       <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/TestBehavior/source_gen" includes="**/trace.info, **/exports, **/*.mps, **/checkpoints" />
@@ -614,7 +616,7 @@
     <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-modules-testBehavior-solutions-TestBehavior-models">
       <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/TestBehavior/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/behavior-tests/nonReflectiveTest/TestBehavior-src.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/behavior-tests/test.behavior.plugin/languages/nonReflectiveTest/TestBehavior-src.jar" duplicate="preserve">
       <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/TestBehavior/source_gen">
         <exclude name="**/trace.info" />
         <exclude name="**/exports" />
@@ -624,7 +626,7 @@
       <zipfileset file="${basedir}/testbench/modules/testBehavior/solutions/TestBehavior/TestBehavior.msd" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-modules-testBehavior-solutions-TestBehavior-models" prefix="module/models" />
     </jar>
-    <mkdir dir="${build.layout}/behavior-tests/reflectiveTest" />
+    <mkdir dir="${build.layout}/behavior-tests/test.behavior.plugin/languages/reflectiveTest" />
     <mkdir dir="${build.tmp}/default/TestBehaviorReflective.jar" />
     <mkdir dir="${build.tmp}/default/TestBehaviorReflective.jar/META-INF" />
     <echoxml file="${build.tmp}/default/TestBehaviorReflective.jar/META-INF/module.xml">
@@ -669,7 +671,7 @@
     <copyModels todir="${build.tmp}/customProcessors/copyModels/testbench-modules-testBehavior-solutions-TestBehaviorReflective-models">
       <fileset dir="${basedir}/testbench/modules/testBehavior/solutions/TestBehaviorReflective/models" includes="**/*.mps, **/*.mpsr, **/.model" />
     </copyModels>
-    <jar destfile="${build.layout}/behavior-tests/reflectiveTest/TestBehaviorReflective.jar" duplicate="preserve">
+    <jar destfile="${build.layout}/behavior-tests/test.behavior.plugin/languages/reflectiveTest/TestBehaviorReflective.jar" duplicate="preserve">
       <zipfileset file="${basedir}/testbench/modules/testBehavior/solutions/TestBehaviorReflective/TestBehaviorReflective.msd" prefix="module" />
       <zipfileset dir="${build.tmp}/customProcessors/copyModels/testbench-modules-testBehavior-solutions-TestBehaviorReflective-models" prefix="module/models" />
       <fileset dir="${build.tmp}/default/TestBehaviorReflective.jar" />
@@ -1339,6 +1341,7 @@
       <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/BHL5.jar" />
       <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/BHL6.jar" />
       <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/BHL7.jar" />
+      <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/UtilSolution.jar" />
     </path>
     <pathconvert property="mps.libraries.path.string" refid="mps.libraries.path" />
     <path id="mps.plugins.path">
@@ -1348,9 +1351,8 @@
     </path>
     <pathconvert property="mps.plugins.path.string" refid="mps.plugins.path" />
     <path id="mps.tests.path">
-      <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/lib/UtilSolution.jar" />
-      <pathelement location="${build.layout}/behavior-tests/nonReflectiveTest/TestBehavior.jar" />
-      <pathelement location="${build.layout}/behavior-tests/reflectiveTest/TestBehaviorReflective.jar" />
+      <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/nonReflectiveTest/TestBehavior.jar" />
+      <pathelement location="${build.layout}/behavior-tests/test.behavior.plugin/languages/reflectiveTest/TestBehaviorReflective.jar" />
     </path>
     <pathconvert property="mps.tests.path.string" refid="mps.tests.path" />
     <path id="long.class.path">
