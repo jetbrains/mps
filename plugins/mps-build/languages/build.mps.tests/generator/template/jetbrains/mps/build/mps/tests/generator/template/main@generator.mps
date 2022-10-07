@@ -2713,23 +2713,11 @@
                 <node concept="3o6iSG" id="6u4p9jnVkPu" role="3o6s8t" />
                 <node concept="2pNNFK" id="6u4p9jnVOKa" role="3o6s8t">
                   <property role="2pNNFO" value="classpath" />
-                  <node concept="2pNNFK" id="2qD8WtnFfaE" role="3o6s8t">
-                    <property role="2pNNFO" value="fileset" />
-                    <node concept="2pNNFK" id="2qD8WtnFfaF" role="3o6s8t">
-                      <property role="qg3DV" value="true" />
-                      <property role="2pNNFO" value="include" />
-                      <node concept="2pNUuL" id="2qD8WtnFfaG" role="2pNNFR">
-                        <property role="2pNUuO" value="name" />
-                        <node concept="2pMdtt" id="2qD8WtnFfaH" role="2pMdts">
-                          <property role="2pMdty" value="mps.class.path.jar" />
-                        </node>
-                      </node>
-                    </node>
-                    <node concept="2pNUuL" id="2qD8WtnFfaI" role="2pNNFR">
-                      <property role="2pNUuO" value="dir" />
-                      <node concept="2pMdtt" id="2qD8WtnFg0_" role="2pMdts">
-                        <property role="2pMdty" value="${build.tmp}" />
-                      </node>
+                  <property role="qg3DV" value="true" />
+                  <node concept="2pNUuL" id="7zJ_LB7013H" role="2pNNFR">
+                    <property role="2pNUuO" value="location" />
+                    <node concept="2pMdtt" id="7zJ_LB7013I" role="2pMdts">
+                      <property role="2pMdty" value="${build.tmp}/mps.class.path.jar" />
                     </node>
                   </node>
                 </node>
