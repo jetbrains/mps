@@ -4,10 +4,11 @@
 package jetbrains.mps.persistence.kotlin;
 
 import jetbrains.mps.components.CoreComponent;
-import jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonConstants;
-import jetbrains.mps.kotlin.ide.commonStubs.KotlinCommonStubModelRootFactory;
-import jetbrains.mps.kotlin.stubs.common.KotlinLanguage;
+import jetbrains.mps.kotlin.stubs.commonStubs.KotlinCommonStubModelRootFactory;
+import jetbrains.mps.kotlin.stubs.common.KotlinJvmPackageModelId;
+import jetbrains.mps.kotlin.stubs.common.KotlinLanguage.ModelKind;
 import jetbrains.mps.kotlin.stubs.common.KotlinPackageModelId;
+import jetbrains.mps.kotlin.stubs.jvmStubs.KotlinJvmStubModelRootFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade;
 
@@ -20,13 +21,20 @@ public class KotlinClassesPersistence implements CoreComponent {
 
   @Override
   public void init() {
-    myFacade.setModelRootFactory(KotlinCommonConstants.KOTLIN_COMMON_ROOT, new KotlinCommonStubModelRootFactory());
-    myFacade.setModelIdFactory(KotlinLanguage.LANGUAGE_ID, new KotlinPackageModelId.Factory());
+    // Kotlin common
+    myFacade.setModelIdFactory(ModelKind.COMMON.name, new KotlinPackageModelId.Factory());
+    myFacade.setModelRootFactory(ModelKind.COMMON.rootName, new KotlinCommonStubModelRootFactory());
+
+    // Kotlin/JVM
+    myFacade.setModelIdFactory(ModelKind.JVM.name, new KotlinJvmPackageModelId.Factory());
+    myFacade.setModelRootFactory(ModelKind.JVM.rootName, new KotlinJvmStubModelRootFactory());
   }
 
   @Override
   public void dispose() {
-    myFacade.setModelIdFactory(KotlinLanguage.LANGUAGE_ID, null);
-    myFacade.setModelRootFactory(KotlinCommonConstants.KOTLIN_COMMON_ROOT, null);
+    for (var value : ModelKind.values()) {
+      myFacade.setModelIdFactory(value.name, null);
+      myFacade.setModelRootFactory(value.rootName, null);
+    }
   }
 }
