@@ -4,7 +4,6 @@ package TestBehavior.test;
 
 import jetbrains.mps.MPSLaunch;
 import jetbrains.mps.testbench.EnvironmentAwareTestCase;
-import jetbrains.mps.project.Project;
 import org.junit.Test;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.junit.Assert;
@@ -32,7 +31,6 @@ import jetbrains.mps.internal.collections.runtime.Sequence;
 import jetbrains.mps.internal.collections.runtime.ISelector;
 import BHL7.behavior.L__BehaviorDescriptor;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
-import org.junit.Before;
 import jetbrains.mps.smodel.builder.SNodeBuilder;
 import org.jetbrains.mps.openapi.language.SProperty;
 import org.jetbrains.mps.openapi.language.SContainmentLink;
@@ -40,7 +38,6 @@ import org.jetbrains.mps.openapi.language.SContainmentLink;
 @MPSLaunch
 public class BHTest_Test extends EnvironmentAwareTestCase {
   private static final String PROJECT_PATH = "testbench/modules/testBehavior";
-  /*package*/ Project myProject;
   @Test
   public void test_conversion1() throws Exception {
     SNode nodeA = createA_a2wy8c_a0a0a0();
@@ -279,57 +276,43 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
   }
   @Test
   public void test_constructorInvocation1() throws Exception {
-    myProject.getModelAccess().runReadAction(() -> {
-      SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C0$Gr, null);
-      Assert.assertEquals(TestResults.I1_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
-    });
+    SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C0$Gr, null);
+    Assert.assertEquals(TestResults.I1_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
   }
   @Test
   public void test_constructorInvocation2() throws Exception {
-    myProject.getModelAccess().runReadAction(() -> {
-      SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C1$Yv, null);
-      Assert.assertEquals(TestResults.C1_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
-    });
+    SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C1$Yv, null);
+    Assert.assertEquals(TestResults.C1_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
   }
   @Test
   public void test_constructorInvocation3() throws Exception {
     // test checks that I2 constructor overrides I1 constructor
-    myProject.getModelAccess().runReadAction(() -> {
-      SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C2$Jx, null);
-      Assert.assertEquals(TestResults.I2_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
-    });
+    SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C2$Jx, null);
+    Assert.assertEquals(TestResults.I2_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
   }
   @Test
   public void test_constructorInvocation4() throws Exception {
     // test checks that all super constructors are invoked
-    myProject.getModelAccess().runReadAction(() -> {
-      SNode nodeC5 = SNodeFactoryOperations.createNewNode(CONCEPTS.C5$xl, null);
-      Assert.assertSame(true, SPropertyOperations.getBoolean(nodeC5, PROPS.b$mPYS));
-      Assert.assertEquals(TestResults.C3_DEFAULT_VALUE, SPropertyOperations.getString(nodeC5, PROPS.a$mhAL));
-    });
+    SNode nodeC5 = SNodeFactoryOperations.createNewNode(CONCEPTS.C5$xl, null);
+    Assert.assertSame(true, SPropertyOperations.getBoolean(nodeC5, PROPS.b$mPYS));
+    Assert.assertEquals(TestResults.C3_DEFAULT_VALUE, SPropertyOperations.getString(nodeC5, PROPS.a$mhAL));
   }
   @Test
   public void test_constructorInvocationDiamond() throws Exception {
-    myProject.getModelAccess().runReadAction(() -> {
-      SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C4$iv, null);
-      Assert.assertEquals(TestResults.C3_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
-    });
+    SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C4$iv, null);
+    Assert.assertEquals(TestResults.C3_DEFAULT_VALUE, SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
   }
   @Test
   public void test_constructorInvocationSuper1() throws Exception {
-    myProject.getModelAccess().runReadAction(() -> {
-      SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C6$ot, null);
-      Assert.assertEquals("C6", SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
-    });
+    SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C6$ot, null);
+    Assert.assertEquals("C6", SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
   }
   @Test
   public void test_constructorInvocationSuper2() throws Exception {
-    myProject.getModelAccess().runReadAction(() -> {
-      SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C7$TA, null);
-      Assert.assertEquals("c6", SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
-      SNode nodeI3 = SNodeFactoryOperations.createNewNode(CONCEPTS.C7$TA, null);
-      Assert.assertEquals("set", SPropertyOperations.getString(nodeI3, PROPS.c$pqHs));
-    });
+    SNode nodeI1 = SNodeFactoryOperations.createNewNode(CONCEPTS.C7$TA, null);
+    Assert.assertEquals("c6", SPropertyOperations.getString(nodeI1, PROPS.a$mhAL));
+    SNode nodeI3 = SNodeFactoryOperations.createNewNode(CONCEPTS.C7$TA, null);
+    Assert.assertEquals("set", SPropertyOperations.getString(nodeI3, PROPS.c$pqHs));
   }
   @Test
   public void test_localBehaviorCall() throws Exception {
@@ -473,17 +456,14 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
   }
   @Test
   public void test_conceptConstruction() throws Exception {
-    myProject.getModelAccess().runReadAction(() -> {
-      SConcept node = CONCEPTS.A$TR;
-      Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL7.behavior.A__BehaviorDescriptor.staticMethod_id5mnatV0hAQH.invoke(SNodeOperations.asSConcept(node)));
-      Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL7.behavior.A__BehaviorDescriptor.staticMethod_id5mnatV0hAQH.invoke(SNodeOperations.asSConcept(CONCEPTS.A$TR)));
-      SNode aNode;
-      aNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
-      aNode = SNodeOperations.getNode("r:0766eaf2-1894-47af-9a97-3484d14d48e4(BHL7.structure)", "6167444251392503100");
-      SNode nodeA = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x559729dec0466d3cL, "BHL7.structure.A"));
-      SConcept conceptNodeA = SNodeOperations.getConcept(nodeA);
-      Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL7.behavior.A__BehaviorDescriptor.staticMethod_id5mnatV0hAQH.invoke(SNodeOperations.asSConcept(conceptNodeA)));
-    });
+    SConcept node = CONCEPTS.A$TR;
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL7.behavior.A__BehaviorDescriptor.staticMethod_id5mnatV0hAQH.invoke(SNodeOperations.asSConcept(node)));
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL7.behavior.A__BehaviorDescriptor.staticMethod_id5mnatV0hAQH.invoke(SNodeOperations.asSConcept(CONCEPTS.A$TR)));
+    SNode aNode;
+    aNode = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0xc72da2b97cce4447L, 0x8389f407dc1158b7L, 0x1103553c5ffL, "jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"));
+    SNode nodeA = SConceptOperations.createNewNode(MetaAdapterFactory.getConcept(0x4239359f64574d2aL, 0xb1e014d3f948db39L, 0x559729dec0466d3cL, "BHL7.structure.A"));
+    SConcept conceptNodeA = SNodeOperations.getConcept(nodeA);
+    Assert.assertSame(TestResults.DEFAULT_RETURN_VALUE, (int) BHL7.behavior.A__BehaviorDescriptor.staticMethod_id5mnatV0hAQH.invoke(SNodeOperations.asSConcept(conceptNodeA)));
   }
   @Test
   public void test_methodResolving() throws Exception {
@@ -538,10 +518,6 @@ public class BHTest_Test extends EnvironmentAwareTestCase {
   @Test
   public void test_seqConcept() throws Exception {
     // fix
-  }
-  @Before
-  public void setUp() {
-    myProject = myEnvironment.createEmptyProject();
   }
   private static SNode createA_a2wy8c_a0a0a0() {
     SNodeBuilder n0 = new SNodeBuilder().init(CONCEPTS.A$jy);
