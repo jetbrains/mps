@@ -200,7 +200,7 @@ public class ClassLoaderManager implements CoreComponent {
   public ClassLoaderManager(@NotNull SRepository repository) {
     myRepository = repository;
     myModulesWatcher = new ModulesWatcher(myRepository, myWatchableCondition);
-    myClassLoadersHolder = new ClassLoadersHolder(myRepository, myModulesWatcher);
+    myClassLoadersHolder = new ClassLoadersHolder(myModulesWatcher);
     myRepositoryListener = new ModuleEventsHandler(repository, myModulesWatcher);
     myBroadCaster = new ClassLoadingBroadCaster(repository.getModelAccess(), myClassLoadersHolder.getModuleClassLoaderDisposer());
   }

@@ -16,18 +16,12 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.classloading.MPSClassLoadersRegistry.ModuleClassLoaderDisposer;
-import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SModuleReference;
-import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.module.SRepositoryListener;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -39,41 +33,18 @@ import java.util.Set;
  * @see ClassLoaderManager#myLoadableCondition
  */
 public class ClassLoadersHolder {
-  private static final Logger LOG = Logger.getLogger(ClassLoadersHolder.class);
-
-  private static final List<String> INTERNAL_EXCLUDES = Arrays.asList("jetbrains.mps.samples.xmlPersistence", "TestBehaviorReflective");
 
   private final MPSClassLoadersRegistry myCLRegistry;
-  private final SRepositoryListener myRepositoryListener = new SRepositoryListener() {
-    @Override
-    public void moduleAdded(@NotNull SModule module) {
-      checkPluginIsValid(module);
-    }
 
-    private void checkPluginIsValid(@NotNull SModule module) {
-      CustomClassLoadingFacet customClassLoadingFacet = module.getFacet(CustomClassLoadingFacet.class);
-      if (customClassLoadingFacet != null) {
-        if (!customClassLoadingFacet.isValid() && !INTERNAL_EXCLUDES.contains(module.getModuleName())) {
-          LOG.warning("Facet of the module " + module + " is not valid --" +
-              " possibly the provided idea plugin (in the properties dialog/idea plugin facet tab) cannot be found among the bundled plugins");
-        }
-      }
-    }
-  };
-  private final SRepository myRepository;
-
-  public ClassLoadersHolder(SRepository repository, ModulesWatcher modulesWatcher) {
-    myRepository = repository;
+  public ClassLoadersHolder(ModulesWatcher modulesWatcher) {
     myCLRegistry = new MPSClassLoadersRegistry(this, modulesWatcher);
   }
 
   public void init() {
-    myRepository.addRepositoryListener(myRepositoryListener);
   }
 
   public void dispose() {
     myCLRegistry.dispose();
-    myRepository.removeRepositoryListener(myRepositoryListener);
   }
 
   @Nullable
@@ -164,7 +135,4 @@ public class ClassLoadersHolder {
      */
     LOADED
   }
-
-  static class ClassLoaderNotFoundException extends Exception {}
-
 }
