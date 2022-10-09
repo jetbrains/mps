@@ -146,16 +146,4 @@ public final class RuntimeFlags {
     }
     return ourLegacyLoadModels;
   }
-
-  /**
-   * Provision to replace IdeaPluginModuleFacet with a code to detect parent CL from module contributor
-   * @return true to rely on CL detection rather than the CL instance provided by IdeaPluginModuleFacet
-   */
-  public static boolean useDeploymentCL() {
-    if (ourLegacyIdeaFacetCL == null) {
-      ourLegacyIdeaFacetCL = Boolean.getBoolean("mps.classloading.ideafacet");
-    }
-    return !ourLegacyIdeaFacetCL;
-
-  }
 }

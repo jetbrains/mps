@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,12 +24,8 @@ import jetbrains.mps.library.contributor.WorkbenchLibraryContributor;
 import jetbrains.mps.plugins.applicationplugins.ApplicationPluginManager;
 
 public final class RepositoryInitializingComponent extends RepositoryInitializingComponentBase {
-  @SuppressWarnings("UnusedParameters")
-  public RepositoryInitializingComponent(MPSCoreComponents coreComponents,
-                                         IdeaPluginFacetComponent ideaPluginFacetComponent,
-                                         IdeaFileSystem fs
-  ) {
-    super(coreComponents, ideaPluginFacetComponent, fs);
+  public RepositoryInitializingComponent(IdeaFileSystem fs) {
+    super(MPSCoreComponents.getInstance(), fs);
     final ApplicationPluginManager apm = ApplicationManager.getApplication().getComponent(ApplicationPluginManager.class);
     if (apm == null) {
       // not 100% sure if considerations of ApplicationPluginManager.initComponent() are still valid.

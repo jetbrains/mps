@@ -16,9 +16,10 @@
 package jetbrains.mps.classloading;
 
 /**
- * Likely cease to exist in a coming version of MPS, see {@link jetbrains.mps.RuntimeFlags#useDeploymentCL()}
+ * @deprecated about cease to exist in a coming version of MPS
  * evgeny, 2/28/13
  */
+@Deprecated(since = "2022.3", forRemoval = true)
 public interface IdeaPluginModuleFacet extends CustomClassLoadingFacet {
   String FACET_TYPE = "ideaPlugin";
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,11 +20,8 @@ import jetbrains.mps.ide.vfs.IdeaFileSystem;
 import jetbrains.mps.library.contributor.PluginLibraryContributor;
 
 public final class RepositoryInPluginInitializer extends RepositoryInitializingComponentBase {
-  public RepositoryInPluginInitializer(MPSCoreComponents coreComponents,
-                                       IdeaPluginFacetComponent ideaPluginFacetComponent,
-                                       IdeaFileSystem fs
-  ) {
-    super(coreComponents, ideaPluginFacetComponent, fs);
+  public RepositoryInPluginInitializer(IdeaFileSystem fs) {
+    super(MPSCoreComponents.getInstance(), fs);
     addContributor(new PluginLibraryContributor(getFS()));
   }
 }

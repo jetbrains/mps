@@ -11,10 +11,6 @@
 
   <application-components>
     <component>
-      <interface-class>jetbrains.mps.repository.IdeaPluginFacetComponent</interface-class>
-      <implementation-class>jetbrains.mps.ide.project.facets.IdeaPluginModuleFacetImplComponent</implementation-class>
-    </component>
-    <component>
       <implementation-class>jetbrains.mps.watching.WatchedRootsUpdater</implementation-class>
     </component>
     <component>

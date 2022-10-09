@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2013 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,8 @@ import org.jetbrains.mps.openapi.module.SModuleFacet;
 /**
  * Represents so called non-reloadable facet
  * Classes of the module which has such facet are NOT managed by MPS itself (for example, by IDEA's PluginClassLoaders)
+ * FIXME revisit once {@link IdeaPluginModuleFacet} gone. Need to decide whether we're interested in keeping custom CL
+ * functionality through a facet, by any other means (e.g. option in JMF) or none at all.
  */
 public interface CustomClassLoadingFacet extends SModuleFacet {
   boolean isValid();

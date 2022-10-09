@@ -16,6 +16,7 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.extapi.module.ModuleFacetBase;
+import jetbrains.mps.logging.Logger;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModule;
@@ -36,7 +37,10 @@ public class DumbIdeaPluginFacet extends ModuleFacetBase implements IdeaPluginMo
   @Nullable
   @Override
   public ClassLoader getClassLoader() {
-    return ClassLoaderManager.class.getClassLoader();
+    Logger.getLogger(getClass()).warnDeprecatedUse("IdeaPluginModuleFacet.getClassLoader has been deprecated and shall not be used");
+    // if there's code still using this method, give the same value as others users of the CLM would see
+    // (check MPSClassLoadersRegistry#createIDEADelegateClassLoader)
+    return new RootClassloaderLookup(getModule()).get();
   }
 
   @Override

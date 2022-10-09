@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2016 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@ import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.JBUI;
+import jetbrains.mps.classloading.IdeaPluginModuleFacet;
 import jetbrains.mps.ide.project.facets.IdeaPluginModuleFacetImpl;
 import jetbrains.mps.ide.ui.dialogs.properties.tabs.BaseTab;
 import org.jetbrains.mps.openapi.module.SModuleFacet;
@@ -30,13 +31,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.Dimension;
 
+/**
+ * FIXME perhaps, keep the tab and just make all the controls read-only?
+ */
 public class IdeaPluginModuleFacetTab extends BaseTab implements FacetTab {
 
-  private final IdeaPluginModuleFacetImpl myIdeaPluginModuleFacet;
+  private final IdeaPluginModuleFacet myIdeaPluginModuleFacet;
 
   private JTextField myTextField;
 
-  public IdeaPluginModuleFacetTab(IdeaPluginModuleFacetImpl moduleFacet) {
+  public IdeaPluginModuleFacetTab(IdeaPluginModuleFacet moduleFacet) {
     super("Idea Plugin", Nodes.Plugin, "Idea Plugin Properties");
 
     myIdeaPluginModuleFacet = moduleFacet;
@@ -72,7 +76,9 @@ public class IdeaPluginModuleFacetTab extends BaseTab implements FacetTab {
 
   @Override
   public void apply() {
-    myIdeaPluginModuleFacet.setPluginId(myTextField.getText());
+    if (myIdeaPluginModuleFacet instanceof IdeaPluginModuleFacetImpl) {
+      ((IdeaPluginModuleFacetImpl) myIdeaPluginModuleFacet).setPluginId(myTextField.getText());
+    }
   }
 
   @Override

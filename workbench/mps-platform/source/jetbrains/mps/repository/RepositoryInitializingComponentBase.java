@@ -15,8 +15,8 @@
  */
 package jetbrains.mps.repository;
 
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.BaseComponent;
-import com.intellij.openapi.components.ServiceManager;
 import jetbrains.mps.InternalFlag;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.ide.vfs.IdeaFileSystem;
@@ -47,14 +47,12 @@ public class RepositoryInitializingComponentBase implements BaseComponent {
    * Thus we aren't supposed to use idea fs here (according to the idea fs recommendations) and we are using io-based fs.
    *
    * @param coreComponents           -- we want to load bootstrap libraries after we have all core components instatiated
-   * @param ideaPluginFacetComponent -- we want to load plugin library contributor after we have chosen the right idea plugin facet
    */
   @SuppressWarnings("UnusedParameters")
   public RepositoryInitializingComponentBase(MPSCoreComponents coreComponents,
-                                             IdeaPluginFacetComponent ideaPluginFacetComponent,
                                              IdeaFileSystem fs
   ) {
-    ServiceManager.getService(FSNotificationsImprover.class); // Need this service to be initialized before other activity
+    ApplicationManager.getApplication().getService(FSNotificationsImprover.class); // Need this service to be initialized before other activity
     myLibraryInitializer = coreComponents.getLibraryInitializer();
     // FIXME why cons, not an abstract method invoked from initComponent() to populate contributors list?
     myFS = PathManager.isFromSources() ? fs : coreComponents.getPlatform().findComponent(VFSManager.class).getFileSystem(VFSManager.JAVA_IO_FILE_FS);

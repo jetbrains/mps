@@ -9,12 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.application.PathManager;
 import jetbrains.mps.core.platform.PlatformFactory;
 import jetbrains.mps.core.platform.PlatformOptionsBuilder;
-import jetbrains.mps.extapi.module.FacetsRegistry;
-import org.jetbrains.mps.openapi.module.FacetsFacade;
-import jetbrains.mps.classloading.DumbIdeaPluginFacet;
-import org.jetbrains.mps.openapi.module.SModuleFacet;
-import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.annotations.Nullable;
 import jetbrains.mps.library.LibraryInitializer;
 import java.util.List;
 import jetbrains.mps.library.contributor.LibraryContributor;
@@ -52,35 +46,7 @@ public final class MpsEnvironment extends EnvironmentBase {
 
     myPlatform = PlatformFactory.initPlatform(PlatformOptionsBuilder.ALL);
     myPlugins = new PlatformPlugins(myConfig);
-    registerFacetFactory(myPlatform.findComponent(FacetsRegistry.class));
     super.init(myPlatform);
-  }
-
-  private void registerFacetFactory(FacetsFacade facetsFacade) {
-    FacetsFacade.FacetFactory dumbFactory = facetsFacade.getFacetFactory(DumbIdeaPluginFacet.FACET_TYPE);
-    assert dumbFactory != null;
-    facetsFacade.removeFactory(dumbFactory);
-    facetsFacade.addFactory(DumbIdeaPluginFacet.FACET_TYPE, new FacetsFacade.FacetFactory() {
-
-      @Override
-      public SModuleFacet create(@NotNull SModule module) {
-        DumbIdeaPluginFacet rv = new DumbIdeaPluginFacet(module) {
-          @Override
-          @Nullable
-          public ClassLoader getClassLoader() {
-            ClassLoader cl = myPlugins.pluginClassLoader(getPluginId());
-            return (cl == null ? getRootClassLoader() : cl);
-          }
-        };
-        return rv;
-      }
-
-      @NotNull
-      @Override
-      public String getPresentation() {
-        return "Idea Plugin";
-      }
-    });
   }
 
   @Override

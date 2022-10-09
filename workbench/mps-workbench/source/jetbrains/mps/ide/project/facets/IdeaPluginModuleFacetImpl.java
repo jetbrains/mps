@@ -26,10 +26,14 @@ import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.persistence.Memento;
 
 /**
+ * @deprecated Remove once no uses in MPS code. It's our own implementation, nobody shall care.
+ *             Need to deal with {@code IdeaPluginModuleFacetTab} first
+ *
  * IMPLEMENTATION NOTE: due to the need to keep actual facet intact (idea plugin facet shall answer
  * old id for classloading purposes), facet keeps both value, the one for classloading, and another for serialization.
  * evgeny, 2/28/13
  */
+@Deprecated(since = "2022.3", forRemoval = true)
 public class IdeaPluginModuleFacetImpl extends ModuleFacetBase implements IdeaPluginModuleFacet {
   private String myClassloadPluginId;
   private String myPersistencePluginId;
