@@ -44,8 +44,8 @@ import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 
 import static java.lang.ClassLoader.getSystemClassLoader;
-import static jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress.LOADED;
-import static jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress.UNLOADED;
+import static jetbrains.mps.classloading.ClassLoadingProgress.LOADED;
+import static jetbrains.mps.classloading.ClassLoadingProgress.UNLOADED;
 
 /**
  * A ClassLoaderManager is a singleton and provides an internal API for loading classes
@@ -75,7 +75,7 @@ import static jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress
  * {@link jetbrains.mps.classloading.DeployListener} clients.
  * When module's classes (or ClassLoader) are requested, the actual module load happens.
  * When module is removed from the repository, CLManager unloaded module's data from its' storage.
- * @see jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress for more information on module's loading progress and module's lifecycle
+ * @see ClassLoadingProgress for more information on module's loading progress and module's lifecycle
  *
  * Every module add/remove/reload triggers events dispatching to MPSClassesListeners
  * @see jetbrains.mps.classloading.DeployListener
@@ -189,7 +189,7 @@ public class ClassLoaderManager implements CoreComponent {
 
   private final SRepository myRepository;
 
-  private final ClassLoadersHolder myClassLoadersHolder;
+  private final MPSClassLoadersRegistry myClassLoadersHolder;
 
   private final ModulesWatcher myModulesWatcher;
 
@@ -200,9 +200,9 @@ public class ClassLoaderManager implements CoreComponent {
   public ClassLoaderManager(@NotNull SRepository repository) {
     myRepository = repository;
     myModulesWatcher = new ModulesWatcher(myRepository, myWatchableCondition);
-    myClassLoadersHolder = new ClassLoadersHolder(myModulesWatcher);
+    myClassLoadersHolder = new MPSClassLoadersRegistry(myModulesWatcher);
     myRepositoryListener = new ModuleEventsHandler(repository, myModulesWatcher);
-    myBroadCaster = new ClassLoadingBroadCaster(repository.getModelAccess(), myClassLoadersHolder.getModuleClassLoaderDisposer());
+    myBroadCaster = new ClassLoadingBroadCaster(repository.getModelAccess(), myClassLoadersHolder.getDisposer());
   }
 
   @Override
@@ -213,7 +213,6 @@ public class ClassLoaderManager implements CoreComponent {
     INSTANCE = this;
     myRepository.getModelAccess().runWriteAction(() -> {
       myRepositoryListener.init(this);
-      myClassLoadersHolder.init();
     });
   }
 
@@ -706,21 +705,21 @@ public class ClassLoaderManager implements CoreComponent {
     }
   };
 
-  private final Condition<ReloadableModule> myUnloadedCondition = new Condition<ReloadableModule>() {
+  private final Condition<ReloadableModule> myUnloadedCondition = new Condition<>() {
     @Override
     public boolean met(ReloadableModule module) {
       return myClassLoadersHolder.getClassLoadingProgress(module.getModuleReference()) == UNLOADED;
     }
   };
 
-  private final Condition<SModuleReference> myUnloadedRefCondition = new Condition<SModuleReference>() {
+  private final Condition<SModuleReference> myUnloadedRefCondition = new Condition<>() {
     @Override
     public boolean met(SModuleReference mRef) {
       return myClassLoadersHolder.getClassLoadingProgress(mRef) == UNLOADED;
     }
   };
 
-  private final Condition<ReloadableModule> myLoadedCondition = new Condition<ReloadableModule>() {
+  private final Condition<ReloadableModule> myLoadedCondition = new Condition<>() {
     @Override
     public boolean met(ReloadableModule module) {
       return myClassLoadersHolder.getClassLoadingProgress(module.getModuleReference()) == LOADED;

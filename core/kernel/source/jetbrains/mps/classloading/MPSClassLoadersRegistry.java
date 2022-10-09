@@ -16,7 +16,6 @@
 package jetbrains.mps.classloading;
 
 import jetbrains.mps.RuntimeFlags;
-import jetbrains.mps.classloading.ClassLoadersHolder.ClassLoadingProgress;
 import jetbrains.mps.classloading.DeployListener.ResourceTrackerCallback;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModule;
@@ -24,6 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.SModuleReference;
 import org.jetbrains.mps.openapi.util.Consumer;
+import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -43,9 +43,12 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.stream.Collectors;
 
 /**
- * Note:
- * This class deals only with MPS-loadable modules
- *  see ClassLoaderManager#myMPSLoadableCondition
+ * This class stores a map SModuleReference->ModuleClassLoader
+ *
+ * Note: the actual dispose of ModuleClassLoaders happen asynchronously with
+ * the help of {@link ModuleClassLoaderDisposer}, see {@link #getDisposer()}
+ *
+ * {@code ClassLoaderManager#myLoadableCondition}
  */
 class MPSClassLoadersRegistry {
   private static final Logger LOG = Logger.getLogger(MPSClassLoadersRegistry.class);
@@ -53,21 +56,24 @@ class MPSClassLoadersRegistry {
   private final Map<SModuleReference, ModuleClassLoader> myMPSClassLoaders = new HashMap<>();
   private final Map<SModuleReference, IDEADelegatingModuleClassLoader> myIDEAClassLoaders = new HashMap<>();
   private final Map<SModuleReference, ClassLoadingProgress> myMPSLoadableModules = new HashMap<>();
-  private final ClassLoadersHolder myClHolder;
   private final ModulesWatcher myModulesWatcher;
   private final ModuleClassLoaderDisposer myModuleClassLoaderDisposer = new ModuleClassLoaderDisposer(this);
 
-  public MPSClassLoadersRegistry(ClassLoadersHolder clHolder, ModulesWatcher modulesWatcher) {
-    myClHolder = clHolder;
+  public MPSClassLoadersRegistry(ModulesWatcher modulesWatcher) {
     myModulesWatcher = modulesWatcher;
   }
 
-  @Nullable
-  public MPSModuleClassLoader getModuleClassLoader(@NotNull ReloadableModule module) {
-    return doGetModuleClassLoader(module);
+  /*package*/ MPSModuleClassLoader getClassLoader(@NotNull ReloadableModule module) {
+    MPSModuleClassLoader moduleClassLoader = getModuleClassLoader(module);
+    if (moduleClassLoader != null) {
+      return moduleClassLoader;
+    }
+
+    return getNonReloadableClassLoader(module);
   }
 
-  private ModuleClassLoader doGetModuleClassLoader(@NotNull ReloadableModule module) {
+  @Nullable
+  private ModuleClassLoader getModuleClassLoader(@NotNull ReloadableModule module) {
     return myMPSClassLoaders.get(module.getModuleReference());
   }
 
@@ -75,11 +81,14 @@ class MPSClassLoadersRegistry {
    * @return null if classloader is not found
    */
   @Nullable
-  public synchronized MPSModuleClassLoader getNonReloadableClassLoader(@NotNull ReloadableModule module) {
+  private synchronized MPSModuleClassLoader getNonReloadableClassLoader(@NotNull ReloadableModule module) {
     return myIDEAClassLoaders.computeIfAbsent(module.getModuleReference(), (ref) -> createIDEADelegateClassLoader(module));
   }
 
-
+  /**
+   * @return {@link ClassLoadingProgress} for the module. See the documentation of
+   * {@link ClassLoadingProgress} for the description of states and a typical lifecycle of module in a repository.
+   */
   @NotNull
   public ClassLoadingProgress getClassLoadingProgress(SModuleReference mRef) {
     if (!myMPSLoadableModules.containsKey(mRef)) {
@@ -88,6 +97,10 @@ class MPSClassLoadersRegistry {
     return myMPSLoadableModules.get(mRef);
   }
 
+  /**
+   * @param toUnload for these modules ModuleClassLoaders were disposed
+   * @return modules which changed their ClassLoadingProgress from LAZY_LOADED or LOADED to UNLOADED.
+   */
   public Set<SModuleReference> doUnloadModules(Collection<SModuleReference> toUnload) {
     Set<SModuleReference> unloaded = new LinkedHashSet<>();
     for (SModuleReference mRef : toUnload) {
@@ -116,6 +129,12 @@ class MPSClassLoadersRegistry {
     return unloaded;
   }
 
+  /**
+   * @param toLoadLazy for these modules only notifications {@link DeployListener#onLoaded(Set, ProgressMonitor)} were sent,
+   *                   so for {@link DeployListener} clients these modules appear to be loaded.
+   *                   No actual loading is performed for these modules.
+   * @return modules which changed their ClassLoadingProgress from UNLOADED to LAZY_LOADED.
+   */
   public Set<ReloadableModule> onLazyLoaded(Collection<ReloadableModule> toLoadLazy) {
     Set<ReloadableModule> lazyLoaded = new LinkedHashSet<>();
     for (ReloadableModule module : toLoadLazy) {
@@ -131,6 +150,9 @@ class MPSClassLoadersRegistry {
     return lazyLoaded;
   }
 
+  /**
+   * @param toLoad for these modules ModuleClassLoaders were actually created
+   */
   public void doLoadModules(final Collection<? extends ReloadableModule> toLoad) {
     final List<ModuleClassLoader> moduleClassLoaders = createModuleCLs(toLoad);
     for (ModuleClassLoader classLoader : moduleClassLoaders) {
@@ -159,7 +181,7 @@ class MPSClassLoadersRegistry {
     LOG.debug("Creating ModuleClassLoader for " + module);
     Collection<ReloadableModule> deps = myModulesWatcher.getResolvedDependencies(Collections.singletonList(module));
     final ModuleClassLoaderSupport support = ModuleClassLoaderSupport.create(module, () -> deps.stream()
-                                                                                               .map(myClHolder::getClassLoader)
+                                                                                               .map(this::getClassLoader)
                                                                                                .distinct()
                                                                                                .collect(Collectors.toList()));
     return new ModuleClassLoader(support);
@@ -220,10 +242,11 @@ class MPSClassLoadersRegistry {
 
     DisposeSession createSession(@NotNull Set<ReloadableModule> modulesToUnload, @Nullable Consumer<DisposeSession> onDisposed) {
       List<ModuleClassLoader> classLoaders = modulesToUnload.stream()
-                                                            .map(myRegistry::doGetModuleClassLoader)
+                                                            .map(myRegistry::getModuleClassLoader)
                                                             .filter(Objects::nonNull)
                                                             .collect(Collectors.toList());
 
+      // FIXME why don't we add new session ot mySessions? How come destroy() works?
       return new DisposeSession(modulesToUnload, classLoaders, onDisposed);
     }
 
