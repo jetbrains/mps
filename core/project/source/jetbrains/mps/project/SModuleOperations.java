@@ -16,8 +16,7 @@
 package jetbrains.mps.project;
 
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
-import jetbrains.mps.persistence.DefaultModelRoot;
-import jetbrains.mps.persistence.ModelCannotBeCreatedException;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
@@ -27,10 +26,8 @@ import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.EditableSModel;
-import org.jetbrains.mps.openapi.model.SModelName;
 import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
-import org.jetbrains.mps.openapi.persistence.ModelFactoryType;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
 import java.util.ArrayList;
@@ -103,34 +100,9 @@ public class SModuleOperations {
   @Nullable
   @Deprecated(since = "2021.3", forRemoval = true)
   public static EditableSModel createModelWithAdjustments(@NotNull String name, @NotNull ModelRoot root) {
-    try {
-      return createModelWithAdjustments(name, root, null);
-    } catch (ModelCannotBeCreatedException ignore) {
-    }
-    return null;
-  }
-
-  /**
-   * @deprecated to become private, don't use
-   */
-  @NotNull
-  @Deprecated(since = "2018.3", forRemoval = true)
-  public static EditableSModel createModelWithAdjustments(@NotNull String name,
-                                                          @NotNull ModelRoot root,
-                                                          @Nullable ModelFactoryType modelFactoryType) throws ModelCannotBeCreatedException {
-    EditableSModel model;
-    if (modelFactoryType != null && root instanceof DefaultModelRoot) {
-      DefaultModelRoot defaultModelRoot = (DefaultModelRoot) root;
-      model = (EditableSModel) defaultModelRoot.createModel(new SModelName(name), null, null, modelFactoryType);
-    } else {
-      model = (EditableSModel) root.createModel(name);
-    }
-    ModelsAutoImportsManager.doAutoImport(root.getModule(), model);
-
-    new MissingDependenciesFixer(model).fixModuleDependencies();
-
+    Logger.getLogger(SModuleOperations.class).warnDeprecatedUse("SModuleOperations.createModelWithAdjustments() will be removed in the next release");
+    EditableSModel model = (EditableSModel) root.createModel(name);
     model.save();
-
     return model;
   }
 
