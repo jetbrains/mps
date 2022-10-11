@@ -39,7 +39,7 @@ public class ShowInLogicalView_Action extends BaseAction {
       return false;
     }
     ProjectPane pane = ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
-    ProjectTree tree = pane.getTree();
+    ProjectTree tree = (pane == null ? null : pane.getTree());
     if (tree == null) {
       return false;
     }
@@ -76,6 +76,7 @@ public class ShowInLogicalView_Action extends BaseAction {
   }
   @Override
   public void doExecute(@NotNull final AnActionEvent event, final Map<String, Object> _params) {
+    // XXX perhaps, shall use ProjectPaneNavigator?
     final ProjectPane pane = ProjectPane.getInstance(((MPSProject) MapSequence.fromMap(_params).get("mpsProject")));
     SNodeReference nodeToSelect;
     if (pane.showNodeStructure()) {

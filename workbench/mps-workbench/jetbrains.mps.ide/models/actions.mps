@@ -3636,12 +3636,21 @@
             <node concept="3uibUv" id="6iF_j2Bosry" role="1tU5fm">
               <ref role="3uigEE" to="paf:~ProjectTree" resolve="ProjectTree" />
             </node>
-            <node concept="2OqwBi" id="6iF_j2BosrF" role="33vP2m">
-              <node concept="37vLTw" id="6iF_j2BosrG" role="2Oq$k0">
-                <ref role="3cqZAo" node="2shlJwNHJhp" resolve="pane" />
+            <node concept="3K4zz7" id="1qWU1U3ZFw8" role="33vP2m">
+              <node concept="10Nm6u" id="1qWU1U3ZFOs" role="3K4E3e" />
+              <node concept="3clFbC" id="1qWU1U3ZFiV" role="3K4Cdx">
+                <node concept="10Nm6u" id="1qWU1U3ZFjJ" role="3uHU7w" />
+                <node concept="37vLTw" id="1qWU1U3ZEMd" role="3uHU7B">
+                  <ref role="3cqZAo" node="2shlJwNHJhp" resolve="pane" />
+                </node>
               </node>
-              <node concept="liA8E" id="6iF_j2BosrH" role="2OqNvi">
-                <ref role="37wK5l" to="rvbb:~ProjectPane.getTree()" resolve="getTree" />
+              <node concept="2OqwBi" id="6iF_j2BosrF" role="3K4GZi">
+                <node concept="37vLTw" id="6iF_j2BosrG" role="2Oq$k0">
+                  <ref role="3cqZAo" node="2shlJwNHJhp" resolve="pane" />
+                </node>
+                <node concept="liA8E" id="6iF_j2BosrH" role="2OqNvi">
+                  <ref role="37wK5l" to="rvbb:~ProjectPane.getTree()" resolve="getTree" />
+                </node>
               </node>
             </node>
           </node>
@@ -3889,6 +3898,25 @@
     </node>
     <node concept="tnohg" id="hGAEUdR" role="tncku">
       <node concept="3clFbS" id="hGAEUdS" role="2VODD2">
+        <node concept="3SKdUt" id="1qWU1U3ZGYU" role="3cqZAp">
+          <node concept="1PaTwC" id="1qWU1U3ZGYV" role="1aUNEU">
+            <node concept="3oM_SD" id="1qWU1U3ZHea" role="1PaTwD">
+              <property role="3oM_SC" value="XXX" />
+            </node>
+            <node concept="3oM_SD" id="1qWU1U3ZHef" role="1PaTwD">
+              <property role="3oM_SC" value="perhaps," />
+            </node>
+            <node concept="3oM_SD" id="1qWU1U3ZHer" role="1PaTwD">
+              <property role="3oM_SC" value="shall" />
+            </node>
+            <node concept="3oM_SD" id="1qWU1U3ZHe_" role="1PaTwD">
+              <property role="3oM_SC" value="use" />
+            </node>
+            <node concept="3oM_SD" id="1qWU1U3ZHeI" role="1PaTwD">
+              <property role="3oM_SC" value="ProjectPaneNavigator?" />
+            </node>
+          </node>
+        </node>
         <node concept="3cpWs8" id="hGAFBmh" role="3cqZAp">
           <node concept="3cpWsn" id="hGAFBmi" role="3cpWs9">
             <property role="TrG5h" value="pane" />
