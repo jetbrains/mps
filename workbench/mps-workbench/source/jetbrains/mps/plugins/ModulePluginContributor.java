@@ -108,7 +108,12 @@ public class ModulePluginContributor extends PluginContributor {
   private Properties getComponentStartupConfiguration() {
     MacroHelper macroHelper = MacrosFactory.forModule(myModule);
     // Note, META-INF nor ${module} location would work for groups of modules distributed as a single plugin, shall come up with better approach
-    String cfgFullPath = macroHelper.expandPath("${module}/startup.properties");
+    final String relPath = "${module}/startup.properties";
+    String cfgFullPath = macroHelper.expandPath(relPath);
+    if (relPath.equals(cfgFullPath)) {
+      // not expanded, nothing to try
+      return null;
+    }
     // note, for deployed modules, with META-INF/module.xml as anchor/descriptor file, there's a hack in ModuleMacros that uses META-INF/.. as ${module} value
     //
     // AP, I beg your pardon, no idea where to take FS from if a module is not an instance of AbstractModule.

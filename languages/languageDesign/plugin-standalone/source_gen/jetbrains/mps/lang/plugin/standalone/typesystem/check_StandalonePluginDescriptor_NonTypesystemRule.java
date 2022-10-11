@@ -9,7 +9,7 @@ import jetbrains.mps.typesystem.inference.TypeCheckingContext;
 import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.module.SModule;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
-import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.project.Solution;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
@@ -24,7 +24,7 @@ public class check_StandalonePluginDescriptor_NonTypesystemRule extends Abstract
   }
   public void applyRule(final SNode spd, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SModule module = SNodeOperations.getModel(spd).getModule();
-    if (module instanceof ReloadableModule && ((ReloadableModule) module).canLoadClasses()) {
+    if (SModuleOperations.canSupplyExtensionsForMPS(module)) {
       return;
     }
     if (module instanceof Solution) {

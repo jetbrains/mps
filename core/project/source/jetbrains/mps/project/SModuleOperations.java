@@ -15,11 +15,15 @@
  */
 package jetbrains.mps.project;
 
+import jetbrains.mps.classloading.CustomClassLoadingFacet;
 import jetbrains.mps.kernel.model.MissingDependenciesFixer;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.project.facets.JavaModuleFacet;
 import jetbrains.mps.project.facets.TestsFacet;
 import jetbrains.mps.project.structure.modules.ModuleDescriptor;
+import jetbrains.mps.project.structure.modules.SolutionKind;
+import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.MPSModuleOwner;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.vfs.IFile;
@@ -68,6 +72,48 @@ public class SModuleOperations {
     }
     final ModuleDescriptor md = ((AbstractModule) module).getModuleDescriptor();
     return md != null && md.needsExternalIdeaCompile();
+  }
+
+  /**
+   * Captures knowledge how to identify a module that has a classloader and is meant to provide
+   * classes that extend some MPS functionality.
+   * Uses various aspects of {@link JavaModuleFacet} and internal assumptions to make a decision.
+   *
+   * Eventually likely to become part of ModuleRuntime (or a condition to generate (load?) one). Need this as a transition mechanism
+   * to refactor direct uses of {@code JavaModuleFacet}, {@code ReloadableModule#canLoadClasses()}, {@code instanceof ReloadableModule}
+   * and alike.
+   *
+   * @return true if a module is meant to be part of MPS world (MPS pluginSolutions, actions, extensions for ext.points, etc)
+   * @since 2022.3
+   */
+  public static boolean canSupplyExtensionsForMPS(@Nullable SModule module) {
+    if (module == null) {
+      return false;
+    }
+    final JavaModuleFacet jmf = module.getFacet(JavaModuleFacet.class);
+    if (jmf == null) {
+      return false;
+    }
+    // there was a lot of legacy logic around isCompileInMPS to decide whether code is MPS-managed, but I don't quite understand
+    // if it's still relevant.
+    if (module instanceof Language) {
+      return true;
+    }
+    if (module instanceof Solution) {
+      // generally, getKind() doesn't return null, but doesn't hurt to account for null
+      final SolutionKind kind = ((Solution) module).getKind();
+      if (kind != null && kind != SolutionKind.NONE) {
+        return true;
+      }
+      // we've got quite a lot IDEA-managed solutions with no 'kind' specified, need to treat them as 'extension-capable'
+      // see Solution.canLoadClasses()
+      return module.getFacet(CustomClassLoadingFacet.class) != null;
+    }
+    // need to account for TempModule + NaiveJavaModuleFacet scenario, although not clear if we need to allow
+    // extensions from these. Definitely classloading. Perhaps, that's the case when we need MPS module classloading but no
+    // extensions support (to my question whether MPS module CL implies "capable to contribute extensions")
+    return jmf.isCompileInMps() && module instanceof ReloadableModule;
+    // FWIW, generators and devkits are perfectly legal modules for extensions
   }
 
   public static Set<String> getAllSourcePaths(SModule module) {

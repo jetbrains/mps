@@ -20,6 +20,7 @@ import jetbrains.mps.classloading.MPSModuleClassLoader;
 import jetbrains.mps.classloading.ModuleClassLoader;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.AbstractModule;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -88,17 +89,6 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
     return myManager.getClassLoader(this);
   }
 
-  @Override
-  public final void reload() {
-    if (!canLoadClasses()) {
-      LOG.warning(String.format("The module %s can not load classes -- impossible to reload the module", this));
-      return;
-    }
-    LOG.warnDeprecatedUse("ReloadableModule#reload() is deprecated and scheduled for removal, stop using it.");
-    LOG.info("Reloading module " + this);
-    myManager.reloadModule(this);
-  }
-
   @NotNull
   @Override
   public final DeploymentStatus getStatus() {
@@ -109,7 +99,7 @@ public class ReloadableModuleBase extends AbstractModule implements ReloadableMo
   protected void dependenciesChanged() {
     super.dependenciesChanged();
     // XXX quite questionable code, why would I want to reload code when design dependency changes?
-    if (canLoadClasses()) {
+    if (SModuleOperations.canSupplyExtensionsForMPS(this)) {
       fireDependenciesChanged();
     }
   }

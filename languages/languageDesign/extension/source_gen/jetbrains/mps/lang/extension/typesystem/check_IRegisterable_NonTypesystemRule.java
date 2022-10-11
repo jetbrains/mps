@@ -10,15 +10,12 @@ import jetbrains.mps.lang.typesystem.runtime.IsApplicableStatus;
 import org.jetbrains.mps.openapi.model.SModel;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.module.SModule;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.smodel.Language;
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations;
 import jetbrains.mps.errors.messageTargets.MessageTarget;
 import jetbrains.mps.errors.messageTargets.NodeMessageTarget;
 import jetbrains.mps.errors.IErrorReporter;
 import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.project.structure.modules.SolutionKind;
-import java.util.Objects;
 import jetbrains.mps.lang.core.behavior.BaseConcept__BehaviorDescriptor;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
 import org.jetbrains.mps.openapi.language.SInterfaceConcept;
@@ -30,37 +27,24 @@ public class check_IRegisterable_NonTypesystemRule extends AbstractNonTypesystem
   public void applyRule(final SNode extension, final TypeCheckingContext typeCheckingContext, IsApplicableStatus status) {
     SModel model = SNodeOperations.getModel(extension);
     SModule module = model.getModule();
-    if (module instanceof Language) {
-      if (!(SModuleOperations.isAspect(model, "plugin"))) {
-        final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(extension, "Extensions in languages are allowed only in plugin aspect", "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "1252437031490654712", null, errorTarget);
-      }
-    } else if (module instanceof Solution) {
-      Solution solution = (Solution) module;
-      if (!(check_xmc95t_a0b0a2a1(solution.getFacet(JavaModuleFacet.class)))) {
-        {
+    if (SModuleOperations.canSupplyExtensionsForMPS(module)) {
+      if (module instanceof Language) {
+        if (!(jetbrains.mps.lang.smodel.generator.smodelAdapter.SModuleOperations.isAspect(model, "plugin"))) {
           final MessageTarget errorTarget = new NodeMessageTarget();
-          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportWarning(extension, "Extension will not be registered automatically. Solution is not compiled in MPS.", "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "1252437031490683496", null, errorTarget);
-        }
-      } else {
-        if (solution.getKind() != SolutionKind.PLUGIN_CORE && solution.getKind() != SolutionKind.PLUGIN_EDITOR && solution.getKind() != SolutionKind.PLUGIN_OTHER) {
-          {
-            final MessageTarget errorTarget = new NodeMessageTarget();
-            IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(extension, "Extensions in solutions are allowed only with solution kinds CORE, EDITOR, OTHER", "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "1252437031490534226", null, errorTarget);
-          }
-        } else {
-          if (!(Objects.equals(SNodeOperations.getModel(extension).getName().getLongName(), SNodeOperations.getModel(extension).getModule().getModuleName() + ".plugin"))) {
-            {
-              final MessageTarget errorTarget = new NodeMessageTarget();
-              IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(extension, "Extensions in solutions are allowed only in model named $module_name$.plugin", "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "6528980921720170650", null, errorTarget);
-            }
-          }
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(extension, "Extensions in languages are allowed only in plugin aspect", "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "1252437031490654712", null, errorTarget);
         }
       }
     } else {
-      if (!((boolean) BaseConcept__BehaviorDescriptor.isInTemplates_idhEwIMij.invoke(extension))) {
-        final MessageTarget errorTarget = new NodeMessageTarget();
-        IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(extension, "Extensions are allowed only in plugin solutions and plugin aspects", "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "1252437031490597867", null, errorTarget);
+      if (module instanceof Solution) {
+        {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(extension, "Extensions in solutions are allowed only with solution kinds CORE, EDITOR, OTHER", "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "1252437031490534226", null, errorTarget);
+        }
+      } else {
+        if (!((boolean) BaseConcept__BehaviorDescriptor.isInTemplates_idhEwIMij.invoke(extension))) {
+          final MessageTarget errorTarget = new NodeMessageTarget();
+          IErrorReporter _reporter_2309309498 = typeCheckingContext.reportTypeError(extension, "Extensions are allowed only in plugin solutions and plugin aspects", "r:4b1ddbe6-5067-4a27-8697-eb786b50451b(jetbrains.mps.lang.extension.typesystem)", "1252437031490597867", null, errorTarget);
+        }
       }
     }
   }
@@ -71,12 +55,6 @@ public class check_IRegisterable_NonTypesystemRule extends AbstractNonTypesystem
     return new IsApplicableStatus(argument.getConcept().isSubConceptOf(getApplicableConcept()), null);
   }
   public boolean overrides() {
-    return false;
-  }
-  private static boolean check_xmc95t_a0b0a2a1(JavaModuleFacet checkedDotOperand) {
-    if (null != checkedDotOperand) {
-      return checkedDotOperand.isCompileInMps();
-    }
     return false;
   }
 

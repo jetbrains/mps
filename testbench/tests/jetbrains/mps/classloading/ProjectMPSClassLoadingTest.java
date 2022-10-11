@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2018 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@ import jetbrains.mps.lang.typesystem.runtime.IHelginsDescriptor;
 import jetbrains.mps.module.ReloadableModule;
 import jetbrains.mps.openapi.editor.descriptor.EditorAspectDescriptor;
 import jetbrains.mps.project.Project;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.smodel.Language;
 import jetbrains.mps.smodel.language.LanguageRegistry;
 import jetbrains.mps.smodel.language.LanguageRuntime;
@@ -32,7 +33,7 @@ import jetbrains.mps.tool.environment.EnvironmentAware;
 import jetbrains.mps.util.PathManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
-import org.jetbrains.mps.openapi.module.SRepositoryListenerBase;
+import org.jetbrains.mps.openapi.module.SRepositoryListener;
 import org.junit.Test;
 
 import java.io.File;
@@ -48,7 +49,7 @@ public class ProjectMPSClassLoadingTest implements EnvironmentAware {
   private static final Set<String> IGNORE_LIST = new LinkedHashSet<>(Arrays.asList("jetbrains.mps.samples.xmlPersistence [solution]",
       "TestBehaviorReflective [solution]"));
 
-  private Map<String, String> myModuleNamesToErrors = new TreeMap<String, String>();
+  private final Map<String, String> myModuleNamesToErrors = new TreeMap<>();
   private Project project;
   private Environment myEnvironment;
 
@@ -71,7 +72,7 @@ public class ProjectMPSClassLoadingTest implements EnvironmentAware {
   public void classesAreLoadedStress() {
     project = myEnvironment.openProject(new File(PathManager.getHomePath()));
     ClassLoaderManager clm = myEnvironment.getPlatform().findComponent(ClassLoaderManager.class);
-    SRepositoryListenerBase crazyListener = ModulesReloadTestStress.createCrazyListener(clm);
+    SRepositoryListener crazyListener = ModulesReloadTestStress.createCrazyListener(clm);
     project.getRepository().addRepositoryListener(crazyListener);
     doTest();
     project.getRepository().removeRepositoryListener(crazyListener);
@@ -79,30 +80,30 @@ public class ProjectMPSClassLoadingTest implements EnvironmentAware {
   }
 
   private void doTest() {
-    project.getModelAccess().runReadAction(new Runnable() {
-      @Override
-      public void run() {
-        for (SModule module : project.getRepository().getModules()) {
-          checkModule(module);
+    project.getModelAccess().runReadAction(() -> {
+      for (SModule module : project.getRepository().getModules()) {
+        checkModule(module);
+      }
+      if (!myModuleNamesToErrors.isEmpty()) {
+        System.err.println("Some class loading problems for modules:");
+        for (String moduleName : myModuleNamesToErrors.keySet()) {
+          System.err.println(moduleName + " ::: " + myModuleNamesToErrors.get(moduleName));
         }
-        if (!myModuleNamesToErrors.isEmpty()) {
-          System.err.println("Some class loading problems for modules:");
-          for (String moduleName : myModuleNamesToErrors.keySet()) {
-            System.err.println(moduleName + " ::: " + myModuleNamesToErrors.get(moduleName));
-          }
-          fail();
-        }
+        fail();
       }
     });
   }
 
-  private boolean checkModule(SModule module) {
-    if (isIgnored(module.toString())) return true;
-    if (module instanceof ReloadableModule) {
+  private void checkModule(SModule module) {
+    if (isIgnored(module.toString())) {
+      return;
+    }
+    if (module instanceof ReloadableModule && SModuleOperations.canSupplyExtensionsForMPS(module)) {
       ReloadableModule reloadableModule = (ReloadableModule) module;
-      if (reloadableModule.canLoadClasses() && reloadableModule.getClassLoader() == null) {
+      //noinspection removal
+      if (reloadableModule.getClassLoader() == null) {
         myModuleNamesToErrors.put(module.toString(), "No class loader for the module");
-        return false;
+        return;
       }
     }
 
@@ -113,9 +114,7 @@ public class ProjectMPSClassLoadingTest implements EnvironmentAware {
         tryLoadDescriptors(language);
       } catch (AssertionFailedException e) {
         myModuleNamesToErrors.put(module.toString(), e.getMsg());
-        return false;
       }
-    return true;
   }
 
   private boolean isIgnored(String module) {

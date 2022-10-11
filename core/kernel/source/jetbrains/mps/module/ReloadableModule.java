@@ -130,14 +130,18 @@ public interface ReloadableModule extends SModule {
    * @deprecated Scheduled for removal, use CLM directly, if necessary.
    */
   @Deprecated(forRemoval = true, since = "2022.2")
-  void reload();
+  default void reload() {
+    throw new UnsupportedOperationException();
+  }
 
   /**
    * For some subclasses it is possible to disable class loading for <code>ReloadableModule</code>.
    * E.g. solution without idea/mps facet cannot load classes
    * @see jetbrains.mps.project.Solution
    * @return true if it will load classes.
+   * @deprecated "will load classes" is not a clear contract. Among other, meant MPS loads its own extensions from these modules
    */
+  @Deprecated(since = "2022.3", forRemoval = true)
   default boolean canLoadClasses() {
     return true;
   }

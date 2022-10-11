@@ -15,7 +15,6 @@
  */
 package jetbrains.mps.project;
 
-import jetbrains.mps.classloading.CustomClassLoadingFacet;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.module.ReloadableModuleBase;
 import jetbrains.mps.project.io.DescriptorIO;
@@ -95,7 +94,8 @@ public class Solution extends ReloadableModuleBase {
 
   @Override
   public boolean canLoadClasses() {
+    Logger.getLogger(Solution.class).warnDeprecatedUse("ReloadableModule.canLoadClasses() is scheduled for removal");
     // TODO mps facet from this [like IDEA plugin facet]
-    return getKind() != SolutionKind.NONE || getFacet(CustomClassLoadingFacet.class) != null;
+    return SModuleOperations.canSupplyExtensionsForMPS(this);
   }
 }

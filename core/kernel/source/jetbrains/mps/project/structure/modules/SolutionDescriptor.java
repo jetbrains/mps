@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2020 JetBrains s.r.o.
+ * Copyright 2003-2022 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,6 +37,7 @@ public class SolutionDescriptor extends ModuleDescriptor {
     myOutputPath = outputPath;
   }
 
+  // seems to be not null, although doesn't manifest explicitly.
   public final SolutionKind getKind() {
     return myKind;
   }

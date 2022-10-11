@@ -12,7 +12,6 @@
     <import index="bwpj" ref="86441d7a-e194-42da-81a5-2161ec62a379/java:jetbrains.mps.plugins.part(MPS.Workbench/)" />
     <import index="lui2" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.module(MPS.OpenAPI/)" />
     <import index="mhbf" ref="8865b7a8-5271-43d3-884c-6fd1d9cfdd34/java:org.jetbrains.mps.openapi.model(MPS.OpenAPI/)" />
-    <import index="j8aq" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.module(MPS.Core/)" />
     <import index="z1c3" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project(MPS.Core/)" />
     <import index="w0gx" ref="6ed54515-acc8-4d1e-a16c-9fd6cfe951ea/java:jetbrains.mps.project.structure.modules(MPS.Core/)" />
   </imports>
@@ -35,6 +34,9 @@
       </concept>
       <concept id="1070475926800" name="jetbrains.mps.baseLanguage.structure.StringLiteral" flags="nn" index="Xl_RD">
         <property id="1070475926801" name="value" index="Xl_RC" />
+      </concept>
+      <concept id="1081236700937" name="jetbrains.mps.baseLanguage.structure.StaticMethodCall" flags="nn" index="2YIFZM">
+        <reference id="1144433194310" name="classConcept" index="1Pybhc" />
       </concept>
       <concept id="1081256982272" name="jetbrains.mps.baseLanguage.structure.InstanceOfExpression" flags="nn" index="2ZW3vV">
         <child id="1081256993305" name="classType" index="2ZW6by" />
@@ -71,9 +73,6 @@
         <child id="1068581242865" name="localVariableDeclaration" index="3cpWs9" />
       </concept>
       <concept id="1068581242863" name="jetbrains.mps.baseLanguage.structure.LocalVariableDeclaration" flags="nr" index="3cpWsn" />
-      <concept id="1079359253375" name="jetbrains.mps.baseLanguage.structure.ParenthesizedExpression" flags="nn" index="1eOMI4">
-        <child id="1079359253376" name="expression" index="1eOMHV" />
-      </concept>
       <concept id="1204053956946" name="jetbrains.mps.baseLanguage.structure.IMethodCall" flags="ng" index="1ndlxa">
         <reference id="1068499141037" name="baseMethodDeclaration" index="37wK5l" />
         <child id="1068499141038" name="actualArgument" index="37wK5m" />
@@ -81,11 +80,6 @@
       <concept id="1107535904670" name="jetbrains.mps.baseLanguage.structure.ClassifierType" flags="in" index="3uibUv">
         <reference id="1107535924139" name="classifier" index="3uigEE" />
       </concept>
-      <concept id="1081773326031" name="jetbrains.mps.baseLanguage.structure.BinaryOperation" flags="nn" index="3uHJSO">
-        <child id="1081773367579" name="rightExpression" index="3uHU7w" />
-        <child id="1081773367580" name="leftExpression" index="3uHU7B" />
-      </concept>
-      <concept id="1080120340718" name="jetbrains.mps.baseLanguage.structure.AndExpression" flags="nn" index="1Wc70l" />
     </language>
     <language id="3a13115c-633c-4c5c-bbcc-75c4219e9555" name="jetbrains.mps.lang.quotation">
       <concept id="1196350785113" name="jetbrains.mps.lang.quotation.structure.Quotation" flags="nn" index="2c44tf">
@@ -343,29 +337,11 @@
         </node>
       </node>
       <node concept="3clFbJ" id="6mhEhX8gqGA" role="3cqZAp">
-        <node concept="1Wc70l" id="6mhEhX8grXM" role="3clFbw">
-          <node concept="2OqwBi" id="6mhEhX8gthj" role="3uHU7w">
-            <node concept="1eOMI4" id="6mhEhX8gshj" role="2Oq$k0">
-              <node concept="10QFUN" id="6mhEhX8gshg" role="1eOMHV">
-                <node concept="3uibUv" id="6mhEhX8gt5P" role="10QFUM">
-                  <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
-                </node>
-                <node concept="37vLTw" id="6mhEhX8gs0D" role="10QFUP">
-                  <ref role="3cqZAo" node="6mhEhX8grlK" resolve="module" />
-                </node>
-              </node>
-            </node>
-            <node concept="liA8E" id="6mhEhX8gtr4" role="2OqNvi">
-              <ref role="37wK5l" to="j8aq:~ReloadableModule.canLoadClasses()" resolve="canLoadClasses" />
-            </node>
-          </node>
-          <node concept="2ZW3vV" id="6mhEhX8grss" role="3uHU7B">
-            <node concept="3uibUv" id="6mhEhX8gr_n" role="2ZW6by">
-              <ref role="3uigEE" to="j8aq:~ReloadableModule" resolve="ReloadableModule" />
-            </node>
-            <node concept="37vLTw" id="6mhEhX8grlR" role="2ZW6bz">
-              <ref role="3cqZAo" node="6mhEhX8grlK" resolve="module" />
-            </node>
+        <node concept="2YIFZM" id="2rTnW2A5QfE" role="3clFbw">
+          <ref role="37wK5l" to="z1c3:~SModuleOperations.canSupplyExtensionsForMPS(org.jetbrains.mps.openapi.module.SModule)" resolve="canSupplyExtensionsForMPS" />
+          <ref role="1Pybhc" to="z1c3:~SModuleOperations" resolve="SModuleOperations" />
+          <node concept="37vLTw" id="2rTnW2A5QhS" role="37wK5m">
+            <ref role="3cqZAo" node="6mhEhX8grlK" resolve="module" />
           </node>
         </node>
         <node concept="3clFbS" id="6mhEhX8gqGC" role="3clFbx">

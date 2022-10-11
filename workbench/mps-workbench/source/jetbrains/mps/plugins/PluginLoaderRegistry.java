@@ -44,15 +44,13 @@ import jetbrains.mps.plugins.PluginLoaderRegistry.EventAccumulation.Snapshot;
 import jetbrains.mps.plugins.applicationplugins.BaseApplicationPlugin;
 import jetbrains.mps.plugins.projectplugins.BaseProjectPlugin;
 import jetbrains.mps.progress.EmptyProgressMonitor;
-import jetbrains.mps.project.Solution;
-import jetbrains.mps.project.structure.modules.SolutionKind;
-import jetbrains.mps.smodel.Language;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.smodel.MPSModuleRepository;
+import jetbrains.mps.smodel.tempmodel.TempModule;
 import jetbrains.mps.util.JavaNameUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.module.ModelAccess;
-import org.jetbrains.mps.openapi.module.SModule;
 import org.jetbrains.mps.openapi.module.SRepository;
 import org.jetbrains.mps.openapi.util.ProgressMonitor;
 
@@ -595,22 +593,17 @@ public class PluginLoaderRegistry implements Disposable {
 
   private Set<ReloadableModule> getPluginModules(Collection<ReloadableModule> modules) {
     return modules.stream()
-                  .filter(this::isPluginModule)
+                  .filter(PluginLoaderRegistry::isPluginModule)
                   .collect(toCollection(LinkedHashSet::new));
   }
 
-  private boolean isPluginModule(SModule module) {
-    if (module instanceof ReloadableModule) {
-      if (module instanceof Language) {
-        return true;
-      }
-
-      if (module instanceof Solution) {
-        SolutionKind kind = ((Solution) module).getKind();
-        return kind != SolutionKind.NONE;
-      }
-    }
-    return false;
+  private static boolean isPluginModule(ReloadableModule module) {
+    // XXX previous version ignored modules with no explicit SolutionKind, and we got some
+    // canSupplyExtensionsForMPS() == true solutions without kind specified (e.g. actions.runtime or
+    // tools.common), and we might face issues with the changed logic. However, for consistency,
+    // I'd like to keep code that decides about possible extensions the same everywhere, and avoid
+    // custom conditions that look deep into Solution/JMF properties.
+    return !(module instanceof TempModule) && SModuleOperations.canSupplyExtensionsForMPS(module);
   }
 
   @Override

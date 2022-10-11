@@ -12,8 +12,7 @@ import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations;
 import jetbrains.mps.generator.template.ReferenceMacroContext;
 import jetbrains.mps.generator.template.IfMacroContext;
 import org.jetbrains.mps.openapi.model.SModel;
-import org.jetbrains.mps.openapi.module.SModule;
-import jetbrains.mps.module.ReloadableModule;
+import jetbrains.mps.project.SModuleOperations;
 import jetbrains.mps.internal.collections.runtime.ListSequence;
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations;
 import org.jetbrains.mps.openapi.language.SAbstractConcept;
@@ -110,11 +109,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if (model == null) {
       return false;
     }
-    SModule module = model.getModule();
-    if (module instanceof ReloadableModule) {
-      return ((ReloadableModule) module).canLoadClasses();
-    }
-    return false;
+    return SModuleOperations.canSupplyExtensionsForMPS(model.getModule());
   }
   public static boolean ifMacro_Condition_0_1(final IfMacroContext _context) {
     return false;
@@ -206,8 +201,7 @@ public class QueriesGenerated extends QueryProviderBase {
     if (model == null) {
       return false;
     }
-    SModule module = model.getModule();
-    return module instanceof ReloadableModule;
+    return SModuleOperations.canSupplyExtensionsForMPS(model.getModule());
   }
   public static SNode sourceNodeQuery_0_0(final SourceSubstituteMacroNodeContext _context) {
     return SLinkOperations.getTarget(SLinkOperations.getTarget(_context.getNode(), LINKS.root$ACJu), LINKS.type$AvMt);
